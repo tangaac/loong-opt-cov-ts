@@ -22,8 +22,7 @@ simulator_kernel:                       # @simulator_kernel
 	addi.d	$a3, $a3, %pc_lo12(.Ltmp0)
 	beqz	$a0, .LBB1_9
 # %bb.1:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB1_9
+	blez	$a0, .LBB1_9
 # %bb.2:                                # %.lr.ph.preheader
 	ld.d	$a6, $a1, 1032
 	ori	$a7, $zero, 4
@@ -150,8 +149,7 @@ simulator_kernel:                       # @simulator_kernel
 .LBB1_12:                               # %.lr.ph60
                                         #   Parent Loop BB1_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$t3, $zero, -1
-	bge	$t3, $t2, .LBB1_16
+	bltz	$t2, .LBB1_16
 # %bb.13:                               #   in Loop: Header=BB1_12 Depth=2
 	addi.d	$t0, $t0, -1
 	andi	$t0, $t0, 255

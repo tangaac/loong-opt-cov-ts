@@ -356,9 +356,9 @@ LanguageDefine:                         # @LanguageDefine
 	st.d	$a0, $a0, 16
 .LBB1_30:
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
-	ld.d	$s8, $a1, %got_pc_lo12(zz_hold)
+	ld.d	$s7, $a1, %got_pc_lo12(zz_hold)
 	ld.d	$a1, $a0, 8
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 	beq	$a1, $a0, .LBB1_32
 # %bb.31:
 	pcalau12i	$a2, %got_pc_hi20(zz_res)
@@ -366,7 +366,7 @@ LanguageDefine:                         # @LanguageDefine
 	st.d	$a1, $a2, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $a1, 0
-	ld.d	$a1, $s8, 0
+	ld.d	$a1, $s7, 0
 	ld.d	$a0, $a2, 0
 	ld.d	$a2, $a1, 0
 	st.d	$a0, $a2, 8
@@ -394,11 +394,11 @@ LanguageDefine:                         # @LanguageDefine
 	slli.d	$a2, $a1, 3
 	ldx.d	$a2, $a3, $a2
 	st.w	$a1, $a4, 0
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 	st.d	$a2, $a0, 0
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a4, 0
-	ld.d	$a1, $s8, 0
+	ld.d	$a1, $s7, 0
 	slli.d	$a0, $a0, 3
 	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	stx.d	$a1, $a3, $a0
@@ -444,12 +444,12 @@ LanguageDefine:                         # @LanguageDefine
 	slli.d	$a2, $a1, 3
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a2, $a3, $a2
-	st.d	$s0, $s8, 0
+	st.d	$s0, $s7, 0
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a1, $a4, 0
 	st.d	$a2, $s0, 0
 	ld.w	$a1, $a4, 0
-	ld.d	$a2, $s8, 0
+	ld.d	$a2, $s7, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$a2, $a3, $a1
 	move	$s0, $zero
@@ -464,41 +464,40 @@ LanguageDefine:                         # @LanguageDefine
 	pcalau12i	$a1, %pc_hi20(lang_ends)
 	addi.d	$a1, $a1, %pc_lo12(lang_ends)
 	stx.d	$fp, $a1, $a0
-	ld.d	$s1, $fp, 8
-	beq	$s1, $fp, .LBB1_58
+	ld.d	$s6, $fp, 8
+	beq	$s6, $fp, .LBB1_58
 # %bb.41:                               # %.preheader.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$s5, $zero, 1
-	ori	$s6, $zero, 0
-	lu32i.d	$s6, -1
+	ori	$s0, $zero, 1
+	ori	$s4, $zero, 0
+	lu32i.d	$s4, -1
 	pcalau12i	$a0, %pc_hi20(LanguageSentenceEnds)
 	pcalau12i	$a1, %got_pc_hi20(xx_tmp)
-	ld.d	$s7, $a1, %got_pc_lo12(xx_tmp)
+	ld.d	$s5, $a1, %got_pc_lo12(xx_tmp)
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_res)
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$s0, $a0, %pc_lo12(LanguageSentenceEnds)
+	addi.d	$s1, $a0, %pc_lo12(LanguageSentenceEnds)
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB1_44
 	.p2align	4, , 16
 .LBB1_42:                               #   in Loop: Header=BB1_44 Depth=1
-	slli.d	$a0, $s4, 32
-	add.d	$a0, $a0, $s6
+	add.d	$a0, $s8, $s4
 	srai.d	$a0, $a0, 32
 	ldx.bu	$a0, $s3, $a0
 	slli.d	$a0, $a0, 2
-	stx.w	$s5, $s0, $a0
+	stx.w	$s0, $s1, $a0
 .LBB1_43:                               #   in Loop: Header=BB1_44 Depth=1
-	ld.d	$s1, $s1, 8
-	beq	$s1, $fp, .LBB1_58
+	ld.d	$s6, $s6, 8
+	beq	$s6, $fp, .LBB1_58
 .LBB1_44:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_45 Depth 2
-	move	$s3, $s1
+	move	$s3, $s6
 	.p2align	4, , 16
 .LBB1_45:                               #   Parent Loop BB1_44 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -515,10 +514,10 @@ LanguageDefine:                         # @LanguageDefine
 	b	.LBB1_55
 	.p2align	4, , 16
 .LBB1_48:                               #   in Loop: Header=BB1_44 Depth=1
-	bne	$a0, $s5, .LBB1_54
+	bne	$a0, $s0, .LBB1_54
 # %bb.49:                               #   in Loop: Header=BB1_44 Depth=1
-	ld.d	$s1, $s1, 0
-	ld.d	$a0, $s1, 8
+	ld.d	$s6, $s6, 0
+	ld.d	$a0, $s6, 8
 	ld.d	$a1, $a0, 24
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a0, $a2, 0
@@ -532,15 +531,15 @@ LanguageDefine:                         # @LanguageDefine
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
 	ld.d	$a2, $a0, 8
-	st.d	$a1, $s7, 0
-	st.d	$a0, $s8, 0
+	st.d	$a1, $s5, 0
+	st.d	$a0, $s7, 0
 	beq	$a2, $a0, .LBB1_52
 .LBB1_51:                               #   in Loop: Header=BB1_44 Depth=1
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	st.d	$a2, $a3, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $a2, 0
-	ld.d	$a1, $s8, 0
+	ld.d	$a1, $s7, 0
 	ld.d	$a0, $a3, 0
 	ld.d	$a2, $a1, 0
 	st.d	$a0, $a2, 8
@@ -562,13 +561,13 @@ LanguageDefine:                         # @LanguageDefine
 	slli.d	$a2, $a1, 3
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a2, $a3, $a2
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a1, $a4, 0
 	st.d	$a2, $a0, 0
 	ld.w	$a1, $a4, 0
-	ld.d	$a2, $s8, 0
-	ld.d	$a0, $s7, 0
+	ld.d	$a2, $s7, 0
+	ld.d	$a0, $s5, 0
 	slli.d	$a1, $a1, 3
 	stx.d	$a2, $a3, $a1
 	ld.d	$a1, $a0, 24
@@ -593,9 +592,8 @@ LanguageDefine:                         # @LanguageDefine
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	bstrpick.d	$a0, $a0, 31, 0
-	bnez	$a0, .LBB1_42
+	slli.d	$s8, $a0, 32
+	bnez	$s8, .LBB1_42
 # %bb.56:                               #   in Loop: Header=BB1_44 Depth=1
 	ori	$a0, $zero, 43
 	ori	$a1, $zero, 5
@@ -608,8 +606,8 @@ LanguageDefine:                         # @LanguageDefine
 .LBB1_57:                               #   in Loop: Header=BB1_44 Depth=1
 	move	$a1, $zero
 	ld.d	$a2, $a0, 8
-	st.d	$a1, $s7, 0
-	st.d	$a0, $s8, 0
+	st.d	$a1, $s5, 0
+	st.d	$a0, $s7, 0
 	bne	$a2, $a0, .LBB1_51
 	b	.LBB1_52
 .LBB1_58:                               # %._crit_edge119
@@ -700,9 +698,8 @@ ltab_insert:                            # @ltab_insert
 	jirl	$ra, $ra, 0
 .LBB2_3:
 	st.w	$s5, $s2, 0
-	ori	$s5, $zero, 1
 	st.w	$zero, $s2, 4
-	blt	$s4, $s5, .LBB2_5
+	blez	$s4, .LBB2_5
 # %bb.4:                                # %.lr.ph.i
 	addi.d	$a0, $s2, 8
 	move	$a1, $zero
@@ -712,7 +709,7 @@ ltab_insert:                            # @ltab_insert
 .LBB2_5:                                # %ltab_new.exit
 	ld.w	$a1, $s1, 0
 	st.d	$s2, $sp, 8
-	blt	$a1, $s5, .LBB2_11
+	blez	$a1, .LBB2_11
 # %bb.6:                                # %.lr.ph
 	move	$s2, $zero
 	ori	$s3, $zero, 16
@@ -945,16 +942,15 @@ ltab_insert:                            # @ltab_insert
 	.type	LanguageWordEndsSentence,@function
 LanguageWordEndsSentence:               # @LanguageWordEndsSentence
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 32
 	addi.d	$a0, $a0, -11
@@ -988,8 +984,6 @@ LanguageWordEndsSentence:               # @LanguageWordEndsSentence
 	beqz	$s1, .LBB3_12
 # %bb.4:
 	addi.d	$s1, $fp, 32
-	lu12i.w	$s6, -524288
-	lu32i.d	$s6, 0
 	b	.LBB3_6
 	.p2align	4, , 16
 .LBB3_5:                                #   in Loop: Header=BB3_6 Depth=1
@@ -1021,8 +1015,9 @@ LanguageWordEndsSentence:               # @LanguageWordEndsSentence
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	sub.d	$a1, $a0, $s3
-	andn	$a1, $s6, $a1
-	bnez	$a1, .LBB3_5
+	nor	$a1, $a1, $zero
+	slli.d	$a1, $a1, 32
+	bltz	$a1, .LBB3_5
 # %bb.10:                               #   in Loop: Header=BB3_6 Depth=1
 	nor	$a0, $a0, $zero
 	add.d	$a0, $s3, $a0
@@ -1065,16 +1060,15 @@ LanguageWordEndsSentence:               # @LanguageWordEndsSentence
 .LBB3_16:
 	move	$a0, $zero
 .LBB3_17:                               # %._crit_edge
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end3:
 	.size	LanguageWordEndsSentence, .Lfunc_end3-LanguageWordEndsSentence

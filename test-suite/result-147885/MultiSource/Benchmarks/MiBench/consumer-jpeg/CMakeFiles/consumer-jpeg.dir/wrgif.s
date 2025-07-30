@@ -311,13 +311,11 @@ finish_output_gif:                      # @finish_output_gif
 	ori	$a2, $zero, 255
 	bge	$a1, $a2, .LBB3_6
 # %bb.4:
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB3_6
+	bgtz	$a1, .LBB3_6
 	b	.LBB3_9
 .LBB3_5:                                # %._crit_edge.i
 	ld.w	$a1, $s0, 120
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_9
+	blez	$a1, .LBB3_9
 .LBB3_6:
 	ld.d	$a3, $s0, 24
 	addi.w	$a2, $a1, 1

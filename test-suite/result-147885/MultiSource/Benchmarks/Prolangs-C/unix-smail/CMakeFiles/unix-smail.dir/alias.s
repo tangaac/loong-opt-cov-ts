@@ -18,23 +18,22 @@ alias:                                  # @alias
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	addi.d	$sp, $sp, -832
-	move	$s8, $a0
+	move	$s7, $a0
 	ld.w	$fp, $a0, 0
-	ori	$a0, $zero, 1
 	st.d	$zero, $sp, 1712
-	blt	$fp, $a0, .LBB0_7
+	blez	$fp, .LBB0_7
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a1
-	move	$s6, $zero
+	move	$s8, $zero
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	st.d	$s6, $s1, 8
+	st.d	$s8, $s1, 8
 	st.d	$zero, $s1, 16
-	move	$s6, $s1
+	move	$s8, $s1
 .LBB0_3:                                # %add_horz.exit
                                         #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$fp, $fp, -1
@@ -64,15 +63,15 @@ alias:                                  # @alias
 	jirl	$ra, $ra, 0
 	b	.LBB0_3
 .LBB0_7:
-	move	$s6, $zero
+	move	$s8, $zero
 .LBB0_8:                                # %.preheader129
 	pcalau12i	$s5, %pc_hi20(nargc)
 	ld.w	$a1, $s5, %pc_lo12(nargc)
 	ori	$a0, $zero, 499
-	st.d	$s6, $sp, 1736
+	st.d	$s8, $sp, 1736
 	blt	$a0, $a1, .LBB0_83
 # %bb.9:                                # %.lr.ph157
-	beqz	$s6, .LBB0_83
+	beqz	$s8, .LBB0_83
 # %bb.10:                               # %.lr.ph208.preheader
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(nargv)
@@ -84,11 +83,11 @@ alias:                                  # @alias
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ori	$s1, $zero, 500
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB0_15
 .LBB0_11:                               # %._crit_edge.thread
                                         #   in Loop: Header=BB0_15 Depth=1
-	st.d	$s7, $sp, 1736
+	st.d	$s6, $sp, 1736
 .LBB0_12:                               #   in Loop: Header=BB0_15 Depth=1
 	ori	$s1, $zero, 500
 .LBB0_13:                               # %.backedgethread-pre-split
@@ -97,8 +96,8 @@ alias:                                  # @alias
 	bge	$a1, $s1, .LBB0_83
 .LBB0_14:                               # %thread-pre-split
                                         #   in Loop: Header=BB0_15 Depth=1
-	ld.d	$s6, $sp, 1736
-	beqz	$s6, .LBB0_83
+	ld.d	$s8, $sp, 1736
+	beqz	$s8, .LBB0_83
 .LBB0_15:                               # %.lr.ph208
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_20 Depth 2
@@ -108,14 +107,14 @@ alias:                                  # @alias
                                         #     Child Loop BB0_73 Depth 2
                                         #     Child Loop BB0_24 Depth 2
                                         #     Child Loop BB0_44 Depth 2
-	ld.d	$s7, $s6, 8
-	ld.d	$a0, $s6, 0
-	st.d	$s7, $sp, 1736
+	ld.d	$s6, $s8, 8
+	ld.d	$a0, $s8, 0
+	st.d	$s6, $sp, 1736
 	ori	$a2, $zero, 9
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(strncmpic)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s6, 0
+	ld.d	$a3, $s8, 0
 	beqz	$a0, .LBB0_22
 # %bb.16:                               #   in Loop: Header=BB0_15 Depth=1
 	ori	$a0, $zero, 2264
@@ -127,7 +126,7 @@ alias:                                  # @alias
 	beqz	$a0, .LBB0_71
 # %bb.17:                               #   in Loop: Header=BB0_15 Depth=1
 	ld.bu	$a1, $sp, 1752
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $s8, 0
 	addi.d	$a1, $a1, -92
 	sltui	$a1, $a1, 1
 	addi.d	$a2, $sp, 1752
@@ -193,16 +192,16 @@ alias:                                  # @alias
 	beqz	$s1, .LBB0_11
 # %bb.27:                               # %.lr.ph139.outer.preheader
                                         #   in Loop: Header=BB0_15 Depth=1
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB0_30
 	.p2align	4, , 16
 .LBB0_28:                               #   in Loop: Header=BB0_30 Depth=2
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $s3, 8
+	st.d	$s6, $s3, 8
 	st.d	$zero, $s3, 16
-	move	$s7, $s3
+	move	$s6, $s3
 .LBB0_29:                               # %add_horz.exit103
                                         #   in Loop: Header=BB0_30 Depth=2
 	ld.d	$s1, $s1, 8
@@ -251,13 +250,13 @@ alias:                                  # @alias
 .LBB0_35:                               # %add_horz.exit103.thread
                                         #   in Loop: Header=BB0_30 Depth=2
 	ld.d	$s1, $s1, 8
-	move	$s8, $zero
+	move	$s7, $zero
 	bnez	$s1, .LBB0_30
 # %bb.36:                               # %._crit_edge.thread178
                                         #   in Loop: Header=BB0_15 Depth=1
-	st.d	$s7, $sp, 1736
+	st.d	$s6, $sp, 1736
 	st.d	$zero, $fp, 8
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ori	$s1, $zero, 500
 	b	.LBB0_47
 .LBB0_37:                               #   in Loop: Header=BB0_15 Depth=1
@@ -326,10 +325,10 @@ alias:                                  # @alias
 	b	.LBB0_44
 .LBB0_46:                               # %._crit_edge
                                         #   in Loop: Header=BB0_15 Depth=1
-	st.d	$s7, $sp, 1736
-	andi	$a0, $s8, 1
+	st.d	$s6, $sp, 1736
+	andi	$a0, $s7, 1
 	st.d	$zero, $fp, 8
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ori	$s1, $zero, 500
 	bnez	$a0, .LBB0_13
 	.p2align	4, , 16
@@ -518,14 +517,13 @@ alias:                                  # @alias
 	.p2align	4, , 16
 .LBB0_71:                               # %add_horz.exit114.thread
                                         #   in Loop: Header=BB0_15 Depth=1
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $s8, 0
 	ld.bu	$a1, $a0, 0
 	ld.w	$a2, $s5, %pc_lo12(nargc)
 	addi.d	$a1, $a1, -92
 	sltui	$a1, $a1, 1
 	add.d	$s2, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_76
+	blez	$a2, .LBB0_76
 # %bb.72:                               # %.lr.ph148.preheader
                                         #   in Loop: Header=BB0_15 Depth=1
 	move	$s1, $zero
@@ -598,7 +596,7 @@ alias:                                  # @alias
 .LBB0_83:                               # %.critedge
 	pcalau12i	$a0, %pc_hi20(nargv)
 	addi.d	$a0, $a0, %pc_lo12(nargv)
-	st.w	$a1, $s8, 0
+	st.w	$a1, $s7, 0
 	addi.d	$sp, $sp, 832
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload

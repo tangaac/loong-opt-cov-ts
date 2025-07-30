@@ -229,8 +229,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_30
 # %bb.31:                               # %._crit_edge
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.32:                               # %.lr.ph.1
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 8
@@ -243,8 +242,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_33
 # %bb.34:                               # %._crit_edge.1
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.35:                               # %.lr.ph.2
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
@@ -257,8 +255,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_36
 # %bb.37:                               # %._crit_edge.2
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.38:                               # %.lr.ph.3
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, 24
@@ -271,8 +268,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a0, $a0, 4
 	blt	$a1, $a2, .LBB0_39
 # %bb.40:                               # %.split.us
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_64
+	blez	$a2, .LBB0_64
 # %bb.41:                               # %.lr.ph.151
 	ld.d	$a0, $s3, %pc_lo12(initialized)
 	ld.d	$a1, $a0, 8
@@ -286,8 +282,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_42
 # %bb.43:                               # %._crit_edge.155
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.44:                               # %.lr.ph.1.1
 	ld.d	$a1, $a0, 8
 	ld.d	$a1, $a1, 8
@@ -300,8 +295,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_45
 # %bb.46:                               # %._crit_edge.1.1
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.47:                               # %.lr.ph.2.1
 	ld.d	$a1, $a0, 8
 	ld.d	$a1, $a1, 16
@@ -314,8 +308,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_48
 # %bb.49:                               # %._crit_edge.2.1
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.50:                               # %.lr.ph.3.1
 	ld.d	$a0, $a0, 8
 	ld.d	$a0, $a0, 24
@@ -328,8 +321,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a0, $a0, 4
 	blt	$a1, $a2, .LBB0_51
 # %bb.52:                               # %.split.us.1
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_64
+	blez	$a2, .LBB0_64
 # %bb.53:                               # %.lr.ph.256
 	ld.d	$a0, $s3, %pc_lo12(initialized)
 	ld.d	$a1, $a0, 16
@@ -343,8 +335,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_54
 # %bb.55:                               # %._crit_edge.260
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.56:                               # %.lr.ph.1.2
 	ld.d	$a1, $a0, 16
 	ld.d	$a1, $a1, 8
@@ -357,8 +348,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_57
 # %bb.58:                               # %._crit_edge.1.2
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.59:                               # %.lr.ph.2.2
 	ld.d	$a1, $a0, 16
 	ld.d	$a1, $a1, 16
@@ -370,8 +360,7 @@ create_context_memory:                  # @create_context_memory
 	addi.d	$a1, $a1, 4
 	blt	$a2, $a3, .LBB0_60
 # %bb.61:                               # %._crit_edge.2.2
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB0_64
+	blez	$a3, .LBB0_64
 # %bb.62:                               # %.lr.ph.3.2
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 24
@@ -8311,8 +8300,7 @@ update_field_frame_contexts:            # @update_field_frame_contexts
 	addi.d	$a4, $a4, 4
 	blt	$a7, $t0, .LBB7_3
 # %bb.4:                                # %._crit_edge
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB7_25
+	blez	$t0, .LBB7_25
 # %bb.5:                                # %.lr.ph.1
 	ld.d	$a0, $a3, 8
 	ld.d	$a4, $a3, 0
@@ -8338,8 +8326,7 @@ update_field_frame_contexts:            # @update_field_frame_contexts
 	addi.d	$a4, $a4, 4
 	blt	$a7, $t0, .LBB7_6
 # %bb.7:                                # %._crit_edge.1
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB7_25
+	blez	$t0, .LBB7_25
 # %bb.8:                                # %.lr.ph.2
 	ld.d	$a0, $a3, 8
 	ld.d	$a4, $a3, 0
@@ -8365,8 +8352,7 @@ update_field_frame_contexts:            # @update_field_frame_contexts
 	addi.d	$a4, $a4, 4
 	blt	$a7, $t0, .LBB7_9
 # %bb.10:                               # %._crit_edge.2
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB7_25
+	blez	$t0, .LBB7_25
 # %bb.11:                               # %.lr.ph.3
 	ld.d	$a0, $a3, 8
 	ld.d	$a3, $a3, 0
@@ -8420,8 +8406,7 @@ update_field_frame_contexts:            # @update_field_frame_contexts
 	addi.d	$a4, $a4, 4
 	blt	$a7, $t1, .LBB7_15
 # %bb.16:                               # %._crit_edge35
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB7_25
+	blez	$t0, .LBB7_25
 # %bb.17:                               # %.lr.ph34.1
 	ld.d	$a0, $a3, 0
 	ld.d	$a4, $a3, 8
@@ -8448,8 +8433,7 @@ update_field_frame_contexts:            # @update_field_frame_contexts
 	addi.d	$a0, $a0, 8
 	blt	$a7, $t1, .LBB7_18
 # %bb.19:                               # %._crit_edge35.1
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB7_25
+	blez	$t0, .LBB7_25
 # %bb.20:                               # %.lr.ph34.2
 	ld.d	$a0, $a3, 0
 	ld.d	$a4, $a3, 8
@@ -8476,8 +8460,7 @@ update_field_frame_contexts:            # @update_field_frame_contexts
 	addi.d	$a0, $a0, 8
 	blt	$a7, $t1, .LBB7_21
 # %bb.22:                               # %._crit_edge35.2
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB7_25
+	blez	$t0, .LBB7_25
 # %bb.23:                               # %.lr.ph34.3
 	ld.d	$a0, $a3, 0
 	ld.d	$a3, $a3, 8

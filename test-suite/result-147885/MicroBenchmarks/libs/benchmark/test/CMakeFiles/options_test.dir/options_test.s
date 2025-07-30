@@ -91,8 +91,7 @@ _Z13BM_basic_slowRN9benchmark5StateE:   # @_Z13BM_basic_slowRN9benchmark5StateE
 # %bb.2:                                # %_ZNK9benchmark5State5rangeEm.exit
 	beqz	$s0, .LBB1_11
 # %bb.3:                                # %.lr.ph
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_10
+	blez	$s1, .LBB1_10
 # %bb.4:
 	lu12i.w	$a0, 244
 	ori	$a0, $a0, 576
@@ -283,8 +282,7 @@ _Z27BM_explicit_iteration_countRN9benchmark5StateE: # @_Z27BM_explicit_iteration
 	bne	$a0, $s0, .LBB3_12
 # %bb.3:
 	ld.bu	$a0, $fp, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB3_7
+	beqz	$a0, .LBB3_7
 # %bb.4:                                # %_ZNK9benchmark5State10iterationsEv.exit18
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $fp, 8

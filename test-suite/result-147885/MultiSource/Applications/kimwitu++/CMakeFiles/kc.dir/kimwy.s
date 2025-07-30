@@ -4328,14 +4328,13 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	.type	_ZL15yy_reduce_printi,@function
 _ZL15yy_reduce_printi:                  # @_ZL15yy_reduce_printi
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	slli.d	$s0, $a0, 1
 	pcalau12i	$a0, %got_pc_hi20(stderr)
@@ -4365,7 +4364,6 @@ _ZL15yy_reduce_printi:                  # @_ZL15yy_reduce_printi
 	addi.d	$s3, $a0, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.7)
-	addi.w	$s4, $zero, -1
 	.p2align	4, , 16
 .LBB5_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -4378,7 +4376,7 @@ _ZL15yy_reduce_printi:                  # @_ZL15yy_reduce_printi
 	ld.h	$a0, $s3, 0
 	bstrpick.d	$a1, $a0, 15, 0
 	addi.d	$s3, $s3, 2
-	blt	$s4, $a0, .LBB5_2
+	bgez	$a0, .LBB5_2
 .LBB5_3:                                # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(_ZL4yyr1)
 	addi.d	$a0, $a0, %pc_lo12(_ZL4yyr1)
@@ -4388,14 +4386,13 @@ _ZL15yy_reduce_printi:                  # @_ZL15yy_reduce_printi
 	ldx.d	$a2, $s2, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.256)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.256)
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(fprintf)
 	jr	$t8
 .Lfunc_end5:

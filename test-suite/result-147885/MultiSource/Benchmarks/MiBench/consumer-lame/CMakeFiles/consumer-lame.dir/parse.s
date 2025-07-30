@@ -1878,9 +1878,8 @@ lame_parse_args:                        # @lame_parse_args
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
 	st.w	$a0, $fp, 112
-	addi.w	$a1, $zero, -1
 	ori	$s3, $zero, 1
-	blt	$a1, $a0, .LBB3_119
+	bgez	$a0, .LBB3_119
 	b	.LBB3_187
 .LBB3_127:                              #   in Loop: Header=BB3_2 Depth=1
 	ori	$s3, $zero, 1
@@ -1927,9 +1926,8 @@ lame_parse_args:                        # @lame_parse_args
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
 	st.w	$a0, $fp, 116
-	addi.w	$a1, $zero, -1
 	ori	$s3, $zero, 1
-	blt	$a1, $a0, .LBB3_119
+	bgez	$a0, .LBB3_119
 	b	.LBB3_189
 .LBB3_132:                              #   in Loop: Header=BB3_2 Depth=1
 	ori	$s3, $zero, 1

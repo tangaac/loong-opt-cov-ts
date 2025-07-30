@@ -151,9 +151,8 @@ _ZN32btSphereSphereCollisionAlgorithmD2Ev: # @_ZN32btSphereSphereCollisionAlgori
 	ld.bu	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV32btSphereSphereCollisionAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV32btSphereSphereCollisionAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB2_3
+	beqz	$a0, .LBB2_3
 # %bb.1:
 	ld.d	$a1, $fp, 24
 	beqz	$a1, .LBB2_3
@@ -250,9 +249,8 @@ _ZN32btSphereSphereCollisionAlgorithmD0Ev: # @_ZN32btSphereSphereCollisionAlgori
 	ld.bu	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV32btSphereSphereCollisionAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV32btSphereSphereCollisionAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB3_3
+	beqz	$a0, .LBB3_3
 # %bb.1:
 	ld.d	$a1, $fp, 24
 	beqz	$a1, .LBB3_3
@@ -555,8 +553,7 @@ _ZN32btSphereSphereCollisionAlgorithm22getAllContactManifoldsER20btAlignedObject
 	move	$fp, $a0
 	move	$a0, $s1
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB6_15
+	blez	$a3, .LBB6_15
 .LBB6_6:                                # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -599,14 +596,12 @@ _ZN32btSphereSphereCollisionAlgorithm22getAllContactManifoldsER20btAlignedObject
 	bnez	$a5, .LBB6_12
 .LBB6_13:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a1, 24
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB6_17
+	bnez	$a4, .LBB6_17
 	b	.LBB6_18
 .LBB6_14:
 	move	$fp, $zero
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	bge	$a3, $a4, .LBB6_6
+	bgtz	$a3, .LBB6_6
 .LBB6_15:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a2, .LBB6_18
 # %bb.16:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i

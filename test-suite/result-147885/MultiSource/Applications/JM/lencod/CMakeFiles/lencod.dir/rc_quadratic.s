@@ -700,23 +700,22 @@ updateQPRC0:                            # @updateQPRC0
 	st.w	$a2, $a0, 1328
 .LBB4_37:
 	fld.d	$fs1, $a0, 1312
-	fst.d	$fs1, $a0, 1296
 	fld.d	$fs0, $a0, 1320
 	fld.d	$fa0, $a0, 104
 	fld.d	$fa1, $a0, 112
-	fld.d	$fa2, $a0, 120
+	fst.d	$fs1, $a0, 1296
 	fst.d	$fs0, $a0, 1304
 	fst.d	$fa0, $a0, 88
 	fst.d	$fa1, $a0, 96
-	fst.d	$fa2, $a0, 80
+	fld.d	$fa2, $a0, 120
 	ld.w	$fp, $a0, 1596
 	ld.w	$s0, $a0, 1328
 	ld.w	$a1, $a0, 1536
 	ld.w	$a2, $a0, 1348
+	fst.d	$fa2, $a0, 80
 	fmadd.d	$fs2, $fa0, $fa2, $fa1
-	addi.w	$a3, $zero, -1
 	fst.d	$fs2, $a0, 1400
-	bge	$a3, $a1, .LBB4_43
+	bltz	$a1, .LBB4_43
 # %bb.38:
 	fld.s	$fa0, $a0, 4
 	fld.s	$fa1, $a0, 0
@@ -888,9 +887,8 @@ updateQPRC0:                            # @updateQPRC0
 	add.d	$a3, $a4, $a3
 	sub.w	$a3, $a5, $a3
 	st.w	$a3, $a0, 1536
-	addi.w	$a4, $zero, -1
 	st.d	$zero, $a2, 24
-	bge	$a4, $a3, .LBB4_82
+	bltz	$a3, .LBB4_82
 # %bb.60:
 	move	$fp, $a1
 	move	$s1, $a0
@@ -1233,23 +1231,22 @@ updateQPRC1:                            # @updateQPRC1
 	st.w	$a1, $a0, 1328
 .LBB5_8:
 	fld.d	$fs1, $a0, 1312
-	fst.d	$fs1, $a0, 1296
 	fld.d	$fs0, $a0, 1320
 	fld.d	$fa0, $a0, 104
 	fld.d	$fa1, $a0, 112
-	fld.d	$fa2, $a0, 120
+	fst.d	$fs1, $a0, 1296
 	fst.d	$fs0, $a0, 1304
 	fst.d	$fa0, $a0, 88
 	fst.d	$fa1, $a0, 96
-	fst.d	$fa2, $a0, 80
+	fld.d	$fa2, $a0, 120
 	ld.w	$s0, $a0, 1596
 	ld.w	$s1, $a0, 1328
 	ld.w	$a1, $a0, 1536
 	ld.w	$a3, $a0, 1348
+	fst.d	$fa2, $a0, 80
 	fmadd.d	$fs2, $fa0, $fa2, $fa1
-	addi.w	$a4, $zero, -1
 	fst.d	$fs2, $a0, 1400
-	bge	$a4, $a1, .LBB5_42
+	bltz	$a1, .LBB5_42
 # %bb.9:
 	fld.s	$fa0, $a0, 4
 	fld.s	$fa1, $a0, 0
@@ -1376,9 +1373,8 @@ updateQPRC1:                            # @updateQPRC1
 	add.d	$a3, $a4, $a3
 	sub.w	$a3, $a5, $a3
 	st.w	$a3, $a0, 1536
-	addi.w	$a4, $zero, -1
 	st.d	$zero, $a2, 24
-	bge	$a4, $a3, .LBB5_43
+	bltz	$a3, .LBB5_43
 # %bb.28:
 	move	$fp, $a1
 	move	$s1, $a0
@@ -1432,8 +1428,8 @@ updateQPRC1:                            # @updateQPRC1
 .LBB5_36:
 	ld.w	$a4, $a2, 8
 	ld.w	$a6, $a2, 48
-	ori	$a7, $zero, 1
-	bne	$a4, $a7, .LBB5_44
+	ori	$a5, $zero, 1
+	bne	$a4, $a5, .LBB5_44
 # %bb.37:
 	ld.w	$a4, $a0, 1460
 	ori	$a5, $zero, 1464
@@ -1487,7 +1483,7 @@ updateQPRC1:                            # @updateQPRC1
 .LBB5_44:
 	ld.w	$a4, $a0, 1456
 	ori	$a5, $zero, 1468
-	blt	$a6, $a7, .LBB5_46
+	blez	$a6, .LBB5_46
 .LBB5_45:                               # %.sink.split.i.sink.split
 	ld.w	$a6, $a2, 44
 	add.d	$a6, $a6, $a4
@@ -1943,23 +1939,22 @@ updateQPRC2:                            # @updateQPRC2
 	st.w	$a2, $a0, 1328
 .LBB6_45:
 	fld.d	$fs1, $a0, 1312
-	fst.d	$fs1, $a0, 1296
 	fld.d	$fs0, $a0, 1320
 	fld.d	$fa0, $a0, 104
 	fld.d	$fa1, $a0, 112
-	fld.d	$fa2, $a0, 120
+	fst.d	$fs1, $a0, 1296
 	fst.d	$fs0, $a0, 1304
 	fst.d	$fa0, $a0, 88
 	fst.d	$fa1, $a0, 96
-	fst.d	$fa2, $a0, 80
+	fld.d	$fa2, $a0, 120
 	ld.w	$fp, $a0, 1596
 	ld.w	$s0, $a0, 1328
 	ld.w	$a1, $a0, 1536
 	ld.w	$a2, $a0, 1348
+	fst.d	$fa2, $a0, 80
 	fmadd.d	$fs2, $fa0, $fa2, $fa1
-	addi.w	$a3, $zero, -1
 	fst.d	$fs2, $a0, 1400
-	bge	$a3, $a1, .LBB6_53
+	bltz	$a1, .LBB6_53
 # %bb.46:
 	fld.s	$fa0, $a0, 4
 	fld.s	$fa1, $a0, 0
@@ -2044,9 +2039,8 @@ updateQPRC2:                            # @updateQPRC2
 	add.d	$a2, $a4, $a2
 	sub.w	$a2, $a5, $a2
 	st.w	$a2, $a0, 1536
-	addi.w	$a4, $zero, -1
 	st.d	$zero, $a3, 24
-	bge	$a4, $a2, .LBB6_70
+	bltz	$a2, .LBB6_70
 # %bb.55:
 	move	$fp, $a1
 	move	$s1, $a0
@@ -2103,8 +2097,8 @@ updateQPRC2:                            # @updateQPRC2
 .LBB6_64:
 	ld.w	$a2, $a3, 8
 	ld.w	$a6, $a3, 48
-	ori	$a7, $zero, 1
-	bne	$a2, $a7, .LBB6_71
+	ori	$a5, $zero, 1
+	bne	$a2, $a5, .LBB6_71
 # %bb.65:
 	ld.w	$a2, $a0, 1460
 	ori	$a5, $zero, 1464
@@ -2142,7 +2136,7 @@ updateQPRC2:                            # @updateQPRC2
 .LBB6_71:
 	ld.w	$a2, $a0, 1456
 	ori	$a5, $zero, 1468
-	blt	$a6, $a7, .LBB6_73
+	blez	$a6, .LBB6_73
 .LBB6_72:                               # %.sink.split.i169.sink.split
 	ld.w	$a6, $a3, 44
 	add.d	$a6, $a6, $a2
@@ -2339,9 +2333,8 @@ updateQPRC3:                            # @updateQPRC3
 	ld.w	$a6, $a0, 1536
 	ld.w	$s0, $a0, 1328
 	fmadd.d	$fs2, $fa0, $fa2, $fa1
-	addi.w	$a7, $zero, -1
 	fst.d	$fs2, $a0, 1400
-	bge	$a7, $a6, .LBB7_27
+	bltz	$a6, .LBB7_27
 # %bb.9:
 	beqz	$a1, .LBB7_33
 # %bb.10:
@@ -2549,9 +2542,8 @@ updateQPRC3:                            # @updateQPRC3
 	add.d	$a2, $a4, $a2
 	sub.w	$a2, $a5, $a2
 	st.w	$a2, $a0, 1536
-	addi.w	$a4, $zero, -1
 	st.d	$zero, $a3, 24
-	bge	$a4, $a2, .LBB7_55
+	bltz	$a2, .LBB7_55
 # %bb.43:
 	move	$fp, $a1
 	move	$s1, $a0
@@ -2595,8 +2587,8 @@ updateQPRC3:                            # @updateQPRC3
 .LBB7_49:
 	ld.w	$a2, $a3, 8
 	ld.w	$a6, $a3, 48
-	ori	$a7, $zero, 1
-	bne	$a2, $a7, .LBB7_56
+	ori	$a5, $zero, 1
+	bne	$a2, $a5, .LBB7_56
 # %bb.50:
 	ld.w	$a2, $a0, 1460
 	ori	$a5, $zero, 1464
@@ -2634,7 +2626,7 @@ updateQPRC3:                            # @updateQPRC3
 .LBB7_56:
 	ld.w	$a2, $a0, 1456
 	ori	$a5, $zero, 1468
-	blt	$a6, $a7, .LBB7_58
+	blez	$a6, .LBB7_58
 .LBB7_57:                               # %.sink.split.i.sink.split
 	ld.w	$a6, $a3, 44
 	add.d	$a6, $a6, $a2
@@ -2857,30 +2849,30 @@ rc_init_GOP:                            # @rc_init_GOP
 	ori	$a5, $zero, 3
 	bne	$a3, $a5, .LBB8_6
 # %bb.1:
-	ldptr.w	$a5, $a4, 2096
-	addi.w	$a7, $a5, 1
+	ldptr.w	$a3, $a4, 2096
+	addi.w	$a7, $a3, 1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0
 	st.w	$zero, $sp, 16
-	beqz	$a5, .LBB8_7
+	beqz	$a3, .LBB8_7
 # %bb.2:
-	ldptr.w	$a3, $a4, 2968
+	ldptr.w	$a5, $a4, 2968
 	ori	$a6, $zero, 1
-	beq	$a3, $a6, .LBB8_11
+	beq	$a5, $a6, .LBB8_11
 # %bb.3:
 	ori	$a6, $zero, 2
-	beq	$a3, $a6, .LBB8_8
+	beq	$a5, $a6, .LBB8_8
 # %bb.4:
 	ori	$a6, $zero, 3
-	beq	$a3, $a6, .LBB8_49
+	beq	$a5, $a6, .LBB8_48
 # %bb.5:
-	st.w	$a5, $sp, 0
+	st.w	$a3, $sp, 0
 	ori	$a5, $zero, 1
-	b	.LBB8_13
+	b	.LBB8_12
 .LBB8_6:                                # %._crit_edge152
 	pcalau12i	$a3, %pc_hi20(generic_RC)
 	ld.d	$a3, $a3, %pc_lo12(generic_RC)
-	b	.LBB8_34
+	b	.LBB8_33
 .LBB8_7:                                # %.preheader
 	move	$a5, $zero
 	lu12i.w	$a3, 1
@@ -2889,13 +2881,13 @@ rc_init_GOP:                            # @rc_init_GOP
 	ori	$a3, $a3, 1072
 	vstx	$vr0, $a4, $a3
 	stptr.d	$zero, $a4, 5200
-	b	.LBB8_13
+	b	.LBB8_12
 .LBB8_8:                                # %.preheader129.preheader
-	ori	$a3, $zero, 1
-	blt	$a5, $a3, .LBB8_12
-# %bb.9:                                # %.lr.ph.preheader
 	move	$a5, $zero
-	addi.d	$a6, $sp, 0
+	blez	$a3, .LBB8_12
+# %bb.9:                                # %.lr.ph.preheader
+	addi.d	$a3, $sp, 0
+	ori	$a6, $zero, 1
 	ori	$t0, $zero, 3
 	move	$t1, $a7
 	.p2align	4, , 16
@@ -2903,76 +2895,73 @@ rc_init_GOP:                            # @rc_init_GOP
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$t2, $t1, 0
 	bstrpick.d	$t1, $t1, 31, 1
-	sll.w	$t3, $a3, $a5
-	st.w	$t3, $a6, 0
+	sll.w	$t3, $a6, $a5
+	st.w	$t3, $a3, 0
 	addi.w	$a5, $a5, 1
-	addi.d	$a6, $a6, 4
+	addi.d	$a3, $a3, 4
 	bltu	$t0, $t2, .LBB8_10
-	b	.LBB8_13
+	b	.LBB8_12
 .LBB8_11:
-	srai.d	$a3, $a5, 1
-	st.w	$a3, $sp, 0
-	sub.d	$a3, $a5, $a3
+	srai.d	$a5, $a3, 1
+	st.w	$a5, $sp, 0
+	sub.d	$a3, $a3, $a5
 	slli.d	$a5, $a3, 32
 	srai.d	$a5, $a5, 63
 	andn	$a3, $a3, $a5
 	st.w	$a3, $sp, 4
 	ori	$a5, $zero, 2
-	b	.LBB8_13
-.LBB8_12:
-	move	$a5, $zero
-.LBB8_13:                               # %.loopexit
+.LBB8_12:                               # %.loopexit
 	pcalau12i	$a3, %pc_hi20(generic_RC)
 	ld.d	$a3, $a3, %pc_lo12(generic_RC)
 	ld.w	$a6, $a4, 1560
 	st.w	$a5, $a3, 112
 	ori	$t0, $zero, 1
 	sltu	$t1, $t0, $a6
-	masknez	$t2, $t0, $t1
+	masknez	$t0, $t0, $t1
 	maskeqz	$t1, $a6, $t1
-	or	$t1, $t1, $t2
-	mul.d	$a7, $t1, $a7
+	or	$t0, $t1, $t0
+	mul.d	$a7, $t0, $a7
 	movgr2fr.w	$fa0, $a7
 	ldptr.w	$a7, $a4, 5120
-	ori	$t1, $zero, 4080
-	fldx.d	$fa1, $a4, $t1
+	ori	$t0, $zero, 4080
+	fldx.d	$fa1, $a4, $t0
 	ffint.d.w	$fa0, $fa0
 	movgr2fr.w	$fa2, $a7
 	ffint.d.w	$fa2, $fa2
 	fdiv.d	$fa1, $fa2, $fa1
 	fmul.d	$fa0, $fa1, $fa0
-	blt	$a5, $t0, .LBB8_22
-# %bb.14:                               # %.lr.ph135
+	blez	$a5, .LBB8_21
+# %bb.13:                               # %.lr.ph135
 	lu12i.w	$a6, 1
 	ori	$a6, $a6, 1072
 	add.d	$a6, $a4, $a6
 	addi.d	$a7, $a3, 116
 	movgr2fr.w	$fa1, $zero
-	addi.d	$t1, $sp, 0
-	move	$t2, $a5
+	addi.d	$t0, $sp, 0
+	move	$t1, $a5
 	.p2align	4, , 16
-.LBB8_15:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t3, $t1, 0
+.LBB8_14:                               # =>This Inner Loop Header: Depth=1
+	ld.w	$t2, $t0, 0
 	fld.d	$fa2, $a6, 0
-	movgr2fr.w	$fa3, $t3
+	movgr2fr.w	$fa3, $t2
 	ffint.d.w	$fa3, $fa3
 	fmul.d	$fa2, $fa2, $fa3
 	fcvt.s.d	$fa2, $fa2
 	fadd.s	$fa1, $fa1, $fa2
-	mul.d	$t3, $t3, $a1
-	st.w	$t3, $a7, 0
+	mul.d	$t2, $t2, $a1
+	st.w	$t2, $a7, 0
 	addi.d	$a7, $a7, 4
 	addi.d	$a6, $a6, 8
-	addi.d	$t2, $t2, -1
-	addi.d	$t1, $t1, 4
-	bnez	$t2, .LBB8_15
-# %bb.16:                               # %._crit_edge.loopexit
+	addi.d	$t1, $t1, -1
+	addi.d	$t0, $t0, 4
+	bnez	$t1, .LBB8_14
+# %bb.15:                               # %._crit_edge.loopexit
 	ld.w	$a6, $a4, 1560
 	vldi	$vr2, -1168
 	fadd.s	$fa1, $fa1, $fa2
 	fcvt.s.d	$fa0, $fa0
-	blt	$a6, $t0, .LBB8_18
-.LBB8_17:
+	blez	$a6, .LBB8_17
+.LBB8_16:
 	bstrpick.d	$a7, $a6, 31, 0
 	lu12i.w	$t0, 1
 	ori	$t0, $t0, 1064
@@ -2984,7 +2973,7 @@ rc_init_GOP:                            # @rc_init_GOP
 	vldi	$vr3, -1040
 	fadd.s	$fa2, $fa2, $fa3
 	fadd.s	$fa1, $fa1, $fa2
-.LBB8_18:
+.LBB8_17:
 	fdiv.s	$fa0, $fa0, $fa1
 	vldi	$vr1, -1184
 	fadd.s	$fa0, $fa0, $fa1
@@ -2994,8 +2983,8 @@ rc_init_GOP:                            # @rc_init_GOP
 	movfr2gr.s	$a7, $fa0
 	st.w	$a7, $a3, 84
 	movgr2fr.w	$fa0, $a7
-	beqz	$a6, .LBB8_23
-# %bb.19:
+	beqz	$a6, .LBB8_22
+# %bb.18:
 	lu12i.w	$a7, 1
 	ori	$a7, $a7, 1064
 	fldx.d	$fa1, $a4, $a7
@@ -3004,34 +2993,32 @@ rc_init_GOP:                            # @rc_init_GOP
 	fmadd.d	$fa1, $fa1, $fa2, $fa3
 	ftintrz.w.d	$fa1, $fa1
 	movfr2gr.s	$a7, $fa1
-	ori	$t0, $zero, 1
 	st.w	$a7, $a3, 88
-	bge	$a5, $t0, .LBB8_24
-.LBB8_20:                               # %._crit_edge140
+	bgtz	$a5, .LBB8_23
+.LBB8_19:                               # %._crit_edge140
 	ld.w	$a5, $a4, 8
-	beqz	$a6, .LBB8_32
-.LBB8_21:
+	beqz	$a6, .LBB8_31
+.LBB8_20:
 	addi.w	$a7, $a5, -1
 	div.w	$a6, $a7, $a6
-	b	.LBB8_33
-.LBB8_22:
+	b	.LBB8_32
+.LBB8_21:
 	vldi	$vr1, -1168
 	fcvt.s.d	$fa0, $fa0
-	bge	$a6, $t0, .LBB8_17
-	b	.LBB8_18
-.LBB8_23:
+	bgtz	$a6, .LBB8_16
+	b	.LBB8_17
+.LBB8_22:
 	move	$a7, $zero
-	ori	$t0, $zero, 1
 	st.w	$a7, $a3, 88
-	blt	$a5, $t0, .LBB8_20
-.LBB8_24:                               # %.lr.ph139
+	blez	$a5, .LBB8_19
+.LBB8_23:                               # %.lr.ph139
 	ori	$a6, $zero, 4
 	ffint.d.w	$fa0, $fa0
-	bgeu	$a5, $a6, .LBB8_26
-# %bb.25:
+	bgeu	$a5, $a6, .LBB8_25
+# %bb.24:
 	move	$a6, $zero
-	b	.LBB8_29
-.LBB8_26:                               # %vector.ph
+	b	.LBB8_28
+.LBB8_25:                               # %vector.ph
 	bstrpick.d	$a6, $a5, 30, 2
 	slli.d	$a6, $a6, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -3043,7 +3030,7 @@ rc_init_GOP:                            # @rc_init_GOP
 	vreplgr2vr.d	$vr2, $t1
 	move	$t1, $a6
 	.p2align	4, , 16
-.LBB8_27:                               # %vector.body
+.LBB8_26:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr3, $t0, -16
 	vld	$vr4, $t0, 0
@@ -3080,10 +3067,10 @@ rc_init_GOP:                            # @rc_init_GOP
 	addi.d	$t1, $t1, -4
 	addi.d	$a7, $a7, 16
 	addi.d	$t0, $t0, 32
-	bnez	$t1, .LBB8_27
-# %bb.28:                               # %middle.block
-	beq	$a6, $a5, .LBB8_31
-.LBB8_29:                               # %scalar.ph.preheader
+	bnez	$t1, .LBB8_26
+# %bb.27:                               # %middle.block
+	beq	$a6, $a5, .LBB8_30
+.LBB8_28:                               # %scalar.ph.preheader
 	alsl.d	$a7, $a6, $a3, 2
 	addi.d	$a7, $a7, 92
 	alsl.d	$t0, $a6, $a4, 3
@@ -3093,7 +3080,7 @@ rc_init_GOP:                            # @rc_init_GOP
 	sub.d	$a5, $a5, $a6
 	vldi	$vr1, -928
 	.p2align	4, , 16
-.LBB8_30:                               # %scalar.ph
+.LBB8_29:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa2, $t0, 0
 	fmadd.d	$fa2, $fa2, $fa0, $fa1
@@ -3105,19 +3092,19 @@ rc_init_GOP:                            # @rc_init_GOP
 	addi.d	$a7, $a7, 4
 	addi.d	$a5, $a5, -1
 	addi.d	$t0, $t0, 8
-	bnez	$a5, .LBB8_30
-.LBB8_31:                               # %._crit_edge140.loopexit
+	bnez	$a5, .LBB8_29
+.LBB8_30:                               # %._crit_edge140.loopexit
 	ld.w	$a6, $a4, 1560
 	ld.w	$a5, $a4, 8
-	bnez	$a6, .LBB8_21
-.LBB8_32:
+	bnez	$a6, .LBB8_20
+.LBB8_31:
 	move	$a6, $zero
-.LBB8_33:                               # %._crit_edge140._crit_edge
+.LBB8_32:                               # %._crit_edge140._crit_edge
 	st.w	$a6, $a3, 140
 	nor	$a6, $a6, $zero
 	add.d	$a5, $a5, $a6
 	st.w	$a5, $a3, 136
-.LBB8_34:
+.LBB8_33:
 	ld.w	$a6, $a3, 80
 	fld.s	$fa0, $a0, 0
 	fld.s	$fa1, $a0, 4
@@ -3155,51 +3142,51 @@ rc_init_GOP:                            # @rc_init_GOP
 	st.w	$a1, $a0, 1544
 	st.w	$a2, $a0, 1548
 	st.w	$zero, $a0, 1504
-	beqz	$a6, .LBB8_39
-.LBB8_35:
+	beqz	$a6, .LBB8_38
+.LBB8_34:
 	ld.w	$a2, $a3, 40
 	ori	$a7, $zero, 1
 	st.w	$a7, $a3, 12
 	st.w	$a1, $a0, 1592
 	addi.d	$a1, $a2, 1
 	st.w	$a1, $a3, 40
-	beqz	$a2, .LBB8_44
-# %bb.36:
+	beqz	$a2, .LBB8_43
+# %bb.35:
 	ori	$a1, $zero, 2
-	beq	$a6, $a1, .LBB8_42
-# %bb.37:                               # %.thread127
+	beq	$a6, $a1, .LBB8_41
+# %bb.36:                               # %.thread127
 	ldptr.w	$a1, $a4, 4708
-	bnez	$a1, .LBB8_42
-# %bb.38:                               # %.thread127._crit_edge
+	bnez	$a1, .LBB8_41
+# %bb.37:                               # %.thread127._crit_edge
 	ld.w	$a2, $a3, 44
 	ld.w	$a1, $a0, 1448
-	b	.LBB8_47
-.LBB8_39:
+	b	.LBB8_46
+.LBB8_38:
 	ldptr.w	$a2, $a4, 4708
-	beqz	$a2, .LBB8_35
-# %bb.40:
+	beqz	$a2, .LBB8_34
+# %bb.39:
 	pcalau12i	$a2, %got_pc_hi20(img)
 	ld.d	$a2, $a2, %got_pc_lo12(img)
 	ld.d	$a2, $a2, 0
 	ldptr.w	$a7, $a4, 5128
 	ldptr.w	$a2, $a2, 15352
-	bne	$a7, $a2, .LBB8_35
-# %bb.41:                               # %.thread
+	bne	$a7, $a2, .LBB8_34
+# %bb.40:                               # %.thread
 	ld.w	$a2, $a3, 40
 	st.w	$zero, $a3, 12
 	st.w	$a1, $a0, 1592
 	addi.d	$a1, $a2, 1
 	st.w	$a1, $a3, 40
-	beqz	$a2, .LBB8_44
-.LBB8_42:                               # %.thread127.thread
+	beqz	$a2, .LBB8_43
+.LBB8_41:                               # %.thread127.thread
 	ld.w	$a1, $a3, 8
 	ld.w	$a2, $a3, 44
 	ori	$a4, $zero, 1
-	bne	$a1, $a4, .LBB8_45
-# %bb.43:
+	bne	$a1, $a4, .LBB8_44
+# %bb.42:
 	ld.w	$a1, $a0, 1460
-	b	.LBB8_46
-.LBB8_44:
+	b	.LBB8_45
+.LBB8_43:
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1028
 	ldx.w	$a1, $a4, $a1
@@ -3212,14 +3199,14 @@ rc_init_GOP:                            # @rc_init_GOP
 	st.w	$a1, $a0, 1456
 	st.w	$a1, $a0, 1460
 	st.w	$a1, $a0, 76
-	b	.LBB8_48
-.LBB8_45:
+	b	.LBB8_47
+.LBB8_44:
 	ld.w	$a1, $a0, 1456
-.LBB8_46:
+.LBB8_45:
 	add.w	$a2, $a2, $a1
 	st.w	$a2, $a3, 44
 	st.w	$a1, $a0, 1448
-.LBB8_47:
+.LBB8_46:
 	ld.w	$a4, $a3, 48
 	addi.w	$a5, $a5, 0
 	movgr2fr.w	$fa0, $a2
@@ -3277,13 +3264,13 @@ rc_init_GOP:                            # @rc_init_GOP
 	st.w	$a2, $a0, 1352
 	addi.d	$a1, $a1, -1
 	st.w	$a1, $a0, 1356
-.LBB8_48:
+.LBB8_47:
 	st.d	$zero, $a3, 44
 	st.w	$zero, $a0, 1360
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB8_49:
+.LBB8_48:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
@@ -3316,16 +3303,15 @@ rc_init_GOP:                            # @rc_init_GOP
 	.type	rc_init_pict,@function
 rc_init_pict:                           # @rc_init_pict
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 0                    # 8-byte Folded Spill
 	pcalau12i	$a4, %got_pc_hi20(input)
 	ld.d	$s1, $a4, %got_pc_lo12(input)
 	ld.d	$a4, $s1, 0
@@ -3349,7 +3335,7 @@ rc_init_pict:                           # @rc_init_pict
 	ld.d	$a7, $fp, %pc_lo12(generic_RC)
 	ld.w	$a7, $a7, 36
 	ori	$t0, $zero, 59
-	beq	$a7, $t0, .LBB9_25
+	beq	$a7, $t0, .LBB9_23
 # %bb.4:
 	ori	$t0, $zero, 58
 	bne	$a7, $t0, .LBB9_6
@@ -3360,9 +3346,9 @@ rc_init_pict:                           # @rc_init_pict
 	fst.s	$fa1, $a0, 0
 .LBB9_6:
 	or	$a7, $a2, $a1
-	beqz	$a7, .LBB9_26
+	beqz	$a7, .LBB9_24
 .LBB9_7:
-	beqz	$a3, .LBB9_26
+	beqz	$a3, .LBB9_24
 # %bb.8:
 	ld.w	$a3, $a5, 20
 	beqz	$a3, .LBB9_10
@@ -3378,7 +3364,7 @@ rc_init_pict:                           # @rc_init_pict
 	bne	$t0, $a7, .LBB9_17
 .LBB9_11:
 	ori	$a5, $zero, 1
-	bne	$a3, $a5, .LBB9_51
+	bne	$a3, $a5, .LBB9_52
 # %bb.12:
 	fld.s	$fa1, $a0, 8
 	fld.s	$fa2, $a0, 0
@@ -3409,16 +3395,16 @@ rc_init_pict:                           # @rc_init_pict
 	ld.w	$a6, $a3, 36
 	ld.w	$a3, $a3, 32
 	ori	$a5, $zero, 1
-	bne	$a6, $a5, .LBB9_27
+	bne	$a6, $a5, .LBB9_30
 # %bb.15:
-	bne	$a3, $a5, .LBB9_27
+	bne	$a3, $a5, .LBB9_30
 # %bb.16:
 	vld	$vr1, $a0, 1568
 	vst	$vr1, $a0, 48
 	ld.d	$a5, $s0, 0
 	ld.w	$a3, $a5, 20
-	bnez	$a3, .LBB9_52
-	b	.LBB9_53
+	bnez	$a3, .LBB9_53
+	b	.LBB9_54
 .LBB9_17:
 	fld.s	$fa1, $a0, 8
 	fld.s	$fa2, $a0, 0
@@ -3449,45 +3435,62 @@ rc_init_pict:                           # @rc_init_pict
 	ldptr.w	$a7, $a5, 15404
 	ldptr.w	$a5, $a5, 15352
 	ld.d	$a3, $fp, %pc_lo12(generic_RC)
-	beq	$a7, $a5, .LBB9_33
+	bne	$a7, $a5, .LBB9_25
 # %bb.20:
-	ld.w	$a5, $a3, 36
-	ori	$s2, $zero, 1
-	blt	$a5, $s2, .LBB9_32
-# %bb.21:
-	bnez	$a6, .LBB9_23
-# %bb.22:
-	lu12i.w	$a5, 1
-	ori	$a5, $a5, 608
-	ldx.w	$a4, $a4, $a5
-	ori	$a5, $zero, 2
-	bne	$a4, $a5, .LBB9_30
+	ld.w	$a4, $a3, 48
+	ori	$a5, $zero, 1
+	bne	$a4, $a5, .LBB9_37
+.LBB9_21:
+	ld.d	$a4, $a3, 72
+	fld.d	$fa1, $a0, 32
+	ld.w	$a5, $a0, 1592
+	movgr2fr.d	$fa2, $a4
+	ffint.d.l	$fa2, $fa2
+	fsub.d	$fa1, $fa2, $fa1
+	addi.d	$a4, $a5, -1
+	movgr2fr.w	$fa3, $a4
+.LBB9_22:
+	ffint.d.w	$fa3, $fa3
+	fdiv.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $a0, 1584
+	b	.LBB9_42
 .LBB9_23:
-	ld.w	$a3, $a3, 4
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB9_30
-# %bb.24:
-	fmov.s	$fs0, $fa0
-	move	$s3, $a1
-	move	$s4, $a2
-	ori	$a1, $zero, 1488
-	ori	$a2, $zero, 1496
-	b	.LBB9_31
-.LBB9_25:
 	fld.s	$fa1, $a0, 0
 	fst.s	$fa1, $a0, 8
 	or	$a7, $a2, $a1
 	bnez	$a7, .LBB9_7
-.LBB9_26:
-	bnez	$a7, .LBB9_101
-	b	.LBB9_103
-.LBB9_27:                               # %._crit_edge
+.LBB9_24:
+	bnez	$a7, .LBB9_102
+	b	.LBB9_104
+.LBB9_25:
+	ld.w	$a5, $a3, 36
+	blez	$a5, .LBB9_35
+# %bb.26:
+	bnez	$a6, .LBB9_28
+# %bb.27:
+	lu12i.w	$a5, 1
+	ori	$a5, $a5, 608
+	ldx.w	$a4, $a4, $a5
 	ori	$a5, $zero, 2
-	blt	$a3, $a5, .LBB9_51
-# %bb.28:
-	ori	$a5, $zero, 7
-	bltu	$a5, $a3, .LBB9_69
+	bne	$a4, $a5, .LBB9_33
+.LBB9_28:
+	ld.w	$a3, $a3, 4
+	ori	$a4, $zero, 1
+	bne	$a3, $a4, .LBB9_33
 # %bb.29:
+	fmov.s	$fs0, $fa0
+	move	$s2, $a1
+	move	$s3, $a2
+	ori	$a1, $zero, 1488
+	ori	$a2, $zero, 1496
+	b	.LBB9_34
+.LBB9_30:                               # %._crit_edge
+	ori	$a5, $zero, 2
+	blt	$a3, $a5, .LBB9_52
+# %bb.31:
+	ori	$a5, $zero, 7
+	bltu	$a5, $a3, .LBB9_70
+# %bb.32:
 	fld.d	$fa1, $a0, 56
 	fld.d	$fa2, $a0, 1576
 	bstrpick.d	$a5, $a3, 31, 0
@@ -3499,79 +3502,64 @@ rc_init_pict:                           # @rc_init_pict
 	movgr2fr.d	$fa2, $a5
 	ffint.d.l	$fa2, $fa2
 	fdiv.d	$fa1, $fa1, $fa2
-	b	.LBB9_70
-.LBB9_30:
+	b	.LBB9_71
+.LBB9_33:
 	fmov.s	$fs0, $fa0
-	move	$s3, $a1
-	move	$s4, $a2
+	move	$s2, $a1
+	move	$s3, $a2
 	ori	$a1, $zero, 1480
 	ori	$a2, $zero, 1472
-.LBB9_31:                               # %.sink.split
+.LBB9_34:                               # %.sink.split
 	ldx.d	$a3, $a0, $a2
 	ld.w	$a2, $a0, 1388
 	ldx.d	$a1, $a0, $a1
 	slli.d	$a2, $a2, 3
-	move	$s5, $a0
+	move	$s4, $a0
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	move	$a0, $s5
-	move	$a2, $s4
-	move	$a1, $s3
+	move	$a0, $s4
+	move	$a2, $s3
+	move	$a1, $s2
 	fmov.s	$fa0, $fs0
-.LBB9_32:
+.LBB9_35:
 	ld.d	$a3, $fp, %pc_lo12(generic_RC)
 	ld.w	$a4, $a3, 40
-	bne	$a4, $s2, .LBB9_37
-.LBB9_33:
-	ld.w	$a4, $a3, 48
 	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB9_36
-# %bb.34:
-	ld.d	$a4, $a3, 72
-	fld.d	$fa1, $a0, 32
-	ld.w	$a5, $a0, 1592
-	movgr2fr.d	$fa2, $a4
-	ffint.d.l	$fa2, $fa2
-	fsub.d	$fa1, $fa2, $fa1
-	addi.d	$a4, $a5, -1
-	movgr2fr.w	$fa3, $a4
-.LBB9_35:
-	ffint.d.w	$fa3, $fa3
-	fdiv.d	$fa1, $fa1, $fa3
-	fst.d	$fa1, $a0, 1584
-	b	.LBB9_41
-.LBB9_36:
-	ori	$a5, $zero, 2
-	bge	$a4, $a5, .LBB9_40
-	b	.LBB9_42
+	bne	$a4, $a5, .LBB9_38
+# %bb.36:
+	ld.w	$a4, $a3, 48
+	beq	$a4, $a5, .LBB9_21
 .LBB9_37:
 	ori	$a5, $zero, 2
-	blt	$a4, $a5, .LBB9_42
-# %bb.38:
-	ld.w	$a4, $a3, 48
-	beqz	$a4, .LBB9_73
+	bge	$a4, $a5, .LBB9_41
+	b	.LBB9_43
+.LBB9_38:
+	ori	$a5, $zero, 2
+	blt	$a4, $a5, .LBB9_43
 # %bb.39:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB9_42
-.LBB9_40:
+	ld.w	$a4, $a3, 48
+	beqz	$a4, .LBB9_74
+# %bb.40:
+	blez	$a4, .LBB9_43
+.LBB9_41:
 	fld.d	$fa1, $a0, 1584
 	fld.d	$fa2, $a0, 40
-.LBB9_41:
+.LBB9_42:
 	fsub.d	$fa1, $fa2, $fa1
 	fst.d	$fa1, $a0, 40
-.LBB9_42:
+.LBB9_43:
 	ld.w	$a3, $a3, 36
 	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB9_44
-# %bb.43:                               # %.thread
+	bne	$a3, $a4, .LBB9_45
+# %bb.44:                               # %.thread
 	fld.d	$fa1, $a0, 1568
-	b	.LBB9_48
-.LBB9_44:
+	b	.LBB9_49
+.LBB9_45:
 	addi.w	$a4, $a3, -2
 	ori	$a5, $zero, 5
-	bltu	$a5, $a4, .LBB9_46
-# %bb.45:
+	bltu	$a5, $a4, .LBB9_47
+# %bb.46:
 	fld.d	$fa1, $a0, 48
 	fld.d	$fa2, $a0, 1568
 	bstrpick.d	$a4, $a3, 31, 0
@@ -3583,25 +3571,24 @@ rc_init_pict:                           # @rc_init_pict
 	movgr2fr.d	$fa2, $a4
 	ffint.d.l	$fa2, $fa2
 	fdiv.d	$fa1, $fa1, $fa2
-	b	.LBB9_48
-.LBB9_46:
+	b	.LBB9_49
+.LBB9_47:
 	ori	$a4, $zero, 2
-	blt	$a3, $a4, .LBB9_49
-# %bb.47:
+	blt	$a3, $a4, .LBB9_50
+# %bb.48:
 	fld.d	$fa1, $a0, 1568
 	fld.d	$fa2, $a0, 48
 	vldi	$vr3, -996
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	vldi	$vr2, -960
 	fmul.d	$fa1, $fa1, $fa2
-.LBB9_48:
-	fst.d	$fa1, $a0, 48
 .LBB9_49:
+	fst.d	$fa1, $a0, 48
+.LBB9_50:
 	ld.d	$a4, $s1, 0
 	ldptr.w	$a3, $a4, 2096
-	ori	$a5, $zero, 1
-	blt	$a3, $a5, .LBB9_51
-# %bb.50:
+	blez	$a3, .LBB9_52
+# %bb.51:
 	fld.d	$fa1, $a0, 48
 	bstrpick.d	$a5, $a3, 31, 0
 	addi.d	$a3, $a3, 1
@@ -3626,51 +3613,51 @@ rc_init_pict:                           # @rc_init_pict
 	fsub.d	$fa1, $fa1, $fa3
 	fadd.d	$fa1, $fa2, $fa1
 	fst.d	$fa1, $a0, 40
-.LBB9_51:
+.LBB9_52:
 	ld.d	$a5, $s0, 0
 	ld.w	$a3, $a5, 20
-	beqz	$a3, .LBB9_53
-.LBB9_52:
+	beqz	$a3, .LBB9_54
+.LBB9_53:
 	ldptr.w	$a6, $a4, 5136
 	ori	$a6, $a6, 2
 	ori	$a7, $zero, 3
-	bne	$a6, $a7, .LBB9_101
-.LBB9_53:
+	bne	$a6, $a7, .LBB9_102
+.LBB9_54:
 	pcalau12i	$a6, %got_pc_hi20(start_frame_no_in_this_IGOP)
 	ld.d	$a6, $a6, %got_pc_lo12(start_frame_no_in_this_IGOP)
 	ld.w	$a7, $a5, 0
 	ld.w	$a6, $a6, 0
-	beq	$a7, $a6, .LBB9_101
-# %bb.54:
+	beq	$a7, $a6, .LBB9_102
+# %bb.55:
 	ldptr.w	$a6, $a5, 15404
 	ldptr.w	$a7, $a5, 15352
-	bne	$a6, $a7, .LBB9_56
-# %bb.55:                               # %._crit_edge193
+	bne	$a6, $a7, .LBB9_57
+# %bb.56:                               # %._crit_edge193
 	ld.d	$a6, $fp, %pc_lo12(generic_RC)
-	b	.LBB9_57
-.LBB9_56:
+	b	.LBB9_58
+.LBB9_57:
 	ldptr.w	$a7, $a4, 5136
 	ld.d	$a6, $fp, %pc_lo12(generic_RC)
 	ori	$t0, $zero, 3
-	bne	$a7, $t0, .LBB9_64
-.LBB9_57:
+	bne	$a7, $t0, .LBB9_65
+.LBB9_58:
 	ld.w	$t1, $a6, 36
 	lu12i.w	$a7, 1
 	ori	$t0, $a7, 1040
 	ldx.w	$t0, $a4, $t0
-	blez	$t1, .LBB9_63
-# %bb.58:
-	ori	$t1, $zero, 3
-	bne	$t0, $t1, .LBB9_66
+	blez	$t1, .LBB9_64
 # %bb.59:
-	beqz	$a3, .LBB9_71
+	ori	$t1, $zero, 3
+	bne	$t0, $t1, .LBB9_67
 # %bb.60:
-	ori	$t0, $zero, 1
-	bne	$a3, $t0, .LBB9_72
+	beqz	$a3, .LBB9_72
 # %bb.61:
-	ldptr.w	$t0, $a4, 2968
-	beqz	$t0, .LBB9_74
+	ori	$t0, $zero, 1
+	bne	$a3, $t0, .LBB9_73
 # %bb.62:
+	ldptr.w	$t0, $a4, 2968
+	beqz	$t0, .LBB9_75
+# %bb.63:
 	ldptr.w	$t0, $a5, 14364
 	pcalau12i	$t1, %pc_hi20(gop_structure)
 	ld.d	$t1, $t1, %pc_lo12(gop_structure)
@@ -3681,20 +3668,20 @@ rc_init_pict:                           # @rc_init_pict
 	ld.w	$t1, $a6, 112
 	nor	$t0, $t0, $zero
 	add.w	$t0, $t1, $t0
-	b	.LBB9_75
-.LBB9_63:                               # %..thread185_crit_edge
+	b	.LBB9_76
+.LBB9_64:                               # %..thread185_crit_edge
 	addi.d	$a6, $t0, -3
 	sltu	$t0, $zero, $a6
-	b	.LBB9_93
-.LBB9_64:
+	b	.LBB9_94
+.LBB9_65:
 	ld.w	$a7, $a6, 40
 	ori	$t0, $zero, 1
-	bne	$a7, $t0, .LBB9_67
-# %bb.65:
+	bne	$a7, $t0, .LBB9_68
+# %bb.66:
 	ld.w	$a7, $a6, 36
-	bgtz	$a7, .LBB9_68
-	b	.LBB9_93
-.LBB9_66:
+	bgtz	$a7, .LBB9_69
+	b	.LBB9_94
+.LBB9_67:
 	ld.w	$a7, $a6, 80
 	fld.d	$fa1, $a0, 1568
 	movgr2fr.w	$fa2, $a7
@@ -3749,11 +3736,11 @@ rc_init_pict:                           # @rc_init_pict
 	movfr2gr.s	$a6, $fa1
 	st.w	$a6, $a0, 1536
 	ori	$t0, $zero, 1
-	b	.LBB9_93
-.LBB9_67:
-	ori	$t1, $zero, 2
-	blt	$a7, $t1, .LBB9_93
+	b	.LBB9_94
 .LBB9_68:
+	ori	$t1, $zero, 2
+	blt	$a7, $t1, .LBB9_94
+.LBB9_69:
 	ld.w	$a7, $a6, 80
 	fld.d	$fa1, $a0, 1568
 	movgr2fr.w	$fa2, $a7
@@ -3801,27 +3788,27 @@ rc_init_pict:                           # @rc_init_pict
 	movgr2fr.w	$fa4, $a6
 	ffint.d.w	$fa4, $fa4
 	fmadd.d	$fa1, $fa1, $fa3, $fa4
-	b	.LBB9_91
-.LBB9_69:
+	b	.LBB9_92
+.LBB9_70:
 	fld.d	$fa1, $a0, 1576
 	fld.d	$fa2, $a0, 56
 	vldi	$vr3, -996
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	vldi	$vr2, -960
 	fmul.d	$fa1, $fa1, $fa2
-.LBB9_70:
+.LBB9_71:
 	fst.d	$fa1, $a0, 56
 	ld.d	$a5, $s0, 0
 	ld.w	$a3, $a5, 20
-	bnez	$a3, .LBB9_52
-	b	.LBB9_53
-.LBB9_71:
-	addi.d	$t0, $a6, 84
-	b	.LBB9_76
+	bnez	$a3, .LBB9_53
+	b	.LBB9_54
 .LBB9_72:
-	addi.d	$t0, $a6, 88
-	b	.LBB9_76
+	addi.d	$t0, $a6, 84
+	b	.LBB9_77
 .LBB9_73:
+	addi.d	$t0, $a6, 88
+	b	.LBB9_77
+.LBB9_74:
 	ld.d	$a4, $a3, 72
 	fld.d	$fa1, $a0, 32
 	ld.w	$a5, $a0, 1592
@@ -3829,13 +3816,13 @@ rc_init_pict:                           # @rc_init_pict
 	ffint.d.l	$fa2, $fa2
 	fsub.d	$fa1, $fa2, $fa1
 	movgr2fr.w	$fa3, $a5
-	b	.LBB9_35
-.LBB9_74:
+	b	.LBB9_22
+.LBB9_75:
 	move	$t0, $zero
-.LBB9_75:                               # %.thread184
+.LBB9_76:                               # %.thread184
 	alsl.d	$t0, $t0, $a6, 2
 	addi.d	$t0, $t0, 92
-.LBB9_76:
+.LBB9_77:
 	ld.w	$t1, $a6, 140
 	ld.w	$t2, $a6, 88
 	ld.w	$t3, $a6, 136
@@ -3845,24 +3832,23 @@ rc_init_pict:                           # @rc_init_pict
 	mul.d	$t1, $t2, $t1
 	mul.d	$t2, $t4, $t3
 	add.w	$t1, $t2, $t1
-	beqz	$t5, .LBB9_80
-# %bb.77:                               # %.preheader
+	beqz	$t5, .LBB9_81
+# %bb.78:                               # %.preheader
 	ld.w	$t2, $a6, 112
-	ori	$t3, $zero, 1
-	blt	$t2, $t3, .LBB9_86
-# %bb.78:                               # %.lr.ph
+	blez	$t2, .LBB9_87
+# %bb.79:                               # %.lr.ph
 	ori	$t3, $zero, 8
-	bgeu	$t2, $t3, .LBB9_81
-# %bb.79:
+	bgeu	$t2, $t3, .LBB9_82
+# %bb.80:
 	move	$t3, $zero
-	b	.LBB9_84
-.LBB9_80:
+	b	.LBB9_85
+.LBB9_81:
 	ld.w	$t2, $a6, 116
 	ld.w	$t3, $a6, 92
 	mul.d	$t2, $t3, $t2
 	add.w	$t1, $t2, $t1
-	b	.LBB9_86
-.LBB9_81:                               # %vector.ph
+	b	.LBB9_87
+.LBB9_82:                               # %vector.ph
 	bstrpick.d	$t3, $t2, 30, 3
 	pcalau12i	$t4, %pc_hi20(.LCPI9_0)
 	vld	$vr1, $t4, %pc_lo12(.LCPI9_0)
@@ -3874,7 +3860,7 @@ rc_init_pict:                           # @rc_init_pict
 	vrepli.b	$vr2, 0
 	move	$t4, $t3
 	.p2align	4, , 16
-.LBB9_82:                               # %vector.body
+.LBB9_83:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr3, $t1, -16
 	vld	$vr4, $t1, 0
@@ -3884,21 +3870,21 @@ rc_init_pict:                           # @rc_init_pict
 	vmadd.w	$vr2, $vr6, $vr4
 	addi.d	$t4, $t4, -8
 	addi.d	$t1, $t1, 32
-	bnez	$t4, .LBB9_82
-# %bb.83:                               # %middle.block
+	bnez	$t4, .LBB9_83
+# %bb.84:                               # %middle.block
 	vadd.w	$vr1, $vr2, $vr1
 	vshuf4i.w	$vr2, $vr1, 14
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$t1, $vr1, 0
-	beq	$t3, $t2, .LBB9_86
-.LBB9_84:                               # %scalar.ph.preheader
+	beq	$t3, $t2, .LBB9_87
+.LBB9_85:                               # %scalar.ph.preheader
 	alsl.d	$t4, $t3, $a6, 2
 	addi.d	$t4, $t4, 92
 	sub.d	$t2, $t2, $t3
 	.p2align	4, , 16
-.LBB9_85:                               # %scalar.ph
+.LBB9_86:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t3, $t4, 24
 	ld.w	$t5, $t4, 0
@@ -3906,8 +3892,8 @@ rc_init_pict:                           # @rc_init_pict
 	add.w	$t1, $t3, $t1
 	addi.d	$t2, $t2, -1
 	addi.d	$t4, $t4, 4
-	bnez	$t2, .LBB9_85
-.LBB9_86:                               # %.loopexit
+	bnez	$t2, .LBB9_86
+.LBB9_87:                               # %.loopexit
 	ld.w	$a6, $a6, 80
 	movgr2fr.w	$fa1, $t0
 	ffint.d.w	$fa1, $fa1
@@ -3926,18 +3912,18 @@ rc_init_pict:                           # @rc_init_pict
 	movfr2gr.s	$a6, $fa1
 	ori	$t0, $zero, 2
 	st.w	$a6, $a0, 1536
-	beq	$a3, $t0, .LBB9_89
-# %bb.87:                               # %.loopexit
+	beq	$a3, $t0, .LBB9_90
+# %bb.88:                               # %.loopexit
 	ori	$t0, $zero, 1
-	bne	$a3, $t0, .LBB9_92
-# %bb.88:
+	bne	$a3, $t0, .LBB9_93
+# %bb.89:
 	ori	$a7, $a7, 1056
 	fldx.d	$fa1, $a4, $a7
 	move	$t0, $zero
 	movgr2fr.w	$fa2, $a6
 	ffint.d.w	$fa2, $fa2
-	b	.LBB9_90
-.LBB9_89:
+	b	.LBB9_91
+.LBB9_90:
 	move	$t0, $zero
 	ori	$a7, $a7, 1048
 	fldx.d	$fa1, $a4, $a7
@@ -3945,20 +3931,20 @@ rc_init_pict:                           # @rc_init_pict
 	ffint.d.w	$fa2, $fa2
 	vldi	$vr3, -1008
 	fmul.d	$fa1, $fa1, $fa3
-.LBB9_90:                               # %.thread185
+.LBB9_91:                               # %.thread185
 	fdiv.d	$fa1, $fa2, $fa1
 	vldi	$vr2, -928
-.LBB9_91:                               # %.thread185
+.LBB9_92:                               # %.thread185
 	fadd.d	$fa1, $fa1, $fa2
 	vreplvei.d	$vr1, $vr1, 0
 	vfrintrm.d	$vr1, $vr1
 	ftintrz.w.d	$fa1, $fa1
 	movfr2gr.s	$a6, $fa1
 	st.w	$a6, $a0, 1536
-	b	.LBB9_93
-.LBB9_92:
+	b	.LBB9_94
+.LBB9_93:
 	move	$t0, $zero
-.LBB9_93:                               # %.thread185
+.LBB9_94:                               # %.thread185
 	ld.w	$a6, $a0, 1536
 	movgr2fr.w	$fa1, $a6
 	ffint.s.w	$fa1, $fa1
@@ -3978,13 +3964,13 @@ rc_init_pict:                           # @rc_init_pict
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a6, $fa0
 	st.w	$a6, $a0, 1536
-	beqz	$a3, .LBB9_96
-# %bb.94:                               # %.thread185
-	bnez	$t0, .LBB9_96
-# %bb.95:
-	bnez	$a2, .LBB9_100
-	b	.LBB9_97
-.LBB9_96:
+	beqz	$a3, .LBB9_97
+# %bb.95:                               # %.thread185
+	bnez	$t0, .LBB9_97
+# %bb.96:
+	bnez	$a2, .LBB9_101
+	b	.LBB9_98
+.LBB9_97:
 	ld.w	$a3, $a0, 1564
 	ld.w	$a7, $a0, 1560
 	slt	$t0, $a3, $a6
@@ -3996,25 +3982,25 @@ rc_init_pict:                           # @rc_init_pict
 	masknez	$a6, $a7, $a6
 	or	$a6, $a3, $a6
 	st.w	$a6, $a0, 1536
-	bnez	$a2, .LBB9_100
-.LBB9_97:
-	beqz	$a1, .LBB9_101
-# %bb.98:
+	bnez	$a2, .LBB9_101
+.LBB9_98:
+	beqz	$a1, .LBB9_102
+# %bb.99:
 	ldptr.w	$a1, $a4, 4704
 	ori	$a3, $zero, 2
-	beq	$a1, $a3, .LBB9_100
-# %bb.99:
+	beq	$a1, $a3, .LBB9_101
+# %bb.100:
 	ldptr.w	$a1, $a4, 4708
-	beqz	$a1, .LBB9_101
-.LBB9_100:
+	beqz	$a1, .LBB9_102
+.LBB9_101:
 	st.w	$a6, $a0, 1540
-.LBB9_101:                              # %.thread187
+.LBB9_102:                              # %.thread187
 	ld.d	$a1, $fp, %pc_lo12(generic_RC)
 	st.d	$zero, $a1, 16
 	ldptr.w	$a3, $a5, 15404
 	ldptr.w	$a6, $a5, 15352
-	bgeu	$a3, $a6, .LBB9_103
-# %bb.102:                              # %.sink.split208
+	bgeu	$a3, $a6, .LBB9_104
+# %bb.103:                              # %.sink.split208
 	st.w	$zero, $a0, 1364
 	st.d	$zero, $a1, 24
 	ld.w	$a3, $a1, 4
@@ -4023,31 +4009,31 @@ rc_init_pict:                           # @rc_init_pict
 	sltu	$a1, $zero, $a3
 	sra.w	$a1, $a6, $a1
 	st.w	$a1, $a0, 1368
-.LBB9_103:
+.LBB9_104:
 	ld.w	$a1, $a5, 20
-	beqz	$a1, .LBB9_105
-# %bb.104:
+	beqz	$a1, .LBB9_106
+# %bb.105:
 	ldptr.w	$a1, $a4, 5136
 	ori	$a3, $zero, 1
-	bne	$a1, $a3, .LBB9_112
-.LBB9_105:
+	bne	$a1, $a3, .LBB9_113
+.LBB9_106:
 	ldptr.w	$a1, $a5, 15404
 	ldptr.w	$a3, $a5, 15352
-	bgeu	$a1, $a3, .LBB9_112
-# %bb.106:
+	bgeu	$a1, $a3, .LBB9_113
+# %bb.107:
 	ld.d	$a1, $fp, %pc_lo12(generic_RC)
 	ld.w	$a3, $a1, 4
 	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB9_112
-# %bb.107:
+	bne	$a3, $a4, .LBB9_113
+# %bb.108:
 	pcalau12i	$a3, %got_pc_hi20(start_frame_no_in_this_IGOP)
 	ld.d	$a3, $a3, %got_pc_lo12(start_frame_no_in_this_IGOP)
 	ld.w	$a4, $a5, 0
 	ld.w	$a3, $a3, 0
-	beq	$a4, $a3, .LBB9_112
-# %bb.108:
-	beqz	$a2, .LBB9_110
+	beq	$a4, $a3, .LBB9_113
 # %bb.109:
+	beqz	$a2, .LBB9_111
+# %bb.110:
 	ld.w	$a1, $a0, 1540
 	pcalau12i	$a2, %pc_hi20(.LCPI9_1)
 	fld.d	$fa0, $a2, %pc_lo12(.LCPI9_1)
@@ -4058,8 +4044,8 @@ rc_init_pict:                           # @rc_init_pict
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a1, $fa0
 	ori	$a2, $zero, 1536
-	b	.LBB9_111
-.LBB9_110:
+	b	.LBB9_112
+.LBB9_111:
 	ld.w	$a2, $a0, 1540
 	ld.w	$a3, $a0, 1552
 	sub.d	$a2, $a2, $a3
@@ -4069,19 +4055,18 @@ rc_init_pict:                           # @rc_init_pict
 	st.d	$zero, $a1, 56
 	srai.d	$a1, $a2, 1
 	ori	$a2, $zero, 1368
-.LBB9_111:                              # %.sink.split211
+.LBB9_112:                              # %.sink.split211
 	stx.w	$a1, $a0, $a2
-.LBB9_112:
-	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+.LBB9_113:
+	fld.d	$fs0, $sp, 0                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end9:
 	.size	rc_init_pict, .Lfunc_end9-rc_init_pict
@@ -4676,7 +4661,6 @@ updateRCModel:                          # @updateRCModel
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$s2, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $s2, 0
@@ -4697,7 +4681,6 @@ updateRCModel:                          # @updateRCModel
 	ld.w	$a2, $s3, 0
 	bne	$a0, $a2, .LBB15_4
 .LBB15_3:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -4732,9 +4715,8 @@ updateRCModel:                          # @updateRCModel
 	fst.d	$fa0, $fp, 1400
 	st.d	$zero, $a0, 56
 	sub.w	$a2, $a1, $a3
-	ori	$a4, $zero, 1
 	st.w	$a2, $fp, 1392
-	blt	$a2, $a4, .LBB15_10
+	blez	$a2, .LBB15_10
 # %bb.7:
 	ld.w	$a4, $fp, 1372
 	ld.w	$a5, $a0, 24
@@ -4957,10 +4939,10 @@ updateRCModel:                          # @updateRCModel
 	fmul.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	ori	$s5, $zero, 1
-	slt	$a1, $s5, $a0
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s5, $a1
+	ori	$a1, $zero, 1
+	slt	$a2, $a1, $a0
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
 	slt	$a1, $a0, $s4
 	ld.w	$a2, $fp, 1340
@@ -4991,7 +4973,7 @@ updateRCModel:                          # @updateRCModel
 	pcaddu18i	$ra, %call36(RCModelEstimator)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 1340
-	blt	$a1, $s5, .LBB15_26
+	blez	$a1, .LBB15_26
 # %bb.22:                               # %.lr.ph
 	addi.d	$a0, $fp, 792
 	fld.d	$fa1, $fp, 1296
@@ -5152,7 +5134,6 @@ updateRCModel:                          # @updateRCModel
 	b	.LBB15_3
 .LBB15_48:
 	move	$a0, $fp
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -5206,8 +5187,7 @@ updateRCModel:                          # @updateRCModel
 	.type	RCModelEstimator,@function
 RCModelEstimator:                       # @RCModelEstimator
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB16_3
+	blez	$a1, .LBB16_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a1, $a3, .LBB16_4
@@ -5326,9 +5306,8 @@ RCModelEstimator:                       # @RCModelEstimator
 	fst.d	$fa0, $a4, 0
 	b	.LBB16_14
 .LBB16_17:                              # %._crit_edge118
-	ori	$a4, $zero, 1
 	movgr2fr.d	$fa1, $zero
-	blt	$a3, $a4, .LBB16_26
+	blez	$a3, .LBB16_26
 # %bb.18:                               # %._crit_edge118
 	beqz	$a5, .LBB16_26
 # %bb.19:                               # %.lr.ph127
@@ -5422,8 +5401,7 @@ updateMADModel:                         # @updateMADModel
 	pcalau12i	$a1, %pc_hi20(generic_RC)
 	ld.d	$a2, $a1, %pc_lo12(generic_RC)
 	ld.w	$a1, $a2, 36
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB17_18
+	blez	$a1, .LBB17_18
 # %bb.1:
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -5616,8 +5594,7 @@ updateMADModel:                         # @updateMADModel
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(MADModelEstimator)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB17_19
+	blez	$s0, .LBB17_19
 # %bb.14:                               # %.lr.ph
 	addi.d	$a0, $fp, 288
 	fld.d	$fa1, $fp, 88
@@ -5801,8 +5778,7 @@ updateMADModel:                         # @updateMADModel
 	.type	MADModelEstimator,@function
 MADModelEstimator:                      # @MADModelEstimator
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB18_3
+	blez	$a1, .LBB18_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a1, $a3, .LBB18_4
@@ -5921,9 +5897,8 @@ MADModelEstimator:                      # @MADModelEstimator
 	fst.d	$fa0, $a4, 0
 	b	.LBB18_14
 .LBB18_17:                              # %._crit_edge118
-	ori	$a4, $zero, 1
 	movgr2fr.d	$fa3, $zero
-	blt	$a3, $a4, .LBB18_26
+	blez	$a3, .LBB18_26
 # %bb.18:                               # %._crit_edge118
 	beqz	$a5, .LBB18_26
 # %bb.19:                               # %.lr.ph127
@@ -6279,8 +6254,8 @@ updateFirstBU:                          # @updateFirstBU
 # %bb.3:
 	ld.w	$a3, $a2, 8
 	ld.w	$a5, $a2, 48
-	ori	$a6, $zero, 1
-	bne	$a3, $a6, .LBB25_5
+	ori	$a4, $zero, 1
+	bne	$a3, $a4, .LBB25_5
 # %bb.4:
 	ld.w	$a3, $a0, 1460
 	ori	$a4, $zero, 1464
@@ -6289,7 +6264,7 @@ updateFirstBU:                          # @updateFirstBU
 .LBB25_5:
 	ld.w	$a3, $a0, 1456
 	ori	$a4, $zero, 1468
-	blt	$a5, $a6, .LBB25_7
+	blez	$a5, .LBB25_7
 .LBB25_6:                               # %.sink.split.sink.split
 	ld.w	$a5, $a2, 44
 	add.d	$a5, $a5, $a3
@@ -6421,8 +6396,7 @@ updateNegativeTarget:                   # @updateNegativeTarget
 # %bb.10:
 	beqz	$a5, .LBB26_21
 # %bb.11:
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB26_14
+	blez	$a5, .LBB26_14
 .LBB26_12:
 	ld.w	$a1, $a0, 1356
 	addi.d	$a1, $a1, 1
@@ -6504,23 +6478,23 @@ predictCurrPicMAD:                      # @predictCurrPicMAD
 	pcalau12i	$a1, %pc_hi20(generic_RC)
 	ld.d	$a1, $a1, %pc_lo12(generic_RC)
 	ld.w	$a1, $a1, 4
-	ori	$a3, $zero, 1
-	bne	$a1, $a3, .LBB27_6
+	ori	$a2, $zero, 1
+	bne	$a1, $a2, .LBB27_6
 # %bb.3:
 	ld.w	$a1, $a0, 1388
-	ld.w	$a5, $a0, 1368
-	ld.d	$a4, $a0, 1496
+	ld.w	$a4, $a0, 1368
+	ld.d	$a3, $a0, 1496
 	fld.d	$fa0, $a0, 88
-	sub.w	$a2, $a1, $a5
-	slli.d	$a6, $a2, 3
-	fldx.d	$fa2, $a4, $a6
+	sub.w	$a2, $a1, $a4
+	slli.d	$a5, $a2, 3
+	fldx.d	$fa2, $a3, $a5
 	fld.d	$fa1, $a0, 96
 	fmadd.d	$fa2, $fa0, $fa2, $fa1
 	fst.d	$fa2, $a0, 1400
 	st.d	$zero, $a0, 1416
-	blt	$a5, $a3, .LBB27_9
+	blez	$a4, .LBB27_9
 # %bb.4:                                # %.lr.ph49
-	alsl.d	$a3, $a1, $a4, 3
+	alsl.d	$a3, $a1, $a3, 3
 	addi.d	$a3, $a3, -8
 	movgr2fr.d	$fa2, $zero
 	.p2align	4, , 16
@@ -6545,9 +6519,8 @@ predictCurrPicMAD:                      # @predictCurrPicMAD
 	fld.d	$fa1, $a0, 96
 	fmadd.d	$fa2, $fa0, $fa2, $fa1
 	fst.d	$fa2, $a0, 1400
-	ori	$a5, $zero, 1
 	st.d	$zero, $a0, 1416
-	blt	$a4, $a5, .LBB27_9
+	blez	$a4, .LBB27_9
 # %bb.7:                                # %.lr.ph
 	alsl.d	$a3, $a1, $a3, 3
 	addi.d	$a3, $a3, -8

@@ -764,8 +764,7 @@ zcvrs:                                  # @zcvrs
 	addi.d	$a1, $a1, -1
 	bgeu	$t1, $a4, .LBB13_8
 # %bb.9:
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a5, .LBB13_12
+	bltz	$a5, .LBB13_12
 # %bb.10:
 	addi.d	$a1, $a1, 1
 	b	.LBB13_13
@@ -831,10 +830,9 @@ zcvs:                                   # @zcvs
 	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
 	ld.hu	$a2, $a0, -8
 	addi.d	$fp, $a0, -16
-	addi.d	$a4, $sp, 55
+	addi.d	$a4, $sp, 63
 	bstrpick.d	$a3, $a2, 7, 2
 	ori	$a5, $zero, 15
 	sltu	$a5, $a5, $a3
@@ -844,7 +842,7 @@ zcvs:                                   # @zcvs
 	or	$a3, $a5, $a3
 	addi.d	$a3, $a3, -1
 	ori	$a5, $zero, 12
-	st.d	$a4, $sp, 32
+	st.d	$a4, $sp, 40
 	bltu	$a5, $a3, .LBB14_10
 # %bb.3:
 	slli.d	$a3, $a3, 2
@@ -871,7 +869,7 @@ zcvs:                                   # @zcvs
 	move	$a0, $a1
 	ret
 .LBB14_7:
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 40
 	move	$s0, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(name_string_ref)
@@ -883,7 +881,7 @@ zcvs:                                   # @zcvs
 	beqz	$a2, .LBB14_29
 # %bb.9:
 	vld	$vr0, $fp, 0
-	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 40
 	b	.LBB14_26
 .LBB14_10:
 	pcalau12i	$a1, %got_pc_hi20(osp_nargs)
@@ -907,7 +905,7 @@ zcvs:                                   # @zcvs
 	pcaddu18i	$ra, %call36(dict_first)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	addi.d	$a2, $sp, 0
+	addi.d	$a2, $sp, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(dict_next)
 	jirl	$ra, $ra, 0
@@ -917,27 +915,26 @@ zcvs:                                   # @zcvs
 	pcalau12i	$a0, %got_pc_hi20(dstack)
 	ld.d	$s0, $a0, %got_pc_lo12(dstack)
 	ori	$s2, $zero, 28
-	addi.w	$s3, $zero, -1
 	b	.LBB14_16
 	.p2align	4, , 16
 .LBB14_15:                              #   in Loop: Header=BB14_16 Depth=1
-	addi.d	$a2, $sp, 0
+	addi.d	$a2, $sp, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(dict_next)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	bge	$s3, $a0, .LBB14_20
+	bltz	$a0, .LBB14_20
 .LBB14_16:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
-	ld.d	$a2, $sp, 16
+	ld.d	$a2, $sp, 24
 	bne	$a0, $a2, .LBB14_15
 # %bb.17:                               #   in Loop: Header=BB14_16 Depth=1
-	ld.hu	$a0, $sp, 8
+	ld.hu	$a0, $sp, 16
 	andi	$a0, $a0, 252
 	bne	$a0, $s2, .LBB14_15
 # %bb.18:
-	addi.d	$a0, $sp, 0
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 8
+	addi.d	$a1, $sp, 40
 	pcaddu18i	$ra, %call36(name_string_ref)
 	jirl	$ra, $ra, 0
 	b	.LBB14_25
@@ -954,7 +951,7 @@ zcvs:                                   # @zcvs
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
 .LBB14_21:
-	addi.d	$a0, $sp, 55
+	addi.d	$a0, $sp, 63
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	b	.LBB14_24
@@ -963,16 +960,16 @@ zcvs:                                   # @zcvs
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
 .LBB14_23:
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 40
 .LBB14_24:
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	st.h	$a0, $sp, 42
+	st.h	$a0, $sp, 50
 .LBB14_25:
 	move	$a0, $s1
 .LBB14_26:
-	ld.hu	$a2, $sp, 42
+	ld.hu	$a2, $sp, 50
 	ld.hu	$a1, $a0, 10
 	bgeu	$a1, $a2, .LBB14_28
 # %bb.27:
@@ -980,14 +977,14 @@ zcvs:                                   # @zcvs
 	b	.LBB14_29
 .LBB14_28:
 	ld.d	$a3, $a0, 0
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 40
 	move	$s0, $a0
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a1, $zero
 	vld	$vr0, $s0, 0
-	ld.h	$a0, $sp, 42
+	ld.h	$a0, $sp, 50
 	pcalau12i	$a2, %got_pc_hi20(osp)
 	ld.d	$a2, $a2, %got_pc_lo12(osp)
 	vst	$vr0, $fp, 0
@@ -1000,7 +997,6 @@ zcvs:                                   # @zcvs
 	addi.d	$a0, $a0, -16
 	st.d	$a0, $a2, 0
 .LBB14_29:
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload

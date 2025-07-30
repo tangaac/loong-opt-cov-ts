@@ -10,8 +10,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(num)
 	ld.wu	$a0, $a0, %pc_lo12(num)
 	addi.w	$a2, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB0_10
+	blez	$a2, .LBB0_10
 # %bb.1:                                # %.preheader20.lr.ph
 	move	$a3, $zero
 	addi.d	$a4, $a2, -1

@@ -619,8 +619,7 @@ _ZN8NWindows5NFile10NDirectory11GetOnlyNameEPKwR11CStringBaseIwE: # @_ZN8NWindow
 .Ltmp13:
 # %bb.6:                                # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB3_8
+	blez	$s4, .LBB3_8
 # %bb.7:                                # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -740,13 +739,12 @@ _ZN8NWindows5NFile10NDirectory17MyGetFullPathNameEPKwR11CStringBaseIwERi: # @_ZN
 	ori	$a0, $a0, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s2, $a0
-	blt	$s4, $a2, .LBB4_13
+	blez	$s4, .LBB4_13
 # %bb.3:                                # %.preheader.i.i
 	ld.w	$a1, $s1, 8
 	ld.d	$a0, $s1, 0
-	blt	$a1, $a2, .LBB4_11
+	blez	$a1, .LBB4_11
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a3, $zero, 8
 	move	$a2, $zero
@@ -915,8 +913,7 @@ _ZN8NWindows5NFile10NDirectory16GetOnlyDirPrefixEPKwR11CStringBaseIwE: # @_ZN8NW
 .Ltmp16:
 # %bb.6:                                # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB5_8
+	blez	$s4, .LBB5_8
 # %bb.7:                                # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1096,8 +1093,7 @@ _ZN8NWindows5NFile10NDirectory21MyGetCurrentDirectoryER11CStringBaseIwE: # @_ZN8
 .Ltmp22:
 # %bb.9:                                # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB6_11
+	blez	$s4, .LBB6_11
 # %bb.10:                               # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1227,7 +1223,6 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
 	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1238,25 +1233,24 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 2192
 	sub.d	$sp, $sp, $a2
 	.cfi_def_cfa_offset 16512
 	move	$fp, $a1
 	move	$a1, $a0
-	addi.d	$a0, $sp, 24
+	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_Z17nameWindowToUnix2PKw)
 	jirl	$ra, $ra, 0
 .Ltmp24:
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 16
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z17nameWindowToUnix2PKw)
 	jirl	$ra, $ra, 0
 .Ltmp25:
 # %bb.1:
-	ld.d	$fp, $sp, 24
-	ld.d	$s0, $sp, 8
+	ld.d	$fp, $sp, 32
+	ld.d	$s0, $sp, 16
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(rename)
@@ -1280,8 +1274,8 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 .Ltmp28:
 # %bb.4:                                # %.noexc
 	move	$s2, $a0
-	addi.w	$s7, $zero, -1
-	beq	$a0, $s7, .LBB7_21
+	addi.w	$s5, $zero, -1
+	beq	$a0, $s5, .LBB7_21
 # %bb.5:
 .Ltmp29:
 	ori	$a2, $zero, 384
@@ -1292,18 +1286,18 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 .Ltmp30:
 # %bb.6:                                # %.noexc20
 	move	$s4, $a0
-	beq	$a0, $s7, .LBB7_20
+	beq	$a0, $s5, .LBB7_20
 # %bb.7:
 	lu12i.w	$s5, 4
-	ori	$s8, $zero, 4
+	ori	$s7, $zero, 4
 	b	.LBB7_9
 .LBB7_8:                                #   in Loop: Header=BB7_9 Depth=1
 	ld.w	$a0, $s3, 0
-	bne	$a0, $s8, .LBB7_17
+	bne	$a0, $s7, .LBB7_17
 .LBB7_9:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_12 Depth 2
 .Ltmp31:
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 48
 	move	$a0, $s4
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(read)
@@ -1312,7 +1306,7 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 # %bb.10:                               # %.noexc21
                                         #   in Loop: Header=BB7_9 Depth=1
 	move	$s6, $a0
-	bge	$s7, $a0, .LBB7_8
+	bltz	$a0, .LBB7_8
 # %bb.11:                               # %.critedge.i.i
                                         #   in Loop: Header=BB7_9 Depth=1
 	beqz	$s6, .LBB7_18
@@ -1321,7 +1315,7 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
                                         #   Parent Loop BB7_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 .Ltmp34:
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 48
 	move	$a0, $s2
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(write)
@@ -1329,17 +1323,17 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 .Ltmp35:
 # %bb.13:                               # %.noexc22
                                         #   in Loop: Header=BB7_12 Depth=2
-	blt	$s7, $a0, .LBB7_15
+	bgez	$a0, .LBB7_15
 # %bb.14:                               #   in Loop: Header=BB7_12 Depth=2
 	ld.w	$a1, $s3, 0
-	beq	$a1, $s8, .LBB7_12
+	beq	$a1, $s7, .LBB7_12
 	b	.LBB7_16
 .LBB7_15:                               # %.critedge2.i.i
                                         #   in Loop: Header=BB7_9 Depth=1
 	bnez	$a0, .LBB7_9
 	b	.LBB7_18
 .LBB7_16:                               # %_ZL7copy_fdii.exit.i
-	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a0, $a0, 32
 	beqz	$a0, .LBB7_18
 .LBB7_17:
 .Ltmp41:
@@ -1381,7 +1375,6 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 	lu12i.w	$a1, 3
 	ori	$a1, $a1, 2192
 	add.d	$sp, $sp, $a1
-	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
 	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
@@ -1403,13 +1396,13 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 # %bb.28:                               # %_ZL8CopyFilePKcS0_.exit
 	bnez	$a0, .LBB7_21
 # %bb.29:
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 48
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(stat64)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB7_21
 # %bb.30:
-	ld.w	$a0, $sp, 56
+	ld.w	$a0, $sp, 64
 	pcalau12i	$a1, %pc_hi20(_ZL9gbl_umask.1)
 	ld.w	$a1, $a1, %pc_lo12(_ZL9gbl_umask.1)
 	and	$a1, $a1, $a0
@@ -1431,7 +1424,7 @@ _ZN8NWindows5NFile10NDirectory10MyMoveFileEPKwS3_: # @_ZN8NWindows5NFile10NDirec
 	b	.LBB7_36
 .LBB7_34:
 .Ltmp26:
-	ld.d	$fp, $sp, 24
+	ld.d	$fp, $sp, 32
 	move	$s1, $a0
 	beqz	$fp, .LBB7_38
 	b	.LBB7_40
@@ -1840,9 +1833,8 @@ _ZN8NWindows5NFile10NDirectory19MySetFileAttributesEPKwj: # @_ZN8NWindows5NFile1
 	addi.d	$sp, $sp, 1216
 	ret
 .LBB10_8:
-	lu12i.w	$a1, 8
-	and	$a0, $s0, $a1
-	bnez	$a0, .LBB10_13
+	slli.d	$a0, $s0, 48
+	bltz	$a0, .LBB10_13
 # %bb.9:
 	ld.wu	$a0, $sp, 24
 	lu12i.w	$a1, 15
@@ -1862,15 +1854,16 @@ _ZN8NWindows5NFile10NDirectory19MySetFileAttributesEPKwj: # @_ZN8NWindows5NFile1
 	b	.LBB10_21
 .LBB10_13:
 	bstrpick.d	$a0, $s0, 31, 16
-	lu12i.w	$a2, 15
-	and	$a2, $a0, $a2
-	lu12i.w	$a3, 4
-	beq	$a2, $a3, .LBB10_20
+	lu12i.w	$a1, 15
+	and	$a1, $a0, $a1
+	lu12i.w	$a2, 4
+	beq	$a1, $a2, .LBB10_20
 # %bb.14:
-	beq	$a2, $a1, .LBB10_22
+	lu12i.w	$a2, 8
+	beq	$a1, $a2, .LBB10_22
 # %bb.15:
 	lu12i.w	$a0, 10
-	bne	$a2, $a0, .LBB10_23
+	bne	$a1, $a0, .LBB10_23
 # %bb.16:
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
@@ -2017,11 +2010,9 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	move	$fp, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s3, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
+	slli.d	$a0, $s3, 31
 	addi.w	$s2, $fp, 0
-	beqz	$a0, .LBB12_2
+	bgez	$a0, .LBB12_2
 # %bb.1:
 	move	$s1, $zero
 	b	.LBB12_3
@@ -2067,13 +2058,12 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 .LBB12_9:
 	move	$s3, $zero
 	ori	$a0, $zero, 4
-	ori	$s5, $zero, 1
+	ori	$s4, $zero, 1
 	b	.LBB12_18
 .LBB12_10:                              # %_ZNK11CStringBaseIwE11ReverseFindEw.exit
 	srli.d	$s0, $a0, 2
 	addi.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB12_15
+	blez	$a0, .LBB12_15
 # %bb.11:                               # %_ZNK11CStringBaseIwE11ReverseFindEw.exit
 	addi.w	$a1, $fp, -1
 	bne	$a1, $a0, .LBB12_15
@@ -2100,19 +2090,17 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	move	$fp, $s0
 .LBB12_15:                              # %_ZN11CStringBaseIwE6DeleteEii.exit
 	bstrpick.d	$a0, $fp, 31, 0
-	addi.d	$s5, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s5, $a0
-	beqz	$a0, .LBB12_17
+	addi.d	$s4, $a0, 1
+	slli.d	$a0, $s4, 31
+	bgez	$a0, .LBB12_17
 # %bb.16:
-	move	$s5, $zero
+	move	$s4, $zero
 	move	$fp, $zero
 	addi.w	$s3, $zero, -1
 	b	.LBB12_20
 .LBB12_17:
 	addi.w	$s3, $fp, 0
-	addi.w	$a0, $s5, 0
+	addi.w	$a0, $s4, 0
 	slti	$a1, $s3, -1
 	slli.d	$a0, $a0, 2
 	addi.w	$a2, $zero, -1
@@ -2138,9 +2126,9 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 # %bb.22:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.preheader
 	ori	$s2, $zero, 2
 	ori	$s7, $zero, 47
-	ori	$s4, $zero, 58
-	addi.w	$s8, $zero, -1
-	ori	$s6, $zero, 17
+	ori	$s6, $zero, 58
+	addi.w	$s5, $zero, -1
+	ori	$s8, $zero, 17
 	move	$s0, $s3
 .LBB12_23:                              # %_ZN11CStringBaseIwEC2ERKS0_.exit
                                         # =>This Loop Header: Depth=1
@@ -2177,7 +2165,7 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s6, .LBB12_54
+	beq	$a0, $s8, .LBB12_54
 # %bb.30:                               #   in Loop: Header=BB12_23 Depth=1
 	ld.w	$a1, $sp, 32
 	bnez	$a1, .LBB12_32
@@ -2209,13 +2197,12 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
                                         #   in Loop: Header=BB12_23 Depth=1
 	srli.d	$s0, $a1, 2
 	addi.w	$a3, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB12_48
+	blez	$a3, .LBB12_48
 # %bb.36:                               #   in Loop: Header=BB12_23 Depth=1
 	bstrpick.d	$a1, $s0, 30, 0
 	alsl.d	$a0, $a1, $a0, 2
 	ld.w	$a0, $a0, -4
-	beq	$a0, $s4, .LBB12_48
+	beq	$a0, $s6, .LBB12_48
 # %bb.37:                               #   in Loop: Header=BB12_23 Depth=1
 .Ltmp70:
 	addi.d	$a0, $sp, 40
@@ -2231,13 +2218,13 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	st.w	$zero, $s1, 0
 	ld.w	$a0, $sp, 48
 	ld.w	$s6, $sp, 36
-	addi.w	$s4, $a0, 1
-	beq	$s4, $s6, .LBB12_44
+	addi.w	$s8, $a0, 1
+	beq	$s8, $s6, .LBB12_44
 # %bb.39:                               #   in Loop: Header=BB12_23 Depth=1
 	slti	$a0, $a0, -1
-	slli.d	$a1, $s4, 2
+	slli.d	$a1, $s8, 2
 	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $s8, $a0
+	maskeqz	$a0, $s5, $a0
 	or	$a0, $a0, $a1
 .Ltmp73:
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2246,8 +2233,7 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 # %bb.40:                               # %.noexc48
                                         #   in Loop: Header=BB12_23 Depth=1
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	blt	$s6, $a0, .LBB12_42
+	blez	$s6, .LBB12_42
 # %bb.41:                               # %._crit_edge.thread.i.i
                                         #   in Loop: Header=BB12_23 Depth=1
 	move	$a0, $s1
@@ -2261,15 +2247,15 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	st.d	$s2, $sp, 24
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s2, $a0
-	st.w	$s4, $sp, 36
+	st.w	$s8, $sp, 36
 	move	$s1, $s2
 .LBB12_44:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i44
                                         #   in Loop: Header=BB12_23 Depth=1
-	ori	$s6, $zero, 17
+	ori	$s2, $zero, 2
+	ori	$s6, $zero, 58
 	ld.d	$a0, $sp, 40
 	move	$a1, $zero
-	ori	$s2, $zero, 2
-	ori	$s4, $zero, 58
+	ori	$s8, $zero, 17
 	.p2align	4, , 16
 .LBB12_45:                              #   Parent Loop BB12_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -2320,16 +2306,16 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	ld.d	$s2, $sp, 24
 	st.w	$zero, $sp, 32
 	st.w	$zero, $s2, 0
-	ld.w	$s4, $sp, 36
-	addi.w	$a0, $s5, 0
-	bne	$a0, $s4, .LBB12_56
+	ld.w	$s6, $sp, 36
+	addi.w	$a0, $s4, 0
+	bne	$a0, $s6, .LBB12_56
 # %bb.55:
 	move	$s1, $s2
 	b	.LBB12_61
 .LBB12_56:
 	slti	$a1, $s3, -1
 	slli.d	$a0, $a0, 2
-	maskeqz	$a2, $s8, $a1
+	maskeqz	$a2, $s5, $a1
 	masknez	$a0, $a0, $a1
 	or	$a0, $a2, $a0
 .Ltmp61:
@@ -2338,8 +2324,7 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 .Ltmp62:
 # %bb.57:                               # %.noexc56
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB12_59
+	blez	$s6, .LBB12_59
 # %bb.58:                               # %._crit_edge.thread.i.i54
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2352,7 +2337,7 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	st.d	$s1, $sp, 24
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s1, $a0
-	st.w	$s5, $sp, 36
+	st.w	$s4, $sp, 36
 .LBB12_61:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i50.preheader
 	move	$a0, $fp
 	.p2align	4, , 16
@@ -2366,15 +2351,15 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	bnez	$a1, .LBB12_62
 # %bb.63:                               # %_ZN11CStringBaseIwEaSERKS0_.exit57
 	st.w	$s3, $sp, 32
-	ori	$s5, $zero, 47
-	ori	$s6, $zero, 2
+	ori	$s4, $zero, 47
+	ori	$s5, $zero, 2
 	b	.LBB12_67
 	.p2align	4, , 16
 .LBB12_64:                              #   in Loop: Header=BB12_67 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	move	$s3, $zero
-	st.w	$s6, $a0, 0
+	st.w	$s5, $a0, 0
 	beqz	$s1, .LBB12_66
 .LBB12_65:                              #   in Loop: Header=BB12_67 Depth=1
 	move	$a0, $s1
@@ -2395,7 +2380,7 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	alsl.d	$a2, $a2, $a1, 2
 	ld.w	$a3, $a2, 4
 	addi.d	$a2, $a2, 4
-	bne	$a3, $s5, .LBB12_70
+	bne	$a3, $s4, .LBB12_70
 # %bb.69:                               #   in Loop: Header=BB12_67 Depth=1
 	move	$a4, $a2
 	b	.LBB12_72
@@ -2408,13 +2393,13 @@ _ZN8NWindows5NFile10NDirectory22CreateComplexDirectoryEPKw: # @_ZN8NWindows5NFil
 	ld.w	$a3, $a2, 4
 	addi.d	$a4, $a2, 4
 	move	$a2, $a4
-	bne	$a3, $s5, .LBB12_70
+	bne	$a3, $s4, .LBB12_70
 .LBB12_72:                              # %_ZNK11CStringBaseIwE4FindEwi.exit
                                         #   in Loop: Header=BB12_67 Depth=1
 	sub.d	$a1, $a4, $a1
 	srli.d	$a1, $a1, 2
 	addi.w	$s0, $a1, 0
-	blt	$s8, $s0, .LBB12_74
+	bgez	$s0, .LBB12_74
 .LBB12_73:                              # %_ZNK11CStringBaseIwE4FindEwi.exit.thread
                                         #   in Loop: Header=BB12_67 Depth=1
 	move	$s0, $a0
@@ -2652,7 +2637,6 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2660,28 +2644,25 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a0
-	ori	$s2, $zero, 0
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 4
-	st.d	$a0, $sp, 136
+	st.d	$a0, $sp, 144
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $zero
 	ld.w	$s1, $fp, 8
-	st.d	$a1, $sp, 128
+	st.d	$a1, $sp, 136
 	st.w	$zero, $a1, 0
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a1, $s1, 31, 0
 	addi.d	$s0, $a1, 1
-	lu32i.d	$s2, 1
-	and	$a1, $s0, $s2
+	slli.d	$a1, $s0, 31
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-	vst	$vr0, $sp, 72
-	bnez	$a1, .LBB14_3
+	vst	$vr0, $sp, 80
+	bltz	$a1, .LBB14_3
 # %bb.1:
 	addi.w	$a0, $s0, 0
 	slti	$a1, $s1, -1
@@ -2695,12 +2676,12 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	jirl	$ra, $ra, 0
 .Ltmp77:
 # %bb.2:                                # %.noexc
-	st.d	$a0, $sp, 72
+	st.d	$a0, $sp, 80
 	st.w	$zero, $a0, 0
-	st.w	$s0, $sp, 84
+	st.w	$s0, $sp, 92
 .LBB14_3:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
 	ld.d	$a1, $fp, 0
-	addi.d	$s0, $sp, 128
+	addi.d	$s0, $sp, 136
 	.p2align	4, , 16
 .LBB14_4:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
@@ -2710,23 +2691,21 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	move	$a0, $a3
 	bnez	$a2, .LBB14_4
 # %bb.5:                                # %_ZN11CStringBaseIwEC2ERKS0_.exit.i
-	st.w	$s1, $sp, 80
+	st.w	$s1, $sp, 88
 .Ltmp79:
-	addi.d	$a0, $sp, 72
+	addi.d	$a0, $sp, 80
 	ori	$a1, $zero, 47
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLEw)
 	jirl	$ra, $ra, 0
 .Ltmp80:
 # %bb.6:                                # %_ZplIwE11CStringBaseIT_ERKS2_S1_.exit
-	ld.w	$s1, $sp, 80
+	ld.w	$s1, $sp, 88
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
-	vst	$vr0, $sp, 160
-	beqz	$a0, .LBB14_8
+	vst	$vr0, $sp, 168
+	bgez	$a0, .LBB14_8
 # %bb.7:
 	move	$a0, $zero
 	b	.LBB14_10
@@ -2743,11 +2722,11 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	jirl	$ra, $ra, 0
 .Ltmp83:
 # %bb.9:                                # %.noexc25
-	st.d	$a0, $sp, 160
+	st.d	$a0, $sp, 168
 	st.w	$zero, $a0, 0
-	st.w	$s2, $sp, 172
+	st.w	$s2, $sp, 180
 .LBB14_10:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i19
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 80
 	.p2align	4, , 16
 .LBB14_11:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
@@ -2757,39 +2736,37 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	move	$a0, $a3
 	bnez	$a2, .LBB14_11
 # %bb.12:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i23
-	st.w	$s1, $sp, 168
+	st.w	$s1, $sp, 176
 .Ltmp85:
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 168
 	ori	$a1, $zero, 42
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLEw)
 	jirl	$ra, $ra, 0
 .Ltmp86:
 # %bb.13:                               # %_ZplIwE11CStringBaseIT_ERKS2_S1_.exit28
 .Ltmp88:
-	addi.d	$a0, $sp, 16
-	addi.d	$a1, $sp, 160
+	addi.d	$a0, $sp, 24
+	addi.d	$a1, $sp, 168
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile5NFind12CEnumeratorWC2ERK11CStringBaseIwE)
 	jirl	$ra, $ra, 0
 .Ltmp89:
 # %bb.14:
-	ld.d	$a0, $sp, 160
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB14_16
 # %bb.15:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_16:                              # %_ZN11CStringBaseIwED2Ev.exit
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
-	ori	$s4, $zero, 2
-	addi.w	$s5, $zero, -1
+	ori	$s3, $zero, 2
+	addi.w	$s4, $zero, -1
 	b	.LBB14_20
 	.p2align	4, , 16
 .LBB14_17:                              #   in Loop: Header=BB14_20 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	move	$s1, $zero
-	st.w	$s4, $a0, 0
-	ld.d	$a0, $sp, 144
+	st.w	$s3, $a0, 0
+	ld.d	$a0, $sp, 152
 	beqz	$a0, .LBB14_19
 .LBB14_18:                              #   in Loop: Header=BB14_20 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2802,8 +2779,8 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
                                         #     Child Loop BB14_41 Depth 2
                                         #     Child Loop BB14_30 Depth 2
 .Ltmp91:
-	addi.d	$a0, $sp, 16
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 24
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile5NFind12CEnumeratorW4NextERNS1_10CFileInfoWE)
 	jirl	$ra, $ra, 0
 .Ltmp92:
@@ -2811,29 +2788,29 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	beqz	$a0, .LBB14_54
 # %bb.22:                               # %.noexc29
                                         #   in Loop: Header=BB14_20 Depth=1
-	ld.bu	$a0, $sp, 120
+	ld.bu	$a0, $sp, 128
 	andi	$a0, $a0, 16
 	bnez	$a0, .LBB14_25
 # %bb.23:                               #   in Loop: Header=BB14_20 Depth=1
-	ld.w	$s1, $sp, 80
+	ld.w	$s1, $sp, 88
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s3
+	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
-	vst	$vr0, $sp, 144
-	beqz	$a0, .LBB14_27
+	vst	$vr0, $sp, 152
+	bgez	$a0, .LBB14_27
 # %bb.24:                               #   in Loop: Header=BB14_20 Depth=1
 	move	$a0, $zero
 	b	.LBB14_29
 	.p2align	4, , 16
 .LBB14_25:                              #   in Loop: Header=BB14_20 Depth=1
-	ld.w	$s1, $sp, 80
+	ld.w	$s1, $sp, 88
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s3
+	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
-	vst	$vr0, $sp, 160
-	beqz	$a0, .LBB14_38
+	vst	$vr0, $sp, 168
+	bgez	$a0, .LBB14_38
 # %bb.26:                               #   in Loop: Header=BB14_20 Depth=1
 	move	$a0, $zero
 	b	.LBB14_40
@@ -2842,7 +2819,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	addi.w	$a0, $s2, 0
 	slti	$a1, $s1, -1
 	slli.d	$a0, $a0, 2
-	maskeqz	$a2, $s5, $a1
+	maskeqz	$a2, $s4, $a1
 	masknez	$a0, $a0, $a1
 	or	$a0, $a2, $a0
 .Ltmp109:
@@ -2851,12 +2828,12 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 .Ltmp110:
 # %bb.28:                               # %.noexc54
                                         #   in Loop: Header=BB14_20 Depth=1
-	st.d	$a0, $sp, 144
+	st.d	$a0, $sp, 152
 	st.w	$zero, $a0, 0
-	st.w	$s2, $sp, 156
+	st.w	$s2, $sp, 164
 .LBB14_29:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i48
                                         #   in Loop: Header=BB14_20 Depth=1
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 80
 	.p2align	4, , 16
 .LBB14_30:                              #   Parent Loop BB14_20 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -2868,29 +2845,29 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	bnez	$a2, .LBB14_30
 # %bb.31:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i52
                                         #   in Loop: Header=BB14_20 Depth=1
-	st.w	$s1, $sp, 152
+	st.w	$s1, $sp, 160
 .Ltmp112:
-	addi.d	$a0, $sp, 144
+	addi.d	$a0, $sp, 152
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp113:
 # %bb.32:                               # %.noexc31
                                         #   in Loop: Header=BB14_20 Depth=1
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 152
 	beqz	$a1, .LBB14_17
 # %bb.33:                               #   in Loop: Header=BB14_20 Depth=1
 	ld.w	$a0, $a1, 0
 	beqz	$a0, .LBB14_17
 # %bb.34:                               #   in Loop: Header=BB14_20 Depth=1
 .Ltmp115:
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(_Z17nameWindowToUnix2PKw)
 	jirl	$ra, $ra, 0
 .Ltmp116:
 # %bb.35:                               # %.noexc69
                                         #   in Loop: Header=BB14_20 Depth=1
-	ld.d	$s1, $sp, 160
+	ld.d	$s1, $sp, 168
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(remove)
 	jirl	$ra, $ra, 0
@@ -2903,7 +2880,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 .LBB14_37:                              # %_ZN11CStringBaseIcED2Ev.exit.i
                                         #   in Loop: Header=BB14_20 Depth=1
 	sltui	$s1, $s2, 1
-	ld.d	$a0, $sp, 144
+	ld.d	$a0, $sp, 152
 	bnez	$a0, .LBB14_18
 	b	.LBB14_19
 	.p2align	4, , 16
@@ -2911,7 +2888,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	addi.w	$a0, $s2, 0
 	slti	$a1, $s1, -1
 	slli.d	$a0, $a0, 2
-	maskeqz	$a2, $s5, $a1
+	maskeqz	$a2, $s4, $a1
 	masknez	$a0, $a0, $a1
 	or	$a0, $a2, $a0
 .Ltmp101:
@@ -2920,12 +2897,12 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 .Ltmp102:
 # %bb.39:                               # %.noexc65
                                         #   in Loop: Header=BB14_20 Depth=1
-	st.d	$a0, $sp, 160
+	st.d	$a0, $sp, 168
 	st.w	$zero, $a0, 0
-	st.w	$s2, $sp, 172
+	st.w	$s2, $sp, 180
 .LBB14_40:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i59
                                         #   in Loop: Header=BB14_20 Depth=1
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 80
 	.p2align	4, , 16
 .LBB14_41:                              #   Parent Loop BB14_20 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -2937,9 +2914,9 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	bnez	$a2, .LBB14_41
 # %bb.42:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i63
                                         #   in Loop: Header=BB14_20 Depth=1
-	st.w	$s1, $sp, 168
+	st.w	$s1, $sp, 176
 .Ltmp103:
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 168
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
 	jirl	$ra, $ra, 0
@@ -2947,13 +2924,13 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 # %bb.43:                               # %.noexc30
                                         #   in Loop: Header=BB14_20 Depth=1
 .Ltmp106:
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE)
 	jirl	$ra, $ra, 0
 .Ltmp107:
 # %bb.44:                               #   in Loop: Header=BB14_20 Depth=1
 	move	$s1, $a0
-	ld.d	$a0, $sp, 160
+	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB14_46
 # %bb.45:                               #   in Loop: Header=BB14_20 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2962,50 +2939,50 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
                                         #   in Loop: Header=BB14_20 Depth=1
 	bnez	$s1, .LBB14_20
 .LBB14_47:
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 64
 	beqz	$a0, .LBB14_49
 # %bb.48:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_49:                              # %_ZN11CStringBaseIwED2Ev.exit.i35
 .Ltmp118:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile5NFind9CFindFile5CloseEv)
 	jirl	$ra, $ra, 0
 .Ltmp119:
 # %bb.50:
-	ld.d	$a0, $sp, 40
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB14_52
 # %bb.51:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_52:                              # %_ZN11CStringBaseIcED2Ev.exit.i.i
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 32
 	beqz	$a0, .LBB14_69
 # %bb.53:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	b	.LBB14_69
 .LBB14_54:                              # %.critedge
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 64
 	beqz	$a0, .LBB14_56
 # %bb.55:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_56:                              # %_ZN11CStringBaseIwED2Ev.exit.i36
 .Ltmp93:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile5NFind9CFindFile5CloseEv)
 	jirl	$ra, $ra, 0
 .Ltmp94:
 # %bb.57:
-	ld.d	$a0, $sp, 40
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB14_59
 # %bb.58:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_59:                              # %_ZN11CStringBaseIcED2Ev.exit.i.i37
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 32
 	beqz	$a0, .LBB14_61
 # %bb.60:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -3027,12 +3004,12 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	beqz	$a0, .LBB14_74
 # %bb.65:
 .Ltmp98:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(_Z17nameWindowToUnix2PKw)
 	jirl	$ra, $ra, 0
 .Ltmp99:
 # %bb.66:                               # %.noexc40
-	ld.d	$fp, $sp, 16
+	ld.d	$fp, $sp, 24
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(rmdir)
 	jirl	$ra, $ra, 0
@@ -3044,25 +3021,24 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	jirl	$ra, $ra, 0
 .LBB14_68:                              # %_ZN11CStringBaseIcED2Ev.exit.i.i39
 	sltui	$fp, $s0, 1
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 80
 	bnez	$a0, .LBB14_70
 	b	.LBB14_71
 .LBB14_69:
 	move	$fp, $zero
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB14_71
 .LBB14_70:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_71:                              # %_ZN11CStringBaseIwED2Ev.exit41
-	ld.d	$a0, $sp, 128
+	ld.d	$a0, $sp, 136
 	beqz	$a0, .LBB14_73
 # %bb.72:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_73:                              # %_ZN8NWindows5NFile5NFind10CFileInfoWD2Ev.exit
 	move	$a0, $fp
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
@@ -3078,7 +3054,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	move	$fp, $zero
 	ori	$a1, $zero, 2
 	st.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 80
 	bnez	$a0, .LBB14_70
 	b	.LBB14_71
 .LBB14_75:
@@ -3107,7 +3083,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 .LBB14_82:
 .Ltmp87:
 .LBB14_83:
-	ld.d	$a1, $sp, 160
+	ld.d	$a1, $sp, 168
 	move	$fp, $a0
 	beqz	$a1, .LBB14_96
 # %bb.84:
@@ -3117,7 +3093,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	b	.LBB14_96
 .LBB14_85:
 .Ltmp81:
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 80
 	move	$fp, $a0
 	beqz	$a1, .LBB14_98
 # %bb.86:
@@ -3125,11 +3101,11 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 	b	.LBB14_97
 .LBB14_87:
 .Ltmp117:
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 152
 	b	.LBB14_92
 .LBB14_88:
 .Ltmp114:
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 152
 	b	.LBB14_92
 .LBB14_89:
 .Ltmp108:
@@ -3137,7 +3113,7 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 .LBB14_90:
 .Ltmp105:
 .LBB14_91:
-	ld.d	$a1, $sp, 160
+	ld.d	$a1, $sp, 168
 .LBB14_92:
 	move	$fp, $a0
 	beqz	$a1, .LBB14_95
@@ -3150,17 +3126,17 @@ _ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE: 
 .Ltmp111:
 	move	$fp, $a0
 .LBB14_95:                              # %.body32
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile5NFind12CEnumeratorWD2Ev)
 	jirl	$ra, $ra, 0
 .LBB14_96:
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB14_98
 .LBB14_97:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_98:                              # %.body
-	ld.d	$a0, $sp, 128
+	ld.d	$a0, $sp, 136
 	beqz	$a0, .LBB14_100
 # %bb.99:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -3332,11 +3308,9 @@ _ZN8NWindows5NFile5NFind12CEnumeratorWC2ERK11CStringBaseIwE: # @_ZN8NWindows5NFi
 	st.b	$zero, $a1, 0
 	bstrpick.d	$a1, $s1, 31, 0
 	addi.d	$s3, $a1, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $s3, $a1
+	slli.d	$a1, $s3, 31
 	st.w	$s2, $fp, 36
-	bnez	$a1, .LBB15_4
+	bltz	$a1, .LBB15_4
 # %bb.2:
 	addi.w	$a0, $s3, 0
 	slti	$a1, $s1, -1
@@ -3585,11 +3559,9 @@ _ZN8NWindows5NFile10NDirectory12MySearchPathEPKwS3_S3_R11CStringBaseIwE: # @_ZN8
 	move	$s1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s6, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s6, $a0
+	slli.d	$a0, $s6, 31
 	addi.w	$s2, $s6, 0
-	beqz	$a0, .LBB18_6
+	bgez	$a0, .LBB18_6
 # %bb.5:
 	move	$s0, $zero
 	b	.LBB18_7
@@ -3653,9 +3625,8 @@ _ZN8NWindows5NFile10NDirectory12MySearchPathEPKwS3_S3_R11CStringBaseIwE: # @_ZN8
 .Ltmp134:
 # %bb.13:
 	ld.w	$a0, $sp, 40
-	ori	$a1, $zero, 1
 	addi.w	$s4, $s1, 0
-	blt	$a0, $a1, .LBB18_15
+	blez	$a0, .LBB18_15
 # %bb.14:
 	ori	$a1, $zero, 63
 	slt	$a1, $a1, $s4
@@ -3850,8 +3821,7 @@ _ZN8NWindows5NFile10NDirectory12MySearchPathEPKwS3_S3_R11CStringBaseIwE: # @_ZN8
 .Ltmp143:
 # %bb.50:                               # %.noexc43
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB18_52
+	blez	$s4, .LBB18_52
 # %bb.51:                               # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4081,9 +4051,8 @@ _ZN8NWindows5NFile10NDirectory13MyGetTempPathER11CStringBaseIwE: # @_ZN8NWindows
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s2, $a1, .LBB19_4
+	blez	$s2, .LBB19_4
 # %bb.3:                                # %._crit_edge.thread.i.i
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4181,8 +4150,7 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwS4_R11CStringBaseIwE: # @_ZN8
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB21_8
+	beqz	$a0, .LBB21_8
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	beqz	$a1, .LBB21_6
@@ -4241,9 +4209,8 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwS4_R11CStringBaseIwE: # @_ZN8
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s6, $a0
-	blt	$s1, $a1, .LBB21_12
+	blez	$s1, .LBB21_12
 # %bb.11:                               # %._crit_edge.thread.i.i
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4401,9 +4368,8 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwS4_R11CStringBaseIwE: # @_ZN8
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s1, $a1, .LBB21_30
+	blez	$s1, .LBB21_30
 # %bb.29:                               # %._crit_edge.thread.i.i30
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4519,7 +4485,7 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6RemoveEv: # @_ZN8NWindows5NFile10NDirec
 	move	$fp, $a0
 	ld.bu	$a1, $a0, 0
 	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB22_8
+	beqz	$a1, .LBB22_8
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	beqz	$a1, .LBB22_6
@@ -4633,12 +4599,11 @@ _ZN11CStringBaseIwEpLEPKw:              # @_ZN11CStringBaseIwEpLEPKw
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s5, $a1, .LBB23_13
+	blez	$s5, .LBB23_13
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s3, $a1, .LBB23_11
+	blez	$s3, .LBB23_11
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -4736,7 +4701,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4744,7 +4708,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -4766,8 +4729,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -4786,11 +4749,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB24_11
+	blez	$s4, .LBB24_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB24_12
+	blez	$s0, .LBB24_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -4860,7 +4822,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -4937,12 +4898,11 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$s4, $a2, .LBB25_11
+	blez	$s4, .LBB25_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a1, $s3, 0
-	blt	$s1, $a2, .LBB25_12
+	blez	$s1, .LBB25_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a0, $zero
@@ -5189,7 +5149,6 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5198,29 +5157,27 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
+	pcalau12i	$a2, %pc_hi20(.LCPI27_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI27_0)
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.LCPI27_1)
+	vld	$vr0, $a2, %pc_lo12(.LCPI27_1)
+	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	move	$fp, $a1
 	move	$s0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI27_0)
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI27_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI27_1)
-	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	ori	$s4, $zero, 4
-	ori	$s5, $zero, 1
-	ori	$s6, $zero, 17
+	ori	$s5, $zero, 17
 	.p2align	4, , 16
 .LBB27_1:                               # %.backedge
                                         # =>This Inner Loop Header: Depth=1
-	st.b	$zero, $sp, 32
-	st.d	$zero, $sp, 48
+	st.b	$zero, $sp, 40
+	st.d	$zero, $sp, 56
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 40
+	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
-	st.w	$s4, $sp, 52
+	st.w	$s4, $sp, 60
 .Ltmp156:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -5245,7 +5202,7 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $s2, 16
 .Ltmp160:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	move	$s1, $s2
 	move	$a1, $s2
 	move	$a2, $s0
@@ -5260,23 +5217,23 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	jirl	$ra, $ra, 0
 	beqz	$s3, .LBB27_20
 # %bb.5:                                #   in Loop: Header=BB27_1 Depth=1
-	ld.bu	$a0, $sp, 32
-	bne	$a0, $s5, .LBB27_12
+	ld.bu	$a0, $sp, 40
+	beqz	$a0, .LBB27_12
 # %bb.6:                                #   in Loop: Header=BB27_1 Depth=1
-	ld.d	$a1, $sp, 40
+	ld.d	$a1, $sp, 48
 	beqz	$a1, .LBB27_19
 # %bb.7:                                #   in Loop: Header=BB27_1 Depth=1
 	ld.w	$a0, $a1, 0
 	beqz	$a0, .LBB27_19
 # %bb.8:                                #   in Loop: Header=BB27_1 Depth=1
 .Ltmp163:
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 64
 	pcaddu18i	$ra, %call36(_Z17nameWindowToUnix2PKw)
 	jirl	$ra, $ra, 0
 .Ltmp164:
 # %bb.9:                                # %.noexc8
                                         #   in Loop: Header=BB27_1 Depth=1
-	ld.d	$s2, $sp, 56
+	ld.d	$s2, $sp, 64
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(remove)
 	jirl	$ra, $ra, 0
@@ -5289,11 +5246,11 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 .LBB27_11:                              # %_ZN8NWindows5NFile10NDirectory9CTempFile6RemoveEv.exit
                                         #   in Loop: Header=BB27_1 Depth=1
 	sltu	$a0, $zero, $s1
-	st.b	$a0, $sp, 32
+	st.b	$a0, $sp, 40
 	bnez	$s1, .LBB27_20
 .LBB27_12:                              # %_ZN8NWindows5NFile10NDirectory9CTempFile6RemoveEv.exit.thread
                                         #   in Loop: Header=BB27_1 Depth=1
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory9CTempFileD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
@@ -5307,10 +5264,10 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	ld.w	$a0, $a1, 0
 	beqz	$a0, .LBB27_21
 # %bb.15:                               #   in Loop: Header=BB27_1 Depth=1
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_Z17nameWindowToUnix2PKw)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 40
 	ori	$a1, $zero, 448
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(mkdir)
@@ -5329,7 +5286,7 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s6, .LBB27_1
+	beq	$a0, $s5, .LBB27_1
 	b	.LBB27_22
 .LBB27_19:                              # %_ZN8NWindows5NFile10NDirectory9CTempFile6RemoveEv.exit.thread11
 	pcaddu18i	$ra, %call36(__errno_location)
@@ -5337,9 +5294,9 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	ori	$a1, $zero, 2
 	st.w	$a1, $a0, 0
 	ori	$a0, $zero, 1
-	st.b	$a0, $sp, 32
+	st.b	$a0, $sp, 40
 .LBB27_20:                              # %.thread
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory9CTempFileD2Ev)
 	jirl	$ra, $ra, 0
 	move	$s1, $zero
@@ -5352,7 +5309,6 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	st.w	$a1, $a0, 0
 .LBB27_22:                              # %.loopexit
 	move	$a0, $s1
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
@@ -5366,7 +5322,7 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 .LBB27_23:
 .Ltmp165:
 	move	$fp, $a0
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory9CTempFileD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -5378,7 +5334,7 @@ _ZN8NWindows5NFile10NDirectory19CreateTempDirectoryEPKwR11CStringBaseIwE: # @_ZN
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory9CTempFileD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -5453,8 +5409,7 @@ _ZN8NWindows5NFile10NDirectory9CTempFileD2Ev: # @_ZN8NWindows5NFile10NDirectory9
 	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB28_9
+	beqz	$a0, .LBB28_9
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	beqz	$a1, .LBB28_7
@@ -5563,9 +5518,8 @@ _ZN8NWindows5NFile10NDirectory14CTempDirectory6CreateEPKw: # @_ZN8NWindows5NFile
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 0
 	move	$s0, $a1
-	ori	$a1, $zero, 1
 	addi.d	$s1, $fp, 8
-	bne	$a0, $a1, .LBB29_2
+	beqz	$a0, .LBB29_2
 # %bb.1:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory27RemoveDirectoryWithSubItemsERK11CStringBaseIwE)
@@ -5726,11 +5680,9 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s1, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s1, $a0
+	slli.d	$a0, $s1, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB32_13
+	bgez	$a0, .LBB32_13
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB32_14

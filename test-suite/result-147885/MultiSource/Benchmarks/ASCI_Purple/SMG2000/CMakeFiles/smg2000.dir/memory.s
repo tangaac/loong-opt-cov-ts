@@ -29,8 +29,7 @@ hypre_OutOfMemory:                      # @hypre_OutOfMemory
 	.type	hypre_MAlloc,@function
 hypre_MAlloc:                           # @hypre_MAlloc
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
@@ -75,8 +74,7 @@ hypre_CAlloc:                           # @hypre_CAlloc
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	mul.w	$fp, $a1, $a0
-	ori	$a2, $zero, 1
-	blt	$fp, $a2, .LBB2_4
+	blez	$fp, .LBB2_4
 # %bb.1:
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
@@ -117,8 +115,7 @@ hypre_ReAlloc:                          # @hypre_ReAlloc
 	move	$fp, $a1
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
-	blt	$fp, $a2, .LBB3_3
+	blez	$fp, .LBB3_3
 # %bb.1:
 	bnez	$a0, .LBB3_3
 # %bb.2:

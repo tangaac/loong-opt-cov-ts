@@ -18,8 +18,7 @@ res_InsertClauseIndex:                  # @res_InsertClauseIndex
 	ld.w	$a3, $fp, 72
 	add.d	$a0, $a2, $a0
 	add.w	$a0, $a0, $a3
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	pcalau12i	$a1, %got_pc_hi20(cont_LEFTCONTEXT)
@@ -67,8 +66,7 @@ res_DeleteClauseIndex:                  # @res_DeleteClauseIndex
 	ld.w	$a3, $fp, 72
 	add.d	$a0, $a2, $a0
 	add.w	$a0, $a0, $a3
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_4
+	blez	$a0, .LBB1_4
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	pcalau12i	$a1, %got_pc_hi20(cont_LEFTCONTEXT)
@@ -187,8 +185,7 @@ res_HasTautology:                       # @res_HasTautology
 	ld.w	$a2, $fp, 72
 	add.d	$a0, $a1, $a0
 	add.w	$s2, $a0, $a2
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB4_9
+	blez	$s2, .LBB4_9
 # %bb.1:                                # %.lr.ph.us.preheader
 	move	$s3, $zero
 	move	$s4, $zero
@@ -279,8 +276,7 @@ res_BackSubWithLength:                  # @res_BackSubWithLength
 	ld.w	$a3, $fp, 72
 	add.d	$a0, $a2, $a0
 	add.w	$s4, $a0, $a3
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB5_13
+	blez	$s4, .LBB5_13
 # %bb.1:                                # %.lr.ph53
 	move	$s0, $a1
 	pcalau12i	$a0, %got_pc_hi20(cont_LEFTCONTEXT)

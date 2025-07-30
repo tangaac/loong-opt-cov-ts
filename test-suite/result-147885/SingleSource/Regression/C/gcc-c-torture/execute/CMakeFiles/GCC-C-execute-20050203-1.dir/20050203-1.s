@@ -14,8 +14,7 @@ main:                                   # @main
 	ld.b	$fp, $sp, 15
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -1
-	bge	$a0, $fp, .LBB0_2
+	bltz	$fp, .LBB0_2
 # %bb.1:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0

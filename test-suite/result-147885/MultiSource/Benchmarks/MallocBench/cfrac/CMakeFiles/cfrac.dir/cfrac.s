@@ -139,7 +139,7 @@ pfKnuthEx28:                            # @pfKnuthEx28
 .LBB0_12:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_14
 # %bb.13:
@@ -150,7 +150,7 @@ pfKnuthEx28:                            # @pfKnuthEx28
 # %bb.15:
 	ld.h	$a0, $s0, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s0, 0
 	beqz	$a1, .LBB0_19
 .LBB0_16:
@@ -234,7 +234,7 @@ logf_:                                  # @logf_
 # %bb.3:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB1_5
 # %bb.4:
@@ -435,7 +435,7 @@ findk:                                  # @findk
 	ld.h	$a0, $fp, 0
 	fmov.d	$fs1, $fa0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB2_11
 # %bb.13:                               #   in Loop: Header=BB2_12 Depth=2
@@ -536,7 +536,7 @@ findk:                                  # @findk
 # %bb.24:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB2_26
 # %bb.25:
@@ -878,7 +878,7 @@ main:                                   # @main
 # %bb.24:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB3_26
 # %bb.25:
@@ -890,7 +890,7 @@ main:                                   # @main
 # %bb.27:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB3_29
 # %bb.28:

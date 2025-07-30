@@ -347,8 +347,8 @@ fourn:                                  # @fourn
 	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
 	fst.d	$fs3, $sp, 8                    # 8-byte Folded Spill
-	pcalau12i	$a4, %pc_hi20(main.nsize.0)
-	ld.bu	$a3, $a4, %pc_lo12(main.nsize.0)
+	pcalau12i	$s2, %pc_hi20(main.nsize.0)
+	ld.bu	$a3, $s2, %pc_lo12(main.nsize.0)
 	pcalau12i	$a2, %pc_hi20(main.nsize.1)
 	ld.bu	$a2, $a2, %pc_lo12(main.nsize.1)
 	move	$fp, $a0
@@ -364,7 +364,6 @@ fourn:                                  # @fourn
 	slli.d	$s0, $s1, 4
 	beqz	$a2, .LBB1_10
 # %bb.1:                                # %.lr.ph19
-	st.d	$a4, $sp, 0                     # 8-byte Folded Spill
 	slli.d	$s4, $a2, 9
 	mul.d	$s5, $s4, $a0
 	addi.d	$a0, $fp, 16
@@ -433,7 +432,6 @@ fourn:                                  # @fourn
 .LBB1_11:                               # %.lr.ph32
 	addi.d	$s6, $fp, 8
 	ori	$s7, $zero, 2
-	ori	$s8, $zero, 1
 	movgr2fr.d	$fs3, $zero
 	b	.LBB1_13
 	.p2align	4, , 16
@@ -443,9 +441,9 @@ fourn:                                  # @fourn
 .LBB1_13:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_16 Depth 2
                                         #       Child Loop BB1_18 Depth 3
-	move	$s2, $s7
+	move	$s8, $s7
 	slli.w	$s7, $s7, 1
-	slli.d	$a0, $s2, 33
+	slli.d	$a0, $s8, 33
 	srai.d	$a0, $a0, 33
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
@@ -458,14 +456,14 @@ fourn:                                  # @fourn
 	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
-	blt	$s2, $s8, .LBB1_12
+	blez	$s8, .LBB1_12
 # %bb.14:                               # %.preheader1.lr.ph
                                         #   in Loop: Header=BB1_13 Depth=1
 	vldi	$vr1, -896
 	fmul.d	$fa1, $fs0, $fa1
 	fmul.d	$fa1, $fs0, $fa1
 	fneg.d	$fa2, $fa0
-	slli.d	$a0, $s2, 3
+	slli.d	$a0, $s8, 3
 	slli.d	$a1, $s7, 3
 	ori	$a2, $zero, 1
 	vldi	$vr4, -912
@@ -486,7 +484,7 @@ fourn:                                  # @fourn
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 16
                                         # kill: def $f4_64 killed $f4_64 def $vr4
-	blt	$s2, $a4, .LBB1_12
+	blt	$s8, $a4, .LBB1_12
 .LBB1_16:                               # %.preheader.preheader
                                         #   Parent Loop BB1_13 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -524,8 +522,7 @@ fourn:                                  # @fourn
 	bge	$s5, $a6, .LBB1_18
 	b	.LBB1_15
 .LBB1_19:                               # %._crit_edge33.loopexit
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	ld.bu	$a1, $a0, %pc_lo12(main.nsize.0)
+	ld.bu	$a1, $s2, %pc_lo12(main.nsize.0)
 	slli.d	$a0, $a1, 8
 	mul.d	$a1, $a1, $s1
 	slli.d	$a1, $a1, 8
@@ -626,21 +623,20 @@ fourn:                                  # @fourn
 # %bb.34:                               # %.lr.ph32.1
 	addi.d	$s5, $fp, 8
 	addi.d	$fp, $fp, 16
-	ori	$s6, $zero, 1
 	movgr2fr.d	$fs3, $zero
-	move	$s7, $s1
+	move	$s6, $s1
 	b	.LBB1_36
 	.p2align	4, , 16
 .LBB1_35:                               # %.loopexit.1
                                         #   in Loop: Header=BB1_36 Depth=1
-	bge	$s7, $s2, .LBB1_45
+	bge	$s6, $s2, .LBB1_45
 .LBB1_36:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_39 Depth 2
                                         #       Child Loop BB1_42 Depth 3
                                         #         Child Loop BB1_44 Depth 4
-	addi.w	$s8, $s7, 0
-	slli.w	$s7, $s7, 1
-	div.w	$a0, $s7, $s1
+	addi.w	$s7, $s6, 0
+	slli.w	$s6, $s6, 1
+	div.w	$a0, $s6, $s1
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	fdiv.d	$fs1, $fs2, $fa0
@@ -652,15 +648,15 @@ fourn:                                  # @fourn
 	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
-	blt	$s8, $s6, .LBB1_35
+	blez	$s7, .LBB1_35
 # %bb.37:                               # %.preheader1.lr.ph.1
                                         #   in Loop: Header=BB1_36 Depth=1
 	vldi	$vr1, -896
 	fmul.d	$fa1, $fs0, $fa1
 	fmul.d	$fa1, $fs0, $fa1
 	fneg.d	$fa2, $fa0
-	slli.d	$a0, $s7, 3
-	alsl.d	$a1, $s8, $fp, 3
+	slli.d	$a0, $s6, 3
+	alsl.d	$a1, $s7, $fp, 3
 	ori	$a2, $zero, 1
 	vldi	$vr4, -912
 	move	$a3, $s5
@@ -681,7 +677,7 @@ fourn:                                  # @fourn
 	add.d	$a3, $a3, $s0
 	add.d	$a1, $a1, $s0
                                         # kill: def $f4_64 killed $f4_64 def $vr4
-	blt	$s8, $a4, .LBB1_35
+	blt	$s7, $a4, .LBB1_35
 .LBB1_39:                               # %.preheader1.1
                                         #   Parent Loop BB1_36 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -740,7 +736,7 @@ fourn:                                  # @fourn
 	fstx.d	$fa6, $a7, $t2
 	fadd.d	$fa5, $fa5, $ft0
 	fst.d	$fa5, $t5, 8
-	add.d	$t3, $t3, $s7
+	add.d	$t3, $t3, $s6
 	add.d	$t2, $t2, $a0
 	bge	$s3, $t3, .LBB1_44
 	b	.LBB1_41

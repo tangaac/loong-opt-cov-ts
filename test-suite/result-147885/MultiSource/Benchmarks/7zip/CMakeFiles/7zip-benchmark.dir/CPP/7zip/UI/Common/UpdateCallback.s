@@ -1147,8 +1147,7 @@ _ZN22CArchiveUpdateCallback9GetStreamEjPP19ISequentialInStream: # @_ZN22CArchive
 # %bb.5:
 	alsl.d	$s1, $s1, $s0, 4
 	ld.bu	$a0, $s1, 2
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB7_9
+	beqz	$a0, .LBB7_9
 # %bb.6:
 	ld.d	$a0, $fp, 128
 	ld.w	$a1, $s1, 8
@@ -1214,8 +1213,7 @@ _ZN22CArchiveUpdateCallback9GetStreamEjPP19ISequentialInStream: # @_ZN22CArchive
 	bnez	$a0, .LBB7_32
 # %bb.15:
 	ld.bu	$a0, $fp, 113
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB7_19
+	beqz	$a0, .LBB7_19
 # %bb.16:
 .Ltmp113:
 	ori	$a0, $zero, 16
@@ -1892,7 +1890,7 @@ _ZN22CArchiveUpdateCallback15GetVolumeStreamEjPP20ISequentialOutStream: # @_ZN22
 # %bb.14:                               # %.noexc39
                                         #   in Loop: Header=BB11_7 Depth=1
 	move	$s3, $a0
-	blt	$fp, $s5, .LBB11_16
+	blez	$fp, .LBB11_16
 # %bb.15:                               # %._crit_edge.thread.i.i
                                         #   in Loop: Header=BB11_7 Depth=1
 	move	$a0, $s2
@@ -1931,12 +1929,10 @@ _ZN22CArchiveUpdateCallback15GetVolumeStreamEjPP20ISequentialOutStream: # @_ZN22
 	ld.w	$s1, $s0, 80
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 40
-	beqz	$a0, .LBB11_24
+	bgez	$a0, .LBB11_24
 # %bb.23:
 	move	$a0, $zero
 	b	.LBB11_26
@@ -2338,7 +2334,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2346,7 +2341,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -2368,8 +2362,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -2388,11 +2382,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB12_11
+	blez	$s4, .LBB12_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB12_12
+	blez	$s0, .LBB12_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -2462,7 +2455,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -2539,12 +2531,11 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$s4, $a2, .LBB13_11
+	blez	$s4, .LBB13_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a1, $s3, 0
-	blt	$s1, $a2, .LBB13_12
+	blez	$s1, .LBB13_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a0, $zero

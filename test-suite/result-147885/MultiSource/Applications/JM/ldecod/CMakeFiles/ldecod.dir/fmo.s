@@ -574,65 +574,64 @@ FmoInit:                                # @FmoInit
 	addi.d	$a0, $a0, 4
 	bnez	$a3, .LBB0_83
 .LBB0_84:                               # %._crit_edge.i44.i
-	addi.w	$a6, $a2, -1
-	bltz	$a6, .LBB0_21
+	addi.w	$a5, $a2, -1
+	bltz	$a5, .LBB0_21
 # %bb.85:                               # %.lr.ph11.i.i
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a1, $a0, %got_pc_lo12(img)
-	addi.d	$a0, $fp, 1028
-	ld.d	$a1, $a1, 0
+	ld.d	$a0, $a0, %got_pc_lo12(img)
+	ld.d	$a0, $a0, 0
+	addi.d	$a1, $fp, 1028
 	addi.d	$a2, $fp, 1060
 	ori	$a3, $s3, 1724
-	ori	$a4, $zero, 1
 	b	.LBB0_87
 	.p2align	4, , 16
 .LBB0_86:                               # %.loopexit.i.i
                                         #   in Loop: Header=BB0_87 Depth=1
-	addi.d	$a6, $a5, -1
-	blt	$a5, $a4, .LBB0_21
+	addi.d	$a5, $a4, -1
+	blez	$a4, .LBB0_21
 .LBB0_87:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_90 Depth 2
                                         #       Child Loop BB0_91 Depth 3
-	move	$a5, $a6
-	slli.d	$a6, $a6, 2
-	ldx.w	$t0, $a0, $a6
-	ldx.w	$t1, $a1, $a3
-	ldx.w	$t2, $a2, $a6
-	div.wu	$a6, $t0, $t1
-	div.wu	$a7, $t2, $t1
-	bltu	$a7, $a6, .LBB0_86
+	move	$a4, $a5
+	slli.d	$a5, $a5, 2
+	ldx.w	$a7, $a1, $a5
+	ldx.w	$t0, $a0, $a3
+	ldx.w	$t1, $a2, $a5
+	div.wu	$a5, $a7, $t0
+	div.wu	$a6, $t1, $t0
+	bltu	$a6, $a5, .LBB0_86
 # %bb.88:                               # %.preheader.lr.ph.i.i
                                         #   in Loop: Header=BB0_87 Depth=1
-	mul.d	$t3, $a6, $t1
-	sub.w	$t0, $t0, $t3
-	mul.d	$t1, $a7, $t1
-	sub.w	$t1, $t2, $t1
-	bltu	$t1, $t0, .LBB0_86
+	mul.d	$t2, $a5, $t0
+	sub.w	$a7, $a7, $t2
+	mul.d	$t0, $a6, $t0
+	sub.w	$t0, $t1, $t0
+	bltu	$t0, $a7, .LBB0_86
 # %bb.89:                               # %.preheader.preheader.i.i
                                         #   in Loop: Header=BB0_87 Depth=1
-	ld.d	$t2, $s2, %pc_lo12(MapUnitToSliceGroupMap)
+	ld.d	$t1, $s2, %pc_lo12(MapUnitToSliceGroupMap)
 	.p2align	4, , 16
 .LBB0_90:                               # %.preheader.i45.i
                                         #   Parent Loop BB0_87 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_91 Depth 3
-	move	$t3, $t0
+	move	$t2, $a7
 	.p2align	4, , 16
 .LBB0_91:                               #   Parent Loop BB0_87 Depth=1
                                         #     Parent Loop BB0_90 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.w	$t4, $a1, $a3
-	mul.d	$t4, $t4, $a6
-	add.d	$t4, $t4, $t3
-	bstrpick.d	$t4, $t4, 31, 0
-	slli.d	$t4, $t4, 2
-	addi.w	$t3, $t3, 1
-	stx.w	$a5, $t2, $t4
-	bgeu	$t1, $t3, .LBB0_91
+	ldx.w	$t3, $a0, $a3
+	mul.d	$t3, $t3, $a5
+	add.d	$t3, $t3, $t2
+	bstrpick.d	$t3, $t3, 31, 0
+	slli.d	$t3, $t3, 2
+	addi.w	$t2, $t2, 1
+	stx.w	$a4, $t1, $t3
+	bgeu	$t0, $t2, .LBB0_91
 # %bb.92:                               # %._crit_edge5.i.i
                                         #   in Loop: Header=BB0_90 Depth=2
-	addi.w	$a6, $a6, 1
-	bgeu	$a7, $a6, .LBB0_90
+	addi.w	$a5, $a5, 1
+	bgeu	$a6, $a5, .LBB0_90
 	b	.LBB0_86
 .LBB0_93:                               # %vector.ph80
 	bstrpick.d	$a3, $s4, 31, 3

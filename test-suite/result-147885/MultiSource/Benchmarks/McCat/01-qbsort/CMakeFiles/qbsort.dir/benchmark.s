@@ -135,7 +135,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $s4, 0
-	blt	$a0, $s8, .LBB1_4
+	blez	$a0, .LBB1_4
 # %bb.7:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_5 Depth=1
 	addi.d	$s4, $s4, 1

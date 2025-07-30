@@ -23,8 +23,7 @@ hypre_BoomerAMGSeqRelax:                # @hypre_BoomerAMGSeqRelax
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB0_15
+	blez	$fp, .LBB0_15
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 4
 	move	$a1, $zero

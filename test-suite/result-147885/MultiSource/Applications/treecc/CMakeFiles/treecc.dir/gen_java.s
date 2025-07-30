@@ -84,10 +84,9 @@ Java_GenSwitchHead:                     # @Java_GenSwitchHead
 	slli.d	$a0, $a3, 1
 	ori	$s6, $zero, 2
 	alsl.w	$s5, $a3, $s6, 1
-	ori	$a1, $zero, 1
 	addi.d	$s4, $a0, 6
 	move	$a0, $s5
-	blt	$a3, $a1, .LBB3_4
+	blez	$a3, .LBB3_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.16)
@@ -128,8 +127,7 @@ Java_GenSwitchHead:                     # @Java_GenSwitchHead
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB3_10
+	blez	$s0, .LBB3_10
 # %bb.7:                                # %.lr.ph.i13.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.16)
@@ -198,8 +196,7 @@ Java_GenSelector:                       # @Java_GenSelector
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB4_14
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB4_16
+	blez	$a3, .LBB4_16
 # %bb.3:                                # %.lr.ph.i14.preheader
 	slli.d	$a0, $a3, 1
 	addi.d	$s2, $a0, 7
@@ -243,8 +240,7 @@ Java_GenSelector:                       # @Java_GenSelector
 	pcaddu18i	$t8, %call36(TreeCCStreamPrint)
 	jr	$t8
 .LBB4_8:
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB4_15
+	blez	$a3, .LBB4_15
 # %bb.9:                                # %.lr.ph.i.preheader
 	slli.d	$a0, $a3, 1
 	addi.d	$s2, $a0, 7
@@ -325,9 +321,8 @@ Java_GenEndSelectors:                   # @Java_GenEndSelectors
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	ori	$a0, $zero, 1
 	move	$fp, $a1
-	blt	$a2, $a0, .LBB5_6
+	blez	$a2, .LBB5_6
 # %bb.1:                                # %.lr.ph.i.preheader
 	slli.d	$a0, $a2, 1
 	addi.d	$s1, $a0, 7
@@ -1397,10 +1392,9 @@ Java_GenEndCase:                        # @Java_GenEndCase
 	slli.d	$a0, $a2, 1
 	ori	$a1, $zero, 3
 	alsl.w	$s3, $a2, $a1, 1
-	ori	$a1, $zero, 1
 	addi.d	$s2, $a0, 7
 	move	$a0, $s3
-	blt	$a2, $a1, .LBB10_4
+	blez	$a2, .LBB10_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.16)
@@ -1435,8 +1429,7 @@ Java_GenEndCase:                        # @Java_GenEndCase
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB10_10
+	blez	$s0, .LBB10_10
 # %bb.7:                                # %.lr.ph.i9.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.16)
@@ -1496,9 +1489,8 @@ Java_GenEndSwitch:                      # @Java_GenEndSwitch
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a2
 	move	$fp, $a1
-	ori	$a0, $zero, 1
 	slli.d	$s2, $a2, 1
-	blt	$a2, $a0, .LBB11_11
+	blez	$a2, .LBB11_11
 # %bb.1:                                # %.lr.ph.i.preheader
 	addi.d	$s3, $s2, 7
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
@@ -1532,8 +1524,7 @@ Java_GenEndSwitch:                      # @Java_GenEndSwitch
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB11_12
+	blez	$s0, .LBB11_12
 # %bb.6:                                # %.lr.ph.i9.preheader
 	addi.d	$s1, $s2, 6
 	pcalau12i	$a0, %pc_hi20(.L.str.16)

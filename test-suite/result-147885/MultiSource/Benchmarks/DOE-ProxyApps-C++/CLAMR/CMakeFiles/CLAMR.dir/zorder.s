@@ -26,11 +26,10 @@ calc_zorder:                            # @calc_zorder
 	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
-	ori	$t0, $zero, 1
 	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	blt	$a0, $t0, .LBB0_9
+	blez	$a0, .LBB0_9
 # %bb.1:                                # %.lr.ph
 	move	$s3, $a4
 	move	$s4, $a3
@@ -294,8 +293,7 @@ printbits:                              # @printbits
 # %bb.0:
 	beqz	$a0, .LBB3_4
 # %bb.1:                                # %.preheader
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB3_3
+	bltz	$a0, .LBB3_3
 # %bb.2:                                # %.loopexit
 	ret
 	.p2align	4, , 16

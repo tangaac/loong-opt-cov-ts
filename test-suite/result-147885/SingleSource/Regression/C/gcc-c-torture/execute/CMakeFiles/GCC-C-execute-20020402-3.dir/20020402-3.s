@@ -35,22 +35,20 @@ blockvector_for_pc_sect:                # @blockvector_for_pc_sect
 	b	.LBB0_4
 .LBB0_3:
 	move	$a3, $zero
-.LBB0_4:                                # %.lr.ph30.preheader
-	ori	$a4, $zero, 1
 	.p2align	4, , 16
-.LBB0_5:                                # %.lr.ph30
+.LBB0_4:                                # %.lr.ph30
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a3
+	move	$a4, $a3
 	slli.d	$a3, $a3, 3
 	ldx.d	$a3, $a2, $a3
 	ld.d	$a3, $a3, 8
-	bltu	$a0, $a3, .LBB0_8
-# %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	addi.w	$a3, $a5, -1
-	bge	$a5, $a4, .LBB0_5
-# %bb.7:
+	bltu	$a0, $a3, .LBB0_7
+# %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
+	addi.w	$a3, $a4, -1
+	bgtz	$a4, .LBB0_4
+# %bb.6:
 	move	$a1, $zero
-.LBB0_8:                                # %._crit_edge
+.LBB0_7:                                # %._crit_edge
 	move	$a0, $a1
 	ret
 .Lfunc_end0:

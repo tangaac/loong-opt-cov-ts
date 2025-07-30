@@ -28,9 +28,8 @@ stringappend:                           # @stringappend
 	addi.w	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$a1, $a0
-	blt	$s0, $a2, .LBB0_12
+	blez	$s0, .LBB0_12
 # %bb.4:                                # %.lr.ph27.preheader
 	ori	$a1, $zero, 32
 	move	$a3, $zero
@@ -214,9 +213,8 @@ openfiles:                              # @openfiles
 	addi.w	$a0, $fp, 5
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s4, $a1, .LBB1_25
+	blez	$s4, .LBB1_25
 # %bb.16:                               # %.lr.ph27.i.preheader
 	ori	$a0, $zero, 32
 	move	$a2, $zero
@@ -291,9 +289,8 @@ openfiles:                              # @openfiles
 	addi.w	$a0, $fp, 8
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$a1, $a0
-	blt	$s2, $a2, .LBB1_37
+	blez	$s2, .LBB1_37
 # %bb.29:                               # %.lr.ph27.i69.preheader
 	ori	$a4, $zero, 32
 	move	$a3, $zero
@@ -355,8 +352,8 @@ openfiles:                              # @openfiles
 	pcalau12i	$a0, %pc_hi20(foutput)
 	st.d	$a1, $a0, %pc_lo12(foutput)
 .LBB1_38:
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(definesflag)
 	ld.d	$a0, $a0, %got_pc_lo12(definesflag)
 	ld.w	$a0, $a0, 0
@@ -367,9 +364,8 @@ openfiles:                              # @openfiles
 	addi.w	$a0, $s1, 3
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$a1, $a0
-	blt	$s5, $a2, .LBB1_48
+	blez	$s5, .LBB1_48
 # %bb.40:                               # %.lr.ph27.i81.preheader
 	ori	$a4, $zero, 32
 	move	$a3, $zero
@@ -492,22 +488,21 @@ openfiles:                              # @openfiles
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	ld.d	$a2, $s3, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(spec_outfile)
 	pcalau12i	$a3, %pc_hi20(tmptabfile)
 	st.d	$a1, $a3, %pc_lo12(tmptabfile)
 	pcalau12i	$a1, %pc_hi20(ftable)
 	st.d	$a2, $a1, %pc_lo12(ftable)
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	bnez	$a0, .LBB1_60
 # %bb.50:
 	addi.w	$s3, $s1, 0
 	addi.w	$a0, $s1, 3
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$a1, $a0
-	blt	$s3, $a2, .LBB1_59
+	blez	$s3, .LBB1_59
 # %bb.51:                               # %.lr.ph27.i129.preheader
 	ori	$a4, $zero, 32
 	move	$a3, $zero
@@ -566,9 +561,8 @@ openfiles:                              # @openfiles
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ori	$s3, $zero, 1
 	move	$a1, $a0
-	blt	$s2, $s3, .LBB1_69
+	blez	$s2, .LBB1_69
 # %bb.61:                               # %.lr.ph27.i141.preheader
 	ori	$a4, $zero, 32
 	move	$a3, $zero
@@ -629,7 +623,7 @@ openfiles:                              # @openfiles
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	blt	$s2, $s3, .LBB1_78
+	blez	$s2, .LBB1_78
 # %bb.70:                               # %.lr.ph27.i153.preheader
 	ori	$a1, $zero, 32
 	move	$a3, $zero

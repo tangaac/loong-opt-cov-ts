@@ -23,29 +23,28 @@ reset:                                  # @reset
 	.type	check,@function
 check:                                  # @check
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB1_5
+	blez	$a0, .LBB1_5
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a3, %pc_hi20(u)
-	addi.d	$a5, $a3, %pc_lo12(u)
-	add.d	$a3, $a5, $a0
-	ori	$a6, $zero, 97
+	addi.d	$a4, $a3, %pc_lo12(u)
+	add.d	$a3, $a4, $a0
+	ori	$a5, $zero, 97
 	.p2align	4, , 16
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a7, $a5, 0
-	bne	$a7, $a6, .LBB1_19
+	ld.bu	$a6, $a4, 0
+	bne	$a6, $a5, .LBB1_19
 # %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
 	addi.d	$a0, $a0, -1
-	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 1
 	bnez	$a0, .LBB1_2
 # %bb.4:                                # %.preheader19
-	bge	$a1, $a4, .LBB1_6
+	bgtz	$a1, .LBB1_6
 	b	.LBB1_10
 .LBB1_5:
 	pcalau12i	$a0, %pc_hi20(u)
 	addi.d	$a3, $a0, %pc_lo12(u)
-	blt	$a1, $a4, .LBB1_10
+	blez	$a1, .LBB1_10
 .LBB1_6:                                # %.lr.ph26.preheader
 	add.d	$a0, $a3, $a1
 	.p2align	4, , 16

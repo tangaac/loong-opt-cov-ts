@@ -483,8 +483,7 @@ _ZNK15btCylinderShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_Z
 	.type	_ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB9_6
+	blez	$a3, .LBB9_6
 # %bb.1:                                # %.lr.ph
 	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 4
@@ -538,8 +537,7 @@ _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVe
 	.type	_ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB10_6
+	blez	$a3, .LBB10_6
 # %bb.1:                                # %.lr.ph
 	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 8
@@ -595,8 +593,7 @@ _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	.type	_ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB11_6
+	blez	$a3, .LBB11_6
 # %bb.1:                                # %.lr.ph
 	addi.d	$a2, $a2, 8
 	movgr2fr.w	$fa0, $zero

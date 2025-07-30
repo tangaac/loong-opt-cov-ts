@@ -1234,7 +1234,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a0, $a0, 32
 	beqz	$a0, .LBB5_20
 .LBB5_4:                                # %.lr.ph
 	lu12i.w	$a0, 24

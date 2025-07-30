@@ -2460,16 +2460,15 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	lu12i.w	$t1, 1
 	ldptr.d	$t2, $a0, 6448
-	ori	$t1, $t1, 2296
-	ldx.w	$t3, $a0, $t1
-	slli.d	$a0, $a3, 3
-	ldx.d	$a0, $t2, $a0
 	addi.w	$t1, $t0, 40
-	addi.w	$t0, $t3, 39
-	slli.d	$a3, $a4, 3
-	ldx.d	$a0, $a0, $a3
+	lu12i.w	$t0, 1
+	slli.d	$a3, $a3, 3
+	ldx.d	$a3, $t2, $a3
+	ori	$t0, $t0, 2296
+	ldx.w	$t0, $a0, $t0
+	slli.d	$a0, $a4, 3
+	ldx.d	$a0, $a3, $a0
 	slli.d	$a3, $a5, 3
 	ldx.d	$a3, $t2, $a3
 	slli.d	$a1, $a1, 3
@@ -2478,26 +2477,26 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	ldx.d	$a1, $a3, $a1
 	slli.d	$a2, $a2, 3
 	ldx.d	$a2, $a4, $a2
-	sub.w	$a3, $t0, $a7
-	ori	$a5, $zero, 1
-	addi.w	$a4, $t3, 40
-	blt	$a3, $a5, .LBB3_22
+	addi.w	$a4, $t0, 39
+	sub.w	$a3, $a4, $a7
+	addi.w	$a5, $t0, 40
+	blez	$a3, .LBB3_22
 # %bb.2:                                # %.lr.ph46.split.us
-	bge	$a3, $a4, .LBB3_33
+	bge	$a3, $a5, .LBB3_33
 # %bb.3:                                # %.lr.ph.us.us.preheader
-	move	$a5, $zero
-	bstrpick.d	$a6, $a3, 31, 0
+	move	$a6, $zero
+	bstrpick.d	$t0, $a3, 31, 0
 	ori	$t2, $zero, 1
 	slt	$t3, $t2, $t1
 	masknez	$t2, $t2, $t3
 	maskeqz	$t1, $t1, $t3
 	or	$t1, $t1, $t2
-	slli.d	$t2, $a6, 1
+	slli.d	$t2, $t0, 1
 	bstrpick.d	$t5, $a7, 31, 0
-	add.d	$t3, $t5, $a6
+	add.d	$t3, $t5, $t0
 	slli.d	$t3, $t3, 1
 	addi.d	$t3, $t3, 2
-	slli.d	$t4, $t0, 1
+	slli.d	$t4, $a4, 1
 	addi.d	$t5, $t5, 1
 	slli.d	$t6, $a7, 1
 	bstrpick.d	$t7, $a3, 30, 3
@@ -2505,7 +2504,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	st.d	$t5, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$fp, $t5, 32, 3
 	slli.d	$t8, $fp, 3
-	alsl.d	$t5, $fp, $a6, 3
+	alsl.d	$t5, $fp, $t0, 3
 	st.d	$t5, $sp, 8                     # 8-byte Folded Spill
 	ori	$s0, $zero, 8
 	ori	$s1, $zero, 7
@@ -2515,15 +2514,15 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	.p2align	4, , 16
 .LBB3_4:                                # %._crit_edge.us.us
                                         #   in Loop: Header=BB3_5 Depth=1
-	addi.d	$a5, $a5, 1
-	beq	$a5, $t1, .LBB3_44
+	addi.d	$a6, $a6, 1
+	beq	$a6, $t1, .LBB3_44
 .LBB3_5:                                # %.lr.ph.us.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_15 Depth 2
                                         #     Child Loop BB3_8 Depth 2
                                         #     Child Loop BB3_20 Depth 2
                                         #     Child Loop BB3_11 Depth 2
-	slli.d	$fp, $a5, 3
+	slli.d	$fp, $a6, 3
 	ldx.d	$s3, $a0, $fp
 	ldx.d	$s5, $a1, $fp
 	ldx.d	$s4, $a2, $fp
@@ -2536,7 +2535,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	alsl.d	$s6, $ra, $fp, 1
 	alsl.d	$s7, $ra, $s3, 1
 	alsl.d	$s8, $ra, $s4, 1
-	sub.d	$ra, $a6, $ra
+	sub.d	$ra, $t0, $ra
 	.p2align	4, , 16
 .LBB3_8:                                # %scalar.ph140
                                         #   Parent Loop BB3_5 Depth=1
@@ -2554,8 +2553,8 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	bnez	$ra, .LBB3_8
 .LBB3_9:                                # %..preheader_crit_edge.us.us
                                         #   in Loop: Header=BB3_5 Depth=1
-	alsl.d	$s6, $t0, $s5, 1
-	move	$ra, $a6
+	alsl.d	$s6, $a4, $s5, 1
+	move	$ra, $t0
 	bgeu	$a7, $s1, .LBB3_17
 .LBB3_10:                               # %scalar.ph121.preheader
                                         #   in Loop: Header=BB3_5 Depth=1
@@ -2574,7 +2573,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	addi.d	$s4, $s4, 2
 	addi.w	$ra, $ra, 1
 	addi.d	$s3, $s3, 2
-	blt	$ra, $a4, .LBB3_11
+	blt	$ra, $a5, .LBB3_11
 	b	.LBB3_4
 	.p2align	4, , 16
 .LBB3_12:                               # %vector.memcheck136
@@ -2612,7 +2611,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 # %bb.16:                               # %middle.block150
                                         #   in Loop: Header=BB3_5 Depth=1
 	move	$ra, $t7
-	bne	$t7, $a6, .LBB3_7
+	bne	$t7, $t0, .LBB3_7
 	b	.LBB3_9
 	.p2align	4, , 16
 .LBB3_17:                               # %vector.memcheck108
@@ -2624,7 +2623,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	sltu	$t5, $s7, $t5
 	sltu	$ra, $s8, $fp
 	and	$t5, $t5, $ra
-	move	$ra, $a6
+	move	$ra, $t0
 	bnez	$t5, .LBB3_10
 # %bb.18:                               # %vector.memcheck108
                                         #   in Loop: Header=BB3_5 Depth=1
@@ -2633,7 +2632,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	sltu	$t5, $s7, $t5
 	sltu	$fp, $s6, $fp
 	and	$t5, $t5, $fp
-	move	$ra, $a6
+	move	$ra, $t0
 	bnez	$t5, .LBB3_10
 # %bb.19:                               # %vector.ph123
                                         #   in Loop: Header=BB3_5 Depth=1
@@ -2670,20 +2669,20 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	beq	$t5, $t8, .LBB3_4
 	b	.LBB3_10
 .LBB3_22:                               # %.lr.ph46.split
-	bge	$a3, $a4, .LBB3_44
+	bge	$a3, $a5, .LBB3_44
 # %bb.23:                               # %.preheader.us48.preheader
-	move	$a5, $zero
-	ori	$a6, $zero, 1
-	slt	$t2, $a6, $t1
-	masknez	$a6, $a6, $t2
+	move	$a6, $zero
+	ori	$t0, $zero, 1
+	slt	$t2, $t0, $t1
+	masknez	$t0, $t0, $t2
 	maskeqz	$t1, $t1, $t2
-	or	$a6, $t1, $a6
+	or	$t0, $t1, $t0
 	slli.d	$t1, $a3, 1
 	bstrpick.d	$t4, $a7, 31, 0
 	add.d	$t2, $a3, $t4
 	slli.d	$t2, $t2, 1
 	addi.d	$t2, $t2, 2
-	slli.d	$t3, $t0, 1
+	slli.d	$t3, $a4, 1
 	addi.d	$t4, $t4, 1
 	bstrpick.d	$t6, $t4, 32, 3
 	slli.d	$t5, $t6, 3
@@ -2694,24 +2693,24 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 	.p2align	4, , 16
 .LBB3_24:                               # %._crit_edge.us52
                                         #   in Loop: Header=BB3_25 Depth=1
-	addi.d	$a5, $a5, 1
-	beq	$a5, $a6, .LBB3_44
+	addi.d	$a6, $a6, 1
+	beq	$a6, $t0, .LBB3_44
 .LBB3_25:                               # %.preheader.us48
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_31 Depth 2
                                         #     Child Loop BB3_27 Depth 2
-	slli.d	$t8, $a5, 3
+	slli.d	$t8, $a6, 3
 	ldx.d	$fp, $a0, $t8
 	ldx.d	$s3, $a1, $t8
 	ldx.d	$s0, $a2, $t8
-	alsl.d	$t8, $t0, $s3, 1
+	alsl.d	$t8, $a4, $s3, 1
 	move	$s4, $a3
 	bgeu	$a7, $t7, .LBB3_28
 .LBB3_26:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB3_25 Depth=1
 	alsl.d	$fp, $s4, $fp, 1
 	alsl.d	$s0, $s4, $s0, 1
-	sub.d	$s1, $a4, $s4
+	sub.d	$s1, $a5, $s4
 	.p2align	4, , 16
 .LBB3_27:                               # %scalar.ph
                                         #   Parent Loop BB3_25 Depth=1
@@ -2914,12 +2913,11 @@ getVerSubImageBiLinear:                 # @getVerSubImageBiLinear
 	addi.w	$t1, $t4, 40
 	addi.w	$t3, $t2, 39
 	sub.w	$t2, $t3, $a7
-	ori	$t6, $zero, 1
 	slli.d	$t5, $a3, 3
 	slli.d	$a3, $a4, 3
 	slli.d	$a4, $a1, 3
 	slli.d	$a1, $a2, 3
-	blt	$t2, $t6, .LBB4_13
+	blez	$t2, .LBB4_13
 # %bb.1:                                # %.lr.ph60
 	addi.w	$a2, $zero, -39
 	blt	$t4, $a2, .LBB4_13

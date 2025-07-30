@@ -35,13 +35,13 @@ _ZN14HybridIndexSetD2Ev:                # @_ZN14HybridIndexSetD2Ev
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 4
 	addi.w	$a2, $a1, 0
-	ori	$s2, $zero, 1
-	blt	$a2, $s2, .LBB0_9
+	blez	$a2, .LBB0_9
 # %bb.1:                                # %.lr.ph.preheader
-	move	$s3, $zero
+	move	$s2, $zero
+	bstrpick.d	$s3, $a1, 30, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cout)
-	bstrpick.d	$s4, $a1, 30, 0
+	ori	$s4, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	b	.LBB0_4
@@ -56,19 +56,19 @@ _ZN14HybridIndexSetD2Ev:                # @_ZN14HybridIndexSetD2Ev
 .Ltmp1:
 .LBB0_3:                                # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
                                         #   in Loop: Header=BB0_4 Depth=1
-	addi.d	$s4, $s4, -1
-	addi.d	$s3, $s3, 16
-	beqz	$s4, .LBB0_8
+	addi.d	$s3, $s3, -1
+	addi.d	$s2, $s2, 16
+	beqz	$s3, .LBB0_8
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ldx.w	$a1, $a0, $s3
-	beq	$a1, $s2, .LBB0_6
+	ldx.w	$a1, $a0, $s2
+	beq	$a1, $s4, .LBB0_6
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
 	bnez	$a1, .LBB0_2
 .LBB0_6:                                #   in Loop: Header=BB0_4 Depth=1
-	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 8
 	beqz	$a0, .LBB0_3
 # %bb.7:                                # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit.sink.split
@@ -182,37 +182,37 @@ _ZN14HybridIndexSet12copySegmentsERKS_: # @_ZN14HybridIndexSet12copySegmentsERKS
 	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 4
 	addi.w	$a1, $a0, 0
-	ori	$s2, $zero, 1
-	blt	$a1, $s2, .LBB2_8
+	blez	$a1, .LBB2_8
 # %bb.1:                                # %.lr.ph.preheader
-	move	$s3, $zero
-	pcalau12i	$a1, %got_pc_hi20(_ZSt4cout)
-	ld.d	$s0, $a1, %got_pc_lo12(_ZSt4cout)
-	bstrpick.d	$s4, $a0, 30, 0
+	move	$s2, $zero
+	bstrpick.d	$s3, $a0, 30, 0
+	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
+	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cout)
+	ori	$s4, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.1)
 	b	.LBB2_4
 	.p2align	4, , 16
 .LBB2_2:                                #   in Loop: Header=BB2_4 Depth=1
-	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $s2
 	ld.d	$a1, $a0, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN14HybridIndexSet11addIndexSetERK19RangeStrideIndexSet)
 	jirl	$ra, $ra, 0
 .LBB2_3:                                #   in Loop: Header=BB2_4 Depth=1
-	addi.d	$s4, $s4, -1
-	addi.d	$s3, $s3, 16
-	beqz	$s4, .LBB2_8
+	addi.d	$s3, $s3, -1
+	addi.d	$s2, $s2, 16
+	beqz	$s3, .LBB2_8
 .LBB2_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ldx.w	$a1, $a0, $s3
-	beq	$a1, $s2, .LBB2_2
+	ldx.w	$a1, $a0, $s2
+	beq	$a1, $s4, .LBB2_2
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB2_4 Depth=1
 	bnez	$a1, .LBB2_7
 # %bb.6:                                #   in Loop: Header=BB2_4 Depth=1
-	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $s2
 	ld.d	$a1, $a0, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN14HybridIndexSet11addIndexSetERK13RangeIndexSet)

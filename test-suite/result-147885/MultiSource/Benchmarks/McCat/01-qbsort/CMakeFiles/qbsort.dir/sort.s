@@ -16,8 +16,7 @@ BubbleSort:                             # @BubbleSort
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_8
+	blez	$a0, .LBB0_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s0, $a1
 	move	$s1, $zero

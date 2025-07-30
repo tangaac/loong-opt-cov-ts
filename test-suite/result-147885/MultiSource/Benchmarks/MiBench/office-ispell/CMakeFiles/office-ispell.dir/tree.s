@@ -330,8 +330,7 @@ treeinit:                               # @treeinit
 	ori	$fp, $zero, 2
 	pcaddu18i	$ra, %call36(access)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_42
+	bgez	$a0, .LBB0_42
 # %bb.41:
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
@@ -646,8 +645,7 @@ treeinsert:                             # @treeinsert
 	addi.d	$a1, $sp, 128
 	pcaddu18i	$ra, %call36(combinecaps)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2_20
+	bgez	$a0, .LBB2_20
 # %bb.11:
 	ld.d	$a0, $sp, 136
 	pcaddu18i	$ra, %call36(free)
@@ -792,12 +790,10 @@ treeinsert:                             # @treeinsert
 	.type	treelookup,@function
 treelookup:                             # @treelookup
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$s0, %pc_hi20(pershsize)
 	ld.bu	$a1, $s0, %pc_lo12(pershsize)
 	beqz	$a1, .LBB3_8
@@ -822,8 +818,6 @@ treelookup:                             # @treelookup
 	slli.d	$a2, $a0, 4
 	alsl.d	$a0, $a0, $a2, 3
 	add.d	$fp, $a1, $a0
-	lu12i.w	$s0, 16384
-	lu12i.w	$s1, 262144
 	b	.LBB3_4
 	.p2align	4, , 16
 .LBB3_3:                                # %._crit_edge
@@ -833,9 +827,9 @@ treelookup:                             # @treelookup
 .LBB3_4:                                # %.lr.ph22
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_7 Depth 2
-	ld.d	$s2, $fp, 16
-	and	$a0, $s2, $s0
-	beqz	$a0, .LBB3_8
+	ld.d	$s0, $fp, 16
+	slli.d	$a0, $s0, 37
+	bgez	$a0, .LBB3_8
 # %bb.5:                                #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a1, $fp, 8
 	addi.d	$a0, $sp, 0
@@ -844,8 +838,8 @@ treelookup:                             # @treelookup
 	beqz	$a0, .LBB3_9
 # %bb.6:                                # %.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
-	and	$a0, $s2, $s1
-	beqz	$a0, .LBB3_3
+	slli.d	$a0, $s0, 33
+	bgez	$a0, .LBB3_3
 	.p2align	4, , 16
 .LBB3_7:                                # %.lr.ph
                                         #   Parent Loop BB3_4 Depth=1
@@ -859,12 +853,10 @@ treelookup:                             # @treelookup
 	move	$fp, $zero
 .LBB3_9:                                # %.critedge
 	move	$a0, $fp
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end3:
 	.size	treelookup, .Lfunc_end3-treelookup
@@ -911,48 +903,47 @@ treeoutput:                             # @treeoutput
 	move	$s7, $zero
 	beqz	$s3, .LBB4_10
 # %bb.3:                                # %.preheader101.preheader
-	lu12i.w	$a0, 262144
-	move	$a1, $s5
+	move	$a0, $s5
 	b	.LBB4_5
 	.p2align	4, , 16
 .LBB4_4:                                # %._crit_edge108
                                         #   in Loop: Header=BB4_5 Depth=1
-	addi.d	$a1, $a1, 24
-	bgeu	$a1, $s6, .LBB4_10
+	addi.d	$a0, $a0, 24
+	bgeu	$a0, $s6, .LBB4_10
 .LBB4_5:                                # %.preheader101
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_8 Depth 2
                                         #       Child Loop BB4_9 Depth 3
-	beqz	$a1, .LBB4_4
+	beqz	$a0, .LBB4_4
 # %bb.6:                                # %.lr.ph107.preheader
                                         #   in Loop: Header=BB4_5 Depth=1
-	move	$a2, $a1
+	move	$a1, $a0
 	b	.LBB4_8
 	.p2align	4, , 16
 .LBB4_7:                                # %._crit_edge
                                         #   in Loop: Header=BB4_8 Depth=2
-	ld.d	$a2, $a2, 0
-	and	$a3, $a3, $s2
-	xor	$a3, $a3, $s2
-	sltui	$a3, $a3, 1
-	add.w	$s7, $s7, $a3
-	beqz	$a2, .LBB4_4
+	ld.d	$a1, $a1, 0
+	and	$a2, $a2, $s2
+	xor	$a2, $a2, $s2
+	sltui	$a2, $a2, 1
+	add.w	$s7, $s7, $a2
+	beqz	$a1, .LBB4_4
 .LBB4_8:                                # %.lr.ph107
                                         #   Parent Loop BB4_5 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_9 Depth 3
-	ld.d	$a3, $a2, 16
-	and	$a4, $a3, $a0
-	beqz	$a4, .LBB4_7
+	ld.d	$a2, $a1, 16
+	slli.d	$a3, $a2, 33
+	bgez	$a3, .LBB4_7
 	.p2align	4, , 16
 .LBB4_9:                                # %.lr.ph
                                         #   Parent Loop BB4_5 Depth=1
                                         #     Parent Loop BB4_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a2, $a2, 0
-	ld.bu	$a4, $a2, 19
-	andi	$a4, $a4, 64
-	bnez	$a4, .LBB4_9
+	ld.d	$a1, $a1, 0
+	ld.bu	$a3, $a1, 19
+	andi	$a3, $a3, 64
+	bnez	$a3, .LBB4_9
 	b	.LBB4_7
 .LBB4_10:                               # %._crit_edge112
 	pcalau12i	$a0, %got_pc_hi20(hashsize)
@@ -964,13 +955,12 @@ treeoutput:                             # @treeoutput
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$s0, $a0, 0
 	slli.d	$a0, $s8, 4
-	alsl.d	$a1, $s8, $a0, 3
-	ori	$a0, $zero, 1
+	alsl.d	$a0, $s8, $a0, 3
 	lu12i.w	$s4, 196608
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	blt	$s8, $a0, .LBB4_16
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	blez	$s8, .LBB4_16
 # %bb.11:                               # %.lr.ph117.preheader
-	add.d	$a0, $s0, $a1
+	add.d	$a0, $s0, $a0
 	move	$a1, $s0
 	b	.LBB4_13
 	.p2align	4, , 16
@@ -1002,7 +992,6 @@ treeoutput:                             # @treeoutput
 	move	$fp, $a0
 	beqz	$s3, .LBB4_37
 # %bb.18:
-	lu12i.w	$a1, 262144
 	move	$a0, $fp
 	b	.LBB4_20
 	.p2align	4, , 16
@@ -1017,43 +1006,42 @@ treeoutput:                             # @treeoutput
 	beqz	$s5, .LBB4_19
 # %bb.21:                               # %.lr.ph128.preheader
                                         #   in Loop: Header=BB4_20 Depth=1
-	move	$a2, $s5
+	move	$a1, $s5
 	b	.LBB4_24
 	.p2align	4, , 16
 .LBB4_22:                               #   in Loop: Header=BB4_24 Depth=2
-	move	$a0, $a3
+	move	$a0, $a2
 .LBB4_23:                               # %.loopexit98
                                         #   in Loop: Header=BB4_24 Depth=2
-	ld.d	$a2, $a2, 0
-	beqz	$a2, .LBB4_19
+	ld.d	$a1, $a1, 0
+	beqz	$a1, .LBB4_19
 .LBB4_24:                               # %.lr.ph128
                                         #   Parent Loop BB4_20 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_26 Depth 3
-	ld.d	$a4, $a2, 16
-	and	$a3, $a4, $s2
-	bne	$a3, $s2, .LBB4_23
+	ld.d	$a3, $a1, 16
+	and	$a2, $a3, $s2
+	bne	$a2, $s2, .LBB4_23
 # %bb.25:                               #   in Loop: Header=BB4_24 Depth=2
-	addi.d	$a3, $a0, 8
-	and	$a4, $a4, $a1
-	st.d	$a2, $a0, 0
-	beqz	$a4, .LBB4_22
+	addi.d	$a2, $a0, 8
+	slli.d	$a3, $a3, 33
+	st.d	$a1, $a0, 0
+	bgez	$a3, .LBB4_22
 	.p2align	4, , 16
 .LBB4_26:                               # %.lr.ph123
                                         #   Parent Loop BB4_20 Depth=1
                                         #     Parent Loop BB4_24 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a2, $a2, 0
-	ld.bu	$a0, $a2, 19
+	ld.d	$a1, $a1, 0
+	ld.bu	$a0, $a1, 19
 	andi	$a0, $a0, 64
 	bnez	$a0, .LBB4_26
 	b	.LBB4_22
 .LBB4_27:                               # %.preheader97
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	bnez	$s3, .LBB4_30
 # %bb.28:                               # %._crit_edge155
-	ori	$a0, $zero, 1
-	bge	$s8, $a0, .LBB4_49
+	bgtz	$s8, .LBB4_49
 	b	.LBB4_55
 	.p2align	4, , 16
 .LBB4_29:                               # %._crit_edge153
@@ -1104,10 +1092,9 @@ treeoutput:                             # @treeoutput
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $a1, 0
 .LBB4_37:                               # %._crit_edge133
-	ori	$s3, $zero, 1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	blt	$s8, $s3, .LBB4_44
+	blez	$s8, .LBB4_44
 # %bb.38:                               # %.lr.ph138.preheader
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a1, $s0, $a1
 	b	.LBB4_40
 	.p2align	4, , 16
@@ -1139,7 +1126,7 @@ treeoutput:                             # @treeoutput
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	blt	$s7, $s3, .LBB4_47
+	blez	$s7, .LBB4_47
 # %bb.45:                               # %.lr.ph143.preheader
 	addi.d	$s0, $s7, 1
 	ori	$s2, $zero, 1
@@ -1183,11 +1170,10 @@ treeoutput:                             # @treeoutput
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $a0, 0
 	slli.d	$a0, $s8, 4
-	alsl.d	$a1, $s8, $a0, 3
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB4_55
+	alsl.d	$a0, $s8, $a0, 3
+	blez	$s8, .LBB4_55
 .LBB4_49:                               # %.lr.ph158.preheader
-	add.d	$fp, $s0, $a1
+	add.d	$fp, $s0, $a0
 	b	.LBB4_51
 	.p2align	4, , 16
 .LBB4_50:                               #   in Loop: Header=BB4_51 Depth=1

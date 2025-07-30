@@ -48,8 +48,7 @@ phishingScan:                           # @phishingScan
 	st.d	$zero, $a0, 0
 .LBB0_5:
 	ld.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.6:                                # %.lr.ph
 	move	$s3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -1690,7 +1689,7 @@ cleanupURL:                             # @cleanupURL
 	move	$s5, $a0
 	ld.d	$s3, $a0, 16
 	ld.bu	$a3, $s3, 0
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	move	$s0, $a2
 	move	$s1, $a1
 	beqz	$a3, .LBB10_3
 # %bb.1:                                # %.lr.ph.i.preheader
@@ -1714,23 +1713,22 @@ cleanupURL:                             # @cleanupURL
 	ld.d	$fp, $a0, 0
 	move	$a0, $zero
 	addi.d	$a1, $s3, 1
-	lu12i.w	$s0, 2
 	move	$s8, $s3
 	move	$s4, $s3
 	.p2align	4, , 16
 .LBB10_4:                               # =>This Inner Loop Header: Depth=1
 	move	$s2, $s4
 	ld.b	$a2, $s4, 0
-	slli.d	$a2, $a2, 1
-	ldx.hu	$a2, $fp, $a2
 	move	$s7, $a0
 	move	$s6, $a1
-	and	$a2, $a2, $s0
+	slli.d	$a0, $a2, 1
+	ldx.hu	$a2, $fp, $a0
 	addi.d	$s4, $s4, 1
-	addi.d	$a0, $a0, 1
+	addi.d	$a0, $s7, 1
 	addi.d	$a1, $a1, 1
+	slli.d	$a2, $a2, 50
 	addi.d	$s8, $s8, 1
-	bnez	$a2, .LBB10_4
+	bltz	$a2, .LBB10_4
 # %bb.5:
 	st.d	$s2, $sp, 32
 	move	$a0, $s2
@@ -1744,7 +1742,7 @@ cleanupURL:                             # @cleanupURL
 	st.d	$a1, $sp, 24
 	bge	$a2, $a0, .LBB10_25
 # %bb.7:
-	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB10_8:                               # %.preheader137
                                         # =>This Inner Loop Header: Depth=1
@@ -1752,9 +1750,9 @@ cleanupURL:                             # @cleanupURL
 	ld.b	$a1, $a1, -2
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $fp, $a1
-	and	$a1, $a1, $s0
+	slli.d	$a1, $a1, 50
 	addi.d	$a0, $a0, -1
-	bnez	$a1, .LBB10_8
+	bltz	$a1, .LBB10_8
 # %bb.9:
 	move	$fp, $a0
 	add.d	$a0, $s4, $a0
@@ -1784,7 +1782,6 @@ cleanupURL:                             # @cleanupURL
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB10_34
 # %bb.12:
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	bgeu	$s5, $s2, .LBB10_59
 .LBB10_13:                              # %str_replace.exit112
 	pcalau12i	$a0, %pc_hi20(lt)
@@ -1901,7 +1898,7 @@ cleanupURL:                             # @cleanupURL
 	bnez	$a1, .LBB10_32
 	b	.LBB10_43
 .LBB10_34:                              # %.preheader.i76.preheader
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $s2
 	.p2align	4, , 16
 .LBB10_35:                              # %.preheader.i76
@@ -2001,6 +1998,7 @@ cleanupURL:                             # @cleanupURL
 	ori	$a1, $zero, 3
 	bltu	$a0, $a1, .LBB10_73
 # %bb.54:
+	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	ld.bu	$a0, $s2, 0
 	ori	$a1, $zero, 37
 	bne	$a0, $a1, .LBB10_62
@@ -2048,7 +2046,7 @@ cleanupURL:                             # @cleanupURL
 .LBB10_62:
 	move	$s0, $s2
 .LBB10_63:
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$s2, $s0, 4
 	st.d	$s0, $sp, 32
 	bgeu	$s2, $s5, .LBB10_72
@@ -2109,8 +2107,8 @@ cleanupURL:                             # @cleanupURL
 	b	.LBB10_67
 .LBB10_72:                              # %._crit_edge.i
 	st.d	$s5, $sp, 24
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
 .LBB10_73:                              # %str_hex_to_char.exit
 	beqz	$s0, .LBB10_82
 # %bb.74:
@@ -2123,7 +2121,7 @@ cleanupURL:                             # @cleanupURL
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 32
 	ld.d	$s5, $sp, 24
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$fp, $s5, $s2
 	addi.d	$a0, $fp, 2
 	pcaddu18i	$ra, %call36(cli_malloc)
@@ -2138,7 +2136,7 @@ cleanupURL:                             # @cleanupURL
 	jirl	$ra, $ra, 0
 	stx.b	$zero, $s3, $s4
 	move	$a1, $s1
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB10_76:                              # =>This Inner Loop Header: Depth=1
 	move	$a0, $a1
@@ -2218,7 +2216,7 @@ cleanupURL:                             # @cleanupURL
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB10_75
 .LBB10_91:
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $fp
 	.p2align	4, , 16
 .LBB10_92:                              # %.preheader.i126

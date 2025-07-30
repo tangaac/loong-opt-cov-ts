@@ -239,9 +239,8 @@ ctab_insert:                            # @ctab_insert
 	jirl	$ra, $ra, 0
 .LBB2_5:
 	st.w	$s5, $s2, 0
-	ori	$s5, $zero, 1
 	st.w	$zero, $s2, 4
-	blt	$s4, $s5, .LBB2_7
+	blez	$s4, .LBB2_7
 # %bb.6:                                # %.lr.ph.i
 	addi.d	$a0, $s2, 8
 	move	$a1, $zero
@@ -251,7 +250,7 @@ ctab_insert:                            # @ctab_insert
 .LBB2_7:                                # %ctab_new.exit
 	ld.w	$a0, $s1, 4
 	st.d	$s2, $sp, 8
-	blt	$a0, $s5, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.8:                                # %.lr.ph
 	move	$s2, $zero
 	addi.d	$s3, $s1, 24
@@ -267,8 +266,7 @@ ctab_insert:                            # @ctab_insert
 	blt	$s2, $a0, .LBB2_9
 .LBB2_10:                               # %.preheader
 	ld.w	$a1, $s1, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_15
+	blez	$a1, .LBB2_15
 # %bb.11:                               # %.lr.ph40
 	move	$s2, $zero
 	ori	$s3, $zero, 16

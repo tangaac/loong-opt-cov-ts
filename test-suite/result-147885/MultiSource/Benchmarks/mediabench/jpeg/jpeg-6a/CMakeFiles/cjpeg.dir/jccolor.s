@@ -240,8 +240,7 @@ null_method:                            # @null_method
 	.type	grayscale_convert,@function
 grayscale_convert:                      # @grayscale_convert
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB2_6
+	blez	$a4, .LBB2_6
 # %bb.1:                                # %.lr.ph23
 	ld.wu	$a5, $a0, 40
 	beqz	$a5, .LBB2_6
@@ -374,8 +373,7 @@ rgb_ycc_start:                          # @rgb_ycc_start
 	.type	rgb_gray_convert,@function
 rgb_gray_convert:                       # @rgb_gray_convert
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB4_6
+	blez	$a4, .LBB4_6
 # %bb.1:                                # %.lr.ph33
 	ld.wu	$a5, $a0, 40
 	beqz	$a5, .LBB4_6
@@ -433,11 +431,10 @@ rgb_gray_convert:                       # @rgb_gray_convert
 	.type	null_convert,@function
 null_convert:                           # @null_convert
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a4, $a6, .LBB5_9
+	blez	$a4, .LBB5_9
 # %bb.1:                                # %.preheader.lr.ph
 	ld.w	$a5, $a0, 68
-	blt	$a5, $a6, .LBB5_9
+	blez	$a5, .LBB5_9
 # %bb.2:                                # %.preheader.lr.ph
 	ld.wu	$a0, $a0, 40
 	beqz	$a0, .LBB5_9
@@ -491,8 +488,7 @@ null_convert:                           # @null_convert
 	.type	rgb_ycc_convert,@function
 rgb_ycc_convert:                        # @rgb_ycc_convert
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB6_7
+	blez	$a4, .LBB6_7
 # %bb.1:                                # %.lr.ph51
 	ld.wu	$a5, $a0, 40
 	beqz	$a5, .LBB6_7
@@ -575,8 +571,7 @@ rgb_ycc_convert:                        # @rgb_ycc_convert
 	.type	cmyk_ycck_convert,@function
 cmyk_ycck_convert:                      # @cmyk_ycck_convert
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB7_7
+	blez	$a4, .LBB7_7
 # %bb.1:                                # %.lr.ph56
 	ld.wu	$a5, $a0, 40
 	beqz	$a5, .LBB7_7

@@ -621,11 +621,10 @@ Lzma2Enc_Encode:                        # @Lzma2Enc_Encode
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a4, $a0, 64
-	ori	$a0, $zero, 1
 	move	$s1, $a3
 	move	$s3, $a2
 	move	$s0, $a1
-	blt	$a4, $a0, .LBB6_7
+	blez	$a4, .LBB6_7
 # %bb.1:                                # %.lr.ph
 	move	$s2, $zero
 	ori	$s4, $zero, 96

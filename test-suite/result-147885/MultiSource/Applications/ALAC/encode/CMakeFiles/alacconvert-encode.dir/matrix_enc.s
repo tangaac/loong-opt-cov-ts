@@ -7,9 +7,9 @@ mix16:                                  # @mix16
 # %bb.0:
 	beqz	$a6, .LBB0_4
 # %bb.1:
-	ori	$a7, $zero, 1
-	blt	$a4, $a7, .LBB0_7
+	blez	$a4, .LBB0_7
 # %bb.2:                                # %.lr.ph
+	ori	$a7, $zero, 1
 	sll.w	$a7, $a7, $a5
 	sub.d	$a7, $a7, $a6
 	bstrpick.d	$a1, $a1, 31, 0
@@ -33,8 +33,7 @@ mix16:                                  # @mix16
 	bnez	$a4, .LBB0_3
 	b	.LBB0_7
 .LBB0_4:                                # %.preheader
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB0_7
+	blez	$a4, .LBB0_7
 # %bb.5:                                # %.lr.ph41
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a0, $a0, 2
@@ -62,9 +61,9 @@ mix20:                                  # @mix20
 # %bb.0:
 	beqz	$a6, .LBB1_4
 # %bb.1:
-	ori	$a7, $zero, 1
-	blt	$a4, $a7, .LBB1_7
+	blez	$a4, .LBB1_7
 # %bb.2:                                # %.lr.ph
+	ori	$a7, $zero, 1
 	sll.w	$a7, $a7, $a5
 	sub.d	$a7, $a7, $a6
 	alsl.d	$a1, $a1, $a1, 1
@@ -106,8 +105,7 @@ mix20:                                  # @mix20
 	bnez	$a4, .LBB1_3
 	b	.LBB1_7
 .LBB1_4:                                # %.preheader
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB1_7
+	blez	$a4, .LBB1_7
 # %bb.5:                                # %.lr.ph55
 	alsl.d	$a1, $a1, $a1, 1
 	addi.d	$a1, $a1, -3
@@ -158,12 +156,12 @@ mix24:                                  # @mix24
 	nor	$t1, $t1, $zero
 	beqz	$a6, .LBB2_5
 # %bb.1:
-	ori	$t4, $zero, 1
-	sll.w	$t2, $t4, $a5
+	ori	$t2, $zero, 1
+	sll.w	$t2, $t2, $a5
 	sub.d	$t2, $t2, $a6
 	beqz	$t3, .LBB2_9
 # %bb.2:                                # %.preheader135
-	blt	$a4, $t4, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.3:                                # %.lr.ph
 	alsl.d	$a1, $a1, $a1, 1
 	addi.d	$a1, $a1, -3
@@ -212,10 +210,9 @@ mix24:                                  # @mix24
 	bnez	$a4, .LBB2_4
 	b	.LBB2_15
 .LBB2_5:
-	ori	$a5, $zero, 1
 	beqz	$t3, .LBB2_12
 # %bb.6:                                # %.preheader131
-	blt	$a4, $a5, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.7:                                # %.lr.ph146
 	alsl.d	$a1, $a1, $a1, 1
 	addi.d	$a1, $a1, -3
@@ -259,7 +256,7 @@ mix24:                                  # @mix24
 	bnez	$a4, .LBB2_8
 	b	.LBB2_15
 .LBB2_9:                                # %.preheader133
-	blt	$a4, $t4, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.10:                               # %.lr.ph142
 	alsl.d	$a1, $a1, $a1, 1
 	addi.d	$a1, $a1, -3
@@ -300,7 +297,7 @@ mix24:                                  # @mix24
 	bnez	$a4, .LBB2_11
 	b	.LBB2_15
 .LBB2_12:                               # %.preheader
-	blt	$a4, $a5, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.13:                               # %.lr.ph149
 	alsl.d	$a1, $a1, $a1, 1
 	addi.d	$a1, $a1, -3
@@ -351,9 +348,9 @@ mix32:                                  # @mix32
 	nor	$t1, $t1, $zero
 	beqz	$a6, .LBB3_4
 # %bb.1:
-	ori	$t2, $zero, 1
-	blt	$a4, $t2, .LBB3_11
+	blez	$a4, .LBB3_11
 # %bb.2:                                # %.lr.ph
+	ori	$t2, $zero, 1
 	sll.w	$t2, $t2, $a5
 	sub.d	$t2, $t2, $a6
 	bstrpick.d	$t3, $a1, 31, 0
@@ -385,10 +382,9 @@ mix32:                                  # @mix32
 	bnez	$a4, .LBB3_3
 	b	.LBB3_11
 .LBB3_4:
-	ori	$a5, $zero, 1
 	beqz	$t2, .LBB3_8
 # %bb.5:                                # %.preheader81
-	blt	$a4, $a5, .LBB3_11
+	blez	$a4, .LBB3_11
 # %bb.6:                                # %.lr.ph90
 	bstrpick.d	$a5, $a1, 31, 0
 	addi.d	$a1, $a7, 2
@@ -414,7 +410,7 @@ mix32:                                  # @mix32
 	bnez	$a4, .LBB3_7
 	b	.LBB3_11
 .LBB3_8:                                # %.preheader
-	blt	$a4, $a5, .LBB3_11
+	blez	$a4, .LBB3_11
 # %bb.9:                                # %.lr.ph93
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a0, $a0, 4
@@ -440,8 +436,7 @@ mix32:                                  # @mix32
 	.type	copy20ToPredictor,@function
 copy20ToPredictor:                      # @copy20ToPredictor
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB4_3
+	blez	$a3, .LBB4_3
 # %bb.1:                                # %.lr.ph
 	alsl.wu	$a1, $a1, $a1, 1
 	addi.d	$a0, $a0, 2
@@ -471,8 +466,7 @@ copy20ToPredictor:                      # @copy20ToPredictor
 	.type	copy24ToPredictor,@function
 copy24ToPredictor:                      # @copy24ToPredictor
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB5_3
+	blez	$a3, .LBB5_3
 # %bb.1:                                # %.lr.ph
 	alsl.wu	$a1, $a1, $a1, 1
 	addi.d	$a0, $a0, 2

@@ -43,7 +43,7 @@ main:                                   # @main
 	vldx	$vr0, $a0, $a2
 	vmsknz.b	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
-	bstrpick.d	$a4, $a2, 15, 0
+	slli.d	$a4, $a2, 48
 	bnez	$a4, .LBB1_3
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB1_1 Depth=1
@@ -80,7 +80,7 @@ main:                                   # @main
 	addi.d	$a1, $a1, 16
 	bne	$a3, $a2, .LBB1_5
 .LBB1_7:                                # %middle.split27
-	bstrpick.d	$a1, $a4, 15, 0
+	slli.d	$a1, $a4, 48
 	bnez	$a1, .LBB1_13
 # %bb.8:                                # %middle.block28
 	move	$a2, $zero
@@ -97,7 +97,7 @@ main:                                   # @main
 	vldx	$vr0, $a0, $a2
 	vmsknz.b	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
-	bstrpick.d	$a4, $a2, 15, 0
+	slli.d	$a4, $a2, 48
 	bnez	$a4, .LBB1_11
 # %bb.10:                               # %vector.body33
                                         #   in Loop: Header=BB1_9 Depth=1

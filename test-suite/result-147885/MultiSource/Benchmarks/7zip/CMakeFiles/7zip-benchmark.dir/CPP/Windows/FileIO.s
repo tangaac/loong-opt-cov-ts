@@ -256,11 +256,10 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	pcaddu18i	$ra, %call36(readlink)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
 	st.w	$a0, $fp, 48
-	blt	$a1, $a2, .LBB3_13
+	blez	$a1, .LBB3_13
 # %bb.10:
-	bge	$s6, $s2, .LBB3_14
+	bltz	$s2, .LBB3_14
 # %bb.11:
 	lu12i.w	$a0, 262144
 	and	$a0, $s2, $a0
@@ -348,12 +347,11 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a0, $sp, 48
-	ori	$a1, $zero, 1
 	st.b	$zero, $s3, 0
-	blt	$a0, $a1, .LBB3_47
+	blez	$a0, .LBB3_47
 # %bb.24:                               # %.lr.ph.preheader
-	move	$s8, $zero
-	ori	$s2, $zero, 255
+	move	$s7, $zero
+	ori	$s8, $zero, 255
 	ori	$s5, $zero, 4
 	b	.LBB3_27
 	.p2align	4, , 16
@@ -362,23 +360,23 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	move	$s1, $s5
 .LBB3_26:                               #   in Loop: Header=BB3_27 Depth=1
 	ld.w	$a0, $sp, 48
-	stx.b	$s7, $s4, $s8
-	addi.d	$s8, $s8, 1
-	stx.b	$zero, $s4, $s8
+	stx.b	$s2, $s4, $s7
+	addi.d	$s7, $s7, 1
+	stx.b	$zero, $s4, $s7
 	move	$s5, $s1
 	move	$s3, $s4
-	bge	$s8, $a0, .LBB3_48
+	bge	$s7, $a0, .LBB3_48
 .LBB3_27:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_41 Depth 2
                                         #     Child Loop BB3_38 Depth 2
                                         #     Child Loop BB3_44 Depth 2
 	ld.d	$a0, $sp, 40
-	slli.d	$a1, $s8, 2
-	ldx.w	$s7, $a0, $a1
-	blt	$s2, $s7, .LBB3_65
+	slli.d	$a1, $s7, 2
+	ldx.w	$s2, $a0, $a1
+	blt	$s8, $s2, .LBB3_65
 # %bb.28:                               #   in Loop: Header=BB3_27 Depth=1
-	nor	$a0, $s8, $zero
+	nor	$a0, $s7, $zero
 	add.w	$a0, $s5, $a0
 	bgtz	$a0, .LBB3_25
 # %bb.29:                               #   in Loop: Header=BB3_27 Depth=1
@@ -414,16 +412,15 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 # %bb.31:                               # %.noexc
                                         #   in Loop: Header=BB3_27 Depth=1
 	move	$s4, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB3_46
+	blez	$s5, .LBB3_46
 # %bb.32:                               # %.preheader.i.i.i
                                         #   in Loop: Header=BB3_27 Depth=1
-	beqz	$s8, .LBB3_45
+	beqz	$s7, .LBB3_45
 # %bb.33:                               # %iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
 	move	$a0, $zero
 	ori	$a1, $zero, 16
-	bltu	$s8, $a1, .LBB3_44
+	bltu	$s7, $a1, .LBB3_44
 # %bb.34:                               # %iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
 	sub.d	$a1, $s4, $s3
@@ -432,14 +429,14 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 # %bb.35:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
 	ori	$a0, $zero, 32
-	bgeu	$s8, $a0, .LBB3_40
+	bgeu	$s7, $a0, .LBB3_40
 # %bb.36:                               #   in Loop: Header=BB3_27 Depth=1
 	move	$a0, $zero
 .LBB3_37:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB3_27 Depth=1
-	move	$a1, $s8
+	move	$a1, $s7
 	bstrins.d	$a1, $zero, 3, 0
-	bstrpick.d	$a4, $s8, 62, 4
+	bstrpick.d	$a4, $s7, 62, 4
 	sub.d	$a1, $a0, $a1
 	add.d	$a2, $s4, $a0
 	add.d	$a3, $s3, $a0
@@ -456,13 +453,13 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	bnez	$a1, .LBB3_38
 # %bb.39:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB3_27 Depth=1
-	bne	$s8, $a0, .LBB3_44
+	bne	$s7, $a0, .LBB3_44
 	b	.LBB3_45
 .LBB3_40:                               # %vector.ph
                                         #   in Loop: Header=BB3_27 Depth=1
-	move	$a1, $s8
+	move	$a1, $s7
 	bstrins.d	$a1, $zero, 4, 0
-	bstrpick.d	$a0, $s8, 62, 5
+	bstrpick.d	$a0, $s7, 62, 5
 	slli.d	$a0, $a0, 5
 	addi.d	$a2, $s4, 16
 	addi.d	$a3, $s3, 16
@@ -480,10 +477,10 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	bnez	$a1, .LBB3_41
 # %bb.42:                               # %middle.block
                                         #   in Loop: Header=BB3_27 Depth=1
-	beq	$s8, $a0, .LBB3_45
+	beq	$s7, $a0, .LBB3_45
 # %bb.43:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
-	andi	$a1, $s8, 16
+	andi	$a1, $s7, 16
 	bnez	$a1, .LBB3_37
 	.p2align	4, , 16
 .LBB3_44:                               # %.lr.ph.i.i.i
@@ -492,14 +489,14 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	ldx.b	$a1, $s3, $a0
 	stx.b	$a1, $s4, $a0
 	addi.d	$a0, $a0, 1
-	bne	$s8, $a0, .LBB3_44
+	bne	$s7, $a0, .LBB3_44
 .LBB3_45:                               # %._crit_edge.thread.i.i.i
                                         #   in Loop: Header=BB3_27 Depth=1
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB3_46:                               #   in Loop: Header=BB3_27 Depth=1
-	stx.b	$zero, $s4, $s8
+	stx.b	$zero, $s4, $s7
 	b	.LBB3_26
 .LBB3_47:
 	move	$s4, $s3
@@ -544,12 +541,11 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 24
-	ori	$a2, $zero, 1
 	move	$s2, $a0
-	blt	$s4, $a2, .LBB3_74
+	blez	$s4, .LBB3_74
 # %bb.56:                               # %.preheader.i.i
 	ld.d	$a0, $fp, 16
-	blt	$a1, $a2, .LBB3_66
+	blez	$a1, .LBB3_66
 # %bb.57:                               # %iter.check101
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1139,8 +1135,7 @@ _ZN8NWindows5NFile3NIO9CFileBase4SeekExjRy: # @_ZN8NWindows5NFile3NIO9CFileBase4
 .LBB7_11:
 	add.d	$a1, $a1, $a2
 .LBB7_12:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB7_15
+	bltz	$a1, .LBB7_15
 # %bb.13:
 	ld.w	$a2, $a0, 48
 	slt	$a4, $a1, $a2
@@ -1180,9 +1175,9 @@ _ZN8NWindows5NFile3NIO9CFileBase4SeekEyRy: # @_ZN8NWindows5NFile3NIO9CFileBase4S
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a3, $a0, 8
 	addi.w	$a4, $zero, -2
-	addi.w	$fp, $zero, -1
 	beq	$a3, $a4, .LBB8_3
 # %bb.1:
+	addi.w	$fp, $zero, -1
 	bne	$a3, $fp, .LBB8_5
 # %bb.2:
 	pcaddu18i	$ra, %call36(__errno_location)
@@ -1193,7 +1188,7 @@ _ZN8NWindows5NFile3NIO9CFileBase4SeekEyRy: # @_ZN8NWindows5NFile3NIO9CFileBase4S
 	st.w	$a2, $a1, 0
 	b	.LBB8_10
 .LBB8_3:
-	bge	$fp, $a1, .LBB8_8
+	bltz	$a1, .LBB8_8
 # %bb.4:
 	ld.w	$a3, $a0, 48
 	slt	$a4, $a1, $a3
@@ -1280,7 +1275,6 @@ _ZN8NWindows5NFile3NIO7CInFile8ReadPartEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1288,11 +1282,10 @@ _ZN8NWindows5NFile3NIO7CInFile8ReadPartEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	addi.w	$s3, $zero, -1
-	beq	$a0, $s3, .LBB11_5
+	addi.w	$a4, $zero, -1
+	beq	$a0, $a4, .LBB11_5
 # %bb.1:
 	beqz	$a2, .LBB11_6
 # %bb.2:
@@ -1335,9 +1328,9 @@ _ZN8NWindows5NFile3NIO7CInFile8ReadPartEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile
 	ori	$a0, $zero, 1
 	b	.LBB11_12
 .LBB11_8:                               # %.preheader.i
-	move	$s4, $a3
+	move	$s3, $a3
 	bstrpick.d	$s1, $a2, 31, 0
-	ori	$s5, $zero, 4
+	ori	$s4, $zero, 4
 	.p2align	4, , 16
 .LBB11_9:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $fp, 8
@@ -1346,19 +1339,18 @@ _ZN8NWindows5NFile3NIO7CInFile8ReadPartEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	blt	$s3, $a0, .LBB11_11
+	bgez	$a0, .LBB11_11
 # %bb.10:                               #   in Loop: Header=BB11_9 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s5, .LBB11_9
+	beq	$a0, $s4, .LBB11_9
 .LBB11_11:                              # %.critedge.i
 	addi.d	$a0, $s2, 1
 	sltu	$a0, $zero, $a0
 	maskeqz	$a1, $s2, $a0
-	st.w	$a1, $s4, 0
+	st.w	$a1, $s3, 0
 .LBB11_12:                              # %_ZN8NWindows5NFile3NIO7CInFile4ReadEPvjRj.exit
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1387,7 +1379,6 @@ _ZN8NWindows5NFile3NIO7CInFile4ReadEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile4Rea
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1395,11 +1386,10 @@ _ZN8NWindows5NFile3NIO7CInFile4ReadEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile4Rea
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	addi.w	$s3, $zero, -1
-	beq	$a0, $s3, .LBB12_5
+	addi.w	$a4, $zero, -1
+	beq	$a0, $a4, .LBB12_5
 # %bb.1:
 	beqz	$a2, .LBB12_6
 # %bb.2:
@@ -1442,9 +1432,9 @@ _ZN8NWindows5NFile3NIO7CInFile4ReadEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile4Rea
 	ori	$a0, $zero, 1
 	b	.LBB12_12
 .LBB12_8:                               # %.preheader
-	move	$s4, $a3
+	move	$s3, $a3
 	bstrpick.d	$s1, $a2, 31, 0
-	ori	$s5, $zero, 4
+	ori	$s4, $zero, 4
 	.p2align	4, , 16
 .LBB12_9:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $fp, 8
@@ -1453,19 +1443,18 @@ _ZN8NWindows5NFile3NIO7CInFile4ReadEPvjRj: # @_ZN8NWindows5NFile3NIO7CInFile4Rea
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	blt	$s3, $a0, .LBB12_11
+	bgez	$a0, .LBB12_11
 # %bb.10:                               #   in Loop: Header=BB12_9 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s5, .LBB12_9
+	beq	$a0, $s4, .LBB12_9
 .LBB12_11:                              # %.critedge
 	addi.d	$a0, $s2, 1
 	sltu	$a0, $zero, $a0
 	maskeqz	$a1, $s2, $a0
-	st.w	$a1, $s4, 0
+	st.w	$a1, $s3, 0
 .LBB12_12:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1649,7 +1638,6 @@ _ZN8NWindows5NFile3NIO8COutFile9WritePartEPKvjRj: # @_ZN8NWindows5NFile3NIO8COut
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1657,16 +1645,15 @@ _ZN8NWindows5NFile3NIO8COutFile9WritePartEPKvjRj: # @_ZN8NWindows5NFile3NIO8COut
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s0, $a0
 	ld.w	$a0, $a0, 8
-	addi.w	$s4, $zero, -1
-	beq	$a0, $s4, .LBB18_5
+	addi.w	$a4, $zero, -1
+	beq	$a0, $a4, .LBB18_5
 # %bb.1:                                # %.preheader.i
 	move	$fp, $a3
 	move	$s1, $a1
 	bstrpick.d	$s2, $a2, 31, 0
-	ori	$s5, $zero, 4
+	ori	$s4, $zero, 4
 	.p2align	4, , 16
 .LBB18_2:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s0, 8
@@ -1675,12 +1662,12 @@ _ZN8NWindows5NFile3NIO8COutFile9WritePartEPKvjRj: # @_ZN8NWindows5NFile3NIO8COut
 	pcaddu18i	$ra, %call36(write)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	blt	$s4, $a0, .LBB18_4
+	bgez	$a0, .LBB18_4
 # %bb.3:                                #   in Loop: Header=BB18_2 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s5, .LBB18_2
+	beq	$a0, $s4, .LBB18_2
 .LBB18_4:                               # %.critedge.i
 	addi.d	$a0, $s3, 1
 	sltu	$a0, $zero, $a0
@@ -1695,7 +1682,6 @@ _ZN8NWindows5NFile3NIO8COutFile9WritePartEPKvjRj: # @_ZN8NWindows5NFile3NIO8COut
 	ori	$a2, $zero, 9
 	st.w	$a2, $a1, 0
 .LBB18_6:                               # %_ZN8NWindows5NFile3NIO8COutFile5WriteEPKvjRj.exit
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1724,7 +1710,6 @@ _ZN8NWindows5NFile3NIO8COutFile5WriteEPKvjRj: # @_ZN8NWindows5NFile3NIO8COutFile
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1732,16 +1717,15 @@ _ZN8NWindows5NFile3NIO8COutFile5WriteEPKvjRj: # @_ZN8NWindows5NFile3NIO8COutFile
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s0, $a0
 	ld.w	$a0, $a0, 8
-	addi.w	$s4, $zero, -1
-	beq	$a0, $s4, .LBB19_5
+	addi.w	$a4, $zero, -1
+	beq	$a0, $a4, .LBB19_5
 # %bb.1:                                # %.preheader
 	move	$fp, $a3
 	move	$s1, $a1
 	bstrpick.d	$s2, $a2, 31, 0
-	ori	$s5, $zero, 4
+	ori	$s4, $zero, 4
 	.p2align	4, , 16
 .LBB19_2:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s0, 8
@@ -1750,12 +1734,12 @@ _ZN8NWindows5NFile3NIO8COutFile5WriteEPKvjRj: # @_ZN8NWindows5NFile3NIO8COutFile
 	pcaddu18i	$ra, %call36(write)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	blt	$s4, $a0, .LBB19_4
+	bgez	$a0, .LBB19_4
 # %bb.3:                                #   in Loop: Header=BB19_2 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s5, .LBB19_2
+	beq	$a0, $s4, .LBB19_2
 .LBB19_4:                               # %.critedge
 	addi.d	$a0, $s3, 1
 	sltu	$a0, $zero, $a0
@@ -1770,7 +1754,6 @@ _ZN8NWindows5NFile3NIO8COutFile5WriteEPKvjRj: # @_ZN8NWindows5NFile3NIO8COutFile
 	ori	$a2, $zero, 9
 	st.w	$a2, $a1, 0
 .LBB19_6:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1842,9 +1825,9 @@ _ZN8NWindows5NFile3NIO8COutFile9SetLengthEy: # @_ZN8NWindows5NFile3NIO8COutFile9
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
 	addi.w	$a2, $zero, -2
-	addi.w	$s1, $zero, -1
 	beq	$a0, $a2, .LBB21_3
 # %bb.1:
+	addi.w	$s1, $zero, -1
 	bne	$a0, $s1, .LBB21_5
 .LBB21_2:
 	pcaddu18i	$ra, %call36(__errno_location)
@@ -1855,7 +1838,7 @@ _ZN8NWindows5NFile3NIO8COutFile9SetLengthEy: # @_ZN8NWindows5NFile3NIO8COutFile9
 	st.w	$a2, $a1, 0
 	b	.LBB21_12
 .LBB21_3:
-	bge	$s1, $a1, .LBB21_11
+	bltz	$a1, .LBB21_11
 # %bb.4:
 	ld.w	$a0, $fp, 48
 	slt	$a2, $a1, $a0
@@ -1875,13 +1858,14 @@ _ZN8NWindows5NFile3NIO8COutFile9SetLengthEy: # @_ZN8NWindows5NFile3NIO8COutFile9
 	bne	$a0, $a1, .LBB21_10
 # %bb.7:
 	ld.w	$a0, $fp, 8
-	beq	$a0, $s1, .LBB21_2
+	addi.w	$s0, $zero, -1
+	beq	$a0, $s0, .LBB21_2
 # %bb.8:
 	ori	$a2, $zero, 1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(lseek64)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s1, .LBB21_10
+	beq	$a0, $s0, .LBB21_10
 # %bb.9:
 	move	$a1, $a0
 	ld.w	$a0, $fp, 8

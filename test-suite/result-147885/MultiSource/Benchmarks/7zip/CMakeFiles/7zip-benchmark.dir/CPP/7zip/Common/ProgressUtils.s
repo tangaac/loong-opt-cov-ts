@@ -91,77 +91,80 @@ _ZN14CLocalProgress4InitEP9IProgressb:  # @_ZN14CLocalProgress4InitEP9IProgressb
 _ZN14CLocalProgress12SetRatioInfoEPKyS1_: # @_ZN14CLocalProgress12SetRatioInfoEPKyS1_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	ld.d	$a4, $a0, 48
 	ld.d	$a5, $a0, 56
-	st.d	$a4, $sp, 16
-	st.d	$a5, $sp, 8
+	st.d	$a4, $sp, 8
+	st.d	$a5, $sp, 0
 	beqz	$a1, .LBB2_2
 # %bb.1:
 	ld.d	$a1, $a1, 0
 	add.d	$a4, $a1, $a4
-	st.d	$a4, $sp, 16
+	st.d	$a4, $sp, 8
 .LBB2_2:
 	beqz	$a2, .LBB2_4
 # %bb.3:
 	ld.d	$a1, $a2, 0
 	add.d	$a5, $a1, $a5
-	st.d	$a5, $sp, 8
+	st.d	$a5, $sp, 0
 .LBB2_4:
 	ld.bu	$a1, $a0, 64
-	ori	$fp, $zero, 1
-	bne	$a1, $fp, .LBB2_8
+	beqz	$a1, .LBB2_9
 # %bb.5:
 	ld.d	$a3, $a0, 24
-	beqz	$a3, .LBB2_8
+	beqz	$a3, .LBB2_9
 # %bb.6:
-	move	$s0, $a0
+	move	$fp, $a0
 	ld.d	$a0, $a3, 0
 	ld.d	$a4, $a0, 40
-	addi.d	$a1, $sp, 16
-	addi.d	$a2, $sp, 8
+	addi.d	$a1, $sp, 8
+	addi.d	$a2, $sp, 0
 	move	$a0, $a3
 	jirl	$ra, $a4, 0
-	bnez	$a0, .LBB2_11
-# %bb.7:                                # %._crit_edge
-	ld.d	$a4, $sp, 16
-	ld.d	$a5, $sp, 8
-	move	$a0, $s0
-.LBB2_8:
+	beqz	$a0, .LBB2_8
+# %bb.7:
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
+	ret
+.LBB2_8:                                # %._crit_edge
+	ld.d	$a4, $sp, 8
+	ld.d	$a5, $sp, 0
+	move	$a0, $fp
+.LBB2_9:
 	ld.d	$a1, $a0, 40
 	ld.bu	$a2, $a0, 65
 	add.d	$a3, $a4, $a1
-	st.d	$a3, $sp, 16
+	st.d	$a3, $sp, 8
 	add.d	$a1, $a5, $a1
-	st.d	$a1, $sp, 8
-	bne	$a2, $fp, .LBB2_10
-# %bb.9:
+	st.d	$a1, $sp, 0
+	beqz	$a2, .LBB2_11
+# %bb.10:
 	ld.d	$a2, $a0, 16
 	ld.bu	$a0, $a0, 32
 	ld.d	$a1, $a2, 0
-	addi.d	$a3, $sp, 8
+	addi.d	$a3, $sp, 0
 	masknez	$a3, $a3, $a0
 	ld.d	$a4, $a1, 48
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 8
 	maskeqz	$a0, $a1, $a0
 	or	$a1, $a0, $a3
 	move	$a0, $a2
 	jirl	$ra, $a4, 0
-	b	.LBB2_11
-.LBB2_10:
-	move	$a0, $zero
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
+	ret
 .LBB2_11:
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	move	$a0, $zero
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end2:
 	.size	_ZN14CLocalProgress12SetRatioInfoEPKyS1_, .Lfunc_end2-_ZN14CLocalProgress12SetRatioInfoEPKyS1_

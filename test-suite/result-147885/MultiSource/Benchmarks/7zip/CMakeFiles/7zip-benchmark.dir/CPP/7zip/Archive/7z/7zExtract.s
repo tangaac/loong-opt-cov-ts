@@ -172,14 +172,12 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	beqz	$a1, .LBB0_29
 # %bb.17:                               # %_ZNK8NArchive3N7z7CFolder24FindBindPairForOutStreamEj.exit.preheader.i
                                         #   in Loop: Header=BB0_10 Depth=1
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_101
+	blez	$a1, .LBB0_101
 # %bb.18:                               # %.lr.ph.i
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.w	$a2, $a0, 44
 	addi.w	$a3, $a1, -1
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB0_28
+	blez	$a2, .LBB0_28
 # %bb.19:                               # %.lr.ph.i.us.i.preheader
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a4, $a0, 48
@@ -433,9 +431,8 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	slli.d	$a0, $a0, 2
 	ld.w	$a1, $a5, 76
 	ldx.w	$s1, $a2, $a0
-	ori	$a0, $zero, 1
 	st.d	$a5, $sp, 40                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB0_62
+	blez	$a1, .LBB0_62
 # %bb.58:                               # %.lr.ph.i253
                                         #   in Loop: Header=BB0_44 Depth=1
 	ld.d	$a0, $s0, 160
@@ -1225,8 +1222,7 @@ _ZN13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEE3AddERKS2_: # @_ZN13CObje
 	jirl	$ra, $ra, 0
 .Ltmp110:
 # %bb.2:                                # %.noexc3.i.i
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB1_6
+	blez	$s3, .LBB1_6
 # %bb.3:                                # %.lr.ph.i.i.i.i
 	move	$s4, $zero
 	.p2align	4, , 16
@@ -1707,8 +1703,7 @@ _ZN13CObjectVectorI9CMyComPtrI8IUnknownEE6DeleteEii: # @_ZN13CObjectVectorI9CMyC
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB8_7
+	blez	$s1, .LBB8_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -1896,8 +1891,7 @@ _ZN13CObjectVectorIN8NArchive3N7z18CExtractFolderInfoEE6DeleteEii: # @_ZN13CObje
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB10_5
+	blez	$s1, .LBB10_5
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3

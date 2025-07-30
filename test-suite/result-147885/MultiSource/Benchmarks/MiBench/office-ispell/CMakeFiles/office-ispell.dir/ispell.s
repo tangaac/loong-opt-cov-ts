@@ -640,9 +640,8 @@ main:                                   # @main
 # %bb.110:                              # %.critedge
 	beqz	$a1, .LBB0_218
 .LBB0_111:                              # %.preheader229
-	ori	$a0, $zero, 1
 	addi.w	$s8, $zero, -1
-	blt	$s7, $a0, .LBB0_116
+	blez	$s7, .LBB0_116
 # %bb.112:                              # %.lr.ph457.preheader
 	addi.d	$a1, $s7, -1
 	move	$s0, $fp
@@ -656,7 +655,7 @@ main:                                   # @main
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(access)
 	jirl	$ra, $ra, 0
-	blt	$s8, $a0, .LBB0_115
+	bgez	$a0, .LBB0_115
 # %bb.114:                              # %.lr.ph457
                                         #   in Loop: Header=BB0_113 Depth=1
 	addi.d	$a1, $s1, -1
@@ -690,7 +689,7 @@ main:                                   # @main
 .LBB0_121:
 	pcaddu18i	$ra, %call36(linit)
 	jirl	$ra, $ra, 0
-	bge	$s8, $a0, .LBB0_212
+	bltz	$a0, .LBB0_212
 # %bb.122:
 	pcalau12i	$s0, %pc_hi20(prefstringchar)
 	st.d	$s0, $sp, 144                   # 8-byte Folded Spill
@@ -705,7 +704,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(findfiletype)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s0, %pc_lo12(prefstringchar)
-	blt	$s8, $a0, .LBB0_128
+	bgez	$a0, .LBB0_128
 # %bb.124:
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.128)
@@ -747,11 +746,11 @@ main:                                   # @main
 	st.w	$a0, $a2, %pc_lo12(defdupchar)
 	pcalau12i	$a0, %pc_hi20(hashheader)
 	addi.d	$s0, $a0, %pc_lo12(hashheader)
-	bge	$s8, $a1, .LBB0_131
+	bltz	$a1, .LBB0_131
 # %bb.129:
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, %pc_lo12(tryhardflag)
-	bge	$s8, $a0, .LBB0_132
+	bltz	$a0, .LBB0_132
 .LBB0_130:
 	ld.bu	$a2, $s0, 36
 	ld.w	$a0, $s5, %pc_lo12(Trynum)
@@ -763,7 +762,7 @@ main:                                   # @main
 	st.w	$a0, $s2, %pc_lo12(compoundflag)
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, %pc_lo12(tryhardflag)
-	blt	$s8, $a0, .LBB0_130
+	bgez	$a0, .LBB0_130
 .LBB0_132:
 	ld.b	$a0, $s0, 67
 	st.w	$a0, $a1, %pc_lo12(tryhardflag)
@@ -813,8 +812,8 @@ main:                                   # @main
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
-	andi	$a2, $a2, 2048
-	bnez	$a2, .LBB0_143
+	slli.d	$a2, $a2, 52
+	bltz	$a2, .LBB0_143
 # %bb.142:                              #   in Loop: Header=BB0_137 Depth=1
 	move	$s1, $zero
 	move	$s5, $zero
@@ -828,8 +827,8 @@ main:                                   # @main
 	ext.w.b	$a1, $s5
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a0, $a1
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB0_145
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB0_145
 # %bb.144:                              #   in Loop: Header=BB0_137 Depth=1
 	move	$s1, $zero
 	move	$s5, $zero
@@ -840,8 +839,8 @@ main:                                   # @main
 	ext.w.b	$a1, $s1
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB0_147
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB0_147
 # %bb.146:                              #   in Loop: Header=BB0_137 Depth=1
 	move	$s1, $zero
 	b	.LBB0_148
@@ -1051,11 +1050,11 @@ main:                                   # @main
 	st.d	$s6, $a0, %pc_lo12(currentfile)
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	st.w	$s1, $a0, 0
-	bge	$s8, $s1, .LBB0_196
+	bltz	$s1, .LBB0_196
 # %bb.175:                              #   in Loop: Header=BB0_174 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(prefstringchar)
-	bge	$s8, $a0, .LBB0_200
+	bltz	$a0, .LBB0_200
 .LBB0_176:                              #   in Loop: Header=BB0_174 Depth=1
 	move	$a0, $s6
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
@@ -1072,7 +1071,7 @@ main:                                   # @main
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	st.w	$a1, $a2, %pc_lo12(readonly)
 	move	$s1, $s0
-	bge	$s8, $a0, .LBB0_202
+	bltz	$a0, .LBB0_202
 .LBB0_178:                              #   in Loop: Header=BB0_174 Depth=1
 	ld.d	$a0, $s5, %pc_lo12(infile)
 	pcaddu18i	$ra, %call36(fileno)
@@ -1247,7 +1246,7 @@ main:                                   # @main
 	st.w	$a0, $a1, 0
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(prefstringchar)
-	blt	$s8, $a0, .LBB0_176
+	bgez	$a0, .LBB0_176
 .LBB0_200:                              #   in Loop: Header=BB0_174 Depth=1
 	srai.d	$a0, $s1, 63
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload

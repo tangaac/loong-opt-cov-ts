@@ -106,8 +106,7 @@ main:                                   # @main
 	addi.d	$a7, $a6, 13
 	sltui	$a7, $a7, 1
 	slt	$t0, $zero, $a1
-	xor	$a7, $t0, $a7
-	beqz	$a7, .LBB5_11
+	beq	$t0, $a7, .LBB5_11
 # %bb.3:                                #   in Loop: Header=BB5_2 Depth=1
 	bltz	$a1, .LBB5_5
 # %bb.4:                                #   in Loop: Header=BB5_2 Depth=1

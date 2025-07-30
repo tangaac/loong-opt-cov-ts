@@ -342,8 +342,7 @@ _Z19SetMethodPropertiesRK7CMethodPKyP8IUnknown: # @_Z19SetMethodPropertiesRK7CMe
 	addi.d	$a0, $a0, 16
 	bne	$a0, $a1, .LBB0_56
 .LBB0_57:                               # %.loopexit122
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_73
+	blez	$s2, .LBB0_73
 # %bb.58:                               # %.lr.ph
 	beqz	$s4, .LBB0_69
 # %bb.59:                               # %.lr.ph.split.us.preheader

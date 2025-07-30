@@ -289,8 +289,7 @@ findnodes:                              # @findnodes
 	ld.w	$a5, $a3, 24
 	beqz	$a5, .LBB0_96
 # %bb.49:                               #   in Loop: Header=BB0_40 Depth=3
-	addi.w	$a5, $zero, -1
-	blt	$a5, $a4, .LBB0_39
+	bgez	$a4, .LBB0_39
 # %bb.50:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.w	$a3, $a3, 28
 	slli.d	$a4, $a3, 5
@@ -314,15 +313,14 @@ findnodes:                              # @findnodes
 	ld.w	$a6, $a3, 24
 	beqz	$a6, .LBB0_46
 # %bb.56:                               #   in Loop: Header=BB0_40 Depth=3
-	addi.w	$a6, $zero, -1
-	blt	$a6, $a4, .LBB0_39
+	bgez	$a4, .LBB0_39
 # %bb.57:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.w	$a7, $a3, 32
-	slli.d	$t0, $a7, 5
-	alsl.d	$a7, $a7, $t0, 3
-	add.d	$a7, $a0, $a7
-	ld.w	$a7, $a7, 20
-	blt	$a6, $a7, .LBB0_39
+	ld.w	$a6, $a3, 32
+	slli.d	$a7, $a6, 5
+	alsl.d	$a6, $a6, $a7, 3
+	add.d	$a6, $a0, $a6
+	ld.w	$a6, $a6, 20
+	bgez	$a6, .LBB0_39
 	b	.LBB0_46
 .LBB0_58:                               #   in Loop: Header=BB0_40 Depth=3
 	bge	$a6, $s2, .LBB0_66
@@ -338,8 +336,7 @@ findnodes:                              # @findnodes
 	ld.w	$a7, $a3, 24
 	beqz	$a7, .LBB0_96
 # %bb.64:                               #   in Loop: Header=BB0_40 Depth=3
-	addi.w	$a7, $zero, -1
-	blt	$a7, $a4, .LBB0_74
+	bgez	$a4, .LBB0_74
 # %bb.65:                               #   in Loop: Header=BB0_40 Depth=3
 	ld.w	$a7, $a3, 28
 	slli.d	$t0, $a7, 5
@@ -354,15 +351,14 @@ findnodes:                              # @findnodes
 	ld.w	$a7, $a3, 24
 	beqz	$a7, .LBB0_59
 # %bb.68:                               #   in Loop: Header=BB0_40 Depth=3
-	addi.w	$a7, $zero, -1
-	blt	$a7, $a4, .LBB0_74
+	bgez	$a4, .LBB0_74
 # %bb.69:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.w	$t0, $a3, 32
-	slli.d	$t1, $t0, 5
-	alsl.d	$t0, $t0, $t1, 3
-	add.d	$t0, $a0, $t0
-	ld.w	$t0, $t0, 20
-	blt	$a7, $t0, .LBB0_74
+	ld.w	$a7, $a3, 32
+	slli.d	$t0, $a7, 5
+	alsl.d	$a7, $a7, $t0, 3
+	add.d	$a7, $a0, $a7
+	ld.w	$a7, $a7, 20
+	bgez	$a7, .LBB0_74
 	b	.LBB0_59
 .LBB0_70:                               #   in Loop: Header=BB0_40 Depth=3
 	bne	$a5, $s2, .LBB0_74
@@ -402,8 +398,7 @@ findnodes:                              # @findnodes
 	ld.w	$t0, $a3, 24
 	beqz	$t0, .LBB0_77
 # %bb.83:                               #   in Loop: Header=BB0_40 Depth=3
-	addi.w	$t0, $zero, -1
-	bge	$t0, $a4, .LBB0_95
+	bltz	$a4, .LBB0_95
 .LBB0_84:                               #   in Loop: Header=BB0_40 Depth=3
 	move	$a2, $a7
 	bstrins.d	$a2, $zero, 1, 1
@@ -418,15 +413,14 @@ findnodes:                              # @findnodes
 	ld.w	$a2, $a3, 24
 	beqz	$a2, .LBB0_90
 # %bb.88:                               #   in Loop: Header=BB0_40 Depth=3
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a4, .LBB0_38
+	bgez	$a4, .LBB0_38
 # %bb.89:                               #   in Loop: Header=BB0_40 Depth=3
-	ld.w	$a4, $a3, 32
-	slli.d	$a6, $a4, 5
-	alsl.d	$a4, $a4, $a6, 3
-	add.d	$a4, $a0, $a4
-	ld.w	$a4, $a4, 20
-	blt	$a2, $a4, .LBB0_38
+	ld.w	$a2, $a3, 32
+	slli.d	$a4, $a2, 5
+	alsl.d	$a2, $a2, $a4, 3
+	add.d	$a2, $a0, $a2
+	ld.w	$a2, $a2, 20
+	bgez	$a2, .LBB0_38
 .LBB0_90:                               #   in Loop: Header=BB0_40 Depth=3
 	bge	$s2, $a5, .LBB0_92
 # %bb.91:                               #   in Loop: Header=BB0_40 Depth=3
@@ -458,8 +452,7 @@ findnodes:                              # @findnodes
 	alsl.d	$t0, $t0, $t1, 3
 	add.d	$t0, $a0, $t0
 	ld.w	$t0, $t0, 20
-	ori	$t1, $zero, 1
-	bge	$t0, $t1, .LBB0_77
+	bgtz	$t0, .LBB0_77
 	b	.LBB0_84
 .LBB0_96:                               #   in Loop: Header=BB0_7 Depth=2
 	move	$s3, $s5
@@ -656,8 +649,7 @@ findnodes:                              # @findnodes
 	ld.w	$a1, $a6, 0
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_138
+	blez	$a1, .LBB0_138
 # %bb.134:                              # %.lr.ph.i
                                         #   in Loop: Header=BB0_7 Depth=2
 	addi.d	$a3, $a1, 1
@@ -1031,29 +1023,29 @@ backCheck:                              # @backCheck
 	pcalau12i	$a4, %got_pc_hi20(numRects)
 	ld.d	$a4, $a4, %got_pc_lo12(numRects)
 	ld.w	$a4, $a4, 0
-	ori	$a6, $zero, 1
-	blt	$a4, $a6, .LBB1_5
+	blez	$a4, .LBB1_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a5, %got_pc_hi20(rectArray)
 	ld.d	$a5, $a5, %got_pc_lo12(rectArray)
 	ld.d	$a5, $a5, 0
-	addi.d	$a7, $a4, 1
-	ori	$t0, $zero, 52
-	mul.d	$t0, $a4, $t0
-	add.d	$t0, $t0, $a5
-	addi.d	$t0, $t0, 20
+	addi.d	$a6, $a4, 1
+	ori	$a7, $zero, 52
+	mul.d	$a7, $a4, $a7
+	add.d	$a7, $a7, $a5
+	addi.d	$a7, $a7, 20
+	ori	$t0, $zero, 1
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
 	addi.w	$a4, $a4, -1
-	addi.d	$a7, $a7, -1
-	addi.d	$t0, $t0, -52
-	bge	$a6, $a7, .LBB1_5
+	addi.d	$a6, $a6, -1
+	addi.d	$a7, $a7, -52
+	bge	$t0, $a6, .LBB1_5
 .LBB1_3:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $t0, 0
+	ld.w	$t1, $a7, 0
 	blt	$t1, $a0, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t1, $t0, -4
+	ld.w	$t1, $a7, -4
 	blt	$a1, $t1, .LBB1_2
 	b	.LBB1_7
 .LBB1_5:                                # %._crit_edge

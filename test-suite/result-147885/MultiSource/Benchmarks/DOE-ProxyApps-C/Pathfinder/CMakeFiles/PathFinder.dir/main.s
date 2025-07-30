@@ -704,8 +704,7 @@ runInteractively:                       # @runInteractively
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB3_18
+	blez	$s7, .LBB3_18
 # %bb.14:                               # %.lr.ph
                                         #   in Loop: Header=BB3_5 Depth=1
 	move	$s0, $zero

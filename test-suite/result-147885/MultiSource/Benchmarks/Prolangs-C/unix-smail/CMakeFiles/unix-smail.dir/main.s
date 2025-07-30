@@ -160,9 +160,9 @@ main:                                   # @main
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a2, $a0, 2048
+	slli.d	$a2, $a0, 52
 	move	$a0, $s6
-	beqz	$a2, .LBB0_4
+	bgez	$a2, .LBB0_4
 # %bb.18:                               #   in Loop: Header=BB0_4 Depth=1
 	ori	$a2, $zero, 10
 	move	$a0, $a1
@@ -203,9 +203,9 @@ main:                                   # @main
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a2, $a0, 2048
+	slli.d	$a2, $a0, 52
 	move	$a0, $s6
-	beqz	$a2, .LBB0_4
+	bgez	$a2, .LBB0_4
 # %bb.24:                               #   in Loop: Header=BB0_4 Depth=1
 	ori	$a2, $zero, 10
 	move	$a0, $a1
@@ -313,8 +313,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB0_32:
 	ld.w	$a0, $sp, 628
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_37
+	blez	$a0, .LBB0_37
 # %bb.33:                               # %.lr.ph.preheader
 	slli.d	$a1, $a0, 3
 	addi.d	$s0, $a1, -8

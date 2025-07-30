@@ -56,36 +56,29 @@ mark_cell:                              # @mark_cell
 	beqz	$a0, .LBB3_13
 # %bb.4:
 	ld.wu	$a0, $a0, 0
-	lu12i.w	$a1, 64
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 45
+	bgez	$a1, .LBB3_14
 # %bb.5:
-	lu12i.w	$a1, 32
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 46
+	bgez	$a1, .LBB3_14
 # %bb.6:                                # %.critedge
-	lu12i.w	$a1, 16
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 47
+	bgez	$a1, .LBB3_14
 # %bb.7:                                # %.critedge73
-	lu12i.w	$a1, 8
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 48
+	bgez	$a1, .LBB3_14
 # %bb.8:                                # %.critedge74
-	lu12i.w	$a1, 4
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 49
+	bgez	$a1, .LBB3_14
 # %bb.9:                                # %.critedge75
-	lu12i.w	$a1, 2
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 50
+	bgez	$a1, .LBB3_14
 # %bb.10:                               # %.critedge76
-	lu12i.w	$a1, 1
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 51
+	bgez	$a1, .LBB3_14
 # %bb.11:                               # %.critedge77
-	andi	$a1, $a0, 2048
-	beqz	$a1, .LBB3_14
+	slli.d	$a1, $a0, 52
+	bgez	$a1, .LBB3_14
 # %bb.12:                               # %.critedge78
 	andi	$a0, $a0, 1024
 	beqz	$a0, .LBB3_14

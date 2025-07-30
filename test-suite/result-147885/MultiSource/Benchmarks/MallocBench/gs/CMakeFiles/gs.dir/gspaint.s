@@ -291,9 +291,8 @@ gs_colorimage:                          # @gs_colorimage
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB6_7
 # %bb.1:
-	ori	$a1, $zero, 1
 	mul.d	$a0, $s2, $s3
-	blt	$s0, $a1, .LBB6_3
+	blez	$s0, .LBB6_3
 # %bb.2:
 	mul.d	$a0, $a0, $s0
 	addi.d	$a0, $a0, 7
@@ -310,8 +309,6 @@ gs_colorimage:                          # @gs_colorimage
 	mul.d	$a0, $a0, $s1
 	addi.w	$s1, $a0, 0
 	bstrpick.d	$s2, $a0, 31, 0
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	.p2align	4, , 16
 .LBB6_4:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $sp, 8
@@ -323,9 +320,9 @@ gs_colorimage:                          # @gs_colorimage
 # %bb.5:                                #   in Loop: Header=BB6_4 Depth=1
 	bstrpick.d	$a1, $s0, 31, 0
 	addi.d	$s0, $a1, 1
-	and	$a1, $s0, $s3
+	slli.d	$a1, $s0, 31
 	add.d	$fp, $fp, $s2
-	beqz	$a1, .LBB6_4
+	bgez	$a1, .LBB6_4
 .LBB6_6:                                # %.loopexit
 	srai.d	$a1, $a0, 63
 	and	$a0, $a1, $a0

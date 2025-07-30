@@ -22,8 +22,7 @@
 	.type	Crystal_div,@function
 Crystal_div:                            # @Crystal_div
 # %bb.0:
-	ori	$t0, $zero, 1
-	blt	$a0, $t0, .LBB0_36
+	blez	$a0, .LBB0_36
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -320
 	st.d	$fp, $sp, 312                   # 8-byte Folded Spill

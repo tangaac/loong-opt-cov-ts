@@ -208,8 +208,8 @@ cli_scanelf:                            # @cli_scanelf
 	revb.2h	$s6, $s7
 	masknez	$a0, $s7, $s1
 	maskeqz	$a1, $s6, $s1
-	or	$a0, $a1, $a0
-	bstrpick.d	$s2, $a0, 15, 0
+	or	$s5, $a1, $a0
+	bstrpick.d	$s2, $s5, 15, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.26)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.26)
 	move	$a1, $s2
@@ -227,7 +227,8 @@ cli_scanelf:                            # @cli_scanelf
 	bnez	$a0, .LBB0_99
 	b	.LBB0_92
 .LBB0_35:
-	beqz	$s2, .LBB0_53
+	slli.d	$a0, $s5, 48
+	beqz	$a0, .LBB0_53
 # %bb.36:
 	revb.2w	$a0, $s3
 	masknez	$a1, $s3, $s1
@@ -486,8 +487,8 @@ cli_scanelf:                            # @cli_scanelf
 	revb.2h	$a1, $a0
 	masknez	$a0, $a0, $s1
 	maskeqz	$a1, $a1, $s1
-	or	$a0, $a1, $a0
-	bstrpick.d	$s4, $a0, 15, 0
+	or	$s3, $a1, $a0
+	bstrpick.d	$s4, $s3, 15, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.44)
 	move	$a1, $s4
@@ -518,14 +519,14 @@ cli_scanelf:                            # @cli_scanelf
 	revb.2w	$a1, $a0
 	masknez	$a0, $a0, $s1
 	maskeqz	$a1, $a1, $s1
-	or	$s3, $a1, $a0
-	addi.w	$s2, $s3, 0
+	or	$s5, $a1, $a0
+	addi.w	$s2, $s5, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.47)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.47)
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $s3, 31, 0
+	bstrpick.d	$a1, $s5, 31, 0
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
@@ -544,7 +545,8 @@ cli_scanelf:                            # @cli_scanelf
 	addi.d	$a0, $a0, %pc_lo12(.L.str.32)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	beqz	$s4, .LBB0_93
+	slli.d	$a0, $s3, 48
+	beqz	$a0, .LBB0_93
 # %bb.59:                               # %.lr.ph.preheader
 	move	$s8, $zero
 	move	$s3, $zero
@@ -1051,8 +1053,8 @@ cli_elfheader:                          # @cli_elfheader
 	maskeqz	$a0, $a0, $s1
 	or	$a0, $a0, $a1
 	bstrpick.d	$s2, $a0, 15, 0
-	ori	$a0, $zero, 129
-	bltu	$s2, $a0, .LBB2_10
+	ori	$a1, $zero, 129
+	bltu	$s2, $a1, .LBB2_10
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(.L.str.27)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.27)
@@ -1087,8 +1089,9 @@ cli_elfheader:                          # @cli_elfheader
 	addi.d	$sp, $sp, 160
 	ret
 .LBB2_10:
+	slli.d	$a0, $a0, 48
 	move	$s5, $zero
-	beqz	$s2, .LBB2_20
+	beqz	$a0, .LBB2_20
 # %bb.11:
 	ld.w	$a0, $sp, 44
 	revb.2w	$a1, $a0
@@ -1172,25 +1175,25 @@ cli_elfheader:                          # @cli_elfheader
 	revb.2h	$a1, $a0
 	masknez	$a0, $a0, $s1
 	maskeqz	$a1, $a1, $s1
-	or	$a0, $a1, $a0
-	bstrpick.d	$s2, $a0, 15, 0
-	ori	$a1, $zero, 257
+	or	$s4, $a1, $a0
+	bstrpick.d	$s2, $s4, 15, 0
+	ori	$a0, $zero, 257
 	st.w	$s5, $fp, 0
-	bltu	$s2, $a1, .LBB2_22
+	bltu	$s2, $a0, .LBB2_22
 # %bb.21:
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.45)
 	b	.LBB2_8
 .LBB2_22:
-	ld.h	$a1, $sp, 66
-	revb.2h	$a2, $a1
-	masknez	$a1, $a1, $s1
-	maskeqz	$a2, $a2, $s1
-	or	$a1, $a2, $a1
-	bstrpick.d	$a1, $a1, 15, 0
-	ori	$a2, $zero, 40
-	st.h	$a0, $fp, 4
-	bne	$a1, $a2, .LBB2_32
+	ld.h	$a0, $sp, 66
+	revb.2h	$a1, $a0
+	masknez	$a0, $a0, $s1
+	maskeqz	$a1, $a1, $s1
+	or	$a0, $a1, $a0
+	bstrpick.d	$a0, $a0, 15, 0
+	ori	$a1, $zero, 40
+	st.h	$s4, $fp, 4
+	bne	$a0, $a1, .LBB2_32
 # %bb.23:
 	ld.w	$a0, $sp, 52
 	revb.2w	$a1, $a0
@@ -1222,7 +1225,8 @@ cli_elfheader:                          # @cli_elfheader
 	beqz	$a0, .LBB2_36
 # %bb.26:                               # %.preheader
 	move	$s1, $a0
-	beqz	$s2, .LBB2_40
+	slli.d	$a0, $s4, 48
+	beqz	$a0, .LBB2_40
 # %bb.27:                               # %.lr.ph
 	move	$s4, $zero
 	ori	$a0, $zero, 1

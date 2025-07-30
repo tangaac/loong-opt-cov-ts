@@ -165,34 +165,33 @@ biari_decode_symbol:                    # @biari_decode_symbol
 	st.h	$a4, $a1, 0
 	move	$a4, $a6
 .LBB5_6:                                # %.lr.ph
-	ld.w	$t1, $a0, 16
-	ori	$a1, $zero, 1
-	ori	$a5, $zero, 128
-	move	$a7, $a3
+	ld.w	$t0, $a0, 16
+	ori	$a1, $zero, 128
+	move	$a6, $a3
 	b	.LBB5_9
 	.p2align	4, , 16
 .LBB5_7:                                #   in Loop: Header=BB5_9 Depth=1
 	ld.d	$a3, $a0, 32
 	ld.w	$a4, $a3, 0
-	ld.d	$t0, $a0, 24
-	addi.d	$t1, $a4, 1
-	st.w	$t1, $a3, 0
-	ldx.bu	$a3, $t0, $a4
+	ld.d	$a7, $a0, 24
+	addi.d	$t0, $a4, 1
+	st.w	$t0, $a3, 0
+	ldx.bu	$a3, $a7, $a4
 	st.w	$a3, $a0, 12
-	ori	$t0, $zero, 7
-	st.w	$t0, $a0, 16
+	ori	$a7, $zero, 7
+	st.w	$a7, $a0, 16
 .LBB5_8:                                #   in Loop: Header=BB5_9 Depth=1
-	srl.w	$a3, $a3, $t0
-	bstrins.d	$a3, $a7, 63, 1
-	slli.w	$a4, $a6, 1
-	move	$t1, $t0
-	move	$a7, $a3
-	bgeu	$a6, $a5, .LBB5_2
+	srl.w	$a3, $a3, $a7
+	bstrins.d	$a3, $a6, 63, 1
+	slli.w	$a4, $a5, 1
+	move	$t0, $a7
+	move	$a6, $a3
+	bgeu	$a5, $a1, .LBB5_2
 .LBB5_9:                                # =>This Inner Loop Header: Depth=1
-	move	$a6, $a4
-	addi.w	$t0, $t1, -1
-	st.w	$t0, $a0, 16
-	blt	$t1, $a1, .LBB5_7
+	move	$a5, $a4
+	addi.w	$a7, $t0, -1
+	st.w	$a7, $a0, 16
+	blez	$t0, .LBB5_7
 # %bb.10:                               # %._crit_edge45
                                         #   in Loop: Header=BB5_9 Depth=1
 	ld.w	$a3, $a0, 12
@@ -208,9 +207,8 @@ biari_decode_symbol_eq_prob:            # @biari_decode_symbol_eq_prob
 	ld.w	$a3, $a0, 16
 	ld.w	$a1, $a0, 8
 	addi.d	$a2, $a3, -1
-	ori	$a4, $zero, 1
 	st.w	$a2, $a0, 16
-	blt	$a3, $a4, .LBB6_2
+	blez	$a3, .LBB6_2
 # %bb.1:                                # %._crit_edge
 	ld.w	$a3, $a0, 12
 	b	.LBB6_3
@@ -246,50 +244,49 @@ biari_decode_final:                     # @biari_decode_final
 # %bb.0:
 	ld.w	$a1, $a0, 4
 	ld.w	$a2, $a0, 8
-	addi.w	$a4, $a1, -2
+	addi.w	$a3, $a1, -2
 	ori	$a1, $zero, 1
-	bgeu	$a2, $a4, .LBB7_9
+	bgeu	$a2, $a3, .LBB7_9
 # %bb.1:                                # %.preheader
 	ori	$a1, $zero, 255
-	bltu	$a1, $a4, .LBB7_7
+	bltu	$a1, $a3, .LBB7_7
 # %bb.2:                                # %.lr.ph
-	ld.w	$t0, $a0, 16
-	ori	$a1, $zero, 1
-	ori	$a3, $zero, 128
+	ld.w	$a7, $a0, 16
+	ori	$a1, $zero, 128
 	b	.LBB7_5
 	.p2align	4, , 16
 .LBB7_3:                                #   in Loop: Header=BB7_5 Depth=1
-	ld.d	$a4, $a0, 32
-	ld.w	$a6, $a4, 0
-	ld.d	$a7, $a0, 24
-	addi.d	$t0, $a6, 1
-	st.w	$t0, $a4, 0
-	ldx.bu	$a4, $a7, $a6
-	st.w	$a4, $a0, 12
-	ori	$a7, $zero, 7
-	st.w	$a7, $a0, 16
+	ld.d	$a3, $a0, 32
+	ld.w	$a5, $a3, 0
+	ld.d	$a6, $a0, 24
+	addi.d	$a7, $a5, 1
+	st.w	$a7, $a3, 0
+	ldx.bu	$a3, $a6, $a5
+	st.w	$a3, $a0, 12
+	ori	$a6, $zero, 7
+	st.w	$a6, $a0, 16
 .LBB7_4:                                #   in Loop: Header=BB7_5 Depth=1
-	srl.w	$a6, $a4, $a7
-	bstrins.d	$a6, $a2, 63, 1
-	slli.w	$a4, $a5, 1
-	move	$t0, $a7
-	move	$a2, $a6
-	bgeu	$a5, $a3, .LBB7_8
+	srl.w	$a5, $a3, $a6
+	bstrins.d	$a5, $a2, 63, 1
+	slli.w	$a3, $a4, 1
+	move	$a7, $a6
+	move	$a2, $a5
+	bgeu	$a4, $a1, .LBB7_8
 .LBB7_5:                                # =>This Inner Loop Header: Depth=1
-	move	$a5, $a4
-	addi.w	$a7, $t0, -1
-	st.w	$a7, $a0, 16
-	blt	$t0, $a1, .LBB7_3
+	move	$a4, $a3
+	addi.w	$a6, $a7, -1
+	st.w	$a6, $a0, 16
+	blez	$a7, .LBB7_3
 # %bb.6:                                # %._crit_edge26
                                         #   in Loop: Header=BB7_5 Depth=1
-	ld.w	$a4, $a0, 12
+	ld.w	$a3, $a0, 12
 	b	.LBB7_4
 .LBB7_7:
-	move	$a6, $a2
+	move	$a5, $a2
 .LBB7_8:                                # %._crit_edge
 	move	$a1, $zero
-	st.w	$a6, $a0, 8
-	st.w	$a4, $a0, 4
+	st.w	$a5, $a0, 8
+	st.w	$a3, $a0, 4
 .LBB7_9:
 	move	$a0, $a1
 	ret

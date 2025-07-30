@@ -101,7 +101,7 @@ main:                                   # @main
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$s2, $a0
 	fstx.d	$fs0, $a0, $s1
-	blt	$s1, $s6, .LBB0_11
+	blez	$s1, .LBB0_11
 # %bb.10:                               #   in Loop: Header=BB0_6 Depth=1
 	move	$a0, $s2
 	move	$a1, $fp

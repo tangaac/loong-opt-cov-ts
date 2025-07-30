@@ -1070,9 +1070,8 @@ ftab_insert:                            # @ftab_insert
 	jirl	$ra, $ra, 0
 .LBB3_3:
 	st.w	$s5, $s2, 0
-	ori	$s5, $zero, 1
 	st.w	$zero, $s2, 4
-	blt	$s4, $s5, .LBB3_5
+	blez	$s4, .LBB3_5
 # %bb.4:                                # %.lr.ph.i
 	addi.d	$a0, $s2, 8
 	move	$a1, $zero
@@ -1082,7 +1081,7 @@ ftab_insert:                            # @ftab_insert
 .LBB3_5:                                # %ftab_new.exit
 	ld.w	$a0, $s1, 4
 	st.d	$s2, $sp, 8
-	blt	$a0, $s5, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.6:                                # %.lr.ph
 	move	$s2, $zero
 	addi.d	$s3, $s1, 24
@@ -1098,8 +1097,7 @@ ftab_insert:                            # @ftab_insert
 	blt	$s2, $a0, .LBB3_7
 .LBB3_8:                                # %.preheader
 	ld.w	$a1, $s1, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB3_13
+	blez	$a1, .LBB3_13
 # %bb.9:                                # %.lr.ph40
 	move	$s2, $zero
 	ori	$s3, $zero, 16
@@ -1639,8 +1637,7 @@ FullFileName:                           # @FullFileName
 # %bb.1:
 	ld.w	$a1, $s0, 40
 	ld.d	$a0, $s0, 8
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB9_7
+	bltz	$a1, .LBB9_7
 .LBB9_2:
 	beq	$a0, $s0, .LBB9_5
 # %bb.3:                                # %.preheader.preheader
@@ -1668,8 +1665,7 @@ FullFileName:                           # @FullFileName
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 40
 	ld.d	$a0, $s0, 8
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB9_2
+	bgez	$a1, .LBB9_2
 .LBB9_7:
 	beq	$a0, $s0, .LBB9_10
 # %bb.8:                                # %.preheader24.preheader
@@ -1875,7 +1871,7 @@ append_fpos:                            # @append_fpos
 	jirl	$ra, $ra, 0
 	stx.h	$s5, $s1, $a0
 	ld.wu	$a0, $fp, 4
-	bstrpick.d	$a0, $a0, 19, 0
+	slli.d	$a0, $a0, 44
 	beqz	$a0, .LBB11_11
 # %bb.10:
 	move	$a0, $s1
@@ -1961,8 +1957,26 @@ EchoAltFilePos:                         # @EchoAltFilePos
 	ld.d	$a0, $a0, %pc_lo12(file_tab)
 	alsl.d	$a0, $a1, $a0, 4
 	ld.d	$s4, $a0, 8
-	bnez	$s4, .LBB12_3
+	beqz	$s4, .LBB12_7
 # %bb.2:
+	ld.w	$a1, $s4, 40
+	ld.d	$a0, $s4, 8
+	add.d	$s0, $s2, $s0
+	bltz	$a1, .LBB12_8
+.LBB12_3:
+	beq	$a0, $s4, .LBB12_6
+# %bb.4:                                # %.preheader.i.preheader
+	move	$s4, $a0
+	.p2align	4, , 16
+.LBB12_5:                               # %.preheader.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$s4, $s4, 16
+	ld.bu	$a0, $s4, 32
+	beqz	$a0, .LBB12_5
+.LBB12_6:                               # %.loopexit.i
+	addi.d	$a1, $s4, 64
+	b	.LBB12_12
+.LBB12_7:
 	pcalau12i	$a0, %pc_hi20(no_fpos)
 	ld.d	$a4, $a0, %pc_lo12(no_fpos)
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -1974,25 +1988,10 @@ EchoAltFilePos:                         # @EchoAltFilePos
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB12_3:
 	ld.w	$a1, $s4, 40
 	ld.d	$a0, $s4, 8
-	addi.w	$a2, $zero, -1
 	add.d	$s0, $s2, $s0
-	bge	$a2, $a1, .LBB12_8
-# %bb.4:
-	beq	$a0, $s4, .LBB12_7
-# %bb.5:                                # %.preheader.i.preheader
-	move	$s4, $a0
-	.p2align	4, , 16
-.LBB12_6:                               # %.preheader.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$s4, $s4, 16
-	ld.bu	$a0, $s4, 32
-	beqz	$a0, .LBB12_6
-.LBB12_7:                               # %.loopexit.i
-	addi.d	$a1, $s4, 64
-	b	.LBB12_12
+	bgez	$a1, .LBB12_3
 .LBB12_8:
 	beq	$a0, $s4, .LBB12_11
 # %bb.9:                                # %.preheader24.i.preheader
@@ -2030,7 +2029,7 @@ EchoAltFilePos:                         # @EchoAltFilePos
 	jirl	$ra, $ra, 0
 	ld.wu	$a1, $fp, 4
 	ld.w	$a0, $s3, %pc_lo12(bp)
-	bstrpick.d	$a1, $a1, 19, 0
+	slli.d	$a1, $a1, 44
 	beqz	$a1, .LBB12_14
 # %bb.13:
 	slli.d	$a0, $a0, 9
@@ -2216,8 +2215,7 @@ EchoFileSource:                         # @EchoFileSource
 # %bb.12:
 	ld.w	$a1, $s1, 40
 	ld.d	$a0, $s1, 8
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB13_18
+	bltz	$a1, .LBB13_18
 .LBB13_13:
 	beq	$a0, $s1, .LBB13_16
 # %bb.14:                               # %.preheader.i.preheader
@@ -2245,8 +2243,7 @@ EchoFileSource:                         # @EchoFileSource
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 40
 	ld.d	$a0, $s1, 8
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB13_13
+	bgez	$a1, .LBB13_13
 .LBB13_18:
 	beq	$a0, $s1, .LBB13_21
 # %bb.19:                               # %.preheader24.i.preheader

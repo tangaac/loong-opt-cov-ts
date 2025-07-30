@@ -708,8 +708,7 @@ gs_screen_init:                         # @gs_screen_init
 	fmov.d	$fa1, $fa0
 	pcaddu18i	$ra, %call36(gs_distance_transform)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB13_5
+	bltz	$a0, .LBB13_5
 # %bb.2:
 	fld.s	$fa0, $sp, 112
 	movgr2fr.w	$fa1, $zero

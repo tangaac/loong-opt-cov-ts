@@ -22,10 +22,9 @@ deleteEntry:                            # @deleteEntry
 	st.b	$zero, $a3, 0
 	ld.d	$a0, $a0, 0
 	ld.d	$s3, $s8, 8
-	ori	$a3, $zero, 1
 	move	$s0, $a2
 	move	$s1, $a1
-	blt	$a0, $a3, .LBB0_11
+	blez	$a0, .LBB0_11
 # %bb.1:
 	beqz	$s3, .LBB0_28
 # %bb.2:                                # %.lr.ph.preheader

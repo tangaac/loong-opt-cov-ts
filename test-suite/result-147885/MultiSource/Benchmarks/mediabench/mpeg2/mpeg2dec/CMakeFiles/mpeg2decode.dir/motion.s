@@ -124,7 +124,7 @@ motion_vector:                          # @motion_vector
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	move	$s6, $a6
+	move	$s5, $a6
 	move	$s3, $a5
 	move	$s0, $a4
 	move	$s2, $a3
@@ -133,25 +133,24 @@ motion_vector:                          # @motion_vector
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(Get_motion_code)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s6, $a0
 	move	$a0, $zero
 	beqz	$s4, .LBB1_3
 # %bb.1:
-	beqz	$s5, .LBB1_3
+	beqz	$s6, .LBB1_3
 # %bb.2:
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(Get_Bits)
 	jirl	$ra, $ra, 0
 .LBB1_3:
-	ori	$a1, $zero, 16
-	ld.w	$a3, $s1, 0
-	sll.w	$a2, $a1, $s4
-	sltu	$s6, $zero, $s6
-	ori	$a4, $zero, 1
-	sra.w	$a1, $a3, $s6
-	blt	$s5, $a4, .LBB1_7
+	ld.w	$a1, $s1, 0
+	ori	$a2, $zero, 16
+	sll.w	$a2, $a2, $s4
+	sltu	$s5, $zero, $s5
+	sra.w	$a1, $a1, $s5
+	blez	$s6, .LBB1_7
 # %bb.4:
-	addi.d	$a3, $s5, -1
+	addi.d	$a3, $s6, -1
 	sll.w	$a3, $a3, $s4
 	add.d	$a0, $a3, $a0
 	add.d	$a0, $a0, $a1
@@ -164,10 +163,9 @@ motion_vector:                          # @motion_vector
 	add.d	$a1, $a1, $a0
 	b	.LBB1_10
 .LBB1_7:
-	addi.w	$a3, $zero, -1
-	blt	$a3, $s5, .LBB1_10
+	bgez	$s6, .LBB1_10
 # %bb.8:
-	nor	$a3, $s5, $zero
+	nor	$a3, $s6, $zero
 	sll.w	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
 	nor	$a0, $a0, $zero
@@ -178,7 +176,7 @@ motion_vector:                          # @motion_vector
 	ori	$a0, $zero, 32
 	b	.LBB1_6
 .LBB1_10:                               # %decode_motion_vector.exit
-	sll.w	$a0, $a1, $s6
+	sll.w	$a0, $a1, $s5
 	st.w	$a0, $s1, 0
 	beqz	$s0, .LBB1_12
 # %bb.11:
@@ -203,9 +201,8 @@ motion_vector:                          # @motion_vector
 	sra.w	$a2, $a2, $a1
 	ori	$a3, $zero, 16
 	sll.w	$a3, $a3, $s2
-	ori	$a4, $zero, 1
-	sra.w	$a2, $a2, $s6
-	blt	$s4, $a4, .LBB1_19
+	sra.w	$a2, $a2, $s5
+	blez	$s4, .LBB1_19
 # %bb.16:
 	addi.d	$a4, $s4, -1
 	sll.w	$a4, $a4, $s2
@@ -220,8 +217,7 @@ motion_vector:                          # @motion_vector
 	add.d	$a2, $a2, $a0
 	b	.LBB1_22
 .LBB1_19:
-	addi.w	$a4, $zero, -1
-	blt	$a4, $s4, .LBB1_22
+	bgez	$s4, .LBB1_22
 # %bb.20:
 	nor	$a4, $s4, $zero
 	sll.w	$a4, $a4, $s2
@@ -234,7 +230,7 @@ motion_vector:                          # @motion_vector
 	ori	$a0, $zero, 32
 	b	.LBB1_18
 .LBB1_22:                               # %decode_motion_vector.exit33
-	sll.w	$a0, $a2, $s6
+	sll.w	$a0, $a2, $s5
 	sll.w	$a0, $a0, $a1
 	st.w	$a0, $s1, 4
 	beqz	$s0, .LBB1_24

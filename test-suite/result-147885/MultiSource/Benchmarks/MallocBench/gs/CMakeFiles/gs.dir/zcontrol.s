@@ -487,22 +487,24 @@ zrepeat:                                # @zrepeat
 	vst	$vr0, $a3, 48
 	addi.d	$a0, $a0, -32
 	st.d	$a0, $a6, 0
-	addi.d	$a6, $a5, -1
-	ori	$a0, $zero, 1
-	st.d	$a6, $a3, 32
-	blt	$a5, $a0, .LBB6_8
+	addi.d	$a0, $a5, -1
+	st.d	$a0, $a3, 32
+	blez	$a5, .LBB6_8
 # %bb.7:
-	pcalau12i	$a5, %pc_hi20(repeat_continue)
-	addi.d	$a5, $a5, %pc_lo12(repeat_continue)
+	pcalau12i	$a0, %pc_hi20(repeat_continue)
+	addi.d	$a0, $a0, %pc_lo12(repeat_continue)
 	vld	$vr0, $a4, 0
-	st.d	$a5, $a3, 64
-	ori	$a4, $zero, 37
-	st.w	$a4, $a3, 72
+	st.d	$a0, $a3, 64
+	ori	$a0, $zero, 37
+	st.w	$a0, $a3, 72
 	vst	$vr0, $a2, 0
 	st.d	$a2, $a1, 0
+	ori	$a0, $zero, 1
 	ret
 .LBB6_8:
-	st.d	$a3, $a1, 0
+	move	$a2, $a3
+	st.d	$a2, $a1, 0
+	ori	$a0, $zero, 1
 	ret
 .Lfunc_end6:
 	.size	zrepeat, .Lfunc_end6-zrepeat
@@ -521,9 +523,8 @@ repeat_continue:                        # @repeat_continue
 	addi.d	$a3, $a2, -1
 	st.d	$a3, $a0, -16
 	ld.d	$a0, $a1, 0
-	ori	$a3, $zero, 1
 	vst	$vr0, $sp, 0
-	blt	$a2, $a3, .LBB7_2
+	blez	$a2, .LBB7_2
 # %bb.1:
 	pcalau12i	$a2, %pc_hi20(repeat_continue)
 	addi.d	$a2, $a2, %pc_lo12(repeat_continue)

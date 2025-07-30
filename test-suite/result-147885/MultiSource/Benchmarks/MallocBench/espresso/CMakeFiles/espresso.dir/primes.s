@@ -223,34 +223,34 @@ primes_consensus:                       # @primes_consensus
 	move	$s2, $a0
 	ld.w	$a0, $a0, 12
 	ld.w	$a1, $s2, 0
-	mul.w	$a2, $a1, $a0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_66
+	mul.w	$a1, $a1, $a0
+	blez	$a1, .LBB0_66
 # %bb.29:                               # %.lr.ph34.preheader
-	ld.d	$a1, $s2, 24
-	alsl.d	$a2, $a2, $a1, 2
+	ld.d	$a0, $s2, 24
+	alsl.d	$a1, $a1, $a0, 2
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB0_30:                               # %.lr.ph34
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_31 Depth 2
-	ld.wu	$a3, $a1, 0
+	ld.wu	$a3, $a0, 0
 	andi	$a4, $a3, 1023
 	addi.d	$a3, $a4, 1
 	slli.d	$a4, $a4, 2
 	.p2align	4, , 16
 .LBB0_31:                               #   Parent Loop BB0_30 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$a5, $a1, $a4
+	ldx.w	$a5, $a0, $a4
 	ldx.w	$a6, $s1, $a4
 	and	$a5, $a6, $a5
-	stx.w	$a5, $a1, $a4
+	stx.w	$a5, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, -4
-	bltu	$a0, $a3, .LBB0_31
+	bltu	$a2, $a3, .LBB0_31
 # %bb.32:                               #   in Loop: Header=BB0_30 Depth=1
 	ld.w	$a3, $s2, 0
-	alsl.d	$a1, $a3, $a1, 2
-	bltu	$a1, $a2, .LBB0_30
+	alsl.d	$a0, $a3, $a0, 2
+	bltu	$a0, $a1, .LBB0_30
 # %bb.33:
 	move	$s4, $s1
 	b	.LBB0_22
@@ -333,7 +333,7 @@ primes_consensus:                       # @primes_consensus
 	move	$s3, $a0
 	mul.w	$a0, $a2, $a1
 	lu12i.w	$fp, -3
-	blt	$a0, $s6, .LBB0_45
+	blez	$a0, .LBB0_45
 # %bb.41:                               # %.lr.ph.i.i.preheader
 	ld.d	$s4, $s2, 24
 	alsl.d	$s7, $a0, $s4, 2
@@ -379,7 +379,7 @@ primes_consensus:                       # @primes_consensus
 	ld.w	$a2, $s3, 0
 	mul.w	$a1, $a2, $a1
 	move	$s8, $a0
-	blt	$a1, $s6, .LBB0_50
+	blez	$a1, .LBB0_50
 # %bb.46:                               # %.lr.ph.i51.i.preheader
 	ld.d	$s4, $s3, 24
 	alsl.d	$s2, $a1, $s4, 2
@@ -438,14 +438,14 @@ primes_consensus:                       # @primes_consensus
 	ld.w	$a2, $s8, 12
 	ld.w	$a1, $s8, 0
 	mul.w	$a2, $a1, $a2
-	ori	$s2, $zero, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	blt	$a2, $s2, .LBB0_61
+	blez	$a2, .LBB0_61
 # %bb.51:                               # %.lr.ph68.i
 	ld.d	$s6, $s8, 24
 	ld.w	$a0, $s3, 0
 	alsl.d	$a2, $a2, $s6, 2
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	ori	$s2, $zero, 1
 	b	.LBB0_54
 	.p2align	4, , 16
 .LBB0_52:                               # %._crit_edge.loopexit.i
@@ -461,7 +461,7 @@ primes_consensus:                       # @primes_consensus
                                         #     Child Loop BB0_58 Depth 2
 	ld.w	$a2, $s3, 12
 	mul.w	$a2, $a2, $a0
-	blt	$a2, $s2, .LBB0_53
+	blez	$a2, .LBB0_53
 # %bb.55:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_54 Depth=1
 	move	$s5, $s8

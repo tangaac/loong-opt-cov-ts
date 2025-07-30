@@ -428,12 +428,13 @@ sharing_Insert:                         # @sharing_Insert
 	pcalau12i	$a3, %got_pc_hi20(stack_POINTER)
 	ld.d	$s2, $a3, %got_pc_lo12(stack_POINTER)
 	ld.w	$s3, $s2, 0
-	move	$s0, $a2
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	move	$s7, $a2
+	move	$fp, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(sharing_PushOnStack)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 0
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	bne	$a0, $s3, .LBB10_3
 # %bb.1:                                # %.sharing_InsertIntoSharing.exit_crit_edge
 	pcalau12i	$a1, %got_pc_hi20(stack_STACK)
@@ -469,18 +470,17 @@ sharing_Insert:                         # @sharing_Insert
 .LBB10_3:                               # %.lr.ph140.i
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPESTATBITS)
-	addi.d	$s4, $s0, 8
-	ld.w	$fp, $a1, 0
+	addi.d	$s4, $s7, 8
+	ld.w	$s5, $a1, 0
+	pcalau12i	$a1, %got_pc_hi20(stack_STACK)
+	ld.d	$s6, $a1, %got_pc_lo12(stack_STACK)
+	pcalau12i	$a1, %got_pc_hi20(cont_LEFTCONTEXT)
+	ld.d	$s0, $a1, %got_pc_lo12(cont_LEFTCONTEXT)
 	lu12i.w	$a1, 5
-	pcalau12i	$a2, %got_pc_hi20(stack_STACK)
-	ld.d	$s6, $a2, %got_pc_lo12(stack_STACK)
-	pcalau12i	$a2, %got_pc_hi20(cont_LEFTCONTEXT)
-	ld.d	$s7, $a2, %got_pc_lo12(cont_LEFTCONTEXT)
 	ori	$a1, $a1, 3536
-	add.d	$s8, $s0, $a1
-	ori	$a7, $zero, 1
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
+	add.d	$s8, $s7, $a1
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB10_6
 .LBB10_4:                               # %._crit_edge.i
@@ -489,22 +489,21 @@ sharing_Insert:                         # @sharing_Insert
 	pcaddu18i	$ra, %call36(list_NReverse)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 16
-	move	$s0, $fp
-	ld.d	$a0, $fp, 0
-	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a3, $s7, 0
+	move	$s7, $s0
+	ld.d	$a0, $s0, 0
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $s0, 0
 	move	$a1, $s1
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(st_EntryCreate)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ori	$a7, $zero, 1
 	.p2align	4, , 16
 .LBB10_5:                               # %.critedge85.i
                                         #   in Loop: Header=BB10_6 Depth=1
 	ld.w	$a0, $s2, 0
-	st.d	$s1, $s5, 8
+	st.d	$s1, $fp, 8
 	beq	$a0, $s3, .LBB10_2
 .LBB10_6:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_14 Depth 2
@@ -513,10 +512,10 @@ sharing_Insert:                         # @sharing_Insert
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a1, $a0, 31, 0
 	slli.d	$a1, $a1, 3
-	ldx.d	$s5, $s6, $a1
+	ldx.d	$fp, $s6, $a1
 	st.w	$a0, $s2, 0
-	ld.w	$a0, $s5, 0
-	blt	$a0, $a7, .LBB10_9
+	ld.w	$a0, $fp, 0
+	blez	$a0, .LBB10_9
 # %bb.7:                                #   in Loop: Header=BB10_6 Depth=1
 	slli.d	$a1, $a0, 3
 	ldx.d	$s1, $s4, $a1
@@ -527,22 +526,21 @@ sharing_Insert:                         # @sharing_Insert
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 0
-	ld.wu	$a1, $s5, 0
-	ld.d	$a0, $s0, 0
+	ld.wu	$a1, $fp, 0
+	ld.d	$a0, $s7, 0
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $s4, $a1
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	move	$a2, $a1
 	pcaddu18i	$ra, %call36(st_EntryCreate)
 	jirl	$ra, $ra, 0
-	ori	$a7, $zero, 1
-	ld.wu	$a0, $s5, 0
+	ld.wu	$a0, $fp, 0
 	slli.d	$a0, $a0, 3
 	ldx.d	$s1, $s4, $a0
 	b	.LBB10_5
 	.p2align	4, , 16
 .LBB10_9:                               #   in Loop: Header=BB10_6 Depth=1
-	ld.d	$a1, $s5, 16
+	ld.d	$a1, $fp, 16
 	beqz	$a1, .LBB10_18
 # %bb.10:                               # %term_IsConstant.exit.thread.i
                                         #   in Loop: Header=BB10_6 Depth=1
@@ -552,34 +550,34 @@ sharing_Insert:                         # @sharing_Insert
 	bnez	$a2, .LBB10_14
 .LBB10_11:                              # %.critedge.i
                                         #   in Loop: Header=BB10_6 Depth=1
-	move	$fp, $s0
+	move	$s0, $s7
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $s5, 16
+	ld.d	$s5, $fp, 16
 	move	$s1, $a0
-	beqz	$s8, .LBB10_4
+	beqz	$s5, .LBB10_4
 	.p2align	4, , 16
 .LBB10_12:                              #   Parent Loop BB10_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s8, 8
-	ld.d	$s7, $a0, 8
-	ld.d	$s0, $s1, 16
+	ld.d	$a0, $s5, 8
+	ld.d	$s8, $a0, 8
+	ld.d	$s7, $s1, 16
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $a0, 8
-	st.d	$s0, $a0, 0
+	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 0
 	st.d	$a0, $s1, 16
-	ld.d	$s0, $s7, 8
+	ld.d	$s7, $s8, 8
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s1, $a0, 8
-	st.d	$s0, $a0, 0
-	st.d	$a0, $s7, 8
-	ld.d	$s8, $s8, 0
-	bnez	$s8, .LBB10_12
+	st.d	$s7, $a0, 0
+	st.d	$a0, $s8, 8
+	ld.d	$s5, $s5, 0
+	bnez	$s5, .LBB10_12
 	b	.LBB10_4
 	.p2align	4, , 16
 .LBB10_13:                              # %.critedge2.i
@@ -612,7 +610,7 @@ sharing_Insert:                         # @sharing_Insert
 .LBB10_18:                              # %term_IsConstant.exit.i
                                         #   in Loop: Header=BB10_6 Depth=1
 	sub.d	$a1, $zero, $a0
-	srl.w	$a1, $a1, $fp
+	srl.w	$a1, $a1, $s5
 	slli.d	$a2, $a1, 3
 	ldx.d	$s1, $s8, $a2
 	bnez	$s1, .LBB10_5
@@ -622,21 +620,20 @@ sharing_Insert:                         # @sharing_Insert
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 0
-	ld.w	$a1, $s5, 0
-	ld.d	$a0, $s0, 0
+	ld.w	$a1, $fp, 0
+	ld.d	$a0, $s7, 0
 	sub.d	$a1, $zero, $a1
-	sra.w	$a1, $a1, $fp
+	sra.w	$a1, $a1, $s5
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $s8, $a1
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s0, 0
 	move	$a2, $a1
 	pcaddu18i	$ra, %call36(st_EntryCreate)
 	jirl	$ra, $ra, 0
-	ori	$a7, $zero, 1
-	ld.w	$a0, $s5, 0
+	ld.w	$a0, $fp, 0
 	sub.d	$a0, $zero, $a0
-	sra.w	$a0, $a0, $fp
+	sra.w	$a0, $a0, $s5
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 3
 	ldx.d	$s1, $s8, $a0
@@ -942,8 +939,7 @@ sharing_ResetAllTermStamps:             # @sharing_ResetAllTermStamps
 sharing_InternGetDataList:              # @sharing_InternGetDataList
 # %bb.0:
 	ld.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB15_3
+	bgez	$a1, .LBB15_3
 # %bb.1:                                # %term_IsAtom.exit
 	pcalau12i	$a2, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a2, $a2, %got_pc_lo12(symbol_TYPEMASK)
@@ -1083,34 +1079,33 @@ sharing_StartDataIterator:              # @sharing_StartDataIterator
 	ld.w	$a1, $a0, 0
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a0, 0
+	pcalau12i	$a0, %got_pc_hi20(symbol_TYPEMASK)
+	ld.d	$a1, $a0, %got_pc_lo12(symbol_TYPEMASK)
 	pcalau12i	$a0, %pc_hi20(sharing_STACKPOINTER)
-	pcalau12i	$a1, %got_pc_hi20(symbol_TYPEMASK)
-	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPEMASK)
 	pcalau12i	$a2, %pc_hi20(sharing_STACK)
 	addi.d	$a2, $a2, %pc_lo12(sharing_STACK)
-	st.d	$a2, $a0, %pc_lo12(sharing_STACKPOINTER)
 	ld.w	$a1, $a1, 0
+	st.d	$a2, $a0, %pc_lo12(sharing_STACKPOINTER)
 	addi.d	$a2, $a2, 8
-	addi.w	$a3, $zero, -1
-	ori	$a4, $zero, 2
+	ori	$a3, $zero, 2
 	b	.LBB16_11
 	.p2align	4, , 16
 .LBB16_10:                              # %term_IsAtom.exit.thread
                                         #   in Loop: Header=BB16_11 Depth=1
-	ld.d	$a5, $fp, 8
+	ld.d	$a4, $fp, 8
 	st.d	$a2, $a0, %pc_lo12(sharing_STACKPOINTER)
-	st.d	$a5, $a2, -8
-	ld.d	$a5, $fp, 8
-	ld.d	$fp, $a5, 8
+	st.d	$a4, $a2, -8
+	ld.d	$a4, $fp, 8
+	ld.d	$fp, $a4, 8
 	addi.d	$a2, $a2, 8
 .LBB16_11:                              # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $fp, 0
-	blt	$a3, $a5, .LBB16_10
+	ld.w	$a4, $fp, 0
+	bgez	$a4, .LBB16_10
 # %bb.12:                               # %term_IsAtom.exit
                                         #   in Loop: Header=BB16_11 Depth=1
-	sub.w	$a5, $zero, $a5
-	and	$a5, $a1, $a5
-	bne	$a5, $a4, .LBB16_10
+	sub.w	$a4, $zero, $a4
+	and	$a4, $a1, $a4
+	bne	$a4, $a3, .LBB16_10
 # %bb.13:
 	ld.d	$a0, $fp, 8
 	pcalau12i	$a1, %pc_hi20(sharing_DATALIST)
@@ -1140,99 +1135,98 @@ sharing_GetNextData:                    # @sharing_GetNextData
 	ret
 .LBB17_2:                               # %.preheader56
 	pcalau12i	$a0, %pc_hi20(sharing_STACKPOINTER)
-	ld.d	$a7, $a0, %pc_lo12(sharing_STACKPOINTER)
+	ld.d	$a6, $a0, %pc_lo12(sharing_STACKPOINTER)
 	pcalau12i	$a2, %pc_hi20(sharing_STACK)
 	addi.d	$a2, $a2, %pc_lo12(sharing_STACK)
-	bgeu	$a2, $a7, .LBB17_17
+	bgeu	$a2, $a6, .LBB17_17
 # %bb.3:                                # %.preheader.lr.ph
 	pcalau12i	$a3, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a4, $a3, %got_pc_lo12(symbol_TYPEMASK)
 	pcalau12i	$a3, %got_pc_hi20(term_STAMP)
 	ld.d	$a3, $a3, %got_pc_lo12(term_STAMP)
 	ld.w	$a4, $a4, 0
-	ld.w	$t0, $a3, 0
-	addi.w	$a5, $zero, -1
-	ori	$a6, $zero, 2
+	ld.w	$a7, $a3, 0
+	ori	$a5, $zero, 2
 	b	.LBB17_6
 .LBB17_4:                               #   in Loop: Header=BB17_6 Depth=1
-	move	$a7, $t2
+	move	$a6, $t1
 	.p2align	4, , 16
 .LBB17_5:                               # %.critedge6
                                         #   in Loop: Header=BB17_6 Depth=1
-	bgeu	$a2, $a7, .LBB17_17
+	bgeu	$a2, $a6, .LBB17_17
 .LBB17_6:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB17_7 Depth 2
                                         #       Child Loop BB17_8 Depth 3
                                         #     Child Loop BB17_12 Depth 2
                                         #       Child Loop BB17_15 Depth 3
-	move	$t2, $a7
+	move	$t1, $a6
 .LBB17_7:                               #   Parent Loop BB17_6 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB17_8 Depth 3
-	move	$a7, $t2
-	addi.d	$t2, $t2, -8
-	st.d	$t2, $a0, %pc_lo12(sharing_STACKPOINTER)
-	ld.d	$t1, $a7, -8
-	ld.d	$a7, $t1, 8
-	st.w	$t0, $a7, 24
+	move	$a6, $t1
+	addi.d	$t1, $t1, -8
+	st.d	$t1, $a0, %pc_lo12(sharing_STACKPOINTER)
+	ld.d	$t0, $a6, -8
+	ld.d	$a6, $t0, 8
+	st.w	$a7, $a6, 24
 	.p2align	4, , 16
 .LBB17_8:                               #   Parent Loop BB17_6 Depth=1
                                         #     Parent Loop BB17_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$t1, $t1, 0
-	beqz	$t1, .LBB17_10
+	ld.d	$t0, $t0, 0
+	beqz	$t0, .LBB17_10
 # %bb.9:                                #   in Loop: Header=BB17_8 Depth=3
-	ld.d	$a7, $t1, 8
-	ld.w	$a7, $a7, 24
-	beq	$a7, $t0, .LBB17_8
+	ld.d	$a6, $t0, 8
+	ld.w	$a6, $a6, 24
+	beq	$a6, $a7, .LBB17_8
 	b	.LBB17_12
 	.p2align	4, , 16
 .LBB17_10:                              # %.critedge2
                                         #   in Loop: Header=BB17_7 Depth=2
-	bltu	$a2, $t2, .LBB17_7
+	bltu	$a2, $t1, .LBB17_7
 	b	.LBB17_4
 	.p2align	4, , 16
 .LBB17_11:                              #   in Loop: Header=BB17_12 Depth=2
-	move	$t2, $a7
+	move	$t1, $a6
 .LBB17_12:                              # %.lr.ph
                                         #   Parent Loop BB17_6 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB17_15 Depth 3
-	ld.d	$a7, $t1, 8
-	ld.w	$t0, $a7, 0
-	addi.d	$a7, $t2, 8
-	blt	$a5, $t0, .LBB17_14
+	ld.d	$a6, $t0, 8
+	ld.w	$a7, $a6, 0
+	addi.d	$a6, $t1, 8
+	bgez	$a7, .LBB17_14
 # %bb.13:                               # %term_IsAtom.exit
                                         #   in Loop: Header=BB17_12 Depth=2
-	sub.w	$t0, $zero, $t0
-	and	$t0, $a4, $t0
-	beq	$t0, $a6, .LBB17_18
+	sub.w	$a7, $zero, $a7
+	and	$a7, $a4, $a7
+	beq	$a7, $a5, .LBB17_18
 .LBB17_14:                              # %term_IsAtom.exit.thread
                                         #   in Loop: Header=BB17_12 Depth=2
-	st.d	$a7, $a0, %pc_lo12(sharing_STACKPOINTER)
-	st.d	$t1, $t2, 0
-	ld.d	$t1, $t1, 8
-	ld.w	$t0, $a3, 0
-	addi.d	$t1, $t1, 8
+	st.d	$a6, $a0, %pc_lo12(sharing_STACKPOINTER)
+	st.d	$t0, $t1, 0
+	ld.d	$t0, $t0, 8
+	ld.w	$a7, $a3, 0
+	addi.d	$t0, $t0, 8
 	.p2align	4, , 16
 .LBB17_15:                              #   Parent Loop BB17_6 Depth=1
                                         #     Parent Loop BB17_12 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$t1, $t1, 0
-	beqz	$t1, .LBB17_5
+	ld.d	$t0, $t0, 0
+	beqz	$t0, .LBB17_5
 # %bb.16:                               #   in Loop: Header=BB17_15 Depth=3
-	ld.d	$t2, $t1, 8
-	ld.w	$t2, $t2, 24
-	beq	$t2, $t0, .LBB17_15
+	ld.d	$t1, $t0, 8
+	ld.w	$t1, $t1, 24
+	beq	$t1, $a7, .LBB17_15
 	b	.LBB17_11
 .LBB17_17:
 	move	$a0, $zero
 	ret
 .LBB17_18:                              # %.critedge
-	st.d	$a7, $a0, %pc_lo12(sharing_STACKPOINTER)
-	st.d	$t1, $t2, 0
-	ld.d	$a0, $t1, 8
+	st.d	$a6, $a0, %pc_lo12(sharing_STACKPOINTER)
+	st.d	$t0, $t1, 0
+	ld.d	$a0, $t0, 8
 	ld.d	$a0, $a0, 8
 	st.d	$a0, $a1, %pc_lo12(sharing_DATALIST)
 	ld.d	$a2, $a0, 0
@@ -1422,8 +1416,7 @@ sharing_ResetTermStamp:                 # @sharing_ResetTermStamp
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB21_2
+	bgez	$a1, .LBB21_2
 # %bb.1:                                # %term_IsAtom.exit
 	pcalau12i	$a2, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a2, $a2, %got_pc_lo12(symbol_TYPEMASK)
@@ -1465,8 +1458,7 @@ sharing_ResetTermStamp:                 # @sharing_ResetTermStamp
 sharing_GetNumberOfOccurances:          # @sharing_GetNumberOfOccurances
 # %bb.0:
 	ld.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB22_3
+	bgez	$a1, .LBB22_3
 # %bb.1:                                # %term_IsAtom.exit
 	pcalau12i	$a2, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a2, $a2, %got_pc_lo12(symbol_TYPEMASK)
@@ -1847,8 +1839,7 @@ sharing_PrintWithSuperterms:            # @sharing_PrintWithSuperterms
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB29_3
+	bgez	$a1, .LBB29_3
 # %bb.1:                                # %term_IsAtom.exit
 	pcalau12i	$a2, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a2, $a2, %got_pc_lo12(symbol_TYPEMASK)

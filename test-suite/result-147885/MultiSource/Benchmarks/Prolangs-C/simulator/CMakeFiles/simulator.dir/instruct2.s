@@ -333,8 +333,7 @@ DIVR_P:                                 # @DIVR_P
 	beqz	$a6, .LBB4_16
 # %bb.12:
 	and	$a2, $a2, $a3
-	ori	$a3, $zero, 1
-	beq	$a2, $a3, .LBB4_18
+	bnez	$a2, .LBB4_18
 .LBB4_13:
 	beqz	$fp, .LBB4_15
 .LBB4_14:
@@ -369,8 +368,7 @@ DIVR_P:                                 # @DIVR_P
 	sub.d	$a1, $a5, $a1
 	st.w	$a1, $a0, 0
 	and	$a2, $a2, $a3
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB4_13
+	beqz	$a2, .LBB4_13
 .LBB4_18:
 	ld.w	$a2, $a4, 0
 	sub.w	$a1, $a5, $a1
@@ -476,8 +474,7 @@ MULR_P:                                 # @MULR_P
 	bcnez	$fcc0, .LBB5_12
 .LBB5_9:                                # %.thread
 	and	$a2, $a2, $a3
-	ori	$s1, $zero, 1
-	beq	$a2, $s1, .LBB5_14
+	bnez	$a2, .LBB5_14
 	b	.LBB5_16
 .LBB5_10:
 	xori	$a7, $a2, 1
@@ -515,8 +512,7 @@ MULR_P:                                 # @MULR_P
 .LBB5_13:                               # %.thread
 	move	$a7, $a5
 	and	$a2, $a2, $a3
-	ori	$s1, $zero, 1
-	bne	$a2, $s1, .LBB5_16
+	beqz	$a2, .LBB5_16
 .LBB5_14:
 	lu12i.w	$a2, 4096
 	ld.w	$a3, $a6, 0
@@ -530,6 +526,7 @@ MULR_P:                                 # @MULR_P
 	ffint.d.w	$fa2, $fa2
 	fmul.d	$fa0, $fa0, $fa2
 	fcmp.cle.d	$fcc0, $fa1, $fa0
+	ori	$s1, $zero, 1
 	bcnez	$fcc0, .LBB5_17
 # %bb.15:
 	ftintrz.w.d	$fa0, $fa0
@@ -973,9 +970,8 @@ SHIFTR_P:                               # @SHIFTR_P
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 200
 	ld.w	$a0, $sp, 104
-	addi.w	$a3, $zero, -1
 	move	$a2, $a0
-	bge	$a3, $a1, .LBB8_30
+	bltz	$a1, .LBB8_30
 # %bb.2:
 	st.w	$a2, $sp, 8
 	move	$a2, $a0
@@ -1413,8 +1409,7 @@ SUBR_P:                                 # @SUBR_P
 	lu12i.w	$a7, 2048
 	slt	$s1, $a5, $a7
 	and	$a3, $a3, $a4
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB9_11
+	bnez	$a3, .LBB9_11
 	b	.LBB9_12
 .LBB9_8:
 	xori	$t0, $a3, 1
@@ -1428,14 +1423,12 @@ SUBR_P:                                 # @SUBR_P
 	st.w	$t0, $a0, 0
 	slt	$s1, $a7, $a5
 	and	$a3, $a3, $a4
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB9_11
+	bnez	$a3, .LBB9_11
 	b	.LBB9_12
 .LBB9_10:
 	move	$s1, $zero
 	and	$a3, $a3, $a4
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB9_12
+	beqz	$a3, .LBB9_12
 .LBB9_11:
 	ld.w	$a3, $a6, 0
 	sub.d	$a3, $a5, $a3

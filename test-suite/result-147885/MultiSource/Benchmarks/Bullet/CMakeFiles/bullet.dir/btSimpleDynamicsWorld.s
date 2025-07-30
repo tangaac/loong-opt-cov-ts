@@ -124,9 +124,8 @@ _ZN21btSimpleDynamicsWorldD2Ev:         # @_ZN21btSimpleDynamicsWorldD2Ev
 	ld.bu	$a0, $a0, 240
 	pcalau12i	$a1, %pc_hi20(_ZTV21btSimpleDynamicsWorld+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV21btSimpleDynamicsWorld+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB3_2
+	beqz	$a0, .LBB3_2
 # %bb.1:
 	ld.d	$a0, $fp, 232
 .Ltmp0:
@@ -325,8 +324,7 @@ _ZN21btSimpleDynamicsWorld14stepSimulationEfif: # @_ZN21btSimpleDynamicsWorld14s
 	jirl	$ra, $a4, 0
 .LBB5_2:
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_11
+	blez	$a0, .LBB5_11
 # %bb.3:                                # %.lr.ph.i
 	move	$s1, $zero
 	move	$s2, $zero
@@ -420,8 +418,7 @@ _ZN21btSimpleDynamicsWorld25predictUnconstraintMotionEf: # @_ZN21btSimpleDynamic
 	.cfi_offset 56, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_9
+	blez	$a0, .LBB6_9
 # %bb.1:                                # %.lr.ph
 	fmov.s	$fs0, $fa0
 	move	$s1, $zero
@@ -510,8 +507,7 @@ _ZN21btSimpleDynamicsWorld19integrateTransformsEf: # @_ZN21btSimpleDynamicsWorld
 	.cfi_offset 56, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_9
+	blez	$a0, .LBB7_9
 # %bb.1:                                # %.lr.ph
 	fmov.s	$fs0, $fa0
 	move	$s1, $zero
@@ -573,8 +569,7 @@ _ZN21btSimpleDynamicsWorld19integrateTransformsEf: # @_ZN21btSimpleDynamicsWorld
 _ZN21btSimpleDynamicsWorld11clearForcesEv: # @_ZN21btSimpleDynamicsWorld11clearForcesEv
 # %bb.0:
 	ld.w	$a1, $a0, 12
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_6
+	blez	$a1, .LBB8_6
 # %bb.1:                                # %.lr.ph
 	move	$a2, $zero
 	move	$a3, $zero
@@ -624,13 +619,12 @@ _ZN21btSimpleDynamicsWorld10setGravityERK9btVector3: # @_ZN21btSimpleDynamicsWor
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	move	$fp, $a1
-	move	$s0, $a0
 	vld	$vr0, $a1, 0
 	ld.w	$a1, $a0, 12
-	ori	$a0, $zero, 1
-	vst	$vr0, $s0, 244
-	blt	$a1, $a0, .LBB9_6
+	vst	$vr0, $a0, 244
+	blez	$a1, .LBB9_6
 # %bb.1:                                # %.lr.ph
+	move	$s0, $a0
 	move	$s1, $zero
 	move	$s2, $zero
 	ori	$s3, $zero, 2
@@ -780,8 +774,7 @@ _ZN21btSimpleDynamicsWorld11updateAabbsEv: # @_ZN21btSimpleDynamicsWorld11update
 	.cfi_offset 27, -56
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB14_9
+	blez	$a0, .LBB14_9
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -847,6 +840,9 @@ _ZN21btSimpleDynamicsWorld11updateAabbsEv: # @_ZN21btSimpleDynamicsWorld11update
 _ZN21btSimpleDynamicsWorld23synchronizeMotionStatesEv: # @_ZN21btSimpleDynamicsWorld23synchronizeMotionStatesEv
 	.cfi_startproc
 # %bb.0:
+	ld.w	$a1, $a0, 12
+	blez	$a1, .LBB15_9
+# %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -48
 	.cfi_def_cfa_offset 48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -860,10 +856,6 @@ _ZN21btSimpleDynamicsWorld23synchronizeMotionStatesEv: # @_ZN21btSimpleDynamicsW
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	move	$fp, $a0
-	ld.w	$a1, $a0, 12
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB15_8
-# %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
 	ori	$s2, $zero, 2
@@ -893,13 +885,14 @@ _ZN21btSimpleDynamicsWorld23synchronizeMotionStatesEv: # @_ZN21btSimpleDynamicsW
 	jirl	$ra, $a3, 0
 	ld.w	$a1, $fp, 12
 	b	.LBB15_2
-.LBB15_8:                               # %._crit_edge
+.LBB15_8:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB15_9:                               # %._crit_edge
 	ret
 .Lfunc_end15:
 	.size	_ZN21btSimpleDynamicsWorld23synchronizeMotionStatesEv, .Lfunc_end15-_ZN21btSimpleDynamicsWorld23synchronizeMotionStatesEv
@@ -921,9 +914,8 @@ _ZN21btSimpleDynamicsWorld19setConstraintSolverEP18btConstraintSolver: # @_ZN21b
 	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 240
-	ori	$a2, $zero, 1
 	move	$s0, $a1
-	bne	$a0, $a2, .LBB16_2
+	beqz	$a0, .LBB16_2
 # %bb.1:
 	ld.d	$a0, $fp, 232
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)

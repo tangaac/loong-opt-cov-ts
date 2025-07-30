@@ -1990,8 +1990,7 @@ _ZN23btGeneric6DofConstraint13buildJacobianEv: # @_ZN23btGeneric6DofConstraint13
 	.cfi_offset 22, -16
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 1265
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB16_25
+	beqz	$a0, .LBB16_25
 # %bb.1:
 	st.w	$zero, $fp, 920
 	st.w	$zero, $fp, 976
@@ -2292,9 +2291,8 @@ _ZN23btGeneric6DofConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E:
 	.cfi_offset 23, -24
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 1265
-	ori	$a2, $zero, 1
 	move	$fp, $a1
-	bne	$a0, $a2, .LBB18_2
+	beqz	$a0, .LBB18_2
 # %bb.1:
 	st.d	$zero, $fp, 0
 	b	.LBB18_35
@@ -3324,8 +3322,7 @@ _ZN23btGeneric6DofConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_Z
 	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
 	move	$s1, $a0
 	ld.bu	$a0, $a0, 1265
-	ori	$a3, $zero, 1
-	bne	$a0, $a3, .LBB25_16
+	beqz	$a0, .LBB25_16
 # %bb.1:
 	move	$fp, $a2
 	move	$s0, $a1

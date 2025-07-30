@@ -366,8 +366,7 @@ _ZN8NArchive4NZip22CCompressionMethodModeC2ERKS1_: # @_ZN8NArchive4NZip22CCompre
 	jirl	$ra, $ra, 0
 .Ltmp18:
 # %bb.2:                                # %.noexc3.i
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB3_6
+	blez	$s1, .LBB3_6
 # %bb.3:                                # %.lr.ph.i.i.i
 	move	$s2, $zero
 	.p2align	4, , 16
@@ -394,11 +393,9 @@ _ZN8NArchive4NZip22CCompressionMethodModeC2ERKS1_: # @_ZN8NArchive4NZip22CCompre
 	vst	$vr0, $fp, 32
 	ld.wu	$a0, $s0, 40
 	addi.d	$s3, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $s3, $a1
+	slli.d	$a1, $s3, 31
 	addi.w	$s2, $a0, 0
-	beqz	$a1, .LBB3_8
+	bgez	$a1, .LBB3_8
 # %bb.7:
 	move	$s1, $zero
 	b	.LBB3_10
@@ -440,10 +437,8 @@ _ZN8NArchive4NZip22CCompressionMethodModeC2ERKS1_: # @_ZN8NArchive4NZip22CCompre
 	vst	$vr0, $fp, 88
 	ld.wu	$s2, $s0, 96
 	addi.d	$s3, $s2, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
-	beqz	$a0, .LBB3_14
+	slli.d	$a0, $s3, 31
+	bgez	$a0, .LBB3_14
 # %bb.13:
 	move	$a0, $zero
 	b	.LBB3_16
@@ -859,20 +854,19 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .Ltmp62:
 # %bb.39:                               #   in Loop: Header=BB4_33 Depth=1
 	move	$s0, $a0
-	ori	$a1, $zero, 1
 	bnez	$a0, .LBB4_169
 # %bb.40:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.bu	$a0, $s3, 84
-	bne	$a0, $a1, .LBB4_80
+	beqz	$a0, .LBB4_80
 # %bb.41:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ori	$a2, $zero, 20
-	st.b	$a2, $a0, 0
+	ori	$a1, $zero, 20
+	st.b	$a1, $a0, 0
 	ld.d	$a0, $s3, 152
 	beqz	$a0, .LBB4_54
 # %bb.42:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.bu	$a0, $s3, 104
-	bne	$a0, $a1, .LBB4_60
+	beqz	$a0, .LBB4_60
 .LBB4_43:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ori	$a1, $zero, 51
@@ -993,9 +987,8 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 .LBB4_59:                               # %_ZN9CMyComPtrI20ISequentialOutStreamEaSEPS0_.exit
                                         #   in Loop: Header=BB4_33 Depth=1
 	st.d	$s2, $s3, 152
-	ori	$a1, $zero, 1
 	ld.bu	$a0, $s3, 104
-	beq	$a0, $a1, .LBB4_43
+	bnez	$a0, .LBB4_43
 .LBB4_60:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$s5, $s3, 144
 	ld.d	$a0, $s5, 192
@@ -1250,8 +1243,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	beqz	$a0, .LBB4_97
 # %bb.94:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.bu	$a0, $s3, 84
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_102
+	beqz	$a0, .LBB4_102
 .LBB4_95:                               #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$s2, $s3, 152
 	beqz	$s2, .LBB4_122
@@ -1299,8 +1291,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
                                         #   in Loop: Header=BB4_33 Depth=1
 	st.d	$s0, $s3, 120
 	ld.bu	$a0, $s3, 84
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_95
+	bnez	$a0, .LBB4_95
 .LBB4_102:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a0, $s8, 0
 	ld.d	$a1, $a0, 8
@@ -1630,8 +1621,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	.p2align	4, , 16
 .LBB4_142:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.bu	$a0, $s3, 84
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_145
+	beqz	$a0, .LBB4_145
 # %bb.143:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$s2, $s3, 152
 	beqz	$s2, .LBB4_160
@@ -1708,12 +1698,11 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	st.d	$a0, $s1, 0
 	ld.bu	$a2, $s3, 84
 	ld.d	$a1, $s1, 8
-	ori	$a4, $zero, 1
-	bne	$a2, $a4, .LBB4_158
+	beqz	$a2, .LBB4_158
 # %bb.155:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.bu	$a3, $s3, 104
 	ori	$a2, $zero, 12
-	bne	$a3, $a4, .LBB4_157
+	beqz	$a3, .LBB4_157
 # %bb.156:                              #   in Loop: Header=BB4_33 Depth=1
 	ld.d	$a2, $s3, 168
 	ld.w	$a2, $a2, 24
@@ -1744,8 +1733,7 @@ _ZN8NArchive4NZip10CAddCommon8CompressEP19ISequentialInStreamP10IOutStreamP21ICo
 	move	$s5, $zero
 .LBB4_163:                              # %._crit_edge
 	ld.bu	$a0, $s3, 104
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_168
+	beqz	$a0, .LBB4_168
 # %bb.164:
 	ld.d	$a0, $s3, 168
 .Ltmp281:

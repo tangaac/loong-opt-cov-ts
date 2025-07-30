@@ -16,9 +16,8 @@ _ZN17CBaseRecordVectorD2Ev:             # @_ZN17CBaseRecordVectorD2Ev
 	ld.w	$a0, $a0, 12
 	pcalau12i	$a1, %pc_hi20(_ZTV17CBaseRecordVector+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV17CBaseRecordVector+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	blt	$a0, $a2, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.1:
 	st.w	$zero, $fp, 12
 .LBB0_2:                                # %_ZN17CBaseRecordVector6DeleteEii.exit
@@ -82,9 +81,8 @@ _ZN17CBaseRecordVectorD0Ev:             # @_ZN17CBaseRecordVectorD0Ev
 	ld.w	$a1, $a0, 12
 	pcalau12i	$a2, %pc_hi20(_ZTV17CBaseRecordVector+16)
 	addi.d	$a2, $a2, %pc_lo12(_ZTV17CBaseRecordVector+16)
-	ori	$a3, $zero, 1
 	st.d	$a2, $a0, 0
-	blt	$a1, $a3, .LBB2_2
+	blez	$a1, .LBB2_2
 # %bb.1:
 	st.w	$zero, $a0, 12
 .LBB2_2:                                # %_ZN17CBaseRecordVector6DeleteEii.exit.i
@@ -215,8 +213,7 @@ _ZN17CBaseRecordVector7ReserveEi:       # @_ZN17CBaseRecordVector7ReserveEi
 	beq	$a1, $a0, .LBB7_7
 # %bb.1:
 	move	$s0, $a1
-	addi.w	$a0, $zero, -1
-	bge	$a0, $a1, .LBB7_9
+	bltz	$a1, .LBB7_9
 # %bb.2:
 	ld.d	$s3, $fp, 24
 	mulh.du	$a0, $s3, $s0
@@ -394,8 +391,7 @@ _ZN17CBaseRecordVector6DeleteEii:       # @_ZN17CBaseRecordVector6DeleteEii
 	maskeqz	$a5, $a5, $a3
 	masknez	$a2, $a2, $a3
 	or	$fp, $a5, $a2
-	ori	$a2, $zero, 1
-	blt	$fp, $a2, .LBB11_2
+	blez	$fp, .LBB11_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a5, $a0, 16

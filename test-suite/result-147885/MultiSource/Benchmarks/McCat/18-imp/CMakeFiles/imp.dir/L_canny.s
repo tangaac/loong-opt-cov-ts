@@ -96,8 +96,7 @@ L_canny:                                # @L_canny
 # %bb.7:                                # %.preheader
 	ld.d	$a1, $sp, 48
 	ld.d	$a2, $sp, 40
-	ori	$a3, $zero, 1
-	blt	$s3, $a3, .LBB0_16
+	blez	$s3, .LBB0_16
 # %bb.8:                                # %.lr.ph
 	ori	$a3, $zero, 8
 	bgeu	$s3, $a3, .LBB0_11
@@ -497,11 +496,10 @@ dfilter:                                # @dfilter
 	move	$s1, $a0
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	ext.w.h	$s8, $s8
-	ori	$a0, $zero, 1
 	ext.w.h	$fp, $s2
-	blt	$s8, $a0, .LBB3_13
+	blez	$s8, .LBB3_13
 # %bb.2:                                # %.preheader114.lr.ph
-	blt	$fp, $a0, .LBB3_13
+	blez	$fp, .LBB3_13
 # %bb.3:                                # %.preheader114.lr.ph
 	bstrpick.d	$a0, $s7, 31, 31
 	add.w	$a0, $s7, $a0
@@ -580,10 +578,9 @@ dfilter:                                # @dfilter
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_26
 # %bb.14:                               # %.preheader113
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB3_27
+	blez	$fp, .LBB3_27
 # %bb.15:                               # %.preheader.lr.ph
-	blt	$s8, $a1, .LBB3_27
+	blez	$s8, .LBB3_27
 # %bb.16:                               # %.preheader.lr.ph
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	bstrpick.d	$a1, $a2, 31, 31

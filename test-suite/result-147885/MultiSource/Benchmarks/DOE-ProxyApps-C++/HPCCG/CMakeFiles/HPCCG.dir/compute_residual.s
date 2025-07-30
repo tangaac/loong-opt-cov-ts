@@ -6,8 +6,7 @@
 _Z16compute_residualiPKdS0_Pd:          # @_Z16compute_residualiPKdS0_Pd
 # %bb.0:
 	movgr2fr.d	$fa0, $zero
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_2
+	blez	$a0, .LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

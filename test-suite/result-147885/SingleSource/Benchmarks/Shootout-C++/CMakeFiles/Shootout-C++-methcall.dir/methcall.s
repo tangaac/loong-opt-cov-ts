@@ -48,9 +48,9 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	st.b	$a0, $s0, 8
 	addi.w	$s3, $fp, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.1)
-	addi.d	$s2, $a1, %pc_lo12(.L.str.1)
-	blt	$s3, $a0, .LBB0_7
+	pcalau12i	$a0, %pc_hi20(.L.str.1)
+	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
+	blez	$s3, .LBB0_7
 # %bb.4:
 	move	$s1, $fp
 	.p2align	4, , 16
@@ -120,12 +120,12 @@ main:                                   # @main
 	move	$s0, $a0
 	ori	$a0, $zero, 1
 	st.b	$a0, $s0, 8
-	pcalau12i	$a1, %pc_hi20(_ZTV9NthToggle+16)
-	addi.d	$a1, $a1, %pc_lo12(_ZTV9NthToggle+16)
-	st.d	$a1, $s0, 0
-	ori	$a1, $zero, 3
-	st.d	$a1, $s0, 12
-	blt	$s3, $a0, .LBB0_15
+	pcalau12i	$a0, %pc_hi20(_ZTV9NthToggle+16)
+	addi.d	$a0, $a0, %pc_lo12(_ZTV9NthToggle+16)
+	st.d	$a0, $s0, 0
+	ori	$a0, $zero, 3
+	st.d	$a0, $s0, 12
+	blez	$s3, .LBB0_15
 	.p2align	4, , 16
 .LBB0_13:                               # %.lr.ph26
                                         # =>This Inner Loop Header: Depth=1

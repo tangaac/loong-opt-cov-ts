@@ -130,7 +130,7 @@ main:                                   # @main
                                         #   in Loop: Header=BB2_2 Depth=1
 	beqz	$t0, .LBB2_1
 # %bb.9:                                #   in Loop: Header=BB2_2 Depth=1
-	bstrpick.d	$t1, $a7, 62, 0
+	slli.d	$t1, $a7, 1
 	bnez	$t1, .LBB2_11
 # %bb.10:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$t1, $zero, -1
@@ -148,7 +148,7 @@ main:                                   # @main
 	addi.w	$t1, $t0, 0
 	beqz	$t1, .LBB2_1
 # %bb.13:                               #   in Loop: Header=BB2_2 Depth=1
-	bstrpick.d	$t2, $a7, 30, 0
+	slli.d	$t2, $a7, 33
 	bnez	$t2, .LBB2_15
 # %bb.14:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$t2, $zero, -1
@@ -164,7 +164,7 @@ main:                                   # @main
 	sub.w	$t1, $t3, $t1
 	bgeu	$t2, $t1, .LBB2_20
 # %bb.16:                               #   in Loop: Header=BB2_2 Depth=1
-	bstrpick.d	$t1, $t0, 15, 0
+	slli.d	$t1, $t0, 48
 	beqz	$t1, .LBB2_1
 # %bb.17:                               #   in Loop: Header=BB2_2 Depth=1
 	ext.w.h	$t1, $a7

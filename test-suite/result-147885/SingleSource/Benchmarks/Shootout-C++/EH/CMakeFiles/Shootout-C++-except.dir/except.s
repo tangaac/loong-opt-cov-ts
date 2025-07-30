@@ -314,27 +314,29 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB5_4
+	addi.w	$a1, $a0, 0
+	blez	$a1, .LBB5_4
 # %bb.2:
-	bstrpick.d	$a1, $a0, 30, 0
-	bnez	$a1, .LBB5_4
-	b	.LBB5_6
+	bstrpick.d	$a0, $a0, 30, 0
+	bnez	$a0, .LBB5_5
+	b	.LBB5_7
 .LBB5_3:
 	lu12i.w	$a0, 24
-	ori	$a1, $a0, 1696
-.LBB5_4:                                # %.lr.ph.preheader
-	addi.d	$fp, $a1, -1
+	ori	$a0, $a0, 1696
+	b	.LBB5_5
+.LBB5_4:
+	ori	$a0, $zero, 1
+.LBB5_5:                                # %.lr.ph.preheader
+	addi.d	$fp, $a0, -1
 	addi.w	$s0, $zero, -1
-.LBB5_5:                                # %.lr.ph
+.LBB5_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Z13some_functionm)
 	jirl	$ra, $ra, 0
 	addi.d	$fp, $fp, -1
-	bne	$fp, $s0, .LBB5_5
-.LBB5_6:                                # %._crit_edge
+	bne	$fp, $s0, .LBB5_6
+.LBB5_7:                                # %._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$fp, $a0, %got_pc_lo12(_ZSt4cout)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -370,14 +372,14 @@ main:                                   # @main
 	ld.d	$a1, $a1, -24
 	add.d	$a1, $a0, $a1
 	ld.d	$fp, $a1, 240
-	beqz	$fp, .LBB5_11
-# %bb.7:                                # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i
+	beqz	$fp, .LBB5_12
+# %bb.8:                                # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i
 	ld.bu	$a1, $fp, 56
-	beqz	$a1, .LBB5_9
-# %bb.8:
+	beqz	$a1, .LBB5_10
+# %bb.9:
 	ld.bu	$a1, $fp, 67
-	b	.LBB5_10
-.LBB5_9:
+	b	.LBB5_11
+.LBB5_10:
 	move	$s0, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
@@ -389,7 +391,7 @@ main:                                   # @main
 	jirl	$ra, $a2, 0
 	move	$a1, $a0
 	move	$a0, $s0
-.LBB5_10:                               # %_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_.exit
+.LBB5_11:                               # %_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_.exit
 	ext.w.b	$a1, $a1
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
@@ -401,7 +403,7 @@ main:                                   # @main
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB5_11:
+.LBB5_12:
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Lfunc_end5:

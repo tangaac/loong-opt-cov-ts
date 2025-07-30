@@ -38,8 +38,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB0_20
+	bltz	$a1, .LBB0_20
 # %bb.2:                                # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
 	slli.d	$a1, $a0, 3
 	alsl.w	$s3, $a0, $a1, 1

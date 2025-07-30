@@ -460,8 +460,7 @@ Fft:                                    # @Fft
 	bnez	$fp, .LBB7_11
 	b	.LBB7_1
 .LBB7_12:                               # %.preheader
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_15
+	blez	$a0, .LBB7_15
 # %bb.13:                               # %.lr.ph
 	fneg.s	$fa1, $fa0
 	addi.d	$a0, $a0, 1

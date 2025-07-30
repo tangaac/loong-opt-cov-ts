@@ -336,8 +336,7 @@ zload:                                  # @zload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_6
+	blez	$a0, .LBB6_6
 # %bb.5:
 	ld.d	$a0, $sp, 8
 	vld	$vr0, $a0, 0

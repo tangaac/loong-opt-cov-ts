@@ -282,11 +282,10 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 .LBB0_43:
 	vldi	$vr0, -912
 .LBB0_44:
-	ori	$a0, $zero, 1
 	fst.d	$fa0, $fp, 48
-	blt	$s1, $a0, .LBB0_57
+	blez	$s1, .LBB0_57
 # %bb.45:
-	blt	$s5, $a0, .LBB0_57
+	blez	$s5, .LBB0_57
 # %bb.46:
 	movgr2fr.d	$fa1, $zero
 	fcmp.cle.d	$fcc0, $fa2, $fa1
@@ -980,35 +979,33 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	.cfi_offset 58, -112
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
-	ld.w	$s5, $a0, 72
+	ld.w	$s4, $a0, 72
 	ld.w	$t0, $a0, 76
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ld.w	$a0, $a0, 68
-	addi.d	$t1, $s5, 1
+	addi.d	$t1, $s4, 1
 	addi.d	$t2, $t0, 1
 	sltui	$a0, $a0, 1
-	st.d	$t0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 80                    # 8-byte Folded Spill
 	mul.d	$t0, $t1, $t0
-	st.d	$t0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$t0, $sp, 16                    # 8-byte Folded Spill
 	addi.d	$t0, $t0, 1
 	st.d	$t1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
 	mulw.d.w	$t1, $t2, $t1
-	st.d	$t1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$t1, $sp, 8                     # 8-byte Folded Spill
 	masknez	$t1, $t1, $a0
 	maskeqz	$a0, $t0, $a0
 	or	$a0, $a0, $t1
 	addi.w	$s1, $a0, 0
-	addi.w	$a0, $zero, -1
-	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	bge	$a0, $s1, .LBB4_381
+	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
+	bltz	$s1, .LBB4_379
 # %bb.1:
 	move	$s3, $a4
+	move	$s5, $a2
 	move	$s6, $a1
 	ld.d	$fp, $a1, 16
 	ld.d	$s0, $a1, 0
@@ -1047,14 +1044,16 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $s6, 8
 	alsl.d	$fp, $s1, $s7, 4
 	st.d	$fp, $s6, 16
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	bgez	$a0, .LBB4_9
 	b	.LBB4_33
 .LBB4_8:
 	move	$s7, $s0
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	bltz	$a0, .LBB4_33
 .LBB4_9:                                # %.lr.ph553
 	ld.w	$a1, $s1, 32
@@ -1071,11 +1070,11 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.w	$a1, $zero, -16
 	lu52i.d	$a1, $a1, 2047
 	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 127
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB4_14
 	.p2align	4, , 16
 .LBB4_10:                               #   in Loop: Header=BB4_14 Depth=1
@@ -1083,7 +1082,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	beq	$a0, $fp, .LBB4_26
 # %bb.11:                               #   in Loop: Header=BB4_14 Depth=1
 	addi.d	$a1, $a0, 16
-	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 	st.d	$a1, $s6, 8
 .LBB4_12:                               #   in Loop: Header=BB4_14 Depth=1
@@ -1093,7 +1092,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a0, $a2, 1
 	move	$s7, $s8
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	beq	$a2, $a1, .LBB4_33
 .LBB4_14:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_18 Depth 2
@@ -1104,7 +1103,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	beqz	$a1, .LBB4_10
 # %bb.15:                               #   in Loop: Header=BB4_14 Depth=1
-	bltz	$s5, .LBB4_12
+	bltz	$s4, .LBB4_12
 # %bb.16:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_14 Depth=1
 	move	$a0, $zero
@@ -1121,7 +1120,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$s0, $s6, 8
 	move	$s8, $s7
 	addi.w	$a0, $s2, 1
-	beq	$s2, $s5, .LBB4_13
+	beq	$s2, $s4, .LBB4_13
 .LBB4_18:                               # %.lr.ph
                                         #   Parent Loop BB4_14 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1146,7 +1145,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 # %bb.19:                               #   in Loop: Header=BB4_18 Depth=2
 	sub.d	$s0, $fp, $s7
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.20:                               # %.noexc452
                                         #   in Loop: Header=BB4_18 Depth=2
 	srai.d	$a0, $s0, 4
@@ -1201,14 +1200,15 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	alsl.d	$fp, $s1, $s8, 4
 	st.d	$fp, $s6, 16
 	move	$s7, $s8
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	addi.w	$a0, $s2, 1
-	bne	$s2, $s5, .LBB4_18
+	bne	$s2, $s4, .LBB4_18
 	b	.LBB4_13
 .LBB4_26:                               #   in Loop: Header=BB4_14 Depth=1
 	sub.d	$s0, $fp, $s7
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.27:                               # %.noexc438
                                         #   in Loop: Header=BB4_14 Depth=1
 	srai.d	$a0, $s0, 4
@@ -1227,7 +1227,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
-	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	vstx	$vr0, $a0, $s0
 	move	$s2, $a0
 	beq	$s7, $fp, .LBB4_30
@@ -1260,24 +1260,21 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $s6, 8
 	alsl.d	$fp, $s1, $s8, 4
 	st.d	$fp, $s6, 16
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB4_13
 .LBB4_33:                               # %._crit_edge
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	mul.w	$fp, $a0, $s5
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bge	$a0, $fp, .LBB4_381
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	mul.w	$fp, $a0, $s4
+	bltz	$fp, .LBB4_379
 # %bb.34:
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a0, $a1, 16
-	ld.d	$s0, $a1, 0
+	ld.d	$a0, $s5, 16
+	ld.d	$s0, $s5, 0
 	sub.d	$s7, $a0, $s0
 	srai.d	$a0, $s7, 2
 	slli.d	$s6, $fp, 2
 	bgeu	$a0, $fp, .LBB4_40
 # %bb.35:                               # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s1, $a0, 8
+	ld.d	$s1, $s5, 8
 	sub.d	$s8, $s1, $s0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -1298,22 +1295,21 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB4_39:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	st.d	$s2, $a1, 0
+	st.d	$s2, $s5, 0
 	add.d	$a0, $s2, $s8
-	st.d	$a0, $a1, 8
+	st.d	$a0, $s5, 8
 	alsl.d	$a0, $fp, $s2, 2
-	st.d	$a0, $a1, 16
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	st.d	$a0, $s5, 16
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 .LBB4_40:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
 	ld.d	$s0, $a1, 0
 	sub.d	$s7, $a0, $s0
 	srai.d	$a0, $s7, 2
 	bgeu	$a0, $fp, .LBB4_46
 # %bb.41:                               # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i160
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s1, $a0, 8
 	sub.d	$s8, $s1, $s0
 	move	$a0, $s6
@@ -1335,13 +1331,13 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB4_45:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i164
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s2, $a1, 0
 	add.d	$a0, $s2, $s8
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 .LBB4_46:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit165
 	ld.d	$a0, $s3, 16
 	ld.d	$s0, $s3, 0
@@ -1376,24 +1372,19 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $s3, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $s3, 16
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 .LBB4_52:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit171
 	ld.w	$a1, $s1, 76
-	ori	$a0, $zero, 1
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB4_116
+	blez	$a1, .LBB4_116
 # %bb.53:                               # %.preheader547.lr.ph
 	ld.w	$a0, $s1, 72
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB4_116
+	blez	$a0, .LBB4_116
 # %bb.54:                               # %.preheader547.preheader
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
-	ori	$s2, $zero, 1
 	addi.w	$a2, $zero, -4
 	lu52i.d	$a2, $a2, 2047
 	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a2, $zero, -1
 	lu52i.d	$fp, $a2, 511
 	b	.LBB4_57
 	.p2align	4, , 16
@@ -1409,11 +1400,11 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 .LBB4_57:                               # %.preheader547
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_60 Depth 2
-	blt	$a0, $s2, .LBB4_56
+	blez	$a0, .LBB4_56
 # %bb.58:                               # %.lr.ph555
                                         #   in Loop: Header=BB4_57 Depth=1
 	ld.d	$a1, $s3, 8
-	move	$s8, $zero
+	move	$s2, $zero
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	mul.d	$a0, $a2, $a0
@@ -1421,37 +1412,37 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	b	.LBB4_60
 	.p2align	4, , 16
 .LBB4_59:                               #   in Loop: Header=BB4_60 Depth=2
-	st.w	$s1, $a1, 0
+	st.w	$s8, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a0, $s1, 72
-	addi.w	$s8, $s8, 1
-	bge	$s8, $a0, .LBB4_55
+	addi.w	$s2, $s2, 1
+	bge	$s2, $a0, .LBB4_55
 .LBB4_60:                               #   Parent Loop BB4_57 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $s3, 0
-	ld.d	$a0, $a5, 8
-	ld.d	$a3, $a5, 16
+	ld.d	$a0, $s5, 8
+	ld.d	$a3, $s5, 16
 	sub.d	$a1, $a1, $a2
-	srai.d	$s4, $a1, 2
+	srai.d	$s8, $a1, 2
 	beq	$a0, $a3, .LBB4_62
 # %bb.61:                               #   in Loop: Header=BB4_60 Depth=2
-	st.w	$s4, $a0, 0
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a5, 8
+	st.d	$a0, $s5, 8
 	b	.LBB4_68
 	.p2align	4, , 16
 .LBB4_62:                               #   in Loop: Header=BB4_60 Depth=2
-	ld.d	$s6, $a5, 0
+	ld.d	$s6, $s5, 0
 	sub.d	$s0, $a0, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.63:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -1463,8 +1454,8 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s4, $a0, $s0
-	blt	$s0, $s2, .LBB4_65
+	stx.w	$s8, $a0, $s0
+	blez	$s0, .LBB4_65
 # %bb.64:                               #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1484,25 +1475,24 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
                                         #   in Loop: Header=BB4_60 Depth=2
 	add.d	$a0, $s7, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
-	st.d	$s7, $a5, 0
-	st.d	$a0, $a5, 8
+	st.d	$s7, $s5, 0
+	st.d	$a0, $s5, 8
 	alsl.d	$a0, $s1, $s7, 2
-	st.d	$a0, $a5, 16
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	st.d	$a0, $s5, 16
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 .LBB4_68:                               # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
                                         #   in Loop: Header=BB4_60 Depth=2
 	ld.w	$a0, $s1, 68
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	add.d	$a2, $s8, $a1
+	add.d	$a2, $s2, $a1
 	sltui	$a3, $a0, 1
 	ld.w	$a4, $s1, 84
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 8
 	ld.d	$a1, $a1, 16
-	maskeqz	$a3, $s5, $a3
+	maskeqz	$a3, $s4, $a3
 	sub.w	$a4, $zero, $a4
-	sub.d	$s1, $a2, $a3
+	sub.d	$s8, $a2, $a3
 	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	bne	$a2, $a4, .LBB4_72
 # %bb.69:                               #   in Loop: Header=BB4_60 Depth=2
@@ -1511,7 +1501,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ori	$a1, $zero, 3
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$a0, $a1, 8
 	ld.d	$a1, $s3, 8
 	ld.d	$a0, $s3, 16
@@ -1526,59 +1516,60 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ori	$a1, $zero, 4
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$a0, $a1, 8
 	ld.d	$a1, $s3, 8
 	ld.d	$a0, $s3, 16
 	beq	$a1, $a0, .LBB4_108
 .LBB4_74:                               #   in Loop: Header=BB4_60 Depth=2
-	st.w	$s1, $a1, 0
+	st.w	$s8, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	addi.d	$s5, $s1, 1
+	addi.d	$s4, $s8, 1
 	beq	$a1, $a0, .LBB4_114
 .LBB4_75:                               #   in Loop: Header=BB4_60 Depth=2
-	st.w	$s5, $a1, 0
+	st.w	$s4, $a1, 0
 .LBB4_76:                               # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit189
                                         #   in Loop: Header=BB4_60 Depth=2
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	add.d	$s1, $s1, $a2
-	addi.d	$s5, $s1, 1
+	add.d	$s8, $s8, $a2
+	addi.d	$s4, $s8, 1
 	beq	$a1, $a0, .LBB4_90
 .LBB4_77:                               #   in Loop: Header=BB4_60 Depth=2
-	st.w	$s5, $a1, 0
+	st.w	$s4, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
 	bne	$a1, $a0, .LBB4_59
 	b	.LBB4_96
 .LBB4_78:                               #   in Loop: Header=BB4_60 Depth=2
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s6, $a1, 0
 	sub.d	$s0, $a0, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.79:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i175
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	ori	$a0, $zero, 3
 	stx.w	$a0, $s7, $s0
-	blt	$s0, $s2, .LBB4_81
+	blez	$s0, .LBB4_81
 # %bb.80:                               #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1598,12 +1589,12 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
                                         #   in Loop: Header=BB4_60 Depth=2
 	add.d	$a0, $s7, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s7, $a1, 0
 	st.d	$a0, $a1, 8
-	alsl.d	$a0, $s4, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $s3, 8
 	ld.d	$a0, $s3, 16
 	bne	$a1, $a0, .LBB4_71
@@ -1611,25 +1602,26 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.d	$s6, $s3, 0
 	sub.d	$s0, $a1, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.85:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i183
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	stx.w	$zero, $a0, $s0
-	blt	$s0, $s2, .LBB4_87
+	blez	$s0, .LBB4_87
 .LBB4_86:                               #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1651,36 +1643,37 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$a1, $a0, 4
 	st.d	$s7, $s3, 0
 	st.d	$a1, $s3, 8
-	alsl.d	$a0, $s4, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $s3, 16
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	add.d	$s1, $s1, $a2
-	addi.d	$s5, $s1, 1
+	add.d	$s8, $s8, $a2
+	addi.d	$s4, $s8, 1
 	bne	$a1, $a0, .LBB4_77
 .LBB4_90:                               #   in Loop: Header=BB4_60 Depth=2
 	ld.d	$s6, $s3, 0
 	sub.d	$s0, $a0, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.91:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i208
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s5, $a0, $s0
-	blt	$s0, $s2, .LBB4_93
+	stx.w	$s4, $a0, $s0
+	blez	$s0, .LBB4_93
 # %bb.92:                               #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1689,7 +1682,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 .LBB4_93:                               # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i210
                                         #   in Loop: Header=BB4_60 Depth=2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
 	beqz	$s6, .LBB4_95
 # %bb.94:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i212
                                         #   in Loop: Header=BB4_60 Depth=2
@@ -1703,33 +1696,34 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$a1, $a0, 4
 	st.d	$s7, $s3, 0
 	st.d	$a1, $s3, 8
-	alsl.d	$a0, $s4, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $s3, 16
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	bne	$a1, $a0, .LBB4_59
 .LBB4_96:                               #   in Loop: Header=BB4_60 Depth=2
 	ld.d	$s6, $s3, 0
 	sub.d	$s0, $a0, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.97:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i216
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s1, $a0, $s0
-	blt	$s0, $s2, .LBB4_99
+	stx.w	$s8, $a0, $s0
+	blez	$s0, .LBB4_99
 # %bb.98:                               #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1738,7 +1732,6 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 .LBB4_99:                               # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i218
                                         #   in Loop: Header=BB4_60 Depth=2
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
 	beqz	$s6, .LBB4_101
 # %bb.100:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i220
                                         #   in Loop: Header=BB4_60 Depth=2
@@ -1752,38 +1745,39 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$a1, $a0, 4
 	st.d	$s7, $s3, 0
 	st.d	$a1, $s3, 8
-	alsl.d	$a0, $s4, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $s3, 16
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $s1, 72
-	addi.w	$s8, $s8, 1
-	blt	$s8, $a0, .LBB4_60
+	addi.w	$s2, $s2, 1
+	blt	$s2, $a0, .LBB4_60
 	b	.LBB4_55
 .LBB4_102:                              #   in Loop: Header=BB4_60 Depth=2
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s6, $a1, 0
 	sub.d	$s0, $a0, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.103:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i191
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	ori	$a0, $zero, 4
 	stx.w	$a0, $s7, $s0
-	blt	$s0, $s2, .LBB4_105
+	blez	$s0, .LBB4_105
 # %bb.104:                              #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1803,12 +1797,12 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
                                         #   in Loop: Header=BB4_60 Depth=2
 	add.d	$a0, $s7, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s7, $a1, 0
 	st.d	$a0, $a1, 8
-	alsl.d	$a0, $s4, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $s3, 8
 	ld.d	$a0, $s3, 16
 	bne	$a1, $a0, .LBB4_74
@@ -1816,25 +1810,26 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.d	$s6, $s3, 0
 	sub.d	$s0, $a1, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.109:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s1, $a0, $s0
-	blt	$s0, $s2, .LBB4_111
+	stx.w	$s8, $a0, $s0
+	blez	$s0, .LBB4_111
 # %bb.110:                              #   in Loop: Header=BB4_60 Depth=2
 	move	$a0, $s7
 	move	$a1, $s6
@@ -1856,41 +1851,42 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$a1, $a0, 4
 	st.d	$s7, $s3, 0
 	st.d	$a1, $s3, 8
-	alsl.d	$a0, $s4, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $s3, 16
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
-	addi.d	$s5, $s1, 1
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$s4, $s8, 1
 	bne	$a1, $a0, .LBB4_75
 .LBB4_114:                              #   in Loop: Header=BB4_60 Depth=2
 	ld.d	$s6, $s3, 0
 	sub.d	$s0, $a0, $s6
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
+	beq	$s0, $a0, .LBB4_378
 # %bb.115:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i200
                                         #   in Loop: Header=BB4_60 Depth=2
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s5, $a0, $s0
-	bge	$s0, $s2, .LBB4_86
+	stx.w	$s4, $a0, $s0
+	bgtz	$s0, .LBB4_86
 	b	.LBB4_87
 .LBB4_116:                              # %._crit_edge558
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel5numpeE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN8Parallel5numpeE)
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_373
+	beq	$a0, $a1, .LBB4_353
 # %bb.117:
 	move	$a0, $s1
 	ld.w	$s1, $s1, 68
@@ -1899,13 +1895,12 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	masknez	$a0, $a1, $a0
 	sltui	$a1, $fp, 1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	masknez	$a1, $a3, $a1
 	add.w	$s2, $a1, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bge	$a0, $s2, .LBB4_381
+	bltz	$s2, .LBB4_379
 # %bb.118:
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
 	ld.d	$s4, $a1, 0
 	sub.d	$s5, $a0, $s4
@@ -1932,19 +1927,19 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$s1, $a0, 68
 	ld.w	$fp, $a0, 64
 .LBB4_123:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i227
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	st.d	$s3, $a1, 0
 	add.d	$a0, $s3, $s0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s3, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 .LBB4_124:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit228
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 60
 	addi.w	$a0, $a0, -1
 	ld.w	$a1, $a1, 56
@@ -1958,8 +1953,8 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	masknez	$a1, $a3, $a1
 	add.w	$a0, $a1, $a0
 	addi.w	$a1, $zero, -2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB4_381
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	bge	$a1, $a0, .LBB4_379
 # %bb.125:
 	ld.d	$s6, $sp, 288
 	ld.d	$a1, $s6, 16
@@ -1983,7 +1978,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB4_128:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i231
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	beqz	$s3, .LBB4_130
 # %bb.129:
 	move	$a0, $s3
@@ -1998,41 +1993,42 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	alsl.d	$a0, $s2, $s5, 2
 	st.d	$a0, $s6, 16
 	ld.w	$s1, $s1, 68
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 .LBB4_131:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit234
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-	beqz	$fp, .LBB4_158
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	beqz	$fp, .LBB4_157
 # %bb.132:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit234
-	beqz	$s1, .LBB4_158
+	beqz	$s1, .LBB4_157
 # %bb.133:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.w	$fp, $a0, 0
-	ld.d	$a0, $a5, 8
-	ld.d	$a1, $a5, 16
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $a3, 8
+	ld.d	$a1, $a3, 16
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$s1, $a2, 56
 	beq	$a0, $a1, .LBB4_135
 # %bb.134:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a5, 8
+	st.d	$a0, $a3, 8
 	b	.LBB4_141
 .LBB4_135:
-	ld.d	$s0, $a5, 0
+	ld.d	$s0, $a3, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s3, $a0, .LBB4_380
+	beq	$s3, $a0, .LBB4_378
 # %bb.136:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i236
 	srai.d	$a0, $s3, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2043,7 +2039,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$zero, $a0, $s3
-	blt	$s3, $s5, .LBB4_138
+	blez	$s3, .LBB4_138
 # %bb.137:
 	move	$a0, $s4
 	move	$a1, $s0
@@ -2060,39 +2056,49 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 .LBB4_140:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i241
 	addi.d	$a0, $s5, 4
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s4, $a5, 0
-	st.d	$a0, $a5, 8
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	st.d	$s4, $a3, 0
+	st.d	$a0, $a3, 8
 	alsl.d	$a0, $s2, $s4, 2
-	st.d	$a0, $a5, 16
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	st.d	$a0, $a3, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 .LBB4_141:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit242
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a0, $a3, 8
-	ld.d	$a1, $a3, 16
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $a4, 8
+	ld.d	$a1, $a4, 16
 	nor	$a2, $s1, $zero
 	add.d	$s1, $fp, $a2
-	beq	$a0, $a1, .LBB4_143
+	beq	$a0, $a1, .LBB4_144
 # %bb.142:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a3, 8
-	b	.LBB4_149
+	st.d	$a0, $a4, 8
+	ld.d	$a0, $s5, 8
+	ld.d	$a1, $s5, 16
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	beq	$a0, $a1, .LBB4_150
 .LBB4_143:
-	ld.d	$s0, $a3, 0
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $s5, 8
+	b	.LBB4_156
+.LBB4_144:
+	ld.d	$s0, $a4, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s3, $a0, .LBB4_380
-# %bb.144:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i244
+	beq	$s3, $a0, .LBB4_378
+# %bb.145:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i244
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2103,48 +2109,41 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s2, .LBB4_146
-# %bb.145:
+	blez	$s3, .LBB4_147
+# %bb.146:
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_146:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i246
+.LBB4_147:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i246
 	add.d	$s1, $s4, $s3
-	beqz	$s0, .LBB4_148
-# %bb.147:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i248
+	beqz	$s0, .LBB4_149
+# %bb.148:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i248
 	move	$a0, $s0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_148:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i249
+.LBB4_149:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i249
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s4, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $fp, $s4, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-.LBB4_149:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit250
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a0, $a3, 8
-	ld.d	$a1, $a3, 16
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB4_151
-# %bb.150:
-	ori	$a1, $zero, 1
-	st.w	$a1, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $a3, 8
-	b	.LBB4_157
-.LBB4_151:
-	ld.d	$s0, $a3, 0
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $s5, 8
+	ld.d	$a1, $s5, 16
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB4_143
+.LBB4_150:
+	ld.d	$s0, $s5, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s3, $a0, .LBB4_380
-# %bb.152:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i252
+	beq	$s3, $a0, .LBB4_378
+# %bb.151:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i252
 	srai.d	$a0, $s3, 2
 	ori	$s1, $zero, 1
 	sltu	$a1, $s1, $a0
@@ -2152,7 +2151,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2163,82 +2162,81 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s1, .LBB4_154
-# %bb.153:
+	blez	$s3, .LBB4_153
+# %bb.152:
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_154:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i254
+.LBB4_153:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i254
 	add.d	$s1, $s4, $s3
-	beqz	$s0, .LBB4_156
-# %bb.155:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i256
+	beqz	$s0, .LBB4_155
+# %bb.154:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i256
 	move	$a0, $s0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_156:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i257
+.LBB4_155:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i257
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$s4, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s4, $s5, 0
+	st.d	$a0, $s5, 8
 	alsl.d	$a0, $fp, $s4, 2
-	st.d	$a0, $a1, 16
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-.LBB4_157:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258thread-pre-split
+	st.d	$a0, $s5, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+.LBB4_156:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258thread-pre-split
 	ld.w	$s1, $a2, 68
-.LBB4_158:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258
-	beqz	$s1, .LBB4_191
-# %bb.159:
+.LBB4_157:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258
+	beqz	$s1, .LBB4_190
+# %bb.158:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
-	ld.d	$a0, $a5, 8
-	ld.d	$s3, $a5, 0
-	ld.w	$s2, $a1, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	ld.w	$a4, $a2, 56
-	move	$a1, $s5
+	ld.d	$a0, $a3, 8
+	ld.d	$s3, $a3, 0
+	ld.w	$a1, $a1, 0
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.w	$s2, $a1, 56
 	sub.d	$s5, $a0, $s3
-	srai.d	$a3, $s5, 2
-	st.d	$a3, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 128                   # 8-byte Folded Spill
-	bltz	$a1, .LBB4_174
-# %bb.160:                              # %.lr.ph563.preheader
-	ld.w	$a1, $a2, 64
-	beqz	$a1, .LBB4_171
-# %bb.161:
+	srai.d	$a2, $s5, 2
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	bltz	$s4, .LBB4_173
+# %bb.159:                              # %.lr.ph563.preheader
+	ld.w	$a1, $a1, 64
+	beqz	$a1, .LBB4_170
+# %bb.160:
 	move	$s4, $s3
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	beqz	$a1, .LBB4_173
-.LBB4_162:                              # %.lr.ph563.peel.next.preheader
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	beqz	$a1, .LBB4_172
+.LBB4_161:                              # %.lr.ph563.peel.next.preheader
 	move	$s5, $zero
 	addi.w	$a1, $zero, -4
 	lu52i.d	$s7, $a1, 2047
 	ori	$s8, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$fp, $a1, 511
-	b	.LBB4_164
+	b	.LBB4_163
 	.p2align	4, , 16
-.LBB4_163:                              #   in Loop: Header=BB4_164 Depth=1
+.LBB4_162:                              #   in Loop: Header=BB4_163 Depth=1
 	st.w	$s5, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s3, $s4
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	beq	$a1, $s5, .LBB4_174
-.LBB4_164:                              # %.lr.ph563.peel.next
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	beq	$a1, $s5, .LBB4_173
+.LBB4_163:                              # %.lr.ph563.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
 	addi.w	$s5, $s5, 1
-	bne	$a0, $a1, .LBB4_163
-# %bb.165:                              #   in Loop: Header=BB4_164 Depth=1
+	bne	$a0, $a1, .LBB4_162
+# %bb.164:                              #   in Loop: Header=BB4_163 Depth=1
 	sub.d	$s0, $a0, $s4
-	beq	$s0, $s7, .LBB4_380
-# %bb.166:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i276
-                                        #   in Loop: Header=BB4_164 Depth=1
+	beq	$s0, $s7, .LBB4_378
+# %bb.165:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i276
+                                        #   in Loop: Header=BB4_163 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s8, $a0
 	masknez	$a2, $s8, $a1
@@ -2254,78 +2252,79 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s8, .LBB4_168
-# %bb.167:                              #   in Loop: Header=BB4_164 Depth=1
+	blez	$s0, .LBB4_167
+# %bb.166:                              #   in Loop: Header=BB4_163 Depth=1
 	move	$a0, $s3
 	move	$a1, $s4
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_168:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i278
-                                        #   in Loop: Header=BB4_164 Depth=1
-	beqz	$s4, .LBB4_170
-# %bb.169:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i280
-                                        #   in Loop: Header=BB4_164 Depth=1
+.LBB4_167:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i278
+                                        #   in Loop: Header=BB4_163 Depth=1
+	beqz	$s4, .LBB4_169
+# %bb.168:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i280
+                                        #   in Loop: Header=BB4_163 Depth=1
 	move	$a0, $s4
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_170:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i281
-                                        #   in Loop: Header=BB4_164 Depth=1
+.LBB4_169:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i281
+                                        #   in Loop: Header=BB4_163 Depth=1
 	add.d	$a0, $s3, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	st.d	$s3, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s1, $s3, 2
 	st.d	$a1, $a2, 16
 	move	$s4, $s3
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bne	$a1, $s5, .LBB4_164
-	b	.LBB4_174
-.LBB4_171:
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	bne	$a1, $s5, .LBB4_163
+	b	.LBB4_173
+.LBB4_170:
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB4_206
-# %bb.172:
+	beq	$a0, $a1, .LBB4_354
+# %bb.171:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s4, $s3
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bnez	$a1, .LBB4_162
-.LBB4_173:
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	bnez	$a1, .LBB4_161
+.LBB4_172:
 	move	$s3, $s4
-.LBB4_174:                              # %._crit_edge564
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+.LBB4_173:                              # %._crit_edge564
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$s1, $s2, $a3
-	beq	$a0, $a1, .LBB4_176
-# %bb.175:
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	sub.d	$s1, $a3, $s2
+	beq	$a0, $a1, .LBB4_175
+# %bb.174:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB4_182
-.LBB4_176:
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	b	.LBB4_181
+.LBB4_175:
 	ld.d	$s0, $a2, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB4_380
-# %bb.177:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB4_378
+# %bb.176:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2336,60 +2335,60 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s2, .LBB4_179
-# %bb.178:
+	blez	$s3, .LBB4_178
+# %bb.177:
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_179:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i262
+.LBB4_178:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i262
 	add.d	$s1, $s4, $s3
-	beqz	$s0, .LBB4_181
-# %bb.180:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i264
+	beqz	$s0, .LBB4_180
+# %bb.179:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i264
 	move	$a0, $s0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_181:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i265
+.LBB4_180:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i265
 	addi.d	$a0, $s1, 4
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s3, $a1, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a0, $fp, $s4, 2
 	st.d	$a0, $a2, 16
-.LBB4_182:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit266
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+.LBB4_181:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit266
 	ld.d	$a1, $a1, 8
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a0, $a3, 8
-	ld.d	$a2, $a3, 16
+	ld.d	$a0, $s5, 8
+	ld.d	$a2, $s5, 16
 	sub.d	$a1, $a1, $s3
 	srai.d	$a1, $a1, 2
-	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
-	sub.d	$s1, $a1, $a4
-	beq	$a0, $a2, .LBB4_184
-# %bb.183:
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	sub.d	$s1, $a1, $a3
+	beq	$a0, $a2, .LBB4_183
+# %bb.182:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a3, 8
-	b	.LBB4_190
-.LBB4_184:
-	ld.d	$s0, $a3, 0
+	st.d	$a0, $s5, 8
+	b	.LBB4_189
+.LBB4_183:
+	ld.d	$s0, $s5, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s3, $a0, .LBB4_380
-# %bb.185:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i268
+	beq	$s3, $a0, .LBB4_378
+# %bb.184:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i268
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2400,324 +2399,172 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s2, .LBB4_187
-# %bb.186:
+	blez	$s3, .LBB4_186
+# %bb.185:
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_187:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i270
+.LBB4_186:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i270
 	add.d	$s1, $s4, $s3
-	beqz	$s0, .LBB4_189
-# %bb.188:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i272
+	beqz	$s0, .LBB4_188
+# %bb.187:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i272
 	move	$a0, $s0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_189:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i273
+.LBB4_188:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i273
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$s4, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s4, $s5, 0
+	st.d	$a0, $s5, 8
 	alsl.d	$a0, $fp, $s4, 2
-	st.d	$a0, $a1, 16
+	st.d	$a0, $s5, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+.LBB4_189:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit274
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 .LBB4_190:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit274
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-.LBB4_191:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit274
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a4, 64
-	beqz	$a0, .LBB4_250
-# %bb.192:
+	beqz	$a0, .LBB4_230
+# %bb.191:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
-	ld.d	$a0, $a5, 8
-	ld.d	$s3, $a5, 0
+	ld.d	$a0, $a3, 8
+	ld.d	$s3, $a3, 0
 	ld.w	$a2, $a4, 68
 	ld.w	$s7, $a1, 0
-	sub.d	$s0, $a0, $s3
-	srai.d	$s5, $s0, 2
-	st.d	$s7, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a2, .LBB4_194
-# %bb.193:
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	move	$a3, $a5
-	ori	$s2, $zero, 1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bge	$a0, $s2, .LBB4_225
-	b	.LBB4_234
-.LBB4_194:
-	ld.d	$a1, $a5, 16
-	beq	$a0, $a1, .LBB4_197
-# %bb.195:
+	sub.d	$s4, $a0, $s3
+	srai.d	$s2, $s4, 2
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	beqz	$a2, .LBB4_193
+# %bb.192:
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bgtz	$a0, .LBB4_205
+	b	.LBB4_214
+.LBB4_193:
+	ld.d	$a1, $a3, 16
+	beq	$a0, $a1, .LBB4_198
+# %bb.194:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a5, 8
-	move	$a3, $a5
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.w	$a0, $a4, 64
-	ori	$a1, $zero, 2
-	bge	$a0, $a1, .LBB4_203
-.LBB4_196:
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	ori	$s2, $zero, 1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bge	$a0, $s2, .LBB4_225
-	b	.LBB4_234
-.LBB4_197:
-	addi.w	$a0, $zero, -4
-	lu52i.d	$a0, $a0, 2047
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB4_380
-# %bb.198:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i284
-	ori	$fp, $zero, 1
-	sltu	$a0, $fp, $s5
-	masknez	$a1, $fp, $a0
-	maskeqz	$a0, $s5, $a0
-	or	$a0, $a0, $a1
-	add.d	$a0, $a0, $s5
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
-	sltu	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	stx.w	$zero, $a0, $s0
-	blt	$s0, $fp, .LBB4_200
-# %bb.199:
-	move	$a0, $s4
-	move	$a1, $s3
-	move	$a2, $s0
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB4_200:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i286
-	add.d	$fp, $s4, $s0
-	beqz	$s3, .LBB4_202
-# %bb.201:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i288
-	move	$a0, $s3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB4_202:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i289
-	addi.d	$a0, $fp, 4
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s4, $a3, 0
 	st.d	$a0, $a3, 8
-	alsl.d	$a0, $s1, $s4, 2
-	st.d	$a0, $a3, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a0, $a4, 64
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB4_196
-.LBB4_203:
-	ld.d	$a0, $s2, 8
-	ld.d	$a1, $s2, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	blt	$a0, $a1, .LBB4_204
+.LBB4_195:
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB4_212
-# %bb.204:
-	st.w	$zero, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $s2, 8
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB4_218
-.LBB4_205:
+	beq	$a0, $a1, .LBB4_360
+# %bb.196:
+	st.w	$zero, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $a2, 8
+	ld.d	$a0, $s5, 8
+	ld.d	$a1, $s5, 16
+	beq	$a0, $a1, .LBB4_366
+.LBB4_197:
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a2, 8
-	b	.LBB4_224
-.LBB4_206:
+	st.d	$a0, $s5, 8
+	addi.d	$s2, $s2, 1
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bgtz	$a0, .LBB4_205
+	b	.LBB4_214
+.LBB4_198:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s5, $a0, .LBB4_380
-# %bb.207:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i276.peel
-	ori	$s0, $zero, 1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	sltu	$a0, $s0, $a2
-	masknez	$a1, $s0, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	beq	$s4, $a0, .LBB4_378
+# %bb.199:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i284
+	ori	$a0, $zero, 1
+	sltu	$a1, $a0, $s2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $s2, $a1
+	or	$a0, $a1, $a0
+	add.d	$a0, $a0, $s2
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
-	or	$fp, $a0, $a1
-	slli.d	$a0, $fp, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	stx.w	$zero, $a0, $s5
-	blt	$s5, $s0, .LBB4_209
-# %bb.208:
-	move	$a0, $s4
+	move	$s0, $a0
+	stx.w	$zero, $a0, $s4
+	blez	$s4, .LBB4_201
+# %bb.200:
+	move	$a0, $s0
 	move	$a1, $s3
-	move	$a2, $s5
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_209:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i278.peel
-	add.d	$s0, $s4, $s5
-	beqz	$s3, .LBB4_211
-# %bb.210:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i280.peel
+.LBB4_201:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i286
+	add.d	$fp, $s0, $s4
+	beqz	$s3, .LBB4_203
+# %bb.202:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i288
 	move	$a0, $s3
-	move	$a1, $s5
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_211:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i281.peel
-	addi.d	$a0, $s0, 4
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s4, $a2, 0
-	st.d	$a0, $a2, 8
-	alsl.d	$a1, $fp, $s4, 2
-	st.d	$a1, $a2, 16
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bnez	$a1, .LBB4_162
-	b	.LBB4_173
-.LBB4_212:
-	ld.d	$s0, $s2, 0
-	sub.d	$s3, $a0, $s0
-	addi.w	$a0, $zero, -4
-	lu52i.d	$a0, $a0, 2047
-	beq	$s3, $a0, .LBB4_380
-# %bb.213:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i292
-	srai.d	$a0, $s3, 2
-	ori	$fp, $zero, 1
-	sltu	$a1, $fp, $a0
-	masknez	$a2, $fp, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
-	sltu	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	stx.w	$zero, $a0, $s3
-	blt	$s3, $fp, .LBB4_215
-# %bb.214:
-	move	$a0, $s4
-	move	$a1, $s0
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB4_215:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i294
-	add.d	$fp, $s4, $s3
-	beqz	$s0, .LBB4_217
-# %bb.216:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i296
-	move	$a0, $s0
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB4_217:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i297
+.LBB4_203:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i289
 	addi.d	$a0, $fp, 4
-	st.d	$s4, $s2, 0
-	st.d	$a0, $s2, 8
-	alsl.d	$a0, $s1, $s4, 2
-	st.d	$a0, $s2, 16
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a0, $a2, 8
-	ld.d	$a1, $a2, 16
-	bne	$a0, $a1, .LBB4_205
-.LBB4_218:
-	ld.d	$s0, $a2, 0
-	sub.d	$s3, $a0, $s0
-	addi.w	$a0, $zero, -4
-	lu52i.d	$a0, $a0, 2047
-	beq	$s3, $a0, .LBB4_380
-# %bb.219:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i300
-	srai.d	$a0, $s3, 2
-	ori	$fp, $zero, 1
-	sltu	$a1, $fp, $a0
-	masknez	$a2, $fp, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
-	sltu	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	stx.w	$fp, $a0, $s3
-	blt	$s3, $fp, .LBB4_221
-# %bb.220:
-	move	$a0, $s4
-	move	$a1, $s0
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB4_221:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i302
-	add.d	$fp, $s4, $s3
-	beqz	$s0, .LBB4_223
-# %bb.222:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i304
-	move	$a0, $s0
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB4_223:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i305
-	addi.d	$a0, $fp, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$s4, $a1, 0
-	st.d	$a0, $a1, 8
-	alsl.d	$a0, $s1, $s4, 2
-	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-.LBB4_224:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit306
-	addi.d	$s5, $s5, 1
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	ori	$s2, $zero, 1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	blt	$a0, $s2, .LBB4_234
-.LBB4_225:                              # %.lr.ph569.preheader
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	st.d	$s0, $a3, 0
+	st.d	$a0, $a3, 8
+	alsl.d	$a0, $s1, $s0, 2
+	st.d	$a0, $a3, 16
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.w	$a0, $a4, 64
+	ori	$a1, $zero, 2
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	bge	$a0, $a1, .LBB4_195
+.LBB4_204:
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	blez	$a0, .LBB4_214
+.LBB4_205:                              # %.lr.ph569.preheader
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 68
 	slti	$a0, $a0, 1
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
+	ori	$s2, $zero, 1
 	maskeqz	$a0, $s2, $a0
 	or	$s5, $a0, $a1
 	ld.d	$a0, $a3, 8
 	ld.d	$a1, $a3, 16
 	addi.w	$a2, $zero, -4
 	lu52i.d	$s7, $a2, 2047
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a2, $zero, -1
 	lu52i.d	$s8, $a2, 511
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB4_227
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	b	.LBB4_207
 	.p2align	4, , 16
-.LBB4_226:                              #   in Loop: Header=BB4_227 Depth=1
+.LBB4_206:                              #   in Loop: Header=BB4_207 Depth=1
 	st.w	$s5, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	addi.w	$s1, $s1, -1
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	add.d	$s5, $s5, $a2
-	beqz	$s1, .LBB4_234
-.LBB4_227:                              # %.lr.ph569
+	beqz	$s1, .LBB4_214
+.LBB4_207:                              # %.lr.ph569
                                         # =>This Inner Loop Header: Depth=1
-	bne	$a0, $a1, .LBB4_226
-# %bb.228:                              #   in Loop: Header=BB4_227 Depth=1
+	bne	$a0, $a1, .LBB4_206
+# %bb.208:                              #   in Loop: Header=BB4_207 Depth=1
 	ld.d	$s3, $a3, 0
 	sub.d	$s0, $a1, $s3
-	beq	$s0, $s7, .LBB4_380
-# %bb.229:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i324
-                                        #   in Loop: Header=BB4_227 Depth=1
+	beq	$s0, $s7, .LBB4_378
+# %bb.209:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i324
+                                        #   in Loop: Header=BB4_207 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s2, $a0
 	masknez	$a2, $s2, $a1
@@ -2733,66 +2580,68 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s2, .LBB4_231
-# %bb.230:                              #   in Loop: Header=BB4_227 Depth=1
+	blez	$s0, .LBB4_211
+# %bb.210:                              #   in Loop: Header=BB4_207 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_231:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i326
-                                        #   in Loop: Header=BB4_227 Depth=1
-	beqz	$s3, .LBB4_233
-# %bb.232:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i328
-                                        #   in Loop: Header=BB4_227 Depth=1
+.LBB4_211:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i326
+                                        #   in Loop: Header=BB4_207 Depth=1
+	beqz	$s3, .LBB4_213
+# %bb.212:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i328
+                                        #   in Loop: Header=BB4_207 Depth=1
 	move	$a0, $s3
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_233:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i329
-                                        #   in Loop: Header=BB4_227 Depth=1
+.LBB4_213:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i329
+                                        #   in Loop: Header=BB4_207 Depth=1
 	add.d	$a0, $s4, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	st.d	$s4, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $fp, $s4, 2
 	st.d	$a1, $a3, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
 	addi.w	$s1, $s1, -1
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	add.d	$s5, $s5, $a2
-	bnez	$s1, .LBB4_227
-.LBB4_234:                              # %._crit_edge570
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	bnez	$s1, .LBB4_207
+.LBB4_214:                              # %._crit_edge570
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$fp, $a4, -1
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB4_236
-# %bb.235:
+	beq	$a0, $a1, .LBB4_216
+# %bb.215:
 	st.w	$fp, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB4_242
-.LBB4_236:
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	b	.LBB4_222
+.LBB4_216:
 	ld.d	$s0, $a2, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB4_380
-# %bb.237:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i308
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB4_378
+# %bb.217:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i308
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2803,61 +2652,60 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$fp, $a0, $s3
-	blt	$s3, $s2, .LBB4_239
-# %bb.238:
+	blez	$s3, .LBB4_219
+# %bb.218:
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_239:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i310
+.LBB4_219:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i310
 	add.d	$fp, $s4, $s3
-	beqz	$s0, .LBB4_241
-# %bb.240:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i312
+	beqz	$s0, .LBB4_221
+# %bb.220:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i312
 	move	$a0, $s0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_241:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i313
+.LBB4_221:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i313
 	addi.d	$a0, $fp, 4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s4, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s1, $s4, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-.LBB4_242:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit314
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+.LBB4_222:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit314
 	ld.d	$a1, $a3, 8
 	ld.d	$a2, $a3, 0
-	ld.d	$a0, $a5, 8
-	ld.d	$a3, $a5, 16
+	ld.d	$a0, $s5, 8
+	ld.d	$a3, $s5, 16
 	sub.d	$a1, $a1, $a2
 	srai.d	$a1, $a1, 2
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$s3, $a1, $a2
-	beq	$a0, $a3, .LBB4_244
-# %bb.243:
+	sub.d	$s3, $a1, $s2
+	beq	$a0, $a3, .LBB4_224
+# %bb.223:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a5, 8
-	b	.LBB4_250
-.LBB4_244:
-	ld.d	$s0, $a5, 0
+	st.d	$a0, $s5, 8
+	b	.LBB4_230
+.LBB4_224:
+	ld.d	$s0, $s5, 0
 	sub.d	$s1, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB4_380
-# %bb.245:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i316
+	beq	$s1, $a0, .LBB4_378
+# %bb.225:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i316
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -2868,40 +2716,39 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB4_247
-# %bb.246:
+	blez	$s1, .LBB4_227
+# %bb.226:
 	move	$a0, $s2
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_247:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i318
+.LBB4_227:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i318
 	add.d	$s3, $s2, $s1
-	beqz	$s0, .LBB4_249
-# %bb.248:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i320
+	beqz	$s0, .LBB4_229
+# %bb.228:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i320
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_249:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i321
+.LBB4_229:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i321
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$s2, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s2, $s5, 0
+	st.d	$a0, $s5, 8
 	alsl.d	$a0, $fp, $s2, 2
-	st.d	$a0, $a1, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-.LBB4_250:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit322
-	ld.d	$s4, $sp, 280
-	ld.d	$a5, $sp, 272
+	st.d	$a0, $s5, 16
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+.LBB4_230:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit322
+	ld.d	$a5, $sp, 280
+	ld.d	$a6, $sp, 272
 	ld.w	$a0, $a4, 56
 	ld.w	$a2, $a4, 64
 	ld.w	$a1, $a4, 68
 	addi.w	$a0, $a0, -1
-	st.d	$s4, $sp, 128                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 136                   # 8-byte Folded Spill
-	beq	$a2, $a0, .LBB4_314
-# %bb.251:
+	st.d	$a5, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 128                   # 8-byte Folded Spill
+	beq	$a2, $a0, .LBB4_294
+# %bb.231:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a3, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $s6, 8
@@ -2910,61 +2757,61 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	sub.d	$s2, $a0, $s1
 	or	$a1, $a2, $a1
 	srai.d	$a2, $s2, 2
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 120                   # 8-byte Folded Spill
-	bnez	$a1, .LBB4_254
-# %bb.252:
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	bnez	$a1, .LBB4_234
+# %bb.232:
 	ld.d	$a1, $s6, 16
-	beq	$a0, $a1, .LBB4_265
-# %bb.253:
+	beq	$a0, $a1, .LBB4_245
+# %bb.233:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
-.LBB4_254:
+.LBB4_234:
 	move	$s0, $s1
-	ori	$s7, $zero, 1
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	blt	$a2, $s7, .LBB4_271
-.LBB4_255:                              # %.lr.ph574.preheader
+	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	blez	$a2, .LBB4_251
+.LBB4_235:                              # %.lr.ph574.preheader
 	ld.w	$a1, $a1, 68
 	slt	$a1, $zero, $a1
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a2, $zero, -1
 	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	alsl.w	$a2, $a4, $a3, 1
-	maskeqz	$a2, $a2, $a1
+	alsl.w	$a3, $a4, $a2, 1
+	maskeqz	$a3, $a3, $a1
 	masknez	$a1, $a4, $a1
-	or	$s8, $a2, $a1
+	or	$s7, $a3, $a1
 	ld.d	$a1, $s6, 16
-	addi.w	$a2, $zero, -4
-	lu52i.d	$fp, $a2, 2047
-	lu52i.d	$s5, $a3, 511
-	b	.LBB4_258
+	addi.w	$a3, $zero, -4
+	lu52i.d	$s8, $a3, 2047
+	ori	$fp, $zero, 1
+	lu52i.d	$s5, $a2, 511
+	b	.LBB4_238
 	.p2align	4, , 16
-.LBB4_256:                              #   in Loop: Header=BB4_258 Depth=1
-	st.w	$s8, $a0, 0
+.LBB4_236:                              #   in Loop: Header=BB4_238 Depth=1
+	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
 	move	$s1, $s0
-.LBB4_257:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit362
-                                        #   in Loop: Header=BB4_258 Depth=1
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+.LBB4_237:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit362
+                                        #   in Loop: Header=BB4_238 Depth=1
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, -1
 	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	add.d	$s8, $s8, $a3
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	beqz	$a2, .LBB4_272
-.LBB4_258:                              # %.lr.ph574
+	add.d	$s7, $s7, $a3
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	beqz	$a2, .LBB4_252
+.LBB4_238:                              # %.lr.ph574
                                         # =>This Inner Loop Header: Depth=1
-	bne	$a0, $a1, .LBB4_256
-# %bb.259:                              #   in Loop: Header=BB4_258 Depth=1
+	bne	$a0, $a1, .LBB4_236
+# %bb.239:                              #   in Loop: Header=BB4_238 Depth=1
 	sub.d	$s2, $a1, $s0
-	beq	$s2, $fp, .LBB4_380
-# %bb.260:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i356
-                                        #   in Loop: Header=BB4_258 Depth=1
+	beq	$s2, $s8, .LBB4_378
+# %bb.240:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i356
+                                        #   in Loop: Header=BB4_238 Depth=1
 	srai.d	$a0, $s2, 2
-	sltu	$a1, $s7, $a0
-	masknez	$a2, $s7, $a1
+	sltu	$a1, $fp, $a0
+	masknez	$a2, $fp, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -2976,25 +2823,25 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	stx.w	$s8, $a0, $s2
-	blt	$s2, $s7, .LBB4_262
-# %bb.261:                              #   in Loop: Header=BB4_258 Depth=1
+	stx.w	$s7, $a0, $s2
+	blez	$s2, .LBB4_242
+# %bb.241:                              #   in Loop: Header=BB4_238 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_262:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i358
-                                        #   in Loop: Header=BB4_258 Depth=1
-	beqz	$s0, .LBB4_264
-# %bb.263:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i360
-                                        #   in Loop: Header=BB4_258 Depth=1
+.LBB4_242:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i358
+                                        #   in Loop: Header=BB4_238 Depth=1
+	beqz	$s0, .LBB4_244
+# %bb.243:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i360
+                                        #   in Loop: Header=BB4_238 Depth=1
 	move	$a0, $s0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_264:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i361
-                                        #   in Loop: Header=BB4_258 Depth=1
+.LBB4_244:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i361
+                                        #   in Loop: Header=BB4_238 Depth=1
 	add.d	$a0, $s1, $s2
 	addi.d	$a0, $a0, 4
 	st.d	$s1, $s6, 0
@@ -3002,19 +2849,19 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	alsl.d	$a1, $s3, $s1, 2
 	st.d	$a1, $s6, 16
 	move	$s0, $s1
-	b	.LBB4_257
-.LBB4_265:
+	b	.LBB4_237
+.LBB4_245:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s2, $a0, .LBB4_380
-# %bb.266:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i332
-	ori	$s3, $zero, 1
-	sltu	$a0, $s3, $a2
-	masknez	$a1, $s3, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	beq	$s2, $a0, .LBB4_378
+# %bb.246:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i332
+	ori	$a0, $zero, 1
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -3025,61 +2872,123 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$zero, $a0, $s2
-	blt	$s2, $s3, .LBB4_268
-# %bb.267:
+	blez	$s2, .LBB4_248
+# %bb.247:
 	move	$a0, $s0
 	move	$a1, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_268:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i334
+.LBB4_248:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i334
 	add.d	$s3, $s0, $s2
-	beqz	$s1, .LBB4_270
-# %bb.269:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i336
+	beqz	$s1, .LBB4_250
+# %bb.249:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i336
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_270:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i337
+.LBB4_250:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i337
 	addi.d	$a0, $s3, 4
 	st.d	$s0, $s6, 0
 	st.d	$a0, $s6, 8
 	alsl.d	$a1, $fp, $s0, 2
 	st.d	$a1, $s6, 16
-	ori	$s7, $zero, 1
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	bge	$a2, $s7, .LBB4_255
-.LBB4_271:
+	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	bgtz	$a2, .LBB4_235
+.LBB4_251:
 	move	$s1, $s0
-.LBB4_272:                              # %._crit_edge575
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a0, $a5, 8
-	ld.d	$a1, $a5, 16
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+.LBB4_252:                              # %._crit_edge575
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $a6, 8
+	ld.d	$a1, $a6, 16
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$s3, $a2, 1
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB4_274
-# %bb.273:
+	beq	$a0, $a1, .LBB4_254
+# %bb.253:
+	st.w	$s3, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $a6, 8
+	b	.LBB4_260
+.LBB4_254:
+	ld.d	$s0, $a6, 0
+	sub.d	$s1, $a0, $s0
+	addi.w	$a0, $zero, -4
+	lu52i.d	$a0, $a0, 2047
+	beq	$s1, $a0, .LBB4_378
+# %bb.255:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i340
+	srai.d	$a0, $s1, 2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
+	add.d	$a0, $a1, $a0
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
+	sltu	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$fp, $a0, $a1
+	slli.d	$a0, $fp, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+	stx.w	$s3, $a0, $s1
+	blez	$s1, .LBB4_257
+# %bb.256:
+	move	$a0, $s2
+	move	$a1, $s0
+	move	$a2, $s1
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB4_257:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i342
+	add.d	$s3, $s2, $s1
+	beqz	$s0, .LBB4_259
+# %bb.258:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i344
+	move	$a0, $s0
+	move	$a1, $s1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB4_259:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i345
+	addi.d	$a0, $s3, 4
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+	st.d	$s2, $a6, 0
+	ld.d	$s1, $s6, 0
+	st.d	$a0, $a6, 8
+	alsl.d	$a0, $fp, $s2, 2
+	st.d	$a0, $a6, 16
+.LBB4_260:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit346
+	ld.d	$a1, $s6, 8
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $a5, 8
+	ld.d	$a2, $a5, 16
+	sub.d	$a1, $a1, $s1
+	srai.d	$a1, $a1, 2
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	sub.d	$s3, $a1, $a3
+	beq	$a0, $a2, .LBB4_262
+# %bb.261:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a5, 8
-	b	.LBB4_280
-.LBB4_274:
+	b	.LBB4_268
+.LBB4_262:
 	ld.d	$s0, $a5, 0
 	sub.d	$s1, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB4_380
-# %bb.275:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i340
+	beq	$s1, $a0, .LBB4_378
+# %bb.263:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i348
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -3090,145 +2999,82 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB4_277
-# %bb.276:
+	blez	$s1, .LBB4_265
+# %bb.264:
 	move	$a0, $s2
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_277:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i342
+.LBB4_265:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i350
 	add.d	$s3, $s2, $s1
-	beqz	$s0, .LBB4_279
-# %bb.278:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i344
+	beqz	$s0, .LBB4_267
+# %bb.266:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i352
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_279:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i345
+.LBB4_267:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i353
 	addi.d	$a0, $s3, 4
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
 	st.d	$s2, $a5, 0
-	ld.d	$s1, $s6, 0
 	st.d	$a0, $a5, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $a5, 16
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-.LBB4_280:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit346
-	ld.d	$a1, $s6, 8
-	ld.d	$a0, $s4, 8
-	ld.d	$a2, $s4, 16
-	sub.d	$a1, $a1, $s1
-	srai.d	$a1, $a1, 2
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
-	sub.d	$s3, $a1, $a3
-	beq	$a0, $a2, .LBB4_282
-# %bb.281:
-	st.w	$s3, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $s4, 8
-	b	.LBB4_288
-.LBB4_282:
-	ld.d	$s0, $s4, 0
-	sub.d	$s1, $a0, $s0
-	addi.w	$a0, $zero, -4
-	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB4_380
-# %bb.283:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i348
-	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
-	sltu	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$fp, $a0, $a1
-	slli.d	$a0, $fp, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB4_285
-# %bb.284:
-	move	$a0, $s2
-	move	$a1, $s0
-	move	$a2, $s1
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB4_285:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i350
-	add.d	$s3, $s2, $s1
-	beqz	$s0, .LBB4_287
-# %bb.286:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i352
-	move	$a0, $s0
-	move	$a1, $s1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB4_287:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i353
-	addi.d	$a0, $s3, 4
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-	st.d	$s2, $s4, 0
-	st.d	$a0, $s4, 8
-	alsl.d	$a0, $fp, $s2, 2
-	st.d	$a0, $s4, 16
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-.LBB4_288:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit354
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+.LBB4_268:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit354
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a4, 64
 	ld.w	$a1, $a4, 68
 	or	$a0, $a0, $a1
-	bnez	$a0, .LBB4_314
-# %bb.289:                              # %.preheader
+	bnez	$a0, .LBB4_294
+# %bb.269:                              # %.preheader
 	ld.w	$a0, $a4, 56
 	ori	$a1, $zero, 3
-	blt	$a0, $a1, .LBB4_316
-# %bb.290:                              # %.lr.ph577.preheader
+	blt	$a0, $a1, .LBB4_296
+# %bb.270:                              # %.lr.ph577.preheader
 	ori	$fp, $zero, 2
 	addi.w	$a0, $zero, -4
 	lu52i.d	$s5, $a0, 2047
 	ori	$s7, $zero, 1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a0, $zero, -1
 	lu52i.d	$s8, $a0, 511
-	b	.LBB4_292
+	b	.LBB4_272
 	.p2align	4, , 16
-.LBB4_291:                              #   in Loop: Header=BB4_292 Depth=1
+.LBB4_271:                              #   in Loop: Header=BB4_272 Depth=1
 	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $s4, 8
+	st.d	$a0, $a5, 8
 	ld.w	$a0, $a4, 56
 	addi.w	$fp, $fp, 1
-	bge	$fp, $a0, .LBB4_313
-.LBB4_292:                              # %.lr.ph577
+	bge	$fp, $a0, .LBB4_293
+.LBB4_272:                              # %.lr.ph577
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s6, 8
 	ld.d	$a1, $s6, 16
-	beq	$a0, $a1, .LBB4_295
-# %bb.293:                              #   in Loop: Header=BB4_292 Depth=1
+	beq	$a0, $a1, .LBB4_275
+# %bb.273:                              #   in Loop: Header=BB4_272 Depth=1
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
-	ld.d	$a0, $a5, 8
-	ld.d	$a1, $a5, 16
-	beq	$a0, $a1, .LBB4_301
-.LBB4_294:                              #   in Loop: Header=BB4_292 Depth=1
+	ld.d	$a0, $a6, 8
+	ld.d	$a1, $a6, 16
+	beq	$a0, $a1, .LBB4_281
+.LBB4_274:                              #   in Loop: Header=BB4_272 Depth=1
 	st.w	$fp, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a5, 8
-	ld.d	$a0, $s4, 8
-	ld.d	$a1, $s4, 16
-	bne	$a0, $a1, .LBB4_291
-	b	.LBB4_307
+	st.d	$a0, $a6, 8
+	ld.d	$a0, $a5, 8
+	ld.d	$a1, $a5, 16
+	bne	$a0, $a1, .LBB4_271
+	b	.LBB4_287
 	.p2align	4, , 16
-.LBB4_295:                              #   in Loop: Header=BB4_292 Depth=1
+.LBB4_275:                              #   in Loop: Header=BB4_272 Depth=1
 	ld.d	$s1, $s6, 0
 	sub.d	$s0, $a0, $s1
-	beq	$s0, $s5, .LBB4_380
-# %bb.296:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i364
-                                        #   in Loop: Header=BB4_292 Depth=1
+	beq	$s0, $s5, .LBB4_378
+# %bb.276:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i364
+                                        #   in Loop: Header=BB4_272 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s7, $a0
 	masknez	$a2, $s7, $a1
@@ -3244,41 +3090,42 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$zero, $a0, $s0
-	blt	$s0, $s7, .LBB4_298
-# %bb.297:                              #   in Loop: Header=BB4_292 Depth=1
+	blez	$s0, .LBB4_278
+# %bb.277:                              #   in Loop: Header=BB4_272 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_298:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i366
-                                        #   in Loop: Header=BB4_292 Depth=1
-	beqz	$s1, .LBB4_300
-# %bb.299:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i368
-                                        #   in Loop: Header=BB4_292 Depth=1
+.LBB4_278:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i366
+                                        #   in Loop: Header=BB4_272 Depth=1
+	beqz	$s1, .LBB4_280
+# %bb.279:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i368
+                                        #   in Loop: Header=BB4_272 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_300:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i369
-                                        #   in Loop: Header=BB4_292 Depth=1
+.LBB4_280:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i369
+                                        #   in Loop: Header=BB4_272 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $s6, 0
 	st.d	$a0, $s6, 8
 	alsl.d	$a0, $s3, $s2, 2
 	st.d	$a0, $s6, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a0, $a5, 8
-	ld.d	$a1, $a5, 16
-	bne	$a0, $a1, .LBB4_294
-.LBB4_301:                              #   in Loop: Header=BB4_292 Depth=1
-	ld.d	$s1, $a5, 0
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $a6, 8
+	ld.d	$a1, $a6, 16
+	bne	$a0, $a1, .LBB4_274
+.LBB4_281:                              #   in Loop: Header=BB4_272 Depth=1
+	ld.d	$s1, $a6, 0
 	sub.d	$s0, $a0, $s1
-	beq	$s0, $s5, .LBB4_380
-# %bb.302:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i372
-                                        #   in Loop: Header=BB4_292 Depth=1
+	beq	$s0, $s5, .LBB4_378
+# %bb.282:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i372
+                                        #   in Loop: Header=BB4_272 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s7, $a0
 	masknez	$a2, $s7, $a1
@@ -3294,41 +3141,42 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$fp, $a0, $s0
-	blt	$s0, $s7, .LBB4_304
-# %bb.303:                              #   in Loop: Header=BB4_292 Depth=1
+	blez	$s0, .LBB4_284
+# %bb.283:                              #   in Loop: Header=BB4_272 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_304:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i374
-                                        #   in Loop: Header=BB4_292 Depth=1
-	beqz	$s1, .LBB4_306
-# %bb.305:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i376
-                                        #   in Loop: Header=BB4_292 Depth=1
+.LBB4_284:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i374
+                                        #   in Loop: Header=BB4_272 Depth=1
+	beqz	$s1, .LBB4_286
+# %bb.285:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i376
+                                        #   in Loop: Header=BB4_272 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_306:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i377
-                                        #   in Loop: Header=BB4_292 Depth=1
+.LBB4_286:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i377
+                                        #   in Loop: Header=BB4_272 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	st.d	$s2, $a5, 0
-	st.d	$a0, $a5, 8
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+	st.d	$s2, $a6, 0
+	st.d	$a0, $a6, 8
 	alsl.d	$a0, $s3, $s2, 2
-	st.d	$a0, $a5, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a0, $s4, 8
-	ld.d	$a1, $s4, 16
-	bne	$a0, $a1, .LBB4_291
-.LBB4_307:                              #   in Loop: Header=BB4_292 Depth=1
-	ld.d	$s1, $s4, 0
+	st.d	$a0, $a6, 16
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $a5, 8
+	ld.d	$a1, $a5, 16
+	bne	$a0, $a1, .LBB4_271
+.LBB4_287:                              #   in Loop: Header=BB4_272 Depth=1
+	ld.d	$s1, $a5, 0
 	sub.d	$s0, $a0, $s1
-	beq	$s0, $s5, .LBB4_380
-# %bb.308:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i380
-                                        #   in Loop: Header=BB4_292 Depth=1
+	beq	$s0, $s5, .LBB4_378
+# %bb.288:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i380
+                                        #   in Loop: Header=BB4_272 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s7, $a0
 	masknez	$a2, $s7, $a1
@@ -3344,54 +3192,54 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s7, $a0, $s0
-	blt	$s0, $s7, .LBB4_310
-# %bb.309:                              #   in Loop: Header=BB4_292 Depth=1
+	blez	$s0, .LBB4_290
+# %bb.289:                              #   in Loop: Header=BB4_272 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_310:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i382
-                                        #   in Loop: Header=BB4_292 Depth=1
-	beqz	$s1, .LBB4_312
-# %bb.311:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i384
-                                        #   in Loop: Header=BB4_292 Depth=1
+.LBB4_290:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i382
+                                        #   in Loop: Header=BB4_272 Depth=1
+	beqz	$s1, .LBB4_292
+# %bb.291:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i384
+                                        #   in Loop: Header=BB4_272 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_312:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i385
-                                        #   in Loop: Header=BB4_292 Depth=1
+.LBB4_292:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i385
+                                        #   in Loop: Header=BB4_272 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
-	st.d	$s2, $s4, 0
-	st.d	$a0, $s4, 8
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	st.d	$s2, $a5, 0
+	st.d	$a0, $a5, 8
 	alsl.d	$a0, $s3, $s2, 2
-	st.d	$a0, $s4, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	st.d	$a0, $a5, 16
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a4, 56
 	addi.w	$fp, $fp, 1
-	blt	$fp, $a0, .LBB4_292
-.LBB4_313:                              # %thread-pre-split.loopexit
+	blt	$fp, $a0, .LBB4_272
+.LBB4_293:                              # %thread-pre-split.loopexit
 	ld.w	$a1, $a4, 68
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-.LBB4_314:                              # %thread-pre-split
+.LBB4_294:                              # %thread-pre-split
 	ld.w	$a0, $a4, 60
 	addi.w	$a0, $a0, -1
-	bne	$a1, $a0, .LBB4_317
-.LBB4_315:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit402
-	ld.w	$s2, $a4, 56
+	bne	$a1, $a0, .LBB4_297
+.LBB4_295:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit402
+	ld.w	$s5, $a4, 56
 	ld.w	$a0, $a4, 64
-	addi.w	$a1, $s2, -1
-	bne	$a0, $a1, .LBB4_349
-	b	.LBB4_373
-.LBB4_316:
+	addi.w	$a1, $s5, -1
+	bne	$a0, $a1, .LBB4_329
+	b	.LBB4_353
+.LBB4_296:
 	move	$a1, $zero
 	ld.w	$a0, $a4, 60
 	addi.w	$a0, $a0, -1
-	beq	$a1, $a0, .LBB4_315
-.LBB4_317:
+	beq	$a1, $a0, .LBB4_295
+.LBB4_297:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $s6, 8
@@ -3400,47 +3248,47 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.w	$a6, $a4, 56
 	sub.d	$s2, $a0, $s0
 	srai.d	$a2, $s2, 2
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a6, $sp, 96                    # 8-byte Folded Spill
-	bltz	$s5, .LBB4_332
-# %bb.318:                              # %.lr.ph582.preheader
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 88                    # 8-byte Folded Spill
+	bltz	$s4, .LBB4_312
+# %bb.298:                              # %.lr.ph582.preheader
 	ld.w	$a2, $a4, 64
 	sltui	$a1, $a1, 1
-	maskeqz	$a1, $s5, $a1
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	maskeqz	$a1, $s4, $a1
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$fp, $a3, $a1
-	beqz	$a2, .LBB4_329
-# %bb.319:
+	beqz	$a2, .LBB4_309
+# %bb.299:
 	move	$s1, $s0
-	beqz	$s5, .LBB4_331
-.LBB4_320:                              # %.lr.ph582.peel.next.preheader
-	move	$s3, $s5
+	beqz	$s4, .LBB4_311
+.LBB4_300:                              # %.lr.ph582.peel.next.preheader
 	addi.d	$s8, $fp, 1
 	addi.w	$a1, $zero, -4
 	lu52i.d	$fp, $a1, 2047
 	ori	$s5, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$s7, $a1, 511
-	b	.LBB4_322
+	move	$s3, $s4
+	b	.LBB4_302
 	.p2align	4, , 16
-.LBB4_321:                              #   in Loop: Header=BB4_322 Depth=1
+.LBB4_301:                              #   in Loop: Header=BB4_302 Depth=1
 	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
 	move	$s0, $s1
 	addi.w	$s3, $s3, -1
 	addi.d	$s8, $s8, 1
-	beqz	$s3, .LBB4_332
-.LBB4_322:                              # %.lr.ph582.peel.next
+	beqz	$s3, .LBB4_312
+.LBB4_302:                              # %.lr.ph582.peel.next
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s6, 16
-	bne	$a0, $a1, .LBB4_321
-# %bb.323:                              #   in Loop: Header=BB4_322 Depth=1
+	bne	$a0, $a1, .LBB4_301
+# %bb.303:                              #   in Loop: Header=BB4_302 Depth=1
 	sub.d	$s2, $a0, $s1
-	beq	$s2, $fp, .LBB4_380
-# %bb.324:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i404
-                                        #   in Loop: Header=BB4_322 Depth=1
+	beq	$s2, $fp, .LBB4_378
+# %bb.304:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i404
+                                        #   in Loop: Header=BB4_302 Depth=1
 	srai.d	$a0, $s2, 2
 	sltu	$a1, $s5, $a0
 	masknez	$a2, $s5, $a1
@@ -3456,24 +3304,24 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s8, $a0, $s2
-	blt	$s2, $s5, .LBB4_326
-# %bb.325:                              #   in Loop: Header=BB4_322 Depth=1
+	blez	$s2, .LBB4_306
+# %bb.305:                              #   in Loop: Header=BB4_302 Depth=1
 	move	$a0, $s0
 	move	$a1, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_326:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i406
-                                        #   in Loop: Header=BB4_322 Depth=1
-	beqz	$s1, .LBB4_328
-# %bb.327:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i408
-                                        #   in Loop: Header=BB4_322 Depth=1
+.LBB4_306:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i406
+                                        #   in Loop: Header=BB4_302 Depth=1
+	beqz	$s1, .LBB4_308
+# %bb.307:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i408
+                                        #   in Loop: Header=BB4_302 Depth=1
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_328:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i409
-                                        #   in Loop: Header=BB4_322 Depth=1
+.LBB4_308:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i409
+                                        #   in Loop: Header=BB4_302 Depth=1
 	add.d	$a0, $s0, $s2
 	addi.d	$a0, $a0, 4
 	st.d	$s0, $s6, 0
@@ -3481,52 +3329,50 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	alsl.d	$a1, $s4, $s0, 2
 	st.d	$a1, $s6, 16
 	move	$s1, $s0
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
 	addi.w	$s3, $s3, -1
 	addi.d	$s8, $s8, 1
-	bnez	$s3, .LBB4_322
-	b	.LBB4_332
-.LBB4_329:
+	bnez	$s3, .LBB4_302
+	b	.LBB4_312
+.LBB4_309:
 	ld.d	$a1, $s6, 16
-	beq	$a0, $a1, .LBB4_374
-# %bb.330:
+	beq	$a0, $a1, .LBB4_372
+# %bb.310:
 	st.w	$fp, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
 	move	$s1, $s0
-	bnez	$s5, .LBB4_320
-.LBB4_331:
+	bnez	$s4, .LBB4_300
+.LBB4_311:
 	move	$s0, $s1
-.LBB4_332:                              # %._crit_edge583
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+.LBB4_312:                              # %._crit_edge583
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	add.d	$s3, $a4, $a3
-	beq	$a0, $a1, .LBB4_334
-# %bb.333:
+	beq	$a0, $a1, .LBB4_314
+# %bb.313:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	b	.LBB4_340
-.LBB4_334:
+	b	.LBB4_320
+.LBB4_314:
 	ld.d	$s0, $a2, 0
 	sub.d	$s1, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	beq	$s1, $a0, .LBB4_380
-# %bb.335:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i388
+	beq	$s1, $a0, .LBB4_378
+# %bb.315:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i388
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -3537,60 +3383,60 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB4_337
-# %bb.336:
+	blez	$s1, .LBB4_317
+# %bb.316:
 	move	$a0, $s2
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_337:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i390
+.LBB4_317:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i390
 	add.d	$s3, $s2, $s1
-	beqz	$s0, .LBB4_339
-# %bb.338:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i392
+	beqz	$s0, .LBB4_319
+# %bb.318:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i392
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_339:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i393
+.LBB4_319:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i393
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s2, $a1, 0
 	ld.d	$s0, $s6, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-.LBB4_340:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit394
+.LBB4_320:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit394
 	ld.d	$a1, $s6, 8
-	ld.d	$a0, $s4, 8
-	ld.d	$a2, $s4, 16
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $a5, 8
+	ld.d	$a2, $a5, 16
 	sub.d	$a1, $a1, $s0
 	srai.d	$a1, $a1, 2
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	sub.d	$s3, $a1, $a3
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	beq	$a0, $a2, .LBB4_342
-# %bb.341:
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	beq	$a0, $a2, .LBB4_322
+# %bb.321:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $s4, 8
-	b	.LBB4_348
-.LBB4_342:
-	ld.d	$s0, $s4, 0
+	st.d	$a0, $a5, 8
+	b	.LBB4_328
+.LBB4_322:
+	ld.d	$s0, $a5, 0
 	sub.d	$s1, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB4_380
-# %bb.343:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i396
+	beq	$s1, $a0, .LBB4_378
+# %bb.323:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i396
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -3601,76 +3447,75 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB4_345
-# %bb.344:
+	blez	$s1, .LBB4_325
+# %bb.324:
 	move	$a0, $s2
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_345:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i398
+.LBB4_325:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i398
 	add.d	$s3, $s2, $s1
-	beqz	$s0, .LBB4_347
-# %bb.346:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i400
+	beqz	$s0, .LBB4_327
+# %bb.326:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i400
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_347:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i401
+.LBB4_327:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i401
 	addi.d	$a0, $s3, 4
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-	st.d	$s2, $s4, 0
-	st.d	$a0, $s4, 8
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	st.d	$s2, $a5, 0
+	st.d	$a0, $a5, 8
 	alsl.d	$a0, $fp, $s2, 2
-	st.d	$a0, $s4, 16
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-.LBB4_348:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit402
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	ld.w	$s2, $a4, 56
+	st.d	$a0, $a5, 16
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+.LBB4_328:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit402
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+	ld.w	$s5, $a4, 56
 	ld.w	$a0, $a4, 64
-	addi.w	$a1, $s2, -1
-	beq	$a0, $a1, .LBB4_373
-.LBB4_349:
+	addi.w	$a1, $s5, -1
+	beq	$a0, $a1, .LBB4_353
+.LBB4_329:
 	ld.w	$a1, $a4, 60
 	ld.w	$a0, $a4, 68
 	addi.w	$a1, $a1, -1
-	beq	$a0, $a1, .LBB4_373
-# %bb.350:
+	beq	$a0, $a1, .LBB4_353
+# %bb.330:
 	pcalau12i	$a1, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a1, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.w	$s3, $a1, 0
 	sltui	$a1, $a0, 1
-	nor	$a2, $s5, $zero
+	nor	$a2, $s4, $zero
+	addi.w	$s2, $zero, -1
 	ld.d	$a0, $s6, 8
 	ld.d	$a3, $s6, 16
-	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
-	masknez	$a4, $a4, $a1
+	masknez	$a4, $s2, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a1, $a1, $a4
-	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
-	add.d	$s5, $a1, $a2
-	beq	$a0, $a3, .LBB4_352
-# %bb.351:
-	st.w	$s5, $a0, 0
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	add.d	$s7, $a1, $a2
+	beq	$a0, $a3, .LBB4_332
+# %bb.331:
+	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
-	b	.LBB4_358
-.LBB4_352:
+	b	.LBB4_338
+.LBB4_332:
 	ld.d	$fp, $s6, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB4_380
-# %bb.353:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i412
+	beq	$s0, $a0, .LBB4_378
+# %bb.333:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i412
 	srai.d	$a0, $s0, 2
-	ori	$s7, $zero, 1
-	sltu	$a1, $s7, $a0
-	masknez	$a2, $s7, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
+	lu52i.d	$a1, $s2, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -3679,107 +3524,106 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	stx.w	$s5, $a0, $s0
-	blt	$s0, $s7, .LBB4_355
-# %bb.354:
+	stx.w	$s7, $a0, $s0
+	blez	$s0, .LBB4_335
+# %bb.334:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_355:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i414
-	add.d	$s5, $s1, $s0
-	beqz	$fp, .LBB4_357
-# %bb.356:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i416
+.LBB4_335:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i414
+	add.d	$s7, $s1, $s0
+	beqz	$fp, .LBB4_337
+# %bb.336:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i416
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_357:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i417
-	addi.d	$a0, $s5, 4
+.LBB4_337:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i417
+	addi.d	$a0, $s7, 4
 	st.d	$s1, $s6, 0
 	st.d	$a0, $s6, 8
 	alsl.d	$a0, $s4, $s1, 2
 	st.d	$a0, $s6, 16
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-.LBB4_358:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit418
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 128                   # 8-byte Folded Reload
+.LBB4_338:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit418
+	ld.d	$a0, $a6, 8
+	ld.d	$a1, $a6, 16
+	add.d	$a2, $s5, $s3
+	addi.d	$s4, $a2, 1
+	beq	$a0, $a1, .LBB4_341
+# %bb.339:
+	st.w	$s4, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $a6, 8
 	ld.d	$a0, $a5, 8
 	ld.d	$a1, $a5, 16
-	add.d	$a2, $s2, $s3
-	addi.d	$s3, $a2, 1
-	beq	$a0, $a1, .LBB4_361
-# %bb.359:
-	st.w	$s3, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $a5, 8
-	ld.d	$a0, $s4, 8
-	ld.d	$a1, $s4, 16
-	beq	$a0, $a1, .LBB4_367
-.LBB4_360:
+	beq	$a0, $a1, .LBB4_347
+.LBB4_340:
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $s4, 8
-	b	.LBB4_373
-.LBB4_361:
-	ld.d	$fp, $a5, 0
+	st.d	$a0, $a5, 8
+	b	.LBB4_353
+.LBB4_341:
+	ld.d	$fp, $a6, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB4_380
-# %bb.362:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i420
+	beq	$s0, $a0, .LBB4_378
+# %bb.342:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i420
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
+	lu52i.d	$a1, $s2, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
-	or	$s2, $a0, $a1
-	slli.d	$a0, $s2, 2
+	or	$s3, $a0, $a1
+	slli.d	$a0, $s3, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB4_364
-# %bb.363:
+	stx.w	$s4, $a0, $s0
+	blez	$s0, .LBB4_344
+# %bb.343:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_364:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i422
-	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB4_366
-# %bb.365:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i424
+.LBB4_344:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i422
+	add.d	$s4, $s1, $s0
+	beqz	$fp, .LBB4_346
+# %bb.345:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i424
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_366:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i425
-	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+.LBB4_346:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i425
+	addi.d	$a0, $s4, 4
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
-	alsl.d	$a0, $s2, $s1, 2
+	alsl.d	$a0, $s3, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a0, $s4, 8
-	ld.d	$a1, $s4, 16
-	bne	$a0, $a1, .LBB4_360
-.LBB4_367:
-	ld.d	$fp, $s4, 0
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $a5, 8
+	ld.d	$a1, $a5, 16
+	bne	$a0, $a1, .LBB4_340
+.LBB4_347:
+	ld.d	$fp, $a5, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB4_380
-# %bb.368:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i428
+	beq	$s0, $a0, .LBB4_378
+# %bb.348:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i428
 	srai.d	$a0, $s0, 2
 	ori	$s3, $zero, 1
 	sltu	$a1, $s3, $a0
@@ -3787,8 +3631,7 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	lu52i.d	$a1, $a1, 511
+	lu52i.d	$a1, $s2, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -3798,28 +3641,29 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s3, .LBB4_370
-# %bb.369:
+	blez	$s0, .LBB4_350
+# %bb.349:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_370:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i430
+.LBB4_350:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i430
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB4_372
-# %bb.371:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i432
+	beqz	$fp, .LBB4_352
+# %bb.351:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i432
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_372:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i433
+.LBB4_352:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i433
 	addi.d	$a0, $s3, 4
-	st.d	$s1, $s4, 0
-	st.d	$a0, $s4, 8
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	st.d	$s1, $a1, 0
+	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s1, 2
-	st.d	$a0, $s4, 16
-.LBB4_373:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit434
+	st.d	$a0, $a1, 16
+.LBB4_353:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit434
 	fld.d	$fs4, $sp, 144                  # 8-byte Folded Reload
 	fld.d	$fs3, $sp, 152                  # 8-byte Folded Reload
 	fld.d	$fs2, $sp, 160                  # 8-byte Folded Reload
@@ -3838,19 +3682,172 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
-.LBB4_374:
+.LBB4_354:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s2, $a0, .LBB4_380
-# %bb.375:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i404.peel
-	ori	$s4, $zero, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	sltu	$a0, $s4, $a2
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	beq	$s5, $a0, .LBB4_378
+# %bb.355:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i276.peel
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
+	sltu	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$fp, $a0, $a1
+	slli.d	$a0, $fp, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	move	$s4, $a0
+	stx.w	$zero, $a0, $s5
+	blez	$s5, .LBB4_357
+# %bb.356:
+	move	$a0, $s4
+	move	$a1, $s3
+	move	$a2, $s5
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB4_357:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i278.peel
+	add.d	$s0, $s4, $s5
+	beqz	$s3, .LBB4_359
+# %bb.358:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i280.peel
+	move	$a0, $s3
+	move	$a1, $s5
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB4_359:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i281.peel
+	addi.d	$a0, $s0, 4
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	st.d	$s4, $a2, 0
+	st.d	$a0, $a2, 8
+	alsl.d	$a1, $fp, $s4, 2
+	st.d	$a1, $a2, 16
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	bnez	$a1, .LBB4_161
+	b	.LBB4_172
+.LBB4_360:
+	ld.d	$s0, $a2, 0
+	sub.d	$s3, $a0, $s0
+	addi.w	$a0, $zero, -4
+	lu52i.d	$a0, $a0, 2047
+	beq	$s3, $a0, .LBB4_378
+# %bb.361:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i292
+	srai.d	$a0, $s3, 2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
+	add.d	$a0, $a1, $a0
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
+	sltu	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	move	$s4, $a0
+	stx.w	$zero, $a0, $s3
+	blez	$s3, .LBB4_363
+# %bb.362:
+	move	$a0, $s4
+	move	$a1, $s0
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB4_363:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i294
+	add.d	$fp, $s4, $s3
+	beqz	$s0, .LBB4_365
+# %bb.364:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i296
+	move	$a0, $s0
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB4_365:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i297
+	addi.d	$a0, $fp, 4
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	st.d	$s4, $a1, 0
+	st.d	$a0, $a1, 8
+	alsl.d	$a0, $s1, $s4, 2
+	st.d	$a0, $a1, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $s5, 8
+	ld.d	$a1, $s5, 16
+	bne	$a0, $a1, .LBB4_197
+.LBB4_366:
+	ld.d	$s0, $s5, 0
+	sub.d	$s3, $a0, $s0
+	addi.w	$a0, $zero, -4
+	lu52i.d	$a0, $a0, 2047
+	beq	$s3, $a0, .LBB4_378
+# %bb.367:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i300
+	srai.d	$a0, $s3, 2
+	ori	$fp, $zero, 1
+	sltu	$a1, $fp, $a0
+	masknez	$a2, $fp, $a1
+	maskeqz	$a1, $a0, $a1
+	or	$a1, $a1, $a2
+	add.d	$a0, $a1, $a0
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
+	sltu	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	move	$s4, $a0
+	stx.w	$fp, $a0, $s3
+	blez	$s3, .LBB4_369
+# %bb.368:
+	move	$a0, $s4
+	move	$a1, $s0
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB4_369:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i302
+	add.d	$fp, $s4, $s3
+	beqz	$s0, .LBB4_371
+# %bb.370:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i304
+	move	$a0, $s0
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB4_371:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i305
+	addi.d	$a0, $fp, 4
+	st.d	$s4, $s5, 0
+	st.d	$a0, $s5, 8
+	alsl.d	$a0, $s1, $s4, 2
+	st.d	$a0, $s5, 16
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$s2, $s2, 1
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bgtz	$a0, .LBB4_205
+	b	.LBB4_214
+.LBB4_372:
+	addi.w	$a0, $zero, -4
+	lu52i.d	$a0, $a0, 2047
+	beq	$s2, $a0, .LBB4_378
+# %bb.373:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i404.peel
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
+	add.d	$a0, $a0, $a2
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -3861,37 +3858,36 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	stx.w	$fp, $a0, $s2
-	blt	$s2, $s4, .LBB4_377
-# %bb.376:
+	blez	$s2, .LBB4_375
+# %bb.374:
 	move	$a0, $s1
 	move	$a1, $s0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_377:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i406.peel
+.LBB4_375:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i406.peel
 	add.d	$s4, $s1, $s2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	beqz	$s0, .LBB4_379
-# %bb.378:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i408.peel
+	beqz	$s0, .LBB4_377
+# %bb.376:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i408.peel
 	move	$a0, $s0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_379:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i409.peel
+.LBB4_377:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i409.peel
 	addi.d	$a0, $s4, 4
 	st.d	$s1, $s6, 0
 	st.d	$a0, $s6, 8
 	alsl.d	$a1, $s3, $s1, 2
 	st.d	$a1, $s6, 16
-	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
-	bnez	$s5, .LBB4_320
-	b	.LBB4_331
-.LBB4_380:                              # %.noexc
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	bnez	$s4, .LBB4_300
+	b	.LBB4_311
+.LBB4_378:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB4_381:
+.LBB4_379:
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
@@ -3906,23 +3902,23 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_: # @_ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	.cfi_def_cfa_offset 256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 160                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 152                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 136                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	.cfi_def_cfa_offset 240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 136                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 120                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -3941,40 +3937,38 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	move	$s4, $a0
 	ld.w	$a0, $a0, 72
 	ld.w	$t0, $s4, 76
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a0, $a0, 1
-	st.d	$t0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
 	addi.d	$t0, $t0, 1
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	st.d	$t0, $sp, 16                    # 8-byte Folded Spill
-	mul.w	$s1, $t0, $a0
-	addi.w	$a0, $zero, -1
-	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	bge	$a0, $s1, .LBB5_318
+	mul.w	$s0, $t0, $a0
+	st.d	$a7, $sp, 40                    # 8-byte Folded Spill
+	bltz	$s0, .LBB5_318
 # %bb.1:
 	move	$s3, $a4
 	move	$s6, $a1
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$fp, $a1, 16
 	ld.d	$s7, $a1, 0
 	sub.d	$s8, $fp, $s7
 	srai.d	$a0, $s8, 4
 	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	bgeu	$a0, $s1, .LBB5_8
+	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	bgeu	$a0, $s0, .LBB5_8
 # %bb.2:                                # %_ZNSt12_Vector_baseI7double2SaIS0_EE11_M_allocateEm.exit.i.i
 	ld.d	$fp, $s6, 8
-	slli.d	$a0, $s1, 4
+	slli.d	$a0, $s0, 4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$s5, $a0
 	beq	$fp, $s7, .LBB5_5
 # %bb.3:                                # %.lr.ph.i.i.i.i.i.preheader
 	move	$a0, $s7
-	move	$a1, $s0
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB5_4:                                # %.lr.ph.i.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
@@ -3992,21 +3986,21 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_7:                                # %_ZNSt12_Vector_baseI7double2SaIS0_EE13_M_deallocateEPS0_m.exit.i
-	st.d	$s0, $s6, 0
-	add.d	$a0, $s0, $fp
+	st.d	$s5, $s6, 0
+	add.d	$a0, $s5, $fp
 	st.d	$a0, $s6, 8
-	alsl.d	$fp, $s1, $s0, 4
+	alsl.d	$fp, $s0, $s5, 4
 	st.d	$fp, $s6, 16
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	bgez	$a0, .LBB5_9
 	b	.LBB5_22
 .LBB5_8:
-	move	$s0, $s7
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	move	$s5, $s7
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	bltz	$a0, .LBB5_22
 .LBB5_9:                                # %.lr.ph408
 	bltz	$s8, .LBB5_22
@@ -4025,16 +4019,16 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	ld.d	$a0, $s6, 8
 	addi.w	$a2, $zero, -16
 	lu52i.d	$a2, $a2, 2047
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	addi.w	$a2, $zero, -1
 	lu52i.d	$s1, $a2, 127
 	b	.LBB5_12
 	.p2align	4, , 16
 .LBB5_11:                               # %._crit_edge
                                         #   in Loop: Header=BB5_12 Depth=1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a1, $a3, 1
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a2, .LBB5_22
 .LBB5_12:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -4042,7 +4036,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
                                         #       Child Loop BB5_18 Depth 3
 	ld.w	$a3, $s4, 84
 	move	$a2, $zero
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	add.d	$a1, $a3, $a1
 	movgr2fr.w	$fa0, $a1
 	ffint.d.w	$fa0, $fa0
@@ -4067,8 +4061,8 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	fmul.d	$fs3, $fs0, $fa0
 	bne	$a0, $fp, .LBB5_13
 # %bb.15:                               #   in Loop: Header=BB5_14 Depth=2
-	sub.d	$s8, $fp, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	sub.d	$s8, $fp, $s5
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s8, $a0, .LBB5_317
 # %bb.16:                               # %.noexc342
                                         #   in Loop: Header=BB5_14 Depth=2
@@ -4086,62 +4080,62 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	slli.d	$a0, $s4, 4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s7, $a0
+	move	$s0, $a0
 	add.d	$a0, $a0, $s8
-	fstx.d	$fs3, $s7, $s8
+	fstx.d	$fs3, $s0, $s8
 	fst.d	$fs2, $a0, 8
-	move	$s5, $s7
-	beq	$s0, $fp, .LBB5_19
+	move	$s7, $s0
+	beq	$s5, $fp, .LBB5_19
 # %bb.17:                               # %.lr.ph.i.i.i.i.i.i.preheader
                                         #   in Loop: Header=BB5_14 Depth=2
-	move	$a0, $s0
-	move	$s5, $s7
+	move	$a0, $s5
+	move	$s7, $s0
 	.p2align	4, , 16
 .LBB5_18:                               # %.lr.ph.i.i.i.i.i.i
                                         #   Parent Loop BB5_12 Depth=1
                                         #     Parent Loop BB5_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr0, $a0, 0
-	vst	$vr0, $s5, 0
+	vst	$vr0, $s7, 0
 	addi.d	$a0, $a0, 16
-	addi.d	$s5, $s5, 16
+	addi.d	$s7, $s7, 16
 	bne	$a0, $fp, .LBB5_18
 .LBB5_19:                               # %_ZSt34__uninitialized_move_if_noexcept_aIP7double2S1_SaIS0_EET0_T_S4_S3_RT1_.exit.i.i
                                         #   in Loop: Header=BB5_14 Depth=2
-	beqz	$s0, .LBB5_21
+	beqz	$s5, .LBB5_21
 # %bb.20:                               # %_ZNSt12_Vector_baseI7double2SaIS0_EE13_M_deallocateEPS0_m.exit.i.i.i
                                         #   in Loop: Header=BB5_14 Depth=2
-	move	$a0, $s0
+	move	$a0, $s5
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_21:                               # %_ZNSt6vectorI7double2SaIS0_EE17_M_realloc_appendIJS0_EEEvDpOT_.exit.i
                                         #   in Loop: Header=BB5_14 Depth=2
-	addi.d	$a0, $s5, 16
-	st.d	$s7, $s6, 0
+	addi.d	$a0, $s7, 16
+	st.d	$s0, $s6, 0
 	st.d	$a0, $s6, 8
-	alsl.d	$fp, $s4, $s7, 4
+	alsl.d	$fp, $s4, $s0, 4
 	st.d	$fp, $s6, 16
-	move	$s0, $s7
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	move	$s5, $s0
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $s2, 1
 	bne	$s2, $s8, .LBB5_14
 	b	.LBB5_11
 .LBB5_22:                               # %._crit_edge409
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	mul.w	$fp, $a0, $s8
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bge	$a0, $fp, .LBB5_318
+	bltz	$fp, .LBB5_318
 # %bb.23:
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a0, $s2, 16
-	ld.d	$s0, $s2, 0
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $a4, 16
+	ld.d	$s0, $a4, 0
 	sub.d	$s6, $a0, $s0
 	srai.d	$a0, $s6, 2
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	bgeu	$a0, $fp, .LBB5_29
 # %bb.24:                               # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i
-	ld.d	$s1, $s2, 8
+	ld.d	$s1, $a4, 8
 	sub.d	$s7, $s1, $s0
 	slli.d	$a0, $fp, 2
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -4162,22 +4156,21 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_28:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i
-	st.d	$s8, $s2, 0
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	st.d	$s8, $a4, 0
 	add.d	$a0, $s8, $s7
-	st.d	$a0, $s2, 8
+	st.d	$a0, $a4, 8
 	alsl.d	$a0, $fp, $s8, 2
-	st.d	$a0, $s2, 16
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	st.d	$a0, $a4, 16
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 .LBB5_29:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $a1, 16
-	ld.d	$s0, $a1, 0
+	ld.d	$a0, $s2, 16
+	ld.d	$s0, $s2, 0
 	sub.d	$s6, $a0, $s0
 	srai.d	$a0, $s6, 2
 	bgeu	$a0, $fp, .LBB5_35
 # %bb.30:                               # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i137
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $a0, 8
+	ld.d	$s1, $s2, 8
 	sub.d	$s7, $s1, $s0
 	slli.d	$a0, $fp, 2
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -4198,13 +4191,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_34:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i141
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	st.d	$s8, $a1, 0
+	st.d	$s8, $s2, 0
 	add.d	$a0, $s8, $s7
-	st.d	$a0, $a1, 8
+	st.d	$a0, $s2, 8
 	alsl.d	$a0, $fp, $s8, 2
-	st.d	$a0, $a1, 16
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	st.d	$a0, $s2, 16
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 .LBB5_35:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit142
 	ld.d	$a0, $s3, 16
 	ld.d	$s0, $s3, 0
@@ -4239,112 +4232,107 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s3, 8
 	alsl.d	$a0, $fp, $s8, 2
 	st.d	$a0, $s3, 16
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 .LBB5_41:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit148
 	ld.w	$a1, $s4, 76
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB5_93
+	blez	$a1, .LBB5_93
 # %bb.42:                               # %.preheader.lr.ph
 	ld.w	$a0, $s4, 72
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB5_93
+	blez	$a0, .LBB5_93
 # %bb.43:                               # %.preheader.preheader
-	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
-	ori	$s1, $zero, 1
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
+	move	$s5, $zero
 	addi.w	$a2, $zero, -4
 	lu52i.d	$a2, $a2, 2047
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	addi.w	$a2, $zero, -1
 	lu52i.d	$fp, $a2, 511
-	move	$a2, $zero
 	b	.LBB5_46
 	.p2align	4, , 16
 .LBB5_44:                               # %._crit_edge412.loopexit
                                         #   in Loop: Header=BB5_46 Depth=1
 	ld.w	$a1, $s4, 76
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 .LBB5_45:                               # %._crit_edge412
                                         #   in Loop: Header=BB5_46 Depth=1
-	addi.w	$a4, $a2, 1
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $a2
-	move	$a2, $a4
-	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
-	bge	$a4, $a1, .LBB5_93
+	addi.w	$s5, $s5, 1
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	add.d	$a2, $a2, $a3
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	bge	$s5, $a1, .LBB5_93
 .LBB5_46:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_50 Depth 2
-	blt	$a0, $s1, .LBB5_45
+	blez	$a0, .LBB5_45
 # %bb.47:                               # %.lr.ph411
                                         #   in Loop: Header=BB5_46 Depth=1
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a1, $s3, 8
 	move	$a0, $s8
 	move	$s8, $zero
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB5_50
 	.p2align	4, , 16
 .LBB5_48:                               #   in Loop: Header=BB5_50 Depth=2
 	st.w	$s4, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 .LBB5_49:                               # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit182
                                         #   in Loop: Header=BB5_50 Depth=2
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a0, $s4, 72
 	addi.w	$s8, $s8, 1
 	bge	$s8, $a0, .LBB5_44
 .LBB5_50:                               #   Parent Loop BB5_46 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $s3, 0
-	ld.d	$a0, $s2, 8
-	ld.d	$a3, $s2, 16
+	ld.d	$a0, $a4, 8
+	ld.d	$a3, $a4, 16
 	sub.d	$a1, $a1, $a2
 	srai.d	$s4, $a1, 2
 	beq	$a0, $a3, .LBB5_53
 # %bb.51:                               #   in Loop: Header=BB5_50 Depth=2
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $s2, 8
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $s4, 8
-	ld.d	$a1, $s4, 16
+	st.d	$a0, $a4, 8
+	ld.d	$a0, $s2, 8
+	ld.d	$a1, $s2, 16
 	beq	$a0, $a1, .LBB5_59
 .LBB5_52:                               #   in Loop: Header=BB5_50 Depth=2
 	ori	$a1, $zero, 4
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $s4, 8
+	st.d	$a0, $s2, 8
 	b	.LBB5_65
 	.p2align	4, , 16
 .LBB5_53:                               #   in Loop: Header=BB5_50 Depth=2
-	ld.d	$s0, $s2, 0
+	ld.d	$s0, $a4, 0
 	sub.d	$s6, $a0, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s6, $a0, .LBB5_317
 # %bb.54:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB5_50 Depth=2
 	srai.d	$a0, $s6, 2
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s2, $a0, $a1
-	slli.d	$a0, $s2, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	stx.w	$s4, $a0, $s6
-	blt	$s6, $s1, .LBB5_56
+	blez	$s6, .LBB5_56
 # %bb.55:                               #   in Loop: Header=BB5_50 Depth=2
 	move	$a0, $s7
 	move	$a1, $s0
@@ -4353,7 +4341,6 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_56:                               # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i
                                         #   in Loop: Header=BB5_50 Depth=2
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	beqz	$s0, .LBB5_58
 # %bb.57:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i
                                         #   in Loop: Header=BB5_50 Depth=2
@@ -4365,38 +4352,39 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
                                         #   in Loop: Header=BB5_50 Depth=2
 	add.d	$a0, $s7, $s6
 	addi.d	$a0, $a0, 4
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.d	$s7, $a1, 0
 	st.d	$a0, $a1, 8
-	alsl.d	$a0, $s2, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a0, $s4, 8
-	ld.d	$a1, $s4, 16
+	ld.d	$a0, $s2, 8
+	ld.d	$a1, $s2, 16
 	bne	$a0, $a1, .LBB5_52
 .LBB5_59:                               #   in Loop: Header=BB5_50 Depth=2
-	ld.d	$s0, $s4, 0
+	ld.d	$s0, $s2, 0
 	sub.d	$s6, $a0, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s6, $a0, .LBB5_317
 # %bb.60:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i151
                                         #   in Loop: Header=BB5_50 Depth=2
 	srai.d	$a0, $s6, 2
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s2, $a0, $a1
-	slli.d	$a0, $s2, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	ori	$a0, $zero, 4
 	stx.w	$a0, $s7, $s6
-	blt	$s6, $s1, .LBB5_62
+	blez	$s6, .LBB5_62
 # %bb.61:                               #   in Loop: Header=BB5_50 Depth=2
 	move	$a0, $s7
 	move	$a1, $s0
@@ -4416,49 +4404,51 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
                                         #   in Loop: Header=BB5_50 Depth=2
 	add.d	$a0, $s7, $s6
 	addi.d	$a0, $a0, 4
-	st.d	$s7, $s4, 0
-	st.d	$a0, $s4, 8
-	alsl.d	$a0, $s2, $s7, 2
-	st.d	$a0, $s4, 16
+	st.d	$s7, $s2, 0
+	st.d	$a0, $s2, 8
+	alsl.d	$a0, $s1, $s7, 2
+	st.d	$a0, $s2, 16
 .LBB5_65:                               # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit157
                                         #   in Loop: Header=BB5_50 Depth=2
 	ld.d	$a1, $s3, 8
 	ld.d	$a0, $s3, 16
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	add.d	$s2, $a2, $s8
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	add.d	$s1, $a2, $s8
 	beq	$a1, $a0, .LBB5_69
 # %bb.66:                               #   in Loop: Header=BB5_50 Depth=2
-	st.w	$s2, $a1, 0
+	st.w	$s1, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	addi.d	$s4, $s2, 1
+	addi.d	$s4, $s1, 1
 	beq	$a1, $a0, .LBB5_75
 .LBB5_67:                               #   in Loop: Header=BB5_50 Depth=2
 	st.w	$s4, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	add.d	$s2, $a2, $s8
-	addi.d	$s5, $s2, 2
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	add.d	$s1, $a2, $s8
+	addi.d	$s2, $s1, 2
 	beq	$a1, $a0, .LBB5_81
 .LBB5_68:                               #   in Loop: Header=BB5_50 Depth=2
-	st.w	$s5, $a1, 0
+	st.w	$s2, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $s3, 8
-	addi.d	$s4, $s2, 1
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$s4, $s1, 1
 	bne	$a1, $a0, .LBB5_48
 	b	.LBB5_87
 	.p2align	4, , 16
 .LBB5_69:                               #   in Loop: Header=BB5_50 Depth=2
 	ld.d	$s0, $s3, 0
 	sub.d	$s6, $a1, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s6, $a0, .LBB5_317
 # %bb.70:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB5_50 Depth=2
 	srai.d	$a0, $s6, 2
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -4470,8 +4460,8 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s2, $a0, $s6
-	blt	$s6, $s1, .LBB5_72
+	stx.w	$s1, $a0, $s6
+	blez	$s6, .LBB5_72
 # %bb.71:                               #   in Loop: Header=BB5_50 Depth=2
 	move	$a0, $s7
 	move	$a1, $s0
@@ -4495,31 +4485,32 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a1, $s3, 8
 	alsl.d	$a0, $s4, $s7, 2
 	st.d	$a0, $s3, 16
-	addi.d	$s4, $s2, 1
+	addi.d	$s4, $s1, 1
 	bne	$a1, $a0, .LBB5_67
 .LBB5_75:                               #   in Loop: Header=BB5_50 Depth=2
 	ld.d	$s0, $s3, 0
 	sub.d	$s6, $a0, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s6, $a0, .LBB5_317
 # %bb.76:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i160
                                         #   in Loop: Header=BB5_50 Depth=2
 	srai.d	$a0, $s6, 2
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s2, $a0, $a1
-	slli.d	$a0, $s2, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	stx.w	$s4, $a0, $s6
-	blt	$s6, $s1, .LBB5_78
+	blez	$s6, .LBB5_78
 # %bb.77:                               #   in Loop: Header=BB5_50 Depth=2
 	move	$a0, $s7
 	move	$a1, $s0
@@ -4541,22 +4532,23 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	addi.d	$a1, $a0, 4
 	st.d	$s7, $s3, 0
 	st.d	$a1, $s3, 8
-	alsl.d	$a0, $s2, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $s3, 16
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	add.d	$s2, $a2, $s8
-	addi.d	$s5, $s2, 2
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	add.d	$s1, $a2, $s8
+	addi.d	$s2, $s1, 2
 	bne	$a1, $a0, .LBB5_68
 .LBB5_81:                               #   in Loop: Header=BB5_50 Depth=2
 	ld.d	$s0, $s3, 0
 	sub.d	$s6, $a0, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s6, $a0, .LBB5_317
 # %bb.82:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i168
                                         #   in Loop: Header=BB5_50 Depth=2
 	srai.d	$a0, $s6, 2
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -4568,8 +4560,8 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	stx.w	$s5, $a0, $s6
-	blt	$s6, $s1, .LBB5_84
+	stx.w	$s2, $a0, $s6
+	blez	$s6, .LBB5_84
 # %bb.83:                               #   in Loop: Header=BB5_50 Depth=2
 	move	$a0, $s7
 	move	$a1, $s0
@@ -4578,6 +4570,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_84:                               # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i170
                                         #   in Loop: Header=BB5_50 Depth=2
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	beqz	$s0, .LBB5_86
 # %bb.85:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i172
                                         #   in Loop: Header=BB5_50 Depth=2
@@ -4593,31 +4586,32 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a1, $s3, 8
 	alsl.d	$a0, $s4, $s7, 2
 	st.d	$a0, $s3, 16
-	addi.d	$s4, $s2, 1
+	addi.d	$s4, $s1, 1
 	bne	$a1, $a0, .LBB5_48
 .LBB5_87:                               #   in Loop: Header=BB5_50 Depth=2
 	ld.d	$s0, $s3, 0
 	sub.d	$s6, $a0, $s0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beq	$s6, $a0, .LBB5_317
 # %bb.88:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i176
                                         #   in Loop: Header=BB5_50 Depth=2
 	srai.d	$a0, $s6, 2
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $fp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $fp, $a1
-	or	$s2, $a0, $a1
-	slli.d	$a0, $s2, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	stx.w	$s4, $a0, $s6
-	blt	$s6, $s1, .LBB5_90
+	blez	$s6, .LBB5_90
 # %bb.89:                               #   in Loop: Header=BB5_50 Depth=2
 	move	$a0, $s7
 	move	$a1, $s0
@@ -4626,7 +4620,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_90:                               # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i178
                                         #   in Loop: Header=BB5_50 Depth=2
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	beqz	$s0, .LBB5_92
 # %bb.91:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i180
                                         #   in Loop: Header=BB5_50 Depth=2
@@ -4640,7 +4634,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	addi.d	$a1, $a0, 4
 	st.d	$s7, $s3, 0
 	st.d	$a1, $s3, 8
-	alsl.d	$a0, $s2, $s7, 2
+	alsl.d	$a0, $s1, $s7, 2
 	st.d	$a0, $s3, 16
 	b	.LBB5_49
 .LBB5_93:                               # %._crit_edge414
@@ -4653,16 +4647,15 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	ld.w	$s1, $s4, 68
 	ld.w	$fp, $s4, 64
 	sltui	$a0, $s1, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	masknez	$a0, $a1, $a0
 	sltui	$a1, $fp, 1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	masknez	$a1, $a3, $a1
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	masknez	$a1, $a2, $a1
 	add.w	$s2, $a1, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bge	$a0, $s2, .LBB5_318
+	bltz	$s2, .LBB5_318
 # %bb.95:
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
 	ld.d	$s4, $a1, 0
 	sub.d	$s5, $a0, $s4
@@ -4689,35 +4682,35 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$s1, $a0, 68
 	ld.w	$fp, $a0, 64
 .LBB5_100:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i187
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s3, $a1, 0
 	add.d	$a0, $s3, $s0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s3, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 .LBB5_101:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit188
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 60
 	addi.w	$a0, $a0, -1
 	ld.w	$a1, $a1, 56
 	xor	$a0, $s1, $a0
 	sltui	$a0, $a0, 1
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
-	masknez	$a0, $a2, $a0
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	masknez	$a0, $s5, $a0
 	addi.w	$a1, $a1, -1
 	xor	$a1, $fp, $a1
 	sltui	$a1, $a1, 1
-	masknez	$a1, $a3, $a1
+	masknez	$a1, $a2, $a1
 	add.w	$a0, $a1, $a0
 	addi.w	$a1, $zero, -2
 	bge	$a1, $a0, .LBB5_318
 # %bb.102:
-	ld.d	$s6, $sp, 272
+	ld.d	$s6, $sp, 256
 	ld.d	$a1, $s6, 16
 	ld.d	$s3, $s6, 0
 	addi.w	$s2, $a0, 1
@@ -4739,7 +4732,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB5_105:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i191
-	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
 	beqz	$s3, .LBB5_107
 # %bb.106:
 	move	$a0, $s3
@@ -4755,14 +4748,15 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s6, 16
 	ld.w	$s1, $s7, 68
 	move	$s4, $s7
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	bnez	$fp, .LBB5_109
 	b	.LBB5_134
 .LBB5_108:
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	beqz	$fp, .LBB5_134
 .LBB5_109:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit194
 	beqz	$s1, .LBB5_134
@@ -4787,13 +4781,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	beq	$s4, $a0, .LBB5_317
 # %bb.113:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i196
 	srai.d	$a0, $s4, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -4804,7 +4798,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$zero, $a0, $s4
-	blt	$s4, $s5, .LBB5_115
+	blez	$s4, .LBB5_115
 # %bb.114:
 	move	$a0, $s0
 	move	$a1, $s3
@@ -4821,12 +4815,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_117:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i201
 	addi.d	$a0, $s5, 4
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s0, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a0, $s2, $s0, 2
 	st.d	$a0, $a3, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 .LBB5_118:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit202
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
@@ -4856,13 +4851,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	beq	$s4, $a0, .LBB5_317
 # %bb.122:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i204
 	srai.d	$a0, $s4, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -4873,7 +4868,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s1, $a0, $s4
-	blt	$s4, $s2, .LBB5_124
+	blez	$s4, .LBB5_124
 # %bb.123:
 	move	$a0, $s0
 	move	$a1, $s3
@@ -4895,9 +4890,8 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $fp, $s0, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $s2, 8
 	ld.d	$a1, $s2, 16
 	bne	$a0, $a1, .LBB5_120
@@ -4915,7 +4909,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -4926,7 +4920,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s1, $a0, $s4
-	blt	$s4, $s1, .LBB5_130
+	blez	$s4, .LBB5_130
 # %bb.129:
 	move	$a0, $s0
 	move	$a1, $s3
@@ -4947,68 +4941,73 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s2, 8
 	alsl.d	$a0, $fp, $s0, 2
 	st.d	$a0, $s2, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 .LBB5_133:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit218thread-pre-split
 	ld.w	$s1, $s4, 68
 .LBB5_134:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit218
-	beqz	$s1, .LBB5_173
+	beqz	$s1, .LBB5_174
 # %bb.135:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $a3, 8
 	ld.d	$s3, $a3, 0
 	ld.w	$a1, $a1, 0
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	ld.w	$s1, $s4, 56
 	sub.d	$s5, $a0, $s3
 	srai.d	$a1, $s5, 2
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
-	bltz	$s8, .LBB5_156
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	bltz	$s8, .LBB5_138
 # %bb.136:                              # %.lr.ph419.preheader
 	ld.w	$a1, $s4, 64
-	beqz	$a1, .LBB5_138
+	beqz	$a1, .LBB5_139
 # %bb.137:
 	move	$s4, $s3
-	bnez	$s8, .LBB5_140
-	b	.LBB5_155
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	bnez	$s8, .LBB5_141
+	b	.LBB5_156
 .LBB5_138:
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB5_157
+.LBB5_139:
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB5_149
-# %bb.139:
+	beq	$a0, $a1, .LBB5_150
+# %bb.140:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s4, $s3
-	beqz	$s8, .LBB5_155
-.LBB5_140:                              # %.lr.ph419.peel.next.preheader
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	beqz	$s8, .LBB5_156
+.LBB5_141:                              # %.lr.ph419.peel.next.preheader
 	move	$s2, $zero
 	addi.w	$a1, $zero, -4
 	lu52i.d	$s7, $a1, 2047
 	ori	$s8, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$fp, $a1, 511
-	b	.LBB5_142
+	b	.LBB5_143
 	.p2align	4, , 16
-.LBB5_141:                              #   in Loop: Header=BB5_142 Depth=1
+.LBB5_142:                              #   in Loop: Header=BB5_143 Depth=1
 	st.w	$s2, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s3, $s4
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	beq	$a1, $s2, .LBB5_156
-.LBB5_142:                              # %.lr.ph419.peel.next
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	beq	$a1, $s2, .LBB5_157
+.LBB5_143:                              # %.lr.ph419.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
 	addi.w	$s2, $s2, 1
-	bne	$a0, $a1, .LBB5_141
-# %bb.143:                              #   in Loop: Header=BB5_142 Depth=1
+	bne	$a0, $a1, .LBB5_142
+# %bb.144:                              #   in Loop: Header=BB5_143 Depth=1
 	sub.d	$s5, $a0, $s4
 	beq	$s5, $s7, .LBB5_317
-# %bb.144:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i236
-                                        #   in Loop: Header=BB5_142 Depth=1
+# %bb.145:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i236
+                                        #   in Loop: Header=BB5_143 Depth=1
 	srai.d	$a0, $s5, 2
 	sltu	$a1, $s8, $a0
 	masknez	$a2, $s8, $a1
@@ -5024,48 +5023,49 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s2, $a0, $s5
-	blt	$s5, $s8, .LBB5_146
-# %bb.145:                              #   in Loop: Header=BB5_142 Depth=1
+	blez	$s5, .LBB5_147
+# %bb.146:                              #   in Loop: Header=BB5_143 Depth=1
 	move	$a0, $s3
 	move	$a1, $s4
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_146:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i238
-                                        #   in Loop: Header=BB5_142 Depth=1
-	beqz	$s4, .LBB5_148
-# %bb.147:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i240
-                                        #   in Loop: Header=BB5_142 Depth=1
+.LBB5_147:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i238
+                                        #   in Loop: Header=BB5_143 Depth=1
+	beqz	$s4, .LBB5_149
+# %bb.148:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i240
+                                        #   in Loop: Header=BB5_143 Depth=1
 	move	$a0, $s4
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_148:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i241
-                                        #   in Loop: Header=BB5_142 Depth=1
+.LBB5_149:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i241
+                                        #   in Loop: Header=BB5_143 Depth=1
 	add.d	$a0, $s3, $s5
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s3, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s0, $s3, 2
 	st.d	$a1, $a2, 16
 	move	$s4, $s3
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	bne	$a1, $s2, .LBB5_142
-	b	.LBB5_156
-.LBB5_149:
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	bne	$a1, $s2, .LBB5_143
+	b	.LBB5_157
+.LBB5_150:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s5, $a0, .LBB5_317
-# %bb.150:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i236.peel
-	ori	$s0, $zero, 1
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	sltu	$a0, $s0, $a2
-	masknez	$a1, $s0, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+# %bb.151:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i236.peel
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5076,63 +5076,65 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$zero, $a0, $s5
-	blt	$s5, $s0, .LBB5_152
-# %bb.151:
+	blez	$s5, .LBB5_153
+# %bb.152:
 	move	$a0, $s4
 	move	$a1, $s3
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_152:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i238.peel
+.LBB5_153:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i238.peel
 	add.d	$s0, $s4, $s5
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	beqz	$s3, .LBB5_154
-# %bb.153:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i240.peel
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	beqz	$s3, .LBB5_155
+# %bb.154:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i240.peel
 	move	$a0, $s3
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_154:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i241.peel
+.LBB5_155:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i241.peel
 	addi.d	$a0, $s0, 4
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $fp, $s4, 2
 	st.d	$a1, $a2, 16
-	bnez	$s8, .LBB5_140
-.LBB5_155:
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	bnez	$s8, .LBB5_141
+.LBB5_156:
 	move	$s3, $s4
-.LBB5_156:                              # %._crit_edge420
+.LBB5_157:                              # %._crit_edge420
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$s1, $a3, $s1
-	beq	$a0, $a1, .LBB5_158
-# %bb.157:
+	beq	$a0, $a1, .LBB5_159
+# %bb.158:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB5_164
-.LBB5_158:
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB5_165
+.LBB5_159:
 	ld.d	$s3, $a2, 0
 	sub.d	$s4, $a0, $s3
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB5_317
-# %bb.159:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i220
+# %bb.160:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i220
 	srai.d	$a0, $s4, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5143,61 +5145,60 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s1, $a0, $s4
-	blt	$s4, $s2, .LBB5_161
-# %bb.160:
+	blez	$s4, .LBB5_162
+# %bb.161:
 	move	$a0, $s0
 	move	$a1, $s3
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_161:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i222
+.LBB5_162:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i222
 	add.d	$s1, $s0, $s4
-	beqz	$s3, .LBB5_163
-# %bb.162:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i224
+	beqz	$s3, .LBB5_164
+# %bb.163:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i224
 	move	$a0, $s3
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_163:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i225
+.LBB5_164:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i225
 	addi.d	$a0, $s1, 4
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	st.d	$s0, $a2, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $a1, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a0, $fp, $s0, 2
 	st.d	$a0, $a2, 16
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-.LBB5_164:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit226
+.LBB5_165:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit226
 	ld.d	$a1, $a1, 8
-	ld.d	$a0, $a3, 8
-	ld.d	$a2, $a3, 16
+	ld.d	$a0, $s2, 8
+	ld.d	$a2, $s2, 16
 	sub.d	$a1, $a1, $s3
 	srai.d	$a1, $a1, 2
-	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$s1, $a1, $a4
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	beq	$a0, $a2, .LBB5_166
-# %bb.165:
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	sub.d	$s1, $a1, $a3
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	beq	$a0, $a2, .LBB5_167
+# %bb.166:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a3, 8
-	b	.LBB5_172
-.LBB5_166:
-	ld.d	$s3, $a3, 0
+	st.d	$a0, $s2, 8
+	b	.LBB5_173
+.LBB5_167:
+	ld.d	$s3, $s2, 0
 	sub.d	$s4, $a0, $s3
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s4, $a0, .LBB5_317
-# %bb.167:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i228
+# %bb.168:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i228
 	srai.d	$a0, $s4, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5208,93 +5209,94 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s1, $a0, $s4
-	blt	$s4, $s2, .LBB5_169
-# %bb.168:
+	blez	$s4, .LBB5_170
+# %bb.169:
 	move	$a0, $s0
 	move	$a1, $s3
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_169:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i230
+.LBB5_170:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i230
 	add.d	$s1, $s0, $s4
-	beqz	$s3, .LBB5_171
-# %bb.170:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i232
+	beqz	$s3, .LBB5_172
+# %bb.171:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i232
 	move	$a0, $s3
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_171:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i233
+.LBB5_172:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i233
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$s0, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s0, $s2, 0
+	st.d	$a0, $s2, 8
 	alsl.d	$a0, $fp, $s0, 2
-	st.d	$a0, $a1, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-.LBB5_172:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit234
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	st.d	$a0, $s2, 16
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 .LBB5_173:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit234
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+.LBB5_174:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit234
 	ld.w	$a0, $s4, 64
-	beqz	$a0, .LBB5_212
-# %bb.174:
+	beqz	$a0, .LBB5_213
+# %bb.175:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $a3, 8
 	ld.d	$s3, $a3, 0
 	ld.w	$a1, $a1, 0
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	sub.d	$s5, $a0, $s3
 	srai.d	$a1, $s5, 2
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
-	bltz	$s8, .LBB5_196
-# %bb.175:                              # %.lr.ph425.preheader
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+	bltz	$s8, .LBB5_178
+# %bb.176:                              # %.lr.ph425.preheader
 	ld.w	$a1, $s4, 68
-	beqz	$a1, .LBB5_177
-# %bb.176:
+	beqz	$a1, .LBB5_179
+# %bb.177:
 	move	$s4, $s3
-	bnez	$s8, .LBB5_179
-	b	.LBB5_195
-.LBB5_177:
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	bnez	$s8, .LBB5_181
+	b	.LBB5_196
+.LBB5_178:
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB5_197
+.LBB5_179:
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB5_189
-# %bb.178:
+	beq	$a0, $a1, .LBB5_190
+# %bb.180:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s4, $s3
-	beqz	$s8, .LBB5_195
-.LBB5_179:
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	beqz	$s8, .LBB5_196
+.LBB5_181:
 	addi.w	$a1, $zero, -4
 	lu52i.d	$s1, $a1, 2047
 	ori	$s2, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$s7, $a1, 511
-	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB5_182
+	move	$fp, $s5
+	b	.LBB5_183
 	.p2align	4, , 16
-.LBB5_180:                              #   in Loop: Header=BB5_182 Depth=1
+.LBB5_182:                              #   in Loop: Header=BB5_183 Depth=1
 	st.w	$fp, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s3, $s4
-.LBB5_181:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit266
-                                        #   in Loop: Header=BB5_182 Depth=1
 	addi.w	$s8, $s8, -1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	add.d	$fp, $fp, $a1
-	beqz	$s8, .LBB5_196
-.LBB5_182:                              # %.lr.ph425.peel.next
+	add.d	$fp, $fp, $s5
+	beqz	$s8, .LBB5_197
+.LBB5_183:                              # %.lr.ph425.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
-	bne	$a0, $a1, .LBB5_180
-# %bb.183:                              #   in Loop: Header=BB5_182 Depth=1
+	bne	$a0, $a1, .LBB5_182
+# %bb.184:                              #   in Loop: Header=BB5_183 Depth=1
 	sub.d	$s5, $a0, $s4
 	beq	$s5, $s1, .LBB5_317
-# %bb.184:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260
-                                        #   in Loop: Header=BB5_182 Depth=1
+# %bb.185:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260
+                                        #   in Loop: Header=BB5_183 Depth=1
 	srai.d	$a0, $s5, 2
 	sltu	$a1, $s2, $a0
 	masknez	$a2, $s2, $a1
@@ -5310,46 +5312,50 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$fp, $a0, $s5
-	blt	$s5, $s2, .LBB5_186
-# %bb.185:                              #   in Loop: Header=BB5_182 Depth=1
+	blez	$s5, .LBB5_187
+# %bb.186:                              #   in Loop: Header=BB5_183 Depth=1
 	move	$a0, $s3
 	move	$a1, $s4
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_186:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i262
-                                        #   in Loop: Header=BB5_182 Depth=1
-	beqz	$s4, .LBB5_188
-# %bb.187:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i264
-                                        #   in Loop: Header=BB5_182 Depth=1
+.LBB5_187:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i262
+                                        #   in Loop: Header=BB5_183 Depth=1
+	beqz	$s4, .LBB5_189
+# %bb.188:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i264
+                                        #   in Loop: Header=BB5_183 Depth=1
 	move	$a0, $s4
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_188:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i265
-                                        #   in Loop: Header=BB5_182 Depth=1
+.LBB5_189:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i265
+                                        #   in Loop: Header=BB5_183 Depth=1
 	add.d	$a0, $s3, $s5
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s3, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s0, $s3, 2
 	st.d	$a1, $a2, 16
 	move	$s4, $s3
-	b	.LBB5_181
-.LBB5_189:
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	addi.w	$s8, $s8, -1
+	add.d	$fp, $fp, $s5
+	bnez	$s8, .LBB5_183
+	b	.LBB5_197
+.LBB5_190:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s5, $a0, .LBB5_317
-# %bb.190:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260.peel
-	ori	$s0, $zero, 1
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	sltu	$a0, $s0, $a2
-	masknez	$a1, $s0, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+# %bb.191:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260.peel
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5360,62 +5366,64 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	stx.w	$zero, $a0, $s5
-	blt	$s5, $s0, .LBB5_192
-# %bb.191:
+	blez	$s5, .LBB5_193
+# %bb.192:
 	move	$a0, $s4
 	move	$a1, $s3
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_192:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i262.peel
+.LBB5_193:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i262.peel
 	add.d	$s0, $s4, $s5
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
-	beqz	$s3, .LBB5_194
-# %bb.193:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i264.peel
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+	beqz	$s3, .LBB5_195
+# %bb.194:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i264.peel
 	move	$a0, $s3
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_194:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i265.peel
+.LBB5_195:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i265.peel
 	addi.d	$a0, $s0, 4
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $fp, $s4, 2
 	st.d	$a1, $a2, 16
-	bnez	$s8, .LBB5_179
-.LBB5_195:
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	bnez	$s8, .LBB5_181
+.LBB5_196:
 	move	$s3, $s4
-.LBB5_196:                              # %._crit_edge426
+.LBB5_197:                              # %._crit_edge426
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$s1, $a3, -1
-	beq	$a0, $a1, .LBB5_198
-# %bb.197:
+	beq	$a0, $a1, .LBB5_199
+# %bb.198:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB5_204
-.LBB5_198:
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB5_205
+.LBB5_199:
 	ld.d	$s3, $a2, 0
 	sub.d	$s4, $a0, $s3
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB5_317
-# %bb.199:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i244
+# %bb.200:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i244
 	srai.d	$a0, $s4, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5426,62 +5434,61 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s1, $a0, $s4
-	blt	$s4, $s2, .LBB5_201
-# %bb.200:
+	blez	$s4, .LBB5_202
+# %bb.201:
 	move	$a0, $s0
 	move	$a1, $s3
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_201:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i246
+.LBB5_202:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i246
 	add.d	$s1, $s0, $s4
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	beqz	$s3, .LBB5_203
-# %bb.202:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i248
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	beqz	$s3, .LBB5_204
+# %bb.203:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i248
 	move	$a0, $s3
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_203:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i249
+.LBB5_204:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i249
 	addi.d	$a0, $s1, 4
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	st.d	$s0, $a2, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $a1, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a0, $fp, $s0, 2
 	st.d	$a0, $a2, 16
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-.LBB5_204:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit250
+.LBB5_205:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit250
 	ld.d	$a1, $a1, 8
-	ld.d	$a0, $a3, 8
-	ld.d	$a2, $a3, 16
+	ld.d	$a0, $s2, 8
+	ld.d	$a2, $s2, 16
 	sub.d	$a1, $a1, $s3
 	srai.d	$a1, $a1, 2
-	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$s1, $a1, $a4
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	beq	$a0, $a2, .LBB5_206
-# %bb.205:
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	sub.d	$s1, $a1, $a3
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	beq	$a0, $a2, .LBB5_207
+# %bb.206:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a3, 8
-	b	.LBB5_212
-.LBB5_206:
-	ld.d	$s3, $a3, 0
+	st.d	$a0, $s2, 8
+	b	.LBB5_213
+.LBB5_207:
+	ld.d	$s3, $s2, 0
 	sub.d	$s2, $a0, $s3
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s2, $a0, .LBB5_317
-# %bb.207:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i252
+# %bb.208:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i252
 	srai.d	$a0, $s2, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5492,38 +5499,37 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s1, $a0, $s2
-	blt	$s2, $s4, .LBB5_209
-# %bb.208:
+	blez	$s2, .LBB5_210
+# %bb.209:
 	move	$a0, $s0
 	move	$a1, $s3
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_209:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i254
+.LBB5_210:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i254
 	add.d	$s1, $s0, $s2
-	beqz	$s3, .LBB5_211
-# %bb.210:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i256
+	beqz	$s3, .LBB5_212
+# %bb.211:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i256
 	move	$a0, $s3
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_211:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i257
+.LBB5_212:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i257
 	addi.d	$a0, $s1, 4
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s0, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $fp, $s0, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-.LBB5_212:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258
-	ld.d	$s7, $sp, 264
+.LBB5_213:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258
+	ld.d	$s7, $sp, 248
 	ld.w	$a0, $s4, 56
 	ld.w	$a1, $s4, 64
-	ld.d	$a2, $sp, 256
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	ld.d	$a2, $sp, 240
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	addi.w	$a0, $a0, -1
 	beq	$a1, $a0, .LBB5_245
-# %bb.213:
+# %bb.214:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $s6, 8
@@ -5531,54 +5537,51 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	ld.w	$a2, $a1, 0
 	sub.d	$s2, $a0, $s0
 	srai.d	$a1, $s2, 2
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	bltz	$a1, .LBB5_235
-# %bb.214:                              # %.lr.ph431.preheader
+# %bb.215:                              # %.lr.ph431.preheader
 	ld.w	$a1, $s4, 68
-	beqz	$a1, .LBB5_216
-# %bb.215:
+	beqz	$a1, .LBB5_217
+# %bb.216:
 	move	$s3, $s0
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	bnez	$s4, .LBB5_218
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s4, .LBB5_219
 	b	.LBB5_234
-.LBB5_216:
+.LBB5_217:
 	ld.d	$a1, $s6, 16
 	beq	$a0, $a1, .LBB5_228
-# %bb.217:
+# %bb.218:
 	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
 	move	$s3, $s0
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	beqz	$s4, .LBB5_234
-.LBB5_218:                              # %.lr.ph431.peel.next.preheader
+.LBB5_219:                              # %.lr.ph431.peel.next.preheader
 	slli.d	$a1, $s8, 1
 	addi.d	$s7, $a1, 1
 	addi.w	$a1, $zero, -4
 	lu52i.d	$s8, $a1, 2047
 	ori	$fp, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$s1, $a1, 511
 	b	.LBB5_221
 	.p2align	4, , 16
-.LBB5_219:                              #   in Loop: Header=BB5_221 Depth=1
+.LBB5_220:                              #   in Loop: Header=BB5_221 Depth=1
 	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
 	move	$s0, $s3
-.LBB5_220:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit290
-                                        #   in Loop: Header=BB5_221 Depth=1
 	addi.w	$s4, $s4, -1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	add.d	$s7, $s7, $a1
+	add.d	$s7, $s7, $s5
 	beqz	$s4, .LBB5_235
 .LBB5_221:                              # %.lr.ph431.peel.next
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s6, 16
-	bne	$a0, $a1, .LBB5_219
+	bne	$a0, $a1, .LBB5_220
 # %bb.222:                              #   in Loop: Header=BB5_221 Depth=1
 	sub.d	$s2, $a0, $s3
 	beq	$s2, $s8, .LBB5_317
@@ -5599,7 +5602,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s7, $a0, $s2
-	blt	$s2, $fp, .LBB5_225
+	blez	$s2, .LBB5_225
 # %bb.224:                              #   in Loop: Header=BB5_221 Depth=1
 	move	$a0, $s0
 	move	$a1, $s3
@@ -5624,20 +5627,24 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	alsl.d	$a1, $s5, $s0, 2
 	st.d	$a1, $s6, 16
 	move	$s3, $s0
-	b	.LBB5_220
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	addi.w	$s4, $s4, -1
+	add.d	$s7, $s7, $s5
+	bnez	$s4, .LBB5_221
+	b	.LBB5_235
 .LBB5_228:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s2, $a0, .LBB5_317
 # %bb.229:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i284.peel
-	ori	$s1, $zero, 1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	sltu	$a0, $s1, $a2
-	masknez	$a1, $s1, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5647,9 +5654,9 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 	stx.w	$s8, $a0, $s2
-	blt	$s2, $s1, .LBB5_231
+	blez	$s2, .LBB5_231
 # %bb.230:
 	move	$a0, $s3
 	move	$a1, $s0
@@ -5670,42 +5677,42 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s6, 8
 	alsl.d	$a1, $fp, $s3, 2
 	st.d	$a1, $s6, 16
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	bnez	$s4, .LBB5_218
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s4, .LBB5_219
 .LBB5_234:
 	move	$s0, $s3
 .LBB5_235:                              # %._crit_edge432
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$s1, $a3, 1
 	beq	$a0, $a1, .LBB5_237
 # %bb.236:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB5_243
 .LBB5_237:
 	ld.d	$s0, $a2, 0
 	sub.d	$s3, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	beq	$s3, $a0, .LBB5_317
 # %bb.238:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i268
 	srai.d	$a0, $s3, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5716,7 +5723,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s4, .LBB5_240
+	blez	$s3, .LBB5_240
 # %bb.239:
 	move	$a0, $s2
 	move	$a1, $s0
@@ -5725,6 +5732,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_240:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i270
 	add.d	$s1, $s2, $s3
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	beqz	$s0, .LBB5_242
 # %bb.241:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i272
 	move	$a0, $s0
@@ -5733,20 +5741,19 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_242:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i273
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	st.d	$s2, $a1, 0
 	ld.d	$s0, $s6, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 .LBB5_243:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit274
 	ld.d	$a1, $s6, 8
 	ld.d	$a0, $s7, 8
 	ld.d	$a2, $s7, 16
 	sub.d	$a1, $a1, $s0
 	srai.d	$a1, $a1, 2
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$s1, $a1, $a3
 	beq	$a0, $a2, .LBB5_250
 # %bb.244:
@@ -5763,19 +5770,18 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $s6, 8
 	ld.d	$s0, $s6, 0
-	ld.w	$a4, $a1, 0
-	ld.w	$a5, $s4, 56
+	ld.w	$a3, $a1, 0
+	ld.w	$a4, $s4, 56
 	sub.d	$s2, $a0, $s0
 	srai.d	$a1, $s2, 2
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
 	bltz	$s8, .LBB5_249
 # %bb.247:                              # %.lr.ph437.preheader
 	ld.w	$a1, $s4, 64
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	mul.d	$fp, $a2, $a3
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	mul.d	$fp, $a2, $s5
 	beqz	$a1, .LBB5_256
 # %bb.248:
 	move	$s3, $s0
@@ -5793,13 +5799,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	beq	$s3, $a0, .LBB5_317
 # %bb.251:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i276
 	srai.d	$a0, $s3, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5810,7 +5816,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s4, .LBB5_253
+	blez	$s3, .LBB5_253
 # %bb.252:
 	move	$a0, $s2
 	move	$a1, $s0
@@ -5831,7 +5837,6 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s7, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $s7, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a0, $s4, 60
 	ld.w	$a1, $s4, 68
 	addi.w	$a0, $a0, -1
@@ -5852,7 +5857,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	addi.w	$a1, $zero, -4
 	lu52i.d	$fp, $a1, 2047
 	ori	$s1, $zero, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$s7, $a1, 511
 	b	.LBB5_261
 	.p2align	4, , 16
@@ -5863,10 +5868,10 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	move	$s0, $s3
 .LBB5_260:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit314
                                         #   in Loop: Header=BB5_261 Depth=1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a1, $a1, -1
 	addi.d	$s8, $s8, 1
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	beqz	$a1, .LBB5_275
 .LBB5_261:                              # %.lr.ph437.peel.next
                                         # =>This Inner Loop Header: Depth=1
@@ -5892,7 +5897,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	stx.w	$s8, $a0, $s2
-	blt	$s2, $s1, .LBB5_265
+	blez	$s2, .LBB5_265
 # %bb.264:                              #   in Loop: Header=BB5_261 Depth=1
 	move	$a0, $s0
 	move	$a1, $s3
@@ -5917,21 +5922,21 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	alsl.d	$a1, $s4, $s0, 2
 	st.d	$a1, $s6, 16
 	move	$s3, $s0
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	b	.LBB5_260
 .LBB5_268:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s2, $a0, .LBB5_317
 # %bb.269:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i308.peel
-	ori	$s4, $zero, 1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	sltu	$a0, $s4, $a2
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -5942,7 +5947,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$fp, $a0, $s2
-	blt	$s2, $s4, .LBB5_271
+	blez	$s2, .LBB5_271
 # %bb.270:
 	move	$a0, $s3
 	move	$a1, $s0
@@ -5951,7 +5956,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_271:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i310.peel
 	add.d	$s4, $s3, $s2
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 	beqz	$s0, .LBB5_273
 # %bb.272:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i312.peel
 	move	$a0, $s0
@@ -5964,17 +5969,17 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s6, 8
 	alsl.d	$a1, $s1, $s3, 2
 	st.d	$a1, $s6, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	move	$s5, $s7
 	bnez	$s8, .LBB5_258
 .LBB5_274:
 	move	$s0, $s3
 .LBB5_275:                              # %._crit_edge438
-	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 8
 	ld.d	$a1, $s8, 16
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	add.d	$s3, $a3, $a2
 	beq	$a0, $a1, .LBB5_277
 # %bb.276:
@@ -5992,13 +5997,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 # %bb.278:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i292
 	move	$s7, $s5
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -6009,7 +6014,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB5_280
+	blez	$s1, .LBB5_280
 # %bb.279:
 	move	$a0, $s2
 	move	$a1, $s0
@@ -6018,7 +6023,6 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_280:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i294
 	add.d	$s3, $s2, $s1
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 	beqz	$s0, .LBB5_282
 # %bb.281:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i296
 	move	$a0, $s0
@@ -6038,7 +6042,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	ld.d	$a2, $s7, 16
 	sub.d	$a1, $a1, $s0
 	srai.d	$a1, $a1, 2
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$s3, $a1, $a3
 	beq	$a0, $a2, .LBB5_289
 # %bb.284:
@@ -6068,6 +6072,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.w	$s5, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s6, 8
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB5_301
 .LBB5_289:
 	ld.d	$s0, $s7, 0
@@ -6077,13 +6082,13 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	beq	$s1, $a0, .LBB5_317
 # %bb.290:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i300
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -6094,7 +6099,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s4, .LBB5_292
+	blez	$s1, .LBB5_292
 # %bb.291:
 	move	$a0, $s2
 	move	$a1, $s0
@@ -6115,7 +6120,6 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s7, 8
 	alsl.d	$a0, $fp, $s2, 2
 	st.d	$a0, $s7, 16
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$s2, $s4, 56
 	ld.w	$a0, $s4, 64
 	addi.w	$a1, $s2, -1
@@ -6126,17 +6130,17 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
 	beq	$s0, $a0, .LBB5_317
 # %bb.296:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i316
-	move	$s8, $s7
 	srai.d	$a0, $s0, 2
-	ori	$s7, $zero, 1
-	sltu	$a1, $s7, $a0
-	masknez	$a2, $s7, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -6147,7 +6151,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s7, .LBB5_298
+	blez	$s0, .LBB5_298
 # %bb.297:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -6156,7 +6160,6 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_298:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i318
 	add.d	$s5, $s1, $s0
-	move	$s7, $s8
 	beqz	$fp, .LBB5_300
 # %bb.299:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i320
 	move	$a0, $fp
@@ -6170,16 +6173,15 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	alsl.d	$a0, $s4, $s1, 2
 	st.d	$a0, $s6, 16
 .LBB5_301:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit322
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a0, $s5, 8
-	ld.d	$a1, $s5, 16
+	ld.d	$a0, $s8, 8
+	ld.d	$a1, $s8, 16
 	add.d	$a2, $s2, $s3
 	addi.d	$s3, $a2, 1
 	beq	$a0, $a1, .LBB5_304
 # %bb.302:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $s5, 8
+	st.d	$a0, $s8, 8
 	ld.d	$a0, $s7, 8
 	ld.d	$a1, $s7, 16
 	beq	$a0, $a1, .LBB5_310
@@ -6190,20 +6192,20 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	st.d	$a0, $s7, 8
 	b	.LBB5_316
 .LBB5_304:
-	ld.d	$fp, $s5, 0
+	ld.d	$fp, $s8, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	beq	$s0, $a0, .LBB5_317
 # %bb.305:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i324
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -6214,7 +6216,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB5_307
+	blez	$s0, .LBB5_307
 # %bb.306:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -6231,10 +6233,10 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 .LBB5_309:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i329
 	addi.d	$a0, $s3, 4
-	st.d	$s1, $s5, 0
-	st.d	$a0, $s5, 8
+	st.d	$s1, $s8, 0
+	st.d	$a0, $s8, 8
 	alsl.d	$a0, $s2, $s1, 2
-	st.d	$a0, $s5, 16
+	st.d	$a0, $s8, 16
 	ld.d	$a0, $s7, 8
 	ld.d	$a1, $s7, 16
 	bne	$a0, $a1, .LBB5_303
@@ -6252,7 +6254,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -6263,7 +6265,7 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s3, .LBB5_313
+	blez	$s0, .LBB5_313
 # %bb.312:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -6285,22 +6287,22 @@ _ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $s7, 16
 .LBB5_316:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit338
-	fld.d	$fs3, $sp, 136                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 144                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 152                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 160                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	fld.d	$fs3, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 128                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 136                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .LBB5_317:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
@@ -6365,32 +6367,31 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	.cfi_offset 61, -136
 	.cfi_offset 62, -144
 	.cfi_offset 63, -152
-	move	$s7, $a0
+	move	$s5, $a0
 	ld.w	$a0, $a0, 72
-	ld.w	$s4, $s7, 76
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	ld.w	$s4, $s5, 76
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	addi.w	$a0, $a0, 1
 	addi.w	$s6, $s4, 1
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	mul.d	$a0, $a0, $s6
 	slli.w	$s1, $a0, 1
-	addi.w	$s5, $zero, -1
-	st.d	$a7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 184                   # 8-byte Folded Spill
 	st.d	$a3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
-	bge	$s5, $s1, .LBB6_516
+	bltz	$s1, .LBB6_517
 # %bb.1:
+	move	$s7, $a2
 	move	$s8, $a1
 	ld.d	$s2, $a1, 16
 	ld.d	$fp, $a1, 0
 	ld.d	$a0, $sp, 368
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$s3, $sp, 360
 	ld.d	$a0, $sp, 352
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	sub.d	$s0, $s2, $fp
 	srai.d	$a0, $s0, 4
 	bgeu	$a0, $s1, .LBB6_8
@@ -6433,35 +6434,35 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	move	$a2, $fp
 .LBB6_9:                                # %_ZNSt6vectorI7double2SaIS0_EE7reserveEm.exit
 	addi.w	$a0, $zero, -2
-	bge	$a0, $s4, .LBB6_517
+	bge	$a0, $s4, .LBB6_518
 # %bb.10:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
 	beqz	$s6, .LBB6_72
 # %bb.11:                               # %.noexc296
 	move	$s0, $a2
-	ld.w	$a0, $s7, 32
-	fld.d	$fa0, $s7, 40
+	ld.w	$a0, $s5, 32
+	fld.d	$fa0, $s5, 40
 	addi.d	$a0, $a0, -1
 	movgr2fr.w	$fa1, $a0
-	ld.w	$a0, $s7, 36
+	ld.w	$a0, $s5, 36
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fs0, $fa0, $fa1
-	fld.d	$fa0, $s7, 48
+	fld.d	$fa0, $s5, 48
 	addi.d	$a0, $a0, -1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
-	fst.d	$fa0, $sp, 160                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 168                  # 8-byte Folded Spill
 	slli.d	$fp, $s6, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	st.w	$zero, $a0, 0
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
 	beqz	$s4, .LBB6_13
 # %bb.12:                               # %.lr.ph.i.preheader.i.i.i.i.i
 	addi.d	$a0, $s6, 4
@@ -6471,26 +6472,26 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	jirl	$ra, $ra, 0
 .LBB6_13:                               # %.lr.ph1041
 	move	$a4, $zero
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s6, 2
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	vldi	$vr0, -1000
 	fdiv.d	$fs2, $fs0, $fa0
-	fld.d	$fa1, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 168                  # 8-byte Folded Reload
 	fdiv.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $sp, 152                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 160                  # 8-byte Folded Spill
 	ld.d	$a3, $s8, 8
 	vldi	$vr3, -800
 	movgr2fr.d	$fs4, $zero
 	move	$a2, $s0
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	b	.LBB6_15
 	.p2align	4, , 16
 .LBB6_14:                               # %._crit_edge
                                         #   in Loop: Header=BB6_15 Depth=1
 	addi.d	$a4, $a4, 1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	beq	$a4, $a0, .LBB6_71
 .LBB6_15:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_21 Depth 2
@@ -6506,20 +6507,20 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	bltz	$s3, .LBB6_14
 # %bb.16:                               # %.lr.ph
                                         #   in Loop: Header=BB6_15 Depth=1
-	ld.w	$a1, $s7, 84
+	ld.w	$a1, $s5, 84
 	move	$a0, $zero
 	add.d	$a1, $a1, $a4
 	movgr2fr.w	$fa0, $a1
 	addi.w	$a5, $a1, 0
-	fld.d	$fa1, $s7, 48
+	fld.d	$fa1, $s5, 48
 	ffint.d.w	$fa0, $fa0
 	fadd.d	$fa0, $fa0, $fa3
-	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 168                  # 8-byte Folded Reload
 	fmul.d	$fa0, $fa2, $fa0
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa1, $fa0, $fcc0
 	fmax.d	$fs5, $fa0, $fs4
-	fld.d	$fa0, $sp, 152                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 160                  # 8-byte Folded Reload
 	fadd.d	$fs6, $fa0, $fs5
 	fsub.d	$fs7, $fs5, $fa0
 	move	$s4, $a2
@@ -6549,12 +6550,12 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
                                         #       Child Loop BB6_70 Depth 3
                                         #       Child Loop BB6_49 Depth 3
                                         #       Child Loop BB6_33 Depth 3
-	ld.w	$a1, $s7, 80
+	ld.w	$a1, $s5, 80
 	move	$s0, $a0
 	add.d	$a1, $a1, $a0
 	addi.w	$a0, $a1, 0
 	movgr2fr.w	$fa0, $a1
-	fld.d	$fa1, $s7, 40
+	fld.d	$fa1, $s5, 40
 	ffint.d.w	$fa0, $fa0
 	fadd.d	$fa0, $fa0, $fa3
 	fmul.d	$fa0, $fs0, $fa0
@@ -6563,17 +6564,17 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	fmax.d	$fs1, $fa0, $fs4
 	beqz	$a0, .LBB6_17
 # %bb.22:                               #   in Loop: Header=BB6_21 Depth=2
-	ld.w	$a1, $s7, 32
+	ld.w	$a1, $s5, 32
 	beq	$a0, $a1, .LBB6_17
 # %bb.23:                               #   in Loop: Header=BB6_21 Depth=2
 	beqz	$a5, .LBB6_17
 # %bb.24:                               #   in Loop: Header=BB6_21 Depth=2
-	ld.w	$a0, $s7, 36
+	ld.w	$a0, $s5, 36
 	beq	$a5, $a0, .LBB6_17
 # %bb.25:                               #   in Loop: Header=BB6_21 Depth=2
 	bnez	$a4, .LBB6_38
 # %bb.26:                               #   in Loop: Header=BB6_21 Depth=2
-	ld.w	$a0, $s7, 72
+	ld.w	$a0, $s5, 72
 	bne	$s0, $a0, .LBB6_38
 # %bb.27:                               #   in Loop: Header=BB6_21 Depth=2
 	fsub.d	$fs1, $fs1, $fs2
@@ -6587,7 +6588,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	sub.d	$fp, $s2, $s4
 	addi.w	$a0, $zero, -16
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_504
+	beq	$fp, $a0, .LBB6_505
 # %bb.30:                               #   in Loop: Header=BB6_21 Depth=2
 	srai.d	$a0, $fp, 4
 	ori	$a2, $zero, 1
@@ -6596,7 +6597,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 127
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 127
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -6648,7 +6650,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 .LBB6_37:                               # %_ZNSt6vectorI7double2SaIS0_EE9push_backEOS0_.exit
                                         #   in Loop: Header=BB6_21 Depth=2
 	st.d	$s2, $s8, 16
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
 	vldi	$vr3, -800
 	move	$a5, $s6
@@ -6656,7 +6658,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 .LBB6_38:                               #   in Loop: Header=BB6_21 Depth=2
 	bnez	$s0, .LBB6_42
 # %bb.39:                               #   in Loop: Header=BB6_21 Depth=2
-	ld.wu	$a0, $s7, 76
+	ld.wu	$a0, $s5, 76
 	bne	$a4, $a0, .LBB6_42
 # %bb.40:                               #   in Loop: Header=BB6_21 Depth=2
 	fadd.d	$fs1, $fs2, $fs1
@@ -6687,7 +6689,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	sub.d	$fp, $s2, $s4
 	addi.w	$a0, $zero, -16
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_506
+	beq	$fp, $a0, .LBB6_507
 # %bb.46:                               #   in Loop: Header=BB6_21 Depth=2
 	srai.d	$a0, $fp, 4
 	ori	$a2, $zero, 1
@@ -6696,7 +6698,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 127
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 127
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -6733,7 +6736,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	sub.d	$fp, $s2, $s4
 	addi.w	$a0, $zero, -16
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_508
+	beq	$fp, $a0, .LBB6_509
 # %bb.51:                               #   in Loop: Header=BB6_21 Depth=2
 	srai.d	$a0, $fp, 4
 	ori	$a2, $zero, 1
@@ -6742,7 +6745,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 127
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 127
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -6790,8 +6794,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $s8, 8
 	alsl.d	$s2, $s3, $s1, 4
 	st.d	$s2, $s8, 16
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
 	vldi	$vr3, -800
 	move	$a5, $s6
@@ -6801,7 +6805,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	sub.d	$fp, $s2, $s1
 	addi.w	$a0, $zero, -16
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_510
+	beq	$fp, $a0, .LBB6_511
 # %bb.59:                               #   in Loop: Header=BB6_21 Depth=2
 	srai.d	$a0, $fp, 4
 	ori	$a2, $zero, 1
@@ -6810,7 +6814,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 127
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 127
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -6864,7 +6869,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	sub.d	$fp, $s2, $s4
 	addi.w	$a0, $zero, -16
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_512
+	beq	$fp, $a0, .LBB6_513
 # %bb.67:                               #   in Loop: Header=BB6_21 Depth=2
 	srai.d	$a0, $fp, 4
 	ori	$a2, $zero, 1
@@ -6873,7 +6878,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 127
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 127
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -6907,33 +6913,31 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	bne	$a0, $s2, .LBB6_70
 	b	.LBB6_34
 .LBB6_71:
-	st.d	$a3, $sp, 0                     # 8-byte Folded Spill
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
+	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
 	mul.w	$s3, $s4, $s3
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	bgez	$s3, .LBB6_73
-	b	.LBB6_514
+	b	.LBB6_515
 .LBB6_72:                               # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit.._crit_edge1042_crit_edge
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a0, $s8, 8
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	move	$s6, $zero
-	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
 	mul.w	$s3, $s4, $s3
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	bltz	$s3, .LBB6_514
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
+	bltz	$s3, .LBB6_515
 .LBB6_73:
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a0, $a1, 16
-	ld.d	$fp, $a1, 0
+	ld.d	$a0, $s7, 16
+	ld.d	$fp, $s7, 0
 	sub.d	$s0, $a0, $fp
 	srai.d	$a0, $s0, 2
 	bgeu	$a0, $s3, .LBB6_80
 # %bb.74:                               # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s4, $a0, 8
+	ld.d	$s4, $s7, 8
 	slli.d	$a0, $s3, 2
 .Ltmp64:
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -6957,13 +6961,12 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB6_79:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	st.d	$s1, $a1, 0
+	st.d	$s1, $s7, 0
 	add.d	$a0, $s1, $s2
-	st.d	$a0, $a1, 8
+	st.d	$a0, $s7, 8
 	alsl.d	$a0, $s3, $s1, 2
-	st.d	$a0, $a1, 16
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	st.d	$a0, $s7, 16
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 .LBB6_80:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit
 	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
@@ -7003,18 +7006,19 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s3, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 .LBB6_87:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit318
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
 	ld.d	$fp, $a1, 0
 	slli.d	$a1, $s3, 2
 	alsl.w	$s3, $s3, $a1, 1
 	sub.d	$s0, $a0, $fp
 	srai.d	$a0, $s0, 2
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	bgeu	$a0, $s3, .LBB6_94
 # %bb.88:                               # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i319
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s4, $a0, 8
 	slli.d	$a0, $s3, 2
 .Ltmp68:
@@ -7032,7 +7036,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB6_91:                               # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i321
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	beqz	$fp, .LBB6_93
 # %bb.92:
 	move	$a0, $fp
@@ -7040,71 +7045,69 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB6_93:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i323
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	add.d	$a0, $s1, $s2
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s3, $s1, 2
 	st.d	$a0, $a1, 16
 .LBB6_94:                               # %_ZNSt6vectorIiSaIiEE7reserveEm.exit326
-	ld.w	$a0, $s7, 76
-	ori	$a5, $zero, 1
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.w	$a0, $s5, 76
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	blt	$a0, $a5, .LBB6_155
+	blez	$a0, .LBB6_156
 # %bb.95:                               # %.lr.ph1049
-	move	$a6, $zero
+	move	$a5, $zero
+	st.d	$s7, $sp, 152                   # 8-byte Folded Spill
 	b	.LBB6_98
 	.p2align	4, , 16
 .LBB6_96:                               # %.loopexit985.loopexit
                                         #   in Loop: Header=BB6_98 Depth=1
-	ld.w	$a0, $s7, 76
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ori	$a5, $zero, 1
-	ld.d	$a6, $sp, 96                    # 8-byte Folded Reload
+	ld.w	$a0, $s5, 76
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
 .LBB6_97:                               # %.loopexit985
                                         #   in Loop: Header=BB6_98 Depth=1
-	bge	$a6, $a0, .LBB6_155
+	bge	$a5, $a0, .LBB6_156
 .LBB6_98:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_104 Depth 2
-                                        #       Child Loop BB6_142 Depth 3
-                                        #       Child Loop BB6_144 Depth 3
-	move	$a1, $a6
-	ld.w	$a2, $s7, 84
-	slli.d	$a3, $a6, 2
+                                        #       Child Loop BB6_143 Depth 3
+                                        #       Child Loop BB6_145 Depth 3
+	move	$a1, $a5
+	ld.w	$a2, $s5, 84
+	slli.d	$a3, $a5, 2
 	ldx.w	$s3, $s6, $a3
-	addi.d	$a6, $a6, 1
-	slli.d	$a3, $a6, 2
-	ld.w	$a4, $s7, 64
+	addi.d	$a5, $a5, 1
+	slli.d	$a3, $a5, 2
+	ld.w	$a4, $s5, 64
 	ldx.w	$s4, $s6, $a3
-	add.w	$s5, $a2, $a1
-	blt	$a4, $a5, .LBB6_100
+	add.w	$a3, $a2, $a1
+	blez	$a4, .LBB6_100
 # %bb.99:                               #   in Loop: Header=BB6_98 Depth=1
-	slt	$a2, $zero, $s5
+	slt	$a2, $zero, $a3
 	add.w	$s3, $s3, $a2
 	addi.w	$a2, $a0, -1
 	slt	$a1, $a1, $a2
 	add.w	$s4, $s4, $a1
 .LBB6_100:                              #   in Loop: Header=BB6_98 Depth=1
-	ld.w	$a1, $s7, 72
-	blt	$a1, $a5, .LBB6_97
+	ld.w	$a1, $s5, 72
+	blez	$a1, .LBB6_97
 # %bb.101:                              # %.lr.ph1047
                                         #   in Loop: Header=BB6_98 Depth=1
-	st.d	$a6, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
 	move	$s6, $zero
 	addi.d	$a0, $s4, 1
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	addi.d	$a0, $s3, 1
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	addi.d	$a0, $s3, 1
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB6_104
 	.p2align	4, , 16
 .LBB6_102:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i728
                                         #   in Loop: Header=BB6_104 Depth=2
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	st.d	$s0, $a1, 0
 	st.d	$fp, $a1, 8
 	alsl.d	$a0, $s7, $s0, 2
@@ -7117,17 +7120,17 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.w	$a0, $s7, 72
+	ld.w	$a0, $s5, 72
 	addi.w	$s6, $s6, 1
-	ld.d	$s3, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
 	bge	$s6, $a0, .LBB6_96
 .LBB6_104:                              #   Parent Loop BB6_98 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB6_142 Depth 3
-                                        #       Child Loop BB6_144 Depth 3
-	ld.w	$fp, $s7, 80
+                                        #       Child Loop BB6_143 Depth 3
+                                        #       Child Loop BB6_145 Depth 3
+	ld.w	$fp, $s5, 80
 .Ltmp70:
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -7151,32 +7154,32 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.w	$a4, $s8, 16
 	addi.d	$a3, $a3, 2
 	st.w	$a3, $s8, 12
-	beqz	$s5, .LBB6_109
+	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
+	beqz	$a4, .LBB6_109
 # %bb.106:                              #   in Loop: Header=BB6_104 Depth=2
-	ld.w	$a3, $s7, 36
+	ld.w	$a3, $s5, 36
 	addi.w	$a3, $a3, -1
-	bne	$s5, $a3, .LBB6_113
+	bne	$a4, $a3, .LBB6_113
 # %bb.107:                              #   in Loop: Header=BB6_104 Depth=2
 	add.d	$a3, $s6, $s4
 	st.w	$a3, $s8, 20
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
 	add.d	$a4, $s6, $a4
 	st.w	$a4, $s8, 12
 	st.w	$a3, $s8, 16
 	move	$s2, $a1
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
-	bnez	$a2, .LBB6_117
+	bnez	$a2, .LBB6_118
 # %bb.108:                              #   in Loop: Header=BB6_104 Depth=2
 	vld	$vr0, $a0, 0
 	addi.d	$s2, $s8, 16
 	vst	$vr0, $s8, 0
-	b	.LBB6_117
+	b	.LBB6_118
 	.p2align	4, , 16
 .LBB6_109:                              #   in Loop: Header=BB6_104 Depth=2
-	ld.w	$a4, $s7, 32
+	ld.w	$a4, $s5, 32
 	add.d	$a3, $s6, $s3
 	st.w	$a3, $s8, 0
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a3, $s6, $a3
 	addi.w	$a4, $a4, -1
 	st.w	$a3, $s8, 8
@@ -7188,65 +7191,61 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 .LBB6_111:                              #   in Loop: Header=BB6_104 Depth=2
 	addi.d	$a1, $s8, 8
 	sub.d	$a2, $s2, $a1
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
 	ori	$a4, $zero, 5
-	blt	$a2, $a4, .LBB6_152
+	blt	$a2, $a4, .LBB6_153
 # %bb.112:                              #   in Loop: Header=BB6_104 Depth=2
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 	addi.d	$s2, $s2, -4
-	b	.LBB6_117
+	b	.LBB6_118
 	.p2align	4, , 16
 .LBB6_113:                              #   in Loop: Header=BB6_104 Depth=2
 	beqz	$a2, .LBB6_116
 # %bb.114:                              #   in Loop: Header=BB6_104 Depth=2
-	ld.w	$a0, $s7, 32
+	ld.w	$a0, $s5, 32
 	addi.w	$a0, $a0, -1
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
-	bne	$a2, $a0, .LBB6_117
+	bne	$a2, $a0, .LBB6_118
 # %bb.115:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$a0, $s8, 16
 	st.d	$a0, $s8, 12
-	move	$s2, $a1
 	b	.LBB6_117
 .LBB6_116:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.w	$a2, $a0, 16
 	vld	$vr0, $a0, 0
 	st.w	$a2, $s8, 16
 	vst	$vr0, $s8, 0
-	move	$s2, $a1
-	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
-	.p2align	4, , 16
 .LBB6_117:                              #   in Loop: Header=BB6_104 Depth=2
+	move	$s2, $a1
+.LBB6_118:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$a1, $s0, 8
 	ld.d	$a2, $s0, 0
 	ld.d	$a0, $s7, 8
 	ld.d	$a3, $s7, 16
 	sub.d	$a1, $a1, $a2
 	srai.d	$s4, $a1, 2
-	beq	$a0, $a3, .LBB6_119
-# %bb.118:                              #   in Loop: Header=BB6_104 Depth=2
+	beq	$a0, $a3, .LBB6_120
+# %bb.119:                              #   in Loop: Header=BB6_104 Depth=2
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s7, 8
-	b	.LBB6_126
+	b	.LBB6_127
 	.p2align	4, , 16
-.LBB6_119:                              #   in Loop: Header=BB6_104 Depth=2
+.LBB6_120:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$s0, $s7, 0
 	sub.d	$fp, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_498
-# %bb.120:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
+	beq	$fp, $a0, .LBB6_499
+# %bb.121:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB6_104 Depth=2
 	srai.d	$a0, $fp, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -7257,27 +7256,27 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp74:
-# %bb.121:                              # %.noexc351
+# %bb.122:                              # %.noexc351
                                         #   in Loop: Header=BB6_104 Depth=2
 	move	$s1, $a0
 	stx.w	$s4, $a0, $fp
-	blt	$fp, $s5, .LBB6_123
-# %bb.122:                              #   in Loop: Header=BB6_104 Depth=2
+	blez	$fp, .LBB6_124
+# %bb.123:                              #   in Loop: Header=BB6_104 Depth=2
 	move	$a0, $s1
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_123:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i
+.LBB6_124:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i
                                         #   in Loop: Header=BB6_104 Depth=2
-	beqz	$s0, .LBB6_125
-# %bb.124:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i
+	beqz	$s0, .LBB6_126
+# %bb.125:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i
                                         #   in Loop: Header=BB6_104 Depth=2
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_125:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i
+.LBB6_126:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i
                                         #   in Loop: Header=BB6_104 Depth=2
 	add.d	$a0, $s1, $fp
 	addi.d	$a0, $a0, 4
@@ -7285,39 +7284,38 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$a0, $s7, 8
 	alsl.d	$a0, $s3, $s1, 2
 	st.d	$a0, $s7, 16
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-.LBB6_126:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
+.LBB6_127:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
                                         #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$a0, $s1, 8
 	ld.d	$a1, $s1, 16
 	sub.d	$s4, $s2, $s8
 	srai.d	$s7, $s4, 2
-	beq	$a0, $a1, .LBB6_128
-# %bb.127:                              #   in Loop: Header=BB6_104 Depth=2
+	beq	$a0, $a1, .LBB6_129
+# %bb.128:                              #   in Loop: Header=BB6_104 Depth=2
 	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $s1, 8
-	bne	$s8, $s2, .LBB6_135
+	bne	$s8, $s2, .LBB6_136
 	b	.LBB6_103
 	.p2align	4, , 16
-.LBB6_128:                              #   in Loop: Header=BB6_104 Depth=2
+.LBB6_129:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$s0, $s1, 0
 	sub.d	$fp, $a0, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_500
-# %bb.129:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i353
+	beq	$fp, $a0, .LBB6_501
+# %bb.130:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i353
                                         #   in Loop: Header=BB6_104 Depth=2
 	srai.d	$a0, $fp, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -7328,27 +7326,27 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp77:
-# %bb.130:                              # %.noexc360
+# %bb.131:                              # %.noexc360
                                         #   in Loop: Header=BB6_104 Depth=2
 	move	$s1, $a0
 	stx.w	$s7, $a0, $fp
-	blt	$fp, $s5, .LBB6_132
-# %bb.131:                              #   in Loop: Header=BB6_104 Depth=2
+	blez	$fp, .LBB6_133
+# %bb.132:                              #   in Loop: Header=BB6_104 Depth=2
 	move	$a0, $s1
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_132:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i355
+.LBB6_133:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i355
                                         #   in Loop: Header=BB6_104 Depth=2
-	beqz	$s0, .LBB6_134
-# %bb.133:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i357
+	beqz	$s0, .LBB6_135
+# %bb.134:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i357
                                         #   in Loop: Header=BB6_104 Depth=2
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_134:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i358
+.LBB6_135:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i358
                                         #   in Loop: Header=BB6_104 Depth=2
 	add.d	$a0, $s1, $fp
 	addi.d	$a0, $a0, 4
@@ -7358,23 +7356,22 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	alsl.d	$a0, $s3, $s1, 2
 	move	$s1, $a1
 	st.d	$a0, $a1, 16
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
 	beq	$s8, $s2, .LBB6_103
-.LBB6_135:                              #   in Loop: Header=BB6_104 Depth=2
+.LBB6_136:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$s2, $s0, 8
 	ld.d	$s3, $s0, 16
 	sub.d	$a0, $s3, $s2
-	bgeu	$a0, $s4, .LBB6_149
-# %bb.136:                              #   in Loop: Header=BB6_104 Depth=2
+	bgeu	$a0, $s4, .LBB6_150
+# %bb.137:                              #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$s1, $s0, 0
 	sub.d	$s5, $s2, $s1
 	srai.d	$a1, $s5, 2
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 511
 	sub.d	$a2, $a0, $a1
-	bltu	$a2, $s7, .LBB6_502
-# %bb.137:                              # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i727
+	bltu	$a2, $s7, .LBB6_503
+# %bb.138:                              # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i727
                                         #   in Loop: Header=BB6_104 Depth=2
 	sltu	$a2, $s7, $a1
 	masknez	$a3, $s7, $a2
@@ -7390,26 +7387,26 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp80:
-# %bb.138:                              # %.noexc730
+# %bb.139:                              # %.noexc730
                                         #   in Loop: Header=BB6_104 Depth=2
 	move	$s0, $a0
 	move	$fp, $a0
-	beq	$s1, $s2, .LBB6_145
-# %bb.139:                              # %.lr.ph.i.i.i.i63.i.preheader
+	beq	$s1, $s2, .LBB6_146
+# %bb.140:                              # %.lr.ph.i.i.i.i63.i.preheader
                                         #   in Loop: Header=BB6_104 Depth=2
 	addi.d	$a1, $s5, -4
 	move	$a0, $s1
 	move	$fp, $s0
 	ori	$a2, $zero, 28
-	bltu	$a1, $a2, .LBB6_144
-# %bb.140:                              # %.lr.ph.i.i.i.i63.i.preheader
+	bltu	$a1, $a2, .LBB6_145
+# %bb.141:                              # %.lr.ph.i.i.i.i63.i.preheader
                                         #   in Loop: Header=BB6_104 Depth=2
 	sub.d	$a2, $s0, $s1
 	move	$a0, $s1
 	move	$fp, $s0
 	ori	$a3, $zero, 32
-	bltu	$a2, $a3, .LBB6_144
-# %bb.141:                              # %vector.ph
+	bltu	$a2, $a3, .LBB6_145
+# %bb.142:                              # %vector.ph
                                         #   in Loop: Header=BB6_104 Depth=2
 	srli.d	$a0, $a1, 2
 	addi.d	$a1, $a0, 1
@@ -7422,7 +7419,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$a4, $s1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB6_142:                              # %vector.body
+.LBB6_143:                              # %vector.body
                                         #   Parent Loop BB6_98 Depth=1
                                         #     Parent Loop BB6_104 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -7433,12 +7430,12 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$a3, $a3, 32
 	addi.d	$a5, $a5, -8
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB6_142
-# %bb.143:                              # %middle.block
+	bnez	$a5, .LBB6_143
+# %bb.144:                              # %middle.block
                                         #   in Loop: Header=BB6_104 Depth=2
-	beq	$a1, $a2, .LBB6_145
+	beq	$a1, $a2, .LBB6_146
 	.p2align	4, , 16
-.LBB6_144:                              # %.lr.ph.i.i.i.i63.i
+.LBB6_145:                              # %.lr.ph.i.i.i.i63.i
                                         #   Parent Loop BB6_98 Depth=1
                                         #     Parent Loop BB6_104 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -7446,212 +7443,219 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.w	$a1, $fp, 0
 	addi.d	$a0, $a0, 4
 	addi.d	$fp, $fp, 4
-	bne	$a0, $s2, .LBB6_144
-.LBB6_145:                              # %_ZSt34__uninitialized_move_if_noexcept_aIPiS0_SaIiEET0_T_S3_S2_RT1_.exit.i
+	bne	$a0, $s2, .LBB6_145
+.LBB6_146:                              # %_ZSt34__uninitialized_move_if_noexcept_aIPiS0_SaIiEET0_T_S3_S2_RT1_.exit.i
                                         #   in Loop: Header=BB6_104 Depth=2
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB6_147
-# %bb.146:                              #   in Loop: Header=BB6_104 Depth=2
+	blez	$s4, .LBB6_148
+# %bb.147:                              #   in Loop: Header=BB6_104 Depth=2
 	move	$a0, $fp
 	move	$a1, $s8
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	add.d	$fp, $fp, $s4
-.LBB6_147:                              # %_ZSt34__uninitialized_move_if_noexcept_aIPiS0_SaIiEET0_T_S3_S2_RT1_.exit76.i
+.LBB6_148:                              # %_ZSt34__uninitialized_move_if_noexcept_aIPiS0_SaIiEET0_T_S3_S2_RT1_.exit76.i
                                         #   in Loop: Header=BB6_104 Depth=2
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	beqz	$s1, .LBB6_102
-# %bb.148:                              #   in Loop: Header=BB6_104 Depth=2
+# %bb.149:                              #   in Loop: Header=BB6_104 Depth=2
 	sub.d	$a1, $s3, $s1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB6_102
 	.p2align	4, , 16
-.LBB6_149:                              # %_ZSt9__advanceIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEElEvRT_T0_St26random_access_iterator_tag.exit.i
+.LBB6_150:                              # %_ZSt9__advanceIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEElEvRT_T0_St26random_access_iterator_tag.exit.i
                                         #   in Loop: Header=BB6_104 Depth=2
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB6_151
-# %bb.150:                              #   in Loop: Header=BB6_104 Depth=2
+	blez	$s4, .LBB6_152
+# %bb.151:                              #   in Loop: Header=BB6_104 Depth=2
 	move	$a0, $s2
 	move	$a1, $s8
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $s0, 8
-.LBB6_151:                              # %_ZSt22__uninitialized_move_aIPiS0_SaIiEET0_T_S3_S2_RT1_.exit59.i
+.LBB6_152:                              # %_ZSt22__uninitialized_move_aIPiS0_SaIiEET0_T_S3_S2_RT1_.exit59.i
                                         #   in Loop: Header=BB6_104 Depth=2
 	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
 	add.d	$a0, $s2, $s4
 	st.d	$a0, $s0, 8
 	b	.LBB6_103
-.LBB6_152:                              #   in Loop: Header=BB6_104 Depth=2
+.LBB6_153:                              #   in Loop: Header=BB6_104 Depth=2
 	ori	$a1, $zero, 4
-	bne	$a2, $a1, .LBB6_154
-# %bb.153:                              #   in Loop: Header=BB6_104 Depth=2
+	bne	$a2, $a1, .LBB6_155
+# %bb.154:                              #   in Loop: Header=BB6_104 Depth=2
 	st.w	$a3, $a0, 0
-.LBB6_154:                              #   in Loop: Header=BB6_104 Depth=2
+.LBB6_155:                              #   in Loop: Header=BB6_104 Depth=2
 	addi.d	$s2, $s2, -4
-	b	.LBB6_117
-.LBB6_155:                              # %._crit_edge1050
+	b	.LBB6_118
+.LBB6_156:                              # %._crit_edge1050
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel5numpeE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN8Parallel5numpeE)
 	ld.w	$a0, $a0, 0
-	beq	$a0, $a5, .LBB6_435
-# %bb.156:
-	ld.w	$s4, $s7, 68
-	ld.w	$s3, $s7, 64
+	ori	$a1, $zero, 1
+	beq	$a0, $a1, .LBB6_436
+# %bb.157:
+	ld.w	$s4, $s5, 68
+	ld.w	$s3, $s5, 64
 	sltu	$a0, $zero, $s4
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	sltu	$a1, $zero, $s3
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	slli.d	$a1, $a1, 1
 	alsl.w	$s5, $a0, $a1, 1
-	bltz	$s5, .LBB6_514
-# %bb.157:
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	bltz	$s5, .LBB6_515
+# %bb.158:
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
 	ld.d	$s0, $a1, 0
 	sub.d	$s1, $a0, $s0
 	srai.d	$a0, $s1, 2
-	bgeu	$a0, $s5, .LBB6_164
-# %bb.158:                              # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i365
+	bgeu	$a0, $s5, .LBB6_165
+# %bb.159:                              # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i365
 	ld.d	$s6, $a1, 8
 	slli.d	$a0, $s5, 2
 .Ltmp85:
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp86:
-# %bb.159:                              # %.noexc371
+# %bb.160:                              # %.noexc371
 	move	$fp, $a0
 	sub.d	$s2, $s6, $s0
-	beq	$s6, $s0, .LBB6_161
-# %bb.160:
+	beq	$s6, $s0, .LBB6_162
+# %bb.161:
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_161:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i367
-	beqz	$s0, .LBB6_163
-# %bb.162:
+.LBB6_162:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i367
+	beqz	$s0, .LBB6_164
+# %bb.163:
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.w	$s4, $s7, 68
-	ld.w	$s3, $s7, 64
-.LBB6_163:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i369
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.w	$s4, $a0, 68
+	ld.w	$s3, $a0, 64
+.LBB6_164:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i369
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	st.d	$fp, $a1, 0
 	add.d	$a0, $fp, $s2
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s5, $fp, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-.LBB6_164:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit372
-	ld.w	$a0, $s7, 60
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+.LBB6_165:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit372
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.w	$a0, $a1, 60
 	addi.w	$a0, $a0, -1
-	ld.w	$a1, $s7, 56
+	ld.w	$a1, $a1, 56
 	xor	$a0, $s4, $a0
 	sltu	$a0, $zero, $a0
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a2
 	addi.w	$a1, $a1, -1
 	xor	$a1, $s3, $a1
 	sltu	$a1, $zero, $a1
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a2
 	slli.d	$a1, $a1, 1
 	alsl.w	$a2, $a0, $a1, 1
 	addi.w	$a3, $zero, -3
-	bge	$a3, $a2, .LBB6_514
-# %bb.165:
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	bge	$a3, $a2, .LBB6_515
+# %bb.166:
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $a3, 16
 	ld.d	$fp, $a3, 0
 	alsl.d	$a0, $a0, $a1, 1
 	addi.w	$s5, $a0, 2
 	sub.d	$s0, $a2, $fp
 	srai.d	$a0, $s0, 2
-	bgeu	$a0, $s5, .LBB6_172
-# %bb.166:                              # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i373
+	bgeu	$a0, $s5, .LBB6_173
+# %bb.167:                              # %_ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm.exit.i373
 	ld.d	$s4, $a3, 8
 	slli.d	$a0, $s5, 2
 .Ltmp87:
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp88:
-# %bb.167:                              # %.noexc379
+# %bb.168:                              # %.noexc379
 	move	$s1, $a0
 	sub.d	$s2, $s4, $fp
-	beq	$s4, $fp, .LBB6_169
-# %bb.168:
+	beq	$s4, $fp, .LBB6_170
+# %bb.169:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_169:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i375
-	beqz	$fp, .LBB6_171
-# %bb.170:
+.LBB6_170:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i375
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	beqz	$fp, .LBB6_172
+# %bb.171:
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.w	$s3, $s7, 64
-.LBB6_171:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i377
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+.LBB6_172:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i377
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a3, 0
 	add.d	$a0, $s1, $s2
 	st.d	$a0, $a3, 8
 	alsl.d	$a0, $s5, $s1, 2
 	st.d	$a0, $a3, 16
 	ld.w	$s4, $s7, 68
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-.LBB6_172:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit380
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	beqz	$s3, .LBB6_209
-# %bb.173:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit380
-	beqz	$s4, .LBB6_209
-# %bb.174:
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	move	$s5, $s7
+	bnez	$s3, .LBB6_174
+	b	.LBB6_210
+.LBB6_173:
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	beqz	$s3, .LBB6_210
+.LBB6_174:                              # %_ZNSt6vectorIiSaIiEE7reserveEm.exit380
+	beqz	$s4, .LBB6_210
+# %bb.175:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.w	$s2, $a0, 0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 8
 	ld.d	$a0, $a2, 16
-	ld.w	$s3, $s7, 56
-	beq	$a1, $a0, .LBB6_177
-# %bb.175:
+	ld.w	$s3, $s5, 56
+	beq	$a1, $a0, .LBB6_178
+# %bb.176:
 	st.w	$zero, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $a2, 8
-	beq	$a1, $a0, .LBB6_184
-.LBB6_176:
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB6_185
+.LBB6_177:
 	ori	$a0, $zero, 1
 	st.w	$a0, $a1, 0
 	addi.d	$a0, $a1, 4
-	st.d	$a0, $a2, 8
-	b	.LBB6_191
-.LBB6_177:
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	st.d	$a0, $a1, 8
+	b	.LBB6_192
+.LBB6_178:
 	ld.d	$fp, $a2, 0
 	sub.d	$s0, $a1, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_550
-# %bb.178:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i382
+	beq	$s0, $a0, .LBB6_551
+# %bb.179:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i382
 	srai.d	$a0, $s0, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -7662,41 +7666,43 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp90:
-# %bb.179:                              # %.noexc389
+# %bb.180:                              # %.noexc389
 	move	$s1, $a0
 	stx.w	$zero, $a0, $s0
-	blt	$s0, $s5, .LBB6_181
-# %bb.180:
+	blez	$s0, .LBB6_182
+# %bb.181:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_181:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i384
+.LBB6_182:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i384
 	add.d	$s5, $s1, $s0
-	beqz	$fp, .LBB6_183
-# %bb.182:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i386
+	beqz	$fp, .LBB6_184
+# %bb.183:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i386
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_183:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i387
+.LBB6_184:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i387
 	addi.d	$a1, $s5, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s1, $a2, 0
 	st.d	$a1, $a2, 8
 	alsl.d	$a0, $s4, $s1, 2
 	st.d	$a0, $a2, 16
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB6_176
-.LBB6_184:
-	ld.d	$fp, $a2, 0
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	bne	$a1, $a0, .LBB6_177
+.LBB6_185:
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $a1, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_552
-# %bb.185:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i392
+	beq	$s0, $a0, .LBB6_553
+# %bb.186:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i392
 	srai.d	$a0, $s0, 2
 	ori	$s5, $zero, 1
 	sltu	$a1, $s5, $a0
@@ -7704,7 +7710,7 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -7715,69 +7721,70 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp92:
-# %bb.186:                              # %.noexc399
+# %bb.187:                              # %.noexc399
 	move	$s1, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s5, .LBB6_188
-# %bb.187:
+	blez	$s0, .LBB6_189
+# %bb.188:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_188:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i394
+.LBB6_189:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i394
 	add.d	$s5, $s1, $s0
-	beqz	$fp, .LBB6_190
-# %bb.189:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i396
+	beqz	$fp, .LBB6_191
+# %bb.190:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i396
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_190:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i397
+.LBB6_191:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i397
 	addi.d	$a0, $s5, 4
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s4, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-.LBB6_191:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit400
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+.LBB6_192:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit400
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a4, 8
 	ld.d	$a1, $a4, 16
 	nor	$a2, $s3, $zero
 	add.d	$s3, $s2, $a2
-	beq	$a0, $a1, .LBB6_194
-# %bb.192:
+	beq	$a0, $a1, .LBB6_195
+# %bb.193:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a0, $a2, 8
-	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB6_201
-.LBB6_193:
+	ld.d	$a0, $s4, 8
+	ld.d	$a1, $s4, 16
+	beq	$a0, $a1, .LBB6_202
+.LBB6_194:
 	ori	$a1, $zero, 2
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
-	st.d	$a0, $a2, 8
-	b	.LBB6_208
-.LBB6_194:
+	st.d	$a0, $s4, 8
+	b	.LBB6_209
+.LBB6_195:
 	ld.d	$fp, $a4, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_554
-# %bb.195:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
+	beq	$s0, $a0, .LBB6_555
+# %bb.196:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -7787,51 +7794,51 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp94:
-# %bb.196:                              # %.noexc404
+# %bb.197:                              # %.noexc404
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_198
-# %bb.197:
+	blez	$s0, .LBB6_199
+# %bb.198:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_198:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i
+.LBB6_199:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_200
-# %bb.199:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i
+	beqz	$fp, .LBB6_201
+# %bb.200:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_200:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i
+.LBB6_201:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a0, $a2, 8
-	ld.d	$a1, $a2, 16
-	bne	$a0, $a1, .LBB6_193
-.LBB6_201:
-	ld.d	$fp, $a2, 0
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $s4, 8
+	ld.d	$a1, $s4, 16
+	bne	$a0, $a1, .LBB6_194
+.LBB6_202:
+	ld.d	$fp, $s4, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_556
-# %bb.202:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i406
+	beq	$s0, $a0, .LBB6_557
+# %bb.203:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i406
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -7841,113 +7848,112 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp96:
-# %bb.203:                              # %.noexc413
+# %bb.204:                              # %.noexc413
 	move	$s1, $a0
 	ori	$a0, $zero, 2
 	stx.w	$a0, $s1, $s0
-	blt	$s0, $s3, .LBB6_205
-# %bb.204:
+	blez	$s0, .LBB6_206
+# %bb.205:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_205:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i408
+.LBB6_206:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i408
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_207
-# %bb.206:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i410
+	beqz	$fp, .LBB6_208
+# %bb.207:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i410
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_207:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i411
+.LBB6_208:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i411
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s1, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s1, $s4, 0
+	st.d	$a0, $s4, 8
 	alsl.d	$a0, $s2, $s1, 2
-	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-.LBB6_208:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit414thread-pre-split
-	ld.w	$s4, $s7, 68
-.LBB6_209:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit414
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	beqz	$s4, .LBB6_264
-# %bb.210:
+	st.d	$a0, $s4, 16
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+.LBB6_209:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit414thread-pre-split
+	ld.w	$s4, $s5, 68
+.LBB6_210:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit414
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	beqz	$s4, .LBB6_265
+# %bb.211:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$s4, $a2, 0
-	ld.w	$a2, $a1, 0
-	ld.w	$a4, $s7, 56
+	ld.w	$a1, $a1, 0
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	ld.w	$a1, $s5, 56
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	sub.d	$fp, $a0, $s4
 	srai.d	$a1, $fp, 2
 	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
-	bltz	$s3, .LBB6_245
-# %bb.211:                              # %.lr.ph1055.preheader
-	ld.w	$a1, $s7, 64
+	bltz	$s3, .LBB6_246
+# %bb.212:                              # %.lr.ph1055.preheader
+	ld.w	$a1, $s5, 64
 	ori	$s6, $zero, 2
-	beqz	$a1, .LBB6_242
-# %bb.212:
+	beqz	$a1, .LBB6_243
+# %bb.213:
 	move	$s5, $s4
-	beqz	$s3, .LBB6_244
-.LBB6_213:                              # %.lr.ph1055.peel.next.preheader
+	beqz	$s3, .LBB6_245
+.LBB6_214:                              # %.lr.ph1055.peel.next.preheader
 	move	$s7, $zero
 	addi.w	$a1, $zero, -4
 	lu52i.d	$s8, $a1, 2047
 	ori	$s2, $zero, 1
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$s1, $a1, 511
-	b	.LBB6_216
+	b	.LBB6_217
 	.p2align	4, , 16
-.LBB6_214:                              #   in Loop: Header=BB6_216 Depth=1
+.LBB6_215:                              #   in Loop: Header=BB6_217 Depth=1
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
 	ori	$a1, $zero, 2
 	move	$s4, $fp
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-.LBB6_215:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit434
-                                        #   in Loop: Header=BB6_216 Depth=1
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+.LBB6_216:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit434
+                                        #   in Loop: Header=BB6_217 Depth=1
 	add.d	$s6, $s6, $a1
 	move	$s5, $s4
-	beq	$s3, $s7, .LBB6_245
-.LBB6_216:                              # %.lr.ph1055.peel.next
+	beq	$s3, $s7, .LBB6_246
+.LBB6_217:                              # %.lr.ph1055.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a2, $a1, 72
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a4, 16
 	addi.w	$s7, $s7, 1
-	bne	$s7, $a2, .LBB6_219
-# %bb.217:                              #   in Loop: Header=BB6_216 Depth=1
-	beq	$a0, $a1, .LBB6_221
-# %bb.218:                              #   in Loop: Header=BB6_216 Depth=1
+	bne	$s7, $a2, .LBB6_220
+# %bb.218:                              #   in Loop: Header=BB6_217 Depth=1
+	beq	$a0, $a1, .LBB6_222
+# %bb.219:                              #   in Loop: Header=BB6_217 Depth=1
 	st.w	$s6, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
 	ori	$a1, $zero, 1
 	move	$s4, $s5
-	b	.LBB6_215
+	b	.LBB6_216
 	.p2align	4, , 16
-.LBB6_219:                              #   in Loop: Header=BB6_216 Depth=1
-	beq	$a0, $a1, .LBB6_228
-# %bb.220:                              #   in Loop: Header=BB6_216 Depth=1
+.LBB6_220:                              #   in Loop: Header=BB6_217 Depth=1
+	beq	$a0, $a1, .LBB6_229
+# %bb.221:                              #   in Loop: Header=BB6_217 Depth=1
 	st.w	$s6, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
 	move	$fp, $s5
 	addi.d	$s3, $s6, 1
-	bne	$a0, $a1, .LBB6_214
-	b	.LBB6_235
-.LBB6_221:                              #   in Loop: Header=BB6_216 Depth=1
+	bne	$a0, $a1, .LBB6_215
+	b	.LBB6_236
+.LBB6_222:                              #   in Loop: Header=BB6_217 Depth=1
 	sub.d	$fp, $a0, $s5
-	beq	$fp, $s8, .LBB6_518
-# %bb.222:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i426
-                                        #   in Loop: Header=BB6_216 Depth=1
+	beq	$fp, $s8, .LBB6_519
+# %bb.223:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i426
+                                        #   in Loop: Header=BB6_217 Depth=1
 	srai.d	$a0, $fp, 2
 	sltu	$a1, $s2, $a0
 	masknez	$a2, $s2, $a1
@@ -7963,43 +7969,43 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp125:
-# %bb.223:                              # %.noexc433
-                                        #   in Loop: Header=BB6_216 Depth=1
+# %bb.224:                              # %.noexc433
+                                        #   in Loop: Header=BB6_217 Depth=1
 	move	$s4, $a0
 	stx.w	$s6, $a0, $fp
-	blt	$fp, $s2, .LBB6_225
-# %bb.224:                              #   in Loop: Header=BB6_216 Depth=1
+	blez	$fp, .LBB6_226
+# %bb.225:                              #   in Loop: Header=BB6_217 Depth=1
 	move	$a0, $s4
 	move	$a1, $s5
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_225:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i428
-                                        #   in Loop: Header=BB6_216 Depth=1
-	beqz	$s5, .LBB6_227
-# %bb.226:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i430
-                                        #   in Loop: Header=BB6_216 Depth=1
+.LBB6_226:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i428
+                                        #   in Loop: Header=BB6_217 Depth=1
+	beqz	$s5, .LBB6_228
+# %bb.227:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i430
+                                        #   in Loop: Header=BB6_217 Depth=1
 	move	$a0, $s5
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_227:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i431
-                                        #   in Loop: Header=BB6_216 Depth=1
+.LBB6_228:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i431
+                                        #   in Loop: Header=BB6_217 Depth=1
 	add.d	$a0, $s4, $fp
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s0, $s4, 2
 	st.d	$a1, $a2, 16
 	ori	$a1, $zero, 1
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB6_215
-.LBB6_228:                              #   in Loop: Header=BB6_216 Depth=1
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	b	.LBB6_216
+.LBB6_229:                              #   in Loop: Header=BB6_217 Depth=1
 	sub.d	$s0, $a0, $s5
-	beq	$s0, $s8, .LBB6_524
-# %bb.229:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i436
-                                        #   in Loop: Header=BB6_216 Depth=1
+	beq	$s0, $s8, .LBB6_525
+# %bb.230:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i436
+                                        #   in Loop: Header=BB6_217 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s2, $a0
 	masknez	$a2, $s2, $a1
@@ -8015,43 +8021,43 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp113:
-# %bb.230:                              # %.noexc443
-                                        #   in Loop: Header=BB6_216 Depth=1
+# %bb.231:                              # %.noexc443
+                                        #   in Loop: Header=BB6_217 Depth=1
 	move	$fp, $a0
 	stx.w	$s6, $a0, $s0
-	blt	$s0, $s2, .LBB6_232
-# %bb.231:                              #   in Loop: Header=BB6_216 Depth=1
+	blez	$s0, .LBB6_233
+# %bb.232:                              #   in Loop: Header=BB6_217 Depth=1
 	move	$a0, $fp
 	move	$a1, $s5
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_232:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i438
-                                        #   in Loop: Header=BB6_216 Depth=1
-	beqz	$s5, .LBB6_234
-# %bb.233:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i440
-                                        #   in Loop: Header=BB6_216 Depth=1
+.LBB6_233:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i438
+                                        #   in Loop: Header=BB6_217 Depth=1
+	beqz	$s5, .LBB6_235
+# %bb.234:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i440
+                                        #   in Loop: Header=BB6_217 Depth=1
 	move	$a0, $s5
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_234:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i441
-                                        #   in Loop: Header=BB6_216 Depth=1
+.LBB6_235:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i441
+                                        #   in Loop: Header=BB6_217 Depth=1
 	add.d	$a0, $fp, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	st.d	$fp, $a4, 0
 	st.d	$a0, $a4, 8
 	alsl.d	$a1, $s4, $fp, 2
 	st.d	$a1, $a4, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$s3, $s6, 1
-	bne	$a0, $a1, .LBB6_214
-.LBB6_235:                              #   in Loop: Header=BB6_216 Depth=1
+	bne	$a0, $a1, .LBB6_215
+.LBB6_236:                              #   in Loop: Header=BB6_217 Depth=1
 	sub.d	$s0, $a1, $fp
-	beq	$s0, $s8, .LBB6_522
-# %bb.236:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i446
-                                        #   in Loop: Header=BB6_216 Depth=1
+	beq	$s0, $s8, .LBB6_523
+# %bb.237:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i446
+                                        #   in Loop: Header=BB6_217 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s2, $a0
 	masknez	$a2, $s2, $a1
@@ -8067,86 +8073,85 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp116:
-# %bb.237:                              # %.noexc453
-                                        #   in Loop: Header=BB6_216 Depth=1
+# %bb.238:                              # %.noexc453
+                                        #   in Loop: Header=BB6_217 Depth=1
 	move	$s4, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s2, .LBB6_239
-# %bb.238:                              #   in Loop: Header=BB6_216 Depth=1
+	blez	$s0, .LBB6_240
+# %bb.239:                              #   in Loop: Header=BB6_217 Depth=1
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_239:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i448
-                                        #   in Loop: Header=BB6_216 Depth=1
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	beqz	$fp, .LBB6_241
-# %bb.240:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i450
-                                        #   in Loop: Header=BB6_216 Depth=1
+.LBB6_240:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i448
+                                        #   in Loop: Header=BB6_217 Depth=1
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	beqz	$fp, .LBB6_242
+# %bb.241:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i450
+                                        #   in Loop: Header=BB6_217 Depth=1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_241:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i451
-                                        #   in Loop: Header=BB6_216 Depth=1
+.LBB6_242:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i451
+                                        #   in Loop: Header=BB6_217 Depth=1
 	add.d	$a0, $s4, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s5, $s4, 2
 	st.d	$a1, $a2, 16
 	ori	$a1, $zero, 2
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB6_215
-.LBB6_242:
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	b	.LBB6_216
+.LBB6_243:
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB6_469
-# %bb.243:
+	beq	$a0, $a1, .LBB6_470
+# %bb.244:
 	st.w	$zero, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	ori	$s6, $zero, 1
 	move	$s5, $s4
-	bnez	$s3, .LBB6_213
-.LBB6_244:
+	bnez	$s3, .LBB6_214
+.LBB6_245:
 	move	$s4, $s5
-.LBB6_245:                              # %._crit_edge1056
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+.LBB6_246:                              # %._crit_edge1056
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
 	sub.d	$s3, $a4, $a5
-	beq	$a0, $a1, .LBB6_247
-# %bb.246:
+	beq	$a0, $a1, .LBB6_248
+# %bb.247:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	b	.LBB6_254
-.LBB6_247:
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	b	.LBB6_255
+.LBB6_248:
 	ld.d	$fp, $a2, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_542
-# %bb.248:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i416
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB6_543
+# %bb.249:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i416
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -8156,36 +8161,37 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp131:
-# %bb.249:                              # %.noexc423
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+# %bb.250:                              # %.noexc423
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	blt	$s0, $s4, .LBB6_251
-# %bb.250:
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	blez	$s0, .LBB6_252
+# %bb.251:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_251:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i418
+.LBB6_252:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i418
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_253
-# %bb.252:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i420
+	beqz	$fp, .LBB6_254
+# %bb.253:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i420
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_253:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i421
+.LBB6_254:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i421
 	addi.d	$a0, $s3, 4
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	st.d	$s1, $a2, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $a1, 0
+	move	$a1, $s4
+	ld.d	$s4, $s4, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a2, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-.LBB6_254:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit424
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+.LBB6_255:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit424
 	ld.d	$a1, $a1, 8
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a4, 8
@@ -8194,27 +8200,29 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	srai.d	$a1, $a1, 2
 	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
 	sub.d	$s3, $a1, $a5
-	beq	$a0, $a2, .LBB6_256
-# %bb.255:
+	beq	$a0, $a2, .LBB6_257
+# %bb.256:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
-	b	.LBB6_263
-.LBB6_256:
+	b	.LBB6_264
+.LBB6_257:
 	ld.d	$fp, $a4, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_544
-# %bb.257:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i456
+	beq	$s0, $a0, .LBB6_545
+# %bb.258:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i456
+	move	$s4, $a4
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -8224,118 +8232,98 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp133:
-# %bb.258:                              # %.noexc463
+# %bb.259:                              # %.noexc463
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_260
-# %bb.259:
+	blez	$s0, .LBB6_261
+# %bb.260:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_260:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i458
+.LBB6_261:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i458
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_262
-# %bb.261:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i460
+	beqz	$fp, .LBB6_263
+# %bb.262:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i460
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_262:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i461
+.LBB6_263:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i461
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s1, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s1, $s4, 0
+	st.d	$a0, $s4, 8
 	alsl.d	$a0, $s2, $s1, 2
-	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-.LBB6_263:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit464
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	st.d	$a0, $s4, 16
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 .LBB6_264:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit464
-	ld.w	$a0, $s7, 64
-	beqz	$a0, .LBB6_320
-# %bb.265:
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+.LBB6_265:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit464
+	ld.w	$a0, $s5, 64
+	beqz	$a0, .LBB6_321
+# %bb.266:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$s4, $a2, 0
-	ld.w	$a2, $a1, 0
+	ld.w	$a1, $a1, 0
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
 	sub.d	$fp, $a0, $s4
 	srai.d	$a1, $fp, 2
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
-	beqz	$a1, .LBB6_301
-# %bb.266:                              # %.lr.ph1060.preheader
-	ld.w	$a1, $s7, 68
-	beqz	$a1, .LBB6_298
-# %bb.267:
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	beqz	$a1, .LBB6_302
+# %bb.267:                              # %.lr.ph1060.preheader
+	ld.w	$a1, $s5, 68
+	beqz	$a1, .LBB6_299
+# %bb.268:
 	move	$s5, $s4
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	beqz	$a1, .LBB6_300
-.LBB6_268:                              # %.lr.ph1060.peel.next.preheader
-	bstrpick.d	$s3, $s3, 31, 0
-	ori	$s6, $zero, 1
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	beqz	$a1, .LBB6_301
+.LBB6_269:                              # %.lr.ph1060.peel.next.preheader
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	bstrpick.d	$s3, $a1, 31, 0
 	ori	$s7, $zero, 4
 	addi.w	$a1, $zero, -4
-	lu52i.d	$a1, $a1, 2047
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	lu52i.d	$s8, $a1, 2047
+	addi.w	$a1, $zero, -1
 	lu52i.d	$s2, $a1, 511
 	ori	$s1, $zero, 1
-	b	.LBB6_271
+	b	.LBB6_281
 	.p2align	4, , 16
-.LBB6_269:                              #   in Loop: Header=BB6_271 Depth=1
-	st.w	$s8, $a0, 0
+.LBB6_270:                              #   in Loop: Header=BB6_281 Depth=1
+	st.w	$s6, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
 	move	$s4, $fp
-.LBB6_270:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit484
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_271:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit484
+                                        #   in Loop: Header=BB6_281 Depth=1
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	addi.d	$s1, $s1, 1
 	addi.d	$s7, $s7, 4
 	move	$s5, $s4
-	beq	$s3, $s1, .LBB6_301
-.LBB6_271:                              # %.lr.ph1060.peel.next
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	ldx.w	$s8, $a1, $s7
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	ld.wu	$a2, $a1, 76
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a1, $a4, 16
-	bne	$s1, $a2, .LBB6_274
-# %bb.272:                              #   in Loop: Header=BB6_271 Depth=1
-	beq	$a0, $a1, .LBB6_276
-# %bb.273:                              #   in Loop: Header=BB6_271 Depth=1
-	st.w	$s8, $a0, 0
+	bne	$s3, $s1, .LBB6_281
+	b	.LBB6_302
+	.p2align	4, , 16
+.LBB6_272:                              #   in Loop: Header=BB6_281 Depth=1
+	beq	$a0, $a1, .LBB6_274
+# %bb.273:                              #   in Loop: Header=BB6_281 Depth=1
+	st.w	$s6, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
 	move	$s4, $s5
-	b	.LBB6_270
-	.p2align	4, , 16
-.LBB6_274:                              #   in Loop: Header=BB6_271 Depth=1
-	beq	$a0, $a1, .LBB6_283
-# %bb.275:                              #   in Loop: Header=BB6_271 Depth=1
-	st.w	$s8, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $a4, 8
-	move	$fp, $s5
-	addi.d	$s8, $s8, 1
-	bne	$a0, $a1, .LBB6_269
-	b	.LBB6_290
-.LBB6_276:                              #   in Loop: Header=BB6_271 Depth=1
+	b	.LBB6_271
+.LBB6_274:                              #   in Loop: Header=BB6_281 Depth=1
 	sub.d	$fp, $a0, $s5
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beq	$fp, $a0, .LBB6_520
-# %bb.277:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i476
-                                        #   in Loop: Header=BB6_271 Depth=1
+	beq	$fp, $s8, .LBB6_521
+# %bb.275:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i476
+                                        #   in Loop: Header=BB6_281 Depth=1
 	srai.d	$a0, $fp, 2
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -8348,44 +8336,64 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp156:
-# %bb.278:                              # %.noexc483
-                                        #   in Loop: Header=BB6_271 Depth=1
+# %bb.276:                              # %.noexc483
+                                        #   in Loop: Header=BB6_281 Depth=1
 	move	$s4, $a0
-	stx.w	$s8, $a0, $fp
-	blt	$fp, $s6, .LBB6_280
-# %bb.279:                              #   in Loop: Header=BB6_271 Depth=1
+	stx.w	$s6, $a0, $fp
+	blez	$fp, .LBB6_278
+# %bb.277:                              #   in Loop: Header=BB6_281 Depth=1
 	move	$a0, $s4
 	move	$a1, $s5
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_280:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i478
-                                        #   in Loop: Header=BB6_271 Depth=1
-	beqz	$s5, .LBB6_282
-# %bb.281:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i480
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_278:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i478
+                                        #   in Loop: Header=BB6_281 Depth=1
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	beqz	$s5, .LBB6_280
+# %bb.279:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i480
+                                        #   in Loop: Header=BB6_281 Depth=1
 	move	$a0, $s5
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_282:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i481
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_280:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i481
+                                        #   in Loop: Header=BB6_281 Depth=1
 	add.d	$a0, $s4, $fp
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s0, $s4, 2
-	b	.LBB6_297
-.LBB6_283:                              #   in Loop: Header=BB6_271 Depth=1
+	b	.LBB6_298
+	.p2align	4, , 16
+.LBB6_281:                              # %.lr.ph1060.peel.next
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.w	$s6, $s6, $s7
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.wu	$a2, $a1, 76
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $a4, 16
+	beq	$s1, $a2, .LBB6_272
+# %bb.282:                              #   in Loop: Header=BB6_281 Depth=1
+	beq	$a0, $a1, .LBB6_284
+# %bb.283:                              #   in Loop: Header=BB6_281 Depth=1
+	st.w	$s6, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $a4, 8
+	move	$fp, $s5
+	addi.d	$s6, $s6, 1
+	bne	$a0, $a1, .LBB6_270
+	b	.LBB6_291
+.LBB6_284:                              #   in Loop: Header=BB6_281 Depth=1
 	sub.d	$s0, $a0, $s5
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_528
-# %bb.284:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i486
-                                        #   in Loop: Header=BB6_271 Depth=1
+	beq	$s0, $s8, .LBB6_529
+# %bb.285:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i486
+                                        #   in Loop: Header=BB6_281 Depth=1
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -8398,47 +8406,47 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp144:
-# %bb.285:                              # %.noexc493
-                                        #   in Loop: Header=BB6_271 Depth=1
+# %bb.286:                              # %.noexc493
+                                        #   in Loop: Header=BB6_281 Depth=1
 	move	$fp, $a0
-	stx.w	$s8, $a0, $s0
-	blt	$s0, $s6, .LBB6_287
-# %bb.286:                              #   in Loop: Header=BB6_271 Depth=1
+	stx.w	$s6, $a0, $s0
+	blez	$s0, .LBB6_288
+# %bb.287:                              #   in Loop: Header=BB6_281 Depth=1
 	move	$a0, $fp
 	move	$a1, $s5
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_287:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i488
-                                        #   in Loop: Header=BB6_271 Depth=1
-	beqz	$s5, .LBB6_289
-# %bb.288:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i490
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_288:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i488
+                                        #   in Loop: Header=BB6_281 Depth=1
+	beqz	$s5, .LBB6_290
+# %bb.289:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i490
+                                        #   in Loop: Header=BB6_281 Depth=1
 	move	$a0, $s5
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_289:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i491
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_290:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i491
+                                        #   in Loop: Header=BB6_281 Depth=1
 	add.d	$a0, $fp, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	st.d	$fp, $a4, 0
 	st.d	$a0, $a4, 8
 	alsl.d	$a1, $s4, $fp, 2
 	st.d	$a1, $a4, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s8, $s8, 1
-	bne	$a0, $a1, .LBB6_269
-.LBB6_290:                              #   in Loop: Header=BB6_271 Depth=1
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	addi.d	$s6, $s6, 1
+	bne	$a0, $a1, .LBB6_270
+.LBB6_291:                              #   in Loop: Header=BB6_281 Depth=1
 	sub.d	$s0, $a1, $fp
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_526
-# %bb.291:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i496
-                                        #   in Loop: Header=BB6_271 Depth=1
+	beq	$s0, $s8, .LBB6_527
+# %bb.292:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i496
+                                        #   in Loop: Header=BB6_281 Depth=1
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -8451,88 +8459,89 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp147:
-# %bb.292:                              # %.noexc503
-                                        #   in Loop: Header=BB6_271 Depth=1
+# %bb.293:                              # %.noexc503
+                                        #   in Loop: Header=BB6_281 Depth=1
 	move	$s4, $a0
-	stx.w	$s8, $a0, $s0
-	blt	$s0, $s6, .LBB6_294
-# %bb.293:                              #   in Loop: Header=BB6_271 Depth=1
+	stx.w	$s6, $a0, $s0
+	blez	$s0, .LBB6_295
+# %bb.294:                              #   in Loop: Header=BB6_281 Depth=1
 	move	$a0, $s4
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_294:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i498
-                                        #   in Loop: Header=BB6_271 Depth=1
-	beqz	$fp, .LBB6_296
-# %bb.295:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i500
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_295:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i498
+                                        #   in Loop: Header=BB6_281 Depth=1
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	beqz	$fp, .LBB6_297
+# %bb.296:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i500
+                                        #   in Loop: Header=BB6_281 Depth=1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_296:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i501
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_297:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i501
+                                        #   in Loop: Header=BB6_281 Depth=1
 	add.d	$a0, $s4, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s4, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s5, $s4, 2
-.LBB6_297:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit484
-                                        #   in Loop: Header=BB6_271 Depth=1
+.LBB6_298:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit484
+                                        #   in Loop: Header=BB6_281 Depth=1
 	st.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB6_270
-.LBB6_298:
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	addi.d	$s1, $s1, 1
+	addi.d	$s7, $s7, 4
+	move	$s5, $s4
+	bne	$s3, $s1, .LBB6_281
+	b	.LBB6_302
+.LBB6_299:
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a2, 16
 	ld.w	$s1, $s6, 0
-	beq	$a0, $a1, .LBB6_476
-# %bb.299:
+	beq	$a0, $a1, .LBB6_477
+# %bb.300:
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
 	move	$s5, $s4
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bnez	$a1, .LBB6_268
-.LBB6_300:
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	bnez	$a1, .LBB6_269
+.LBB6_301:
 	move	$s4, $s5
-.LBB6_301:                              # %._crit_edge1061
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+.LBB6_302:                              # %._crit_edge1061
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$s3, $a4, -1
-	beq	$a0, $a1, .LBB6_303
-# %bb.302:
+	beq	$a0, $a1, .LBB6_304
+# %bb.303:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	b	.LBB6_310
-.LBB6_303:
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	b	.LBB6_311
+.LBB6_304:
 	ld.d	$fp, $a2, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_546
-# %bb.304:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i466
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB6_547
+# %bb.305:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i466
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -8542,64 +8551,67 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp162:
-# %bb.305:                              # %.noexc473
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+# %bb.306:                              # %.noexc473
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_307
-# %bb.306:
+	blez	$s0, .LBB6_308
+# %bb.307:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_307:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i468
+.LBB6_308:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i468
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_309
-# %bb.308:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i470
+	beqz	$fp, .LBB6_310
+# %bb.309:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i470
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_309:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i471
+.LBB6_310:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i471
 	addi.d	$a0, $s3, 4
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	st.d	$s1, $a2, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $a1, 0
+	move	$a1, $s4
+	ld.d	$s4, $s4, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a2, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-.LBB6_310:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit474
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+.LBB6_311:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit474
 	ld.d	$a1, $a1, 8
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a4, 8
 	ld.d	$a2, $a4, 16
 	sub.d	$a1, $a1, $s4
 	srai.d	$a1, $a1, 2
-	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
 	sub.d	$s3, $a1, $a5
-	beq	$a0, $a2, .LBB6_312
-# %bb.311:
+	beq	$a0, $a2, .LBB6_313
+# %bb.312:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a4, 8
-	b	.LBB6_319
-.LBB6_312:
+	b	.LBB6_320
+.LBB6_313:
 	ld.d	$fp, $a4, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_548
-# %bb.313:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i506
+	beq	$s0, $a0, .LBB6_549
+# %bb.314:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i506
+	move	$s4, $a4
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -8609,46 +8621,45 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp164:
-# %bb.314:                              # %.noexc513
+# %bb.315:                              # %.noexc513
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_316
-# %bb.315:
+	blez	$s0, .LBB6_317
+# %bb.316:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_316:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i508
+.LBB6_317:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i508
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_318
-# %bb.317:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i510
+	beqz	$fp, .LBB6_319
+# %bb.318:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i510
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_318:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i511
+.LBB6_319:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i511
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s1, $a1, 0
-	st.d	$a0, $a1, 8
+	st.d	$s1, $s4, 0
+	st.d	$a0, $s4, 8
 	alsl.d	$a0, $s2, $s1, 2
-	st.d	$a0, $a1, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-.LBB6_319:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit514
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	st.d	$a0, $s4, 16
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 .LBB6_320:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit514
-	ld.w	$a0, $s7, 56
-	ld.w	$a1, $s7, 64
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a4, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+.LBB6_321:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit514
+	ld.w	$a0, $s5, 56
+	ld.w	$a1, $s5, 64
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	sub.d	$a2, $a4, $a2
 	addi.w	$a0, $a0, -1
 	srai.d	$a2, $a2, 4
-	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
-	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB6_376
-# %bb.321:
+	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB6_377
+# %bb.322:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.d	$a0, $a3, 8
@@ -8656,87 +8667,85 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.w	$a2, $a1, 0
 	sub.d	$fp, $a0, $s1
 	srai.d	$a1, $fp, 2
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a1, .LBB6_357
-# %bb.322:                              # %.lr.ph1066.preheader
-	ld.w	$a1, $s7, 68
-	beqz	$a1, .LBB6_353
-# %bb.323:
-	move	$s2, $s1
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	beqz	$a4, .LBB6_356
-.LBB6_324:                              # %.lr.ph1066.peel.next
-	bstrpick.d	$s3, $s6, 31, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$a1, $a1, -1
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	ori	$s4, $zero, 1
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	beqz	$a1, .LBB6_358
+# %bb.323:                              # %.lr.ph1066.preheader
+	ld.w	$a1, $s5, 68
+	beqz	$a1, .LBB6_354
+# %bb.324:
+	move	$s2, $s1
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	beqz	$s4, .LBB6_357
+.LBB6_325:                              # %.lr.ph1066.peel.next
+	bstrpick.d	$s5, $s5, 31, 0
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	addi.d	$s7, $a1, -1
 	ori	$s8, $zero, 8
 	addi.w	$a1, $zero, -4
 	lu52i.d	$a1, $a1, 2047
 	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	lu52i.d	$a1, $s5, 511
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
-	ori	$s6, $zero, 1
-	b	.LBB6_327
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	ori	$s3, $zero, 1
+	b	.LBB6_328
 	.p2align	4, , 16
-.LBB6_325:                              #   in Loop: Header=BB6_327 Depth=1
+.LBB6_326:                              #   in Loop: Header=BB6_328 Depth=1
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	move	$s1, $fp
-	ori	$s4, $zero, 1
-.LBB6_326:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit534
-                                        #   in Loop: Header=BB6_327 Depth=1
-	addi.d	$s6, $s6, 1
+.LBB6_327:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit534
+                                        #   in Loop: Header=BB6_328 Depth=1
+	addi.d	$s3, $s3, 1
 	addi.d	$s8, $s8, 4
 	move	$s2, $s1
-	beq	$s3, $s6, .LBB6_357
-.LBB6_327:                              # =>This Inner Loop Header: Depth=1
-	ld.wu	$a1, $s7, 76
-	bne	$s6, $a1, .LBB6_330
-# %bb.328:                              # %.thread
-                                        #   in Loop: Header=BB6_327 Depth=1
+	beq	$s5, $s3, .LBB6_358
+.LBB6_328:                              # =>This Inner Loop Header: Depth=1
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.wu	$a1, $a1, 76
+	bne	$s3, $a1, .LBB6_331
+# %bb.329:                              # %.thread
+                                        #   in Loop: Header=BB6_328 Depth=1
 	ld.d	$a1, $a3, 16
-	beq	$a0, $a1, .LBB6_332
-# %bb.329:                              #   in Loop: Header=BB6_327 Depth=1
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	st.w	$a1, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $a3, 8
-	move	$s1, $s2
-	b	.LBB6_326
-	.p2align	4, , 16
-.LBB6_330:                              #   in Loop: Header=BB6_327 Depth=1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	ldx.w	$s1, $a1, $s8
-	ld.d	$a1, $a3, 16
-	addi.d	$s7, $s1, -2
-	beq	$a0, $a1, .LBB6_339
-# %bb.331:                              #   in Loop: Header=BB6_327 Depth=1
+	beq	$a0, $a1, .LBB6_333
+# %bb.330:                              #   in Loop: Header=BB6_328 Depth=1
 	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
+	move	$s1, $s2
+	b	.LBB6_327
+	.p2align	4, , 16
+.LBB6_331:                              #   in Loop: Header=BB6_328 Depth=1
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ldx.w	$s1, $a1, $s8
+	ld.d	$a1, $a3, 16
+	addi.d	$s4, $s1, -2
+	beq	$a0, $a1, .LBB6_340
+# %bb.332:                              #   in Loop: Header=BB6_328 Depth=1
+	st.w	$s4, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $a3, 8
 	move	$fp, $s2
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
 	addi.d	$s4, $s1, -1
-	bne	$a0, $a1, .LBB6_325
-	b	.LBB6_346
-.LBB6_332:                              #   in Loop: Header=BB6_327 Depth=1
+	bne	$a0, $a1, .LBB6_326
+	b	.LBB6_347
+.LBB6_333:                              #   in Loop: Header=BB6_328 Depth=1
 	sub.d	$fp, $a0, $s2
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beq	$fp, $a0, .LBB6_530
-# %bb.333:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i526
-                                        #   in Loop: Header=BB6_327 Depth=1
+	beq	$fp, $a0, .LBB6_531
+# %bb.334:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i526
+                                        #   in Loop: Header=BB6_328 Depth=1
 	srai.d	$a0, $fp, 2
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -8746,100 +8755,43 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp187:
-# %bb.334:                              # %.noexc533
-                                        #   in Loop: Header=BB6_327 Depth=1
+# %bb.335:                              # %.noexc533
+                                        #   in Loop: Header=BB6_328 Depth=1
 	move	$s1, $a0
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	stx.w	$a0, $s1, $fp
-	blt	$fp, $s4, .LBB6_336
-# %bb.335:                              #   in Loop: Header=BB6_327 Depth=1
+	stx.w	$s7, $a0, $fp
+	blez	$fp, .LBB6_337
+# %bb.336:                              #   in Loop: Header=BB6_328 Depth=1
 	move	$a0, $s1
 	move	$a1, $s2
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_336:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i528
-                                        #   in Loop: Header=BB6_327 Depth=1
-	beqz	$s2, .LBB6_338
-# %bb.337:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i530
-                                        #   in Loop: Header=BB6_327 Depth=1
+.LBB6_337:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i528
+                                        #   in Loop: Header=BB6_328 Depth=1
+	beqz	$s2, .LBB6_339
+# %bb.338:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i530
+                                        #   in Loop: Header=BB6_328 Depth=1
 	move	$a0, $s2
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_338:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i531
-                                        #   in Loop: Header=BB6_327 Depth=1
+.LBB6_339:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i531
+                                        #   in Loop: Header=BB6_328 Depth=1
 	add.d	$a0, $s1, $fp
 	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s0, $s1, 2
 	st.d	$a1, $a3, 16
-	b	.LBB6_326
-.LBB6_339:                              #   in Loop: Header=BB6_327 Depth=1
+	b	.LBB6_327
+.LBB6_340:                              #   in Loop: Header=BB6_328 Depth=1
 	sub.d	$s0, $a0, $s2
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_536
-# %bb.340:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i536
-                                        #   in Loop: Header=BB6_327 Depth=1
-	move	$s5, $s3
-	srai.d	$a0, $s0, 2
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
-	ori	$s3, $zero, 1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
-.Ltmp174:
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-.Ltmp175:
-# %bb.341:                              # %.noexc543
-                                        #   in Loop: Header=BB6_327 Depth=1
-	move	$fp, $a0
-	stx.w	$s7, $a0, $s0
-	blt	$s0, $s3, .LBB6_343
-# %bb.342:                              #   in Loop: Header=BB6_327 Depth=1
-	move	$a0, $fp
-	move	$a1, $s2
-	move	$a2, $s0
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB6_343:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i538
-                                        #   in Loop: Header=BB6_327 Depth=1
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	beqz	$s2, .LBB6_345
-# %bb.344:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i540
-                                        #   in Loop: Header=BB6_327 Depth=1
-	move	$a0, $s2
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB6_345:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i541
-                                        #   in Loop: Header=BB6_327 Depth=1
-	add.d	$a0, $fp, $s0
-	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	st.d	$fp, $a3, 0
-	st.d	$a0, $a3, 8
-	alsl.d	$a1, $s4, $fp, 2
-	st.d	$a1, $a3, 16
-	move	$s3, $s5
-	addi.d	$s4, $s1, -1
-	bne	$a0, $a1, .LBB6_325
-.LBB6_346:                              #   in Loop: Header=BB6_327 Depth=1
-	sub.d	$s0, $a1, $fp
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_534
-# %bb.347:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i546
-                                        #   in Loop: Header=BB6_327 Depth=1
+	beq	$s0, $a0, .LBB6_537
+# %bb.341:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i536
+                                        #   in Loop: Header=BB6_328 Depth=1
+	move	$s6, $s7
 	srai.d	$a0, $s0, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -8847,7 +8799,62 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $a2, $a1
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 2
+.Ltmp174:
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+.Ltmp175:
+# %bb.342:                              # %.noexc543
+                                        #   in Loop: Header=BB6_328 Depth=1
+	move	$fp, $a0
+	stx.w	$s4, $a0, $s0
+	blez	$s0, .LBB6_344
+# %bb.343:                              #   in Loop: Header=BB6_328 Depth=1
+	move	$a0, $fp
+	move	$a1, $s2
+	move	$a2, $s0
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB6_344:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i538
+                                        #   in Loop: Header=BB6_328 Depth=1
+	beqz	$s2, .LBB6_346
+# %bb.345:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i540
+                                        #   in Loop: Header=BB6_328 Depth=1
+	move	$a0, $s2
+	move	$a1, $s0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB6_346:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i541
+                                        #   in Loop: Header=BB6_328 Depth=1
+	add.d	$a0, $fp, $s0
+	addi.d	$a0, $a0, 4
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	st.d	$fp, $a3, 0
+	st.d	$a0, $a3, 8
+	alsl.d	$a1, $s7, $fp, 2
+	st.d	$a1, $a3, 16
+	move	$s7, $s6
+	addi.d	$s4, $s1, -1
+	bne	$a0, $a1, .LBB6_326
+.LBB6_347:                              #   in Loop: Header=BB6_328 Depth=1
+	sub.d	$s0, $a1, $fp
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB6_535
+# %bb.348:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i546
+                                        #   in Loop: Header=BB6_328 Depth=1
+	srai.d	$a0, $s0, 2
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a0, $a1
+	or	$a1, $a1, $a2
+	add.d	$a0, $a1, $a0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -8857,85 +8864,84 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp178:
-# %bb.348:                              # %.noexc553
-                                        #   in Loop: Header=BB6_327 Depth=1
+# %bb.349:                              # %.noexc553
+                                        #   in Loop: Header=BB6_328 Depth=1
 	move	$s1, $a0
 	stx.w	$s4, $a0, $s0
-	ori	$s4, $zero, 1
-	blt	$s0, $s4, .LBB6_350
-# %bb.349:                              #   in Loop: Header=BB6_327 Depth=1
+	blez	$s0, .LBB6_351
+# %bb.350:                              #   in Loop: Header=BB6_328 Depth=1
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_350:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i548
-                                        #   in Loop: Header=BB6_327 Depth=1
-	beqz	$fp, .LBB6_352
-# %bb.351:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i550
-                                        #   in Loop: Header=BB6_327 Depth=1
+.LBB6_351:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i548
+                                        #   in Loop: Header=BB6_328 Depth=1
+	beqz	$fp, .LBB6_353
+# %bb.352:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i550
+                                        #   in Loop: Header=BB6_328 Depth=1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_352:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i551
-                                        #   in Loop: Header=BB6_327 Depth=1
+.LBB6_353:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i551
+                                        #   in Loop: Header=BB6_328 Depth=1
 	add.d	$a0, $s1, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s2, $s1, 2
 	st.d	$a1, $a3, 16
-	b	.LBB6_326
-.LBB6_353:
-	ld.w	$a1, $s7, 76
-	beqz	$a1, .LBB6_483
-# %bb.354:
+	b	.LBB6_327
+.LBB6_354:
+	ld.w	$a1, $s5, 76
+	beqz	$a1, .LBB6_484
+# %bb.355:
 	ld.w	$a1, $s6, 4
 	ld.d	$a2, $a3, 16
 	addi.d	$s3, $a1, -1
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	beq	$a0, $a2, .LBB6_484
-.LBB6_355:
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	beq	$a0, $a2, .LBB6_485
+.LBB6_356:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	move	$s2, $s1
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	bnez	$a4, .LBB6_324
-.LBB6_356:
+	bnez	$s4, .LBB6_325
+.LBB6_357:
 	move	$s1, $s2
-.LBB6_357:                              # %._crit_edge1067
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+.LBB6_358:                              # %._crit_edge1067
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	addi.d	$s4, $a4, 1
-	beq	$a0, $a1, .LBB6_359
-# %bb.358:
+	beq	$a0, $a1, .LBB6_360
+# %bb.359:
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	b	.LBB6_366
-.LBB6_359:
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	b	.LBB6_367
+.LBB6_360:
 	ld.d	$fp, $a2, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_558
-# %bb.360:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i516
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB6_559
+# %bb.361:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i516
 	srai.d	$a0, $s0, 2
-	ori	$s1, $zero, 1
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -8945,64 +8951,65 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp193:
-# %bb.361:                              # %.noexc523
+# %bb.362:                              # %.noexc523
 	move	$s2, $a0
 	stx.w	$s4, $a0, $s0
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	blt	$s0, $s1, .LBB6_363
-# %bb.362:
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	blez	$s0, .LBB6_364
+# %bb.363:
 	move	$a0, $s2
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_363:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i518
+.LBB6_364:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i518
 	add.d	$s1, $s2, $s0
-	beqz	$fp, .LBB6_365
-# %bb.364:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i520
+	beqz	$fp, .LBB6_366
+# %bb.365:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i520
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_365:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i521
+.LBB6_366:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i521
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s2, $a1, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s1, $a3, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s3, $s2, 2
 	st.d	$a0, $a1, 16
-.LBB6_366:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit524
+.LBB6_367:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit524
 	ld.d	$a1, $a3, 8
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a3, 8
 	ld.d	$a2, $a3, 16
 	sub.d	$a1, $a1, $s1
 	srai.d	$a1, $a1, 2
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	sub.d	$s3, $a1, $a4
-	beq	$a0, $a2, .LBB6_368
-# %bb.367:
+	beq	$a0, $a2, .LBB6_369
+# %bb.368:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
-	b	.LBB6_375
-.LBB6_368:
+	b	.LBB6_376
+.LBB6_369:
 	ld.d	$fp, $a3, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_560
-# %bb.369:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i556
+	beq	$s0, $a0, .LBB6_561
+# %bb.370:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i556
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9012,114 +9019,115 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp195:
-# %bb.370:                              # %.noexc563
+# %bb.371:                              # %.noexc563
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_372
-# %bb.371:
+	blez	$s0, .LBB6_373
+# %bb.372:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_372:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i558
+.LBB6_373:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i558
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_374
-# %bb.373:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i560
+	beqz	$fp, .LBB6_375
+# %bb.374:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i560
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_374:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i561
+.LBB6_375:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i561
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a1, 16
-.LBB6_375:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit564
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 .LBB6_376:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit564
-	ld.w	$a0, $s7, 60
-	ld.w	$a1, $s7, 68
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+.LBB6_377:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit564
+	ld.w	$a0, $s5, 60
+	ld.w	$a1, $s5, 68
 	addi.w	$a0, $a0, -1
-	beq	$a1, $a0, .LBB6_423
-# %bb.377:
+	beq	$a1, $a0, .LBB6_424
+# %bb.378:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a0, $a3, 8
 	ld.d	$s1, $a3, 0
 	ld.w	$a1, $a1, 0
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
-	ld.w	$a1, $s7, 56
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	ld.w	$a1, $s5, 56
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	sub.d	$fp, $a0, $s1
 	srai.d	$a1, $fp, 2
 	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	bltz	$s3, .LBB6_412
-# %bb.378:                              # %.lr.ph1072.preheader
-	ld.w	$a1, $s7, 76
+	bltz	$s3, .LBB6_413
+# %bb.379:                              # %.lr.ph1072.preheader
+	ld.w	$a1, $s5, 76
 	slli.d	$a1, $a1, 2
-	ld.w	$a2, $s7, 64
+	ld.w	$a2, $s5, 64
 	ldx.w	$s0, $s6, $a1
-	beqz	$a2, .LBB6_409
-# %bb.379:
+	beqz	$a2, .LBB6_410
+# %bb.380:
 	move	$s2, $s1
-	beqz	$s3, .LBB6_411
-.LBB6_380:                              # %.lr.ph1072.peel.next
+	beqz	$s3, .LBB6_412
+.LBB6_381:                              # %.lr.ph1072.peel.next
 	move	$s7, $zero
 	addi.d	$s8, $s0, 1
 	addi.w	$a1, $zero, -4
 	lu52i.d	$s3, $a1, 2047
 	ori	$s4, $zero, 1
-	lu52i.d	$s5, $s5, 511
-	b	.LBB6_383
+	addi.w	$a1, $zero, -1
+	lu52i.d	$s5, $a1, 511
+	b	.LBB6_384
 	.p2align	4, , 16
-.LBB6_381:                              #   in Loop: Header=BB6_383 Depth=1
+.LBB6_382:                              #   in Loop: Header=BB6_384 Depth=1
 	st.w	$s6, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	ori	$a1, $zero, 2
 	move	$s1, $fp
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-.LBB6_382:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit584
-                                        #   in Loop: Header=BB6_383 Depth=1
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+.LBB6_383:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit584
+                                        #   in Loop: Header=BB6_384 Depth=1
 	add.d	$s8, $s8, $a1
 	move	$s2, $s1
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	beq	$a1, $s7, .LBB6_413
+.LBB6_384:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	beq	$a1, $s7, .LBB6_412
-.LBB6_383:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a2, $a1, 72
 	ld.d	$a1, $a3, 16
 	addi.w	$s7, $s7, 1
-	bne	$s7, $a2, .LBB6_386
-# %bb.384:                              #   in Loop: Header=BB6_383 Depth=1
-	beq	$a0, $a1, .LBB6_388
-# %bb.385:                              #   in Loop: Header=BB6_383 Depth=1
+	bne	$s7, $a2, .LBB6_387
+# %bb.385:                              #   in Loop: Header=BB6_384 Depth=1
+	beq	$a0, $a1, .LBB6_389
+# %bb.386:                              #   in Loop: Header=BB6_384 Depth=1
 	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	ori	$a1, $zero, 1
 	move	$s1, $s2
-	b	.LBB6_382
+	b	.LBB6_383
 	.p2align	4, , 16
-.LBB6_386:                              #   in Loop: Header=BB6_383 Depth=1
-	beq	$a0, $a1, .LBB6_395
-# %bb.387:                              #   in Loop: Header=BB6_383 Depth=1
+.LBB6_387:                              #   in Loop: Header=BB6_384 Depth=1
+	beq	$a0, $a1, .LBB6_396
+# %bb.388:                              #   in Loop: Header=BB6_384 Depth=1
 	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	move	$fp, $s2
 	addi.d	$s6, $s8, 1
-	bne	$a0, $a1, .LBB6_381
-	b	.LBB6_402
-.LBB6_388:                              #   in Loop: Header=BB6_383 Depth=1
+	bne	$a0, $a1, .LBB6_382
+	b	.LBB6_403
+.LBB6_389:                              #   in Loop: Header=BB6_384 Depth=1
 	sub.d	$fp, $a0, $s2
-	beq	$fp, $s3, .LBB6_532
-# %bb.389:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i576
-                                        #   in Loop: Header=BB6_383 Depth=1
+	beq	$fp, $s3, .LBB6_533
+# %bb.390:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i576
+                                        #   in Loop: Header=BB6_384 Depth=1
 	srai.d	$a0, $fp, 2
 	sltu	$a1, $s4, $a0
 	masknez	$a2, $s4, $a1
@@ -9135,42 +9143,42 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp218:
-# %bb.390:                              # %.noexc583
-                                        #   in Loop: Header=BB6_383 Depth=1
+# %bb.391:                              # %.noexc583
+                                        #   in Loop: Header=BB6_384 Depth=1
 	move	$s1, $a0
 	stx.w	$s8, $a0, $fp
-	blt	$fp, $s4, .LBB6_392
-# %bb.391:                              #   in Loop: Header=BB6_383 Depth=1
+	blez	$fp, .LBB6_393
+# %bb.392:                              #   in Loop: Header=BB6_384 Depth=1
 	move	$a0, $s1
 	move	$a1, $s2
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_392:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i578
-                                        #   in Loop: Header=BB6_383 Depth=1
-	beqz	$s2, .LBB6_394
-# %bb.393:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i580
-                                        #   in Loop: Header=BB6_383 Depth=1
+.LBB6_393:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i578
+                                        #   in Loop: Header=BB6_384 Depth=1
+	beqz	$s2, .LBB6_395
+# %bb.394:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i580
+                                        #   in Loop: Header=BB6_384 Depth=1
 	move	$a0, $s2
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_394:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i581
-                                        #   in Loop: Header=BB6_383 Depth=1
+.LBB6_395:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i581
+                                        #   in Loop: Header=BB6_384 Depth=1
 	add.d	$a0, $s1, $fp
 	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s0, $s1, 2
 	st.d	$a1, $a3, 16
 	ori	$a1, $zero, 1
-	b	.LBB6_382
-.LBB6_395:                              #   in Loop: Header=BB6_383 Depth=1
+	b	.LBB6_383
+.LBB6_396:                              #   in Loop: Header=BB6_384 Depth=1
 	sub.d	$s0, $a0, $s2
-	beq	$s0, $s3, .LBB6_540
-# %bb.396:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i586
-                                        #   in Loop: Header=BB6_383 Depth=1
+	beq	$s0, $s3, .LBB6_541
+# %bb.397:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i586
+                                        #   in Loop: Header=BB6_384 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s4, $a0
 	masknez	$a2, $s4, $a1
@@ -9186,42 +9194,42 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp206:
-# %bb.397:                              # %.noexc593
-                                        #   in Loop: Header=BB6_383 Depth=1
+# %bb.398:                              # %.noexc593
+                                        #   in Loop: Header=BB6_384 Depth=1
 	move	$fp, $a0
 	stx.w	$s8, $a0, $s0
-	blt	$s0, $s4, .LBB6_399
-# %bb.398:                              #   in Loop: Header=BB6_383 Depth=1
+	blez	$s0, .LBB6_400
+# %bb.399:                              #   in Loop: Header=BB6_384 Depth=1
 	move	$a0, $fp
 	move	$a1, $s2
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_399:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i588
-                                        #   in Loop: Header=BB6_383 Depth=1
-	beqz	$s2, .LBB6_401
-# %bb.400:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i590
-                                        #   in Loop: Header=BB6_383 Depth=1
+.LBB6_400:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i588
+                                        #   in Loop: Header=BB6_384 Depth=1
+	beqz	$s2, .LBB6_402
+# %bb.401:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i590
+                                        #   in Loop: Header=BB6_384 Depth=1
 	move	$a0, $s2
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_401:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i591
-                                        #   in Loop: Header=BB6_383 Depth=1
+.LBB6_402:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i591
+                                        #   in Loop: Header=BB6_384 Depth=1
 	add.d	$a0, $fp, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$fp, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s1, $fp, 2
 	st.d	$a1, $a3, 16
 	addi.d	$s6, $s8, 1
-	bne	$a0, $a1, .LBB6_381
-.LBB6_402:                              #   in Loop: Header=BB6_383 Depth=1
+	bne	$a0, $a1, .LBB6_382
+.LBB6_403:                              #   in Loop: Header=BB6_384 Depth=1
 	sub.d	$s0, $a1, $fp
-	beq	$s0, $s3, .LBB6_538
-# %bb.403:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i596
-                                        #   in Loop: Header=BB6_383 Depth=1
+	beq	$s0, $s3, .LBB6_539
+# %bb.404:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i596
+                                        #   in Loop: Header=BB6_384 Depth=1
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s4, $a0
 	masknez	$a2, $s4, $a1
@@ -9237,81 +9245,80 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp209:
-# %bb.404:                              # %.noexc603
-                                        #   in Loop: Header=BB6_383 Depth=1
+# %bb.405:                              # %.noexc603
+                                        #   in Loop: Header=BB6_384 Depth=1
 	move	$s1, $a0
 	stx.w	$s6, $a0, $s0
-	blt	$s0, $s4, .LBB6_406
-# %bb.405:                              #   in Loop: Header=BB6_383 Depth=1
+	blez	$s0, .LBB6_407
+# %bb.406:                              #   in Loop: Header=BB6_384 Depth=1
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_406:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i598
-                                        #   in Loop: Header=BB6_383 Depth=1
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	beqz	$fp, .LBB6_408
-# %bb.407:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i600
-                                        #   in Loop: Header=BB6_383 Depth=1
+.LBB6_407:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i598
+                                        #   in Loop: Header=BB6_384 Depth=1
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	beqz	$fp, .LBB6_409
+# %bb.408:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i600
+                                        #   in Loop: Header=BB6_384 Depth=1
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_408:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i601
-                                        #   in Loop: Header=BB6_383 Depth=1
+.LBB6_409:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i601
+                                        #   in Loop: Header=BB6_384 Depth=1
 	add.d	$a0, $s1, $s0
 	addi.d	$a0, $a0, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s2, $s1, 2
 	st.d	$a1, $a3, 16
 	ori	$a1, $zero, 2
-	b	.LBB6_382
-.LBB6_409:
+	b	.LBB6_383
+.LBB6_410:
 	ld.d	$a1, $a3, 16
-	beq	$a0, $a1, .LBB6_491
-# %bb.410:
+	beq	$a0, $a1, .LBB6_492
+# %bb.411:
 	st.w	$s0, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
 	move	$s2, $s1
-	bnez	$s3, .LBB6_380
-.LBB6_411:
+	bnez	$s3, .LBB6_381
+.LBB6_412:
 	move	$s1, $s2
-.LBB6_412:                              # %._crit_edge1073
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+.LBB6_413:                              # %._crit_edge1073
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
 	add.d	$s4, $a5, $a4
-	beq	$a0, $a1, .LBB6_414
-# %bb.413:
+	beq	$a0, $a1, .LBB6_415
+# %bb.414:
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	b	.LBB6_421
-.LBB6_414:
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	b	.LBB6_422
+.LBB6_415:
 	ld.d	$fp, $a2, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB6_562
-# %bb.415:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i566
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB6_563
+# %bb.416:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i566
 	srai.d	$a0, $s0, 2
-	ori	$s1, $zero, 1
-	sltu	$a1, $s1, $a0
-	masknez	$a2, $s1, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9321,93 +9328,95 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp224:
-# %bb.416:                              # %.noexc573
+# %bb.417:                              # %.noexc573
 	move	$s2, $a0
 	stx.w	$s4, $a0, $s0
-	blt	$s0, $s1, .LBB6_418
-# %bb.417:
+	blez	$s0, .LBB6_419
+# %bb.418:
 	move	$a0, $s2
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_418:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i568
+.LBB6_419:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i568
 	add.d	$s1, $s2, $s0
-	beqz	$fp, .LBB6_420
-# %bb.419:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i570
+	beqz	$fp, .LBB6_421
+# %bb.420:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i570
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_420:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i571
+.LBB6_421:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i571
 	addi.d	$a0, $s1, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s2, $a1, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s1, $a3, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s3, $s2, 2
 	st.d	$a0, $a1, 16
-.LBB6_421:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit574
+.LBB6_422:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit574
 	ld.d	$a1, $a3, 8
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a3, 8
 	ld.d	$a2, $a3, 16
 	sub.d	$a1, $a1, $s1
 	srai.d	$a1, $a1, 2
 	ld.d	$a4, $sp, 192                   # 8-byte Folded Reload
 	sub.d	$s3, $a1, $a4
-	beq	$a0, $a2, .LBB6_428
-# %bb.422:
+	beq	$a0, $a2, .LBB6_429
+# %bb.423:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
-.LBB6_423:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit614
-	ld.w	$s2, $s7, 56
-	ld.w	$a0, $s7, 64
+.LBB6_424:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit614
+	ld.w	$s2, $s5, 56
+	ld.w	$a0, $s5, 64
 	addi.w	$a1, $s2, -1
-	beq	$a0, $a1, .LBB6_435
-.LBB6_424:
-	ld.w	$a0, $s7, 60
-	ld.w	$a1, $s7, 68
+	beq	$a0, $a1, .LBB6_436
+.LBB6_425:
+	ld.w	$a0, $s5, 60
+	ld.w	$a1, $s5, 68
 	addi.w	$a0, $a0, -1
-	beq	$a1, $a0, .LBB6_435
-# %bb.425:
+	beq	$a1, $a0, .LBB6_436
+# %bb.426:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a3, 8
 	ld.d	$a0, $a3, 16
 	ld.w	$s3, $a2, 0
-	ld.d	$s7, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$s5, $s7, -2
-	beq	$a1, $a0, .LBB6_437
-# %bb.426:
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	addi.d	$s5, $a2, -2
+	beq	$a1, $a0, .LBB6_438
+# %bb.427:
 	st.w	$s5, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $a3, 8
-	addi.d	$s5, $s7, -1
-	beq	$a1, $a0, .LBB6_444
-.LBB6_427:
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	addi.d	$s5, $a2, -1
+	beq	$a1, $a0, .LBB6_445
+.LBB6_428:
 	st.w	$s5, $a1, 0
 	addi.d	$a0, $a1, 4
 	st.d	$a0, $a3, 8
-	b	.LBB6_451
-.LBB6_428:
+	b	.LBB6_452
+.LBB6_429:
 	ld.d	$fp, $a3, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_564
-# %bb.429:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i606
+	beq	$s0, $a0, .LBB6_565
+# %bb.430:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i606
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9417,39 +9426,39 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp226:
-# %bb.430:                              # %.noexc613
+# %bb.431:                              # %.noexc613
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_432
-# %bb.431:
+	blez	$s0, .LBB6_433
+# %bb.432:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_432:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i608
+.LBB6_433:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i608
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_434
-# %bb.433:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i610
+	beqz	$fp, .LBB6_435
+# %bb.434:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i610
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_434:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i611
+.LBB6_435:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i611
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.w	$s2, $s7, 56
-	ld.w	$a0, $s7, 64
+	ld.w	$s2, $s5, 56
+	ld.w	$a0, $s5, 64
 	addi.w	$a1, $s2, -1
-	bne	$a0, $a1, .LBB6_424
-.LBB6_435:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit654
-	beqz	$s6, .LBB6_454
-.LBB6_436:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB6_425
+.LBB6_436:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit654
+	beqz	$s6, .LBB6_455
+.LBB6_437:
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $s6
 	move	$a0, $s6
 	fld.d	$fs7, $sp, 200                  # 8-byte Folded Reload
@@ -9474,21 +9483,21 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	addi.d	$sp, $sp, 352
 	pcaddu18i	$t8, %call36(_ZdlPvm)
 	jr	$t8
-.LBB6_437:
+.LBB6_438:
 	ld.d	$fp, $a3, 0
 	sub.d	$s0, $a1, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_566
-# %bb.438:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i616
+	beq	$s0, $a0, .LBB6_567
+# %bb.439:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i616
 	srai.d	$a0, $s0, 2
-	ori	$s6, $zero, 1
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -9499,49 +9508,49 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp234:
-# %bb.439:                              # %.noexc623
+# %bb.440:                              # %.noexc623
 	move	$s1, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s6, .LBB6_441
-# %bb.440:
+	blez	$s0, .LBB6_442
+# %bb.441:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_441:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i618
+.LBB6_442:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i618
 	add.d	$s5, $s1, $s0
-	beqz	$fp, .LBB6_443
-# %bb.442:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i620
+	beqz	$fp, .LBB6_444
+# %bb.443:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i620
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_443:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i621
+.LBB6_444:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i621
 	addi.d	$a1, $s5, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a3, 0
 	st.d	$a1, $a3, 8
 	alsl.d	$a0, $s4, $s1, 2
 	st.d	$a0, $a3, 16
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$s5, $s7, -1
-	bne	$a1, $a0, .LBB6_427
-.LBB6_444:
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	addi.d	$s5, $a2, -1
+	bne	$a1, $a0, .LBB6_428
+.LBB6_445:
 	ld.d	$fp, $a3, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_568
-# %bb.445:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i626
+	beq	$s0, $a0, .LBB6_569
+# %bb.446:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i626
 	srai.d	$a0, $s0, 2
-	ori	$s6, $zero, 1
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -9552,55 +9561,53 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp236:
-# %bb.446:                              # %.noexc633
+# %bb.447:                              # %.noexc633
 	move	$s1, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s6, .LBB6_448
-# %bb.447:
+	blez	$s0, .LBB6_449
+# %bb.448:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_448:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i628
+.LBB6_449:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i628
 	add.d	$s5, $s1, $s0
-	beqz	$fp, .LBB6_450
-# %bb.449:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i630
+	beqz	$fp, .LBB6_451
+# %bb.450:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i630
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_450:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i631
+.LBB6_451:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i631
 	addi.d	$a0, $s5, 4
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s4, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-.LBB6_451:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit634
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+.LBB6_452:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit634
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a3, 8
 	ld.d	$a1, $a3, 16
 	add.d	$a2, $s2, $s3
 	addi.d	$s3, $a2, 1
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB6_455
-# %bb.452:
+	beq	$a0, $a1, .LBB6_456
+# %bb.453:
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a3, 8
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	beq	$a0, $a1, .LBB6_462
-.LBB6_453:
+	beq	$a0, $a1, .LBB6_463
+.LBB6_454:
 	ori	$a1, $zero, 2
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $a2, 8
-	bnez	$s6, .LBB6_436
-.LBB6_454:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit656
+	bnez	$s6, .LBB6_437
+.LBB6_455:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit656
 	fld.d	$fs7, $sp, 200                  # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 208                  # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 216                  # 8-byte Folded Reload
@@ -9622,21 +9629,22 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	ld.d	$ra, $sp, 344                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 352
 	ret
-.LBB6_455:
+.LBB6_456:
 	ld.d	$fp, $a3, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_570
-# %bb.456:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i636
+	beq	$s0, $a0, .LBB6_571
+# %bb.457:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i636
 	srai.d	$a0, $s0, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9646,50 +9654,51 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp238:
-# %bb.457:                              # %.noexc643
+# %bb.458:                              # %.noexc643
 	move	$s1, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s4, .LBB6_459
-# %bb.458:
+	blez	$s0, .LBB6_460
+# %bb.459:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_459:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i638
+.LBB6_460:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i638
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_461
-# %bb.460:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i640
+	beqz	$fp, .LBB6_462
+# %bb.461:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i640
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_461:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i641
+.LBB6_462:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i641
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a1, 16
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a2, 8
 	ld.d	$a1, $a2, 16
-	bne	$a0, $a1, .LBB6_453
-.LBB6_462:
+	bne	$a0, $a1, .LBB6_454
+.LBB6_463:
 	ld.d	$fp, $a2, 0
 	sub.d	$s0, $a0, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s0, $a0, .LBB6_572
-# %bb.463:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i646
+	beq	$s0, $a0, .LBB6_573
+# %bb.464:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i646
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9699,47 +9708,47 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp240:
-# %bb.464:                              # %.noexc653
+# %bb.465:                              # %.noexc653
 	move	$s1, $a0
 	ori	$a0, $zero, 2
 	stx.w	$a0, $s1, $s0
-	blt	$s0, $s3, .LBB6_466
-# %bb.465:
+	blez	$s0, .LBB6_467
+# %bb.466:
 	move	$a0, $s1
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_466:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i648
+.LBB6_467:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i648
 	add.d	$s3, $s1, $s0
-	beqz	$fp, .LBB6_468
-# %bb.467:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i650
+	beqz	$fp, .LBB6_469
+# %bb.468:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i650
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_468:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i651
+.LBB6_469:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i651
 	addi.d	$a0, $s3, 4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
 	st.d	$a0, $a1, 8
 	alsl.d	$a0, $s2, $s1, 2
 	st.d	$a0, $a1, 16
-	bnez	$s6, .LBB6_436
-	b	.LBB6_454
-.LBB6_469:
+	bnez	$s6, .LBB6_437
+	b	.LBB6_455
+.LBB6_470:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_518
-# %bb.470:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i426.peel
-	ori	$s1, $zero, 1
+	beq	$fp, $a0, .LBB6_519
+# %bb.471:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i426.peel
+	ori	$a0, $zero, 1
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	sltu	$a0, $s1, $a2
-	masknez	$a1, $s1, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -9750,48 +9759,48 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp110:
-# %bb.471:                              # %.noexc433.peel
+# %bb.472:                              # %.noexc433.peel
 	move	$s5, $a0
 	stx.w	$zero, $a0, $fp
-	blt	$fp, $s1, .LBB6_473
-# %bb.472:
+	blez	$fp, .LBB6_474
+# %bb.473:
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_473:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i428.peel
+.LBB6_474:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i428.peel
 	add.d	$s1, $s5, $fp
-	beqz	$s4, .LBB6_475
-# %bb.474:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i430.peel
+	beqz	$s4, .LBB6_476
+# %bb.475:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i430.peel
 	move	$a0, $s4
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_475:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i431.peel
+.LBB6_476:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i431.peel
 	addi.d	$a0, $s1, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s5, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s0, $s5, 2
 	st.d	$a1, $a2, 16
 	ori	$s6, $zero, 1
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	bnez	$s3, .LBB6_213
-	b	.LBB6_244
-.LBB6_476:
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	bnez	$s3, .LBB6_214
+	b	.LBB6_245
+.LBB6_477:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_520
-# %bb.477:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i476.peel
-	ori	$s2, $zero, 1
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	sltu	$a0, $s2, $a2
-	masknez	$a1, $s2, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	beq	$fp, $a0, .LBB6_521
+# %bb.478:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i476.peel
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
@@ -9802,56 +9811,56 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp141:
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
-# %bb.478:                              # %.noexc483.peel
+# %bb.479:                              # %.noexc483.peel
 	move	$s5, $a0
 	stx.w	$s1, $a0, $fp
-	blt	$fp, $s2, .LBB6_480
-# %bb.479:
+	blez	$fp, .LBB6_481
+# %bb.480:
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_480:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i478.peel
+.LBB6_481:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i478.peel
 	add.d	$s1, $s5, $fp
-	beqz	$s4, .LBB6_482
-# %bb.481:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i480.peel
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	beqz	$s4, .LBB6_483
+# %bb.482:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i480.peel
 	move	$a0, $s4
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_482:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i481.peel
+.LBB6_483:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i481.peel
 	addi.d	$a0, $s1, 4
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	st.d	$s5, $a2, 0
 	st.d	$a0, $a2, 8
 	alsl.d	$a1, $s0, $s5, 2
 	st.d	$a1, $a2, 16
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bnez	$a1, .LBB6_268
-	b	.LBB6_300
-.LBB6_483:
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	bnez	$a1, .LBB6_269
+	b	.LBB6_301
+.LBB6_484:
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a2, $a3, 16
 	addi.d	$s3, $a1, -1
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	bne	$a0, $a2, .LBB6_355
-.LBB6_484:
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	bne	$a0, $a2, .LBB6_356
+.LBB6_485:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_530
-# %bb.485:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i526.peel
-	ori	$s4, $zero, 1
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	sltu	$a0, $s4, $a2
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	beq	$fp, $a0, .LBB6_531
+# %bb.486:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i526.peel
+	ori	$a0, $zero, 1
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9861,48 +9870,47 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp172:
-# %bb.486:                              # %.noexc533.peel
+# %bb.487:                              # %.noexc533.peel
 	move	$s2, $a0
 	stx.w	$s3, $a0, $fp
-	blt	$fp, $s4, .LBB6_488
-# %bb.487:
+	blez	$fp, .LBB6_489
+# %bb.488:
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_488:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i528.peel
+.LBB6_489:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i528.peel
 	add.d	$s3, $s2, $fp
-	beqz	$s1, .LBB6_490
-# %bb.489:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i530.peel
+	beqz	$s1, .LBB6_491
+# %bb.490:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i530.peel
 	move	$a0, $s1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_490:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i531.peel
+.LBB6_491:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i531.peel
 	addi.d	$a0, $s3, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s2, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s0, $s2, 2
 	st.d	$a1, $a3, 16
-	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	bnez	$a4, .LBB6_324
-	b	.LBB6_356
-.LBB6_491:
+	bnez	$s4, .LBB6_325
+	b	.LBB6_357
+.LBB6_492:
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$fp, $a0, .LBB6_532
-# %bb.492:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i576.peel
-	ori	$s4, $zero, 1
+	beq	$fp, $a0, .LBB6_533
+# %bb.493:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i576.peel
+	ori	$a0, $zero, 1
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	sltu	$a0, $s4, $a2
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
+	sltu	$a1, $a0, $a2
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	add.d	$a0, $a0, $a2
-	ld.d	$s5, $sp, 184                   # 8-byte Folded Reload
-	lu52i.d	$a1, $s5, 511
+	addi.w	$a1, $zero, -1
+	lu52i.d	$a1, $a1, 511
 	sltu	$a2, $a0, $a1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
@@ -9912,563 +9920,563 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp203:
-# %bb.493:                              # %.noexc583.peel
+# %bb.494:                              # %.noexc583.peel
 	move	$s2, $a0
 	stx.w	$s0, $a0, $fp
-	blt	$fp, $s4, .LBB6_495
-# %bb.494:
+	blez	$fp, .LBB6_496
+# %bb.495:
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB6_495:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i578.peel
+.LBB6_496:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i578.peel
 	add.d	$s4, $s2, $fp
-	beqz	$s1, .LBB6_497
-# %bb.496:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i580.peel
+	beqz	$s1, .LBB6_498
+# %bb.497:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i580.peel
 	move	$a0, $s1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_497:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i581.peel
+.LBB6_498:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i581.peel
 	addi.d	$a0, $s4, 4
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	st.d	$s2, $a3, 0
 	st.d	$a0, $a3, 8
 	alsl.d	$a1, $s3, $s2, 2
 	st.d	$a1, $a3, 16
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	bnez	$s3, .LBB6_380
-	b	.LBB6_411
-.LBB6_498:
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	bnez	$s3, .LBB6_381
+	b	.LBB6_412
+.LBB6_499:
 .Ltmp256:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp257:
-# %bb.499:                              # %.noexc350
-.LBB6_500:
+# %bb.500:                              # %.noexc350
+.LBB6_501:
 .Ltmp253:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp254:
-# %bb.501:                              # %.noexc359
-.LBB6_502:
+# %bb.502:                              # %.noexc359
+.LBB6_503:
 .Ltmp82:
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp83:
-# %bb.503:                              # %.noexc729
-.LBB6_504:
+# %bb.504:                              # %.noexc729
+.LBB6_505:
 .Ltmp61:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp62:
-# %bb.505:                              # %.noexc662
-.LBB6_506:
+# %bb.506:                              # %.noexc662
+.LBB6_507:
 .Ltmp55:
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp56:
-# %bb.507:                              # %.noexc676
-.LBB6_508:
+# %bb.508:                              # %.noexc676
+.LBB6_509:
 .Ltmp43:
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp44:
-# %bb.509:                              # %.noexc706
-.LBB6_510:
+# %bb.510:                              # %.noexc706
+.LBB6_511:
 .Ltmp40:
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp41:
-# %bb.511:                              # %.noexc721
-.LBB6_512:
+# %bb.512:                              # %.noexc721
+.LBB6_513:
 .Ltmp49:
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp50:
-# %bb.513:                              # %.noexc691
-.LBB6_514:                              # %.invoke
+# %bb.514:                              # %.noexc691
+.LBB6_515:                              # %.invoke
 .Ltmp259:
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp260:
-# %bb.515:                              # %.cont
-.LBB6_516:
+# %bb.516:                              # %.cont
+.LBB6_517:
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB6_517:                              # %.noexc
+.LBB6_518:                              # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB6_518:                              # %.loopexit1098
+.LBB6_519:                              # %.loopexit1098
 .Ltmp127:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp128:
-# %bb.519:                              # %.noexc432
-.LBB6_520:                              # %.loopexit1115
+# %bb.520:                              # %.noexc432
+.LBB6_521:                              # %.loopexit1115
 .Ltmp158:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp159:
-# %bb.521:                              # %.noexc482
-.LBB6_522:                              # %.loopexit1094
+# %bb.522:                              # %.noexc482
+.LBB6_523:                              # %.loopexit1094
 .Ltmp118:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp119:
-# %bb.523:                              # %.noexc452
-.LBB6_524:                              # %.loopexit1091
+# %bb.524:                              # %.noexc452
+.LBB6_525:                              # %.loopexit1091
 .Ltmp121:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp122:
-# %bb.525:                              # %.noexc442
-.LBB6_526:                              # %.loopexit1111
+# %bb.526:                              # %.noexc442
+.LBB6_527:                              # %.loopexit1111
 .Ltmp149:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp150:
-# %bb.527:                              # %.noexc502
-.LBB6_528:                              # %.loopexit1107
+# %bb.528:                              # %.noexc502
+.LBB6_529:                              # %.loopexit1107
 .Ltmp152:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp153:
-# %bb.529:                              # %.noexc492
-.LBB6_530:                              # %.loopexit1132
+# %bb.530:                              # %.noexc492
+.LBB6_531:                              # %.loopexit1132
 .Ltmp189:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp190:
-# %bb.531:                              # %.noexc532
-.LBB6_532:                              # %.loopexit1145
+# %bb.532:                              # %.noexc532
+.LBB6_533:                              # %.loopexit1145
 .Ltmp220:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp221:
-# %bb.533:                              # %.noexc582
-.LBB6_534:                              # %.loopexit1128
+# %bb.534:                              # %.noexc582
+.LBB6_535:                              # %.loopexit1128
 .Ltmp180:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp181:
-# %bb.535:                              # %.noexc552
-.LBB6_536:                              # %.loopexit1124
+# %bb.536:                              # %.noexc552
+.LBB6_537:                              # %.loopexit1124
 .Ltmp183:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp184:
-# %bb.537:                              # %.noexc542
-.LBB6_538:                              # %.loopexit1142
+# %bb.538:                              # %.noexc542
+.LBB6_539:                              # %.loopexit1142
 .Ltmp211:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp212:
-# %bb.539:                              # %.noexc602
-.LBB6_540:                              # %.loopexit1138
+# %bb.540:                              # %.noexc602
+.LBB6_541:                              # %.loopexit1138
 .Ltmp214:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp215:
-# %bb.541:                              # %.noexc592
-.LBB6_542:
+# %bb.542:                              # %.noexc592
+.LBB6_543:
 .Ltmp137:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp138:
-# %bb.543:                              # %.noexc422
-.LBB6_544:
+# %bb.544:                              # %.noexc422
+.LBB6_545:
 .Ltmp134:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp135:
-# %bb.545:                              # %.noexc462
-.LBB6_546:
+# %bb.546:                              # %.noexc462
+.LBB6_547:
 .Ltmp168:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp169:
-# %bb.547:                              # %.noexc472
-.LBB6_548:
+# %bb.548:                              # %.noexc472
+.LBB6_549:
 .Ltmp165:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp166:
-# %bb.549:                              # %.noexc512
-.LBB6_550:
+# %bb.550:                              # %.noexc512
+.LBB6_551:
 .Ltmp106:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp107:
-# %bb.551:                              # %.noexc388
-.LBB6_552:
+# %bb.552:                              # %.noexc388
+.LBB6_553:
 .Ltmp103:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp104:
-# %bb.553:                              # %.noexc398
-.LBB6_554:
+# %bb.554:                              # %.noexc398
+.LBB6_555:
 .Ltmp100:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp101:
-# %bb.555:                              # %.noexc403
-.LBB6_556:
+# %bb.556:                              # %.noexc403
+.LBB6_557:
 .Ltmp97:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp98:
-# %bb.557:                              # %.noexc412
-.LBB6_558:
+# %bb.558:                              # %.noexc412
+.LBB6_559:
 .Ltmp199:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp200:
-# %bb.559:                              # %.noexc522
-.LBB6_560:
+# %bb.560:                              # %.noexc522
+.LBB6_561:
 .Ltmp196:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp197:
-# %bb.561:                              # %.noexc562
-.LBB6_562:
+# %bb.562:                              # %.noexc562
+.LBB6_563:
 .Ltmp230:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp231:
-# %bb.563:                              # %.noexc572
-.LBB6_564:
+# %bb.564:                              # %.noexc572
+.LBB6_565:
 .Ltmp227:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp228:
-# %bb.565:                              # %.noexc612
-.LBB6_566:
+# %bb.566:                              # %.noexc612
+.LBB6_567:
 .Ltmp250:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp251:
-# %bb.567:                              # %.noexc622
-.LBB6_568:
+# %bb.568:                              # %.noexc622
+.LBB6_569:
 .Ltmp247:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp248:
-# %bb.569:                              # %.noexc632
-.LBB6_570:
+# %bb.570:                              # %.noexc632
+.LBB6_571:
 .Ltmp244:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp245:
-# %bb.571:                              # %.noexc642
-.LBB6_572:
+# %bb.572:                              # %.noexc642
+.LBB6_573:
 .Ltmp241:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp242:
-# %bb.573:                              # %.noexc652
-.LBB6_574:                              # %.loopexit935.loopexit.split-lp
+# %bb.574:                              # %.noexc652
+.LBB6_575:                              # %.loopexit935.loopexit.split-lp
 .Ltmp204:
 	move	$s0, $a0
-	b	.LBB6_642
-.LBB6_575:                              # %.loopexit950.loopexit.split-lp
+	b	.LBB6_643
+.LBB6_576:                              # %.loopexit950.loopexit.split-lp
 .Ltmp173:
-	b	.LBB6_640
-.LBB6_576:                              # %.loopexit965.loopexit.split-lp
-.Ltmp142:
-	b	.LBB6_630
-.LBB6_577:                              # %.loopexit980.loopexit.split-lp
-.Ltmp111:
-	b	.LBB6_640
-.LBB6_578:
-.Ltmp243:
-	b	.LBB6_602
-.LBB6_579:
-.Ltmp246:
-	b	.LBB6_602
-.LBB6_580:
-.Ltmp249:
-	b	.LBB6_640
-.LBB6_581:
-.Ltmp252:
-	b	.LBB6_640
-.LBB6_582:
-.Ltmp229:
-	b	.LBB6_602
-.LBB6_583:
-.Ltmp232:
-	b	.LBB6_602
-.LBB6_584:
-.Ltmp198:
-	b	.LBB6_602
-.LBB6_585:
-.Ltmp201:
-	b	.LBB6_640
-.LBB6_586:
-.Ltmp99:
-	b	.LBB6_602
-.LBB6_587:
-.Ltmp102:
-	b	.LBB6_602
-.LBB6_588:
-.Ltmp105:
-	b	.LBB6_602
-.LBB6_589:
-.Ltmp108:
-	b	.LBB6_602
-.LBB6_590:
-.Ltmp167:
-	b	.LBB6_602
-.LBB6_591:
-.Ltmp170:
-	b	.LBB6_602
-.LBB6_592:
-.Ltmp136:
-	b	.LBB6_602
-.LBB6_593:
-.Ltmp139:
-	b	.LBB6_640
-.LBB6_594:                              # %.loopexit935.loopexit
-.Ltmp219:
-	b	.LBB6_602
-.LBB6_595:                              # %.loopexit.split-lp
-.Ltmp216:
-	b	.LBB6_640
-.LBB6_596:                              # %.loopexit950.loopexit
-.Ltmp188:
-	b	.LBB6_640
-.LBB6_597:                              # %.loopexit.split-lp931
-.Ltmp213:
-	b	.LBB6_640
-.LBB6_598:                              # %.loopexit.split-lp941
-.Ltmp185:
-	b	.LBB6_630
-.LBB6_599:                              # %.loopexit930
-.Ltmp210:
-	b	.LBB6_640
-.LBB6_600:                              # %.loopexit.split-lp946
-.Ltmp182:
-	b	.LBB6_630
-.LBB6_601:                              # %.loopexit
-.Ltmp207:
-.LBB6_602:                              # %.loopexit980
-	move	$s0, $a0
 	b	.LBB6_641
-.LBB6_603:                              # %.loopexit945
+.LBB6_577:                              # %.loopexit965.loopexit.split-lp
+.Ltmp142:
+	b	.LBB6_631
+.LBB6_578:                              # %.loopexit980.loopexit.split-lp
+.Ltmp111:
+	b	.LBB6_641
+.LBB6_579:
+.Ltmp243:
+	b	.LBB6_603
+.LBB6_580:
+.Ltmp246:
+	b	.LBB6_603
+.LBB6_581:
+.Ltmp249:
+	b	.LBB6_603
+.LBB6_582:
+.Ltmp252:
+	b	.LBB6_603
+.LBB6_583:
+.Ltmp229:
+	b	.LBB6_603
+.LBB6_584:
+.Ltmp232:
+	b	.LBB6_603
+.LBB6_585:
+.Ltmp198:
+	b	.LBB6_603
+.LBB6_586:
+.Ltmp201:
+	b	.LBB6_641
+.LBB6_587:
+.Ltmp99:
+	b	.LBB6_603
+.LBB6_588:
+.Ltmp102:
+	b	.LBB6_603
+.LBB6_589:
+.Ltmp105:
+	b	.LBB6_603
+.LBB6_590:
+.Ltmp108:
+	b	.LBB6_603
+.LBB6_591:
+.Ltmp167:
+	b	.LBB6_603
+.LBB6_592:
+.Ltmp170:
+	b	.LBB6_603
+.LBB6_593:
+.Ltmp136:
+	b	.LBB6_603
+.LBB6_594:
+.Ltmp139:
+	b	.LBB6_641
+.LBB6_595:                              # %.loopexit935.loopexit
+.Ltmp219:
+	b	.LBB6_603
+.LBB6_596:                              # %.loopexit.split-lp
+.Ltmp216:
+	b	.LBB6_641
+.LBB6_597:                              # %.loopexit950.loopexit
+.Ltmp188:
+	b	.LBB6_641
+.LBB6_598:                              # %.loopexit.split-lp931
+.Ltmp213:
+	b	.LBB6_641
+.LBB6_599:                              # %.loopexit.split-lp941
+.Ltmp185:
+	b	.LBB6_631
+.LBB6_600:                              # %.loopexit930
+.Ltmp210:
+	b	.LBB6_641
+.LBB6_601:                              # %.loopexit.split-lp946
+.Ltmp182:
+	b	.LBB6_631
+.LBB6_602:                              # %.loopexit
+.Ltmp207:
+.LBB6_603:                              # %.loopexit980
+	move	$s0, $a0
+	b	.LBB6_642
+.LBB6_604:                              # %.loopexit945
 .Ltmp179:
-	b	.LBB6_630
-.LBB6_604:                              # %.loopexit940
+	b	.LBB6_631
+.LBB6_605:                              # %.loopexit940
 .Ltmp176:
-	b	.LBB6_630
-.LBB6_605:                              # %.loopexit.split-lp936
+	b	.LBB6_631
+.LBB6_606:                              # %.loopexit.split-lp936
 .Ltmp222:
-	b	.LBB6_640
-.LBB6_606:                              # %.loopexit.split-lp951
+	b	.LBB6_641
+.LBB6_607:                              # %.loopexit.split-lp951
 .Ltmp191:
-	b	.LBB6_640
-.LBB6_607:                              # %.loopexit965.loopexit
+	b	.LBB6_641
+.LBB6_608:                              # %.loopexit965.loopexit
 .Ltmp157:
-	b	.LBB6_630
-.LBB6_608:                              # %.loopexit.split-lp956
+	b	.LBB6_631
+.LBB6_609:                              # %.loopexit.split-lp956
 .Ltmp154:
-	b	.LBB6_630
-.LBB6_609:                              # %.loopexit980.loopexit
+	b	.LBB6_631
+.LBB6_610:                              # %.loopexit980.loopexit
 .Ltmp126:
-	b	.LBB6_640
-.LBB6_610:                              # %.loopexit.split-lp961
+	b	.LBB6_641
+.LBB6_611:                              # %.loopexit.split-lp961
 .Ltmp151:
-	b	.LBB6_630
-.LBB6_611:                              # %.loopexit.split-lp971
+	b	.LBB6_631
+.LBB6_612:                              # %.loopexit.split-lp971
 .Ltmp123:
-	b	.LBB6_640
-.LBB6_612:                              # %.loopexit960
+	b	.LBB6_641
+.LBB6_613:                              # %.loopexit960
 .Ltmp148:
-	b	.LBB6_630
-.LBB6_613:                              # %.loopexit.split-lp976
+	b	.LBB6_631
+.LBB6_614:                              # %.loopexit.split-lp976
 .Ltmp120:
-	b	.LBB6_640
-.LBB6_614:                              # %.loopexit955
+	b	.LBB6_641
+.LBB6_615:                              # %.loopexit955
 .Ltmp145:
-	b	.LBB6_630
-.LBB6_615:                              # %.loopexit975
+	b	.LBB6_631
+.LBB6_616:                              # %.loopexit975
 .Ltmp117:
-	b	.LBB6_640
-.LBB6_616:                              # %.loopexit970
+	b	.LBB6_641
+.LBB6_617:                              # %.loopexit970
 .Ltmp114:
-	b	.LBB6_640
-.LBB6_617:                              # %.loopexit.split-lp966
+	b	.LBB6_641
+.LBB6_618:                              # %.loopexit.split-lp966
 .Ltmp160:
-	b	.LBB6_630
-.LBB6_618:                              # %.loopexit.split-lp981
+	b	.LBB6_631
+.LBB6_619:                              # %.loopexit.split-lp981
 .Ltmp129:
-	b	.LBB6_640
-.LBB6_619:
+	b	.LBB6_641
+.LBB6_620:
 .Ltmp261:
-	b	.LBB6_640
-.LBB6_620:                              # %.loopexit1011
+	b	.LBB6_641
+.LBB6_621:                              # %.loopexit1011
 .Ltmp48:
-	b	.LBB6_630
-.LBB6_621:                              # %.loopexit1006
+	b	.LBB6_631
+.LBB6_622:                              # %.loopexit1006
 .Ltmp39:
-	b	.LBB6_630
-.LBB6_622:                              # %.loopexit.split-lp1012
+	b	.LBB6_631
+.LBB6_623:                              # %.loopexit.split-lp1012
 .Ltmp51:
 	move	$s0, $a0
-	b	.LBB6_642
-.LBB6_623:                              # %.loopexit.split-lp1007
+	b	.LBB6_643
+.LBB6_624:                              # %.loopexit.split-lp1007
 .Ltmp42:
 	move	$s0, $a0
-	b	.LBB6_642
-.LBB6_624:                              # %.loopexit.split-lp1002
+	b	.LBB6_643
+.LBB6_625:                              # %.loopexit.split-lp1002
 .Ltmp45:
 	move	$s0, $a0
-	b	.LBB6_642
-.LBB6_625:                              # %.loopexit1001
+	b	.LBB6_643
+.LBB6_626:                              # %.loopexit1001
 .Ltmp36:
-	b	.LBB6_630
-.LBB6_626:                              # %.loopexit.split-lp1017
+	b	.LBB6_631
+.LBB6_627:                              # %.loopexit.split-lp1017
 .Ltmp57:
 	move	$s0, $a0
-	b	.LBB6_642
-.LBB6_627:                              # %.loopexit1016
+	b	.LBB6_643
+.LBB6_628:                              # %.loopexit1016
 .Ltmp54:
-	b	.LBB6_630
-.LBB6_628:                              # %.loopexit.split-lp1022
+	b	.LBB6_631
+.LBB6_629:                              # %.loopexit.split-lp1022
 .Ltmp63:
-	b	.LBB6_630
-.LBB6_629:                              # %.loopexit1021
+	b	.LBB6_631
+.LBB6_630:                              # %.loopexit1021
 .Ltmp60:
-.LBB6_630:                              # %.thread925
+.LBB6_631:                              # %.thread925
 	move	$s0, $a0
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	b	.LBB6_642
-.LBB6_631:                              # %.loopexit.split-lp997
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	b	.LBB6_643
+.LBB6_632:                              # %.loopexit.split-lp997
 .Ltmp84:
-	b	.LBB6_637
-.LBB6_632:                              # %.loopexit996
+	b	.LBB6_638
+.LBB6_633:                              # %.loopexit996
 .Ltmp81:
-	b	.LBB6_637
-.LBB6_633:                              # %.loopexit986
+	b	.LBB6_638
+.LBB6_634:                              # %.loopexit986
 .Ltmp75:
-	b	.LBB6_637
-.LBB6_634:                              # %.loopexit.split-lp992
+	b	.LBB6_638
+.LBB6_635:                              # %.loopexit.split-lp992
 .Ltmp255:
 	move	$s0, $a0
-	b	.LBB6_638
-.LBB6_635:                              # %.loopexit.split-lp987
+	b	.LBB6_639
+.LBB6_636:                              # %.loopexit.split-lp987
 .Ltmp258:
 	move	$s0, $a0
-	b	.LBB6_638
-.LBB6_636:                              # %.loopexit991
+	b	.LBB6_639
+.LBB6_637:                              # %.loopexit991
 .Ltmp78:
-.LBB6_637:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit364
-	move	$s0, $a0
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
 .LBB6_638:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit364
+	move	$s0, $a0
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+.LBB6_639:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit364
 	ori	$a1, $zero, 24
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB6_641
-.LBB6_639:
+	b	.LBB6_642
+.LBB6_640:
 .Ltmp72:
-.LBB6_640:                              # %.loopexit980
-	move	$s0, $a0
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
 .LBB6_641:                              # %.loopexit980
-	beqz	$s6, .LBB6_643
-.LBB6_642:                              # %.thread925
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$s0, $a0
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+.LBB6_642:                              # %.loopexit980
+	beqz	$s6, .LBB6_644
+.LBB6_643:                              # %.thread925
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $s6
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_643:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit658
+.LBB6_644:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit658
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

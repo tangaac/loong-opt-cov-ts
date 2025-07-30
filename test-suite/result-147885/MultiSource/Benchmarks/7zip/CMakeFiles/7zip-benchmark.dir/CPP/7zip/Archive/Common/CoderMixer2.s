@@ -41,21 +41,20 @@ _ZN11NCoderMixer21CBindReverseConverterC2ERKNS_9CBindInfoE: # @_ZN11NCoderMixer2
 	st.d	$a0, $s0, 160
 	pcalau12i	$a1, %pc_hi20(_ZTV13CRecordVectorIjE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV13CRecordVectorIjE+16)
-	st.d	$a1, $s0, 136
 	vst	$vr0, $s0, 176
 	st.d	$a0, $s0, 192
-	st.d	$a1, $s0, 168
 	vst	$vr0, $s0, 208
 	st.d	$a0, $s0, 224
 	vst	$vr0, $s0, 248
+	st.d	$a0, $s0, 264
 	st.w	$zero, $s0, 232
 	st.w	$zero, $s0, 0
-	ld.w	$a2, $s1, 12
+	ld.w	$a0, $s1, 12
+	st.d	$a1, $s0, 136
+	st.d	$a1, $s0, 168
 	st.d	$a1, $s0, 200
-	st.d	$a0, $s0, 264
-	ori	$a0, $zero, 1
 	st.d	$a1, $s0, 240
-	blt	$a2, $a0, .LBB0_26
+	blez	$a0, .LBB0_26
 # %bb.1:                                # %.lr.ph.i
 	move	$a0, $zero
 	move	$a1, $zero
@@ -151,42 +150,41 @@ _ZN11NCoderMixer21CBindReverseConverterC2ERKNS_9CBindInfoE: # @_ZN11NCoderMixer2
 	st.w	$a1, $s0, 212
 	bltu	$s6, $a0, .LBB0_11
 # %bb.14:                               # %._crit_edge
-	ld.w	$a2, $s1, 12
-	ori	$a1, $zero, 1
-	bge	$a2, $a1, .LBB0_16
+	ld.w	$a1, $s1, 12
+	bgtz	$a1, .LBB0_16
 	b	.LBB0_26
 .LBB0_15:
 	move	$a0, $zero
-	ld.w	$a2, $s1, 12
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB0_26
+	ld.w	$a1, $s1, 12
+	blez	$a1, .LBB0_26
 .LBB0_16:                               # %.lr.ph75
-	ld.w	$a3, $s0, 232
-	ld.d	$a4, $s1, 16
-	ld.d	$a5, $s0, 152
-	ld.d	$a6, $s0, 256
-	ld.d	$a7, $s0, 184
-	ld.d	$t0, $s0, 216
+	ld.w	$a2, $s0, 232
+	ld.d	$a3, $s1, 16
+	ld.d	$a4, $s0, 152
+	ld.d	$a5, $s0, 256
+	ld.d	$a6, $s0, 184
+	ld.d	$a7, $s0, 216
+	move	$t0, $zero
 	move	$t1, $zero
-	move	$t2, $zero
+	ori	$t2, $zero, 1
 	b	.LBB0_19
 	.p2align	4, , 16
 .LBB0_17:                               # %.loopexit.loopexit
                                         #   in Loop: Header=BB0_19 Depth=1
-	add.d	$t2, $t2, $t5
+	add.d	$t1, $t1, $t5
 .LBB0_18:                               # %.loopexit
                                         #   in Loop: Header=BB0_19 Depth=1
-	bgeu	$a1, $t3, .LBB0_26
+	bgeu	$t2, $t3, .LBB0_26
 .LBB0_19:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_21 Depth 2
                                         #     Child Loop BB0_25 Depth 2
-	move	$t3, $a2
-	addi.d	$a2, $a2, -1
-	alsl.d	$t4, $a2, $a4, 3
-	slli.d	$t5, $a2, 3
-	ldx.w	$t6, $a4, $t5
+	move	$t3, $a1
+	addi.d	$a1, $a1, -1
+	alsl.d	$t4, $a1, $a3, 3
+	slli.d	$t5, $a1, 3
+	ldx.w	$t6, $a3, $t5
 	ld.w	$t5, $t4, 4
-	sub.d	$a3, $a3, $t6
+	sub.d	$a2, $a2, $t6
 	beqz	$t6, .LBB0_23
 # %bb.20:                               # %.lr.ph62.preheader
                                         #   in Loop: Header=BB0_19 Depth=1
@@ -195,19 +193,19 @@ _ZN11NCoderMixer21CBindReverseConverterC2ERKNS_9CBindInfoE: # @_ZN11NCoderMixer2
 .LBB0_21:                               # %.lr.ph62
                                         #   Parent Loop BB0_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.w	$t7, $t1, $t6
-	add.w	$t8, $a3, $t6
+	add.w	$t7, $t0, $t6
+	add.w	$t8, $a2, $t6
 	slli.d	$fp, $t8, 2
-	stx.w	$t7, $a5, $fp
+	stx.w	$t7, $a4, $fp
 	slli.d	$t7, $t7, 2
-	stx.w	$t8, $a6, $t7
+	stx.w	$t8, $a5, $t7
 	ld.w	$t7, $t4, 0
 	addi.w	$t6, $t6, 1
 	bltu	$t6, $t7, .LBB0_21
 # %bb.22:                               # %.preheader.loopexit
                                         #   in Loop: Header=BB0_19 Depth=1
 	ld.w	$t7, $t4, 4
-	add.d	$t1, $t1, $t6
+	add.d	$t0, $t0, $t6
 	sub.d	$a0, $a0, $t5
 	bnez	$t7, .LBB0_24
 	b	.LBB0_18
@@ -223,12 +221,12 @@ _ZN11NCoderMixer21CBindReverseConverterC2ERKNS_9CBindInfoE: # @_ZN11NCoderMixer2
 .LBB0_25:                               # %.lr.ph66
                                         #   Parent Loop BB0_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.w	$t6, $t2, $t5
+	add.w	$t6, $t1, $t5
 	add.w	$t7, $a0, $t5
 	slli.d	$t8, $t7, 2
-	stx.w	$t6, $a7, $t8
+	stx.w	$t6, $a6, $t8
 	slli.d	$t6, $t6, 2
-	stx.w	$t7, $t0, $t6
+	stx.w	$t7, $a7, $t6
 	ld.w	$t6, $t4, 4
 	addi.w	$t5, $t5, 1
 	bltu	$t5, $t6, .LBB0_25
@@ -356,8 +354,7 @@ _ZN11NCoderMixer9CBindInfoC2ERKS0_:     # @_ZN11NCoderMixer9CBindInfoC2ERKS0_
 	jirl	$ra, $ra, 0
 .Ltmp13:
 # %bb.2:                                # %.noexc3.i
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB1_6
+	blez	$s2, .LBB1_6
 # %bb.3:                                # %.lr.ph.i.i.i
 	move	$s1, $zero
 	slli.d	$s2, $s2, 3
@@ -405,8 +402,7 @@ _ZN11NCoderMixer9CBindInfoC2ERKS0_:     # @_ZN11NCoderMixer9CBindInfoC2ERKS0_
 	jirl	$ra, $ra, 0
 .Ltmp21:
 # %bb.8:                                # %.noexc3.i14
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB1_12
+	blez	$s3, .LBB1_12
 # %bb.9:                                # %.lr.ph.i.i.i15
 	move	$s2, $zero
 	slli.d	$s3, $s3, 3
@@ -454,8 +450,7 @@ _ZN11NCoderMixer9CBindInfoC2ERKS0_:     # @_ZN11NCoderMixer9CBindInfoC2ERKS0_
 	jirl	$ra, $ra, 0
 .Ltmp29:
 # %bb.14:                               # %.noexc3.i28
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB1_18
+	blez	$s5, .LBB1_18
 # %bb.15:                               # %.lr.ph.i.i.i29
 	move	$s3, $zero
 	slli.d	$s5, $s5, 2
@@ -501,8 +496,7 @@ _ZN11NCoderMixer9CBindInfoC2ERKS0_:     # @_ZN11NCoderMixer9CBindInfoC2ERKS0_
 	jirl	$ra, $ra, 0
 .Ltmp37:
 # %bb.20:                               # %.noexc3.i43
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB1_24
+	blez	$s5, .LBB1_24
 # %bb.21:                               # %.lr.ph.i.i.i44
 	move	$s4, $zero
 	slli.d	$s5, $s5, 2
@@ -717,15 +711,15 @@ _ZN11NCoderMixer21CBindReverseConverter21CreateReverseBindInfoERNS_9CBindInfoE: 
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 20
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:                                # %.lr.ph
-	addi.d	$s5, $a0, 1
-	slli.d	$s6, $a0, 3
+	addi.d	$s4, $a0, 1
+	slli.d	$s5, $a0, 3
+	ori	$s6, $zero, 1
 	.p2align	4, , 16
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 24
-	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $s5
 	ld.w	$a1, $a0, -8
 	ld.wu	$a0, $a0, -4
 	slli.d	$a1, $a1, 32
@@ -740,12 +734,12 @@ _ZN11NCoderMixer21CBindReverseConverter21CreateReverseBindInfoERNS_9CBindInfoE: 
 	ld.w	$a0, $fp, 12
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 12
-	addi.d	$s5, $s5, -1
-	addi.d	$s6, $s6, -8
-	bltu	$s4, $s5, .LBB3_2
+	addi.d	$s4, $s4, -1
+	addi.d	$s5, $s5, -8
+	bltu	$s6, $s4, .LBB3_2
 .LBB3_3:                                # %._crit_edge
 	ld.w	$a0, $s0, 52
-	blt	$a0, $s4, .LBB3_6
+	blez	$a0, .LBB3_6
 # %bb.4:                                # %.lr.ph32
 	addi.d	$s4, $a0, 1
 	slli.d	$s5, $a0, 3
@@ -779,35 +773,34 @@ _ZN11NCoderMixer21CBindReverseConverter21CreateReverseBindInfoERNS_9CBindInfoE: 
 	bltu	$s6, $s4, .LBB3_5
 .LBB3_6:                                # %.preheader28
 	ld.w	$a0, $s0, 84
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB3_9
+	blez	$a0, .LBB3_9
 # %bb.7:                                # %.lr.ph34
+	move	$s3, $zero
 	move	$s4, $zero
-	move	$s5, $zero
 	.p2align	4, , 16
 .LBB3_8:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 88
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s3
 	ld.d	$a1, $s0, 152
 	slli.d	$a0, $a0, 2
-	ldx.w	$s6, $a1, $a0
+	ldx.w	$s5, $a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 108
 	ld.d	$a1, $fp, 112
 	slli.d	$a0, $a0, 2
-	stx.w	$s6, $a1, $a0
+	stx.w	$s5, $a1, $a0
 	ld.w	$a0, $fp, 108
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 108
 	ld.w	$a0, $s0, 84
-	addi.d	$s5, $s5, 1
-	addi.d	$s4, $s4, 4
-	blt	$s5, $a0, .LBB3_8
+	addi.d	$s4, $s4, 1
+	addi.d	$s3, $s3, 4
+	blt	$s4, $a0, .LBB3_8
 .LBB3_9:                                # %.preheader
 	ld.w	$a0, $s0, 116
-	blt	$a0, $s3, .LBB3_12
+	blez	$a0, .LBB3_12
 # %bb.10:                               # %.lr.ph36
 	move	$s2, $zero
 	move	$s3, $zero

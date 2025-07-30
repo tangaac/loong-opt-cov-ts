@@ -65,9 +65,10 @@ cli_parse_add:                          # @cli_parse_add
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $a0, 31, 0
+	slli.d	$a1, $a0, 32
 	beqz	$a1, .LBB0_51
 # %bb.7:                                # %.lr.ph268.preheader
+	bstrpick.d	$a1, $a0, 31, 0
 	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB0_45
 # %bb.8:
@@ -3970,8 +3971,8 @@ cli_loadndb:                            # @cli_loadndb
 	ld.d	$a1, $s6, 0
 	slli.d	$a0, $a0, 1
 	ldx.hu	$a0, $a1, $a0
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB16_31
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB16_31
 # %bb.17:                               #   in Loop: Header=BB16_10 Depth=2
 	ori	$a2, $zero, 10
 	move	$a0, $s8
@@ -3993,8 +3994,8 @@ cli_loadndb:                            # @cli_loadndb
 	ld.d	$a2, $s6, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a2, $a1
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB16_31
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB16_31
 # %bb.20:                               #   in Loop: Header=BB16_10 Depth=2
 	ori	$a2, $zero, 10
 	move	$a1, $zero
@@ -4018,8 +4019,8 @@ cli_loadndb:                            # @cli_loadndb
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB16_31
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB16_31
 # %bb.23:                               #   in Loop: Header=BB16_10 Depth=2
 	ori	$a2, $zero, 10
 	move	$a0, $s6

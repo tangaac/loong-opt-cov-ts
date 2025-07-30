@@ -82,21 +82,20 @@ EnlargeToConstraint:                    # @EnlargeToConstraint
 	.type	ScaleToConstraint,@function
 ScaleToConstraint:                      # @ScaleToConstraint
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB3_6
+	blez	$a0, .LBB3_6
 # %bb.1:
-	ld.w	$a4, $a2, 0
-	movgr2fr.w	$fa0, $a4
+	ld.w	$a3, $a2, 0
+	movgr2fr.w	$fa0, $a3
 	ffint.s.w	$fa0, $fa0
-	bstrpick.d	$a4, $a0, 31, 0
-	movgr2fr.d	$fa1, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa1, $a3
 	ffint.s.l	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
 	vldi	$vr1, -1168
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	add.w	$a0, $a1, $a0
-	blt	$a0, $a3, .LBB3_3
+	blez	$a0, .LBB3_3
 .LBB3_2:
 	ld.w	$a3, $a2, 4
 	movgr2fr.w	$fa1, $a3
@@ -108,8 +107,7 @@ ScaleToConstraint:                      # @ScaleToConstraint
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa1, $fa0, $fcc0
 .LBB3_3:
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB3_5
+	blez	$a1, .LBB3_5
 # %bb.4:
 	ld.w	$a0, $a2, 8
 	movgr2fr.w	$fa1, $a0
@@ -130,7 +128,7 @@ ScaleToConstraint:                      # @ScaleToConstraint
 .LBB3_6:
 	vldi	$vr0, -1168
 	add.w	$a0, $a1, $a0
-	bge	$a0, $a3, .LBB3_2
+	bgtz	$a0, .LBB3_2
 	b	.LBB3_3
 .Lfunc_end3:
 	.size	ScaleToConstraint, .Lfunc_end3-ScaleToConstraint
@@ -689,21 +687,20 @@ InsertScale:                            # @InsertScale
 	move	$fp, $a0
 	ld.w	$a2, $a0, 48
 	ld.w	$a0, $a0, 56
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB6_9
+	blez	$a2, .LBB6_9
 # %bb.1:
-	ld.w	$a4, $a1, 0
-	movgr2fr.w	$fa0, $a4
+	ld.w	$a3, $a1, 0
+	movgr2fr.w	$fa0, $a3
 	ffint.s.w	$fa0, $fa0
-	bstrpick.d	$a4, $a2, 31, 0
-	movgr2fr.d	$fa1, $a4
+	bstrpick.d	$a3, $a2, 31, 0
+	movgr2fr.d	$fa1, $a3
 	ffint.s.l	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
 	vldi	$vr1, -1168
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	add.w	$a2, $a0, $a2
-	blt	$a2, $a3, .LBB6_3
+	blez	$a2, .LBB6_3
 .LBB6_2:
 	ld.w	$a3, $a1, 4
 	movgr2fr.w	$fa1, $a3
@@ -715,8 +712,7 @@ InsertScale:                            # @InsertScale
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa1, $fa0, $fcc0
 .LBB6_3:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB6_5
+	blez	$a0, .LBB6_5
 # %bb.4:
 	ld.w	$a2, $a1, 8
 	movgr2fr.w	$fa1, $a2
@@ -761,7 +757,7 @@ InsertScale:                            # @InsertScale
 .LBB6_9:
 	vldi	$vr0, -1168
 	add.w	$a2, $a0, $a2
-	bge	$a2, $a3, .LBB6_2
+	bgtz	$a2, .LBB6_2
 	b	.LBB6_3
 .LBB6_10:
 	pcalau12i	$a2, %got_pc_hi20(no_fpos)
@@ -992,8 +988,7 @@ Constrained:                            # @Constrained
 	andi	$a2, $a0, 16
 	sltui	$a2, $a2, 1
 	or	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB7_88
+	beqz	$a1, .LBB7_88
 # %bb.4:
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB7_88
@@ -1096,8 +1091,7 @@ Constrained:                            # @Constrained
 .LBB7_18:
 	addi.d	$a0, $a0, -30
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s8, $a0
-	beqz	$a0, .LBB7_35
+	beq	$s8, $a0, .LBB7_35
 	b	.LBB7_88
 .LBB7_19:
 	ld.w	$a0, $s1, 64
@@ -1200,8 +1194,7 @@ Constrained:                            # @Constrained
 .LBB7_32:
 	addi.d	$a0, $a0, -32
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s8, $a0
-	bnez	$a0, .LBB7_88
+	bne	$s8, $a0, .LBB7_88
 	b	.LBB7_35
 .LBB7_33:
 	addi.d	$a0, $a0, -28
@@ -1258,8 +1251,7 @@ Constrained:                            # @Constrained
 .LBB7_36:
 	addi.d	$a0, $a0, -16
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s8, $a0
-	bnez	$a0, .LBB7_38
+	bne	$s8, $a0, .LBB7_38
 # %bb.37:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)

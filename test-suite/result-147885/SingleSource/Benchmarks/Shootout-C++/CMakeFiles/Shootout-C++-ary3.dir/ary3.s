@@ -98,8 +98,7 @@ main:                                   # @main
 	move	$s1, $s6
 .LBB0_8:                                # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit34
 	addi.w	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_25
+	blez	$a0, .LBB0_25
 .LBB0_9:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB0_11
@@ -217,8 +216,7 @@ main:                                   # @main
 	move	$s5, $zero
 	move	$s1, $zero
 	addi.w	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB0_9
+	bgtz	$a0, .LBB0_9
 .LBB0_25:                               # %.split.us
 	ld.w	$a1, $s0, 0
 .Ltmp3:

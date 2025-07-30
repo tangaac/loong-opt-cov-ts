@@ -5,10 +5,9 @@
 	.type	bilinearKernel,@function
 bilinearKernel:                         # @bilinearKernel
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_15
+	blez	$a0, .LBB0_15
 # %bb.1:
-	blt	$a1, $a4, .LBB0_15
+	blez	$a1, .LBB0_15
 # %bb.2:                                # %.preheader.us.preheader
 	move	$a4, $zero
 	slli.d	$a5, $a1, 2

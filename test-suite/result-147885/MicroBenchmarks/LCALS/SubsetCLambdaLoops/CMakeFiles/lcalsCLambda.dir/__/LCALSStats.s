@@ -1505,7 +1505,6 @@ _Z9copyTimerR8LoopStatiRK9LoopTimer:    # @_Z9copyTimerR8LoopStatiRK9LoopTimer
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1515,10 +1514,8 @@ _Z9copyTimerR8LoopStatiRK9LoopTimer:    # @_Z9copyTimerR8LoopStatiRK9LoopTimer
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	ld.bu	$a3, $a2, 16
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB6_9
+	beqz	$a3, .LBB6_9
 # %bb.1:
 	move	$fp, $a1
 	move	$s0, $a0
@@ -1556,11 +1553,11 @@ _Z9copyTimerR8LoopStatiRK9LoopTimer:    # @_Z9copyTimerR8LoopStatiRK9LoopTimer
 # %bb.4:                                # %_ZNKSt6vectorIeSaIeEE12_M_check_lenEmPKc.exit.i.i
 	move	$s4, $a1
 	srai.d	$a0, $s0, 4
-	ori	$s7, $zero, 1
-	sltu	$a1, $s7, $a0
-	masknez	$a2, $s7, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 127
@@ -1575,7 +1572,7 @@ _Z9copyTimerR8LoopStatiRK9LoopTimer:    # @_Z9copyTimerR8LoopStatiRK9LoopTimer
 	add.d	$s6, $a0, $s0
 	stx.d	$s5, $a0, $s0
 	st.d	$s4, $s6, 8
-	blt	$s0, $s7, .LBB6_6
+	blez	$s0, .LBB6_6
 # %bb.5:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -1595,7 +1592,6 @@ _Z9copyTimerR8LoopStatiRK9LoopTimer:    # @_Z9copyTimerR8LoopStatiRK9LoopTimer
 	alsl.d	$a0, $s3, $s1, 4
 	st.d	$a0, $s2, 16
 .LBB6_9:                                # %_ZNSt6vectorIeSaIeEE9push_backERKe.exit
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -1696,8 +1692,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a1, $a0
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB7_2
+	beqz	$a1, .LBB7_2
 # %bb.4:                                # %.preheader258
                                         #   in Loop: Header=BB7_3 Depth=1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
@@ -1874,8 +1869,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(__gttf2)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_12
+	blez	$a0, .LBB7_12
 # %bb.14:                               #   in Loop: Header=BB7_13 Depth=3
 	move	$a0, $zero
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
@@ -1979,19 +1973,20 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	pcalau12i	$a0, %pc_hi20(_ZL21s_loop_suite_run_info)
 	ld.d	$s0, $a0, %pc_lo12(_ZL21s_loop_suite_run_info)
 	ld.wu	$a0, $s0, 64
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
 	beqz	$a0, .LBB7_29
 # %bb.20:                               # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit
 	slli.d	$fp, $a0, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s8, $a0
+	move	$s7, $a0
 	move	$a1, $zero
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s0, 64
+	st.d	$s7, $sp, 184                   # 8-byte Folded Spill
 	beqz	$a0, .LBB7_30
 # %bb.21:                               # %.lr.ph.preheader.i.i.i.i.i148
 	slli.d	$fp, $a0, 4
@@ -2001,14 +1996,13 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	jirl	$ra, $ra, 0
 .Ltmp4:
 # %bb.22:                               # %_ZNSt6vectorIeSaIeEEC2EmRKeRKS0_.exit
-	move	$s1, $a0
+	move	$s8, $a0
 	move	$a1, $zero
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 64
-	st.d	$s1, $sp, 136                   # 8-byte Folded Spill
 	beqz	$a0, .LBB7_31
 # %bb.23:                               # %.lr.ph.preheader.i.i.i.i.i157
 	slli.d	$fp, $a0, 4
@@ -2018,14 +2012,14 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	jirl	$ra, $ra, 0
 .Ltmp7:
 # %bb.24:                               # %_ZNSt6vectorIeSaIeEEC2EmRKeRKS0_.exit166
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a1, $zero
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 64
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 136                   # 8-byte Folded Spill
 	beqz	$a0, .LBB7_58
 # %bb.25:                               # %.lr.ph.preheader.i.i.i.i.i168
 	slli.d	$fp, $a0, 4
@@ -2035,15 +2029,15 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	jirl	$ra, $ra, 0
 .Ltmp10:
 # %bb.26:                               # %_ZNSt6vectorIeSaIeEEC2EmRKeRKS0_.exit177
-	move	$s3, $a0
+	move	$s2, $a0
 	move	$a1, $zero
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.wu	$s0, $a0, 64
 	addi.w	$a0, $s0, 0
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
 	beqz	$a0, .LBB7_59
 # %bb.27:                               # %.lr.ph.preheader.i.i.i.i.i179
 	slli.d	$fp, $s0, 4
@@ -2053,7 +2047,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	jirl	$ra, $ra, 0
 .Ltmp13:
 # %bb.28:                               # %.lr.ph.i.i.i.i.i181.preheader
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	move	$a1, $zero
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memset)
@@ -2063,34 +2057,34 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	bne	$a1, $a0, .LBB7_33
 	b	.LBB7_42
 .LBB7_29:
-	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	move	$s0, $zero
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
 	move	$s8, $zero
+	st.d	$zero, $sp, 184                 # 8-byte Folded Spill
 	b	.LBB7_32
 .LBB7_30:
-	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	move	$s0, $zero
-	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	move	$s8, $zero
 	b	.LBB7_32
 .LBB7_31:
-	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	move	$s0, $zero
 .LBB7_32:                               # %_ZNSt6vectorIeSaIeEEC2EmRKeRKS0_.exit188
-	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB7_42
 .LBB7_33:                               # %.lr.ph286.preheader
-	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$a0, $zero
 	move	$a2, $zero
 	b	.LBB7_35
 	.p2align	4, , 16
 .LBB7_34:                               # %.loopexit
                                         #   in Loop: Header=BB7_35 Depth=1
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
 	bstrpick.d	$a0, $a2, 31, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
@@ -2098,13 +2092,12 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 .LBB7_35:                               # %.lr.ph286
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_39 Depth 2
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	ori	$a1, $zero, 280
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a1, $a0
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB7_34
+	beqz	$a1, .LBB7_34
 # %bb.36:                               # %.preheader257
                                         #   in Loop: Header=BB7_35 Depth=1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
@@ -2112,7 +2105,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	ld.d	$a0, $a1, 216
 	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
 	ld.d	$a1, $a1, 208
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	beq	$a0, $a1, .LBB7_34
 # %bb.37:                               # %.lr.ph284
                                         #   in Loop: Header=BB7_35 Depth=1
@@ -2120,10 +2113,10 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	move	$s8, $zero
 	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$s2, $a1, 40
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 2
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ori	$s4, $zero, 1
 	b	.LBB7_39
 	.p2align	4, , 16
@@ -2133,32 +2126,33 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	addi.d	$s8, $s8, 4
 	addi.d	$s1, $s1, 16
 	addi.w	$s4, $s4, 1
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	bgeu	$a0, $a1, .LBB7_34
 .LBB7_39:                               #   Parent Loop BB7_35 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s2, 0
 	beqz	$a0, .LBB7_38
 # %bb.40:                               #   in Loop: Header=BB7_39 Depth=2
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	ldx.w	$a0, $a1, $s8
+	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
+	ldx.w	$a0, $s7, $s8
 	addi.d	$a0, $a0, 1
-	stx.w	$a0, $a1, $s8
+	stx.w	$a0, $s7, $s8
 	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
 	fld.d	$fa0, $s0, 8
 	pcaddu18i	$ra, %call36(__extenddftf2)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
 	add.d	$s6, $fp, $s1
 	ldx.d	$a2, $fp, $s1
 	ld.d	$a3, $s6, 8
 	move	$a4, $a0
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
-	move	$s7, $a1
+	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	move	$a5, $a1
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	move	$a0, $a2
 	move	$a1, $a3
 	move	$a2, $a4
-	move	$a3, $s7
+	move	$a3, $a5
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s0, 64
@@ -2167,7 +2161,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	add.d	$s0, $s3, $s1
 	ldx.d	$a0, $s3, $s1
 	ld.d	$a1, $s0, 8
-	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	add.d	$s6, $fp, $s1
 	ldx.d	$a2, $fp, $s1
 	ld.d	$a3, $s6, 8
@@ -2177,19 +2171,21 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	st.d	$a1, $s6, 8
 	ldx.d	$a2, $s3, $s1
 	ld.d	$a3, $s0, 8
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
 	add.d	$fp, $s5, $s1
 	ldx.d	$a0, $s5, $s1
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 184                   # 8-byte Folded Spill
 	ld.d	$a0, $fp, 8
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
 	move	$a0, $s6
+	ld.d	$s7, $sp, 168                   # 8-byte Folded Reload
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
 	stx.d	$a0, $s5, $s1
@@ -2202,7 +2198,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 232
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	ldx.w	$a3, $a3, $s8
 	ldx.w	$a2, $a2, $s8
 	move	$fp, $a0
@@ -2216,7 +2212,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(__divtf3)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 	add.d	$fp, $s0, $s1
 	ldx.d	$a2, $s0, $s1
 	ld.d	$a3, $fp, 8
@@ -2232,9 +2228,9 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	st.d	$a1, $fp, 8
 	b	.LBB7_38
 .LBB7_41:                               # %.preheader.loopexit
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$s0, $a0, 64
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 .LBB7_42:                               # %.preheader
 	addi.w	$a0, $s0, 0
 	beqz	$a0, .LBB7_47
@@ -2244,61 +2240,59 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	move	$s2, $zero
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 456
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 480
 	slli.d	$a3, $a0, 4
 	alsl.d	$s3, $a0, $a3, 3
 	ldx.d	$s4, $a1, $s3
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	ldx.d	$s5, $a2, $s3
-	ori	$s6, $zero, 1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -65536
 	lu52i.d	$fp, $a0, 1023
-	move	$s7, $s8
+	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
 	b	.LBB7_45
 	.p2align	4, , 16
 .LBB7_44:                               #   in Loop: Header=BB7_45 Depth=1
 	addi.d	$s2, $s2, 1
 	ld.wu	$a0, $a1, 64
-	addi.d	$s7, $s7, 4
+	addi.d	$s6, $s6, 4
 	addi.d	$s4, $s4, 4
 	addi.d	$s1, $s1, 16
 	addi.d	$s0, $s0, 24
 	bgeu	$s2, $a0, .LBB7_47
 .LBB7_45:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $s6, 0
 	st.w	$a0, $s4, 0
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	vldx	$vr0, $a2, $s1
 	vstx	$vr0, $s5, $s1
-	blt	$a0, $s6, .LBB7_44
+	blez	$a0, .LBB7_44
 # %bb.46:                               #   in Loop: Header=BB7_45 Depth=1
 	ld.d	$a0, $a1, 168
 	ldx.d	$a1, $a0, $s0
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a1, 8
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	add.d	$a3, $a2, $s1
-	ldx.d	$a2, $a2, $s1
+	add.d	$a3, $s8, $s1
+	ldx.d	$a2, $s8, $s1
 	ld.d	$a3, $a3, 8
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	add.d	$a3, $a2, $s1
 	ldx.d	$a2, $a2, $s1
 	ld.d	$a3, $a3, 8
 	pcaddu18i	$ra, %call36(__divtf3)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 504
 	ldx.d	$a2, $a2, $s3
 	add.d	$a3, $a2, $s1
 	stx.d	$a0, $a2, $s1
 	st.d	$a1, $a3, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $s1
 	ldx.d	$a2, $a1, $s1
 	ld.d	$a3, $a0, 8
@@ -2306,44 +2300,44 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(__divtf3)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 528
 	ldx.d	$a2, $a2, $s3
 	add.d	$a3, $a2, $s1
 	stx.d	$a0, $a2, $s1
 	st.d	$a1, $a3, 8
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	b	.LBB7_44
 .LBB7_47:                               # %._crit_edge289
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beqz	$a0, .LBB7_49
 # %bb.48:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 .LBB7_49:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit190
 	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
 	beqz	$a0, .LBB7_51
 # %bb.50:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 .LBB7_51:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit192
-	beqz	$s0, .LBB7_53
+	beqz	$fp, .LBB7_53
 # %bb.52:
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-.LBB7_53:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit194
-	beqz	$fp, .LBB7_55
-# %bb.54:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB7_55:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit196
-	beqz	$s8, .LBB7_57
-# %bb.56:
+.LBB7_53:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit194
+	beqz	$s8, .LBB7_55
+# %bb.54:
 	move	$a0, $s8
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB7_55:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit196
+	beqz	$s0, .LBB7_57
+# %bb.56:
+	move	$a0, $s0
 	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
@@ -2373,10 +2367,10 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 	addi.d	$sp, $sp, 288
 	ret
 .LBB7_58:
-	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 .LBB7_59:
 	move	$s0, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	bne	$a1, $a0, .LBB7_33
@@ -2384,7 +2378,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 .LBB7_60:
 .Ltmp14:
 	move	$fp, $a0
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	b	.LBB7_62
@@ -2392,7 +2386,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 .Ltmp11:
 	move	$fp, $a0
 .LBB7_62:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	b	.LBB7_64
@@ -2400,10 +2394,10 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 .Ltmp8:
 	move	$fp, $a0
 .LBB7_64:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit199
-	move	$a0, $s1
+	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s8
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -2412,7 +2406,7 @@ _Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb: # @_Z12computeStatsjRSt6vectorI8
 .LBB7_65:
 .Ltmp5:
 	move	$fp, $a0
-	move	$a0, $s8
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -2525,7 +2519,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 # %bb.2:                                # %.lr.ph
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(_ZL21s_loop_suite_run_info)
-	move	$s2, $zero
+	move	$s3, $zero
 	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	addi.d	$s0, $a1, 600
 	bstrpick.d	$a0, $a0, 31, 0
@@ -2533,23 +2527,23 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	lu12i.w	$a0, 524287
 	ori	$s7, $a0, 4095
 	ori	$s8, $zero, 16
-	ori	$s5, $zero, 24
+	ori	$s1, $zero, 24
 	.p2align	4, , 16
 .LBB8_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_7 Depth 2
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s1, $a0, 608
+	ld.d	$s2, $a0, 608
 	move	$a0, $s0
-	beqz	$s1, .LBB8_14
+	beqz	$s2, .LBB8_14
 # %bb.4:                                # %.lr.ph.i.i.i.i
                                         #   in Loop: Header=BB8_3 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $s2, 5
+	slli.d	$a1, $s3, 5
 	add.d	$a2, $a0, $a1
 	ld.d	$s4, $a2, 8
 	ldx.d	$fp, $a0, $a1
-	move	$s3, $s0
+	move	$s5, $s0
 	b	.LBB8_7
 	.p2align	4, , 16
 .LBB8_5:                                # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i.i
@@ -2568,17 +2562,17 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_7 Depth=2
 	addi.w	$a0, $a0, 0
 	slti	$a0, $a0, 0
-	masknez	$a1, $s1, $a0
+	masknez	$a1, $s2, $a0
 	masknez	$a2, $s8, $a0
-	maskeqz	$a3, $s5, $a0
+	maskeqz	$a3, $s1, $a0
 	or	$a2, $a3, $a2
-	ldx.d	$s1, $s1, $a2
-	maskeqz	$a0, $s3, $a0
-	or	$s3, $a0, $a1
-	beqz	$s1, .LBB8_9
+	ldx.d	$s2, $s2, $a2
+	maskeqz	$a0, $s5, $a0
+	or	$s5, $a0, $a1
+	beqz	$s2, .LBB8_9
 .LBB8_7:                                #   Parent Loop BB8_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s6, $s1, 40
+	ld.d	$s6, $s2, 40
 	sltu	$a0, $s4, $s6
 	masknez	$a1, $s6, $a0
 	maskeqz	$a0, $s4, $a0
@@ -2586,7 +2580,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	beqz	$a2, .LBB8_5
 # %bb.8:                                # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i.i.i.i.i
                                         #   in Loop: Header=BB8_7 Depth=2
-	ld.d	$a0, $s1, 32
+	ld.d	$a0, $s2, 32
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
@@ -2596,24 +2590,24 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .LBB8_9:                                # %_ZNKSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PSt6vectorI8LoopStatSaIS9_EEESt10_Select1stISD_ESt4lessIS5_ESaISD_EE14_M_lower_boundEPSt18_Rb_tree_node_baseSL_RS7_.exit.i.i.i
                                         #   in Loop: Header=BB8_3 Depth=1
 	move	$a0, $s0
-	beq	$s3, $s0, .LBB8_14
+	beq	$s5, $s0, .LBB8_14
 # %bb.10:                               #   in Loop: Header=BB8_3 Depth=1
-	ld.d	$s1, $s3, 40
-	sltu	$a0, $s1, $s4
+	ld.d	$s2, $s5, 40
+	sltu	$a0, $s2, $s4
 	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $s1, $a0
+	maskeqz	$a0, $s2, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB8_12
 # %bb.11:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i.i.i.i
                                         #   in Loop: Header=BB8_3 Depth=1
-	ld.d	$a1, $s3, 32
+	ld.d	$a1, $s5, 32
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB8_13
 .LBB8_12:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i
                                         #   in Loop: Header=BB8_3 Depth=1
-	sub.d	$a0, $s4, $s1
+	sub.d	$a0, $s4, $s2
 	lu12i.w	$a2, -524288
 	slt	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
@@ -2627,29 +2621,29 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_3 Depth=1
 	addi.w	$a0, $a0, 0
 	slti	$a0, $a0, 0
-	masknez	$a1, $s3, $a0
+	masknez	$a1, $s5, $a0
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
 .LBB8_14:                               #   in Loop: Header=BB8_3 Depth=1
 	ld.d	$a1, $a0, 64
 .Ltmp15:
-	addi.w	$a0, $s2, 0
+	addi.w	$a0, $s3, 0
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_Z12computeStatsjRSt6vectorI8LoopStatSaIS0_EEb)
 	jirl	$ra, $ra, 0
 .Ltmp16:
 # %bb.15:                               #   in Loop: Header=BB8_3 Depth=1
-	addi.d	$s2, $s2, 1
+	addi.d	$s3, $s3, 1
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	bne	$s2, $a0, .LBB8_3
+	bne	$s3, $a0, .LBB8_3
 .LBB8_16:                               # %._crit_edge
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$fp, $a0, 8
 	beqz	$fp, .LBB8_26
 # %bb.17:
 	ld.d	$s3, $a0, 0
-	addi.d	$s1, $sp, 792
-	st.d	$s1, $sp, 776
+	addi.d	$s4, $sp, 792
+	st.d	$s4, $sp, 776
 	st.d	$zero, $sp, 784
 	st.b	$zero, $sp, 792
 	addi.d	$a1, $fp, 1
@@ -2731,14 +2725,13 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
-	addi.d	$s1, $sp, 792
 .LBB8_28:
 	st.d	$s0, $sp, 688
 	st.d	$fp, $a0, 0
 	ld.d	$a1, $sp, 776
 	st.d	$zero, $a0, 8
 	st.b	$zero, $a0, 16
-	beq	$a1, $s1, .LBB8_30
+	beq	$a1, $s4, .LBB8_30
 # %bb.29:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i47
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
@@ -2894,7 +2887,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	beqz	$a0, .LBB8_146
 # %bb.52:                               # %.lr.ph442
-	move	$s3, $zero
+	move	$s1, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
@@ -2905,23 +2898,22 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	lu52i.d	$a0, $a0, 2047
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
-	ld.d	$s2, $a0, %got_pc_lo12(_ZSt4cout)
+	ld.d	$s3, $a0, %got_pc_lo12(_ZSt4cout)
 	pcalau12i	$a0, %pc_hi20(.L.str.65)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.65)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.36)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s6, $zero, 8
 	lu12i.w	$a0, 524287
 	ori	$s7, $a0, 4095
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB8_54
 	.p2align	4, , 16
 .LBB8_53:                               #   in Loop: Header=BB8_54 Depth=1
-	addi.d	$s3, $s3, 1
+	addi.d	$s1, $s1, 1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB8_145
+	beq	$s1, $a0, .LBB8_145
 .LBB8_54:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_89 Depth 2
                                         #     Child Loop BB8_100 Depth 2
@@ -2973,7 +2965,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp60:
 # %bb.59:                               # %_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EERKS8_PKS5_.exit.i
                                         #   in Loop: Header=BB8_54 Depth=1
-	slli.d	$a0, $s3, 5
+	slli.d	$a0, $s1, 5
 	add.d	$s4, $s0, $a0
 	ld.d	$a0, $sp, 1296
 	ld.d	$a2, $s4, 8
@@ -2993,10 +2985,11 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a1, 5
-	st.d	$s1, $sp, 776
+	addi.d	$fp, $sp, 792
+	st.d	$fp, $sp, 776
 	ld.d	$a2, $sp, 1296
-	st.d	$a0, $s1, 0
-	st.d	$a1, $s1, 5
+	st.d	$a0, $fp, 0
+	st.d	$a1, $fp, 5
 	ori	$a0, $zero, 13
 	st.d	$a0, $sp, 784
 	st.b	$zero, $sp, 805
@@ -3007,14 +3000,14 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp65:
 	addi.d	$a0, $sp, 1288
 	ori	$a2, $zero, 13
-	move	$a1, $s1
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcm)
 	jirl	$ra, $ra, 0
 .Ltmp66:
 # %bb.63:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEpLERKS4_.exit59.i
                                         #   in Loop: Header=BB8_54 Depth=1
 	ld.d	$a0, $sp, 776
-	beq	$a0, $s1, .LBB8_65
+	beq	$a0, $fp, .LBB8_65
 # %bb.64:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i
                                         #   in Loop: Header=BB8_54 Depth=1
 	pcaddu18i	$ra, %call36(_ZdlPv)
@@ -3040,7 +3033,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.17)
 	ori	$a2, $zero, 31
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp72:
@@ -3049,7 +3042,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.d	$a1, $sp, 1288
 	ld.d	$a2, $sp, 1296
 .Ltmp73:
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp74:
@@ -3102,7 +3095,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_54 Depth=1
 .Ltmp83:
 	ori	$a2, $zero, 27
-	move	$a0, $s2
+	move	$a0, $s3
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
@@ -3112,7 +3105,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.d	$a1, $sp, 1288
 	ld.d	$a2, $sp, 1296
 .Ltmp85:
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp86:
@@ -3167,7 +3160,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.b	$a1, $a0, 2
 	ld.h	$a2, $a0, 0
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s2, $a0, %pc_lo12(_ZL21s_loop_suite_run_info)
+	ld.d	$s0, $a0, %pc_lo12(_ZL21s_loop_suite_run_info)
 	addi.d	$a0, $sp, 760
 	st.d	$a0, $sp, 744
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
@@ -3195,8 +3188,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp99:
 # %bb.87:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit79.preheader.i
                                         #   in Loop: Header=BB8_54 Depth=1
-	ld.d	$a0, $s2, 120
-	ld.d	$a1, $s2, 112
+	ld.d	$a0, $s0, 120
+	ld.d	$a1, $s0, 112
 	beq	$a0, $a1, .LBB8_91
 # %bb.88:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB8_54 Depth=1
@@ -3214,8 +3207,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp101:
 # %bb.90:                               # %_ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE.exit83.i
                                         #   in Loop: Header=BB8_89 Depth=2
-	ld.d	$a0, $s2, 120
-	ld.d	$a1, $s2, 112
+	ld.d	$a0, $s0, 120
+	ld.d	$a1, $s0, 112
 	bstrpick.d	$a2, $fp, 31, 0
 	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 5
@@ -3267,12 +3260,12 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp110:
 # %bb.98:                               # %_ZNSolsEPFRSoS_E.exit81.preheader.i
                                         #   in Loop: Header=BB8_54 Depth=1
-	ld.d	$a0, $s2, 120
-	ld.d	$a1, $s2, 112
+	ld.d	$a0, $s0, 120
+	ld.d	$a1, $s0, 112
 	beq	$a0, $a1, .LBB8_103
 # %bb.99:                               # %.lr.ph5.i.preheader
                                         #   in Loop: Header=BB8_54 Depth=1
-	move	$s0, $zero
+	move	$s2, $zero
 	ori	$fp, $zero, 1
 	.p2align	4, , 16
 .LBB8_100:                              # %.lr.ph5.i
@@ -3287,8 +3280,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp112:
 # %bb.101:                              # %_ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE.exit87.i
                                         #   in Loop: Header=BB8_100 Depth=2
-	ld.d	$a1, $s2, 112
-	slli.d	$a2, $s0, 5
+	ld.d	$a1, $s0, 112
+	slli.d	$a2, $s2, 5
 	add.d	$a3, $a1, $a2
 	ldx.d	$a1, $a1, $a2
 	ld.d	$a2, $a3, 8
@@ -3298,13 +3291,13 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp114:
 # %bb.102:                              # %_ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE.exit89.i
                                         #   in Loop: Header=BB8_100 Depth=2
-	ld.d	$a0, $s2, 120
-	ld.d	$a1, $s2, 112
-	bstrpick.d	$s0, $fp, 31, 0
+	ld.d	$a0, $s0, 120
+	ld.d	$a1, $s0, 112
+	bstrpick.d	$s2, $fp, 31, 0
 	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 5
 	addi.w	$fp, $fp, 1
-	bltu	$s0, $a0, .LBB8_100
+	bltu	$s2, $a0, .LBB8_100
 .LBB8_103:                              # %_ZNSolsEPFRSoS_E.exit81._crit_edge.i
                                         #   in Loop: Header=BB8_54 Depth=1
 	ld.d	$a0, $sp, 776
@@ -3352,16 +3345,16 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 # %bb.110:                              # %_ZNSolsEPFRSoS_E.exit85.preheader.i
                                         #   in Loop: Header=BB8_54 Depth=1
 	st.d	$s4, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$a0, $s2, 48
-	ld.d	$s1, $s2, 40
+	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$a0, $s0, 48
+	ld.d	$s2, $s0, 40
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
-	beq	$a0, $s1, .LBB8_140
+	beq	$a0, $s2, .LBB8_140
 # %bb.111:                              # %.lr.ph9.i
                                         #   in Loop: Header=BB8_54 Depth=1
 	move	$fp, $zero
 	move	$s3, $zero
-	addi.d	$a0, $s2, 600
+	addi.d	$a0, $s0, 600
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB8_113
 	.p2align	4, , 16
@@ -3370,27 +3363,27 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	addi.w	$s3, $s3, 1
 	bstrpick.d	$fp, $s3, 31, 0
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $s1
+	sub.d	$a0, $a0, $s2
 	srai.d	$a0, $a0, 5
 	bgeu	$fp, $a0, .LBB8_140
 .LBB8_113:                              #   Parent Loop BB8_54 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB8_117 Depth 3
                                         #       Child Loop BB8_129 Depth 3
-	ld.d	$s0, $s2, 608
+	ld.d	$s5, $s0, 608
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	beqz	$s0, .LBB8_124
+	beqz	$s5, .LBB8_124
 # %bb.114:                              # %.lr.ph.i.i.i.i.i
                                         #   in Loop: Header=BB8_113 Depth=2
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s4, $a0, 8
 	ld.d	$s8, $a0, 0
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 160                   # 8-byte Folded Reload
 	b	.LBB8_117
 	.p2align	4, , 16
 .LBB8_115:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i.i.i
                                         #   in Loop: Header=BB8_117 Depth=3
-	sub.d	$a0, $s6, $s4
+	sub.d	$a0, $s1, $s4
 	lu12i.w	$a2, -524288
 	slt	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
@@ -3404,28 +3397,28 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_117 Depth=3
 	addi.w	$a0, $a0, 0
 	slti	$a0, $a0, 0
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s5, $a0
 	ori	$a2, $zero, 16
 	masknez	$a2, $a2, $a0
 	ori	$a3, $zero, 24
 	maskeqz	$a3, $a3, $a0
 	or	$a2, $a3, $a2
-	ldx.d	$s0, $s0, $a2
-	maskeqz	$a0, $s5, $a0
-	or	$s5, $a0, $a1
-	beqz	$s0, .LBB8_119
+	ldx.d	$s5, $s5, $a2
+	maskeqz	$a0, $s6, $a0
+	or	$s6, $a0, $a1
+	beqz	$s5, .LBB8_119
 .LBB8_117:                              #   Parent Loop BB8_54 Depth=1
                                         #     Parent Loop BB8_113 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s6, $s0, 40
-	sltu	$a0, $s4, $s6
-	masknez	$a1, $s6, $a0
+	ld.d	$s1, $s5, 40
+	sltu	$a0, $s4, $s1
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s4, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB8_115
 # %bb.118:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i.i.i.i.i.i
                                         #   in Loop: Header=BB8_117 Depth=3
-	ld.d	$a0, $s0, 32
+	ld.d	$a0, $s5, 32
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
@@ -3436,25 +3429,24 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_113 Depth=2
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	move	$a0, $a1
-	ori	$s6, $zero, 8
-	beq	$s5, $a1, .LBB8_124
+	beq	$s6, $a1, .LBB8_124
 # %bb.120:                              #   in Loop: Header=BB8_113 Depth=2
-	ld.d	$s0, $s5, 40
-	sltu	$a0, $s0, $s4
+	ld.d	$s1, $s6, 40
+	sltu	$a0, $s1, $s4
 	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s1, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB8_122
 # %bb.121:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i.i.i.i.i62
                                         #   in Loop: Header=BB8_113 Depth=2
-	ld.d	$a1, $s5, 32
+	ld.d	$a1, $s6, 32
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB8_123
 .LBB8_122:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i.i67
                                         #   in Loop: Header=BB8_113 Depth=2
-	sub.d	$a0, $s4, $s0
+	sub.d	$a0, $s4, $s1
 	lu12i.w	$a2, -524288
 	slt	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
@@ -3468,14 +3460,15 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_113 Depth=2
 	addi.w	$a0, $a0, 0
 	slti	$a0, $a0, 0
-	masknez	$a1, $s5, $a0
+	masknez	$a1, $s6, $a0
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 .LBB8_124:                              #   in Loop: Header=BB8_113 Depth=2
 	slli.d	$a1, $fp, 5
-	add.d	$a1, $s1, $a1
+	add.d	$a1, $s2, $a1
 	ld.d	$a2, $a1, 8
+	ori	$s1, $zero, 8
 	beqz	$a2, .LBB8_112
 # %bb.125:                              #   in Loop: Header=BB8_113 Depth=2
 	ld.d	$a0, $a0, 64
@@ -3484,8 +3477,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	mul.d	$a3, $fp, $a3
 	add.d	$fp, $a0, $a3
 	ld.bu	$a0, $fp, 0
-	ori	$a3, $zero, 1
-	bne	$a0, $a3, .LBB8_112
+	beqz	$a0, .LBB8_112
 # %bb.126:                              #   in Loop: Header=BB8_113 Depth=2
 	ld.d	$a1, $a1, 0
 .Ltmp124:
@@ -3500,8 +3492,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	beq	$a0, $a1, .LBB8_132
 # %bb.128:                              # %.lr.ph7.i
                                         #   in Loop: Header=BB8_113 Depth=2
-	move	$s1, $zero
-	ori	$s0, $zero, 1
+	move	$s4, $zero
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB8_129:                              #   Parent Loop BB8_54 Depth=1
                                         #     Parent Loop BB8_113 Depth=2
@@ -3517,10 +3509,10 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, -24
 	add.d	$a1, $a0, $a1
-	st.d	$s6, $a1, 8
+	st.d	$s1, $a1, 8
 	ld.d	$a1, $fp, 64
-	alsl.d	$a2, $s1, $a1, 4
-	slli.d	$a3, $s1, 4
+	alsl.d	$a2, $s4, $a1, 4
+	slli.d	$a3, $s4, 4
 	ldx.d	$a1, $a1, $a3
 	ld.d	$a2, $a2, 8
 .Ltmp128:
@@ -3531,11 +3523,11 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_129 Depth=3
 	ld.d	$a0, $fp, 216
 	ld.d	$a1, $fp, 208
-	bstrpick.d	$s1, $s0, 31, 0
+	bstrpick.d	$s4, $s2, 31, 0
 	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 2
-	addi.w	$s0, $s0, 1
-	bltu	$s1, $a0, .LBB8_129
+	addi.w	$s2, $s2, 1
+	bltu	$s4, $a0, .LBB8_129
 .LBB8_132:                              # %_ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE.exit91._crit_edge.i
                                         #   in Loop: Header=BB8_113 Depth=2
 	ld.d	$a0, $sp, 776
@@ -3581,9 +3573,9 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp138:
 # %bb.139:                              # %.noexc155._ZNSolsEPFRSoS_E.exit93_crit_edge.i
                                         #   in Loop: Header=BB8_113 Depth=2
-	ld.d	$a0, $s2, 48
+	ld.d	$a0, $s0, 48
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
-	ld.d	$s1, $s2, 40
+	ld.d	$s2, $s0, 40
 	b	.LBB8_112
 	.p2align	4, , 16
 .LBB8_140:                              # %_ZNSolsEPFRSoS_E.exit85._crit_edge.i
@@ -3593,8 +3585,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp144:
-	addi.d	$s1, $sp, 792
-	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 # %bb.141:                              #   in Loop: Header=BB8_54 Depth=1
 	ld.d	$a0, $sp, 744
 	addi.d	$a1, $sp, 760
@@ -3619,7 +3611,6 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1288
 	addi.d	$a1, $sp, 1304
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB8_53
 # %bb.144:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i100.i
                                         #   in Loop: Header=BB8_54 Depth=1
@@ -3627,9 +3618,9 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	jirl	$ra, $ra, 0
 	b	.LBB8_53
 .LBB8_145:                              # %.preheader
-	ori	$a1, $zero, 1
+	ori	$s1, $zero, 1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB8_151
+	bne	$a0, $s1, .LBB8_151
 .LBB8_146:                              # %._crit_edge451
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 168
@@ -3688,14 +3679,13 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	pcalau12i	$a0, %pc_hi20(.L.str.69)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.69)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s4, $zero, 1
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB8_153
 	.p2align	4, , 16
 .LBB8_152:                              #   in Loop: Header=BB8_153 Depth=1
-	addi.d	$s4, $s4, 1
+	addi.d	$s1, $s1, 1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	beq	$s4, $a0, .LBB8_146
+	beq	$s1, $a0, .LBB8_146
 .LBB8_153:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_188 Depth 2
                                         #     Child Loop BB8_199 Depth 2
@@ -3747,7 +3737,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp151:
 # %bb.158:                              # %_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EERKS8_PKS5_.exit.i83
                                         #   in Loop: Header=BB8_153 Depth=1
-	slli.d	$a0, $s4, 5
+	slli.d	$a0, $s1, 5
 	add.d	$s5, $s0, $a0
 	ld.d	$a0, $sp, 1296
 	ld.d	$a2, $s5, 8
@@ -3767,10 +3757,11 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a1, 0
 	ld.w	$a1, $a1, 8
-	st.d	$s1, $sp, 776
+	addi.d	$fp, $sp, 792
+	st.d	$fp, $sp, 776
 	ld.d	$a2, $sp, 1296
-	st.d	$a0, $s1, 0
-	st.w	$a1, $s1, 8
+	st.d	$a0, $fp, 0
+	st.w	$a1, $fp, 8
 	ori	$a0, $zero, 12
 	st.d	$a0, $sp, 784
 	st.b	$zero, $sp, 804
@@ -3781,14 +3772,14 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp156:
 	addi.d	$a0, $sp, 1288
 	ori	$a2, $zero, 12
-	move	$a1, $s1
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcm)
 	jirl	$ra, $ra, 0
 .Ltmp157:
 # %bb.162:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEpLERKS4_.exit59.i94
                                         #   in Loop: Header=BB8_153 Depth=1
 	ld.d	$a0, $sp, 776
-	beq	$a0, $s1, .LBB8_164
+	beq	$a0, $fp, .LBB8_164
 # %bb.163:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i95
                                         #   in Loop: Header=BB8_153 Depth=1
 	pcaddu18i	$ra, %call36(_ZdlPv)
@@ -4121,13 +4112,13 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .Ltmp214:
 # %bb.209:                              # %_ZNSolsEPFRSoS_E.exit85.preheader.i148
                                         #   in Loop: Header=BB8_153 Depth=1
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
 	ld.d	$s2, $s3, 48
 	ld.d	$a4, $s3, 40
 	beq	$s2, $a4, .LBB8_239
 # %bb.210:                              # %.lr.ph9.i151
                                         #   in Loop: Header=BB8_153 Depth=1
-	move	$s8, $zero
+	move	$s6, $zero
 	move	$s1, $zero
 	addi.d	$a0, $s3, 600
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
@@ -4140,10 +4131,10 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .LBB8_212:                              # %_ZNSolsEPFRSoS_E.exit93.i174
                                         #   in Loop: Header=BB8_213 Depth=2
 	addi.w	$s1, $s1, 1
-	bstrpick.d	$s8, $s1, 31, 0
+	bstrpick.d	$s6, $s1, 31, 0
 	sub.d	$a0, $s2, $a4
 	srai.d	$a0, $a0, 5
-	bgeu	$s8, $a0, .LBB8_239
+	bgeu	$s6, $a0, .LBB8_239
 .LBB8_213:                              #   Parent Loop BB8_153 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB8_217 Depth 3
@@ -4156,7 +4147,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #   in Loop: Header=BB8_213 Depth=2
 	st.d	$s2, $sp, 144                   # 8-byte Folded Spill
 	move	$s2, $s3
-	ld.d	$s6, $s5, 8
+	ld.d	$s8, $s5, 8
 	move	$s3, $s5
 	ld.d	$fp, $s5, 0
 	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
@@ -4164,7 +4155,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	.p2align	4, , 16
 .LBB8_215:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i.i.i207
                                         #   in Loop: Header=BB8_217 Depth=3
-	sub.d	$a0, $s5, $s6
+	sub.d	$a0, $s5, $s8
 	lu12i.w	$a2, -524288
 	slt	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
@@ -4192,9 +4183,9 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
                                         #     Parent Loop BB8_213 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$s5, $s0, 40
-	sltu	$a0, $s6, $s5
+	sltu	$a0, $s8, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s6, $a0
+	maskeqz	$a0, $s8, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB8_215
 # %bb.218:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i.i.i.i.i.i158
@@ -4216,8 +4207,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	beq	$s4, $a1, .LBB8_224
 # %bb.220:                              #   in Loop: Header=BB8_213 Depth=2
 	ld.d	$s0, $s4, 40
-	sltu	$a0, $s0, $s6
-	masknez	$a1, $s6, $a0
+	sltu	$a0, $s0, $s8
+	masknez	$a1, $s8, $a0
 	maskeqz	$a0, $s0, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB8_222
@@ -4230,7 +4221,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	bnez	$a0, .LBB8_223
 .LBB8_222:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i.i203
                                         #   in Loop: Header=BB8_213 Depth=2
-	sub.d	$a0, $s6, $s0
+	sub.d	$a0, $s8, $s0
 	lu12i.w	$a2, -524288
 	slt	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
@@ -4249,7 +4240,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 .LBB8_224:                              #   in Loop: Header=BB8_213 Depth=2
-	slli.d	$a1, $s8, 5
+	slli.d	$a1, $s6, 5
 	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
 	add.d	$a1, $a4, $a1
 	ld.d	$a2, $a1, 8
@@ -4258,11 +4249,10 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	ld.d	$a0, $a0, 64
 	ld.d	$a0, $a0, 0
 	ori	$a3, $zero, 280
-	mul.d	$a3, $s8, $a3
+	mul.d	$a3, $s6, $a3
 	add.d	$fp, $a0, $a3
 	ld.bu	$a0, $fp, 0
-	ori	$a3, $zero, 1
-	bne	$a0, $a3, .LBB8_212
+	beqz	$a0, .LBB8_212
 # %bb.226:                              #   in Loop: Header=BB8_213 Depth=2
 	ld.d	$a1, $a1, 0
 .Ltmp215:
@@ -4366,9 +4356,8 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp235:
-	addi.d	$s1, $sp, 792
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 # %bb.240:                              #   in Loop: Header=BB8_153 Depth=1
 	ld.d	$a0, $sp, 744
 	addi.d	$a1, $sp, 760
@@ -4520,7 +4509,7 @@ _Z20generateTimingReportRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 .LBB8_278:
 	ld.d	$a1, $sp, 776
 	move	$s0, $a0
-	beq	$a1, $s1, .LBB8_326
+	beq	$a1, $s4, .LBB8_326
 # %bb.279:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i51
 	move	$a0, $a1
 	b	.LBB8_325
@@ -6231,8 +6220,7 @@ _ZN12_GLOBAL__N_124writeTimingSummaryReportERKSt6vectorINSt7__cxx1112basic_strin
 	ld.d	$a1, $s2, 64
 	ld.d	$a0, $s2, 72
 	sub.d	$a2, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB10_131
+	blez	$a2, .LBB10_131
 # %bb.130:                              #   in Loop: Header=BB10_116 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memcpy)
@@ -6253,8 +6241,7 @@ _ZN12_GLOBAL__N_124writeTimingSummaryReportERKSt6vectorINSt7__cxx1112basic_strin
 	beqz	$a0, .LBB10_233
 .LBB10_133:                             #   in Loop: Header=BB10_116 Depth=1
 	ld.bu	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB10_233
+	beqz	$a0, .LBB10_233
 # %bb.134:                              #   in Loop: Header=BB10_116 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 144                   # 8-byte Folded Reload
@@ -6486,8 +6473,7 @@ _ZN12_GLOBAL__N_124writeTimingSummaryReportERKSt6vectorINSt7__cxx1112basic_strin
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a0, $a1
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB10_150
+	beqz	$a1, .LBB10_150
 # %bb.163:                              #   in Loop: Header=BB10_151 Depth=2
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	add.d	$s3, $a0, $a1
@@ -8787,8 +8773,7 @@ _ZN12_GLOBAL__N_119writeChecksumReportERKSt6vectorINSt7__cxx1112basic_stringIcSt
 	ld.d	$a1, $s2, 256
 	ld.d	$a0, $s2, 264
 	sub.d	$a2, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB12_72
+	blez	$a2, .LBB12_72
 # %bb.71:                               #   in Loop: Header=BB12_57 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memcpy)
@@ -8809,8 +8794,7 @@ _ZN12_GLOBAL__N_119writeChecksumReportERKSt6vectorINSt7__cxx1112basic_stringIcSt
 	beqz	$a0, .LBB12_158
 .LBB12_74:                              #   in Loop: Header=BB12_57 Depth=1
 	ld.bu	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB12_158
+	beqz	$a0, .LBB12_158
 # %bb.75:                               #   in Loop: Header=BB12_57 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ori	$a1, $zero, 2
@@ -9040,8 +9024,7 @@ _ZN12_GLOBAL__N_119writeChecksumReportERKSt6vectorINSt7__cxx1112basic_stringIcSt
 	ld.d	$fp, $a0, 0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ldx.bu	$a0, $fp, $a0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB12_91
+	beqz	$a0, .LBB12_91
 # %bb.104:                              #   in Loop: Header=BB12_92 Depth=2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	beqz	$a0, .LBB12_106
@@ -11983,8 +11966,7 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 	addi.w	$a1, $s5, 0
 	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	beqz	$a0, .LBB19_96
+	beq	$a0, $a1, .LBB19_96
 .LBB19_47:
 	ld.d	$a0, $sp, 16
 	bne	$s3, $a0, .LBB19_60

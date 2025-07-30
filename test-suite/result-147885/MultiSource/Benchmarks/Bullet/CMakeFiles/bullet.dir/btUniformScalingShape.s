@@ -214,8 +214,7 @@ _ZNK21btUniformScalingShape49batchedUnitVectorGetSupportingVertexWithoutMarginEP
 	move	$s0, $a3
 	move	$s1, $a2
 	jirl	$ra, $a4, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB5_3
+	blez	$s0, .LBB5_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$a0, $s1, 8
 	.p2align	4, , 16

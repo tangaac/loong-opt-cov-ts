@@ -41,9 +41,8 @@ _Z9summarizev:                          # @_Z9summarizev
 	pcalau12i	$s1, %pc_hi20(current_test)
 	ld.w	$a0, $s1, %pc_lo12(current_test)
 	movgr2fr.d	$fs1, $zero
-	ori	$a1, $zero, 1
 	pcalau12i	$s2, %pc_hi20(.LCPI0_2)
-	blt	$a0, $a1, .LBB0_7
+	blez	$a0, .LBB0_7
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $zero
 	move	$s3, $zero
@@ -86,11 +85,10 @@ _Z9summarizev:                          # @_Z9summarizev
 	addi.d	$s5, $s5, 8
 	blt	$s3, $a0, .LBB0_2
 # %bb.3:                                # %.preheader
-	ori	$a1, $zero, 1
 	fmov.d	$fs0, $fs1
 	fmov.d	$fs5, $fs1
 	fmov.d	$fs2, $fs1
-	blt	$a0, $a1, .LBB0_8
+	blez	$a0, .LBB0_8
 # %bb.4:                                # %.lr.ph34
 	pcalau12i	$a0, %pc_hi20(result_times)
 	addi.d	$fp, $a0, %pc_lo12(result_times)
@@ -226,9 +224,8 @@ _Z5test0PdS_:                           # @_Z5test0PdS_
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB1_10
+	blez	$a1, .LBB1_10
 # %bb.1:                                # %.preheader.lr.ph
 	sub.d	$a0, $s0, $fp
 	srai.d	$s4, $a0, 3
@@ -589,9 +586,8 @@ _Z4testIPddEvT_S1_T0_:                  # @_Z4testIPddEvT_S1_T0_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB3_11
+	blez	$a1, .LBB3_11
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
 	beq	$s0, $fp, .LBB3_8
@@ -733,9 +729,8 @@ _Z4testIP6DoubleS0_EvT_S2_T0_:          # @_Z4testIP6DoubleS0_EvT_S2_T0_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB4_11
+	blez	$a1, .LBB4_11
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	beq	$s0, $fp, .LBB4_8
@@ -877,9 +872,8 @@ _Z4testI14double_pointerdEvT_S1_T0_:    # @_Z4testI14double_pointerdEvT_S1_T0_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB5_5
+	blez	$a1, .LBB5_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	bne	$s0, $fp, .LBB5_6
@@ -1021,9 +1015,8 @@ _Z4testI14Double_pointer6DoubleEvT_S2_T0_: # @_Z4testI14Double_pointer6DoubleEvT
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB6_5
+	blez	$a1, .LBB6_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
 	bne	$s0, $fp, .LBB6_6
@@ -1165,9 +1158,8 @@ _Z4testI16reverse_iteratorIPddEdEvT_S3_T0_: # @_Z4testI16reverse_iteratorIPddEdE
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB7_5
+	blez	$a1, .LBB7_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
 	bne	$s0, $fp, .LBB7_6
@@ -1309,9 +1301,8 @@ _Z4testI16reverse_iteratorIP6DoubleS1_ES1_EvT_S4_T0_: # @_Z4testI16reverse_itera
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB8_5
+	blez	$a1, .LBB8_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	bne	$s0, $fp, .LBB8_6
@@ -1453,9 +1444,8 @@ _Z4testI16reverse_iteratorI14double_pointerdEdEvT_S3_T0_: # @_Z4testI16reverse_i
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB9_5
+	blez	$a1, .LBB9_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	bne	$s0, $fp, .LBB9_6
@@ -1597,9 +1587,8 @@ _Z4testI16reverse_iteratorI14Double_pointer6DoubleES2_EvT_S4_T0_: # @_Z4testI16r
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB10_5
+	blez	$a1, .LBB10_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
 	bne	$s0, $fp, .LBB10_6
@@ -1741,9 +1730,8 @@ _Z4testI16reverse_iteratorIS0_IPddEdEdEvT_S4_T0_: # @_Z4testI16reverse_iteratorI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB11_5
+	blez	$a1, .LBB11_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
 	bne	$s0, $fp, .LBB11_6
@@ -1885,9 +1873,8 @@ _Z4testI16reverse_iteratorIS0_IP6DoubleS1_ES1_ES1_EvT_S5_T0_: # @_Z4testI16rever
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB12_5
+	blez	$a1, .LBB12_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI12_0)
 	bne	$s0, $fp, .LBB12_6
@@ -2029,9 +2016,8 @@ _Z4testI16reverse_iteratorIS0_I14double_pointerdEdEdEvT_S4_T0_: # @_Z4testI16rev
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB13_5
+	blez	$a1, .LBB13_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI13_0)
 	bne	$s0, $fp, .LBB13_6
@@ -2173,9 +2159,8 @@ _Z4testI16reverse_iteratorIS0_I14Double_pointer6DoubleES2_ES2_EvT_S5_T0_: # @_Z4
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB14_5
+	blez	$a1, .LBB14_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI14_0)
 	bne	$s0, $fp, .LBB14_6

@@ -106,21 +106,20 @@ memory_Malloc:                          # @memory_Malloc
 	bltu	$a0, $a1, .LBB2_7
 # %bb.1:
 	pcalau12i	$a1, %pc_hi20(memory_MARKSIZE)
-	ld.w	$a1, $a1, %pc_lo12(memory_MARKSIZE)
-	addi.d	$a2, $a0, 7
+	ld.w	$a2, $a1, %pc_lo12(memory_MARKSIZE)
 	pcalau12i	$s1, %pc_hi20(memory_MAXMEM)
-	ld.d	$a0, $s1, %pc_lo12(memory_MAXMEM)
-	bstrpick.d	$a2, $a2, 31, 3
-	alsl.d	$a1, $a2, $a1, 3
-	addi.w	$a2, $zero, -1
-	addi.w	$fp, $a1, 16
-	bge	$a2, $a0, .LBB2_9
+	ld.d	$a1, $s1, %pc_lo12(memory_MAXMEM)
+	addi.d	$a0, $a0, 7
+	bstrpick.d	$a0, $a0, 31, 3
+	alsl.d	$a0, $a0, $a2, 3
+	addi.w	$fp, $a0, 16
+	bltz	$a1, .LBB2_9
 # %bb.2:
-	addi.w	$a1, $a0, 0
-	bltu	$a1, $fp, .LBB2_19
+	addi.w	$a0, $a1, 0
+	bltu	$a0, $fp, .LBB2_19
 # %bb.3:
 	bstrpick.d	$s0, $fp, 31, 0
-	sub.d	$a0, $a0, $s0
+	sub.d	$a0, $a1, $s0
 	st.d	$a0, $s1, %pc_lo12(memory_MAXMEM)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(malloc)
@@ -148,9 +147,9 @@ memory_Malloc:                          # @memory_Malloc
 	addi.d	$a1, $a1, %pc_lo12(memory_ARRAY)
 	ldx.d	$fp, $a1, $a0
 	ld.d	$a0, $fp, 0
-	ld.w	$a2, $a0, 0
-	addi.w	$a1, $zero, -1
-	beq	$a2, $a1, .LBB2_11
+	ld.w	$a1, $a0, 0
+	addi.w	$a2, $zero, -1
+	beq	$a1, $a2, .LBB2_11
 # %bb.8:
 	ld.d	$a1, $a0, 0
 	st.d	$a1, $fp, 0
@@ -189,8 +188,8 @@ memory_Malloc:                          # @memory_Malloc
 	jirl	$ra, $ra, 0
 .LBB2_11:
 	ld.d	$a0, $fp, 8
-	ld.d	$a2, $fp, 24
-	beq	$a0, $a2, .LBB2_13
+	ld.d	$a1, $fp, 24
+	beq	$a0, $a1, .LBB2_13
 # %bb.12:
 	ld.w	$a1, $fp, 32
 	pcalau12i	$a2, %pc_hi20(memory_NEWBYTES)
@@ -201,18 +200,18 @@ memory_Malloc:                          # @memory_Malloc
 	st.d	$a1, $a2, %pc_lo12(memory_NEWBYTES)
 	b	.LBB2_18
 .LBB2_13:
-	pcalau12i	$a2, %pc_hi20(memory_MAXMEM)
-	ld.d	$a3, $a2, %pc_lo12(memory_MAXMEM)
+	pcalau12i	$a1, %pc_hi20(memory_MAXMEM)
+	ld.d	$a2, $a1, %pc_lo12(memory_MAXMEM)
 	pcalau12i	$a0, %pc_hi20(memory_PAGESIZE)
 	ld.wu	$a0, $a0, %pc_lo12(memory_PAGESIZE)
-	bge	$a1, $a3, .LBB2_16
+	bltz	$a2, .LBB2_16
 # %bb.14:
-	addi.w	$a1, $a3, 0
+	addi.w	$a3, $a2, 0
 	addi.w	$a4, $a0, 0
-	bltu	$a1, $a4, .LBB2_21
+	bltu	$a3, $a4, .LBB2_21
 # %bb.15:
-	sub.d	$a1, $a3, $a0
-	st.d	$a1, $a2, %pc_lo12(memory_MAXMEM)
+	sub.d	$a2, $a2, $a0
+	st.d	$a2, $a1, %pc_lo12(memory_MAXMEM)
 .LBB2_16:
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0

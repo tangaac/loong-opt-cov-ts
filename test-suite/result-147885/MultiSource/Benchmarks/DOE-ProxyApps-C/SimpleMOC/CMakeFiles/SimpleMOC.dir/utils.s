@@ -108,8 +108,7 @@ pairwise_sum:                           # @pairwise_sum
 	blt	$a2, $a1, .LBB2_3
 # %bb.1:                                # %.preheader
 	movgr2fr.w	$fa0, $zero
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_4
+	blez	$a1, .LBB2_4
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -188,9 +187,8 @@ buildExponentialTable:                  # @buildExponentialTable
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s1, $a1, .LBB3_4
+	blez	$s1, .LBB3_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	move	$s3, $zero

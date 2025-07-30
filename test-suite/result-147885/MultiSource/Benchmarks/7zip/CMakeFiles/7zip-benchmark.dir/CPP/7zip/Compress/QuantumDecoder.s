@@ -558,15 +558,13 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer4InitEv)
 	jirl	$ra, $ra, 0
-	move	$s3, $zero
+	move	$s2, $zero
 	lu12i.w	$a0, 16
 	st.w	$a0, $fp, 104
-	ori	$s2, $zero, 0
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 65536
 	st.d	$a1, $fp, 88
-	addi.w	$s4, $zero, -16
-	lu32i.d	$s2, 1
+	addi.w	$s3, $zero, -16
 	b	.LBB1_9
 	.p2align	4, , 16
 .LBB1_6:                                #   in Loop: Header=BB1_9 Depth=1
@@ -578,15 +576,15 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	addi.d	$a0, $a0, 256
 .LBB1_8:                                # %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i.i
                                         #   in Loop: Header=BB1_9 Depth=1
-	slli.d	$a1, $s3, 1
+	slli.d	$a1, $s2, 1
 	bstrpick.d	$a2, $a0, 7, 7
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $fp, 104
-	bstrpick.d	$a3, $s4, 31, 0
-	addi.d	$s4, $a3, 1
-	and	$a3, $s4, $s2
-	or	$s3, $a2, $a1
-	bnez	$a3, .LBB1_21
+	bstrpick.d	$a3, $s3, 31, 0
+	addi.d	$s3, $a3, 1
+	slli.d	$a3, $s3, 31
+	or	$s2, $a2, $a1
+	bltz	$a3, .LBB1_21
 .LBB1_9:                                # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a1, $a0, 31, 16
 	beqz	$a1, .LBB1_8
@@ -602,10 +600,10 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 .LBB1_12:
 	beqz	$s0, .LBB1_76
 # %bb.13:                               # %.preheader99
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB1_22
+	blez	$a0, .LBB1_22
 # %bb.14:                               # %.lr.ph
 	addi.d	$s1, $fp, 32
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB1_15:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $a0, -1
@@ -637,7 +635,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
                                         #   in Loop: Header=BB1_15 Depth=1
 	ld.w	$a0, $fp, 168
 	addi.w	$s0, $s3, -1
-	blt	$a0, $s2, .LBB1_19
+	blez	$a0, .LBB1_19
 # %bb.18:                               # %_ZN12CLzOutWindow7PutByteEh.exit
                                         #   in Loop: Header=BB1_15 Depth=1
 	bne	$s3, $s2, .LBB1_15
@@ -648,21 +646,21 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ori	$a0, $s2, 14
 	b	.LBB1_80
 .LBB1_21:                               # %.thread
-	st.w	$s3, $fp, 96
+	st.w	$s2, $fp, 96
 	st.w	$zero, $fp, 168
 	beqz	$s0, .LBB1_76
 .LBB1_22:                               # %.lr.ph105
-	addi.d	$s1, $fp, 88
+	addi.d	$s2, $fp, 88
 	addi.d	$s3, $fp, 184
 	addi.d	$a0, $fp, 1816
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$s4, $fp, 112
+	addi.d	$s5, $fp, 112
 	addi.d	$a0, $fp, 1204
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$s5, $fp, 32
+	addi.d	$s6, $fp, 32
 	addi.d	$a0, $fp, 388
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s6, $zero, 3
+	ori	$s4, $zero, 3
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB1_24
 	.p2align	4, , 16
@@ -681,22 +679,22 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	bnez	$a0, .LBB1_77
 # %bb.25:                               #   in Loop: Header=BB1_24 Depth=1
 	move	$a0, $s3
-	move	$a1, $s1
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE)
 	jirl	$ra, $ra, 0
-	bltu	$s6, $a0, .LBB1_28
+	bltu	$s4, $a0, .LBB1_28
 # %bb.26:                               #   in Loop: Header=BB1_24 Depth=1
-	slli.d	$s2, $a0, 6
+	slli.d	$s1, $a0, 6
 	ori	$a1, $zero, 204
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
-	move	$a1, $s1
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE)
 	jirl	$ra, $ra, 0
 	ld.wu	$a1, $fp, 40
 	ld.d	$a2, $fp, 32
-	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $s1
 	addi.d	$a3, $a1, 1
 	st.w	$a3, $fp, 40
 	stx.b	$a0, $a2, $a1
@@ -704,20 +702,20 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ld.w	$a1, $fp, 44
 	bne	$a0, $a1, .LBB1_23
 # %bb.27:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$a0, $s5
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
 	b	.LBB1_23
 	.p2align	4, , 16
 .LBB1_28:                               #   in Loop: Header=BB1_24 Depth=1
-	addi.w	$s6, $a0, -4
-	addi.w	$s3, $a0, -1
+	addi.w	$s4, $a0, -4
+	addi.w	$s8, $a0, -1
 	ori	$a1, $zero, 2
-	bne	$s6, $a1, .LBB1_40
+	bne	$s4, $a1, .LBB1_40
 # %bb.29:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$s2, $a0
+	move	$s1, $a0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	move	$a1, $s1
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 6
@@ -729,30 +727,30 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ori	$a2, $zero, 1
 	bstrins.d	$a1, $a2, 63, 2
 	sll.w	$a1, $a1, $s7
-	add.d	$a1, $s2, $a1
-	addi.w	$s3, $a1, -3
+	add.d	$a1, $s1, $a1
+	addi.w	$s8, $a1, -3
 	ori	$a1, $zero, 23
 	bltu	$a1, $a0, .LBB1_40
 # %bb.31:                               #   in Loop: Header=BB1_24 Depth=1
 	ld.w	$a0, $fp, 104
-	move	$s2, $zero
+	move	$s1, $zero
 	b	.LBB1_35
 	.p2align	4, , 16
 .LBB1_32:                               #   in Loop: Header=BB1_35 Depth=2
 	addi.d	$a1, $a0, 1
-	st.d	$a1, $s4, 0
+	st.d	$a1, $s5, 0
 	ld.bu	$a0, $a0, 0
 .LBB1_33:                               # %_ZN9CInBuffer8ReadByteEv.exit.i.i
                                         #   in Loop: Header=BB1_35 Depth=2
 	addi.d	$a0, $a0, 256
 .LBB1_34:                               # %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i
                                         #   in Loop: Header=BB1_35 Depth=2
-	slli.d	$a1, $s2, 1
+	slli.d	$a1, $s1, 1
 	bstrpick.d	$a2, $a0, 7, 7
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $fp, 104
 	addi.w	$s7, $s7, -1
-	or	$s2, $a2, $a1
+	or	$s1, $a2, $a1
 	beqz	$s7, .LBB1_39
 .LBB1_35:                               #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -763,53 +761,53 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ld.d	$a1, $fp, 120
 	bltu	$a0, $a1, .LBB1_32
 # %bb.37:                               #   in Loop: Header=BB1_35 Depth=2
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer10ReadBlock2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB1_33
 .LBB1_38:                               #   in Loop: Header=BB1_24 Depth=1
-	add.w	$s3, $a0, $s3
+	add.w	$s8, $a0, $s8
 	b	.LBB1_40
 .LBB1_39:                               # %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit
                                         #   in Loop: Header=BB1_24 Depth=1
-	add.w	$s3, $s2, $s3
+	add.w	$s8, $s1, $s8
 	.p2align	4, , 16
 .LBB1_40:                               #   in Loop: Header=BB1_24 Depth=1
-	bstrpick.d	$a0, $s6, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	ori	$a1, $zero, 204
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
-	move	$a1, $s1
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE)
 	jirl	$ra, $ra, 0
-	move	$s6, $a0
+	move	$s7, $a0
 	ori	$a0, $zero, 4
-	bltu	$s6, $a0, .LBB1_49
+	bltu	$s7, $a0, .LBB1_49
 # %bb.41:                               #   in Loop: Header=BB1_24 Depth=1
 	ld.w	$a0, $fp, 104
-	bstrpick.d	$a1, $s6, 31, 1
-	addi.d	$s8, $a1, -1
-	move	$s2, $zero
-	move	$s7, $s8
+	bstrpick.d	$a1, $s7, 31, 1
+	addi.d	$s1, $a1, -1
+	move	$s3, $zero
+	move	$s4, $s1
 	b	.LBB1_45
 	.p2align	4, , 16
 .LBB1_42:                               #   in Loop: Header=BB1_45 Depth=2
 	addi.d	$a1, $a0, 1
-	st.d	$a1, $s4, 0
+	st.d	$a1, $s5, 0
 	ld.bu	$a0, $a0, 0
 .LBB1_43:                               # %_ZN9CInBuffer8ReadByteEv.exit.i.i78
                                         #   in Loop: Header=BB1_45 Depth=2
 	addi.d	$a0, $a0, 256
 .LBB1_44:                               # %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i75
                                         #   in Loop: Header=BB1_45 Depth=2
-	slli.d	$a1, $s2, 1
+	slli.d	$a1, $s3, 1
 	bstrpick.d	$a2, $a0, 7, 7
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $fp, 104
-	addi.w	$s7, $s7, -1
-	or	$s2, $a2, $a1
-	beqz	$s7, .LBB1_48
+	addi.w	$s4, $s4, -1
+	or	$s3, $a2, $a1
+	beqz	$s4, .LBB1_48
 .LBB1_45:                               #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	bstrpick.d	$a1, $a0, 31, 16
@@ -819,7 +817,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ld.d	$a1, $fp, 120
 	bltu	$a0, $a1, .LBB1_42
 # %bb.47:                               #   in Loop: Header=BB1_45 Depth=2
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer10ReadBlock2Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB1_43
@@ -827,44 +825,43 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 .LBB1_48:                               # %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit80
                                         #   in Loop: Header=BB1_24 Depth=1
 	ori	$a0, $zero, 1
-	bstrins.d	$s6, $a0, 63, 1
-	sll.w	$a0, $s6, $s8
-	add.w	$s6, $s2, $a0
+	bstrins.d	$s7, $a0, 63, 1
+	sll.w	$a0, $s7, $s1
+	add.w	$s7, $s3, $a0
 .LBB1_49:                               #   in Loop: Header=BB1_24 Depth=1
 	ld.w	$a2, $fp, 40
-	nor	$a0, $s6, $zero
-	add.w	$a1, $a2, $a0
-	bltu	$s6, $a2, .LBB1_53
+	nor	$a0, $s7, $zero
+	add.w	$a0, $a2, $a0
+	bltu	$s7, $a2, .LBB1_53
 # %bb.50:                               #   in Loop: Header=BB1_24 Depth=1
-	ld.bu	$a3, $fp, 80
-	ori	$a0, $zero, 1
-	bne	$a3, $a0, .LBB1_80
+	ld.bu	$a1, $fp, 80
+	beqz	$a1, .LBB1_77
 # %bb.51:                               #   in Loop: Header=BB1_24 Depth=1
-	ld.w	$a3, $fp, 52
-	bgeu	$s6, $a3, .LBB1_80
+	ld.w	$a1, $fp, 52
+	bgeu	$s7, $a1, .LBB1_77
 # %bb.52:                               #   in Loop: Header=BB1_24 Depth=1
-	add.w	$a1, $a3, $a1
+	add.w	$a0, $a1, $a0
 .LBB1_53:                               #   in Loop: Header=BB1_24 Depth=1
-	sltu	$a0, $s3, $s0
+	sltu	$a1, $s8, $s0
 	ld.w	$a3, $fp, 44
-	masknez	$a4, $s0, $a0
-	maskeqz	$a0, $s3, $a0
-	or	$s7, $a0, $a4
-	sub.w	$a0, $a3, $a2
-	bgeu	$s7, $a0, .LBB1_59
+	masknez	$a4, $s0, $a1
+	maskeqz	$a1, $s8, $a1
+	or	$s4, $a1, $a4
+	sub.w	$a1, $a3, $a2
+	bgeu	$s4, $a1, .LBB1_59
 # %bb.54:                               #   in Loop: Header=BB1_24 Depth=1
-	ld.w	$a0, $fp, 52
-	sub.w	$a0, $a0, $a1
-	bgeu	$s7, $a0, .LBB1_59
+	ld.w	$a1, $fp, 52
+	sub.w	$a1, $a1, $a0
+	bgeu	$s4, $a1, .LBB1_59
 # %bb.55:                               # %iter.check
                                         #   in Loop: Header=BB1_24 Depth=1
 	ld.d	$a4, $fp, 32
 	bstrpick.d	$a6, $a2, 31, 0
-	bstrpick.d	$a5, $a1, 31, 0
+	bstrpick.d	$a5, $a0, 31, 0
 	add.d	$a1, $a4, $a5
 	add.d	$a0, $a4, $a6
-	add.d	$a2, $a2, $s7
-	addi.w	$a3, $s7, -1
+	add.d	$a2, $a2, $s4
+	addi.w	$a3, $s4, -1
 	st.w	$a2, $fp, 40
 	ori	$a2, $zero, 7
 	bltu	$a3, $a2, .LBB1_64
@@ -884,22 +881,22 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	b	.LBB1_69
 	.p2align	4, , 16
 .LBB1_59:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$s2, $s7
+	move	$s1, $s4
 	b	.LBB1_61
 	.p2align	4, , 16
 .LBB1_60:                               #   in Loop: Header=BB1_61 Depth=2
-	addi.w	$s2, $s2, -1
-	addi.w	$a1, $s8, 1
-	beqz	$s2, .LBB1_74
+	addi.w	$s1, $s1, -1
+	addi.w	$a0, $s3, 1
+	beqz	$s1, .LBB1_74
 .LBB1_61:                               #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $fp, 52
-	xor	$a0, $a1, $a0
-	sltui	$a0, $a0, 1
+	ld.w	$a1, $fp, 52
+	xor	$a1, $a0, $a1
+	sltui	$a1, $a1, 1
 	ld.d	$a2, $fp, 32
-	masknez	$s8, $a1, $a0
+	masknez	$s3, $a0, $a1
 	ld.wu	$a0, $fp, 40
-	bstrpick.d	$a1, $s8, 31, 0
+	bstrpick.d	$a1, $s3, 31, 0
 	ldx.b	$a1, $a2, $a1
 	addi.d	$a3, $a0, 1
 	st.w	$a3, $fp, 40
@@ -908,15 +905,15 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ld.w	$a1, $fp, 44
 	bne	$a0, $a1, .LBB1_60
 # %bb.62:                               #   in Loop: Header=BB1_61 Depth=2
-	move	$a0, $s5
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
 	b	.LBB1_60
 .LBB1_63:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$a3, $s7
+	move	$a3, $s4
 	b	.LBB1_73
 .LBB1_64:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$a3, $s7
+	move	$a3, $s4
 	b	.LBB1_73
 .LBB1_65:                               # %vector.ph
                                         #   in Loop: Header=BB1_24 Depth=1
@@ -949,7 +946,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
                                         #   in Loop: Header=BB1_24 Depth=1
 	bstrpick.d	$t1, $a2, 32, 3
 	slli.d	$t0, $t1, 3
-	sub.d	$a3, $s7, $t0
+	sub.d	$a3, $s4, $t0
 	alsl.d	$a1, $t1, $a1, 3
 	alsl.d	$a0, $t1, $a0, 3
 	sub.d	$t1, $a7, $t0
@@ -972,7 +969,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	bne	$a2, $t0, .LBB1_73
 	b	.LBB1_74
 .LBB1_72:                               #   in Loop: Header=BB1_24 Depth=1
-	sub.d	$a3, $s7, $a7
+	sub.d	$a3, $s4, $a7
 	add.d	$a1, $a1, $a7
 	add.d	$a0, $a0, $a7
 	.p2align	4, , 16
@@ -989,11 +986,11 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	.p2align	4, , 16
 .LBB1_74:                               # %.loopexit
                                         #   in Loop: Header=BB1_24 Depth=1
-	bltu	$s0, $s3, .LBB1_78
+	bltu	$s0, $s8, .LBB1_78
 # %bb.75:                               #   in Loop: Header=BB1_24 Depth=1
-	sub.w	$s0, $s0, $s7
+	sub.w	$s0, $s0, $s4
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ori	$s6, $zero, 3
+	ori	$s4, $zero, 3
 	bnez	$s0, .LBB1_24
 	b	.LBB1_79
 .LBB1_76:
@@ -1003,9 +1000,9 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ori	$a0, $zero, 1
 	b	.LBB1_80
 .LBB1_78:                               # %_ZN12CLzOutWindow9CopyBlockEjj.exit.thread94
-	sub.d	$a0, $s3, $s7
+	sub.d	$a0, $s8, $s4
 	st.w	$a0, $fp, 168
-	st.w	$s6, $fp, 172
+	st.w	$s7, $fp, 172
 .LBB1_79:                               # %.loopexit98
 	ld.bu	$a0, $fp, 156
 .LBB1_80:                               # %_ZN12CLzOutWindow9CopyBlockEjj.exit.thread91
@@ -1666,8 +1663,7 @@ _ZN9NCompress8NQuantum8CDecoder15CDecoderFlusherD2Ev: # @_ZN9NCompress8NQuantum8
 	.cfi_offset 22, -16
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 8
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_2
+	beqz	$a0, .LBB4_2
 # %bb.1:
 	ld.d	$a0, $fp, 0
 	addi.d	$a0, $a0, 32
@@ -2601,39 +2597,36 @@ _ZThn16_N9NCompress8NQuantum8CDecoderD0Ev: # @_ZThn16_N9NCompress8NQuantum8CDeco
 _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj: # @_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a0
 	ld.w	$a0, $a0, 4
 	ld.w	$a4, $fp, 0
 	mul.w	$a2, $a0, $a2
 	div.wu	$a2, $a2, $a3
-	add.d	$a2, $a4, $a2
-	ld.w	$a5, $fp, 8
-	addi.w	$s2, $a2, -1
 	mul.w	$a0, $a0, $a1
+	ld.w	$a1, $fp, 8
+	add.d	$a2, $a4, $a2
+	addi.w	$s2, $a2, -1
 	div.wu	$a0, $a0, $a3
-	sub.d	$s1, $a5, $a0
+	sub.d	$s1, $a1, $a0
 	st.w	$s1, $fp, 8
 	add.w	$a1, $a0, $a4
 	st.w	$a1, $fp, 0
 	addi.d	$s0, $fp, 24
-	lu12i.w	$s3, 8
-	lu12i.w	$s4, 4
+	lu12i.w	$s3, 4
 	b	.LBB27_4
 	.p2align	4, , 16
 .LBB27_1:                               #   in Loop: Header=BB27_4 Depth=1
@@ -2656,17 +2649,17 @@ _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj: # @_ZN9NCompress8NQuant
 	move	$s2, $a2
 .LBB27_4:                               # =>This Inner Loop Header: Depth=1
 	xor	$a0, $a1, $s2
-	and	$a0, $a0, $s3
-	beqz	$a0, .LBB27_8
+	slli.d	$a0, $a0, 48
+	bgez	$a0, .LBB27_8
 # %bb.5:                                #   in Loop: Header=BB27_4 Depth=1
-	and	$a0, $s2, $s4
-	bnez	$a0, .LBB27_11
+	slli.d	$a0, $s2, 49
+	bltz	$a0, .LBB27_11
 # %bb.6:                                #   in Loop: Header=BB27_4 Depth=1
-	and	$a0, $a1, $s4
+	and	$a0, $a1, $s3
 	beqz	$a0, .LBB27_11
 # %bb.7:                                #   in Loop: Header=BB27_4 Depth=1
 	bstrpick.d	$a1, $a1, 13, 0
-	or	$s2, $s2, $s4
+	or	$s2, $s2, $s3
 .LBB27_8:                               #   in Loop: Header=BB27_4 Depth=1
 	ld.wu	$a0, $fp, 16
 	slli.d	$a1, $a1, 1
@@ -2689,14 +2682,13 @@ _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj: # @_ZN9NCompress8NQuant
 	sub.d	$a0, $s2, $a1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 4
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end27:
 	.size	_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj, .Lfunc_end27-_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj

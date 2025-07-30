@@ -14,7 +14,7 @@ main:                                   # @main
 	ld.w	$a2, $a0, %pc_lo12(i)
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a3, $a1, 15, 0
+	slli.d	$a3, $a1, 48
 	st.w	$a2, $a0, %pc_lo12(i)
 	bnez	$a3, .LBB0_1
 # %bb.2:

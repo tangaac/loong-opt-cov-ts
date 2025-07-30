@@ -96,8 +96,7 @@ doMultiSearches:                        # @doMultiSearches
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$s3, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.11:                               # %.lr.ph.i
                                         #   in Loop: Header=BB0_6 Depth=1
 	ori	$a0, $zero, 1
@@ -297,10 +296,10 @@ findLabelPath:                          # @findLabelPath
 	beqz	$a0, .LBB1_16
 # %bb.7:                                # %.preheader
 	move	$s1, $a0
-	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_17
+	ld.w	$a0, $a0, 0
+	blez	$a0, .LBB1_17
 # %bb.8:                                # %.lr.ph
+	ori	$a0, $zero, 1
 	addi.d	$s3, $s3, 8
 	bne	$s4, $a0, .LBB1_20
 # %bb.9:                                # %.lr.ph.split.us.preheader
@@ -611,10 +610,10 @@ findAndRecordAllPaths:                  # @findAndRecordAllPaths
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	beqz	$s0, .LBB3_27
 # %bb.9:
+	pcalau12i	$a0, %got_pc_hi20(stdout)
+	ld.d	$a0, $a0, %got_pc_lo12(stdout)
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.Lstr)
-	pcalau12i	$a1, %got_pc_hi20(stdout)
-	ld.d	$a1, $a1, %got_pc_lo12(stdout)
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(globalStats)
@@ -674,8 +673,7 @@ findAndRecordAllPaths:                  # @findAndRecordAllPaths
 	bnez	$a0, .LBB3_21
 # %bb.17:                               #   in Loop: Header=BB3_12 Depth=1
 	ld.bu	$a0, $fp, 5
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB3_21
+	beqz	$a0, .LBB3_21
 # %bb.18:                               #   in Loop: Header=BB3_12 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(globalStats)
@@ -851,14 +849,13 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	ori	$a1, $zero, 28
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 32
 	ld.w	$a1, $a0, 0
-	blt	$a1, $fp, .LBB4_28
+	blez	$a1, .LBB4_30
 # %bb.1:                                # %.preheader.preheader
-	move	$a3, $zero
+	move	$a2, $zero
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	move	$s0, $zero
 	vrepli.b	$vr0, 0
@@ -866,23 +863,22 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
 	b	.LBB4_4
 	.p2align	4, , 16
 .LBB4_2:                                #   in Loop: Header=BB4_4 Depth=1
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 .LBB4_3:                                # %._crit_edge
                                         #   in Loop: Header=BB4_4 Depth=1
-	addi.d	$a3, $a3, 1
-	bge	$a3, $a1, .LBB4_29
+	addi.d	$a2, $a2, 1
+	bge	$a2, $a1, .LBB4_31
 .LBB4_4:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_9 Depth 2
-                                        #       Child Loop BB4_23 Depth 3
-                                        #       Child Loop BB4_17 Depth 3
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_3
+                                        #       Child Loop BB4_25 Depth 3
+                                        #       Child Loop BB4_18 Depth 3
+	blez	$a1, .LBB4_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_4 Depth=1
-	move	$s1, $zero
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	slli.d	$s8, $a3, 3
+	move	$fp, $zero
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	slli.d	$s1, $a2, 3
 	b	.LBB4_9
 	.p2align	4, , 16
 .LBB4_6:                                #   in Loop: Header=BB4_9 Depth=2
@@ -895,22 +891,22 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
 .LBB4_8:                                #   in Loop: Header=BB4_9 Depth=2
 	ld.d	$a0, $s2, 32
 	ld.w	$a1, $a0, 0
-	addi.d	$s1, $s1, 1
+	addi.d	$fp, $fp, 1
 	addi.w	$s0, $s0, 1
-	bge	$s1, $a1, .LBB4_2
+	bge	$fp, $a1, .LBB4_2
 .LBB4_9:                                # %.lr.ph
                                         #   Parent Loop BB4_4 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_23 Depth 3
-                                        #       Child Loop BB4_17 Depth 3
+                                        #       Child Loop BB4_25 Depth 3
+                                        #       Child Loop BB4_18 Depth 3
 	st.d	$zero, $sp, 72
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 56
 	ld.d	$a0, $a0, 8
-	ldx.d	$a1, $a0, $s8
+	ldx.d	$a1, $a0, $s1
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $sp, 56
-	slli.d	$a1, $s1, 3
+	slli.d	$a1, $fp, 3
 	ldx.d	$a0, $a0, $a1
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $sp, 64
@@ -941,33 +937,34 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
                                         #   in Loop: Header=BB4_9 Depth=2
 	move	$s6, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_26
+	blez	$a0, .LBB4_28
 # %bb.15:                               # %.lr.ph.i
                                         #   in Loop: Header=BB4_9 Depth=2
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	move	$fp, $zero
-	move	$s3, $zero
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_17
-	b	.LBB4_23
+	bne	$a0, $a1, .LBB4_23
+# %bb.16:                               # %.lr.ph.split.us.i.preheader
+                                        #   in Loop: Header=BB4_9 Depth=2
+	move	$s8, $zero
+	move	$s3, $zero
+	b	.LBB4_18
 	.p2align	4, , 16
-.LBB4_16:                               #   in Loop: Header=BB4_17 Depth=3
+.LBB4_17:                               #   in Loop: Header=BB4_18 Depth=3
 	ld.w	$a0, $s6, 0
 	addi.d	$s3, $s3, 1
-	addi.d	$fp, $fp, 8
-	bge	$s3, $a0, .LBB4_26
-.LBB4_17:                               # %.lr.ph.split.us.i
+	addi.d	$s8, $s8, 8
+	bge	$s3, $a0, .LBB4_28
+.LBB4_18:                               # %.lr.ph.split.us.i
                                         #   Parent Loop BB4_4 Depth=1
                                         #     Parent Loop BB4_9 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a1, $s6, 8
 	ld.d	$a0, $s2, 24
-	ldx.d	$a1, $a1, $fp
+	ldx.d	$a1, $a1, $s8
 	pcaddu18i	$ra, %call36(SearchDiagram_findNode)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_20
-# %bb.18:                               #   in Loop: Header=BB4_17 Depth=3
+	beqz	$a0, .LBB4_21
+# %bb.19:                               #   in Loop: Header=BB4_18 Depth=3
 	ld.d	$a2, $a0, 0
 	ld.d	$a1, $a0, 8
 	move	$a0, $a2
@@ -980,33 +977,38 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(Bitfield_clear)
 	jirl	$ra, $ra, 0
-	bnez	$s7, .LBB4_27
-# %bb.19:                               #   in Loop: Header=BB4_17 Depth=3
+	bnez	$s7, .LBB4_29
+# %bb.20:                               #   in Loop: Header=BB4_18 Depth=3
 	ld.w	$a0, $s4, 0
-	bnez	$a0, .LBB4_21
-	b	.LBB4_16
+	bnez	$a0, .LBB4_22
+	b	.LBB4_17
 	.p2align	4, , 16
-.LBB4_20:                               #   in Loop: Header=BB4_17 Depth=3
+.LBB4_21:                               #   in Loop: Header=BB4_18 Depth=3
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(Bitfield_clear)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	beqz	$a0, .LBB4_16
-.LBB4_21:                               #   in Loop: Header=BB4_17 Depth=3
+	beqz	$a0, .LBB4_17
+.LBB4_22:                               #   in Loop: Header=BB4_18 Depth=3
 	st.w	$zero, $s4, 0
-	b	.LBB4_16
+	b	.LBB4_17
+.LBB4_23:                               # %.lr.ph.split.i.preheader
+                                        #   in Loop: Header=BB4_9 Depth=2
+	move	$s3, $zero
+	move	$s8, $zero
+	b	.LBB4_25
 	.p2align	4, , 16
-.LBB4_22:                               #   in Loop: Header=BB4_23 Depth=3
+.LBB4_24:                               #   in Loop: Header=BB4_25 Depth=3
 	ld.w	$a0, $s6, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$fp, $fp, 8
-	bge	$s3, $a0, .LBB4_26
-.LBB4_23:                               # %.lr.ph.split.i
+	addi.d	$s8, $s8, 1
+	addi.d	$s3, $s3, 8
+	bge	$s8, $a0, .LBB4_28
+.LBB4_25:                               # %.lr.ph.split.i
                                         #   Parent Loop BB4_4 Depth=1
                                         #     Parent Loop BB4_9 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s6, 8
-	ldx.d	$a0, $a0, $fp
+	ldx.d	$a0, $a0, $s3
 	addi.d	$a1, $sp, 64
 	move	$a2, $s4
 	move	$a3, $s5
@@ -1016,20 +1018,20 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(Bitfield_clear)
 	jirl	$ra, $ra, 0
-	bnez	$s7, .LBB4_27
-# %bb.24:                               #   in Loop: Header=BB4_23 Depth=3
+	bnez	$s7, .LBB4_29
+# %bb.26:                               #   in Loop: Header=BB4_25 Depth=3
 	ld.w	$a0, $s4, 0
-	beqz	$a0, .LBB4_22
-# %bb.25:                               #   in Loop: Header=BB4_23 Depth=3
+	beqz	$a0, .LBB4_24
+# %bb.27:                               #   in Loop: Header=BB4_25 Depth=3
 	st.w	$zero, $s4, 0
-	b	.LBB4_22
-.LBB4_26:                               # %findLabelPath.exit.thread41
+	b	.LBB4_24
+.LBB4_28:                               # %findLabelPath.exit.thread41
                                         #   in Loop: Header=BB4_9 Depth=2
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(Bitfield_delete)
 	jirl	$ra, $ra, 0
 	b	.LBB4_7
-.LBB4_27:                               # %.loopexit
+.LBB4_29:                               # %.loopexit
                                         #   in Loop: Header=BB4_9 Depth=2
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(Bitfield_delete)
@@ -1038,10 +1040,10 @@ findAllPossibleLegs:                    # @findAllPossibleLegs
 	addi.w	$a0, $a0, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB4_7
-.LBB4_28:
+.LBB4_30:
 	move	$s0, $zero
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
-.LBB4_29:                               # %._crit_edge55
+.LBB4_31:                               # %._crit_edge55
 	pcaddu18i	$ra, %call36(currentTime)
 	jirl	$ra, $ra, 0
 	fsub.d	$fa0, $fa0, $fs0
@@ -1160,7 +1162,6 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	ori	$a1, $zero, 28
 	ori	$a2, $zero, 1
-	ori	$s6, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
@@ -1182,14 +1183,14 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 32
 	ld.w	$a1, $a0, 0
-	blt	$a1, $s6, .LBB5_16
+	blez	$a1, .LBB5_16
 # %bb.2:                                # %.preheader.preheader
-	move	$s0, $zero
+	move	$s8, $zero
 	move	$fp, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(.L__const.findAndLogAllPossibleLegs.fullIntSignature)
-	addi.d	$s8, $a2, %pc_lo12(.L__const.findAndLogAllPossibleLegs.fullIntSignature)
+	addi.d	$s0, $a2, %pc_lo12(.L__const.findAndLogAllPossibleLegs.fullIntSignature)
 	b	.LBB5_5
 	.p2align	4, , 16
 .LBB5_3:                                # %.lr.ph74.split.us
@@ -1197,21 +1198,21 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	add.w	$fp, $fp, $a1
 .LBB5_4:                                # %._crit_edge75
                                         #   in Loop: Header=BB5_5 Depth=1
-	addi.d	$s0, $s0, 1
-	bge	$s0, $a1, .LBB5_17
+	addi.d	$s8, $s8, 1
+	bge	$s8, $a1, .LBB5_17
 .LBB5_5:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_10 Depth 2
                                         #       Child Loop BB5_13 Depth 3
-	blt	$a1, $s6, .LBB5_4
+	blez	$a1, .LBB5_4
 # %bb.6:                                # %.lr.ph74
                                         #   in Loop: Header=BB5_5 Depth=1
 	ld.d	$a2, $a0, 8
-	slli.d	$s2, $s0, 3
+	slli.d	$s2, $s8, 3
 	ldx.d	$a2, $a2, $s2
 	ld.d	$a2, $a2, 16
 	ld.w	$a2, $a2, 0
-	blt	$a2, $s6, .LBB5_3
+	blez	$a2, .LBB5_3
 # %bb.7:                                # %.lr.ph74.split.preheader
                                         #   in Loop: Header=BB5_5 Depth=1
 	move	$s4, $zero
@@ -1220,7 +1221,6 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 .LBB5_8:                                # %._crit_edge.loopexit
                                         #   in Loop: Header=BB5_10 Depth=2
 	ld.w	$a1, $a0, 0
-	ori	$s6, $zero, 1
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 .LBB5_9:                                # %._crit_edge
                                         #   in Loop: Header=BB5_10 Depth=2
@@ -1235,7 +1235,7 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	ldx.d	$a2, $a2, $s2
 	ld.d	$a2, $a2, 16
 	ld.w	$a2, $a2, 0
-	blt	$a2, $s6, .LBB5_9
+	blez	$a2, .LBB5_9
 # %bb.11:                               # %.lr.ph
                                         #   in Loop: Header=BB5_10 Depth=2
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
@@ -1258,12 +1258,12 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 .LBB5_13:                               #   Parent Loop BB5_5 Depth=1
                                         #     Parent Loop BB5_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a0, $s8, 8
+	ld.w	$a0, $s0, 8
 	st.d	$zero, $sp, 88
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 72
 	st.w	$a0, $sp, 64
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a1, 0
 	st.d	$a0, $sp, 56
 	ldx.d	$a0, $a1, $s2
@@ -1272,7 +1272,7 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	ldx.d	$a0, $a1, $s3
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $sp, 80
-	st.w	$s0, $sp, 56
+	st.w	$s8, $sp, 56
 	st.w	$s4, $sp, 60
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(NodePtrVec_new)
@@ -1377,7 +1377,7 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.bu	$a0, $fp, 6
-	bne	$a0, $s6, .LBB5_20
+	beqz	$a0, .LBB5_20
 # %bb.18:
 	ld.d	$a0, $fp, 8
 	beqz	$a0, .LBB5_20
@@ -1391,8 +1391,7 @@ findAndLogAllPossibleLegs:              # @findAndLogAllPossibleLegs
 	jirl	$ra, $ra, 0
 .LBB5_20:
 	ld.bu	$a0, $fp, 5
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_24
+	beqz	$a0, .LBB5_24
 # %bb.21:
 	ld.bu	$a0, $fp, 4
 	bnez	$a0, .LBB5_24

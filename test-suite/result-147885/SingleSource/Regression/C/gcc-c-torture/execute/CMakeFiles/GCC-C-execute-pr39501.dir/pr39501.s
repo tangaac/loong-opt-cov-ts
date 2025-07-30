@@ -94,8 +94,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.1:
 	movgr2fr.w	$fs0, $zero
 	vldi	$vr0, -1040
@@ -104,24 +103,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.2:
 	vldi	$vr1, -1168
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(float_min1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.3:
 	vldi	$vr0, -1168
 	fmov.s	$fa1, $fs0
 	pcaddu18i	$ra, %call36(float_min1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.4:
 	vldi	$vr0, -1040
 	vldi	$vr1, -1168
@@ -129,8 +125,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.5:
 	vldi	$vr0, -1168
 	vldi	$vr1, -1040
@@ -138,24 +133,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.6:
 	vldi	$vr1, -1040
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(float_max1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.7:
 	vldi	$vr0, -1040
 	fmov.s	$fa1, $fs0
 	pcaddu18i	$ra, %call36(float_max1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.8:
 	movgr2fr.w	$fa0, $zero
 	vldi	$vr1, -1168
@@ -163,8 +155,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.9:
 	movgr2fr.w	$fa1, $zero
 	vldi	$vr0, -1168
@@ -172,8 +163,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.10:
 	vldi	$vr0, -1040
 	vldi	$vr1, -1168
@@ -181,8 +171,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.11:
 	vldi	$vr0, -1168
 	vldi	$vr1, -1040
@@ -190,8 +179,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.12:
 	movgr2fr.w	$fa0, $zero
 	vldi	$vr1, -1040
@@ -199,8 +187,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.13:
 	movgr2fr.w	$fs0, $zero
 	vldi	$vr0, -1040
@@ -209,24 +196,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.14:
 	vldi	$vr1, -1168
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(float_min2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.15:
 	vldi	$vr0, -1168
 	fmov.s	$fa1, $fs0
 	pcaddu18i	$ra, %call36(float_min2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.16:
 	vldi	$vr0, -1040
 	vldi	$vr1, -1168
@@ -234,8 +218,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.17:
 	vldi	$vr0, -1168
 	vldi	$vr1, -1040
@@ -243,24 +226,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1040
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.18:
 	vldi	$vr1, -1040
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(float_max2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.19:
 	vldi	$vr0, -1040
 	fmov.s	$fa1, $fs0
 	pcaddu18i	$ra, %call36(float_max2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.s	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.20:
 	movgr2fr.w	$fa0, $zero
 	vldi	$vr1, -1168
@@ -268,8 +248,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.21:
 	movgr2fr.w	$fa1, $zero
 	vldi	$vr0, -1168
@@ -277,8 +256,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.22:
 	vldi	$vr0, -1040
 	vldi	$vr1, -1168
@@ -286,8 +264,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.23:
 	vldi	$vr0, -1168
 	vldi	$vr1, -1040
@@ -295,8 +272,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.24:
 	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -784
@@ -304,8 +280,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.25:
 	movgr2fr.d	$fs0, $zero
 	vldi	$vr0, -784
@@ -314,24 +289,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.26:
 	vldi	$vr1, -912
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(double_min1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.27:
 	vldi	$vr0, -912
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(double_min1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.28:
 	vldi	$vr0, -784
 	vldi	$vr1, -912
@@ -339,8 +311,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.29:
 	vldi	$vr0, -912
 	vldi	$vr1, -784
@@ -348,24 +319,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.30:
 	vldi	$vr1, -784
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(double_max1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.31:
 	vldi	$vr0, -784
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(double_max1)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.32:
 	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -912
@@ -373,8 +341,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.33:
 	movgr2fr.d	$fa1, $zero
 	vldi	$vr0, -912
@@ -382,8 +349,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.34:
 	vldi	$vr0, -784
 	vldi	$vr1, -912
@@ -391,8 +357,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.35:
 	vldi	$vr0, -912
 	vldi	$vr1, -784
@@ -400,8 +365,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.36:
 	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -784
@@ -409,8 +373,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.37:
 	movgr2fr.d	$fs0, $zero
 	vldi	$vr0, -784
@@ -419,24 +382,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.38:
 	vldi	$vr1, -912
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(double_min2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.39:
 	vldi	$vr0, -912
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(double_min2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.40:
 	vldi	$vr0, -784
 	vldi	$vr1, -912
@@ -444,8 +404,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.41:
 	vldi	$vr0, -912
 	vldi	$vr1, -784
@@ -453,24 +412,21 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -784
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.42:
 	vldi	$vr1, -784
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(double_max2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.43:
 	vldi	$vr0, -784
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(double_max2)
 	jirl	$ra, $ra, 0
 	fcmp.ceq.d	$fcc0, $fa0, $fs0
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.44:
 	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -912
@@ -478,8 +434,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.45:
 	movgr2fr.d	$fa1, $zero
 	vldi	$vr0, -912
@@ -487,8 +442,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.46:
 	vldi	$vr0, -784
 	vldi	$vr1, -912
@@ -496,8 +450,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	beqz	$a0, .LBB8_48
+	bceqz	$fcc0, .LBB8_48
 # %bb.47:
 	vldi	$vr0, -912
 	vldi	$vr1, -784
@@ -505,8 +458,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	movcf2gr	$a0, $fcc0
-	bnez	$a0, .LBB8_49
+	bcnez	$fcc0, .LBB8_49
 .LBB8_48:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0

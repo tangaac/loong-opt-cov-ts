@@ -197,16 +197,15 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	ld.d	$a0, $a1, 8
 	ld.d	$a1, $a0, 8
 	ld.w	$a0, $a1, 8
-	ori	$a4, $zero, 1
 	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	blt	$a0, $a4, .LBB13_21
+	blez	$a0, .LBB13_21
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s8, $zero, 4
-	ori	$s6, $zero, 32
+	ori	$s7, $zero, 4
+	ori	$s8, $zero, 32
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB13_3
 	.p2align	4, , 16
@@ -231,7 +230,7 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a4, $s2, 16
 	slli.d	$a1, $a1, 3
-	ld.d	$s7, $a2, 0
+	ld.d	$s6, $a2, 0
 	ld.d	$s1, $a3, 0
 	ld.d	$s0, $a4, 0
 	add.d	$s4, $a5, $a1
@@ -268,21 +267,17 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB13_2
+	blez	$a2, .LBB13_2
 # %bb.4:                                # %.preheader281.lr.ph
                                         #   in Loop: Header=BB13_3 Depth=1
-	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	blt	$a3, $a2, .LBB13_2
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	blez	$a2, .LBB13_2
 # %bb.5:                                # %.preheader281.lr.ph
                                         #   in Loop: Header=BB13_3 Depth=1
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB13_2
+	blez	$a1, .LBB13_2
 # %bb.6:                                # %.preheader281.lr.ph
                                         #   in Loop: Header=BB13_3 Depth=1
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB13_2
+	blez	$a0, .LBB13_2
 # %bb.7:                                # %.preheader280.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB13_3 Depth=1
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
@@ -318,12 +313,12 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	sub.w	$t5, $t6, $a5
 	slt	$t6, $s2, $t5
 	maskeqz	$t5, $t5, $t6
-	add.d	$t7, $s7, $a4
+	add.d	$t7, $s6, $a4
 	ld.w	$t8, $t7, 4
 	ld.w	$s0, $t7, 16
 	masknez	$t6, $s2, $t6
 	or	$t5, $t5, $t6
-	ldx.w	$a4, $s7, $a4
+	ldx.w	$a4, $s6, $a4
 	sub.w	$t6, $s0, $t8
 	slt	$s0, $s2, $t6
 	ld.w	$s1, $t7, 12
@@ -418,7 +413,7 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB13_19 Depth 4
                                         #         Child Loop BB13_15 Depth 4
-	bgeu	$a0, $s8, .LBB13_16
+	bgeu	$a0, $s7, .LBB13_16
 # %bb.12:                               #   in Loop: Header=BB13_11 Depth=3
 	move	$a2, $zero
 .LBB13_13:                              # %scalar.ph.preheader
@@ -427,7 +422,7 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 .LBB13_14:                              # %scalar.ph.preheader
                                         #   in Loop: Header=BB13_11 Depth=3
 	alsl.d	$ra, $a5, $t4, 3
-	alsl.d	$s7, $s4, $t7, 3
+	alsl.d	$s6, $s4, $t7, 3
 	alsl.d	$s2, $a4, $s3, 3
 	sub.d	$a2, $a0, $a2
 	.p2align	4, , 16
@@ -436,7 +431,7 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
                                         #     Parent Loop BB13_9 Depth=2
                                         #       Parent Loop BB13_11 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	fld.d	$fa0, $s7, 0
+	fld.d	$fa0, $s6, 0
 	fld.d	$fa1, $s2, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $ra, 0
@@ -444,7 +439,7 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	addi.d	$a5, $a5, 1
 	addi.d	$s4, $s4, 1
 	addi.d	$ra, $ra, 8
-	addi.d	$s7, $s7, 8
+	addi.d	$s6, $s6, 8
 	addi.w	$a2, $a2, -1
 	addi.d	$s2, $s2, 8
 	bnez	$a2, .LBB13_15
@@ -457,22 +452,22 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	alsl.d	$a2, $a2, $s5, 3
 	sub.d	$s4, $s2, $a2
 	move	$a2, $zero
-	bltu	$s4, $s6, .LBB13_13
+	bltu	$s4, $s8, .LBB13_13
 # %bb.17:                               # %vector.memcheck
                                         #   in Loop: Header=BB13_11 Depth=3
 	alsl.d	$s4, $a4, $s3, 3
 	sub.d	$s2, $s2, $s4
-	bltu	$s2, $s6, .LBB13_13
+	bltu	$s2, $s8, .LBB13_13
 # %bb.18:                               # %vector.ph
                                         #   in Loop: Header=BB13_11 Depth=3
 	slli.d	$a2, $a5, 3
-	slli.d	$s7, $a4, 3
+	slli.d	$s6, $a4, 3
 	add.d	$a5, $t5, $a5
 	add.d	$s4, $t5, $ra
 	add.d	$a4, $t5, $a4
 	add.d	$a2, $t6, $a2
 	alsl.d	$s2, $ra, $t8, 3
-	add.d	$s7, $s0, $s7
+	add.d	$s6, $s0, $s6
 	move	$ra, $t5
 	.p2align	4, , 16
 .LBB13_19:                              # %vector.body
@@ -482,8 +477,8 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
                                         # =>      This Inner Loop Header: Depth=4
 	vld	$vr0, $s2, -16
 	vld	$vr1, $s2, 0
-	vld	$vr2, $s7, -16
-	vld	$vr3, $s7, 0
+	vld	$vr2, $s6, -16
+	vld	$vr3, $s6, 0
 	vfdiv.d	$vr0, $vr0, $vr2
 	vfdiv.d	$vr1, $vr1, $vr3
 	vst	$vr0, $a2, -16
@@ -491,7 +486,7 @@ HYPRE_StructDiagScale:                  # @HYPRE_StructDiagScale
 	addi.d	$ra, $ra, -4
 	addi.d	$a2, $a2, 32
 	addi.d	$s2, $s2, 32
-	addi.d	$s7, $s7, 32
+	addi.d	$s6, $s6, 32
 	bnez	$ra, .LBB13_19
 # %bb.20:                               # %middle.block
                                         #   in Loop: Header=BB13_11 Depth=3

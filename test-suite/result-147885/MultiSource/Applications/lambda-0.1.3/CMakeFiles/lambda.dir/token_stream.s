@@ -307,8 +307,7 @@ _ZN12token_stream9read_lineEv:          # @_ZN12token_stream9read_lineEv
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_8
+	blez	$a1, .LBB7_8
 # %bb.2:
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
@@ -497,28 +496,28 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	addi.d	$a0, $s0, 28
 	st.d	$a0, $fp, 0
 	st.w	$zero, $s0, 24
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_3:
 	st.d	$zero, $fp, 0
 	addi.d	$a0, $s0, 28
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$a0, $s0, 16
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
-	addi.d	$s4, $a1, %pc_lo12(.L.str.6)
+	addi.d	$s3, $a1, %pc_lo12(.L.str.6)
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
-	addi.d	$s5, $a1, %pc_lo12(.L.str.2)
+	addi.d	$s4, $a1, %pc_lo12(.L.str.2)
 	pcalau12i	$a1, %pc_hi20(.L.str.5)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.5)
-	ori	$s6, $zero, 32
-	ori	$s7, $zero, 33
-	ori	$s8, $zero, 91
+	ori	$s5, $zero, 32
+	ori	$s6, $zero, 33
+	ori	$s7, $zero, 91
 	pcalau12i	$a1, %pc_hi20(.LJTI9_0)
-	addi.d	$s2, $a1, %pc_lo12(.LJTI9_0)
+	addi.d	$s8, $a1, %pc_lo12(.LJTI9_0)
 	b	.LBB9_6
 	.p2align	4, , 16
 .LBB9_4:                                # %.critedge._crit_edge
                                         #   in Loop: Header=BB9_6 Depth=1
-	bnez	$s3, .LBB9_32
+	bnez	$s2, .LBB9_32
 .LBB9_5:                                #   in Loop: Header=BB9_6 Depth=1
 	move	$a0, $zero
 	st.d	$zero, $s0, 16
@@ -532,13 +531,12 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	ldptr.w	$a1, $s0, 8748
 	beqz	$a1, .LBB9_11
 # %bb.9:                                #   in Loop: Header=BB9_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_12
+	blez	$a1, .LBB9_12
 # %bb.10:                               #   in Loop: Header=BB9_6 Depth=1
 	addi.d	$a0, $a1, -1
 	sltui	$a0, $a0, 1
-	masknez	$a2, $s4, $a0
-	maskeqz	$a0, $s5, $a0
+	masknez	$a2, $s3, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a2, $a0, $a2
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
@@ -564,7 +562,7 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 # %bb.15:                               # %.critedge.preheader
                                         #   in Loop: Header=BB9_6 Depth=1
 	ext.w.b	$a2, $a1
-	blt	$s6, $a2, .LBB9_20
+	blt	$s5, $a2, .LBB9_20
 # %bb.16:                               # %.critedge.preheader270
                                         #   in Loop: Header=BB9_6 Depth=1
 	addi.d	$a0, $a0, 1
@@ -579,7 +577,7 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	beqz	$a1, .LBB9_19
 # %bb.18:                               # %.critedge
                                         #   in Loop: Header=BB9_17 Depth=2
-	blt	$a2, $s7, .LBB9_17
+	blt	$a2, $s6, .LBB9_17
 .LBB9_19:                               # %.critedge._crit_edge.loopexit
                                         #   in Loop: Header=BB9_6 Depth=1
 	addi.d	$a0, $a0, -1
@@ -587,31 +585,30 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
                                         #   in Loop: Header=BB9_6 Depth=1
 	st.b	$a1, $s0, 28
 	st.b	$zero, $s0, 29
-	ld.bu	$s3, $a0, 0
-	addi.d	$a1, $s3, -34
-	bltu	$s8, $a1, .LBB9_4
+	ld.bu	$s2, $a0, 0
+	addi.d	$a1, $s2, -34
+	bltu	$s7, $a1, .LBB9_4
 # %bb.21:                               # %.critedge._crit_edge
                                         #   in Loop: Header=BB9_6 Depth=1
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $s2, $a1
-	add.d	$a1, $s2, $a1
+	ldx.w	$a1, $s8, $a1
+	add.d	$a1, $s8, $a1
 	jr	$a1
 .LBB9_22:                               # %.preheader59
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$s1, $zero, 28
-	ori	$s2, $zero, 92
-	ori	$s3, $zero, 110
-	ori	$s5, $zero, 9
+	ori	$s3, $zero, 92
+	ori	$s4, $zero, 110
+	ori	$s6, $zero, 9
 	lu12i.w	$a1, 2
-	ori	$s6, $a1, 27
-	ori	$s7, $zero, 34
-	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
-	move	$s4, $s8
+	ori	$s7, $a1, 27
+	ori	$s8, $zero, 34
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB9_23:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a1, $a0, 0
-	bne	$a1, $s2, .LBB9_26
+	bne	$a1, $s3, .LBB9_26
 # %bb.24:                               #   in Loop: Header=BB9_23 Depth=1
 	ld.bu	$a1, $a0, 1
 	bnez	$a1, .LBB9_28
@@ -622,11 +619,11 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	move	$a1, $zero
 	st.d	$a0, $s0, 16
 	bnez	$a0, .LBB9_23
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_26:                               #   in Loop: Header=BB9_23 Depth=1
-	beqz	$a1, .LBB9_50
+	beqz	$a1, .LBB9_47
 # %bb.27:                               #   in Loop: Header=BB9_23 Depth=1
-	beq	$a1, $s7, .LBB9_49
+	beq	$a1, $s8, .LBB9_46
 	b	.LBB9_30
 .LBB9_28:                               # %.critedge.thread
                                         #   in Loop: Header=BB9_23 Depth=1
@@ -634,78 +631,78 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	st.d	$a1, $s0, 16
 	ld.bu	$a0, $a0, 1
 	ori	$a1, $zero, 10
-	beq	$a0, $s3, .LBB9_30
+	beq	$a0, $s4, .LBB9_30
 # %bb.29:                               #   in Loop: Header=BB9_23 Depth=1
 	addi.d	$a1, $a0, -116
 	sltui	$a1, $a1, 1
 	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $s5, $a1
+	maskeqz	$a1, $s6, $a1
 	or	$a1, $a1, $a0
 .LBB9_30:                               # %.loopexit
                                         #   in Loop: Header=BB9_23 Depth=1
-	st.b	$a1, $s4, 0
+	st.b	$a1, $s5, 0
 	ld.d	$a0, $s0, 16
 	addi.d	$s1, $s1, 1
 	addi.d	$a0, $a0, 1
-	add.d	$s4, $s0, $s1
+	add.d	$s5, $s0, $s1
 	st.d	$a0, $s0, 16
-	bne	$s1, $s6, .LBB9_23
-	b	.LBB9_50
+	bne	$s1, $s7, .LBB9_23
+	b	.LBB9_47
 .LBB9_31:
 	move	$a1, $zero
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_32:                               # %.lr.ph.preheader
 	lu12i.w	$a0, 1
 	ori	$s4, $a0, 4094
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.7)
-	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
-	move	$s2, $s8
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	move	$s3, $s5
 	.p2align	4, , 16
 .LBB9_33:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ext.w.b	$a1, $s3
+	ext.w.b	$a1, $s2
 	ori	$a2, $zero, 10
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memchr)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB9_36
 # %bb.34:                               #   in Loop: Header=BB9_33 Depth=1
-	st.b	$s3, $s2, 0
+	st.b	$s2, $s3, 0
 	ld.d	$a0, $s0, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
-	addi.d	$s2, $s2, 1
+	addi.d	$s3, $s3, 1
 	beqz	$s4, .LBB9_36
 # %bb.35:                               # %.preheader58thread-pre-split
                                         #   in Loop: Header=BB9_33 Depth=1
-	ld.bu	$s3, $a0, 0
+	ld.bu	$s2, $a0, 0
 	addi.d	$s4, $s4, -1
-	bnez	$s3, .LBB9_33
+	bnez	$s2, .LBB9_33
 .LBB9_36:                               # %.critedge2
-	st.b	$zero, $s2, 0
+	st.b	$zero, $s3, 0
 	ori	$a1, $zero, 8
-	b	.LBB9_47
+	b	.LBB9_49
 .LBB9_37:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 4
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_38:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 6
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_39:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 10
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_40:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 3
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_41:
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 556
@@ -715,7 +712,7 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 2
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_42:
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 556
@@ -725,27 +722,34 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 1
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_43:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 9
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_44:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 16
 	ori	$a1, $zero, 5
-	b	.LBB9_46
+	b	.LBB9_48
 .LBB9_45:                               # %.thread53
 	ori	$a0, $zero, 1
 	stptr.w	$a0, $s0, 8752
 	st.b	$zero, $s0, 28
 	ori	$a1, $zero, 11
+	b	.LBB9_48
 .LBB9_46:
-	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
-.LBB9_47:
-	st.d	$s8, $fp, 0
-.LBB9_48:                               # %.critedge49
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $s0, 16
+.LBB9_47:                               # %.loopexit57
+	st.b	$zero, $s5, 0
+	ori	$a1, $zero, 7
+.LBB9_48:
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+.LBB9_49:
+	st.d	$s5, $fp, 0
+.LBB9_50:                               # %.critedge49
 	move	$a0, $a1
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
@@ -760,13 +764,6 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
 	ret
-.LBB9_49:
-	addi.d	$a0, $a0, 1
-	st.d	$a0, $s0, 16
-.LBB9_50:                               # %.loopexit57
-	st.b	$zero, $s4, 0
-	ori	$a1, $zero, 7
-	b	.LBB9_47
 .Lfunc_end9:
 	.size	_ZN12token_stream9get_tokenEPPc, .Lfunc_end9-_ZN12token_stream9get_tokenEPPc
 	.section	.rodata,"a",@progbits

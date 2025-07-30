@@ -1593,13 +1593,12 @@ def_to:                                 # @def_to
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
 	ld.b	$a1, $a0, 4
-	pcalau12i	$a2, %pc_hi20(toline)
 	ld.w	$a0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(toline)
 	addi.d	$s1, $a2, %pc_lo12(toline)
 	st.b	$a1, $s1, 4
-	ori	$a1, $zero, 1
 	st.w	$a0, $s1, 0
-	blt	$s0, $a1, .LBB11_10
+	blez	$s0, .LBB11_10
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s4, $zero
 	ori	$s5, $zero, 64

@@ -88,13 +88,12 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(current_test)
 	ld.w	$s0, $s6, %pc_lo12(current_test)
-	move	$s8, $a4
+	move	$s5, $a4
 	move	$s2, $a2
 	move	$s3, $a1
 	move	$fp, $a0
-	ori	$s5, $zero, 1
 	pcalau12i	$s7, %pc_hi20(results)
-	blt	$s0, $s5, .LBB1_3
+	blez	$s0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s7, %pc_lo12(results)
 	addi.d	$s4, $a0, 8
@@ -132,9 +131,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s5, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.5:                                # %.lr.ph45.preheader
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	move	$s8, $zero
 	move	$s4, $zero
@@ -180,10 +179,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	addi.d	$s8, $s8, 16
 	blt	$s0, $a0, .LBB1_6
 # %bb.7:                                # %.preheader39
-	ori	$a1, $zero, 1
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB1_10
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	blez	$a0, .LBB1_10
 # %bb.8:                                # %.lr.ph49
 	ld.d	$a1, $s7, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
@@ -201,7 +199,7 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	beqz	$s8, .LBB1_15
+	beqz	$s5, .LBB1_15
 # %bb.11:                               # %._crit_edge50
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	ori	$a1, $zero, 2
@@ -278,11 +276,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	ld.w	$fp, $s5, %pc_lo12(current_test)
 	move	$s0, $a1
 	move	$s7, $a0
-	ori	$s3, $zero, 1
-	pcalau12i	$s4, %pc_hi20(results)
-	blt	$fp, $s3, .LBB2_3
+	pcalau12i	$s3, %pc_hi20(results)
+	blez	$fp, .LBB2_3
 # %bb.1:                                # %.lr.ph
-	ld.d	$a0, $s4, %pc_lo12(results)
+	ld.d	$a0, $s3, %pc_lo12(results)
 	addi.d	$s2, $a0, 8
 	ori	$s1, $zero, 12
 	.p2align	4, , 16
@@ -320,7 +317,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s3, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.5:                                # %.lr.ph32.preheader
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	move	$s8, $zero
@@ -330,11 +327,11 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.5)
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph32
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s6, $s4, %pc_lo12(results)
+	ld.d	$s6, $s3, %pc_lo12(results)
 	add.d	$a0, $s6, $s8
 	move	$s0, $s5
 	ld.d	$s5, $a0, 8
@@ -346,7 +343,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	move	$a0, $s7
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $s2
-	move	$a4, $s3
+	move	$a4, $s4
 	move	$a5, $s5
 	move	$s5, $s0
 	pcaddu18i	$ra, %call36(fprintf)
@@ -357,11 +354,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$s8, $s8, 16
 	blt	$fp, $a0, .LBB2_6
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.8:                                # %.lr.ph36
-	ld.d	$a1, $s4, %pc_lo12(results)
+	ld.d	$a1, $s3, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
 	.p2align	4, , 16
 .LBB2_9:                                # =>This Inner Loop Header: Depth=1
@@ -813,10 +809,9 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB6_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	blez	$a1, .LBB6_31
 # %bb.1:                                # %.preheader48.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB6_15
@@ -1287,10 +1282,9 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB7_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB7_31
 # %bb.1:                                # %.preheader47.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB7_15
@@ -1765,10 +1759,9 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB8_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB8_31
 # %bb.1:                                # %.preheader46.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB8_15
@@ -2316,10 +2309,9 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB10_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB10_31
 # %bb.1:                                # %.preheader45.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB10_15
@@ -2789,10 +2781,9 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB11_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB11_31
 # %bb.1:                                # %.preheader44.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB11_15
@@ -2827,9 +2818,9 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -441487
-	ori	$s3, $a0, 32
+	ori	$s5, $a0, 32
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -2915,7 +2906,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 28
 	addi.d	$a4, $a3, 28
 	addi.d	$a5, $a5, 112
@@ -2948,7 +2939,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -2976,7 +2967,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB11_12
@@ -3258,10 +3249,9 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB12_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB12_31
 # %bb.1:                                # %.preheader43.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB12_15
@@ -3295,9 +3285,9 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -163576
-	ori	$s3, $a0, 1640
+	ori	$s5, $a0, 1640
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -3381,7 +3371,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 27
 	addi.d	$a4, $a3, 27
 	addi.d	$a5, $a5, 108
@@ -3414,7 +3404,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -3442,7 +3432,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB12_12
@@ -3724,10 +3714,9 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB13_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB13_31
 # %bb.1:                                # %.preheader42.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB13_15
@@ -4184,10 +4173,9 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB14_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB14_31
 # %bb.1:                                # %.preheader41.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB14_15
@@ -4224,9 +4212,9 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, 392247
-	ori	$s3, $a0, 760
+	ori	$s5, $a0, 760
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -4306,7 +4294,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a3, $a3, 25
 	addi.d	$a4, $a2, 25
 	addi.d	$a5, $a5, 100
@@ -4339,7 +4327,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -4367,7 +4355,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB14_12
@@ -4649,10 +4637,9 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB15_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB15_31
 # %bb.1:                                # %.preheader40.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB15_15
@@ -5109,10 +5096,9 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB16_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB16_31
 # %bb.1:                                # %.preheader39.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB16_15
@@ -5570,10 +5556,9 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB17_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB17_31
 # %bb.1:                                # %.preheader38.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB17_15
@@ -6026,10 +6011,9 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB18_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB18_31
 # %bb.1:                                # %.preheader36.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB18_15
@@ -6561,10 +6545,9 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB20_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB20_31
 # %bb.1:                                # %.preheader35.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB20_15
@@ -7026,10 +7009,9 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB21_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB21_31
 # %bb.1:                                # %.preheader34.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB21_15
@@ -7487,10 +7469,9 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB22_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$a4, .LBB22_31
 # %bb.1:                                # %.preheader33.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB22_15
@@ -7944,10 +7925,9 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB23_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$a4, .LBB23_31
 # %bb.1:                                # %.preheader32.lr.ph
 	ori	$a0, $zero, 17
 	blt	$s0, $a0, .LBB23_15
@@ -8399,10 +8379,9 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB24_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB24_26
 # %bb.1:                                # %.preheader31.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB24_15
@@ -8794,10 +8773,9 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB25_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB25_26
 # %bb.1:                                # %.preheader30.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB25_15
@@ -9188,10 +9166,9 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB26_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB26_26
 # %bb.1:                                # %.preheader29.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB26_15
@@ -9578,10 +9555,9 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB27_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB27_26
 # %bb.1:                                # %.preheader28.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB27_15
@@ -9960,10 +9936,9 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB28_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB28_26
 # %bb.1:                                # %.preheader27.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB28_15
@@ -10425,10 +10400,9 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB30_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB30_26
 # %bb.1:                                # %.preheader26.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB30_15
@@ -10807,10 +10781,9 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB31_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB31_26
 # %bb.1:                                # %.preheader25.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB31_15
@@ -11187,10 +11160,9 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB32_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB32_26
 # %bb.1:                                # %.preheader24.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB32_15
@@ -11567,10 +11539,9 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB33_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB33_26
 # %bb.1:                                # %.preheader23.lr.ph
 	ori	$t5, $zero, 8
 	blt	$s0, $t5, .LBB33_15
@@ -11941,10 +11912,9 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB34_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB34_26
 # %bb.1:                                # %.preheader22.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB34_15
@@ -12319,10 +12289,9 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB35_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB35_26
 # %bb.1:                                # %.preheader21.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB35_15
@@ -12691,10 +12660,9 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB36_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB36_32
 # %bb.1:                                # %.preheader20.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB36_21
@@ -13213,10 +13181,9 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB37_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB37_32
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB37_21
@@ -13260,9 +13227,9 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	lu12i.w	$a0, 65881
 	ori	$s3, $a0, 1957
 	lu12i.w	$a0, -63070
-	ori	$s5, $a0, 1760
+	ori	$s1, $a0, 1760
 	lu12i.w	$a0, -277912
-	ori	$s1, $a0, 2488
+	ori	$s5, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -13370,7 +13337,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	vadd.w	$vr3, $vr3, $vr9
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s1
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -13408,7 +13375,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -13447,7 +13414,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	vld	$vr3, $a0, 0
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s1
+	vreplgr2vr.w	$vr2, $s5
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -13476,7 +13443,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB37_18
@@ -13707,10 +13674,9 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB38_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB38_32
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB38_21
@@ -14189,10 +14155,9 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB39_30
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB39_30
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s1, $a0, .LBB39_21
@@ -14233,11 +14198,11 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a7, $zero, 16
 	lu12i.w	$a0, 65881
-	ori	$s0, $a0, 1957
+	ori	$s2, $a0, 1957
 	lu12i.w	$a0, 492753
 	ori	$s4, $a0, 880
 	lu12i.w	$a0, -277912
-	ori	$s2, $a0, 2488
+	ori	$s0, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -14307,7 +14272,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	vinsgr2vr.w	$vr5, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vreplgr2vr.w	$vr4, $s0
+	vreplgr2vr.w	$vr4, $s2
 	vmadd.w	$vr0, $vr2, $vr4
 	vreplgr2vr.w	$vr2, $s4
 	vmadd.w	$vr1, $vr3, $vr4
@@ -14341,7 +14306,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a5, $a4, -4
 	ld.w	$a6, $a4, 0
 	add.d	$a5, $a6, $a5
-	mul.d	$a5, $a5, $s0
+	mul.d	$a5, $a5, $s2
 	add.d	$a0, $a0, $a5
 	add.w	$a0, $a0, $s4
 	addi.d	$a2, $a2, 2
@@ -14380,9 +14345,9 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vreplgr2vr.w	$vr4, $s0
+	vreplgr2vr.w	$vr4, $s2
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s2
+	vreplgr2vr.w	$vr2, $s0
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -14409,9 +14374,9 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
                                         #   Parent Loop BB39_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
-	mul.d	$a4, $a4, $s0
+	mul.d	$a4, $a4, $s2
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s2
+	add.w	$a0, $a0, $s0
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s1, .LBB39_18
@@ -14621,10 +14586,9 @@ _Z27test_for_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB40_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB40_17
 # %bb.1:                                # %.preheader17.lr.ph
 	blez	$s0, .LBB40_13
 # %bb.2:                                # %.preheader17.us.preheader
@@ -14885,10 +14849,9 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB41_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	blez	$a1, .LBB41_31
 # %bb.1:                                # %.preheader48.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB41_15
@@ -15359,10 +15322,9 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB42_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB42_31
 # %bb.1:                                # %.preheader47.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB42_15
@@ -15837,10 +15799,9 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB43_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB43_31
 # %bb.1:                                # %.preheader46.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB43_15
@@ -16388,10 +16349,9 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB45_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB45_31
 # %bb.1:                                # %.preheader45.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB45_15
@@ -16861,10 +16821,9 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB46_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB46_31
 # %bb.1:                                # %.preheader44.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB46_15
@@ -16899,9 +16858,9 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -441487
-	ori	$s3, $a0, 32
+	ori	$s5, $a0, 32
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -16987,7 +16946,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 28
 	addi.d	$a4, $a3, 28
 	addi.d	$a5, $a5, 112
@@ -17020,7 +16979,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -17048,7 +17007,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB46_12
@@ -17330,10 +17289,9 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB47_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB47_31
 # %bb.1:                                # %.preheader43.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB47_15
@@ -17367,9 +17325,9 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -163576
-	ori	$s3, $a0, 1640
+	ori	$s5, $a0, 1640
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -17453,7 +17411,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 27
 	addi.d	$a4, $a3, 27
 	addi.d	$a5, $a5, 108
@@ -17486,7 +17444,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -17514,7 +17472,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB47_12
@@ -17796,10 +17754,9 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB48_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB48_31
 # %bb.1:                                # %.preheader42.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB48_15
@@ -18256,10 +18213,9 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB49_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB49_31
 # %bb.1:                                # %.preheader41.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB49_15
@@ -18296,9 +18252,9 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, 392247
-	ori	$s3, $a0, 760
+	ori	$s5, $a0, 760
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -18378,7 +18334,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a3, $a3, 25
 	addi.d	$a4, $a2, 25
 	addi.d	$a5, $a5, 100
@@ -18411,7 +18367,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -18439,7 +18395,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB49_12
@@ -18721,10 +18677,9 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB50_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB50_31
 # %bb.1:                                # %.preheader40.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB50_15
@@ -19181,10 +19136,9 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB51_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB51_31
 # %bb.1:                                # %.preheader39.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB51_15
@@ -19642,10 +19596,9 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB52_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB52_31
 # %bb.1:                                # %.preheader38.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB52_15
@@ -20098,10 +20051,9 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB53_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB53_31
 # %bb.1:                                # %.preheader36.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB53_15
@@ -20633,10 +20585,9 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB55_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB55_31
 # %bb.1:                                # %.preheader35.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB55_15
@@ -21098,10 +21049,9 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB56_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB56_31
 # %bb.1:                                # %.preheader34.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB56_15
@@ -21559,10 +21509,9 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB57_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$a4, .LBB57_31
 # %bb.1:                                # %.preheader33.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB57_15
@@ -22016,10 +21965,9 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB58_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$a4, .LBB58_31
 # %bb.1:                                # %.preheader32.lr.ph
 	ori	$a0, $zero, 17
 	blt	$s0, $a0, .LBB58_15
@@ -22471,10 +22419,9 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB59_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB59_26
 # %bb.1:                                # %.preheader31.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB59_15
@@ -22866,10 +22813,9 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB60_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB60_26
 # %bb.1:                                # %.preheader30.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB60_15
@@ -23260,10 +23206,9 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB61_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB61_26
 # %bb.1:                                # %.preheader29.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB61_15
@@ -23650,10 +23595,9 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB62_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB62_26
 # %bb.1:                                # %.preheader28.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB62_15
@@ -24032,10 +23976,9 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB63_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB63_26
 # %bb.1:                                # %.preheader27.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB63_15
@@ -24497,10 +24440,9 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB65_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB65_26
 # %bb.1:                                # %.preheader26.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB65_15
@@ -24879,10 +24821,9 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB66_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB66_26
 # %bb.1:                                # %.preheader25.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB66_15
@@ -25259,10 +25200,9 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB67_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB67_26
 # %bb.1:                                # %.preheader24.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB67_15
@@ -25639,10 +25579,9 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB68_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB68_26
 # %bb.1:                                # %.preheader23.lr.ph
 	ori	$t5, $zero, 8
 	blt	$s0, $t5, .LBB68_15
@@ -26013,10 +25952,9 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB69_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB69_26
 # %bb.1:                                # %.preheader22.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB69_15
@@ -26391,10 +26329,9 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB70_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB70_26
 # %bb.1:                                # %.preheader21.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB70_15
@@ -26763,10 +26700,9 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB71_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB71_32
 # %bb.1:                                # %.preheader20.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB71_21
@@ -27285,10 +27221,9 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB72_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB72_32
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB72_21
@@ -27332,9 +27267,9 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	lu12i.w	$a0, 65881
 	ori	$s3, $a0, 1957
 	lu12i.w	$a0, -63070
-	ori	$s5, $a0, 1760
+	ori	$s1, $a0, 1760
 	lu12i.w	$a0, -277912
-	ori	$s1, $a0, 2488
+	ori	$s5, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -27442,7 +27377,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	vadd.w	$vr3, $vr3, $vr9
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s1
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -27480,7 +27415,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -27519,7 +27454,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	vld	$vr3, $a0, 0
 	vreplgr2vr.w	$vr4, $s3
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s1
+	vreplgr2vr.w	$vr2, $s5
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -27548,7 +27483,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB72_18
@@ -27779,10 +27714,9 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB73_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB73_32
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB73_21
@@ -28261,10 +28195,9 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB74_30
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB74_30
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s1, $a0, .LBB74_21
@@ -28305,11 +28238,11 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a7, $zero, 16
 	lu12i.w	$a0, 65881
-	ori	$s0, $a0, 1957
+	ori	$s2, $a0, 1957
 	lu12i.w	$a0, 492753
 	ori	$s4, $a0, 880
 	lu12i.w	$a0, -277912
-	ori	$s2, $a0, 2488
+	ori	$s0, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -28379,7 +28312,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	vinsgr2vr.w	$vr5, $a6, 3
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr3, $vr5, $vr3
-	vreplgr2vr.w	$vr4, $s0
+	vreplgr2vr.w	$vr4, $s2
 	vmadd.w	$vr0, $vr2, $vr4
 	vreplgr2vr.w	$vr2, $s4
 	vmadd.w	$vr1, $vr3, $vr4
@@ -28413,7 +28346,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a5, $a4, -4
 	ld.w	$a6, $a4, 0
 	add.d	$a5, $a6, $a5
-	mul.d	$a5, $a5, $s0
+	mul.d	$a5, $a5, $s2
 	add.d	$a0, $a0, $a5
 	add.w	$a0, $a0, $s4
 	addi.d	$a2, $a2, 2
@@ -28452,9 +28385,9 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a0, -16
 	vld	$vr3, $a0, 0
-	vreplgr2vr.w	$vr4, $s0
+	vreplgr2vr.w	$vr4, $s2
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s2
+	vreplgr2vr.w	$vr2, $s0
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -28481,9 +28414,9 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
                                         #   Parent Loop BB74_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a3, 0
-	mul.d	$a4, $a4, $s0
+	mul.d	$a4, $a4, $s2
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s2
+	add.w	$a0, $a0, $s0
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s1, .LBB74_18
@@ -28693,10 +28626,9 @@ _Z29test_while_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB75_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB75_17
 # %bb.1:                                # %.preheader17.lr.ph
 	blez	$s0, .LBB75_13
 # %bb.2:                                # %.preheader17.us.preheader
@@ -28957,10 +28889,9 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB76_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	blez	$a1, .LBB76_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB76_15
@@ -29428,10 +29359,9 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB77_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB77_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB77_15
@@ -29902,10 +29832,9 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB78_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB78_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB78_15
@@ -29936,9 +29865,9 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, 51266
-	ori	$s3, $a0, 912
+	ori	$s5, $a0, 912
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -30028,7 +29957,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -30061,7 +29990,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -30090,7 +30019,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB78_12
@@ -30451,10 +30380,9 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB80_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB80_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB80_15
@@ -30488,9 +30416,9 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, 329177
-	ori	$s3, $a0, 2520
+	ori	$s5, $a0, 2520
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -30578,7 +30506,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -30611,7 +30539,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -30640,7 +30568,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB80_12
@@ -30922,10 +30850,9 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB81_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB81_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB81_15
@@ -30957,9 +30884,9 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -441487
-	ori	$s3, $a0, 32
+	ori	$s5, $a0, 32
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -31045,7 +30972,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -31078,7 +31005,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -31107,7 +31034,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB81_12
@@ -31389,10 +31316,9 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB82_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB82_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB82_15
@@ -31423,9 +31349,9 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -163576
-	ori	$s3, $a0, 1640
+	ori	$s5, $a0, 1640
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -31509,7 +31435,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -31542,7 +31468,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -31571,7 +31497,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB82_12
@@ -31853,10 +31779,9 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB83_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB83_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB83_15
@@ -32311,10 +32236,9 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB84_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB84_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB84_15
@@ -32774,10 +32698,9 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB85_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB85_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB85_15
@@ -33232,10 +33155,9 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB86_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB86_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB86_15
@@ -33691,10 +33613,9 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB87_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB87_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB87_15
@@ -34145,10 +34066,9 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB88_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB88_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB88_15
@@ -34678,10 +34598,9 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB90_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB90_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB90_16
@@ -35145,10 +35064,9 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB91_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB91_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB91_16
@@ -35608,10 +35526,9 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB92_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB92_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB92_16
@@ -36067,10 +35984,9 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB93_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$a4, .LBB93_32
 # %bb.1:                                # %.lr.ph
 	move	$a5, $fp
 	ori	$a0, $zero, 17
@@ -36527,10 +36443,9 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB94_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB94_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB94_15
@@ -36919,10 +36834,9 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB95_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB95_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB95_15
@@ -37309,10 +37223,9 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB96_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB96_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB96_15
@@ -37697,10 +37610,9 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB97_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB97_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB97_15
@@ -38077,10 +37989,9 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB98_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB98_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB98_15
@@ -38540,10 +38451,9 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB100_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB100_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB100_15
@@ -38920,10 +38830,9 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB101_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB101_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB101_15
@@ -39298,10 +39207,9 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB102_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB102_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB102_15
@@ -39676,10 +39584,9 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB103_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB103_26
 # %bb.1:                                # %.lr.ph
 	ori	$t5, $zero, 8
 	blt	$s0, $t5, .LBB103_15
@@ -40047,10 +39954,9 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB104_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB104_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB104_15
@@ -40421,10 +40327,9 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB105_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB105_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB105_15
@@ -40791,10 +40696,9 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB106_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB106_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB106_21
@@ -41309,10 +41213,9 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB107_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB107_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB107_21
@@ -41799,10 +41702,9 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB108_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB108_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB108_21
@@ -42277,10 +42179,9 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB109_30
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB109_30
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s1, $a0, .LBB109_21
@@ -42705,10 +42606,9 @@ _Z26test_do_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB110_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB110_17
 # %bb.1:                                # %.lr.ph
 	blez	$s0, .LBB110_13
 # %bb.2:                                # %.preheader23.us.preheader
@@ -42969,10 +42869,9 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB111_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	blez	$a1, .LBB111_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB111_15
@@ -43440,10 +43339,9 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB112_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB112_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB112_15
@@ -43914,10 +43812,9 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB113_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB113_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB113_15
@@ -43948,9 +43845,9 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, 51266
-	ori	$s3, $a0, 912
+	ori	$s5, $a0, 912
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -44040,7 +43937,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -44073,7 +43970,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -44102,7 +43999,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB113_12
@@ -44463,10 +44360,9 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB115_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB115_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB115_15
@@ -44500,9 +44396,9 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, 329177
-	ori	$s3, $a0, 2520
+	ori	$s5, $a0, 2520
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -44590,7 +44486,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -44623,7 +44519,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -44652,7 +44548,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB115_12
@@ -44934,10 +44830,9 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB116_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB116_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB116_15
@@ -44969,9 +44864,9 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -441487
-	ori	$s3, $a0, 32
+	ori	$s5, $a0, 32
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -45057,7 +44952,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -45090,7 +44985,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -45119,7 +45014,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB116_12
@@ -45401,10 +45296,9 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB117_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB117_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB117_15
@@ -45435,9 +45329,9 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	lu12i.w	$a0, 65881
 	ori	$s4, $a0, 1957
 	lu12i.w	$a0, -163576
-	ori	$s3, $a0, 1640
+	ori	$s5, $a0, 1640
 	lu12i.w	$a0, -277912
-	ori	$s5, $a0, 2488
+	ori	$s3, $a0, 2488
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -381906
@@ -45521,7 +45415,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $s5
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -45554,7 +45448,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	vld	$vr3, $a6, 0
 	vreplgr2vr.w	$vr4, $s4
 	vmadd.w	$vr0, $vr2, $vr4
-	vreplgr2vr.w	$vr2, $s5
+	vreplgr2vr.w	$vr2, $s3
 	vmadd.w	$vr1, $vr3, $vr4
 	vadd.w	$vr0, $vr0, $vr2
 	vadd.w	$vr1, $vr1, $vr2
@@ -45583,7 +45477,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.w	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB117_12
@@ -45865,10 +45759,9 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB118_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB118_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB118_15
@@ -46323,10 +46216,9 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB119_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB119_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB119_15
@@ -46786,10 +46678,9 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB120_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB120_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB120_15
@@ -47244,10 +47135,9 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB121_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB121_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB121_15
@@ -47703,10 +47593,9 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB122_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB122_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB122_15
@@ -48157,10 +48046,9 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB123_31
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB123_31
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB123_15
@@ -48690,10 +48578,9 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB125_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB125_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB125_16
@@ -49157,10 +49044,9 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB126_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB126_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB126_16
@@ -49620,10 +49506,9 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB127_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a4, .LBB127_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB127_16
@@ -50079,10 +49964,9 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a1, %pc_hi20(start_time)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a1, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(current_test)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB128_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$a4, .LBB128_32
 # %bb.1:                                # %.lr.ph
 	move	$a5, $fp
 	ori	$a0, $zero, 17
@@ -50539,10 +50423,9 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB129_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB129_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB129_15
@@ -50931,10 +50814,9 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB130_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB130_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB130_15
@@ -51321,10 +51203,9 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB131_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB131_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB131_15
@@ -51709,10 +51590,9 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB132_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB132_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB132_15
@@ -52089,10 +51969,9 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB133_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB133_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB133_15
@@ -52552,10 +52431,9 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB135_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB135_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB135_15
@@ -52932,10 +52810,9 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB136_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB136_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB136_15
@@ -53310,10 +53187,9 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB137_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB137_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB137_15
@@ -53688,10 +53564,9 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB138_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB138_26
 # %bb.1:                                # %.lr.ph
 	ori	$t5, $zero, 8
 	blt	$s0, $t5, .LBB138_15
@@ -54059,10 +53934,9 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB139_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB139_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB139_15
@@ -54433,10 +54307,9 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB140_26
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB140_26
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB140_15
@@ -54803,10 +54676,9 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB141_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB141_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB141_21
@@ -55321,10 +55193,9 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB142_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB142_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB142_21
@@ -55811,10 +55682,9 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB143_32
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB143_32
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB143_21
@@ -56289,10 +56159,9 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB144_30
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB144_30
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s1, $a0, .LBB144_21
@@ -56717,10 +56586,9 @@ _Z28test_goto_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB145_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB145_17
 # %bb.1:                                # %.lr.ph
 	blez	$s0, .LBB145_13
 # %bb.2:                                # %.preheader23.us.preheader
@@ -56994,9 +56862,8 @@ _Z27test_for_loop_unroll_factorILi32EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB146_21
+	blez	$a1, .LBB146_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB146_10
@@ -57597,9 +57464,8 @@ _Z27test_for_loop_unroll_factorILi31EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB147_21
+	blez	$a1, .LBB147_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB147_10
@@ -58192,9 +58058,8 @@ _Z27test_for_loop_unroll_factorILi30EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB148_21
+	blez	$a1, .LBB148_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB148_10
@@ -58858,9 +58723,8 @@ _Z27test_for_loop_unroll_factorILi29EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB150_21
+	blez	$a1, .LBB150_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB150_10
@@ -59437,9 +59301,8 @@ _Z27test_for_loop_unroll_factorILi28EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB151_21
+	blez	$a1, .LBB151_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB151_10
@@ -60008,9 +59871,8 @@ _Z27test_for_loop_unroll_factorILi27EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB152_21
+	blez	$a1, .LBB152_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB152_10
@@ -60571,9 +60433,8 @@ _Z27test_for_loop_unroll_factorILi26EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB153_21
+	blez	$a1, .LBB153_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB153_10
@@ -61126,9 +60987,8 @@ _Z27test_for_loop_unroll_factorILi25EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB154_21
+	blez	$a1, .LBB154_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB154_10
@@ -61673,9 +61533,8 @@ _Z27test_for_loop_unroll_factorILi24EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB155_21
+	blez	$a1, .LBB155_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB155_10
@@ -62212,9 +62071,8 @@ _Z27test_for_loop_unroll_factorILi23EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB156_21
+	blez	$a1, .LBB156_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB156_10
@@ -62743,9 +62601,8 @@ _Z27test_for_loop_unroll_factorILi22EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB157_21
+	blez	$a1, .LBB157_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB157_10
@@ -63266,9 +63123,8 @@ _Z27test_for_loop_unroll_factorILi21EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB158_21
+	blez	$a1, .LBB158_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB158_10
@@ -63859,9 +63715,8 @@ _Z27test_for_loop_unroll_factorILi20EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB160_21
+	blez	$a1, .LBB160_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB160_10
@@ -64366,9 +64221,8 @@ _Z27test_for_loop_unroll_factorILi19EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB161_21
+	blez	$a1, .LBB161_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB161_10
@@ -64865,9 +64719,8 @@ _Z27test_for_loop_unroll_factorILi18EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB162_21
+	blez	$a1, .LBB162_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB162_10
@@ -65356,9 +65209,8 @@ _Z27test_for_loop_unroll_factorILi17EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB163_21
+	blez	$a1, .LBB163_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 17
 	blt	$s0, $a0, .LBB163_10
@@ -65839,9 +65691,8 @@ _Z27test_for_loop_unroll_factorILi16EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB164_21
+	blez	$a1, .LBB164_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB164_10
@@ -66314,9 +66165,8 @@ _Z27test_for_loop_unroll_factorILi15EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB165_21
+	blez	$a1, .LBB165_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB165_10
@@ -66781,9 +66631,8 @@ _Z27test_for_loop_unroll_factorILi14EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB166_21
+	blez	$a1, .LBB166_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB166_10
@@ -67240,9 +67089,8 @@ _Z27test_for_loop_unroll_factorILi13EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB167_21
+	blez	$a1, .LBB167_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB167_10
@@ -67691,9 +67539,8 @@ _Z27test_for_loop_unroll_factorILi12EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB168_21
+	blez	$a1, .LBB168_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB168_10
@@ -68215,9 +68062,8 @@ _Z27test_for_loop_unroll_factorILi11EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB170_21
+	blez	$a1, .LBB170_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB170_10
@@ -68650,9 +68496,8 @@ _Z27test_for_loop_unroll_factorILi10EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB171_21
+	blez	$a1, .LBB171_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB171_10
@@ -69077,9 +68922,8 @@ _Z27test_for_loop_unroll_factorILi9EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB172_21
+	blez	$a1, .LBB172_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB172_10
@@ -69496,9 +69340,8 @@ _Z27test_for_loop_unroll_factorILi8EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB173_21
+	blez	$a1, .LBB173_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 8
 	blt	$s0, $a0, .LBB173_10
@@ -69907,9 +69750,8 @@ _Z27test_for_loop_unroll_factorILi7EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB174_21
+	blez	$a1, .LBB174_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB174_10
@@ -70310,9 +70152,8 @@ _Z27test_for_loop_unroll_factorILi6EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB175_21
+	blez	$a1, .LBB175_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB175_10
@@ -70705,9 +70546,8 @@ _Z27test_for_loop_unroll_factorILi5EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB176_21
+	blez	$a1, .LBB176_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB176_10
@@ -71092,9 +70932,8 @@ _Z27test_for_loop_unroll_factorILi4EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB177_21
+	blez	$a1, .LBB177_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB177_10
@@ -71471,9 +71310,8 @@ _Z27test_for_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB178_21
+	blez	$a1, .LBB178_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB178_10
@@ -71842,9 +71680,8 @@ _Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB179_19
+	blez	$a1, .LBB179_19
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s0, $a0, .LBB179_10
@@ -72204,9 +72041,8 @@ _Z27test_for_loop_unroll_factorILi1EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB180_12
+	blez	$a1, .LBB180_12
 # %bb.1:                                # %.preheader17.lr.ph
 	blez	$s0, .LBB180_8
 # %bb.2:                                # %.preheader17.us.preheader
@@ -72459,9 +72295,8 @@ _Z29test_while_loop_unroll_factorILi32EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB181_21
+	blez	$a1, .LBB181_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB181_10
@@ -73062,9 +72897,8 @@ _Z29test_while_loop_unroll_factorILi31EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB182_21
+	blez	$a1, .LBB182_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB182_10
@@ -73657,9 +73491,8 @@ _Z29test_while_loop_unroll_factorILi30EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB183_21
+	blez	$a1, .LBB183_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB183_10
@@ -74323,9 +74156,8 @@ _Z29test_while_loop_unroll_factorILi29EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB185_21
+	blez	$a1, .LBB185_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB185_10
@@ -74902,9 +74734,8 @@ _Z29test_while_loop_unroll_factorILi28EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB186_21
+	blez	$a1, .LBB186_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB186_10
@@ -75473,9 +75304,8 @@ _Z29test_while_loop_unroll_factorILi27EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB187_21
+	blez	$a1, .LBB187_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB187_10
@@ -76036,9 +75866,8 @@ _Z29test_while_loop_unroll_factorILi26EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB188_21
+	blez	$a1, .LBB188_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB188_10
@@ -76591,9 +76420,8 @@ _Z29test_while_loop_unroll_factorILi25EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB189_21
+	blez	$a1, .LBB189_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB189_10
@@ -77138,9 +76966,8 @@ _Z29test_while_loop_unroll_factorILi24EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB190_21
+	blez	$a1, .LBB190_21
 # %bb.1:                                # %.preheader19.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB190_10
@@ -77677,9 +77504,8 @@ _Z29test_while_loop_unroll_factorILi23EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB191_21
+	blez	$a1, .LBB191_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB191_10
@@ -78208,9 +78034,8 @@ _Z29test_while_loop_unroll_factorILi22EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB192_21
+	blez	$a1, .LBB192_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB192_10
@@ -78731,9 +78556,8 @@ _Z29test_while_loop_unroll_factorILi21EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB193_21
+	blez	$a1, .LBB193_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB193_10
@@ -79324,9 +79148,8 @@ _Z29test_while_loop_unroll_factorILi20EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB195_21
+	blez	$a1, .LBB195_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB195_10
@@ -79831,9 +79654,8 @@ _Z29test_while_loop_unroll_factorILi19EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB196_21
+	blez	$a1, .LBB196_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB196_10
@@ -80330,9 +80152,8 @@ _Z29test_while_loop_unroll_factorILi18EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB197_21
+	blez	$a1, .LBB197_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB197_10
@@ -80821,9 +80642,8 @@ _Z29test_while_loop_unroll_factorILi17EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB198_21
+	blez	$a1, .LBB198_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 17
 	blt	$s0, $a0, .LBB198_10
@@ -81304,9 +81124,8 @@ _Z29test_while_loop_unroll_factorILi16EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB199_21
+	blez	$a1, .LBB199_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB199_10
@@ -81779,9 +81598,8 @@ _Z29test_while_loop_unroll_factorILi15EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB200_21
+	blez	$a1, .LBB200_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB200_10
@@ -82246,9 +82064,8 @@ _Z29test_while_loop_unroll_factorILi14EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB201_21
+	blez	$a1, .LBB201_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB201_10
@@ -82705,9 +82522,8 @@ _Z29test_while_loop_unroll_factorILi13EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB202_21
+	blez	$a1, .LBB202_21
 # %bb.1:                                # %.preheader18.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB202_10
@@ -83156,9 +82972,8 @@ _Z29test_while_loop_unroll_factorILi12EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB203_21
+	blez	$a1, .LBB203_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB203_10
@@ -83680,9 +83495,8 @@ _Z29test_while_loop_unroll_factorILi11EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB205_21
+	blez	$a1, .LBB205_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB205_10
@@ -84115,9 +83929,8 @@ _Z29test_while_loop_unroll_factorILi10EdEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB206_21
+	blez	$a1, .LBB206_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB206_10
@@ -84542,9 +84355,8 @@ _Z29test_while_loop_unroll_factorILi9EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB207_21
+	blez	$a1, .LBB207_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB207_10
@@ -84961,9 +84773,8 @@ _Z29test_while_loop_unroll_factorILi8EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB208_21
+	blez	$a1, .LBB208_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 8
 	blt	$s0, $a0, .LBB208_10
@@ -85372,9 +85183,8 @@ _Z29test_while_loop_unroll_factorILi7EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB209_21
+	blez	$a1, .LBB209_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB209_10
@@ -85775,9 +85585,8 @@ _Z29test_while_loop_unroll_factorILi6EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB210_21
+	blez	$a1, .LBB210_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB210_10
@@ -86170,9 +85979,8 @@ _Z29test_while_loop_unroll_factorILi5EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB211_21
+	blez	$a1, .LBB211_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB211_10
@@ -86557,9 +86365,8 @@ _Z29test_while_loop_unroll_factorILi4EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB212_21
+	blez	$a1, .LBB212_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB212_10
@@ -86936,9 +86743,8 @@ _Z29test_while_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB213_21
+	blez	$a1, .LBB213_21
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB213_10
@@ -87307,9 +87113,8 @@ _Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB214_19
+	blez	$a1, .LBB214_19
 # %bb.1:                                # %.preheader17.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s0, $a0, .LBB214_10
@@ -87669,9 +87474,8 @@ _Z29test_while_loop_unroll_factorILi1EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB215_12
+	blez	$a1, .LBB215_12
 # %bb.1:                                # %.preheader17.lr.ph
 	blez	$s0, .LBB215_8
 # %bb.2:                                # %.preheader17.us.preheader
@@ -87925,9 +87729,8 @@ _Z26test_do_loop_unroll_factorILi32EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB216_22
+	blez	$a1, .LBB216_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB216_11
@@ -88535,9 +88338,8 @@ _Z26test_do_loop_unroll_factorILi31EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB217_22
+	blez	$a1, .LBB217_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB217_11
@@ -89137,9 +88939,8 @@ _Z26test_do_loop_unroll_factorILi30EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB218_22
+	blez	$a1, .LBB218_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB218_11
@@ -89810,9 +89611,8 @@ _Z26test_do_loop_unroll_factorILi29EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB220_22
+	blez	$a1, .LBB220_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB220_11
@@ -90396,9 +90196,8 @@ _Z26test_do_loop_unroll_factorILi28EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB221_22
+	blez	$a1, .LBB221_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB221_11
@@ -90974,9 +90773,8 @@ _Z26test_do_loop_unroll_factorILi27EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB222_22
+	blez	$a1, .LBB222_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB222_11
@@ -91544,9 +91342,8 @@ _Z26test_do_loop_unroll_factorILi26EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB223_22
+	blez	$a1, .LBB223_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB223_11
@@ -92106,9 +91903,8 @@ _Z26test_do_loop_unroll_factorILi25EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB224_22
+	blez	$a1, .LBB224_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB224_11
@@ -92660,9 +92456,8 @@ _Z26test_do_loop_unroll_factorILi24EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB225_22
+	blez	$a1, .LBB225_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB225_11
@@ -93206,9 +93001,8 @@ _Z26test_do_loop_unroll_factorILi23EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB226_22
+	blez	$a1, .LBB226_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB226_11
@@ -93744,9 +93538,8 @@ _Z26test_do_loop_unroll_factorILi22EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB227_22
+	blez	$a1, .LBB227_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB227_11
@@ -94274,9 +94067,8 @@ _Z26test_do_loop_unroll_factorILi21EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB228_22
+	blez	$a1, .LBB228_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB228_11
@@ -94874,9 +94666,8 @@ _Z26test_do_loop_unroll_factorILi20EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB230_22
+	blez	$a1, .LBB230_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB230_11
@@ -95388,9 +95179,8 @@ _Z26test_do_loop_unroll_factorILi19EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB231_22
+	blez	$a1, .LBB231_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB231_11
@@ -95894,9 +95684,8 @@ _Z26test_do_loop_unroll_factorILi18EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB232_22
+	blez	$a1, .LBB232_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB232_11
@@ -96392,9 +96181,8 @@ _Z26test_do_loop_unroll_factorILi17EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB233_22
+	blez	$a1, .LBB233_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 17
 	blt	$s0, $a0, .LBB233_11
@@ -96882,9 +96670,8 @@ _Z26test_do_loop_unroll_factorILi16EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB234_22
+	blez	$a1, .LBB234_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB234_11
@@ -97364,9 +97151,8 @@ _Z26test_do_loop_unroll_factorILi15EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB235_22
+	blez	$a1, .LBB235_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB235_11
@@ -97838,9 +97624,8 @@ _Z26test_do_loop_unroll_factorILi14EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB236_22
+	blez	$a1, .LBB236_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB236_11
@@ -98304,9 +98089,8 @@ _Z26test_do_loop_unroll_factorILi13EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB237_22
+	blez	$a1, .LBB237_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB237_11
@@ -98762,9 +98546,8 @@ _Z26test_do_loop_unroll_factorILi12EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB238_22
+	blez	$a1, .LBB238_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB238_11
@@ -99293,9 +99076,8 @@ _Z26test_do_loop_unroll_factorILi11EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB240_22
+	blez	$a1, .LBB240_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB240_11
@@ -99735,9 +99517,8 @@ _Z26test_do_loop_unroll_factorILi10EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB241_22
+	blez	$a1, .LBB241_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB241_11
@@ -100169,9 +99950,8 @@ _Z26test_do_loop_unroll_factorILi9EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB242_22
+	blez	$a1, .LBB242_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB242_11
@@ -100595,9 +100375,8 @@ _Z26test_do_loop_unroll_factorILi8EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB243_22
+	blez	$a1, .LBB243_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 8
 	blt	$s0, $a0, .LBB243_11
@@ -101013,9 +100792,8 @@ _Z26test_do_loop_unroll_factorILi7EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB244_22
+	blez	$a1, .LBB244_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB244_11
@@ -101423,9 +101201,8 @@ _Z26test_do_loop_unroll_factorILi6EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB245_22
+	blez	$a1, .LBB245_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB245_11
@@ -101825,9 +101602,8 @@ _Z26test_do_loop_unroll_factorILi5EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB246_22
+	blez	$a1, .LBB246_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB246_11
@@ -102219,9 +101995,8 @@ _Z26test_do_loop_unroll_factorILi4EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB247_22
+	blez	$a1, .LBB247_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB247_11
@@ -102605,9 +102380,8 @@ _Z26test_do_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB248_22
+	blez	$a1, .LBB248_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB248_11
@@ -102983,9 +102757,8 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB249_20
+	blez	$a1, .LBB249_20
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s0, $a0, .LBB249_11
@@ -103350,9 +103123,8 @@ _Z26test_do_loop_unroll_factorILi1EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB250_12
+	blez	$a1, .LBB250_12
 # %bb.1:                                # %.lr.ph
 	blez	$s0, .LBB250_8
 # %bb.2:                                # %.preheader23.us.preheader
@@ -103606,9 +103378,8 @@ _Z28test_goto_loop_unroll_factorILi32EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB251_22
+	blez	$a1, .LBB251_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 32
 	blt	$s0, $a0, .LBB251_11
@@ -104216,9 +103987,8 @@ _Z28test_goto_loop_unroll_factorILi31EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB252_22
+	blez	$a1, .LBB252_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 31
 	blt	$s0, $a0, .LBB252_11
@@ -104818,9 +104588,8 @@ _Z28test_goto_loop_unroll_factorILi30EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB253_22
+	blez	$a1, .LBB253_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 30
 	blt	$s0, $a0, .LBB253_11
@@ -105491,9 +105260,8 @@ _Z28test_goto_loop_unroll_factorILi29EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB255_22
+	blez	$a1, .LBB255_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 29
 	blt	$s0, $a0, .LBB255_11
@@ -106077,9 +105845,8 @@ _Z28test_goto_loop_unroll_factorILi28EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB256_22
+	blez	$a1, .LBB256_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 28
 	blt	$s0, $a0, .LBB256_11
@@ -106655,9 +106422,8 @@ _Z28test_goto_loop_unroll_factorILi27EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB257_22
+	blez	$a1, .LBB257_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 27
 	blt	$s0, $a0, .LBB257_11
@@ -107225,9 +106991,8 @@ _Z28test_goto_loop_unroll_factorILi26EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB258_22
+	blez	$a1, .LBB258_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 26
 	blt	$s0, $a0, .LBB258_11
@@ -107787,9 +107552,8 @@ _Z28test_goto_loop_unroll_factorILi25EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB259_22
+	blez	$a1, .LBB259_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 25
 	blt	$s0, $a0, .LBB259_11
@@ -108341,9 +108105,8 @@ _Z28test_goto_loop_unroll_factorILi24EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB260_22
+	blez	$a1, .LBB260_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 24
 	blt	$s0, $a0, .LBB260_11
@@ -108887,9 +108650,8 @@ _Z28test_goto_loop_unroll_factorILi23EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB261_22
+	blez	$a1, .LBB261_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 23
 	blt	$s0, $a0, .LBB261_11
@@ -109425,9 +109187,8 @@ _Z28test_goto_loop_unroll_factorILi22EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB262_22
+	blez	$a1, .LBB262_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 22
 	blt	$s0, $a0, .LBB262_11
@@ -109955,9 +109716,8 @@ _Z28test_goto_loop_unroll_factorILi21EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB263_22
+	blez	$a1, .LBB263_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 21
 	blt	$s0, $a0, .LBB263_11
@@ -110555,9 +110315,8 @@ _Z28test_goto_loop_unroll_factorILi20EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB265_22
+	blez	$a1, .LBB265_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 20
 	blt	$s0, $a0, .LBB265_11
@@ -111069,9 +110828,8 @@ _Z28test_goto_loop_unroll_factorILi19EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB266_22
+	blez	$a1, .LBB266_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 19
 	blt	$s0, $a0, .LBB266_11
@@ -111575,9 +111333,8 @@ _Z28test_goto_loop_unroll_factorILi18EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB267_22
+	blez	$a1, .LBB267_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 18
 	blt	$s0, $a0, .LBB267_11
@@ -112073,9 +111830,8 @@ _Z28test_goto_loop_unroll_factorILi17EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB268_22
+	blez	$a1, .LBB268_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 17
 	blt	$s0, $a0, .LBB268_11
@@ -112563,9 +112319,8 @@ _Z28test_goto_loop_unroll_factorILi16EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB269_22
+	blez	$a1, .LBB269_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 16
 	blt	$s0, $a0, .LBB269_11
@@ -113045,9 +112800,8 @@ _Z28test_goto_loop_unroll_factorILi15EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB270_22
+	blez	$a1, .LBB270_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 15
 	blt	$s0, $a0, .LBB270_11
@@ -113519,9 +113273,8 @@ _Z28test_goto_loop_unroll_factorILi14EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB271_22
+	blez	$a1, .LBB271_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 14
 	blt	$s0, $a0, .LBB271_11
@@ -113985,9 +113738,8 @@ _Z28test_goto_loop_unroll_factorILi13EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB272_22
+	blez	$a1, .LBB272_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 13
 	blt	$s0, $a0, .LBB272_11
@@ -114443,9 +114195,8 @@ _Z28test_goto_loop_unroll_factorILi12EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB273_22
+	blez	$a1, .LBB273_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 12
 	blt	$s0, $a0, .LBB273_11
@@ -114974,9 +114725,8 @@ _Z28test_goto_loop_unroll_factorILi11EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB275_22
+	blez	$a1, .LBB275_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 11
 	blt	$s0, $a0, .LBB275_11
@@ -115416,9 +115166,8 @@ _Z28test_goto_loop_unroll_factorILi10EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB276_22
+	blez	$a1, .LBB276_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 10
 	blt	$s0, $a0, .LBB276_11
@@ -115850,9 +115599,8 @@ _Z28test_goto_loop_unroll_factorILi9EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB277_22
+	blez	$a1, .LBB277_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 9
 	blt	$s0, $a0, .LBB277_11
@@ -116276,9 +116024,8 @@ _Z28test_goto_loop_unroll_factorILi8EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB278_22
+	blez	$a1, .LBB278_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 8
 	blt	$s0, $a0, .LBB278_11
@@ -116694,9 +116441,8 @@ _Z28test_goto_loop_unroll_factorILi7EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB279_22
+	blez	$a1, .LBB279_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 7
 	blt	$s0, $a0, .LBB279_11
@@ -117104,9 +116850,8 @@ _Z28test_goto_loop_unroll_factorILi6EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB280_22
+	blez	$a1, .LBB280_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 6
 	blt	$s0, $a0, .LBB280_11
@@ -117506,9 +117251,8 @@ _Z28test_goto_loop_unroll_factorILi5EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB281_22
+	blez	$a1, .LBB281_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 5
 	blt	$s0, $a0, .LBB281_11
@@ -117900,9 +117644,8 @@ _Z28test_goto_loop_unroll_factorILi4EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB282_22
+	blez	$a1, .LBB282_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 4
 	blt	$s0, $a0, .LBB282_11
@@ -118286,9 +118029,8 @@ _Z28test_goto_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB283_22
+	blez	$a1, .LBB283_22
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 3
 	blt	$s0, $a0, .LBB283_11
@@ -118664,9 +118406,8 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB284_20
+	blez	$a1, .LBB284_20
 # %bb.1:                                # %.lr.ph
 	ori	$a0, $zero, 2
 	blt	$s0, $a0, .LBB284_11
@@ -119031,9 +118772,8 @@ _Z28test_goto_loop_unroll_factorILi1EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB285_12
+	blez	$a1, .LBB285_12
 # %bb.1:                                # %.lr.ph
 	blez	$s0, .LBB285_8
 # %bb.2:                                # %.preheader23.us.preheader

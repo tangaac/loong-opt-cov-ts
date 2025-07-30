@@ -296,19 +296,19 @@ Plain_PrintBetweenPages:                # @Plain_PrintBetweenPages
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(vsize)
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.w	$fp, $a2, %pc_lo12(vsize)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(vsize)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$fp, $a0, %pc_lo12(vsize)
-	ori	$s5, $zero, 1
 	pcalau12i	$s3, %pc_hi20(hsize)
 	pcalau12i	$s1, %pc_hi20(page)
 	pcalau12i	$s4, %pc_hi20(out_fp)
-	blt	$fp, $s5, .LBB14_8
+	blez	$fp, .LBB14_8
 # %bb.1:                                # %.lr.ph35.preheader
-	addi.d	$s7, $fp, -1
-	ori	$s8, $zero, 32
+	addi.d	$s6, $fp, -1
+	ori	$s7, $zero, 32
+	ori	$s8, $zero, 1
 	b	.LBB14_3
 	.p2align	4, , 16
 .LBB14_2:                               # %._crit_edge
@@ -317,28 +317,28 @@ Plain_PrintBetweenPages:                # @Plain_PrintBetweenPages
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	addi.d	$s7, $s7, -1
-	bge	$s5, $s6, .LBB14_8
+	addi.d	$s6, $s6, -1
+	bge	$s8, $s5, .LBB14_8
 .LBB14_3:                               # %.lr.ph35
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB14_4 Depth 2
                                         #     Child Loop BB14_7 Depth 2
 	ld.w	$a2, $s3, %pc_lo12(hsize)
-	move	$s6, $fp
+	move	$s5, $fp
 	ld.d	$a0, $s1, %pc_lo12(page)
 	addi.w	$fp, $fp, -1
-	mul.d	$a1, $a2, $s6
+	mul.d	$a1, $a2, $s5
 	addi.w	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB14_4:                               #   Parent Loop BB14_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$a2, $s5, .LBB14_2
+	blez	$a2, .LBB14_2
 # %bb.5:                                #   in Loop: Header=BB14_4 Depth=2
 	move	$s0, $a2
 	ldx.bu	$a3, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.w	$a1, $a1, -1
-	beq	$a3, $s8, .LBB14_4
+	beq	$a3, $s7, .LBB14_4
 # %bb.6:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB14_3 Depth=1
 	move	$s2, $zero
@@ -348,7 +348,7 @@ Plain_PrintBetweenPages:                # @Plain_PrintBetweenPages
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a0, $s3, %pc_lo12(hsize)
 	ld.d	$a1, $s1, %pc_lo12(page)
-	mul.w	$a0, $s7, $a0
+	mul.w	$a0, $s6, $a0
 	add.d	$a0, $a1, $a0
 	ldx.bu	$a0, $a0, $s2
 	ld.d	$a1, $s4, %pc_lo12(out_fp)
@@ -457,45 +457,45 @@ Plain_PrintAfterLastPage:               # @Plain_PrintAfterLastPage
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(vsize)
-	ld.w	$s0, $a0, %pc_lo12(vsize)
-	ori	$fp, $zero, 1
-	blt	$s0, $fp, .LBB15_9
+	ld.w	$fp, $a0, %pc_lo12(vsize)
+	blez	$fp, .LBB15_9
 # %bb.2:                                # %.lr.ph18.preheader
-	addi.d	$s1, $s0, -1
-	pcalau12i	$s2, %pc_hi20(hsize)
-	pcalau12i	$s3, %pc_hi20(page)
-	ori	$s4, $zero, 32
-	pcalau12i	$s5, %pc_hi20(out_fp)
+	addi.d	$s0, $fp, -1
+	pcalau12i	$s1, %pc_hi20(hsize)
+	pcalau12i	$s2, %pc_hi20(page)
+	ori	$s3, $zero, 32
+	pcalau12i	$s4, %pc_hi20(out_fp)
+	ori	$s5, $zero, 1
 	b	.LBB15_4
 	.p2align	4, , 16
 .LBB15_3:                               # %._crit_edge
                                         #   in Loop: Header=BB15_4 Depth=1
-	ld.d	$a1, $s5, %pc_lo12(out_fp)
+	ld.d	$a1, $s4, %pc_lo12(out_fp)
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, -1
-	bge	$fp, $s6, .LBB15_9
+	addi.d	$s0, $s0, -1
+	bge	$s5, $s6, .LBB15_9
 .LBB15_4:                               # %.lr.ph18
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_5 Depth 2
                                         #     Child Loop BB15_8 Depth 2
-	ld.w	$a2, $s2, %pc_lo12(hsize)
-	move	$s6, $s0
-	ld.d	$a0, $s3, %pc_lo12(page)
-	addi.w	$s0, $s0, -1
+	ld.w	$a2, $s1, %pc_lo12(hsize)
+	move	$s6, $fp
+	ld.d	$a0, $s2, %pc_lo12(page)
+	addi.w	$fp, $fp, -1
 	mul.d	$a1, $a2, $s6
 	addi.w	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB15_5:                               #   Parent Loop BB15_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$a2, $fp, .LBB15_3
+	blez	$a2, .LBB15_3
 # %bb.6:                                #   in Loop: Header=BB15_5 Depth=2
 	move	$s7, $a2
 	ldx.bu	$a3, $a0, $a1
 	addi.d	$a2, $a2, -1
 	addi.w	$a1, $a1, -1
-	beq	$a3, $s4, .LBB15_5
+	beq	$a3, $s3, .LBB15_5
 # %bb.7:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB15_4 Depth=1
 	move	$s8, $zero
@@ -503,12 +503,12 @@ Plain_PrintAfterLastPage:               # @Plain_PrintAfterLastPage
 .LBB15_8:                               # %.lr.ph
                                         #   Parent Loop BB15_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $s2, %pc_lo12(hsize)
-	ld.d	$a1, $s3, %pc_lo12(page)
-	mul.w	$a0, $s1, $a0
+	ld.w	$a0, $s1, %pc_lo12(hsize)
+	ld.d	$a1, $s2, %pc_lo12(page)
+	mul.w	$a0, $s0, $a0
 	add.d	$a0, $a1, $a0
 	ldx.bu	$a0, $a0, $s8
-	ld.d	$a1, $s5, %pc_lo12(out_fp)
+	ld.d	$a1, $s4, %pc_lo12(out_fp)
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	addi.w	$s7, $s7, -1

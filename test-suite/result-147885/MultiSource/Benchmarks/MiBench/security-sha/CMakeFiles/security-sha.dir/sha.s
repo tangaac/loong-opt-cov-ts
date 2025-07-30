@@ -487,14 +487,13 @@ sha_stream:                             # @sha_stream
 	lu12i.w	$a2, 2
 	addi.d	$a0, $sp, 24
 	ori	$a1, $zero, 1
-	ori	$s0, $zero, 1
 	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
 	addi.d	$a2, $fp, 28
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	blt	$a1, $s0, .LBB5_18
+	blez	$a1, .LBB5_18
 # %bb.1:                                # %.lr.ph
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 24

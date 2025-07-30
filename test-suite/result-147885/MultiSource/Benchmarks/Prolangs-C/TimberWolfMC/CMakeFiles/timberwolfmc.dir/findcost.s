@@ -30,29 +30,29 @@ findcost:                               # @findcost
 	pcalau12i	$a0, %got_pc_hi20(Tsave)
 	ld.d	$a3, $a0, %got_pc_lo12(Tsave)
 	add.w	$a0, $a2, $a1
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_10
+	blez	$a0, .LBB0_10
 # %bb.1:                                # %.lr.ph146
-	pcalau12i	$a5, %got_pc_hi20(cellarray)
-	ld.d	$a5, $a5, %got_pc_lo12(cellarray)
-	pcalau12i	$a6, %got_pc_hi20(termarray)
-	ld.d	$a6, $a6, %got_pc_lo12(termarray)
+	pcalau12i	$a4, %got_pc_hi20(cellarray)
+	ld.d	$a4, $a4, %got_pc_lo12(cellarray)
+	pcalau12i	$a5, %got_pc_hi20(termarray)
+	ld.d	$a5, $a5, %got_pc_lo12(termarray)
+	ld.d	$a4, $a4, 0
 	ld.d	$a5, $a5, 0
-	ld.d	$a6, $a6, 0
-	addi.d	$a7, $a0, 1
-	bstrpick.d	$a7, $a7, 31, 0
+	addi.d	$a6, $a0, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	ori	$a7, $zero, 1
 	ori	$t0, $zero, 1
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %.loopexit134
                                         #   in Loop: Header=BB0_3 Depth=1
 	addi.d	$t0, $t0, 1
-	beq	$t0, $a7, .LBB0_10
+	beq	$t0, $a6, .LBB0_10
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_5 Depth 2
                                         #     Child Loop BB0_9 Depth 2
 	slli.d	$t1, $t0, 3
-	ldx.d	$t1, $a5, $t1
+	ldx.d	$t1, $a4, $t1
 	ld.w	$t2, $t1, 56
 	alsl.d	$t2, $t2, $t1, 3
 	ld.d	$t2, $t2, 152
@@ -67,7 +67,7 @@ findcost:                               # @findcost
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t6, $t3, 24
 	slli.d	$t6, $t6, 3
-	ldx.d	$t6, $a6, $t6
+	ldx.d	$t6, $a5, $t6
 	ld.w	$t7, $t3, 8
 	ld.d	$t6, $t6, 8
 	ld.w	$t8, $t3, 12
@@ -80,11 +80,11 @@ findcost:                               # @findcost
 .LBB0_6:                                # %._crit_edge
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$t3, $t1, 76
-	bne	$t3, $a4, .LBB0_2
+	bne	$t3, $a7, .LBB0_2
 # %bb.7:                                # %.preheader133
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$t4, $t1, 132
-	blt	$t4, $a4, .LBB0_2
+	blez	$t4, .LBB0_2
 # %bb.8:                                # %.lr.ph142
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$t5, $t1, 144
@@ -101,7 +101,7 @@ findcost:                               # @findcost
 	ld.w	$t6, $t4, -4
 	ld.w	$t7, $t4, 0
 	slli.d	$t6, $t6, 3
-	ldx.d	$t6, $a6, $t6
+	ldx.d	$t6, $a5, $t6
 	alsl.d	$t8, $t7, $t2, 4
 	slli.d	$t7, $t7, 4
 	ldx.w	$t7, $t2, $t7
@@ -125,16 +125,16 @@ findcost:                               # @findcost
 	fld.d	$fs0, $a3, 0
 	slt	$a3, $zero, $a4
 	maskeqz	$a3, $a1, $a3
-	add.w	$a5, $a3, $a5
-	ori	$a3, $zero, 1
-	blt	$a5, $a3, .LBB0_30
+	add.w	$a4, $a3, $a5
+	blez	$a4, .LBB0_30
 # %bb.11:                               # %.lr.ph157
-	pcalau12i	$a4, %got_pc_hi20(netarray)
-	ld.d	$a4, $a4, %got_pc_lo12(netarray)
+	pcalau12i	$a3, %got_pc_hi20(netarray)
+	ld.d	$a3, $a3, %got_pc_lo12(netarray)
 	move	$fp, $zero
-	ld.d	$a4, $a4, 0
-	addi.d	$a5, $a5, 1
-	bstrpick.d	$a5, $a5, 31, 0
+	ld.d	$a3, $a3, 0
+	addi.d	$a4, $a4, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	ori	$a5, $zero, 1
 	ori	$a6, $zero, 1
 	b	.LBB0_14
 	.p2align	4, , 16
@@ -162,16 +162,16 @@ findcost:                               # @findcost
 	add.w	$fp, $a7, $t0
 .LBB0_13:                               #   in Loop: Header=BB0_14 Depth=1
 	addi.d	$a6, $a6, 1
-	beq	$a6, $a5, .LBB0_31
+	beq	$a6, $a4, .LBB0_31
 .LBB0_14:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_17 Depth 2
                                         #     Child Loop BB0_22 Depth 2
 	slli.d	$a7, $a6, 3
-	ldx.d	$a7, $a4, $a7
+	ldx.d	$a7, $a3, $a7
 	beqz	$a7, .LBB0_13
 # %bb.15:                               #   in Loop: Header=BB0_14 Depth=1
 	ld.w	$t0, $a7, 8
-	beq	$t0, $a3, .LBB0_13
+	beq	$t0, $a5, .LBB0_13
 # %bb.16:                               # %.preheader131.preheader
                                         #   in Loop: Header=BB0_14 Depth=1
 	move	$t0, $a7
@@ -183,7 +183,7 @@ findcost:                               # @findcost
 	beqz	$t0, .LBB0_12
 # %bb.18:                               #   in Loop: Header=BB0_17 Depth=2
 	ld.w	$t1, $t0, 40
-	beq	$t1, $a3, .LBB0_17
+	beq	$t1, $a5, .LBB0_17
 # %bb.19:                               # %.loopexit132
                                         #   in Loop: Header=BB0_14 Depth=1
 	ld.w	$t1, $t0, 8
@@ -204,7 +204,7 @@ findcost:                               # @findcost
 .LBB0_22:                               #   Parent Loop BB0_14 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t1, $t0, 40
-	beq	$t1, $a3, .LBB0_21
+	beq	$t1, $a5, .LBB0_21
 # %bb.23:                               #   in Loop: Header=BB0_22 Depth=2
 	ld.w	$t2, $t0, 8
 	ld.w	$t3, $a7, 12
@@ -289,65 +289,64 @@ findcost:                               # @findcost
 	pcalau12i	$a0, %got_pc_hi20(overfill)
 	ld.d	$a0, $a0, %got_pc_lo12(overfill)
 	st.w	$a3, $s3, 0
-	ori	$a2, $zero, 1
 	st.w	$zero, $a0, 0
-	blt	$a1, $a2, .LBB0_48
+	blez	$a1, .LBB0_48
 # %bb.40:                               # %.lr.ph179
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a3, %got_pc_hi20(cellarray)
-	ld.d	$a4, $a3, %got_pc_lo12(cellarray)
-	move	$a3, $zero
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a2, %got_pc_hi20(cellarray)
+	ld.d	$a3, $a2, %got_pc_lo12(cellarray)
+	move	$a2, $zero
 	fdiv.d	$fa0, $fs0, $fa0
-	ld.d	$a4, $a4, 0
+	ld.d	$a3, $a3, 0
 	vldi	$vr1, -988
 	fmul.d	$fa0, $fa0, $fa1
 	addi.d	$a1, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	ori	$a5, $zero, 1
+	ori	$a4, $zero, 1
 	b	.LBB0_42
 	.p2align	4, , 16
 .LBB0_41:                               # %.loopexit
                                         #   in Loop: Header=BB0_42 Depth=1
-	addi.d	$a5, $a5, 1
-	beq	$a5, $a1, .LBB0_48
+	addi.d	$a4, $a4, 1
+	beq	$a4, $a1, .LBB0_48
 .LBB0_42:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_46 Depth 2
-	slli.d	$a6, $a5, 3
-	ldx.d	$a7, $a4, $a6
-	ld.w	$a6, $a7, 76
-	beqz	$a6, .LBB0_41
+	slli.d	$a5, $a4, 3
+	ldx.d	$a6, $a3, $a5
+	ld.w	$a5, $a6, 76
+	beqz	$a5, .LBB0_41
 # %bb.43:                               # %.preheader
                                         #   in Loop: Header=BB0_42 Depth=1
-	ld.w	$a6, $a7, 128
-	blt	$a6, $a2, .LBB0_41
+	ld.w	$a5, $a6, 128
+	blez	$a5, .LBB0_41
 # %bb.44:                               # %.lr.ph168
                                         #   in Loop: Header=BB0_42 Depth=1
-	ld.d	$t0, $a7, 136
-	move	$a7, $zero
-	addi.d	$t0, $t0, 28
+	ld.d	$a7, $a6, 136
+	move	$a6, $zero
+	addi.d	$a7, $a7, 28
 	b	.LBB0_46
 	.p2align	4, , 16
 .LBB0_45:                               #   in Loop: Header=BB0_46 Depth=2
-	addi.d	$a7, $a7, 1
-	addi.d	$t0, $t0, 20
-	bgeu	$a7, $a6, .LBB0_41
+	addi.d	$a6, $a6, 1
+	addi.d	$a7, $a7, 20
+	bgeu	$a6, $a5, .LBB0_41
 .LBB0_46:                               #   Parent Loop BB0_42 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t1, $t0, -8
-	ld.w	$t2, $t0, 0
-	bge	$t2, $t1, .LBB0_45
+	ld.w	$t0, $a7, -8
+	ld.w	$t1, $a7, 0
+	bge	$t1, $t0, .LBB0_45
 # %bb.47:                               #   in Loop: Header=BB0_46 Depth=2
-	sub.d	$t1, $t1, $t2
-	mul.d	$t1, $t1, $t1
-	bstrpick.d	$t1, $t1, 31, 0
-	movgr2fr.d	$fa1, $t1
+	sub.d	$t0, $t0, $t1
+	mul.d	$t0, $t0, $t0
+	bstrpick.d	$t0, $t0, 31, 0
+	movgr2fr.d	$fa1, $t0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa0, $fa1
 	ftintrz.w.d	$fa1, $fa1
-	movfr2gr.s	$t1, $fa1
-	add.d	$a3, $a3, $t1
-	st.w	$a3, $a0, 0
+	movfr2gr.s	$t0, $fa1
+	add.d	$a2, $a2, $t0
+	st.w	$a2, $a0, 0
 	b	.LBB0_45
 .LBB0_48:                               # %._crit_edge180
 	move	$a0, $fp

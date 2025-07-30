@@ -247,8 +247,7 @@ main:                                   # @main
 	ld.w	$s8, $s4, %pc_lo12(pack_output.out_bits)
 	b	.LBB1_25
 .LBB1_28:                               # %.preheader
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB1_33
+	blez	$s8, .LBB1_33
 .LBB1_29:                               # %.lr.ph56.preheader
 	ld.w	$a1, $s4, %pc_lo12(pack_output.out_bits)
 	ld.w	$a0, $s5, %pc_lo12(pack_output.out_buffer)

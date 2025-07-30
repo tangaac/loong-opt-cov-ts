@@ -476,9 +476,8 @@ get_audio:                              # @get_audio
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(read_samples_pcm)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	div.w	$a0, $a0, $s2
-	blt	$s4, $a1, .LBB8_23
+	blez	$s4, .LBB8_23
 # %bb.8:                                # %.lr.ph
 	ori	$a1, $zero, 2
 	bne	$s2, $a1, .LBB8_11
@@ -869,9 +868,8 @@ fskip:                                  # @fskip
 	st.d	$fp, $sp, 1056                  # 8-byte Folded Spill
 	st.d	$s0, $sp, 1048                  # 8-byte Folded Spill
 	st.d	$s1, $sp, 1040                  # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a1
-	blt	$a1, $a2, .LBB12_3
+	blez	$a1, .LBB12_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
 	ori	$s1, $zero, 1024
@@ -960,7 +958,7 @@ parse_file_header:                      # @parse_file_header
 	.p2align	4, , 16
 .LBB13_4:                               # %fskip.exit.i
                                         #   in Loop: Header=BB13_6 Depth=1
-	bstrpick.d	$a0, $s3, 31, 0
+	slli.d	$a0, $s3, 32
 	bnez	$a0, .LBB13_34
 .LBB13_5:                               #   in Loop: Header=BB13_6 Depth=1
 	addi.w	$s5, $s5, 1
@@ -983,8 +981,7 @@ parse_file_header:                      # @parse_file_header
                                         #   in Loop: Header=BB13_6 Depth=1
 	beq	$s4, $s8, .LBB13_30
 # %bb.8:                                #   in Loop: Header=BB13_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB13_4
+	blez	$s3, .LBB13_4
 	.p2align	4, , 16
 .LBB13_9:                               # %.lr.ph.i49.i
                                         #   Parent Loop BB13_6 Depth=1
@@ -1061,23 +1058,22 @@ parse_file_header:                      # @parse_file_header
 	ori	$a1, $a1, 1606
 	bne	$a0, $a1, .LBB13_34
 # %bb.15:
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB13_34
+	blez	$s2, .LBB13_34
 # %bb.16:                               # %.lr.ph.preheader.i
 	move	$s5, $zero
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
-	move	$s8, $zero
+	move	$s7, $zero
 	movgr2fr.w	$fs0, $zero
 	lu12i.w	$a0, 275700
 	ori	$s6, $a0, 3405
-	ori	$s7, $zero, 1024
+	ori	$s8, $zero, 1024
 	lu12i.w	$a0, 341300
 	ori	$s1, $a0, 3652
 	b	.LBB13_19
 	.p2align	4, , 16
 .LBB13_17:                              # %fskip.exit55.i
                                         #   in Loop: Header=BB13_19 Depth=1
-	bstrpick.d	$a0, $fp, 31, 0
+	slli.d	$a0, $fp, 32
 	bnez	$a0, .LBB13_34
 # %bb.18:                               #   in Loop: Header=BB13_19 Depth=1
 	addi.d	$a0, $s2, -4
@@ -1101,14 +1097,13 @@ parse_file_header:                      # @parse_file_header
 	beq	$s4, $s1, .LBB13_27
 # %bb.21:                               #   in Loop: Header=BB13_19 Depth=1
 	move	$fp, $s3
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB13_17
+	blez	$s3, .LBB13_17
 	.p2align	4, , 16
 .LBB13_22:                              # %.lr.ph.i53.i
                                         #   Parent Loop BB13_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	sltui	$a0, $fp, 1024
-	masknez	$a1, $s7, $a0
+	masknez	$a1, $s8, $a0
 	maskeqz	$a0, $fp, $a0
 	or	$a2, $a0, $a1
 	addi.d	$a0, $sp, 32
@@ -1145,7 +1140,7 @@ parse_file_header:                      # @parse_file_header
                                         #   Parent Loop BB13_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	sltui	$a0, $fp, 1024
-	masknez	$a1, $s7, $a0
+	masknez	$a1, $s8, $a0
 	maskeqz	$a0, $fp, $a0
 	or	$a2, $a0, $a1
 	addi.d	$a0, $sp, 32
@@ -1157,10 +1152,10 @@ parse_file_header:                      # @parse_file_header
 	bgtz	$fp, .LBB13_24
 .LBB13_25:                              # %fskip.exit.i17
                                         #   in Loop: Header=BB13_19 Depth=1
-	bstrpick.d	$a0, $fp, 31, 0
+	slli.d	$a0, $fp, 32
 	bnez	$a0, .LBB13_34
 # %bb.26:                               #   in Loop: Header=BB13_19 Depth=1
-	bstrpick.d	$s8, $s4, 15, 0
+	bstrpick.d	$s7, $s4, 15, 0
 	bstrpick.d	$s5, $s5, 15, 0
 	fcvt.s.d	$fs0, $fs0
 	addi.d	$a0, $s2, -4
@@ -1175,9 +1170,8 @@ parse_file_header:                      # @parse_file_header
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(Read32BitsHighLow)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s2, $a1, .LBB13_32
+	blez	$s2, .LBB13_32
 # %bb.28:                               # %.lr.ph.i49.i15.preheader
 	ori	$fp, $zero, 1024
 	move	$s1, $s2
@@ -1216,7 +1210,7 @@ parse_file_header:                      # @parse_file_header
 .LBB13_32:
 	move	$s1, $s2
 .LBB13_33:                              # %fskip.exit51.i12
-	bstrpick.d	$a0, $s1, 31, 0
+	slli.d	$a0, $s1, 32
 	beqz	$a0, .LBB13_37
 .LBB13_34:                              # %parse_wave_header.exit.thread
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
@@ -1250,7 +1244,7 @@ parse_file_header:                      # @parse_file_header
 	ori	$a0, $zero, 16
 	bne	$s5, $a0, .LBB13_44
 # %bb.38:
-	addi.d	$a0, $s8, -1
+	addi.d	$a0, $s7, -1
 	ori	$a1, $zero, 2
 	bgeu	$a0, $a1, .LBB13_45
 # %bb.39:
@@ -1258,7 +1252,7 @@ parse_file_header:                      # @parse_file_header
 # %bb.40:
 	bnez	$s2, .LBB13_47
 # %bb.41:
-	bstrpick.d	$a0, $s8, 15, 0
+	bstrpick.d	$a0, $s7, 15, 0
 	pcalau12i	$a1, %pc_hi20(num_channels)
 	st.w	$a0, $a1, %pc_lo12(num_channels)
 	ftintrz.w.s	$fa0, $fs0

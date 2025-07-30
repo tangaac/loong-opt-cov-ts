@@ -33,9 +33,8 @@ essential:                              # @essential
 	ld.w	$a1, $s2, 12
 	ld.w	$a2, $s2, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s3, $a0
-	blt	$a1, $a2, .LBB0_10
+	blez	$a1, .LBB0_10
 # %bb.1:                                # %.lr.ph
 	ld.d	$s4, $s2, 24
 	alsl.d	$fp, $a1, $s4, 2
@@ -260,12 +259,12 @@ cb_consensus:                           # @cb_consensus
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a1, $a2, $a1
-	ori	$s4, $zero, 1
 	move	$s2, $a0
-	blt	$a1, $s4, .LBB2_11
+	blez	$a1, .LBB2_11
 # %bb.3:                                # %.lr.ph.preheader
 	ld.d	$s3, $fp, 24
-	alsl.d	$s5, $a1, $s3, 2
+	alsl.d	$s4, $a1, $s3, 2
+	ori	$s5, $zero, 1
 	b	.LBB2_7
 	.p2align	4, , 16
 .LBB2_4:                                #   in Loop: Header=BB2_7 Depth=1
@@ -283,7 +282,7 @@ cb_consensus:                           # @cb_consensus
 .LBB2_6:                                #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a0, $fp, 0
 	alsl.d	$s3, $a0, $s3, 2
-	bgeu	$s3, $s5, .LBB2_11
+	bgeu	$s3, $s4, .LBB2_11
 .LBB2_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	beq	$s3, $s0, .LBB2_6
@@ -292,7 +291,7 @@ cb_consensus:                           # @cb_consensus
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cdist01)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s4, .LBB2_4
+	beq	$a0, $s5, .LBB2_4
 # %bb.9:                                #   in Loop: Header=BB2_7 Depth=1
 	bnez	$a0, .LBB2_6
 # %bb.10:                               #   in Loop: Header=BB2_7 Depth=1
@@ -597,26 +596,26 @@ cb_consensus_dist0:                     # @cb_consensus_dist0
 	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB3_33
 .LBB3_29:                               # %._crit_edge
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB3_33
+	blez	$s7, .LBB3_33
 # %bb.30:
-	ld.wu	$a1, $s2, 0
-	ld.wu	$a2, $s1, 0
-	srli.d	$a1, $a1, 10
-	andi	$a3, $a2, 1023
-	bstrins.d	$a2, $a1, 63, 10
-	st.w	$a2, $s2, 0
-	addi.d	$a1, $a3, 1
-	slli.d	$a2, $a3, 2
+	ld.wu	$a0, $s2, 0
+	ld.wu	$a1, $s1, 0
+	srli.d	$a0, $a0, 10
+	andi	$a2, $a1, 1023
+	bstrins.d	$a1, $a0, 63, 10
+	st.w	$a1, $s2, 0
+	addi.d	$a0, $a2, 1
+	slli.d	$a1, $a2, 2
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB3_31:                               # =>This Inner Loop Header: Depth=1
-	ldx.w	$a3, $s1, $a2
-	ldx.w	$a4, $s0, $a2
+	ldx.w	$a3, $s1, $a1
+	ldx.w	$a4, $s0, $a1
 	and	$a3, $a4, $a3
-	stx.w	$a3, $s2, $a2
-	addi.d	$a1, $a1, -1
-	addi.d	$a2, $a2, -4
-	bltu	$a0, $a1, .LBB3_31
+	stx.w	$a3, $s2, $a1
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, -4
+	bltu	$a2, $a0, .LBB3_31
 # %bb.32:                               # %.thread
 	move	$a0, $s4
 	move	$a1, $s2

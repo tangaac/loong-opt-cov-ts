@@ -88,13 +88,12 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(current_test)
 	ld.w	$s0, $s6, %pc_lo12(current_test)
-	move	$s8, $a4
+	move	$s5, $a4
 	move	$s2, $a2
 	move	$s3, $a1
 	move	$fp, $a0
-	ori	$s5, $zero, 1
 	pcalau12i	$s7, %pc_hi20(results)
-	blt	$s0, $s5, .LBB1_3
+	blez	$s0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s7, %pc_lo12(results)
 	addi.d	$s4, $a0, 8
@@ -132,9 +131,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s5, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.5:                                # %.lr.ph45.preheader
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	move	$s8, $zero
 	move	$s4, $zero
@@ -180,10 +179,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	addi.d	$s8, $s8, 16
 	blt	$s0, $a0, .LBB1_6
 # %bb.7:                                # %.preheader39
-	ori	$a1, $zero, 1
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB1_10
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	blez	$a0, .LBB1_10
 # %bb.8:                                # %.lr.ph49
 	ld.d	$a1, $s7, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
@@ -201,7 +199,7 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	beqz	$s8, .LBB1_15
+	beqz	$s5, .LBB1_15
 # %bb.11:                               # %._crit_edge50
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	ori	$a1, $zero, 2
@@ -278,11 +276,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	ld.w	$fp, $s5, %pc_lo12(current_test)
 	move	$s0, $a1
 	move	$s7, $a0
-	ori	$s3, $zero, 1
-	pcalau12i	$s4, %pc_hi20(results)
-	blt	$fp, $s3, .LBB2_3
+	pcalau12i	$s3, %pc_hi20(results)
+	blez	$fp, .LBB2_3
 # %bb.1:                                # %.lr.ph
-	ld.d	$a0, $s4, %pc_lo12(results)
+	ld.d	$a0, $s3, %pc_lo12(results)
 	addi.d	$s2, $a0, 8
 	ori	$s1, $zero, 12
 	.p2align	4, , 16
@@ -320,7 +317,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s3, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.5:                                # %.lr.ph32.preheader
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	move	$s8, $zero
@@ -330,11 +327,11 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.5)
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph32
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s6, $s4, %pc_lo12(results)
+	ld.d	$s6, $s3, %pc_lo12(results)
 	add.d	$a0, $s6, $s8
 	move	$s0, $s5
 	ld.d	$s5, $a0, 8
@@ -346,7 +343,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	move	$a0, $s7
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $s2
-	move	$a4, $s3
+	move	$a4, $s4
 	move	$a5, $s5
 	move	$s5, $s0
 	pcaddu18i	$ra, %call36(fprintf)
@@ -357,11 +354,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$s8, $s8, 16
 	blt	$fp, $a0, .LBB2_6
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.8:                                # %.lr.ph36
-	ld.d	$a1, $s4, %pc_lo12(results)
+	ld.d	$a1, $s3, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
 	.p2align	4, , 16
 .LBB2_9:                                # =>This Inner Loop Header: Depth=1
@@ -2338,9 +2334,8 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB6_23
+	blez	$a1, .LBB6_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB6_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -2660,9 +2655,8 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB7_23
+	blez	$a1, .LBB7_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$s7, $s0, $s1
 	blez	$s1, .LBB7_19
@@ -2979,9 +2973,8 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB8_23
+	blez	$a1, .LBB8_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -3304,9 +3297,8 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB9_23
+	blez	$a1, .LBB9_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB9_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -3629,9 +3621,8 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB10_23
+	blez	$a1, .LBB10_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -3954,9 +3945,8 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB11_23
+	blez	$a1, .LBB11_23
 # %bb.1:                                # %.preheader.lr.ph
 	slli.d	$s7, $s0, 6
 	blez	$s1, .LBB11_19
@@ -4277,9 +4267,8 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB12_23
+	blez	$a1, .LBB12_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -4601,9 +4590,8 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB13_23
+	blez	$a1, .LBB13_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -4925,9 +4913,8 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB14_23
+	blez	$a1, .LBB14_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB14_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -5266,10 +5253,9 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB15_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	blez	$a1, .LBB15_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB15_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -5652,9 +5638,8 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB16_23
+	blez	$a1, .LBB16_23
 # %bb.1:                                # %.preheader.lr.ph
 	div.d	$a0, $s5, $s4
 	ext.w.h	$a0, $a0
@@ -5982,10 +5967,9 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB17_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	blez	$a1, .LBB17_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s4, $s5
 	div.d	$s5, $a0, $s3
@@ -6319,9 +6303,8 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB18_23
+	blez	$a1, .LBB18_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB18_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -6644,9 +6627,8 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB19_23
+	blez	$a1, .LBB19_23
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s4, $s2
 	and	$a0, $s5, $a0
@@ -6976,9 +6958,8 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB20_23
+	blez	$a1, .LBB20_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB20_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -7301,9 +7282,8 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB21_23
+	blez	$a1, .LBB21_23
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s4, $s2
 	or	$a0, $s5, $a0
@@ -7633,9 +7613,8 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB22_23
+	blez	$a1, .LBB22_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB22_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -7958,9 +7937,8 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB23_23
+	blez	$a1, .LBB23_23
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s4, $s2
 	xor	$a0, $s5, $a0
@@ -8290,9 +8268,8 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB24_23
+	blez	$a1, .LBB24_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB24_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -8612,9 +8589,8 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB25_23
+	blez	$a1, .LBB25_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$s7, $s0, $s1
 	blez	$s1, .LBB25_19
@@ -8931,9 +8907,8 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB26_23
+	blez	$a1, .LBB26_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -9256,9 +9231,8 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB27_23
+	blez	$a1, .LBB27_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB27_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -9581,9 +9555,8 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB28_23
+	blez	$a1, .LBB28_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -9906,9 +9879,8 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB29_23
+	blez	$a1, .LBB29_23
 # %bb.1:                                # %.preheader.lr.ph
 	slli.d	$s7, $s0, 6
 	blez	$s1, .LBB29_19
@@ -10229,9 +10201,8 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB30_23
+	blez	$a1, .LBB30_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -10553,9 +10524,8 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB31_23
+	blez	$a1, .LBB31_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -10877,9 +10847,8 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB32_23
+	blez	$a1, .LBB32_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB32_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -11251,9 +11220,8 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s7, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB33_23
+	blez	$a1, .LBB33_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB33_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -11737,9 +11705,8 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB34_23
+	blez	$a1, .LBB34_23
 # %bb.1:                                # %.preheader.lr.ph
 	div.du	$a0, $s5, $s4
 	div.du	$a0, $a0, $s3
@@ -12065,9 +12032,8 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB35_23
+	blez	$a1, .LBB35_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s4, $s5
 	div.du	$a0, $a0, $s2
@@ -12390,9 +12356,8 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB36_23
+	blez	$a1, .LBB36_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB36_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -12715,9 +12680,8 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB37_23
+	blez	$a1, .LBB37_23
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s4, $s2
 	and	$a0, $s5, $a0
@@ -13047,9 +13011,8 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB38_23
+	blez	$a1, .LBB38_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB38_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -13372,9 +13335,8 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB39_23
+	blez	$a1, .LBB39_23
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s4, $s2
 	or	$a0, $s5, $a0
@@ -13704,9 +13666,8 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB40_23
+	blez	$a1, .LBB40_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB40_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -14029,9 +13990,8 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB41_23
+	blez	$a1, .LBB41_23
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s4, $s2
 	xor	$a0, $s5, $a0
@@ -14353,9 +14313,8 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB42_23
+	blez	$a1, .LBB42_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB42_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -14671,10 +14630,9 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB43_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB43_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$s7, $s0, $s1
 	blez	$s1, .LBB43_19
@@ -14988,9 +14946,8 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB44_23
+	blez	$a1, .LBB44_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -15309,9 +15266,8 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB45_23
+	blez	$a1, .LBB45_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB45_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -15630,9 +15586,8 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB46_23
+	blez	$a1, .LBB46_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -15951,9 +15906,8 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB47_23
+	blez	$a1, .LBB47_23
 # %bb.1:                                # %.preheader.lr.ph
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3904
@@ -16126,7 +16080,7 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	ftintrz.l.d	$fa1, $fa0
 	movfr2gr.d	$a0, $fa1
 	mul.d	$a0, $s7, $a0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	beqz	$a0, .LBB47_20
 # %bb.22:                               #   in Loop: Header=BB47_21 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -16264,9 +16218,8 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB48_23
+	blez	$a1, .LBB48_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -16440,7 +16393,7 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	ftintrz.l.d	$fa1, $fa0
 	movfr2gr.d	$a0, $fa1
 	mul.d	$a0, $s4, $a0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	beqz	$a0, .LBB48_20
 # %bb.22:                               #   in Loop: Header=BB48_21 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -16578,10 +16531,9 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB49_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB49_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -16899,9 +16851,8 @@ _Z14test_variable1Is22custom_divide_variableIsEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB50_23
+	blez	$a1, .LBB50_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB50_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -17237,10 +17188,9 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB51_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	blez	$a1, .LBB51_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB51_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -17611,9 +17561,8 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB52_23
+	blez	$a1, .LBB52_23
 # %bb.1:                                # %.preheader.lr.ph
 	div.w	$a0, $s5, $s4
 	div.w	$a0, $a0, $s3
@@ -17935,9 +17884,8 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB53_23
+	blez	$a1, .LBB53_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s4, $s5
 	div.w	$a0, $a0, $s2
@@ -18256,9 +18204,8 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB54_23
+	blez	$a1, .LBB54_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB54_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -18577,10 +18524,9 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB55_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB55_23
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s4, $s3
 	and	$a0, $s5, $a0
@@ -18907,9 +18853,8 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB56_23
+	blez	$a1, .LBB56_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB56_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -19228,10 +19173,9 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB57_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB57_23
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s4, $s3
 	or	$a0, $s5, $a0
@@ -19558,9 +19502,8 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB58_23
+	blez	$a1, .LBB58_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB58_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -19879,10 +19822,9 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB59_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB59_23
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s4, $s3
 	xor	$a0, $s5, $a0
@@ -20209,9 +20151,8 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB60_23
+	blez	$a1, .LBB60_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB60_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -20527,10 +20468,9 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB61_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB61_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$s7, $s0, $s1
 	blez	$s1, .LBB61_19
@@ -20844,9 +20784,8 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB62_23
+	blez	$a1, .LBB62_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -21165,9 +21104,8 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB63_23
+	blez	$a1, .LBB63_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB63_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -21486,9 +21424,8 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB64_23
+	blez	$a1, .LBB64_23
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -21807,9 +21744,8 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB65_23
+	blez	$a1, .LBB65_23
 # %bb.1:                                # %.preheader.lr.ph
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3904
@@ -21982,7 +21918,7 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	ftintrz.l.d	$fa1, $fa0
 	movfr2gr.d	$a0, $fa1
 	mul.d	$a0, $s7, $a0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	beqz	$a0, .LBB65_20
 # %bb.22:                               #   in Loop: Header=BB65_21 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -22120,9 +22056,8 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB66_23
+	blez	$a1, .LBB66_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -22296,7 +22231,7 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	ftintrz.l.d	$fa1, $fa0
 	movfr2gr.d	$a0, $fa1
 	mul.d	$a0, $s4, $a0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	beqz	$a0, .LBB66_20
 # %bb.22:                               #   in Loop: Header=BB66_21 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -22434,10 +22369,9 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB67_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB67_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -22755,9 +22689,8 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB68_23
+	blez	$a1, .LBB68_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB68_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -23101,10 +23034,9 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB69_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	blez	$a1, .LBB69_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB69_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -23522,9 +23454,8 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB70_23
+	blez	$a1, .LBB70_23
 # %bb.1:                                # %.preheader.lr.ph
 	div.du	$a0, $s5, $s4
 	div.du	$a0, $a0, $s3
@@ -23846,9 +23777,8 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB71_23
+	blez	$a1, .LBB71_23
 # %bb.1:                                # %.preheader.lr.ph
 	mul.w	$a0, $s4, $s5
 	div.wu	$a0, $a0, $s2
@@ -24167,9 +24097,8 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB72_23
+	blez	$a1, .LBB72_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB72_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -24488,10 +24417,9 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB73_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB73_23
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s4, $s3
 	and	$a0, $s5, $a0
@@ -24818,9 +24746,8 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB74_23
+	blez	$a1, .LBB74_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB74_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -25139,10 +25066,9 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB75_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB75_23
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s4, $s3
 	or	$a0, $s5, $a0
@@ -25469,9 +25395,8 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB76_23
+	blez	$a1, .LBB76_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB76_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -25790,10 +25715,9 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB77_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	blez	$a1, .LBB77_23
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s4, $s3
 	xor	$a0, $s5, $a0
@@ -26109,9 +26033,8 @@ _Z14test_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB78_17
+	blez	$a1, .LBB78_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB78_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -26346,10 +26269,9 @@ _Z22test_hoisted_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB79_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB79_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.w	$s7, $s0, $s1
 	blez	$s1, .LBB79_13
@@ -26589,9 +26511,8 @@ _Z14test_variable4Ii28custom_add_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB80_17
+	blez	$a1, .LBB80_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $fp
 	add.d	$a2, $s3, $s5
@@ -26829,9 +26750,8 @@ _Z14test_variable1Ii19custom_sub_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB81_17
+	blez	$a1, .LBB81_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB81_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -27068,9 +26988,8 @@ _Z14test_variable4Ii28custom_sub_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB82_17
+	blez	$a1, .LBB82_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $fp
 	add.d	$a2, $s3, $s5
@@ -27307,9 +27226,8 @@ _Z14test_variable1Ii24custom_multiply_variableIiEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB83_17
+	blez	$a1, .LBB83_17
 # %bb.1:                                # %.preheader.lr.ph
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3904
@@ -27545,9 +27463,8 @@ _Z14test_variable4Ii33custom_multiply_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB84_17
+	blez	$a1, .LBB84_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -27788,9 +27705,8 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB85_17
+	blez	$a1, .LBB85_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $fp
@@ -28031,9 +27947,8 @@ _Z14test_variable1Ii22custom_divide_variableIiEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB86_17
+	blez	$a1, .LBB86_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB86_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -28272,10 +28187,9 @@ _Z14test_variable4Ii31custom_divide_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB87_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	blez	$a1, .LBB87_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB87_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -28543,9 +28457,8 @@ _Z14test_variable4Ii32custom_divide_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB88_17
+	blez	$a1, .LBB88_17
 # %bb.1:                                # %.preheader.lr.ph
 	div.w	$a0, $s5, $s4
 	div.w	$a0, $a0, $s3
@@ -28786,10 +28699,9 @@ _Z14test_variable4Ii30custom_mixed_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB89_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB89_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.w	$a0, $s4, $s5
 	div.w	$s5, $a0, $s3
@@ -29037,9 +28949,8 @@ _Z14test_variable1Ii19custom_variable_andIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB90_17
+	blez	$a1, .LBB90_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB90_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -29277,10 +29188,9 @@ _Z14test_variable4Ii28custom_multiple_variable_andIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB91_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB91_17
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s5, $s6
 	and	$a2, $s3, $a0
@@ -29530,9 +29440,8 @@ _Z14test_variable1Ii18custom_variable_orIiEEvPT_iS2_PKc: # @_Z14test_variable1Ii
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB92_17
+	blez	$a1, .LBB92_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB92_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -29770,10 +29679,9 @@ _Z14test_variable4Ii27custom_multiple_variable_orIiEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB93_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB93_17
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s5, $s6
 	or	$a2, $s3, $a0
@@ -30023,9 +29931,8 @@ _Z14test_variable1Ii19custom_variable_xorIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB94_17
+	blez	$a1, .LBB94_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB94_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -30262,10 +30169,9 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB95_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB95_17
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s5, $s6
 	xor	$a2, $s3, $a0
@@ -30514,9 +30420,8 @@ _Z14test_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB96_17
+	blez	$a1, .LBB96_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB96_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -30754,10 +30659,9 @@ _Z22test_hoisted_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB97_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB97_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.w	$s7, $s0, $s1
 	blez	$s1, .LBB97_13
@@ -30997,9 +30901,8 @@ _Z14test_variable4Ij28custom_add_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB98_17
+	blez	$a1, .LBB98_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -31240,9 +31143,8 @@ _Z14test_variable1Ij19custom_sub_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB99_17
+	blez	$a1, .LBB99_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB99_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -31483,9 +31385,8 @@ _Z14test_variable4Ij28custom_sub_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB100_17
+	blez	$a1, .LBB100_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -31726,9 +31627,8 @@ _Z14test_variable1Ij24custom_multiply_variableIjEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB101_17
+	blez	$a1, .LBB101_17
 # %bb.1:                                # %.preheader.lr.ph
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3904
@@ -31964,9 +31864,8 @@ _Z14test_variable4Ij33custom_multiply_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB102_17
+	blez	$a1, .LBB102_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -32207,10 +32106,9 @@ _Z14test_variable4Ij34custom_multiply_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB103_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB103_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -32456,9 +32354,8 @@ _Z14test_variable1Ij22custom_divide_variableIjEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB104_17
+	blez	$a1, .LBB104_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB104_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -32702,10 +32599,9 @@ _Z14test_variable4Ij31custom_divide_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB105_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	blez	$a1, .LBB105_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB105_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -32978,9 +32874,8 @@ _Z14test_variable4Ij32custom_divide_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB106_17
+	blez	$a1, .LBB106_17
 # %bb.1:                                # %.preheader.lr.ph
 	div.wu	$a0, $s5, $s4
 	div.wu	$a0, $a0, $s3
@@ -33224,10 +33119,9 @@ _Z14test_variable4Ij30custom_mixed_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB107_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB107_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.w	$a0, $s4, $s5
 	div.wu	$s5, $a0, $s3
@@ -33477,9 +33371,8 @@ _Z14test_variable1Ij19custom_variable_andIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB108_17
+	blez	$a1, .LBB108_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB108_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -33720,10 +33613,9 @@ _Z14test_variable4Ij28custom_multiple_variable_andIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB109_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB109_17
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s5, $s6
 	and	$a2, $s3, $a0
@@ -33976,9 +33868,8 @@ _Z14test_variable1Ij18custom_variable_orIjEEvPT_iS2_PKc: # @_Z14test_variable1Ij
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB110_17
+	blez	$a1, .LBB110_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB110_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -34219,10 +34110,9 @@ _Z14test_variable4Ij27custom_multiple_variable_orIjEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB111_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB111_17
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s5, $s6
 	or	$a2, $s3, $a0
@@ -34475,9 +34365,8 @@ _Z14test_variable1Ij19custom_variable_xorIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB112_17
+	blez	$a1, .LBB112_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB112_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -34718,10 +34607,9 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB113_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB113_17
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s5, $s6
 	xor	$a2, $s3, $a0
@@ -34974,9 +34862,8 @@ _Z14test_variable1Il19custom_add_variableIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB114_17
+	blez	$a1, .LBB114_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB114_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -35209,10 +35096,9 @@ _Z22test_hoisted_variable1Il19custom_add_variableIlEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB115_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a1, .LBB115_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$s7, $s0, $s1
 	blez	$s1, .LBB115_13
@@ -35450,9 +35336,8 @@ _Z14test_variable4Il28custom_add_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB116_17
+	blez	$a1, .LBB116_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $fp
 	add.d	$a2, $s3, $s5
@@ -35688,9 +35573,8 @@ _Z14test_variable1Il19custom_sub_variableIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB117_17
+	blez	$a1, .LBB117_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB117_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -35925,9 +35809,8 @@ _Z14test_variable4Il28custom_sub_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB118_17
+	blez	$a1, .LBB118_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $fp
 	add.d	$a2, $s3, $s5
@@ -36162,9 +36045,8 @@ _Z14test_variable1Il24custom_multiply_variableIlEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB119_17
+	blez	$a1, .LBB119_17
 # %bb.1:                                # %.preheader.lr.ph
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3904
@@ -36398,9 +36280,8 @@ _Z14test_variable4Il33custom_multiply_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s7, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB120_17
+	blez	$a1, .LBB120_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -36639,10 +36520,9 @@ _Z14test_variable4Il34custom_multiply_multiple_variable2IlEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB121_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB121_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -36883,9 +36763,8 @@ _Z14test_variable1Il22custom_divide_variableIlEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB122_17
+	blez	$a1, .LBB122_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB122_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -37122,10 +37001,9 @@ _Z14test_variable4Il31custom_divide_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB123_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	blez	$a1, .LBB123_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB123_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -37391,9 +37269,8 @@ _Z14test_variable4Il32custom_divide_multiple_variable2IlEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB124_17
+	blez	$a1, .LBB124_17
 # %bb.1:                                # %.preheader.lr.ph
 	div.d	$a0, $s5, $s4
 	div.d	$a0, $a0, $s3
@@ -37632,10 +37509,9 @@ _Z14test_variable4Il30custom_mixed_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB125_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	blez	$a1, .LBB125_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s4, $s5
 	div.d	$s5, $a0, $s3
@@ -37881,9 +37757,8 @@ _Z14test_variable1Il19custom_variable_andIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB126_17
+	blez	$a1, .LBB126_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB126_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -38119,10 +37994,9 @@ _Z14test_variable4Il28custom_multiple_variable_andIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB127_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB127_17
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s5, $s6
 	and	$a2, $s3, $a0
@@ -38370,9 +38244,8 @@ _Z14test_variable1Il18custom_variable_orIlEEvPT_iS2_PKc: # @_Z14test_variable1Il
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB128_17
+	blez	$a1, .LBB128_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB128_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -38608,10 +38481,9 @@ _Z14test_variable4Il27custom_multiple_variable_orIlEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB129_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB129_17
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s5, $s6
 	or	$a2, $s3, $a0
@@ -38859,9 +38731,8 @@ _Z14test_variable1Il19custom_variable_xorIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB130_17
+	blez	$a1, .LBB130_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB130_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -39096,10 +38967,9 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB131_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	blez	$a1, .LBB131_17
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s5, $s6
 	xor	$a2, $s3, $a0
@@ -39350,9 +39220,8 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB132_17
+	blez	$a1, .LBB132_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB132_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -39613,10 +39482,9 @@ _Z22test_hoisted_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB133_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	blez	$a1, .LBB133_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$s7, $s0, $s1
 	blez	$s1, .LBB133_13
@@ -39879,10 +39747,9 @@ _Z14test_variable4Im28custom_add_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB134_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	blez	$a1, .LBB134_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -40148,9 +40015,8 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB135_17
+	blez	$a1, .LBB135_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB135_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -40414,10 +40280,9 @@ _Z14test_variable4Im28custom_sub_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB136_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	blez	$a1, .LBB136_17
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s4, $s2
 	add.d	$a2, $s3, $s5
@@ -40683,9 +40548,8 @@ _Z14test_variable1Im24custom_multiply_variableImEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s5, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB137_17
+	blez	$a1, .LBB137_17
 # %bb.1:                                # %.preheader.lr.ph
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3904
@@ -40949,9 +40813,8 @@ _Z14test_variable4Im33custom_multiply_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc:
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s7, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB138_17
+	blez	$a1, .LBB138_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -41220,10 +41083,9 @@ _Z14test_variable4Im34custom_multiply_multiple_variable2ImEEvPT_iS2_S2_S2_S2_PKc
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB139_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB139_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
 	mul.d	$a2, $a0, $s2
@@ -41492,10 +41354,9 @@ _Z14test_variable1Im22custom_divide_variableImEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB140_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB140_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB140_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -41767,10 +41628,9 @@ _Z14test_variable4Im31custom_divide_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: #
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB141_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	blez	$a1, .LBB141_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB141_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -42070,10 +41930,9 @@ _Z14test_variable4Im32custom_divide_multiple_variable2ImEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB142_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	blez	$a1, .LBB142_17
 # %bb.1:                                # %.preheader.lr.ph
 	div.du	$a0, $s5, $s4
 	div.du	$a0, $a0, $s3
@@ -42342,10 +42201,9 @@ _Z14test_variable4Im30custom_mixed_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB143_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	blez	$a1, .LBB143_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s4, $s5
 	div.du	$s5, $a0, $s3
@@ -42618,9 +42476,8 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB144_17
+	blez	$a1, .LBB144_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB144_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -42884,10 +42741,9 @@ _Z14test_variable4Im28custom_multiple_variable_andImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB145_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB145_17
 # %bb.1:                                # %.preheader.lr.ph
 	and	$a0, $s5, $s6
 	and	$a2, $s3, $a0
@@ -43163,9 +43019,8 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB146_17
+	blez	$a1, .LBB146_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB146_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -43429,10 +43284,9 @@ _Z14test_variable4Im27custom_multiple_variable_orImEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB147_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB147_17
 # %bb.1:                                # %.preheader.lr.ph
 	or	$a0, $s5, $s6
 	or	$a2, $s3, $a0
@@ -43708,9 +43562,8 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB148_17
+	blez	$a1, .LBB148_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB148_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -43974,10 +43827,9 @@ _Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB149_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	blez	$a1, .LBB149_17
 # %bb.1:                                # %.preheader.lr.ph
 	xor	$a0, $s5, $s6
 	xor	$a2, $s3, $a0
@@ -44264,9 +44116,8 @@ _Z14test_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB150_12
+	blez	$a1, .LBB150_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB150_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -44493,13 +44344,12 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB151_15
+	blez	$a1, .LBB151_15
 # %bb.1:                                # %.preheader.lr.ph
 	movgr2fr.w	$fa0, $s0
 	ffint.s.w	$fs1, $fa0
-	blt	$s0, $a0, .LBB151_8
+	blez	$s0, .LBB151_8
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s6, $zero
 	movgr2fr.w	$fs2, $zero
@@ -44763,9 +44613,8 @@ _Z14test_variable4If28custom_add_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB152_12
+	blez	$a1, .LBB152_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB152_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -45002,9 +44851,8 @@ _Z14test_variable1If19custom_sub_variableIfEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB153_12
+	blez	$a1, .LBB153_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB153_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -45238,9 +45086,8 @@ _Z14test_variable4If28custom_sub_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB154_12
+	blez	$a1, .LBB154_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB154_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -45477,9 +45324,8 @@ _Z14test_variable1If24custom_multiply_variableIfEEvPT_iS2_PKc: # @_Z14test_varia
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB155_12
+	blez	$a1, .LBB155_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB155_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -45713,9 +45559,8 @@ _Z14test_variable4If33custom_multiply_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc:
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB156_12
+	blez	$a1, .LBB156_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB156_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -45957,9 +45802,8 @@ _Z14test_variable4If34custom_multiply_multiple_variable2IfEEvPT_iS2_S2_S2_S2_PKc
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB157_12
+	blez	$a1, .LBB157_12
 # %bb.1:                                # %.preheader.lr.ph
 	fmul.s	$fa0, $fs3, $fs2
 	fmul.s	$fs1, $fa0, $fs1
@@ -46187,9 +46031,8 @@ _Z14test_variable1If22custom_divide_variableIfEEvPT_iS2_PKc: # @_Z14test_variabl
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB158_12
+	blez	$a1, .LBB158_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB158_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -46423,9 +46266,8 @@ _Z14test_variable4If31custom_divide_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: #
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB159_12
+	blez	$a1, .LBB159_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB159_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -46665,9 +46507,8 @@ _Z14test_variable4If32custom_divide_multiple_variable2IfEEvPT_iS2_S2_S2_S2_PKc: 
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB160_12
+	blez	$a1, .LBB160_12
 # %bb.1:                                # %.preheader.lr.ph
 	fdiv.s	$fa0, $fs3, $fs2
 	fdiv.s	$fa0, $fa0, $fs1
@@ -46900,9 +46741,8 @@ _Z14test_variable4If30custom_mixed_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB161_12
+	blez	$a1, .LBB161_12
 # %bb.1:                                # %.preheader.lr.ph
 	fmul.s	$fa0, $fs3, $fs2
 	fdiv.s	$fs1, $fa0, $fs1
@@ -47131,9 +46971,8 @@ _Z14test_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB162_12
+	blez	$a1, .LBB162_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB162_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -47353,13 +47192,12 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB163_15
+	blez	$a1, .LBB163_15
 # %bb.1:                                # %.preheader.lr.ph
 	movgr2fr.w	$fa0, $s0
 	ffint.d.w	$fs1, $fa0
-	blt	$s0, $a0, .LBB163_8
+	blez	$s0, .LBB163_8
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s6, $zero
 	movgr2fr.d	$fs2, $zero
@@ -47613,9 +47451,8 @@ _Z14test_variable4Id28custom_add_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB164_12
+	blez	$a1, .LBB164_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB164_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -47845,9 +47682,8 @@ _Z14test_variable1Id19custom_sub_variableIdEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB165_12
+	blez	$a1, .LBB165_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB165_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -48074,9 +47910,8 @@ _Z14test_variable4Id28custom_sub_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB166_12
+	blez	$a1, .LBB166_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB166_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -48306,9 +48141,8 @@ _Z14test_variable1Id24custom_multiply_variableIdEEvPT_iS2_PKc: # @_Z14test_varia
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB167_12
+	blez	$a1, .LBB167_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB167_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -48535,9 +48369,8 @@ _Z14test_variable4Id33custom_multiply_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc:
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB168_12
+	blez	$a1, .LBB168_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB168_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -48772,9 +48605,8 @@ _Z14test_variable4Id34custom_multiply_multiple_variable2IdEEvPT_iS2_S2_S2_S2_PKc
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB169_12
+	blez	$a1, .LBB169_12
 # %bb.1:                                # %.preheader.lr.ph
 	fmul.d	$fa0, $fs3, $fs2
 	fmul.d	$fs1, $fa0, $fs1
@@ -48995,9 +48827,8 @@ _Z14test_variable1Id22custom_divide_variableIdEEvPT_iS2_PKc: # @_Z14test_variabl
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB170_12
+	blez	$a1, .LBB170_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB170_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -49224,9 +49055,8 @@ _Z14test_variable4Id31custom_divide_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: #
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB171_12
+	blez	$a1, .LBB171_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB171_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -49459,9 +49289,8 @@ _Z14test_variable4Id32custom_divide_multiple_variable2IdEEvPT_iS2_S2_S2_S2_PKc: 
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB172_12
+	blez	$a1, .LBB172_12
 # %bb.1:                                # %.preheader.lr.ph
 	fdiv.d	$fa0, $fs3, $fs2
 	fdiv.d	$fa0, $fa0, $fs1
@@ -49687,9 +49516,8 @@ _Z14test_variable4Id30custom_mixed_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB173_12
+	blez	$a1, .LBB173_12
 # %bb.1:                                # %.preheader.lr.ph
 	fmul.d	$fa0, $fs3, $fs2
 	fdiv.d	$fs1, $fa0, $fs1

@@ -30,19 +30,18 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB0_8
 # %bb.2:
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 8
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $fp, 24
-	bne	$a2, $a0, .LBB0_6
+	ld.bu	$a1, $fp, 24
+	beqz	$a1, .LBB0_6
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.d	$a2, $fp, 16
-	ld.d	$a3, $fp, 0
-	ld.d	$a4, $fp, 8
-	sub.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a4
-	st.d	$a2, $sp, 8
+	ld.d	$a1, $fp, 16
+	ld.d	$a2, $fp, 0
+	ld.d	$a3, $fp, 8
+	sub.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
+	st.d	$a1, $sp, 8
 	#APP
 	#NO_APP
 	blez	$s0, .LBB0_7
@@ -51,8 +50,8 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	bnez	$s0, .LBB0_3
 	b	.LBB0_8
 .LBB0_6:                                #   in Loop: Header=BB0_3 Depth=1
-	move	$a2, $zero
-	st.d	$a2, $sp, 8
+	move	$a1, $zero
+	st.d	$a1, $sp, 8
 	#APP
 	#NO_APP
 	bgtz	$s0, .LBB0_5

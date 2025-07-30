@@ -6,8 +6,7 @@
 testc:                                  # @testc
 # %bb.0:
 	ext.w.b	$a0, $a0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:
 	beqz	$a1, .LBB0_4
 .LBB0_2:
@@ -26,8 +25,7 @@ testc:                                  # @testc
 tests:                                  # @tests
 # %bb.0:
 	ext.w.h	$a0, $a0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:
 	beqz	$a1, .LBB1_4
 .LBB1_2:
@@ -45,8 +43,7 @@ tests:                                  # @tests
 	.type	testi,@function
 testi:                                  # @testi
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_3
+	blez	$a0, .LBB2_3
 # %bb.1:
 	beqz	$a1, .LBB2_4
 .LBB2_2:
@@ -64,8 +61,7 @@ testi:                                  # @testi
 	.type	testl,@function
 testl:                                  # @testl
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:
 	beqz	$a1, .LBB3_4
 .LBB3_2:

@@ -12,20 +12,18 @@ main:                                   # @main
 	pcalau12i	$a2, %pc_hi20(.L__const.main.m)
 	addi.d	$a3, $a2, %pc_lo12(.L__const.main.m)
 	ld.b	$a2, $a3, 8
-	pcalau12i	$a4, %pc_hi20(h)
 	ld.d	$a3, $a3, 0
+	pcalau12i	$a4, %pc_hi20(h)
 	addi.d	$a4, $a4, %pc_lo12(h)
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.b	$a2, $a4, 8
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	and	$a6, $a1, $a5
+	slli.d	$a5, $a1, 31
 	st.d	$a3, $a4, 0
-	beqz	$a6, .LBB0_2
+	bgez	$a5, .LBB0_2
 # %bb.3:                                # %.thread
 	st.w	$zero, $a0, %pc_lo12(f)
 	b	.LBB0_5

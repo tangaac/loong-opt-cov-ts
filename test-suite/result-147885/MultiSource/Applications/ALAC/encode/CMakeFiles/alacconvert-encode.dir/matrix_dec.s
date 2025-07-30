@@ -7,8 +7,7 @@ unmix16:                                # @unmix16
 # %bb.0:
 	beqz	$a6, .LBB0_4
 # %bb.1:                                # %.preheader35
-	ori	$a7, $zero, 1
-	blt	$a4, $a7, .LBB0_7
+	blez	$a4, .LBB0_7
 # %bb.2:                                # %.lr.ph
 	bstrpick.d	$a3, $a3, 31, 0
 	addi.d	$a2, $a2, 2
@@ -31,8 +30,7 @@ unmix16:                                # @unmix16
 	bnez	$a4, .LBB0_3
 	b	.LBB0_7
 .LBB0_4:                                # %.preheader
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB0_7
+	blez	$a4, .LBB0_7
 # %bb.5:                                # %.lr.ph41
 	bstrpick.d	$a3, $a3, 31, 0
 	addi.d	$a2, $a2, 2
@@ -60,8 +58,7 @@ unmix20:                                # @unmix20
 # %bb.0:
 	beqz	$a6, .LBB1_4
 # %bb.1:                                # %.preheader57
-	ori	$a7, $zero, 1
-	blt	$a4, $a7, .LBB1_7
+	blez	$a4, .LBB1_7
 # %bb.2:                                # %.lr.ph
 	alsl.d	$a3, $a3, $a3, 1
 	addi.d	$a3, $a3, -3
@@ -96,8 +93,7 @@ unmix20:                                # @unmix20
 	bnez	$a4, .LBB1_3
 	b	.LBB1_7
 .LBB1_4:                                # %.preheader
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB1_7
+	blez	$a4, .LBB1_7
 # %bb.5:                                # %.lr.ph63
 	alsl.d	$a3, $a3, $a3, 1
 	addi.d	$a3, $a3, -3
@@ -141,8 +137,7 @@ unmix24:                                # @unmix24
 # %bb.1:
 	beqz	$t1, .LBB2_9
 # %bb.2:                                # %.preheader138
-	ori	$t1, $zero, 1
-	blt	$a4, $t1, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.3:                                # %.lr.ph
 	alsl.d	$a3, $a3, $a3, 1
 	addi.d	$a3, $a3, -3
@@ -183,10 +178,9 @@ unmix24:                                # @unmix24
 	bnez	$a4, .LBB2_4
 	b	.LBB2_15
 .LBB2_5:
-	ori	$a5, $zero, 1
 	beqz	$t1, .LBB2_12
 # %bb.6:                                # %.preheader134
-	blt	$a4, $a5, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.7:                                # %.lr.ph149
 	alsl.d	$a3, $a3, $a3, 1
 	addi.d	$a3, $a3, -3
@@ -222,8 +216,7 @@ unmix24:                                # @unmix24
 	bnez	$a4, .LBB2_8
 	b	.LBB2_15
 .LBB2_9:                                # %.preheader136
-	ori	$a7, $zero, 1
-	blt	$a4, $a7, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.10:                               # %.lr.ph145
 	alsl.d	$a3, $a3, $a3, 1
 	addi.d	$a3, $a3, -3
@@ -256,7 +249,7 @@ unmix24:                                # @unmix24
 	bnez	$a4, .LBB2_11
 	b	.LBB2_15
 .LBB2_12:                               # %.preheader
-	blt	$a4, $a5, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.13:                               # %.lr.ph152
 	alsl.d	$a3, $a3, $a3, 1
 	addi.d	$a3, $a3, -3
@@ -296,8 +289,7 @@ unmix32:                                # @unmix32
 	slli.d	$t0, $t1, 3
 	beqz	$a6, .LBB3_4
 # %bb.1:                                # %.preheader67
-	ori	$t1, $zero, 1
-	blt	$a4, $t1, .LBB3_11
+	blez	$a4, .LBB3_11
 # %bb.2:                                # %.lr.ph
 	bstrpick.d	$t1, $a3, 31, 0
 	addi.d	$a3, $a7, 2
@@ -328,10 +320,9 @@ unmix32:                                # @unmix32
 	bnez	$a4, .LBB3_3
 	b	.LBB3_11
 .LBB3_4:
-	ori	$a5, $zero, 1
 	beqz	$t1, .LBB3_8
 # %bb.5:                                # %.preheader65
-	blt	$a4, $a5, .LBB3_11
+	blez	$a4, .LBB3_11
 # %bb.6:                                # %.lr.ph75
 	bstrpick.d	$a5, $a3, 31, 0
 	addi.d	$a3, $a7, 2
@@ -357,7 +348,7 @@ unmix32:                                # @unmix32
 	bnez	$a4, .LBB3_7
 	b	.LBB3_11
 .LBB3_8:                                # %.preheader
-	blt	$a4, $a5, .LBB3_11
+	blez	$a4, .LBB3_11
 # %bb.9:                                # %.lr.ph78
 	bstrpick.d	$a3, $a3, 31, 0
 	addi.d	$a2, $a2, 4
@@ -383,8 +374,7 @@ unmix32:                                # @unmix32
 	.type	copyPredictorTo24,@function
 copyPredictorTo24:                      # @copyPredictorTo24
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB4_3
+	blez	$a3, .LBB4_3
 # %bb.1:                                # %.lr.ph
 	alsl.wu	$a2, $a2, $a2, 1
 	addi.d	$a1, $a1, 2
@@ -410,8 +400,7 @@ copyPredictorTo24:                      # @copyPredictorTo24
 	.type	copyPredictorTo24Shift,@function
 copyPredictorTo24Shift:                 # @copyPredictorTo24Shift
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a4, $a6, .LBB5_3
+	blez	$a4, .LBB5_3
 # %bb.1:                                # %.lr.ph
 	slli.d	$a5, $a5, 3
 	alsl.wu	$a3, $a3, $a3, 1
@@ -442,8 +431,7 @@ copyPredictorTo24Shift:                 # @copyPredictorTo24Shift
 	.type	copyPredictorTo20,@function
 copyPredictorTo20:                      # @copyPredictorTo20
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB6_3
+	blez	$a3, .LBB6_3
 # %bb.1:                                # %.lr.ph
 	alsl.wu	$a2, $a2, $a2, 1
 	addi.d	$a1, $a1, 2
@@ -470,8 +458,7 @@ copyPredictorTo20:                      # @copyPredictorTo20
 	.type	copyPredictorTo32,@function
 copyPredictorTo32:                      # @copyPredictorTo32
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB7_9
+	blez	$a3, .LBB7_9
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a5, $zero, 8
 	move	$a4, $zero
@@ -526,8 +513,7 @@ copyPredictorTo32:                      # @copyPredictorTo32
 	.type	copyPredictorTo32Shift,@function
 copyPredictorTo32Shift:                 # @copyPredictorTo32Shift
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a4, $a6, .LBB8_3
+	blez	$a4, .LBB8_3
 # %bb.1:                                # %.lr.ph
 	slli.d	$a5, $a5, 3
 	bstrpick.d	$a3, $a3, 31, 0

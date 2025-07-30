@@ -479,10 +479,10 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	addi.w	$s6, $a2, 512
 	beqz	$a0, .LBB2_22
 # %bb.19:
-	ori	$a3, $zero, 1
-	sll.w	$a2, $a3, $a1
+	ori	$a2, $zero, 1
+	sll.w	$a2, $a2, $a1
 	add.d	$a1, $s6, $a2
-	blt	$a1, $a3, .LBB2_4
+	blez	$a1, .LBB2_4
 # %bb.20:
 	ld.d	$a3, $s1, 528
 	blt	$a3, $a1, .LBB2_4
@@ -801,8 +801,7 @@ handler_writefile:                      # @handler_writefile
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	addi.w	$s8, $zero, -1
-	bge	$s8, $a0, .LBB3_54
+	bltz	$a0, .LBB3_54
 # %bb.9:
 	move	$s3, $a0
 	move	$a0, $s4
@@ -810,14 +809,14 @@ handler_writefile:                      # @handler_writefile
 	jirl	$ra, $ra, 0
 	ld.w	$s4, $s7, 116
 	ld.hu	$a1, $fp, 30
-	ld.w	$s1, $s7, 120
+	ld.w	$s8, $s7, 120
 	ori	$a0, $zero, 1
 	sll.w	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	beqz	$a0, .LBB3_57
 # %bb.10:
+	move	$s2, $a0
 	pcaddu18i	$ra, %call36(cli_bitset_init)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_56
@@ -825,9 +824,11 @@ handler_writefile:                      # @handler_writefile
 	move	$s6, $a0
 	bltz	$s4, .LBB3_52
 # %bb.12:                               # %.preheader
-	ori	$s2, $zero, 1
-	blt	$s1, $s2, .LBB3_52
+	blez	$s8, .LBB3_52
 # %bb.13:
+	ori	$s1, $zero, 1
+	addi.w	$a0, $zero, -1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 .LBB3_14:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_21 Depth 2
@@ -852,7 +853,7 @@ handler_writefile:                      # @handler_writefile
 	bgeu	$a0, $a1, .LBB3_27
 # %bb.18:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.w	$a2, $fp, 512
-	bge	$s8, $a2, .LBB3_60
+	bltz	$a2, .LBB3_60
 # %bb.19:                               #   in Loop: Header=BB3_14 Depth=1
 	ori	$a0, $zero, 8
 	bltu	$s4, $a0, .LBB3_23
@@ -870,7 +871,7 @@ handler_writefile:                      # @handler_writefile
 	jirl	$ra, $ra, 0
 	addi.w	$s5, $s5, -1
 	move	$a2, $a0
-	bltu	$s2, $s5, .LBB3_21
+	bltu	$s1, $s5, .LBB3_21
 # %bb.22:                               # %._crit_edge.i
                                         #   in Loop: Header=BB3_14 Depth=1
 	bltz	$a2, .LBB3_61
@@ -882,15 +883,15 @@ handler_writefile:                      # @handler_writefile
 	addi.w	$s5, $a2, 512
 	beqz	$a0, .LBB3_35
 # %bb.24:                               #   in Loop: Header=BB3_14 Depth=1
-	sll.w	$a2, $s2, $a1
+	sll.w	$a2, $s1, $a1
 	add.d	$a1, $s5, $a2
-	blt	$a1, $s2, .LBB3_61
+	blez	$a1, .LBB3_61
 # %bb.25:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.d	$a3, $fp, 528
 	blt	$a3, $a1, .LBB3_61
 # %bb.26:                               #   in Loop: Header=BB3_14 Depth=1
 	add.d	$a1, $a0, $s5
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	b	.LBB3_37
@@ -901,19 +902,19 @@ handler_writefile:                      # @handler_writefile
 	addi.w	$s5, $a2, 512
 	beqz	$a0, .LBB3_31
 # %bb.28:                               #   in Loop: Header=BB3_14 Depth=1
-	sll.w	$a2, $s2, $a1
+	sll.w	$a2, $s1, $a1
 	add.d	$a1, $s5, $a2
-	blt	$a1, $s2, .LBB3_63
+	blez	$a1, .LBB3_63
 # %bb.29:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.d	$a3, $fp, 528
 	blt	$a3, $a1, .LBB3_63
 # %bb.30:                               #   in Loop: Header=BB3_14 Depth=1
 	add.d	$a1, $a0, $s5
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.hu	$a0, $fp, 30
-	sll.w	$a1, $s2, $a0
+	sll.w	$a1, $s1, $a0
 	b	.LBB3_33
 .LBB3_31:                               #   in Loop: Header=BB3_14 Depth=1
 	move	$a0, $s0
@@ -924,29 +925,29 @@ handler_writefile:                      # @handler_writefile
 	bne	$a0, $s5, .LBB3_63
 # %bb.32:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.hu	$a0, $fp, 30
-	sll.w	$a2, $s2, $a0
+	sll.w	$a2, $s1, $a0
 	move	$a0, $s0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $fp, 30
-	sll.w	$a1, $s2, $a1
+	sll.w	$a1, $s1, $a1
 	bne	$a0, $a1, .LBB3_63
 .LBB3_33:                               # %ole2_read_block.exit
                                         #   in Loop: Header=BB3_14 Depth=1
-	slt	$a0, $s1, $a1
+	slt	$a0, $s8, $a1
 	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $s1, $a0
+	maskeqz	$a0, $s8, $a0
 	or	$a2, $a0, $a1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $fp, 30
-	sll.w	$a1, $s2, $a1
-	slt	$a2, $s1, $a1
+	sll.w	$a1, $s1, $a1
+	slt	$a2, $s8, $a1
 	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $s1, $a2
+	maskeqz	$a2, $s8, $a2
 	or	$a1, $a2, $a1
 	bne	$a0, $a1, .LBB3_63
 # %bb.34:                               #   in Loop: Header=BB3_14 Depth=1
@@ -957,10 +958,10 @@ handler_writefile:                      # @handler_writefile
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $fp, 30
 	move	$s4, $a0
-	sll.w	$a0, $s2, $a1
-	slt	$a1, $s1, $a0
+	sll.w	$a0, $s1, $a1
+	slt	$a1, $s8, $a0
 	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $s1, $a1
+	maskeqz	$a1, $s8, $a1
 	or	$s5, $a1, $a0
 	b	.LBB3_50
 .LBB3_35:                               #   in Loop: Header=BB3_14 Depth=1
@@ -972,24 +973,23 @@ handler_writefile:                      # @handler_writefile
 	bne	$a0, $s5, .LBB3_61
 # %bb.36:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.hu	$a0, $fp, 30
-	sll.w	$a2, $s2, $a0
+	sll.w	$a2, $s1, $a0
 	move	$a0, $s0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $fp, 30
-	sll.w	$a1, $s2, $a1
+	sll.w	$a1, $s1, $a1
 	bne	$a0, $a1, .LBB3_61
 .LBB3_37:                               # %ole2_get_sbat_data_block.exit
                                         #   in Loop: Header=BB3_14 Depth=1
 	slli.d	$a0, $s4, 6
 	andi	$a0, $a0, 448
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a1, $a1, $a0
-	sltui	$a0, $s1, 64
+	add.d	$a1, $s2, $a0
+	sltui	$a0, $s8, 64
 	ori	$a2, $zero, 64
 	masknez	$a2, $a2, $a0
-	maskeqz	$a0, $s1, $a0
+	maskeqz	$a0, $s8, $a0
 	or	$s5, $a0, $a2
 	move	$a0, $s3
 	move	$a2, $s5
@@ -1014,10 +1014,10 @@ handler_writefile:                      # @handler_writefile
 	jirl	$ra, $ra, 0
 	addi.w	$s6, $s6, -1
 	move	$a2, $a0
-	bltu	$s2, $s6, .LBB3_40
+	bltu	$s1, $s6, .LBB3_40
 .LBB3_41:                               # %._crit_edge.i139
                                         #   in Loop: Header=BB3_14 Depth=1
-	move	$a1, $s8
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	bltz	$a2, .LBB3_49
 # %bb.42:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.hu	$a1, $fp, 30
@@ -1026,13 +1026,13 @@ handler_writefile:                      # @handler_writefile
 	addi.w	$s6, $a2, 512
 	beqz	$a0, .LBB3_46
 # %bb.43:                               #   in Loop: Header=BB3_14 Depth=1
-	sll.w	$a2, $s2, $a1
+	sll.w	$a2, $s1, $a1
 	add.d	$a3, $s6, $a2
-	move	$a1, $s8
-	blt	$a3, $s2, .LBB3_49
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	blez	$a3, .LBB3_49
 # %bb.44:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.d	$a4, $fp, 528
-	move	$a1, $s8
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	blt	$a4, $a3, .LBB3_49
 # %bb.45:                               #   in Loop: Header=BB3_14 Depth=1
 	add.d	$a1, $a0, $s6
@@ -1046,18 +1046,18 @@ handler_writefile:                      # @handler_writefile
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	move	$a1, $s8
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	bne	$a0, $s6, .LBB3_49
 # %bb.47:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.hu	$a0, $fp, 30
-	sll.w	$a2, $s2, $a0
+	sll.w	$a2, $s1, $a0
 	addi.d	$a1, $sp, 24
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $fp, 30
-	sll.w	$a2, $s2, $a1
-	move	$a1, $s8
+	sll.w	$a2, $s1, $a1
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	bne	$a0, $a2, .LBB3_49
 .LBB3_48:                               # %ole2_read_block.exit.i
                                         #   in Loop: Header=BB3_14 Depth=1
@@ -1072,13 +1072,13 @@ handler_writefile:                      # @handler_writefile
 .LBB3_50:                               #   in Loop: Header=BB3_14 Depth=1
 	bltz	$s4, .LBB3_52
 # %bb.51:                               #   in Loop: Header=BB3_14 Depth=1
-	sub.w	$s1, $s1, $s5
-	bgtz	$s1, .LBB3_14
+	sub.w	$s8, $s8, $s5
+	bgtz	$s8, .LBB3_14
 .LBB3_52:                               # %._crit_edge
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
@@ -1136,7 +1136,7 @@ handler_writefile:                      # @handler_writefile
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
@@ -1195,10 +1195,10 @@ ole2_get_next_block_number:             # @ole2_get_next_block_number
 	addi.w	$s2, $a1, 512
 	beqz	$a0, .LBB4_15
 # %bb.4:
-	ori	$a4, $zero, 1
-	sll.w	$a3, $a4, $s3
+	ori	$a1, $zero, 1
+	sll.w	$a3, $a1, $s3
 	add.d	$a1, $s2, $a3
-	blt	$a1, $a4, .LBB4_39
+	blez	$a1, .LBB4_39
 # %bb.5:
 	ld.d	$a4, $s0, 528
 	blt	$a4, $a1, .LBB4_39
@@ -1236,10 +1236,10 @@ ole2_get_next_block_number:             # @ole2_get_next_block_number
 	addi.w	$s2, $a3, 512
 	beqz	$a0, .LBB4_27
 # %bb.12:
-	ori	$a4, $zero, 1
-	sll.w	$a3, $a4, $a1
+	ori	$a3, $zero, 1
+	sll.w	$a3, $a3, $a1
 	add.d	$a1, $s2, $a3
-	blt	$a1, $a4, .LBB4_39
+	blez	$a1, .LBB4_39
 # %bb.13:
 	ld.d	$a4, $s0, 528
 	blt	$a4, $a1, .LBB4_39
@@ -1311,7 +1311,7 @@ ole2_get_next_block_number:             # @ole2_get_next_block_number
 # %bb.23:                               #   in Loop: Header=BB4_21 Depth=1
 	sll.w	$a2, $s7, $s3
 	add.d	$a1, $s2, $a2
-	blt	$a1, $s7, .LBB4_39
+	blez	$a1, .LBB4_39
 # %bb.24:                               #   in Loop: Header=BB4_21 Depth=1
 	ld.d	$a4, $s0, 528
 	bge	$a4, $a1, .LBB4_19
@@ -1375,10 +1375,10 @@ ole2_get_next_block_number:             # @ole2_get_next_block_number
 	addi.w	$s2, $a1, 512
 	beqz	$a0, .LBB4_36
 # %bb.33:
-	ori	$a4, $zero, 1
-	sll.w	$a2, $a4, $s3
+	ori	$a1, $zero, 1
+	sll.w	$a2, $a1, $s3
 	add.d	$a1, $s2, $a2
-	blt	$a1, $a4, .LBB4_39
+	blez	$a1, .LBB4_39
 # %bb.34:
 	ld.d	$a4, $s0, 528
 	blt	$a4, $a1, .LBB4_39
@@ -1546,7 +1546,6 @@ get_property_name:                      # @get_property_name
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $zero
 	beqz	$a1, .LBB6_15
 # %bb.1:
@@ -1568,10 +1567,9 @@ get_property_name:                      # @get_property_name
 	move	$s3, $zero
 	move	$s2, $zero
 	addi.w	$s1, $s1, -2
-	lu12i.w	$s4, 4
-	ori	$s5, $zero, 9
+	ori	$s4, $zero, 9
 	lu12i.w	$a0, 6
-	ori	$s6, $a0, 353
+	ori	$s5, $a0, 353
 	b	.LBB6_7
 	.p2align	4, , 16
 .LBB6_5:                                # %.thread
@@ -1589,36 +1587,36 @@ get_property_name:                      # @get_property_name
 	addi.d	$a0, $a0, 97
 	st.b	$a0, $a2, 2
 	srli.d	$a0, $a1, 7
-	or	$a0, $a0, $s7
+	or	$a0, $a0, $s6
 	andi	$a0, $a0, 15
 	addi.d	$a0, $a0, 97
 	st.b	$a0, $a2, 3
-	st.h	$s6, $a2, 4
+	st.h	$s5, $a2, 4
 	addi.w	$s2, $s2, 6
-	ori	$s7, $zero, 95
+	ori	$s6, $zero, 95
 .LBB6_6:                                #   in Loop: Header=BB6_7 Depth=1
-	stx.b	$s7, $fp, $s2
+	stx.b	$s6, $fp, $s2
 	addi.d	$s3, $s3, 2
 	addi.w	$s2, $s2, 1
 	bgeu	$s3, $s1, .LBB6_12
 .LBB6_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldx.b	$a0, $s0, $s3
-	andi	$s7, $a0, 255
+	andi	$s6, $a0, 255
 	bltz	$a0, .LBB6_5
 # %bb.8:                                #   in Loop: Header=BB6_7 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $s7, 1
+	slli.d	$a1, $s6, 1
 	ldx.hu	$a0, $a0, $a1
-	and	$a0, $a0, $s4
-	bnez	$a0, .LBB6_6
+	slli.d	$a0, $a0, 49
+	bltz	$a0, .LBB6_6
 # %bb.9:                                #   in Loop: Header=BB6_7 Depth=1
-	bltu	$s5, $s7, .LBB6_5
+	bltu	$s4, $s6, .LBB6_5
 # %bb.10:                               #   in Loop: Header=BB6_7 Depth=1
-	ori	$s7, $zero, 95
-	stx.b	$s7, $fp, $s2
+	ori	$s6, $zero, 95
+	stx.b	$s6, $fp, $s2
 	ldx.b	$a0, $s0, $s3
 	add.d	$a1, $fp, $s2
 	addi.d	$a0, $a0, 48
@@ -1639,7 +1637,6 @@ get_property_name:                      # @get_property_name
 	move	$fp, $zero
 .LBB6_15:
 	move	$a0, $fp
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

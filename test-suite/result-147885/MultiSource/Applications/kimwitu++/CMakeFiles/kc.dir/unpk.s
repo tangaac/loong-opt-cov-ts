@@ -874,8 +874,7 @@ _ZN2kc20impl_abstract_phylum15default_unparseERNS_21printer_functor_classERNS_11
 	mul.d	$a0, $a0, $a2
 	add.d	$a0, $a1, $a0
 	ld.w	$s3, $a0, 8
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB17_3
+	blez	$s3, .LBB17_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	.p2align	4, , 16
@@ -1581,9 +1580,8 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	ld.d	$a0, $s6, 0
 	pcaddu18i	$ra, %call36(_ZN2kc28f_constructors_in_phylumdeclEPNS_22impl_phylumdeclarationE)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	pcalau12i	$s5, %pc_hi20(_ZN12_GLOBAL__N_113gl_no_of_argsE)
-	bne	$s3, $a1, .LBB27_248
+	beqz	$s3, .LBB27_248
 # %bb.15:
 	bnez	$a0, .LBB27_19
 # %bb.16:
@@ -1883,8 +1881,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s1, 115
-	ori	$s3, $zero, 1
-	bne	$a0, $s3, .LBB27_29
+	beqz	$a0, .LBB27_29
 # %bb.28:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -1931,7 +1928,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s1, 115
-	bne	$a0, $s3, .LBB27_344
+	beqz	$a0, .LBB27_344
 # %bb.30:
 .Ltmp173:
 	pcalau12i	$a0, %pc_hi20(.L.str.312)
@@ -1943,8 +1940,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 .Ltmp174:
 # %bb.31:
 	ld.bu	$a0, $s1, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_33
+	beqz	$a0, .LBB27_33
 # %bb.32:
 .Ltmp176:
 	pcalau12i	$a0, %pc_hi20(.L.str.563)
@@ -2506,8 +2502,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 .Ltmp287:
 # %bb.103:
 	ld.bu	$a0, $s1, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_105
+	beqz	$a0, .LBB27_105
 # %bb.104:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -2697,8 +2692,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s2, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s2, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_111
+	beqz	$a0, .LBB27_111
 # %bb.110:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -2748,8 +2742,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s2, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_115
+	beqz	$a0, .LBB27_115
 # %bb.114:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -2908,8 +2901,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s2, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_125
+	beqz	$a0, .LBB27_125
 # %bb.124:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -5062,8 +5054,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	pcalau12i	$a0, %got_pc_hi20(pg_languageshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_languageshavebeendefined)
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_147
+	beqz	$a0, .LBB27_147
 # %bb.146:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -5318,8 +5309,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	pcalau12i	$a0, %got_pc_hi20(pg_languageshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_languageshavebeendefined)
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_344
+	beqz	$a0, .LBB27_344
 # %bb.152:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -5788,8 +5778,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 .Ltmp4:
 # %bb.168:
 	ld.bu	$a0, $s1, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_170
+	beqz	$a0, .LBB27_170
 # %bb.169:
 .Ltmp6:
 	pcalau12i	$a0, %pc_hi20(.L.str.563)
@@ -6843,8 +6832,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s1, 115
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_211
+	beqz	$a0, .LBB27_211
 # %bb.210:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7166,8 +7154,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s3, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s3, 72
-	ori	$s2, $zero, 1
-	bne	$a0, $s2, .LBB27_369
+	beqz	$a0, .LBB27_369
 # %bb.224:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7177,7 +7164,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	bne	$a0, $s2, .LBB27_226
+	beqz	$a0, .LBB27_226
 # %bb.225:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7195,8 +7182,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	ori	$s2, $zero, 1
-	bne	$a0, $s2, .LBB27_228
+	beqz	$a0, .LBB27_228
 # %bb.227:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7221,7 +7207,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	bne	$a0, $s2, .LBB27_230
+	beqz	$a0, .LBB27_230
 # %bb.229:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7239,8 +7225,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	ori	$s2, $zero, 1
-	bne	$a0, $s2, .LBB27_232
+	beqz	$a0, .LBB27_232
 # %bb.231:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7282,7 +7267,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	bne	$a0, $s2, .LBB27_234
+	beqz	$a0, .LBB27_234
 # %bb.233:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7431,8 +7416,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	ori	$s2, $zero, 1
-	bne	$a0, $s2, .LBB27_363
+	beqz	$a0, .LBB27_363
 # %bb.235:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7788,8 +7772,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 72
-	ori	$s6, $zero, 1
-	bne	$a0, $s6, .LBB27_352
+	beqz	$a0, .LBB27_352
 # %bb.253:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -7888,7 +7871,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 73
-	bne	$a0, $s6, .LBB27_348
+	beqz	$a0, .LBB27_348
 # %bb.254:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -8642,8 +8625,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 73
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_351
+	beqz	$a0, .LBB27_351
 # %bb.350:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -8810,8 +8792,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_362
+	beqz	$a0, .LBB27_362
 # %bb.361:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -8864,7 +8845,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	bne	$a0, $s2, .LBB27_366
+	beqz	$a0, .LBB27_366
 # %bb.365:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -8882,8 +8863,7 @@ _ZN2kc46impl_phylumdeclarationsroot_PhylumDeclarations10do_unparseERNS_21printer
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 73
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_368
+	beqz	$a0, .LBB27_368
 # %bb.367:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -13218,8 +13198,7 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s3, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s3, 72
-	ori	$s4, $zero, 1
-	bne	$a0, $s4, .LBB34_137
+	beqz	$a0, .LBB34_137
 # %bb.136:
 	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 0
@@ -13269,7 +13248,7 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	jirl	$ra, $a3, 0
 .LBB34_137:
 	ld.bu	$a0, $s3, 73
-	bne	$a0, $s4, .LBB34_248
+	beqz	$a0, .LBB34_248
 # %bb.138:
 	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 0
@@ -13711,8 +13690,7 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s2, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s2, 72
-	ori	$s3, $zero, 1
-	bne	$a0, $s3, .LBB34_164
+	beqz	$a0, .LBB34_164
 # %bb.163:
 	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 0
@@ -13749,7 +13727,7 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	jirl	$ra, $a3, 0
 .LBB34_164:
 	ld.bu	$a0, $s2, 73
-	bne	$a0, $s3, .LBB34_248
+	beqz	$a0, .LBB34_248
 # %bb.165:
 	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 0
@@ -14351,8 +14329,7 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	jirl	$ra, $a3, 0
 .LBB34_235:
 	ld.bu	$a0, $s6, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB34_237
+	beqz	$a0, .LBB34_237
 # %bb.236:
 	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 0
@@ -14890,8 +14867,7 @@ _ZN2kc40impl_storageoption_PositiveStorageOption10do_unparseERNS_21printer_funct
 	ld.d	$a1, $a1, %got_pc_lo12(pg_storageclasseshavebeendefined)
 	ld.bu	$a1, $a1, 0
 	ld.d	$fp, $a0, 8
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB36_9
+	beqz	$a1, .LBB36_9
 # %bb.5:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc22f_useoccurstorageclassEPNS_7impl_IDE)
@@ -15027,8 +15003,7 @@ _ZN2kc40impl_storageoption_NegativeStorageOption10do_unparseERNS_21printer_funct
 	ld.d	$a1, $a1, %got_pc_lo12(pg_storageclasseshavebeendefined)
 	ld.bu	$a1, $a1, 0
 	ld.d	$fp, $a0, 8
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB37_8
+	beqz	$a1, .LBB37_8
 # %bb.5:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc22f_useoccurstorageclassEPNS_7impl_IDE)
@@ -15327,8 +15302,7 @@ _ZN2kc19impl_storageclasses10do_unparseERNS_21printer_functor_classERNS_11uview_
 	ld.d	$a0, $s1, 8
 	pcaddu18i	$ra, %call36(_ZNK2kc18impl_abstract_list6lengthEv)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB39_1
+	blez	$a0, .LBB39_1
 # %bb.14:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -15375,8 +15349,7 @@ _ZN2kc19impl_storageclasses10do_unparseERNS_21printer_functor_classERNS_11uview_
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 0
 	ld.d	$a3, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB39_26
+	blez	$a0, .LBB39_26
 # %bb.17:
 	pcalau12i	$a0, %pc_hi20(.L.str.1236)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1236)
@@ -15433,8 +15406,7 @@ _ZN2kc19impl_storageclasses10do_unparseERNS_21printer_functor_classERNS_11uview_
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 0
 	ld.d	$a3, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB39_27
+	blez	$a0, .LBB39_27
 # %bb.22:
 	pcalau12i	$a0, %pc_hi20(.L.str.1238)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1238)
@@ -16935,8 +16907,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.w	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
-	ori	$s5, $zero, 1
-	blt	$a0, $s5, .LBB46_66
+	blez	$a0, .LBB46_66
 # %bb.17:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -17797,7 +17768,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	move	$a1, $s0
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$s6, $s4, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
+	ld.w	$s5, $s4, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN2kc18f_phylumofoperatorEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
@@ -17813,7 +17784,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	ld.d	$a1, $a0, 0
 	ld.w	$a2, $s4, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
 	ld.d	$a3, $a1, 72
-	add.d	$s3, $a2, $s6
+	add.d	$s3, $a2, $s5
 	move	$a1, $s0
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
@@ -17841,7 +17812,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	ld.d	$a0, $s0, 0
 	ld.w	$a1, $s4, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
 	ld.d	$a3, $a0, 0
-	blt	$a1, $s5, .LBB46_69
+	blez	$a1, .LBB46_69
 # %bb.68:
 	pcalau12i	$a0, %pc_hi20(.L.str.1287)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1287)
@@ -19333,8 +19304,7 @@ _ZN2kc28impl_alternative_Alternative10do_unparseERNS_21printer_functor_classERNS
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNK2kc18impl_abstract_list6lengthEv)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB48_92
+	blez	$a0, .LBB48_92
 # %bb.75:
 	pcalau12i	$a0, %pc_hi20(_ZN2kc24view_gen_assignment_inisE)
 	addi.d	$s3, $a0, %pc_lo12(_ZN2kc24view_gen_assignment_inisE)
@@ -19417,8 +19387,7 @@ _ZN2kc28impl_alternative_Alternative10do_unparseERNS_21printer_functor_classERNS
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s6, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB48_87
+	beqz	$a0, .LBB48_87
 # %bb.85:
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc20f_ispredefinedphylumEPNS_7impl_IDE)
@@ -20560,8 +20529,7 @@ _ZN2kc14impl_arguments10do_unparseERNS_21printer_functor_classERNS_11uview_class
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB49_92
+	beqz	$s4, .LBB49_92
 # %bb.43:
 	pcalau12i	$a0, %pc_hi20(.L.str.1360)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1360)
@@ -20791,12 +20759,11 @@ _ZN2kc14impl_arguments10do_unparseERNS_21printer_functor_classERNS_11uview_class
 	ori	$a1, $zero, 28
 	bne	$a0, $a1, .LBB49_62
 # %bb.59:
-	ld.bu	$a1, $fp, 4
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB49_62
+	ld.bu	$a0, $fp, 4
+	beqz	$a0, .LBB49_62
 # %bb.60:
-	ld.bu	$a1, $fp, 5
-	bne	$a1, $a0, .LBB49_62
+	ld.bu	$a0, $fp, 5
+	beqz	$a0, .LBB49_62
 # %bb.61:
 	ld.d	$a0, $s1, 24
 	ld.d	$a1, $s0, 0
@@ -20860,8 +20827,7 @@ _ZN2kc14impl_arguments10do_unparseERNS_21printer_functor_classERNS_11uview_class
 	b	.LBB49_79
 .LBB49_62:
 	ld.bu	$a0, $fp, 4
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB49_64
+	beqz	$a0, .LBB49_64
 # %bb.63:
 	ld.bu	$a0, $fp, 5
 	beqz	$a0, .LBB49_101
@@ -21558,8 +21524,7 @@ _ZN2kc14impl_arguments10do_unparseERNS_21printer_functor_classERNS_11uview_class
 	beqz	$a0, .LBB49_104
 # %bb.102:
 	ld.bu	$a0, $fp, 4
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB49_104
+	beqz	$a0, .LBB49_104
 # %bb.103:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -22361,8 +22326,7 @@ _ZN2kc15impl_attributes10do_unparseERNS_21printer_functor_classERNS_11uview_clas
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s6, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s6, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB53_29
+	beqz	$a0, .LBB53_29
 # %bb.28:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -23991,8 +23955,7 @@ _ZN2kc19impl_idCexpressions10do_unparseERNS_21printer_functor_classERNS_11uview_
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s1, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s1, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB75_32
+	beqz	$a0, .LBB75_32
 # %bb.10:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -24493,7 +24456,7 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	move	$fp, $a1
 	move	$a0, $s1
 	jirl	$ra, $a3, 0
-	bnez	$a0, .LBB78_23
+	bnez	$a0, .LBB78_22
 # %bb.1:
 	ld.w	$a0, $s0, 0
 	ori	$a1, $zero, 11
@@ -24535,7 +24498,7 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 .LBB78_4:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 16
-	beqz	$a0, .LBB78_23
+	beqz	$a0, .LBB78_22
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB78_4 Depth=1
 	ld.d	$a0, $s1, 8
@@ -24582,25 +24545,16 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	ld.d	$a1, $s4, 48
 	addi.d	$a2, $a2, -8
 	st.d	$a0, $sp, 8
-	beq	$a1, $a2, .LBB78_12
+	beq	$a1, $a2, .LBB78_17
 # %bb.11:
 	st.d	$a0, $a1, 0
 	addi.d	$a0, $a1, 8
 	st.d	$a0, $s4, 48
-	b	.LBB78_13
-.LBB78_12:
-	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
-	addi.d	$a0, $a0, %pc_lo12(_ZL13operatorstack)
-	addi.d	$a1, $sp, 8
-	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
-	jirl	$ra, $ra, 0
-.LBB78_13:                              # %_ZNSt5stackIPN2kc7impl_IDESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit34
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s5, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s5, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB78_15
-# %bb.14:
+	beqz	$a0, .LBB78_13
+.LBB78_12:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
 	ld.d	$a2, $fp, 0
@@ -24648,7 +24602,7 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	move	$a0, $fp
 	move	$a2, $s0
 	jirl	$ra, $a3, 0
-.LBB78_15:
+.LBB78_13:
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
@@ -24664,23 +24618,34 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s2, 48
 	ld.d	$a0, $s2, 56
-	beq	$a1, $a0, .LBB78_19
-# %bb.16:
+	beq	$a1, $a0, .LBB78_18
+# %bb.14:
 	addi.d	$a1, $a1, -8
 	ld.d	$a2, $s3, 48
 	ld.d	$a0, $s3, 56
 	st.d	$a1, $s2, 48
-	beq	$a2, $a0, .LBB78_20
-.LBB78_17:
+	beq	$a2, $a0, .LBB78_19
+.LBB78_15:
 	addi.d	$a1, $a2, -8
 	ld.d	$a2, $s4, 48
 	ld.d	$a0, $s4, 56
 	st.d	$a1, $s3, 48
-	beq	$a2, $a0, .LBB78_21
-.LBB78_18:
+	beq	$a2, $a0, .LBB78_20
+.LBB78_16:
 	addi.d	$a0, $a2, -8
-	b	.LBB78_22
-.LBB78_19:
+	b	.LBB78_21
+.LBB78_17:
+	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
+	addi.d	$a0, $a0, %pc_lo12(_ZL13operatorstack)
+	addi.d	$a1, $sp, 8
+	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %got_pc_hi20(g_options)
+	ld.d	$s5, $a0, %got_pc_lo12(g_options)
+	ld.bu	$a0, $s5, 114
+	bnez	$a0, .LBB78_12
+	b	.LBB78_13
+.LBB78_18:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -24695,8 +24660,8 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	ld.d	$a2, $s3, 48
 	ld.d	$a0, $s3, 56
 	st.d	$a1, $s2, 48
-	bne	$a2, $a0, .LBB78_17
-.LBB78_20:
+	bne	$a2, $a0, .LBB78_15
+.LBB78_19:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -24711,8 +24676,8 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	ld.d	$a2, $s4, 48
 	ld.d	$a0, $s4, 56
 	st.d	$a1, $s3, 48
-	bne	$a2, $a0, .LBB78_18
-.LBB78_21:
+	bne	$a2, $a0, .LBB78_16
+.LBB78_20:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -24724,9 +24689,9 @@ _ZN2kc11impl_Ctexts10do_unparseERNS_21printer_functor_classERNS_11uview_classE: 
 	addi.d	$a1, $a0, 512
 	st.d	$a1, $s4, 64
 	addi.d	$a0, $a0, 504
-.LBB78_22:                              # %_ZNSt5stackIPN2kc7impl_IDESt5dequeIS2_SaIS2_EEE3popEv.exit41
+.LBB78_21:                              # %_ZNSt5stackIPN2kc7impl_IDESt5dequeIS2_SaIS2_EEE3popEv.exit41
 	st.d	$a0, $s4, 48
-.LBB78_23:                              # %.loopexit
+.LBB78_22:                              # %.loopexit
 	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
@@ -24956,8 +24921,7 @@ _ZN2kc42impl_includedeclaration_IncludeDeclaration10do_unparseERNS_21printer_fun
 	ld.d	$s2, $a3, %got_pc_lo12(g_options)
 	ld.bu	$a3, $s2, 114
 	ld.d	$fp, $a0, 24
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB85_3
+	beqz	$a3, .LBB85_3
 # %bb.2:
 	pcalau12i	$a3, %got_pc_hi20(pg_line)
 	ld.d	$a3, $a3, %got_pc_lo12(pg_line)
@@ -29385,19 +29349,18 @@ _ZN2kc18impl_fnfile_FnFile10do_unparseERNS_21printer_functor_classERNS_11uview_c
 _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_classE: # @_ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -29408,7 +29371,6 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$s1, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a3, $a0, 88
@@ -29546,8 +29508,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	jirl	$ra, $a3, 0
 	pcalau12i	$s4, %pc_hi20(_ZN12_GLOBAL__N_112gl_isnotlistE)
 	ld.bu	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_112gl_isnotlistE)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_18
+	beqz	$a0, .LBB128_18
 # %bb.17:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -29649,8 +29610,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_112gl_isnotlistE)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_23
+	beqz	$a0, .LBB128_23
 # %bb.22:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -29826,8 +29786,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_112gl_isnotlistE)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_30
+	beqz	$a0, .LBB128_30
 # %bb.29:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -29979,8 +29938,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	jirl	$ra, $a3, 0
 	pcalau12i	$s4, %pc_hi20(_ZN12_GLOBAL__N_112gl_isnotlistE)
 	ld.bu	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_112gl_isnotlistE)
-	ori	$s8, $zero, 1
-	bne	$a0, $s8, .LBB128_43
+	beqz	$a0, .LBB128_43
 # %bb.42:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -30026,7 +29984,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	jirl	$ra, $a3, 0
 	pcalau12i	$s7, %pc_hi20(_ZN12_GLOBAL__N_113gl_no_of_argsE)
 	ld.w	$a0, $s7, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
-	blt	$a0, $s8, .LBB128_46
+	blez	$a0, .LBB128_46
 # %bb.44:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc11f_no_paramsEPNS_27impl_ac_parameter_type_listE)
@@ -30082,8 +30040,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_112gl_isnotlistE)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_48
+	beqz	$a0, .LBB128_48
 # %bb.47:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -30210,8 +30167,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_112gl_isnotlistE)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_55
+	beqz	$a0, .LBB128_55
 # %bb.54:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -30306,8 +30262,7 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s2, 32
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_90
+	beqz	$a0, .LBB128_90
 # %bb.63:
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_113gl_no_of_argsE)
 	ld.w	$a2, $a0, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
@@ -30549,18 +30504,17 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	move	$a1, $s0
 .LBB128_83:
 	move	$a2, $fp
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	jr	$a3
 .LBB128_84:
 	ld.d	$a0, $s1, 8
@@ -30638,18 +30592,17 @@ _ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_
 	ld.d	$a0, $s1, 16
 	bnez	$a0, .LBB128_88
 .LBB128_90:                             # %_ZN2kc19impl_fndeclarations14nil_do_unparseERNS_21printer_functor_classERNS_11uview_classE.exit
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end128:
 	.size	_ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_classE, .Lfunc_end128-_ZN2kc19impl_fndeclarations10do_unparseERNS_21printer_functor_classERNS_11uview_classE
@@ -30913,8 +30866,7 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration10do_unparseERNS_21printer_functor
 	ld.d	$s2, $fp, 40
 	ld.bu	$a0, $s4, 114
 	ld.d	$s1, $fp, 48
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB130_8
+	beqz	$a0, .LBB130_8
 # %bb.7:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -31092,8 +31044,7 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration10do_unparseERNS_21printer_functor
 	ld.d	$s2, $fp, 48
 	ld.bu	$a1, $s6, 114
 	ld.d	$s1, $a0, 8
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB130_23
+	beqz	$a1, .LBB130_23
 # %bb.22:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -32037,8 +31988,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s7, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s7, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB131_59
+	beqz	$a0, .LBB131_59
 # %bb.58:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -32131,9 +32081,8 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	ld.d	$s4, $s1, 48
 	ld.d	$s3, $s1, 72
 	ld.d	$s5, $s1, 80
-	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_112gl_return_IDE)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$zero, $a0, %pc_lo12(_ZN12_GLOBAL__N_112gl_return_IDE)
+	pcalau12i	$s6, %pc_hi20(_ZN12_GLOBAL__N_112gl_return_IDE)
+	st.d	$zero, $s6, %pc_lo12(_ZN12_GLOBAL__N_112gl_return_IDE)
 	pcalau12i	$s7, %pc_hi20(_ZN12_GLOBAL__N_114gl_return_typeE)
 	pcalau12i	$a0, %pc_hi20(.L.str.312)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.312)
@@ -32179,8 +32128,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s4, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s4, 114
-	ori	$s6, $zero, 1
-	bne	$a0, $s6, .LBB131_67
+	beqz	$a0, .LBB131_67
 # %bb.66:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -32252,7 +32200,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 114
-	bne	$a0, $s6, .LBB131_69
+	beqz	$a0, .LBB131_69
 # %bb.68:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -32323,8 +32271,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	st.d	$s2, $s7, %pc_lo12(_ZN12_GLOBAL__N_114gl_return_typeE)
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.d	$zero, $a0, %pc_lo12(_ZN12_GLOBAL__N_112gl_return_IDE)
+	st.d	$zero, $s6, %pc_lo12(_ZN12_GLOBAL__N_112gl_return_IDE)
 	st.w	$zero, $s8, %pc_lo12(_ZN12_GLOBAL__N_113gl_star_countE)
 	st.d	$s2, $s5, %pc_lo12(_ZN12_GLOBAL__N_111gl_functionE)
 	b	.LBB131_128
@@ -32775,8 +32722,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s3, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s3, 114
-	ori	$s4, $zero, 1
-	bne	$a0, $s4, .LBB131_114
+	beqz	$a0, .LBB131_114
 # %bb.113:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -32848,7 +32794,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 114
-	bne	$a0, $s4, .LBB131_116
+	beqz	$a0, .LBB131_116
 # %bb.115:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -32955,8 +32901,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	beqz	$a0, .LBB131_122
 # %bb.120:
 	ld.bu	$a0, $s7, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB131_125
+	beqz	$a0, .LBB131_125
 # %bb.121:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -32991,8 +32936,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration10do_unparseERNS_21printer_functor_cla
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s7, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB131_127
+	beqz	$a0, .LBB131_127
 # %bb.126:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -34302,8 +34246,7 @@ _ZN2kc38impl_Ctext_elem_CTextForeachexpression10do_unparseERNS_21printer_functor
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s4, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s4, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB141_13
+	beqz	$a0, .LBB141_13
 # %bb.12:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -34599,8 +34542,7 @@ _ZN2kc26impl_Ctext_elem_CTextCbody10do_unparseERNS_21printer_functor_classERNS_1
 	pcalau12i	$a3, %got_pc_hi20(g_options)
 	ld.d	$s2, $a3, %got_pc_lo12(g_options)
 	ld.bu	$a3, $s2, 114
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB142_7
+	beqz	$a3, .LBB142_7
 # %bb.6:
 	pcalau12i	$a2, %got_pc_hi20(pg_line)
 	ld.d	$a2, $a2, %got_pc_lo12(pg_line)
@@ -34743,8 +34685,7 @@ _ZN2kc34impl_Ctext_elem_CTextCexpressionSQ10do_unparseERNS_21printer_functor_cla
 	pcalau12i	$a3, %got_pc_hi20(g_options)
 	ld.d	$s3, $a3, %got_pc_lo12(g_options)
 	ld.bu	$a3, $s3, 114
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB143_5
+	beqz	$a3, .LBB143_5
 # %bb.4:
 	pcalau12i	$a3, %got_pc_hi20(pg_line)
 	ld.d	$a3, $a3, %got_pc_lo12(pg_line)
@@ -34877,8 +34818,7 @@ _ZN2kc34impl_Ctext_elem_CTextCexpressionDQ10do_unparseERNS_21printer_functor_cla
 	pcalau12i	$a3, %got_pc_hi20(g_options)
 	ld.d	$s3, $a3, %got_pc_lo12(g_options)
 	ld.bu	$a3, $s3, 114
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB144_5
+	beqz	$a3, .LBB144_5
 # %bb.4:
 	pcalau12i	$a3, %got_pc_hi20(pg_line)
 	ld.d	$a3, $a3, %got_pc_lo12(pg_line)
@@ -35019,8 +34959,7 @@ _ZN2kc23impl_Ctext_elem_CTextNl10do_unparseERNS_21printer_functor_classERNS_11uv
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s6, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s6, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB145_5
+	beqz	$a0, .LBB145_5
 # %bb.4:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -35404,8 +35343,7 @@ _ZN2kc25impl_Ctext_elem_CTextLine10do_unparseERNS_21printer_functor_classERNS_11
 	pcalau12i	$a4, %got_pc_hi20(g_options)
 	ld.d	$s3, $a4, %got_pc_lo12(g_options)
 	ld.bu	$a4, $s3, 114
-	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB147_5
+	beqz	$a4, .LBB147_5
 # %bb.4:
 	pcalau12i	$a4, %got_pc_hi20(pg_line)
 	ld.d	$a4, $a4, %got_pc_lo12(pg_line)
@@ -35532,8 +35470,7 @@ _ZN2kc31impl_foreach_after_ForeachAfter10do_unparseERNS_21printer_functor_classE
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s2, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s2, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB148_6
+	beqz	$a0, .LBB148_6
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -37218,8 +37155,7 @@ _ZN2kc14impl_viewnames10do_unparseERNS_21printer_functor_classERNS_11uview_class
 	pcalau12i	$a0, %got_pc_hi20(pg_rviewshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_rviewshavebeendefined)
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB165_45
+	beqz	$a0, .LBB165_45
 # %bb.8:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN2kc19f_useoccurrviewnameEPNS_7impl_IDE)
@@ -37473,8 +37409,7 @@ _ZN2kc14impl_viewnames10do_unparseERNS_21printer_functor_classERNS_11uview_class
 	pcalau12i	$a0, %got_pc_hi20(pg_uviewshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_uviewshavebeendefined)
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB165_43
+	beqz	$a0, .LBB165_43
 # %bb.29:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN2kc19f_useoccuruviewnameEPNS_7impl_IDE)
@@ -38299,8 +38234,7 @@ _ZN2kc25impl_unparseitem_UnpCtext10do_unparseERNS_21printer_functor_classERNS_11
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s3, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s3, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB171_14
+	beqz	$a0, .LBB171_14
 # %bb.13:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -38610,9 +38544,8 @@ _ZN2kc23impl_unparseitem_UnpStr10do_unparseERNS_21printer_functor_classERNS_11uv
 	ld.d	$s3, $a2, %got_pc_lo12(ug_viewnameopt)
 	ld.bu	$a1, $a1, 0
 	ld.d	$s2, $a0, 24
-	ori	$a2, $zero, 1
 	st.d	$s1, $s3, 0
-	bne	$a1, $a2, .LBB173_12
+	beqz	$a1, .LBB173_12
 # %bb.3:
 	ld.w	$a2, $a0, 8
 	pcalau12i	$a1, %pc_hi20(_ZZN2kc23impl_unparseitem_UnpStr10do_unparseERNS_21printer_functor_classERNS_11uview_classEE3buf_0)
@@ -38660,9 +38593,8 @@ _ZN2kc23impl_unparseitem_UnpStr10do_unparseERNS_21printer_functor_classERNS_11uv
 	ld.d	$s3, $a2, %got_pc_lo12(ug_viewnameopt)
 	ld.bu	$a1, $a1, 0
 	ld.d	$s2, $a0, 24
-	ori	$a2, $zero, 1
 	st.d	$s1, $s3, 0
-	bne	$a1, $a2, .LBB173_12
+	beqz	$a1, .LBB173_12
 # %bb.9:
 	ld.w	$a2, $a0, 8
 	pcalau12i	$a1, %pc_hi20(_ZZN2kc23impl_unparseitem_UnpStr10do_unparseERNS_21printer_functor_classERNS_11uview_classEE3buf)
@@ -42029,7 +41961,7 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	ld.d	$s2, $s3, 32
 	addi.d	$s1, $sp, 32
 	st.d	$s1, $sp, 16
-	beqz	$fp, .LBB227_24
+	beqz	$fp, .LBB227_23
 # %bb.4:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
@@ -42049,14 +41981,14 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	st.d	$a0, $sp, 16
 	st.d	$a1, $sp, 32
 .LBB227_6:                              # %._crit_edge.i.i
-	beqz	$s0, .LBB227_21
+	beqz	$s0, .LBB227_20
 # %bb.7:                                # %._crit_edge.i.i
 	ori	$a1, $zero, 1
-	bne	$s0, $a1, .LBB227_20
+	bne	$s0, $a1, .LBB227_19
 # %bb.8:
 	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 0
-	b	.LBB227_21
+	b	.LBB227_20
 .LBB227_9:                              # %.thread
 	ld.d	$s1, $s3, 32
 	ld.d	$s2, $s3, 40
@@ -42073,16 +42005,18 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	pcaddu18i	$ra, %call36(_ZN2kc8f_typeofEPNS_9impl_pathE)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	b	.LBB227_12
-.LBB227_11:
-	ld.d	$s3, $s3, 24
-.LBB227_12:
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s4, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s4, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB227_14
-# %bb.13:
+	bnez	$a0, .LBB227_12
+	b	.LBB227_13
+.LBB227_11:
+	ld.d	$s3, $s3, 24
+	pcalau12i	$a0, %got_pc_hi20(g_options)
+	ld.d	$s4, $a0, %got_pc_lo12(g_options)
+	ld.bu	$a0, $s4, 114
+	beqz	$a0, .LBB227_13
+.LBB227_12:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
 	ld.d	$a2, $s0, 0
@@ -42130,7 +42064,7 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-.LBB227_14:
+.LBB227_13:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1541)
@@ -42169,8 +42103,8 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 212
-	bne	$a0, $a1, .LBB227_16
-# %bb.15:
+	bne	$a0, $a1, .LBB227_15
+# %bb.14:
 	ld.d	$a0, $s1, 32
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
@@ -42178,15 +42112,15 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	addi.d	$a2, $a1, %pc_lo12(_ZN2kc13view_gen_castE)
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	b	.LBB227_18
-.LBB227_16:
+	b	.LBB227_17
+.LBB227_15:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 211
-	beq	$a0, $a1, .LBB227_18
-# %bb.17:
+	beq	$a0, $a1, .LBB227_17
+# %bb.16:
 	pcalau12i	$a0, %pc_hi20(.L.str.312)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.312)
 	pcalau12i	$a1, %pc_hi20(.L.str.329)
@@ -42195,7 +42129,7 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	ori	$a1, $a1, 2089
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
-.LBB227_18:
+.LBB227_17:
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
@@ -42209,7 +42143,7 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-.LBB227_19:
+.LBB227_18:
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
@@ -42219,12 +42153,12 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
-.LBB227_20:
+.LBB227_19:
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB227_21:
+.LBB227_20:
 	ld.d	$a0, $sp, 8
 	ld.d	$a1, $sp, 16
 	st.d	$a0, $sp, 24
@@ -42236,33 +42170,33 @@ _ZN2kc48impl_elem_patternrepresentation_PRNonLeafBinding10do_unparseERNS_21print
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPN2kc9impl_pathESt4lessIS5_ESaISt4pairIKS5_S8_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp314:
-# %bb.22:
+# %bb.21:
 	st.d	$s2, $a0, 0
 	ld.d	$a0, $sp, 16
-	beq	$a0, $s1, .LBB227_19
-# %bb.23:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a0, $s1, .LBB227_18
+# %bb.22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	ld.d	$a1, $sp, 32
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB227_19
-.LBB227_24:                             # %.noexc
+	b	.LBB227_18
+.LBB227_23:                             # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.1628)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1628)
 	pcaddu18i	$ra, %call36(_ZSt19__throw_logic_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB227_25:
+.LBB227_24:
 .Ltmp315:
 	ld.d	$a2, $sp, 16
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB227_27
-# %bb.26:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i50
+	beq	$a2, $s1, .LBB227_26
+# %bb.25:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i50
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB227_27:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit52
+.LBB227_26:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit52
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -42409,9 +42343,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPN2kc9impl_pathESt
 	or	$a0, $a0, $a1
 .LBB228_10:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $s1
-	blt	$a1, $a0, .LBB228_12
+	bgez	$a0, .LBB228_12
 .LBB228_11:                             # %.critedge
 	st.d	$s8, $sp, 32
 	pcalau12i	$a0, %pc_hi20(_ZStL19piecewise_construct)
@@ -42647,7 +42580,7 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	ld.d	$s2, $s3, 32
 	addi.d	$s1, $sp, 32
 	st.d	$s1, $sp, 16
-	beqz	$fp, .LBB232_24
+	beqz	$fp, .LBB232_23
 # %bb.4:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
@@ -42667,14 +42600,14 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	st.d	$a0, $sp, 16
 	st.d	$a1, $sp, 32
 .LBB232_6:                              # %._crit_edge.i.i
-	beqz	$s0, .LBB232_21
+	beqz	$s0, .LBB232_20
 # %bb.7:                                # %._crit_edge.i.i
 	ori	$a1, $zero, 1
-	bne	$s0, $a1, .LBB232_20
+	bne	$s0, $a1, .LBB232_19
 # %bb.8:
 	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 0
-	b	.LBB232_21
+	b	.LBB232_20
 .LBB232_9:                              # %.thread
 	ld.d	$s1, $s3, 32
 	ld.d	$s2, $s3, 40
@@ -42691,16 +42624,18 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	pcaddu18i	$ra, %call36(_ZN2kc8f_typeofEPNS_9impl_pathE)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	b	.LBB232_12
-.LBB232_11:
-	ld.d	$s3, $s3, 24
-.LBB232_12:
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s4, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s4, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB232_14
-# %bb.13:
+	bnez	$a0, .LBB232_12
+	b	.LBB232_13
+.LBB232_11:
+	ld.d	$s3, $s3, 24
+	pcalau12i	$a0, %got_pc_hi20(g_options)
+	ld.d	$s4, $a0, %got_pc_lo12(g_options)
+	ld.bu	$a0, $s4, 114
+	beqz	$a0, .LBB232_13
+.LBB232_12:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
 	ld.d	$a2, $s0, 0
@@ -42748,7 +42683,7 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-.LBB232_14:
+.LBB232_13:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1541)
@@ -42787,8 +42722,8 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 212
-	bne	$a0, $a1, .LBB232_16
-# %bb.15:
+	bne	$a0, $a1, .LBB232_15
+# %bb.14:
 	ld.d	$a0, $s1, 32
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
@@ -42796,15 +42731,15 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	addi.d	$a2, $a1, %pc_lo12(_ZN2kc13view_gen_castE)
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
-	b	.LBB232_18
-.LBB232_16:
+	b	.LBB232_17
+.LBB232_15:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 211
-	beq	$a0, $a1, .LBB232_18
-# %bb.17:
+	beq	$a0, $a1, .LBB232_17
+# %bb.16:
 	pcalau12i	$a0, %pc_hi20(.L.str.312)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.312)
 	pcalau12i	$a1, %pc_hi20(.L.str.329)
@@ -42813,7 +42748,7 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	ori	$a1, $a1, 2236
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
-.LBB232_18:
+.LBB232_17:
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
@@ -42827,7 +42762,7 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-.LBB232_19:
+.LBB232_18:
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
@@ -42837,12 +42772,12 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
-.LBB232_20:
+.LBB232_19:
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB232_21:
+.LBB232_20:
 	ld.d	$a0, $sp, 8
 	ld.d	$a1, $sp, 16
 	st.d	$a0, $sp, 24
@@ -42854,33 +42789,33 @@ _ZN2kc41impl_elem_patternrepresentation_PRBinding10do_unparseERNS_21printer_func
 	pcaddu18i	$ra, %call36(_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPN2kc9impl_pathESt4lessIS5_ESaISt4pairIKS5_S8_EEEixEOS5_)
 	jirl	$ra, $ra, 0
 .Ltmp317:
-# %bb.22:
+# %bb.21:
 	st.d	$s2, $a0, 0
 	ld.d	$a0, $sp, 16
-	beq	$a0, $s1, .LBB232_19
-# %bb.23:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$a0, $s1, .LBB232_18
+# %bb.22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	ld.d	$a1, $sp, 32
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB232_19
-.LBB232_24:                             # %.noexc
+	b	.LBB232_18
+.LBB232_23:                             # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.1628)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1628)
 	pcaddu18i	$ra, %call36(_ZSt19__throw_logic_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB232_25:
+.LBB232_24:
 .Ltmp318:
 	ld.d	$a2, $sp, 16
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB232_27
-# %bb.26:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i50
+	beq	$a2, $s1, .LBB232_26
+# %bb.25:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i50
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB232_27:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit52
+.LBB232_26:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit52
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
@@ -43638,9 +43573,8 @@ _ZN2kc16impl_argsnumbers10do_unparseERNS_21printer_functor_classERNS_11uview_cla
 	jirl	$ra, $a3, 0
 	ld.w	$a0, $s3, 8
 	pcalau12i	$a1, %pc_hi20(.L.str.1166)
-	ori	$a2, $zero, 1
 	addi.d	$s2, $a1, %pc_lo12(.L.str.1166)
-	blt	$a0, $a2, .LBB237_16
+	blez	$a0, .LBB237_16
 # %bb.5:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -43745,9 +43679,8 @@ _ZN2kc16impl_argsnumbers10do_unparseERNS_21printer_functor_classERNS_11uview_cla
 	jirl	$ra, $a3, 0
 	ld.w	$a0, $s3, 8
 	pcalau12i	$a1, %pc_hi20(.L.str.1560)
-	ori	$a2, $zero, 1
 	addi.d	$s2, $a1, %pc_lo12(.L.str.1560)
-	blt	$a0, $a2, .LBB237_16
+	blez	$a0, .LBB237_16
 # %bb.11:                               # %.lr.ph88.preheader
 	move	$s4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1559)
@@ -43811,9 +43744,8 @@ _ZN2kc16impl_argsnumbers10do_unparseERNS_21printer_functor_classERNS_11uview_cla
 	jirl	$ra, $a3, 0
 	ld.w	$a0, $s3, 8
 	pcalau12i	$a1, %pc_hi20(.L.str.1560)
-	ori	$a2, $zero, 1
 	addi.d	$s2, $a1, %pc_lo12(.L.str.1560)
-	blt	$a0, $a2, .LBB237_16
+	blez	$a0, .LBB237_16
 # %bb.14:                               # %.lr.ph.preheader
 	move	$s4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1559)
@@ -43897,18 +43829,17 @@ _ZN2kc16impl_argsnumbers14nil_do_unparseERNS_21printer_functor_classERNS_11uview
 _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_classE: # @_ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -288
-	.cfi_def_cfa_offset 288
-	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -272
+	.cfi_def_cfa_offset 272
+	st.d	$ra, $sp, 264                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -43918,7 +43849,6 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s1, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a3, $a0, 88
@@ -43990,13 +43920,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.d	$a2, $a0, 24
 	pcalau12i	$a3, %got_pc_hi20(g_options)
 	ld.d	$s4, $a3, %got_pc_lo12(g_options)
-	ld.d	$s6, $a1, 8
+	ld.d	$s5, $a1, 8
 	ld.d	$s3, $a0, 16
 	ld.d	$s2, $a2, 16
 	ld.bu	$a0, $s4, 114
 	ld.d	$s1, $s1, 16
-	ori	$s5, $zero, 1
-	bne	$a0, $s5, .LBB239_12
+	beqz	$a0, .LBB239_12
 # %bb.11:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -44006,15 +43935,15 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.w	$a2, $s6, 8
+	ld.w	$a2, $s5, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44031,7 +43960,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s6, 16
+	ld.d	$a0, $s5, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %pc_hi20(_ZN2kc13view_filenameE)
@@ -44053,7 +43982,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s6, 16
+	ld.d	$a0, $s5, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s0
@@ -44066,15 +43995,15 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.w	$a2, $s6, 8
+	ld.w	$a2, $s5, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44093,7 +44022,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 114
-	bne	$a0, $s5, .LBB239_14
+	beqz	$a0, .LBB239_14
 # %bb.13:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -44106,12 +44035,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44144,8 +44073,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	jirl	$ra, $a3, 0
 .LBB239_14:
 	ld.bu	$a0, $s4, 115
-	ori	$s5, $zero, 1
-	bne	$a0, $s5, .LBB239_50
+	beqz	$a0, .LBB239_50
 # %bb.15:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -44211,12 +44139,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44230,17 +44158,16 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1577)
 	move	$a0, $s0
 	move	$a2, $fp
-	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 288
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 272
 	jr	$a3
 .LBB239_17:
 	ld.d	$a0, $s1, 8
@@ -44280,13 +44207,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.d	$a2, $a0, 24
 	pcalau12i	$a3, %got_pc_hi20(g_options)
 	ld.d	$s4, $a3, %got_pc_lo12(g_options)
-	ld.d	$s6, $a1, 8
+	ld.d	$s5, $a1, 8
 	ld.d	$s3, $a0, 16
 	ld.d	$s2, $a2, 16
 	ld.bu	$a0, $s4, 114
 	ld.d	$s1, $s1, 16
-	ori	$s5, $zero, 1
-	bne	$a0, $s5, .LBB239_23
+	beqz	$a0, .LBB239_23
 # %bb.22:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -44296,15 +44222,15 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.w	$a2, $s6, 8
+	ld.w	$a2, $s5, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44321,7 +44247,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s6, 16
+	ld.d	$a0, $s5, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %pc_hi20(_ZN2kc13view_filenameE)
@@ -44343,7 +44269,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s6, 16
+	ld.d	$a0, $s5, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s0
@@ -44356,15 +44282,15 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.w	$a2, $s6, 8
+	ld.w	$a2, $s5, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44383,7 +44309,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 114
-	bne	$a0, $s5, .LBB239_25
+	beqz	$a0, .LBB239_25
 # %bb.24:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -44396,12 +44322,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44434,8 +44360,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	jirl	$ra, $a3, 0
 .LBB239_25:
 	ld.bu	$a0, $s4, 115
-	ori	$s5, $zero, 1
-	bne	$a0, $s5, .LBB239_52
+	beqz	$a0, .LBB239_52
 # %bb.26:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -44501,12 +44426,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44593,7 +44518,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.d	$a0, $s1, 8
 	ld.d	$a1, $a0, 8
 	ld.d	$a2, $a0, 24
-	ld.d	$s7, $a1, 8
+	ld.d	$s6, $a1, 8
 	ld.d	$s4, $a1, 16
 	ld.d	$s3, $a0, 16
 	ld.d	$s2, $a2, 16
@@ -44612,8 +44537,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s5, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s5, 114
-	ori	$s6, $zero, 1
-	bne	$a0, $s6, .LBB239_39
+	beqz	$a0, .LBB239_39
 # %bb.38:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -44623,15 +44547,15 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.w	$a2, $s7, 8
+	ld.w	$a2, $s6, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44648,7 +44572,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s7, 16
+	ld.d	$a0, $s6, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %pc_hi20(_ZN2kc13view_filenameE)
@@ -44684,7 +44608,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s7, 16
+	ld.d	$a0, $s6, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s0
@@ -44697,15 +44621,15 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.w	$a2, $s7, 8
+	ld.w	$a2, $s6, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44724,7 +44648,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s5, 114
-	bne	$a0, $s6, .LBB239_41
+	beqz	$a0, .LBB239_41
 # %bb.40:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -44737,12 +44661,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44775,8 +44699,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	jirl	$ra, $a3, 0
 .LBB239_41:
 	ld.bu	$a0, $s5, 115
-	ori	$s4, $zero, 1
-	bne	$a0, $s4, .LBB239_46
+	beqz	$a0, .LBB239_46
 # %bb.42:
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
@@ -44842,12 +44765,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -44869,21 +44792,20 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.d	$a0, $s1, 16
 	bnez	$a0, .LBB239_43
 .LBB239_45:                             # %_ZN2kc21impl_rewriterulesinfo14nil_do_unparseERNS_21printer_functor_classERNS_11uview_classE.exit
-	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 288
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 272
 	ret
 .LBB239_46:
 	ld.d	$a0, $s0, 0
-	ld.bu	$s5, $s5, 72
+	ld.bu	$s4, $s5, 72
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1088)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1088)
@@ -44899,7 +44821,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	bne	$s5, $s4, .LBB239_48
+	beqz	$s4, .LBB239_48
 # %bb.47:
 	pcalau12i	$a0, %pc_hi20(.L.str.1568)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1568)
@@ -44949,12 +44871,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45010,12 +44932,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45056,7 +44978,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	b	.LBB239_45
 .LBB239_50:
 	ld.d	$a0, $s0, 0
-	ld.bu	$s6, $s4, 72
+	ld.bu	$s5, $s4, 72
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1088)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1088)
@@ -45072,7 +44994,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	bne	$s6, $s5, .LBB239_54
+	beqz	$s5, .LBB239_54
 # %bb.51:
 	pcalau12i	$a0, %pc_hi20(.L.str.1568)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1568)
@@ -45122,12 +45044,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45136,7 +45058,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	b	.LBB239_55
 .LBB239_52:
 	ld.d	$a0, $s0, 0
-	ld.bu	$s6, $s4, 72
+	ld.bu	$s5, $s4, 72
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1088)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1088)
@@ -45152,7 +45074,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	bne	$s6, $s5, .LBB239_62
+	beqz	$s5, .LBB239_62
 # %bb.53:
 	pcalau12i	$a0, %pc_hi20(.L.str.1568)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1568)
@@ -45202,12 +45124,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45263,12 +45185,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45301,8 +45223,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 344
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB239_45
+	beqz	$a0, .LBB239_45
 # %bb.56:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
@@ -45393,12 +45314,12 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45431,8 +45352,7 @@ _ZN2kc21impl_rewriterulesinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s4, 344
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB239_45
+	beqz	$a0, .LBB239_45
 # %bb.64:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
@@ -45631,7 +45551,6 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -45640,7 +45559,6 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$s1, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a3, $a0, 88
@@ -45652,7 +45570,6 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 # %bb.1:
 	move	$a1, $s0
 	move	$a2, $fp
-	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
@@ -45750,8 +45667,7 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s3, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s3, 114
-	ori	$s4, $zero, 1
-	bne	$a0, $s4, .LBB243_13
+	beqz	$a0, .LBB243_13
 # %bb.12:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -45764,12 +45680,12 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.w	$a2, $s1, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45809,7 +45725,7 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s3, 114
-	bne	$a0, $s4, .LBB243_15
+	beqz	$a0, .LBB243_15
 # %bb.14:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -45822,12 +45738,12 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.w	$a2, $s1, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45915,8 +45831,7 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$s5, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $s5, 114
-	ori	$s6, $zero, 1
-	bne	$a0, $s6, .LBB243_20
+	beqz	$a0, .LBB243_20
 # %bb.19:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -45929,12 +45844,12 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -45988,7 +45903,7 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s5, 114
-	bne	$a0, $s6, .LBB243_22
+	beqz	$a0, .LBB243_22
 # %bb.21:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -46001,12 +45916,12 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -46053,15 +45968,14 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.d	$a2, $s3, 64
 	ld.d	$a1, $s3, 48
 	addi.d	$a2, $a2, -8
-	st.d	$a0, $sp, 0
+	st.d	$a0, $sp, 8
 	beq	$a1, $a2, .LBB243_28
 # %bb.23:
 	st.d	$a0, $a1, 0
 	addi.d	$a0, $a1, 8
 	st.d	$a0, $s3, 48
 	ld.bu	$a0, $s5, 114
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB243_25
+	beqz	$a0, .LBB243_25
 .LBB243_24:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_line)
@@ -46074,12 +45988,12 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.w	$a2, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.331)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.331)
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
@@ -46136,7 +46050,6 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 	ld.d	$a3, $a1, 72
 	move	$a1, $s0
 	move	$a2, $fp
-	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
@@ -46150,12 +46063,11 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 .LBB243_28:
 	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
 	addi.d	$a0, $a0, %pc_lo12(_ZL13operatorstack)
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s5, 114
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB243_24
+	bnez	$a0, .LBB243_24
 	b	.LBB243_25
 .LBB243_29:
 	ori	$a1, $zero, 512
@@ -46192,7 +46104,6 @@ _ZN2kc18impl_withcasesinfo10do_unparseERNS_21printer_functor_classERNS_11uview_c
 .LBB243_31:
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
@@ -47425,8 +47336,7 @@ _ZN2kc21impl_unparsedeclsinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$a0, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $a0, 344
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB252_24
+	beqz	$a0, .LBB252_24
 # %bb.35:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
@@ -47498,8 +47408,7 @@ _ZN2kc21impl_unparsedeclsinfo10do_unparseERNS_21printer_functor_classERNS_11uvie
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$a0, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $a0, 344
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB252_24
+	beqz	$a0, .LBB252_24
 # %bb.44:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
@@ -53038,8 +52947,7 @@ _ZN2kc19impl_charruns_Stars10do_unparseERNS_21printer_functor_classERNS_11uview_
 	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB356_2
+	blez	$a0, .LBB356_2
 # %bb.1:
 	ld.d	$a0, $a1, 0
 	ld.d	$a4, $a0, 0
@@ -53093,8 +53001,7 @@ _ZN2kc28impl_charruns_QuotedNewlines10do_unparseERNS_21printer_functor_classERNS
 	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB357_2
+	blez	$a0, .LBB357_2
 # %bb.1:
 	ld.d	$a0, $a1, 0
 	ld.d	$a4, $a0, 0
@@ -53148,8 +53055,7 @@ _ZN2kc22impl_charruns_Newlines10do_unparseERNS_21printer_functor_classERNS_11uvi
 	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB358_2
+	blez	$a0, .LBB358_2
 # %bb.1:
 	ld.d	$a0, $a1, 0
 	ld.d	$a4, $a0, 0
@@ -57875,8 +57781,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB419_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB419_12
+	bltz	$a0, .LBB419_12
 	b	.LBB419_18
 .LBB419_4:
 	ld.d	$a0, $s1, 40
@@ -57958,8 +57863,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	or	$a0, $a0, $a1
 .LBB419_16:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB419_28
+	bgez	$a0, .LBB419_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -57989,8 +57893,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	or	$a0, $a0, $a1
 .LBB419_20:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB419_23
+	bltz	$a0, .LBB419_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB419_29
@@ -58005,10 +57908,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB419_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -58018,7 +57921,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB419_27
 .LBB419_26:                             # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -58032,7 +57935,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	or	$a0, $a0, $a1
 .LBB419_27:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB419_31
+	bltz	$a0, .LBB419_31
 .LBB419_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -58190,10 +58093,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	bnez	$a0, .LBB421_3
 	b	.LBB421_2
 .LBB421_6:                              # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB421_9
+	bgez	$a1, .LBB421_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB421_14

@@ -30,9 +30,8 @@ scrapnet:                               # @scrapnet
 	pcalau12i	$a1, %got_pc_hi20(numnets)
 	ld.d	$a1, $a1, %got_pc_lo12(numnets)
 	ld.w	$a1, $a1, 0
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB0_22
+	blez	$a1, .LBB0_22
 # %bb.1:                                # %.preheader.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_0)
@@ -42,14 +41,14 @@ scrapnet:                               # @scrapnet
 	ftintrz.w.d	$fa0, $fa0
 	pcalau12i	$a0, %got_pc_hi20(netarray)
 	ld.d	$a0, $a0, %got_pc_lo12(netarray)
-	movfr2gr.s	$a3, $fa0
-	ori	$a4, $zero, 8
-	slt	$a5, $a4, $a3
+	movfr2gr.s	$a2, $fa0
+	ori	$a3, $zero, 8
+	slt	$a4, $a3, $a2
 	ld.d	$s3, $a0, 0
-	maskeqz	$a0, $a3, $a5
-	masknez	$a3, $a4, $a5
-	or	$s4, $a0, $a3
-	blt	$s2, $a2, .LBB0_12
+	maskeqz	$a0, $a2, $a4
+	masknez	$a2, $a3, $a4
+	or	$s4, $a0, $a2
+	blez	$s2, .LBB0_12
 # %bb.2:                                # %.preheader.preheader
 	addi.d	$s1, $fp, 4
 	addi.d	$a0, $a1, 1

@@ -51,8 +51,7 @@ HYPRE_StructMatrixSetValues:            # @HYPRE_StructMatrixSetValues
 	st.d	$zero, $sp, 12
 	st.w	$zero, $sp, 20
 	ld.w	$a5, $a5, 4
-	ori	$a6, $zero, 1
-	blt	$a5, $a6, .LBB3_8
+	blez	$a5, .LBB3_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a6, $zero, 8
 	bgeu	$a5, $a6, .LBB3_3
@@ -121,11 +120,10 @@ HYPRE_StructMatrixSetBoxValues:         # @HYPRE_StructMatrixSetBoxValues
 	st.d	$zero, $sp, 8
 	st.w	$zero, $sp, 16
 	ld.w	$a0, $a0, 4
-	ori	$a6, $zero, 1
 	move	$s0, $a5
 	move	$s1, $a4
 	move	$s2, $a3
-	blt	$a0, $a6, .LBB4_8
+	blez	$a0, .LBB4_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB4_3
@@ -222,8 +220,7 @@ HYPRE_StructMatrixAddToValues:          # @HYPRE_StructMatrixAddToValues
 	st.d	$zero, $sp, 12
 	st.w	$zero, $sp, 20
 	ld.w	$a5, $a5, 4
-	ori	$a6, $zero, 1
-	blt	$a5, $a6, .LBB5_8
+	blez	$a5, .LBB5_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a6, $zero, 8
 	bgeu	$a5, $a6, .LBB5_3
@@ -292,11 +289,10 @@ HYPRE_StructMatrixAddToBoxValues:       # @HYPRE_StructMatrixAddToBoxValues
 	st.d	$zero, $sp, 8
 	st.w	$zero, $sp, 16
 	ld.w	$a0, $a0, 4
-	ori	$a6, $zero, 1
 	move	$s0, $a5
 	move	$s1, $a4
 	move	$s2, $a3
-	blt	$a0, $a6, .LBB6_8
+	blez	$a0, .LBB6_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB6_3

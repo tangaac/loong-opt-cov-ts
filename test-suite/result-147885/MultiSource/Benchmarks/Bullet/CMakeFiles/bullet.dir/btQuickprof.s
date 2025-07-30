@@ -834,14 +834,13 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 40                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a0, 40
@@ -855,8 +854,7 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	fld.s	$fs0, $a0, 12
 	pcalau12i	$a0, %pc_hi20(_ZN15CProfileManager12FrameCounterE)
 	ld.w	$s1, $a0, %pc_lo12(_ZN15CProfileManager12FrameCounterE)
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB18_8
+	blez	$s0, .LBB18_8
 .LBB18_3:                               # %.lr.ph.preheader
 	move	$s2, $s0
 	.p2align	4, , 16
@@ -883,17 +881,17 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	bnez	$s2, .LBB18_6
 	b	.LBB18_9
 .LBB18_7:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 24
 	pcalau12i	$a1, %pc_hi20(_ZL13gProfileClock)
 	addi.d	$a1, $a1, %pc_lo12(_ZL13gProfileClock)
 	ld.d	$a2, $a1, 0
 	sub.d	$a0, $a0, $a2
 	lu12i.w	$a2, 244
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	ld.d	$a1, $a1, 8
 	pcalau12i	$a4, %pc_hi20(_ZN15CProfileManager9ResetTimeE)
 	ld.d	$a4, $a4, %pc_lo12(_ZN15CProfileManager9ResetTimeE)
@@ -918,8 +916,7 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	fdiv.s	$fs0, $fa0, $fa1
 	pcalau12i	$a0, %pc_hi20(_ZN15CProfileManager12FrameCounterE)
 	ld.w	$s1, $a0, %pc_lo12(_ZN15CProfileManager12FrameCounterE)
-	ori	$a0, $zero, 1
-	bge	$s0, $a0, .LBB18_3
+	bgtz	$s0, .LBB18_3
 .LBB18_8:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
@@ -941,15 +938,14 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 # %bb.10:                               # %.lr.ph77
 	move	$s2, $zero
 	movgr2fr.w	$fa0, $s1
-	fld.s	$fa1, $s5, %pc_lo12(.LCPI18_1)
 	ffint.d.w	$fs2, $fa0
+	fld.s	$fa0, $s5, %pc_lo12(.LCPI18_1)
 	movgr2fr.w	$fs1, $zero
 	movgr2fr.d	$fs3, $zero
-	fcmp.cule.s	$fcc0, $fs0, $fa1
-	movcf2gr	$a1, $fcc0
-	st.d	$a1, $sp, 8
 	fld.s	$fs4, $s4, %pc_lo12(.LCPI18_2)
-	ori	$s6, $zero, 1
+	fcmp.cule.s	$fcc0, $fs0, $fa0
+	movcf2gr	$a1, $fcc0
+	st.d	$a1, $sp, 16
 	pcalau12i	$a1, %pc_hi20(.L.str.5)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.5)
 	b	.LBB18_12
@@ -977,7 +973,7 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
                                         #     Child Loop BB18_16 Depth 2
 	fld.s	$fs5, $a0, 12
 	fmov.d	$fs6, $fs3
-	ld.d	$a1, $sp, 8
+	ld.d	$a1, $sp, 16
 	movgr2cf	$fcc0, $a1
 	bcnez	$fcc0, .LBB18_14
 # %bb.13:                               #   in Loop: Header=BB18_12 Depth=1
@@ -985,7 +981,7 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	fmul.s	$fa0, $fa0, $fs4
 	fcvt.d.s	$fs6, $fa0
 .LBB18_14:                              #   in Loop: Header=BB18_12 Depth=1
-	blt	$s0, $s6, .LBB18_11
+	blez	$s0, .LBB18_11
 # %bb.15:                               # %.lr.ph71.preheader
                                         #   in Loop: Header=BB18_12 Depth=1
 	move	$s3, $s0
@@ -1014,8 +1010,7 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 .LBB18_21:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB18_24
+	blez	$s0, .LBB18_24
 # %bb.22:                               # %.lr.ph82.preheader
 	move	$s1, $s0
 	.p2align	4, , 16
@@ -1109,14 +1104,13 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	move	$a0, $a1
 	b	.LBB18_29
 .LBB18_39:                              # %.loopexit
-	fld.d	$fs6, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 88                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload

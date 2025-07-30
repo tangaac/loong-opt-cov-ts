@@ -3523,8 +3523,7 @@ _ZN2kc16compare_patternsEPNS_26impl_patternrepresentationES1_PNS_27impl_patternr
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$a0, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $a0, 345
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB29_89
+	beqz	$a0, .LBB29_89
 # %bb.8:
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a1, 16
@@ -4129,8 +4128,7 @@ _ZN2kc16compare_patternsEPNS_26impl_patternrepresentationES1_PNS_27impl_patternr
 	pcalau12i	$a0, %got_pc_hi20(g_options)
 	ld.d	$a0, $a0, %got_pc_lo12(g_options)
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB29_89
+	beqz	$a0, .LBB29_89
 .LBB29_85:
 	pcalau12i	$a0, %pc_hi20(.Lstr.2)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
@@ -5019,17 +5017,16 @@ _ZN2kcL17t_make_predicatesEPNS_7impl_IDEPNS_10impl_pathsEPNS_26impl_patternrepre
 _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5038,19 +5035,17 @@ _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_g
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ori	$s2, $zero, 201
-	bne	$a0, $s2, .LBB37_9
+	bne	$a0, $s2, .LBB37_7
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$s3, $zero, 206
 	ori	$s4, $zero, 7
-	ori	$s5, $zero, 1
-	ori	$s6, $zero, 202
+	ori	$s5, $zero, 202
 	b	.LBB37_3
 	.p2align	4, , 16
 .LBB37_2:                               # %tailrecurse.backedge
@@ -5059,7 +5054,7 @@ _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_g
 	ld.d	$a1, $a0, 0
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	bne	$a0, $s2, .LBB37_9
+	bne	$a0, $s2, .LBB37_7
 .LBB37_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s0, $fp, 8
@@ -5068,65 +5063,48 @@ _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_g
 	ld.d	$a1, $a0, 0
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	bne	$a0, $s3, .LBB37_6
+	beq	$a0, $s3, .LBB37_5
 # %bb.4:                                #   in Loop: Header=BB37_3 Depth=1
-	ld.d	$s1, $s0, 40
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $a0, 0
-	move	$a0, $s1
-	jirl	$ra, $a1, 0
-	bne	$a0, $s4, .LBB37_12
-# %bb.5:                                # %_ZN2kc17f_bindingidmarkedEPNS_7impl_IDE.exit
-                                        #   in Loop: Header=BB37_3 Depth=1
-	ld.d	$a0, $s1, 40
-	pcaddu18i	$ra, %call36(_ZN2kc13BindingIdMarkEPNS_11impl_uniqIDE)
-	jirl	$ra, $ra, 0
-	ld.bu	$a0, $a0, 8
-	beq	$a0, $s5, .LBB37_2
-	b	.LBB37_13
-	.p2align	4, , 16
-.LBB37_6:                               #   in Loop: Header=BB37_3 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	bne	$a0, $s6, .LBB37_2
-# %bb.7:                                #   in Loop: Header=BB37_3 Depth=1
+	bne	$a0, $s5, .LBB37_2
+.LBB37_5:                               #   in Loop: Header=BB37_3 Depth=1
 	ld.d	$s1, $s0, 40
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-	bne	$a0, $s4, .LBB37_12
-# %bb.8:                                # %_ZN2kc17f_bindingidmarkedEPNS_7impl_IDE.exit23
+	bne	$a0, $s4, .LBB37_10
+# %bb.6:                                # %_ZN2kc17f_bindingidmarkedEPNS_7impl_IDE.exit
                                         #   in Loop: Header=BB37_3 Depth=1
 	ld.d	$a0, $s1, 40
 	pcaddu18i	$ra, %call36(_ZN2kc13BindingIdMarkEPNS_11impl_uniqIDE)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $a0, 8
 	bnez	$a0, .LBB37_2
-	b	.LBB37_13
-.LBB37_9:                               # %tailrecurse._crit_edge
+	b	.LBB37_11
+.LBB37_7:                               # %tailrecurse._crit_edge
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 200
-	bne	$a0, $a1, .LBB37_11
-# %bb.10:
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	bne	$a0, $a1, .LBB37_9
+# %bb.8:
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(_ZN2kc24NilpatternrepresentationEv)
 	jr	$t8
-.LBB37_11:                              # %common.ret109
+.LBB37_9:                               # %common.ret109
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -5135,18 +5113,17 @@ _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_g
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
-.LBB37_12:                              # %_ZN2kc17f_bindingidmarkedEPNS_7impl_IDE.exit.thread
+.LBB37_10:                              # %_ZN2kc17f_bindingidmarkedEPNS_7impl_IDE.exit.thread
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -5154,21 +5131,21 @@ _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_g
 	ori	$a1, $zero, 436
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
-.LBB37_13:                              # %.loopexit27
+.LBB37_11:                              # %.loopexit27
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 7
-	bne	$a0, $a1, .LBB37_15
-# %bb.14:
+	bne	$a0, $a1, .LBB37_13
+# %bb.12:
 	ld.d	$a0, $s1, 40
 	pcaddu18i	$ra, %call36(_ZN2kc13BindingIdMarkEPNS_11impl_uniqIDE)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, 8
-	b	.LBB37_16
-.LBB37_15:
+	b	.LBB37_14
+.LBB37_13:
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -5176,22 +5153,21 @@ _ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE: # @_ZN2kcL17f_do_g
 	ori	$a1, $zero, 451
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
-.LBB37_16:                              # %_ZN2kc15v_markbindingidEPNS_7impl_IDE.exit
+.LBB37_14:                              # %_ZN2kc15v_markbindingidEPNS_7impl_IDE.exit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2kcL17f_do_get_bindingsEPNS_26impl_patternrepresentationE)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(_ZN2kc25ConspatternrepresentationEPNS_31impl_elem_patternrepresentationEPNS_26impl_patternrepresentationE)
 	jr	$t8
 .Lfunc_end37:

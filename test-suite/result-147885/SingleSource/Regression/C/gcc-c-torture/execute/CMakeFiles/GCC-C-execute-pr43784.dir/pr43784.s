@@ -491,7 +491,7 @@ main:                                   # @main
 	addi.d	$a2, $a1, 16
 	bne	$a1, $a0, .LBB0_1
 .LBB0_3:                                # %middle.split
-	bstrpick.d	$a0, $a3, 15, 0
+	slli.d	$a0, $a3, 48
 	bnez	$a0, .LBB0_5
 # %bb.4:                                # %middle.block20
 	move	$a0, $zero

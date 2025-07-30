@@ -19,8 +19,8 @@ watesides:                              # @watesides
 	addi.d	$a4, $a4, 44
 	addi.d	$a5, $a5, -1
 	lu52i.d	$a6, $zero, -1025
-	ori	$a7, $zero, 1
 	vreplgr2vr.d	$vr0, $a6
+	ori	$a7, $zero, 1
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                # %._crit_edge.thread
@@ -38,7 +38,7 @@ watesides:                              # @watesides
                                         #     Child Loop BB0_22 Depth 2
 	ld.w	$t0, $a1, 56
 	st.d	$a6, $a1, 8
-	blt	$a2, $a7, .LBB0_2
+	blez	$a2, .LBB0_2
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
 	add.w	$t0, $t0, $a3
 	move	$t1, $a5

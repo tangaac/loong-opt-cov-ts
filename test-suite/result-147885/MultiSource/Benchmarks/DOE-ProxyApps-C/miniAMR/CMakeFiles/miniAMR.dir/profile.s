@@ -73,8 +73,8 @@ profile:                                # @profile
 	fmul.d	$fa0, $fa2, $fa3
 	fmul.d	$fa0, $fa0, $fa3
 	fmul.d	$fa0, $fa0, $fa3
-	pcalau12i	$s0, %pc_hi20(num_pes)
-	ld.w	$a1, $s0, %pc_lo12(num_pes)
+	pcalau12i	$fp, %pc_hi20(num_pes)
+	ld.w	$a1, $fp, %pc_lo12(num_pes)
 	fdiv.d	$fa0, $fs2, $fa0
 	pcalau12i	$a0, %pc_hi20(report_perf)
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
@@ -83,19 +83,18 @@ profile:                                # @profile
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fa1, $fa0, $fa1
 	andi	$a1, $a0, 1
-	pcalau12i	$a2, %pc_hi20(init_block_x)
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	pcalau12i	$s8, %pc_hi20(init_block_x)
 	pcalau12i	$a2, %pc_hi20(init_block_y)
-	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(init_block_z)
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
-	pcalau12i	$s8, %pc_hi20(permute)
-	pcalau12i	$s7, %pc_hi20(max_num_blocks)
-	pcalau12i	$s6, %pc_hi20(code)
-	pcalau12i	$s5, %pc_hi20(num_refine)
-	pcalau12i	$s4, %pc_hi20(block_change)
-	pcalau12i	$s3, %pc_hi20(refine_ghost)
-	pcalau12i	$s2, %pc_hi20(uniform_refine)
+	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
+	pcalau12i	$s7, %pc_hi20(permute)
+	pcalau12i	$s6, %pc_hi20(max_num_blocks)
+	pcalau12i	$s5, %pc_hi20(code)
+	pcalau12i	$s4, %pc_hi20(num_refine)
+	pcalau12i	$s3, %pc_hi20(block_change)
+	pcalau12i	$s2, %pc_hi20(refine_ghost)
+	pcalau12i	$s0, %pc_hi20(uniform_refine)
 	pcalau12i	$a2, %pc_hi20(num_tsteps)
 	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(stages_per_ts)
@@ -120,6 +119,7 @@ profile:                                # @profile
 	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(nb_max)
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
@@ -140,7 +140,6 @@ profile:                                # @profile
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
 	ori	$a1, $zero, 14
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -151,27 +150,26 @@ profile:                                # @profile
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s0, %pc_lo12(num_pes)
+	ld.w	$a2, $fp, %pc_lo12(num_pes)
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ld.w	$a2, $a0, %pc_lo12(init_block_x)
+	ld.w	$a2, $s8, %pc_lo12(init_block_x)
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.6)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a2, $a0, %pc_lo12(init_block_y)
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.7)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a2, $a0, %pc_lo12(init_block_z)
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.8)
@@ -199,43 +197,43 @@ profile:                                # @profile
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s8, %pc_lo12(permute)
+	ld.w	$a2, $s7, %pc_lo12(permute)
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.12)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s7, %pc_lo12(max_num_blocks)
+	ld.w	$a2, $s6, %pc_lo12(max_num_blocks)
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s6, %pc_lo12(code)
+	ld.w	$a2, $s5, %pc_lo12(code)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s5, %pc_lo12(num_refine)
+	ld.w	$a2, $s4, %pc_lo12(num_refine)
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.15)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s4, %pc_lo12(block_change)
+	ld.w	$a2, $s3, %pc_lo12(block_change)
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s3, %pc_lo12(refine_ghost)
+	ld.w	$a2, $s2, %pc_lo12(refine_ghost)
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.17)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s2, %pc_lo12(uniform_refine)
+	ld.w	$a2, $s0, %pc_lo12(uniform_refine)
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.18)
 	move	$a0, $s1
@@ -249,7 +247,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, %pc_lo12(num_objects)
-	blt	$a0, $fp, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$fp, $zero
 	move	$s7, $zero
@@ -754,6 +752,7 @@ profile:                                # @profile
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(report_perf)
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
@@ -806,11 +805,10 @@ profile:                                # @profile
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
+	ld.w	$a2, $s8, %pc_lo12(init_block_x)
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ld.w	$a2, $a0, %pc_lo12(init_block_x)
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a3, $a0, %pc_lo12(init_block_y)
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a4, $a0, %pc_lo12(init_block_z)
 	pcalau12i	$a0, %pc_hi20(.L.str.95)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.95)
@@ -828,7 +826,7 @@ profile:                                # @profile
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s8, %pc_lo12(permute)
+	ld.w	$a0, $s7, %pc_lo12(permute)
 	beqz	$a0, .LBB0_9
 # %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.97)
@@ -839,7 +837,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB0_9:
-	ld.w	$a2, $s7, %pc_lo12(max_num_blocks)
+	ld.w	$a2, $s6, %pc_lo12(max_num_blocks)
 	pcalau12i	$a0, %pc_hi20(.L.str.98)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.98)
 	move	$a0, $s1
@@ -875,7 +873,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB0_15:
-	ld.w	$a2, $s6, %pc_lo12(code)
+	ld.w	$a2, $s5, %pc_lo12(code)
 	beqz	$a2, .LBB0_17
 # %bb.16:
 	pcalau12i	$a0, %pc_hi20(.L.str.102)
@@ -884,19 +882,19 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB0_17:
-	ld.w	$a2, $s5, %pc_lo12(num_refine)
+	ld.w	$a2, $s4, %pc_lo12(num_refine)
 	pcalau12i	$a0, %pc_hi20(.L.str.103)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.103)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s4, %pc_lo12(block_change)
+	ld.w	$a2, $s3, %pc_lo12(block_change)
 	pcalau12i	$a0, %pc_hi20(.L.str.104)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.104)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, %pc_lo12(refine_ghost)
+	ld.w	$a0, $s2, %pc_lo12(refine_ghost)
 	beqz	$a0, .LBB0_19
 # %bb.18:
 	pcalau12i	$a0, %pc_hi20(.L.str.105)
@@ -907,7 +905,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB0_19:
-	ld.w	$a0, $s2, %pc_lo12(uniform_refine)
+	ld.w	$a0, $s0, %pc_lo12(uniform_refine)
 	beqz	$a0, .LBB0_23
 # %bb.20:
 	pcalau12i	$a0, %pc_hi20(.L.str.106)
@@ -966,8 +964,7 @@ profile:                                # @profile
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 352                   # 8-byte Folded Spill
 	ld.w	$a0, $fp, %pc_lo12(num_objects)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_21
+	blez	$a0, .LBB0_21
 # %bb.24:                               # %.lr.ph458.preheader
 	move	$s2, $zero
 	move	$s4, $zero
@@ -1011,13 +1008,13 @@ profile:                                # @profile
 	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.131)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.131)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	b	.LBB0_27
 	.p2align	4, , 16
 .LBB0_25:                               #   in Loop: Header=BB0_27 Depth=1
 	ori	$a1, $zero, 38
 	ori	$a2, $zero, 1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 .LBB0_26:                               #   in Loop: Header=BB0_27 Depth=1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
@@ -1781,6 +1778,7 @@ profile:                                # @profile
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(report_perf)
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
@@ -1827,11 +1825,10 @@ profile:                                # @profile
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
+	ld.w	$a1, $s8, %pc_lo12(init_block_x)
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ld.w	$a1, $a0, %pc_lo12(init_block_x)
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a2, $a0, %pc_lo12(init_block_y)
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a3, $a0, %pc_lo12(init_block_z)
 	pcalau12i	$a0, %pc_hi20(.L.str.95)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.95)
@@ -1847,7 +1844,7 @@ profile:                                # @profile
 	addi.d	$a0, $a0, %pc_lo12(.L.str.96)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s8, %pc_lo12(permute)
+	ld.w	$a0, $s7, %pc_lo12(permute)
 	beqz	$a0, .LBB0_40
 # %bb.39:
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
@@ -1855,7 +1852,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 .LBB0_40:
-	ld.w	$a1, $s7, %pc_lo12(max_num_blocks)
+	ld.w	$a1, $s6, %pc_lo12(max_num_blocks)
 	pcalau12i	$a0, %pc_hi20(.L.str.98)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.98)
 	pcaddu18i	$ra, %call36(printf)
@@ -1887,7 +1884,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 .LBB0_46:
-	ld.w	$a1, $s6, %pc_lo12(code)
+	ld.w	$a1, $s5, %pc_lo12(code)
 	beqz	$a1, .LBB0_48
 # %bb.47:
 	pcalau12i	$a0, %pc_hi20(.L.str.102)
@@ -1895,17 +1892,17 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 .LBB0_48:
-	ld.w	$a1, $s5, %pc_lo12(num_refine)
+	ld.w	$a1, $s4, %pc_lo12(num_refine)
 	pcalau12i	$a0, %pc_hi20(.L.str.103)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.103)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s4, %pc_lo12(block_change)
+	ld.w	$a1, $s3, %pc_lo12(block_change)
 	pcalau12i	$a0, %pc_hi20(.L.str.104)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.104)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, %pc_lo12(refine_ghost)
+	ld.w	$a0, $s2, %pc_lo12(refine_ghost)
 	beqz	$a0, .LBB0_50
 # %bb.49:
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
@@ -1913,7 +1910,7 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 .LBB0_50:
-	ld.w	$a0, $s2, %pc_lo12(uniform_refine)
+	ld.w	$a0, $s0, %pc_lo12(uniform_refine)
 	beqz	$a0, .LBB0_54
 # %bb.51:
 	pcalau12i	$a0, %pc_hi20(.Lstr.7)
@@ -1963,8 +1960,7 @@ profile:                                # @profile
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 360                   # 8-byte Folded Spill
 	ld.w	$a0, $fp, %pc_lo12(num_objects)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_52
+	blez	$a0, .LBB0_52
 # %bb.55:                               # %.lr.ph462.preheader
 	move	$fp, $zero
 	move	$s8, $zero

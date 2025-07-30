@@ -1327,9 +1327,8 @@ sm_read_compressed:                     # @sm_read_compressed
 	ld.w	$a2, $sp, 8
 	pcaddu18i	$ra, %call36(sm_resize)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB17_15
+	ld.w	$a0, $sp, 12
+	blez	$a0, .LBB17_16
 # %bb.2:                                # %.lr.ph30.preheader
 	move	$s1, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -1356,7 +1355,7 @@ sm_read_compressed:                     # @sm_read_compressed
 # %bb.5:                                # %.preheader
                                         #   in Loop: Header=BB17_4 Depth=1
 	ld.w	$a0, $sp, 8
-	blt	$a0, $s4, .LBB17_3
+	blez	$a0, .LBB17_3
 # %bb.6:                                # %.lr.ph26.preheader
                                         #   in Loop: Header=BB17_4 Depth=1
 	move	$s5, $zero
@@ -1419,6 +1418,9 @@ sm_read_compressed:                     # @sm_read_compressed
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 80
 	ret
+.LBB17_16:
+	ori	$a0, $zero, 1
+	b	.LBB17_15
 .Lfunc_end17:
 	.size	sm_read_compressed, .Lfunc_end17-sm_read_compressed
                                         # -- End function

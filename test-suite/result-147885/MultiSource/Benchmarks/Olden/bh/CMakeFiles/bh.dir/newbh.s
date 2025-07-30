@@ -211,8 +211,7 @@ old_main:                               # @old_main
 	bnez	$s0, .LBB1_6
 .LBB1_7:                                # %.preheader119
 	ld.w	$a0, $s2, %pc_lo12(NumNodes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.8:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s3, $zero
@@ -336,7 +335,7 @@ uniform_testdata:                       # @uniform_testdata
 	st.d	$zero, $a0, 136
 	st.w	$s2, $a0, 44
 	move	$s3, $a0
-	blt	$s1, $s5, .LBB2_12
+	blez	$s1, .LBB2_12
 # %bb.1:                                # %.lr.ph
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
@@ -752,29 +751,29 @@ stepsystem:                             # @stepsystem
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(NumNodes)
 	ld.w	$s2, $a1, %pc_lo12(NumNodes)
-	ori	$s3, $zero, 1
 	st.d	$a0, $fp, 32
-	blt	$s2, $s3, .LBB5_8
+	blez	$s2, .LBB5_8
 # %bb.3:                                # %.lr.ph.i
 	fld.d	$fa0, $fp, 24
-	addi.d	$s4, $fp, 552
+	addi.d	$s3, $fp, 552
 	fmul.d	$fs0, $fa0, $fa0
-	addi.d	$s5, $sp, 40
-	addi.d	$s6, $sp, 64
-	addi.d	$s7, $sp, 136
+	addi.d	$s4, $sp, 40
+	addi.d	$s5, $sp, 64
+	addi.d	$s6, $sp, 136
+	ori	$s7, $zero, 1
 	vrepli.b	$vr1, 0
 	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB5_5
 	.p2align	4, , 16
 .LBB5_4:                                # %grav.exit.i
                                         #   in Loop: Header=BB5_5 Depth=1
-	bgeu	$s3, $s8, .LBB5_8
+	bgeu	$s7, $s8, .LBB5_8
 .LBB5_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_7 Depth 2
 	move	$s8, $s2
 	addi.d	$s2, $s2, -1
 	slli.d	$a0, $s2, 3
-	ldx.d	$s0, $s4, $a0
+	ldx.d	$s0, $s3, $a0
 	beqz	$s0, .LBB5_4
 # %bb.6:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB5_5 Depth=1
@@ -786,10 +785,10 @@ stepsystem:                             # @stepsystem
 	ld.d	$a0, $s0, 16
 	vld	$vr0, $s0, 24
 	st.d	$s0, $sp, 32
-	st.d	$a0, $s5, 0
-	vst	$vr0, $s5, 8
-	vst	$vr1, $s6, 16
-	vst	$vr1, $s6, 0
+	st.d	$a0, $s4, 0
+	vst	$vr0, $s4, 8
+	vst	$vr1, $s5, 16
+	vst	$vr1, $s5, 0
 	addi.d	$a0, $sp, 96
 	vldi	$vr1, -912
 	addi.d	$a2, $sp, 32
@@ -799,8 +798,8 @@ stepsystem:                             # @stepsystem
 	pcaddu18i	$ra, %call36(walksub)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $sp, 128
-	ld.d	$a0, $s7, 0
-	vld	$vr1, $s7, 8
+	ld.d	$a0, $s6, 0
+	vld	$vr1, $s6, 8
 	fst.d	$fa0, $s0, 120
 	st.d	$a0, $s0, 96
 	vst	$vr1, $s0, 104
@@ -882,15 +881,14 @@ maketree:                               # @maketree
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 0                    # 8-byte Folded Spill
-	move	$fp, $a2
 	pcalau12i	$a0, %pc_hi20(NumNodes)
 	ld.w	$s2, $a0, %pc_lo12(NumNodes)
+	move	$fp, $a2
 	st.d	$zero, $a2, 32
 	pcalau12i	$a0, %pc_hi20(nbody)
-	ori	$a2, $zero, 1
 	st.w	$a1, $a0, %pc_lo12(nbody)
 	move	$a0, $zero
-	blt	$s2, $a2, .LBB8_14
+	blez	$s2, .LBB8_14
 # %bb.1:                                # %.lr.ph31
 	addi.d	$s3, $fp, 552
 	ori	$s4, $zero, 2
@@ -1034,30 +1032,30 @@ computegrav:                            # @computegrav
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(NumNodes)
-	ld.w	$s2, $a1, %pc_lo12(NumNodes)
-	ori	$s1, $zero, 1
-	blt	$s2, $s1, .LBB9_6
+	ld.w	$s1, $a1, %pc_lo12(NumNodes)
+	blez	$s1, .LBB9_6
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	fld.d	$fa0, $a0, 24
-	addi.d	$s3, $a0, 552
+	addi.d	$s2, $a0, 552
 	fmul.d	$fs0, $fa0, $fa0
-	addi.d	$s4, $sp, 24
-	addi.d	$s5, $sp, 48
-	addi.d	$s6, $sp, 120
+	addi.d	$s3, $sp, 24
+	addi.d	$s4, $sp, 48
+	addi.d	$s5, $sp, 120
+	ori	$s6, $zero, 1
 	vrepli.b	$vr1, 0
 	vst	$vr1, $sp, 0                    # 16-byte Folded Spill
 	b	.LBB9_3
 	.p2align	4, , 16
 .LBB9_2:                                # %grav.exit
                                         #   in Loop: Header=BB9_3 Depth=1
-	bgeu	$s1, $s7, .LBB9_6
+	bgeu	$s6, $s7, .LBB9_6
 .LBB9_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_5 Depth 2
-	move	$s7, $s2
-	addi.d	$s2, $s2, -1
-	slli.d	$a0, $s2, 3
-	ldx.d	$s8, $s3, $a0
+	move	$s7, $s1
+	addi.d	$s1, $s1, -1
+	slli.d	$a0, $s1, 3
+	ldx.d	$s8, $s2, $a0
 	beqz	$s8, .LBB9_2
 # %bb.4:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB9_3 Depth=1
@@ -1069,10 +1067,10 @@ computegrav:                            # @computegrav
 	ld.d	$a0, $s8, 16
 	vld	$vr0, $s8, 24
 	st.d	$s8, $sp, 16
-	st.d	$a0, $s4, 0
-	vst	$vr0, $s4, 8
-	vst	$vr1, $s5, 16
-	vst	$vr1, $s5, 0
+	st.d	$a0, $s3, 0
+	vst	$vr0, $s3, 8
+	vst	$vr1, $s4, 16
+	vst	$vr1, $s4, 0
 	addi.d	$a0, $sp, 80
 	vldi	$vr1, -912
 	addi.d	$a2, $sp, 16
@@ -1082,8 +1080,8 @@ computegrav:                            # @computegrav
 	pcaddu18i	$ra, %call36(walksub)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $sp, 112
-	ld.d	$a0, $s6, 0
-	vld	$vr1, $s6, 8
+	ld.d	$a0, $s5, 0
+	vld	$vr1, $s5, 8
 	fst.d	$fa0, $s8, 120
 	st.d	$a0, $s8, 96
 	vst	$vr1, $s8, 104
@@ -1129,25 +1127,24 @@ vp:                                     # @vp
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	beqz	$a0, .LBB10_26
 # %bb.1:                                # %.preheader128.lr.ph
-	ori	$a2, $zero, 1
-	pcalau12i	$a3, %pc_hi20(.LCPI10_0)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI10_0)
-	lu12i.w	$a3, -419431
-	ori	$a3, $a3, 2458
-	lu32i.d	$a3, -419431
-	pcalau12i	$a4, %pc_hi20(.LCPI10_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI10_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI10_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI10_2)
-	lu52i.d	$a3, $a3, 1015
-	vreplgr2vr.d	$vr3, $a3
+	pcalau12i	$a2, %pc_hi20(.LCPI10_0)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI10_0)
+	lu12i.w	$a2, -419431
+	ori	$a2, $a2, 2458
+	lu32i.d	$a2, -419431
+	pcalau12i	$a3, %pc_hi20(.LCPI10_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI10_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI10_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI10_2)
+	lu52i.d	$a2, $a2, 1015
+	vreplgr2vr.d	$vr3, $a2
 	vldi	$vr4, -988
 	.p2align	4, , 16
 .LBB10_2:                               # %.preheader128
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr5, $a0, 96
 	fld.d	$fa6, $a0, 112
-	blt	$a1, $a2, .LBB10_4
+	blez	$a1, .LBB10_4
 # %bb.3:                                # %.preheader127
                                         #   in Loop: Header=BB10_2 Depth=1
 	fld.d	$fa7, $a0, 88

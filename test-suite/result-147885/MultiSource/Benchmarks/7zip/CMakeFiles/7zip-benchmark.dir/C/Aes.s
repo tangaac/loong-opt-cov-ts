@@ -666,13 +666,10 @@ AesCtr_Code:                            # @AesCtr_Code
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
 	addi.d	$s2, $a0, 16
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	ori	$a0, $zero, 16
 	lu32i.d	$a0, 24
 	vreplgr2vr.d	$vr0, $a0
@@ -724,16 +721,15 @@ AesCtr_Code:                            # @AesCtr_Code
 .LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	ld.wu	$a0, $s0, 0
 	addi.d	$a0, $a0, 1
-	and	$a1, $a0, $s3
+	slli.d	$a1, $a0, 31
 	st.w	$a0, $s0, 0
-	beqz	$a1, .LBB3_2
+	bgez	$a1, .LBB3_2
 # %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
 	ld.w	$a0, $s0, 4
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 4
 	b	.LBB3_2
 .LBB3_5:
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload

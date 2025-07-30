@@ -36,7 +36,7 @@ pcmpz:                                  # @pcmpz
 .LBB0_7:                                # %.loopexit
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_9
 # %bb.8:
@@ -117,7 +117,7 @@ pcmp:                                   # @pcmp
 .LBB1_13:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB1_15
 # %bb.14:
@@ -126,7 +126,7 @@ pcmp:                                   # @pcmp
 .LBB1_15:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB1_17
 # %bb.16:

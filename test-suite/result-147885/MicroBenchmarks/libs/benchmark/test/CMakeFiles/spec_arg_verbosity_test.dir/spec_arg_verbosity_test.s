@@ -62,71 +62,67 @@ _ZL12BM_VerbosityRN9benchmark5StateE:   # @_ZL12BM_VerbosityRN9benchmark5StateE
 main:                                   # @main
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	ori	$fp, $zero, 1
-	st.w	$a0, $sp, 12
-	blt	$a0, $fp, .LBB1_4
+	st.w	$a0, $sp, 4
+	blez	$a0, .LBB1_4
 # %bb.1:                                # %.lr.ph.preheader
-	move	$s0, $a1
-	move	$s2, $zero
-	slli.d	$s3, $a0, 3
+	move	$fp, $a1
+	move	$s1, $zero
+	slli.d	$s2, $a0, 3
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.2)
+	addi.d	$s0, $a0, %pc_lo12(.L.str.2)
 	.p2align	4, , 16
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ldx.d	$a1, $s0, $s2
-	move	$a0, $s1
+	ldx.d	$a1, $fp, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_7
 # %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
-	addi.d	$s2, $s2, 8
-	bne	$s3, $s2, .LBB1_2
+	addi.d	$s1, $s1, 8
+	bne	$s2, $s1, .LBB1_2
 .LBB1_4:                                # %.critedge
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
-	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cerr)
+	ld.d	$fp, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
 	ori	$a2, $zero, 59
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
 	ori	$a2, $zero, 10
-	move	$a0, $s0
+	move	$a0, $fp
 .LBB1_5:
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
 .LBB1_6:
-	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB1_7:
 	pcalau12i	$a0, %got_pc_hi20(_ZN9benchmark16PrintDefaultHelpEv)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN9benchmark16PrintDefaultHelpEv)
-	addi.d	$a0, $sp, 12
-	move	$a1, $s0
+	addi.d	$a0, $sp, 4
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark10InitializeEPiPPcPFvvE)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN9benchmark21GetBenchmarkVerbosityEv)
@@ -134,32 +130,32 @@ main:                                   # @main
 	ori	$a1, $zero, 42
 	bne	$a0, $a1, .LBB1_9
 # %bb.8:
-	move	$fp, $zero
+	move	$a0, $zero
 	b	.LBB1_6
 .LBB1_9:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
-	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cerr)
+	ld.d	$fp, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
 	ori	$a2, $zero, 67
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN9benchmark21GetBenchmarkVerbosityEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.6)
 	ori	$a2, $zero, 17
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 42
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.7)

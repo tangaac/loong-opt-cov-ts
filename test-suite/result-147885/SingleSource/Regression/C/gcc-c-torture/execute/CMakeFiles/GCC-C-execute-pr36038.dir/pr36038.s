@@ -19,19 +19,17 @@ doit:                                   # @doit
 	addi.w	$a3, $a2, 2
 	addi.w	$a2, $a1, -6
 	slli.d	$a1, $a3, 3
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a0, 0
-	addi.d	$a5, $a0, -8
+	ld.d	$a3, $a0, 0
+	addi.d	$a4, $a0, -8
 	bstrpick.d	$a2, $a2, 31, 0
 	addi.d	$a2, $a2, 1
-	and	$a6, $a2, $a3
-	stx.d	$a4, $a0, $a1
-	move	$a0, $a5
-	beqz	$a6, .LBB0_2
+	slli.d	$a5, $a2, 31
+	stx.d	$a3, $a0, $a1
+	move	$a0, $a4
+	bgez	$a5, .LBB0_2
 .LBB0_3:                                # %._crit_edge
 	ret
 .Lfunc_end0:

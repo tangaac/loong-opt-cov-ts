@@ -260,8 +260,7 @@ _ZNK14btCapsuleShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_ZN
 _ZNK14btCapsuleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK14btCapsuleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB3_8
+	blez	$a3, .LBB3_8
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -144
 	.cfi_def_cfa_offset 144

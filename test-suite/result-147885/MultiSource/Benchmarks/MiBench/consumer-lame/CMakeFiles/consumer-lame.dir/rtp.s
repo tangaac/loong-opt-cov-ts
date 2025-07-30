@@ -90,66 +90,63 @@ makesocket:                             # @makesocket
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a3
 	move	$s1, $a1
 	move	$s2, $a0
 	ori	$a0, $zero, 1
-	st.w	$a0, $sp, 4
-	st.b	$a2, $sp, 3
+	st.w	$a0, $sp, 12
+	st.b	$a2, $sp, 11
 	ori	$a0, $zero, 2
 	ori	$a1, $zero, 2
-	ori	$s4, $zero, 2
+	ori	$s3, $zero, 2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(socket)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB2_6
+	bltz	$a0, .LBB2_6
 # %bb.1:
 	move	$fp, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(inet_addr)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	st.h	$s4, $s0, 0
+	st.h	$s3, $s0, 0
 	revb.2h	$a0, $s1
 	st.h	$a0, $s0, 2
 	st.w	$s2, $s0, 4
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 2
-	addi.d	$a3, $sp, 4
+	addi.d	$a3, $sp, 12
 	ori	$a4, $zero, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(setsockopt)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB2_7
+	bltz	$a0, .LBB2_7
 # %bb.2:
 	andi	$a0, $s2, 240
 	ori	$a1, $zero, 224
 	bne	$a0, $a1, .LBB2_5
 # %bb.3:
 	ori	$a2, $zero, 33
-	addi.d	$a3, $sp, 3
+	addi.d	$a3, $sp, 11
 	ori	$a4, $zero, 1
 	ori	$s0, $zero, 1
 	move	$a0, $fp
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(setsockopt)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB2_8
+	bltz	$a0, .LBB2_8
 # %bb.4:
-	st.b	$s0, $sp, 2
+	st.b	$s0, $sp, 10
 	ori	$a2, $zero, 34
-	addi.d	$a3, $sp, 2
+	addi.d	$a3, $sp, 10
 	ori	$a4, $zero, 1
 	move	$a0, $fp
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(setsockopt)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB2_9
+	bltz	$a0, .LBB2_9
 .LBB2_5:
 	move	$a0, $fp
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload

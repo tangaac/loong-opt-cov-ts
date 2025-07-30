@@ -19,8 +19,7 @@ new_Array2D_double:                     # @new_Array2D_double
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_9
 # %bb.1:                                # %.preheader21
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB0_10
+	blez	$fp, .LBB0_10
 # %bb.2:                                # %.lr.ph
 	move	$s2, $zero
 	slli.d	$s0, $s0, 3
@@ -83,8 +82,7 @@ Array2D_double_delete:                  # @Array2D_double_delete
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB1_4
+	blez	$a0, .LBB1_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s1, $fp
 	.p2align	4, , 16
@@ -115,8 +113,7 @@ Array2D_double_delete:                  # @Array2D_double_delete
 	.type	Array2D_double_copy,@function
 Array2D_double_copy:                    # @Array2D_double_copy
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB2_18
+	blez	$a0, .LBB2_18
 # %bb.1:                                # %.lr.ph41
 	ori	$a5, $zero, 4
 	andi	$a4, $a1, 3

@@ -126,7 +126,7 @@ ptod:                                   # @ptod
 	ld.h	$a1, $a0, 0
 	ld.bu	$fp, $a0, 6
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB1_6
 # %bb.5:

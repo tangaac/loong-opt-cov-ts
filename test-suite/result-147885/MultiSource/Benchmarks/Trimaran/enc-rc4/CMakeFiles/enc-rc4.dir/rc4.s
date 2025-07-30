@@ -554,8 +554,7 @@ rc4_crypt:                              # @rc4_crypt
 # %bb.0:
 	ld.w	$a4, $a0, 0
 	ld.w	$a3, $a0, 4
-	ori	$a5, $zero, 1
-	blt	$a2, $a5, .LBB1_3
+	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a5, $a0, 8
 	.p2align	4, , 16

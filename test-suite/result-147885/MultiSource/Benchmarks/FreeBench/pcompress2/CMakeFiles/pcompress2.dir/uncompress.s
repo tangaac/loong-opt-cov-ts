@@ -100,31 +100,30 @@ uncompress:                             # @uncompress
 	beqz	$s1, .LBB0_14
 # %bb.6:                                # %.lr.ph24.i.preheader
 	move	$s2, $zero
-	move	$s4, $zero
-	addi.w	$s3, $zero, -1
+	move	$s3, $zero
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_7:                                #   in Loop: Header=BB0_8 Depth=1
 	ld.d	$a1, $s6, %pc_lo12(derle)
-	add.d	$a3, $a0, $s8
+	add.d	$a3, $a0, $s4
 	bstrpick.d	$a0, $s2, 31, 0
 	add.d	$a0, $a1, $a0
 	addi.d	$a1, $a3, 1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s7, %pc_lo12(deari)
-	ldx.bu	$a1, $a0, $s8
+	ldx.bu	$a1, $a0, $s4
 	add.w	$s2, $s2, $a1
-	add.d	$a1, $s4, $a1
-	addi.w	$s4, $a1, 1
-	bgeu	$s4, $s1, .LBB0_14
+	add.d	$a1, $s3, $a1
+	addi.w	$s3, $a1, 1
+	bgeu	$s3, $s1, .LBB0_14
 .LBB0_8:                                # %.lr.ph24.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_11 Depth 2
-	bstrpick.d	$s8, $s4, 31, 0
-	ldx.b	$a1, $a0, $s8
+	bstrpick.d	$s4, $s3, 31, 0
+	ldx.b	$a1, $a0, $s4
 	andi	$a2, $a1, 255
-	blt	$s3, $a1, .LBB0_7
+	bgez	$a1, .LBB0_7
 # %bb.9:                                # %.preheader.i
                                         #   in Loop: Header=BB0_8 Depth=1
 	andi	$a1, $a2, 127
@@ -132,7 +131,7 @@ uncompress:                             # @uncompress
 # %bb.10:                               # %.lr.ph.i
                                         #   in Loop: Header=BB0_8 Depth=1
 	move	$a1, $zero
-	addi.d	$a2, $s8, 1
+	addi.d	$a2, $s4, 1
 	.p2align	4, , 16
 .LBB0_11:                               #   Parent Loop BB0_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -142,7 +141,7 @@ uncompress:                             # @uncompress
 	bstrpick.d	$a4, $a4, 31, 0
 	stx.b	$a0, $a3, $a4
 	ld.d	$a0, $s7, %pc_lo12(deari)
-	ldx.bu	$a3, $a0, $s8
+	ldx.bu	$a3, $a0, $s4
 	addi.w	$a1, $a1, 1
 	andi	$a3, $a3, 127
 	bltu	$a1, $a3, .LBB0_11
@@ -151,8 +150,8 @@ uncompress:                             # @uncompress
 	add.w	$s2, $s2, $a1
 .LBB0_13:                               # %._crit_edge.i
                                         #   in Loop: Header=BB0_8 Depth=1
-	addi.w	$s4, $s4, 2
-	bltu	$s4, $s1, .LBB0_8
+	addi.w	$s3, $s3, 2
+	bltu	$s3, $s1, .LBB0_8
 .LBB0_14:                               # %do_derle.exit
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0

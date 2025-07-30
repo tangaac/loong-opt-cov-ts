@@ -279,8 +279,7 @@ get_mem3Dpel:                           # @get_mem3Dpel
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB4_2:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_5
+	blez	$s1, .LBB4_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	slli.d	$s4, $s1, 3
@@ -696,8 +695,7 @@ get_mem5Dpel:                           # @get_mem5Dpel
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB6_2:
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB6_5
+	blez	$s3, .LBB6_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	slli.d	$s6, $s3, 3
@@ -789,8 +787,7 @@ free_mem3Dpel:                          # @free_mem3Dpel
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB8_9
+	blez	$a1, .LBB8_9
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.6)
@@ -864,8 +861,7 @@ free_mem4Dpel:                          # @free_mem4Dpel
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_4
+	blez	$a1, .LBB9_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$fp, $a2
 	move	$s2, $s0
@@ -918,8 +914,7 @@ free_mem5Dpel:                          # @free_mem5Dpel
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$s5, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB10_32
+	blez	$a1, .LBB10_32
 # %bb.2:                                # %.lr.ph
 	blez	$a2, .LBB10_20
 # %bb.3:                                # %.lr.ph.split.us
@@ -1456,8 +1451,7 @@ get_mem3D:                              # @get_mem3D
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB14_2:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB14_5
+	blez	$s1, .LBB14_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	slli.d	$s4, $s1, 3
@@ -1526,8 +1520,7 @@ get_mem3Dint:                           # @get_mem3Dint
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB15_2:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB15_5
+	blez	$s1, .LBB15_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	slli.d	$s4, $s1, 3
@@ -1597,8 +1590,7 @@ get_mem3Dint64:                         # @get_mem3Dint64
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB16_2:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB16_5
+	blez	$s1, .LBB16_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	slli.d	$s4, $s1, 3
@@ -2014,8 +2006,7 @@ get_mem5Dint:                           # @get_mem5Dint
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB18_2:
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB18_5
+	blez	$s3, .LBB18_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	slli.d	$s6, $s3, 3
@@ -2185,8 +2176,7 @@ free_mem3D:                             # @free_mem3D
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB22_9
+	blez	$a1, .LBB22_9
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.18)
@@ -2261,8 +2251,7 @@ free_mem3Dint:                          # @free_mem3Dint
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB23_9
+	blez	$a1, .LBB23_9
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.19)
@@ -2337,8 +2326,7 @@ free_mem3Dint64:                        # @free_mem3Dint64
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB24_9
+	blez	$a1, .LBB24_9
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.20)
@@ -2412,8 +2400,7 @@ free_mem4Dint:                          # @free_mem4Dint
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB25_4
+	blez	$a1, .LBB25_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$fp, $a2
 	move	$s2, $s0
@@ -2466,8 +2453,7 @@ free_mem5Dint:                          # @free_mem5Dint
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$s5, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB26_32
+	blez	$a1, .LBB26_32
 # %bb.2:                                # %.lr.ph
 	blez	$a2, .LBB26_20
 # %bb.3:                                # %.lr.ph.split.us
@@ -2818,8 +2804,7 @@ get_mem3Dshort:                         # @get_mem3Dshort
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB28_2:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB28_5
+	blez	$s1, .LBB28_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	slli.d	$s4, $s1, 3
@@ -3235,8 +3220,7 @@ get_mem5Dshort:                         # @get_mem5Dshort
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB30_2:
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB30_5
+	blez	$s3, .LBB30_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	slli.d	$s6, $s3, 3
@@ -3320,9 +3304,8 @@ get_mem6Dshort:                         # @get_mem6Dshort
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB31_2:
-	ori	$a1, $zero, 1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	blt	$s5, $a1, .LBB31_10
+	blez	$s5, .LBB31_10
 # %bb.3:                                # %.lr.ph
 	move	$s7, $zero
 	blez	$a0, .LBB31_11
@@ -3500,8 +3483,7 @@ free_mem3Dshort:                        # @free_mem3Dshort
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB33_9
+	blez	$a1, .LBB33_9
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.32)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.32)
@@ -3575,8 +3557,7 @@ free_mem4Dshort:                        # @free_mem4Dshort
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB34_4
+	blez	$a1, .LBB34_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$fp, $a2
 	move	$s2, $s0
@@ -3629,8 +3610,7 @@ free_mem5Dshort:                        # @free_mem5Dshort
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$s5, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB35_32
+	blez	$a1, .LBB35_32
 # %bb.2:                                # %.lr.ph
 	blez	$a2, .LBB35_20
 # %bb.3:                                # %.lr.ph.split.us
@@ -3864,8 +3844,7 @@ free_mem6Dshort:                        # @free_mem6Dshort
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$s3, $a1
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB36_4
+	blez	$a1, .LBB36_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$fp, $a4
 	move	$s0, $a3
@@ -4197,8 +4176,7 @@ get_mem3Ddb_offset:                     # @get_mem3Ddb_offset
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB39_15
 .LBB39_8:                               # %.lr.ph35
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB39_15
+	blez	$s4, .LBB39_15
 # %bb.9:                                # %.lr.ph33.us.preheader
 	move	$s6, $zero
 	sub.w	$s7, $s4, $s3
@@ -4371,8 +4349,7 @@ get_mem3Dint_offset:                    # @get_mem3Dint_offset
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB40_15
 .LBB40_8:                               # %.lr.ph35
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB40_15
+	blez	$s4, .LBB40_15
 # %bb.9:                                # %.lr.ph33.us.preheader
 	move	$s6, $zero
 	sub.w	$s7, $s4, $s3
@@ -4551,10 +4528,9 @@ free_mem3Ddb_offset:                    # @free_mem3Ddb_offset
 	move	$s1, $a1
 	move	$fp, $a0
 	st.d	$a3, $sp, 0                     # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB43_9
+	blez	$a1, .LBB43_9
 # %bb.2:                                # %.preheader
-	blt	$a2, $a0, .LBB43_9
+	blez	$a2, .LBB43_9
 # %bb.3:                                # %.lr.ph.us.preheader
 	move	$s3, $zero
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -4661,10 +4637,9 @@ free_mem3Dint_offset:                   # @free_mem3Dint_offset
 	move	$s1, $a1
 	move	$fp, $a0
 	st.d	$a3, $sp, 0                     # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB44_9
+	blez	$a1, .LBB44_9
 # %bb.2:                                # %.preheader
-	blt	$a2, $a0, .LBB44_9
+	blez	$a2, .LBB44_9
 # %bb.3:                                # %.lr.ph.us.preheader
 	move	$s3, $zero
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload

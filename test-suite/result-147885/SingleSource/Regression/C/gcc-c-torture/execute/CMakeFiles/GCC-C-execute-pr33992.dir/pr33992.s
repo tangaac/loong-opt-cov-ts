@@ -29,8 +29,7 @@ do_test:                                # @do_test
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $a0, 1
 	sll.d	$a2, $a1, $a0
-	bstrins.d	$a2, $zero, 62, 0
-	beqz	$a2, .LBB1_1
+	bgez	$a2, .LBB1_1
 # %bb.2:                                # %foo.exit
 	bstrpick.d	$a0, $a0, 31, 0
 	pcaddu18i	$ra, %call36(bar)
@@ -41,8 +40,7 @@ do_test:                                # @do_test
 .LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $a0, 1
 	sll.d	$a2, $a1, $a0
-	bstrins.d	$a2, $zero, 62, 0
-	beqz	$a2, .LBB1_3
+	bgez	$a2, .LBB1_3
 # %bb.4:                                # %foo.exit.1
 	bstrpick.d	$a0, $a0, 31, 0
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload

@@ -22,10 +22,9 @@ SparseCompRow_num_flops:                # @SparseCompRow_num_flops
 	.type	SparseCompRow_matmult,@function
 SparseCompRow_matmult:                  # @SparseCompRow_matmult
 # %bb.0:
-	ori	$a7, $zero, 1
-	blt	$a6, $a7, .LBB1_9
+	blez	$a6, .LBB1_9
 # %bb.1:
-	blt	$a0, $a7, .LBB1_9
+	blez	$a0, .LBB1_9
 # %bb.2:                                # %.preheader.us.preheader
 	ld.w	$a7, $a3, 0
 	move	$t0, $zero

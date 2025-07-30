@@ -20,8 +20,7 @@ dumpSortedStates:                       # @dumpSortedStates
 	ld.d	$s0, $a0, %got_pc_lo12(globalMap)
 	ld.d	$a0, $s0, 0
 	ld.w	$a0, $a0, 16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -75,8 +74,7 @@ dumpSortedRules:                        # @dumpSortedRules
 	pcalau12i	$a0, %got_pc_hi20(max_ruleAST)
 	ld.d	$s0, $a0, %got_pc_lo12(max_ruleAST)
 	ld.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -253,8 +251,7 @@ makePlanks:                             # @makePlanks
 	jirl	$ra, $ra, 0
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_18
+	blez	$a0, .LBB2_18
 # %bb.14:                               # %.lr.ph47.i
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(sortedRules)
@@ -466,8 +463,7 @@ makePlanks:                             # @makePlanks
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.w	$a0, $a0, 16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_28
+	blez	$a0, .LBB2_28
 # %bb.32:                               # %.lr.ph31.i.i.preheader
                                         #   in Loop: Header=BB2_29 Depth=1
 	move	$s7, $zero
@@ -532,19 +528,17 @@ makePlanks:                             # @makePlanks
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB2_48
+	blez	$a0, .LBB2_48
 # %bb.38:                               # %.lr.ph.i11.preheader
+	move	$s2, $zero
 	move	$s3, $zero
-	move	$s6, $zero
 	move	$s1, $zero
 	lu12i.w	$a0, -209716
-	ori	$s7, $a0, 3277
+	ori	$s6, $a0, 3277
 	lu12i.w	$a0, 104857
-	ori	$fp, $a0, 2457
+	ori	$s7, $a0, 2457
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $a0, %pc_lo12(.L.str.23)
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.10)
 	b	.LBB2_41
@@ -554,7 +548,7 @@ makePlanks:                             # @makePlanks
 .LBB2_40:                               #   in Loop: Header=BB2_41 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(sortedRules)
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s2
 	ld.d	$a1, $a0, 32
 	ld.d	$a0, $s4, 0
 	ld.w	$a2, $a1, 8
@@ -564,31 +558,31 @@ makePlanks:                             # @makePlanks
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	addi.w	$s1, $s5, 1
-	addi.d	$s6, $s6, 1
-	addi.d	$s3, $s3, 8
-	bge	$s6, $a0, .LBB2_48
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 8
+	bge	$s3, $a0, .LBB2_48
 .LBB2_41:                               # %.lr.ph.i11
                                         # =>This Inner Loop Header: Depth=1
-	blt	$s1, $s2, .LBB2_44
+	blez	$s1, .LBB2_44
 # %bb.42:                               #   in Loop: Header=BB2_41 Depth=1
 	ld.d	$a1, $s4, 0
 	ori	$a0, $zero, 44
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	mul.d	$a0, $s1, $s7
+	mul.d	$a0, $s1, $s6
 	rotri.w	$a0, $a0, 1
-	bltu	$fp, $a0, .LBB2_44
+	bltu	$s7, $a0, .LBB2_44
 # %bb.43:                               #   in Loop: Header=BB2_41 Depth=1
 	ld.d	$a0, $s4, 0
 	addi.w	$a2, $s1, -10
 	addi.w	$a3, $s1, -1
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB2_44:                               #   in Loop: Header=BB2_41 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(sortedRules)
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 32
 	ld.w	$a0, $a0, 16
 	bge	$s1, $a0, .LBB2_39
@@ -605,13 +599,13 @@ makePlanks:                             # @makePlanks
 	ori	$a0, $zero, 44
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	mul.d	$a0, $s5, $s7
+	mul.d	$a0, $s5, $s6
 	rotri.w	$a0, $a0, 1
-	bltu	$fp, $a0, .LBB2_40
+	bltu	$s7, $a0, .LBB2_40
 # %bb.47:                               #   in Loop: Header=BB2_41 Depth=1
 	ld.d	$a0, $s4, 0
 	addi.w	$a2, $s1, -9
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	move	$a1, $fp
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -1490,8 +1484,7 @@ doDimPmaps:                             # @doDimPmaps
 	ld.d	$a0, $a0, 24
 	ld.d	$a0, $a0, 24
 	ld.w	$a0, $a0, 16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_53
+	blez	$a0, .LBB6_53
 # %bb.27:                               # %.lr.ph133
 	move	$s0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
@@ -1500,8 +1493,8 @@ doDimPmaps:                             # @doDimPmaps
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.10)
 	lu12i.w	$a0, -209716
-	ori	$s4, $a0, 3277
-	lu32i.d	$s4, 0
+	ori	$s1, $a0, 3277
+	lu32i.d	$s1, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -1542,8 +1535,7 @@ doDimPmaps:                             # @doDimPmaps
 	ld.d	$a1, $a0, 32
 	ld.d	$a1, $a1, 24
 	ld.w	$a1, $a1, 16
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB6_28
+	blez	$a1, .LBB6_28
 # %bb.32:                               #   in Loop: Header=BB6_29 Depth=1
 	move	$a1, $s0
 	move	$a2, $zero
@@ -1551,8 +1543,7 @@ doDimPmaps:                             # @doDimPmaps
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB6_34
+	blez	$a1, .LBB6_34
 # %bb.33:                               #   in Loop: Header=BB6_29 Depth=1
 	ld.w	$a0, $a0, 4
 	ld.w	$a1, $fp, 16
@@ -1579,14 +1570,13 @@ doDimPmaps:                             # @doDimPmaps
 # %bb.36:                               # %.lr.ph129.peel.next.preheader
                                         #   in Loop: Header=BB6_29 Depth=1
 	move	$s5, $zero
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	b	.LBB6_40
 	.p2align	4, , 16
 .LBB6_37:                               #   in Loop: Header=BB6_40 Depth=2
 	ld.d	$a0, $s7, 0
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB6_42
+	blez	$a1, .LBB6_42
 # %bb.38:                               #   in Loop: Header=BB6_40 Depth=2
 	ld.w	$a0, $a0, 4
 	ld.w	$a1, $fp, 16
@@ -1605,19 +1595,19 @@ doDimPmaps:                             # @doDimPmaps
 	ld.d	$a1, $a1, 24
 	ld.w	$a1, $a1, 16
 	addi.w	$a2, $s5, 2
-	addi.w	$s3, $s3, 1
+	addi.w	$s4, $s4, 1
 	move	$s5, $s6
 	bge	$a2, $a1, .LBB6_28
 .LBB6_40:                               # %.lr.ph129.peel.next
                                         #   Parent Loop BB6_29 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$s6, $s5, 1
-	bstrpick.d	$a1, $s3, 31, 0
-	mul.d	$a1, $a1, $s4
+	bstrpick.d	$a1, $s4, 31, 0
+	mul.d	$a1, $a1, $s1
 	srli.d	$a1, $a1, 35
 	slli.d	$a2, $a1, 3
 	alsl.d	$a1, $a1, $a2, 1
-	addi.w	$s1, $a1, -1
+	addi.w	$s3, $a1, -1
 	move	$a1, $s0
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(transLval)
@@ -1627,7 +1617,7 @@ doDimPmaps:                             # @doDimPmaps
 	ori	$a0, $zero, 44
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bne	$s1, $s5, .LBB6_37
+	bne	$s3, $s5, .LBB6_37
 # %bb.41:                               #   in Loop: Header=BB6_40 Depth=2
 	ld.d	$a0, $s8, 0
 	addi.w	$a3, $s5, -9
@@ -1745,8 +1735,7 @@ doNonTermPmaps:                         # @doNonTermPmaps
 	bge	$a2, $a0, .LBB7_13
 # %bb.1:
 	ld.w	$a0, $fp, 16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_13
+	blez	$a0, .LBB7_13
 # %bb.2:
 	ld.w	$s1, $fp, 12
 	ori	$a0, $zero, 24
@@ -1803,11 +1792,9 @@ doNonTermPmaps:                         # @doNonTermPmaps
 .LBB7_7:                                # %._crit_edge
 	ld.wu	$a0, $fp, 16
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
 	move	$a2, $zero
-	and	$a1, $a0, $a1
-	bnez	$a1, .LBB7_10
+	slli.d	$a1, $a0, 31
+	bltz	$a1, .LBB7_10
 # %bb.8:                                # %.lr.ph.i.preheader
 	ori	$a1, $zero, 1
 	.p2align	4, , 16
@@ -1869,8 +1856,7 @@ enterStateMap:                          # @enterStateMap
 	ld.d	$a0, $a0, %got_pc_lo12(globalMap)
 	ld.d	$a0, $a0, 0
 	ld.w	$s3, $a0, 16
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB8_19
+	blez	$s3, .LBB8_19
 # %bb.2:                                # %.lr.ph.us.preheader
 	pcalau12i	$a0, %pc_hi20(exceptionTolerance)
 	ld.w	$a0, $a0, %pc_lo12(exceptionTolerance)

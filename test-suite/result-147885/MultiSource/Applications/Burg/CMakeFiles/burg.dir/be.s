@@ -155,8 +155,7 @@ makeLabel:                              # @makeLabel
 	addi.w	$s4, $s4, 1
 	b	.LBB1_2
 .LBB1_5:                                # %opsOfArity.exit
-	ori	$fp, $zero, 1
-	blt	$s4, $fp, .LBB1_10
+	blez	$s4, .LBB1_10
 # %bb.6:
 	ld.d	$a0, $s0, %pc_lo12(outfile)
 	ld.d	$a2, $s1, %pc_lo12(prefix)
@@ -169,7 +168,7 @@ makeLabel:                              # @makeLabel
 	pcalau12i	$a0, %got_pc_hi20(max_arity)
 	ld.d	$a0, $a0, %got_pc_lo12(max_arity)
 	ld.w	$s3, $a0, 0
-	blt	$s3, $fp, .LBB1_9
+	blez	$s3, .LBB1_9
 # %bb.7:                                # %.lr.ph.i3.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.161)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.161)
@@ -219,8 +218,7 @@ makeLabel:                              # @makeLabel
 	addi.w	$s4, $s4, 1
 	b	.LBB1_12
 .LBB1_15:                               # %opsOfArity.exit13
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_20
+	blez	$s4, .LBB1_20
 # %bb.16:
 	ld.d	$a0, $s0, %pc_lo12(outfile)
 	ld.d	$a2, $s1, %pc_lo12(prefix)
@@ -287,8 +285,7 @@ makeLabel:                              # @makeLabel
 	addi.w	$s3, $s3, 1
 	b	.LBB1_22
 .LBB1_25:                               # %opsOfArity.exit27
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB1_30
+	blez	$s3, .LBB1_30
 # %bb.26:
 	ld.d	$a0, $s0, %pc_lo12(outfile)
 	ld.d	$a2, $s1, %pc_lo12(prefix)
@@ -394,8 +391,7 @@ makeRuleTable:                          # @makeRuleTable
 	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $fp, 0
 	ld.w	$a1, $a0, 16
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_17
+	blez	$a1, .LBB2_17
 # %bb.1:                                # %.lr.ph25.preheader
 	move	$fp, $zero
 	pcalau12i	$a1, %pc_hi20(.L.str.18)
@@ -622,8 +618,7 @@ doMakeTable:                            # @doMakeTable
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a0, $s0, 0
 	ld.w	$a0, $a0, 16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_20
+	blez	$a0, .LBB4_20
 # %bb.4:
 	ld.d	$a0, $s6, 16
 	ld.d	$a0, $a0, 0
@@ -768,13 +763,12 @@ doMakeTable:                            # @doMakeTable
 	ld.d	$a0, $a0, 24
 	ld.d	$a0, $a0, 24
 	ld.w	$a0, $a0, 16
-	ori	$s6, $zero, 1
-	blt	$a0, $s6, .LBB4_21
+	blez	$a0, .LBB4_21
 # %bb.11:                               # %.lr.ph50.preheader
 	move	$s0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.22)
-	ori	$s7, $zero, 2
+	ori	$s6, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.168)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.168)
 	b	.LBB4_13
@@ -814,7 +808,7 @@ doMakeTable:                            # @doMakeTable
 	ld.d	$a1, $a0, 32
 	ld.d	$a1, $a1, 24
 	ld.w	$a1, $a1, 16
-	blt	$a1, $s6, .LBB4_12
+	blez	$a1, .LBB4_12
 # %bb.16:                               #   in Loop: Header=BB4_13 Depth=1
 	move	$a1, $s0
 	move	$a2, $zero
@@ -830,7 +824,7 @@ doMakeTable:                            # @doMakeTable
 	ld.d	$a1, $a0, 32
 	ld.d	$a1, $a1, 24
 	ld.w	$a1, $a1, 16
-	blt	$a1, $s7, .LBB4_12
+	blt	$a1, $s6, .LBB4_12
 # %bb.17:                               # %.lr.ph46.peel.next.preheader
                                         #   in Loop: Header=BB4_13 Depth=1
 	ori	$s3, $zero, 1
@@ -1058,20 +1052,19 @@ makeClosureArray:                       # @makeClosureArray
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_17
+	blez	$a0, .LBB6_17
 # %bb.3:                                # %.lr.ph14.preheader
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(allpairs)
-	ld.d	$s8, $a0, %got_pc_lo12(allpairs)
+	ld.d	$s7, $a0, %got_pc_lo12(allpairs)
 	pcalau12i	$a0, %pc_hi20(.L.str.32)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.32)
 	lu12i.w	$a0, -209716
-	ori	$s7, $a0, 3277
-	lu32i.d	$s7, 0
+	ori	$s8, $a0, 3277
+	lu32i.d	$s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.31)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -1103,13 +1096,12 @@ makeClosureArray:                       # @makeClosureArray
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_4
+	blez	$a0, .LBB6_4
 # %bb.6:                                #   in Loop: Header=BB6_5 Depth=1
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s7, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	slli.d	$s5, $a1, 3
-	ldx.d	$a0, $a0, $s5
+	slli.d	$s6, $a1, 3
+	ldx.d	$a0, $a0, $s6
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB6_8
 # %bb.7:                                #   in Loop: Header=BB6_5 Depth=1
@@ -1132,7 +1124,7 @@ makeClosureArray:                       # @makeClosureArray
 	ori	$fp, $zero, 1
 	ori	$s2, $zero, 40
 	addi.d	$s1, $zero, -1
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	b	.LBB6_13
 	.p2align	4, , 16
 .LBB6_11:                               #   in Loop: Header=BB6_13 Depth=2
@@ -1143,16 +1135,16 @@ makeClosureArray:                       # @makeClosureArray
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 1
 	addi.d	$s1, $s1, -1
 	addi.w	$fp, $fp, 1
 	addi.d	$s2, $s2, 40
-	bge	$s6, $a0, .LBB6_4
+	bge	$s5, $a0, .LBB6_4
 .LBB6_13:                               # %.peel.next
                                         #   Parent Loop BB6_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	bstrpick.d	$a0, $fp, 31, 0
-	mul.d	$a0, $a0, $s7
+	mul.d	$a0, $a0, $s8
 	srli.d	$a0, $a0, 35
 	slli.d	$a1, $a0, 3
 	alsl.d	$a0, $a0, $a1, 1
@@ -1166,8 +1158,8 @@ makeClosureArray:                       # @makeClosureArray
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB6_15:                               #   in Loop: Header=BB6_13 Depth=2
-	ld.d	$a0, $s8, 0
-	ldx.d	$a0, $a0, $s5
+	ld.d	$a0, $s7, 0
+	ldx.d	$a0, $a0, $s6
 	ldx.d	$a1, $a0, $s2
 	ld.d	$a0, $s3, %pc_lo12(outfile)
 	bnez	$a1, .LBB6_11
@@ -2066,11 +2058,11 @@ makeRuleDescArray:                      # @makeRuleDescArray
 	pcalau12i	$a0, %got_pc_hi20(max_erule_num)
 	ld.d	$s6, $a0, %got_pc_lo12(max_erule_num)
 	ld.w	$a0, $s6, 0
-	ori	$fp, $zero, 1
-	blt	$a0, $fp, .LBB12_7
+	blez	$a0, .LBB12_7
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s7, $zero
 	ld.d	$a1, $s3, %pc_lo12(pVector)
+	ori	$fp, $zero, 1
 	ori	$s8, $zero, 8
 	pcalau12i	$a2, %pc_hi20(.L.str.57)
 	addi.d	$s0, $a2, %pc_lo12(.L.str.57)
@@ -2140,10 +2132,10 @@ makeRuleDescArray:                      # @makeRuleDescArray
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	ori	$fp, $zero, 1
-	blt	$a0, $fp, .LBB12_13
+	blez	$a0, .LBB12_13
 # %bb.8:                                # %.lr.ph20.preheader
 	move	$s2, $zero
+	ori	$fp, $zero, 1
 	ori	$s7, $zero, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.62)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.62)
@@ -2328,7 +2320,7 @@ makeRuleDescArray2:                     # @makeRuleDescArray2
 	pcalau12i	$a0, %got_pc_hi20(max_erule_num)
 	ld.d	$s8, $a0, %got_pc_lo12(max_erule_num)
 	ld.w	$a0, $s8, 0
-	blt	$a0, $fp, .LBB14_22
+	blez	$a0, .LBB14_22
 # %bb.6:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	ori	$s5, $zero, 8
@@ -3352,8 +3344,7 @@ makeOperators:                          # @makeOperators
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, %pc_lo12(maxOperator)
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB23_13
+	bgtz	$a0, .LBB23_13
 	b	.LBB23_18
 .LBB23_12:
 	pcalau12i	$a0, %pc_hi20(.L.str.116)
@@ -3363,8 +3354,7 @@ makeOperators:                          # @makeOperators
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, %pc_lo12(maxOperator)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB23_18
+	blez	$a0, .LBB23_18
 .LBB23_13:                              # %.lr.ph.peel.next.preheader
 	move	$s7, $zero
 	move	$fp, $zero
@@ -3439,8 +3429,7 @@ makeOperators:                          # @makeOperators
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, %pc_lo12(maxOperator)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB23_27
+	blez	$a0, .LBB23_27
 # %bb.23:                               # %.lr.ph27.peel.next.preheader
 	move	$s2, $zero
 	move	$fp, $zero
@@ -4270,12 +4259,11 @@ makeIndex_Map:                          # @makeIndex_Map
 	ld.d	$s3, $a1, %got_pc_lo12(globalMap)
 	ld.d	$a1, $s3, 0
 	ld.w	$a1, $a1, 16
-	move	$fp, $a0
-	ori	$a0, $zero, 1
 	pcalau12i	$s4, %pc_hi20(outfile)
-	blt	$a1, $a0, .LBB32_6
+	blez	$a1, .LBB32_6
 # %bb.1:
-	ld.d	$a0, $fp, 16
+	move	$fp, $a0
+	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $fp, 24
 	ld.w	$a0, $a0, 0

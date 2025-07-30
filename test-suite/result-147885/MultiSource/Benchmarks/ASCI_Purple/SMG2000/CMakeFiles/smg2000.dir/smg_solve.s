@@ -112,9 +112,8 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(hypre_StructVectorSetConstantValues)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB0_38
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	blez	$a0, .LBB0_38
 # %bb.4:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	st.d	$zero, $a0, 0
@@ -135,9 +134,8 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 .LBB0_8:
 	st.d	$s5, $sp, 344                   # 8-byte Folded Spill
 	st.d	$s6, $sp, 288                   # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB0_38
+	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	blez	$a0, .LBB0_38
 # %bb.9:                                # %.lr.ph249
 	st.d	$zero, $sp, 336                 # 8-byte Folded Spill
 	addi.d	$a0, $s0, 48
@@ -167,11 +165,11 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	addi.d	$a2, $a2, 8
 	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$a2, $a2, 8
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$s3, $a2, 8
 	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
-	addi.d	$s8, $a2, 8
-	addi.d	$s6, $fp, 8
+	addi.d	$a2, $a2, 8
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	addi.d	$s8, $fp, 8
 	ld.d	$a4, $sp, 344                   # 8-byte Folded Reload
 	addi.d	$a2, $a4, 16
 	st.d	$a2, $sp, 368                   # 8-byte Folded Spill
@@ -202,6 +200,7 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	alsl.d	$a0, $a0, $fp, 3
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$s7, $zero, 2
+	ori	$s2, $zero, 1
 	fcmp.cule.d	$fcc0, $fs0, $fs4
 	movcf2gr	$a0, $fcc0
 	st.d	$a0, $sp, 144
@@ -209,8 +208,8 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
                                         # implicit-def: $f25_64
 	st.d	$fp, $sp, 296                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
 	b	.LBB0_12
@@ -223,11 +222,10 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	fsel	$fs2, $fa0, $fs2, $fcc0
 	fsel	$fs1, $fs4, $fs1, $fcc0
 	ld.d	$s4, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 304                   # 8-byte Folded Reload
 .LBB0_11:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$a0, $s4, 0
-	move	$a1, $s3
+	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetMaxIter)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
@@ -237,7 +235,7 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	ld.d	$a0, $s4, 0
 	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $s2, 0
+	ld.d	$a2, $s6, 0
 	ld.d	$a3, $fp, 0
 	pcaddu18i	$ra, %call36(hypre_SMGRelax)
 	jirl	$ra, $ra, 0
@@ -278,8 +276,8 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	ld.d	$a0, $s3, 0
 	ld.d	$s3, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a1, $s3, 0
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$a2, $s2, 0
+	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a2, $s4, 0
 	ld.d	$a3, $fp, 0
 	pcaddu18i	$ra, %call36(hypre_SMGRelax)
 	jirl	$ra, $ra, 0
@@ -287,14 +285,13 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $s3, 0
 	ld.d	$a2, $fp, 0
-	ld.d	$a3, $s2, 0
+	ld.d	$a3, $s4, 0
 	ld.d	$a4, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
 	pcaddu18i	$ra, %call36(hypre_SMGResidual)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 264
 	movgr2cf	$fcc0, $a0
-	ori	$s3, $zero, 1
 	bcnez	$fcc0, .LBB0_24
 # %bb.15:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
@@ -304,7 +301,7 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	jirl	$ra, $ra, 0
 	fdiv.d	$fs3, $fa0, $fs0
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	blt	$a0, $s3, .LBB0_20
+	blez	$a0, .LBB0_20
 # %bb.16:                               #   in Loop: Header=BB0_12 Depth=1
 	fsqrt.d	$fa1, $fa0
 	fcmp.cor.d	$fcc0, $fa1, $fa1
@@ -343,7 +340,7 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	bcnez	$fcc0, .LBB0_38
 .LBB0_24:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$s4, $sp, 320                   # 8-byte Folded Reload
-	bge	$s3, $s4, .LBB0_10
+	bge	$s2, $s4, .LBB0_10
 # %bb.25:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
@@ -443,63 +440,64 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 # %bb.30:                               # %.lr.ph242.preheader
                                         #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_31:                               # %.lr.ph242
                                         #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $s2, 0
+	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s6, 0
 	ld.d	$a2, $s4, 8
-	ld.d	$a3, $s7, 0
+	ld.d	$a3, $s3, 0
 	pcaddu18i	$ra, %call36(hypre_SemiInterp)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a1, $s4, 0
 	vldi	$vr0, -912
 	pcaddu18i	$ra, %call36(hypre_StructAxpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s5, 0
 	ori	$a2, $zero, 1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetRegSpaceRank)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s5, 0
 	ori	$a1, $zero, 1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetRegSpaceRank)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s5, 0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetMaxIter)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s5, 0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(hypre_SMGRelaxSetZeroGuess)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 0
-	ld.d	$a1, $s6, 0
-	ld.d	$a2, $s5, 0
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $fp, 0
+	ld.d	$a2, $s2, 0
 	ld.d	$a3, $s4, 0
 	pcaddu18i	$ra, %call36(hypre_SMGRelax)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, -1
-	addi.d	$s5, $s5, -8
-	addi.d	$s6, $s6, -8
-	addi.d	$s3, $s3, -8
-	addi.d	$s7, $s7, -8
 	addi.d	$s2, $s2, -8
 	addi.d	$fp, $fp, -8
+	addi.d	$s5, $s5, -8
+	addi.d	$s3, $s3, -8
+	addi.d	$s6, $s6, -8
+	addi.d	$s7, $s7, -8
 	addi.d	$s4, $s4, -8
 	blt	$s8, $s0, .LBB0_31
 .LBB0_32:                               # %.loopexit
                                         #   in Loop: Header=BB0_12 Depth=1
+	ori	$s2, $zero, 1
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
@@ -541,7 +539,6 @@ hypre_SMGSolve:                         # @hypre_SMGSolve
 	fmov.d	$fs2, $fa0
 .LBB0_35:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 352                   # 8-byte Folded Reload
 	ori	$s7, $zero, 2
 	ld.d	$a0, $s4, 0

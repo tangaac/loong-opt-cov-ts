@@ -237,7 +237,7 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 	.cfi_offset 28, -64
 	move	$s2, $a2
 	move	$s1, $a1
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
 	move	$a0, $s1
@@ -258,18 +258,16 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 	move	$s4, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s5, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s5, $a0
-	beqz	$a0, .LBB1_2
+	slli.d	$a0, $s5, 31
+	bgez	$a0, .LBB1_2
 # %bb.1:
-	move	$s0, $zero
+	move	$fp, $zero
 	b	.LBB1_3
 .LBB1_2:
 	addi.w	$a0, $s5, 0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$fp, $a0
 	st.d	$a0, $sp, 0
 	st.b	$zero, $a0, 0
 	st.w	$s5, $sp, 12
@@ -278,7 +276,7 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 	.p2align	4, , 16
 .LBB1_4:                                # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a1, $s3, $a0
-	stx.b	$a1, $s0, $a0
+	stx.b	$a1, $fp, $a0
 	addi.d	$a0, $a0, 1
 	bnez	$a1, .LBB1_4
 # %bb.5:                                # %_ZN11CStringBaseIcEC2EPKc.exit
@@ -311,10 +309,8 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB1_11
+	slli.d	$a1, $a0, 31
+	bgez	$a1, .LBB1_11
 # %bb.10:
 	move	$s1, $zero
 	b	.LBB1_13
@@ -337,7 +333,7 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 	bnez	$a1, .LBB1_14
 # %bb.15:                               # %_ZN11CStringBaseIcEC2EPKc.exit15
 .Ltmp16:
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_Z15MyStringComparePKcS0_)
 	jirl	$ra, $ra, 0
@@ -354,7 +350,7 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 .Ltmp21:
 	addi.d	$a1, $sp, 0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Z24MultiByteToUnicodeStringRK11CStringBaseIcEj)
 	jirl	$ra, $ra, 0
 .Ltmp22:
@@ -395,31 +391,31 @@ _Z11GetPasswordP13CStdOutStreamb:       # @_Z11GetPasswordP13CStdOutStreamb
 	b	.LBB1_31
 .LBB1_26:
 .Ltmp20:
-	move	$fp, $a0
+	move	$s0, $a0
 	bnez	$s1, .LBB1_29
 # %bb.27:                               # %_ZN11CStringBaseIcED2Ev.exit
-	bnez	$s0, .LBB1_32
+	bnez	$fp, .LBB1_32
 .LBB1_28:                               # %_ZN11CStringBaseIcED2Ev.exit19
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_29:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	beqz	$s0, .LBB1_28
+	beqz	$fp, .LBB1_28
 	b	.LBB1_32
 .LBB1_30:
 .Ltmp23:
-	ld.d	$s0, $sp, 0
+	ld.d	$fp, $sp, 0
 .LBB1_31:                               # %_ZN11CStringBaseIcED2Ev.exit
-	move	$fp, $a0
-	beqz	$s0, .LBB1_28
+	move	$s0, $a0
+	beqz	$fp, .LBB1_28
 .LBB1_32:
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:
@@ -579,8 +575,7 @@ _ZN11CStringBaseIcE9TrimRightEv:        # @_ZN11CStringBaseIcE9TrimRightEv
 	ld.w	$a3, $s0, 8
 	sub.w	$a2, $s2, $a0
 	sub.w	$a1, $a3, $a2
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB2_14
+	blez	$a1, .LBB2_14
 # %bb.13:
 	ldx.b	$a3, $a0, $a3
 	stx.b	$a3, $a0, $a2
@@ -660,31 +655,27 @@ _ZN11CStringBaseIcE8TrimLeftEv:         # @_ZN11CStringBaseIcE8TrimLeftEv
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s0, $a0
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
+	ld.d	$s1, $s0, 0
 	lu12i.w	$a0, 144
 	ori	$a0, $a0, 2592
-	ld.d	$s1, $s0, 0
 	st.w	$a0, $fp, 0
-	lu12i.w	$s2, -524288
-	lu32i.d	$s2, 0
 .LBB3_1:                                # %.noexc2
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_3 Depth 2
-	ld.bu	$s3, $s1, 0
+	ld.bu	$s2, $s1, 0
 	ld.bu	$a1, $fp, 0
 	move	$a0, $fp
-	beq	$a1, $s3, .LBB3_6
+	beq	$a1, $s2, .LBB3_6
 # %bb.2:                                # %.lr.ph.i.i.i.preheader
                                         #   in Loop: Header=BB3_1 Depth=1
 	move	$a0, $fp
@@ -701,12 +692,12 @@ _ZN11CStringBaseIcE8TrimLeftEv:         # @_ZN11CStringBaseIcE8TrimLeftEv
 # %bb.5:                                # %.noexc
                                         #   in Loop: Header=BB3_3 Depth=2
 	ld.bu	$a1, $a0, 0
-	bne	$a1, $s3, .LBB3_3
+	bne	$a1, $s2, .LBB3_3
 .LBB3_6:                                # %_ZNK11CStringBaseIcE4FindEc.exit.i
                                         #   in Loop: Header=BB3_1 Depth=1
 	sub.d	$a0, $a0, $fp
-	and	$a0, $a0, $s2
-	bnez	$a0, .LBB3_9
+	slli.d	$a0, $a0, 32
+	bltz	$a0, .LBB3_9
 # %bb.7:                                #   in Loop: Header=BB3_1 Depth=1
 	ld.bu	$a0, $s1, 0
 	beqz	$a0, .LBB3_9
@@ -726,8 +717,7 @@ _ZN11CStringBaseIcE8TrimLeftEv:         # @_ZN11CStringBaseIcE8TrimLeftEv
 	masknez	$a1, $a1, $a3
 	maskeqz	$a3, $a2, $a3
 	or	$s1, $a3, $a1
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB3_11
+	blez	$s1, .LBB3_11
 # %bb.10:
 	add.d	$a1, $a0, $s1
 	sub.d	$a2, $a2, $s1
@@ -739,7 +729,6 @@ _ZN11CStringBaseIcE8TrimLeftEv:         # @_ZN11CStringBaseIcE8TrimLeftEv
 	st.w	$a0, $s0, 8
 .LBB3_11:                               # %_ZN11CStringBaseIcED2Ev.exit
 	move	$a0, $fp
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

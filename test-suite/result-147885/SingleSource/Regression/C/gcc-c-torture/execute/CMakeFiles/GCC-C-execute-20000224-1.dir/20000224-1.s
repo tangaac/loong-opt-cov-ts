@@ -7,8 +7,7 @@ test:                                   # @test
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(loop_1)
 	ld.w	$a0, $a0, %pc_lo12(loop_1)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.1:                                # %.lr.ph8
 	pcalau12i	$a1, %pc_hi20(loop_2)
 	ld.w	$a1, $a1, %pc_lo12(loop_2)

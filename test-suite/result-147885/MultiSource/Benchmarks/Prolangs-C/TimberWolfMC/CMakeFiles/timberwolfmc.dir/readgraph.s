@@ -132,17 +132,16 @@ readgraph:                              # @readgraph
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(rewind)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $s7, 0
-	slli.d	$s0, $s2, 3
+	ld.w	$s1, $s7, 0
+	slli.d	$s0, $s1, 3
 	addi.d	$a0, $s0, 8
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(gnodeArray)
 	ld.d	$a1, $a1, %got_pc_lo12(gnodeArray)
-	ori	$s1, $zero, 1
 	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
 	st.d	$a0, $a1, 0
-	blt	$s2, $s1, .LBB0_15
+	blez	$s1, .LBB0_15
 # %bb.14:                               # %.lr.ph.preheader
 	addi.d	$a0, $a0, 8
 	move	$a1, $zero
@@ -156,7 +155,8 @@ readgraph:                              # @readgraph
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB0_20
+	ori	$s5, $zero, 1
+	bne	$a0, $s5, .LBB0_20
 # %bb.16:                               # %.lr.ph48.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.1)
@@ -166,7 +166,6 @@ readgraph:                              # @readgraph
 	addi.d	$s2, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.7)
-	ori	$s5, $zero, 1
 	b	.LBB0_18
 	.p2align	4, , 16
 .LBB0_17:                               #   in Loop: Header=BB0_18 Depth=1

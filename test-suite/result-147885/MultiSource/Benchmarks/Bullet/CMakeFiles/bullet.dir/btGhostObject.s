@@ -303,8 +303,7 @@ _ZN13btGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxyS1_: # @_ZN
 	.cfi_offset 25, -40
 	ld.w	$a2, $a0, 284
 	ld.d	$s0, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB4_5
+	blez	$a2, .LBB4_5
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a1, $a0, 296
 	move	$a4, $a2
@@ -345,8 +344,7 @@ _ZN13btGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxyS1_: # @_ZN
 	move	$fp, $a0
 	move	$a0, $s2
 	ld.d	$a1, $a0, 296
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB4_18
+	blez	$a2, .LBB4_18
 .LBB4_9:                                # %.lr.ph.i.i.i
 	ori	$a4, $zero, 4
 	move	$a3, $zero
@@ -389,14 +387,12 @@ _ZN13btGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxyS1_: # @_ZN
 	bnez	$a4, .LBB4_15
 .LBB4_16:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a3, $a0, 304
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB4_20
+	bnez	$a3, .LBB4_20
 	b	.LBB4_21
 .LBB4_17:
 	move	$fp, $zero
 	ld.d	$a1, $a0, 296
-	ori	$a3, $zero, 1
-	bge	$a2, $a3, .LBB4_9
+	bgtz	$a2, .LBB4_9
 .LBB4_18:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i
 	beqz	$a1, .LBB4_21
 # %bb.19:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i
@@ -439,8 +435,7 @@ _ZN13btGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxyS1_: # @_ZN
 _ZN13btGhostObject31removeOverlappingObjectInternalEP17btBroadphaseProxyP12btDispatcherS1_: # @_ZN13btGhostObject31removeOverlappingObjectInternalEP17btBroadphaseProxyP12btDispatcherS1_
 # %bb.0:
 	ld.w	$a2, $a0, 284
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB5_4
+	blez	$a2, .LBB5_4
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a3, $a0, 296
 	ld.d	$a4, $a1, 0
@@ -830,8 +825,7 @@ _ZN24btPairCachingGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxy
 	ld.d	$a1, $a0, 192
 	ld.w	$a3, $a0, 284
 	ld.d	$s1, $fp, 0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB9_6
+	blez	$a3, .LBB9_6
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a4, $a0, 296
 	move	$a6, $a3
@@ -887,8 +881,7 @@ _ZN24btPairCachingGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxy
 	move	$s0, $a0
 	move	$a0, $s4
 	ld.d	$a2, $a0, 296
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_19
+	blez	$a3, .LBB9_19
 .LBB9_10:                               # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -932,14 +925,12 @@ _ZN24btPairCachingGhostObject28addOverlappingObjectInternalEP17btBroadphaseProxy
 	bnez	$a5, .LBB9_16
 .LBB9_17:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a0, 304
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB9_21
+	bnez	$a4, .LBB9_21
 	b	.LBB9_22
 .LBB9_18:
 	move	$s0, $zero
 	ld.d	$a2, $a0, 296
-	ori	$a1, $zero, 1
-	bge	$a3, $a1, .LBB9_10
+	bgtz	$a3, .LBB9_10
 .LBB9_19:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i
 	move	$a1, $s3
 	beqz	$a2, .LBB9_22
@@ -991,8 +982,7 @@ _ZN24btPairCachingGhostObject31removeOverlappingObjectInternalEP17btBroadphasePr
 	.cfi_startproc
 # %bb.0:
 	ld.w	$a5, $a0, 284
-	ori	$a6, $zero, 1
-	blt	$a5, $a6, .LBB10_6
+	blez	$a5, .LBB10_6
 # %bb.1:                                # %.lr.ph.i
 	move	$a4, $a2
 	move	$a2, $a1
@@ -1193,8 +1183,7 @@ _ZNK13btGhostObject15convexSweepTestEPK13btConvexShapeRK11btTransformS5_RN16btCo
 	pcaddu18i	$ra, %call36(_ZNK16btCollisionShape21calculateTemporalAabbERK11btTransformRK9btVector3S5_fRS3_S6_)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 284
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_6
+	blez	$a0, .LBB11_6
 # %bb.1:                                # %.lr.ph
 	move	$s6, $zero
 	move	$s7, $zero
@@ -1652,14 +1641,13 @@ _ZNK13btGhostObject7rayTestERK9btVector3S2_RN16btCollisionWorld17RayResultCallba
 	vst	$vr1, $sp, 112
 	st.w	$a0, $sp, 0
 	vst	$vr0, $sp, 4
-	st.w	$a0, $sp, 20
 	vld	$vr1, $a2, 0
 	ld.w	$a1, $s0, 284
+	st.w	$a0, $sp, 20
 	vst	$vr0, $sp, 24
 	st.d	$a0, $sp, 40
-	ori	$a0, $zero, 1
 	vst	$vr1, $sp, 48
-	blt	$a1, $a0, .LBB13_5
+	blez	$a1, .LBB13_5
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s2, $zero

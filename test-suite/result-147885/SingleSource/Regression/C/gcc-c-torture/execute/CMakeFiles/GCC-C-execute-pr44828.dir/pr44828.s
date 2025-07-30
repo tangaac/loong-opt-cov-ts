@@ -10,8 +10,7 @@ main:                                   # @main
 	addi.d	$a1, $zero, -56
 	mul.d	$a0, $a0, $a1
 	ext.w.b	$a0, $a0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB0_2
+	bgtz	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
 	ret

@@ -559,12 +559,11 @@ SliceHeader:                            # @SliceHeader
 .LBB0_66:
 	ld.d	$a0, $s2, 0
 	ldptr.w	$a1, $a0, 14456
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_79
+	blez	$a1, .LBB0_79
 # %bb.67:                               # %.lr.ph.i.preheader
+	move	$s8, $zero
 	move	$s2, $zero
-	move	$s7, $zero
-	pcalau12i	$s8, %pc_hi20(wp_weight)
+	pcalau12i	$s7, %pc_hi20(wp_weight)
 	pcalau12i	$s5, %pc_hi20(wp_offset)
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.45)
@@ -589,9 +588,9 @@ SliceHeader:                            # @SliceHeader
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(u_1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, %pc_lo12(wp_weight)
+	ld.d	$a1, $s7, %pc_lo12(wp_weight)
 	ld.d	$a1, $a1, 0
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 4
 	add.d	$s0, $a0, $s0
 	move	$a0, $s3
@@ -600,16 +599,16 @@ SliceHeader:                            # @SliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s5, %pc_lo12(wp_offset)
 	ld.d	$a1, $a1, 0
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 4
 	add.d	$s0, $s0, $a0
 	move	$a0, $s4
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(se_v)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, %pc_lo12(wp_weight)
+	ld.d	$a1, $s7, %pc_lo12(wp_weight)
 	ld.d	$a1, $a1, 0
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 8
 	add.d	$s0, $s0, $a0
 	move	$a0, $s3
@@ -618,7 +617,7 @@ SliceHeader:                            # @SliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s5, %pc_lo12(wp_offset)
 	ld.d	$a1, $a1, 0
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 8
 	add.d	$s0, $s0, $a0
 	move	$a0, $s4
@@ -631,14 +630,14 @@ SliceHeader:                            # @SliceHeader
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ldptr.w	$a1, $a0, 14456
-	addi.d	$s7, $s7, 1
-	addi.d	$s2, $s2, 8
-	bge	$s7, $a1, .LBB0_79
+	addi.d	$s2, $s2, 1
+	addi.d	$s8, $s8, 8
+	bge	$s2, $a1, .LBB0_79
 .LBB0_70:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s8, %pc_lo12(wp_weight)
+	ld.d	$a0, $s7, %pc_lo12(wp_weight)
 	ld.d	$a0, $a0, 0
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s8
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.wu	$a1, $a1, %pc_lo12(luma_log_weight_denom)
 	ld.w	$a0, $a0, 0
@@ -648,7 +647,7 @@ SliceHeader:                            # @SliceHeader
 # %bb.71:                               #   in Loop: Header=BB0_70 Depth=1
 	ld.d	$a0, $s5, %pc_lo12(wp_offset)
 	ld.d	$a0, $a0, 0
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s8
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB0_78
 .LBB0_72:                               #   in Loop: Header=BB0_70 Depth=1
@@ -657,9 +656,9 @@ SliceHeader:                            # @SliceHeader
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(u_1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, %pc_lo12(wp_weight)
+	ld.d	$a1, $s7, %pc_lo12(wp_weight)
 	ld.d	$a1, $a1, 0
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 0
 	add.d	$s0, $a0, $s0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
@@ -668,7 +667,7 @@ SliceHeader:                            # @SliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s5, %pc_lo12(wp_offset)
 	ld.d	$a1, $a1, 0
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 0
 	add.d	$s0, $s0, $a0
 	move	$a0, $s6
@@ -681,9 +680,9 @@ SliceHeader:                            # @SliceHeader
 	ld.w	$a0, $a0, 32
 	beqz	$a0, .LBB0_69
 .LBB0_73:                               #   in Loop: Header=BB0_70 Depth=1
-	ld.d	$a0, $s8, %pc_lo12(wp_weight)
+	ld.d	$a0, $s7, %pc_lo12(wp_weight)
 	ld.d	$a0, $a0, 0
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s8
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.wu	$a2, $a1, %pc_lo12(chroma_log_weight_denom)
 	ld.w	$a1, $a0, 4
@@ -693,7 +692,7 @@ SliceHeader:                            # @SliceHeader
 # %bb.74:                               #   in Loop: Header=BB0_70 Depth=1
 	ld.d	$a2, $s5, %pc_lo12(wp_offset)
 	ld.d	$a2, $a2, 0
-	ldx.d	$a2, $a2, $s2
+	ldx.d	$a2, $a2, $s8
 	ld.w	$a3, $a2, 4
 	bnez	$a3, .LBB0_68
 # %bb.75:                               #   in Loop: Header=BB0_70 Depth=1
@@ -728,12 +727,11 @@ SliceHeader:                            # @SliceHeader
 	bne	$a1, $a2, .LBB0_93
 # %bb.80:                               # %.preheader.i99
 	ldptr.w	$a1, $a0, 14460
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_93
+	blez	$a1, .LBB0_93
 # %bb.81:                               # %.lr.ph99.i.preheader
+	move	$s8, $zero
 	move	$s2, $zero
-	move	$s7, $zero
-	pcalau12i	$s8, %pc_hi20(wp_weight)
+	pcalau12i	$s7, %pc_hi20(wp_weight)
 	pcalau12i	$s5, %pc_hi20(wp_offset)
 	pcalau12i	$a0, %pc_hi20(.L.str.51)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.51)
@@ -758,9 +756,9 @@ SliceHeader:                            # @SliceHeader
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(u_1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, %pc_lo12(wp_weight)
+	ld.d	$a1, $s7, %pc_lo12(wp_weight)
 	ld.d	$a1, $a1, 8
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 4
 	add.d	$s0, $a0, $s0
 	move	$a0, $s3
@@ -769,16 +767,16 @@ SliceHeader:                            # @SliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s5, %pc_lo12(wp_offset)
 	ld.d	$a1, $a1, 8
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 4
 	add.d	$s0, $s0, $a0
 	move	$a0, $s4
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(se_v)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, %pc_lo12(wp_weight)
+	ld.d	$a1, $s7, %pc_lo12(wp_weight)
 	ld.d	$a1, $a1, 8
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 8
 	add.d	$s0, $s0, $a0
 	move	$a0, $s3
@@ -787,7 +785,7 @@ SliceHeader:                            # @SliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s5, %pc_lo12(wp_offset)
 	ld.d	$a1, $a1, 8
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 8
 	add.d	$s0, $s0, $a0
 	move	$a0, $s4
@@ -800,14 +798,14 @@ SliceHeader:                            # @SliceHeader
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ldptr.w	$a1, $a0, 14460
-	addi.d	$s7, $s7, 1
-	addi.d	$s2, $s2, 8
-	bge	$s7, $a1, .LBB0_93
+	addi.d	$s2, $s2, 1
+	addi.d	$s8, $s8, 8
+	bge	$s2, $a1, .LBB0_93
 .LBB0_84:                               # %.lr.ph99.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s8, %pc_lo12(wp_weight)
+	ld.d	$a0, $s7, %pc_lo12(wp_weight)
 	ld.d	$a0, $a0, 8
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s8
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.wu	$a1, $a1, %pc_lo12(luma_log_weight_denom)
 	ld.w	$a0, $a0, 0
@@ -817,7 +815,7 @@ SliceHeader:                            # @SliceHeader
 # %bb.85:                               #   in Loop: Header=BB0_84 Depth=1
 	ld.d	$a0, $s5, %pc_lo12(wp_offset)
 	ld.d	$a0, $a0, 8
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s8
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB0_92
 .LBB0_86:                               #   in Loop: Header=BB0_84 Depth=1
@@ -826,9 +824,9 @@ SliceHeader:                            # @SliceHeader
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(u_1)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, %pc_lo12(wp_weight)
+	ld.d	$a1, $s7, %pc_lo12(wp_weight)
 	ld.d	$a1, $a1, 8
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 0
 	add.d	$s0, $a0, $s0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
@@ -837,7 +835,7 @@ SliceHeader:                            # @SliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s5, %pc_lo12(wp_offset)
 	ld.d	$a1, $a1, 8
-	ldx.d	$a1, $a1, $s2
+	ldx.d	$a1, $a1, $s8
 	ld.w	$a1, $a1, 0
 	add.d	$s0, $s0, $a0
 	move	$a0, $s6
@@ -850,9 +848,9 @@ SliceHeader:                            # @SliceHeader
 	ld.w	$a0, $a0, 32
 	beqz	$a0, .LBB0_83
 .LBB0_87:                               #   in Loop: Header=BB0_84 Depth=1
-	ld.d	$a0, $s8, %pc_lo12(wp_weight)
+	ld.d	$a0, $s7, %pc_lo12(wp_weight)
 	ld.d	$a0, $a0, 8
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s8
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.wu	$a2, $a1, %pc_lo12(chroma_log_weight_denom)
 	ld.w	$a1, $a0, 4
@@ -862,7 +860,7 @@ SliceHeader:                            # @SliceHeader
 # %bb.88:                               #   in Loop: Header=BB0_84 Depth=1
 	ld.d	$a2, $s5, %pc_lo12(wp_offset)
 	ld.d	$a2, $a2, 8
-	ldx.d	$a2, $a2, $s2
+	ldx.d	$a2, $a2, $s8
 	ld.w	$a3, $a2, 4
 	bnez	$a3, .LBB0_82
 # %bb.89:                               #   in Loop: Header=BB0_84 Depth=1

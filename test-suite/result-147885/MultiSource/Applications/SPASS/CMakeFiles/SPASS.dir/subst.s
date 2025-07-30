@@ -172,8 +172,7 @@ subst_ApplyIntern:                      # @subst_ApplyIntern
 	beqz	$a0, .LBB5_7
 # %bb.1:
 	ld.w	$a0, $fp, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_7
+	blez	$a0, .LBB5_7
 # %bb.2:                                # %.lr.ph.i.preheader
 	move	$a1, $s0
 	.p2align	4, , 16

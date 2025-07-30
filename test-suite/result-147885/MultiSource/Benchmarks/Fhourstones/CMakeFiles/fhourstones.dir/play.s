@@ -118,8 +118,7 @@ printMoves:                             # @printMoves
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s0, %pc_hi20(plycnt)
 	ld.w	$a0, $s0, %pc_lo12(plycnt)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_3
+	blez	$a0, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	pcalau12i	$a0, %pc_hi20(moves+4)

@@ -68,8 +68,7 @@ XzBlock_WriteHeader:                    # @XzBlock_WriteHeader
 	addi.w	$s1, $a0, 2
 .LBB1_2:
 	ext.w.b	$a0, $a2
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_4
+	bgez	$a0, .LBB1_4
 # %bb.3:
 	ld.d	$a1, $s0, 8
 	bstrpick.d	$a0, $s1, 31, 0

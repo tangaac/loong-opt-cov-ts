@@ -367,8 +367,7 @@ createRandomArray:                      # @createRandomArray
 	.type	findDuplicate,@function
 findDuplicate:                          # @findDuplicate
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_3
+	blez	$a1, .LBB5_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB5_4

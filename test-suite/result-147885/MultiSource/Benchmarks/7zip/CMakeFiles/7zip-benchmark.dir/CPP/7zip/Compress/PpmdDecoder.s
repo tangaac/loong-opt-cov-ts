@@ -462,15 +462,69 @@ _ZN9NCompress5NPpmd8CDecoder8CodeSpecEPhj: # @_ZN9NCompress5NPpmd8CDecoder8CodeS
 	ldptr.w	$a0, $a0, 19348
 	move	$s1, $a2
 	move	$s0, $a1
-	beqz	$a0, .LBB13_3
+	beqz	$a0, .LBB13_14
 # %bb.1:
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB13_19
 # %bb.2:
 	ori	$a1, $zero, 3
-	bne	$a0, $a1, .LBB13_5
-	b	.LBB13_21
-.LBB13_3:
+	beq	$a0, $a1, .LBB13_21
+# %bb.3:
+	lu12i.w	$a0, 4
+	ori	$a0, $a0, 2961
+	ldx.bu	$a0, $fp, $a0
+	beqz	$a0, .LBB13_5
+.LBB13_4:
+	ldptr.d	$a0, $fp, 19352
+	ldptr.d	$a1, $fp, 19360
+	sub.d	$a0, $a0, $a1
+	bstrpick.d	$a1, $s1, 31, 0
+	sltu	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$s1, $a0, $a1
+.LBB13_5:
+	addi.w	$a0, $s1, 0
+	beqz	$a0, .LBB13_16
+# %bb.6:                                # %.lr.ph
+	move	$s4, $zero
+	addi.d	$s2, $fp, 160
+	addi.d	$s3, $fp, 56
+	bstrpick.d	$s5, $s1, 31, 0
+	.p2align	4, , 16
+.LBB13_7:                               # =>This Inner Loop Header: Depth=1
+	move	$a0, $s2
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(Ppmd7_DecodeSymbol)
+	jirl	$ra, $ra, 0
+	ld.bu	$a1, $fp, 152
+	bnez	$a1, .LBB13_11
+# %bb.8:                                #   in Loop: Header=BB13_7 Depth=1
+	bltz	$a0, .LBB13_11
+# %bb.9:                                #   in Loop: Header=BB13_7 Depth=1
+	st.b	$a0, $s0, 0
+	addi.w	$s4, $s4, 1
+	addi.d	$s5, $s5, -1
+	addi.d	$s0, $s0, 1
+	bnez	$s5, .LBB13_7
+# %bb.10:
+	move	$s4, $s1
+.LBB13_11:                              # %._crit_edge
+	ldptr.d	$a1, $fp, 19360
+	ld.bu	$a2, $fp, 152
+	bstrpick.d	$a3, $s4, 31, 0
+	add.d	$a1, $a1, $a3
+	stptr.d	$a1, $fp, 19360
+	bnez	$a2, .LBB13_17
+# %bb.12:
+	bgez	$a0, .LBB13_19
+# %bb.13:
+	addi.d	$a2, $a0, 1
+	move	$a0, $zero
+	sltui	$a1, $a2, 1
+	xori	$a1, $a1, 3
+	b	.LBB13_18
+.LBB13_14:
 	ld.d	$a0, $fp, 120
 	st.d	$a0, $fp, 104
 	st.d	$a0, $fp, 112
@@ -481,7 +535,7 @@ _ZN9NCompress5NPpmd8CDecoder8CodeSpecEPhj: # @_ZN9NCompress5NPpmd8CDecoder8CodeS
 	pcaddu18i	$ra, %call36(Ppmd7z_RangeDec_Init)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB13_20
-# %bb.4:
+# %bb.15:
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 2960
 	ldx.bu	$a1, $fp, $a0
@@ -490,67 +544,14 @@ _ZN9NCompress5NPpmd8CDecoder8CodeSpecEPhj: # @_ZN9NCompress5NPpmd8CDecoder8CodeS
 	addi.d	$a0, $fp, 160
 	pcaddu18i	$ra, %call36(Ppmd7_Init)
 	jirl	$ra, $ra, 0
-.LBB13_5:
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 2961
 	ldx.bu	$a0, $fp, $a0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB13_7
-# %bb.6:
-	ldptr.d	$a0, $fp, 19352
-	ldptr.d	$a1, $fp, 19360
-	sub.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $s1, 31, 0
-	sltu	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$s1, $a0, $a1
-.LBB13_7:
-	addi.w	$a0, $s1, 0
-	beqz	$a0, .LBB13_16
-# %bb.8:                                # %.lr.ph
-	move	$s4, $zero
-	addi.d	$s2, $fp, 160
-	addi.d	$s3, $fp, 56
-	bstrpick.d	$s5, $s1, 31, 0
-	.p2align	4, , 16
-.LBB13_9:                               # =>This Inner Loop Header: Depth=1
-	move	$a0, $s2
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(Ppmd7_DecodeSymbol)
-	jirl	$ra, $ra, 0
-	ld.bu	$a1, $fp, 152
-	bnez	$a1, .LBB13_13
-# %bb.10:                               #   in Loop: Header=BB13_9 Depth=1
-	bltz	$a0, .LBB13_13
-# %bb.11:                               #   in Loop: Header=BB13_9 Depth=1
-	st.b	$a0, $s0, 0
-	addi.w	$s4, $s4, 1
-	addi.d	$s5, $s5, -1
-	addi.d	$s0, $s0, 1
-	bnez	$s5, .LBB13_9
-# %bb.12:
-	move	$s4, $s1
-.LBB13_13:                              # %._crit_edge
-	ldptr.d	$a1, $fp, 19360
-	ld.bu	$a2, $fp, 152
-	bstrpick.d	$a3, $s4, 31, 0
-	add.d	$a1, $a1, $a3
-	stptr.d	$a1, $fp, 19360
-	bnez	$a2, .LBB13_17
-# %bb.14:
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB13_19
-# %bb.15:
-	addi.d	$a2, $a0, 1
-	move	$a0, $zero
-	sltui	$a1, $a2, 1
-	xori	$a1, $a1, 3
-	b	.LBB13_18
+	beqz	$a0, .LBB13_5
+	b	.LBB13_4
 .LBB13_16:                              # %._crit_edge.thread
 	ld.bu	$a0, $fp, 152
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB13_19
+	beqz	$a0, .LBB13_19
 .LBB13_17:
 	ld.w	$a0, $fp, 156
 	ori	$a1, $zero, 3
@@ -598,7 +599,6 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -609,7 +609,6 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$fp, $a0
 	ld.d	$a0, $a0, 48
 	move	$s1, $a5
@@ -650,7 +649,6 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	move	$s2, $a0
 .LBB14_4:                               # %.thread
 	addi.w	$a0, $s2, 0
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -672,7 +670,6 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	ori	$a0, $a0, 2976
 	add.d	$s3, $fp, $a0
 	ori	$s6, $zero, 2
-	ori	$s7, $zero, 1
 	lu12i.w	$s4, 256
 	b	.LBB14_8
 	.p2align	4, , 16
@@ -686,7 +683,7 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	ldptr.d	$a2, $fp, 19360
 	ld.d	$a1, $fp, 48
 	move	$s2, $a0
-	sub.d	$a2, $a2, $s8
+	sub.d	$a2, $a2, $s7
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Z11WriteStreamP20ISequentialOutStreamPKvm)
 	jirl	$ra, $ra, 0
@@ -705,8 +702,8 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	ld.d	$a4, $a1, 40
 	add.d	$a0, $a0, $a2
 	sub.d	$a0, $a0, $a3
-	st.d	$a0, $sp, 0
-	addi.d	$a1, $sp, 0
+	st.d	$a0, $sp, 8
+	addi.d	$a1, $sp, 8
 	move	$a0, $s1
 	move	$a2, $s3
 	jirl	$ra, $a4, 0
@@ -714,12 +711,12 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 # %bb.11:                               # %select.unfold
                                         #   in Loop: Header=BB14_8 Depth=1
 	ld.bu	$a0, $s5, 0
-	ldptr.d	$s8, $fp, 19360
-	bne	$a0, $s7, .LBB14_7
+	ldptr.d	$s7, $fp, 19360
+	beqz	$a0, .LBB14_7
 # %bb.12:                               # %select.unfold
                                         #   in Loop: Header=BB14_8 Depth=1
 	ldptr.d	$a0, $fp, 19352
-	bltu	$s8, $a0, .LBB14_7
+	bltu	$s7, $a0, .LBB14_7
 	b	.LBB14_20
 .LBB14_13:
 	lu12i.w	$a0, -524176
@@ -727,7 +724,6 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	b	.LBB14_4
 .LBB14_14:                              # %.lr.ph.split.us.preheader
 	ori	$s3, $zero, 2
-	ori	$s4, $zero, 1
 	lu12i.w	$s1, 256
 	b	.LBB14_16
 	.p2align	4, , 16
@@ -741,7 +737,7 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 	ldptr.d	$a2, $fp, 19360
 	ld.d	$a1, $fp, 48
 	move	$s2, $a0
-	sub.d	$a2, $a2, $s6
+	sub.d	$a2, $a2, $s4
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Z11WriteStreamP20ISequentialOutStreamPKvm)
 	jirl	$ra, $ra, 0
@@ -755,12 +751,12 @@ _ZN9NCompress5NPpmd8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamP
 # %bb.18:                               # %select.unfold.us
                                         #   in Loop: Header=BB14_16 Depth=1
 	ld.bu	$a0, $s5, 0
-	ldptr.d	$s6, $fp, 19360
-	bne	$a0, $s4, .LBB14_15
+	ldptr.d	$s4, $fp, 19360
+	beqz	$a0, .LBB14_15
 # %bb.19:                               # %select.unfold.us
                                         #   in Loop: Header=BB14_16 Depth=1
 	ldptr.d	$a0, $fp, 19352
-	bltu	$s6, $a0, .LBB14_15
+	bltu	$s4, $a0, .LBB14_15
 .LBB14_20:
 	move	$s2, $zero
 	b	.LBB14_4

@@ -46,9 +46,8 @@ printgph:                               # @printgph
 	ld.d	$a1, $a1, %got_pc_lo12(eNum)
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a1, $a1, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	blt	$a1, $a2, .LBB0_8
+	blez	$a1, .LBB0_8
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(eArray)
 	ld.d	$a0, $a0, %got_pc_lo12(eArray)

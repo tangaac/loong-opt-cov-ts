@@ -18,7 +18,7 @@ ConvertFromIeeeSingle:                  # @ConvertFromIeeeSingle
 	revb.d	$a0, $a0
 	srli.d	$a0, $a0, 48
 	or	$a0, $a0, $a1
-	bstrpick.d	$a2, $a0, 30, 0
+	slli.d	$a2, $a0, 33
 	beqz	$a2, .LBB0_4
 # %bb.1:
 	bstrpick.d	$a2, $a1, 30, 23

@@ -122,28 +122,28 @@ GlobalLookup:                           # @GlobalLookup
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(Glastentry)
 	ld.w	$fp, $a1, %pc_lo12(Glastentry)
-	ori	$s1, $zero, 1
-	blt	$fp, $s1, .LBB2_4
+	blez	$fp, .LBB2_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
-	addi.d	$s2, $fp, 1
+	addi.d	$s1, $fp, 1
 	slli.d	$a0, $fp, 5
 	pcalau12i	$a1, %pc_hi20(GlobalTable)
 	addi.d	$a1, $a1, %pc_lo12(GlobalTable)
-	add.d	$s3, $a1, $a0
+	add.d	$s2, $a1, $a0
+	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_5
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$fp, $fp, -1
-	addi.d	$s2, $s2, -1
-	addi.d	$s3, $s3, -32
-	blt	$s1, $s2, .LBB2_2
+	addi.d	$s1, $s1, -1
+	addi.d	$s2, $s2, -32
+	blt	$s3, $s1, .LBB2_2
 .LBB2_4:
 	move	$fp, $zero
 .LBB2_5:                                # %._crit_edge
@@ -173,28 +173,28 @@ LocalLookup:                            # @LocalLookup
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(Llastentry)
 	ld.w	$fp, $a1, %pc_lo12(Llastentry)
-	ori	$s1, $zero, 1
-	blt	$fp, $s1, .LBB3_4
+	blez	$fp, .LBB3_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
-	addi.d	$s2, $fp, 1
+	addi.d	$s1, $fp, 1
 	slli.d	$a0, $fp, 5
 	pcalau12i	$a1, %pc_hi20(LocalTable)
 	addi.d	$a1, $a1, %pc_lo12(LocalTable)
-	add.d	$s3, $a1, $a0
+	add.d	$s2, $a1, $a0
+	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB3_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_5
 # %bb.3:                                #   in Loop: Header=BB3_2 Depth=1
 	addi.w	$fp, $fp, -1
-	addi.d	$s2, $s2, -1
-	addi.d	$s3, $s3, -32
-	blt	$s1, $s2, .LBB3_2
+	addi.d	$s1, $s1, -1
+	addi.d	$s2, $s2, -32
+	blt	$s3, $s1, .LBB3_2
 .LBB3_4:
 	move	$fp, $zero
 .LBB3_5:                                # %._crit_edge
@@ -383,8 +383,7 @@ ParamInt:                               # @ParamInt
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(Llastentry)
 	ld.w	$a0, $a0, %pc_lo12(Llastentry)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_14
+	blez	$a0, .LBB6_14
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 4
 	pcalau12i	$a1, %pc_hi20(LocalTable)
@@ -521,28 +520,28 @@ AllBodsParsed:                          # @AllBodsParsed
 	fst.d	$fs0, $sp, 0                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(Glastentry)
 	ld.w	$fp, $a0, %pc_lo12(Glastentry)
-	move	$a0, $zero
-	ori	$s0, $zero, 1
-	blt	$fp, $s0, .LBB8_5
+	blez	$fp, .LBB8_5
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$s1, $fp, 1
+	move	$a0, $zero
+	addi.d	$s0, $fp, 1
 	slli.d	$a1, $fp, 5
 	pcalau12i	$a2, %pc_hi20(GlobalTable)
 	addi.d	$a2, $a2, %pc_lo12(GlobalTable)
 	add.d	$a1, $a1, $a2
-	addi.d	$s2, $a1, 20
+	addi.d	$s1, $a1, 20
 	movgr2fr.w	$fs0, $zero
+	ori	$s2, $zero, 1
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_2:                                #   in Loop: Header=BB8_3 Depth=1
-	addi.d	$s1, $s1, -1
-	addi.d	$s2, $s2, -32
+	addi.d	$s0, $s0, -1
+	addi.d	$s1, $s1, -32
 	addi.w	$fp, $fp, -1
-	bge	$s0, $s1, .LBB8_5
+	bge	$s2, $s0, .LBB8_6
 .LBB8_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a1, $s2, 0
-	blt	$a1, $s0, .LBB8_2
+	ld.w	$a1, $s1, 0
+	blez	$a1, .LBB8_2
 # %bb.4:                                #   in Loop: Header=BB8_3 Depth=1
 	ori	$a0, $zero, 2062
 	move	$a1, $fp
@@ -551,7 +550,9 @@ AllBodsParsed:                          # @AllBodsParsed
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	b	.LBB8_2
-.LBB8_5:                                # %._crit_edge
+.LBB8_5:
+	move	$a0, $zero
+.LBB8_6:                                # %._crit_edge
 	pcalau12i	$a1, %pc_hi20(ErrorFlag)
 	st.w	$a0, $a1, %pc_lo12(ErrorFlag)
 	fld.d	$fs0, $sp, 0                    # 8-byte Folded Reload
@@ -579,19 +580,19 @@ CheckMain:                              # @CheckMain
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(Glastentry)
 	ld.w	$a1, $a0, %pc_lo12(Glastentry)
-	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(GlobalTable)
-	addi.d	$s1, $a0, %pc_lo12(GlobalTable)
-	blt	$a1, $s0, .LBB9_4
+	addi.d	$s0, $a0, %pc_lo12(GlobalTable)
+	blez	$a1, .LBB9_4
 # %bb.1:                                # %.lr.ph.preheader.i
 	slli.d	$a0, $a1, 5
-	add.d	$s2, $s1, $a0
+	add.d	$s1, $s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.6)
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB9_2:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s1, 0
 	move	$s3, $a1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(strcmp)
@@ -599,14 +600,14 @@ CheckMain:                              # @CheckMain
 	beqz	$a0, .LBB9_7
 # %bb.3:                                #   in Loop: Header=BB9_2 Depth=1
 	addi.d	$a1, $s3, -1
-	addi.d	$s2, $s2, -32
-	blt	$s0, $s3, .LBB9_2
+	addi.d	$s1, $s1, -32
+	blt	$s2, $s3, .LBB9_2
 .LBB9_4:
 	move	$a0, $zero
 	slli.d	$a0, $a0, 5
-	add.d	$a0, $s1, $a0
+	add.d	$a0, $s0, $a0
 	ld.w	$a1, $a0, 20
-	blt	$a1, $s0, .LBB9_6
+	blez	$a1, .LBB9_6
 .LBB9_5:
 	addi.d	$fp, $a0, 20
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
@@ -630,9 +631,9 @@ CheckMain:                              # @CheckMain
 .LBB9_7:                                # %._crit_edge.loopexit.split.loop.exit9.i
 	bstrpick.d	$a0, $s3, 31, 0
 	slli.d	$a0, $a0, 5
-	add.d	$a0, $s1, $a0
+	add.d	$a0, $s0, $a0
 	ld.w	$a1, $a0, 20
-	bge	$a1, $s0, .LBB9_5
+	bgtz	$a1, .LBB9_5
 	b	.LBB9_6
 .Lfunc_end9:
 	.size	CheckMain, .Lfunc_end9-CheckMain

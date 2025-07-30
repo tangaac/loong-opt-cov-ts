@@ -336,6 +336,8 @@ fill_from_fields:                       # @fill_from_fields
 # %bb.0:
 	beqz	$a0, .LBB4_9
 # %bb.1:
+	blez	$a1, .LBB4_9
+# %bb.2:                                # %.preheader.us.preheader
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
@@ -346,9 +348,6 @@ fill_from_fields:                       # @fill_from_fields
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB4_8
-# %bb.2:                                # %.preheader.us.preheader
 	slli.d	$s1, $a1, 3
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
 	addi.d	$s0, $a0, %pc_lo12(.Lstr.3)
@@ -735,8 +734,7 @@ fill_all_from_fields:                   # @fill_all_from_fields
 	ld.w	$a0, $s2, %pc_lo12(d_nodes)
 	beqz	$s3, .LBB9_9
 # %bb.1:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_9
+	blez	$a0, .LBB9_9
 # %bb.2:                                # %.preheader.us.preheader.i
 	slli.d	$s4, $a0, 3
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
@@ -785,8 +783,7 @@ fill_all_from_fields:                   # @fill_all_from_fields
 	ld.d	$s0, $a1, 0
 	beqz	$s0, .LBB9_17
 # %bb.10:                               # %fill_from_fields.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_17
+	blez	$a0, .LBB9_17
 # %bb.11:                               # %.preheader.us.preheader.i10
 	slli.d	$s1, $a0, 3
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
@@ -1001,8 +998,7 @@ initialize_graph:                       # @initialize_graph
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB13_3
+	blez	$a0, .LBB13_3
 # %bb.1:                                # %.lr.ph
 	addi.w	$a1, $s1, 1
 	sltui	$a1, $a1, 3

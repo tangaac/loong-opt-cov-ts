@@ -152,7 +152,7 @@ psub:                                   # @psub
 .LBB0_19:
 	ld.h	$a0, $s0, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s0, 0
 	bnez	$a1, .LBB0_21
 # %bb.20:
@@ -162,7 +162,7 @@ psub:                                   # @psub
 .LBB0_21:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB0_23
 # %bb.22:

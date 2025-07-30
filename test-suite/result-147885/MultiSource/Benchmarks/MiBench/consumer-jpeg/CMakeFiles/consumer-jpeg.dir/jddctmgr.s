@@ -17,7 +17,6 @@ jinit_inverse_dct:                      # @jinit_inverse_dct
 	ld.d	$a3, $a0, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 128
-	ori	$s0, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	ld.w	$a1, $fp, 48
@@ -25,7 +24,7 @@ jinit_inverse_dct:                      # @jinit_inverse_dct
 	pcalau12i	$a2, %pc_hi20(start_pass)
 	addi.d	$a2, $a2, %pc_lo12(start_pass)
 	st.d	$a2, $a0, 0
-	blt	$a1, $s0, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $fp, 296
 	move	$s0, $zero
@@ -103,8 +102,7 @@ start_pass:                             # @start_pass
 	fst.d	$fs5, $sp, 56                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 48
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_21
+	blez	$a0, .LBB1_21
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $fp, 584
 	move	$s0, $zero

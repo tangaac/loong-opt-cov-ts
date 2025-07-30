@@ -13,9 +13,8 @@ _ZN20GIM_TRIANGLE_CONTACT12merge_pointsERK9btVector4fPK9btVector3i: # @_ZN20GIM_
 # %bb.0:
 	lu12i.w	$a4, -243808
 	lu32i.d	$a4, 0
-	ori	$a5, $zero, 1
 	st.d	$a4, $a0, 0
-	blt	$a3, $a5, .LBB0_13
+	blez	$a3, .LBB0_13
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -64
 	move	$a5, $zero
@@ -70,8 +69,7 @@ _ZN20GIM_TRIANGLE_CONTACT12merge_pointsERK9btVector4fPK9btVector3i: # @_ZN20GIM_
 	addi.w	$a4, $a4, 1
 	b	.LBB0_3
 .LBB0_9:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a4, $a1, .LBB0_12
+	blez	$a4, .LBB0_12
 # %bb.10:                               # %.lr.ph22
 	addi.d	$a0, $a0, 24
 	addi.d	$a1, $sp, 0
@@ -380,8 +378,7 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 	fcmp.cule.s	$fcc2, $fa0, $fa1
 	movcf2gr	$a6, $fcc2
 	movcf2gr	$a7, $fcc1
-	xor	$a6, $a6, $a7
-	bnez	$a6, .LBB3_5
+	bne	$a6, $a7, .LBB3_5
 # %bb.4:
 	fneg.s	$fa3, $fa0
 	fsub.s	$fa4, $fa2, $fa0
@@ -433,9 +430,19 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 	fcmp.cule.s	$fcc2, $fa2, $fa1
 	movcf2gr	$a5, $fcc2
 	movcf2gr	$a6, $fcc1
-	xor	$a5, $a5, $a6
-	bnez	$a5, .LBB3_9
+	beq	$a5, $a6, .LBB3_12
 # %bb.8:
+	bceqz	$fcc1, .LBB3_13
+.LBB3_9:                                # %_Z29bt_plane_clip_polygon_collectRK9btVector3S1_ffPS_Ri.exit34
+	fcmp.cule.s	$fcc1, $fa3, $fa1
+	movcf2gr	$a2, $fcc0
+	movcf2gr	$a5, $fcc1
+	beq	$a2, $a5, .LBB3_14
+.LBB3_10:
+	bceqz	$fcc0, .LBB3_15
+.LBB3_11:                               # %_Z29bt_plane_clip_polygon_collectRK9btVector3S1_ffPS_Ri.exit42
+	ret
+.LBB3_12:
 	fneg.s	$fa7, $fa2
 	fsub.s	$fa2, $fa3, $fa2
 	fdiv.s	$fa2, $fa7, $fa2
@@ -463,23 +470,16 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 	stx.d	$a2, $a4, $a6
 	st.d	$a7, $a5, 8
 	addi.d	$a0, $a0, 1
-.LBB3_9:
-	bcnez	$fcc1, .LBB3_11
-# %bb.10:
+	bcnez	$fcc1, .LBB3_9
+.LBB3_13:
 	vld	$vr2, $a3, 0
 	slli.d	$a2, $a0, 4
 	vstx	$vr2, $a4, $a2
 	addi.d	$a0, $a0, 1
-.LBB3_11:                               # %_Z29bt_plane_clip_polygon_collectRK9btVector3S1_ffPS_Ri.exit34
 	fcmp.cule.s	$fcc1, $fa3, $fa1
 	movcf2gr	$a2, $fcc0
 	movcf2gr	$a5, $fcc1
-	xor	$a2, $a2, $a5
-	beqz	$a2, .LBB3_14
-# %bb.12:
-	bceqz	$fcc0, .LBB3_15
-.LBB3_13:                               # %_Z29bt_plane_clip_polygon_collectRK9btVector3S1_ffPS_Ri.exit42
-	ret
+	bne	$a2, $a5, .LBB3_10
 .LBB3_14:
 	fneg.s	$fa1, $fa3
 	fsub.s	$fa0, $fa0, $fa3
@@ -511,7 +511,7 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 	stx.d	$a5, $a4, $a3
 	st.d	$a6, $a2, 8
 	addi.d	$a0, $a0, 1
-	bcnez	$fcc0, .LBB3_13
+	bcnez	$fcc0, .LBB3_11
 .LBB3_15:
 	vld	$vr0, $a1, 0
 	slli.d	$a1, $a0, 4
@@ -559,8 +559,7 @@ _Z21bt_plane_clip_polygonRK9btVector4PK9btVector3iPS2_: # @_Z21bt_plane_clip_pol
 	fcmp.cule.s	$fcc1, $fa3, $fa1
 	movcf2gr	$a4, $fcc0
 	movcf2gr	$a5, $fcc1
-	xor	$a4, $a4, $a5
-	beqz	$a4, .LBB4_13
+	beq	$a4, $a5, .LBB4_13
 # %bb.4:
 	bceqz	$fcc0, .LBB4_14
 .LBB4_5:                                # %_Z29bt_plane_clip_polygon_collectRK9btVector3S1_ffPS_Ri.exit
@@ -601,8 +600,7 @@ _Z21bt_plane_clip_polygonRK9btVector4PK9btVector3iPS2_: # @_Z21bt_plane_clip_pol
 	fcmp.cule.s	$fcc2, $fa6, $fa1
 	movcf2gr	$a7, $fcc2
 	movcf2gr	$t0, $fcc1
-	xor	$a7, $a7, $t0
-	bnez	$a7, .LBB4_11
+	bne	$a7, $t0, .LBB4_11
 # %bb.10:                               #   in Loop: Header=BB4_9 Depth=1
 	fneg.s	$ft0, $fa6
 	fsub.s	$fa6, $fa3, $fa6
@@ -796,9 +794,8 @@ _ZN19btPrimitiveTriangle35find_triangle_collision_clip_methodERS_R20GIM_TRIANGLE
 	bne	$a2, $a4, .LBB5_3
 	b	.LBB5_11
 .LBB5_10:                               # %.preheader.i
-	ori	$a0, $zero, 1
 	fmov.s	$fa4, $fs0
-	blt	$s2, $a0, .LBB5_14
+	blez	$s2, .LBB5_14
 .LBB5_11:                               # %.lr.ph22.i
 	addi.d	$a0, $sp, 304
 	addi.d	$a1, $sp, 0
@@ -892,9 +889,8 @@ _ZN19btPrimitiveTriangle35find_triangle_collision_clip_methodERS_R20GIM_TRIANGLE
 	bne	$a4, $a6, .LBB5_18
 	b	.LBB5_26
 .LBB5_25:                               # %.preheader.i24
-	ori	$a0, $zero, 1
 	fmov.s	$fa5, $fa0
-	blt	$a2, $a0, .LBB5_29
+	blez	$a2, .LBB5_29
 .LBB5_26:                               # %.lr.ph22.i25
 	addi.d	$a0, $sp, 24
 	addi.d	$a3, $sp, 816

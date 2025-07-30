@@ -27,17 +27,16 @@ alabel:                                 # @alabel
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $a0, 0
 	addi.d	$a0, $s1, -1
-	lu12i.w	$a2, 2
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	ld.b	$a3, $a0, 1
-	slli.d	$a4, $a3, 1
-	ldx.hu	$a4, $a1, $a4
-	and	$a4, $a4, $a2
+	ld.b	$a2, $a0, 1
+	slli.d	$a3, $a2, 1
+	ldx.hu	$a3, $a1, $a3
+	slli.d	$a3, $a3, 50
 	addi.d	$a0, $a0, 1
-	bnez	$a4, .LBB0_1
+	bltz	$a3, .LBB0_1
 # %bb.2:
-	andi	$a1, $a3, 255
+	andi	$a1, $a2, 255
 	beqz	$a1, .LBB0_4
 # %bb.3:
 	addi.d	$a1, $s0, -116

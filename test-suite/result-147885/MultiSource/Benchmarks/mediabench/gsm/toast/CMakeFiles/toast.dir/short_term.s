@@ -342,78 +342,77 @@ LARp_to_rp:                             # @LARp_to_rp
 # %bb.0:
 	ld.h	$a3, $a0, 0
 	bstrpick.d	$a2, $a3, 15, 0
-	addi.w	$a5, $zero, -1
 	lu12i.w	$a1, 2
 	bstrpick.d	$a4, $a2, 15, 0
-	bge	$a5, $a3, .LBB2_17
+	bltz	$a3, .LBB2_17
 # %bb.1:
 	ori	$a3, $a1, 2866
 	bltu	$a3, $a4, .LBB2_19
 # %bb.2:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 2
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 0
-	bltz	$a4, .LBB2_99
+	slli.d	$a2, $a2, 1
+	ld.hu	$a3, $a0, 2
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 0
+	bltz	$a4, .LBB2_57
 .LBB2_3:
-	ori	$a3, $a1, 2867
-	bgeu	$a2, $a3, .LBB2_21
+	ori	$a2, $a1, 2867
+	bgeu	$a3, $a2, .LBB2_21
 # %bb.4:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 4
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 2
-	bltz	$a4, .LBB2_51
-.LBB2_5:
-	ori	$a3, $a1, 2867
-	bgeu	$a2, $a3, .LBB2_24
-# %bb.6:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 6
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 4
+	slli.d	$a2, $a3, 1
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
 	bltz	$a4, .LBB2_59
+.LBB2_5:
+	ori	$a2, $a1, 2867
+	bgeu	$a3, $a2, .LBB2_23
+# %bb.6:
+	slli.d	$a2, $a3, 1
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bltz	$a4, .LBB2_61
 .LBB2_7:
-	ori	$a3, $a1, 2867
-	bgeu	$a2, $a3, .LBB2_27
+	ori	$a2, $a1, 2867
+	bgeu	$a3, $a2, .LBB2_25
 # %bb.8:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 8
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 6
-	bltz	$a4, .LBB2_67
+	slli.d	$a2, $a3, 1
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bltz	$a4, .LBB2_63
 .LBB2_9:
-	ori	$a3, $a1, 2867
-	bgeu	$a2, $a3, .LBB2_30
+	ori	$a2, $a1, 2867
+	bgeu	$a3, $a2, .LBB2_27
 # %bb.10:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 10
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 8
-	bltz	$a4, .LBB2_75
+	slli.d	$a2, $a3, 1
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
+	bltz	$a4, .LBB2_65
 .LBB2_11:
-	ori	$a3, $a1, 2867
-	bgeu	$a2, $a3, .LBB2_33
+	ori	$a2, $a1, 2867
+	bgeu	$a3, $a2, .LBB2_29
 # %bb.12:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 12
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 10
-	bltz	$a4, .LBB2_83
+	slli.d	$a2, $a3, 1
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
+	bltz	$a4, .LBB2_67
 .LBB2_13:
-	ori	$a3, $a1, 2867
-	bgeu	$a2, $a3, .LBB2_36
+	ori	$a2, $a1, 2867
+	bgeu	$a3, $a2, .LBB2_31
 # %bb.14:
-	slli.d	$a3, $a2, 1
-	ld.hu	$a2, $a0, 14
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 12
-	bltz	$a4, .LBB2_91
+	slli.d	$a2, $a3, 1
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
+	bltz	$a4, .LBB2_69
 .LBB2_15:
 	ori	$a1, $a1, 2867
-	bgeu	$a2, $a1, .LBB2_39
+	bgeu	$a3, $a1, .LBB2_33
 # %bb.16:
-	slli.d	$a1, $a2, 1
+	slli.d	$a1, $a3, 1
 	st.h	$a1, $a0, 14
 	ret
 .LBB2_17:
@@ -428,514 +427,580 @@ LARp_to_rp:                             # @LARp_to_rp
 	or	$a2, $a4, $a2
 	bstrpick.d	$a4, $a2, 15, 0
 	ori	$a5, $a1, 2866
-	bltu	$a5, $a4, .LBB2_41
+	bltu	$a5, $a4, .LBB2_35
 # %bb.18:
 	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 2
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 0
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 2
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 0
 	bgez	$a4, .LBB2_3
-	b	.LBB2_99
+	b	.LBB2_57
 .LBB2_19:
 	lu12i.w	$a3, 4
 	ori	$a3, $a3, 3685
-	bltu	$a3, $a4, .LBB2_43
+	bltu	$a3, $a4, .LBB2_37
 # %bb.20:
 	ori	$a3, $a1, 2867
-	b	.LBB2_98
+	b	.LBB2_56
 .LBB2_21:
 	lu12i.w	$a4, 4
 	ori	$a4, $a4, 3686
-	bltu	$a2, $a4, .LBB2_50
+	bgeu	$a3, $a4, .LBB2_39
 # %bb.22:
-	srli.d	$a3, $a2, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_49
-# %bb.23:
-	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 4
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 2
+	add.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
 	bgez	$a4, .LBB2_5
-	b	.LBB2_51
-.LBB2_24:
+	b	.LBB2_59
+.LBB2_23:
 	lu12i.w	$a4, 4
 	ori	$a4, $a4, 3686
-	bltu	$a2, $a4, .LBB2_58
-# %bb.25:
-	srli.d	$a3, $a2, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_57
-# %bb.26:
-	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 6
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 4
+	bgeu	$a3, $a4, .LBB2_41
+# %bb.24:
+	add.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
 	bgez	$a4, .LBB2_7
-	b	.LBB2_59
+	b	.LBB2_61
+.LBB2_25:
+	lu12i.w	$a4, 4
+	ori	$a4, $a4, 3686
+	bgeu	$a3, $a4, .LBB2_43
+# %bb.26:
+	add.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bgez	$a4, .LBB2_9
+	b	.LBB2_63
 .LBB2_27:
 	lu12i.w	$a4, 4
 	ori	$a4, $a4, 3686
-	bltu	$a2, $a4, .LBB2_66
+	bgeu	$a3, $a4, .LBB2_45
 # %bb.28:
-	srli.d	$a3, $a2, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_65
-# %bb.29:
-	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 8
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 6
-	bgez	$a4, .LBB2_9
-	b	.LBB2_67
-.LBB2_30:
-	lu12i.w	$a4, 4
-	ori	$a4, $a4, 3686
-	bltu	$a2, $a4, .LBB2_74
-# %bb.31:
-	srli.d	$a3, $a2, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_73
-# %bb.32:
-	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 10
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 8
+	add.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
 	bgez	$a4, .LBB2_11
-	b	.LBB2_75
-.LBB2_33:
+	b	.LBB2_65
+.LBB2_29:
 	lu12i.w	$a4, 4
 	ori	$a4, $a4, 3686
-	bltu	$a2, $a4, .LBB2_82
-# %bb.34:
-	srli.d	$a3, $a2, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_81
-# %bb.35:
-	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 12
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 10
+	bgeu	$a3, $a4, .LBB2_47
+# %bb.30:
+	add.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
 	bgez	$a4, .LBB2_13
-	b	.LBB2_83
-.LBB2_36:
+	b	.LBB2_67
+.LBB2_31:
 	lu12i.w	$a4, 4
 	ori	$a4, $a4, 3686
-	bltu	$a2, $a4, .LBB2_90
-# %bb.37:
-	srli.d	$a3, $a2, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_89
-# %bb.38:
-	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 14
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 12
+	bgeu	$a3, $a4, .LBB2_49
+# %bb.32:
+	add.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
 	bgez	$a4, .LBB2_15
-	b	.LBB2_91
-.LBB2_39:
-	lu12i.w	$a3, 4
-	ori	$a3, $a3, 3686
-	bgeu	$a2, $a3, .LBB2_45
-# %bb.40:
-	add.d	$a1, $a2, $a1
+	b	.LBB2_69
+.LBB2_33:
+	lu12i.w	$a2, 4
+	ori	$a2, $a2, 3686
+	bgeu	$a3, $a2, .LBB2_51
+# %bb.34:
+	add.d	$a1, $a3, $a1
 	st.h	$a1, $a0, 14
 	ret
-.LBB2_41:
+.LBB2_35:
 	lu12i.w	$a5, 4
 	ori	$a5, $a5, 3685
-	bltu	$a5, $a4, .LBB2_47
-# %bb.42:
+	bltu	$a5, $a4, .LBB2_53
+# %bb.36:
 	lu12i.w	$a3, -3
 	ori	$a3, $a3, 1229
 	b	.LBB2_107
-.LBB2_43:
+.LBB2_37:
 	bstrpick.d	$a3, $a2, 15, 11
 	ori	$a4, $zero, 12
-	bgeu	$a4, $a3, .LBB2_97
+	bgeu	$a4, $a3, .LBB2_55
+# %bb.38:
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 2
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 0
+	bgez	$a4, .LBB2_3
+	b	.LBB2_57
+.LBB2_39:
+	srli.d	$a2, $a3, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a2, .LBB2_99
+# %bb.40:
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
+	bgez	$a4, .LBB2_5
+	b	.LBB2_59
+.LBB2_41:
+	srli.d	$a2, $a3, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a2, .LBB2_100
+# %bb.42:
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bgez	$a4, .LBB2_7
+	b	.LBB2_61
+.LBB2_43:
+	srli.d	$a2, $a3, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a2, .LBB2_101
 # %bb.44:
 	lu12i.w	$a2, 7
-	ori	$a3, $a2, 4095
-	ld.hu	$a2, $a0, 2
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 0
-	bgez	$a4, .LBB2_3
-	b	.LBB2_99
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bgez	$a4, .LBB2_9
+	b	.LBB2_63
 .LBB2_45:
-	srli.d	$a1, $a2, 11
-	ori	$a3, $zero, 12
-	bgeu	$a3, $a1, .LBB2_105
+	srli.d	$a2, $a3, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a2, .LBB2_102
 # %bb.46:
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
+	bgez	$a4, .LBB2_11
+	b	.LBB2_65
+.LBB2_47:
+	srli.d	$a2, $a3, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a2, .LBB2_103
+# %bb.48:
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
+	bgez	$a4, .LBB2_13
+	b	.LBB2_67
+.LBB2_49:
+	srli.d	$a2, $a3, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a2, .LBB2_104
+# %bb.50:
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 4095
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
+	bgez	$a4, .LBB2_15
+	b	.LBB2_69
+.LBB2_51:
+	srli.d	$a1, $a3, 11
+	ori	$a2, $zero, 12
+	bgeu	$a2, $a1, .LBB2_105
+# %bb.52:
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 4095
 	st.h	$a1, $a0, 14
 	ret
-.LBB2_47:
+.LBB2_53:
 	bstrpick.d	$a4, $a2, 15, 11
 	ori	$a5, $zero, 12
 	bgeu	$a5, $a4, .LBB2_106
-# %bb.48:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 2
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 0
-	bgez	$a4, .LBB2_3
-	b	.LBB2_99
-.LBB2_49:
-	srli.d	$a2, $a2, 2
-	lu12i.w	$a3, 6
-	ori	$a3, $a3, 1536
-.LBB2_50:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 4
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 2
-	bgez	$a4, .LBB2_5
-.LBB2_51:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
-	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
-	lu12i.w	$a5, 7
-	ori	$a5, $a5, 4095
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a5, $a1, 2867
-	bgeu	$a4, $a5, .LBB2_53
-# %bb.52:
-	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 6
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 4
-	bgez	$a4, .LBB2_7
-	b	.LBB2_59
-.LBB2_53:
-	lu12i.w	$a5, 4
-	ori	$a5, $a5, 3686
-	bgeu	$a4, $a5, .LBB2_55
 # %bb.54:
-	lu12i.w	$a3, -3
-	ori	$a3, $a3, 1229
-	b	.LBB2_109
+	ori	$a2, $a3, 1
+	ld.hu	$a3, $a0, 2
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 0
+	bgez	$a4, .LBB2_3
+	b	.LBB2_57
 .LBB2_55:
-	bstrpick.d	$a4, $a2, 15, 11
-	ori	$a5, $zero, 12
-	bgeu	$a5, $a4, .LBB2_108
-# %bb.56:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 6
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 4
-	bgez	$a4, .LBB2_7
-	b	.LBB2_59
-.LBB2_57:
-	srli.d	$a2, $a2, 2
-	lu12i.w	$a3, 6
-	ori	$a3, $a3, 1536
-.LBB2_58:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 6
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 4
-	bgez	$a4, .LBB2_7
-.LBB2_59:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
-	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
-	lu12i.w	$a5, 7
-	ori	$a5, $a5, 4095
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a5, $a1, 2867
-	bgeu	$a4, $a5, .LBB2_61
-# %bb.60:
-	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 8
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 6
-	bgez	$a4, .LBB2_9
-	b	.LBB2_67
-.LBB2_61:
-	lu12i.w	$a5, 4
-	ori	$a5, $a5, 3686
-	bgeu	$a4, $a5, .LBB2_63
-# %bb.62:
-	lu12i.w	$a3, -3
-	ori	$a3, $a3, 1229
-	b	.LBB2_111
-.LBB2_63:
-	bstrpick.d	$a4, $a2, 15, 11
-	ori	$a5, $zero, 12
-	bgeu	$a5, $a4, .LBB2_110
-# %bb.64:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 8
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 6
-	bgez	$a4, .LBB2_9
-	b	.LBB2_67
-.LBB2_65:
-	srli.d	$a2, $a2, 2
-	lu12i.w	$a3, 6
-	ori	$a3, $a3, 1536
-.LBB2_66:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 8
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 6
-	bgez	$a4, .LBB2_9
-.LBB2_67:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
-	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
-	lu12i.w	$a5, 7
-	ori	$a5, $a5, 4095
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a5, $a1, 2867
-	bgeu	$a4, $a5, .LBB2_69
-# %bb.68:
-	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 10
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 8
-	bgez	$a4, .LBB2_11
-	b	.LBB2_75
-.LBB2_69:
-	lu12i.w	$a5, 4
-	ori	$a5, $a5, 3686
-	bgeu	$a4, $a5, .LBB2_71
-# %bb.70:
-	lu12i.w	$a3, -3
-	ori	$a3, $a3, 1229
-	b	.LBB2_113
-.LBB2_71:
-	bstrpick.d	$a4, $a2, 15, 11
-	ori	$a5, $zero, 12
-	bgeu	$a5, $a4, .LBB2_112
-# %bb.72:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 10
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 8
-	bgez	$a4, .LBB2_11
-	b	.LBB2_75
-.LBB2_73:
-	srli.d	$a2, $a2, 2
-	lu12i.w	$a3, 6
-	ori	$a3, $a3, 1536
-.LBB2_74:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 10
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 8
-	bgez	$a4, .LBB2_11
-.LBB2_75:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
-	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
-	lu12i.w	$a5, 7
-	ori	$a5, $a5, 4095
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a5, $a1, 2867
-	bgeu	$a4, $a5, .LBB2_77
-# %bb.76:
-	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 12
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 10
-	bgez	$a4, .LBB2_13
-	b	.LBB2_83
-.LBB2_77:
-	lu12i.w	$a5, 4
-	ori	$a5, $a5, 3686
-	bgeu	$a4, $a5, .LBB2_79
-# %bb.78:
-	lu12i.w	$a3, -3
-	ori	$a3, $a3, 1229
-	b	.LBB2_115
-.LBB2_79:
-	bstrpick.d	$a4, $a2, 15, 11
-	ori	$a5, $zero, 12
-	bgeu	$a5, $a4, .LBB2_114
-# %bb.80:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 12
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 10
-	bgez	$a4, .LBB2_13
-	b	.LBB2_83
-.LBB2_81:
-	srli.d	$a2, $a2, 2
-	lu12i.w	$a3, 6
-	ori	$a3, $a3, 1536
-.LBB2_82:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 12
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 10
-	bgez	$a4, .LBB2_13
-.LBB2_83:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
-	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
-	lu12i.w	$a5, 7
-	ori	$a5, $a5, 4095
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a5, $a1, 2867
-	bgeu	$a4, $a5, .LBB2_85
-# %bb.84:
-	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 14
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 12
-	bgez	$a4, .LBB2_15
-	b	.LBB2_91
-.LBB2_85:
-	lu12i.w	$a5, 4
-	ori	$a5, $a5, 3686
-	bgeu	$a4, $a5, .LBB2_87
-# %bb.86:
-	lu12i.w	$a3, -3
-	ori	$a3, $a3, 1229
-	b	.LBB2_117
-.LBB2_87:
-	bstrpick.d	$a4, $a2, 15, 11
-	ori	$a5, $zero, 12
-	bgeu	$a5, $a4, .LBB2_116
-# %bb.88:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 14
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 12
-	bgez	$a4, .LBB2_15
-	b	.LBB2_91
-.LBB2_89:
-	srli.d	$a2, $a2, 2
-	lu12i.w	$a3, 6
-	ori	$a3, $a3, 1536
-.LBB2_90:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 14
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 12
-	bgez	$a4, .LBB2_15
-.LBB2_91:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
-	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
-	lu12i.w	$a5, 7
-	ori	$a5, $a5, 4095
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
-	ori	$a1, $a1, 2867
-	bgeu	$a4, $a1, .LBB2_93
-# %bb.92:
-	slli.d	$a1, $a2, 1
-	sub.d	$a1, $zero, $a1
-	st.h	$a1, $a0, 14
-	ret
-.LBB2_93:
-	lu12i.w	$a1, 4
-	ori	$a1, $a1, 3686
-	bgeu	$a4, $a1, .LBB2_95
-# %bb.94:
-	lu12i.w	$a1, -3
-	ori	$a1, $a1, 1229
-	sub.d	$a1, $a1, $a2
-	st.h	$a1, $a0, 14
-	ret
-.LBB2_95:
-	bstrpick.d	$a1, $a2, 15, 11
-	ori	$a4, $zero, 12
-	bgeu	$a4, $a1, .LBB2_118
-# %bb.96:
-	ori	$a1, $a3, 1
-	st.h	$a1, $a0, 14
-	ret
-.LBB2_97:
 	bstrpick.d	$a2, $a2, 15, 2
 	lu12i.w	$a3, 6
 	ori	$a3, $a3, 1536
-.LBB2_98:
-	add.d	$a3, $a2, $a3
-	ld.hu	$a2, $a0, 2
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 0
+.LBB2_56:
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 2
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 0
 	bgez	$a4, .LBB2_3
-.LBB2_99:
-	lu12i.w	$a3, 8
-	xor	$a4, $a2, $a3
+.LBB2_57:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
 	sltui	$a4, $a4, 1
-	sub.d	$a2, $zero, $a2
-	masknez	$a2, $a2, $a4
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
 	lu12i.w	$a5, 7
 	ori	$a5, $a5, 4095
 	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	bstrpick.d	$a4, $a2, 15, 0
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
 	ori	$a5, $a1, 2867
-	bgeu	$a4, $a5, .LBB2_101
-# %bb.100:
-	slli.d	$a2, $a2, 1
-	sub.d	$a3, $zero, $a2
-	ld.hu	$a2, $a0, 4
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 2
+	bgeu	$a4, $a5, .LBB2_71
+# %bb.58:
+	slli.d	$a2, $a3, 1
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
 	bgez	$a4, .LBB2_5
-	b	.LBB2_51
-.LBB2_101:
+.LBB2_59:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
+	sltui	$a4, $a4, 1
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
+	ori	$a5, $a1, 2867
+	bgeu	$a4, $a5, .LBB2_73
+# %bb.60:
+	slli.d	$a2, $a3, 1
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bgez	$a4, .LBB2_7
+.LBB2_61:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
+	sltui	$a4, $a4, 1
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
+	ori	$a5, $a1, 2867
+	bgeu	$a4, $a5, .LBB2_75
+# %bb.62:
+	slli.d	$a2, $a3, 1
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bgez	$a4, .LBB2_9
+.LBB2_63:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
+	sltui	$a4, $a4, 1
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
+	ori	$a5, $a1, 2867
+	bgeu	$a4, $a5, .LBB2_77
+# %bb.64:
+	slli.d	$a2, $a3, 1
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
+	bgez	$a4, .LBB2_11
+.LBB2_65:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
+	sltui	$a4, $a4, 1
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
+	ori	$a5, $a1, 2867
+	bgeu	$a4, $a5, .LBB2_79
+# %bb.66:
+	slli.d	$a2, $a3, 1
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
+	bgez	$a4, .LBB2_13
+.LBB2_67:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
+	sltui	$a4, $a4, 1
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
+	ori	$a5, $a1, 2867
+	bgeu	$a4, $a5, .LBB2_81
+# %bb.68:
+	slli.d	$a2, $a3, 1
+	sub.d	$a2, $zero, $a2
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
+	bgez	$a4, .LBB2_15
+.LBB2_69:
+	lu12i.w	$a2, 8
+	xor	$a4, $a3, $a2
+	sltui	$a4, $a4, 1
+	sub.d	$a3, $zero, $a3
+	masknez	$a3, $a3, $a4
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a4, $a3, 15, 0
+	ori	$a1, $a1, 2867
+	bgeu	$a4, $a1, .LBB2_83
+# %bb.70:
+	slli.d	$a1, $a3, 1
+	sub.d	$a1, $zero, $a1
+	st.h	$a1, $a0, 14
+	ret
+.LBB2_71:
 	lu12i.w	$a5, 4
 	ori	$a5, $a5, 3686
-	bgeu	$a4, $a5, .LBB2_103
-# %bb.102:
-	lu12i.w	$a3, -3
-	ori	$a3, $a3, 1229
-	b	.LBB2_120
-.LBB2_103:
-	bstrpick.d	$a4, $a2, 15, 11
-	ori	$a5, $zero, 12
-	bgeu	$a5, $a4, .LBB2_119
-# %bb.104:
-	ori	$a3, $a3, 1
-	ld.hu	$a2, $a0, 4
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 2
+	bgeu	$a4, $a5, .LBB2_85
+# %bb.72:
+	lu12i.w	$a2, -3
+	ori	$a2, $a2, 1229
+	sub.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
 	bgez	$a4, .LBB2_5
-	b	.LBB2_51
+	b	.LBB2_59
+.LBB2_73:
+	lu12i.w	$a5, 4
+	ori	$a5, $a5, 3686
+	bgeu	$a4, $a5, .LBB2_87
+# %bb.74:
+	lu12i.w	$a2, -3
+	ori	$a2, $a2, 1229
+	sub.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bgez	$a4, .LBB2_7
+	b	.LBB2_61
+.LBB2_75:
+	lu12i.w	$a5, 4
+	ori	$a5, $a5, 3686
+	bgeu	$a4, $a5, .LBB2_89
+# %bb.76:
+	lu12i.w	$a2, -3
+	ori	$a2, $a2, 1229
+	sub.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bgez	$a4, .LBB2_9
+	b	.LBB2_63
+.LBB2_77:
+	lu12i.w	$a5, 4
+	ori	$a5, $a5, 3686
+	bgeu	$a4, $a5, .LBB2_91
+# %bb.78:
+	lu12i.w	$a2, -3
+	ori	$a2, $a2, 1229
+	sub.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
+	bgez	$a4, .LBB2_11
+	b	.LBB2_65
+.LBB2_79:
+	lu12i.w	$a5, 4
+	ori	$a5, $a5, 3686
+	bgeu	$a4, $a5, .LBB2_93
+# %bb.80:
+	lu12i.w	$a2, -3
+	ori	$a2, $a2, 1229
+	sub.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
+	bgez	$a4, .LBB2_13
+	b	.LBB2_67
+.LBB2_81:
+	lu12i.w	$a5, 4
+	ori	$a5, $a5, 3686
+	bgeu	$a4, $a5, .LBB2_95
+# %bb.82:
+	lu12i.w	$a2, -3
+	ori	$a2, $a2, 1229
+	sub.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
+	bgez	$a4, .LBB2_15
+	b	.LBB2_69
+.LBB2_83:
+	lu12i.w	$a1, 4
+	ori	$a1, $a1, 3686
+	bgeu	$a4, $a1, .LBB2_97
+# %bb.84:
+	lu12i.w	$a1, -3
+	ori	$a1, $a1, 1229
+	sub.d	$a1, $a1, $a3
+	st.h	$a1, $a0, 14
+	ret
+.LBB2_85:
+	bstrpick.d	$a4, $a3, 15, 11
+	ori	$a5, $zero, 12
+	bgeu	$a5, $a4, .LBB2_108
+# %bb.86:
+	ori	$a2, $a2, 1
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
+	bgez	$a4, .LBB2_5
+	b	.LBB2_59
+.LBB2_87:
+	bstrpick.d	$a4, $a3, 15, 11
+	ori	$a5, $zero, 12
+	bgeu	$a5, $a4, .LBB2_109
+# %bb.88:
+	ori	$a2, $a2, 1
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bgez	$a4, .LBB2_7
+	b	.LBB2_61
+.LBB2_89:
+	bstrpick.d	$a4, $a3, 15, 11
+	ori	$a5, $zero, 12
+	bgeu	$a5, $a4, .LBB2_110
+# %bb.90:
+	ori	$a2, $a2, 1
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bgez	$a4, .LBB2_9
+	b	.LBB2_63
+.LBB2_91:
+	bstrpick.d	$a4, $a3, 15, 11
+	ori	$a5, $zero, 12
+	bgeu	$a5, $a4, .LBB2_111
+# %bb.92:
+	ori	$a2, $a2, 1
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
+	bgez	$a4, .LBB2_11
+	b	.LBB2_65
+.LBB2_93:
+	bstrpick.d	$a4, $a3, 15, 11
+	ori	$a5, $zero, 12
+	bgeu	$a5, $a4, .LBB2_112
+# %bb.94:
+	ori	$a2, $a2, 1
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
+	bgez	$a4, .LBB2_13
+	b	.LBB2_67
+.LBB2_95:
+	bstrpick.d	$a4, $a3, 15, 11
+	ori	$a5, $zero, 12
+	bgeu	$a5, $a4, .LBB2_113
+# %bb.96:
+	ori	$a2, $a2, 1
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
+	bgez	$a4, .LBB2_15
+	b	.LBB2_69
+.LBB2_97:
+	bstrpick.d	$a1, $a3, 15, 11
+	ori	$a4, $zero, 12
+	bgeu	$a4, $a1, .LBB2_114
+# %bb.98:
+	ori	$a1, $a2, 1
+	st.h	$a1, $a0, 14
+	ret
+.LBB2_99:
+	srli.d	$a2, $a3, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 1536
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
+	bgez	$a4, .LBB2_5
+	b	.LBB2_59
+.LBB2_100:
+	srli.d	$a2, $a3, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 1536
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bgez	$a4, .LBB2_7
+	b	.LBB2_61
+.LBB2_101:
+	srli.d	$a2, $a3, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 1536
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
+	bgez	$a4, .LBB2_9
+	b	.LBB2_63
+.LBB2_102:
+	srli.d	$a2, $a3, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 1536
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
+	bgez	$a4, .LBB2_11
+	b	.LBB2_65
+.LBB2_103:
+	srli.d	$a2, $a3, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 1536
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
+	bgez	$a4, .LBB2_13
+	b	.LBB2_67
+.LBB2_104:
+	srli.d	$a2, $a3, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 1536
+	add.d	$a2, $a2, $a3
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
+	bgez	$a4, .LBB2_15
+	b	.LBB2_69
 .LBB2_105:
-	srli.d	$a1, $a2, 2
+	srli.d	$a1, $a3, 2
 	lu12i.w	$a2, 6
 	ori	$a2, $a2, 1536
 	add.d	$a1, $a1, $a2
@@ -946,85 +1011,79 @@ LARp_to_rp:                             # @LARp_to_rp
 	lu12i.w	$a3, -7
 	ori	$a3, $a3, 2560
 .LBB2_107:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 2
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 0
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 2
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 0
 	bgez	$a4, .LBB2_3
-	b	.LBB2_99
+	b	.LBB2_57
 .LBB2_108:
-	bstrpick.d	$a2, $a2, 15, 2
+	bstrpick.d	$a2, $a3, 15, 2
 	lu12i.w	$a3, -7
 	ori	$a3, $a3, 2560
-.LBB2_109:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 6
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 4
-	bgez	$a4, .LBB2_7
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 4
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 2
+	bgez	$a4, .LBB2_5
 	b	.LBB2_59
+.LBB2_109:
+	bstrpick.d	$a2, $a3, 15, 2
+	lu12i.w	$a3, -7
+	ori	$a3, $a3, 2560
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 6
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 4
+	bgez	$a4, .LBB2_7
+	b	.LBB2_61
 .LBB2_110:
-	bstrpick.d	$a2, $a2, 15, 2
+	bstrpick.d	$a2, $a3, 15, 2
 	lu12i.w	$a3, -7
 	ori	$a3, $a3, 2560
-.LBB2_111:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 8
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 6
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 8
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 6
 	bgez	$a4, .LBB2_9
-	b	.LBB2_67
-.LBB2_112:
-	bstrpick.d	$a2, $a2, 15, 2
+	b	.LBB2_63
+.LBB2_111:
+	bstrpick.d	$a2, $a3, 15, 2
 	lu12i.w	$a3, -7
 	ori	$a3, $a3, 2560
-.LBB2_113:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 10
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 8
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 10
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 8
 	bgez	$a4, .LBB2_11
-	b	.LBB2_75
-.LBB2_114:
-	bstrpick.d	$a2, $a2, 15, 2
+	b	.LBB2_65
+.LBB2_112:
+	bstrpick.d	$a2, $a3, 15, 2
 	lu12i.w	$a3, -7
 	ori	$a3, $a3, 2560
-.LBB2_115:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 12
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 10
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 12
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 10
 	bgez	$a4, .LBB2_13
-	b	.LBB2_83
-.LBB2_116:
-	bstrpick.d	$a2, $a2, 15, 2
+	b	.LBB2_67
+.LBB2_113:
+	bstrpick.d	$a2, $a3, 15, 2
 	lu12i.w	$a3, -7
 	ori	$a3, $a3, 2560
-.LBB2_117:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 14
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 12
+	sub.d	$a2, $a3, $a2
+	ld.hu	$a3, $a0, 14
+	ext.w.h	$a4, $a3
+	st.h	$a2, $a0, 12
 	bgez	$a4, .LBB2_15
-	b	.LBB2_91
-.LBB2_118:
-	bstrpick.d	$a1, $a2, 15, 2
+	b	.LBB2_69
+.LBB2_114:
+	bstrpick.d	$a1, $a3, 15, 2
 	lu12i.w	$a2, -7
 	ori	$a2, $a2, 2560
 	sub.d	$a1, $a2, $a1
 	st.h	$a1, $a0, 14
 	ret
-.LBB2_119:
-	bstrpick.d	$a2, $a2, 15, 2
-	lu12i.w	$a3, -7
-	ori	$a3, $a3, 2560
-.LBB2_120:
-	sub.d	$a3, $a3, $a2
-	ld.hu	$a2, $a0, 4
-	ext.w.h	$a4, $a2
-	st.h	$a3, $a0, 2
-	bgez	$a4, .LBB2_5
-	b	.LBB2_51
 .Lfunc_end2:
 	.size	LARp_to_rp, .Lfunc_end2-LARp_to_rp
                                         # -- End function

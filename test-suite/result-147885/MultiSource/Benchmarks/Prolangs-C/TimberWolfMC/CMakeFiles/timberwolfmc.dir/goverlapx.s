@@ -222,7 +222,7 @@ goverlapx:                              # @goverlapx
                                         #           Child Loop BB0_37 Depth 5
                                         #           Child Loop BB0_31 Depth 5
 	or	$a5, $a6, $t5
-	bstrpick.d	$a5, $a5, 31, 0
+	slli.d	$a5, $a5, 32
 	st.d	$a6, $sp, 88                    # 8-byte Folded Spill
 	beqz	$a5, .LBB0_10
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=2
@@ -237,8 +237,7 @@ goverlapx:                              # @goverlapx
 	slli.d	$a6, $a6, 3
 	ldx.d	$fp, $a5, $a6
 	ld.w	$a5, $fp, 0
-	ori	$a6, $zero, 1
-	blt	$a5, $a6, .LBB0_7
+	blez	$a5, .LBB0_7
 # %bb.11:                               # %.lr.ph327.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	addi.d	$a5, $a5, 1

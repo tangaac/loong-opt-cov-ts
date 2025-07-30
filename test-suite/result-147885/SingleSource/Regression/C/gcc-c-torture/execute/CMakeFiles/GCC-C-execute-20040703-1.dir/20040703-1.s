@@ -192,7 +192,7 @@ main:                                   # @main
 	andi	$a5, $a2, 31
 	sll.d	$a2, $t0, $a5
 	srli.d	$a2, $a2, 32
-	bstrpick.d	$t0, $a7, 31, 0
+	slli.d	$t0, $a7, 32
 	ori	$a7, $zero, 1
 	bnez	$t0, .LBB1_3
 # %bb.2:

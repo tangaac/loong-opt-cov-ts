@@ -11,8 +11,7 @@ test:                                   # @test
 	move	$fp, $a3
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $fp, .LBB0_2
+	bgez	$fp, .LBB0_2
 # %bb.1:
 	bgez	$a0, .LBB0_7
 .LBB0_2:
@@ -20,8 +19,7 @@ test:                                   # @test
 # %bb.3:
 	bnez	$a0, .LBB0_7
 .LBB0_4:
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB0_6
+	blez	$fp, .LBB0_6
 # %bb.5:
 	blez	$a0, .LBB0_7
 .LBB0_6:

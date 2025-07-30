@@ -112,10 +112,10 @@ bar:                                    # @bar
 	st.d	$a2, $s3, %pc_lo12(w)
 	beqz	$a1, .LBB2_14
 # %bb.1:                                # %.lr.ph49.preheader
-	ori	$s5, $zero, 9
-	addi.d	$s6, $sp, 8
+	ori	$s4, $zero, 9
+	addi.d	$s5, $sp, 8
 	pcalau12i	$a2, %pc_hi20(r+1848)
-	addi.d	$s7, $a2, %pc_lo12(r+1848)
+	addi.d	$s6, $a2, %pc_lo12(r+1848)
 	b	.LBB2_3
 	.p2align	4, , 16
 .LBB2_2:                                #   in Loop: Header=BB2_3 Depth=1
@@ -137,9 +137,9 @@ bar:                                    # @bar
 .LBB2_4:                                # %._crit_edge
                                         #   in Loop: Header=BB2_5 Depth=2
 	ld.h	$a0, $sp, 16
-	st.h	$a0, $s8, 8
+	st.h	$a0, $s7, 8
 	ld.d	$a0, $sp, 8
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 	addi.d	$s0, $s1, 1
 	beqz	$s1, .LBB2_2
 .LBB2_5:                                #   Parent Loop BB2_3 Depth=1
@@ -157,23 +157,22 @@ bar:                                    # @bar
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $s3, %pc_lo12(w)
+	ld.d	$s7, $s3, %pc_lo12(w)
 	addi.w	$a1, $a0, 0
 	st.d	$zero, $sp, 8
 	st.h	$zero, $sp, 16
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_4
+	blez	$a1, .LBB2_4
 # %bb.8:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB2_5 Depth=2
-	move	$fp, $zero
-	bstrpick.d	$s4, $a0, 30, 0
+	move	$s8, $zero
+	bstrpick.d	$fp, $a0, 30, 0
 	b	.LBB2_10
 	.p2align	4, , 16
 .LBB2_9:                                #   in Loop: Header=BB2_10 Depth=3
-	stx.b	$a1, $fp, $s6
-	addi.d	$s4, $s4, -1
+	stx.b	$a1, $s8, $s5
+	addi.d	$fp, $fp, -1
 	addi.d	$s0, $s0, 1
-	beqz	$s4, .LBB2_4
+	beqz	$fp, .LBB2_4
 .LBB2_10:                               # %.lr.ph
                                         #   Parent Loop BB2_3 Depth=1
                                         #     Parent Loop BB2_5 Depth=2
@@ -181,26 +180,26 @@ bar:                                    # @bar
 	ld.b	$a0, $s0, 0
 	addi.d	$a1, $a0, -48
 	andi	$a2, $a1, 255
-	bgeu	$s5, $a2, .LBB2_9
+	bgeu	$s4, $a2, .LBB2_9
 # %bb.11:                               #   in Loop: Header=BB2_10 Depth=3
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	alsl.d	$a0, $a0, $s8, 3
-	ld.d	$s8, $a0, 16
-	bnez	$s8, .LBB2_13
+	alsl.d	$a0, $a0, $s7, 3
+	ld.d	$s7, $a0, 16
+	bnez	$s7, .LBB2_13
 # %bb.12:                               #   in Loop: Header=BB2_10 Depth=3
-	ld.d	$s8, $s2, %pc_lo12(r2)
+	ld.d	$s7, $s2, %pc_lo12(r2)
 	addi.d	$a0, $a0, 16
-	addi.d	$a1, $s8, 264
+	addi.d	$a1, $s7, 264
 	st.d	$a1, $s2, %pc_lo12(r2)
-	st.d	$s8, $a0, 0
+	st.d	$s7, $a0, 0
 	ld.d	$a0, $s2, %pc_lo12(r2)
-	beq	$a0, $s7, .LBB2_15
+	beq	$a0, $s6, .LBB2_15
 .LBB2_13:                               #   in Loop: Header=BB2_10 Depth=3
-	addi.w	$fp, $fp, 1
-	addi.d	$s4, $s4, -1
+	addi.w	$s8, $s8, 1
+	addi.d	$fp, $fp, -1
 	addi.d	$s0, $s0, 1
-	bnez	$s4, .LBB2_10
+	bnez	$fp, .LBB2_10
 	b	.LBB2_4
 .LBB2_14:                               # %._crit_edge50
 	ld.d	$s8, $sp, 520                   # 8-byte Folded Reload
@@ -242,34 +241,33 @@ baz:                                    # @baz
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$s6, $a0
-	move	$s4, $zero
-	addi.w	$s7, $a0, 0
+	move	$s5, $a0
+	move	$s3, $zero
+	addi.w	$s6, $a0, 0
 	ori	$a0, $zero, 96
 	st.b	$a0, $sp, 332
-	srai.d	$a0, $s7, 63
-	andn	$fp, $s7, $a0
+	srai.d	$a0, $s6, 63
+	andn	$fp, $s6, $a0
 	addi.d	$s2, $sp, 332
-	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB3_1:                                # =>This Inner Loop Header: Depth=1
-	beq	$fp, $s4, .LBB3_3
+	beq	$fp, $s3, .LBB3_3
 # %bb.2:                                #   in Loop: Header=BB3_1 Depth=1
-	ldx.b	$s1, $s0, $s4
+	ldx.b	$s1, $s0, $s3
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fn)
 	jirl	$ra, $ra, 0
-	addi.d	$s5, $s4, 1
-	add.d	$a0, $s2, $s4
+	addi.d	$s4, $s3, 1
+	add.d	$a0, $s2, $s3
 	st.b	$s1, $a0, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	move	$s4, $s5
-	bge	$a0, $s3, .LBB3_1
+	move	$s3, $s4
+	bgtz	$a0, .LBB3_1
 	b	.LBB3_28
 .LBB3_3:
-	slli.d	$a0, $s6, 32
+	slli.d	$a0, $s5, 32
 	ori	$a1, $zero, 0
 	ori	$a2, $zero, 0
 	lu32i.d	$a2, 1
@@ -291,12 +289,12 @@ baz:                                    # @baz
 	beqz	$a0, .LBB3_28
 # %bb.4:
 	addi.w	$a0, $zero, -1
-	blt	$s7, $a0, .LBB3_28
+	blt	$s6, $a0, .LBB3_28
 # %bb.5:                                # %.lr.ph54.preheader
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s6, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $zero
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$s3, $s6, 2
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	addi.w	$s3, $s5, 2
 	ori	$a0, $zero, 1
 	slt	$a1, $a0, $s3
 	masknez	$a0, $a0, $a1

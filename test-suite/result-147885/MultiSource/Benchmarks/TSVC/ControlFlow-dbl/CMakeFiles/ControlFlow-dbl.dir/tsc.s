@@ -18565,8 +18565,7 @@ s1161:                                  # @s1161
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_7
+	blez	$a0, .LBB7_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -18717,12 +18716,11 @@ s162:                                   # @s162
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a2, %pc_hi20(ntimes)
-	ld.w	$a0, $a2, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_8
+	pcalau12i	$a1, %pc_hi20(ntimes)
+	ld.w	$a0, $a1, %pc_lo12(ntimes)
+	blez	$a0, .LBB8_8
 # %bb.1:                                # %.lr.ph
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	blez	$s0, .LBB8_6
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s8, $zero
@@ -18958,8 +18956,7 @@ s271:                                   # @s271
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_7
+	blez	$a0, .LBB9_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -19100,10 +19097,9 @@ s272:                                   # @s272
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(global_data)
-	addi.d	$fp, $a2, %pc_lo12(global_data)
-	blt	$a0, $a1, .LBB10_7
+	pcalau12i	$a1, %pc_hi20(global_data)
+	addi.d	$fp, $a1, %pc_lo12(global_data)
+	blez	$a0, .LBB10_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	lu12i.w	$a0, 7
@@ -19255,10 +19251,9 @@ s273:                                   # @s273
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(global_data)
-	addi.d	$fp, $a2, %pc_lo12(global_data)
-	blt	$a0, $a1, .LBB11_7
+	pcalau12i	$a1, %pc_hi20(global_data)
+	addi.d	$fp, $a1, %pc_lo12(global_data)
+	blez	$a0, .LBB11_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	lu12i.w	$a0, 7
@@ -19416,10 +19411,9 @@ s274:                                   # @s274
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(global_data)
-	addi.d	$fp, $a2, %pc_lo12(global_data)
-	blt	$a0, $a1, .LBB12_7
+	pcalau12i	$a1, %pc_hi20(global_data)
+	addi.d	$fp, $a1, %pc_lo12(global_data)
+	blez	$a0, .LBB12_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	lu12i.w	$a0, 7
@@ -19959,8 +19953,7 @@ s276:                                   # @s276
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_5
+	blez	$a0, .LBB15_5
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	lu12i.w	$a0, 3
@@ -20102,10 +20095,9 @@ s277:                                   # @s277
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(global_data)
-	addi.d	$fp, $a2, %pc_lo12(global_data)
-	blt	$a0, $a1, .LBB16_9
+	pcalau12i	$a1, %pc_hi20(global_data)
+	addi.d	$fp, $a1, %pc_lo12(global_data)
+	blez	$a0, .LBB16_9
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	lu12i.w	$a0, 7
@@ -20262,10 +20254,9 @@ s278:                                   # @s278
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(global_data)
-	addi.d	$fp, $a2, %pc_lo12(global_data)
-	blt	$a0, $a1, .LBB17_8
+	pcalau12i	$a1, %pc_hi20(global_data)
+	addi.d	$fp, $a1, %pc_lo12(global_data)
+	blez	$a0, .LBB17_8
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	lu12i.w	$a0, 7
@@ -20607,10 +20598,9 @@ s1279:                                  # @s1279
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(global_data)
-	addi.d	$fp, $a2, %pc_lo12(global_data)
-	blt	$a0, $a1, .LBB19_8
+	pcalau12i	$a1, %pc_hi20(global_data)
+	addi.d	$fp, $a1, %pc_lo12(global_data)
+	blez	$a0, .LBB19_8
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	lu12i.w	$a0, 7
@@ -21040,8 +21030,7 @@ s2711:                                  # @s2711
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB21_7
+	blez	$a0, .LBB21_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -21180,8 +21169,7 @@ s2712:                                  # @s2712
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB22_7
+	blez	$a0, .LBB22_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -21320,8 +21308,7 @@ s441:                                   # @s441
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB23_10
+	blez	$a0, .LBB23_10
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -21631,8 +21618,7 @@ s443:                                   # @s443
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB25_7
+	blez	$a0, .LBB25_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -21777,8 +21763,7 @@ s481:                                   # @s481
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB26_6
+	blez	$a0, .LBB26_6
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -21922,8 +21907,7 @@ s482:                                   # @s482
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB27_6
+	blez	$a0, .LBB27_6
 # %bb.1:                                # %.preheader.preheader
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)

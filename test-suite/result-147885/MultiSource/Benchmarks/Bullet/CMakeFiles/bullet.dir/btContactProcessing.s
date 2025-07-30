@@ -59,7 +59,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	.cfi_offset 61, -136
 	move	$fp, $a0
 	ld.d	$a0, $a0, 16
-	move	$s1, $a2
+	move	$s8, $a2
 	move	$s0, $a1
 	beqz	$a0, .LBB0_3
 # %bb.1:
@@ -85,9 +85,8 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 4
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB0_8
+	blez	$a1, .LBB0_8
 # %bb.6:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a2, $a1, 5
@@ -143,9 +142,8 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	st.w	$a0, $fp, 4
 	b	.LBB0_89
 .LBB0_12:
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$s1, $zero, 1
-	st.b	$s1, $sp, 160
+	ori	$a0, $zero, 1
+	st.b	$a0, $sp, 160
 	st.d	$zero, $sp, 152
 	st.d	$zero, $sp, 140
 	slli.d	$a0, $s4, 3
@@ -158,7 +156,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	move	$s2, $a0
 	ld.w	$a1, $sp, 140
 	ld.d	$a0, $sp, 152
-	blt	$a1, $s1, .LBB0_17
+	blez	$a1, .LBB0_17
 # %bb.14:                               # %.lr.ph.i.i
 	addi.d	$a2, $a0, 4
 	addi.d	$a3, $s2, 4
@@ -173,8 +171,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	bnez	$a4, .LBB0_15
 # %bb.16:                               # %_ZNK20btAlignedObjectArrayI17CONTACT_KEY_TOKENE4copyEiiPS0_.exit.thread.i
 	ld.bu	$a2, $sp, 160
-	ori	$a3, $zero, 1
-	beq	$a2, $a3, .LBB0_19
+	bnez	$a2, .LBB0_19
 	b	.LBB0_21
 .LBB0_17:                               # %_ZNK20btAlignedObjectArrayI17CONTACT_KEY_TOKENE4copyEiiPS0_.exit.i
 	beqz	$a0, .LBB0_21
@@ -195,7 +192,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	st.b	$s5, $sp, 160
 	st.d	$s2, $sp, 152
 	st.w	$s4, $sp, 144
-	blt	$a0, $s5, .LBB0_41
+	blez	$a0, .LBB0_41
 # %bb.22:                               # %.lr.ph
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
 	fld.s	$fs0, $a2, %pc_lo12(.LCPI0_0)
@@ -265,7 +262,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	move	$s3, $a0
 	ld.w	$s4, $sp, 140
 	ld.d	$s2, $sp, 152
-	blt	$s4, $s5, .LBB0_35
+	blez	$s4, .LBB0_35
 .LBB0_30:                               # %.lr.ph.i.i.i64
                                         #   in Loop: Header=BB0_25 Depth=1
 	addi.d	$a0, $s2, 4
@@ -283,7 +280,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 # %bb.32:                               # %_ZNK20btAlignedObjectArrayI17CONTACT_KEY_TOKENE4copyEiiPS0_.exit.thread.i.i
                                         #   in Loop: Header=BB0_25 Depth=1
 	ld.bu	$a0, $sp, 160
-	beq	$a0, $s5, .LBB0_37
+	bnez	$a0, .LBB0_37
 	b	.LBB0_39
 	.p2align	4, , 16
 .LBB0_33:                               #   in Loop: Header=BB0_25 Depth=1
@@ -292,7 +289,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	b	.LBB0_40
 .LBB0_34:                               #   in Loop: Header=BB0_25 Depth=1
 	move	$s3, $zero
-	bge	$s4, $s5, .LBB0_30
+	bgtz	$s4, .LBB0_30
 .LBB0_35:                               # %_ZNK20btAlignedObjectArrayI17CONTACT_KEY_TOKENE4copyEiiPS0_.exit.i.i
                                         #   in Loop: Header=BB0_25 Depth=1
 	beqz	$s2, .LBB0_39
@@ -341,7 +338,6 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	ld.w	$a0, $fp, 4
 	ld.w	$a1, $fp, 8
 	ld.d	$s5, $s0, 16
-	ld.d	$a6, $sp, 0                     # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB0_57
 # %bb.46:
 	sltui	$a1, $a0, 1
@@ -364,13 +360,11 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 # %bb.49:                               # %.noexc87
 	move	$s2, $a0
 	ld.w	$a0, $fp, 4
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB0_51
+	bgtz	$a0, .LBB0_51
 	b	.LBB0_53
 .LBB0_50:
 	move	$s2, $zero
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_53
+	blez	$a0, .LBB0_53
 .LBB0_51:                               # %.lr.ph.i.i.i82
 	move	$a1, $zero
 	slli.d	$a2, $a0, 5
@@ -410,7 +404,6 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	st.b	$a1, $fp, 24
 	st.d	$s2, $fp, 16
 	st.w	$s6, $fp, 8
-	ld.d	$a6, $sp, 0                     # 8-byte Folded Reload
 .LBB0_57:
 	slli.d	$a1, $s3, 5
 	alsl.d	$a1, $s3, $a1, 4
@@ -438,15 +431,13 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 # %bb.58:                               # %.lr.ph122.preheader
 	move	$s6, $zero
 	ld.d	$a0, $fp, 16
-	ori	$t0, $zero, 1
-	addi.d	$s3, $sp, 16
+	addi.d	$a6, $sp, 16
 	pcalau12i	$a2, %pc_hi20(.LCPI0_4)
 	fld.s	$fs0, $a2, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a2, %pc_hi20(.LCPI0_3)
 	fld.s	$fs1, $a2, %pc_lo12(.LCPI0_3)
-	ori	$t1, $zero, 48
+	ori	$a7, $zero, 48
 	ori	$s7, $zero, 1
-	ori	$s8, $zero, 1
 	b	.LBB0_62
 .LBB0_59:                               # %_ZN20btAlignedObjectArrayI11GIM_CONTACTE10deallocateEv.exit.i.i98
                                         #   in Loop: Header=BB0_62 Depth=1
@@ -454,14 +445,13 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	ori	$a1, $zero, 1
 	st.b	$a1, $fp, 24
 	st.d	$s2, $fp, 16
-	ori	$t0, $zero, 1
-	st.w	$s1, $fp, 8
-	ld.d	$a6, $sp, 0                     # 8-byte Folded Reload
-	ori	$t1, $zero, 48
+	st.w	$s3, $fp, 8
+	move	$a6, $s1
+	ori	$a7, $zero, 48
 .LBB0_60:                               #   in Loop: Header=BB0_62 Depth=1
 	ld.d	$a1, $fp, 16
 	vld	$vr0, $s5, 0
-	mul.d	$a0, $a0, $t1
+	mul.d	$a0, $a0, $a7
 	vstx	$vr0, $a1, $a0
 	vld	$vr0, $s5, 16
 	add.d	$a0, $a1, $a0
@@ -477,7 +467,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	ld.d	$a2, $fp, 16
 	ld.w	$a1, $sp, 140
 	st.w	$a0, $fp, 4
-	mul.d	$a0, $a3, $t1
+	mul.d	$a0, $a3, $a7
 	add.d	$a0, $a2, $a0
 .LBB0_61:                               #   in Loop: Header=BB0_62 Depth=1
 	addi.d	$s7, $s7, 1
@@ -514,15 +504,15 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	b	.LBB0_61
 	.p2align	4, , 16
 .LBB0_65:                               #   in Loop: Header=BB0_62 Depth=1
-	beqz	$a6, .LBB0_71
+	beqz	$s8, .LBB0_71
 # %bb.66:                               #   in Loop: Header=BB0_62 Depth=1
-	blt	$s6, $t0, .LBB0_71
+	blez	$s6, .LBB0_71
 # %bb.67:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB0_62 Depth=1
 	fld.s	$fa1, $a0, 16
 	fld.s	$fa2, $a0, 20
 	fld.s	$fa0, $a0, 24
-	move	$a1, $s3
+	move	$a1, $a6
 	.p2align	4, , 16
 .LBB0_68:                               # %.lr.ph.i
                                         #   Parent Loop BB0_62 Depth=1
@@ -565,14 +555,16 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	sltui	$a1, $a0, 1
 	slli.w	$a2, $a0, 1
 	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $t0, $a1
-	or	$s1, $a1, $a2
-	bge	$a0, $s1, .LBB0_60
+	ori	$a3, $zero, 1
+	maskeqz	$a1, $a3, $a1
+	or	$s3, $a1, $a2
+	bge	$a0, $s3, .LBB0_60
 # %bb.73:                               #   in Loop: Header=BB0_62 Depth=1
-	beqz	$s1, .LBB0_80
+	move	$s1, $a6
+	beqz	$s3, .LBB0_80
 # %bb.74:                               #   in Loop: Header=BB0_62 Depth=1
-	slli.d	$a0, $s1, 5
-	alsl.d	$a0, $s1, $a0, 4
+	slli.d	$a0, $s3, 5
+	alsl.d	$a0, $s3, $a0, 4
 .Ltmp17:
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -582,11 +574,11 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
                                         #   in Loop: Header=BB0_62 Depth=1
 	move	$s2, $a0
 	ld.w	$a0, $fp, 4
-	bge	$a0, $s8, .LBB0_81
+	bgtz	$a0, .LBB0_81
 	b	.LBB0_83
 	.p2align	4, , 16
 .LBB0_76:                               #   in Loop: Header=BB0_62 Depth=1
-	beqz	$a6, .LBB0_61
+	beqz	$s8, .LBB0_61
 # %bb.77:                               #   in Loop: Header=BB0_62 Depth=1
 	fsub.s	$fa0, $fa0, $fa1
 	fabs.s	$fa0, $fa0
@@ -604,7 +596,7 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	b	.LBB0_61
 .LBB0_80:                               #   in Loop: Header=BB0_62 Depth=1
 	move	$s2, $zero
-	blt	$a0, $s8, .LBB0_83
+	blez	$a0, .LBB0_83
 .LBB0_81:                               # %.lr.ph.i.i.i100
                                         #   in Loop: Header=BB0_62 Depth=1
 	move	$a1, $zero
@@ -788,18 +780,16 @@ __clang_call_terminate:                 # @__clang_call_terminate
 _ZN14btContactArray21merge_contacts_uniqueERKS_: # @_ZN14btContactArray21merge_contacts_uniqueERKS_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a0
 	ld.d	$a0, $a0, 16
 	move	$s0, $a1
@@ -814,10 +804,10 @@ _ZN14btContactArray21merge_contacts_uniqueERKS_: # @_ZN14btContactArray21merge_c
 .LBB2_3:                                # %_ZN20btAlignedObjectArrayI11GIM_CONTACTE5clearEv.exit
 	st.d	$zero, $fp, 4
 	ld.w	$a0, $s0, 4
-	ori	$s2, $zero, 1
-	st.b	$s2, $fp, 24
+	ori	$a1, $zero, 1
+	st.b	$a1, $fp, 24
 	st.d	$zero, $fp, 16
-	bne	$a0, $s2, .LBB2_11
+	bne	$a0, $a1, .LBB2_11
 # %bb.4:                                # %_ZN20btAlignedObjectArrayI11GIM_CONTACTE8allocateEi.exit.i.i
 	ld.d	$s1, $s0, 16
 	ori	$a0, $zero, 48
@@ -826,7 +816,7 @@ _ZN14btContactArray21merge_contacts_uniqueERKS_: # @_ZN14btContactArray21merge_c
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 4
 	move	$s0, $a0
-	blt	$a1, $s2, .LBB2_7
+	blez	$a1, .LBB2_7
 # %bb.5:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a2, $a1, 5
@@ -881,12 +871,11 @@ _ZN14btContactArray21merge_contacts_uniqueERKS_: # @_ZN14btContactArray21merge_c
 	addi.d	$a0, $a3, 1
 	st.w	$a0, $fp, 4
 .LBB2_11:                               # %.loopexit
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end2:
 	.size	_ZN14btContactArray21merge_contacts_uniqueERKS_, .Lfunc_end2-_ZN14btContactArray21merge_contacts_uniqueERKS_

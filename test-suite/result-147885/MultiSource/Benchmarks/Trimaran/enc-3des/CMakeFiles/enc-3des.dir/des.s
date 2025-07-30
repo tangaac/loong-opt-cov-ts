@@ -3463,10 +3463,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB10_28
+	addi.w	$a0, $a0, 0
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	blez	$a0, .LBB10_28
 # %bb.2:
 	addi.d	$a0, $sp, 1176
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill

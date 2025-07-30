@@ -73,9 +73,8 @@ initLinkCells:                          # @initLinkCells
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $fp, 120
-	blt	$s1, $a1, .LBB0_2
+	blez	$s1, .LBB0_2
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $zero
 	move	$a2, $s0
@@ -730,60 +729,58 @@ updateLinkCells:                        # @updateLinkCells
 	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
-	ld.w	$t0, $a0, 12
+	ld.w	$a7, $a0, 12
 	ld.w	$a2, $a0, 20
-	bge	$t0, $a2, .LBB7_4
+	bge	$a7, $a2, .LBB7_4
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a2, $a0, 120
-	alsl.d	$a2, $t0, $a2, 2
+	alsl.d	$a2, $a7, $a2, 2
 	.p2align	4, , 16
 .LBB7_2:                                # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a2, 0
 	ld.w	$a3, $a0, 20
-	addi.d	$t0, $t0, 1
+	addi.d	$a7, $a7, 1
 	addi.d	$a2, $a2, 4
-	blt	$t0, $a3, .LBB7_2
+	blt	$a7, $a3, .LBB7_2
 # %bb.3:                                # %emptyHaloCells.exit.loopexit
-	ld.w	$t0, $a0, 12
+	ld.w	$a7, $a0, 12
 .LBB7_4:                                # %emptyHaloCells.exit
-	ori	$a2, $zero, 1
-	blt	$t0, $a2, .LBB7_34
+	blez	$a7, .LBB7_34
 # %bb.5:                                # %.lr.ph24
-	ld.d	$t2, $a0, 120
-	move	$a3, $zero
-	ori	$a4, $zero, 24
+	ld.d	$t1, $a0, 120
+	move	$a2, $zero
+	ori	$a3, $zero, 24
 	b	.LBB7_7
 	.p2align	4, , 16
 .LBB7_6:                                # %._crit_edge
                                         #   in Loop: Header=BB7_7 Depth=1
-	addi.d	$a3, $a3, 1
-	bge	$a3, $t0, .LBB7_34
+	addi.d	$a2, $a2, 1
+	bge	$a2, $a7, .LBB7_34
 .LBB7_7:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_11 Depth 2
-	slli.d	$a5, $a3, 2
-	ldx.w	$a6, $t2, $a5
-	blt	$a6, $a2, .LBB7_6
+	slli.d	$a4, $a2, 2
+	ldx.w	$a5, $t1, $a4
+	blez	$a5, .LBB7_6
 # %bb.8:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB7_7 Depth=1
-	move	$a6, $zero
-	slli.d	$a7, $a3, 6
+	move	$a5, $zero
+	slli.d	$a6, $a2, 6
 	b	.LBB7_11
 	.p2align	4, , 16
 .LBB7_9:                                #   in Loop: Header=BB7_11 Depth=2
-	addi.w	$a6, $a6, 1
+	addi.w	$a5, $a5, 1
 .LBB7_10:                               # %moveAtom.exit
                                         #   in Loop: Header=BB7_11 Depth=2
-	ld.d	$t2, $a0, 120
-	ldx.w	$t1, $t2, $a5
-	bge	$a6, $t1, .LBB7_6
+	ld.d	$t1, $a0, 120
+	ldx.w	$t0, $t1, $a4
+	bge	$a5, $t0, .LBB7_6
 .LBB7_11:                               # %.lr.ph
                                         #   Parent Loop BB7_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t4, $a1, 24
-	add.d	$t3, $a7, $a6
-	mul.d	$t1, $t3, $a4
-	fldx.d	$fa0, $t4, $t1
+	ld.d	$t3, $a1, 24
+	add.d	$t2, $a6, $a5
+	mul.d	$t0, $t2, $a3
+	fldx.d	$fa0, $t3, $t0
 	fld.d	$fa1, $a0, 48
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB7_13
@@ -793,60 +790,60 @@ updateLinkCells:                        # @updateLinkCells
 	fsub.d	$fa0, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	vreplvei.d	$vr0, $vr0, 0
-	ld.w	$t7, $a0, 0
+	ld.w	$t6, $a0, 0
 	vfrintrm.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$t5, $fa0
-	xor	$t6, $t7, $t5
-	sltui	$t6, $t6, 1
-	addi.w	$t8, $t7, -1
-	masknez	$t5, $t5, $t6
-	maskeqz	$t6, $t8, $t6
-	or	$t6, $t6, $t5
+	movfr2gr.s	$t4, $fa0
+	xor	$t5, $t6, $t4
+	sltui	$t5, $t5, 1
+	addi.w	$t7, $t6, -1
+	masknez	$t4, $t4, $t5
+	maskeqz	$t5, $t7, $t5
+	or	$t5, $t5, $t4
 	b	.LBB7_14
 	.p2align	4, , 16
 .LBB7_13:                               #   in Loop: Header=BB7_11 Depth=2
-	ld.w	$t7, $a0, 0
-	move	$t6, $t7
+	ld.w	$t6, $a0, 0
+	move	$t5, $t6
 .LBB7_14:                               # %getBoxFromCoord.exit
                                         #   in Loop: Header=BB7_11 Depth=2
-	add.d	$t5, $t4, $t1
-	fld.d	$fa0, $t5, 8
+	add.d	$t4, $t3, $t0
+	fld.d	$fa0, $t4, 8
 	fld.d	$fa1, $a0, 32
 	fld.d	$fa3, $a0, 104
-	fld.d	$fa2, $t5, 16
+	fld.d	$fa2, $t4, 16
 	fsub.d	$fa1, $fa0, $fa1
 	fmul.d	$fa1, $fa1, $fa3
 	vreplvei.d	$vr1, $vr1, 0
 	vfrintrm.d	$vr3, $vr1
 	fld.d	$fa1, $a0, 56
-	ld.w	$t8, $a0, 4
+	ld.w	$t7, $a0, 4
 	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$fp, $fa3
+	movfr2gr.s	$t8, $fa3
 	fcmp.cule.d	$fcc0, $fa1, $fa0
-	xor	$s0, $t8, $fp
-	sltui	$s0, $s0, 1
-	addi.w	$s1, $t8, -1
-	masknez	$fp, $fp, $s0
-	maskeqz	$s0, $s1, $s0
-	or	$s0, $s0, $fp
-	movcf2gr	$s1, $fcc0
+	xor	$fp, $t7, $t8
+	sltui	$fp, $fp, 1
+	addi.w	$s0, $t7, -1
+	masknez	$t8, $t8, $fp
+	maskeqz	$fp, $s0, $fp
+	or	$fp, $fp, $t8
+	movcf2gr	$s0, $fcc0
 	fld.d	$fa3, $a0, 64
-	masknez	$s2, $s0, $s1
-	ld.w	$fp, $a0, 8
-	maskeqz	$s1, $t8, $s1
+	masknez	$s1, $fp, $s0
+	ld.w	$t8, $a0, 8
+	maskeqz	$s0, $t7, $s0
 	fcmp.clt.d	$fcc0, $fa2, $fa3
-	or	$s1, $s1, $s2
+	or	$s0, $s0, $s1
 	bcnez	$fcc0, .LBB7_16
 # %bb.15:                               #   in Loop: Header=BB7_11 Depth=2
-	slli.d	$s0, $fp, 1
-	mul.d	$s0, $s0, $t8
-	addi.d	$t7, $t7, 2
-	add.w	$t8, $t8, $s1
-	alsl.d	$t8, $fp, $t8, 1
-	addi.d	$t8, $t8, 3
-	mul.d	$t7, $t7, $t8
-	add.d	$t6, $t6, $s0
+	slli.d	$fp, $t8, 1
+	mul.d	$fp, $fp, $t7
+	addi.d	$t6, $t6, 2
+	add.w	$t7, $t7, $s0
+	alsl.d	$t7, $t8, $t7, 1
+	addi.d	$t7, $t7, 3
+	mul.d	$t6, $t6, $t7
+	add.d	$t5, $t5, $fp
 	b	.LBB7_25
 	.p2align	4, , 16
 .LBB7_16:                               #   in Loop: Header=BB7_11 Depth=2
@@ -857,161 +854,160 @@ updateLinkCells:                        # @updateLinkCells
 	vreplvei.d	$vr2, $vr2, 0
 	vfrintrm.d	$vr2, $vr2
 	ftintrz.w.d	$fa2, $fa2
-	movfr2gr.s	$s2, $fa2
-	xor	$s3, $fp, $s2
-	sltui	$s3, $s3, 1
-	addi.w	$s4, $fp, -1
-	masknez	$s2, $s2, $s3
-	maskeqz	$s3, $s4, $s3
-	or	$s2, $s3, $s2
-	addi.w	$s3, $zero, -1
-	beq	$s2, $s3, .LBB7_19
+	movfr2gr.s	$s1, $fa2
+	xor	$s2, $t8, $s1
+	sltui	$s2, $s2, 1
+	addi.w	$s3, $t8, -1
+	masknez	$s1, $s1, $s2
+	maskeqz	$s2, $s3, $s2
+	or	$s1, $s2, $s1
+	addi.w	$s2, $zero, -1
+	beq	$s1, $s2, .LBB7_19
 # %bb.17:                               #   in Loop: Header=BB7_11 Depth=2
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB7_20
 # %bb.18:                               #   in Loop: Header=BB7_11 Depth=2
-	mul.d	$t8, $fp, $t8
-	addi.d	$t7, $t7, 2
-	add.d	$fp, $s2, $fp
-	mul.d	$t7, $t7, $fp
+	mul.d	$t7, $t8, $t7
+	addi.d	$t6, $t6, 2
+	add.d	$t8, $s1, $t8
+	mul.d	$t6, $t6, $t8
 	b	.LBB7_24
 .LBB7_19:                               #   in Loop: Header=BB7_11 Depth=2
-	slli.d	$s0, $fp, 1
-	mul.d	$t8, $s0, $t8
-	addi.d	$t7, $t7, 2
-	alsl.d	$fp, $fp, $s1, 1
-	addi.d	$fp, $fp, 1
-	mul.d	$t7, $t7, $fp
-	add.d	$t6, $t6, $t8
+	slli.d	$fp, $t8, 1
+	mul.d	$t7, $fp, $t7
+	addi.d	$t6, $t6, 2
+	alsl.d	$t8, $t8, $s0, 1
+	addi.d	$t8, $t8, 1
+	mul.d	$t6, $t6, $t8
+	add.d	$t5, $t5, $t7
 	b	.LBB7_25
 .LBB7_20:                               #   in Loop: Header=BB7_11 Depth=2
-	beq	$s0, $s3, .LBB7_23
+	beq	$fp, $s2, .LBB7_23
 # %bb.21:                               #   in Loop: Header=BB7_11 Depth=2
-	bne	$t6, $t7, .LBB7_31
+	bne	$t5, $t6, .LBB7_31
 # %bb.22:                               #   in Loop: Header=BB7_11 Depth=2
-	add.d	$t6, $s2, $fp
-	mul.d	$t6, $t6, $t8
-	add.d	$t6, $t6, $s0
-	add.w	$t6, $t6, $t0
+	add.d	$t5, $s1, $t8
+	mul.d	$t5, $t5, $t7
+	add.d	$t5, $t5, $fp
+	add.w	$t5, $t5, $a7
 	b	.LBB7_26
 .LBB7_23:                               #   in Loop: Header=BB7_11 Depth=2
-	mul.d	$t8, $t8, $fp
-	addi.d	$t7, $t7, 2
-	mul.d	$t7, $t7, $s2
+	mul.d	$t7, $t7, $t8
+	addi.d	$t6, $t6, 2
+	mul.d	$t6, $t6, $s1
 .LBB7_24:                               # %getBoxFromTuple.exit
                                         #   in Loop: Header=BB7_11 Depth=2
-	alsl.d	$t6, $t8, $t6, 1
+	alsl.d	$t5, $t7, $t5, 1
 .LBB7_25:                               # %getBoxFromTuple.exit
                                         #   in Loop: Header=BB7_11 Depth=2
-	add.d	$t6, $t6, $t0
-	add.d	$t6, $t6, $t7
-	addi.w	$t6, $t6, 1
+	add.d	$t5, $t5, $a7
+	add.d	$t5, $t5, $t6
+	addi.w	$t5, $t5, 1
 .LBB7_26:                               # %getBoxFromTuple.exit
                                         #   in Loop: Header=BB7_11 Depth=2
-	bstrpick.d	$t7, $t6, 31, 0
-	beq	$a3, $t7, .LBB7_9
+	bstrpick.d	$t6, $t5, 31, 0
+	beq	$a2, $t6, .LBB7_9
 # %bb.27:                               #   in Loop: Header=BB7_11 Depth=2
-	slli.d	$t7, $t6, 2
-	ld.d	$t8, $a1, 8
-	ldx.w	$t2, $t2, $t7
-	slli.d	$fp, $t6, 6
-	slli.d	$t0, $t3, 2
-	ldx.w	$s0, $t8, $t0
-	ld.d	$s1, $a1, 16
-	add.w	$fp, $t2, $fp
-	slli.d	$t2, $fp, 2
-	stx.w	$s0, $t8, $t2
-	ldx.w	$t8, $s1, $t0
-	stx.w	$t8, $s1, $t2
-	vld	$vr0, $t5, 0
-	mul.d	$t2, $fp, $a4
-	vstx	$vr0, $t4, $t2
-	ld.d	$t5, $t5, 16
-	add.d	$t4, $t4, $t2
-	st.d	$t5, $t4, 16
-	ld.d	$t4, $a1, 32
-	vldx	$vr0, $t4, $t1
-	add.d	$t5, $t4, $t1
-	vstx	$vr0, $t4, $t2
-	ld.d	$t5, $t5, 16
-	add.d	$t4, $t4, $t2
-	st.d	$t5, $t4, 16
-	ld.d	$t4, $a1, 40
-	vldx	$vr0, $t4, $t1
-	add.d	$t5, $t4, $t1
-	vstx	$vr0, $t4, $t2
-	ld.d	$t5, $t5, 16
-	add.d	$t2, $t4, $t2
-	st.d	$t5, $t2, 16
-	ld.d	$t4, $a1, 48
-	slli.d	$t2, $t3, 3
-	ldx.d	$t3, $t4, $t2
-	slli.d	$t5, $fp, 3
-	stx.d	$t3, $t4, $t5
-	ld.d	$t4, $a0, 120
-	ldx.w	$t3, $t4, $t7
-	addi.d	$t3, $t3, 1
-	stx.w	$t3, $t4, $t7
-	ldx.w	$t3, $t4, $a5
-	addi.w	$t3, $t3, -1
-	stx.w	$t3, $t4, $a5
-	beqz	$t3, .LBB7_29
-# %bb.28:                               #   in Loop: Header=BB7_11 Depth=2
-	ld.d	$t4, $a1, 8
-	add.d	$t3, $a7, $t3
-	slli.d	$t5, $t3, 2
-	ldx.w	$t7, $t4, $t5
-	ld.d	$t8, $a1, 16
-	stx.w	$t7, $t4, $t0
-	ldx.w	$t4, $t8, $t5
-	ld.d	$t5, $a1, 24
-	stx.w	$t4, $t8, $t0
-	mul.d	$t0, $t3, $a4
-	vldx	$vr0, $t5, $t0
-	add.d	$t4, $t5, $t0
-	vstx	$vr0, $t5, $t1
+	slli.d	$t6, $t5, 2
+	ld.d	$t7, $a1, 8
+	ldx.w	$t1, $t1, $t6
+	slli.d	$t8, $t5, 6
+	slli.d	$a7, $t2, 2
+	ldx.w	$fp, $t7, $a7
+	ld.d	$s0, $a1, 16
+	add.w	$t8, $t1, $t8
+	slli.d	$t1, $t8, 2
+	stx.w	$fp, $t7, $t1
+	ldx.w	$t7, $s0, $a7
+	stx.w	$t7, $s0, $t1
+	vld	$vr0, $t4, 0
+	mul.d	$t1, $t8, $a3
+	vstx	$vr0, $t3, $t1
 	ld.d	$t4, $t4, 16
-	add.d	$t5, $t5, $t1
-	st.d	$t4, $t5, 16
-	ld.d	$t4, $a1, 32
-	vldx	$vr0, $t4, $t0
-	add.d	$t5, $t4, $t0
-	vstx	$vr0, $t4, $t1
-	ld.d	$t5, $t5, 16
-	add.d	$t4, $t4, $t1
-	st.d	$t5, $t4, 16
-	ld.d	$t4, $a1, 40
-	vldx	$vr0, $t4, $t0
-	add.d	$t0, $t4, $t0
-	vstx	$vr0, $t4, $t1
-	ld.d	$t0, $t0, 16
-	add.d	$t1, $t4, $t1
-	st.d	$t0, $t1, 16
-	ld.d	$t0, $a1, 48
-	slli.d	$t1, $t3, 3
-	ldx.d	$t1, $t0, $t1
-	stx.d	$t1, $t0, $t2
+	add.d	$t3, $t3, $t1
+	st.d	$t4, $t3, 16
+	ld.d	$t3, $a1, 32
+	vldx	$vr0, $t3, $t0
+	add.d	$t4, $t3, $t0
+	vstx	$vr0, $t3, $t1
+	ld.d	$t4, $t4, 16
+	add.d	$t3, $t3, $t1
+	st.d	$t4, $t3, 16
+	ld.d	$t3, $a1, 40
+	vldx	$vr0, $t3, $t0
+	add.d	$t4, $t3, $t0
+	vstx	$vr0, $t3, $t1
+	ld.d	$t4, $t4, 16
+	add.d	$t1, $t3, $t1
+	st.d	$t4, $t1, 16
+	ld.d	$t3, $a1, 48
+	slli.d	$t1, $t2, 3
+	ldx.d	$t2, $t3, $t1
+	slli.d	$t4, $t8, 3
+	stx.d	$t2, $t3, $t4
+	ld.d	$t3, $a0, 120
+	ldx.w	$t2, $t3, $t6
+	addi.d	$t2, $t2, 1
+	stx.w	$t2, $t3, $t6
+	ldx.w	$t2, $t3, $a4
+	addi.w	$t2, $t2, -1
+	stx.w	$t2, $t3, $a4
+	beqz	$t2, .LBB7_29
+# %bb.28:                               #   in Loop: Header=BB7_11 Depth=2
+	ld.d	$t3, $a1, 8
+	add.d	$t2, $a6, $t2
+	slli.d	$t4, $t2, 2
+	ldx.w	$t6, $t3, $t4
+	ld.d	$t7, $a1, 16
+	stx.w	$t6, $t3, $a7
+	ldx.w	$t3, $t7, $t4
+	ld.d	$t4, $a1, 24
+	stx.w	$t3, $t7, $a7
+	mul.d	$a7, $t2, $a3
+	vldx	$vr0, $t4, $a7
+	add.d	$t3, $t4, $a7
+	vstx	$vr0, $t4, $t0
+	ld.d	$t3, $t3, 16
+	add.d	$t4, $t4, $t0
+	st.d	$t3, $t4, 16
+	ld.d	$t3, $a1, 32
+	vldx	$vr0, $t3, $a7
+	add.d	$t4, $t3, $a7
+	vstx	$vr0, $t3, $t0
+	ld.d	$t4, $t4, 16
+	add.d	$t3, $t3, $t0
+	st.d	$t4, $t3, 16
+	ld.d	$t3, $a1, 40
+	vldx	$vr0, $t3, $a7
+	add.d	$a7, $t3, $a7
+	vstx	$vr0, $t3, $t0
+	ld.d	$a7, $a7, 16
+	add.d	$t0, $t3, $t0
+	st.d	$a7, $t0, 16
+	ld.d	$a7, $a1, 48
+	slli.d	$t0, $t2, 3
+	ldx.d	$t0, $a7, $t0
+	stx.d	$t0, $a7, $t1
 .LBB7_29:                               #   in Loop: Header=BB7_11 Depth=2
-	ld.w	$t0, $a0, 12
-	bge	$t0, $t6, .LBB7_10
+	ld.w	$a7, $a0, 12
+	bge	$a7, $t5, .LBB7_10
 # %bb.30:                               #   in Loop: Header=BB7_11 Depth=2
-	ld.w	$t1, $a1, 0
-	addi.d	$t1, $t1, -1
-	st.w	$t1, $a1, 0
+	ld.w	$t0, $a1, 0
+	addi.d	$t0, $t0, -1
+	st.w	$t0, $a1, 0
 	b	.LBB7_10
 .LBB7_31:                               #   in Loop: Header=BB7_11 Depth=2
-	mul.d	$t8, $s2, $t8
-	add.d	$t8, $t8, $s0
-	beq	$t6, $s3, .LBB7_33
+	mul.d	$t7, $s1, $t7
+	add.d	$t7, $t7, $fp
+	beq	$t5, $s2, .LBB7_33
 # %bb.32:                               #   in Loop: Header=BB7_11 Depth=2
-	mul.d	$t7, $t7, $t8
-	add.w	$t6, $t7, $t6
+	mul.d	$t6, $t6, $t7
+	add.w	$t5, $t6, $t5
 	b	.LBB7_26
 .LBB7_33:                               #   in Loop: Header=BB7_11 Depth=2
-	add.w	$t6, $t8, $t0
+	add.w	$t5, $t7, $a7
 	b	.LBB7_26
 .LBB7_34:                               # %._crit_edge25
-	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
@@ -1030,9 +1026,8 @@ maxOccupancy:                           # @maxOccupancy
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a1, $a0, 12
-	ori	$a2, $zero, 1
 	st.w	$zero, $sp, 4
-	blt	$a1, $a2, .LBB8_7
+	blez	$a1, .LBB8_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $a0, 120
 	ori	$a2, $zero, 8

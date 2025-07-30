@@ -1101,31 +1101,30 @@ interpret_spare_pic:                    # @interpret_spare_pic
 	add.w	$a0, $a0, $a3
 	srai.d	$a3, $a0, 4
 	addi.d	$a0, $sp, 80
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(get_mem3D)
 	jirl	$ra, $ra, 0
 	bltz	$s2, .LBB9_65
 # %bb.1:                                # %.lr.ph207
 	move	$s1, $zero
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$s6, $zero, -1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB9_3
 	.p2align	4, , 16
 .LBB9_2:                                # %.loopexit
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	addi.d	$s1, $s1, 1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB9_65
 .LBB9_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_9 Depth 2
@@ -1134,15 +1133,15 @@ interpret_spare_pic:                    # @interpret_spare_pic
                                         #       Child Loop BB9_21 Depth 3
                                         #     Child Loop BB9_61 Depth 2
                                         #       Child Loop BB9_63 Depth 3
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	move	$a1, $s0
+	pcaddu18i	$ra, %call36(ue_v)
+	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(ue_v)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(ue_v)
-	jirl	$ra, $ra, 0
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	beqz	$a0, .LBB9_58
 # %bb.4:                                #   in Loop: Header=BB9_3 Depth=1
 	move	$a1, $a0
@@ -1212,7 +1211,7 @@ interpret_spare_pic:                    # @interpret_spare_pic
 # %bb.14:                               # %.preheader161.lr.ph
                                         #   in Loop: Header=BB9_3 Depth=1
 	move	$s5, $zero
-	move	$a4, $zero
+	move	$s7, $zero
 	ld.w	$a2, $fp, 48
 	bstrpick.d	$a0, $a1, 31, 4
 	addi.d	$a0, $a0, -1
@@ -1224,25 +1223,24 @@ interpret_spare_pic:                    # @interpret_spare_pic
 	bstrpick.d	$a3, $a0, 31, 31
 	add.w	$a0, $a0, $a3
 	srai.d	$s3, $a0, 1
-	ori	$s7, $zero, 1
+	ori	$s6, $zero, 1
 	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
 	move	$s4, $s3
 	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB9_17
 	.p2align	4, , 16
 .LBB9_15:                               # %._crit_edge.loopexit
                                         #   in Loop: Header=BB9_17 Depth=2
 	ld.w	$a1, $fp, 52
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 .LBB9_16:                               # %._crit_edge
                                         #   in Loop: Header=BB9_17 Depth=2
-	addi.w	$a4, $a4, 1
+	addi.w	$s7, $s7, 1
 	bstrpick.d	$a3, $a1, 62, 59
 	add.w	$a3, $a1, $a3
 	srai.d	$a3, $a3, 4
-	bge	$a4, $a3, .LBB9_2
+	bge	$s7, $a3, .LBB9_2
 .LBB9_17:                               # %.preheader161
                                         #   Parent Loop BB9_3 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1251,11 +1249,10 @@ interpret_spare_pic:                    # @interpret_spare_pic
 	blt	$a2, $a3, .LBB9_16
 # %bb.18:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB9_17 Depth=2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	move	$s1, $zero
 	b	.LBB9_21
 .LBB9_19:                               #   in Loop: Header=BB9_21 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 	addi.d	$s3, $s3, 1
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
@@ -1270,7 +1267,7 @@ interpret_spare_pic:                    # @interpret_spare_pic
                                         #   Parent Loop BB9_3 Depth=1
                                         #     Parent Loop BB9_17 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	blt	$s6, $a0, .LBB9_23
+	bgez	$a0, .LBB9_23
 # %bb.22:                               #   in Loop: Header=BB9_21 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
@@ -1279,135 +1276,136 @@ interpret_spare_pic:                    # @interpret_spare_pic
 	jirl	$ra, $ra, 0
 .LBB9_23:                               #   in Loop: Header=BB9_21 Depth=3
 	ld.d	$a1, $sp, 80
-	ldx.d	$a2, $a1, $s8
-	addi.w	$a1, $s2, 0
-	slli.d	$a3, $a1, 3
-	ldx.d	$a3, $a2, $a3
+	ldx.d	$a1, $a1, $s8
+	addi.w	$a2, $s2, 0
+	slli.d	$a3, $a2, 3
+	ldx.d	$a1, $a1, $a3
 	slti	$a4, $a0, 1
-	addi.w	$a2, $s3, 0
-	stx.b	$a4, $a3, $a2
+	addi.w	$a3, $s3, 0
+	stx.b	$a4, $a1, $a3
+	addi.w	$a1, $zero, -1
 	addi.w	$a0, $a0, -1
-	bne	$s5, $s6, .LBB9_27
+	bne	$s5, $a1, .LBB9_27
 # %bb.24:                               #   in Loop: Header=BB9_21 Depth=3
-	bnez	$s7, .LBB9_27
+	bnez	$s6, .LBB9_27
 # %bb.25:                               #   in Loop: Header=BB9_21 Depth=3
 	addi.w	$a1, $s4, 0
-	bge	$a1, $a2, .LBB9_37
+	bge	$a1, $a3, .LBB9_37
 # %bb.26:                               #   in Loop: Header=BB9_21 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 	addi.d	$s3, $s3, -1
 	b	.LBB9_40
 	.p2align	4, , 16
 .LBB9_27:                               #   in Loop: Header=BB9_21 Depth=3
-	ori	$a3, $zero, 1
-	bne	$s5, $a3, .LBB9_33
+	ori	$a4, $zero, 1
+	bne	$s5, $a4, .LBB9_33
 # %bb.28:                               #   in Loop: Header=BB9_21 Depth=3
-	bnez	$s7, .LBB9_33
+	bnez	$s6, .LBB9_33
 # %bb.29:                               #   in Loop: Header=BB9_21 Depth=3
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	addi.w	$a1, $a1, 0
-	blt	$a2, $a1, .LBB9_19
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	addi.w	$a2, $a2, 0
+	blt	$a3, $a2, .LBB9_19
 # %bb.30:                               #   in Loop: Header=BB9_21 Depth=3
-	ld.w	$a3, $fp, 48
-	bstrpick.d	$a4, $a3, 62, 59
-	add.w	$a3, $a3, $a4
-	srai.d	$a3, $a3, 4
-	addi.d	$a3, $a3, -1
-	beq	$a2, $a3, .LBB9_50
+	ld.w	$a4, $fp, 48
+	bstrpick.d	$a5, $a4, 62, 59
+	add.w	$a4, $a4, $a5
+	srai.d	$a4, $a4, 4
+	addi.d	$a4, $a4, -1
+	beq	$a3, $a4, .LBB9_50
 # %bb.31:                               #   in Loop: Header=BB9_21 Depth=3
-	beq	$a2, $a1, .LBB9_52
+	beq	$a3, $a2, .LBB9_52
 # %bb.32:                               #   in Loop: Header=BB9_21 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 	ori	$s5, $zero, 1
 	b	.LBB9_20
 	.p2align	4, , 16
 .LBB9_33:                               #   in Loop: Header=BB9_21 Depth=3
 	bnez	$s5, .LBB9_41
 # %bb.34:                               #   in Loop: Header=BB9_21 Depth=3
-	addi.w	$a2, $zero, -1
-	bne	$s7, $a2, .LBB9_41
+	addi.w	$a3, $zero, -1
+	bne	$s6, $a3, .LBB9_41
 # %bb.35:                               #   in Loop: Header=BB9_21 Depth=3
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	addi.w	$a3, $a3, 0
-	bge	$a3, $a1, .LBB9_48
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	addi.w	$a1, $a1, 0
+	bge	$a1, $a2, .LBB9_48
 # %bb.36:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s5, $zero
 	addi.d	$s2, $s2, -1
-	move	$s7, $a2
+	move	$s6, $a3
 	b	.LBB9_20
 	.p2align	4, , 16
 .LBB9_37:                               #   in Loop: Header=BB9_21 Depth=3
-	beqz	$a2, .LBB9_46
+	beqz	$a3, .LBB9_46
 # %bb.38:                               #   in Loop: Header=BB9_21 Depth=3
-	beq	$a2, $a1, .LBB9_54
+	beq	$a3, $a1, .LBB9_54
 # %bb.39:                               #   in Loop: Header=BB9_21 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 .LBB9_40:                               #   in Loop: Header=BB9_21 Depth=3
 	addi.w	$s5, $zero, -1
 	b	.LBB9_20
 .LBB9_41:                               #   in Loop: Header=BB9_21 Depth=3
 	bnez	$s5, .LBB9_20
 # %bb.42:                               #   in Loop: Header=BB9_21 Depth=3
-	ori	$a2, $zero, 1
-	bne	$s7, $a2, .LBB9_20
+	ori	$a3, $zero, 1
+	bne	$s6, $a3, .LBB9_20
 # %bb.43:                               #   in Loop: Header=BB9_21 Depth=3
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	addi.w	$a2, $a2, 0
-	bge	$a1, $a2, .LBB9_51
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	addi.w	$a3, $a3, 0
+	bge	$a2, $a3, .LBB9_51
 # %bb.44:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s5, $zero
 	addi.d	$s2, $s2, 1
 .LBB9_45:                               #   in Loop: Header=BB9_21 Depth=3
-	ori	$s7, $zero, 1
+	ori	$s6, $zero, 1
 	b	.LBB9_20
 .LBB9_46:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s3, $zero
 .LBB9_47:                               #   in Loop: Header=BB9_21 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$s2, $a1, 1
 	ori	$s5, $zero, 1
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB9_20
 .LBB9_48:                               #   in Loop: Header=BB9_21 Depth=3
-	beqz	$a1, .LBB9_53
+	beqz	$a2, .LBB9_53
 # %bb.49:                               #   in Loop: Header=BB9_21 Depth=3
-	bne	$a1, $a3, .LBB9_55
+	bne	$a2, $a1, .LBB9_55
 .LBB9_50:                               #   in Loop: Header=BB9_21 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$s2, $a1, -1
 	addi.w	$s5, $zero, -1
 	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB9_20
 .LBB9_51:                               #   in Loop: Header=BB9_21 Depth=3
-	ld.w	$a3, $fp, 52
-	bstrpick.d	$a4, $a3, 62, 59
-	add.w	$a3, $a3, $a4
-	srai.d	$a3, $a3, 4
-	addi.d	$a3, $a3, -1
-	bne	$a1, $a3, .LBB9_56
+	ld.w	$a4, $fp, 52
+	bstrpick.d	$a5, $a4, 62, 59
+	add.w	$a4, $a4, $a5
+	srai.d	$a4, $a4, 4
+	addi.d	$a4, $a4, -1
+	bne	$a2, $a4, .LBB9_56
 .LBB9_52:                               #   in Loop: Header=BB9_21 Depth=3
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s3, $a1, 1
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$s3, $a2, 1
 	move	$s5, $zero
 	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	move	$s7, $s6
+	move	$s6, $a1
 	b	.LBB9_20
 .LBB9_53:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s2, $zero
 .LBB9_54:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s5, $zero
 	addi.d	$s3, $s4, -1
-	ori	$s7, $zero, 1
+	ori	$s6, $zero, 1
 	move	$s4, $s3
 	b	.LBB9_20
 .LBB9_55:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s5, $zero
-	move	$s7, $a2
+	move	$s6, $a3
 	b	.LBB9_20
 .LBB9_56:                               #   in Loop: Header=BB9_21 Depth=3
-	beq	$a1, $a2, .LBB9_47
+	beq	$a2, $a3, .LBB9_47
 # %bb.57:                               #   in Loop: Header=BB9_21 Depth=3
 	move	$s5, $zero
 	b	.LBB9_45
@@ -1421,7 +1419,7 @@ interpret_spare_pic:                    # @interpret_spare_pic
                                         #   in Loop: Header=BB9_3 Depth=1
 	ld.w	$a2, $fp, 48
 	move	$a0, $zero
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	slli.d	$a1, $a1, 3
 	b	.LBB9_61
 	.p2align	4, , 16
@@ -1463,7 +1461,7 @@ interpret_spare_pic:                    # @interpret_spare_pic
 	b	.LBB9_60
 .LBB9_65:                               # %._crit_edge208
 	ld.d	$a0, $sp, 80
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free_mem3D)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
@@ -1765,8 +1763,7 @@ interpret_subsequence_characteristics_info: # @interpret_subsequence_characteris
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(ue_v)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB13_7
+	blez	$a0, .LBB13_7
 # %bb.5:                                # %.lr.ph.preheader
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.21)

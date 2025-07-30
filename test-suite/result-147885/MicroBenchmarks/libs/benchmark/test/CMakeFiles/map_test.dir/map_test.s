@@ -253,8 +253,7 @@ _ZL12BM_MapLookupRN9benchmark5StateE:   # @_ZL12BM_MapLookupRN9benchmark5StateE
 .Ltmp31:
 # %bb.32:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s0, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_41
+	beqz	$a0, .LBB0_41
 # %bb.33:
 	ld.d	$a0, $s0, 16
 	ld.d	$a1, $s0, 0
@@ -556,8 +555,7 @@ _ZN27MapFixture_Lookup_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN27Map
 # %bb.2:                                # %_ZNK9benchmark5State5rangeEm.exit
 	beqz	$s2, .LBB1_15
 # %bb.3:                                # %.preheader.lr.ph
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_14
+	blez	$s1, .LBB1_14
 # %bb.4:
 	addi.d	$s3, $s0, 232
 	addi.d	$s4, $sp, 8
@@ -634,8 +632,7 @@ _ZN27MapFixture_Lookup_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN27Map
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_22
+	beqz	$a0, .LBB1_22
 # %bb.16:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -1430,17 +1427,16 @@ _ZN12_GLOBAL__N_118ConstructRandomMapEi: # @_ZN12_GLOBAL__N_118ConstructRandomMa
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$fp, $a0
 	addi.d	$s1, $a0, 8
 	st.w	$zero, $a0, 8
 	st.d	$zero, $a0, 16
 	st.d	$s1, $a0, 24
 	st.d	$s1, $a0, 32
-	ori	$a0, $zero, 1
-	st.d	$zero, $fp, 40
-	blt	$a1, $a0, .LBB11_16
+	st.d	$zero, $a0, 40
+	blez	$a1, .LBB11_16
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a1
+	move	$fp, $a0
 	move	$s5, $zero
 	ori	$s6, $zero, 16
 	ori	$s7, $zero, 24
@@ -2037,9 +2033,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	or	$a0, $a0, $a1
 .LBB16_10:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $s1
-	blt	$a1, $a0, .LBB16_12
+	bgez	$a0, .LBB16_12
 .LBB16_11:                              # %.critedge
 	st.d	$s8, $sp, 32
 	pcalau12i	$a0, %pc_hi20(_ZSt19piecewise_construct)
@@ -2312,8 +2307,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB18_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB18_12
+	bltz	$a0, .LBB18_12
 	b	.LBB18_18
 .LBB18_4:
 	ld.d	$a0, $s1, 40
@@ -2395,8 +2389,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB18_16:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB18_28
+	bgez	$a0, .LBB18_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -2426,8 +2419,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB18_20:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB18_23
+	bltz	$a0, .LBB18_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB18_29
@@ -2442,10 +2434,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB18_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -2455,7 +2447,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB18_27
 .LBB18_26:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -2469,7 +2461,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB18_27:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB18_31
+	bltz	$a0, .LBB18_31
 .LBB18_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -2629,10 +2621,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	bnez	$a0, .LBB20_3
 	b	.LBB20_2
 .LBB20_6:                               # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB20_9
+	bgez	$a1, .LBB20_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB20_14

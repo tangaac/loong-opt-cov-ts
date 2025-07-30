@@ -536,12 +536,11 @@ _ZN22CUpdateCallbackConsole8FinilizeEv: # @_ZN22CUpdateCallbackConsole8FinilizeE
 	addi.d	$a0, $a0, %pc_lo12(_ZL17g_CriticalSection)
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $fp, 56
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB9_8
+	ld.bu	$a0, $fp, 56
+	beqz	$a0, .LBB9_8
 # %bb.1:
-	ld.bu	$a1, $fp, 72
-	bne	$a1, $a0, .LBB9_3
+	ld.bu	$a0, $fp, 72
+	beqz	$a0, .LBB9_3
 # %bb.2:
 	addi.d	$a0, $fp, 8
 .Ltmp14:
@@ -553,8 +552,7 @@ _ZN22CUpdateCallbackConsole8FinilizeEv: # @_ZN22CUpdateCallbackConsole8FinilizeE
 	bnez	$a0, .LBB9_7
 # %bb.4:
 	ld.bu	$a0, $fp, 57
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB9_7
+	beqz	$a0, .LBB9_7
 # %bb.5:
 	addi.d	$a0, $fp, 8
 .Ltmp16:
@@ -644,8 +642,7 @@ _ZN22CUpdateCallbackConsole8SetTotalEy: # @_ZN22CUpdateCallbackConsole8SetTotalE
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_2
+	beqz	$a0, .LBB11_2
 # %bb.1:
 	st.d	$s0, $fp, 32
 	st.d	$zero, $fp, 16
@@ -841,8 +838,7 @@ _ZN22CUpdateCallbackConsole9GetStreamEPKwb: # @_ZN22CUpdateCallbackConsole9GetSt
 .Ltmp27:
 # %bb.3:
 	ld.bu	$a0, $fp, 72
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB14_5
+	beqz	$a0, .LBB14_5
 # %bb.4:
 .Ltmp28:
 	move	$a0, $s0
@@ -1304,8 +1300,7 @@ _ZN22CUpdateCallbackConsole22CryptoGetTextPassword2EPiPPw: # @_ZN22CUpdateCallba
 .Ltmp61:
 # %bb.7:                                # %.noexc
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB17_9
+	blez	$s5, .LBB17_9
 # %bb.8:                                # %._crit_edge.thread.i.i
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1467,8 +1462,7 @@ _ZN22CUpdateCallbackConsole21CryptoGetTextPasswordEPPw: # @_ZN22CUpdateCallbackC
 .Ltmp64:
 # %bb.6:                                # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB18_8
+	blez	$s4, .LBB18_8
 # %bb.7:                                # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)

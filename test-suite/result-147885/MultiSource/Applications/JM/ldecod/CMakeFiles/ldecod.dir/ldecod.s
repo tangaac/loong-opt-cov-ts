@@ -1591,8 +1591,7 @@ AllocPartition:                         # @AllocPartition
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB9_2:
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB9_9
+	blez	$fp, .LBB9_9
 # %bb.3:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.69)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.69)
@@ -1678,9 +1677,8 @@ FreePartition:                          # @FreePartition
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB10_3
+	blez	$a1, .LBB10_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a1
 	move	$s1, $fp
@@ -1911,38 +1909,38 @@ init_global_buffers:                    # @init_global_buffers
 	ld.d	$s0, $s8, %pc_lo12(img)
 	ldptr.d	$a0, $s0, 5552
 .LBB11_17:
-	srai.d	$a2, $s7, 1
-	alsl.d	$a0, $a2, $a0, 2
-	ori	$a1, $zero, 1
+	srai.d	$a1, $s7, 1
+	alsl.d	$a0, $a1, $a0, 2
 	stptr.d	$a0, $s0, 5552
-	blt	$a2, $a1, .LBB11_20
+	blez	$a1, .LBB11_20
 # %bb.18:                               # %.lr.ph34.preheader
-	move	$a3, $zero
-	move	$a4, $a0
+	move	$a2, $zero
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB11_19:                              # %.lr.ph34
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a5, $a3, $a3
-	st.w	$a5, $a4, 0
-	st.w	$a5, $a0, 0
-	addi.d	$a3, $a3, 1
-	addi.d	$a4, $a4, -4
+	mul.d	$a4, $a2, $a2
+	st.w	$a4, $a3, 0
+	st.w	$a4, $a0, 0
+	addi.d	$a2, $a2, 1
+	addi.d	$a3, $a3, -4
 	addi.d	$a0, $a0, 4
-	bne	$a2, $a3, .LBB11_19
+	bne	$a1, $a2, .LBB11_19
 .LBB11_20:                              # %._crit_edge35
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
-	add.d	$a0, $a2, $a0
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s1
 	add.d	$a0, $a0, $s2
 	add.d	$a0, $a0, $s3
 	add.d	$a0, $a0, $s4
-	ldx.w	$a2, $s0, $fp
 	add.d	$a0, $a0, $s5
+	ldx.w	$a1, $s0, $fp
 	add.w	$a0, $a0, $s6
+	ori	$a2, $zero, 1
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	st.w	$a1, $a3, %pc_lo12(global_init_done)
-	stptr.w	$a2, $s0, 5844
+	st.w	$a2, $a3, %pc_lo12(global_init_done)
+	stptr.w	$a1, $s0, 5844
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload

@@ -74,14 +74,15 @@ show_setup:                             # @show_setup
 	ld.d	$a0, $s0, 352
 	ld.d	$a1, $s0, 368
 	or	$a0, $a1, $a0
-	bstrpick.d	$a0, $a0, 62, 0
+	slli.d	$a0, $a0, 1
 	beqz	$a0, .LBB1_6
 # %bb.4:
 	ld.d	$a0, $s0, 336
 	ld.d	$a1, $s0, 384
 	or	$a0, $a1, $a0
-	bstrpick.d	$a0, $a0, 62, 0
-	sltui	$a1, $a0, 1
+	bstrpick.d	$a1, $a0, 62, 0
+	sltui	$a1, $a1, 1
+	slli.d	$a0, $a0, 1
 	st.w	$a1, $fp, 56
 	beqz	$a0, .LBB1_7
 # %bb.5:
@@ -492,8 +493,7 @@ gs_stringwidth_init:                    # @gs_stringwidth_init
 	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(gx_path_current_point)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB11_4
+	bgez	$a0, .LBB11_4
 # %bb.3:
 	ld.d	$a0, $fp, 256
 	ld.d	$a1, $fp, 120
@@ -542,8 +542,7 @@ stringwidth_setup:                      # @stringwidth_setup
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(gx_path_current_point)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB12_4
+	bgez	$a0, .LBB12_4
 # %bb.3:
 	ld.d	$a0, $fp, 256
 	ld.d	$a1, $fp, 120
@@ -592,8 +591,7 @@ gs_stringwidth_n_init:                  # @gs_stringwidth_n_init
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(gx_path_current_point)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB13_4
+	bgez	$a0, .LBB13_4
 # %bb.3:
 	ld.d	$a0, $fp, 256
 	ld.d	$a1, $fp, 120

@@ -35,8 +35,7 @@ foo:                                    # @foo
 	addi.d	$a0, $a0, %pc_lo12(e)
 	b	.LBB1_5
 .LBB1_3:                                # %thread-pre-split.us.preheader
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_5
+	blez	$a1, .LBB1_5
 .LBB1_4:                                # %.loopexit12
 	ret
 .LBB1_5:                                # %.loopexit12.sink.split

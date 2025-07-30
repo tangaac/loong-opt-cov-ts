@@ -270,58 +270,57 @@ FmoInit:                                # @FmoInit
 # %bb.41:                               # %._crit_edge.i29.loopexit.i
 	ld.w	$a2, $s1, 60
 .LBB0_42:                               # %._crit_edge.i29.i
-	addi.w	$a4, $a2, -1
-	bltz	$a4, .LBB0_22
+	addi.w	$a3, $a2, -1
+	bltz	$a3, .LBB0_22
 # %bb.43:                               # %.lr.ph44.i.i
 	addi.d	$a0, $s1, 100
 	addi.d	$a1, $s1, 132
-	ori	$a2, $zero, 1
 	b	.LBB0_45
 	.p2align	4, , 16
 .LBB0_44:                               # %.loopexit.i.i
                                         #   in Loop: Header=BB0_45 Depth=1
-	addi.d	$a4, $a3, -1
-	blt	$a3, $a2, .LBB0_22
+	addi.d	$a3, $a2, -1
+	blez	$a2, .LBB0_22
 .LBB0_45:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_47 Depth 2
                                         #       Child Loop BB0_48 Depth 3
-	move	$a3, $a4
-	slli.d	$a4, $a4, 2
-	ldx.w	$a6, $a0, $a4
-	ldx.w	$a7, $fp, $s6
-	ldx.w	$t0, $a1, $a4
-	div.wu	$a4, $a6, $a7
-	div.wu	$a5, $t0, $a7
-	bltu	$a5, $a4, .LBB0_44
+	move	$a2, $a3
+	slli.d	$a3, $a3, 2
+	ldx.w	$a5, $a0, $a3
+	ldx.w	$a6, $fp, $s6
+	ldx.w	$a7, $a1, $a3
+	div.wu	$a3, $a5, $a6
+	div.wu	$a4, $a7, $a6
+	bltu	$a4, $a3, .LBB0_44
 # %bb.46:                               # %.preheader.lr.ph.i.i
                                         #   in Loop: Header=BB0_45 Depth=1
-	mul.d	$t1, $a4, $a7
-	sub.w	$a6, $a6, $t1
-	mul.d	$a7, $a5, $a7
-	sub.w	$a7, $t0, $a7
-	bltu	$a7, $a6, .LBB0_44
+	mul.d	$t0, $a3, $a6
+	sub.w	$a5, $a5, $t0
+	mul.d	$a6, $a4, $a6
+	sub.w	$a6, $a7, $a6
+	bltu	$a6, $a5, .LBB0_44
 	.p2align	4, , 16
 .LBB0_47:                               # %.preheader.i30.i
                                         #   Parent Loop BB0_45 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_48 Depth 3
-	move	$t0, $a6
+	move	$a7, $a5
 	.p2align	4, , 16
 .LBB0_48:                               #   Parent Loop BB0_45 Depth=1
                                         #     Parent Loop BB0_47 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.w	$t1, $fp, $s6
-	ld.d	$t2, $s4, %pc_lo12(MapUnitToSliceGroupMap)
-	mul.d	$t1, $t1, $a4
-	add.d	$t1, $t1, $t0
-	bstrpick.d	$t1, $t1, 31, 0
-	addi.w	$t0, $t0, 1
-	stx.b	$a3, $t2, $t1
-	bgeu	$a7, $t0, .LBB0_48
+	ldx.w	$t0, $fp, $s6
+	ld.d	$t1, $s4, %pc_lo12(MapUnitToSliceGroupMap)
+	mul.d	$t0, $t0, $a3
+	add.d	$t0, $t0, $a7
+	bstrpick.d	$t0, $t0, 31, 0
+	addi.w	$a7, $a7, 1
+	stx.b	$a2, $t1, $t0
+	bgeu	$a6, $a7, .LBB0_48
 # %bb.49:                               # %._crit_edge38.i.i
                                         #   in Loop: Header=BB0_47 Depth=2
-	addi.w	$a4, $a4, 1
-	bgeu	$a5, $a4, .LBB0_47
+	addi.w	$a3, $a3, 1
+	bgeu	$a4, $a3, .LBB0_47
 	b	.LBB0_44
 .LBB0_50:
 	beqz	$s2, .LBB0_22
@@ -671,8 +670,7 @@ FmoStartPicture:                        # @FmoStartPicture
 	ld.d	$a0, $a0, %got_pc_lo12(img)
 	ld.d	$a0, $a0, 0
 	ldptr.w	$a1, $a0, 15348
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_34
+	blez	$a1, .LBB2_34
 # %bb.1:                                # %.lr.ph.i.us.preheader.preheader
 	pcalau12i	$a0, %pc_hi20(MBAmap)
 	ld.d	$a0, $a0, %pc_lo12(MBAmap)
@@ -838,9 +836,8 @@ FmoGetFirstMBOfSliceGroup:              # @FmoGetFirstMBOfSliceGroup
 	ld.d	$a1, $a1, 0
 	ldptr.w	$a2, $a1, 15348
 	move	$a1, $a0
-	ori	$a3, $zero, 1
 	addi.w	$a0, $zero, -1
-	blt	$a2, $a3, .LBB3_4
+	blez	$a2, .LBB3_4
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a3, %pc_hi20(MBAmap)
 	ld.d	$a3, $a3, %pc_lo12(MBAmap)
@@ -923,14 +920,13 @@ FmoGetPreviousMBNr:                     # @FmoGetPreviousMBNr
 	ld.d	$a1, $a1, %pc_lo12(MBAmap)
 	ldx.bu	$a3, $a1, $a0
 	addi.w	$a2, $zero, -1
-	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB7_1:                                # =>This Inner Loop Header: Depth=1
-	blt	$a0, $a4, .LBB7_4
+	blez	$a0, .LBB7_4
 # %bb.2:                                #   in Loop: Header=BB7_1 Depth=1
 	addi.w	$a0, $a0, -1
-	ldx.bu	$a5, $a1, $a0
-	bne	$a3, $a5, .LBB7_1
+	ldx.bu	$a4, $a1, $a0
+	bne	$a3, $a4, .LBB7_1
 # %bb.3:                                # %.critedge
 	ret
 .LBB7_4:
@@ -956,8 +952,7 @@ FmoGetLastCodedMBOfSliceGroup:          # @FmoGetLastCodedMBOfSliceGroup
 	ld.d	$a1, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $a1, 0
 	ldptr.w	$a2, $a1, 15348
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB8_3
+	blez	$a2, .LBB8_3
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a1, %pc_hi20(MBAmap)
 	ld.d	$a3, $a1, %pc_lo12(MBAmap)

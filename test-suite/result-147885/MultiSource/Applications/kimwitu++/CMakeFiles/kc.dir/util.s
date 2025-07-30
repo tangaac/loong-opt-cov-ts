@@ -2699,16 +2699,14 @@ _ZN2kc18f_operatorofphylumEPNS_7impl_IDEi: # @_ZN2kc18f_operatorofphylumEPNS_7im
 	bne	$a0, $s3, .LBB33_15
 # %bb.4:                                # %.lr.ph.i.i.preheader
 	nor	$a0, $s2, $zero
-	add.w	$s2, $a0, $s0
-	ori	$s0, $zero, 0
-	lu32i.d	$s0, 1
+	add.w	$s0, $a0, $s0
 	.p2align	4, , 16
 .LBB33_5:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $s2, 31, 0
-	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s0
-	bnez	$a0, .LBB33_28
+	bstrpick.d	$a0, $s0, 31, 0
+	addi.d	$s0, $a0, 1
+	slli.d	$a0, $s0, 31
+	bltz	$a0, .LBB33_28
 # %bb.6:                                # %tailrecurse.i.i
                                         #   in Loop: Header=BB33_5 Depth=1
 	ld.d	$s1, $s1, 16
@@ -2759,16 +2757,14 @@ _ZN2kc18f_operatorofphylumEPNS_7impl_IDEi: # @_ZN2kc18f_operatorofphylumEPNS_7im
 	bne	$a0, $s3, .LBB33_15
 # %bb.12:                               # %.lr.ph.i.i55.preheader
 	nor	$a0, $s2, $zero
-	add.w	$s2, $a0, $s0
-	ori	$s0, $zero, 0
-	lu32i.d	$s0, 1
+	add.w	$s0, $a0, $s0
 	.p2align	4, , 16
 .LBB33_13:                              # %.lr.ph.i.i55
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $s2, 31, 0
-	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s0
-	bnez	$a0, .LBB33_33
+	bstrpick.d	$a0, $s0, 31, 0
+	addi.d	$s0, $a0, 1
+	slli.d	$a0, $s0, 31
+	bltz	$a0, .LBB33_33
 # %bb.14:                               # %tailrecurse.i.i58
                                         #   in Loop: Header=BB33_13 Depth=1
 	ld.d	$s1, $s1, 16
@@ -2854,16 +2850,14 @@ _ZN2kc18f_operatorofphylumEPNS_7impl_IDEi: # @_ZN2kc18f_operatorofphylumEPNS_7im
 	bne	$a0, $s3, .LBB33_26
 # %bb.23:                               # %.lr.ph.i.i65.preheader
 	nor	$a0, $s2, $zero
-	add.w	$s2, $a0, $s0
-	ori	$s0, $zero, 0
-	lu32i.d	$s0, 1
+	add.w	$s0, $a0, $s0
 	.p2align	4, , 16
 .LBB33_24:                              # %.lr.ph.i.i65
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $s2, 31, 0
-	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s0
-	bnez	$a0, .LBB33_36
+	bstrpick.d	$a0, $s0, 31, 0
+	addi.d	$s0, $a0, 1
+	slli.d	$a0, $s0, 31
+	bltz	$a0, .LBB33_36
 # %bb.25:                               # %tailrecurse.i.i68
                                         #   in Loop: Header=BB33_24 Depth=1
 	ld.d	$s1, $s1, 16
@@ -3018,16 +3012,14 @@ _ZN2kc13f_alternativeEPNS_17impl_alternativesEi: # @_ZN2kc13f_alternativeEPNS_17
 	bne	$a0, $s2, .LBB34_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	nor	$a0, $s1, $zero
-	add.w	$s1, $a0, $s0
-	ori	$s0, $zero, 0
-	lu32i.d	$s0, 1
+	add.w	$s0, $a0, $s0
 	.p2align	4, , 16
 .LBB34_2:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $s1, 31, 0
-	addi.d	$s1, $a0, 1
-	and	$a0, $s1, $s0
-	bnez	$a0, .LBB34_7
+	bstrpick.d	$a0, $s0, 31, 0
+	addi.d	$s0, $a0, 1
+	slli.d	$a0, $s0, 31
+	bltz	$a0, .LBB34_7
 # %bb.3:                                # %tailrecurse.i
                                         #   in Loop: Header=BB34_2 Depth=1
 	ld.d	$fp, $fp, 16
@@ -4148,8 +4140,7 @@ _ZN2kc24add_string_to_collectionEPNS_16impl_unparseitemE: # @_ZN2kc24add_string_
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(_ZNK2kc18impl_abstract_list6lengthEv)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB43_19
+	blez	$a0, .LBB43_19
 # %bb.17:                               # %.lr.ph.preheader
 	ld.w	$a1, $fp, 8
 	pcalau12i	$s0, %pc_hi20(_ZL17string_collection)
@@ -4256,8 +4247,7 @@ _ZN2kc25unparse_string_collectionEv:    # @_ZN2kc25unparse_string_collectionEv
 	ori	$a1, $zero, 165
 	bne	$a0, $a1, .LBB44_8
 # %bb.1:                                # %.lr.ph23
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s1, .LBB44_6
+	bltz	$s1, .LBB44_6
 # %bb.2:                                # %.lr.ph.preheader
 	addi.d	$a0, $s1, 1
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill

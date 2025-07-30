@@ -109,11 +109,10 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	blt	$s4, $a0, .LBB0_50
+	blez	$s4, .LBB0_50
 # %bb.20:                               # %.lr.ph.preheader.i.i
 	move	$a0, $zero
 	b	.LBB0_22
@@ -633,8 +632,8 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a1, 0
 	ld.d	$a3, $a2, 0
-	ld.d	$s5, $a1, 8
-	ld.d	$s8, $a2, 8
+	ld.d	$s8, $a1, 8
+	ld.d	$s5, $a2, 8
 	ld.d	$s4, $a3, 8
 	ori	$a1, $zero, 1
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -658,7 +657,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$fp, $sp, 48
-	beqz	$s5, .LBB4_8
+	beqz	$s8, .LBB4_8
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_3 Depth=1
 	move	$s0, $zero
@@ -667,7 +666,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 .LBB4_6:                                # %.lr.ph
                                         #   Parent Loop BB4_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s3, $s5, 8
+	ld.d	$s3, $s8, 8
 	addi.d	$a2, $sp, 52
 	move	$a0, $s3
 	move	$a1, $zero
@@ -688,10 +687,10 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	jirl	$ra, $ra, 0
 	st.d	$zero, $a0, 8
 	st.d	$s0, $a0, 0
-	ld.d	$s5, $s5, 0
+	ld.d	$s8, $s8, 0
 	move	$s0, $a0
 	move	$s6, $s3
-	bnez	$s5, .LBB4_6
+	bnez	$s8, .LBB4_6
 	b	.LBB4_9
 	.p2align	4, , 16
 .LBB4_8:                                #   in Loop: Header=BB4_3 Depth=1
@@ -699,7 +698,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	move	$a0, $zero
 .LBB4_9:                                # %._crit_edge
                                         #   in Loop: Header=BB4_3 Depth=1
-	addi.w	$s0, $s8, 0
+	addi.w	$s0, $s5, 0
 	st.w	$fp, $s2, 0
 	move	$fp, $a0
 	move	$a0, $s3
@@ -709,9 +708,8 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	ld.w	$a1, $s2, 24
 	st.d	$fp, $s2, 40
 	st.w	$s4, $s2, 76
-	st.w	$s8, $s2, 12
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB4_16
+	st.w	$s5, $s2, 12
+	blez	$s0, .LBB4_16
 # %bb.10:                               #   in Loop: Header=BB4_3 Depth=1
 	addi.w	$a0, $a1, -1
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
@@ -733,11 +731,11 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
                                         #   in Loop: Header=BB4_3 Depth=1
 	ori	$a0, $zero, 63
 	sltu	$a0, $a0, $s0
-	addi.d	$a2, $s8, -64
+	addi.d	$a2, $s5, -64
 	bstrpick.d	$a2, $a2, 31, 6
 	addi.d	$a2, $a2, 1
 	maskeqz	$fp, $a2, $a0
-	addi.w	$s4, $fp, 0
+	addi.w	$s8, $fp, 0
 	bgeu	$fp, $a1, .LBB4_20
 # %bb.15:                               # %.clause_ExpandSplitField.exit_crit_edge.i
                                         #   in Loop: Header=BB4_3 Depth=1
@@ -774,8 +772,8 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	b	.LBB4_45
 	.p2align	4, , 16
 .LBB4_20:                               #   in Loop: Header=BB4_3 Depth=1
-	addi.d	$s5, $fp, 1
-	slli.w	$a0, $s5, 3
+	addi.d	$s4, $fp, 1
+	slli.w	$a0, $s4, 3
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 24
@@ -799,7 +797,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 # %bb.23:                               # %.preheader.i.i
                                         #   in Loop: Header=BB4_3 Depth=1
 	addi.w	$a0, $a1, 0
-	bgeu	$s4, $a0, .LBB4_26
+	bgeu	$s8, $a0, .LBB4_26
 # %bb.24:                               # %._crit_edge.i.i
                                         #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s2, 16
@@ -887,13 +885,13 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 .LBB4_35:                               # %memory_Free.exit.i.i
                                         #   in Loop: Header=BB4_3 Depth=1
 	st.d	$s3, $s2, 16
-	st.w	$s5, $s2, 24
+	st.w	$s4, $s2, 24
 .LBB4_36:                               # %clause_SetSplitFieldBit.exit
                                         #   in Loop: Header=BB4_3 Depth=1
-	slli.d	$a0, $s4, 3
+	slli.d	$a0, $s8, 3
 	ldx.d	$a1, $s3, $a0
 	ori	$a2, $zero, 1
-	sll.d	$a2, $a2, $s8
+	sll.d	$a2, $a2, $s5
 	or	$a1, $a1, $a2
 	stx.d	$a1, $s3, $a0
 .LBB4_37:                               # %clause_SetSplitField.exit
@@ -1001,8 +999,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB4_63
+	blez	$s2, .LBB4_63
 # %bb.53:                               # %.lr.ph42.i.i
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$s5, $a0, %got_pc_lo12(memory_ARRAY)

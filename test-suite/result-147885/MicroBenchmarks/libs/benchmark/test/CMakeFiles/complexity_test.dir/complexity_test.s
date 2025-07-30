@@ -15,26 +15,24 @@
 _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5StateE
 	.cfi_startproc
 # %bb.0:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
-	.cfi_offset 56, -64
-	.cfi_offset 57, -72
+	.cfi_offset 56, -56
+	.cfi_offset 57, -64
 	move	$fp, $a0
 	ld.w	$s1, $a0, 28
 	ld.d	$s0, $a0, 16
@@ -44,18 +42,17 @@ _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5Sta
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB0_16
 # %bb.2:
-	ori	$s1, $zero, 1
-	addi.d	$s2, $sp, 16
+	addi.d	$s1, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_0)
 	movgr2fr.d	$fs1, $zero
-	addi.w	$s3, $zero, -1
-	addi.d	$s4, $sp, 8
+	addi.w	$s2, $zero, -1
+	addi.d	$s3, $sp, 0
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s1, .LBB0_15
+	beqz	$a0, .LBB0_15
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -64,12 +61,12 @@ _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5Sta
 	add.d	$a0, $a0, $a2
 .LBB0_5:                                # %_ZNK9benchmark5State10iterationsEv.exit28
                                         #   in Loop: Header=BB0_3 Depth=1
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
 	fmov.d	$fa0, $fs1
-	bne	$a0, $s1, .LBB0_7
+	beqz	$a0, .LBB0_7
 # %bb.6:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -80,14 +77,14 @@ _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5Sta
 	ffint.d.l	$fa0, $fa0
 .LBB0_7:                                # %_ZNK9benchmark5State10iterationsEv.exit26
                                         #   in Loop: Header=BB0_3 Depth=1
-	fst.d	$fa0, $sp, 16
+	fst.d	$fa0, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s1, .LBB0_13
+	beqz	$a0, .LBB0_13
 # %bb.8:                                # %_ZNK9benchmark5State10iterationsEv.exit24.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
-	move	$a0, $s3
+	move	$a0, $s2
 	.p2align	4, , 16
 .LBB0_9:                                # %_ZNK9benchmark5State10iterationsEv.exit24
                                         #   Parent Loop BB0_3 Depth=1
@@ -101,12 +98,12 @@ _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5Sta
 	bge	$a0, $a1, .LBB0_13
 # %bb.10:                               # %_ZNK9benchmark5State10iterationsEv.exit22
                                         #   in Loop: Header=BB0_9 Depth=2
-	st.d	$a1, $sp, 8
+	st.d	$a1, $sp, 0
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
 	fmov.d	$fa0, $fs1
-	bne	$a1, $s1, .LBB0_12
+	beqz	$a1, .LBB0_12
 # %bb.11:                               #   in Loop: Header=BB0_9 Depth=2
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $fp, 0
@@ -117,9 +114,9 @@ _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5Sta
 	ffint.d.l	$fa0, $fa0
 .LBB0_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
                                         #   in Loop: Header=BB0_9 Depth=2
-	fld.d	$fa1, $sp, 16
+	fld.d	$fa1, $sp, 8
 	fmul.d	$fa0, $fa0, $fa1
-	fst.d	$fa0, $sp, 16
+	fst.d	$fa0, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
@@ -149,16 +146,15 @@ _Z16BM_Complexity_O1RN9benchmark5StateE: # @_Z16BM_Complexity_O1RN9benchmark5Sta
 # %bb.17:                               # %_ZNK9benchmark5State5rangeEm.exit
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $fp, 56
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB0_18:
 	pcalau12i	$a0, %pc_hi20(.L.str.41)
@@ -3914,20 +3910,18 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
-	.cfi_offset 56, -64
-	.cfi_offset 57, -72
-	.cfi_offset 58, -80
+	.cfi_offset 56, -56
+	.cfi_offset 57, -64
+	.cfi_offset 58, -72
 	move	$fp, $a0
 	ld.w	$s1, $a0, 28
 	ld.d	$s0, $a0, 16
@@ -3937,20 +3931,19 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB2_17
 # %bb.2:
-	ori	$s1, $zero, 1
-	addi.d	$s2, $sp, 8
+	addi.d	$s1, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI2_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI2_1)
 	movgr2fr.d	$fs2, $zero
-	addi.w	$s3, $zero, -1
-	addi.d	$s4, $sp, 0
+	addi.w	$s2, $zero, -1
+	addi.d	$s3, $sp, 8
 	.p2align	4, , 16
 .LBB2_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_9 Depth 2
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s1, .LBB2_16
+	beqz	$a0, .LBB2_16
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -3959,12 +3952,12 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 	add.d	$a0, $a0, $a2
 .LBB2_5:                                # %_ZNK9benchmark5State10iterationsEv.exit29
                                         #   in Loop: Header=BB2_3 Depth=1
-	st.d	$a0, $sp, 8
+	st.d	$a0, $sp, 16
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
 	fmov.d	$fa0, $fs2
-	bne	$a0, $s1, .LBB2_7
+	beqz	$a0, .LBB2_7
 # %bb.6:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -3975,14 +3968,14 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 	ffint.d.l	$fa0, $fa0
 .LBB2_7:                                # %_ZNK9benchmark5State10iterationsEv.exit27
                                         #   in Loop: Header=BB2_3 Depth=1
-	fst.d	$fa0, $sp, 8
+	fst.d	$fa0, $sp, 16
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s1, .LBB2_13
+	beqz	$a0, .LBB2_13
 # %bb.8:                                # %_ZNK9benchmark5State10iterationsEv.exit25.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
-	move	$a0, $s3
+	move	$a0, $s2
 	.p2align	4, , 16
 .LBB2_9:                                # %_ZNK9benchmark5State10iterationsEv.exit25
                                         #   Parent Loop BB2_3 Depth=1
@@ -3996,12 +3989,12 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 	bge	$a0, $a1, .LBB2_13
 # %bb.10:                               # %_ZNK9benchmark5State10iterationsEv.exit23
                                         #   in Loop: Header=BB2_9 Depth=2
-	st.d	$a1, $sp, 0
+	st.d	$a1, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
 	fmov.d	$fa0, $fs2
-	bne	$a1, $s1, .LBB2_12
+	beqz	$a1, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_9 Depth=2
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $fp, 0
@@ -4012,9 +4005,9 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 	ffint.d.l	$fa0, $fa0
 .LBB2_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
                                         #   in Loop: Header=BB2_9 Depth=2
-	fld.d	$fa1, $sp, 8
+	fld.d	$fa1, $sp, 16
 	fmul.d	$fa0, $fa0, $fa1
-	fst.d	$fa0, $sp, 8
+	fst.d	$fa0, $sp, 16
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
@@ -4053,10 +4046,9 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 # %bb.18:                               # %_ZNK9benchmark5State5rangeEm.exit
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $fp, 56
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
@@ -4111,24 +4103,22 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
-	.cfi_offset 56, -64
-	.cfi_offset 57, -72
-	.cfi_offset 58, -80
-	.cfi_offset 59, -88
-	.cfi_offset 60, -96
+	.cfi_offset 56, -56
+	.cfi_offset 57, -64
+	.cfi_offset 58, -72
+	.cfi_offset 59, -80
+	.cfi_offset 60, -88
 	move	$fp, $a0
 	ld.w	$s1, $a0, 28
 	ld.d	$s0, $a0, 16
@@ -4138,8 +4128,7 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB3_17
 # %bb.2:
-	ori	$s1, $zero, 1
-	addi.d	$s2, $sp, 8
+	addi.d	$s1, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI3_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
@@ -4147,13 +4136,13 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	pcalau12i	$a0, %pc_hi20(.LCPI3_2)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI3_2)
 	movgr2fr.d	$fs3, $zero
-	addi.w	$s3, $zero, -1
-	addi.d	$s4, $sp, 0
+	addi.w	$s2, $zero, -1
+	addi.d	$s3, $sp, 8
 	.p2align	4, , 16
 .LBB3_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_9 Depth 2
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s1, .LBB3_16
+	beqz	$a0, .LBB3_16
 # %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -4162,12 +4151,12 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	add.d	$a0, $a0, $a2
 .LBB3_5:                                # %_ZNK9benchmark5State10iterationsEv.exit30
                                         #   in Loop: Header=BB3_3 Depth=1
-	st.d	$a0, $sp, 8
+	st.d	$a0, $sp, 16
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
 	fmov.d	$fa0, $fs3
-	bne	$a0, $s1, .LBB3_7
+	beqz	$a0, .LBB3_7
 # %bb.6:                                #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -4178,14 +4167,14 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	ffint.d.l	$fa0, $fa0
 .LBB3_7:                                # %_ZNK9benchmark5State10iterationsEv.exit28
                                         #   in Loop: Header=BB3_3 Depth=1
-	fst.d	$fa0, $sp, 8
+	fst.d	$fa0, $sp, 16
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s1, .LBB3_13
+	beqz	$a0, .LBB3_13
 # %bb.8:                                # %_ZNK9benchmark5State10iterationsEv.exit26.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
-	move	$a0, $s3
+	move	$a0, $s2
 	.p2align	4, , 16
 .LBB3_9:                                # %_ZNK9benchmark5State10iterationsEv.exit26
                                         #   Parent Loop BB3_3 Depth=1
@@ -4199,12 +4188,12 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	bge	$a0, $a1, .LBB3_13
 # %bb.10:                               # %_ZNK9benchmark5State10iterationsEv.exit24
                                         #   in Loop: Header=BB3_9 Depth=2
-	st.d	$a1, $sp, 0
+	st.d	$a1, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
 	fmov.d	$fa0, $fs3
-	bne	$a1, $s1, .LBB3_12
+	beqz	$a1, .LBB3_12
 # %bb.11:                               #   in Loop: Header=BB3_9 Depth=2
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $fp, 0
@@ -4215,9 +4204,9 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	ffint.d.l	$fa0, $fa0
 .LBB3_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
                                         #   in Loop: Header=BB3_9 Depth=2
-	fld.d	$fa1, $sp, 8
+	fld.d	$fa1, $sp, 16
 	fmul.d	$fa0, $fa0, $fa1
-	fst.d	$fa0, $sp, 8
+	fst.d	$fa0, $sp, 16
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
@@ -4260,12 +4249,11 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 # %bb.18:                               # %_ZNK9benchmark5State5rangeEm.exit
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $fp, 56
-	fld.d	$fs4, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 56                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
@@ -4312,19 +4300,18 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi
 	.cfi_startproc
 # %bb.0:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 24                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4332,10 +4319,9 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
-	.cfi_offset 56, -72
-	.cfi_offset 57, -80
-	.cfi_offset 58, -88
+	.cfi_offset 56, -64
+	.cfi_offset 57, -72
+	.cfi_offset 58, -80
 	move	$fp, $a0
 	ld.w	$s2, $a0, 28
 	ld.d	$s1, $a0, 16
@@ -4346,20 +4332,19 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s1, .LBB4_17
 # %bb.2:
-	ori	$s2, $zero, 1
-	addi.d	$s3, $sp, 16
+	addi.d	$s2, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI4_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI4_1)
 	movgr2fr.d	$fs2, $zero
-	addi.w	$s4, $zero, -1
-	addi.d	$s5, $sp, 8
+	addi.w	$s3, $zero, -1
+	addi.d	$s4, $sp, 0
 	.p2align	4, , 16
 .LBB4_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_9 Depth 2
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s2, .LBB4_16
+	beqz	$a0, .LBB4_16
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -4368,12 +4353,12 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	add.d	$a0, $a0, $a2
 .LBB4_5:                                # %_ZNK9benchmark5State10iterationsEv.exit29
                                         #   in Loop: Header=BB4_3 Depth=1
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
 	fmov.d	$fa0, $fs2
-	bne	$a0, $s2, .LBB4_7
+	beqz	$a0, .LBB4_7
 # %bb.6:                                #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -4384,14 +4369,14 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	ffint.d.l	$fa0, $fa0
 .LBB4_7:                                # %_ZNK9benchmark5State10iterationsEv.exit27
                                         #   in Loop: Header=BB4_3 Depth=1
-	fst.d	$fa0, $sp, 16
+	fst.d	$fa0, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s2, .LBB4_13
+	beqz	$a0, .LBB4_13
 # %bb.8:                                # %_ZNK9benchmark5State10iterationsEv.exit25.preheader
                                         #   in Loop: Header=BB4_3 Depth=1
-	move	$a0, $s4
+	move	$a0, $s3
 	.p2align	4, , 16
 .LBB4_9:                                # %_ZNK9benchmark5State10iterationsEv.exit25
                                         #   Parent Loop BB4_3 Depth=1
@@ -4405,12 +4390,12 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	bge	$a0, $a1, .LBB4_13
 # %bb.10:                               # %_ZNK9benchmark5State10iterationsEv.exit23
                                         #   in Loop: Header=BB4_9 Depth=2
-	st.d	$a1, $sp, 8
+	st.d	$a1, $sp, 0
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
 	fmov.d	$fa0, $fs2
-	bne	$a1, $s2, .LBB4_12
+	beqz	$a1, .LBB4_12
 # %bb.11:                               #   in Loop: Header=BB4_9 Depth=2
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $fp, 0
@@ -4421,9 +4406,9 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	ffint.d.l	$fa0, $fa0
 .LBB4_12:                               # %_ZNK9benchmark5State10iterationsEv.exit
                                         #   in Loop: Header=BB4_9 Depth=2
-	fld.d	$fa1, $sp, 16
+	fld.d	$fa1, $sp, 8
 	fmul.d	$fa0, $fa0, $fa1
-	fst.d	$fa0, $sp, 16
+	fst.d	$fa0, $sp, 8
 	#APP
 	#NO_APP
 	ld.bu	$a1, $fp, 24
@@ -4457,18 +4442,17 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 	st.d	$s0, $fp, 56
-	fld.d	$fs2, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB4_18:
 	pcalau12i	$a0, %pc_hi20(.L.str.43)

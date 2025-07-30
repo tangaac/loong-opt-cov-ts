@@ -1208,9 +1208,8 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	move	$s5, $a0
 	pcaddu18i	$ra, %call36(new_Stopwatch)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.w	$zero, $s5, 0
-	blt	$s3, $a1, .LBB3_18
+	blez	$s3, .LBB3_18
 # %bb.1:                                # %.lr.ph57
 	blez	$s6, .LBB3_11
 # %bb.2:                                # %.lr.ph.us.preheader

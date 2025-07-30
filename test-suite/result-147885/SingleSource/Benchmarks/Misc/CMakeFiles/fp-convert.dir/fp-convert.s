@@ -6,8 +6,7 @@
 loop:                                   # @loop
 # %bb.0:
 	movgr2fr.d	$fa0, $zero
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB0_2
+	blez	$a2, .LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

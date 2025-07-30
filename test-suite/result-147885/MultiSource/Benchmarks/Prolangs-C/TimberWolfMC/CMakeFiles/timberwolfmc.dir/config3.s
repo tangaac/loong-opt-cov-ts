@@ -8,9 +8,8 @@ config3:                                # @config3
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
 	ld.w	$a0, $a0, 0
-	ori	$a7, $zero, 1
 	lu12i.w	$a1, 244
-	blt	$a0, $a7, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a2, %got_pc_hi20(cellarray)
 	ld.d	$a2, $a2, %got_pc_lo12(cellarray)
@@ -19,60 +18,60 @@ config3:                                # @config3
 	move	$a3, $zero
 	addi.d	$a4, $a0, 1
 	bstrpick.d	$a4, $a4, 31, 0
-	addi.d	$t1, $a2, 8
+	addi.d	$a7, $a2, 8
 	ori	$t2, $a1, 576
-	addi.d	$t3, $a4, -1
+	addi.d	$t1, $a4, -1
 	move	$a6, $t2
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $t1, 0
+	ld.d	$a2, $a7, 0
 	ld.w	$a1, $a2, 56
 	alsl.d	$a1, $a1, $a2, 3
 	ld.d	$a4, $a1, 152
 	ld.w	$a5, $a2, 12
 	ld.w	$a1, $a4, 56
-	ld.w	$t4, $a4, 40
+	ld.w	$t3, $a4, 40
 	add.d	$a1, $a1, $a5
-	slli.d	$t4, $t4, 1
-	sub.w	$a1, $a1, $t4
-	ld.w	$t4, $a4, 60
-	ld.w	$t5, $a4, 44
-	ld.w	$t6, $a2, 16
-	ld.w	$t7, $a4, 64
-	add.d	$a2, $t4, $a5
-	alsl.w	$a2, $t5, $a2, 1
+	slli.d	$t3, $t3, 1
+	sub.w	$a1, $a1, $t3
+	ld.w	$t3, $a4, 60
+	ld.w	$t4, $a4, 44
+	ld.w	$t5, $a2, 16
+	ld.w	$t6, $a4, 64
+	add.d	$a2, $t3, $a5
+	alsl.w	$a2, $t4, $a2, 1
 	ld.w	$a5, $a4, 48
-	add.d	$t4, $t7, $t6
-	ld.w	$t5, $a4, 68
-	ld.w	$t7, $a4, 52
+	add.d	$t3, $t6, $t5
+	ld.w	$t4, $a4, 68
+	ld.w	$t6, $a4, 52
 	slli.d	$a4, $a5, 1
-	sub.w	$a4, $t4, $a4
-	add.d	$a5, $t5, $t6
-	alsl.w	$a5, $t7, $a5, 1
-	slt	$t4, $a1, $a6
-	maskeqz	$t5, $a1, $t4
-	masknez	$a6, $a6, $t4
-	or	$a6, $t5, $a6
-	slt	$t4, $a3, $a2
-	maskeqz	$t5, $a2, $t4
-	masknez	$a3, $a3, $t4
-	or	$a3, $t5, $a3
-	slt	$t4, $a4, $t2
-	maskeqz	$t5, $a4, $t4
-	masknez	$t2, $t2, $t4
-	or	$t2, $t5, $t2
-	slt	$t4, $t0, $a5
-	maskeqz	$t5, $a5, $t4
-	masknez	$t0, $t0, $t4
-	or	$t0, $t5, $t0
-	addi.d	$t3, $t3, -1
-	addi.d	$t1, $t1, 8
-	bnez	$t3, .LBB0_2
+	sub.w	$a4, $t3, $a4
+	add.d	$a5, $t4, $t5
+	alsl.w	$a5, $t6, $a5, 1
+	slt	$t3, $a1, $a6
+	maskeqz	$t4, $a1, $t3
+	masknez	$a6, $a6, $t3
+	or	$a6, $t4, $a6
+	slt	$t3, $a3, $a2
+	maskeqz	$t4, $a2, $t3
+	masknez	$a3, $a3, $t3
+	or	$a3, $t4, $a3
+	slt	$t3, $a4, $t2
+	maskeqz	$t4, $a4, $t3
+	masknez	$t2, $t2, $t3
+	or	$t2, $t4, $t2
+	slt	$t3, $t0, $a5
+	maskeqz	$t4, $a5, $t3
+	masknez	$t0, $t0, $t3
+	or	$t0, $t4, $t0
+	addi.d	$t1, $t1, -1
+	addi.d	$a7, $a7, 8
+	bnez	$t1, .LBB0_2
 # %bb.3:                                # %.preheader138
-	pcalau12i	$t1, %got_pc_hi20(numpads)
-	ld.d	$t1, $t1, %got_pc_lo12(numpads)
-	ld.w	$t3, $t1, 0
-	bge	$t3, $a7, .LBB0_5
+	pcalau12i	$a7, %got_pc_hi20(numpads)
+	ld.d	$a7, $a7, %got_pc_lo12(numpads)
+	ld.w	$a7, $a7, 0
+	bgtz	$a7, .LBB0_5
 	b	.LBB0_31
 .LBB0_4:
 	ori	$a6, $a1, 576
@@ -83,16 +82,16 @@ config3:                                # @config3
                                         # implicit-def: $r6
                                         # implicit-def: $r8
                                         # implicit-def: $r9
-	pcalau12i	$t1, %got_pc_hi20(numpads)
-	ld.d	$t1, $t1, %got_pc_lo12(numpads)
-	ld.w	$t3, $t1, 0
-	blt	$t3, $a7, .LBB0_31
+	pcalau12i	$a7, %got_pc_hi20(numpads)
+	ld.d	$a7, $a7, %got_pc_lo12(numpads)
+	ld.w	$a7, $a7, 0
+	blez	$a7, .LBB0_31
 .LBB0_5:                                # %.lr.ph158
-	pcalau12i	$a7, %got_pc_hi20(cellarray)
-	ld.d	$t1, $a7, %got_pc_lo12(cellarray)
-	ld.d	$t4, $t1, 0
-	add.w	$a7, $t3, $a0
-	alsl.d	$t3, $a0, $t4, 3
+	pcalau12i	$t1, %got_pc_hi20(cellarray)
+	ld.d	$t1, $t1, %got_pc_lo12(cellarray)
+	ld.d	$t3, $t1, 0
+	add.w	$a7, $a7, $a0
+	alsl.d	$t3, $a0, $t3, 3
 	addi.d	$t3, $t3, 8
 	ori	$t4, $zero, 4
 	move	$t5, $a0

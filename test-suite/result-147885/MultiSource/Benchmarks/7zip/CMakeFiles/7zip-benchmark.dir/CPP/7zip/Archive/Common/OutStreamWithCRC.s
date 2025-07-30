@@ -32,8 +32,7 @@ _ZN17COutStreamWithCRC5WriteEPKvjPj:    # @_ZN17COutStreamWithCRC5WriteEPKvjPj
 	jirl	$ra, $a4, 0
 	ld.w	$a2, $sp, 4
 	ld.bu	$a1, $fp, 36
-	ori	$a3, $zero, 1
-	bne	$a1, $a3, .LBB0_3
+	beqz	$a1, .LBB0_3
 .LBB0_2:
 	ld.w	$a1, $fp, 32
 	bstrpick.d	$a2, $a2, 31, 0
@@ -65,8 +64,7 @@ _ZN17COutStreamWithCRC5WriteEPKvjPj:    # @_ZN17COutStreamWithCRC5WriteEPKvjPj
 .LBB0_6:
 	move	$a0, $zero
 	ld.bu	$a1, $fp, 36
-	ori	$a3, $zero, 1
-	beq	$a1, $a3, .LBB0_2
+	bnez	$a1, .LBB0_2
 	b	.LBB0_3
 .Lfunc_end0:
 	.size	_ZN17COutStreamWithCRC5WriteEPKvjPj, .Lfunc_end0-_ZN17COutStreamWithCRC5WriteEPKvjPj

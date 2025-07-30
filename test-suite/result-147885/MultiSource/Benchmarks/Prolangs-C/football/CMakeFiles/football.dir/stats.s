@@ -398,14 +398,14 @@ compute_team_info:                      # @compute_team_info
 # %bb.2:                                # %.preheader230
 	pcalau12i	$a4, %pc_hi20(num_games)
 	ld.w	$a4, $a4, %pc_lo12(num_games)
-	ori	$a5, $zero, 1
 	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
-	blt	$a4, $a5, .LBB3_24
+	blez	$a4, .LBB3_24
 # %bb.3:                                # %.preheader.preheader
-	pcalau12i	$a6, %pc_hi20(sched+200)
-	addi.d	$a6, $a6, %pc_lo12(sched+200)
-	pcalau12i	$a7, %pc_hi20(scores+200)
-	addi.d	$a7, $a7, %pc_lo12(scores+200)
+	pcalau12i	$a5, %pc_hi20(sched+200)
+	addi.d	$a5, $a5, %pc_lo12(sched+200)
+	pcalau12i	$a6, %pc_hi20(scores+200)
+	addi.d	$a6, $a6, %pc_lo12(scores+200)
+	ori	$a7, $zero, 1
 	ori	$t0, $zero, 116
 	ori	$t1, $zero, 92
 	ori	$t2, $zero, 2668
@@ -418,8 +418,8 @@ compute_team_info:                      # @compute_team_info
 .LBB3_4:                                #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$t5, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$t7, $t5, 1
+	addi.d	$a5, $a5, 180
 	addi.d	$a6, $a6, 180
-	addi.d	$a7, $a7, 180
 	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	bgeu	$t5, $a4, .LBB3_24
 .LBB3_5:                                # %.preheader
@@ -434,21 +434,21 @@ compute_team_info:                      # @compute_team_info
 	beq	$t6, $t4, .LBB3_4
 .LBB3_7:                                #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$s0, $a6, $t6
-	add.d	$t7, $a6, $t6
+	ldx.w	$s0, $a5, $t6
+	add.d	$t7, $a5, $t6
 	ld.w	$s1, $t7, -4
 	mul.d	$t7, $s0, $t0
 	add.d	$t7, $fp, $t7
 	slli.d	$t8, $s1, 2
-	stx.w	$a5, $t7, $t8
-	ldx.w	$t7, $a7, $t6
+	stx.w	$a7, $t7, $t8
+	ldx.w	$t7, $a6, $t6
 	mul.d	$t8, $s1, $t0
 	add.d	$t8, $fp, $t8
 	slli.d	$s2, $s0, 2
-	stx.w	$a5, $t8, $s2
+	stx.w	$a7, $t8, $s2
 	bltz	$t7, .LBB3_6
 # %bb.8:                                #   in Loop: Header=BB3_7 Depth=2
-	add.d	$t8, $a7, $t6
+	add.d	$t8, $a6, $t6
 	ld.w	$t8, $t8, -4
 	bltz	$t8, .LBB3_6
 # %bb.9:                                #   in Loop: Header=BB3_7 Depth=2
@@ -684,45 +684,45 @@ read_sched_into:                        # @read_sched_into
 	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
 	pcalau12i	$s4, %pc_hi20(num_games)
 	ld.w	$a2, $s4, %pc_lo12(num_games)
-	ori	$a3, $zero, 1
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	blt	$a2, $a3, .LBB4_55
+	blez	$a2, .LBB4_55
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
-	ori	$a0, $zero, 8
-	bltu	$a2, $a0, .LBB4_5
+	ori	$a0, $zero, 1
+	ori	$a3, $zero, 8
+	ori	$a1, $zero, 1
+	bltu	$a2, $a3, .LBB4_5
 # %bb.2:                                # %vector.ph
-	bstrpick.d	$a0, $a2, 30, 3
-	slli.d	$a0, $a0, 3
-	srli.d	$a1, $a2, 3
-	ori	$a3, $zero, 1
-	bstrins.d	$a3, $a1, 30, 3
-	addi.d	$a1, $sp, 116
+	bstrpick.d	$a1, $a2, 30, 3
+	slli.d	$a3, $a1, 3
+	srli.d	$a4, $a2, 3
+	ori	$a1, $zero, 1
+	bstrins.d	$a1, $a4, 30, 3
+	addi.d	$a4, $sp, 116
 	vrepli.w	$vr0, 1
-	move	$a4, $a0
+	move	$a5, $a3
 	.p2align	4, , 16
 .LBB4_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a1, -16
-	vst	$vr0, $a1, 0
-	addi.d	$a4, $a4, -8
-	addi.d	$a1, $a1, 32
-	bnez	$a4, .LBB4_3
+	vst	$vr0, $a4, -16
+	vst	$vr0, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB4_3
 # %bb.4:                                # %middle.block
-	beq	$a0, $a2, .LBB4_7
+	beq	$a3, $a2, .LBB4_7
 .LBB4_5:                                # %.lr.ph.preheader203
-	addi.d	$a0, $a2, 1
-	bstrpick.d	$a1, $a0, 31, 0
-	addi.d	$a0, $sp, 96
-	alsl.d	$a0, $a3, $a0, 2
-	sub.d	$a1, $a1, $a3
-	ori	$a3, $zero, 1
+	addi.d	$a3, $a2, 1
+	bstrpick.d	$a4, $a3, 31, 0
+	addi.d	$a3, $sp, 96
+	alsl.d	$a3, $a1, $a3, 2
+	sub.d	$a1, $a4, $a1
 	.p2align	4, , 16
 .LBB4_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$a3, $a0, 0
+	st.w	$a0, $a3, 0
 	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 4
+	addi.d	$a3, $a3, 4
 	bnez	$a1, .LBB4_6
 .LBB4_7:                                # %.preheader130.preheader
 	move	$a3, $zero
@@ -730,6 +730,7 @@ read_sched_into:                        # @read_sched_into
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$a0, $a0, 200
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	ori	$s2, $zero, 1
 	pcalau12i	$a0, %pc_hi20(team)
 	addi.d	$fp, $a0, %pc_lo12(team)
 	addi.d	$s6, $sp, 86
@@ -738,7 +739,6 @@ read_sched_into:                        # @read_sched_into
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -870
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s2, $zero, 1
 	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB4_9
 	.p2align	4, , 16
@@ -756,8 +756,7 @@ read_sched_into:                        # @read_sched_into
                                         #       Child Loop BB4_23 Depth 3
                                         #       Child Loop BB4_44 Depth 3
                                         #       Child Loop BB4_38 Depth 3
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB4_8
+	blez	$a2, .LBB4_8
 # %bb.10:                               # %.lr.ph167
                                         #   in Loop: Header=BB4_9 Depth=1
 	ori	$a0, $zero, 30

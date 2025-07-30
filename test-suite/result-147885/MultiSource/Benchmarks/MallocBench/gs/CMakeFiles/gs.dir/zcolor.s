@@ -41,8 +41,7 @@ zcurrentgscolor:                        # @zcurrentgscolor
 	st.h	$a2, $fp, 24
 	pcaddu18i	$ra, %call36(gs_currentgscolor)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_7
+	bgez	$a0, .LBB0_7
 	b	.LBB0_5
 .LBB0_4:
 	addi.w	$a0, $zero, -25

@@ -216,7 +216,7 @@ parser:                                 # @parser
 # %bb.20:                               # %.preheader399
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1184
-	blt	$a0, $s8, .LBB0_26
+	blez	$a0, .LBB0_26
 # %bb.21:                               # %.lr.ph635.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$a2, $sp, 1180
@@ -295,7 +295,7 @@ parser:                                 # @parser
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1216
 	ori	$s2, $zero, 4
-	blt	$a0, $s8, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.32:                               # %.lr.ph643.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$fp, $zero
@@ -424,7 +424,7 @@ parser:                                 # @parser
 # %bb.50:                               # %.preheader403
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1200
-	blt	$a0, $s8, .LBB0_60
+	blez	$a0, .LBB0_60
 # %bb.51:                               # %.lr.ph612.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$s2, $zero
@@ -576,7 +576,7 @@ parser:                                 # @parser
 # %bb.69:                               # %.preheader402
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1184
-	blt	$a0, $s8, .LBB0_75
+	blez	$a0, .LBB0_75
 # %bb.70:                               # %.lr.ph620.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
@@ -707,7 +707,7 @@ parser:                                 # @parser
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1216
 	ori	$s2, $zero, 2
-	blt	$a0, $s8, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.85:                               # %.lr.ph628.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$fp, $zero
@@ -784,7 +784,7 @@ parser:                                 # @parser
 # %bb.95:                               # %.preheader406
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1184
-	blt	$a0, $s8, .LBB0_101
+	blez	$a0, .LBB0_101
 # %bb.96:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
@@ -892,7 +892,7 @@ parser:                                 # @parser
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $sp, 1216
 	ori	$s2, $zero, 4
-	blt	$a0, $s8, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.109:                              # %.lr.ph609.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$fp, $zero
@@ -981,9 +981,8 @@ parser:                                 # @parser
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(padspace)
-	ori	$a2, $zero, 1
 	st.d	$a0, $a1, %pc_lo12(padspace)
-	blt	$s0, $a2, .LBB0_117
+	blez	$s0, .LBB0_117
 # %bb.116:                              # %.lr.ph665.preheader
 	addi.d	$a0, $a0, 8
 	move	$a1, $zero

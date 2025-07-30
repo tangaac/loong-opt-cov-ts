@@ -98,8 +98,7 @@ _Z22benchAutoVecForLoopTC1RN9benchmark5StateE: # @_Z22benchAutoVecForLoopTC1RN9b
 	.type	_ZL22loopNoReductionAutoVeci,@function
 _ZL22loopNoReductionAutoVeci:           # @_ZL22loopNoReductionAutoVeci
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_8
+	blez	$a0, .LBB1_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB1_3
@@ -253,8 +252,7 @@ _Z21benchForIC1VW4LoopTC1RN9benchmark5StateE: # @_Z21benchForIC1VW4LoopTC1RN9ben
 	.type	_ZL14loopWithVW4IC1i,@function
 _ZL14loopWithVW4IC1i:                   # @_ZL14loopWithVW4IC1i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB3_3
@@ -408,8 +406,7 @@ _Z21benchForIC2VW4LoopTC1RN9benchmark5StateE: # @_Z21benchForIC2VW4LoopTC1RN9ben
 	.type	_ZL14loopWithVW4IC2i,@function
 _ZL14loopWithVW4IC2i:                   # @_ZL14loopWithVW4IC2i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_8
+	blez	$a0, .LBB5_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	pcalau12i	$a1, %pc_hi20(A)
@@ -564,8 +561,7 @@ _Z21benchForIC4VW4LoopTC1RN9benchmark5StateE: # @_Z21benchForIC4VW4LoopTC1RN9ben
 	.type	_ZL14loopWithVW4IC4i,@function
 _ZL14loopWithVW4IC4i:                   # @_ZL14loopWithVW4IC4i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_8
+	blez	$a0, .LBB7_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 16
 	pcalau12i	$a1, %pc_hi20(A)
@@ -728,8 +724,7 @@ _Z35benchForLoopWithReductionAutoVecTC1RN9benchmark5StateE: # @_Z35benchForLoopW
 	.type	_ZL24loopWithReductionAutoVeci,@function
 _ZL24loopWithReductionAutoVeci:         # @_ZL24loopWithReductionAutoVeci
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_3
+	blez	$a0, .LBB9_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB9_4
@@ -876,8 +871,7 @@ _Z34benchForIC1VW4LoopWithReductionTC1RN9benchmark5StateE: # @_Z34benchForIC1VW4
 	.type	_ZL27loopWithReductionWithVW4IC1i,@function
 _ZL27loopWithReductionWithVW4IC1i:      # @_ZL27loopWithReductionWithVW4IC1i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_3
+	blez	$a0, .LBB11_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB11_4
@@ -1024,8 +1018,7 @@ _Z34benchForIC2VW4LoopWithReductionTC1RN9benchmark5StateE: # @_Z34benchForIC2VW4
 	.type	_ZL27loopWithReductionWithVW4IC2i,@function
 _ZL27loopWithReductionWithVW4IC2i:      # @_ZL27loopWithReductionWithVW4IC2i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB13_3
+	blez	$a0, .LBB13_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 8
 	pcalau12i	$a2, %pc_hi20(A)
@@ -1175,8 +1168,7 @@ _Z34benchForIC4VW4LoopWithReductionTC1RN9benchmark5StateE: # @_Z34benchForIC4VW4
 	.type	_ZL27loopWithReductionWithVW4IC4i,@function
 _ZL27loopWithReductionWithVW4IC4i:      # @_ZL27loopWithReductionWithVW4IC4i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_3
+	blez	$a0, .LBB15_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 16
 	pcalau12i	$a2, %pc_hi20(A)
@@ -1334,10 +1326,9 @@ _Z34benchForIC1VW1LoopWithReductionTC1RN9benchmark5StateE: # @_Z34benchForIC1VW1
 	.type	_ZL27loopWithReductionWithVW1IC1i,@function
 _ZL27loopWithReductionWithVW1IC1i:      # @_ZL27loopWithReductionWithVW1IC1i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB17_4
-# %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $zero
+	blez	$a0, .LBB17_3
+# %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a2, %pc_hi20(A)
 	addi.d	$a2, $a2, %pc_lo12(A)
 	.p2align	4, , 16
@@ -1348,11 +1339,7 @@ _ZL27loopWithReductionWithVW1IC1i:      # @_ZL27loopWithReductionWithVW1IC1i
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a0, .LBB17_2
-# %bb.3:                                # %._crit_edge
-	move	$a0, $a1
-	ret
-.LBB17_4:
-	move	$a1, $zero
+.LBB17_3:                               # %._crit_edge
 	move	$a0, $a1
 	ret
 .Lfunc_end17:
@@ -1452,9 +1439,9 @@ _Z34benchForIC2VW1LoopWithReductionTC1RN9benchmark5StateE: # @_Z34benchForIC2VW1
 	.type	_ZL27loopWithReductionWithVW1IC2i,@function
 _ZL27loopWithReductionWithVW1IC2i:      # @_ZL27loopWithReductionWithVW1IC2i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB19_3
+	blez	$a0, .LBB19_3
 # %bb.1:                                # %.lr.ph.preheader
+	ori	$a1, $zero, 1
 	pcalau12i	$a2, %pc_hi20(A)
 	addi.d	$a2, $a2, %pc_lo12(A)
 	bne	$a0, $a1, .LBB19_4
@@ -1597,8 +1584,7 @@ _Z34benchForIC4VW1LoopWithReductionTC1RN9benchmark5StateE: # @_Z34benchForIC4VW1
 	.type	_ZL27loopWithReductionWithVW1IC4i,@function
 _ZL27loopWithReductionWithVW1IC4i:      # @_ZL27loopWithReductionWithVW1IC4i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB21_3
+	blez	$a0, .LBB21_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB21_4
@@ -1837,8 +1823,7 @@ _Z24benchForIC1VW4BigLoopTC1RN9benchmark5StateE: # @_Z24benchForIC1VW4BigLoopTC1
 	.type	_ZL17bigLoopWithVW4IC1i,@function
 _ZL17bigLoopWithVW4IC1i:                # @_ZL17bigLoopWithVW4IC1i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB24_8
+	blez	$a0, .LBB24_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 4
 	lu12i.w	$a1, 419430
@@ -2041,8 +2026,7 @@ _Z24benchForIC2VW4BigLoopTC1RN9benchmark5StateE: # @_Z24benchForIC2VW4BigLoopTC1
 	.type	_ZL17bigLoopWithVW4IC2i,@function
 _ZL17bigLoopWithVW4IC2i:                # @_ZL17bigLoopWithVW4IC2i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB26_8
+	blez	$a0, .LBB26_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$t0, $zero, 8
 	pcalau12i	$a1, %pc_hi20(F)
@@ -2255,8 +2239,7 @@ _Z24benchForIC4VW4BigLoopTC1RN9benchmark5StateE: # @_Z24benchForIC4VW4BigLoopTC1
 	.type	_ZL17bigLoopWithVW4IC4i,@function
 _ZL17bigLoopWithVW4IC4i:                # @_ZL17bigLoopWithVW4IC4i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB28_8
+	blez	$a0, .LBB28_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$t0, $zero, 16
 	pcalau12i	$a1, %pc_hi20(F)
@@ -2501,8 +2484,7 @@ _Z38benchForBigLoopWithReductionAutoVecTC1RN9benchmark5StateE: # @_Z38benchForBi
 	.type	_ZL27bigLoopWithReductionAutoVeci,@function
 _ZL27bigLoopWithReductionAutoVeci:      # @_ZL27bigLoopWithReductionAutoVeci
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB30_3
+	blez	$a0, .LBB30_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	lu12i.w	$a2, 419430
@@ -2698,8 +2680,7 @@ _Z37benchForIC1VW4BigLoopWithReductionTC1RN9benchmark5StateE: # @_Z37benchForIC1
 	.type	_ZL30bigLoopWithReductionWithVW4IC1i,@function
 _ZL30bigLoopWithReductionWithVW4IC1i:   # @_ZL30bigLoopWithReductionWithVW4IC1i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB32_3
+	blez	$a0, .LBB32_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	lu12i.w	$a2, 419430
@@ -2895,8 +2876,7 @@ _Z37benchForIC2VW4BigLoopWithReductionTC1RN9benchmark5StateE: # @_Z37benchForIC2
 	.type	_ZL30bigLoopWithReductionWithVW4IC2i,@function
 _ZL30bigLoopWithReductionWithVW4IC2i:   # @_ZL30bigLoopWithReductionWithVW4IC2i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB34_3
+	blez	$a0, .LBB34_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 8
 	pcalau12i	$a2, %pc_hi20(F)
@@ -3104,8 +3084,7 @@ _Z37benchForIC4VW4BigLoopWithReductionTC1RN9benchmark5StateE: # @_Z37benchForIC4
 	.type	_ZL30bigLoopWithReductionWithVW4IC4i,@function
 _ZL30bigLoopWithReductionWithVW4IC4i:   # @_ZL30bigLoopWithReductionWithVW4IC4i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB36_3
+	blez	$a0, .LBB36_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 16
 	pcalau12i	$a2, %pc_hi20(F)
@@ -3345,10 +3324,9 @@ _Z37benchForIC1VW1BigLoopWithReductionTC1RN9benchmark5StateE: # @_Z37benchForIC1
 	.type	_ZL30bigLoopWithReductionWithVW1IC1i,@function
 _ZL30bigLoopWithReductionWithVW1IC1i:   # @_ZL30bigLoopWithReductionWithVW1IC1i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB38_4
-# %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $zero
+	blez	$a0, .LBB38_3
+# %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a2, %pc_hi20(F)
 	addi.d	$a2, $a2, %pc_lo12(F)
 	pcalau12i	$a3, %pc_hi20(E)
@@ -3382,11 +3360,7 @@ _ZL30bigLoopWithReductionWithVW1IC1i:   # @_ZL30bigLoopWithReductionWithVW1IC1i
 	addi.d	$a0, $a0, -1
 	addi.d	$a5, $a5, 4
 	bnez	$a0, .LBB38_2
-# %bb.3:                                # %._crit_edge
-	move	$a0, $a1
-	ret
-.LBB38_4:
-	move	$a1, $zero
+.LBB38_3:                               # %._crit_edge
 	move	$a0, $a1
 	ret
 .Lfunc_end38:
@@ -3486,11 +3460,11 @@ _Z37benchForIC2VW1BigLoopWithReductionTC1RN9benchmark5StateE: # @_Z37benchForIC2
 	.type	_ZL30bigLoopWithReductionWithVW1IC2i,@function
 _ZL30bigLoopWithReductionWithVW1IC2i:   # @_ZL30bigLoopWithReductionWithVW1IC2i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB40_3
+	blez	$a0, .LBB40_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -16
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	ori	$a1, $zero, 1
 	pcalau12i	$a2, %pc_hi20(F)
 	addi.d	$a2, $a2, %pc_lo12(F)
 	pcalau12i	$a3, %pc_hi20(E)
@@ -3691,8 +3665,7 @@ _Z37benchForIC4VW1BigLoopWithReductionTC1RN9benchmark5StateE: # @_Z37benchForIC4
 	.type	_ZL30bigLoopWithReductionWithVW1IC4i,@function
 _ZL30bigLoopWithReductionWithVW1IC4i:   # @_ZL30bigLoopWithReductionWithVW1IC4i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB42_3
+	blez	$a0, .LBB42_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	lu12i.w	$a2, 419430

@@ -40,11 +40,9 @@ check:                                  # @check
 .LBB0_5:                                # %thread-pre-split.thread
 	bstrpick.d	$a0, $a2, 31, 0
 	addi.d	$a0, $a0, 1
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
-	and	$a2, $a0, $a2
+	slli.d	$a2, $a0, 31
 	st.w	$a0, $a1, %pc_lo12(fails)
-	beqz	$a2, .LBB0_4
+	bgez	$a2, .LBB0_4
 	b	.LBB0_7
 .LBB0_6:
 	fld.s	$fa1, $a0, 24

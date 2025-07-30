@@ -289,8 +289,7 @@ dijkstra:                               # @dijkstra
 	st.w	$s2, $a0, %pc_lo12(iCost)
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	ori	$a0, $zero, 1
-	blt	$s6, $a0, .LBB4_24
+	blez	$s6, .LBB4_24
 .LBB4_11:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_17 Depth 2

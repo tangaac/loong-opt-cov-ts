@@ -114,8 +114,7 @@ usite1:                                 # @usite1
 	ld.d	$s7, $a1, %got_pc_lo12(finalShot)
 	ld.w	$a1, $s7, 0
 	add.d	$s5, $s5, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.1:
 	move	$a0, $s0
 	move	$a1, $s2
@@ -207,8 +206,7 @@ usite1:                                 # @usite1
 	st.w	$s2, $fp, 12
 	st.w	$s1, $fp, 16
 	st.w	$s5, $s8, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_11
+	blez	$a0, .LBB0_11
 # %bb.10:
 	pcalau12i	$a0, %got_pc_hi20(bbbl)
 	ld.d	$a0, $a0, %got_pc_lo12(bbbl)

@@ -87,8 +87,7 @@ d_final_reduction_code_7_12_dparser_gram: # @d_final_reduction_code_7_12_dparser
 	add.d	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(d_get_number_of_children)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_5
+	blez	$a0, .LBB2_5
 # %bb.2:                                # %.lr.ph
 	move	$s1, $a0
 	move	$s2, $zero

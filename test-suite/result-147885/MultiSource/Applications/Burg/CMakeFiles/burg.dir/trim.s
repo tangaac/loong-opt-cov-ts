@@ -24,9 +24,8 @@ findAllPairs:                           # @findAllPairs
 	pcaddu18i	$ra, %call36(zalloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s5, 0
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph.i.preheader
 	move	$s0, $zero
 	move	$s2, $fp
@@ -333,14 +332,13 @@ trim:                                   # @trim
 	stx.h	$a3, $a0, $a4
 	b	.LBB1_7
 .LBB1_10:                               # %.preheader81
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB1_98
+	blez	$s7, .LBB1_98
 # %bb.11:                               # %.lr.ph93
 	move	$fp, $zero
+	pcalau12i	$s8, %pc_hi20(allpairs)
 	pcalau12i	$a0, %got_pc_hi20(rules)
 	ld.d	$a0, $a0, %got_pc_lo12(rules)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$s8, %pc_hi20(allpairs)
 	pcalau12i	$a0, %pc_hi20(trimflag)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill

@@ -148,50 +148,46 @@ _ZN20btAlignedObjectArrayI18btOptimizedBvhNodeED2Ev: # @_ZN20btAlignedObjectArra
 _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a0
 	ld.w	$a2, $a0, 140
-	ld.w	$s3, $a0, 172
-	ori	$s1, $zero, 1
-	slli.w	$s2, $a2, 1
-	st.b	$s1, $a0, 64
-	bge	$s3, $s2, .LBB4_13
+	ld.w	$s2, $a0, 172
+	ori	$a0, $zero, 1
+	slli.w	$s1, $a2, 1
+	st.b	$a0, $fp, 64
+	bge	$s2, $s1, .LBB4_13
 # %bb.1:
 	ld.w	$a0, $fp, 176
-	bge	$a0, $s2, .LBB4_11
+	bge	$a0, $s1, .LBB4_11
 # %bb.2:
-	move	$s4, $a2
+	move	$s3, $a2
 	beqz	$a2, .LBB4_4
 # %bb.3:
-	slli.d	$a0, $s2, 4
+	slli.d	$a0, $s1, 4
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 172
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB4_5
+	bgtz	$a1, .LBB4_5
 	b	.LBB4_7
 .LBB4_4:
 	move	$s0, $zero
-	move	$a1, $s3
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB4_7
+	move	$a1, $s2
+	blez	$a1, .LBB4_7
 .LBB4_5:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -216,11 +212,11 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 192
 	st.d	$s0, $fp, 184
-	st.w	$s2, $fp, 176
-	move	$a2, $s4
+	st.w	$s1, $fp, 176
+	move	$a2, $s3
 .LBB4_11:                               # %.lr.ph.i
-	sub.d	$a0, $s2, $s3
-	slli.d	$a1, $s3, 4
+	sub.d	$a0, $s1, $s2
+	slli.d	$a1, $s2, 4
 	vrepli.b	$vr0, 0
 	.p2align	4, , 16
 .LBB4_12:                               # =>This Inner Loop Header: Depth=1
@@ -230,7 +226,7 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	addi.d	$a1, $a1, 16
 	bnez	$a0, .LBB4_12
 .LBB4_13:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE6resizeEiRKS0_.exit
-	st.w	$s2, $fp, 172
+	st.w	$s1, $fp, 172
 	st.w	$zero, $fp, 60
 	move	$a0, $fp
 	move	$a1, $zero
@@ -238,7 +234,7 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 64
 	ld.w	$a1, $fp, 212
-	bne	$a0, $s1, .LBB4_25
+	beqz	$a0, .LBB4_25
 # %bb.14:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE6resizeEiRKS0_.exit
 	bnez	$a1, .LBB4_25
 # %bb.15:
@@ -254,9 +250,8 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 212
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB4_20
+	blez	$a1, .LBB4_20
 # %bb.18:                               # %.lr.ph.i.i.i10
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -342,14 +337,13 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	st.b	$s0, $fp, 96
 	st.d	$zero, $fp, 88
 	st.d	$zero, $fp, 76
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end4:
 	.size	_ZN14btQuantizedBvh13buildInternalEv, .Lfunc_end4-_ZN14btQuantizedBvh13buildInternalEv
@@ -361,19 +355,19 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	.cfi_def_cfa_offset 128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -389,11 +383,11 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	move	$fp, $a0
 	ld.w	$s4, $a0, 60
 	sub.w	$s3, $a2, $a1
-	ori	$s6, $zero, 1
-	bne	$s3, $s6, .LBB5_3
+	ori	$a0, $zero, 1
+	bne	$s3, $a0, .LBB5_3
 # %bb.1:
 	ld.bu	$a0, $fp, 64
-	bne	$a0, $s6, .LBB5_5
+	beqz	$a0, .LBB5_5
 # %bb.2:
 	ld.d	$a0, $fp, 152
 	slli.d	$a1, $s1, 4
@@ -417,9 +411,8 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	ld.w	$s5, $fp, 60
 	ld.bu	$a1, $fp, 64
 	move	$s2, $a0
-	slli.d	$a2, $s5, 6
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	bne	$a1, $s6, .LBB5_7
+	slli.d	$s6, $s5, 6
+	beqz	$a1, .LBB5_7
 # %bb.4:                                # %_ZN14btQuantizedBvh22setInternalNodeAabbMinEiRK9btVector3.exit.thread
 	fld.s	$fa0, $fp, 24
 	fld.s	$fa1, $fp, 8
@@ -479,11 +472,10 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	addi.d	$a0, $fp, 24
 	ld.d	$a1, $fp, 120
 	vld	$vr0, $a0, 0
-	vstx	$vr0, $a1, $a2
+	vstx	$vr0, $a1, $s6
 	ld.bu	$a1, $fp, 64
 	ld.w	$a0, $fp, 60
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB5_9
+	beqz	$a1, .LBB5_9
 .LBB5_8:
 	fld.s	$fa0, $fp, 8
 	fld.s	$fa1, $fp, 12
@@ -528,23 +520,22 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 .LBB5_10:                               # %.lr.ph
 	slli.d	$s7, $s1, 6
 	slli.d	$s8, $s1, 4
-	ori	$s6, $zero, 1
 	b	.LBB5_13
 	.p2align	4, , 16
 .LBB5_11:                               #   in Loop: Header=BB5_13 Depth=1
 	ld.d	$a0, $fp, 88
 	vldx	$vr0, $a0, $s7
 	add.d	$a1, $a0, $s7
-	vst	$vr0, $sp, 32
+	vst	$vr0, $sp, 16
 	ld.d	$a0, $a1, 16
 	ld.d	$a2, $a1, 24
 .LBB5_12:                               # %_ZNK14btQuantizedBvh10getAabbMaxEi.exit
                                         #   in Loop: Header=BB5_13 Depth=1
 	ld.w	$a1, $fp, 60
-	st.d	$a0, $sp, 16
-	st.d	$a2, $sp, 24
-	addi.d	$a2, $sp, 32
-	addi.d	$a3, $sp, 16
+	st.d	$a0, $sp, 0
+	st.d	$a2, $sp, 8
+	addi.d	$a2, $sp, 16
+	addi.d	$a3, $sp, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN14btQuantizedBvh21mergeInternalNodeAabbEiRK9btVector3S2_)
 	jirl	$ra, $ra, 0
@@ -554,7 +545,7 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	beqz	$s3, .LBB5_15
 .LBB5_13:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $fp, 64
-	bne	$a0, $s6, .LBB5_11
+	beqz	$a0, .LBB5_11
 # %bb.14:                               #   in Loop: Header=BB5_13 Depth=1
 	ld.d	$a0, $fp, 152
 	ldx.hu	$a1, $a0, $s8
@@ -584,8 +575,8 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa4
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a1, $sp, 32
-	st.d	$a2, $sp, 40
+	st.d	$a1, $sp, 16
+	st.d	$a2, $sp, 24
 	ld.hu	$a1, $a0, 6
 	movgr2fr.w	$fa1, $a1
 	ld.hu	$a1, $a0, 8
@@ -624,9 +615,8 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 60
 	ld.bu	$a0, $fp, 64
-	ori	$a2, $zero, 1
 	sub.w	$s0, $a1, $s4
-	bne	$a0, $a2, .LBB5_18
+	beqz	$a0, .LBB5_18
 # %bb.16:                               # %._crit_edge
 	ori	$a1, $zero, 129
 	blt	$s0, $a1, .LBB5_18
@@ -647,22 +637,21 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	b	.LBB5_21
 .LBB5_20:
 	ld.d	$a0, $fp, 120
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $s6
 	st.w	$s0, $a0, 32
 .LBB5_21:                               # %_ZN14btQuantizedBvh26setInternalNodeEscapeIndexEii.exit
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end5:
 	.size	_ZN14btQuantizedBvh9buildTreeEii, .Lfunc_end5-_ZN14btQuantizedBvh9buildTreeEii
@@ -1019,8 +1008,7 @@ GCC_except_table8:
 _ZN14btQuantizedBvh30assignInternalNodeFromLeafNodeEii: # @_ZN14btQuantizedBvh30assignInternalNodeFromLeafNodeEii
 # %bb.0:
 	ld.bu	$a3, $a0, 64
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB9_2
+	beqz	$a3, .LBB9_2
 # %bb.1:
 	ld.d	$a3, $a0, 152
 	slli.d	$a2, $a2, 4
@@ -1381,42 +1369,41 @@ _ZN14btQuantizedBvh25sortAndCalcSplittingIndexEiii: # @_ZN14btQuantizedBvh25sort
 	alsl.d	$a7, $a3, $a7, 2
 	slli.d	$a3, $a1, 4
 	addi.d	$t0, $a3, 10
-	ori	$t1, $zero, 1
 	vldi	$vr1, -1184
 	move	$a3, $a1
 	b	.LBB11_12
 	.p2align	4, , 16
 .LBB11_9:                               #   in Loop: Header=BB11_12 Depth=1
-	ld.d	$t2, $a0, 88
-	slli.d	$t3, $a3, 6
-	vldx	$vr2, $t2, $t3
-	vldx	$vr3, $t2, $a6
-	add.d	$t4, $t2, $t3
-	vstx	$vr2, $t2, $a6
-	vld	$vr2, $t4, 16
-	add.d	$t2, $t2, $a6
-	vld	$vr4, $t2, 16
-	vst	$vr2, $t2, 16
-	vld	$vr2, $t4, 32
-	vld	$vr5, $t2, 32
-	vst	$vr2, $t2, 32
-	vld	$vr2, $t4, 48
+	ld.d	$t1, $a0, 88
+	slli.d	$t2, $a3, 6
+	vldx	$vr2, $t1, $t2
+	vldx	$vr3, $t1, $a6
+	add.d	$t3, $t1, $t2
+	vstx	$vr2, $t1, $a6
+	vld	$vr2, $t3, 16
+	add.d	$t1, $t1, $a6
+	vld	$vr4, $t1, 16
+	vst	$vr2, $t1, 16
+	vld	$vr2, $t3, 32
+	vld	$vr5, $t1, 32
+	vst	$vr2, $t1, 32
+	vld	$vr2, $t3, 48
 	vst	$vr3, $sp, 32
-	vld	$vr3, $t2, 48
-	vst	$vr2, $t2, 48
-	ld.d	$t2, $a0, 88
+	vld	$vr3, $t1, 48
+	vst	$vr2, $t1, 48
+	ld.d	$t1, $a0, 88
 	vld	$vr2, $sp, 32
 	vst	$vr4, $sp, 48
 	vst	$vr5, $sp, 64
 	vst	$vr3, $sp, 80
-	vstx	$vr2, $t2, $t3
+	vstx	$vr2, $t1, $t2
 	vld	$vr2, $sp, 48
 	vld	$vr3, $sp, 64
 	vld	$vr4, $sp, 80
-	add.d	$t2, $t2, $t3
-	vst	$vr2, $t2, 16
-	vst	$vr3, $t2, 32
-	vst	$vr4, $t2, 48
+	add.d	$t1, $t1, $t2
+	vst	$vr2, $t1, 16
+	vst	$vr3, $t1, 32
+	vst	$vr4, $t1, 48
 .LBB11_10:                              # %_ZN14btQuantizedBvh13swapLeafNodesEii.exit
                                         #   in Loop: Header=BB11_12 Depth=1
 	addi.w	$a3, $a3, 1
@@ -1426,94 +1413,94 @@ _ZN14btQuantizedBvh25sortAndCalcSplittingIndexEiii: # @_ZN14btQuantizedBvh25sort
 	addi.d	$t0, $t0, 16
 	beqz	$a5, .LBB11_19
 .LBB11_12:                              # =>This Inner Loop Header: Depth=1
-	ld.bu	$t2, $a0, 64
-	bne	$t2, $t1, .LBB11_14
+	ld.bu	$t1, $a0, 64
+	beqz	$t1, .LBB11_14
 # %bb.13:                               #   in Loop: Header=BB11_12 Depth=1
-	ld.d	$t3, $a0, 152
-	add.d	$t4, $t3, $t0
-	ld.hu	$t5, $t4, -4
+	ld.d	$t2, $a0, 152
+	add.d	$t3, $t2, $t0
+	ld.hu	$t4, $t3, -4
 	fld.s	$fa5, $a0, 40
-	ld.hu	$t6, $t4, -2
-	movgr2fr.w	$fa2, $t5
+	ld.hu	$t5, $t3, -2
+	movgr2fr.w	$fa2, $t4
 	ffint.s.w	$fa2, $fa2
 	fdiv.s	$fa2, $fa2, $fa5
-	movgr2fr.w	$fa3, $t6
+	movgr2fr.w	$fa3, $t5
 	fld.s	$fa6, $a0, 44
-	ldx.hu	$t3, $t3, $t0
+	ldx.hu	$t2, $t2, $t0
 	ffint.s.w	$fa3, $fa3
 	fld.s	$fa7, $a0, 48
 	fdiv.s	$fa4, $fa3, $fa6
-	movgr2fr.w	$fa3, $t3
+	movgr2fr.w	$fa3, $t2
 	ffint.s.w	$fa3, $fa3
 	fdiv.s	$ft0, $fa3, $fa7
 	fld.s	$ft1, $a0, 8
 	fld.s	$ft2, $a0, 12
 	fld.s	$ft3, $a0, 16
-	ld.hu	$t3, $t4, -10
+	ld.hu	$t2, $t3, -10
 	fadd.s	$fa3, $fa2, $ft1
 	fadd.s	$fa4, $fa4, $ft2
 	fadd.s	$fa2, $ft0, $ft3
-	movgr2fr.w	$ft0, $t3
-	ld.hu	$t3, $t4, -8
+	movgr2fr.w	$ft0, $t2
+	ld.hu	$t2, $t3, -8
 	ffint.s.w	$ft0, $ft0
 	fdiv.s	$fa5, $ft0, $fa5
-	ld.hu	$t4, $t4, -6
-	movgr2fr.w	$ft0, $t3
+	ld.hu	$t3, $t3, -6
+	movgr2fr.w	$ft0, $t2
 	ffint.s.w	$ft0, $ft0
 	fdiv.s	$fa6, $ft0, $fa6
-	movgr2fr.w	$ft0, $t4
+	movgr2fr.w	$ft0, $t3
 	ffint.s.w	$ft0, $ft0
 	fdiv.s	$fa7, $ft0, $fa7
 	fadd.s	$ft0, $fa5, $ft1
 	fadd.s	$fa6, $fa6, $ft2
 	fadd.s	$fa5, $fa7, $ft3
-	movfr2gr.s	$t3, $ft0
-	movfr2gr.s	$t4, $fa6
-	bstrins.d	$t3, $t4, 63, 32
+	movfr2gr.s	$t2, $ft0
+	movfr2gr.s	$t3, $fa6
+	bstrins.d	$t2, $t3, 63, 32
 	b	.LBB11_15
 	.p2align	4, , 16
 .LBB11_14:                              #   in Loop: Header=BB11_12 Depth=1
-	ld.d	$t3, $a0, 88
-	add.d	$t4, $t3, $a6
-	ld.d	$t5, $t4, 16
-	fld.s	$fa2, $t4, 24
-	ldx.d	$t3, $t3, $a6
-	fld.s	$fa5, $t4, 8
-	movgr2fr.w	$fa3, $t5
-	srli.d	$t4, $t5, 32
-	movgr2fr.w	$fa4, $t4
+	ld.d	$t2, $a0, 88
+	add.d	$t3, $t2, $a6
+	ld.d	$t4, $t3, 16
+	fld.s	$fa2, $t3, 24
+	ldx.d	$t2, $t2, $a6
+	fld.s	$fa5, $t3, 8
+	movgr2fr.w	$fa3, $t4
+	srli.d	$t3, $t4, 32
+	movgr2fr.w	$fa4, $t3
 .LBB11_15:                              # %_ZNK14btQuantizedBvh10getAabbMinEi.exit107
                                         #   in Loop: Header=BB11_12 Depth=1
-	movgr2fr.w	$fa6, $t3
-	srli.d	$t3, $t3, 32
-	movgr2fr.w	$fa7, $t3
+	movgr2fr.w	$fa6, $t2
+	srli.d	$t2, $t2, 32
+	movgr2fr.w	$fa7, $t2
 	fadd.s	$fa3, $fa3, $fa6
 	fadd.s	$fa4, $fa4, $fa7
 	fadd.s	$fa2, $fa2, $fa5
 	fmul.s	$fa3, $fa3, $fa1
 	fmul.s	$fa4, $fa4, $fa1
 	fmul.s	$fa2, $fa2, $fa1
-	movfr2gr.s	$t3, $fa3
-	movfr2gr.s	$t4, $fa4
-	bstrins.d	$t3, $t4, 63, 32
-	movfr2gr.s	$t4, $fa2
-	bstrpick.d	$t4, $t4, 31, 0
-	st.d	$t3, $sp, 0
-	st.d	$t4, $sp, 8
+	movfr2gr.s	$t2, $fa3
+	movfr2gr.s	$t3, $fa4
+	bstrins.d	$t2, $t3, 63, 32
+	movfr2gr.s	$t3, $fa2
+	bstrpick.d	$t3, $t3, 31, 0
+	st.d	$t2, $sp, 0
+	st.d	$t3, $sp, 8
 	fld.s	$fa2, $a7, 0
 	fcmp.cule.s	$fcc0, $fa2, $fa0
 	bcnez	$fcc0, .LBB11_11
 # %bb.16:                               #   in Loop: Header=BB11_12 Depth=1
-	beqz	$t2, .LBB11_9
+	beqz	$t1, .LBB11_9
 # %bb.17:                               #   in Loop: Header=BB11_12 Depth=1
-	ld.d	$t2, $a0, 152
-	slli.d	$t3, $a3, 4
-	vldx	$vr2, $t2, $t3
-	add.d	$t2, $t2, $t0
-	vld	$vr3, $t2, -10
-	vst	$vr2, $t2, -10
-	ld.d	$t2, $a0, 152
-	vstx	$vr3, $t2, $t3
+	ld.d	$t1, $a0, 152
+	slli.d	$t2, $a3, 4
+	vldx	$vr2, $t1, $t2
+	add.d	$t1, $t1, $t0
+	vld	$vr3, $t1, -10
+	vst	$vr2, $t1, -10
+	ld.d	$t1, $a0, 152
+	vstx	$vr3, $t1, $t2
 	b	.LBB11_10
 .LBB11_18:
 	move	$a3, $a1
@@ -1552,8 +1539,7 @@ _ZN14btQuantizedBvh21mergeInternalNodeAabbEiRK9btVector3S2_: # @_ZN14btQuantized
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a4, $a0, 64
-	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB12_10
+	beqz	$a4, .LBB12_10
 # %bb.1:
 	fld.s	$fa0, $a2, 0
 	fld.s	$fa1, $a0, 8
@@ -1816,8 +1802,7 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	move	$a2, $s8
 	ld.w	$a3, $fp, 212
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a3, $a0, .LBB13_7
+	bgtz	$a3, .LBB13_7
 	b	.LBB13_9
 .LBB13_5:
 	move	$a0, $s6
@@ -1825,8 +1810,7 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 .LBB13_6:
 	move	$s0, $zero
 	move	$a3, $s6
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB13_9
+	blez	$a3, .LBB13_9
 .LBB13_7:                               # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a3, $a3, 5
@@ -1907,14 +1891,12 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 212
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB13_20
+	bgtz	$a1, .LBB13_20
 	b	.LBB13_22
 .LBB13_19:
 	move	$s0, $zero
 	move	$a1, $s3
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB13_22
+	blez	$a1, .LBB13_22
 .LBB13_20:                              # %.lr.ph.i.i.i32
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -1991,8 +1973,7 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 _ZN14btQuantizedBvh13swapLeafNodesEii:  # @_ZN14btQuantizedBvh13swapLeafNodesEii
 # %bb.0:
 	ld.bu	$a3, $a0, 64
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB14_2
+	beqz	$a3, .LBB14_2
 # %bb.1:
 	ld.d	$a3, $a0, 152
 	slli.d	$a2, $a2, 4
@@ -2073,11 +2054,10 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	.cfi_offset 31, -88
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 64
-	ori	$a4, $zero, 1
 	move	$s1, $a3
 	move	$s2, $a2
 	move	$fp, $a1
-	bne	$a0, $a4, .LBB15_13
+	beqz	$a0, .LBB15_13
 # %bb.1:
 	fld.s	$fa2, $s2, 0
 	fld.s	$fa0, $s0, 8
@@ -2170,8 +2150,7 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	bnez	$a0, .LBB15_37
 # %bb.4:
 	ld.w	$s7, $s0, 60
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB15_35
+	blez	$s7, .LBB15_35
 # %bb.5:                                # %.lr.ph.i
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$s8, $s0, 184
@@ -2239,12 +2218,11 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	b	.LBB15_37
 .LBB15_13:
 	ld.w	$a0, $s0, 60
-	blt	$a0, $a4, .LBB15_30
+	blez	$a0, .LBB15_30
 # %bb.14:                               # %.lr.ph.i22
 	ld.d	$s4, $s0, 120
 	move	$s5, $zero
 	move	$s3, $zero
-	ori	$s6, $zero, 1
 	b	.LBB15_17
 .LBB15_15:                              # %.thread.i26
                                         #   in Loop: Header=BB15_17 Depth=1
@@ -2325,7 +2303,7 @@ _ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVe
 	addi.d	$a3, $a2, 1
 	sltui	$a3, $a3, 1
 	and	$a4, $a1, $a3
-	bne	$a4, $s6, .LBB15_26
+	beqz	$a4, .LBB15_26
 	b	.LBB15_15
 .LBB15_30:
 	move	$s3, $zero
@@ -2532,25 +2510,24 @@ _ZNK14btQuantizedBvh39walkStacklessQuantizedTreeCacheFriendlyEP21btNodeOverlapCa
 	.cfi_offset 31, -88
 	move	$fp, $a0
 	ld.w	$a0, $a0, 212
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB17_20
+	blez	$a0, .LBB17_20
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s2, $a1
-	move	$s4, $zero
-	pcalau12i	$s5, %pc_hi20(maxIterations)
+	move	$s3, $zero
+	pcalau12i	$s4, %pc_hi20(maxIterations)
 	b	.LBB17_3
 	.p2align	4, , 16
 .LBB17_2:                               # %_ZNK14btQuantizedBvh26walkStacklessQuantizedTreeEP21btNodeOverlapCallbackPtS2_ii.exit
                                         #   in Loop: Header=BB17_3 Depth=1
 	ld.w	$a0, $fp, 212
-	addi.d	$s4, $s4, 1
-	bge	$s4, $a0, .LBB17_20
+	addi.d	$s3, $s3, 1
+	bge	$s3, $a0, .LBB17_20
 .LBB17_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB17_12 Depth 2
 	ld.d	$a1, $fp, 224
-	slli.d	$a2, $s4, 5
+	slli.d	$a2, $s3, 5
 	add.d	$a0, $a1, $a2
 	ld.hu	$a3, $s1, 0
 	ld.hu	$a4, $a0, 6
@@ -2577,32 +2554,31 @@ _ZNK14btQuantizedBvh39walkStacklessQuantizedTreeCacheFriendlyEP21btNodeOverlapCa
 	bltu	$a1, $a2, .LBB17_2
 # %bb.9:                                #   in Loop: Header=BB17_3 Depth=1
 	ld.w	$a1, $a0, 16
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_18
+	blez	$a1, .LBB17_18
 # %bb.10:                               # %.lr.ph.i
                                         #   in Loop: Header=BB17_3 Depth=1
-	ld.w	$s7, $a0, 12
+	ld.w	$s6, $a0, 12
 	ld.d	$a0, $fp, 184
-	move	$s6, $zero
-	add.w	$s8, $a1, $s7
-	alsl.d	$s3, $s7, $a0, 4
+	move	$s5, $zero
+	add.w	$s7, $a1, $s6
+	alsl.d	$s8, $s6, $a0, 4
 	b	.LBB17_12
 	.p2align	4, , 16
 .LBB17_11:                              #   in Loop: Header=BB17_12 Depth=2
 	sub.w	$a1, $zero, $a0
-	alsl.d	$s3, $a1, $s3, 4
-	sub.w	$s7, $s7, $a0
-	addi.w	$s6, $s6, 1
-	bge	$s7, $s8, .LBB17_17
+	alsl.d	$s8, $a1, $s8, 4
+	sub.w	$s6, $s6, $a0
+	addi.w	$s5, $s5, 1
+	bge	$s6, $s7, .LBB17_17
 .LBB17_12:                              #   Parent Loop BB17_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.hu	$a0, $s1, 0
-	ld.hu	$a1, $s3, 6
+	ld.hu	$a1, $s8, 6
 	sltu	$a0, $a1, $a0
 	ld.hu	$a1, $s0, 0
-	ld.hu	$a2, $s3, 0
+	ld.hu	$a2, $s8, 0
 	ld.hu	$a3, $s1, 4
-	ld.hu	$a4, $s3, 10
+	ld.hu	$a4, $s8, 10
 	xori	$a0, $a0, 1
 	sltu	$a1, $a1, $a2
 	xori	$a1, $a1, 1
@@ -2610,18 +2586,18 @@ _ZNK14btQuantizedBvh39walkStacklessQuantizedTreeCacheFriendlyEP21btNodeOverlapCa
 	xori	$a2, $a2, 1
 	and	$a0, $a0, $a2
 	ld.hu	$a2, $s0, 4
-	ld.hu	$a3, $s3, 4
+	ld.hu	$a3, $s8, 4
 	and	$a0, $a0, $a1
 	ld.hu	$a1, $s1, 2
-	ld.hu	$a4, $s3, 8
+	ld.hu	$a4, $s8, 8
 	sltu	$a2, $a2, $a3
 	xori	$a2, $a2, 1
 	and	$a2, $a0, $a2
 	sltu	$a0, $a4, $a1
 	ld.hu	$a1, $s0, 2
-	ld.hu	$a3, $s3, 2
+	ld.hu	$a3, $s8, 2
 	xori	$a4, $a0, 1
-	ld.w	$a0, $s3, 12
+	ld.w	$a0, $s8, 12
 	and	$a2, $a2, $a4
 	sltu	$a1, $a1, $a3
 	xori	$a1, $a1, 1
@@ -2644,21 +2620,21 @@ _ZNK14btQuantizedBvh39walkStacklessQuantizedTreeCacheFriendlyEP21btNodeOverlapCa
 	andn	$a1, $a2, $a1
 	bnez	$a1, .LBB17_11
 .LBB17_16:                              #   in Loop: Header=BB17_12 Depth=2
-	addi.d	$s3, $s3, 16
-	addi.w	$s7, $s7, 1
+	addi.d	$s8, $s8, 16
 	addi.w	$s6, $s6, 1
-	blt	$s7, $s8, .LBB17_12
+	addi.w	$s5, $s5, 1
+	blt	$s6, $s7, .LBB17_12
 .LBB17_17:                              # %._crit_edge.i
                                         #   in Loop: Header=BB17_3 Depth=1
-	ld.w	$a0, $s5, %pc_lo12(maxIterations)
-	bge	$a0, $s6, .LBB17_2
+	ld.w	$a0, $s4, %pc_lo12(maxIterations)
+	bge	$a0, $s5, .LBB17_2
 	b	.LBB17_19
 .LBB17_18:                              #   in Loop: Header=BB17_3 Depth=1
-	move	$s6, $zero
-	ld.w	$a0, $s5, %pc_lo12(maxIterations)
-	bge	$a0, $s6, .LBB17_2
+	move	$s5, $zero
+	ld.w	$a0, $s4, %pc_lo12(maxIterations)
+	bge	$a0, $s5, .LBB17_2
 .LBB17_19:                              #   in Loop: Header=BB17_3 Depth=1
-	st.w	$s6, $s5, %pc_lo12(maxIterations)
+	st.w	$s5, $s4, %pc_lo12(maxIterations)
 	b	.LBB17_2
 .LBB17_20:                              # %._crit_edge
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
@@ -2792,17 +2768,16 @@ _ZNK14btQuantizedBvh42walkRecursiveQuantizedTreeAgainstQueryAabbEPK18btQuantized
 _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_: # @_ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2811,47 +2786,45 @@ _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_:
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$fp, $a0
 	ld.w	$a0, $a0, 60
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB19_17
+	blez	$a0, .LBB19_17
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s2, $a1
-	ld.d	$s5, $fp, 120
-	move	$s6, $zero
-	move	$s4, $zero
+	ld.d	$s4, $fp, 120
+	move	$s5, $zero
+	move	$s3, $zero
 	b	.LBB19_4
 .LBB19_2:                               # %.thread
                                         #   in Loop: Header=BB19_4 Depth=1
 	ld.d	$a0, $s2, 0
-	ld.w	$a1, $s5, 36
-	ld.w	$a2, $s5, 40
+	ld.w	$a1, $s4, 36
+	ld.w	$a2, $s4, 40
 	ld.d	$a3, $a0, 16
 	move	$a0, $s2
 	jirl	$ra, $a3, 0
 .LBB19_3:                               #   in Loop: Header=BB19_4 Depth=1
-	addi.d	$s5, $s5, 64
-	addi.w	$s6, $s6, 1
+	addi.d	$s4, $s4, 64
+	addi.w	$s5, $s5, 1
 	ld.w	$a0, $fp, 60
-	addi.w	$s4, $s4, 1
-	bge	$s6, $a0, .LBB19_18
+	addi.w	$s3, $s3, 1
+	bge	$s5, $a0, .LBB19_18
 .LBB19_4:                               # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $s1, 0
-	fld.s	$fa1, $s5, 16
+	fld.s	$fa1, $s4, 16
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB19_6
 # %bb.5:                                #   in Loop: Header=BB19_4 Depth=1
 	fld.s	$fa0, $s0, 0
-	fld.s	$fa1, $s5, 0
+	fld.s	$fa1, $s4, 0
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	bceqz	$fcc0, .LBB19_7
 .LBB19_6:                               #   in Loop: Header=BB19_4 Depth=1
 	move	$a0, $zero
 	fld.s	$fa0, $s1, 8
-	fld.s	$fa1, $s5, 24
+	fld.s	$fa1, $s4, 24
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bceqz	$fcc0, .LBB19_8
 	b	.LBB19_9
@@ -2859,29 +2832,29 @@ _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_:
 .LBB19_7:                               #   in Loop: Header=BB19_4 Depth=1
 	ori	$a0, $zero, 1
 	fld.s	$fa0, $s1, 8
-	fld.s	$fa1, $s5, 24
+	fld.s	$fa1, $s4, 24
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB19_9
 .LBB19_8:                               #   in Loop: Header=BB19_4 Depth=1
 	fld.s	$fa0, $s0, 8
-	fld.s	$fa1, $s5, 8
+	fld.s	$fa1, $s4, 8
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	bceqz	$fcc0, .LBB19_10
 .LBB19_9:                               #   in Loop: Header=BB19_4 Depth=1
 	move	$a0, $zero
 .LBB19_10:                              #   in Loop: Header=BB19_4 Depth=1
 	fld.s	$fa0, $s1, 4
-	fld.s	$fa1, $s5, 20
+	fld.s	$fa1, $s4, 20
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB19_12
 # %bb.11:                               #   in Loop: Header=BB19_4 Depth=1
 	fld.s	$fa0, $s0, 4
-	fld.s	$fa1, $s5, 4
+	fld.s	$fa1, $s4, 4
 	fcmp.cule.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB19_16
 .LBB19_12:                              # %_Z20TestAabbAgainstAabb2RK9btVector3S1_S1_S1_.exit.thread
                                         #   in Loop: Header=BB19_4 Depth=1
-	ld.w	$a1, $s5, 32
+	ld.w	$a1, $s4, 32
 	move	$a0, $zero
 	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
@@ -2890,42 +2863,41 @@ _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_:
 # %bb.14:                               #   in Loop: Header=BB19_4 Depth=1
 	bnez	$a0, .LBB19_3
 # %bb.15:                               #   in Loop: Header=BB19_4 Depth=1
-	ld.w	$a0, $s5, 32
+	ld.w	$a0, $s4, 32
 	slli.d	$a1, $a0, 6
-	add.d	$s5, $s5, $a1
-	add.w	$s6, $a0, $s6
+	add.d	$s4, $s4, $a1
+	add.w	$s5, $a0, $s5
 	ld.w	$a0, $fp, 60
-	addi.w	$s4, $s4, 1
-	blt	$s6, $a0, .LBB19_4
+	addi.w	$s3, $s3, 1
+	blt	$s5, $a0, .LBB19_4
 	b	.LBB19_18
 	.p2align	4, , 16
 .LBB19_16:                              # %_Z20TestAabbAgainstAabb2RK9btVector3S1_S1_S1_.exit
                                         #   in Loop: Header=BB19_4 Depth=1
-	ld.w	$a1, $s5, 32
+	ld.w	$a1, $s4, 32
 	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	and	$a2, $a0, $a1
-	bne	$a2, $s3, .LBB19_13
+	beqz	$a2, .LBB19_13
 	b	.LBB19_2
 .LBB19_17:
-	move	$s4, $zero
+	move	$s3, $zero
 .LBB19_18:                              # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(maxIterations)
 	ld.w	$a1, $a0, %pc_lo12(maxIterations)
-	bge	$a1, $s4, .LBB19_20
+	bge	$a1, $s3, .LBB19_20
 # %bb.19:
-	st.w	$s4, $a0, %pc_lo12(maxIterations)
+	st.w	$s3, $a0, %pc_lo12(maxIterations)
 .LBB19_20:
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end19:
 	.size	_ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_, .Lfunc_end19-_ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_
@@ -2942,27 +2914,26 @@ _ZNK14btQuantizedBvh17walkStacklessTreeEP21btNodeOverlapCallbackRK9btVector3S4_:
 _ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btVector3S4_S4_S4_ii: # @_ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btVector3S4_S4_S4_ii
 	.cfi_startproc
 # %bb.0:                                # %_Z8btSetMinIfEvRT_RKS0_.exit.i
-	addi.d	$sp, $sp, -176
-	.cfi_def_cfa_offset 176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 24                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 16                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2973,26 +2944,24 @@ _ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btV
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
-	.cfi_offset 56, -96
-	.cfi_offset 57, -104
-	.cfi_offset 58, -112
-	.cfi_offset 59, -120
-	.cfi_offset 60, -128
-	.cfi_offset 61, -136
-	.cfi_offset 62, -144
-	.cfi_offset 63, -152
+	.cfi_offset 56, -88
+	.cfi_offset 57, -96
+	.cfi_offset 58, -104
+	.cfi_offset 59, -112
+	.cfi_offset 60, -120
+	.cfi_offset 61, -128
+	.cfi_offset 62, -136
+	.cfi_offset 63, -144
 	move	$fp, $a0
 	ld.w	$a0, $a0, 60
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB20_23
+	blez	$a0, .LBB20_23
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a5
 	move	$s1, $a4
 	move	$s2, $a2
 	move	$s3, $a1
+	move	$s4, $zero
 	move	$s5, $zero
-	move	$s6, $zero
 	fld.s	$fa0, $a2, 0
 	fld.s	$fa1, $a2, 4
 	fld.s	$fa2, $a2, 8
@@ -3046,54 +3015,54 @@ _ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btV
 	fcmp.ceq.s	$fcc0, $fa5, $fs7
 	fsel	$fs4, $fa1, $fa0, $fcc0
 	frecip.s	$fa1, $fa3
-	ld.d	$s7, $fp, 120
+	ld.d	$s6, $fp, 120
 	fcmp.ceq.s	$fcc0, $fa3, $fs7
 	fsel	$fs1, $fa1, $fa0, $fcc0
-	addi.w	$s8, $zero, -1
-	fst.s	$ft4, $sp, 20                   # 4-byte Folded Spill
-	fst.s	$ft6, $sp, 16                   # 4-byte Folded Spill
-	fst.s	$ft3, $sp, 12                   # 4-byte Folded Spill
+	addi.w	$s7, $zero, -1
+	fst.s	$ft4, $sp, 12                   # 4-byte Folded Spill
+	fst.s	$ft6, $sp, 8                    # 4-byte Folded Spill
+	fst.s	$ft3, $sp, 4                    # 4-byte Folded Spill
 	b	.LBB20_4
 .LBB20_2:                               # %.thread
                                         #   in Loop: Header=BB20_4 Depth=1
 	ld.d	$a0, $s3, 0
-	ld.w	$a1, $s7, 36
-	ld.w	$a2, $s7, 40
+	ld.w	$a1, $s6, 36
+	ld.w	$a2, $s6, 40
 	ld.d	$a3, $a0, 16
 	move	$a0, $s3
 	jirl	$ra, $a3, 0
-	fld.s	$ft6, $sp, 16                   # 4-byte Folded Reload
-	fld.s	$ft3, $sp, 12                   # 4-byte Folded Reload
-	fld.s	$ft4, $sp, 20                   # 4-byte Folded Reload
+	fld.s	$ft6, $sp, 8                    # 4-byte Folded Reload
+	fld.s	$ft3, $sp, 4                    # 4-byte Folded Reload
+	fld.s	$ft4, $sp, 12                   # 4-byte Folded Reload
 	.p2align	4, , 16
 .LBB20_3:                               #   in Loop: Header=BB20_4 Depth=1
-	addi.d	$s7, $s7, 64
-	addi.w	$s6, $s6, 1
-	ld.w	$a0, $fp, 60
+	addi.d	$s6, $s6, 64
 	addi.w	$s5, $s5, 1
-	bge	$s6, $a0, .LBB20_20
+	ld.w	$a0, $fp, 60
+	addi.w	$s4, $s4, 1
+	bge	$s5, $a0, .LBB20_20
 .LBB20_4:                               # =>This Inner Loop Header: Depth=1
-	fld.s	$fa2, $s7, 20
+	fld.s	$fa2, $s6, 20
 	fcmp.clt.s	$fcc0, $fa2, $fs0
 	bcnez	$fcc0, .LBB20_16
 # %bb.5:                                #   in Loop: Header=BB20_4 Depth=1
-	fld.s	$fa0, $s7, 24
+	fld.s	$fa0, $s6, 24
 	fcmp.clt.s	$fcc0, $fa0, $fs3
 	bcnez	$fcc0, .LBB20_16
 # %bb.6:                                #   in Loop: Header=BB20_4 Depth=1
-	fld.s	$fa1, $s7, 8
+	fld.s	$fa1, $s6, 8
 	fcmp.clt.s	$fcc0, $ft3, $fa1
 	bcnez	$fcc0, .LBB20_16
 # %bb.7:                                #   in Loop: Header=BB20_4 Depth=1
-	fld.s	$fa5, $s7, 16
+	fld.s	$fa5, $s6, 16
 	fcmp.clt.s	$fcc0, $fa5, $fs5
 	bcnez	$fcc0, .LBB20_16
 # %bb.8:                                #   in Loop: Header=BB20_4 Depth=1
-	fld.s	$fa3, $s7, 0
+	fld.s	$fa3, $s6, 0
 	fcmp.clt.s	$fcc0, $ft4, $fa3
 	bcnez	$fcc0, .LBB20_16
 # %bb.9:                                #   in Loop: Header=BB20_4 Depth=1
-	fld.s	$fa6, $s7, 4
+	fld.s	$fa6, $s6, 4
 	fcmp.clt.s	$fcc0, $fs2, $fa6
 	bcnez	$fcc0, .LBB20_16
 # %bb.10:                               #   in Loop: Header=BB20_4 Depth=1
@@ -3155,22 +3124,22 @@ _ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btV
 	fcmp.clt.s	$fcc0, $fa3, $fa2
 	fsel	$fa1, $fa2, $fa3, $fcc0
 	fcmp.clt.s	$fcc0, $fa0, $ft6
-	ld.w	$a2, $s7, 32
+	ld.w	$a2, $s6, 32
 	fcmp.clt.s	$fcc1, $fs7, $fa1
 	movcf2gr	$a0, $fcc0
 	movcf2gr	$a1, $fcc1
 	and	$a0, $a0, $a1
 	addi.d	$a1, $a2, 1
 	sltui	$a1, $a1, 1
-	bne	$a0, $s4, .LBB20_17
+	beqz	$a0, .LBB20_17
 # %bb.15:                               # %_Z10btRayAabb2RK9btVector3S1_PKjPS0_Rfff.exit
                                         #   in Loop: Header=BB20_4 Depth=1
-	beq	$a2, $s8, .LBB20_2
+	beq	$a2, $s7, .LBB20_2
 	b	.LBB20_17
 	.p2align	4, , 16
 .LBB20_16:                              # %_Z10btRayAabb2RK9btVector3S1_PKjPS0_Rfff.exit.thread
                                         #   in Loop: Header=BB20_4 Depth=1
-	ld.w	$a1, $s7, 32
+	ld.w	$a1, $s6, 32
 	move	$a0, $zero
 	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
@@ -3179,46 +3148,45 @@ _ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btV
 # %bb.18:                               #   in Loop: Header=BB20_4 Depth=1
 	bnez	$a0, .LBB20_3
 # %bb.19:                               #   in Loop: Header=BB20_4 Depth=1
-	ld.w	$a0, $s7, 32
+	ld.w	$a0, $s6, 32
 	slli.d	$a1, $a0, 6
-	add.d	$s7, $s7, $a1
-	add.w	$s6, $a0, $s6
+	add.d	$s6, $s6, $a1
+	add.w	$s5, $a0, $s5
 	ld.w	$a0, $fp, 60
-	addi.w	$s5, $s5, 1
-	blt	$s6, $a0, .LBB20_4
+	addi.w	$s4, $s4, 1
+	blt	$s5, $a0, .LBB20_4
 .LBB20_20:                              # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(maxIterations)
 	ld.w	$a1, $a0, %pc_lo12(maxIterations)
-	bge	$a1, $s5, .LBB20_22
+	bge	$a1, $s4, .LBB20_22
 .LBB20_21:
-	st.w	$s5, $a0, %pc_lo12(maxIterations)
+	st.w	$s4, $a0, %pc_lo12(maxIterations)
 .LBB20_22:
-	fld.d	$fs7, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	fld.d	$fs7, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 72                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB20_23:
-	move	$s5, $zero
+	move	$s4, $zero
 	pcalau12i	$a0, %pc_hi20(maxIterations)
 	ld.w	$a1, $a0, %pc_lo12(maxIterations)
-	blt	$a1, $s5, .LBB20_21
+	blt	$a1, $s4, .LBB20_21
 	b	.LBB20_22
 .Lfunc_end20:
 	.size	_ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btVector3S4_S4_S4_ii, .Lfunc_end20-_ZNK14btQuantizedBvh27walkStacklessTreeAgainstRayEP21btNodeOverlapCallbackRK9btVector3S4_S4_S4_ii
@@ -3271,12 +3239,11 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	.cfi_offset 60, -128
 	bge	$a6, $a7, .LBB21_19
 # %bb.1:                                # %.lr.ph
-	move	$s8, $a7
 	move	$s0, $a6
-	move	$s4, $a5
-	move	$s7, $a4
-	move	$t3, $a2
-	move	$t4, $a1
+	move	$s8, $a5
+	move	$s4, $a4
+	move	$s7, $a2
+	move	$s2, $a1
 	move	$s5, $a0
 	fld.s	$fa0, $a3, 0
 	fld.s	$fa2, $a2, 0
@@ -3405,22 +3372,19 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	movfr2gr.d	$a1, $fa0
 	ori	$s1, $a1, 1
 	alsl.d	$s3, $a6, $a0, 4
-	addi.w	$s2, $zero, -1
 	st.d	$t6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$t4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$t8, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB21_4
 .LBB21_2:                               # %.thread139
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a1, $t4, 0
+	ld.d	$a1, $s2, 0
 	ld.d	$a3, $a1, 16
 	bstrpick.d	$a1, $a0, 31, 21
 	bstrpick.d	$a2, $a0, 20, 0
-	move	$a0, $t4
-	move	$s2, $t3
+	move	$a0, $s2
 	move	$fp, $t5
 	move	$s1, $t7
 	jirl	$ra, $a3, 0
@@ -3430,15 +3394,13 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	ld.d	$t6, $sp, 40                    # 8-byte Folded Reload
 	move	$t5, $fp
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$t4, $sp, 32                    # 8-byte Folded Reload
-	move	$t3, $s2
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB21_3:                               #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$s3, $s3, 16
 	addi.w	$s0, $s0, 1
 	addi.w	$s6, $s6, 1
-	bge	$s0, $s8, .LBB21_20
+	bge	$s0, $a7, .LBB21_20
 .LBB21_4:                               # =>This Inner Loop Header: Depth=1
 	ld.hu	$t2, $s3, 6
 	ld.w	$a0, $s3, 12
@@ -3479,20 +3441,20 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	ffint.s.w	$fa2, $fa2
 	fdiv.s	$fa2, $fa2, $fa3
 	fadd.s	$fa0, $fa4, $fa0
-	fld.s	$fa3, $s7, 0
+	fld.s	$fa3, $s4, 0
 	fadd.s	$fa5, $fa5, $fa2
-	fld.s	$fa4, $s7, 4
-	fld.s	$fa7, $s4, 0
+	fld.s	$fa4, $s4, 4
+	fld.s	$fa7, $s8, 0
 	fadd.s	$fa2, $fa3, $fa1
-	fld.s	$fa1, $s4, 4
+	fld.s	$fa1, $s8, 4
 	fadd.s	$fa3, $fa4, $fa6
 	fadd.s	$fa4, $fa7, $fa0
-	fld.s	$fa6, $t3, 0
+	fld.s	$fa6, $s7, 0
 	fadd.s	$fa5, $fa1, $fa5
 	fcmp.cule.s	$fcc0, $fs1, $fs2
 	fsel	$fa0, $fa4, $fa2, $fcc0
 	fsub.s	$fa0, $fa0, $fa6
-	fld.s	$fa7, $t3, 4
+	fld.s	$fa7, $s7, 4
 	fmul.s	$fa1, $fs2, $fa0
 	fcmp.cule.s	$fcc1, $fs1, $fs3
 	fsel	$fa0, $fa3, $fa5, $fcc1
@@ -3511,7 +3473,7 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	fcmp.clt.s	$fcc0, $fa2, $fa3
 	bcnez	$fcc0, .LBB21_16
 # %bb.12:                               #   in Loop: Header=BB21_4 Depth=1
-	fld.s	$fa4, $s4, 8
+	fld.s	$fa4, $s8, 8
 	fld.s	$fa5, $s5, 48
 	fld.s	$fa6, $s5, 16
 	movgr2fr.w	$fa7, $a2
@@ -3519,14 +3481,14 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	fdiv.s	$fa7, $fa7, $fa5
 	fadd.s	$fa7, $fa6, $fa7
 	fadd.s	$fa4, $fa4, $fa7
-	fld.s	$fa7, $s7, 8
+	fld.s	$fa7, $s4, 8
 	movgr2fr.w	$ft0, $a1
 	ffint.s.w	$ft0, $ft0
 	fdiv.s	$fa5, $ft0, $fa5
 	fadd.s	$fa5, $fa5, $fa6
 	fadd.s	$fa5, $fa7, $fa5
 	fcmp.clt.s	$fcc0, $fa1, $fa3
-	fld.s	$fa6, $t3, 8
+	fld.s	$fa6, $s7, 8
 	fsel	$fa1, $fa1, $fa3, $fcc0
 	fcmp.cule.s	$fcc0, $fs1, $fs4
 	fsel	$fa3, $fa5, $fa4, $fcc0
@@ -3559,7 +3521,7 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	.p2align	4, , 16
 .LBB21_16:                              # %.thread
                                         #   in Loop: Header=BB21_4 Depth=1
-	blt	$s2, $a0, .LBB21_3
+	bgez	$a0, .LBB21_3
 # %bb.17:                               # %.thread
                                         #   in Loop: Header=BB21_4 Depth=1
 	bnez	$a3, .LBB21_3
@@ -3568,7 +3530,7 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	alsl.d	$s3, $a1, $s3, 4
 	sub.w	$s0, $s0, $a0
 	addi.w	$s6, $s6, 1
-	blt	$s0, $s8, .LBB21_4
+	blt	$s0, $a7, .LBB21_4
 	b	.LBB21_20
 .LBB21_19:
 	move	$s6, $zero
@@ -3614,9 +3576,8 @@ _ZNK14btQuantizedBvh25reportRayOverlappingNodexEP21btNodeOverlapCallbackRK9btVec
 	ld.bu	$a4, $a0, 64
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 24
-	ori	$a5, $zero, 1
 	vst	$vr0, $sp, 8
-	bne	$a4, $a5, .LBB22_2
+	beqz	$a4, .LBB22_2
 # %bb.1:
 	ld.w	$a7, $a0, 60
 	addi.d	$a4, $sp, 24
@@ -3646,8 +3607,7 @@ _ZNK14btQuantizedBvh29reportBoxCastOverlappingNodexEP21btNodeOverlapCallbackRK9b
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a6, $a0, 64
-	ori	$a7, $zero, 1
-	bne	$a6, $a7, .LBB23_2
+	beqz	$a6, .LBB23_2
 # %bb.1:
 	ld.w	$a7, $a0, 60
 	move	$a6, $zero
@@ -3866,9 +3826,9 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	ld.b	$a0, $s0, 52
 	st.b	$a0, $fp, 55
 	ld.w	$a0, $s0, 200
-	ld.w	$a1, $s0, 240
-	revb.2w	$a0, $a0
-	revb.2w	$a1, $a1
+	ld.w	$a2, $s0, 240
+	revb.2w	$a1, $a0
+	revb.2w	$a0, $a2
 	b	.LBB26_3
 .LBB26_2:
 	st.w	$a0, $fp, 60
@@ -3880,17 +3840,16 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	vst	$vr0, $a0, 0
 	vld	$vr0, $s0, 40
 	vst	$vr0, $fp, 40
-	ld.w	$a0, $s0, 200
-	ld.w	$a1, $s0, 240
+	ld.w	$a1, $s0, 200
+	ld.w	$a0, $s0, 240
 .LBB26_3:
 	ld.bu	$a2, $s0, 64
-	st.w	$a0, $fp, 200
-	st.w	$a1, $fp, 240
+	st.w	$a1, $fp, 200
 	ld.w	$s3, $s0, 60
+	st.w	$a0, $fp, 240
 	st.b	$a2, $fp, 64
-	ori	$a0, $zero, 1
 	addi.d	$s2, $fp, 248
-	bne	$a2, $a0, .LBB26_11
+	beqz	$a2, .LBB26_11
 # %bb.4:
 	ld.d	$a0, $fp, 184
 	beqz	$a0, .LBB26_7
@@ -3903,10 +3862,9 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	jirl	$ra, $ra, 0
 .LBB26_7:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE20initializeFromBufferEPvii.exit
 	st.d	$s2, $fp, 184
-	ori	$a0, $zero, 1
 	beqz	$s1, .LBB26_18
 # %bb.8:                                # %.preheader220
-	blt	$s3, $a0, .LBB26_21
+	blez	$s3, .LBB26_21
 # %bb.9:                                # %.lr.ph234
 	ld.d	$a1, $s0, 184
 	addi.d	$a0, $fp, 260
@@ -3955,11 +3913,10 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	st.d	$s2, $fp, 120
 	st.w	$s3, $fp, 108
 	st.w	$s3, $fp, 112
-	ori	$a1, $zero, 1
 	move	$a0, $s2
 	beqz	$s1, .LBB26_22
 # %bb.15:                               # %.preheader224
-	blt	$s3, $a1, .LBB26_25
+	blez	$s3, .LBB26_25
 # %bb.16:                               # %.lr.ph230
 	ld.d	$a3, $s0, 120
 	move	$a1, $zero
@@ -4054,7 +4011,7 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	bne	$a2, $a1, .LBB26_17
 	b	.LBB26_25
 .LBB26_18:                              # %.preheader222
-	blt	$s3, $a0, .LBB26_21
+	blez	$s3, .LBB26_21
 # %bb.19:                               # %.lr.ph232
 	ld.d	$a1, $s0, 184
 	addi.d	$a0, $fp, 260
@@ -4090,7 +4047,7 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	bnez	$a0, .LBB26_28
 	b	.LBB26_30
 .LBB26_22:                              # %.preheader226
-	blt	$s3, $a1, .LBB26_25
+	blez	$s3, .LBB26_25
 # %bb.23:                               # %.lr.ph
 	ld.d	$a3, $s0, 120
 	move	$a1, $zero
@@ -4120,8 +4077,7 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	bne	$a2, $a1, .LBB26_24
 .LBB26_25:                              # %.loopexit225
 	ld.bu	$a1, $fp, 128
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB26_27
+	beqz	$a1, .LBB26_27
 # %bb.26:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
@@ -4143,10 +4099,9 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 .LBB26_30:                              # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE20initializeFromBufferEPvii.exit
 	ld.w	$a0, $s0, 240
 	st.d	$s2, $fp, 224
-	ori	$a1, $zero, 1
 	beqz	$s1, .LBB26_34
 # %bb.31:                               # %.preheader
-	blt	$a0, $a1, .LBB26_37
+	blez	$a0, .LBB26_37
 # %bb.32:                               # %.lr.ph238
 	ld.d	$a2, $s0, 224
 	add.d	$a1, $s3, $fp
@@ -4184,7 +4139,7 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 	bnez	$a0, .LBB26_33
 	b	.LBB26_37
 .LBB26_34:                              # %.preheader218
-	blt	$a0, $a1, .LBB26_37
+	blez	$a0, .LBB26_37
 # %bb.35:                               # %.lr.ph236
 	move	$a0, $zero
 	ld.d	$a2, $s0, 224
@@ -4578,8 +4533,7 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	beqz	$a2, .LBB27_23
 # %bb.20:                               # %.preheader
 	ld.w	$a1, $a0, 240
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB27_23
+	blez	$a1, .LBB27_23
 # %bb.21:                               # %.lr.ph196.preheader
 	addi.d	$a2, $s0, 8
 	.p2align	4, , 16

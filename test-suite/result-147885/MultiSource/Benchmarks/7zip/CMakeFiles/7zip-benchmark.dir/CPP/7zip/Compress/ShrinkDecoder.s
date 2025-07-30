@@ -809,7 +809,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	bne	$a1, $a3, .LBB0_110
 .LBB0_112:                              # %middle.split
                                         #   in Loop: Header=BB0_10 Depth=1
-	bstrpick.d	$a1, $a2, 15, 0
+	slli.d	$a1, $a2, 48
 	beqz	$a1, .LBB0_132
 # %bb.113:                              # %vector.early.exit
                                         #   in Loop: Header=BB0_10 Depth=1
@@ -1167,7 +1167,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	lu12i.w	$s3, 2
 	addi.d	$fp, $sp, 256
 	ld.d	$s7, $sp, 152                   # 8-byte Folded Reload
-	bne	$a0, $s0, .LBB0_10
+	beqz	$a0, .LBB0_10
 # %bb.163:                              #   in Loop: Header=BB0_10 Depth=1
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 4095

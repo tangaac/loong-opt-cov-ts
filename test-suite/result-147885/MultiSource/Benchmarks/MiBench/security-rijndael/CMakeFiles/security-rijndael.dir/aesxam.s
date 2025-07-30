@@ -13,8 +13,7 @@ fillrand:                               # @fillrand
 # %bb.1:                                # %._crit_edge5
 	ld.d	$a4, $a2, %pc_lo12(fillrand.a.0)
 	ld.d	$a5, $a3, %pc_lo12(fillrand.a.1)
-	ori	$a6, $zero, 1
-	bge	$a1, $a6, .LBB0_4
+	bgtz	$a1, .LBB0_4
 .LBB0_2:
 	ret
 .LBB0_3:
@@ -26,8 +25,7 @@ fillrand:                               # @fillrand
 	lu12i.w	$a5, 3
 	ori	$a5, $a5, 1534
 	st.d	$a5, $a3, %pc_lo12(fillrand.a.1)
-	ori	$a6, $zero, 1
-	blt	$a1, $a6, .LBB0_2
+	blez	$a1, .LBB0_2
 .LBB0_4:                                # %.lr.ph.preheader
 	pcalau12i	$a6, %pc_hi20(fillrand.count)
 	ld.d	$t3, $a6, %pc_lo12(fillrand.count)

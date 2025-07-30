@@ -11,14 +11,11 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	.cfi_def_cfa_offset 32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.b	$a1, $fp, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB0_2
 	b	.LBB0_4
@@ -29,7 +26,7 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	sub.d	$a1, $a1, $a0
 	add.d	$a2, $a1, $a2
 	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 0
+	st.d	$a2, $sp, 8
 	andi	$a1, $a1, 1
 	blez	$a0, .LBB0_4
 .LBB0_2:                                # %._crit_edge
@@ -38,7 +35,7 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	bnez	$a1, .LBB0_1
 .LBB0_3:
 	move	$a1, $zero
-	st.d	$zero, $sp, 0
+	st.d	$zero, $sp, 8
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB0_2
 	.p2align	4, , 16
@@ -52,7 +49,7 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	bnez	$a0, .LBB0_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB0_8
+	blez	$a0, .LBB0_8
 # %bb.7:                                # %._crit_edge
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -61,7 +58,6 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	b	.LBB0_3
 .LBB0_8:
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -95,14 +91,12 @@ __clang_call_terminate:                 # @__clang_call_terminate
 _Z26BM_old_arg_range_interfaceRN9benchmark5StateE: # @_Z26BM_old_arg_range_interfaceRN9benchmark5StateE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	.cfi_def_cfa_offset 32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	.cfi_def_cfa_offset 16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a1, $a0, 40
 	ld.d	$a0, $a0, 32
@@ -141,7 +135,6 @@ _Z26BM_old_arg_range_interfaceRN9benchmark5StateE: # @_Z26BM_old_arg_range_inter
 	bne	$a0, $a1, .LBB2_5
 .LBB2_8:                                # %.critedge
 	ld.d	$a0, $fp, 0
-	ori	$s0, $zero, 1
 	b	.LBB2_10
 	.p2align	4, , 16
 .LBB2_9:                                # %_ZN9benchmark5State19KeepRunningInternalElb.exit
@@ -161,13 +154,12 @@ _Z26BM_old_arg_range_interfaceRN9benchmark5StateE: # @_Z26BM_old_arg_range_inter
 	bnez	$a0, .LBB2_14
 # %bb.13:                               #   in Loop: Header=BB2_10 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s0, .LBB2_9
+	bgtz	$a0, .LBB2_9
 .LBB2_14:
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	pcaddu18i	$t8, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jr	$t8
 .LBB2_15:
@@ -458,14 +450,11 @@ _Z12BM_template2IilEvRN9benchmark5StateE: # @_Z12BM_template2IilEvRN9benchmark5S
 	.cfi_def_cfa_offset 32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.b	$a1, $fp, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB5_2
 	b	.LBB5_4
@@ -476,7 +465,7 @@ _Z12BM_template2IilEvRN9benchmark5StateE: # @_Z12BM_template2IilEvRN9benchmark5S
 	sub.d	$a1, $a1, $a0
 	add.d	$a2, $a1, $a2
 	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 0
+	st.d	$a2, $sp, 8
 	andi	$a1, $a1, 1
 	blez	$a0, .LBB5_4
 .LBB5_2:                                # %._crit_edge.i
@@ -485,7 +474,7 @@ _Z12BM_template2IilEvRN9benchmark5StateE: # @_Z12BM_template2IilEvRN9benchmark5S
 	bnez	$a1, .LBB5_1
 .LBB5_3:
 	move	$a1, $zero
-	st.d	$zero, $sp, 0
+	st.d	$zero, $sp, 8
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB5_2
 	.p2align	4, , 16
@@ -499,7 +488,7 @@ _Z12BM_template2IilEvRN9benchmark5StateE: # @_Z12BM_template2IilEvRN9benchmark5S
 	bnez	$a0, .LBB5_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB5_8
+	blez	$a0, .LBB5_8
 # %bb.7:                                # %._crit_edge.i
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -508,7 +497,6 @@ _Z12BM_template2IilEvRN9benchmark5StateE: # @_Z12BM_template2IilEvRN9benchmark5S
 	b	.LBB5_3
 .LBB5_8:                                # %_Z8BM_emptyRN9benchmark5StateE.exit
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -530,14 +518,11 @@ _Z12BM_template1IlEvRN9benchmark5StateE: # @_Z12BM_template1IlEvRN9benchmark5Sta
 	.cfi_def_cfa_offset 32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.b	$a1, $fp, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB6_2
 	b	.LBB6_4
@@ -548,7 +533,7 @@ _Z12BM_template1IlEvRN9benchmark5StateE: # @_Z12BM_template1IlEvRN9benchmark5Sta
 	sub.d	$a1, $a1, $a0
 	add.d	$a2, $a1, $a2
 	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 0
+	st.d	$a2, $sp, 8
 	andi	$a1, $a1, 1
 	blez	$a0, .LBB6_4
 .LBB6_2:                                # %._crit_edge.i
@@ -557,7 +542,7 @@ _Z12BM_template1IlEvRN9benchmark5StateE: # @_Z12BM_template1IlEvRN9benchmark5Sta
 	bnez	$a1, .LBB6_1
 .LBB6_3:
 	move	$a1, $zero
-	st.d	$zero, $sp, 0
+	st.d	$zero, $sp, 8
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB6_2
 	.p2align	4, , 16
@@ -571,7 +556,7 @@ _Z12BM_template1IlEvRN9benchmark5StateE: # @_Z12BM_template1IlEvRN9benchmark5Sta
 	bnez	$a0, .LBB6_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB6_8
+	blez	$a0, .LBB6_8
 # %bb.7:                                # %._crit_edge.i
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -580,7 +565,6 @@ _Z12BM_template1IlEvRN9benchmark5StateE: # @_Z12BM_template1IlEvRN9benchmark5Sta
 	b	.LBB6_3
 .LBB6_8:                                # %_Z8BM_emptyRN9benchmark5StateE.exit
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -602,14 +586,11 @@ _Z12BM_template1IiEvRN9benchmark5StateE: # @_Z12BM_template1IiEvRN9benchmark5Sta
 	.cfi_def_cfa_offset 32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.b	$a1, $fp, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB7_2
 	b	.LBB7_4
@@ -620,7 +601,7 @@ _Z12BM_template1IiEvRN9benchmark5StateE: # @_Z12BM_template1IiEvRN9benchmark5Sta
 	sub.d	$a1, $a1, $a0
 	add.d	$a2, $a1, $a2
 	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 0
+	st.d	$a2, $sp, 8
 	andi	$a1, $a1, 1
 	blez	$a0, .LBB7_4
 .LBB7_2:                                # %._crit_edge.i
@@ -629,7 +610,7 @@ _Z12BM_template1IiEvRN9benchmark5StateE: # @_Z12BM_template1IiEvRN9benchmark5Sta
 	bnez	$a1, .LBB7_1
 .LBB7_3:
 	move	$a1, $zero
-	st.d	$zero, $sp, 0
+	st.d	$zero, $sp, 8
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB7_2
 	.p2align	4, , 16
@@ -643,7 +624,7 @@ _Z12BM_template1IiEvRN9benchmark5StateE: # @_Z12BM_template1IiEvRN9benchmark5Sta
 	bnez	$a0, .LBB7_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB7_8
+	blez	$a0, .LBB7_8
 # %bb.7:                                # %._crit_edge.i
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -652,7 +633,6 @@ _Z12BM_template1IiEvRN9benchmark5StateE: # @_Z12BM_template1IiEvRN9benchmark5Sta
 	b	.LBB7_3
 .LBB7_8:                                # %_Z8BM_emptyRN9benchmark5StateE.exit
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -848,14 +828,11 @@ _ZN33BM_Fixture_BM_template1_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	.cfi_def_cfa_offset 32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a1
 	ld.d	$a0, $a1, 0
 	ld.b	$a1, $a1, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB9_2
 	b	.LBB9_4
@@ -866,7 +843,7 @@ _ZN33BM_Fixture_BM_template1_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	sub.d	$a1, $a1, $a0
 	add.d	$a2, $a1, $a2
 	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 0
+	st.d	$a2, $sp, 8
 	andi	$a1, $a1, 1
 	blez	$a0, .LBB9_4
 .LBB9_2:                                # %._crit_edge.i
@@ -875,7 +852,7 @@ _ZN33BM_Fixture_BM_template1_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	bnez	$a1, .LBB9_1
 .LBB9_3:
 	move	$a1, $zero
-	st.d	$zero, $sp, 0
+	st.d	$zero, $sp, 8
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB9_2
 	.p2align	4, , 16
@@ -889,7 +866,7 @@ _ZN33BM_Fixture_BM_template1_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	bnez	$a0, .LBB9_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB9_8
+	blez	$a0, .LBB9_8
 # %bb.7:                                # %._crit_edge.i
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -898,7 +875,6 @@ _ZN33BM_Fixture_BM_template1_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	b	.LBB9_3
 .LBB9_8:                                # %_Z8BM_emptyRN9benchmark5StateE.exit
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -1094,14 +1070,11 @@ _ZN33BM_Fixture_BM_template2_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	.cfi_def_cfa_offset 32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a1
 	ld.d	$a0, $a1, 0
 	ld.b	$a1, $a1, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB11_2
 	b	.LBB11_4
@@ -1112,7 +1085,7 @@ _ZN33BM_Fixture_BM_template2_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	sub.d	$a1, $a1, $a0
 	add.d	$a2, $a1, $a2
 	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 0
+	st.d	$a2, $sp, 8
 	andi	$a1, $a1, 1
 	blez	$a0, .LBB11_4
 .LBB11_2:                               # %._crit_edge.i
@@ -1121,7 +1094,7 @@ _ZN33BM_Fixture_BM_template2_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	bnez	$a1, .LBB11_1
 .LBB11_3:
 	move	$a1, $zero
-	st.d	$zero, $sp, 0
+	st.d	$zero, $sp, 8
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB11_2
 	.p2align	4, , 16
@@ -1135,7 +1108,7 @@ _ZN33BM_Fixture_BM_template2_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	bnez	$a0, .LBB11_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB11_8
+	blez	$a0, .LBB11_8
 # %bb.7:                                # %._crit_edge.i
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -1144,7 +1117,6 @@ _ZN33BM_Fixture_BM_template2_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_Z
 	b	.LBB11_3
 .LBB11_8:                               # %_Z8BM_emptyRN9benchmark5StateE.exit
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -1175,7 +1147,6 @@ _Z11BM_countersRN9benchmark5StateE:     # @_Z11BM_countersRN9benchmark5StateE
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.b	$a1, $fp, 24
-	ori	$s0, $zero, 1
 	andi	$a1, $a1, 1
 	bgtz	$a0, .LBB12_2
 	b	.LBB12_4
@@ -1209,7 +1180,7 @@ _Z11BM_countersRN9benchmark5StateE:     # @_Z11BM_countersRN9benchmark5StateE
 	bnez	$a0, .LBB12_8
 # %bb.6:
 	ld.d	$a0, $fp, 0
-	blt	$a0, $s0, .LBB12_8
+	blez	$a0, .LBB12_8
 # %bb.7:                                # %._crit_edge.i
 	ld.bu	$a1, $fp, 24
 	addi.d	$a0, $a0, -1
@@ -1402,9 +1373,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	beqz	$a0, .LBB13_10
 # %bb.9:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $s2
-	blt	$a1, $a0, .LBB13_20
+	bgez	$a0, .LBB13_20
 	b	.LBB13_11
 .LBB13_10:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i
 	sub.d	$a0, $s3, $s1
@@ -1417,9 +1387,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	masknez	$a1, $s4, $a1
 	or	$a0, $a0, $a1
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $s2
-	blt	$a1, $a0, .LBB13_20
+	bgez	$a0, .LBB13_20
 .LBB13_11:                              # %.critedge
 	addi.d	$s4, $sp, 32
 	st.d	$s4, $sp, 16
@@ -1962,8 +1931,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB23_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB23_12
+	bltz	$a0, .LBB23_12
 	b	.LBB23_18
 .LBB23_4:
 	ld.d	$a0, $s1, 40
@@ -2045,8 +2013,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB23_16:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB23_28
+	bgez	$a0, .LBB23_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -2076,8 +2043,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB23_20:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB23_23
+	bltz	$a0, .LBB23_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB23_29
@@ -2092,10 +2058,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB23_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -2105,7 +2071,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB23_27
 .LBB23_26:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -2119,7 +2085,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB23_27:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB23_31
+	bltz	$a0, .LBB23_31
 .LBB23_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -2237,10 +2203,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	bnez	$a0, .LBB24_3
 	b	.LBB24_2
 .LBB24_6:                               # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB24_9
+	bgez	$a1, .LBB24_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB24_14

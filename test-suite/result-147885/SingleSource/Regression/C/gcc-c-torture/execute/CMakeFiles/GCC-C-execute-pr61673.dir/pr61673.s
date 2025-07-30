@@ -24,8 +24,7 @@ bar:                                    # @bar
 foo:                                    # @foo
 # %bb.0:
 	ld.b	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB1_2
+	bltz	$a0, .LBB1_2
 # %bb.1:
 	pcaddu18i	$t8, %call36(bar)
 	jr	$t8
@@ -43,8 +42,7 @@ foo:                                    # @foo
 baz:                                    # @baz
 # %bb.0:
 	ld.b	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB2_2
+	bltz	$a0, .LBB2_2
 # %bb.1:
 	ret
 .LBB2_2:

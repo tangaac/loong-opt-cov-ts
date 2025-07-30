@@ -45,8 +45,7 @@ _ZN8NWindows4NCOM12CPropVariantC2ERK14tagPROPVARIANT: # @_ZN8NWindows4NCOM12CPro
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(VariantCopy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_3
+	bgez	$a0, .LBB0_3
 # %bb.5:
 	lu12i.w	$a1, -524176
 	ori	$a1, $a1, 14
@@ -116,8 +115,7 @@ _ZN8NWindows4NCOM12CPropVariant12InternalCopyEPK14tagPROPVARIANT: # @_ZN8NWindow
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(VariantCopy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_3
+	bgez	$a0, .LBB1_3
 # %bb.5:
 	lu12i.w	$a1, -524176
 	ori	$a1, $a1, 14
@@ -188,8 +186,7 @@ _ZN8NWindows4NCOM12CPropVariantC2ERKS1_: # @_ZN8NWindows4NCOM12CPropVariantC2ERK
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(VariantCopy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2_3
+	bgez	$a0, .LBB2_3
 # %bb.5:
 	lu12i.w	$a1, -524176
 	ori	$a1, $a1, 14
@@ -234,8 +231,7 @@ _ZN8NWindows4NCOM12CPropVariantC2EPw:   # @_ZN8NWindows4NCOM12CPropVariantC2EPw
 	st.h	$zero, $a0, 0
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB3_2
+	bgez	$a0, .LBB3_2
 # %bb.1:
 	st.w	$a0, $s0, 8
 .LBB3_2:                                # %_ZN8NWindows4NCOM12CPropVariant13InternalClearEv.exit.i.i
@@ -319,8 +315,7 @@ _ZN8NWindows4NCOM12CPropVariantaSEPw:   # @_ZN8NWindows4NCOM12CPropVariantaSEPw
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB4_2
+	bgez	$a0, .LBB4_2
 # %bb.6:
 	st.w	$a0, $fp, 8
 	b	.LBB4_2
@@ -359,8 +354,7 @@ _ZN8NWindows4NCOM12CPropVariantC2EPKw:  # @_ZN8NWindows4NCOM12CPropVariantC2EPKw
 	st.h	$zero, $a0, 0
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB5_2
+	bgez	$a0, .LBB5_2
 # %bb.1:
 	st.w	$a0, $s0, 8
 .LBB5_2:                                # %_ZN8NWindows4NCOM12CPropVariant13InternalClearEv.exit.i
@@ -444,8 +438,7 @@ _ZN8NWindows4NCOM12CPropVariantaSEPKw:  # @_ZN8NWindows4NCOM12CPropVariantaSEPKw
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB6_2
+	bgez	$a0, .LBB6_2
 # %bb.6:
 	st.w	$a0, $fp, 8
 	b	.LBB6_2
@@ -510,8 +503,7 @@ _ZN8NWindows4NCOM12CPropVariantaSERKS1_: # @_ZN8NWindows4NCOM12CPropVariantaSERK
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(VariantCopy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB7_3
+	bgez	$a0, .LBB7_3
 # %bb.5:
 	lu12i.w	$a1, -524176
 	ori	$a1, $a1, 14
@@ -582,8 +574,7 @@ _ZN8NWindows4NCOM12CPropVariantaSERK14tagPROPVARIANT: # @_ZN8NWindows4NCOM12CPro
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(VariantCopy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB8_3
+	bgez	$a0, .LBB8_3
 # %bb.5:
 	lu12i.w	$a1, -524176
 	ori	$a1, $a1, 14
@@ -641,9 +632,8 @@ _ZN8NWindows4NCOM12CPropVariant13InternalClearEv: # @_ZN8NWindows4NCOM12CPropVar
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $zero, -1
 	move	$a1, $a0
-	blt	$a2, $a0, .LBB9_5
+	bgez	$a0, .LBB9_5
 # %bb.4:
 	ori	$a0, $zero, 10
 	st.h	$a0, $fp, 0
@@ -732,8 +722,7 @@ _ZN8NWindows4NCOM12CPropVariantaSEPKc:  # @_ZN8NWindows4NCOM12CPropVariantaSEPKc
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB10_2
+	bgez	$a0, .LBB10_2
 # %bb.7:
 	st.w	$a0, $fp, 8
 	b	.LBB10_2
@@ -797,14 +786,13 @@ _ZN8NWindows4NCOM12CPropVariantaSEb:    # @_ZN8NWindows4NCOM12CPropVariantaSEb
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
 	move	$a1, $s0
-	addi.w	$a3, $zero, -1
 	move	$a2, $a0
 	move	$a0, $fp
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
-	blt	$a3, $a2, .LBB11_3
+	bgez	$a2, .LBB11_3
 # %bb.7:
 	st.w	$a2, $a0, 8
 	b	.LBB11_3
@@ -855,14 +843,13 @@ _ZN8NWindows4NCOM12CPropVariantaSEh:    # @_ZN8NWindows4NCOM12CPropVariantaSEh
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
 	move	$a1, $s0
-	addi.w	$a3, $zero, -1
 	move	$a2, $a0
 	move	$a0, $fp
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
-	blt	$a3, $a2, .LBB12_3
+	bgez	$a2, .LBB12_3
 # %bb.7:
 	st.w	$a2, $a0, 8
 	b	.LBB12_3
@@ -912,14 +899,13 @@ _ZN8NWindows4NCOM12CPropVariantaSEs:    # @_ZN8NWindows4NCOM12CPropVariantaSEs
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
 	move	$a1, $s0
-	addi.w	$a3, $zero, -1
 	move	$a2, $a0
 	move	$a0, $fp
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
-	blt	$a3, $a2, .LBB13_3
+	bgez	$a2, .LBB13_3
 # %bb.7:
 	st.w	$a2, $a0, 8
 	b	.LBB13_3
@@ -1128,14 +1114,13 @@ _ZN8NWindows4NCOM12CPropVariantaSERK9_FILETIME: # @_ZN8NWindows4NCOM12CPropVaria
 	pcaddu18i	$ra, %call36(VariantClear)
 	jirl	$ra, $ra, 0
 	move	$a1, $s0
-	addi.w	$a3, $zero, -1
 	move	$a2, $a0
 	move	$a0, $fp
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
-	blt	$a3, $a2, .LBB17_3
+	bgez	$a2, .LBB17_3
 # %bb.7:
 	st.w	$a2, $a0, 8
 	b	.LBB17_3

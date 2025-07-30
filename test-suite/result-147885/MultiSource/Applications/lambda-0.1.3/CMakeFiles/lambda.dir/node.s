@@ -1451,13 +1451,13 @@ _ZN8var_node13reduce_numberEv:          # @_ZN8var_node13reduce_numberEv
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	ori	$s5, $zero, 1
-	blt	$a1, $s5, .LBB23_14
+	blez	$a1, .LBB23_14
 # %bb.10:                               # %.lr.ph.preheader
-	addi.d	$s6, $a0, 1
-	ori	$s7, $zero, 109
+	addi.d	$s5, $a0, 1
+	ori	$s6, $zero, 109
 	pcalau12i	$a0, %pc_hi20(_ZTV8app_node+16)
-	addi.d	$s8, $a0, %pc_lo12(_ZTV8app_node+16)
+	addi.d	$s7, $a0, %pc_lo12(_ZTV8app_node+16)
+	ori	$s8, $zero, 1
 	.p2align	4, , 16
 .LBB23_11:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -1475,13 +1475,13 @@ _ZN8var_node13reduce_numberEv:          # @_ZN8var_node13reduce_numberEv
 # %bb.12:                               # %.noexc
                                         #   in Loop: Header=BB23_11 Depth=1
 	st.d	$a0, $s1, 16
-	st.h	$s7, $a0, 0
+	st.h	$s6, $a0, 0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	st.d	$zero, $a0, 8
-	st.d	$s8, $a0, 0
+	st.d	$s7, $a0, 0
 	ld.d	$a0, $s2, 0
 	st.d	$s1, $s3, 16
 	st.d	$s3, $s1, 8
@@ -1494,9 +1494,9 @@ _ZN8var_node13reduce_numberEv:          # @_ZN8var_node13reduce_numberEv
 .Ltmp20:
 # %bb.13:                               # %_ZN8app_nodeC2EP8exp_nodeS1_s.exit
                                         #   in Loop: Header=BB23_11 Depth=1
-	addi.w	$s6, $s6, -1
+	addi.w	$s5, $s5, -1
 	move	$s2, $s3
-	blt	$s5, $s6, .LBB23_11
+	blt	$s8, $s5, .LBB23_11
 	b	.LBB23_15
 .LBB23_14:
 	move	$s3, $s2
@@ -3348,8 +3348,7 @@ _ZN8lam_node6reduceEPK9alst_nodeiPi:    # @_ZN8lam_node6reduceEPK9alst_nodeiPi
 	beqz	$a0, .LBB38_26
 # %bb.1:                                # %.preheader
 	ld.w	$a0, $s5, %pc_lo12(_ZL27lambda_reduce_recurse_level)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB38_4
+	blez	$a0, .LBB38_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -5555,9 +5554,8 @@ _ZNK8app_node5printEPK9alst_nodei:      # @_ZNK8app_node5printEPK9alst_nodei
 	addi.d	$a0, $a0, -3
 	sltui	$a0, $a0, 1
 	or	$s2, $s2, $a0
-	ori	$a1, $zero, 1
 	ori	$a0, $zero, 40
-	bne	$s2, $a1, .LBB53_49
+	beqz	$s2, .LBB53_49
 # %bb.48:
 	or	$a1, $s3, $s4
 	ori	$a0, $zero, 32

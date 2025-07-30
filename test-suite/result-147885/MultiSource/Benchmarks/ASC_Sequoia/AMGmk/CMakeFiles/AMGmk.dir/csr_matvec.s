@@ -33,8 +33,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	mul.w	$t7, $s1, $s0
 	bcnez	$fcc0, .LBB0_4
 # %bb.1:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$t7, $a0, .LBB0_61
+	blez	$t7, .LBB0_61
 # %bb.2:                                # %.lr.ph237.preheader
 	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB0_8
@@ -59,11 +58,10 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB0_21
 # %bb.5:
-	ori	$a0, $zero, 1
 	fcmp.ceq.d	$fcc0, $fa0, $fa2
 	bceqz	$fcc0, .LBB0_13
 # %bb.6:                                # %.preheader192
-	blt	$t7, $a0, .LBB0_21
+	blez	$t7, .LBB0_21
 # %bb.7:                                # %.lr.ph198.preheader
 	slli.d	$a2, $t7, 3
 	move	$a0, $fp
@@ -119,7 +117,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	bnez	$a0, .LBB0_12
 	b	.LBB0_61
 .LBB0_13:                               # %.preheader194
-	blt	$t7, $a0, .LBB0_21
+	blez	$t7, .LBB0_21
 # %bb.14:                               # %.lr.ph.preheader
 	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB0_16
@@ -166,12 +164,12 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	movgr2fr.w	$fa2, $s0
 	ffint.d.w	$fa2, $fa2
 	fmul.d	$fa1, $fa2, $fa1
-	ori	$a0, $zero, 1
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	bceqz	$fcc0, .LBB0_29
 # %bb.22:                               # %.preheader186
-	blt	$s7, $a0, .LBB0_52
+	blez	$s7, .LBB0_52
 # %bb.23:                               # %.lr.ph225
+	ori	$a0, $zero, 1
 	bne	$s1, $a0, .LBB0_36
 # %bb.24:                               # %.lr.ph225.split.us.preheader
 	move	$a0, $zero
@@ -215,8 +213,9 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	bnez	$a4, .LBB0_28
 	b	.LBB0_25
 .LBB0_29:                               # %.preheader190
-	blt	$s0, $a0, .LBB0_52
+	blez	$s0, .LBB0_52
 # %bb.30:                               # %.lr.ph209
+	ori	$a0, $zero, 1
 	bne	$s1, $a0, .LBB0_44
 # %bb.31:                               # %.lr.ph209.split.us.preheader
 	move	$a0, $zero
@@ -258,8 +257,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	bnez	$a3, .LBB0_35
 	b	.LBB0_32
 .LBB0_36:                               # %.lr.ph225.split
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB0_52
+	blez	$s1, .LBB0_52
 # %bb.37:                               # %.preheader184.us.preheader
 	move	$a0, $zero
 	b	.LBB0_39
@@ -323,8 +321,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	bne	$a1, $s1, .LBB0_41
 	b	.LBB0_38
 .LBB0_44:                               # %.lr.ph209.split
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB0_52
+	blez	$s1, .LBB0_52
 # %bb.45:                               # %.preheader188.us.preheader
 	move	$a0, $zero
 	b	.LBB0_47
@@ -390,8 +387,7 @@ hypre_CSRMatrixMatvec:                  # @hypre_CSRMatrixMatvec
 	fcmp.ceq.d	$fcc0, $fa4, $fa0
 	bcnez	$fcc0, .LBB0_61
 # %bb.53:                               # %.preheader182
-	ori	$a0, $zero, 1
-	blt	$t7, $a0, .LBB0_61
+	blez	$t7, .LBB0_61
 # %bb.54:                               # %.lr.ph235.preheader
 	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB0_56
@@ -491,8 +487,7 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	mul.w	$t7, $s2, $t4
 	bcnez	$fcc0, .LBB1_4
 # %bb.1:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$t7, $a0, .LBB1_45
+	blez	$t7, .LBB1_45
 # %bb.2:                                # %.lr.ph220.preheader
 	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB1_8
@@ -513,11 +508,10 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	fcmp.ceq.d	$fcc0, $fa4, $fa1
 	bcnez	$fcc0, .LBB1_21
 # %bb.5:
-	ori	$a0, $zero, 1
 	fcmp.ceq.d	$fcc0, $fa4, $fa2
 	bceqz	$fcc0, .LBB1_13
 # %bb.6:                                # %.preheader197
-	blt	$t7, $a0, .LBB1_21
+	blez	$t7, .LBB1_21
 # %bb.7:                                # %.lr.ph203.preheader
 	slli.d	$a2, $t7, 3
 	move	$a0, $fp
@@ -571,7 +565,7 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	bnez	$a0, .LBB1_12
 	b	.LBB1_45
 .LBB1_13:                               # %.preheader199
-	blt	$t7, $a0, .LBB1_21
+	blez	$t7, .LBB1_21
 # %bb.14:                               # %.lr.ph.preheader
 	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB1_16
@@ -611,9 +605,9 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB1_20
 .LBB1_21:                               # %.loopexit198
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_36
+	blez	$s1, .LBB1_36
 # %bb.22:                               # %.lr.ph212
+	ori	$a0, $zero, 1
 	bne	$s2, $a0, .LBB1_28
 # %bb.23:                               # %.lr.ph212.split.us.preheader
 	move	$a0, $zero
@@ -653,8 +647,7 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	bnez	$a4, .LBB1_27
 	b	.LBB1_24
 .LBB1_28:                               # %.lr.ph212.split
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB1_36
+	blez	$s2, .LBB1_36
 # %bb.29:                               # %.preheader195.us.preheader
 	move	$a0, $zero
 	b	.LBB1_31
@@ -718,8 +711,7 @@ hypre_CSRMatrixMatvecT:                 # @hypre_CSRMatrixMatvecT
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB1_45
 # %bb.37:                               # %.preheader192
-	ori	$a0, $zero, 1
-	blt	$t7, $a0, .LBB1_45
+	blez	$t7, .LBB1_45
 # %bb.38:                               # %.lr.ph218.preheader
 	ori	$a0, $zero, 4
 	bgeu	$t7, $a0, .LBB1_40
@@ -807,8 +799,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	addi.w	$t1, $t2, 0
 	bcnez	$fcc0, .LBB2_6
 # %bb.1:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$t1, $a0, .LBB2_46
+	blez	$t1, .LBB2_46
 # %bb.2:                                # %.lr.ph117.preheader
 	move	$a0, $t1
 	b	.LBB2_4
@@ -837,11 +828,10 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	fcmp.ceq.d	$fcc0, $fa1, $fa3
 	bcnez	$fcc0, .LBB2_34
 # %bb.7:
-	ori	$t5, $zero, 1
 	fcmp.ceq.d	$fcc0, $fa1, $fa2
 	bceqz	$fcc0, .LBB2_17
 # %bb.8:                                # %.preheader100
-	blt	$t1, $t5, .LBB2_22
+	blez	$t1, .LBB2_22
 # %bb.9:                                # %.lr.ph106.preheader
 	ori	$t5, $zero, 8
 	bltu	$t1, $t5, .LBB2_12
@@ -872,7 +862,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 	st.d	$zero, $t6, 0
 	b	.LBB2_14
 .LBB2_17:                               # %.preheader102
-	blt	$t1, $t5, .LBB2_22
+	blez	$t1, .LBB2_22
 # %bb.18:
 	move	$t5, $t1
 	move	$t6, $a3
@@ -965,8 +955,7 @@ hypre_CSRMatrixMatvec_FF:               # @hypre_CSRMatrixMatvec_FF
 .LBB2_33:                               # %middle.block
 	bne	$t5, $t1, .LBB2_13
 .LBB2_34:                               # %.loopexit101
-	ori	$t5, $zero, 1
-	blt	$t1, $t5, .LBB2_46
+	blez	$t1, .LBB2_46
 # %bb.35:                               # %.lr.ph112.preheader
 	move	$t5, $zero
 	b	.LBB2_38

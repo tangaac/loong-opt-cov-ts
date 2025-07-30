@@ -657,8 +657,7 @@ _ZN21btCollisionDispatcher14getNewManifoldEPvS0_: # @_ZN21btCollisionDispatcher1
 	ld.w	$a2, $fp, 20
 	move	$s0, $a0
 	ld.d	$a1, $fp, 32
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB7_16
+	blez	$a2, .LBB7_16
 .LBB7_7:                                # %.lr.ph.i.i.i
 	ori	$a4, $zero, 4
 	move	$a3, $zero
@@ -702,14 +701,12 @@ _ZN21btCollisionDispatcher14getNewManifoldEPvS0_: # @_ZN21btCollisionDispatcher1
 	bnez	$a4, .LBB7_13
 .LBB7_14:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a3, $fp, 40
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB7_18
+	bnez	$a3, .LBB7_18
 	b	.LBB7_19
 .LBB7_15:
 	move	$s0, $zero
 	ld.d	$a1, $fp, 32
-	ori	$a0, $zero, 1
-	bge	$a2, $a0, .LBB7_7
+	bgtz	$a2, .LBB7_7
 .LBB7_16:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	move	$a0, $s2
 	beqz	$a1, .LBB7_19
@@ -765,8 +762,7 @@ _ZN21btCollisionDispatcher13clearManifoldEP20btPersistentManifold: # @_ZN21btCol
 	.cfi_offset 24, -32
 	move	$fp, $a1
 	ld.w	$a0, $a1, 728
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_3
+	blez	$a0, .LBB8_3
 # %bb.1:                                # %.lr.ph.i
 	move	$s1, $zero
 	addi.d	$s0, $fp, 8
@@ -950,7 +946,7 @@ _ZN21btCollisionDispatcher14needsCollisionEP17btCollisionObjectS1_: # @_ZN21btCo
 .LBB12_4:
 	ld.bu	$a3, $a1, 272
 	ori	$a0, $zero, 1
-	bne	$a3, $a0, .LBB12_6
+	beqz	$a3, .LBB12_6
 # %bb.5:
 	ld.d	$a0, $a1, 0
 	ld.d	$a3, $a0, 0

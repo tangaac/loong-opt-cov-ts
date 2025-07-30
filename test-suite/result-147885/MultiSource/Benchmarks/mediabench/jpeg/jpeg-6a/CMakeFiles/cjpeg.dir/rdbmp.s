@@ -153,7 +153,7 @@ start_input_bmp:                        # @start_input_bmp
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	ori	$s8, $zero, 3
+	ori	$s3, $zero, 3
 	ori	$a0, $zero, 1
 	bne	$s1, $a0, .LBB1_36
 	b	.LBB1_37
@@ -166,9 +166,9 @@ start_input_bmp:                        # @start_input_bmp
 	ld.hu	$s5, $sp, 54
 	ld.hu	$a1, $sp, 56
 	ld.bu	$s1, $sp, 58
-	ld.bu	$s6, $sp, 59
+	ld.bu	$s8, $sp, 59
 	ld.bu	$s2, $sp, 60
-	ld.bu	$s3, $sp, 61
+	ld.bu	$s6, $sp, 61
 	ld.wu	$s7, $sp, 66
 	ld.wu	$a3, $sp, 70
 	ld.wu	$s4, $sp, 74
@@ -193,7 +193,7 @@ start_input_bmp:                        # @start_input_bmp
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	ori	$s8, $zero, 4
+	ori	$s3, $zero, 4
 	ori	$a0, $zero, 1
 	bne	$s5, $a0, .LBB1_21
 	b	.LBB1_22
@@ -207,8 +207,7 @@ start_input_bmp:                        # @start_input_bmp
 	move	$s5, $zero
 	move	$s7, $zero
 	addi.d	$s6, $s2, -14
-	addi.w	$s1, $zero, -1
-	blt	$s1, $s6, .LBB1_29
+	bgez	$s6, .LBB1_29
 	b	.LBB1_66
 .LBB1_20:
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
@@ -223,7 +222,7 @@ start_input_bmp:                        # @start_input_bmp
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s8, $zero
+	move	$s3, $zero
 	ori	$a0, $zero, 1
 	beq	$s5, $a0, .LBB1_22
 .LBB1_21:
@@ -234,9 +233,9 @@ start_input_bmp:                        # @start_input_bmp
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB1_22:
-	or	$a0, $s6, $s1
+	or	$a0, $s8, $s1
 	or	$a0, $a0, $s2
-	or	$a0, $a0, $s3
+	or	$a0, $a0, $s6
 	beqz	$a0, .LBB1_24
 # %bb.23:
 	ld.d	$a0, $fp, 0
@@ -266,27 +265,27 @@ start_input_bmp:                        # @start_input_bmp
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$s6, $s2, -14
-	bnez	$s8, .LBB1_38
+	bnez	$s3, .LBB1_38
 .LBB1_28:
-	addi.w	$s1, $zero, -1
-	bge	$s1, $s6, .LBB1_66
+	bltz	$s6, .LBB1_66
 .LBB1_29:
 	beqz	$s6, .LBB1_67
 # %bb.30:                               # %.lr.ph
-	addi.d	$s2, $s6, 1
+	addi.d	$s1, $s6, 1
+	addi.w	$s2, $zero, -1
 	ori	$s3, $zero, 42
 	ori	$s4, $zero, 1
 	b	.LBB1_32
 	.p2align	4, , 16
 .LBB1_31:                               # %read_byte.exit
                                         #   in Loop: Header=BB1_32 Depth=1
-	addi.d	$s2, $s2, -1
-	bgeu	$s4, $s2, .LBB1_67
+	addi.d	$s1, $s1, -1
+	bgeu	$s4, $s1, .LBB1_67
 .LBB1_32:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB1_31
+	bne	$a0, $s2, .LBB1_31
 # %bb.33:                               #   in Loop: Header=BB1_32 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
@@ -300,7 +299,7 @@ start_input_bmp:                        # @start_input_bmp
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	move	$s8, $zero
+	move	$s3, $zero
 	ori	$a0, $zero, 1
 	bne	$s5, $a0, .LBB1_21
 	b	.LBB1_22
@@ -315,7 +314,7 @@ start_input_bmp:                        # @start_input_bmp
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s8, $zero
+	move	$s3, $zero
 	ori	$a0, $zero, 1
 	beq	$s1, $a0, .LBB1_37
 .LBB1_36:
@@ -328,7 +327,7 @@ start_input_bmp:                        # @start_input_bmp
 .LBB1_37:
 	move	$s4, $zero
 	addi.d	$s6, $s2, -14
-	beqz	$s8, .LBB1_28
+	beqz	$s3, .LBB1_28
 .LBB1_38:
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
@@ -350,22 +349,20 @@ start_input_bmp:                        # @start_input_bmp
 	ld.d	$a0, $fp, 8
 	ld.d	$a4, $a0, 16
 	addi.w	$s2, $s4, 0
-	ori	$s1, $zero, 1
 	ori	$a1, $zero, 1
 	ori	$a3, $zero, 3
-	ori	$s3, $zero, 3
+	ori	$s1, $zero, 3
 	move	$a0, $fp
 	move	$a2, $s2
 	jirl	$ra, $a4, 0
 	st.d	$a0, $s0, 56
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
-	beq	$s8, $s3, .LBB1_55
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	beq	$s3, $s1, .LBB1_55
 # %bb.43:
 	ori	$a0, $zero, 4
-	bne	$s8, $a0, .LBB1_64
+	bne	$s3, $a0, .LBB1_64
 # %bb.44:                               # %.preheader34.i
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB1_65
+	blez	$s2, .LBB1_65
 # %bb.45:                               # %.lr.ph.i
 	move	$s7, $zero
 	addi.w	$s8, $zero, -1
@@ -437,7 +434,7 @@ start_input_bmp:                        # @start_input_bmp
 	jirl	$ra, $a2, 0
 	b	.LBB1_46
 .LBB1_55:                               # %.preheader.i
-	blt	$s2, $s1, .LBB1_65
+	blez	$s2, .LBB1_65
 # %bb.56:                               # %.lr.ph38.i
 	move	$s1, $zero
 	addi.w	$s3, $zero, -1
@@ -509,8 +506,7 @@ start_input_bmp:                        # @start_input_bmp
 	sub.d	$s6, $s6, $a0
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
-	addi.w	$s1, $zero, -1
-	blt	$s1, $s6, .LBB1_29
+	bgez	$s6, .LBB1_29
 .LBB1_66:                               # %.thread170
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
@@ -585,7 +581,7 @@ start_input_bmp:                        # @start_input_bmp
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	move	$s8, $zero
+	move	$s3, $zero
 	ori	$a0, $zero, 1
 	bne	$s1, $a0, .LBB1_36
 	b	.LBB1_37

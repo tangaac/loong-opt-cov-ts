@@ -170,17 +170,16 @@ main:                                   # @main
 _Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE: # @_Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -189,7 +188,6 @@ _Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE: # @_Z24BENCHMARK_ORDERED_DITHER
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$s2, $a0
 	ld.d	$a0, $a0, 32
 	ld.w	$fp, $a0, 0
@@ -215,21 +213,13 @@ _Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE: # @_Z24BENCHMARK_ORDERED_DITHER
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$s3, $fa0
 	addi.w	$s4, $s4, 0
-	move	$a0, $fp
-	move	$a1, $fp
-	move	$a3, $s0
-	move	$a4, $s1
-	move	$a5, $s3
-	move	$a6, $s4
-	pcaddu18i	$ra, %call36(orderedDitherKernel)
-	jirl	$ra, $ra, 0
-	ori	$s6, $zero, 1
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a2, $s5, %pc_lo12(inputImage)
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s2, 0
+.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	move	$a1, $fp
 	move	$a3, $s0
@@ -238,7 +228,6 @@ _Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE: # @_Z24BENCHMARK_ORDERED_DITHER
 	move	$a6, $s4
 	pcaddu18i	$ra, %call36(orderedDitherKernel)
 	jirl	$ra, $ra, 0
-.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 0
 	bgtz	$a0, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
@@ -252,7 +241,7 @@ _Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE: # @_Z24BENCHMARK_ORDERED_DITHER
 	bnez	$a0, .LBB1_7
 # %bb.6:                                #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a0, $s2, 0
-	bge	$a0, $s6, .LBB1_2
+	bgtz	$a0, .LBB1_2
 .LBB1_7:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -274,16 +263,15 @@ _Z24BENCHMARK_ORDERED_DITHERRN9benchmark5StateE: # @_Z24BENCHMARK_ORDERED_DITHER
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .LBB1_10:
@@ -391,13 +379,11 @@ _Z22BENCHMARK_FLOYD_DITHERRN9benchmark5StateE: # @_Z22BENCHMARK_FLOYD_DITHERRN9b
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s1, $a0
 	ld.d	$a0, $a0, 32
 	ld.w	$fp, $a0, 0
@@ -411,24 +397,18 @@ _Z22BENCHMARK_FLOYD_DITHERRN9benchmark5StateE: # @_Z22BENCHMARK_FLOYD_DITHERRN9b
 	move	$s0, $a0
 	pcalau12i	$s2, %pc_hi20(inputImage)
 	ld.d	$a2, $s2, %pc_lo12(inputImage)
-	move	$a0, $fp
-	move	$a1, $fp
-	move	$a3, $s0
-	pcaddu18i	$ra, %call36(floydDitherKernel)
-	jirl	$ra, $ra, 0
-	ori	$s3, $zero, 1
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a2, $s2, %pc_lo12(inputImage)
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s1, 0
+.LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	move	$a1, $fp
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(floydDitherKernel)
 	jirl	$ra, $ra, 0
-.LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
 	bgtz	$a0, .LBB3_2
 # %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
@@ -442,7 +422,7 @@ _Z22BENCHMARK_FLOYD_DITHERRN9benchmark5StateE: # @_Z22BENCHMARK_FLOYD_DITHERRN9b
 	bnez	$a0, .LBB3_7
 # %bb.6:                                #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $s1, 0
-	bge	$a0, $s3, .LBB3_2
+	bgtz	$a0, .LBB3_2
 .LBB3_7:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -461,7 +441,6 @@ _Z22BENCHMARK_FLOYD_DITHERRN9benchmark5StateE: # @_Z22BENCHMARK_FLOYD_DITHERRN9b
 	jirl	$ra, $ra, 0
 .LBB3_9:
 	move	$a0, $s0
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

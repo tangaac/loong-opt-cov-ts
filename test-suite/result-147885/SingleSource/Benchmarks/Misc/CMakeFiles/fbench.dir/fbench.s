@@ -72,28 +72,28 @@ main:                                   # @main
 	vld	$vr0, $a0, 64
 	vst	$vr1, $a1, 104
 	vst	$vr2, $a1, 144
-	pcalau12i	$s0, %pc_hi20(niter)
+	pcalau12i	$a2, %pc_hi20(current_surfaces)
 	vst	$vr0, $a1, 128
 	vld	$vr0, $a0, 112
-	lu12i.w	$a2, 244
-	ori	$a2, $a2, 576
-	st.w	$a2, $s0, %pc_lo12(niter)
+	ori	$a3, $zero, 1
+	st.b	$a3, $a2, %pc_lo12(current_surfaces)
+	pcalau12i	$fp, %pc_hi20(niter)
 	vst	$vr0, $a1, 184
 	vld	$vr0, $a0, 96
-	pcalau12i	$a0, %pc_hi20(current_surfaces)
-	ori	$fp, $zero, 1
-	st.b	$fp, $a0, %pc_lo12(current_surfaces)
+	lu12i.w	$a0, 244
+	ori	$a0, $a0, 576
+	st.w	$a0, $fp, %pc_lo12(niter)
 	vst	$vr0, $a1, 168
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, %pc_lo12(niter)
+	ld.w	$a1, $fp, %pc_lo12(niter)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, %pc_lo12(niter)
+	ld.w	$a0, $fp, %pc_lo12(niter)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_4)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_4)
 	movgr2fr.w	$fa1, $a0
@@ -112,13 +112,13 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	ld.w	$a0, $s0, %pc_lo12(niter)
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	ld.w	$a0, $fp, %pc_lo12(niter)
 	pcalau12i	$s0, %pc_hi20(itercount)
 	st.w	$zero, $s0, %pc_lo12(itercount)
 	pcalau12i	$a1, %pc_hi20(od_sa)
 	addi.d	$s1, $a1, %pc_lo12(od_sa)
-	blt	$a0, $fp, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.1:
 	pcalau12i	$s2, %pc_hi20(paraxial)
 	pcalau12i	$s3, %pc_hi20(object_distance)
@@ -335,8 +335,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_7
+	blez	$a1, .LBB0_7
 # %bb.11:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_9 Depth=1
 	bstrpick.d	$s7, $a0, 30, 0
@@ -365,8 +364,7 @@ main:                                   # @main
 	bnez	$s7, .LBB0_12
 	b	.LBB0_7
 .LBB0_13:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB0_15
+	blez	$s0, .LBB0_15
 # %bb.14:
 	addi.d	$a0, $s0, -1
 	sltui	$a0, $a0, 1

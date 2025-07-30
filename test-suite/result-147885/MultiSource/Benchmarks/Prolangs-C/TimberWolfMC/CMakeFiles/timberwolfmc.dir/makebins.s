@@ -112,10 +112,10 @@ makebins:                               # @makebins
 	bltu	$s1, $s0, .LBB0_1
 .LBB0_9:                                # %.thread215
 	ftintrz.w.d	$fa0, $fs0
-	movfr2gr.s	$a1, $fa0
-	bltz	$a1, .LBB0_30
+	movfr2gr.s	$a2, $fa0
+	bltz	$a2, .LBB0_30
 # %bb.10:                               # %.lr.ph
-	slli.d	$a3, $a1, 1
+	slli.d	$a3, $a2, 1
 	vldi	$vr0, -800
 	fmadd.d	$fa1, $fs0, $fs0, $fa0
 	fneg.d	$fa0, $fs0
@@ -124,13 +124,13 @@ makebins:                               # @makebins
 	addi.w	$a6, $zero, -1
 	lu12i.w	$a5, 7
 	ori	$a7, $a5, 3328
-                                        # implicit-def: $r6
+                                        # implicit-def: $r5
 	b	.LBB0_12
 	.p2align	4, , 16
 .LBB0_11:                               #   in Loop: Header=BB0_12 Depth=1
 	addi.w	$a6, $a6, 1
 	addi.w	$a4, $a4, -1
-	beq	$a1, $a6, .LBB0_15
+	beq	$a2, $a6, .LBB0_15
 .LBB0_12:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t0, $a6, 2
 	mul.d	$t1, $a4, $t0
@@ -148,7 +148,7 @@ makebins:                               # @makebins
 	ftintrz.w.d	$fa2, $fa2
 	movfr2gr.s	$a7, $fa2
 	move	$a0, $t0
-	move	$a2, $a4
+	move	$a1, $a4
 	b	.LBB0_11
 .LBB0_15:                               # %.lr.ph181
 	vldi	$vr1, -800
@@ -163,7 +163,7 @@ makebins:                               # @makebins
 .LBB0_16:                               #   in Loop: Header=BB0_17 Depth=1
 	addi.w	$a7, $a7, 1
 	addi.w	$t0, $t0, -1
-	beq	$a1, $a7, .LBB0_20
+	beq	$a2, $a7, .LBB0_20
 .LBB0_17:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 2
 	mul.d	$t3, $t0, $t2
@@ -196,7 +196,7 @@ makebins:                               # @makebins
 .LBB0_21:                               #   in Loop: Header=BB0_22 Depth=1
 	addi.w	$t0, $t0, 1
 	addi.w	$a7, $a7, -1
-	beq	$a1, $t0, .LBB0_25
+	beq	$a2, $t0, .LBB0_25
 .LBB0_22:                               # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $t0, 2
 	mul.d	$t3, $a7, $t2
@@ -217,21 +217,21 @@ makebins:                               # @makebins
 	move	$a5, $a7
 	b	.LBB0_21
 .LBB0_25:                               # %._crit_edge
-	addi.w	$a7, $a4, 0
-	ori	$a1, $zero, 99
-	addi.w	$t0, $a0, 0
-	blt	$a1, $a7, .LBB0_31
+	addi.w	$a2, $a4, 0
+	ori	$t0, $zero, 99
+	addi.w	$a7, $a0, 0
+	blt	$t0, $a2, .LBB0_31
 # %bb.26:                               # %._crit_edge
-	blt	$a1, $t0, .LBB0_31
+	blt	$t0, $a7, .LBB0_31
 # %bb.27:
-	mul.w	$a1, $a6, $a4
-	mul.w	$a7, $a2, $a0
-	slt	$a1, $a7, $a1
-	masknez	$a4, $a4, $a1
-	maskeqz	$a0, $a0, $a1
+	mul.w	$a2, $a6, $a4
+	mul.w	$a7, $a1, $a0
+	slt	$a2, $a7, $a2
+	masknez	$a4, $a4, $a2
+	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a4
-	masknez	$a4, $a6, $a1
-	maskeqz	$a1, $a2, $a1
+	masknez	$a4, $a6, $a2
+	maskeqz	$a1, $a1, $a2
 	or	$a1, $a1, $a4
 .LBB0_28:                               # %.thread
 	addi.w	$a2, $a3, 0
@@ -253,18 +253,18 @@ makebins:                               # @makebins
                                         # implicit-def: $r9
 	b	.LBB0_34
 .LBB0_31:
-	slti	$t1, $t0, 100
-	masknez	$a1, $a6, $t1
-	maskeqz	$a2, $a2, $t1
-	or	$a1, $a2, $a1
-	masknez	$a2, $a4, $t1
-	maskeqz	$a0, $a0, $t1
-	ori	$a4, $zero, 100
-	or	$a0, $a0, $a2
-	blt	$t0, $a4, .LBB0_28
+	slti	$t0, $a7, 100
+	masknez	$a6, $a6, $t0
+	maskeqz	$a1, $a1, $t0
+	or	$a1, $a1, $a6
+	masknez	$a4, $a4, $t0
+	maskeqz	$a0, $a0, $t0
+	ori	$a6, $zero, 100
+	or	$a0, $a0, $a4
+	blt	$a7, $a6, .LBB0_28
 # %bb.32:
-	ori	$a2, $zero, 99
-	blt	$a2, $a7, .LBB0_34
+	ori	$a4, $zero, 99
+	blt	$a4, $a2, .LBB0_34
 	b	.LBB0_28
 .LBB0_33:
 	move	$a3, $a0
@@ -304,9 +304,8 @@ makebins:                               # @makebins
 	ld.w	$a1, $s0, 0
 	addi.w	$a0, $a1, 1
 	slli.d	$s0, $a0, 3
-	addi.w	$a2, $zero, -1
 	bstrpick.d	$s3, $s1, 31, 0
-	bge	$a2, $a1, .LBB0_40
+	bltz	$a1, .LBB0_40
 # %bb.36:                               # %.lr.ph195.preheader
 	pcalau12i	$a1, %got_pc_hi20(numcells)
 	ld.d	$a1, $a1, %got_pc_lo12(numcells)

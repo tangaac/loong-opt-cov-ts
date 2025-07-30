@@ -280,17 +280,16 @@ hypre_CSRMatrixSetRownnz:               # @hypre_CSRMatrixSetRownnz
 	.type	hypre_CSRMatrixRead,@function
 hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(fopen)
@@ -298,16 +297,16 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a2, $sp, 12
+	addi.d	$a2, $sp, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 12
+	ld.w	$a0, $sp, 4
 	addi.w	$a0, $a0, 1
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.w	$s3, $sp, 12
+	ld.w	$s3, $sp, 4
 	move	$s0, $a0
 	bltz	$s3, .LBB5_3
 # %bb.1:                                # %.lr.ph.preheader
@@ -326,7 +325,7 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	ld.w	$a0, $s2, 0
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $s2, 0
-	ld.w	$s3, $sp, 12
+	ld.w	$s3, $sp, 4
 	addi.d	$s4, $s4, 1
 	addi.d	$s2, $s2, 4
 	blt	$s4, $s3, .LBB5_2
@@ -349,7 +348,6 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	st.w	$s5, $a0, 52
 	st.w	$s3, $a0, 48
 	st.d	$s0, $a0, 8
-	ori	$s6, $zero, 1
 	beqz	$s1, .LBB5_12
 # %bb.4:
 	ori	$a1, $zero, 8
@@ -363,8 +361,7 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	ld.d	$s3, $s2, 16
 	beqz	$s3, .LBB5_8
 .LBB5_6:                                # %hypre_CSRMatrixInitialize.exit
-	ori	$s6, $zero, 1
-	bge	$s1, $s6, .LBB5_9
+	bgtz	$s1, .LBB5_9
 	b	.LBB5_12
 .LBB5_7:
 	addi.w	$a0, $s3, 1
@@ -381,13 +378,12 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	st.d	$a0, $s2, 16
-	ori	$s6, $zero, 1
-	blt	$s1, $s6, .LBB5_12
+	blez	$s1, .LBB5_12
 .LBB5_9:                                # %.lr.ph51.preheader
-	move	$s6, $zero
+	move	$s5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
-	move	$s7, $s1
+	move	$s6, $s1
 	.p2align	4, , 16
 .LBB5_10:                               # %.lr.ph51
                                         # =>This Inner Loop Header: Depth=1
@@ -399,23 +395,23 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	ld.w	$a0, $s3, 0
 	addi.w	$a0, $a0, -1
 	st.w	$a0, $s3, 0
-	slt	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	slt	$a1, $s5, $a0
+	masknez	$a2, $s5, $a1
 	maskeqz	$a0, $a0, $a1
-	or	$s6, $a0, $a2
-	addi.d	$s7, $s7, -1
+	or	$s5, $a0, $a2
+	addi.d	$s6, $s6, -1
 	addi.d	$s3, $s3, 4
-	bnez	$s7, .LBB5_10
+	bnez	$s6, .LBB5_10
 # %bb.11:                               # %._crit_edge52.loopexit
-	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 1
 .LBB5_12:                               # %._crit_edge52
-	ld.w	$a0, $sp, 12
+	ld.w	$a0, $sp, 4
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $s0, $a0
-	blt	$a0, $s5, .LBB5_15
+	blez	$a0, .LBB5_15
 # %bb.13:                               # %.lr.ph56.preheader
 	ld.d	$s3, $s2, 0
-	move	$s5, $zero
+	move	$s6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.2)
 	.p2align	4, , 16
@@ -426,30 +422,29 @@ hypre_CSRMatrixRead:                    # @hypre_CSRMatrixRead
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 12
+	ld.w	$a0, $sp, 4
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $s0, $a0
-	addi.d	$s5, $s5, 1
+	addi.d	$s6, $s6, 1
 	addi.d	$s3, $s3, 8
-	blt	$s5, $a0, .LBB5_14
+	blt	$s6, $a0, .LBB5_14
 .LBB5_15:                               # %._crit_edge57
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	st.w	$s1, $s2, 32
-	st.w	$s6, $s2, 28
+	st.w	$s5, $s2, 28
 	move	$a0, $s2
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end5:
 	.size	hypre_CSRMatrixRead, .Lfunc_end5-hypre_CSRMatrixRead
@@ -507,8 +502,7 @@ hypre_CSRMatrixPrint:                   # @hypre_CSRMatrixPrint
 .LBB6_3:                                # %.preheader35
 	slli.d	$a0, $s0, 2
 	ldx.w	$a0, $s4, $a0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_10
+	blez	$a0, .LBB6_10
 # %bb.4:                                # %.lr.ph39.preheader
 	move	$s5, $zero
 	alsl.d	$s1, $s0, $s4, 2
@@ -530,8 +524,7 @@ hypre_CSRMatrixPrint:                   # @hypre_CSRMatrixPrint
 # %bb.6:                                # %._crit_edge
 	beqz	$s2, .LBB6_11
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_12
+	blez	$a0, .LBB6_12
 # %bb.8:                                # %.lr.ph41.preheader
 	move	$s3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
@@ -586,8 +579,7 @@ hypre_CSRMatrixCopy:                    # @hypre_CSRMatrixCopy
 	ld.w	$a3, $a0, 24
 	ld.d	$a4, $a0, 8
 	ld.d	$a5, $a1, 8
-	ori	$a6, $zero, 1
-	blt	$a3, $a6, .LBB7_6
+	blez	$a3, .LBB7_6
 # %bb.1:                                # %.lr.ph50.preheader
 	ld.d	$a6, $a0, 16
 	ld.d	$a7, $a1, 16
@@ -631,8 +623,7 @@ hypre_CSRMatrixCopy:                    # @hypre_CSRMatrixCopy
 	stx.w	$a7, $a5, $a6
 	beqz	$a2, .LBB7_19
 # %bb.7:
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB7_19
+	blez	$a3, .LBB7_19
 # %bb.8:                                # %.lr.ph56.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
@@ -827,8 +818,7 @@ hypre_CSRMatrixClone:                   # @hypre_CSRMatrixClone
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB8_14
 .LBB8_15:                               # %.preheader
-	ori	$a2, $zero, 1
-	blt	$s1, $a2, .LBB8_23
+	blez	$s1, .LBB8_23
 # %bb.16:                               # %.lr.ph35.preheader
 	ori	$a3, $zero, 8
 	move	$a2, $zero
@@ -999,18 +989,18 @@ hypre_CSRMatrixClone:                   # @hypre_CSRMatrixClone
 	.type	hypre_CSRMatrixUnion,@function
 hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$s6, $a0
 	ld.w	$t5, $a0, 24
 	ld.w	$s2, $a0, 28
@@ -1021,18 +1011,17 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	ld.d	$s3, $a1, 16
 	move	$fp, $a3
 	move	$s0, $a2
-	st.d	$t5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 16                    # 8-byte Folded Spill
 	beqz	$a2, .LBB9_35
 # %bb.1:
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 0                     # 8-byte Folded Spill
 	ori	$a1, $zero, 4
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
 	move	$a0, $s2
-	blt	$s4, $a1, .LBB9_14
+	blez	$s4, .LBB9_14
 # %bb.2:                                # %.lr.ph220
 	blez	$s2, .LBB9_36
 # %bb.3:                                # %.lr.ph.us.preheader
@@ -1115,16 +1104,14 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.w	$a0, $a0, 1
 	b	.LBB9_4
 .LBB9_14:                               # %._crit_edge221
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	ori	$a1, $zero, 4
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s6, $zero, 1
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
-	ld.d	$t5, $sp, 32                    # 8-byte Folded Reload
-	blt	$s2, $s6, .LBB9_22
+	ld.d	$t5, $sp, 16                    # 8-byte Folded Reload
+	blez	$s2, .LBB9_22
 # %bb.15:                               # %.lr.ph.preheader
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -1166,9 +1153,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.d	$a3, $a3, 4
 	bnez	$a1, .LBB9_21
 .LBB9_22:                               # %.preheader
-	ori	$a1, $zero, 1
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	blt	$s4, $a1, .LBB9_46
+	blez	$s4, .LBB9_46
 # %bb.23:                               # %.lr.ph228
 	blez	$s2, .LBB9_44
 # %bb.24:                               # %.lr.ph226.us.preheader
@@ -1256,7 +1241,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	masknez	$a1, $s4, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB9_46
 .LBB9_36:                               # %.lr.ph220.split.preheader
 	ori	$a0, $zero, 8
@@ -1300,12 +1285,12 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bnez	$a2, .LBB9_42
 .LBB9_43:                               # %.preheader.thread
 	ori	$a1, $zero, 4
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
-	ld.d	$t5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 16                    # 8-byte Folded Reload
 .LBB9_44:                               # %.lr.ph228.split.preheader
 	move	$a1, $zero
 	.p2align	4, , 16
@@ -1320,8 +1305,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bnez	$s4, .LBB9_45
 .LBB9_46:                               # %.loopexit210
 	ld.w	$s4, $s6, 32
-	ori	$s2, $zero, 1
-	blt	$t5, $s2, .LBB9_69
+	blez	$t5, .LBB9_69
 # %bb.47:                               # %.lr.ph257
 	ld.w	$a1, $s5, 0
 	move	$a2, $zero
@@ -1456,6 +1440,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 .LBB9_69:                               # %._crit_edge
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 56
+	ori	$s2, $zero, 1
 	move	$s6, $t5
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
@@ -1465,7 +1450,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 8
 	st.w	$s6, $a0, 24
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 28
 	st.w	$s4, $a1, 32
 	st.w	$s2, $a1, 52
@@ -1488,7 +1473,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 .LBB9_72:                               # %.thread369
 	addi.d	$s2, $s6, 8
 .LBB9_73:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -1505,12 +1490,11 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s6, 16
 .LBB9_76:                               # %hypre_CSRMatrixInitialize.exit
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a1, $s2, 0
-	ori	$a2, $zero, 1
 	st.w	$zero, $a1, 0
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
-	blt	$s6, $a2, .LBB9_100
+	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	blez	$s6, .LBB9_100
 # %bb.77:                               # %.lr.ph282
 	move	$a2, $zero
 	move	$a4, $zero
@@ -1676,19 +1660,19 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
 .LBB9_102:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end9:
 	.size	hypre_CSRMatrixUnion, .Lfunc_end9-hypre_CSRMatrixUnion

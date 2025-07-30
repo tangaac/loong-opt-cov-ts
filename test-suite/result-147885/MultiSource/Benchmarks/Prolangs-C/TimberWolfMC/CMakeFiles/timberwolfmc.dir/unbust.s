@@ -365,14 +365,14 @@ coincide:                               # @coincide
 	ld.d	$a0, $a0, %got_pc_lo12(PtsArray)
 	ld.d	$a0, $a0, 0
 	ld.w	$a2, $a0, 0
+	blez	$a2, .LBB1_9
+# %bb.1:                                # %.lr.ph20.preheader
 	ori	$a1, $zero, 1
-	bge	$a2, $a1, .LBB1_3
-.LBB1_1:                                # %._crit_edge
-	ret
+	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                # %.loopexit
                                         #   in Loop: Header=BB1_3 Depth=1
-	bge	$a3, $a2, .LBB1_1
+	bge	$a3, $a2, .LBB1_9
 .LBB1_3:                                # %.lr.ph20
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_6 Depth 2
@@ -415,6 +415,8 @@ coincide:                               # @coincide
 	addi.d	$a6, $a6, -1
 	st.w	$t0, $a7, 4
 	b	.LBB1_5
+.LBB1_9:                                # %._crit_edge
+	ret
 .Lfunc_end1:
 	.size	coincide, .Lfunc_end1-coincide
                                         # -- End function
@@ -426,16 +428,16 @@ firstP:                                 # @firstP
 	pcalau12i	$a0, %got_pc_hi20(PtsArray)
 	ld.d	$a0, $a0, %got_pc_lo12(PtsArray)
 	ld.d	$a0, $a0, 0
-	ld.w	$a5, $a0, 0
-	ori	$a4, $zero, 1
-	blt	$a5, $a4, .LBB2_3
+	ld.w	$a4, $a0, 0
+	blez	$a4, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$a1, $a5, 1
+	addi.d	$a1, $a4, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ori	$a3, $zero, 8
 	lu12i.w	$a2, 24414
-	bgeu	$a5, $a3, .LBB2_4
+	bgeu	$a4, $a3, .LBB2_4
 # %bb.2:
+	ori	$a5, $zero, 1
 	ori	$a3, $a2, 256
 	b	.LBB2_7
 .LBB2_3:
@@ -443,11 +445,11 @@ firstP:                                 # @firstP
 	addi.w	$a0, $a2, 0
 	ret
 .LBB2_4:                                # %vector.ph
-	bstrpick.d	$a3, $a5, 30, 3
+	bstrpick.d	$a3, $a4, 30, 3
 	slli.d	$a6, $a3, 3
-	srli.d	$a3, $a5, 3
-	ori	$a4, $zero, 1
-	bstrins.d	$a4, $a3, 30, 3
+	srli.d	$a3, $a4, 3
+	ori	$a5, $zero, 1
+	bstrins.d	$a5, $a3, 30, 3
 	ori	$a3, $a2, 256
 	vreplgr2vr.w	$vr0, $a3
 	addi.d	$a3, $a0, 36
@@ -484,22 +486,22 @@ firstP:                                 # @firstP
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a6, $a5, .LBB2_9
+	beq	$a6, $a4, .LBB2_9
 .LBB2_7:                                # %.lr.ph.preheader43
-	alsl.d	$a5, $a4, $a0, 3
-	addi.d	$a5, $a5, 4
-	sub.d	$a4, $a1, $a4
+	alsl.d	$a4, $a5, $a0, 3
+	addi.d	$a4, $a4, 4
+	sub.d	$a5, $a1, $a5
 	.p2align	4, , 16
 .LBB2_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a5, 0
+	ld.w	$a6, $a4, 0
 	slt	$a7, $a6, $a3
 	masknez	$a3, $a3, $a7
 	maskeqz	$a6, $a6, $a7
 	or	$a3, $a6, $a3
-	addi.d	$a4, $a4, -1
-	addi.d	$a5, $a5, 8
-	bnez	$a4, .LBB2_8
+	addi.d	$a5, $a5, -1
+	addi.d	$a4, $a4, 8
+	bnez	$a5, .LBB2_8
 .LBB2_9:                                # %.lr.ph35.preheader
 	addi.d	$a0, $a0, 12
 	addi.d	$a1, $a1, -1
@@ -541,9 +543,8 @@ u:                                      # @u
 	pcalau12i	$a1, %got_pc_hi20(PtsArray)
 	ld.d	$a1, $a1, %got_pc_lo12(PtsArray)
 	ld.d	$a4, $a1, 0
-	ld.w	$a6, $a4, 0
-	ori	$a5, $zero, 1
-	blt	$a6, $a5, .LBB3_20
+	ld.w	$a5, $a4, 0
+	blez	$a5, .LBB3_20
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $a0
 	move	$a0, $zero
@@ -552,29 +553,30 @@ u:                                      # @u
 	ldx.w	$a2, $a4, $a2
 	ld.w	$a3, $a3, 4
 	bstrpick.d	$a1, $a1, 31, 0
-	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 31, 0
+	addi.d	$a5, $a5, 1
+	bstrpick.d	$a6, $a5, 31, 0
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a4, 12
-	addi.d	$a7, $a7, -1
+	addi.d	$a5, $a4, 12
+	addi.d	$a6, $a6, -1
+	ori	$a7, $zero, 1
 	lu12i.w	$t0, 24414
 	ori	$t0, $t0, 256
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a6, 8
-	addi.d	$a7, $a7, -1
-	addi.w	$a5, $a5, 1
-	beqz	$a7, .LBB3_7
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, -1
+	addi.w	$a7, $a7, 1
+	beqz	$a6, .LBB3_7
 .LBB3_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	beqz	$a1, .LBB3_2
 # %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
-	ld.w	$t1, $a6, -4
+	ld.w	$t1, $a5, -4
 	bne	$t1, $a2, .LBB3_2
 # %bb.5:                                #   in Loop: Header=BB3_3 Depth=1
-	ld.w	$t1, $a6, 0
+	ld.w	$t1, $a5, 0
 	bge	$a3, $t1, .LBB3_2
 # %bb.6:                                #   in Loop: Header=BB3_3 Depth=1
 	sub.w	$t1, $t1, $a3
@@ -583,7 +585,7 @@ u:                                      # @u
 	masknez	$t0, $t0, $t2
 	or	$t0, $t1, $t0
 	masknez	$a0, $a0, $t2
-	maskeqz	$t1, $a5, $t2
+	maskeqz	$t1, $a7, $t2
 	or	$a0, $t1, $a0
 	b	.LBB3_2
 .LBB3_7:                                # %._crit_edge
@@ -593,8 +595,7 @@ u:                                      # @u
 	ld.d	$a1, $a1, %got_pc_lo12(rectang)
 	ld.d	$a6, $a1, 0
 	ld.w	$a5, $a6, 0
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB3_20
+	blez	$a5, .LBB3_20
 # %bb.9:                                # %.lr.ph.preheader.i
 	alsl.d	$a7, $a0, $a4, 3
 	slli.d	$a1, $a0, 3
@@ -681,9 +682,8 @@ l:                                      # @l
 	pcalau12i	$a1, %got_pc_hi20(PtsArray)
 	ld.d	$a1, $a1, %got_pc_lo12(PtsArray)
 	ld.d	$a4, $a1, 0
-	ld.w	$a6, $a4, 0
-	ori	$a5, $zero, 1
-	blt	$a6, $a5, .LBB5_20
+	ld.w	$a5, $a4, 0
+	blez	$a5, .LBB5_20
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $a0
 	move	$a0, $zero
@@ -692,29 +692,30 @@ l:                                      # @l
 	ldx.w	$a2, $a4, $a2
 	ld.w	$a3, $a3, 4
 	bstrpick.d	$a1, $a1, 31, 0
-	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 31, 0
+	addi.d	$a5, $a5, 1
+	bstrpick.d	$a6, $a5, 31, 0
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a4, 12
-	addi.d	$a7, $a7, -1
+	addi.d	$a5, $a4, 12
+	addi.d	$a6, $a6, -1
+	ori	$a7, $zero, 1
 	lu12i.w	$t0, 24414
 	ori	$t0, $t0, 256
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                #   in Loop: Header=BB5_3 Depth=1
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a6, 8
-	addi.d	$a7, $a7, -1
-	addi.w	$a5, $a5, 1
-	beqz	$a7, .LBB5_7
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, -1
+	addi.w	$a7, $a7, 1
+	beqz	$a6, .LBB5_7
 .LBB5_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	beqz	$a1, .LBB5_2
 # %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$t1, $a6, 0
+	ld.w	$t1, $a5, 0
 	bne	$t1, $a3, .LBB5_2
 # %bb.5:                                #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$t1, $a6, -4
+	ld.w	$t1, $a5, -4
 	bge	$t1, $a2, .LBB5_2
 # %bb.6:                                #   in Loop: Header=BB5_3 Depth=1
 	sub.w	$t1, $a2, $t1
@@ -723,7 +724,7 @@ l:                                      # @l
 	masknez	$t0, $t0, $t2
 	or	$t0, $t1, $t0
 	masknez	$a0, $a0, $t2
-	maskeqz	$t1, $a5, $t2
+	maskeqz	$t1, $a7, $t2
 	or	$a0, $t1, $a0
 	b	.LBB5_2
 .LBB5_7:                                # %._crit_edge
@@ -733,8 +734,7 @@ l:                                      # @l
 	ld.d	$a1, $a1, %got_pc_lo12(rectang)
 	ld.d	$a6, $a1, 0
 	ld.w	$a5, $a6, 0
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB5_20
+	blez	$a5, .LBB5_20
 # %bb.9:                                # %.lr.ph.preheader.i
 	alsl.d	$a7, $a0, $a4, 3
 	slli.d	$a1, $a0, 3
@@ -794,9 +794,8 @@ r:                                      # @r
 	pcalau12i	$a1, %got_pc_hi20(PtsArray)
 	ld.d	$a1, $a1, %got_pc_lo12(PtsArray)
 	ld.d	$a4, $a1, 0
-	ld.w	$a6, $a4, 0
-	ori	$a5, $zero, 1
-	blt	$a6, $a5, .LBB6_20
+	ld.w	$a5, $a4, 0
+	blez	$a5, .LBB6_20
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $a0
 	move	$a0, $zero
@@ -805,29 +804,30 @@ r:                                      # @r
 	ldx.w	$a2, $a4, $a2
 	ld.w	$a3, $a3, 4
 	bstrpick.d	$a1, $a1, 31, 0
-	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 31, 0
+	addi.d	$a5, $a5, 1
+	bstrpick.d	$a6, $a5, 31, 0
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a4, 12
-	addi.d	$a7, $a7, -1
+	addi.d	$a5, $a4, 12
+	addi.d	$a6, $a6, -1
+	ori	$a7, $zero, 1
 	lu12i.w	$t0, 24414
 	ori	$t0, $t0, 256
 	b	.LBB6_3
 	.p2align	4, , 16
 .LBB6_2:                                #   in Loop: Header=BB6_3 Depth=1
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a6, 8
-	addi.d	$a7, $a7, -1
-	addi.w	$a5, $a5, 1
-	beqz	$a7, .LBB6_7
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, -1
+	addi.w	$a7, $a7, 1
+	beqz	$a6, .LBB6_7
 .LBB6_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	beqz	$a1, .LBB6_2
 # %bb.4:                                #   in Loop: Header=BB6_3 Depth=1
-	ld.w	$t1, $a6, 0
+	ld.w	$t1, $a5, 0
 	bne	$t1, $a3, .LBB6_2
 # %bb.5:                                #   in Loop: Header=BB6_3 Depth=1
-	ld.w	$t1, $a6, -4
+	ld.w	$t1, $a5, -4
 	bge	$a2, $t1, .LBB6_2
 # %bb.6:                                #   in Loop: Header=BB6_3 Depth=1
 	sub.w	$t1, $t1, $a2
@@ -836,7 +836,7 @@ r:                                      # @r
 	masknez	$t0, $t0, $t2
 	or	$t0, $t1, $t0
 	masknez	$a0, $a0, $t2
-	maskeqz	$t1, $a5, $t2
+	maskeqz	$t1, $a7, $t2
 	or	$a0, $t1, $a0
 	b	.LBB6_2
 .LBB6_7:                                # %._crit_edge
@@ -846,8 +846,7 @@ r:                                      # @r
 	ld.d	$a1, $a1, %got_pc_lo12(rectang)
 	ld.d	$a6, $a1, 0
 	ld.w	$a5, $a6, 0
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB6_20
+	blez	$a5, .LBB6_20
 # %bb.9:                                # %.lr.ph.preheader.i
 	alsl.d	$a7, $a0, $a4, 3
 	slli.d	$a1, $a0, 3
@@ -1067,9 +1066,8 @@ b:                                      # @b
 	pcalau12i	$a1, %got_pc_hi20(PtsArray)
 	ld.d	$a1, $a1, %got_pc_lo12(PtsArray)
 	ld.d	$a4, $a1, 0
-	ld.w	$a6, $a4, 0
-	ori	$a5, $zero, 1
-	blt	$a6, $a5, .LBB9_20
+	ld.w	$a5, $a4, 0
+	blez	$a5, .LBB9_20
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $a0
 	move	$a0, $zero
@@ -1078,29 +1076,30 @@ b:                                      # @b
 	ldx.w	$a2, $a4, $a2
 	ld.w	$a3, $a3, 4
 	bstrpick.d	$a1, $a1, 31, 0
-	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 31, 0
+	addi.d	$a5, $a5, 1
+	bstrpick.d	$a6, $a5, 31, 0
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a4, 12
-	addi.d	$a7, $a7, -1
+	addi.d	$a5, $a4, 12
+	addi.d	$a6, $a6, -1
+	ori	$a7, $zero, 1
 	lu12i.w	$t0, 24414
 	ori	$t0, $t0, 256
 	b	.LBB9_3
 	.p2align	4, , 16
 .LBB9_2:                                #   in Loop: Header=BB9_3 Depth=1
 	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a6, 8
-	addi.d	$a7, $a7, -1
-	addi.w	$a5, $a5, 1
-	beqz	$a7, .LBB9_7
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, -1
+	addi.w	$a7, $a7, 1
+	beqz	$a6, .LBB9_7
 .LBB9_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	beqz	$a1, .LBB9_2
 # %bb.4:                                #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$t1, $a6, -4
+	ld.w	$t1, $a5, -4
 	bne	$t1, $a2, .LBB9_2
 # %bb.5:                                #   in Loop: Header=BB9_3 Depth=1
-	ld.w	$t1, $a6, 0
+	ld.w	$t1, $a5, 0
 	bge	$t1, $a3, .LBB9_2
 # %bb.6:                                #   in Loop: Header=BB9_3 Depth=1
 	sub.w	$t1, $a3, $t1
@@ -1109,7 +1108,7 @@ b:                                      # @b
 	masknez	$t0, $t0, $t2
 	or	$t0, $t1, $t0
 	masknez	$a0, $a0, $t2
-	maskeqz	$t1, $a5, $t2
+	maskeqz	$t1, $a7, $t2
 	or	$a0, $t1, $a0
 	b	.LBB9_2
 .LBB9_7:                                # %._crit_edge
@@ -1119,8 +1118,7 @@ b:                                      # @b
 	ld.d	$a1, $a1, %got_pc_lo12(rectang)
 	ld.d	$a6, $a1, 0
 	ld.w	$a5, $a6, 0
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB9_20
+	blez	$a5, .LBB9_20
 # %bb.9:                                # %.lr.ph.preheader.i
 	alsl.d	$a7, $a0, $a4, 3
 	slli.d	$a1, $a0, 3
@@ -1265,8 +1263,7 @@ recCheck:                               # @recCheck
 	ld.d	$a2, $a2, %got_pc_lo12(rectang)
 	ld.d	$a4, $a2, 0
 	ld.w	$a5, $a4, 0
-	ori	$a2, $zero, 1
-	blt	$a5, $a2, .LBB12_12
+	blez	$a5, .LBB12_12
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a2, %got_pc_hi20(PtsArray)
 	ld.d	$a2, $a2, %got_pc_lo12(PtsArray)
@@ -1337,64 +1334,62 @@ dumpError:                              # @dumpError
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(PtsOut)
-	ld.d	$s1, $a0, %got_pc_lo12(PtsOut)
-	ld.d	$a0, $s1, 0
+	ld.d	$s0, $a0, %got_pc_lo12(PtsOut)
+	ld.d	$a0, $s0, 0
 	ld.w	$a1, $a0, 0
-	ori	$s0, $zero, 1
-	blt	$a1, $s0, .LBB13_3
+	blez	$a1, .LBB13_3
 # %bb.1:                                # %.lr.ph.preheader
+	move	$s1, $zero
 	move	$s2, $zero
-	move	$s3, $zero
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.6)
 	.p2align	4, , 16
 .LBB13_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $s1
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 12
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a1, $a0, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$s2, $s2, 8
-	blt	$s3, $a1, .LBB13_2
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 8
+	blt	$s2, $a1, .LBB13_2
 .LBB13_3:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.Lstr.2)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(PtsArray)
-	ld.d	$s1, $a0, %got_pc_lo12(PtsArray)
-	ld.d	$a0, $s1, 0
+	ld.d	$s0, $a0, %got_pc_lo12(PtsArray)
+	ld.d	$a0, $s0, 0
 	ld.w	$a1, $a0, 0
-	blt	$a1, $s0, .LBB13_6
+	blez	$a1, .LBB13_6
 # %bb.4:                                # %.lr.ph31.preheader
-	move	$s0, $zero
+	move	$s1, $zero
 	move	$s2, $zero
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.6)
 	.p2align	4, , 16
 .LBB13_5:                               # %.lr.ph31
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $s1
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 12
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a1, $a0, 0
 	addi.d	$s2, $s2, 1
-	addi.d	$s0, $s0, 8
+	addi.d	$s1, $s1, 8
 	blt	$s2, $a1, .LBB13_5
 .LBB13_6:                               # %._crit_edge32
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
@@ -1405,8 +1400,7 @@ dumpError:                              # @dumpError
 	ld.d	$s0, $a0, %got_pc_lo12(rectang)
 	ld.d	$a0, $s0, 0
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB13_9
+	blez	$a1, .LBB13_9
 # %bb.7:                                # %.lr.ph36.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -1432,7 +1426,6 @@ dumpError:                              # @dumpError
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

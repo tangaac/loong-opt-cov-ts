@@ -46,17 +46,15 @@ fn1:                                    # @fn1
 	beqz	$a2, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a2, $a0, 0
-	ld.wu	$a4, $a1, %pc_lo12(p)
-	addi.d	$a4, $a4, 1
-	and	$a5, $a4, $a3
-	st.w	$a4, $a1, %pc_lo12(p)
-	beqz	$a5, .LBB2_2
+	ld.wu	$a3, $a1, %pc_lo12(p)
+	addi.d	$a3, $a3, 1
+	slli.d	$a4, $a3, 31
+	st.w	$a3, $a1, %pc_lo12(p)
+	bgez	$a4, .LBB2_2
 .LBB2_3:                                # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(r)
 	pcalau12i	$a1, %pc_hi20(d)

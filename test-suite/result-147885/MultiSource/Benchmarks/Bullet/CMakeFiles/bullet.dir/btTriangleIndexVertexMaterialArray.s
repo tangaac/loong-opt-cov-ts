@@ -9,22 +9,20 @@ _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i: # @_ZN34btTriangleIn
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$s0, $a7
 	move	$s1, $a1
 	move	$fp, $a0
@@ -34,8 +32,8 @@ _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i: # @_ZN34btTriangleIn
 	addi.d	$a0, $a0, %pc_lo12(_ZTV34btTriangleIndexVertexMaterialArray+16)
 	st.d	$a0, $fp, 0
 	addi.d	$s3, $fp, 104
-	ori	$s4, $zero, 1
-	st.b	$s4, $fp, 128
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 128
 	st.d	$zero, $fp, 120
 	st.d	$zero, $fp, 108
 .Ltmp0:
@@ -47,7 +45,7 @@ _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i: # @_ZN34btTriangleIn
 # %bb.1:                                # %.noexc
 	move	$s2, $a0
 	ld.w	$a1, $fp, 108
-	blt	$a1, $s4, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.2:                                # %.lr.ph.i.i.i.i
 	move	$a0, $zero
 	slli.d	$a2, $a1, 5
@@ -78,10 +76,10 @@ _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i: # @_ZN34btTriangleIn
 	jirl	$ra, $ra, 0
 .Ltmp3:
 .LBB0_7:                                # %_ZN20btAlignedObjectArrayI20btMaterialPropertiesE10deallocateEv.exit.i.i.i
-	ld.d	$a0, $sp, 88
-	ld.d	$a1, $sp, 80
-	ld.d	$a2, $sp, 72
-	ld.d	$a3, $sp, 64
+	ld.d	$a0, $sp, 72
+	ld.d	$a1, $sp, 64
+	ld.d	$a2, $sp, 56
+	ld.d	$a3, $sp, 48
 	ori	$a4, $zero, 1
 	st.b	$a4, $fp, 128
 	ld.w	$a5, $fp, 108
@@ -105,14 +103,13 @@ _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i: # @_ZN34btTriangleIn
 	mul.d	$a0, $a0, $a4
 	add.d	$a0, $s2, $a0
 	st.w	$a1, $a0, 44
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB0_8:
 .Ltmp4:

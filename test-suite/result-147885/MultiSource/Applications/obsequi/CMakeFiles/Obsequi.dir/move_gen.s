@@ -10,8 +10,7 @@ move_generator:                         # @move_generator
 	andi	$a4, $a1, 1
 	slli.d	$a1, $a4, 2
 	ldx.w	$t0, $a3, $a1
-	ori	$a2, $zero, 1
-	blt	$t0, $a2, .LBB0_12
+	blez	$t0, .LBB0_12
 # %bb.1:                                # %.lr.ph35.preheader
 	move	$a1, $a0
 	move	$a2, $zero
@@ -110,8 +109,7 @@ move_generator_stage1:                  # @move_generator_stage1
 	andi	$a4, $a1, 1
 	slli.d	$a1, $a4, 2
 	ldx.w	$t0, $a3, $a1
-	ori	$a2, $zero, 1
-	blt	$t0, $a2, .LBB1_12
+	blez	$t0, .LBB1_12
 # %bb.1:                                # %.lr.ph35.preheader
 	move	$a1, $a0
 	move	$a2, $zero
@@ -208,8 +206,7 @@ move_generator_stage2:                  # @move_generator_stage2
 	andi	$a4, $a2, 1
 	slli.d	$a2, $a4, 2
 	ldx.w	$t0, $a3, $a2
-	ori	$a2, $zero, 1
-	blt	$t0, $a2, .LBB2_12
+	blez	$t0, .LBB2_12
 # %bb.1:                                # %.lr.ph35.preheader
 	move	$a2, $zero
 	pcalau12i	$a5, %got_pc_hi20(g_board)

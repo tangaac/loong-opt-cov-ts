@@ -139,10 +139,9 @@ upin:                                   # @upin
 	addi.d	$a4, $a4, 20
 	bnez	$a2, .LBB0_14
 .LBB0_15:                               # %.preheader261
-	ori	$a2, $zero, 1
 	addi.d	$s5, $a1, 4
 	st.d	$t5, $sp, 16                    # 8-byte Folded Spill
-	blt	$t8, $a2, .LBB0_57
+	blez	$t8, .LBB0_57
 # %bb.16:                               # %.lr.ph274
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	fld.d	$fa1, $a1, %pc_lo12(.LCPI0_0)
@@ -151,6 +150,7 @@ upin:                                   # @upin
 	fmul.d	$fa1, $fa0, $fa1
 	ftintrz.w.d	$fa2, $fa1
 	movfr2gr.s	$a1, $fa2
+	ori	$a2, $zero, 1
 	move	$a3, $s5
 	move	$a4, $fp
 	b	.LBB0_19
@@ -187,7 +187,7 @@ upin:                                   # @upin
 	addi.d	$t2, $a7, -1
 	sub.w	$a7, $a7, $t1
 	st.w	$t2, $t0, 4
-	blt	$a7, $a2, .LBB0_18
+	blez	$a7, .LBB0_18
 # %bb.20:                               #   in Loop: Header=BB0_19 Depth=1
 	bne	$a7, $a2, .LBB0_17
 # %bb.21:                               #   in Loop: Header=BB0_19 Depth=1
@@ -254,7 +254,7 @@ upin:                                   # @upin
 	addi.d	$t4, $t2, 1
 	sub.w	$t2, $t4, $a4
 	st.w	$t4, $t3, 4
-	blt	$t2, $t0, .LBB0_24
+	blez	$t2, .LBB0_24
 # %bb.29:                               #   in Loop: Header=BB0_25 Depth=1
 	bne	$t2, $t0, .LBB0_23
 # %bb.30:                               #   in Loop: Header=BB0_25 Depth=1
@@ -486,8 +486,7 @@ upin:                                   # @upin
 	st.w	$a1, $a0, 0
 	bcnez	$fcc0, .LBB0_73
 .LBB0_60:
-	ori	$a0, $zero, 1
-	blt	$t8, $a0, .LBB0_63
+	blez	$t8, .LBB0_63
 # %bb.61:                               # %.lr.ph302
 	pcalau12i	$a0, %got_pc_hi20(termarray)
 	ld.d	$a0, $a0, %got_pc_lo12(termarray)
@@ -618,57 +617,57 @@ upin:                                   # @upin
 	addi.d	$a2, $a2, 20
 	bnez	$a0, .LBB0_78
 .LBB0_79:                               # %.preheader
-	ori	$a0, $zero, 1
-	blt	$t8, $a0, .LBB0_86
+	blez	$t8, .LBB0_86
 # %bb.80:                               # %.lr.ph312.preheader
-	addi.d	$a1, $fp, 1
-	slt	$a2, $s6, $a1
-	masknez	$a3, $s6, $a2
-	maskeqz	$a1, $a1, $a2
-	or	$a1, $a1, $a3
-	sub.d	$a1, $a1, $fp
-	ori	$a2, $zero, 2
-	bltu	$a1, $a2, .LBB0_84
+	addi.d	$a0, $fp, 1
+	slt	$a1, $s6, $a0
+	masknez	$a2, $s6, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	sub.d	$a0, $a0, $fp
+	ori	$a1, $zero, 2
+	bltu	$a0, $a1, .LBB0_84
 # %bb.81:                               # %vector.ph392
-	move	$a2, $a1
-	bstrins.d	$a2, $zero, 0, 0
-	add.d	$a3, $a2, $fp
-	ori	$a4, $zero, 44
-	mul.d	$a4, $fp, $a4
-	add.d	$a4, $a4, $s2
-	addi.d	$a4, $a4, 52
-	move	$a5, $a2
+	move	$a1, $a0
+	bstrins.d	$a1, $zero, 0, 0
+	add.d	$a2, $a1, $fp
+	ori	$a3, $zero, 44
+	mul.d	$a3, $fp, $a3
+	add.d	$a3, $a3, $s2
+	addi.d	$a3, $a3, 52
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB0_82:                               # %vector.body395
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a4, -44
-	ld.w	$a7, $a4, 0
-	st.w	$a6, $a4, -48
-	st.w	$a7, $a4, -4
-	addi.d	$a5, $a5, -2
-	addi.d	$a4, $a4, 88
-	bnez	$a5, .LBB0_82
+	ld.w	$a5, $a3, -44
+	ld.w	$a6, $a3, 0
+	st.w	$a5, $a3, -48
+	st.w	$a6, $a3, -4
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 88
+	bnez	$a4, .LBB0_82
 # %bb.83:                               # %middle.block399
-	move	$fp, $a3
-	beq	$a1, $a2, .LBB0_86
+	move	$fp, $a2
+	beq	$a0, $a1, .LBB0_86
 .LBB0_84:                               # %.lr.ph312.preheader402
-	ori	$a1, $zero, 44
-	mul.d	$a1, $fp, $a1
-	add.d	$a1, $a1, $s2
-	addi.d	$a1, $a1, 8
+	ori	$a0, $zero, 44
+	mul.d	$a0, $fp, $a0
+	add.d	$a0, $a0, $s2
+	addi.d	$a0, $a0, 8
 	.p2align	4, , 16
 .LBB0_85:                               # %.lr.ph312
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a1, 0
-	st.w	$a2, $a1, -4
+	ld.w	$a1, $a0, 0
+	st.w	$a1, $a0, -4
 	addi.d	$fp, $fp, 1
-	addi.d	$a1, $a1, 44
+	addi.d	$a0, $a0, 44
 	blt	$fp, $s6, .LBB0_85
 .LBB0_86:                               # %._crit_edge313
-	pcalau12i	$a1, %got_pc_hi20(funccost)
-	ld.d	$a1, $a1, %got_pc_lo12(funccost)
-	st.w	$s8, $a1, 0
+	pcalau12i	$a0, %got_pc_hi20(funccost)
+	ld.d	$a0, $a0, %got_pc_lo12(funccost)
+	st.w	$s8, $a0, 0
 	st.w	$s4, $t7, 0
+	ori	$a0, $zero, 1
 .LBB0_87:
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload

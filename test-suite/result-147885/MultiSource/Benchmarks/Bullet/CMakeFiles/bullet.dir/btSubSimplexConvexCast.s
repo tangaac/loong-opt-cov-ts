@@ -41,15 +41,14 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 304                   # 8-byte Folded Spill
 	st.d	$s6, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 288                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 280                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 272                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 264                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 256                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 248                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 240                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 232                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 224                  # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 280                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 272                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 264                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 248                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 240                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 232                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -59,15 +58,14 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	.cfi_offset 56, -88
-	.cfi_offset 57, -96
-	.cfi_offset 58, -104
-	.cfi_offset 59, -112
-	.cfi_offset 60, -120
-	.cfi_offset 61, -128
-	.cfi_offset 62, -136
-	.cfi_offset 63, -144
+	.cfi_offset 56, -80
+	.cfi_offset 57, -88
+	.cfi_offset 58, -96
+	.cfi_offset 59, -104
+	.cfi_offset 60, -112
+	.cfi_offset 61, -120
+	.cfi_offset 62, -128
+	.cfi_offset 63, -136
 	move	$s0, $a0
 	ld.d	$a0, $a0, 8
 	move	$fp, $a5
@@ -81,9 +79,9 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fld.s	$fa2, $s4, 48
 	fld.s	$fa1, $s3, 52
 	fld.s	$fa3, $s4, 52
-	fst.s	$fa2, $sp, 100                  # 4-byte Folded Spill
+	fst.s	$fa2, $sp, 108                  # 4-byte Folded Spill
 	fsub.s	$fa0, $fa0, $fa2
-	fst.s	$fa3, $sp, 96                   # 4-byte Folded Spill
+	fst.s	$fa3, $sp, 104                  # 4-byte Folded Spill
 	fsub.s	$fa1, $fa1, $fa3
 	fld.s	$fa2, $s3, 56
 	fld.s	$fa6, $s4, 56
@@ -93,13 +91,13 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fld.s	$ft0, $s2, 52
 	fld.s	$fa5, $s1, 56
 	fld.s	$ft1, $s2, 56
-	fst.s	$fa6, $sp, 92                   # 4-byte Folded Spill
+	fst.s	$fa6, $sp, 100                  # 4-byte Folded Spill
 	fsub.s	$fa2, $fa2, $fa6
-	fst.s	$fa7, $sp, 88                   # 4-byte Folded Spill
+	fst.s	$fa7, $sp, 96                   # 4-byte Folded Spill
 	fsub.s	$fa3, $fa3, $fa7
-	fst.s	$ft0, $sp, 84                   # 4-byte Folded Spill
+	fst.s	$ft0, $sp, 92                   # 4-byte Folded Spill
 	fsub.s	$fa4, $fa4, $ft0
-	fst.s	$ft1, $sp, 80                   # 4-byte Folded Spill
+	fst.s	$ft1, $sp, 88                   # 4-byte Folded Spill
 	fsub.s	$fa5, $fa5, $ft1
 	fld.s	$fa6, $s4, 0
 	fld.s	$fa7, $s4, 4
@@ -111,17 +109,17 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fld.s	$ft5, $s4, 36
 	fld.s	$ft6, $s4, 40
 	fld.s	$ft7, $s2, 0
-	fst.s	$ft7, $sp, 44                   # 4-byte Folded Spill
+	fst.s	$ft7, $sp, 52                   # 4-byte Folded Spill
 	fld.s	$ft7, $s2, 4
-	fst.s	$ft7, $sp, 40                   # 4-byte Folded Spill
+	fst.s	$ft7, $sp, 48                   # 4-byte Folded Spill
 	fld.s	$ft7, $s2, 8
-	fst.s	$ft7, $sp, 36                   # 4-byte Folded Spill
+	fst.s	$ft7, $sp, 44                   # 4-byte Folded Spill
 	fld.s	$ft7, $s2, 16
-	fst.s	$ft7, $sp, 32                   # 4-byte Folded Spill
+	fst.s	$ft7, $sp, 40                   # 4-byte Folded Spill
 	fld.s	$ft7, $s2, 20
-	fst.s	$ft7, $sp, 28                   # 4-byte Folded Spill
+	fst.s	$ft7, $sp, 36                   # 4-byte Folded Spill
 	fld.s	$ft7, $s2, 24
-	fst.s	$ft7, $sp, 24                   # 4-byte Folded Spill
+	fst.s	$ft7, $sp, 32                   # 4-byte Folded Spill
 	fsub.s	$fs0, $fa0, $fa3
 	fsub.s	$fs2, $fa1, $fa4
 	fsub.s	$fs1, $fa2, $fa5
@@ -129,40 +127,40 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fneg.s	$fa0, $fs0
 	fneg.s	$fa1, $fs2
 	fneg.s	$fa2, $fs1
-	fst.s	$ft1, $sp, 64                   # 4-byte Folded Spill
+	fst.s	$ft1, $sp, 72                   # 4-byte Folded Spill
 	fmul.s	$fa3, $ft1, $fa1
-	fst.s	$fa6, $sp, 76                   # 4-byte Folded Spill
+	fst.s	$fa6, $sp, 84                   # 4-byte Folded Spill
 	fmadd.s	$fa3, $fa6, $fa0, $fa3
-	fst.s	$ft4, $sp, 124                  # 4-byte Folded Spill
+	fst.s	$ft4, $sp, 132                  # 4-byte Folded Spill
 	fmadd.s	$fa3, $ft4, $fa2, $fa3
-	fst.s	$ft2, $sp, 60                   # 4-byte Folded Spill
+	fst.s	$ft2, $sp, 68                   # 4-byte Folded Spill
 	fmul.s	$fa4, $ft2, $fa1
-	fst.s	$fa7, $sp, 72                   # 4-byte Folded Spill
+	fst.s	$fa7, $sp, 80                   # 4-byte Folded Spill
 	fmadd.s	$fa4, $fa7, $fa0, $fa4
-	fst.s	$ft5, $sp, 52                   # 4-byte Folded Spill
+	fst.s	$ft5, $sp, 60                   # 4-byte Folded Spill
 	fmadd.s	$fa4, $ft5, $fa2, $fa4
-	fst.s	$ft3, $sp, 56                   # 4-byte Folded Spill
+	fst.s	$ft3, $sp, 64                   # 4-byte Folded Spill
 	fmul.s	$fa1, $ft3, $fa1
-	fst.s	$ft0, $sp, 68                   # 4-byte Folded Spill
+	fst.s	$ft0, $sp, 76                   # 4-byte Folded Spill
 	fmadd.s	$fa0, $ft0, $fa0, $fa1
-	fst.s	$ft6, $sp, 48                   # 4-byte Folded Spill
+	fst.s	$ft6, $sp, 56                   # 4-byte Folded Spill
 	fmadd.s	$fa0, $ft6, $fa2, $fa0
 	movfr2gr.s	$a1, $fa3
 	movfr2gr.s	$a2, $fa4
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a1, $sp, 208
-	st.d	$a2, $sp, 216
+	st.d	$a1, $sp, 216
+	st.d	$a2, $sp, 224
 	ld.d	$a1, $a0, 0
 	fld.s	$fa0, $s2, 32
-	fst.s	$fa0, $sp, 120                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 128                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 36
-	fst.s	$fa0, $sp, 20                   # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 28                   # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 40
-	fst.s	$fa0, $sp, 16                   # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 24                   # 4-byte Folded Spill
 	ld.d	$a2, $a1, 96
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 216
 	jirl	$ra, $a2, 0
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
@@ -211,26 +209,26 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fld.s	$fa3, $s2, 8
 	movfr2gr.s	$a1, $fs6
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fs2, $sp, 4                    # 4-byte Folded Spill
+	fst.s	$fs2, $sp, 12                   # 4-byte Folded Spill
 	fmul.s	$fa2, $fs2, $fa2
-	fst.s	$fs0, $sp, 8                    # 4-byte Folded Spill
+	fst.s	$fs0, $sp, 16                   # 4-byte Folded Spill
 	fmadd.s	$fa2, $fa3, $fs0, $fa2
 	fld.s	$fa3, $s2, 40
-	st.d	$a0, $sp, 192
-	st.d	$a1, $sp, 200
+	st.d	$a0, $sp, 200
+	st.d	$a1, $sp, 208
 	ld.d	$a0, $s0, 24
-	fst.s	$fs1, $sp, 0                    # 4-byte Folded Spill
+	fst.s	$fs1, $sp, 8                    # 4-byte Folded Spill
 	fmadd.s	$fa2, $fa3, $fs1, $fa2
 	movfr2gr.s	$a1, $fa0
 	movfr2gr.s	$a2, $fa1
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa2
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a1, $sp, 208
-	st.d	$a2, $sp, 216
+	st.d	$a1, $sp, 216
+	st.d	$a2, $sp, 224
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 96
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 216
 	jirl	$ra, $a2, 0
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
@@ -265,8 +263,8 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 176
-	st.d	$a1, $sp, 184
+	st.d	$a0, $sp, 184
+	st.d	$a1, $sp, 192
 	fsub.s	$fa1, $fs4, $fa1
 	fsub.s	$fa2, $fs5, $fa3
 	fsub.s	$fa0, $fs6, $fa0
@@ -275,22 +273,20 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 208
+	st.d	$a0, $sp, 216
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	fld.s	$fa3, $a0, %pc_lo12(.LCPI1_0)
 	fmul.s	$fa2, $fa2, $fa2
 	fmadd.s	$fa1, $fa1, $fa1, $fa2
 	fmadd.s	$fa0, $fa0, $fa0, $fa1
-	fst.s	$fa3, $sp, 12                   # 4-byte Folded Spill
+	fst.s	$fa3, $sp, 20                   # 4-byte Folded Spill
 	fcmp.cule.s	$fcc0, $fa0, $fa3
-	st.d	$a1, $sp, 216
+	st.d	$a1, $sp, 224
 	bcnez	$fcc0, .LBB1_9
 # %bb.1:                                # %.lr.ph
 	movgr2fr.w	$fs0, $zero
 	addi.w	$s5, $zero, -33
-	ori	$s6, $zero, 0
-	lu32i.d	$s6, 1
-	pcalau12i	$s7, %pc_hi20(.LCPI1_1)
+	pcalau12i	$s6, %pc_hi20(.LCPI1_1)
 	fmov.s	$fs2, $fs0
 	fmov.s	$fs3, $fs0
 	fmov.s	$fs1, $fs0
@@ -298,48 +294,48 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a0, $s5, 31, 0
 	addi.d	$s5, $a0, 1
-	and	$a0, $s5, $s6
-	bnez	$a0, .LBB1_10
+	slli.d	$a0, $s5, 31
+	bltz	$a0, .LBB1_10
 # %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
-	fst.s	$fs3, $sp, 104                  # 4-byte Folded Spill
-	fst.s	$fs2, $sp, 108                  # 4-byte Folded Spill
-	fst.s	$fs1, $sp, 112                  # 4-byte Folded Spill
-	fld.s	$fa0, $sp, 208
-	fld.s	$fa1, $sp, 212
-	fld.s	$fa2, $sp, 216
+	fst.s	$fs3, $sp, 112                  # 4-byte Folded Spill
+	fst.s	$fs2, $sp, 116                  # 4-byte Folded Spill
+	fst.s	$fs1, $sp, 120                  # 4-byte Folded Spill
+	fld.s	$fa0, $sp, 216
+	fld.s	$fa1, $sp, 220
+	fld.s	$fa2, $sp, 224
 	ld.d	$a0, $s0, 16
 	fneg.s	$fa0, $fa0
 	fneg.s	$fa1, $fa1
 	fneg.s	$fa2, $fa2
-	fld.s	$fs1, $sp, 64                   # 4-byte Folded Reload
+	fld.s	$fs1, $sp, 72                   # 4-byte Folded Reload
 	fmul.s	$fa3, $fs1, $fa1
-	fld.s	$fs5, $sp, 76                   # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 84                   # 4-byte Folded Reload
 	fmadd.s	$fa3, $fs5, $fa0, $fa3
-	fld.s	$fa4, $sp, 124                  # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 132                  # 4-byte Folded Reload
 	fmadd.s	$fa3, $fa4, $fa2, $fa3
-	fld.s	$fs7, $sp, 60                   # 4-byte Folded Reload
+	fld.s	$fs7, $sp, 68                   # 4-byte Folded Reload
 	fmul.s	$fa4, $fs7, $fa1
-	fst.s	$fs0, $sp, 116                  # 4-byte Folded Spill
-	fld.s	$fs0, $sp, 72                   # 4-byte Folded Reload
+	fst.s	$fs0, $sp, 124                  # 4-byte Folded Spill
+	fld.s	$fs0, $sp, 80                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $fs0, $fa0, $fa4
-	fld.s	$fs2, $sp, 52                   # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 60                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $fs2, $fa2, $fa4
-	fld.s	$fs3, $sp, 56                   # 4-byte Folded Reload
+	fld.s	$fs3, $sp, 64                   # 4-byte Folded Reload
 	fmul.s	$fa1, $fs3, $fa1
-	fld.s	$fs6, $sp, 68                   # 4-byte Folded Reload
+	fld.s	$fs6, $sp, 76                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fs6, $fa0, $fa1
-	fld.s	$fs4, $sp, 48                   # 4-byte Folded Reload
+	fld.s	$fs4, $sp, 56                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fs4, $fa2, $fa0
 	movfr2gr.s	$a1, $fa3
 	movfr2gr.s	$a2, $fa4
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a1, $sp, 144
-	st.d	$a2, $sp, 152
+	st.d	$a1, $sp, 152
+	st.d	$a2, $sp, 160
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 96
-	addi.d	$a1, $sp, 144
+	addi.d	$a1, $sp, 152
 	jirl	$ra, $a2, 0
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
@@ -348,58 +344,58 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fmul.s	$fa3, $fs0, $fa1
 	fmadd.s	$fa3, $fs5, $fa0, $fa3
 	fmadd.s	$fa3, $fs6, $fa2, $fa3
-	fld.s	$fa4, $sp, 100                  # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 108                  # 4-byte Folded Reload
 	fadd.s	$fa3, $fa4, $fa3
 	fmul.s	$fa4, $fs7, $fa1
 	fmadd.s	$fa4, $fs1, $fa0, $fa4
 	fmadd.s	$fa4, $fs3, $fa2, $fa4
-	fld.s	$fa5, $sp, 96                   # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 104                  # 4-byte Folded Reload
 	fadd.s	$fa4, $fa5, $fa4
 	fmul.s	$fa1, $fs2, $fa1
-	fld.s	$fa5, $sp, 124                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 132                  # 4-byte Folded Reload
 	fmadd.s	$fa0, $fa5, $fa0, $fa1
 	fmadd.s	$fa0, $fs4, $fa2, $fa0
-	fld.s	$fa1, $sp, 92                   # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 100                  # 4-byte Folded Reload
 	fadd.s	$fa0, $fa1, $fa0
 	movfr2gr.s	$a0, $fa3
 	movfr2gr.s	$a1, $fa4
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 192
-	st.d	$a1, $sp, 200
-	fld.s	$fa0, $sp, 212
-	fld.s	$fa1, $sp, 208
-	fld.s	$fa2, $sp, 216
+	st.d	$a0, $sp, 200
+	st.d	$a1, $sp, 208
+	fld.s	$fa0, $sp, 220
+	fld.s	$fa1, $sp, 216
+	fld.s	$fa2, $sp, 224
 	ld.d	$a0, $s0, 24
-	fld.s	$fs3, $sp, 32                   # 4-byte Folded Reload
+	fld.s	$fs3, $sp, 40                   # 4-byte Folded Reload
 	fmul.s	$fa3, $fs3, $fa0
-	fld.s	$fs0, $sp, 44                   # 4-byte Folded Reload
+	fld.s	$fs0, $sp, 52                   # 4-byte Folded Reload
 	fmadd.s	$fa3, $fs0, $fa1, $fa3
-	fld.s	$fa4, $sp, 120                  # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 128                  # 4-byte Folded Reload
 	fmadd.s	$fa3, $fa4, $fa2, $fa3
-	fld.s	$fs4, $sp, 28                   # 4-byte Folded Reload
+	fld.s	$fs4, $sp, 36                   # 4-byte Folded Reload
 	fmul.s	$fa4, $fs4, $fa0
-	fld.s	$fs1, $sp, 40                   # 4-byte Folded Reload
+	fld.s	$fs1, $sp, 48                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $fs1, $fa1, $fa4
-	fld.s	$fs7, $sp, 20                   # 4-byte Folded Reload
+	fld.s	$fs7, $sp, 28                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $fs7, $fa2, $fa4
-	fld.s	$fs5, $sp, 24                   # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 32                   # 4-byte Folded Reload
 	fmul.s	$fa0, $fs5, $fa0
-	fld.s	$fs2, $sp, 36                   # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 44                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fs2, $fa1, $fa0
-	fld.s	$fs6, $sp, 16                   # 4-byte Folded Reload
+	fld.s	$fs6, $sp, 24                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fs6, $fa2, $fa0
 	movfr2gr.s	$a1, $fa3
 	movfr2gr.s	$a2, $fa4
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a1, $sp, 144
-	st.d	$a2, $sp, 152
+	st.d	$a1, $sp, 152
+	st.d	$a2, $sp, 160
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 96
-	addi.d	$a1, $sp, 144
+	addi.d	$a1, $sp, 152
 	jirl	$ra, $a2, 0
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
@@ -407,32 +403,32 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	movgr2fr.w	$fa2, $a1
 	fmul.s	$fa3, $fs1, $fa1
 	fmadd.s	$fa3, $fs0, $fa0, $fa3
-	fld.s	$fs0, $sp, 116                  # 4-byte Folded Reload
+	fld.s	$fs0, $sp, 124                  # 4-byte Folded Reload
 	fmadd.s	$fa3, $fs2, $fa2, $fa3
-	fld.s	$fa4, $sp, 88                   # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 96                   # 4-byte Folded Reload
 	fadd.s	$fa3, $fa4, $fa3
 	fmul.s	$fa4, $fs4, $fa1
 	fmadd.s	$fa4, $fs3, $fa0, $fa4
 	fmadd.s	$fa4, $fs5, $fa2, $fa4
-	fld.s	$fa5, $sp, 84                   # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 92                   # 4-byte Folded Reload
 	fadd.s	$fa4, $fa5, $fa4
 	fmul.s	$fa1, $fs7, $fa1
-	fld.s	$fa5, $sp, 120                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 128                  # 4-byte Folded Reload
 	fmadd.s	$fa0, $fa5, $fa0, $fa1
 	fmadd.s	$fa0, $fs6, $fa2, $fa0
-	fld.s	$fa1, $sp, 80                   # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 88                   # 4-byte Folded Reload
 	fadd.s	$fa0, $fa1, $fa0
 	movfr2gr.s	$a0, $fa3
 	movfr2gr.s	$a1, $fa4
-	fld.s	$fa1, $sp, 192
+	fld.s	$fa1, $sp, 200
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
 	fsub.s	$fa3, $fa1, $fa3
-	fld.s	$fa1, $sp, 196
-	fld.s	$fa2, $sp, 200
-	st.d	$a0, $sp, 176
-	st.d	$a1, $sp, 184
+	fld.s	$fa1, $sp, 204
+	fld.s	$fa2, $sp, 208
+	st.d	$a0, $sp, 184
+	st.d	$a1, $sp, 192
 	fsub.s	$fa5, $fa1, $fa4
 	fsub.s	$fa4, $fa2, $fa0
 	movfr2gr.s	$a0, $fa3
@@ -440,31 +436,31 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 160
+	st.d	$a0, $sp, 168
 	vldi	$vr0, -1168
 	fcmp.clt.s	$fcc0, $fa0, $fs0
-	st.d	$a1, $sp, 168
+	st.d	$a1, $sp, 176
 	bcnez	$fcc0, .LBB1_15
 # %bb.4:                                #   in Loop: Header=BB1_2 Depth=1
-	fld.s	$fa0, $sp, 212
-	fld.s	$fa1, $sp, 208
-	fld.s	$fa2, $sp, 216
+	fld.s	$fa0, $sp, 220
+	fld.s	$fa1, $sp, 216
+	fld.s	$fa2, $sp, 224
 	fmul.s	$fa5, $fa0, $fa5
 	fmadd.s	$fa3, $fa1, $fa3, $fa5
 	fmadd.s	$fa3, $fa2, $fa4, $fa3
 	movgr2fr.w	$fa4, $zero
 	fcmp.cule.s	$fcc0, $fa3, $fa4
-	fld.s	$fs1, $sp, 112                  # 4-byte Folded Reload
-	fld.s	$fs2, $sp, 108                  # 4-byte Folded Reload
-	fld.s	$fs3, $sp, 104                  # 4-byte Folded Reload
+	fld.s	$fs1, $sp, 120                  # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 116                  # 4-byte Folded Reload
+	fld.s	$fs3, $sp, 112                  # 4-byte Folded Reload
 	bcnez	$fcc0, .LBB1_7
 # %bb.5:                                #   in Loop: Header=BB1_2 Depth=1
-	fld.s	$fa5, $s7, %pc_lo12(.LCPI1_1)
-	fld.s	$fa4, $sp, 4                    # 4-byte Folded Reload
+	fld.s	$fa5, $s6, %pc_lo12(.LCPI1_1)
+	fld.s	$fa4, $sp, 12                   # 4-byte Folded Reload
 	fmul.s	$fa4, $fa4, $fa0
-	fld.s	$fa6, $sp, 8                    # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 16                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $fa1, $fa6, $fa4
-	fld.s	$fa6, $sp, 0                    # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 8                    # 4-byte Folded Reload
 	fmadd.s	$fa4, $fa2, $fa6, $fa4
 	fcmp.cle.s	$fcc0, $fa5, $fa4
 	bcnez	$fcc0, .LBB1_15
@@ -479,53 +475,53 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	fld.s	$fa7, $s4, 52
 	fmul.s	$fa4, $fs0, $fa4
 	fmadd.s	$fa4, $fa3, $fa5, $fa4
-	fst.s	$fa4, $sp, 100                  # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 108                  # 4-byte Folded Spill
 	fmul.s	$fa4, $fs0, $fa6
 	fmadd.s	$fa4, $fa3, $fa7, $fa4
-	fst.s	$fa4, $sp, 96                   # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 104                  # 4-byte Folded Spill
 	fld.s	$fa4, $s3, 56
 	fld.s	$fa5, $s4, 56
 	fld.s	$fa6, $s1, 48
 	fld.s	$fa7, $s2, 48
 	fmul.s	$fa4, $fs0, $fa4
 	fmadd.s	$fa4, $fa3, $fa5, $fa4
-	fst.s	$fa4, $sp, 92                   # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 100                  # 4-byte Folded Spill
 	fmul.s	$fa4, $fs0, $fa6
 	fmadd.s	$fa4, $fa3, $fa7, $fa4
-	fst.s	$fa4, $sp, 88                   # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 96                   # 4-byte Folded Spill
 	fld.s	$fa4, $s1, 52
 	fld.s	$fa5, $s2, 52
 	fld.s	$fa6, $s1, 56
 	fld.s	$fa7, $s2, 56
 	fmul.s	$fa4, $fs0, $fa4
 	fmadd.s	$fa4, $fa3, $fa5, $fa4
-	fst.s	$fa4, $sp, 84                   # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 92                   # 4-byte Folded Spill
 	fmul.s	$fa4, $fs0, $fa6
 	fmadd.s	$fa3, $fa3, $fa7, $fa4
-	fst.s	$fa3, $sp, 80                   # 4-byte Folded Spill
+	fst.s	$fa3, $sp, 88                   # 4-byte Folded Spill
 	fmov.s	$fs1, $fa1
 	fmov.s	$fs3, $fa0
 	fmov.s	$fs2, $fa2
 .LBB1_7:                                #   in Loop: Header=BB1_2 Depth=1
 	ld.d	$a0, $s0, 8
-	addi.d	$a1, $sp, 160
-	addi.d	$a2, $sp, 192
-	addi.d	$a3, $sp, 176
+	addi.d	$a1, $sp, 168
+	addi.d	$a2, $sp, 200
+	addi.d	$a3, $sp, 184
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver9addVertexERK9btVector3S2_S2_)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 8
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 216
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver7closestER9btVector3)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_10
 # %bb.8:                                #   in Loop: Header=BB1_2 Depth=1
-	fld.s	$fa0, $sp, 212
-	fld.s	$fa1, $sp, 208
-	fld.s	$fa2, $sp, 216
+	fld.s	$fa0, $sp, 220
+	fld.s	$fa1, $sp, 216
+	fld.s	$fa2, $sp, 224
 	fmul.s	$fa0, $fa0, $fa0
 	fmadd.s	$fa0, $fa1, $fa1, $fa0
 	fmadd.s	$fa0, $fa2, $fa2, $fa0
-	fld.s	$fa1, $sp, 12                   # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 20                   # 4-byte Folded Reload
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB1_2
 	b	.LBB1_10
@@ -564,37 +560,36 @@ _ZN22btSubsimplexConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConv
 	st.d	$a1, $fp, 144
 .LBB1_13:
 	fld.s	$fa3, $fp, 184
-	fld.s	$fa4, $sp, 4                    # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 12                   # 4-byte Folded Reload
 	fmul.s	$fa2, $fa4, $fa2
-	fld.s	$fa4, $sp, 8                    # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 16                   # 4-byte Folded Reload
 	fmadd.s	$fa1, $fa1, $fa4, $fa2
-	fld.s	$fa2, $sp, 0                    # 4-byte Folded Reload
+	fld.s	$fa2, $sp, 8                    # 4-byte Folded Reload
 	fmadd.s	$fa0, $fa0, $fa2, $fa1
 	fneg.s	$fa1, $fa3
 	fcmp.cle.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB1_15
 # %bb.14:
 	ld.d	$a0, $s0, 8
-	addi.d	$a1, $sp, 144
-	addi.d	$a2, $sp, 128
+	addi.d	$a1, $sp, 152
+	addi.d	$a2, $sp, 136
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver14compute_pointsER9btVector3S1_)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 128
+	vld	$vr0, $sp, 136
 	vst	$vr0, $fp, 152
 	ori	$a0, $zero, 1
 	b	.LBB1_16
 .LBB1_15:
 	move	$a0, $zero
 .LBB1_16:                               # %.thread
-	fld.d	$fs7, $sp, 224                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 232                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 240                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 248                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 256                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 264                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 272                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 280                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 288                   # 8-byte Folded Reload
+	fld.d	$fs7, $sp, 232                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 240                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 248                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 264                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 272                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 280                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload

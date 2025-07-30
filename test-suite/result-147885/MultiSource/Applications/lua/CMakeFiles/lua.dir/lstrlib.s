@@ -201,8 +201,7 @@ str_char:                               # @str_char
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaL_buffinit)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB2_7
+	blez	$s0, .LBB2_7
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	lu12i.w	$a0, 2
@@ -502,8 +501,8 @@ str_format:                             # @str_format
 	ori	$s3, $zero, 37
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB5_23
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB5_23
 # %bb.22:                               #   in Loop: Header=BB5_4 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.31)
@@ -1131,8 +1130,8 @@ str_gsub:                               # @str_gsub
 	sltui	$a0, $a1, 1
 	sltu	$a2, $zero, $s0
 	masknez	$a3, $a1, $a0
-	ori	$s6, $zero, 1
-	maskeqz	$a0, $s6, $a0
+	ori	$a4, $zero, 1
+	maskeqz	$a0, $a4, $a0
 	or	$a3, $a0, $a3
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 72
@@ -1146,7 +1145,7 @@ str_gsub:                               # @str_gsub
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(luaL_checkstack)
 	jirl	$ra, $ra, 0
-	blt	$s5, $s6, .LBB8_13
+	blez	$s5, .LBB8_13
 # %bb.11:                               # %.lr.ph.i27.i.preheader
                                         #   in Loop: Header=BB8_5 Depth=1
 	move	$s6, $zero
@@ -1254,8 +1253,8 @@ str_gsub:                               # @str_gsub
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB8_29
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB8_29
 # %bb.24:                               #   in Loop: Header=BB8_22 Depth=2
 	ld.d	$a0, $sp, 32
 	bltu	$a0, $s8, .LBB8_26
@@ -1612,7 +1611,7 @@ str_rep:                                # @str_rep
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(luaL_buffinit)
 	jirl	$ra, $ra, 0
-	blt	$s3, $s2, .LBB12_3
+	blez	$s3, .LBB12_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$s0, $s0, 1
 	.p2align	4, , 16
@@ -2045,8 +2044,7 @@ str_find_aux:                           # @str_find_aux
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(luaL_checkstack)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB17_35
+	blez	$fp, .LBB17_35
 # %bb.15:                               # %.lr.ph.i61.preheader
 	ld.w	$a0, $sp, 24
 	addi.w	$s3, $zero, -1
@@ -2100,8 +2098,8 @@ str_find_aux:                           # @str_find_aux
 	sltui	$a0, $s0, 1
 	sltu	$a1, $zero, $s2
 	masknez	$a2, $s0, $a0
-	ori	$s1, $zero, 1
-	maskeqz	$a0, $s1, $a0
+	ori	$a3, $zero, 1
+	maskeqz	$a0, $a3, $a0
 	or	$a2, $a0, $a2
 	ld.d	$a0, $sp, 16
 	maskeqz	$a2, $a2, $a1
@@ -2113,7 +2111,7 @@ str_find_aux:                           # @str_find_aux
 	pcaddu18i	$ra, %call36(luaL_checkstack)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	blt	$fp, $s1, .LBB17_36
+	blez	$fp, .LBB17_36
 # %bb.25:                               # %.lr.ph.i62.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
@@ -2497,8 +2495,8 @@ match:                                  # @match
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $fp, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB18_111
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB18_111
 # %bb.48:                               # %.thread201
                                         #   in Loop: Header=BB18_1 Depth=1
 	bnez	$fp, .LBB18_50
@@ -2833,17 +2831,16 @@ match:                                  # @match
 	addi.d	$s1, $s5, 1
 	slli.d	$a1, $a0, 4
 	addi.d	$a1, $a1, 24
-	ori	$a2, $zero, 1
 	addi.w	$fp, $zero, -1
 	.p2align	4, , 16
 .LBB18_120:                             # =>This Inner Loop Header: Depth=1
-	addi.w	$a3, $a0, 0
-	blt	$a3, $a2, .LBB18_127
+	addi.w	$a2, $a0, 0
+	blez	$a2, .LBB18_127
 # %bb.121:                              #   in Loop: Header=BB18_120 Depth=1
-	ldx.d	$a3, $s7, $a1
+	ldx.d	$a2, $s7, $a1
 	addi.w	$a0, $a0, -1
 	addi.d	$a1, $a1, -16
-	bne	$a3, $fp, .LBB18_120
+	bne	$a2, $fp, .LBB18_120
 	b	.LBB18_128
 .LBB18_122:
 	ld.bu	$a0, $s5, 1
@@ -3634,8 +3631,8 @@ gmatch_aux:                             # @gmatch_aux
 	sltui	$a0, $s2, 1
 	sltu	$a1, $zero, $s0
 	masknez	$a2, $s2, $a0
-	ori	$s3, $zero, 1
-	maskeqz	$a0, $s3, $a0
+	ori	$a3, $zero, 1
+	maskeqz	$a0, $a3, $a0
 	or	$a2, $a0, $a2
 	ld.d	$a0, $sp, 24
 	maskeqz	$a2, $a2, $a1
@@ -3647,7 +3644,7 @@ gmatch_aux:                             # @gmatch_aux
 	pcaddu18i	$ra, %call36(luaL_checkstack)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
-	blt	$fp, $s3, .LBB21_5
+	blez	$fp, .LBB21_5
 # %bb.7:                                # %.lr.ph.i.preheader
 	ld.w	$a0, $sp, 32
 	addi.w	$s3, $zero, -1

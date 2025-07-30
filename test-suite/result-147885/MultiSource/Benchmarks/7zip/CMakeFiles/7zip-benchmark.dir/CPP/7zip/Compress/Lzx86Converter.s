@@ -109,8 +109,7 @@ _ZN9NCompress4NLzx20Cx86ConvertOutStream5WriteEPKvjPj: # @_ZN9NCompress4NLzx20Cx
 	st.w	$zero, $a3, 0
 .LBB1_2:
 	ld.bu	$a0, $s1, 36
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_8
+	beqz	$a0, .LBB1_8
 # %bb.3:                                # %.preheader
 	move	$s2, $a3
 	move	$s3, $zero

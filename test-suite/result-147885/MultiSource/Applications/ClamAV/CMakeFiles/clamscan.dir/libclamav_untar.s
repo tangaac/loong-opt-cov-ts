@@ -43,18 +43,18 @@ cli_untar:                              # @cli_untar
 	move	$s4, $zero
 	move	$s8, $zero
 	ori	$s5, $zero, 1
-	addi.w	$s3, $zero, -1
 	pcalau12i	$a1, %pc_hi20(.L.str.7)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.7)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.19)
 	addi.d	$s6, $a1, %pc_lo12(.L.str.19)
+	addi.w	$s3, $zero, -1
 	pcalau12i	$a1, %pc_hi20(.L.str.9)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.9)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	bge	$s3, $a0, .LBB0_34
+	bltz	$a0, .LBB0_34
 # %bb.3:                                #   in Loop: Header=BB0_2 Depth=1
 	andi	$a0, $s5, 1
 	beqz	$a0, .LBB0_20
@@ -128,7 +128,7 @@ cli_untar:                              # @cli_untar
 	masknez	$a1, $s3, $a0
 	maskeqz	$a0, $s7, $a0
 	or	$s8, $a0, $a1
-	bge	$s3, $s8, .LBB0_45
+	bltz	$s8, .LBB0_45
 # %bb.16:                               #   in Loop: Header=BB0_2 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $s8
@@ -253,7 +253,7 @@ cli_untar:                              # @cli_untar
 	addi.d	$a0, $sp, 659
 	pcaddu18i	$ra, %call36(mkstemp)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB0_48
+	bltz	$a0, .LBB0_48
 # %bb.32:                               #   in Loop: Header=BB0_2 Depth=1
 	move	$s5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)

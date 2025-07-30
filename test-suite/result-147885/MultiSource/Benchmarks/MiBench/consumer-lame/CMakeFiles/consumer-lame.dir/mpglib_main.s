@@ -112,8 +112,7 @@ lame_decode_initfile:                   # @lame_decode_initfile
 	bnez	$s6, .LBB1_7
 # %bb.6:
 	ld.w	$a0, $sp, 8
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB1_9
+	bgtz	$a0, .LBB1_9
 .LBB1_7:
 	ld.w	$a0, $s3, 28
 	st.w	$a0, $s2, 0
@@ -319,8 +318,7 @@ lame_decode_fromfile:                   # @lame_decode_fromfile
 	ori	$a4, $zero, 1152
 	bne	$a1, $a4, .LBB3_46
 .LBB3_14:
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB3_5
+	blez	$a2, .LBB3_5
 # %bb.15:                               # %.preheader.us.preheader
 	move	$a4, $zero
 	bstrpick.d	$a5, $a1, 31, 0
@@ -604,10 +602,9 @@ lame_decode:                            # @lame_decode
 	ori	$a4, $zero, 1152
 	blt	$a4, $a1, .LBB4_35
 # %bb.4:                                # %.preheader24
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB4_2
+	blez	$a2, .LBB4_2
 # %bb.5:                                # %.preheader24
-	blt	$a1, $a4, .LBB4_2
+	blez	$a1, .LBB4_2
 # %bb.6:                                # %.preheader.us.preheader
 	move	$a4, $zero
 	sub.d	$t1, $s0, $s1

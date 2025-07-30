@@ -43,8 +43,7 @@ _Z8example1v:                           # @_Z8example1v
 	.type	_Z9example2aii,@function
 _Z9example2aii:                         # @_Z9example2aii
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_8
+	blez	$a0, .LBB1_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	pcalau12i	$a2, %pc_hi20(b)
@@ -229,8 +228,7 @@ _Z9example4aiPiS_:                      # @_Z9example4aiPiS_
 	.type	_Z9example4biPiS_,@function
 _Z9example4biPiS_:                      # @_Z9example4biPiS_
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_8
+	blez	$a0, .LBB5_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	pcalau12i	$a1, %pc_hi20(c)
@@ -297,8 +295,7 @@ _Z9example4biPiS_:                      # @_Z9example4biPiS_
 	.type	_Z9example4ciPiS_,@function
 _Z9example4ciPiS_:                      # @_Z9example4ciPiS_
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_8
+	blez	$a0, .LBB6_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	pcalau12i	$a1, %pc_hi20(b)
@@ -359,8 +356,7 @@ _Z9example4ciPiS_:                      # @_Z9example4ciPiS_
 	.type	_Z8example5iP1A,@function
 _Z8example5iP1A:                        # @_Z8example5iP1A
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_8
+	blez	$a0, .LBB7_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 8
 	bgeu	$a0, $a2, .LBB7_3
@@ -1441,8 +1437,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 	.type	_Z9example21Pii,@function
 _Z9example21Pii:                        # @_Z9example21Pii
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_3
+	blez	$a1, .LBB17_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB17_4
@@ -2662,11 +2657,11 @@ main:                                   # @main
 	beq	$s1, $a0, .LBB24_168
 # %bb.94:                               # %_ZNKSt6vectorIjSaIjEE12_M_check_lenEmPKc.exit.i.i326
 	srai.d	$a0, $s1, 2
-	ori	$s4, $zero, 1
-	sltu	$a1, $s4, $a0
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
@@ -2681,9 +2676,9 @@ main:                                   # @main
 .Ltmp19:
 # %bb.95:                               # %.noexc333
 	move	$s0, $a0
-	add.d	$s5, $a0, $s1
+	add.d	$s4, $a0, $s1
 	stx.w	$s2, $a0, $s1
-	blt	$s1, $s4, .LBB24_97
+	blez	$s1, .LBB24_97
 # %bb.96:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -2695,7 +2690,7 @@ main:                                   # @main
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	addi.d	$s2, $s5, 4
+	addi.d	$s2, $s4, 4
 	alsl.d	$s5, $s3, $s0, 2
 .LBB24_98:                              # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit334
 	addi.d	$a0, $sp, 32
@@ -2748,11 +2743,11 @@ main:                                   # @main
 	beq	$s1, $a0, .LBB24_170
 # %bb.105:                              # %_ZNKSt6vectorIjSaIjEE12_M_check_lenEmPKc.exit.i.i341
 	srai.d	$a0, $s1, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
@@ -2768,7 +2763,7 @@ main:                                   # @main
 # %bb.106:                              # %.noexc348
 	move	$fp, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_108
+	blez	$s1, .LBB24_108
 # %bb.107:
 	move	$a0, $fp
 	move	$a1, $s0
@@ -2827,11 +2822,11 @@ main:                                   # @main
 	beq	$s1, $a0, .LBB24_172
 # %bb.114:                              # %_ZNKSt6vectorIjSaIjEE12_M_check_lenEmPKc.exit.i.i356
 	srai.d	$a0, $s1, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
@@ -2846,9 +2841,9 @@ main:                                   # @main
 .Ltmp23:
 # %bb.115:                              # %.noexc363
 	move	$s0, $a0
-	add.d	$s5, $a0, $s1
+	add.d	$s2, $a0, $s1
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_117
+	blez	$s1, .LBB24_117
 # %bb.116:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -2860,7 +2855,7 @@ main:                                   # @main
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	addi.d	$s2, $s5, 4
+	addi.d	$s2, $s2, 4
 	alsl.d	$s5, $s4, $s0, 2
 .LBB24_118:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit364
 	addi.d	$a0, $sp, 32
@@ -2919,11 +2914,11 @@ main:                                   # @main
 	beq	$s1, $a0, .LBB24_174
 # %bb.125:                              # %_ZNKSt6vectorIjSaIjEE12_M_check_lenEmPKc.exit.i.i371
 	srai.d	$a0, $s1, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
@@ -2939,7 +2934,7 @@ main:                                   # @main
 # %bb.126:                              # %.noexc378
 	move	$fp, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_128
+	blez	$s1, .LBB24_128
 # %bb.127:
 	move	$a0, $fp
 	move	$a1, $s0
@@ -2993,11 +2988,11 @@ main:                                   # @main
 	beq	$s1, $a0, .LBB24_176
 # %bb.134:                              # %_ZNKSt6vectorIjSaIjEE12_M_check_lenEmPKc.exit.i.i381
 	srai.d	$a0, $s1, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
@@ -3012,9 +3007,9 @@ main:                                   # @main
 .Ltmp27:
 # %bb.135:                              # %.noexc388
 	move	$s0, $a0
-	add.d	$s4, $a0, $s1
+	add.d	$s2, $a0, $s1
 	stx.w	$zero, $a0, $s1
-	blt	$s1, $s2, .LBB24_137
+	blez	$s1, .LBB24_137
 # %bb.136:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -3026,7 +3021,7 @@ main:                                   # @main
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	addi.d	$s2, $s4, 4
+	addi.d	$s2, $s2, 4
 	alsl.d	$s5, $s3, $s0, 2
 .LBB24_138:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit389
 	addi.d	$a0, $sp, 32
@@ -3079,11 +3074,11 @@ main:                                   # @main
 	beq	$s1, $a0, .LBB24_178
 # %bb.145:                              # %_ZNKSt6vectorIjSaIjEE12_M_check_lenEmPKc.exit.i.i396
 	srai.d	$a0, $s1, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 511
@@ -3099,7 +3094,7 @@ main:                                   # @main
 # %bb.146:                              # %.noexc403
 	move	$fp, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_148
+	blez	$s1, .LBB24_148
 # %bb.147:
 	move	$a0, $fp
 	move	$a1, $s0
@@ -3591,8 +3586,7 @@ _ZN5TimerD2Ev:                          # @_ZN5TimerD2Ev
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 8
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB25_7
+	beqz	$a0, .LBB25_7
 # %bb.1:
 	ld.d	$s1, $fp, 32
 	ld.d	$s2, $fp, 16

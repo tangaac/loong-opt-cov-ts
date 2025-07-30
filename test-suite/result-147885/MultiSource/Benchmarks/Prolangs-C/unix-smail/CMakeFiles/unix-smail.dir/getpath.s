@@ -194,8 +194,8 @@ getpath:                                # @getpath
 	ld.d	$a1, $s0, 0
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB0_26
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB0_26
 # %bb.25:                               #   in Loop: Header=BB0_24 Depth=1
 	srai.d	$a1, $fp, 63
 	andn	$a2, $fp, $a1

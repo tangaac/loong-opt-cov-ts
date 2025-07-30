@@ -41,9 +41,8 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s1, $a1, .LBB0_6
+	blez	$s1, .LBB0_6
 # %bb.4:                                # %.lr.ph.preheader
 	ori	$a0, $zero, 8
 	bgeu	$s1, $a0, .LBB0_7

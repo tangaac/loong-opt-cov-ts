@@ -51,6 +51,8 @@ blobDestroy:                            # @blobDestroy
 	.type	blobArrayDestroy,@function
 blobArrayDestroy:                       # @blobArrayDestroy
 # %bb.0:
+	blez	$a1, .LBB2_10
+# %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
@@ -60,15 +62,13 @@ blobArrayDestroy:                       # @blobArrayDestroy
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
-	ori	$s3, $zero, 1
-	blt	$a1, $s3, .LBB2_9
-# %bb.1:                                # %.lr.ph.preheader
-	addi.d	$s4, $a1, 1
+	addi.d	$s3, $a1, 1
 	addi.w	$fp, $a1, -1
 	alsl.d	$a0, $a1, $a0, 3
-	addi.d	$s5, $a0, -8
+	addi.d	$s4, $a0, -8
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.1)
+	ori	$s5, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	b	.LBB2_4
@@ -78,19 +78,19 @@ blobArrayDestroy:                       # @blobArrayDestroy
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $s5, 0
+	st.d	$zero, $s4, 0
 .LBB2_3:                                #   in Loop: Header=BB2_4 Depth=1
-	addi.d	$s4, $s4, -1
+	addi.d	$s3, $s3, -1
 	addi.w	$fp, $fp, -1
-	addi.d	$s5, $s5, -8
-	bgeu	$s3, $s4, .LBB2_9
+	addi.d	$s4, $s4, -8
+	bgeu	$s5, $s3, .LBB2_9
 .LBB2_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $s5, 0
+	ld.d	$s2, $s4, 0
 	beqz	$s2, .LBB2_3
 # %bb.5:                                #   in Loop: Header=BB2_4 Depth=1
 	move	$a0, $s1
@@ -108,7 +108,7 @@ blobArrayDestroy:                       # @blobArrayDestroy
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB2_2
-.LBB2_9:                                # %._crit_edge
+.LBB2_9:
 	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -118,6 +118,7 @@ blobArrayDestroy:                       # @blobArrayDestroy
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
+.LBB2_10:                               # %._crit_edge
 	ret
 .Lfunc_end2:
 	.size	blobArrayDestroy, .Lfunc_end2-blobArrayDestroy
@@ -561,8 +562,7 @@ fileblobDestroy:                        # @fileblobDestroy
 	ld.d	$a0, $fp, 48
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB13_9
+	bgez	$a0, .LBB13_9
 # %bb.5:
 	ld.d	$a1, $fp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
@@ -735,8 +735,7 @@ fileblobDestructiveDestroy:             # @fileblobDestructiveDestroy
 	ld.d	$a0, $fp, 48
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB15_4
+	bgez	$a0, .LBB15_4
 # %bb.3:
 	ld.d	$a1, $fp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
@@ -771,13 +770,12 @@ fileblobDestructiveDestroy:             # @fileblobDestructiveDestroy
 	.type	fileblobSetFilename,@function
 fileblobSetFilename:                    # @fileblobSetFilename
 # %bb.0:
-	addi.d	$sp, $sp, -320
-	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -304
+	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 8
 	bnez	$a0, .LBB16_22
@@ -829,26 +827,25 @@ fileblobSetFilename:                    # @fileblobSetFilename
 	sub.w	$a3, $a1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.15)
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	move	$a2, $s0
 	move	$a4, $s1
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
-	addi.d	$a1, $sp, 15
+	addi.d	$a1, $sp, 7
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	pcaddu18i	$ra, %call36(mkstemp)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	bge	$s2, $a0, .LBB16_17
+	bltz	$a0, .LBB16_17
 .LBB16_12:
 	move	$s1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
-	addi.d	$a1, $sp, 15
+	addi.d	$a1, $sp, 7
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
@@ -879,7 +876,7 @@ fileblobSetFilename:                    # @fileblobSetFilename
 	ori	$a0, $a0, 1
 	st.b	$a0, $fp, 56
 .LBB16_16:
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	pcaddu18i	$ra, %call36(cli_strdup)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 48
@@ -892,35 +889,35 @@ fileblobSetFilename:                    # @fileblobSetFilename
 	ori	$a2, $zero, 22
 	bne	$a0, $a2, .LBB16_20
 # %bb.18:
-	move	$s3, $a1
+	move	$s2, $a1
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.17)
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	ori	$a1, $zero, 257
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
-	addi.d	$a1, $sp, 15
+	addi.d	$a1, $sp, 7
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	pcaddu18i	$ra, %call36(mkstemp)
 	jirl	$ra, $ra, 0
-	blt	$s2, $a0, .LBB16_12
+	bgez	$a0, .LBB16_12
 # %bb.19:                               # %..thread_crit_edge
-	ld.w	$a0, $s3, 0
+	ld.w	$a0, $s2, 0
 .LBB16_20:                              # %.thread
 	pcaddu18i	$ra, %call36(strerror)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
-	addi.d	$a1, $sp, 15
+	addi.d	$a1, $sp, 7
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
@@ -939,10 +936,10 @@ fileblobSetFilename:                    # @fileblobSetFilename
 	move	$a2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
-	addi.d	$a1, $sp, 15
+	addi.d	$a1, $sp, 7
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
@@ -955,13 +952,12 @@ fileblobSetFilename:                    # @fileblobSetFilename
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 .LBB16_22:
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 320
+	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 304
 	ret
 .Lfunc_end16:
 	.size	fileblobSetFilename, .Lfunc_end16-fileblobSetFilename

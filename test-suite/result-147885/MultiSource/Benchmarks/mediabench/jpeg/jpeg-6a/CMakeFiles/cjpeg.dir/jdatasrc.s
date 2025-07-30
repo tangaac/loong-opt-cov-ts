@@ -129,8 +129,7 @@ fill_input_buffer:                      # @fill_input_buffer
 	.type	skip_input_data,@function
 skip_input_data:                        # @skip_input_data
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_9
+	blez	$a1, .LBB3_9
 # %bb.1:                                # %.preheader
 	addi.d	$sp, $sp, -96
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill

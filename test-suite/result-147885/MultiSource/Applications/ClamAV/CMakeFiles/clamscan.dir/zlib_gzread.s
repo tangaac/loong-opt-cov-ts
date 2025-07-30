@@ -9,7 +9,7 @@ gzread:                                 # @gzread
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$s0, $zero, -1
+	addi.d	$fp, $zero, -1
 	beqz	$a0, .LBB0_8
 # %bb.1:
 	ld.w	$a3, $a0, 24
@@ -23,16 +23,15 @@ gzread:                                 # @gzread
 	addi.w	$a4, $zero, -5
 	bne	$a3, $a4, .LBB0_8
 .LBB0_4:
-	addi.w	$s0, $zero, -1
-	bge	$s0, $a2, .LBB0_7
+	bltz	$a2, .LBB0_7
 # %bb.5:
-	move	$fp, $a0
+	move	$s0, $a0
 	pcaddu18i	$ra, %call36(gz_read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
 	beqz	$a1, .LBB0_9
 .LBB0_6:
-	move	$s0, $a0
+	move	$fp, $a0
 	b	.LBB0_8
 .LBB0_7:
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -41,14 +40,14 @@ gzread:                                 # @gzread
 	pcaddu18i	$ra, %call36(gz_error)
 	jirl	$ra, $ra, 0
 .LBB0_8:
-	addi.w	$a0, $s0, 0
+	addi.w	$a0, $fp, 0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
 .LBB0_9:
-	ld.w	$a1, $fp, 108
+	ld.w	$a1, $s0, 108
 	beqz	$a1, .LBB0_6
 # %bb.10:
 	addi.w	$a2, $zero, -5
@@ -138,11 +137,10 @@ gz_read:                                # @gz_read
 	addi.d	$sp, $sp, 96
 	ret
 .LBB1_12:                               # %gz_skip.exit.thread
-	addi.w	$s5, $zero, -1
+	addi.w	$s4, $zero, -1
 	move	$s2, $zero
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
+	move	$s5, $s4
 	lu32i.d	$s5, 0
-	ori	$s6, $zero, 1
 	lu12i.w	$s7, 262144
 	b	.LBB1_15
 	.p2align	4, , 16
@@ -150,8 +148,7 @@ gz_read:                                # @gz_read
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gz_fetch)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB1_10
+	beq	$a0, $s4, .LBB1_10
 # %bb.14:                               #   in Loop: Header=BB1_15 Depth=1
 	beqz	$s0, .LBB1_11
 .LBB1_15:                               # =>This Loop Header: Depth=1
@@ -203,11 +200,12 @@ gz_read:                                # @gz_read
 	beqz	$a0, .LBB1_13
 # %bb.21:                               #   in Loop: Header=BB1_15 Depth=1
 	ld.w	$a1, $fp, 40
-	addi.w	$s4, $s3, 0
+	addi.w	$s6, $s3, 0
 	slli.w	$a1, $a1, 1
-	bltu	$s4, $a1, .LBB1_13
+	bltu	$s6, $a1, .LBB1_13
 # %bb.22:                               #   in Loop: Header=BB1_15 Depth=1
-	bne	$a0, $s6, .LBB1_26
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB1_26
 # %bb.23:                               # %.preheader.preheader
                                         #   in Loop: Header=BB1_15 Depth=1
 	move	$s8, $zero
@@ -227,10 +225,10 @@ gz_read:                                # @gz_read
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s6, .LBB1_28
+	blez	$a1, .LBB1_28
 # %bb.25:                               #   in Loop: Header=BB1_24 Depth=2
 	add.w	$s8, $s8, $a0
-	bltu	$s8, $s4, .LBB1_24
+	bltu	$s8, $s6, .LBB1_24
 	b	.LBB1_17
 .LBB1_26:                               #   in Loop: Header=BB1_15 Depth=1
 	st.w	$s3, $fp, 152
@@ -238,8 +236,7 @@ gz_read:                                # @gz_read
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gz_decomp)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB1_10
+	beq	$a0, $s4, .LBB1_10
 # %bb.27:                               #   in Loop: Header=BB1_15 Depth=1
 	ld.w	$s8, $fp, 0
 	st.w	$zero, $fp, 0
@@ -247,7 +244,8 @@ gz_read:                                # @gz_read
 .LBB1_28:                               #   in Loop: Header=BB1_15 Depth=1
 	bltz	$a1, .LBB1_31
 # %bb.29:                               #   in Loop: Header=BB1_15 Depth=1
-	st.w	$s6, $fp, 80
+	ori	$a0, $zero, 1
+	st.w	$a0, $fp, 80
 	b	.LBB1_17
 .LBB1_30:
 	ori	$a0, $zero, 1
@@ -612,8 +610,7 @@ gzgets:                                 # @gzgets
 	beqz	$a1, .LBB6_26
 # %bb.2:
 	move	$s1, $a2
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB6_26
+	blez	$a2, .LBB6_26
 # %bb.3:
 	ld.w	$a0, $s0, 24
 	lu12i.w	$a1, 1
@@ -765,7 +762,6 @@ gz_fetch:                               # @gz_fetch
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	addi.w	$s0, $zero, -1
 	ori	$s1, $zero, 2
@@ -816,7 +812,6 @@ gz_fetch:                               # @gz_fetch
 	move	$s0, $zero
 .LBB7_11:                               # %.critedge
 	move	$a0, $s0
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -831,7 +826,6 @@ gz_fetch:                               # @gz_fetch
 	slli.w	$s1, $a0, 1
 	st.w	$zero, $fp, 0
 	lu12i.w	$s2, 262144
-	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB7_13:                               # =>This Inner Loop Header: Depth=1
 	sub.w	$a0, $s1, $a1
@@ -846,7 +840,7 @@ gz_fetch:                               # @gz_fetch
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s3, .LBB7_15
+	blez	$a1, .LBB7_15
 # %bb.14:                               #   in Loop: Header=BB7_13 Depth=1
 	ld.w	$a1, $fp, 0
 	add.w	$a1, $a1, $a0
@@ -1260,14 +1254,13 @@ gz_decomp:                              # @gz_decomp
 	.type	gz_avail,@function
 gz_avail:                               # @gz_avail
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 108
 	beqz	$a0, .LBB12_2
@@ -1375,7 +1368,6 @@ gz_avail:                               # @gz_avail
 	add.d	$s1, $a1, $a3
 	sub.w	$s2, $a2, $a0
 	lu12i.w	$s3, 262144
-	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB12_23:                              # =>This Inner Loop Header: Depth=1
 	sub.w	$a0, $s2, $s0
@@ -1390,7 +1382,7 @@ gz_avail:                               # @gz_avail
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s4, .LBB12_25
+	blez	$a1, .LBB12_25
 # %bb.24:                               #   in Loop: Header=BB12_23 Depth=1
 	add.w	$s0, $s0, $a0
 	bltu	$s0, $s2, .LBB12_23
@@ -1408,14 +1400,13 @@ gz_avail:                               # @gz_avail
 	st.w	$a1, $fp, 128
 	st.d	$a2, $fp, 120
 .LBB12_28:
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB12_29:                              # %gz_load.exit
 	pcaddu18i	$ra, %call36(__errno_location)

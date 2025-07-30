@@ -260,13 +260,11 @@ _Z30BENCHMARK_ANISTROPIC_DIFFUSIONRN9benchmark5StateE: # @_Z30BENCHMARK_ANISTROP
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s1, $a0
 	ld.d	$a0, $a0, 32
 	ld.w	$fp, $a0, 0
@@ -280,26 +278,19 @@ _Z30BENCHMARK_ANISTROPIC_DIFFUSIONRN9benchmark5StateE: # @_Z30BENCHMARK_ANISTROP
 	move	$s0, $a0
 	pcalau12i	$s2, %pc_hi20(inputImage)
 	ld.d	$a2, $s2, %pc_lo12(inputImage)
-	ori	$a4, $zero, 10
-	move	$a0, $fp
-	move	$a1, $fp
-	move	$a3, $s0
-	pcaddu18i	$ra, %call36(anisotropicDiffusionKernel)
-	jirl	$ra, $ra, 0
-	ori	$s3, $zero, 1
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a2, $s2, %pc_lo12(inputImage)
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s1, 0
+.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	ori	$a4, $zero, 10
 	move	$a0, $fp
 	move	$a1, $fp
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(anisotropicDiffusionKernel)
 	jirl	$ra, $ra, 0
-.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
 	bgtz	$a0, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
@@ -313,7 +304,7 @@ _Z30BENCHMARK_ANISTROPIC_DIFFUSIONRN9benchmark5StateE: # @_Z30BENCHMARK_ANISTROP
 	bnez	$a0, .LBB1_7
 # %bb.6:                                #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a0, $s1, 0
-	bge	$a0, $s3, .LBB1_2
+	bgtz	$a0, .LBB1_2
 .LBB1_7:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -332,7 +323,6 @@ _Z30BENCHMARK_ANISTROPIC_DIFFUSIONRN9benchmark5StateE: # @_Z30BENCHMARK_ANISTROP
 	jirl	$ra, $ra, 0
 .LBB1_9:
 	move	$a0, $s0
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

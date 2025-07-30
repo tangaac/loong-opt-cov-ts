@@ -161,8 +161,8 @@ _ZN18CMemBlockManagerMt13AllocateSpaceEPN8NWindows16NSynchronization8CSynchroEmm
 .LBB4_3:
 	move	$s0, $a2
 	move	$fp, $a0
-	move	$s1, $a3
-	move	$s2, $a1
+	move	$s2, $a3
+	move	$s1, $a1
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(MidFree)
 	jirl	$ra, $ra, 0
@@ -188,33 +188,34 @@ _ZN18CMemBlockManagerMt13AllocateSpaceEPN8NWindows16NSynchronization8CSynchroEmm
 	st.d	$a1, $fp, 0
 	beqz	$a1, .LBB4_2
 # %bb.7:                                # %.preheader.i
-	move	$a2, $s2
 	ori	$a0, $zero, 2
-	move	$a4, $a1
+	move	$a3, $a1
 	bltu	$s0, $a0, .LBB4_10
 # %bb.8:                                # %.lr.ph.i
 	ld.d	$a0, $fp, 8
-	addi.d	$a3, $s0, -1
-	move	$a5, $a1
+	addi.d	$a2, $s0, -1
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB4_9:                                # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a5, $a0
-	addi.d	$a3, $a3, -1
-	st.d	$a4, $a5, 0
-	move	$a5, $a4
-	bnez	$a3, .LBB4_9
+	add.d	$a3, $a4, $a0
+	addi.d	$a2, $a2, -1
+	st.d	$a3, $a4, 0
+	move	$a4, $a3
+	bnez	$a2, .LBB4_9
 .LBB4_10:                               # %.loopexit
-	st.d	$zero, $a4, 0
+	st.d	$zero, $a3, 0
 	st.d	$a1, $fp, 16
-	sub.w	$a1, $s0, $s1
-	ori	$a0, $zero, 1
+	sub.w	$a1, $s0, $s2
 	st.d	$zero, $fp, 72
-	blt	$a1, $a0, .LBB4_2
+	blez	$a1, .LBB4_12
 # %bb.11:
 	move	$a0, $zero
-	st.d	$a2, $fp, 72
+	st.d	$s1, $fp, 72
 	st.w	$a1, $fp, 80
 	st.w	$a1, $fp, 84
+	b	.LBB4_2
+.LBB4_12:
+	ori	$a0, $zero, 1
 	b	.LBB4_2
 .Lfunc_end4:
 	.size	_ZN18CMemBlockManagerMt13AllocateSpaceEPN8NWindows16NSynchronization8CSynchroEmm, .Lfunc_end4-_ZN18CMemBlockManagerMt13AllocateSpaceEPN8NWindows16NSynchronization8CSynchroEmm
@@ -237,7 +238,6 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -247,7 +247,6 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$fp, $a0
 	lu12i.w	$a0, -524176
 	bgeu	$a2, $a3, .LBB5_3
@@ -255,7 +254,6 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 	ori	$s0, $a0, 87
 .LBB5_2:                                # %.loopexit
 	move	$a0, $s0
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -272,18 +270,17 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 	move	$s3, $a2
 	move	$s1, $a1
 	ori	$s0, $a0, 14
-	ori	$s4, $zero, 8
+	ori	$s5, $zero, 8
 	ori	$s6, $zero, 2
-	ori	$s7, $zero, 1
-	sub.d	$s5, $s3, $s2
+	sub.d	$s4, $s3, $s2
 	bgeu	$s3, $s2, .LBB5_6
 	.p2align	4, , 16
 .LBB5_4:                                # =>This Inner Loop Header: Depth=1
 	beq	$s3, $s2, .LBB5_2
 # %bb.5:                                #   in Loop: Header=BB5_4 Depth=1
-	srli.d	$a0, $s5, 1
+	srli.d	$a0, $s4, 1
 	add.d	$s3, $a0, $s2
-	sub.d	$s5, $s3, $s2
+	sub.d	$s4, $s3, $s2
 	bltu	$s3, $s2, .LBB5_4
 .LBB5_6:
 	ld.d	$a0, $fp, 0
@@ -294,7 +291,7 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 	beqz	$s3, .LBB5_4
 # %bb.7:
 	ld.d	$a0, $fp, 8
-	bltu	$a0, $s4, .LBB5_4
+	bltu	$a0, $s5, .LBB5_4
 # %bb.8:
 	mulh.du	$a1, $a0, $s3
 	bnez	$a1, .LBB5_4
@@ -321,14 +318,14 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 .LBB5_13:                               # %.loopexit.i
 	st.d	$zero, $a3, 0
 	st.d	$a0, $fp, 16
-	addi.w	$a0, $s5, 0
+	addi.w	$a0, $s4, 0
 	st.d	$zero, $fp, 72
-	blt	$a0, $s7, .LBB5_4
+	blez	$a0, .LBB5_4
 # %bb.14:                               # %_ZN18CMemBlockManagerMt13AllocateSpaceEPN8NWindows16NSynchronization8CSynchroEmm.exit
 	move	$s0, $zero
 	st.d	$s1, $fp, 72
-	st.w	$s5, $fp, 80
-	st.w	$s5, $fp, 84
+	st.w	$s4, $fp, 80
+	st.w	$s4, $fp, 84
 	b	.LBB5_2
 .Lfunc_end5:
 	.size	_ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSynchroEmm, .Lfunc_end5-_ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSynchroEmm
@@ -495,8 +492,7 @@ _ZN10CMemBlocks4FreeEP18CMemBlockManagerMt: # @_ZN10CMemBlocks4FreeEP18CMemBlock
 	.cfi_offset 25, -40
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB9_8
+	blez	$a0, .LBB9_8
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	bstrpick.d	$a0, $a0, 31, 0
@@ -710,8 +706,7 @@ _ZN14CMemLockBlocks9FreeBlockEiP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks9Fre
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB12_6
+	beqz	$s4, .LBB12_6
 # %bb.2:
 	ld.d	$a0, $s0, 72
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
@@ -764,7 +759,6 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -772,11 +766,9 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB13_9
+	blez	$a0, .LBB13_9
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	addi.d	$s1, $a1, 24
@@ -796,7 +788,7 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 .LBB13_4:                               # %_ZN14CMemLockBlocks9FreeBlockEiP18CMemBlockManagerMt.exit
                                         #   in Loop: Header=BB13_5 Depth=1
 	ld.d	$a0, $fp, 16
-	stx.d	$zero, $a0, $s4
+	stx.d	$zero, $a0, $s3
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector10DeleteBackEv)
 	jirl	$ra, $ra, 0
@@ -805,12 +797,12 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 .LBB13_5:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 16
 	addi.w	$a0, $a0, -1
-	slli.d	$s4, $a0, 3
-	ldx.d	$s2, $a1, $s4
+	slli.d	$s3, $a0, 3
+	ldx.d	$s2, $a1, $s3
 	beqz	$s2, .LBB13_4
 # %bb.6:                                # %_ZN16CMemBlockManager9FreeBlockEPv.exit.i.i
                                         #   in Loop: Header=BB13_5 Depth=1
-	ld.bu	$s5, $fp, 40
+	ld.bu	$s4, $fp, 40
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
@@ -820,7 +812,7 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
-	bne	$s5, $s3, .LBB13_4
+	beqz	$s4, .LBB13_4
 # %bb.7:                                #   in Loop: Header=BB13_5 Depth=1
 	ld.d	$a0, $s0, 72
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
@@ -833,7 +825,6 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 	b	.LBB13_3
 .LBB13_9:                               # %._crit_edge
 	st.d	$zero, $fp, 32
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -852,9 +843,8 @@ _ZN14CMemLockBlocks4FreeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks4FreeEP18C
 	.type	_ZN14CMemLockBlocks18SwitchToNoLockModeEP18CMemBlockManagerMt,@function
 _ZN14CMemLockBlocks18SwitchToNoLockModeEP18CMemBlockManagerMt: # @_ZN14CMemLockBlocks18SwitchToNoLockModeEP18CMemBlockManagerMt
 # %bb.0:
-	ld.bu	$a3, $a0, 40
-	ori	$a2, $zero, 1
-	bne	$a3, $a2, .LBB14_4
+	ld.bu	$a2, $a0, 40
+	beqz	$a2, .LBB14_4
 # %bb.1:
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
@@ -862,7 +852,7 @@ _ZN14CMemLockBlocks18SwitchToNoLockModeEP18CMemBlockManagerMt: # @_ZN14CMemLockB
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$fp, $a0, 12
-	blt	$fp, $a2, .LBB14_6
+	blez	$fp, .LBB14_6
 # %bb.2:
 	move	$s0, $a0
 	ld.d	$a0, $a1, 72
@@ -945,14 +935,13 @@ _ZN14CMemLockBlocks6DetachERS_P18CMemBlockManagerMt: # @_ZN14CMemLockBlocks6Deta
 	jirl	$ra, $ra, 0
 	ld.b	$a0, $s0, 40
 	ld.w	$a1, $s0, 12
-	ori	$a2, $zero, 1
 	st.b	$a0, $s1, 40
-	blt	$a1, $a2, .LBB15_12
+	blez	$a1, .LBB15_12
 # %bb.1:                                # %.lr.ph
-	ld.d	$s5, $fp, 8
+	ld.d	$s4, $fp, 8
+	move	$s5, $zero
 	move	$s6, $zero
 	move	$s7, $zero
-	move	$s8, $zero
 	addi.d	$s2, $fp, 24
 	b	.LBB15_4
 	.p2align	4, , 16
@@ -969,21 +958,21 @@ _ZN14CMemLockBlocks6DetachERS_P18CMemBlockManagerMt: # @_ZN14CMemLockBlocks6Deta
 .LBB15_3:                               #   in Loop: Header=BB15_4 Depth=1
 	ld.d	$a0, $s0, 16
 	ld.w	$a1, $s0, 12
-	stx.d	$zero, $a0, $s6
-	add.d	$s8, $s8, $s5
-	addi.d	$s7, $s7, 1
-	addi.d	$s6, $s6, 8
-	bge	$s7, $a1, .LBB15_12
+	stx.d	$zero, $a0, $s5
+	add.d	$s7, $s7, $s4
+	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 8
+	bge	$s6, $a1, .LBB15_12
 .LBB15_4:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 16
 	ld.d	$a1, $s0, 32
-	ldx.d	$s3, $a0, $s6
-	bltu	$s8, $a1, .LBB15_2
+	ldx.d	$s3, $a0, $s5
+	bltu	$s7, $a1, .LBB15_2
 # %bb.5:                                #   in Loop: Header=BB15_4 Depth=1
 	beqz	$s3, .LBB15_11
 # %bb.6:                                # %_ZN16CMemBlockManager9FreeBlockEPv.exit.i.i
                                         #   in Loop: Header=BB15_4 Depth=1
-	ld.bu	$s4, $s0, 40
+	ld.bu	$s8, $s0, 40
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
@@ -993,8 +982,7 @@ _ZN14CMemLockBlocks6DetachERS_P18CMemBlockManagerMt: # @_ZN14CMemLockBlocks6Deta
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB15_11
+	beqz	$s8, .LBB15_11
 # %bb.7:                                #   in Loop: Header=BB15_4 Depth=1
 	ld.d	$a0, $fp, 72
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
@@ -1020,7 +1008,7 @@ _ZN14CMemLockBlocks6DetachERS_P18CMemBlockManagerMt: # @_ZN14CMemLockBlocks6Deta
 .LBB15_11:                              # %_ZN14CMemLockBlocks9FreeBlockEiP18CMemBlockManagerMt.exit
                                         #   in Loop: Header=BB15_4 Depth=1
 	ld.d	$a0, $s0, 16
-	stx.d	$zero, $a0, $s6
+	stx.d	$zero, $a0, $s5
 	b	.LBB15_3
 .LBB15_12:                              # %._crit_edge
 	ld.d	$a0, $s0, 32

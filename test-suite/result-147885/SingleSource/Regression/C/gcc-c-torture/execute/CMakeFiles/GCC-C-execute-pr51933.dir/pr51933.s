@@ -32,8 +32,7 @@ bar:                                    # @bar
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 .LBB1_2:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_5
+	blez	$a0, .LBB1_5
 # %bb.3:                                # %.lr.ph.preheader
 	pcalau12i	$a1, %pc_hi20(v2)
 	addi.d	$a1, $a1, %pc_lo12(v2)

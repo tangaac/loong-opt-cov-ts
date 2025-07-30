@@ -108,9 +108,8 @@ main:                                   # @main
 	st.w	$a1, $sp, 304
 	ori	$a1, $zero, 12
 	st.d	$a1, $sp, 288
-	ori	$a1, $zero, 1
 	st.b	$zero, $sp, 308
-	blt	$a0, $a1, .LBB2_4
+	blez	$a0, .LBB2_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	slli.d	$s3, $a0, 3

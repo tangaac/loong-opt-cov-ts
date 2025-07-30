@@ -264,25 +264,28 @@ _ZNK2PP4Word17convertFromStringERKfRKNSt7__cxx1112basic_stringIcSt11char_traitsI
 	st.d	$a1, $sp, 16
 .LBB5_2:                                # %._crit_edge.i.i
 	addi.w	$a2, $zero, -1
-	beq	$a1, $a2, .LBB5_6
+	beq	$a1, $a2, .LBB5_5
 # %bb.3:                                # %._crit_edge.i.i
-	bnez	$a1, .LBB5_5
+	bnez	$a1, .LBB5_6
 # %bb.4:
 	ld.b	$a1, $s0, 0
 	st.b	$a1, $a0, 0
-	b	.LBB5_6
-.LBB5_5:
+.LBB5_5:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
+	ld.d	$a0, $sp, 32
+	addi.w	$a1, $a0, 0
+	st.d	$a0, $sp, 8
+	bgtz	$a1, .LBB5_7
+	b	.LBB5_13
+.LBB5_6:
 	addi.d	$a2, $a1, 1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_6:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
 	ld.d	$a0, $sp, 32
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 8
-	blt	$a1, $a2, .LBB5_13
-# %bb.7:                                # %.lr.ph.preheader
+	blez	$a1, .LBB5_13
+.LBB5_7:                                # %.lr.ph.preheader
 	move	$a0, $zero
 	ori	$a1, $zero, 100
 	ori	$a2, $zero, 101
@@ -395,25 +398,28 @@ _ZNK2PP4Word17convertFromStringERKdRKNSt7__cxx1112basic_stringIcSt11char_traitsI
 	st.d	$a1, $sp, 16
 .LBB7_2:                                # %._crit_edge.i.i
 	addi.w	$a2, $zero, -1
-	beq	$a1, $a2, .LBB7_6
+	beq	$a1, $a2, .LBB7_5
 # %bb.3:                                # %._crit_edge.i.i
-	bnez	$a1, .LBB7_5
+	bnez	$a1, .LBB7_6
 # %bb.4:
 	ld.b	$a1, $s0, 0
 	st.b	$a1, $a0, 0
-	b	.LBB7_6
-.LBB7_5:
+.LBB7_5:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
+	ld.d	$a0, $sp, 32
+	addi.w	$a1, $a0, 0
+	st.d	$a0, $sp, 8
+	bgtz	$a1, .LBB7_7
+	b	.LBB7_13
+.LBB7_6:
 	addi.d	$a2, $a1, 1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB7_6:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
 	ld.d	$a0, $sp, 32
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 8
-	blt	$a1, $a2, .LBB7_13
-# %bb.7:                                # %.lr.ph.preheader
+	blez	$a1, .LBB7_13
+.LBB7_7:                                # %.lr.ph.preheader
 	move	$a0, $zero
 	ori	$a1, $zero, 100
 	ori	$a2, $zero, 101
@@ -1462,35 +1468,35 @@ _ZN2PP4Word8set_typeEv:                 # @_ZN2PP4Word8set_typeEv
 	ori	$a0, $zero, 2
 	b	.LBB13_19
 .LBB13_69:                              # %.preheader106
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB13_75
+	blez	$a2, .LBB13_75
 # %bb.70:                               # %.lr.ph111.preheader
-	bstrpick.d	$a4, $a1, 30, 0
-	ori	$a5, $zero, 10
-	ori	$a6, $zero, 58
+	bstrpick.d	$a3, $a1, 30, 0
+	ori	$a4, $zero, 10
+	ori	$a5, $zero, 58
+	ori	$a6, $zero, 1
 	lu12i.w	$a7, 24576
 	ori	$a7, $a7, 13
 	lu52i.d	$a7, $a7, 96
 	move	$t0, $a0
 	b	.LBB13_72
 .LBB13_71:                              #   in Loop: Header=BB13_72 Depth=1
-	addi.d	$a4, $a4, -1
+	addi.d	$a3, $a3, -1
 	addi.d	$t0, $t0, 1
-	beqz	$a4, .LBB13_75
+	beqz	$a3, .LBB13_75
 .LBB13_72:                              # %.lr.ph111
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$t1, $t0, 0
 	ext.w.b	$t2, $t1
 	addi.d	$t2, $t2, -48
-	bltu	$t2, $a5, .LBB13_71
+	bltu	$t2, $a4, .LBB13_71
 # %bb.73:                               # %switch.early.test103
                                         #   in Loop: Header=BB13_72 Depth=1
 	andi	$t1, $t1, 255
 	addi.d	$t1, $t1, -43
-	bltu	$a6, $t1, .LBB13_94
+	bltu	$a5, $t1, .LBB13_94
 # %bb.74:                               # %switch.early.test103
                                         #   in Loop: Header=BB13_72 Depth=1
-	sll.d	$t1, $a3, $t1
+	sll.d	$t1, $a6, $t1
 	and	$t1, $t1, $a7
 	bnez	$t1, .LBB13_71
 	b	.LBB13_94
@@ -1539,32 +1545,32 @@ _ZN2PP4Word8set_typeEv:                 # @_ZN2PP4Word8set_typeEv
 	jirl	$ra, $ra, 0
 	b	.LBB13_20
 .LBB13_81:                              # %.preheader
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB13_90
+	blez	$a2, .LBB13_90
 # %bb.82:                               # %.lr.ph113.preheader
 	move	$a2, $zero
-	move	$a5, $zero
+	move	$a4, $zero
 	bstrpick.d	$a3, $a1, 30, 0
-	ori	$a6, $zero, 33
+	ori	$a5, $zero, 33
+	ori	$a6, $zero, 1
 	ori	$a7, $zero, 3
 	lu32i.d	$a7, 3
 	b	.LBB13_84
 .LBB13_83:                              #   in Loop: Header=BB13_84 Depth=1
-	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 1
 	addi.d	$a2, $a2, 1
-	beq	$a3, $a5, .LBB13_90
+	beq	$a3, $a4, .LBB13_90
 .LBB13_84:                              # %.lr.ph113
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$t0, $a0, $a5
+	ldx.bu	$t0, $a0, $a4
 	addi.d	$t0, $t0, -68
-	bltu	$a6, $t0, .LBB13_83
+	bltu	$a5, $t0, .LBB13_83
 # %bb.85:                               # %.lr.ph113
                                         #   in Loop: Header=BB13_84 Depth=1
-	sll.d	$t0, $a4, $t0
+	sll.d	$t0, $a6, $t0
 	and	$t0, $t0, $a7
 	beqz	$t0, .LBB13_83
 # %bb.86:
-	addi.d	$a1, $a5, 1
+	addi.d	$a1, $a4, 1
 	ori	$a4, $zero, 33
 	ori	$a5, $zero, 1
 	ori	$a6, $zero, 3
@@ -3649,25 +3655,28 @@ _ZN2PP4Word7is_boolEv:                  # @_ZN2PP4Word7is_boolEv
 	st.d	$a1, $sp, 80
 .LBB28_2:                               # %._crit_edge.i.i
 	addi.w	$a2, $zero, -1
-	beq	$a1, $a2, .LBB28_6
+	beq	$a1, $a2, .LBB28_5
 # %bb.3:                                # %._crit_edge.i.i
-	bnez	$a1, .LBB28_5
+	bnez	$a1, .LBB28_6
 # %bb.4:
 	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 0
-	b	.LBB28_6
-.LBB28_5:
+.LBB28_5:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
+	ld.d	$a0, $sp, 32
+	addi.w	$a1, $a0, 0
+	st.d	$a0, $sp, 72
+	bgtz	$a1, .LBB28_7
+	b	.LBB28_12
+.LBB28_6:
 	addi.d	$a2, $a1, 1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB28_6:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
 	ld.d	$a0, $sp, 32
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 72
-	blt	$a1, $a2, .LBB28_12
-# %bb.7:                                # %.lr.ph.preheader.i
+	blez	$a1, .LBB28_12
+.LBB28_7:                               # %.lr.ph.preheader.i
 	move	$s0, $zero
 	bstrpick.d	$s2, $a0, 30, 0
 	b	.LBB28_9
@@ -3834,8 +3843,7 @@ _ZNK2PP4Word15string_to_lowerERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIc
 	move	$fp, $a1
 	ld.d	$a0, $a1, 8
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB29_5
+	blez	$a1, .LBB29_5
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	bstrpick.d	$s2, $a0, 30, 0
@@ -3927,25 +3935,28 @@ _ZN2PP4Word8get_boolERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEE
 	st.d	$a1, $sp, 88
 .LBB30_2:                               # %._crit_edge.i.i
 	addi.w	$a2, $zero, -1
-	beq	$a1, $a2, .LBB30_6
+	beq	$a1, $a2, .LBB30_5
 # %bb.3:                                # %._crit_edge.i.i
-	bnez	$a1, .LBB30_5
+	bnez	$a1, .LBB30_6
 # %bb.4:
 	ld.b	$a1, $s1, 0
 	st.b	$a1, $a0, 0
-	b	.LBB30_6
-.LBB30_5:
+.LBB30_5:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
+	ld.d	$a0, $sp, 40
+	addi.w	$a1, $a0, 0
+	st.d	$a0, $sp, 80
+	bgtz	$a1, .LBB30_7
+	b	.LBB30_12
+.LBB30_6:
 	addi.d	$a2, $a1, 1
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB30_6:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2ERKS4_.exit
 	ld.d	$a0, $sp, 40
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 80
-	blt	$a1, $a2, .LBB30_12
-# %bb.7:                                # %.lr.ph.preheader.i
+	blez	$a1, .LBB30_12
+.LBB30_7:                               # %.lr.ph.preheader.i
 	move	$s3, $zero
 	bstrpick.d	$s5, $a0, 30, 0
 	b	.LBB30_9
@@ -6163,8 +6174,7 @@ _ZN2PP4Word10get_doubleERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIc
 	bne	$a1, $a2, .LBB33_19
 # %bb.12:                               # %.preheader
 	addi.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB33_19
+	blez	$a0, .LBB33_19
 # %bb.13:                               # %.lr.ph.preheader
 	move	$a0, $zero
 	ori	$a1, $zero, 100
@@ -7931,9 +7941,8 @@ _ZN2PP4Word12negate_valueEv:            # @_ZN2PP4Word12negate_valueEv
 	ld.d	$s0, $fp, 8
 	ld.d	$s1, $fp, 0
 	addi.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
 	st.b	$zero, $fp, 37
-	blt	$a0, $a1, .LBB44_8
+	blez	$a0, .LBB44_8
 # %bb.2:                                # %.lr.ph
 	bstrpick.d	$a1, $s0, 30, 0
 	ori	$a2, $zero, 9

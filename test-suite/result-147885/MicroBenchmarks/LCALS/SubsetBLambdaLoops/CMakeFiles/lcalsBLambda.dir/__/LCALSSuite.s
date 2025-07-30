@@ -676,9 +676,9 @@ _Z22defineLoopSuiteRunInfoRKSt6vectorI13LoopVariantIDSaIS0_EEPbdd: # @_Z22define
 	lu12i.w	$a0, 479349
 	ori	$a0, $a0, 117
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	lu12i.w	$fp, -524288
+	lu12i.w	$s2, -524288
 	lu12i.w	$a0, 524287
-	ori	$s2, $a0, 4095
+	ori	$fp, $a0, 4095
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB1_95
 	.p2align	4, , 16
@@ -714,8 +714,7 @@ _Z22defineLoopSuiteRunInfoRKSt6vectorI13LoopVariantIDSaIS0_EEPbdd: # @_Z22define
 # %bb.96:                               #   in Loop: Header=BB1_95 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ldx.bu	$a0, $a0, $s3
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_231
+	beqz	$a0, .LBB1_231
 # %bb.97:                               #   in Loop: Header=BB1_95 Depth=1
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 32
@@ -2660,13 +2659,13 @@ _Z22defineLoopSuiteRunInfoRKSt6vectorI13LoopVariantIDSaIS0_EEPbdd: # @_Z22define
 .LBB1_254:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i.i
                                         #   in Loop: Header=BB1_256 Depth=3
 	sub.d	$a0, $s6, $s3
-	slt	$a1, $fp, $a0
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $fp, $a1
-	or	$a0, $a0, $a1
-	slt	$a1, $a0, $s2
+	slt	$a1, $s2, $a0
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s2, $a1
+	or	$a0, $a0, $a1
+	slt	$a1, $a0, $fp
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $fp, $a1
 	or	$a0, $a0, $a1
 .LBB1_255:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit.i.i.i.i
                                         #   in Loop: Header=BB1_256 Depth=3
@@ -2722,13 +2721,13 @@ _Z22defineLoopSuiteRunInfoRKSt6vectorI13LoopVariantIDSaIS0_EEPbdd: # @_Z22define
 .LBB1_261:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i.i
                                         #   in Loop: Header=BB1_252 Depth=2
 	sub.d	$a0, $s3, $s5
-	slt	$a1, $fp, $a0
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $fp, $a1
-	or	$a0, $a0, $a1
-	slt	$a1, $a0, $s2
+	slt	$a1, $s2, $a0
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s2, $a1
+	or	$a0, $a0, $a1
+	slt	$a1, $a0, $fp
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $fp, $a1
 	or	$a0, $a0, $a1
 .LBB1_262:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit.i.i.i
                                         #   in Loop: Header=BB1_252 Depth=2
@@ -4510,117 +4509,110 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB8_2:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_105
+	blez	$a2, .LBB8_105
 # %bb.3:                                # %.lr.ph.preheader.i182
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_100
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_100
 # %bb.4:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_103
 .LBB8_5:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_150
+	blez	$a2, .LBB8_150
 # %bb.6:                                # %.lr.ph.preheader.i230
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_145
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_145
 # %bb.7:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_148
 .LBB8_8:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_277
+	blez	$a2, .LBB8_277
 # %bb.9:                                # %.lr.ph.preheader.i1116
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_272
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_272
 # %bb.10:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_275
 .LBB8_11:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_306
+	blez	$a2, .LBB8_306
 # %bb.12:                               # %.lr.ph.preheader.i690
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_301
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_301
 # %bb.13:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_304
 .LBB8_14:
-	ld.w	$a3, $s1, 864
+	ld.w	$a2, $s1, 864
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_319
+	blez	$a2, .LBB8_319
 # %bb.15:                               # %.lr.ph.preheader.i658
-	ld.bu	$a2, $s1, 848
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 856
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_314
+	ld.bu	$a1, $s1, 848
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 856
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_314
 # %bb.16:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_317
 .LBB8_17:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_332
+	blez	$a2, .LBB8_332
 # %bb.18:                               # %.lr.ph.preheader.i577
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_327
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_327
 # %bb.19:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_330
 .LBB8_20:
 	ld.w	$a1, $s1, 912
-	ori	$fp, $zero, 1
-	blt	$a1, $fp, .LBB8_22
+	blez	$a1, .LBB8_22
 # %bb.21:                               # %.lr.ph.preheader.i616
 	ld.d	$a0, $s1, 904
 	slli.d	$a2, $a1, 2
@@ -4629,7 +4621,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	jirl	$ra, $ra, 0
 .LBB8_22:                               # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit
 	ld.w	$a1, $s1, 1608
-	blt	$a1, $fp, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.23:                               # %.lr.ph.preheader.i618
 	ld.bu	$a0, $s1, 1592
 	andi	$a0, $a0, 1
@@ -4645,317 +4637,300 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	move	$a0, $zero
 	b	.LBB8_367
 .LBB8_25:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_374
+	blez	$a2, .LBB8_374
 # %bb.26:                               # %.lr.ph.preheader.i
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_369
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_369
 # %bb.27:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_372
 .LBB8_28:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_395
+	blez	$a2, .LBB8_395
 # %bb.29:                               # %.lr.ph.preheader.i497
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_390
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_390
 # %bb.30:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_393
 .LBB8_31:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_432
+	blez	$a2, .LBB8_432
 # %bb.32:                               # %.lr.ph.preheader.i942
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_427
+# %bb.33:
+	move	$a1, $zero
+	b	.LBB8_430
+.LBB8_34:
+	ld.w	$a1, $s1, 1152
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	addi.d	$fp, $a0, %pc_lo12(.LCPI8_0)
+	blez	$a1, .LBB8_515
+# %bb.35:                               # %.lr.ph.preheader.i890
+	ld.bu	$a0, $s1, 1136
+	andi	$a0, $a0, 1
+	sltui	$a0, $a0, 1
+	slli.d	$a0, $a0, 3
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s1, 1144
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB8_510
+# %bb.36:
+	move	$a0, $zero
+	b	.LBB8_513
+.LBB8_37:
+	ld.w	$a2, $s1, 480
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
+	blez	$a2, .LBB8_564
+# %bb.38:                               # %.lr.ph.preheader.i674
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_559
+# %bb.39:
+	move	$a1, $zero
+	b	.LBB8_562
+.LBB8_40:
+	ld.w	$a3, $s1, 1032
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_3)
+	addi.d	$a1, $a1, %pc_lo12(.LCPI8_3)
+	blez	$a3, .LBB8_577
+# %bb.41:                               # %.lr.ph.preheader.i430
+	ld.bu	$a2, $s1, 1016
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_427
-# %bb.33:
+	fldx.d	$fa1, $a1, $a2
+	ld.d	$a4, $s1, 1024
+	ori	$a2, $zero, 1
+	bne	$a3, $a2, .LBB8_572
+# %bb.42:
 	move	$a2, $zero
-	b	.LBB8_430
-.LBB8_34:
+	b	.LBB8_575
+.LBB8_43:
+	ld.w	$a2, $s1, 1248
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
+	blez	$a2, .LBB8_614
+# %bb.44:                               # %.lr.ph.preheader.i1292
+	ld.bu	$a1, $s1, 1232
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1240
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_609
+# %bb.45:
+	move	$a1, $zero
+	b	.LBB8_612
+.LBB8_46:
+	ld.w	$a2, $s1, 480
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
+	blez	$a2, .LBB8_659
+# %bb.47:                               # %.lr.ph.preheader.i706
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_654
+# %bb.48:
+	move	$a1, $zero
+	b	.LBB8_657
+.LBB8_49:
 	ld.w	$a2, $s1, 1152
-	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
-	ori	$a0, $zero, 1
-	addi.d	$fp, $a1, %pc_lo12(.LCPI8_0)
-	blt	$a2, $a0, .LBB8_515
-# %bb.35:                               # %.lr.ph.preheader.i890
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
+	blez	$a2, .LBB8_680
+# %bb.50:                               # %.lr.ph.preheader.i826
 	ld.bu	$a1, $s1, 1136
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $fp, $a1
+	fldx.d	$fa0, $a0, $a1
 	ld.d	$a3, $s1, 1144
 	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB8_510
-# %bb.36:
-	move	$a1, $zero
-	b	.LBB8_513
-.LBB8_37:
-	ld.w	$a3, $s1, 480
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_564
-# %bb.38:                               # %.lr.ph.preheader.i674
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_559
-# %bb.39:
-	move	$a2, $zero
-	b	.LBB8_562
-.LBB8_40:
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ld.w	$a4, $s1, 1032
-	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI8_3)
-	ori	$a2, $zero, 1
-	addi.d	$a1, $a1, %pc_lo12(.LCPI8_3)
-	blt	$a4, $a2, .LBB8_577
-# %bb.41:                               # %.lr.ph.preheader.i430
-	ld.bu	$a3, $s1, 1016
-	andi	$a3, $a3, 1
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 3
-	fldx.d	$fa0, $a0, $a3
-	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s1, 1024
-	bne	$a4, $a2, .LBB8_572
-# %bb.42:
-	move	$a3, $zero
-	b	.LBB8_575
-.LBB8_43:
-	ld.w	$a3, $s1, 1248
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_614
-# %bb.44:                               # %.lr.ph.preheader.i1292
-	ld.bu	$a2, $s1, 1232
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1240
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_609
-# %bb.45:
-	move	$a2, $zero
-	b	.LBB8_612
-.LBB8_46:
-	ld.w	$a3, $s1, 480
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_659
-# %bb.47:                               # %.lr.ph.preheader.i706
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_654
-# %bb.48:
-	move	$a2, $zero
-	b	.LBB8_657
-.LBB8_49:
-	ld.w	$a3, $s1, 1152
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_680
-# %bb.50:                               # %.lr.ph.preheader.i826
-	ld.bu	$a2, $s1, 1136
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1144
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_675
+	bgeu	$a2, $a1, .LBB8_675
 # %bb.51:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_678
 .LBB8_52:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_693
+	blez	$a2, .LBB8_693
 # %bb.53:                               # %.lr.ph.preheader.i358
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_688
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_688
 # %bb.54:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_691
 .LBB8_55:
-	ld.w	$a3, $s1, 1152
+	ld.w	$a2, $s1, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_722
+	blez	$a2, .LBB8_722
 # %bb.56:                               # %.lr.ph.preheader.i842
-	ld.bu	$a2, $s1, 1136
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1144
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_717
+	ld.bu	$a1, $s1, 1136
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1144
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_717
 # %bb.57:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_720
 .LBB8_58:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_735
+	blez	$a2, .LBB8_735
 # %bb.59:                               # %.lr.ph.preheader.i626
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_730
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_730
 # %bb.60:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_733
 .LBB8_61:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_764
+	blez	$a2, .LBB8_764
 # %bb.62:                               # %.lr.ph.preheader.i390
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_759
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_759
 # %bb.63:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_762
 .LBB8_64:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_801
+	blez	$a2, .LBB8_801
 # %bb.65:                               # %.lr.ph.preheader.i730
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_796
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_796
 # %bb.66:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_799
 .LBB8_67:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_838
+	blez	$a2, .LBB8_838
 # %bb.68:                               # %.lr.ph.preheader.i537
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_833
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_833
 # %bb.69:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_836
 .LBB8_70:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_875
+	blez	$a2, .LBB8_875
 # %bb.71:                               # %.lr.ph.preheader.i481
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_870
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_870
 # %bb.72:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_873
 .LBB8_73:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_888
+	blez	$a2, .LBB8_888
 # %bb.74:                               # %.lr.ph.preheader.i1252
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_883
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_883
 # %bb.75:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_886
 .LBB8_76:
 	ld.w	$a1, $s1, 480
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.77:                               # %.lr.ph.preheader.i1340
 	ld.bu	$a0, $s1, 464
 	andi	$a0, $a0, 1
@@ -4971,112 +4946,106 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	move	$a0, $zero
 	b	.LBB8_923
 .LBB8_79:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_930
+	blez	$a2, .LBB8_930
 # %bb.80:                               # %.lr.ph.preheader.i858
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_925
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_925
 # %bb.81:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_928
 .LBB8_82:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_943
+	blez	$a2, .LBB8_943
 # %bb.83:                               # %.lr.ph.preheader.i770
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_938
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_938
 # %bb.84:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_941
 .LBB8_85:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_996
+	blez	$a2, .LBB8_996
 # %bb.86:                               # %.lr.ph.preheader.i874
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_991
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_991
 # %bb.87:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_994
 .LBB8_88:
-	ld.w	$a3, $s1, 480
+	ld.w	$a2, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_1009
+	blez	$a2, .LBB8_1009
 # %bb.89:                               # %.lr.ph.preheader.i1148
-	ld.bu	$a2, $s1, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1004
+	ld.bu	$a1, $s1, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1004
 # %bb.90:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1007
 .LBB8_91:
-	ld.w	$a3, $s1, 1152
+	ld.w	$a2, $s1, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_1086
+	blez	$a2, .LBB8_1086
 # %bb.92:                               # %.lr.ph.preheader.i1228
-	ld.bu	$a2, $s1, 1136
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1144
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1081
+	ld.bu	$a1, $s1, 1136
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1144
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1081
 # %bb.93:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1084
 .LBB8_94:
-	ld.w	$a3, $s1, 1248
+	ld.w	$a2, $s1, 1248
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
-	blt	$a3, $a1, .LBB8_1107
+	blez	$a2, .LBB8_1107
 # %bb.95:                               # %.lr.ph.preheader.i1028
-	ld.bu	$a2, $s1, 1232
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1240
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1102
+	ld.bu	$a1, $s1, 1232
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1240
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1102
 # %bb.96:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1105
 .LBB8_97:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
@@ -5103,52 +5072,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	ld.bu	$a1, $fp, 67
 	b	.LBB8_271
 .LBB8_100:                              # %vector.ph3646
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_101:                              # %vector.body3651
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -5157,39 +5126,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_101
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_101
 # %bb.102:                              # %middle.block3657
-	beq	$a2, $a3, .LBB8_105
+	beq	$a1, $a2, .LBB8_105
 .LBB8_103:                              # %.lr.ph.i184.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_104:                              # %.lr.ph.i184
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_104
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_104
 .LBB8_105:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit188
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_113
+	blez	$a2, .LBB8_113
 # %bb.106:                              # %.lr.ph.preheader.i190
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -5288,68 +5257,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_112
 .LBB8_113:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit196
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_121
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_121
 # %bb.114:                              # %.lr.ph.preheader.i198
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_116
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_116
 # %bb.115:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_119
 .LBB8_116:                              # %vector.ph3678
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_117:                              # %vector.body3683
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -5358,39 +5326,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_117
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_117
 # %bb.118:                              # %middle.block3689
-	beq	$a2, $a3, .LBB8_121
+	beq	$a1, $a2, .LBB8_121
 .LBB8_119:                              # %.lr.ph.i200.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_120:                              # %.lr.ph.i200
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_120
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_120
 .LBB8_121:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit204
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_129
+	blez	$a2, .LBB8_129
 # %bb.122:                              # %.lr.ph.preheader.i206
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -5489,68 +5457,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_128
 .LBB8_129:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit212
-	ld.w	$a3, $s1, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_137
+	ld.w	$a2, $s1, 576
+	blez	$a2, .LBB8_137
 # %bb.130:                              # %.lr.ph.preheader.i214
-	ld.bu	$a2, $s1, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_132
+	ld.bu	$a1, $s1, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_132
 # %bb.131:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_135
 .LBB8_132:                              # %vector.ph3710
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_133:                              # %vector.body3715
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -5559,56 +5526,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_133
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_133
 # %bb.134:                              # %middle.block3721
-	beq	$a2, $a3, .LBB8_137
+	beq	$a1, $a2, .LBB8_137
 .LBB8_135:                              # %.lr.ph.i216.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_136:                              # %.lr.ph.i216
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_136
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_136
 .LBB8_137:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit220
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_1187
 # %bb.138:                              # %.lr.ph.preheader.i222
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_140
+	bgeu	$a1, $a0, .LBB8_140
 # %bb.139:
 	move	$a0, $zero
 	b	.LBB8_143
 .LBB8_140:                              # %vector.ph3726
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -5666,14 +5633,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_141
 # %bb.142:                              # %middle.block3737
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_143:                              # %.lr.ph.i224.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_144:                              # %.lr.ph.i224
                                         # =>This Inner Loop Header: Depth=1
@@ -5684,59 +5651,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_144
+	bnez	$a1, .LBB8_144
 	b	.LBB8_1187
 .LBB8_145:                              # %vector.ph3390
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_146:                              # %vector.body3395
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -5745,39 +5712,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_146
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_146
 # %bb.147:                              # %middle.block3401
-	beq	$a2, $a3, .LBB8_150
+	beq	$a1, $a2, .LBB8_150
 .LBB8_148:                              # %.lr.ph.i232.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_149:                              # %.lr.ph.i232
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_149
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_149
 .LBB8_150:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit236
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_158
+	blez	$a2, .LBB8_158
 # %bb.151:                              # %.lr.ph.preheader.i238
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -5876,68 +5843,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_157
 .LBB8_158:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit244
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_166
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_166
 # %bb.159:                              # %.lr.ph.preheader.i246
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_161
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_161
 # %bb.160:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_164
 .LBB8_161:                              # %vector.ph3422
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_162:                              # %vector.body3427
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -5946,39 +5912,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_162
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_162
 # %bb.163:                              # %middle.block3433
-	beq	$a2, $a3, .LBB8_166
+	beq	$a1, $a2, .LBB8_166
 .LBB8_164:                              # %.lr.ph.i248.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_165:                              # %.lr.ph.i248
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_165
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_165
 .LBB8_166:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit252
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_174
+	blez	$a2, .LBB8_174
 # %bb.167:                              # %.lr.ph.preheader.i254
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -6077,68 +6043,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_173
 .LBB8_174:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit260
-	ld.w	$a3, $s1, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_182
+	ld.w	$a2, $s1, 576
+	blez	$a2, .LBB8_182
 # %bb.175:                              # %.lr.ph.preheader.i262
-	ld.bu	$a2, $s1, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_177
+	ld.bu	$a1, $s1, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_177
 # %bb.176:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_180
 .LBB8_177:                              # %vector.ph3454
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_178:                              # %vector.body3459
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -6147,39 +6112,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_178
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_178
 # %bb.179:                              # %middle.block3465
-	beq	$a2, $a3, .LBB8_182
+	beq	$a1, $a2, .LBB8_182
 .LBB8_180:                              # %.lr.ph.i264.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_181:                              # %.lr.ph.i264
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_181
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_181
 .LBB8_182:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit268
 	ld.w	$a2, $s1, 600
-	blt	$a2, $a1, .LBB8_190
+	blez	$a2, .LBB8_190
 # %bb.183:                              # %.lr.ph.preheader.i270
 	ld.bu	$a1, $s1, 584
 	andi	$a1, $a1, 1
@@ -6278,68 +6243,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_189
 .LBB8_190:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit276
-	ld.w	$a3, $s1, 624
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_198
+	ld.w	$a2, $s1, 624
+	blez	$a2, .LBB8_198
 # %bb.191:                              # %.lr.ph.preheader.i278
-	ld.bu	$a2, $s1, 608
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 616
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_193
+	ld.bu	$a1, $s1, 608
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 616
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_193
 # %bb.192:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_196
 .LBB8_193:                              # %vector.ph3486
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_194:                              # %vector.body3491
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -6348,39 +6312,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_194
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_194
 # %bb.195:                              # %middle.block3497
-	beq	$a2, $a3, .LBB8_198
+	beq	$a1, $a2, .LBB8_198
 .LBB8_196:                              # %.lr.ph.i280.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_197:                              # %.lr.ph.i280
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_197
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_197
 .LBB8_198:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit284
 	ld.w	$a2, $s1, 648
-	blt	$a2, $a1, .LBB8_206
+	blez	$a2, .LBB8_206
 # %bb.199:                              # %.lr.ph.preheader.i286
 	ld.bu	$a1, $s1, 632
 	andi	$a1, $a1, 1
@@ -6479,68 +6443,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_205
 .LBB8_206:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit292
-	ld.w	$a3, $s1, 672
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_214
+	ld.w	$a2, $s1, 672
+	blez	$a2, .LBB8_214
 # %bb.207:                              # %.lr.ph.preheader.i294
-	ld.bu	$a2, $s1, 656
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 664
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_209
+	ld.bu	$a1, $s1, 656
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 664
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_209
 # %bb.208:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_212
 .LBB8_209:                              # %vector.ph3518
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_210:                              # %vector.body3523
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -6549,39 +6512,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_210
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_210
 # %bb.211:                              # %middle.block3529
-	beq	$a2, $a3, .LBB8_214
+	beq	$a1, $a2, .LBB8_214
 .LBB8_212:                              # %.lr.ph.i296.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_213:                              # %.lr.ph.i296
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_213
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_213
 .LBB8_214:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit300
 	ld.w	$a2, $s1, 696
-	blt	$a2, $a1, .LBB8_222
+	blez	$a2, .LBB8_222
 # %bb.215:                              # %.lr.ph.preheader.i302
 	ld.bu	$a1, $s1, 680
 	andi	$a1, $a1, 1
@@ -6680,68 +6643,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_221
 .LBB8_222:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit308
-	ld.w	$a3, $s1, 720
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_230
+	ld.w	$a2, $s1, 720
+	blez	$a2, .LBB8_230
 # %bb.223:                              # %.lr.ph.preheader.i310
-	ld.bu	$a2, $s1, 704
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 712
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_225
+	ld.bu	$a1, $s1, 704
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 712
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_225
 # %bb.224:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_228
 .LBB8_225:                              # %vector.ph3550
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_226:                              # %vector.body3555
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -6750,39 +6712,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_226
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_226
 # %bb.227:                              # %middle.block3561
-	beq	$a2, $a3, .LBB8_230
+	beq	$a1, $a2, .LBB8_230
 .LBB8_228:                              # %.lr.ph.i312.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_229:                              # %.lr.ph.i312
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_229
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_229
 .LBB8_230:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit316
 	ld.w	$a2, $s1, 744
-	blt	$a2, $a1, .LBB8_238
+	blez	$a2, .LBB8_238
 # %bb.231:                              # %.lr.ph.preheader.i318
 	ld.bu	$a1, $s1, 728
 	andi	$a1, $a1, 1
@@ -6881,68 +6843,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_237
 .LBB8_238:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit324
-	ld.w	$a3, $s1, 768
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_246
+	ld.w	$a2, $s1, 768
+	blez	$a2, .LBB8_246
 # %bb.239:                              # %.lr.ph.preheader.i326
-	ld.bu	$a2, $s1, 752
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 760
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_241
+	ld.bu	$a1, $s1, 752
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 760
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_241
 # %bb.240:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_244
 .LBB8_241:                              # %vector.ph3582
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_242:                              # %vector.body3587
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -6951,39 +6912,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_242
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_242
 # %bb.243:                              # %middle.block3593
-	beq	$a2, $a3, .LBB8_246
+	beq	$a1, $a2, .LBB8_246
 .LBB8_244:                              # %.lr.ph.i328.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_245:                              # %.lr.ph.i328
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_245
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_245
 .LBB8_246:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit332
 	ld.w	$a2, $s1, 792
-	blt	$a2, $a1, .LBB8_254
+	blez	$a2, .LBB8_254
 # %bb.247:                              # %.lr.ph.preheader.i334
 	ld.bu	$a1, $s1, 776
 	andi	$a1, $a1, 1
@@ -7082,68 +7043,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_253
 .LBB8_254:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit340
-	ld.w	$a3, $s1, 816
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_262
+	ld.w	$a2, $s1, 816
+	blez	$a2, .LBB8_262
 # %bb.255:                              # %.lr.ph.preheader.i342
-	ld.bu	$a2, $s1, 800
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 808
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_257
+	ld.bu	$a1, $s1, 800
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 808
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_257
 # %bb.256:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_260
 .LBB8_257:                              # %vector.ph3614
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_258:                              # %vector.body3619
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -7152,56 +7112,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_258
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_258
 # %bb.259:                              # %middle.block3625
-	beq	$a2, $a3, .LBB8_262
+	beq	$a1, $a2, .LBB8_262
 .LBB8_260:                              # %.lr.ph.i344.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_261:                              # %.lr.ph.i344
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_261
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_261
 .LBB8_262:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit348
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_1187
 # %bb.263:                              # %.lr.ph.preheader.i350
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_265
+	bgeu	$a1, $a0, .LBB8_265
 # %bb.264:
 	move	$a0, $zero
 	b	.LBB8_268
 .LBB8_265:                              # %vector.ph3630
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -7259,14 +7219,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_266
 # %bb.267:                              # %middle.block3641
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_268:                              # %.lr.ph.i352.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_269:                              # %.lr.ph.i352
                                         # =>This Inner Loop Header: Depth=1
@@ -7277,11 +7237,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_269
+	bnez	$a1, .LBB8_269
 	b	.LBB8_1187
 .LBB8_270:
 	move	$s0, $a0
@@ -7307,52 +7267,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	pcaddu18i	$t8, %call36(_ZNSo5flushEv)
 	jr	$t8
 .LBB8_272:                              # %vector.ph1849
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_273:                              # %vector.body1854
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -7361,39 +7321,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_273
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_273
 # %bb.274:                              # %middle.block1860
-	beq	$a2, $a3, .LBB8_277
+	beq	$a1, $a2, .LBB8_277
 .LBB8_275:                              # %.lr.ph.i1118.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_276:                              # %.lr.ph.i1118
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_276
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_276
 .LBB8_277:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1122
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_285
+	blez	$a2, .LBB8_285
 # %bb.278:                              # %.lr.ph.preheader.i1124
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -7492,68 +7452,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_284
 .LBB8_285:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1130
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_293
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_293
 # %bb.286:                              # %.lr.ph.preheader.i1132
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_288
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_288
 # %bb.287:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_291
 .LBB8_288:                              # %vector.ph1881
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_289:                              # %vector.body1886
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -7562,56 +7521,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_289
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_289
 # %bb.290:                              # %middle.block1892
-	beq	$a2, $a3, .LBB8_293
+	beq	$a1, $a2, .LBB8_293
 .LBB8_291:                              # %.lr.ph.i1134.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_292:                              # %.lr.ph.i1134
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_292
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_292
 .LBB8_293:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1138
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_1187
 # %bb.294:                              # %.lr.ph.preheader.i1140
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_296
+	bgeu	$a1, $a0, .LBB8_296
 # %bb.295:
 	move	$a0, $zero
 	b	.LBB8_299
 .LBB8_296:                              # %vector.ph1897
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -7669,14 +7628,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_297
 # %bb.298:                              # %middle.block1908
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_299:                              # %.lr.ph.i1142.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_300:                              # %.lr.ph.i1142
                                         # =>This Inner Loop Header: Depth=1
@@ -7687,59 +7646,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_300
+	bnez	$a1, .LBB8_300
 	b	.LBB8_1187
 .LBB8_301:                              # %vector.ph2713
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_302:                              # %vector.body2718
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -7748,56 +7707,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_302
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_302
 # %bb.303:                              # %middle.block2724
-	beq	$a2, $a3, .LBB8_306
+	beq	$a1, $a2, .LBB8_306
 .LBB8_304:                              # %.lr.ph.i692.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_305:                              # %.lr.ph.i692
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_305
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_305
 .LBB8_306:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit696
-	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 504
+	blez	$a1, .LBB8_1187
 # %bb.307:                              # %.lr.ph.preheader.i698
-	ld.bu	$a1, $s1, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.bu	$a2, $s1, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_309
+	bgeu	$a1, $a0, .LBB8_309
 # %bb.308:
 	move	$a0, $zero
 	b	.LBB8_312
 .LBB8_309:                              # %vector.ph2729
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -7855,14 +7814,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_310
 # %bb.311:                              # %middle.block2740
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_312:                              # %.lr.ph.i700.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_313:                              # %.lr.ph.i700
                                         # =>This Inner Loop Header: Depth=1
@@ -7873,59 +7832,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_313
+	bnez	$a1, .LBB8_313
 	b	.LBB8_1187
 .LBB8_314:                              # %vector.ph2777
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_315:                              # %vector.body2782
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -7934,56 +7893,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_315
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_315
 # %bb.316:                              # %middle.block2788
-	beq	$a2, $a3, .LBB8_319
+	beq	$a1, $a2, .LBB8_319
 .LBB8_317:                              # %.lr.ph.i660.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_318:                              # %.lr.ph.i660
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_318
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_318
 .LBB8_319:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit664
-	ld.w	$a2, $s1, 888
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 888
+	blez	$a1, .LBB8_1187
 # %bb.320:                              # %.lr.ph.preheader.i666
-	ld.bu	$a1, $s1, 872
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 880
+	ld.bu	$a2, $s1, 872
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 880
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_322
+	bgeu	$a1, $a0, .LBB8_322
 # %bb.321:
 	move	$a0, $zero
 	b	.LBB8_325
 .LBB8_322:                              # %vector.ph2793
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -8041,14 +8000,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_323
 # %bb.324:                              # %middle.block2804
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_325:                              # %.lr.ph.i668.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_326:                              # %.lr.ph.i668
                                         # =>This Inner Loop Header: Depth=1
@@ -8059,59 +8018,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_326
+	bnez	$a1, .LBB8_326
 	b	.LBB8_1187
 .LBB8_327:                              # %vector.ph2889
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_328:                              # %vector.body2894
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -8120,39 +8079,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_328
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_328
 # %bb.329:                              # %middle.block2900
-	beq	$a2, $a3, .LBB8_332
+	beq	$a1, $a2, .LBB8_332
 .LBB8_330:                              # %.lr.ph.i579.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_331:                              # %.lr.ph.i579
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_331
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_331
 .LBB8_332:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit583
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_340
+	blez	$a2, .LBB8_340
 # %bb.333:                              # %.lr.ph.preheader.i585
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -8251,68 +8210,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_339
 .LBB8_340:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit591
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_348
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_348
 # %bb.341:                              # %.lr.ph.preheader.i593
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_343
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_343
 # %bb.342:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_346
 .LBB8_343:                              # %vector.ph2921
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_344:                              # %vector.body2926
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -8321,39 +8279,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_344
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_344
 # %bb.345:                              # %middle.block2932
-	beq	$a2, $a3, .LBB8_348
+	beq	$a1, $a2, .LBB8_348
 .LBB8_346:                              # %.lr.ph.i595.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_347:                              # %.lr.ph.i595
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_347
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_347
 .LBB8_348:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit599
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_356
+	blez	$a2, .LBB8_356
 # %bb.349:                              # %.lr.ph.preheader.i601
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -8453,8 +8411,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_355
 .LBB8_356:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit607
 	ld.w	$a1, $s1, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.357:                              # %.lr.ph.preheader.i609
 	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
@@ -8640,52 +8597,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_368
 	b	.LBB8_1187
 .LBB8_369:                              # %vector.ph3742
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_370:                              # %vector.body3747
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -8694,39 +8651,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_370
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_370
 # %bb.371:                              # %middle.block3753
-	beq	$a2, $a3, .LBB8_374
+	beq	$a1, $a2, .LBB8_374
 .LBB8_372:                              # %.lr.ph.i.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_373:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_373
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_373
 .LBB8_374:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_382
+	blez	$a2, .LBB8_382
 # %bb.375:                              # %.lr.ph.preheader.i166
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -8826,8 +8783,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_381
 .LBB8_382:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit172
 	ld.w	$a1, $s1, 528
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.383:                              # %.lr.ph.preheader.i174
 	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
@@ -8927,52 +8883,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_389
 	b	.LBB8_1187
 .LBB8_390:                              # %vector.ph3049
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_391:                              # %vector.body3054
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -8981,39 +8937,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_391
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_391
 # %bb.392:                              # %middle.block3060
-	beq	$a2, $a3, .LBB8_395
+	beq	$a1, $a2, .LBB8_395
 .LBB8_393:                              # %.lr.ph.i499.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_394:                              # %.lr.ph.i499
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_394
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_394
 .LBB8_395:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit503
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_403
+	blez	$a2, .LBB8_403
 # %bb.396:                              # %.lr.ph.preheader.i505
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -9112,68 +9068,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_402
 .LBB8_403:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit511
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_411
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_411
 # %bb.404:                              # %.lr.ph.preheader.i513
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_406
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_406
 # %bb.405:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_409
 .LBB8_406:                              # %vector.ph3081
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_407:                              # %vector.body3086
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -9182,39 +9137,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_407
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_407
 # %bb.408:                              # %middle.block3092
-	beq	$a2, $a3, .LBB8_411
+	beq	$a1, $a2, .LBB8_411
 .LBB8_409:                              # %.lr.ph.i515.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_410:                              # %.lr.ph.i515
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_410
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_410
 .LBB8_411:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit519
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_419
+	blez	$a2, .LBB8_419
 # %bb.412:                              # %.lr.ph.preheader.i521
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -9314,8 +9269,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_418
 .LBB8_419:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit527
 	ld.w	$a1, $s1, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.420:                              # %.lr.ph.preheader.i529
 	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
@@ -9415,52 +9369,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_426
 	b	.LBB8_1187
 .LBB8_427:                              # %vector.ph2089
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_428:                              # %vector.body2094
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -9469,39 +9423,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_428
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_428
 # %bb.429:                              # %middle.block2100
-	beq	$a2, $a3, .LBB8_432
+	beq	$a1, $a2, .LBB8_432
 .LBB8_430:                              # %.lr.ph.i944.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_431:                              # %.lr.ph.i944
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_431
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_431
 .LBB8_432:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit948
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_440
+	blez	$a2, .LBB8_440
 # %bb.433:                              # %.lr.ph.preheader.i950
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -9600,68 +9554,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_439
 .LBB8_440:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit956
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_448
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_448
 # %bb.441:                              # %.lr.ph.preheader.i958
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_443
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_443
 # %bb.442:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_446
 .LBB8_443:                              # %vector.ph2121
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_444:                              # %vector.body2126
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -9670,39 +9623,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_444
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_444
 # %bb.445:                              # %middle.block2132
-	beq	$a2, $a3, .LBB8_448
+	beq	$a1, $a2, .LBB8_448
 .LBB8_446:                              # %.lr.ph.i960.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_447:                              # %.lr.ph.i960
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_447
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_447
 .LBB8_448:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit964
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_456
+	blez	$a2, .LBB8_456
 # %bb.449:                              # %.lr.ph.preheader.i966
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -9801,68 +9754,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_455
 .LBB8_456:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit972
-	ld.w	$a3, $s1, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_464
+	ld.w	$a2, $s1, 576
+	blez	$a2, .LBB8_464
 # %bb.457:                              # %.lr.ph.preheader.i974
-	ld.bu	$a2, $s1, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_459
+	ld.bu	$a1, $s1, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_459
 # %bb.458:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_462
 .LBB8_459:                              # %vector.ph2153
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_460:                              # %vector.body2158
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -9871,39 +9823,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_460
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_460
 # %bb.461:                              # %middle.block2164
-	beq	$a2, $a3, .LBB8_464
+	beq	$a1, $a2, .LBB8_464
 .LBB8_462:                              # %.lr.ph.i976.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_463:                              # %.lr.ph.i976
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_463
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_463
 .LBB8_464:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit980
 	ld.w	$a2, $s1, 600
-	blt	$a2, $a1, .LBB8_472
+	blez	$a2, .LBB8_472
 # %bb.465:                              # %.lr.ph.preheader.i982
 	ld.bu	$a1, $s1, 584
 	andi	$a1, $a1, 1
@@ -10002,68 +9954,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_471
 .LBB8_472:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit988
-	ld.w	$a3, $s1, 624
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_480
+	ld.w	$a2, $s1, 624
+	blez	$a2, .LBB8_480
 # %bb.473:                              # %.lr.ph.preheader.i990
-	ld.bu	$a2, $s1, 608
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 616
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_475
+	ld.bu	$a1, $s1, 608
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 616
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_475
 # %bb.474:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_478
 .LBB8_475:                              # %vector.ph2185
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_476:                              # %vector.body2190
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -10072,39 +10023,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_476
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_476
 # %bb.477:                              # %middle.block2196
-	beq	$a2, $a3, .LBB8_480
+	beq	$a1, $a2, .LBB8_480
 .LBB8_478:                              # %.lr.ph.i992.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_479:                              # %.lr.ph.i992
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_479
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_479
 .LBB8_480:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit996
 	ld.w	$a2, $s1, 648
-	blt	$a2, $a1, .LBB8_488
+	blez	$a2, .LBB8_488
 # %bb.481:                              # %.lr.ph.preheader.i998
 	ld.bu	$a1, $s1, 632
 	andi	$a1, $a1, 1
@@ -10203,68 +10154,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_487
 .LBB8_488:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1004
-	ld.w	$a3, $s1, 672
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_496
+	ld.w	$a2, $s1, 672
+	blez	$a2, .LBB8_496
 # %bb.489:                              # %.lr.ph.preheader.i1006
-	ld.bu	$a2, $s1, 656
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 664
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_491
+	ld.bu	$a1, $s1, 656
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 664
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_491
 # %bb.490:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_494
 .LBB8_491:                              # %vector.ph2217
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_492:                              # %vector.body2222
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -10273,56 +10223,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_492
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_492
 # %bb.493:                              # %middle.block2228
-	beq	$a2, $a3, .LBB8_496
+	beq	$a1, $a2, .LBB8_496
 .LBB8_494:                              # %.lr.ph.i1008.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_495:                              # %.lr.ph.i1008
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_495
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_495
 .LBB8_496:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1012
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_504
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_504
 # %bb.497:                              # %.lr.ph.preheader.i1014
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_499
+	bgeu	$a1, $a0, .LBB8_499
 # %bb.498:
 	move	$a0, $zero
 	b	.LBB8_502
 .LBB8_499:                              # %vector.ph2233
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -10380,14 +10330,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_500
 # %bb.501:                              # %middle.block2244
-	beq	$a0, $a2, .LBB8_504
+	beq	$a0, $a1, .LBB8_504
 .LBB8_502:                              # %.lr.ph.i1016.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_503:                              # %.lr.ph.i1016
                                         # =>This Inner Loop Header: Depth=1
@@ -10398,15 +10348,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_503
+	bnez	$a1, .LBB8_503
 .LBB8_504:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1020
 	ld.w	$a1, $s1, 960
-	ori	$fp, $zero, 1
-	blt	$a1, $fp, .LBB8_506
+	blez	$a1, .LBB8_506
 # %bb.505:                              # %.lr.ph.preheader.i1021
 	ld.d	$a0, $s1, 952
 	slli.d	$a2, $a1, 2
@@ -10415,7 +10364,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	jirl	$ra, $ra, 0
 .LBB8_506:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1022
 	ld.w	$a1, $s1, 984
-	blt	$a1, $fp, .LBB8_508
+	blez	$a1, .LBB8_508
 # %bb.507:                              # %.lr.ph.preheader.i1023
 	ld.d	$a0, $s1, 976
 	slli.d	$a2, $a1, 2
@@ -10424,8 +10373,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	jirl	$ra, $ra, 0
 .LBB8_508:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1024
 	ld.w	$a1, $s1, 1008
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.509:                              # %.lr.ph.preheader.i1025
 	ld.d	$a0, $s1, 1000
 	slli.d	$a2, $a1, 2
@@ -10438,52 +10386,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB8_510:                              # %vector.ph2249
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a1, $a1, 2
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a3, 16
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	lu12i.w	$a5, -419431
-	ori	$a5, $a5, 2458
-	lu32i.d	$a5, 104857
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr3, $a5
-	lu12i.w	$a5, -307024
-	ori	$a5, $a5, 3880
-	lu32i.d	$a5, 129446
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr4, $a5
-	move	$a5, $a1
+	addi.d	$a3, $a2, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr2, $a4
+	lu12i.w	$a4, -419431
+	ori	$a4, $a4, 2458
+	lu32i.d	$a4, 104857
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr3, $a4
+	lu12i.w	$a4, -307024
+	ori	$a4, $a4, 3880
+	lu32i.d	$a4, 129446
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr4, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB8_511:                              # %vector.body2254
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa7, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa7, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a6, 0
-	movfr2gr.d	$a6, $fa6
-	vinsgr2vr.d	$vr7, $a6, 1
-	vpickve2gr.w	$a6, $vr5, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vinsgr2vr.d	$vr7, $a5, 0
+	movfr2gr.d	$a5, $fa6
+	vinsgr2vr.d	$vr7, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr5, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa5, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr5, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a6, 0
-	movfr2gr.d	$a6, $fa5
-	vinsgr2vr.d	$vr6, $a6, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	movfr2gr.d	$a5, $fa5
+	vinsgr2vr.d	$vr6, $a5, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -10492,39 +10440,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a4, -16
-	vst	$vr6, $a4, 0
+	vst	$vr5, $a3, -16
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB8_511
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB8_511
 # %bb.512:                              # %middle.block2260
-	beq	$a1, $a2, .LBB8_515
+	beq	$a0, $a1, .LBB8_515
 .LBB8_513:                              # %.lr.ph.i892.preheader
-	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a1
-	alsl.d	$a3, $a1, $a3, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_514:                              # %.lr.ph.i892
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a4, $a1, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	addi.w	$a1, $a1, 1
-	bnez	$a2, .LBB8_514
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	addi.w	$a0, $a0, 1
+	bnez	$a1, .LBB8_514
 .LBB8_515:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit896
 	ld.w	$a1, $s1, 1176
-	blt	$a1, $a0, .LBB8_523
+	blez	$a1, .LBB8_523
 # %bb.516:                              # %.lr.ph.preheader.i898
 	ld.bu	$a0, $s1, 1160
 	andi	$a0, $a0, 1
@@ -10623,68 +10571,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB8_522
 .LBB8_523:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit904
-	ld.w	$a2, $s1, 1200
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB8_531
+	ld.w	$a1, $s1, 1200
+	blez	$a1, .LBB8_531
 # %bb.524:                              # %.lr.ph.preheader.i906
-	ld.bu	$a1, $s1, 1184
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $fp, $a1
-	ld.d	$a3, $s1, 1192
-	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB8_526
+	ld.bu	$a0, $s1, 1184
+	andi	$a0, $a0, 1
+	sltui	$a0, $a0, 1
+	slli.d	$a0, $a0, 3
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s1, 1192
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB8_526
 # %bb.525:
-	move	$a1, $zero
+	move	$a0, $zero
 	b	.LBB8_529
 .LBB8_526:                              # %vector.ph2281
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a1, $a1, 2
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a3, 16
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	lu12i.w	$a5, -419431
-	ori	$a5, $a5, 2458
-	lu32i.d	$a5, 104857
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr3, $a5
-	lu12i.w	$a5, -307024
-	ori	$a5, $a5, 3880
-	lu32i.d	$a5, 129446
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr4, $a5
-	move	$a5, $a1
+	addi.d	$a3, $a2, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr2, $a4
+	lu12i.w	$a4, -419431
+	ori	$a4, $a4, 2458
+	lu32i.d	$a4, 104857
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr3, $a4
+	lu12i.w	$a4, -307024
+	ori	$a4, $a4, 3880
+	lu32i.d	$a4, 129446
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr4, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB8_527:                              # %vector.body2286
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa7, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa7, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a6, 0
-	movfr2gr.d	$a6, $fa6
-	vinsgr2vr.d	$vr7, $a6, 1
-	vpickve2gr.w	$a6, $vr5, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vinsgr2vr.d	$vr7, $a5, 0
+	movfr2gr.d	$a5, $fa6
+	vinsgr2vr.d	$vr7, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr5, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa5, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr5, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a6, 0
-	movfr2gr.d	$a6, $fa5
-	vinsgr2vr.d	$vr6, $a6, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	movfr2gr.d	$a5, $fa5
+	vinsgr2vr.d	$vr6, $a5, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -10693,39 +10640,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a4, -16
-	vst	$vr6, $a4, 0
+	vst	$vr5, $a3, -16
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB8_527
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB8_527
 # %bb.528:                              # %middle.block2292
-	beq	$a1, $a2, .LBB8_531
+	beq	$a0, $a1, .LBB8_531
 .LBB8_529:                              # %.lr.ph.i908.preheader
-	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a1
-	alsl.d	$a3, $a1, $a3, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_530:                              # %.lr.ph.i908
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a4, $a1, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	addi.w	$a1, $a1, 1
-	bnez	$a2, .LBB8_530
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	addi.w	$a0, $a0, 1
+	bnez	$a1, .LBB8_530
 .LBB8_531:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit912
 	ld.w	$a1, $s1, 480
-	blt	$a1, $a0, .LBB8_539
+	blez	$a1, .LBB8_539
 # %bb.532:                              # %.lr.ph.preheader.i914
 	ld.bu	$a0, $s1, 464
 	andi	$a0, $a0, 1
@@ -10824,68 +10771,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB8_538
 .LBB8_539:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit920
-	ld.w	$a2, $s1, 504
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB8_547
+	ld.w	$a1, $s1, 504
+	blez	$a1, .LBB8_547
 # %bb.540:                              # %.lr.ph.preheader.i922
-	ld.bu	$a1, $s1, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $fp, $a1
-	ld.d	$a3, $s1, 496
-	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB8_542
+	ld.bu	$a0, $s1, 488
+	andi	$a0, $a0, 1
+	sltui	$a0, $a0, 1
+	slli.d	$a0, $a0, 3
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s1, 496
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB8_542
 # %bb.541:
-	move	$a1, $zero
+	move	$a0, $zero
 	b	.LBB8_545
 .LBB8_542:                              # %vector.ph2313
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a1, $a1, 2
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a3, 16
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	lu12i.w	$a5, -419431
-	ori	$a5, $a5, 2458
-	lu32i.d	$a5, 104857
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr3, $a5
-	lu12i.w	$a5, -307024
-	ori	$a5, $a5, 3880
-	lu32i.d	$a5, 129446
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr4, $a5
-	move	$a5, $a1
+	addi.d	$a3, $a2, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr2, $a4
+	lu12i.w	$a4, -419431
+	ori	$a4, $a4, 2458
+	lu32i.d	$a4, 104857
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr3, $a4
+	lu12i.w	$a4, -307024
+	ori	$a4, $a4, 3880
+	lu32i.d	$a4, 129446
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr4, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB8_543:                              # %vector.body2318
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa7, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa7, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a6, 0
-	movfr2gr.d	$a6, $fa6
-	vinsgr2vr.d	$vr7, $a6, 1
-	vpickve2gr.w	$a6, $vr5, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vinsgr2vr.d	$vr7, $a5, 0
+	movfr2gr.d	$a5, $fa6
+	vinsgr2vr.d	$vr7, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr5, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa5, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr5, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a6, 0
-	movfr2gr.d	$a6, $fa5
-	vinsgr2vr.d	$vr6, $a6, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	movfr2gr.d	$a5, $fa5
+	vinsgr2vr.d	$vr6, $a5, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -10894,39 +10840,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a4, -16
-	vst	$vr6, $a4, 0
+	vst	$vr5, $a3, -16
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB8_543
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB8_543
 # %bb.544:                              # %middle.block2324
-	beq	$a1, $a2, .LBB8_547
+	beq	$a0, $a1, .LBB8_547
 .LBB8_545:                              # %.lr.ph.i924.preheader
-	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a1
-	alsl.d	$a3, $a1, $a3, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_546:                              # %.lr.ph.i924
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a4, $a1, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	addi.w	$a1, $a1, 1
-	bnez	$a2, .LBB8_546
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	addi.w	$a0, $a0, 1
+	bnez	$a1, .LBB8_546
 .LBB8_547:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit928
 	ld.w	$a1, $s1, 912
-	blt	$a1, $a0, .LBB8_549
+	blez	$a1, .LBB8_549
 # %bb.548:                              # %.lr.ph.preheader.i929
 	ld.d	$a0, $s1, 904
 	slli.d	$a2, $a1, 2
@@ -10935,8 +10881,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	jirl	$ra, $ra, 0
 .LBB8_549:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit930
 	ld.w	$a1, $s1, 936
-	ori	$s0, $zero, 1
-	blt	$a1, $s0, .LBB8_551
+	blez	$a1, .LBB8_551
 # %bb.550:                              # %.lr.ph.preheader.i931
 	ld.d	$a0, $s1, 928
 	slli.d	$a2, $a1, 2
@@ -10945,7 +10890,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	jirl	$ra, $ra, 0
 .LBB8_551:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit932
 	ld.w	$a1, $s1, 1512
-	blt	$a1, $s0, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.552:                              # %.lr.ph.preheader.i934
 	ld.bu	$a0, $s1, 1496
 	andi	$a0, $a0, 1
@@ -11045,52 +10990,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_558
 	b	.LBB8_1187
 .LBB8_559:                              # %vector.ph2745
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_560:                              # %vector.body2750
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -11099,56 +11044,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_560
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_560
 # %bb.561:                              # %middle.block2756
-	beq	$a2, $a3, .LBB8_564
+	beq	$a1, $a2, .LBB8_564
 .LBB8_562:                              # %.lr.ph.i676.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_563:                              # %.lr.ph.i676
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_563
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_563
 .LBB8_564:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit680
-	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 504
+	blez	$a1, .LBB8_1187
 # %bb.565:                              # %.lr.ph.preheader.i682
-	ld.bu	$a1, $s1, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.bu	$a2, $s1, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_567
+	bgeu	$a1, $a0, .LBB8_567
 # %bb.566:
 	move	$a0, $zero
 	b	.LBB8_570
 .LBB8_567:                              # %vector.ph2761
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -11206,14 +11151,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_568
 # %bb.569:                              # %middle.block2772
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_570:                              # %.lr.ph.i684.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_571:                              # %.lr.ph.i684
                                         # =>This Inner Loop Header: Depth=1
@@ -11224,47 +11169,47 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_571
+	bnez	$a1, .LBB8_571
 	b	.LBB8_1187
 .LBB8_572:                              # %vector.ph3161
-	bstrpick.d	$a3, $a4, 30, 1
-	slli.d	$a3, $a3, 1
+	bstrpick.d	$a2, $a3, 30, 1
+	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
 	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
-	move	$a7, $a3
+	addi.d	$a5, $a4, 16
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr4, $a6
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB8_573:                              # %vector.body3168
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa7, $t0
+	vpickve2gr.w	$a7, $vr4, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$ft0, $t0
-	movfr2gr.d	$t0, $fa7
+	vpickve2gr.w	$a7, $vr4, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$ft0, $a7
+	movfr2gr.d	$a7, $fa7
 	ffint.d.l	$fa7, $ft0
-	vinsgr2vr.d	$vr8, $t0, 0
-	movfr2gr.d	$t0, $fa7
-	vinsgr2vr.d	$vr8, $t0, 1
+	vinsgr2vr.d	$vr8, $a7, 0
+	movfr2gr.d	$a7, $fa7
+	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
 	vfmul.d	$vr7, $vr3, $vr7
@@ -11272,28 +11217,28 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
+	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vst	$vr7, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
-	addi.d	$a7, $a7, -2
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB8_573
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB8_573
 # %bb.574:                              # %middle.block3173
-	beq	$a3, $a4, .LBB8_577
+	beq	$a2, $a3, .LBB8_577
 .LBB8_575:                              # %.lr.ph.i432.preheader
-	pcalau12i	$a6, %pc_hi20(.LCPI8_1)
-	fld.d	$fa2, $a6, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a6, %pc_hi20(.LCPI8_2)
-	fld.d	$fa3, $a6, %pc_lo12(.LCPI8_2)
-	sub.d	$a4, $a4, $a3
-	alsl.d	$a5, $a3, $a5, 4
-	addi.d	$a5, $a5, 8
+	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
+	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
+	fld.d	$fa3, $a5, %pc_lo12(.LCPI8_2)
+	sub.d	$a3, $a3, $a2
+	alsl.d	$a4, $a2, $a4, 4
+	addi.d	$a4, $a4, 8
 	.p2align	4, , 16
 .LBB8_576:                              # %.lr.ph.i432
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a6, $a3, 31, 0
-	movgr2fr.d	$fa4, $a6
+	bstrpick.d	$a5, $a2, 31, 0
+	movgr2fr.d	$fa4, $a5
 	ffint.d.l	$fa4, $fa4
 	fadd.d	$fa5, $fa4, $fa2
 	fmul.d	$fa6, $fa0, $fa5
@@ -11301,15 +11246,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fadd.d	$fa4, $fa4, $fa3
 	fdiv.d	$fa6, $fa6, $fa4
 	fdiv.d	$fa4, $fa5, $fa4
-	fst.d	$fa6, $a5, -8
-	fst.d	$fa4, $a5, 0
-	addi.d	$a4, $a4, -1
-	addi.d	$a5, $a5, 16
-	addi.w	$a3, $a3, 1
-	bnez	$a4, .LBB8_576
+	fst.d	$fa6, $a4, -8
+	fst.d	$fa4, $a4, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
+	addi.w	$a2, $a2, 1
+	bnez	$a3, .LBB8_576
 .LBB8_577:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit
 	ld.w	$a3, $s1, 1056
-	blt	$a3, $a2, .LBB8_585
+	blez	$a3, .LBB8_585
 # %bb.578:                              # %.lr.ph.preheader.i439
 	ld.bu	$a2, $s1, 1040
 	andi	$a2, $a2, 1
@@ -11401,56 +11346,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_584
 .LBB8_585:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit446
-	ld.w	$a4, $s1, 1080
-	ori	$a2, $zero, 1
-	blt	$a4, $a2, .LBB8_593
+	ld.w	$a3, $s1, 1080
+	blez	$a3, .LBB8_593
 # %bb.586:                              # %.lr.ph.preheader.i450
-	ld.bu	$a3, $s1, 1064
-	andi	$a3, $a3, 1
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 3
-	fldx.d	$fa0, $a0, $a3
-	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s1, 1072
-	bne	$a4, $a2, .LBB8_588
+	ld.bu	$a2, $s1, 1064
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	fldx.d	$fa1, $a1, $a2
+	ld.d	$a4, $s1, 1072
+	ori	$a2, $zero, 1
+	bne	$a3, $a2, .LBB8_588
 # %bb.587:
-	move	$a3, $zero
+	move	$a2, $zero
 	b	.LBB8_591
 .LBB8_588:                              # %vector.ph3195
-	bstrpick.d	$a3, $a4, 30, 1
-	slli.d	$a3, $a3, 1
+	bstrpick.d	$a2, $a3, 30, 1
+	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
 	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
-	move	$a7, $a3
+	addi.d	$a5, $a4, 16
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr4, $a6
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB8_589:                              # %vector.body3202
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa7, $t0
+	vpickve2gr.w	$a7, $vr4, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$ft0, $t0
-	movfr2gr.d	$t0, $fa7
+	vpickve2gr.w	$a7, $vr4, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$ft0, $a7
+	movfr2gr.d	$a7, $fa7
 	ffint.d.l	$fa7, $ft0
-	vinsgr2vr.d	$vr8, $t0, 0
-	movfr2gr.d	$t0, $fa7
-	vinsgr2vr.d	$vr8, $t0, 1
+	vinsgr2vr.d	$vr8, $a7, 0
+	movfr2gr.d	$a7, $fa7
+	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
 	vfmul.d	$vr7, $vr3, $vr7
@@ -11458,28 +11403,28 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
+	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vst	$vr7, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
-	addi.d	$a7, $a7, -2
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB8_589
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB8_589
 # %bb.590:                              # %middle.block3207
-	beq	$a3, $a4, .LBB8_593
+	beq	$a2, $a3, .LBB8_593
 .LBB8_591:                              # %.lr.ph.i452.preheader
-	pcalau12i	$a6, %pc_hi20(.LCPI8_1)
-	fld.d	$fa2, $a6, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a6, %pc_hi20(.LCPI8_2)
-	fld.d	$fa3, $a6, %pc_lo12(.LCPI8_2)
-	sub.d	$a4, $a4, $a3
-	alsl.d	$a5, $a3, $a5, 4
-	addi.d	$a5, $a5, 8
+	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
+	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
+	fld.d	$fa3, $a5, %pc_lo12(.LCPI8_2)
+	sub.d	$a3, $a3, $a2
+	alsl.d	$a4, $a2, $a4, 4
+	addi.d	$a4, $a4, 8
 	.p2align	4, , 16
 .LBB8_592:                              # %.lr.ph.i452
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a6, $a3, 31, 0
-	movgr2fr.d	$fa4, $a6
+	bstrpick.d	$a5, $a2, 31, 0
+	movgr2fr.d	$fa4, $a5
 	ffint.d.l	$fa4, $fa4
 	fadd.d	$fa5, $fa4, $fa2
 	fmul.d	$fa6, $fa0, $fa5
@@ -11487,15 +11432,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fadd.d	$fa4, $fa4, $fa3
 	fdiv.d	$fa6, $fa6, $fa4
 	fdiv.d	$fa4, $fa5, $fa4
-	fst.d	$fa6, $a5, -8
-	fst.d	$fa4, $a5, 0
-	addi.d	$a4, $a4, -1
-	addi.d	$a5, $a5, 16
-	addi.w	$a3, $a3, 1
-	bnez	$a4, .LBB8_592
+	fst.d	$fa6, $a4, -8
+	fst.d	$fa4, $a4, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
+	addi.w	$a2, $a2, 1
+	bnez	$a3, .LBB8_592
 .LBB8_593:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit457
 	ld.w	$a3, $s1, 1104
-	blt	$a3, $a2, .LBB8_601
+	blez	$a3, .LBB8_601
 # %bb.594:                              # %.lr.ph.preheader.i461
 	ld.bu	$a2, $s1, 1088
 	andi	$a2, $a2, 1
@@ -11588,17 +11533,17 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a3, .LBB8_600
 .LBB8_601:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit468
 	ld.w	$a2, $s1, 1128
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB8_1187
+	blez	$a2, .LBB8_1187
 # %bb.602:                              # %.lr.ph.preheader.i472
-	ld.bu	$a4, $s1, 1112
-	andi	$a4, $a4, 1
-	sltui	$a4, $a4, 1
-	slli.d	$a4, $a4, 3
-	fldx.d	$fa0, $a0, $a4
-	fldx.d	$fa1, $a1, $a4
+	ld.bu	$a3, $s1, 1112
+	andi	$a3, $a3, 1
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 3
+	fldx.d	$fa0, $a0, $a3
+	fldx.d	$fa1, $a1, $a3
 	ld.d	$a1, $s1, 1120
-	bne	$a2, $a3, .LBB8_604
+	ori	$a0, $zero, 1
+	bne	$a2, $a0, .LBB8_604
 # %bb.603:
 	move	$a0, $zero
 	b	.LBB8_607
@@ -11681,52 +11626,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_608
 	b	.LBB8_1187
 .LBB8_609:                              # %vector.ph1465
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_610:                              # %vector.body1470
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -11735,39 +11680,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_610
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_610
 # %bb.611:                              # %middle.block1476
-	beq	$a2, $a3, .LBB8_614
+	beq	$a1, $a2, .LBB8_614
 .LBB8_612:                              # %.lr.ph.i1294.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_613:                              # %.lr.ph.i1294
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_613
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_613
 .LBB8_614:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1298
 	ld.w	$a2, $s1, 1272
-	blt	$a2, $a1, .LBB8_622
+	blez	$a2, .LBB8_622
 # %bb.615:                              # %.lr.ph.preheader.i1300
 	ld.bu	$a1, $s1, 1256
 	andi	$a1, $a1, 1
@@ -11866,68 +11811,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_621
 .LBB8_622:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1306
-	ld.w	$a3, $s1, 1296
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_630
+	ld.w	$a2, $s1, 1296
+	blez	$a2, .LBB8_630
 # %bb.623:                              # %.lr.ph.preheader.i1308
-	ld.bu	$a2, $s1, 1280
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1288
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_625
+	ld.bu	$a1, $s1, 1280
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1288
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_625
 # %bb.624:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_628
 .LBB8_625:                              # %vector.ph1497
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_626:                              # %vector.body1502
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -11936,39 +11880,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_626
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_626
 # %bb.627:                              # %middle.block1508
-	beq	$a2, $a3, .LBB8_630
+	beq	$a1, $a2, .LBB8_630
 .LBB8_628:                              # %.lr.ph.i1310.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_629:                              # %.lr.ph.i1310
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_629
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_629
 .LBB8_630:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1314
 	ld.w	$a2, $s1, 1320
-	blt	$a2, $a1, .LBB8_638
+	blez	$a2, .LBB8_638
 # %bb.631:                              # %.lr.ph.preheader.i1316
 	ld.bu	$a1, $s1, 1304
 	andi	$a1, $a1, 1
@@ -12067,68 +12011,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_637
 .LBB8_638:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1322
-	ld.w	$a3, $s1, 1344
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_646
+	ld.w	$a2, $s1, 1344
+	blez	$a2, .LBB8_646
 # %bb.639:                              # %.lr.ph.preheader.i1324
-	ld.bu	$a2, $s1, 1328
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1336
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_641
+	ld.bu	$a1, $s1, 1328
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1336
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_641
 # %bb.640:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_644
 .LBB8_641:                              # %vector.ph1529
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_642:                              # %vector.body1534
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -12137,56 +12080,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_642
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_642
 # %bb.643:                              # %middle.block1540
-	beq	$a2, $a3, .LBB8_646
+	beq	$a1, $a2, .LBB8_646
 .LBB8_644:                              # %.lr.ph.i1326.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_645:                              # %.lr.ph.i1326
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_645
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_645
 .LBB8_646:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1330
-	ld.w	$a2, $s1, 1368
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1368
+	blez	$a1, .LBB8_1187
 # %bb.647:                              # %.lr.ph.preheader.i1332
-	ld.bu	$a1, $s1, 1352
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1360
+	ld.bu	$a2, $s1, 1352
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1360
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_649
+	bgeu	$a1, $a0, .LBB8_649
 # %bb.648:
 	move	$a0, $zero
 	b	.LBB8_652
 .LBB8_649:                              # %vector.ph1545
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -12244,14 +12187,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_650
 # %bb.651:                              # %middle.block1556
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_652:                              # %.lr.ph.i1334.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_653:                              # %.lr.ph.i1334
                                         # =>This Inner Loop Header: Depth=1
@@ -12262,59 +12205,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_653
+	bnez	$a1, .LBB8_653
 	b	.LBB8_1187
 .LBB8_654:                              # %vector.ph2665
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_655:                              # %vector.body2670
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -12323,39 +12266,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_655
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_655
 # %bb.656:                              # %middle.block2676
-	beq	$a2, $a3, .LBB8_659
+	beq	$a1, $a2, .LBB8_659
 .LBB8_657:                              # %.lr.ph.i708.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_658:                              # %.lr.ph.i708
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_658
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_658
 .LBB8_659:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit712
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_667
+	blez	$a2, .LBB8_667
 # %bb.660:                              # %.lr.ph.preheader.i714
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -12455,8 +12398,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_666
 .LBB8_667:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit720
 	ld.w	$a1, $s1, 528
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.668:                              # %.lr.ph.preheader.i722
 	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
@@ -12556,52 +12498,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_674
 	b	.LBB8_1187
 .LBB8_675:                              # %vector.ph2441
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_676:                              # %vector.body2446
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -12610,56 +12552,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_676
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_676
 # %bb.677:                              # %middle.block2452
-	beq	$a2, $a3, .LBB8_680
+	beq	$a1, $a2, .LBB8_680
 .LBB8_678:                              # %.lr.ph.i828.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_679:                              # %.lr.ph.i828
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_679
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_679
 .LBB8_680:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit832
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_1187
 # %bb.681:                              # %.lr.ph.preheader.i834
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_683
+	bgeu	$a1, $a0, .LBB8_683
 # %bb.682:
 	move	$a0, $zero
 	b	.LBB8_686
 .LBB8_683:                              # %vector.ph2457
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -12717,14 +12659,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_684
 # %bb.685:                              # %middle.block2468
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_686:                              # %.lr.ph.i836.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_687:                              # %.lr.ph.i836
                                         # =>This Inner Loop Header: Depth=1
@@ -12735,59 +12677,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_687
+	bnez	$a1, .LBB8_687
 	b	.LBB8_1187
 .LBB8_688:                              # %vector.ph3326
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_689:                              # %vector.body3331
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -12796,39 +12738,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_689
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_689
 # %bb.690:                              # %middle.block3337
-	beq	$a2, $a3, .LBB8_693
+	beq	$a1, $a2, .LBB8_693
 .LBB8_691:                              # %.lr.ph.i360.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_692:                              # %.lr.ph.i360
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_692
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_692
 .LBB8_693:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit364
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_701
+	blez	$a2, .LBB8_701
 # %bb.694:                              # %.lr.ph.preheader.i366
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -12927,68 +12869,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_700
 .LBB8_701:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit372
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_709
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_709
 # %bb.702:                              # %.lr.ph.preheader.i374
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_704
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_704
 # %bb.703:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_707
 .LBB8_704:                              # %vector.ph3358
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_705:                              # %vector.body3363
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -12997,56 +12938,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_705
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_705
 # %bb.706:                              # %middle.block3369
-	beq	$a2, $a3, .LBB8_709
+	beq	$a1, $a2, .LBB8_709
 .LBB8_707:                              # %.lr.ph.i376.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_708:                              # %.lr.ph.i376
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_708
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_708
 .LBB8_709:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit380
-	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 552
+	blez	$a1, .LBB8_1187
 # %bb.710:                              # %.lr.ph.preheader.i382
-	ld.bu	$a1, $s1, 536
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 544
+	ld.bu	$a2, $s1, 536
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 544
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_712
+	bgeu	$a1, $a0, .LBB8_712
 # %bb.711:
 	move	$a0, $zero
 	b	.LBB8_715
 .LBB8_712:                              # %vector.ph3374
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -13104,14 +13045,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_713
 # %bb.714:                              # %middle.block3385
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_715:                              # %.lr.ph.i384.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_716:                              # %.lr.ph.i384
                                         # =>This Inner Loop Header: Depth=1
@@ -13122,59 +13063,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_716
+	bnez	$a1, .LBB8_716
 	b	.LBB8_1187
 .LBB8_717:                              # %vector.ph2409
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_718:                              # %vector.body2414
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -13183,56 +13124,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_718
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_718
 # %bb.719:                              # %middle.block2420
-	beq	$a2, $a3, .LBB8_722
+	beq	$a1, $a2, .LBB8_722
 .LBB8_720:                              # %.lr.ph.i844.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_721:                              # %.lr.ph.i844
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_721
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_721
 .LBB8_722:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit848
-	ld.w	$a2, $s1, 1176
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1176
+	blez	$a1, .LBB8_1187
 # %bb.723:                              # %.lr.ph.preheader.i850
-	ld.bu	$a1, $s1, 1160
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1168
+	ld.bu	$a2, $s1, 1160
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1168
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_725
+	bgeu	$a1, $a0, .LBB8_725
 # %bb.724:
 	move	$a0, $zero
 	b	.LBB8_728
 .LBB8_725:                              # %vector.ph2425
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -13290,14 +13231,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_726
 # %bb.727:                              # %middle.block2436
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_728:                              # %.lr.ph.i852.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_729:                              # %.lr.ph.i852
                                         # =>This Inner Loop Header: Depth=1
@@ -13308,59 +13249,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_729
+	bnez	$a1, .LBB8_729
 	b	.LBB8_1187
 .LBB8_730:                              # %vector.ph2809
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_731:                              # %vector.body2814
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -13369,39 +13310,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_731
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_731
 # %bb.732:                              # %middle.block2820
-	beq	$a2, $a3, .LBB8_735
+	beq	$a1, $a2, .LBB8_735
 .LBB8_733:                              # %.lr.ph.i628.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_734:                              # %.lr.ph.i628
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_734
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_734
 .LBB8_735:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit632
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_743
+	blez	$a2, .LBB8_743
 # %bb.736:                              # %.lr.ph.preheader.i634
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -13500,68 +13441,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_742
 .LBB8_743:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit640
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_751
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_751
 # %bb.744:                              # %.lr.ph.preheader.i642
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_746
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_746
 # %bb.745:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_749
 .LBB8_746:                              # %vector.ph2841
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_747:                              # %vector.body2846
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -13570,56 +13510,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_747
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_747
 # %bb.748:                              # %middle.block2852
-	beq	$a2, $a3, .LBB8_751
+	beq	$a1, $a2, .LBB8_751
 .LBB8_749:                              # %.lr.ph.i644.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_750:                              # %.lr.ph.i644
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_750
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_750
 .LBB8_751:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit648
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_1187
 # %bb.752:                              # %.lr.ph.preheader.i650
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_754
+	bgeu	$a1, $a0, .LBB8_754
 # %bb.753:
 	move	$a0, $zero
 	b	.LBB8_757
 .LBB8_754:                              # %vector.ph2857
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -13677,14 +13617,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_755
 # %bb.756:                              # %middle.block2868
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_757:                              # %.lr.ph.i652.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_758:                              # %.lr.ph.i652
                                         # =>This Inner Loop Header: Depth=1
@@ -13695,59 +13635,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_758
+	bnez	$a1, .LBB8_758
 	b	.LBB8_1187
 .LBB8_759:                              # %vector.ph3246
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_760:                              # %vector.body3251
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -13756,39 +13696,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_760
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_760
 # %bb.761:                              # %middle.block3257
-	beq	$a2, $a3, .LBB8_764
+	beq	$a1, $a2, .LBB8_764
 .LBB8_762:                              # %.lr.ph.i392.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_763:                              # %.lr.ph.i392
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_763
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_763
 .LBB8_764:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit396
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_772
+	blez	$a2, .LBB8_772
 # %bb.765:                              # %.lr.ph.preheader.i398
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -13887,68 +13827,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_771
 .LBB8_772:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit404
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_780
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_780
 # %bb.773:                              # %.lr.ph.preheader.i406
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_775
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_775
 # %bb.774:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_778
 .LBB8_775:                              # %vector.ph3278
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_776:                              # %vector.body3283
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -13957,39 +13896,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_776
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_776
 # %bb.777:                              # %middle.block3289
-	beq	$a2, $a3, .LBB8_780
+	beq	$a1, $a2, .LBB8_780
 .LBB8_778:                              # %.lr.ph.i408.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_779:                              # %.lr.ph.i408
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_779
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_779
 .LBB8_780:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit412
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_788
+	blez	$a2, .LBB8_788
 # %bb.781:                              # %.lr.ph.preheader.i414
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -14089,8 +14028,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_787
 .LBB8_788:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit420
 	ld.w	$a1, $s1, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.789:                              # %.lr.ph.preheader.i422
 	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
@@ -14190,52 +14128,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_795
 	b	.LBB8_1187
 .LBB8_796:                              # %vector.ph2585
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_797:                              # %vector.body2590
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -14244,39 +14182,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_797
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_797
 # %bb.798:                              # %middle.block2596
-	beq	$a2, $a3, .LBB8_801
+	beq	$a1, $a2, .LBB8_801
 .LBB8_799:                              # %.lr.ph.i732.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_800:                              # %.lr.ph.i732
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_800
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_800
 .LBB8_801:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit736
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_809
+	blez	$a2, .LBB8_809
 # %bb.802:                              # %.lr.ph.preheader.i738
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -14375,68 +14313,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_808
 .LBB8_809:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit744
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_817
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_817
 # %bb.810:                              # %.lr.ph.preheader.i746
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_812
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_812
 # %bb.811:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_815
 .LBB8_812:                              # %vector.ph2617
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_813:                              # %vector.body2622
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -14445,39 +14382,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_813
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_813
 # %bb.814:                              # %middle.block2628
-	beq	$a2, $a3, .LBB8_817
+	beq	$a1, $a2, .LBB8_817
 .LBB8_815:                              # %.lr.ph.i748.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_816:                              # %.lr.ph.i748
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_816
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_816
 .LBB8_817:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit752
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_825
+	blez	$a2, .LBB8_825
 # %bb.818:                              # %.lr.ph.preheader.i754
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -14577,8 +14514,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_824
 .LBB8_825:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit760
 	ld.w	$a1, $s1, 1608
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.826:                              # %.lr.ph.preheader.i762
 	ld.bu	$a2, $s1, 1592
 	andi	$a2, $a2, 1
@@ -14678,52 +14614,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_832
 	b	.LBB8_1187
 .LBB8_833:                              # %vector.ph2969
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_834:                              # %vector.body2974
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -14732,39 +14668,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_834
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_834
 # %bb.835:                              # %middle.block2980
-	beq	$a2, $a3, .LBB8_838
+	beq	$a1, $a2, .LBB8_838
 .LBB8_836:                              # %.lr.ph.i539.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_837:                              # %.lr.ph.i539
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_837
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_837
 .LBB8_838:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit543
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_846
+	blez	$a2, .LBB8_846
 # %bb.839:                              # %.lr.ph.preheader.i545
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -14863,68 +14799,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_845
 .LBB8_846:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit551
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_854
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_854
 # %bb.847:                              # %.lr.ph.preheader.i553
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_849
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_849
 # %bb.848:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_852
 .LBB8_849:                              # %vector.ph3001
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_850:                              # %vector.body3006
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -14933,39 +14868,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_850
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_850
 # %bb.851:                              # %middle.block3012
-	beq	$a2, $a3, .LBB8_854
+	beq	$a1, $a2, .LBB8_854
 .LBB8_852:                              # %.lr.ph.i555.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_853:                              # %.lr.ph.i555
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_853
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_853
 .LBB8_854:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit559
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_862
+	blez	$a2, .LBB8_862
 # %bb.855:                              # %.lr.ph.preheader.i561
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -15065,8 +15000,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_861
 .LBB8_862:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit567
 	ld.w	$a1, $s1, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.863:                              # %.lr.ph.preheader.i569
 	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
@@ -15166,52 +15100,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_869
 	b	.LBB8_1187
 .LBB8_870:                              # %vector.ph3129
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_871:                              # %vector.body3134
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -15220,56 +15154,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_871
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_871
 # %bb.872:                              # %middle.block3140
-	beq	$a2, $a3, .LBB8_875
+	beq	$a1, $a2, .LBB8_875
 .LBB8_873:                              # %.lr.ph.i483.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_874:                              # %.lr.ph.i483
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_874
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_874
 .LBB8_875:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit487
-	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 504
+	blez	$a1, .LBB8_1187
 # %bb.876:                              # %.lr.ph.preheader.i489
-	ld.bu	$a1, $s1, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.bu	$a2, $s1, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_878
+	bgeu	$a1, $a0, .LBB8_878
 # %bb.877:
 	move	$a0, $zero
 	b	.LBB8_881
 .LBB8_878:                              # %vector.ph3145
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -15327,14 +15261,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_879
 # %bb.880:                              # %middle.block3156
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_881:                              # %.lr.ph.i491.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_882:                              # %.lr.ph.i491
                                         # =>This Inner Loop Header: Depth=1
@@ -15345,59 +15279,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_882
+	bnez	$a1, .LBB8_882
 	b	.LBB8_1187
 .LBB8_883:                              # %vector.ph1561
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_884:                              # %vector.body1566
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -15406,39 +15340,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_884
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_884
 # %bb.885:                              # %middle.block1572
-	beq	$a2, $a3, .LBB8_888
+	beq	$a1, $a2, .LBB8_888
 .LBB8_886:                              # %.lr.ph.i1254.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_887:                              # %.lr.ph.i1254
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_887
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_887
 .LBB8_888:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1258
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_896
+	blez	$a2, .LBB8_896
 # %bb.889:                              # %.lr.ph.preheader.i1260
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -15537,68 +15471,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_895
 .LBB8_896:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1266
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_904
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_904
 # %bb.897:                              # %.lr.ph.preheader.i1268
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_899
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_899
 # %bb.898:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_902
 .LBB8_899:                              # %vector.ph1593
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_900:                              # %vector.body1598
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -15607,39 +15540,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_900
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_900
 # %bb.901:                              # %middle.block1604
-	beq	$a2, $a3, .LBB8_904
+	beq	$a1, $a2, .LBB8_904
 .LBB8_902:                              # %.lr.ph.i1270.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_903:                              # %.lr.ph.i1270
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_903
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_903
 .LBB8_904:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1274
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_912
+	blez	$a2, .LBB8_912
 # %bb.905:                              # %.lr.ph.preheader.i1276
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -15739,8 +15672,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_911
 .LBB8_912:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1282
 	ld.w	$a1, $s1, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.913:                              # %.lr.ph.preheader.i1284
 	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
@@ -15926,52 +15858,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_924
 	b	.LBB8_1187
 .LBB8_925:                              # %vector.ph2377
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_926:                              # %vector.body2382
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -15980,56 +15912,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_926
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_926
 # %bb.927:                              # %middle.block2388
-	beq	$a2, $a3, .LBB8_930
+	beq	$a1, $a2, .LBB8_930
 .LBB8_928:                              # %.lr.ph.i860.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_929:                              # %.lr.ph.i860
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_929
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_929
 .LBB8_930:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit864
-	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 504
+	blez	$a1, .LBB8_1187
 # %bb.931:                              # %.lr.ph.preheader.i866
-	ld.bu	$a1, $s1, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.bu	$a2, $s1, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_933
+	bgeu	$a1, $a0, .LBB8_933
 # %bb.932:
 	move	$a0, $zero
 	b	.LBB8_936
 .LBB8_933:                              # %vector.ph2393
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -16087,14 +16019,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_934
 # %bb.935:                              # %middle.block2404
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_936:                              # %.lr.ph.i868.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_937:                              # %.lr.ph.i868
                                         # =>This Inner Loop Header: Depth=1
@@ -16105,59 +16037,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_937
+	bnez	$a1, .LBB8_937
 	b	.LBB8_1187
 .LBB8_938:                              # %vector.ph2473
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_939:                              # %vector.body2478
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -16166,39 +16098,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_939
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_939
 # %bb.940:                              # %middle.block2484
-	beq	$a2, $a3, .LBB8_943
+	beq	$a1, $a2, .LBB8_943
 .LBB8_941:                              # %.lr.ph.i772.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_942:                              # %.lr.ph.i772
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_942
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_942
 .LBB8_943:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit776
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_951
+	blez	$a2, .LBB8_951
 # %bb.944:                              # %.lr.ph.preheader.i778
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -16297,68 +16229,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_950
 .LBB8_951:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit784
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_959
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_959
 # %bb.952:                              # %.lr.ph.preheader.i786
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_954
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_954
 # %bb.953:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_957
 .LBB8_954:                              # %vector.ph2505
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_955:                              # %vector.body2510
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -16367,39 +16298,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_955
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_955
 # %bb.956:                              # %middle.block2516
-	beq	$a2, $a3, .LBB8_959
+	beq	$a1, $a2, .LBB8_959
 .LBB8_957:                              # %.lr.ph.i788.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_958:                              # %.lr.ph.i788
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_958
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_958
 .LBB8_959:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit792
 	ld.w	$a2, $s1, 1536
-	blt	$a2, $a1, .LBB8_967
+	blez	$a2, .LBB8_967
 # %bb.960:                              # %.lr.ph.preheader.i794
 	ld.bu	$a1, $s1, 1520
 	andi	$a1, $a1, 1
@@ -16498,68 +16429,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_966
 .LBB8_967:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit800
-	ld.w	$a3, $s1, 1560
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_975
+	ld.w	$a2, $s1, 1560
+	blez	$a2, .LBB8_975
 # %bb.968:                              # %.lr.ph.preheader.i802
-	ld.bu	$a2, $s1, 1544
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1552
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_970
+	ld.bu	$a1, $s1, 1544
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1552
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_970
 # %bb.969:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_973
 .LBB8_970:                              # %vector.ph2537
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_971:                              # %vector.body2542
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -16568,39 +16498,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_971
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_971
 # %bb.972:                              # %middle.block2548
-	beq	$a2, $a3, .LBB8_975
+	beq	$a1, $a2, .LBB8_975
 .LBB8_973:                              # %.lr.ph.i804.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_974:                              # %.lr.ph.i804
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_974
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_974
 .LBB8_975:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit808
 	ld.w	$a2, $s1, 1584
-	blt	$a2, $a1, .LBB8_983
+	blez	$a2, .LBB8_983
 # %bb.976:                              # %.lr.ph.preheader.i810
 	ld.bu	$a1, $s1, 1568
 	andi	$a1, $a1, 1
@@ -16700,8 +16630,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_982
 .LBB8_983:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit816
 	ld.w	$a1, $s1, 1608
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.984:                              # %.lr.ph.preheader.i818
 	ld.bu	$a2, $s1, 1592
 	andi	$a2, $a2, 1
@@ -16801,52 +16730,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_990
 	b	.LBB8_1187
 .LBB8_991:                              # %vector.ph2345
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_992:                              # %vector.body2350
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -16855,56 +16784,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_992
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_992
 # %bb.993:                              # %middle.block2356
-	beq	$a2, $a3, .LBB8_996
+	beq	$a1, $a2, .LBB8_996
 .LBB8_994:                              # %.lr.ph.i876.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_995:                              # %.lr.ph.i876
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_995
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_995
 .LBB8_996:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit880
-	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 504
+	blez	$a1, .LBB8_1187
 # %bb.997:                              # %.lr.ph.preheader.i882
-	ld.bu	$a1, $s1, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.bu	$a2, $s1, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_999
+	bgeu	$a1, $a0, .LBB8_999
 # %bb.998:
 	move	$a0, $zero
 	b	.LBB8_1002
 .LBB8_999:                              # %vector.ph2361
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -16962,14 +16891,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_1000
 # %bb.1001:                             # %middle.block2372
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_1002:                             # %.lr.ph.i884.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_1003:                             # %.lr.ph.i884
                                         # =>This Inner Loop Header: Depth=1
@@ -16980,59 +16909,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_1003
+	bnez	$a1, .LBB8_1003
 	b	.LBB8_1187
 .LBB8_1004:                             # %vector.ph1689
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1005:                             # %vector.body1694
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -17041,39 +16970,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1005
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1005
 # %bb.1006:                             # %middle.block1700
-	beq	$a2, $a3, .LBB8_1009
+	beq	$a1, $a2, .LBB8_1009
 .LBB8_1007:                             # %.lr.ph.i1150.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1008:                             # %.lr.ph.i1150
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1008
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1008
 .LBB8_1009:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1154
 	ld.w	$a2, $s1, 504
-	blt	$a2, $a1, .LBB8_1017
+	blez	$a2, .LBB8_1017
 # %bb.1010:                             # %.lr.ph.preheader.i1156
 	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
@@ -17172,68 +17101,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1016
 .LBB8_1017:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1162
-	ld.w	$a3, $s1, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1025
+	ld.w	$a2, $s1, 528
+	blez	$a2, .LBB8_1025
 # %bb.1018:                             # %.lr.ph.preheader.i1164
-	ld.bu	$a2, $s1, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1020
+	ld.bu	$a1, $s1, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1020
 # %bb.1019:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1023
 .LBB8_1020:                             # %vector.ph1721
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1021:                             # %vector.body1726
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -17242,39 +17170,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1021
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1021
 # %bb.1022:                             # %middle.block1732
-	beq	$a2, $a3, .LBB8_1025
+	beq	$a1, $a2, .LBB8_1025
 .LBB8_1023:                             # %.lr.ph.i1166.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1024:                             # %.lr.ph.i1166
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1024
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1024
 .LBB8_1025:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1170
 	ld.w	$a2, $s1, 552
-	blt	$a2, $a1, .LBB8_1033
+	blez	$a2, .LBB8_1033
 # %bb.1026:                             # %.lr.ph.preheader.i1172
 	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
@@ -17373,68 +17301,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1032
 .LBB8_1033:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1178
-	ld.w	$a3, $s1, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1041
+	ld.w	$a2, $s1, 576
+	blez	$a2, .LBB8_1041
 # %bb.1034:                             # %.lr.ph.preheader.i1180
-	ld.bu	$a2, $s1, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1036
+	ld.bu	$a1, $s1, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1036
 # %bb.1035:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1039
 .LBB8_1036:                             # %vector.ph1753
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1037:                             # %vector.body1758
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -17443,39 +17370,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1037
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1037
 # %bb.1038:                             # %middle.block1764
-	beq	$a2, $a3, .LBB8_1041
+	beq	$a1, $a2, .LBB8_1041
 .LBB8_1039:                             # %.lr.ph.i1182.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1040:                             # %.lr.ph.i1182
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1040
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1040
 .LBB8_1041:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1186
 	ld.w	$a2, $s1, 600
-	blt	$a2, $a1, .LBB8_1049
+	blez	$a2, .LBB8_1049
 # %bb.1042:                             # %.lr.ph.preheader.i1188
 	ld.bu	$a1, $s1, 584
 	andi	$a1, $a1, 1
@@ -17574,68 +17501,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1048
 .LBB8_1049:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1194
-	ld.w	$a3, $s1, 624
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1057
+	ld.w	$a2, $s1, 624
+	blez	$a2, .LBB8_1057
 # %bb.1050:                             # %.lr.ph.preheader.i1196
-	ld.bu	$a2, $s1, 608
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 616
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1052
+	ld.bu	$a1, $s1, 608
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 616
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1052
 # %bb.1051:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1055
 .LBB8_1052:                             # %vector.ph1785
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1053:                             # %vector.body1790
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -17644,39 +17570,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1053
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1053
 # %bb.1054:                             # %middle.block1796
-	beq	$a2, $a3, .LBB8_1057
+	beq	$a1, $a2, .LBB8_1057
 .LBB8_1055:                             # %.lr.ph.i1198.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1056:                             # %.lr.ph.i1198
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1056
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1056
 .LBB8_1057:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1202
 	ld.w	$a2, $s1, 648
-	blt	$a2, $a1, .LBB8_1065
+	blez	$a2, .LBB8_1065
 # %bb.1058:                             # %.lr.ph.preheader.i1204
 	ld.bu	$a1, $s1, 632
 	andi	$a1, $a1, 1
@@ -17775,68 +17701,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1064
 .LBB8_1065:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1210
-	ld.w	$a3, $s1, 672
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1073
+	ld.w	$a2, $s1, 672
+	blez	$a2, .LBB8_1073
 # %bb.1066:                             # %.lr.ph.preheader.i1212
-	ld.bu	$a2, $s1, 656
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 664
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1068
+	ld.bu	$a1, $s1, 656
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 664
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1068
 # %bb.1067:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1071
 .LBB8_1068:                             # %vector.ph1817
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1069:                             # %vector.body1822
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -17845,56 +17770,56 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1069
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1069
 # %bb.1070:                             # %middle.block1828
-	beq	$a2, $a3, .LBB8_1073
+	beq	$a1, $a2, .LBB8_1073
 .LBB8_1071:                             # %.lr.ph.i1214.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1072:                             # %.lr.ph.i1214
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1072
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1072
 .LBB8_1073:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1218
-	ld.w	$a2, $s1, 1608
-	blt	$a2, $a1, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blez	$a1, .LBB8_1187
 # %bb.1074:                             # %.lr.ph.preheader.i1220
-	ld.bu	$a1, $s1, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.bu	$a2, $s1, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB8_1076
+	bgeu	$a1, $a0, .LBB8_1076
 # %bb.1075:
 	move	$a0, $zero
 	b	.LBB8_1079
 .LBB8_1076:                             # %vector.ph1833
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -17952,14 +17877,14 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_1077
 # %bb.1078:                             # %middle.block1844
-	beq	$a0, $a2, .LBB8_1187
+	beq	$a0, $a1, .LBB8_1187
 .LBB8_1079:                             # %.lr.ph.i1222.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI8_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI8_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB8_1080:                             # %.lr.ph.i1222
                                         # =>This Inner Loop Header: Depth=1
@@ -17970,59 +17895,59 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB8_1080
+	bnez	$a1, .LBB8_1080
 	b	.LBB8_1187
 .LBB8_1081:                             # %vector.ph1641
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1082:                             # %vector.body1646
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -18031,39 +17956,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1082
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1082
 # %bb.1083:                             # %middle.block1652
-	beq	$a2, $a3, .LBB8_1086
+	beq	$a1, $a2, .LBB8_1086
 .LBB8_1084:                             # %.lr.ph.i1230.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1085:                             # %.lr.ph.i1230
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1085
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1085
 .LBB8_1086:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1234
 	ld.w	$a2, $s1, 1176
-	blt	$a2, $a1, .LBB8_1094
+	blez	$a2, .LBB8_1094
 # %bb.1087:                             # %.lr.ph.preheader.i1236
 	ld.bu	$a1, $s1, 1160
 	andi	$a1, $a1, 1
@@ -18163,8 +18088,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_1093
 .LBB8_1094:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1242
 	ld.w	$a1, $s1, 1512
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.1095:                             # %.lr.ph.preheader.i1244
 	ld.bu	$a2, $s1, 1496
 	andi	$a2, $a2, 1
@@ -18264,52 +18188,52 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a1, .LBB8_1101
 	b	.LBB8_1187
 .LBB8_1102:                             # %vector.ph1913
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1103:                             # %vector.body1918
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -18318,39 +18242,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1103
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1103
 # %bb.1104:                             # %middle.block1924
-	beq	$a2, $a3, .LBB8_1107
+	beq	$a1, $a2, .LBB8_1107
 .LBB8_1105:                             # %.lr.ph.i1030.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1106:                             # %.lr.ph.i1030
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1106
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1106
 .LBB8_1107:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1034
 	ld.w	$a2, $s1, 1272
-	blt	$a2, $a1, .LBB8_1115
+	blez	$a2, .LBB8_1115
 # %bb.1108:                             # %.lr.ph.preheader.i1036
 	ld.bu	$a1, $s1, 1256
 	andi	$a1, $a1, 1
@@ -18449,68 +18373,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1114
 .LBB8_1115:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1042
-	ld.w	$a3, $s1, 1296
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1123
+	ld.w	$a2, $s1, 1296
+	blez	$a2, .LBB8_1123
 # %bb.1116:                             # %.lr.ph.preheader.i1044
-	ld.bu	$a2, $s1, 1280
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1288
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1118
+	ld.bu	$a1, $s1, 1280
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1288
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1118
 # %bb.1117:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1121
 .LBB8_1118:                             # %vector.ph1945
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1119:                             # %vector.body1950
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -18519,39 +18442,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1119
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1119
 # %bb.1120:                             # %middle.block1956
-	beq	$a2, $a3, .LBB8_1123
+	beq	$a1, $a2, .LBB8_1123
 .LBB8_1121:                             # %.lr.ph.i1046.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1122:                             # %.lr.ph.i1046
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1122
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1122
 .LBB8_1123:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1050
 	ld.w	$a2, $s1, 1320
-	blt	$a2, $a1, .LBB8_1131
+	blez	$a2, .LBB8_1131
 # %bb.1124:                             # %.lr.ph.preheader.i1052
 	ld.bu	$a1, $s1, 1304
 	andi	$a1, $a1, 1
@@ -18650,68 +18573,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1130
 .LBB8_1131:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1058
-	ld.w	$a3, $s1, 1344
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1139
+	ld.w	$a2, $s1, 1344
+	blez	$a2, .LBB8_1139
 # %bb.1132:                             # %.lr.ph.preheader.i1060
-	ld.bu	$a2, $s1, 1328
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1336
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1134
+	ld.bu	$a1, $s1, 1328
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1336
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1134
 # %bb.1133:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1137
 .LBB8_1134:                             # %vector.ph1977
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1135:                             # %vector.body1982
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -18720,39 +18642,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1135
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1135
 # %bb.1136:                             # %middle.block1988
-	beq	$a2, $a3, .LBB8_1139
+	beq	$a1, $a2, .LBB8_1139
 .LBB8_1137:                             # %.lr.ph.i1062.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1138:                             # %.lr.ph.i1062
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1138
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1138
 .LBB8_1139:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1066
 	ld.w	$a2, $s1, 1368
-	blt	$a2, $a1, .LBB8_1147
+	blez	$a2, .LBB8_1147
 # %bb.1140:                             # %.lr.ph.preheader.i1068
 	ld.bu	$a1, $s1, 1352
 	andi	$a1, $a1, 1
@@ -18851,68 +18773,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1146
 .LBB8_1147:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1074
-	ld.w	$a3, $s1, 1392
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1155
+	ld.w	$a2, $s1, 1392
+	blez	$a2, .LBB8_1155
 # %bb.1148:                             # %.lr.ph.preheader.i1076
-	ld.bu	$a2, $s1, 1376
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1384
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1150
+	ld.bu	$a1, $s1, 1376
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1384
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1150
 # %bb.1149:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1153
 .LBB8_1150:                             # %vector.ph2009
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1151:                             # %vector.body2014
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -18921,39 +18842,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1151
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1151
 # %bb.1152:                             # %middle.block2020
-	beq	$a2, $a3, .LBB8_1155
+	beq	$a1, $a2, .LBB8_1155
 .LBB8_1153:                             # %.lr.ph.i1078.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1154:                             # %.lr.ph.i1078
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1154
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1154
 .LBB8_1155:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1082
 	ld.w	$a2, $s1, 1416
-	blt	$a2, $a1, .LBB8_1163
+	blez	$a2, .LBB8_1163
 # %bb.1156:                             # %.lr.ph.preheader.i1084
 	ld.bu	$a1, $s1, 1400
 	andi	$a1, $a1, 1
@@ -19052,68 +18973,67 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1162
 .LBB8_1163:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1090
-	ld.w	$a3, $s1, 1440
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB8_1171
+	ld.w	$a2, $s1, 1440
+	blez	$a2, .LBB8_1171
 # %bb.1164:                             # %.lr.ph.preheader.i1092
-	ld.bu	$a2, $s1, 1424
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1432
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB8_1166
+	ld.bu	$a1, $s1, 1424
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s1, 1432
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB8_1166
 # %bb.1165:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB8_1169
 .LBB8_1166:                             # %vector.ph2041
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB8_1167:                             # %vector.body2046
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -19122,39 +19042,39 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_1167
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB8_1167
 # %bb.1168:                             # %middle.block2052
-	beq	$a2, $a3, .LBB8_1171
+	beq	$a1, $a2, .LBB8_1171
 .LBB8_1169:                             # %.lr.ph.i1094.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI8_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI8_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI8_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB8_1170:                             # %.lr.ph.i1094
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB8_1170
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB8_1170
 .LBB8_1171:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1098
 	ld.w	$a2, $s1, 1464
-	blt	$a2, $a1, .LBB8_1179
+	blez	$a2, .LBB8_1179
 # %bb.1172:                             # %.lr.ph.preheader.i1100
 	ld.bu	$a1, $s1, 1448
 	andi	$a1, $a1, 1
@@ -19254,8 +19174,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_1178
 .LBB8_1179:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1106
 	ld.w	$a1, $s1, 1488
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_1187
+	blez	$a1, .LBB8_1187
 # %bb.1180:                             # %.lr.ph.preheader.i1108
 	ld.bu	$a2, $s1, 1472
 	andi	$a2, $a2, 1
@@ -19429,11 +19348,9 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	pcalau12i	$a1, %pc_hi20(_ZL11s_loop_data)
 	ld.d	$s0, $a1, %pc_lo12(_ZL11s_loop_data)
 	move	$fp, $a0
@@ -19449,117 +19366,110 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB9_2:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_105
+	blez	$a2, .LBB9_105
 # %bb.3:                                # %.lr.ph.preheader.i181
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_100
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_100
 # %bb.4:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_103
 .LBB9_5:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_150
+	blez	$a2, .LBB9_150
 # %bb.6:                                # %.lr.ph.preheader.i229
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_145
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_145
 # %bb.7:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_148
 .LBB9_8:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_277
+	blez	$a2, .LBB9_277
 # %bb.9:                                # %.lr.ph.preheader.i1115
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_272
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_272
 # %bb.10:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_275
 .LBB9_11:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_306
+	blez	$a2, .LBB9_306
 # %bb.12:                               # %.lr.ph.preheader.i689
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_301
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_301
 # %bb.13:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_304
 .LBB9_14:
-	ld.w	$a3, $s0, 864
+	ld.w	$a2, $s0, 864
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_319
+	blez	$a2, .LBB9_319
 # %bb.15:                               # %.lr.ph.preheader.i657
-	ld.bu	$a2, $s0, 848
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 856
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_314
+	ld.bu	$a1, $s0, 848
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 856
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_314
 # %bb.16:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_317
 .LBB9_17:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_332
+	blez	$a2, .LBB9_332
 # %bb.18:                               # %.lr.ph.preheader.i576
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_327
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_327
 # %bb.19:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_330
 .LBB9_20:
 	ld.w	$a1, $s0, 912
-	ori	$fp, $zero, 1
-	blt	$a1, $fp, .LBB9_22
+	blez	$a1, .LBB9_22
 # %bb.21:                               # %.lr.ph.preheader.i615
 	ld.d	$a0, $s0, 904
 	slli.d	$a2, $a1, 2
@@ -19568,7 +19478,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	jirl	$ra, $ra, 0
 .LBB9_22:                               # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit
 	ld.w	$a1, $s0, 1608
-	blt	$a1, $fp, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.23:                               # %.lr.ph.preheader.i617
 	ld.bu	$a0, $s0, 1592
 	andi	$a0, $a0, 1
@@ -19584,317 +19494,300 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	move	$a0, $zero
 	b	.LBB9_367
 .LBB9_25:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_374
+	blez	$a2, .LBB9_374
 # %bb.26:                               # %.lr.ph.preheader.i
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_369
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_369
 # %bb.27:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_372
 .LBB9_28:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_395
+	blez	$a2, .LBB9_395
 # %bb.29:                               # %.lr.ph.preheader.i496
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_390
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_390
 # %bb.30:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_393
 .LBB9_31:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_432
+	blez	$a2, .LBB9_432
 # %bb.32:                               # %.lr.ph.preheader.i941
-	ld.bu	$a2, $s0, 464
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_427
+# %bb.33:
+	move	$a1, $zero
+	b	.LBB9_430
+.LBB9_34:
+	ld.w	$a1, $s0, 1152
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	addi.d	$fp, $a0, %pc_lo12(.LCPI9_0)
+	blez	$a1, .LBB9_515
+# %bb.35:                               # %.lr.ph.preheader.i889
+	ld.bu	$a0, $s0, 1136
+	andi	$a0, $a0, 1
+	sltui	$a0, $a0, 1
+	slli.d	$a0, $a0, 3
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s0, 1144
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB9_510
+# %bb.36:
+	move	$a0, $zero
+	b	.LBB9_513
+.LBB9_37:
+	ld.w	$a2, $s0, 480
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
+	blez	$a2, .LBB9_564
+# %bb.38:                               # %.lr.ph.preheader.i673
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_559
+# %bb.39:
+	move	$a1, $zero
+	b	.LBB9_562
+.LBB9_40:
+	ld.w	$a3, $s0, 1032
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI9_3)
+	addi.d	$a1, $a1, %pc_lo12(.LCPI9_3)
+	blez	$a3, .LBB9_577
+# %bb.41:                               # %.lr.ph.preheader.i429
+	ld.bu	$a2, $s0, 1016
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_427
-# %bb.33:
+	fldx.d	$fa1, $a1, $a2
+	ld.d	$a4, $s0, 1024
+	ori	$a2, $zero, 1
+	bne	$a3, $a2, .LBB9_572
+# %bb.42:
 	move	$a2, $zero
-	b	.LBB9_430
-.LBB9_34:
+	b	.LBB9_575
+.LBB9_43:
+	ld.w	$a2, $s0, 1248
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
+	blez	$a2, .LBB9_614
+# %bb.44:                               # %.lr.ph.preheader.i1291
+	ld.bu	$a1, $s0, 1232
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1240
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_609
+# %bb.45:
+	move	$a1, $zero
+	b	.LBB9_612
+.LBB9_46:
+	ld.w	$a2, $s0, 480
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
+	blez	$a2, .LBB9_659
+# %bb.47:                               # %.lr.ph.preheader.i705
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_654
+# %bb.48:
+	move	$a1, $zero
+	b	.LBB9_657
+.LBB9_49:
 	ld.w	$a2, $s0, 1152
-	pcalau12i	$a1, %pc_hi20(.LCPI9_0)
-	ori	$a0, $zero, 1
-	addi.d	$fp, $a1, %pc_lo12(.LCPI9_0)
-	blt	$a2, $a0, .LBB9_515
-# %bb.35:                               # %.lr.ph.preheader.i889
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
+	blez	$a2, .LBB9_680
+# %bb.50:                               # %.lr.ph.preheader.i825
 	ld.bu	$a1, $s0, 1136
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $fp, $a1
+	fldx.d	$fa0, $a0, $a1
 	ld.d	$a3, $s0, 1144
 	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB9_510
-# %bb.36:
-	move	$a1, $zero
-	b	.LBB9_513
-.LBB9_37:
-	ld.w	$a3, $s0, 480
-	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_564
-# %bb.38:                               # %.lr.ph.preheader.i673
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_559
-# %bb.39:
-	move	$a2, $zero
-	b	.LBB9_562
-.LBB9_40:
-	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ld.w	$a4, $s0, 1032
-	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI9_3)
-	ori	$a2, $zero, 1
-	addi.d	$a1, $a1, %pc_lo12(.LCPI9_3)
-	blt	$a4, $a2, .LBB9_577
-# %bb.41:                               # %.lr.ph.preheader.i429
-	ld.bu	$a3, $s0, 1016
-	andi	$a3, $a3, 1
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 3
-	fldx.d	$fa0, $a0, $a3
-	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s0, 1024
-	bne	$a4, $a2, .LBB9_572
-# %bb.42:
-	move	$a3, $zero
-	b	.LBB9_575
-.LBB9_43:
-	ld.w	$a3, $s0, 1248
-	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_614
-# %bb.44:                               # %.lr.ph.preheader.i1291
-	ld.bu	$a2, $s0, 1232
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1240
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_609
-# %bb.45:
-	move	$a2, $zero
-	b	.LBB9_612
-.LBB9_46:
-	ld.w	$a3, $s0, 480
-	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_659
-# %bb.47:                               # %.lr.ph.preheader.i705
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_654
-# %bb.48:
-	move	$a2, $zero
-	b	.LBB9_657
-.LBB9_49:
-	ld.w	$a3, $s0, 1152
-	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
-	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_680
-# %bb.50:                               # %.lr.ph.preheader.i825
-	ld.bu	$a2, $s0, 1136
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1144
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_675
+	bgeu	$a2, $a1, .LBB9_675
 # %bb.51:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_678
 .LBB9_52:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_693
+	blez	$a2, .LBB9_693
 # %bb.53:                               # %.lr.ph.preheader.i357
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_688
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_688
 # %bb.54:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_691
 .LBB9_55:
-	ld.w	$a3, $s0, 1152
+	ld.w	$a2, $s0, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_722
+	blez	$a2, .LBB9_722
 # %bb.56:                               # %.lr.ph.preheader.i841
-	ld.bu	$a2, $s0, 1136
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1144
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_717
+	ld.bu	$a1, $s0, 1136
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1144
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_717
 # %bb.57:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_720
 .LBB9_58:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_735
+	blez	$a2, .LBB9_735
 # %bb.59:                               # %.lr.ph.preheader.i625
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_730
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_730
 # %bb.60:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_733
 .LBB9_61:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_764
+	blez	$a2, .LBB9_764
 # %bb.62:                               # %.lr.ph.preheader.i389
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_759
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_759
 # %bb.63:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_762
 .LBB9_64:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_801
+	blez	$a2, .LBB9_801
 # %bb.65:                               # %.lr.ph.preheader.i729
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_796
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_796
 # %bb.66:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_799
 .LBB9_67:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_838
+	blez	$a2, .LBB9_838
 # %bb.68:                               # %.lr.ph.preheader.i536
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_833
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_833
 # %bb.69:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_836
 .LBB9_70:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_875
+	blez	$a2, .LBB9_875
 # %bb.71:                               # %.lr.ph.preheader.i480
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_870
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_870
 # %bb.72:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_873
 .LBB9_73:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_888
+	blez	$a2, .LBB9_888
 # %bb.74:                               # %.lr.ph.preheader.i1251
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_883
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_883
 # %bb.75:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_886
 .LBB9_76:
 	ld.w	$a1, $s0, 480
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.77:                               # %.lr.ph.preheader.i1339
 	ld.bu	$a0, $s0, 464
 	andi	$a0, $a0, 1
@@ -19910,112 +19803,106 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	move	$a0, $zero
 	b	.LBB9_923
 .LBB9_79:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_930
+	blez	$a2, .LBB9_930
 # %bb.80:                               # %.lr.ph.preheader.i857
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_925
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_925
 # %bb.81:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_928
 .LBB9_82:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_943
+	blez	$a2, .LBB9_943
 # %bb.83:                               # %.lr.ph.preheader.i769
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_938
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_938
 # %bb.84:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_941
 .LBB9_85:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_996
+	blez	$a2, .LBB9_996
 # %bb.86:                               # %.lr.ph.preheader.i873
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_991
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_991
 # %bb.87:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_994
 .LBB9_88:
-	ld.w	$a3, $s0, 480
+	ld.w	$a2, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_1009
+	blez	$a2, .LBB9_1009
 # %bb.89:                               # %.lr.ph.preheader.i1147
-	ld.bu	$a2, $s0, 464
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 472
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1004
+	ld.bu	$a1, $s0, 464
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 472
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1004
 # %bb.90:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1007
 .LBB9_91:
-	ld.w	$a3, $s0, 1152
+	ld.w	$a2, $s0, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_1086
+	blez	$a2, .LBB9_1086
 # %bb.92:                               # %.lr.ph.preheader.i1227
-	ld.bu	$a2, $s0, 1136
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1144
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1081
+	ld.bu	$a1, $s0, 1136
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1144
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1081
 # %bb.93:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1084
 .LBB9_94:
-	ld.w	$a3, $s0, 1248
+	ld.w	$a2, $s0, 1248
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
-	blt	$a3, $a1, .LBB9_1107
+	blez	$a2, .LBB9_1107
 # %bb.95:                               # %.lr.ph.preheader.i1027
-	ld.bu	$a2, $s0, 1232
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1240
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1102
+	ld.bu	$a1, $s0, 1232
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1240
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1102
 # %bb.96:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1105
 .LBB9_97:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
@@ -20042,52 +19929,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	ld.bu	$a1, $fp, 67
 	b	.LBB9_271
 .LBB9_100:                              # %vector.ph3645
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_101:                              # %vector.body3650
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -20096,39 +19983,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_101
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_101
 # %bb.102:                              # %middle.block3656
-	beq	$a2, $a3, .LBB9_105
+	beq	$a1, $a2, .LBB9_105
 .LBB9_103:                              # %.lr.ph.i183.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_104:                              # %.lr.ph.i183
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_104
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_104
 .LBB9_105:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit187
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_113
+	blez	$a2, .LBB9_113
 # %bb.106:                              # %.lr.ph.preheader.i189
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -20227,68 +20114,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_112
 .LBB9_113:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit195
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_121
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_121
 # %bb.114:                              # %.lr.ph.preheader.i197
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_116
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_116
 # %bb.115:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_119
 .LBB9_116:                              # %vector.ph3677
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_117:                              # %vector.body3682
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -20297,39 +20183,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_117
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_117
 # %bb.118:                              # %middle.block3688
-	beq	$a2, $a3, .LBB9_121
+	beq	$a1, $a2, .LBB9_121
 .LBB9_119:                              # %.lr.ph.i199.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_120:                              # %.lr.ph.i199
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_120
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_120
 .LBB9_121:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit203
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_129
+	blez	$a2, .LBB9_129
 # %bb.122:                              # %.lr.ph.preheader.i205
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -20428,68 +20314,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_128
 .LBB9_129:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit211
-	ld.w	$a3, $s0, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_137
+	ld.w	$a2, $s0, 576
+	blez	$a2, .LBB9_137
 # %bb.130:                              # %.lr.ph.preheader.i213
-	ld.bu	$a2, $s0, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_132
+	ld.bu	$a1, $s0, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_132
 # %bb.131:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_135
 .LBB9_132:                              # %vector.ph3709
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_133:                              # %vector.body3714
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -20498,56 +20383,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_133
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_133
 # %bb.134:                              # %middle.block3720
-	beq	$a2, $a3, .LBB9_137
+	beq	$a1, $a2, .LBB9_137
 .LBB9_135:                              # %.lr.ph.i215.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_136:                              # %.lr.ph.i215
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_136
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_136
 .LBB9_137:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit219
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_1187
 # %bb.138:                              # %.lr.ph.preheader.i221
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_140
+	bgeu	$a1, $a0, .LBB9_140
 # %bb.139:
 	move	$a0, $zero
 	b	.LBB9_143
 .LBB9_140:                              # %vector.ph3725
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -20605,14 +20490,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_141
 # %bb.142:                              # %middle.block3736
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_143:                              # %.lr.ph.i223.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_144:                              # %.lr.ph.i223
                                         # =>This Inner Loop Header: Depth=1
@@ -20623,59 +20508,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_144
+	bnez	$a1, .LBB9_144
 	b	.LBB9_1187
 .LBB9_145:                              # %vector.ph3389
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_146:                              # %vector.body3394
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -20684,39 +20569,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_146
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_146
 # %bb.147:                              # %middle.block3400
-	beq	$a2, $a3, .LBB9_150
+	beq	$a1, $a2, .LBB9_150
 .LBB9_148:                              # %.lr.ph.i231.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_149:                              # %.lr.ph.i231
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_149
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_149
 .LBB9_150:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit235
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_158
+	blez	$a2, .LBB9_158
 # %bb.151:                              # %.lr.ph.preheader.i237
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -20815,68 +20700,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_157
 .LBB9_158:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit243
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_166
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_166
 # %bb.159:                              # %.lr.ph.preheader.i245
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_161
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_161
 # %bb.160:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_164
 .LBB9_161:                              # %vector.ph3421
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_162:                              # %vector.body3426
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -20885,39 +20769,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_162
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_162
 # %bb.163:                              # %middle.block3432
-	beq	$a2, $a3, .LBB9_166
+	beq	$a1, $a2, .LBB9_166
 .LBB9_164:                              # %.lr.ph.i247.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_165:                              # %.lr.ph.i247
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_165
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_165
 .LBB9_166:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit251
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_174
+	blez	$a2, .LBB9_174
 # %bb.167:                              # %.lr.ph.preheader.i253
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -21016,68 +20900,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_173
 .LBB9_174:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit259
-	ld.w	$a3, $s0, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_182
+	ld.w	$a2, $s0, 576
+	blez	$a2, .LBB9_182
 # %bb.175:                              # %.lr.ph.preheader.i261
-	ld.bu	$a2, $s0, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_177
+	ld.bu	$a1, $s0, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_177
 # %bb.176:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_180
 .LBB9_177:                              # %vector.ph3453
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_178:                              # %vector.body3458
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -21086,39 +20969,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_178
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_178
 # %bb.179:                              # %middle.block3464
-	beq	$a2, $a3, .LBB9_182
+	beq	$a1, $a2, .LBB9_182
 .LBB9_180:                              # %.lr.ph.i263.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_181:                              # %.lr.ph.i263
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_181
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_181
 .LBB9_182:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit267
 	ld.w	$a2, $s0, 600
-	blt	$a2, $a1, .LBB9_190
+	blez	$a2, .LBB9_190
 # %bb.183:                              # %.lr.ph.preheader.i269
 	ld.bu	$a1, $s0, 584
 	andi	$a1, $a1, 1
@@ -21217,68 +21100,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_189
 .LBB9_190:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit275
-	ld.w	$a3, $s0, 624
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_198
+	ld.w	$a2, $s0, 624
+	blez	$a2, .LBB9_198
 # %bb.191:                              # %.lr.ph.preheader.i277
-	ld.bu	$a2, $s0, 608
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 616
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_193
+	ld.bu	$a1, $s0, 608
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 616
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_193
 # %bb.192:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_196
 .LBB9_193:                              # %vector.ph3485
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_194:                              # %vector.body3490
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -21287,39 +21169,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_194
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_194
 # %bb.195:                              # %middle.block3496
-	beq	$a2, $a3, .LBB9_198
+	beq	$a1, $a2, .LBB9_198
 .LBB9_196:                              # %.lr.ph.i279.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_197:                              # %.lr.ph.i279
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_197
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_197
 .LBB9_198:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit283
 	ld.w	$a2, $s0, 648
-	blt	$a2, $a1, .LBB9_206
+	blez	$a2, .LBB9_206
 # %bb.199:                              # %.lr.ph.preheader.i285
 	ld.bu	$a1, $s0, 632
 	andi	$a1, $a1, 1
@@ -21418,68 +21300,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_205
 .LBB9_206:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit291
-	ld.w	$a3, $s0, 672
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_214
+	ld.w	$a2, $s0, 672
+	blez	$a2, .LBB9_214
 # %bb.207:                              # %.lr.ph.preheader.i293
-	ld.bu	$a2, $s0, 656
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 664
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_209
+	ld.bu	$a1, $s0, 656
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 664
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_209
 # %bb.208:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_212
 .LBB9_209:                              # %vector.ph3517
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_210:                              # %vector.body3522
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -21488,39 +21369,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_210
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_210
 # %bb.211:                              # %middle.block3528
-	beq	$a2, $a3, .LBB9_214
+	beq	$a1, $a2, .LBB9_214
 .LBB9_212:                              # %.lr.ph.i295.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_213:                              # %.lr.ph.i295
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_213
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_213
 .LBB9_214:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit299
 	ld.w	$a2, $s0, 696
-	blt	$a2, $a1, .LBB9_222
+	blez	$a2, .LBB9_222
 # %bb.215:                              # %.lr.ph.preheader.i301
 	ld.bu	$a1, $s0, 680
 	andi	$a1, $a1, 1
@@ -21619,68 +21500,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_221
 .LBB9_222:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit307
-	ld.w	$a3, $s0, 720
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_230
+	ld.w	$a2, $s0, 720
+	blez	$a2, .LBB9_230
 # %bb.223:                              # %.lr.ph.preheader.i309
-	ld.bu	$a2, $s0, 704
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 712
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_225
+	ld.bu	$a1, $s0, 704
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 712
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_225
 # %bb.224:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_228
 .LBB9_225:                              # %vector.ph3549
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_226:                              # %vector.body3554
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -21689,39 +21569,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_226
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_226
 # %bb.227:                              # %middle.block3560
-	beq	$a2, $a3, .LBB9_230
+	beq	$a1, $a2, .LBB9_230
 .LBB9_228:                              # %.lr.ph.i311.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_229:                              # %.lr.ph.i311
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_229
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_229
 .LBB9_230:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit315
 	ld.w	$a2, $s0, 744
-	blt	$a2, $a1, .LBB9_238
+	blez	$a2, .LBB9_238
 # %bb.231:                              # %.lr.ph.preheader.i317
 	ld.bu	$a1, $s0, 728
 	andi	$a1, $a1, 1
@@ -21820,68 +21700,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_237
 .LBB9_238:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit323
-	ld.w	$a3, $s0, 768
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_246
+	ld.w	$a2, $s0, 768
+	blez	$a2, .LBB9_246
 # %bb.239:                              # %.lr.ph.preheader.i325
-	ld.bu	$a2, $s0, 752
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 760
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_241
+	ld.bu	$a1, $s0, 752
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 760
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_241
 # %bb.240:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_244
 .LBB9_241:                              # %vector.ph3581
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_242:                              # %vector.body3586
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -21890,39 +21769,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_242
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_242
 # %bb.243:                              # %middle.block3592
-	beq	$a2, $a3, .LBB9_246
+	beq	$a1, $a2, .LBB9_246
 .LBB9_244:                              # %.lr.ph.i327.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_245:                              # %.lr.ph.i327
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_245
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_245
 .LBB9_246:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit331
 	ld.w	$a2, $s0, 792
-	blt	$a2, $a1, .LBB9_254
+	blez	$a2, .LBB9_254
 # %bb.247:                              # %.lr.ph.preheader.i333
 	ld.bu	$a1, $s0, 776
 	andi	$a1, $a1, 1
@@ -22021,68 +21900,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_253
 .LBB9_254:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit339
-	ld.w	$a3, $s0, 816
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_262
+	ld.w	$a2, $s0, 816
+	blez	$a2, .LBB9_262
 # %bb.255:                              # %.lr.ph.preheader.i341
-	ld.bu	$a2, $s0, 800
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 808
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_257
+	ld.bu	$a1, $s0, 800
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 808
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_257
 # %bb.256:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_260
 .LBB9_257:                              # %vector.ph3613
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_258:                              # %vector.body3618
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -22091,56 +21969,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_258
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_258
 # %bb.259:                              # %middle.block3624
-	beq	$a2, $a3, .LBB9_262
+	beq	$a1, $a2, .LBB9_262
 .LBB9_260:                              # %.lr.ph.i343.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_261:                              # %.lr.ph.i343
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_261
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_261
 .LBB9_262:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit347
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_1187
 # %bb.263:                              # %.lr.ph.preheader.i349
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_265
+	bgeu	$a1, $a0, .LBB9_265
 # %bb.264:
 	move	$a0, $zero
 	b	.LBB9_268
 .LBB9_265:                              # %vector.ph3629
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -22198,14 +22076,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_266
 # %bb.267:                              # %middle.block3640
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_268:                              # %.lr.ph.i351.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_269:                              # %.lr.ph.i351
                                         # =>This Inner Loop Header: Depth=1
@@ -22216,11 +22094,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_269
+	bnez	$a1, .LBB9_269
 	b	.LBB9_1187
 .LBB9_270:
 	move	$s0, $a0
@@ -22238,7 +22116,6 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	ext.w.b	$a1, $a1
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -22246,52 +22123,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	pcaddu18i	$t8, %call36(_ZNSo5flushEv)
 	jr	$t8
 .LBB9_272:                              # %vector.ph1848
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_273:                              # %vector.body1853
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -22300,39 +22177,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_273
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_273
 # %bb.274:                              # %middle.block1859
-	beq	$a2, $a3, .LBB9_277
+	beq	$a1, $a2, .LBB9_277
 .LBB9_275:                              # %.lr.ph.i1117.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_276:                              # %.lr.ph.i1117
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_276
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_276
 .LBB9_277:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1121
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_285
+	blez	$a2, .LBB9_285
 # %bb.278:                              # %.lr.ph.preheader.i1123
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -22431,68 +22308,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_284
 .LBB9_285:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1129
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_293
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_293
 # %bb.286:                              # %.lr.ph.preheader.i1131
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_288
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_288
 # %bb.287:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_291
 .LBB9_288:                              # %vector.ph1880
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_289:                              # %vector.body1885
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -22501,56 +22377,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_289
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_289
 # %bb.290:                              # %middle.block1891
-	beq	$a2, $a3, .LBB9_293
+	beq	$a1, $a2, .LBB9_293
 .LBB9_291:                              # %.lr.ph.i1133.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_292:                              # %.lr.ph.i1133
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_292
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_292
 .LBB9_293:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1137
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_1187
 # %bb.294:                              # %.lr.ph.preheader.i1139
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_296
+	bgeu	$a1, $a0, .LBB9_296
 # %bb.295:
 	move	$a0, $zero
 	b	.LBB9_299
 .LBB9_296:                              # %vector.ph1896
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -22608,14 +22484,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_297
 # %bb.298:                              # %middle.block1907
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_299:                              # %.lr.ph.i1141.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_300:                              # %.lr.ph.i1141
                                         # =>This Inner Loop Header: Depth=1
@@ -22626,59 +22502,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_300
+	bnez	$a1, .LBB9_300
 	b	.LBB9_1187
 .LBB9_301:                              # %vector.ph2712
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_302:                              # %vector.body2717
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -22687,56 +22563,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_302
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_302
 # %bb.303:                              # %middle.block2723
-	beq	$a2, $a3, .LBB9_306
+	beq	$a1, $a2, .LBB9_306
 .LBB9_304:                              # %.lr.ph.i691.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_305:                              # %.lr.ph.i691
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_305
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_305
 .LBB9_306:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit695
-	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 504
+	blez	$a1, .LBB9_1187
 # %bb.307:                              # %.lr.ph.preheader.i697
-	ld.bu	$a1, $s0, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 496
+	ld.bu	$a2, $s0, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_309
+	bgeu	$a1, $a0, .LBB9_309
 # %bb.308:
 	move	$a0, $zero
 	b	.LBB9_312
 .LBB9_309:                              # %vector.ph2728
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -22794,14 +22670,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_310
 # %bb.311:                              # %middle.block2739
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_312:                              # %.lr.ph.i699.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_313:                              # %.lr.ph.i699
                                         # =>This Inner Loop Header: Depth=1
@@ -22812,59 +22688,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_313
+	bnez	$a1, .LBB9_313
 	b	.LBB9_1187
 .LBB9_314:                              # %vector.ph2776
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_315:                              # %vector.body2781
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -22873,56 +22749,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_315
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_315
 # %bb.316:                              # %middle.block2787
-	beq	$a2, $a3, .LBB9_319
+	beq	$a1, $a2, .LBB9_319
 .LBB9_317:                              # %.lr.ph.i659.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_318:                              # %.lr.ph.i659
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_318
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_318
 .LBB9_319:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit663
-	ld.w	$a2, $s0, 888
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 888
+	blez	$a1, .LBB9_1187
 # %bb.320:                              # %.lr.ph.preheader.i665
-	ld.bu	$a1, $s0, 872
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 880
+	ld.bu	$a2, $s0, 872
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 880
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_322
+	bgeu	$a1, $a0, .LBB9_322
 # %bb.321:
 	move	$a0, $zero
 	b	.LBB9_325
 .LBB9_322:                              # %vector.ph2792
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -22980,14 +22856,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_323
 # %bb.324:                              # %middle.block2803
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_325:                              # %.lr.ph.i667.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_326:                              # %.lr.ph.i667
                                         # =>This Inner Loop Header: Depth=1
@@ -22998,59 +22874,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_326
+	bnez	$a1, .LBB9_326
 	b	.LBB9_1187
 .LBB9_327:                              # %vector.ph2888
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_328:                              # %vector.body2893
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -23059,39 +22935,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_328
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_328
 # %bb.329:                              # %middle.block2899
-	beq	$a2, $a3, .LBB9_332
+	beq	$a1, $a2, .LBB9_332
 .LBB9_330:                              # %.lr.ph.i578.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_331:                              # %.lr.ph.i578
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_331
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_331
 .LBB9_332:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit582
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_340
+	blez	$a2, .LBB9_340
 # %bb.333:                              # %.lr.ph.preheader.i584
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -23190,68 +23066,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_339
 .LBB9_340:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit590
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_348
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_348
 # %bb.341:                              # %.lr.ph.preheader.i592
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_343
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_343
 # %bb.342:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_346
 .LBB9_343:                              # %vector.ph2920
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_344:                              # %vector.body2925
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -23260,39 +23135,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_344
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_344
 # %bb.345:                              # %middle.block2931
-	beq	$a2, $a3, .LBB9_348
+	beq	$a1, $a2, .LBB9_348
 .LBB9_346:                              # %.lr.ph.i594.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_347:                              # %.lr.ph.i594
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_347
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_347
 .LBB9_348:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit598
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_356
+	blez	$a2, .LBB9_356
 # %bb.349:                              # %.lr.ph.preheader.i600
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -23392,8 +23267,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_355
 .LBB9_356:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit606
 	ld.w	$a1, $s0, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.357:                              # %.lr.ph.preheader.i608
 	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
@@ -23579,52 +23453,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_368
 	b	.LBB9_1187
 .LBB9_369:                              # %vector.ph3741
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_370:                              # %vector.body3746
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -23633,39 +23507,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_370
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_370
 # %bb.371:                              # %middle.block3752
-	beq	$a2, $a3, .LBB9_374
+	beq	$a1, $a2, .LBB9_374
 .LBB9_372:                              # %.lr.ph.i.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_373:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_373
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_373
 .LBB9_374:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_382
+	blez	$a2, .LBB9_382
 # %bb.375:                              # %.lr.ph.preheader.i165
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -23765,8 +23639,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_381
 .LBB9_382:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit171
 	ld.w	$a1, $s0, 528
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.383:                              # %.lr.ph.preheader.i173
 	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
@@ -23866,52 +23739,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_389
 	b	.LBB9_1187
 .LBB9_390:                              # %vector.ph3048
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_391:                              # %vector.body3053
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -23920,39 +23793,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_391
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_391
 # %bb.392:                              # %middle.block3059
-	beq	$a2, $a3, .LBB9_395
+	beq	$a1, $a2, .LBB9_395
 .LBB9_393:                              # %.lr.ph.i498.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_394:                              # %.lr.ph.i498
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_394
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_394
 .LBB9_395:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit502
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_403
+	blez	$a2, .LBB9_403
 # %bb.396:                              # %.lr.ph.preheader.i504
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -24051,68 +23924,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_402
 .LBB9_403:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit510
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_411
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_411
 # %bb.404:                              # %.lr.ph.preheader.i512
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_406
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_406
 # %bb.405:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_409
 .LBB9_406:                              # %vector.ph3080
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_407:                              # %vector.body3085
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -24121,39 +23993,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_407
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_407
 # %bb.408:                              # %middle.block3091
-	beq	$a2, $a3, .LBB9_411
+	beq	$a1, $a2, .LBB9_411
 .LBB9_409:                              # %.lr.ph.i514.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_410:                              # %.lr.ph.i514
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_410
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_410
 .LBB9_411:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit518
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_419
+	blez	$a2, .LBB9_419
 # %bb.412:                              # %.lr.ph.preheader.i520
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -24253,8 +24125,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_418
 .LBB9_419:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit526
 	ld.w	$a1, $s0, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.420:                              # %.lr.ph.preheader.i528
 	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
@@ -24354,52 +24225,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_426
 	b	.LBB9_1187
 .LBB9_427:                              # %vector.ph2088
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_428:                              # %vector.body2093
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -24408,39 +24279,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_428
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_428
 # %bb.429:                              # %middle.block2099
-	beq	$a2, $a3, .LBB9_432
+	beq	$a1, $a2, .LBB9_432
 .LBB9_430:                              # %.lr.ph.i943.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_431:                              # %.lr.ph.i943
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_431
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_431
 .LBB9_432:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit947
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_440
+	blez	$a2, .LBB9_440
 # %bb.433:                              # %.lr.ph.preheader.i949
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -24539,68 +24410,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_439
 .LBB9_440:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit955
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_448
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_448
 # %bb.441:                              # %.lr.ph.preheader.i957
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_443
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_443
 # %bb.442:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_446
 .LBB9_443:                              # %vector.ph2120
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_444:                              # %vector.body2125
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -24609,39 +24479,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_444
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_444
 # %bb.445:                              # %middle.block2131
-	beq	$a2, $a3, .LBB9_448
+	beq	$a1, $a2, .LBB9_448
 .LBB9_446:                              # %.lr.ph.i959.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_447:                              # %.lr.ph.i959
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_447
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_447
 .LBB9_448:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit963
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_456
+	blez	$a2, .LBB9_456
 # %bb.449:                              # %.lr.ph.preheader.i965
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -24740,68 +24610,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_455
 .LBB9_456:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit971
-	ld.w	$a3, $s0, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_464
+	ld.w	$a2, $s0, 576
+	blez	$a2, .LBB9_464
 # %bb.457:                              # %.lr.ph.preheader.i973
-	ld.bu	$a2, $s0, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_459
+	ld.bu	$a1, $s0, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_459
 # %bb.458:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_462
 .LBB9_459:                              # %vector.ph2152
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_460:                              # %vector.body2157
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -24810,39 +24679,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_460
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_460
 # %bb.461:                              # %middle.block2163
-	beq	$a2, $a3, .LBB9_464
+	beq	$a1, $a2, .LBB9_464
 .LBB9_462:                              # %.lr.ph.i975.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_463:                              # %.lr.ph.i975
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_463
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_463
 .LBB9_464:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit979
 	ld.w	$a2, $s0, 600
-	blt	$a2, $a1, .LBB9_472
+	blez	$a2, .LBB9_472
 # %bb.465:                              # %.lr.ph.preheader.i981
 	ld.bu	$a1, $s0, 584
 	andi	$a1, $a1, 1
@@ -24941,68 +24810,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_471
 .LBB9_472:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit987
-	ld.w	$a3, $s0, 624
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_480
+	ld.w	$a2, $s0, 624
+	blez	$a2, .LBB9_480
 # %bb.473:                              # %.lr.ph.preheader.i989
-	ld.bu	$a2, $s0, 608
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 616
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_475
+	ld.bu	$a1, $s0, 608
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 616
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_475
 # %bb.474:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_478
 .LBB9_475:                              # %vector.ph2184
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_476:                              # %vector.body2189
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -25011,39 +24879,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_476
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_476
 # %bb.477:                              # %middle.block2195
-	beq	$a2, $a3, .LBB9_480
+	beq	$a1, $a2, .LBB9_480
 .LBB9_478:                              # %.lr.ph.i991.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_479:                              # %.lr.ph.i991
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_479
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_479
 .LBB9_480:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit995
 	ld.w	$a2, $s0, 648
-	blt	$a2, $a1, .LBB9_488
+	blez	$a2, .LBB9_488
 # %bb.481:                              # %.lr.ph.preheader.i997
 	ld.bu	$a1, $s0, 632
 	andi	$a1, $a1, 1
@@ -25142,68 +25010,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_487
 .LBB9_488:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1003
-	ld.w	$a3, $s0, 672
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_496
+	ld.w	$a2, $s0, 672
+	blez	$a2, .LBB9_496
 # %bb.489:                              # %.lr.ph.preheader.i1005
-	ld.bu	$a2, $s0, 656
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 664
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_491
+	ld.bu	$a1, $s0, 656
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 664
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_491
 # %bb.490:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_494
 .LBB9_491:                              # %vector.ph2216
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_492:                              # %vector.body2221
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -25212,56 +25079,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_492
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_492
 # %bb.493:                              # %middle.block2227
-	beq	$a2, $a3, .LBB9_496
+	beq	$a1, $a2, .LBB9_496
 .LBB9_494:                              # %.lr.ph.i1007.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_495:                              # %.lr.ph.i1007
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_495
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_495
 .LBB9_496:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1011
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_504
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_504
 # %bb.497:                              # %.lr.ph.preheader.i1013
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_499
+	bgeu	$a1, $a0, .LBB9_499
 # %bb.498:
 	move	$a0, $zero
 	b	.LBB9_502
 .LBB9_499:                              # %vector.ph2232
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -25319,14 +25186,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_500
 # %bb.501:                              # %middle.block2243
-	beq	$a0, $a2, .LBB9_504
+	beq	$a0, $a1, .LBB9_504
 .LBB9_502:                              # %.lr.ph.i1015.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_503:                              # %.lr.ph.i1015
                                         # =>This Inner Loop Header: Depth=1
@@ -25337,15 +25204,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_503
+	bnez	$a1, .LBB9_503
 .LBB9_504:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1019
 	ld.w	$a1, $s0, 960
-	ori	$fp, $zero, 1
-	blt	$a1, $fp, .LBB9_506
+	blez	$a1, .LBB9_506
 # %bb.505:                              # %.lr.ph.preheader.i1020
 	ld.d	$a0, $s0, 952
 	slli.d	$a2, $a1, 2
@@ -25354,7 +25220,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	jirl	$ra, $ra, 0
 .LBB9_506:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1021
 	ld.w	$a1, $s0, 984
-	blt	$a1, $fp, .LBB9_508
+	blez	$a1, .LBB9_508
 # %bb.507:                              # %.lr.ph.preheader.i1022
 	ld.d	$a0, $s0, 976
 	slli.d	$a2, $a1, 2
@@ -25363,13 +25229,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	jirl	$ra, $ra, 0
 .LBB9_508:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1023
 	ld.w	$a1, $s0, 1008
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.509:                              # %.lr.ph.preheader.i1024
 	ld.d	$a0, $s0, 1000
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -25377,52 +25241,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB9_510:                              # %vector.ph2248
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a1, $a1, 2
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a3, 16
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	lu12i.w	$a5, -419431
-	ori	$a5, $a5, 2458
-	lu32i.d	$a5, 104857
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr3, $a5
-	lu12i.w	$a5, -307024
-	ori	$a5, $a5, 3880
-	lu32i.d	$a5, 129446
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr4, $a5
-	move	$a5, $a1
+	addi.d	$a3, $a2, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr2, $a4
+	lu12i.w	$a4, -419431
+	ori	$a4, $a4, 2458
+	lu32i.d	$a4, 104857
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr3, $a4
+	lu12i.w	$a4, -307024
+	ori	$a4, $a4, 3880
+	lu32i.d	$a4, 129446
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr4, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB9_511:                              # %vector.body2253
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa7, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa7, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a6, 0
-	movfr2gr.d	$a6, $fa6
-	vinsgr2vr.d	$vr7, $a6, 1
-	vpickve2gr.w	$a6, $vr5, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vinsgr2vr.d	$vr7, $a5, 0
+	movfr2gr.d	$a5, $fa6
+	vinsgr2vr.d	$vr7, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr5, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa5, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr5, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a6, 0
-	movfr2gr.d	$a6, $fa5
-	vinsgr2vr.d	$vr6, $a6, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	movfr2gr.d	$a5, $fa5
+	vinsgr2vr.d	$vr6, $a5, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -25431,39 +25295,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a4, -16
-	vst	$vr6, $a4, 0
+	vst	$vr5, $a3, -16
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB9_511
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB9_511
 # %bb.512:                              # %middle.block2259
-	beq	$a1, $a2, .LBB9_515
+	beq	$a0, $a1, .LBB9_515
 .LBB9_513:                              # %.lr.ph.i891.preheader
-	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a1
-	alsl.d	$a3, $a1, $a3, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_514:                              # %.lr.ph.i891
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a4, $a1, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	addi.w	$a1, $a1, 1
-	bnez	$a2, .LBB9_514
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	addi.w	$a0, $a0, 1
+	bnez	$a1, .LBB9_514
 .LBB9_515:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit895
 	ld.w	$a1, $s0, 1176
-	blt	$a1, $a0, .LBB9_523
+	blez	$a1, .LBB9_523
 # %bb.516:                              # %.lr.ph.preheader.i897
 	ld.bu	$a0, $s0, 1160
 	andi	$a0, $a0, 1
@@ -25562,68 +25426,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_522
 .LBB9_523:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit903
-	ld.w	$a2, $s0, 1200
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB9_531
+	ld.w	$a1, $s0, 1200
+	blez	$a1, .LBB9_531
 # %bb.524:                              # %.lr.ph.preheader.i905
-	ld.bu	$a1, $s0, 1184
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $fp, $a1
-	ld.d	$a3, $s0, 1192
-	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB9_526
+	ld.bu	$a0, $s0, 1184
+	andi	$a0, $a0, 1
+	sltui	$a0, $a0, 1
+	slli.d	$a0, $a0, 3
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s0, 1192
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB9_526
 # %bb.525:
-	move	$a1, $zero
+	move	$a0, $zero
 	b	.LBB9_529
 .LBB9_526:                              # %vector.ph2280
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a1, $a1, 2
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a3, 16
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	lu12i.w	$a5, -419431
-	ori	$a5, $a5, 2458
-	lu32i.d	$a5, 104857
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr3, $a5
-	lu12i.w	$a5, -307024
-	ori	$a5, $a5, 3880
-	lu32i.d	$a5, 129446
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr4, $a5
-	move	$a5, $a1
+	addi.d	$a3, $a2, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr2, $a4
+	lu12i.w	$a4, -419431
+	ori	$a4, $a4, 2458
+	lu32i.d	$a4, 104857
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr3, $a4
+	lu12i.w	$a4, -307024
+	ori	$a4, $a4, 3880
+	lu32i.d	$a4, 129446
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr4, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB9_527:                              # %vector.body2285
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa7, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa7, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a6, 0
-	movfr2gr.d	$a6, $fa6
-	vinsgr2vr.d	$vr7, $a6, 1
-	vpickve2gr.w	$a6, $vr5, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vinsgr2vr.d	$vr7, $a5, 0
+	movfr2gr.d	$a5, $fa6
+	vinsgr2vr.d	$vr7, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr5, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa5, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr5, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a6, 0
-	movfr2gr.d	$a6, $fa5
-	vinsgr2vr.d	$vr6, $a6, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	movfr2gr.d	$a5, $fa5
+	vinsgr2vr.d	$vr6, $a5, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -25632,39 +25495,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a4, -16
-	vst	$vr6, $a4, 0
+	vst	$vr5, $a3, -16
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB9_527
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB9_527
 # %bb.528:                              # %middle.block2291
-	beq	$a1, $a2, .LBB9_531
+	beq	$a0, $a1, .LBB9_531
 .LBB9_529:                              # %.lr.ph.i907.preheader
-	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a1
-	alsl.d	$a3, $a1, $a3, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_530:                              # %.lr.ph.i907
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a4, $a1, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	addi.w	$a1, $a1, 1
-	bnez	$a2, .LBB9_530
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	addi.w	$a0, $a0, 1
+	bnez	$a1, .LBB9_530
 .LBB9_531:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit911
 	ld.w	$a1, $s0, 480
-	blt	$a1, $a0, .LBB9_539
+	blez	$a1, .LBB9_539
 # %bb.532:                              # %.lr.ph.preheader.i913
 	ld.bu	$a0, $s0, 464
 	andi	$a0, $a0, 1
@@ -25763,68 +25626,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_538
 .LBB9_539:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit919
-	ld.w	$a2, $s0, 504
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB9_547
+	ld.w	$a1, $s0, 504
+	blez	$a1, .LBB9_547
 # %bb.540:                              # %.lr.ph.preheader.i921
-	ld.bu	$a1, $s0, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $fp, $a1
-	ld.d	$a3, $s0, 496
-	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB9_542
+	ld.bu	$a0, $s0, 488
+	andi	$a0, $a0, 1
+	sltui	$a0, $a0, 1
+	slli.d	$a0, $a0, 3
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s0, 496
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB9_542
 # %bb.541:
-	move	$a1, $zero
+	move	$a0, $zero
 	b	.LBB9_545
 .LBB9_542:                              # %vector.ph2312
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a1, $a1, 2
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a3, 16
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	lu12i.w	$a5, -419431
-	ori	$a5, $a5, 2458
-	lu32i.d	$a5, 104857
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr3, $a5
-	lu12i.w	$a5, -307024
-	ori	$a5, $a5, 3880
-	lu32i.d	$a5, 129446
-	lu52i.d	$a5, $a5, 1023
-	vreplgr2vr.d	$vr4, $a5
-	move	$a5, $a1
+	addi.d	$a3, $a2, 16
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, 1
+	vreplgr2vr.d	$vr2, $a4
+	lu12i.w	$a4, -419431
+	ori	$a4, $a4, 2458
+	lu32i.d	$a4, 104857
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr3, $a4
+	lu12i.w	$a4, -307024
+	ori	$a4, $a4, 3880
+	lu32i.d	$a4, 129446
+	lu52i.d	$a4, $a4, 1023
+	vreplgr2vr.d	$vr4, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB9_543:                              # %vector.body2317
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vpickve2gr.w	$a5, $vr2, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa7, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr2, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa7, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a6, 0
-	movfr2gr.d	$a6, $fa6
-	vinsgr2vr.d	$vr7, $a6, 1
-	vpickve2gr.w	$a6, $vr5, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa6, $a6
+	vinsgr2vr.d	$vr7, $a5, 0
+	movfr2gr.d	$a5, $fa6
+	vinsgr2vr.d	$vr7, $a5, 1
+	vpickve2gr.w	$a5, $vr5, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa6, $a5
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a6, $vr5, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa5, $a6
-	movfr2gr.d	$a6, $fa6
+	vpickve2gr.w	$a5, $vr5, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa5, $a5
+	movfr2gr.d	$a5, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a6, 0
-	movfr2gr.d	$a6, $fa5
-	vinsgr2vr.d	$vr6, $a6, 1
+	vinsgr2vr.d	$vr6, $a5, 0
+	movfr2gr.d	$a5, $fa5
+	vinsgr2vr.d	$vr6, $a5, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -25833,39 +25695,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a4, -16
-	vst	$vr6, $a4, 0
+	vst	$vr5, $a3, -16
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB9_543
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB9_543
 # %bb.544:                              # %middle.block2323
-	beq	$a1, $a2, .LBB9_547
+	beq	$a0, $a1, .LBB9_547
 .LBB9_545:                              # %.lr.ph.i923.preheader
-	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a1
-	alsl.d	$a3, $a1, $a3, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_546:                              # %.lr.ph.i923
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a4, $a1, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a0, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	addi.w	$a1, $a1, 1
-	bnez	$a2, .LBB9_546
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	addi.w	$a0, $a0, 1
+	bnez	$a1, .LBB9_546
 .LBB9_547:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit927
 	ld.w	$a1, $s0, 912
-	blt	$a1, $a0, .LBB9_549
+	blez	$a1, .LBB9_549
 # %bb.548:                              # %.lr.ph.preheader.i928
 	ld.d	$a0, $s0, 904
 	slli.d	$a2, $a1, 2
@@ -25874,8 +25736,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	jirl	$ra, $ra, 0
 .LBB9_549:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit929
 	ld.w	$a1, $s0, 936
-	ori	$s1, $zero, 1
-	blt	$a1, $s1, .LBB9_551
+	blez	$a1, .LBB9_551
 # %bb.550:                              # %.lr.ph.preheader.i930
 	ld.d	$a0, $s0, 928
 	slli.d	$a2, $a1, 2
@@ -25884,7 +25745,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	jirl	$ra, $ra, 0
 .LBB9_551:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit931
 	ld.w	$a1, $s0, 1512
-	blt	$a1, $s1, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.552:                              # %.lr.ph.preheader.i933
 	ld.bu	$a0, $s0, 1496
 	andi	$a0, $a0, 1
@@ -25984,52 +25845,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_558
 	b	.LBB9_1187
 .LBB9_559:                              # %vector.ph2744
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_560:                              # %vector.body2749
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -26038,56 +25899,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_560
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_560
 # %bb.561:                              # %middle.block2755
-	beq	$a2, $a3, .LBB9_564
+	beq	$a1, $a2, .LBB9_564
 .LBB9_562:                              # %.lr.ph.i675.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_563:                              # %.lr.ph.i675
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_563
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_563
 .LBB9_564:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit679
-	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 504
+	blez	$a1, .LBB9_1187
 # %bb.565:                              # %.lr.ph.preheader.i681
-	ld.bu	$a1, $s0, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 496
+	ld.bu	$a2, $s0, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_567
+	bgeu	$a1, $a0, .LBB9_567
 # %bb.566:
 	move	$a0, $zero
 	b	.LBB9_570
 .LBB9_567:                              # %vector.ph2760
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -26145,14 +26006,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_568
 # %bb.569:                              # %middle.block2771
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_570:                              # %.lr.ph.i683.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_571:                              # %.lr.ph.i683
                                         # =>This Inner Loop Header: Depth=1
@@ -26163,47 +26024,47 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_571
+	bnez	$a1, .LBB9_571
 	b	.LBB9_1187
 .LBB9_572:                              # %vector.ph3160
-	bstrpick.d	$a3, $a4, 30, 1
-	slli.d	$a3, $a3, 1
+	bstrpick.d	$a2, $a3, 30, 1
+	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
 	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
-	move	$a7, $a3
+	addi.d	$a5, $a4, 16
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr4, $a6
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB9_573:                              # %vector.body3167
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa7, $t0
+	vpickve2gr.w	$a7, $vr4, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$ft0, $t0
-	movfr2gr.d	$t0, $fa7
+	vpickve2gr.w	$a7, $vr4, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$ft0, $a7
+	movfr2gr.d	$a7, $fa7
 	ffint.d.l	$fa7, $ft0
-	vinsgr2vr.d	$vr8, $t0, 0
-	movfr2gr.d	$t0, $fa7
-	vinsgr2vr.d	$vr8, $t0, 1
+	vinsgr2vr.d	$vr8, $a7, 0
+	movfr2gr.d	$a7, $fa7
+	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
 	vfmul.d	$vr7, $vr3, $vr7
@@ -26211,28 +26072,28 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
+	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vst	$vr7, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
-	addi.d	$a7, $a7, -2
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB9_573
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB9_573
 # %bb.574:                              # %middle.block3172
-	beq	$a3, $a4, .LBB9_577
+	beq	$a2, $a3, .LBB9_577
 .LBB9_575:                              # %.lr.ph.i431.preheader
-	pcalau12i	$a6, %pc_hi20(.LCPI9_1)
-	fld.d	$fa2, $a6, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a6, %pc_hi20(.LCPI9_2)
-	fld.d	$fa3, $a6, %pc_lo12(.LCPI9_2)
-	sub.d	$a4, $a4, $a3
-	alsl.d	$a5, $a3, $a5, 4
-	addi.d	$a5, $a5, 8
+	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
+	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
+	fld.d	$fa3, $a5, %pc_lo12(.LCPI9_2)
+	sub.d	$a3, $a3, $a2
+	alsl.d	$a4, $a2, $a4, 4
+	addi.d	$a4, $a4, 8
 	.p2align	4, , 16
 .LBB9_576:                              # %.lr.ph.i431
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a6, $a3, 31, 0
-	movgr2fr.d	$fa4, $a6
+	bstrpick.d	$a5, $a2, 31, 0
+	movgr2fr.d	$fa4, $a5
 	ffint.d.l	$fa4, $fa4
 	fadd.d	$fa5, $fa4, $fa2
 	fmul.d	$fa6, $fa0, $fa5
@@ -26240,15 +26101,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fadd.d	$fa4, $fa4, $fa3
 	fdiv.d	$fa6, $fa6, $fa4
 	fdiv.d	$fa4, $fa5, $fa4
-	fst.d	$fa6, $a5, -8
-	fst.d	$fa4, $a5, 0
-	addi.d	$a4, $a4, -1
-	addi.d	$a5, $a5, 16
-	addi.w	$a3, $a3, 1
-	bnez	$a4, .LBB9_576
+	fst.d	$fa6, $a4, -8
+	fst.d	$fa4, $a4, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
+	addi.w	$a2, $a2, 1
+	bnez	$a3, .LBB9_576
 .LBB9_577:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit
 	ld.w	$a3, $s0, 1056
-	blt	$a3, $a2, .LBB9_585
+	blez	$a3, .LBB9_585
 # %bb.578:                              # %.lr.ph.preheader.i438
 	ld.bu	$a2, $s0, 1040
 	andi	$a2, $a2, 1
@@ -26340,56 +26201,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_584
 .LBB9_585:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit445
-	ld.w	$a4, $s0, 1080
-	ori	$a2, $zero, 1
-	blt	$a4, $a2, .LBB9_593
+	ld.w	$a3, $s0, 1080
+	blez	$a3, .LBB9_593
 # %bb.586:                              # %.lr.ph.preheader.i449
-	ld.bu	$a3, $s0, 1064
-	andi	$a3, $a3, 1
-	sltui	$a3, $a3, 1
-	slli.d	$a3, $a3, 3
-	fldx.d	$fa0, $a0, $a3
-	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s0, 1072
-	bne	$a4, $a2, .LBB9_588
+	ld.bu	$a2, $s0, 1064
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	fldx.d	$fa1, $a1, $a2
+	ld.d	$a4, $s0, 1072
+	ori	$a2, $zero, 1
+	bne	$a3, $a2, .LBB9_588
 # %bb.587:
-	move	$a3, $zero
+	move	$a2, $zero
 	b	.LBB9_591
 .LBB9_588:                              # %vector.ph3194
-	bstrpick.d	$a3, $a4, 30, 1
-	slli.d	$a3, $a3, 1
+	bstrpick.d	$a2, $a3, 30, 1
+	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
 	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
-	move	$a7, $a3
+	addi.d	$a5, $a4, 16
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr4, $a6
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB9_589:                              # %vector.body3201
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa7, $t0
+	vpickve2gr.w	$a7, $vr4, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$ft0, $t0
-	movfr2gr.d	$t0, $fa7
+	vpickve2gr.w	$a7, $vr4, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$ft0, $a7
+	movfr2gr.d	$a7, $fa7
 	ffint.d.l	$fa7, $ft0
-	vinsgr2vr.d	$vr8, $t0, 0
-	movfr2gr.d	$t0, $fa7
-	vinsgr2vr.d	$vr8, $t0, 1
+	vinsgr2vr.d	$vr8, $a7, 0
+	movfr2gr.d	$a7, $fa7
+	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
 	vfmul.d	$vr7, $vr3, $vr7
@@ -26397,28 +26258,28 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
+	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vst	$vr7, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
-	addi.d	$a7, $a7, -2
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB9_589
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB9_589
 # %bb.590:                              # %middle.block3206
-	beq	$a3, $a4, .LBB9_593
+	beq	$a2, $a3, .LBB9_593
 .LBB9_591:                              # %.lr.ph.i451.preheader
-	pcalau12i	$a6, %pc_hi20(.LCPI9_1)
-	fld.d	$fa2, $a6, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a6, %pc_hi20(.LCPI9_2)
-	fld.d	$fa3, $a6, %pc_lo12(.LCPI9_2)
-	sub.d	$a4, $a4, $a3
-	alsl.d	$a5, $a3, $a5, 4
-	addi.d	$a5, $a5, 8
+	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
+	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
+	fld.d	$fa3, $a5, %pc_lo12(.LCPI9_2)
+	sub.d	$a3, $a3, $a2
+	alsl.d	$a4, $a2, $a4, 4
+	addi.d	$a4, $a4, 8
 	.p2align	4, , 16
 .LBB9_592:                              # %.lr.ph.i451
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a6, $a3, 31, 0
-	movgr2fr.d	$fa4, $a6
+	bstrpick.d	$a5, $a2, 31, 0
+	movgr2fr.d	$fa4, $a5
 	ffint.d.l	$fa4, $fa4
 	fadd.d	$fa5, $fa4, $fa2
 	fmul.d	$fa6, $fa0, $fa5
@@ -26426,15 +26287,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fadd.d	$fa4, $fa4, $fa3
 	fdiv.d	$fa6, $fa6, $fa4
 	fdiv.d	$fa4, $fa5, $fa4
-	fst.d	$fa6, $a5, -8
-	fst.d	$fa4, $a5, 0
-	addi.d	$a4, $a4, -1
-	addi.d	$a5, $a5, 16
-	addi.w	$a3, $a3, 1
-	bnez	$a4, .LBB9_592
+	fst.d	$fa6, $a4, -8
+	fst.d	$fa4, $a4, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
+	addi.w	$a2, $a2, 1
+	bnez	$a3, .LBB9_592
 .LBB9_593:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit456
 	ld.w	$a3, $s0, 1104
-	blt	$a3, $a2, .LBB9_601
+	blez	$a3, .LBB9_601
 # %bb.594:                              # %.lr.ph.preheader.i460
 	ld.bu	$a2, $s0, 1088
 	andi	$a2, $a2, 1
@@ -26527,17 +26388,17 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a3, .LBB9_600
 .LBB9_601:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit467
 	ld.w	$a2, $s0, 1128
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB9_1187
+	blez	$a2, .LBB9_1187
 # %bb.602:                              # %.lr.ph.preheader.i471
-	ld.bu	$a4, $s0, 1112
-	andi	$a4, $a4, 1
-	sltui	$a4, $a4, 1
-	slli.d	$a4, $a4, 3
-	fldx.d	$fa0, $a0, $a4
-	fldx.d	$fa1, $a1, $a4
+	ld.bu	$a3, $s0, 1112
+	andi	$a3, $a3, 1
+	sltui	$a3, $a3, 1
+	slli.d	$a3, $a3, 3
+	fldx.d	$fa0, $a0, $a3
+	fldx.d	$fa1, $a1, $a3
 	ld.d	$a1, $s0, 1120
-	bne	$a2, $a3, .LBB9_604
+	ori	$a0, $zero, 1
+	bne	$a2, $a0, .LBB9_604
 # %bb.603:
 	move	$a0, $zero
 	b	.LBB9_607
@@ -26620,52 +26481,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_608
 	b	.LBB9_1187
 .LBB9_609:                              # %vector.ph1464
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_610:                              # %vector.body1469
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -26674,39 +26535,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_610
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_610
 # %bb.611:                              # %middle.block1475
-	beq	$a2, $a3, .LBB9_614
+	beq	$a1, $a2, .LBB9_614
 .LBB9_612:                              # %.lr.ph.i1293.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_613:                              # %.lr.ph.i1293
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_613
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_613
 .LBB9_614:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1297
 	ld.w	$a2, $s0, 1272
-	blt	$a2, $a1, .LBB9_622
+	blez	$a2, .LBB9_622
 # %bb.615:                              # %.lr.ph.preheader.i1299
 	ld.bu	$a1, $s0, 1256
 	andi	$a1, $a1, 1
@@ -26805,68 +26666,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_621
 .LBB9_622:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1305
-	ld.w	$a3, $s0, 1296
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_630
+	ld.w	$a2, $s0, 1296
+	blez	$a2, .LBB9_630
 # %bb.623:                              # %.lr.ph.preheader.i1307
-	ld.bu	$a2, $s0, 1280
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1288
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_625
+	ld.bu	$a1, $s0, 1280
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1288
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_625
 # %bb.624:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_628
 .LBB9_625:                              # %vector.ph1496
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_626:                              # %vector.body1501
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -26875,39 +26735,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_626
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_626
 # %bb.627:                              # %middle.block1507
-	beq	$a2, $a3, .LBB9_630
+	beq	$a1, $a2, .LBB9_630
 .LBB9_628:                              # %.lr.ph.i1309.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_629:                              # %.lr.ph.i1309
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_629
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_629
 .LBB9_630:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1313
 	ld.w	$a2, $s0, 1320
-	blt	$a2, $a1, .LBB9_638
+	blez	$a2, .LBB9_638
 # %bb.631:                              # %.lr.ph.preheader.i1315
 	ld.bu	$a1, $s0, 1304
 	andi	$a1, $a1, 1
@@ -27006,68 +26866,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_637
 .LBB9_638:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1321
-	ld.w	$a3, $s0, 1344
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_646
+	ld.w	$a2, $s0, 1344
+	blez	$a2, .LBB9_646
 # %bb.639:                              # %.lr.ph.preheader.i1323
-	ld.bu	$a2, $s0, 1328
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1336
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_641
+	ld.bu	$a1, $s0, 1328
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1336
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_641
 # %bb.640:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_644
 .LBB9_641:                              # %vector.ph1528
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_642:                              # %vector.body1533
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -27076,56 +26935,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_642
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_642
 # %bb.643:                              # %middle.block1539
-	beq	$a2, $a3, .LBB9_646
+	beq	$a1, $a2, .LBB9_646
 .LBB9_644:                              # %.lr.ph.i1325.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_645:                              # %.lr.ph.i1325
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_645
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_645
 .LBB9_646:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1329
-	ld.w	$a2, $s0, 1368
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1368
+	blez	$a1, .LBB9_1187
 # %bb.647:                              # %.lr.ph.preheader.i1331
-	ld.bu	$a1, $s0, 1352
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1360
+	ld.bu	$a2, $s0, 1352
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1360
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_649
+	bgeu	$a1, $a0, .LBB9_649
 # %bb.648:
 	move	$a0, $zero
 	b	.LBB9_652
 .LBB9_649:                              # %vector.ph1544
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -27183,14 +27042,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_650
 # %bb.651:                              # %middle.block1555
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_652:                              # %.lr.ph.i1333.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_653:                              # %.lr.ph.i1333
                                         # =>This Inner Loop Header: Depth=1
@@ -27201,59 +27060,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_653
+	bnez	$a1, .LBB9_653
 	b	.LBB9_1187
 .LBB9_654:                              # %vector.ph2664
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_655:                              # %vector.body2669
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -27262,39 +27121,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_655
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_655
 # %bb.656:                              # %middle.block2675
-	beq	$a2, $a3, .LBB9_659
+	beq	$a1, $a2, .LBB9_659
 .LBB9_657:                              # %.lr.ph.i707.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_658:                              # %.lr.ph.i707
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_658
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_658
 .LBB9_659:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit711
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_667
+	blez	$a2, .LBB9_667
 # %bb.660:                              # %.lr.ph.preheader.i713
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -27394,8 +27253,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_666
 .LBB9_667:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit719
 	ld.w	$a1, $s0, 528
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.668:                              # %.lr.ph.preheader.i721
 	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
@@ -27495,52 +27353,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_674
 	b	.LBB9_1187
 .LBB9_675:                              # %vector.ph2440
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_676:                              # %vector.body2445
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -27549,56 +27407,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_676
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_676
 # %bb.677:                              # %middle.block2451
-	beq	$a2, $a3, .LBB9_680
+	beq	$a1, $a2, .LBB9_680
 .LBB9_678:                              # %.lr.ph.i827.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_679:                              # %.lr.ph.i827
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_679
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_679
 .LBB9_680:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit831
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_1187
 # %bb.681:                              # %.lr.ph.preheader.i833
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_683
+	bgeu	$a1, $a0, .LBB9_683
 # %bb.682:
 	move	$a0, $zero
 	b	.LBB9_686
 .LBB9_683:                              # %vector.ph2456
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -27656,14 +27514,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_684
 # %bb.685:                              # %middle.block2467
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_686:                              # %.lr.ph.i835.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_687:                              # %.lr.ph.i835
                                         # =>This Inner Loop Header: Depth=1
@@ -27674,59 +27532,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_687
+	bnez	$a1, .LBB9_687
 	b	.LBB9_1187
 .LBB9_688:                              # %vector.ph3325
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_689:                              # %vector.body3330
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -27735,39 +27593,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_689
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_689
 # %bb.690:                              # %middle.block3336
-	beq	$a2, $a3, .LBB9_693
+	beq	$a1, $a2, .LBB9_693
 .LBB9_691:                              # %.lr.ph.i359.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_692:                              # %.lr.ph.i359
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_692
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_692
 .LBB9_693:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit363
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_701
+	blez	$a2, .LBB9_701
 # %bb.694:                              # %.lr.ph.preheader.i365
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -27866,68 +27724,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_700
 .LBB9_701:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit371
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_709
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_709
 # %bb.702:                              # %.lr.ph.preheader.i373
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_704
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_704
 # %bb.703:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_707
 .LBB9_704:                              # %vector.ph3357
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_705:                              # %vector.body3362
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -27936,56 +27793,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_705
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_705
 # %bb.706:                              # %middle.block3368
-	beq	$a2, $a3, .LBB9_709
+	beq	$a1, $a2, .LBB9_709
 .LBB9_707:                              # %.lr.ph.i375.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_708:                              # %.lr.ph.i375
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_708
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_708
 .LBB9_709:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit379
-	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 552
+	blez	$a1, .LBB9_1187
 # %bb.710:                              # %.lr.ph.preheader.i381
-	ld.bu	$a1, $s0, 536
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 544
+	ld.bu	$a2, $s0, 536
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 544
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_712
+	bgeu	$a1, $a0, .LBB9_712
 # %bb.711:
 	move	$a0, $zero
 	b	.LBB9_715
 .LBB9_712:                              # %vector.ph3373
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -28043,14 +27900,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_713
 # %bb.714:                              # %middle.block3384
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_715:                              # %.lr.ph.i383.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_716:                              # %.lr.ph.i383
                                         # =>This Inner Loop Header: Depth=1
@@ -28061,59 +27918,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_716
+	bnez	$a1, .LBB9_716
 	b	.LBB9_1187
 .LBB9_717:                              # %vector.ph2408
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_718:                              # %vector.body2413
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -28122,56 +27979,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_718
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_718
 # %bb.719:                              # %middle.block2419
-	beq	$a2, $a3, .LBB9_722
+	beq	$a1, $a2, .LBB9_722
 .LBB9_720:                              # %.lr.ph.i843.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_721:                              # %.lr.ph.i843
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_721
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_721
 .LBB9_722:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit847
-	ld.w	$a2, $s0, 1176
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1176
+	blez	$a1, .LBB9_1187
 # %bb.723:                              # %.lr.ph.preheader.i849
-	ld.bu	$a1, $s0, 1160
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1168
+	ld.bu	$a2, $s0, 1160
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1168
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_725
+	bgeu	$a1, $a0, .LBB9_725
 # %bb.724:
 	move	$a0, $zero
 	b	.LBB9_728
 .LBB9_725:                              # %vector.ph2424
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -28229,14 +28086,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_726
 # %bb.727:                              # %middle.block2435
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_728:                              # %.lr.ph.i851.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_729:                              # %.lr.ph.i851
                                         # =>This Inner Loop Header: Depth=1
@@ -28247,59 +28104,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_729
+	bnez	$a1, .LBB9_729
 	b	.LBB9_1187
 .LBB9_730:                              # %vector.ph2808
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_731:                              # %vector.body2813
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -28308,39 +28165,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_731
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_731
 # %bb.732:                              # %middle.block2819
-	beq	$a2, $a3, .LBB9_735
+	beq	$a1, $a2, .LBB9_735
 .LBB9_733:                              # %.lr.ph.i627.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_734:                              # %.lr.ph.i627
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_734
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_734
 .LBB9_735:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit631
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_743
+	blez	$a2, .LBB9_743
 # %bb.736:                              # %.lr.ph.preheader.i633
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -28439,68 +28296,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_742
 .LBB9_743:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit639
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_751
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_751
 # %bb.744:                              # %.lr.ph.preheader.i641
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_746
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_746
 # %bb.745:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_749
 .LBB9_746:                              # %vector.ph2840
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_747:                              # %vector.body2845
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -28509,56 +28365,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_747
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_747
 # %bb.748:                              # %middle.block2851
-	beq	$a2, $a3, .LBB9_751
+	beq	$a1, $a2, .LBB9_751
 .LBB9_749:                              # %.lr.ph.i643.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_750:                              # %.lr.ph.i643
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_750
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_750
 .LBB9_751:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit647
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_1187
 # %bb.752:                              # %.lr.ph.preheader.i649
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_754
+	bgeu	$a1, $a0, .LBB9_754
 # %bb.753:
 	move	$a0, $zero
 	b	.LBB9_757
 .LBB9_754:                              # %vector.ph2856
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -28616,14 +28472,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_755
 # %bb.756:                              # %middle.block2867
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_757:                              # %.lr.ph.i651.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_758:                              # %.lr.ph.i651
                                         # =>This Inner Loop Header: Depth=1
@@ -28634,59 +28490,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_758
+	bnez	$a1, .LBB9_758
 	b	.LBB9_1187
 .LBB9_759:                              # %vector.ph3245
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_760:                              # %vector.body3250
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -28695,39 +28551,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_760
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_760
 # %bb.761:                              # %middle.block3256
-	beq	$a2, $a3, .LBB9_764
+	beq	$a1, $a2, .LBB9_764
 .LBB9_762:                              # %.lr.ph.i391.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_763:                              # %.lr.ph.i391
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_763
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_763
 .LBB9_764:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit395
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_772
+	blez	$a2, .LBB9_772
 # %bb.765:                              # %.lr.ph.preheader.i397
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -28826,68 +28682,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_771
 .LBB9_772:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit403
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_780
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_780
 # %bb.773:                              # %.lr.ph.preheader.i405
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_775
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_775
 # %bb.774:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_778
 .LBB9_775:                              # %vector.ph3277
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_776:                              # %vector.body3282
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -28896,39 +28751,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_776
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_776
 # %bb.777:                              # %middle.block3288
-	beq	$a2, $a3, .LBB9_780
+	beq	$a1, $a2, .LBB9_780
 .LBB9_778:                              # %.lr.ph.i407.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_779:                              # %.lr.ph.i407
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_779
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_779
 .LBB9_780:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit411
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_788
+	blez	$a2, .LBB9_788
 # %bb.781:                              # %.lr.ph.preheader.i413
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -29028,8 +28883,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_787
 .LBB9_788:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit419
 	ld.w	$a1, $s0, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.789:                              # %.lr.ph.preheader.i421
 	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
@@ -29129,52 +28983,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_795
 	b	.LBB9_1187
 .LBB9_796:                              # %vector.ph2584
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_797:                              # %vector.body2589
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -29183,39 +29037,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_797
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_797
 # %bb.798:                              # %middle.block2595
-	beq	$a2, $a3, .LBB9_801
+	beq	$a1, $a2, .LBB9_801
 .LBB9_799:                              # %.lr.ph.i731.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_800:                              # %.lr.ph.i731
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_800
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_800
 .LBB9_801:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit735
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_809
+	blez	$a2, .LBB9_809
 # %bb.802:                              # %.lr.ph.preheader.i737
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -29314,68 +29168,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_808
 .LBB9_809:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit743
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_817
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_817
 # %bb.810:                              # %.lr.ph.preheader.i745
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_812
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_812
 # %bb.811:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_815
 .LBB9_812:                              # %vector.ph2616
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_813:                              # %vector.body2621
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -29384,39 +29237,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_813
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_813
 # %bb.814:                              # %middle.block2627
-	beq	$a2, $a3, .LBB9_817
+	beq	$a1, $a2, .LBB9_817
 .LBB9_815:                              # %.lr.ph.i747.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_816:                              # %.lr.ph.i747
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_816
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_816
 .LBB9_817:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit751
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_825
+	blez	$a2, .LBB9_825
 # %bb.818:                              # %.lr.ph.preheader.i753
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -29516,8 +29369,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_824
 .LBB9_825:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit759
 	ld.w	$a1, $s0, 1608
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.826:                              # %.lr.ph.preheader.i761
 	ld.bu	$a2, $s0, 1592
 	andi	$a2, $a2, 1
@@ -29617,52 +29469,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_832
 	b	.LBB9_1187
 .LBB9_833:                              # %vector.ph2968
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_834:                              # %vector.body2973
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -29671,39 +29523,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_834
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_834
 # %bb.835:                              # %middle.block2979
-	beq	$a2, $a3, .LBB9_838
+	beq	$a1, $a2, .LBB9_838
 .LBB9_836:                              # %.lr.ph.i538.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_837:                              # %.lr.ph.i538
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_837
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_837
 .LBB9_838:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit542
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_846
+	blez	$a2, .LBB9_846
 # %bb.839:                              # %.lr.ph.preheader.i544
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -29802,68 +29654,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_845
 .LBB9_846:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit550
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_854
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_854
 # %bb.847:                              # %.lr.ph.preheader.i552
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_849
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_849
 # %bb.848:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_852
 .LBB9_849:                              # %vector.ph3000
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_850:                              # %vector.body3005
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -29872,39 +29723,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_850
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_850
 # %bb.851:                              # %middle.block3011
-	beq	$a2, $a3, .LBB9_854
+	beq	$a1, $a2, .LBB9_854
 .LBB9_852:                              # %.lr.ph.i554.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_853:                              # %.lr.ph.i554
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_853
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_853
 .LBB9_854:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit558
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_862
+	blez	$a2, .LBB9_862
 # %bb.855:                              # %.lr.ph.preheader.i560
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -30004,8 +29855,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_861
 .LBB9_862:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit566
 	ld.w	$a1, $s0, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.863:                              # %.lr.ph.preheader.i568
 	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
@@ -30105,52 +29955,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_869
 	b	.LBB9_1187
 .LBB9_870:                              # %vector.ph3128
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_871:                              # %vector.body3133
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -30159,56 +30009,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_871
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_871
 # %bb.872:                              # %middle.block3139
-	beq	$a2, $a3, .LBB9_875
+	beq	$a1, $a2, .LBB9_875
 .LBB9_873:                              # %.lr.ph.i482.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_874:                              # %.lr.ph.i482
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_874
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_874
 .LBB9_875:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit486
-	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 504
+	blez	$a1, .LBB9_1187
 # %bb.876:                              # %.lr.ph.preheader.i488
-	ld.bu	$a1, $s0, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 496
+	ld.bu	$a2, $s0, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_878
+	bgeu	$a1, $a0, .LBB9_878
 # %bb.877:
 	move	$a0, $zero
 	b	.LBB9_881
 .LBB9_878:                              # %vector.ph3144
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -30266,14 +30116,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_879
 # %bb.880:                              # %middle.block3155
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_881:                              # %.lr.ph.i490.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_882:                              # %.lr.ph.i490
                                         # =>This Inner Loop Header: Depth=1
@@ -30284,59 +30134,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_882
+	bnez	$a1, .LBB9_882
 	b	.LBB9_1187
 .LBB9_883:                              # %vector.ph1560
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_884:                              # %vector.body1565
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -30345,39 +30195,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_884
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_884
 # %bb.885:                              # %middle.block1571
-	beq	$a2, $a3, .LBB9_888
+	beq	$a1, $a2, .LBB9_888
 .LBB9_886:                              # %.lr.ph.i1253.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_887:                              # %.lr.ph.i1253
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_887
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_887
 .LBB9_888:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1257
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_896
+	blez	$a2, .LBB9_896
 # %bb.889:                              # %.lr.ph.preheader.i1259
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -30476,68 +30326,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_895
 .LBB9_896:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1265
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_904
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_904
 # %bb.897:                              # %.lr.ph.preheader.i1267
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_899
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_899
 # %bb.898:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_902
 .LBB9_899:                              # %vector.ph1592
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_900:                              # %vector.body1597
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -30546,39 +30395,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_900
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_900
 # %bb.901:                              # %middle.block1603
-	beq	$a2, $a3, .LBB9_904
+	beq	$a1, $a2, .LBB9_904
 .LBB9_902:                              # %.lr.ph.i1269.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_903:                              # %.lr.ph.i1269
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_903
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_903
 .LBB9_904:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1273
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_912
+	blez	$a2, .LBB9_912
 # %bb.905:                              # %.lr.ph.preheader.i1275
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -30678,8 +30527,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_911
 .LBB9_912:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1281
 	ld.w	$a1, $s0, 576
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.913:                              # %.lr.ph.preheader.i1283
 	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
@@ -30865,52 +30713,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_924
 	b	.LBB9_1187
 .LBB9_925:                              # %vector.ph2376
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_926:                              # %vector.body2381
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -30919,56 +30767,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_926
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_926
 # %bb.927:                              # %middle.block2387
-	beq	$a2, $a3, .LBB9_930
+	beq	$a1, $a2, .LBB9_930
 .LBB9_928:                              # %.lr.ph.i859.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_929:                              # %.lr.ph.i859
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_929
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_929
 .LBB9_930:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit863
-	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 504
+	blez	$a1, .LBB9_1187
 # %bb.931:                              # %.lr.ph.preheader.i865
-	ld.bu	$a1, $s0, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 496
+	ld.bu	$a2, $s0, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_933
+	bgeu	$a1, $a0, .LBB9_933
 # %bb.932:
 	move	$a0, $zero
 	b	.LBB9_936
 .LBB9_933:                              # %vector.ph2392
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -31026,14 +30874,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_934
 # %bb.935:                              # %middle.block2403
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_936:                              # %.lr.ph.i867.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_937:                              # %.lr.ph.i867
                                         # =>This Inner Loop Header: Depth=1
@@ -31044,59 +30892,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_937
+	bnez	$a1, .LBB9_937
 	b	.LBB9_1187
 .LBB9_938:                              # %vector.ph2472
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_939:                              # %vector.body2477
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -31105,39 +30953,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_939
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_939
 # %bb.940:                              # %middle.block2483
-	beq	$a2, $a3, .LBB9_943
+	beq	$a1, $a2, .LBB9_943
 .LBB9_941:                              # %.lr.ph.i771.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_942:                              # %.lr.ph.i771
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_942
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_942
 .LBB9_943:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit775
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_951
+	blez	$a2, .LBB9_951
 # %bb.944:                              # %.lr.ph.preheader.i777
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -31236,68 +31084,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_950
 .LBB9_951:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit783
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_959
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_959
 # %bb.952:                              # %.lr.ph.preheader.i785
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_954
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_954
 # %bb.953:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_957
 .LBB9_954:                              # %vector.ph2504
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_955:                              # %vector.body2509
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -31306,39 +31153,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_955
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_955
 # %bb.956:                              # %middle.block2515
-	beq	$a2, $a3, .LBB9_959
+	beq	$a1, $a2, .LBB9_959
 .LBB9_957:                              # %.lr.ph.i787.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_958:                              # %.lr.ph.i787
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_958
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_958
 .LBB9_959:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit791
 	ld.w	$a2, $s0, 1536
-	blt	$a2, $a1, .LBB9_967
+	blez	$a2, .LBB9_967
 # %bb.960:                              # %.lr.ph.preheader.i793
 	ld.bu	$a1, $s0, 1520
 	andi	$a1, $a1, 1
@@ -31437,68 +31284,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_966
 .LBB9_967:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit799
-	ld.w	$a3, $s0, 1560
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_975
+	ld.w	$a2, $s0, 1560
+	blez	$a2, .LBB9_975
 # %bb.968:                              # %.lr.ph.preheader.i801
-	ld.bu	$a2, $s0, 1544
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1552
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_970
+	ld.bu	$a1, $s0, 1544
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1552
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_970
 # %bb.969:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_973
 .LBB9_970:                              # %vector.ph2536
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_971:                              # %vector.body2541
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -31507,39 +31353,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_971
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_971
 # %bb.972:                              # %middle.block2547
-	beq	$a2, $a3, .LBB9_975
+	beq	$a1, $a2, .LBB9_975
 .LBB9_973:                              # %.lr.ph.i803.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_974:                              # %.lr.ph.i803
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_974
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_974
 .LBB9_975:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit807
 	ld.w	$a2, $s0, 1584
-	blt	$a2, $a1, .LBB9_983
+	blez	$a2, .LBB9_983
 # %bb.976:                              # %.lr.ph.preheader.i809
 	ld.bu	$a1, $s0, 1568
 	andi	$a1, $a1, 1
@@ -31639,8 +31485,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_982
 .LBB9_983:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit815
 	ld.w	$a1, $s0, 1608
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.984:                              # %.lr.ph.preheader.i817
 	ld.bu	$a2, $s0, 1592
 	andi	$a2, $a2, 1
@@ -31740,52 +31585,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_990
 	b	.LBB9_1187
 .LBB9_991:                              # %vector.ph2344
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_992:                              # %vector.body2349
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -31794,56 +31639,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_992
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_992
 # %bb.993:                              # %middle.block2355
-	beq	$a2, $a3, .LBB9_996
+	beq	$a1, $a2, .LBB9_996
 .LBB9_994:                              # %.lr.ph.i875.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_995:                              # %.lr.ph.i875
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_995
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_995
 .LBB9_996:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit879
-	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 504
+	blez	$a1, .LBB9_1187
 # %bb.997:                              # %.lr.ph.preheader.i881
-	ld.bu	$a1, $s0, 488
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 496
+	ld.bu	$a2, $s0, 488
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 496
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_999
+	bgeu	$a1, $a0, .LBB9_999
 # %bb.998:
 	move	$a0, $zero
 	b	.LBB9_1002
 .LBB9_999:                              # %vector.ph2360
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -31901,14 +31746,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_1000
 # %bb.1001:                             # %middle.block2371
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_1002:                             # %.lr.ph.i883.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_1003:                             # %.lr.ph.i883
                                         # =>This Inner Loop Header: Depth=1
@@ -31919,59 +31764,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_1003
+	bnez	$a1, .LBB9_1003
 	b	.LBB9_1187
 .LBB9_1004:                             # %vector.ph1688
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1005:                             # %vector.body1693
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -31980,39 +31825,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1005
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1005
 # %bb.1006:                             # %middle.block1699
-	beq	$a2, $a3, .LBB9_1009
+	beq	$a1, $a2, .LBB9_1009
 .LBB9_1007:                             # %.lr.ph.i1149.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1008:                             # %.lr.ph.i1149
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1008
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1008
 .LBB9_1009:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1153
 	ld.w	$a2, $s0, 504
-	blt	$a2, $a1, .LBB9_1017
+	blez	$a2, .LBB9_1017
 # %bb.1010:                             # %.lr.ph.preheader.i1155
 	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
@@ -32111,68 +31956,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1016
 .LBB9_1017:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1161
-	ld.w	$a3, $s0, 528
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1025
+	ld.w	$a2, $s0, 528
+	blez	$a2, .LBB9_1025
 # %bb.1018:                             # %.lr.ph.preheader.i1163
-	ld.bu	$a2, $s0, 512
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 520
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1020
+	ld.bu	$a1, $s0, 512
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 520
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1020
 # %bb.1019:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1023
 .LBB9_1020:                             # %vector.ph1720
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1021:                             # %vector.body1725
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -32181,39 +32025,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1021
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1021
 # %bb.1022:                             # %middle.block1731
-	beq	$a2, $a3, .LBB9_1025
+	beq	$a1, $a2, .LBB9_1025
 .LBB9_1023:                             # %.lr.ph.i1165.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1024:                             # %.lr.ph.i1165
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1024
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1024
 .LBB9_1025:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1169
 	ld.w	$a2, $s0, 552
-	blt	$a2, $a1, .LBB9_1033
+	blez	$a2, .LBB9_1033
 # %bb.1026:                             # %.lr.ph.preheader.i1171
 	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
@@ -32312,68 +32156,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1032
 .LBB9_1033:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1177
-	ld.w	$a3, $s0, 576
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1041
+	ld.w	$a2, $s0, 576
+	blez	$a2, .LBB9_1041
 # %bb.1034:                             # %.lr.ph.preheader.i1179
-	ld.bu	$a2, $s0, 560
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 568
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1036
+	ld.bu	$a1, $s0, 560
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 568
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1036
 # %bb.1035:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1039
 .LBB9_1036:                             # %vector.ph1752
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1037:                             # %vector.body1757
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -32382,39 +32225,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1037
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1037
 # %bb.1038:                             # %middle.block1763
-	beq	$a2, $a3, .LBB9_1041
+	beq	$a1, $a2, .LBB9_1041
 .LBB9_1039:                             # %.lr.ph.i1181.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1040:                             # %.lr.ph.i1181
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1040
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1040
 .LBB9_1041:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1185
 	ld.w	$a2, $s0, 600
-	blt	$a2, $a1, .LBB9_1049
+	blez	$a2, .LBB9_1049
 # %bb.1042:                             # %.lr.ph.preheader.i1187
 	ld.bu	$a1, $s0, 584
 	andi	$a1, $a1, 1
@@ -32513,68 +32356,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1048
 .LBB9_1049:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1193
-	ld.w	$a3, $s0, 624
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1057
+	ld.w	$a2, $s0, 624
+	blez	$a2, .LBB9_1057
 # %bb.1050:                             # %.lr.ph.preheader.i1195
-	ld.bu	$a2, $s0, 608
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 616
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1052
+	ld.bu	$a1, $s0, 608
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 616
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1052
 # %bb.1051:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1055
 .LBB9_1052:                             # %vector.ph1784
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1053:                             # %vector.body1789
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -32583,39 +32425,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1053
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1053
 # %bb.1054:                             # %middle.block1795
-	beq	$a2, $a3, .LBB9_1057
+	beq	$a1, $a2, .LBB9_1057
 .LBB9_1055:                             # %.lr.ph.i1197.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1056:                             # %.lr.ph.i1197
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1056
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1056
 .LBB9_1057:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1201
 	ld.w	$a2, $s0, 648
-	blt	$a2, $a1, .LBB9_1065
+	blez	$a2, .LBB9_1065
 # %bb.1058:                             # %.lr.ph.preheader.i1203
 	ld.bu	$a1, $s0, 632
 	andi	$a1, $a1, 1
@@ -32714,68 +32556,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1064
 .LBB9_1065:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1209
-	ld.w	$a3, $s0, 672
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1073
+	ld.w	$a2, $s0, 672
+	blez	$a2, .LBB9_1073
 # %bb.1066:                             # %.lr.ph.preheader.i1211
-	ld.bu	$a2, $s0, 656
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 664
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1068
+	ld.bu	$a1, $s0, 656
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 664
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1068
 # %bb.1067:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1071
 .LBB9_1068:                             # %vector.ph1816
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1069:                             # %vector.body1821
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -32784,56 +32625,56 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1069
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1069
 # %bb.1070:                             # %middle.block1827
-	beq	$a2, $a3, .LBB9_1073
+	beq	$a1, $a2, .LBB9_1073
 .LBB9_1071:                             # %.lr.ph.i1213.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1072:                             # %.lr.ph.i1213
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1072
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1072
 .LBB9_1073:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1217
-	ld.w	$a2, $s0, 1608
-	blt	$a2, $a1, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blez	$a1, .LBB9_1187
 # %bb.1074:                             # %.lr.ph.preheader.i1219
-	ld.bu	$a1, $s0, 1592
-	andi	$a1, $a1, 1
-	sltui	$a1, $a1, 1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s0, 1600
+	ld.bu	$a2, $s0, 1592
+	andi	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	slli.d	$a2, $a2, 3
+	fldx.d	$fa0, $a0, $a2
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
-	bgeu	$a2, $a0, .LBB9_1076
+	bgeu	$a1, $a0, .LBB9_1076
 # %bb.1075:
 	move	$a0, $zero
 	b	.LBB9_1079
 .LBB9_1076:                             # %vector.ph1832
-	bstrpick.d	$a0, $a2, 30, 2
+	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a3, $a1, 16
+	addi.d	$a3, $a2, 16
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr2, $a4
@@ -32891,14 +32732,14 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_1077
 # %bb.1078:                             # %middle.block1843
-	beq	$a0, $a2, .LBB9_1187
+	beq	$a0, $a1, .LBB9_1187
 .LBB9_1079:                             # %.lr.ph.i1221.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
 	fld.d	$fa1, $a3, %pc_lo12(.LCPI9_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI9_2)
 	fld.d	$fa2, $a3, %pc_lo12(.LCPI9_2)
-	sub.d	$a2, $a2, $a0
-	alsl.d	$a1, $a0, $a1, 3
+	sub.d	$a1, $a1, $a0
+	alsl.d	$a2, $a0, $a2, 3
 	.p2align	4, , 16
 .LBB9_1080:                             # %.lr.ph.i1221
                                         # =>This Inner Loop Header: Depth=1
@@ -32909,59 +32750,59 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a1, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 8
+	fst.d	$fa3, $a2, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
 	addi.w	$a0, $a0, 1
-	bnez	$a2, .LBB9_1080
+	bnez	$a1, .LBB9_1080
 	b	.LBB9_1187
 .LBB9_1081:                             # %vector.ph1640
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1082:                             # %vector.body1645
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -32970,39 +32811,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1082
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1082
 # %bb.1083:                             # %middle.block1651
-	beq	$a2, $a3, .LBB9_1086
+	beq	$a1, $a2, .LBB9_1086
 .LBB9_1084:                             # %.lr.ph.i1229.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1085:                             # %.lr.ph.i1229
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1085
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1085
 .LBB9_1086:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1233
 	ld.w	$a2, $s0, 1176
-	blt	$a2, $a1, .LBB9_1094
+	blez	$a2, .LBB9_1094
 # %bb.1087:                             # %.lr.ph.preheader.i1235
 	ld.bu	$a1, $s0, 1160
 	andi	$a1, $a1, 1
@@ -33102,8 +32943,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_1093
 .LBB9_1094:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1241
 	ld.w	$a1, $s0, 1512
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.1095:                             # %.lr.ph.preheader.i1243
 	ld.bu	$a2, $s0, 1496
 	andi	$a2, $a2, 1
@@ -33203,52 +33043,52 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a1, .LBB9_1101
 	b	.LBB9_1187
 .LBB9_1102:                             # %vector.ph1912
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1103:                             # %vector.body1917
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -33257,39 +33097,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1103
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1103
 # %bb.1104:                             # %middle.block1923
-	beq	$a2, $a3, .LBB9_1107
+	beq	$a1, $a2, .LBB9_1107
 .LBB9_1105:                             # %.lr.ph.i1029.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1106:                             # %.lr.ph.i1029
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1106
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1106
 .LBB9_1107:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1033
 	ld.w	$a2, $s0, 1272
-	blt	$a2, $a1, .LBB9_1115
+	blez	$a2, .LBB9_1115
 # %bb.1108:                             # %.lr.ph.preheader.i1035
 	ld.bu	$a1, $s0, 1256
 	andi	$a1, $a1, 1
@@ -33388,68 +33228,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1114
 .LBB9_1115:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1041
-	ld.w	$a3, $s0, 1296
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1123
+	ld.w	$a2, $s0, 1296
+	blez	$a2, .LBB9_1123
 # %bb.1116:                             # %.lr.ph.preheader.i1043
-	ld.bu	$a2, $s0, 1280
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1288
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1118
+	ld.bu	$a1, $s0, 1280
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1288
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1118
 # %bb.1117:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1121
 .LBB9_1118:                             # %vector.ph1944
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1119:                             # %vector.body1949
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -33458,39 +33297,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1119
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1119
 # %bb.1120:                             # %middle.block1955
-	beq	$a2, $a3, .LBB9_1123
+	beq	$a1, $a2, .LBB9_1123
 .LBB9_1121:                             # %.lr.ph.i1045.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1122:                             # %.lr.ph.i1045
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1122
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1122
 .LBB9_1123:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1049
 	ld.w	$a2, $s0, 1320
-	blt	$a2, $a1, .LBB9_1131
+	blez	$a2, .LBB9_1131
 # %bb.1124:                             # %.lr.ph.preheader.i1051
 	ld.bu	$a1, $s0, 1304
 	andi	$a1, $a1, 1
@@ -33589,68 +33428,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1130
 .LBB9_1131:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1057
-	ld.w	$a3, $s0, 1344
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1139
+	ld.w	$a2, $s0, 1344
+	blez	$a2, .LBB9_1139
 # %bb.1132:                             # %.lr.ph.preheader.i1059
-	ld.bu	$a2, $s0, 1328
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1336
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1134
+	ld.bu	$a1, $s0, 1328
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1336
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1134
 # %bb.1133:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1137
 .LBB9_1134:                             # %vector.ph1976
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1135:                             # %vector.body1981
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -33659,39 +33497,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1135
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1135
 # %bb.1136:                             # %middle.block1987
-	beq	$a2, $a3, .LBB9_1139
+	beq	$a1, $a2, .LBB9_1139
 .LBB9_1137:                             # %.lr.ph.i1061.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1138:                             # %.lr.ph.i1061
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1138
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1138
 .LBB9_1139:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1065
 	ld.w	$a2, $s0, 1368
-	blt	$a2, $a1, .LBB9_1147
+	blez	$a2, .LBB9_1147
 # %bb.1140:                             # %.lr.ph.preheader.i1067
 	ld.bu	$a1, $s0, 1352
 	andi	$a1, $a1, 1
@@ -33790,68 +33628,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1146
 .LBB9_1147:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1073
-	ld.w	$a3, $s0, 1392
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1155
+	ld.w	$a2, $s0, 1392
+	blez	$a2, .LBB9_1155
 # %bb.1148:                             # %.lr.ph.preheader.i1075
-	ld.bu	$a2, $s0, 1376
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1384
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1150
+	ld.bu	$a1, $s0, 1376
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1384
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1150
 # %bb.1149:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1153
 .LBB9_1150:                             # %vector.ph2008
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1151:                             # %vector.body2013
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -33860,39 +33697,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1151
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1151
 # %bb.1152:                             # %middle.block2019
-	beq	$a2, $a3, .LBB9_1155
+	beq	$a1, $a2, .LBB9_1155
 .LBB9_1153:                             # %.lr.ph.i1077.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1154:                             # %.lr.ph.i1077
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1154
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1154
 .LBB9_1155:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1081
 	ld.w	$a2, $s0, 1416
-	blt	$a2, $a1, .LBB9_1163
+	blez	$a2, .LBB9_1163
 # %bb.1156:                             # %.lr.ph.preheader.i1083
 	ld.bu	$a1, $s0, 1400
 	andi	$a1, $a1, 1
@@ -33991,68 +33828,67 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1162
 .LBB9_1163:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1089
-	ld.w	$a3, $s0, 1440
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB9_1171
+	ld.w	$a2, $s0, 1440
+	blez	$a2, .LBB9_1171
 # %bb.1164:                             # %.lr.ph.preheader.i1091
-	ld.bu	$a2, $s0, 1424
-	andi	$a2, $a2, 1
-	sltui	$a2, $a2, 1
-	slli.d	$a2, $a2, 3
-	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s0, 1432
-	ori	$a2, $zero, 4
-	bgeu	$a3, $a2, .LBB9_1166
+	ld.bu	$a1, $s0, 1424
+	andi	$a1, $a1, 1
+	sltui	$a1, $a1, 1
+	slli.d	$a1, $a1, 3
+	fldx.d	$fa0, $a0, $a1
+	ld.d	$a3, $s0, 1432
+	ori	$a1, $zero, 4
+	bgeu	$a2, $a1, .LBB9_1166
 # %bb.1165:
-	move	$a2, $zero
+	move	$a1, $zero
 	b	.LBB9_1169
 .LBB9_1166:                             # %vector.ph2040
-	bstrpick.d	$a2, $a3, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr2, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr3, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr4, $a6
-	move	$a6, $a2
+	addi.d	$a4, $a3, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr2, $a5
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr3, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr4, $a5
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB9_1167:                             # %vector.body2045
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vpickve2gr.w	$a6, $vr2, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr2, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa7, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa6, $fa7
-	vinsgr2vr.d	$vr7, $a7, 0
-	movfr2gr.d	$a7, $fa6
-	vinsgr2vr.d	$vr7, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
+	vinsgr2vr.d	$vr7, $a6, 0
+	movfr2gr.d	$a6, $fa6
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa6, $a6
 	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	movfr2gr.d	$a7, $fa6
+	vpickve2gr.w	$a6, $vr5, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa5, $a6
+	movfr2gr.d	$a6, $fa6
 	ffint.d.l	$fa5, $fa5
-	vinsgr2vr.d	$vr6, $a7, 0
-	movfr2gr.d	$a7, $fa5
-	vinsgr2vr.d	$vr6, $a7, 1
+	vinsgr2vr.d	$vr6, $a6, 0
+	movfr2gr.d	$a6, $fa5
+	vinsgr2vr.d	$vr6, $a6, 1
 	vfadd.d	$vr5, $vr7, $vr3
 	vfadd.d	$vr8, $vr6, $vr3
 	vfmul.d	$vr5, $vr1, $vr5
@@ -34061,39 +33897,39 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr7
 	vfdiv.d	$vr6, $vr8, $vr6
-	vst	$vr5, $a5, -16
-	vst	$vr6, $a5, 0
+	vst	$vr5, $a4, -16
+	vst	$vr6, $a4, 0
 	vaddi.wu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB9_1167
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB9_1167
 # %bb.1168:                             # %middle.block2051
-	beq	$a2, $a3, .LBB9_1171
+	beq	$a1, $a2, .LBB9_1171
 .LBB9_1169:                             # %.lr.ph.i1093.preheader
-	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI9_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI9_2)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI9_2)
-	sub.d	$a3, $a3, $a2
-	alsl.d	$a4, $a2, $a4, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI9_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI9_2)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI9_2)
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a3, $a1, $a3, 3
 	.p2align	4, , 16
 .LBB9_1170:                             # %.lr.ph.i1093
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	movgr2fr.d	$fa3, $a5
+	bstrpick.d	$a4, $a1, 31, 0
+	movgr2fr.d	$fa3, $a4
 	ffint.d.l	$fa3, $fa3
 	fadd.d	$fa4, $fa3, $fa1
 	fmul.d	$fa4, $fa0, $fa4
 	fadd.d	$fa3, $fa3, $fa2
 	fdiv.d	$fa3, $fa4, $fa3
-	fst.d	$fa3, $a4, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB9_1170
+	fst.d	$fa3, $a3, 0
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 8
+	addi.w	$a1, $a1, 1
+	bnez	$a2, .LBB9_1170
 .LBB9_1171:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1097
 	ld.w	$a2, $s0, 1464
-	blt	$a2, $a1, .LBB9_1179
+	blez	$a2, .LBB9_1179
 # %bb.1172:                             # %.lr.ph.preheader.i1099
 	ld.bu	$a1, $s0, 1448
 	andi	$a1, $a1, 1
@@ -34193,8 +34029,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_1178
 .LBB9_1179:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1105
 	ld.w	$a1, $s0, 1488
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_1187
+	blez	$a1, .LBB9_1187
 # %bb.1180:                             # %.lr.ph.preheader.i1107
 	ld.bu	$a2, $s0, 1472
 	andi	$a2, $a2, 1
@@ -34293,7 +34128,6 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_1186
 .LBB9_1187:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit179
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -34349,17 +34183,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLength
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -34368,7 +34201,6 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	ld.d	$a1, $a1, 256
 	bstrpick.d	$a2, $a2, 31, 0
 	slli.d	$a3, $a2, 4
@@ -34399,12 +34231,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_84
 .LBB10_3:
 	ld.w	$s3, $s2, 528
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.4:                                # %.lr.ph.preheader.i
 	ld.d	$s2, $s2, 520
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_5:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -34429,19 +34261,18 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	bnez	$s3, .LBB10_5
 	b	.LBB10_83
 .LBB10_6:
-	ld.w	$s4, $s2, 480
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_91
+	ld.w	$s3, $s2, 480
+	blez	$s3, .LBB10_91
 # %bb.7:                                # %.lr.ph.preheader.i262
-	ld.d	$s5, $s2, 472
+	ld.d	$s4, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_8:                               # %.lr.ph.i264
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34455,28 +34286,27 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_8
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_8
 # %bb.9:                                # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit269
-	ld.w	$s4, $s2, 600
-	bge	$s4, $s3, .LBB10_92
+	ld.w	$s3, $s2, 600
+	bgtz	$s3, .LBB10_92
 	b	.LBB10_83
 .LBB10_10:
-	ld.w	$s4, $s2, 1464
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_94
+	ld.w	$s3, $s2, 1464
+	blez	$s3, .LBB10_94
 # %bb.11:                               # %.lr.ph.preheader.i556
-	ld.d	$s5, $s2, 1456
+	ld.d	$s4, $s2, 1456
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_12:                              # %.lr.ph.i558
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34490,19 +34320,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_12
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_12
 	b	.LBB10_95
 .LBB10_13:
 	ld.w	$s3, $s2, 864
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.14:                               # %.lr.ph.preheader.i412
 	ld.d	$s2, $s2, 856
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_15:                              # %.lr.ph.i414
                                         # =>This Inner Loop Header: Depth=1
@@ -34527,19 +34357,18 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	bnez	$s3, .LBB10_15
 	b	.LBB10_83
 .LBB10_16:
-	ld.w	$s4, $s2, 552
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_98
+	ld.w	$s3, $s2, 552
+	blez	$s3, .LBB10_98
 # %bb.17:                               # %.lr.ph.preheader.i385
-	ld.d	$s5, $s2, 544
+	ld.d	$s4, $s2, 544
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_18:                              # %.lr.ph.i387
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34553,25 +34382,24 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_18
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_18
 	b	.LBB10_99
 .LBB10_19:
-	ld.w	$s4, $s2, 480
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_102
+	ld.w	$s3, $s2, 480
+	blez	$s3, .LBB10_102
 # %bb.20:                               # %.lr.ph.preheader.i331
-	ld.d	$s5, $s2, 472
+	ld.d	$s4, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_21:                              # %.lr.ph.i333
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34585,25 +34413,24 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_21
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_21
 	b	.LBB10_103
 .LBB10_22:
-	ld.w	$s4, $s2, 1152
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_109
+	ld.w	$s3, $s2, 1152
+	blez	$s3, .LBB10_109
 # %bb.23:                               # %.lr.ph.preheader.i511
-	ld.d	$s5, $s2, 1144
+	ld.d	$s4, $s2, 1144
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_24:                              # %.lr.ph.i513
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34617,19 +34444,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_24
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_24
 	b	.LBB10_110
 .LBB10_25:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.26:                               # %.lr.ph.preheader.i502
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_27:                              # %.lr.ph.i504
                                         # =>This Inner Loop Header: Depth=1
@@ -34655,12 +34482,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_28:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.29:                               # %.lr.ph.preheader.i403
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_30:                              # %.lr.ph.i405
                                         # =>This Inner Loop Header: Depth=1
@@ -34685,21 +34512,20 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	bnez	$s3, .LBB10_30
 	b	.LBB10_83
 .LBB10_31:
-	ld.w	$s4, $s2, 1032
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_113
+	ld.w	$s3, $s2, 1032
+	blez	$s3, .LBB10_113
 # %bb.32:                               # %.lr.ph.preheader.i297
 	ld.d	$a0, $s2, 1024
 	move	$fp, $zero
 	move	$s0, $zero
-	addi.d	$s5, $a0, 8
-	ori	$s6, $zero, 1
+	addi.d	$s4, $a0, 8
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_33:                              # %.lr.ph.i299
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, -8
-	fld.d	$fa1, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, -8
+	fld.d	$fa1, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa2, $a0
 	ffint.d.l	$fa2, $fa2
 	fadd.d	$fa0, $fa0, $fa1
@@ -34714,19 +34540,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 16
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_33
+	addi.d	$s4, $s4, 16
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_33
 	b	.LBB10_114
 .LBB10_34:
 	ld.w	$s3, $s2, 576
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.35:                               # %.lr.ph.preheader.i601
 	ld.d	$s2, $s2, 568
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_36:                              # %.lr.ph.i603
                                         # =>This Inner Loop Header: Depth=1
@@ -34752,12 +34578,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_37:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.38:                               # %.lr.ph.preheader.i421
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_39:                              # %.lr.ph.i423
                                         # =>This Inner Loop Header: Depth=1
@@ -34783,12 +34609,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_40:
 	ld.w	$s3, $s2, 552
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.41:                               # %.lr.ph.preheader.i280
 	ld.d	$s2, $s2, 544
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_42:                              # %.lr.ph.i282
                                         # =>This Inner Loop Header: Depth=1
@@ -34813,19 +34639,18 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	bnez	$s3, .LBB10_42
 	b	.LBB10_83
 .LBB10_43:
-	ld.w	$s4, $s2, 1536
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_120
+	ld.w	$s3, $s2, 1536
+	blez	$s3, .LBB10_120
 # %bb.44:                               # %.lr.ph.preheader.i448
-	ld.d	$s5, $s2, 1528
+	ld.d	$s4, $s2, 1528
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_45:                              # %.lr.ph.i450
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34839,19 +34664,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_45
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_45
 	b	.LBB10_121
 .LBB10_46:
 	ld.w	$s3, $s2, 1152
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.47:                               # %.lr.ph.preheader.i475
 	ld.d	$s2, $s2, 1144
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_48:                              # %.lr.ph.i477
                                         # =>This Inner Loop Header: Depth=1
@@ -34877,12 +34702,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_49:
 	ld.w	$s3, $s2, 576
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.50:                               # %.lr.ph.preheader.i289
 	ld.d	$s2, $s2, 568
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_51:                              # %.lr.ph.i291
                                         # =>This Inner Loop Header: Depth=1
@@ -34908,12 +34733,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_52:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.53:                               # %.lr.ph.preheader.i430
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_54:                              # %.lr.ph.i432
                                         # =>This Inner Loop Header: Depth=1
@@ -34938,19 +34763,18 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	bnez	$s3, .LBB10_54
 	b	.LBB10_83
 .LBB10_55:
-	ld.w	$s4, $s2, 480
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_127
+	ld.w	$s3, $s2, 480
+	blez	$s3, .LBB10_127
 # %bb.56:                               # %.lr.ph.preheader.i358
-	ld.d	$s5, $s2, 472
+	ld.d	$s4, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_57:                              # %.lr.ph.i360
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -34964,19 +34788,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_57
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_57
 	b	.LBB10_128
 .LBB10_58:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.59:                               # %.lr.ph.preheader.i322
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_60:                              # %.lr.ph.i324
                                         # =>This Inner Loop Header: Depth=1
@@ -35002,12 +34826,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_61:
 	ld.w	$s3, $s2, 1152
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.62:                               # %.lr.ph.preheader.i592
 	ld.d	$s2, $s2, 1144
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_63:                              # %.lr.ph.i594
                                         # =>This Inner Loop Header: Depth=1
@@ -35033,12 +34857,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_64:
 	ld.w	$s3, $s2, 1248
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.65:                               # %.lr.ph.preheader.i610
 	ld.d	$s2, $s2, 1240
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_66:                              # %.lr.ph.i612
                                         # =>This Inner Loop Header: Depth=1
@@ -35064,12 +34888,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_67:
 	ld.w	$s3, $s2, 1152
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.68:                               # %.lr.ph.preheader.i484
 	ld.d	$s2, $s2, 1144
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_69:                              # %.lr.ph.i486
                                         # =>This Inner Loop Header: Depth=1
@@ -35095,12 +34919,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_70:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.71:                               # %.lr.ph.preheader.i439
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_72:                              # %.lr.ph.i441
                                         # =>This Inner Loop Header: Depth=1
@@ -35126,12 +34950,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_73:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.74:                               # %.lr.ph.preheader.i493
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_75:                              # %.lr.ph.i495
                                         # =>This Inner Loop Header: Depth=1
@@ -35157,12 +34981,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_76:
 	ld.w	$s3, $s2, 480
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.77:                               # %.lr.ph.preheader.i574
 	ld.d	$s2, $s2, 472
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_78:                              # %.lr.ph.i576
                                         # =>This Inner Loop Header: Depth=1
@@ -35188,12 +35012,12 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	b	.LBB10_83
 .LBB10_79:
 	ld.w	$s3, $s2, 648
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_82
+	blez	$s3, .LBB10_82
 # %bb.80:                               # %.lr.ph.preheader.i583
 	ld.d	$s2, $s2, 640
 	move	$fp, $zero
 	move	$s0, $zero
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_81:                              # %.lr.ph.i585
                                         # =>This Inner Loop Header: Depth=1
@@ -35224,31 +35048,29 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	st.d	$fp, $s1, 0
 	st.d	$s0, $s1, 8
 .LBB10_84:
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .LBB10_85:
-	ld.w	$s4, $s2, 624
-	ori	$s3, $zero, 1
-	blt	$s4, $s3, .LBB10_134
+	ld.w	$s3, $s2, 624
+	blez	$s3, .LBB10_134
 # %bb.86:                               # %.lr.ph.preheader.i529
-	ld.d	$s5, $s2, 616
+	ld.d	$s4, $s2, 616
 	move	$fp, $zero
 	move	$s0, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_87:                              # %.lr.ph.i531
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s5, 0
-	bstrpick.d	$a0, $s6, 31, 0
+	fld.d	$fa0, $s4, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -35262,10 +35084,10 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s5, $s5, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s6, $s6, 1
-	bnez	$s4, .LBB10_87
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
+	addi.w	$s5, $s5, 1
+	bnez	$s3, .LBB10_87
 	b	.LBB10_135
 .LBB10_88:
 	pcalau12i	$a1, %got_pc_hi20(_ZSt4cout)
@@ -35295,16 +35117,16 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 .LBB10_91:
 	move	$fp, $zero
 	move	$s0, $zero
-	ld.w	$s4, $s2, 600
-	blt	$s4, $s3, .LBB10_83
+	ld.w	$s3, $s2, 600
+	blez	$s3, .LBB10_83
 .LBB10_92:                              # %.lr.ph.preheader.i271
 	ld.d	$s2, $s2, 592
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_93:                              # %.lr.ph.i273
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $s2, 0
-	bstrpick.d	$a0, $s3, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -35319,24 +35141,24 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $a0
 	move	$s0, $a1
 	addi.d	$s2, $s2, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s3, $s3, 1
-	bnez	$s4, .LBB10_93
+	addi.d	$s3, $s3, -1
+	addi.w	$s4, $s4, 1
+	bnez	$s3, .LBB10_93
 	b	.LBB10_83
 .LBB10_94:
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_95:                              # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit563
-	ld.w	$s4, $s2, 1488
-	blt	$s4, $s3, .LBB10_83
+	ld.w	$s3, $s2, 1488
+	blez	$s3, .LBB10_83
 # %bb.96:                               # %.lr.ph.preheader.i565
 	ld.d	$s2, $s2, 1480
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_97:                              # %.lr.ph.i567
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $s2, 0
-	bstrpick.d	$a0, $s3, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -35351,24 +35173,24 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $a0
 	move	$s0, $a1
 	addi.d	$s2, $s2, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s3, $s3, 1
-	bnez	$s4, .LBB10_97
+	addi.d	$s3, $s3, -1
+	addi.w	$s4, $s4, 1
+	bnez	$s3, .LBB10_97
 	b	.LBB10_83
 .LBB10_98:
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_99:                              # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit392
-	ld.w	$s4, $s2, 576
-	blt	$s4, $s3, .LBB10_83
+	ld.w	$s3, $s2, 576
+	blez	$s3, .LBB10_83
 # %bb.100:                              # %.lr.ph.preheader.i394
 	ld.d	$s2, $s2, 568
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_101:                             # %.lr.ph.i396
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $s2, 0
-	bstrpick.d	$a0, $s3, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -35383,23 +35205,23 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $a0
 	move	$s0, $a1
 	addi.d	$s2, $s2, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s3, $s3, 1
-	bnez	$s4, .LBB10_101
+	addi.d	$s3, $s3, -1
+	addi.w	$s4, $s4, 1
+	bnez	$s3, .LBB10_101
 	b	.LBB10_83
 .LBB10_102:
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_103:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit338
-	ld.w	$s4, $s2, 504
-	blt	$s4, $s3, .LBB10_106
+	ld.w	$s3, $s2, 504
+	blez	$s3, .LBB10_106
 # %bb.104:                              # %.lr.ph.preheader.i340
-	ld.d	$s3, $s2, 496
+	ld.d	$s4, $s2, 496
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_105:                             # %.lr.ph.i342
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s3, 0
+	fld.d	$fa0, $s4, 0
 	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
@@ -35414,16 +35236,16 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s3, $s3, 8
-	addi.d	$s4, $s4, -1
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
 	addi.w	$s5, $s5, 1
-	bnez	$s4, .LBB10_105
+	bnez	$s3, .LBB10_105
 .LBB10_106:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit347
 	ld.w	$s3, $s2, 528
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_83
+	blez	$s3, .LBB10_83
 # %bb.107:                              # %.lr.ph.preheader.i349
 	ld.d	$s2, $s2, 520
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_108:                             # %.lr.ph.i351
                                         # =>This Inner Loop Header: Depth=1
@@ -35451,16 +35273,16 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_110:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit518
-	ld.w	$s4, $s2, 1512
-	blt	$s4, $s3, .LBB10_83
+	ld.w	$s3, $s2, 1512
+	blez	$s3, .LBB10_83
 # %bb.111:                              # %.lr.ph.preheader.i520
 	ld.d	$s2, $s2, 1504
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_112:                             # %.lr.ph.i522
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $s2, 0
-	bstrpick.d	$a0, $s3, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -35475,25 +35297,25 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $a0
 	move	$s0, $a1
 	addi.d	$s2, $s2, 8
-	addi.d	$s4, $s4, -1
-	addi.w	$s3, $s3, 1
-	bnez	$s4, .LBB10_112
+	addi.d	$s3, $s3, -1
+	addi.w	$s4, $s4, 1
+	bnez	$s3, .LBB10_112
 	b	.LBB10_83
 .LBB10_113:
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_114:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData12ComplexArrayEd.exit
-	ld.w	$s4, $s2, 1056
-	blt	$s4, $s3, .LBB10_117
+	ld.w	$s3, $s2, 1056
+	blez	$s3, .LBB10_117
 # %bb.115:                              # %.lr.ph.preheader.i304
 	ld.d	$a0, $s2, 1048
-	addi.d	$s3, $a0, 8
+	addi.d	$s4, $a0, 8
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_116:                             # %.lr.ph.i306
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s3, -8
-	fld.d	$fa1, $s3, 0
+	fld.d	$fa0, $s4, -8
+	fld.d	$fa1, $s4, 0
 	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa2, $a0
 	ffint.d.l	$fa2, $fa2
@@ -35509,17 +35331,17 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s3, $s3, 16
-	addi.d	$s4, $s4, -1
+	addi.d	$s4, $s4, 16
+	addi.d	$s3, $s3, -1
 	addi.w	$s5, $s5, 1
-	bnez	$s4, .LBB10_116
+	bnez	$s3, .LBB10_116
 .LBB10_117:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData12ComplexArrayEd.exit311
 	ld.w	$s3, $s2, 1080
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_83
+	blez	$s3, .LBB10_83
 # %bb.118:                              # %.lr.ph.preheader.i313
 	ld.d	$a0, $s2, 1072
 	addi.d	$s2, $a0, 8
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_119:                             # %.lr.ph.i315
                                         # =>This Inner Loop Header: Depth=1
@@ -35549,15 +35371,15 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_121:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit455
-	ld.w	$s4, $s2, 1560
-	blt	$s4, $s3, .LBB10_124
+	ld.w	$s3, $s2, 1560
+	blez	$s3, .LBB10_124
 # %bb.122:                              # %.lr.ph.preheader.i457
-	ld.d	$s3, $s2, 1552
+	ld.d	$s4, $s2, 1552
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_123:                             # %.lr.ph.i459
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s3, 0
+	fld.d	$fa0, $s4, 0
 	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
@@ -35572,16 +35394,16 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s3, $s3, 8
-	addi.d	$s4, $s4, -1
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
 	addi.w	$s5, $s5, 1
-	bnez	$s4, .LBB10_123
+	bnez	$s3, .LBB10_123
 .LBB10_124:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit464
 	ld.w	$s3, $s2, 1584
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_83
+	blez	$s3, .LBB10_83
 # %bb.125:                              # %.lr.ph.preheader.i466
 	ld.d	$s2, $s2, 1576
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_126:                             # %.lr.ph.i468
                                         # =>This Inner Loop Header: Depth=1
@@ -35609,15 +35431,15 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_128:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit365
-	ld.w	$s4, $s2, 504
-	blt	$s4, $s3, .LBB10_131
+	ld.w	$s3, $s2, 504
+	blez	$s3, .LBB10_131
 # %bb.129:                              # %.lr.ph.preheader.i367
-	ld.d	$s3, $s2, 496
+	ld.d	$s4, $s2, 496
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_130:                             # %.lr.ph.i369
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s3, 0
+	fld.d	$fa0, $s4, 0
 	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
@@ -35632,16 +35454,16 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s3, $s3, 8
-	addi.d	$s4, $s4, -1
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
 	addi.w	$s5, $s5, 1
-	bnez	$s4, .LBB10_130
+	bnez	$s3, .LBB10_130
 .LBB10_131:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit374
 	ld.w	$s3, $s2, 528
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_83
+	blez	$s3, .LBB10_83
 # %bb.132:                              # %.lr.ph.preheader.i376
 	ld.d	$s2, $s2, 520
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_133:                             # %.lr.ph.i378
                                         # =>This Inner Loop Header: Depth=1
@@ -35669,15 +35491,15 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	move	$fp, $zero
 	move	$s0, $zero
 .LBB10_135:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit536
-	ld.w	$s4, $s2, 504
-	blt	$s4, $s3, .LBB10_138
+	ld.w	$s3, $s2, 504
+	blez	$s3, .LBB10_138
 # %bb.136:                              # %.lr.ph.preheader.i538
-	ld.d	$s3, $s2, 496
+	ld.d	$s4, $s2, 496
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_137:                             # %.lr.ph.i540
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $s3, 0
+	fld.d	$fa0, $s4, 0
 	bstrpick.d	$a0, $s5, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
@@ -35692,16 +35514,16 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	addi.d	$s3, $s3, 8
-	addi.d	$s4, $s4, -1
+	addi.d	$s4, $s4, 8
+	addi.d	$s3, $s3, -1
 	addi.w	$s5, $s5, 1
-	bnez	$s4, .LBB10_137
+	bnez	$s3, .LBB10_137
 .LBB10_138:                             # %_ZN12_GLOBAL__N_112updateChksumER8LoopStat10LoopLengthRKN8LoopData9RealArrayEd.exit545
 	ld.w	$s3, $s2, 648
-	ori	$s4, $zero, 1
-	blt	$s3, $s4, .LBB10_83
+	blez	$s3, .LBB10_83
 # %bb.139:                              # %.lr.ph.preheader.i547
 	ld.d	$s2, $s2, 640
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB10_140:                             # %.lr.ph.i549
                                         # =>This Inner Loop Header: Depth=1
@@ -35741,16 +35563,15 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 	ext.w.b	$a1, $a1
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(_ZNSo5flushEv)
 	jr	$t8
 .LBB10_143:
@@ -35963,7 +35784,6 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	slli.d	$s4, $s7, 3
 	bstrpick.d	$a0, $s7, 31, 5
 	slli.d	$s5, $a0, 5
-	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
 	addi.d	$a0, $a0, %pc_lo12(.LCPI11_0)
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
@@ -35983,7 +35803,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	lu52i.d	$a0, $a0, 1023
 	vreplgr2vr.d	$vr0, $a0
 	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
-	ori	$s1, $zero, 16
+	ori	$s0, $zero, 16
 	b	.LBB11_2
 	.p2align	4, , 16
 .LBB11_1:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit
@@ -35991,15 +35811,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$s2, $s6, %pc_lo12(_ZL11s_loop_data)
 	alsl.d	$a1, $fp, $s2, 3
 	st.d	$a0, $a1, 8
-	move	$fp, $s3
-	beq	$s3, $s1, .LBB11_5
+	move	$fp, $s1
+	beq	$s1, $s0, .LBB11_5
 .LBB11_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_4 Depth 2
 	slli.d	$a0, $fp, 4
 	alsl.d	$a0, $fp, $a0, 3
 	add.d	$s2, $s2, $a0
-	addi.d	$s3, $fp, 1
-	st.w	$s3, $s2, 464
+	addi.d	$s1, $fp, 1
+	st.w	$s1, $s2, 464
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
@@ -36011,7 +35831,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.w	$s7, $s2, 480
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s7, $s0, .LBB11_1
+	blez	$s7, .LBB11_1
 # %bb.3:                                # %vector.ph
                                         #   in Loop: Header=BB11_2 Depth=1
 	addi.d	$a1, $s2, 464
@@ -36069,14 +35889,14 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	bnez	$a2, .LBB11_4
 	b	.LBB11_1
 .LBB11_5:                               # %.preheader186
-	slli.d	$s8, $s7, 2
-	addi.w	$fp, $s8, 0
+	slli.d	$s3, $s7, 2
+	addi.w	$fp, $s3, 0
 	slli.d	$s1, $fp, 3
-	bstrpick.d	$a0, $s8, 31, 2
+	bstrpick.d	$a0, $s3, 31, 2
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	slli.d	$s0, $a0, 2
-	ori	$s3, $zero, 1
-	st.w	$s3, $s2, 848
+	ori	$a0, $zero, 1
+	st.w	$a0, $s2, 848
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
@@ -36085,10 +35905,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 144
 	st.d	$a0, $s2, 856
-	st.w	$s8, $s2, 864
+	st.w	$s3, $s2, 864
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$fp, $s3, .LBB11_8
+	blez	$fp, .LBB11_8
 # %bb.6:                                # %vector.ph250
 	ld.bu	$a1, $s2, 848
 	andi	$a1, $a1, 1
@@ -36159,7 +35979,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$a0, $sp, 144
 	st.d	$a0, $s2, 880
 	st.w	$fp, $s2, 888
-	blt	$fp, $s3, .LBB11_11
+	blez	$fp, .LBB11_11
 # %bb.9:                                # %vector.ph266
 	ld.bu	$a1, $s2, 872
 	andi	$a1, $a1, 1
@@ -36214,21 +36034,20 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a1, $a1, 32
 	bnez	$s0, .LBB11_10
 .LBB11_11:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit140.1
-	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
-	st.d	$a0, $s0, 144
+	ld.d	$fp, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$a0, $fp, 144
 	slli.d	$s1, $s5, 2
-	st.w	$zero, $s0, 896
+	st.w	$zero, $fp, 896
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
-	move	$a2, $s8
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 144
-	st.d	$s2, $s0, 904
-	ori	$fp, $zero, 1
-	st.w	$s7, $s0, 912
-	blt	$s7, $fp, .LBB11_13
+	st.d	$s2, $fp, 904
+	st.w	$s7, $fp, 912
+	blez	$s7, .LBB11_13
 # %bb.12:                               # %.lr.ph.preheader.i.i141
 	move	$a0, $s2
 	move	$a1, $zero
@@ -36236,19 +36055,20 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_13:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit
-	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s2, $s0, 152
-	st.w	$fp, $s0, 920
+	ld.d	$fp, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $fp, 152
+	ori	$a0, $zero, 1
+	st.w	$a0, $fp, 920
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
-	move	$a2, $s8
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 144
-	st.d	$s2, $s0, 928
-	st.w	$s7, $s0, 936
-	blt	$s7, $fp, .LBB11_15
+	st.d	$s2, $fp, 928
+	st.w	$s7, $fp, 936
+	blez	$s7, .LBB11_15
 # %bb.14:                               # %.lr.ph.preheader.i.i141.1
 	move	$a0, $s2
 	move	$a1, $zero
@@ -36256,21 +36076,20 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_15:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.1
-	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s2, $s0, 160
+	ld.d	$fp, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $fp, 160
 	ori	$a0, $zero, 2
-	st.w	$a0, $s0, 944
+	st.w	$a0, $fp, 944
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
-	move	$a2, $s8
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 144
-	st.d	$s2, $s0, 952
-	ori	$fp, $zero, 1
-	st.w	$s7, $s0, 960
-	blt	$s7, $fp, .LBB11_17
+	st.d	$s2, $fp, 952
+	st.w	$s7, $fp, 960
+	blez	$s7, .LBB11_17
 # %bb.16:                               # %.lr.ph.preheader.i.i141.2
 	move	$a0, $s2
 	move	$a1, $zero
@@ -36278,20 +36097,20 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_17:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.2
-	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s2, $s0, 168
+	ld.d	$fp, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $fp, 168
 	ori	$a0, $zero, 3
-	st.w	$a0, $s0, 968
+	st.w	$a0, $fp, 968
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
-	move	$a2, $s8
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 144
-	st.d	$s2, $s0, 976
-	st.w	$s7, $s0, 984
-	blt	$s7, $fp, .LBB11_19
+	st.d	$s2, $fp, 976
+	st.w	$s7, $fp, 984
+	blez	$s7, .LBB11_19
 # %bb.18:                               # %.lr.ph.preheader.i.i141.3
 	move	$a0, $s2
 	move	$a1, $zero
@@ -36299,22 +36118,21 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_19:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.3
-	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s2, $s0, 176
+	ld.d	$fp, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $fp, 176
 	ori	$a0, $zero, 4
-	st.w	$a0, $s0, 992
+	st.w	$a0, $fp, 992
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
-	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
-	move	$a2, $s8
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 144
-	st.d	$s2, $s0, 1000
-	ori	$fp, $zero, 1
-	st.w	$s7, $s0, 1008
-	blt	$s7, $fp, .LBB11_21
+	st.d	$s2, $fp, 1000
+	st.w	$s7, $fp, 1008
+	blez	$s7, .LBB11_21
 # %bb.20:                               # %.lr.ph.preheader.i.i141.4
 	move	$a0, $s2
 	move	$a1, $zero
@@ -36330,7 +36148,8 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.w	$a2, $zero, -1
 	maskeqz	$a0, $a2, $a0
 	or	$s2, $a0, $a1
-	st.w	$fp, $s8, 1016
+	ori	$a0, $zero, 1
+	st.w	$a0, $s8, 1016
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -36345,12 +36164,11 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_23:                              # %.loopexit.i
 	st.d	$s3, $s8, 1024
 	st.w	$s7, $s8, 1032
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(.LCPI11_1)
-	addi.d	$s0, $a1, %pc_lo12(.LCPI11_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI11_1)
+	addi.d	$s0, $a0, %pc_lo12(.LCPI11_1)
 	addi.d	$fp, $s8, 1040
 	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
-	blt	$s7, $a0, .LBB11_27
+	blez	$s7, .LBB11_27
 # %bb.24:                               # %vector.ph282
 	ld.bu	$a0, $s8, 1016
 	andi	$a0, $a0, 1
@@ -36423,11 +36241,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_29:                              # %.loopexit.i.1
 	st.d	$s3, $s8, 1048
 	st.w	$s7, $s8, 1056
-	ori	$a0, $zero, 1
 	addi.d	$s4, $s8, 1064
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s7, $a0, .LBB11_33
+	blez	$s7, .LBB11_33
 # %bb.30:                               # %vector.ph299
 	ld.bu	$a0, $fp, 0
 	andi	$a0, $a0, 1
@@ -36498,11 +36315,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_35:                              # %.loopexit.i.2
 	st.d	$s3, $s8, 1072
 	st.w	$s7, $s8, 1080
-	ori	$a0, $zero, 1
 	addi.d	$fp, $s8, 1088
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s7, $a0, .LBB11_39
+	blez	$s7, .LBB11_39
 # %bb.36:                               # %vector.ph316
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
@@ -36573,11 +36389,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_41:                              # %.loopexit.i.3
 	st.d	$s3, $s8, 1096
 	st.w	$s7, $s8, 1104
-	ori	$a0, $zero, 1
 	addi.d	$s4, $s8, 1112
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s7, $a0, .LBB11_45
+	blez	$s7, .LBB11_45
 # %bb.42:                               # %vector.ph333
 	ld.bu	$a0, $fp, 0
 	andi	$a0, $a0, 1
@@ -36647,11 +36462,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 .LBB11_47:                              # %.loopexit.i.4
 	st.d	$s2, $s8, 1120
-	ori	$s1, $zero, 1
 	st.w	$s7, $s8, 1128
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s7, $s1, .LBB11_50
+	blez	$s7, .LBB11_50
 # %bb.48:                               # %vector.ph350
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
@@ -36698,14 +36512,14 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_50:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.4
 	st.d	$s2, $s8, 224
 	alsl.d	$a0, $s7, $s7, 1
-	alsl.d	$s4, $a0, $s7, 3
+	alsl.d	$s1, $a0, $s7, 3
 	alsl.w	$a0, $s7, $s7, 1
 	alsl.w	$s0, $a0, $s7, 3
 	slli.d	$s2, $s0, 3
-	bstrpick.d	$s3, $s4, 31, 0
-	slli.d	$a0, $s5, 3
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.w	$s1, $s8, 1136
+	bstrpick.d	$s3, $s1, 31, 0
+	slli.d	$s4, $s5, 3
+	ori	$a0, $zero, 1
+	st.w	$a0, $s8, 1136
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
@@ -36716,8 +36530,8 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	ld.d	$fp, $sp, 144
 	st.d	$fp, $s8, 1144
-	st.w	$s4, $s8, 1152
-	blt	$s0, $s1, .LBB11_53
+	st.w	$s1, $s8, 1152
+	blez	$s0, .LBB11_53
 # %bb.51:                               # %vector.ph367
 	ld.bu	$a0, $s8, 1136
 	andi	$a0, $a0, 1
@@ -36773,17 +36587,17 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB11_52
 .LBB11_53:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit156
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(_ZL11s_loop_data)
 	st.d	$a0, $s1, 232
-	pcalau12i	$s4, %pc_hi20(.LCPI11_2)
+	pcalau12i	$s8, %pc_hi20(.LCPI11_2)
 	vrepli.d	$vr4, 200
 	vrepli.d	$vr5, 400
 	beqz	$s7, .LBB11_56
 # %bb.54:                               # %vector.body386.preheader
-	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
+	vld	$vr0, $s8, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
@@ -36812,12 +36626,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $sp, 144
 	st.d	$fp, $s1, 1168
-	ori	$a0, $zero, 1
 	st.w	$s0, $s1, 1176
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
-	blt	$s0, $a0, .LBB11_59
+	blez	$s0, .LBB11_59
 # %bb.57:                               # %vector.ph397
 	ld.bu	$a0, $s1, 1160
 	andi	$a0, $a0, 1
@@ -36873,7 +36685,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB11_58
 .LBB11_59:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit156.1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(_ZL11s_loop_data)
@@ -36882,7 +36694,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr5, $sp, 64                   # 16-byte Folded Reload
 	beqz	$s7, .LBB11_62
 # %bb.60:                               # %vector.body416.preheader
-	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
+	vld	$vr0, $s8, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
@@ -36909,11 +36721,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $sp, 144
 	st.d	$fp, $s1, 1192
-	ori	$a0, $zero, 1
 	st.w	$s0, $s1, 1200
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s0, $a0, .LBB11_65
+	blez	$s0, .LBB11_65
 # %bb.63:                               # %vector.ph427
 	ld.bu	$a0, $s1, 1184
 	andi	$a0, $a0, 1
@@ -36969,7 +36780,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB11_64
 .LBB11_65:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit156.2
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(_ZL11s_loop_data)
@@ -36978,7 +36789,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr5, $sp, 64                   # 16-byte Folded Reload
 	beqz	$s7, .LBB11_68
 # %bb.66:                               # %vector.body446.preheader
-	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
+	vld	$vr0, $s8, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
@@ -37005,11 +36816,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $sp, 144
 	st.d	$fp, $s1, 1216
-	ori	$a0, $zero, 1
 	st.w	$s0, $s1, 1224
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s0, $a0, .LBB11_71
+	blez	$s0, .LBB11_71
 # %bb.69:                               # %vector.ph457
 	ld.bu	$a0, $s1, 1208
 	andi	$a0, $a0, 1
@@ -37064,7 +36874,8 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 32
 	bnez	$s3, .LBB11_70
 .LBB11_71:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit156.3
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
@@ -37074,7 +36885,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr5, $sp, 64                   # 16-byte Folded Reload
 	beqz	$s7, .LBB11_74
 # %bb.72:                               # %vector.body476.preheader
-	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
+	vld	$vr0, $s8, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
@@ -37091,7 +36902,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB11_73
 .LBB11_74:                              # %.loopexit182.3
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	move	$s4, $zero
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
@@ -37109,7 +36920,8 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	slli.d	$s7, $a1, 2
 	alsl.wu	$s5, $a0, $a0, 2
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	alsl.d	$a0, $a0, $s8, 1
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a1, 1
 	bstrpick.d	$a0, $a0, 31, 1
 	slli.d	$s6, $a0, 1
 	ori	$a0, $zero, 0
@@ -37162,8 +36974,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.w	$s0, $s3, 1248
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB11_75
+	blez	$s0, .LBB11_75
 # %bb.77:                               # %vector.ph487
                                         #   in Loop: Header=BB11_76 Depth=1
 	addi.d	$a0, $s3, 1232
@@ -37424,13 +37235,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vadd.d	$vr0, $vr0, $vr3
 	vst	$vr1, $a0, 480
 	vst	$vr0, $a0, 496
-	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	addi.w	$s8, $s4, 0
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	addi.w	$s8, $fp, 0
 	slli.d	$s0, $s8, 3
-	bstrpick.d	$a0, $s4, 31, 3
+	bstrpick.d	$a0, $fp, 31, 3
 	slli.d	$s3, $a0, 3
-	ori	$fp, $zero, 1
-	st.w	$fp, $s2, 1520
+	ori	$a0, $zero, 1
+	st.w	$a0, $s2, 1520
 	st.d	$zero, $sp, 144
 	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 32
@@ -37441,10 +37252,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	ld.d	$s1, $sp, 144
 	st.d	$s1, $s2, 1528
-	st.w	$s4, $s2, 1536
+	st.w	$fp, $s2, 1536
 	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
-	blt	$s8, $fp, .LBB11_84
+	blez	$s8, .LBB11_84
 # %bb.82:                               # %vector.ph525
 	ld.bu	$a0, $s2, 1520
 	andi	$a0, $a0, 1
@@ -37566,11 +37377,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 144
 	st.d	$s1, $s4, 1552
-	ori	$a0, $zero, 1
 	st.w	$s8, $s4, 1560
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s8, $a0, .LBB11_92
+	blez	$s8, .LBB11_92
 # %bb.90:                               # %vector.ph568
 	ld.bu	$a0, $s4, 1544
 	andi	$a0, $a0, 1
@@ -37692,11 +37502,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 144
 	st.d	$s1, $s4, 1576
-	ori	$a0, $zero, 1
 	st.w	$s8, $s4, 1584
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
-	blt	$s8, $a0, .LBB11_100
+	blez	$s8, .LBB11_100
 # %bb.98:                               # %vector.ph611
 	ld.bu	$a0, $s4, 1568
 	andi	$a0, $a0, 1
@@ -38193,7 +38002,6 @@ _Z14recursiveMkdirRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_Z1
 	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -38201,7 +38009,6 @@ _Z14recursiveMkdirRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_Z1
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s0, $a0
 	ld.w	$s1, $a0, 8
 	slli.d	$a0, $s1, 32
@@ -38221,34 +38028,33 @@ _Z14recursiveMkdirRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_Z1
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	addi.w	$s2, $s1, -1
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(stat)
 	jirl	$ra, $ra, 0
 	slt	$a1, $zero, $s1
 	beqz	$a0, .LBB13_8
 # %bb.1:
-	ori	$s4, $zero, 1
-	blt	$s1, $s4, .LBB13_8
+	blez	$s1, .LBB13_8
 # %bb.2:
-	ori	$s5, $zero, 47
+	ori	$s4, $zero, 47
 	b	.LBB13_4
 	.p2align	4, , 16
 .LBB13_3:                               #   in Loop: Header=BB13_4 Depth=1
 	addi.w	$s2, $a0, -1
-	blt	$a0, $s4, .LBB13_6
+	blez	$a0, .LBB13_6
 .LBB13_4:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s2
 	ldx.bu	$a1, $fp, $s2
-	bne	$a1, $s5, .LBB13_3
+	bne	$a1, $s4, .LBB13_3
 # %bb.5:                                # %.thread100
                                         #   in Loop: Header=BB13_4 Depth=1
 	stx.b	$zero, $fp, $a0
 	move	$s2, $a0
 .LBB13_6:                               # %.loopexit
                                         #   in Loop: Header=BB13_4 Depth=1
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(stat)
 	jirl	$ra, $ra, 0
@@ -38260,7 +38066,7 @@ _Z14recursiveMkdirRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_Z1
 .LBB13_8:                               # %._crit_edge
 	beqz	$a1, .LBB13_13
 # %bb.9:
-	ld.wu	$a0, $sp, 16
+	ld.wu	$a0, $sp, 24
 	lu12i.w	$a1, 15
 	and	$a0, $a0, $a1
 	lu12i.w	$a1, 4
@@ -38436,7 +38242,6 @@ _Z14recursiveMkdirRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_Z1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
@@ -38643,10 +38448,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	bnez	$a0, .LBB15_3
 	b	.LBB15_2
 .LBB15_6:                               # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB15_9
+	bgez	$a1, .LBB15_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB15_14
@@ -38986,17 +38790,16 @@ _ZNSt19_UninitDestroyGuardIPSt6vectorIeSaIeEEvED2Ev: # @_ZNSt19_UninitDestroyGua
 _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_appendEm
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -39005,7 +38808,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	beqz	$a1, .LBB20_15
 # %bb.1:
 	move	$s0, $a1
@@ -39038,9 +38840,9 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s5, $a0, $s2
-	ori	$s6, $zero, 1
-	stx.d	$zero, $a0, $s2
-	beq	$s0, $s6, .LBB20_5
+	ori	$a0, $zero, 1
+	stx.d	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB20_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s5, 8
 	slli.d	$a1, $s0, 3
@@ -39049,7 +38851,7 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB20_5:                               # %_ZSt27__uninitialized_default_n_aIPdmdET_S1_T0_RSaIT1_E.exit33
-	blt	$s2, $s6, .LBB20_7
+	blez	$s2, .LBB20_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -39090,16 +38892,15 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 .LBB20_14:                              # %_ZSt27__uninitialized_default_n_aIPdmdET_S1_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB20_15:
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .LBB20_16:
 	pcalau12i	$a0, %pc_hi20(.L.str.48)
@@ -40597,8 +40398,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 40
 	ld.d	$a0, $s1, 48
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_6
+	blez	$s3, .LBB27_6
 # %bb.5:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40633,8 +40433,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 64
 	ld.d	$a0, $s1, 72
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_12
+	blez	$s3, .LBB27_12
 # %bb.11:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40669,8 +40468,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 88
 	ld.d	$a0, $s1, 96
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_18
+	blez	$s3, .LBB27_18
 # %bb.17:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40705,8 +40503,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 112
 	ld.d	$a0, $s1, 120
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_24
+	blez	$s3, .LBB27_24
 # %bb.23:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40741,8 +40538,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 136
 	ld.d	$a0, $s1, 144
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_30
+	blez	$s3, .LBB27_30
 # %bb.29:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40777,8 +40573,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 160
 	ld.d	$a0, $s1, 168
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_36
+	blez	$s3, .LBB27_36
 # %bb.35:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40813,8 +40608,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 184
 	ld.d	$a0, $s1, 192
 	sub.d	$s3, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB27_42
+	blez	$s3, .LBB27_42
 # %bb.41:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40849,9 +40643,8 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 208
 	ld.d	$a0, $s1, 216
 	sub.d	$s3, $a0, $a1
-	ori	$a2, $zero, 1
 	move	$a0, $s2
-	blt	$s3, $a2, .LBB27_48
+	blez	$s3, .LBB27_48
 # %bb.47:
 	move	$a0, $s2
 	move	$a2, $s3
@@ -40886,9 +40679,8 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 232
 	ld.d	$a0, $s1, 240
 	sub.d	$s4, $a0, $a1
-	ori	$a2, $zero, 1
 	move	$a0, $s3
-	blt	$s4, $a2, .LBB27_54
+	blez	$s4, .LBB27_54
 # %bb.53:
 	move	$a0, $s3
 	move	$a2, $s4
@@ -40924,8 +40716,7 @@ _ZN8LoopStatC2ERKS_:                    # @_ZN8LoopStatC2ERKS_
 	ld.d	$a1, $s1, 256
 	ld.d	$a0, $s1, 264
 	sub.d	$s0, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB27_60
+	blez	$s0, .LBB27_60
 # %bb.59:
 	move	$a0, $s4
 	move	$a2, $s0
@@ -41216,16 +41007,15 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERK
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception8
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -41233,7 +41023,6 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERK
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s1, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$a2, $s1, 0
@@ -41259,15 +41048,13 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERK
 	st.d	$a0, $fp, 16
 	ld.d	$s3, $s1, 0
 	ld.d	$s4, $s1, 8
-	st.d	$s0, $sp, 40
-	st.d	$s0, $sp, 24
-	addi.d	$a0, $sp, 40
-	st.d	$a0, $sp, 32
-	beq	$s3, $s4, .LBB28_12
-# %bb.4:                                # %.lr.ph.i.i.i.preheader
-	ori	$s5, $zero, 1
+	st.d	$s0, $sp, 32
+	st.d	$s0, $sp, 16
+	addi.d	$a0, $sp, 32
+	st.d	$a0, $sp, 24
+	beq	$s3, $s4, .LBB28_11
 	.p2align	4, , 16
-.LBB28_5:                               # %.lr.ph.i.i.i
+.LBB28_4:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s3, 8
 	ld.d	$a1, $s3, 0
@@ -41275,22 +41062,22 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERK
 	st.d	$zero, $s0, 16
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $s0, 0
-	beq	$a0, $a1, .LBB28_8
-# %bb.6:                                # %_ZNSt15__new_allocatorIeE8allocateEmPKv.exit.i.i.i.i.i.i.i.i
-                                        #   in Loop: Header=BB28_5 Depth=1
+	beq	$a0, $a1, .LBB28_7
+# %bb.5:                                # %_ZNSt15__new_allocatorIeE8allocateEmPKv.exit.i.i.i.i.i.i.i.i
+                                        #   in Loop: Header=BB28_4 Depth=1
 .Ltmp176:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp177:
-# %bb.7:                                #   in Loop: Header=BB28_5 Depth=1
+# %bb.6:                                #   in Loop: Header=BB28_4 Depth=1
 	move	$s1, $a0
-	b	.LBB28_9
+	b	.LBB28_8
 	.p2align	4, , 16
-.LBB28_8:                               #   in Loop: Header=BB28_5 Depth=1
+.LBB28_7:                               #   in Loop: Header=BB28_4 Depth=1
 	move	$s1, $zero
-.LBB28_9:                               # %.noexc.i.i.i
-                                        #   in Loop: Header=BB28_5 Depth=1
+.LBB28_8:                               # %.noexc.i.i.i
+                                        #   in Loop: Header=BB28_4 Depth=1
 	st.d	$s1, $s0, 0
 	st.d	$s1, $s0, 8
 	add.d	$a0, $s1, $s2
@@ -41298,43 +41085,42 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEC2ERK
 	ld.d	$a1, $s3, 0
 	ld.d	$a0, $s3, 8
 	sub.d	$s2, $a0, $a1
-	blt	$s2, $s5, .LBB28_11
-# %bb.10:                               #   in Loop: Header=BB28_5 Depth=1
+	blez	$s2, .LBB28_10
+# %bb.9:                                #   in Loop: Header=BB28_4 Depth=1
 	move	$a0, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	add.d	$s1, $s1, $s2
-.LBB28_11:                              #   in Loop: Header=BB28_5 Depth=1
+.LBB28_10:                              #   in Loop: Header=BB28_4 Depth=1
 	st.d	$s1, $s0, 8
 	addi.d	$s3, $s3, 24
 	addi.d	$s0, $s0, 24
-	st.d	$s0, $sp, 40
-	bne	$s3, $s4, .LBB28_5
-.LBB28_12:                              # %.loopexit
+	st.d	$s0, $sp, 32
+	bne	$s3, $s4, .LBB28_4
+.LBB28_11:                              # %.loopexit
 	st.d	$s0, $fp, 8
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
-.LBB28_13:                              # %.body
+.LBB28_12:                              # %.body
 .Ltmp178:
 	move	$s0, $a0
-	addi.d	$a0, $sp, 24
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(_ZNSt19_UninitDestroyGuardIPSt6vectorIeSaIeEEvED2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB28_15
-# %bb.14:
+	beqz	$a0, .LBB28_14
+# %bb.13:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-.LBB28_15:                              # %_ZNSt12_Vector_baseISt6vectorIeSaIeEESaIS2_EED2Ev.exit
+.LBB28_14:                              # %_ZNSt12_Vector_baseISt6vectorIeSaIeEESaIS2_EED2Ev.exit
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

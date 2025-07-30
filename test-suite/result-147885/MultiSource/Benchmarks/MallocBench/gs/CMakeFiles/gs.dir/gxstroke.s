@@ -94,7 +94,7 @@ stroke:                                 # @stroke
 	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	fld.s	$fs1, $a2, 72
 	or	$a1, $a3, $a1
-	bstrpick.d	$a2, $a0, 62, 0
+	slli.d	$a2, $a0, 1
 	bstrpick.d	$s1, $a1, 62, 0
 	beqz	$a2, .LBB1_3
 # %bb.1:
@@ -1020,15 +1020,14 @@ stroke_add:                             # @stroke_add
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_add_line)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $zero, -1
-	bge	$s0, $a0, .LBB4_33
+	bltz	$a0, .LBB4_33
 # %bb.21:
 	ld.d	$a1, $sp, 0
 	ld.d	$a2, $sp, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_add_line)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB4_32
+	bgez	$a0, .LBB4_32
 	b	.LBB4_33
 .LBB4_22:
 	ld.w	$a0, $a0, 4

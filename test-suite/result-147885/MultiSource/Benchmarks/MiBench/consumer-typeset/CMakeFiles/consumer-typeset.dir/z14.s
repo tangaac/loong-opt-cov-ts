@@ -1417,8 +1417,7 @@ FillObject:                             # @FillObject
 	addu16i.d	$s2, $s2, 16
 	ori	$s8, $zero, 4
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_205
+	bgez	$a0, .LBB0_205
 	b	.LBB0_204
 .LBB0_181:                              #   in Loop: Header=BB0_89 Depth=3
 	ld.h	$a0, $s4, 52
@@ -1520,8 +1519,7 @@ FillObject:                             # @FillObject
 	addu16i.d	$s2, $s8, 16
 	ori	$fp, $zero, 4
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_231
+	bgez	$a0, .LBB0_231
 	b	.LBB0_230
 .LBB0_199:                              #   in Loop: Header=BB0_89 Depth=3
 	beqz	$s3, .LBB0_221
@@ -1545,8 +1543,7 @@ FillObject:                             # @FillObject
 	mul.d	$a0, $a0, $a0
 	add.d	$s2, $a0, $s8
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_231
+	bgez	$a0, .LBB0_231
 	b	.LBB0_230
 .LBB0_203:                              #   in Loop: Header=BB0_89 Depth=3
 	sltui	$a0, $s4, 1
@@ -1557,8 +1554,7 @@ FillObject:                             # @FillObject
 	masknez	$a0, $a2, $a0
 	or	$s2, $a1, $a0
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_205
+	bgez	$a0, .LBB0_205
 .LBB0_204:                              #   in Loop: Header=BB0_89 Depth=3
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -1618,8 +1614,7 @@ FillObject:                             # @FillObject
 	mul.d	$a0, $a0, $a0
 	add.d	$s2, $a0, $s2
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_205
+	bgez	$a0, .LBB0_205
 	b	.LBB0_204
 .LBB0_209:                              #   in Loop: Header=BB0_89 Depth=3
 	addi.w	$a1, $a2, 0
@@ -1644,8 +1639,7 @@ FillObject:                             # @FillObject
 	addu16i.d	$s2, $s8, 16
 	ori	$fp, $zero, 3
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_231
+	bgez	$a0, .LBB0_231
 	b	.LBB0_230
 .LBB0_214:                              #   in Loop: Header=BB0_89 Depth=3
 	beqz	$s5, .LBB0_247
@@ -1761,8 +1755,7 @@ FillObject:                             # @FillObject
 	maskeqz	$a1, $s8, $a1
 	or	$s2, $a1, $a0
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_231
+	bgez	$a0, .LBB0_231
 .LBB0_230:                              #   in Loop: Header=BB0_89 Depth=3
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -1811,8 +1804,7 @@ FillObject:                             # @FillObject
 	addu16i.d	$s2, $s2, 16
 	ori	$s8, $zero, 3
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_205
+	bgez	$a0, .LBB0_205
 	b	.LBB0_204
 .LBB0_240:                              #   in Loop: Header=BB0_89 Depth=3
 	move	$s3, $zero
@@ -1826,8 +1818,7 @@ FillObject:                             # @FillObject
 	add.d	$s2, $a0, $s8
 	ori	$fp, $zero, 1
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_231
+	bgez	$a0, .LBB0_231
 	b	.LBB0_230
 .LBB0_242:                              #   in Loop: Header=BB0_89 Depth=3
 	ld.w	$a1, $fp, 48
@@ -1903,8 +1894,7 @@ FillObject:                             # @FillObject
 	add.d	$s2, $a0, $s2
 	ori	$s8, $zero, 1
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_205
+	bgez	$a0, .LBB0_205
 	b	.LBB0_204
 .LBB0_253:                              #   in Loop: Header=BB0_89 Depth=3
 	slli.w	$a0, $a0, 7
@@ -1913,8 +1903,7 @@ FillObject:                             # @FillObject
 	add.d	$s2, $a0, $s8
 	ori	$fp, $zero, 2
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_231
+	bgez	$a0, .LBB0_231
 	b	.LBB0_230
 .LBB0_254:                              #   in Loop: Header=BB0_89 Depth=3
 	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
@@ -1971,8 +1960,7 @@ FillObject:                             # @FillObject
 	add.d	$s2, $a0, $s2
 	ori	$s8, $zero, 2
 	addi.w	$a0, $s2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_205
+	bgez	$a0, .LBB0_205
 	b	.LBB0_204
 .LBB0_260:                              #   in Loop: Header=BB0_89 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
@@ -2067,7 +2055,7 @@ FillObject:                             # @FillObject
 	slt	$a0, $a1, $a0
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	and	$a0, $a1, $a0
-	bne	$a0, $s1, .LBB0_321
+	beqz	$a0, .LBB0_321
 # %bb.272:                              #   in Loop: Header=BB0_83 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(Hyphenate)
@@ -2150,7 +2138,7 @@ FillObject:                             # @FillObject
 .LBB0_287:                              #   in Loop: Header=BB0_83 Depth=1
 	ld.w	$a1, $s3, 68
 .LBB0_288:                              #   in Loop: Header=BB0_83 Depth=1
-	blt	$a1, $s1, .LBB0_291
+	blez	$a1, .LBB0_291
 # %bb.289:                              #   in Loop: Header=BB0_83 Depth=1
 	sub.w	$a3, $a1, $a5
 	blez	$a3, .LBB0_300
@@ -3679,8 +3667,7 @@ FillObject:                             # @FillObject
 .LBB0_439:
 	ld.w	$a0, $s0, 76
 	ld.d	$s1, $s4, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_446
+	bgez	$a0, .LBB0_446
 # %bb.440:
 	ld.d	$a1, $s4, 8
 	beq	$a1, $s1, .LBB0_446
@@ -3713,9 +3700,8 @@ FillObject:                             # @FillObject
 	ld.w	$a0, $s0, 76
 	ld.d	$s1, $s4, 0
 .LBB0_446:
-	lu12i.w	$a1, 262144
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB0_453
+	slli.d	$a0, $a0, 33
+	bgez	$a0, .LBB0_453
 # %bb.447:
 	ld.d	$a0, $s4, 8
 	beq	$a0, $s1, .LBB0_453
@@ -4353,7 +4339,7 @@ FillObject:                             # @FillObject
 	ld.w	$a2, $s2, 40
 	ld.w	$a4, $s6, 40
 	xor	$a2, $a4, $a2
-	bstrpick.d	$a2, $a2, 30, 0
+	slli.d	$a2, $a2, 33
 	bnez	$a2, .LBB0_535
 # %bb.547:                              #   in Loop: Header=BB0_536 Depth=2
 	addi.d	$a0, $a0, -12

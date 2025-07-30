@@ -8,12 +8,12 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(g)
 	addi.d	$a0, $a0, %pc_lo12(g)
 	ld.w	$a5, $a0, 0
-	ori	$a4, $zero, 1
-	blt	$a5, $a4, .LBB0_3
+	blez	$a5, .LBB0_3
 # %bb.1:                                # %.foo.exit_crit_edge
 	pcalau12i	$a0, %pc_hi20(e)
 	ld.w	$a0, $a0, %pc_lo12(e)
-	bne	$a0, $a4, .LBB0_8
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB0_8
 .LBB0_2:
 	move	$a0, $zero
 	ret
@@ -24,6 +24,7 @@ main:                                   # @main
 	ld.d	$a2, $a2, %pc_lo12(c)
 	pcalau12i	$a3, %pc_hi20(a)
 	ld.w	$a3, $a3, %pc_lo12(a)
+	ori	$a4, $zero, 1
 	sub.w	$a6, $a4, $a5
 	ori	$a7, $zero, 20
 	pcalau12i	$a4, %pc_hi20(h)

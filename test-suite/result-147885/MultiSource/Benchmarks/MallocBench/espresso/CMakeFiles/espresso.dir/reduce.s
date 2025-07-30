@@ -53,9 +53,8 @@ reduce:                                 # @reduce
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB0_17
+	blez	$a1, .LBB0_17
 # %bb.7:                                # %.lr.ph.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s6, $a1, $s1, 2

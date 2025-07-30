@@ -232,7 +232,7 @@ ptoa:                                   # @ptoa
 # %bb.14:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_16
 # %bb.15:
@@ -244,7 +244,7 @@ ptoa:                                   # @ptoa
 # %bb.17:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_19
 # %bb.18:
@@ -256,7 +256,7 @@ ptoa:                                   # @ptoa
 # %bb.20:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_22
 # %bb.21:
@@ -267,7 +267,7 @@ ptoa:                                   # @ptoa
 # %bb.23:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB0_25
 # %bb.24:

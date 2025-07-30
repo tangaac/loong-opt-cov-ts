@@ -207,16 +207,13 @@ _ZN8NArchive3N7z16CFolderOutStream17ProcessEmptyFilesEv: # @_ZN8NArchive3N7z16CF
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a0
-	ori	$s1, $zero, 1
-	ori	$s2, $zero, 3
+	ori	$s1, $zero, 3
 	b	.LBB2_2
 	.p2align	4, , 16
 .LBB2_1:                                # %_ZN8NArchive3N7z16CFolderOutStream21CloseFileAndSetResultEv.exit
@@ -258,43 +255,42 @@ _ZN8NArchive3N7z16CFolderOutStream17ProcessEmptyFilesEv: # @_ZN8NArchive3N7z16CF
 	slli.d	$a2, $a2, 3
 	ldx.d	$a0, $a0, $a2
 	ld.bu	$a2, $a0, 33
-	bne	$a2, $s1, .LBB2_7
+	beqz	$a2, .LBB2_7
 # %bb.6:                                # %._crit_edge
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$s3, $fp, 24
+	ld.d	$s2, $fp, 24
 	move	$s0, $zero
 	b	.LBB2_10
 	.p2align	4, , 16
 .LBB2_7:                                #   in Loop: Header=BB2_2 Depth=1
 	ld.bu	$a2, $a0, 34
-	ld.d	$s3, $fp, 24
+	ld.d	$s2, $fp, 24
 	move	$s0, $zero
-	bne	$a2, $s1, .LBB2_10
+	beqz	$a2, .LBB2_10
 # %bb.8:                                #   in Loop: Header=BB2_2 Depth=1
 	ld.b	$a2, $fp, 77
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB2_10
 # %bb.9:                                #   in Loop: Header=BB2_2 Depth=1
 	ld.w	$a0, $a0, 12
-	ld.w	$a2, $s3, 32
+	ld.w	$a2, $s2, 32
 	xor	$a0, $a2, $a0
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	masknez	$s0, $s2, $a0
+	masknez	$s0, $s1, $a0
 .LBB2_10:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a0, $s3, 16
+	ld.d	$a0, $s2, 16
 	beqz	$a0, .LBB2_1
 # %bb.11:                               #   in Loop: Header=BB2_2 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
 	ld.w	$a1, $fp, 72
-	st.d	$zero, $s3, 16
+	st.d	$zero, $s2, 16
 	b	.LBB2_1
 .LBB2_12:
 	move	$a0, $zero
 .LBB2_13:                               # %.critedge
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -597,9 +593,8 @@ _ZN8NArchive3N7z16CFolderOutStream21CloseFileAndSetResultEv: # @_ZN8NArchive3N7z
 	b	.LBB5_5
 .LBB5_2:
 	ld.bu	$a2, $a0, 34
-	ori	$a3, $zero, 1
 	move	$s0, $zero
-	bne	$a2, $a3, .LBB5_5
+	beqz	$a2, .LBB5_5
 # %bb.3:
 	ld.b	$a2, $fp, 77
 	andi	$a2, $a2, 1
@@ -659,7 +654,6 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -670,7 +664,6 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s1, $a1
@@ -681,20 +674,19 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 .LBB6_2:
 	beqz	$s0, .LBB6_26
 # %bb.3:                                # %.lr.ph
-	ori	$s4, $zero, 1
-	ori	$s5, $zero, 3
+	ori	$s4, $zero, 3
 	b	.LBB6_6
 	.p2align	4, , 16
 .LBB6_4:                                # %.backedge.sink.split
                                         #   in Loop: Header=BB6_6 Depth=1
-	add.d	$s1, $s1, $s7
-	sub.w	$s0, $s0, $s6
+	add.d	$s1, $s1, $s6
+	sub.w	$s0, $s0, $s5
 .LBB6_5:                                # %.backedge
                                         #   in Loop: Header=BB6_6 Depth=1
 	beqz	$s0, .LBB6_26
 .LBB6_6:                                # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $s2, 78
-	bne	$a0, $s4, .LBB6_14
+	beqz	$a0, .LBB6_14
 # %bb.7:                                #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a0, $s2, 32
 	ld.d	$a1, $s2, 80
@@ -705,27 +697,27 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 	maskeqz	$a1, $a1, $a4
 	ld.d	$a4, $a3, 40
 	or	$a1, $a1, $a2
-	st.w	$a1, $sp, 4
+	st.w	$a1, $sp, 12
 	addi.w	$a2, $a1, 0
-	addi.d	$a3, $sp, 4
+	addi.d	$a3, $sp, 12
 	move	$a1, $s1
 	jirl	$ra, $a4, 0
 	bnez	$a0, .LBB6_27
 # %bb.8:                                #   in Loop: Header=BB6_6 Depth=1
-	ld.w	$s6, $sp, 4
-	beqz	$s6, .LBB6_26
+	ld.w	$s5, $sp, 12
+	beqz	$s5, .LBB6_26
 # %bb.9:                                #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a0, $s2, 80
-	bstrpick.d	$s7, $s6, 31, 0
-	sub.d	$a1, $a0, $s7
+	bstrpick.d	$s6, $s5, 31, 0
+	sub.d	$a1, $a0, $s6
 	st.d	$a1, $s2, 80
 	beqz	$fp, .LBB6_11
 # %bb.10:                               #   in Loop: Header=BB6_6 Depth=1
 	ld.w	$a1, $fp, 0
-	add.d	$a1, $a1, $s6
+	add.d	$a1, $a1, $s5
 	st.w	$a1, $fp, 0
 .LBB6_11:                               #   in Loop: Header=BB6_6 Depth=1
-	bne	$a0, $s7, .LBB6_4
+	bne	$a0, $s6, .LBB6_4
 # %bb.12:                               #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a0, $s2, 40
 	ld.w	$a2, $s2, 68
@@ -735,10 +727,10 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 	slli.d	$a2, $a2, 3
 	ldx.d	$a0, $a0, $a2
 	ld.bu	$a2, $a0, 33
-	bne	$a2, $s4, .LBB6_17
+	beqz	$a2, .LBB6_17
 # %bb.13:                               # %._crit_edge
                                         #   in Loop: Header=BB6_6 Depth=1
-	ld.d	$s8, $s2, 24
+	ld.d	$s7, $s2, 24
 	move	$s3, $zero
 	b	.LBB6_20
 	.p2align	4, , 16
@@ -760,29 +752,29 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 	b	.LBB6_27
 .LBB6_17:                               #   in Loop: Header=BB6_6 Depth=1
 	ld.bu	$a2, $a0, 34
-	ld.d	$s8, $s2, 24
+	ld.d	$s7, $s2, 24
 	move	$s3, $zero
-	bne	$a2, $s4, .LBB6_20
+	beqz	$a2, .LBB6_20
 # %bb.18:                               #   in Loop: Header=BB6_6 Depth=1
 	ld.b	$a2, $s2, 77
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB6_20
 # %bb.19:                               #   in Loop: Header=BB6_6 Depth=1
 	ld.w	$a0, $a0, 12
-	ld.w	$a2, $s8, 32
+	ld.w	$a2, $s7, 32
 	xor	$a0, $a2, $a0
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	masknez	$s3, $s5, $a0
+	masknez	$s3, $s4, $a0
 .LBB6_20:                               #   in Loop: Header=BB6_6 Depth=1
-	ld.d	$a0, $s8, 16
+	ld.d	$a0, $s7, 16
 	beqz	$a0, .LBB6_22
 # %bb.21:                               #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
 	ld.w	$a1, $s2, 72
-	st.d	$zero, $s8, 16
+	st.d	$zero, $s7, 16
 .LBB6_22:                               # %_ZN8NArchive3N7z16CFolderOutStream21CloseFileAndSetResultEv.exit
                                         #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a0, $s2, 56
@@ -811,7 +803,6 @@ _ZN8NArchive3N7z16CFolderOutStream5WriteEPKvjPj: # @_ZN8NArchive3N7z16CFolderOut
 .LBB6_26:
 	move	$a0, $zero
 .LBB6_27:                               # %.loopexit
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -888,18 +879,16 @@ _ZThn8_N8NArchive3N7z16CFolderOutStream16GetSubStreamSizeEyPy: # @_ZThn8_N8NArch
 _ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi: # @_ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a0
 	ld.d	$a0, $a0, 48
 	ld.w	$a2, $fp, 72
@@ -907,7 +896,6 @@ _ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi: # @_ZN8NArchive3N7z16CFold
 	bge	$a2, $a0, .LBB9_8
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
-	ori	$s1, $zero, 1
 	b	.LBB9_4
 	.p2align	4, , 16
 .LBB9_2:                                #   in Loop: Header=BB9_4 Depth=1
@@ -922,17 +910,17 @@ _ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi: # @_ZN8NArchive3N7z16CFold
 	bge	$a2, $a0, .LBB9_8
 .LBB9_4:                                # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $fp, 78
-	bne	$a0, $s1, .LBB9_2
+	beqz	$a0, .LBB9_2
 # %bb.5:                                #   in Loop: Header=BB9_4 Depth=1
-	ld.d	$s2, $fp, 24
-	ld.d	$a0, $s2, 16
+	ld.d	$s1, $fp, 24
+	ld.d	$a0, $s1, 16
 	beqz	$a0, .LBB9_7
 # %bb.6:                                #   in Loop: Header=BB9_4 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
 	ld.w	$a2, $fp, 72
-	st.d	$zero, $s2, 16
+	st.d	$zero, $s1, 16
 .LBB9_7:                                # %_ZN8NArchive3N7z16CFolderOutStream21CloseFileAndSetResultEi.exit
                                         #   in Loop: Header=BB9_4 Depth=1
 	ld.d	$a0, $fp, 56
@@ -948,12 +936,11 @@ _ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi: # @_ZN8NArchive3N7z16CFold
 .LBB9_8:
 	move	$a0, $zero
 .LBB9_9:                                # %._crit_edge
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end9:
 	.size	_ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi, .Lfunc_end9-_ZN8NArchive3N7z16CFolderOutStream14FlushCorruptedEi

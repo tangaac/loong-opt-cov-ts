@@ -99,8 +99,7 @@ create_box:                             # @create_box
 	jirl	$ra, $ra, 0
 	ld.w	$s3, $fp, 60
 	ld.w	$s4, $fp, 56
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB0_12
+	blez	$s3, .LBB0_12
 # %bb.6:                                # %.lr.ph127
 	ld.d	$a0, $s0, 0
 	ori	$a1, $zero, 6

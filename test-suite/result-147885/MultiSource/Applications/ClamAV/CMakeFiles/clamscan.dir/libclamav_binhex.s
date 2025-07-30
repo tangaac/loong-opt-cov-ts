@@ -25,41 +25,40 @@ cli_binhex:                             # @cli_binhex
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB0_16
 # %bb.1:
-	ld.d	$s8, $sp, 72
-	beqz	$s8, .LBB0_17
+	ld.d	$s0, $sp, 72
+	beqz	$s0, .LBB0_17
 # %bb.2:
 	pcaddu18i	$ra, %call36(messageCreate)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	addi.w	$a0, $zero, -114
-	beqz	$fp, .LBB0_27
+	beqz	$fp, .LBB0_28
 # %bb.3:
-	move	$s0, $a0
+	move	$s1, $a0
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 2
-	ori	$s1, $zero, 1
 	move	$a0, $zero
-	move	$a1, $s8
+	move	$a1, $s0
 	move	$a4, $s2
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(mmap)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
-	beq	$a0, $a1, .LBB0_26
+	beq	$a0, $a1, .LBB0_18
 # %bb.4:
 	move	$s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	blt	$s8, $s1, .LBB0_18
+	blez	$s0, .LBB0_19
 # %bb.5:                                # %.preheader.preheader
 	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
 	move	$s3, $zero
 	ori	$s7, $zero, 10
-	ori	$s0, $zero, 13
+	ori	$s8, $zero, 13
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	move	$s1, $s8
+	move	$s1, $s0
 	.p2align	4, , 16
 .LBB0_6:                                # %.preheader
                                         # =>This Loop Header: Depth=1
@@ -74,7 +73,7 @@ cli_binhex:                             # @cli_binhex
 	ld.bu	$a2, $s4, 0
 	beq	$a2, $s7, .LBB0_11
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=2
-	beq	$a2, $s0, .LBB0_11
+	beq	$a2, $s8, .LBB0_11
 # %bb.9:                                #   in Loop: Header=BB0_7 Depth=2
 	addi.d	$s5, $s5, 1
 	addi.d	$s1, $s1, -1
@@ -90,7 +89,7 @@ cli_binhex:                             # @cli_binhex
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_19
+	beqz	$a0, .LBB0_20
 # %bb.12:                               #   in Loop: Header=BB0_6 Depth=1
 	move	$s6, $a0
 	move	$a1, $s2
@@ -102,10 +101,9 @@ cli_binhex:                             # @cli_binhex
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(messageAddStr)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	bltz	$a0, .LBB0_15
 # %bb.13:                               #   in Loop: Header=BB0_6 Depth=1
-	blt	$s1, $a2, .LBB0_15
+	blez	$s1, .LBB0_15
 # %bb.14:                               #   in Loop: Header=BB0_6 Depth=1
 	ld.bu	$a0, $s4, 0
 	addi.d	$a0, $a0, -13
@@ -115,44 +113,51 @@ cli_binhex:                             # @cli_binhex
 	addi.d	$s2, $a0, 1
 	addi.d	$s1, $a1, -1
 	move	$s3, $s6
-	bltu	$a2, $a1, .LBB0_6
+	ori	$a0, $zero, 1
+	bltu	$a0, $a1, .LBB0_6
 .LBB0_15:                               # %.sink.split
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	move	$a1, $s8
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(munmap)
 	jirl	$ra, $ra, 0
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	b	.LBB0_20
+	b	.LBB0_21
 .LBB0_16:
 	addi.w	$a0, $zero, -115
-	b	.LBB0_27
+	b	.LBB0_28
 .LBB0_17:
 	move	$a0, $zero
-	b	.LBB0_27
-.LBB0_18:                               # %.thread.thread92
+	b	.LBB0_28
+.LBB0_18:
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(messageDestroy)
+	jirl	$ra, $ra, 0
+	move	$a0, $s1
+	b	.LBB0_28
+.LBB0_19:                               # %.thread.thread92
 	move	$a0, $s2
-	move	$a1, $s8
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(munmap)
 	jirl	$ra, $ra, 0
-	b	.LBB0_21
-.LBB0_19:                               # %.thread
+	b	.LBB0_22
+.LBB0_20:                               # %.thread
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	move	$a1, $s8
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(munmap)
 	jirl	$ra, $ra, 0
 	move	$s6, $s3
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	beqz	$s3, .LBB0_21
-.LBB0_20:
+	beqz	$s3, .LBB0_22
+.LBB0_21:
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB0_21:
+.LBB0_22:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(binhexBegin)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_24
-# %bb.22:
+	beqz	$a0, .LBB0_25
+# %bb.23:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
 	move	$a0, $fp
@@ -163,8 +168,8 @@ cli_binhex:                             # @cli_binhex
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(messageToFileblob)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_25
-# %bb.23:
+	beqz	$a0, .LBB0_26
+# %bb.24:
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(fileblobGetFilename)
 	jirl	$ra, $ra, 0
@@ -177,8 +182,8 @@ cli_binhex:                             # @cli_binhex
 	pcaddu18i	$ra, %call36(fileblobDestroy)
 	jirl	$ra, $ra, 0
 	move	$s0, $zero
-	b	.LBB0_26
-.LBB0_24:
+	b	.LBB0_27
+.LBB0_25:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(messageDestroy)
 	jirl	$ra, $ra, 0
@@ -187,20 +192,20 @@ cli_binhex:                             # @cli_binhex
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -124
-	b	.LBB0_27
-.LBB0_25:
+	b	.LBB0_28
+.LBB0_26:
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $zero, -123
-.LBB0_26:
+.LBB0_27:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(messageDestroy)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-.LBB0_27:
+.LBB0_28:
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload

@@ -11933,8 +11933,7 @@ s321:                                   # @s321
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_5
+	blez	$a0, .LBB6_5
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)

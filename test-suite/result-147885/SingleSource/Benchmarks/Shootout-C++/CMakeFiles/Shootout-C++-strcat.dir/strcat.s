@@ -55,8 +55,7 @@ main:                                   # @main
 .Ltmp1:
 # %bb.4:                                # %.preheader
 	addi.w	$a0, $fp, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_11
+	blez	$a0, .LBB0_11
 # %bb.5:                                # %.lr.ph.preheader
 	ori	$s0, $zero, 31
 	ori	$s3, $zero, 6

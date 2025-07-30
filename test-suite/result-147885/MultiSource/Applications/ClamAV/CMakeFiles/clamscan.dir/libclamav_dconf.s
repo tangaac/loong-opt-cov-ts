@@ -801,8 +801,8 @@ chkflevel:                              # @chkflevel
 	ld.d	$a2, $a0, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a2, $a1
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB3_4
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB3_4
 # %bb.2:
 	move	$a0, $s0
 .LBB3_3:
@@ -840,8 +840,8 @@ chkflevel:                              # @chkflevel
 	ld.d	$a2, $s3, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a2, $a1
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB3_3
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB3_3
 # %bb.7:
 	ori	$a2, $zero, 10
 	move	$fp, $a0

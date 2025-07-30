@@ -226,7 +226,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -16
 	bnez	$a2, .LBB1_1
 .LBB1_3:                                # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	beqz	$a0, .LBB1_5
 # %bb.4:                                # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)

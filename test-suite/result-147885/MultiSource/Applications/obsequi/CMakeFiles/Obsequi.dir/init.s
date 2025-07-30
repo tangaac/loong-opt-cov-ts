@@ -13,17 +13,16 @@ init__safe_count:                       # @init__safe_count
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
-	slli.d	$a0, $a0, 3
-	alsl.d	$a1, $fp, $a0, 2
+	slli.d	$a1, $a0, 3
 	pcalau12i	$a0, %pc_hi20(g_board_size)
 	addi.d	$a0, $a0, %pc_lo12(g_board_size)
 	slli.d	$a2, $fp, 2
 	ldx.w	$a2, $a0, $a2
+	alsl.d	$a1, $fp, $a1, 2
 	pcalau12i	$a3, %pc_hi20(g_info_totals)
 	addi.d	$a3, $a3, %pc_lo12(g_info_totals)
-	ori	$s0, $zero, 1
 	stx.w	$zero, $a3, $a1
-	blt	$a2, $s0, .LBB0_3
+	blez	$a2, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	alsl.d	$s2, $fp, $a0, 2
@@ -33,6 +32,7 @@ init__safe_count:                       # @init__safe_count
 	addi.d	$a1, $a1, %pc_lo12(g_info)
 	add.d	$a0, $a0, $a1
 	addi.d	$s3, $a0, 12
+	ori	$s0, $zero, 1
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -73,16 +73,15 @@ init__real_count:                       # @init__real_count
 	move	$fp, $a0
 	slli.d	$a0, $a0, 3
 	alsl.d	$a1, $fp, $a0, 2
-	pcalau12i	$a2, %pc_hi20(g_info_totals)
 	pcalau12i	$a0, %pc_hi20(g_board_size)
 	addi.d	$a0, $a0, %pc_lo12(g_board_size)
-	slli.d	$a3, $fp, 2
-	ldx.w	$a3, $a0, $a3
-	addi.d	$a2, $a2, %pc_lo12(g_info_totals)
-	add.d	$a1, $a2, $a1
-	ori	$s0, $zero, 1
+	slli.d	$a2, $fp, 2
+	ldx.w	$a2, $a0, $a2
+	pcalau12i	$a3, %pc_hi20(g_info_totals)
+	addi.d	$a3, $a3, %pc_lo12(g_info_totals)
+	add.d	$a1, $a3, $a1
 	st.w	$zero, $a1, 4
-	blt	$a3, $s0, .LBB1_3
+	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	alsl.d	$s2, $fp, $a0, 2
@@ -92,6 +91,7 @@ init__real_count:                       # @init__real_count
 	addi.d	$a1, $a1, %pc_lo12(g_info)
 	add.d	$a0, $a0, $a1
 	addi.d	$s3, $a0, 16
+	ori	$s0, $zero, 1
 	.p2align	4, , 16
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -322,10 +322,9 @@ initialize_board:                       # @initialize_board
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
 .LBB3_3:
-	mul.w	$a1, $s1, $fp
+	mul.w	$s4, $s1, $fp
 	ori	$a0, $zero, 128
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB3_5
+	blt	$s4, $a0, .LBB3_5
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
@@ -362,62 +361,61 @@ initialize_board:                       # @initialize_board
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB3_17
+	blez	$fp, .LBB3_17
 # %bb.10:                               # %.preheader141
-	blt	$s1, $a0, .LBB3_17
+	blez	$s1, .LBB3_17
 # %bb.11:                               # %.preheader140.us.preheader
-	move	$a3, $zero
-	ori	$a1, $zero, 2
-	addi.d	$a2, $s2, 132
-	move	$a4, $s0
+	move	$a2, $zero
+	ori	$a0, $zero, 2
+	addi.d	$a1, $s2, 132
+	move	$a3, $s0
 	b	.LBB3_13
 	.p2align	4, , 16
 .LBB3_12:                               # %._crit_edge.us
                                         #   in Loop: Header=BB3_13 Depth=1
-	addi.d	$a4, $a4, 120
-	beq	$a3, $fp, .LBB3_17
+	addi.d	$a3, $a3, 120
+	beq	$a2, $fp, .LBB3_17
 .LBB3_13:                               # %.preheader140.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_15 Depth 2
-	move	$a5, $zero
-	sll.w	$a7, $a1, $a3
-	addi.d	$a3, $a3, 1
-	alsl.d	$a6, $a3, $s2, 2
-	nor	$a7, $a7, $zero
-	move	$t0, $a4
-	move	$t1, $a2
-	move	$t2, $s1
+	move	$a4, $zero
+	sll.w	$a6, $a0, $a2
+	addi.d	$a2, $a2, 1
+	alsl.d	$a5, $a2, $s2, 2
+	nor	$a6, $a6, $zero
+	move	$a7, $a3
+	move	$t0, $a1
+	move	$t1, $s1
 	b	.LBB3_15
 	.p2align	4, , 16
 .LBB3_14:                               # %._crit_edge
                                         #   in Loop: Header=BB3_15 Depth=2
-	addi.d	$a5, $a5, 1
-	addi.d	$t2, $t2, -1
-	addi.d	$t1, $t1, 4
+	addi.d	$a4, $a4, 1
+	addi.d	$t1, $t1, -1
 	addi.d	$t0, $t0, 4
-	beqz	$t2, .LBB3_12
+	addi.d	$a7, $a7, 4
+	beqz	$t1, .LBB3_12
 .LBB3_15:                               #   Parent Loop BB3_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t3, $t0, 0
-	bnez	$t3, .LBB3_14
+	ld.w	$t2, $a7, 0
+	bnez	$t2, .LBB3_14
 # %bb.16:                               #   in Loop: Header=BB3_15 Depth=2
-	ld.w	$t3, $a6, 0
-	sll.w	$t4, $a1, $a5
-	andn	$t3, $t3, $t4
-	st.w	$t3, $a6, 0
-	ld.w	$t3, $t1, 0
-	and	$t3, $t3, $a7
-	st.w	$t3, $t1, 0
+	ld.w	$t2, $a5, 0
+	sll.w	$t3, $a0, $a4
+	andn	$t2, $t2, $t3
+	st.w	$t2, $a5, 0
+	ld.w	$t2, $t0, 0
+	and	$t2, $t2, $a6
+	st.w	$t2, $t0, 0
 	b	.LBB3_14
 .LBB3_17:                               # %._crit_edge148
-	pcalau12i	$a2, %pc_hi20(g_info_totals)
+	pcalau12i	$a0, %pc_hi20(g_info_totals)
 	ld.w	$a1, $s3, 4
-	addi.d	$s6, $a2, %pc_lo12(g_info_totals)
+	addi.d	$s6, $a0, %pc_lo12(g_info_totals)
 	st.w	$zero, $s6, 16
-	pcalau12i	$a2, %pc_hi20(g_info)
-	addi.d	$s5, $a2, %pc_lo12(g_info)
-	blt	$a1, $a0, .LBB3_20
+	pcalau12i	$a0, %pc_hi20(g_info)
+	addi.d	$s5, $a0, %pc_lo12(g_info)
+	blez	$a1, .LBB3_20
 # %bb.18:                               # %.lr.ph.i.preheader
 	move	$s7, $zero
 	addi.d	$s8, $s5, 400
@@ -437,54 +435,52 @@ initialize_board:                       # @initialize_board
 	blt	$s7, $a1, .LBB3_19
 .LBB3_20:                               # %init__real_count.exit
 	ld.w	$a0, $s3, 0
-	ori	$s7, $zero, 1
 	st.w	$zero, $s6, 4
-	blt	$a0, $s7, .LBB3_24
+	blez	$a0, .LBB3_24
 # %bb.21:                               # %.lr.ph.i85.preheader
-	move	$s8, $zero
-	addi.d	$s4, $s5, 16
+	move	$s7, $zero
+	addi.d	$s8, $s5, 16
 	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB3_22:                               # %.lr.ph.i85
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$s8, $s8, 1
-	st.w	$zero, $s4, 0
+	addi.d	$s7, $s7, 1
+	st.w	$zero, $s8, 0
 	move	$a0, $zero
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(update_real)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 0
 	addi.w	$s2, $s2, 1
-	addi.d	$s4, $s4, 12
-	blt	$s8, $a0, .LBB3_22
+	addi.d	$s8, $s8, 12
+	blt	$s7, $a0, .LBB3_22
 # %bb.23:                               # %init__real_count.exit88.loopexit
 	ld.w	$a1, $s3, 4
 .LBB3_24:                               # %init__real_count.exit88
 	st.w	$zero, $s6, 12
-	blt	$a1, $s7, .LBB3_28
+	blez	$a1, .LBB3_28
 # %bb.25:                               # %.lr.ph.i89.preheader
 	move	$s7, $zero
-	addi.d	$s4, $s5, 396
+	addi.d	$s8, $s5, 396
 	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB3_26:                               # %.lr.ph.i89
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$s7, $s7, 1
-	st.w	$zero, $s4, 0
+	st.w	$zero, $s8, 0
 	ori	$a0, $zero, 1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(update_safe)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 4
 	addi.w	$s2, $s2, 1
-	addi.d	$s4, $s4, 12
+	addi.d	$s8, $s8, 12
 	blt	$s7, $a0, .LBB3_26
 # %bb.27:                               # %init__safe_count.exit.loopexit
 	ld.w	$a0, $s3, 0
 .LBB3_28:                               # %init__safe_count.exit
-	ori	$s7, $zero, 1
 	st.w	$zero, $s6, 0
-	blt	$a0, $s7, .LBB3_31
+	blez	$a0, .LBB3_31
 # %bb.29:                               # %.lr.ph.i92.preheader
 	move	$s6, $zero
 	addi.d	$s5, $s5, 12
@@ -516,38 +512,37 @@ initialize_board:                       # @initialize_board
 	vst	$vr0, $a4, 0
 	vst	$vr0, $a2, 0
 	vst	$vr0, $a1, 0
-	blt	$fp, $s7, .LBB3_39
+	blez	$fp, .LBB3_39
 # %bb.32:                               # %init__safe_count.exit95
-	ori	$a3, $zero, 1
-	blt	$s1, $a3, .LBB3_39
+	blez	$s1, .LBB3_39
 # %bb.33:                               # %.preheader.us.preheader
+	move	$a3, $zero
 	move	$a5, $zero
-	move	$a7, $zero
-	addi.d	$t0, $fp, -1
-	mul.w	$t0, $s1, $t0
-	ld.d	$t1, $sp, 0                     # 8-byte Folded Reload
-	addi.w	$t1, $t1, -1
-	addi.w	$t2, $s1, -1
+	addi.d	$a7, $fp, -1
+	mul.w	$a7, $s1, $a7
+	addi.w	$t0, $s4, -1
+	addi.w	$t1, $s1, -1
+	ori	$t2, $zero, 1
 	b	.LBB3_35
 	.p2align	4, , 16
 .LBB3_34:                               # %._crit_edge.us155
                                         #   in Loop: Header=BB3_35 Depth=1
-	addi.d	$a7, $a7, 1
-	add.w	$a5, $a5, $s1
+	addi.d	$a5, $a5, 1
+	add.w	$a3, $a3, $s1
+	sub.w	$a7, $a7, $s1
 	sub.w	$t0, $t0, $s1
-	sub.w	$t1, $t1, $s1
-	add.w	$t2, $t2, $s1
+	add.w	$t1, $t1, $s1
 	addi.d	$s0, $s0, 120
-	beq	$a7, $fp, .LBB3_39
+	beq	$a5, $fp, .LBB3_39
 .LBB3_35:                               # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_37 Depth 2
 	move	$t3, $s1
 	move	$t4, $s0
-	move	$t5, $t2
-	move	$t6, $t1
-	move	$t7, $t0
-	move	$t8, $a5
+	move	$t5, $t1
+	move	$t6, $t0
+	move	$t7, $a7
+	move	$t8, $a3
 	b	.LBB3_37
 	.p2align	4, , 16
 .LBB3_36:                               #   in Loop: Header=BB3_37 Depth=2
@@ -564,7 +559,7 @@ initialize_board:                       # @initialize_board
 	beqz	$s2, .LBB3_36
 # %bb.38:                               #   in Loop: Header=BB3_37 Depth=2
 	bstrpick.d	$s2, $t8, 31, 5
-	sll.w	$s4, $a3, $t8
+	sll.w	$s4, $t2, $t8
 	slli.d	$s2, $s2, 2
 	bstrpick.d	$s2, $s2, 60, 2
 	slli.d	$s2, $s2, 2
@@ -576,10 +571,10 @@ initialize_board:                       # @initialize_board
 	ldx.w	$s7, $a4, $s6
 	or	$s4, $s5, $s4
 	stx.w	$s4, $a6, $s2
-	sll.w	$s2, $a3, $t5
+	sll.w	$s2, $t2, $t5
 	or	$s2, $s7, $s2
 	stx.w	$s2, $a4, $s6
-	sll.w	$s2, $a3, $t7
+	sll.w	$s2, $t2, $t7
 	bstrpick.d	$s4, $t7, 62, 58
 	add.w	$s4, $t7, $s4
 	srai.d	$s4, $s4, 5
@@ -592,15 +587,14 @@ initialize_board:                       # @initialize_board
 	ldx.w	$s7, $a1, $s6
 	or	$s2, $s5, $s2
 	stx.w	$s2, $a2, $s4
-	sll.w	$s2, $a3, $t6
+	sll.w	$s2, $t2, $t6
 	or	$s2, $s7, $s2
 	stx.w	$s2, $a1, $s6
 	b	.LBB3_36
 .LBB3_39:                               # %._crit_edge154
 	ld.w	$a3, $s3, 4
-	ori	$a5, $zero, 1
 	st.w	$zero, $a6, 16
-	blt	$a0, $a5, .LBB3_47
+	blez	$a0, .LBB3_47
 # %bb.40:                               # %._crit_edge154
 	blez	$a3, .LBB3_47
 # %bb.41:                               # %.preheader.us.preheader.i

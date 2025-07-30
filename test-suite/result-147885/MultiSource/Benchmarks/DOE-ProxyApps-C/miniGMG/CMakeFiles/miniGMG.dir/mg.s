@@ -43,8 +43,7 @@ create_subdomain:                       # @create_subdomain
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_5
+	blez	$s2, .LBB0_5
 # %bb.1:                                # %.lr.ph
 	move	$s8, $zero
 	move	$s0, $zero
@@ -113,8 +112,7 @@ destroy_subdomain:                      # @destroy_subdomain
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 24
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -370,11 +368,11 @@ create_domain:                          # @create_domain
 	st.w	$a4, $s4, 1604
 	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
 	st.w	$fp, $s4, 1608
-	ori	$a1, $zero, 1
-	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
-	st.w	$a2, $s4, 1612
-	blt	$a4, $a1, .LBB4_13
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	st.w	$a1, $s4, 1612
+	blez	$a4, .LBB4_13
 # %bb.6:                                # %.lr.ph
+	ori	$a1, $zero, 1
 	bne	$a4, $a1, .LBB4_8
 # %bb.7:
 	move	$a1, $zero
@@ -626,18 +624,16 @@ create_domain:                          # @create_domain
 	or	$t8, $t8, $fp
 	b	.LBB4_17
 .LBB4_20:                               # %.preheader632
-	ori	$a1, $zero, 1
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB4_134
+	blez	$a0, .LBB4_134
 # %bb.21:                               # %.preheader631.lr.ph
 	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB4_135
+	blez	$a0, .LBB4_135
 # %bb.22:                               # %.preheader631.lr.ph
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB4_135
+	blez	$s2, .LBB4_135
 # %bb.23:                               # %.preheader631.us.us.preheader
 	move	$a4, $zero
 	move	$a5, $zero
@@ -803,8 +799,7 @@ create_domain:                          # @create_domain
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB4_34
+	blez	$s3, .LBB4_34
 # %bb.30:                               # %.lr.ph.i.us.us.us.preheader
                                         #   in Loop: Header=BB4_29 Depth=3
 	move	$s2, $zero
@@ -936,8 +931,8 @@ create_domain:                          # @create_domain
 	addi.d	$t7, $a0, 92
 	addi.w	$a6, $zero, -1
 	ori	$s1, $zero, 8
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
 	st.d	$ra, $sp, 456                   # 8-byte Folded Spill
 	beqz	$a3, .LBB4_37
 	.p2align	4, , 16
@@ -969,7 +964,7 @@ create_domain:                          # @create_domain
 	beqz	$fp, .LBB4_43
 # %bb.41:                               #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$fp, $a7, $a0
+	add.w	$fp, $a7, $a5
 	addi.d	$s2, $zero, -1
 	bltz	$fp, .LBB4_44
 # %bb.42:                               #   in Loop: Header=BB4_29 Depth=3
@@ -989,10 +984,10 @@ create_domain:                          # @create_domain
 	ld.d	$a7, $sp, 208                   # 8-byte Folded Reload
 	add.d	$s6, $a7, $s3
 	add.w	$s5, $s6, $s5
-	srli.d	$s6, $a0, 31
+	srli.d	$s6, $a5, 31
 	ld.d	$a7, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s6, $s6, $a7
-	slt	$s8, $a5, $a4
+	slt	$s8, $a0, $a4
 	xori	$s8, $s8, 1
 	ld.w	$ra, $s4, 1556
 	add.d	$s6, $s6, $s8
@@ -1008,7 +1003,7 @@ create_domain:                          # @create_domain
 	.p2align	4, , 16
 .LBB4_44:                               # %calculate_neighboring_subdomain_rank.exit.us.us.us
                                         #   in Loop: Header=BB4_29 Depth=3
-	add.w	$fp, $a4, $a0
+	add.w	$fp, $a4, $a5
 	mod.w	$fp, $fp, $a4
 	mul.d	$fp, $fp, $a2
 	ld.d	$a7, $sp, 424                   # 8-byte Folded Reload
@@ -1046,7 +1041,7 @@ create_domain:                          # @create_domain
 	beqz	$s2, .LBB4_53
 # %bb.51:                               #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s5, $a7, $a0
+	add.w	$s5, $a7, $a5
 	addi.d	$s2, $zero, -1
 	bltz	$s5, .LBB4_54
 # %bb.52:                               #   in Loop: Header=BB4_29 Depth=3
@@ -1059,10 +1054,10 @@ create_domain:                          # @create_domain
 	add.w	$s5, $s2, $a7
 	mod.w	$s5, $s5, $s2
 	ld.w	$s6, $s4, 1552
-	srli.d	$s8, $a0, 31
+	srli.d	$s8, $a5, 31
 	ld.d	$a7, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s8, $s8, $a7
-	slt	$ra, $a5, $a4
+	slt	$ra, $a0, $a4
 	xori	$ra, $ra, 1
 	ld.w	$t8, $s4, 1556
 	add.d	$s8, $s8, $ra
@@ -1104,7 +1099,7 @@ create_domain:                          # @create_domain
 	beqz	$t8, .LBB4_63
 # %bb.61:                               #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s2, $a7, $a0
+	add.w	$s2, $a7, $a5
 	addi.d	$s5, $zero, -1
 	bltz	$s2, .LBB4_64
 # %bb.62:                               #   in Loop: Header=BB4_29 Depth=3
@@ -1117,10 +1112,10 @@ create_domain:                          # @create_domain
 	add.w	$s2, $t8, $a7
 	mod.w	$s2, $s2, $t8
 	ld.w	$s5, $s4, 1552
-	srli.d	$s6, $a0, 31
+	srli.d	$s6, $a5, 31
 	ld.d	$a7, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s6, $s6, $a7
-	slt	$s8, $a5, $a4
+	slt	$s8, $a0, $a4
 	xori	$s8, $s8, 1
 	ld.w	$ra, $s4, 1556
 	add.d	$s6, $s6, $s8
@@ -1165,7 +1160,7 @@ create_domain:                          # @create_domain
 	beqz	$t8, .LBB4_73
 # %bb.71:                               #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s8, $a7, $a0
+	add.w	$s8, $a7, $a5
 	addi.d	$s6, $zero, -1
 	bltz	$s8, .LBB4_74
 # %bb.72:                               #   in Loop: Header=BB4_29 Depth=3
@@ -1178,10 +1173,10 @@ create_domain:                          # @create_domain
 	add.w	$s6, $t8, $a7
 	mod.w	$s6, $s6, $t8
 	ld.w	$s8, $s4, 1552
-	srli.d	$ra, $a0, 31
+	srli.d	$ra, $a5, 31
 	ld.d	$a7, $sp, 392                   # 8-byte Folded Reload
 	add.d	$ra, $ra, $a7
-	slt	$a7, $a5, $a4
+	slt	$a7, $a0, $a4
 	xori	$a7, $a7, 1
 	ld.w	$t2, $s4, 1556
 	add.d	$a7, $ra, $a7
@@ -1230,7 +1225,7 @@ create_domain:                          # @create_domain
 	beqz	$a7, .LBB4_84
 # %bb.82:                               #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s6, $a7, $a0
+	add.w	$s6, $a7, $a5
 	addi.d	$s3, $zero, -1
 	bltz	$s6, .LBB4_85
 # %bb.83:                               #   in Loop: Header=BB4_29 Depth=3
@@ -1243,10 +1238,10 @@ create_domain:                          # @create_domain
 	add.w	$t2, $a7, $t2
 	mod.w	$t2, $t2, $a7
 	ld.w	$t8, $s4, 1552
-	srli.d	$s3, $a0, 31
+	srli.d	$s3, $a5, 31
 	ld.d	$s6, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s3, $s3, $s6
-	slt	$s6, $a5, $a4
+	slt	$s6, $a0, $a4
 	xori	$s6, $s6, 1
 	ld.w	$s8, $s4, 1556
 	add.d	$s3, $s3, $s6
@@ -1298,7 +1293,7 @@ create_domain:                          # @create_domain
 	beqz	$a7, .LBB4_96
 # %bb.94:                               #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s3, $a7, $a0
+	add.w	$s3, $a7, $a5
 	addi.d	$s8, $zero, -1
 	bltz	$s3, .LBB4_97
 # %bb.95:                               #   in Loop: Header=BB4_29 Depth=3
@@ -1311,10 +1306,10 @@ create_domain:                          # @create_domain
 	add.w	$t2, $a7, $t2
 	mod.w	$t2, $t2, $a7
 	ld.w	$t8, $s4, 1552
-	srli.d	$s3, $a0, 31
+	srli.d	$s3, $a5, 31
 	ld.d	$s8, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s3, $s3, $s8
-	slt	$s8, $a5, $a4
+	slt	$s8, $a0, $a4
 	xori	$s8, $s8, 1
 	ld.w	$ra, $s4, 1556
 	add.d	$s3, $s3, $s8
@@ -1364,7 +1359,7 @@ create_domain:                          # @create_domain
 	beqz	$a7, .LBB4_107
 # %bb.105:                              #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s8, $a7, $a0
+	add.w	$s8, $a7, $a5
 	addi.d	$s6, $zero, -1
 	bltz	$s8, .LBB4_108
 # %bb.106:                              #   in Loop: Header=BB4_29 Depth=3
@@ -1377,10 +1372,10 @@ create_domain:                          # @create_domain
 	add.w	$t2, $a7, $t2
 	mod.w	$t2, $t2, $a7
 	ld.w	$t8, $s4, 1552
-	srli.d	$s6, $a0, 31
+	srli.d	$s6, $a5, 31
 	ld.d	$s8, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s6, $s6, $s8
-	slt	$s8, $a5, $a4
+	slt	$s8, $a0, $a4
 	xori	$s8, $s8, 1
 	ld.w	$ra, $s4, 1556
 	add.d	$s6, $s6, $s8
@@ -1428,7 +1423,7 @@ create_domain:                          # @create_domain
 	beqz	$a7, .LBB4_118
 # %bb.116:                              #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s6, $a7, $a0
+	add.w	$s6, $a7, $a5
 	addi.d	$s5, $zero, -1
 	bltz	$s6, .LBB4_119
 # %bb.117:                              #   in Loop: Header=BB4_29 Depth=3
@@ -1441,10 +1436,10 @@ create_domain:                          # @create_domain
 	add.w	$t2, $a7, $t2
 	mod.w	$t2, $t2, $a7
 	ld.w	$t8, $s4, 1552
-	srli.d	$s5, $a0, 31
+	srli.d	$s5, $a5, 31
 	ld.d	$s6, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s5, $s5, $s6
-	slt	$s6, $a5, $a4
+	slt	$s6, $a0, $a4
 	xori	$s6, $s6, 1
 	ld.w	$s8, $s4, 1556
 	add.d	$s5, $s5, $s6
@@ -1504,7 +1499,7 @@ create_domain:                          # @create_domain
 	beqz	$a7, .LBB4_131
 # %bb.129:                              #   in Loop: Header=BB4_29 Depth=3
 	ld.d	$a7, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s6, $a7, $a0
+	add.w	$s6, $a7, $a5
 	addi.d	$s5, $zero, -1
 	bltz	$s6, .LBB4_132
 # %bb.130:                              #   in Loop: Header=BB4_29 Depth=3
@@ -1517,10 +1512,10 @@ create_domain:                          # @create_domain
 	add.w	$t2, $a7, $t2
 	mod.w	$t2, $t2, $a7
 	ld.w	$t8, $s4, 1552
-	srli.d	$s5, $a0, 31
+	srli.d	$s5, $a5, 31
 	ld.d	$s6, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s5, $s5, $s6
-	slt	$s6, $a5, $a4
+	slt	$s6, $a0, $a4
 	xori	$s6, $s6, 1
 	ld.w	$s8, $s4, 1556
 	add.d	$s5, $s5, $s6
@@ -1541,8 +1536,8 @@ create_domain:                          # @create_domain
 	add.d	$t2, $fp, $s7
 	st.w	$t2, $a7, 36
 	addi.d	$a6, $a6, 1
-	addi.w	$a0, $a0, 1
-	addi.d	$a5, $a5, 1
+	addi.w	$a5, $a5, 1
+	addi.d	$a0, $a0, 1
 	addi.d	$s1, $s1, 9
 	addi.d	$t7, $t7, 72
 	ori	$a7, $zero, 35
@@ -1563,12 +1558,12 @@ create_domain:                          # @create_domain
 	ori	$a0, $zero, 1
 	st.w	$a0, $sp, 504
 	st.w	$a0, $sp, 528
-	ld.w	$s5, $s4, 1604
+	ld.w	$s1, $s4, 1604
 	st.w	$a0, $sp, 536
 	st.w	$a0, $sp, 544
 	st.w	$a0, $sp, 552
 	st.w	$a0, $sp, 576
-	blt	$s5, $a0, .LBB4_184
+	blez	$s1, .LBB4_184
 # %bb.136:                              # %.preheader627.lr.ph
 	move	$s6, $zero
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
@@ -1576,7 +1571,7 @@ create_domain:                          # @create_domain
 	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
 	slti	$a1, $a1, 1
 	slti	$a2, $s2, 1
-	addi.d	$s0, $s4, 1432
+	addi.d	$s5, $s4, 1432
 	bstrpick.d	$a3, $s2, 31, 0
 	st.d	$a3, $sp, 328                   # 8-byte Folded Spill
 	or	$a1, $a1, $a2
@@ -1599,10 +1594,10 @@ create_domain:                          # @create_domain
                                         # implicit-def: $r4
                                         # kill: killed $r4
                                         # implicit-def: $r26
-                                        # implicit-def: $r24
+                                        # implicit-def: $r23
                                         # implicit-def: $r31
-	st.d	$s5, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
 	b	.LBB4_138
 	.p2align	4, , 16
 .LBB4_137:                              # %.split815.us.sink.split
@@ -1613,7 +1608,7 @@ create_domain:                          # @create_domain
 	move	$a1, $zero
 	st.d	$a0, $s2, 0
 	addi.d	$s6, $s6, 1
-	beq	$s6, $s5, .LBB4_183
+	beq	$s6, $s1, .LBB4_183
 .LBB4_138:                              # %.preheader627
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_140 Depth 2
@@ -1621,13 +1616,13 @@ create_domain:                          # @create_domain
                                         #         Child Loop BB4_144 Depth 4
                                         #           Child Loop BB4_146 Depth 5
                                         #             Child Loop BB4_149 Depth 6
-	alsl.d	$s2, $s6, $s0, 3
+	alsl.d	$s2, $s6, $s5, 3
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	bnez	$a0, .LBB4_137
 # %bb.139:                              # %.preheader627.split.us.split.us.split.us
                                         #   in Loop: Header=BB4_138 Depth=1
 	ld.w	$s5, $s4, 1584
-	ld.w	$s0, $s4, 1596
+	ld.w	$s1, $s4, 1596
 	move	$a0, $zero
 	ori	$a1, $zero, 1
 	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
@@ -1855,7 +1850,7 @@ create_domain:                          # @create_domain
 	.p2align	4, , 16
 .LBB4_159:                              # %calculate_neighboring_subdomain_rank.exit621.us.us.us.us.us.us.us.us.us
                                         #   in Loop: Header=BB4_149 Depth=6
-	bne	$a5, $s0, .LBB4_148
+	bne	$a5, $s1, .LBB4_148
 # %bb.160:                              #   in Loop: Header=BB4_149 Depth=6
 	ld.w	$a5, $s4, 1560
 	ld.w	$t3, $s4, 1564
@@ -1919,7 +1914,7 @@ create_domain:                          # @create_domain
 	add.d	$a5, $a5, $t3
 	ld.d	$a5, $a5, 248
 	add.d	$a5, $a5, $s6
-	ld.w	$s1, $a5, 24
+	ld.w	$s0, $a5, 24
 	ld.w	$s7, $a5, 44
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	bnez	$t2, .LBB4_171
@@ -1934,7 +1929,7 @@ create_domain:                          # @create_domain
 	add.d	$a5, $a5, $t4
 	ld.d	$a5, $a5, 248
 	add.d	$t3, $t3, $s6
-	ld.w	$s1, $t3, 44
+	ld.w	$s0, $t3, 44
 	ld.w	$s7, $t3, 24
 	add.d	$a5, $a5, $s6
 	ld.w	$a5, $a5, 44
@@ -1997,7 +1992,7 @@ create_domain:                          # @create_domain
 	add.d	$t4, $t5, $t4
 	ld.d	$t4, $t4, 248
 	st.w	$s8, $a5, 28
-	st.w	$s1, $a5, 32
+	st.w	$s0, $a5, 32
 	st.w	$s3, $a5, 36
 	add.d	$t4, $t4, $s6
 	ld.d	$t4, $t4, 48
@@ -2058,13 +2053,13 @@ create_domain:                          # @create_domain
 	add.d	$a5, $a5, $t4
 	ld.d	$a5, $a5, 248
 	add.d	$t3, $t3, $s6
-	ld.w	$s1, $t3, 44
+	ld.w	$s0, $t3, 44
 	add.d	$a5, $a5, $s6
 	ld.w	$t3, $a5, 44
 	ld.w	$a5, $a5, 24
 	add.d	$a5, $a5, $t3
 	st.d	$a5, $sp, 448                   # 8-byte Folded Spill
-	move	$s7, $s1
+	move	$s7, $s0
 	bnez	$t2, .LBB4_171
 .LBB4_179:                              #   in Loop: Header=BB4_149 Depth=6
 	ld.d	$a5, $sp, 480                   # 8-byte Folded Reload
@@ -2107,11 +2102,11 @@ create_domain:                          # @create_domain
 	b	.LBB4_140
 	.p2align	4, , 16
 .LBB4_182:                              #   in Loop: Header=BB4_138 Depth=1
-	ld.d	$s5, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
 	addi.d	$s6, $s6, 1
-	bne	$s6, $s5, .LBB4_138
+	bne	$s6, $s1, .LBB4_138
 .LBB4_183:                              # %._crit_edge896
 	st.d	$zero, $s4, 1512
 	st.w	$zero, $s4, 1520
@@ -2221,14 +2216,13 @@ create_domain:                          # @create_domain
 	.type	destroy_domain,@function
 destroy_domain:                         # @destroy_domain
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 1596
 	bnez	$a0, .LBB5_2
@@ -2244,42 +2238,41 @@ destroy_domain:                         # @destroy_domain
 	jirl	$ra, $ra, 0
 .LBB5_2:
 	ld.w	$a0, $fp, 1600
-	ori	$s0, $zero, 1
-	blt	$a0, $s0, .LBB5_8
+	blez	$a0, .LBB5_8
 # %bb.3:                                # %.lr.ph
-	move	$s1, $zero
+	move	$s0, $zero
 	b	.LBB5_5
 	.p2align	4, , 16
 .LBB5_4:                                # %destroy_subdomain.exit
                                         #   in Loop: Header=BB5_5 Depth=1
-	ld.d	$a0, $s2, 248
+	ld.d	$a0, $s1, 248
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1600
-	addi.d	$s1, $s1, 1
-	bge	$s1, $a0, .LBB5_8
+	addi.d	$s0, $s0, 1
+	bge	$s0, $a0, .LBB5_8
 .LBB5_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_7 Depth 2
 	ld.d	$a0, $fp, 1776
-	slli.d	$a1, $s1, 8
-	add.d	$s2, $a0, $a1
-	ld.w	$a0, $s2, 24
-	blt	$a0, $s0, .LBB5_4
+	slli.d	$a1, $s0, 8
+	add.d	$s1, $a0, $a1
+	ld.w	$a0, $s1, 24
+	blez	$a0, .LBB5_4
 # %bb.6:                                # %.lr.ph.i
                                         #   in Loop: Header=BB5_5 Depth=1
+	move	$s2, $zero
 	move	$s3, $zero
-	move	$s4, $zero
 	.p2align	4, , 16
 .LBB5_7:                                #   Parent Loop BB5_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s2, 248
-	add.d	$a0, $a0, $s3
+	ld.d	$a0, $s1, 248
+	add.d	$a0, $a0, $s2
 	pcaddu18i	$ra, %call36(destroy_box)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s2, 24
-	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 216
-	blt	$s4, $a0, .LBB5_7
+	ld.w	$a0, $s1, 24
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 216
+	blt	$s3, $a0, .LBB5_7
 	b	.LBB5_4
 .LBB5_8:                                # %._crit_edge
 	ld.d	$a0, $fp, 1776
@@ -2288,14 +2281,13 @@ destroy_domain:                         # @destroy_domain
 	ld.w	$a0, $fp, 1596
 	beqz	$a0, .LBB5_10
 # %bb.9:
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB5_10:
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
@@ -2305,14 +2297,13 @@ destroy_domain:                         # @destroy_domain
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(fflush)
 	jr	$t8
 .Lfunc_end5:
@@ -2392,9 +2383,8 @@ MGBuild:                                # @MGBuild
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(CycleTime)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s3, $a1, .LBB8_13
+	blez	$s3, .LBB8_13
 # %bb.3:                                # %.lr.ph95
 	ld.w	$a0, $fp, 1600
 	blez	$a0, .LBB8_14
@@ -2623,7 +2613,6 @@ MGBuild:                                # @MGBuild
 	ori	$a3, $zero, 1
 	ori	$a4, $zero, 1
 	ori	$a5, $zero, 1
-	ori	$s1, $zero, 1
 	move	$a0, $fp
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(exchange_boundary)
@@ -2649,7 +2638,7 @@ MGBuild:                                # @MGBuild
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(project_cell_to_face)
 	jirl	$ra, $ra, 0
-	blt	$s3, $s1, .LBB8_43
+	blez	$s3, .LBB8_43
 # %bb.35:                               # %.lr.ph105.preheader
 	move	$s1, $zero
 	b	.LBB8_37

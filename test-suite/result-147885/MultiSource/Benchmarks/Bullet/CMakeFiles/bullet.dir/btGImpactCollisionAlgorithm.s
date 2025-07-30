@@ -744,8 +744,7 @@ _ZN27btGImpactCollisionAlgorithm29gimpact_vs_gimpact_find_pairsERK11btTransformS
 	ld.w	$a1, $fp, 4
 	move	$s8, $a0
 	ld.d	$a0, $fp, 16
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_26
+	blez	$a1, .LBB7_26
 .LBB7_22:                               # %.lr.ph.i.i.i.i
                                         #   in Loop: Header=BB7_12 Depth=2
 	addi.d	$a2, $a0, 4
@@ -764,14 +763,12 @@ _ZN27btGImpactCollisionAlgorithm29gimpact_vs_gimpact_find_pairsERK11btTransformS
 # %bb.24:                               # %_ZNK20btAlignedObjectArrayI8GIM_PAIRE4copyEiiPS0_.exit.thread.i.i.i
                                         #   in Loop: Header=BB7_12 Depth=2
 	ld.bu	$a2, $fp, 24
-	ori	$a3, $zero, 1
-	beq	$a2, $a3, .LBB7_8
+	bnez	$a2, .LBB7_8
 	b	.LBB7_9
 .LBB7_25:                               #   in Loop: Header=BB7_12 Depth=2
 	move	$s8, $zero
 	ld.d	$a0, $fp, 16
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB7_22
+	bgtz	$a1, .LBB7_22
 .LBB7_26:                               # %_ZNK20btAlignedObjectArrayI8GIM_PAIRE4copyEiiPS0_.exit.i.i.i
                                         #   in Loop: Header=BB7_12 Depth=2
 	beqz	$a0, .LBB7_9
@@ -1062,7 +1059,7 @@ _ZN27btGImpactCollisionAlgorithm27gimpact_vs_shape_find_pairsERK11btTransformS2_
 .LBB8_20:                               # %_ZN20btAlignedObjectArrayIiE8allocateEi.exit.i.i
                                         #   in Loop: Header=BB8_9 Depth=1
 	ld.d	$a0, $fp, 16
-	blt	$a1, $s5, .LBB8_28
+	blez	$a1, .LBB8_28
 # %bb.21:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB8_9 Depth=1
 	move	$a2, $zero
@@ -1115,7 +1112,7 @@ _ZN27btGImpactCollisionAlgorithm27gimpact_vs_shape_find_pairsERK11btTransformS2_
 .LBB8_29:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
                                         #   in Loop: Header=BB8_9 Depth=1
 	ld.bu	$a1, $fp, 24
-	bne	$a1, $s5, .LBB8_5
+	beqz	$a1, .LBB8_5
 # %bb.30:                               #   in Loop: Header=BB8_9 Depth=1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
@@ -2752,16 +2749,14 @@ _ZN9btPairSetC2Ev:                      # @_ZN9btPairSetC2Ev
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
-	ori	$s1, $zero, 1
-	st.b	$s1, $a0, 24
-	st.d	$zero, $a0, 16
-	st.d	$zero, $a0, 4
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 24
+	st.d	$zero, $fp, 16
+	st.d	$zero, $fp, 4
 .Ltmp136:
 	ori	$a0, $zero, 256
 	ori	$a1, $zero, 16
@@ -2772,7 +2767,7 @@ _ZN9btPairSetC2Ev:                      # @_ZN9btPairSetC2Ev
 	move	$s0, $a0
 	ld.w	$a1, $fp, 4
 	ld.d	$a0, $fp, 16
-	blt	$a1, $s1, .LBB12_4
+	blez	$a1, .LBB12_4
 # %bb.2:                                # %.lr.ph.i.i
 	addi.d	$a2, $a0, 4
 	addi.d	$a3, $s0, 4
@@ -2789,8 +2784,7 @@ _ZN9btPairSetC2Ev:                      # @_ZN9btPairSetC2Ev
 	beqz	$a0, .LBB12_8
 .LBB12_5:                               # %_ZNK20btAlignedObjectArrayI8GIM_PAIRE4copyEiiPS0_.exit.thread.i
 	ld.bu	$a1, $fp, 24
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB12_7
+	beqz	$a1, .LBB12_7
 # %bb.6:
 .Ltmp138:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
@@ -2804,7 +2798,6 @@ _ZN9btPairSetC2Ev:                      # @_ZN9btPairSetC2Ev
 	st.d	$s0, $fp, 16
 	ori	$a0, $zero, 32
 	st.w	$a0, $fp, 8
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -5157,8 +5150,7 @@ _ZN27btGImpactCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArray
 	move	$fp, $a0
 	move	$a0, $s1
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB24_14
+	blez	$a3, .LBB24_14
 .LBB24_5:                               # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -5201,14 +5193,12 @@ _ZN27btGImpactCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArray
 	bnez	$a5, .LBB24_11
 .LBB24_12:                              # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a1, 24
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB24_16
+	bnez	$a4, .LBB24_16
 	b	.LBB24_17
 .LBB24_13:
 	move	$fp, $zero
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	bge	$a3, $a4, .LBB24_5
+	bgtz	$a3, .LBB24_5
 .LBB24_14:                              # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a2, .LBB24_17
 # %bb.15:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
@@ -5609,8 +5599,7 @@ _ZNK15btTriangleShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_Z
 _ZNK15btTriangleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK15btTriangleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB33_3
+	blez	$a3, .LBB33_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$a4, $a0, 64
 	addi.d	$a1, $a1, 8

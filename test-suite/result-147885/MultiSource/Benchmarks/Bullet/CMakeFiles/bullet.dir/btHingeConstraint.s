@@ -893,8 +893,7 @@ _ZN17btHingeConstraint13buildJacobianEv: # @_ZN17btHingeConstraint13buildJacobia
 	.cfi_offset 63, -80
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 783
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_19
+	beqz	$a0, .LBB5_19
 # %bb.1:
 	ld.bu	$a1, $fp, 780
 	st.w	$zero, $fp, 40
@@ -1695,8 +1694,7 @@ _ZN17btHingeConstraint9testLimitERK11btTransformS2_: # @_ZN17btHingeConstraint9t
 _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f
 # %bb.0:
 	ld.bu	$a3, $a0, 783
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB7_25
+	beqz	$a3, .LBB7_25
 # %bb.1:
 	addi.d	$sp, $sp, -112
 	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
@@ -2280,12 +2278,11 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fcmp.cule.s	$fcc0, $ft12, $fa7
 	bceqz	$fcc0, .LBB7_18
 # %bb.16:
-	ld.bu	$a6, $a0, 782
-	ori	$a5, $zero, 1
-	beq	$a6, $a5, .LBB7_19
+	ld.bu	$a5, $a0, 782
+	bnez	$a5, .LBB7_19
 .LBB7_17:
-	ld.bu	$a6, $a0, 781
-	beq	$a6, $a5, .LBB7_20
+	ld.bu	$a5, $a0, 781
+	bnez	$a5, .LBB7_20
 	b	.LBB7_24
 .LBB7_18:
 	frecip.s	$fa4, $ft12
@@ -2421,9 +2418,8 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fst.s	$fa4, $a2, 20
 	fsub.s	$fa4, $fa7, $fa6
 	fst.s	$fa4, $a2, 24
-	ld.bu	$a6, $a0, 782
-	ori	$a5, $zero, 1
-	bne	$a6, $a5, .LBB7_17
+	ld.bu	$a5, $a0, 782
+	beqz	$a5, .LBB7_17
 .LBB7_19:
 	fld.s	$fa4, $sp, 32                   # 4-byte Folded Reload
 	fld.s	$fa5, $sp, 24                   # 4-byte Folded Reload
@@ -2548,8 +2544,8 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fst.s	$fa0, $a2, 20
 	fadd.s	$fa0, $fa6, $fa4
 	fst.s	$fa0, $a2, 24
-	ld.bu	$a6, $a0, 781
-	bne	$a6, $a5, .LBB7_24
+	ld.bu	$a5, $a0, 781
+	beqz	$a5, .LBB7_24
 .LBB7_20:
 	fsub.s	$fa0, $fs4, $fs6
 	fsub.s	$fa4, $ft7, $fs7
@@ -2701,9 +2697,8 @@ _ZN17btHingeConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: # @_Z
 	.cfi_offset 23, -24
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 783
-	ori	$a2, $zero, 1
 	move	$fp, $a1
-	bne	$a0, $a2, .LBB8_2
+	beqz	$a0, .LBB8_2
 # %bb.1:
 	move	$a0, $zero
 	st.w	$zero, $fp, 0
@@ -3119,8 +3114,7 @@ _ZN17btHingeConstraint16getInfo2InternalEPN17btTypedConstraint17btConstraintInfo
 	b	.LBB11_4
 .LBB11_2:
 	ld.bu	$a4, $fp, 781
-	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB11_14
+	beqz	$a4, .LBB11_14
 # %bb.3:
 	move	$a4, $zero
 	move	$s3, $zero

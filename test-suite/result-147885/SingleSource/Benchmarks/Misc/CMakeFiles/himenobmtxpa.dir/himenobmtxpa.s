@@ -803,15 +803,13 @@ newMat:                                 # @newMat
 mat_set_init:                           # @mat_set_init
 # %bb.0:
 	ld.w	$a1, $a0, 12
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB2_14
+	blez	$a1, .LBB2_14
 # %bb.1:                                # %.preheader25.lr.ph
 	ld.w	$a2, $a0, 16
-	blt	$a2, $a3, .LBB2_14
+	blez	$a2, .LBB2_14
 # %bb.2:                                # %.preheader25.lr.ph.split.us
 	ld.w	$a3, $a0, 20
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB2_14
+	blez	$a3, .LBB2_14
 # %bb.3:                                # %.preheader25.lr.ph.split.us.split.us
 	move	$a4, $zero
 	move	$a5, $zero
@@ -910,16 +908,14 @@ mat_set_init:                           # @mat_set_init
 mat_set:                                # @mat_set
 # %bb.0:
 	ld.w	$a2, $a0, 12
-	ori	$a4, $zero, 1
                                         # kill: def $f0 killed $f0 def $vr0
-	blt	$a2, $a4, .LBB3_14
+	blez	$a2, .LBB3_14
 # %bb.1:                                # %.preheader23.lr.ph
 	ld.w	$a3, $a0, 16
-	blt	$a3, $a4, .LBB3_14
+	blez	$a3, .LBB3_14
 # %bb.2:                                # %.preheader23.lr.ph.split.us
 	ld.w	$a4, $a0, 20
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB3_14
+	blez	$a4, .LBB3_14
 # %bb.3:                                # %.preheader23.lr.ph.split.us.split.us
 	move	$a5, $zero
 	ld.d	$a0, $a0, 0
@@ -1018,19 +1014,18 @@ jacobi:                                 # @jacobi
 	st.d	$s6, $sp, 616                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 608                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 600                   # 8-byte Folded Spill
-	ori	$t0, $zero, 1
 	st.d	$a7, $sp, 104                   # 8-byte Folded Spill
 	st.d	$a6, $sp, 96                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	blt	$a0, $t0, .LBB4_24
+	blez	$a0, .LBB4_24
 # %bb.1:                                # %.preheader391.lr.ph
 	ld.w	$s4, $a4, 20
 	ld.w	$a7, $a4, 16
 	ld.w	$a1, $a4, 12
-	move	$t1, $zero
+	move	$t0, $zero
 	addi.d	$a2, $s4, -1
 	addi.d	$a3, $a7, -1
 	addi.w	$a5, $a1, -1
@@ -1050,9 +1045,10 @@ jacobi:                                 # @jacobi
 	move	$a1, $s8
 	bstrins.d	$a1, $zero, 2, 0
 	st.d	$a1, $sp, 360                   # 8-byte Folded Spill
-	move	$a1, $s8
-	bstrins.d	$a1, $t0, 2, 0
-	st.d	$a1, $sp, 352                   # 8-byte Folded Spill
+	ori	$a1, $zero, 1
+	move	$a2, $s8
+	bstrins.d	$a2, $a1, 2, 0
+	st.d	$a2, $sp, 352                   # 8-byte Folded Spill
 	slli.d	$a1, $s5, 2
 	addi.d	$s1, $a1, -4
 	slli.d	$a1, $s4, 2
@@ -1078,11 +1074,11 @@ jacobi:                                 # @jacobi
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 .LBB4_3:                                #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$t1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 112                   # 8-byte Folded Reload
 .LBB4_4:                                # %._crit_edge
                                         #   in Loop: Header=BB4_5 Depth=1
-	addi.w	$t1, $t1, 1
-	beq	$t1, $a0, .LBB4_25
+	addi.w	$t0, $t0, 1
+	beq	$t0, $a0, .LBB4_25
 .LBB4_5:                                # %.preheader391
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_7 Depth 2
@@ -1096,7 +1092,7 @@ jacobi:                                 # @jacobi
 	bnez	$ra, .LBB4_4
 # %bb.6:                                # %.preheader389.lr.ph.split.us.split.us
                                         #   in Loop: Header=BB4_5 Depth=1
-	st.d	$t1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 112                   # 8-byte Folded Spill
 	move	$s6, $zero
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a3, $a1, 12

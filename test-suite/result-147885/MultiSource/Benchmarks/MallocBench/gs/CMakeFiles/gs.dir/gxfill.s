@@ -279,7 +279,7 @@ add_y_list:                             # @add_y_list
 	blt	$a4, $t1, .LBB2_10
 .LBB2_7:                                #   in Loop: Header=BB2_4 Depth=1
 	sub.d	$t1, $t4, $t5
-	blt	$t1, $a1, .LBB2_9
+	blez	$t1, .LBB2_9
 # %bb.8:                                #   in Loop: Header=BB2_4 Depth=1
 	slt	$t1, $a0, $t4
 	slt	$t8, $t5, $a3
@@ -288,8 +288,7 @@ add_y_list:                             # @add_y_list
 	blt	$t6, $t1, .LBB2_11
 	b	.LBB2_38
 .LBB2_9:                                #   in Loop: Header=BB2_4 Depth=1
-	addi.w	$t8, $zero, -1
-	bge	$t8, $t1, .LBB2_21
+	bltz	$t1, .LBB2_21
 .LBB2_10:                               #   in Loop: Header=BB2_4 Depth=1
 	move	$t1, $zero
 	addi.w	$t6, $t6, 0
@@ -469,30 +468,30 @@ add_y_list:                             # @add_y_list
 	ld.w	$t3, $t0, 16
 	bne	$t3, $a6, .LBB2_49
 # %bb.40:                               #   in Loop: Header=BB2_4 Depth=1
-	addi.w	$t5, $zero, -1
-	blt	$t5, $t1, .LBB2_90
+	bgez	$t1, .LBB2_90
 # %bb.41:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.d	$t3, $a2, 16
 	addi.d	$t4, $t3, 88
-	ld.h	$t6, $a2, 12
+	ld.h	$t5, $a2, 12
 	st.d	$t4, $a2, 16
-	ld.d	$t7, $t0, 24
+	ld.d	$t6, $t0, 24
 	ld.d	$t4, $t0, 32
-	st.h	$t6, $t3, 68
-	ld.d	$t6, $t2, 24
+	st.h	$t5, $t3, 68
+	addi.w	$t5, $zero, -1
+	ld.d	$t7, $t2, 24
 	lu32i.d	$t5, 0
 	st.w	$t5, $t3, 64
 	vld	$vr1, $t2, 24
-	sub.d	$t5, $t6, $t7
-	srai.d	$t6, $t5, 63
-	xor	$t5, $t5, $t6
-	sub.d	$t5, $t5, $t6
+	sub.d	$t5, $t7, $t6
+	srai.d	$t7, $t5, 63
+	xor	$t5, $t5, $t7
+	sub.d	$t5, $t5, $t7
 	ori	$t5, $t5, 1
 	div.du	$t5, $a5, $t5
 	add.d	$t5, $t5, $t4
 	st.d	$t5, $t3, 32
 	ld.d	$t5, $a2, 32
-	st.d	$t7, $t3, 0
+	st.d	$t6, $t3, 0
 	st.d	$t4, $t3, 8
 	vst	$vr1, $t3, 16
 	st.d	$t2, $t3, 56
@@ -541,7 +540,7 @@ add_y_list:                             # @add_y_list
 	blt	$a4, $t6, .LBB2_54
 .LBB2_51:                               #   in Loop: Header=BB2_4 Depth=1
 	sub.d	$t6, $t3, $t4
-	blt	$t6, $a1, .LBB2_53
+	blez	$t6, .LBB2_53
 # %bb.52:                               #   in Loop: Header=BB2_4 Depth=1
 	slt	$t3, $a0, $t3
 	slt	$t4, $t4, $a3
@@ -549,8 +548,7 @@ add_y_list:                             # @add_y_list
 	bnez	$t1, .LBB2_55
 	b	.LBB2_70
 .LBB2_53:                               #   in Loop: Header=BB2_4 Depth=1
-	addi.w	$t7, $zero, -1
-	bge	$t7, $t6, .LBB2_66
+	bltz	$t6, .LBB2_66
 .LBB2_54:                               #   in Loop: Header=BB2_4 Depth=1
 	move	$t3, $zero
 	beqz	$t1, .LBB2_70
@@ -662,7 +660,7 @@ add_y_list:                             # @add_y_list
 	st.d	$t6, $a2, 16
 	st.h	$t8, $t2, 68
 	st.w	$t3, $t2, 64
-	blt	$t3, $a1, .LBB2_74
+	blez	$t3, .LBB2_74
 # %bb.73:                               #   in Loop: Header=BB2_4 Depth=1
 	sub.d	$t6, $t4, $t7
 	move	$t3, $fp
@@ -1392,17 +1390,16 @@ fill_loop:                              # @fill_loop
 add_y_line:                             # @add_y_line
 # %bb.0:
 	ld.d	$a4, $a3, 16
-	addi.d	$a5, $a4, 88
-	st.d	$a5, $a3, 16
+	addi.d	$a7, $a4, 88
 	ld.d	$a5, $a1, 24
-	ld.h	$a7, $a3, 12
 	ld.d	$a6, $a1, 32
+	ld.h	$t0, $a3, 12
 	ld.d	$t1, $a0, 24
 	ld.d	$t2, $a0, 32
-	st.h	$a7, $a4, 68
-	ori	$a7, $zero, 1
+	st.d	$a7, $a3, 16
+	st.h	$t0, $a4, 68
 	st.w	$a2, $a4, 64
-	blt	$a2, $a7, .LBB4_2
+	blez	$a2, .LBB4_2
 # %bb.1:
 	sub.d	$t0, $a5, $t1
 	move	$a2, $t2

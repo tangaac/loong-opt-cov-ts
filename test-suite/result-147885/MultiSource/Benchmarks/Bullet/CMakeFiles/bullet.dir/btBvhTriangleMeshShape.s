@@ -511,9 +511,8 @@ _ZN22btBvhTriangleMeshShapeD2Ev:        # @_ZN22btBvhTriangleMeshShapeD2Ev
 	ld.bu	$a0, $a0, 81
 	pcalau12i	$a1, %pc_hi20(_ZTV22btBvhTriangleMeshShape+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV22btBvhTriangleMeshShape+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB5_3
+	beqz	$a0, .LBB5_3
 # %bb.1:
 	ld.d	$a0, $fp, 72
 	ld.d	$a1, $a0, 0
@@ -613,9 +612,8 @@ _ZN22btBvhTriangleMeshShapeD0Ev:        # @_ZN22btBvhTriangleMeshShapeD0Ev
 	ld.bu	$a0, $a0, 81
 	pcalau12i	$a1, %pc_hi20(_ZTV22btBvhTriangleMeshShape+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV22btBvhTriangleMeshShape+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB6_3
+	beqz	$a0, .LBB6_3
 # %bb.1:
 	ld.d	$a0, $fp, 72
 	ld.d	$a1, $a0, 0
@@ -829,11 +827,9 @@ _ZN22btBvhTriangleMeshShape15setLocalScalingERK9btVector3: # @_ZN22btBvhTriangle
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a0, 56
@@ -862,8 +858,7 @@ _ZN22btBvhTriangleMeshShape15setLocalScalingERK9btVector3: # @_ZN22btBvhTriangle
 	pcaddu18i	$ra, %call36(_ZN19btTriangleMeshShape15setLocalScalingERK9btVector3)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 81
-	ori	$s1, $zero, 1
-	bne	$a0, $s1, .LBB11_3
+	beqz	$a0, .LBB11_3
 # %bb.2:
 	ld.d	$a0, $fp, 72
 	ld.d	$a1, $a0, 0
@@ -888,9 +883,9 @@ _ZN22btBvhTriangleMeshShape15setLocalScalingERK9btVector3: # @_ZN22btBvhTriangle
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_)
 	jirl	$ra, $ra, 0
-	st.b	$s1, $fp, 81
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 81
 .LBB11_4:
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

@@ -1125,18 +1125,17 @@ read_CLI:                               # @read_CLI
 .LBB7_21:                               # %._crit_edge
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	st.d	$s0, $s3, 32
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	st.w	$a3, $s3, 24
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	st.d	$a2, $s3, 16
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	st.w	$a2, $s3, 24
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	st.d	$a1, $s3, 16
 	addi.w	$a0, $s5, 0
-	ori	$a1, $zero, 1
 	st.w	$s5, $s3, 0
-	blt	$a0, $a1, .LBB7_37
+	blez	$a0, .LBB7_37
 # %bb.22:
-	blez	$a2, .LBB7_37
+	blez	$a1, .LBB7_37
 # %bb.23:
-	addi.w	$a0, $a3, 0
+	addi.w	$a0, $a2, 0
 	blez	$a0, .LBB7_37
 # %bb.24:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -1177,8 +1176,7 @@ read_CLI:                               # @read_CLI
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
 	and	$a0, $a0, $fp
-	ori	$s1, $zero, 1
-	bne	$a0, $s1, .LBB7_32
+	beqz	$a0, .LBB7_32
 # %bb.30:
 	lu12i.w	$a0, 58
 	ori	$a0, $a0, 1279
@@ -1195,7 +1193,7 @@ read_CLI:                               # @read_CLI
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
 	and	$a0, $a0, $fp
-	bne	$a0, $s1, .LBB7_35
+	beqz	$a0, .LBB7_35
 # %bb.33:
 	lu12i.w	$a0, 122
 	ori	$a0, $a0, 1866

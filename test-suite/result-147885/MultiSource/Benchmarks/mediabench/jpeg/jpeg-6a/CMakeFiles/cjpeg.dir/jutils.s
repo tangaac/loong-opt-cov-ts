@@ -30,6 +30,8 @@ jround_up:                              # @jround_up
 	.type	jcopy_sample_rows,@function
 jcopy_sample_rows:                      # @jcopy_sample_rows
 # %bb.0:
+	blez	$a4, .LBB2_4
+# %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
@@ -37,13 +39,11 @@ jcopy_sample_rows:                      # @jcopy_sample_rows
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	ori	$s0, $zero, 1
-	blt	$a4, $s0, .LBB2_3
-# %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$fp, $a5, 31, 0
 	alsl.d	$a2, $a3, $a2, 3
 	alsl.d	$a3, $a1, $a0, 3
-	addi.d	$s1, $a4, 1
+	addi.d	$s0, $a4, 1
+	ori	$s1, $zero, 1
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -54,11 +54,11 @@ jcopy_sample_rows:                      # @jcopy_sample_rows
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $s1, -1
+	addi.w	$s0, $s0, -1
 	move	$a3, $s2
 	move	$a2, $s3
-	bltu	$s0, $s1, .LBB2_2
-.LBB2_3:                                # %._crit_edge
+	bltu	$s1, $s0, .LBB2_2
+# %bb.3:
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -66,6 +66,7 @@ jcopy_sample_rows:                      # @jcopy_sample_rows
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB2_4:                                # %._crit_edge
 	ret
 .Lfunc_end2:
 	.size	jcopy_sample_rows, .Lfunc_end2-jcopy_sample_rows

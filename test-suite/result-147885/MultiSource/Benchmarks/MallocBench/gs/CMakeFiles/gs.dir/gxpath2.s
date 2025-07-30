@@ -667,32 +667,30 @@ gx_path_flatten:                        # @gx_path_flatten
 	.type	flatten_curve,@function
 flatten_curve:                          # @flatten_curve
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	move	$fp, $a6
-	move	$s0, $a5
-	move	$s1, $a4
-	move	$s2, $a3
-	move	$s4, $a2
-	move	$s5, $a1
-	move	$s3, $a0
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	move	$fp, $a0
 	ld.d	$s6, $a0, 120
 	ld.d	$s7, $a0, 128
+	move	$s0, $a6
+	move	$s1, $a5
+	move	$s2, $a4
+	move	$s3, $a3
+	move	$s4, $a2
+	move	$s5, $a1
 	pcalau12i	$a0, %pc_hi20(scaled_flat_sq)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s8, %pc_hi20(scaled_flat)
-	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB12_3
 	.p2align	4, , 16
 .LBB12_1:                               #   in Loop: Header=BB12_3 Depth=1
@@ -706,36 +704,35 @@ flatten_curve:                          # @flatten_curve
 	srai.d	$a1, $a0, 1
 	add.d	$a0, $s4, $s7
 	srai.d	$a2, $a0, 1
-	add.d	$a0, $s5, $s2
+	add.d	$a0, $s5, $s3
 	srai.d	$a0, $a0, 1
-	add.d	$a3, $s4, $s1
+	add.d	$a3, $s4, $s2
 	srai.d	$a5, $a3, 1
 	add.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 1
 	add.d	$a4, $a2, $a5
 	srai.d	$a4, $a4, 1
+	add.d	$a6, $s3, $s1
+	srai.d	$s3, $a6, 1
 	add.d	$a6, $s2, $s0
 	srai.d	$s2, $a6, 1
-	add.d	$a6, $s1, $fp
-	srai.d	$s1, $a6, 1
-	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $s3
 	srai.d	$s5, $a0, 1
-	add.d	$a0, $a5, $s1
+	add.d	$a0, $a5, $s2
 	srai.d	$s4, $a0, 1
 	add.d	$a0, $a3, $s5
 	srai.d	$s6, $a0, 1
 	add.d	$a0, $a4, $s4
 	srai.d	$s7, $a0, 1
-	move	$a0, $s3
+	move	$a0, $fp
 	move	$a5, $s6
 	move	$a6, $s7
 	pcaddu18i	$ra, %call36(flatten_curve)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB12_10
+	bltz	$a0, .LBB12_10
 .LBB12_3:                               # =>This Inner Loop Header: Depth=1
-	sub.d	$a0, $s0, $s6
-	sub.d	$a1, $fp, $s7
+	sub.d	$a0, $s1, $s6
+	sub.d	$a1, $s0, $s7
 	srai.d	$a2, $a0, 63
 	xor	$a3, $a0, $a2
 	sub.d	$a2, $a3, $a2
@@ -748,7 +745,7 @@ flatten_curve:                          # @flatten_curve
 	ffint.s.l	$fa0, $fa0
 	movgr2fr.d	$fa1, $a1
 	ffint.s.l	$fa1, $fa1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	fld.s	$fa2, $a0, %pc_lo12(scaled_flat_sq)
 	fdiv.s	$fa0, $fa0, $fa1
 	fmul.s	$fa1, $fa0, $fa0
@@ -770,23 +767,23 @@ flatten_curve:                          # @flatten_curve
 	sub.d	$a1, $a1, $a2
 	blt	$a0, $a1, .LBB12_2
 # %bb.5:                                #   in Loop: Header=BB12_3 Depth=1
-	sub.d	$a1, $s1, $s7
+	sub.d	$a1, $s2, $s7
 	movgr2fr.d	$fa1, $a1
 	ffint.s.l	$fa1, $fa1
 	fmul.s	$fa0, $fa0, $fa1
 	ftintrz.l.s	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
-	sub.d	$a2, $s6, $s2
+	sub.d	$a2, $s6, $s3
 	b	.LBB12_1
 	.p2align	4, , 16
 .LBB12_6:                               #   in Loop: Header=BB12_3 Depth=1
-	beq	$s0, $s6, .LBB12_9
+	beq	$s1, $s6, .LBB12_9
 # %bb.7:                                #   in Loop: Header=BB12_3 Depth=1
 	movgr2fr.d	$fa0, $a1
 	ffint.s.l	$fa0, $fa0
 	movgr2fr.d	$fa1, $a0
 	ffint.s.l	$fa1, $fa1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	fld.s	$fa2, $a0, %pc_lo12(scaled_flat_sq)
 	fdiv.s	$fa0, $fa0, $fa1
 	fmul.s	$fa1, $fa0, $fa0
@@ -808,46 +805,46 @@ flatten_curve:                          # @flatten_curve
 	sub.d	$a1, $a1, $a2
 	blt	$a0, $a1, .LBB12_2
 # %bb.8:                                #   in Loop: Header=BB12_3 Depth=1
-	sub.d	$a1, $s2, $s6
+	sub.d	$a1, $s3, $s6
 	movgr2fr.d	$fa1, $a1
 	ffint.s.l	$fa1, $fa1
 	fmul.s	$fa0, $fa0, $fa1
 	ftintrz.l.s	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
-	sub.d	$a2, $s7, $s1
+	sub.d	$a2, $s7, $s2
 	b	.LBB12_1
 .LBB12_9:
 	move	$a0, $zero
 .LBB12_10:                              # %.loopexit
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB12_11:                              # %.loopexit.sink.split
-	move	$a0, $s3
-	move	$a1, $s0
-	move	$a2, $fp
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	move	$a0, $fp
+	move	$a1, $s1
+	move	$a2, $s0
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	pcaddu18i	$t8, %call36(gx_path_add_line)
 	jr	$t8
 .Lfunc_end12:

@@ -54,7 +54,7 @@ pdivmod:                                # @pdivmod
 # %bb.5:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_7
 # %bb.6:
@@ -66,7 +66,7 @@ pdivmod:                                # @pdivmod
 # %bb.8:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	beqz	$a2, .LBB0_25
 .LBB0_9:
@@ -89,7 +89,7 @@ pdivmod:                                # @pdivmod
 # %bb.15:
 	ld.h	$a0, $a1, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a2, $a0, 15, 0
+	slli.d	$a2, $a0, 48
 	st.h	$a0, $a1, 0
 	bnez	$a2, .LBB0_17
 # %bb.16:
@@ -177,7 +177,7 @@ pdivmod:                                # @pdivmod
 # %bb.29:
 	ld.h	$a0, $a1, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a2, $a0, 15, 0
+	slli.d	$a2, $a0, 48
 	st.h	$a0, $a1, 0
 	bnez	$a2, .LBB0_31
 # %bb.30:
@@ -207,7 +207,7 @@ pdivmod:                                # @pdivmod
 # %bb.36:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_38
 # %bb.37:
@@ -219,14 +219,14 @@ pdivmod:                                # @pdivmod
 # %bb.39:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_54
 	b	.LBB0_42
 .LBB0_40:
 	ld.h	$a0, $s2, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s2, 0
 	bnez	$a1, .LBB0_54
 # %bb.41:
@@ -266,7 +266,7 @@ pdivmod:                                # @pdivmod
 	jirl	$ra, $ra, 0
 	ld.h	$a0, $s4, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s4, 0
 	bnez	$a1, .LBB0_48
 # %bb.47:
@@ -304,7 +304,7 @@ pdivmod:                                # @pdivmod
 	jirl	$ra, $ra, 0
 	ld.h	$a0, $s3, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s3, 0
 	bnez	$a1, .LBB0_53
 # %bb.52:

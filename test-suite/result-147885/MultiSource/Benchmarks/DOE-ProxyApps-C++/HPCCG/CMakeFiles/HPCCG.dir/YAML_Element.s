@@ -316,11 +316,11 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd: #
 	beq	$s2, $a0, .LBB2_13
 # %bb.7:                                # %_ZNKSt6vectorIP12YAML_ElementSaIS1_EE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s2, 3
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -336,7 +336,7 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd: #
 # %bb.8:                                # %.noexc6
 	move	$s3, $a0
 	stx.d	$s0, $a0, $s2
-	blt	$s2, $s5, .LBB2_10
+	blez	$s2, .LBB2_10
 # %bb.9:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -700,11 +700,11 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi: #
 	beq	$s2, $a0, .LBB4_13
 # %bb.7:                                # %_ZNKSt6vectorIP12YAML_ElementSaIS1_EE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s2, 3
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -720,7 +720,7 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi: #
 # %bb.8:                                # %.noexc6
 	move	$s3, $a0
 	stx.d	$s0, $a0, $s2
-	blt	$s2, $s5, .LBB4_10
+	blez	$s2, .LBB4_10
 # %bb.9:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -1081,11 +1081,11 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEx: #
 	beq	$s2, $a0, .LBB6_13
 # %bb.7:                                # %_ZNKSt6vectorIP12YAML_ElementSaIS1_EE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s2, 3
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -1101,7 +1101,7 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEx: #
 # %bb.8:                                # %.noexc6
 	move	$s3, $a0
 	stx.d	$s0, $a0, $s2
-	blt	$s2, $s5, .LBB6_10
+	blez	$s2, .LBB6_10
 # %bb.9:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -1462,11 +1462,11 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEm: #
 	beq	$s2, $a0, .LBB8_13
 # %bb.7:                                # %_ZNKSt6vectorIP12YAML_ElementSaIS1_EE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s2, 3
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -1482,7 +1482,7 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEm: #
 # %bb.8:                                # %.noexc6
 	move	$s3, $a0
 	stx.d	$s0, $a0, $s2
-	blt	$s2, $s5, .LBB8_10
+	blez	$s2, .LBB8_10
 # %bb.9:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -1817,11 +1817,11 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_:
 	beq	$s2, $a0, .LBB10_10
 # %bb.4:                                # %_ZNKSt6vectorIP12YAML_ElementSaIS1_EE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s2, 3
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -1834,7 +1834,7 @@ _ZN12YAML_Element3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_:
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.d	$s0, $a0, $s2
-	blt	$s2, $s5, .LBB10_6
+	blez	$s2, .LBB10_6
 # %bb.5:
 	move	$a0, $s3
 	move	$a1, $s1

@@ -8,7 +8,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(g)
 	ld.d	$a0, $a0, %pc_lo12(g)
 	sub.d	$a0, $zero, $a0
-	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a0, $a0, 32
 	bnez	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero

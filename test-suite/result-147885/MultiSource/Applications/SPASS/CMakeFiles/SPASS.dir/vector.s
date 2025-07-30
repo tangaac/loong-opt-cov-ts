@@ -26,8 +26,7 @@ vec_PrintSel:                           # @vec_PrintSel
 # %bb.0:
 	pcalau12i	$a3, %pc_hi20(vec_MAX)
 	ld.w	$a3, $a3, %pc_lo12(vec_MAX)
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB1_5
+	blez	$a3, .LBB1_5
 # %bb.1:                                # %.preheader
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
@@ -99,8 +98,7 @@ vec_PrintAll:                           # @vec_PrintAll
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s2, %pc_hi20(vec_MAX)
 	ld.w	$a1, $s2, %pc_lo12(vec_MAX)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_4
+	blez	$a1, .LBB2_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a0
 	move	$s0, $zero

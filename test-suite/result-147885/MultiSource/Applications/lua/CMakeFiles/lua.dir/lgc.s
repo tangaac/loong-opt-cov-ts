@@ -230,8 +230,7 @@ luaC_freeall:                           # @luaC_freeall
 	pcaddu18i	$ra, %call36(sweeplist)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	move	$s3, $zero
@@ -1584,23 +1583,22 @@ propagatemark:                          # @propagatemark
 	st.b	$a1, $a0, 9
 .LBB14_40:
 	ld.w	$a0, $fp, 76
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB14_46
+	blez	$a0, .LBB14_46
 # %bb.41:                               # %.lr.ph.i56
+	move	$s1, $zero
 	move	$s2, $zero
-	move	$s3, $zero
-	ori	$s4, $zero, 4
+	ori	$s3, $zero, 4
 	b	.LBB14_43
 	.p2align	4, , 16
 .LBB14_42:                              #   in Loop: Header=BB14_43 Depth=1
-	addi.d	$s3, $s3, 1
-	addi.d	$s2, $s2, 16
-	bge	$s3, $a0, .LBB14_46
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 16
+	bge	$s2, $a0, .LBB14_46
 .LBB14_43:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 16
-	add.d	$a1, $a1, $s2
+	add.d	$a1, $a1, $s1
 	ld.w	$a2, $a1, 8
-	blt	$a2, $s4, .LBB14_42
+	blt	$a2, $s3, .LBB14_42
 # %bb.44:                               #   in Loop: Header=BB14_43 Depth=1
 	ld.d	$a1, $a1, 0
 	ld.bu	$a2, $a1, 9
@@ -1614,7 +1612,7 @@ propagatemark:                          # @propagatemark
 	b	.LBB14_42
 .LBB14_46:                              # %.preheader45.i
 	ld.w	$a0, $fp, 72
-	blt	$a0, $s1, .LBB14_51
+	blez	$a0, .LBB14_51
 # %bb.47:                               # %.lr.ph48.i
 	move	$a1, $zero
 	move	$a2, $zero
@@ -1636,8 +1634,7 @@ propagatemark:                          # @propagatemark
 	b	.LBB14_48
 .LBB14_51:                              # %.preheader44.i
 	ld.w	$a0, $fp, 88
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB14_57
+	blez	$a0, .LBB14_57
 # %bb.52:                               # %.lr.ph50.i
 	move	$s1, $zero
 	move	$s2, $zero

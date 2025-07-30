@@ -95,9 +95,8 @@ litptr_Create:                          # @litptr_Create
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	st.w	$s2, $s1, 8
-	blt	$s2, $a0, .LBB2_4
+	st.w	$s2, $a0, 8
+	blez	$s2, .LBB2_4
 # %bb.1:
 	slli.w	$a0, $s2, 3
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -149,8 +148,7 @@ litptr_Delete:                          # @litptr_Delete
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$a4, $a0, 8
-	ori	$a1, $zero, 1
-	blt	$a4, $a1, .LBB3_13
+	blez	$a4, .LBB3_13
 # %bb.1:                                # %.preheader.preheader
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a3, $a1, %got_pc_lo12(memory_ARRAY)
@@ -303,11 +301,10 @@ litptr_Print:                           # @litptr_Print
 	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	move	$fp, $a0
 	ld.w	$s1, $a0, 8
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_4
+	blez	$s1, .LBB4_4
 # %bb.1:
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	move	$a1, $s1
@@ -431,7 +428,7 @@ litptr_AllUsed:                         # @litptr_AllUsed
 	move	$a1, $a0
 	ld.w	$a2, $a0, 8
 	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB5_4
+	blez	$a2, .LBB5_4
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $a1, 0
 	.p2align	4, , 16
@@ -468,11 +465,10 @@ subs_CompList:                          # @subs_CompList
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	move	$s1, $a0
 	ld.w	$s8, $a0, 8
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB6_9
+	blez	$s8, .LBB6_9
 # %bb.1:                                # %.preheader86
+	move	$s1, $a0
 	move	$s5, $zero
 	move	$s7, $zero
 	move	$fp, $zero

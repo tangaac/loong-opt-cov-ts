@@ -733,35 +733,33 @@ clear_picture:                          # @clear_picture
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ldptr.w	$a0, $a0, 6396
-	ori	$s0, $zero, 1
 	lu12i.w	$s1, 3
-	blt	$a0, $s0, .LBB6_3
+	blez	$a0, .LBB6_3
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s2, $a0, %got_pc_lo12(img)
+	ld.d	$s0, $a0, %got_pc_lo12(img)
+	move	$s2, $zero
 	move	$s3, $zero
-	move	$s4, $zero
-	ori	$s5, $s1, 3224
+	ori	$s4, $s1, 3224
 	.p2align	4, , 16
 .LBB6_2:                                # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $fp, 6440
-	ld.d	$a1, $s2, 0
-	ldx.d	$a0, $a0, $s3
+	ld.d	$a1, $s0, 0
+	ldx.d	$a0, $a0, $s2
 	ldptr.w	$a2, $fp, 6392
-	ldx.b	$a1, $a1, $s5
+	ldx.b	$a1, $a1, $s4
 	slli.d	$a2, $a2, 1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ldptr.w	$a0, $fp, 6396
-	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 8
-	blt	$s4, $a0, .LBB6_2
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 8
+	blt	$s3, $a0, .LBB6_2
 .LBB6_3:                                # %.preheader17
 	ldptr.w	$a0, $fp, 6404
-	blt	$a0, $s0, .LBB6_9
+	blez	$a0, .LBB6_9
 # %bb.4:                                # %.lr.ph20
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$s0, $a0, %got_pc_lo12(img)
@@ -784,8 +782,7 @@ clear_picture:                          # @clear_picture
 	addi.d	$s2, $s2, 8
 	blt	$s3, $a0, .LBB6_5
 # %bb.6:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_9
+	blez	$a0, .LBB6_9
 # %bb.7:                                # %.lr.ph22
 	move	$s2, $zero
 	move	$s3, $zero
@@ -805,7 +802,6 @@ clear_picture:                          # @clear_picture
 	addi.d	$s2, $s2, 8
 	blt	$s3, $a0, .LBB6_8
 .LBB6_9:                                # %._crit_edge
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -823,18 +819,17 @@ clear_picture:                          # @clear_picture
 	.type	write_unpaired_field,@function
 write_unpaired_field:                   # @write_unpaired_field
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.wu	$a0, $a0, 0
 	move	$s0, $a1
@@ -842,46 +837,45 @@ write_unpaired_field:                   # @write_unpaired_field
 	lu12i.w	$s2, 1
 	beqz	$a1, .LBB7_11
 # %bb.1:
-	ld.d	$s1, $fp, 48
-	ldptr.w	$a1, $s1, 6392
-	ldptr.w	$a2, $s1, 6396
-	ldptr.w	$a3, $s1, 6400
-	ldptr.w	$a4, $s1, 6404
+	ld.d	$s3, $fp, 48
+	ldptr.w	$a1, $s3, 6392
+	ldptr.w	$a2, $s3, 6396
+	ldptr.w	$a3, $s3, 6400
+	ldptr.w	$a4, $s3, 6404
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(alloc_storable_picture)
 	jirl	$ra, $ra, 0
-	ori	$a1, $s2, 2464
-	ldx.w	$a1, $s1, $a1
 	move	$s1, $a0
-	ldptr.w	$a0, $a0, 6396
+	ori	$a0, $s2, 2464
+	ldx.w	$a0, $s3, $a0
+	ldptr.w	$a1, $s1, 6396
 	st.d	$s1, $fp, 56
-	stptr.w	$a1, $s1, 6560
-	ori	$s3, $zero, 1
+	stptr.w	$a0, $s1, 6560
 	lu12i.w	$s4, 3
-	blt	$a0, $s3, .LBB7_4
+	blez	$a1, .LBB7_4
 # %bb.2:                                # %.lr.ph.i
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s5, $a0, %got_pc_lo12(img)
+	ld.d	$s3, $a0, %got_pc_lo12(img)
+	move	$s5, $zero
 	move	$s6, $zero
-	move	$s7, $zero
-	ori	$s8, $s4, 3224
+	ori	$s7, $s4, 3224
 	.p2align	4, , 16
 .LBB7_3:                                # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $s1, 6440
-	ld.d	$a1, $s5, 0
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a1, $s3, 0
+	ldx.d	$a0, $a0, $s5
 	ldptr.w	$a2, $s1, 6392
-	ldx.b	$a1, $a1, $s8
+	ldx.b	$a1, $a1, $s7
 	slli.d	$a2, $a2, 1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ldptr.w	$a0, $s1, 6396
-	addi.d	$s7, $s7, 1
-	addi.d	$s6, $s6, 8
-	blt	$s7, $a0, .LBB7_3
+	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 8
+	blt	$s6, $a0, .LBB7_3
 .LBB7_4:                                # %.preheader17.i
 	ldptr.w	$a0, $s1, 6404
-	blt	$a0, $s3, .LBB7_10
+	blez	$a0, .LBB7_10
 # %bb.5:                                # %.lr.ph20.i
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$s3, $a0, %got_pc_lo12(img)
@@ -904,8 +898,7 @@ write_unpaired_field:                   # @write_unpaired_field
 	addi.d	$s5, $s5, 8
 	blt	$s6, $a0, .LBB7_6
 # %bb.7:                                # %.preheader.i
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_10
+	blez	$a0, .LBB7_10
 # %bb.8:                                # %.lr.ph22.i.preheader
 	move	$s5, $zero
 	move	$s6, $zero
@@ -944,37 +937,36 @@ write_unpaired_field:                   # @write_unpaired_field
 	ldptr.w	$a3, $s3, 6400
 	ldptr.w	$a4, $s3, 6404
 	ori	$a0, $zero, 1
-	ori	$s4, $zero, 1
 	pcaddu18i	$ra, %call36(alloc_storable_picture)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	ldptr.w	$a0, $a0, 6396
 	st.d	$s1, $fp, 48
-	blt	$a0, $s4, .LBB7_15
+	blez	$a0, .LBB7_15
 # %bb.13:                               # %.lr.ph.i48
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s5, $a0, %got_pc_lo12(img)
+	ld.d	$s4, $a0, %got_pc_lo12(img)
+	move	$s5, $zero
 	move	$s6, $zero
-	move	$s7, $zero
 	lu12i.w	$a0, 3
-	ori	$s8, $a0, 3224
+	ori	$s7, $a0, 3224
 	.p2align	4, , 16
 .LBB7_14:                               # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $s1, 6440
-	ld.d	$a1, $s5, 0
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a1, $s4, 0
+	ldx.d	$a0, $a0, $s5
 	ldptr.w	$a2, $s1, 6392
-	ldx.b	$a1, $a1, $s8
+	ldx.b	$a1, $a1, $s7
 	slli.d	$a2, $a2, 1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ldptr.w	$a0, $s1, 6396
-	addi.d	$s7, $s7, 1
-	addi.d	$s6, $s6, 8
-	blt	$s7, $a0, .LBB7_14
+	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 8
+	blt	$s6, $a0, .LBB7_14
 .LBB7_15:                               # %.preheader17.i40
 	ldptr.w	$a0, $s1, 6404
-	blt	$a0, $s4, .LBB7_21
+	blez	$a0, .LBB7_21
 # %bb.16:                               # %.lr.ph20.i41
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$s4, $a0, %got_pc_lo12(img)
@@ -998,8 +990,7 @@ write_unpaired_field:                   # @write_unpaired_field
 	addi.d	$s6, $s6, 8
 	blt	$s7, $a0, .LBB7_17
 # %bb.18:                               # %.preheader.i44
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_21
+	blez	$a0, .LBB7_21
 # %bb.19:                               # %.lr.ph22.i45.preheader
 	move	$s6, $zero
 	move	$s7, $zero
@@ -1024,33 +1015,32 @@ write_unpaired_field:                   # @write_unpaired_field
 	ori	$a0, $s2, 2464
 	ldx.w	$a0, $s3, $a0
 	ldptr.w	$a1, $s1, 6396
-	ori	$s3, $zero, 1
 	stptr.w	$a0, $s1, 6560
-	blt	$a1, $s3, .LBB7_24
+	blez	$a1, .LBB7_24
 # %bb.22:                               # %.lr.ph.i60
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s4, $a0, %got_pc_lo12(img)
+	ld.d	$s3, $a0, %got_pc_lo12(img)
+	move	$s4, $zero
 	move	$s5, $zero
-	move	$s6, $zero
 	lu12i.w	$a0, 3
-	ori	$s7, $a0, 3224
+	ori	$s6, $a0, 3224
 	.p2align	4, , 16
 .LBB7_23:                               # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $s1, 6440
-	ld.d	$a1, $s4, 0
-	ldx.d	$a0, $a0, $s5
+	ld.d	$a1, $s3, 0
+	ldx.d	$a0, $a0, $s4
 	ldptr.w	$a2, $s1, 6392
-	ldx.b	$a1, $a1, $s7
+	ldx.b	$a1, $a1, $s6
 	slli.d	$a2, $a2, 1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ldptr.w	$a0, $s1, 6396
-	addi.d	$s6, $s6, 1
-	addi.d	$s5, $s5, 8
-	blt	$s6, $a0, .LBB7_23
+	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 8
+	blt	$s5, $a0, .LBB7_23
 .LBB7_24:                               # %.preheader17.i52
 	ldptr.w	$a0, $s1, 6404
-	blt	$a0, $s3, .LBB7_30
+	blez	$a0, .LBB7_30
 # %bb.25:                               # %.lr.ph20.i53
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$s3, $a0, %got_pc_lo12(img)
@@ -1074,8 +1064,7 @@ write_unpaired_field:                   # @write_unpaired_field
 	addi.d	$s5, $s5, 8
 	blt	$s6, $a0, .LBB7_26
 # %bb.27:                               # %.preheader.i56
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_30
+	blez	$a0, .LBB7_30
 # %bb.28:                               # %.lr.ph22.i57.preheader
 	move	$s5, $zero
 	move	$s6, $zero
@@ -1116,18 +1105,17 @@ write_unpaired_field:                   # @write_unpaired_field
 .LBB7_33:
 	ori	$a0, $zero, 3
 	st.w	$a0, $fp, 0
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end7:
 	.size	write_unpaired_field, .Lfunc_end7-write_unpaired_field

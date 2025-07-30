@@ -874,9 +874,8 @@ _ZN12CFilterCoder14WriteWithLimitEP20ISequentialOutStreamj: # @_ZN12CFilterCoder
 	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.bu	$a3, $a0, 132
-	ori	$a4, $zero, 1
 	move	$a0, $a1
-	bne	$a3, $a4, .LBB24_2
+	beqz	$a3, .LBB24_2
 # %bb.1:
 	ld.d	$a1, $fp, 136
 	ld.d	$a3, $fp, 144
@@ -925,7 +924,6 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -936,7 +934,6 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$fp, $a0
 	ld.d	$a0, $a0, 192
 	ld.d	$a3, $a0, 0
@@ -950,7 +947,6 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 	jirl	$ra, $a3, 0
 	beqz	$a0, .LBB25_2
 .LBB25_1:                               # %.loopexit
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -974,7 +970,6 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 	move	$s4, $zero
 	addi.d	$s1, $fp, 144
 	lu12i.w	$s7, 32
-	ori	$s8, $zero, 1
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB25_7
 	b	.LBB25_6
@@ -995,10 +990,10 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 	sub.d	$a0, $s7, $s4
 	ld.d	$a1, $fp, 96
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 0
+	st.d	$a0, $sp, 8
 	bstrpick.d	$a0, $s4, 31, 0
 	add.d	$a1, $a1, $a0
-	addi.d	$a2, $sp, 0
+	addi.d	$a2, $sp, 8
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Z10ReadStreamP19ISequentialInStreamPvPm)
 	jirl	$ra, $ra, 0
@@ -1006,7 +1001,7 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 # %bb.8:                                #   in Loop: Header=BB25_7 Depth=1
 	ld.d	$a0, $fp, 192
 	ld.d	$a2, $a0, 0
-	ld.w	$a3, $sp, 0
+	ld.w	$a3, $sp, 8
 	ld.d	$a1, $fp, 96
 	ld.d	$a4, $a2, 48
 	add.w	$s6, $s4, $a3
@@ -1044,7 +1039,7 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 .LBB25_13:                              #   in Loop: Header=BB25_7 Depth=1
 	ld.bu	$a1, $fp, 132
 	move	$a0, $s5
-	bne	$a1, $s8, .LBB25_15
+	beqz	$a1, .LBB25_15
 # %bb.14:                               #   in Loop: Header=BB25_7 Depth=1
 	ld.d	$a0, $fp, 136
 	ld.d	$a1, $fp, 144
@@ -1104,8 +1099,7 @@ _ZN12CFilterCoder4CodeEP19ISequentialInStreamP20ISequentialOutStreamPKyS5_P21ICo
 	beqz	$s4, .LBB25_27
 # %bb.23:
 	ld.bu	$a0, $fp, 132
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB25_25
+	beqz	$a0, .LBB25_25
 # %bb.24:
 	ld.d	$a0, $fp, 136
 	ld.d	$a1, $fp, 144
@@ -1305,7 +1299,6 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1315,7 +1308,6 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s1, $a3
 	move	$s0, $a2
 	move	$s2, $a1
@@ -1328,7 +1320,6 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 # %bb.3:                                # %.lr.ph58
 	ld.w	$a0, $fp, 120
 	lu12i.w	$s6, 32
-	ori	$s7, $zero, 1
 	b	.LBB30_6
 	.p2align	4, , 16
 .LBB30_4:                               #   in Loop: Header=BB30_6 Depth=1
@@ -1374,7 +1365,7 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	bltu	$s4, $a0, .LBB30_18
 # %bb.10:                               #   in Loop: Header=BB30_6 Depth=1
 	ld.bu	$a1, $fp, 132
-	bne	$a1, $s7, .LBB30_12
+	beqz	$a1, .LBB30_12
 # %bb.11:                               #   in Loop: Header=BB30_6 Depth=1
 	ld.d	$a1, $fp, 136
 	ld.d	$a2, $fp, 144
@@ -1432,7 +1423,6 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	ori	$a1, $a1, 5
 	masknez	$a0, $a1, $a0
 .LBB30_19:                              # %.thread
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -1514,8 +1504,7 @@ _ZN12CFilterCoder5FlushEv:              # @_ZN12CFilterCoder5FlushEv
 .LBB32_6:
 	ld.bu	$a1, $fp, 132
 	ld.d	$a0, $fp, 112
-	ori	$a3, $zero, 1
-	bne	$a1, $a3, .LBB32_8
+	beqz	$a1, .LBB32_8
 # %bb.7:
 	ld.d	$a1, $fp, 136
 	ld.d	$a3, $fp, 144

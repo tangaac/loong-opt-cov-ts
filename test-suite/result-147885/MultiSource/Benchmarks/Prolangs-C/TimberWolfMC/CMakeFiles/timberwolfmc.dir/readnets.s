@@ -59,21 +59,21 @@ readnets:                               # @readnets
 	ld.w	$a0, $a0, 0
 	fld.d	$fa1, $sp, 1048
 	fld.d	$fa0, $sp, 1040
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_10
+	blez	$a0, .LBB0_10
 # %bb.4:                                # %.lr.ph
-	pcalau12i	$a2, %got_pc_hi20(netarray)
-	ld.d	$a2, $a2, %got_pc_lo12(netarray)
-	ld.d	$a2, $a2, 0
+	pcalau12i	$a1, %got_pc_hi20(netarray)
+	ld.d	$a1, $a1, %got_pc_lo12(netarray)
+	ld.d	$a1, $a1, 0
 	ori	$a3, $zero, 4
+	ori	$a2, $zero, 1
 	bltu	$a0, $a3, .LBB0_8
 # %bb.5:                                # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a3, $a1, 2
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a3, $a2, 2
 	srli.d	$a4, $a0, 2
-	ori	$a1, $zero, 1
-	bstrins.d	$a1, $a4, 30, 2
-	addi.d	$a4, $a2, 32
+	ori	$a2, $zero, 1
+	bstrins.d	$a2, $a4, 30, 2
+	addi.d	$a4, $a1, 32
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
@@ -98,8 +98,8 @@ readnets:                               # @readnets
 .LBB0_8:                                # %scalar.ph.preheader
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a3, $a0, 31, 0
-	alsl.d	$a0, $a1, $a2, 3
-	sub.d	$a1, $a3, $a1
+	alsl.d	$a0, $a2, $a1, 3
+	sub.d	$a1, $a3, $a2
 	.p2align	4, , 16
 .LBB0_9:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1

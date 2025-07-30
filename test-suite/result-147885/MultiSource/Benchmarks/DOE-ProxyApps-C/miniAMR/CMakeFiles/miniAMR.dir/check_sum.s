@@ -20,22 +20,20 @@ check_sum:                              # @check_sum
 	alsl.d	$a0, $a1, $a0, 2
 	ld.w	$a0, $a0, 4
 	fmov.d	$fs0, $fa0
-	ori	$a1, $zero, 1
 	movgr2fr.d	$fs1, $zero
-	blt	$a0, $a1, .LBB0_14
+	blez	$a0, .LBB0_14
 # %bb.1:                                # %.lr.ph
-	pcalau12i	$a2, %pc_hi20(x_block_size)
-	ld.w	$a4, $a2, %pc_lo12(x_block_size)
-	blt	$a4, $a1, .LBB0_14
+	pcalau12i	$a1, %pc_hi20(x_block_size)
+	ld.w	$a4, $a1, %pc_lo12(x_block_size)
+	blez	$a4, .LBB0_14
 # %bb.2:                                # %.lr.ph
 	pcalau12i	$a1, %pc_hi20(y_block_size)
 	ld.w	$a5, $a1, %pc_lo12(y_block_size)
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB0_14
+	blez	$a5, .LBB0_14
 # %bb.3:                                # %.lr.ph
-	pcalau12i	$a2, %pc_hi20(z_block_size)
-	ld.w	$a6, $a2, %pc_lo12(z_block_size)
-	blt	$a6, $a1, .LBB0_14
+	pcalau12i	$a1, %pc_hi20(z_block_size)
+	ld.w	$a6, $a1, %pc_lo12(z_block_size)
+	blez	$a6, .LBB0_14
 # %bb.4:                                # %.lr.ph.split.split.split.preheader
 	move	$a1, $zero
 	pcalau12i	$a2, %pc_hi20(sorted_list)

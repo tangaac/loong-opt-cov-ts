@@ -784,10 +784,9 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	sub.d	$a1, $s0, $a0
 	addi.d	$a0, $a0, 1
 	srl.w	$a1, $a4, $a1
-	lu12i.w	$a2, 2048
-	and	$a1, $a1, $a2
+	slli.d	$a1, $a1, 40
 	st.w	$a0, $fp, 0
-	bnez	$a1, .LBB1_7
+	bltz	$a1, .LBB1_7
 # %bb.6:                                # %.thread157
 	ld.d	$a0, $fp, 1136
 	ori	$a2, $zero, 757

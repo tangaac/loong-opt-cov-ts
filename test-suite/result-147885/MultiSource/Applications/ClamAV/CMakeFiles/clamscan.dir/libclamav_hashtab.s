@@ -282,8 +282,6 @@ hashtab_insert:                         # @hashtab_insert
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 .LBB3_3:                                # %.lr.ph.i.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_4 Depth 2
@@ -338,8 +336,7 @@ hashtab_insert:                         # @hashtab_insert
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hashtab_grow)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB3_3
+	bgez	$a0, .LBB3_3
 .LBB3_12:                               # %.split70.us
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
@@ -358,7 +355,6 @@ hashtab_insert:                         # @hashtab_insert
 	addi.d	$s0, $a1, %pc_lo12(DELETED_KEY)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$s3, $a1, %pc_lo12(.L.str.1)
-	addi.w	$s4, $zero, -1
 .LBB3_16:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_17 Depth 2
@@ -378,7 +374,7 @@ hashtab_insert:                         # @hashtab_insert
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hashtab_grow)
 	jirl	$ra, $ra, 0
-	bge	$s4, $a0, .LBB3_12
+	bltz	$a0, .LBB3_12
 # %bb.20:                               # %hash.exit.us
                                         #   in Loop: Header=BB3_16 Depth=1
 	ld.d	$s6, $fp, 0

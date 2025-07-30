@@ -1266,8 +1266,7 @@ read_CLI:                               # @read_CLI
 	b	.LBB5_3
 .LBB5_19:                               # %._crit_edge
 	ld.w	$a0, $fp, 104
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_21
+	blez	$a0, .LBB5_21
 .LBB5_20:                               # %._crit_edge.thread
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload

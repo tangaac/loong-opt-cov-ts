@@ -513,19 +513,19 @@ _Z6getBFPii:                            # @_Z6getBFPii
 _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -537,28 +537,24 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	ori	$s2, $zero, 1
 	ori	$s1, $zero, 4
 	addi.w	$a1, $zero, -9
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	ori	$s3, $zero, 10
-	addi.w	$a1, $zero, -1
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	ori	$s6, $zero, 10
+	addi.w	$s8, $zero, -1
 	pcalau12i	$a1, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s0, $a1, %got_pc_lo12(_ZSt4cout)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$a0, $a0, 4
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$s7, $zero, 0
-	lu32i.d	$s7, 1
-	ori	$s4, $zero, 4
-	ori	$s8, $zero, 1
+	ori	$s2, $zero, 4
+	ori	$s7, $zero, 1
 	b	.LBB12_2
 	.p2align	4, , 16
 .LBB12_1:                               #   in Loop: Header=BB12_2 Depth=1
@@ -568,24 +564,22 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	addi.w	$s8, $s8, 1
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
-	addi.w	$s4, $s4, -1
+	addi.w	$s7, $s7, 1
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	addi.w	$s2, $s2, -1
 	ori	$s1, $zero, 4
-	ori	$s3, $zero, 10
-	beq	$s8, $s3, .LBB12_15
+	ori	$s6, $zero, 10
+	beq	$s7, $s6, .LBB12_15
 .LBB12_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_4 Depth 2
                                         #     Child Loop BB12_8 Depth 2
-	bltu	$s1, $s8, .LBB12_5
+	bltu	$s1, $s7, .LBB12_5
 # %bb.3:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB12_2 Depth=1
 	ori	$a1, $zero, 1
-	sltu	$a0, $a1, $s4
-	ori	$s2, $zero, 1
+	sltu	$a0, $a1, $s2
 	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s2, $a0
 	or	$fp, $a0, $a1
 	.p2align	4, , 16
 .LBB12_4:                               # %.lr.ph
@@ -601,14 +595,15 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	bnez	$fp, .LBB12_4
 .LBB12_5:                               # %.loopexit
                                         #   in Loop: Header=BB12_2 Depth=1
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
-	sltu	$fp, $s1, $s8
-	addi.w	$s4, $s8, 4
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	sltu	$s5, $s1, $s7
+	addi.w	$s2, $s7, 4
 	ori	$a0, $zero, 5
-	sltu	$a0, $a0, $s8
-	addi.w	$s6, $s8, -5
-	alsl.d	$a1, $s8, $s8, 3
-	sltu	$a2, $s2, $s8
+	sltu	$a0, $a0, $s7
+	addi.w	$fp, $s7, -5
+	alsl.d	$a1, $s7, $s7, 3
+	ori	$a2, $zero, 1
+	sltu	$a2, $a2, $s7
 	addi.d	$a3, $zero, -10
 	masknez	$a3, $a3, $a2
 	addi.d	$a4, $zero, -14
@@ -616,15 +611,15 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	or	$a2, $a2, $a3
 	add.d	$a1, $a2, $a1
 	ori	$a2, $zero, 2
-	sltu	$a2, $a2, $s8
+	sltu	$a2, $a2, $s7
 	addi.d	$a3, $a1, -3
 	ori	$a4, $zero, 3
-	sltu	$a4, $a4, $s8
-	add.d	$a0, $fp, $a0
+	sltu	$a4, $a4, $s7
+	add.d	$a0, $s5, $a0
 	ori	$a7, $zero, 6
-	sltu	$a5, $a7, $s8
+	sltu	$a5, $a7, $s7
 	ori	$a6, $zero, 7
-	sltu	$a6, $a6, $s8
+	sltu	$a6, $a6, $s7
 	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $a3, $a2
 	or	$a1, $a2, $a1
@@ -639,15 +634,14 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	masknez	$a0, $a0, $a6
 	maskeqz	$a2, $a3, $a6
 	or	$a0, $a2, $a0
-	add.d	$s5, $a1, $a0
-	sltui	$s1, $s8, 6
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$a0, $s8, -9
+	add.d	$s3, $a1, $a0
+	sltui	$s4, $s7, 6
+	addi.d	$a0, $s7, -9
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s3, $a0
+	masknez	$a1, $s6, $a0
 	maskeqz	$a0, $a7, $a0
-	or	$s8, $a0, $a1
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
+	or	$s6, $a0, $a1
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB12_8
 	.p2align	4, , 16
 .LBB12_6:                               # %_Z6getBFPii.exit.thread
@@ -659,27 +653,26 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 .LBB12_7:                               #   in Loop: Header=BB12_8 Depth=2
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s3, 31, 0
-	addi.d	$s3, $a0, 1
-	and	$a0, $s3, $s7
-	bnez	$a0, .LBB12_1
+	bstrpick.d	$a0, $s1, 31, 0
+	addi.d	$s1, $a0, 1
+	slli.d	$a0, $s1, 31
+	bltz	$a0, .LBB12_1
 .LBB12_8:                               #   Parent Loop BB12_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$a0, $s3, 10
-	sltu	$a1, $s4, $a0
+	addi.w	$a0, $s1, 10
+	sltu	$a1, $s2, $a0
 	xori	$a1, $a1, 1
-	or	$a1, $fp, $a1
-	bne	$a1, $s2, .LBB12_6
+	or	$a1, $s5, $a1
+	beqz	$a1, .LBB12_6
 # %bb.9:                                #   in Loop: Header=BB12_8 Depth=2
-	sltu	$a0, $s6, $a0
-	or	$a0, $s1, $a0
+	sltu	$a0, $fp, $a0
+	or	$a0, $s4, $a0
 	beqz	$a0, .LBB12_6
 # %bb.10:                               # %_Z6getBFPii.exit
                                         #   in Loop: Header=BB12_8 Depth=2
-	add.d	$a0, $s5, $s3
-	add.w	$a0, $a0, $s8
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB12_6
+	add.d	$a0, $s3, $s1
+	add.w	$a0, $a0, $s6
+	beq	$a0, $s8, .LBB12_6
 # %bb.11:                               #   in Loop: Header=BB12_8 Depth=2
 	ori	$a1, $zero, 63
 	bltu	$a1, $a0, .LBB12_13
@@ -687,9 +680,9 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
                                         #   in Loop: Header=BB12_8 Depth=2
 	sltui	$a1, $a0, 32
 	addi.d	$a2, $a0, -32
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	masknez	$a3, $a3, $a1
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	maskeqz	$a4, $a4, $a1
 	or	$a3, $a4, $a3
 	ld.w	$a3, $a3, 0
@@ -703,7 +696,7 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
                                         #   in Loop: Header=BB12_8 Depth=2
 	ori	$a2, $zero, 2
 	move	$a0, $s0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB12_7
 .LBB12_14:                              #   in Loop: Header=BB12_8 Depth=2
 	ori	$a2, $zero, 2
@@ -711,18 +704,18 @@ _ZN10BitBoard645printEv:                # @_ZN10BitBoard645printEv
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB12_7
 .LBB12_15:
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end12:
 	.size	_ZN10BitBoard645printEv, .Lfunc_end12-_ZN10BitBoard645printEv

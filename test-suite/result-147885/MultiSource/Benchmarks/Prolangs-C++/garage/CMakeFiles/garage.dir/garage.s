@@ -28,9 +28,8 @@ _ZN6GarageC2Ei:                         # @_ZN6GarageC2Ei
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $s1, 8
-	blt	$s0, $a1, .LBB0_2
+	blez	$s0, .LBB0_2
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $zero
 	move	$a2, $fp
@@ -72,10 +71,9 @@ _ZN6GarageD2Ev:                         # @_ZN6GarageD2Ev
 	.type	_ZN6Garage6acceptEP7Vehicle,@function
 _ZN6Garage6acceptEP7Vehicle:            # @_ZN6Garage6acceptEP7Vehicle
 # %bb.0:
-	ld.w	$a2, $a0, 0
-	ori	$a4, $zero, 1
-	addi.w	$a3, $zero, -1
-	blt	$a2, $a4, .LBB2_4
+	ld.w	$a3, $a0, 0
+	addi.w	$a2, $zero, -1
+	blez	$a3, .LBB2_4
 # %bb.1:                                # %.lr.ph
 	ld.d	$a4, $a0, 8
 	move	$a0, $zero
@@ -85,11 +83,11 @@ _ZN6Garage6acceptEP7Vehicle:            # @_ZN6Garage6acceptEP7Vehicle
 	beqz	$a5, .LBB2_5
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a0, $a0, 1
-	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a2, .LBB2_2
+	bnez	$a3, .LBB2_2
 .LBB2_4:
-	move	$a0, $a3
+	move	$a0, $a2
 	ret
 .LBB2_5:
 	st.d	$a1, $a4, 0
@@ -140,8 +138,7 @@ _ZN6Garage12listVehiclesEv:             # @_ZN6Garage12listVehiclesEv
 	.cfi_offset 26, -48
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_5
+	blez	$a0, .LBB4_5
 # %bb.1:                                # %.lr.ph
 	move	$s2, $zero
 	move	$s0, $zero

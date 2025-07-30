@@ -73,9 +73,8 @@ InsertUses:                             # @InsertUses
 	beqz	$a2, .LBB0_12
 # %bb.11:
 	ld.h	$a1, $a1, 41
-	addi.w	$a3, $zero, -1
 	move	$a2, $a0
-	blt	$a3, $a1, .LBB0_14
+	bgez	$a1, .LBB0_14
 	b	.LBB0_13
 .LBB0_12:
 	move	$a2, $a0
@@ -212,27 +211,26 @@ FirstExternTarget:                      # @FirstExternTarget
 # %bb.0:
 	st.d	$zero, $a1, 0
 	ld.hu	$a2, $a0, 41
-	lu12i.w	$a3, 1
-	and	$a2, $a2, $a3
-	bnez	$a2, .LBB4_7
+	slli.d	$a2, $a2, 51
+	bltz	$a2, .LBB4_7
 # %bb.1:
 	ld.d	$a2, $a0, 72
 	beqz	$a2, .LBB4_5
 # %bb.2:
-	ld.d	$a4, $a2, 8
-	st.d	$a4, $a1, 0
+	ld.d	$a3, $a2, 8
+	st.d	$a3, $a1, 0
 	.p2align	4, , 16
 .LBB4_3:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $a4, 0
-	ld.hu	$a5, $a2, 41
-	and	$a5, $a5, $a3
-	bnez	$a5, .LBB4_6
+	ld.d	$a2, $a3, 0
+	ld.hu	$a4, $a2, 41
+	slli.d	$a4, $a4, 51
+	bltz	$a4, .LBB4_6
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
-	ld.d	$a4, $a4, 8
-	st.d	$a4, $a1, 0
+	ld.d	$a3, $a3, 8
+	st.d	$a3, $a1, 0
 	ld.d	$a2, $a0, 72
 	ld.d	$a2, $a2, 8
-	bne	$a4, $a2, .LBB4_3
+	bne	$a3, $a2, .LBB4_3
 .LBB4_5:
 	move	$a2, $zero
 .LBB4_6:                                # %.loopexit
@@ -248,25 +246,23 @@ FirstExternTarget:                      # @FirstExternTarget
 NextExternTarget:                       # @NextExternTarget
 # %bb.0:
 	ld.d	$a3, $a1, 0
-	beqz	$a3, .LBB5_5
-# %bb.1:                                # %.preheader
-	lu12i.w	$a4, 1
+	beqz	$a3, .LBB5_4
 	.p2align	4, , 16
-.LBB5_2:                                # =>This Inner Loop Header: Depth=1
+.LBB5_1:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a3, 8
 	st.d	$a3, $a1, 0
 	ld.d	$a2, $a0, 72
 	ld.d	$a2, $a2, 8
-	beq	$a3, $a2, .LBB5_5
-# %bb.3:                                #   in Loop: Header=BB5_2 Depth=1
+	beq	$a3, $a2, .LBB5_4
+# %bb.2:                                #   in Loop: Header=BB5_1 Depth=1
 	ld.d	$a2, $a3, 0
-	ld.hu	$a5, $a2, 41
-	and	$a5, $a5, $a4
-	beqz	$a5, .LBB5_2
-# %bb.4:                                # %.loopexit
+	ld.hu	$a4, $a2, 41
+	slli.d	$a4, $a4, 51
+	bgez	$a4, .LBB5_1
+# %bb.3:                                # %.loopexit
 	move	$a0, $a2
 	ret
-.LBB5_5:
+.LBB5_4:
 	move	$a2, $zero
 	move	$a0, $a2
 	ret
@@ -350,8 +346,8 @@ GatherUses:                             # @GatherUses
 	st.h	$a0, $s0, 41
 	ld.hu	$a0, $s1, 41
 .LBB6_11:                               #   in Loop: Header=BB6_4 Depth=1
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB6_2
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB6_2
 # %bb.12:                               #   in Loop: Header=BB6_4 Depth=1
 	ld.h	$a0, $s0, 41
 	ori	$a0, $a0, 2048

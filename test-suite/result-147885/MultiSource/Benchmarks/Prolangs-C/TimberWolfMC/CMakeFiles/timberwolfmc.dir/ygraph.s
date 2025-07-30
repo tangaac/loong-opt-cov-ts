@@ -29,9 +29,9 @@ ygraph:                                 # @ygraph
 	pcalau12i	$a1, %got_pc_hi20(yNodules)
 	ld.d	$a2, $a1, %got_pc_lo12(yNodules)
 	addi.w	$a1, $zero, -1
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a0, $a2, 0
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	blt	$s0, $a1, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a1, $fp, 31, 0
@@ -51,7 +51,7 @@ ygraph:                                 # @ygraph
 	pcalau12i	$a1, %got_pc_hi20(edgeList)
 	ld.d	$a1, $a1, %got_pc_lo12(edgeList)
 	ld.w	$a2, $a0, 0
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a0, $a1, 0
 	slli.d	$a1, $a2, 5
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
@@ -71,7 +71,7 @@ ygraph:                                 # @ygraph
 	pcalau12i	$a0, %got_pc_hi20(eArray)
 	ld.d	$a0, $a0, %got_pc_lo12(eArray)
 	ld.d	$s5, $a0, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $a0, 0
 	ori	$s7, $zero, 56
 	b	.LBB0_6
@@ -113,7 +113,7 @@ ygraph:                                 # @ygraph
 	ld.d	$a0, $a0, %got_pc_lo12(Hend)
 	ld.d	$a0, $a0, 0
 	ld.w	$a2, $a0, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a2, 5
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
@@ -134,9 +134,9 @@ ygraph:                                 # @ygraph
 	pcalau12i	$a0, %got_pc_hi20(eArray)
 	ld.d	$a0, $a0, %got_pc_lo12(eArray)
 	ld.d	$s6, $a0, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a2, $zero, 56
 	b	.LBB0_12
 	.p2align	4, , 16
@@ -158,7 +158,7 @@ ygraph:                                 # @ygraph
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 24
 	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.d	$s2, $a1, $a0
 	ld.d	$s3, $s2, 24
 	ori	$a0, $zero, 24
@@ -189,11 +189,11 @@ ygraph:                                 # @ygraph
 	beqz	$a1, .LBB0_33
 # %bb.16:                               # %.lr.ph259.preheader
 	addi.d	$a5, $a2, 16
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a3, %got_pc_hi20(eArray)
 	ld.d	$a3, $a3, %got_pc_lo12(eArray)
-	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	ori	$s1, $zero, 1
 	ori	$s8, $zero, 56
 	b	.LBB0_19
@@ -217,11 +217,11 @@ ygraph:                                 # @ygraph
 	slli.d	$a2, $a6, 5
 	alsl.d	$a2, $a6, $a2, 3
 	ldx.w	$a2, $a0, $a2
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a3, $a3, 0
 	slli.d	$a4, $a2, 4
 	alsl.d	$a2, $a2, $a4, 3
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	add.d	$a2, $a3, $a2
 	ld.w	$a3, $a2, 16
 	beq	$a3, $s1, .LBB0_18
@@ -229,35 +229,34 @@ ygraph:                                 # @ygraph
 	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a1, $a2, 16
 	st.w	$s1, $a1, 0
-	move	$s5, $a6
+	move	$s3, $a6
 	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB0_22
 	.p2align	4, , 16
 .LBB0_21:                               # %.loopexit231
                                         #   in Loop: Header=BB0_22 Depth=2
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ori	$a2, $zero, 40
-	mul.d	$a1, $s5, $a2
+	mul.d	$a1, $s3, $a2
 	add.d	$a1, $a0, $a1
 	ld.w	$a1, $a1, 32
 	mul.d	$a1, $a1, $a2
 	add.d	$a1, $a0, $a1
-	ld.w	$s5, $a1, 32
+	ld.w	$s3, $a1, 32
 	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
-	beq	$s5, $a6, .LBB0_17
+	beq	$s3, $a6, .LBB0_17
 .LBB0_22:                               #   Parent Loop BB0_19 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_26 Depth 3
                                         #       Child Loop BB0_31 Depth 3
-	slli.d	$a1, $s5, 5
-	alsl.d	$a1, $s5, $a1, 3
+	slli.d	$a1, $s3, 5
+	alsl.d	$a1, $s3, $a1, 3
 	add.d	$a0, $a0, $a1
 	ld.w	$a2, $a0, 20
 	ld.w	$a1, $a0, 12
 	st.w	$a1, $sp, 100
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	bge	$a0, $a2, .LBB0_28
+	bltz	$a2, .LBB0_28
 # %bb.23:                               #   in Loop: Header=BB0_22 Depth=2
 	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(tplist)
@@ -266,13 +265,13 @@ ygraph:                                 # @ygraph
 # %bb.24:                               # %.lr.ph250
                                         #   in Loop: Header=BB0_22 Depth=2
 	move	$s0, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $a1, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $a1, 0
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
-	addi.d	$s3, $a0, 8
+	addi.d	$s2, $a0, 8
 	b	.LBB0_26
 	.p2align	4, , 16
 .LBB0_25:                               #   in Loop: Header=BB0_26 Depth=3
@@ -284,18 +283,18 @@ ygraph:                                 # @ygraph
 	ld.w	$s6, $s0, 0
 	st.w	$s6, $sp, 96
 	mul.d	$a0, $s6, $s8
-	add.d	$a0, $s2, $a0
+	add.d	$a0, $s5, $a0
 	ld.w	$a0, $a0, 32
-	bne	$a0, $s5, .LBB0_25
+	bne	$a0, $s3, .LBB0_25
 # %bb.27:                               #   in Loop: Header=BB0_26 Depth=3
-	ld.d	$s7, $s3, 0
+	ld.d	$s7, $s2, 0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $s3, 0
+	st.d	$a0, $s2, 0
 	st.d	$s7, $a0, 16
-	st.w	$s5, $a0, 0
+	st.w	$s3, $a0, 0
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -313,12 +312,12 @@ ygraph:                                 # @ygraph
 # %bb.29:                               # %.lr.ph254
                                         #   in Loop: Header=BB0_22 Depth=2
 	move	$s0, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $a1, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	add.d	$s3, $a0, $a1
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $a1, 0
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	add.d	$s2, $a0, $a1
 	b	.LBB0_31
 	.p2align	4, , 16
 .LBB0_30:                               #   in Loop: Header=BB0_31 Depth=3
@@ -330,18 +329,18 @@ ygraph:                                 # @ygraph
 	ld.w	$s6, $s0, 0
 	st.w	$s6, $sp, 96
 	mul.d	$a0, $s6, $s8
-	add.d	$a0, $s2, $a0
+	add.d	$a0, $s5, $a0
 	ld.w	$a0, $a0, 36
-	bne	$a0, $s5, .LBB0_30
+	bne	$a0, $s3, .LBB0_30
 # %bb.32:                               #   in Loop: Header=BB0_31 Depth=3
-	ld.d	$s7, $s3, 0
+	ld.d	$s7, $s2, 0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $s3, 0
+	st.d	$a0, $s2, 0
 	st.d	$s7, $a0, 16
-	st.w	$s5, $a0, 0
+	st.w	$s3, $a0, 0
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -353,7 +352,7 @@ ygraph:                                 # @ygraph
 .LBB0_33:                               # %.preheader230
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	bge	$a0, $a1, .LBB0_38
 .LBB0_34:                               # %._crit_edge293
 	pcalau12i	$a0, %got_pc_hi20(numYnodes)
@@ -363,7 +362,7 @@ ygraph:                                 # @ygraph
 	st.w	$zero, $a0, 0
 	beqz	$a1, .LBB0_66
 # %bb.35:                               # %.lr.ph298
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	.p2align	4, , 16
 .LBB0_36:                               # =>This Inner Loop Header: Depth=1
@@ -402,7 +401,7 @@ ygraph:                                 # @ygraph
                                         #     Child Loop BB0_56 Depth 2
                                         #       Child Loop BB0_59 Depth 3
                                         #         Child Loop BB0_62 Depth 4
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	move	$a2, $a1
 	slli.d	$a1, $a1, 4
@@ -412,7 +411,7 @@ ygraph:                                 # @ygraph
 	beqz	$s3, .LBB0_54
 # %bb.41:                               # %.lr.ph267.preheader.preheader
                                         #   in Loop: Header=BB0_40 Depth=1
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB0_43
 	.p2align	4, , 16
 .LBB0_42:                               # %._crit_edge268
@@ -503,9 +502,9 @@ ygraph:                                 # @ygraph
 	.p2align	4, , 16
 .LBB0_53:                               # %._crit_edge274.loopexit
                                         #   in Loop: Header=BB0_40 Depth=1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 .LBB0_54:                               # %._crit_edge274
                                         #   in Loop: Header=BB0_40 Depth=1
 	add.d	$a0, $a0, $a1
@@ -607,9 +606,8 @@ ygraph:                                 # @ygraph
 	pcalau12i	$a1, %got_pc_hi20(yNodeArray)
 	ld.d	$a1, $a1, %got_pc_lo12(yNodeArray)
 	move	$s0, $a0
-	ori	$s3, $zero, 1
 	st.d	$a0, $a1, 0
-	blt	$s2, $s3, .LBB0_69
+	blez	$s2, .LBB0_69
 # %bb.68:                               # %.lr.ph303.preheader
 	addi.d	$a0, $s0, 8
 	move	$a1, $zero
@@ -621,12 +619,12 @@ ygraph:                                 # @ygraph
 	ld.w	$a0, $a0, 0
 	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	blt	$a0, $s3, .LBB0_77
+	blez	$a0, .LBB0_77
 # %bb.70:                               # %.lr.ph319
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s3, $a0, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
@@ -656,7 +654,7 @@ ygraph:                                 # @ygraph
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.d	$a0, $a0, 8
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	beqz	$a0, .LBB0_71
 	.p2align	4, , 16
 .LBB0_74:                               # %.lr.ph308
@@ -672,8 +670,8 @@ ygraph:                                 # @ygraph
 	ld.w	$s2, $a0, 12
 	ldx.d	$a0, $s0, $a2
 	alsl.d	$a1, $a1, $s0, 3
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_75:                               #   Parent Loop BB0_72 Depth=1
                                         #     Parent Loop BB0_74 Depth=2
@@ -699,13 +697,13 @@ ygraph:                                 # @ygraph
 # %bb.76:                               # %._crit_edge309
                                         #   in Loop: Header=BB0_74 Depth=2
 	ld.d	$s8, $s8, 16
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
 	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	bnez	$s8, .LBB0_74
 	b	.LBB0_71
 .LBB0_77:                               # %.preheader226
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	bge	$a2, $a0, .LBB0_85
 .LBB0_78:                               # %._crit_edge334
@@ -760,31 +758,31 @@ ygraph:                                 # @ygraph
 	pcalau12i	$a0, %got_pc_hi20(eArray)
 	ld.d	$a0, $a0, %got_pc_lo12(eArray)
 	move	$a3, $zero
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s5, $a1, 0
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	addi.d	$a0, $a2, 2
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB0_87
 	.p2align	4, , 16
 .LBB0_86:                               # %._crit_edge330
                                         #   in Loop: Header=BB0_87 Depth=1
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a3, $a3, 1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a0, .LBB0_78
 .LBB0_87:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_89 Depth 2
                                         #       Child Loop BB0_91 Depth 3
 	slli.d	$a0, $a3, 4
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	alsl.d	$a0, $a3, $a0, 3
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.d	$s7, $a0, 8
 	bnez	$s7, .LBB0_89
@@ -805,7 +803,7 @@ ygraph:                                 # @ygraph
 	ld.w	$a1, $s7, 0
 	ori	$a2, $zero, 56
 	mul.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
 	ld.w	$a0, $a0, 36
 	ori	$a2, $zero, 40
@@ -837,7 +835,7 @@ ygraph:                                 # @ygraph
 # %bb.90:                               # %.lr.ph323.preheader
                                         #   in Loop: Header=BB0_89 Depth=2
 	move	$a1, $zero
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_91:                               # %.lr.ph323
                                         #   Parent Loop BB0_87 Depth=1

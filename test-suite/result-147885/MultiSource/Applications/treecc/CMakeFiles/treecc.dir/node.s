@@ -495,8 +495,7 @@ TreeCCNodeFindByType:                   # @TreeCCNodeFindByType
 # %bb.3:
 	move	$s2, $zero
 	addi.w	$s1, $a1, 0
-	ori	$a0, $zero, 1
-	bge	$s1, $a0, .LBB4_6
+	bgtz	$s1, .LBB4_6
 .LBB4_4:
 	move	$a0, $zero
 	slli.d	$a0, $a0, 3
@@ -507,11 +506,11 @@ TreeCCNodeFindByType:                   # @TreeCCNodeFindByType
 	ori	$s2, $zero, 1
 	move	$a1, $a0
 	addi.w	$s1, $a1, 0
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_4
+	blez	$s1, .LBB4_4
 .LBB4_6:                                # %.lr.ph.i.preheader
 	move	$a2, $zero
-	addi.d	$a1, $a1, 1
+	addi.d	$a0, $a1, 1
+	ori	$a1, $zero, 1
 	move	$a3, $fp
 	.p2align	4, , 16
 .LBB4_7:                                # %.lr.ph.i
@@ -520,9 +519,9 @@ TreeCCNodeFindByType:                   # @TreeCCNodeFindByType
 	ld.b	$a5, $a3, 0
 	add.d	$a2, $a4, $a2
 	addi.d	$a3, $a3, 1
-	addi.w	$a1, $a1, -1
+	addi.w	$a0, $a0, -1
 	add.d	$a2, $a2, $a5
-	bltu	$a0, $a1, .LBB4_7
+	bltu	$a1, $a0, .LBB4_7
 # %bb.8:                                # %HashStringLen.exit.loopexit
 	andi	$a0, $a2, 511
 	slli.d	$a0, $a0, 3
@@ -594,22 +593,19 @@ TreeCCNodeValidate:                     # @TreeCCNodeValidate
 	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s2, $zero, 1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -2
 	lu32i.d	$a0, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                # %._crit_edge.split.us.us
                                         #   in Loop: Header=BB5_3 Depth=1
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
 	ori	$a0, $zero, 512
 	beq	$a1, $a0, .LBB5_38
@@ -619,7 +615,7 @@ TreeCCNodeValidate:                     # @TreeCCNodeValidate
                                         #       Child Loop BB5_13 Depth 3
                                         #         Child Loop BB5_19 Depth 4
                                         #         Child Loop BB5_23 Depth 4
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	slli.d	$a0, $a1, 3
 	ldx.d	$s1, $fp, $a0
 	bnez	$s1, .LBB5_5
@@ -643,7 +639,8 @@ TreeCCNodeValidate:                     # @TreeCCNodeValidate
 	ld.d	$a1, $s1, 56
 	ld.d	$a2, $s1, 64
 	ld.d	$a4, $s1, 32
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	pcalau12i	$a3, %pc_hi20(.L.str.4)
+	addi.d	$a3, $a3, %pc_lo12(.L.str.4)
 	pcaddu18i	$ra, %call36(TreeCCErrorOnLine)
 	jirl	$ra, $ra, 0
 .LBB5_7:                                #   in Loop: Header=BB5_5 Depth=2
@@ -654,68 +651,68 @@ TreeCCNodeValidate:                     # @TreeCCNodeValidate
 	andi	$a0, $a0, 5
 	beqz	$a0, .LBB5_10
 .LBB5_9:                                #   in Loop: Header=BB5_5 Depth=2
-	ld.d	$s8, $s1, 72
-	bnez	$s8, .LBB5_13
+	ld.d	$s0, $s1, 72
+	bnez	$s0, .LBB5_13
 	b	.LBB5_4
 .LBB5_10:                               #   in Loop: Header=BB5_5 Depth=2
 	ldptr.d	$a0, $fp, 8192
 	ld.d	$a1, $s1, 56
 	ld.d	$a2, $s1, 64
 	ld.d	$a4, $s1, 32
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(TreeCCErrorOnLine)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $s1, 72
-	bnez	$s8, .LBB5_13
+	ld.d	$s0, $s1, 72
+	bnez	$s0, .LBB5_13
 	b	.LBB5_4
 .LBB5_11:                               #   in Loop: Header=BB5_13 Depth=3
 	ldptr.d	$a0, $fp, 8192
-	ld.d	$a1, $s8, 32
-	ld.d	$a2, $s8, 40
+	ld.d	$a1, $s0, 32
+	ld.d	$a2, $s0, 40
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(TreeCCErrorOnLine)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
 .LBB5_12:                               # %TreeCCNodeFindByType.exit.thread.us.us
                                         #   in Loop: Header=BB5_13 Depth=3
-	ld.d	$s8, $s8, 48
-	beqz	$s8, .LBB5_4
+	ld.d	$s0, $s0, 48
+	beqz	$s0, .LBB5_4
 .LBB5_13:                               # %.lr.ph.us.us
                                         #   Parent Loop BB5_3 Depth=1
                                         #     Parent Loop BB5_5 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB5_19 Depth 4
                                         #         Child Loop BB5_23 Depth 4
-	ld.d	$s3, $s8, 8
-	move	$a0, $s3
+	ld.d	$s2, $s0, 8
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	addi.w	$s0, $a0, 0
+	move	$s3, $a0
+	addi.w	$s8, $a0, 0
 	ori	$a0, $zero, 2
-	blt	$s0, $a0, .LBB5_16
+	blt	$s8, $a0, .LBB5_16
 # %bb.14:                               #   in Loop: Header=BB5_13 Depth=3
-	addi.d	$a0, $s4, -1
+	addi.d	$a0, $s3, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	ldx.bu	$a0, $s3, $a0
+	ldx.bu	$a0, $s2, $a0
 	ori	$a1, $zero, 42
 	bne	$a0, $a1, .LBB5_16
 # %bb.15:                               #   in Loop: Header=BB5_13 Depth=3
-	addi.w	$a0, $s4, -2
-	ldx.bu	$a1, $s3, $a0
+	addi.w	$a0, $s3, -2
+	ldx.bu	$a1, $s2, $a0
 	ori	$a2, $zero, 32
 	beq	$a1, $a2, .LBB5_17
 	.p2align	4, , 16
 .LBB5_16:                               #   in Loop: Header=BB5_13 Depth=3
-	move	$a0, $s4
+	move	$a0, $s3
 .LBB5_17:                               #   in Loop: Header=BB5_13 Depth=3
-	addi.w	$s5, $a0, 0
-	blt	$s5, $s2, .LBB5_21
+	addi.w	$s4, $a0, 0
+	blez	$s4, .LBB5_21
 # %bb.18:                               # %.lr.ph.i.i.us.us.preheader
                                         #   in Loop: Header=BB5_13 Depth=3
 	move	$a1, $zero
 	addi.d	$a0, $a0, 1
-	move	$a2, $s3
+	move	$a2, $s2
 	.p2align	4, , 16
 .LBB5_19:                               # %.lr.ph.i.i.us.us
                                         #   Parent Loop BB5_3 Depth=1
@@ -728,57 +725,57 @@ TreeCCNodeValidate:                     # @TreeCCNodeValidate
 	addi.d	$a2, $a2, 1
 	addi.w	$a0, $a0, -1
 	add.d	$a1, $a1, $a4
-	bltu	$s2, $a0, .LBB5_19
+	bltu	$s7, $a0, .LBB5_19
 # %bb.20:                               # %HashStringLen.exit.loopexit.i.us.us
                                         #   in Loop: Header=BB5_13 Depth=3
 	andi	$a0, $a1, 511
 	slli.d	$a0, $a0, 3
-	ldx.d	$s7, $fp, $a0
-	bnez	$s7, .LBB5_23
+	ldx.d	$s6, $fp, $a0
+	bnez	$s6, .LBB5_23
 	b	.LBB5_12
 	.p2align	4, , 16
 .LBB5_21:                               #   in Loop: Header=BB5_13 Depth=3
 	move	$a0, $zero
 	slli.d	$a0, $a0, 3
-	ldx.d	$s7, $fp, $a0
-	bnez	$s7, .LBB5_23
+	ldx.d	$s6, $fp, $a0
+	bnez	$s6, .LBB5_23
 	b	.LBB5_12
 	.p2align	4, , 16
 .LBB5_22:                               #   in Loop: Header=BB5_23 Depth=4
-	ld.d	$s7, $s7, 88
-	beqz	$s7, .LBB5_12
+	ld.d	$s6, $s6, 88
+	beqz	$s6, .LBB5_12
 .LBB5_23:                               #   Parent Loop BB5_3 Depth=1
                                         #     Parent Loop BB5_5 Depth=2
                                         #       Parent Loop BB5_13 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.d	$s6, $s7, 32
-	move	$a0, $s6
-	move	$a1, $s3
-	move	$a2, $s5
+	ld.d	$s5, $s6, 32
+	move	$a0, $s5
+	move	$a1, $s2
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB5_22
 # %bb.24:                               #   in Loop: Header=BB5_23 Depth=4
-	ldx.bu	$a0, $s6, $s5
+	ldx.bu	$a0, $s5, $s4
 	bnez	$a0, .LBB5_22
 # %bb.25:                               #   in Loop: Header=BB5_13 Depth=3
-	ld.bu	$a0, $s7, 40
+	ld.bu	$a0, $s6, 40
 	andi	$a0, $a0, 24
 	bnez	$a0, .LBB5_12
 # %bb.26:                               #   in Loop: Header=BB5_13 Depth=3
 	ori	$a0, $zero, 2
-	blt	$s0, $a0, .LBB5_11
+	blt	$s8, $a0, .LBB5_11
 # %bb.27:                               #   in Loop: Header=BB5_13 Depth=3
-	addi.d	$a0, $s4, -1
+	addi.d	$a0, $s3, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	ldx.bu	$a0, $s3, $a0
+	ldx.bu	$a0, $s2, $a0
 	ori	$a1, $zero, 42
 	bne	$a0, $a1, .LBB5_11
 # %bb.28:                               #   in Loop: Header=BB5_13 Depth=3
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a0, $s4, $a0
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a0, $s3, $a0
 	bstrpick.d	$a0, $a0, 31, 0
-	ldx.bu	$a0, $s3, $a0
+	ldx.bu	$a0, $s2, $a0
 	ori	$a1, $zero, 32
 	bne	$a0, $a1, .LBB5_11
 	b	.LBB5_12

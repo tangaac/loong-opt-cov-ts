@@ -16,8 +16,7 @@ _ZNK13btSphereShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_ZNK
 	.type	_ZNK13btSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK13btSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK13btSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB1_2
+	blez	$a3, .LBB1_2
 # %bb.1:                                # %.lr.ph.preheader
 	slli.d	$a3, $a3, 4
 	move	$a0, $a2

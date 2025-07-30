@@ -2938,8 +2938,7 @@ _ZN11ALACEncoder17InitializeEncoderE22AudioFormatDescription: # @_ZN11ALACEncode
 # %bb.7:
 	beqz	$a1, .LBB12_12
 # %bb.8:                                # %.preheader24
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB12_11
+	blez	$fp, .LBB12_11
 # %bb.9:                                # %.preheader.lr.ph
 	move	$s1, $zero
 	lu12i.w	$a0, 1

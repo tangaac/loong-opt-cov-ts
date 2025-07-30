@@ -8,18 +8,17 @@ initbb:                                 # @initbb
 	pcalau12i	$a0, %pc_hi20(bbleft)
 	lu12i.w	$a1, 244
 	ori	$a1, $a1, 576
-	st.w	$a1, $a0, %pc_lo12(bbleft)
 	pcalau12i	$a2, %got_pc_hi20(numcells)
-	ld.d	$a4, $a2, %got_pc_lo12(numcells)
+	ld.d	$a3, $a2, %got_pc_lo12(numcells)
+	st.w	$a1, $a0, %pc_lo12(bbleft)
 	pcalau12i	$a2, %pc_hi20(bbbottom)
 	st.w	$a1, $a2, %pc_lo12(bbbottom)
+	ld.w	$a7, $a3, 0
 	pcalau12i	$a3, %pc_hi20(bbtop)
-	ld.w	$a7, $a4, 0
 	st.w	$zero, $a3, %pc_lo12(bbtop)
 	pcalau12i	$a4, %pc_hi20(bbright)
-	ori	$a5, $zero, 1
 	st.w	$zero, $a4, %pc_lo12(bbright)
-	blt	$a7, $a5, .LBB0_11
+	blez	$a7, .LBB0_11
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a5, %got_pc_hi20(cellarray)
 	ld.d	$a5, $a5, %got_pc_lo12(cellarray)
@@ -127,9 +126,8 @@ deltaBB:                                # @deltaBB
 	ld.d	$t1, $t1, %got_pc_lo12(numcells)
 	ld.w	$t4, $t1, 0
 	ori	$t1, $t7, 576
-	ori	$t6, $zero, 1
 	st.w	$t1, $t0, %pc_lo12(bbbl)
-	blt	$t4, $t6, .LBB1_8
+	blez	$t4, .LBB1_8
 # %bb.2:                                # %.lr.ph.preheader
 	bstrpick.d	$t1, $a0, 31, 0
 	addi.d	$t4, $t4, 1
@@ -177,11 +175,10 @@ deltaBB:                                # @deltaBB
 	pcalau12i	$t6, %got_pc_hi20(numcells)
 	ld.d	$t6, $t6, %got_pc_lo12(numcells)
 	ld.w	$fp, $t6, 0
-	ori	$t6, $zero, 1
 	st.w	$zero, $t3, %pc_lo12(bbbr)
-	blt	$fp, $t6, .LBB1_19
-# %bb.11:                               # %.lr.ph126.preheader
 	move	$t6, $zero
+	blez	$fp, .LBB1_19
+# %bb.11:                               # %.lr.ph126.preheader
 	bstrpick.d	$s0, $a0, 31, 0
 	addi.d	$fp, $fp, 1
 	bstrpick.d	$s1, $fp, 31, 0
@@ -194,7 +191,7 @@ deltaBB:                                # @deltaBB
 	addi.d	$fp, $fp, -1
 	addi.d	$s1, $s1, -1
 	addi.d	$s0, $s0, 8
-	beqz	$s1, .LBB1_20
+	beqz	$s1, .LBB1_19
 .LBB1_13:                               # %.lr.ph126
                                         # =>This Inner Loop Header: Depth=1
 	beqz	$fp, .LBB1_12
@@ -216,38 +213,35 @@ deltaBB:                                # @deltaBB
 	pcalau12i	$t8, %pc_hi20(bbbottom)
 	ld.w	$fp, $t8, %pc_lo12(bbbottom)
 	pcalau12i	$t8, %pc_hi20(bbbb)
-	beq	$t5, $fp, .LBB1_21
+	beq	$t5, $fp, .LBB1_20
 .LBB1_17:
 	st.w	$fp, $t8, %pc_lo12(bbbb)
 	pcalau12i	$t5, %pc_hi20(bbtop)
 	ld.w	$t7, $t5, %pc_lo12(bbtop)
 	pcalau12i	$t5, %pc_hi20(bbbt)
-	beq	$t4, $t7, .LBB1_28
+	beq	$t4, $t7, .LBB1_27
 .LBB1_18:
 	st.w	$t7, $t5, %pc_lo12(bbbt)
 	add.w	$t2, $a4, $a1
 	add.w	$a4, $a5, $a1
 	add.w	$a0, $a7, $a2
-	blt	$t2, $t1, .LBB1_36
-	b	.LBB1_37
-.LBB1_19:
-	move	$t6, $zero
-.LBB1_20:                               # %._crit_edge127
+	blt	$t2, $t1, .LBB1_34
+	b	.LBB1_35
+.LBB1_19:                               # %._crit_edge127
 	sub.d	$a3, $a3, $t8
 	add.w	$a3, $a3, $t6
 	pcalau12i	$t8, %pc_hi20(bbbottom)
 	ld.w	$fp, $t8, %pc_lo12(bbbottom)
 	pcalau12i	$t8, %pc_hi20(bbbb)
 	bne	$t5, $fp, .LBB1_17
-.LBB1_21:
+.LBB1_20:
 	pcalau12i	$fp, %got_pc_hi20(numcells)
 	ld.d	$fp, $fp, %got_pc_lo12(numcells)
 	ld.w	$s0, $fp, 0
 	ori	$fp, $t7, 576
-	ori	$s1, $zero, 1
 	st.w	$fp, $t8, %pc_lo12(bbbb)
-	blt	$s0, $s1, .LBB1_27
-# %bb.22:                               # %.lr.ph131.preheader
+	blez	$s0, .LBB1_26
+# %bb.21:                               # %.lr.ph131.preheader
 	bstrpick.d	$fp, $a0, 31, 0
 	addi.d	$s0, $s0, 1
 	bstrpick.d	$s2, $s0, 31, 0
@@ -255,17 +249,17 @@ deltaBB:                                # @deltaBB
 	addi.d	$s1, $t2, 8
 	addi.d	$s2, $s2, -1
 	ori	$fp, $t7, 576
-	b	.LBB1_24
+	b	.LBB1_23
 	.p2align	4, , 16
-.LBB1_23:                               #   in Loop: Header=BB1_24 Depth=1
+.LBB1_22:                               #   in Loop: Header=BB1_23 Depth=1
 	addi.d	$s0, $s0, -1
 	addi.d	$s2, $s2, -1
 	addi.d	$s1, $s1, 8
-	beqz	$s2, .LBB1_27
-.LBB1_24:                               # %.lr.ph131
+	beqz	$s2, .LBB1_26
+.LBB1_23:                               # %.lr.ph131
                                         # =>This Inner Loop Header: Depth=1
-	beqz	$s0, .LBB1_23
-# %bb.25:                               #   in Loop: Header=BB1_24 Depth=1
+	beqz	$s0, .LBB1_22
+# %bb.24:                               #   in Loop: Header=BB1_23 Depth=1
 	ld.d	$t7, $s1, 0
 	ld.w	$s3, $t7, 56
 	alsl.d	$s3, $s3, $t7, 3
@@ -273,44 +267,43 @@ deltaBB:                                # @deltaBB
 	ld.w	$t7, $t7, 16
 	ld.w	$s3, $s3, 64
 	add.w	$t7, $s3, $t7
-	bge	$t7, $fp, .LBB1_23
-# %bb.26:                               #   in Loop: Header=BB1_24 Depth=1
+	bge	$t7, $fp, .LBB1_22
+# %bb.25:                               #   in Loop: Header=BB1_23 Depth=1
 	st.w	$t7, $t8, %pc_lo12(bbbb)
 	move	$fp, $t7
-	b	.LBB1_23
-.LBB1_27:                               # %._crit_edge132
+	b	.LBB1_22
+.LBB1_26:                               # %._crit_edge132
 	add.d	$a3, $t5, $a3
 	sub.w	$a3, $a3, $fp
 	pcalau12i	$t5, %pc_hi20(bbtop)
 	ld.w	$t7, $t5, %pc_lo12(bbtop)
 	pcalau12i	$t5, %pc_hi20(bbbt)
 	bne	$t4, $t7, .LBB1_18
-.LBB1_28:
+.LBB1_27:
 	pcalau12i	$t7, %got_pc_hi20(numcells)
 	ld.d	$t7, $t7, %got_pc_lo12(numcells)
 	ld.w	$s0, $t7, 0
-	ori	$t7, $zero, 1
 	st.w	$zero, $t5, %pc_lo12(bbbt)
-	blt	$s0, $t7, .LBB1_34
-# %bb.29:                               # %.lr.ph136.preheader
 	move	$t7, $zero
+	blez	$s0, .LBB1_33
+# %bb.28:                               # %.lr.ph136.preheader
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s0, $s0, 1
 	bstrpick.d	$s0, $s0, 31, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$t2, $t2, 8
 	addi.d	$s0, $s0, -1
-	b	.LBB1_31
+	b	.LBB1_30
 	.p2align	4, , 16
-.LBB1_30:                               #   in Loop: Header=BB1_31 Depth=1
+.LBB1_29:                               #   in Loop: Header=BB1_30 Depth=1
 	addi.d	$a0, $a0, -1
 	addi.d	$s0, $s0, -1
 	addi.d	$t2, $t2, 8
-	beqz	$s0, .LBB1_35
-.LBB1_31:                               # %.lr.ph136
+	beqz	$s0, .LBB1_33
+.LBB1_30:                               # %.lr.ph136
                                         # =>This Inner Loop Header: Depth=1
-	beqz	$a0, .LBB1_30
-# %bb.32:                               #   in Loop: Header=BB1_31 Depth=1
+	beqz	$a0, .LBB1_29
+# %bb.31:                               #   in Loop: Header=BB1_30 Depth=1
 	ld.d	$s1, $t2, 0
 	ld.w	$s2, $s1, 56
 	alsl.d	$s2, $s2, $s1, 3
@@ -318,32 +311,30 @@ deltaBB:                                # @deltaBB
 	ld.w	$s1, $s1, 16
 	ld.w	$s2, $s2, 68
 	add.w	$s1, $s2, $s1
-	bge	$t7, $s1, .LBB1_30
-# %bb.33:                               #   in Loop: Header=BB1_31 Depth=1
+	bge	$t7, $s1, .LBB1_29
+# %bb.32:                               #   in Loop: Header=BB1_30 Depth=1
 	st.w	$s1, $t5, %pc_lo12(bbbt)
 	move	$t7, $s1
-	b	.LBB1_30
-.LBB1_34:
-	move	$t7, $zero
-.LBB1_35:                               # %._crit_edge137
+	b	.LBB1_29
+.LBB1_33:                               # %._crit_edge137
 	sub.d	$a0, $a3, $t4
 	add.w	$a3, $a0, $t7
 	add.w	$t2, $a4, $a1
 	add.w	$a4, $a5, $a1
 	add.w	$a0, $a7, $a2
-	bge	$t2, $t1, .LBB1_37
-.LBB1_36:
+	bge	$t2, $t1, .LBB1_35
+.LBB1_34:
 	st.w	$t2, $t0, %pc_lo12(bbbl)
-.LBB1_37:
+.LBB1_35:
 	add.w	$a1, $a6, $a2
-	blt	$t6, $a4, .LBB1_42
-# %bb.38:
-	blt	$a0, $fp, .LBB1_43
-.LBB1_39:
-	bge	$t7, $a1, .LBB1_41
-.LBB1_40:
+	blt	$t6, $a4, .LBB1_40
+# %bb.36:
+	blt	$a0, $fp, .LBB1_41
+.LBB1_37:
+	bge	$t7, $a1, .LBB1_39
+.LBB1_38:
 	st.w	$a1, $t5, %pc_lo12(bbbt)
-.LBB1_41:
+.LBB1_39:
 	move	$a0, $a3
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
@@ -352,13 +343,13 @@ deltaBB:                                # @deltaBB
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB1_42:
+.LBB1_40:
 	st.w	$a4, $t3, %pc_lo12(bbbr)
-	bge	$a0, $fp, .LBB1_39
-.LBB1_43:
+	bge	$a0, $fp, .LBB1_37
+.LBB1_41:
 	st.w	$a0, $t8, %pc_lo12(bbbb)
-	blt	$t7, $a1, .LBB1_40
-	b	.LBB1_41
+	blt	$t7, $a1, .LBB1_38
+	b	.LBB1_39
 .Lfunc_end1:
 	.size	deltaBB, .Lfunc_end1-deltaBB
                                         # -- End function

@@ -58,8 +58,6 @@ PSEUDO_CODE:                            # @PSEUDO_CODE
 	bltu	$a1, $a0, .LBB0_10
 # %bb.4:                                # %.lr.ph.preheader
 	addi.w	$s1, $a0, -10
-	ori	$s2, $zero, 0
-	lu32i.d	$s2, 1
 	.p2align	4, , 16
 .LBB0_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -69,8 +67,8 @@ PSEUDO_CODE:                            # @PSEUDO_CODE
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s1, $a0, 1
-	and	$a0, $s1, $s2
-	beqz	$a0, .LBB0_5
+	slli.d	$a0, $s1, 31
+	bgez	$a0, .LBB0_5
 # %bb.6:                                # %.loopexit
 	ld.bu	$a0, $sp, 19
 	ori	$a1, $zero, 87
@@ -292,11 +290,11 @@ SET_BITS_TO:                            # @SET_BITS_TO
 	pcaddu18i	$ra, %call36(ldexp)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a2, $fa0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB2_8
+	movfr2gr.s	$a1, $fa0
+	blez	$a1, .LBB2_8
 # %bb.3:                                # %.lr.ph.preheader
-	add.d	$a1, $s0, $s1
+	add.d	$a0, $s0, $s1
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB2_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -308,12 +306,12 @@ SET_BITS_TO:                            # @SET_BITS_TO
 	sub.d	$a4, $a5, $a4
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a1, 0
-	addi.w	$a4, $a2, 0
-	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a1, $a1, -1
+	st.b	$a4, $a0, 0
+	addi.w	$a4, $a1, 0
+	bstrpick.d	$a1, $a1, 31, 1
+	addi.d	$a0, $a0, -1
 	move	$fp, $a3
-	bltu	$a0, $a4, .LBB2_4
+	bltu	$a2, $a4, .LBB2_4
 # %bb.5:                                # %._crit_edge
 	beqz	$a3, .LBB2_9
 .LBB2_6:
@@ -367,8 +365,7 @@ PRT_CODE:                               # @PRT_CODE
 	move	$fp, $a3
 	move	$s2, $a2
 	move	$s0, $a1
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB3_5
+	blez	$a1, .LBB3_5
 # %bb.3:                                # %.preheader.preheader
 	addi.d	$s4, $a0, 3
 	addi.d	$s5, $sp, 0
@@ -507,10 +504,10 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB4_8
+	blez	$a2, .LBB4_8
 # %bb.1:                                # %.lr.ph.i.preheader
-	addi.d	$a1, $sp, 23
+	addi.d	$a0, $sp, 23
+	ori	$a1, $zero, 1
 	.p2align	4, , 16
 .LBB4_2:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -522,12 +519,12 @@ REAL_CODE:                              # @REAL_CODE
 	sub.d	$a4, $a5, $a4
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a1, 0
+	st.b	$a4, $a0, 0
 	addi.w	$a4, $a2, 0
 	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, -1
 	move	$s6, $a3
-	bltu	$a0, $a4, .LBB4_2
+	bltu	$a1, $a4, .LBB4_2
 # %bb.3:                                # %._crit_edge.i
 	beqz	$a3, .LBB4_5
 .LBB4_4:                                # %.sink.split.i
@@ -668,11 +665,11 @@ REAL_CODE:                              # @REAL_CODE
 	pcaddu18i	$ra, %call36(ldexp)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a2, $fa0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB4_20
+	movfr2gr.s	$a1, $fa0
+	blez	$a1, .LBB4_20
 # %bb.13:                               # %.lr.ph.i106.preheader
-	addi.d	$a1, $sp, 27
+	addi.d	$a0, $sp, 27
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB4_14:                               # %.lr.ph.i106
                                         # =>This Inner Loop Header: Depth=1
@@ -683,12 +680,12 @@ REAL_CODE:                              # @REAL_CODE
 	sub.d	$a4, $a5, $a4
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a1, 0
-	addi.w	$a4, $a2, 0
-	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a1, $a1, -1
+	st.b	$a4, $a0, 0
+	addi.w	$a4, $a1, 0
+	bstrpick.d	$a1, $a1, 31, 1
+	addi.d	$a0, $a0, -1
 	move	$s6, $a3
-	bltu	$a0, $a4, .LBB4_14
+	bltu	$a2, $a4, .LBB4_14
 # %bb.15:                               # %._crit_edge.i100
 	addi.w	$a0, $a3, 0
 	bnez	$a0, .LBB4_21
@@ -776,11 +773,11 @@ REAL_CODE:                              # @REAL_CODE
 	pcaddu18i	$ra, %call36(ldexp)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a2, $fa0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB4_43
+	movfr2gr.s	$a1, $fa0
+	blez	$a1, .LBB4_43
 # %bb.31:                               # %.lr.ph.i121.preheader
-	addi.d	$a1, $sp, 27
+	addi.d	$a0, $sp, 27
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB4_32:                               # %.lr.ph.i121
                                         # =>This Inner Loop Header: Depth=1
@@ -791,12 +788,12 @@ REAL_CODE:                              # @REAL_CODE
 	sub.d	$a4, $a5, $a4
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a1, 0
-	addi.w	$a4, $a2, 0
-	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a1, $a1, -1
+	st.b	$a4, $a0, 0
+	addi.w	$a4, $a1, 0
+	bstrpick.d	$a1, $a1, 31, 1
+	addi.d	$a0, $a0, -1
 	move	$s6, $a3
-	bltu	$a0, $a4, .LBB4_32
+	bltu	$a2, $a4, .LBB4_32
 # %bb.33:                               # %._crit_edge.i115
 	addi.w	$a0, $a3, 0
 	beqz	$a0, .LBB4_35
@@ -827,9 +824,8 @@ REAL_CODE:                              # @REAL_CODE
 	ld.d	$a1, $sp, 56
 	move	$s6, $a0
 	addi.d	$a0, $a1, 1
-	addi.w	$a1, $zero, -1
 	st.d	$a0, $sp, 56
-	bge	$a1, $s6, .LBB4_131
+	bltz	$s6, .LBB4_131
 # %bb.39:
 	ld.b	$a0, $a0, 0
 	ori	$a1, $zero, 10
@@ -1063,12 +1059,12 @@ REAL_CODE:                              # @REAL_CODE
 	pcaddu18i	$ra, %call36(ldexp)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a1, $fa0
-	ori	$a0, $zero, 1
+	movfr2gr.s	$a0, $fa0
 	move	$a3, $s3
-	blt	$a1, $a0, .LBB4_54
+	blez	$a0, .LBB4_54
 # %bb.52:                               # %.lr.ph.i156.preheader
-	addi.d	$a2, $sp, 27
+	addi.d	$a1, $sp, 27
+	ori	$a2, $zero, 1
 	move	$a4, $s3
 	.p2align	4, , 16
 .LBB4_53:                               # %.lr.ph.i156
@@ -1081,12 +1077,12 @@ REAL_CODE:                              # @REAL_CODE
 	sub.d	$a4, $a4, $a5
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a2, 0
-	addi.w	$a5, $a1, 0
-	bstrpick.d	$a1, $a1, 31, 1
-	addi.d	$a2, $a2, -1
+	st.b	$a4, $a1, 0
+	addi.w	$a5, $a0, 0
+	bstrpick.d	$a0, $a0, 31, 1
+	addi.d	$a1, $a1, -1
 	move	$a4, $a3
-	bltu	$a0, $a5, .LBB4_53
+	bltu	$a2, $a5, .LBB4_53
 .LBB4_54:                               # %._crit_edge.i150
 	beqz	$a3, .LBB4_56
 # %bb.55:                               # %.sink.split.i153
@@ -1112,12 +1108,12 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_79
+	blez	$a0, .LBB4_79
 # %bb.60:                               # %.lr.ph.i221.peel
-	ori	$a2, $zero, 49
-	st.b	$a2, $sp, 22
-	beq	$a0, $a1, .LBB4_80
+	ori	$a1, $zero, 49
+	ori	$a2, $zero, 1
+	st.b	$a1, $sp, 22
+	beq	$a0, $a2, .LBB4_80
 # %bb.61:                               # %.lr.ph.i221.preheader
 	addi.d	$a1, $sp, 21
 	ori	$a2, $zero, 48
@@ -1139,7 +1135,7 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	blt	$a0, $s2, .LBB4_67
+	blez	$a0, .LBB4_67
 # %bb.64:                               # %.lr.ph.i171.preheader
 	ori	$a2, $zero, 3
 	addi.d	$a1, $sp, 23
@@ -1444,12 +1440,12 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_79
+	blez	$a0, .LBB4_79
 # %bb.71:                               # %.lr.ph.i236.peel
-	ori	$a2, $zero, 49
-	st.b	$a2, $sp, 23
-	beq	$a0, $a1, .LBB4_80
+	ori	$a1, $zero, 49
+	ori	$a2, $zero, 1
+	st.b	$a1, $sp, 23
+	beq	$a0, $a2, .LBB4_80
 # %bb.72:                               # %.lr.ph.i236.preheader
 	addi.d	$a1, $sp, 22
 	ori	$a2, $zero, 48
@@ -1470,7 +1466,7 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	blt	$a0, $s5, .LBB4_78
+	blez	$a0, .LBB4_78
 # %bb.75:                               # %.lr.ph.i251.preheader
 	ori	$a2, $zero, 3
 	addi.d	$a1, $sp, 23
@@ -1544,10 +1540,10 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a1, $fa0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_90
+	blez	$a1, .LBB4_90
 # %bb.86:                               # %.lr.ph.i266.peel
 	ori	$a0, $zero, 49
+	ori	$a2, $zero, 1
 	st.b	$a0, $sp, 24
 	move	$a0, $s4
 	beq	$a1, $a2, .LBB4_91
@@ -1821,11 +1817,11 @@ REAL_CODE:                              # @REAL_CODE
 	pcaddu18i	$ra, %call36(ldexp)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a2, $fa0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB4_105
+	movfr2gr.s	$a1, $fa0
+	blez	$a1, .LBB4_105
 # %bb.95:                               # %.lr.ph.i281.preheader
-	addi.d	$a1, $sp, 47
+	addi.d	$a0, $sp, 47
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB4_96:                               # %.lr.ph.i281
                                         # =>This Inner Loop Header: Depth=1
@@ -1837,12 +1833,12 @@ REAL_CODE:                              # @REAL_CODE
 	sub.d	$a4, $a5, $a4
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a1, 0
-	addi.w	$a4, $a2, 0
-	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a1, $a1, -1
+	st.b	$a4, $a0, 0
+	addi.w	$a4, $a1, 0
+	bstrpick.d	$a1, $a1, 31, 1
+	addi.d	$a0, $a0, -1
 	move	$s3, $a3
-	bltu	$a0, $a4, .LBB4_96
+	bltu	$a2, $a4, .LBB4_96
 # %bb.97:                               # %._crit_edge.i275
 	beqz	$a3, .LBB4_99
 .LBB4_98:                               # %.sink.split.i278
@@ -2179,11 +2175,11 @@ REAL_CODE:                              # @REAL_CODE
 	pcaddu18i	$ra, %call36(ldexp)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a2, $fa0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB4_120
+	movfr2gr.s	$a1, $fa0
+	blez	$a1, .LBB4_120
 # %bb.111:                              # %.lr.ph.i311.preheader
-	addi.d	$a1, $sp, 39
+	addi.d	$a0, $sp, 39
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB4_112:                              # %.lr.ph.i311
                                         # =>This Inner Loop Header: Depth=1
@@ -2195,12 +2191,12 @@ REAL_CODE:                              # @REAL_CODE
 	sub.d	$a4, $a5, $a4
 	srli.d	$a4, $a4, 24
 	addi.d	$a4, $a4, 48
-	st.b	$a4, $a1, 0
-	addi.w	$a4, $a2, 0
-	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a1, $a1, -1
+	st.b	$a4, $a0, 0
+	addi.w	$a4, $a1, 0
+	bstrpick.d	$a1, $a1, 31, 1
+	addi.d	$a0, $a0, -1
 	move	$s3, $a3
-	bltu	$a0, $a4, .LBB4_112
+	bltu	$a2, $a4, .LBB4_112
 # %bb.113:                              # %._crit_edge.i305
 	beqz	$a3, .LBB4_115
 .LBB4_114:                              # %.sink.split.i308
@@ -2219,12 +2215,12 @@ REAL_CODE:                              # @REAL_CODE
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_126
+	blez	$a0, .LBB4_126
 # %bb.117:                              # %.lr.ph.i326.peel
-	ori	$a2, $zero, 49
-	st.b	$a2, $sp, 26
-	beq	$a0, $a1, .LBB4_127
+	ori	$a1, $zero, 49
+	ori	$a2, $zero, 1
+	st.b	$a1, $sp, 26
+	beq	$a0, $a2, .LBB4_127
 # %bb.118:                              # %.lr.ph.i326.preheader
 	addi.d	$a1, $sp, 25
 	ori	$a2, $zero, 48
@@ -2243,8 +2239,7 @@ REAL_CODE:                              # @REAL_CODE
 	bnez	$a3, .LBB4_114
 	b	.LBB4_115
 .LBB4_121:
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s3, .LBB4_110
+	bgez	$s3, .LBB4_110
 # %bb.122:
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 2047
@@ -2262,8 +2257,7 @@ REAL_CODE:                              # @REAL_CODE
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(GET_REG)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB4_132
+	bltz	$a0, .LBB4_132
 # %bb.125:
 	move	$a2, $a0
 	b	.LBB4_135

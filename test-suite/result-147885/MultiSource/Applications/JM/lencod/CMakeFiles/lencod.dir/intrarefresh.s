@@ -49,8 +49,7 @@ RandomIntraInit:                        # @RandomIntraInit
 	jirl	$ra, $ra, 0
 .LBB0_5:
 	ld.w	$a1, $s0, %pc_lo12(NumberOfMBs)
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_10
+	blez	$a1, .LBB0_10
 # %bb.6:                                # %.preheader.preheader
 	ld.d	$a0, $s1, %pc_lo12(RefreshPattern)
 	slli.d	$a2, $a1, 2
@@ -98,8 +97,7 @@ RandomIntra:                            # @RandomIntra
 # %bb.0:
 	pcalau12i	$a1, %pc_hi20(NumberIntraPerPicture)
 	ld.w	$a1, $a1, %pc_lo12(NumberIntraPerPicture)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_4
+	blez	$a1, .LBB1_4
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a2, %pc_hi20(IntraMBs)
 	ld.d	$a2, $a2, %pc_lo12(IntraMBs)
@@ -138,9 +136,8 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 	pcalau12i	$a0, %pc_hi20(WalkAround)
 	ld.w	$a1, $a0, %pc_lo12(WalkAround)
 	add.w	$a6, $a1, $a2
-	ori	$a1, $zero, 1
 	st.w	$a6, $a0, %pc_lo12(WalkAround)
-	blt	$a2, $a1, .LBB2_8
+	blez	$a2, .LBB2_8
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(RefreshPattern)
 	ld.d	$a0, $a0, %pc_lo12(RefreshPattern)
@@ -224,8 +221,7 @@ RandomIntraUninit:                      # @RandomIntraUninit
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(NumberIntraPerPicture)
 	ld.w	$a0, $a0, %pc_lo12(NumberIntraPerPicture)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_2
+	blez	$a0, .LBB3_2
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill

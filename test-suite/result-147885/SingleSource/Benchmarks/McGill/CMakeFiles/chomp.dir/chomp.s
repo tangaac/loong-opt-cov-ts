@@ -340,7 +340,7 @@ get_value:                              # @get_value
 	beq	$t0, $t1, .LBB7_2
 # %bb.4:                                # %equal_data.exit
                                         #   in Loop: Header=BB7_1 Depth=1
-	blt	$a6, $a3, .LBB7_6
+	blez	$a6, .LBB7_6
 # %bb.5:                                #   in Loop: Header=BB7_1 Depth=1
 	addi.d	$a4, $a4, 24
 	b	.LBB7_1
@@ -1103,23 +1103,23 @@ make_list:                              # @make_list
 .LBB14_30:                              # %melt_data.exit.preheader
                                         #   in Loop: Header=BB14_8 Depth=2
 	addi.d	$s4, $fp, 1
-	addi.d	$a0, $s7, -4
-	move	$a1, $s4
+	addi.d	$a1, $s7, -4
+	move	$a0, $s4
 	.p2align	4, , 16
 .LBB14_31:                              # %melt_data.exit
                                         #   Parent Loop BB14_4 Depth=1
                                         #     Parent Loop BB14_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	beq	$a1, $s2, .LBB14_6
+	beq	$a0, $s2, .LBB14_6
 # %bb.32:                               #   in Loop: Header=BB14_31 Depth=3
-	ldx.w	$a2, $s3, $a0
-	ldx.w	$a3, $s1, $a0
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, -4
+	ldx.w	$a2, $s3, $a1
+	ldx.w	$a3, $s1, $a1
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, -4
 	beq	$a2, $a3, .LBB14_31
 # %bb.33:                               # %equal_data.exit
                                         #   in Loop: Header=BB14_8 Depth=2
-	blt	$a1, $s2, .LBB14_6
+	blez	$a0, .LBB14_6
 # %bb.34:                               # %.lr.ph.preheader.i48
                                         #   in Loop: Header=BB14_8 Depth=2
 	ori	$a0, $zero, 16
@@ -1184,7 +1184,7 @@ make_list:                              # @make_list
 	beq	$a5, $a6, .LBB14_37
 # %bb.39:                               # %equal_data.exit.i
                                         #   in Loop: Header=BB14_36 Depth=3
-	blt	$a3, $s2, .LBB14_41
+	blez	$a3, .LBB14_41
 # %bb.40:                               #   in Loop: Header=BB14_36 Depth=3
 	addi.d	$a1, $a1, 24
 	b	.LBB14_36
@@ -1906,7 +1906,7 @@ get_good_move:                          # @get_good_move
 	beq	$t3, $t4, .LBB17_6
 # %bb.8:                                # %equal_data.exit.i
                                         #   in Loop: Header=BB17_5 Depth=2
-	blt	$t1, $a5, .LBB17_2
+	blez	$t1, .LBB17_2
 # %bb.9:                                #   in Loop: Header=BB17_5 Depth=2
 	addi.d	$a7, $a7, 24
 	b	.LBB17_5
@@ -2010,7 +2010,7 @@ get_winning_move:                       # @get_winning_move
 	beq	$t3, $t4, .LBB18_8
 # %bb.10:                               # %equal_data.exit.i.i
                                         #   in Loop: Header=BB18_7 Depth=2
-	blt	$t1, $a5, .LBB18_4
+	blez	$t1, .LBB18_4
 # %bb.11:                               #   in Loop: Header=BB18_7 Depth=2
 	addi.d	$a7, $a7, 24
 	b	.LBB18_7
@@ -2076,7 +2076,7 @@ where:                                  # @where
 	beq	$t0, $t1, .LBB19_2
 # %bb.4:                                # %equal_data.exit
                                         #   in Loop: Header=BB19_1 Depth=1
-	blt	$a6, $a4, .LBB19_6
+	blez	$a6, .LBB19_6
 # %bb.5:                                #   in Loop: Header=BB19_1 Depth=1
 	ld.d	$a1, $a1, 24
 	b	.LBB19_1
@@ -2144,23 +2144,23 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s2, %pc_hi20(ncol)
+	pcalau12i	$s0, %pc_hi20(ncol)
 	ori	$a0, $zero, 7
-	st.w	$a0, $s2, %pc_lo12(ncol)
+	st.w	$a0, $s0, %pc_lo12(ncol)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s0, %pc_hi20(nrow)
-	ori	$fp, $zero, 8
-	st.w	$fp, $s0, %pc_lo12(nrow)
+	pcalau12i	$fp, %pc_hi20(nrow)
+	ori	$s2, $zero, 8
+	st.w	$s2, $fp, %pc_lo12(nrow)
 	ori	$a0, $zero, 1
 	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(make_play)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	ld.wu	$s5, $s2, %pc_lo12(ncol)
-	ld.w	$s2, $s0, %pc_lo12(nrow)
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	ld.wu	$s5, $s0, %pc_lo12(ncol)
+	ld.w	$fp, $fp, %pc_lo12(nrow)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	addi.w	$s3, $s5, 0
 	slli.d	$a0, $s3, 2
@@ -2169,7 +2169,7 @@ main:                                   # @main
 	move	$s0, $a0
 	beqz	$s3, .LBB21_3
 # %bb.1:                                # %.lr.ph.i
-	bgeu	$s5, $fp, .LBB21_4
+	bgeu	$s5, $s2, .LBB21_4
 # %bb.2:
 	move	$a0, $zero
 	b	.LBB21_7
@@ -2179,7 +2179,7 @@ main:                                   # @main
 .LBB21_4:                               # %vector.ph
 	bstrpick.d	$a0, $s5, 31, 3
 	slli.d	$a0, $a0, 3
-	vreplgr2vr.w	$vr0, $s2
+	vreplgr2vr.w	$vr0, $fp
 	addi.d	$a1, $s0, 16
 	move	$a2, $a0
 	.p2align	4, , 16
@@ -2198,7 +2198,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB21_8:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$s2, $a0, 0
+	st.w	$fp, $a0, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB21_8
@@ -2230,23 +2230,23 @@ main:                                   # @main
 .LBB21_11:                              #   Parent Loop BB21_10 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB21_12 Depth 3
-	ld.d	$a4, $a2, 8
+	ld.d	$a5, $a2, 8
 	move	$a6, $a3
-	move	$a5, $a1
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB21_12:                              #   Parent Loop BB21_10 Depth=1
                                         #     Parent Loop BB21_11 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	beq	$a5, $s6, .LBB21_16
+	beq	$a4, $s6, .LBB21_16
 # %bb.13:                               #   in Loop: Header=BB21_12 Depth=3
-	ldx.w	$a7, $a4, $a6
+	ldx.w	$a7, $a5, $a6
 	ldx.w	$t0, $s0, $a6
-	addi.d	$a5, $a5, -1
+	addi.d	$a4, $a4, -1
 	addi.d	$a6, $a6, -4
 	beq	$a7, $t0, .LBB21_12
 # %bb.14:                               # %equal_data.exit.i
                                         #   in Loop: Header=BB21_11 Depth=2
-	blt	$a5, $s6, .LBB21_16
+	blez	$a4, .LBB21_16
 # %bb.15:                               #   in Loop: Header=BB21_11 Depth=2
 	ld.d	$a2, $a2, 24
 	b	.LBB21_11
@@ -2304,7 +2304,7 @@ main:                                   # @main
 	beq	$t0, $t1, .LBB21_22
 # %bb.24:                               # %equal_data.exit.i.i
                                         #   in Loop: Header=BB21_21 Depth=3
-	blt	$a6, $s6, .LBB21_18
+	blez	$a6, .LBB21_18
 # %bb.25:                               #   in Loop: Header=BB21_21 Depth=3
 	addi.d	$a4, $a4, 24
 	b	.LBB21_21

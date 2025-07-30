@@ -21,8 +21,7 @@ bar:                                    # @bar
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_4
+	blez	$a1, .LBB1_4
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill

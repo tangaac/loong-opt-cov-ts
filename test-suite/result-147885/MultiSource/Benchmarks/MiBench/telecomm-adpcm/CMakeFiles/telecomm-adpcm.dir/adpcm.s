@@ -5,11 +5,10 @@
 	.type	adpcm_coder,@function
 adpcm_coder:                            # @adpcm_coder
 # %bb.0:
-	ld.b	$t0, $a3, 2
+	ld.b	$a7, $a3, 2
 	ld.hu	$a4, $a3, 0
-	ori	$a6, $zero, 1
-	andi	$a5, $t0, 255
-	blt	$a2, $a6, .LBB0_9
+	andi	$a5, $a7, 255
+	blez	$a2, .LBB0_9
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -64
 	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
@@ -19,25 +18,26 @@ adpcm_coder:                            # @adpcm_coder
 	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
-	move	$a7, $zero
+	move	$a6, $zero
 	ext.w.b	$a5, $a5
 	ext.w.h	$a4, $a4
-	slli.d	$t1, $t0, 2
-	pcalau12i	$t0, %pc_hi20(stepsizeTable)
-	addi.d	$t0, $t0, %pc_lo12(stepsizeTable)
-	ldx.w	$t7, $t0, $t1
-	addi.d	$t1, $a2, 1
-	lu12i.w	$t2, -8
-	lu12i.w	$t3, 7
-	ori	$t3, $t3, 4095
-	pcalau12i	$t4, %pc_hi20(indexTable)
-	addi.d	$t5, $t4, %pc_lo12(indexTable)
-	ori	$t6, $zero, 88
-                                        # implicit-def: $r16
+	slli.d	$t0, $a7, 2
+	pcalau12i	$a7, %pc_hi20(stepsizeTable)
+	addi.d	$a7, $a7, %pc_lo12(stepsizeTable)
+	ldx.w	$t7, $a7, $t0
+	addi.d	$t0, $a2, 1
+	lu12i.w	$t1, -8
+	lu12i.w	$t2, 7
+	ori	$t2, $t2, 4095
+	pcalau12i	$t3, %pc_hi20(indexTable)
+	addi.d	$t4, $t3, %pc_lo12(indexTable)
+	ori	$t5, $zero, 88
+	ori	$t6, $zero, 1
+                                        # implicit-def: $r15
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
-	or	$s4, $s4, $t4
+	or	$s4, $s4, $t3
 	addi.d	$s5, $a1, 1
 	st.b	$s4, $a1, 0
 	move	$a1, $s5
@@ -54,18 +54,18 @@ adpcm_coder:                            # @adpcm_coder
 	maskeqz	$t8, $fp, $t8
 	or	$t7, $t8, $t7
 	add.w	$a4, $t7, $a4
-	slt	$t7, $t2, $a4
+	slt	$t7, $t1, $a4
+	maskeqz	$a4, $a4, $t7
+	masknez	$t7, $t1, $t7
+	or	$a4, $a4, $t7
+	slt	$t7, $a4, $t2
 	maskeqz	$a4, $a4, $t7
 	masknez	$t7, $t2, $t7
 	or	$a4, $a4, $t7
-	slt	$t7, $a4, $t3
-	maskeqz	$a4, $a4, $t7
-	masknez	$t7, $t3, $t7
-	or	$a4, $a4, $t7
-	addi.w	$t1, $t1, -1
-	xori	$a7, $a7, 1
+	addi.w	$t0, $t0, -1
+	xori	$a6, $a6, 1
 	move	$t7, $s0
-	bge	$a6, $t1, .LBB0_6
+	bge	$t6, $t0, .LBB0_6
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$t8, $a0, 0
@@ -94,27 +94,27 @@ adpcm_coder:                            # @adpcm_coder
 	bstrins.d	$s5, $s0, 3, 3
 	or	$s4, $s5, $s3
 	slli.d	$s0, $s4, 2
-	ldx.w	$s0, $t5, $s0
+	ldx.w	$s0, $t4, $s0
 	add.w	$a5, $s0, $a5
 	srai.d	$s0, $a5, 63
 	andn	$a5, $a5, $s0
 	slti	$s0, $a5, 88
 	maskeqz	$a5, $a5, $s0
-	masknez	$s0, $t6, $s0
+	masknez	$s0, $t5, $s0
 	or	$a5, $a5, $s0
 	slli.d	$s0, $a5, 2
-	ldx.w	$s0, $t0, $s0
-	andi	$s5, $a7, 1
+	ldx.w	$s0, $a7, $s0
+	andi	$s5, $a6, 1
 	bnez	$s5, .LBB0_2
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
-	slli.d	$t4, $s4, 4
-	andi	$t4, $t4, 240
+	slli.d	$t3, $s4, 4
+	andi	$t3, $t3, 240
 	b	.LBB0_3
 .LBB0_6:                                # %._crit_edge
 	andi	$a0, $a2, 1
 	beqz	$a0, .LBB0_8
 # %bb.7:
-	st.b	$t4, $a1, 0
+	st.b	$t3, $a1, 0
 .LBB0_8:
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
@@ -136,11 +136,10 @@ adpcm_coder:                            # @adpcm_coder
 	.type	adpcm_decoder,@function
 adpcm_decoder:                          # @adpcm_decoder
 # %bb.0:
-	ld.b	$a7, $a3, 2
+	ld.b	$a6, $a3, 2
 	ld.hu	$a4, $a3, 0
-	ori	$a6, $zero, 1
-	andi	$a5, $a7, 255
-	blt	$a2, $a6, .LBB1_7
+	andi	$a5, $a6, 255
+	blez	$a2, .LBB1_7
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -32
 	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
@@ -148,11 +147,12 @@ adpcm_decoder:                          # @adpcm_decoder
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	ext.w.b	$a5, $a5
 	ext.w.h	$a4, $a4
-	slli.d	$t0, $a7, 2
-	pcalau12i	$a7, %pc_hi20(stepsizeTable)
-	addi.d	$a7, $a7, %pc_lo12(stepsizeTable)
-	ldx.w	$t5, $a7, $t0
+	slli.d	$a7, $a6, 2
+	pcalau12i	$a6, %pc_hi20(stepsizeTable)
+	addi.d	$a6, $a6, %pc_lo12(stepsizeTable)
+	ldx.w	$t5, $a6, $a7
 	addi.d	$a2, $a2, 1
+	ori	$a7, $zero, 1
 	pcalau12i	$t0, %pc_hi20(indexTable)
 	addi.d	$t0, $t0, %pc_lo12(indexTable)
 	ori	$t1, $zero, 88
@@ -209,13 +209,13 @@ adpcm_decoder:                          # @adpcm_decoder
 	masknez	$t5, $t3, $t5
 	or	$a4, $a4, $t5
 	slli.d	$t5, $a5, 2
-	ldx.w	$t5, $a7, $t5
+	ldx.w	$t5, $a6, $t5
 	st.h	$a4, $a1, 0
 	addi.d	$a1, $a1, 2
 	addi.w	$a2, $a2, -1
 	xori	$t4, $t4, 1
 	move	$t7, $t6
-	bge	$a6, $a2, .LBB1_6
+	bge	$a7, $a2, .LBB1_6
 .LBB1_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	andi	$t6, $t4, 1

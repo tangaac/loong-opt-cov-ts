@@ -27,8 +27,7 @@ SOR_num_flops:                          # @SOR_num_flops
 	.type	SOR_execute,@function
 SOR_execute:                            # @SOR_execute
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB1_9
+	blez	$a3, .LBB1_9
 # %bb.1:
 	ori	$a4, $zero, 3
 	blt	$a0, $a4, .LBB1_9

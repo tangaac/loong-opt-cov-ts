@@ -251,7 +251,7 @@ st_EntryCreate:                         # @st_EntryCreate
 # %bb.27:                               #   in Loop: Header=BB1_25 Depth=2
 	move	$s8, $s0
 	ld.w	$a0, $s6, 0
-	bge	$a0, $s3, .LBB1_30
+	bgtz	$a0, .LBB1_30
 	b	.LBB1_33
 	.p2align	4, , 16
 .LBB1_28:                               #   in Loop: Header=BB1_25 Depth=2
@@ -260,7 +260,7 @@ st_EntryCreate:                         # @st_EntryCreate
 	beqz	$a0, .LBB1_35
 # %bb.29:                               #   in Loop: Header=BB1_25 Depth=2
 	ld.w	$a0, $s6, 0
-	blt	$a0, $s3, .LBB1_33
+	blez	$a0, .LBB1_33
 .LBB1_30:                               # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB1_25 Depth=2
 	addi.d	$a0, $a0, 1
@@ -306,7 +306,7 @@ st_EntryCreate:                         # @st_EntryCreate
 	masknez	$a0, $s0, $a0
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $s6, 0
-	bge	$a0, $s3, .LBB1_30
+	bgtz	$a0, .LBB1_30
 	b	.LBB1_33
 	.p2align	4, , 16
 .LBB1_36:                               # %st_FirstVariant.exit
@@ -671,7 +671,7 @@ st_EntryDelete:                         # @st_EntryDelete
 	bnez	$s2, .LBB4_18
 .LBB4_5:                                #   in Loop: Header=BB4_3 Depth=1
 	ld.w	$a0, $s5, 0
-	blt	$a0, $fp, .LBB4_9
+	blez	$a0, .LBB4_9
 # %bb.6:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB4_3 Depth=1
 	addi.d	$a0, $a0, 1
@@ -871,8 +871,8 @@ st_EntryDeleteHelp:                     # @st_EntryDeleteHelp
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a2, $s1, 8
 	st.d	$a2, $sp, 0                     # 8-byte Folded Spill
-	ori	$s1, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$s1, $zero, 1
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB5_7
 	.p2align	4, , 16
@@ -910,7 +910,7 @@ st_EntryDeleteHelp:                     # @st_EntryDeleteHelp
 	bnez	$a0, .LBB5_17
 .LBB5_9:                                #   in Loop: Header=BB5_7 Depth=1
 	ld.w	$a0, $s6, 0
-	blt	$a0, $s1, .LBB5_13
+	blez	$a0, .LBB5_13
 # %bb.10:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB5_7 Depth=1
 	addi.d	$a0, $a0, 1
@@ -1094,8 +1094,8 @@ st_GetUnifier:                          # @st_GetUnifier
 	ld.d	$a0, $a0, %got_pc_lo12(stack_STACK)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.w	$zero, $s2, 0
-	ori	$s7, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB6_1:                                # %cont_BackTrackAndStart.exit.i
@@ -1112,7 +1112,7 @@ st_GetUnifier:                          # @st_GetUnifier
 	ldx.w	$a0, $s6, $a0
 	st.w	$a1, $s5, 0
 	st.w	$a0, $s2, 0
-	blt	$a0, $s7, .LBB6_5
+	blez	$a0, .LBB6_5
 # %bb.3:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB6_1 Depth=1
 	addi.d	$a1, $a0, 1
@@ -1155,7 +1155,7 @@ st_GetUnifier:                          # @st_GetUnifier
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s2, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s7, .LBB6_19
+	bgtz	$a0, .LBB6_19
 	b	.LBB6_1
 	.p2align	4, , 16
 .LBB6_9:                                #   in Loop: Header=BB6_11 Depth=2
@@ -1222,7 +1222,7 @@ st_GetUnifier:                          # @st_GetUnifier
                                         #   in Loop: Header=BB6_1 Depth=1
 	ld.w	$a0, $s2, 0
 	ld.d	$s0, $s0, 0
-	blt	$a0, $s7, .LBB6_1
+	blez	$a0, .LBB6_1
 .LBB6_19:                               # %.lr.ph.i23.i.preheader
                                         #   in Loop: Header=BB6_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -1248,7 +1248,7 @@ st_GetUnifier:                          # @st_GetUnifier
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s2, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s7, .LBB6_19
+	bgtz	$a0, .LBB6_19
 	b	.LBB6_1
 .LBB6_22:                               # %st_TraverseTreeUnifier.exit
 	ld.d	$a1, $s4, 0
@@ -1360,8 +1360,8 @@ st_GetGen:                              # @st_GetGen
 	ld.d	$a0, $a0, %got_pc_lo12(stack_STACK)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.w	$zero, $s4, 0
-	ori	$s7, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB7_1:                                # %cont_BackTrackAndStart.exit.i
@@ -1378,7 +1378,7 @@ st_GetGen:                              # @st_GetGen
 	ldx.w	$a0, $s6, $a0
 	st.w	$a1, $s5, 0
 	st.w	$a0, $s4, 0
-	blt	$a0, $s7, .LBB7_5
+	blez	$a0, .LBB7_5
 # %bb.3:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB7_1 Depth=1
 	addi.d	$a1, $a0, 1
@@ -1421,7 +1421,7 @@ st_GetGen:                              # @st_GetGen
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s7, .LBB7_19
+	bgtz	$a0, .LBB7_19
 	b	.LBB7_1
 	.p2align	4, , 16
 .LBB7_9:                                #   in Loop: Header=BB7_11 Depth=2
@@ -1488,7 +1488,7 @@ st_GetGen:                              # @st_GetGen
                                         #   in Loop: Header=BB7_1 Depth=1
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	blt	$a0, $s7, .LBB7_1
+	blez	$a0, .LBB7_1
 .LBB7_19:                               # %.lr.ph.i23.i.preheader
                                         #   in Loop: Header=BB7_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -1514,7 +1514,7 @@ st_GetGen:                              # @st_GetGen
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s7, .LBB7_19
+	bgtz	$a0, .LBB7_19
 	b	.LBB7_1
 .LBB7_22:                               # %st_TraverseTreeGen.exit
 	ld.d	$a1, $s3, 0
@@ -1632,8 +1632,8 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
 	ld.d	$a0, $a0, %got_pc_lo12(stack_STACK)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.w	$zero, $s4, 0
-	ori	$s8, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$s8, $zero, 1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB8_1:                                # %cont_BackTrackAndStart.exit.i
@@ -1650,7 +1650,7 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
 	ldx.w	$a0, $s7, $a0
 	st.w	$a1, $s5, 0
 	st.w	$a0, $s4, 0
-	blt	$a0, $s8, .LBB8_5
+	blez	$a0, .LBB8_5
 # %bb.3:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB8_1 Depth=1
 	addi.d	$a1, $a0, 1
@@ -1731,7 +1731,7 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s8, .LBB8_20
+	bgtz	$a0, .LBB8_20
 	b	.LBB8_1
 .LBB8_15:                               #   in Loop: Header=BB8_1 Depth=1
 	pcaddu18i	$ra, %call36(list_Copy)
@@ -1758,7 +1758,7 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
                                         #   in Loop: Header=BB8_1 Depth=1
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	blt	$a0, $s8, .LBB8_1
+	blez	$a0, .LBB8_1
 .LBB8_20:                               # %.lr.ph.i27.i.preheader
                                         #   in Loop: Header=BB8_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -1784,7 +1784,7 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s8, .LBB8_20
+	bgtz	$a0, .LBB8_20
 	b	.LBB8_1
 .LBB8_23:                               # %st_TraverseTreeGenPreTest.exit
 	ld.d	$a1, $s3, 0
@@ -1893,8 +1893,8 @@ st_GetInstance:                         # @st_GetInstance
 	ld.d	$a0, $a0, %got_pc_lo12(stack_STACK)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.w	$zero, $s4, 0
-	ori	$s7, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB9_1:                                # %cont_BackTrackAndStart.exit.i
@@ -1911,7 +1911,7 @@ st_GetInstance:                         # @st_GetInstance
 	ldx.w	$a0, $s6, $a0
 	st.w	$a1, $s5, 0
 	st.w	$a0, $s4, 0
-	blt	$a0, $s7, .LBB9_5
+	blez	$a0, .LBB9_5
 # %bb.3:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB9_1 Depth=1
 	addi.d	$a1, $a0, 1
@@ -1954,7 +1954,7 @@ st_GetInstance:                         # @st_GetInstance
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s7, .LBB9_19
+	bgtz	$a0, .LBB9_19
 	b	.LBB9_1
 	.p2align	4, , 16
 .LBB9_9:                                #   in Loop: Header=BB9_11 Depth=2
@@ -2021,7 +2021,7 @@ st_GetInstance:                         # @st_GetInstance
                                         #   in Loop: Header=BB9_1 Depth=1
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	blt	$a0, $s7, .LBB9_1
+	blez	$a0, .LBB9_1
 .LBB9_19:                               # %.lr.ph.i23.i.preheader
                                         #   in Loop: Header=BB9_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -2047,7 +2047,7 @@ st_GetInstance:                         # @st_GetInstance
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s7, .LBB9_19
+	bgtz	$a0, .LBB9_19
 	b	.LBB9_1
 .LBB9_22:                               # %st_TraverseTreeInstance.exit
 	ld.d	$a1, $s3, 0
@@ -2162,8 +2162,8 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
 	ld.d	$a0, $a0, %got_pc_lo12(stack_STACK)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.w	$zero, $s4, 0
-	ori	$s8, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$s8, $zero, 1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB10_1:                               # %cont_BackTrackAndStart.exit.i
@@ -2180,7 +2180,7 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
 	ldx.w	$a0, $s7, $a0
 	st.w	$a1, $s5, 0
 	st.w	$a0, $s4, 0
-	blt	$a0, $s8, .LBB10_5
+	blez	$a0, .LBB10_5
 # %bb.3:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB10_1 Depth=1
 	addi.d	$a1, $a0, 1
@@ -2261,7 +2261,7 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s8, .LBB10_20
+	bgtz	$a0, .LBB10_20
 	b	.LBB10_1
 .LBB10_15:                              #   in Loop: Header=BB10_1 Depth=1
 	pcaddu18i	$ra, %call36(list_Copy)
@@ -2288,7 +2288,7 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
                                         #   in Loop: Header=BB10_1 Depth=1
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	blt	$a0, $s8, .LBB10_1
+	blez	$a0, .LBB10_1
 .LBB10_20:                              # %.lr.ph.i27.i.preheader
                                         #   in Loop: Header=BB10_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -2314,7 +2314,7 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	ld.w	$a0, $s4, 0
 	ld.d	$s0, $s0, 0
-	bge	$a0, $s8, .LBB10_20
+	bgtz	$a0, .LBB10_20
 	b	.LBB10_1
 .LBB10_23:                              # %st_TraverseTreeInstancePreTest.exit
 	ld.d	$a1, $s3, 0
@@ -2639,12 +2639,12 @@ st_TraverseForExistUnifier:             # @st_TraverseForExistUnifier
 	ld.d	$s2, $a0, %got_pc_lo12(cont_STACK)
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_BINDINGS)
-	ori	$s4, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
-	ld.d	$s6, $a0, %got_pc_lo12(cont_LASTBINDING)
+	ld.d	$s4, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
-	ld.d	$s7, $a0, %got_pc_lo12(cont_CURRENTBINDING)
+	ld.d	$s6, $a0, %got_pc_lo12(cont_CURRENTBINDING)
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %pc_hi20(st_STACKSAVE)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(st_STACKPOINTER)
@@ -2665,7 +2665,7 @@ st_TraverseForExistUnifier:             # @st_TraverseForExistUnifier
 	ldx.w	$a0, $s2, $a0
 	st.w	$a1, $s0, 0
 	st.w	$a0, $s3, 0
-	blt	$a0, $s4, .LBB14_5
+	blez	$a0, .LBB14_5
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB14_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -2673,18 +2673,18 @@ st_TraverseForExistUnifier:             # @st_TraverseForExistUnifier
 .LBB14_4:                               # %.lr.ph.i
                                         #   Parent Loop BB14_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB14_4
+	bltu	$s7, $a0, .LBB14_4
 .LBB14_5:                               # %cont_StopAndBackTrack.exit
                                         #   in Loop: Header=BB14_1 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -2751,14 +2751,14 @@ st_TraverseForExistUnifier:             # @st_TraverseForExistUnifier
                                         #   in Loop: Header=BB14_1 Depth=1
 	ld.w	$a0, $s3, 0
 	ld.d	$s8, $s8, 0
-	bge	$a0, $s4, .LBB14_14
+	bgtz	$a0, .LBB14_14
 	b	.LBB14_1
 	.p2align	4, , 16
 .LBB14_13:                              #   in Loop: Header=BB14_1 Depth=1
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$a0, $s3, 0
 	ld.d	$s8, $s8, 0
-	blt	$a0, $s4, .LBB14_1
+	blez	$a0, .LBB14_1
 .LBB14_14:                              # %.lr.ph.i23.preheader
                                         #   in Loop: Header=BB14_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -2766,18 +2766,18 @@ st_TraverseForExistUnifier:             # @st_TraverseForExistUnifier
 .LBB14_15:                              # %.lr.ph.i23
                                         #   Parent Loop BB14_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB14_15
+	bltu	$s7, $a0, .LBB14_15
 	b	.LBB14_1
 .LBB14_16:
 	ld.w	$a1, $s1, %pc_lo12(st_STACKPOINTER)
@@ -2984,12 +2984,12 @@ st_TraverseForExistGen:                 # @st_TraverseForExistGen
 	ld.d	$s2, $a0, %got_pc_lo12(cont_STACK)
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_BINDINGS)
-	ori	$s4, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
-	ld.d	$s6, $a0, %got_pc_lo12(cont_LASTBINDING)
+	ld.d	$s4, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
-	ld.d	$s7, $a0, %got_pc_lo12(cont_CURRENTBINDING)
+	ld.d	$s6, $a0, %got_pc_lo12(cont_CURRENTBINDING)
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %pc_hi20(st_STACKSAVE)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(st_STACKPOINTER)
@@ -3010,7 +3010,7 @@ st_TraverseForExistGen:                 # @st_TraverseForExistGen
 	ldx.w	$a0, $s2, $a0
 	st.w	$a1, $s0, 0
 	st.w	$a0, $s3, 0
-	blt	$a0, $s4, .LBB16_5
+	blez	$a0, .LBB16_5
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB16_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -3018,18 +3018,18 @@ st_TraverseForExistGen:                 # @st_TraverseForExistGen
 .LBB16_4:                               # %.lr.ph.i
                                         #   Parent Loop BB16_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB16_4
+	bltu	$s7, $a0, .LBB16_4
 .LBB16_5:                               # %cont_StopAndBackTrack.exit
                                         #   in Loop: Header=BB16_1 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -3096,14 +3096,14 @@ st_TraverseForExistGen:                 # @st_TraverseForExistGen
                                         #   in Loop: Header=BB16_1 Depth=1
 	ld.w	$a0, $s3, 0
 	ld.d	$s8, $s8, 0
-	bge	$a0, $s4, .LBB16_14
+	bgtz	$a0, .LBB16_14
 	b	.LBB16_1
 	.p2align	4, , 16
 .LBB16_13:                              #   in Loop: Header=BB16_1 Depth=1
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$a0, $s3, 0
 	ld.d	$s8, $s8, 0
-	blt	$a0, $s4, .LBB16_1
+	blez	$a0, .LBB16_1
 .LBB16_14:                              # %.lr.ph.i23.preheader
                                         #   in Loop: Header=BB16_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -3111,18 +3111,18 @@ st_TraverseForExistGen:                 # @st_TraverseForExistGen
 .LBB16_15:                              # %.lr.ph.i23
                                         #   Parent Loop BB16_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB16_15
+	bltu	$s7, $a0, .LBB16_15
 	b	.LBB16_1
 .LBB16_16:
 	ld.w	$a1, $s1, %pc_lo12(st_STACKPOINTER)
@@ -3337,12 +3337,12 @@ st_TraverseForExistGenPreTest:          # @st_TraverseForExistGenPreTest
 	ld.d	$s2, $a0, %got_pc_lo12(cont_STACK)
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_BINDINGS)
-	ori	$s4, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
-	ld.d	$s6, $a0, %got_pc_lo12(cont_LASTBINDING)
+	ld.d	$s4, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
-	ld.d	$s7, $a0, %got_pc_lo12(cont_CURRENTBINDING)
+	ld.d	$s6, $a0, %got_pc_lo12(cont_CURRENTBINDING)
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %pc_hi20(st_STACKSAVE)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(st_STACKPOINTER)
@@ -3365,7 +3365,7 @@ st_TraverseForExistGenPreTest:          # @st_TraverseForExistGenPreTest
 	ldx.w	$a0, $s2, $a0
 	st.w	$a1, $s0, 0
 	st.w	$a0, $s3, 0
-	blt	$a0, $s4, .LBB18_5
+	blez	$a0, .LBB18_5
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB18_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -3373,18 +3373,18 @@ st_TraverseForExistGenPreTest:          # @st_TraverseForExistGenPreTest
 .LBB18_4:                               # %.lr.ph.i
                                         #   Parent Loop BB18_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB18_4
+	bltu	$s7, $a0, .LBB18_4
 .LBB18_5:                               # %cont_StopAndBackTrack.exit
                                         #   in Loop: Header=BB18_1 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -3454,7 +3454,7 @@ st_TraverseForExistGenPreTest:          # @st_TraverseForExistGenPreTest
                                         #   in Loop: Header=BB18_1 Depth=1
 	ld.w	$a0, $s3, 0
 	ld.d	$s5, $s5, 0
-	blt	$a0, $s4, .LBB18_1
+	blez	$a0, .LBB18_1
 .LBB18_14:                              # %.lr.ph.i26.preheader
                                         #   in Loop: Header=BB18_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -3462,24 +3462,24 @@ st_TraverseForExistGenPreTest:          # @st_TraverseForExistGenPreTest
 .LBB18_15:                              # %.lr.ph.i26
                                         #   Parent Loop BB18_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB18_15
+	bltu	$s7, $a0, .LBB18_15
 	b	.LBB18_1
 .LBB18_16:                              #   in Loop: Header=BB18_1 Depth=1
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$a0, $s3, 0
 	ld.d	$s5, $s5, 0
-	bge	$a0, $s4, .LBB18_14
+	bgtz	$a0, .LBB18_14
 	b	.LBB18_1
 .LBB18_17:
 	ld.w	$a1, $s1, %pc_lo12(st_STACKPOINTER)
@@ -3685,12 +3685,12 @@ st_TraverseForExistInstance:            # @st_TraverseForExistInstance
 	ld.d	$s2, $a0, %got_pc_lo12(cont_STACK)
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_BINDINGS)
-	ori	$s4, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
-	ld.d	$s6, $a0, %got_pc_lo12(cont_LASTBINDING)
+	ld.d	$s4, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
-	ld.d	$s7, $a0, %got_pc_lo12(cont_CURRENTBINDING)
+	ld.d	$s6, $a0, %got_pc_lo12(cont_CURRENTBINDING)
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %pc_hi20(st_STACKSAVE)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(st_STACKPOINTER)
@@ -3711,7 +3711,7 @@ st_TraverseForExistInstance:            # @st_TraverseForExistInstance
 	ldx.w	$a0, $s2, $a0
 	st.w	$a1, $s0, 0
 	st.w	$a0, $s3, 0
-	blt	$a0, $s4, .LBB20_5
+	blez	$a0, .LBB20_5
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB20_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -3719,18 +3719,18 @@ st_TraverseForExistInstance:            # @st_TraverseForExistInstance
 .LBB20_4:                               # %.lr.ph.i
                                         #   Parent Loop BB20_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB20_4
+	bltu	$s7, $a0, .LBB20_4
 .LBB20_5:                               # %cont_StopAndBackTrack.exit
                                         #   in Loop: Header=BB20_1 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -3797,14 +3797,14 @@ st_TraverseForExistInstance:            # @st_TraverseForExistInstance
                                         #   in Loop: Header=BB20_1 Depth=1
 	ld.w	$a0, $s3, 0
 	ld.d	$s8, $s8, 0
-	bge	$a0, $s4, .LBB20_14
+	bgtz	$a0, .LBB20_14
 	b	.LBB20_1
 	.p2align	4, , 16
 .LBB20_13:                              #   in Loop: Header=BB20_1 Depth=1
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$a0, $s3, 0
 	ld.d	$s8, $s8, 0
-	blt	$a0, $s4, .LBB20_1
+	blez	$a0, .LBB20_1
 .LBB20_14:                              # %.lr.ph.i23.preheader
                                         #   in Loop: Header=BB20_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -3812,18 +3812,18 @@ st_TraverseForExistInstance:            # @st_TraverseForExistInstance
 .LBB20_15:                              # %.lr.ph.i23
                                         #   Parent Loop BB20_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB20_15
+	bltu	$s7, $a0, .LBB20_15
 	b	.LBB20_1
 .LBB20_16:
 	ld.w	$a1, $s1, %pc_lo12(st_STACKPOINTER)
@@ -4038,12 +4038,12 @@ st_TraverseForExistInstancePreTest:     # @st_TraverseForExistInstancePreTest
 	ld.d	$s2, $a0, %got_pc_lo12(cont_STACK)
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_BINDINGS)
-	ori	$s4, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
-	ld.d	$s6, $a0, %got_pc_lo12(cont_LASTBINDING)
+	ld.d	$s4, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
-	ld.d	$s7, $a0, %got_pc_lo12(cont_CURRENTBINDING)
+	ld.d	$s6, $a0, %got_pc_lo12(cont_CURRENTBINDING)
 	vrepli.b	$vr0, 0
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %pc_hi20(st_STACKSAVE)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(st_STACKPOINTER)
@@ -4066,7 +4066,7 @@ st_TraverseForExistInstancePreTest:     # @st_TraverseForExistInstancePreTest
 	ldx.w	$a0, $s2, $a0
 	st.w	$a1, $s0, 0
 	st.w	$a0, $s3, 0
-	blt	$a0, $s4, .LBB22_5
+	blez	$a0, .LBB22_5
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB22_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -4074,18 +4074,18 @@ st_TraverseForExistInstancePreTest:     # @st_TraverseForExistInstancePreTest
 .LBB22_4:                               # %.lr.ph.i
                                         #   Parent Loop BB22_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB22_4
+	bltu	$s7, $a0, .LBB22_4
 .LBB22_5:                               # %cont_StopAndBackTrack.exit
                                         #   in Loop: Header=BB22_1 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -4155,7 +4155,7 @@ st_TraverseForExistInstancePreTest:     # @st_TraverseForExistInstancePreTest
                                         #   in Loop: Header=BB22_1 Depth=1
 	ld.w	$a0, $s3, 0
 	ld.d	$s5, $s5, 0
-	blt	$a0, $s4, .LBB22_1
+	blez	$a0, .LBB22_1
 .LBB22_14:                              # %.lr.ph.i26.preheader
                                         #   in Loop: Header=BB22_1 Depth=1
 	addi.d	$a0, $a0, 1
@@ -4163,24 +4163,24 @@ st_TraverseForExistInstancePreTest:     # @st_TraverseForExistInstancePreTest
 .LBB22_15:                              # %.lr.ph.i26
                                         #   Parent Loop BB22_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s6, 0
-	st.d	$a1, $s7, 0
+	ld.d	$a1, $s4, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a2, $a1, 24
-	st.d	$a2, $s6, 0
+	st.d	$a2, $s4, 0
 	st.w	$zero, $a1, 20
 	vst	$vr0, $a1, 4
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	st.d	$zero, $a1, 24
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s3, 0
-	bltu	$s4, $a0, .LBB22_15
+	bltu	$s7, $a0, .LBB22_15
 	b	.LBB22_1
 .LBB22_16:                              #   in Loop: Header=BB22_1 Depth=1
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$a0, $s3, 0
 	ld.d	$s5, $s5, 0
-	bge	$a0, $s4, .LBB22_14
+	bgtz	$a0, .LBB22_14
 	b	.LBB22_1
 .LBB22_17:
 	ld.w	$a1, $s1, %pc_lo12(st_STACKPOINTER)
@@ -4551,8 +4551,7 @@ st_PrintHelp:                           # @st_PrintHelp
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB25_6
+	blez	$a1, .LBB25_6
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$s2, $a0, %got_pc_lo12(stdout)
@@ -4595,7 +4594,6 @@ st_PrintHelp:                           # @st_PrintHelp
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 1
-	ori	$s3, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $s0, 24
@@ -4614,7 +4612,7 @@ st_PrintHelp:                           # @st_PrintHelp
 	ld.d	$a0, $s0, 16
 	beqz	$a0, .LBB25_13
 # %bb.8:                                # %.preheader40
-	blt	$s1, $s3, .LBB25_10
+	blez	$s1, .LBB25_10
 	.p2align	4, , 16
 .LBB25_9:                               # %.lr.ph48
                                         # =>This Inner Loop Header: Depth=1

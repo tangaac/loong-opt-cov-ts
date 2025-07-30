@@ -83,13 +83,12 @@ _ZN8NArchive5NPpmd5CItem10ReadHeaderEP19ISequentialInStreamRj: # @_ZN8NArchive5N
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s3, $a0
-	blt	$s5, $a2, .LBB0_23
+	blez	$s5, .LBB0_23
 # %bb.7:                                # %.preheader.i.i
 	ld.w	$a1, $fp, 16
 	ld.d	$a0, $fp, 8
-	blt	$a1, $a2, .LBB0_15
+	blez	$a1, .LBB0_15
 # %bb.8:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -453,8 +452,7 @@ _ZN8NArchive5NPpmd8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NP
 	b	.LBB7_48
 .LBB7_6:
 	ld.bu	$a0, $s0, 80
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB7_48
+	beqz	$a0, .LBB7_48
 # %bb.7:
 	ld.d	$a1, $s0, 72
 .Ltmp39:
@@ -602,11 +600,10 @@ _ZN8NArchive5NPpmd8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NP
 .Ltmp29:
 # %bb.22:                               # %.noexc44
 	move	$s2, $a0
-	ori	$a1, $zero, 1
-	blt	$s4, $a1, .LBB7_39
+	blez	$s4, .LBB7_39
 # %bb.23:                               # %.preheader.i.i.i34
 	ld.d	$a0, $sp, 8
-	blt	$s3, $a1, .LBB7_31
+	blez	$s3, .LBB7_31
 # %bb.24:                               # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -1682,15 +1679,14 @@ _ZN8NArchive5NPpmd8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArc
 	ori	$a1, $a1, 2128
 	add.d	$a1, $sp, $a1
 	ld.b	$a1, $a1, 0
-	xori	$a1, $a1, 1
 	lu12i.w	$a2, 6
 	ori	$a2, $a2, 2132
 	add.d	$a2, $sp, $a2
 	ld.w	$s4, $a2, 0
+	xori	$a1, $a1, 1
 	and	$a0, $a0, $a1
-	ori	$a1, $zero, 1
 	ori	$s5, $zero, 2
-	bne	$a0, $a1, .LBB16_55
+	beqz	$a0, .LBB16_55
 # %bb.34:
 	bnez	$s4, .LBB16_55
 # %bb.35:                               # %.preheader191
@@ -1702,7 +1698,7 @@ _ZN8NArchive5NPpmd8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArc
 	b	.LBB16_37
 .LBB16_36:                              #   in Loop: Header=BB16_37 Depth=1
 	add.d	$s7, $s8, $s7
-	bge	$s6, $s1, .LBB16_52
+	bltz	$s1, .LBB16_52
 .LBB16_37:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_44 Depth 2
                                         #     Child Loop BB16_40 Depth 2
@@ -3159,12 +3155,11 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s5, $a1, .LBB33_19
+	blez	$s5, .LBB33_19
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s4, $a1, .LBB33_11
+	blez	$s4, .LBB33_11
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero

@@ -311,36 +311,35 @@ init:                                   # @init
 	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	pcalau12i	$a4, %pc_hi20(imin)
-	ld.w	$a4, $a4, %pc_lo12(imin)
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	st.w	$a4, $a0, 8
-	pcalau12i	$a2, %pc_hi20(imax)
-	ld.w	$a2, $a2, %pc_lo12(imax)
-	pcalau12i	$a3, %pc_hi20(jmin)
-	ld.w	$a3, $a3, %pc_lo12(jmin)
-	pcalau12i	$a4, %pc_hi20(jmax)
-	ld.w	$a4, $a4, %pc_lo12(jmax)
-	pcalau12i	$a5, %pc_hi20(kmin)
-	ld.w	$a5, $a5, %pc_lo12(kmin)
-	st.w	$a2, $a0, 20
-	st.w	$a3, $a0, 12
-	st.w	$a4, $a0, 24
-	st.w	$a5, $a0, 16
-	pcalau12i	$a2, %pc_hi20(kmax)
-	ld.w	$a2, $a2, %pc_lo12(kmax)
+	pcalau12i	$a2, %pc_hi20(imin)
+	ld.w	$a2, $a2, %pc_lo12(imin)
+	pcalau12i	$a3, %pc_hi20(imax)
+	ld.w	$a3, $a3, %pc_lo12(imax)
+	pcalau12i	$a4, %pc_hi20(jmin)
+	ld.w	$a4, $a4, %pc_lo12(jmin)
+	pcalau12i	$a5, %pc_hi20(jmax)
+	ld.w	$a5, $a5, %pc_lo12(jmax)
+	st.w	$a2, $a0, 8
+	st.w	$a3, $a0, 20
+	st.w	$a4, $a0, 12
+	st.w	$a5, $a0, 24
+	pcalau12i	$a2, %pc_hi20(kmin)
+	ld.w	$a2, $a2, %pc_lo12(kmin)
+	pcalau12i	$a3, %pc_hi20(kmax)
+	ld.w	$a4, $a3, %pc_lo12(kmax)
 	pcalau12i	$a3, %pc_hi20(jp)
-	ld.w	$a4, $a3, %pc_lo12(jp)
+	ld.w	$a5, $a3, %pc_lo12(jp)
 	pcalau12i	$a3, %pc_hi20(kp)
-	ld.w	$a5, $a3, %pc_lo12(kp)
+	ld.w	$a6, $a3, %pc_lo12(kp)
 	pcalau12i	$a3, %pc_hi20(i_ub)
 	ld.w	$a3, $a3, %pc_lo12(i_ub)
-	st.w	$a2, $a0, 28
-	st.w	$a4, $a0, 68
-	ori	$a2, $zero, 1
-	st.w	$a5, $a0, 72
-	blt	$a3, $a2, .LBB2_3
+	st.w	$a2, $a0, 16
+	st.w	$a4, $a0, 28
+	st.w	$a5, $a0, 68
+	st.w	$a6, $a0, 72
+	blez	$a3, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a0, $zero
 	ld.d	$a2, $a1, 208
@@ -351,183 +350,182 @@ init:                                   # @init
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a2, $a1, 184
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	ld.d	$t1, $a1, 176
-	ld.d	$t2, $a1, 168
-	ld.d	$t3, $a1, 160
-	ld.d	$t4, $a1, 152
-	ld.d	$t5, $a1, 144
-	ld.d	$t6, $a1, 136
-	ld.d	$t7, $a1, 128
-	ld.d	$t8, $a1, 120
-	ld.d	$fp, $a1, 112
-	ld.d	$s0, $a1, 104
-	ld.d	$s1, $a1, 96
-	ld.d	$s2, $a1, 88
-	ld.d	$s3, $a1, 80
-	ld.d	$s4, $a1, 72
-	ld.d	$s5, $a1, 64
-	ld.d	$s6, $a1, 56
-	ld.d	$s7, $a1, 48
-	ld.d	$s8, $a1, 40
-	ld.d	$ra, $a1, 32
-	ld.d	$a4, $a1, 24
-	ld.d	$a5, $a1, 16
+	ld.d	$t0, $a1, 176
+	ld.d	$t1, $a1, 168
+	ld.d	$t2, $a1, 160
+	ld.d	$t3, $a1, 152
+	ld.d	$t4, $a1, 144
+	ld.d	$t5, $a1, 136
+	ld.d	$t6, $a1, 128
+	ld.d	$t7, $a1, 120
+	ld.d	$t8, $a1, 112
+	ld.d	$fp, $a1, 104
+	ld.d	$s0, $a1, 96
+	ld.d	$s1, $a1, 88
+	ld.d	$s2, $a1, 80
+	ld.d	$s3, $a1, 72
+	ld.d	$s4, $a1, 64
+	ld.d	$s5, $a1, 56
+	ld.d	$s6, $a1, 48
+	ld.d	$s7, $a1, 40
+	ld.d	$s8, $a1, 32
+	ld.d	$ra, $a1, 24
+	ld.d	$a4, $a1, 16
 	ld.d	$a2, $a1, 8
 	ld.d	$a1, $a1, 0
 	sub.d	$a3, $zero, $a3
 	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -912
-	ori	$a6, $zero, 26
+	ori	$a5, $zero, 26
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
-	stx.d	$zero, $a7, $a0
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	stx.d	$zero, $a6, $a0
 	fstx.d	$fa0, $a1, $a0
 	fadd.d	$fa0, $fa0, $fa1
-	addi.d	$a7, $a6, -25
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -25
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $a2, $a0
-	addi.d	$a7, $a6, -24
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	ffint.d.l	$fa2, $fa2
-	fstx.d	$fa2, $a5, $a0
-	addi.d	$a7, $a6, -23
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -24
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $a4, $a0
-	addi.d	$a7, $a6, -22
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -23
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $ra, $a0
-	addi.d	$a7, $a6, -21
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -22
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s8, $a0
-	addi.d	$a7, $a6, -20
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -21
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s7, $a0
-	addi.d	$a7, $a6, -19
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -20
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s6, $a0
-	addi.d	$a7, $a6, -18
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -19
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s5, $a0
-	addi.d	$a7, $a6, -17
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -18
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s4, $a0
-	addi.d	$a7, $a6, -16
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -17
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s3, $a0
-	addi.d	$a7, $a6, -15
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -16
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s2, $a0
-	addi.d	$a7, $a6, -14
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -15
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s1, $a0
-	addi.d	$a7, $a6, -13
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -14
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $s0, $a0
-	addi.d	$a7, $a6, -12
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -13
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $fp, $a0
-	addi.d	$a7, $a6, -11
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -12
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t8, $a0
-	addi.d	$a7, $a6, -10
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -11
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t7, $a0
-	addi.d	$a7, $a6, -9
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -10
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t6, $a0
-	addi.d	$a7, $a6, -8
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -9
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t5, $a0
-	addi.d	$a7, $a6, -7
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -8
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t4, $a0
-	addi.d	$a7, $a6, -6
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -7
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t3, $a0
-	addi.d	$a7, $a6, -5
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -6
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t2, $a0
-	addi.d	$a7, $a6, -4
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -5
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
 	fstx.d	$fa2, $t1, $a0
-	addi.d	$a7, $a6, -3
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -4
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
-	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
-	fstx.d	$fa2, $a7, $a0
-	addi.d	$a7, $a6, -2
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	ffint.d.l	$fa2, $fa2
-	ld.d	$a7, $sp, 24                    # 8-byte Folded Reload
-	fstx.d	$fa2, $a7, $a0
-	addi.d	$a7, $a6, -1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	bstrpick.d	$a7, $a6, 31, 0
-	ffint.d.l	$fa2, $fa2
-	ld.d	$t0, $sp, 32                    # 8-byte Folded Reload
 	fstx.d	$fa2, $t0, $a0
-	movgr2fr.d	$fa2, $a7
+	addi.d	$a6, $a5, -3
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
 	ffint.d.l	$fa2, $fa2
-	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	fstx.d	$fa2, $a6, $a0
+	addi.d	$a6, $a5, -2
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
+	ffint.d.l	$fa2, $fa2
+	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
+	fstx.d	$fa2, $a6, $a0
+	addi.d	$a6, $a5, -1
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.d	$fa2, $a6
+	bstrpick.d	$a6, $a5, 31, 0
+	ffint.d.l	$fa2, $fa2
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	fstx.d	$fa2, $a7, $a0
-	addi.w	$a6, $a6, 1
-	add.w	$a7, $a3, $a6
+	movgr2fr.d	$fa2, $a6
+	ffint.d.l	$fa2, $fa2
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
+	fstx.d	$fa2, $a6, $a0
+	addi.w	$a5, $a5, 1
+	add.w	$a6, $a3, $a5
 	addi.d	$a0, $a0, 8
-	ori	$t0, $zero, 26
-	bne	$a7, $t0, .LBB2_2
+	ori	$a7, $zero, 26
+	bne	$a6, $a7, .LBB2_2
 .LBB2_3:                                # %.preheader
 	pcalau12i	$a0, %pc_hi20(x_size)
 	ld.w	$a1, $a0, %pc_lo12(x_size)
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_11
+	blez	$a1, .LBB2_11
 # %bb.4:                                # %.lr.ph155.preheader
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB2_6

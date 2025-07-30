@@ -97,11 +97,9 @@ _Z24ParsePropDictionaryValueRK11CStringBaseIwERj: # @_Z24ParsePropDictionaryValu
 	ld.wu	$a2, $a0, 8
 	move	$s0, $a1
 	addi.d	$a0, $a2, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.w	$s2, $a2, 0
-	beqz	$a1, .LBB1_2
+	bgez	$a1, .LBB1_2
 # %bb.1:
 	move	$fp, $zero
 	b	.LBB1_3
@@ -319,18 +317,16 @@ _Z24ParsePropDictionaryValueRK11CStringBaseIwERK14tagPROPVARIANTRj: # @_Z24Parse
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(wcslen)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$s1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s3, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
-	beqz	$a0, .LBB2_8
+	slli.d	$a0, $s3, 31
+	bgez	$a0, .LBB2_8
 # %bb.7:
-	move	$s1, $zero
+	move	$s0, $zero
 	b	.LBB2_9
 .LBB2_8:
-	addi.w	$a0, $s0, 0
+	addi.w	$a0, $s1, 0
 	addi.w	$a1, $s3, 0
 	slti	$a0, $a0, -1
 	slli.d	$a1, $a1, 2
@@ -340,7 +336,7 @@ _Z24ParsePropDictionaryValueRK11CStringBaseIwERK14tagPROPVARIANTRj: # @_Z24Parse
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s0, $a0
 	st.d	$a0, $sp, 0
 	st.w	$zero, $a0, 0
 	st.w	$s3, $sp, 12
@@ -350,21 +346,21 @@ _Z24ParsePropDictionaryValueRK11CStringBaseIwERK14tagPROPVARIANTRj: # @_Z24Parse
 	.p2align	4, , 16
 .LBB2_10:                               # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $fp, $a0
-	stx.w	$a2, $s1, $a0
+	stx.w	$a2, $s0, $a0
 	addi.d	$a0, $a0, 4
 	bnez	$a2, .LBB2_10
 # %bb.11:                               # %_ZN11CStringBaseIwEC2EPKw.exit
-	st.w	$s0, $sp, 8
+	st.w	$s1, $sp, 8
 .Ltmp6:
 	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(_Z24ParsePropDictionaryValueRK11CStringBaseIwERj)
 	jirl	$ra, $ra, 0
 .Ltmp7:
 # %bb.12:
-	beqz	$s1, .LBB2_14
+	beqz	$s0, .LBB2_14
 # %bb.13:
 	move	$fp, $a0
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -380,9 +376,9 @@ _Z24ParsePropDictionaryValueRK11CStringBaseIwERK14tagPROPVARIANTRj: # @_Z24Parse
 .LBB2_15:
 .Ltmp8:
 	move	$fp, $a0
-	beqz	$s1, .LBB2_17
+	beqz	$s0, .LBB2_17
 # %bb.16:
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB2_17:                               # %_ZN11CStringBaseIwED2Ev.exit15
@@ -528,11 +524,9 @@ _Z15SetBoolPropertyRbRK14tagPROPVARIANT: # @_Z15SetBoolPropertyRbRK14tagPROPVARI
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a1, $a1, 1
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
-	and	$a2, $a1, $a2
+	slli.d	$a2, $a1, 31
 	addi.w	$s3, $a0, 0
-	beqz	$a2, .LBB4_9
+	bgez	$a2, .LBB4_9
 # %bb.5:
 	move	$s0, $zero
 	b	.LBB4_10

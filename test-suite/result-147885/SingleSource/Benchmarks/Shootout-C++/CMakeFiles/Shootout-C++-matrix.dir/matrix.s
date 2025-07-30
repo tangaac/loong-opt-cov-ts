@@ -31,9 +31,8 @@ _Z8mkmatrixii:                          # @_Z8mkmatrixii
 	slli.d	$a0, $a0, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$fp, $a1, .LBB0_13
+	blez	$fp, .LBB0_13
 # %bb.1:                                # %.lr.ph21
 	slli.d	$s1, $s2, 2
 	blez	$s2, .LBB0_11
@@ -140,10 +139,9 @@ _Z8mkmatrixii:                          # @_Z8mkmatrixii
 	.type	_Z10zeromatrixiiPPi,@function
 _Z10zeromatrixiiPPi:                    # @_Z10zeromatrixiiPPi
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB1_5
+	blez	$a0, .LBB1_5
 # %bb.1:
-	blt	$a1, $a3, .LBB1_5
+	blez	$a1, .LBB1_5
 # %bb.2:                                # %.preheader.us.preheader
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
@@ -186,22 +184,22 @@ _Z10freematrixiPPi:                     # @_Z10freematrixiPPi
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	ori	$s0, $zero, 1
 	move	$fp, $a1
-	blt	$a0, $s0, .LBB2_3
+	blez	$a0, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$s1, $a0, 1
+	addi.d	$s0, $a0, 1
 	alsl.d	$a0, $a0, $fp, 3
-	addi.d	$s2, $a0, -8
+	addi.d	$s1, $a0, -8
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, -1
-	addi.d	$s2, $s2, -8
-	bltu	$s0, $s1, .LBB2_2
+	addi.d	$s0, $s0, -1
+	addi.d	$s1, $s1, -8
+	bltu	$s2, $s0, .LBB2_2
 .LBB2_3:                                # %._crit_edge
 	move	$a0, $fp
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -220,10 +218,9 @@ _Z10freematrixiPPi:                     # @_Z10freematrixiPPi
 	.type	_Z5mmultiiPPiS0_S0_,@function
 _Z5mmultiiPPiS0_S0_:                    # @_Z5mmultiiPPiS0_S0_
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB3_14
+	blez	$a0, .LBB3_14
 # %bb.1:
-	blt	$a1, $a5, .LBB3_14
+	blez	$a1, .LBB3_14
 # %bb.2:                                # %.preheader24.us.preheader
 	addi.d	$sp, $sp, -32
 	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
@@ -605,10 +602,9 @@ main:                                   # @main
 	bne	$s0, $fp, .LBB4_8
 # %bb.9:                                # %_Z8mkmatrixii.exit36.preheader
 	st.d	$s3, $sp, 320                   # 8-byte Folded Spill
-	addi.w	$a1, $s2, 0
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB4_52
+	addi.w	$a0, $s2, 0
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	blez	$a0, .LBB4_52
 # %bb.10:                               # %.preheader24.us.i.preheader.preheader
 	move	$a5, $zero
 	ld.d	$a3, $sp, 0                     # 8-byte Folded Reload

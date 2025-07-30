@@ -361,8 +361,7 @@ _ZN9benchmark8internal9IncrementEPSt3mapINSt7__cxx1112basic_stringIcSt11char_tra
 # %bb.28:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEE4findERSB_.exit
                                         #   in Loop: Header=BB2_19 Depth=1
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2_18
+	bgez	$a0, .LBB2_18
 	b	.LBB2_17
 	.p2align	4, , 16
 .LBB2_29:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i.i.i39
@@ -377,8 +376,7 @@ _ZN9benchmark8internal9IncrementEPSt3mapINSt7__cxx1112basic_stringIcSt11char_tra
 	masknez	$a1, $s5, $a1
 	or	$a0, $a0, $a1
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2_18
+	bgez	$a0, .LBB2_18
 	b	.LBB2_17
 .LBB2_30:                               # %._crit_edge68
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
@@ -515,9 +513,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	or	$a0, $a0, $a1
 .LBB3_10:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $s1
-	blt	$a1, $a0, .LBB3_12
+	bgez	$a0, .LBB3_12
 .LBB3_11:                               # %.critedge
 	st.d	$s8, $sp, 32
 	pcalau12i	$a0, %pc_hi20(_ZSt19piecewise_construct)
@@ -956,8 +953,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB7_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB7_12
+	bltz	$a0, .LBB7_12
 	b	.LBB7_18
 .LBB7_4:
 	ld.d	$a0, $s1, 40
@@ -1039,8 +1035,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB7_16:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB7_28
+	bgez	$a0, .LBB7_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -1070,8 +1065,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB7_20:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB7_23
+	bltz	$a0, .LBB7_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB7_29
@@ -1086,10 +1080,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB7_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -1099,7 +1093,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB7_27
 .LBB7_26:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -1113,7 +1107,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB7_27:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB7_31
+	bltz	$a0, .LBB7_31
 .LBB7_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -1420,10 +1414,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	bnez	$a0, .LBB10_3
 	b	.LBB10_2
 .LBB10_6:                               # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB10_9
+	bgez	$a1, .LBB10_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB10_14

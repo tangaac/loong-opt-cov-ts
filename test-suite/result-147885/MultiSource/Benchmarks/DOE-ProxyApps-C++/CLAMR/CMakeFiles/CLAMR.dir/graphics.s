@@ -288,8 +288,7 @@ DrawSquaresToFile:                      # @DrawSquaresToFile
 	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
 	beqz	$a1, .LBB11_12
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_15
+	blez	$a0, .LBB11_15
 # %bb.8:                                # %.lr.ph111.preheader
 	move	$s7, $zero
 	move	$s8, $zero
@@ -456,8 +455,7 @@ DrawSquaresToFile:                      # @DrawSquaresToFile
 	addi.d	$a1, $sp, 124
 	b	.LBB11_17
 .LBB11_12:                              # %.preheader107
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_15
+	blez	$a0, .LBB11_15
 # %bb.13:                               # %.lr.ph.preheader
 	move	$s7, $zero
 	move	$s8, $zero
@@ -750,8 +748,7 @@ DisplayStateToFile:                     # @DisplayStateToFile
 	pcalau12i	$a0, %pc_hi20(graphics_mysize)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(graphics_mysize)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB12_17
+	blez	$a0, .LBB12_17
 # %bb.7:                                # %.lr.ph.preheader
 	move	$s8, $zero
 	move	$s7, $zero

@@ -49,8 +49,7 @@ bilateralFilterKernel:                  # @bilateralFilterKernel
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	bge	$s5, $a0, .LBB0_11
 # %bb.2:                                # %.preheader77.lr.ph
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB0_11
+	blez	$s8, .LBB0_11
 # %bb.3:                                # %.preheader77.us.us.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_0)

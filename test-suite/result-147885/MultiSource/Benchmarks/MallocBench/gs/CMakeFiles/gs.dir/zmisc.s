@@ -16,7 +16,6 @@ zbind:                                  # @zbind
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.h	$a0, $a0, 8
 	bstrpick.d	$a0, $a0, 7, 2
@@ -30,14 +29,13 @@ zbind:                                  # @zbind
 	vst	$vr0, $fp, 16
 	pcalau12i	$a0, %got_pc_hi20(ostop)
 	ld.d	$s4, $a0, %got_pc_lo12(ostop)
+	pcalau12i	$a0, %got_pc_hi20(dsp)
+	ld.d	$s5, $a0, %got_pc_lo12(dsp)
+	pcalau12i	$a0, %got_pc_hi20(dstack)
+	ld.d	$s0, $a0, %got_pc_lo12(dstack)
 	lu12i.w	$a0, 15
-	pcalau12i	$a1, %got_pc_hi20(dsp)
-	ld.d	$s5, $a1, %got_pc_lo12(dsp)
-	pcalau12i	$a1, %got_pc_hi20(dstack)
-	ld.d	$s0, $a1, %got_pc_lo12(dstack)
 	ori	$s6, $a0, 3839
 	ori	$s7, $zero, 7
-	ori	$s8, $zero, 1
 	b	.LBB0_4
 .LBB0_3:                                # %._crit_edge
                                         #   in Loop: Header=BB0_4 Depth=1
@@ -69,14 +67,14 @@ zbind:                                  # @zbind
 	beqz	$a0, .LBB0_4
 # %bb.9:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a1, $s5, 0
-	addi.d	$a3, $sp, 0
+	addi.d	$a3, $sp, 8
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s8, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.10:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	ld.hu	$a1, $a0, 8
 	andi	$a2, $a1, 1
 	beqz	$a2, .LBB0_4
@@ -115,7 +113,6 @@ zbind:                                  # @zbind
 .LBB0_18:
 	addi.w	$a0, $zero, -20
 .LBB0_19:                               # %.loopexit
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload

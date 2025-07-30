@@ -46,8 +46,7 @@ _Z8doreturnP9Classfile:                 # @_Z8doreturnP9Classfile
 	pcalau12i	$a0, %got_pc_hi20(bufflength)
 	ld.d	$a0, $a0, %got_pc_lo12(bufflength)
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.2:
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(_Znwm)

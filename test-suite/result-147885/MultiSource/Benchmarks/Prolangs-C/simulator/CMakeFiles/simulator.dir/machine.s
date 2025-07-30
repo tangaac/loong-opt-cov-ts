@@ -341,15 +341,15 @@ INSTR_CODE:                             # @INSTR_CODE
 	.type	BYTES_TO_BITS,@function
 BYTES_TO_BITS:                          # @BYTES_TO_BITS
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB4_3
+	blez	$a1, .LBB4_3
 # %bb.1:                                # %.lr.ph.preheader
-	slli.w	$a4, $a1, 3
-	slt	$a1, $a3, $a4
-	masknez	$a3, $a3, $a1
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $a3
-	alsl.d	$a2, $a4, $a2, 2
+	slli.w	$a3, $a1, 3
+	ori	$a1, $zero, 1
+	slt	$a4, $a1, $a3
+	masknez	$a1, $a1, $a4
+	maskeqz	$a4, $a3, $a4
+	or	$a1, $a4, $a1
+	alsl.d	$a2, $a3, $a2, 2
 	addi.d	$a2, $a2, -4
 	.p2align	4, , 16
 .LBB4_2:                                # %.lr.ph
@@ -376,23 +376,17 @@ BYTES_TO_BITS:                          # @BYTES_TO_BITS
 	.type	BITS_TO_BYTE,@function
 BITS_TO_BYTE:                           # @BITS_TO_BYTE
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_4
-# %bb.1:                                # %.lr.ph.preheader
 	move	$a2, $zero
+	blez	$a1, .LBB5_2
 	.p2align	4, , 16
-.LBB5_2:                                # %.lr.ph
+.LBB5_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a0, 0
 	alsl.w	$a2, $a2, $a3, 1
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB5_2
-# %bb.3:                                # %._crit_edge
-	move	$a0, $a2
-	ret
-.LBB5_4:
-	move	$a2, $zero
+	bnez	$a1, .LBB5_1
+.LBB5_2:                                # %._crit_edge
 	move	$a0, $a2
 	ret
 .Lfunc_end5:
@@ -1643,7 +1637,7 @@ EXEC:                                   # @EXEC
 	ld.d	$s7, $a1, %got_pc_lo12(RETURN_STATUS)
 	lu12i.w	$a1, 4095
 	ori	$s2, $a1, 4095
-	pcalau12i	$s1, %pc_hi20(INTERVAL_TIMER)
+	pcalau12i	$s8, %pc_hi20(INTERVAL_TIMER)
 	b	.LBB14_3
 	.p2align	4, , 16
 .LBB14_1:                               #   in Loop: Header=BB14_3 Depth=1
@@ -1666,14 +1660,14 @@ EXEC:                                   # @EXEC
 	ld.d	$a1, $s5, %pc_lo12(MEMORY)
 	bstrins.d	$a0, $zero, 3, 0
 	add.d	$a0, $s6, $a0
-	ld.w	$s8, $a0, 12
+	ld.w	$s1, $a0, 12
 	ldx.b	$a0, $a1, $s3
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a1, $a0, 62, 61
 	add.w	$a0, $a0, $a1
 	srai.d	$a0, $a0, 2
-	beqz	$s8, .LBB14_5
+	beqz	$s1, .LBB14_5
 # %bb.4:                                #   in Loop: Header=BB14_3 Depth=1
 	alsl.d	$a0, $a0, $s6, 4
 	ld.w	$a0, $a0, 12
@@ -1736,12 +1730,11 @@ EXEC:                                   # @EXEC
 	ld.w	$a0, $s4, %pc_lo12(REGISTER+32)
 	beq	$a0, $s2, .LBB14_1
 .LBB14_9:                               #   in Loop: Header=BB14_3 Depth=1
-	ld.w	$a1, $s1, %pc_lo12(INTERVAL_TIMER)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB14_2
+	ld.w	$a1, $s8, %pc_lo12(INTERVAL_TIMER)
+	blez	$a1, .LBB14_2
 # %bb.10:                               #   in Loop: Header=BB14_3 Depth=1
 	addi.w	$a1, $a1, -1
-	st.w	$a1, $s1, %pc_lo12(INTERVAL_TIMER)
+	st.w	$a1, $s8, %pc_lo12(INTERVAL_TIMER)
 	bnez	$a1, .LBB14_2
 # %bb.11:                               #   in Loop: Header=BB14_3 Depth=1
 	ori	$a0, $zero, 3

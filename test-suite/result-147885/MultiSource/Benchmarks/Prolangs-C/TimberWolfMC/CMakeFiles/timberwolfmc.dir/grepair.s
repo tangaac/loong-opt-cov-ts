@@ -19,13 +19,13 @@ grepair:                                # @grepair
 	ld.d	$s0, $a0, %got_pc_lo12(maxpnode)
 	ld.w	$a2, $fp, 0
 	ld.w	$a0, $s0, 0
-	add.w	$a1, $a0, $a2
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_12
+	add.w	$a0, $a0, $a2
+	blez	$a0, .LBB0_12
 # %bb.1:                                # %.lr.ph40.preheader
-	pcalau12i	$a1, %got_pc_hi20(gnodeArray)
-	ld.d	$s1, $a1, %got_pc_lo12(gnodeArray)
+	pcalau12i	$a0, %got_pc_hi20(gnodeArray)
+	ld.d	$s1, $a0, %got_pc_lo12(gnodeArray)
 	ld.d	$a1, $s1, 0
+	ori	$a0, $zero, 1
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                # %.loopexit.sink.split

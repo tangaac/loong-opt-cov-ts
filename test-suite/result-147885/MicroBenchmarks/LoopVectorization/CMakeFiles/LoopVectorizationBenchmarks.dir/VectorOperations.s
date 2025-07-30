@@ -192,7 +192,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint16_t_To_uint8_t_RN9benchmark5Sta
                                         #   in Loop: Header=BB0_10 Depth=1
 	bne	$a0, $s6, .LBB0_10
 .LBB0_12:                               # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB0_30
 # %bb.13:                               # %middle.block93
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
@@ -759,7 +759,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW16From_uint16_t_To_uint8_t_RN9benchmark5St
                                         #   in Loop: Header=BB1_10 Depth=1
 	bne	$a0, $s6, .LBB1_10
 .LBB1_12:                               # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB1_30
 # %bb.13:                               # %middle.block93
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
@@ -1268,7 +1268,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
                                         #   in Loop: Header=BB2_10 Depth=1
 	bne	$a1, $a0, .LBB2_10
 .LBB2_12:                               # %middle.split
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB2_28
 # %bb.13:                               # %middle.block91
 	ld.w	$s5, $s2, 28
@@ -2730,7 +2730,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint8_t_RN9benchmark5Sta
                                         #   in Loop: Header=BB6_10 Depth=1
 	bne	$a0, $s5, .LBB6_10
 .LBB6_12:                               # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB6_30
 # %bb.13:                               # %middle.block93
 	ld.w	$s3, $s6, 28
@@ -3365,7 +3365,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint8_t_RN9benchmark5St
                                         #   in Loop: Header=BB7_10 Depth=1
 	bne	$a0, $s5, .LBB7_10
 .LBB7_12:                               # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB7_30
 # %bb.13:                               # %middle.block93
 	ld.w	$s2, $s6, 28
@@ -3905,7 +3905,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5StateE: # 
 	bne	$a1, $a0, .LBB8_10
 .LBB8_12:                               # %middle.split
 	vst	$vr2, $sp, 0                    # 16-byte Folded Spill
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB8_28
 # %bb.13:                               # %middle.block91
 	ld.w	$s5, $s2, 28
@@ -5481,7 +5481,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint64_t_To_uint8_t_RN9benchmark5Sta
                                         #   in Loop: Header=BB12_10 Depth=1
 	bne	$a0, $s8, .LBB12_10
 .LBB12_12:                              # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB12_30
 # %bb.13:                               # %middle.block93
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
@@ -6177,7 +6177,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW16From_uint64_t_To_uint8_t_RN9benchmark5St
                                         #   in Loop: Header=BB13_10 Depth=1
 	bne	$a0, $s8, .LBB13_10
 .LBB13_12:                              # %middle.split
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB13_30
 # %bb.13:                               # %middle.block93
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
@@ -6760,7 +6760,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5StateE: # 
 	bne	$a1, $a0, .LBB14_10
 .LBB14_12:                              # %middle.split
 	vst	$vr2, $sp, 0                    # 16-byte Folded Spill
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB14_28
 # %bb.13:                               # %middle.block91
 	ld.w	$s5, $s2, 28

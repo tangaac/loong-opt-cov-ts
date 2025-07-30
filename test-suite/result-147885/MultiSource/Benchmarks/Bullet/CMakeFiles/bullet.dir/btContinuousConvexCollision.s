@@ -291,9 +291,8 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 # %bb.6:
 	ld.bu	$a0, $sp, 500
 	vld	$vr0, $sp, 480
-	ori	$a1, $zero, 1
 	vst	$vr0, $sp, 568
-	bne	$a0, $a1, .LBB1_30
+	beqz	$a0, .LBB1_30
 # %bb.7:
 	fst.s	$fs2, $sp, 28                   # 4-byte Folded Spill
 	fld.s	$fs3, $sp, 496
@@ -309,14 +308,14 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 	fst.s	$fs7, $sp, 20                   # 4-byte Folded Spill
 	fst.s	$fs0, $sp, 16                   # 4-byte Folded Spill
 	addi.d	$s3, $sp, 192
+	addi.d	$s6, $sp, 320
 	movgr2fr.w	$fs0, $zero
-	ori	$s4, $zero, 65
 	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
 	fld.s	$fa0, $a0, %pc_lo12(.LCPI1_3)
 	fst.s	$fa0, $sp, 12                   # 4-byte Folded Spill
-	ori	$s5, $zero, 1
+	ori	$s4, $zero, 65
 	fst.s	$fs0, $sp, 8                    # 4-byte Folded Spill
-	pcalau12i	$s6, %pc_hi20(.LCPI1_2)
+	pcalau12i	$s5, %pc_hi20(.LCPI1_2)
 	.p2align	4, , 16
 .LBB1_9:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 176
@@ -329,7 +328,7 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 32
 .Ltmp10:
-	fld.s	$fa0, $s6, %pc_lo12(.LCPI1_2)
+	fld.s	$fa0, $s5, %pc_lo12(.LCPI1_2)
 	addi.d	$a1, $sp, 568
 	addi.d	$a2, $sp, 208
 	jirl	$ra, $a3, 0
@@ -391,7 +390,7 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 32
 .Ltmp17:
-	fld.s	$fa0, $s6, %pc_lo12(.LCPI1_2)
+	fld.s	$fa0, $s5, %pc_lo12(.LCPI1_2)
 	addi.d	$a2, $sp, 208
 	move	$a1, $s3
 	jirl	$ra, $a3, 0
@@ -446,8 +445,7 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 	vst	$vr0, $a0, 0
 	st.w	$s8, $sp, 336
 	st.d	$zero, $sp, 344
-	addi.d	$a0, $sp, 320
-	vst	$vr1, $a0, 0
+	vst	$vr1, $s6, 0
 .Ltmp26:
 	addi.d	$a0, $sp, 360
 	addi.d	$a1, $sp, 208
@@ -459,7 +457,7 @@ _ZN27btContinuousConvexCollision16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12b
 .Ltmp27:
 # %bb.23:                               #   in Loop: Header=BB1_9 Depth=1
 	ld.bu	$a0, $sp, 76
-	bne	$a0, $s5, .LBB1_31
+	beqz	$a0, .LBB1_31
 # %bb.24:                               #   in Loop: Header=BB1_9 Depth=1
 	fld.s	$fs3, $sp, 72
 	fcmp.cule.s	$fcc0, $fs0, $fs3

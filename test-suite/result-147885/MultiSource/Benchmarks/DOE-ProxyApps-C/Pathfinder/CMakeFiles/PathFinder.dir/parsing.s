@@ -109,8 +109,7 @@ buildNodeFromData:                      # @buildNodeFromData
 	addi.w	$a0, $a0, -2
 	bne	$s1, $a0, .LBB1_11
 # %bb.4:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_10
+	blez	$s1, .LBB1_10
 .LBB1_5:
 	pcaddu18i	$ra, %call36(EdgeList_new)
 	jirl	$ra, $ra, 0
@@ -158,8 +157,7 @@ buildNodeFromData:                      # @buildNodeFromData
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	bge	$s1, $a0, .LBB1_5
+	bgtz	$s1, .LBB1_5
 	b	.LBB1_10
 .Lfunc_end1:
 	.size	buildNodeFromData, .Lfunc_end1-buildNodeFromData
@@ -397,7 +395,6 @@ parseFile:                              # @parseFile
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB3_52
 # %bb.7:
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	addi.d	$a0, $s3, 13
 	ori	$a2, $zero, 10
 	move	$a1, $zero
@@ -428,7 +425,7 @@ parseFile:                              # @parseFile
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_29
 .LBB3_9:                                # %.loopexit155
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(SystemCallMap_new)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 32
@@ -540,7 +537,6 @@ parseFile:                              # @parseFile
 .LBB3_22:
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.17)
-	ori	$s6, $zero, 1
 	b	.LBB3_24
 	.p2align	4, , 16
 .LBB3_23:                               #   in Loop: Header=BB3_24 Depth=1
@@ -571,7 +567,7 @@ parseFile:                              # @parseFile
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(IntVector_createFromString)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s6, .LBB3_23
+	blez	$a0, .LBB3_23
 # %bb.27:                               #   in Loop: Header=BB3_24 Depth=1
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(buildNodeFromData)
@@ -593,13 +589,12 @@ parseFile:                              # @parseFile
 	addi.d	$s4, $a0, %pc_lo12(.L.str.18)
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$s5, $a0, %pc_lo12(.L.str.17)
-	ori	$s6, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB3_31
 	.p2align	4, , 16
 .LBB3_30:                               # %._crit_edge163
@@ -634,9 +629,9 @@ parseFile:                              # @parseFile
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a1, $a0, 2048
+	slli.d	$a1, $a0, 52
 	addi.d	$a0, $zero, -1
-	beqz	$a1, .LBB3_35
+	bgez	$a1, .LBB3_35
 # %bb.34:                               #   in Loop: Header=BB3_31 Depth=1
 	ori	$a2, $zero, 10
 	move	$a0, $s7
@@ -684,7 +679,7 @@ parseFile:                              # @parseFile
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(IntVector_createFromString)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s6, .LBB3_37
+	blez	$a0, .LBB3_37
 # %bb.41:                               #   in Loop: Header=BB3_38 Depth=2
 	ld.d	$a0, $s3, 8
 	ld.w	$a2, $a0, 0
@@ -713,7 +708,7 @@ parseFile:                              # @parseFile
 # %bb.47:                               # %.critedge.i.preheader
                                         #   in Loop: Header=BB3_38 Depth=2
 	ori	$s8, $zero, 2
-	ori	$s2, $zero, 8
+	ori	$s6, $zero, 8
 	.p2align	4, , 16
 .LBB3_48:                               # %.critedge.i
                                         #   Parent Loop BB3_31 Depth=1
@@ -721,7 +716,7 @@ parseFile:                              # @parseFile
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a1, $s3, 8
 	ld.d	$a0, $s7, 40
-	ldx.w	$a1, $a1, $s2
+	ldx.w	$a1, $a1, $s6
 	pcaddu18i	$ra, %call36(EdgeList_insertNodeId)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s7, 52
@@ -729,7 +724,7 @@ parseFile:                              # @parseFile
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s7, 52
 	addi.d	$s8, $s8, 1
-	addi.d	$s2, $s2, 4
+	addi.d	$s6, $s6, 4
 	blt	$s8, $a1, .LBB3_48
 	b	.LBB3_37
 	.p2align	4, , 16
@@ -750,9 +745,9 @@ parseFile:                              # @parseFile
 	st.w	$a0, $fp, 8
 	b	.LBB3_37
 .LBB3_51:                               #   in Loop: Header=BB3_38 Depth=2
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s7, 40
@@ -770,7 +765,7 @@ parseFile:                              # @parseFile
 	jirl	$ra, $ra, 0
 	b	.LBB3_57
 .LBB3_53:                               # %.loopexit155.thread
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(SystemCallMap_new)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 32
@@ -842,8 +837,8 @@ parseFile:                              # @parseFile
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB3_61
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB3_61
 # %bb.64:                               #   in Loop: Header=BB3_62 Depth=1
 	ori	$a2, $zero, 10
 	move	$a0, $a1
@@ -892,7 +887,7 @@ parseFile:                              # @parseFile
 	bnez	$a4, .LBB3_69
 	b	.LBB3_60
 .LBB3_72:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.19)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.19)
@@ -945,8 +940,7 @@ parseSignature:                         # @parseSignature
 	beqz	$a0, .LBB4_11
 # %bb.7:                                # %.preheader
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB4_10
+	blez	$s2, .LBB4_10
 # %bb.8:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	move	$s4, $s0
@@ -1010,7 +1004,7 @@ parseConfigFile:                        # @parseConfigFile
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_5
+	beqz	$a0, .LBB5_4
 # %bb.1:
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
@@ -1034,23 +1028,22 @@ parseConfigFile:                        # @parseConfigFile
 	ori	$a2, $zero, 24
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_8
+	beqz	$a0, .LBB5_7
 .LBB5_3:
 	pcalau12i	$a0, %pc_hi20(.Lstr.10)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.10)
-.LBB5_4:
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	b	.LBB5_6
-.LBB5_5:
+	b	.LBB5_5
+.LBB5_4:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-.LBB5_6:
+.LBB5_5:
 	move	$a0, $zero
-.LBB5_7:
+.LBB5_6:
 	ld.d	$s8, $sp, 1016                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1024                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1032                  # 8-byte Folded Reload
@@ -1064,7 +1057,7 @@ parseConfigFile:                        # @parseConfigFile
 	ld.d	$ra, $sp, 1096                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 1104
 	ret
-.LBB5_8:
+.LBB5_7:
 	addi.d	$a0, $sp, 16
 	ori	$a1, $zero, 1000
 	move	$a2, $s0
@@ -1073,28 +1066,30 @@ parseConfigFile:                        # @parseConfigFile
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_10
-# %bb.9:
+	bnez	$a0, .LBB5_9
+# %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.27)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.27)
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 5
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_11
-.LBB5_10:
+	beqz	$a0, .LBB5_10
+.LBB5_9:
 	pcalau12i	$a0, %pc_hi20(.Lstr.9)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.9)
-	b	.LBB5_4
-.LBB5_11:
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_10:
 	addi.d	$a0, $sp, 22
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	addi.w	$s1, $a0, 0
-	beqz	$s1, .LBB5_15
-# %bb.12:
+	beqz	$s1, .LBB5_14
+# %bb.11:
 	move	$s2, $a0
 	addi.d	$a0, $sp, 16
 	ori	$a1, $zero, 1000
@@ -1104,32 +1099,36 @@ parseConfigFile:                        # @parseConfigFile
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_14
-# %bb.13:
+	bnez	$a0, .LBB5_13
+# %bb.12:
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_16
-.LBB5_14:
+	beqz	$a0, .LBB5_15
+.LBB5_13:
 	pcalau12i	$a0, %pc_hi20(.Lstr.7)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.7)
-	b	.LBB5_4
-.LBB5_15:
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_14:
 	pcalau12i	$a0, %pc_hi20(.Lstr.8)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.8)
-	b	.LBB5_4
-.LBB5_16:
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_15:
 	addi.d	$a0, $sp, 27
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	addi.w	$s4, $a0, 0
-	beqz	$s4, .LBB5_44
-# %bb.17:
+	beqz	$s4, .LBB5_30
+# %bb.16:
 	move	$s3, $a0
 	addi.d	$a0, $sp, 16
 	ori	$a1, $zero, 1000
@@ -1139,16 +1138,16 @@ parseConfigFile:                        # @parseConfigFile
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_14
-# %bb.18:
+	bnez	$a0, .LBB5_13
+# %bb.17:
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 11
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_14
-# %bb.19:
+	bnez	$a0, .LBB5_13
+# %bb.18:
 	ld.w	$a0, $sp, 28
 	lu12i.w	$a1, 415319
 	ld.d	$a2, $fp, 16
@@ -1165,12 +1164,10 @@ parseConfigFile:                        # @parseConfigFile
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
-	beqz	$a0, .LBB5_45
-# %bb.20:                               # %.preheader89
-	move	$a1, $a0
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB5_31
-# %bb.21:                               # %.lr.ph
+	beqz	$a0, .LBB5_31
+# %bb.19:                               # %.preheader89
+	blez	$s1, .LBB5_32
+# %bb.20:                               # %.lr.ph
 	move	$s6, $zero
 	addi.d	$s1, $sp, 21
 	bstrpick.d	$s7, $s2, 30, 0
@@ -1178,8 +1175,8 @@ parseConfigFile:                        # @parseConfigFile
 	addi.d	$s2, $a0, %pc_lo12(.L.str.36)
 	ori	$s8, $zero, 10
 	ori	$s5, $zero, 13
-.LBB5_22:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB5_25 Depth 2
+.LBB5_21:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB5_24 Depth 2
 	addi.d	$a0, $sp, 16
 	ori	$a1, $zero, 1000
 	move	$a2, $s0
@@ -1188,47 +1185,62 @@ parseConfigFile:                        # @parseConfigFile
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_46
-# %bb.23:                               #   in Loop: Header=BB5_22 Depth=1
+	bnez	$a0, .LBB5_45
+# %bb.22:                               #   in Loop: Header=BB5_21 Depth=1
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 5
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
-	bnez	$a0, .LBB5_46
-# %bb.24:                               # %.preheader99
-                                        #   in Loop: Header=BB5_22 Depth=1
+	bnez	$a0, .LBB5_45
+# %bb.23:                               # %.preheader99
+                                        #   in Loop: Header=BB5_21 Depth=1
 	ld.bu	$a0, $a1, 0
-	beqz	$a0, .LBB5_29
-.LBB5_25:                               # %.preheader99
-                                        #   Parent Loop BB5_22 Depth=1
+	beqz	$a0, .LBB5_28
+.LBB5_24:                               # %.preheader99
+                                        #   Parent Loop BB5_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	beq	$a0, $s8, .LBB5_28
-# %bb.26:                               # %.preheader99
-                                        #   in Loop: Header=BB5_25 Depth=2
-	beq	$a0, $s5, .LBB5_28
-# %bb.27:                               #   in Loop: Header=BB5_25 Depth=2
+	beq	$a0, $s8, .LBB5_27
+# %bb.25:                               # %.preheader99
+                                        #   in Loop: Header=BB5_24 Depth=2
+	beq	$a0, $s5, .LBB5_27
+# %bb.26:                               #   in Loop: Header=BB5_24 Depth=2
 	addi.d	$a1, $a1, 1
 	ld.bu	$a0, $a1, 0
-	bnez	$a0, .LBB5_25
-	b	.LBB5_29
-.LBB5_28:                               # %.loopexit.sink.split.i
-                                        #   in Loop: Header=BB5_22 Depth=1
+	bnez	$a0, .LBB5_24
+	b	.LBB5_28
+.LBB5_27:                               # %.loopexit.sink.split.i
+                                        #   in Loop: Header=BB5_21 Depth=1
 	st.b	$zero, $a1, 0
-.LBB5_29:                               # %pruneLine.exit
-                                        #   in Loop: Header=BB5_22 Depth=1
+.LBB5_28:                               # %pruneLine.exit
+                                        #   in Loop: Header=BB5_21 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(parseFile)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $s6, 3
 	stx.d	$a0, $a1, $a2
-	beqz	$a0, .LBB5_48
-# %bb.30:                               #   in Loop: Header=BB5_22 Depth=1
+	beqz	$a0, .LBB5_47
+# %bb.29:                               #   in Loop: Header=BB5_21 Depth=1
 	addi.d	$s6, $s6, 1
-	bne	$s6, $s7, .LBB5_22
-.LBB5_31:                               # %._crit_edge
+	bne	$s6, $s7, .LBB5_21
+	b	.LBB5_33
+.LBB5_30:
+	pcalau12i	$a0, %pc_hi20(.Lstr.6)
+	addi.d	$a0, $a0, %pc_lo12(.Lstr.6)
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_31:
+	pcalau12i	$a0, %pc_hi20(.Lstr.1)
+	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_32:
+	move	$a1, $a0
+.LBB5_33:                               # %._crit_edge
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	srai.d	$a0, $a0, 29
 	stx.d	$zero, $a1, $a0
@@ -1240,12 +1252,10 @@ parseConfigFile:                        # @parseConfigFile
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 8
-	beqz	$a0, .LBB5_47
-# %bb.32:                               # %.preheader
-	move	$a1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB5_43
-# %bb.33:                               # %.lr.ph96
+	beqz	$a0, .LBB5_46
+# %bb.34:                               # %.preheader
+	blez	$s4, .LBB5_48
+# %bb.35:                               # %.lr.ph96
 	move	$s4, $zero
 	addi.d	$s1, $sp, 26
 	bstrpick.d	$s3, $s3, 30, 0
@@ -1253,8 +1263,8 @@ parseConfigFile:                        # @parseConfigFile
 	addi.d	$s2, $a0, %pc_lo12(.L.str.40)
 	ori	$s6, $zero, 10
 	ori	$s7, $zero, 13
-.LBB5_34:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB5_37 Depth 2
+.LBB5_36:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB5_39 Depth 2
 	addi.d	$a0, $sp, 16
 	ori	$a1, $zero, 1000
 	move	$a2, $s0
@@ -1263,80 +1273,81 @@ parseConfigFile:                        # @parseConfigFile
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_49
-# %bb.35:                               #   in Loop: Header=BB5_34 Depth=1
+	bnez	$a0, .LBB5_50
+# %bb.37:                               #   in Loop: Header=BB5_36 Depth=1
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 10
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
-	bnez	$a0, .LBB5_49
-# %bb.36:                               # %.preheader98
-                                        #   in Loop: Header=BB5_34 Depth=1
-	ld.bu	$a0, $a1, 0
-	beqz	$a0, .LBB5_41
-.LBB5_37:                               # %.preheader98
-                                        #   Parent Loop BB5_34 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	beq	$a0, $s6, .LBB5_40
+	bnez	$a0, .LBB5_50
 # %bb.38:                               # %.preheader98
-                                        #   in Loop: Header=BB5_37 Depth=2
-	beq	$a0, $s7, .LBB5_40
-# %bb.39:                               #   in Loop: Header=BB5_37 Depth=2
+                                        #   in Loop: Header=BB5_36 Depth=1
+	ld.bu	$a0, $a1, 0
+	beqz	$a0, .LBB5_43
+.LBB5_39:                               # %.preheader98
+                                        #   Parent Loop BB5_36 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	beq	$a0, $s6, .LBB5_42
+# %bb.40:                               # %.preheader98
+                                        #   in Loop: Header=BB5_39 Depth=2
+	beq	$a0, $s7, .LBB5_42
+# %bb.41:                               #   in Loop: Header=BB5_39 Depth=2
 	addi.d	$a1, $a1, 1
 	ld.bu	$a0, $a1, 0
-	bnez	$a0, .LBB5_37
-	b	.LBB5_41
-.LBB5_40:                               # %.loopexit.sink.split.i83
-                                        #   in Loop: Header=BB5_34 Depth=1
+	bnez	$a0, .LBB5_39
+	b	.LBB5_43
+.LBB5_42:                               # %.loopexit.sink.split.i83
+                                        #   in Loop: Header=BB5_36 Depth=1
 	st.b	$zero, $a1, 0
-.LBB5_41:                               # %pruneLine.exit85
-                                        #   in Loop: Header=BB5_34 Depth=1
+.LBB5_43:                               # %pruneLine.exit85
+                                        #   in Loop: Header=BB5_36 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(parseSignature)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 8
 	slli.d	$a2, $s4, 3
 	stx.d	$a0, $a1, $a2
-	beqz	$a0, .LBB5_50
-# %bb.42:                               #   in Loop: Header=BB5_34 Depth=1
+	beqz	$a0, .LBB5_51
+# %bb.44:                               #   in Loop: Header=BB5_36 Depth=1
 	addi.d	$s4, $s4, 1
-	bne	$s4, $s3, .LBB5_34
-.LBB5_43:                               # %._crit_edge97
-	srai.d	$a0, $s5, 29
-	stx.d	$zero, $a1, $a0
-	ori	$a0, $zero, 1
-	b	.LBB5_7
-.LBB5_44:
-	pcalau12i	$a0, %pc_hi20(.Lstr.6)
-	addi.d	$a0, $a0, %pc_lo12(.Lstr.6)
-	b	.LBB5_4
+	bne	$s4, $s3, .LBB5_36
+	b	.LBB5_49
 .LBB5_45:
-	pcalau12i	$a0, %pc_hi20(.Lstr.1)
-	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
-	b	.LBB5_4
-.LBB5_46:
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.4)
-	b	.LBB5_4
-.LBB5_47:
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_46:
 	pcalau12i	$a0, %pc_hi20(.Lstr.2)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
-	b	.LBB5_4
-.LBB5_48:
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_47:
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	b	.LBB5_51
-.LBB5_49:
+	b	.LBB5_52
+.LBB5_48:
+	move	$a1, $a0
+.LBB5_49:                               # %._crit_edge97
+	srai.d	$a0, $s5, 29
+	stx.d	$zero, $a1, $a0
+	ori	$a0, $zero, 1
+	b	.LBB5_6
+.LBB5_50:
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.3)
-	b	.LBB5_4
-.LBB5_50:
+	pcaddu18i	$ra, %call36(puts)
+	jirl	$ra, $ra, 0
+	b	.LBB5_5
+.LBB5_51:
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	move	$a1, $s1
@@ -1346,10 +1357,10 @@ parseConfigFile:                        # @parseConfigFile
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
-.LBB5_51:
+.LBB5_52:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB5_6
+	b	.LBB5_5
 .Lfunc_end5:
 	.size	parseConfigFile, .Lfunc_end5-parseConfigFile
                                         # -- End function

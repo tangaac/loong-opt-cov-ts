@@ -5,21 +5,21 @@
 	.type	usoftnet,@function
 usoftnet:                               # @usoftnet
 # %bb.0:
-	ld.w	$a5, $a0, 132
-	ori	$a2, $zero, 1
-	blt	$a5, $a2, .LBB0_25
+	ld.w	$a4, $a0, 132
+	blez	$a4, .LBB0_25
 # %bb.1:                                # %.lr.ph83
 	move	$a1, $a0
 	pcalau12i	$a0, %got_pc_hi20(termarray)
-	ld.d	$a3, $a0, %got_pc_lo12(termarray)
+	ld.d	$a2, $a0, %got_pc_lo12(termarray)
 	pcalau12i	$a0, %got_pc_hi20(netarray)
-	ld.d	$a4, $a0, %got_pc_lo12(netarray)
+	ld.d	$a3, $a0, %got_pc_lo12(netarray)
 	move	$a0, $zero
 	ld.d	$a1, $a1, 144
+	ld.d	$a2, $a2, 0
 	ld.d	$a3, $a3, 0
-	ld.d	$a4, $a4, 0
-	addi.d	$a5, $a5, 1
-	bstrpick.d	$a5, $a5, 31, 0
+	addi.d	$a4, $a4, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	ori	$a5, $zero, 1
 	ori	$a6, $zero, 44
 	ori	$a7, $zero, 1
 	b	.LBB0_4
@@ -66,22 +66,22 @@ usoftnet:                               # @usoftnet
 	sub.w	$a0, $a0, $t0
 .LBB0_3:                                #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$a7, $a7, 1
-	beq	$a7, $a5, .LBB0_26
+	beq	$a7, $a4, .LBB0_26
 .LBB0_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_7 Depth 2
                                         #     Child Loop BB0_15 Depth 2
 	mul.d	$t0, $a7, $a6
 	ldx.w	$t0, $a1, $t0
 	slli.d	$t0, $t0, 3
-	ldx.d	$t0, $a3, $t0
+	ldx.d	$t0, $a2, $t0
 	ld.w	$t0, $t0, 0
 	slli.d	$t0, $t0, 3
-	ldx.d	$t0, $a4, $t0
+	ldx.d	$t0, $a3, $t0
 	ld.w	$t1, $t0, 32
 	beqz	$t1, .LBB0_3
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$t1, $t0, 8
-	beq	$t1, $a2, .LBB0_3
+	beq	$t1, $a5, .LBB0_3
 # %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
 	st.w	$zero, $t0, 32
 	move	$t1, $t0
@@ -92,10 +92,10 @@ usoftnet:                               # @usoftnet
 	beqz	$t1, .LBB0_2
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=2
 	ld.w	$t2, $t1, 40
-	beq	$t2, $a2, .LBB0_7
+	beq	$t2, $a5, .LBB0_7
 # %bb.9:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$t2, $t1, 28
-	bne	$t2, $a2, .LBB0_11
+	bne	$t2, $a5, .LBB0_11
 # %bb.10:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$t2, $t1, 16
 	ld.w	$t3, $t1, 20
@@ -122,10 +122,10 @@ usoftnet:                               # @usoftnet
 .LBB0_15:                               #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t2, $t1, 40
-	beq	$t2, $a2, .LBB0_14
+	beq	$t2, $a5, .LBB0_14
 # %bb.16:                               #   in Loop: Header=BB0_15 Depth=2
 	ld.w	$t2, $t1, 28
-	bne	$t2, $a2, .LBB0_20
+	bne	$t2, $a5, .LBB0_20
 # %bb.17:                               #   in Loop: Header=BB0_15 Depth=2
 	ld.w	$t3, $t1, 16
 	ld.w	$t2, $t1, 20

@@ -42,8 +42,7 @@ prboard:                                # @prboard
 	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	ld.w	$a1, $a2, 0
 	add.w	$a0, $a1, $a0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.2:                                # %.lr.ph92.preheader
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
@@ -199,8 +198,7 @@ prboard:                                # @prboard
 # %bb.9:                                # %.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $s1, 132
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.10:                               # %.lr.ph89
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$s4, $zero

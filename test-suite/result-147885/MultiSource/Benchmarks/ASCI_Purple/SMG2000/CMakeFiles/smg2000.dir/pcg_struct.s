@@ -69,9 +69,8 @@ hypre_StructKrylovCreateVectorArray:    # @hypre_StructKrylovCreateVectorArray
 	ori	$a1, $zero, 8
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$s0, $a1, .LBB3_3
+	blez	$s0, .LBB3_3
 # %bb.1:                                # %.lr.ph
 	move	$s2, $s1
 	.p2align	4, , 16

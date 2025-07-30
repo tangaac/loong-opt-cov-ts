@@ -1402,8 +1402,7 @@ factor:                                 # @factor
 	addi.d	$a1, $a1, %pc_lo12(GlobalTable)
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 20
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB1_37
+	bgez	$a1, .LBB1_37
 # %bb.170:
 	ld.w	$a0, $a0, 12
 	addi.d	$a0, $a0, -2002
@@ -2319,17 +2318,17 @@ FunctionDef:                            # @FunctionDef
 # %bb.6:
 	slli.d	$a0, $a1, 5
 	add.d	$a0, $fp, $a0
-	ld.w	$a4, $a0, 20
-	beqz	$a4, .LBB6_35
+	ld.w	$a3, $a0, 20
+	beqz	$a3, .LBB6_35
 # %bb.7:
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a4, .LBB6_54
+	bltz	$a3, .LBB6_54
 # %bb.8:
 	st.w	$a2, $a0, 12
 	pcalau12i	$a2, %pc_hi20(FuncNameIndex)
 	st.w	$a1, $a2, %pc_lo12(FuncNameIndex)
-	lu32i.d	$a3, 0
-	st.w	$a3, $a0, 20
+	addi.w	$a2, $zero, -1
+	lu32i.d	$a2, 0
+	st.w	$a2, $a0, 20
 	b	.LBB6_12
 .LBB6_9:
 	pcalau12i	$s1, %pc_hi20(LabelCounter)

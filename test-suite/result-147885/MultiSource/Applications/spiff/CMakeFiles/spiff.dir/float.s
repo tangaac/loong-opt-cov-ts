@@ -43,9 +43,9 @@ F_isfloat:                              # @F_isfloat
 	slli.d	$a3, $a2, 1
 	ldx.hu	$a3, $a0, $a3
 	addi.d	$s0, $s0, 1
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$fp, $fp, 1
-	bnez	$a3, .LBB0_6
+	bltz	$a3, .LBB0_6
 # %bb.7:
 	andi	$a2, $a2, 255
 .LBB0_8:                                # %._crit_edge
@@ -62,8 +62,8 @@ F_isfloat:                              # @F_isfloat
 	ext.w.b	$a3, $a2
 	slli.d	$a3, $a3, 1
 	ldx.hu	$a3, $a0, $a3
-	andi	$a3, $a3, 2048
-	bnez	$a3, .LBB0_14
+	slli.d	$a3, $a3, 52
+	bltz	$a3, .LBB0_14
 # %bb.12:                               # %._crit_edge67
 	bnez	$a1, .LBB0_16
 .LBB0_13:
@@ -76,9 +76,9 @@ F_isfloat:                              # @F_isfloat
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
 	addi.d	$s0, $s0, 1
-	andi	$a2, $a2, 2048
+	slli.d	$a2, $a2, 52
 	addi.w	$fp, $fp, 1
-	bnez	$a2, .LBB0_14
+	bltz	$a2, .LBB0_14
 # %bb.15:
 	andi	$a2, $a1, 255
 .LBB0_16:                               # %._crit_edge67.thread
@@ -111,8 +111,8 @@ F_isfloat:                              # @F_isfloat
 	ext.w.b	$a2, $a2
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a0, $a2
-	andi	$a2, $a2, 2048
-	beqz	$a2, .LBB0_26
+	slli.d	$a2, $a2, 52
+	bgez	$a2, .LBB0_26
 # %bb.23:                               # %.lr.ph75.preheader
 	addi.d	$a3, $a3, 1
 	move	$a2, $a1
@@ -123,9 +123,9 @@ F_isfloat:                              # @F_isfloat
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a0, $a1
 	addi.d	$a2, $a2, 1
-	andi	$a1, $a1, 2048
+	slli.d	$a1, $a1, 52
 	addi.d	$a3, $a3, 1
-	bnez	$a1, .LBB0_24
+	bltz	$a1, .LBB0_24
 .LBB0_25:                               # %.loopexit
 	add.w	$fp, $a2, $fp
 .LBB0_26:
@@ -189,8 +189,8 @@ F_atof:                                 # @F_atof
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $s5, 1
 	ldx.hu	$a1, $a0, $a1
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB1_11
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB1_11
 # %bb.7:                                # %.preheader
 	addi.d	$a1, $s4, -46
 	sltui	$a2, $a1, 1
@@ -226,9 +226,9 @@ F_atof:                                 # @F_atof
 	ldx.hu	$a4, $a0, $a4
 	addi.d	$a2, $a2, 1
 	addi.w	$s5, $s5, 1
-	andi	$a4, $a4, 2048
+	slli.d	$a4, $a4, 52
 	andi	$s4, $a3, 255
-	bnez	$a4, .LBB1_12
+	bltz	$a4, .LBB1_12
 # %bb.13:                               # %._crit_edge..loopexit_crit_edge
 	addi.d	$a1, $s4, -46
 	sltui	$a1, $a1, 1
@@ -246,8 +246,8 @@ F_atof:                                 # @F_atof
 	ext.w.b	$a3, $a1
 	slli.d	$a3, $a3, 1
 	ldx.hu	$a3, $a0, $a3
-	andi	$a3, $a3, 2048
-	bnez	$a3, .LBB1_18
+	slli.d	$a3, $a3, 52
+	bltz	$a3, .LBB1_18
 # %bb.17:
 	move	$s3, $a2
 	b	.LBB1_20
@@ -266,11 +266,11 @@ F_atof:                                 # @F_atof
 	ldx.hu	$a4, $a0, $a4
 	addi.d	$s3, $a2, 1
 	andi	$a1, $a1, 255
-	andi	$a4, $a4, 2048
 	addi.d	$a3, $a3, 1
+	slli.d	$a4, $a4, 52
 	addi.w	$s5, $s5, 1
 	move	$a2, $s3
-	bnez	$a4, .LBB1_19
+	bltz	$a4, .LBB1_19
 .LBB1_20:                               # %._crit_edge91
 	addi.d	$a0, $a1, -68
 	ori	$a1, $zero, 33
@@ -308,9 +308,9 @@ F_atof:                                 # @F_atof
 	ld.b	$a1, $s3, 0
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
-	andi	$a2, $a2, 2048
+	slli.d	$a2, $a2, 52
 	addi.d	$s3, $s3, 1
-	bnez	$a2, .LBB1_28
+	bltz	$a2, .LBB1_28
 # %bb.29:
 	andi	$a0, $a1, 255
 	beqz	$a0, .LBB1_31
@@ -482,20 +482,20 @@ F_floatsub:                             # @F_floatsub
 	bgeu	$a0, $s3, .LBB2_17
 # %bb.13:
 	sub.w	$a0, $s3, $a0
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB2_21
+	blez	$a0, .LBB2_21
 # %bb.14:                               # %.lr.ph.i.preheader
-	addi.d	$s3, $a0, 1
-	ori	$s4, $zero, 48
+	addi.d	$s1, $a0, 1
+	ori	$s3, $zero, 48
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB2_15:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $s3, -1
-	stx.h	$s4, $s2, $a0
-	bltu	$s1, $s3, .LBB2_15
+	addi.w	$s1, $s1, -1
+	stx.h	$s3, $s2, $a0
+	bltu	$s4, $s1, .LBB2_15
 	b	.LBB2_21
 .LBB2_16:
 	ld.d	$s0, $s5, %pc_lo12(F_floatsub.result)
@@ -508,20 +508,20 @@ F_floatsub:                             # @F_floatsub
 	bgeu	$s3, $a0, .LBB2_21
 # %bb.18:
 	sub.w	$a0, $a0, $s3
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB2_21
+	blez	$a0, .LBB2_21
 # %bb.19:                               # %.lr.ph.i59.preheader
-	addi.d	$s3, $a0, 1
-	ori	$s4, $zero, 48
+	addi.d	$s2, $a0, 1
+	ori	$s3, $zero, 48
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB2_20:                               # %.lr.ph.i59
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $s3, -1
-	stx.h	$s4, $s1, $a0
-	bltu	$s2, $s3, .LBB2_20
+	addi.w	$s2, $s2, -1
+	stx.h	$s3, $s1, $a0
+	bltu	$s4, $s2, .LBB2_20
 .LBB2_21:                               # %addzeros.exit
 	pcalau12i	$a0, %pc_hi20(F_floatsub.man1)
 	addi.d	$s1, $a0, %pc_lo12(F_floatsub.man1)
@@ -1248,9 +1248,8 @@ F_floatmagadd:                          # @F_floatmagadd
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(R_getexp)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
 	move	$s3, $a0
-	bge	$a1, $s5, .LBB7_6
+	bltz	$s5, .LBB7_6
 # %bb.3:
 	slti	$s3, $s3, 0
 	move	$a0, $s2
@@ -1272,8 +1271,7 @@ F_floatmagadd:                          # @F_floatmagadd
 	maskeqz	$a1, $a1, $s5
 	or	$a0, $a1, $a0
 	add.w	$s5, $a0, $s3
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB7_7
+	blez	$s5, .LBB7_7
 .LBB7_4:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(R_getexp)
@@ -1302,8 +1300,7 @@ F_floatmagadd:                          # @F_floatmagadd
 	srai.d	$a1, $a0, 63
 	xor	$a0, $a0, $a1
 	sub.w	$s5, $a0, $a1
-	ori	$a0, $zero, 1
-	bge	$s5, $a0, .LBB7_4
+	bgtz	$s5, .LBB7_4
 .LBB7_7:
 	ld.d	$a0, $s2, 8
 	pcaddu18i	$ra, %call36(strlen)
@@ -1351,14 +1348,14 @@ F_floatmagadd:                          # @F_floatmagadd
 	jirl	$ra, $ra, 0
 	bge	$s3, $a0, .LBB7_16
 # %bb.12:
-	ori	$s6, $zero, 1
 	move	$a0, $s1
-	blt	$s5, $s6, .LBB7_20
+	blez	$s5, .LBB7_20
 # %bb.13:                               # %.lr.ph.i.preheader
 	addi.d	$s5, $s5, 1
 	pcalau12i	$a0, %pc_hi20(F_floatmagadd.man1)
 	addi.d	$s3, $a0, %pc_lo12(F_floatmagadd.man1)
-	ori	$s7, $zero, 48
+	ori	$s6, $zero, 48
+	ori	$s7, $zero, 1
 	.p2align	4, , 16
 .LBB7_14:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -1366,27 +1363,27 @@ F_floatmagadd:                          # @F_floatmagadd
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$s5, $s5, -1
-	stx.h	$s7, $s3, $a0
-	bltu	$s6, $s5, .LBB7_14
+	stx.h	$s6, $s3, $a0
+	bltu	$s7, $s5, .LBB7_14
 # %bb.15:
 	move	$a0, $s1
 	b	.LBB7_20
 .LBB7_16:
-	ori	$s3, $zero, 1
 	move	$a0, $s2
-	blt	$s5, $s3, .LBB7_20
+	blez	$s5, .LBB7_20
 # %bb.17:                               # %.lr.ph.i43.preheader
-	addi.d	$s5, $s5, 1
-	ori	$s6, $zero, 48
+	addi.d	$s3, $s5, 1
+	ori	$s5, $zero, 48
+	ori	$s6, $zero, 1
 	.p2align	4, , 16
 .LBB7_18:                               # %.lr.ph.i43
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$s5, $s5, -1
-	stx.h	$s6, $s0, $a0
-	bltu	$s3, $s5, .LBB7_18
+	addi.w	$s3, $s3, -1
+	stx.h	$s5, $s0, $a0
+	bltu	$s6, $s3, .LBB7_18
 # %bb.19:
 	move	$a0, $s2
 .LBB7_20:                               # %addzeros.exit

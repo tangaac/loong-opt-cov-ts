@@ -102,11 +102,10 @@ mv_reduce:                              # @mv_reduce
 	pcalau12i	$a2, %got_pc_hi20(cube)
 	ld.d	$s6, $a2, %got_pc_lo12(cube)
 	ld.w	$a2, $s6, 4
-	ori	$a3, $zero, 1
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	move	$s1, $a0
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	blt	$a2, $a3, .LBB1_28
+	blez	$a2, .LBB1_28
 # %bb.1:                                # %.lr.ph133
 	move	$a3, $zero
 	lu12i.w	$a0, -9
@@ -141,7 +140,7 @@ mv_reduce:                              # @mv_reduce
 # %bb.6:                                # %.lr.ph129.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
-	slli.d	$s7, $a3, 3
+	slli.d	$s8, $a3, 3
 	st.d	$a4, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB1_8
 	.p2align	4, , 16
@@ -174,8 +173,8 @@ mv_reduce:                              # @mv_reduce
 	mul.w	$a0, $a1, $a2
 	ori	$a2, $zero, 1
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	sll.w	$s8, $a2, $fp
-	blt	$a0, $a2, .LBB1_13
+	sll.w	$s7, $a2, $fp
+	blez	$a0, .LBB1_13
 # %bb.9:                                # %.lr.ph
                                         #   in Loop: Header=BB1_8 Depth=2
 	ld.d	$s3, $s1, 24
@@ -193,7 +192,7 @@ mv_reduce:                              # @mv_reduce
                                         #     Parent Loop BB1_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.w	$a0, $s3, $s0
-	and	$a0, $a0, $s8
+	and	$a0, $a0, $s7
 	beqz	$a0, .LBB1_10
 # %bb.12:                               #   in Loop: Header=BB1_11 Depth=3
 	ld.w	$a0, $s2, 12
@@ -204,7 +203,7 @@ mv_reduce:                              # @mv_reduce
 	ld.d	$a3, $s2, 24
 	ld.w	$a4, $s2, 0
 	addi.d	$a5, $a0, 1
-	ldx.d	$a2, $a1, $s7
+	ldx.d	$a2, $a1, $s8
 	st.w	$a5, $s2, 12
 	mul.w	$a0, $a4, $a0
 	alsl.d	$s4, $a0, $a3, 2
@@ -213,7 +212,7 @@ mv_reduce:                              # @mv_reduce
 	pcaddu18i	$ra, %call36(set_diff)
 	jirl	$ra, $ra, 0
 	ldx.w	$a0, $s4, $s0
-	or	$a0, $a0, $s8
+	or	$a0, $a0, $s7
 	stx.w	$a0, $s4, $s0
 	ld.w	$a1, $s1, 0
 	b	.LBB1_10
@@ -229,8 +228,7 @@ mv_reduce:                              # @mv_reduce
 	ld.w	$a1, $fp, 0
 	mul.w	$a2, $a1, $a2
 	move	$s3, $a0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB1_18
+	blez	$a2, .LBB1_18
 # %bb.14:                               # %.lr.ph119
                                         #   in Loop: Header=BB1_8 Depth=2
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
@@ -249,7 +247,7 @@ mv_reduce:                              # @mv_reduce
                                         # =>    This Inner Loop Header: Depth=3
 	slli.d	$s1, $s0, 2
 	ldx.w	$a0, $s4, $s1
-	and	$a0, $a0, $s8
+	and	$a0, $a0, $s7
 	beqz	$a0, .LBB1_15
 # %bb.17:                               #   in Loop: Header=BB1_16 Depth=3
 	ld.w	$a0, $s3, 12
@@ -257,7 +255,7 @@ mv_reduce:                              # @mv_reduce
 	ld.d	$a3, $s3, 24
 	ld.w	$a4, $s3, 0
 	addi.d	$a5, $a0, 1
-	ldx.d	$a2, $a1, $s7
+	ldx.d	$a2, $a1, $s8
 	st.w	$a5, $s3, 12
 	mul.w	$a0, $a0, $a4
 	alsl.d	$s5, $a0, $a3, 2
@@ -266,7 +264,7 @@ mv_reduce:                              # @mv_reduce
 	pcaddu18i	$ra, %call36(set_diff)
 	jirl	$ra, $ra, 0
 	ldx.w	$a0, $s5, $s1
-	or	$a0, $a0, $s8
+	or	$a0, $a0, $s7
 	stx.w	$a0, $s5, $s1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
@@ -281,14 +279,13 @@ mv_reduce:                              # @mv_reduce
 	ld.w	$a1, $s2, 12
 	ld.w	$a0, $s2, 0
 	mul.w	$a1, $a0, $a1
-	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	blt	$a1, $a2, .LBB1_26
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	blez	$a1, .LBB1_26
 # %bb.19:                               # %.lr.ph124
                                         #   in Loop: Header=BB1_8 Depth=2
 	ld.d	$s5, $s2, 24
 	alsl.d	$fp, $a1, $s5, 2
-	nor	$s8, $s8, $zero
+	nor	$s7, $s7, $zero
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	srai.d	$s0, $a1, 5
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
@@ -297,7 +294,7 @@ mv_reduce:                              # @mv_reduce
 .LBB1_20:                               #   in Loop: Header=BB1_23 Depth=3
 	alsl.d	$a0, $s0, $s4, 2
 	ld.w	$a1, $a0, 4
-	and	$a1, $a1, $s8
+	and	$a1, $a1, $s7
 	st.w	$a1, $a0, 4
 .LBB1_21:                               #   in Loop: Header=BB1_23 Depth=3
 	ld.wu	$a0, $s4, 0
@@ -320,14 +317,14 @@ mv_reduce:                              # @mv_reduce
 	ld.d	$s4, $s1, 0
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	beq	$a3, $a0, .LBB1_20
+	beq	$a2, $a0, .LBB1_20
 # %bb.25:                               #   in Loop: Header=BB1_23 Depth=3
 	ld.d	$a0, $s6, 72
-	ldx.d	$a0, $a0, $s7
+	ldx.d	$a0, $a0, $s8
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(setp_implies)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	bnez	$a0, .LBB1_21
 	b	.LBB1_20
 	.p2align	4, , 16
@@ -351,14 +348,12 @@ mv_reduce:                              # @mv_reduce
 	pcaddu18i	$ra, %call36(sf_active)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 4
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_39
+	blez	$a0, .LBB1_39
 # %bb.29:                               # %.lr.ph140
 	move	$s1, $zero
-	ori	$s2, $zero, 1
 	lu12i.w	$a1, -3
-	ori	$s3, $a1, 4095
-	lu32i.d	$s3, 0
+	ori	$s2, $a1, 4095
+	lu32i.d	$s2, 0
 	b	.LBB1_32
 	.p2align	4, , 16
 .LBB1_30:                               # %.loopexit.loopexit
@@ -379,13 +374,13 @@ mv_reduce:                              # @mv_reduce
 	ld.w	$a1, $a2, 12
 	ld.w	$a2, $a2, 0
 	mul.w	$a1, $a2, $a1
-	blt	$a1, $s2, .LBB1_31
+	blez	$a1, .LBB1_31
 # %bb.34:                               # %.lr.ph137.preheader
                                         #   in Loop: Header=BB1_32 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s0, $a0, 24
 	alsl.d	$fp, $a1, $s0, 2
-	slli.d	$s4, $s1, 3
+	slli.d	$s3, $s1, 3
 	b	.LBB1_36
 	.p2align	4, , 16
 .LBB1_35:                               #   in Loop: Header=BB1_36 Depth=2
@@ -401,14 +396,14 @@ mv_reduce:                              # @mv_reduce
 	beqz	$a0, .LBB1_35
 # %bb.37:                               #   in Loop: Header=BB1_36 Depth=2
 	ld.d	$a0, $s6, 72
-	ldx.d	$a1, $a0, $s4
+	ldx.d	$a1, $a0, $s3
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(setp_disjoint)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_35
 # %bb.38:                               #   in Loop: Header=BB1_36 Depth=2
 	ld.wu	$a0, $s0, 0
-	and	$a0, $a0, $s3
+	and	$a0, $a0, $s2
 	st.w	$a0, $s0, 0
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$a0, $a1, 16

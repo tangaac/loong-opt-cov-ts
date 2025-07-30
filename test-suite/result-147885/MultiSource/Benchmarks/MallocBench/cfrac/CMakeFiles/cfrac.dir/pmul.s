@@ -131,7 +131,7 @@ pmul:                                   # @pmul
 .LBB0_16:
 	ld.h	$a1, $fp, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $fp, 0
 	bnez	$a2, .LBB0_18
 # %bb.17:
@@ -145,7 +145,7 @@ pmul:                                   # @pmul
 # %bb.19:
 	ld.h	$a1, $s0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $s0, 0
 	bnez	$a2, .LBB0_21
 # %bb.20:

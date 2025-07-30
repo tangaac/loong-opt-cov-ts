@@ -40,18 +40,18 @@ fn1:                                    # @fn1
 main:                                   # @main
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(e)
-	ld.w	$a2, $a0, %pc_lo12(e)
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a2, .LBB1_4
+	ld.w	$a1, $a0, %pc_lo12(e)
+	bltz	$a1, .LBB1_4
 # %bb.1:                                # %.lr.ph
-	pcalau12i	$a2, %pc_hi20(m)
-	ld.w	$a4, $a2, %pc_lo12(m)
-	pcalau12i	$a2, %pc_hi20(t)
-	ld.bu	$a3, $a2, %pc_lo12(t)
-	pcalau12i	$a2, %pc_hi20(t5)
-	pcalau12i	$a5, %pc_hi20(b)
-	ld.w	$a5, $a5, %pc_lo12(b)
-	ld.w	$a2, $a2, %pc_lo12(t5)
+	pcalau12i	$a1, %pc_hi20(m)
+	ld.w	$a4, $a1, %pc_lo12(m)
+	pcalau12i	$a1, %pc_hi20(t)
+	ld.bu	$a3, $a1, %pc_lo12(t)
+	pcalau12i	$a1, %pc_hi20(t5)
+	pcalau12i	$a2, %pc_hi20(b)
+	ld.w	$a5, $a2, %pc_lo12(b)
+	ld.w	$a2, $a1, %pc_lo12(t5)
+	addi.w	$a1, $zero, -1
 	beq	$a5, $a1, .LBB1_5
 # %bb.2:                                # %.lr.ph.split
 	beqz	$a4, .LBB1_9

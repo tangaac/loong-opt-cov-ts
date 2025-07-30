@@ -222,8 +222,7 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 # %bb.6:                                # %.noexc
 	move	$s1, $a0
 	ld.w	$a0, $fp, 172
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB4_14
+	bgtz	$a0, .LBB4_14
 	b	.LBB4_16
 .LBB4_7:
 	addi.d	$a0, $fp, 72
@@ -266,14 +265,12 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 # %bb.12:                               # %.noexc37
 	move	$s1, $a0
 	ld.w	$a1, $fp, 108
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB4_24
+	bgtz	$a1, .LBB4_24
 	b	.LBB4_26
 .LBB4_13:
 	move	$s1, $zero
 	move	$a0, $s3
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_16
+	blez	$a0, .LBB4_16
 .LBB4_14:                               # %.lr.ph.i.i.i
 	move	$a1, $zero
 	slli.d	$a0, $a0, 4
@@ -318,8 +315,7 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 .LBB4_23:
 	move	$s1, $zero
 	move	$a1, $s3
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB4_26
+	blez	$a1, .LBB4_26
 .LBB4_24:                               # %.lr.ph.i.i.i32
 	move	$a0, $zero
 	slli.d	$a1, $a1, 6
@@ -384,8 +380,7 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 64
 	ld.w	$a1, $fp, 212
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB4_45
+	beqz	$a0, .LBB4_45
 # %bb.34:
 	bnez	$a1, .LBB4_45
 # %bb.35:
@@ -401,9 +396,8 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 212
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB4_40
+	blez	$a1, .LBB4_40
 # %bb.38:                               # %.lr.ph.i.i.i44
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -606,15 +600,12 @@ _ZN14btOptimizedBvh5refitEP23btStridingMeshInterfaceRK9btVector3S4_: # @_ZN14btO
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 64
-	ori	$s1, $zero, 1
-	bne	$a0, $s1, .LBB5_4
+	beqz	$a0, .LBB5_4
 # %bb.1:
 	vldi	$vr0, -1168
 	move	$a0, $fp
@@ -630,7 +621,7 @@ _ZN14btOptimizedBvh5refitEP23btStridingMeshInterfaceRK9btVector3S4_: # @_ZN14btO
 	pcaddu18i	$ra, %call36(_ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 212
-	blt	$a0, $s1, .LBB5_4
+	blez	$a0, .LBB5_4
 # %bb.2:                                # %.lr.ph
 	ld.d	$a2, $fp, 224
 	ld.d	$a1, $fp, 184
@@ -656,7 +647,6 @@ _ZN14btOptimizedBvh5refitEP23btStridingMeshInterfaceRK9btVector3S4_: # @_ZN14btO
 	addi.d	$a2, $a2, 32
 	bnez	$a0, .LBB5_3
 .LBB5_4:                                # %.loopexit
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -1087,9 +1077,8 @@ _ZN14btOptimizedBvh12refitPartialEP23btStridingMeshInterfaceRK9btVector3S4_: # @
 	.cfi_offset 31, -88
 	move	$fp, $a0
 	ld.w	$a0, $a0, 212
-	ori	$a4, $zero, 1
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	blt	$a0, $a4, .LBB7_10
+	blez	$a0, .LBB7_10
 # %bb.1:                                # %.lr.ph
 	fld.s	$fa2, $a2, 0
 	fld.s	$fa0, $fp, 8
@@ -1403,13 +1392,11 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	move	$a3, $fp
 	ld.w	$a1, $s0, 4
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB11_5
+	bgtz	$a1, .LBB11_5
 	b	.LBB11_7
 .LBB11_4:
 	move	$fp, $zero
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB11_7
+	blez	$a1, .LBB11_7
 .LBB11_5:                               # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -1725,13 +1712,11 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	move	$a3, $fp
 	ld.w	$a4, $s0, 4
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	bge	$a4, $a0, .LBB13_5
+	bgtz	$a4, .LBB13_5
 	b	.LBB13_7
 .LBB13_4:
 	move	$fp, $zero
-	ori	$a0, $zero, 1
-	blt	$a4, $a0, .LBB13_7
+	blez	$a4, .LBB13_7
 .LBB13_5:                               # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a4, 6

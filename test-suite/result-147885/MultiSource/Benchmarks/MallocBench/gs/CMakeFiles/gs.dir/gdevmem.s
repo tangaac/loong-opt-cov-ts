@@ -153,8 +153,7 @@ mem_copy_scan_lines:                    # @mem_copy_scan_lines
 	move	$a5, $zero
 	jirl	$ra, $a6, 0
 	move	$s3, $fp
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB5_2
+	bgez	$a0, .LBB5_2
 	.p2align	4, , 16
 .LBB5_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -491,14 +490,12 @@ mem_mono_fill_rectangle:                # @mem_mono_fill_rectangle
 	move	$a2, $s3
 	move	$a4, $fp
 	jirl	$ra, $a6, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_12
+	bltz	$a0, .LBB10_12
 .LBB10_2:                               # %mem_fill_recover.exit
-	ori	$a1, $zero, 1
 	move	$a0, $zero
-	blt	$s0, $a1, .LBB10_38
+	blez	$s0, .LBB10_38
 # %bb.3:                                # %mem_fill_recover.exit
-	blt	$fp, $a1, .LBB10_38
+	blez	$fp, .LBB10_38
 # %bb.4:
 	addi.w	$a0, $zero, -1
 	bltz	$s1, .LBB10_38
@@ -525,9 +522,10 @@ mem_mono_fill_rectangle:                # @mem_mono_fill_rectangle
 	ld.b	$s2, $s2, 184
 	b	.LBB10_18
 .LBB10_12:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB10_15
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB10_15
 # %bb.13:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB10_38
 # %bb.14:
 	srai.d	$s5, $s0, 1
@@ -784,16 +782,14 @@ mem_mono_copy_mono:                     # @mem_mono_copy_mono
 	move	$fp, $s0
 	move	$s0, $s2
 	move	$a3, $s7
-	addi.w	$t0, $zero, -1
 	move	$a5, $a0
 	move	$a0, $s1
-	bge	$t0, $a5, .LBB11_12
+	bltz	$a5, .LBB11_12
 .LBB11_4:                               # %mem_copy_mono_recover.exit
-	ori	$t0, $zero, 1
 	move	$a5, $zero
-	blt	$a6, $t0, .LBB11_77
+	blez	$a6, .LBB11_77
 # %bb.5:                                # %mem_copy_mono_recover.exit
-	blt	$a7, $t0, .LBB11_77
+	blez	$a7, .LBB11_77
 # %bb.6:
 	addi.w	$a5, $zero, -1
 	bltz	$a4, .LBB11_77
@@ -824,9 +820,10 @@ mem_mono_copy_mono:                     # @mem_mono_copy_mono
                                         # kill: killed $r14
 	b	.LBB11_18
 .LBB11_12:
-	addi.w	$t1, $zero, -2
-	beq	$a5, $t1, .LBB11_15
+	addi.w	$t0, $zero, -2
+	beq	$a5, $t0, .LBB11_15
 # %bb.13:
+	addi.w	$t0, $zero, -1
 	bne	$a5, $t0, .LBB11_77
 # %bb.14:
 	srai.d	$s1, $a6, 1
@@ -1049,7 +1046,7 @@ mem_mono_copy_mono:                     # @mem_mono_copy_mono
 	blt	$s2, $a6, .LBB11_33
 .LBB11_34:                              # %._crit_edge
                                         #   in Loop: Header=BB11_23 Depth=1
-	blt	$t2, $s6, .LBB11_22
+	blez	$t2, .LBB11_22
 # %bb.35:                               #   in Loop: Header=BB11_23 Depth=1
 	ld.bu	$a6, $t1, 1
 	ld.b	$a7, $s1, 1
@@ -1505,8 +1502,7 @@ mem_mono_copy_mono:                     # @mem_mono_copy_mono
 	addi.d	$sp, $sp, 192
 	ret
 .LBB11_79:                              # %.lr.ph244.split
-	ori	$t1, $zero, 1
-	blt	$t4, $t1, .LBB11_88
+	blez	$t4, .LBB11_88
 # %bb.80:                               # %.lr.ph244.split.split.us.preheader
 	alsl.d	$a1, $fp, $a5, 3
 	addi.d	$a1, $a1, 8
@@ -1703,6 +1699,8 @@ mem_mono_copy_color:                    # @mem_mono_copy_color
 	.type	copy_byte_rect,@function
 copy_byte_rect:                         # @copy_byte_rect
 # %bb.0:
+	blez	$a6, .LBB13_4
+# %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
@@ -1712,30 +1710,27 @@ copy_byte_rect:                         # @copy_byte_rect
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
-	ori	$s3, $zero, 1
-	blt	$a6, $s3, .LBB13_3
-# %bb.1:                                # %.lr.ph
 	move	$fp, $a5
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s2, $a1
 	ld.d	$a0, $a0, 168
-	alsl.d	$s4, $a4, $a0, 3
-	addi.d	$s5, $a6, 1
+	alsl.d	$s3, $a4, $a0, 3
+	addi.d	$s4, $a6, 1
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB13_2:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	add.d	$a0, $a0, $s0
 	move	$a1, $s2
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	add.d	$s2, $s2, $s1
-	addi.w	$s5, $s5, -1
-	addi.d	$s4, $s4, 8
-	bltu	$s3, $s5, .LBB13_2
-.LBB13_3:                               # %._crit_edge
-	move	$a0, $zero
+	addi.w	$s4, $s4, -1
+	addi.d	$s3, $s3, 8
+	bltu	$s5, $s4, .LBB13_2
+# %bb.3:
 	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -1745,6 +1740,8 @@ copy_byte_rect:                         # @copy_byte_rect
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
+.LBB13_4:                               # %._crit_edge
+	move	$a0, $zero
 	ret
 .Lfunc_end13:
 	.size	copy_byte_rect, .Lfunc_end13-copy_byte_rect
@@ -1754,28 +1751,28 @@ copy_byte_rect:                         # @copy_byte_rect
 	.type	mem_mapped_map_rgb_color,@function
 mem_mapped_map_rgb_color:               # @mem_mapped_map_rgb_color
 # %bb.0:
-	ld.w	$a5, $a0, 188
+	ld.w	$a4, $a0, 188
 	ld.d	$a0, $a0, 192
-	ori	$a4, $zero, 1
-	blt	$a5, $a4, .LBB14_6
+	blez	$a4, .LBB14_6
 # %bb.1:                                # %.lr.ph
-	addi.d	$a6, $a5, 1
-	ori	$a7, $zero, 768
+	addi.d	$a4, $a4, 1
+	ori	$a6, $zero, 768
+	ori	$a7, $zero, 1
                                         # implicit-def: $r9
 	move	$t0, $a0
 	b	.LBB14_3
 	.p2align	4, , 16
 .LBB14_2:                               #   in Loop: Header=BB14_3 Depth=1
-	addi.w	$a6, $a6, -1
+	addi.w	$a4, $a4, -1
 	addi.d	$t0, $t0, 3
-	bgeu	$a4, $a6, .LBB14_7
+	bgeu	$a7, $a4, .LBB14_7
 .LBB14_3:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$t1, $t0, 0
 	sub.w	$t1, $t1, $a1
 	srai.d	$t2, $t1, 31
 	xor	$t1, $t1, $t2
 	sub.w	$t1, $t1, $t2
-	bge	$t1, $a7, .LBB14_2
+	bge	$t1, $a6, .LBB14_2
 # %bb.4:                                #   in Loop: Header=BB14_3 Depth=1
 	ld.bu	$t2, $t0, 1
 	sub.w	$t2, $t2, $a2
@@ -1783,7 +1780,7 @@ mem_mapped_map_rgb_color:               # @mem_mapped_map_rgb_color
 	xor	$t2, $t2, $t3
 	sub.d	$t2, $t2, $t3
 	add.w	$t1, $t2, $t1
-	bgeu	$t1, $a7, .LBB14_2
+	bgeu	$t1, $a6, .LBB14_2
 # %bb.5:                                #   in Loop: Header=BB14_3 Depth=1
 	ld.bu	$t2, $t0, 2
 	sub.w	$t2, $t2, $a3
@@ -1791,13 +1788,13 @@ mem_mapped_map_rgb_color:               # @mem_mapped_map_rgb_color
 	xor	$t2, $t2, $t3
 	sub.d	$t2, $t2, $t3
 	add.w	$t1, $t2, $t1
-	sltu	$t2, $t1, $a7
+	sltu	$t2, $t1, $a6
 	masknez	$a5, $a5, $t2
 	maskeqz	$t3, $t0, $t2
 	or	$a5, $t3, $a5
 	maskeqz	$t1, $t1, $t2
-	masknez	$a7, $a7, $t2
-	or	$a7, $t1, $a7
+	masknez	$a6, $a6, $t2
+	or	$a6, $t1, $a6
 	b	.LBB14_2
 .LBB14_6:
                                         # implicit-def: $r9
@@ -1870,15 +1867,14 @@ mem_mapped_fill_rectangle:              # @mem_mapped_fill_rectangle
 	move	$a3, $s0
 	move	$a4, $s3
 	jirl	$ra, $a6, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB16_7
+	bltz	$a0, .LBB16_7
 .LBB16_2:                               # %mem_fill_recover.exit
-	ori	$s5, $zero, 1
-	blt	$s3, $s5, .LBB16_5
+	blez	$s3, .LBB16_5
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $s2, 168
 	alsl.d	$s2, $s4, $a0, 3
 	addi.d	$s3, $s3, 1
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB16_4:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 0
@@ -1889,7 +1885,7 @@ mem_mapped_fill_rectangle:              # @mem_mapped_fill_rectangle
 	jirl	$ra, $ra, 0
 	addi.w	$s3, $s3, -1
 	addi.d	$s2, $s2, 8
-	bltu	$s5, $s3, .LBB16_4
+	bltu	$s4, $s3, .LBB16_4
 .LBB16_5:
 	move	$a0, $zero
 .LBB16_6:                               # %mem_fill_recover.exit.thread
@@ -1907,9 +1903,10 @@ mem_mapped_fill_rectangle:              # @mem_mapped_fill_rectangle
 	addi.d	$sp, $sp, 96
 	ret
 .LBB16_7:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB16_10
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB16_10
 # %bb.8:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB16_6
 # %bb.9:
 	srai.d	$s5, $s0, 1
@@ -1997,11 +1994,9 @@ mem_mapped_copy_mono:                   # @mem_mapped_copy_mono
 	move	$a3, $s2
 	move	$a4, $s4
 	jirl	$ra, $t0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB17_11
+	bltz	$a0, .LBB17_11
 .LBB17_2:                               # %mem_copy_mono_recover.exit
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB17_31
+	blez	$s4, .LBB17_31
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $s1, 168
 	alsl.d	$a0, $s6, $a0, 3
@@ -2063,9 +2058,10 @@ mem_mapped_copy_mono:                   # @mem_mapped_copy_mono
 	blt	$a4, $t0, .LBB17_9
 	b	.LBB17_6
 .LBB17_11:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB17_33
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB17_33
 # %bb.12:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB17_32
 # %bb.13:
 	srai.d	$a0, $s2, 1
@@ -2264,14 +2260,12 @@ mem_mapped_copy_color:                  # @mem_mapped_copy_color
 	move	$a3, $s0
 	move	$a4, $s3
 	jirl	$ra, $t0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB18_11
+	bltz	$a0, .LBB18_11
 .LBB18_2:                               # %mem_copy_color_recover.exit
-	ori	$a1, $zero, 1
 	move	$a0, $zero
-	blt	$s0, $a1, .LBB18_14
+	blez	$s0, .LBB18_14
 # %bb.3:                                # %mem_copy_color_recover.exit
-	blt	$s3, $a1, .LBB18_14
+	blez	$s3, .LBB18_14
 # %bb.4:
 	addi.w	$a0, $zero, -1
 	bltz	$s1, .LBB18_14
@@ -2307,9 +2301,10 @@ mem_mapped_copy_color:                  # @mem_mapped_copy_color
 	move	$a0, $zero
 	b	.LBB18_14
 .LBB18_11:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB18_15
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB18_15
 # %bb.12:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB18_14
 # %bb.13:
 	srai.d	$s7, $s0, 1
@@ -2443,19 +2438,18 @@ mem_true24_fill_rectangle:              # @mem_true24_fill_rectangle
 	move	$a2, $s4
 	move	$a4, $s0
 	jirl	$ra, $a6, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB21_14
+	bltz	$a0, .LBB21_14
 .LBB21_2:                               # %mem_fill_recover.exit
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB21_12
+	blez	$s0, .LBB21_12
 # %bb.3:                                # %.lr.ph.preheader
-	ld.d	$a4, $s3, 168
-	srli.d	$a1, $s2, 8
-	srli.d	$a2, $s2, 16
-	srli.d	$a3, $s2, 24
-	alsl.d	$a4, $s4, $a4, 3
+	ld.d	$a3, $s3, 168
+	srli.d	$a0, $s2, 8
+	srli.d	$a1, $s2, 16
+	srli.d	$a2, $s2, 24
+	alsl.d	$a3, $s4, $a3, 3
 	slti	$a5, $fp, 1
-	masknez	$a6, $a0, $a5
+	ori	$a4, $zero, 1
+	masknez	$a6, $a4, $a5
 	maskeqz	$a5, $fp, $a5
 	or	$a5, $a5, $a6
 	sub.d	$a5, $fp, $a5
@@ -2473,13 +2467,13 @@ mem_true24_fill_rectangle:              # @mem_true24_fill_rectangle
 .LBB21_4:                               # %.loopexit
                                         #   in Loop: Header=BB21_5 Depth=1
 	addi.w	$s0, $t3, -1
-	addi.d	$a4, $a4, 8
-	bge	$a0, $t3, .LBB21_12
+	addi.d	$a3, $a3, 8
+	bge	$a4, $t3, .LBB21_12
 .LBB21_5:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB21_8 Depth 2
                                         #     Child Loop BB21_11 Depth 2
-	ld.d	$t5, $a4, 0
+	ld.d	$t5, $a3, 0
 	move	$t3, $s0
 	add.d	$t4, $t5, $s1
 	bge	$fp, $t2, .LBB21_7
@@ -2496,12 +2490,12 @@ mem_true24_fill_rectangle:              # @mem_true24_fill_rectangle
 .LBB21_8:                               # %vector.body
                                         #   Parent Loop BB21_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.b	$a1, $t5, -2
-	st.b	$a1, $t5, 1
-	st.b	$a2, $t5, -1
-	st.b	$a2, $t5, 2
-	st.b	$a3, $t5, 0
-	st.b	$a3, $t5, 3
+	st.b	$a0, $t5, -2
+	st.b	$a0, $t5, 1
+	st.b	$a1, $t5, -1
+	st.b	$a1, $t5, 2
+	st.b	$a2, $t5, 0
+	st.b	$a2, $t5, 3
 	addi.d	$t6, $t6, -2
 	addi.d	$t5, $t5, 6
 	bnez	$t6, .LBB21_8
@@ -2516,13 +2510,13 @@ mem_true24_fill_rectangle:              # @mem_true24_fill_rectangle
 .LBB21_11:                              # %scalar.ph
                                         #   Parent Loop BB21_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.b	$a1, $t4, 0
-	st.b	$a2, $t4, 1
+	st.b	$a0, $t4, 0
+	st.b	$a1, $t4, 1
 	addi.d	$t6, $t4, 3
 	addi.w	$t5, $t5, -1
-	st.b	$a3, $t4, 2
+	st.b	$a2, $t4, 2
 	move	$t4, $t6
-	blt	$a0, $t5, .LBB21_11
+	blt	$a4, $t5, .LBB21_11
 	b	.LBB21_4
 .LBB21_12:
 	move	$a0, $zero
@@ -2541,9 +2535,10 @@ mem_true24_fill_rectangle:              # @mem_true24_fill_rectangle
 	addi.d	$sp, $sp, 96
 	ret
 .LBB21_14:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB21_17
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB21_17
 # %bb.15:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB21_13
 # %bb.16:
 	srai.d	$s1, $fp, 1
@@ -2613,39 +2608,37 @@ mem_true24_copy_mono:                   # @mem_true24_copy_mono
 	move	$t1, $a5
 	move	$fp, $a3
 	move	$s2, $a2
-	move	$a7, $a1
+	move	$a2, $a1
 	move	$s5, $a0
-	ld.d	$s8, $sp, 136
-	ld.d	$t0, $a0, 176
+	ld.d	$s1, $sp, 136
+	ld.d	$a7, $a0, 176
 	ld.d	$s4, $sp, 128
 	pcalau12i	$a0, %pc_hi20(mem_no_fault_proc)
 	addi.d	$a0, $a0, %pc_lo12(mem_no_fault_proc)
 	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
 	alsl.w	$s0, $a4, $a4, 1
-	beq	$t0, $a0, .LBB22_2
+	beq	$a7, $a0, .LBB22_2
 # %bb.1:
 	alsl.w	$a3, $a6, $a6, 1
 	ori	$a5, $zero, 1
 	move	$a0, $s5
 	move	$a1, $s0
+	move	$s6, $s1
+	move	$s1, $s2
+	move	$s2, $a2
 	move	$a2, $t1
 	move	$a4, $s3
-	move	$s1, $s2
-	move	$s2, $a7
-	move	$s6, $s8
 	move	$s8, $a6
 	move	$s7, $t1
-	jirl	$ra, $t0, 0
+	jirl	$ra, $a7, 0
 	move	$t1, $s7
 	move	$a6, $s8
-	move	$s8, $s6
-	move	$a7, $s2
+	move	$a2, $s2
 	move	$s2, $s1
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB22_11
+	move	$s1, $s6
+	bltz	$a0, .LBB22_11
 .LBB22_2:                               # %mem_copy_mono_recover.exit
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB22_31
+	blez	$s3, .LBB22_31
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $s5, 168
 	srli.d	$a3, $s4, 8
@@ -2653,17 +2646,17 @@ mem_true24_copy_mono:                   # @mem_true24_copy_mono
 	srli.d	$a5, $s4, 24
 	alsl.d	$a0, $t1, $a0, 3
 	srai.d	$a1, $s2, 3
-	add.d	$a1, $a7, $a1
+	add.d	$a1, $a2, $a1
 	andi	$a2, $s2, 7
 	ori	$a7, $zero, 128
 	srl.w	$a2, $a7, $a2
 	addi.w	$t1, $zero, -1
 	addi.w	$t3, $s3, -1
-	beq	$s8, $t1, .LBB22_14
+	beq	$s1, $t1, .LBB22_14
 # %bb.4:                                # %.lr.ph.split
-	srli.d	$s6, $s8, 8
-	srli.d	$a7, $s8, 16
-	srli.d	$t0, $s8, 24
+	srli.d	$s6, $s1, 8
+	srli.d	$a7, $s1, 16
+	srli.d	$t0, $s1, 24
 	beq	$s4, $t1, .LBB22_23
 # %bb.5:                                # %.split.preheader
 	addi.d	$t1, $a6, 1
@@ -2721,17 +2714,18 @@ mem_true24_copy_mono:                   # @mem_true24_copy_mono
 	blt	$t2, $t6, .LBB22_9
 	b	.LBB22_6
 .LBB22_11:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB22_33
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB22_33
 # %bb.12:
+	addi.w	$a1, $zero, -1
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB22_32
 # %bb.13:
 	srai.d	$s6, $a6, 1
-	add.w	$s7, $s6, $a4
+	add.w	$s8, $s6, $a4
 	sub.w	$a6, $a6, $s6
 	st.d	$t1, $sp, 24                    # 8-byte Folded Spill
-	move	$s0, $s3
+	move	$s7, $s3
 	b	.LBB22_34
 .LBB22_14:                              # %.lr.ph.split.us
 	beq	$s4, $t1, .LBB22_31
@@ -2850,38 +2844,38 @@ mem_true24_copy_mono:                   # @mem_true24_copy_mono
 	addi.d	$sp, $sp, 128
 	ret
 .LBB22_33:
-	srai.d	$s0, $s3, 1
-	add.w	$a0, $s0, $t1
+	srai.d	$s7, $s3, 1
+	add.w	$a0, $s7, $t1
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	sub.w	$s3, $s3, $s0
+	sub.w	$s3, $s3, $s7
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
-	move	$s7, $a4
+	move	$s8, $a4
 	move	$s6, $a6
 .LBB22_34:
 	ld.d	$a0, $s5, 8
 	ld.d	$t0, $a0, 72
-	st.d	$s8, $sp, 8
+	st.d	$s1, $sp, 8
 	st.d	$s4, $sp, 0
 	move	$a0, $s5
-	move	$a1, $a7
+	move	$a1, $a2
+	move	$s0, $a2
 	move	$a2, $s2
 	move	$a3, $fp
 	move	$a5, $t1
-	move	$s1, $a7
 	move	$a7, $s3
 	jirl	$ra, $t0, 0
 	ld.d	$a0, $s5, 8
 	ld.d	$t0, $a0, 72
-	st.d	$s8, $sp, 8
+	st.d	$s1, $sp, 8
 	st.d	$s4, $sp, 0
 	move	$a0, $s5
-	move	$a1, $s1
+	move	$a1, $s0
 	move	$a2, $s2
 	move	$a3, $fp
-	move	$a4, $s7
+	move	$a4, $s8
 	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
 	move	$a6, $s6
-	move	$a7, $s0
+	move	$a7, $s7
 	jirl	$ra, $t0, 0
 	b	.LBB22_32
 .Lfunc_end22:
@@ -2924,14 +2918,12 @@ mem_true24_copy_color:                  # @mem_true24_copy_color
 	move	$a2, $s4
 	move	$a4, $s1
 	jirl	$ra, $t0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB23_11
+	bltz	$a0, .LBB23_11
 .LBB23_2:                               # %mem_copy_color_recover.exit
-	ori	$a1, $zero, 1
 	move	$a0, $zero
-	blt	$s3, $a1, .LBB23_14
+	blez	$s3, .LBB23_14
 # %bb.3:                                # %mem_copy_color_recover.exit
-	blt	$s1, $a1, .LBB23_14
+	blez	$s1, .LBB23_14
 # %bb.4:
 	addi.w	$a0, $zero, -1
 	bltz	$s6, .LBB23_14
@@ -2970,9 +2962,10 @@ mem_true24_copy_color:                  # @mem_true24_copy_color
 	move	$a0, $zero
 	b	.LBB23_14
 .LBB23_11:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB23_15
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB23_15
 # %bb.12:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB23_14
 # %bb.13:
 	srai.d	$s7, $s3, 1
@@ -3077,16 +3070,15 @@ mem_true32_fill_rectangle:              # @mem_true32_fill_rectangle
 	move	$a2, $s4
 	move	$a4, $s1
 	jirl	$ra, $a6, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB24_14
+	bltz	$a0, .LBB24_14
 .LBB24_2:                               # %mem_fill_recover.exit
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB24_12
+	blez	$s1, .LBB24_12
 # %bb.3:                                # %.lr.ph.preheader
-	ld.d	$a1, $s3, 168
-	alsl.d	$a1, $s4, $a1, 3
+	ld.d	$a0, $s3, 168
+	alsl.d	$a0, $s4, $a0, 3
 	slti	$a2, $s0, 1
-	masknez	$a3, $a0, $a2
+	ori	$a1, $zero, 1
+	masknez	$a3, $a1, $a2
 	maskeqz	$a2, $s0, $a2
 	or	$a2, $a2, $a3
 	sub.w	$a2, $s0, $a2
@@ -3104,13 +3096,13 @@ mem_true32_fill_rectangle:              # @mem_true32_fill_rectangle
 .LBB24_4:                               # %.loopexit
                                         #   in Loop: Header=BB24_5 Depth=1
 	addi.w	$s1, $t1, -1
-	addi.d	$a1, $a1, 8
-	bge	$a0, $t1, .LBB24_12
+	addi.d	$a0, $a0, 8
+	bge	$a1, $t1, .LBB24_12
 .LBB24_5:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB24_8 Depth 2
                                         #     Child Loop BB24_11 Depth 2
-	ld.d	$t3, $a1, 0
+	ld.d	$t3, $a0, 0
 	move	$t1, $s1
 	add.d	$t2, $t3, $s2
 	bgeu	$a2, $t0, .LBB24_7
@@ -3147,7 +3139,7 @@ mem_true32_fill_rectangle:              # @mem_true32_fill_rectangle
 	addi.w	$t3, $t3, -1
 	st.d	$fp, $t2, 0
 	move	$t2, $t4
-	blt	$a0, $t3, .LBB24_11
+	blt	$a1, $t3, .LBB24_11
 	b	.LBB24_4
 .LBB24_12:
 	move	$a0, $zero
@@ -3166,9 +3158,10 @@ mem_true32_fill_rectangle:              # @mem_true32_fill_rectangle
 	addi.d	$sp, $sp, 96
 	ret
 .LBB24_14:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB24_17
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB24_17
 # %bb.15:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB24_13
 # %bb.16:
 	srai.d	$s2, $s0, 1
@@ -3238,6 +3231,7 @@ mem_true32_copy_mono:                   # @mem_true32_copy_mono
 	move	$t1, $a5
 	move	$fp, $a3
 	move	$s2, $a2
+	move	$a2, $a1
 	move	$s5, $a0
 	ld.d	$s8, $sp, 136
 	ld.d	$a7, $a0, 176
@@ -3248,12 +3242,12 @@ mem_true32_copy_mono:                   # @mem_true32_copy_mono
 	slli.w	$s0, $a4, 2
 	beq	$a7, $a0, .LBB25_2
 # %bb.1:
-	move	$s1, $s2
-	move	$s2, $a1
 	slli.w	$a3, $a6, 2
 	ori	$a5, $zero, 1
 	move	$a0, $s5
 	move	$a1, $s0
+	move	$s1, $s2
+	move	$s2, $a2
 	move	$a2, $t1
 	move	$a4, $s3
 	move	$s6, $a6
@@ -3261,18 +3255,16 @@ mem_true32_copy_mono:                   # @mem_true32_copy_mono
 	jirl	$ra, $a7, 0
 	move	$t1, $s7
 	move	$a6, $s6
-	move	$a1, $s2
+	move	$a2, $s2
 	move	$s2, $s1
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a0, .LBB25_11
+	bltz	$a0, .LBB25_11
 .LBB25_2:                               # %mem_copy_mono_recover.exit
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB25_31
+	blez	$s3, .LBB25_31
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $s5, 168
 	alsl.d	$a0, $t1, $a0, 3
-	srai.d	$a2, $s2, 3
-	add.d	$a1, $a1, $a2
+	srai.d	$a1, $s2, 3
+	add.d	$a1, $a2, $a1
 	andi	$a2, $s2, 7
 	ori	$a3, $zero, 128
 	srl.w	$a2, $a3, $a2
@@ -3329,11 +3321,12 @@ mem_true32_copy_mono:                   # @mem_true32_copy_mono
 	blt	$a4, $t0, .LBB25_9
 	b	.LBB25_6
 .LBB25_11:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB25_33
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB25_33
 # %bb.12:
+	addi.w	$a1, $zero, -1
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
-	bne	$a0, $a3, .LBB25_32
+	bne	$a0, $a1, .LBB25_32
 # %bb.13:
 	srai.d	$s1, $a6, 1
 	add.w	$s7, $s1, $a4
@@ -3467,8 +3460,9 @@ mem_true32_copy_mono:                   # @mem_true32_copy_mono
 	st.d	$s8, $sp, 8
 	st.d	$s4, $sp, 0
 	move	$a0, $s5
+	move	$a1, $a2
+	move	$s0, $a2
 	move	$a2, $s2
-	move	$s0, $a1
 	move	$a3, $fp
 	move	$a5, $t1
 	move	$a7, $s3
@@ -3527,14 +3521,12 @@ mem_true32_copy_color:                  # @mem_true32_copy_color
 	move	$a2, $s4
 	move	$a4, $s1
 	jirl	$ra, $t0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB26_11
+	bltz	$a0, .LBB26_11
 .LBB26_2:                               # %mem_copy_color_recover.exit
-	ori	$a1, $zero, 1
 	move	$a0, $zero
-	blt	$s3, $a1, .LBB26_14
+	blez	$s3, .LBB26_14
 # %bb.3:                                # %mem_copy_color_recover.exit
-	blt	$s1, $a1, .LBB26_14
+	blez	$s1, .LBB26_14
 # %bb.4:
 	addi.w	$a0, $zero, -1
 	bltz	$s6, .LBB26_14
@@ -3573,9 +3565,10 @@ mem_true32_copy_color:                  # @mem_true32_copy_color
 	move	$a0, $zero
 	b	.LBB26_14
 .LBB26_11:
-	addi.w	$a2, $zero, -2
-	beq	$a0, $a2, .LBB26_15
+	addi.w	$a1, $zero, -2
+	beq	$a0, $a1, .LBB26_15
 # %bb.12:
+	addi.w	$a1, $zero, -1
 	bne	$a0, $a1, .LBB26_14
 # %bb.13:
 	srai.d	$s7, $s3, 1

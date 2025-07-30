@@ -16,18 +16,18 @@ doborder:                               # @doborder
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
-	ld.w	$a3, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB0_63
+	ld.w	$a2, $a0, 0
+	blez	$a2, .LBB0_63
 # %bb.1:                                # %.lr.ph295
-	pcalau12i	$a1, %got_pc_hi20(cellarray)
-	ld.d	$a1, $a1, %got_pc_lo12(cellarray)
-	pcalau12i	$a2, %got_pc_hi20(cellList)
-	ld.d	$a2, $a2, %got_pc_lo12(cellList)
+	pcalau12i	$a0, %got_pc_hi20(cellarray)
+	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
+	pcalau12i	$a1, %got_pc_hi20(cellList)
+	ld.d	$a1, $a1, %got_pc_lo12(cellList)
+	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $a2, 0
-	addi.d	$a3, $a3, 1
-	bstrpick.d	$a3, $a3, 31, 0
+	addi.d	$a2, $a2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	ori	$a3, $zero, 1
 	ori	$a4, $zero, 8
 	ori	$a5, $zero, 6
 	pcalau12i	$a6, %pc_hi20(.LJTI0_1)
@@ -38,7 +38,7 @@ doborder:                               # @doborder
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_3 Depth=1
 	addi.d	$a7, $a7, 1
-	beq	$a7, $a3, .LBB0_63
+	beq	$a7, $a2, .LBB0_63
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_7 Depth 2
                                         #       Child Loop BB0_9 Depth 3
@@ -56,7 +56,7 @@ doborder:                               # @doborder
                                         #       Child Loop BB0_60 Depth 3
                                         #       Child Loop BB0_56 Depth 3
 	slli.d	$t4, $a7, 3
-	ldx.d	$t6, $a1, $t4
+	ldx.d	$t6, $a0, $t4
 	ld.wu	$t0, $t6, 56
 	addi.d	$t1, $t6, 152
 	addi.w	$t2, $t0, 0
@@ -65,7 +65,7 @@ doborder:                               # @doborder
 	beqz	$t3, .LBB0_50
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	ldx.d	$t4, $a2, $t4
+	ldx.d	$t4, $a1, $t4
 	beqz	$t4, .LBB0_35
 # %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$t5, $t6, 12
@@ -171,7 +171,7 @@ doborder:                               # @doborder
                                         #     Parent Loop BB0_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$s4, $s3, 8
-	bne	$s4, $a0, .LBB0_22
+	bne	$s4, $a3, .LBB0_22
 # %bb.24:                               #   in Loop: Header=BB0_23 Depth=3
 	ld.w	$s4, $s3, 12
 	bne	$s4, $s0, .LBB0_22
@@ -204,7 +204,7 @@ doborder:                               # @doborder
                                         #     Parent Loop BB0_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$s3, $s2, 8
-	bne	$s3, $a0, .LBB0_29
+	bne	$s3, $a3, .LBB0_29
 # %bb.31:                               #   in Loop: Header=BB0_30 Depth=3
 	ld.w	$s3, $s2, 12
 	bne	$s3, $fp, .LBB0_29
@@ -462,11 +462,11 @@ doborder:                               # @doborder
 	pcalau12i	$a0, %got_pc_hi20(numberCells)
 	ld.d	$fp, $a0, %got_pc_lo12(numberCells)
 	ld.w	$a1, $fp, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_69
+	blez	$a1, .LBB0_69
 # %bb.64:                               # %.lr.ph303.preheader
-	pcalau12i	$a2, %got_pc_hi20(cellList)
-	ld.d	$s0, $a2, %got_pc_lo12(cellList)
+	pcalau12i	$a0, %got_pc_hi20(cellList)
+	ld.d	$s0, $a0, %got_pc_lo12(cellList)
+	ori	$a0, $zero, 1
 	b	.LBB0_66
 	.p2align	4, , 16
 .LBB0_65:                               # %._crit_edge300

@@ -65,26 +65,24 @@ findChainRules:                         # @findChainRules
 	.type	zero,@function
 zero:                                   # @zero
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(ZEROCOST)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(max_nonterminal)
 	ld.d	$s2, $a0, %got_pc_lo12(max_nonterminal)
 	ld.w	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_18
+	blez	$a0, .LBB1_18
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -97,7 +95,7 @@ zero:                                   # @zero
 	alsl.d	$a1, $s3, $a2, 4
 .LBB1_3:                                # %.sink.split
                                         #   in Loop: Header=BB1_5 Depth=1
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(ASSIGNCOST)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -116,7 +114,7 @@ zero:                                   # @zero
 # %bb.6:                                #   in Loop: Header=BB1_5 Depth=1
 	beqz	$a1, .LBB1_2
 # %bb.7:                                #   in Loop: Header=BB1_5 Depth=1
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(LESSCOST)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_9
@@ -130,37 +128,36 @@ zero:                                   # @zero
 .LBB1_10:                               # %._crit_edge
 	beqz	$a1, .LBB1_18
 # %bb.11:                               # %._crit_edge
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB1_18
+	blez	$a0, .LBB1_18
 # %bb.12:                               # %.lr.ph37
-	move	$s5, $zero
+	move	$s3, $zero
 	move	$s0, $zero
-	move	$s6, $zero
-	pcalau12i	$s7, %pc_hi20(prevent_divergence)
+	move	$s5, $zero
+	pcalau12i	$s6, %pc_hi20(prevent_divergence)
 	addi.w	$s1, $s4, 0
 	b	.LBB1_14
 	.p2align	4, , 16
 .LBB1_13:                               #   in Loop: Header=BB1_14 Depth=1
 	ld.w	$a0, $s2, 0
-	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 1
 	addi.w	$s0, $s0, 1
-	addi.d	$s5, $s5, 16
-	bge	$s6, $a0, .LBB1_18
+	addi.d	$s3, $s3, 16
+	bge	$s5, $a0, .LBB1_18
 .LBB1_14:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 48
-	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $s3
 	ld.d	$a1, $a0, 8
 	beqz	$a1, .LBB1_16
 # %bb.15:                               #   in Loop: Header=BB1_14 Depth=1
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(MINUSCOST)
 	jirl	$ra, $ra, 0
 .LBB1_16:                               #   in Loop: Header=BB1_14 Depth=1
-	ld.w	$a0, $s7, %pc_lo12(prevent_divergence)
-	blt	$a0, $s3, .LBB1_13
+	ld.w	$a0, $s6, %pc_lo12(prevent_divergence)
+	blez	$a0, .LBB1_13
 # %bb.17:                               #   in Loop: Header=BB1_14 Depth=1
 	ld.d	$a0, $fp, 48
-	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $s3
 	move	$a1, $fp
 	move	$a2, $s0
 	move	$a3, $s1
@@ -168,17 +165,16 @@ zero:                                   # @zero
 	jirl	$ra, $ra, 0
 	b	.LBB1_13
 .LBB1_18:                               # %.loopexit
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end1:
 	.size	zero, .Lfunc_end1-zero

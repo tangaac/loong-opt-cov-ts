@@ -33,22 +33,23 @@ cli_bm_addpatt:                         # @cli_bm_addpatt
 	bstrpick.d	$t2, $a4, 15, 0
 	add.d	$a2, $a5, $t2
 	ld.bu	$t3, $a2, 1
-	ldx.bu	$t4, $a5, $t2
-	ld.bu	$t5, $a2, 2
+	ldx.bu	$t2, $a5, $t2
+	ld.bu	$t4, $a2, 2
 	mul.d	$t3, $t3, $a7
 	add.d	$t3, $a6, $t3
-	mul.d	$t4, $t4, $t0
-	add.d	$t3, $t3, $t4
-	slli.d	$t4, $t5, 3
-	ldx.d	$t3, $t3, $t4
-	beqz	$t3, .LBB0_5
+	mul.d	$t2, $t2, $t0
+	add.d	$t2, $t3, $t2
+	slli.d	$t3, $t4, 3
+	ldx.d	$t2, $t2, $t3
+	beqz	$t2, .LBB0_5
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	addi.d	$a4, $a4, 1
 	bstrpick.d	$a2, $a4, 15, 0
 	bltu	$a2, $t1, .LBB0_3
 	b	.LBB0_7
 .LBB0_5:
-	beqz	$t2, .LBB0_7
+	slli.d	$a6, $a4, 48
+	beqz	$a6, .LBB0_7
 # %bb.6:
 	st.d	$a5, $a1, 8
 	st.h	$a4, $a1, 18
@@ -390,9 +391,10 @@ cli_bm_scanbuff:                        # @cli_bm_scanbuff
 	maskeqz	$a3, $s2, $a3
 	or	$a3, $a3, $a4
 	addi.d	$a3, $a3, -1
-	bstrpick.d	$a4, $a3, 15, 0
+	slli.d	$a4, $a3, 48
 	beqz	$a4, .LBB3_16
 # %bb.14:                               #   in Loop: Header=BB3_10 Depth=2
+	bstrpick.d	$a4, $a3, 15, 0
 	ldx.bu	$a5, $s0, $a4
 	ldx.bu	$a4, $a1, $a4
 	bne	$a5, $a4, .LBB3_9

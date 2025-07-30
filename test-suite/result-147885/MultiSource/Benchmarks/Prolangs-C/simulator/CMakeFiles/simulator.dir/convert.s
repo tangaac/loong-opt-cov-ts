@@ -42,11 +42,11 @@ CHAR_TO_DIGIT:                          # @CHAR_TO_DIGIT
 	.type	NUM_TO_STR,@function
 NUM_TO_STR:                             # @NUM_TO_STR
 # %bb.0:
-	ori	$a4, $zero, 1
 	stx.b	$zero, $a3, $a2
-	blt	$a2, $a4, .LBB2_5
+	blez	$a2, .LBB2_5
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a3, $a3, -1
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -179,9 +179,8 @@ GET_NUM:                                # @GET_NUM
 	.type	STR_TO_NUM,@function
 STR_TO_NUM:                             # @STR_TO_NUM
 # %bb.0:
-	ori	$a5, $zero, 1
 	st.w	$zero, $a3, 0
-	blt	$a1, $a5, .LBB4_5
+	blez	$a1, .LBB4_5
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a5, $zero
 	move	$a6, $zero

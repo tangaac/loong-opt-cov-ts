@@ -70,9 +70,8 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 8
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
-	blt	$a1, $a2, .LBB0_58
+	blez	$a1, .LBB0_58
 # %bb.1:                                # %.lr.ph550
 	move	$s6, $zero
 	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
@@ -124,9 +123,8 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	ori	$a1, $zero, 216
 	mul.d	$a1, $s6, $a1
 	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
-	ori	$a1, $zero, 1
 	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	blt	$a0, $a1, .LBB0_22
+	blez	$a0, .LBB0_22
 # %bb.4:                                # %.lr.ph474.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$a1, $zero
@@ -323,8 +321,7 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	.p2align	4, , 16
 .LBB0_18:                               # %.preheader439
                                         #   in Loop: Header=BB0_3 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB0_23
+	blez	$s7, .LBB0_23
 # %bb.19:                               # %.lr.ph478.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$s3, $zero
@@ -404,8 +401,7 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	slli.d	$a0, $a1, 3
 	ldx.d	$a0, $s0, $a0
 	ld.w	$a2, $a0, 8
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB0_26
+	blez	$a2, .LBB0_26
 # %bb.28:                               # %.lr.ph484
                                         #   in Loop: Header=BB0_27 Depth=2
 	move	$a2, $zero
@@ -452,8 +448,7 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_49
+	blez	$a0, .LBB0_49
 # %bb.31:                               # %.lr.ph528.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$a1, $zero
@@ -693,8 +688,7 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	.p2align	4, , 16
 .LBB0_45:                               # %.preheader437
                                         #   in Loop: Header=BB0_3 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB0_50
+	blez	$s7, .LBB0_50
 # %bb.46:                               # %.lr.ph532.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$s3, $zero
@@ -773,8 +767,7 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	slli.d	$a0, $a1, 3
 	ldx.d	$a0, $s0, $a0
 	ld.w	$a2, $a0, 8
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB0_54
+	blez	$a2, .LBB0_54
 # %bb.56:                               # %.lr.ph538
                                         #   in Loop: Header=BB0_55 Depth=2
 	move	$a2, $zero
@@ -876,29 +869,29 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$s0, $a0, 8
 	ld.d	$a6, $a0, 16
-	st.d	$a6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$fp, $a0, 24
 	ld.w	$a0, $s0, 8
-	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a2, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_BoxArrayArrayCreate)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(hypre_BoxArrayArrayCreate)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s0, 8
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ori	$a1, $zero, 8
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s0, 8
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	ori	$a1, $zero, 8
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -907,8 +900,8 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	ld.d	$a1, $fp, 8
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	ld.d	$a1, $fp, 16
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_BoxCreate)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
@@ -928,21 +921,19 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
-	ori	$s7, $zero, 1
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	blt	$a1, $s7, .LBB1_47
+	blez	$a1, .LBB1_46
 # %bb.1:                                # %.lr.ph350
 	move	$s6, $zero
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                # %._crit_edge347
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $s0, 8
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$s6, $s6, 1
-	bge	$s6, $a0, .LBB1_47
+	bge	$s6, $a0, .LBB1_46
 .LBB1_3:                                # %.preheader300
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_8 Depth 2
@@ -951,8 +942,8 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
                                         #       Child Loop BB1_24 Depth 3
                                         #     Child Loop BB1_30 Depth 2
                                         #     Child Loop BB1_36 Depth 2
-                                        #     Child Loop BB1_44 Depth 2
-                                        #       Child Loop BB1_46 Depth 3
+                                        #     Child Loop BB1_43 Depth 2
+                                        #       Child Loop BB1_45 Depth 3
 	ld.d	$a0, $s0, 0
 	slli.d	$a1, $s6, 4
 	alsl.d	$a1, $s6, $a1, 3
@@ -997,17 +988,17 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	st.w	$a0, $fp, 20
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a2, 8
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
 	alsl.d	$s6, $s6, $a1, 2
 	move	$s0, $zero
-	blt	$a0, $s7, .LBB1_16
+	blez	$a0, .LBB1_16
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s1, $zero
 	move	$s3, $zero
 	move	$s2, $zero
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
 	move	$s7, $s5
 	b	.LBB1_8
 	.p2align	4, , 16
@@ -1078,8 +1069,7 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	.p2align	4, , 16
 .LBB1_12:                               # %.preheader299
                                         #   in Loop: Header=BB1_3 Depth=1
-	ori	$s7, $zero, 1
-	blt	$s2, $s7, .LBB1_17
+	blez	$s2, .LBB1_17
 # %bb.13:                               # %.lr.ph310.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s4, $zero
@@ -1115,9 +1105,9 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	move	$s4, $zero
 .LBB1_19:                               # %._crit_edge
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	slli.d	$s1, $a1, 3
 	ldx.d	$s3, $a0, $s1
 	move	$a0, $s3
@@ -1128,16 +1118,16 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
 	stx.d	$a0, $a1, $s1
 	beqz	$s0, .LBB1_25
 # %bb.20:                               # %.lr.ph323.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s0, $zero
 	move	$s1, $zero
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	alsl.d	$s4, $a1, $a0, 3
 	b	.LBB1_22
 	.p2align	4, , 16
@@ -1148,7 +1138,6 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, 1
 	st.d	$zero, $s7, 0
-	ori	$s7, $zero, 1
 	beq	$s0, $s2, .LBB1_25
 .LBB1_22:                               # %.lr.ph323
                                         #   Parent Loop BB1_3 Depth=1
@@ -1160,7 +1149,7 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	slli.d	$a0, $a1, 3
 	ldx.d	$a0, $s5, $a0
 	ld.w	$a2, $a0, 8
-	blt	$a2, $s7, .LBB1_21
+	blez	$a2, .LBB1_21
 # %bb.23:                               # %.lr.ph315
                                         #   in Loop: Header=BB1_22 Depth=2
 	move	$a2, $zero
@@ -1206,14 +1195,14 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
                                         #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a2, 8
-	blt	$a0, $s7, .LBB1_38
+	blez	$a0, .LBB1_38
 # %bb.26:                               # %.lr.ph328
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s2, $zero
 	move	$s3, $zero
 	move	$s1, $zero
-	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
+	move	$s7, $zero
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
 	move	$s0, $s5
 	b	.LBB1_30
 	.p2align	4, , 16
@@ -1302,22 +1291,20 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	st.d	$a0, $s0, 0
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
-	slli.d	$a0, $a3, 2
+	slli.d	$a0, $s7, 2
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	stx.w	$s3, $a2, $a0
-	addi.w	$a3, $a3, 1
-	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
+	addi.w	$s7, $s7, 1
 	b	.LBB1_27
 	.p2align	4, , 16
 .LBB1_34:                               # %.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	blt	$s6, $s7, .LBB1_39
+	blez	$s7, .LBB1_39
 # %bb.35:                               # %.lr.ph332.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s3, $zero
-	move	$s0, $s6
+	move	$s0, $s7
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_36:                               # %.lr.ph332
@@ -1336,23 +1323,23 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	bnez	$s0, .LBB1_36
 # %bb.37:                               #   in Loop: Header=BB1_3 Depth=1
 	ori	$s0, $zero, 1
-	b	.LBB1_41
+	b	.LBB1_40
 	.p2align	4, , 16
 .LBB1_38:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$s0, $zero
-	move	$s6, $zero
+	move	$s7, $zero
+	move	$s3, $zero
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
 	b	.LBB1_40
 	.p2align	4, , 16
 .LBB1_39:                               #   in Loop: Header=BB1_3 Depth=1
 	move	$s0, $zero
+	move	$s3, $zero
 .LBB1_40:                               # %._crit_edge333
                                         #   in Loop: Header=BB1_3 Depth=1
-	move	$s3, $zero
-.LBB1_41:                               # %._crit_edge333
-                                        #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ldx.d	$s2, $a0, $s1
 	move	$a0, $s2
 	move	$a1, $s3
@@ -1362,39 +1349,38 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	stx.d	$a0, $a1, $s1
 	beqz	$s0, .LBB1_2
-# %bb.42:                               # %.lr.ph346.preheader
+# %bb.41:                               # %.lr.ph346.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s0, $zero
 	move	$s1, $zero
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	alsl.d	$s3, $a1, $a0, 3
-	b	.LBB1_44
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	alsl.d	$s3, $s6, $a0, 3
+	b	.LBB1_43
 	.p2align	4, , 16
-.LBB1_43:                               # %._crit_edge339
-                                        #   in Loop: Header=BB1_44 Depth=2
+.LBB1_42:                               # %._crit_edge339
+                                        #   in Loop: Header=BB1_43 Depth=2
 	alsl.d	$s4, $a1, $s5, 3
 	pcaddu18i	$ra, %call36(hypre_BoxArrayDestroy)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, 1
 	st.d	$zero, $s4, 0
-	beq	$s0, $s6, .LBB1_2
-.LBB1_44:                               # %.lr.ph346
+	beq	$s0, $s7, .LBB1_2
+.LBB1_43:                               # %.lr.ph346
                                         #   Parent Loop BB1_3 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB1_46 Depth 3
+                                        #       Child Loop BB1_45 Depth 3
 	slli.d	$a0, $s0, 2
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	ldx.w	$a1, $a1, $a0
 	slli.d	$a0, $a1, 3
 	ldx.d	$a0, $s5, $a0
 	ld.w	$a2, $a0, 8
-	blt	$a2, $s7, .LBB1_43
-# %bb.45:                               # %.lr.ph338
-                                        #   in Loop: Header=BB1_44 Depth=2
+	blez	$a2, .LBB1_42
+# %bb.44:                               # %.lr.ph338
+                                        #   in Loop: Header=BB1_43 Depth=2
 	move	$a2, $zero
 	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	alsl.d	$a3, $a1, $a3, 2
@@ -1408,8 +1394,8 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	alsl.d	$a5, $s1, $a5, 2
 	addi.d	$a6, $a6, 12
 	.p2align	4, , 16
-.LBB1_46:                               #   Parent Loop BB1_3 Depth=1
-                                        #     Parent Loop BB1_44 Depth=2
+.LBB1_45:                               #   Parent Loop BB1_3 Depth=1
+                                        #     Parent Loop BB1_43 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a7, $a3, 0
 	st.w	$a7, $a5, 0
@@ -1431,9 +1417,9 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	addi.d	$a4, $a4, 24
 	addi.d	$a5, $a5, 4
 	addi.d	$a6, $a6, 24
-	blt	$a2, $a7, .LBB1_46
-	b	.LBB1_43
-.LBB1_47:                               # %._crit_edge351
+	blt	$a2, $a7, .LBB1_45
+	b	.LBB1_42
+.LBB1_46:                               # %._crit_edge351
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
@@ -1446,17 +1432,17 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(hypre_BoxDestroy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	st.d	$a1, $a0, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	st.d	$a1, $a0, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
 	move	$a0, $zero
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
@@ -1520,17 +1506,16 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	pcaddu18i	$ra, %call36(hypre_BoxCreate)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 8
-	ori	$a2, $zero, 1
 	move	$s7, $a0
-	blt	$a1, $a2, .LBB2_9
+	addi.w	$s0, $zero, -1
+	blez	$a1, .LBB2_9
 # %bb.1:                                # %.lr.ph88
 	move	$s2, $zero
-	addi.w	$s5, $zero, -1
 	b	.LBB2_4
 	.p2align	4, , 16
 .LBB2_2:                                # %._crit_edge.loopexit
                                         #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s5, 0
 .LBB2_3:                                # %._crit_edge
                                         #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a1, $s8, 8
@@ -1539,7 +1524,7 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 8
 	addi.d	$s2, $s2, 1
-	st.d	$a0, $s3, 0
+	st.d	$a0, $s5, 0
 	bge	$s2, $a1, .LBB2_9
 .LBB2_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_7 Depth 2
@@ -1547,8 +1532,8 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 80
 	ld.d	$fp, $s1, 0
-	slli.d	$s0, $s2, 3
-	ldx.d	$s8, $a0, $s0
+	slli.d	$s3, $s2, 3
+	ldx.d	$s8, $a0, $s3
 	ld.w	$a0, $a1, 8
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -1556,15 +1541,14 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.d	$a1, $sp, 80
 	ld.w	$a2, $a1, 8
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	alsl.d	$s3, $s2, $a3, 3
-	stx.d	$a0, $a3, $s0
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_3
+	alsl.d	$s5, $s2, $a3, 3
+	stx.d	$a0, $a3, $s3
+	blez	$a2, .LBB2_3
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB2_4 Depth=1
-	move	$s6, $zero
+	move	$s3, $zero
 	move	$s4, $zero
-	move	$s0, $zero
+	move	$s6, $zero
 	slli.d	$a0, $s2, 4
 	alsl.d	$a0, $s2, $a0, 3
 	add.d	$fp, $fp, $a0
@@ -1573,14 +1557,14 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 .LBB2_6:                                #   in Loop: Header=BB2_7 Depth=2
 	ld.d	$a1, $sp, 80
 	ld.w	$a0, $a1, 8
-	addi.d	$s0, $s0, 1
+	addi.d	$s6, $s6, 1
 	addi.d	$s4, $s4, 4
-	addi.d	$s6, $s6, 24
-	bge	$s0, $a0, .LBB2_2
+	addi.d	$s3, $s3, 24
+	bge	$s6, $a0, .LBB2_2
 .LBB2_7:                                #   Parent Loop BB2_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $a1, 0
-	add.d	$a1, $a0, $s6
+	add.d	$a1, $a0, $s3
 	move	$a0, $fp
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(hypre_IntersectBoxes)
@@ -1588,11 +1572,11 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.w	$a0, $s7, 12
 	ld.w	$a1, $s7, 0
 	sub.w	$a0, $a0, $a1
-	slt	$a1, $s5, $a0
+	slt	$a1, $s0, $a0
 	maskeqz	$a0, $a0, $a1
 	ld.d	$a2, $s7, 16
 	ld.d	$a3, $s7, 4
-	masknez	$a1, $s5, $a1
+	masknez	$a1, $s0, $a1
 	or	$a0, $a0, $a1
 	vinsgr2vr.d	$vr0, $a2, 0
 	vinsgr2vr.d	$vr1, $a3, 0
@@ -1612,7 +1596,7 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.d	$a0, $sp, 72
 	ld.w	$a1, $s8, 8
 	ldx.w	$a0, $a0, $s4
-	ld.d	$a2, $s3, 0
+	ld.d	$a2, $s5, 0
 	slli.d	$a1, $a1, 2
 	stx.w	$a0, $a2, $a1
 	move	$a0, $s7
@@ -1655,16 +1639,14 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s6, 8
 	move	$s7, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_18
+	blez	$a1, .LBB2_18
 # %bb.10:                               # %.lr.ph88.1
-	move	$s0, $zero
-	addi.w	$s3, $zero, -1
+	move	$s2, $zero
 	b	.LBB2_13
 	.p2align	4, , 16
 .LBB2_11:                               # %._crit_edge.loopexit.1
                                         #   in Loop: Header=BB2_13 Depth=1
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s3, 0
 .LBB2_12:                               # %._crit_edge.1
                                         #   in Loop: Header=BB2_13 Depth=1
 	ld.w	$a1, $s8, 8
@@ -1672,16 +1654,16 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	pcaddu18i	$ra, %call36(hypre_ReAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s6, 8
-	addi.d	$s0, $s0, 1
-	st.d	$a0, $s2, 0
-	bge	$s0, $a1, .LBB2_18
+	addi.d	$s2, $s2, 1
+	st.d	$a0, $s3, 0
+	bge	$s2, $a1, .LBB2_18
 .LBB2_13:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_16 Depth 2
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 80
 	ld.d	$fp, $s6, 0
-	slli.d	$s1, $s0, 3
+	slli.d	$s1, $s2, 3
 	ldx.d	$s8, $a0, $s1
 	ld.w	$a0, $a1, 8
 	ori	$a1, $zero, 4
@@ -1690,17 +1672,16 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.d	$a1, $sp, 80
 	ld.w	$a2, $a1, 8
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	alsl.d	$s2, $s0, $a3, 3
+	alsl.d	$s3, $s2, $a3, 3
 	stx.d	$a0, $a3, $s1
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_12
+	blez	$a2, .LBB2_12
 # %bb.14:                               # %.lr.ph.1
                                         #   in Loop: Header=BB2_13 Depth=1
 	move	$s4, $zero
 	move	$s5, $zero
 	move	$s1, $zero
-	slli.d	$a0, $s0, 4
-	alsl.d	$a0, $s0, $a0, 3
+	slli.d	$a0, $s2, 4
+	alsl.d	$a0, $s2, $a0, 3
 	add.d	$fp, $fp, $a0
 	b	.LBB2_16
 	.p2align	4, , 16
@@ -1722,11 +1703,11 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.w	$a0, $s7, 12
 	ld.w	$a1, $s7, 0
 	sub.w	$a0, $a0, $a1
-	slt	$a1, $s3, $a0
+	slt	$a1, $s0, $a0
 	maskeqz	$a0, $a0, $a1
 	ld.d	$a2, $s7, 16
 	ld.d	$a3, $s7, 4
-	masknez	$a1, $s3, $a1
+	masknez	$a1, $s0, $a1
 	or	$a0, $a0, $a1
 	vinsgr2vr.d	$vr0, $a2, 0
 	vinsgr2vr.d	$vr1, $a3, 0
@@ -1746,7 +1727,7 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.d	$a0, $sp, 72
 	ld.w	$a1, $s8, 8
 	ldx.w	$a0, $a0, $s5
-	ld.d	$a2, $s2, 0
+	ld.d	$a2, $s3, 0
 	slli.d	$a1, $a1, 2
 	stx.w	$a0, $a2, $a1
 	move	$a0, $s7

@@ -45,8 +45,7 @@ HYPRE_StructStencilSetElement:          # @HYPRE_StructStencilSetElement
 	stx.d	$zero, $a3, $a4
 	st.w	$zero, $a1, 8
 	ld.w	$a3, $a0, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB1_3
+	blez	$a3, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a3, $zero
 	.p2align	4, , 16

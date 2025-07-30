@@ -508,8 +508,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	sltui	$a0, $a0, 1
 	st.d	$a4, $sp, 192                   # 8-byte Folded Spill
 	sltu	$a1, $zero, $a4
-	xor	$a0, $a1, $a0
-	bnez	$a0, .LBB0_68
+	bne	$a1, $a0, .LBB0_68
 # %bb.67:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -526,24 +525,23 @@ FixAndPrintObject:                      # @FixAndPrintObject
 .LBB0_68:                               # %.preheader3139
 	ori	$a0, $zero, 1
 	move	$s2, $fp
-	ori	$a1, $zero, 1
 	move	$s0, $fp
 	.p2align	4, , 16
 .LBB0_69:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$s0, $s0, 8
 	ld.d	$s2, $s2, 24
-	xor	$a2, $s0, $fp
+	xor	$a1, $s0, $fp
+	sltu	$a1, $zero, $a1
+	xor	$a2, $s2, $fp
 	sltu	$a2, $zero, $a2
-	xor	$a3, $s2, $fp
-	sltu	$a3, $zero, $a3
-	and	$a2, $a2, $a3
-	bne	$a2, $a0, .LBB0_71
+	and	$a1, $a1, $a2
+	beqz	$a1, .LBB0_71
 # %bb.70:                               #   in Loop: Header=BB0_69 Depth=1
-	move	$a3, $a1
-	addi.w	$a1, $a1, 1
-	blt	$a3, $s5, .LBB0_69
+	move	$a2, $a0
+	addi.w	$a0, $a0, 1
+	blt	$a2, $s5, .LBB0_69
 .LBB0_71:                               # %.critedge37
-	bnez	$a2, .LBB0_73
+	bnez	$a1, .LBB0_73
 # %bb.72:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -886,21 +884,19 @@ FixAndPrintObject:                      # @FixAndPrintObject
 # %bb.118:
 	beqz	$s5, .LBB0_259
 # %bb.119:
-	add.w	$a4, $s4, $s3
-	ori	$a3, $zero, 1
-	blt	$a4, $a3, .LBB0_242
+	add.w	$a3, $s4, $s3
+	blez	$a3, .LBB0_242
 # %bb.120:
-	move	$t0, $a6
-	ld.w	$a5, $a0, 52
-	ld.w	$a6, $a0, 60
-	add.w	$a5, $a6, $a5
-	blt	$a5, $a3, .LBB0_242
+	ld.w	$a4, $a0, 52
+	ld.w	$a5, $a0, 60
+	add.w	$a4, $a5, $a4
+	blez	$a4, .LBB0_242
 # %bb.121:                              # %ScaleFactor.exit
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa0, $a4
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa0, $a3
 	ffint.s.l	$fa0, $fa0
-	bstrpick.d	$a4, $a5, 31, 0
-	movgr2fr.d	$fa1, $a4
+	bstrpick.d	$a3, $a4, 31, 0
+	movgr2fr.d	$fa1, $a3
 	ffint.s.l	$fa1, $fa1
 	fdiv.s	$fs0, $fa0, $fa1
 	movgr2fr.w	$fa0, $zero
@@ -909,7 +905,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 # %bb.122:
 	ld.d	$a1, $a2, 160
 	move	$s1, $a0
-	move	$s7, $t0
+	move	$s7, $a6
 	st.d	$a7, $sp, 192                   # 8-byte Folded Spill
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $s0, 0
@@ -1083,7 +1079,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 # %bb.135:                              # %.preheader2179
 	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 144                   # 8-byte Folded Spill
-	beq	$s0, $fp, .LBB0_564
+	beq	$s0, $fp, .LBB0_563
 # %bb.136:                              # %.preheader2178.lr.ph
 	sub.w	$a0, $a6, $s2
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
@@ -1130,7 +1126,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$s2, $s6
 .LBB0_139:                              #   in Loop: Header=BB0_140 Depth=1
 	ld.d	$s0, $s0, 8
-	beq	$s0, $fp, .LBB0_564
+	beq	$s0, $fp, .LBB0_563
 .LBB0_140:                              # %.preheader2178
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_141 Depth 2
@@ -1361,13 +1357,12 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ld.w	$a2, $fp, 64
 	ld.w	$a3, $fp, 72
 	add.w	$a2, $a3, $a2
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB0_275
+	blez	$a2, .LBB0_275
 # %bb.184:
 	ld.w	$a3, $a0, 48
-	ld.w	$a5, $a0, 56
-	add.w	$a3, $a5, $a3
-	blt	$a3, $a4, .LBB0_275
+	ld.w	$a4, $a0, 56
+	add.w	$a3, $a4, $a3
+	blez	$a3, .LBB0_275
 # %bb.185:                              # %ScaleFactor.exit2106
 	bstrpick.d	$a2, $a2, 31, 0
 	movgr2fr.d	$fa0, $a2
@@ -1701,7 +1696,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	b	.LBB0_264
 .LBB0_242:                              # %ScaleFactor.exit.thread
 	addi.d	$a1, $a1, -11
-	bltu	$a3, $a1, .LBB0_244
+	ori	$a2, $zero, 1
+	bltu	$a2, $a1, .LBB0_244
 # %bb.243:
 	ld.bu	$a0, $a0, 64
 	beqz	$a0, .LBB0_275
@@ -1875,21 +1871,20 @@ FixAndPrintObject:                      # @FixAndPrintObject
 .LBB0_265:
 	st.w	$s2, $fp, 88
 	st.w	$s3, $fp, 64
-	add.w	$a4, $s4, $s3
-	ori	$a1, $zero, 1
+	add.w	$a1, $s4, $s3
 	st.w	$s4, $fp, 72
-	blt	$a4, $a1, .LBB0_286
+	blez	$a1, .LBB0_286
 # %bb.266:
 	ld.w	$a2, $a0, 48
 	ld.w	$a3, $a0, 56
-	add.w	$a5, $a3, $a2
-	blt	$a5, $a1, .LBB0_286
+	add.w	$a4, $a3, $a2
+	blez	$a4, .LBB0_286
 # %bb.267:                              # %ScaleFactor.exit2104
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa0, $a4
+	bstrpick.d	$a1, $a1, 31, 0
+	movgr2fr.d	$fa0, $a1
 	ffint.s.l	$fa0, $fa0
-	bstrpick.d	$a4, $a5, 31, 0
-	movgr2fr.d	$fa1, $a4
+	bstrpick.d	$a1, $a4, 31, 0
+	movgr2fr.d	$fa1, $a1
 	ffint.s.l	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
 	movgr2fr.w	$fa1, $zero
@@ -2070,9 +2065,10 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	b	.LBB0_275
 .LBB0_286:                              # %ScaleFactor.exit2104.thread
 	addi.d	$a4, $a0, 32
-	ld.bu	$a2, $a4, 0
-	addi.d	$a2, $a2, -11
-	bltu	$a1, $a2, .LBB0_288
+	ld.bu	$a1, $a4, 0
+	addi.d	$a1, $a1, -11
+	ori	$a2, $zero, 1
+	bltu	$a2, $a1, .LBB0_288
 # %bb.287:
 	ld.bu	$a0, $a0, 64
 	beqz	$a0, .LBB0_275
@@ -3054,13 +3050,13 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.w	$a1, $sp, 240
 	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	beqz	$a0, .LBB0_452
+	beqz	$a0, .LBB0_451
 # %bb.430:
 	addi.d	$a1, $sp, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(InsertScale)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_451
+	beqz	$a0, .LBB0_450
 # %bb.431:
 	ld.d	$s1, $fp, 24
 .LBB0_432:                              # =>This Inner Loop Header: Depth=1
@@ -3078,14 +3074,14 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	sub.w	$a3, $s0, $a3
 	ori	$a4, $zero, 20
-	blt	$a3, $a4, .LBB0_562
+	blt	$a3, $a4, .LBB0_561
 # %bb.436:
 	addi.d	$a2, $a2, -11
 	ori	$a3, $zero, 1
-	bltu	$a3, $a2, .LBB0_560
+	bltu	$a3, $a2, .LBB0_559
 # %bb.437:
 	ld.d	$a2, $fp, 0
-	bne	$a1, $a2, .LBB0_560
+	bne	$a1, $a2, .LBB0_559
 # %bb.438:
 	addi.d	$s2, $a0, 32
 	ld.w	$a1, $s1, 64
@@ -3108,7 +3104,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ori	$a3, $zero, 2
 	move	$a4, $s2
 	move	$a5, $s6
-	b	.LBB0_561
+	b	.LBB0_560
 .LBB0_439:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	bge	$a0, $s0, .LBB0_446
@@ -3136,14 +3132,13 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ori	$a0, $zero, 1
 	andi	$a0, $a0, 1
 	move	$a2, $zero
-	beqz	$a0, .LBB0_450
+	move	$s1, $zero
+	beqz	$a0, .LBB0_478
 .LBB0_444:
-	ori	$a0, $zero, 1
-	move	$s1, $a2
-                                        # implicit-def: $r5
-                                        # kill: killed $r5
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB0_480
+                                        # implicit-def: $r4
+                                        # kill: killed $r4
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	blez	$a0, .LBB0_479
 # %bb.445:
 	move	$s1, $zero
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -3154,16 +3149,16 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	andn	$a0, $a0, $a1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$a2, $zero, 1
-	b	.LBB0_480
+	b	.LBB0_479
 .LBB0_446:
 	ld.b	$a1, $fp, 68
 	ld.hu	$a0, $fp, 42
 	bstrpick.d	$a1, $a1, 6, 4
 	ori	$a2, $zero, 5
-	beq	$a1, $a2, .LBB0_478
+	beq	$a1, $a2, .LBB0_477
 # %bb.447:
 	ori	$a2, $zero, 6
-	beq	$a1, $a2, .LBB0_477
+	beq	$a1, $a2, .LBB0_476
 # %bb.448:
 	ori	$a2, $zero, 7
 	beq	$a1, $a2, .LBB0_443
@@ -3171,17 +3166,16 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	bstrpick.d	$a0, $a0, 11, 11
 	andi	$a0, $a0, 1
 	move	$a2, $zero
+	move	$s1, $zero
 	bnez	$a0, .LBB0_444
-.LBB0_450:
-	move	$s1, $a2
-	b	.LBB0_479
-.LBB0_451:                              # %._crit_edge2696
+	b	.LBB0_478
+.LBB0_450:                              # %._crit_edge2696
 	ld.w	$s0, $fp, 56
-.LBB0_452:
+.LBB0_451:
 	ld.w	$a0, $fp, 48
 	add.w	$a0, $s0, $a0
-	bgtz	$a0, .LBB0_454
-# %bb.453:
+	bgtz	$a0, .LBB0_453
+# %bb.452:
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.10)
 	ori	$a0, $zero, 23
@@ -3190,21 +3184,21 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a4, $s7
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB0_454:
+.LBB0_453:
 	ld.d	$a1, $fp, 8
 	move	$a0, $a1
-.LBB0_455:                              # =>This Inner Loop Header: Depth=1
+.LBB0_454:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a0, 16
 	ld.bu	$a2, $a0, 32
-	beqz	$a2, .LBB0_455
-# %bb.456:
+	beqz	$a2, .LBB0_454
+# %bb.455:
 	addi.d	$a2, $a2, -11
 	ori	$a3, $zero, 1
-	bltu	$a3, $a2, .LBB0_459
-# %bb.457:
+	bltu	$a3, $a2, .LBB0_458
+# %bb.456:
 	ld.d	$a2, $fp, 0
-	bne	$a1, $a2, .LBB0_459
-# %bb.458:
+	bne	$a1, $a2, .LBB0_458
+# %bb.457:
 	addi.d	$s1, $a0, 32
 	addi.d	$s2, $a0, 64
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -3218,8 +3212,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ori	$a3, $zero, 2
 	move	$a4, $s1
 	move	$a5, $s2
-	b	.LBB0_460
-.LBB0_459:
+	b	.LBB0_459
+.LBB0_458:
 	ld.w	$a0, $fp, 48
 	ld.w	$a1, $fp, 56
 	add.w	$a0, $a1, $a0
@@ -3237,12 +3231,12 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ori	$a3, $zero, 2
 	move	$a4, $s7
 	move	$a5, $s1
-.LBB0_460:
+.LBB0_459:
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
-	beq	$a0, $fp, .LBB0_470
-# %bb.461:                              # %.lr.ph2443.preheader
+	beq	$a0, $fp, .LBB0_469
+# %bb.460:                              # %.lr.ph2443.preheader
 	pcalau12i	$a1, %got_pc_hi20(xx_link)
 	ld.d	$s0, $a1, %got_pc_lo12(xx_link)
 	pcalau12i	$a1, %got_pc_hi20(xx_tmp)
@@ -3257,31 +3251,31 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ld.d	$s5, $a1, %got_pc_lo12(zz_free)
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$s6, $a1, %got_pc_lo12(zz_res)
-	b	.LBB0_463
-.LBB0_462:                              #   in Loop: Header=BB0_463 Depth=1
+	b	.LBB0_462
+.LBB0_461:                              #   in Loop: Header=BB0_462 Depth=1
 	ld.d	$a0, $fp, 8
-	beq	$a0, $fp, .LBB0_470
-.LBB0_463:                              # %.lr.ph2443
+	beq	$a0, $fp, .LBB0_469
+.LBB0_462:                              # %.lr.ph2443
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $a0, 24
 	st.d	$a0, $s0, 0
-	beq	$a1, $a0, .LBB0_465
-# %bb.464:                              #   in Loop: Header=BB0_463 Depth=1
+	beq	$a1, $a0, .LBB0_464
+# %bb.463:                              #   in Loop: Header=BB0_462 Depth=1
 	ld.d	$a2, $a0, 16
 	st.d	$a1, $s6, 0
 	st.d	$a2, $a1, 16
 	st.d	$a1, $a2, 24
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
-	b	.LBB0_466
-.LBB0_465:                              #   in Loop: Header=BB0_463 Depth=1
+	b	.LBB0_465
+.LBB0_464:                              #   in Loop: Header=BB0_462 Depth=1
 	move	$a1, $zero
-.LBB0_466:                              #   in Loop: Header=BB0_463 Depth=1
+.LBB0_465:                              #   in Loop: Header=BB0_462 Depth=1
 	ld.d	$a2, $a0, 8
 	st.d	$a1, $s1, 0
 	st.d	$a0, $s2, 0
-	beq	$a2, $a0, .LBB0_468
-# %bb.467:                              #   in Loop: Header=BB0_463 Depth=1
+	beq	$a2, $a0, .LBB0_467
+# %bb.466:                              #   in Loop: Header=BB0_462 Depth=1
 	st.d	$a2, $s6, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $a2, 0
@@ -3292,7 +3286,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a1, $a1, 0
 	ld.d	$a0, $s0, 0
 	st.d	$a1, $a1, 8
-.LBB0_468:                              #   in Loop: Header=BB0_463 Depth=1
+.LBB0_467:                              #   in Loop: Header=BB0_462 Depth=1
 	ld.bu	$a1, $a0, 32
 	addi.d	$a2, $a1, -11
 	sltui	$a2, $a2, 2
@@ -3313,12 +3307,12 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	slli.d	$a1, $a1, 3
 	stx.d	$a2, $s5, $a1
 	ld.d	$a1, $a0, 24
-	bne	$a1, $a0, .LBB0_462
-# %bb.469:                              #   in Loop: Header=BB0_463 Depth=1
+	bne	$a1, $a0, .LBB0_461
+# %bb.468:                              #   in Loop: Header=BB0_462 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	b	.LBB0_462
-.LBB0_470:                              # %._crit_edge2444
+	b	.LBB0_461
+.LBB0_469:                              # %._crit_edge2444
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
 	ori	$a0, $zero, 11
@@ -3335,16 +3329,16 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	slli.d	$a1, $a2, 3
 	ldx.d	$a1, $a3, $a1
 	st.w	$a2, $a4, 0
-	beqz	$a1, .LBB0_472
-# %bb.471:
+	beqz	$a1, .LBB0_471
+# %bb.470:
 	pcalau12i	$a4, %got_pc_hi20(zz_hold)
 	ld.d	$a4, $a4, %got_pc_lo12(zz_hold)
 	st.d	$a1, $a4, 0
 	ld.d	$a4, $a1, 0
 	alsl.d	$a2, $a2, $a3, 3
 	st.d	$a4, $a2, 0
-	b	.LBB0_473
-.LBB0_472:
+	b	.LBB0_472
+.LBB0_471:
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$a1, $a1, %got_pc_lo12(no_fpos)
 	ld.d	$a1, $a1, 0
@@ -3354,7 +3348,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s0
-.LBB0_473:
+.LBB0_472:
 	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	st.b	$zero, $a1, 32
 	st.d	$a1, $a1, 24
@@ -3387,10 +3381,10 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a6, $t0, 8
 	st.d	$a1, $a4, 0
 	st.d	$a0, $a5, 0
-	beqz	$a0, .LBB0_476
+	beqz	$a0, .LBB0_475
+# %bb.473:
+	beqz	$a1, .LBB0_475
 # %bb.474:
-	beqz	$a1, .LBB0_476
-# %bb.475:
 	ld.d	$a3, $a0, 16
 	ld.d	$a4, $a1, 16
 	st.d	$a3, $a2, 0
@@ -3398,11 +3392,11 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a0, $a4, 24
 	st.d	$a3, $a1, 16
 	st.d	$a1, $a3, 24
-.LBB0_476:
+.LBB0_475:
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 48
-	b	.LBB0_564
-.LBB0_477:
+	b	.LBB0_563
+.LBB0_476:
 	move	$a2, $zero
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 2047
@@ -3410,8 +3404,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.h	$a0, $fp, 42
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	sub.d	$s1, $a0, $s0
-	b	.LBB0_479
-.LBB0_478:
+	b	.LBB0_478
+.LBB0_477:
 	move	$a2, $zero
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 2047
@@ -3422,44 +3416,45 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
 	srai.d	$s1, $a0, 1
-.LBB0_479:                              # %.thread
+.LBB0_478:                              # %.thread
                                         # implicit-def: $r4
                                         # kill: killed $r4
-.LBB0_480:                              # %.thread
+.LBB0_479:                              # %.thread
 	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	ld.d	$s2, $fp, 8
-	beq	$s2, $fp, .LBB0_489
-# %bb.481:                              # %.preheader2172.preheader
+	beq	$s2, $fp, .LBB0_488
+# %bb.480:                              # %.preheader2172.preheader
 	ori	$s3, $zero, 1
 	ori	$s4, $zero, 9
 	ori	$s7, $zero, 91
-	b	.LBB0_484
-.LBB0_482:                              #   in Loop: Header=BB0_484 Depth=1
+	b	.LBB0_483
+.LBB0_481:                              #   in Loop: Header=BB0_483 Depth=1
 	addi.d	$a0, $a0, -9
-	bltu	$a0, $s7, .LBB0_489
-.LBB0_483:                              # %.critedge29
-                                        #   in Loop: Header=BB0_484 Depth=1
+	bltu	$a0, $s7, .LBB0_488
+.LBB0_482:                              # %.critedge29
+                                        #   in Loop: Header=BB0_483 Depth=1
 	ld.d	$s2, $s2, 8
-	beq	$s2, $fp, .LBB0_489
-.LBB0_484:                              # %.preheader2172
+	beq	$s2, $fp, .LBB0_488
+.LBB0_483:                              # %.preheader2172
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_485 Depth 2
+                                        #     Child Loop BB0_484 Depth 2
 	move	$s6, $s2
-.LBB0_485:                              #   Parent Loop BB0_484 Depth=1
+.LBB0_484:                              #   Parent Loop BB0_483 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s6, $s6, 16
 	ld.bu	$a0, $s6, 32
-	beqz	$a0, .LBB0_485
-# %bb.486:                              #   in Loop: Header=BB0_484 Depth=1
-	beq	$a0, $s3, .LBB0_483
-# %bb.487:                              #   in Loop: Header=BB0_484 Depth=1
-	bne	$a0, $s4, .LBB0_482
-# %bb.488:                              #   in Loop: Header=BB0_484 Depth=1
+	beqz	$a0, .LBB0_484
+# %bb.485:                              #   in Loop: Header=BB0_483 Depth=1
+	beq	$a0, $s3, .LBB0_482
+# %bb.486:                              #   in Loop: Header=BB0_483 Depth=1
+	bne	$a0, $s4, .LBB0_481
+# %bb.487:                              #   in Loop: Header=BB0_483 Depth=1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(SplitIsDefinite)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_483
-.LBB0_489:                              # %._crit_edge2390
+	beqz	$a0, .LBB0_482
+.LBB0_488:                              # %._crit_edge2390
+	st.d	$s0, $sp, 192                   # 8-byte Folded Spill
 	ld.w	$a0, $fp, 48
 	ld.w	$a1, $s6, 48
 	ld.d	$s8, $s2, 8
@@ -3468,62 +3463,60 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	sub.d	$a0, $a2, $a0
 	add.w	$a0, $a0, $a1
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	beq	$s8, $fp, .LBB0_502
-# %bb.490:                              # %.preheader2170.preheader
-	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
-	ori	$s3, $zero, 1
-	ori	$s4, $zero, 9
-	ori	$s7, $zero, 90
+	move	$s4, $zero
+	beq	$s8, $fp, .LBB0_501
+# %bb.489:                              # %.preheader2170.preheader
 	ori	$s2, $zero, 1
-	b	.LBB0_493
-.LBB0_491:                              #   in Loop: Header=BB0_493 Depth=1
+	ori	$s3, $zero, 9
+	ori	$s0, $zero, 90
+	ori	$s7, $zero, 1
+	b	.LBB0_492
+.LBB0_490:                              #   in Loop: Header=BB0_492 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(SplitIsDefinite)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_503
-.LBB0_492:                              # %.critedge31
-                                        #   in Loop: Header=BB0_493 Depth=1
+	bnez	$a0, .LBB0_502
+.LBB0_491:                              # %.critedge31
+                                        #   in Loop: Header=BB0_492 Depth=1
 	ld.d	$s8, $s8, 8
-	beq	$s8, $fp, .LBB0_505
-.LBB0_493:                              # %.preheader2170
+	beq	$s8, $fp, .LBB0_504
+.LBB0_492:                              # %.preheader2170
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_494 Depth 2
+                                        #     Child Loop BB0_493 Depth 2
 	move	$s1, $s8
-.LBB0_494:                              #   Parent Loop BB0_493 Depth=1
+.LBB0_493:                              #   Parent Loop BB0_492 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s1, $s1, 16
 	ld.bu	$a0, $s1, 32
-	beqz	$a0, .LBB0_494
-# %bb.495:                              #   in Loop: Header=BB0_493 Depth=1
-	beq	$a0, $s4, .LBB0_491
-# %bb.496:                              #   in Loop: Header=BB0_493 Depth=1
-	bne	$a0, $s3, .LBB0_499
-# %bb.497:                              #   in Loop: Header=BB0_493 Depth=1
-	beqz	$s2, .LBB0_500
-# %bb.498:                              #   in Loop: Header=BB0_493 Depth=1
+	beqz	$a0, .LBB0_493
+# %bb.494:                              #   in Loop: Header=BB0_492 Depth=1
+	beq	$a0, $s3, .LBB0_490
+# %bb.495:                              #   in Loop: Header=BB0_492 Depth=1
+	bne	$a0, $s2, .LBB0_498
+# %bb.496:                              #   in Loop: Header=BB0_492 Depth=1
+	beqz	$s7, .LBB0_499
+# %bb.497:                              #   in Loop: Header=BB0_492 Depth=1
 	ld.hu	$a0, $s1, 44
-	bstrpick.d	$s2, $a0, 9, 9
-	b	.LBB0_501
-.LBB0_499:                              #   in Loop: Header=BB0_493 Depth=1
+	bstrpick.d	$s7, $a0, 9, 9
+	b	.LBB0_500
+.LBB0_498:                              #   in Loop: Header=BB0_492 Depth=1
 	addi.d	$a0, $a0, -9
-	bltu	$s7, $a0, .LBB0_492
-	b	.LBB0_503
-.LBB0_500:                              #   in Loop: Header=BB0_493 Depth=1
-	move	$s2, $zero
-.LBB0_501:                              # %.critedge31
-                                        #   in Loop: Header=BB0_493 Depth=1
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	bltu	$s0, $a0, .LBB0_491
+	b	.LBB0_502
+.LBB0_499:                              #   in Loop: Header=BB0_492 Depth=1
+	move	$s7, $zero
+.LBB0_500:                              # %.critedge31
+                                        #   in Loop: Header=BB0_492 Depth=1
+	move	$s4, $s1
 	ld.d	$s8, $s8, 8
-	bne	$s8, $fp, .LBB0_493
-	b	.LBB0_505
-.LBB0_502:
-	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
+	bne	$s8, $fp, .LBB0_492
+	b	.LBB0_504
+.LBB0_501:
 	move	$s1, $s6
-	b	.LBB0_505
-.LBB0_503:
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	bnez	$a0, .LBB0_505
-# %bb.504:
+	b	.LBB0_504
+.LBB0_502:
+	bnez	$s4, .LBB0_504
+# %bb.503:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -3536,10 +3529,10 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
-.LBB0_505:                              # %.loopexit2171
-	beq	$s8, $fp, .LBB0_543
-# %bb.506:                              # %.lr.ph2431
+	move	$s4, $zero
+.LBB0_504:                              # %.loopexit2171
+	beq	$s8, $fp, .LBB0_542
+# %bb.505:                              # %.lr.ph2431
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
@@ -3550,7 +3543,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	addi.d	$a0, $fp, 76
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $s0
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(zz_lengths)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_lengths)
@@ -3564,16 +3558,16 @@ FixAndPrintObject:                      # @FixAndPrintObject
                                         # kill: killed $r4
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 192                   # 8-byte Folded Reload
-	b	.LBB0_509
-.LBB0_507:                              #   in Loop: Header=BB0_509 Depth=1
+	move	$s2, $s4
+	b	.LBB0_508
+.LBB0_506:                              #   in Loop: Header=BB0_508 Depth=1
 	move	$s4, $zero
 	move	$s1, $s6
-.LBB0_508:                              # %.loopexit2169
-                                        #   in Loop: Header=BB0_509 Depth=1
+.LBB0_507:                              # %.loopexit2169
+                                        #   in Loop: Header=BB0_508 Depth=1
 	sltui	$a0, $s3, 1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	add.w	$s7, $s7, $a1
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	add.w	$s7, $s2, $s7
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	xor	$a1, $a2, $a1
@@ -3588,23 +3582,23 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$s2, $s4
 	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
-	beq	$s8, $fp, .LBB0_542
-.LBB0_509:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_532 Depth 2
-                                        #       Child Loop BB0_533 Depth 3
+	beq	$s8, $fp, .LBB0_541
+.LBB0_508:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_531 Depth 2
+                                        #       Child Loop BB0_532 Depth 3
 	move	$a0, $s6
 	ld.wu	$a1, $s6, 40
 	lu12i.w	$a2, 393216
 	and	$a1, $a1, $a2
 	move	$s6, $s1
-	st.d	$s2, $sp, 192                   # 8-byte Folded Spill
-	lu12i.w	$a2, 262144
 	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	bne	$a1, $a2, .LBB0_524
-# %bb.510:                              #   in Loop: Header=BB0_509 Depth=1
+	lu12i.w	$a2, 262144
+	st.d	$s2, $sp, 192                   # 8-byte Folded Spill
+	bne	$a1, $a2, .LBB0_523
+# %bb.509:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	bnez	$a1, .LBB0_512
-# %bb.511:                              #   in Loop: Header=BB0_509 Depth=1
+	bnez	$a1, .LBB0_511
+# %bb.510:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.bu	$a1, $a0, 32
 	addi.d	$a2, $a0, 40
 	addi.d	$a1, $a1, -11
@@ -3621,34 +3615,34 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	sub.d	$a1, $s7, $a2
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-.LBB0_512:                              #   in Loop: Header=BB0_509 Depth=1
+.LBB0_511:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.wu	$a1, $s2, 40
 	lu12i.w	$a2, 393216
 	and	$a1, $a1, $a2
 	ori	$a2, $zero, 1
 	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	lu12i.w	$a2, 131072
-	bne	$a1, $a2, .LBB0_524
-# %bb.513:                              #   in Loop: Header=BB0_509 Depth=1
+	bne	$a1, $a2, .LBB0_523
+# %bb.512:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.bu	$a2, $a1, 3
 	pcalau12i	$a1, %got_pc_hi20(zz_free)
-	ld.d	$s4, $a1, %got_pc_lo12(zz_free)
+	ld.d	$s2, $a1, %got_pc_lo12(zz_free)
 	pcalau12i	$a1, %got_pc_hi20(zz_size)
-	ld.d	$s2, $a1, %got_pc_lo12(zz_size)
+	ld.d	$s4, $a1, %got_pc_lo12(zz_size)
 	slli.d	$a1, $a2, 3
-	ldx.d	$s1, $s4, $a1
-	st.w	$a2, $s2, 0
-	beqz	$s1, .LBB0_515
-# %bb.514:                              #   in Loop: Header=BB0_509 Depth=1
+	ldx.d	$s1, $s2, $a1
+	st.w	$a2, $s4, 0
+	beqz	$s1, .LBB0_514
+# %bb.513:                              #   in Loop: Header=BB0_508 Depth=1
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$s1, $a1, 0
 	ld.d	$a1, $s1, 0
-	alsl.d	$a2, $a2, $s4, 3
+	alsl.d	$a2, $a2, $s2, 3
 	st.d	$a1, $a2, 0
-	b	.LBB0_516
-.LBB0_515:                              #   in Loop: Header=BB0_509 Depth=1
+	b	.LBB0_515
+.LBB0_514:                              #   in Loop: Header=BB0_508 Depth=1
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$a1, $a1, %got_pc_lo12(no_fpos)
 	ld.d	$a1, $a1, 0
@@ -3662,7 +3656,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a0, $s7
 	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s1, $a1, 0
-.LBB0_516:                              #   in Loop: Header=BB0_509 Depth=1
+.LBB0_515:                              #   in Loop: Header=BB0_508 Depth=1
 	ori	$a1, $zero, 3
 	st.b	$a1, $s1, 32
 	st.d	$s1, $s1, 24
@@ -3681,18 +3675,18 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a1, $s1, 60
 	slli.d	$a1, $a2, 3
-	ldx.d	$a1, $s4, $a1
-	st.w	$a2, $s2, 0
-	beqz	$a1, .LBB0_518
-# %bb.517:                              #   in Loop: Header=BB0_509 Depth=1
+	ldx.d	$a1, $s2, $a1
+	st.w	$a2, $s4, 0
+	beqz	$a1, .LBB0_517
+# %bb.516:                              #   in Loop: Header=BB0_508 Depth=1
 	pcalau12i	$a3, %got_pc_hi20(zz_hold)
 	ld.d	$a3, $a3, %got_pc_lo12(zz_hold)
 	st.d	$a1, $a3, 0
 	ld.d	$a3, $a1, 0
-	alsl.d	$a2, $a2, $s4, 3
+	alsl.d	$a2, $a2, $s2, 3
 	st.d	$a3, $a2, 0
-	b	.LBB0_519
-.LBB0_518:                              #   in Loop: Header=BB0_509 Depth=1
+	b	.LBB0_518
+.LBB0_517:                              #   in Loop: Header=BB0_508 Depth=1
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$a1, $a1, %got_pc_lo12(no_fpos)
 	ld.d	$a1, $a1, 0
@@ -3702,7 +3696,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
-.LBB0_519:                              #   in Loop: Header=BB0_509 Depth=1
+.LBB0_518:                              #   in Loop: Header=BB0_508 Depth=1
 	st.b	$zero, $a1, 32
 	st.d	$a1, $a1, 24
 	st.d	$a1, $a1, 16
@@ -3720,8 +3714,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a5, $a4, 0
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 192                   # 8-byte Folded Reload
-	beqz	$a5, .LBB0_522
-# %bb.520:                              #   in Loop: Header=BB0_509 Depth=1
+	beqz	$a5, .LBB0_521
+# %bb.519:                              #   in Loop: Header=BB0_508 Depth=1
 	move	$t0, $a6
 	ld.d	$a6, $a5, 0
 	pcalau12i	$a7, %got_pc_hi20(zz_tmp)
@@ -3741,14 +3735,14 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a5, $a7, 8
 	st.d	$a1, $a3, 0
 	st.d	$s1, $a4, 0
-	bnez	$a1, .LBB0_523
-# %bb.521:                              #   in Loop: Header=BB0_509 Depth=1
+	bnez	$a1, .LBB0_522
+# %bb.520:                              #   in Loop: Header=BB0_508 Depth=1
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
-	b	.LBB0_524
-.LBB0_522:                              # %.thread2708
-                                        #   in Loop: Header=BB0_509 Depth=1
+	b	.LBB0_523
+.LBB0_521:                              # %.thread2708
+                                        #   in Loop: Header=BB0_508 Depth=1
 	st.d	$s1, $a4, 0
-.LBB0_523:                              #   in Loop: Header=BB0_509 Depth=1
+.LBB0_522:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.d	$a2, $s1, 16
 	pcalau12i	$a3, %got_pc_hi20(zz_tmp)
 	ld.d	$a3, $a3, %got_pc_lo12(zz_tmp)
@@ -3759,13 +3753,12 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$s1, $a4, 24
 	st.d	$a2, $a1, 16
 	st.d	$a1, $a2, 24
-.LBB0_524:                              #   in Loop: Header=BB0_509 Depth=1
-	beqz	$s3, .LBB0_527
-# %bb.525:                              #   in Loop: Header=BB0_509 Depth=1
+.LBB0_523:                              #   in Loop: Header=BB0_508 Depth=1
+	beqz	$s3, .LBB0_526
+# %bb.524:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.h	$a1, $s2, 46
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_527
-# %bb.526:                              #   in Loop: Header=BB0_509 Depth=1
+	blez	$a1, .LBB0_526
+# %bb.525:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.w	$a1, $a0, 56
 	ld.w	$a2, $a0, 48
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
@@ -3790,10 +3783,10 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	div.w	$a1, $a1, $a2
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	sub.d	$a2, $a1, $a2
-	add.d	$s7, $a2, $a0
+	add.d	$s2, $a2, $a0
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	b	.LBB0_528
-.LBB0_527:                              #   in Loop: Header=BB0_509 Depth=1
+	b	.LBB0_527
+.LBB0_526:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.w	$a2, $a0, 48
 	ld.w	$a3, $a0, 56
 	addi.d	$a1, $sp, 248
@@ -3806,64 +3799,64 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a7, $s5
 	pcaddu18i	$ra, %call36(FixAndPrintObject)
 	jirl	$ra, $ra, 0
-	ld.h	$s7, $s2, 54
-.LBB0_528:                              #   in Loop: Header=BB0_509 Depth=1
+	ld.h	$s2, $s2, 54
+.LBB0_527:                              #   in Loop: Header=BB0_508 Depth=1
 	ld.d	$s8, $s8, 8
-	beq	$s8, $fp, .LBB0_507
-# %bb.529:                              # %.preheader2168.preheader
-                                        #   in Loop: Header=BB0_509 Depth=1
+	beq	$s8, $fp, .LBB0_506
+# %bb.528:                              # %.preheader2168.preheader
+                                        #   in Loop: Header=BB0_508 Depth=1
 	move	$s4, $zero
-	ori	$s2, $zero, 1
-	b	.LBB0_532
-.LBB0_530:                              #   in Loop: Header=BB0_532 Depth=2
+	ori	$s7, $zero, 1
+	b	.LBB0_531
+.LBB0_529:                              #   in Loop: Header=BB0_531 Depth=2
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(SplitIsDefinite)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_540
-.LBB0_531:                              # %.critedge35
-                                        #   in Loop: Header=BB0_532 Depth=2
+	bnez	$a0, .LBB0_539
+.LBB0_530:                              # %.critedge35
+                                        #   in Loop: Header=BB0_531 Depth=2
 	ld.d	$s8, $s8, 8
-	beq	$s8, $fp, .LBB0_508
-.LBB0_532:                              # %.preheader2168
-                                        #   Parent Loop BB0_509 Depth=1
+	beq	$s8, $fp, .LBB0_507
+.LBB0_531:                              # %.preheader2168
+                                        #   Parent Loop BB0_508 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB0_533 Depth 3
+                                        #       Child Loop BB0_532 Depth 3
 	move	$s1, $s8
 	.p2align	4, , 16
-.LBB0_533:                              #   Parent Loop BB0_509 Depth=1
-                                        #     Parent Loop BB0_532 Depth=2
+.LBB0_532:                              #   Parent Loop BB0_508 Depth=1
+                                        #     Parent Loop BB0_531 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$s1, $s1, 16
 	ld.bu	$a0, $s1, 32
-	beqz	$a0, .LBB0_533
-# %bb.534:                              #   in Loop: Header=BB0_532 Depth=2
-	beq	$a0, $s0, .LBB0_530
-# %bb.535:                              #   in Loop: Header=BB0_532 Depth=2
+	beqz	$a0, .LBB0_532
+# %bb.533:                              #   in Loop: Header=BB0_531 Depth=2
+	beq	$a0, $s0, .LBB0_529
+# %bb.534:                              #   in Loop: Header=BB0_531 Depth=2
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_538
-# %bb.536:                              #   in Loop: Header=BB0_532 Depth=2
-	beqz	$s2, .LBB0_539
-# %bb.537:                              #   in Loop: Header=BB0_532 Depth=2
+	bne	$a0, $a1, .LBB0_537
+# %bb.535:                              #   in Loop: Header=BB0_531 Depth=2
+	beqz	$s7, .LBB0_538
+# %bb.536:                              #   in Loop: Header=BB0_531 Depth=2
 	ld.hu	$a0, $s1, 44
-	bstrpick.d	$s2, $a0, 9, 9
+	bstrpick.d	$s7, $a0, 9, 9
 	move	$s4, $s1
 	ld.d	$s8, $s8, 8
-	bne	$s8, $fp, .LBB0_532
-	b	.LBB0_508
-.LBB0_538:                              #   in Loop: Header=BB0_532 Depth=2
+	bne	$s8, $fp, .LBB0_531
+	b	.LBB0_507
+.LBB0_537:                              #   in Loop: Header=BB0_531 Depth=2
 	addi.d	$a0, $a0, -9
 	ori	$a1, $zero, 90
-	bltu	$a1, $a0, .LBB0_531
-	b	.LBB0_540
-.LBB0_539:                              #   in Loop: Header=BB0_532 Depth=2
-	move	$s2, $zero
+	bltu	$a1, $a0, .LBB0_530
+	b	.LBB0_539
+.LBB0_538:                              #   in Loop: Header=BB0_531 Depth=2
+	move	$s7, $zero
 	move	$s4, $s1
 	ld.d	$s8, $s8, 8
-	bne	$s8, $fp, .LBB0_532
-	b	.LBB0_508
-.LBB0_540:                              #   in Loop: Header=BB0_509 Depth=1
-	bnez	$s4, .LBB0_508
-# %bb.541:                              #   in Loop: Header=BB0_509 Depth=1
+	bne	$s8, $fp, .LBB0_531
+	b	.LBB0_507
+.LBB0_539:                              #   in Loop: Header=BB0_508 Depth=1
+	bnez	$s4, .LBB0_507
+# %bb.540:                              #   in Loop: Header=BB0_508 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -3877,12 +3870,12 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	move	$s4, $zero
-	b	.LBB0_508
-.LBB0_542:                              # %._crit_edge2432.loopexit
+	b	.LBB0_507
+.LBB0_541:                              # %._crit_edge2432.loopexit
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	sltui	$s0, $a0, 1
-	b	.LBB0_544
-.LBB0_543:
+	b	.LBB0_543
+.LBB0_542:
 	ori	$s0, $zero, 1
                                         # implicit-def: $r4
                                         # kill: killed $r4
@@ -3893,14 +3886,14 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-.LBB0_544:                              # %._crit_edge2432
+.LBB0_543:                              # %._crit_edge2432
 	ld.w	$a0, $s6, 40
 	bstrpick.d	$a1, $a0, 30, 29
 	addi.d	$a1, $a1, -1
 	ori	$a2, $zero, 2
 	addi.d	$s1, $s6, 40
-	bltu	$a1, $a2, .LBB0_546
-# %bb.545:
+	bltu	$a1, $a2, .LBB0_545
+# %bb.544:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -3916,15 +3909,15 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	jirl	$ra, $ra, 0
 	move	$a6, $s2
 	ld.w	$a0, $s1, 0
-.LBB0_546:
+.LBB0_545:
 	lu12i.w	$a1, 393216
 	and	$a0, $a0, $a1
 	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
 	lu12i.w	$a1, 262144
-	bne	$a0, $a1, .LBB0_559
+	bne	$a0, $a1, .LBB0_558
+# %bb.546:
+	beqz	$s0, .LBB0_548
 # %bb.547:
-	beqz	$s0, .LBB0_549
-# %bb.548:
 	ld.bu	$a0, $s6, 32
 	addi.d	$a0, $a0, -11
 	sltui	$a0, $a0, 2
@@ -3940,7 +3933,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	sub.d	$a0, $s7, $a1
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-.LBB0_549:
+.LBB0_548:
 	pcalau12i	$a0, %got_pc_hi20(zz_lengths)
 	ld.d	$s2, $a0, %got_pc_lo12(zz_lengths)
 	ld.bu	$a0, $s2, 3
@@ -3951,16 +3944,16 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	slli.d	$a1, $a0, 3
 	ldx.d	$s1, $s0, $a1
 	st.w	$a0, $s3, 0
-	beqz	$s1, .LBB0_551
-# %bb.550:
+	beqz	$s1, .LBB0_550
+# %bb.549:
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$s1, $a1, 0
 	ld.d	$a1, $s1, 0
 	alsl.d	$a0, $a0, $s0, 3
 	st.d	$a1, $a0, 0
-	b	.LBB0_552
-.LBB0_551:
+	b	.LBB0_551
+.LBB0_550:
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$a1, $a1, %got_pc_lo12(no_fpos)
 	ld.d	$a1, $a1, 0
@@ -3970,7 +3963,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	move	$s1, $a0
 	st.d	$a0, $a1, 0
-.LBB0_552:
+.LBB0_551:
 	ori	$a0, $zero, 3
 	st.b	$a0, $s1, 32
 	st.d	$s1, $s1, 24
@@ -3990,23 +3983,23 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $s0, $a0
 	st.w	$a2, $s3, 0
-	beqz	$a0, .LBB0_554
-# %bb.553:
+	beqz	$a0, .LBB0_553
+# %bb.552:
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
 	ld.d	$a1, $a0, 0
 	alsl.d	$a2, $a2, $s0, 3
 	st.d	$a1, $a2, 0
-	b	.LBB0_555
-.LBB0_554:
+	b	.LBB0_554
+.LBB0_553:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-.LBB0_555:
+.LBB0_554:
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
 	st.b	$zero, $a0, 32
@@ -4024,8 +4017,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$a0, $a1, 0
 	st.d	$a0, $a2, 0
 	st.d	$a4, $a3, 0
-	beqz	$a4, .LBB0_557
-# %bb.556:
+	beqz	$a4, .LBB0_556
+# %bb.555:
 	ld.d	$a5, $a4, 0
 	move	$a7, $a6
 	pcalau12i	$a6, %got_pc_hi20(zz_tmp)
@@ -4045,11 +4038,11 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a6, $a7
 	st.d	$a0, $a2, 0
 	st.d	$s1, $a3, 0
-	bnez	$a0, .LBB0_558
-	b	.LBB0_559
-.LBB0_557:                              # %.thread2709
+	bnez	$a0, .LBB0_557
+	b	.LBB0_558
+.LBB0_556:                              # %.thread2709
 	st.d	$s1, $a3, 0
-.LBB0_558:
+.LBB0_557:
 	ld.d	$a1, $s1, 16
 	pcalau12i	$a2, %got_pc_hi20(zz_tmp)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_tmp)
@@ -4059,7 +4052,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$s1, $a3, 24
 	st.d	$a1, $a0, 16
 	st.d	$a0, $a1, 24
-.LBB0_559:
+.LBB0_558:
 	ld.w	$a0, $fp, 48
 	ld.w	$a2, $s6, 48
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
@@ -4074,8 +4067,8 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a1, $s7
 	move	$a4, $zero
 	move	$a5, $zero
-	b	.LBB0_563
-.LBB0_560:
+	b	.LBB0_562
+.LBB0_559:
 	ld.w	$a0, $fp, 48
 	ld.w	$a1, $fp, 56
 	add.w	$a0, $a1, $a0
@@ -4101,11 +4094,11 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	ori	$a3, $zero, 2
 	move	$a4, $s7
 	move	$a5, $s2
-.LBB0_561:
+.LBB0_560:
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-.LBB0_562:
+.LBB0_561:
 	ld.w	$a2, $s1, 48
 	ld.w	$a3, $s1, 56
 	addi.d	$a0, $sp, 248
@@ -4117,11 +4110,11 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	move	$a4, $zero
 	move	$a5, $zero
 	move	$a6, $s2
-.LBB0_563:                              # %.thread2121
+.LBB0_562:                              # %.thread2121
 	move	$a7, $s5
 	pcaddu18i	$ra, %call36(FixAndPrintObject)
 	jirl	$ra, $ra, 0
-.LBB0_564:                              # %.thread2121
+.LBB0_563:                              # %.thread2121
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	st.w	$a1, $a0, 0

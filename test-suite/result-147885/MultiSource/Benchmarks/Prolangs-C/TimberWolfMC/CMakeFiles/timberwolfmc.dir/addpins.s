@@ -22,40 +22,39 @@ addpins:                                # @addpins
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$s7, $a0, %got_pc_lo12(numcells)
 	pcalau12i	$a0, %got_pc_hi20(numnets)
-	ld.d	$s5, $a0, %got_pc_lo12(numnets)
+	ld.d	$s3, $a0, %got_pc_lo12(numnets)
 	ld.w	$s4, $s7, 0
 	pcalau12i	$a0, %got_pc_hi20(netarray)
 	ld.d	$s0, $a0, %got_pc_lo12(netarray)
-	ld.w	$a1, $s5, 0
+	ld.w	$a1, $s3, 0
 	ld.d	$a0, $s0, 0
 	add.d	$a1, $s4, $a1
 	addi.w	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	ori	$fp, $zero, 1
 	st.d	$a0, $s0, 0
-	blt	$s4, $fp, .LBB0_3
+	blez	$s4, .LBB0_3
 # %bb.1:                                # %.lr.ph
-	ld.w	$s1, $s5, 0
+	ld.w	$fp, $s3, 0
 	pcalau12i	$a1, %got_pc_hi20(Hdefault)
 	ld.d	$a1, $a1, %got_pc_lo12(Hdefault)
 	pcalau12i	$a2, %got_pc_hi20(Vdefault)
 	ld.d	$a2, $a2, %got_pc_lo12(Vdefault)
-	add.w	$s2, $s1, $s4
+	add.w	$s1, $fp, $s4
 	fld.d	$fs0, $a1, 0
 	fld.d	$fs1, $a2, 0
-	alsl.d	$a0, $s1, $a0, 3
-	addi.d	$s3, $a0, 8
+	alsl.d	$a0, $fp, $a0, 3
+	addi.d	$s2, $a0, 8
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$s1, $s1, 1
+	addi.d	$fp, $fp, 1
 	ori	$a0, $zero, 72
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, 0
+	st.d	$a0, $s2, 0
 	st.d	$zero, $a0, 64
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
@@ -63,28 +62,27 @@ addpins:                                # @addpins
 	vst	$vr0, $a0, 32
 	fst.d	$fs0, $a0, 48
 	fst.d	$fs1, $a0, 56
-	addi.d	$s3, $s3, 8
-	blt	$s1, $s2, .LBB0_2
+	addi.d	$s2, $s2, 8
+	blt	$fp, $s1, .LBB0_2
 .LBB0_3:                                # %._crit_edge
-	move	$s3, $s5
 	pcalau12i	$a0, %got_pc_hi20(maxterm)
 	ld.d	$s6, $a0, %got_pc_lo12(maxterm)
 	pcalau12i	$a0, %got_pc_hi20(pinnames)
-	ld.d	$s1, $a0, %got_pc_lo12(pinnames)
+	ld.d	$fp, $a0, %got_pc_lo12(pinnames)
 	ld.w	$a1, $s6, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 0
 	alsl.d	$a1, $s4, $a1, 1
 	addi.w	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $s6, 0
-	st.d	$a0, $s1, 0
-	alsl.w	$s1, $s4, $s2, 1
-	blt	$s4, $fp, .LBB0_6
+	ld.w	$s1, $s6, 0
+	st.d	$a0, $fp, 0
+	alsl.w	$fp, $s4, $s1, 1
+	blez	$s4, .LBB0_6
 # %bb.4:                                # %.lr.ph81.preheader
-	alsl.d	$a0, $s2, $a0, 3
-	addi.d	$fp, $a0, 8
+	alsl.d	$a0, $s1, $a0, 3
+	addi.d	$s2, $a0, 8
 	lu12i.w	$a0, 320532
 	ori	$a0, $a0, 2128
 	lu32i.d	$a0, -176300
@@ -92,47 +90,46 @@ addpins:                                # @addpins
 	.p2align	4, , 16
 .LBB0_5:                                # %.lr.ph81
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 1
 	ori	$a0, $zero, 9
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $fp, 0
+	st.d	$a0, $s2, 0
 	st.d	$s5, $a0, 0
-	addi.d	$fp, $fp, 8
-	blt	$s2, $s1, .LBB0_5
+	addi.d	$s2, $s2, 8
+	blt	$s1, $fp, .LBB0_5
 .LBB0_6:                                # %._crit_edge82
 	pcalau12i	$a0, %got_pc_hi20(termarray)
-	ld.d	$s2, $a0, %got_pc_lo12(termarray)
-	ld.d	$a0, $s2, 0
-	slli.d	$a1, $s1, 3
+	ld.d	$s1, $a0, %got_pc_lo12(termarray)
+	ld.d	$a0, $s1, 0
+	slli.d	$a1, $fp, 3
 	addi.d	$a1, $a1, 8
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	ori	$s1, $zero, 1
-	st.d	$a0, $s2, 0
-	blt	$s4, $s1, .LBB0_9
+	st.d	$a0, $s1, 0
+	blez	$s4, .LBB0_9
 # %bb.7:                                # %.lr.ph86.preheader
-	ld.w	$s2, $s6, 0
+	ld.w	$s1, $s6, 0
 	slli.d	$a0, $s4, 1
-	add.w	$s4, $s2, $a0
-	alsl.d	$a0, $s2, $fp, 3
-	addi.d	$s5, $a0, 8
+	add.w	$s2, $s1, $a0
+	alsl.d	$a0, $s1, $fp, 3
+	addi.d	$s4, $a0, 8
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph86
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s5, 0
-	addi.d	$s5, $s5, 8
-	blt	$s2, $s4, .LBB0_8
+	st.d	$a0, $s4, 0
+	addi.d	$s4, $s4, 8
+	blt	$s1, $s2, .LBB0_8
 .LBB0_9:                                # %.preheader
 	ld.w	$a0, $s7, 0
-	blt	$a0, $s1, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.10:                               # %.lr.ph89
-	move	$a5, $s6
+	move	$s1, $s6
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
 	move	$s4, $zero
@@ -163,7 +160,6 @@ addpins:                                # @addpins
 	ld.d	$s0, $a0, 152
 	ld.d	$s8, $s0, 88
 	ori	$a0, $zero, 32
-	move	$s1, $a5
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 0
@@ -197,7 +193,6 @@ addpins:                                # @addpins
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$a5, $s1
 	ld.w	$a1, $s1, 0
 	st.d	$a0, $s0, 0
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
@@ -273,8 +268,7 @@ subpins:                                # @subpins
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$fp, $a0, %got_pc_lo12(numcells)
 	ld.w	$s0, $fp, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB1_6
+	blez	$s0, .LBB1_6
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(numnets)
 	ld.d	$s1, $a0, %got_pc_lo12(numnets)
@@ -330,8 +324,7 @@ subpins:                                # @subpins
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_6
+	blez	$a0, .LBB1_6
 # %bb.4:                                # %.lr.ph42.preheader
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$s0, $a0, %got_pc_lo12(cellarray)

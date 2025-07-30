@@ -72,7 +72,7 @@ main:                                   # @main
 	or	$a0, $a1, $a0
 	vpickve2gr.h	$a1, $vr0, 3
 	or	$a0, $a1, $a0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB1_4
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)

@@ -2381,9 +2381,8 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_ZNSt6chrono3_V212steady_clock3nowEv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a1, $sp, 504
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	bne	$a1, $a2, .LBB1_333
+	beqz	$a1, .LBB1_333
 # %bb.332:
 	ld.d	$a0, $sp, 368
 	ori	$a1, $zero, 128
@@ -6002,7 +6001,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -6012,7 +6010,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB33_15
 # %bb.1:
 	move	$s0, $a1
@@ -6045,9 +6042,9 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.d	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB33_5
+	ori	$a0, $zero, 1
+	stx.d	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB33_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 8
 	slli.d	$a1, $s0, 3
@@ -6056,7 +6053,7 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB33_5:                               # %_ZSt27__uninitialized_default_n_aIPdmdET_S1_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB33_7
+	blez	$s2, .LBB33_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -6098,7 +6095,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 .LBB33_14:                              # %_ZSt27__uninitialized_default_n_aIPdmdET_S1_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB33_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

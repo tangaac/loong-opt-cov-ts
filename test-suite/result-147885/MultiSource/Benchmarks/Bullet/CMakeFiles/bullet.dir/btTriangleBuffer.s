@@ -52,13 +52,11 @@ _ZN16btTriangleBuffer15processTriangleEP9btVector3ii: # @_ZN16btTriangleBuffer15
 	move	$a3, $s0
 	ld.w	$a1, $fp, 12
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB0_5
+	bgtz	$a1, .LBB0_5
 	b	.LBB0_7
 .LBB0_4:
 	move	$s0, $zero
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_7
+	blez	$a1, .LBB0_7
 .LBB0_5:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	ori	$a4, $zero, 56

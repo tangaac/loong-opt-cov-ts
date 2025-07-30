@@ -84,8 +84,7 @@ hypre_SMGDestroy:                       # @hypre_SMGDestroy
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 208
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.2:
 	ld.d	$a0, $fp, 216
 	pcaddu18i	$ra, %call36(hypre_Free)
@@ -437,9 +436,8 @@ hypre_SMGPrintLogging:                  # @hypre_SMGPrintLogging
 # %bb.0:
 	bnez	$a1, .LBB12_6
 # %bb.1:
-	ld.w	$a2, $a0, 208
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB12_6
+	ld.w	$a1, $a0, 208
+	blez	$a1, .LBB12_6
 # %bb.2:
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
@@ -450,7 +448,7 @@ hypre_SMGPrintLogging:                  # @hypre_SMGPrintLogging
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$s2, $a0, 200
-	blt	$s2, $a1, .LBB12_5
+	blez	$s2, .LBB12_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$fp, $zero
 	ld.d	$s3, $a0, 216
@@ -498,8 +496,7 @@ hypre_SMGPrintLogging:                  # @hypre_SMGPrintLogging
 hypre_SMGGetFinalRelativeResidualNorm:  # @hypre_SMGGetFinalRelativeResidualNorm
 # %bb.0:
 	ld.w	$a2, $a0, 208
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB13_2
+	blez	$a2, .LBB13_2
 # %bb.1:
 	ld.w	$a2, $a0, 200
 	ld.w	$a3, $a0, 16
@@ -537,13 +534,12 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a1
 	ld.w	$a1, $a1, 8
-	ori	$a3, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a1, $a3, .LBB14_18
+	blez	$a1, .LBB14_18
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a2
 	move	$s1, $a0
-	move	$s4, $zero
+	move	$s3, $zero
 	vreplvei.d	$vr1, $vr0, 0
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
@@ -554,23 +550,23 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 .LBB14_2:                               # %._crit_edge
                                         #   in Loop: Header=BB14_3 Depth=1
 	ld.w	$a0, $fp, 8
-	addi.d	$s4, $s4, 1
-	bge	$s4, $a0, .LBB14_18
+	addi.d	$s3, $s3, 1
+	bge	$s3, $a0, .LBB14_18
 .LBB14_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB14_9 Depth 2
                                         #       Child Loop BB14_11 Depth 3
                                         #         Child Loop BB14_13 Depth 4
                                         #         Child Loop BB14_17 Depth 4
 	ld.d	$a0, $s1, 16
-	ld.d	$s6, $fp, 0
+	ld.d	$s8, $fp, 0
 	ld.d	$a1, $s1, 40
 	ld.d	$s5, $a0, 0
-	ld.d	$s7, $s1, 24
-	slli.d	$a0, $s4, 2
-	ldx.w	$s8, $a1, $a0
-	alsl.d	$a0, $s4, $s4, 1
-	slli.d	$s3, $a0, 3
-	add.d	$s2, $s6, $s3
+	ld.d	$s6, $s1, 24
+	slli.d	$a0, $s3, 2
+	ldx.w	$s7, $a1, $a0
+	alsl.d	$a0, $s3, $s3, 1
+	slli.d	$s4, $a0, 3
+	add.d	$s2, $s8, $s4
 	addi.d	$a2, $sp, 60
 	move	$a0, $s2
 	move	$a1, $s0
@@ -578,7 +574,6 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	jirl	$ra, $ra, 0
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	ori	$a5, $zero, 1
 	ld.w	$a0, $sp, 60
 	ld.w	$a1, $sp, 64
 	ld.w	$a2, $sp, 68
@@ -590,22 +585,22 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	masknez	$a3, $a3, $a4
 	maskeqz	$a4, $a2, $a4
 	or	$a3, $a4, $a3
-	blt	$a3, $a5, .LBB14_2
+	blez	$a3, .LBB14_2
 # %bb.4:                                # %.preheader158.lr.ph
                                         #   in Loop: Header=BB14_3 Depth=1
-	blt	$a2, $a5, .LBB14_2
+	blez	$a2, .LBB14_2
 # %bb.5:                                # %.preheader158.lr.ph
                                         #   in Loop: Header=BB14_3 Depth=1
-	blt	$a1, $a5, .LBB14_2
+	blez	$a1, .LBB14_2
 # %bb.6:                                # %.preheader158.lr.ph
                                         #   in Loop: Header=BB14_3 Depth=1
-	blt	$a0, $a5, .LBB14_2
+	blez	$a0, .LBB14_2
 # %bb.7:                                # %.preheader157.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB14_3 Depth=1
 	move	$a3, $zero
-	add.d	$a4, $s5, $s3
-	ldx.w	$a5, $s6, $s3
-	ldx.w	$a6, $s5, $s3
+	add.d	$a4, $s5, $s4
+	ldx.w	$a5, $s8, $s4
+	ldx.w	$a6, $s5, $s4
 	ld.w	$a7, $s2, 4
 	ld.w	$t0, $a4, 4
 	ld.w	$t1, $s2, 8
@@ -650,7 +645,7 @@ hypre_SMGSetStructVectorConstantValues: # @hypre_SMGSetStructVectorConstantValue
 	bstrpick.d	$t0, $a0, 30, 2
 	slli.d	$t0, $t0, 2
 	mul.d	$t1, $t0, $a4
-	alsl.d	$t2, $s8, $s7, 3
+	alsl.d	$t2, $s7, $s6, 3
 	addi.d	$t3, $t2, 16
 	slli.d	$t4, $a4, 5
 	slli.d	$t5, $a4, 3

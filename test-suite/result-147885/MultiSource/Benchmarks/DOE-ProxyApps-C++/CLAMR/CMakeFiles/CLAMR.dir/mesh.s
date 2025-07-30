@@ -3041,7 +3041,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 264
-	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
 	move	$a0, $s7
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -3052,7 +3052,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 720
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
 	move	$a0, $s3
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -3081,7 +3081,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	st.w	$a0, $fp, 1136
 	addi.d	$a1, $s5, 1
 	st.w	$a1, $fp, 1144
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
 	beqz	$s2, .LBB13_2
 # %bb.1:
 	addi.w	$s8, $s8, 2
@@ -3093,11 +3093,12 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 .LBB13_2:
 	addi.d	$s2, $fp, 880
 	addi.d	$s6, $fp, 904
-	addi.d	$s7, $fp, 928
-	addi.d	$s0, $fp, 952
+	addi.d	$s0, $fp, 928
+	addi.d	$a0, $fp, 952
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a0, $fp, 1024
 	addi.d	$a1, $fp, 1048
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	addi.d	$a1, $fp, 1072
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	vldi	$vr0, -800
@@ -3123,7 +3124,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	sub.d	$a2, $a3, $a1
 	srai.d	$a2, $a2, 2
 	fst.d	$fa0, $fp, 1208
-	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	bgeu	$a2, $s1, .LBB13_4
 # %bb.3:
 	sub.d	$a1, $s1, $a2
@@ -3171,7 +3172,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 # %bb.13:
 	sub.d	$a1, $s1, $a2
 .Ltmp57:
-	move	$a0, $s7
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .Ltmp58:
@@ -3213,7 +3214,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 # %bb.23:
 	sub.d	$a1, $s1, $a2
 .Ltmp61:
-	move	$a0, $s0
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .Ltmp62:
@@ -3234,7 +3235,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 # %bb.28:
 	sub.d	$a1, $s1, $a2
 .Ltmp63:
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIdSaIdEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .Ltmp64:
@@ -3292,9 +3293,8 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	fst.d	$fa0, $a7, 0
 	fld.d	$fa0, $fp, 1288
 	ld.w	$a0, $fp, 1120
-	ori	$a2, $zero, 1
 	fst.d	$fa0, $a1, 0
-	blt	$a0, $a2, .LBB13_41
+	blez	$a0, .LBB13_41
 # %bb.39:                               # %.lr.ph.preheader
 	move	$a2, $zero
 	addi.d	$a3, $a3, 4
@@ -3360,9 +3360,8 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	ld.w	$a0, $fp, 1120
 .LBB13_47:                              # %._crit_edge
 	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	move	$a3, $zero
 	ld.w	$a1, $fp, 1136
 	st.w	$zero, $fp, 1128
@@ -3374,12 +3373,12 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	st.w	$a2, $sp, 140
 	st.w	$zero, $sp, 144
 	st.w	$a2, $sp, 148
-	ori	$s3, $zero, 1
 	addi.w	$a1, $zero, -4
 	lu52i.d	$a1, $a1, 2047
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	ori	$s6, $zero, 1
 	addi.w	$a1, $zero, -1
-	lu52i.d	$s7, $a1, 511
+	lu52i.d	$s3, $a1, 511
 	b	.LBB13_49
 	.p2align	4, , 16
 .LBB13_48:                              # %._crit_edge226
@@ -3394,7 +3393,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	ori	$a1, $zero, 2
 	sll.w	$a1, $a1, $a0
 	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $s3, .LBB13_48
+	blez	$a1, .LBB13_48
 # %bb.50:                               # %.lr.ph225
                                         #   in Loop: Header=BB13_49 Depth=1
 	slli.d	$a2, $a3, 2
@@ -3467,16 +3466,16 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 # %bb.59:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB13_56 Depth=3
 	srai.d	$a0, $s1, 2
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	sltu	$a1, $s6, $a0
+	masknez	$a2, $s6, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	sltu	$a1, $a0, $s7
+	sltu	$a1, $a0, $s3
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s7, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	masknez	$a1, $s3, $a1
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 2
 .Ltmp68:
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -3485,7 +3484,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
                                         #   in Loop: Header=BB13_56 Depth=3
 	move	$s5, $a0
 	stx.w	$s2, $a0, $s1
-	blt	$s1, $s3, .LBB13_62
+	blez	$s1, .LBB13_62
 # %bb.61:                               #   in Loop: Header=BB13_56 Depth=3
 	move	$a0, $s5
 	move	$a1, $s4
@@ -3507,7 +3506,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 680
 	st.d	$a0, $fp, 688
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s7, $s5, 2
 	st.d	$a0, $fp, 696
 	ld.d	$a0, $fp, 712
 	ld.d	$a1, $fp, 720
@@ -3520,16 +3519,16 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 # %bb.66:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i94
                                         #   in Loop: Header=BB13_56 Depth=3
 	srai.d	$a0, $s1, 2
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	sltu	$a1, $s6, $a0
+	masknez	$a2, $s6, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	sltu	$a1, $a0, $s7
+	sltu	$a1, $a0, $s3
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s7, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	masknez	$a1, $s3, $a1
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 2
 .Ltmp70:
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -3538,7 +3537,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
                                         #   in Loop: Header=BB13_56 Depth=3
 	move	$s5, $a0
 	stx.w	$s0, $a0, $s1
-	blt	$s1, $s3, .LBB13_69
+	blez	$s1, .LBB13_69
 # %bb.68:                               #   in Loop: Header=BB13_56 Depth=3
 	move	$a0, $s5
 	move	$a1, $s4
@@ -3560,7 +3559,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 704
 	st.d	$a0, $fp, 712
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s7, $s5, 2
 	st.d	$a0, $fp, 720
 	b	.LBB13_55
 .LBB13_72:
@@ -3622,10 +3621,9 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 .Ltmp73:
 	pcalau12i	$a0, %pc_hi20(.L.str.143)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.143)
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
@@ -3634,7 +3632,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 .LBB13_80:
 .Ltmp67:
 	move	$s3, $a0
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB13_83
 .LBB13_81:                              # %.loopexit.split-lp
 .Ltmp75:
@@ -3643,10 +3641,9 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 .LBB13_82:                              # %.loopexit
 .Ltmp72:
 	move	$s3, $a0
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 .LBB13_83:
 	ldptr.d	$a0, $fp, 2264
@@ -3736,7 +3733,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	ld.d	$a0, $fp, 1592
 	bnez	$a0, .LBB13_169
 .LBB13_112:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit159
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	bnez	$a0, .LBB13_170
 .LBB13_113:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit161
@@ -3755,7 +3752,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	ld.d	$a0, $fp, 1440
 	bnez	$a0, .LBB13_175
 .LBB13_118:                             # %_ZNSt6vectorIdSaIdEED2Ev.exit170
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	addi.d	$s0, $fp, 1304
 	bnez	$a0, .LBB13_176
@@ -3764,14 +3761,14 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	bnez	$a0, .LBB13_177
 .LBB13_120:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit174
 	ld.d	$a0, $fp, 1096
-	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	bnez	$a0, .LBB13_178
 .LBB13_121:                             # %_ZNSt6vectorIdSaIdEED2Ev.exit176
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	bnez	$a0, .LBB13_179
 .LBB13_122:                             # %_ZNSt6vectorIdSaIdEED2Ev.exit178
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	bnez	$a0, .LBB13_180
 .LBB13_123:                             # %_ZNSt6vectorIdSaIdEED2Ev.exit180
@@ -3784,10 +3781,11 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	ld.d	$a0, $fp, 976
 	bnez	$a0, .LBB13_183
 .LBB13_126:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit186
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 0
 	bnez	$a0, .LBB13_184
 .LBB13_127:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit188
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	bnez	$a0, .LBB13_185
 .LBB13_128:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit190
 	ld.d	$a0, $s6, 0
@@ -4049,7 +4047,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB13_113
 .LBB13_170:
@@ -4092,7 +4090,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	addi.d	$s0, $fp, 1304
 	beqz	$a0, .LBB13_119
@@ -4109,7 +4107,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 1096
-	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB13_121
 .LBB13_178:
 	ld.d	$a1, $fp, 1112
@@ -4124,7 +4122,7 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB13_123
 .LBB13_180:
@@ -4153,14 +4151,15 @@ _ZN4MeshC2Eiiiiddiii:                   # @_ZN4MeshC2Eiiiiddiii
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB13_127
 .LBB13_184:
 	ld.d	$a1, $fp, 968
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s0, 0
 	beqz	$a0, .LBB13_128
 .LBB13_185:
 	ld.d	$a1, $fp, 944
@@ -4510,8 +4509,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	st.d	$a2, $fp, 760
 .LBB14_36:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit134
 	ld.d	$a0, $s0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB14_41
+	blez	$a1, .LBB14_41
 # %bb.37:                               # %.lr.ph
 	ld.d	$a2, $fp, 1168
 	move	$a3, $zero
@@ -4734,10 +4732,9 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	pcaddu18i	$ra, %call36(_ZN4Mesh24calc_spatial_coordinatesEi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB14_105
+	blez	$a0, .LBB14_105
 # %bb.72:                               # %.lr.ph242
-	addi.d	$s1, $fp, 784
+	addi.d	$s0, $fp, 784
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ori	$a1, $zero, 1
@@ -4746,8 +4743,8 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 .LBB14_73:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit149
                                         #   in Loop: Header=BB14_74 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s0
-	move	$a0, $s0
+	sub.d	$a1, $a0, $s1
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -4763,7 +4760,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN4Mesh20calc_neighbors_localEv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(KDTree_Initialize)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 1160
@@ -4771,7 +4768,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 # %bb.75:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB14_74 Depth=1
 	move	$a0, $zero
-	ori	$s0, $zero, 1
+	ori	$s1, $zero, 1
 	.p2align	4, , 16
 .LBB14_76:                              # %.lr.ph.i
                                         #   Parent Loop BB14_74 Depth=1
@@ -4792,12 +4789,12 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	fadd.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $sp, 96
 	addi.d	$a1, $sp, 72
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(KDTree_AddElement)
 	jirl	$ra, $ra, 0
 	ld.d	$s4, $fp, 1160
-	bstrpick.d	$a0, $s0, 31, 0
-	addi.w	$s0, $s0, 1
+	bstrpick.d	$a0, $s1, 31, 0
+	addi.w	$s1, $s1, 1
 	bltu	$a0, $s4, .LBB14_76
 # %bb.77:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
                                         #   in Loop: Header=BB14_74 Depth=1
@@ -4808,15 +4805,15 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$s1, $a0
 	alsl.d	$a0, $s4, $a0, 2
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.w	$zero, $s0, 0
+	st.w	$zero, $s1, 0
 	beq	$s4, $a0, .LBB14_81
 # %bb.79:                               # %.lr.ph.i.preheader.i.i.i.i.i
                                         #   in Loop: Header=BB14_74 Depth=1
-	addi.d	$a0, $s0, 4
+	addi.d	$a0, $s1, 4
 	addi.d	$a2, $s3, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -4828,7 +4825,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
                                         #   in Loop: Header=BB14_74 Depth=1
 	move	$a0, $zero
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
-	move	$s0, $zero
+	move	$s1, $zero
 .LBB14_81:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit
                                         #   in Loop: Header=BB14_74 Depth=1
 	ld.d	$a4, $fp, 1416
@@ -4838,8 +4835,8 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 .Ltmp88:
 	addi.w	$a3, $a0, 0
 	addi.d	$a1, $sp, 204
-	move	$a0, $s1
-	move	$a2, $s0
+	move	$a0, $s0
+	move	$a2, $s1
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(KDTree_QueryCircleIntersect_Double)
 	jirl	$ra, $ra, 0
@@ -4874,7 +4871,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	ld.w	$a0, $sp, 204
 	st.d	$a1, $sp, 184
 	ori	$a7, $zero, 1
-	bge	$a0, $a7, .LBB14_87
+	bgtz	$a0, .LBB14_87
 	b	.LBB14_91
 	.p2align	4, , 16
 .LBB14_86:                              # %_ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_.exit.thread.i141
@@ -4887,13 +4884,13 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	ld.w	$a0, $sp, 204
 	st.d	$a1, $sp, 184
 	ori	$a7, $zero, 1
-	blt	$a0, $a7, .LBB14_91
+	blez	$a0, .LBB14_91
 .LBB14_87:                              # %.lr.ph237
                                         #   in Loop: Header=BB14_74 Depth=1
 	ld.d	$a1, $fp, 1352
 	ld.w	$a2, $fp, 1120
 	move	$a3, $zero
-	move	$a4, $s0
+	move	$a4, $s1
 	b	.LBB14_89
 	.p2align	4, , 16
 .LBB14_88:                              #   in Loop: Header=BB14_89 Depth=2
@@ -4913,7 +4910,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 .LBB14_91:                              # %._crit_edge238
                                         #   in Loop: Header=BB14_74 Depth=1
 .Ltmp94:
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(KDTree_Destroy)
 	jirl	$ra, $ra, 0
 .Ltmp95:
@@ -5049,10 +5046,10 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	st.w	$a2, $sp, 180
 	st.w	$zero, $sp, 184
 	st.w	$a2, $sp, 188
-	ori	$s6, $zero, 1
 	addi.w	$a1, $zero, -4
 	lu52i.d	$a1, $a1, 2047
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	ori	$s8, $zero, 1
 	addi.w	$a1, $zero, -1
 	lu52i.d	$s4, $a1, 511
 	b	.LBB14_110
@@ -5069,7 +5066,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	ori	$a1, $zero, 2
 	sll.w	$a1, $a1, $a0
 	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	blt	$a1, $s6, .LBB14_109
+	blez	$a1, .LBB14_109
 # %bb.111:                              # %.lr.ph250
                                         #   in Loop: Header=BB14_110 Depth=1
 	slli.d	$a2, $a3, 2
@@ -5081,7 +5078,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
 	mul.d	$s3, $a1, $a3
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$s7, $a2, 1
+	addi.d	$s6, $a2, 1
 	b	.LBB14_113
 	.p2align	4, , 16
 .LBB14_112:                             # %._crit_edge247
@@ -5097,7 +5094,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	mul.w	$s5, $a2, $a1
 	ori	$a1, $zero, 2
 	sll.w	$a1, $a1, $a0
-	mul.w	$a1, $a1, $s7
+	mul.w	$a1, $a1, $s6
 	blt	$s5, $a1, .LBB14_117
 # %bb.114:                              # %.._crit_edge247_crit_edge
                                         #   in Loop: Header=BB14_113 Depth=2
@@ -5115,7 +5112,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	addi.w	$s5, $s5, 1
 	ori	$a1, $zero, 2
 	sll.w	$a1, $a1, $a0
-	mul.w	$a2, $a1, $s7
+	mul.w	$a2, $a1, $s6
 	bge	$s5, $a2, .LBB14_112
 .LBB14_117:                             # %.lr.ph246
                                         #   Parent Loop BB14_110 Depth=1
@@ -5141,21 +5138,21 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 # %bb.120:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB14_117 Depth=3
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	sltu	$a1, $s8, $a0
+	masknez	$a2, $s8, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $s4
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s4, $a1
-	or	$s8, $a0, $a1
-	slli.d	$a0, $s8, 2
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s6, .LBB14_122
+	blez	$s0, .LBB14_122
 # %bb.121:                              #   in Loop: Header=BB14_117 Depth=3
 	move	$a0, $s2
 	move	$a1, $s1
@@ -5177,7 +5174,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 680
 	st.d	$a0, $fp, 688
-	alsl.d	$a0, $s8, $s2, 2
+	alsl.d	$a0, $s7, $s2, 2
 	st.d	$a0, $fp, 696
 	ld.d	$a0, $fp, 712
 	ld.d	$a1, $fp, 720
@@ -5190,21 +5187,21 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 # %bb.126:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i159
                                         #   in Loop: Header=BB14_117 Depth=3
 	srai.d	$a0, $s0, 2
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	sltu	$a1, $s8, $a0
+	masknez	$a2, $s8, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	sltu	$a1, $a0, $s4
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s4, $a1
-	or	$s8, $a0, $a1
-	slli.d	$a0, $s8, 2
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s6, .LBB14_128
+	blez	$s0, .LBB14_128
 # %bb.127:                              #   in Loop: Header=BB14_117 Depth=3
 	move	$a0, $s2
 	move	$a1, $s1
@@ -5226,7 +5223,7 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 704
 	st.d	$a0, $fp, 712
-	alsl.d	$a0, $s8, $s2, 2
+	alsl.d	$a0, $s7, $s2, 2
 	st.d	$a0, $fp, 720
 	b	.LBB14_116
 .LBB14_131:
@@ -5313,8 +5310,8 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	jirl	$ra, $ra, 0
 .LBB14_148:                             # %_ZNSt6vectorIiSaIiEED2Ev.exit155
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s0
-	move	$a0, $s0
+	sub.d	$a1, $a0, $s1
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -5585,8 +5582,7 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	pcaddu18i	$ra, %call36(cpu_timer_start)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 616
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB16_128
+	beqz	$a0, .LBB16_128
 # %bb.1:
 	ld.w	$a0, $fp, 592
 	ld.d	$a1, $fp, 1368
@@ -5597,107 +5593,52 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus15get_memory_sizeEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $fp, 1160
-	bltu	$a0, $s1, .LBB16_14
+	bltu	$a0, $s1, .LBB16_5
 # %bb.2:
 	ld.d	$s0, $fp, 640
-	beqz	$s0, .LBB16_23
+	beqz	$s0, .LBB16_14
 .LBB16_3:
 	ld.d	$a0, $fp, 648
-	beqz	$a0, .LBB16_24
+	beqz	$a0, .LBB16_15
 .LBB16_4:                               # %_ZN4Mesh10set_boundsEi.exit
 	addi.w	$a1, $s1, 0
 	st.w	$zero, $s0, 0
-	ori	$a2, $zero, 1
 	st.w	$s1, $a0, 0
-	blt	$a1, $a2, .LBB16_9
-# %bb.5:                                # %.lr.ph
-	ld.d	$a0, $fp, 1368
-	ld.d	$a1, $fp, 1376
-	ld.d	$a3, $fp, 1384
-	ld.d	$a4, $fp, 1392
-	bstrpick.d	$a2, $s1, 30, 0
-	ori	$a5, $zero, 24
-	bgeu	$a2, $a5, .LBB16_31
-# %bb.6:
-	move	$a5, $zero
-.LBB16_7:                               # %scalar.ph.preheader
-	alsl.d	$a4, $a5, $a4, 2
-	alsl.d	$a3, $a5, $a3, 2
-	alsl.d	$a1, $a5, $a1, 2
-	alsl.d	$a0, $a5, $a0, 2
-	sub.d	$a2, $a2, $a5
-	addi.w	$a5, $zero, -98
-	lu32i.d	$a5, 0
-	.p2align	4, , 16
-.LBB16_8:                               # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$a5, $a0, 0
-	st.w	$a5, $a1, 0
-	st.w	$a5, $a3, 0
-	st.w	$a5, $a4, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a3, $a3, 4
-	addi.d	$a1, $a1, 4
-	addi.d	$a2, $a2, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB16_8
-.LBB16_9:                               # %._crit_edge
-	pcalau12i	$a0, %pc_hi20(calc_neighbor_type)
-	ld.w	$a0, $a0, %pc_lo12(calc_neighbor_type)
-	beqz	$a0, .LBB16_25
-# %bb.10:                               # %._crit_edge
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB16_128
-# %bb.11:
-	addi.d	$a0, $sp, 216
-	pcaddu18i	$ra, %call36(cpu_timer_start)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 1120
-	mul.w	$a0, $a0, $a0
-	ori	$a1, $zero, 2
-	sll.w	$s2, $a1, $a0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $s2, .LBB16_135
-# %bb.12:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	ori	$a1, $zero, 30
-	bgeu	$a1, $a0, .LBB16_40
-# %bb.13:
-	move	$s2, $zero
-	move	$s0, $zero
-	b	.LBB16_41
-.LBB16_14:
+	bgtz	$a1, .LBB16_16
+	b	.LBB16_20
+.LBB16_5:
 	ld.d	$a1, $fp, 1368
-	beqz	$a1, .LBB16_16
-# %bb.15:
+	beqz	$a1, .LBB16_7
+# %bb.6:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 1368
-.LBB16_16:
+.LBB16_7:
 	ld.d	$a1, $fp, 1376
-	beqz	$a1, .LBB16_18
-# %bb.17:
+	beqz	$a1, .LBB16_9
+# %bb.8:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 1376
-.LBB16_18:
+.LBB16_9:
 	ld.d	$a1, $fp, 1384
-	beqz	$a1, .LBB16_20
-# %bb.19:
+	beqz	$a1, .LBB16_11
+# %bb.10:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 1384
-.LBB16_20:
+.LBB16_11:
 	ld.d	$a1, $fp, 1392
-	beqz	$a1, .LBB16_22
-# %bb.21:
+	beqz	$a1, .LBB16_13
+# %bb.12:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 1392
-.LBB16_22:
+.LBB16_13:
 	ld.d	$a1, $fp, 1160
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.42)
@@ -5737,7 +5678,7 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	st.d	$a0, $fp, 1392
 	ld.d	$s0, $fp, 640
 	bnez	$s0, .LBB16_3
-.LBB16_23:
+.LBB16_14:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -5745,12 +5686,69 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	st.d	$a0, $fp, 640
 	ld.d	$a0, $fp, 648
 	bnez	$a0, .LBB16_4
-.LBB16_24:
+.LBB16_15:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 648
-	b	.LBB16_4
+	addi.w	$a1, $s1, 0
+	st.w	$zero, $s0, 0
+	st.w	$s1, $a0, 0
+	blez	$a1, .LBB16_20
+.LBB16_16:                              # %.lr.ph
+	ld.d	$a0, $fp, 1368
+	ld.d	$a1, $fp, 1376
+	ld.d	$a3, $fp, 1384
+	ld.d	$a4, $fp, 1392
+	bstrpick.d	$a2, $s1, 30, 0
+	ori	$a5, $zero, 24
+	bgeu	$a2, $a5, .LBB16_31
+# %bb.17:
+	move	$a5, $zero
+.LBB16_18:                              # %scalar.ph.preheader
+	alsl.d	$a4, $a5, $a4, 2
+	alsl.d	$a3, $a5, $a3, 2
+	alsl.d	$a1, $a5, $a1, 2
+	alsl.d	$a0, $a5, $a0, 2
+	sub.d	$a2, $a2, $a5
+	addi.w	$a5, $zero, -98
+	lu32i.d	$a5, 0
+	.p2align	4, , 16
+.LBB16_19:                              # %scalar.ph
+                                        # =>This Inner Loop Header: Depth=1
+	st.w	$a5, $a0, 0
+	st.w	$a5, $a1, 0
+	st.w	$a5, $a3, 0
+	st.w	$a5, $a4, 0
+	addi.d	$a4, $a4, 4
+	addi.d	$a3, $a3, 4
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, -1
+	addi.d	$a0, $a0, 4
+	bnez	$a2, .LBB16_19
+.LBB16_20:                              # %._crit_edge
+	pcalau12i	$a0, %pc_hi20(calc_neighbor_type)
+	ld.w	$a0, $a0, %pc_lo12(calc_neighbor_type)
+	beqz	$a0, .LBB16_25
+# %bb.21:                               # %._crit_edge
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB16_128
+# %bb.22:
+	addi.d	$a0, $sp, 216
+	pcaddu18i	$ra, %call36(cpu_timer_start)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, 1120
+	mul.w	$a0, $a0, $a0
+	ori	$a1, $zero, 2
+	sll.w	$s2, $a1, $a0
+	bltz	$s2, .LBB16_135
+# %bb.23:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	ori	$a1, $zero, 30
+	bgeu	$a1, $a0, .LBB16_40
+# %bb.24:
+	move	$s2, $zero
+	move	$s0, $zero
+	b	.LBB16_41
 .LBB16_25:
 	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(cpu_timer_start)
@@ -5836,24 +5834,24 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	sub.d	$a7, $a1, $a0
 	ori	$a6, $zero, 32
 	move	$a5, $zero
-	bltu	$a7, $a6, .LBB16_7
+	bltu	$a7, $a6, .LBB16_18
 # %bb.32:                               # %vector.memcheck
 	sub.d	$a7, $a3, $a0
-	bltu	$a7, $a6, .LBB16_7
+	bltu	$a7, $a6, .LBB16_18
 # %bb.33:                               # %vector.memcheck
 	sub.d	$a7, $a4, $a0
 	ori	$a6, $zero, 32
-	bltu	$a7, $a6, .LBB16_7
+	bltu	$a7, $a6, .LBB16_18
 # %bb.34:                               # %vector.memcheck
 	sub.d	$a7, $a3, $a1
-	bltu	$a7, $a6, .LBB16_7
+	bltu	$a7, $a6, .LBB16_18
 # %bb.35:                               # %vector.memcheck
 	sub.d	$a7, $a4, $a1
 	ori	$a6, $zero, 32
-	bltu	$a7, $a6, .LBB16_7
+	bltu	$a7, $a6, .LBB16_18
 # %bb.36:                               # %vector.memcheck
 	sub.d	$a7, $a4, $a3
-	bltu	$a7, $a6, .LBB16_7
+	bltu	$a7, $a6, .LBB16_18
 # %bb.37:                               # %vector.ph
 	bstrpick.d	$a5, $s1, 30, 3
 	slli.d	$a5, $a5, 3
@@ -5881,8 +5879,8 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	addi.d	$t1, $t1, 32
 	bnez	$t2, .LBB16_38
 # %bb.39:                               # %middle.block
-	bne	$a2, $a5, .LBB16_7
-	b	.LBB16_9
+	bne	$a2, $a5, .LBB16_18
+	b	.LBB16_20
 .LBB16_40:                              # %.noexc459
 	slli.d	$s1, $s2, 2
 	move	$a0, $s1
@@ -6187,7 +6185,7 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	sll.w	$t0, $t0, $a2
 	add.w	$a7, $a7, $t0
 	srai.d	$t1, $a7, 63
-	andn	$s3, $a7, $t1
+	andn	$s7, $a7, $t1
 	ori	$a7, $zero, 4
 	sll.w	$a2, $a7, $a2
 	add.w	$a6, $a6, $a2
@@ -6197,22 +6195,22 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	or	$a3, $a3, $a6
 	add.w	$a5, $a5, $t0
 	srai.d	$a6, $a5, 63
-	andn	$s4, $a5, $a6
+	andn	$s6, $a5, $a6
 	add.w	$a2, $a4, $a2
 	slt	$a4, $a1, $a2
 	masknez	$a2, $a2, $a4
 	maskeqz	$a1, $a1, $a4
 	or	$a1, $a1, $a2
-	sub.w	$s5, $a1, $s4
-	sub.w	$a2, $a3, $s3
+	sub.w	$s3, $a1, $s6
+	sub.w	$a2, $a3, $s7
 	addi.w	$a0, $a0, 0
-	move	$a1, $s5
+	move	$a1, $s3
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(compact_hash_init)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 1160
-	pcalau12i	$s7, %pc_hi20(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	st.d	$a0, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	pcalau12i	$s8, %pc_hi20(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	st.d	$a0, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	beqz	$a1, .LBB16_72
 # %bb.70:                               # %.lr.ph555
 	pcalau12i	$a0, %got_pc_hi20(write_hash)
@@ -6235,12 +6233,12 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	ldx.w	$a2, $a5, $a2
 	sll.w	$a1, $s2, $a1
 	mul.d	$a3, $a3, $a1
-	sub.d	$a3, $a3, $s4
+	sub.d	$a3, $a3, $s6
 	mul.d	$a1, $a2, $a1
 	ld.d	$a4, $s0, 0
-	ld.d	$a2, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	sub.d	$a1, $a1, $s3
-	mul.d	$a1, $a1, $s5
+	ld.d	$a2, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	sub.d	$a1, $a1, $s7
+	mul.d	$a1, $a1, $s3
 	add.w	$a1, $a3, $a1
 	jirl	$ra, $a4, 0
 	ld.d	$a1, $fp, 1160
@@ -6248,7 +6246,7 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	bstrpick.d	$a0, $s1, 31, 0
 	bltu	$a0, $a1, .LBB16_71
 .LBB16_72:                              # %._crit_edge556
-	st.d	$s4, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 248
 	ld.d	$a1, $sp, 256
 	pcaddu18i	$ra, %call36(cpu_timer_stop)
@@ -6262,8 +6260,8 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	ld.w	$a0, $fp, 1144
 	ld.wu	$a1, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a2, $zero, 2
-	sll.w	$a1, $a2, $a1
+	ori	$s1, $zero, 2
+	sll.w	$a1, $s1, $a1
 	mul.d	$a0, $a1, $a0
 	ld.w	$a2, $fp, 1136
 	pcalau12i	$a3, %pc_hi20(_ZZN4Mesh20calc_neighbors_localEvE8jmaxcalc)
@@ -6278,34 +6276,34 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	beqz	$a0, .LBB16_127
 # %bb.73:                               # %.lr.ph559
 	move	$a0, $zero
-	move	$s1, $zero
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
-	nor	$a1, $a1, $zero
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	nor	$a1, $s3, $zero
+	move	$t0, $zero
+	nor	$a1, $s6, $zero
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$s6, $zero, -1
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 136                   # 8-byte Folded Spill
+	nor	$a1, $s7, $zero
+	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
+	addi.w	$a1, $zero, -1
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB16_76
-.LBB16_74:                              #   in Loop: Header=BB16_76 Depth=1
-	move	$t0, $s8
 	.p2align	4, , 16
+.LBB16_74:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 .LBB16_75:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.d	$a0, $fp, 1368
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	stx.w	$t0, $a0, $a1
+	stx.w	$t2, $a0, $a3
 	ld.d	$a0, $fp, 1376
-	stx.w	$s0, $a0, $a1
+	stx.w	$s3, $a0, $a3
 	ld.d	$a0, $fp, 1384
-	stx.w	$s3, $a0, $a1
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	stx.w	$a1, $a0, $a3
 	ld.d	$a0, $fp, 1392
-	stx.w	$s4, $a0, $a1
+	stx.w	$s4, $a0, $a3
 	ld.d	$a1, $fp, 1160
-	addi.w	$s1, $s1, 1
-	bstrpick.d	$a0, $s1, 31, 0
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	addi.w	$t0, $t0, 1
+	bstrpick.d	$a0, $t0, 31, 0
 	bgeu	$a0, $a1, .LBB16_127
 .LBB16_76:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 1352
@@ -6318,118 +6316,117 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
 	ldx.w	$a4, $a3, $a4
 	sub.d	$a1, $a0, $t5
-	ori	$a6, $zero, 2
-	sll.w	$a5, $a6, $a1
+	sll.w	$a5, $s1, $a1
 	mul.w	$a3, $a5, $a2
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a1, $a2, -1
 	mul.d	$a1, $a5, $a1
 	slli.d	$a2, $a1, 32
 	srai.d	$a2, $a2, 63
 	andn	$a1, $a1, $a2
 	mul.w	$a2, $a5, $a4
-	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a4, $a4, -1
-	st.d	$a5, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
 	mul.d	$a4, $a5, $a4
 	slli.d	$a5, $a4, 32
 	srai.d	$a5, $a5, 63
 	andn	$a4, $a4, $a5
 	ld.w	$a5, $fp, 636
-	sll.w	$a6, $a6, $a0
+	sll.w	$a6, $s1, $a0
 	slt	$a7, $a3, $a6
 	xori	$a7, $a7, 1
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	add.w	$s4, $s1, $a5
+	st.d	$t0, $sp, 96                    # 8-byte Folded Spill
+	add.w	$s4, $t0, $a5
 	masknez	$a5, $s4, $a7
-	maskeqz	$t0, $s6, $a7
+	ld.d	$t3, $sp, 136                   # 8-byte Folded Reload
+	maskeqz	$t0, $t3, $a7
 	or	$a5, $t0, $a5
 	slt	$t0, $a2, $a6
 	xori	$t0, $t0, 1
 	masknez	$t1, $s4, $t0
 	ld.w	$t2, $fp, 1144
-	maskeqz	$t3, $s6, $t0
+	maskeqz	$t3, $t3, $t0
 	or	$t1, $t3, $t1
 	ld.w	$t3, $fp, 1136
-	mul.w	$s2, $t2, $a6
+	mul.w	$s1, $t2, $a6
 	xor	$t2, $a3, $a6
 	sltui	$t2, $t2, 1
-	slt	$t4, $a2, $s2
-	and	$s1, $t0, $t4
-	maskeqz	$t0, $a5, $s1
-	ld.d	$t4, $sp, 144                   # 8-byte Folded Reload
-	masknez	$s8, $s4, $s1
-	or	$t0, $t0, $s8
+	slt	$t4, $a2, $s1
+	and	$s3, $t0, $t4
+	maskeqz	$t0, $a5, $s3
+	masknez	$s5, $s4, $s3
+	or	$t0, $t0, $s5
 	maskeqz	$t0, $t0, $t2
 	masknez	$a5, $a5, $t2
-	sub.w	$t2, $a3, $t4
-	st.d	$t2, $sp, 160                   # 8-byte Folded Spill
-	mul.w	$s0, $t3, $a6
-	or	$t0, $t0, $a5
+	sub.w	$t2, $a3, $s6
+	st.d	$t2, $sp, 152                   # 8-byte Folded Spill
+	mul.w	$s8, $t3, $a6
+	or	$t2, $t0, $a5
 	xor	$a5, $a2, $a6
 	sltui	$a5, $a5, 1
-	slt	$a3, $a3, $s0
-	and	$s5, $a7, $a3
-	maskeqz	$a3, $t1, $s5
-	move	$a6, $s3
-	masknez	$a7, $s4, $s5
-	st.d	$a7, $sp, 80                    # 8-byte Folded Spill
-	or	$a3, $a3, $a7
+	slt	$a3, $a3, $s8
+	and	$s2, $a7, $a3
+	maskeqz	$a3, $t1, $s2
+	move	$a6, $s6
+	masknez	$s6, $s4, $s2
+	or	$a3, $a3, $s6
 	maskeqz	$a3, $a3, $a5
 	masknez	$a5, $t1, $a5
 	ld.d	$a7, $sp, 24                    # 8-byte Folded Reload
-	ld.w	$s7, $a7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE8imaxcalc)
-	or	$s3, $a3, $a5
+	ld.w	$s0, $a7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE8imaxcalc)
+	or	$a3, $a3, $a5
+	st.d	$a3, $sp, 168                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a3, $a3, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE8jmaxcalc)
-	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
-	sub.w	$a1, $a1, $t4
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	sub.w	$a1, $a2, $a6
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	sub.w	$a1, $a4, $a6
+	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	sub.w	$a1, $a1, $a6
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$t5, $sp, 104                   # 8-byte Folded Spill
+	sub.w	$a1, $a2, $s7
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	sub.w	$a1, $a4, $s7
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 112                   # 8-byte Folded Spill
 	beq	$a0, $t5, .LBB16_79
 # %bb.77:                               #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $t0, .LBB16_83
+	bltz	$t2, .LBB16_83
 # %bb.78:                               #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $s3, .LBB16_84
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bltz	$a0, .LBB16_84
 .LBB16_79:                              #   in Loop: Header=BB16_76 Depth=1
-	blt	$s6, $t0, .LBB16_87
+	bgez	$t2, .LBB16_86
 .LBB16_80:                              #   in Loop: Header=BB16_76 Depth=1
-	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	move	$s3, $t0
+	move	$s7, $t2
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a0, 0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	mul.d	$a0, $a3, $a0
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a3
 	jirl	$ra, $a2, 0
 	bltz	$a0, .LBB16_85
 # %bb.81:                               #   in Loop: Header=BB16_76 Depth=1
 	ld.w	$a1, $fp, 1160
-	move	$t0, $s3
+	move	$t2, $s7
 	bge	$a0, $a1, .LBB16_86
 # %bb.82:                               #   in Loop: Header=BB16_76 Depth=1
 	ld.d	$a1, $fp, 1352
 	slli.d	$a2, $a0, 2
 	ldx.w	$a1, $a1, $a2
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	masknez	$a2, $t0, $a1
+	masknez	$a2, $t2, $a1
 	maskeqz	$a0, $a0, $a1
-	or	$t0, $a0, $a2
+	or	$t2, $a0, $a2
 	b	.LBB16_86
 .LBB16_83:                              #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.d	$a0, $a5, $a0
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
@@ -6439,17 +6436,18 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	ld.d	$a2, $a1, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	mul.d	$a3, $a4, $a3
 	add.d	$a3, $a3, $a5
 	sub.w	$a0, $a3, $a0
 	jirl	$ra, $a2, 0
-	move	$t0, $a0
-	blt	$s6, $s3, .LBB16_79
+	move	$t2, $a0
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_79
 .LBB16_84:                              #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	sub.d	$a0, $a3, $a0
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
@@ -6460,237 +6458,186 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	sub.d	$a0, $a3, $a0
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a3
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $a3
-	move	$s3, $t0
+	move	$s7, $t2
 	jirl	$ra, $a2, 0
-	move	$t0, $s3
-	move	$s3, $a0
-	blt	$s6, $t0, .LBB16_87
+	move	$t2, $s7
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	bgez	$t2, .LBB16_86
 	b	.LBB16_80
 .LBB16_85:                              #   in Loop: Header=BB16_76 Depth=1
-	move	$t0, $s3
-.LBB16_86:                              #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
-.LBB16_87:                              #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	mul.w	$a0, $a1, $a0
-	addi.w	$a1, $s7, -1
-	slt	$a2, $a1, $a0
-	masknez	$a0, $a0, $a2
-	maskeqz	$a1, $a1, $a2
-	or	$a0, $a1, $a0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.w	$a1, $s0, $a1
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	slt	$a1, $a1, $a2
-	masknez	$a2, $s6, $a1
-	maskeqz	$a1, $s4, $a1
-	or	$a1, $a1, $a2
-	xor	$a2, $a0, $s0
-	sltui	$a2, $a2, 1
-	maskeqz	$a3, $a1, $s1
-	or	$a3, $a3, $s8
-	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $a3, $a2
-	or	$a2, $a2, $a1
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
-	sub.w	$s1, $a0, $a1
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	move	$s8, $t0
-	move	$s0, $a2
-	bge	$s6, $a2, .LBB16_89
-# %bb.88:                               #   in Loop: Header=BB16_76 Depth=1
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	blt	$s6, $s3, .LBB16_94
-	b	.LBB16_90
+	move	$t2, $s7
 	.p2align	4, , 16
-.LBB16_89:                              #   in Loop: Header=BB16_76 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(read_hash)
-	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a2, $a0, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	mul.d	$a0, $a3, $a0
-	add.w	$a0, $a0, $s1
-	jirl	$ra, $a2, 0
-	move	$t0, $s8
-	move	$s0, $a0
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	blt	$s6, $s3, .LBB16_94
-.LBB16_90:                              #   in Loop: Header=BB16_76 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(read_hash)
-	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a2, $a0, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	mul.d	$a0, $a3, $a0
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
-	add.w	$a0, $a0, $a3
-	jirl	$ra, $a2, 0
-	bltz	$a0, .LBB16_93
-# %bb.91:                               #   in Loop: Header=BB16_76 Depth=1
-	ld.w	$a1, $fp, 1160
-	bge	$a0, $a1, .LBB16_93
-# %bb.92:                               #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a1, $fp, 1352
-	slli.d	$a2, $a0, 2
-	ldx.w	$a1, $a1, $a2
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	xor	$a1, $a1, $a2
-	sltui	$a1, $a1, 1
-	masknez	$a2, $s3, $a1
-	maskeqz	$a0, $a0, $a1
-	or	$s3, $a0, $a2
-.LBB16_93:                              #   in Loop: Header=BB16_76 Depth=1
-	move	$t0, $s8
-.LBB16_94:                              #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+.LBB16_86:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	mul.w	$a0, $a1, $a0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	addi.w	$a1, $a1, -1
+	addi.w	$a1, $s0, -1
 	slt	$a2, $a1, $a0
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	add.w	$a1, $s2, $a1
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	add.w	$a1, $s8, $a1
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	slt	$a1, $a1, $a2
-	masknez	$a2, $s6, $a1
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $s4, $a1
 	or	$a1, $a1, $a2
-	xor	$a2, $a0, $s2
+	xor	$a2, $a0, $s8
 	sltui	$a2, $a2, 1
-	maskeqz	$a3, $a1, $s5
-	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-	or	$a3, $a3, $a4
+	maskeqz	$a3, $a1, $s3
+	or	$a3, $a3, $s5
 	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $a3, $a2
-	or	$s4, $a2, $a1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	sub.w	$s2, $a0, $a1
-	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
-	bge	$s6, $s4, .LBB16_96
-# %bb.95:                               #   in Loop: Header=BB16_76 Depth=1
-	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	ld.w	$a0, $fp, 1120
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	bne	$s2, $a0, .LBB16_97
-	b	.LBB16_103
+	or	$s3, $a2, $a1
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	sub.w	$s7, $a0, $a1
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	move	$s5, $t2
+	bltz	$s3, .LBB16_88
+# %bb.87:                               #   in Loop: Header=BB16_76 Depth=1
+	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_93
+	b	.LBB16_89
 	.p2align	4, , 16
-.LBB16_96:                              #   in Loop: Header=BB16_76 Depth=1
+.LBB16_88:                              #   in Loop: Header=BB16_76 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a0, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	mul.d	$a0, $s2, $s5
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $s0
+	add.w	$a0, $a0, $s7
+	jirl	$ra, $a2, 0
+	move	$t2, $s5
+	move	$s3, $a0
+	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_93
+.LBB16_89:                              #   in Loop: Header=BB16_76 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(read_hash)
+	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
+	ld.d	$a2, $a0, 0
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	mul.d	$a0, $a0, $s0
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $a3
 	jirl	$ra, $a2, 0
-	move	$t0, $s8
-	move	$s4, $a0
-	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	ld.w	$a0, $fp, 1120
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	beq	$s2, $a0, .LBB16_103
-.LBB16_97:                              #   in Loop: Header=BB16_76 Depth=1
-	ori	$a1, $zero, 2
-	sll.w	$a0, $a1, $a0
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB16_100
-# %bb.98:                               #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $s0, .LBB16_110
-# %bb.99:                               #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $t0, .LBB16_111
-.LBB16_100:                             #   in Loop: Header=BB16_76 Depth=1
-	ld.wu	$a0, $fp, 1120
-	ori	$a1, $zero, 2
-	sll.w	$a0, $a1, $a0
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB16_103
-# %bb.101:                              #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $s4, .LBB16_112
-# %bb.102:                              #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $s3, .LBB16_113
-	.p2align	4, , 16
-.LBB16_103:                             #   in Loop: Header=BB16_76 Depth=1
-	beqz	$s2, .LBB16_75
-.LBB16_104:                             #   in Loop: Header=BB16_76 Depth=1
-	blt	$s6, $t0, .LBB16_108
-# %bb.105:                              #   in Loop: Header=BB16_76 Depth=1
-	move	$s8, $t0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	bstrpick.d	$a0, $a1, 31, 31
-	add.w	$a0, $a1, $a0
-	srli.d	$a0, $a0, 1
-	pcalau12i	$a1, %got_pc_hi20(read_hash)
-	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	mul.d	$a0, $a0, $a2
-	slli.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a2
-	ld.d	$a2, $a1, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	mul.d	$a0, $a0, $s5
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a3
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	alsl.w	$a0, $a3, $a0, 1
-	jirl	$ra, $a2, 0
-	bltz	$a0, .LBB16_114
-# %bb.106:                              #   in Loop: Header=BB16_76 Depth=1
+	bltz	$a0, .LBB16_92
+# %bb.90:                               #   in Loop: Header=BB16_76 Depth=1
 	ld.w	$a1, $fp, 1160
-	move	$t0, $s8
-	bge	$a0, $a1, .LBB16_108
-# %bb.107:                              #   in Loop: Header=BB16_76 Depth=1
+	bge	$a0, $a1, .LBB16_92
+# %bb.91:                               #   in Loop: Header=BB16_76 Depth=1
 	ld.d	$a1, $fp, 1352
 	slli.d	$a2, $a0, 2
 	ldx.w	$a1, $a1, $a2
-	addi.w	$a2, $s2, -1
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	masknez	$a2, $t0, $a1
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $a1
 	maskeqz	$a0, $a0, $a1
-	or	$t0, $a0, $a2
-	.p2align	4, , 16
-.LBB16_108:                             #   in Loop: Header=BB16_76 Depth=1
-	bge	$s6, $s0, .LBB16_115
-.LBB16_109:                             #   in Loop: Header=BB16_76 Depth=1
-	blt	$s6, $s3, .LBB16_122
-	b	.LBB16_119
-.LBB16_110:                             #   in Loop: Header=BB16_76 Depth=1
+	or	$a0, $a0, $a2
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+.LBB16_92:                              #   in Loop: Header=BB16_76 Depth=1
+	move	$t2, $s5
+.LBB16_93:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$a0, $a0, 1
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	mul.w	$a0, $a1, $a0
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	addi.w	$a1, $a1, -1
+	slt	$a2, $a1, $a0
+	masknez	$a0, $a0, $a2
+	maskeqz	$a1, $a1, $a2
+	or	$a0, $a1, $a0
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	add.w	$a1, $s1, $a1
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	slt	$a1, $a1, $a2
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $s4, $a1
+	or	$a1, $a1, $a2
+	xor	$a2, $a0, $s1
+	sltui	$a2, $a2, 1
+	maskeqz	$a3, $a1, $s2
+	or	$a3, $a3, $s6
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a3, $a2
+	or	$s4, $a2, $a1
+	sub.w	$s1, $a0, $s7
+	bgez	$s4, .LBB16_95
+# %bb.94:                               #   in Loop: Header=BB16_76 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $a0, 0
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	mul.d	$a0, $s1, $s0
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	add.w	$a0, $a0, $a3
+	jirl	$ra, $a2, 0
+	move	$t2, $s5
+	move	$s4, $a0
+.LBB16_95:                              #   in Loop: Header=BB16_76 Depth=1
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	ld.w	$a0, $fp, 1120
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ori	$s1, $zero, 2
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	beq	$s2, $a0, .LBB16_106
+# %bb.96:                               #   in Loop: Header=BB16_76 Depth=1
+	sll.w	$a0, $s1, $a0
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	bge	$a1, $a0, .LBB16_99
+# %bb.97:                               #   in Loop: Header=BB16_76 Depth=1
+	bltz	$s3, .LBB16_102
+# %bb.98:                               #   in Loop: Header=BB16_76 Depth=1
+	bltz	$t2, .LBB16_103
+.LBB16_99:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.wu	$a0, $fp, 1120
+	sll.w	$a0, $s1, $a0
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	bge	$a1, $a0, .LBB16_106
+.LBB16_100:                             #   in Loop: Header=BB16_76 Depth=1
+	bltz	$s4, .LBB16_104
+# %bb.101:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_106
+	b	.LBB16_105
+.LBB16_102:                             #   in Loop: Header=BB16_76 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(read_hash)
+	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a1, 31, 31
 	add.w	$a2, $a1, $a2
 	ld.d	$a3, $a0, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	srli.d	$a0, $a2, 1
-	mul.d	$a0, $a0, $s5
+	mul.d	$a0, $a0, $s0
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a2
 	jirl	$ra, $a3, 0
-	move	$t0, $s8
-	move	$s0, $a0
-	blt	$s6, $t0, .LBB16_100
-.LBB16_111:                             #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$t2, $s5
+	move	$s3, $a0
+	bgez	$t2, .LBB16_99
+.LBB16_103:                             #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.d	$a0, $a2, $a0
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
@@ -6698,47 +6645,52 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	sub.d	$a0, $a2, $a0
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a2, $a3, $a2
 	bstrpick.d	$a3, $a2, 31, 31
 	add.w	$a2, $a2, $a3
 	ld.d	$a3, $a1, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	srli.d	$a2, $a2, 1
-	mul.d	$a2, $a2, $s5
+	mul.d	$a2, $a2, $s0
 	add.w	$a0, $a0, $a2
 	jirl	$ra, $a3, 0
-	move	$t0, $a0
-	b	.LBB16_100
-.LBB16_112:                             #   in Loop: Header=BB16_76 Depth=1
+	move	$t2, $a0
+	ld.wu	$a0, $fp, 1120
+	sll.w	$a0, $s1, $a0
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	blt	$a1, $a0, .LBB16_100
+	b	.LBB16_106
+.LBB16_104:                             #   in Loop: Header=BB16_76 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a1, 31, 31
 	add.w	$a2, $a1, $a2
 	ld.d	$a3, $a0, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	srli.d	$a0, $a2, 1
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$a2, $a2, $s5
+	mul.d	$a2, $a2, $s0
 	add.w	$a0, $a0, $a2
-	move	$s4, $t0
+	move	$s4, $t2
 	jirl	$ra, $a3, 0
-	move	$t0, $s4
+	move	$t2, $s4
 	move	$s4, $a0
-	blt	$s6, $s3, .LBB16_103
-.LBB16_113:                             #   in Loop: Header=BB16_76 Depth=1
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_106
+.LBB16_105:                             #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
 	srli.d	$a0, $a0, 1
-	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	sub.d	$a1, $a4, $a1
 	pcalau12i	$a2, %got_pc_hi20(read_hash)
 	ld.d	$a2, $a2, %got_pc_lo12(read_hash)
@@ -6746,84 +6698,88 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	add.w	$a1, $a1, $a3
 	srli.d	$a3, $a1, 1
 	ld.d	$a2, $a2, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	sub.d	$a3, $a4, $a3
-	mul.d	$a3, $a3, $s5
+	mul.d	$a3, $a3, $s0
 	add.w	$a0, $a3, $a0
-	move	$s8, $t0
+	move	$s5, $t2
 	jirl	$ra, $a2, 0
-	move	$t0, $s8
-	move	$s3, $a0
-	bnez	$s2, .LBB16_104
-	b	.LBB16_75
-.LBB16_114:                             #   in Loop: Header=BB16_76 Depth=1
-	move	$t0, $s8
-	blt	$s6, $s0, .LBB16_109
+	move	$t2, $s5
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	.p2align	4, , 16
-.LBB16_115:                             #   in Loop: Header=BB16_76 Depth=1
-	move	$s8, $t0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+.LBB16_106:                             #   in Loop: Header=BB16_76 Depth=1
+	beqz	$s2, .LBB16_74
+# %bb.107:                              #   in Loop: Header=BB16_76 Depth=1
+	bgez	$t2, .LBB16_111
+# %bb.108:                              #   in Loop: Header=BB16_76 Depth=1
+	move	$s5, $t2
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a1, 31, 31
 	add.w	$a0, $a1, $a0
+	srli.d	$a0, $a0, 1
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
-	srli.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a2
 	slli.d	$a0, $a0, 1
+	sub.d	$a0, $a0, $s7
 	ld.d	$a2, $a1, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	mul.d	$a0, $a0, $s0
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	sub.d	$a0, $a0, $a3
-	mul.d	$a0, $a0, $s5
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	add.w	$a0, $a0, $a3
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	alsl.w	$a0, $a3, $a0, 1
 	jirl	$ra, $a2, 0
-	bltz	$a0, .LBB16_118
-# %bb.116:                              #   in Loop: Header=BB16_76 Depth=1
+	bltz	$a0, .LBB16_113
+# %bb.109:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.w	$a1, $fp, 1160
-	bge	$a0, $a1, .LBB16_118
-# %bb.117:                              #   in Loop: Header=BB16_76 Depth=1
+	move	$t2, $s5
+	bge	$a0, $a1, .LBB16_111
+# %bb.110:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.d	$a1, $fp, 1352
 	slli.d	$a2, $a0, 2
 	ldx.w	$a1, $a1, $a2
 	addi.w	$a2, $s2, -1
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	masknez	$a2, $s0, $a1
+	masknez	$a2, $t2, $a1
 	maskeqz	$a0, $a0, $a1
-	or	$s0, $a0, $a2
-.LBB16_118:                             #   in Loop: Header=BB16_76 Depth=1
-	move	$t0, $s8
-	blt	$s6, $s3, .LBB16_122
-.LBB16_119:                             #   in Loop: Header=BB16_76 Depth=1
-	move	$s8, $t0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	or	$t2, $a0, $a2
+	.p2align	4, , 16
+.LBB16_111:                             #   in Loop: Header=BB16_76 Depth=1
+	bltz	$s3, .LBB16_114
+.LBB16_112:                             #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_121
+	b	.LBB16_118
+.LBB16_113:                             #   in Loop: Header=BB16_76 Depth=1
+	move	$t2, $s5
+	bgez	$s3, .LBB16_112
+	.p2align	4, , 16
+.LBB16_114:                             #   in Loop: Header=BB16_76 Depth=1
+	move	$s5, $t2
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	bstrpick.d	$a0, $a1, 31, 31
+	add.w	$a0, $a1, $a0
+	pcalau12i	$a1, %got_pc_hi20(read_hash)
+	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
+	srli.d	$a0, $a0, 1
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a2
 	slli.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	bstrpick.d	$a1, $a2, 31, 31
-	add.w	$a1, $a2, $a1
-	pcalau12i	$a2, %got_pc_hi20(read_hash)
-	ld.d	$a2, $a2, %got_pc_lo12(read_hash)
-	srli.d	$a1, $a1, 1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	mul.d	$a1, $a1, $a3
-	slli.d	$a3, $a1, 1
-	ld.d	$a2, $a2, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a3, $a3, $a4
-	mul.d	$a0, $a0, $s5
-	add.w	$a0, $a3, $a0
+	ld.d	$a2, $a1, 0
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	sub.d	$a0, $a0, $s7
+	mul.d	$a0, $a0, $s0
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	add.w	$a0, $a0, $a3
 	jirl	$ra, $a2, 0
-	bltz	$a0, .LBB16_126
-# %bb.120:                              #   in Loop: Header=BB16_76 Depth=1
+	bltz	$a0, .LBB16_117
+# %bb.115:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.w	$a1, $fp, 1160
-	move	$t0, $s8
-	bge	$a0, $a1, .LBB16_122
-# %bb.121:                              #   in Loop: Header=BB16_76 Depth=1
+	bge	$a0, $a1, .LBB16_117
+# %bb.116:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.d	$a1, $fp, 1352
 	slli.d	$a2, $a0, 2
 	ldx.w	$a1, $a1, $a2
@@ -6833,34 +6789,77 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	masknez	$a2, $s3, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$s3, $a0, $a2
+.LBB16_117:                             #   in Loop: Header=BB16_76 Depth=1
+	move	$t2, $s5
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bgez	$a0, .LBB16_121
+.LBB16_118:                             #   in Loop: Header=BB16_76 Depth=1
+	move	$s5, $t2
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	slli.d	$a0, $a0, 1
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	sub.d	$a0, $a0, $a1
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	bstrpick.d	$a1, $a2, 31, 31
+	add.w	$a1, $a2, $a1
+	pcalau12i	$a2, %got_pc_hi20(read_hash)
+	ld.d	$a2, $a2, %got_pc_lo12(read_hash)
+	srli.d	$a1, $a1, 1
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	mul.d	$a1, $a1, $a3
+	slli.d	$a3, $a1, 1
+	ld.d	$a2, $a2, 0
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	sub.d	$a3, $a3, $s6
+	mul.d	$a0, $a0, $s0
+	add.w	$a0, $a3, $a0
+	jirl	$ra, $a2, 0
+	bltz	$a0, .LBB16_125
+# %bb.119:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.w	$a1, $fp, 1160
+	move	$t2, $s5
+	bge	$a0, $a1, .LBB16_121
+# %bb.120:                              #   in Loop: Header=BB16_76 Depth=1
+	ld.d	$a1, $fp, 1352
+	slli.d	$a2, $a0, 2
+	ldx.w	$a1, $a1, $a2
+	addi.w	$a2, $s2, -1
+	xor	$a1, $a1, $a2
+	sltui	$a1, $a1, 1
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	.p2align	4, , 16
+.LBB16_121:                             #   in Loop: Header=BB16_76 Depth=1
+	bgez	$s4, .LBB16_74
 .LBB16_122:                             #   in Loop: Header=BB16_76 Depth=1
-	blt	$s6, $s4, .LBB16_75
-.LBB16_123:                             #   in Loop: Header=BB16_76 Depth=1
-	move	$s8, $t0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	move	$s5, $t2
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a1, 31, 31
 	add.w	$a0, $a1, $a0
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
 	srli.d	$a0, $a0, 1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a2
 	slli.d	$a0, $a0, 1
 	ld.d	$a2, $a1, 0
-	ld.d	$a1, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a3
+	ld.d	$a1, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	sub.d	$a0, $a0, $s6
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$a3, $a3, $s5
+	mul.d	$a3, $a3, $s0
 	add.w	$a0, $a0, $a3
 	jirl	$ra, $a2, 0
-	bltz	$a0, .LBB16_74
-# %bb.124:                              #   in Loop: Header=BB16_76 Depth=1
+	bltz	$a0, .LBB16_126
+# %bb.123:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.w	$a1, $fp, 1160
-	move	$t0, $s8
+	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	move	$t2, $s5
 	bge	$a0, $a1, .LBB16_75
-# %bb.125:                              #   in Loop: Header=BB16_76 Depth=1
+# %bb.124:                              #   in Loop: Header=BB16_76 Depth=1
 	ld.d	$a1, $fp, 1352
 	slli.d	$a2, $a0, 2
 	ldx.w	$a1, $a1, $a2
@@ -6871,10 +6870,15 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	maskeqz	$a0, $a0, $a1
 	or	$s4, $a0, $a2
 	b	.LBB16_75
+.LBB16_125:                             #   in Loop: Header=BB16_76 Depth=1
+	move	$t2, $s5
+	bgez	$s4, .LBB16_74
+	b	.LBB16_122
 .LBB16_126:                             #   in Loop: Header=BB16_76 Depth=1
-	move	$t0, $s8
-	blt	$s6, $s4, .LBB16_75
-	b	.LBB16_123
+	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	move	$t2, $s5
+	b	.LBB16_75
 .LBB16_127:                             # %._crit_edge560
 	ld.d	$a0, $sp, 248
 	ld.d	$a1, $sp, 256
@@ -6890,7 +6894,7 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(read_hash_collision_report)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s7, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
+	ld.d	$a0, $s8, %pc_lo12(_ZZN4Mesh20calc_neighbors_localEvE4hash)
 	pcaddu18i	$ra, %call36(compact_hash_delete)
 	jirl	$ra, $ra, 0
 .LBB16_128:
@@ -7283,55 +7287,54 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$a5, $fp, 1328
 	ld.d	$a6, $fp, 1336
 	ori	$a7, $zero, 1
-	addi.w	$t0, $zero, -1
+	ori	$t0, $zero, 1
+	bstrins.d	$t0, $t0, 32, 31
 	ori	$t1, $zero, 1
-	bstrins.d	$t1, $t1, 32, 31
-	ori	$t2, $zero, 1
 	b	.LBB18_17
 .LBB18_15:                              #   in Loop: Header=BB18_17 Depth=1
 	addi.d	$a2, $a2, 1
 	.p2align	4, , 16
 .LBB18_16:                              # %.thread.i
                                         #   in Loop: Header=BB18_17 Depth=1
-	bstrpick.d	$t3, $t2, 31, 0
+	bstrpick.d	$t2, $t1, 31, 0
 	addi.d	$a3, $a3, 4
-	addi.w	$t2, $t2, 1
-	bgeu	$t3, $a0, .LBB18_4
+	addi.w	$t1, $t1, 1
+	bgeu	$t2, $a0, .LBB18_4
 .LBB18_17:                              # =>This Inner Loop Header: Depth=1
-	ldx.w	$t3, $s3, $a3
-	bge	$t0, $t3, .LBB18_21
+	ldx.w	$t2, $s3, $a3
+	bltz	$t2, .LBB18_21
 # %bb.18:                               #   in Loop: Header=BB18_17 Depth=1
-	beqz	$t3, .LBB18_16
+	beqz	$t2, .LBB18_16
 # %bb.19:                               #   in Loop: Header=BB18_17 Depth=1
-	ldx.w	$t3, $a4, $a3
-	bne	$t3, $a7, .LBB18_15
+	ldx.w	$t2, $a4, $a3
+	bne	$t2, $a7, .LBB18_15
 # %bb.20:                               #   in Loop: Header=BB18_17 Depth=1
 	addi.d	$a2, $a2, 3
 	b	.LBB18_16
 	.p2align	4, , 16
 .LBB18_21:                              #   in Loop: Header=BB18_17 Depth=1
-	ldx.w	$t5, $a4, $a3
-	ldx.w	$t3, $a5, $a3
-	ldx.w	$t4, $a6, $a3
-	bne	$t5, $a7, .LBB18_23
+	ldx.w	$t4, $a4, $a3
+	ldx.w	$t2, $a5, $a3
+	ldx.w	$t3, $a6, $a3
+	bne	$t4, $a7, .LBB18_23
 # %bb.22:                               #   in Loop: Header=BB18_17 Depth=1
-	or	$t3, $t3, $t4
+	or	$t2, $t2, $t3
 	b	.LBB18_26
 .LBB18_23:                              #   in Loop: Header=BB18_17 Depth=1
-	and	$t5, $t3, $t1
-	addi.w	$t5, $t5, 0
-	bne	$t5, $a7, .LBB18_25
+	and	$t4, $t2, $t0
+	addi.w	$t4, $t4, 0
+	bne	$t4, $a7, .LBB18_25
 # %bb.24:                               #   in Loop: Header=BB18_17 Depth=1
-	move	$t5, $t4
-	bstrins.d	$t5, $zero, 30, 1
-	addi.w	$t5, $t5, 0
-	beq	$t5, $a7, .LBB18_16
+	move	$t4, $t3
+	bstrins.d	$t4, $zero, 30, 1
+	addi.w	$t4, $t4, 0
+	beq	$t4, $a7, .LBB18_16
 .LBB18_25:                              #   in Loop: Header=BB18_17 Depth=1
-	or	$t3, $t4, $t3
+	or	$t2, $t3, $t2
 .LBB18_26:                              # %.thread.i
                                         #   in Loop: Header=BB18_17 Depth=1
-	andi	$t3, $t3, 1
-	sub.d	$a1, $a1, $t3
+	andi	$t2, $t2, 1
+	sub.d	$a1, $a1, $t2
 	b	.LBB18_16
 .LBB18_27:                              # %..critedge_crit_edge
 	ld.d	$a0, $sp, 16
@@ -7574,41 +7577,40 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$a5, $fp, 1368
 	ld.d	$a6, $fp, 1376
 	ori	$a7, $zero, 1
-	addi.w	$t0, $zero, -1
-	ori	$t1, $zero, 3
-	pcalau12i	$t2, %pc_hi20(.LJTI18_0)
-	addi.d	$t2, $t2, %pc_lo12(.LJTI18_0)
+	ori	$t0, $zero, 3
+	pcalau12i	$t1, %pc_hi20(.LJTI18_0)
+	addi.d	$t1, $t1, %pc_lo12(.LJTI18_0)
 	b	.LBB18_78
 .LBB18_75:                              #   in Loop: Header=BB18_78 Depth=1
-	move	$t3, $a4
+	move	$t2, $a4
 .LBB18_76:                              # %.sink.split607
                                         #   in Loop: Header=BB18_78 Depth=1
-	ldx.w	$t3, $t3, $a0
-	slli.d	$t3, $t3, 2
-	ldx.w	$t3, $s3, $t3
-	stx.w	$t3, $s3, $a0
+	ldx.w	$t2, $t2, $a0
+	slli.d	$t2, $t2, 2
+	ldx.w	$t2, $s3, $t2
+	stx.w	$t2, $s3, $a0
 .LBB18_77:                              #   in Loop: Header=BB18_78 Depth=1
-	bstrpick.d	$t3, $a7, 31, 0
+	bstrpick.d	$t2, $a7, 31, 0
 	addi.d	$a0, $a0, 4
 	addi.w	$a7, $a7, 1
-	bgeu	$t3, $s5, .LBB18_83
+	bgeu	$t2, $s5, .LBB18_83
 .LBB18_78:                              # =>This Inner Loop Header: Depth=1
-	ldx.w	$t3, $a2, $a0
-	blt	$t0, $t3, .LBB18_77
+	ldx.w	$t2, $a2, $a0
+	bgez	$t2, .LBB18_77
 # %bb.79:                               #   in Loop: Header=BB18_78 Depth=1
-	addi.d	$t3, $t3, 4
-	bltu	$t1, $t3, .LBB18_77
+	addi.d	$t2, $t2, 4
+	bltu	$t0, $t2, .LBB18_77
 # %bb.80:                               #   in Loop: Header=BB18_78 Depth=1
-	slli.d	$t3, $t3, 2
-	ldx.w	$t3, $t2, $t3
-	add.d	$t4, $t2, $t3
-	move	$t3, $a6
-	jr	$t4
+	slli.d	$t2, $t2, 2
+	ldx.w	$t2, $t1, $t2
+	add.d	$t3, $t1, $t2
+	move	$t2, $a6
+	jr	$t3
 .LBB18_81:                              #   in Loop: Header=BB18_78 Depth=1
-	move	$t3, $a3
+	move	$t2, $a3
 	b	.LBB18_76
 .LBB18_82:                              #   in Loop: Header=BB18_78 Depth=1
-	move	$t3, $a5
+	move	$t2, $a5
 	b	.LBB18_76
 .LBB18_83:                              # %._crit_edge564
 	bne	$a1, $s3, .LBB18_86
@@ -7647,55 +7649,54 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$a4, $fp, 1328
 	ld.d	$a5, $fp, 1336
 	ori	$a6, $zero, 1
-	addi.w	$a7, $zero, -1
+	ori	$a7, $zero, 1
+	bstrins.d	$a7, $a7, 32, 31
 	ori	$t0, $zero, 1
-	bstrins.d	$t0, $t0, 32, 31
-	ori	$t1, $zero, 1
 	b	.LBB18_91
 .LBB18_89:                              #   in Loop: Header=BB18_91 Depth=1
 	addi.d	$a2, $a2, 1
 	.p2align	4, , 16
 .LBB18_90:                              # %.thread.i439
                                         #   in Loop: Header=BB18_91 Depth=1
-	bstrpick.d	$t2, $t1, 31, 0
+	bstrpick.d	$t1, $t0, 31, 0
 	addi.d	$a1, $a1, 4
-	addi.w	$t1, $t1, 1
-	bgeu	$t2, $s5, .LBB18_101
+	addi.w	$t0, $t0, 1
+	bgeu	$t1, $s5, .LBB18_101
 .LBB18_91:                              # =>This Inner Loop Header: Depth=1
-	ldx.w	$t2, $s2, $a1
-	bge	$a7, $t2, .LBB18_95
+	ldx.w	$t1, $s2, $a1
+	bltz	$t1, .LBB18_95
 # %bb.92:                               #   in Loop: Header=BB18_91 Depth=1
-	beqz	$t2, .LBB18_90
+	beqz	$t1, .LBB18_90
 # %bb.93:                               #   in Loop: Header=BB18_91 Depth=1
-	ldx.w	$t2, $a3, $a1
-	bne	$t2, $a6, .LBB18_89
+	ldx.w	$t1, $a3, $a1
+	bne	$t1, $a6, .LBB18_89
 # %bb.94:                               #   in Loop: Header=BB18_91 Depth=1
 	addi.d	$a2, $a2, 3
 	b	.LBB18_90
 	.p2align	4, , 16
 .LBB18_95:                              #   in Loop: Header=BB18_91 Depth=1
-	ldx.w	$t4, $a3, $a1
-	ldx.w	$t2, $a4, $a1
-	ldx.w	$t3, $a5, $a1
-	bne	$t4, $a6, .LBB18_97
+	ldx.w	$t3, $a3, $a1
+	ldx.w	$t1, $a4, $a1
+	ldx.w	$t2, $a5, $a1
+	bne	$t3, $a6, .LBB18_97
 # %bb.96:                               #   in Loop: Header=BB18_91 Depth=1
-	or	$t2, $t2, $t3
+	or	$t1, $t1, $t2
 	b	.LBB18_100
 .LBB18_97:                              #   in Loop: Header=BB18_91 Depth=1
-	and	$t4, $t2, $t0
-	addi.w	$t4, $t4, 0
-	bne	$t4, $a6, .LBB18_99
+	and	$t3, $t1, $a7
+	addi.w	$t3, $t3, 0
+	bne	$t3, $a6, .LBB18_99
 # %bb.98:                               #   in Loop: Header=BB18_91 Depth=1
-	move	$t4, $t3
-	bstrins.d	$t4, $zero, 30, 1
-	addi.w	$t4, $t4, 0
-	beq	$t4, $a6, .LBB18_90
+	move	$t3, $t2
+	bstrins.d	$t3, $zero, 30, 1
+	addi.w	$t3, $t3, 0
+	beq	$t3, $a6, .LBB18_90
 .LBB18_99:                              #   in Loop: Header=BB18_91 Depth=1
-	or	$t2, $t3, $t2
+	or	$t1, $t2, $t1
 .LBB18_100:                             # %.thread.i439
                                         #   in Loop: Header=BB18_91 Depth=1
-	andi	$t2, $t2, 1
-	sub.d	$a0, $a0, $t2
+	andi	$t1, $t1, 1
+	sub.d	$a0, $a0, $t1
 	b	.LBB18_90
 .LBB18_101:                             # %.thread511
 	st.w	$a2, $s0, 0
@@ -7780,9 +7781,9 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.w	$t4, $fp, 1176
 	ld.d	$t5, $fp, 1392
 	ld.d	$t6, $fp, 1376
-	ld.d	$t7, $fp, 1384
+	ld.d	$t8, $fp, 1384
 	move	$s3, $zero
-	move	$t8, $zero
+	move	$t7, $zero
 	move	$t0, $s7
 	move	$t1, $s6
 	move	$t2, $s4
@@ -7792,7 +7793,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 .LBB18_112:                             # %.sink.split
                                         #   in Loop: Header=BB18_114 Depth=2
 	stx.w	$a5, $a0, $s3
-	addi.w	$t8, $t8, 1
+	addi.w	$t7, $t7, 1
 .LBB18_113:                             #   in Loop: Header=BB18_114 Depth=2
 	bstrpick.d	$a6, $s4, 31, 0
 	addi.d	$s3, $s3, 4
@@ -7895,7 +7896,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	blt	$a5, $a6, .LBB18_112
 .LBB18_136:                             # %.thread492.us
                                         #   in Loop: Header=BB18_114 Depth=2
-	ldx.w	$s7, $t7, $s3
+	ldx.w	$s7, $t8, $s3
 	bltz	$s7, .LBB18_113
 # %bb.137:                              # %.thread492.us
                                         #   in Loop: Header=BB18_114 Depth=2
@@ -7929,9 +7930,9 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 .LBB18_143:                             # %._crit_edge.us
                                         #   in Loop: Header=BB18_111 Depth=1
 	ld.w	$a6, $s0, 0
-	add.d	$a6, $a6, $t8
+	add.d	$a6, $a6, $t7
 	st.w	$a6, $s0, 0
-	blt	$t8, $a5, .LBB18_148
+	blez	$t7, .LBB18_148
 # %bb.144:                              # %._crit_edge.us
                                         #   in Loop: Header=BB18_111 Depth=1
 	ld.w	$a6, $fp, 1120
@@ -8083,9 +8084,9 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$s3, $a5
-	move	$s5, $a4
-	st.d	$a3, $sp, 144                   # 8-byte Folded Spill
+	move	$s4, $a5
+	move	$s3, $a4
+	st.d	$a3, $sp, 152                   # 8-byte Folded Spill
 	move	$s1, $a2
 	move	$s0, $a1
 	move	$fp, $a0
@@ -8104,17 +8105,17 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	xor	$s1, $s1, $s2
 	dbar	20
 	pcalau12i	$a1, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE13celltype_save)
-	addi.d	$s4, $a1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE13celltype_save)
-	beqz	$a0, .LBB19_219
+	addi.d	$s8, $a1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE13celltype_save)
+	beqz	$a0, .LBB19_218
 .LBB19_2:
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE6new_ic)
 	ld.b	$a0, $a0, %pc_lo12(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE6new_ic)
 	sub.d	$s1, $s2, $s1
 	dbar	20
-	beqz	$a0, .LBB19_221
+	beqz	$a0, .LBB19_220
 .LBB19_3:
-	ld.d	$a0, $s4, 8
-	ld.d	$a2, $s4, 0
+	ld.d	$a0, $s8, 8
+	ld.d	$a2, $s8, 0
 	ld.d	$a1, $fp, 1160
 	sub.d	$a3, $a0, $a2
 	srai.d	$a3, $a3, 2
@@ -8135,18 +8136,18 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	st.d	$a0, $fp, 1312
 .LBB19_7:                               # %_ZNSt6vectorIiSaIiEE5clearEv.exit
 	ld.d	$a1, $fp, 1160
-	beqz	$a1, .LBB19_194
+	beqz	$a1, .LBB19_193
 # %bb.8:                                # %_ZNSt6vectorIiSaIiEE6resizeEm.exit
 	addi.d	$s0, $fp, 1304
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 1160
-	beqz	$a0, .LBB19_194
+	beqz	$a0, .LBB19_193
 # %bb.9:                                # %.lr.ph
 	ld.d	$a1, $s0, 0
 	ori	$a2, $zero, 8
-	bgeu	$a0, $a2, .LBB19_205
+	bgeu	$a0, $a2, .LBB19_204
 # %bb.10:
 	move	$a2, $zero
 .LBB19_11:                              # %scalar.ph.preheader
@@ -8159,25 +8160,25 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.w	$a3, $a3, 1
 	bstrpick.d	$a2, $a3, 31, 0
 	bltu	$a2, $a0, .LBB19_12
-	b	.LBB19_194
+	b	.LBB19_193
 .LBB19_13:
 	bgeu	$a1, $a3, .LBB19_16
 # %bb.14:
 	alsl.d	$a1, $a1, $a2, 2
 	beq	$a0, $a1, .LBB19_16
 # %bb.15:
-	st.d	$a1, $s4, 8
+	st.d	$a1, $s8, 8
 .LBB19_16:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit412
 	ld.d	$a0, $fp, 1160
-	pcalau12i	$s2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
-	beqz	$s5, .LBB19_26
+	pcalau12i	$a2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
+	beqz	$s3, .LBB19_26
 # %bb.17:                               # %.preheader439
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB19_195
+	blez	$a1, .LBB19_194
 # %bb.18:                               # %.lr.ph443
 	ld.d	$a1, $fp, 1360
-	ld.d	$a2, $s4, 0
+	ld.d	$a2, $s8, 0
 	bstrpick.d	$a3, $a0, 30, 0
 	ori	$a5, $zero, 8
 	move	$a4, $zero
@@ -8220,15 +8221,14 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	bnez	$a3, .LBB19_24
 .LBB19_25:                              # %._crit_edge444.thread
 	add.w	$a1, $s0, $a0
-	st.w	$a1, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
-	b	.LBB19_196
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	st.w	$a1, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	b	.LBB19_195
 .LBB19_26:                              # %.critedge
 	add.w	$a1, $s0, $a0
-	st.w	$a1, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	st.w	$a1, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 .LBB19_27:                              # %.loopexit438
-	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
 	addi.d	$s0, $fp, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.33)
@@ -8237,7 +8237,8 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.w	$a1, $s1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	pcalau12i	$a2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5i_old)
 	addi.d	$s5, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5i_old)
 	st.d	$a0, $s5, 0
@@ -8248,7 +8249,7 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	ld.w	$a1, $s1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	pcalau12i	$a2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5j_old)
 	addi.d	$s6, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5j_old)
 	st.d	$a0, $s6, 0
@@ -8274,9 +8275,10 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus11memory_swapEPPiS1_)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $fp, 1352
+	addi.d	$s3, $fp, 1352
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
 	move	$a0, $s0
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	move	$a1, $s3
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus11memory_swapEPPiS1_)
 	jirl	$ra, $ra, 0
@@ -8286,7 +8288,8 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 # %bb.28:
 	st.d	$a0, $fp, 1312
 .LBB19_29:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit414
-	ld.w	$a1, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	addi.d	$s1, $fp, 1304
 	beqz	$a1, .LBB19_31
 # %bb.30:
@@ -8294,25 +8297,26 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB19_31:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit416
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
 	ld.b	$a0, $a0, %pc_lo12(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
 	dbar	20
 	pcalau12i	$a1, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
-	addi.d	$s3, $a1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
-	beqz	$a0, .LBB19_223
+	addi.d	$s0, $a1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
+	beqz	$a0, .LBB19_222
 .LBB19_32:
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a1, $s3, 8
-	ld.d	$a0, $s3, 0
-	addi.w	$s2, $zero, -1
-	move	$a5, $s2
-	lu32i.d	$a5, 0
+	ld.d	$a1, $s0, 8
+	ld.d	$a0, $s0, 0
+	addi.w	$a5, $zero, -1
+	move	$a6, $a5
+	lu32i.d	$a6, 0
 	sub.d	$a2, $a1, $a0
 	srai.d	$a3, $a2, 2
 	ori	$a4, $zero, 3
-	st.d	$a5, $sp, 136                   # 8-byte Folded Spill
-	st.w	$a5, $sp, 160
+	st.d	$a6, $sp, 136                   # 8-byte Folded Spill
+	st.w	$a6, $sp, 160
+	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 80                    # 8-byte Folded Spill
 	bltu	$a4, $a3, .LBB19_34
 # %bb.33:
 	ori	$a0, $zero, 4
@@ -8322,220 +8326,213 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.d	$a3, $sp, 160
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
-	ld.d	$t2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB19_37
 .LBB19_34:
 	ori	$a3, $zero, 16
-	ld.d	$t2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB19_37
 # %bb.35:
 	addi.d	$a0, $a0, 16
 	beq	$a1, $a0, .LBB19_37
 # %bb.36:
-	st.d	$a0, $s3, 8
+	st.d	$a0, $s0, 8
 .LBB19_37:                              # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 1160
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB19_95
+	blez	$a0, .LBB19_94
 # %bb.38:                               # %.lr.ph453
 	move	$s0, $zero
+	move	$s2, $zero
 	move	$s8, $zero
 	move	$s4, $zero
-	move	$s3, $zero
 	lu12i.w	$a1, -245
-	ori	$t6, $a1, 3520
-	addi.w	$t7, $zero, -1
-	addi.w	$t8, $zero, -2
-	ori	$ra, $zero, 5
+	ori	$t5, $a1, 3520
+	addi.w	$t6, $zero, -2
+	ori	$t7, $zero, 5
 	pcalau12i	$a1, %pc_hi20(.LJTI19_0)
-	addi.d	$t1, $a1, %pc_lo12(.LJTI19_0)
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$t8, $a1, %pc_lo12(.LJTI19_0)
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 56                    # 8-byte Folded Spill
 	st.d	$t6, $sp, 48                    # 8-byte Folded Spill
-	st.d	$t7, $sp, 40                    # 8-byte Folded Spill
-	st.d	$t8, $sp, 32                    # 8-byte Folded Spill
-	st.d	$t1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$t8, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB19_42
 	.p2align	4, , 16
 .LBB19_39:                              #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $s1, 0
-	stx.w	$s3, $a1, $s8
+	stx.w	$s4, $a1, $s2
 	ld.d	$a1, $s5, 0
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	ld.d	$a2, $t3, 0
-	slli.d	$a3, $s3, 2
+	slli.d	$a3, $s4, 2
 	stx.w	$a1, $a2, $a3
 	ld.d	$a1, $s6, 0
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	ld.d	$a2, $t4, 0
 	stx.w	$a1, $a2, $a3
 	ld.d	$a1, $s7, 0
-	ldx.w	$a1, $a1, $s8
-	ld.d	$a2, $t5, 0
+	ldx.w	$a1, $a1, $s2
+	ld.d	$a2, $s3, 0
 	stx.w	$a1, $a2, $a3
 .LBB19_40:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit
                                         #   in Loop: Header=BB19_42 Depth=1
-	addi.w	$s3, $s3, 1
+	addi.w	$s4, $s4, 1
 .LBB19_41:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit
                                         #   in Loop: Header=BB19_42 Depth=1
-	addi.d	$s4, $s4, 1
-	addi.d	$s8, $s8, 4
+	addi.d	$s8, $s8, 1
+	addi.d	$s2, $s2, 4
 	addi.w	$s0, $s0, 1
-	bge	$s4, $a0, .LBB19_95
+	bge	$s8, $a0, .LBB19_94
 .LBB19_42:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $t2, 0
-	ldx.w	$a2, $a1, $s8
+	ldx.w	$a2, $a1, $s2
 	beqz	$a2, .LBB19_39
 # %bb.43:                               #   in Loop: Header=BB19_42 Depth=1
-	beq	$a2, $t6, .LBB19_39
+	beq	$a2, $t5, .LBB19_39
 # %bb.44:                               #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a3, $s1, 0
-	stx.w	$s3, $a3, $s8
-	bge	$t7, $a2, .LBB19_48
+	stx.w	$s4, $a3, $s2
+	bltz	$a2, .LBB19_48
 # %bb.45:                               #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $fp, 1360
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	addi.d	$a1, $a1, 4
-	bltu	$ra, $a1, .LBB19_41
+	bltu	$t7, $a1, .LBB19_41
 # %bb.46:                               #   in Loop: Header=BB19_42 Depth=1
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $t1, $a1
-	add.d	$a1, $t1, $a1
+	ldx.w	$a1, $t8, $a1
+	add.d	$a1, $t8, $a1
 	jr	$a1
 .LBB19_47:                              #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $s5, 0
-	ldx.w	$a2, $a1, $s8
+	ldx.w	$a2, $a1, $s2
 	ld.d	$a3, $t3, 0
 	slli.d	$a2, $a2, 1
 	addi.d	$a2, $a2, 1
-	slli.d	$a4, $s3, 2
+	slli.d	$a4, $s4, 2
 	stx.w	$a2, $a3, $a4
 	ld.d	$a2, $s6, 0
-	ldx.w	$a5, $a2, $s8
+	ldx.w	$a5, $a2, $s2
 	ld.d	$a6, $t4, 0
 	slli.d	$a5, $a5, 1
 	stx.w	$a5, $a6, $a4
 	ld.d	$a5, $s7, 0
-	ldx.w	$a7, $a5, $s8
-	ld.d	$t0, $t5, 0
+	ldx.w	$a7, $a5, $s2
+	ld.d	$t0, $s3, 0
 	addi.d	$a7, $a7, 1
 	stx.w	$a7, $t0, $a4
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	slli.d	$a1, $a1, 1
 	addi.d	$a4, $a4, 4
 	stx.w	$a1, $a3, $a4
-	ldx.w	$a1, $a2, $s8
+	ldx.w	$a1, $a2, $s2
 	slli.d	$a1, $a1, 1
 	b	.LBB19_55
 .LBB19_48:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a1, $a1, $s8
-	blt	$t8, $a1, .LBB19_41
+	ldx.w	$a1, $a1, $s2
+	blt	$t6, $a1, .LBB19_41
 # %bb.49:                               #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $s5, 0
-	ldx.wu	$a1, $a1, $s8
+	ldx.wu	$a1, $a1, $s2
 	srli.d	$a2, $a1, 31
 	ld.d	$a3, $t3, 0
 	add.w	$a1, $a1, $a2
 	srli.d	$a1, $a1, 1
-	slli.d	$a2, $s3, 2
+	slli.d	$a2, $s4, 2
 	stx.w	$a1, $a3, $a2
 	ld.d	$a1, $s6, 0
-	ldx.wu	$a1, $a1, $s8
+	ldx.wu	$a1, $a1, $s2
 	ld.d	$a3, $t4, 0
 	srli.d	$a4, $a1, 31
 	add.w	$a1, $a1, $a4
 	srli.d	$a1, $a1, 1
 	stx.w	$a1, $a3, $a2
 	ld.d	$a1, $s7, 0
-	ldx.w	$a1, $a1, $s8
-	ld.d	$a3, $t5, 0
+	ldx.w	$a1, $a1, $s2
+	ld.d	$a3, $s3, 0
 	addi.d	$a1, $a1, -1
 	stx.w	$a1, $a3, $a2
 	b	.LBB19_40
 .LBB19_50:                              #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $s5, 0
-	ldx.w	$a2, $a1, $s8
+	ldx.w	$a2, $a1, $s2
 	ld.d	$a3, $t3, 0
 	slli.d	$a2, $a2, 1
-	slli.d	$a4, $s3, 2
+	slli.d	$a4, $s4, 2
 	stx.w	$a2, $a3, $a4
 	ld.d	$a2, $s6, 0
-	ldx.w	$a5, $a2, $s8
+	ldx.w	$a5, $a2, $s2
 	ld.d	$a6, $t4, 0
 	slli.d	$a5, $a5, 1
 	stx.w	$a5, $a6, $a4
 	ld.d	$a5, $s7, 0
-	ldx.w	$a7, $a5, $s8
-	ld.d	$t0, $t5, 0
+	ldx.w	$a7, $a5, $s2
+	ld.d	$t0, $s3, 0
 	addi.d	$a7, $a7, 1
 	stx.w	$a7, $t0, $a4
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	slli.d	$a1, $a1, 1
 	b	.LBB19_54
 .LBB19_51:                              #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $s5, 0
-	ldx.w	$a2, $a1, $s8
+	ldx.w	$a2, $a1, $s2
 	ld.d	$a3, $t3, 0
 	slli.d	$a2, $a2, 1
-	slli.d	$a4, $s3, 2
+	slli.d	$a4, $s4, 2
 	stx.w	$a2, $a3, $a4
 	ld.d	$a2, $s6, 0
-	ldx.w	$a5, $a2, $s8
+	ldx.w	$a5, $a2, $s2
 	ld.d	$a6, $t4, 0
 	slli.d	$a5, $a5, 1
 	addi.d	$a5, $a5, 1
 	b	.LBB19_53
 .LBB19_52:                              #   in Loop: Header=BB19_42 Depth=1
 	ld.d	$a1, $s5, 0
-	ldx.w	$a2, $a1, $s8
+	ldx.w	$a2, $a1, $s2
 	ld.d	$a3, $t3, 0
 	slli.d	$a2, $a2, 1
 	addi.d	$a2, $a2, 1
-	slli.d	$a4, $s3, 2
+	slli.d	$a4, $s4, 2
 	stx.w	$a2, $a3, $a4
 	ld.d	$a2, $s6, 0
-	ldx.w	$a5, $a2, $s8
+	ldx.w	$a5, $a2, $s2
 	ld.d	$a6, $t4, 0
 	slli.d	$a5, $a5, 1
 .LBB19_53:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$a5, $a6, $a4
 	ld.d	$a5, $s7, 0
-	ldx.w	$a7, $a5, $s8
-	ld.d	$t0, $t5, 0
+	ldx.w	$a7, $a5, $s2
+	ld.d	$t0, $s3, 0
 	addi.d	$a7, $a7, 1
 	stx.w	$a7, $t0, $a4
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	slli.d	$a1, $a1, 1
 	addi.d	$a1, $a1, 1
 .LBB19_54:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit
                                         #   in Loop: Header=BB19_42 Depth=1
 	addi.d	$a4, $a4, 4
 	stx.w	$a1, $a3, $a4
-	ldx.w	$a1, $a2, $s8
+	ldx.w	$a1, $a2, $s2
 	slli.d	$a1, $a1, 1
 	addi.d	$a1, $a1, 1
 .LBB19_55:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$a1, $a6, $a4
-	ldx.w	$a1, $a5, $s8
+	ldx.w	$a1, $a5, $s2
 	addi.d	$a1, $a1, 1
 	stx.w	$a1, $t0, $a4
-	addi.w	$s3, $s3, 2
+	addi.w	$s4, $s4, 2
 	b	.LBB19_41
 .LBB19_56:                              #   in Loop: Header=BB19_42 Depth=1
-	move	$s1, $s6
-	move	$s6, $s5
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a1, $s5, 0
-	ld.d	$a0, $s6, 0
-	ld.d	$a2, $s1, 0
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $s3, 0
+	ld.d	$a0, $s5, 0
+	ld.d	$a2, $s6, 0
 	ld.d	$a3, $s7, 0
 	st.d	$a3, $sp, 24
 	st.d	$a2, $sp, 16
@@ -8550,23 +8547,20 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(_ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_)
 	jirl	$ra, $ra, 0
-	move	$t6, $s7
+	ori	$ra, $zero, 3
 	ld.d	$a6, $s7, 0
 	ld.d	$a4, $fp, 1352
-	ld.d	$a5, $s5, 0
-	move	$s5, $s6
-	move	$s6, $s1
+	ld.d	$a5, $s3, 0
 	ld.d	$a3, $s5, 0
-	ldx.w	$a7, $a6, $s8
+	ldx.w	$a7, $a6, $s2
 	ld.d	$a2, $fp, 1328
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s6, 0
 	ld.d	$a0, $fp, 1336
 	addi.d	$t0, $a7, 1
-	slli.d	$a7, $s3, 2
+	slli.d	$a7, $s4, 2
 	stx.w	$t0, $a4, $a7
 	ld.w	$t0, $a5, 0
-	ori	$t1, $zero, 3
-	bltu	$t1, $t0, .LBB19_93
+	bltu	$ra, $t0, .LBB19_93
 # %bb.57:                               #   in Loop: Header=BB19_42 Depth=1
 	slli.d	$t0, $t0, 2
 	pcalau12i	$t1, %pc_hi20(.LJTI19_1)
@@ -8575,55 +8569,52 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	add.d	$t0, $t1, $t0
 	jr	$t0
 .LBB19_58:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	b	.LBB19_61
 .LBB19_59:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 	b	.LBB19_63
 .LBB19_60:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 .LBB19_61:                              # %.sink.split
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$t0, $a2, $a7
-	ldx.w	$t0, $a1, $s8
+	ldx.w	$t0, $a1, $s2
 	slli.d	$t0, $t0, 1
 	b	.LBB19_64
 .LBB19_62:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 .LBB19_63:                              # %.sink.split
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$t0, $a2, $a7
-	ldx.w	$t0, $a1, $s8
+	ldx.w	$t0, $a1, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 .LBB19_64:                              # %.sink.split
                                         #   in Loop: Header=BB19_42 Depth=1
-	ld.d	$t2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
-	move	$s7, $t6
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 40                    # 8-byte Folded Reload
-	ori	$ra, $zero, 5
-	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
+	ori	$t7, $zero, 5
+	ld.d	$t8, $sp, 40                    # 8-byte Folded Reload
 	stx.w	$t0, $a0, $a7
-	addi.w	$s3, $s3, 1
+	addi.w	$s4, $s4, 1
 .LBB19_65:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a7, $a6, $s8
+	ldx.w	$a7, $a6, $s2
 	addi.d	$t0, $a7, 1
-	slli.d	$a7, $s3, 2
+	slli.d	$a7, $s4, 2
 	stx.w	$t0, $a4, $a7
 	ld.w	$t0, $a5, 4
-	ori	$t8, $zero, 3
-	bltu	$t8, $t0, .LBB19_74
+	bltu	$ra, $t0, .LBB19_74
 # %bb.66:                               #   in Loop: Header=BB19_42 Depth=1
 	slli.d	$t0, $t0, 2
 	pcalau12i	$t1, %pc_hi20(.LJTI19_2)
@@ -8632,46 +8623,44 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	add.d	$t0, $t1, $t0
 	jr	$t0
 .LBB19_67:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	b	.LBB19_70
 .LBB19_68:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 	b	.LBB19_72
 .LBB19_69:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 .LBB19_70:                              # %.sink.split508
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$t0, $a2, $a7
-	ldx.w	$t0, $a1, $s8
+	ldx.w	$t0, $a1, $s2
 	slli.d	$t0, $t0, 1
 	b	.LBB19_73
 .LBB19_71:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 .LBB19_72:                              # %.sink.split508
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$t0, $a2, $a7
-	ldx.w	$t0, $a1, $s8
+	ldx.w	$t0, $a1, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 .LBB19_73:                              # %.sink.split508
                                         #   in Loop: Header=BB19_42 Depth=1
-	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
 	stx.w	$t0, $a0, $a7
-	addi.w	$s3, $s3, 1
+	addi.w	$s4, $s4, 1
 .LBB19_74:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a7, $a6, $s8
+	ldx.w	$a7, $a6, $s2
 	addi.d	$t0, $a7, 1
-	slli.d	$a7, $s3, 2
+	slli.d	$a7, $s4, 2
 	stx.w	$t0, $a4, $a7
 	ld.w	$t0, $a5, 8
-	ori	$t8, $zero, 3
-	bltu	$t8, $t0, .LBB19_94
+	bltu	$ra, $t0, .LBB19_83
 # %bb.75:                               #   in Loop: Header=BB19_42 Depth=1
 	slli.d	$t0, $t0, 2
 	pcalau12i	$t1, %pc_hi20(.LJTI19_3)
@@ -8680,47 +8669,44 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	add.d	$t0, $t1, $t0
 	jr	$t0
 .LBB19_76:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	b	.LBB19_79
 .LBB19_77:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 	b	.LBB19_81
 .LBB19_78:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 .LBB19_79:                              # %.sink.split511
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$t0, $a2, $a7
-	ldx.w	$t0, $a1, $s8
+	ldx.w	$t0, $a1, $s2
 	slli.d	$t0, $t0, 1
 	b	.LBB19_82
 .LBB19_80:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$t0, $a3, $s8
+	ldx.w	$t0, $a3, $s2
 	slli.d	$t0, $t0, 1
 .LBB19_81:                              # %.sink.split511
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$t0, $a2, $a7
-	ldx.w	$t0, $a1, $s8
+	ldx.w	$t0, $a1, $s2
 	slli.d	$t0, $t0, 1
 	addi.d	$t0, $t0, 1
 .LBB19_82:                              # %.sink.split511
                                         #   in Loop: Header=BB19_42 Depth=1
-	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t8, $sp, 32                    # 8-byte Folded Reload
 	stx.w	$t0, $a0, $a7
-	addi.w	$s3, $s3, 1
+	addi.w	$s4, $s4, 1
 .LBB19_83:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a6, $a6, $s8
+	ldx.w	$a6, $a6, $s2
 	addi.d	$a7, $a6, 1
-	slli.d	$a6, $s3, 2
+	slli.d	$a6, $s4, 2
 	stx.w	$a7, $a4, $a6
 	ld.w	$a4, $a5, 12
-	ori	$a5, $zero, 3
-	bltu	$a5, $a4, .LBB19_92
+	bltu	$ra, $a4, .LBB19_92
 # %bb.84:                               #   in Loop: Header=BB19_42 Depth=1
 	slli.d	$a4, $a4, 2
 	pcalau12i	$a5, %pc_hi20(.LJTI19_4)
@@ -8729,89 +8715,84 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	add.d	$a4, $a5, $a4
 	jr	$a4
 .LBB19_85:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a3, $a3, $s8
+	ldx.w	$a3, $a3, $s2
 	slli.d	$a3, $a3, 1
 	b	.LBB19_88
 .LBB19_86:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a3, $a3, $s8
+	ldx.w	$a3, $a3, $s2
 	slli.d	$a3, $a3, 1
 	addi.d	$a3, $a3, 1
 	b	.LBB19_90
 .LBB19_87:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a3, $a3, $s8
+	ldx.w	$a3, $a3, $s2
 	slli.d	$a3, $a3, 1
 	addi.d	$a3, $a3, 1
 .LBB19_88:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit.loopexit.sink.split
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$a3, $a2, $a6
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	slli.d	$a1, $a1, 1
 	b	.LBB19_91
 .LBB19_89:                              #   in Loop: Header=BB19_42 Depth=1
-	ldx.w	$a3, $a3, $s8
+	ldx.w	$a3, $a3, $s2
 	slli.d	$a3, $a3, 1
 .LBB19_90:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit.loopexit.sink.split
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$a3, $a2, $a6
-	ldx.w	$a1, $a1, $s8
+	ldx.w	$a1, $a1, $s2
 	slli.d	$a1, $a1, 1
 	addi.d	$a1, $a1, 1
 .LBB19_91:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit.loopexit.sink.split
                                         #   in Loop: Header=BB19_42 Depth=1
 	stx.w	$a1, $a0, $a6
-	addi.w	$s3, $s3, 1
+	addi.w	$s4, $s4, 1
 .LBB19_92:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit.loopexit
                                         #   in Loop: Header=BB19_42 Depth=1
 	ld.w	$a0, $fp, 1160
 	b	.LBB19_41
 .LBB19_93:                              #   in Loop: Header=BB19_42 Depth=1
-	ld.d	$t2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
-	move	$s7, $t6
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 40                    # 8-byte Folded Reload
-	ori	$ra, $zero, 5
-	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
+	ori	$t7, $zero, 5
+	ld.d	$t8, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB19_65
-.LBB19_94:                              #   in Loop: Header=BB19_42 Depth=1
-	ld.d	$t8, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB19_83
-.LBB19_95:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit._crit_edge
+.LBB19_94:                              # %_ZNSt6vectorIiSaIiEEC2EmRKiRKS0_.exit._crit_edge
 	ld.d	$a1, $s5, 0
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	move	$a0, $s8
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 0
-	move	$a0, $s8
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s7, 0
-	move	$a0, $s8
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	ld.w	$a1, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	ld.d	$s8, $sp, 144                   # 8-byte Folded Reload
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN4Mesh13calc_celltypeEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	beqz	$a0, .LBB19_152
-# %bb.96:
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	beqz	$a0, .LBB19_151
+# %bb.95:
 	addi.d	$a2, $sp, 168
 	st.w	$zero, $sp, 168
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $s6, 16
 	st.d	$zero, $sp, 176
 	st.d	$a2, $sp, 184
 	st.d	$a2, $sp, 192
 	st.d	$zero, $sp, 200
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	beqz	$a1, .LBB19_102
-# %bb.97:
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	beqz	$a1, .LBB19_101
+# %bb.96:
 	addi.d	$a0, $sp, 160
 	st.d	$a0, $sp, 272
 	addi.d	$a3, $sp, 272
@@ -8819,25 +8800,25 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
 	.p2align	4, , 16
-.LBB19_98:                              # %.noexc.i.i.i
+.LBB19_97:                              # %.noexc.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	ld.d	$a2, $a2, 16
-	bnez	$a2, .LBB19_98
-# %bb.99:                               # %_ZNSt18_Rb_tree_node_base10_S_minimumEPS_.exit.i.i.i.i.i
+	bnez	$a2, .LBB19_97
+# %bb.98:                               # %_ZNSt18_Rb_tree_node_base10_S_minimumEPS_.exit.i.i.i.i.i
 	st.d	$a1, $sp, 184
 	move	$a2, $a0
 	.p2align	4, , 16
-.LBB19_100:                             # =>This Inner Loop Header: Depth=1
+.LBB19_99:                              # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	ld.d	$a2, $a2, 24
-	bnez	$a2, .LBB19_100
-# %bb.101:
+	bnez	$a2, .LBB19_99
+# %bb.100:
 	ld.d	$a2, $s6, 40
 	st.d	$a1, $sp, 192
 	st.d	$a2, $sp, 200
 	st.d	$a0, $sp, 176
-.LBB19_102:                             # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP24malloc_plus_memory_entrySt4lessIS5_ESaISt4pairIKS5_S7_EEEC2ERKSE_.exit.i
+.LBB19_101:                             # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP24malloc_plus_memory_entrySt4lessIS5_ESaISt4pairIKS5_S7_EEEC2ERKSE_.exit.i
 	addi.d	$a2, $sp, 216
 	st.w	$zero, $sp, 216
 	ld.d	$a1, $s6, 64
@@ -8845,8 +8826,8 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	st.d	$a2, $sp, 232
 	st.d	$a2, $sp, 240
 	st.d	$zero, $sp, 248
-	beqz	$a1, .LBB19_109
-# %bb.103:
+	beqz	$a1, .LBB19_108
+# %bb.102:
 	addi.d	$a0, $sp, 208
 	st.d	$a0, $sp, 272
 .Ltmp156:
@@ -8854,74 +8835,73 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE7_M_copyILb0ENSB_11_Alloc_nodeEEEPSt18_Rb_tree_node_basePSt13_Rb_tree_nodeIS5_ESF_RT0_)
 	jirl	$ra, $ra, 0
 .Ltmp157:
-# %bb.104:                              # %.noexc.i.i5.i.preheader
+# %bb.103:                              # %.noexc.i.i5.i.preheader
 	move	$a2, $a0
 	.p2align	4, , 16
-.LBB19_105:                             # %.noexc.i.i5.i
+.LBB19_104:                             # %.noexc.i.i5.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	ld.d	$a2, $a2, 16
-	bnez	$a2, .LBB19_105
-# %bb.106:                              # %_ZNSt18_Rb_tree_node_base10_S_minimumEPS_.exit.i.i.i.i8.i
+	bnez	$a2, .LBB19_104
+# %bb.105:                              # %_ZNSt18_Rb_tree_node_base10_S_minimumEPS_.exit.i.i.i.i8.i
 	st.d	$a1, $sp, 232
 	move	$a2, $a0
 	.p2align	4, , 16
-.LBB19_107:                             # =>This Inner Loop Header: Depth=1
+.LBB19_106:                             # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	ld.d	$a2, $a2, 24
-	bnez	$a2, .LBB19_107
-# %bb.108:
+	bnez	$a2, .LBB19_106
+# %bb.107:
 	ld.d	$a2, $s6, 88
 	st.d	$a1, $sp, 240
 	st.d	$a2, $sp, 248
 	st.d	$a0, $sp, 224
-.LBB19_109:                             # %_ZN10MallocPlusC2ERKS_.exit
+.LBB19_108:                             # %_ZN10MallocPlusC2ERKS_.exit
 .Ltmp159:
 	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus26memory_entry_by_name_beginEv)
 	jirl	$ra, $ra, 0
 .Ltmp160:
-# %bb.110:                              # %.preheader436
+# %bb.109:                              # %.preheader436
 	move	$s1, $a0
-	ori	$s3, $zero, 4
+	ori	$s2, $zero, 4
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.37)
-	ori	$s4, $zero, 1
-	ori	$s5, $zero, 8
-	b	.LBB19_113
+	ori	$s3, $zero, 1
+	ori	$s4, $zero, 8
+	b	.LBB19_112
 	.p2align	4, , 16
-.LBB19_111:                             # %._crit_edge469
-                                        #   in Loop: Header=BB19_113 Depth=1
+.LBB19_110:                             # %._crit_edge469
+                                        #   in Loop: Header=BB19_112 Depth=1
 .Ltmp173:
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_replaceEPvS0_)
 	jirl	$ra, $ra, 0
 .Ltmp174:
-.LBB19_112:                             #   in Loop: Header=BB19_113 Depth=1
+.LBB19_111:                             #   in Loop: Header=BB19_112 Depth=1
 .Ltmp176:
 	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus25memory_entry_by_name_nextEv)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 .Ltmp177:
-.LBB19_113:                             # =>This Loop Header: Depth=1
-                                        #     Child Loop BB19_123 Depth 2
-                                        #     Child Loop BB19_139 Depth 2
+.LBB19_112:                             # =>This Loop Header: Depth=1
+                                        #     Child Loop BB19_122 Depth 2
+                                        #     Child Loop BB19_138 Depth 2
 .Ltmp162:
 	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus24memory_entry_by_name_endEv)
 	jirl	$ra, $ra, 0
 .Ltmp163:
-# %bb.114:                              #   in Loop: Header=BB19_113 Depth=1
-	beq	$s1, $a0, .LBB19_150
-# %bb.115:                              #   in Loop: Header=BB19_113 Depth=1
+# %bb.113:                              #   in Loop: Header=BB19_112 Depth=1
+	beq	$s1, $a0, .LBB19_149
+# %bb.114:                              #   in Loop: Header=BB19_112 Depth=1
 	ld.d	$a0, $s1, 32
-	beq	$a0, $s3, .LBB19_133
-# %bb.116:                              #   in Loop: Header=BB19_113 Depth=1
-	bne	$a0, $s5, .LBB19_112
-# %bb.117:                              #   in Loop: Header=BB19_113 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	ld.w	$a1, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	beq	$a0, $s2, .LBB19_132
+# %bb.115:                              #   in Loop: Header=BB19_112 Depth=1
+	bne	$a0, $s4, .LBB19_111
+# %bb.116:                              #   in Loop: Header=BB19_112 Depth=1
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 .Ltmp170:
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.36)
@@ -8931,16 +8911,16 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
 .Ltmp171:
-# %bb.118:                              #   in Loop: Header=BB19_113 Depth=1
+# %bb.117:                              #   in Loop: Header=BB19_112 Depth=1
 	move	$a2, $a0
 	ld.d	$t2, $fp, 1160
 	ld.d	$a1, $s1, 0
 	addi.w	$a0, $t2, 0
-	blt	$a0, $s4, .LBB19_111
-# %bb.119:                              # %.lr.ph468
-                                        #   in Loop: Header=BB19_113 Depth=1
+	blez	$a0, .LBB19_110
+# %bb.118:                              # %.lr.ph468
+                                        #   in Loop: Header=BB19_112 Depth=1
 	move	$t6, $zero
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a3, $s7, 0
 	ld.d	$a4, $fp, 1368
@@ -8953,15 +8933,15 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$t3, $a6
 	move	$t4, $a4
 	move	$t5, $a1
-	b	.LBB19_123
+	b	.LBB19_122
 	.p2align	4, , 16
-.LBB19_120:                             #   in Loop: Header=BB19_123 Depth=2
+.LBB19_119:                             #   in Loop: Header=BB19_122 Depth=2
 	fld.d	$fa0, $t5, 0
-.LBB19_121:                             #   in Loop: Header=BB19_123 Depth=2
+.LBB19_120:                             #   in Loop: Header=BB19_122 Depth=2
 	slli.d	$t7, $t6, 3
 	fstx.d	$fa0, $a2, $t7
 	addi.w	$t7, $t6, 1
-.LBB19_122:                             #   in Loop: Header=BB19_123 Depth=2
+.LBB19_121:                             #   in Loop: Header=BB19_122 Depth=2
 	addi.d	$t5, $t5, 8
 	addi.d	$a5, $a5, 4
 	addi.d	$t4, $t4, 4
@@ -8971,48 +8951,48 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.d	$t2, $t2, -1
 	addi.d	$a3, $a3, 4
 	move	$t6, $t7
-	beqz	$t2, .LBB19_111
-.LBB19_123:                             #   Parent Loop BB19_113 Depth=1
+	beqz	$t2, .LBB19_110
+.LBB19_122:                             #   Parent Loop BB19_112 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t7, $a0, 0
-	beqz	$t7, .LBB19_120
-# %bb.124:                              #   in Loop: Header=BB19_123 Depth=2
-	bge	$s2, $t7, .LBB19_127
-# %bb.125:                              #   in Loop: Header=BB19_123 Depth=2
+	beqz	$t7, .LBB19_119
+# %bb.123:                              #   in Loop: Header=BB19_122 Depth=2
+	bltz	$t7, .LBB19_126
+# %bb.124:                              #   in Loop: Header=BB19_122 Depth=2
 	fld.d	$fa0, $t5, 0
 	slli.d	$t8, $t6, 3
 	fstx.d	$fa0, $a2, $t8
 	fstx.d	$fa0, $t0, $t8
 	ld.w	$s1, $a3, 0
 	addi.w	$t7, $t6, 2
-	bne	$s1, $s4, .LBB19_122
-# %bb.126:                              #   in Loop: Header=BB19_123 Depth=2
+	bne	$s1, $s3, .LBB19_121
+# %bb.125:                              #   in Loop: Header=BB19_122 Depth=2
 	fld.d	$fa0, $t5, 0
 	slli.d	$t7, $t7, 3
 	fstx.d	$fa0, $a2, $t7
 	fstx.d	$fa0, $t1, $t8
 	addi.w	$t7, $t6, 4
-	b	.LBB19_122
+	b	.LBB19_121
 	.p2align	4, , 16
-.LBB19_127:                             #   in Loop: Header=BB19_123 Depth=2
+.LBB19_126:                             #   in Loop: Header=BB19_122 Depth=2
 	addi.w	$t8, $zero, -3
-	beq	$t7, $t8, .LBB19_130
-# %bb.128:                              #   in Loop: Header=BB19_123 Depth=2
+	beq	$t7, $t8, .LBB19_129
+# %bb.127:                              #   in Loop: Header=BB19_122 Depth=2
 	addi.w	$t8, $zero, -2
-	bne	$t7, $t8, .LBB19_132
-# %bb.129:                              # %.thread
-                                        #   in Loop: Header=BB19_123 Depth=2
+	bne	$t7, $t8, .LBB19_131
+# %bb.128:                              # %.thread
+                                        #   in Loop: Header=BB19_122 Depth=2
 	ld.w	$t7, $a7, 0
 	ld.w	$t8, $t3, 0
 	slli.d	$s1, $t7, 2
 	ldx.w	$s1, $a6, $s1
-	b	.LBB19_131
-.LBB19_130:                             #   in Loop: Header=BB19_123 Depth=2
+	b	.LBB19_130
+.LBB19_129:                             #   in Loop: Header=BB19_122 Depth=2
 	ld.w	$t7, $a5, 0
 	ld.w	$t8, $t4, 0
 	slli.d	$s1, $t7, 2
 	ldx.w	$s1, $a4, $s1
-.LBB19_131:                             #   in Loop: Header=BB19_123 Depth=2
+.LBB19_130:                             #   in Loop: Header=BB19_122 Depth=2
 	fld.d	$fa0, $t5, 0
 	slli.d	$t8, $t8, 3
 	fldx.d	$fa1, $a1, $t8
@@ -9025,14 +9005,13 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	fadd.d	$fa0, $fa0, $fa3
 	vldi	$vr1, -944
 	fmul.d	$fa0, $fa0, $fa1
-	b	.LBB19_121
-.LBB19_132:                             #   in Loop: Header=BB19_123 Depth=2
+	b	.LBB19_120
+.LBB19_131:                             #   in Loop: Header=BB19_122 Depth=2
 	move	$t7, $t6
-	b	.LBB19_122
+	b	.LBB19_121
 	.p2align	4, , 16
-.LBB19_133:                             #   in Loop: Header=BB19_113 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	ld.w	$a1, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+.LBB19_132:                             #   in Loop: Header=BB19_112 Depth=1
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 .Ltmp164:
 	ori	$a2, $zero, 4
 	ori	$a4, $zero, 16
@@ -9041,16 +9020,16 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
 .Ltmp165:
-# %bb.134:                              #   in Loop: Header=BB19_113 Depth=1
+# %bb.133:                              #   in Loop: Header=BB19_112 Depth=1
 	move	$a2, $a0
 	ld.d	$t2, $fp, 1160
 	ld.d	$a1, $s1, 0
 	addi.w	$a0, $t2, 0
-	blt	$a0, $s4, .LBB19_149
-# %bb.135:                              # %.lr.ph459
-                                        #   in Loop: Header=BB19_113 Depth=1
+	blez	$a0, .LBB19_148
+# %bb.134:                              # %.lr.ph459
+                                        #   in Loop: Header=BB19_112 Depth=1
 	move	$t6, $zero
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a3, $s7, 0
 	ld.d	$a4, $fp, 1368
@@ -9063,15 +9042,15 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$t3, $a6
 	move	$t4, $a4
 	move	$t5, $a1
-	b	.LBB19_139
+	b	.LBB19_138
 	.p2align	4, , 16
-.LBB19_136:                             #   in Loop: Header=BB19_139 Depth=2
+.LBB19_135:                             #   in Loop: Header=BB19_138 Depth=2
 	fld.s	$fa0, $t5, 0
-.LBB19_137:                             #   in Loop: Header=BB19_139 Depth=2
+.LBB19_136:                             #   in Loop: Header=BB19_138 Depth=2
 	slli.d	$t7, $t6, 2
 	fstx.s	$fa0, $a2, $t7
 	addi.w	$t7, $t6, 1
-.LBB19_138:                             #   in Loop: Header=BB19_139 Depth=2
+.LBB19_137:                             #   in Loop: Header=BB19_138 Depth=2
 	addi.d	$t5, $t5, 4
 	addi.d	$a5, $a5, 4
 	addi.d	$t4, $t4, 4
@@ -9081,48 +9060,48 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.d	$t2, $t2, -1
 	addi.d	$a3, $a3, 4
 	move	$t6, $t7
-	beqz	$t2, .LBB19_149
-.LBB19_139:                             #   Parent Loop BB19_113 Depth=1
+	beqz	$t2, .LBB19_148
+.LBB19_138:                             #   Parent Loop BB19_112 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t7, $a0, 0
-	beqz	$t7, .LBB19_136
-# %bb.140:                              #   in Loop: Header=BB19_139 Depth=2
-	bge	$s2, $t7, .LBB19_143
-# %bb.141:                              #   in Loop: Header=BB19_139 Depth=2
+	beqz	$t7, .LBB19_135
+# %bb.139:                              #   in Loop: Header=BB19_138 Depth=2
+	bltz	$t7, .LBB19_142
+# %bb.140:                              #   in Loop: Header=BB19_138 Depth=2
 	fld.s	$fa0, $t5, 0
 	slli.d	$t8, $t6, 2
 	fstx.s	$fa0, $a2, $t8
 	fstx.s	$fa0, $t0, $t8
 	ld.w	$s1, $a3, 0
 	addi.w	$t7, $t6, 2
-	bne	$s1, $s4, .LBB19_138
-# %bb.142:                              #   in Loop: Header=BB19_139 Depth=2
+	bne	$s1, $s3, .LBB19_137
+# %bb.141:                              #   in Loop: Header=BB19_138 Depth=2
 	fld.s	$fa0, $t5, 0
 	slli.d	$t7, $t7, 2
 	fstx.s	$fa0, $a2, $t7
 	fstx.s	$fa0, $t1, $t8
 	addi.w	$t7, $t6, 4
-	b	.LBB19_138
+	b	.LBB19_137
 	.p2align	4, , 16
-.LBB19_143:                             #   in Loop: Header=BB19_139 Depth=2
+.LBB19_142:                             #   in Loop: Header=BB19_138 Depth=2
 	addi.w	$t8, $zero, -3
-	beq	$t7, $t8, .LBB19_146
-# %bb.144:                              #   in Loop: Header=BB19_139 Depth=2
+	beq	$t7, $t8, .LBB19_145
+# %bb.143:                              #   in Loop: Header=BB19_138 Depth=2
 	addi.w	$t8, $zero, -2
-	bne	$t7, $t8, .LBB19_148
-# %bb.145:                              # %.thread430
-                                        #   in Loop: Header=BB19_139 Depth=2
+	bne	$t7, $t8, .LBB19_147
+# %bb.144:                              # %.thread430
+                                        #   in Loop: Header=BB19_138 Depth=2
 	ld.w	$t7, $a7, 0
 	ld.w	$t8, $t3, 0
 	slli.d	$t7, $t7, 2
 	ldx.w	$s1, $a6, $t7
-	b	.LBB19_147
-.LBB19_146:                             #   in Loop: Header=BB19_139 Depth=2
+	b	.LBB19_146
+.LBB19_145:                             #   in Loop: Header=BB19_138 Depth=2
 	ld.w	$t7, $a5, 0
 	ld.w	$t8, $t4, 0
 	slli.d	$t7, $t7, 2
 	ldx.w	$s1, $a4, $t7
-.LBB19_147:                             #   in Loop: Header=BB19_139 Depth=2
+.LBB19_146:                             #   in Loop: Header=BB19_138 Depth=2
 	fld.s	$fa0, $t5, 0
 	slli.d	$t8, $t8, 2
 	fldx.s	$fa1, $a1, $t8
@@ -9134,92 +9113,90 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	fadd.s	$fa0, $fa0, $fa3
 	vldi	$vr1, -1200
 	fmul.s	$fa0, $fa0, $fa1
-	b	.LBB19_137
-.LBB19_148:                             #   in Loop: Header=BB19_139 Depth=2
+	b	.LBB19_136
+.LBB19_147:                             #   in Loop: Header=BB19_138 Depth=2
 	move	$t7, $t6
-	b	.LBB19_138
+	b	.LBB19_137
 	.p2align	4, , 16
-.LBB19_149:                             # %._crit_edge460
-                                        #   in Loop: Header=BB19_113 Depth=1
+.LBB19_148:                             # %._crit_edge460
+                                        #   in Loop: Header=BB19_112 Depth=1
 .Ltmp167:
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_replaceEPvS0_)
 	jirl	$ra, $ra, 0
 .Ltmp168:
-	b	.LBB19_112
-.LBB19_150:
+	b	.LBB19_111
+.LBB19_149:
 	ld.d	$a1, $sp, 224
 	addi.d	$a0, $sp, 208
 .Ltmp179:
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E)
 	jirl	$ra, $ra, 0
 .Ltmp180:
-# %bb.151:                              # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEED2Ev.exit.i
+# %bb.150:                              # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEED2Ev.exit.i
 	ld.d	$a1, $sp, 176
 .Ltmp182:
 	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P24malloc_plus_memory_entryESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E)
 	jirl	$ra, $ra, 0
 .Ltmp183:
-.LBB19_152:
+.LBB19_151:
 	pcalau12i	$a0, %pc_hi20(neighbor_remap)
 	ld.bu	$a0, $a0, %pc_lo12(neighbor_remap)
-	ori	$s1, $zero, 1
-	bne	$a0, $s1, .LBB19_192
-# %bb.153:
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.w	$a1, $s0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	beqz	$a0, .LBB19_191
+# %bb.152:
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.38)
 	ori	$a2, $zero, 4
-	move	$a0, $s8
+	move	$a0, $s5
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	pcalau12i	$a2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nlft_old)
-	addi.d	$s5, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nlft_old)
-	st.d	$a0, $s5, 0
+	addi.d	$s0, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nlft_old)
+	st.d	$a0, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.39)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.39)
 	ori	$a2, $zero, 4
-	move	$a0, $s8
+	move	$a0, $s5
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
-	pcalau12i	$s3, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
-	st.d	$a0, $s3, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	pcalau12i	$s1, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
+	st.d	$a0, $s1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
 	pcalau12i	$a0, %pc_hi20(.L.str.40)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.40)
 	ori	$a2, $zero, 4
-	move	$a0, $s8
+	move	$a0, $s5
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
-	pcalau12i	$s4, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
-	st.d	$a0, $s4, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	pcalau12i	$s2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
+	st.d	$a0, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
 	pcalau12i	$a0, %pc_hi20(.L.str.41)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.41)
 	ori	$a2, $zero, 4
-	move	$a0, $s8
+	move	$a0, $s5
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_mallocEmmPKci)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	ld.w	$a1, $s8, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
 	pcalau12i	$a2, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8ntop_old)
 	st.d	$a0, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8ntop_old)
-	blt	$a1, $s1, .LBB19_158
-# %bb.154:                              # %.lr.ph472
-	ld.d	$a2, $s5, 0
-	ld.d	$a3, $s3, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
-	ld.d	$a4, $s4, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
+	blez	$a1, .LBB19_157
+# %bb.153:                              # %.lr.ph472
+	ld.d	$a2, $s0, 0
+	ld.d	$a3, $s1, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
+	ld.d	$a4, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
 	ori	$a5, $zero, 24
-	bgeu	$a1, $a5, .LBB19_210
-# %bb.155:
+	bgeu	$a1, $a5, .LBB19_209
+# %bb.154:
 	move	$a5, $zero
-.LBB19_156:                             # %scalar.ph552.preheader
+.LBB19_155:                             # %scalar.ph552.preheader
 	alsl.d	$a0, $a5, $a0, 2
 	alsl.d	$a4, $a5, $a4, 2
 	alsl.d	$a3, $a5, $a3, 2
@@ -9228,7 +9205,7 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.w	$a5, $zero, -1
 	lu32i.d	$a5, 0
 	.p2align	4, , 16
-.LBB19_157:                             # %scalar.ph552
+.LBB19_156:                             # %scalar.ph552
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a5, $a2, 0
 	st.w	$a5, $a3, 0
@@ -9239,272 +9216,272 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.d	$a3, $a3, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB19_157
-.LBB19_158:                             # %._crit_edge473
+	bnez	$a1, .LBB19_156
+.LBB19_157:                             # %._crit_edge473
 	addi.d	$a1, $fp, 1368
-	move	$a0, $s8
-	move	$a2, $s5
+	move	$a0, $s5
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus11memory_swapEPPiS1_)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $fp, 1376
 	pcalau12i	$a0, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
-	addi.d	$s4, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
-	move	$a0, $s8
-	move	$a2, $s4
+	addi.d	$s2, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
+	move	$a0, $s5
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus11memory_swapEPPiS1_)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $fp, 1384
 	pcalau12i	$a0, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
 	addi.d	$s1, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
-	move	$a0, $s8
+	move	$a0, $s5
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus11memory_swapEPPiS1_)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $fp, 1392
 	pcalau12i	$a0, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8ntop_old)
 	addi.d	$s3, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8ntop_old)
-	move	$a0, $s8
+	move	$a0, $s5
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus11memory_swapEPPiS1_)
 	jirl	$ra, $ra, 0
 	ld.d	$t4, $fp, 1160
-	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
-	ld.d	$a1, $s5, 0
+	ld.d	$a1, $s0, 0
 	addi.w	$a0, $t4, 0
-	blez	$a0, .LBB19_193
-# %bb.159:                              # %.lr.ph475
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	blez	$a0, .LBB19_192
+# %bb.158:                              # %.lr.ph475
 	ld.d	$a2, $fp, 1304
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a3, $a3, 0
 	ld.d	$a4, $fp, 1368
 	ld.d	$a5, $fp, 1376
 	ld.d	$a6, $fp, 1384
 	ld.d	$a7, $fp, 1392
 	ld.d	$t0, $fp, 1360
-	ld.d	$t1, $s4, 0
+	ld.d	$t1, $s2, 0
 	ld.d	$t2, $s1, 0
 	ld.d	$t3, $s3, 0
 	bstrpick.d	$t4, $t4, 30, 0
-	ori	$t5, $zero, 1
-	ori	$t6, $zero, 3
+	ori	$t5, $zero, 3
+	ori	$t6, $zero, 1
 	move	$t7, $a3
 	move	$t8, $a2
-	move	$s5, $a1
-	b	.LBB19_163
-.LBB19_160:                             #   in Loop: Header=BB19_163 Depth=1
-	move	$s8, $a6
-.LBB19_161:                             # %.sink.split520
-                                        #   in Loop: Header=BB19_163 Depth=1
-	stx.w	$s6, $s8, $s7
-.LBB19_162:                             #   in Loop: Header=BB19_163 Depth=1
+	move	$s4, $a1
+	b	.LBB19_162
+.LBB19_159:                             #   in Loop: Header=BB19_162 Depth=1
+	move	$s7, $a6
+.LBB19_160:                             # %.sink.split520
+                                        #   in Loop: Header=BB19_162 Depth=1
+	stx.w	$s5, $s7, $s6
+.LBB19_161:                             #   in Loop: Header=BB19_162 Depth=1
 	addi.d	$t3, $t3, 4
 	addi.d	$t2, $t2, 4
 	addi.d	$t1, $t1, 4
-	addi.d	$s5, $s5, 4
+	addi.d	$s4, $s4, 4
 	addi.d	$t8, $t8, 4
 	addi.d	$t4, $t4, -1
 	addi.d	$t7, $t7, 4
-	beqz	$t4, .LBB19_193
-.LBB19_163:                             # =>This Inner Loop Header: Depth=1
-	ld.w	$s7, $t7, 0
-	ld.w	$s6, $t8, 0
-	beqz	$s7, .LBB19_166
-# %bb.164:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.w	$s8, $zero, -2
-	blt	$s8, $s7, .LBB19_175
-# %bb.165:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.w	$s7, $zero, -1
-	slli.d	$s8, $s6, 2
-	move	$ra, $s7
-	lu32i.d	$ra, 0
-	stx.w	$ra, $a4, $s8
-	stx.w	$ra, $a5, $s8
-	stx.w	$ra, $a6, $s8
-	b	.LBB19_185
-	.p2align	4, , 16
-.LBB19_166:                             #   in Loop: Header=BB19_163 Depth=1
-	ld.w	$s7, $s5, 0
-	bgeu	$s7, $a0, .LBB19_172
-# %bb.167:                              #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s7, $s7, 2
-	ldx.w	$s8, $a3, $s7
-	beqz	$s8, .LBB19_178
-# %bb.168:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.d	$s7, $zero, -1
-	slli.d	$s8, $s6, 2
-	stx.w	$s7, $a4, $s8
-	ld.w	$s7, $t1, 0
-	bltu	$s7, $a0, .LBB19_173
-	.p2align	4, , 16
-.LBB19_169:                             #   in Loop: Header=BB19_163 Depth=1
-	ld.w	$s7, $t2, 0
-	bgeu	$s7, $a0, .LBB19_181
-.LBB19_170:                             #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s7, $s7, 2
-	ldx.w	$s8, $a3, $s7
-	beqz	$s8, .LBB19_179
-# %bb.171:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.d	$s7, $zero, -1
-	slli.d	$s8, $s6, 2
-	stx.w	$s7, $a6, $s8
-	ld.w	$s7, $t3, 0
-	bgeu	$s7, $a0, .LBB19_187
-	b	.LBB19_182
-	.p2align	4, , 16
-.LBB19_172:                             #   in Loop: Header=BB19_163 Depth=1
-	ld.w	$s7, $t1, 0
-	bgeu	$s7, $a0, .LBB19_169
-.LBB19_173:                             #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s7, $s7, 2
-	ldx.w	$s8, $a3, $s7
-	beqz	$s8, .LBB19_180
-# %bb.174:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.d	$s7, $zero, -1
-	slli.d	$s8, $s6, 2
-	stx.w	$s7, $a5, $s8
-	ld.w	$s7, $t2, 0
-	bgeu	$s7, $a0, .LBB19_181
-	b	.LBB19_170
-	.p2align	4, , 16
-.LBB19_175:                             #   in Loop: Header=BB19_163 Depth=1
-	blt	$s7, $t5, .LBB19_187
-# %bb.176:                              #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s7, $s6, 2
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	stx.w	$s0, $a4, $s7
-	addi.d	$s8, $s7, 4
-	stx.w	$s0, $a4, $s8
-	stx.w	$s0, $a5, $s7
-	stx.w	$s0, $a5, $s8
-	stx.w	$s0, $a6, $s7
-	stx.w	$s0, $a6, $s8
-	stx.w	$s0, $a7, $s7
-	stx.w	$s0, $a7, $s8
-	ldx.w	$s8, $t0, $s7
-	bne	$s8, $t5, .LBB19_187
-# %bb.177:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.d	$s7, $s7, 8
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	stx.w	$s0, $a4, $s7
-	addi.w	$s8, $s6, 3
-	slli.d	$ra, $s8, 2
-	stx.w	$s0, $a4, $ra
-	stx.w	$s0, $a5, $s7
-	stx.w	$s0, $a5, $ra
-	stx.w	$s0, $a6, $s7
-	stx.w	$s0, $a6, $ra
-	stx.w	$s0, $a7, $s7
-	move	$s7, $s2
-	b	.LBB19_186
-.LBB19_178:                             #   in Loop: Header=BB19_163 Depth=1
-	ldx.w	$s7, $a2, $s7
-	slli.d	$s8, $s6, 2
-	stx.w	$s7, $a4, $s8
-	ld.w	$s7, $t1, 0
-	bgeu	$s7, $a0, .LBB19_169
-	b	.LBB19_173
-.LBB19_179:                             #   in Loop: Header=BB19_163 Depth=1
-	ldx.w	$s7, $a2, $s7
-	slli.d	$s8, $s6, 2
-	stx.w	$s7, $a6, $s8
-	ld.w	$s7, $t3, 0
-	bgeu	$s7, $a0, .LBB19_187
-	b	.LBB19_182
-.LBB19_180:                             #   in Loop: Header=BB19_163 Depth=1
-	ldx.w	$s7, $a2, $s7
-	slli.d	$s8, $s6, 2
-	stx.w	$s7, $a5, $s8
-	ld.w	$s7, $t2, 0
-	bltu	$s7, $a0, .LBB19_170
-	.p2align	4, , 16
-.LBB19_181:                             #   in Loop: Header=BB19_163 Depth=1
-	ld.w	$s7, $t3, 0
-	bgeu	$s7, $a0, .LBB19_187
-.LBB19_182:                             #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s7, $s7, 2
-	ldx.w	$s8, $a3, $s7
-	beqz	$s8, .LBB19_184
-# %bb.183:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.d	$s7, $zero, -1
-	b	.LBB19_185
-.LBB19_184:                             #   in Loop: Header=BB19_163 Depth=1
-	ldx.w	$s7, $a2, $s7
-	.p2align	4, , 16
-.LBB19_185:                             # %.sink.split516
-                                        #   in Loop: Header=BB19_163 Depth=1
+	beqz	$t4, .LBB19_192
+.LBB19_162:                             # =>This Inner Loop Header: Depth=1
+	ld.w	$s6, $t7, 0
+	ld.w	$s5, $t8, 0
+	beqz	$s6, .LBB19_165
+# %bb.163:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.w	$s7, $zero, -2
+	blt	$s7, $s6, .LBB19_174
+# %bb.164:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.w	$s6, $zero, -1
+	slli.d	$s7, $s5, 2
 	move	$s8, $s6
-.LBB19_186:                             # %.sink.split516
-                                        #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s8, $s8, 2
-	stx.w	$s7, $a7, $s8
-.LBB19_187:                             #   in Loop: Header=BB19_163 Depth=1
-	ld.w	$s7, $t7, 0
-	blt	$s7, $t5, .LBB19_162
-# %bb.188:                              #   in Loop: Header=BB19_163 Depth=1
-	addi.w	$s6, $s6, 1
-	slli.d	$s7, $s6, 2
-	ldx.w	$s8, $t0, $s7
-	addi.d	$s8, $s8, 4
-	bltu	$t6, $s8, .LBB19_162
-# %bb.189:                              #   in Loop: Header=BB19_163 Depth=1
-	slli.d	$s8, $s8, 2
-	pcalau12i	$ra, %pc_hi20(.LJTI19_5)
-	addi.d	$ra, $ra, %pc_lo12(.LJTI19_5)
-	ldx.w	$s8, $ra, $s8
-	add.d	$s0, $ra, $s8
-	move	$s8, $a4
-	jr	$s0
-.LBB19_190:                             #   in Loop: Header=BB19_163 Depth=1
-	move	$s8, $a7
-	b	.LBB19_161
-.LBB19_191:                             #   in Loop: Header=BB19_163 Depth=1
-	move	$s8, $a5
-	b	.LBB19_161
-.LBB19_192:
+	lu32i.d	$s8, 0
+	stx.w	$s8, $a4, $s7
+	stx.w	$s8, $a5, $s7
+	stx.w	$s8, $a6, $s7
+	b	.LBB19_184
+	.p2align	4, , 16
+.LBB19_165:                             #   in Loop: Header=BB19_162 Depth=1
+	ld.w	$s6, $s4, 0
+	bgeu	$s6, $a0, .LBB19_171
+# %bb.166:                              #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s6, $s6, 2
+	ldx.w	$s7, $a3, $s6
+	beqz	$s7, .LBB19_177
+# %bb.167:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.d	$s6, $zero, -1
+	slli.d	$s7, $s5, 2
+	stx.w	$s6, $a4, $s7
+	ld.w	$s6, $t1, 0
+	bltu	$s6, $a0, .LBB19_172
+	.p2align	4, , 16
+.LBB19_168:                             #   in Loop: Header=BB19_162 Depth=1
+	ld.w	$s6, $t2, 0
+	bgeu	$s6, $a0, .LBB19_180
+.LBB19_169:                             #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s6, $s6, 2
+	ldx.w	$s7, $a3, $s6
+	beqz	$s7, .LBB19_178
+# %bb.170:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.d	$s6, $zero, -1
+	slli.d	$s7, $s5, 2
+	stx.w	$s6, $a6, $s7
+	ld.w	$s6, $t3, 0
+	bgeu	$s6, $a0, .LBB19_186
+	b	.LBB19_181
+	.p2align	4, , 16
+.LBB19_171:                             #   in Loop: Header=BB19_162 Depth=1
+	ld.w	$s6, $t1, 0
+	bgeu	$s6, $a0, .LBB19_168
+.LBB19_172:                             #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s6, $s6, 2
+	ldx.w	$s7, $a3, $s6
+	beqz	$s7, .LBB19_179
+# %bb.173:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.d	$s6, $zero, -1
+	slli.d	$s7, $s5, 2
+	stx.w	$s6, $a5, $s7
+	ld.w	$s6, $t2, 0
+	bgeu	$s6, $a0, .LBB19_180
+	b	.LBB19_169
+	.p2align	4, , 16
+.LBB19_174:                             #   in Loop: Header=BB19_162 Depth=1
+	blez	$s6, .LBB19_186
+# %bb.175:                              #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s6, $s5, 2
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	stx.w	$s8, $a4, $s6
+	addi.d	$s7, $s6, 4
+	stx.w	$s8, $a4, $s7
+	stx.w	$s8, $a5, $s6
+	stx.w	$s8, $a5, $s7
+	stx.w	$s8, $a6, $s6
+	stx.w	$s8, $a6, $s7
+	stx.w	$s8, $a7, $s6
+	stx.w	$s8, $a7, $s7
+	ldx.w	$s7, $t0, $s6
+	bne	$s7, $t6, .LBB19_186
+# %bb.176:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.d	$s6, $s6, 8
+	ld.d	$t6, $sp, 136                   # 8-byte Folded Reload
+	stx.w	$t6, $a4, $s6
+	addi.w	$s7, $s5, 3
+	slli.d	$s8, $s7, 2
+	stx.w	$t6, $a4, $s8
+	stx.w	$t6, $a5, $s6
+	stx.w	$t6, $a5, $s8
+	stx.w	$t6, $a6, $s6
+	stx.w	$t6, $a6, $s8
+	stx.w	$t6, $a7, $s6
+	ori	$t6, $zero, 1
+	move	$s6, $ra
+	b	.LBB19_185
+.LBB19_177:                             #   in Loop: Header=BB19_162 Depth=1
+	ldx.w	$s6, $a2, $s6
+	slli.d	$s7, $s5, 2
+	stx.w	$s6, $a4, $s7
+	ld.w	$s6, $t1, 0
+	bgeu	$s6, $a0, .LBB19_168
+	b	.LBB19_172
+.LBB19_178:                             #   in Loop: Header=BB19_162 Depth=1
+	ldx.w	$s6, $a2, $s6
+	slli.d	$s7, $s5, 2
+	stx.w	$s6, $a6, $s7
+	ld.w	$s6, $t3, 0
+	bgeu	$s6, $a0, .LBB19_186
+	b	.LBB19_181
+.LBB19_179:                             #   in Loop: Header=BB19_162 Depth=1
+	ldx.w	$s6, $a2, $s6
+	slli.d	$s7, $s5, 2
+	stx.w	$s6, $a5, $s7
+	ld.w	$s6, $t2, 0
+	bltu	$s6, $a0, .LBB19_169
+	.p2align	4, , 16
+.LBB19_180:                             #   in Loop: Header=BB19_162 Depth=1
+	ld.w	$s6, $t3, 0
+	bgeu	$s6, $a0, .LBB19_186
+.LBB19_181:                             #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s6, $s6, 2
+	ldx.w	$s7, $a3, $s6
+	beqz	$s7, .LBB19_183
+# %bb.182:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.d	$s6, $zero, -1
+	b	.LBB19_184
+.LBB19_183:                             #   in Loop: Header=BB19_162 Depth=1
+	ldx.w	$s6, $a2, $s6
+	.p2align	4, , 16
+.LBB19_184:                             # %.sink.split516
+                                        #   in Loop: Header=BB19_162 Depth=1
+	move	$s7, $s5
+.LBB19_185:                             # %.sink.split516
+                                        #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s7, $s7, 2
+	stx.w	$s6, $a7, $s7
+.LBB19_186:                             #   in Loop: Header=BB19_162 Depth=1
+	ld.w	$s6, $t7, 0
+	blez	$s6, .LBB19_161
+# %bb.187:                              #   in Loop: Header=BB19_162 Depth=1
+	addi.w	$s5, $s5, 1
+	slli.d	$s6, $s5, 2
+	ldx.w	$s7, $t0, $s6
+	addi.d	$s7, $s7, 4
+	bltu	$t5, $s7, .LBB19_161
+# %bb.188:                              #   in Loop: Header=BB19_162 Depth=1
+	slli.d	$s7, $s7, 2
+	pcalau12i	$s8, %pc_hi20(.LJTI19_5)
+	addi.d	$s8, $s8, %pc_lo12(.LJTI19_5)
+	ldx.w	$s7, $s8, $s7
+	add.d	$s8, $s8, $s7
+	move	$s7, $a4
+	jr	$s8
+.LBB19_189:                             #   in Loop: Header=BB19_162 Depth=1
+	move	$s7, $a7
+	b	.LBB19_160
+.LBB19_190:                             #   in Loop: Header=BB19_162 Depth=1
+	move	$s7, $a5
+	b	.LBB19_160
+.LBB19_191:
 	ld.d	$a1, $fp, 1368
-	move	$a0, $s8
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 1376
 	st.d	$a0, $fp, 1368
-	move	$a0, $s8
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 1384
 	st.d	$a0, $fp, 1376
-	move	$a0, $s8
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 1392
 	st.d	$a0, $fp, 1384
-	move	$a0, $s8
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 1392
-	b	.LBB19_194
-.LBB19_193:                             # %._crit_edge476
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	move	$a0, $s0
+	b	.LBB19_193
+.LBB19_192:                             # %._crit_edge476
+	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s4, 0
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	st.d	$a0, $a2, 0
-	move	$a0, $s0
+	ld.d	$a1, $s2, 0
+	st.d	$a0, $s0, 0
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, 0
-	st.d	$a0, $s4, 0
-	move	$a0, $s0
+	st.d	$a0, $s2, 0
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 0
 	st.d	$a0, $s1, 0
-	move	$a0, $s0
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus13memory_deleteEPv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
-.LBB19_194:                             # %._crit_edge
+.LBB19_193:                             # %._crit_edge
 	ld.d	$a0, $sp, 256
 	ld.d	$a1, $sp, 264
 	pcaddu18i	$ra, %call36(cpu_timer_stop)
@@ -9525,73 +9502,73 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	ld.d	$ra, $sp, 360                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 368
 	ret
-.LBB19_195:                             # %._crit_edge444
+.LBB19_194:                             # %._crit_edge444
 	add.w	$a1, $s0, $a0
-	st.w	$a1, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
-	beqz	$a0, .LBB19_27
-.LBB19_196:                             # %.lr.ph448
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	st.w	$a1, $a2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE10new_ncells)
+	beqz	$a0, .LBB19_27
+.LBB19_195:                             # %.lr.ph448
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $fp, 1328
 	ld.d	$a4, $fp, 1336
 	ld.d	$a5, $fp, 1360
 	ori	$a6, $zero, 1
-	addi.w	$a7, $zero, -1
-	ori	$t0, $zero, 1
-	bstrins.d	$t0, $t0, 32, 31
-	addi.w	$t1, $zero, -3
+	ori	$a7, $zero, 1
+	bstrins.d	$a7, $a7, 32, 31
+	addi.w	$t0, $zero, -3
+	lu32i.d	$t0, 0
+	addi.w	$t1, $zero, -2
 	lu32i.d	$t1, 0
-	addi.w	$t2, $zero, -2
-	lu32i.d	$t2, 0
-	ori	$t3, $zero, 1
-	b	.LBB19_198
+	ori	$t2, $zero, 1
+	b	.LBB19_197
 	.p2align	4, , 16
-.LBB19_197:                             #   in Loop: Header=BB19_198 Depth=1
-	bstrpick.d	$t4, $t3, 31, 0
+.LBB19_196:                             #   in Loop: Header=BB19_197 Depth=1
+	bstrpick.d	$t3, $t2, 31, 0
 	addi.d	$a5, $a5, 4
 	addi.d	$a4, $a4, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	addi.w	$t3, $t3, 1
-	bgeu	$t4, $a0, .LBB19_27
-.LBB19_198:                             # =>This Inner Loop Header: Depth=1
-	ld.w	$t4, $a2, 0
-	blt	$a7, $t4, .LBB19_197
-# %bb.199:                              #   in Loop: Header=BB19_198 Depth=1
-	ld.w	$t4, $a3, 0
-	ld.w	$t5, $a4, 0
-	or	$t4, $t4, $t5
-	andi	$t4, $t4, 1
-	bnez	$t4, .LBB19_201
-# %bb.200:                              #   in Loop: Header=BB19_198 Depth=1
-	st.w	$t2, $a2, 0
-.LBB19_201:                             #   in Loop: Header=BB19_198 Depth=1
-	ld.w	$t4, $a5, 0
-	beq	$t4, $a6, .LBB19_197
-# %bb.202:                              #   in Loop: Header=BB19_198 Depth=1
-	ld.wu	$t4, $a3, 0
-	and	$t4, $t4, $t0
-	addi.w	$t4, $t4, 0
-	bne	$t4, $a6, .LBB19_197
-# %bb.203:                              #   in Loop: Header=BB19_198 Depth=1
+	addi.w	$t2, $t2, 1
+	bgeu	$t3, $a0, .LBB19_27
+.LBB19_197:                             # =>This Inner Loop Header: Depth=1
+	ld.w	$t3, $a2, 0
+	bgez	$t3, .LBB19_196
+# %bb.198:                              #   in Loop: Header=BB19_197 Depth=1
+	ld.w	$t3, $a3, 0
 	ld.w	$t4, $a4, 0
-	bstrins.d	$t4, $zero, 30, 1
-	addi.w	$t4, $t4, 0
-	bne	$t4, $a6, .LBB19_197
-# %bb.204:                              #   in Loop: Header=BB19_198 Depth=1
+	or	$t3, $t3, $t4
+	andi	$t3, $t3, 1
+	bnez	$t3, .LBB19_200
+# %bb.199:                              #   in Loop: Header=BB19_197 Depth=1
 	st.w	$t1, $a2, 0
-	b	.LBB19_197
-.LBB19_205:                             # %vector.scevcheck
+.LBB19_200:                             #   in Loop: Header=BB19_197 Depth=1
+	ld.w	$t3, $a5, 0
+	beq	$t3, $a6, .LBB19_196
+# %bb.201:                              #   in Loop: Header=BB19_197 Depth=1
+	ld.wu	$t3, $a3, 0
+	and	$t3, $t3, $a7
+	addi.w	$t3, $t3, 0
+	bne	$t3, $a6, .LBB19_196
+# %bb.202:                              #   in Loop: Header=BB19_197 Depth=1
+	ld.w	$t3, $a4, 0
+	bstrins.d	$t3, $zero, 30, 1
+	addi.w	$t3, $t3, 0
+	bne	$t3, $a6, .LBB19_196
+# %bb.203:                              #   in Loop: Header=BB19_197 Depth=1
+	st.w	$t0, $a2, 0
+	b	.LBB19_196
+.LBB19_204:                             # %vector.scevcheck
 	addi.d	$a3, $a0, -1
 	bstrpick.d	$a4, $a3, 31, 0
 	addi.w	$a5, $zero, -1
 	lu32i.d	$a5, 0
 	move	$a2, $zero
 	beq	$a4, $a5, .LBB19_11
-# %bb.206:                              # %vector.scevcheck
+# %bb.205:                              # %vector.scevcheck
 	srli.d	$a3, $a3, 32
 	bnez	$a3, .LBB19_11
-# %bb.207:                              # %vector.ph
+# %bb.206:                              # %vector.ph
 	pcalau12i	$a2, %pc_hi20(.LCPI19_0)
 	vld	$vr0, $a2, %pc_lo12(.LCPI19_0)
 	bstrpick.d	$a2, $a0, 32, 3
@@ -9599,7 +9576,7 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB19_208:                             # %vector.body
+.LBB19_207:                             # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr1, $vr0, 4
 	vst	$vr0, $a3, -16
@@ -9607,33 +9584,33 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	vaddi.wu	$vr0, $vr0, 8
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB19_208
-# %bb.209:                              # %middle.block
+	bnez	$a4, .LBB19_207
+# %bb.208:                              # %middle.block
 	bne	$a0, $a2, .LBB19_11
-	b	.LBB19_194
-.LBB19_210:                             # %vector.memcheck541
+	b	.LBB19_193
+.LBB19_209:                             # %vector.memcheck541
 	sub.d	$a7, $a3, $a2
 	ori	$a6, $zero, 32
 	move	$a5, $zero
-	bltu	$a7, $a6, .LBB19_156
-# %bb.211:                              # %vector.memcheck541
+	bltu	$a7, $a6, .LBB19_155
+# %bb.210:                              # %vector.memcheck541
 	sub.d	$a7, $a4, $a2
-	bltu	$a7, $a6, .LBB19_156
-# %bb.212:                              # %vector.memcheck541
+	bltu	$a7, $a6, .LBB19_155
+# %bb.211:                              # %vector.memcheck541
 	sub.d	$a7, $a0, $a2
 	ori	$a6, $zero, 32
-	bltu	$a7, $a6, .LBB19_156
-# %bb.213:                              # %vector.memcheck541
+	bltu	$a7, $a6, .LBB19_155
+# %bb.212:                              # %vector.memcheck541
 	sub.d	$a7, $a4, $a3
-	bltu	$a7, $a6, .LBB19_156
-# %bb.214:                              # %vector.memcheck541
+	bltu	$a7, $a6, .LBB19_155
+# %bb.213:                              # %vector.memcheck541
 	sub.d	$a7, $a0, $a3
 	ori	$a6, $zero, 32
-	bltu	$a7, $a6, .LBB19_156
-# %bb.215:                              # %vector.memcheck541
+	bltu	$a7, $a6, .LBB19_155
+# %bb.214:                              # %vector.memcheck541
 	sub.d	$a7, $a0, $a4
-	bltu	$a7, $a6, .LBB19_156
-# %bb.216:                              # %vector.ph554
+	bltu	$a7, $a6, .LBB19_155
+# %bb.215:                              # %vector.ph554
 	bstrpick.d	$a5, $a1, 30, 3
 	slli.d	$a5, $a5, 3
 	addi.d	$a6, $a2, 16
@@ -9643,7 +9620,7 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	vrepli.b	$vr0, -1
 	move	$t2, $a5
 	.p2align	4, , 16
-.LBB19_217:                             # %vector.body557
+.LBB19_216:                             # %vector.body557
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a6, -16
 	vst	$vr0, $a6, 0
@@ -9658,26 +9635,26 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	addi.d	$a7, $a7, 32
 	addi.d	$t0, $t0, 32
 	addi.d	$t1, $t1, 32
-	bnez	$t2, .LBB19_217
-# %bb.218:                              # %middle.block560
-	bne	$a5, $a1, .LBB19_156
-	b	.LBB19_158
-.LBB19_219:
+	bnez	$t2, .LBB19_216
+# %bb.217:                              # %middle.block560
+	bne	$a5, $a1, .LBB19_155
+	b	.LBB19_157
+.LBB19_218:
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE13celltype_save)
 	addi.d	$a0, $a0, %pc_lo12(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE13celltype_save)
 	pcaddu18i	$ra, %call36(__cxa_guard_acquire)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
 	beqz	$a0, .LBB19_2
-# %bb.220:
-	st.d	$zero, $s4, 16
+# %bb.219:
+	st.d	$zero, $s8, 16
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s4, 0
+	vst	$vr0, $s8, 0
 	pcalau12i	$a0, %pc_hi20(_ZNSt6vectorIiSaIiEED2Ev)
 	addi.d	$a0, $a0, %pc_lo12(_ZNSt6vectorIiSaIiEED2Ev)
 	pcalau12i	$a1, %pc_hi20(__dso_handle)
 	addi.d	$a2, $a1, %pc_lo12(__dso_handle)
-	move	$a1, $s4
+	move	$a1, $s8
 	pcaddu18i	$ra, %call36(__cxa_atexit)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE13celltype_save)
@@ -9685,14 +9662,14 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(__cxa_guard_release)
 	jirl	$ra, $ra, 0
 	b	.LBB19_2
-.LBB19_221:
+.LBB19_220:
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE6new_ic)
 	addi.d	$a0, $a0, %pc_lo12(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE6new_ic)
 	pcaddu18i	$ra, %call36(__cxa_guard_acquire)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
 	beqz	$a0, .LBB19_3
-# %bb.222:
+# %bb.221:
 	pcalau12i	$a0, %pc_hi20(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE6new_ic)
 	addi.d	$a1, $a0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE6new_ic)
 	st.d	$zero, $a1, 16
@@ -9709,22 +9686,22 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(__cxa_guard_release)
 	jirl	$ra, $ra, 0
 	b	.LBB19_3
-.LBB19_223:
+.LBB19_222:
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
 	addi.d	$a0, $a0, %pc_lo12(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
 	pcaddu18i	$ra, %call36(__cxa_guard_acquire)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
 	beqz	$a0, .LBB19_32
-# %bb.224:
-	st.d	$zero, $s3, 16
+# %bb.223:
+	st.d	$zero, $s0, 16
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s3, 0
+	vst	$vr0, $s0, 0
 	pcalau12i	$a0, %pc_hi20(_ZNSt6vectorIiSaIiEED2Ev)
 	addi.d	$a0, $a0, %pc_lo12(_ZNSt6vectorIiSaIiEED2Ev)
 	pcalau12i	$a1, %pc_hi20(__dso_handle)
 	addi.d	$a2, $a1, %pc_lo12(__dso_handle)
-	move	$a1, $s3
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(__cxa_atexit)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZGVZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE5order)
@@ -9732,7 +9709,7 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	pcaddu18i	$ra, %call36(__cxa_guard_release)
 	jirl	$ra, $ra, 0
 	b	.LBB19_32
-.LBB19_225:
+.LBB19_224:
 .Ltmp158:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 160
@@ -9741,32 +9718,32 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB19_226:
+.LBB19_225:
 .Ltmp184:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB19_227:
+.LBB19_226:
 .Ltmp181:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB19_228:                             # %.loopexit.split-lp
+.LBB19_227:                             # %.loopexit.split-lp
 .Ltmp161:
-	b	.LBB19_234
-.LBB19_229:
+	b	.LBB19_233
+.LBB19_228:
 .Ltmp166:
-	b	.LBB19_234
-.LBB19_230:
+	b	.LBB19_233
+.LBB19_229:
 .Ltmp175:
-	b	.LBB19_234
-.LBB19_231:
+	b	.LBB19_233
+.LBB19_230:
 .Ltmp172:
-	b	.LBB19_234
-.LBB19_232:
+	b	.LBB19_233
+.LBB19_231:
 .Ltmp169:
-	b	.LBB19_234
-.LBB19_233:                             # %.loopexit
+	b	.LBB19_233
+.LBB19_232:                             # %.loopexit
 .Ltmp178:
-.LBB19_234:
+.LBB19_233:
 	move	$fp, $a0
 	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN10MallocPlusD2Ev)
@@ -9807,10 +9784,10 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	.word	.LBB19_86-.LJTI19_4
 	.word	.LBB19_87-.LJTI19_4
 .LJTI19_5:
+	.word	.LBB19_189-.LJTI19_5
+	.word	.LBB19_159-.LJTI19_5
 	.word	.LBB19_190-.LJTI19_5
 	.word	.LBB19_160-.LJTI19_5
-	.word	.LBB19_191-.LJTI19_5
-	.word	.LBB19_161-.LJTI19_5
 	.section	.gcc_except_table,"a",@progbits
 	.p2align	2, 0x0
 GCC_except_table19:
@@ -9892,58 +9869,57 @@ _ZN4Mesh12rezone_countESt6vectorIiSaIiEERiS3_: # @_ZN4Mesh12rezone_countESt6vect
 	ld.d	$t0, $a0, 1328
 	ld.d	$a0, $a0, 1336
 	ori	$t1, $zero, 1
-	addi.w	$t2, $zero, -1
+	ori	$t2, $zero, 1
+	bstrins.d	$t2, $t2, 32, 31
 	ori	$t3, $zero, 1
-	bstrins.d	$t3, $t3, 32, 31
-	ori	$t4, $zero, 1
 	b	.LBB20_4
 .LBB20_2:                               #   in Loop: Header=BB20_4 Depth=1
 	addi.d	$a6, $a6, 1
 	.p2align	4, , 16
 .LBB20_3:                               # %.thread
                                         #   in Loop: Header=BB20_4 Depth=1
-	bstrpick.d	$t5, $t4, 31, 0
+	bstrpick.d	$t4, $t3, 31, 0
 	addi.d	$a7, $a7, 4
 	addi.d	$a0, $a0, 4
 	addi.d	$t0, $t0, 4
 	addi.d	$a1, $a1, 4
-	addi.w	$t4, $t4, 1
-	bgeu	$t5, $a4, .LBB20_15
+	addi.w	$t3, $t3, 1
+	bgeu	$t4, $a4, .LBB20_15
 .LBB20_4:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t5, $a1, 0
-	bge	$t2, $t5, .LBB20_8
+	ld.w	$t4, $a1, 0
+	bltz	$t4, .LBB20_8
 # %bb.5:                                #   in Loop: Header=BB20_4 Depth=1
-	beqz	$t5, .LBB20_3
+	beqz	$t4, .LBB20_3
 # %bb.6:                                #   in Loop: Header=BB20_4 Depth=1
-	ld.w	$t5, $a7, 0
-	bne	$t5, $t1, .LBB20_2
+	ld.w	$t4, $a7, 0
+	bne	$t4, $t1, .LBB20_2
 # %bb.7:                                #   in Loop: Header=BB20_4 Depth=1
 	addi.d	$a6, $a6, 3
 	b	.LBB20_3
 	.p2align	4, , 16
 .LBB20_8:                               #   in Loop: Header=BB20_4 Depth=1
-	ld.w	$t7, $a7, 0
-	ld.w	$t5, $t0, 0
-	ld.w	$t6, $a0, 0
-	bne	$t7, $t1, .LBB20_10
+	ld.w	$t6, $a7, 0
+	ld.w	$t4, $t0, 0
+	ld.w	$t5, $a0, 0
+	bne	$t6, $t1, .LBB20_10
 # %bb.9:                                #   in Loop: Header=BB20_4 Depth=1
-	or	$t5, $t5, $t6
+	or	$t4, $t4, $t5
 	b	.LBB20_13
 .LBB20_10:                              #   in Loop: Header=BB20_4 Depth=1
-	and	$t7, $t5, $t3
-	addi.w	$t7, $t7, 0
-	bne	$t7, $t1, .LBB20_12
+	and	$t6, $t4, $t2
+	addi.w	$t6, $t6, 0
+	bne	$t6, $t1, .LBB20_12
 # %bb.11:                               #   in Loop: Header=BB20_4 Depth=1
-	move	$t7, $t6
-	bstrins.d	$t7, $zero, 30, 1
-	addi.w	$t7, $t7, 0
-	beq	$t7, $t1, .LBB20_3
+	move	$t6, $t5
+	bstrins.d	$t6, $zero, 30, 1
+	addi.w	$t6, $t6, 0
+	beq	$t6, $t1, .LBB20_3
 .LBB20_12:                              #   in Loop: Header=BB20_4 Depth=1
-	or	$t5, $t6, $t5
+	or	$t4, $t5, $t4
 .LBB20_13:                              # %.thread
                                         #   in Loop: Header=BB20_4 Depth=1
-	andi	$t5, $t5, 1
-	sub.d	$a5, $a5, $t5
+	andi	$t4, $t4, 1
+	sub.d	$a5, $a5, $t4
 	b	.LBB20_3
 .LBB20_14:
 	move	$a6, $zero
@@ -10003,8 +9979,7 @@ _ZN4Mesh9terminateEv:                   # @_ZN4Mesh9terminateEv
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(neighbor_remap)
 	ld.bu	$a0, $a0, %pc_lo12(neighbor_remap)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB22_2
+	beqz	$a0, .LBB22_2
 # %bb.1:
 	ld.d	$a1, $fp, 1368
 	move	$a0, $s0
@@ -10476,42 +10451,41 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	pcalau12i	$t0, %got_pc_hi20(localStencil)
 	ld.d	$t0, $t0, %got_pc_lo12(localStencil)
 	ld.bu	$t0, $t0, 0
-	ori	$t1, $zero, 1
-	bne	$t0, $t1, .LBB26_49
+	beqz	$t0, .LBB26_49
 # %bb.1:
 	ld.d	$t2, $sp, 120
 	ld.w	$t3, $a0, 1120
 	slli.d	$t7, $a2, 2
 	ldx.w	$t0, $t2, $t7
-	ld.d	$t4, $sp, 112
+	ld.d	$t5, $sp, 112
 	ld.d	$t6, $sp, 104
 	sub.d	$fp, $t3, $t0
-	ori	$t5, $zero, 2
-	sll.w	$t1, $t5, $fp
+	ori	$t4, $zero, 2
+	sll.w	$t1, $t4, $fp
 	beqz	$a2, .LBB26_3
 # %bb.2:
 	addi.d	$a3, $t7, -4
 	ldx.w	$a5, $t2, $a3
 	ldx.w	$a7, $t6, $a3
-	ldx.w	$a3, $t4, $a3
+	ldx.w	$a3, $t5, $a3
 	sub.d	$a5, $t3, $a5
-	sll.w	$a5, $t5, $a5
+	sll.w	$a5, $t4, $a5
 	mul.w	$s0, $a5, $a7
 	mul.w	$s1, $a5, $a3
 	b	.LBB26_4
 .LBB26_3:
 	sub.d	$a7, $t3, $a7
-	sll.w	$a7, $t5, $a7
+	sll.w	$a7, $t4, $a7
 	mul.w	$s0, $a7, $a3
 	mul.w	$s1, $a7, $a5
 .LBB26_4:
 	slli.d	$a3, $a2, 2
 	ldx.w	$a5, $t6, $a3
 	ld.w	$a0, $a0, 1160
-	ldx.w	$t5, $t4, $a3
+	ldx.w	$t4, $t5, $a3
 	mul.w	$a7, $a5, $t1
 	addi.w	$a0, $a0, -1
-	mul.w	$t5, $t5, $t1
+	mul.w	$t4, $t4, $t1
 	bne	$a2, $a0, .LBB26_6
 # %bb.5:
 	ld.d	$a0, $sp, 96
@@ -10523,14 +10497,14 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	alsl.d	$t8, $a2, $t2, 2
 	sub.w	$s2, $a7, $s0
 	sub.w	$t2, $a7, $t6
-	beq	$t5, $s1, .LBB26_7
+	beq	$t4, $s1, .LBB26_7
 	b	.LBB26_10
 .LBB26_6:
 	addi.d	$a0, $a3, 4
 	ldx.w	$a3, $t2, $a0
 	ldx.w	$a4, $t6, $a0
 	sub.d	$a3, $t3, $a3
-	ldx.w	$a0, $t4, $a0
+	ldx.w	$a0, $t5, $a0
 	ori	$a5, $zero, 2
 	sll.w	$a3, $a5, $a3
 	mul.w	$t6, $a3, $a4
@@ -10538,7 +10512,7 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	alsl.d	$t8, $a2, $t2, 2
 	sub.w	$s2, $a7, $s0
 	sub.w	$t2, $a7, $t6
-	bne	$t5, $s1, .LBB26_10
+	bne	$t4, $s1, .LBB26_10
 .LBB26_7:
 	move	$a2, $zero
 	movgr2fr.w	$fa0, $s2
@@ -10560,10 +10534,10 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$a5, $a2
 	move	$a6, $a2
 	move	$t3, $a2
-	move	$t4, $a2
+	move	$t5, $a2
 	beq	$s2, $s3, .LBB26_15
 .LBB26_10:
-	sub.w	$s3, $t5, $s1
+	sub.w	$s3, $t4, $s1
 	movgr2fr.w	$fa0, $s3
 	ffint.d.w	$fa1, $fa0
 	sub.d	$s4, $zero, $t1
@@ -10595,10 +10569,10 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$a5, $zero
 	move	$a6, $zero
 	move	$t3, $zero
-	move	$t4, $zero
+	move	$t5, $zero
 	ori	$a0, $zero, 1
 .LBB26_15:
-	bne	$t5, $t7, .LBB26_19
+	bne	$t4, $t7, .LBB26_19
 # %bb.16:
 	move	$s0, $zero
 	movgr2fr.w	$fa0, $t2
@@ -10618,12 +10592,12 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$s1, $s0
 	move	$s2, $s0
 	move	$s3, $s0
-	move	$s5, $s0
 	move	$s4, $s0
+	move	$s5, $s0
 	move	$s7, $s0
 	beq	$t2, $s8, .LBB26_24
 .LBB26_19:
-	sub.w	$s8, $t5, $t7
+	sub.w	$s8, $t4, $t7
 	movgr2fr.w	$fa0, $s8
 	ffint.d.w	$fa1, $fa0
 	sub.d	$ra, $zero, $t1
@@ -10653,32 +10627,30 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$s1, $zero
 	move	$s2, $zero
 	move	$s3, $zero
-	move	$s5, $zero
 	move	$s4, $zero
+	move	$s5, $zero
 	move	$s7, $zero
 	ori	$s6, $zero, 1
 .LBB26_24:
 	or	$a7, $s0, $s1
 	or	$a7, $a7, $s2
-	and	$t1, $a0, $a7
-	ori	$t0, $zero, 1
-	bne	$t1, $t0, .LBB26_26
+	and	$t0, $a0, $a7
+	beqz	$t0, .LBB26_26
 .LBB26_25:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_11)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_11)
 	b	.LBB26_50
 .LBB26_26:
-	or	$t1, $s3, $s5
-	and	$t1, $a0, $t1
-	bne	$t1, $t0, .LBB26_28
+	or	$t0, $s3, $s4
+	and	$t0, $a0, $t0
+	beqz	$t0, .LBB26_28
 .LBB26_27:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_12)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_12)
 	b	.LBB26_50
 .LBB26_28:
-	and	$t1, $a0, $s4
-	ori	$t0, $zero, 1
-	bne	$t1, $t0, .LBB26_48
+	and	$t0, $a0, $s5
+	beqz	$t0, .LBB26_48
 .LBB26_29:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_10)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_10)
@@ -10688,21 +10660,21 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 # %bb.31:
 	move	$a0, $zero
 	ori	$a2, $zero, 1
-	beq	$s3, $t1, .LBB26_82
+	beq	$s3, $t1, .LBB26_84
 # %bb.32:
 	movgr2fr.w	$fa2, $t1
 	ffint.d.w	$fa2, $fa2
 	vldi	$vr3, -928
 	fmul.d	$fa2, $fa2, $fa3
 	fcmp.ceq.d	$fcc0, $fa2, $fa1
-	bcnez	$fcc0, .LBB26_82
+	bcnez	$fcc0, .LBB26_84
 # %bb.33:
 	move	$a3, $a0
 	move	$a4, $a0
 	move	$a5, $a0
 	move	$a6, $a0
 	move	$t3, $a0
-	move	$t4, $a0
+	move	$t5, $a0
 	beq	$s3, $s5, .LBB26_15
 .LBB26_34:
 	movgr2fr.w	$fa2, $s2
@@ -10727,7 +10699,7 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$a5, $zero
 	move	$a6, $zero
 	move	$t3, $zero
-	move	$t4, $zero
+	move	$t5, $zero
 	ori	$a2, $zero, 1
 	b	.LBB26_15
 .LBB26_39:
@@ -10735,19 +10707,19 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 # %bb.40:
 	move	$s1, $zero
 	ori	$s0, $zero, 1
-	beq	$s8, $t1, .LBB26_83
+	beq	$s8, $t1, .LBB26_85
 # %bb.41:
 	movgr2fr.w	$fa2, $t1
 	ffint.d.w	$fa2, $fa2
 	vldi	$vr3, -928
 	fmul.d	$fa2, $fa2, $fa3
 	fcmp.ceq.d	$fcc0, $fa2, $fa1
-	bcnez	$fcc0, .LBB26_83
+	bcnez	$fcc0, .LBB26_85
 # %bb.42:
 	move	$s2, $s1
 	move	$s3, $s1
-	move	$s5, $s1
 	move	$s4, $s1
+	move	$s5, $s1
 	move	$s7, $s1
 	move	$s6, $s1
 	beq	$s8, $fp, .LBB26_24
@@ -10771,15 +10743,15 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$s1, $zero
 	move	$s2, $zero
 	move	$s3, $zero
-	move	$s5, $zero
 	move	$s4, $zero
+	move	$s5, $zero
 	move	$s7, $zero
 	move	$s6, $zero
 	ori	$s0, $zero, 1
 	b	.LBB26_24
 .LBB26_48:
 	and	$a0, $a0, $s7
-	bne	$a0, $t0, .LBB26_54
+	beqz	$a0, .LBB26_54
 .LBB26_49:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_0)
@@ -10805,30 +10777,28 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$a5, $a2
 	move	$a6, $a2
 	move	$t3, $a2
-	move	$t4, $a2
+	move	$t5, $a2
 	b	.LBB26_15
 .LBB26_53:
 	move	$s1, $s0
 	move	$s2, $s0
 	move	$s3, $s0
-	move	$s5, $s0
 	move	$s4, $s0
+	move	$s5, $s0
 	move	$s7, $s0
 	b	.LBB26_24
 .LBB26_54:
 	or	$a0, $s1, $s2
 	and	$t0, $a2, $a0
-	ori	$t1, $zero, 1
-	beq	$t0, $t1, .LBB26_25
+	bnez	$t0, .LBB26_25
 # %bb.55:
 	or	$t0, $s3, $s6
-	or	$t0, $s5, $t0
-	and	$t2, $a2, $t0
-	beq	$t2, $t1, .LBB26_27
+	or	$t0, $s4, $t0
+	and	$t1, $a2, $t0
+	bnez	$t1, .LBB26_27
 # %bb.56:
-	and	$t2, $a2, $s4
-	ori	$t1, $zero, 1
-	bne	$t2, $t1, .LBB26_106
+	and	$t1, $a2, $s5
+	beqz	$t1, .LBB26_103
 .LBB26_57:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_7)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_7)
@@ -10839,7 +10809,7 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 # %bb.59:
 	move	$a0, $zero
 	ori	$a3, $zero, 1
-	beq	$t5, $s1, .LBB26_96
+	beq	$t4, $s1, .LBB26_96
 # %bb.60:
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB26_96
@@ -10851,106 +10821,119 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 # %bb.63:
 	move	$a0, $zero
 	move	$a2, $zero
-	b	.LBB26_87
+	move	$a4, $zero
+	b	.LBB26_76
 .LBB26_64:
 	addi.w	$fp, $ra, 0
-	bne	$t2, $fp, .LBB26_76
+	bne	$t2, $fp, .LBB26_77
 # %bb.65:
 	move	$s0, $zero
 	ori	$s1, $zero, 1
-	beq	$t5, $t7, .LBB26_99
+	beq	$t4, $t7, .LBB26_99
 # %bb.66:
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB26_99
 # %bb.67:
-	bne	$s8, $t1, .LBB26_76
+	bne	$s8, $t1, .LBB26_77
 # %bb.68:
 	ld.w	$s0, $t8, 4
-	bge	$s0, $t0, .LBB26_76
+	bge	$s0, $t0, .LBB26_77
 # %bb.69:
 	move	$s0, $zero
-	b	.LBB26_111
+	move	$s2, $zero
+	move	$s3, $zero
+	b	.LBB26_83
 .LBB26_70:
-	bne	$s3, $a2, .LBB26_84
+	bne	$s3, $a2, .LBB26_86
 # %bb.71:
 	move	$a0, $zero
 	ori	$a4, $zero, 1
-	beq	$a7, $s0, .LBB26_103
+	beq	$a7, $s0, .LBB26_100
 # %bb.72:
 	fcmp.ceq.d	$fcc0, $fa0, $fa2
-	bcnez	$fcc0, .LBB26_103
+	bcnez	$fcc0, .LBB26_100
 # %bb.73:
-	bne	$s2, $t1, .LBB26_84
+	bne	$s2, $t1, .LBB26_86
 # %bb.74:
 	ld.w	$a0, $t8, -4
-	bge	$a0, $t0, .LBB26_84
+	bge	$a0, $t0, .LBB26_86
 # %bb.75:
 	move	$a0, $zero
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB26_88
 .LBB26_76:
+	move	$a5, $zero
+	move	$a6, $zero
+	move	$t3, $zero
+	move	$t5, $zero
+	b	.LBB26_15
+.LBB26_77:
 	bne	$s8, $fp, .LBB26_91
-# %bb.77:
+# %bb.78:
 	move	$s0, $zero
 	ori	$s3, $zero, 1
-	beq	$a7, $t6, .LBB26_104
-# %bb.78:
-	fcmp.ceq.d	$fcc0, $fa0, $fa2
-	bcnez	$fcc0, .LBB26_104
+	beq	$a7, $t6, .LBB26_101
 # %bb.79:
-	bne	$t2, $t1, .LBB26_91
+	fcmp.ceq.d	$fcc0, $fa0, $fa2
+	bcnez	$fcc0, .LBB26_101
 # %bb.80:
+	bne	$t2, $t1, .LBB26_91
+# %bb.81:
 	ld.w	$t1, $t8, 4
 	bge	$t1, $t0, .LBB26_91
-# %bb.81:
+# %bb.82:
 	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB26_113
-.LBB26_82:
+.LBB26_83:
+	move	$s4, $zero
+	move	$s5, $zero
+	move	$s7, $zero
+	move	$s6, $zero
+	b	.LBB26_24
+.LBB26_84:
 	move	$a3, $a0
 	b	.LBB26_97
-.LBB26_83:
+.LBB26_85:
 	move	$s2, $s1
 	move	$s3, $s1
-	move	$s5, $s1
 	move	$s4, $s1
+	move	$s5, $s1
 	move	$s7, $s1
 	move	$s6, $s1
 	b	.LBB26_24
-.LBB26_84:
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB26_100
-# %bb.85:
-	bne	$t5, $s1, .LBB26_100
-# %bb.86:
-	move	$a2, $zero
-	move	$a3, $zero
-.LBB26_87:
-	move	$a4, $zero
+.LBB26_86:
+	blez	$s2, .LBB26_88
+# %bb.87:
+	beq	$t4, $s1, .LBB26_14
 .LBB26_88:
+	bgez	$s2, .LBB26_105
+# %bb.89:
+	bne	$t4, $s1, .LBB26_105
+# %bb.90:
+	move	$a0, $zero
+	move	$a2, $zero
+	move	$a4, $zero
 	move	$a5, $zero
-.LBB26_89:
 	move	$a6, $zero
-.LBB26_90:
 	move	$t3, $zero
-	move	$t4, $zero
+	move	$t5, $zero
+	ori	$a3, $zero, 1
 	b	.LBB26_15
 .LBB26_91:
-	bne	$t5, $t7, .LBB26_93
+	bne	$t4, $t7, .LBB26_93
 # %bb.92:
 	bgtz	$t2, .LBB26_23
 .LBB26_93:
-	bne	$t5, $t7, .LBB26_108
+	bne	$t4, $t7, .LBB26_110
 # %bb.94:
-	bgez	$t2, .LBB26_108
+	bgez	$t2, .LBB26_110
 # %bb.95:
 	move	$s0, $zero
 	move	$s2, $zero
 	move	$s3, $zero
-	move	$s5, $zero
 	move	$s4, $zero
+	move	$s5, $zero
 	move	$s7, $zero
 	move	$s6, $zero
 	ori	$s1, $zero, 1
@@ -10963,162 +10946,102 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$a5, $a0
 	move	$a6, $a0
 	move	$t3, $a0
-	move	$t4, $a0
+	move	$t5, $a0
 	b	.LBB26_15
 .LBB26_99:
 	move	$s2, $s0
 	move	$s3, $s0
-	b	.LBB26_105
+	b	.LBB26_102
 .LBB26_100:
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s2, .LBB26_115
-# %bb.101:
-	bne	$t5, $s1, .LBB26_115
-# %bb.102:
-	move	$a0, $zero
-	move	$a2, $zero
-	move	$a4, $zero
-	move	$a5, $zero
-	move	$a6, $zero
-	move	$t3, $zero
-	move	$t4, $zero
-	ori	$a3, $zero, 1
-	b	.LBB26_15
-.LBB26_103:
 	move	$a2, $a0
 	move	$a3, $a0
 	b	.LBB26_98
-.LBB26_104:
+.LBB26_101:
 	move	$s1, $s0
 	move	$s2, $s0
-.LBB26_105:
-	move	$s5, $s0
+.LBB26_102:
 	move	$s4, $s0
+	move	$s5, $s0
 	move	$s7, $s0
 	move	$s6, $s0
 	b	.LBB26_24
-.LBB26_106:
+.LBB26_103:
 	and	$a2, $a2, $s7
-	bne	$a2, $t1, .LBB26_120
-# %bb.107:
+	beqz	$a2, .LBB26_115
+# %bb.104:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_14)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_14)
 	b	.LBB26_50
-.LBB26_108:
-	ori	$s0, $zero, 1
-	blt	$s8, $s0, .LBB26_122
-# %bb.109:
-	bne	$a7, $t6, .LBB26_122
-# %bb.110:
-	move	$s1, $zero
-.LBB26_111:
-	move	$s2, $zero
-.LBB26_112:
-	move	$s3, $zero
-.LBB26_113:
-	move	$s5, $zero
-	move	$s4, $zero
-.LBB26_114:
-	move	$s7, $zero
-	move	$s6, $zero
-	b	.LBB26_24
-.LBB26_115:
-	bne	$a7, $s0, .LBB26_117
-# %bb.116:
+.LBB26_105:
+	bne	$a7, $s0, .LBB26_107
+# %bb.106:
 	bgtz	$s3, .LBB26_38
-.LBB26_117:
-	bne	$a7, $s0, .LBB26_127
-# %bb.118:
-	bgez	$s3, .LBB26_127
-# %bb.119:
+.LBB26_107:
+	bne	$a7, $s0, .LBB26_119
+# %bb.108:
+	bgez	$s3, .LBB26_119
+# %bb.109:
 	move	$a0, $zero
 	move	$a2, $zero
 	move	$a3, $zero
 	move	$a5, $zero
 	move	$a6, $zero
 	move	$t3, $zero
-	move	$t4, $zero
+	move	$t5, $zero
 	ori	$a4, $zero, 1
 	b	.LBB26_15
-.LBB26_120:
-	and	$t0, $a3, $t0
-	ori	$a2, $zero, 1
-	bne	$t0, $a2, .LBB26_125
-.LBB26_121:
-	pcalau12i	$a0, %pc_hi20(.LCPI26_4)
-	vld	$vr0, $a0, %pc_lo12(.LCPI26_4)
-	b	.LBB26_50
-.LBB26_122:
-	addi.w	$t0, $zero, -1
-	blt	$t0, $s8, .LBB26_130
-# %bb.123:
-	bne	$a7, $t6, .LBB26_130
-# %bb.124:
+.LBB26_110:
+	blez	$s8, .LBB26_112
+# %bb.111:
+	beq	$a7, $t6, .LBB26_47
+.LBB26_112:
+	bgez	$s8, .LBB26_122
+# %bb.113:
+	bne	$a7, $t6, .LBB26_122
+# %bb.114:
 	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
-	move	$s5, $zero
 	move	$s4, $zero
+	move	$s5, $zero
 	move	$s7, $zero
 	move	$s6, $zero
 	ori	$s3, $zero, 1
 	b	.LBB26_24
-.LBB26_125:
-	or	$t0, $s0, $s2
-	and	$t0, $a3, $t0
-	bne	$t0, $a2, .LBB26_133
-.LBB26_126:
+.LBB26_115:
+	and	$a2, $a3, $t0
+	beqz	$a2, .LBB26_117
+.LBB26_116:
+	pcalau12i	$a0, %pc_hi20(.LCPI26_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI26_4)
+	b	.LBB26_50
+.LBB26_117:
+	or	$a2, $s0, $s2
+	and	$a2, $a3, $a2
+	beqz	$a2, .LBB26_125
+.LBB26_118:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_3)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_3)
 	b	.LBB26_50
-.LBB26_127:
+.LBB26_119:
+	blez	$s2, .LBB26_127
+# %bb.120:
+	blez	$s3, .LBB26_127
+# %bb.121:
+	move	$a0, $zero
+	move	$a2, $zero
+	move	$a3, $zero
+	move	$a4, $zero
+	move	$a6, $zero
+	move	$t3, $zero
+	move	$t5, $zero
 	ori	$a5, $zero, 1
-	blt	$s2, $a5, .LBB26_135
-# %bb.128:
-	blez	$s3, .LBB26_135
-# %bb.129:
-	move	$a0, $zero
-	move	$a2, $zero
-	move	$a3, $zero
-	move	$a4, $zero
-	b	.LBB26_89
-.LBB26_130:
-	ori	$s4, $zero, 1
-	blt	$s8, $s4, .LBB26_138
-# %bb.131:
-	blez	$t2, .LBB26_138
-# %bb.132:
-	move	$s0, $zero
-	move	$s1, $zero
-	move	$s2, $zero
-	move	$s3, $zero
-	move	$s5, $zero
-	b	.LBB26_114
-.LBB26_133:
-	and	$t0, $a3, $s4
-	ori	$a2, $zero, 1
-	bne	$t0, $a2, .LBB26_141
-# %bb.134:
-	pcalau12i	$a0, %pc_hi20(.LCPI26_13)
-	vld	$vr0, $a0, %pc_lo12(.LCPI26_13)
-	b	.LBB26_50
-.LBB26_135:
-	ori	$a6, $zero, 1
-	blt	$s2, $a6, .LBB26_143
-# %bb.136:
-	bgez	$s3, .LBB26_143
-# %bb.137:
-	move	$a0, $zero
-	move	$a2, $zero
-	move	$a3, $zero
-	move	$a4, $zero
-	move	$a5, $zero
-	b	.LBB26_90
-.LBB26_138:
-	blt	$t0, $s8, .LBB26_146
-# %bb.139:
-	blez	$t2, .LBB26_146
-# %bb.140:
+	b	.LBB26_15
+.LBB26_122:
+	blez	$s8, .LBB26_130
+# %bb.123:
+	blez	$t2, .LBB26_130
+# %bb.124:
 	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
@@ -11128,53 +11051,91 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$s6, $zero
 	ori	$s5, $zero, 1
 	b	.LBB26_24
-.LBB26_141:
-	and	$a3, $a3, $s7
-	bne	$a3, $a2, .LBB26_149
-.LBB26_142:
+.LBB26_125:
+	and	$a2, $a3, $s5
+	beqz	$a2, .LBB26_133
+# %bb.126:
+	pcalau12i	$a0, %pc_hi20(.LCPI26_13)
+	vld	$vr0, $a0, %pc_lo12(.LCPI26_13)
+	b	.LBB26_50
+.LBB26_127:
+	blez	$s2, .LBB26_135
+# %bb.128:
+	bgez	$s3, .LBB26_135
+# %bb.129:
+	move	$a0, $zero
+	move	$a2, $zero
+	move	$a3, $zero
+	move	$a4, $zero
+	move	$a5, $zero
+	move	$t3, $zero
+	move	$t5, $zero
+	ori	$a6, $zero, 1
+	b	.LBB26_15
+.LBB26_130:
+	bgez	$s8, .LBB26_138
+# %bb.131:
+	blez	$t2, .LBB26_138
+# %bb.132:
+	move	$s0, $zero
+	move	$s1, $zero
+	move	$s2, $zero
+	move	$s3, $zero
+	move	$s5, $zero
+	move	$s7, $zero
+	move	$s6, $zero
+	ori	$s4, $zero, 1
+	b	.LBB26_24
+.LBB26_133:
+	and	$a2, $a3, $s7
+	beqz	$a2, .LBB26_141
+.LBB26_134:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_6)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_6)
 	b	.LBB26_50
-.LBB26_143:
-	blt	$a0, $s2, .LBB26_153
-# %bb.144:
-	blez	$s3, .LBB26_153
-# %bb.145:
+.LBB26_135:
+	bgez	$s2, .LBB26_145
+# %bb.136:
+	blez	$s3, .LBB26_145
+# %bb.137:
 	move	$a0, $zero
 	move	$a2, $zero
 	move	$a3, $zero
 	move	$a4, $zero
 	move	$a5, $zero
 	move	$a6, $zero
-	move	$t4, $zero
+	move	$t5, $zero
 	ori	$t3, $zero, 1
 	b	.LBB26_15
-.LBB26_146:
-	ori	$s2, $zero, 1
-	blt	$s8, $s2, .LBB26_154
-# %bb.147:
-	bgez	$t2, .LBB26_154
-# %bb.148:
+.LBB26_138:
+	blez	$s8, .LBB26_146
+# %bb.139:
+	bgez	$t2, .LBB26_146
+# %bb.140:
 	move	$s0, $zero
 	move	$s1, $zero
-	b	.LBB26_112
-.LBB26_149:
-	or	$a2, $s5, $s6
-	and	$t0, $a4, $a2
-	ori	$a3, $zero, 1
-	beq	$t0, $a3, .LBB26_121
-# %bb.150:
-	and	$a7, $a4, $a7
-	beq	$a7, $a3, .LBB26_126
-# %bb.151:
-	and	$a7, $a4, $s4
-	ori	$a3, $zero, 1
-	bne	$a7, $a3, .LBB26_155
-.LBB26_152:
+	move	$s3, $zero
+	move	$s4, $zero
+	move	$s5, $zero
+	move	$s7, $zero
+	move	$s6, $zero
+	ori	$s2, $zero, 1
+	b	.LBB26_24
+.LBB26_141:
+	or	$a2, $s4, $s6
+	and	$a3, $a4, $a2
+	bnez	$a3, .LBB26_116
+# %bb.142:
+	and	$a3, $a4, $a7
+	bnez	$a3, .LBB26_118
+# %bb.143:
+	and	$a3, $a4, $s5
+	beqz	$a3, .LBB26_147
+.LBB26_144:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_2)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_2)
 	b	.LBB26_50
-.LBB26_153:
+.LBB26_145:
 	move	$a0, $zero
 	move	$a2, $zero
 	move	$a3, $zero
@@ -11182,91 +11143,85 @@ _ZN4Mesh20set_refinement_orderEPiiiiiiiiS0_S0_S0_: # @_ZN4Mesh20set_refinement_o
 	move	$a5, $zero
 	move	$a6, $zero
 	move	$t3, $zero
-	and	$t4, $s3, $s2
-	slti	$t4, $t4, 0
+	and	$t5, $s3, $s2
+	slti	$t5, $t5, 0
 	b	.LBB26_15
-.LBB26_154:
+.LBB26_146:
 	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
 	move	$s3, $zero
-	move	$s5, $zero
 	move	$s4, $zero
+	move	$s5, $zero
 	move	$s6, $zero
 	and	$a7, $t2, $s8
 	slti	$s7, $a7, 0
 	b	.LBB26_24
-.LBB26_155:
-	and	$a4, $a4, $s7
-	bne	$a4, $a3, .LBB26_157
-.LBB26_156:
+.LBB26_147:
+	and	$a3, $a4, $s7
+	beqz	$a3, .LBB26_149
+.LBB26_148:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_9)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_9)
 	b	.LBB26_50
-.LBB26_157:
+.LBB26_149:
 	or	$a2, $s3, $a2
-	and	$a4, $a5, $a2
-	ori	$a3, $zero, 1
-	beq	$a4, $a3, .LBB26_27
-# %bb.158:
+	and	$a3, $a5, $a2
+	bnez	$a3, .LBB26_27
+# %bb.150:
 	or	$a0, $s0, $a0
-	and	$a4, $a5, $a0
-	beq	$a4, $a3, .LBB26_25
-# %bb.159:
+	and	$a3, $a5, $a0
+	bnez	$a3, .LBB26_25
+# %bb.151:
 	and	$a3, $a5, $s7
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB26_49
-# %bb.160:
-	or	$a3, $s4, $s6
+	bnez	$a3, .LBB26_49
+# %bb.152:
+	or	$a3, $s5, $s6
 	or	$a3, $s0, $a3
-	and	$a5, $a6, $a3
-	beq	$a5, $a4, .LBB26_29
-# %bb.161:
+	and	$a4, $a6, $a3
+	bnez	$a4, .LBB26_29
+# %bb.153:
 	or	$a4, $s1, $s7
 	or	$a4, $s3, $a4
-	and	$a7, $a6, $a4
-	ori	$a5, $zero, 1
-	beq	$a7, $a5, .LBB26_156
-# %bb.162:
-	and	$a6, $a6, $s2
-	bne	$a6, $a5, .LBB26_164
-# %bb.163:
+	and	$a5, $a6, $a4
+	bnez	$a5, .LBB26_148
+# %bb.154:
+	and	$a5, $a6, $s2
+	beqz	$a5, .LBB26_156
+# %bb.155:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_8)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_8)
 	b	.LBB26_50
-.LBB26_164:
-	and	$a5, $t3, $a3
-	ori	$a3, $zero, 1
-	beq	$a5, $a3, .LBB26_57
-# %bb.165:
-	and	$a4, $t3, $a4
-	beq	$a4, $a3, .LBB26_142
-# %bb.166:
-	and	$a4, $t3, $s5
-	ori	$a3, $zero, 1
-	bne	$a4, $a3, .LBB26_168
-# %bb.167:
+.LBB26_156:
+	and	$a3, $t3, $a3
+	bnez	$a3, .LBB26_57
+# %bb.157:
+	and	$a3, $t3, $a4
+	bnez	$a3, .LBB26_134
+# %bb.158:
+	and	$a3, $t3, $s4
+	beqz	$a3, .LBB26_160
+# %bb.159:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_5)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_5)
 	b	.LBB26_50
-.LBB26_168:
-	and	$a2, $t4, $a2
-	beq	$a2, $a3, .LBB26_121
-# %bb.169:
-	and	$a2, $t4, $a0
-	ori	$a0, $zero, 1
-	beq	$a2, $a0, .LBB26_126
-# %bb.170:
-	and	$a2, $t4, $s4
-	beq	$a2, $a0, .LBB26_152
-# %bb.171:
+.LBB26_160:
+	and	$a2, $t5, $a2
+	bnez	$a2, .LBB26_116
+# %bb.161:
+	and	$a0, $t5, $a0
+	bnez	$a0, .LBB26_118
+# %bb.162:
+	and	$a0, $t5, $s5
+	bnez	$a0, .LBB26_144
+# %bb.163:
 	pcalau12i	$a0, %pc_hi20(.LCPI26_1)
 	vld	$vr0, $a0, %pc_lo12(.LCPI26_1)
 	pcalau12i	$a0, %pc_hi20(do_stencil_warning)
 	ld.w	$a0, $a0, %pc_lo12(do_stencil_warning)
 	vst	$vr0, $a1, 0
 	beqz	$a0, .LBB26_51
-# %bb.172:
+# %bb.164:
 	pcalau12i	$a0, %pc_hi20(.Lstr.2)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
@@ -11325,8 +11280,7 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	pcaddu18i	$ra, %call36(cpu_timer_start)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 616
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_101
+	beqz	$a0, .LBB27_101
 # %bb.1:
 	ld.w	$a0, $fp, 592
 	ld.d	$a1, $fp, 1368
@@ -11417,8 +11371,7 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 .LBB27_8:
 	ld.d	$a6, $fp, 1160
 	addi.w	$a0, $a6, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB27_13
+	blez	$a0, .LBB27_13
 # %bb.9:                                # %.lr.ph
 	ld.d	$a0, $fp, 1368
 	ld.d	$a1, $fp, 1376
@@ -11465,81 +11418,80 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.wu	$a1, $fp, 1120
 	addi.d	$a0, $a0, 1
 	ld.w	$a2, $fp, 1136
-	ori	$s1, $zero, 2
-	sll.w	$a1, $s1, $a1
+	ori	$s0, $zero, 2
+	sll.w	$a1, $s0, $a1
 	mul.w	$s3, $a1, $a0
 	addi.d	$a0, $a2, 1
-	mul.w	$s8, $a0, $a1
+	mul.w	$a1, $a0, $a1
 	move	$a0, $s7
-	move	$a1, $s8
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	move	$a2, $s3
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(compact_hash_init)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	ori	$s0, $zero, 1
 	slli.d	$a0, $s7, 2
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	blt	$s7, $s0, .LBB27_31
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	blez	$s7, .LBB27_31
 # %bb.16:                               # %.lr.ph427
 	pcalau12i	$a0, %got_pc_hi20(write_hash)
-	ld.d	$s2, $a0, %got_pc_lo12(write_hash)
-	move	$s5, $zero
+	ld.d	$s1, $a0, %got_pc_lo12(write_hash)
+	move	$s2, $zero
 	move	$s4, $zero
-	addi.w	$s6, $zero, -1
+	addi.w	$s5, $zero, -1
 	.p2align	4, , 16
 .LBB27_17:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1368
 	ld.d	$a1, $fp, 1352
-	ldx.w	$a6, $a0, $s5
-	ldx.w	$a0, $a1, $s5
-	beq	$a6, $s6, .LBB27_30
+	ldx.w	$a6, $a0, $s2
+	ldx.w	$a0, $a1, $s2
+	beq	$a6, $s5, .LBB27_30
 # %bb.18:                               #   in Loop: Header=BB27_17 Depth=1
 	ld.d	$a2, $fp, 1376
-	ldx.w	$a5, $a2, $s5
-	beq	$a5, $s6, .LBB27_30
+	ldx.w	$a5, $a2, $s2
+	beq	$a5, $s5, .LBB27_30
 # %bb.19:                               #   in Loop: Header=BB27_17 Depth=1
 	ld.d	$a3, $fp, 1384
-	ldx.w	$a4, $a3, $s5
-	beq	$a4, $s6, .LBB27_30
+	ldx.w	$a4, $a3, $s2
+	beq	$a4, $s5, .LBB27_30
 # %bb.20:                               #   in Loop: Header=BB27_17 Depth=1
 	ld.d	$a7, $fp, 1392
-	ldx.w	$a3, $a7, $s5
-	beq	$a3, $s6, .LBB27_30
+	ldx.w	$a3, $a7, $s2
+	beq	$a3, $s5, .LBB27_30
 # %bb.21:                               #   in Loop: Header=BB27_17 Depth=1
 	slli.d	$a6, $a6, 2
 	ldx.w	$t0, $a1, $a6
 	bge	$a0, $t0, .LBB27_23
 # %bb.22:                               #   in Loop: Header=BB27_17 Depth=1
 	ldx.w	$a6, $a7, $a6
-	beq	$a6, $s6, .LBB27_30
+	beq	$a6, $s5, .LBB27_30
 .LBB27_23:                              #   in Loop: Header=BB27_17 Depth=1
 	slli.d	$a5, $a5, 2
 	ldx.w	$a6, $a1, $a5
 	bge	$a0, $a6, .LBB27_25
 # %bb.24:                               #   in Loop: Header=BB27_17 Depth=1
 	ldx.w	$a5, $a7, $a5
-	beq	$a5, $s6, .LBB27_30
+	beq	$a5, $s5, .LBB27_30
 .LBB27_25:                              #   in Loop: Header=BB27_17 Depth=1
 	slli.d	$a4, $a4, 2
 	ldx.w	$a5, $a1, $a4
 	bge	$a0, $a5, .LBB27_27
 # %bb.26:                               #   in Loop: Header=BB27_17 Depth=1
 	ldx.w	$a4, $a2, $a4
-	beq	$a4, $s6, .LBB27_30
+	beq	$a4, $s5, .LBB27_30
 .LBB27_27:                              #   in Loop: Header=BB27_17 Depth=1
 	slli.d	$a3, $a3, 2
 	ldx.w	$a1, $a1, $a3
 	bge	$a0, $a1, .LBB27_29
 # %bb.28:                               #   in Loop: Header=BB27_17 Depth=1
 	ldx.w	$a1, $a2, $a3
-	beq	$a1, $s6, .LBB27_30
+	beq	$a1, $s5, .LBB27_30
 	.p2align	4, , 16
 .LBB27_29:                              #   in Loop: Header=BB27_17 Depth=1
-	addi.d	$s5, $s5, 4
+	addi.d	$s2, $s2, 4
 	addi.w	$s4, $s4, 1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	bne	$a0, $s5, .LBB27_17
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	bne	$a0, $s2, .LBB27_17
 	b	.LBB27_31
 	.p2align	4, , 16
 .LBB27_30:                              # %.critedge
@@ -11548,20 +11500,21 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.d	$a2, $fp, 1336
 	ld.d	$a3, $fp, 1328
 	sub.d	$a0, $a1, $a0
-	ldx.w	$a1, $a2, $s5
-	ldx.w	$a2, $a3, $s5
-	sll.w	$a0, $s1, $a0
-	ld.d	$a3, $s2, 0
-	mul.d	$a1, $a1, $s8
+	ldx.w	$a1, $a2, $s2
+	ldx.w	$a2, $a3, $s2
+	sll.w	$a0, $s0, $a0
+	ld.d	$a3, $s1, 0
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a1, $a1, $a4
 	add.d	$a1, $a1, $a2
 	mul.w	$a1, $a1, $a0
 	move	$a0, $s4
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	jirl	$ra, $a3, 0
-	addi.d	$s5, $s5, 4
+	addi.d	$s2, $s2, 4
 	addi.w	$s4, $s4, 1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	bne	$a0, $s5, .LBB27_17
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	bne	$a0, $s2, .LBB27_17
 .LBB27_31:                              # %._crit_edge428
 	ld.d	$a0, $sp, 248
 	ld.d	$a1, $sp, 256
@@ -11573,11 +11526,12 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	addi.d	$a0, $sp, 248
 	pcaddu18i	$ra, %call36(cpu_timer_start)
 	jirl	$ra, $ra, 0
-	blt	$s7, $s0, .LBB27_68
+	blez	$s7, .LBB27_68
 # %bb.32:                               # %.lr.ph431
-	move	$s6, $zero
+	move	$s2, $zero
 	move	$s0, $zero
-	addi.w	$a0, $s8, -1
+	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
+	addi.w	$a0, $a5, -1
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a1, $fp, 1368
 	ld.d	$a2, $fp, 1376
@@ -11585,37 +11539,36 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.d	$a4, $fp, 1392
 	addi.w	$a0, $s3, -1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	slli.d	$a0, $s8, 1
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	ori	$s2, $zero, 2
+	slli.d	$a0, $a5, 1
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	ori	$s3, $zero, 2
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB27_34
 	.p2align	4, , 16
 .LBB27_33:                              #   in Loop: Header=BB27_34 Depth=1
 	ld.d	$a1, $fp, 1368
-	stx.w	$s3, $a1, $s0
+	stx.w	$a4, $a1, $s0
 	ld.d	$a2, $fp, 1376
-	stx.w	$s5, $a2, $s0
+	stx.w	$s1, $a2, $s0
 	ld.d	$a3, $fp, 1384
 	stx.w	$a5, $a3, $s0
 	ld.d	$a4, $fp, 1392
-	stx.w	$s6, $a4, $s0
+	stx.w	$s2, $a4, $s0
 	addi.d	$s0, $s0, 4
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	addi.w	$s6, $s6, 1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
+	addi.w	$s2, $s2, 1
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	beq	$a0, $s0, .LBB27_68
 .LBB27_34:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1352
 	ld.d	$a5, $fp, 1328
 	ld.d	$a6, $fp, 1336
-	ldx.w	$t3, $a0, $s0
-	ld.w	$t4, $fp, 1120
+	ldx.w	$s4, $a0, $s0
+	ld.w	$a0, $fp, 1120
 	ldx.w	$a7, $a5, $s0
 	ldx.w	$t1, $a6, $s0
-	sub.d	$a5, $t4, $t3
-	sll.w	$t0, $s2, $a5
+	sub.d	$a5, $a0, $s4
+	sll.w	$t0, $s3, $a5
 	mul.w	$t2, $t0, $a7
 	st.d	$a7, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a5, $a7, -1
@@ -11624,63 +11577,64 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	andn	$a5, $a5, $a6
 	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
 	mul.w	$a7, $t0, $t1
-	st.d	$t1, $sp, 104                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a5, $t1, -1
-	st.d	$t0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 136                   # 8-byte Folded Spill
 	mul.w	$a5, $t0, $a5
 	srai.d	$a6, $a5, 63
 	andn	$a5, $a5, $a6
 	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
 	ldx.w	$a1, $a1, $s0
-	ldx.w	$s1, $a2, $s0
+	ldx.w	$s5, $a2, $s0
 	ldx.w	$a2, $a3, $s0
-	ldx.w	$a0, $a4, $s0
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	ldx.w	$a3, $a4, $s0
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	slti	$a3, $a1, 0
-	sll.w	$s5, $s2, $t4
-	slt	$a5, $t2, $s5
+	ori	$a4, $zero, 2
+	sll.w	$s3, $a4, $a0
+	slt	$a5, $t2, $s3
 	masknez	$a4, $a1, $a5
-	maskeqz	$a6, $s6, $a5
+	maskeqz	$a6, $s2, $a5
 	or	$a4, $a6, $a4
 	maskeqz	$a4, $a4, $a3
 	masknez	$a1, $a1, $a3
 	or	$a1, $a4, $a1
 	slti	$a3, $a2, 0
-	slt	$s4, $a7, $s5
-	masknez	$a4, $a2, $s4
-	maskeqz	$s2, $s6, $s4
-	or	$a4, $s2, $a4
+	slt	$s1, $a7, $s3
+	masknez	$a4, $a2, $s1
+	maskeqz	$t0, $s2, $s1
+	or	$a4, $t0, $a4
 	maskeqz	$a4, $a4, $a3
-	ld.w	$t0, $fp, 1144
+	ld.w	$s8, $fp, 1144
 	masknez	$a2, $a2, $a3
 	or	$a2, $a4, $a2
 	ld.w	$s7, $fp, 1136
-	mul.w	$a3, $t0, $t2
+	mul.w	$a3, $s8, $t2
 	slt	$a3, $a7, $a3
 	xori	$a3, $a3, 1
 	masknez	$a4, $a1, $a3
-	maskeqz	$a3, $s6, $a3
+	maskeqz	$a3, $s2, $a3
 	or	$a3, $a3, $a4
-	xor	$a4, $t2, $s5
+	xor	$a4, $t2, $s3
 	sltui	$a4, $a4, 1
-	masknez	$a3, $a3, $s4
-	or	$a3, $s2, $a3
+	masknez	$a3, $a3, $s1
+	or	$a3, $t0, $a3
 	maskeqz	$a3, $a3, $a4
 	masknez	$a4, $a1, $a4
 	or	$a3, $a3, $a4
 	slti	$a4, $a1, 0
 	masknez	$a1, $a1, $a4
 	maskeqz	$a3, $a3, $a4
-	or	$a0, $a3, $a1
+	or	$a4, $a3, $a1
 	mul.w	$a1, $s7, $a7
-	st.d	$t2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 144                   # 8-byte Folded Spill
 	slt	$a1, $t2, $a1
 	xori	$a1, $a1, 1
 	masknez	$a3, $a2, $a1
-	maskeqz	$a1, $s6, $a1
+	maskeqz	$a1, $s2, $a1
 	or	$a1, $a1, $a3
-	st.d	$a7, $sp, 160                   # 8-byte Folded Spill
-	xor	$a3, $a7, $s5
+	st.d	$a7, $sp, 152                   # 8-byte Folded Spill
+	xor	$a3, $a7, $s3
 	sltui	$a3, $a3, 1
 	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
 	masknez	$a1, $a1, $a5
@@ -11693,95 +11647,82 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	masknez	$a2, $a2, $a3
 	maskeqz	$a1, $a1, $a3
 	or	$a5, $a1, $a2
-	st.d	$t3, $sp, 96                    # 8-byte Folded Spill
-	beq	$t4, $t3, .LBB27_38
+	beq	$a0, $s4, .LBB27_37
 # %bb.35:                               #   in Loop: Header=BB27_34 Depth=1
-	addi.w	$s3, $zero, -1
-	move	$s8, $a0
-	bge	$s3, $a0, .LBB27_53
+	bltz	$a4, .LBB27_53
 # %bb.36:                               #   in Loop: Header=BB27_34 Depth=1
-	bge	$s3, $a5, .LBB27_54
+	bltz	$a5, .LBB27_54
 .LBB27_37:                              #   in Loop: Header=BB27_34 Depth=1
-	move	$a0, $s8
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	bgez	$a4, .LBB27_39
 .LBB27_38:                              #   in Loop: Header=BB27_34 Depth=1
-	addi.w	$a6, $zero, -1
-	st.d	$a6, $sp, 136                   # 8-byte Folded Spill
-	blt	$a6, $a0, .LBB27_40
-.LBB27_39:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a0, 0
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s8
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s3, $a5
-	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
-	move	$s2, $s1
-	move	$s1, $s7
-	move	$s7, $s8
-	move	$s8, $t0
+	move	$s4, $a5
+	move	$s6, $t0
 	jirl	$ra, $a2, 0
-	move	$t0, $s8
-	move	$s8, $s7
-	move	$s7, $s1
-	move	$s1, $s2
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s3
-.LBB27_40:                              #   in Loop: Header=BB27_34 Depth=1
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	move	$s3, $s8
+	move	$t0, $s6
+	move	$a5, $s4
+	move	$a4, $a0
+.LBB27_39:                              #   in Loop: Header=BB27_34 Depth=1
+	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	mul.w	$a0, $a1, $a0
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	slt	$a1, $a2, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
-	or	$a3, $a1, $a0
-	slti	$a0, $s1, 0
-	mul.w	$a1, $s7, $s5
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	or	$a4, $a1, $a0
+	slti	$a0, $s5, 0
+	mul.w	$a1, $s7, $s3
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	slt	$a2, $a2, $a1
 	xori	$s7, $a2, 1
-	masknez	$a2, $s1, $s7
-	maskeqz	$s8, $s6, $s7
-	or	$a2, $s8, $a2
+	masknez	$a2, $s5, $s7
+	move	$a3, $s2
+	maskeqz	$s2, $s2, $s7
+	or	$a2, $s2, $a2
 	maskeqz	$a2, $a2, $a0
-	masknez	$a0, $s1, $a0
+	masknez	$a0, $s5, $a0
 	or	$a0, $a2, $a0
-	mul.w	$s1, $t0, $s5
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	slt	$a2, $a2, $s1
+	mul.w	$s3, $s8, $s3
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	slt	$a2, $a2, $s3
 	xori	$s5, $a2, 1
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
-	maskeqz	$s6, $s6, $s5
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	maskeqz	$s8, $a3, $s5
 	slti	$a2, $a0, 0
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
-	xor	$a1, $a3, $a1
+	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	xor	$a1, $a4, $a1
 	sltui	$a1, $a1, 1
 	masknez	$a3, $a0, $a1
 	masknez	$a4, $a0, $s5
-	or	$a4, $s6, $a4
-	masknez	$a4, $a4, $s4
-	or	$a4, $s2, $a4
+	or	$a4, $s8, $a4
+	masknez	$a4, $a4, $s1
+	or	$a4, $t0, $a4
 	maskeqz	$a1, $a4, $a1
 	or	$a1, $a1, $a3
 	maskeqz	$a1, $a1, $a2
 	masknez	$a0, $a0, $a2
-	or	$a0, $a1, $a0
-	move	$s2, $a0
-	bge	$a6, $a0, .LBB27_51
-# %bb.41:                               #   in Loop: Header=BB27_34 Depth=1
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	bge	$a6, $a5, .LBB27_52
-.LBB27_42:                              #   in Loop: Header=BB27_34 Depth=1
-	addi.d	$a0, $s4, 1
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	or	$s1, $a1, $a0
+	bltz	$s1, .LBB27_51
+# %bb.40:                               #   in Loop: Header=BB27_34 Depth=1
+	bltz	$a5, .LBB27_52
+.LBB27_41:                              #   in Loop: Header=BB27_34 Depth=1
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$a0, $a0, 1
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	mul.w	$a0, $a1, $a0
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	slt	$a1, $a2, $a0
@@ -11791,216 +11732,214 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	slti	$a0, $a3, 0
 	masknez	$a1, $a3, $s5
-	or	$a1, $s6, $a1
+	or	$a1, $s8, $a1
+	move	$s8, $a2
 	maskeqz	$a1, $a1, $a0
 	masknez	$a0, $a3, $a0
 	or	$a0, $a1, $a0
 	slti	$a1, $a0, 0
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	xor	$a2, $a2, $s1
+	xor	$a2, $a2, $s3
 	sltui	$a2, $a2, 1
 	masknez	$a3, $a0, $a2
 	masknez	$a4, $a0, $s7
-	or	$a4, $s8, $a4
-	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
-	masknez	$a4, $a4, $a7
-	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
-	or	$a4, $a7, $a4
+	or	$a4, $s2, $a4
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
+	masknez	$a4, $a4, $a6
+	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
+	or	$a4, $a6, $a4
 	maskeqz	$a2, $a4, $a2
 	or	$a2, $a2, $a3
 	maskeqz	$a2, $a2, $a1
 	masknez	$a0, $a0, $a1
-	or	$s6, $a2, $a0
-	move	$s8, $s3
-	blt	$a6, $s6, .LBB27_44
-# %bb.43:                               #   in Loop: Header=BB27_34 Depth=1
+	or	$s2, $a2, $a0
+	bgez	$s2, .LBB27_43
+# %bb.42:                               #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a0, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s8
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $s8, $a0
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s1, $a5
+	move	$s2, $a5
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s1
-	move	$s6, $a0
-.LBB27_44:                              #   in Loop: Header=BB27_34 Depth=1
+	move	$a5, $s2
+	move	$s2, $a0
+.LBB27_43:                              #   in Loop: Header=BB27_34 Depth=1
 	ld.w	$a0, $fp, 1120
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
-	move	$s5, $s2
-	ori	$s2, $zero, 2
-	beq	$s1, $a0, .LBB27_59
-# %bb.45:                               #   in Loop: Header=BB27_34 Depth=1
-	sll.w	$a0, $s2, $a0
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ori	$s3, $zero, 2
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	bne	$s4, $a0, .LBB27_45
+# %bb.44:                               #   in Loop: Header=BB27_34 Depth=1
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	b	.LBB27_59
+	.p2align	4, , 16
+.LBB27_45:                              #   in Loop: Header=BB27_34 Depth=1
+	sll.w	$a0, $s3, $a0
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	bge	$a1, $a0, .LBB27_48
 # %bb.46:                               #   in Loop: Header=BB27_34 Depth=1
-	bge	$a6, $s5, .LBB27_55
+	bltz	$s1, .LBB27_55
 # %bb.47:                               #   in Loop: Header=BB27_34 Depth=1
-	bge	$a6, $s3, .LBB27_56
+	bltz	$a4, .LBB27_56
 .LBB27_48:                              #   in Loop: Header=BB27_34 Depth=1
 	ld.wu	$a0, $fp, 1120
-	sll.w	$a0, $s2, $a0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	sll.w	$a0, $s3, $a0
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	bge	$a1, $a0, .LBB27_59
 .LBB27_49:                              #   in Loop: Header=BB27_34 Depth=1
-	bge	$a6, $s6, .LBB27_57
+	bltz	$s2, .LBB27_57
 # %bb.50:                               #   in Loop: Header=BB27_34 Depth=1
-	blt	$a6, $a5, .LBB27_59
+	bgez	$a5, .LBB27_59
 	b	.LBB27_58
 	.p2align	4, , 16
 .LBB27_51:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a0, 0
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s3
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $s6
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s2, $a5
+	move	$a1, $s4
+	move	$s1, $a5
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s2
-	move	$s2, $a0
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	blt	$a6, $a5, .LBB27_42
+	move	$a5, $s1
+	move	$s1, $a0
+	bgez	$a5, .LBB27_41
 .LBB27_52:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
 	ld.d	$a2, $a0, 0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s3
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $s6
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
 	move	$a5, $a0
-	b	.LBB27_42
+	b	.LBB27_41
 .LBB27_53:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	sub.w	$a1, $a3, $a1
 	srli.d	$a1, $a1, 1
 	ld.d	$a2, $a0, 0
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $a3
 	sub.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 136                   # 8-byte Folded Spill
-	move	$s8, $t0
+	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
+	move	$s8, $a5
+	move	$s6, $t0
 	jirl	$ra, $a2, 0
-	move	$t0, $s8
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	move	$s8, $a0
-	blt	$s3, $a5, .LBB27_37
+	move	$t0, $s6
+	move	$a5, $s8
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	move	$a4, $a0
+	bgez	$a5, .LBB27_37
 .LBB27_54:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	sub.w	$a1, $a3, $a1
 	srli.d	$a1, $a1, 1
 	ld.d	$a2, $a0, 0
 	sub.d	$a0, $a3, $a1
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s3
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a1
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	st.d	$t0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
+	move	$s8, $a4
+	move	$s6, $t0
 	jirl	$ra, $a2, 0
-	ld.d	$t0, $sp, 136                   # 8-byte Folded Reload
+	move	$t0, $s6
+	move	$a4, $s8
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
 	move	$a5, $a0
-	move	$a0, $s8
-	move	$s8, $s3
-	addi.w	$a6, $zero, -1
-	st.d	$a6, $sp, 136                   # 8-byte Folded Spill
-	blt	$a6, $a0, .LBB27_40
-	b	.LBB27_39
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	bgez	$a4, .LBB27_39
+	b	.LBB27_38
 .LBB27_55:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a1, $a2, $a1
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	add.d	$a1, $s8, $a1
 	bstrpick.d	$a2, $a1, 31, 31
 	add.w	$a1, $a1, $a2
 	ld.d	$a2, $a0, 0
 	srli.d	$a0, $a1, 1
-	mul.d	$a0, $a0, $s8
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s5, $a5
+	move	$s1, $a5
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s5
-	move	$s5, $a0
-	blt	$a6, $s3, .LBB27_48
+	move	$a5, $s1
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	move	$s1, $a0
+	bgez	$a4, .LBB27_48
 .LBB27_56:                              #   in Loop: Header=BB27_34 Depth=1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	sub.w	$a0, $a1, $a0
 	srli.d	$a0, $a0, 1
 	sub.d	$a0, $a1, $a0
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	add.d	$a2, $s8, $a2
 	bstrpick.d	$a3, $a2, 31, 31
 	add.w	$a2, $a2, $a3
 	ld.d	$a3, $a1, 0
 	srli.d	$a1, $a2, 1
-	mul.d	$a1, $a1, $s8
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a1, $a1, $a2
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s3, $a5
+	move	$s5, $a5
 	jirl	$ra, $a3, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s3
-	move	$s3, $a0
+	move	$a5, $s5
+	move	$a4, $a0
 	ld.wu	$a0, $fp, 1120
-	sll.w	$a0, $s2, $a0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	sll.w	$a0, $s3, $a0
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	blt	$a1, $a0, .LBB27_49
 	b	.LBB27_59
 .LBB27_57:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
 	bstrpick.d	$a2, $a1, 31, 31
 	add.w	$a1, $a1, $a2
 	ld.d	$a2, $a0, 0
 	srli.d	$a0, $a1, 1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	mul.d	$a1, $a1, $s8
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a1, $s8, $a1
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s2, $s5
+	move	$s2, $a4
 	move	$s5, $a5
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
 	move	$a5, $s5
-	move	$s5, $s2
-	ori	$s2, $zero, 2
-	move	$s6, $a0
-	blt	$a6, $a5, .LBB27_59
+	move	$a4, $s2
+	move	$s2, $a0
+	bgez	$a5, .LBB27_59
 .LBB27_58:                              #   in Loop: Header=BB27_34 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a1, $a0, 31, 31
@@ -12008,77 +11947,82 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
 	srli.d	$a0, $a0, 1
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	move	$s5, $a4
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	sub.w	$a2, $a4, $a2
 	srli.d	$a2, $a2, 1
 	ld.d	$a3, $a1, 0
 	sub.d	$a1, $a4, $a2
-	mul.d	$a1, $a1, $s8
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a1, $a1, $a2
 	add.w	$a0, $a1, $a0
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	jirl	$ra, $a3, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
+	move	$a4, $s5
 	move	$a5, $a0
 	.p2align	4, , 16
 .LBB27_59:                              #   in Loop: Header=BB27_34 Depth=1
-	beqz	$s1, .LBB27_33
+	beqz	$s4, .LBB27_33
 # %bb.60:                               #   in Loop: Header=BB27_34 Depth=1
-	bge	$a6, $s3, .LBB27_64
+	bltz	$a4, .LBB27_64
 # %bb.61:                               #   in Loop: Header=BB27_34 Depth=1
-	bge	$a6, $s5, .LBB27_65
+	bltz	$s1, .LBB27_65
 .LBB27_62:                              #   in Loop: Header=BB27_34 Depth=1
-	bge	$a6, $a5, .LBB27_66
+	bltz	$a5, .LBB27_66
 .LBB27_63:                              #   in Loop: Header=BB27_34 Depth=1
-	blt	$a6, $s6, .LBB27_33
+	bgez	$s2, .LBB27_33
 	b	.LBB27_67
 	.p2align	4, , 16
 .LBB27_64:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	bstrpick.d	$a1, $s4, 31, 31
-	add.w	$a1, $s4, $a1
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	bstrpick.d	$a1, $a2, 31, 31
+	add.w	$a1, $a2, $a1
 	srli.d	$a1, $a1, 1
 	ld.d	$a2, $a0, 0
-	mul.d	$a0, $a1, $s8
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $a1, $a0
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	sub.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s1, $a5
+	move	$s4, $a5
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s1
-	move	$s3, $a0
-	blt	$a6, $s5, .LBB27_62
+	move	$a5, $s4
+	move	$a4, $a0
+	bgez	$s1, .LBB27_62
 .LBB27_65:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
-	bstrpick.d	$a1, $s4, 31, 31
-	add.w	$a1, $s4, $a1
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	bstrpick.d	$a1, $a2, 31, 31
+	add.w	$a1, $a2, $a1
 	srli.d	$a1, $a1, 1
 	ld.d	$a2, $a0, 0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s1, $a5
+	move	$s1, $a4
+	move	$s4, $a5
 	jirl	$ra, $a2, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
-	move	$a5, $s1
-	move	$s5, $a0
-	blt	$a6, $a5, .LBB27_63
+	move	$a5, $s4
+	move	$a4, $s1
+	move	$s1, $a0
+	bgez	$a5, .LBB27_63
 .LBB27_66:                              #   in Loop: Header=BB27_34 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	sub.d	$a0, $a0, $a1
 	pcalau12i	$a1, %got_pc_hi20(read_hash)
 	ld.d	$a1, $a1, %got_pc_lo12(read_hash)
@@ -12087,15 +12031,17 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	add.d	$a2, $a3, $a2
 	srli.d	$a2, $a2, 1
 	ld.d	$a3, $a1, 0
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	mul.d	$a1, $a2, $a1
-	mul.d	$a0, $a0, $s8
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a2
 	alsl.w	$a0, $a1, $a0, 1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	move	$s4, $a4
 	jirl	$ra, $a3, 0
-	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
+	move	$a4, $s4
 	move	$a5, $a0
-	blt	$a6, $s6, .LBB27_33
+	bgez	$s2, .LBB27_33
 .LBB27_67:                              #   in Loop: Header=BB27_34 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(read_hash)
 	ld.d	$a0, $a0, %got_pc_lo12(read_hash)
@@ -12104,16 +12050,18 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	add.d	$a1, $a2, $a1
 	srli.d	$a1, $a1, 1
 	ld.d	$a2, $a0, 0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	mul.d	$a0, $a1, $a0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	mul.d	$a1, $a1, $s8
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	mul.d	$a1, $s8, $a1
 	alsl.w	$a0, $a0, $a1, 1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	move	$s1, $a5
+	move	$s2, $a4
+	move	$s4, $a5
 	jirl	$ra, $a2, 0
-	move	$a5, $s1
-	move	$s6, $a0
+	move	$a5, $s4
+	move	$a4, $s2
+	move	$s2, $a0
 	b	.LBB27_33
 .LBB27_68:                              # %._crit_edge432
 	pcaddu18i	$ra, %call36(write_hash_collision_report)
@@ -12139,8 +12087,7 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	mul.w	$a0, $a0, $a0
 	ori	$a1, $zero, 2
 	sll.w	$s0, $a1, $a0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $s0, .LBB27_111
+	bltz	$s0, .LBB27_111
 # %bb.70:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
 	ori	$a1, $zero, 30
 	bgeu	$a1, $a0, .LBB27_72
@@ -12228,22 +12175,22 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	jirl	$ra, $ra, 0
 .Ltmp195:
 # %bb.81:                               # %.preheader
-	ori	$s3, $zero, 1
-	blt	$s7, $s3, .LBB27_96
+	blez	$s7, .LBB27_96
 # %bb.82:                               # %.lr.ph424
-	move	$s4, $zero
+	move	$s3, $zero
+	ori	$s4, $zero, 1
 	b	.LBB27_84
 	.p2align	4, , 16
 .LBB27_83:                              #   in Loop: Header=BB27_84 Depth=1
-	addi.d	$s4, $s4, 1
-	beq	$s4, $s7, .LBB27_96
+	addi.d	$s3, $s3, 1
+	beq	$s3, $s7, .LBB27_96
 .LBB27_84:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1368
-	slli.d	$s5, $s4, 2
-	stx.w	$s4, $a0, $s5
+	slli.d	$s5, $s3, 2
+	stx.w	$s3, $a0, $s5
 	ld.d	$a0, $fp, 1440
 	ld.d	$a1, $fp, 1416
-	slli.d	$s6, $s4, 3
+	slli.d	$s6, $s3, 3
 	fldx.d	$fa0, $a0, $s6
 	fldx.d	$fa1, $a1, $s6
 	vldi	$vr2, -944
@@ -12277,14 +12224,14 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 .Ltmp197:
 # %bb.85:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $sp, 180
-	bne	$a0, $s3, .LBB27_87
+	bne	$a0, $s4, .LBB27_87
 # %bb.86:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $s1, 0
 	ld.d	$a1, $fp, 1368
 	stx.w	$a0, $a1, $s5
 .LBB27_87:                              #   in Loop: Header=BB27_84 Depth=1
 	ld.d	$a0, $fp, 1376
-	stx.w	$s4, $a0, $s5
+	stx.w	$s3, $a0, $s5
 	ld.d	$a0, $fp, 1440
 	ld.d	$a1, $fp, 1416
 	fldx.d	$fa0, $a0, $s6
@@ -12321,14 +12268,14 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 .Ltmp199:
 # %bb.88:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $sp, 180
-	bne	$a0, $s3, .LBB27_90
+	bne	$a0, $s4, .LBB27_90
 # %bb.89:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $s1, 0
 	ld.d	$a1, $fp, 1376
 	stx.w	$a0, $a1, $s5
 .LBB27_90:                              #   in Loop: Header=BB27_84 Depth=1
 	ld.d	$a0, $fp, 1384
-	stx.w	$s4, $a0, $s5
+	stx.w	$s3, $a0, $s5
 	ld.d	$a0, $fp, 1440
 	ld.d	$a1, $fp, 1416
 	fldx.d	$fa0, $a0, $s6
@@ -12364,14 +12311,14 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 .Ltmp201:
 # %bb.91:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $sp, 180
-	bne	$a0, $s3, .LBB27_93
+	bne	$a0, $s4, .LBB27_93
 # %bb.92:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $s1, 0
 	ld.d	$a1, $fp, 1384
 	stx.w	$a0, $a1, $s5
 .LBB27_93:                              #   in Loop: Header=BB27_84 Depth=1
 	ld.d	$a0, $fp, 1392
-	stx.w	$s4, $a0, $s5
+	stx.w	$s3, $a0, $s5
 	ld.d	$a0, $fp, 1440
 	ld.d	$a1, $fp, 1416
 	fldx.d	$fa0, $a0, $s6
@@ -12408,7 +12355,7 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 .Ltmp203:
 # %bb.94:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $sp, 180
-	bne	$a0, $s3, .LBB27_83
+	bne	$a0, $s4, .LBB27_83
 # %bb.95:                               #   in Loop: Header=BB27_84 Depth=1
 	ld.w	$a0, $s1, 0
 	ld.d	$a1, $fp, 1392
@@ -12856,8 +12803,7 @@ _ZN4Mesh13calc_symmetryERSt6vectorIiSaIiEES3_S3_: # @_ZN4Mesh13calc_symmetryERSt
 	mul.w	$a0, $a0, $a0
 	ori	$a4, $zero, 2
 	sll.w	$s5, $a4, $a0
-	addi.w	$a4, $zero, -1
-	bge	$a4, $s5, .LBB31_20
+	bltz	$s5, .LBB31_20
 # %bb.1:                                # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
 	move	$s0, $a3
 	move	$s1, $a2
@@ -13453,21 +13399,19 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 .LBB36_14:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit200
 	ld.wu	$a3, $fp, 1120
 	addi.d	$a0, $fp, 1784
-	addi.d	$a5, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a5, $a3
-	lu12i.w	$a4, 2441
-	ori	$s3, $a4, 1663
+	addi.d	$a4, $a3, 1
+	lu12i.w	$a3, 2441
+	ori	$s3, $a3, 1663
+	slli.d	$a3, $a4, 31
 	st.w	$s3, $sp, 148
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	beqz	$a3, .LBB36_16
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	bgez	$a3, .LBB36_16
 # %bb.15:
 	move	$a4, $zero
 	move	$a1, $a2
 	b	.LBB36_17
 .LBB36_16:
-	addi.w	$a2, $a5, 0
+	addi.w	$a2, $a4, 0
 	addi.d	$a3, $sp, 148
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
@@ -13483,7 +13427,7 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
 	st.w	$s2, $sp, 148
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB36_19
 # %bb.18:
 	sub.d	$a2, $a4, $a3
@@ -13507,7 +13451,7 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
 	st.w	$s3, $sp, 148
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB36_24
 # %bb.23:
 	sub.d	$a2, $a4, $a3
@@ -13531,7 +13475,7 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
 	st.w	$s2, $sp, 148
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB36_29
 # %bb.28:
 	sub.d	$a2, $a4, $a3
@@ -13555,11 +13499,9 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 .LBB36_34:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit209
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s0, $fp, 1880
-	bnez	$a1, .LBB36_36
+	bltz	$a1, .LBB36_36
 # %bb.35:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s0
@@ -13574,30 +13516,27 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 .LBB36_38:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit212
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s1, $fp, 1904
-	bnez	$a1, .LBB36_40
+	bltz	$a1, .LBB36_40
 # %bb.39:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB36_40:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit214
-	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 1160
-	ori	$a2, $zero, 1
 	addi.w	$a1, $zero, -4
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	blt	$a0, $a2, .LBB36_103
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	blez	$a0, .LBB36_102
 # %bb.41:                               # %.lr.ph
+	move	$s6, $zero
 	move	$s7, $zero
-	move	$s8, $zero
-	move	$a4, $zero
+	move	$s3, $zero
 	lu52i.d	$a0, $a1, 2047
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
@@ -13606,29 +13545,28 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	b	.LBB36_44
 	.p2align	4, , 16
 .LBB36_42:                              #   in Loop: Header=BB36_44 Depth=1
-	move	$a0, $a4
+	move	$a0, $s3
 .LBB36_43:                              #   in Loop: Header=BB36_44 Depth=1
 	ld.w	$a1, $fp, 1160
-	addi.d	$s8, $s8, 1
-	addi.d	$s7, $s7, 4
-	move	$a4, $a0
-	bge	$s8, $a1, .LBB36_104
+	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 4
+	move	$s3, $a0
+	bge	$s7, $a1, .LBB36_103
 .LBB36_44:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1376
-	ldx.wu	$a0, $a0, $s7
-	beq	$s8, $a0, .LBB36_42
+	ldx.wu	$a0, $a0, $s6
+	beq	$s7, $a0, .LBB36_42
 # %bb.45:                               #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$s2, $fp, 1352
-	addi.w	$a5, $a0, 0
-	slli.d	$s4, $a5, 2
+	addi.w	$a0, $a0, 0
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	slli.d	$s4, $a0, 2
 	ldx.w	$a1, $s2, $s4
-	ldx.w	$a2, $s2, $s7
+	ldx.w	$a2, $s2, $s6
 	ld.d	$a0, $fp, 1624
 	ld.d	$a3, $fp, 1632
 	slt	$a7, $a1, $a2
 	st.d	$a7, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 128                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
 	beq	$a0, $a3, .LBB36_47
 # %bb.46:                               #   in Loop: Header=BB36_44 Depth=1
 	slt	$a3, $a2, $a1
@@ -13643,14 +13581,15 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ld.d	$s1, $fp, 1616
 	sub.d	$s0, $a0, $s1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB36_247
+	beq	$s0, $a0, .LBB36_245
 # %bb.48:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB36_44 Depth=1
-	alsl.d	$s5, $a5, $s2, 2
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	alsl.d	$s8, $a0, $s2, 2
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -13658,19 +13597,19 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s2, $s7
+	add.d	$a1, $s2, $s6
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	maskeqz	$a1, $a1, $a2
-	masknez	$a2, $s5, $a2
+	masknez	$a2, $s8, $a2
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s2, $a0
 	stx.w	$a1, $a0, $s0
-	blt	$s0, $s3, .LBB36_50
+	blez	$s0, .LBB36_50
 # %bb.49:                               #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
@@ -13692,7 +13631,7 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1616
 	st.d	$a0, $fp, 1624
-	alsl.d	$a0, $s6, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1632
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
 .LBB36_53:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit
@@ -13701,10 +13640,10 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ldx.w	$a1, $a0, $s4
 	ld.d	$a0, $fp, 1576
 	ld.d	$a2, $fp, 1584
-	sll.w	$s5, $a1, $a7
+	sll.w	$s8, $a1, $a7
 	beq	$a0, $a2, .LBB36_55
 # %bb.54:                               #   in Loop: Header=BB36_44 Depth=1
-	st.w	$s5, $a0, 0
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1576
 	b	.LBB36_61
@@ -13712,13 +13651,13 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ld.d	$s1, $fp, 1568
 	sub.d	$s0, $a0, $s1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB36_247
+	beq	$s0, $a0, .LBB36_245
 # %bb.56:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB36_44 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -13726,13 +13665,13 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	stx.w	$s5, $a0, $s0
-	blt	$s0, $s3, .LBB36_58
+	stx.w	$s8, $a0, $s0
+	blez	$s0, .LBB36_58
 # %bb.57:                               #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
@@ -13754,18 +13693,18 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1568
 	st.d	$a0, $fp, 1576
-	alsl.d	$a0, $s6, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1584
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
 .LBB36_61:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
                                         #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a0, $fp, 1352
 	ldx.w	$a2, $a0, $s4
-	ldx.w	$a0, $a0, $s7
+	ldx.w	$a0, $a0, $s6
 	ld.d	$a1, $fp, 1336
 	bge	$a2, $a0, .LBB36_65
 # %bb.62:                               #   in Loop: Header=BB36_44 Depth=1
-	ldx.wu	$a3, $a1, $s7
+	ldx.wu	$a3, $a1, $s6
 	ori	$a4, $zero, 1
 	bstrins.d	$a4, $a4, 32, 31
 	ld.d	$a0, $fp, 1600
@@ -13777,12 +13716,14 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 # %bb.63:                               #   in Loop: Header=BB36_44 Depth=1
 	ldx.w	$a1, $a1, $s4
 	sll.w	$a1, $a1, $a7
-	addi.d	$s5, $a1, 1
+	addi.d	$s8, $a1, 1
 	bne	$a0, $a2, .LBB36_67
 # %bb.64:                               #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$s1, $fp, 1592
 	sub.d	$s0, $a0, $s1
-	b	.LBB36_69
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	bne	$s0, $a0, .LBB36_69
+	b	.LBB36_245
 	.p2align	4, , 16
 .LBB36_65:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit._crit_edge
                                         #   in Loop: Header=BB36_44 Depth=1
@@ -13790,26 +13731,24 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ld.d	$a2, $fp, 1608
 .LBB36_66:                              #   in Loop: Header=BB36_44 Depth=1
 	ldx.w	$a1, $a1, $s4
-	sll.w	$s5, $a1, $a7
+	sll.w	$s8, $a1, $a7
 	beq	$a0, $a2, .LBB36_68
 .LBB36_67:                              #   in Loop: Header=BB36_44 Depth=1
-	st.w	$s5, $a0, 0
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1600
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	b	.LBB36_75
+	b	.LBB36_74
 .LBB36_68:                              #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$s1, $fp, 1592
 	sub.d	$s0, $a2, $s1
-.LBB36_69:                              #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB36_247
-# %bb.70:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i247
+	beq	$s0, $a0, .LBB36_245
+.LBB36_69:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i255
                                         #   in Loop: Header=BB36_44 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -13817,86 +13756,85 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	stx.w	$s5, $a0, $s0
-	blt	$s0, $s3, .LBB36_72
-# %bb.71:                               #   in Loop: Header=BB36_44 Depth=1
+	stx.w	$s8, $a0, $s0
+	blez	$s0, .LBB36_71
+# %bb.70:                               #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_72:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i249
+.LBB36_71:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i257
                                         #   in Loop: Header=BB36_44 Depth=1
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	beqz	$s1, .LBB36_74
-# %bb.73:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i259
+	beqz	$s1, .LBB36_73
+# %bb.72:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i259
                                         #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_74:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i260
+.LBB36_73:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i260
                                         #   in Loop: Header=BB36_44 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1592
 	st.d	$a0, $fp, 1600
-	alsl.d	$a0, $s6, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1608
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-.LBB36_75:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit253
+.LBB36_74:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit253
                                         #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a1, $fp, 1352
 	ldx.w	$a3, $a1, $s4
-	ldx.w	$a2, $a1, $s7
-	addi.d	$a0, $s5, 1
+	ldx.w	$a2, $a1, $s6
+	addi.d	$a0, $s3, 1
 	bge	$a2, $a3, .LBB36_43
-# %bb.76:                               #   in Loop: Header=BB36_44 Depth=1
+# %bb.75:                               #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a3, $fp, 1336
 	ldx.bu	$a3, $a3, $s4
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB36_43
-# %bb.77:                               #   in Loop: Header=BB36_44 Depth=1
+# %bb.76:                               #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a3, $fp, 1392
 	ldx.w	$a3, $a3, $s4
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB36_43
-# %bb.78:                               #   in Loop: Header=BB36_44 Depth=1
+# %bb.77:                               #   in Loop: Header=BB36_44 Depth=1
 	slli.d	$s4, $a3, 2
 	ldx.w	$a5, $a1, $s4
 	ld.d	$a4, $fp, 1624
 	ld.d	$a6, $fp, 1632
 	slt	$a0, $a5, $a2
-	beq	$a4, $a6, .LBB36_80
-# %bb.79:                               #   in Loop: Header=BB36_44 Depth=1
+	beq	$a4, $a6, .LBB36_79
+# %bb.78:                               #   in Loop: Header=BB36_44 Depth=1
 	masknez	$a1, $a5, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	st.w	$a0, $a4, 0
 	addi.d	$a0, $a4, 4
 	st.d	$a0, $fp, 1624
-	b	.LBB36_86
-.LBB36_80:                              #   in Loop: Header=BB36_44 Depth=1
+	b	.LBB36_85
+.LBB36_79:                              #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$s1, $fp, 1616
 	sub.d	$s0, $a4, $s1
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a2, .LBB36_247
-# %bb.81:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i263
+	beq	$s0, $a2, .LBB36_245
+# %bb.80:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i263
                                         #   in Loop: Header=BB36_44 Depth=1
-	add.d	$a2, $a1, $s7
+	add.d	$a2, $a1, $s6
 	alsl.d	$a1, $a3, $a1, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$s2, $a0, $a1
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -13904,62 +13842,62 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 0
 	move	$s2, $a0
 	stx.w	$a1, $a0, $s0
-	blt	$s0, $s3, .LBB36_83
-# %bb.82:                               #   in Loop: Header=BB36_44 Depth=1
+	blez	$s0, .LBB36_82
+# %bb.81:                               #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_83:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i265
+.LBB36_82:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i265
                                         #   in Loop: Header=BB36_44 Depth=1
-	beqz	$s1, .LBB36_85
-# %bb.84:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i267
+	beqz	$s1, .LBB36_84
+# %bb.83:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i267
                                         #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_85:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i268
+.LBB36_84:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i268
                                         #   in Loop: Header=BB36_44 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1616
 	st.d	$a0, $fp, 1624
-	alsl.d	$a0, $s6, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1632
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-.LBB36_86:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit269
+.LBB36_85:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit269
                                         #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a0, $fp, 1328
 	ldx.w	$a1, $a0, $s4
 	ld.d	$a0, $fp, 1576
 	ld.d	$a2, $fp, 1584
-	sll.w	$s5, $a1, $a7
-	beq	$a0, $a2, .LBB36_88
-# %bb.87:                               #   in Loop: Header=BB36_44 Depth=1
-	st.w	$s5, $a0, 0
+	sll.w	$s8, $a1, $a7
+	beq	$a0, $a2, .LBB36_87
+# %bb.86:                               #   in Loop: Header=BB36_44 Depth=1
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1576
-	b	.LBB36_94
-.LBB36_88:                              #   in Loop: Header=BB36_44 Depth=1
+	b	.LBB36_93
+.LBB36_87:                              #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$s1, $fp, 1568
 	sub.d	$s0, $a0, $s1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB36_247
-# %bb.89:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i271
+	beq	$s0, $a0, .LBB36_245
+# %bb.88:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i271
                                         #   in Loop: Header=BB36_44 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -13967,62 +13905,61 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	stx.w	$s5, $a0, $s0
-	blt	$s0, $s3, .LBB36_91
-# %bb.90:                               #   in Loop: Header=BB36_44 Depth=1
+	stx.w	$s8, $a0, $s0
+	blez	$s0, .LBB36_90
+# %bb.89:                               #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_91:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i273
+.LBB36_90:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i273
                                         #   in Loop: Header=BB36_44 Depth=1
-	beqz	$s1, .LBB36_93
-# %bb.92:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i275
+	beqz	$s1, .LBB36_92
+# %bb.91:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i275
                                         #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_93:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i276
+.LBB36_92:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i276
                                         #   in Loop: Header=BB36_44 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1568
 	st.d	$a0, $fp, 1576
-	alsl.d	$a0, $s6, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1584
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-.LBB36_94:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit277
+.LBB36_93:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit277
                                         #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$a0, $fp, 1336
 	ldx.w	$a1, $a0, $s4
 	ld.d	$a0, $fp, 1600
 	ld.d	$a2, $fp, 1608
 	sll.w	$s5, $a1, $a7
-	beq	$a0, $a2, .LBB36_96
-# %bb.95:                               #   in Loop: Header=BB36_44 Depth=1
+	beq	$a0, $a2, .LBB36_95
+# %bb.94:                               #   in Loop: Header=BB36_44 Depth=1
 	st.w	$s5, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1600
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	b	.LBB36_102
-.LBB36_96:                              #   in Loop: Header=BB36_44 Depth=1
+	b	.LBB36_101
+.LBB36_95:                              #   in Loop: Header=BB36_44 Depth=1
 	ld.d	$s1, $fp, 1592
 	sub.d	$s0, $a0, $s1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB36_247
-# %bb.97:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i279
+	beq	$s0, $a0, .LBB36_245
+# %bb.96:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i279
                                         #   in Loop: Header=BB36_44 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14036,24 +13973,23 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s5, $a0, $s0
-	blt	$s0, $s3, .LBB36_99
-# %bb.98:                               #   in Loop: Header=BB36_44 Depth=1
+	blez	$s0, .LBB36_98
+# %bb.97:                               #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_99:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i281
+.LBB36_98:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i281
                                         #   in Loop: Header=BB36_44 Depth=1
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	beqz	$s1, .LBB36_101
-# %bb.100:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i283
+	beqz	$s1, .LBB36_100
+# %bb.99:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i283
                                         #   in Loop: Header=BB36_44 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_101:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i284
+.LBB36_100:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i284
                                         #   in Loop: Header=BB36_44 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
@@ -14061,73 +13997,71 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	st.d	$a0, $fp, 1600
 	alsl.d	$a0, $s4, $s2, 2
 	st.d	$a0, $fp, 1608
-.LBB36_102:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit285
+.LBB36_101:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit285
                                         #   in Loop: Header=BB36_44 Depth=1
 	addi.d	$a0, $s3, 2
 	b	.LBB36_43
-.LBB36_103:
+.LBB36_102:
 	move	$a0, $zero
-.LBB36_104:                             # %._crit_edge
+.LBB36_103:                             # %._crit_edge
 	ld.d	$a1, $fp, 1928
 	ld.d	$a2, $fp, 1936
 	st.w	$a0, $fp, 1560
-	beq	$a2, $a1, .LBB36_106
-# %bb.105:
+	beq	$a2, $a1, .LBB36_105
+# %bb.104:
 	st.d	$a1, $fp, 1936
-.LBB36_106:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit216
+.LBB36_105:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit216
 	ld.d	$a0, $fp, 1952
 	ld.d	$a1, $fp, 1960
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB36_108
-# %bb.107:
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB36_107
+# %bb.106:
 	st.d	$a0, $fp, 1960
-.LBB36_108:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit218
+.LBB36_107:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit218
 	ld.d	$a0, $fp, 1976
 	ld.d	$a1, $fp, 1984
-	beq	$a1, $a0, .LBB36_110
-# %bb.109:
+	beq	$a1, $a0, .LBB36_109
+# %bb.108:
 	st.d	$a0, $fp, 1984
-.LBB36_110:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit220
+.LBB36_109:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit220
 	ldptr.d	$a1, $fp, 2144
 	ldptr.d	$a0, $fp, 2152
-	beq	$a0, $a1, .LBB36_112
-# %bb.111:
+	beq	$a0, $a1, .LBB36_111
+# %bb.110:
 	stptr.d	$a1, $fp, 2152
-.LBB36_112:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit222
+.LBB36_111:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit222
 	ldptr.d	$a2, $fp, 2168
 	ldptr.d	$a0, $fp, 2176
-	beq	$a0, $a2, .LBB36_114
-# %bb.113:
+	beq	$a0, $a2, .LBB36_113
+# %bb.112:
 	stptr.d	$a2, $fp, 2176
-.LBB36_114:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit224
+.LBB36_113:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit224
 	ldptr.d	$a0, $fp, 2192
 	ldptr.d	$a3, $fp, 2200
-	beq	$a3, $a0, .LBB36_116
-# %bb.115:
+	beq	$a3, $a0, .LBB36_115
+# %bb.114:
 	stptr.d	$a0, $fp, 2200
-.LBB36_116:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit226
+.LBB36_115:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit226
 	ldptr.d	$a0, $fp, 2216
 	ldptr.d	$a3, $fp, 2224
 	addi.d	$s0, $fp, 2047
-	beq	$a3, $a0, .LBB36_118
-# %bb.117:
+	beq	$a3, $a0, .LBB36_117
+# %bb.116:
 	stptr.d	$a0, $fp, 2224
-.LBB36_118:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit228
+.LBB36_117:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit228
 	ld.wu	$a3, $fp, 1120
 	addi.d	$a0, $s0, 97
 	addi.d	$a4, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a4, $a3
+	slli.d	$a3, $a4, 31
 	st.w	$s2, $sp, 148
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	beqz	$a3, .LBB36_120
-# %bb.119:
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	bgez	$a3, .LBB36_119
+# %bb.118:
 	move	$a4, $zero
 	move	$a1, $a2
-	b	.LBB36_121
-.LBB36_120:
+	b	.LBB36_120
+.LBB36_119:
 	addi.w	$a2, $a4, 0
 	addi.d	$a3, $sp, 148
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
@@ -14136,156 +14070,150 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ldptr.d	$a1, $fp, 2176
 	ldptr.d	$a2, $fp, 2168
 	addi.w	$a4, $a0, 1
-.LBB36_121:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit230
+.LBB36_120:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit230
 	addi.d	$a0, $s0, 121
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
 	st.w	$s1, $sp, 148
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	bgeu	$a3, $a4, .LBB36_123
-# %bb.122:
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	bgeu	$a3, $a4, .LBB36_122
+# %bb.121:
 	sub.d	$a2, $a4, $a3
 	addi.d	$a3, $sp, 148
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
 	addi.w	$a4, $a0, 1
-	b	.LBB36_126
-.LBB36_123:
-	bgeu	$a4, $a3, .LBB36_126
-# %bb.124:
+	b	.LBB36_125
+.LBB36_122:
+	bgeu	$a4, $a3, .LBB36_125
+# %bb.123:
 	alsl.d	$a2, $a4, $a2, 2
-	beq	$a1, $a2, .LBB36_126
-# %bb.125:
+	beq	$a1, $a2, .LBB36_125
+# %bb.124:
 	stptr.d	$a2, $fp, 2176
-.LBB36_126:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit232
+.LBB36_125:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit232
 	ldptr.d	$a1, $fp, 2200
 	ldptr.d	$a2, $fp, 2192
 	addi.d	$a0, $s0, 145
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
 	st.w	$s2, $sp, 148
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	bgeu	$a3, $a4, .LBB36_128
-# %bb.127:
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	bgeu	$a3, $a4, .LBB36_127
+# %bb.126:
 	sub.d	$a2, $a4, $a3
 	addi.d	$a3, $sp, 148
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
 	addi.w	$a4, $a0, 1
-	b	.LBB36_131
-.LBB36_128:
-	bgeu	$a4, $a3, .LBB36_131
-# %bb.129:
+	b	.LBB36_130
+.LBB36_127:
+	bgeu	$a4, $a3, .LBB36_130
+# %bb.128:
 	alsl.d	$a2, $a4, $a2, 2
-	beq	$a1, $a2, .LBB36_131
-# %bb.130:
+	beq	$a1, $a2, .LBB36_130
+# %bb.129:
 	stptr.d	$a2, $fp, 2200
-.LBB36_131:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit234
+.LBB36_130:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit234
 	ldptr.d	$a1, $fp, 2224
 	ldptr.d	$a2, $fp, 2216
 	addi.d	$a0, $s0, 169
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
 	st.w	$s1, $sp, 148
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	bgeu	$a3, $a4, .LBB36_133
-# %bb.132:
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	bgeu	$a3, $a4, .LBB36_132
+# %bb.131:
 	sub.d	$a2, $a4, $a3
 	addi.d	$a3, $sp, 148
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
-	b	.LBB36_136
-.LBB36_133:
-	bgeu	$a4, $a3, .LBB36_136
-# %bb.134:
+	b	.LBB36_135
+.LBB36_132:
+	bgeu	$a4, $a3, .LBB36_135
+# %bb.133:
 	alsl.d	$a0, $a4, $a2, 2
-	beq	$a1, $a0, .LBB36_136
-# %bb.135:
+	beq	$a1, $a0, .LBB36_135
+# %bb.134:
 	stptr.d	$a0, $fp, 2224
-.LBB36_136:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit236
+.LBB36_135:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit236
 	ldptr.d	$a0, $fp, 2240
 	ldptr.d	$a1, $fp, 2248
-	beq	$a1, $a0, .LBB36_138
-# %bb.137:
+	beq	$a1, $a0, .LBB36_137
+# %bb.136:
 	stptr.d	$a0, $fp, 2248
-.LBB36_138:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit238
+.LBB36_137:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit238
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s1, $s0, 193
-	bnez	$a1, .LBB36_140
-# %bb.139:
+	bltz	$a1, .LBB36_139
+# %bb.138:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-.LBB36_140:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit240
+.LBB36_139:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit240
 	ldptr.d	$a0, $fp, 2264
 	ldptr.d	$a1, $fp, 2272
-	beq	$a1, $a0, .LBB36_142
-# %bb.141:
+	beq	$a1, $a0, .LBB36_141
+# %bb.140:
 	stptr.d	$a0, $fp, 2272
-.LBB36_142:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit242
+.LBB36_141:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit242
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s0, $s0, 217
-	bnez	$a1, .LBB36_144
-# %bb.143:
+	bltz	$a1, .LBB36_143
+# %bb.142:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-.LBB36_144:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit244
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+.LBB36_143:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit244
+	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 1160
-	ori	$a1, $zero, 1
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	blt	$a0, $a1, .LBB36_207
-# %bb.145:                              # %.lr.ph392
+	st.d	$s1, $sp, 104                   # 8-byte Folded Spill
+	blez	$a0, .LBB36_205
+# %bb.144:                              # %.lr.ph392
+	move	$s6, $zero
 	move	$s7, $zero
-	move	$s8, $zero
-	move	$a4, $zero
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	move	$s2, $zero
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	lu52i.d	$a0, $a0, 2047
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 511
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	b	.LBB36_148
+	b	.LBB36_147
 	.p2align	4, , 16
-.LBB36_146:                             #   in Loop: Header=BB36_148 Depth=1
-	move	$a0, $a4
-.LBB36_147:                             #   in Loop: Header=BB36_148 Depth=1
+.LBB36_145:                             #   in Loop: Header=BB36_147 Depth=1
+	move	$a0, $s2
+.LBB36_146:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.w	$a1, $fp, 1160
-	addi.d	$s8, $s8, 1
-	addi.d	$s7, $s7, 4
-	move	$a4, $a0
-	bge	$s8, $a1, .LBB36_208
-.LBB36_148:                             # =>This Inner Loop Header: Depth=1
+	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 4
+	move	$s2, $a0
+	bge	$s7, $a1, .LBB36_206
+.LBB36_147:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1392
-	ldx.wu	$a0, $a0, $s7
-	beq	$s8, $a0, .LBB36_146
-# %bb.149:                              #   in Loop: Header=BB36_148 Depth=1
+	ldx.wu	$a0, $a0, $s6
+	beq	$s7, $a0, .LBB36_145
+# %bb.148:                              #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s5, $fp, 1352
-	addi.w	$a5, $a0, 0
-	slli.d	$s1, $a5, 2
+	addi.w	$a0, $a0, 0
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	slli.d	$s1, $a0, 2
 	ldx.w	$a1, $s5, $s1
-	ldx.w	$a2, $s5, $s7
+	ldx.w	$a2, $s5, $s6
 	ld.d	$a0, $fp, 1984
 	ld.d	$a3, $fp, 1992
-	slt	$s2, $a1, $a2
-	st.d	$a4, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
-	beq	$a0, $a3, .LBB36_151
-# %bb.150:                              #   in Loop: Header=BB36_148 Depth=1
+	slt	$a7, $a1, $a2
+	st.d	$a7, $sp, 136                   # 8-byte Folded Spill
+	beq	$a0, $a3, .LBB36_150
+# %bb.149:                              #   in Loop: Header=BB36_147 Depth=1
 	slt	$a3, $a2, $a1
 	masknez	$a2, $a2, $a3
 	maskeqz	$a1, $a1, $a3
@@ -14293,19 +14221,20 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	st.w	$a1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1984
-	b	.LBB36_157
-.LBB36_151:                             #   in Loop: Header=BB36_148 Depth=1
+	b	.LBB36_156
+.LBB36_150:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1976
 	sub.d	$s3, $a0, $s4
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB36_247
-# %bb.152:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i287
-                                        #   in Loop: Header=BB36_148 Depth=1
-	alsl.d	$s0, $a5, $s5, 2
+	beq	$s3, $a0, .LBB36_245
+# %bb.151:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i287
+                                        #   in Loop: Header=BB36_147 Depth=1
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	alsl.d	$s8, $a0, $s5, 2
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14313,67 +14242,67 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s5, $s7
+	add.d	$a1, $s5, $s6
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	maskeqz	$a1, $a1, $a2
-	masknez	$a2, $s0, $a2
+	masknez	$a2, $s8, $a2
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s5, $a0
 	stx.w	$a1, $a0, $s3
-	blt	$s3, $s2, .LBB36_154
-# %bb.153:                              #   in Loop: Header=BB36_148 Depth=1
+	blez	$s3, .LBB36_153
+# %bb.152:                              #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_154:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i289
-                                        #   in Loop: Header=BB36_148 Depth=1
-	beqz	$s4, .LBB36_156
-# %bb.155:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i291
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_153:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i289
+                                        #   in Loop: Header=BB36_147 Depth=1
+	beqz	$s4, .LBB36_155
+# %bb.154:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i291
+                                        #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_156:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i292
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_155:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i292
+                                        #   in Loop: Header=BB36_147 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1976
 	st.d	$a0, $fp, 1984
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 1992
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-.LBB36_157:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit293
-                                        #   in Loop: Header=BB36_148 Depth=1
+	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
+.LBB36_156:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit293
+                                        #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a0, $fp, 1336
 	ldx.w	$a1, $a0, $s1
 	ld.d	$a0, $fp, 1960
 	ld.d	$a2, $fp, 1968
-	sll.w	$s0, $a1, $s2
-	beq	$a0, $a2, .LBB36_159
-# %bb.158:                              #   in Loop: Header=BB36_148 Depth=1
-	st.w	$s0, $a0, 0
+	sll.w	$s8, $a1, $a7
+	beq	$a0, $a2, .LBB36_158
+# %bb.157:                              #   in Loop: Header=BB36_147 Depth=1
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1960
-	b	.LBB36_165
-.LBB36_159:                             #   in Loop: Header=BB36_148 Depth=1
+	b	.LBB36_164
+.LBB36_158:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1952
 	sub.d	$s3, $a0, $s4
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB36_247
-# %bb.160:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i295
-                                        #   in Loop: Header=BB36_148 Depth=1
+	beq	$s3, $a0, .LBB36_245
+# %bb.159:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i295
+                                        #   in Loop: Header=BB36_147 Depth=1
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14381,46 +14310,46 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s0, $a0, $s3
-	blt	$s3, $s2, .LBB36_162
-# %bb.161:                              #   in Loop: Header=BB36_148 Depth=1
+	stx.w	$s8, $a0, $s3
+	blez	$s3, .LBB36_161
+# %bb.160:                              #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_162:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i297
-                                        #   in Loop: Header=BB36_148 Depth=1
-	beqz	$s4, .LBB36_164
-# %bb.163:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i299
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_161:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i297
+                                        #   in Loop: Header=BB36_147 Depth=1
+	beqz	$s4, .LBB36_163
+# %bb.162:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i299
+                                        #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_164:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i300
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_163:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i300
+                                        #   in Loop: Header=BB36_147 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1952
 	st.d	$a0, $fp, 1960
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 1968
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-.LBB36_165:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit301
-                                        #   in Loop: Header=BB36_148 Depth=1
+	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
+.LBB36_164:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit301
+                                        #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a0, $fp, 1352
 	ldx.w	$a2, $a0, $s1
-	ldx.w	$a0, $a0, $s7
+	ldx.w	$a0, $a0, $s6
 	ld.d	$a1, $fp, 1328
-	bge	$a2, $a0, .LBB36_169
-# %bb.166:                              #   in Loop: Header=BB36_148 Depth=1
-	ldx.wu	$a3, $a1, $s7
+	bge	$a2, $a0, .LBB36_168
+# %bb.165:                              #   in Loop: Header=BB36_147 Depth=1
+	ldx.wu	$a3, $a1, $s6
 	ori	$a4, $zero, 1
 	bstrins.d	$a4, $a4, 32, 31
 	ld.d	$a0, $fp, 1936
@@ -14428,43 +14357,43 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	and	$a3, $a3, $a4
 	addi.w	$a3, $a3, 0
 	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB36_170
-# %bb.167:                              #   in Loop: Header=BB36_148 Depth=1
+	bne	$a3, $a4, .LBB36_169
+# %bb.166:                              #   in Loop: Header=BB36_147 Depth=1
 	ldx.w	$a1, $a1, $s1
-	sll.w	$a1, $a1, $s2
-	addi.d	$s0, $a1, 1
-	bne	$a0, $a2, .LBB36_171
-# %bb.168:                              #   in Loop: Header=BB36_148 Depth=1
+	sll.w	$a1, $a1, $a7
+	addi.d	$s8, $a1, 1
+	bne	$a0, $a2, .LBB36_170
+# %bb.167:                              #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1928
 	sub.d	$s3, $a0, $s4
-	b	.LBB36_173
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	bne	$s3, $a0, .LBB36_172
+	b	.LBB36_245
 	.p2align	4, , 16
-.LBB36_169:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit301._crit_edge
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_168:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit301._crit_edge
+                                        #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a0, $fp, 1936
 	ld.d	$a2, $fp, 1944
-.LBB36_170:                             #   in Loop: Header=BB36_148 Depth=1
+.LBB36_169:                             #   in Loop: Header=BB36_147 Depth=1
 	ldx.w	$a1, $a1, $s1
-	sll.w	$s0, $a1, $s2
-	beq	$a0, $a2, .LBB36_172
-.LBB36_171:                             #   in Loop: Header=BB36_148 Depth=1
-	st.w	$s0, $a0, 0
+	sll.w	$s8, $a1, $a7
+	beq	$a0, $a2, .LBB36_171
+.LBB36_170:                             #   in Loop: Header=BB36_147 Depth=1
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1936
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	b	.LBB36_179
-.LBB36_172:                             #   in Loop: Header=BB36_148 Depth=1
+	b	.LBB36_177
+.LBB36_171:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1928
 	sub.d	$s3, $a2, $s4
-.LBB36_173:                             #   in Loop: Header=BB36_148 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB36_247
-# %bb.174:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i303
-                                        #   in Loop: Header=BB36_148 Depth=1
+	beq	$s3, $a0, .LBB36_245
+.LBB36_172:                             # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i311
+                                        #   in Loop: Header=BB36_147 Depth=1
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14472,86 +14401,85 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s0, $a0, $s3
-	blt	$s3, $s2, .LBB36_176
-# %bb.175:                              #   in Loop: Header=BB36_148 Depth=1
+	stx.w	$s8, $a0, $s3
+	blez	$s3, .LBB36_174
+# %bb.173:                              #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_176:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i305
-                                        #   in Loop: Header=BB36_148 Depth=1
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	beqz	$s4, .LBB36_178
-# %bb.177:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i315
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_174:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i313
+                                        #   in Loop: Header=BB36_147 Depth=1
+	beqz	$s4, .LBB36_176
+# %bb.175:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i315
+                                        #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_178:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i316
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_176:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i316
+                                        #   in Loop: Header=BB36_147 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1928
 	st.d	$a0, $fp, 1936
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 1944
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-.LBB36_179:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit309
-                                        #   in Loop: Header=BB36_148 Depth=1
+	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
+.LBB36_177:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit309
+                                        #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a1, $fp, 1352
 	ldx.w	$a3, $a1, $s1
-	ldx.w	$a2, $a1, $s7
-	addi.d	$a0, $s0, 1
-	bge	$a2, $a3, .LBB36_147
-# %bb.180:                              #   in Loop: Header=BB36_148 Depth=1
+	ldx.w	$a2, $a1, $s6
+	addi.d	$a0, $s2, 1
+	bge	$a2, $a3, .LBB36_146
+# %bb.178:                              #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a3, $fp, 1328
 	ldx.bu	$a3, $a3, $s1
 	andi	$a3, $a3, 1
-	bnez	$a3, .LBB36_147
-# %bb.181:                              #   in Loop: Header=BB36_148 Depth=1
+	bnez	$a3, .LBB36_146
+# %bb.179:                              #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a3, $fp, 1376
 	ldx.w	$a3, $a3, $s1
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
-	beq	$a3, $a4, .LBB36_147
-# %bb.182:                              #   in Loop: Header=BB36_148 Depth=1
-	slli.d	$s1, $a3, 2
-	ldx.w	$a5, $a1, $s1
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	beq	$a3, $a4, .LBB36_146
+# %bb.180:                              #   in Loop: Header=BB36_147 Depth=1
+	slli.d	$s0, $a3, 2
+	ldx.w	$a5, $a1, $s0
 	ld.d	$a4, $fp, 1984
 	ld.d	$a6, $fp, 1992
 	slt	$a0, $a5, $a2
-	beq	$a4, $a6, .LBB36_184
-# %bb.183:                              #   in Loop: Header=BB36_148 Depth=1
+	beq	$a4, $a6, .LBB36_182
+# %bb.181:                              #   in Loop: Header=BB36_147 Depth=1
 	masknez	$a1, $a5, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	st.w	$a0, $a4, 0
 	addi.d	$a0, $a4, 4
 	st.d	$a0, $fp, 1984
-	b	.LBB36_190
-.LBB36_184:                             #   in Loop: Header=BB36_148 Depth=1
+	b	.LBB36_188
+.LBB36_182:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1976
 	sub.d	$s3, $a4, $s4
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	beq	$s3, $a2, .LBB36_247
-# %bb.185:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i319
-                                        #   in Loop: Header=BB36_148 Depth=1
-	add.d	$a2, $a1, $s7
+	beq	$s3, $a2, .LBB36_245
+# %bb.183:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i319
+                                        #   in Loop: Header=BB36_147 Depth=1
+	add.d	$a2, $a1, $s6
 	alsl.d	$a1, $a3, $a1, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
-	or	$s0, $a0, $a1
+	or	$s5, $a0, $a1
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14559,63 +14487,62 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $s5, 0
 	move	$s5, $a0
 	stx.w	$a1, $a0, $s3
-	blt	$s3, $s2, .LBB36_187
-# %bb.186:                              #   in Loop: Header=BB36_148 Depth=1
+	blez	$s3, .LBB36_185
+# %bb.184:                              #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_187:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i321
-                                        #   in Loop: Header=BB36_148 Depth=1
-	beqz	$s4, .LBB36_189
-# %bb.188:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i323
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_185:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i321
+                                        #   in Loop: Header=BB36_147 Depth=1
+	beqz	$s4, .LBB36_187
+# %bb.186:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i323
+                                        #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_189:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i324
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_187:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i324
+                                        #   in Loop: Header=BB36_147 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1976
 	st.d	$a0, $fp, 1984
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s1, $s5, 2
 	st.d	$a0, $fp, 1992
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-.LBB36_190:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit325
-                                        #   in Loop: Header=BB36_148 Depth=1
+	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
+.LBB36_188:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit325
+                                        #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a0, $fp, 1336
-	ldx.w	$a1, $a0, $s1
+	ldx.w	$a1, $a0, $s0
 	ld.d	$a0, $fp, 1960
 	ld.d	$a2, $fp, 1968
-	sll.w	$s0, $a1, $s2
-	beq	$a0, $a2, .LBB36_192
-# %bb.191:                              #   in Loop: Header=BB36_148 Depth=1
-	st.w	$s0, $a0, 0
+	sll.w	$s8, $a1, $a7
+	beq	$a0, $a2, .LBB36_190
+# %bb.189:                              #   in Loop: Header=BB36_147 Depth=1
+	st.w	$s8, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1960
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	b	.LBB36_198
-.LBB36_192:                             #   in Loop: Header=BB36_148 Depth=1
+	b	.LBB36_196
+.LBB36_190:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1952
 	sub.d	$s3, $a0, $s4
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB36_247
-# %bb.193:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i327
-                                        #   in Loop: Header=BB36_148 Depth=1
+	beq	$s3, $a0, .LBB36_245
+# %bb.191:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i327
+                                        #   in Loop: Header=BB36_147 Depth=1
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14623,62 +14550,61 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s1, $a0, $a1
+	slli.d	$a0, $s1, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s0, $a0, $s3
-	blt	$s3, $s2, .LBB36_195
-# %bb.194:                              #   in Loop: Header=BB36_148 Depth=1
+	stx.w	$s8, $a0, $s3
+	blez	$s3, .LBB36_193
+# %bb.192:                              #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_195:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i329
-                                        #   in Loop: Header=BB36_148 Depth=1
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	beqz	$s4, .LBB36_197
-# %bb.196:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i331
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_193:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i329
+                                        #   in Loop: Header=BB36_147 Depth=1
+	beqz	$s4, .LBB36_195
+# %bb.194:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i331
+                                        #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_197:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i332
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_195:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i332
+                                        #   in Loop: Header=BB36_147 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1952
 	st.d	$a0, $fp, 1960
-	alsl.d	$a0, $s6, $s5, 2
+	alsl.d	$a0, $s1, $s5, 2
 	st.d	$a0, $fp, 1968
-.LBB36_198:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit333
-                                        #   in Loop: Header=BB36_148 Depth=1
+	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
+.LBB36_196:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit333
+                                        #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$a0, $fp, 1328
-	ldx.w	$a1, $a0, $s1
+	ldx.w	$a1, $a0, $s0
 	ld.d	$a0, $fp, 1936
 	ld.d	$a2, $fp, 1944
-	sll.w	$s1, $a1, $s2
-	beq	$a0, $a2, .LBB36_200
-# %bb.199:                              #   in Loop: Header=BB36_148 Depth=1
+	sll.w	$s1, $a1, $a7
+	beq	$a0, $a2, .LBB36_198
+# %bb.197:                              #   in Loop: Header=BB36_147 Depth=1
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1936
-	b	.LBB36_206
-.LBB36_200:                             #   in Loop: Header=BB36_148 Depth=1
+	b	.LBB36_204
+.LBB36_198:                             #   in Loop: Header=BB36_147 Depth=1
 	ld.d	$s4, $fp, 1928
 	sub.d	$s3, $a0, $s4
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB36_247
-# %bb.201:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i335
-                                        #   in Loop: Header=BB36_148 Depth=1
+	beq	$s3, $a0, .LBB36_245
+# %bb.199:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i335
+                                        #   in Loop: Header=BB36_147 Depth=1
 	srai.d	$a0, $s3, 2
-	ori	$s2, $zero, 1
-	sltu	$a1, $s2, $a0
-	masknez	$a2, $s2, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -14692,47 +14618,45 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	stx.w	$s1, $a0, $s3
-	blt	$s3, $s2, .LBB36_203
-# %bb.202:                              #   in Loop: Header=BB36_148 Depth=1
+	blez	$s3, .LBB36_201
+# %bb.200:                              #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB36_203:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i337
-                                        #   in Loop: Header=BB36_148 Depth=1
-	beqz	$s4, .LBB36_205
-# %bb.204:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i339
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_201:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i337
+                                        #   in Loop: Header=BB36_147 Depth=1
+	beqz	$s4, .LBB36_203
+# %bb.202:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i339
+                                        #   in Loop: Header=BB36_147 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB36_205:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i340
-                                        #   in Loop: Header=BB36_148 Depth=1
+.LBB36_203:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i340
+                                        #   in Loop: Header=BB36_147 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1928
 	st.d	$a0, $fp, 1936
 	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 1944
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-.LBB36_206:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit341
-                                        #   in Loop: Header=BB36_148 Depth=1
-	addi.d	$a0, $s0, 2
-	b	.LBB36_147
-.LBB36_207:
+.LBB36_204:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit341
+                                        #   in Loop: Header=BB36_147 Depth=1
+	addi.d	$a0, $s2, 2
+	b	.LBB36_146
+.LBB36_205:
 	move	$a0, $zero
-.LBB36_208:                             # %._crit_edge393
+.LBB36_206:                             # %._crit_edge393
 	ld.w	$a1, $fp, 1560
 	st.w	$a0, $fp, 1564
-	ld.d	$t4, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 88                    # 8-byte Folded Reload
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB36_224
-# %bb.209:                              # %.lr.ph397
+	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 96                    # 8-byte Folded Reload
+	blez	$a1, .LBB36_222
+# %bb.207:                              # %.lr.ph397
 	ld.d	$a0, $fp, 1616
 	ld.d	$a1, $fp, 1568
 	ld.d	$a2, $fp, 1784
@@ -14741,57 +14665,56 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ld.d	$a5, $fp, 1832
 	ld.d	$a7, $fp, 1856
 	move	$t0, $zero
-	b	.LBB36_211
+	b	.LBB36_209
 	.p2align	4, , 16
-.LBB36_210:                             #   in Loop: Header=BB36_211 Depth=1
+.LBB36_208:                             #   in Loop: Header=BB36_209 Depth=1
 	ld.w	$a6, $fp, 1560
 	addi.d	$t0, $t0, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a4, 4
-	bge	$t0, $a6, .LBB36_219
-.LBB36_211:                             # =>This Inner Loop Header: Depth=1
+	bge	$t0, $a6, .LBB36_217
+.LBB36_209:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a0, 0
 	ld.w	$t2, $a1, 0
 	slli.d	$t1, $a6, 2
 	ldx.w	$t3, $a2, $t1
-	blt	$t2, $t3, .LBB36_215
-# %bb.212:                              #   in Loop: Header=BB36_211 Depth=1
-	ldx.w	$t3, $a3, $t1
-	blt	$t3, $t2, .LBB36_216
-.LBB36_213:                             #   in Loop: Header=BB36_211 Depth=1
-	ld.w	$t2, $a4, 0
-	ldx.w	$t3, $a5, $t1
-	blt	$t2, $t3, .LBB36_217
-.LBB36_214:                             #   in Loop: Header=BB36_211 Depth=1
-	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB36_210
-	b	.LBB36_218
-	.p2align	4, , 16
-.LBB36_215:                             #   in Loop: Header=BB36_211 Depth=1
+	bge	$t2, $t3, .LBB36_213
+# %bb.210:                              #   in Loop: Header=BB36_209 Depth=1
 	alsl.d	$t3, $a6, $a2, 2
 	st.w	$t2, $t3, 0
 	ldx.w	$t3, $a3, $t1
-	bge	$t3, $t2, .LBB36_213
-.LBB36_216:                             #   in Loop: Header=BB36_211 Depth=1
+	blt	$t3, $t2, .LBB36_214
+.LBB36_211:                             #   in Loop: Header=BB36_209 Depth=1
+	ld.w	$t2, $a4, 0
+	ldx.w	$t3, $a5, $t1
+	bge	$t2, $t3, .LBB36_215
+.LBB36_212:                             #   in Loop: Header=BB36_209 Depth=1
+	alsl.d	$t3, $a6, $a5, 2
+	st.w	$t2, $t3, 0
+	ldx.w	$t1, $a7, $t1
+	bge	$t1, $t2, .LBB36_208
+	b	.LBB36_216
+	.p2align	4, , 16
+.LBB36_213:                             #   in Loop: Header=BB36_209 Depth=1
+	ldx.w	$t3, $a3, $t1
+	bge	$t3, $t2, .LBB36_211
+.LBB36_214:                             #   in Loop: Header=BB36_209 Depth=1
 	alsl.d	$t3, $a6, $a3, 2
 	st.w	$t2, $t3, 0
 	ld.w	$t2, $a4, 0
 	ldx.w	$t3, $a5, $t1
-	bge	$t2, $t3, .LBB36_214
-.LBB36_217:                             #   in Loop: Header=BB36_211 Depth=1
-	alsl.d	$t3, $a6, $a5, 2
-	st.w	$t2, $t3, 0
+	blt	$t2, $t3, .LBB36_212
+.LBB36_215:                             #   in Loop: Header=BB36_209 Depth=1
 	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB36_210
-.LBB36_218:                             #   in Loop: Header=BB36_211 Depth=1
+	bge	$t1, $t2, .LBB36_208
+.LBB36_216:                             #   in Loop: Header=BB36_209 Depth=1
 	alsl.d	$a6, $a6, $a7, 2
 	st.w	$t2, $a6, 0
-	b	.LBB36_210
-.LBB36_219:                             # %.preheader366
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB36_224
-# %bb.220:                              # %.lr.ph399
+	b	.LBB36_208
+.LBB36_217:                             # %.preheader366
+	blez	$a6, .LBB36_222
+# %bb.218:                              # %.lr.ph399
 	ld.d	$a0, $fp, 1616
 	ld.d	$a1, $fp, 1808
 	ld.d	$a2, $fp, 1784
@@ -14799,21 +14722,21 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ld.d	$a4, $fp, 1832
 	ld.d	$a5, $fp, 1592
 	move	$a7, $zero
-	b	.LBB36_222
+	b	.LBB36_220
 	.p2align	4, , 16
-.LBB36_221:                             #   in Loop: Header=BB36_222 Depth=1
+.LBB36_219:                             #   in Loop: Header=BB36_220 Depth=1
 	addi.d	$a7, $a7, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, 4
-	bge	$a7, $a6, .LBB36_224
-.LBB36_222:                             # =>This Inner Loop Header: Depth=1
+	bge	$a7, $a6, .LBB36_222
+.LBB36_220:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a0, 0
 	slli.d	$t0, $t0, 2
 	ldx.w	$t2, $a1, $t0
 	ldx.w	$t1, $a2, $t0
-	blt	$t2, $t1, .LBB36_221
-# %bb.223:                              #   in Loop: Header=BB36_222 Depth=1
+	blt	$t2, $t1, .LBB36_219
+# %bb.221:                              #   in Loop: Header=BB36_220 Depth=1
 	ld.w	$a6, $a3, 0
 	sub.d	$a6, $a6, $t1
 	st.w	$a6, $a3, 0
@@ -14822,24 +14745,24 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sub.d	$a6, $t0, $a6
 	st.w	$a6, $a5, 0
 	ld.w	$a6, $fp, 1560
-	b	.LBB36_221
-.LBB36_224:                             # %.preheader365
+	b	.LBB36_219
+.LBB36_222:                             # %.preheader365
 	ld.w	$a0, $fp, 1120
-	bltz	$a0, .LBB36_227
-# %bb.225:                              # %.lr.ph402
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	bltz	$a0, .LBB36_225
+# %bb.223:                              # %.lr.ph402
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $t4, 0
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $t5, 0
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a5, $a5, 0
 	addi.w	$a6, $zero, -1
 	.p2align	4, , 16
-.LBB36_226:                             # =>This Inner Loop Header: Depth=1
+.LBB36_224:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a0, 0
 	st.w	$a7, $a1, 0
 	ld.w	$a7, $a2, 0
@@ -14862,12 +14785,11 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 4
-	blt	$a6, $a7, .LBB36_226
-.LBB36_227:                             # %.preheader364
+	blt	$a6, $a7, .LBB36_224
+.LBB36_225:                             # %.preheader364
 	ld.w	$a0, $fp, 1564
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB36_243
-# %bb.228:                              # %.lr.ph404
+	blez	$a0, .LBB36_241
+# %bb.226:                              # %.lr.ph404
 	ld.d	$a0, $fp, 1976
 	ld.d	$a1, $fp, 1928
 	ldptr.d	$a2, $fp, 2144
@@ -14876,57 +14798,56 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ldptr.d	$a5, $fp, 2192
 	ldptr.d	$a7, $fp, 2216
 	move	$t0, $zero
-	b	.LBB36_230
+	b	.LBB36_228
 	.p2align	4, , 16
-.LBB36_229:                             #   in Loop: Header=BB36_230 Depth=1
+.LBB36_227:                             #   in Loop: Header=BB36_228 Depth=1
 	ld.w	$a6, $fp, 1564
 	addi.d	$t0, $t0, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a4, 4
-	bge	$t0, $a6, .LBB36_238
-.LBB36_230:                             # =>This Inner Loop Header: Depth=1
+	bge	$t0, $a6, .LBB36_236
+.LBB36_228:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a0, 0
 	ld.w	$t2, $a1, 0
 	slli.d	$t1, $a6, 2
 	ldx.w	$t3, $a2, $t1
-	blt	$t2, $t3, .LBB36_234
-# %bb.231:                              #   in Loop: Header=BB36_230 Depth=1
-	ldx.w	$t3, $a3, $t1
-	blt	$t3, $t2, .LBB36_235
-.LBB36_232:                             #   in Loop: Header=BB36_230 Depth=1
-	ld.w	$t2, $a4, 0
-	ldx.w	$t3, $a5, $t1
-	blt	$t2, $t3, .LBB36_236
-.LBB36_233:                             #   in Loop: Header=BB36_230 Depth=1
-	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB36_229
-	b	.LBB36_237
-	.p2align	4, , 16
-.LBB36_234:                             #   in Loop: Header=BB36_230 Depth=1
+	bge	$t2, $t3, .LBB36_232
+# %bb.229:                              #   in Loop: Header=BB36_228 Depth=1
 	alsl.d	$t3, $a6, $a2, 2
 	st.w	$t2, $t3, 0
 	ldx.w	$t3, $a3, $t1
-	bge	$t3, $t2, .LBB36_232
-.LBB36_235:                             #   in Loop: Header=BB36_230 Depth=1
+	blt	$t3, $t2, .LBB36_233
+.LBB36_230:                             #   in Loop: Header=BB36_228 Depth=1
+	ld.w	$t2, $a4, 0
+	ldx.w	$t3, $a5, $t1
+	bge	$t2, $t3, .LBB36_234
+.LBB36_231:                             #   in Loop: Header=BB36_228 Depth=1
+	alsl.d	$t3, $a6, $a5, 2
+	st.w	$t2, $t3, 0
+	ldx.w	$t1, $a7, $t1
+	bge	$t1, $t2, .LBB36_227
+	b	.LBB36_235
+	.p2align	4, , 16
+.LBB36_232:                             #   in Loop: Header=BB36_228 Depth=1
+	ldx.w	$t3, $a3, $t1
+	bge	$t3, $t2, .LBB36_230
+.LBB36_233:                             #   in Loop: Header=BB36_228 Depth=1
 	alsl.d	$t3, $a6, $a3, 2
 	st.w	$t2, $t3, 0
 	ld.w	$t2, $a4, 0
 	ldx.w	$t3, $a5, $t1
-	bge	$t2, $t3, .LBB36_233
-.LBB36_236:                             #   in Loop: Header=BB36_230 Depth=1
-	alsl.d	$t3, $a6, $a5, 2
-	st.w	$t2, $t3, 0
+	blt	$t2, $t3, .LBB36_231
+.LBB36_234:                             #   in Loop: Header=BB36_228 Depth=1
 	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB36_229
-.LBB36_237:                             #   in Loop: Header=BB36_230 Depth=1
+	bge	$t1, $t2, .LBB36_227
+.LBB36_235:                             #   in Loop: Header=BB36_228 Depth=1
 	alsl.d	$a6, $a6, $a7, 2
 	st.w	$t2, $a6, 0
-	b	.LBB36_229
-.LBB36_238:                             # %.preheader363
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB36_243
-# %bb.239:                              # %.lr.ph406
+	b	.LBB36_227
+.LBB36_236:                             # %.preheader363
+	blez	$a6, .LBB36_241
+# %bb.237:                              # %.lr.ph406
 	ld.d	$a0, $fp, 1976
 	ldptr.d	$a1, $fp, 2168
 	ldptr.d	$a2, $fp, 2144
@@ -14934,21 +14855,21 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ldptr.d	$a4, $fp, 2192
 	ld.d	$a5, $fp, 1952
 	move	$a7, $zero
-	b	.LBB36_241
+	b	.LBB36_239
 	.p2align	4, , 16
-.LBB36_240:                             #   in Loop: Header=BB36_241 Depth=1
+.LBB36_238:                             #   in Loop: Header=BB36_239 Depth=1
 	addi.d	$a7, $a7, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, 4
-	bge	$a7, $a6, .LBB36_243
-.LBB36_241:                             # =>This Inner Loop Header: Depth=1
+	bge	$a7, $a6, .LBB36_241
+.LBB36_239:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a0, 0
 	slli.d	$t0, $t0, 2
 	ldx.w	$t2, $a1, $t0
 	ldx.w	$t1, $a2, $t0
-	blt	$t2, $t1, .LBB36_240
-# %bb.242:                              #   in Loop: Header=BB36_241 Depth=1
+	blt	$t2, $t1, .LBB36_238
+# %bb.240:                              #   in Loop: Header=BB36_239 Depth=1
 	ld.w	$a6, $a3, 0
 	sub.d	$a6, $a6, $t1
 	st.w	$a6, $a3, 0
@@ -14957,24 +14878,24 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	sub.d	$a6, $t0, $a6
 	st.w	$a6, $a5, 0
 	ld.w	$a6, $fp, 1564
-	b	.LBB36_240
-.LBB36_243:                             # %.preheader
+	b	.LBB36_238
+.LBB36_241:                             # %.preheader
 	ld.w	$a0, $fp, 1120
-	bltz	$a0, .LBB36_246
-# %bb.244:                              # %.lr.ph409
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	bltz	$a0, .LBB36_244
+# %bb.242:                              # %.lr.ph409
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $t6, 0
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $t7, 0
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
-	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a5, $a5, 0
 	addi.w	$a6, $zero, -1
 	.p2align	4, , 16
-.LBB36_245:                             # =>This Inner Loop Header: Depth=1
+.LBB36_243:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a0, 0
 	st.w	$a7, $a1, 0
 	ld.w	$a7, $a2, 0
@@ -14997,8 +14918,8 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 4
-	blt	$a6, $a7, .LBB36_245
-.LBB36_246:                             # %._crit_edge410
+	blt	$a6, $a7, .LBB36_243
+.LBB36_244:                             # %._crit_edge410
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
@@ -15012,7 +14933,7 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 240
 	ret
-.LBB36_247:
+.LBB36_245:
 	pcalau12i	$a0, %pc_hi20(.L.str.143)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.143)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
@@ -15027,19 +14948,19 @@ _ZN4Mesh14calc_face_listEv:             # @_ZN4Mesh14calc_face_listEv
 _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	.cfi_def_cfa_offset 256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -272
+	.cfi_def_cfa_offset 272
+	st.d	$ra, $sp, 264                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -15108,22 +15029,20 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 .LBB37_18:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit145
 	ld.wu	$a3, $fp, 1120
 	addi.d	$a0, $fp, 1784
-	addi.d	$a5, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a5, $a3
-	lu12i.w	$a4, 2441
-	ori	$s3, $a4, 1663
-	st.w	$s3, $sp, 164
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	beqz	$a3, .LBB37_20
+	addi.d	$a4, $a3, 1
+	lu12i.w	$a3, 2441
+	ori	$s3, $a3, 1663
+	slli.d	$a3, $a4, 31
+	st.w	$s3, $sp, 180
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	bgez	$a3, .LBB37_20
 # %bb.19:
 	move	$a4, $zero
 	move	$a1, $a2
 	b	.LBB37_21
 .LBB37_20:
-	addi.w	$a2, $a5, 0
-	addi.d	$a3, $sp, 164
+	addi.w	$a2, $a4, 0
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -15137,12 +15056,12 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	lu32i.d	$s2, 0
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 164
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.w	$s2, $sp, 180
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB37_23
 # %bb.22:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -15161,12 +15080,12 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a0, $fp, 1832
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s3, $sp, 164
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.w	$s3, $sp, 180
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB37_28
 # %bb.27:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -15185,12 +15104,12 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a0, $fp, 1856
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 164
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.w	$s2, $sp, 180
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB37_33
 # %bb.32:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	b	.LBB37_36
@@ -15210,11 +15129,9 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 .LBB37_38:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit154
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s0, $fp, 1880
-	bnez	$a1, .LBB37_40
+	bltz	$a1, .LBB37_40
 # %bb.39:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s0
@@ -15229,103 +15146,98 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 .LBB37_42:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit157
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s1, $fp, 1904
-	bnez	$a1, .LBB37_44
+	bltz	$a1, .LBB37_44
 # %bb.43:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB37_44:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit159
-	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 1160
-	ori	$a2, $zero, 1
 	addi.w	$a1, $zero, -4
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	blt	$a0, $a2, .LBB37_137
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	blez	$a0, .LBB37_136
 # %bb.45:                               # %.lr.ph
+	move	$s6, $zero
 	move	$s7, $zero
-	move	$a3, $zero
-	move	$s5, $zero
+	move	$s8, $zero
 	move	$a2, $zero
 	lu52i.d	$a0, $a1, 2047
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 511
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB37_48
 	.p2align	4, , 16
 .LBB37_46:                              #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $a2
 .LBB37_47:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.w	$a1, $fp, 1160
-	addi.d	$s5, $s5, 1
-	addi.d	$a3, $a3, 1
-	addi.d	$s7, $s7, 4
+	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 4
 	move	$a2, $a0
-	bge	$s5, $a1, .LBB37_138
+	bge	$s8, $a1, .LBB37_137
 .LBB37_48:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1376
-	ldx.wu	$s6, $a0, $s7
-	beq	$s5, $s6, .LBB37_46
+	ldx.wu	$s4, $a0, $s6
+	beq	$s8, $s4, .LBB37_46
 # %bb.49:                               #   in Loop: Header=BB37_48 Depth=1
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a1, $fp, 1352
-	addi.w	$a0, $s6, 0
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	addi.w	$a0, $s4, 0
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	slli.d	$s3, $a0, 2
 	ldx.w	$a0, $a1, $s3
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$a0, $fp, 1648
 	ld.d	$a2, $fp, 1656
-	ldx.w	$a1, $a1, $s7
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 152                   # 8-byte Folded Spill
+	ldx.w	$a1, $a1, $s6
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	beq	$a0, $a2, .LBB37_52
 # %bb.50:                               #   in Loop: Header=BB37_48 Depth=1
-	st.w	$a3, $a0, 0
+	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1648
 	ld.d	$a0, $fp, 1672
 	ld.d	$a1, $fp, 1680
 	beq	$a0, $a1, .LBB37_58
 .LBB37_51:                              #   in Loop: Header=BB37_48 Depth=1
-	st.w	$s6, $a0, 0
+	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1672
 	b	.LBB37_64
 .LBB37_52:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1640
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
 # %bb.53:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB37_48 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	stx.w	$a0, $s2, $s0
-	blt	$s0, $s8, .LBB37_55
+	stx.w	$s7, $a0, $s0
+	blez	$s0, .LBB37_55
 # %bb.54:                               #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
@@ -15347,7 +15259,7 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1640
 	st.d	$a0, $fp, 1648
-	alsl.d	$a0, $s4, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1656
 	ld.d	$a0, $fp, 1672
 	ld.d	$a1, $fp, 1680
@@ -15355,28 +15267,28 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 .LBB37_58:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1664
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
 # %bb.59:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i195
                                         #   in Loop: Header=BB37_48 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	stx.w	$s6, $a0, $s0
-	blt	$s0, $s8, .LBB37_61
+	stx.w	$s4, $a0, $s0
+	blez	$s0, .LBB37_61
 # %bb.60:                               #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
@@ -15398,12 +15310,12 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1664
 	st.d	$a0, $fp, 1672
-	alsl.d	$a0, $s4, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1680
 .LBB37_64:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit201
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s2, $fp, 1352
-	ldx.w	$a0, $s2, $s7
+	ldx.w	$a0, $s2, $s6
 	ld.d	$a2, $fp, 1624
 	ld.d	$a3, $fp, 1632
 	ldx.w	$a1, $s2, $s3
@@ -15420,37 +15332,39 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 .LBB37_66:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1616
 	sub.d	$s0, $a2, $s1
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a2, .LBB37_315
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a2, .LBB37_313
 # %bb.67:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i203
                                         #   in Loop: Header=BB37_48 Depth=1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	alsl.d	$s4, $a2, $s2, 2
+	move	$s5, $s7
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	alsl.d	$a2, $a2, $s2, 2
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	srai.d	$a2, $s0, 2
-	slt	$s8, $a1, $a0
+	slt	$s7, $a1, $a0
 	ori	$a1, $zero, 1
 	sltu	$a0, $a1, $a2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
+	or	$s4, $a0, $a1
+	slli.d	$a0, $s4, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s2, $s7
-	maskeqz	$a1, $a1, $s8
-	masknez	$a2, $s4, $s8
-	ori	$a3, $zero, 1
+	add.d	$a1, $s2, $s6
+	maskeqz	$a1, $a1, $s7
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $s7
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s2, $a0
 	stx.w	$a1, $a0, $s0
-	blt	$s0, $a3, .LBB37_69
+	blez	$s0, .LBB37_69
 # %bb.68:                               #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
@@ -15472,32 +15386,32 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1616
 	st.d	$a0, $fp, 1624
-	alsl.d	$a0, $s6, $s2, 2
+	alsl.d	$a0, $s4, $s2, 2
 	st.d	$a0, $fp, 1632
+	move	$s7, $s5
 .LBB37_72:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit209
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1328
 	ldx.w	$a1, $a0, $s3
 	ld.d	$a0, $fp, 1576
 	ld.d	$a2, $fp, 1584
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	slt	$a5, $a3, $a4
-	sll.w	$s6, $a1, $a5
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	slt	$s5, $a3, $a4
+	sll.w	$s4, $a1, $s5
 	beq	$a0, $a2, .LBB37_74
 # %bb.73:                               #   in Loop: Header=BB37_48 Depth=1
-	st.w	$s6, $a0, 0
+	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1576
 	b	.LBB37_80
 .LBB37_74:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1568
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
 # %bb.75:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB37_48 Depth=1
-	move	$s8, $a5
 	srai.d	$a0, $s0, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -15505,18 +15419,18 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	stx.w	$s6, $a0, $s0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB37_77
+	stx.w	$s4, $a0, $s0
+	blez	$s0, .LBB37_77
 # %bb.76:                               #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
@@ -15538,18 +15452,18 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1568
 	st.d	$a0, $fp, 1576
-	alsl.d	$a0, $s4, $s2, 2
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s2, 2
 	st.d	$a0, $fp, 1584
-	move	$a5, $s8
 .LBB37_80:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1352
 	ldx.w	$a2, $a0, $s3
-	ldx.w	$a0, $a0, $s7
+	ldx.w	$a0, $a0, $s6
 	ld.d	$a1, $fp, 1336
 	bge	$a2, $a0, .LBB37_84
 # %bb.81:                               #   in Loop: Header=BB37_48 Depth=1
-	ldx.wu	$a3, $a1, $s7
+	ldx.wu	$a3, $a1, $s6
 	ori	$a4, $zero, 1
 	bstrins.d	$a4, $a4, 32, 31
 	ld.d	$a0, $fp, 1600
@@ -15560,44 +15474,36 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	bne	$a3, $a4, .LBB37_85
 # %bb.82:                               #   in Loop: Header=BB37_48 Depth=1
 	ldx.w	$a1, $a1, $s3
-	sll.w	$a1, $a1, $a5
-	addi.d	$s6, $a1, 1
-	beq	$a0, $a2, .LBB37_88
+	sll.w	$a1, $a1, $s5
+	addi.d	$s4, $a1, 1
+	bne	$a0, $a2, .LBB37_86
 # %bb.83:                               #   in Loop: Header=BB37_48 Depth=1
-	st.w	$s6, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $fp, 1600
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	b	.LBB37_94
+	ld.d	$s1, $fp, 1592
+	sub.d	$s0, $a0, $s1
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bne	$s0, $a0, .LBB37_88
+	b	.LBB37_313
 	.p2align	4, , 16
 .LBB37_84:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit._crit_edge
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1600
 	ld.d	$a2, $fp, 1608
 .LBB37_85:                              #   in Loop: Header=BB37_48 Depth=1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	ldx.w	$a1, $a1, $s3
-	sll.w	$s6, $a1, $a5
+	sll.w	$s4, $a1, $s5
 	beq	$a0, $a2, .LBB37_87
-# %bb.86:                               #   in Loop: Header=BB37_48 Depth=1
-	st.w	$s6, $a0, 0
+.LBB37_86:                              #   in Loop: Header=BB37_48 Depth=1
+	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1600
-	b	.LBB37_94
+	b	.LBB37_93
 .LBB37_87:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1592
 	sub.d	$s0, $a2, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	bne	$s0, $a0, .LBB37_89
-	b	.LBB37_315
-.LBB37_88:                              #   in Loop: Header=BB37_48 Depth=1
-	ld.d	$s1, $fp, 1592
-	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
-.LBB37_89:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i220
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
+.LBB37_88:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i220
                                         #   in Loop: Header=BB37_48 Depth=1
-	move	$s8, $a5
 	srai.d	$a0, $s0, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -15605,191 +15511,189 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	stx.w	$s6, $a0, $s0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB37_91
-# %bb.90:                               #   in Loop: Header=BB37_48 Depth=1
+	stx.w	$s4, $a0, $s0
+	blez	$s0, .LBB37_90
+# %bb.89:                               #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_91:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i222
+.LBB37_90:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i222
                                         #   in Loop: Header=BB37_48 Depth=1
-	beqz	$s1, .LBB37_93
-# %bb.92:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i224
+	beqz	$s1, .LBB37_92
+# %bb.91:                               # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i224
                                         #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_93:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i225
+.LBB37_92:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i225
                                         #   in Loop: Header=BB37_48 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1592
 	st.d	$a0, $fp, 1600
-	alsl.d	$a0, $s4, $s2, 2
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s2, 2
 	st.d	$a0, $fp, 1608
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	move	$a5, $s8
-.LBB37_94:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit218
+.LBB37_93:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit218
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1352
 	ldx.w	$a1, $a0, $s3
-	ldx.w	$a2, $a0, $s7
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ldx.w	$a2, $a0, $s6
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
 	bge	$a2, $a1, .LBB37_47
-# %bb.95:                               #   in Loop: Header=BB37_48 Depth=1
+# %bb.94:                               #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a1, $fp, 1336
 	ldx.bu	$a1, $a1, $s3
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB37_47
-# %bb.96:                               #   in Loop: Header=BB37_48 Depth=1
+# %bb.95:                               #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a1, $fp, 1392
 	ldx.w	$s3, $a1, $s3
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	beq	$s3, $a1, .LBB37_47
-# %bb.97:                               #   in Loop: Header=BB37_48 Depth=1
+# %bb.96:                               #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1648
 	ld.d	$a1, $fp, 1656
-	beq	$a0, $a1, .LBB37_100
-# %bb.98:                               #   in Loop: Header=BB37_48 Depth=1
-	st.w	$a3, $a0, 0
+	beq	$a0, $a1, .LBB37_99
+# %bb.97:                               #   in Loop: Header=BB37_48 Depth=1
+	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1648
 	ld.d	$a0, $fp, 1672
 	ld.d	$a1, $fp, 1680
-	beq	$a0, $a1, .LBB37_106
-.LBB37_99:                              #   in Loop: Header=BB37_48 Depth=1
+	beq	$a0, $a1, .LBB37_105
+.LBB37_98:                              #   in Loop: Header=BB37_48 Depth=1
 	st.w	$s3, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1672
-	b	.LBB37_112
-.LBB37_100:                             #   in Loop: Header=BB37_48 Depth=1
+	b	.LBB37_111
+.LBB37_99:                              #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1640
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
-# %bb.101:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i228
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
+# %bb.100:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i228
                                         #   in Loop: Header=BB37_48 Depth=1
-	move	$s6, $a5
+	move	$s4, $s5
 	srai.d	$a0, $s0, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	stx.w	$a0, $s2, $s0
-	blt	$s0, $s8, .LBB37_103
-# %bb.102:                              #   in Loop: Header=BB37_48 Depth=1
+	stx.w	$s7, $a0, $s0
+	blez	$s0, .LBB37_102
+# %bb.101:                              #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_103:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i230
+.LBB37_102:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i230
                                         #   in Loop: Header=BB37_48 Depth=1
-	beqz	$s1, .LBB37_105
-# %bb.104:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i232
+	beqz	$s1, .LBB37_104
+# %bb.103:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i232
                                         #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_105:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i233
+.LBB37_104:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i233
                                         #   in Loop: Header=BB37_48 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1640
 	st.d	$a0, $fp, 1648
-	alsl.d	$a0, $s4, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1656
-	move	$a5, $s6
+	move	$s5, $s4
 	ld.d	$a0, $fp, 1672
 	ld.d	$a1, $fp, 1680
-	bne	$a0, $a1, .LBB37_99
-.LBB37_106:                             #   in Loop: Header=BB37_48 Depth=1
+	bne	$a0, $a1, .LBB37_98
+.LBB37_105:                             #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1664
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
-# %bb.107:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i236
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
+# %bb.106:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i236
                                         #   in Loop: Header=BB37_48 Depth=1
-	move	$s6, $a5
+	move	$s4, $s5
 	srai.d	$a0, $s0, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s4, $a0, $a1
-	slli.d	$a0, $s4, 2
+	or	$s5, $a0, $a1
+	slli.d	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s3, $a0, $s0
-	blt	$s0, $s8, .LBB37_109
-# %bb.108:                              #   in Loop: Header=BB37_48 Depth=1
+	blez	$s0, .LBB37_108
+# %bb.107:                              #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_109:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i238
+.LBB37_108:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i238
                                         #   in Loop: Header=BB37_48 Depth=1
-	beqz	$s1, .LBB37_111
-# %bb.110:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i240
+	beqz	$s1, .LBB37_110
+# %bb.109:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i240
                                         #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_111:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i241
+.LBB37_110:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i241
                                         #   in Loop: Header=BB37_48 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1664
 	st.d	$a0, $fp, 1672
-	alsl.d	$a0, $s4, $s2, 2
+	alsl.d	$a0, $s5, $s2, 2
 	st.d	$a0, $fp, 1680
-	move	$a5, $s6
-.LBB37_112:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit242
+	move	$s5, $s4
+.LBB37_111:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit242
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s2, $fp, 1352
-	ldx.w	$a0, $s2, $s7
-	slli.d	$s8, $s3, 2
+	ldx.w	$a0, $s2, $s6
+	slli.d	$a4, $s3, 2
 	ld.d	$a2, $fp, 1624
 	ld.d	$a3, $fp, 1632
-	ldx.w	$a1, $s2, $s8
-	beq	$a2, $a3, .LBB37_114
-# %bb.113:                              #   in Loop: Header=BB37_48 Depth=1
+	ldx.w	$a1, $s2, $a4
+	beq	$a2, $a3, .LBB37_113
+# %bb.112:                              #   in Loop: Header=BB37_48 Depth=1
 	slt	$a3, $a1, $a0
 	masknez	$a1, $a1, $a3
 	maskeqz	$a0, $a0, $a3
@@ -15797,26 +15701,27 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	st.w	$a0, $a2, 0
 	addi.d	$a0, $a2, 4
 	st.d	$a0, $fp, 1624
-	b	.LBB37_120
-.LBB37_114:                             #   in Loop: Header=BB37_48 Depth=1
+	b	.LBB37_119
+.LBB37_113:                             #   in Loop: Header=BB37_48 Depth=1
+	st.d	$a4, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$s1, $fp, 1616
 	sub.d	$s0, $a2, $s1
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a2, .LBB37_315
-# %bb.115:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i244
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a2, .LBB37_313
+# %bb.114:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i244
                                         #   in Loop: Header=BB37_48 Depth=1
-	move	$s4, $a5
+	move	$s4, $s5
 	alsl.d	$a2, $s3, $s2, 2
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	srai.d	$a2, $s0, 2
-	slt	$s6, $a1, $a0
+	slt	$s5, $a1, $a0
 	ori	$a1, $zero, 1
 	sltu	$a0, $a1, $a2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -15824,32 +15729,32 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	slli.d	$a0, $s3, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s2, $s7
-	maskeqz	$a1, $a1, $s6
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	masknez	$a2, $a2, $s6
+	add.d	$a1, $s2, $s6
+	maskeqz	$a1, $a1, $s5
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $s5
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s2, $a0
 	stx.w	$a1, $a0, $s0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB37_117
-# %bb.116:                              #   in Loop: Header=BB37_48 Depth=1
+	blez	$s0, .LBB37_116
+# %bb.115:                              #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_117:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i246
+.LBB37_116:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i246
                                         #   in Loop: Header=BB37_48 Depth=1
-	beqz	$s1, .LBB37_119
-# %bb.118:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i248
+	move	$s5, $s4
+	beqz	$s1, .LBB37_118
+# %bb.117:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i248
                                         #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_119:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i249
+.LBB37_118:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i249
                                         #   in Loop: Header=BB37_48 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
@@ -15857,29 +15762,28 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	st.d	$a0, $fp, 1624
 	alsl.d	$a0, $s3, $s2, 2
 	st.d	$a0, $fp, 1632
-	move	$a5, $s4
-.LBB37_120:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit250
+	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+.LBB37_119:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit250
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1328
-	ldx.w	$a1, $a0, $s8
+	ldx.w	$a1, $a0, $a4
 	ld.d	$a0, $fp, 1576
 	ld.d	$a2, $fp, 1584
-	sll.w	$s4, $a1, $a5
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	beq	$a0, $a2, .LBB37_122
-# %bb.121:                              #   in Loop: Header=BB37_48 Depth=1
+	sll.w	$s4, $a1, $s5
+	beq	$a0, $a2, .LBB37_121
+# %bb.120:                              #   in Loop: Header=BB37_48 Depth=1
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1576
-	b	.LBB37_128
-.LBB37_122:                             #   in Loop: Header=BB37_48 Depth=1
+	b	.LBB37_127
+.LBB37_121:                             #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1568
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
-# %bb.123:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i252
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
+# %bb.122:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i252
                                         #   in Loop: Header=BB37_48 Depth=1
-	move	$s6, $a5
+	move	$s3, $a4
 	srai.d	$a0, $s0, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -15887,71 +15791,71 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s3, $a0, $a1
-	slli.d	$a0, $s3, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s4, $a0, $s0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB37_125
-# %bb.124:                              #   in Loop: Header=BB37_48 Depth=1
+	blez	$s0, .LBB37_124
+# %bb.123:                              #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_125:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i254
+.LBB37_124:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i254
                                         #   in Loop: Header=BB37_48 Depth=1
-	beqz	$s1, .LBB37_127
-# %bb.126:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i256
+	beqz	$s1, .LBB37_126
+# %bb.125:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i256
                                         #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_127:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i257
+.LBB37_126:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i257
                                         #   in Loop: Header=BB37_48 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
 	st.d	$s2, $fp, 1568
 	st.d	$a0, $fp, 1576
-	alsl.d	$a0, $s3, $s2, 2
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s2, 2
 	st.d	$a0, $fp, 1584
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	move	$a5, $s6
-.LBB37_128:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258
+	move	$a4, $s3
+.LBB37_127:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit258
                                         #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$a0, $fp, 1336
-	ldx.w	$a1, $a0, $s8
+	ldx.w	$a1, $a0, $a4
 	ld.d	$a0, $fp, 1600
 	ld.d	$a2, $fp, 1608
-	sll.w	$s4, $a1, $a5
-	beq	$a0, $a2, .LBB37_130
-# %bb.129:                              #   in Loop: Header=BB37_48 Depth=1
+	sll.w	$s4, $a1, $s5
+	beq	$a0, $a2, .LBB37_129
+# %bb.128:                              #   in Loop: Header=BB37_48 Depth=1
 	st.w	$s4, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1600
-	b	.LBB37_136
-.LBB37_130:                             #   in Loop: Header=BB37_48 Depth=1
+	b	.LBB37_135
+.LBB37_129:                             #   in Loop: Header=BB37_48 Depth=1
 	ld.d	$s1, $fp, 1592
 	sub.d	$s0, $a0, $s1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB37_315
-# %bb.131:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i260
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB37_313
+# %bb.130:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i260
                                         #   in Loop: Header=BB37_48 Depth=1
 	srai.d	$a0, $s0, 2
-	ori	$s6, $zero, 1
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -15961,23 +15865,23 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	stx.w	$s4, $a0, $s0
-	blt	$s0, $s6, .LBB37_133
-# %bb.132:                              #   in Loop: Header=BB37_48 Depth=1
+	blez	$s0, .LBB37_132
+# %bb.131:                              #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_133:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i262
+.LBB37_132:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i262
                                         #   in Loop: Header=BB37_48 Depth=1
-	beqz	$s1, .LBB37_135
-# %bb.134:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i264
+	beqz	$s1, .LBB37_134
+# %bb.133:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i264
                                         #   in Loop: Header=BB37_48 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_135:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i265
+.LBB37_134:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i265
                                         #   in Loop: Header=BB37_48 Depth=1
 	add.d	$a0, $s2, $s0
 	addi.d	$a0, $a0, 4
@@ -15985,457 +15889,257 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	st.d	$a0, $fp, 1600
 	alsl.d	$a0, $s3, $s2, 2
 	st.d	$a0, $fp, 1608
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-.LBB37_136:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit266
+.LBB37_135:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit266
                                         #   in Loop: Header=BB37_48 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 2
 	b	.LBB37_47
-.LBB37_137:
+.LBB37_136:
 	move	$a0, $zero
-.LBB37_138:                             # %._crit_edge
+.LBB37_137:                             # %._crit_edge
 	ld.d	$a1, $fp, 2000
 	ld.d	$a2, $fp, 2008
 	st.w	$a0, $fp, 1560
-	beq	$a2, $a1, .LBB37_140
-# %bb.139:
+	beq	$a2, $a1, .LBB37_139
+# %bb.138:
 	st.d	$a1, $fp, 2008
-.LBB37_140:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit161
+.LBB37_139:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit161
 	ld.d	$a0, $fp, 2024
 	ld.d	$a1, $fp, 2032
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB37_142
-# %bb.141:
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB37_141
+# %bb.140:
 	st.d	$a0, $fp, 2032
-.LBB37_142:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit163
+.LBB37_141:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit163
 	ld.d	$a0, $fp, 1928
 	ld.d	$a1, $fp, 1936
-	beq	$a1, $a0, .LBB37_144
-# %bb.143:
+	beq	$a1, $a0, .LBB37_143
+# %bb.142:
 	st.d	$a0, $fp, 1936
-.LBB37_144:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit165
+.LBB37_143:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit165
 	ld.d	$a0, $fp, 1952
 	ld.d	$a1, $fp, 1960
-	beq	$a1, $a0, .LBB37_146
-# %bb.145:
+	beq	$a1, $a0, .LBB37_145
+# %bb.144:
 	st.d	$a0, $fp, 1960
-.LBB37_146:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit167
+.LBB37_145:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit167
 	ld.d	$a0, $fp, 1976
 	ld.d	$a1, $fp, 1984
-	beq	$a1, $a0, .LBB37_148
-# %bb.147:
+	beq	$a1, $a0, .LBB37_147
+# %bb.146:
 	st.d	$a0, $fp, 1984
-.LBB37_148:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit169
+.LBB37_147:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit169
 	ldptr.d	$a1, $fp, 2144
 	ldptr.d	$a0, $fp, 2152
-	beq	$a0, $a1, .LBB37_150
-# %bb.149:
+	beq	$a0, $a1, .LBB37_149
+# %bb.148:
 	stptr.d	$a1, $fp, 2152
-.LBB37_150:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit171
+.LBB37_149:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit171
 	ldptr.d	$a2, $fp, 2168
 	ldptr.d	$a0, $fp, 2176
-	beq	$a0, $a2, .LBB37_152
-# %bb.151:
+	beq	$a0, $a2, .LBB37_151
+# %bb.150:
 	stptr.d	$a2, $fp, 2176
-.LBB37_152:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit173
+.LBB37_151:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit173
 	ldptr.d	$a0, $fp, 2192
 	ldptr.d	$a3, $fp, 2200
-	beq	$a3, $a0, .LBB37_154
-# %bb.153:
+	beq	$a3, $a0, .LBB37_153
+# %bb.152:
 	stptr.d	$a0, $fp, 2200
-.LBB37_154:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit175
+.LBB37_153:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit175
 	ldptr.d	$a0, $fp, 2216
 	ldptr.d	$a3, $fp, 2224
 	addi.d	$s0, $fp, 2047
-	beq	$a3, $a0, .LBB37_156
-# %bb.155:
+	beq	$a3, $a0, .LBB37_155
+# %bb.154:
 	stptr.d	$a0, $fp, 2224
-.LBB37_156:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit177
+.LBB37_155:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit177
 	ld.wu	$a3, $fp, 1120
 	addi.d	$a0, $s0, 97
 	addi.d	$a4, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a4, $a3
-	st.w	$s2, $sp, 164
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	beqz	$a3, .LBB37_158
-# %bb.157:
+	slli.d	$a3, $a4, 31
+	st.w	$s2, $sp, 180
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	bgez	$a3, .LBB37_157
+# %bb.156:
 	move	$a4, $zero
 	move	$a1, $a2
-	b	.LBB37_159
-.LBB37_158:
+	b	.LBB37_158
+.LBB37_157:
 	addi.w	$a2, $a4, 0
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
 	ldptr.d	$a1, $fp, 2176
 	ldptr.d	$a2, $fp, 2168
 	addi.w	$a4, $a0, 1
-.LBB37_159:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit179
+.LBB37_158:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit179
 	addi.d	$a0, $s0, 121
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s1, $sp, 164
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	bgeu	$a3, $a4, .LBB37_161
-# %bb.160:
+	st.w	$s1, $sp, 180
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	bgeu	$a3, $a4, .LBB37_160
+# %bb.159:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
 	addi.w	$a4, $a0, 1
-	b	.LBB37_164
-.LBB37_161:
-	bgeu	$a4, $a3, .LBB37_164
-# %bb.162:
+	b	.LBB37_163
+.LBB37_160:
+	bgeu	$a4, $a3, .LBB37_163
+# %bb.161:
 	alsl.d	$a2, $a4, $a2, 2
-	beq	$a1, $a2, .LBB37_164
-# %bb.163:
+	beq	$a1, $a2, .LBB37_163
+# %bb.162:
 	stptr.d	$a2, $fp, 2176
-.LBB37_164:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit181
+.LBB37_163:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit181
 	ldptr.d	$a1, $fp, 2200
 	ldptr.d	$a2, $fp, 2192
 	addi.d	$a0, $s0, 145
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 164
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	bgeu	$a3, $a4, .LBB37_166
-# %bb.165:
+	st.w	$s2, $sp, 180
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	bgeu	$a3, $a4, .LBB37_165
+# %bb.164:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
 	addi.w	$a4, $a0, 1
-	b	.LBB37_169
-.LBB37_166:
-	bgeu	$a4, $a3, .LBB37_169
-# %bb.167:
+	b	.LBB37_168
+.LBB37_165:
+	bgeu	$a4, $a3, .LBB37_168
+# %bb.166:
 	alsl.d	$a2, $a4, $a2, 2
-	beq	$a1, $a2, .LBB37_169
-# %bb.168:
+	beq	$a1, $a2, .LBB37_168
+# %bb.167:
 	stptr.d	$a2, $fp, 2200
-.LBB37_169:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit183
+.LBB37_168:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit183
 	ldptr.d	$a1, $fp, 2224
 	ldptr.d	$a2, $fp, 2216
 	addi.d	$a0, $s0, 169
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s1, $sp, 164
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	bgeu	$a3, $a4, .LBB37_171
-# %bb.170:
+	st.w	$s1, $sp, 180
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	bgeu	$a3, $a4, .LBB37_170
+# %bb.169:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 164
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
-	b	.LBB37_174
-.LBB37_171:
-	bgeu	$a4, $a3, .LBB37_174
-# %bb.172:
+	b	.LBB37_173
+.LBB37_170:
+	bgeu	$a4, $a3, .LBB37_173
+# %bb.171:
 	alsl.d	$a0, $a4, $a2, 2
-	beq	$a1, $a0, .LBB37_174
-# %bb.173:
+	beq	$a1, $a0, .LBB37_173
+# %bb.172:
 	stptr.d	$a0, $fp, 2224
-.LBB37_174:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit185
+.LBB37_173:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit185
 	ldptr.d	$a0, $fp, 2240
 	ldptr.d	$a1, $fp, 2248
-	beq	$a1, $a0, .LBB37_176
-# %bb.175:
+	beq	$a1, $a0, .LBB37_175
+# %bb.174:
 	stptr.d	$a0, $fp, 2248
-.LBB37_176:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit187
+.LBB37_175:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit187
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s1, $s0, 193
-	bnez	$a1, .LBB37_178
-# %bb.177:
+	bltz	$a1, .LBB37_177
+# %bb.176:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-.LBB37_178:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit189
+.LBB37_177:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit189
 	ldptr.d	$a0, $fp, 2264
 	ldptr.d	$a1, $fp, 2272
-	beq	$a1, $a0, .LBB37_180
-# %bb.179:
+	beq	$a1, $a0, .LBB37_179
+# %bb.178:
 	stptr.d	$a0, $fp, 2272
-.LBB37_180:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit191
+.LBB37_179:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit191
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$s0, $s0, 217
-	bnez	$a1, .LBB37_182
-# %bb.181:
+	bltz	$a1, .LBB37_181
+# %bb.180:
 	addi.w	$a1, $a0, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-.LBB37_182:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit193
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+.LBB37_181:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit193
+	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 104                   # 8-byte Folded Spill
 	ld.w	$a0, $fp, 1160
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB37_275
-# %bb.183:                              # %.lr.ph465
+	blez	$a0, .LBB37_273
+# %bb.182:                              # %.lr.ph465
+	move	$s6, $zero
 	move	$s7, $zero
-	move	$a3, $zero
-	move	$s0, $zero
-	move	$a2, $zero
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	move	$s8, $zero
+	move	$s2, $zero
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	lu52i.d	$a0, $a0, 2047
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 511
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	b	.LBB37_186
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	b	.LBB37_185
 	.p2align	4, , 16
-.LBB37_184:                             #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $a2
-.LBB37_185:                             #   in Loop: Header=BB37_186 Depth=1
+.LBB37_183:                             #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s2
+.LBB37_184:                             #   in Loop: Header=BB37_185 Depth=1
 	ld.w	$a1, $fp, 1160
-	addi.d	$s0, $s0, 1
-	addi.d	$a3, $a3, 1
-	addi.d	$s7, $s7, 4
-	move	$a2, $a0
-	bge	$s0, $a1, .LBB37_276
-.LBB37_186:                             # =>This Inner Loop Header: Depth=1
+	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 4
+	move	$s2, $a0
+	bge	$s8, $a1, .LBB37_274
+.LBB37_185:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1392
-	ldx.wu	$s6, $a0, $s7
-	beq	$s0, $s6, .LBB37_184
-# %bb.187:                              #   in Loop: Header=BB37_186 Depth=1
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	ldx.wu	$s1, $a0, $s6
+	beq	$s8, $s1, .LBB37_183
+# %bb.186:                              #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a1, $fp, 1352
-	addi.w	$a0, $s6, 0
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	slli.d	$s2, $a0, 2
-	ldx.w	$a0, $a1, $s2
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	addi.w	$a0, $s1, 0
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	slli.d	$a6, $a0, 2
+	ldx.w	$a0, $a1, $a6
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$a0, $fp, 2008
 	ld.d	$a2, $fp, 2016
-	ldx.w	$a1, $a1, $s7
-	st.d	$a3, $sp, 152                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
-	beq	$a0, $a2, .LBB37_190
-# %bb.188:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$a3, $a0, 0
+	ldx.w	$a1, $a1, $s6
+	st.d	$a6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	beq	$a0, $a2, .LBB37_189
+# %bb.187:                              #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 2008
 	ld.d	$a0, $fp, 2032
 	ld.d	$a1, $fp, 2040
-	beq	$a0, $a1, .LBB37_196
-.LBB37_189:                             #   in Loop: Header=BB37_186 Depth=1
-	st.w	$s6, $a0, 0
+	beq	$a0, $a1, .LBB37_195
+.LBB37_188:                             #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 2032
-	b	.LBB37_202
-.LBB37_190:                             #   in Loop: Header=BB37_186 Depth=1
+	b	.LBB37_201
+.LBB37_189:                             #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s4, $fp, 2000
 	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.191:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i268
-                                        #   in Loop: Header=BB37_186 Depth=1
-	srai.d	$a0, $s3, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s5, $a0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	stx.w	$a0, $s5, $s3
-	blt	$s3, $s8, .LBB37_193
-# %bb.192:                              #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $s5
-	move	$a1, $s4
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB37_193:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i270
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_195
-# %bb.194:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i272
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $s4
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB37_195:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i273
-                                        #   in Loop: Header=BB37_186 Depth=1
-	add.d	$a0, $s5, $s3
-	addi.d	$a0, $a0, 4
-	st.d	$s5, $fp, 2000
-	st.d	$a0, $fp, 2008
-	alsl.d	$a0, $s1, $s5, 2
-	st.d	$a0, $fp, 2016
-	ld.d	$a0, $fp, 2032
-	ld.d	$a1, $fp, 2040
-	bne	$a0, $a1, .LBB37_189
-.LBB37_196:                             #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$s4, $fp, 2024
-	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.197:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i276
-                                        #   in Loop: Header=BB37_186 Depth=1
-	srai.d	$a0, $s3, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
-	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s5, $a0
-	stx.w	$s6, $a0, $s3
-	blt	$s3, $s8, .LBB37_199
-# %bb.198:                              #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $s5
-	move	$a1, $s4
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB37_199:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i278
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_201
-# %bb.200:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i280
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $s4
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB37_201:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i281
-                                        #   in Loop: Header=BB37_186 Depth=1
-	add.d	$a0, $s5, $s3
-	addi.d	$a0, $a0, 4
-	st.d	$s5, $fp, 2024
-	st.d	$a0, $fp, 2032
-	alsl.d	$a0, $s1, $s5, 2
-	st.d	$a0, $fp, 2040
-.LBB37_202:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit282
-                                        #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$s5, $fp, 1352
-	ldx.w	$a0, $s5, $s7
-	ld.d	$a2, $fp, 1984
-	ld.d	$a3, $fp, 1992
-	ldx.w	$a1, $s5, $s2
-	beq	$a2, $a3, .LBB37_204
-# %bb.203:                              #   in Loop: Header=BB37_186 Depth=1
-	slt	$a3, $a1, $a0
-	masknez	$a1, $a1, $a3
-	maskeqz	$a0, $a0, $a3
-	or	$a0, $a0, $a1
-	st.w	$a0, $a2, 0
-	addi.d	$a0, $a2, 4
-	st.d	$a0, $fp, 1984
-	b	.LBB37_210
-.LBB37_204:                             #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$s4, $fp, 1976
-	sub.d	$s3, $a2, $s4
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a2, .LBB37_315
-# %bb.205:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i284
-                                        #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	alsl.d	$s1, $a2, $s5, 2
-	srai.d	$a2, $s3, 2
-	slt	$s8, $a1, $a0
-	ori	$a1, $zero, 1
-	sltu	$a0, $a1, $a2
-	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
-	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
-	or	$s6, $a0, $a1
-	slli.d	$a0, $s6, 2
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	add.d	$a1, $s5, $s7
-	maskeqz	$a1, $a1, $s8
-	masknez	$a2, $s1, $s8
-	ori	$a3, $zero, 1
-	or	$a1, $a1, $a2
-	ld.w	$a1, $a1, 0
-	move	$s5, $a0
-	stx.w	$a1, $a0, $s3
-	blt	$s3, $a3, .LBB37_207
-# %bb.206:                              #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $s5
-	move	$a1, $s4
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-.LBB37_207:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i286
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_209
-# %bb.208:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i288
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$a0, $s4
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB37_209:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i289
-                                        #   in Loop: Header=BB37_186 Depth=1
-	add.d	$a0, $s5, $s3
-	addi.d	$a0, $a0, 4
-	st.d	$s5, $fp, 1976
-	st.d	$a0, $fp, 1984
-	alsl.d	$a0, $s6, $s5, 2
-	st.d	$a0, $fp, 1992
-.LBB37_210:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit290
-                                        #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$a0, $fp, 1336
-	ldx.w	$a1, $a0, $s2
-	ld.d	$a0, $fp, 1960
-	ld.d	$a2, $fp, 1968
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	slt	$s1, $a3, $a4
-	sll.w	$s6, $a1, $s1
-	beq	$a0, $a2, .LBB37_212
-# %bb.211:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$s6, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $fp, 1960
-	b	.LBB37_218
-.LBB37_212:                             #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$s4, $fp, 1952
-	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.213:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i292
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$s8, $s1
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.190:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i268
+                                        #   in Loop: Header=BB37_185 Depth=1
 	srai.d	$a0, $s3, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -16443,51 +16147,255 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s6, $a0, $s3
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB37_215
-# %bb.214:                              #   in Loop: Header=BB37_186 Depth=1
+	stx.w	$s7, $a0, $s3
+	blez	$s3, .LBB37_192
+# %bb.191:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_215:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i294
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_217
-# %bb.216:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i296
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_192:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i270
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_194
+# %bb.193:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i272
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_217:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i297
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_194:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i273
+                                        #   in Loop: Header=BB37_185 Depth=1
+	add.d	$a0, $s5, $s3
+	addi.d	$a0, $a0, 4
+	st.d	$s5, $fp, 2000
+	st.d	$a0, $fp, 2008
+	alsl.d	$a0, $s0, $s5, 2
+	st.d	$a0, $fp, 2016
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $fp, 2032
+	ld.d	$a1, $fp, 2040
+	bne	$a0, $a1, .LBB37_188
+.LBB37_195:                             #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$s4, $fp, 2024
+	sub.d	$s3, $a0, $s4
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.196:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i276
+                                        #   in Loop: Header=BB37_185 Depth=1
+	srai.d	$a0, $s3, 2
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a0, $a1
+	or	$a1, $a1, $a2
+	add.d	$a0, $a1, $a0
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $a2, $a1
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	move	$s5, $a0
+	stx.w	$s1, $a0, $s3
+	blez	$s3, .LBB37_198
+# %bb.197:                              #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s5
+	move	$a1, $s4
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB37_198:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i278
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_200
+# %bb.199:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i280
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s4
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB37_200:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i281
+                                        #   in Loop: Header=BB37_185 Depth=1
+	add.d	$a0, $s5, $s3
+	addi.d	$a0, $a0, 4
+	st.d	$s5, $fp, 2024
+	st.d	$a0, $fp, 2032
+	alsl.d	$a0, $s0, $s5, 2
+	st.d	$a0, $fp, 2040
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+.LBB37_201:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit282
+                                        #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$s0, $fp, 1352
+	ldx.w	$a0, $s0, $s6
+	ld.d	$a2, $fp, 1984
+	ld.d	$a3, $fp, 1992
+	ldx.w	$a1, $s0, $a6
+	beq	$a2, $a3, .LBB37_203
+# %bb.202:                              #   in Loop: Header=BB37_185 Depth=1
+	slt	$a3, $a1, $a0
+	masknez	$a1, $a1, $a3
+	maskeqz	$a0, $a0, $a3
+	or	$a0, $a0, $a1
+	st.w	$a0, $a2, 0
+	addi.d	$a0, $a2, 4
+	st.d	$a0, $fp, 1984
+	b	.LBB37_209
+.LBB37_203:                             #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$s4, $fp, 1976
+	sub.d	$s3, $a2, $s4
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a2, .LBB37_313
+# %bb.204:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i284
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s1, $s2
+	move	$s2, $s7
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	alsl.d	$s5, $a2, $s0, 2
+	srai.d	$a2, $s3, 2
+	slt	$s7, $a1, $a0
+	ori	$a1, $zero, 1
+	sltu	$a0, $a1, $a2
+	masknez	$a1, $a1, $a0
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
+	add.d	$a0, $a0, $a2
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $a2, $a1
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	add.d	$a1, $s0, $s6
+	maskeqz	$a1, $a1, $s7
+	masknez	$a2, $s5, $s7
+	or	$a1, $a1, $a2
+	ld.w	$a1, $a1, 0
+	move	$s5, $a0
+	stx.w	$a1, $a0, $s3
+	blez	$s3, .LBB37_206
+# %bb.205:                              #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s5
+	move	$a1, $s4
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB37_206:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i286
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_208
+# %bb.207:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i288
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s4
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB37_208:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i289
+                                        #   in Loop: Header=BB37_185 Depth=1
+	add.d	$a0, $s5, $s3
+	addi.d	$a0, $a0, 4
+	st.d	$s5, $fp, 1976
+	st.d	$a0, $fp, 1984
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s5, 2
+	st.d	$a0, $fp, 1992
+	move	$s7, $s2
+	move	$s2, $s1
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+.LBB37_209:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit290
+                                        #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$a0, $fp, 1336
+	ldx.w	$a1, $a0, $a6
+	ld.d	$a0, $fp, 1960
+	ld.d	$a2, $fp, 1968
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
+	slt	$a5, $a3, $a4
+	sll.w	$s1, $a1, $a5
+	beq	$a0, $a2, .LBB37_211
+# %bb.210:                              #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s1, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $fp, 1960
+	b	.LBB37_217
+.LBB37_211:                             #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$s4, $fp, 1952
+	sub.d	$s3, $a0, $s4
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.212:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i292
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s0, $s8
+	move	$s8, $s7
+	move	$s7, $a5
+	srai.d	$a0, $s3, 2
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a0, $a1
+	or	$a1, $a1, $a2
+	add.d	$a0, $a1, $a0
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	sltu	$a1, $a0, $a2
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $a2, $a1
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+	move	$s5, $a0
+	stx.w	$s1, $a0, $s3
+	blez	$s3, .LBB37_214
+# %bb.213:                              #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s5
+	move	$a1, $s4
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+.LBB37_214:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i294
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_216
+# %bb.215:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i296
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$a0, $s4
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB37_216:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i297
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1952
 	st.d	$a0, $fp, 1960
-	alsl.d	$a0, $s1, $s5, 2
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s5, 2
 	st.d	$a0, $fp, 1968
-	move	$s1, $s8
-.LBB37_218:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit298
-                                        #   in Loop: Header=BB37_186 Depth=1
+	move	$a5, $s7
+	move	$s7, $s8
+	move	$s8, $s0
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+.LBB37_217:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit298
+                                        #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a0, $fp, 1352
-	ldx.w	$a2, $a0, $s2
-	ldx.w	$a0, $a0, $s7
+	ldx.w	$a2, $a0, $a6
+	ldx.w	$a0, $a0, $s6
 	ld.d	$a1, $fp, 1328
-	bge	$a2, $a0, .LBB37_222
-# %bb.219:                              #   in Loop: Header=BB37_186 Depth=1
-	ldx.wu	$a3, $a1, $s7
+	bge	$a2, $a0, .LBB37_221
+# %bb.218:                              #   in Loop: Header=BB37_185 Depth=1
+	ldx.wu	$a3, $a1, $s6
 	ori	$a4, $zero, 1
 	bstrins.d	$a4, $a4, 32, 31
 	ld.d	$a0, $fp, 1936
@@ -16495,47 +16403,42 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	and	$a3, $a3, $a4
 	addi.w	$a3, $a3, 0
 	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB37_223
-# %bb.220:                              #   in Loop: Header=BB37_186 Depth=1
-	ldx.w	$a1, $a1, $s2
-	sll.w	$a1, $a1, $s1
-	addi.d	$s6, $a1, 1
-	beq	$a0, $a2, .LBB37_226
-# %bb.221:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$s6, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $fp, 1936
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	b	.LBB37_232
-	.p2align	4, , 16
-.LBB37_222:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit298._crit_edge
-                                        #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$a0, $fp, 1936
-	ld.d	$a2, $fp, 1944
-.LBB37_223:                             #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	ldx.w	$a1, $a1, $s2
-	sll.w	$s6, $a1, $s1
-	beq	$a0, $a2, .LBB37_225
-# %bb.224:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$s6, $a0, 0
-	addi.d	$a0, $a0, 4
-	st.d	$a0, $fp, 1936
-	b	.LBB37_232
-.LBB37_225:                             #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$s4, $fp, 1928
-	sub.d	$s3, $a2, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	bne	$s3, $a0, .LBB37_227
-	b	.LBB37_315
-.LBB37_226:                             #   in Loop: Header=BB37_186 Depth=1
+	bne	$a3, $a4, .LBB37_222
+# %bb.219:                              #   in Loop: Header=BB37_185 Depth=1
+	ldx.w	$a1, $a1, $a6
+	sll.w	$a1, $a1, $a5
+	addi.d	$s1, $a1, 1
+	bne	$a0, $a2, .LBB37_223
+# %bb.220:                              #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s4, $fp, 1928
 	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-.LBB37_227:                             # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i308
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$s8, $s1
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	bne	$s3, $a0, .LBB37_225
+	b	.LBB37_313
+	.p2align	4, , 16
+.LBB37_221:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit298._crit_edge
+                                        #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$a0, $fp, 1936
+	ld.d	$a2, $fp, 1944
+.LBB37_222:                             #   in Loop: Header=BB37_185 Depth=1
+	ldx.w	$a1, $a1, $a6
+	sll.w	$s1, $a1, $a5
+	beq	$a0, $a2, .LBB37_224
+.LBB37_223:                             #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s1, $a0, 0
+	addi.d	$a0, $a0, 4
+	st.d	$a0, $fp, 1936
+	b	.LBB37_230
+.LBB37_224:                             #   in Loop: Header=BB37_185 Depth=1
+	ld.d	$s4, $fp, 1928
+	sub.d	$s3, $a2, $s4
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+.LBB37_225:                             # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i308
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s0, $s8
+	move	$s8, $s7
+	move	$s7, $a5
 	srai.d	$a0, $s3, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -16543,191 +16446,193 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s6, $a0, $s3
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB37_229
-# %bb.228:                              #   in Loop: Header=BB37_186 Depth=1
+	stx.w	$s1, $a0, $s3
+	blez	$s3, .LBB37_227
+# %bb.226:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_229:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i310
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_231
-# %bb.230:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i312
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_227:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i310
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_229
+# %bb.228:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i312
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_231:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i313
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_229:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i313
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1928
 	st.d	$a0, $fp, 1936
-	alsl.d	$a0, $s1, $s5, 2
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s5, 2
 	st.d	$a0, $fp, 1944
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	move	$s1, $s8
-.LBB37_232:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit306
-                                        #   in Loop: Header=BB37_186 Depth=1
+	move	$a5, $s7
+	move	$s7, $s8
+	move	$s8, $s0
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+.LBB37_230:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit306
+                                        #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a0, $fp, 1352
-	ldx.w	$a1, $a0, $s2
-	ldx.w	$a2, $a0, $s7
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	addi.d	$a0, $a0, 1
-	bge	$a2, $a1, .LBB37_185
-# %bb.233:                              #   in Loop: Header=BB37_186 Depth=1
+	ldx.w	$a1, $a0, $a6
+	ldx.w	$a2, $a0, $s6
+	addi.d	$a0, $s2, 1
+	bge	$a2, $a1, .LBB37_184
+# %bb.231:                              #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a1, $fp, 1328
-	ldx.bu	$a1, $a1, $s2
+	ldx.bu	$a1, $a1, $a6
 	andi	$a1, $a1, 1
-	bnez	$a1, .LBB37_185
-# %bb.234:                              #   in Loop: Header=BB37_186 Depth=1
+	bnez	$a1, .LBB37_184
+# %bb.232:                              #   in Loop: Header=BB37_185 Depth=1
+	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
 	ld.d	$a1, $fp, 1376
-	ldx.w	$s2, $a1, $s2
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	beq	$s2, $a1, .LBB37_185
-# %bb.235:                              #   in Loop: Header=BB37_186 Depth=1
+	ldx.w	$s2, $a1, $a6
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	beq	$s2, $a1, .LBB37_184
+# %bb.233:                              #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a0, $fp, 2008
 	ld.d	$a1, $fp, 2016
-	beq	$a0, $a1, .LBB37_238
-# %bb.236:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$a3, $a0, 0
+	beq	$a0, $a1, .LBB37_236
+# %bb.234:                              #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s7, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 2008
 	ld.d	$a0, $fp, 2032
 	ld.d	$a1, $fp, 2040
-	beq	$a0, $a1, .LBB37_244
-.LBB37_237:                             #   in Loop: Header=BB37_186 Depth=1
+	beq	$a0, $a1, .LBB37_242
+.LBB37_235:                             #   in Loop: Header=BB37_185 Depth=1
 	st.w	$s2, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 2032
-	b	.LBB37_250
-.LBB37_238:                             #   in Loop: Header=BB37_186 Depth=1
+	b	.LBB37_248
+.LBB37_236:                             #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s4, $fp, 2000
 	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.239:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i316
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$s6, $s1
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.237:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i316
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s1, $a5
 	srai.d	$a0, $s3, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	stx.w	$a0, $s5, $s3
-	blt	$s3, $s8, .LBB37_241
-# %bb.240:                              #   in Loop: Header=BB37_186 Depth=1
+	stx.w	$s7, $a0, $s3
+	blez	$s3, .LBB37_239
+# %bb.238:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_241:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i318
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_243
-# %bb.242:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i320
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_239:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i318
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_241
+# %bb.240:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i320
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_243:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i321
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_241:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i321
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 2000
 	st.d	$a0, $fp, 2008
-	alsl.d	$a0, $s1, $s5, 2
+	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 2016
-	move	$s1, $s6
+	move	$a5, $s1
 	ld.d	$a0, $fp, 2032
 	ld.d	$a1, $fp, 2040
-	bne	$a0, $a1, .LBB37_237
-.LBB37_244:                             #   in Loop: Header=BB37_186 Depth=1
+	bne	$a0, $a1, .LBB37_235
+.LBB37_242:                             #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s4, $fp, 2024
 	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.245:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i324
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$s6, $s1
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.243:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i324
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s1, $a5
 	srai.d	$a0, $s3, 2
-	ori	$s8, $zero, 1
-	sltu	$a1, $s8, $a0
-	masknez	$a2, $s8, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	stx.w	$s2, $a0, $s3
-	blt	$s3, $s8, .LBB37_247
-# %bb.246:                              #   in Loop: Header=BB37_186 Depth=1
+	blez	$s3, .LBB37_245
+# %bb.244:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_247:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i326
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_249
-# %bb.248:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i328
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_245:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i326
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_247
+# %bb.246:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i328
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_249:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i329
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_247:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i329
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 2024
 	st.d	$a0, $fp, 2032
-	alsl.d	$a0, $s1, $s5, 2
+	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 2040
-	move	$s1, $s6
-.LBB37_250:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit330
-                                        #   in Loop: Header=BB37_186 Depth=1
+	move	$a5, $s1
+.LBB37_248:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit330
+                                        #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s5, $fp, 1352
-	ldx.w	$a0, $s5, $s7
-	slli.d	$s8, $s2, 2
+	ldx.w	$a0, $s5, $s6
+	slli.d	$s0, $s2, 2
 	ld.d	$a2, $fp, 1984
 	ld.d	$a3, $fp, 1992
-	ldx.w	$a1, $s5, $s8
-	beq	$a2, $a3, .LBB37_252
-# %bb.251:                              #   in Loop: Header=BB37_186 Depth=1
+	ldx.w	$a1, $s5, $s0
+	beq	$a2, $a3, .LBB37_250
+# %bb.249:                              #   in Loop: Header=BB37_185 Depth=1
 	slt	$a3, $a1, $a0
 	masknez	$a1, $a1, $a3
 	maskeqz	$a0, $a0, $a3
@@ -16735,25 +16640,27 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	st.w	$a0, $a2, 0
 	addi.d	$a0, $a2, 4
 	st.d	$a0, $fp, 1984
-	b	.LBB37_258
-.LBB37_252:                             #   in Loop: Header=BB37_186 Depth=1
+	b	.LBB37_256
+.LBB37_250:                             #   in Loop: Header=BB37_185 Depth=1
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
 	ld.d	$s4, $fp, 1976
 	sub.d	$s3, $a2, $s4
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a2, .LBB37_315
-# %bb.253:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i332
-                                        #   in Loop: Header=BB37_186 Depth=1
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a2, .LBB37_313
+# %bb.251:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i332
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s0, $a5
 	alsl.d	$a2, $s2, $s5, 2
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	srai.d	$a2, $s3, 2
-	slt	$s6, $a1, $a0
+	slt	$s1, $a1, $a0
 	ori	$a1, $zero, 1
 	sltu	$a0, $a1, $a2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -16761,61 +16668,64 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	slli.d	$a0, $s2, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	add.d	$a1, $s5, $s7
-	maskeqz	$a1, $a1, $s6
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	masknez	$a2, $a2, $s6
+	add.d	$a1, $s5, $s6
+	maskeqz	$a1, $a1, $s1
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	masknez	$a2, $a2, $s1
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s5, $a0
 	stx.w	$a1, $a0, $s3
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB37_255
-# %bb.254:                              #   in Loop: Header=BB37_186 Depth=1
+	blez	$s3, .LBB37_253
+# %bb.252:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_255:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i334
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_257
-# %bb.256:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i336
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_253:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i334
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_255
+# %bb.254:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i336
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_257:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i337
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_255:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJRKiEEEvDpOT_.exit.i337
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1976
 	st.d	$a0, $fp, 1984
 	alsl.d	$a0, $s2, $s5, 2
 	st.d	$a0, $fp, 1992
-.LBB37_258:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit338
-                                        #   in Loop: Header=BB37_186 Depth=1
+	move	$a5, $s0
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+.LBB37_256:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit338
+                                        #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a0, $fp, 1336
-	ldx.w	$a1, $a0, $s8
+	ldx.w	$a1, $a0, $s0
 	ld.d	$a0, $fp, 1960
 	ld.d	$a2, $fp, 1968
-	sll.w	$s2, $a1, $s1
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	beq	$a0, $a2, .LBB37_260
-# %bb.259:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$s2, $a0, 0
+	sll.w	$s1, $a1, $a5
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	beq	$a0, $a2, .LBB37_258
+# %bb.257:                              #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1960
-	b	.LBB37_266
-.LBB37_260:                             #   in Loop: Header=BB37_186 Depth=1
+	b	.LBB37_264
+.LBB37_258:                             #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s4, $fp, 1952
 	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.261:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i340
-                                        #   in Loop: Header=BB37_186 Depth=1
-	move	$s6, $s1
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.259:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i340
+                                        #   in Loop: Header=BB37_185 Depth=1
+	move	$s2, $s8
+	move	$s8, $s7
+	move	$s7, $a5
 	srai.d	$a0, $s3, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -16823,122 +16733,122 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s2, $a0, $s3
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB37_263
-# %bb.262:                              #   in Loop: Header=BB37_186 Depth=1
+	stx.w	$s1, $a0, $s3
+	blez	$s3, .LBB37_261
+# %bb.260:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_263:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i342
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_265
-# %bb.264:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i344
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_261:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i342
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_263
+# %bb.262:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i344
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_265:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i345
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_263:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i345
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1952
 	st.d	$a0, $fp, 1960
-	alsl.d	$a0, $s1, $s5, 2
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s5, 2
 	st.d	$a0, $fp, 1968
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	move	$s1, $s6
-.LBB37_266:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit346
-                                        #   in Loop: Header=BB37_186 Depth=1
+	move	$a5, $s7
+	move	$s7, $s8
+	move	$s8, $s2
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+.LBB37_264:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit346
+                                        #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$a0, $fp, 1328
-	ldx.w	$a1, $a0, $s8
+	ldx.w	$a1, $a0, $s0
 	ld.d	$a0, $fp, 1936
 	ld.d	$a2, $fp, 1944
-	sll.w	$s2, $a1, $s1
-	beq	$a0, $a2, .LBB37_268
-# %bb.267:                              #   in Loop: Header=BB37_186 Depth=1
-	st.w	$s2, $a0, 0
+	sll.w	$s1, $a1, $a5
+	beq	$a0, $a2, .LBB37_266
+# %bb.265:                              #   in Loop: Header=BB37_185 Depth=1
+	st.w	$s1, $a0, 0
 	addi.d	$a0, $a0, 4
 	st.d	$a0, $fp, 1936
-	b	.LBB37_274
-.LBB37_268:                             #   in Loop: Header=BB37_186 Depth=1
+	b	.LBB37_272
+.LBB37_266:                             #   in Loop: Header=BB37_185 Depth=1
 	ld.d	$s4, $fp, 1928
 	sub.d	$s3, $a0, $s4
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB37_315
-# %bb.269:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i348
-                                        #   in Loop: Header=BB37_186 Depth=1
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB37_313
+# %bb.267:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i348
+                                        #   in Loop: Header=BB37_185 Depth=1
 	srai.d	$a0, $s3, 2
-	ori	$s6, $zero, 1
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s1, $a0, $a1
-	slli.d	$a0, $s1, 2
+	or	$s0, $a0, $a1
+	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.w	$s2, $a0, $s3
-	blt	$s3, $s6, .LBB37_271
-# %bb.270:                              #   in Loop: Header=BB37_186 Depth=1
+	stx.w	$s1, $a0, $s3
+	blez	$s3, .LBB37_269
+# %bb.268:                              #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB37_271:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i350
-                                        #   in Loop: Header=BB37_186 Depth=1
-	beqz	$s4, .LBB37_273
-# %bb.272:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i352
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_269:                             # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i350
+                                        #   in Loop: Header=BB37_185 Depth=1
+	beqz	$s4, .LBB37_271
+# %bb.270:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i352
+                                        #   in Loop: Header=BB37_185 Depth=1
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB37_273:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i353
-                                        #   in Loop: Header=BB37_186 Depth=1
+.LBB37_271:                             # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i353
+                                        #   in Loop: Header=BB37_185 Depth=1
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 4
 	st.d	$s5, $fp, 1928
 	st.d	$a0, $fp, 1936
-	alsl.d	$a0, $s1, $s5, 2
+	alsl.d	$a0, $s0, $s5, 2
 	st.d	$a0, $fp, 1944
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-.LBB37_274:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit354
-                                        #   in Loop: Header=BB37_186 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	addi.d	$a0, $a0, 2
-	b	.LBB37_185
-.LBB37_275:
+.LBB37_272:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit354
+                                        #   in Loop: Header=BB37_185 Depth=1
+	addi.d	$a0, $s2, 2
+	b	.LBB37_184
+.LBB37_273:
 	move	$a0, $zero
-.LBB37_276:                             # %._crit_edge466
+.LBB37_274:                             # %._crit_edge466
 	ld.w	$a1, $fp, 1560
 	st.w	$a0, $fp, 1564
-	ld.d	$t4, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 88                    # 8-byte Folded Reload
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB37_292
-# %bb.277:                              # %.lr.ph470
+	ld.d	$t4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 80                    # 8-byte Folded Reload
+	blez	$a1, .LBB37_290
+# %bb.275:                              # %.lr.ph470
 	ld.d	$a0, $fp, 1616
 	ld.d	$a1, $fp, 1568
 	ld.d	$a2, $fp, 1784
@@ -16947,57 +16857,56 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	ld.d	$a5, $fp, 1832
 	ld.d	$a7, $fp, 1856
 	move	$t0, $zero
-	b	.LBB37_279
+	b	.LBB37_277
 	.p2align	4, , 16
-.LBB37_278:                             #   in Loop: Header=BB37_279 Depth=1
+.LBB37_276:                             #   in Loop: Header=BB37_277 Depth=1
 	ld.w	$a6, $fp, 1560
 	addi.d	$t0, $t0, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a4, 4
-	bge	$t0, $a6, .LBB37_287
-.LBB37_279:                             # =>This Inner Loop Header: Depth=1
+	bge	$t0, $a6, .LBB37_285
+.LBB37_277:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a0, 0
 	ld.w	$t2, $a1, 0
 	slli.d	$t1, $a6, 2
 	ldx.w	$t3, $a2, $t1
-	bge	$t2, $t3, .LBB37_283
-# %bb.280:                              #   in Loop: Header=BB37_279 Depth=1
+	bge	$t2, $t3, .LBB37_281
+# %bb.278:                              #   in Loop: Header=BB37_277 Depth=1
 	alsl.d	$t3, $a6, $a2, 2
 	st.w	$t2, $t3, 0
 	ldx.w	$t3, $a3, $t1
-	blt	$t3, $t2, .LBB37_284
-.LBB37_281:                             #   in Loop: Header=BB37_279 Depth=1
+	blt	$t3, $t2, .LBB37_282
+.LBB37_279:                             #   in Loop: Header=BB37_277 Depth=1
 	ld.w	$t2, $a4, 0
 	ldx.w	$t3, $a5, $t1
-	bge	$t2, $t3, .LBB37_285
-.LBB37_282:                             #   in Loop: Header=BB37_279 Depth=1
+	bge	$t2, $t3, .LBB37_283
+.LBB37_280:                             #   in Loop: Header=BB37_277 Depth=1
 	alsl.d	$t3, $a6, $a5, 2
 	st.w	$t2, $t3, 0
 	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB37_278
-	b	.LBB37_286
+	bge	$t1, $t2, .LBB37_276
+	b	.LBB37_284
 	.p2align	4, , 16
-.LBB37_283:                             #   in Loop: Header=BB37_279 Depth=1
+.LBB37_281:                             #   in Loop: Header=BB37_277 Depth=1
 	ldx.w	$t3, $a3, $t1
-	bge	$t3, $t2, .LBB37_281
-.LBB37_284:                             #   in Loop: Header=BB37_279 Depth=1
+	bge	$t3, $t2, .LBB37_279
+.LBB37_282:                             #   in Loop: Header=BB37_277 Depth=1
 	alsl.d	$t3, $a6, $a3, 2
 	st.w	$t2, $t3, 0
 	ld.w	$t2, $a4, 0
 	ldx.w	$t3, $a5, $t1
-	blt	$t2, $t3, .LBB37_282
-.LBB37_285:                             #   in Loop: Header=BB37_279 Depth=1
+	blt	$t2, $t3, .LBB37_280
+.LBB37_283:                             #   in Loop: Header=BB37_277 Depth=1
 	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB37_278
-.LBB37_286:                             #   in Loop: Header=BB37_279 Depth=1
+	bge	$t1, $t2, .LBB37_276
+.LBB37_284:                             #   in Loop: Header=BB37_277 Depth=1
 	alsl.d	$a6, $a6, $a7, 2
 	st.w	$t2, $a6, 0
-	b	.LBB37_278
-.LBB37_287:                             # %.preheader427
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB37_292
-# %bb.288:                              # %.lr.ph472
+	b	.LBB37_276
+.LBB37_285:                             # %.preheader427
+	blez	$a6, .LBB37_290
+# %bb.286:                              # %.lr.ph472
 	ld.d	$a0, $fp, 1616
 	ld.d	$a1, $fp, 1808
 	ld.d	$a2, $fp, 1784
@@ -17005,21 +16914,21 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	ld.d	$a4, $fp, 1832
 	ld.d	$a5, $fp, 1592
 	move	$a7, $zero
-	b	.LBB37_290
+	b	.LBB37_288
 	.p2align	4, , 16
-.LBB37_289:                             #   in Loop: Header=BB37_290 Depth=1
+.LBB37_287:                             #   in Loop: Header=BB37_288 Depth=1
 	addi.d	$a7, $a7, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, 4
-	bge	$a7, $a6, .LBB37_292
-.LBB37_290:                             # =>This Inner Loop Header: Depth=1
+	bge	$a7, $a6, .LBB37_290
+.LBB37_288:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a0, 0
 	slli.d	$t0, $t0, 2
 	ldx.w	$t2, $a1, $t0
 	ldx.w	$t1, $a2, $t0
-	blt	$t2, $t1, .LBB37_289
-# %bb.291:                              #   in Loop: Header=BB37_290 Depth=1
+	blt	$t2, $t1, .LBB37_287
+# %bb.289:                              #   in Loop: Header=BB37_288 Depth=1
 	ld.w	$a6, $a3, 0
 	sub.d	$a6, $a6, $t1
 	st.w	$a6, $a3, 0
@@ -17028,24 +16937,24 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	sub.d	$a6, $t0, $a6
 	st.w	$a6, $a5, 0
 	ld.w	$a6, $fp, 1560
-	b	.LBB37_289
-.LBB37_292:                             # %.preheader426
+	b	.LBB37_287
+.LBB37_290:                             # %.preheader426
 	ld.w	$a0, $fp, 1120
-	bltz	$a0, .LBB37_295
-# %bb.293:                              # %.lr.ph475
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	bltz	$a0, .LBB37_293
+# %bb.291:                              # %.lr.ph475
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $t4, 0
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $t5, 0
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a5, $a5, 0
 	addi.w	$a6, $zero, -1
 	.p2align	4, , 16
-.LBB37_294:                             # =>This Inner Loop Header: Depth=1
+.LBB37_292:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a0, 0
 	st.w	$a7, $a1, 0
 	ld.w	$a7, $a2, 0
@@ -17068,12 +16977,11 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 4
-	blt	$a6, $a7, .LBB37_294
-.LBB37_295:                             # %.preheader425
+	blt	$a6, $a7, .LBB37_292
+.LBB37_293:                             # %.preheader425
 	ld.w	$a0, $fp, 1564
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB37_311
-# %bb.296:                              # %.lr.ph477
+	blez	$a0, .LBB37_309
+# %bb.294:                              # %.lr.ph477
 	ld.d	$a0, $fp, 1976
 	ld.d	$a1, $fp, 1928
 	ldptr.d	$a2, $fp, 2144
@@ -17082,57 +16990,56 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	ldptr.d	$a5, $fp, 2192
 	ldptr.d	$a7, $fp, 2216
 	move	$t0, $zero
-	b	.LBB37_298
+	b	.LBB37_296
 	.p2align	4, , 16
-.LBB37_297:                             #   in Loop: Header=BB37_298 Depth=1
+.LBB37_295:                             #   in Loop: Header=BB37_296 Depth=1
 	ld.w	$a6, $fp, 1564
 	addi.d	$t0, $t0, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a4, 4
-	bge	$t0, $a6, .LBB37_306
-.LBB37_298:                             # =>This Inner Loop Header: Depth=1
+	bge	$t0, $a6, .LBB37_304
+.LBB37_296:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a0, 0
 	ld.w	$t2, $a1, 0
 	slli.d	$t1, $a6, 2
 	ldx.w	$t3, $a2, $t1
-	bge	$t2, $t3, .LBB37_302
-# %bb.299:                              #   in Loop: Header=BB37_298 Depth=1
+	bge	$t2, $t3, .LBB37_300
+# %bb.297:                              #   in Loop: Header=BB37_296 Depth=1
 	alsl.d	$t3, $a6, $a2, 2
 	st.w	$t2, $t3, 0
 	ldx.w	$t3, $a3, $t1
-	blt	$t3, $t2, .LBB37_303
-.LBB37_300:                             #   in Loop: Header=BB37_298 Depth=1
+	blt	$t3, $t2, .LBB37_301
+.LBB37_298:                             #   in Loop: Header=BB37_296 Depth=1
 	ld.w	$t2, $a4, 0
 	ldx.w	$t3, $a5, $t1
-	bge	$t2, $t3, .LBB37_304
-.LBB37_301:                             #   in Loop: Header=BB37_298 Depth=1
+	bge	$t2, $t3, .LBB37_302
+.LBB37_299:                             #   in Loop: Header=BB37_296 Depth=1
 	alsl.d	$t3, $a6, $a5, 2
 	st.w	$t2, $t3, 0
 	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB37_297
-	b	.LBB37_305
+	bge	$t1, $t2, .LBB37_295
+	b	.LBB37_303
 	.p2align	4, , 16
-.LBB37_302:                             #   in Loop: Header=BB37_298 Depth=1
+.LBB37_300:                             #   in Loop: Header=BB37_296 Depth=1
 	ldx.w	$t3, $a3, $t1
-	bge	$t3, $t2, .LBB37_300
-.LBB37_303:                             #   in Loop: Header=BB37_298 Depth=1
+	bge	$t3, $t2, .LBB37_298
+.LBB37_301:                             #   in Loop: Header=BB37_296 Depth=1
 	alsl.d	$t3, $a6, $a3, 2
 	st.w	$t2, $t3, 0
 	ld.w	$t2, $a4, 0
 	ldx.w	$t3, $a5, $t1
-	blt	$t2, $t3, .LBB37_301
-.LBB37_304:                             #   in Loop: Header=BB37_298 Depth=1
+	blt	$t2, $t3, .LBB37_299
+.LBB37_302:                             #   in Loop: Header=BB37_296 Depth=1
 	ldx.w	$t1, $a7, $t1
-	bge	$t1, $t2, .LBB37_297
-.LBB37_305:                             #   in Loop: Header=BB37_298 Depth=1
+	bge	$t1, $t2, .LBB37_295
+.LBB37_303:                             #   in Loop: Header=BB37_296 Depth=1
 	alsl.d	$a6, $a6, $a7, 2
 	st.w	$t2, $a6, 0
-	b	.LBB37_297
-.LBB37_306:                             # %.preheader424
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB37_311
-# %bb.307:                              # %.lr.ph479
+	b	.LBB37_295
+.LBB37_304:                             # %.preheader424
+	blez	$a6, .LBB37_309
+# %bb.305:                              # %.lr.ph479
 	ld.d	$a0, $fp, 1976
 	ldptr.d	$a1, $fp, 2168
 	ldptr.d	$a2, $fp, 2144
@@ -17140,21 +17047,21 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	ldptr.d	$a4, $fp, 2192
 	ld.d	$a5, $fp, 1952
 	move	$a7, $zero
-	b	.LBB37_309
+	b	.LBB37_307
 	.p2align	4, , 16
-.LBB37_308:                             #   in Loop: Header=BB37_309 Depth=1
+.LBB37_306:                             #   in Loop: Header=BB37_307 Depth=1
 	addi.d	$a7, $a7, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a5, $a5, 4
-	bge	$a7, $a6, .LBB37_311
-.LBB37_309:                             # =>This Inner Loop Header: Depth=1
+	bge	$a7, $a6, .LBB37_309
+.LBB37_307:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a0, 0
 	slli.d	$t0, $t0, 2
 	ldx.w	$t2, $a1, $t0
 	ldx.w	$t1, $a2, $t0
-	blt	$t2, $t1, .LBB37_308
-# %bb.310:                              #   in Loop: Header=BB37_309 Depth=1
+	blt	$t2, $t1, .LBB37_306
+# %bb.308:                              #   in Loop: Header=BB37_307 Depth=1
 	ld.w	$a6, $a3, 0
 	sub.d	$a6, $a6, $t1
 	st.w	$a6, $a3, 0
@@ -17163,24 +17070,24 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	sub.d	$a6, $t0, $a6
 	st.w	$a6, $a5, 0
 	ld.w	$a6, $fp, 1564
-	b	.LBB37_308
-.LBB37_311:                             # %.preheader
+	b	.LBB37_306
+.LBB37_309:                             # %.preheader
 	ld.w	$a0, $fp, 1120
-	bltz	$a0, .LBB37_314
-# %bb.312:                              # %.lr.ph482
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	bltz	$a0, .LBB37_312
+# %bb.310:                              # %.lr.ph482
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $t6, 0
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $t7, 0
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
-	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a5, $a5, 0
 	addi.w	$a6, $zero, -1
 	.p2align	4, , 16
-.LBB37_313:                             # =>This Inner Loop Header: Depth=1
+.LBB37_311:                             # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a0, 0
 	st.w	$a7, $a1, 0
 	ld.w	$a7, $a2, 0
@@ -17203,22 +17110,22 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 4
-	blt	$a6, $a7, .LBB37_313
-.LBB37_314:                             # %._crit_edge483
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	blt	$a6, $a7, .LBB37_311
+.LBB37_312:                             # %._crit_edge483
+	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 272
 	ret
-.LBB37_315:
+.LBB37_313:
 	pcalau12i	$a0, %pc_hi20(.L.str.143)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.143)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
@@ -17233,19 +17140,19 @@ _ZN4Mesh19calc_face_list_wmapEv:        # @_ZN4Mesh19calc_face_list_wmapEv
 _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -288
-	.cfi_def_cfa_offset 288
-	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -272
+	.cfi_def_cfa_offset 272
+	st.d	$ra, $sp, 264                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -17296,13 +17203,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_12:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit181
 	ld.d	$a2, $fp, 1160
 	addi.w	$s2, $zero, -1
-	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
 	lu32i.d	$s2, 0
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	beqz	$a2, .LBB38_15
 # %bb.13:
 	addi.d	$a0, $fp, 1688
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 1160
@@ -17310,12 +17217,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ld.d	$a0, $fp, 1712
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bgeu	$a3, $a2, .LBB38_16
 .LBB38_14:
 	addi.d	$a0, $fp, 1712
 	sub.d	$a2, $a2, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 1160
@@ -17325,7 +17232,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	move	$a1, $a0
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bltu	$a3, $a2, .LBB38_14
 .LBB38_16:
 	bgeu	$a2, $a3, .LBB38_19
@@ -17339,12 +17246,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ld.d	$a0, $fp, 1736
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bgeu	$a3, $a2, .LBB38_21
 # %bb.20:
 	addi.d	$a0, $fp, 1736
 	sub.d	$a2, $a2, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 1160
@@ -17362,11 +17269,11 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$s0, $fp, 1760
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bgeu	$a3, $a2, .LBB38_26
 # %bb.25:
 	sub.d	$a2, $a2, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
@@ -17423,22 +17330,20 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_43:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit202
 	ld.wu	$a3, $fp, 1120
 	addi.d	$a0, $fp, 1784
-	addi.d	$a5, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a5, $a3
-	lu12i.w	$a4, 2441
-	ori	$s4, $a4, 1663
-	st.w	$s4, $sp, 196
+	addi.d	$a4, $a3, 1
+	lu12i.w	$a3, 2441
+	ori	$s4, $a3, 1663
+	slli.d	$a3, $a4, 31
+	st.w	$s4, $sp, 180
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	beqz	$a3, .LBB38_45
+	bgez	$a3, .LBB38_45
 # %bb.44:
 	move	$a4, $zero
 	move	$a1, $a2
 	b	.LBB38_46
 .LBB38_45:
-	addi.w	$a2, $a5, 0
-	addi.d	$a3, $sp, 196
+	addi.w	$a2, $a4, 0
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -17452,12 +17357,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	lu32i.d	$s3, 0
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s3, $sp, 196
+	st.w	$s3, $sp, 180
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB38_48
 # %bb.47:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -17476,12 +17381,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $fp, 1832
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s4, $sp, 196
+	st.w	$s4, $sp, 180
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB38_53
 # %bb.52:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -17500,12 +17405,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $fp, 1856
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s3, $sp, 196
+	st.w	$s3, $sp, 180
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	bgeu	$a3, $a4, .LBB38_58
 # %bb.57:
 	sub.d	$a2, $a4, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	b	.LBB38_61
@@ -17525,15 +17430,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_63:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit212
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$a2, $fp, 1880
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
-	bnez	$a1, .LBB38_65
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	bltz	$a1, .LBB38_65
 # %bb.64:
 	addi.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB38_65:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit
@@ -17545,64 +17448,61 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_67:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit215
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$a2, $fp, 1904
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
-	bnez	$a1, .LBB38_69
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	bltz	$a1, .LBB38_69
 # %bb.68:
 	addi.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB38_69:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit217
 	ld.d	$a2, $fp, 1160
 	addi.w	$a0, $a2, 0
-	addi.w	$a1, $zero, -4
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	addi.w	$s5, $zero, -4
 	blez	$a0, .LBB38_171
 # %bb.70:                               # %.lr.ph
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
 	move	$s8, $zero
 	move	$s0, $zero
 	move	$s6, $zero
-	st.d	$zero, $sp, 176                 # 8-byte Folded Spill
-	lu52i.d	$a0, $a1, 2047
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 160                 # 8-byte Folded Spill
+	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
+	lu52i.d	$a0, $s5, 2047
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 511
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	b	.LBB38_73
 	.p2align	4, , 16
 .LBB38_71:                              #   in Loop: Header=BB38_73 Depth=1
-	st.d	$s2, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 160                   # 8-byte Folded Spill
 .LBB38_72:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a2, $fp, 1160
 	addi.d	$s6, $s6, 1
-	addi.w	$a1, $a2, 0
+	addi.w	$a0, $a2, 0
 	addi.d	$s0, $s0, 1
 	addi.d	$s8, $s8, 4
-	bge	$s6, $a1, .LBB38_161
+	bge	$s6, $a0, .LBB38_161
 .LBB38_73:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1376
 	ldx.wu	$s4, $a0, $s8
 	beq	$s6, $s4, .LBB38_72
 # %bb.74:                               #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a1, $fp, 1352
-	addi.w	$a0, $s4, 0
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	slli.d	$a6, $a0, 2
+	addi.w	$s5, $s4, 0
+	slli.d	$a6, $s5, 2
 	ldx.w	$a0, $a1, $a6
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a0, $fp, 1648
 	ld.d	$a2, $fp, 1656
 	ldx.w	$a1, $a1, $s8
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$a6, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 168                   # 8-byte Folded Spill
 	beq	$a0, $a2, .LBB38_77
 # %bb.75:                               #   in Loop: Header=BB38_73 Depth=1
 	st.w	$s0, $a0, 0
@@ -17619,18 +17519,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_77:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s2, $fp, 1640
 	sub.d	$s1, $a0, $s2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.78:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB38_73 Depth=1
 	srai.d	$a0, $s1, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -17640,7 +17540,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s0, $a0, $s1
-	blt	$s1, $s5, .LBB38_80
+	blez	$s1, .LBB38_80
 # %bb.79:                               #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -17664,25 +17564,25 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1648
 	alsl.d	$a0, $s7, $s3, 2
 	st.d	$a0, $fp, 1656
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a0, $fp, 1672
 	ld.d	$a1, $fp, 1680
 	bne	$a0, $a1, .LBB38_76
 .LBB38_83:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s2, $fp, 1664
 	sub.d	$s1, $a0, $s2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.84:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i219
                                         #   in Loop: Header=BB38_73 Depth=1
 	srai.d	$a0, $s1, 2
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	masknez	$a2, $s5, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -17692,7 +17592,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s4, $a0, $s1
-	blt	$s1, $s5, .LBB38_86
+	blez	$s1, .LBB38_86
 # %bb.85:                               #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -17716,7 +17616,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1672
 	alsl.d	$a0, $s7, $s3, 2
 	st.d	$a0, $fp, 1680
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_89:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit225
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s3, $fp, 1352
@@ -17737,23 +17637,22 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_91:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s2, $fp, 1616
 	sub.d	$s1, $a2, $s2
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a2, .LBB38_385
 # %bb.92:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i227
                                         #   in Loop: Header=BB38_73 Depth=1
 	move	$s7, $s0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	alsl.d	$a2, $a2, $s3, 2
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	alsl.d	$a2, $s5, $s3, 2
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	srai.d	$a2, $s1, 2
 	slt	$s0, $a1, $a0
-	ori	$s5, $zero, 1
-	sltu	$a0, $s5, $a2
-	masknez	$a1, $s5, $a0
+	ori	$a1, $zero, 1
+	sltu	$a0, $a1, $a2
+	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -17763,13 +17662,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	add.d	$a1, $s3, $s8
 	maskeqz	$a1, $a1, $s0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $s0
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s3, $a0
 	stx.w	$a1, $a0, $s1
-	blt	$s1, $s5, .LBB38_94
+	blez	$s1, .LBB38_94
 # %bb.93:                               #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -17794,17 +17693,17 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	alsl.d	$a0, $s4, $s3, 2
 	st.d	$a0, $fp, 1632
 	move	$s0, $s7
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_97:                              # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit233
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1328
 	ldx.w	$a1, $a0, $a6
 	ld.d	$a0, $fp, 1576
 	ld.d	$a2, $fp, 1584
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
-	slt	$s5, $a3, $a4
-	sll.w	$s4, $a1, $s5
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	slt	$a5, $a3, $a4
+	sll.w	$s4, $a1, $a5
 	beq	$a0, $a2, .LBB38_99
 # %bb.98:                               #   in Loop: Header=BB38_73 Depth=1
 	st.w	$s4, $a0, 0
@@ -17814,10 +17713,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_99:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s2, $fp, 1568
 	sub.d	$s1, $a0, $s2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.100:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB38_73 Depth=1
+	move	$s7, $s6
+	move	$s6, $s5
+	move	$s5, $a5
 	srai.d	$a0, $s1, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -17825,18 +17727,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s7, $a0, $a1
-	slli.d	$a0, $s7, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s4, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_102
+	blez	$s1, .LBB38_102
 # %bb.101:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -17858,9 +17760,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s3, $fp, 1568
 	st.d	$a0, $fp, 1576
-	alsl.d	$a0, $s7, $s3, 2
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s3, 2
 	st.d	$a0, $fp, 1584
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	move	$a5, $s5
+	move	$s5, $s6
+	move	$s6, $s7
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_105:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1352
@@ -17880,13 +17786,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	bne	$a3, $a4, .LBB38_110
 # %bb.107:                              #   in Loop: Header=BB38_73 Depth=1
 	ldx.w	$a1, $a1, $a6
-	sll.w	$a1, $a1, $s5
+	sll.w	$a1, $a1, $a5
 	addi.d	$s4, $a1, 1
 	bne	$a0, $a2, .LBB38_111
 # %bb.108:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s2, $fp, 1592
 	sub.d	$s1, $a0, $s2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	bne	$s1, $a0, .LBB38_113
 	b	.LBB38_385
 	.p2align	4, , 16
@@ -17896,7 +17802,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ld.d	$a2, $fp, 1608
 .LBB38_110:                             #   in Loop: Header=BB38_73 Depth=1
 	ldx.w	$a1, $a1, $a6
-	sll.w	$s4, $a1, $s5
+	sll.w	$s4, $a1, $a5
 	beq	$a0, $a2, .LBB38_112
 .LBB38_111:                             #   in Loop: Header=BB38_73 Depth=1
 	st.w	$s4, $a0, 0
@@ -17906,10 +17812,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_112:                             #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s2, $fp, 1592
 	sub.d	$s1, $a2, $s2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 .LBB38_113:                             # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i244
                                         #   in Loop: Header=BB38_73 Depth=1
+	move	$s7, $s6
+	move	$s6, $s5
+	move	$s5, $a5
 	srai.d	$a0, $s1, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -17917,18 +17826,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s7, $a0, $a1
-	slli.d	$a0, $s7, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s4, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_115
+	blez	$s1, .LBB38_115
 # %bb.114:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -17950,13 +17859,17 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s3, $fp, 1592
 	st.d	$a0, $fp, 1600
-	alsl.d	$a0, $s7, $s3, 2
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s3, 2
 	st.d	$a0, $fp, 1608
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	move	$a5, $s5
+	move	$s5, $s6
+	move	$s6, $s7
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_118:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit242
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1736
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	stx.w	$a2, $a0, $s8
 	ld.d	$a0, $fp, 1352
 	ldx.w	$a1, $a0, $a6
@@ -17971,8 +17884,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 # %bb.120:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1392
 	ldx.w	$s7, $a0, $a6
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	beq	$s7, $a0, .LBB38_71
+	beq	$s7, $s5, .LBB38_71
 # %bb.121:                              #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1648
 	ld.d	$a1, $fp, 1656
@@ -17990,13 +17902,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1672
 	b	.LBB38_136
 .LBB38_124:                             #   in Loop: Header=BB38_73 Depth=1
-	move	$s4, $s5
 	ld.d	$s5, $fp, 1640
 	sub.d	$s1, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.125:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i252
                                         #   in Loop: Header=BB38_73 Depth=1
+	move	$s4, $a5
 	srai.d	$a0, $s1, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -18004,19 +17916,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s0, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_127
+	blez	$s1, .LBB38_127
 # %bb.126:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s5
@@ -18038,21 +17949,21 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s3, $fp, 1640
 	st.d	$a0, $fp, 1648
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s3, 2
 	st.d	$a0, $fp, 1656
-	move	$s5, $s4
+	move	$a5, $s4
 	ld.d	$a0, $fp, 1672
 	ld.d	$a1, $fp, 1680
 	bne	$a0, $a1, .LBB38_123
 .LBB38_130:                             #   in Loop: Header=BB38_73 Depth=1
-	move	$s4, $s5
 	ld.d	$s5, $fp, 1664
 	sub.d	$s1, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.131:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i260
                                         #   in Loop: Header=BB38_73 Depth=1
+	move	$s4, $a5
 	srai.d	$a0, $s1, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -18060,19 +17971,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s7, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_133
+	blez	$s1, .LBB38_133
 # %bb.132:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s5
@@ -18094,10 +18004,10 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s3, $fp, 1664
 	st.d	$a0, $fp, 1672
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s3, 2
 	st.d	$a0, $fp, 1680
-	move	$s5, $s4
+	move	$a5, $s4
 .LBB38_136:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit266
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s3, $fp, 1352
@@ -18117,16 +18027,16 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1624
 	b	.LBB38_144
 .LBB38_138:                             #   in Loop: Header=BB38_73 Depth=1
-	st.d	$a4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$s5, $fp, 1616
 	sub.d	$s1, $a2, $s5
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a2, .LBB38_385
 # %bb.139:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i268
                                         #   in Loop: Header=BB38_73 Depth=1
 	alsl.d	$a2, $s7, $s3, 2
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	srai.d	$a2, $s1, 2
 	slt	$s4, $a1, $a0
 	ori	$a1, $zero, 1
@@ -18135,7 +18045,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -18145,14 +18055,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	add.d	$a1, $s3, $s8
 	maskeqz	$a1, $a1, $s4
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $s4
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s3, $a0
 	stx.w	$a1, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_141
+	blez	$s1, .LBB38_141
 # %bb.140:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s5
@@ -18176,15 +18085,15 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1624
 	alsl.d	$a0, $s7, $s3, 2
 	st.d	$a0, $fp, 1632
-	ld.d	$s5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 .LBB38_144:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit274
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1328
 	ldx.w	$a1, $a0, $a4
 	ld.d	$a0, $fp, 1576
 	ld.d	$a2, $fp, 1584
-	sll.w	$s4, $a1, $s5
+	sll.w	$s4, $a1, $a5
 	beq	$a0, $a2, .LBB38_146
 # %bb.145:                              #   in Loop: Header=BB38_73 Depth=1
 	st.w	$s4, $a0, 0
@@ -18192,14 +18101,14 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1576
 	b	.LBB38_152
 .LBB38_146:                             #   in Loop: Header=BB38_73 Depth=1
-	st.d	$a4, $sp, 184                   # 8-byte Folded Spill
-	move	$s7, $s5
+	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
 	ld.d	$s5, $fp, 1568
 	sub.d	$s1, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.147:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i276
                                         #   in Loop: Header=BB38_73 Depth=1
+	move	$s7, $a5
 	srai.d	$a0, $s1, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -18207,19 +18116,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s4, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_149
+	blez	$s1, .LBB38_149
 # %bb.148:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s5
@@ -18241,18 +18149,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s3, $fp, 1568
 	st.d	$a0, $fp, 1576
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s3, 2
 	st.d	$a0, $fp, 1584
-	move	$s5, $s7
-	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	move	$a5, $s7
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 .LBB38_152:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit282
                                         #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$a0, $fp, 1336
 	ldx.w	$a1, $a0, $a4
 	ld.d	$a0, $fp, 1600
 	ld.d	$a2, $fp, 1608
-	sll.w	$s7, $a1, $s5
+	sll.w	$s7, $a1, $a5
 	beq	$a0, $a2, .LBB38_154
 # %bb.153:                              #   in Loop: Header=BB38_73 Depth=1
 	st.w	$s7, $a0, 0
@@ -18262,7 +18170,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_154:                             #   in Loop: Header=BB38_73 Depth=1
 	ld.d	$s4, $fp, 1592
 	sub.d	$s1, $a0, $s4
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB38_385
 # %bb.155:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i284
                                         #   in Loop: Header=BB38_73 Depth=1
@@ -18273,7 +18181,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -18283,8 +18191,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s7, $a0, $s1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB38_157
+	blez	$s1, .LBB38_157
 # %bb.156:                              #   in Loop: Header=BB38_73 Depth=1
 	move	$a0, $s3
 	move	$a1, $s4
@@ -18310,73 +18217,74 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1608
 .LBB38_160:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit290
                                         #   in Loop: Header=BB38_73 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	stx.w	$s2, $a0, $s8
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 2
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB38_72
 .LBB38_161:                             # %._crit_edge
 	addi.d	$s1, $fp, 1560
-	ori	$a0, $zero, 1
-	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
-	st.w	$a3, $fp, 1560
-	blt	$a1, $a0, .LBB38_360
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	st.w	$a1, $fp, 1560
+	blez	$a0, .LBB38_360
 # %bb.162:                              # %.lr.ph572
+	move	$a0, $zero
 	move	$a1, $zero
-	move	$a3, $zero
-	ld.d	$a4, $fp, 1368
-	ld.d	$a5, $fp, 1352
-	ld.d	$a6, $fp, 1336
-	ld.d	$a7, $fp, 1736
-	ld.d	$t0, $fp, 1688
-	ld.d	$t1, $fp, 1392
-	ld.d	$t2, $fp, 1712
-	ld.d	$t3, $fp, 1760
-	bstrpick.d	$t4, $a2, 30, 0
+	ld.d	$a3, $fp, 1368
+	ld.d	$a4, $fp, 1352
+	ld.d	$a5, $fp, 1336
+	ld.d	$a6, $fp, 1736
+	ld.d	$a7, $fp, 1688
+	ld.d	$t0, $fp, 1392
+	ld.d	$t1, $fp, 1712
+	ld.d	$t2, $fp, 1760
+	bstrpick.d	$t3, $a2, 30, 0
+	ori	$t4, $zero, 1
 	ori	$t5, $zero, 1
 	bstrins.d	$t5, $t5, 32, 31
-	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB38_166
 .LBB38_163:                             #   in Loop: Header=BB38_166 Depth=1
-	alsl.d	$t6, $t7, $t3, 2
-	move	$t7, $t0
+	alsl.d	$t6, $t7, $t2, 2
+	move	$t7, $a7
 .LBB38_164:                             # %.sink.split
                                         #   in Loop: Header=BB38_166 Depth=1
 	ld.w	$t6, $t6, 0
-	stx.w	$t6, $t7, $a1
+	stx.w	$t6, $t7, $a0
 .LBB38_165:                             #   in Loop: Header=BB38_166 Depth=1
-	addi.d	$a3, $a3, 1
-	addi.d	$a1, $a1, 4
-	beq	$t4, $a3, .LBB38_172
+	addi.d	$a1, $a1, 1
+	addi.d	$a0, $a0, 4
+	beq	$t3, $a1, .LBB38_172
 .LBB38_166:                             # =>This Inner Loop Header: Depth=1
-	ldx.wu	$t6, $a4, $a1
-	beq	$a3, $t6, .LBB38_165
+	ldx.wu	$t6, $a3, $a0
+	beq	$a1, $t6, .LBB38_165
 # %bb.167:                              #   in Loop: Header=BB38_166 Depth=1
 	addi.w	$t7, $t6, 0
 	slli.d	$t6, $t7, 2
-	ldx.w	$t8, $a5, $t6
-	ldx.w	$s0, $a5, $a1
+	ldx.w	$t8, $a4, $t6
+	ldx.w	$s0, $a4, $a0
 	bge	$t8, $s0, .LBB38_169
 # %bb.168:                              #   in Loop: Header=BB38_166 Depth=1
-	ldx.wu	$t8, $a6, $a1
+	ldx.wu	$t8, $a5, $a0
 	and	$t8, $t8, $t5
 	addi.w	$t8, $t8, 0
-	beq	$t8, $a0, .LBB38_163
+	beq	$t8, $t4, .LBB38_163
 .LBB38_169:                             #   in Loop: Header=BB38_166 Depth=1
-	ldx.w	$t8, $a7, $t6
-	alsl.d	$t7, $t7, $a5, 2
-	stx.w	$t8, $t0, $a1
+	ldx.w	$t8, $a6, $t6
+	alsl.d	$t7, $t7, $a4, 2
+	stx.w	$t8, $a7, $a0
 	ld.w	$t7, $t7, 0
-	ldx.w	$t8, $a5, $a1
+	ldx.w	$t8, $a4, $a0
 	bge	$t8, $t7, .LBB38_165
 # %bb.170:                              #   in Loop: Header=BB38_166 Depth=1
-	ldx.w	$t6, $t1, $t6
-	alsl.d	$t6, $t6, $a7, 2
-	move	$t7, $t2
+	ldx.w	$t6, $t0, $t6
+	alsl.d	$t6, $t6, $a6, 2
+	move	$t7, $t1
 	b	.LBB38_164
 .LBB38_171:                             # %._crit_edge.thread
 	addi.d	$s1, $fp, 1560
@@ -18419,11 +18327,11 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	stptr.d	$a3, $fp, 2128
 .LBB38_184:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit302
 	addi.d	$s0, $fp, 2047
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	beqz	$a2, .LBB38_187
 # %bb.185:
 	addi.d	$a0, $s0, 1
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 1160
@@ -18431,12 +18339,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ldptr.d	$a0, $fp, 2072
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bgeu	$a3, $a2, .LBB38_188
 .LBB38_186:
 	addi.d	$a0, $s0, 25
 	sub.d	$a2, $a2, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 1160
@@ -18446,7 +18354,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	move	$a1, $a0
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bltu	$a3, $a2, .LBB38_186
 .LBB38_188:
 	bgeu	$a2, $a3, .LBB38_191
@@ -18460,12 +18368,12 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ldptr.d	$a0, $fp, 2096
 	sub.d	$a3, $a1, $a0
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
 	bgeu	$a3, $a2, .LBB38_193
 # %bb.192:
 	addi.d	$a0, $s0, 49
 	sub.d	$a2, $a2, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 1160
@@ -18479,23 +18387,23 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	stptr.d	$a0, $fp, 2104
 .LBB38_196:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit308
 	ldptr.d	$a1, $fp, 2128
-	ldptr.d	$a0, $fp, 2120
-	addi.d	$s5, $s0, 73
-	sub.d	$a3, $a1, $a0
+	ldptr.d	$a4, $fp, 2120
+	addi.d	$a0, $s0, 73
+	sub.d	$a3, $a1, $a4
 	srai.d	$a3, $a3, 2
-	st.w	$s2, $sp, 196
+	st.w	$s2, $sp, 180
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	bgeu	$a3, $a2, .LBB38_198
 # %bb.197:
 	sub.d	$a2, $a2, $a3
-	addi.d	$a3, $sp, 196
-	move	$a0, $s5
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	b	.LBB38_201
 .LBB38_198:
 	bgeu	$a2, $a3, .LBB38_201
 # %bb.199:
-	alsl.d	$a0, $a2, $a0, 2
+	alsl.d	$a0, $a2, $a4, 2
 	beq	$a1, $a0, .LBB38_201
 # %bb.200:
 	stptr.d	$a0, $fp, 2128
@@ -18545,19 +18453,17 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ld.wu	$a3, $fp, 1120
 	addi.d	$a0, $s0, 97
 	addi.d	$a4, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a4, $a3
-	st.w	$s4, $sp, 196
+	slli.d	$a3, $a4, 31
+	st.w	$s4, $sp, 180
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	beqz	$a3, .LBB38_217
+	bgez	$a3, .LBB38_217
 # %bb.216:
 	move	$a0, $zero
 	move	$a1, $a2
 	b	.LBB38_218
 .LBB38_217:
 	addi.w	$a2, $a4, 0
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -18568,12 +18474,11 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$s2, $s0, 121
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s3, $sp, 196
-	st.d	$s5, $sp, 120                   # 8-byte Folded Spill
+	st.w	$s3, $sp, 180
 	bgeu	$a3, $a0, .LBB38_220
 # %bb.219:
 	sub.d	$a2, $a0, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
@@ -18590,15 +18495,15 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_223:                             # %_ZNSt6vectorIiSaIiEE6resizeEmRKi.exit328
 	ldptr.d	$a1, $fp, 2200
 	ldptr.d	$a2, $fp, 2192
-	addi.d	$s5, $s0, 145
+	addi.d	$s6, $s0, 145
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s4, $sp, 196
+	st.w	$s4, $sp, 180
 	bgeu	$a3, $a0, .LBB38_225
 # %bb.224:
 	sub.d	$a2, $a0, $a3
-	addi.d	$a3, $sp, 196
-	move	$a0, $s5
+	addi.d	$a3, $sp, 180
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 1120
@@ -18617,11 +18522,11 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$s4, $s0, 169
 	sub.d	$a3, $a1, $a2
 	srai.d	$a3, $a3, 2
-	st.w	$s3, $sp, 196
+	st.w	$s3, $sp, 180
 	bgeu	$a3, $a0, .LBB38_230
 # %bb.229:
 	sub.d	$a2, $a0, $a3
-	addi.d	$a3, $sp, 196
+	addi.d	$a3, $sp, 180
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi)
 	jirl	$ra, $ra, 0
@@ -18642,15 +18547,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_235:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit334
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$a2, $s0, 193
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	bnez	$a1, .LBB38_237
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	bltz	$a1, .LBB38_237
 # %bb.236:
 	addi.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB38_237:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit336
@@ -18662,15 +18565,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_239:                             # %_ZNSt6vectorIiSaIiEE5clearEv.exit338
 	ld.wu	$a0, $fp, 1120
 	addi.d	$a0, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $a0, $a1
+	slli.d	$a1, $a0, 31
 	addi.d	$a2, $s0, 217
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	bnez	$a1, .LBB38_241
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	bltz	$a1, .LBB38_241
 # %bb.240:
 	addi.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .LBB38_241:                             # %_ZNSt6vectorIiSaIiEE6resizeEm.exit340
@@ -18678,46 +18579,44 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	blez	$a0, .LBB38_343
 # %bb.242:                              # %.lr.ph576
 	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	move	$s0, $zero
 	move	$s1, $zero
 	move	$s2, $zero
-	st.d	$zero, $sp, 176                 # 8-byte Folded Spill
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	lu52i.d	$a0, $a0, 2047
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 160                 # 8-byte Folded Spill
+	lu52i.d	$a0, $s5, 2047
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 511
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	b	.LBB38_245
 	.p2align	4, , 16
 .LBB38_243:                             #   in Loop: Header=BB38_245 Depth=1
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
 .LBB38_244:                             #   in Loop: Header=BB38_245 Depth=1
-	ld.d	$t4, $fp, 1160
+	ld.d	$t3, $fp, 1160
 	addi.d	$s2, $s2, 1
-	addi.w	$a2, $t4, 0
+	addi.w	$a1, $t3, 0
 	addi.d	$s1, $s1, 1
 	addi.d	$s0, $s0, 4
-	bge	$s2, $a2, .LBB38_333
+	bge	$s2, $a1, .LBB38_333
 .LBB38_245:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 1392
 	ldx.wu	$s8, $a0, $s0
 	beq	$s2, $s8, .LBB38_244
 # %bb.246:                              #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a1, $fp, 1352
-	addi.w	$a0, $s8, 0
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	slli.d	$a6, $a0, 2
+	addi.w	$s3, $s8, 0
+	slli.d	$a6, $s3, 2
 	ldx.w	$a0, $a1, $a6
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a0, $fp, 2008
 	ld.d	$a2, $fp, 2016
 	ldx.w	$a1, $a1, $s0
-	st.d	$a6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	beq	$a0, $a2, .LBB38_249
 # %bb.247:                              #   in Loop: Header=BB38_245 Depth=1
 	st.w	$s1, $a0, 0
@@ -18734,18 +18633,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_249:                             #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s5, $fp, 2000
 	sub.d	$s4, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.250:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i342
                                         #   in Loop: Header=BB38_245 Depth=1
 	srai.d	$a0, $s4, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -18755,7 +18654,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s1, $a0, $s4
-	blt	$s4, $s3, .LBB38_252
+	blez	$s4, .LBB38_252
 # %bb.251:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s5
@@ -18779,25 +18678,25 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 2008
 	alsl.d	$a0, $s7, $s6, 2
 	st.d	$a0, $fp, 2016
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a0, $fp, 2032
 	ld.d	$a1, $fp, 2040
 	bne	$a0, $a1, .LBB38_248
 .LBB38_255:                             #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s5, $fp, 2024
 	sub.d	$s4, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.256:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i350
                                         #   in Loop: Header=BB38_245 Depth=1
 	srai.d	$a0, $s4, 2
-	ori	$s3, $zero, 1
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -18807,7 +18706,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s8, $a0, $s4
-	blt	$s4, $s3, .LBB38_258
+	blez	$s4, .LBB38_258
 # %bb.257:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s5
@@ -18831,7 +18730,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 2032
 	alsl.d	$a0, $s7, $s6, 2
 	st.d	$a0, $fp, 2040
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_261:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit356
                                         #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s6, $fp, 1352
@@ -18852,23 +18751,22 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_263:                             #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s5, $fp, 1976
 	sub.d	$s4, $a2, $s5
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a2, .LBB38_385
 # %bb.264:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i358
                                         #   in Loop: Header=BB38_245 Depth=1
 	move	$s7, $s1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	alsl.d	$a2, $a2, $s6, 2
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	alsl.d	$a2, $s3, $s6, 2
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	srai.d	$a2, $s4, 2
 	slt	$s1, $a1, $a0
-	ori	$s3, $zero, 1
-	sltu	$a0, $s3, $a2
-	masknez	$a1, $s3, $a0
+	ori	$a1, $zero, 1
+	sltu	$a0, $a1, $a2
+	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -18878,13 +18776,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	add.d	$a1, $s6, $s0
 	maskeqz	$a1, $a1, $s1
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $s1
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s6, $a0
 	stx.w	$a1, $a0, $s4
-	blt	$s4, $s3, .LBB38_266
+	blez	$s4, .LBB38_266
 # %bb.265:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s5
@@ -18909,17 +18807,17 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	alsl.d	$a0, $s8, $s6, 2
 	st.d	$a0, $fp, 1992
 	move	$s1, $s7
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_269:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit364
                                         #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a0, $fp, 1336
 	ldx.w	$a1, $a0, $a6
 	ld.d	$a0, $fp, 1960
 	ld.d	$a2, $fp, 1968
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
-	slt	$s3, $a3, $a4
-	sll.w	$s8, $a1, $s3
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	slt	$a5, $a3, $a4
+	sll.w	$s8, $a1, $a5
 	beq	$a0, $a2, .LBB38_271
 # %bb.270:                              #   in Loop: Header=BB38_245 Depth=1
 	st.w	$s8, $a0, 0
@@ -18929,10 +18827,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_271:                             #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s5, $fp, 1952
 	sub.d	$s4, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.272:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i366
                                         #   in Loop: Header=BB38_245 Depth=1
+	move	$s7, $s2
+	move	$s2, $s3
+	move	$s3, $a5
 	srai.d	$a0, $s4, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -18940,18 +18841,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s7, $a0, $a1
-	slli.d	$a0, $s7, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s8, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_274
+	blez	$s4, .LBB38_274
 # %bb.273:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s5
@@ -18973,9 +18874,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s6, $fp, 1952
 	st.d	$a0, $fp, 1960
-	alsl.d	$a0, $s7, $s6, 2
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s6, 2
 	st.d	$a0, $fp, 1968
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	move	$a5, $s3
+	move	$s3, $s2
+	move	$s2, $s7
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_277:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit372
                                         #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a0, $fp, 1352
@@ -18995,13 +18900,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	bne	$a3, $a4, .LBB38_282
 # %bb.279:                              #   in Loop: Header=BB38_245 Depth=1
 	ldx.w	$a1, $a1, $a6
-	sll.w	$a1, $a1, $s3
+	sll.w	$a1, $a1, $a5
 	addi.d	$s8, $a1, 1
 	bne	$a0, $a2, .LBB38_283
 # %bb.280:                              #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s5, $fp, 1928
 	sub.d	$s4, $a0, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	bne	$s4, $a0, .LBB38_285
 	b	.LBB38_385
 	.p2align	4, , 16
@@ -19011,7 +18916,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ld.d	$a2, $fp, 1944
 .LBB38_282:                             #   in Loop: Header=BB38_245 Depth=1
 	ldx.w	$a1, $a1, $a6
-	sll.w	$s8, $a1, $s3
+	sll.w	$s8, $a1, $a5
 	beq	$a0, $a2, .LBB38_284
 .LBB38_283:                             #   in Loop: Header=BB38_245 Depth=1
 	st.w	$s8, $a0, 0
@@ -19021,10 +18926,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_284:                             #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s5, $fp, 1928
 	sub.d	$s4, $a2, $s5
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 .LBB38_285:                             # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i382
                                         #   in Loop: Header=BB38_245 Depth=1
+	move	$s7, $s2
+	move	$s2, $s3
+	move	$s3, $a5
 	srai.d	$a0, $s4, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -19032,18 +18940,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
-	or	$s7, $a0, $a1
-	slli.d	$a0, $s7, 2
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s8, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_287
+	blez	$s4, .LBB38_287
 # %bb.286:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s5
@@ -19065,13 +18973,17 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s6, $fp, 1928
 	st.d	$a0, $fp, 1936
-	alsl.d	$a0, $s7, $s6, 2
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $s6, 2
 	st.d	$a0, $fp, 1944
-	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
+	move	$a5, $s3
+	move	$s3, $s2
+	move	$s2, $s7
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 .LBB38_290:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit380
                                         #   in Loop: Header=BB38_245 Depth=1
 	ldptr.d	$a0, $fp, 2096
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	stx.w	$a2, $a0, $s0
 	ld.d	$a0, $fp, 1352
 	ldx.w	$a1, $a0, $a6
@@ -19086,8 +18998,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 # %bb.292:                              #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a0, $fp, 1376
 	ldx.w	$s7, $a0, $a6
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	beq	$s7, $a0, .LBB38_243
+	beq	$s7, $s3, .LBB38_243
 # %bb.293:                              #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a0, $fp, 2008
 	ld.d	$a1, $fp, 2016
@@ -19105,13 +19016,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 2032
 	b	.LBB38_308
 .LBB38_296:                             #   in Loop: Header=BB38_245 Depth=1
-	move	$s8, $s3
 	ld.d	$s3, $fp, 2000
 	sub.d	$s4, $a0, $s3
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.297:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i390
                                         #   in Loop: Header=BB38_245 Depth=1
+	move	$s8, $a5
 	srai.d	$a0, $s4, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -19119,19 +19030,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s1, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_299
+	blez	$s4, .LBB38_299
 # %bb.298:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s3
@@ -19153,21 +19063,21 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s6, $fp, 2000
 	st.d	$a0, $fp, 2008
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s6, 2
 	st.d	$a0, $fp, 2016
-	move	$s3, $s8
+	move	$a5, $s8
 	ld.d	$a0, $fp, 2032
 	ld.d	$a1, $fp, 2040
 	bne	$a0, $a1, .LBB38_295
 .LBB38_302:                             #   in Loop: Header=BB38_245 Depth=1
-	move	$s8, $s3
 	ld.d	$s3, $fp, 2024
 	sub.d	$s4, $a0, $s3
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.303:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i398
                                         #   in Loop: Header=BB38_245 Depth=1
+	move	$s8, $a5
 	srai.d	$a0, $s4, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -19175,19 +19085,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s7, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_305
+	blez	$s4, .LBB38_305
 # %bb.304:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s3
@@ -19209,10 +19118,10 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s6, $fp, 2024
 	st.d	$a0, $fp, 2032
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s6, 2
 	st.d	$a0, $fp, 2040
-	move	$s3, $s8
+	move	$a5, $s8
 .LBB38_308:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit404
                                         #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s6, $fp, 1352
@@ -19232,16 +19141,16 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1984
 	b	.LBB38_316
 .LBB38_310:                             #   in Loop: Header=BB38_245 Depth=1
-	st.d	$a4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$s3, $fp, 1976
 	sub.d	$s4, $a2, $s3
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a2, .LBB38_385
 # %bb.311:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i406
                                         #   in Loop: Header=BB38_245 Depth=1
 	alsl.d	$a2, $s7, $s6, 2
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	srai.d	$a2, $s4, 2
 	slt	$s8, $a1, $a0
 	ori	$a1, $zero, 1
@@ -19250,7 +19159,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -19260,14 +19169,13 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	add.d	$a1, $s6, $s0
 	maskeqz	$a1, $a1, $s8
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $s8
 	or	$a1, $a1, $a2
 	ld.w	$a1, $a1, 0
 	move	$s6, $a0
 	stx.w	$a1, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_313
+	blez	$s4, .LBB38_313
 # %bb.312:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s3
@@ -19291,15 +19199,15 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1984
 	alsl.d	$a0, $s7, $s6, 2
 	st.d	$a0, $fp, 1992
-	ld.d	$s3, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 .LBB38_316:                             # %_ZNSt6vectorIiSaIiEE9push_backERKi.exit412
                                         #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a0, $fp, 1336
 	ldx.w	$a1, $a0, $a4
 	ld.d	$a0, $fp, 1960
 	ld.d	$a2, $fp, 1968
-	sll.w	$s8, $a1, $s3
+	sll.w	$s8, $a1, $a5
 	beq	$a0, $a2, .LBB38_318
 # %bb.317:                              #   in Loop: Header=BB38_245 Depth=1
 	st.w	$s8, $a0, 0
@@ -19307,14 +19215,14 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1960
 	b	.LBB38_324
 .LBB38_318:                             #   in Loop: Header=BB38_245 Depth=1
-	st.d	$a4, $sp, 184                   # 8-byte Folded Spill
-	move	$s7, $s3
+	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
 	ld.d	$s3, $fp, 1952
 	sub.d	$s4, $a0, $s3
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.319:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i414
                                         #   in Loop: Header=BB38_245 Depth=1
+	move	$s7, $a5
 	srai.d	$a0, $s4, 2
 	ori	$a2, $zero, 1
 	sltu	$a1, $a2, $a0
@@ -19322,19 +19230,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s8, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_321
+	blez	$s4, .LBB38_321
 # %bb.320:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s3
@@ -19356,18 +19263,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a0, $a0, 4
 	st.d	$s6, $fp, 1952
 	st.d	$a0, $fp, 1960
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $s6, 2
 	st.d	$a0, $fp, 1968
-	move	$s3, $s7
-	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	move	$a5, $s7
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 .LBB38_324:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit420
                                         #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$a0, $fp, 1328
 	ldx.w	$a1, $a0, $a4
 	ld.d	$a0, $fp, 1936
 	ld.d	$a2, $fp, 1944
-	sll.w	$s8, $a1, $s3
+	sll.w	$s8, $a1, $a5
 	beq	$a0, $a2, .LBB38_326
 # %bb.325:                              #   in Loop: Header=BB38_245 Depth=1
 	st.w	$s8, $a0, 0
@@ -19377,7 +19284,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_326:                             #   in Loop: Header=BB38_245 Depth=1
 	ld.d	$s3, $fp, 1928
 	sub.d	$s4, $a0, $s3
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB38_385
 # %bb.327:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i422
                                         #   in Loop: Header=BB38_245 Depth=1
@@ -19388,7 +19295,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a2
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
@@ -19398,8 +19305,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	stx.w	$s8, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB38_329
+	blez	$s4, .LBB38_329
 # %bb.328:                              #   in Loop: Header=BB38_245 Depth=1
 	move	$a0, $s6
 	move	$a1, $s3
@@ -19425,82 +19331,81 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.d	$a0, $fp, 1944
 .LBB38_332:                             # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit428
                                         #   in Loop: Header=BB38_245 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	stx.w	$s5, $a0, $s0
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 2
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB38_244
 .LBB38_333:                             # %._crit_edge577
 	addi.d	$a0, $fp, 1564
-	ori	$a1, $zero, 1
-	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
-	st.w	$a3, $fp, 1564
-	blt	$a2, $a1, .LBB38_361
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	st.w	$a2, $fp, 1564
+	blez	$a1, .LBB38_361
 # %bb.334:                              # %.lr.ph582
+	move	$a1, $zero
 	move	$a2, $zero
-	move	$a3, $zero
-	ld.d	$a4, $fp, 1384
-	ld.d	$a5, $fp, 1352
-	ld.d	$a6, $fp, 1328
-	ldptr.d	$a7, $fp, 2096
-	ldptr.d	$t0, $fp, 2048
-	ld.d	$t1, $fp, 1376
-	ldptr.d	$t2, $fp, 2072
-	ldptr.d	$t3, $fp, 2120
-	bstrpick.d	$t4, $t4, 30, 0
+	ld.d	$a3, $fp, 1384
+	ld.d	$a4, $fp, 1352
+	ld.d	$a5, $fp, 1328
+	ldptr.d	$a6, $fp, 2096
+	ldptr.d	$a7, $fp, 2048
+	ld.d	$t0, $fp, 1376
+	ldptr.d	$t1, $fp, 2072
+	ldptr.d	$t2, $fp, 2120
+	bstrpick.d	$t3, $t3, 30, 0
+	ori	$t4, $zero, 1
 	ori	$t5, $zero, 1
 	bstrins.d	$t5, $t5, 32, 31
 	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 	b	.LBB38_338
 .LBB38_335:                             #   in Loop: Header=BB38_338 Depth=1
-	alsl.d	$t6, $t7, $t3, 2
-	move	$t7, $t0
+	alsl.d	$t6, $t7, $t2, 2
+	move	$t7, $a7
 .LBB38_336:                             # %.sink.split693
                                         #   in Loop: Header=BB38_338 Depth=1
 	ld.w	$t6, $t6, 0
-	stx.w	$t6, $t7, $a2
+	stx.w	$t6, $t7, $a1
 .LBB38_337:                             #   in Loop: Header=BB38_338 Depth=1
-	addi.d	$a3, $a3, 1
-	addi.d	$a2, $a2, 4
-	beq	$t4, $a3, .LBB38_344
+	addi.d	$a2, $a2, 1
+	addi.d	$a1, $a1, 4
+	beq	$t3, $a2, .LBB38_344
 .LBB38_338:                             # =>This Inner Loop Header: Depth=1
-	ldx.wu	$t6, $a4, $a2
-	beq	$a3, $t6, .LBB38_337
+	ldx.wu	$t6, $a3, $a1
+	beq	$a2, $t6, .LBB38_337
 # %bb.339:                              #   in Loop: Header=BB38_338 Depth=1
 	addi.w	$t7, $t6, 0
 	slli.d	$t6, $t7, 2
-	ldx.w	$t8, $a5, $t6
-	ldx.w	$s0, $a5, $a2
+	ldx.w	$t8, $a4, $t6
+	ldx.w	$s0, $a4, $a1
 	bge	$t8, $s0, .LBB38_341
 # %bb.340:                              #   in Loop: Header=BB38_338 Depth=1
-	ldx.wu	$t8, $a6, $a2
+	ldx.wu	$t8, $a5, $a1
 	and	$t8, $t8, $t5
 	addi.w	$t8, $t8, 0
-	beq	$t8, $a1, .LBB38_335
+	beq	$t8, $t4, .LBB38_335
 .LBB38_341:                             #   in Loop: Header=BB38_338 Depth=1
-	ldx.w	$t8, $a7, $t6
-	alsl.d	$t7, $t7, $a5, 2
-	stx.w	$t8, $t0, $a2
+	ldx.w	$t8, $a6, $t6
+	alsl.d	$t7, $t7, $a4, 2
+	stx.w	$t8, $a7, $a1
 	ld.w	$t7, $t7, 0
-	ldx.w	$t8, $a5, $a2
+	ldx.w	$t8, $a4, $a1
 	bge	$t8, $t7, .LBB38_337
 # %bb.342:                              #   in Loop: Header=BB38_338 Depth=1
-	ldx.w	$t6, $t1, $t6
-	alsl.d	$t6, $t6, $a7, 2
-	move	$t7, $t2
+	ldx.w	$t6, $t0, $t6
+	alsl.d	$t6, $t6, $a6, 2
+	move	$t7, $t1
 	b	.LBB38_336
 .LBB38_343:                             # %._crit_edge577.thread
 	addi.d	$a0, $fp, 1564
 	st.w	$zero, $fp, 1564
 .LBB38_344:                             # %.preheader508
 	ld.w	$a1, $s1, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB38_362
+	blez	$a1, .LBB38_362
 .LBB38_345:                             # %.lr.ph584
 	ld.d	$a1, $fp, 1616
 	ld.d	$a2, $fp, 1568
@@ -19558,8 +19463,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.w	$t3, $a7, 0
 	b	.LBB38_346
 .LBB38_355:                             # %.preheader507
-	ori	$a1, $zero, 1
-	blt	$a7, $a1, .LBB38_362
+	blez	$a7, .LBB38_362
 # %bb.356:                              # %.lr.ph586
 	ld.d	$a1, $fp, 1616
 	ld.d	$a2, $fp, 1808
@@ -19593,9 +19497,10 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	ld.w	$a7, $s1, 0
 	b	.LBB38_357
 .LBB38_360:
-	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $fp, 2000
 	ld.d	$a1, $fp, 2008
 	bne	$a1, $a0, .LBB38_173
@@ -19603,23 +19508,22 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 .LBB38_361:
 	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 	ld.w	$a1, $s1, 0
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB38_345
+	bgtz	$a1, .LBB38_345
 .LBB38_362:                             # %.preheader506
 	ld.w	$a1, $fp, 1120
-	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
 	bltz	$a1, .LBB38_365
 # %bb.363:                              # %.lr.ph589
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a3, $a3, 0
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
 	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a5, $a5, 0
@@ -19652,8 +19556,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	blt	$t1, $a7, .LBB38_364
 .LBB38_365:                             # %.preheader505
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB38_381
+	blez	$a1, .LBB38_381
 # %bb.366:                              # %.lr.ph591
 	ld.d	$a1, $fp, 1976
 	ld.d	$a2, $fp, 1928
@@ -19711,8 +19614,7 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	st.w	$t3, $a7, 0
 	b	.LBB38_367
 .LBB38_376:                             # %.preheader504
-	ori	$a1, $zero, 1
-	blt	$a7, $a1, .LBB38_381
+	blez	$a7, .LBB38_381
 # %bb.377:                              # %.lr.ph593
 	ld.d	$a1, $fp, 1976
 	ldptr.d	$a2, $fp, 2168
@@ -19751,10 +19653,10 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 # %bb.382:                              # %.lr.ph596
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $s5, 0
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $s6, 0
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $a3, 0
 	ld.d	$a4, $s2, 0
 	ld.d	$a5, $s4, 0
@@ -19785,18 +19687,18 @@ _ZN4Mesh24calc_face_list_wbidirmapEv:   # @_ZN4Mesh24calc_face_list_wbidirmapEv
 	addi.d	$a5, $a5, 4
 	blt	$a6, $a7, .LBB38_383
 .LBB38_384:                             # %._crit_edge597
-	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 288
+	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 272
 	ret
 .LBB38_385:
 	pcalau12i	$a0, %pc_hi20(.L.str.143)
@@ -19898,33 +19800,33 @@ _ZN4Mesh14get_xface_flagEib:            # @_ZN4Mesh14get_xface_flagEib
 	ld.w	$a1, $a2, 0
 	b	.LBB39_3
 .LBB39_8:                               # %.preheader
-	ld.w	$a4, $fp, 1560
-	ori	$a0, $zero, 1
-	blt	$a4, $a0, .LBB39_13
+	ld.w	$a3, $fp, 1560
+	blez	$a3, .LBB39_13
 # %bb.9:                                # %.lr.ph58
-	ld.d	$a1, $fp, 1616
-	ld.d	$a2, $fp, 1568
-	ld.d	$a3, $fp, 1592
-	move	$a5, $zero
+	ld.d	$a0, $fp, 1616
+	ld.d	$a1, $fp, 1568
+	ld.d	$a2, $fp, 1592
+	move	$a4, $zero
+	ori	$a5, $zero, 1
 	b	.LBB39_11
 	.p2align	4, , 16
 .LBB39_10:                              #   in Loop: Header=BB39_11 Depth=1
-	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 1
+	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 4
-	bge	$a5, $a4, .LBB39_13
+	bge	$a4, $a3, .LBB39_13
 .LBB39_11:                              # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a1, 0
+	ld.w	$a6, $a0, 0
 	bne	$a6, $s1, .LBB39_10
 # %bb.12:                               #   in Loop: Header=BB39_11 Depth=1
-	ld.w	$a4, $a3, 0
-	ld.w	$a6, $a2, 0
-	slli.d	$a4, $a4, 3
-	ldx.d	$a4, $s0, $a4
+	ld.w	$a3, $a2, 0
+	ld.w	$a6, $a1, 0
+	slli.d	$a3, $a3, 3
+	ldx.d	$a3, $s0, $a3
 	slli.d	$a6, $a6, 2
-	stx.w	$a0, $a4, $a6
-	ld.w	$a4, $fp, 1560
+	stx.w	$a5, $a3, $a6
+	ld.w	$a3, $fp, 1560
 	b	.LBB39_10
 .LBB39_13:                              # %._crit_edge59
 	beqz	$s2, .LBB39_26
@@ -20139,33 +20041,33 @@ _ZN4Mesh14get_yface_flagEib:            # @_ZN4Mesh14get_yface_flagEib
 	ld.w	$a1, $a2, 0
 	b	.LBB40_3
 .LBB40_8:                               # %.preheader
-	ld.w	$a4, $fp, 1564
-	ori	$a0, $zero, 1
-	blt	$a4, $a0, .LBB40_13
+	ld.w	$a3, $fp, 1564
+	blez	$a3, .LBB40_13
 # %bb.9:                                # %.lr.ph58
-	ld.d	$a1, $fp, 1976
-	ld.d	$a2, $fp, 1928
-	ld.d	$a3, $fp, 1952
-	move	$a5, $zero
+	ld.d	$a0, $fp, 1976
+	ld.d	$a1, $fp, 1928
+	ld.d	$a2, $fp, 1952
+	move	$a4, $zero
+	ori	$a5, $zero, 1
 	b	.LBB40_11
 	.p2align	4, , 16
 .LBB40_10:                              #   in Loop: Header=BB40_11 Depth=1
-	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 1
+	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 4
-	bge	$a5, $a4, .LBB40_13
+	bge	$a4, $a3, .LBB40_13
 .LBB40_11:                              # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a1, 0
+	ld.w	$a6, $a0, 0
 	bne	$a6, $s1, .LBB40_10
 # %bb.12:                               #   in Loop: Header=BB40_11 Depth=1
-	ld.w	$a4, $a3, 0
-	ld.w	$a6, $a2, 0
-	slli.d	$a4, $a4, 3
-	ldx.d	$a4, $s0, $a4
+	ld.w	$a3, $a2, 0
+	ld.w	$a6, $a1, 0
+	slli.d	$a3, $a3, 3
+	ldx.d	$a3, $s0, $a3
 	slli.d	$a6, $a6, 2
-	stx.w	$a0, $a4, $a6
-	ld.w	$a4, $fp, 1564
+	stx.w	$a5, $a3, $a6
+	ld.w	$a3, $fp, 1564
 	b	.LBB40_10
 .LBB40_13:                              # %._crit_edge59
 	beqz	$s2, .LBB40_26
@@ -20394,10 +20296,9 @@ _ZN4Mesh13get_flat_gridEiPPPiS2_:       # @_ZN4Mesh13get_flat_gridEiPPPiS2_
 	addi.d	$s1, $s1, 8
 	bne	$s4, $s1, .LBB41_5
 # %bb.6:                                # %.preheader211
-	ld.w	$a2, $s0, 1560
-	ori	$a1, $zero, 1
+	ld.w	$a1, $s0, 1560
 	ori	$a0, $zero, 2
-	bge	$a2, $a1, .LBB41_8
+	bgtz	$a1, .LBB41_8
 	b	.LBB41_20
 .LBB41_7:                               # %.preheader211.sink.split
 	pcalau12i	$a0, %pc_hi20(.L.str.66)
@@ -20412,29 +20313,29 @@ _ZN4Mesh13get_flat_gridEiPPPiS2_:       # @_ZN4Mesh13get_flat_gridEiPPPiS2_
 	move	$s2, $a0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.d	$s2, $a0, 0
-	ld.w	$a2, $s0, 1560
-	ori	$a1, $zero, 1
+	ld.w	$a1, $s0, 1560
 	ori	$a0, $zero, 2
-	blt	$a2, $a1, .LBB41_20
+	blez	$a1, .LBB41_20
 .LBB41_8:                               # %.lr.ph
-	ld.d	$a2, $s0, 1616
-	ld.d	$a3, $s0, 1640
-	ld.d	$a4, $s0, 1664
-	ld.d	$a5, $s0, 1352
-	ld.d	$a6, $s0, 1328
-	ld.d	$a7, $s0, 1336
-	ld.d	$t0, $s0, 1368
-	ld.d	$t1, $s0, 1376
-	move	$t2, $zero
-	ld.d	$t3, $sp, 0                     # 8-byte Folded Reload
-	sub.w	$t3, $a0, $t3
+	ld.d	$a1, $s0, 1616
+	ld.d	$a2, $s0, 1640
+	ld.d	$a3, $s0, 1664
+	ld.d	$a4, $s0, 1352
+	ld.d	$a5, $s0, 1328
+	ld.d	$a6, $s0, 1336
+	ld.d	$a7, $s0, 1368
+	ld.d	$t0, $s0, 1376
+	move	$t1, $zero
+	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
+	sub.w	$t2, $a0, $t2
+	ori	$t3, $zero, 1
 	b	.LBB41_12
 	.p2align	4, , 16
 .LBB41_9:                               #   in Loop: Header=BB41_12 Depth=1
-	ldx.w	$t6, $a7, $t6
+	ldx.w	$t6, $a6, $t6
 	slli.d	$t7, $t7, 1
-	ldx.wu	$t5, $a7, $t5
-	alsl.d	$t6, $t6, $t3, 1
+	ldx.wu	$t5, $a6, $t5
+	alsl.d	$t6, $t6, $t2, 1
 	ori	$t8, $zero, 1
 	bstrins.d	$t8, $t8, 32, 31
 	and	$t5, $t5, $t8
@@ -20447,7 +20348,7 @@ _ZN4Mesh13get_flat_gridEiPPPiS2_:       # @_ZN4Mesh13get_flat_gridEiPPPiS2_
 	ldx.d	$t8, $s2, $t5
 	sub.w	$t5, $t7, $s6
 	slli.d	$t7, $t5, 2
-	stx.w	$a1, $t6, $t7
+	stx.w	$t3, $t6, $t7
 	alsl.d	$t5, $t5, $t8, 2
 	stx.w	$t4, $t8, $t7
 .LBB41_10:                              # %.sink.split
@@ -20455,33 +20356,33 @@ _ZN4Mesh13get_flat_gridEiPPPiS2_:       # @_ZN4Mesh13get_flat_gridEiPPPiS2_
 	st.w	$t4, $t5, 4
 .LBB41_11:                              #   in Loop: Header=BB41_12 Depth=1
 	ld.w	$t4, $s0, 1560
-	addi.d	$t2, $t2, 1
+	addi.d	$t1, $t1, 1
+	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 4
-	bge	$t2, $t4, .LBB41_20
+	bge	$t1, $t4, .LBB41_20
 .LBB41_12:                              # =>This Inner Loop Header: Depth=1
-	ld.w	$t4, $a2, 0
+	ld.w	$t4, $a1, 0
 	bne	$t4, $fp, .LBB41_11
 # %bb.13:                               #   in Loop: Header=BB41_12 Depth=1
-	ld.w	$t6, $a3, 0
-	ld.w	$t4, $a4, 0
+	ld.w	$t6, $a2, 0
+	ld.w	$t4, $a3, 0
 	slli.d	$t5, $t6, 2
-	ldx.w	$t8, $a5, $t5
-	ldx.w	$t7, $a6, $t5
+	ldx.w	$t8, $a4, $t5
+	ldx.w	$t7, $a5, $t5
 	bne	$fp, $t8, .LBB41_16
 # %bb.14:                               #   in Loop: Header=BB41_12 Depth=1
-	ldx.w	$t8, $a7, $t5
+	ldx.w	$t8, $a6, $t5
 	sub.w	$t8, $t8, $s7
 	slli.d	$t8, $t8, 3
 	ldx.d	$s1, $s3, $t8
 	ldx.d	$t8, $s2, $t8
 	sub.w	$t7, $t7, $s6
 	slli.d	$s4, $t7, 2
-	stx.w	$a1, $s1, $s4
+	stx.w	$t3, $s1, $s4
 	stx.w	$t6, $t8, $s4
-	ldx.w	$t6, $t0, $t5
-	beq	$t6, $a1, .LBB41_17
+	ldx.w	$t6, $a7, $t5
+	beq	$t6, $t3, .LBB41_17
 # %bb.15:                               #   in Loop: Header=BB41_12 Depth=1
 	alsl.d	$t7, $t7, $t8, 2
 	st.w	$t6, $t7, -4
@@ -20489,11 +20390,11 @@ _ZN4Mesh13get_flat_gridEiPPPiS2_:       # @_ZN4Mesh13get_flat_gridEiPPPiS2_
 	.p2align	4, , 16
 .LBB41_16:                              #   in Loop: Header=BB41_12 Depth=1
 	slli.d	$t7, $t7, 1
-	ldx.w	$t8, $a7, $t5
+	ldx.w	$t8, $a6, $t5
 	sub.w	$t7, $t7, $s6
 	slli.d	$s1, $t4, 2
-	ldx.wu	$s1, $a7, $s1
-	alsl.d	$t8, $t8, $t3, 1
+	ldx.wu	$s1, $a6, $s1
+	alsl.d	$t8, $t8, $t2, 1
 	ori	$s4, $zero, 1
 	bstrins.d	$s4, $s4, 32, 31
 	and	$s1, $s1, $s4
@@ -20506,32 +20407,32 @@ _ZN4Mesh13get_flat_gridEiPPPiS2_:       # @_ZN4Mesh13get_flat_gridEiPPPiS2_
 	ldx.d	$t8, $s2, $t8
 	slli.d	$t7, $t7, 2
 	addi.d	$s4, $t7, 4
-	stx.w	$a1, $s1, $s4
+	stx.w	$t3, $s1, $s4
 	stx.w	$t6, $t8, $s4
 	stx.w	$t6, $t8, $t7
 .LBB41_17:                              #   in Loop: Header=BB41_12 Depth=1
 	slli.d	$t6, $t4, 2
-	ldx.w	$t8, $a5, $t6
-	ldx.w	$t7, $a6, $t6
+	ldx.w	$t8, $a4, $t6
+	ldx.w	$t7, $a5, $t6
 	bne	$fp, $t8, .LBB41_9
 # %bb.18:                               #   in Loop: Header=BB41_12 Depth=1
-	ldx.w	$t5, $a7, $t6
+	ldx.w	$t5, $a6, $t6
 	sub.w	$t5, $t5, $s7
 	slli.d	$t5, $t5, 3
 	ldx.d	$t8, $s3, $t5
 	ldx.d	$t5, $s2, $t5
 	sub.w	$t7, $t7, $s6
 	slli.d	$s1, $t7, 2
-	stx.w	$a1, $t8, $s1
+	stx.w	$t3, $t8, $s1
 	stx.w	$t4, $t5, $s1
-	ldx.w	$t4, $t1, $t6
-	beq	$t4, $a1, .LBB41_11
+	ldx.w	$t4, $t0, $t6
+	beq	$t4, $t3, .LBB41_11
 # %bb.19:                               #   in Loop: Header=BB41_12 Depth=1
 	alsl.d	$t5, $t7, $t5, 2
 	b	.LBB41_10
 .LBB41_20:                              # %.preheader
-	ld.w	$a2, $s0, 1564
-	blt	$a2, $a1, .LBB41_33
+	ld.w	$a1, $s0, 1564
+	blez	$a1, .LBB41_33
 # %bb.21:                               # %.lr.ph222
 	move	$a1, $zero
 	ld.d	$a2, $s0, 1976
@@ -20878,11 +20779,10 @@ _ZN4Mesh15parallel_outputEPKcdiS1_:     # @_ZN4Mesh15parallel_outputEPKcdiS1_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 56, -88
-	move	$s2, $a0
 	ld.w	$s7, $a0, 624
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s7, .LBB44_20
+	bltz	$s7, .LBB44_20
 # %bb.1:                                # %_ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_.exit.i
+	move	$s2, $a0
 	move	$s0, $a3
 	move	$s1, $a2
 	fmov.d	$fs0, $fa0
@@ -20929,8 +20829,7 @@ _ZN4Mesh15parallel_outputEPKcdiS1_:     # @_ZN4Mesh15parallel_outputEPKcdiS1_
 	ori	$a1, $zero, 4
 	blt	$a1, $a0, .LBB44_11
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB44_10
+	blez	$a0, .LBB44_10
 # %bb.8:                                # %.lr.ph
 	move	$s5, $zero
 	slli.w	$s1, $s1, 1
@@ -21109,11 +21008,10 @@ _ZN4Mesh15parallel_outputEPKcxiS1_:     # @_ZN4Mesh15parallel_outputEPKcxiS1_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$s2, $a0
 	ld.w	$s8, $a0, 624
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s8, .LBB45_20
+	bltz	$s8, .LBB45_20
 # %bb.1:                                # %_ZNSt6vectorIxSaIxEE17_S_check_init_lenEmRKS0_.exit.i
+	move	$s2, $a0
 	move	$s0, $a4
 	move	$s1, $a3
 	move	$s5, $a2
@@ -21160,8 +21058,7 @@ _ZN4Mesh15parallel_outputEPKcxiS1_:     # @_ZN4Mesh15parallel_outputEPKcxiS1_
 	ori	$a1, $zero, 4
 	blt	$a1, $a0, .LBB45_11
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB45_10
+	blez	$a0, .LBB45_10
 # %bb.8:                                # %.lr.ph
 	move	$s5, $zero
 	slli.w	$s1, $s1, 1
@@ -21340,11 +21237,10 @@ _ZN4Mesh15parallel_outputEPKciiS1_:     # @_ZN4Mesh15parallel_outputEPKciiS1_
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$s2, $a0
 	ld.w	$s8, $a0, 624
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s8, .LBB46_20
+	bltz	$s8, .LBB46_20
 # %bb.1:                                # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
+	move	$s2, $a0
 	move	$s0, $a4
 	move	$s1, $a3
 	move	$s5, $a2
@@ -21391,8 +21287,7 @@ _ZN4Mesh15parallel_outputEPKciiS1_:     # @_ZN4Mesh15parallel_outputEPKciiS1_
 	ori	$a1, $zero, 4
 	blt	$a1, $a0, .LBB46_11
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB46_10
+	blez	$a0, .LBB46_10
 # %bb.8:                                # %.lr.ph
 	move	$s5, $zero
 	slli.w	$s1, $s1, 1
@@ -22761,9 +22656,8 @@ GCC_except_table49:
 	.type	_Z4scanPiS_i,@function
 _Z4scanPiS_i:                           # @_Z4scanPiS_i
 # %bb.0:
-	ori	$a3, $zero, 1
 	st.w	$zero, $a1, 0
-	blt	$a2, $a3, .LBB50_3
+	blez	$a2, .LBB50_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a3, $zero
 	addi.d	$a1, $a1, 4
@@ -23531,7 +23425,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -23541,7 +23434,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB58_15
 # %bb.1:
 	move	$s0, $a1
@@ -23574,9 +23466,9 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.w	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB58_5
+	ori	$a0, $zero, 1
+	stx.w	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB58_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 4
 	slli.d	$a1, $s0, 2
@@ -23585,7 +23477,7 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB58_5:                               # %_ZSt27__uninitialized_default_n_aIPimiET_S1_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB58_7
+	blez	$s2, .LBB58_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -23627,7 +23519,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 .LBB58_14:                              # %_ZSt27__uninitialized_default_n_aIPimiET_S1_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB58_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -23666,7 +23557,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -23676,7 +23566,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB59_15
 # %bb.1:
 	move	$s0, $a1
@@ -23709,9 +23598,9 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.d	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB59_5
+	ori	$a0, $zero, 1
+	stx.d	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB59_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 8
 	slli.d	$a1, $s0, 3
@@ -23720,7 +23609,7 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB59_5:                               # %_ZSt27__uninitialized_default_n_aIPdmdET_S1_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB59_7
+	blez	$s2, .LBB59_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -23762,7 +23651,6 @@ _ZNSt6vectorIdSaIdEE17_M_default_appendEm: # @_ZNSt6vectorIdSaIdEE17_M_default_a
 .LBB59_14:                              # %_ZSt27__uninitialized_default_n_aIPdmdET_S1_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB59_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

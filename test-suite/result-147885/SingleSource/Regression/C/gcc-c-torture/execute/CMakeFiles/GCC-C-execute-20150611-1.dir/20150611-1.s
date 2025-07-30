@@ -6,33 +6,33 @@
 main:                                   # @main
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(b)
-	ld.h	$a2, $a0, %pc_lo12(b)
-	ori	$a1, $zero, 1
-	blt	$a1, $a2, .LBB0_11
+	ld.h	$a1, $a0, %pc_lo12(b)
+	ori	$a2, $zero, 1
+	blt	$a2, $a1, .LBB0_11
 # %bb.1:                                # %.lr.ph
-	pcalau12i	$a1, %pc_hi20(d)
-	ld.w	$a1, $a1, %pc_lo12(d)
+	pcalau12i	$a2, %pc_hi20(d)
+	ld.w	$a2, $a2, %pc_lo12(d)
 	pcalau12i	$a3, %pc_hi20(a)
 	st.w	$zero, $a3, %pc_lo12(a)
-	bnez	$a1, .LBB0_5
+	bnez	$a2, .LBB0_5
 # %bb.2:                                # %.lr.ph
-	pcalau12i	$a1, %pc_hi20(c)
-	ld.w	$a1, $a1, %pc_lo12(c)
-	beqz	$a1, .LBB0_5
+	pcalau12i	$a2, %pc_hi20(c)
+	ld.w	$a2, $a2, %pc_lo12(c)
+	beqz	$a2, .LBB0_5
 # %bb.3:                                # %.lr.ph.split.split.preheader
-	sub.d	$a1, $zero, $a2
-	bstrpick.d	$a3, $a1, 15, 0
-	ori	$a1, $zero, 1
-	sub.d	$a4, $a1, $a2
-	bstrpick.d	$a4, $a4, 15, 0
-	sltu	$a5, $a3, $a4
-	masknez	$a4, $a4, $a5
-	maskeqz	$a3, $a3, $a5
-	or	$a4, $a3, $a4
-	ori	$a3, $zero, 16
-	bgeu	$a4, $a3, .LBB0_6
+	sub.d	$a2, $zero, $a1
+	bstrpick.d	$a2, $a2, 15, 0
+	ori	$a3, $zero, 1
+	sub.d	$a3, $a3, $a1
+	bstrpick.d	$a3, $a3, 15, 0
+	sltu	$a4, $a2, $a3
+	masknez	$a3, $a3, $a4
+	maskeqz	$a2, $a2, $a4
+	or	$a3, $a2, $a3
+	ori	$a2, $zero, 16
+	bgeu	$a3, $a2, .LBB0_6
 # %bb.4:
-	move	$a3, $a2
+	move	$a2, $a1
 	b	.LBB0_9
 .LBB0_5:                                # %._crit_edge.sink.split
 	ori	$a1, $zero, 2
@@ -40,36 +40,36 @@ main:                                   # @main
 	move	$a0, $zero
 	ret
 .LBB0_6:                                # %vector.ph
-	bstrpick.d	$a4, $a4, 15, 0
-	addi.d	$a4, $a4, 1
-	andi	$a5, $a4, 15
-	sltui	$a6, $a5, 1
-	masknez	$a5, $a5, $a6
-	maskeqz	$a3, $a3, $a6
-	or	$a3, $a3, $a5
-	sub.d	$a4, $a4, $a3
-	add.d	$a3, $a2, $a4
-	addi.d	$a5, $a2, 7
+	bstrpick.d	$a3, $a3, 15, 0
+	addi.d	$a3, $a3, 1
+	andi	$a4, $a3, 15
+	sltui	$a5, $a4, 1
+	masknez	$a4, $a4, $a5
+	maskeqz	$a2, $a2, $a5
+	or	$a2, $a2, $a4
+	sub.d	$a3, $a3, $a2
+	add.d	$a2, $a1, $a3
+	addi.d	$a4, $a1, 7
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a5
-	addi.w	$a4, $a4, -16
-	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB0_7
+	move	$a1, $a4
+	addi.w	$a3, $a3, -16
+	addi.d	$a4, $a4, 16
+	bnez	$a3, .LBB0_7
 # %bb.8:                                # %.lr.ph.split.split.preheader9.loopexit
-	addi.d	$a2, $a2, 9
-	st.h	$a2, $a0, %pc_lo12(b)
+	addi.d	$a1, $a1, 9
+	st.h	$a1, $a0, %pc_lo12(b)
 	.p2align	4, , 16
 .LBB0_9:                                # %.lr.ph.split.split
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a2, $a3, 15, 0
-	beqz	$a2, .LBB0_12
+	slli.d	$a1, $a2, 48
+	beqz	$a1, .LBB0_12
 # %bb.10:                               #   in Loop: Header=BB0_9 Depth=1
-	ext.w.h	$a2, $a3
-	addi.d	$a3, $a3, 1
-	st.h	$a3, $a0, %pc_lo12(b)
-	blt	$a2, $a1, .LBB0_9
+	ext.w.h	$a1, $a2
+	addi.d	$a2, $a2, 1
+	st.h	$a2, $a0, %pc_lo12(b)
+	blez	$a1, .LBB0_9
 .LBB0_11:                               # %._crit_edge
 	move	$a0, $zero
 	ret

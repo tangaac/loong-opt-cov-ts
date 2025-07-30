@@ -9,8 +9,7 @@
 	.type	generate_grids,@function
 generate_grids:                         # @generate_grids
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB0_7
+	blez	$a1, .LBB0_7
 # %bb.1:
 	addi.d	$sp, $sp, -80
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
@@ -23,7 +22,7 @@ generate_grids:                         # @generate_grids
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
 	move	$fp, $a2
-	blt	$a2, $a3, .LBB0_6
+	blez	$a2, .LBB0_6
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s0, $a1
 	move	$s1, $a0
@@ -115,8 +114,7 @@ generate_grids:                         # @generate_grids
 	.type	generate_grids_v,@function
 generate_grids_v:                       # @generate_grids_v
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB1_7
+	blez	$a1, .LBB1_7
 # %bb.1:
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
@@ -128,7 +126,7 @@ generate_grids_v:                       # @generate_grids_v
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a2
-	blt	$a2, $a3, .LBB1_6
+	blez	$a2, .LBB1_6
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s0, $a1
 	move	$s1, $a0
@@ -199,8 +197,7 @@ generate_grids_v:                       # @generate_grids_v
 	.type	sort_nuclide_grids,@function
 sort_nuclide_grids:                     # @sort_nuclide_grids
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB2_4
+	blez	$a1, .LBB2_4
 # %bb.1:
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -293,10 +290,10 @@ generate_energy_grid:                   # @generate_energy_grid
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.2)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB3_8
+	blez	$s1, .LBB3_8
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s2, 0
+	ori	$a1, $zero, 1
 	bne	$s1, $a1, .LBB3_3
 # %bb.2:
 	move	$a1, $zero
@@ -345,8 +342,7 @@ generate_energy_grid:                   # @generate_energy_grid
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_18
 # %bb.9:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB3_17
+	blez	$s1, .LBB3_17
 # %bb.10:                               # %.lr.ph41.preheader
 	ori	$a1, $zero, 4
 	bgeu	$s1, $a1, .LBB3_12
@@ -453,10 +449,9 @@ set_grid_ptrs:                          # @set_grid_ptrs
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	mul.d	$s3, $s2, $fp
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB4_6
+	blez	$s3, .LBB4_6
 # %bb.1:                                # %.lr.ph21
-	blt	$fp, $a0, .LBB4_6
+	blez	$fp, .LBB4_6
 # %bb.2:                                # %.lr.ph.us.preheader
 	move	$s4, $zero
 	addi.w	$s2, $s2, 0

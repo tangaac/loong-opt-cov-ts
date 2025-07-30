@@ -305,9 +305,8 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	ld.d	$s2, $a2, %got_pc_lo12(_ZN9benchmark23FLAGS_benchmark_dry_runE)
 	ld.bu	$a2, $s2, 0
 	st.d	$a0, $fp, 72
-	ori	$a0, $zero, 1
 	st.d	$a1, $fp, 80
-	bne	$a2, $a0, .LBB1_3
+	beqz	$a2, .LBB1_3
 # %bb.2:                                # %.thread
 	ld.d	$s5, $fp, 56
 	st.d	$zero, $fp, 88
@@ -421,11 +420,11 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	st.d	$s8, $fp, 136
 	st.d	$a0, $fp, 128
 	st.d	$zero, $fp, 144
+	vst	$vr0, $fp, 152
 	xori	$a0, $s6, 1
 	and	$a1, $a0, $s7
 	ori	$a0, $zero, 1
-	vst	$vr0, $fp, 152
-	bne	$a1, $a0, .LBB1_21
+	beqz	$a1, .LBB1_21
 # %bb.18:
 	ld.d	$a0, $s1, 392
 	bnez	$a0, .LBB1_21
@@ -1145,15 +1144,14 @@ _ZN9benchmark8internal15BenchmarkRunner13DoNIterationsEv: # @_ZN9benchmark8inter
 	div.d	$a1, $a1, $a2
 	st.d	$a1, $fp, 160
 	fst.d	$fa0, $fp, 168
-	ld.bu	$a2, $a0, 294
-	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB3_66
+	ld.bu	$a1, $a0, 294
+	beqz	$a1, .LBB3_66
 # %bb.65:
 	addi.d	$s1, $fp, 24
 	b	.LBB3_67
 .LBB3_66:
 	ld.bu	$a0, $a0, 293
-	bne	$a0, $a1, .LBB3_68
+	beqz	$a0, .LBB3_68
 .LBB3_67:                               # %.sink.split
 	fld.d	$fa0, $s1, 0
 	fst.d	$fa0, $fp, 168
@@ -1449,8 +1447,7 @@ _ZN9benchmark8internal12_GLOBAL__N_111RunInThreadEPKNS0_17BenchmarkInstanceEliPN
 	bnez	$a0, .LBB4_20
 # %bb.4:                                # %_ZN9benchmark9MutexLockC2ERNS_5MutexE.exit
 	ld.bu	$a0, $sp, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_17
+	beqz	$a0, .LBB4_17
 # %bb.5:
 	ld.d	$a0, $sp, 16
 	ld.d	$a1, $sp, 0
@@ -1717,20 +1714,18 @@ _ZN9benchmark8internal13ThreadManager17WaitForAllThreadsEv: # @_ZN9benchmark8int
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	addi.d	$a0, $a0, 312
-	st.d	$a0, $sp, 0
+	st.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB5_9
 # %bb.1:                                # %_ZN9benchmark9MutexLockC2ERNS_5MutexE.exit
-	ori	$s1, $zero, 1
-	st.b	$s1, $sp, 8
+	ori	$a0, $zero, 1
+	st.b	$a0, $sp, 16
 	ld.w	$a0, $fp, 200
 	dbar	16
 	beqz	$a0, .LBB5_5
@@ -1740,7 +1735,7 @@ _ZN9benchmark8internal13ThreadManager17WaitForAllThreadsEv: # @_ZN9benchmark8int
 .LBB5_3:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 .Ltmp82:
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt18condition_variable4waitERSt11unique_lockISt5mutexE)
 	jirl	$ra, $ra, 0
@@ -1751,16 +1746,15 @@ _ZN9benchmark8internal13ThreadManager17WaitForAllThreadsEv: # @_ZN9benchmark8int
 	dbar	16
 	bnez	$a0, .LBB5_3
 .LBB5_5:                                # %_ZNSt18condition_variable4waitIZN9benchmark8internal13ThreadManager17WaitForAllThreadsEvEUlvE_EEvRSt11unique_lockISt5mutexET_.exit
-	ld.bu	$a0, $sp, 8
-	bne	$a0, $s1, .LBB5_8
+	ld.bu	$a0, $sp, 16
+	beqz	$a0, .LBB5_8
 # %bb.6:
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	beqz	$a0, .LBB5_8
 # %bb.7:
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
 .LBB5_8:                                # %_ZN9benchmark9MutexLockD2Ev.exit
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
@@ -1771,12 +1765,11 @@ _ZN9benchmark8internal13ThreadManager17WaitForAllThreadsEv: # @_ZN9benchmark8int
 	jirl	$ra, $ra, 0
 .LBB5_10:
 .Ltmp84:
-	ld.bu	$a1, $sp, 8
-	ori	$a2, $zero, 1
+	ld.bu	$a1, $sp, 16
 	move	$fp, $a0
-	bne	$a1, $a2, .LBB5_13
+	beqz	$a1, .LBB5_13
 # %bb.11:
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	beqz	$a0, .LBB5_13
 # %bb.12:
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
@@ -3310,8 +3303,7 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 	jirl	$ra, $ra, 0
 .Ltmp183:
 # %bb.47:                               # %_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7CounterESt4lessIS5_ESaISt4pairIKS5_S7_EEEaSERKSE_.exit.i
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB14_49
+	blez	$s0, .LBB14_49
 # %bb.48:
 	st.d	$s1, $sp, 544
 	ld.d	$a0, $s1, 0

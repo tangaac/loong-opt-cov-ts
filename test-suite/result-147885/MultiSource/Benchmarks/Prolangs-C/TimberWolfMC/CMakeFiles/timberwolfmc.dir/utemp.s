@@ -125,15 +125,15 @@ utemp:                                  # @utemp
 	lu12i.w	$a1, 69905
 	ori	$s3, $a1, 272
 	pcalau12i	$a1, %pc_hi20(.L.str.8)
+	pcalau12i	$a2, %got_pc_hi20(stdout)
+	ld.d	$s5, $a2, %got_pc_lo12(stdout)
+	pcalau12i	$a2, %got_pc_hi20(doCompaction)
+	ld.d	$s4, $a2, %got_pc_lo12(doCompaction)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_7)
+	fld.d	$fs7, $a2, %pc_lo12(.LCPI0_7)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_8)
+	fld.d	$fs3, $a2, %pc_lo12(.LCPI0_8)
 	addi.d	$s6, $a1, %pc_lo12(.L.str.8)
-	pcalau12i	$a1, %got_pc_hi20(stdout)
-	ld.d	$s5, $a1, %got_pc_lo12(stdout)
-	pcalau12i	$a1, %got_pc_hi20(doCompaction)
-	ld.d	$s4, $a1, %got_pc_lo12(doCompaction)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_7)
-	fld.d	$fs7, $a1, %pc_lo12(.LCPI0_7)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_8)
-	fld.d	$fs3, $a1, %pc_lo12(.LCPI0_8)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
 	addi.d	$a1, $a1, %pc_lo12(.LCPI0_3)
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
@@ -147,8 +147,7 @@ utemp:                                  # @utemp
 	slli.d	$a1, $a1, 3
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	fldx.d	$fs5, $a2, $a1
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_7
+	blez	$a0, .LBB0_7
 # %bb.3:                                #   in Loop: Header=BB0_1 Depth=1
 	pcaddu18i	$ra, %call36(fuloop)
 	jirl	$ra, $ra, 0

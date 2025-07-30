@@ -608,8 +608,8 @@ scanmanager:                            # @scanmanager
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$s5, $a0, %pc_lo12(.L.str.44)
-	ori	$s1, $zero, 1
-	ori	$s0, $zero, 47
+	ori	$s1, $zero, 47
+	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.48)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.48)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -657,17 +657,17 @@ scanmanager:                            # @scanmanager
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, -1
-	blt	$a1, $s1, .LBB0_68
+	blez	$a1, .LBB0_68
 	.p2align	4, , 16
 .LBB0_66:                               # %.lr.ph
                                         #   Parent Loop BB0_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$a0, $a0, -1
 	ldx.bu	$a1, $s2, $a0
-	bne	$a1, $s0, .LBB0_68
+	bne	$a1, $s1, .LBB0_68
 # %bb.67:                               #   in Loop: Header=BB0_66 Depth=2
 	stx.b	$zero, $s2, $a0
-	bltu	$s1, $a0, .LBB0_66
+	bltu	$s0, $a0, .LBB0_66
 .LBB0_68:                               # %._crit_edge
                                         #   in Loop: Header=BB0_64 Depth=1
 	move	$s4, $s2
@@ -675,7 +675,7 @@ scanmanager:                            # @scanmanager
 # %bb.69:                               #   in Loop: Header=BB0_64 Depth=1
 	ld.bu	$a0, $s2, 0
 	move	$s4, $s2
-	beq	$a0, $s0, .LBB0_74
+	beq	$a0, $s1, .LBB0_74
 # %bb.70:                               #   in Loop: Header=BB0_64 Depth=1
 	move	$s4, $s2
 	ori	$a1, $zero, 92
@@ -749,7 +749,7 @@ scanmanager:                            # @scanmanager
 	bnez	$s8, .LBB0_63
 .LBB0_79:                               #   in Loop: Header=BB0_64 Depth=1
 	ld.bu	$a0, $s2, 0
-	beq	$a0, $s0, .LBB0_63
+	beq	$a0, $s1, .LBB0_63
 # %bb.80:                               #   in Loop: Header=BB0_64 Depth=1
 	ori	$a1, $zero, 92
 	beq	$a0, $a1, .LBB0_63
@@ -884,7 +884,7 @@ scanstdin:                              # @scanstdin
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $a0, 31, 0
+	slli.d	$a1, $a0, 32
 	beqz	$a1, .LBB1_8
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
 	addi.w	$s5, $a0, 0

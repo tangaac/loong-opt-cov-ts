@@ -771,8 +771,7 @@ symbol_IsSymbol:                        # @symbol_IsSymbol
 	ori	$a2, $zero, 3001
 	bltu	$a1, $a2, .LBB9_6
 # %bb.3:
-	addi.w	$a0, $zero, -1
-	bge	$a0, $a1, .LBB9_5
+	bltz	$a1, .LBB9_5
 .LBB9_4:
 	move	$a0, $zero
 	ret
@@ -947,16 +946,15 @@ symbol_GetAllSymbols:                   # @symbol_GetAllSymbols
 	.type	symbol_GetAllPredicates,@function
 symbol_GetAllPredicates:                # @symbol_GetAllPredicates
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(symbol_HASSIGNATURE)
 	ld.w	$a0, $a0, %pc_lo12(symbol_HASSIGNATURE)
 	move	$fp, $zero
@@ -967,12 +965,11 @@ symbol_GetAllPredicates:                # @symbol_GetAllPredicates
 	ori	$s1, $zero, 2
 	blt	$a1, $s1, .LBB13_8
 # %bb.2:                                # %.lr.ph.preheader
-	move	$fp, $zero
 	pcalau12i	$s2, %pc_hi20(symbol_SIGNATURE)
 	ld.d	$a2, $s2, %pc_lo12(symbol_SIGNATURE)
+	move	$fp, $zero
 	ori	$s3, $zero, 1
 	ori	$s4, $zero, 8
-	addi.w	$s5, $zero, -1
 	b	.LBB13_4
 	.p2align	4, , 16
 .LBB13_3:                               #   in Loop: Header=BB13_4 Depth=1
@@ -984,10 +981,10 @@ symbol_GetAllPredicates:                # @symbol_GetAllPredicates
 	ldx.d	$a0, $a2, $s4
 	beqz	$a0, .LBB13_3
 # %bb.5:                                #   in Loop: Header=BB13_4 Depth=1
-	ld.w	$s6, $a0, 24
-	blt	$s5, $s6, .LBB13_3
+	ld.w	$s5, $a0, 24
+	bgez	$s5, .LBB13_3
 # %bb.6:                                #   in Loop: Header=BB13_4 Depth=1
-	sub.d	$a0, $zero, $s6
+	sub.d	$a0, $zero, $s5
 	andi	$a0, $a0, 3
 	bne	$a0, $s1, .LBB13_3
 # %bb.7:                                #   in Loop: Header=BB13_4 Depth=1
@@ -997,21 +994,20 @@ symbol_GetAllPredicates:                # @symbol_GetAllPredicates
 	st.d	$fp, $a0, 0
 	ld.d	$a2, $s2, %pc_lo12(symbol_SIGNATURE)
 	ld.w	$a1, $s0, %pc_lo12(symbol_ACTINDEX)
-	st.d	$s6, $a0, 8
+	st.d	$s5, $a0, 8
 	move	$fp, $a0
 	b	.LBB13_3
 .LBB13_8:                               # %.loopexit
 	move	$a0, $fp
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end13:
 	.size	symbol_GetAllPredicates, .Lfunc_end13-symbol_GetAllPredicates
@@ -1029,7 +1025,6 @@ symbol_GetAllFunctions:                 # @symbol_GetAllFunctions
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(symbol_HASSIGNATURE)
 	ld.w	$a0, $a0, %pc_lo12(symbol_HASSIGNATURE)
 	move	$fp, $zero
@@ -1040,12 +1035,11 @@ symbol_GetAllFunctions:                 # @symbol_GetAllFunctions
 	ori	$a0, $zero, 2
 	blt	$a1, $a0, .LBB14_8
 # %bb.2:                                # %.lr.ph.preheader
-	move	$fp, $zero
 	pcalau12i	$s1, %pc_hi20(symbol_SIGNATURE)
 	ld.d	$a2, $s1, %pc_lo12(symbol_SIGNATURE)
+	move	$fp, $zero
 	ori	$s2, $zero, 1
 	ori	$s3, $zero, 8
-	addi.w	$s4, $zero, -1
 	b	.LBB14_4
 	.p2align	4, , 16
 .LBB14_3:                               # %symbol_IsFunction.exit.thread
@@ -1058,10 +1052,10 @@ symbol_GetAllFunctions:                 # @symbol_GetAllFunctions
 	ldx.d	$a0, $a2, $s3
 	beqz	$a0, .LBB14_3
 # %bb.5:                                #   in Loop: Header=BB14_4 Depth=1
-	ld.w	$s5, $a0, 24
-	blt	$s4, $s5, .LBB14_3
+	ld.w	$s4, $a0, 24
+	bgez	$s4, .LBB14_3
 # %bb.6:                                #   in Loop: Header=BB14_4 Depth=1
-	sub.d	$a0, $zero, $s5
+	sub.d	$a0, $zero, $s4
 	andi	$a0, $a0, 2
 	bnez	$a0, .LBB14_3
 # %bb.7:                                # %symbol_IsFunction.exit.thread11
@@ -1072,12 +1066,11 @@ symbol_GetAllFunctions:                 # @symbol_GetAllFunctions
 	st.d	$fp, $a0, 0
 	ld.d	$a2, $s1, %pc_lo12(symbol_SIGNATURE)
 	ld.w	$a1, $s0, %pc_lo12(symbol_ACTINDEX)
-	st.d	$s5, $a0, 8
+	st.d	$s4, $a0, 8
 	move	$fp, $a0
 	b	.LBB14_3
 .LBB14_8:                               # %.loopexit
 	move	$a0, $fp
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1571,45 +1564,43 @@ symbol_LowerSignature:                  # @symbol_LowerSignature
 	ori	$a4, $zero, 2
 	blt	$a0, $a4, .LBB18_10
 # %bb.1:                                # %.lr.ph.preheader
-	pcalau12i	$a1, %pc_hi20(symbol_SIGNATURE)
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
-	ld.d	$a1, $a1, %pc_lo12(symbol_SIGNATURE)
+	pcalau12i	$s3, %pc_hi20(symbol_SIGNATURE)
+	ld.d	$a1, $s3, %pc_lo12(symbol_SIGNATURE)
 	ori	$s5, $zero, 8
-	addi.w	$s6, $zero, -1
 	ori	$a5, $zero, 25
 	pcalau12i	$a2, %got_pc_hi20(memory_ARRAY)
-	ld.d	$s8, $a2, %got_pc_lo12(memory_ARRAY)
+	ld.d	$s7, $a2, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a2, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$s4, $a2, %got_pc_lo12(memory_FREEDBYTES)
+	ld.d	$s8, $a2, %got_pc_lo12(memory_FREEDBYTES)
 	lu12i.w	$a2, 7
-	ori	$s7, $a2, 883
-	ori	$s2, $zero, 1
+	ori	$s4, $a2, 883
+	ori	$s6, $zero, 1
 	b	.LBB18_3
 	.p2align	4, , 16
 .LBB18_2:                               # %symbol_IsFunction.exit.thread
                                         #   in Loop: Header=BB18_3 Depth=1
-	addi.d	$s2, $s2, 1
+	addi.d	$s6, $s6, 1
 	addi.d	$s5, $s5, 8
-	bge	$s2, $a0, .LBB18_10
+	bge	$s6, $a0, .LBB18_10
 .LBB18_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ldx.d	$s3, $a1, $s5
-	beqz	$s3, .LBB18_2
+	ldx.d	$s2, $a1, $s5
+	beqz	$s2, .LBB18_2
 # %bb.4:                                #   in Loop: Header=BB18_3 Depth=1
-	ld.w	$a2, $s3, 24
+	ld.w	$a2, $s2, 24
 	sub.d	$a3, $zero, $a2
 	andi	$a3, $a3, 3
-	blt	$s6, $a2, .LBB18_6
+	bgez	$a2, .LBB18_6
 # %bb.5:                                #   in Loop: Header=BB18_3 Depth=1
 	beq	$a3, $a4, .LBB18_8
 .LBB18_6:                               #   in Loop: Header=BB18_3 Depth=1
-	blt	$s6, $a2, .LBB18_2
+	bgez	$a2, .LBB18_2
 # %bb.7:                                #   in Loop: Header=BB18_3 Depth=1
 	ori	$a2, $zero, 1
 	bltu	$a2, $a3, .LBB18_2
 .LBB18_8:                               # %symbol_IsFunction.exit.thread21
                                         #   in Loop: Header=BB18_3 Depth=1
-	ld.d	$fp, $s3, 0
+	ld.d	$fp, $s2, 0
 	ld.bu	$a2, $fp, 0
 	addi.d	$a2, $a2, -65
 	bltu	$a5, $a2, .LBB18_2
@@ -1624,19 +1615,18 @@ symbol_LowerSignature:                  # @symbol_LowerSignature
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 25
 	ori	$a4, $zero, 2
-	st.h	$s7, $s0, 0
-	st.d	$s0, $s3, 0
-	ld.d	$a0, $s8, 512
+	st.h	$s4, $s0, 0
+	st.d	$s0, $s2, 0
+	ld.d	$a0, $s7, 512
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s4, 0
+	ld.d	$a2, $s8, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $s4, 0
+	st.d	$a1, $s8, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $fp, 0
-	ld.d	$a0, $s8, 512
+	ld.d	$a0, $s7, 512
 	st.d	$fp, $a0, 0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a1, $a0, %pc_lo12(symbol_SIGNATURE)
+	ld.d	$a1, $s3, %pc_lo12(symbol_SIGNATURE)
 	ld.w	$a0, $s1, %pc_lo12(symbol_ACTINDEX)
 	b	.LBB18_2
 .LBB18_10:                              # %._crit_edge
@@ -1894,18 +1884,17 @@ symbol_PrintPrecedence:                 # @symbol_PrintPrecedence
 	ld.w	$a1, $a1, %pc_lo12(symbol_HASSIGNATURE)
 	beqz	$a1, .LBB22_23
 # %bb.1:                                # %.preheader
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s2, %pc_hi20(symbol_ACTINDEX)
 	ld.w	$a1, $s2, %pc_lo12(symbol_ACTINDEX)
 	ori	$s3, $zero, 2
@@ -1917,8 +1906,7 @@ symbol_PrintPrecedence:                 # @symbol_PrintPrecedence
 	ld.d	$a2, $s1, %pc_lo12(symbol_SIGNATURE)
 	ori	$s4, $zero, 1
 	ori	$s5, $zero, 8
-	addi.w	$s6, $zero, -1
-	ori	$s7, $zero, 1
+	ori	$s6, $zero, 1
 	b	.LBB22_5
 	.p2align	4, , 16
 .LBB22_3:                               # %symbol_IsFunction.exit.thread31
@@ -1929,26 +1917,26 @@ symbol_PrintPrecedence:                 # @symbol_PrintPrecedence
 	st.d	$s0, $a0, 0
 	ld.d	$a2, $s1, %pc_lo12(symbol_SIGNATURE)
 	ld.w	$a1, $s2, %pc_lo12(symbol_ACTINDEX)
-	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 8
 	move	$s0, $a0
 .LBB22_4:                               # %symbol_IsFunction.exit.thread
                                         #   in Loop: Header=BB22_5 Depth=1
-	addi.d	$s7, $s7, 1
+	addi.d	$s6, $s6, 1
 	addi.d	$s5, $s5, 8
-	bge	$s7, $a1, .LBB22_10
+	bge	$s6, $a1, .LBB22_10
 .LBB22_5:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a0, $a2, $s5
 	beqz	$a0, .LBB22_4
 # %bb.6:                                #   in Loop: Header=BB22_5 Depth=1
-	ld.w	$s8, $a0, 24
-	sub.d	$a0, $zero, $s8
+	ld.w	$s7, $a0, 24
+	sub.d	$a0, $zero, $s7
 	andi	$a0, $a0, 3
-	blt	$s6, $s8, .LBB22_8
+	bgez	$s7, .LBB22_8
 # %bb.7:                                #   in Loop: Header=BB22_5 Depth=1
 	beq	$a0, $s3, .LBB22_3
 .LBB22_8:                               #   in Loop: Header=BB22_5 Depth=1
-	blt	$s6, $s8, .LBB22_4
+	bgez	$s7, .LBB22_4
 # %bb.9:                                #   in Loop: Header=BB22_5 Depth=1
 	bgeu	$s4, $a0, .LBB22_3
 	b	.LBB22_4
@@ -2039,18 +2027,17 @@ symbol_PrintPrecedence:                 # @symbol_PrintPrecedence
 	move	$s0, $a5
 	bnez	$a5, .LBB22_21
 .LBB22_22:
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 .LBB22_23:                              # %list_Delete.exit
 	ret
 .Lfunc_end22:
@@ -2087,9 +2074,9 @@ symbol_FPrintPrecedence:                # @symbol_FPrintPrecedence
 	move	$s1, $zero
 	pcalau12i	$s2, %pc_hi20(symbol_SIGNATURE)
 	ld.d	$a2, $s2, %pc_lo12(symbol_SIGNATURE)
+	ori	$s5, $zero, 1
 	ori	$s6, $zero, 8
-	addi.w	$s7, $zero, -1
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB23_5
 	.p2align	4, , 16
 .LBB23_3:                               # %symbol_IsFunction.exit.thread39
@@ -2100,29 +2087,28 @@ symbol_FPrintPrecedence:                # @symbol_FPrintPrecedence
 	st.d	$s1, $a0, 0
 	ld.d	$a2, $s2, %pc_lo12(symbol_SIGNATURE)
 	ld.w	$a1, $s3, %pc_lo12(symbol_ACTINDEX)
-	st.d	$s5, $a0, 8
+	st.d	$s8, $a0, 8
 	move	$s1, $a0
 .LBB23_4:                               # %symbol_IsFunction.exit.thread
                                         #   in Loop: Header=BB23_5 Depth=1
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	addi.d	$s6, $s6, 8
-	bge	$s8, $a1, .LBB23_10
+	bge	$s7, $a1, .LBB23_10
 .LBB23_5:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a0, $a2, $s6
 	beqz	$a0, .LBB23_4
 # %bb.6:                                #   in Loop: Header=BB23_5 Depth=1
-	ld.w	$s5, $a0, 24
-	sub.d	$a0, $zero, $s5
+	ld.w	$s8, $a0, 24
+	sub.d	$a0, $zero, $s8
 	andi	$a0, $a0, 3
-	blt	$s7, $s5, .LBB23_8
+	bgez	$s8, .LBB23_8
 # %bb.7:                                #   in Loop: Header=BB23_5 Depth=1
 	beq	$a0, $s4, .LBB23_3
 .LBB23_8:                               #   in Loop: Header=BB23_5 Depth=1
-	blt	$s7, $s5, .LBB23_4
+	bgez	$s8, .LBB23_4
 # %bb.9:                                #   in Loop: Header=BB23_5 Depth=1
-	ori	$a3, $zero, 1
-	bgeu	$a3, $a0, .LBB23_3
+	bgeu	$s5, $a0, .LBB23_3
 	b	.LBB23_4
 .LBB23_10:                              # %._crit_edge
 	beqz	$s1, .LBB23_17
@@ -2338,8 +2324,7 @@ symbol_FPrint:                          # @symbol_FPrint
 	beqz	$a1, .LBB27_5
 # %bb.1:
 	move	$a2, $a1
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB27_6
+	blez	$a1, .LBB27_6
 # %bb.2:
 	ori	$a0, $zero, 2000
 	pcalau12i	$s0, %pc_hi20(symbol_VARSTRING)
@@ -2428,10 +2413,9 @@ symbol_FPrintOtter:                     # @symbol_FPrintOtter
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$a2, $a1
 	move	$fp, $a0
-	blt	$a1, $a3, .LBB28_4
+	blez	$a1, .LBB28_4
 # %bb.1:
 	ori	$a0, $zero, 2000
 	pcalau12i	$s0, %pc_hi20(symbol_VARSTRING)
@@ -2505,8 +2489,7 @@ symbol_FPrintOtter:                     # @symbol_FPrintOtter
 	pcaddu18i	$t8, %call36(fprintf)
 	jr	$t8
 .LBB28_16:
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a2, .LBB28_18
+	bltz	$a2, .LBB28_18
 .LBB28_17:                              # %.thread
 	pcalau12i	$a1, %pc_hi20(symbol_SIGNATURE)
 	ld.d	$a1, $a1, %pc_lo12(symbol_SIGNATURE)

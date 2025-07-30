@@ -39,13 +39,13 @@ finalcheck:                             # @finalcheck
 	ld.d	$a3, $a0, %got_pc_lo12(fwirex)
 	pcalau12i	$a0, %got_pc_hi20(fwirey)
 	ld.d	$a0, $a0, %got_pc_lo12(fwirey)
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	st.w	$zero, $a1, 0
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.w	$zero, $a2, 0
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
 	st.w	$zero, $a3, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
@@ -56,80 +56,81 @@ finalcheck:                             # @finalcheck
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(numcells)
-	ld.d	$s6, $a0, %got_pc_lo12(numcells)
+	ld.d	$s7, $a0, %got_pc_lo12(numcells)
 	pcalau12i	$a0, %got_pc_hi20(numpads)
-	ld.d	$s7, $a0, %got_pc_lo12(numpads)
-	ld.w	$a1, $s6, 0
-	ld.w	$a2, $s7, 0
+	ld.d	$s6, $a0, %got_pc_lo12(numpads)
+	ld.w	$a1, $s7, 0
+	ld.w	$a2, $s6, 0
 	add.w	$a0, $a2, $a1
-	blt	$a0, $s0, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.1:                                # %.lr.ph169.preheader
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a2, %got_pc_hi20(termarray)
 	ld.d	$a2, $a2, %got_pc_lo12(termarray)
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(.L.str.3)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.3)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.L.str.4)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.4)
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	ori	$a3, $zero, 1
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %.loopexit158
                                         #   in Loop: Header=BB0_3 Depth=1
-	ld.w	$a1, $s6, 0
-	ld.w	$a2, $s7, 0
+	ld.w	$a1, $s7, 0
+	ld.w	$a2, $s6, 0
 	add.w	$a4, $a2, $a1
-	addi.d	$a3, $s8, 1
-	bge	$s8, $a4, .LBB0_12
+	addi.d	$a3, $s1, 1
+	bge	$s1, $a4, .LBB0_12
 .LBB0_3:                                # %.lr.ph169
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_7 Depth 2
                                         #     Child Loop BB0_11 Depth 2
-	move	$s8, $a3
-	slli.d	$s5, $a3, 3
+	move	$s1, $a3
+	slli.d	$s8, $a3, 3
 	blt	$a1, $a3, .LBB0_5
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s8
 	ld.w	$a1, $a0, 56
 	alsl.d	$a1, $a1, $a0, 3
-	move	$s0, $s7
-	move	$s7, $s6
+	move	$s0, $s6
 	ld.d	$s6, $a1, 152
 	ld.w	$a1, $a0, 12
 	ld.w	$a2, $s6, 56
 	ld.w	$a3, $a0, 16
-	add.w	$s1, $a2, $a1
+	add.w	$s2, $a2, $a1
 	ld.w	$a4, $s6, 60
 	ld.w	$a5, $s6, 64
 	ld.w	$a6, $s6, 68
 	ld.d	$a2, $a0, 0
-	add.w	$s2, $a4, $a1
-	add.w	$s4, $a5, $a3
-	add.w	$s3, $a6, $a3
+	add.w	$s3, $a4, $a1
+	add.w	$s5, $a5, $a3
+	add.w	$s4, $a6, $a3
 	move	$a0, $fp
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 8
-	move	$a0, $s1
-	move	$a1, $s4
-	move	$a2, $s3
+	move	$a0, $s2
+	move	$a1, $s5
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s6, 8
 	move	$a2, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
 	move	$a0, $fp
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 16
-	move	$a0, $s2
-	move	$a1, $s4
-	move	$a2, $s3
+	move	$a0, $s3
+	move	$a1, $s5
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s6, 16
@@ -140,9 +141,9 @@ finalcheck:                             # @finalcheck
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 24
-	move	$a0, $s4
-	move	$a1, $s1
-	move	$a2, $s2
+	move	$a0, $s5
+	move	$a1, $s2
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s6, 24
@@ -153,14 +154,13 @@ finalcheck:                             # @finalcheck
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s6, 32
-	move	$a0, $s3
-	move	$a1, $s1
-	move	$a2, $s2
+	move	$a0, $s4
+	move	$a1, $s2
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s6, 32
-	move	$s6, $s7
-	move	$s7, $s0
+	move	$s6, $s0
 	ori	$s0, $zero, 1
 	move	$a2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
@@ -168,10 +168,10 @@ finalcheck:                             # @finalcheck
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 .LBB0_5:                                #   in Loop: Header=BB0_3 Depth=1
-	ldx.d	$a1, $a0, $s5
+	ldx.d	$a1, $a0, $s8
 	ld.w	$a2, $a1, 56
 	alsl.d	$a2, $a2, $a1, 3
 	ld.d	$a2, $a2, 152
@@ -205,7 +205,7 @@ finalcheck:                             # @finalcheck
 # %bb.9:                                # %.preheader157
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a5, $a1, 132
-	blt	$a5, $s0, .LBB0_2
+	blez	$a5, .LBB0_2
 # %bb.10:                               # %.lr.ph165
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a6, $a1, 144
@@ -241,23 +241,23 @@ finalcheck:                             # @finalcheck
 .LBB0_12:                               # %.preheader156
 	pcalau12i	$a0, %got_pc_hi20(numnets)
 	ld.d	$a0, $a0, %got_pc_lo12(numnets)
-	ld.w	$t0, $a0, 0
-	ori	$a0, $zero, 1
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	blt	$t0, $a0, .LBB0_31
+	ld.w	$a7, $a0, 0
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	blez	$a7, .LBB0_31
 # %bb.13:                               # %.lr.ph177
-	ld.w	$a3, $fp, 0
-	pcalau12i	$a4, %got_pc_hi20(netarray)
-	ld.d	$a7, $a4, %got_pc_lo12(netarray)
-	ld.w	$a4, $s0, 0
-	ld.w	$a5, $s2, 0
-	ld.w	$a6, $s1, 0
-	ld.d	$a7, $a7, 0
-	addi.d	$t0, $t0, 1
-	bstrpick.d	$t0, $t0, 31, 0
+	ld.w	$a0, $fp, 0
+	pcalau12i	$a3, %got_pc_hi20(netarray)
+	ld.d	$a6, $a3, %got_pc_lo12(netarray)
+	ld.w	$a3, $s0, 0
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	ld.w	$a4, $a4, 0
+	ld.w	$a5, $s1, 0
+	ld.d	$a6, $a6, 0
+	addi.d	$a7, $a7, 1
+	bstrpick.d	$a7, $a7, 31, 0
+	ori	$t0, $zero, 1
 	ori	$t1, $zero, 1
 	b	.LBB0_16
 	.p2align	4, , 16
@@ -268,17 +268,18 @@ finalcheck:                             # @finalcheck
 	ld.w	$t5, $t2, 40
 	ld.w	$t6, $t2, 28
 	sub.d	$t7, $t3, $t4
-	add.d	$a6, $a6, $t7
-	st.w	$a6, $s1, 0
+	add.d	$a5, $a5, $t7
+	st.w	$a5, $s1, 0
 	sub.d	$t8, $t5, $t6
-	add.d	$a5, $a5, $t8
-	st.w	$a5, $s2, 0
+	add.d	$a4, $a4, $t8
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	st.w	$a4, $s2, 0
 	add.d	$t3, $t3, $t5
 	add.d	$t4, $t4, $t6
 	sub.d	$t3, $t3, $t4
-	add.d	$a4, $t3, $a4
+	add.d	$a3, $t3, $a3
 	fld.d	$fa0, $t2, 48
-	st.w	$a4, $s0, 0
+	st.w	$a3, $s0, 0
 	movgr2fr.w	$fa1, $t7
 	ffint.d.w	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -290,19 +291,19 @@ finalcheck:                             # @finalcheck
 	fmul.d	$fa0, $fa1, $fa0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$t3, $fa0
-	add.d	$a3, $a3, $t2
-	add.d	$a3, $a3, $t3
-	st.w	$a3, $fp, 0
+	add.d	$a0, $a0, $t2
+	add.d	$a0, $a0, $t3
+	st.w	$a0, $fp, 0
 .LBB0_15:                               #   in Loop: Header=BB0_16 Depth=1
 	addi.d	$t1, $t1, 1
-	beq	$t1, $t0, .LBB0_31
+	beq	$t1, $a7, .LBB0_31
 .LBB0_16:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_18 Depth 2
                                         #     Child Loop BB0_23 Depth 2
 	slli.d	$t2, $t1, 3
-	ldx.d	$t2, $a7, $t2
+	ldx.d	$t2, $a6, $t2
 	ld.w	$t3, $t2, 8
-	beq	$t3, $a0, .LBB0_15
+	beq	$t3, $t0, .LBB0_15
 # %bb.17:                               # %.preheader155.preheader
                                         #   in Loop: Header=BB0_16 Depth=1
 	move	$t3, $t2
@@ -314,7 +315,7 @@ finalcheck:                             # @finalcheck
 	beqz	$t3, .LBB0_14
 # %bb.19:                               #   in Loop: Header=BB0_18 Depth=2
 	ld.w	$t4, $t3, 40
-	beq	$t4, $a0, .LBB0_18
+	beq	$t4, $t0, .LBB0_18
 # %bb.20:                               # %.loopexit
                                         #   in Loop: Header=BB0_16 Depth=1
 	ld.w	$t4, $t3, 8
@@ -335,7 +336,7 @@ finalcheck:                             # @finalcheck
 .LBB0_23:                               #   Parent Loop BB0_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t4, $t3, 40
-	beq	$t4, $a0, .LBB0_22
+	beq	$t4, $t0, .LBB0_22
 # %bb.24:                               #   in Loop: Header=BB0_23 Depth=2
 	ld.w	$t5, $t3, 8
 	ld.w	$t6, $t2, 12
@@ -389,8 +390,8 @@ finalcheck:                             # @finalcheck
 	move	$a4, $zero
 	move	$a6, $zero
 	jirl	$ra, $a7, 0
-	ld.w	$a1, $s6, 0
-	ld.w	$a2, $s7, 0
+	ld.w	$a1, $s7, 0
+	ld.w	$a2, $s6, 0
 	add.w	$s3, $a0, $s3
 .LBB0_35:                               #   in Loop: Header=BB0_36 Depth=1
 	add.w	$a0, $a2, $a1
@@ -440,7 +441,6 @@ initcheck:                              # @initcheck
 # %bb.0:
 	pcalau12i	$a0, %got_pc_hi20(icost)
 	ld.d	$a0, $a0, %got_pc_lo12(icost)
-	st.w	$zero, $a0, 0
 	pcalau12i	$a1, %got_pc_hi20(iwire)
 	ld.d	$a1, $a1, %got_pc_lo12(iwire)
 	pcalau12i	$a2, %got_pc_hi20(iwirex)
@@ -450,11 +450,11 @@ initcheck:                              # @initcheck
 	pcalau12i	$a3, %got_pc_hi20(iwirey)
 	ld.d	$a3, $a3, %got_pc_lo12(iwirey)
 	ld.w	$t0, $a4, 0
+	st.w	$zero, $a0, 0
 	st.w	$zero, $a1, 0
 	st.w	$zero, $a2, 0
-	ori	$a4, $zero, 1
 	st.w	$zero, $a3, 0
-	blt	$t0, $a4, .LBB1_4
+	blez	$t0, .LBB1_4
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a4, %got_pc_hi20(netarray)
 	ld.d	$a4, $a4, %got_pc_lo12(netarray)

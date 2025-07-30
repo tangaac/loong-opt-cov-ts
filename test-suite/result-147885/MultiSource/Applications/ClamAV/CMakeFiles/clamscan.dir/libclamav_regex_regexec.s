@@ -267,7 +267,7 @@ cli_regexec:                            # @cli_regexec
 .LBB0_39:                               #   in Loop: Header=BB0_30 Depth=1
 	move	$fp, $a1
 	st.d	$s8, $sp, 96                    # 8-byte Folded Spill
-	bge	$a0, $s1, .LBB0_45
+	bgtz	$a0, .LBB0_45
 	b	.LBB0_47
 	.p2align	4, , 16
 .LBB0_40:                               #   in Loop: Header=BB0_30 Depth=1
@@ -291,7 +291,7 @@ cli_regexec:                            # @cli_regexec
 	ld.w	$a1, $s4, 80
 	add.w	$a0, $a1, $a0
 	st.d	$s8, $sp, 96                    # 8-byte Folded Spill
-	blt	$a0, $s1, .LBB0_47
+	blez	$a0, .LBB0_47
 .LBB0_45:                               # %.preheader.i.i.preheader
                                         #   in Loop: Header=BB0_30 Depth=1
 	addi.d	$s3, $a0, 1
@@ -540,7 +540,7 @@ cli_regexec:                            # @cli_regexec
 .LBB0_87:                               #   in Loop: Header=BB0_30 Depth=1
 	ld.d	$a1, $fp, 128
 	ld.d	$a0, $sp, 160
-	blt	$a1, $s1, .LBB0_90
+	blez	$a1, .LBB0_90
 # %bb.88:                               #   in Loop: Header=BB0_30 Depth=1
 	bnez	$a0, .LBB0_90
 # %bb.89:                               #   in Loop: Header=BB0_30 Depth=1
@@ -551,7 +551,7 @@ cli_regexec:                            # @cli_regexec
 	ld.d	$a1, $fp, 128
 	st.d	$a0, $sp, 160
 .LBB0_90:                               #   in Loop: Header=BB0_30 Depth=1
-	blt	$a1, $s1, .LBB0_92
+	blez	$a1, .LBB0_92
 # %bb.91:                               #   in Loop: Header=BB0_30 Depth=1
 	beqz	$a0, .LBB0_193
 .LBB0_92:                               #   in Loop: Header=BB0_30 Depth=1
@@ -763,7 +763,7 @@ cli_regexec:                            # @cli_regexec
 	bnez	$a2, .LBB0_125
 .LBB0_121:                              #   in Loop: Header=BB0_110 Depth=1
 	move	$fp, $a1
-	bge	$a0, $s1, .LBB0_126
+	bgtz	$a0, .LBB0_126
 	b	.LBB0_128
 	.p2align	4, , 16
 .LBB0_122:                              #   in Loop: Header=BB0_110 Depth=1
@@ -783,7 +783,7 @@ cli_regexec:                            # @cli_regexec
 .LBB0_125:                              #   in Loop: Header=BB0_110 Depth=1
 	ld.w	$a1, $s8, 80
 	add.w	$a0, $a1, $a0
-	blt	$a0, $s1, .LBB0_128
+	blez	$a0, .LBB0_128
 .LBB0_126:                              # %.preheader.i.i48.preheader
                                         #   in Loop: Header=BB0_110 Depth=1
 	addi.d	$s8, $a0, 1
@@ -1037,7 +1037,7 @@ cli_regexec:                            # @cli_regexec
 .LBB0_167:                              #   in Loop: Header=BB0_110 Depth=1
 	ld.d	$a1, $s7, 128
 	ld.d	$a0, $sp, 160
-	blt	$a1, $s1, .LBB0_170
+	blez	$a1, .LBB0_170
 # %bb.168:                              #   in Loop: Header=BB0_110 Depth=1
 	bnez	$a0, .LBB0_170
 # %bb.169:                              #   in Loop: Header=BB0_110 Depth=1
@@ -1048,7 +1048,7 @@ cli_regexec:                            # @cli_regexec
 	ld.d	$a1, $s7, 128
 	st.d	$a0, $sp, 160
 .LBB0_170:                              #   in Loop: Header=BB0_110 Depth=1
-	blt	$a1, $s1, .LBB0_172
+	blez	$a1, .LBB0_172
 # %bb.171:                              #   in Loop: Header=BB0_110 Depth=1
 	beqz	$a0, .LBB0_202
 .LBB0_172:                              #   in Loop: Header=BB0_110 Depth=1
@@ -1299,7 +1299,7 @@ sslow:                                  # @sslow
 	bnez	$a2, .LBB1_14
 .LBB1_9:
 	move	$fp, $a1
-	bge	$a0, $s2, .LBB1_15
+	bgtz	$a0, .LBB1_15
 	b	.LBB1_17
 	.p2align	4, , 16
 .LBB1_10:
@@ -1326,7 +1326,7 @@ sslow:                                  # @sslow
 .LBB1_14:
 	ld.w	$a1, $s5, 80
 	add.w	$a0, $a1, $a0
-	blt	$a0, $s2, .LBB1_17
+	blez	$a0, .LBB1_17
 .LBB1_15:                               # %.preheader.preheader
 	addi.d	$s6, $a0, 1
 	.p2align	4, , 16
@@ -2684,13 +2684,13 @@ lslow:                                  # @lslow
 	bnez	$a3, .LBB5_16
 .LBB5_15:
 	move	$s3, $a1
-	bge	$a0, $s6, .LBB5_17
+	bgtz	$a0, .LBB5_17
 	b	.LBB5_19
 	.p2align	4, , 16
 .LBB5_16:
 	ld.w	$a1, $a2, 80
 	add.w	$a0, $a1, $a0
-	blt	$a0, $s6, .LBB5_19
+	blez	$a0, .LBB5_19
 .LBB5_17:                               # %.preheader.preheader
 	addi.d	$s7, $a0, 1
 	.p2align	4, , 16

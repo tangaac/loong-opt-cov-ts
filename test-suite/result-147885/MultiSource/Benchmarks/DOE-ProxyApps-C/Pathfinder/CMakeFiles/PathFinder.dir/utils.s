@@ -10,10 +10,9 @@ edgeListPrettyPrint:                    # @edgeListPrettyPrint
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$s0, $a2
 	move	$fp, $a0
-	blt	$a1, $a3, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $a1
 	.p2align	4, , 16
@@ -60,16 +59,15 @@ edgeListPrettyPrint:                    # @edgeListPrettyPrint
 	.type	nodeListPrettyPrint,@function
 nodeListPrettyPrint:                    # @nodeListPrettyPrint
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	beqz	$a0, .LBB1_15
 # %bb.1:                                # %.lr.ph25
 	move	$fp, $a2
@@ -77,7 +75,6 @@ nodeListPrettyPrint:                    # @nodeListPrettyPrint
 	beqz	$a3, .LBB1_10
 # %bb.2:                                # %.lr.ph25.split.us.preheader
 	move	$s1, $a1
-	ori	$s5, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.5)
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
@@ -112,10 +109,10 @@ nodeListPrettyPrint:                    # @nodeListPrettyPrint
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
-	blt	$s1, $s5, .LBB1_3
+	blez	$s1, .LBB1_3
 # %bb.8:                                # %.lr.ph.us.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	move	$s6, $s1
+	move	$s5, $s1
 	.p2align	4, , 16
 .LBB1_9:                                # %.lr.ph.us
                                         #   Parent Loop BB1_4 Depth=1
@@ -123,8 +120,8 @@ nodeListPrettyPrint:                    # @nodeListPrettyPrint
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.w	$s6, $s6, -1
-	bnez	$s6, .LBB1_9
+	addi.w	$s5, $s5, -1
+	bnez	$s5, .LBB1_9
 	b	.LBB1_3
 .LBB1_10:
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
@@ -153,29 +150,27 @@ nodeListPrettyPrint:                    # @nodeListPrettyPrint
 	ld.d	$s0, $s0, 8
 	bnez	$s0, .LBB1_11
 .LBB1_15:                               # %.loopexit20
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .LBB1_16:                               # %.split.us
 	ori	$a0, $zero, 10
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(putchar)
 	jr	$t8
 .Lfunc_end1:
@@ -345,8 +340,7 @@ systemCallMapPrettyPrint:               # @systemCallMapPrettyPrint
 	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB3_10
+	blez	$a1, .LBB3_10
 # %bb.2:                                # %.lr.ph24
 	move	$s4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
@@ -556,8 +550,7 @@ printStack:                             # @printStack
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_8
+	blez	$a0, .LBB5_8
 # %bb.2:                                # %.lr.ph
 	move	$s3, $zero
 	move	$s4, $zero

@@ -1518,8 +1518,7 @@ PS_PrintPageSetupForFont:               # @PS_PrintPageSetupForFont
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.b	$a0, $s1, 60
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_2
+	bltz	$a0, .LBB11_2
 # %bb.1:
 	ld.d	$a0, $s3, %pc_lo12(out_fp)
 	pcalau12i	$a1, %pc_hi20(.L.str.44)
@@ -3087,7 +3086,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	pcalau12i	$s4, %pc_hi20(currentxheight2)
 	pcalau12i	$s5, %pc_hi20(out_fp)
 	pcalau12i	$s1, %pc_hi20(wordcount)
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
 	beq	$a0, $a2, .LBB17_5
 # %bb.1:
 	st.w	$a0, $fp, %pc_lo12(currentfont)
@@ -3129,7 +3128,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 .LBB17_4:
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 .LBB17_5:
 	ld.w	$a0, $s2, 40
 	pcalau12i	$a1, %pc_hi20(currentcolour)
@@ -3163,10 +3162,10 @@ PS_PrintWord:                           # @PS_PrintWord
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 .LBB17_10:
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 .LBB17_11:
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(finfo)
 	ld.d	$a1, $a0, %got_pc_lo12(finfo)
 	ld.wu	$a0, $s2, 40
@@ -3267,7 +3266,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	bnez	$a1, .LBB17_13
 .LBB17_26:
 	st.b	$zero, $s6, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 40
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
@@ -3285,15 +3284,14 @@ PS_PrintWord:                           # @PS_PrintWord
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.w	$a0, $a0, $a1
 	pcalau12i	$s3, %pc_hi20(currenty)
-	lu12i.w	$s6, -209716
-	lu12i.w	$s8, 1024
+	lu12i.w	$s4, -209716
+	lu12i.w	$s6, 1024
 	beqz	$a2, .LBB17_35
 # %bb.27:
 	ld.w	$a1, $s3, %pc_lo12(currenty)
 	bne	$a1, $a0, .LBB17_35
 # %bb.28:
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s0, .LBB17_30
+	bgez	$s0, .LBB17_30
 # %bb.29:
 	ld.d	$a1, $s5, %pc_lo12(out_fp)
 	sub.w	$s0, $zero, $s0
@@ -3303,10 +3301,10 @@ PS_PrintWord:                           # @PS_PrintWord
 .LBB17_30:                              # %.preheader307
 	move	$a2, $zero
 	addi.d	$a0, $sp, 100
-	ori	$a1, $s6, 3277
+	ori	$a1, $s4, 3277
 	lu32i.d	$a1, 0
 	ori	$a3, $zero, 9
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB17_31:                              # =>This Inner Loop Header: Depth=1
@@ -3348,9 +3346,8 @@ PS_PrintWord:                           # @PS_PrintWord
 	or	$s1, $a0, $a1
 	b	.LBB17_48
 .LBB17_35:
-	addi.w	$s4, $zero, -1
 	st.w	$a0, $s3, %pc_lo12(currenty)
-	blt	$s4, $s0, .LBB17_37
+	bgez	$s0, .LBB17_37
 # %bb.36:
 	ld.d	$a1, $s5, %pc_lo12(out_fp)
 	sub.w	$s0, $zero, $s0
@@ -3360,7 +3357,7 @@ PS_PrintWord:                           # @PS_PrintWord
 .LBB17_37:                              # %.preheader309
 	move	$a2, $zero
 	addi.d	$a0, $sp, 100
-	ori	$s1, $s6, 3277
+	ori	$s1, $s4, 3277
 	lu32i.d	$s1, 0
 	ori	$a1, $zero, 9
 	.p2align	4, , 16
@@ -3396,7 +3393,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.w	$fp, $s3, %pc_lo12(currenty)
-	blt	$s4, $fp, .LBB17_43
+	bgez	$fp, .LBB17_43
 # %bb.42:
 	ld.d	$a1, $s5, %pc_lo12(out_fp)
 	sub.w	$fp, $zero, $fp
@@ -3436,9 +3433,9 @@ PS_PrintWord:                           # @PS_PrintWord
 	move	$a2, $s0
 	bnez	$s0, .LBB17_46
 # %bb.47:
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.wu	$a0, $a3, 40
-	and	$a0, $a0, $s8
+	and	$a0, $a0, $s6
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.178)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.178)
@@ -3460,10 +3457,10 @@ PS_PrintWord:                           # @PS_PrintWord
 	ldx.hu	$a1, $s7, $a1
 	pcalau12i	$a2, %pc_hi20(.L.str.188)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.188)
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(.L.str.189)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.189)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(.L.str.181)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.181)
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
@@ -3491,9 +3488,9 @@ PS_PrintWord:                           # @PS_PrintWord
 	ld.d	$s0, $s5, %pc_lo12(out_fp)
 	andi	$a1, $a1, 64
 	sltui	$a1, $a1, 1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	masknez	$a3, $a3, $a1
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	maskeqz	$a1, $a4, $a1
 	or	$s1, $a1, $a3
 	alsl.d	$a1, $a2, $a2, 1
@@ -3518,7 +3515,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	bnez	$a0, .LBB17_51
 # %bb.52:                               # %PrintComposite.exit.loopexit
 	ld.bu	$a1, $s3, 0
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 .LBB17_53:                              # %PrintComposite.exit
 	ld.wu	$a0, $s2, 40
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
@@ -3531,8 +3528,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	alsl.d	$a1, $a1, $a2, 1
 	add.d	$a0, $a0, $a1
 	ld.h	$fp, $a0, 6
-	addi.w	$a0, $zero, -1
-	blt	$a0, $fp, .LBB17_55
+	bgez	$fp, .LBB17_55
 # %bb.54:
 	ld.d	$a1, $s5, %pc_lo12(out_fp)
 	sub.d	$fp, $zero, $fp
@@ -3542,7 +3538,7 @@ PS_PrintWord:                           # @PS_PrintWord
 .LBB17_55:                              # %.preheader306
 	move	$a2, $zero
 	addi.d	$a0, $sp, 100
-	ori	$a1, $s6, 3277
+	ori	$a1, $s4, 3277
 	lu32i.d	$a1, 0
 	ori	$a3, $zero, 9
 	.p2align	4, , 16
@@ -3579,7 +3575,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.wu	$a1, $s2, 40
-	and	$a0, $a1, $s8
+	and	$a0, $a1, $s6
 	sltui	$a0, $a0, 1
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	masknez	$a2, $a2, $a0
@@ -3615,29 +3611,26 @@ PS_PrintWord:                           # @PS_PrintWord
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $a2, $a1
 	addi.d	$a1, $a1, 2047
-	move	$a2, $s6
 	addi.d	$s6, $a1, 898
 	addi.d	$s8, $s2, 65
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 6
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(EightBitToPrintForm)
 	ld.d	$a1, $a1, %got_pc_lo12(EightBitToPrintForm)
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.180)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.180)
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	addi.w	$a1, $zero, -1
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	ori	$s3, $a2, 3277
-	lu32i.d	$s3, 0
-	ori	$s4, $zero, 9
+	ori	$s4, $s4, 3277
+	lu32i.d	$s4, 0
+	ori	$s3, $zero, 9
 	addi.d	$s0, $sp, 100
 	b	.LBB17_63
 	.p2align	4, , 16
 .LBB17_62:                              #   in Loop: Header=BB17_63 Depth=1
 	slli.d	$a0, $a0, 3
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ldx.d	$a0, $a1, $a0
 	ld.d	$a1, $s5, %pc_lo12(out_fp)
 	pcaddu18i	$ra, %call36(fputs)
@@ -3692,7 +3685,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$a0, $a2, %pc_lo12(wordcount)
 	ld.bu	$a1, $s2, 42
 	addi.d	$a0, $a0, 1
@@ -3733,12 +3726,12 @@ PS_PrintWord:                           # @PS_PrintWord
 	ld.d	$s1, $s5, %pc_lo12(out_fp)
 	andi	$a1, $a1, 64
 	sltui	$a1, $a1, 1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	masknez	$a3, $a3, $a1
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	maskeqz	$a1, $a4, $a1
 	or	$s2, $a1, $a3
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$fp, $a1, $a2
 	.p2align	4, , 16
 .LBB17_72:                              #   Parent Loop BB17_63 Depth=1
@@ -3758,7 +3751,7 @@ PS_PrintWord:                           # @PS_PrintWord
 # %bb.73:                               # %PrintComposite.exit219.loopexit
                                         #   in Loop: Header=BB17_63 Depth=1
 	ld.bu	$a1, $s8, 0
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 .LBB17_74:                              # %PrintComposite.exit219
                                         #   in Loop: Header=BB17_63 Depth=1
 	ld.wu	$a0, $s2, 40
@@ -3772,8 +3765,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	alsl.d	$a1, $a1, $a2, 1
 	add.d	$a0, $a0, $a1
 	ld.h	$fp, $a0, 6
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	blt	$a0, $fp, .LBB17_76
+	bgez	$fp, .LBB17_76
 # %bb.75:                               #   in Loop: Header=BB17_63 Depth=1
 	ld.d	$a1, $s5, %pc_lo12(out_fp)
 	sub.d	$fp, $zero, $fp
@@ -3789,7 +3781,7 @@ PS_PrintWord:                           # @PS_PrintWord
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$a1, $fp, 0
 	bstrpick.d	$a3, $fp, 31, 0
-	mul.d	$a3, $a3, $s3
+	mul.d	$a3, $a3, $s4
 	srli.d	$a3, $a3, 35
 	slli.d	$a4, $a3, 3
 	alsl.d	$a4, $a3, $a4, 1
@@ -3799,7 +3791,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	addi.w	$a2, $a2, 1
 	addi.d	$a0, $a0, 1
 	move	$fp, $a3
-	bltu	$s4, $a1, .LBB17_77
+	bltu	$s3, $a1, .LBB17_77
 	.p2align	4, , 16
 .LBB17_78:                              # %.preheader
                                         #   Parent Loop BB17_63 Depth=1
@@ -3829,7 +3821,7 @@ PS_PrintWord:                           # @PS_PrintWord
 	addi.d	$s8, $s8, 1
 	bnez	$a0, .LBB17_63
 .LBB17_80:                              # %._crit_edge
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$a1, $fp, %pc_lo12(wordcount)
 	ld.d	$a0, $s5, %pc_lo12(out_fp)
 	addi.d	$a2, $a1, 1
@@ -4351,9 +4343,8 @@ ltab_insert:                            # @ltab_insert
 	jirl	$ra, $ra, 0
 .LBB23_3:
 	st.w	$s5, $s2, 0
-	ori	$s5, $zero, 1
 	st.w	$zero, $s2, 4
-	blt	$s4, $s5, .LBB23_5
+	blez	$s4, .LBB23_5
 # %bb.4:                                # %.lr.ph.i
 	addi.d	$a0, $s2, 8
 	move	$a1, $zero
@@ -4363,7 +4354,7 @@ ltab_insert:                            # @ltab_insert
 .LBB23_5:                               # %ltab_new.exit
 	ld.w	$a1, $s1, 0
 	st.d	$s2, $sp, 8
-	blt	$a1, $s5, .LBB23_11
+	blez	$a1, .LBB23_11
 # %bb.6:                                # %.lr.ph
 	move	$s2, $zero
 	ori	$s3, $zero, 16

@@ -375,9 +375,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP24malloc_plus_mem
 	beqz	$a0, .LBB1_12
 # %bb.9:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB1_13
+	bltz	$a0, .LBB1_13
 .LBB1_10:
 	move	$a1, $zero
 	b	.LBB1_16
@@ -395,9 +394,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP24malloc_plus_mem
 	masknez	$a1, $s3, $a1
 	or	$a0, $a0, $a1
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB1_10
+	bgez	$a0, .LBB1_10
 .LBB1_13:
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB1_15
@@ -2642,9 +2640,8 @@ _ZN10MallocPlus10memory_addEPviPmmPKci: # @_ZN10MallocPlus10memory_addEPviPmmPKc
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $s1, 16
-	blt	$s5, $a1, .LBB10_2
+	blez	$s5, .LBB10_2
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $s6
 	move	$a2, $s7
@@ -4190,8 +4187,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$a0, $s2, 16
 	ld.d	$s7, $a0, 0
 	addi.w	$a0, $s7, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_31
+	blez	$a0, .LBB15_31
 # %bb.29:                               # %.lr.ph
                                         #   in Loop: Header=BB15_9 Depth=1
 	ld.d	$a0, $sp, 16
@@ -10325,8 +10321,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB54_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB54_12
+	bltz	$a0, .LBB54_12
 	b	.LBB54_18
 .LBB54_4:
 	ld.d	$a0, $s1, 40
@@ -10408,8 +10403,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	or	$a0, $a0, $a1
 .LBB54_16:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB54_28
+	bgez	$a0, .LBB54_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -10439,8 +10433,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	or	$a0, $a0, $a1
 .LBB54_20:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB54_23
+	bltz	$a0, .LBB54_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB54_29
@@ -10455,10 +10448,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB54_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -10468,7 +10461,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB54_27
 .LBB54_26:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -10482,7 +10475,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	or	$a0, $a0, $a1
 .LBB54_27:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB54_31
+	bltz	$a0, .LBB54_31
 .LBB54_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -10640,10 +10633,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_P
 	bnez	$a0, .LBB56_3
 	b	.LBB56_2
 .LBB56_6:                               # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB56_9
+	bgez	$a1, .LBB56_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB56_14
@@ -10922,7 +10914,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -10932,7 +10923,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB58_15
 # %bb.1:
 	move	$s0, $a1
@@ -10965,9 +10955,9 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.w	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB58_5
+	ori	$a0, $zero, 1
+	stx.w	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB58_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 4
 	slli.d	$a1, $s0, 2
@@ -10976,7 +10966,7 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB58_5:                               # %_ZSt27__uninitialized_default_n_aIPimiET_S1_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB58_7
+	blez	$s2, .LBB58_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -11018,7 +11008,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 .LBB58_14:                              # %_ZSt27__uninitialized_default_n_aIPimiET_S1_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB58_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

@@ -126,8 +126,7 @@ _Z9BM_MemCmpILi1E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 .Ltmp21:
 # %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_17
+	beqz	$a0, .LBB1_17
 # %bb.11:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -424,8 +423,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 	ld.bu	$a1, $fp, 0
 	sltui	$a0, $a0, 1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB2_20
+	bne	$a0, $a1, .LBB2_20
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -480,8 +478,7 @@ _Z9BM_MemCmpILi1E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero
 .Ltmp35:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB2_19
+	beqz	$a0, .LBB2_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -778,8 +775,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 	ld.bu	$a1, $fp, 0
 	sltui	$a0, $a0, 1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB3_20
+	bne	$a0, $a1, .LBB3_20
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -834,8 +830,7 @@ _Z9BM_MemCmpILi1E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero3M
 .Ltmp64:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB3_19
+	beqz	$a0, .LBB3_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -1132,8 +1127,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 	ld.bu	$a1, $fp, 0
 	sltui	$a0, $a0, 1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB4_20
+	bne	$a0, $a1, .LBB4_20
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -1188,8 +1182,7 @@ _Z9BM_MemCmpILi1E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E6EqZero4
 .Ltmp93:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_19
+	beqz	$a0, .LBB4_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -1526,8 +1519,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 .Ltmp122:
 # %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_17
+	beqz	$a0, .LBB5_17
 # %bb.11:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -1875,8 +1867,7 @@ _Z9BM_MemCmpILi1E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E
 .Ltmp151:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB6_19
+	beqz	$a0, .LBB6_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -2224,8 +2215,7 @@ _Z9BM_MemCmpILi1E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E12
 .Ltmp180:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB7_19
+	beqz	$a0, .LBB7_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -2573,8 +2563,7 @@ _Z9BM_MemCmpILi1E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1E1
 .Ltmp209:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_19
+	beqz	$a0, .LBB8_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -2911,8 +2900,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp238:
 # %bb.10:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB9_17
+	beqz	$a0, .LBB9_17
 # %bb.11:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -3209,8 +3197,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	ld.bu	$a1, $fp, 0
 	slt	$a0, $zero, $a0
 	sltu	$a1, $zero, $a1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB10_20
+	bne	$a0, $a1, .LBB10_20
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -3264,8 +3251,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp267:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB10_19
+	beqz	$a0, .LBB10_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -3562,8 +3548,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	ld.bu	$a1, $fp, 0
 	slt	$a0, $zero, $a0
 	sltu	$a1, $zero, $a1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB11_20
+	bne	$a0, $a1, .LBB11_20
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -3617,8 +3602,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 .Ltmp296:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_19
+	beqz	$a0, .LBB11_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -3915,8 +3899,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	ld.bu	$a1, $fp, 0
 	slt	$a0, $zero, $a0
 	sltu	$a1, $zero, $a1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB12_20
+	bne	$a0, $a1, .LBB12_20
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -3970,8 +3953,7 @@ _Z9BM_MemCmpILi1E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp325:
 # %bb.12:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB12_19
+	beqz	$a0, .LBB12_19
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -4259,8 +4241,7 @@ _Z9BM_MemCmpILi2E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero4
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB13_17
+	bne	$a0, $a1, .LBB13_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -4311,8 +4292,7 @@ _Z9BM_MemCmpILi2E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero4
 .Ltmp354:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB13_16
+	beqz	$a0, .LBB13_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -4698,8 +4678,7 @@ _Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB14_19
+	bne	$a0, $a1, .LBB14_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -4750,8 +4729,7 @@ _Z9BM_MemCmpILi2E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero
 .Ltmp383:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB14_18
+	beqz	$a0, .LBB14_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -5138,8 +5116,7 @@ _Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero3M
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB15_19
+	bne	$a0, $a1, .LBB15_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -5190,8 +5167,7 @@ _Z9BM_MemCmpILi2E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero3M
 .Ltmp412:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB15_18
+	beqz	$a0, .LBB15_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -5578,8 +5554,7 @@ _Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero4
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB16_19
+	bne	$a0, $a1, .LBB16_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -5630,8 +5605,7 @@ _Z9BM_MemCmpILi2E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E6EqZero4
 .Ltmp441:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB16_18
+	beqz	$a0, .LBB16_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -5975,8 +5949,7 @@ _Z9BM_MemCmpILi2E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E1
 .Ltmp470:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB17_16
+	beqz	$a0, .LBB17_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -6426,8 +6399,7 @@ _Z9BM_MemCmpILi2E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E
 .Ltmp499:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB18_18
+	beqz	$a0, .LBB18_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -6878,8 +6850,7 @@ _Z9BM_MemCmpILi2E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E12
 .Ltmp528:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB19_18
+	beqz	$a0, .LBB19_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -7330,8 +7301,7 @@ _Z9BM_MemCmpILi2E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2E1
 .Ltmp557:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB20_18
+	beqz	$a0, .LBB20_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -7629,8 +7599,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s3, $a0
-	bnez	$a0, .LBB21_17
+	bne	$s3, $a0, .LBB21_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -7683,8 +7652,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp586:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB21_16
+	beqz	$a0, .LBB21_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -8080,8 +8048,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s3, $a0
-	bnez	$a0, .LBB22_19
+	bne	$s3, $a0, .LBB22_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -8134,8 +8101,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp615:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB22_18
+	beqz	$a0, .LBB22_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -8532,8 +8498,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s3, $a0
-	bnez	$a0, .LBB23_19
+	bne	$s3, $a0, .LBB23_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -8586,8 +8551,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi2
 .Ltmp644:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB23_18
+	beqz	$a0, .LBB23_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -8984,8 +8948,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s3, $a0
-	bnez	$a0, .LBB24_19
+	bne	$s3, $a0, .LBB24_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -9038,8 +9001,7 @@ _Z9BM_MemCmpILi2E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp673:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB24_18
+	beqz	$a0, .LBB24_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -9335,8 +9297,7 @@ _Z9BM_MemCmpILi3E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB25_17
+	bne	$s2, $a0, .LBB25_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -9391,8 +9352,7 @@ _Z9BM_MemCmpILi3E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero4
 .Ltmp702:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB25_16
+	beqz	$a0, .LBB25_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -9799,8 +9759,7 @@ _Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB26_19
+	bne	$s2, $a0, .LBB26_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -9855,8 +9814,7 @@ _Z9BM_MemCmpILi3E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero
 .Ltmp731:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB26_18
+	beqz	$a0, .LBB26_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -10263,8 +10221,7 @@ _Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero3M
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB27_19
+	bne	$s2, $a0, .LBB27_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -10319,8 +10276,7 @@ _Z9BM_MemCmpILi3E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero3M
 .Ltmp760:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_18
+	beqz	$a0, .LBB27_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -10727,8 +10683,7 @@ _Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB28_19
+	bne	$s2, $a0, .LBB28_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -10783,8 +10738,7 @@ _Z9BM_MemCmpILi3E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E6EqZero4
 .Ltmp789:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB28_18
+	beqz	$a0, .LBB28_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -11137,8 +11091,7 @@ _Z9BM_MemCmpILi3E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E1
 .Ltmp818:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB29_16
+	beqz	$a0, .LBB29_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -11601,8 +11554,7 @@ _Z9BM_MemCmpILi3E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E
 .Ltmp847:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB30_18
+	beqz	$a0, .LBB30_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -12065,8 +12017,7 @@ _Z9BM_MemCmpILi3E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E12
 .Ltmp876:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB31_18
+	beqz	$a0, .LBB31_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -12529,8 +12480,7 @@ _Z9BM_MemCmpILi3E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3E1
 .Ltmp905:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB32_18
+	beqz	$a0, .LBB32_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -12827,8 +12777,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB33_17
+	bne	$s2, $a0, .LBB33_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -12883,8 +12832,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp934:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB33_16
+	beqz	$a0, .LBB33_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -13291,8 +13239,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB34_19
+	bne	$s2, $a0, .LBB34_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -13347,8 +13294,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp963:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB34_18
+	beqz	$a0, .LBB34_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -13755,8 +13701,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB35_19
+	bne	$s2, $a0, .LBB35_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -13811,8 +13756,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3
 .Ltmp992:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB35_18
+	beqz	$a0, .LBB35_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -14219,8 +14163,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB36_19
+	bne	$s2, $a0, .LBB36_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -14275,8 +14218,7 @@ _Z9BM_MemCmpILi3E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp1021:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB36_18
+	beqz	$a0, .LBB36_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -14570,8 +14512,7 @@ _Z9BM_MemCmpILi4E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero4
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB37_17
+	bne	$a0, $a1, .LBB37_17
 # %bb.2:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -14624,8 +14565,7 @@ _Z9BM_MemCmpILi4E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero4
 .Ltmp1050:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB37_16
+	beqz	$a0, .LBB37_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -15007,8 +14947,7 @@ _Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB38_19
+	bne	$a0, $a1, .LBB38_19
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -15061,8 +15000,7 @@ _Z9BM_MemCmpILi4E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero
 .Ltmp1079:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB38_18
+	beqz	$a0, .LBB38_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -15445,8 +15383,7 @@ _Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero3M
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB39_19
+	bne	$a0, $a1, .LBB39_19
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -15499,8 +15436,7 @@ _Z9BM_MemCmpILi4E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero3M
 .Ltmp1108:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB39_18
+	beqz	$a0, .LBB39_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -15883,8 +15819,7 @@ _Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero4
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB40_19
+	bne	$a0, $a1, .LBB40_19
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -15937,8 +15872,7 @@ _Z9BM_MemCmpILi4E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E6EqZero4
 .Ltmp1137:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB40_18
+	beqz	$a0, .LBB40_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -16282,8 +16216,7 @@ _Z9BM_MemCmpILi4E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E1
 .Ltmp1166:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB41_16
+	beqz	$a0, .LBB41_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -16734,8 +16667,7 @@ _Z9BM_MemCmpILi4E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E
 .Ltmp1195:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB42_18
+	beqz	$a0, .LBB42_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -17187,8 +17119,7 @@ _Z9BM_MemCmpILi4E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E12
 .Ltmp1224:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB43_18
+	beqz	$a0, .LBB43_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -17640,8 +17571,7 @@ _Z9BM_MemCmpILi4E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4E1
 .Ltmp1253:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB44_18
+	beqz	$a0, .LBB44_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -17938,8 +17868,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB45_17
+	bne	$s2, $a0, .LBB45_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -17994,8 +17923,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp1282:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB45_16
+	beqz	$a0, .LBB45_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -18390,8 +18318,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB46_19
+	bne	$s2, $a0, .LBB46_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -18446,8 +18373,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp1311:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB46_18
+	beqz	$a0, .LBB46_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -18843,8 +18769,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB47_19
+	bne	$s2, $a0, .LBB47_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -18899,8 +18824,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi4
 .Ltmp1340:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB47_18
+	beqz	$a0, .LBB47_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -19296,8 +19220,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB48_19
+	bne	$s2, $a0, .LBB48_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -19352,8 +19275,7 @@ _Z9BM_MemCmpILi4E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp1369:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB48_18
+	beqz	$a0, .LBB48_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -19649,8 +19571,7 @@ _Z9BM_MemCmpILi5E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB49_17
+	bne	$s2, $a0, .LBB49_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -19705,8 +19626,7 @@ _Z9BM_MemCmpILi5E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero4
 .Ltmp1398:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB49_16
+	beqz	$a0, .LBB49_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -20110,8 +20030,7 @@ _Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB50_19
+	bne	$s2, $a0, .LBB50_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -20166,8 +20085,7 @@ _Z9BM_MemCmpILi5E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero
 .Ltmp1427:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB50_18
+	beqz	$a0, .LBB50_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -20572,8 +20490,7 @@ _Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero3M
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB51_19
+	bne	$s2, $a0, .LBB51_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -20628,8 +20545,7 @@ _Z9BM_MemCmpILi5E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero3M
 .Ltmp1456:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB51_18
+	beqz	$a0, .LBB51_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -21034,8 +20950,7 @@ _Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB52_19
+	bne	$s2, $a0, .LBB52_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -21090,8 +21005,7 @@ _Z9BM_MemCmpILi5E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E6EqZero4
 .Ltmp1485:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB52_18
+	beqz	$a0, .LBB52_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -21444,8 +21358,7 @@ _Z9BM_MemCmpILi5E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E1
 .Ltmp1514:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB53_16
+	beqz	$a0, .LBB53_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -21905,8 +21818,7 @@ _Z9BM_MemCmpILi5E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E
 .Ltmp1543:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB54_18
+	beqz	$a0, .LBB54_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -22367,8 +22279,7 @@ _Z9BM_MemCmpILi5E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E12
 .Ltmp1572:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB55_18
+	beqz	$a0, .LBB55_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -22829,8 +22740,7 @@ _Z9BM_MemCmpILi5E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5E1
 .Ltmp1601:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB56_18
+	beqz	$a0, .LBB56_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -23127,8 +23037,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB57_17
+	bne	$s2, $a0, .LBB57_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -23183,8 +23092,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp1630:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB57_16
+	beqz	$a0, .LBB57_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -23588,8 +23496,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB58_19
+	bne	$s2, $a0, .LBB58_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -23644,8 +23551,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp1659:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB58_18
+	beqz	$a0, .LBB58_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -24050,8 +23956,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB59_19
+	bne	$s2, $a0, .LBB59_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -24106,8 +24011,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi5
 .Ltmp1688:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB59_18
+	beqz	$a0, .LBB59_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -24512,8 +24416,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB60_19
+	bne	$s2, $a0, .LBB60_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -24568,8 +24471,7 @@ _Z9BM_MemCmpILi5E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp1717:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB60_18
+	beqz	$a0, .LBB60_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -24866,8 +24768,7 @@ _Z9BM_MemCmpILi6E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB61_17
+	bne	$s2, $a0, .LBB61_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -24922,8 +24823,7 @@ _Z9BM_MemCmpILi6E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero4
 .Ltmp1746:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB61_16
+	beqz	$a0, .LBB61_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -25338,8 +25238,7 @@ _Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB62_19
+	bne	$s2, $a0, .LBB62_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -25394,8 +25293,7 @@ _Z9BM_MemCmpILi6E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero
 .Ltmp1775:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB62_18
+	beqz	$a0, .LBB62_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -25806,8 +25704,7 @@ _Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero3M
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB63_19
+	bne	$s2, $a0, .LBB63_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -25862,8 +25759,7 @@ _Z9BM_MemCmpILi6E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero3M
 .Ltmp1804:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB63_18
+	beqz	$a0, .LBB63_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -26274,8 +26170,7 @@ _Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB64_19
+	bne	$s2, $a0, .LBB64_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -26330,8 +26225,7 @@ _Z9BM_MemCmpILi6E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E6EqZero4
 .Ltmp1833:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB64_18
+	beqz	$a0, .LBB64_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -26684,8 +26578,7 @@ _Z9BM_MemCmpILi6E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E1
 .Ltmp1862:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB65_16
+	beqz	$a0, .LBB65_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -27156,8 +27049,7 @@ _Z9BM_MemCmpILi6E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E
 .Ltmp1891:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB66_18
+	beqz	$a0, .LBB66_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -27624,8 +27516,7 @@ _Z9BM_MemCmpILi6E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E12
 .Ltmp1920:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB67_18
+	beqz	$a0, .LBB67_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -28092,8 +27983,7 @@ _Z9BM_MemCmpILi6E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6E1
 .Ltmp1949:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB68_18
+	beqz	$a0, .LBB68_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -28390,8 +28280,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB69_17
+	bne	$s2, $a0, .LBB69_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -28446,8 +28335,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp1978:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB69_16
+	beqz	$a0, .LBB69_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -28862,8 +28750,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB70_19
+	bne	$s2, $a0, .LBB70_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -28918,8 +28805,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp2007:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB70_18
+	beqz	$a0, .LBB70_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -29330,8 +29216,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB71_19
+	bne	$s2, $a0, .LBB71_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -29386,8 +29271,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6
 .Ltmp2036:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB71_18
+	beqz	$a0, .LBB71_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -29798,8 +29682,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB72_19
+	bne	$s2, $a0, .LBB72_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -29854,8 +29737,7 @@ _Z9BM_MemCmpILi6E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp2065:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB72_18
+	beqz	$a0, .LBB72_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -30152,8 +30034,7 @@ _Z9BM_MemCmpILi7E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB73_17
+	bne	$s2, $a0, .LBB73_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -30208,8 +30089,7 @@ _Z9BM_MemCmpILi7E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero4
 .Ltmp2094:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB73_16
+	beqz	$a0, .LBB73_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -30621,8 +30501,7 @@ _Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB74_19
+	bne	$s2, $a0, .LBB74_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -30677,8 +30556,7 @@ _Z9BM_MemCmpILi7E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero
 .Ltmp2123:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB74_18
+	beqz	$a0, .LBB74_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -31090,8 +30968,7 @@ _Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero3M
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB75_19
+	bne	$s2, $a0, .LBB75_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -31146,8 +31023,7 @@ _Z9BM_MemCmpILi7E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero3M
 .Ltmp2152:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB75_18
+	beqz	$a0, .LBB75_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -31559,8 +31435,7 @@ _Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero4
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB76_19
+	bne	$s2, $a0, .LBB76_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -31615,8 +31490,7 @@ _Z9BM_MemCmpILi7E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E6EqZero4
 .Ltmp2181:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB76_18
+	beqz	$a0, .LBB76_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -31969,8 +31843,7 @@ _Z9BM_MemCmpILi7E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E1
 .Ltmp2210:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB77_16
+	beqz	$a0, .LBB77_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -32438,8 +32311,7 @@ _Z9BM_MemCmpILi7E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E
 .Ltmp2239:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB78_18
+	beqz	$a0, .LBB78_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -32907,8 +32779,7 @@ _Z9BM_MemCmpILi7E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E12
 .Ltmp2268:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB79_18
+	beqz	$a0, .LBB79_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -33376,8 +33247,7 @@ _Z9BM_MemCmpILi7E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7E1
 .Ltmp2297:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB80_18
+	beqz	$a0, .LBB80_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -33674,8 +33544,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB81_17
+	bne	$s2, $a0, .LBB81_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -33730,8 +33599,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp2326:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB81_16
+	beqz	$a0, .LBB81_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -34143,8 +34011,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB82_19
+	bne	$s2, $a0, .LBB82_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -34199,8 +34066,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp2355:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB82_18
+	beqz	$a0, .LBB82_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -34612,8 +34478,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB83_19
+	bne	$s2, $a0, .LBB83_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -34668,8 +34533,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi7
 .Ltmp2384:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB83_18
+	beqz	$a0, .LBB83_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -35081,8 +34945,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB84_19
+	bne	$s2, $a0, .LBB84_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -35137,8 +35000,7 @@ _Z9BM_MemCmpILi7E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp2413:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB84_18
+	beqz	$a0, .LBB84_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -35432,8 +35294,7 @@ _Z9BM_MemCmpILi8E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero4
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB85_17
+	bne	$a0, $a1, .LBB85_17
 # %bb.2:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -35486,8 +35347,7 @@ _Z9BM_MemCmpILi8E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero4
 .Ltmp2442:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB85_16
+	beqz	$a0, .LBB85_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -35869,8 +35729,7 @@ _Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB86_19
+	bne	$a0, $a1, .LBB86_19
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -35923,8 +35782,7 @@ _Z9BM_MemCmpILi8E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero
 .Ltmp2471:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB86_18
+	beqz	$a0, .LBB86_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -36307,8 +36165,7 @@ _Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero3M
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB87_19
+	bne	$a0, $a1, .LBB87_19
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -36361,8 +36218,7 @@ _Z9BM_MemCmpILi8E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero3M
 .Ltmp2500:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB87_18
+	beqz	$a0, .LBB87_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -36745,8 +36601,7 @@ _Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero4
 	sltui	$a0, $a0, 1
 	xor	$a1, $a2, $a1
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	bnez	$a0, .LBB88_19
+	bne	$a0, $a1, .LBB88_19
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	#APP
@@ -36799,8 +36654,7 @@ _Z9BM_MemCmpILi8E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E6EqZero4
 .Ltmp2529:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB88_18
+	beqz	$a0, .LBB88_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -37144,8 +36998,7 @@ _Z9BM_MemCmpILi8E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E1
 .Ltmp2558:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB89_16
+	beqz	$a0, .LBB89_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -37596,8 +37449,7 @@ _Z9BM_MemCmpILi8E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E
 .Ltmp2587:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB90_18
+	beqz	$a0, .LBB90_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -38049,8 +37901,7 @@ _Z9BM_MemCmpILi8E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E12
 .Ltmp2616:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB91_18
+	beqz	$a0, .LBB91_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -38502,8 +38353,7 @@ _Z9BM_MemCmpILi8E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8E1
 .Ltmp2645:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB92_18
+	beqz	$a0, .LBB92_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -38800,8 +38650,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB93_17
+	bne	$s2, $a0, .LBB93_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -38856,8 +38705,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp2674:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB93_16
+	beqz	$a0, .LBB93_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -39252,8 +39100,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB94_19
+	bne	$s2, $a0, .LBB94_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -39308,8 +39155,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp2703:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB94_18
+	beqz	$a0, .LBB94_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -39705,8 +39551,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB95_19
+	bne	$s2, $a0, .LBB95_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -39761,8 +39606,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi8
 .Ltmp2732:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB95_18
+	beqz	$a0, .LBB95_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -40158,8 +40002,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB96_19
+	bne	$s2, $a0, .LBB96_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -40214,8 +40057,7 @@ _Z9BM_MemCmpILi8E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp2761:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB96_18
+	beqz	$a0, .LBB96_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -40511,8 +40353,7 @@ _Z9BM_MemCmpILi15E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB97_17
+	bne	$s2, $a0, .LBB97_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -40567,8 +40408,7 @@ _Z9BM_MemCmpILi15E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZer
 .Ltmp2790:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB97_16
+	beqz	$a0, .LBB97_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -41022,8 +40862,7 @@ _Z9BM_MemCmpILi15E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZe
 .Ltmp2819:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB98_18
+	beqz	$a0, .LBB98_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -41478,8 +41317,7 @@ _Z9BM_MemCmpILi15E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZero
 .Ltmp2848:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB99_18
+	beqz	$a0, .LBB99_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -41934,8 +41772,7 @@ _Z9BM_MemCmpILi15E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E6EqZer
 .Ltmp2877:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB100_18
+	beqz	$a0, .LBB100_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -42288,8 +42125,7 @@ _Z9BM_MemCmpILi15E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15
 .Ltmp2906:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB101_16
+	beqz	$a0, .LBB101_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -42688,8 +42524,7 @@ _Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	xor	$a0, $a0, $s2
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB102_19
+	bltz	$a0, .LBB102_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -42745,8 +42580,7 @@ _Z9BM_MemCmpILi15E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 .Ltmp2935:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB102_18
+	beqz	$a0, .LBB102_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -43146,8 +42980,7 @@ _Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	xor	$a0, $a0, $s2
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB103_19
+	bltz	$a0, .LBB103_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -43203,8 +43036,7 @@ _Z9BM_MemCmpILi15E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15E
 .Ltmp2964:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB103_18
+	beqz	$a0, .LBB103_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -43604,8 +43436,7 @@ _Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	xor	$a0, $a0, $s2
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB104_19
+	bltz	$a0, .LBB104_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -43661,8 +43492,7 @@ _Z9BM_MemCmpILi15E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi15
 .Ltmp2993:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB104_18
+	beqz	$a0, .LBB104_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -43959,8 +43789,7 @@ _Z9BM_MemCmpILi15E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB105_17
+	bne	$s2, $a0, .LBB105_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -44015,8 +43844,7 @@ _Z9BM_MemCmpILi15E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp3022:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB105_16
+	beqz	$a0, .LBB105_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -44470,8 +44298,7 @@ _Z9BM_MemCmpILi15E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 .Ltmp3051:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB106_18
+	beqz	$a0, .LBB106_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -44926,8 +44753,7 @@ _Z9BM_MemCmpILi15E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp3080:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB107_18
+	beqz	$a0, .LBB107_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -45382,8 +45208,7 @@ _Z9BM_MemCmpILi15E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp3109:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB108_18
+	beqz	$a0, .LBB108_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -45681,8 +45506,7 @@ _Z9BM_MemCmpILi16E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB109_17
+	bne	$s2, $a0, .LBB109_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -45737,8 +45561,7 @@ _Z9BM_MemCmpILi16E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZer
 .Ltmp3138:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB109_16
+	beqz	$a0, .LBB109_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -46133,8 +45956,7 @@ _Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZe
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB110_19
+	bne	$s2, $a0, .LBB110_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -46189,8 +46011,7 @@ _Z9BM_MemCmpILi16E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZe
 .Ltmp3167:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB110_18
+	beqz	$a0, .LBB110_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -46586,8 +46407,7 @@ _Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB111_19
+	bne	$s2, $a0, .LBB111_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -46642,8 +46462,7 @@ _Z9BM_MemCmpILi16E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZero
 .Ltmp3196:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB111_18
+	beqz	$a0, .LBB111_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -47039,8 +46858,7 @@ _Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB112_19
+	bne	$s2, $a0, .LBB112_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -47095,8 +46913,7 @@ _Z9BM_MemCmpILi16E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E6EqZer
 .Ltmp3225:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB112_18
+	beqz	$a0, .LBB112_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -47449,8 +47266,7 @@ _Z9BM_MemCmpILi16E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16
 .Ltmp3254:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB113_16
+	beqz	$a0, .LBB113_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -47901,8 +47717,7 @@ _Z9BM_MemCmpILi16E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi1
 .Ltmp3283:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB114_18
+	beqz	$a0, .LBB114_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -48354,8 +48169,7 @@ _Z9BM_MemCmpILi16E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16E
 .Ltmp3312:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB115_18
+	beqz	$a0, .LBB115_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -48807,8 +48621,7 @@ _Z9BM_MemCmpILi16E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi16
 .Ltmp3341:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB116_18
+	beqz	$a0, .LBB116_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -49105,8 +48918,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB117_17
+	bne	$s2, $a0, .LBB117_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -49161,8 +48973,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp3370:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB117_16
+	beqz	$a0, .LBB117_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -49557,8 +49368,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB118_19
+	bne	$s2, $a0, .LBB118_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -49613,8 +49423,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 .Ltmp3399:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB118_18
+	beqz	$a0, .LBB118_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -50010,8 +49819,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB119_19
+	bne	$s2, $a0, .LBB119_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -50066,8 +49874,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp3428:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB119_18
+	beqz	$a0, .LBB119_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -50463,8 +50270,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB120_19
+	bne	$s2, $a0, .LBB120_19
 # %bb.4:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -50519,8 +50325,7 @@ _Z9BM_MemCmpILi16E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp3457:
 # %bb.11:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB120_18
+	beqz	$a0, .LBB120_18
 # %bb.12:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -50816,8 +50621,7 @@ _Z9BM_MemCmpILi31E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB121_17
+	bne	$s2, $a0, .LBB121_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -50872,8 +50676,7 @@ _Z9BM_MemCmpILi31E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZer
 .Ltmp3486:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB121_16
+	beqz	$a0, .LBB121_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -51322,8 +51125,7 @@ _Z9BM_MemCmpILi31E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZe
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB122_17
+	bne	$s2, $a0, .LBB122_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -51378,8 +51180,7 @@ _Z9BM_MemCmpILi31E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZe
 .Ltmp3515:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB122_16
+	beqz	$a0, .LBB122_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -51829,8 +51630,7 @@ _Z9BM_MemCmpILi31E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB123_17
+	bne	$s2, $a0, .LBB123_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -51885,8 +51685,7 @@ _Z9BM_MemCmpILi31E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZero
 .Ltmp3544:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB123_16
+	beqz	$a0, .LBB123_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -52336,8 +52135,7 @@ _Z9BM_MemCmpILi31E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB124_17
+	bne	$s2, $a0, .LBB124_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -52392,8 +52190,7 @@ _Z9BM_MemCmpILi31E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E6EqZer
 .Ltmp3573:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB124_16
+	beqz	$a0, .LBB124_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -52746,8 +52543,7 @@ _Z9BM_MemCmpILi31E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31
 .Ltmp3602:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB125_16
+	beqz	$a0, .LBB125_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -53252,8 +53048,7 @@ _Z9BM_MemCmpILi31E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3
 .Ltmp3631:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB126_16
+	beqz	$a0, .LBB126_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -53759,8 +53554,7 @@ _Z9BM_MemCmpILi31E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31E
 .Ltmp3660:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB127_16
+	beqz	$a0, .LBB127_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -54266,8 +54060,7 @@ _Z9BM_MemCmpILi31E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi31
 .Ltmp3689:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB128_16
+	beqz	$a0, .LBB128_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -54564,8 +54357,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB129_17
+	bne	$s2, $a0, .LBB129_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -54620,8 +54412,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp3718:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB129_16
+	beqz	$a0, .LBB129_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -55070,8 +54861,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB130_17
+	bne	$s2, $a0, .LBB130_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -55126,8 +54916,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 .Ltmp3747:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB130_16
+	beqz	$a0, .LBB130_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -55577,8 +55366,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB131_17
+	bne	$s2, $a0, .LBB131_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -55633,8 +55421,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp3776:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB131_16
+	beqz	$a0, .LBB131_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -56084,8 +55871,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB132_17
+	bne	$s2, $a0, .LBB132_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -56140,8 +55926,7 @@ _Z9BM_MemCmpILi31E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp3805:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB132_16
+	beqz	$a0, .LBB132_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -56439,8 +56224,7 @@ _Z9BM_MemCmpILi32E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB133_17
+	bne	$s2, $a0, .LBB133_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -56495,8 +56279,7 @@ _Z9BM_MemCmpILi32E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZer
 .Ltmp3834:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB133_16
+	beqz	$a0, .LBB133_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -56986,8 +56769,7 @@ _Z9BM_MemCmpILi32E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZe
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB134_17
+	bne	$s2, $a0, .LBB134_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -57042,8 +56824,7 @@ _Z9BM_MemCmpILi32E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZe
 .Ltmp3863:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB134_16
+	beqz	$a0, .LBB134_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -57533,8 +57314,7 @@ _Z9BM_MemCmpILi32E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB135_17
+	bne	$s2, $a0, .LBB135_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -57589,8 +57369,7 @@ _Z9BM_MemCmpILi32E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZero
 .Ltmp3892:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB135_16
+	beqz	$a0, .LBB135_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -58019,8 +57798,7 @@ _Z9BM_MemCmpILi32E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB136_17
+	bne	$s2, $a0, .LBB136_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -58075,8 +57853,7 @@ _Z9BM_MemCmpILi32E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E6EqZer
 .Ltmp3921:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB136_16
+	beqz	$a0, .LBB136_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -58429,8 +58206,7 @@ _Z9BM_MemCmpILi32E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32
 .Ltmp3950:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB137_16
+	beqz	$a0, .LBB137_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -58976,8 +58752,7 @@ _Z9BM_MemCmpILi32E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi3
 .Ltmp3979:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB138_16
+	beqz	$a0, .LBB138_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -59523,8 +59298,7 @@ _Z9BM_MemCmpILi32E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32E
 .Ltmp4008:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB139_16
+	beqz	$a0, .LBB139_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -60009,8 +59783,7 @@ _Z9BM_MemCmpILi32E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi32
 .Ltmp4037:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB140_16
+	beqz	$a0, .LBB140_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -60307,8 +60080,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB141_17
+	bne	$s2, $a0, .LBB141_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -60363,8 +60135,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp4066:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB141_16
+	beqz	$a0, .LBB141_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -60854,8 +60625,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB142_17
+	bne	$s2, $a0, .LBB142_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -60910,8 +60680,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 .Ltmp4095:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB142_16
+	beqz	$a0, .LBB142_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -61401,8 +61170,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB143_17
+	bne	$s2, $a0, .LBB143_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -61457,8 +61225,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp4124:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB143_16
+	beqz	$a0, .LBB143_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -61887,8 +61654,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB144_17
+	bne	$s2, $a0, .LBB144_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -61943,8 +61709,7 @@ _Z9BM_MemCmpILi32E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp4153:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB144_16
+	beqz	$a0, .LBB144_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -62240,8 +62005,7 @@ _Z9BM_MemCmpILi63E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB145_17
+	bne	$s2, $a0, .LBB145_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -62296,8 +62060,7 @@ _Z9BM_MemCmpILi63E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZer
 .Ltmp4182:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB145_16
+	beqz	$a0, .LBB145_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -62675,8 +62438,7 @@ _Z9BM_MemCmpILi63E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZe
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB146_17
+	bne	$s4, $a0, .LBB146_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -62731,8 +62493,7 @@ _Z9BM_MemCmpILi63E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZe
 .Ltmp4211:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB146_16
+	beqz	$a0, .LBB146_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -63107,8 +62868,7 @@ _Z9BM_MemCmpILi63E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB147_17
+	bne	$s4, $a0, .LBB147_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -63163,8 +62923,7 @@ _Z9BM_MemCmpILi63E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZero
 .Ltmp4240:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB147_16
+	beqz	$a0, .LBB147_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -63540,8 +63299,7 @@ _Z9BM_MemCmpILi63E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB148_17
+	bne	$s4, $a0, .LBB148_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -63596,8 +63354,7 @@ _Z9BM_MemCmpILi63E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E6EqZer
 .Ltmp4269:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB148_16
+	beqz	$a0, .LBB148_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -63950,8 +63707,7 @@ _Z9BM_MemCmpILi63E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63
 .Ltmp4298:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB149_16
+	beqz	$a0, .LBB149_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -64385,8 +64141,7 @@ _Z9BM_MemCmpILi63E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6
 .Ltmp4327:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB150_16
+	beqz	$a0, .LBB150_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -64817,8 +64572,7 @@ _Z9BM_MemCmpILi63E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63E
 .Ltmp4356:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB151_16
+	beqz	$a0, .LBB151_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -65250,8 +65004,7 @@ _Z9BM_MemCmpILi63E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi63
 .Ltmp4385:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB152_16
+	beqz	$a0, .LBB152_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -65548,8 +65301,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB153_17
+	bne	$s2, $a0, .LBB153_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -65604,8 +65356,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp4414:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB153_16
+	beqz	$a0, .LBB153_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -65983,8 +65734,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB154_17
+	bne	$s4, $a0, .LBB154_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -66039,8 +65789,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 .Ltmp4443:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB154_16
+	beqz	$a0, .LBB154_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -66415,8 +66164,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB155_17
+	bne	$s4, $a0, .LBB155_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -66471,8 +66219,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp4472:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB155_16
+	beqz	$a0, .LBB155_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -66848,8 +66595,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB156_17
+	bne	$s4, $a0, .LBB156_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -66904,8 +66650,7 @@ _Z9BM_MemCmpILi63E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp4501:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB156_16
+	beqz	$a0, .LBB156_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -67203,8 +66948,7 @@ _Z9BM_MemCmpILi64E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB157_17
+	bne	$s2, $a0, .LBB157_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -67259,8 +67003,7 @@ _Z9BM_MemCmpILi64E6EqZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZer
 .Ltmp4530:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB157_16
+	beqz	$a0, .LBB157_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -67656,8 +67399,7 @@ _Z9BM_MemCmpILi64E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZe
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB158_17
+	bne	$s4, $a0, .LBB158_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -67712,8 +67454,7 @@ _Z9BM_MemCmpILi64E6EqZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZe
 .Ltmp4559:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB158_16
+	beqz	$a0, .LBB158_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -68109,8 +67850,7 @@ _Z9BM_MemCmpILi64E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZero
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB159_17
+	bne	$s4, $a0, .LBB159_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -68165,8 +67905,7 @@ _Z9BM_MemCmpILi64E6EqZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZero
 .Ltmp4588:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB159_16
+	beqz	$a0, .LBB159_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -68533,8 +68272,7 @@ _Z9BM_MemCmpILi64E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZer
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB160_17
+	bne	$s4, $a0, .LBB160_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -68589,8 +68327,7 @@ _Z9BM_MemCmpILi64E6EqZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E6EqZer
 .Ltmp4617:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB160_16
+	beqz	$a0, .LBB160_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -68943,8 +68680,7 @@ _Z9BM_MemCmpILi64E12LessThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64
 .Ltmp4646:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB161_16
+	beqz	$a0, .LBB161_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -69396,8 +69132,7 @@ _Z9BM_MemCmpILi64E12LessThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi6
 .Ltmp4675:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB162_16
+	beqz	$a0, .LBB162_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -69849,8 +69584,7 @@ _Z9BM_MemCmpILi64E12LessThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64E
 .Ltmp4704:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB163_16
+	beqz	$a0, .LBB163_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -70273,8 +70007,7 @@ _Z9BM_MemCmpILi64E12LessThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi64
 .Ltmp4733:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB164_16
+	beqz	$a0, .LBB164_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -70571,8 +70304,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s2, $a0
-	bnez	$a0, .LBB165_17
+	bne	$s2, $a0, .LBB165_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -70627,8 +70359,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero4NoneEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp4762:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB165_16
+	beqz	$a0, .LBB165_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -71024,8 +70755,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB166_17
+	bne	$s4, $a0, .LBB166_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -71080,8 +70810,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero5FirstEvRN9benchmark5StateE: # @_Z9BM_MemCmpI
 .Ltmp4791:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB166_16
+	beqz	$a0, .LBB166_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -71477,8 +71206,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB167_17
+	bne	$s4, $a0, .LBB167_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -71533,8 +71261,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero3MidEvRN9benchmark5StateE: # @_Z9BM_MemCmpILi
 .Ltmp4820:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB167_16
+	beqz	$a0, .LBB167_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -71901,8 +71628,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 	pcaddu18i	$ra, %call36(memcmp)
 	jirl	$ra, $ra, 0
 	slt	$a0, $zero, $a0
-	xor	$a0, $s4, $a0
-	bnez	$a0, .LBB168_17
+	bne	$s4, $a0, .LBB168_17
 # %bb.2:
 	addi.d	$a0, $sp, 16
 	#APP
@@ -71957,8 +71683,7 @@ _Z9BM_MemCmpILi64E15GreaterThanZero4LastEvRN9benchmark5StateE: # @_Z9BM_MemCmpIL
 .Ltmp4849:
 # %bb.9:                                # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
 	ld.bu	$a0, $s1, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB168_16
+	beqz	$a0, .LBB168_16
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 0
@@ -72365,9 +72090,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	or	$a0, $a0, $a1
 .LBB170_10:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $s1
-	blt	$a1, $a0, .LBB170_12
+	bgez	$a0, .LBB170_12
 .LBB170_11:                             # %.critedge
 	st.d	$s8, $sp, 32
 	pcalau12i	$a0, %pc_hi20(_ZStL19piecewise_construct)
@@ -72635,8 +72359,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB172_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB172_12
+	bltz	$a0, .LBB172_12
 	b	.LBB172_18
 .LBB172_4:
 	ld.d	$a0, $s1, 40
@@ -72718,8 +72441,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB172_16:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB172_28
+	bgez	$a0, .LBB172_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -72749,8 +72471,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB172_20:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB172_23
+	bltz	$a0, .LBB172_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB172_29
@@ -72765,10 +72486,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB172_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -72778,7 +72499,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB172_27
 .LBB172_26:                             # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -72792,7 +72513,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB172_27:                             # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB172_31
+	bltz	$a0, .LBB172_31
 .LBB172_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -72947,10 +72668,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	bnez	$a0, .LBB174_3
 	b	.LBB174_2
 .LBB174_6:                              # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB174_9
+	bgez	$a1, .LBB174_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB174_14

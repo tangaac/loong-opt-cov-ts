@@ -45,10 +45,10 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	move	$s2, $zero
 	slli.d	$fp, $fp, 2
 	ld.d	$a0, $s5, 0
+	ori	$a2, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$s0, $a1, %pc_lo12(.L.str)
-	ori	$s8, $zero, 64
-	ori	$a2, $zero, 1
+	ori	$s7, $zero, 64
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB0_4
 	.p2align	4, , 16
@@ -67,14 +67,13 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	slli.d	$a0, $a0, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	slli.d	$s3, $s2, 3
-	stx.d	$a0, $s1, $s3
+	slli.d	$s4, $s2, 3
+	stx.d	$a0, $s1, $s4
 	beqz	$a0, .LBB0_6
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a0, $s5, 0
 	ld.w	$a1, $a0, 32
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB0_7
+	bgtz	$a1, .LBB0_7
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_6:                                #   in Loop: Header=BB0_4 Depth=1
@@ -84,19 +83,18 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
 	ld.d	$a0, $s5, 0
 	ld.w	$a1, $a0, 32
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_3
+	blez	$a1, .LBB0_3
 .LBB0_7:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
-	move	$s7, $zero
+	move	$s3, $zero
 	b	.LBB0_9
 	.p2align	4, , 16
 .LBB0_8:                                #   in Loop: Header=BB0_9 Depth=2
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $s5, 0
 	ld.w	$a1, $a0, 32
-	addi.d	$s7, $s7, 1
-	bge	$s7, $a1, .LBB0_3
+	addi.d	$s3, $s3, 1
+	bge	$s3, $a1, .LBB0_3
 .LBB0_9:                                # %.lr.ph
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -104,9 +102,9 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ldx.d	$a1, $s1, $s3
-	slli.d	$s4, $s7, 3
-	stx.d	$a0, $a1, $s4
+	ldx.d	$a1, $s1, $s4
+	slli.d	$s8, $s3, 3
+	stx.d	$a0, $a1, $s8
 	bnez	$a0, .LBB0_11
 # %bb.10:                               #   in Loop: Header=BB0_9 Depth=2
 	move	$a0, $s0
@@ -120,15 +118,15 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	.p2align	4, , 16
 .LBB0_12:                               #   in Loop: Header=BB0_13 Depth=3
 	addi.d	$s5, $s5, 8
-	beq	$s5, $s8, .LBB0_8
+	beq	$s5, $s7, .LBB0_8
 .LBB0_13:                               #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_9 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ldx.d	$a1, $s1, $s3
-	ldx.d	$a1, $a1, $s4
+	ldx.d	$a1, $s1, $s4
+	ldx.d	$a1, $a1, $s8
 	move	$s2, $a0
 	stx.d	$a0, $a1, $s5
 	beqz	$a0, .LBB0_30
@@ -235,8 +233,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -249,8 +247,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -263,8 +261,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -277,8 +275,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -291,8 +289,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -305,8 +303,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -319,8 +317,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -333,8 +331,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -347,8 +345,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -361,8 +359,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -375,8 +373,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -389,8 +387,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -403,8 +401,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -417,8 +415,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -431,8 +429,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -445,8 +443,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s6, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $s1, $s3
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $s1, $s4
+	ldx.d	$a0, $a0, $s8
 	ldx.d	$s2, $a0, $s5
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
@@ -674,9 +672,8 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 # %bb.78:                               # %.preheader49
 	ld.d	$a0, $s5, 0
 	ld.w	$a1, $a0, 32
-	ori	$a2, $zero, 1
 	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
-	blt	$a1, $a2, .LBB0_90
+	blez	$a1, .LBB0_90
 # %bb.79:                               # %.lr.ph63
 	ld.d	$a1, $s0, %pc_lo12(max_search_range)
 	ld.d	$a2, $a1, 0
@@ -689,8 +686,7 @@ InitializeFastFullIntegerSearch:        # @InitializeFastFullIntegerSearch
 	addi.d	$a2, $a2, 4
 	blt	$a3, $a4, .LBB0_80
 # %bb.81:                               # %._crit_edge64
-	ori	$a2, $zero, 1
-	blt	$a4, $a2, .LBB0_90
+	blez	$a4, .LBB0_90
 # %bb.82:                               # %.lr.ph63.1
 	ld.d	$a1, $a1, 8
 	move	$a2, $zero
@@ -775,177 +771,176 @@ ClearFastFullIntegerSearch:             # @ClearFastFullIntegerSearch
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	move	$s5, $zero
+	move	$s4, $zero
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s1, $a0, %got_pc_lo12(img)
-	pcalau12i	$s2, %pc_hi20(BlockSAD)
-	ori	$s3, $zero, 64
-	ori	$s4, $zero, 1
+	ld.d	$s0, $a0, %got_pc_lo12(img)
+	ori	$s3, $zero, 1
+	pcalau12i	$s1, %pc_hi20(BlockSAD)
+	ori	$s2, $zero, 64
 	b	.LBB1_2
 	.p2align	4, , 16
 .LBB1_1:                                # %._crit_edge
                                         #   in Loop: Header=BB1_2 Depth=1
-	ldx.d	$a0, $fp, $s6
+	ldx.d	$a0, $fp, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s4, 1
-	ori	$s5, $zero, 1
-	move	$s4, $zero
+	andi	$a0, $s3, 1
+	ori	$s4, $zero, 1
+	move	$s3, $zero
 	beqz	$a0, .LBB1_7
 .LBB1_2:                                # %.preheader29
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_4 Depth 2
                                         #       Child Loop BB1_5 Depth 3
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a0, $a0, 32
-	ld.d	$fp, $s2, %pc_lo12(BlockSAD)
-	slli.d	$s6, $s5, 3
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_1
+	ld.d	$fp, $s1, %pc_lo12(BlockSAD)
+	slli.d	$s5, $s4, 3
+	blez	$a0, .LBB1_1
 # %bb.3:                                # %.preheader28.preheader
                                         #   in Loop: Header=BB1_2 Depth=1
-	move	$s7, $zero
+	move	$s6, $zero
 	.p2align	4, , 16
 .LBB1_4:                                # %.preheader28
                                         #   Parent Loop BB1_2 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_5 Depth 3
-	ori	$s0, $zero, 8
-	slli.d	$s8, $s7, 3
+	ori	$s8, $zero, 8
+	slli.d	$s7, $s6, 3
 	.p2align	4, , 16
 .LBB1_5:                                # %.preheader
                                         #   Parent Loop BB1_2 Depth=1
                                         #     Parent Loop BB1_4 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.d	$a0, $fp, $s6
+	ldx.d	$a0, $fp, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 16
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 32
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 40
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 48
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 56
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 64
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 72
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 80
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 88
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 96
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 104
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 112
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $a0, $s6
+	ld.d	$a0, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 120
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $s2, %pc_lo12(BlockSAD)
-	ldx.d	$a0, $fp, $s6
+	ld.d	$fp, $s1, %pc_lo12(BlockSAD)
+	ldx.d	$a0, $fp, $s5
+	ldx.d	$a0, $a0, $s7
 	ldx.d	$a0, $a0, $s8
-	ldx.d	$a0, $a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	addi.d	$s0, $s0, 8
-	bne	$s0, $s3, .LBB1_5
+	addi.d	$s8, $s8, 8
+	bne	$s8, $s2, .LBB1_5
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=2
-	alsl.d	$a0, $s5, $fp, 3
+	alsl.d	$a0, $s4, $fp, 3
 	ld.d	$a0, $a0, 0
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ld.w	$a0, $a0, 32
-	addi.d	$s7, $s7, 1
-	blt	$s7, $a0, .LBB1_4
+	addi.d	$s6, $s6, 1
+	blt	$s6, $a0, .LBB1_4
 	b	.LBB1_1
 .LBB1_7:
 	move	$a0, $fp
@@ -1060,8 +1055,7 @@ ResetFastFullIntegerSearch:             # @ResetFastFullIntegerSearch
 	.type	SetupLargerBlocks,@function
 SetupLargerBlocks:                      # @SetupLargerBlocks
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB3_102
+	blez	$a2, .LBB3_102
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -128
 	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
@@ -2888,15 +2882,14 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.16:                               # %._crit_edge
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a2, $a2, 0
-	beqz	$a2, .LBB4_24
+	beqz	$a2, .LBB4_25
 # %bb.17:                               # %.preheader554.preheader
 	st.d	$s3, $sp, 360                   # 8-byte Folded Spill
 	ldptr.w	$a1, $a0, 15548
+	blez	$a1, .LBB4_23
+# %bb.18:                               # %.lr.ph563
 	move	$s3, $t2
 	move	$s8, $t1
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_23
-# %bb.18:                               # %.lr.ph563
 	ld.w	$s5, $a0, 204
 	lu12i.w	$a1, 3
 	ori	$s4, $a1, 3256
@@ -2925,8 +2918,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$s6, $s6, 8
 	blt	$s5, $a3, .LBB4_19
 # %bb.20:                               # %._crit_edge564
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_23
+	blez	$a1, .LBB4_24
 # %bb.21:                               # %.lr.ph563.1
 	ld.w	$s5, $a0, 204
 	ldx.w	$a2, $a0, $s4
@@ -2954,12 +2946,16 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	add.w	$a1, $a3, $a1
 	addi.d	$s4, $s4, 8
 	blt	$s5, $a1, .LBB4_22
-.LBB4_23:                               # %._crit_edge564.1
+	b	.LBB4_24
+.LBB4_23:
+	move	$s3, $t2
+	move	$s8, $t1
+.LBB4_24:                               # %._crit_edge564.1
 	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	move	$t1, $s8
 	move	$t2, $s3
-.LBB4_24:                               # %.loopexit555
+.LBB4_25:                               # %.loopexit555
 	slt	$a2, $t2, $s1
 	xori	$a2, $a2, 1
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
@@ -2975,8 +2971,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	sub.w	$a2, $a2, $s1
 	slt	$a2, $a2, $t1
 	xori	$a2, $a2, 1
-	beqz	$a4, .LBB4_157
-.LBB4_25:                               # %.loopexit553
+	beqz	$a4, .LBB4_158
+.LBB4_26:                               # %.loopexit553
 	move	$s0, $zero
 	and	$a0, $a1, $a2
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
@@ -3013,10 +3009,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	st.d	$t1, $sp, 152                   # 8-byte Folded Spill
 	st.d	$t2, $sp, 144                   # 8-byte Folded Spill
 	vst	$vr12, $sp, 192                 # 16-byte Folded Spill
-	b	.LBB4_27
+	b	.LBB4_28
 	.p2align	4, , 16
-.LBB4_26:                               # %.loopexit
-                                        #   in Loop: Header=BB4_27 Depth=1
+.LBB4_27:                               # %.loopexit
+                                        #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$s0, $s0, 1
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
@@ -3025,45 +3021,45 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
-	bgeu	$s0, $a0, .LBB4_156
-.LBB4_27:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_78 Depth 2
-                                        #       Child Loop BB4_79 Depth 3
-                                        #     Child Loop BB4_85 Depth 2
-                                        #       Child Loop BB4_118 Depth 3
-                                        #       Child Loop BB4_89 Depth 3
-                                        #         Child Loop BB4_92 Depth 4
-                                        #         Child Loop BB4_95 Depth 4
-                                        #         Child Loop BB4_99 Depth 4
-                                        #         Child Loop BB4_102 Depth 4
-                                        #         Child Loop BB4_106 Depth 4
-                                        #         Child Loop BB4_109 Depth 4
-                                        #         Child Loop BB4_113 Depth 4
-                                        #         Child Loop BB4_116 Depth 4
-                                        #     Child Loop BB4_122 Depth 2
-                                        #       Child Loop BB4_155 Depth 3
-                                        #       Child Loop BB4_126 Depth 3
-                                        #         Child Loop BB4_129 Depth 4
-                                        #         Child Loop BB4_132 Depth 4
-                                        #         Child Loop BB4_136 Depth 4
-                                        #         Child Loop BB4_139 Depth 4
-                                        #         Child Loop BB4_143 Depth 4
-                                        #         Child Loop BB4_146 Depth 4
-                                        #         Child Loop BB4_150 Depth 4
-                                        #         Child Loop BB4_153 Depth 4
-                                        #     Child Loop BB4_37 Depth 2
-                                        #       Child Loop BB4_38 Depth 3
-                                        #     Child Loop BB4_43 Depth 2
-                                        #       Child Loop BB4_46 Depth 3
-                                        #         Child Loop BB4_49 Depth 4
-                                        #           Child Loop BB4_53 Depth 5
-                                        #           Child Loop BB4_56 Depth 5
-                                        #           Child Loop BB4_60 Depth 5
-                                        #           Child Loop BB4_63 Depth 5
-                                        #           Child Loop BB4_67 Depth 5
-                                        #           Child Loop BB4_70 Depth 5
-                                        #           Child Loop BB4_74 Depth 5
-                                        #           Child Loop BB4_76 Depth 5
+	bgeu	$s0, $a0, .LBB4_157
+.LBB4_28:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_79 Depth 2
+                                        #       Child Loop BB4_80 Depth 3
+                                        #     Child Loop BB4_86 Depth 2
+                                        #       Child Loop BB4_119 Depth 3
+                                        #       Child Loop BB4_90 Depth 3
+                                        #         Child Loop BB4_93 Depth 4
+                                        #         Child Loop BB4_96 Depth 4
+                                        #         Child Loop BB4_100 Depth 4
+                                        #         Child Loop BB4_103 Depth 4
+                                        #         Child Loop BB4_107 Depth 4
+                                        #         Child Loop BB4_110 Depth 4
+                                        #         Child Loop BB4_114 Depth 4
+                                        #         Child Loop BB4_117 Depth 4
+                                        #     Child Loop BB4_123 Depth 2
+                                        #       Child Loop BB4_156 Depth 3
+                                        #       Child Loop BB4_127 Depth 3
+                                        #         Child Loop BB4_130 Depth 4
+                                        #         Child Loop BB4_133 Depth 4
+                                        #         Child Loop BB4_137 Depth 4
+                                        #         Child Loop BB4_140 Depth 4
+                                        #         Child Loop BB4_144 Depth 4
+                                        #         Child Loop BB4_147 Depth 4
+                                        #         Child Loop BB4_151 Depth 4
+                                        #         Child Loop BB4_154 Depth 4
+                                        #     Child Loop BB4_38 Depth 2
+                                        #       Child Loop BB4_39 Depth 3
+                                        #     Child Loop BB4_44 Depth 2
+                                        #       Child Loop BB4_47 Depth 3
+                                        #         Child Loop BB4_50 Depth 4
+                                        #           Child Loop BB4_54 Depth 5
+                                        #           Child Loop BB4_57 Depth 5
+                                        #           Child Loop BB4_61 Depth 5
+                                        #           Child Loop BB4_64 Depth 5
+                                        #           Child Loop BB4_68 Depth 5
+                                        #           Child Loop BB4_71 Depth 5
+                                        #           Child Loop BB4_75 Depth 5
+                                        #           Child Loop BB4_77 Depth 5
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
@@ -3074,28 +3070,28 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	add.w	$a1, $t1, $a0
 	add.w	$a2, $t2, $a2
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	bnez	$a0, .LBB4_35
-# %bb.28:                               #   in Loop: Header=BB4_27 Depth=1
-	bltz	$a1, .LBB4_33
-# %bb.29:                               #   in Loop: Header=BB4_27 Depth=1
+	bnez	$a0, .LBB4_36
+# %bb.29:                               #   in Loop: Header=BB4_28 Depth=1
+	bltz	$a1, .LBB4_34
+# %bb.30:                               #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB4_33
-# %bb.30:                               #   in Loop: Header=BB4_27 Depth=1
-	bltz	$a2, .LBB4_33
-# %bb.31:                               #   in Loop: Header=BB4_27 Depth=1
+	blt	$a0, $a1, .LBB4_34
+# %bb.31:                               #   in Loop: Header=BB4_28 Depth=1
+	bltz	$a2, .LBB4_34
+# %bb.32:                               #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	blt	$a0, $a2, .LBB4_33
-# %bb.32:                               #   in Loop: Header=BB4_27 Depth=1
+	blt	$a0, $a2, .LBB4_34
+# %bb.33:                               #   in Loop: Header=BB4_28 Depth=1
 	move	$a0, $zero
-	b	.LBB4_34
+	b	.LBB4_35
 	.p2align	4, , 16
-.LBB4_33:                               #   in Loop: Header=BB4_27 Depth=1
+.LBB4_34:                               #   in Loop: Header=BB4_28 Depth=1
 	ori	$a0, $zero, 1
-.LBB4_34:                               # %.sink.split
-                                        #   in Loop: Header=BB4_27 Depth=1
+.LBB4_35:                               # %.sink.split
+                                        #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
 	st.w	$a0, $a3, 0
-.LBB4_35:                               #   in Loop: Header=BB4_27 Depth=1
+.LBB4_36:                               #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	slli.d	$a0, $a0, 3
@@ -3117,22 +3113,22 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	st.d	$a1, $sp, 360                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	beqz	$a1, .LBB4_77
-# %bb.36:                               #   in Loop: Header=BB4_27 Depth=1
+	beqz	$a1, .LBB4_78
+# %bb.37:                               #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a3, $a1, 0
 	move	$a1, $zero
 	move	$a2, $zero
 	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	add.d	$a3, $a3, $a4
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
 	vld	$vr12, $sp, 192                 # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB4_37:                               # %.preheader548
-                                        #   Parent Loop BB4_27 Depth=1
+.LBB4_38:                               # %.preheader548
+                                        #   Parent Loop BB4_28 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_38 Depth 3
+                                        #       Child Loop BB4_39 Depth 3
 	move	$t0, $zero
 	move	$a7, $zero
 	move	$a4, $zero
@@ -3147,10 +3143,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$t1, $a0, 16
 	slli.d	$t2, $a6, 1
 	ori	$t3, $zero, 4
-	move	$t4, $s5
+	move	$t4, $s7
 	.p2align	4, , 16
-.LBB4_38:                               #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_37 Depth=2
+.LBB4_39:                               #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_38 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr5, $t1, -16
 	vilvh.h	$vr6, $vr12, $vr5
@@ -3259,9 +3255,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	add.d	$t1, $t1, $t2
 	addi.w	$t3, $t3, -1
 	addi.d	$t4, $t4, 32
-	bnez	$t3, .LBB4_38
-# %bb.39:                               #   in Loop: Header=BB4_37 Depth=2
-	addi.d	$s5, $s5, 128
+	bnez	$t3, .LBB4_39
+# %bb.40:                               #   in Loop: Header=BB4_38 Depth=2
+	addi.d	$s7, $s7, 128
 	ld.d	$t3, $sp, 280                   # 8-byte Folded Reload
 	alsl.d	$t1, $a1, $t3, 3
 	slli.d	$t2, $a1, 3
@@ -3278,36 +3274,36 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.w	$a2, $a2, 1
 	stx.w	$a4, $a7, $t4
 	ori	$a4, $zero, 4
-	bne	$a2, $a4, .LBB4_37
-# %bb.40:                               #   in Loop: Header=BB4_27 Depth=1
+	bne	$a2, $a4, .LBB4_38
+# %bb.41:                               #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB4_26
-# %bb.41:                               # %.preheader550.preheader
-                                        #   in Loop: Header=BB4_27 Depth=1
+	beqz	$a0, .LBB4_27
+# %bb.42:                               # %.preheader550.preheader
+                                        #   in Loop: Header=BB4_28 Depth=1
 	move	$s0, $zero
 	ori	$a1, $zero, 1
-	b	.LBB4_43
+	b	.LBB4_44
 	.p2align	4, , 16
-.LBB4_42:                               #   in Loop: Header=BB4_43 Depth=2
+.LBB4_43:                               #   in Loop: Header=BB4_44 Depth=2
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	ori	$s0, $zero, 1
 	move	$a1, $zero
-	beqz	$a0, .LBB4_26
-.LBB4_43:                               # %.preheader550
-                                        #   Parent Loop BB4_27 Depth=1
+	beqz	$a0, .LBB4_27
+.LBB4_44:                               # %.preheader550
+                                        #   Parent Loop BB4_28 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_46 Depth 3
-                                        #         Child Loop BB4_49 Depth 4
-                                        #           Child Loop BB4_53 Depth 5
-                                        #           Child Loop BB4_56 Depth 5
-                                        #           Child Loop BB4_60 Depth 5
-                                        #           Child Loop BB4_63 Depth 5
-                                        #           Child Loop BB4_67 Depth 5
-                                        #           Child Loop BB4_70 Depth 5
-                                        #           Child Loop BB4_74 Depth 5
-                                        #           Child Loop BB4_76 Depth 5
+                                        #       Child Loop BB4_47 Depth 3
+                                        #         Child Loop BB4_50 Depth 4
+                                        #           Child Loop BB4_54 Depth 5
+                                        #           Child Loop BB4_57 Depth 5
+                                        #           Child Loop BB4_61 Depth 5
+                                        #           Child Loop BB4_64 Depth 5
+                                        #           Child Loop BB4_68 Depth 5
+                                        #           Child Loop BB4_71 Depth 5
+                                        #           Child Loop BB4_75 Depth 5
+                                        #           Child Loop BB4_77 Depth 5
 	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
@@ -3323,45 +3319,45 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	jirl	$ra, $a3, 0
 	vld	$vr12, $sp, 192                 # 16-byte Folded Reload
 	pcalau12i	$a1, %got_pc_hi20(weight_cr)
-	ld.d	$a2, $a1, %got_pc_lo12(weight_cr)
+	ld.d	$a3, $a1, %got_pc_lo12(weight_cr)
 	pcalau12i	$a1, %got_pc_hi20(offset_cr)
 	ld.d	$a5, $a1, %got_pc_lo12(offset_cr)
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	move	$a3, $a0
+	move	$a2, $a0
 	move	$a7, $zero
 	move	$t0, $zero
-	alsl.d	$t3, $s0, $a2, 2
+	alsl.d	$t3, $s0, $a3, 2
 	alsl.d	$t4, $s0, $a5, 2
 	st.d	$t3, $sp, 336                   # 8-byte Folded Spill
 	st.d	$t4, $sp, 328                   # 8-byte Folded Spill
-	b	.LBB4_46
+	b	.LBB4_47
 	.p2align	4, , 16
-.LBB4_44:                               #   in Loop: Header=BB4_46 Depth=3
+.LBB4_45:                               #   in Loop: Header=BB4_47 Depth=3
 	move	$ra, $zero
 	move	$t8, $zero
 	move	$s6, $zero
-	move	$s1, $zero
-.LBB4_45:                               # %._crit_edge691
-                                        #   in Loop: Header=BB4_46 Depth=3
+	move	$s3, $zero
+.LBB4_46:                               # %._crit_edge691
+                                        #   in Loop: Header=BB4_47 Depth=3
 	ld.d	$a7, $sp, 304                   # 8-byte Folded Reload
 	slli.d	$a0, $a7, 3
 	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
 	ldx.d	$a0, $a4, $a0
 	ld.d	$a6, $sp, 288                   # 8-byte Folded Reload
-	ldx.w	$a2, $a0, $a6
+	ldx.w	$a3, $a0, $a6
 	alsl.d	$a4, $a7, $a4, 3
 	ld.d	$a5, $a4, 8
-	add.d	$a2, $a2, $s1
-	stx.w	$a2, $a0, $a6
+	add.d	$a3, $a3, $s3
+	stx.w	$a3, $a0, $a6
 	ldx.w	$a0, $a5, $a6
-	ld.d	$a2, $a4, 16
+	ld.d	$a3, $a4, 16
 	add.d	$a0, $a0, $s6
 	stx.w	$a0, $a5, $a6
-	ldx.w	$a0, $a2, $a6
+	ldx.w	$a0, $a3, $a6
 	ld.d	$a4, $a4, 24
 	add.d	$a0, $a0, $ra
-	stx.w	$a0, $a2, $a6
+	stx.w	$a0, $a3, $a6
 	ldx.w	$a0, $a4, $a6
 	addi.d	$a7, $a7, 4
 	add.d	$a0, $a0, $t8
@@ -3369,41 +3365,40 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.w	$t0, $t0, 1
 	stx.w	$a0, $a4, $a6
 	ori	$a0, $zero, 4
-	beq	$t0, $a0, .LBB4_42
-.LBB4_46:                               # %.preheader546
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
+	beq	$t0, $a0, .LBB4_43
+.LBB4_47:                               # %.preheader546
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB4_49 Depth 4
-                                        #           Child Loop BB4_53 Depth 5
-                                        #           Child Loop BB4_56 Depth 5
-                                        #           Child Loop BB4_60 Depth 5
-                                        #           Child Loop BB4_63 Depth 5
-                                        #           Child Loop BB4_67 Depth 5
-                                        #           Child Loop BB4_70 Depth 5
-                                        #           Child Loop BB4_74 Depth 5
-                                        #           Child Loop BB4_76 Depth 5
+                                        #         Child Loop BB4_50 Depth 4
+                                        #           Child Loop BB4_54 Depth 5
+                                        #           Child Loop BB4_57 Depth 5
+                                        #           Child Loop BB4_61 Depth 5
+                                        #           Child Loop BB4_64 Depth 5
+                                        #           Child Loop BB4_68 Depth 5
+                                        #           Child Loop BB4_71 Depth 5
+                                        #           Child Loop BB4_75 Depth 5
+                                        #           Child Loop BB4_77 Depth 5
 	st.d	$t0, $sp, 296                   # 8-byte Folded Spill
 	st.d	$a7, $sp, 304                   # 8-byte Folded Spill
-	ldptr.w	$a2, $a1, 15548
-	ori	$a0, $zero, 1
-	st.d	$a2, $sp, 320                   # 8-byte Folded Spill
-	blt	$a2, $a0, .LBB4_44
-# %bb.47:                               # %.preheader541.lr.ph
-                                        #   in Loop: Header=BB4_46 Depth=3
+	ldptr.w	$a0, $a1, 15548
+	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
+	blez	$a0, .LBB4_45
+# %bb.48:                               # %.preheader541.lr.ph
+                                        #   in Loop: Header=BB4_47 Depth=3
 	move	$a7, $zero
-	move	$s1, $zero
+	move	$s3, $zero
 	move	$s6, $zero
 	move	$t8, $zero
 	move	$ra, $zero
 	ldptr.w	$t0, $a1, 15544
 	pcalau12i	$a0, %pc_hi20(wp_chroma_round)
-	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
-	ld.w	$a2, $a2, %pc_lo12(img_cr_padded_size_x)
+	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
+	ld.w	$a3, $a3, %pc_lo12(img_cr_padded_size_x)
 	ld.w	$t1, $a0, %pc_lo12(wp_chroma_round)
 	pcalau12i	$a0, %pc_hi20(chroma_log_weight_denom)
 	ld.w	$t2, $a0, %pc_lo12(chroma_log_weight_denom)
-	sub.w	$a0, $a2, $t0
+	sub.w	$a0, $a3, $t0
 	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
 	addi.d	$a0, $t0, -1
 	bstrpick.d	$a0, $a0, 31, 2
@@ -3416,73 +3411,72 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	st.d	$a0, $sp, 344                   # 8-byte Folded Spill
 	vreplgr2vr.w	$vr0, $t1
 	vreplgr2vr.w	$vr1, $t2
-	b	.LBB4_49
+	b	.LBB4_50
 	.p2align	4, , 16
-.LBB4_48:                               # %._crit_edge680
-                                        #   in Loop: Header=BB4_49 Depth=4
+.LBB4_49:                               # %._crit_edge680
+                                        #   in Loop: Header=BB4_50 Depth=4
 	addi.w	$a7, $a7, 4
 	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	alsl.d	$a3, $a0, $a3, 1
+	alsl.d	$a2, $a0, $a2, 1
 	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
-	bge	$a7, $a0, .LBB4_45
-.LBB4_49:                               # %.preheader541
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
+	bge	$a7, $a0, .LBB4_46
+.LBB4_50:                               # %.preheader541
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB4_53 Depth 5
-                                        #           Child Loop BB4_56 Depth 5
-                                        #           Child Loop BB4_60 Depth 5
-                                        #           Child Loop BB4_63 Depth 5
-                                        #           Child Loop BB4_67 Depth 5
-                                        #           Child Loop BB4_70 Depth 5
-                                        #           Child Loop BB4_74 Depth 5
-                                        #           Child Loop BB4_76 Depth 5
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB4_48
-# %bb.50:                               # %.lr.ph654
-                                        #   in Loop: Header=BB4_49 Depth=4
+                                        #           Child Loop BB4_54 Depth 5
+                                        #           Child Loop BB4_57 Depth 5
+                                        #           Child Loop BB4_61 Depth 5
+                                        #           Child Loop BB4_64 Depth 5
+                                        #           Child Loop BB4_68 Depth 5
+                                        #           Child Loop BB4_71 Depth 5
+                                        #           Child Loop BB4_75 Depth 5
+                                        #           Child Loop BB4_77 Depth 5
+	blez	$t0, .LBB4_49
+# %bb.51:                               # %.lr.ph654
+                                        #   in Loop: Header=BB4_50 Depth=4
 	lu12i.w	$a0, 3
-	ori	$s2, $a0, 3236
-	ldx.w	$s0, $a1, $s2
-	ld.w	$s4, $t3, 0
-	ld.w	$s7, $t4, 0
+	ori	$s1, $a0, 3236
+	ldx.w	$s8, $a1, $s1
+	ld.w	$s0, $t3, 0
+	ld.w	$s5, $t4, 0
 	ori	$a0, $zero, 29
-	bgeu	$t0, $a0, .LBB4_52
-# %bb.51:                               #   in Loop: Header=BB4_49 Depth=4
-	move	$a2, $zero
-	move	$s8, $s5
-	move	$a0, $a3
-	b	.LBB4_55
+	bgeu	$t0, $a0, .LBB4_53
+# %bb.52:                               #   in Loop: Header=BB4_50 Depth=4
+	move	$a3, $zero
+	move	$s4, $s7
+	move	$a0, $a2
+	b	.LBB4_56
 	.p2align	4, , 16
-.LBB4_52:                               # %vector.ph1024
-                                        #   in Loop: Header=BB4_49 Depth=4
-	add.d	$s8, $s5, $t6
+.LBB4_53:                               # %vector.ph1024
+                                        #   in Loop: Header=BB4_50 Depth=4
+	add.d	$s4, $s7, $t6
 	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI4_0)
-	add.d	$a0, $a3, $t6
-	vinsgr2vr.w	$vr3, $s1, 0
+	add.d	$a0, $a2, $t6
+	vinsgr2vr.w	$vr3, $s3, 0
 	vinsgr2vr.w	$vr4, $zero, 0
 	vshuf.w	$vr2, $vr4, $vr3
-	vreplgr2vr.w	$vr3, $s0
-	vreplgr2vr.w	$vr4, $s4
-	vreplgr2vr.w	$vr5, $s7
-	addi.d	$a2, $a3, 8
+	vreplgr2vr.w	$vr3, $s8
+	vreplgr2vr.w	$vr4, $s0
+	vreplgr2vr.w	$vr5, $s5
+	addi.d	$a2, $a2, 8
 	vrepli.b	$vr6, 0
-	addi.d	$a3, $s5, 8
-	move	$s1, $t5
+	addi.d	$a3, $s7, 8
+	move	$s3, $t5
 	vori.b	$vr7, $vr6, 0
 	.p2align	4, , 16
-.LBB4_53:                               # %vector.body1038
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_54:                               # %vector.body1038
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$s5, $a2, -8
-	ld.d	$s3, $a2, 0
-	vinsgr2vr.d	$vr8, $s5, 0
-	vinsgr2vr.d	$vr9, $s3, 0
+	ld.d	$s7, $a2, -8
+	ld.d	$s2, $a2, 0
+	vinsgr2vr.d	$vr8, $s7, 0
+	vinsgr2vr.d	$vr9, $s2, 0
 	vilvl.h	$vr8, $vr6, $vr8
 	vilvl.h	$vr9, $vr6, $vr9
 	vori.b	$vr10, $vr0, 0
@@ -3495,12 +3489,12 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr8, $vr8, $vr5
 	vmaxi.w	$vr9, $vr9, 0
 	vmaxi.w	$vr8, $vr8, 0
-	ld.d	$s3, $a3, -8
-	ld.d	$s5, $a3, 0
+	ld.d	$s2, $a3, -8
+	ld.d	$s7, $a3, 0
 	vmin.w	$vr9, $vr9, $vr3
 	vmin.w	$vr8, $vr8, $vr3
-	vinsgr2vr.d	$vr10, $s3, 0
-	vinsgr2vr.d	$vr11, $s5, 0
+	vinsgr2vr.d	$vr10, $s2, 0
+	vinsgr2vr.d	$vr11, $s7, 0
 	vilvl.h	$vr10, $vr6, $vr10
 	vilvl.h	$vr11, $vr6, $vr11
 	vsub.w	$vr9, $vr9, $vr10
@@ -3517,10 +3511,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vshuf4i.w	$vr8, $vr8, 16
 	vslli.d	$vr8, $vr8, 32
 	vsrai.d	$vr8, $vr8, 32
-	vpickve2gr.d	$s3, $vr9, 0
-	slli.d	$s3, $s3, 2
-	vpickve2gr.d	$s5, $vr9, 1
-	slli.d	$s5, $s5, 2
+	vpickve2gr.d	$s2, $vr9, 0
+	slli.d	$s2, $s2, 2
+	vpickve2gr.d	$s7, $vr9, 1
+	slli.d	$s7, $s7, 2
 	vpickve2gr.d	$t3, $vr10, 0
 	slli.d	$t3, $t3, 2
 	vpickve2gr.d	$a6, $vr10, 1
@@ -3533,12 +3527,12 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$a4, $a4, 2
 	vpickve2gr.d	$a5, $vr11, 1
 	slli.d	$a5, $a5, 2
-	ldx.w	$s3, $fp, $s3
-	ldx.w	$s5, $fp, $s5
+	ldx.w	$s2, $fp, $s2
+	ldx.w	$s7, $fp, $s7
 	ldx.w	$t3, $fp, $t3
 	ldx.w	$a6, $fp, $a6
-	vinsgr2vr.w	$vr8, $s3, 0
-	vinsgr2vr.w	$vr8, $s5, 1
+	vinsgr2vr.w	$vr8, $s2, 0
+	vinsgr2vr.w	$vr8, $s7, 1
 	vinsgr2vr.w	$vr8, $t3, 2
 	vinsgr2vr.w	$vr8, $a6, 3
 	ldx.w	$a6, $fp, $t7
@@ -3552,91 +3546,91 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr2, $vr8, $vr2
 	vadd.w	$vr7, $vr9, $vr7
 	addi.d	$a2, $a2, 16
-	addi.d	$s1, $s1, -8
+	addi.d	$s3, $s3, -8
 	addi.d	$a3, $a3, 16
-	bnez	$s1, .LBB4_53
-# %bb.54:                               # %middle.block1051
-                                        #   in Loop: Header=BB4_49 Depth=4
+	bnez	$s3, .LBB4_54
+# %bb.55:                               # %middle.block1051
+                                        #   in Loop: Header=BB4_50 Depth=4
 	vadd.w	$vr2, $vr7, $vr2
 	vshuf4i.w	$vr3, $vr2, 14
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$s1, $vr2, 0
-	ld.d	$a2, $sp, 344                   # 8-byte Folded Reload
+	vpickve2gr.w	$s3, $vr2, 0
+	ld.d	$a3, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
-	beq	$t5, $a3, .LBB4_57
-.LBB4_55:                               # %scalar.ph1022.preheader
-                                        #   in Loop: Header=BB4_49 Depth=4
-	move	$a3, $s8
-	move	$s5, $a0
+	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
+	beq	$t5, $a2, .LBB4_58
+.LBB4_56:                               # %scalar.ph1022.preheader
+                                        #   in Loop: Header=BB4_50 Depth=4
+	move	$a2, $s4
+	move	$s7, $a0
 	.p2align	4, , 16
-.LBB4_56:                               # %scalar.ph1022
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_57:                               # %scalar.ph1022
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.hu	$a0, $s5, 0
-	mul.d	$a0, $s4, $a0
+	ld.hu	$a0, $s7, 0
+	mul.d	$a0, $s0, $a0
 	add.d	$a0, $a0, $t1
 	sra.w	$a0, $a0, $t2
-	add.w	$a0, $a0, $s7
+	add.w	$a0, $a0, $s5
 	srai.d	$a4, $a0, 63
 	andn	$a0, $a0, $a4
-	slt	$a4, $a0, $s0
-	ld.hu	$a5, $a3, 0
+	slt	$a4, $a0, $s8
+	ld.hu	$a5, $a2, 0
 	maskeqz	$a0, $a0, $a4
-	masknez	$a4, $s0, $a4
+	masknez	$a4, $s8, $a4
 	or	$a0, $a0, $a4
 	sub.w	$a0, $a0, $a5
 	slli.d	$a0, $a0, 2
 	ldx.w	$a4, $fp, $a0
-	addi.d	$a0, $s5, 2
-	addi.d	$s8, $a3, 2
-	addi.w	$a2, $a2, 4
-	add.d	$s1, $a4, $s1
-	move	$a3, $s8
-	move	$s5, $a0
-	blt	$a2, $t0, .LBB4_56
-.LBB4_57:                               # %.lr.ph663
-                                        #   in Loop: Header=BB4_49 Depth=4
-	ldx.w	$a3, $a1, $s2
+	addi.d	$a0, $s7, 2
+	addi.d	$s4, $a2, 2
+	addi.w	$a3, $a3, 4
+	add.d	$s3, $a4, $s3
+	move	$a2, $s4
+	move	$s7, $a0
+	blt	$a3, $t0, .LBB4_57
+.LBB4_58:                               # %.lr.ph663
+                                        #   in Loop: Header=BB4_50 Depth=4
+	ldx.w	$a3, $a1, $s1
 	ld.w	$s0, $t3, 0
-	ld.w	$s4, $t4, 0
+	ld.w	$s5, $t4, 0
 	ori	$a2, $zero, 29
-	bgeu	$t0, $a2, .LBB4_59
-# %bb.58:                               #   in Loop: Header=BB4_49 Depth=4
-	move	$s7, $zero
-	move	$s5, $s8
-	move	$a2, $a0
-	b	.LBB4_62
+	bgeu	$t0, $a2, .LBB4_60
+# %bb.59:                               #   in Loop: Header=BB4_50 Depth=4
+	move	$a2, $zero
+	move	$s7, $s4
+	move	$s8, $a0
+	b	.LBB4_63
 	.p2align	4, , 16
-.LBB4_59:                               # %vector.ph988
-                                        #   in Loop: Header=BB4_49 Depth=4
-	add.d	$s5, $s8, $t6
+.LBB4_60:                               # %vector.ph988
+                                        #   in Loop: Header=BB4_50 Depth=4
+	add.d	$s7, $s4, $t6
 	ld.d	$a2, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr2, $a2, %pc_lo12(.LCPI4_0)
-	add.d	$a2, $a0, $t6
+	add.d	$s8, $a0, $t6
 	vinsgr2vr.w	$vr3, $s6, 0
 	vinsgr2vr.w	$vr4, $zero, 0
 	vshuf.w	$vr2, $vr4, $vr3
 	vreplgr2vr.w	$vr3, $a3
 	vreplgr2vr.w	$vr4, $s0
-	vreplgr2vr.w	$vr5, $s4
+	vreplgr2vr.w	$vr5, $s5
 	addi.d	$a0, $a0, 8
 	vrepli.b	$vr6, 0
-	addi.d	$s6, $s8, 8
-	move	$s7, $t5
+	addi.d	$a2, $s4, 8
+	move	$s4, $t5
 	vori.b	$vr7, $vr6, 0
 	.p2align	4, , 16
-.LBB4_60:                               # %vector.body1002
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_61:                               # %vector.body1002
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.d	$a4, $a0, -8
 	ld.d	$a5, $a0, 0
@@ -3654,8 +3648,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr8, $vr8, $vr5
 	vmaxi.w	$vr9, $vr9, 0
 	vmaxi.w	$vr8, $vr8, 0
-	ld.d	$a4, $s6, -8
-	ld.d	$a5, $s6, 0
+	ld.d	$a4, $a2, -8
+	ld.d	$a5, $a2, 0
 	vmin.w	$vr9, $vr9, $vr3
 	vmin.w	$vr8, $vr8, $vr3
 	vinsgr2vr.d	$vr10, $a4, 0
@@ -3688,10 +3682,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t4, $t4, 2
 	vpickve2gr.d	$t7, $vr8, 1
 	slli.d	$t7, $t7, 2
-	vpickve2gr.d	$s3, $vr11, 0
-	slli.d	$s3, $s3, 2
-	vpickve2gr.d	$s8, $vr11, 1
-	slli.d	$s8, $s8, 2
+	vpickve2gr.d	$s2, $vr11, 0
+	slli.d	$s2, $s2, 2
+	vpickve2gr.d	$s6, $vr11, 1
+	slli.d	$s6, $s6, 2
 	ldx.w	$a4, $fp, $a4
 	ldx.w	$a5, $fp, $a5
 	ldx.w	$a6, $fp, $a6
@@ -3702,8 +3696,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vinsgr2vr.w	$vr8, $t3, 3
 	ldx.w	$a4, $fp, $t4
 	ldx.w	$a5, $fp, $t7
-	ldx.w	$a6, $fp, $s3
-	ldx.w	$t3, $fp, $s8
+	ldx.w	$a6, $fp, $s2
+	ldx.w	$t3, $fp, $s6
 	vinsgr2vr.w	$vr9, $a4, 0
 	vinsgr2vr.w	$vr9, $a5, 1
 	vinsgr2vr.w	$vr9, $a6, 2
@@ -3711,91 +3705,91 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr2, $vr8, $vr2
 	vadd.w	$vr7, $vr9, $vr7
 	addi.d	$a0, $a0, 16
-	addi.d	$s7, $s7, -8
-	addi.d	$s6, $s6, 16
-	bnez	$s7, .LBB4_60
-# %bb.61:                               # %middle.block1015
-                                        #   in Loop: Header=BB4_49 Depth=4
+	addi.d	$s4, $s4, -8
+	addi.d	$a2, $a2, 16
+	bnez	$s4, .LBB4_61
+# %bb.62:                               # %middle.block1015
+                                        #   in Loop: Header=BB4_50 Depth=4
 	vadd.w	$vr2, $vr7, $vr2
 	vshuf4i.w	$vr3, $vr2, 14
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$s6, $vr2, 0
-	ld.d	$s7, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
-	beq	$t5, $a0, .LBB4_64
-.LBB4_62:                               # %scalar.ph986.preheader
-                                        #   in Loop: Header=BB4_49 Depth=4
-	move	$a0, $s5
-	move	$s8, $a2
+	beq	$t5, $a0, .LBB4_65
+.LBB4_63:                               # %scalar.ph986.preheader
+                                        #   in Loop: Header=BB4_50 Depth=4
+	move	$a0, $s7
+	move	$s4, $s8
 	.p2align	4, , 16
-.LBB4_63:                               # %scalar.ph986
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_64:                               # %scalar.ph986
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.hu	$a2, $s8, 0
-	mul.d	$a2, $s0, $a2
-	add.d	$a2, $a2, $t1
-	sra.w	$a2, $a2, $t2
-	add.w	$a2, $a2, $s4
-	srai.d	$a4, $a2, 63
-	andn	$a2, $a2, $a4
-	slt	$a4, $a2, $a3
-	ld.hu	$a5, $a0, 0
-	maskeqz	$a2, $a2, $a4
-	masknez	$a4, $a3, $a4
-	or	$a2, $a2, $a4
-	sub.w	$a2, $a2, $a5
-	slli.d	$a2, $a2, 2
-	ldx.w	$a4, $fp, $a2
-	addi.d	$a2, $s8, 2
-	addi.d	$s5, $a0, 2
-	addi.w	$s7, $s7, 4
+	ld.hu	$a4, $s4, 0
+	mul.d	$a4, $s0, $a4
+	add.d	$a4, $a4, $t1
+	sra.w	$a4, $a4, $t2
+	add.w	$a4, $a4, $s5
+	srai.d	$a5, $a4, 63
+	andn	$a4, $a4, $a5
+	slt	$a5, $a4, $a3
+	ld.hu	$a6, $a0, 0
+	maskeqz	$a4, $a4, $a5
+	masknez	$a5, $a3, $a5
+	or	$a4, $a4, $a5
+	sub.w	$a4, $a4, $a6
+	slli.d	$a4, $a4, 2
+	ldx.w	$a4, $fp, $a4
+	addi.d	$s8, $s4, 2
+	addi.d	$s7, $a0, 2
+	addi.w	$a2, $a2, 4
 	add.d	$s6, $a4, $s6
-	move	$a0, $s5
-	move	$s8, $a2
-	blt	$s7, $t0, .LBB4_63
-.LBB4_64:                               # %.lr.ph671
-                                        #   in Loop: Header=BB4_49 Depth=4
-	ldx.w	$a0, $a1, $s2
+	move	$a0, $s7
+	move	$s4, $s8
+	blt	$a2, $t0, .LBB4_64
+.LBB4_65:                               # %.lr.ph671
+                                        #   in Loop: Header=BB4_50 Depth=4
+	ldx.w	$a0, $a1, $s1
 	ld.w	$s0, $t3, 0
 	ld.w	$s4, $t4, 0
-	ori	$a3, $zero, 29
-	bgeu	$t0, $a3, .LBB4_66
-# %bb.65:                               #   in Loop: Header=BB4_49 Depth=4
-	move	$a3, $zero
-	move	$s7, $s5
-	move	$s8, $a2
-	b	.LBB4_69
+	ori	$a2, $zero, 29
+	bgeu	$t0, $a2, .LBB4_67
+# %bb.66:                               #   in Loop: Header=BB4_50 Depth=4
+	move	$a2, $zero
+	move	$s5, $s7
+	move	$a3, $s8
+	b	.LBB4_70
 	.p2align	4, , 16
-.LBB4_66:                               # %vector.ph952
-                                        #   in Loop: Header=BB4_49 Depth=4
-	add.d	$s7, $s5, $t6
-	ld.d	$a3, $sp, 360                   # 8-byte Folded Reload
-	vld	$vr2, $a3, %pc_lo12(.LCPI4_0)
-	add.d	$s8, $a2, $t6
+.LBB4_67:                               # %vector.ph952
+                                        #   in Loop: Header=BB4_50 Depth=4
+	add.d	$s5, $s7, $t6
+	ld.d	$a2, $sp, 360                   # 8-byte Folded Reload
+	vld	$vr2, $a2, %pc_lo12(.LCPI4_0)
+	add.d	$a3, $s8, $t6
 	vinsgr2vr.w	$vr3, $ra, 0
 	vinsgr2vr.w	$vr4, $zero, 0
 	vshuf.w	$vr2, $vr4, $vr3
 	vreplgr2vr.w	$vr3, $a0
 	vreplgr2vr.w	$vr4, $s0
 	vreplgr2vr.w	$vr5, $s4
-	addi.d	$a2, $a2, 8
+	addi.d	$a2, $s8, 8
 	vrepli.b	$vr6, 0
-	addi.d	$a3, $s5, 8
-	move	$s5, $t5
+	addi.d	$s7, $s7, 8
+	move	$s8, $t5
 	vori.b	$vr7, $vr6, 0
 	.p2align	4, , 16
-.LBB4_67:                               # %vector.body966
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_68:                               # %vector.body966
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.d	$a4, $a2, -8
 	ld.d	$a5, $a2, 0
@@ -3813,8 +3807,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr8, $vr8, $vr5
 	vmaxi.w	$vr9, $vr9, 0
 	vmaxi.w	$vr8, $vr8, 0
-	ld.d	$a4, $a3, -8
-	ld.d	$a5, $a3, 0
+	ld.d	$a4, $s7, -8
+	ld.d	$a5, $s7, 0
 	vmin.w	$vr9, $vr9, $vr3
 	vmin.w	$vr8, $vr8, $vr3
 	vinsgr2vr.d	$vr10, $a4, 0
@@ -3847,8 +3841,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t4, $t4, 2
 	vpickve2gr.d	$t7, $vr8, 1
 	slli.d	$t7, $t7, 2
-	vpickve2gr.d	$s3, $vr11, 0
-	slli.d	$s3, $s3, 2
+	vpickve2gr.d	$s2, $vr11, 0
+	slli.d	$s2, $s2, 2
 	vpickve2gr.d	$ra, $vr11, 1
 	slli.d	$ra, $ra, 2
 	ldx.w	$a4, $fp, $a4
@@ -3861,7 +3855,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vinsgr2vr.w	$vr8, $t3, 3
 	ldx.w	$a4, $fp, $t4
 	ldx.w	$a5, $fp, $t7
-	ldx.w	$a6, $fp, $s3
+	ldx.w	$a6, $fp, $s2
 	ldx.w	$t3, $fp, $ra
 	vinsgr2vr.w	$vr9, $a4, 0
 	vinsgr2vr.w	$vr9, $a5, 1
@@ -3870,90 +3864,90 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr2, $vr8, $vr2
 	vadd.w	$vr7, $vr9, $vr7
 	addi.d	$a2, $a2, 16
-	addi.d	$s5, $s5, -8
-	addi.d	$a3, $a3, 16
-	bnez	$s5, .LBB4_67
-# %bb.68:                               # %middle.block979
-                                        #   in Loop: Header=BB4_49 Depth=4
+	addi.d	$s8, $s8, -8
+	addi.d	$s7, $s7, 16
+	bnez	$s8, .LBB4_68
+# %bb.69:                               # %middle.block979
+                                        #   in Loop: Header=BB4_50 Depth=4
 	vadd.w	$vr2, $vr7, $vr2
 	vshuf4i.w	$vr3, $vr2, 14
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$ra, $vr2, 0
-	ld.d	$a3, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
-	beq	$t5, $a2, .LBB4_71
-.LBB4_69:                               # %scalar.ph950.preheader
-                                        #   in Loop: Header=BB4_49 Depth=4
-	move	$a2, $s7
-	move	$s5, $s8
+	ld.d	$a4, $sp, 352                   # 8-byte Folded Reload
+	beq	$t5, $a4, .LBB4_72
+.LBB4_70:                               # %scalar.ph950.preheader
+                                        #   in Loop: Header=BB4_50 Depth=4
+	move	$s7, $s5
+	move	$s8, $a3
 	.p2align	4, , 16
-.LBB4_70:                               # %scalar.ph950
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_71:                               # %scalar.ph950
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.hu	$a4, $s5, 0
-	mul.d	$a4, $s0, $a4
-	add.d	$a4, $a4, $t1
-	sra.w	$a4, $a4, $t2
-	add.w	$a4, $a4, $s4
-	srai.d	$a5, $a4, 63
-	andn	$a4, $a4, $a5
-	slt	$a5, $a4, $a0
-	ld.hu	$a6, $a2, 0
-	maskeqz	$a4, $a4, $a5
-	masknez	$a5, $a0, $a5
-	or	$a4, $a4, $a5
-	sub.w	$a4, $a4, $a6
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $fp, $a4
-	addi.d	$s8, $s5, 2
-	addi.d	$s7, $a2, 2
-	addi.w	$a3, $a3, 4
+	ld.hu	$a3, $s8, 0
+	mul.d	$a3, $s0, $a3
+	add.d	$a3, $a3, $t1
+	sra.w	$a3, $a3, $t2
+	add.w	$a3, $a3, $s4
+	srai.d	$a4, $a3, 63
+	andn	$a3, $a3, $a4
+	slt	$a4, $a3, $a0
+	ld.hu	$a5, $s7, 0
+	maskeqz	$a3, $a3, $a4
+	masknez	$a4, $a0, $a4
+	or	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a5
+	slli.d	$a3, $a3, 2
+	ldx.w	$a4, $fp, $a3
+	addi.d	$a3, $s8, 2
+	addi.d	$s5, $s7, 2
+	addi.w	$a2, $a2, 4
 	add.d	$ra, $a4, $ra
-	move	$a2, $s7
-	move	$s5, $s8
-	blt	$a3, $t0, .LBB4_70
-.LBB4_71:                               # %.lr.ph679
-                                        #   in Loop: Header=BB4_49 Depth=4
-	ldx.w	$s0, $a1, $s2
-	ld.w	$s2, $t3, 0
+	move	$s7, $s5
+	move	$s8, $a3
+	blt	$a2, $t0, .LBB4_71
+.LBB4_72:                               # %.lr.ph679
+                                        #   in Loop: Header=BB4_50 Depth=4
+	ldx.w	$s0, $a1, $s1
+	ld.w	$s1, $t3, 0
 	ld.w	$s4, $t4, 0
 	ori	$a0, $zero, 29
-	bgeu	$t0, $a0, .LBB4_73
-# %bb.72:                               #   in Loop: Header=BB4_49 Depth=4
+	bgeu	$t0, $a0, .LBB4_74
+# %bb.73:                               #   in Loop: Header=BB4_50 Depth=4
 	move	$a0, $zero
-	move	$s5, $s7
-	move	$a3, $s8
-	b	.LBB4_76
+	move	$s7, $s5
+	move	$a2, $a3
+	b	.LBB4_77
 	.p2align	4, , 16
-.LBB4_73:                               # %vector.ph
-                                        #   in Loop: Header=BB4_49 Depth=4
-	add.d	$s5, $s7, $t6
+.LBB4_74:                               # %vector.ph
+                                        #   in Loop: Header=BB4_50 Depth=4
+	add.d	$s7, $s5, $t6
 	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI4_0)
-	add.d	$a3, $s8, $t6
+	add.d	$a2, $a3, $t6
 	vinsgr2vr.w	$vr3, $t8, 0
 	vinsgr2vr.w	$vr4, $zero, 0
 	vshuf.w	$vr2, $vr4, $vr3
 	vreplgr2vr.w	$vr3, $s0
-	vreplgr2vr.w	$vr4, $s2
+	vreplgr2vr.w	$vr4, $s1
 	vreplgr2vr.w	$vr5, $s4
-	addi.d	$a0, $s8, 8
-	addi.d	$a2, $s7, 8
+	addi.d	$a0, $a3, 8
+	addi.d	$a3, $s5, 8
 	move	$t8, $t5
 	vori.b	$vr6, $vr12, 0
 	.p2align	4, , 16
-.LBB4_74:                               # %vector.body
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_75:                               # %vector.body
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.d	$a4, $a0, -8
 	ld.d	$a5, $a0, 0
@@ -3971,8 +3965,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr7, $vr7, $vr5
 	vmaxi.w	$vr8, $vr8, 0
 	vmaxi.w	$vr7, $vr7, 0
-	ld.d	$a4, $a2, -8
-	ld.d	$a5, $a2, 0
+	ld.d	$a4, $a3, -8
+	ld.d	$a5, $a3, 0
 	vmin.w	$vr8, $vr8, $vr3
 	vmin.w	$vr7, $vr7, $vr3
 	vinsgr2vr.d	$vr9, $a4, 0
@@ -4005,10 +3999,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t4, $t4, 2
 	vpickve2gr.d	$t7, $vr7, 1
 	slli.d	$t7, $t7, 2
-	vpickve2gr.d	$s3, $vr10, 0
-	slli.d	$s3, $s3, 2
-	vpickve2gr.d	$s7, $vr10, 1
-	slli.d	$s7, $s7, 2
+	vpickve2gr.d	$s2, $vr10, 0
+	slli.d	$s2, $s2, 2
+	vpickve2gr.d	$s5, $vr10, 1
+	slli.d	$s5, $s5, 2
 	ldx.w	$a4, $fp, $a4
 	ldx.w	$a5, $fp, $a5
 	ldx.w	$a6, $fp, $a6
@@ -4019,8 +4013,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vinsgr2vr.w	$vr7, $t3, 3
 	ldx.w	$a4, $fp, $t4
 	ldx.w	$a5, $fp, $t7
-	ldx.w	$a6, $fp, $s3
-	ldx.w	$t3, $fp, $s7
+	ldx.w	$a6, $fp, $s2
+	ldx.w	$t3, $fp, $s5
 	vinsgr2vr.w	$vr8, $a4, 0
 	vinsgr2vr.w	$vr8, $a5, 1
 	vinsgr2vr.w	$vr8, $a6, 2
@@ -4029,10 +4023,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr6, $vr8, $vr6
 	addi.d	$a0, $a0, 16
 	addi.d	$t8, $t8, -8
-	addi.d	$a2, $a2, 16
-	bnez	$t8, .LBB4_74
-# %bb.75:                               # %middle.block
-                                        #   in Loop: Header=BB4_49 Depth=4
+	addi.d	$a3, $a3, 16
+	bnez	$t8, .LBB4_75
+# %bb.76:                               # %middle.block
+                                        #   in Loop: Header=BB4_50 Depth=4
 	vadd.w	$vr2, $vr6, $vr2
 	vshuf4i.w	$vr3, $vr2, 14
 	vadd.w	$vr2, $vr2, $vr3
@@ -4042,48 +4036,48 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
-	beq	$t5, $a2, .LBB4_48
+	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
+	beq	$t5, $a3, .LBB4_49
 	.p2align	4, , 16
-.LBB4_76:                               # %scalar.ph
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_43 Depth=2
-                                        #       Parent Loop BB4_46 Depth=3
-                                        #         Parent Loop BB4_49 Depth=4
+.LBB4_77:                               # %scalar.ph
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_44 Depth=2
+                                        #       Parent Loop BB4_47 Depth=3
+                                        #         Parent Loop BB4_50 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.hu	$a2, $a3, 0
-	mul.d	$a2, $s2, $a2
-	add.d	$a2, $a2, $t1
-	sra.w	$a2, $a2, $t2
-	add.w	$a2, $a2, $s4
-	srai.d	$a4, $a2, 63
-	andn	$a2, $a2, $a4
-	slt	$a4, $a2, $s0
-	ld.hu	$a5, $s5, 0
-	maskeqz	$a2, $a2, $a4
+	ld.hu	$a3, $a2, 0
+	mul.d	$a3, $s1, $a3
+	add.d	$a3, $a3, $t1
+	sra.w	$a3, $a3, $t2
+	add.w	$a3, $a3, $s4
+	srai.d	$a4, $a3, 63
+	andn	$a3, $a3, $a4
+	slt	$a4, $a3, $s0
+	ld.hu	$a5, $s7, 0
+	maskeqz	$a3, $a3, $a4
 	masknez	$a4, $s0, $a4
-	or	$a2, $a2, $a4
-	sub.w	$a2, $a2, $a5
-	slli.d	$a2, $a2, 2
-	ldx.w	$a2, $fp, $a2
-	addi.d	$a3, $a3, 2
-	addi.d	$s5, $s5, 2
+	or	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a5
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $fp, $a3
+	addi.d	$a2, $a2, 2
+	addi.d	$s7, $s7, 2
 	addi.w	$a0, $a0, 4
-	add.d	$t8, $a2, $t8
-	blt	$a0, $t0, .LBB4_76
-	b	.LBB4_48
+	add.d	$t8, $a3, $t8
+	blt	$a0, $t0, .LBB4_77
+	b	.LBB4_49
 	.p2align	4, , 16
-.LBB4_77:                               # %.preheader549.preheader
-                                        #   in Loop: Header=BB4_27 Depth=1
+.LBB4_78:                               # %.preheader549.preheader
+                                        #   in Loop: Header=BB4_28 Depth=1
 	move	$a1, $zero
 	move	$a2, $zero
 	pcalau12i	$a3, %pc_hi20(SetupFastFullPelSearch.orig_pels)
-	addi.d	$s6, $a3, %pc_lo12(SetupFastFullPelSearch.orig_pels)
+	addi.d	$s3, $a3, %pc_lo12(SetupFastFullPelSearch.orig_pels)
 	.p2align	4, , 16
-.LBB4_78:                               # %.preheader549
-                                        #   Parent Loop BB4_27 Depth=1
+.LBB4_79:                               # %.preheader549
+                                        #   Parent Loop BB4_28 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_79 Depth 3
+                                        #       Child Loop BB4_80 Depth 3
 	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
 	ld.w	$a3, $a3, %pc_lo12(img_padded_size_x)
 	move	$t2, $zero
@@ -4093,10 +4087,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$a6, $a0, 16
 	slli.d	$a7, $a3, 1
 	ori	$t0, $zero, 4
-	move	$t1, $s6
+	move	$t1, $s3
 	.p2align	4, , 16
-.LBB4_79:                               #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_78 Depth=2
+.LBB4_80:                               #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_79 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.hu	$t4, $a6, -16
 	ld.hu	$t5, $t1, 0
@@ -4197,9 +4191,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.w	$t0, $t0, -1
 	add.d	$a6, $a6, $a7
 	addi.d	$t1, $t1, 32
-	bnez	$t0, .LBB4_79
-# %bb.80:                               #   in Loop: Header=BB4_78 Depth=2
-	addi.d	$s6, $s6, 128
+	bnez	$t0, .LBB4_80
+# %bb.81:                               #   in Loop: Header=BB4_79 Depth=2
+	addi.d	$s3, $s3, 128
 	ld.d	$t0, $sp, 280                   # 8-byte Folded Reload
 	alsl.d	$a6, $a1, $t0, 3
 	slli.d	$a7, $a1, 3
@@ -4216,13 +4210,13 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.w	$a2, $a2, 1
 	stx.w	$a4, $a6, $t1
 	ori	$a3, $zero, 4
-	bne	$a2, $a3, .LBB4_78
-# %bb.81:                               #   in Loop: Header=BB4_27 Depth=1
+	bne	$a2, $a3, .LBB4_79
+# %bb.82:                               #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB4_26
-# %bb.82:                               # %.preheader551.preheader
-                                        #   in Loop: Header=BB4_27 Depth=1
+	beqz	$a0, .LBB4_27
+# %bb.83:                               # %.preheader551.preheader
+                                        #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	pcalau12i	$a1, %got_pc_hi20(get_crline)
@@ -4239,15 +4233,15 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$a1, $a1, 0
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB4_85
+	b	.LBB4_86
 	.p2align	4, , 16
-.LBB4_83:                               #   in Loop: Header=BB4_85 Depth=2
+.LBB4_84:                               #   in Loop: Header=BB4_86 Depth=2
 	move	$t5, $zero
 	move	$t4, $zero
 	move	$t6, $zero
 	move	$t7, $zero
-.LBB4_84:                               # %._crit_edge621
-                                        #   in Loop: Header=BB4_85 Depth=2
+.LBB4_85:                               # %._crit_edge621
+                                        #   in Loop: Header=BB4_86 Depth=2
 	slli.d	$a4, $a2, 3
 	ld.d	$a6, $sp, 280                   # 8-byte Folded Reload
 	ldx.d	$a4, $a6, $a4
@@ -4271,32 +4265,31 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.w	$a3, $a3, 1
 	stx.w	$a4, $a6, $t0
 	ori	$a4, $zero, 4
-	beq	$a3, $a4, .LBB4_119
-.LBB4_85:                               # %.preheader547
-                                        #   Parent Loop BB4_27 Depth=1
+	beq	$a3, $a4, .LBB4_120
+.LBB4_86:                               # %.preheader547
+                                        #   Parent Loop BB4_28 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_118 Depth 3
-                                        #       Child Loop BB4_89 Depth 3
-                                        #         Child Loop BB4_92 Depth 4
-                                        #         Child Loop BB4_95 Depth 4
-                                        #         Child Loop BB4_99 Depth 4
-                                        #         Child Loop BB4_102 Depth 4
-                                        #         Child Loop BB4_106 Depth 4
-                                        #         Child Loop BB4_109 Depth 4
-                                        #         Child Loop BB4_113 Depth 4
-                                        #         Child Loop BB4_116 Depth 4
+                                        #       Child Loop BB4_119 Depth 3
+                                        #       Child Loop BB4_90 Depth 3
+                                        #         Child Loop BB4_93 Depth 4
+                                        #         Child Loop BB4_96 Depth 4
+                                        #         Child Loop BB4_100 Depth 4
+                                        #         Child Loop BB4_103 Depth 4
+                                        #         Child Loop BB4_107 Depth 4
+                                        #         Child Loop BB4_110 Depth 4
+                                        #         Child Loop BB4_114 Depth 4
+                                        #         Child Loop BB4_117 Depth 4
 	ldptr.w	$a4, $a1, 15548
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB4_83
-# %bb.86:                               # %.preheader545.lr.ph
-                                        #   in Loop: Header=BB4_85 Depth=2
+	blez	$a4, .LBB4_84
+# %bb.87:                               # %.preheader545.lr.ph
+                                        #   in Loop: Header=BB4_86 Depth=2
 	ldptr.w	$a5, $a1, 15544
 	ld.d	$a6, $sp, 272                   # 8-byte Folded Reload
 	ld.w	$a7, $a6, %pc_lo12(img_cr_padded_size_x)
 	move	$a6, $zero
-	blez	$a5, .LBB4_117
-# %bb.87:                               # %.preheader545.us.preheader
-                                        #   in Loop: Header=BB4_85 Depth=2
+	blez	$a5, .LBB4_118
+# %bb.88:                               # %.preheader545.us.preheader
+                                        #   in Loop: Header=BB4_86 Depth=2
 	move	$t7, $zero
 	move	$t6, $zero
 	move	$t4, $zero
@@ -4309,67 +4302,67 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t1, $t3, 3
 	slli.d	$t2, $t3, 4
 	slli.d	$t3, $t3, 5
-	b	.LBB4_89
+	b	.LBB4_90
 	.p2align	4, , 16
-.LBB4_88:                               # %._crit_edge610.us
-                                        #   in Loop: Header=BB4_89 Depth=3
+.LBB4_89:                               # %._crit_edge610.us
+                                        #   in Loop: Header=BB4_90 Depth=3
 	addi.w	$a6, $a6, 4
 	alsl.d	$a0, $a7, $t8, 1
-	bge	$a6, $a4, .LBB4_84
-.LBB4_89:                               # %.preheader545.us
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
+	bge	$a6, $a4, .LBB4_85
+.LBB4_90:                               # %.preheader545.us
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB4_92 Depth 4
-                                        #         Child Loop BB4_95 Depth 4
-                                        #         Child Loop BB4_99 Depth 4
-                                        #         Child Loop BB4_102 Depth 4
-                                        #         Child Loop BB4_106 Depth 4
-                                        #         Child Loop BB4_109 Depth 4
-                                        #         Child Loop BB4_113 Depth 4
-                                        #         Child Loop BB4_116 Depth 4
+                                        #         Child Loop BB4_93 Depth 4
+                                        #         Child Loop BB4_96 Depth 4
+                                        #         Child Loop BB4_100 Depth 4
+                                        #         Child Loop BB4_103 Depth 4
+                                        #         Child Loop BB4_107 Depth 4
+                                        #         Child Loop BB4_110 Depth 4
+                                        #         Child Loop BB4_114 Depth 4
+                                        #         Child Loop BB4_117 Depth 4
 	ori	$t8, $zero, 29
-	bgeu	$a5, $t8, .LBB4_91
-# %bb.90:                               #   in Loop: Header=BB4_89 Depth=3
+	bgeu	$a5, $t8, .LBB4_92
+# %bb.91:                               #   in Loop: Header=BB4_90 Depth=3
 	move	$t8, $zero
-	move	$s0, $s6
-	move	$s2, $a0
-	b	.LBB4_94
+	move	$s0, $s3
+	move	$s4, $a0
+	b	.LBB4_95
 	.p2align	4, , 16
-.LBB4_91:                               # %vector.ph1242
-                                        #   in Loop: Header=BB4_89 Depth=3
-	add.d	$s0, $s6, $t2
+.LBB4_92:                               # %vector.ph1242
+                                        #   in Loop: Header=BB4_90 Depth=3
+	add.d	$s0, $s3, $t2
 	ld.d	$t8, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $t8, %pc_lo12(.LCPI4_0)
-	add.d	$s2, $a0, $t2
+	add.d	$s4, $a0, $t2
 	vinsgr2vr.w	$vr1, $t7, 0
 	vinsgr2vr.w	$vr2, $zero, 0
 	vshuf.w	$vr0, $vr2, $vr1
 	addi.d	$a0, $a0, 8
 	vrepli.b	$vr1, 0
-	addi.d	$t7, $s6, 8
+	addi.d	$t7, $s3, 8
 	move	$t8, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_92:                               # %vector.body1246
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_93:                               # %vector.body1246
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s1, $a0, -8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	vinsgr2vr.d	$vr3, $s1, 0
-	vinsgr2vr.d	$vr4, $s3, 0
+	vinsgr2vr.d	$vr4, $s2, 0
 	vilvl.h	$vr3, $vr1, $vr3
 	vilvl.w	$vr5, $vr1, $vr3
 	vilvh.w	$vr3, $vr1, $vr3
 	vilvl.h	$vr4, $vr1, $vr4
 	ld.d	$s1, $t7, -8
-	ld.d	$s3, $t7, 0
+	ld.d	$s2, $t7, 0
 	vilvl.w	$vr6, $vr1, $vr4
 	vilvh.w	$vr4, $vr1, $vr4
 	vinsgr2vr.d	$vr7, $s1, 0
-	vinsgr2vr.d	$vr8, $s3, 0
+	vinsgr2vr.d	$vr8, $s2, 0
 	vilvl.h	$vr7, $vr1, $vr7
 	vilvl.w	$vr9, $vr1, $vr7
 	vilvh.w	$vr7, $vr1, $vr7
@@ -4382,10 +4375,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vsub.d	$vr6, $vr6, $vr10
 	vpickve2gr.d	$s1, $vr5, 0
 	slli.d	$s1, $s1, 2
-	vpickve2gr.d	$s3, $vr5, 1
+	vpickve2gr.d	$s2, $vr5, 1
+	slli.d	$s2, $s2, 2
+	vpickve2gr.d	$s3, $vr3, 0
 	slli.d	$s3, $s3, 2
-	vpickve2gr.d	$s4, $vr3, 0
-	slli.d	$s4, $s4, 2
 	vpickve2gr.d	$s5, $vr3, 1
 	slli.d	$s5, $s5, 2
 	vpickve2gr.d	$s6, $vr6, 0
@@ -4397,29 +4390,29 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vpickve2gr.d	$ra, $vr4, 1
 	slli.d	$ra, $ra, 2
 	ldx.w	$s1, $fp, $s1
+	ldx.w	$s2, $fp, $s2
 	ldx.w	$s3, $fp, $s3
-	ldx.w	$s4, $fp, $s4
 	ldx.w	$s5, $fp, $s5
 	vinsgr2vr.w	$vr3, $s1, 0
-	vinsgr2vr.w	$vr3, $s3, 1
-	vinsgr2vr.w	$vr3, $s4, 2
+	vinsgr2vr.w	$vr3, $s2, 1
+	vinsgr2vr.w	$vr3, $s3, 2
 	vinsgr2vr.w	$vr3, $s5, 3
 	ldx.w	$s1, $fp, $s6
-	ldx.w	$s3, $fp, $s7
-	ldx.w	$s4, $fp, $s8
+	ldx.w	$s2, $fp, $s7
+	ldx.w	$s3, $fp, $s8
 	ldx.w	$s5, $fp, $ra
 	vinsgr2vr.w	$vr4, $s1, 0
-	vinsgr2vr.w	$vr4, $s3, 1
-	vinsgr2vr.w	$vr4, $s4, 2
+	vinsgr2vr.w	$vr4, $s2, 1
+	vinsgr2vr.w	$vr4, $s3, 2
 	vinsgr2vr.w	$vr4, $s5, 3
 	vadd.w	$vr0, $vr3, $vr0
 	vadd.w	$vr2, $vr4, $vr2
 	addi.d	$a0, $a0, 16
 	addi.d	$t8, $t8, -8
 	addi.d	$t7, $t7, 16
-	bnez	$t8, .LBB4_92
-# %bb.93:                               # %middle.block1259
-                                        #   in Loop: Header=BB4_89 Depth=3
+	bnez	$t8, .LBB4_93
+# %bb.94:                               # %middle.block1259
+                                        #   in Loop: Header=BB4_90 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
@@ -4427,58 +4420,58 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t7, $vr0, 0
 	move	$t8, $t3
-	beq	$t1, $t0, .LBB4_96
-.LBB4_94:                               # %scalar.ph1240.preheader
-                                        #   in Loop: Header=BB4_89 Depth=3
+	beq	$t1, $t0, .LBB4_97
+.LBB4_95:                               # %scalar.ph1240.preheader
+                                        #   in Loop: Header=BB4_90 Depth=3
 	move	$a0, $s0
-	move	$s1, $s2
+	move	$s1, $s4
 	.p2align	4, , 16
-.LBB4_95:                               # %scalar.ph1240
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_96:                               # %scalar.ph1240
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.hu	$s0, $s1, 0
 	ld.hu	$s2, $a0, 0
 	sub.d	$s0, $s0, $s2
 	slli.d	$s0, $s0, 2
-	ldx.w	$s3, $fp, $s0
-	addi.d	$s2, $s1, 2
+	ldx.w	$s2, $fp, $s0
+	addi.d	$s4, $s1, 2
 	addi.d	$s0, $a0, 2
 	addi.w	$t8, $t8, 4
-	add.d	$t7, $s3, $t7
+	add.d	$t7, $s2, $t7
 	move	$a0, $s0
-	move	$s1, $s2
-	blt	$t8, $a5, .LBB4_95
-.LBB4_96:                               # %.lr.ph593.us.preheader
-                                        #   in Loop: Header=BB4_89 Depth=3
+	move	$s1, $s4
+	blt	$t8, $a5, .LBB4_96
+.LBB4_97:                               # %.lr.ph593.us.preheader
+                                        #   in Loop: Header=BB4_90 Depth=3
 	ori	$a0, $zero, 29
-	bgeu	$a5, $a0, .LBB4_98
-# %bb.97:                               #   in Loop: Header=BB4_89 Depth=3
+	bgeu	$a5, $a0, .LBB4_99
+# %bb.98:                               #   in Loop: Header=BB4_90 Depth=3
 	move	$a0, $zero
 	move	$t8, $s0
-	move	$s1, $s2
-	b	.LBB4_101
+	move	$s1, $s4
+	b	.LBB4_102
 	.p2align	4, , 16
-.LBB4_98:                               # %vector.ph1216
-                                        #   in Loop: Header=BB4_89 Depth=3
+.LBB4_99:                               # %vector.ph1216
+                                        #   in Loop: Header=BB4_90 Depth=3
 	add.d	$t8, $s0, $t2
 	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $a0, %pc_lo12(.LCPI4_0)
-	add.d	$s1, $s2, $t2
+	add.d	$s1, $s4, $t2
 	vinsgr2vr.w	$vr1, $t6, 0
 	vinsgr2vr.w	$vr2, $zero, 0
 	vshuf.w	$vr0, $vr2, $vr1
-	addi.d	$a0, $s2, 8
+	addi.d	$a0, $s4, 8
 	vrepli.b	$vr1, 0
 	addi.d	$t6, $s0, 8
 	move	$s0, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_99:                               # %vector.body1220
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_100:                              # %vector.body1220
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s2, $a0, -8
 	ld.d	$s3, $a0, 0
@@ -4541,9 +4534,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$a0, $a0, 16
 	addi.d	$s0, $s0, -8
 	addi.d	$t6, $t6, 16
-	bnez	$s0, .LBB4_99
-# %bb.100:                              # %middle.block1233
-                                        #   in Loop: Header=BB4_89 Depth=3
+	bnez	$s0, .LBB4_100
+# %bb.101:                              # %middle.block1233
+                                        #   in Loop: Header=BB4_90 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
@@ -4551,41 +4544,41 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t6, $vr0, 0
 	move	$a0, $t3
-	beq	$t1, $t0, .LBB4_103
-.LBB4_101:                              # %.lr.ph593.us.preheader1270
-                                        #   in Loop: Header=BB4_89 Depth=3
+	beq	$t1, $t0, .LBB4_104
+.LBB4_102:                              # %.lr.ph593.us.preheader1270
+                                        #   in Loop: Header=BB4_90 Depth=3
 	move	$s0, $t8
-	move	$s2, $s1
+	move	$s3, $s1
 	.p2align	4, , 16
-.LBB4_102:                              # %.lr.ph593.us
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_103:                              # %.lr.ph593.us
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.hu	$t8, $s2, 0
+	ld.hu	$t8, $s3, 0
 	ld.hu	$s1, $s0, 0
 	sub.d	$t8, $t8, $s1
 	slli.d	$t8, $t8, 2
-	ldx.w	$s3, $fp, $t8
-	addi.d	$s1, $s2, 2
+	ldx.w	$s2, $fp, $t8
+	addi.d	$s1, $s3, 2
 	addi.d	$t8, $s0, 2
 	addi.w	$a0, $a0, 4
-	add.d	$t6, $s3, $t6
+	add.d	$t6, $s2, $t6
 	move	$s0, $t8
-	move	$s2, $s1
-	blt	$a0, $a5, .LBB4_102
-.LBB4_103:                              # %.lr.ph601.us.preheader
-                                        #   in Loop: Header=BB4_89 Depth=3
+	move	$s3, $s1
+	blt	$a0, $a5, .LBB4_103
+.LBB4_104:                              # %.lr.ph601.us.preheader
+                                        #   in Loop: Header=BB4_90 Depth=3
 	ori	$a0, $zero, 29
-	bgeu	$a5, $a0, .LBB4_105
-# %bb.104:                              #   in Loop: Header=BB4_89 Depth=3
-	move	$s2, $zero
+	bgeu	$a5, $a0, .LBB4_106
+# %bb.105:                              #   in Loop: Header=BB4_90 Depth=3
+	move	$s3, $zero
 	move	$a0, $t8
 	move	$s0, $s1
-	b	.LBB4_108
+	b	.LBB4_109
 	.p2align	4, , 16
-.LBB4_105:                              # %vector.ph1190
-                                        #   in Loop: Header=BB4_89 Depth=3
+.LBB4_106:                              # %vector.ph1190
+                                        #   in Loop: Header=BB4_90 Depth=3
 	add.d	$a0, $t8, $t2
 	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $s0, %pc_lo12(.LCPI4_0)
@@ -4599,10 +4592,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$s1, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_106:                              # %vector.body1194
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_107:                              # %vector.body1194
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s2, $t5, -8
 	ld.d	$s3, $t5, 0
@@ -4665,52 +4658,52 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$t5, $t5, 16
 	addi.d	$s1, $s1, -8
 	addi.d	$t8, $t8, 16
-	bnez	$s1, .LBB4_106
-# %bb.107:                              # %middle.block1207
-                                        #   in Loop: Header=BB4_89 Depth=3
+	bnez	$s1, .LBB4_107
+# %bb.108:                              # %middle.block1207
+                                        #   in Loop: Header=BB4_90 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t5, $vr0, 0
-	move	$s2, $t3
-	beq	$t1, $t0, .LBB4_110
-.LBB4_108:                              # %.lr.ph601.us.preheader1269
-                                        #   in Loop: Header=BB4_89 Depth=3
+	move	$s3, $t3
+	beq	$t1, $t0, .LBB4_111
+.LBB4_109:                              # %.lr.ph601.us.preheader1269
+                                        #   in Loop: Header=BB4_90 Depth=3
 	move	$t8, $a0
 	move	$s1, $s0
 	.p2align	4, , 16
-.LBB4_109:                              # %.lr.ph601.us
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_110:                              # %.lr.ph601.us
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.hu	$a0, $s1, 0
 	ld.hu	$s0, $t8, 0
 	sub.d	$a0, $a0, $s0
 	slli.d	$a0, $a0, 2
-	ldx.w	$s3, $fp, $a0
+	ldx.w	$s2, $fp, $a0
 	addi.d	$s0, $s1, 2
 	addi.d	$a0, $t8, 2
-	addi.w	$s2, $s2, 4
-	add.d	$t5, $s3, $t5
+	addi.w	$s3, $s3, 4
+	add.d	$t5, $s2, $t5
 	move	$t8, $a0
 	move	$s1, $s0
-	blt	$s2, $a5, .LBB4_109
-.LBB4_110:                              # %.lr.ph609.us.preheader
-                                        #   in Loop: Header=BB4_89 Depth=3
+	blt	$s3, $a5, .LBB4_110
+.LBB4_111:                              # %.lr.ph609.us.preheader
+                                        #   in Loop: Header=BB4_90 Depth=3
 	ori	$t8, $zero, 29
-	bgeu	$a5, $t8, .LBB4_112
-# %bb.111:                              #   in Loop: Header=BB4_89 Depth=3
+	bgeu	$a5, $t8, .LBB4_113
+# %bb.112:                              #   in Loop: Header=BB4_90 Depth=3
 	move	$s1, $zero
-	move	$s6, $a0
+	move	$s3, $a0
 	move	$t8, $s0
-	b	.LBB4_115
+	b	.LBB4_116
 	.p2align	4, , 16
-.LBB4_112:                              # %vector.ph1164
-                                        #   in Loop: Header=BB4_89 Depth=3
-	add.d	$s6, $a0, $t2
+.LBB4_113:                              # %vector.ph1164
+                                        #   in Loop: Header=BB4_90 Depth=3
+	add.d	$s3, $a0, $t2
 	ld.d	$t8, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $t8, %pc_lo12(.LCPI4_0)
 	add.d	$t8, $s0, $t2
@@ -4723,10 +4716,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$s0, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_113:                              # %vector.body1168
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_114:                              # %vector.body1168
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s1, $t4, -8
 	ld.d	$s2, $t4, 0
@@ -4756,12 +4749,12 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$s1, $s1, 2
 	vpickve2gr.d	$s2, $vr5, 1
 	slli.d	$s2, $s2, 2
-	vpickve2gr.d	$s3, $vr3, 0
-	slli.d	$s3, $s3, 2
-	vpickve2gr.d	$s4, $vr3, 1
+	vpickve2gr.d	$s4, $vr3, 0
 	slli.d	$s4, $s4, 2
-	vpickve2gr.d	$s5, $vr6, 0
+	vpickve2gr.d	$s5, $vr3, 1
 	slli.d	$s5, $s5, 2
+	vpickve2gr.d	$s6, $vr6, 0
+	slli.d	$s6, $s6, 2
 	vpickve2gr.d	$s7, $vr6, 1
 	slli.d	$s7, $s7, 2
 	vpickve2gr.d	$s8, $vr4, 0
@@ -4770,28 +4763,28 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$ra, $ra, 2
 	ldx.w	$s1, $fp, $s1
 	ldx.w	$s2, $fp, $s2
-	ldx.w	$s3, $fp, $s3
 	ldx.w	$s4, $fp, $s4
+	ldx.w	$s5, $fp, $s5
 	vinsgr2vr.w	$vr3, $s1, 0
 	vinsgr2vr.w	$vr3, $s2, 1
-	vinsgr2vr.w	$vr3, $s3, 2
-	vinsgr2vr.w	$vr3, $s4, 3
-	ldx.w	$s1, $fp, $s5
+	vinsgr2vr.w	$vr3, $s4, 2
+	vinsgr2vr.w	$vr3, $s5, 3
+	ldx.w	$s1, $fp, $s6
 	ldx.w	$s2, $fp, $s7
-	ldx.w	$s3, $fp, $s8
-	ldx.w	$s4, $fp, $ra
+	ldx.w	$s4, $fp, $s8
+	ldx.w	$s5, $fp, $ra
 	vinsgr2vr.w	$vr4, $s1, 0
 	vinsgr2vr.w	$vr4, $s2, 1
-	vinsgr2vr.w	$vr4, $s3, 2
-	vinsgr2vr.w	$vr4, $s4, 3
+	vinsgr2vr.w	$vr4, $s4, 2
+	vinsgr2vr.w	$vr4, $s5, 3
 	vadd.w	$vr0, $vr3, $vr0
 	vadd.w	$vr2, $vr4, $vr2
 	addi.d	$t4, $t4, 16
 	addi.d	$s0, $s0, -8
 	addi.d	$a0, $a0, 16
-	bnez	$s0, .LBB4_113
-# %bb.114:                              # %middle.block1181
-                                        #   in Loop: Header=BB4_89 Depth=3
+	bnez	$s0, .LBB4_114
+# %bb.115:                              # %middle.block1181
+                                        #   in Loop: Header=BB4_90 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
@@ -4799,16 +4792,16 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t4, $vr0, 0
 	move	$s1, $t3
-	beq	$t1, $t0, .LBB4_88
-.LBB4_115:                              # %.lr.ph609.us.preheader1268
-                                        #   in Loop: Header=BB4_89 Depth=3
-	move	$a0, $s6
+	beq	$t1, $t0, .LBB4_89
+.LBB4_116:                              # %.lr.ph609.us.preheader1268
+                                        #   in Loop: Header=BB4_90 Depth=3
+	move	$a0, $s3
 	move	$s0, $t8
 	.p2align	4, , 16
-.LBB4_116:                              # %.lr.ph609.us
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
-                                        #       Parent Loop BB4_89 Depth=3
+.LBB4_117:                              # %.lr.ph609.us
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
+                                        #       Parent Loop BB4_90 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.hu	$t8, $s0, 0
 	ld.hu	$s2, $a0, 0
@@ -4816,31 +4809,31 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t8, $t8, 2
 	ldx.w	$s2, $fp, $t8
 	addi.d	$t8, $s0, 2
-	addi.d	$s6, $a0, 2
+	addi.d	$s3, $a0, 2
 	addi.w	$s1, $s1, 4
 	add.d	$t4, $s2, $t4
-	move	$a0, $s6
+	move	$a0, $s3
 	move	$s0, $t8
-	blt	$s1, $a5, .LBB4_116
-	b	.LBB4_88
+	blt	$s1, $a5, .LBB4_117
+	b	.LBB4_89
 	.p2align	4, , 16
-.LBB4_117:                              # %._crit_edge610.preheader
-                                        #   in Loop: Header=BB4_85 Depth=2
+.LBB4_118:                              # %._crit_edge610.preheader
+                                        #   in Loop: Header=BB4_86 Depth=2
 	slli.d	$a7, $a7, 1
 	slli.d	$a5, $a5, 1
 	sub.d	$a5, $a7, $a5
 	.p2align	4, , 16
-.LBB4_118:                              # %._crit_edge610
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_85 Depth=2
+.LBB4_119:                              # %._crit_edge610
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_86 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	addi.w	$a6, $a6, 4
 	add.d	$a0, $a0, $a5
-	blt	$a6, $a4, .LBB4_118
-	b	.LBB4_83
+	blt	$a6, $a4, .LBB4_119
+	b	.LBB4_84
 	.p2align	4, , 16
-.LBB4_119:                              # %.preheader551.1
-                                        #   in Loop: Header=BB4_27 Depth=1
+.LBB4_120:                              # %.preheader551.1
+                                        #   in Loop: Header=BB4_28 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	slli.d	$a0, $a0, 3
@@ -4855,15 +4848,15 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$a1, $a1, 0
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB4_122
+	b	.LBB4_123
 	.p2align	4, , 16
-.LBB4_120:                              #   in Loop: Header=BB4_122 Depth=2
+.LBB4_121:                              #   in Loop: Header=BB4_123 Depth=2
 	move	$t5, $zero
 	move	$t4, $zero
 	move	$t6, $zero
 	move	$t7, $zero
-.LBB4_121:                              # %._crit_edge621.1
-                                        #   in Loop: Header=BB4_122 Depth=2
+.LBB4_122:                              # %._crit_edge621.1
+                                        #   in Loop: Header=BB4_123 Depth=2
 	slli.d	$a4, $a2, 3
 	ld.d	$a6, $sp, 280                   # 8-byte Folded Reload
 	ldx.d	$a4, $a6, $a4
@@ -4887,32 +4880,31 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.w	$a3, $a3, 1
 	stx.w	$a4, $a6, $t0
 	ori	$a4, $zero, 4
-	beq	$a3, $a4, .LBB4_26
-.LBB4_122:                              # %.preheader547.1
-                                        #   Parent Loop BB4_27 Depth=1
+	beq	$a3, $a4, .LBB4_27
+.LBB4_123:                              # %.preheader547.1
+                                        #   Parent Loop BB4_28 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_155 Depth 3
-                                        #       Child Loop BB4_126 Depth 3
-                                        #         Child Loop BB4_129 Depth 4
-                                        #         Child Loop BB4_132 Depth 4
-                                        #         Child Loop BB4_136 Depth 4
-                                        #         Child Loop BB4_139 Depth 4
-                                        #         Child Loop BB4_143 Depth 4
-                                        #         Child Loop BB4_146 Depth 4
-                                        #         Child Loop BB4_150 Depth 4
-                                        #         Child Loop BB4_153 Depth 4
+                                        #       Child Loop BB4_156 Depth 3
+                                        #       Child Loop BB4_127 Depth 3
+                                        #         Child Loop BB4_130 Depth 4
+                                        #         Child Loop BB4_133 Depth 4
+                                        #         Child Loop BB4_137 Depth 4
+                                        #         Child Loop BB4_140 Depth 4
+                                        #         Child Loop BB4_144 Depth 4
+                                        #         Child Loop BB4_147 Depth 4
+                                        #         Child Loop BB4_151 Depth 4
+                                        #         Child Loop BB4_154 Depth 4
 	ldptr.w	$a4, $a1, 15548
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB4_120
-# %bb.123:                              # %.preheader545.lr.ph.1
-                                        #   in Loop: Header=BB4_122 Depth=2
+	blez	$a4, .LBB4_121
+# %bb.124:                              # %.preheader545.lr.ph.1
+                                        #   in Loop: Header=BB4_123 Depth=2
 	ldptr.w	$a5, $a1, 15544
 	ld.d	$a6, $sp, 272                   # 8-byte Folded Reload
 	ld.w	$a7, $a6, %pc_lo12(img_cr_padded_size_x)
 	move	$a6, $zero
-	blez	$a5, .LBB4_154
-# %bb.124:                              # %.preheader545.us.1.preheader
-                                        #   in Loop: Header=BB4_122 Depth=2
+	blez	$a5, .LBB4_155
+# %bb.125:                              # %.preheader545.us.1.preheader
+                                        #   in Loop: Header=BB4_123 Depth=2
 	move	$t7, $zero
 	move	$t6, $zero
 	move	$t4, $zero
@@ -4925,36 +4917,36 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$t1, $t3, 3
 	slli.d	$t2, $t3, 4
 	slli.d	$t3, $t3, 5
-	b	.LBB4_126
+	b	.LBB4_127
 	.p2align	4, , 16
-.LBB4_125:                              # %._crit_edge610.us.1
-                                        #   in Loop: Header=BB4_126 Depth=3
+.LBB4_126:                              # %._crit_edge610.us.1
+                                        #   in Loop: Header=BB4_127 Depth=3
 	addi.w	$a6, $a6, 4
 	alsl.d	$a0, $a7, $a0, 1
-	bge	$a6, $a4, .LBB4_121
-.LBB4_126:                              # %.preheader545.us.1
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
+	bge	$a6, $a4, .LBB4_122
+.LBB4_127:                              # %.preheader545.us.1
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB4_129 Depth 4
-                                        #         Child Loop BB4_132 Depth 4
-                                        #         Child Loop BB4_136 Depth 4
-                                        #         Child Loop BB4_139 Depth 4
-                                        #         Child Loop BB4_143 Depth 4
-                                        #         Child Loop BB4_146 Depth 4
-                                        #         Child Loop BB4_150 Depth 4
-                                        #         Child Loop BB4_153 Depth 4
+                                        #         Child Loop BB4_130 Depth 4
+                                        #         Child Loop BB4_133 Depth 4
+                                        #         Child Loop BB4_137 Depth 4
+                                        #         Child Loop BB4_140 Depth 4
+                                        #         Child Loop BB4_144 Depth 4
+                                        #         Child Loop BB4_147 Depth 4
+                                        #         Child Loop BB4_151 Depth 4
+                                        #         Child Loop BB4_154 Depth 4
 	ori	$t8, $zero, 29
-	bgeu	$a5, $t8, .LBB4_128
-# %bb.127:                              #   in Loop: Header=BB4_126 Depth=3
+	bgeu	$a5, $t8, .LBB4_129
+# %bb.128:                              #   in Loop: Header=BB4_127 Depth=3
 	move	$s1, $zero
-	move	$t8, $s6
+	move	$t8, $s3
 	move	$s0, $a0
-	b	.LBB4_131
+	b	.LBB4_132
 	.p2align	4, , 16
-.LBB4_128:                              # %vector.ph1138
-                                        #   in Loop: Header=BB4_126 Depth=3
-	add.d	$t8, $s6, $t2
+.LBB4_129:                              # %vector.ph1138
+                                        #   in Loop: Header=BB4_127 Depth=3
+	add.d	$t8, $s3, $t2
 	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $s0, %pc_lo12(.LCPI4_0)
 	add.d	$s0, $a0, $t2
@@ -4963,14 +4955,14 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vshuf.w	$vr0, $vr2, $vr1
 	addi.d	$a0, $a0, 8
 	vrepli.b	$vr1, 0
-	addi.d	$t7, $s6, 8
+	addi.d	$t7, $s3, 8
 	move	$s1, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_129:                              # %vector.body1142
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_130:                              # %vector.body1142
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s2, $a0, -8
 	ld.d	$s3, $a0, 0
@@ -5033,9 +5025,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$a0, $a0, 16
 	addi.d	$s1, $s1, -8
 	addi.d	$t7, $t7, 16
-	bnez	$s1, .LBB4_129
-# %bb.130:                              # %middle.block1155
-                                        #   in Loop: Header=BB4_126 Depth=3
+	bnez	$s1, .LBB4_130
+# %bb.131:                              # %middle.block1155
+                                        #   in Loop: Header=BB4_127 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
@@ -5043,41 +5035,41 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t7, $vr0, 0
 	move	$s1, $t3
-	beq	$t1, $t0, .LBB4_133
-.LBB4_131:                              # %scalar.ph1136.preheader
-                                        #   in Loop: Header=BB4_126 Depth=3
+	beq	$t1, $t0, .LBB4_134
+.LBB4_132:                              # %scalar.ph1136.preheader
+                                        #   in Loop: Header=BB4_127 Depth=3
 	move	$a0, $t8
-	move	$s2, $s0
+	move	$s3, $s0
 	.p2align	4, , 16
-.LBB4_132:                              # %scalar.ph1136
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_133:                              # %scalar.ph1136
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.hu	$t8, $s2, 0
+	ld.hu	$t8, $s3, 0
 	ld.hu	$s0, $a0, 0
 	sub.d	$t8, $t8, $s0
 	slli.d	$t8, $t8, 2
-	ldx.w	$s3, $fp, $t8
-	addi.d	$s0, $s2, 2
+	ldx.w	$s2, $fp, $t8
+	addi.d	$s0, $s3, 2
 	addi.d	$t8, $a0, 2
 	addi.w	$s1, $s1, 4
-	add.d	$t7, $s3, $t7
+	add.d	$t7, $s2, $t7
 	move	$a0, $t8
-	move	$s2, $s0
-	blt	$s1, $a5, .LBB4_132
-.LBB4_133:                              # %.lr.ph593.us.preheader.1
-                                        #   in Loop: Header=BB4_126 Depth=3
+	move	$s3, $s0
+	blt	$s1, $a5, .LBB4_133
+.LBB4_134:                              # %.lr.ph593.us.preheader.1
+                                        #   in Loop: Header=BB4_127 Depth=3
 	ori	$a0, $zero, 29
-	bgeu	$a5, $a0, .LBB4_135
-# %bb.134:                              #   in Loop: Header=BB4_126 Depth=3
-	move	$s2, $zero
+	bgeu	$a5, $a0, .LBB4_136
+# %bb.135:                              #   in Loop: Header=BB4_127 Depth=3
+	move	$s3, $zero
 	move	$a0, $t8
 	move	$s1, $s0
-	b	.LBB4_138
+	b	.LBB4_139
 	.p2align	4, , 16
-.LBB4_135:                              # %vector.ph1112
-                                        #   in Loop: Header=BB4_126 Depth=3
+.LBB4_136:                              # %vector.ph1112
+                                        #   in Loop: Header=BB4_127 Depth=3
 	add.d	$a0, $t8, $t2
 	ld.d	$s1, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $s1, %pc_lo12(.LCPI4_0)
@@ -5091,10 +5083,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$s0, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_136:                              # %vector.body1116
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_137:                              # %vector.body1116
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s2, $t6, -8
 	ld.d	$s3, $t6, 0
@@ -5157,51 +5149,51 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$t6, $t6, 16
 	addi.d	$s0, $s0, -8
 	addi.d	$t8, $t8, 16
-	bnez	$s0, .LBB4_136
-# %bb.137:                              # %middle.block1129
-                                        #   in Loop: Header=BB4_126 Depth=3
+	bnez	$s0, .LBB4_137
+# %bb.138:                              # %middle.block1129
+                                        #   in Loop: Header=BB4_127 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t6, $vr0, 0
-	move	$s2, $t3
-	beq	$t1, $t0, .LBB4_140
-.LBB4_138:                              # %.lr.ph593.us.1.preheader
-                                        #   in Loop: Header=BB4_126 Depth=3
+	move	$s3, $t3
+	beq	$t1, $t0, .LBB4_141
+.LBB4_139:                              # %.lr.ph593.us.1.preheader
+                                        #   in Loop: Header=BB4_127 Depth=3
 	move	$t8, $a0
 	move	$s0, $s1
 	.p2align	4, , 16
-.LBB4_139:                              # %.lr.ph593.us.1
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_140:                              # %.lr.ph593.us.1
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.hu	$a0, $s0, 0
 	ld.hu	$s1, $t8, 0
 	sub.d	$a0, $a0, $s1
 	slli.d	$a0, $a0, 2
-	ldx.w	$s3, $fp, $a0
+	ldx.w	$s2, $fp, $a0
 	addi.d	$s1, $s0, 2
 	addi.d	$a0, $t8, 2
-	addi.w	$s2, $s2, 4
-	add.d	$t6, $s3, $t6
+	addi.w	$s3, $s3, 4
+	add.d	$t6, $s2, $t6
 	move	$t8, $a0
 	move	$s0, $s1
-	blt	$s2, $a5, .LBB4_139
-.LBB4_140:                              # %.lr.ph601.us.preheader.1
-                                        #   in Loop: Header=BB4_126 Depth=3
+	blt	$s3, $a5, .LBB4_140
+.LBB4_141:                              # %.lr.ph601.us.preheader.1
+                                        #   in Loop: Header=BB4_127 Depth=3
 	ori	$t8, $zero, 29
-	bgeu	$a5, $t8, .LBB4_142
-# %bb.141:                              #   in Loop: Header=BB4_126 Depth=3
-	move	$s2, $zero
+	bgeu	$a5, $t8, .LBB4_143
+# %bb.142:                              #   in Loop: Header=BB4_127 Depth=3
+	move	$s3, $zero
 	move	$t8, $a0
 	move	$s0, $s1
-	b	.LBB4_145
+	b	.LBB4_146
 	.p2align	4, , 16
-.LBB4_142:                              # %vector.ph1086
-                                        #   in Loop: Header=BB4_126 Depth=3
+.LBB4_143:                              # %vector.ph1086
+                                        #   in Loop: Header=BB4_127 Depth=3
 	add.d	$t8, $a0, $t2
 	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $s0, %pc_lo12(.LCPI4_0)
@@ -5215,10 +5207,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$s1, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_143:                              # %vector.body1090
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_144:                              # %vector.body1090
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s2, $t5, -8
 	ld.d	$s3, $t5, 0
@@ -5281,52 +5273,52 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$t5, $t5, 16
 	addi.d	$s1, $s1, -8
 	addi.d	$a0, $a0, 16
-	bnez	$s1, .LBB4_143
-# %bb.144:                              # %middle.block1103
-                                        #   in Loop: Header=BB4_126 Depth=3
+	bnez	$s1, .LBB4_144
+# %bb.145:                              # %middle.block1103
+                                        #   in Loop: Header=BB4_127 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t5, $vr0, 0
-	move	$s2, $t3
-	beq	$t1, $t0, .LBB4_147
-.LBB4_145:                              # %.lr.ph601.us.1.preheader
-                                        #   in Loop: Header=BB4_126 Depth=3
+	move	$s3, $t3
+	beq	$t1, $t0, .LBB4_148
+.LBB4_146:                              # %.lr.ph601.us.1.preheader
+                                        #   in Loop: Header=BB4_127 Depth=3
 	move	$a0, $t8
 	move	$s1, $s0
 	.p2align	4, , 16
-.LBB4_146:                              # %.lr.ph601.us.1
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_147:                              # %.lr.ph601.us.1
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.hu	$t8, $s1, 0
 	ld.hu	$s0, $a0, 0
 	sub.d	$t8, $t8, $s0
 	slli.d	$t8, $t8, 2
-	ldx.w	$s3, $fp, $t8
+	ldx.w	$s2, $fp, $t8
 	addi.d	$s0, $s1, 2
 	addi.d	$t8, $a0, 2
-	addi.w	$s2, $s2, 4
-	add.d	$t5, $s3, $t5
+	addi.w	$s3, $s3, 4
+	add.d	$t5, $s2, $t5
 	move	$a0, $t8
 	move	$s1, $s0
-	blt	$s2, $a5, .LBB4_146
-.LBB4_147:                              # %.lr.ph609.us.preheader.1
-                                        #   in Loop: Header=BB4_126 Depth=3
+	blt	$s3, $a5, .LBB4_147
+.LBB4_148:                              # %.lr.ph609.us.preheader.1
+                                        #   in Loop: Header=BB4_127 Depth=3
 	ori	$a0, $zero, 29
-	bgeu	$a5, $a0, .LBB4_149
-# %bb.148:                              #   in Loop: Header=BB4_126 Depth=3
+	bgeu	$a5, $a0, .LBB4_150
+# %bb.149:                              #   in Loop: Header=BB4_127 Depth=3
 	move	$s1, $zero
-	move	$s6, $t8
+	move	$s3, $t8
 	move	$a0, $s0
-	b	.LBB4_152
+	b	.LBB4_153
 	.p2align	4, , 16
-.LBB4_149:                              # %vector.ph1060
-                                        #   in Loop: Header=BB4_126 Depth=3
-	add.d	$s6, $t8, $t2
+.LBB4_150:                              # %vector.ph1060
+                                        #   in Loop: Header=BB4_127 Depth=3
+	add.d	$s3, $t8, $t2
 	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	vld	$vr0, $a0, %pc_lo12(.LCPI4_0)
 	add.d	$a0, $s0, $t2
@@ -5339,10 +5331,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$s0, $t1
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
-.LBB4_150:                              # %vector.body1064
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_151:                              # %vector.body1064
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$s1, $t4, -8
 	ld.d	$s2, $t4, 0
@@ -5372,12 +5364,12 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$s1, $s1, 2
 	vpickve2gr.d	$s2, $vr5, 1
 	slli.d	$s2, $s2, 2
-	vpickve2gr.d	$s3, $vr3, 0
-	slli.d	$s3, $s3, 2
-	vpickve2gr.d	$s4, $vr3, 1
+	vpickve2gr.d	$s4, $vr3, 0
 	slli.d	$s4, $s4, 2
-	vpickve2gr.d	$s5, $vr6, 0
+	vpickve2gr.d	$s5, $vr3, 1
 	slli.d	$s5, $s5, 2
+	vpickve2gr.d	$s6, $vr6, 0
+	slli.d	$s6, $s6, 2
 	vpickve2gr.d	$s7, $vr6, 1
 	slli.d	$s7, $s7, 2
 	vpickve2gr.d	$s8, $vr4, 0
@@ -5386,28 +5378,28 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$ra, $ra, 2
 	ldx.w	$s1, $fp, $s1
 	ldx.w	$s2, $fp, $s2
-	ldx.w	$s3, $fp, $s3
 	ldx.w	$s4, $fp, $s4
+	ldx.w	$s5, $fp, $s5
 	vinsgr2vr.w	$vr3, $s1, 0
 	vinsgr2vr.w	$vr3, $s2, 1
-	vinsgr2vr.w	$vr3, $s3, 2
-	vinsgr2vr.w	$vr3, $s4, 3
-	ldx.w	$s1, $fp, $s5
+	vinsgr2vr.w	$vr3, $s4, 2
+	vinsgr2vr.w	$vr3, $s5, 3
+	ldx.w	$s1, $fp, $s6
 	ldx.w	$s2, $fp, $s7
-	ldx.w	$s3, $fp, $s8
-	ldx.w	$s4, $fp, $ra
+	ldx.w	$s4, $fp, $s8
+	ldx.w	$s5, $fp, $ra
 	vinsgr2vr.w	$vr4, $s1, 0
 	vinsgr2vr.w	$vr4, $s2, 1
-	vinsgr2vr.w	$vr4, $s3, 2
-	vinsgr2vr.w	$vr4, $s4, 3
+	vinsgr2vr.w	$vr4, $s4, 2
+	vinsgr2vr.w	$vr4, $s5, 3
 	vadd.w	$vr0, $vr3, $vr0
 	vadd.w	$vr2, $vr4, $vr2
 	addi.d	$t4, $t4, 16
 	addi.d	$s0, $s0, -8
 	addi.d	$t8, $t8, 16
-	bnez	$s0, .LBB4_150
-# %bb.151:                              # %middle.block1077
-                                        #   in Loop: Header=BB4_126 Depth=3
+	bnez	$s0, .LBB4_151
+# %bb.152:                              # %middle.block1077
+                                        #   in Loop: Header=BB4_127 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
@@ -5415,16 +5407,16 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t4, $vr0, 0
 	move	$s1, $t3
-	beq	$t1, $t0, .LBB4_125
-.LBB4_152:                              # %.lr.ph609.us.1.preheader
-                                        #   in Loop: Header=BB4_126 Depth=3
-	move	$t8, $s6
+	beq	$t1, $t0, .LBB4_126
+.LBB4_153:                              # %.lr.ph609.us.1.preheader
+                                        #   in Loop: Header=BB4_127 Depth=3
+	move	$t8, $s3
 	move	$s0, $a0
 	.p2align	4, , 16
-.LBB4_153:                              # %.lr.ph609.us.1
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
-                                        #       Parent Loop BB4_126 Depth=3
+.LBB4_154:                              # %.lr.ph609.us.1
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
+                                        #       Parent Loop BB4_127 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.hu	$a0, $s0, 0
 	ld.hu	$s2, $t8, 0
@@ -5432,29 +5424,29 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	slli.d	$a0, $a0, 2
 	ldx.w	$s2, $fp, $a0
 	addi.d	$a0, $s0, 2
-	addi.d	$s6, $t8, 2
+	addi.d	$s3, $t8, 2
 	addi.w	$s1, $s1, 4
 	add.d	$t4, $s2, $t4
-	move	$t8, $s6
+	move	$t8, $s3
 	move	$s0, $a0
-	blt	$s1, $a5, .LBB4_153
-	b	.LBB4_125
+	blt	$s1, $a5, .LBB4_154
+	b	.LBB4_126
 	.p2align	4, , 16
-.LBB4_154:                              # %._crit_edge610.1.preheader
-                                        #   in Loop: Header=BB4_122 Depth=2
+.LBB4_155:                              # %._crit_edge610.1.preheader
+                                        #   in Loop: Header=BB4_123 Depth=2
 	slli.d	$a7, $a7, 1
 	slli.d	$a5, $a5, 1
 	sub.d	$a5, $a7, $a5
 	.p2align	4, , 16
-.LBB4_155:                              # %._crit_edge610.1
-                                        #   Parent Loop BB4_27 Depth=1
-                                        #     Parent Loop BB4_122 Depth=2
+.LBB4_156:                              # %._crit_edge610.1
+                                        #   Parent Loop BB4_28 Depth=1
+                                        #     Parent Loop BB4_123 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	addi.w	$a6, $a6, 4
 	add.d	$a0, $a0, $a5
-	blt	$a6, $a4, .LBB4_155
-	b	.LBB4_120
-.LBB4_156:
+	blt	$a6, $a4, .LBB4_156
+	b	.LBB4_121
+.LBB4_157:
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -5480,7 +5472,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$ra, $sp, 456                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 464
 	ret
-.LBB4_157:
+.LBB4_158:
 	pcalau12i	$a3, %got_pc_hi20(spiral_search_x)
 	ld.d	$a3, $a3, %got_pc_lo12(spiral_search_x)
 	pcalau12i	$a4, %got_pc_hi20(spiral_search_y)
@@ -5493,29 +5485,29 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$a5, $zero
 	sub.w	$a6, $a6, $t2
 	sub.w	$a7, $a7, $t1
-	b	.LBB4_159
+	b	.LBB4_160
 	.p2align	4, , 16
-.LBB4_158:                              #   in Loop: Header=BB4_159 Depth=1
+.LBB4_159:                              #   in Loop: Header=BB4_160 Depth=1
 	addi.d	$a5, $a5, 1
 	addi.d	$a4, $a4, 1
 	addi.d	$a3, $a3, 2
 	addi.d	$a0, $a0, 2
 	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
-	bgeu	$a5, $t0, .LBB4_25
-.LBB4_159:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$a5, $t0, .LBB4_26
+.LBB4_160:                              # =>This Inner Loop Header: Depth=1
 	ld.h	$t0, $a0, 0
-	bne	$a6, $t0, .LBB4_158
-# %bb.160:                              #   in Loop: Header=BB4_159 Depth=1
+	bne	$a6, $t0, .LBB4_159
+# %bb.161:                              #   in Loop: Header=BB4_160 Depth=1
 	ld.h	$t0, $a3, 0
-	bne	$a7, $t0, .LBB4_158
-# %bb.161:
+	bne	$a7, $t0, .LBB4_159
+# %bb.162:
 	pcalau12i	$a0, %pc_hi20(pos_00)
 	ld.d	$a0, $a0, %pc_lo12(pos_00)
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a3
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	stx.w	$a4, $a0, $a3
-	b	.LBB4_25
+	b	.LBB4_26
 .Lfunc_end4:
 	.size	SetupFastFullPelSearch, .Lfunc_end4-SetupFastFullPelSearch
                                         # -- End function

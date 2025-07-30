@@ -19,81 +19,79 @@ hypre_InitializeTiming:                 # @hypre_InitializeTiming
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$s8, %pc_hi20(hypre_global_timing)
 	ld.d	$s1, $s8, %pc_lo12(hypre_global_timing)
-	move	$s7, $a0
-	bnez	$s1, .LBB0_2
+	move	$s6, $a0
+	beqz	$s1, .LBB0_11
 # %bb.1:
+	ld.wu	$fp, $s1, 52
+	addi.w	$s7, $fp, 0
+	blez	$s7, .LBB0_12
+.LBB0_2:                                # %.lr.ph
+	ld.d	$s2, $s1, 40
+	move	$s3, $zero
+	move	$s0, $zero
+	slli.d	$s4, $s7, 3
+	b	.LBB0_4
+	.p2align	4, , 16
+.LBB0_3:                                #   in Loop: Header=BB0_4 Depth=1
+	addi.w	$s0, $s0, 1
+	addi.d	$s3, $s3, 8
+	addi.d	$s2, $s2, 4
+	beq	$s4, $s3, .LBB0_7
+.LBB0_4:                                # =>This Inner Loop Header: Depth=1
+	ld.w	$s5, $s2, 0
+	blez	$s5, .LBB0_3
+# %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
+	ld.d	$a0, $s1, 24
+	ldx.d	$a1, $a0, $s3
+	move	$a0, $s6
+	pcaddu18i	$ra, %call36(strcmp)
+	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB0_3
+# %bb.6:                                # %.thread
+	addi.d	$a0, $s5, 1
+	st.w	$a0, $s2, 0
+	b	.LBB0_19
+.LBB0_7:                                # %.lr.ph68
+	ld.d	$a0, $s1, 40
+	move	$s0, $zero
+	move	$a1, $fp
+	.p2align	4, , 16
+.LBB0_8:                                # =>This Inner Loop Header: Depth=1
+	ld.w	$a2, $a0, 0
+	beqz	$a2, .LBB0_13
+# %bb.9:                                # %.critedge
+                                        #   in Loop: Header=BB0_8 Depth=1
+	addi.w	$s0, $s0, 1
+	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, 4
+	bnez	$a1, .LBB0_8
+# %bb.10:
+	move	$s0, $s7
+	b	.LBB0_14
+.LBB0_11:
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 80
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	st.d	$a0, $s8, %pc_lo12(hypre_global_timing)
-.LBB0_2:
 	ld.wu	$fp, $s1, 52
-	addi.w	$a0, $fp, 0
-	ori	$s2, $zero, 1
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	blt	$a0, $s2, .LBB0_12
-# %bb.3:                                # %.lr.ph
-	ld.d	$s3, $s1, 40
-	move	$s4, $zero
-	move	$s0, $zero
-	slli.d	$s5, $a0, 3
-	b	.LBB0_5
-	.p2align	4, , 16
-.LBB0_4:                                #   in Loop: Header=BB0_5 Depth=1
-	addi.w	$s0, $s0, 1
-	addi.d	$s4, $s4, 8
-	addi.d	$s3, $s3, 4
-	beq	$s5, $s4, .LBB0_8
-.LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$s6, $s3, 0
-	blt	$s6, $s2, .LBB0_4
-# %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $s1, 24
-	ldx.d	$a1, $a0, $s4
-	move	$a0, $s7
-	pcaddu18i	$ra, %call36(strcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_4
-# %bb.7:                                # %.thread
-	addi.d	$a0, $s6, 1
-	st.w	$a0, $s3, 0
-	b	.LBB0_19
-.LBB0_8:                                # %.lr.ph68
-	ld.d	$a0, $s1, 40
-	move	$s0, $zero
-	move	$a1, $fp
-	.p2align	4, , 16
-.LBB0_9:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a0, 0
-	beqz	$a2, .LBB0_13
-# %bb.10:                               # %.critedge
-                                        #   in Loop: Header=BB0_9 Depth=1
-	addi.w	$s0, $s0, 1
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB0_9
-# %bb.11:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	move	$s0, $a0
-	b	.LBB0_14
+	addi.w	$s7, $fp, 0
+	bgtz	$s7, .LBB0_2
 .LBB0_12:
 	move	$s0, $zero
-	beq	$zero, $a0, .LBB0_14
-	b	.LBB0_18
-.LBB0_13:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	bne	$s0, $a0, .LBB0_18
+.LBB0_13:                               # %._crit_edge
+	bne	$s0, $s7, .LBB0_18
 .LBB0_14:                               # %._crit_edge.thread
-	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$s6, $s1, 0
 	ld.d	$s5, $s1, 8
 	ld.d	$s4, $s1, 16
 	ld.d	$s3, $s1, 24
 	ld.d	$s2, $s1, 32
 	ld.d	$s1, $s1, 40
-	addi.w	$s7, $a0, 1
+	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
+	addi.w	$s7, $s7, 1
 	ori	$a1, $zero, 8
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -133,7 +131,7 @@ hypre_InitializeTiming:                 # @hypre_InitializeTiming
 	st.d	$a0, $a1, 40
 	addi.d	$a0, $a2, 1
 	st.w	$a0, $a1, 52
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	beqz	$a0, .LBB0_17
 # %bb.15:                               # %.lr.ph73.preheader
 	move	$a0, $zero
@@ -182,7 +180,7 @@ hypre_InitializeTiming:                 # @hypre_InitializeTiming
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
 .LBB0_18:
 	ori	$a0, $zero, 80
 	ori	$a1, $zero, 1
@@ -197,7 +195,7 @@ hypre_InitializeTiming:                 # @hypre_InitializeTiming
 	ld.d	$a0, $s1, 24
 	ldx.d	$a0, $a0, $a2
 	ori	$a2, $zero, 79
-	move	$a1, $s7
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 32
@@ -245,8 +243,7 @@ hypre_FinalizeTiming:                   # @hypre_FinalizeTiming
 	ld.d	$a3, $a1, 40
 	slli.d	$a2, $a0, 2
 	ldx.w	$a2, $a3, $a2
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB1_4
+	blez	$a2, .LBB1_4
 # %bb.3:
 	alsl.d	$a3, $a0, $a3, 2
 	addi.w	$a2, $a2, -1
@@ -258,8 +255,7 @@ hypre_FinalizeTiming:                   # @hypre_FinalizeTiming
 	bnez	$a0, .LBB1_11
 .LBB1_6:                                # %.preheader
 	ld.w	$a0, $a1, 52
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_9
+	blez	$a0, .LBB1_9
 # %bb.7:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
@@ -508,8 +504,7 @@ hypre_ClearTiming:                      # @hypre_ClearTiming
 	beqz	$a3, .LBB5_6
 # %bb.1:                                # %.preheader
 	ld.w	$a0, $a3, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_6
+	blez	$a0, .LBB5_6
 # %bb.2:                                # %.lr.ph
 	ld.d	$a1, $a3, 0
 	ld.d	$a2, $a3, 8
@@ -582,28 +577,27 @@ hypre_ClearTiming:                      # @hypre_ClearTiming
 	.type	hypre_PrintTiming,@function
 hypre_PrintTiming:                      # @hypre_PrintTiming
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$s3, %pc_hi20(hypre_global_timing)
 	ld.d	$a2, $s3, %pc_lo12(hypre_global_timing)
 	beqz	$a2, .LBB6_9
 # %bb.1:
 	move	$fp, $a1
 	move	$s0, $a0
-	addi.d	$a1, $sp, 12
+	addi.d	$a1, $sp, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hypre_MPI_Comm_rank)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 12
+	ld.w	$a0, $sp, 4
 	bnez	$a0, .LBB6_3
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
@@ -622,12 +616,11 @@ hypre_PrintTiming:                      # @hypre_PrintTiming
 .LBB6_3:
 	ld.d	$a0, $s3, %pc_lo12(hypre_global_timing)
 	ld.w	$a1, $a0, 52
-	ori	$s4, $zero, 1
-	blt	$a1, $s4, .LBB6_9
+	blez	$a1, .LBB6_9
 # %bb.4:                                # %.lr.ph.preheader
+	move	$s4, $zero
 	move	$s5, $zero
 	move	$s6, $zero
-	move	$s7, $zero
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$s0, $a1, %pc_lo12(.L.str.1)
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
@@ -638,30 +631,22 @@ hypre_PrintTiming:                      # @hypre_PrintTiming
 	.p2align	4, , 16
 .LBB6_5:                                #   in Loop: Header=BB6_6 Depth=1
 	ld.w	$a1, $a0, 52
-	addi.d	$s7, $s7, 1
-	addi.d	$s6, $s6, 8
-	addi.d	$s5, $s5, 4
-	bge	$s7, $a1, .LBB6_9
+	addi.d	$s6, $s6, 1
+	addi.d	$s5, $s5, 8
+	addi.d	$s4, $s4, 4
+	bge	$s6, $a1, .LBB6_9
 .LBB6_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $a0, 40
-	ldx.w	$a1, $a1, $s5
-	blt	$a1, $s4, .LBB6_5
+	ldx.w	$a1, $a1, $s4
+	blez	$a1, .LBB6_5
 # %bb.7:                                #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a1, $a0, 0
-	fldx.d	$fa0, $a1, $s6
+	fldx.d	$fa0, $a1, $s5
 	ld.d	$a0, $a0, 8
-	fst.d	$fa0, $sp, 40
-	fldx.d	$fa0, $a0, $s6
 	fst.d	$fa0, $sp, 32
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 24
-	ori	$a2, $zero, 1
-	ori	$a4, $zero, 2
-	move	$a3, $zero
-	move	$a5, $fp
-	pcaddu18i	$ra, %call36(hypre_MPI_Allreduce)
-	jirl	$ra, $ra, 0
+	fldx.d	$fa0, $a0, $s5
+	fst.d	$fa0, $sp, 24
 	addi.d	$a0, $sp, 32
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 1
@@ -670,20 +655,28 @@ hypre_PrintTiming:                      # @hypre_PrintTiming
 	move	$a5, $fp
 	pcaddu18i	$ra, %call36(hypre_MPI_Allreduce)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 12
+	addi.d	$a0, $sp, 24
+	addi.d	$a1, $sp, 8
+	ori	$a2, $zero, 1
+	ori	$a4, $zero, 2
+	move	$a3, $zero
+	move	$a5, $fp
+	pcaddu18i	$ra, %call36(hypre_MPI_Allreduce)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $sp, 4
 	ld.d	$a0, $s3, %pc_lo12(hypre_global_timing)
 	bnez	$a1, .LBB6_5
 # %bb.8:                                #   in Loop: Header=BB6_6 Depth=1
 	ld.d	$a0, $a0, 24
-	ldx.d	$a1, $a0, $s6
+	ldx.d	$a1, $a0, $s5
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24
+	ld.d	$a1, $sp, 16
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 16
+	ld.d	$a1, $sp, 8
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -691,17 +684,16 @@ hypre_PrintTiming:                      # @hypre_PrintTiming
 	b	.LBB6_5
 .LBB6_9:                                # %.loopexit
 	move	$a0, $zero
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end6:
 	.size	hypre_PrintTiming, .Lfunc_end6-hypre_PrintTiming

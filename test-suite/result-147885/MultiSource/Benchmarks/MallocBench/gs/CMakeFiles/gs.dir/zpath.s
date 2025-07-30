@@ -389,8 +389,7 @@ zarct:                                  # @zarct
 	addi.d	$a2, $sp, 4
 	pcaddu18i	$ra, %call36(num_params)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_3
+	bltz	$a0, .LBB10_3
 # %bb.1:                                # %common_arct.exit
 	pcalau12i	$a0, %got_pc_hi20(igs)
 	ld.d	$a0, $a0, %got_pc_lo12(igs)
@@ -475,8 +474,7 @@ zarcto:                                 # @zarcto
 	addi.d	$a2, $sp, 28
 	pcaddu18i	$ra, %call36(num_params)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB12_3
+	bltz	$a0, .LBB12_3
 # %bb.1:                                # %common_arct.exit
 	pcalau12i	$a0, %got_pc_hi20(igs)
 	ld.d	$a0, $a0, %got_pc_lo12(igs)

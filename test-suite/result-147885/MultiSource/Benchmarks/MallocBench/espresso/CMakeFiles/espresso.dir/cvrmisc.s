@@ -33,9 +33,8 @@ cover_cost:                             # @cover_cost
 	vst	$vr0, $fp, 4
 	st.w	$zero, $fp, 20
 	ld.w	$a2, $a1, 8
-	ori	$a3, $zero, 1
 	st.w	$a0, $fp, 0
-	blt	$a2, $a3, .LBB0_9
+	blez	$a2, .LBB0_9
 # %bb.3:                                # %.lr.ph
 	pcalau12i	$a3, %got_pc_hi20(cdata)
 	ld.d	$a3, $a3, %got_pc_lo12(cdata)
@@ -113,8 +112,7 @@ cover_cost:                             # @cover_cost
 	move	$a1, $zero
 	ld.w	$a6, $s0, 0
 	mul.w	$a5, $a6, $a0
-	ori	$a0, $zero, 1
-	bge	$a5, $a0, .LBB0_20
+	bgtz	$a5, .LBB0_20
 	b	.LBB0_22
 .LBB0_19:
 	pcalau12i	$a2, %got_pc_hi20(cdata)
@@ -129,8 +127,7 @@ cover_cost:                             # @cover_cost
 	st.w	$a1, $fp, 8
 	ld.w	$a6, $s0, 0
 	mul.w	$a5, $a6, $a0
-	ori	$a0, $zero, 1
-	blt	$a5, $a0, .LBB0_22
+	blez	$a5, .LBB0_22
 .LBB0_20:                               # %.lr.ph60
 	ld.d	$a0, $s0, 24
 	move	$a2, $zero

@@ -73,8 +73,7 @@ main:                                   # @main
 	ori	$a4, $a4, 57
 	lu12i.w	$a5, 2
 	ori	$a5, $a5, 1808
-	addi.w	$a6, $zero, -1
-	ori	$a7, $zero, 71
+	ori	$a6, $zero, 71
 	b	.LBB2_2
 	.p2align	4, , 16
 .LBB2_1:                                # %.critedge
@@ -84,117 +83,121 @@ main:                                   # @main
 .LBB2_2:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_3 Depth 2
                                         #     Child Loop BB2_6 Depth 2
+	move	$a7, $zero
 	move	$t0, $zero
-	move	$t1, $zero
 	.p2align	4, , 16
 .LBB2_3:                                #   Parent Loop BB2_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	mul.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a4
-	bstrpick.d	$t2, $a1, 12, 9
-	beqz	$t2, .LBB2_5
+	bstrpick.d	$t1, $a1, 12, 9
+	beqz	$t1, .LBB2_5
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=2
-	add.w	$t1, $t2, $t1
-	sll.d	$t0, $t0, $t2
-	slli.d	$t3, $a1, 55
-	srai.d	$t3, $t3, 63
-	sll.w	$t2, $a6, $t2
-	nor	$t2, $t2, $zero
-	addi.w	$t2, $t2, 0
-	and	$t2, $t3, $t2
-	or	$t0, $t2, $t0
-	bltu	$t1, $a7, .LBB2_3
+	add.w	$t0, $t1, $t0
+	sll.d	$a7, $a7, $t1
+	slli.d	$t2, $a1, 55
+	srai.d	$t2, $t2, 63
+	addi.d	$t3, $zero, -1
+	sll.w	$t1, $t3, $t1
+	nor	$t1, $t1, $zero
+	addi.w	$t1, $t1, 0
+	and	$t1, $t2, $t1
+	or	$a7, $t1, $a7
+	bltu	$t0, $a6, .LBB2_3
 .LBB2_5:                                # %random_bitstring.exit
                                         #   in Loop: Header=BB2_2 Depth=1
+	move	$t0, $zero
 	move	$t1, $zero
-	move	$t2, $zero
 	.p2align	4, , 16
 .LBB2_6:                                #   Parent Loop BB2_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	mul.d	$a1, $a1, $a3
 	add.d	$a1, $a1, $a4
-	bstrpick.d	$t3, $a1, 12, 9
-	beqz	$t3, .LBB2_8
+	bstrpick.d	$t2, $a1, 12, 9
+	beqz	$t2, .LBB2_8
 # %bb.7:                                #   in Loop: Header=BB2_6 Depth=2
-	add.w	$t2, $t3, $t2
-	sll.d	$t1, $t1, $t3
-	slli.d	$t4, $a1, 55
-	srai.d	$t4, $t4, 63
-	sll.w	$t3, $a6, $t3
-	nor	$t3, $t3, $zero
-	addi.w	$t3, $t3, 0
-	and	$t3, $t4, $t3
-	or	$t1, $t3, $t1
-	bltu	$t2, $a7, .LBB2_6
+	add.w	$t1, $t2, $t1
+	sll.d	$t0, $t0, $t2
+	slli.d	$t3, $a1, 55
+	srai.d	$t3, $t3, 63
+	addi.d	$t4, $zero, -1
+	sll.w	$t2, $t4, $t2
+	nor	$t2, $t2, $zero
+	addi.w	$t2, $t2, 0
+	and	$t2, $t3, $t2
+	or	$t0, $t2, $t0
+	bltu	$t1, $a6, .LBB2_6
 .LBB2_8:                                # %random_bitstring.exit194
                                         #   in Loop: Header=BB2_2 Depth=1
-	beqz	$t1, .LBB2_1
+	beqz	$t0, .LBB2_1
 # %bb.9:                                #   in Loop: Header=BB2_2 Depth=1
-	bstrpick.d	$t2, $t0, 62, 0
-	bnez	$t2, .LBB2_11
+	slli.d	$t1, $a7, 1
+	bnez	$t1, .LBB2_11
 # %bb.10:                               #   in Loop: Header=BB2_2 Depth=1
-	beq	$t1, $a6, .LBB2_1
+	addi.w	$t1, $zero, -1
+	beq	$t0, $t1, .LBB2_1
 .LBB2_11:                               #   in Loop: Header=BB2_2 Depth=1
-	mod.d	$t2, $t0, $t1
-	srai.d	$t3, $t2, 63
-	xor	$t2, $t2, $t3
-	sub.d	$t2, $t2, $t3
-	srai.d	$t3, $t1, 63
-	xor	$t4, $t1, $t3
-	sub.d	$t3, $t4, $t3
-	bgeu	$t2, $t3, .LBB2_22
-# %bb.12:                               #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$t2, $t1, 0
-	beqz	$t2, .LBB2_1
-# %bb.13:                               #   in Loop: Header=BB2_2 Depth=1
-	bstrpick.d	$t3, $t0, 30, 0
-	bnez	$t3, .LBB2_15
-# %bb.14:                               #   in Loop: Header=BB2_2 Depth=1
-	beq	$t2, $a6, .LBB2_1
-.LBB2_15:                               #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$t3, $t0, 0
-	mod.w	$t3, $t3, $t2
-	srai.d	$t4, $t3, 31
-	xor	$t5, $t3, $t4
-	sub.w	$t4, $t5, $t4
-	srai.d	$t2, $t2, 31
-	xor	$t5, $t1, $t2
-	sub.w	$t2, $t5, $t2
-	bgeu	$t4, $t2, .LBB2_22
-# %bb.16:                               #   in Loop: Header=BB2_2 Depth=1
-	beqz	$t3, .LBB2_18
-# %bb.17:                               #   in Loop: Header=BB2_2 Depth=1
-	xor	$t2, $t3, $t0
-	addi.w	$t2, $t2, 0
-	bge	$a6, $t2, .LBB2_22
-.LBB2_18:                               #   in Loop: Header=BB2_2 Depth=1
-	bstrpick.d	$t2, $t1, 15, 0
-	beqz	$t2, .LBB2_1
-# %bb.19:                               #   in Loop: Header=BB2_2 Depth=1
-	ext.w.h	$t2, $t0
-	ext.w.h	$t3, $t1
-	mod.w	$t2, $t2, $t3
-	srai.d	$t4, $t2, 31
-	xor	$t2, $t2, $t4
-	sub.w	$t2, $t2, $t4
-	srai.d	$t4, $t3, 31
-	xor	$t3, $t3, $t4
-	sub.d	$t3, $t3, $t4
-	bgeu	$t2, $t3, .LBB2_22
-# %bb.20:                               #   in Loop: Header=BB2_2 Depth=1
-	andi	$t2, $t1, 255
-	beqz	$t2, .LBB2_1
-# %bb.21:                               #   in Loop: Header=BB2_2 Depth=1
-	ext.w.b	$t1, $t1
-	ext.w.b	$t0, $t0
-	mod.d	$t0, $t0, $t1
-	srai.d	$t2, $t0, 63
-	xor	$t0, $t0, $t2
-	sub.d	$t0, $t0, $t2
-	srai.d	$t2, $t1, 31
+	mod.d	$t1, $a7, $t0
+	srai.d	$t2, $t1, 63
 	xor	$t1, $t1, $t2
 	sub.d	$t1, $t1, $t2
-	bltu	$t0, $t1, .LBB2_1
+	srai.d	$t2, $t0, 63
+	xor	$t3, $t0, $t2
+	sub.d	$t2, $t3, $t2
+	bgeu	$t1, $t2, .LBB2_22
+# %bb.12:                               #   in Loop: Header=BB2_2 Depth=1
+	addi.w	$t1, $t0, 0
+	beqz	$t1, .LBB2_1
+# %bb.13:                               #   in Loop: Header=BB2_2 Depth=1
+	slli.d	$t2, $a7, 33
+	bnez	$t2, .LBB2_15
+# %bb.14:                               #   in Loop: Header=BB2_2 Depth=1
+	addi.w	$t2, $zero, -1
+	beq	$t1, $t2, .LBB2_1
+.LBB2_15:                               #   in Loop: Header=BB2_2 Depth=1
+	addi.w	$t2, $a7, 0
+	mod.w	$t2, $t2, $t1
+	srai.d	$t3, $t2, 31
+	xor	$t4, $t2, $t3
+	sub.w	$t3, $t4, $t3
+	srai.d	$t1, $t1, 31
+	xor	$t4, $t0, $t1
+	sub.w	$t1, $t4, $t1
+	bgeu	$t3, $t1, .LBB2_22
+# %bb.16:                               #   in Loop: Header=BB2_2 Depth=1
+	beqz	$t2, .LBB2_18
+# %bb.17:                               #   in Loop: Header=BB2_2 Depth=1
+	xor	$t1, $t2, $a7
+	addi.w	$t1, $t1, 0
+	bltz	$t1, .LBB2_22
+.LBB2_18:                               #   in Loop: Header=BB2_2 Depth=1
+	slli.d	$t1, $t0, 48
+	beqz	$t1, .LBB2_1
+# %bb.19:                               #   in Loop: Header=BB2_2 Depth=1
+	ext.w.h	$t1, $a7
+	ext.w.h	$t2, $t0
+	mod.w	$t1, $t1, $t2
+	srai.d	$t3, $t1, 31
+	xor	$t1, $t1, $t3
+	sub.w	$t1, $t1, $t3
+	srai.d	$t3, $t2, 31
+	xor	$t2, $t2, $t3
+	sub.d	$t2, $t2, $t3
+	bgeu	$t1, $t2, .LBB2_22
+# %bb.20:                               #   in Loop: Header=BB2_2 Depth=1
+	andi	$t1, $t0, 255
+	beqz	$t1, .LBB2_1
+# %bb.21:                               #   in Loop: Header=BB2_2 Depth=1
+	ext.w.b	$t0, $t0
+	ext.w.b	$a7, $a7
+	mod.d	$a7, $a7, $t0
+	srai.d	$t1, $a7, 63
+	xor	$a7, $a7, $t1
+	sub.d	$a7, $a7, $t1
+	srai.d	$t1, $t0, 31
+	xor	$t0, $t0, $t1
+	sub.d	$t0, $t0, $t1
+	bltu	$a7, $t0, .LBB2_1
 .LBB2_22:
 	st.d	$a1, $a0, %pc_lo12(simple_rand.seed)
 	pcaddu18i	$ra, %call36(abort)

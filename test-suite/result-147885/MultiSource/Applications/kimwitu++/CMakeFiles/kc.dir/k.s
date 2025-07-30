@@ -256,9 +256,8 @@ _ZN2kc27impl_nocasestring_NoCaseStr8make_ownEi: # @_ZN2kc27impl_nocasestring_NoC
 	addi.w	$a0, $a1, 1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$s0, $a1, .LBB3_4
+	blez	$s0, .LBB3_4
 # %bb.1:                                # %.lr.ph
 	ld.d	$s2, $fp, 8
 	move	$s3, $s0
@@ -20414,10 +20413,9 @@ _ZN2kc12mkcasestringEPKci:              # @_ZN2kc12mkcasestringEPKci
 	move	$s0, $zero
 	b	.LBB737_7
 .LBB737_5:
-	addi.w	$a1, $zero, -1
 	ori	$a0, $zero, 48
 	move	$s2, $fp
-	blt	$a1, $s0, .LBB737_8
+	bgez	$s0, .LBB737_8
 # %bb.6:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
@@ -20484,8 +20482,8 @@ _ZN2kc14mknocasestringEPKci:            # @_ZN2kc14mknocasestringEPKci
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	move	$s0, $a1
-	move	$s1, $a0
+	move	$s1, $a1
+	move	$s0, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -20494,17 +20492,17 @@ _ZN2kc14mknocasestringEPKci:            # @_ZN2kc14mknocasestringEPKci
 	move	$fp, $a0
 	addi.d	$a0, $a1, 16
 	st.d	$a0, $fp, 0
-	st.d	$s1, $fp, 8
-	bltz	$s0, .LBB738_7
+	st.d	$s0, $fp, 8
+	bltz	$s1, .LBB738_7
 # %bb.1:
-	addi.w	$a0, $s0, 1
+	addi.w	$a0, $s1, 1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	beqz	$s0, .LBB738_5
+	beqz	$s1, .LBB738_5
 # %bb.2:                                # %.lr.ph.i
-	bstrpick.d	$s3, $s0, 31, 0
-	move	$s4, $s1
+	bstrpick.d	$s3, $s1, 31, 0
+	move	$s4, $s0
 	move	$s5, $s2
 	move	$s6, $s3
 	.p2align	4, , 16
@@ -20530,8 +20528,7 @@ _ZN2kc14mknocasestringEPKci:            # @_ZN2kc14mknocasestringEPKci
 	pcalau12i	$a0, %pc_hi20(_ZN2kc10hashtablesE+8)
 	ld.d	$a0, $a0, %pc_lo12(_ZN2kc10hashtablesE+8)
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB738_16
+	beqz	$a1, .LBB738_16
 # %bb.8:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -20546,12 +20543,11 @@ _ZN2kc14mknocasestringEPKci:            # @_ZN2kc14mknocasestringEPKci
 	ld.d	$s2, $a0, 32
 	bne	$s2, $fp, .LBB738_17
 .LBB738_10:
-	addi.w	$a1, $zero, -1
 	ori	$a0, $zero, 48
 	move	$s2, $fp
-	blt	$a1, $s0, .LBB738_20
+	bgez	$s1, .LBB738_20
 # %bb.11:
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -20563,9 +20559,8 @@ _ZN2kc14mknocasestringEPKci:            # @_ZN2kc14mknocasestringEPKci
 	srai.d	$a0, $a0, 32
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s3, $a1, .LBB738_15
+	blez	$s3, .LBB738_15
 # %bb.12:                               # %.lr.ph.i21
 	ld.d	$s3, $fp, 8
 	bstrpick.d	$s1, $s1, 30, 0
@@ -20599,7 +20594,7 @@ _ZN2kc14mknocasestringEPKci:            # @_ZN2kc14mknocasestringEPKci
 	beq	$s2, $fp, .LBB738_10
 .LBB738_17:
 	ori	$a0, $zero, 64
-	bgez	$s0, .LBB738_20
+	bgez	$s1, .LBB738_20
 # %bb.18:
 	move	$s0, $zero
 .LBB738_19:                             # %.sink.split
@@ -20701,9 +20696,8 @@ _ZN2kc18hashtable_struct_t15ht_check_insertIPNS_17impl_integer__IntEEET_S4_: # @
 	.cfi_offset 27, -56
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 321
-	ori	$a2, $zero, 1
 	move	$fp, $a1
-	bne	$a0, $a2, .LBB740_11
+	beqz	$a0, .LBB740_11
 # %bb.1:
 	ld.d	$a0, $s0, 288
 	addi.d	$a1, $s0, 288
@@ -20927,9 +20921,8 @@ _ZN2kc18hashtable_struct_t15ht_check_insertIPNS_15impl_real__RealEEET_S4_: # @_Z
 	.cfi_offset 27, -56
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 321
-	ori	$a2, $zero, 1
 	move	$fp, $a1
-	bne	$a0, $a2, .LBB742_11
+	beqz	$a0, .LBB742_11
 # %bb.1:
 	ld.d	$a0, $s0, 288
 	addi.d	$a1, $s0, 288
@@ -21109,8 +21102,7 @@ _ZN2kc9mkvoidptrEPv:                    # @_ZN2kc9mkvoidptrEPv
 	st.d	$a1, $fp, 0
 	st.d	$s0, $fp, 8
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB743_3
+	beqz	$a1, .LBB743_3
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -21175,8 +21167,7 @@ _ZN2kc3StrEPNS_20impl_casestring__StrE: # @_ZN2kc3StrEPNS_20impl_casestring__Str
 	st.d	$a1, $fp, 0
 	st.d	$s0, $fp, 40
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB744_4
+	beqz	$a1, .LBB744_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -23081,8 +23072,7 @@ _ZN2kc11IncludeFileEPNS_20impl_casestring__StrE: # @_ZN2kc11IncludeFileEPNS_20im
 	st.d	$a1, $fp, 0
 	st.d	$s0, $fp, 32
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB799_4
+	beqz	$a1, .LBB799_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -24839,8 +24829,7 @@ _ZN2kc6FnFileEPNS_20impl_casestring__StrE: # @_ZN2kc6FnFileEPNS_20impl_casestrin
 	st.d	$a1, $fp, 0
 	st.d	$s0, $fp, 16
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB844_4
+	beqz	$a1, .LBB844_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -32714,8 +32703,7 @@ _ZN2kc24CountedPhylumdeclarationEPNS_11impl_uniqIDE: # @_ZN2kc24CountedPhylumdec
 	st.d	$a1, $fp, 0
 	st.d	$s0, $fp, 16
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1071_4
+	beqz	$a1, .LBB1071_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -32830,8 +32818,7 @@ _ZN2kc8NewlinesEv:                      # @_ZN2kc8NewlinesEv
 	addi.d	$a0, $a2, 16
 	st.d	$a0, $fp, 0
 	ld.bu	$a0, $a1, 321
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB1072_4
+	beqz	$a0, .LBB1072_4
 # %bb.1:
 	ld.d	$a0, $a1, 288
 	addi.d	$a2, $a1, 288
@@ -32913,8 +32900,7 @@ _ZN2kc14QuotedNewlinesEv:               # @_ZN2kc14QuotedNewlinesEv
 	addi.d	$a0, $a2, 16
 	st.d	$a0, $fp, 0
 	ld.bu	$a0, $a1, 321
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB1073_4
+	beqz	$a0, .LBB1073_4
 # %bb.1:
 	ld.d	$a0, $a1, 288
 	addi.d	$a2, $a1, 288
@@ -32996,8 +32982,7 @@ _ZN2kc5StarsEv:                         # @_ZN2kc5StarsEv
 	addi.d	$a0, $a2, 16
 	st.d	$a0, $fp, 0
 	ld.bu	$a0, $a1, 321
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB1074_4
+	beqz	$a0, .LBB1074_4
 # %bb.1:
 	ld.d	$a0, $a1, 288
 	addi.d	$a2, $a1, 288
@@ -33080,8 +33065,7 @@ _ZN2kc17NilbindingidmarksEv:            # @_ZN2kc17NilbindingidmarksEv
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 8
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1075_4
+	beqz	$a1, .LBB1075_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -33168,8 +33152,7 @@ _ZN2kc18ConsbindingidmarksEPNS_18impl_bindingidmarkEPNS_19impl_bindingidmarksE: 
 	st.d	$s1, $fp, 8
 	st.d	$s0, $fp, 16
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1076_4
+	beqz	$a1, .LBB1076_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -33253,8 +33236,7 @@ _ZN2kc13BindingIdMarkEPNS_11impl_uniqIDE: # @_ZN2kc13BindingIdMarkEPNS_11impl_un
 	st.d	$a1, $fp, 0
 	st.d	$s0, $fp, 16
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1077_4
+	beqz	$a1, .LBB1077_4
 # %bb.1:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -64213,8 +64195,7 @@ _ZNK2kc20impl_abstract_phylum4copyEb:   # @_ZNK2kc20impl_abstract_phylum4copyEb
 	st.d	$a1, $s3, 0
 	st.d	$s2, $s3, 8
 	ld.bu	$a1, $a0, 321
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1636_19
+	beqz	$a1, .LBB1636_19
 # %bb.7:
 	ld.d	$a1, $a0, 288
 	addi.d	$a2, $a0, 288
@@ -72082,9 +72063,8 @@ _ZNSt8_Rb_treeIPN2kc27impl_nocasestring_NoCaseStrES2_St9_IdentityIS2_ENS0_11phyl
 	ldx.d	$a2, $s1, $a1
 	bnez	$a2, .LBB2098_2
 # %bb.3:                                # %._crit_edge.i
-	addi.w	$a1, $zero, -1
 	move	$s3, $s1
-	blt	$a1, $a0, .LBB2098_6
+	bgez	$a0, .LBB2098_6
 .LBB2098_4:                             # %._crit_edge.thread.i
 	ld.d	$a0, $fp, 24
 	beq	$s1, $a0, .LBB2098_7
@@ -72102,8 +72082,7 @@ _ZNSt8_Rb_treeIPN2kc27impl_nocasestring_NoCaseStrES2_St9_IdentityIS2_ENS0_11phyl
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(strcasecmp)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2098_10
+	bgez	$a0, .LBB2098_10
 .LBB2098_7:                             # %select.unfold
 	ld.d	$s5, $s2, 0
 	ori	$s2, $zero, 1

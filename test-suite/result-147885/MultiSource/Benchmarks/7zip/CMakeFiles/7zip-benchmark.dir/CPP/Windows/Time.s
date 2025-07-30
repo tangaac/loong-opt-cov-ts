@@ -162,9 +162,8 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	and	$a0, $a2, $a0
 	sltui	$a2, $a5, 60
 	and	$a0, $a2, $a0
-	ori	$a2, $zero, 1
 	st.d	$zero, $a6, 0
-	bne	$a0, $a2, .LBB4_14
+	beqz	$a0, .LBB4_14
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	ori	$a2, $zero, 365

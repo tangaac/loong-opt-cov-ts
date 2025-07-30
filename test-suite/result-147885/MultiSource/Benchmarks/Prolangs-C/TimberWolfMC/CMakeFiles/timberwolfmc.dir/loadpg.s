@@ -17,8 +17,7 @@ loadpg:                                 # @loadpg
 	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
-	ori	$s2, $zero, 1
-	blt	$a1, $s2, .LBB0_42
+	blez	$a1, .LBB0_42
 # %bb.1:                                # %.lr.ph.preheader
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a0, $a1, 1
@@ -26,6 +25,7 @@ loadpg:                                 # @loadpg
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(pinlist)
 	ld.d	$a0, $a0, %got_pc_lo12(pinlist)
+	ori	$s2, $zero, 1
 	pcalau12i	$a1, %got_pc_hi20(numnodes)
 	ld.d	$fp, $a1, %got_pc_lo12(numnodes)
 	pcalau12i	$a1, %got_pc_hi20(gnodeArray)
@@ -451,10 +451,10 @@ identify2:                              # @identify2
 	st.h	$t2, $t5, 2
 	beqz	$t0, .LBB1_16
 # %bb.1:                                # %.lr.ph
-	ld.d	$t2, $a7, 0
-	move	$t1, $zero
-	lu12i.w	$t3, 244140
-	ori	$t3, $t3, 2559
+	ld.d	$t1, $a7, 0
+	move	$t3, $zero
+	lu12i.w	$t2, 244140
+	ori	$t2, $t2, 2559
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
@@ -462,11 +462,11 @@ identify2:                              # @identify2
 	beqz	$t0, .LBB1_5
 .LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$t4, $t0, 8
-	blt	$t3, $t4, .LBB1_2
+	blt	$t2, $t4, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
-	addi.w	$t1, $t1, 1
-	slli.d	$t4, $t1, 3
-	ldx.d	$t4, $t2, $t4
+	addi.w	$t3, $t3, 1
+	slli.d	$t4, $t3, 3
+	ldx.d	$t4, $t1, $t4
 	ld.h	$t5, $t4, 0
 	ld.h	$t6, $t0, 0
 	addi.d	$t5, $t5, 1
@@ -476,30 +476,30 @@ identify2:                              # @identify2
 	stx.h	$t6, $t4, $t5
 	b	.LBB1_2
 .LBB1_5:                                # %.preheader92
-	ori	$t0, $zero, 1
-	blt	$t1, $t0, .LBB1_16
+	blez	$t3, .LBB1_16
 # %bb.6:                                # %.preheader91.lr.ph
-	pcalau12i	$t2, %got_pc_hi20(numnodes)
-	ld.d	$t3, $t2, %got_pc_lo12(numnodes)
-	ld.d	$t2, $a7, 0
-	ld.w	$t3, $t3, 0
-	addi.d	$t1, $t1, 1
-	bstrpick.d	$t1, $t1, 31, 0
+	pcalau12i	$t0, %got_pc_hi20(numnodes)
+	ld.d	$t0, $t0, %got_pc_lo12(numnodes)
+	ld.d	$t1, $a7, 0
+	ld.w	$t2, $t0, 0
+	addi.d	$t0, $t3, 1
+	bstrpick.d	$t0, $t0, 31, 0
+	ori	$t3, $zero, 1
 	b	.LBB1_8
 	.p2align	4, , 16
 .LBB1_7:                                # %._crit_edge
                                         #   in Loop: Header=BB1_8 Depth=1
-	addi.d	$t0, $t0, 1
-	beq	$t0, $t1, .LBB1_13
+	addi.d	$t3, $t3, 1
+	beq	$t3, $t0, .LBB1_13
 .LBB1_8:                                # %.preheader91
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_11 Depth 2
-	slli.d	$t4, $t0, 3
-	ldx.d	$t4, $t2, $t4
+	slli.d	$t4, $t3, 3
+	ldx.d	$t4, $t1, $t4
 	ld.h	$t7, $t4, 0
 	slli.d	$t5, $t7, 1
 	ldx.h	$t5, $t4, $t5
-	bge	$t3, $t5, .LBB1_7
+	bge	$t2, $t5, .LBB1_7
 # %bb.9:                                # %.lr.ph102.preheader
                                         #   in Loop: Header=BB1_8 Depth=1
 	bstrpick.d	$t6, $t7, 15, 0
@@ -518,7 +518,7 @@ identify2:                              # @identify2
 	ldx.h	$fp, $t4, $t6
 	bstrpick.d	$t6, $t7, 15, 0
 	bstrpick.d	$t8, $fp, 15, 0
-	bge	$t3, $fp, .LBB1_7
+	bge	$t2, $fp, .LBB1_7
 .LBB1_11:                               # %.lr.ph102
                                         #   Parent Loop BB1_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -535,20 +535,20 @@ identify2:                              # @identify2
 	b	.LBB1_10
 .LBB1_13:                               # %.lr.ph107
 	ld.d	$a7, $a7, 0
-	ld.w	$t0, $a1, 0
+	ld.w	$t1, $a1, 0
 	addi.d	$a7, $a7, 8
-	addi.d	$t1, $t1, -1
+	addi.d	$t0, $t0, -1
 	.p2align	4, , 16
 .LBB1_14:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$t2, $a7, 0
 	ld.h	$t3, $t2, 0
 	slli.d	$t3, $t3, 1
 	ldx.h	$t2, $t2, $t3
-	beq	$t0, $t2, .LBB1_17
+	beq	$t1, $t2, .LBB1_17
 # %bb.15:                               #   in Loop: Header=BB1_14 Depth=1
-	addi.d	$t1, $t1, -1
+	addi.d	$t0, $t0, -1
 	addi.d	$a7, $a7, 8
-	bnez	$t1, .LBB1_14
+	bnez	$t0, .LBB1_14
 .LBB1_16:
 	move	$a0, $zero
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload

@@ -17,8 +17,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	addi.w	$a2, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_4
+	blez	$a2, .LBB0_4
 .LBB0_2:                                # %.preheader31.us.preheader
 	mul.d	$a0, $a2, $a2
 	mul.d	$a1, $a0, $a0

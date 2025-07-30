@@ -25,11 +25,10 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	addi.d	$sp, $sp, -16
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	ori	$t0, $zero, 1
 	bstrpick.d	$a7, $a1, 31, 0
-	blt	$a0, $t0, .LBB0_21
+	blez	$a0, .LBB0_21
 # %bb.1:
-	blt	$a1, $t0, .LBB0_21
+	blez	$a1, .LBB0_21
 # %bb.2:                                # %.preheader131.us.preheader
 	move	$t1, $zero
 	mul.d	$t0, $a7, $a0
@@ -155,8 +154,7 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	bnez	$t6, .LBB0_10
 	b	.LBB0_3
 .LBB0_11:                               # %._crit_edge134
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_21
+	blez	$a0, .LBB0_21
 # %bb.12:                               # %.preheader130.us.preheader
 	move	$a2, $zero
 	ori	$t1, $zero, 256
@@ -242,10 +240,9 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	add.d	$a2, $a4, $a2
 	jr	$a2
 .LBB0_23:                               # %.preheader120
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_62
+	blez	$a0, .LBB0_62
 # %bb.24:                               # %.preheader120
-	blt	$a1, $a2, .LBB0_62
+	blez	$a1, .LBB0_62
 # %bb.25:                               # %.preheader.us.preheader
 	move	$a1, $zero
 	slli.d	$a2, $a7, 2
@@ -280,10 +277,9 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	bne	$a1, $a0, .LBB0_26
 	b	.LBB0_62
 .LBB0_29:                               # %.preheader125
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_62
+	blez	$a0, .LBB0_62
 # %bb.30:                               # %.preheader125
-	blt	$a1, $a2, .LBB0_62
+	blez	$a1, .LBB0_62
 # %bb.31:                               # %.preheader124.us.preheader
 	move	$a2, $zero
 	sltui	$a1, $a1, 4
@@ -379,10 +375,9 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	bne	$a7, $t2, .LBB0_39
 	b	.LBB0_32
 .LBB0_40:                               # %.preheader122
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_62
+	blez	$a0, .LBB0_62
 # %bb.41:                               # %.preheader122
-	blt	$a1, $a2, .LBB0_62
+	blez	$a1, .LBB0_62
 # %bb.42:                               # %.preheader121.us.preheader
 	move	$a2, $zero
 	bstrpick.d	$a4, $a7, 30, 2
@@ -497,10 +492,9 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	bnez	$t7, .LBB0_50
 	b	.LBB0_43
 .LBB0_51:                               # %.preheader128
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_62
+	blez	$a0, .LBB0_62
 # %bb.52:                               # %.preheader128
-	blt	$a1, $a2, .LBB0_62
+	blez	$a1, .LBB0_62
 # %bb.53:                               # %.preheader127.us.preheader
 	move	$a2, $zero
 	sltui	$a1, $a1, 4

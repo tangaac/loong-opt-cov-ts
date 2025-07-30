@@ -508,10 +508,9 @@ _Z12harrisKerneliiPA2052_fPA2048_fPA2050_fS4_S4_S4_S4_S2_S2_S2_S2_S2_: # @_Z12ha
 	bnez	$fp, .LBB0_46
 	b	.LBB0_39
 .LBB0_47:                               # %.preheader308
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_104
+	blez	$a0, .LBB0_104
 # %bb.48:                               # %.preheader308
-	blt	$a1, $a2, .LBB0_104
+	blez	$a1, .LBB0_104
 # %bb.49:                               # %.preheader307.us.preheader
 	move	$s5, $zero
 	ld.d	$a3, $sp, 184
@@ -636,8 +635,7 @@ _Z12harrisKerneliiPA2052_fPA2048_fPA2050_fS4_S4_S4_S4_S2_S2_S2_S2_S2_: # @_Z12ha
 	bnez	$s8, .LBB0_57
 	b	.LBB0_50
 .LBB0_58:                               # %.preheader306
-	ori	$t0, $zero, 1
-	blt	$a0, $t0, .LBB0_104
+	blez	$a0, .LBB0_104
 # %bb.59:                               # %.preheader305.us.preheader
 	move	$ra, $zero
 	slli.d	$s3, $a0, 13

@@ -35,8 +35,7 @@ runTestbench:                           # @runTestbench
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB0_7
+	blez	$fp, .LBB0_7
 # %bb.1:                                # %.preheader.us.preheader
 	move	$s1, $zero
 	alsl.d	$s3, $fp, $s0, 2

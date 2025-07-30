@@ -103,21 +103,21 @@ jpeg_idct_ifast:                        # @jpeg_idct_ifast
 	ld.h	$s1, $a2, -32
 	ld.h	$t7, $a2, -16
 	ld.h	$s2, $a2, 0
-	ld.h	$t8, $a2, 16
 	or	$t5, $s1, $t6
 	or	$t5, $t5, $t7
 	or	$t5, $t5, $s2
-	or	$t5, $t5, $t8
+	ld.h	$t8, $a2, 16
 	ld.h	$s3, $a2, 32
 	ld.h	$fp, $a2, 48
 	ld.h	$s0, $a2, -64
 	ldx.w	$s4, $a1, $a6
+	or	$t5, $t5, $t8
 	or	$t5, $t5, $s3
 	or	$t5, $t5, $fp
-	bstrpick.d	$s5, $t5, 15, 0
 	mul.d	$s0, $s4, $s0
+	slli.d	$s4, $t5, 48
 	add.d	$t5, $t0, $a6
-	bnez	$s5, .LBB0_1
+	bnez	$s4, .LBB0_1
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	stx.w	$s0, $a6, $t0
 	st.w	$s0, $t5, 32

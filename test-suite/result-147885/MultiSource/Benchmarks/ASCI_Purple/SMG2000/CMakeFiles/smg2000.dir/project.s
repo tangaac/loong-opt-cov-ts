@@ -79,8 +79,7 @@ hypre_ProjectBox:                       # @hypre_ProjectBox
 hypre_ProjectBoxArray:                  # @hypre_ProjectBoxArray
 # %bb.0:
 	ld.w	$a3, $a0, 8
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB1_3
+	blez	$a3, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a4, $a0, 0
 	move	$a3, $zero
@@ -165,102 +164,101 @@ hypre_ProjectBoxArray:                  # @hypre_ProjectBoxArray
 	.type	hypre_ProjectBoxArrayArray,@function
 hypre_ProjectBoxArrayArray:             # @hypre_ProjectBoxArrayArray
 # %bb.0:
-	ld.w	$a7, $a0, 8
-	ori	$a3, $zero, 1
-	blt	$a7, $a3, .LBB2_7
+	ld.w	$a6, $a0, 8
+	blez	$a6, .LBB2_7
 # %bb.1:                                # %.lr.ph22
-	ld.d	$a4, $a0, 0
-	move	$a5, $zero
+	ld.d	$a3, $a0, 0
+	move	$a4, $zero
 	b	.LBB2_3
 	.p2align	4, , 16
 .LBB2_2:                                # %._crit_edge
                                         #   in Loop: Header=BB2_3 Depth=1
-	addi.d	$a5, $a5, 1
-	bge	$a5, $a7, .LBB2_7
+	addi.d	$a4, $a4, 1
+	bge	$a4, $a6, .LBB2_7
 .LBB2_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_5 Depth 2
-	slli.d	$a6, $a5, 3
-	ldx.d	$a6, $a4, $a6
-	ld.w	$t0, $a6, 8
-	blt	$t0, $a3, .LBB2_2
+	slli.d	$a5, $a4, 3
+	ldx.d	$a5, $a3, $a5
+	ld.w	$a7, $a5, 8
+	blez	$a7, .LBB2_2
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$t0, $a6, 0
-	move	$a7, $zero
-	addi.d	$t0, $t0, 12
+	ld.d	$a7, $a5, 0
+	move	$a6, $zero
+	addi.d	$a7, $a7, 12
 	.p2align	4, , 16
 .LBB2_5:                                #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t1, $a1, 0
-	ld.w	$t2, $t0, -12
-	ld.w	$t3, $t0, 0
-	ld.w	$t4, $a2, 0
-	sub.w	$t2, $t2, $t1
-	sub.w	$t3, $t3, $t1
-	addi.d	$t5, $t4, -1
-	slt	$t6, $zero, $t2
-	maskeqz	$t6, $t5, $t6
-	add.w	$t2, $t6, $t2
-	srli.d	$t6, $t3, 31
-	and	$t5, $t6, $t5
-	sub.w	$t3, $t3, $t5
-	mod.w	$t5, $t2, $t4
-	sub.d	$t5, $t1, $t5
-	add.d	$t2, $t5, $t2
-	st.w	$t2, $t0, -12
-	mod.w	$t2, $t3, $t4
-	sub.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $t0, 0
-	ld.w	$t1, $a1, 4
-	ld.w	$t2, $t0, -8
-	ld.w	$t3, $t0, 4
-	ld.w	$t4, $a2, 4
-	sub.w	$t2, $t2, $t1
-	sub.w	$t3, $t3, $t1
-	addi.d	$t5, $t4, -1
-	slt	$t6, $zero, $t2
-	maskeqz	$t6, $t5, $t6
-	add.w	$t2, $t6, $t2
-	srli.d	$t6, $t3, 31
-	and	$t5, $t6, $t5
-	sub.w	$t3, $t3, $t5
-	mod.w	$t5, $t2, $t4
-	sub.d	$t5, $t1, $t5
-	add.d	$t2, $t5, $t2
-	st.w	$t2, $t0, -8
-	mod.w	$t2, $t3, $t4
-	sub.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $t0, 4
-	ld.w	$t1, $a1, 8
-	ld.w	$t2, $t0, -4
-	ld.w	$t3, $t0, 8
-	ld.w	$t4, $a2, 8
-	sub.w	$t2, $t2, $t1
-	sub.w	$t3, $t3, $t1
-	addi.d	$t5, $t4, -1
-	slt	$t6, $zero, $t2
-	maskeqz	$t6, $t5, $t6
-	add.w	$t2, $t6, $t2
-	srli.d	$t6, $t3, 31
-	and	$t5, $t6, $t5
-	sub.w	$t3, $t3, $t5
-	mod.w	$t5, $t2, $t4
-	sub.d	$t5, $t1, $t5
-	add.d	$t2, $t5, $t2
-	st.w	$t2, $t0, -4
-	mod.w	$t2, $t3, $t4
-	sub.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $t3
-	st.w	$t1, $t0, 8
-	ld.w	$t1, $a6, 8
-	addi.d	$a7, $a7, 1
-	addi.d	$t0, $t0, 24
-	blt	$a7, $t1, .LBB2_5
+	ld.w	$t0, $a1, 0
+	ld.w	$t1, $a7, -12
+	ld.w	$t2, $a7, 0
+	ld.w	$t3, $a2, 0
+	sub.w	$t1, $t1, $t0
+	sub.w	$t2, $t2, $t0
+	addi.d	$t4, $t3, -1
+	slt	$t5, $zero, $t1
+	maskeqz	$t5, $t4, $t5
+	add.w	$t1, $t5, $t1
+	srli.d	$t5, $t2, 31
+	and	$t4, $t5, $t4
+	sub.w	$t2, $t2, $t4
+	mod.w	$t4, $t1, $t3
+	sub.d	$t4, $t0, $t4
+	add.d	$t1, $t4, $t1
+	st.w	$t1, $a7, -12
+	mod.w	$t1, $t2, $t3
+	sub.d	$t0, $t0, $t1
+	add.d	$t0, $t0, $t2
+	st.w	$t0, $a7, 0
+	ld.w	$t0, $a1, 4
+	ld.w	$t1, $a7, -8
+	ld.w	$t2, $a7, 4
+	ld.w	$t3, $a2, 4
+	sub.w	$t1, $t1, $t0
+	sub.w	$t2, $t2, $t0
+	addi.d	$t4, $t3, -1
+	slt	$t5, $zero, $t1
+	maskeqz	$t5, $t4, $t5
+	add.w	$t1, $t5, $t1
+	srli.d	$t5, $t2, 31
+	and	$t4, $t5, $t4
+	sub.w	$t2, $t2, $t4
+	mod.w	$t4, $t1, $t3
+	sub.d	$t4, $t0, $t4
+	add.d	$t1, $t4, $t1
+	st.w	$t1, $a7, -8
+	mod.w	$t1, $t2, $t3
+	sub.d	$t0, $t0, $t1
+	add.d	$t0, $t0, $t2
+	st.w	$t0, $a7, 4
+	ld.w	$t0, $a1, 8
+	ld.w	$t1, $a7, -4
+	ld.w	$t2, $a7, 8
+	ld.w	$t3, $a2, 8
+	sub.w	$t1, $t1, $t0
+	sub.w	$t2, $t2, $t0
+	addi.d	$t4, $t3, -1
+	slt	$t5, $zero, $t1
+	maskeqz	$t5, $t4, $t5
+	add.w	$t1, $t5, $t1
+	srli.d	$t5, $t2, 31
+	and	$t4, $t5, $t4
+	sub.w	$t2, $t2, $t4
+	mod.w	$t4, $t1, $t3
+	sub.d	$t4, $t0, $t4
+	add.d	$t1, $t4, $t1
+	st.w	$t1, $a7, -4
+	mod.w	$t1, $t2, $t3
+	sub.d	$t0, $t0, $t1
+	add.d	$t0, $t0, $t2
+	st.w	$t0, $a7, 8
+	ld.w	$t0, $a5, 8
+	addi.d	$a6, $a6, 1
+	addi.d	$a7, $a7, 24
+	blt	$a6, $t0, .LBB2_5
 # %bb.6:                                # %._crit_edge.loopexit
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.w	$a7, $a0, 8
+	ld.w	$a6, $a0, 8
 	b	.LBB2_2
 .LBB2_7:                                # %._crit_edge23
 	move	$a0, $zero

@@ -10,71 +10,69 @@ jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 	ori	$a3, $zero, 98
 	ori	$a4, $zero, 139
 	ori	$a5, $zero, 334
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	move	$a7, $a0
+	move	$a6, $a0
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a7, 0
-	ld.w	$t1, $a7, 28
-	ld.w	$t2, $a7, 4
-	ld.w	$t3, $a7, 24
-	add.d	$t4, $t1, $t0
-	sub.d	$t0, $t0, $t1
-	add.d	$t1, $t3, $t2
-	ld.w	$t5, $a7, 8
-	ld.w	$t6, $a7, 20
-	ld.w	$t7, $a7, 12
-	ld.w	$t8, $a7, 16
-	sub.d	$t2, $t2, $t3
-	add.d	$t3, $t6, $t5
-	sub.d	$t5, $t5, $t6
-	add.d	$t6, $t8, $t7
-	sub.d	$t7, $t7, $t8
-	add.d	$t8, $t6, $t4
-	sub.d	$t4, $t4, $t6
-	add.d	$t6, $t3, $t1
-	sub.d	$t1, $t1, $t3
-	add.d	$t3, $t8, $t6
-	st.w	$t3, $a7, 0
-	sub.d	$t3, $t8, $t6
-	st.w	$t3, $a7, 16
-	add.w	$t1, $t1, $t4
-	mul.d	$t1, $t1, $a1
-	srli.d	$t1, $t1, 8
-	add.d	$t3, $t4, $t1
-	st.w	$t3, $a7, 8
-	sub.d	$t1, $t4, $t1
-	st.w	$t1, $a7, 24
-	add.w	$t1, $t7, $t5
-	add.w	$t3, $t5, $t2
-	add.w	$t2, $t2, $t0
-	sub.w	$t4, $t1, $t2
-	mul.d	$t4, $t4, $a3
-	srli.d	$t4, $t4, 8
-	mul.d	$t1, $t1, $a4
-	srli.d	$t1, $t1, 8
-	add.d	$t1, $t4, $t1
-	mul.d	$t2, $t2, $a5
-	srli.d	$t2, $t2, 8
-	add.d	$t2, $t4, $t2
-	mul.d	$t3, $t3, $a1
+	ld.w	$a7, $a6, 0
+	ld.w	$t0, $a6, 28
+	ld.w	$t1, $a6, 4
+	ld.w	$t2, $a6, 24
+	add.d	$t3, $t0, $a7
+	sub.d	$a7, $a7, $t0
+	add.d	$t0, $t2, $t1
+	ld.w	$t4, $a6, 8
+	ld.w	$t5, $a6, 20
+	ld.w	$t6, $a6, 12
+	ld.w	$t7, $a6, 16
+	sub.d	$t1, $t1, $t2
+	add.d	$t2, $t5, $t4
+	sub.d	$t4, $t4, $t5
+	add.d	$t5, $t7, $t6
+	sub.d	$t6, $t6, $t7
+	add.d	$t7, $t5, $t3
+	sub.d	$t3, $t3, $t5
+	add.d	$t5, $t2, $t0
+	sub.d	$t0, $t0, $t2
+	add.d	$t2, $t7, $t5
+	st.w	$t2, $a6, 0
+	sub.d	$t2, $t7, $t5
+	st.w	$t2, $a6, 16
+	add.w	$t0, $t0, $t3
+	mul.d	$t0, $t0, $a1
+	srli.d	$t0, $t0, 8
+	add.d	$t2, $t3, $t0
+	st.w	$t2, $a6, 8
+	sub.d	$t0, $t3, $t0
+	st.w	$t0, $a6, 24
+	add.w	$t0, $t6, $t4
+	add.w	$t2, $t4, $t1
+	add.w	$t1, $t1, $a7
+	sub.w	$t3, $t0, $t1
+	mul.d	$t3, $t3, $a3
 	srli.d	$t3, $t3, 8
-	add.d	$t4, $t0, $t3
-	sub.d	$t0, $t0, $t3
-	add.d	$t3, $t1, $t0
-	st.w	$t3, $a7, 20
-	sub.d	$t0, $t0, $t1
-	st.w	$t0, $a7, 12
-	add.d	$t0, $t2, $t4
-	st.w	$t0, $a7, 4
-	sub.d	$t0, $t4, $t2
-	st.w	$t0, $a7, 28
+	mul.d	$t0, $t0, $a4
+	srli.d	$t0, $t0, 8
+	add.d	$t0, $t3, $t0
+	mul.d	$t1, $t1, $a5
+	srli.d	$t1, $t1, 8
+	add.d	$t1, $t3, $t1
+	mul.d	$t2, $t2, $a1
+	srli.d	$t2, $t2, 8
+	add.d	$t3, $a7, $t2
+	sub.d	$a7, $a7, $t2
+	add.d	$t2, $t0, $a7
+	st.w	$t2, $a6, 20
+	sub.d	$a7, $a7, $t0
+	st.w	$a7, $a6, 12
+	add.d	$a7, $t1, $t3
+	st.w	$a7, $a6, 4
+	sub.d	$a7, $t3, $t1
+	st.w	$a7, $a6, 28
 	bstrpick.d	$a2, $a2, 31, 0
 	addi.d	$a2, $a2, 1
-	and	$t0, $a2, $a6
-	addi.d	$a7, $a7, 32
-	beqz	$t0, .LBB0_1
+	slli.d	$a7, $a2, 31
+	addi.d	$a6, $a6, 32
+	bgez	$a7, .LBB0_1
 # %bb.2:                                # %vector.body
 	vld	$vr0, $a0, 0
 	vld	$vr1, $a0, 224

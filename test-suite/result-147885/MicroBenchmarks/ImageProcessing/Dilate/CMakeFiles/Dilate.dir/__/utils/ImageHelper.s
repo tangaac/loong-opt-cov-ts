@@ -34,10 +34,9 @@ _Z21initializeRandomImagePiii:          # @_Z21initializeRandomImagePiii
 	ori	$a0, $zero, 7
 	pcaddu18i	$ra, %call36(glibc_compat_srand)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB0_6
+	blez	$s0, .LBB0_6
 # %bb.1:
-	blt	$fp, $a0, .LBB0_6
+	blez	$fp, .LBB0_6
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s2, $zero
 	slli.d	$s3, $fp, 2
@@ -147,8 +146,7 @@ _Z9saveImagePiPKcii:                    # @_Z9saveImagePiPKcii
 	jirl	$ra, $ra, 0
 .Ltmp3:
 # %bb.5:                                # %_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode.exit.preheader
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB1_28
+	blez	$fp, .LBB1_28
 # %bb.6:                                # %.preheader.lr.ph
 	addi.d	$s4, $sp, 248
 	blez	$s0, .LBB1_20
@@ -419,10 +417,9 @@ _Z29initializeRandomColouredImagePiii:  # @_Z29initializeRandomColouredImagePiii
 	ori	$a0, $zero, 7
 	pcaddu18i	$ra, %call36(glibc_compat_srand)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB2_6
+	blez	$s0, .LBB2_6
 # %bb.1:
-	blt	$fp, $a0, .LBB2_6
+	blez	$fp, .LBB2_6
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s2, $zero
 	move	$s3, $zero
@@ -530,10 +527,9 @@ _Z15initializeImagePiPcii:              # @_Z15initializeImagePiPcii
 	andi	$a0, $a0, 5
 	bnez	$a0, .LBB3_12
 # %bb.1:                                # %.preheader19
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB3_8
+	blez	$s0, .LBB3_8
 # %bb.2:                                # %.preheader19
-	blt	$fp, $a0, .LBB3_8
+	blez	$fp, .LBB3_8
 # %bb.3:                                # %.preheader.us.preheader
 	move	$s3, $zero
 	slli.d	$s4, $fp, 2
@@ -719,10 +715,9 @@ _Z22initializeColoredImagePiPcii:       # @_Z22initializeColoredImagePiPcii
 	andi	$a0, $a0, 5
 	bnez	$a0, .LBB4_14
 # %bb.1:                                # %.preheader27
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB4_10
+	blez	$s0, .LBB4_10
 # %bb.2:                                # %.preheader27
-	blt	$fp, $a0, .LBB4_10
+	blez	$fp, .LBB4_10
 # %bb.3:                                # %.preheader.us.preheader
 	move	$s4, $zero
 	slli.d	$s5, $fp, 2

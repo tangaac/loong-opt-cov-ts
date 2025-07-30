@@ -422,8 +422,7 @@ _ZN22SphereTriangleDetector7collideERK9btVector3RS0_S3_RfS4_f: # @_ZN22SphereTri
 	ld.d	$a1, $a0, 152
 	move	$a0, $s5
 	jirl	$ra, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_23
+	blez	$a0, .LBB2_23
 # %bb.7:                                # %.lr.ph
 	move	$s6, $zero
 	move	$s5, $zero

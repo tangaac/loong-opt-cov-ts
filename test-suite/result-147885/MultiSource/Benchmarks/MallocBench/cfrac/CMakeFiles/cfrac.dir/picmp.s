@@ -20,7 +20,7 @@ picmp:                                  # @picmp
 	beqz	$a2, .LBB0_8
 # %bb.3:
 	addi.w	$fp, $zero, -1
-	blt	$fp, $a1, .LBB0_14
+	bgez	$a1, .LBB0_14
 # %bb.4:
 	lu12i.w	$a2, -16
 	bltu	$a2, $a1, .LBB0_6
@@ -77,7 +77,7 @@ picmp:                                  # @picmp
 .LBB0_14:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_16
 # %bb.15:

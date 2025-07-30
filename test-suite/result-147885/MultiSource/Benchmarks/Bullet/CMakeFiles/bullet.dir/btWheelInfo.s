@@ -21,8 +21,7 @@ _ZNK11btWheelInfo23getSuspensionRestLengthEv: # @_ZNK11btWheelInfo23getSuspensio
 _ZN11btWheelInfo11updateWheelERK11btRigidBodyRNS_11RaycastInfoE: # @_ZN11btWheelInfo11updateWheelERK11btRigidBodyRNS_11RaycastInfoE
 # %bb.0:
 	ld.bu	$a2, $a0, 84
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB1_3
+	beqz	$a2, .LBB1_3
 # %bb.1:
 	fld.s	$fa0, $a0, 0
 	fld.s	$fa3, $a0, 52

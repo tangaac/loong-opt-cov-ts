@@ -47,18 +47,17 @@ Oalloc:                                 # @Oalloc
 	.type	InsertPoint,@function
 InsertPoint:                            # @InsertPoint
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 0                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$s3, $a0, 228
 	fmov.d	$fs0, $fa2
@@ -77,7 +76,6 @@ InsertPoint:                            # @InsertPoint
 	ori	$a1, $a1, 3800
 	lu32i.d	$a1, -324497
 	lu52i.d	$s2, $a1, 1022
-	addi.w	$s5, $zero, -1
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_3:                                #   in Loop: Header=BB1_4 Depth=1
@@ -96,7 +94,7 @@ InsertPoint:                            # @InsertPoint
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(__lttf2)
 	jirl	$ra, $ra, 0
-	blt	$s5, $a0, .LBB1_3
+	bgez	$a0, .LBB1_3
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
 	fld.d	$fa0, $s0, 8
 	fsub.d	$fa0, $fa0, $fs1
@@ -107,7 +105,7 @@ InsertPoint:                            # @InsertPoint
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(__lttf2)
 	jirl	$ra, $ra, 0
-	blt	$s5, $a0, .LBB1_3
+	bgez	$a0, .LBB1_3
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
 	fld.d	$fa0, $s0, 16
 	fsub.d	$fa0, $fa0, $fs0
@@ -167,18 +165,17 @@ InsertPoint:                            # @InsertPoint
 	st.w	$a0, $fp, 228
 .LBB1_11:                               # %._crit_edge.thread77
 	move	$a0, $s0
-	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	fld.d	$fs2, $sp, 0                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end1:
 	.size	InsertPoint, .Lfunc_end1-InsertPoint
@@ -328,9 +325,8 @@ ArrayToPoly3:                           # @ArrayToPoly3
 	fst.d	$fs5, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$fs6, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$fs7, $sp, 32                   # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$s0, $a0
-	blt	$a2, $a3, .LBB4_5
+	blez	$a2, .LBB4_5
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a2
 	move	$s2, $zero
@@ -425,9 +421,8 @@ ArrayToPoly4:                           # @ArrayToPoly4
 	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$s0, $a0
-	blt	$a2, $a3, .LBB5_3
+	blez	$a2, .LBB5_3
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a2
 	move	$s1, $zero

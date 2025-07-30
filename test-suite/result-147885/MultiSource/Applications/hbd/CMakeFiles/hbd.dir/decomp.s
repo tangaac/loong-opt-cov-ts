@@ -205,13 +205,12 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	pcalau12i	$a1, %pc_hi20(donestack)
 	addi.d	$a1, $a1, %pc_lo12(donestack)
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a1, $a2, %pc_lo12(donestkptr)
-	pcalau12i	$a2, %pc_hi20(indentlevel)
-	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	st.w	$zero, $a2, %pc_lo12(indentlevel)
-	blt	$a0, $a1, .LBB1_17
+	pcalau12i	$a1, %pc_hi20(indentlevel)
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.w	$zero, $a1, %pc_lo12(indentlevel)
+	blez	$a0, .LBB1_17
 # %bb.7:                                # %.lr.ph347.preheader
 	move	$s6, $zero
 	pcalau12i	$s5, %pc_hi20(ch)
@@ -294,7 +293,7 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	addi.d	$a0, $s0, -8
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $s2, 0
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	move	$s6, $zero
 	bgeu	$a1, $a0, .LBB1_38
@@ -482,7 +481,7 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 	ori	$a0, $zero, 16
@@ -491,13 +490,10 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	beq	$s0, $s2, .LBB1_125
 # %bb.39:                               # %.lr.ph397
 	move	$s5, $zero
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	move	$s1, $s6
                                         # implicit-def: $r27
 	b	.LBB1_42
@@ -545,10 +541,9 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.wu	$a0, $a1, %pc_lo12(indentlevel)
 	addi.d	$s0, $a0, 1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	and	$a0, $s0, $a0
+	slli.d	$a0, $s0, 31
 	st.w	$s0, $a1, %pc_lo12(indentlevel)
-	bnez	$a0, .LBB1_47
+	bltz	$a0, .LBB1_47
 	.p2align	4, , 16
 .LBB1_46:                               # %.lr.ph357
                                         #   Parent Loop BB1_42 Depth=1
@@ -630,10 +625,9 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.wu	$a0, $a1, %pc_lo12(indentlevel)
 	addi.d	$s0, $a0, 1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	and	$a0, $s0, $a0
+	slli.d	$a0, $s0, 31
 	st.w	$s0, $a1, %pc_lo12(indentlevel)
-	bnez	$a0, .LBB1_57
+	bltz	$a0, .LBB1_57
 	.p2align	4, , 16
 .LBB1_56:                               # %.lr.ph362
                                         #   Parent Loop BB1_42 Depth=1
@@ -896,7 +890,7 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a1, $a3, 0
 	ld.d	$a2, $a3, 8
 	st.w	$s7, $a0, 0
@@ -1066,7 +1060,7 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	ld.w	$a1, $s6, 0
 	beq	$a1, $a0, .LBB1_80
 .LBB1_114:                              #   in Loop: Header=BB1_42 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB1_120
 # %bb.115:                              # %_ZN7intlist3topEv.exit306
@@ -1076,14 +1070,14 @@ _Z14decompileblockP9ClassfileP11method_info: # @_Z14decompileblockP9ClassfileP11
 	bne	$a1, $a2, .LBB1_120
 # %bb.116:                              #   in Loop: Header=BB1_42 Depth=1
 	ld.d	$s4, $a0, 8
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$s4, $a1, 0
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	bnez	$s4, .LBB1_118
 # %bb.117:                              #   in Loop: Header=BB1_42 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	st.d	$zero, $a0, 8
 .LBB1_118:                              # %_ZN7intlist3popEv.exit307
                                         #   in Loop: Header=BB1_42 Depth=1

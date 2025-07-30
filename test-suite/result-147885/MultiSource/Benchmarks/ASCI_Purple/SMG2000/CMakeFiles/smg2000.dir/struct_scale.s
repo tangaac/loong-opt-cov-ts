@@ -5,30 +5,28 @@
 	.type	hypre_StructScale,@function
 hypre_StructScale:                      # @hypre_StructScale
 # %bb.0:                                # %.split
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 8
 	ld.d	$s1, $a0, 8
 	ld.w	$a0, $s1, 8
-	ori	$s2, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a0, $s2, .LBB0_18
+	blez	$a0, .LBB0_18
 # %bb.1:                                # %.lr.ph
-	move	$s3, $zero
+	move	$s2, $zero
 	vreplvei.d	$vr3, $vr0, 0
-	addi.w	$s4, $zero, -1
-	ori	$s5, $zero, 4
+	addi.w	$s3, $zero, -1
+	ori	$s4, $zero, 4
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr3, $sp, 0                    # 16-byte Folded Spill
 	b	.LBB0_3
@@ -36,8 +34,8 @@ hypre_StructScale:                      # @hypre_StructScale
 .LBB0_2:                                # %._crit_edge
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a0, $s1, 8
-	addi.d	$s3, $s3, 1
-	bge	$s3, $a0, .LBB0_18
+	addi.d	$s2, $s2, 1
+	bge	$s2, $a0, .LBB0_18
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
                                         #       Child Loop BB0_11 Depth 3
@@ -46,22 +44,22 @@ hypre_StructScale:                      # @hypre_StructScale
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $s1, 0
 	ld.d	$a2, $fp, 40
-	ld.d	$s8, $a0, 0
-	ld.d	$s6, $fp, 24
-	slli.d	$a0, $s3, 2
-	ldx.w	$s7, $a2, $a0
-	alsl.d	$a0, $s3, $s3, 1
+	ld.d	$s7, $a0, 0
+	ld.d	$s5, $fp, 24
+	slli.d	$a0, $s2, 2
+	ldx.w	$s6, $a2, $a0
+	alsl.d	$a0, $s2, $s2, 1
 	slli.d	$a0, $a0, 3
 	add.d	$s0, $a1, $a0
-	addi.d	$a1, $sp, 44
+	addi.d	$a1, $sp, 36
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
 	vld	$vr3, $sp, 0                    # 16-byte Folded Reload
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	ld.w	$a0, $sp, 44
-	ld.w	$a1, $sp, 48
-	ld.w	$a2, $sp, 52
+	ld.w	$a0, $sp, 36
+	ld.w	$a1, $sp, 40
+	ld.w	$a2, $sp, 44
 	slt	$a3, $a0, $a1
 	masknez	$a4, $a0, $a3
 	maskeqz	$a3, $a1, $a3
@@ -70,37 +68,37 @@ hypre_StructScale:                      # @hypre_StructScale
 	masknez	$a3, $a3, $a4
 	maskeqz	$a4, $a2, $a4
 	or	$a3, $a4, $a3
-	blt	$a3, $s2, .LBB0_2
+	blez	$a3, .LBB0_2
 # %bb.4:                                # %.preheader154.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	blt	$a2, $s2, .LBB0_2
+	blez	$a2, .LBB0_2
 # %bb.5:                                # %.preheader154.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	blt	$a1, $s2, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.6:                                # %.preheader154.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	blt	$a0, $s2, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.7:                                # %.preheader153.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
-	slli.d	$a3, $s3, 4
-	alsl.d	$a4, $s3, $a3, 3
-	add.d	$a5, $s8, $a4
+	slli.d	$a3, $s2, 4
+	alsl.d	$a4, $s2, $a3, 3
+	add.d	$a5, $s7, $a4
 	ld.w	$a6, $a5, 4
 	ld.w	$a7, $a5, 16
 	move	$a3, $zero
-	ldx.w	$a4, $s8, $a4
+	ldx.w	$a4, $s7, $a4
 	sub.w	$a7, $a7, $a6
-	slt	$t0, $s4, $a7
+	slt	$t0, $s3, $a7
 	maskeqz	$a7, $a7, $t0
 	ld.w	$t1, $a5, 12
-	masknez	$t0, $s4, $t0
+	masknez	$t0, $s3, $t0
 	or	$a7, $a7, $t0
 	addi.d	$a7, $a7, 1
 	sub.w	$t0, $t1, $a4
-	slt	$t1, $s4, $t0
+	slt	$t1, $s3, $t0
 	maskeqz	$t0, $t0, $t1
 	ld.w	$t2, $s0, 0
-	masknez	$t1, $s4, $t1
+	masknez	$t1, $s3, $t1
 	or	$t0, $t0, $t1
 	addi.d	$t0, $t0, 1
 	sub.d	$t1, $t2, $a4
@@ -118,7 +116,7 @@ hypre_StructScale:                      # @hypre_StructScale
 	add.w	$t3, $t1, $a6
 	bstrpick.d	$a6, $a0, 30, 2
 	slli.d	$a6, $a6, 2
-	alsl.d	$a7, $s7, $s6, 3
+	alsl.d	$a7, $s6, $s5, 3
 	addi.d	$t0, $a7, 16
 	b	.LBB0_9
 	.p2align	4, , 16
@@ -147,7 +145,7 @@ hypre_StructScale:                      # @hypre_StructScale
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_14 Depth 4
                                         #         Child Loop BB0_17 Depth 4
-	bgeu	$a0, $s5, .LBB0_13
+	bgeu	$a0, $s4, .LBB0_13
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=3
 	move	$t4, $zero
 	move	$t2, $t3
@@ -197,18 +195,17 @@ hypre_StructScale:                      # @hypre_StructScale
 	b	.LBB0_10
 .LBB0_18:                               # %._crit_edge228
 	move	$a0, $zero
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end0:
 	.size	hypre_StructScale, .Lfunc_end0-hypre_StructScale

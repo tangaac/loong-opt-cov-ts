@@ -855,15 +855,15 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	move	$s6, $a2
 	move	$s5, $a1
-	move	$s1, $a0
+	move	$s8, $a0
 	pcaddu18i	$ra, %call36(symbol_GetAllFunctions)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(fol_GetNonFOLPredicates)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	beqz	$a0, .LBB3_30
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	beqz	$a0, .LBB3_28
 # %bb.1:
 	move	$s4, $a0
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
@@ -871,7 +871,7 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPESTATBITS)
-	ld.w	$s3, $a1, 0
+	ld.w	$s1, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$fp, $a1, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
@@ -881,7 +881,7 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s4, 8
 	sub.d	$a0, $zero, $a0
-	sra.w	$a1, $a0, $s3
+	sra.w	$a1, $a0, $s1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(graph_AddNode)
 	jirl	$ra, $ra, 0
@@ -898,9 +898,9 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	move	$s4, $a3
 	bnez	$a3, .LBB3_2
 # %bb.3:                                # %.preheader84.i
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	beqz	$s1, .LBB3_20
+	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
+	beqz	$s8, .LBB3_20
 # %bb.4:
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_NOT)
@@ -920,12 +920,11 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
                                         #     Child Loop BB3_9 Depth 2
                                         #       Child Loop BB3_15 Depth 3
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$s7, $a0, 8
-	ld.w	$a0, $s7, 64
-	ld.w	$a1, $s7, 68
+	ld.d	$s8, $a0, 8
+	ld.w	$a0, $s8, 64
+	ld.w	$a1, $s8, 68
 	add.w	$s3, $a1, $a0
-	ori	$a2, $zero, 1
-	blt	$s3, $a2, .LBB3_5
+	blez	$s3, .LBB3_5
 # %bb.7:                                # %.lr.ph93.i
                                         #   in Loop: Header=BB3_6 Depth=1
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
@@ -941,29 +940,29 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 .LBB3_9:                                #   Parent Loop BB3_6 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB3_15 Depth 3
-	ld.d	$a3, $s7, 56
+	ld.d	$a3, $s8, 56
 	slli.d	$a4, $s1, 3
 	ldx.d	$a3, $a3, $a4
 	ld.d	$a3, $a3, 24
-	ld.w	$s8, $a3, 0
-	bne	$s8, $a2, .LBB3_11
+	ld.w	$s7, $a3, 0
+	bne	$s7, $a2, .LBB3_11
 # %bb.10:                               #   in Loop: Header=BB3_9 Depth=2
 	ld.d	$a3, $a3, 16
 	ld.d	$a3, $a3, 8
-	ld.w	$s8, $a3, 0
+	ld.w	$s7, $a3, 0
 .LBB3_11:                               # %clause_GetLiteralAtom.exit.i
                                         #   in Loop: Header=BB3_9 Depth=2
 	ld.w	$a3, $s6, 0
-	beq	$s8, $a3, .LBB3_8
+	beq	$s7, $a3, .LBB3_8
 # %bb.12:                               # %.preheader.i
                                         #   in Loop: Header=BB3_9 Depth=2
-	ld.w	$a3, $s7, 72
+	ld.w	$a3, $s8, 72
 	add.d	$a4, $a0, $a1
 	add.w	$a4, $a4, $a3
 	bge	$s3, $a4, .LBB3_8
 # %bb.13:                               # %.lr.ph.i
                                         #   in Loop: Header=BB3_9 Depth=2
-	sub.d	$a4, $zero, $s8
+	sub.d	$a4, $zero, $s7
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	sra.w	$s4, $a4, $a5
 	slli.d	$fp, $s3, 3
@@ -978,7 +977,7 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 .LBB3_15:                               #   Parent Loop BB3_6 Depth=1
                                         #     Parent Loop BB3_9 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a4, $s7, 56
+	ld.d	$a4, $s8, 56
 	ldx.d	$a4, $a4, $fp
 	ld.d	$a4, $a4, 24
 	ld.w	$s0, $a4, 0
@@ -989,7 +988,7 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.w	$s0, $a4, 0
 .LBB3_17:                               # %clause_GetLiteralAtom.exit78.i
                                         #   in Loop: Header=BB3_15 Depth=3
-	beq	$s8, $s0, .LBB3_14
+	beq	$s7, $s0, .LBB3_14
 # %bb.18:                               # %clause_GetLiteralAtom.exit78.i
                                         #   in Loop: Header=BB3_15 Depth=3
 	ld.w	$a4, $s6, 0
@@ -1012,30 +1011,30 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a2, $a0, 0
-	ld.w	$a0, $s7, 64
-	ld.w	$a1, $s7, 68
-	ld.w	$a3, $s7, 72
+	ld.w	$a0, $s8, 64
+	ld.w	$a1, $s8, 68
+	ld.w	$a3, $s8, 72
 	b	.LBB3_14
 .LBB3_20:                               # %._crit_edge97.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(graph_StronglyConnectedComponents)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $a0, -1
-	bltz	$fp, .LBB3_28
+	bltz	$fp, .LBB3_29
 # %bb.21:                               # %.lr.ph108.i
 	ld.d	$s1, $s2, 8
-	beqz	$s1, .LBB3_28
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	beqz	$s1, .LBB3_30
 # %bb.22:                               # %.lr.ph108.split.i.preheader
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
 	ld.d	$s0, $a0, %got_pc_lo12(symbol_SIGNATURE)
-	move	$s8, $zero
-	ori	$s3, $zero, 1
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	move	$s4, $zero
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
 	bnez	$s1, .LBB3_26
 .LBB3_23:                               # %.loopexit.i
                                         # =>This Inner Loop Header: Depth=1
-	blt	$fp, $s3, .LBB3_29
+	blez	$fp, .LBB3_32
 # %bb.24:                               # %.lr.ph108.splitthread-pre-split.i
                                         #   in Loop: Header=BB3_23 Depth=1
 	ld.d	$s1, $s2, 8
@@ -1056,36 +1055,40 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.d	$a1, $s0, 0
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $a1, $a0
-	ld.w	$s4, $a0, 24
+	ld.w	$s3, $a0, 24
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s4, $a0, 8
-	st.d	$s8, $a0, 0
-	move	$s8, $a0
+	st.d	$s3, $a0, 8
+	st.d	$s4, $a0, 0
+	move	$s4, $a0
 	b	.LBB3_25
 .LBB3_28:
-	move	$s8, $zero
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-.LBB3_29:                               # %._crit_edge109.i
+	move	$s4, $zero
+	pcalau12i	$s7, %pc_hi20(ana_PEQUATIONS)
+	bnez	$s2, .LBB3_33
+	b	.LBB3_99
+.LBB3_29:
+	move	$s4, $zero
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	b	.LBB3_31
+.LBB3_30:
+	move	$s4, $zero
+.LBB3_31:                               # %._crit_edge109.i
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+.LBB3_32:                               # %._crit_edge109.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(graph_Delete)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	pcalau12i	$s7, %pc_hi20(ana_PEQUATIONS)
-	bnez	$s2, .LBB3_31
-	b	.LBB3_96
-.LBB3_30:
-	move	$s8, $zero
-	pcalau12i	$s7, %pc_hi20(ana_PEQUATIONS)
-	beqz	$s2, .LBB3_96
-.LBB3_31:
+	beqz	$s2, .LBB3_99
+.LBB3_33:
 	ld.bu	$a0, $s7, %pc_lo12(ana_PEQUATIONS)
-	beqz	$a0, .LBB3_53
-# %bb.32:
-	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
+	beqz	$a0, .LBB3_55
+# %bb.34:
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(graph_Create)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPESTATBITS)
@@ -1094,10 +1097,10 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$s0, $a1, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$s5, $a1, %got_pc_lo12(memory_FREEDBYTES)
+	ld.d	$s1, $a1, %got_pc_lo12(memory_FREEDBYTES)
 	move	$fp, $a0
 	.p2align	4, , 16
-.LBB3_33:                               # =>This Inner Loop Header: Depth=1
+.LBB3_35:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s2, 8
 	sub.d	$a0, $zero, $a0
 	sra.w	$a1, $a0, $s7
@@ -1106,88 +1109,87 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 128
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s5, 0
+	ld.d	$a2, $s1, 0
 	ld.d	$a3, $s2, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $s5, 0
+	st.d	$a1, $s1, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s2, 0
 	ld.d	$a0, $s0, 128
 	st.d	$s2, $a0, 0
 	move	$s2, $a3
-	bnez	$a3, .LBB3_33
-# %bb.34:
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	bnez	$a3, .LBB3_35
+# %bb.36:
+	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(ana_NodeGreater)
 	addi.d	$a1, $a0, %pc_lo12(ana_NodeGreater)
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(graph_SortNodes)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	beqz	$s1, .LBB3_59
-# %bb.35:                               # %.lr.ph232.i.preheader
+	beqz	$s8, .LBB3_61
+# %bb.37:                               # %.lr.ph232.i.preheader
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
-	ld.d	$s0, $a0, %got_pc_lo12(fol_NOT)
+	ld.d	$s2, $a0, %got_pc_lo12(fol_NOT)
 	pcalau12i	$a0, %got_pc_hi20(fol_EQUALITY)
-	ld.d	$s2, $a0, %got_pc_lo12(fol_EQUALITY)
+	ld.d	$s0, $a0, %got_pc_lo12(fol_EQUALITY)
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
-	b	.LBB3_37
+	b	.LBB3_39
 	.p2align	4, , 16
-.LBB3_36:                               # %._crit_edge.i99
-                                        #   in Loop: Header=BB3_37 Depth=1
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s1, $s1, 0
-	beqz	$s1, .LBB3_60
-.LBB3_37:                               # %.lr.ph232.i
+.LBB3_38:                               # %._crit_edge.i99
+                                        #   in Loop: Header=BB3_39 Depth=1
+	ld.d	$s8, $s8, 0
+	beqz	$s8, .LBB3_62
+.LBB3_39:                               # %.lr.ph232.i
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_39 Depth 2
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	ld.d	$s1, $s1, 8
+                                        #     Child Loop BB3_41 Depth 2
+	ld.d	$s1, $s8, 8
 	ld.w	$a0, $s1, 64
 	ld.w	$a1, $s1, 68
 	ld.w	$a2, $s1, 72
 	add.w	$fp, $a1, $a0
 	add.d	$a0, $fp, $a2
-	b	.LBB3_39
+	b	.LBB3_41
 	.p2align	4, , 16
-.LBB3_38:                               #   in Loop: Header=BB3_39 Depth=2
+.LBB3_40:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.w	$a0, $s1, 64
 	ld.w	$a1, $s1, 68
 	ld.w	$a2, $s1, 72
 	addi.w	$fp, $fp, 1
 	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-.LBB3_39:                               # %.lr.ph232.i
-                                        #   Parent Loop BB3_37 Depth=1
+.LBB3_41:                               # %.lr.ph232.i
+                                        #   Parent Loop BB3_39 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$a0, $a0, -1
-	bltu	$a0, $fp, .LBB3_36
-# %bb.40:                               #   in Loop: Header=BB3_39 Depth=2
+	bltu	$a0, $fp, .LBB3_38
+# %bb.42:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.d	$a0, $s1, 56
 	slli.d	$s4, $fp, 3
 	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
 	ld.w	$a1, $a0, 0
-	ld.w	$a2, $s0, 0
-	bne	$a1, $a2, .LBB3_42
-# %bb.41:                               # %clause_LiteralIsEquality.exit.i
-                                        #   in Loop: Header=BB3_39 Depth=2
+	ld.w	$a2, $s2, 0
+	bne	$a1, $a2, .LBB3_44
+# %bb.43:                               # %clause_LiteralIsEquality.exit.i
+                                        #   in Loop: Header=BB3_41 Depth=2
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 8
 	ld.w	$a1, $a0, 0
-.LBB3_42:                               # %clause_LiteralIsEquality.exit.thread.i
-                                        #   in Loop: Header=BB3_39 Depth=2
-	ld.w	$a2, $s2, 0
-	bne	$a1, $a2, .LBB3_38
-# %bb.43:                               # %clause_GetLiteralAtom.exit.i103
-                                        #   in Loop: Header=BB3_39 Depth=2
+.LBB3_44:                               # %clause_LiteralIsEquality.exit.thread.i
+                                        #   in Loop: Header=BB3_41 Depth=2
+	ld.w	$a2, $s0, 0
+	bne	$a1, $a2, .LBB3_40
+# %bb.45:                               # %clause_GetLiteralAtom.exit.i103
+                                        #   in Loop: Header=BB3_41 Depth=2
 	addi.d	$a1, $sp, 84
 	addi.d	$a2, $sp, 80
 	pcaddu18i	$ra, %call36(fol_DistributiveEquation)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_45
-# %bb.44:                               #   in Loop: Header=BB3_39 Depth=2
+	beqz	$a0, .LBB3_47
+# %bb.46:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.w	$s5, $sp, 84
 	ld.w	$s6, $sp, 80
 	ori	$a0, $zero, 16
@@ -1203,47 +1205,46 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-.LBB3_45:                               #   in Loop: Header=BB3_39 Depth=2
+.LBB3_47:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.d	$a0, $s1, 56
 	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
 	ld.w	$a1, $a0, 0
-	ld.w	$a2, $s0, 0
-	bne	$a1, $a2, .LBB3_47
-# %bb.46:                               #   in Loop: Header=BB3_39 Depth=2
+	ld.w	$a2, $s2, 0
+	bne	$a1, $a2, .LBB3_49
+# %bb.48:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 8
-.LBB3_47:                               # %clause_GetLiteralAtom.exit192.i
-                                        #   in Loop: Header=BB3_39 Depth=2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+.LBB3_49:                               # %clause_GetLiteralAtom.exit192.i
+                                        #   in Loop: Header=BB3_41 Depth=2
 	ld.d	$a1, $a0, 16
 	ld.d	$s4, $a1, 8
 	ld.w	$a0, $s4, 0
-	bgtz	$a0, .LBB3_38
-# %bb.48:                               #   in Loop: Header=BB3_39 Depth=2
+	bgtz	$a0, .LBB3_40
+# %bb.50:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.d	$a1, $a1, 0
 	ld.d	$s3, $a1, 8
 	ld.w	$a1, $s3, 0
-	bgtz	$a1, .LBB3_38
-# %bb.49:                               #   in Loop: Header=BB3_39 Depth=2
-	beq	$a0, $a1, .LBB3_38
-# %bb.50:                               #   in Loop: Header=BB3_39 Depth=2
+	bgtz	$a1, .LBB3_40
+# %bb.51:                               #   in Loop: Header=BB3_41 Depth=2
+	beq	$a0, $a1, .LBB3_40
+# %bb.52:                               #   in Loop: Header=BB3_41 Depth=2
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(term_HasSubterm)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB3_38
-# %bb.51:                               #   in Loop: Header=BB3_39 Depth=2
+	bnez	$a0, .LBB3_40
+# %bb.53:                               #   in Loop: Header=BB3_41 Depth=2
 	move	$a0, $s3
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(term_HasSubterm)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB3_38
-# %bb.52:                               #   in Loop: Header=BB3_39 Depth=2
+	bnez	$a0, .LBB3_40
+# %bb.54:                               #   in Loop: Header=BB3_41 Depth=2
 	ld.w	$a0, $s4, 0
 	sub.d	$a0, $zero, $a0
 	sra.w	$a1, $a0, $s7
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(graph_GetNode)
 	jirl	$ra, $ra, 0
@@ -1271,86 +1272,87 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	st.d	$a0, $s4, 16
-	b	.LBB3_38
-.LBB3_53:
+	b	.LBB3_40
+.LBB3_55:
 	pcalau12i	$a0, %pc_hi20(symbol_PositiveArity)
 	addi.d	$a1, $a0, %pc_lo12(symbol_PositiveArity)
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(list_NumberSort)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	beqz	$s1, .LBB3_96
-.LBB3_54:                               # %.lr.ph
+	beqz	$s1, .LBB3_99
+.LBB3_56:                               # %.lr.ph
+	move	$s8, $s4
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPEMASK)
 	ld.w	$fp, $a0, 0
 	move	$s2, $zero
-	addi.w	$s0, $zero, -1
-	move	$s3, $s1
-	b	.LBB3_56
+	move	$s0, $s1
+	b	.LBB3_58
 	.p2align	4, , 16
-.LBB3_55:                               # %symbol_IsConstant.exit.thread
-                                        #   in Loop: Header=BB3_56 Depth=1
-	ld.d	$s3, $s3, 0
-	beqz	$s3, .LBB3_97
-.LBB3_56:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s4, $s3, 8
-	addi.w	$a0, $s4, 0
-	blt	$s0, $a0, .LBB3_55
-# %bb.57:                               # %symbol_IsConstant.exit
-                                        #   in Loop: Header=BB3_56 Depth=1
-	sub.w	$a0, $zero, $s4
+.LBB3_57:                               # %symbol_IsConstant.exit.thread
+                                        #   in Loop: Header=BB3_58 Depth=1
+	ld.d	$s0, $s0, 0
+	beqz	$s0, .LBB3_100
+.LBB3_58:                               # =>This Inner Loop Header: Depth=1
+	ld.d	$s3, $s0, 8
+	addi.w	$a0, $s3, 0
+	bgez	$a0, .LBB3_57
+# %bb.59:                               # %symbol_IsConstant.exit
+                                        #   in Loop: Header=BB3_58 Depth=1
+	sub.w	$a0, $zero, $s3
 	and	$a0, $fp, $a0
-	bnez	$a0, .LBB3_55
-# %bb.58:                               #   in Loop: Header=BB3_56 Depth=1
+	bnez	$a0, .LBB3_57
+# %bb.60:                               #   in Loop: Header=BB3_58 Depth=1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s4, $a0, 8
+	st.d	$s3, $a0, 8
 	st.d	$s2, $a0, 0
 	move	$s2, $a0
-	b	.LBB3_55
-.LBB3_59:
+	b	.LBB3_57
+.LBB3_61:
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
-.LBB3_60:                               # %._crit_edge233.i
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+.LBB3_62:                               # %._crit_edge233.i
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(graph_DeleteDuplicateEdges)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $fp, 8
-	beqz	$s3, .LBB3_76
-# %bb.61:
+	ld.d	$fp, $fp, 8
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	beqz	$fp, .LBB3_78
+# %bb.63:
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
 	ld.d	$s0, $a0, %got_pc_lo12(symbol_SIGNATURE)
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	b	.LBB3_63
+	b	.LBB3_65
 	.p2align	4, , 16
-.LBB3_62:                               # %.loopexit220.i
-                                        #   in Loop: Header=BB3_63 Depth=1
-	ld.d	$s3, $s3, 0
-	beqz	$s3, .LBB3_76
-.LBB3_63:                               # %.lr.ph249.i
+.LBB3_64:                               # %.loopexit220.i
+                                        #   in Loop: Header=BB3_65 Depth=1
+	ld.d	$fp, $fp, 0
+	beqz	$fp, .LBB3_78
+.LBB3_65:                               # %.lr.ph249.i
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_67 Depth 2
-                                        #     Child Loop BB3_75 Depth 2
-	ld.d	$s1, $s3, 8
+                                        #     Child Loop BB3_69 Depth 2
+                                        #     Child Loop BB3_77 Depth 2
+	ld.d	$s1, $fp, 8
 	ld.d	$s4, $s1, 24
-	beqz	$s4, .LBB3_62
-# %bb.64:                               # %.lr.ph240.i
-                                        #   in Loop: Header=BB3_63 Depth=1
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	beqz	$s4, .LBB3_64
+# %bb.66:                               # %.lr.ph240.i
+                                        #   in Loop: Header=BB3_65 Depth=1
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
 	move	$s2, $zero
-	b	.LBB3_67
+	b	.LBB3_69
 	.p2align	4, , 16
-.LBB3_65:                               #   in Loop: Header=BB3_67 Depth=2
+.LBB3_67:                               #   in Loop: Header=BB3_69 Depth=2
 	move	$a0, $s3
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(graph_DeleteEdge)
 	jirl	$ra, $ra, 0
-.LBB3_66:                               #   in Loop: Header=BB3_67 Depth=2
+.LBB3_68:                               #   in Loop: Header=BB3_69 Depth=2
 	ld.d	$s4, $s4, 0
-	beqz	$s4, .LBB3_74
-.LBB3_67:                               #   Parent Loop BB3_63 Depth=1
+	beqz	$s4, .LBB3_76
+.LBB3_69:                               #   Parent Loop BB3_65 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a0, $s1, 0
 	ld.d	$a1, $s0, 0
@@ -1374,111 +1376,111 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.w	$s5, $s3, 16
 	ld.w	$fp, $a0, 16
 	ld.w	$s8, $a1, 16
-	bltu	$s5, $s6, .LBB3_70
-# %bb.68:                               #   in Loop: Header=BB3_67 Depth=2
-	bne	$s6, $s5, .LBB3_71
-# %bb.69:                               #   in Loop: Header=BB3_67 Depth=2
-	blt	$fp, $s8, .LBB3_71
-.LBB3_70:                               #   in Loop: Header=BB3_67 Depth=2
+	bltu	$s5, $s6, .LBB3_72
+# %bb.70:                               #   in Loop: Header=BB3_69 Depth=2
+	bne	$s6, $s5, .LBB3_73
+# %bb.71:                               #   in Loop: Header=BB3_69 Depth=2
+	blt	$fp, $s8, .LBB3_73
+.LBB3_72:                               #   in Loop: Header=BB3_69 Depth=2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s3, $a0, 8
 	st.d	$s2, $a0, 0
 	move	$s2, $a0
-.LBB3_71:                               #   in Loop: Header=BB3_67 Depth=2
-	bltu	$s6, $s5, .LBB3_65
-# %bb.72:                               #   in Loop: Header=BB3_67 Depth=2
-	bne	$s6, $s5, .LBB3_66
-# %bb.73:                               #   in Loop: Header=BB3_67 Depth=2
-	bge	$s8, $fp, .LBB3_65
-	b	.LBB3_66
+.LBB3_73:                               #   in Loop: Header=BB3_69 Depth=2
+	bltu	$s6, $s5, .LBB3_67
+# %bb.74:                               #   in Loop: Header=BB3_69 Depth=2
+	bne	$s6, $s5, .LBB3_68
+# %bb.75:                               #   in Loop: Header=BB3_69 Depth=2
+	bge	$s8, $fp, .LBB3_67
+	b	.LBB3_68
 	.p2align	4, , 16
-.LBB3_74:                               # %.preheader219.i
-                                        #   in Loop: Header=BB3_63 Depth=1
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	beqz	$s2, .LBB3_62
+.LBB3_76:                               # %.preheader219.i
+                                        #   in Loop: Header=BB3_65 Depth=1
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	beqz	$s2, .LBB3_64
 	.p2align	4, , 16
-.LBB3_75:                               # %.lr.ph244.i
-                                        #   Parent Loop BB3_63 Depth=1
+.LBB3_77:                               # %.lr.ph244.i
+                                        #   Parent Loop BB3_65 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $s2, 8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(graph_DeleteEdge)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 128
+	ld.d	$a0, $s5, 128
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s5, 0
+	ld.d	$a2, $s6, 0
 	ld.d	$a3, $s2, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $s5, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s2, 0
-	ld.d	$a0, $fp, 128
+	ld.d	$a0, $s5, 128
 	st.d	$s2, $a0, 0
 	move	$s2, $a3
-	bnez	$a3, .LBB3_75
-	b	.LBB3_62
-.LBB3_76:                               # %._crit_edge250.i
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	beqz	$s0, .LBB3_86
-# %bb.77:                               # %.lr.ph31.i.preheader.i
-	ld.d	$a3, $s0, 0
-	beqz	$a3, .LBB3_84
-# %bb.78:
-	move	$a0, $s0
-	b	.LBB3_80
+	bnez	$a3, .LBB3_77
+	b	.LBB3_64
+.LBB3_78:                               # %._crit_edge250.i
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	beqz	$s2, .LBB3_88
+# %bb.79:                               # %.lr.ph31.i.preheader.i
+	ld.d	$a3, $s2, 0
+	beqz	$a3, .LBB3_86
+# %bb.80:
+	move	$a0, $s2
+	b	.LBB3_82
 	.p2align	4, , 16
-.LBB3_79:                               # %.lr.ph31.i.loopexit.i
-                                        #   in Loop: Header=BB3_80 Depth=1
+.LBB3_81:                               # %.lr.ph31.i.loopexit.i
+                                        #   in Loop: Header=BB3_82 Depth=1
 	ld.d	$a3, $a0, 0
-	beqz	$a3, .LBB3_84
-.LBB3_80:                               # %.lr.ph.i.i
+	beqz	$a3, .LBB3_86
+.LBB3_82:                               # %.lr.ph.i.i
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_82 Depth 2
+                                        #     Child Loop BB3_84 Depth 2
 	ld.d	$a1, $a0, 8
 	ld.w	$a2, $a1, 8
 	move	$a0, $a3
-	b	.LBB3_82
+	b	.LBB3_84
 	.p2align	4, , 16
-.LBB3_81:                               #   in Loop: Header=BB3_82 Depth=2
+.LBB3_83:                               #   in Loop: Header=BB3_84 Depth=2
 	ld.d	$a3, $a3, 0
-	beqz	$a3, .LBB3_79
-.LBB3_82:                               #   Parent Loop BB3_80 Depth=1
+	beqz	$a3, .LBB3_81
+.LBB3_84:                               #   Parent Loop BB3_82 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a4, $a3, 8
 	ld.w	$a5, $a4, 0
-	bne	$a2, $a5, .LBB3_81
-# %bb.83:                               #   in Loop: Header=BB3_82 Depth=2
+	bne	$a2, $a5, .LBB3_83
+# %bb.85:                               #   in Loop: Header=BB3_84 Depth=2
 	ld.w	$a5, $a1, 0
 	ld.w	$a4, $a4, 8
-	bne	$a5, $a4, .LBB3_81
-	b	.LBB3_85
-.LBB3_84:                               # %.lr.ph31.i._crit_edge.i
+	bne	$a5, $a4, .LBB3_83
+	b	.LBB3_87
+.LBB3_86:                               # %.lr.ph31.i._crit_edge.i
 	ori	$a1, $zero, 52
 	ori	$a2, $zero, 1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
-.LBB3_85:                               # %.lr.ph258.i
+.LBB3_87:                               # %.lr.ph258.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$fp, $s0, 8
+	ld.d	$fp, $s2, 8
 	ld.w	$a0, $fp, 8
 	sub.d	$a0, $zero, $a0
 	sra.w	$a1, $a0, $s7
-	move	$a0, $s4
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(graph_GetNode)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
 	move	$s1, $a0
 	sub.d	$a0, $zero, $a1
 	sra.w	$a1, $a0, $s7
-	move	$a0, $s4
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(graph_GetNode)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -1494,67 +1496,65 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(graph_AddEdge)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, 128
+	ld.d	$a0, $s5, 128
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s5, 0
+	ld.d	$a2, $s6, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $s5, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $fp, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, 128
+	ld.d	$a0, $s5, 128
 	st.d	$fp, $a0, 0
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a0, $a4, 128
+	ld.d	$a0, $s5, 128
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s5, 0
-	ld.d	$a3, $s0, 0
+	ld.d	$a2, $s6, 0
+	ld.d	$a3, $s2, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $s5, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $s0, 0
-	ld.d	$a0, $a4, 128
-	st.d	$s0, $a0, 0
-	move	$s0, $a3
-	bnez	$a3, .LBB3_85
-.LBB3_86:                               # %._crit_edge259.i
-	move	$a0, $s4
+	st.d	$a0, $s2, 0
+	ld.d	$a0, $s5, 128
+	st.d	$s2, $a0, 0
+	move	$s2, $a3
+	bnez	$a3, .LBB3_87
+.LBB3_88:                               # %._crit_edge259.i
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(graph_StronglyConnectedComponents)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_94
-# %bb.87:                               # %.preheader.lr.ph.i
-	ld.d	$s0, $s4, 8
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
-	beqz	$s0, .LBB3_129
-# %bb.88:                               # %.preheader.i101.preheader
+	beqz	$a0, .LBB3_97
+# %bb.89:                               # %.preheader.lr.ph.i
+	ld.d	$s0, $s0, 8
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	beqz	$s0, .LBB3_98
+# %bb.90:                               # %.preheader.i101.preheader
 	move	$s3, $a0
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
 	ld.d	$fp, $a0, %got_pc_lo12(symbol_SIGNATURE)
 	move	$s1, $zero
 	addi.w	$s3, $s3, -1
-	bnez	$s0, .LBB3_92
-.LBB3_89:                               # %.loopexit.i102
+	bnez	$s0, .LBB3_94
+.LBB3_91:                               # %.loopexit.i102
                                         # =>This Inner Loop Header: Depth=1
-	beqz	$s3, .LBB3_95
-# %bb.90:                               # %.preheaderthread-pre-split.i
-                                        #   in Loop: Header=BB3_89 Depth=1
-	ld.d	$s0, $s4, 8
+	beqz	$s3, .LBB3_96
+# %bb.92:                               # %.preheaderthread-pre-split.i
+                                        #   in Loop: Header=BB3_91 Depth=1
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s0, $a0, 8
 	addi.w	$s3, $s3, -1
-	bnez	$s0, .LBB3_92
-	b	.LBB3_89
+	bnez	$s0, .LBB3_94
+	b	.LBB3_91
 	.p2align	4, , 16
-.LBB3_91:                               #   in Loop: Header=BB3_92 Depth=1
+.LBB3_93:                               #   in Loop: Header=BB3_94 Depth=1
 	ld.d	$s0, $s0, 0
-	beqz	$s0, .LBB3_89
-.LBB3_92:                               # %.lr.ph264.i
+	beqz	$s0, .LBB3_91
+.LBB3_94:                               # %.lr.ph264.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 8
 	ld.w	$a1, $a0, 8
-	bne	$a1, $s3, .LBB3_91
-# %bb.93:                               #   in Loop: Header=BB3_92 Depth=1
+	bne	$a1, $s3, .LBB3_93
+# %bb.95:                               #   in Loop: Header=BB3_94 Depth=1
 	ld.w	$a0, $a0, 0
 	ld.d	$a1, $fp, 0
 	slli.d	$a0, $a0, 3
@@ -1566,21 +1566,36 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	st.d	$s2, $a0, 8
 	st.d	$s1, $a0, 0
 	move	$s1, $a0
-	b	.LBB3_91
-.LBB3_94:
-	move	$s1, $zero
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
-.LBB3_95:                               # %._crit_edge268.i
-	move	$a0, $s4
+	b	.LBB3_93
+.LBB3_96:
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(graph_Delete)
 	jirl	$ra, $ra, 0
-	bnez	$s1, .LBB3_54
-.LBB3_96:                               # %ana_CalculateFunctionPrecedence.exit.thread
+	bnez	$s1, .LBB3_56
+	b	.LBB3_99
+.LBB3_97:
+	move	$s1, $zero
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(graph_Delete)
+	jirl	$ra, $ra, 0
+	bnez	$s1, .LBB3_56
+	b	.LBB3_99
+.LBB3_98:
+	move	$s1, $zero
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(graph_Delete)
+	jirl	$ra, $ra, 0
+	bnez	$s1, .LBB3_56
+.LBB3_99:                               # %ana_CalculateFunctionPrecedence.exit.thread
+	move	$s8, $s4
 	move	$s1, $zero
 	move	$s2, $zero
-.LBB3_97:                               # %._crit_edge
+.LBB3_100:                              # %._crit_edge
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(list_NPointerDifference)
@@ -1590,8 +1605,8 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcaddu18i	$ra, %call36(list_NReverse)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	beqz	$s3, .LBB3_100
-# %bb.98:                               # %.lr.ph122
+	beqz	$s3, .LBB3_103
+# %bb.101:                              # %.lr.ph122
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
 	ld.w	$fp, $a0, 0
@@ -1600,7 +1615,7 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s2, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	.p2align	4, , 16
-.LBB3_99:                               # =>This Inner Loop Header: Depth=1
+.LBB3_102:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$s4, $s3, 8
 	pcaddu18i	$ra, %call36(symbol_GetIncreasedOrderingCounter)
 	jirl	$ra, $ra, 0
@@ -1619,41 +1634,11 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.d	$a0, $s0, 128
 	st.d	$s3, $a0, 0
 	move	$s3, $a3
-	bnez	$a3, .LBB3_99
-.LBB3_100:                              # %.preheader115
-	beqz	$s8, .LBB3_103
-# %bb.101:                              # %.lr.ph125
-	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
-	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
-	ld.w	$fp, $a0, 0
-	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
-	ld.d	$s0, $a0, %got_pc_lo12(memory_ARRAY)
-	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$s2, $a0, %got_pc_lo12(memory_FREEDBYTES)
-	.p2align	4, , 16
-.LBB3_102:                              # =>This Inner Loop Header: Depth=1
-	ld.w	$s3, $s8, 8
-	pcaddu18i	$ra, %call36(symbol_GetIncreasedOrderingCounter)
-	jirl	$ra, $ra, 0
-	sub.d	$a1, $zero, $s3
-	sra.w	$a1, $a1, $fp
-	slli.d	$a1, $a1, 2
-	stx.w	$a0, $s6, $a1
-	ld.d	$a0, $s0, 128
-	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s2, 0
-	ld.d	$a3, $s8, 0
-	add.d	$a1, $a2, $a1
-	st.d	$a1, $s2, 0
-	ld.d	$a0, $a0, 0
-	st.d	$a0, $s8, 0
-	ld.d	$a0, $s0, 128
-	st.d	$s8, $a0, 0
-	move	$s8, $a3
 	bnez	$a3, .LBB3_102
-.LBB3_103:                              # %.preheader
-	beqz	$s1, .LBB3_106
-# %bb.104:                              # %.lr.ph128
+.LBB3_103:                              # %.preheader115
+	beqz	$s8, .LBB3_106
+# %bb.104:                              # %.lr.ph125
+	move	$s4, $s8
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
 	ld.w	$fp, $a0, 0
@@ -1663,6 +1648,37 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.d	$s2, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	.p2align	4, , 16
 .LBB3_105:                              # =>This Inner Loop Header: Depth=1
+	ld.w	$s3, $s4, 8
+	pcaddu18i	$ra, %call36(symbol_GetIncreasedOrderingCounter)
+	jirl	$ra, $ra, 0
+	sub.d	$a1, $zero, $s3
+	sra.w	$a1, $a1, $fp
+	slli.d	$a1, $a1, 2
+	stx.w	$a0, $s6, $a1
+	ld.d	$a0, $s0, 128
+	ld.w	$a1, $a0, 32
+	ld.d	$a2, $s2, 0
+	ld.d	$a3, $s4, 0
+	add.d	$a1, $a2, $a1
+	st.d	$a1, $s2, 0
+	ld.d	$a0, $a0, 0
+	st.d	$a0, $s4, 0
+	ld.d	$a0, $s0, 128
+	st.d	$s4, $a0, 0
+	move	$s4, $a3
+	bnez	$a3, .LBB3_105
+.LBB3_106:                              # %.preheader
+	beqz	$s1, .LBB3_109
+# %bb.107:                              # %.lr.ph128
+	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
+	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
+	ld.w	$fp, $a0, 0
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
+	ld.d	$s0, $a0, %got_pc_lo12(memory_ARRAY)
+	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
+	ld.d	$s2, $a0, %got_pc_lo12(memory_FREEDBYTES)
+	.p2align	4, , 16
+.LBB3_108:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$s3, $s1, 8
 	pcaddu18i	$ra, %call36(symbol_GetIncreasedOrderingCounter)
 	jirl	$ra, $ra, 0
@@ -1681,8 +1697,8 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.d	$a0, $s0, 128
 	st.d	$s1, $a0, 0
 	move	$s1, $a3
-	bnez	$a3, .LBB3_105
-.LBB3_106:                              # %._crit_edge129
+	bnez	$a3, .LBB3_108
+.LBB3_109:                              # %._crit_edge129
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_ClearInferenceRules)
 	jirl	$ra, $ra, 0
@@ -1737,16 +1753,16 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcalau12i	$a0, %pc_hi20(ana_NEQUATIONS)
 	ld.bu	$a0, $a0, %pc_lo12(ana_NEQUATIONS)
 	pcalau12i	$s0, %pc_hi20(ana_NONUNIT)
-	beqz	$a0, .LBB3_109
-# %bb.107:
+	beqz	$a0, .LBB3_112
+# %bb.110:
 	ori	$a1, $zero, 61
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s0, %pc_lo12(ana_NONUNIT)
-	beqz	$a0, .LBB3_109
-# %bb.108:                              # %.sink.split
+	beqz	$a0, .LBB3_112
+# %bb.111:                              # %.sink.split
 	pcalau12i	$a0, %pc_hi20(ana_NONTRIVDOMAIN)
 	ld.bu	$a0, $a0, %pc_lo12(ana_NONTRIVDOMAIN)
 	addi.d	$a2, $a0, 1
@@ -1754,11 +1770,11 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_109:
+.LBB3_112:
 	ld.bu	$a0, $s7, %pc_lo12(ana_PEQUATIONS)
 	pcalau12i	$fp, %pc_hi20(ana_NONHORNCLAUSES)
-	beqz	$a0, .LBB3_115
-# %bb.110:
+	beqz	$a0, .LBB3_118
+# %bb.113:
 	ori	$a1, $zero, 65
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -1770,23 +1786,23 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, %pc_lo12(ana_NONHORNCLAUSES)
-	beqz	$a0, .LBB3_112
-# %bb.111:
+	beqz	$a0, .LBB3_115
+# %bb.114:
 	ori	$a1, $zero, 63
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_112:
+.LBB3_115:
 	ld.bu	$a0, $s0, %pc_lo12(ana_NONUNIT)
-	beqz	$a0, .LBB3_114
-# %bb.113:
+	beqz	$a0, .LBB3_117
+# %bb.116:
 	ori	$a1, $zero, 94
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_114:
+.LBB3_117:
 	ori	$a1, $zero, 79
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -1807,11 +1823,11 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_115:
+.LBB3_118:
 	pcalau12i	$a0, %pc_hi20(ana_SORTRES)
 	ld.w	$a0, $a0, %pc_lo12(ana_SORTRES)
-	beqz	$a0, .LBB3_119
-# %bb.116:
+	beqz	$a0, .LBB3_122
+# %bb.119:
 	ori	$a1, $zero, 40
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -1833,54 +1849,54 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s7, %pc_lo12(ana_PEQUATIONS)
-	beqz	$a0, .LBB3_118
-# %bb.117:
+	beqz	$a0, .LBB3_121
+# %bb.120:
 	pcalau12i	$a0, %pc_hi20(ana_SORTMANYEQUATIONS)
 	ld.w	$a0, $a0, %pc_lo12(ana_SORTMANYEQUATIONS)
-	beqz	$a0, .LBB3_121
-.LBB3_118:
+	beqz	$a0, .LBB3_124
+.LBB3_121:
 	ori	$a1, $zero, 89
 	ori	$a2, $zero, 1
 	move	$a0, $s5
-	b	.LBB3_120
-.LBB3_119:
+	b	.LBB3_123
+.LBB3_122:
 	ori	$a1, $zero, 40
 	move	$a0, $s5
 	move	$a2, $zero
-.LBB3_120:
+.LBB3_123:
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_121:
+.LBB3_124:
 	pcalau12i	$a0, %pc_hi20(ana_MONADIC)
 	ld.w	$a0, $a0, %pc_lo12(ana_MONADIC)
 	pcalau12i	$a1, %pc_hi20(ana_NONMONADIC)
 	ld.w	$a1, $a1, %pc_lo12(ana_NONMONADIC)
 	or	$a0, $a0, $a1
-	beqz	$a0, .LBB3_126
-# %bb.122:
+	beqz	$a0, .LBB3_129
+# %bb.125:
 	ori	$a1, $zero, 69
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, %pc_lo12(ana_NONHORNCLAUSES)
-	beqz	$a0, .LBB3_124
-# %bb.123:
+	beqz	$a0, .LBB3_127
+# %bb.126:
 	ori	$a1, $zero, 74
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_124:
+.LBB3_127:
 	ld.bu	$a0, $s0, %pc_lo12(ana_NONUNIT)
-	beqz	$a0, .LBB3_126
-# %bb.125:
+	beqz	$a0, .LBB3_129
+# %bb.128:
 	ori	$a1, $zero, 94
 	ori	$a2, $zero, 1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
 	jirl	$ra, $ra, 0
-.LBB3_126:
+.LBB3_129:
 	pcalau12i	$a0, %pc_hi20(ana_FUNCTIONS)
 	ld.bu	$a0, $a0, %pc_lo12(ana_FUNCTIONS)
 	ld.bu	$a1, $s0, %pc_lo12(ana_NONUNIT)
@@ -1897,15 +1913,15 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	pcalau12i	$a1, %pc_hi20(ana_AXIOMCLAUSES)
 	ld.w	$a1, $a1, %pc_lo12(ana_AXIOMCLAUSES)
 	ori	$a2, $zero, 1
-	bltu	$a0, $a1, .LBB3_128
-# %bb.127:
+	bltu	$a0, $a1, .LBB3_131
+# %bb.130:
 	pcalau12i	$a0, %pc_hi20(ana_CONGROUND)
 	pcalau12i	$a1, %pc_hi20(ana_PUREPROPOSITIONAL)
 	ld.w	$a1, $a1, %pc_lo12(ana_PUREPROPOSITIONAL)
 	ld.bu	$a0, $a0, %pc_lo12(ana_CONGROUND)
 	sltui	$a1, $a1, 1
 	and	$a2, $a0, $a1
-.LBB3_128:
+.LBB3_131:
 	ori	$a1, $zero, 41
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(flag_SetFlagValue)
@@ -1930,13 +1946,6 @@ ana_AutoConfiguration:                  # @ana_AutoConfiguration
 	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 176
 	ret
-.LBB3_129:
-	move	$s1, $zero
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(graph_Delete)
-	jirl	$ra, $ra, 0
-	bnez	$s1, .LBB3_54
-	b	.LBB3_96
 .Lfunc_end3:
 	.size	ana_AutoConfiguration, .Lfunc_end3-ana_AutoConfiguration
                                         # -- End function

@@ -186,19 +186,17 @@ number_points:                          # @number_points
 	.type	remove_points,@function
 remove_points:                          # @remove_points
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a0
 	ld.d	$a0, $a0, 16
 	beq	$a0, $s0, .LBB6_14
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a1, %got_pc_hi20(CHno)
 	ld.d	$s1, $a1, %got_pc_lo12(CHno)
-	ori	$s2, $zero, 1
 	b	.LBB6_4
 	.p2align	4, , 16
 .LBB6_2:                                #   in Loop: Header=BB6_4 Depth=1
@@ -247,7 +245,7 @@ remove_points:                          # @remove_points
 	xor	$a5, $a5, $a7
 	sltui	$a5, $a5, 1
 	and	$a5, $a6, $a5
-	bne	$a5, $s2, .LBB6_13
+	beqz	$a5, .LBB6_13
 # %bb.11:                               #   in Loop: Header=BB6_4 Depth=1
 	bge	$a4, $a2, .LBB6_13
 # %bb.12:                               #   in Loop: Header=BB6_4 Depth=1
@@ -257,7 +255,7 @@ remove_points:                          # @remove_points
 	slt	$a2, $a3, $a2
 	and	$a2, $a4, $a2
 	and	$a2, $a5, $a2
-	beq	$a2, $s2, .LBB6_2
+	bnez	$a2, .LBB6_2
 	b	.LBB6_3
 .LBB6_14:
 	move	$fp, $a0
@@ -291,8 +289,7 @@ remove_points:                          # @remove_points
 	xor	$a5, $a5, $a7
 	sltui	$a5, $a5, 1
 	and	$a5, $a6, $a5
-	ori	$a6, $zero, 1
-	bne	$a5, $a6, .LBB6_23
+	beqz	$a5, .LBB6_23
 # %bb.21:
 	bge	$a4, $a2, .LBB6_23
 # %bb.22:
@@ -302,7 +299,7 @@ remove_points:                          # @remove_points
 	slt	$a2, $a3, $a2
 	and	$a2, $a4, $a2
 	and	$a2, $a5, $a2
-	bne	$a2, $a6, .LBB6_25
+	beqz	$a2, .LBB6_25
 .LBB6_24:
 	st.d	$a0, $a1, 24
 	ld.d	$a0, $fp, 24
@@ -319,12 +316,11 @@ remove_points:                          # @remove_points
 	move	$fp, $s0
 .LBB6_25:
 	move	$a0, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end6:
 	.size	remove_points, .Lfunc_end6-remove_points

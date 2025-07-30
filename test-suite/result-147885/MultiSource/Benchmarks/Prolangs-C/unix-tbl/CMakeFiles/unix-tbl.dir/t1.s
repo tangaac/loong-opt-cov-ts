@@ -171,20 +171,20 @@ swapin:                                 # @swapin
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s2, %pc_hi20(sargc)
 	ld.w	$a0, $s2, %pc_lo12(sargc)
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB4_17
+	blez	$a0, .LBB4_17
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$s3, %pc_hi20(sargv)
 	ld.d	$a0, $s3, %pc_lo12(sargv)
-	ori	$s5, $zero, 45
+	ori	$s4, $zero, 45
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.2)
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
-	pcalau12i	$a2, %got_pc_hi20(pr1403)
-	ld.d	$s6, $a2, %got_pc_lo12(pr1403)
 	addi.d	$s0, $a1, %pc_lo12(.L.str.4)
+	pcalau12i	$a1, %got_pc_hi20(pr1403)
+	ld.d	$s5, $a1, %got_pc_lo12(pr1403)
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.6)
+	ori	$s6, $zero, 1
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                #   in Loop: Header=BB4_3 Depth=1
@@ -194,12 +194,12 @@ swapin:                                 # @swapin
 	st.w	$a2, $s2, %pc_lo12(sargc)
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $s3, %pc_lo12(sargv)
-	bge	$s4, $a1, .LBB4_17
+	bge	$s6, $a1, .LBB4_17
 .LBB4_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $a0, 0
 	ld.bu	$a0, $a1, 0
-	bne	$a0, $s5, .LBB4_11
+	bne	$a0, $s4, .LBB4_11
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(match)
@@ -220,7 +220,7 @@ swapin:                                 # @swapin
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB4_2
 # %bb.7:                                #   in Loop: Header=BB4_3 Depth=1
-	st.w	$s4, $s6, 0
+	st.w	$s6, $s5, 0
 	b	.LBB4_2
 .LBB4_8:
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
@@ -233,8 +233,7 @@ swapin:                                 # @swapin
 	st.d	$a0, $a1, 0
 .LBB4_11:                               # %.critedge
 	ld.w	$a0, $s2, %pc_lo12(sargc)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_17
+	blez	$a0, .LBB4_17
 # %bb.12:
 	pcalau12i	$a0, %got_pc_hi20(tabin)
 	ld.d	$fp, $a0, %got_pc_lo12(tabin)

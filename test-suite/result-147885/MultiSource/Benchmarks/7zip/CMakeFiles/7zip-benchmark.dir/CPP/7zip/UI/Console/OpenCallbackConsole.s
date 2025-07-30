@@ -122,8 +122,7 @@ _ZN20COpenCallbackConsole26Open_CryptoGetTextPasswordEPPw: # @_ZN20COpenCallback
 .Ltmp1:
 # %bb.7:                                # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB3_9
+	blez	$s4, .LBB3_9
 # %bb.8:                                # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -223,8 +222,7 @@ _ZN20COpenCallbackConsole21Open_GetPasswordIfAnyER11CStringBaseIwE: # @_ZN20COpe
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a2, $a0, 16
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB4_12
+	beqz	$a2, .LBB4_12
 # %bb.1:
 	addi.d	$sp, $sp, -64
 	.cfi_def_cfa_offset 64
@@ -268,9 +266,8 @@ _ZN20COpenCallbackConsole21Open_GetPasswordIfAnyER11CStringBaseIwE: # @_ZN20COpe
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s5, $a1, .LBB4_6
+	blez	$s5, .LBB4_6
 # %bb.5:                                # %._crit_edge.thread.i.i
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)

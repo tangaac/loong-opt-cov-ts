@@ -209,8 +209,7 @@ RTPReadPacket:                          # @RTPReadPacket
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(DecomposeRTPpacket)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB3_9
+	bltz	$a0, .LBB3_9
 # %bb.4:
 	ld.w	$a0, $fp, 0
 	b	.LBB3_6

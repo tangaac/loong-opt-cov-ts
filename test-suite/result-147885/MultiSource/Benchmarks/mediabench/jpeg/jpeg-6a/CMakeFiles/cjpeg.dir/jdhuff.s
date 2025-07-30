@@ -1433,8 +1433,7 @@ start_pass_huff_decoder:                # @start_pass_huff_decoder
 	jirl	$ra, $a2, 0
 .LBB4_5:
 	ld.w	$a0, $fp, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_14
+	blez	$a0, .LBB4_14
 # %bb.6:                                # %.lr.ph
 	move	$s1, $zero
 	addi.d	$s2, $fp, 224
@@ -1543,7 +1542,7 @@ decode_mcu:                             # @decode_mcu
 	move	$s0, $a0
 	ld.w	$a0, $a0, 360
 	ld.d	$fp, $s0, 576
-	move	$s1, $a1
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	beqz	$a0, .LBB5_7
 # %bb.1:
 	ld.w	$a0, $fp, 48
@@ -1564,8 +1563,7 @@ decode_mcu:                             # @decode_mcu
 	beqz	$a0, .LBB5_183
 # %bb.3:                                # %.preheader.i
 	ld.w	$a0, $s0, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_6
+	blez	$a0, .LBB5_6
 # %bb.4:                                # %.lr.ph.i
 	move	$a0, $zero
 	addi.d	$a1, $fp, 32
@@ -1583,36 +1581,34 @@ decode_mcu:                             # @decode_mcu
 .LBB5_7:
 	ld.d	$a0, $s0, 32
 	ld.d	$a1, $a0, 0
-	ld.d	$a3, $a0, 8
 	st.d	$s0, $sp, 168
 	st.d	$a1, $sp, 128
-	st.d	$a3, $sp, 136
+	ld.d	$a3, $a0, 8
 	ld.w	$a4, $s0, 524
-	ld.d	$s2, $fp, 16
+	ld.d	$s1, $fp, 16
 	addi.d	$a2, $fp, 28
 	st.d	$a2, $sp, 176
 	vld	$vr0, $fp, 32
 	ld.w	$a5, $s0, 464
 	ld.w	$a2, $fp, 24
+	st.d	$a3, $sp, 136
 	st.w	$a4, $sp, 144
-	ori	$a6, $zero, 1
 	vst	$vr0, $sp, 112
-	blt	$a5, $a6, .LBB5_182
+	blez	$a5, .LBB5_182
 # %bb.8:                                # %.lr.ph
-	move	$s6, $zero
-	addi.d	$s7, $s0, 468
+	move	$s5, $zero
+	addi.d	$s6, $s0, 468
 	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$s3, $s0, 424
-	addi.d	$s4, $fp, 56
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$s8, $s0, 424
+	addi.d	$s2, $fp, 56
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	addi.d	$fp, $fp, 88
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 	ori	$s0, $zero, 255
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 .LBB5_9:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_13 Depth 2
                                         #       Child Loop BB5_24 Depth 3
@@ -1628,61 +1624,61 @@ decode_mcu:                             # @decode_mcu
                                         #         Child Loop BB5_140 Depth 4
                                         #       Child Loop BB5_156 Depth 3
                                         #         Child Loop BB5_166 Depth 4
-	slli.d	$a0, $s6, 2
-	ldx.w	$a0, $s7, $a0
+	slli.d	$a0, $s5, 2
+	ldx.w	$a0, $s6, $a0
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 3
-	ldx.d	$a3, $s3, $a0
+	ldx.d	$a3, $s8, $a0
 	ld.w	$a0, $a3, 20
-	slli.d	$a1, $s6, 3
-	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	slli.d	$a1, $s5, 3
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	ld.w	$a3, $a3, 24
-	ldx.d	$a1, $s1, $a1
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
+	ldx.d	$a1, $a4, $a1
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 3
-	ldx.d	$s4, $s4, $a0
+	ldx.d	$s3, $s2, $a0
 	slli.d	$a0, $a3, 3
 	ldx.d	$a0, $fp, $a0
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	blt	$s5, $a2, .LBB5_34
+	blt	$s4, $a2, .LBB5_34
 # %bb.10:                               # %.lr.ph.i253
                                         #   in Loop: Header=BB5_9 Depth=1
-	move	$s3, $s6
-	ld.d	$s1, $sp, 128
+	move	$s8, $s5
+	ld.d	$s2, $sp, 128
 	ld.d	$fp, $sp, 136
-	ld.d	$s6, $sp, 168
-	ld.d	$s8, $sp, 176
+	ld.d	$s5, $sp, 168
+	ld.d	$s7, $sp, 176
 	b	.LBB5_13
 	.p2align	4, , 16
 .LBB5_11:                               #   in Loop: Header=BB5_13 Depth=2
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 113
 	st.w	$a1, $a0, 40
 	addi.w	$a1, $zero, -1
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a2, 0
 	move	$a0, $zero
 	ori	$a1, $zero, 1
-	st.w	$a1, $s8, 0
+	st.w	$a1, $s7, 0
 .LBB5_12:                               # %.loopexit58.i
                                         #   in Loop: Header=BB5_13 Depth=2
-	slli.d	$a1, $s2, 8
-	or	$s2, $a0, $a1
-	addi.w	$a2, $s5, 8
+	slli.d	$a1, $s1, 8
+	or	$s1, $a0, $a1
+	addi.w	$a2, $s4, 8
 	ori	$a0, $zero, 17
-	bge	$s5, $a0, .LBB5_31
+	bge	$s4, $a0, .LBB5_31
 .LBB5_13:                               #   Parent Loop BB5_9 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_24 Depth 3
 	ld.w	$a0, $sp, 144
-	move	$s5, $a2
+	move	$s4, $a2
 	beqz	$a0, .LBB5_17
 # %bb.14:                               #   in Loop: Header=BB5_13 Depth=2
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s5, .LBB5_29
+	bgez	$s4, .LBB5_29
 .LBB5_15:                               #   in Loop: Header=BB5_13 Depth=2
-	ld.w	$a0, $s8, 0
+	ld.w	$a0, $s7, 0
 	beqz	$a0, .LBB5_11
 # %bb.16:                               #   in Loop: Header=BB5_13 Depth=2
 	move	$a0, $zero
@@ -1691,38 +1687,38 @@ decode_mcu:                             # @decode_mcu
 .LBB5_17:                               #   in Loop: Header=BB5_13 Depth=2
 	beqz	$fp, .LBB5_19
 # %bb.18:                               #   in Loop: Header=BB5_13 Depth=2
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_12
 	b	.LBB5_21
 .LBB5_19:                               #   in Loop: Header=BB5_13 Depth=2
-	ld.d	$a0, $s6, 32
+	ld.d	$a0, $s5, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.20:                               #   in Loop: Header=BB5_13 Depth=2
-	ld.d	$a0, $s6, 32
-	ld.d	$s1, $a0, 0
+	ld.d	$a0, $s5, 32
+	ld.d	$s2, $a0, 0
 	ld.d	$fp, $a0, 8
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_12
 .LBB5_21:                               # %.preheader.i255.preheader
                                         #   in Loop: Header=BB5_13 Depth=2
-	ld.d	$s7, $sp, 168
+	ld.d	$s6, $sp, 168
 	b	.LBB5_24
 	.p2align	4, , 16
 .LBB5_22:                               #   in Loop: Header=BB5_24 Depth=3
-	ld.d	$a0, $s7, 32
-	ld.d	$s1, $a0, 0
+	ld.d	$a0, $s6, 32
+	ld.d	$s2, $a0, 0
 	ld.d	$fp, $a0, 8
 .LBB5_23:                               #   in Loop: Header=BB5_24 Depth=3
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_26
 .LBB5_24:                               # %.preheader.i255
                                         #   Parent Loop BB5_9 Depth=1
@@ -1730,9 +1726,9 @@ decode_mcu:                             # @decode_mcu
                                         # =>    This Inner Loop Header: Depth=3
 	bnez	$fp, .LBB5_23
 # %bb.25:                               #   in Loop: Header=BB5_24 Depth=3
-	ld.d	$a0, $s7, 32
+	ld.d	$a0, $s6, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s7
+	move	$a0, $s6
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB5_22
 	b	.LBB5_183
@@ -1744,155 +1740,156 @@ decode_mcu:                             # @decode_mcu
 	b	.LBB5_12
 .LBB5_28:                               #   in Loop: Header=BB5_13 Depth=2
 	st.w	$a0, $sp, 144
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s5, .LBB5_15
+	bltz	$s4, .LBB5_15
 .LBB5_29:                               #   in Loop: Header=BB5_9 Depth=1
-	st.d	$s1, $sp, 128
+	st.d	$s2, $sp, 128
 	st.d	$fp, $sp, 136
-	st.d	$s2, $sp, 152
-	st.w	$s5, $sp, 160
+	st.d	$s1, $sp, 152
+	st.w	$s4, $sp, 160
 	ori	$a0, $zero, 7
-	bltu	$a0, $s5, .LBB5_32
+	bltu	$a0, $s4, .LBB5_32
 # %bb.30:                               # %.split207
                                         #   in Loop: Header=BB5_9 Depth=1
 	addi.d	$a0, $sp, 128
 	ori	$a4, $zero, 1
-	move	$a1, $s2
-	move	$a2, $s5
-	move	$a3, $s4
+	move	$a1, $s1
+	move	$a2, $s4
+	move	$a3, $s3
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	move	$s6, $s3
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	move	$s3, $a0
+	move	$s5, $s8
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 	b	.LBB5_62
 .LBB5_31:                               # %.thread
                                         #   in Loop: Header=BB5_9 Depth=1
-	st.d	$s1, $sp, 128
+	st.d	$s2, $sp, 128
 	st.d	$fp, $sp, 136
-	st.d	$s2, $sp, 152
+	st.d	$s1, $sp, 152
 	st.w	$a2, $sp, 160
 	b	.LBB5_33
 .LBB5_32:                               #   in Loop: Header=BB5_9 Depth=1
-	move	$a2, $s5
+	move	$a2, $s4
 .LBB5_33:                               #   in Loop: Header=BB5_9 Depth=1
-	move	$s6, $s3
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	move	$s5, $s8
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 .LBB5_34:                               #   in Loop: Header=BB5_9 Depth=1
 	addi.d	$a0, $a2, -8
-	sra.d	$a0, $s2, $a0
+	sra.d	$a0, $s1, $a0
 	andi	$a0, $a0, 255
-	alsl.d	$a1, $a0, $s4, 2
+	alsl.d	$a1, $a0, $s3, 2
 	ld.w	$a1, $a1, 360
 	beqz	$a1, .LBB5_61
 # %bb.35:                               #   in Loop: Header=BB5_9 Depth=1
-	add.d	$a0, $s4, $a0
-	ld.bu	$s4, $a0, 1384
+	add.d	$a0, $s3, $a0
+	ld.bu	$s3, $a0, 1384
 	sub.w	$a2, $a2, $a1
-	st.d	$s6, $sp, 0                     # 8-byte Folded Spill
-	beqz	$s4, .LBB5_64
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	beqz	$s3, .LBB5_64
 .LBB5_36:                               #   in Loop: Header=BB5_9 Depth=1
-	bge	$a2, $s4, .LBB5_59
+	bge	$a2, $s3, .LBB5_59
 # %bb.37:                               #   in Loop: Header=BB5_9 Depth=1
-	ld.d	$s1, $sp, 128
-	ld.d	$s8, $sp, 136
+	ld.d	$s2, $sp, 128
+	ld.d	$s7, $sp, 136
 	ori	$a0, $zero, 24
 	blt	$a0, $a2, .LBB5_58
 # %bb.38:                               # %.lr.ph.i262.preheader
                                         #   in Loop: Header=BB5_9 Depth=1
-	ld.d	$s5, $sp, 168
-	ld.d	$s7, $sp, 176
+	ld.d	$s4, $sp, 168
+	ld.d	$s6, $sp, 176
 	b	.LBB5_41
 	.p2align	4, , 16
 .LBB5_39:                               #   in Loop: Header=BB5_41 Depth=2
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 113
 	st.w	$a1, $a0, 40
 	addi.w	$a1, $zero, -1
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a2, 0
 	move	$a0, $zero
 	ori	$a1, $zero, 1
-	st.w	$a1, $s7, 0
+	st.w	$a1, $s6, 0
 .LBB5_40:                               # %.loopexit58.i272
                                         #   in Loop: Header=BB5_41 Depth=2
-	slli.d	$a1, $s2, 8
-	or	$s2, $a0, $a1
-	addi.w	$a2, $s3, 8
+	slli.d	$a1, $s1, 8
+	or	$s1, $a0, $a1
+	addi.w	$a2, $s8, 8
 	ori	$a0, $zero, 17
-	bge	$s3, $a0, .LBB5_58
+	bge	$s8, $a0, .LBB5_58
 .LBB5_41:                               # %.lr.ph.i262
                                         #   Parent Loop BB5_9 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_52 Depth 3
 	ld.w	$a0, $sp, 144
-	move	$s3, $a2
+	move	$s8, $a2
 	beqz	$a0, .LBB5_45
 # %bb.42:                               #   in Loop: Header=BB5_41 Depth=2
-	bge	$s3, $s4, .LBB5_57
+	bge	$s8, $s3, .LBB5_57
 .LBB5_43:                               #   in Loop: Header=BB5_41 Depth=2
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $s6, 0
 	beqz	$a0, .LBB5_39
 # %bb.44:                               #   in Loop: Header=BB5_41 Depth=2
 	move	$a0, $zero
 	b	.LBB5_40
 	.p2align	4, , 16
 .LBB5_45:                               #   in Loop: Header=BB5_41 Depth=2
-	beqz	$s8, .LBB5_47
+	beqz	$s7, .LBB5_47
 # %bb.46:                               #   in Loop: Header=BB5_41 Depth=2
-	ld.bu	$a0, $s1, 0
-	addi.d	$s8, $s8, -1
-	addi.d	$s1, $s1, 1
+	ld.bu	$a0, $s2, 0
+	addi.d	$s7, $s7, -1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_40
 	b	.LBB5_49
 .LBB5_47:                               #   in Loop: Header=BB5_41 Depth=2
-	ld.d	$a0, $s5, 32
+	ld.d	$a0, $s4, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.48:                               #   in Loop: Header=BB5_41 Depth=2
-	ld.d	$a0, $s5, 32
-	ld.d	$s1, $a0, 0
-	ld.d	$s8, $a0, 8
-	ld.bu	$a0, $s1, 0
-	addi.d	$s8, $s8, -1
-	addi.d	$s1, $s1, 1
+	ld.d	$a0, $s4, 32
+	ld.d	$s2, $a0, 0
+	ld.d	$s7, $a0, 8
+	ld.bu	$a0, $s2, 0
+	addi.d	$s7, $s7, -1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_40
 .LBB5_49:                               # %.preheader.i278.preheader
                                         #   in Loop: Header=BB5_41 Depth=2
-	move	$fp, $s6
-	ld.d	$s6, $sp, 168
+	move	$fp, $s5
+	ld.d	$s5, $sp, 168
 	b	.LBB5_52
 	.p2align	4, , 16
 .LBB5_50:                               #   in Loop: Header=BB5_52 Depth=3
-	ld.d	$a0, $s6, 32
-	ld.d	$s1, $a0, 0
-	ld.d	$s8, $a0, 8
+	ld.d	$a0, $s5, 32
+	ld.d	$s2, $a0, 0
+	ld.d	$s7, $a0, 8
 .LBB5_51:                               #   in Loop: Header=BB5_52 Depth=3
-	ld.bu	$a0, $s1, 0
-	addi.d	$s8, $s8, -1
-	addi.d	$s1, $s1, 1
+	ld.bu	$a0, $s2, 0
+	addi.d	$s7, $s7, -1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_54
 .LBB5_52:                               # %.preheader.i278
                                         #   Parent Loop BB5_9 Depth=1
                                         #     Parent Loop BB5_41 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	bnez	$s8, .LBB5_51
+	bnez	$s7, .LBB5_51
 # %bb.53:                               #   in Loop: Header=BB5_52 Depth=3
-	ld.d	$a0, $s6, 32
+	ld.d	$a0, $s5, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB5_50
 	b	.LBB5_183
 .LBB5_54:                               #   in Loop: Header=BB5_41 Depth=2
-	move	$s6, $fp
+	move	$s5, $fp
 	bnez	$a0, .LBB5_56
 # %bb.55:                               # %.loopexit58.i272.loopexit
                                         #   in Loop: Header=BB5_41 Depth=2
@@ -1902,26 +1899,27 @@ decode_mcu:                             # @decode_mcu
 .LBB5_56:                               #   in Loop: Header=BB5_41 Depth=2
 	st.w	$a0, $sp, 144
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	blt	$s3, $s4, .LBB5_43
+	blt	$s8, $s3, .LBB5_43
 .LBB5_57:                               #   in Loop: Header=BB5_9 Depth=1
-	move	$a2, $s3
+	move	$a2, $s8
 .LBB5_58:                               # %.loopexit460
                                         #   in Loop: Header=BB5_9 Depth=1
-	st.d	$s1, $sp, 128
-	st.d	$s8, $sp, 136
-	st.d	$s2, $sp, 152
+	st.d	$s2, $sp, 128
+	st.d	$s7, $sp, 136
+	st.d	$s1, $sp, 152
 	st.w	$a2, $sp, 160
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ori	$s5, $zero, 7
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ori	$s4, $zero, 7
 .LBB5_59:                               #   in Loop: Header=BB5_9 Depth=1
-	sub.w	$a2, $a2, $s4
-	sra.d	$a0, $s2, $a2
+	sub.w	$a2, $a2, $s3
+	sra.d	$a0, $s1, $a2
 	addi.d	$a3, $zero, -1
-	slli.d	$a1, $s4, 2
+	slli.d	$a1, $s3, 2
 	pcalau12i	$a4, %pc_hi20(extend_test)
 	addi.d	$a4, $a4, %pc_lo12(extend_test)
 	ldx.w	$a4, $a4, $a1
-	sll.w	$a3, $a3, $s4
+	sll.w	$a3, $a3, $s3
 	andn	$a0, $a0, $a3
 	addi.w	$a0, $a0, 0
 	bge	$a0, $a4, .LBB5_65
@@ -1935,23 +1933,22 @@ decode_mcu:                             # @decode_mcu
                                         #   in Loop: Header=BB5_9 Depth=1
 	addi.d	$a0, $sp, 128
 	ori	$a4, $zero, 9
-	move	$a1, $s2
-	move	$a3, $s4
+	move	$a1, $s1
+	move	$a3, $s3
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 .LBB5_62:                               #   in Loop: Header=BB5_9 Depth=1
-	bltz	$s4, .LBB5_183
+	bltz	$s3, .LBB5_183
 # %bb.63:                               #   in Loop: Header=BB5_9 Depth=1
-	ld.d	$s2, $sp, 152
+	ld.d	$s1, $sp, 152
 	ld.w	$a2, $sp, 160
-	st.d	$s6, $sp, 0                     # 8-byte Folded Spill
-	bnez	$s4, .LBB5_36
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	bnez	$s3, .LBB5_36
 .LBB5_64:                               #   in Loop: Header=BB5_9 Depth=1
 	move	$a0, $zero
 .LBB5_65:                               #   in Loop: Header=BB5_9 Depth=1
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a1, $a6, 48
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$a4, $a3, 360
@@ -1967,59 +1964,58 @@ decode_mcu:                             # @decode_mcu
 	ld.w	$a4, $a6, 36
 	add.d	$a0, $a3, $a0
 	stx.w	$a0, $a1, $a5
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	st.h	$a0, $a1, 0
 	ori	$a0, $zero, 2
 	blt	$a4, $a0, .LBB5_125
 # %bb.67:                               # %.preheader
                                         #   in Loop: Header=BB5_9 Depth=1
-	ori	$s1, $zero, 1
+	ori	$s3, $zero, 1
 .LBB5_68:                               #   Parent Loop BB5_9 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_72 Depth 3
                                         #         Child Loop BB5_83 Depth 4
                                         #       Child Loop BB5_99 Depth 3
                                         #         Child Loop BB5_110 Depth 4
-	blt	$s5, $a2, .LBB5_93
+	blt	$s4, $a2, .LBB5_93
 # %bb.69:                               # %.lr.ph.i292
                                         #   in Loop: Header=BB5_68 Depth=2
-	move	$s7, $s1
-	ld.d	$s3, $sp, 128
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s6, $sp, 128
 	ld.d	$fp, $sp, 136
-	ld.d	$s5, $sp, 168
-	ld.d	$s1, $sp, 176
+	ld.d	$s4, $sp, 168
+	ld.d	$s2, $sp, 176
 	b	.LBB5_72
 	.p2align	4, , 16
 .LBB5_70:                               #   in Loop: Header=BB5_72 Depth=3
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 113
 	st.w	$a1, $a0, 40
 	addi.w	$a1, $zero, -1
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a2, 0
 	move	$a0, $zero
 	ori	$a1, $zero, 1
-	st.w	$a1, $s1, 0
+	st.w	$a1, $s2, 0
 .LBB5_71:                               # %.loopexit58.i302
                                         #   in Loop: Header=BB5_72 Depth=3
-	slli.d	$a1, $s2, 8
-	or	$s2, $a0, $a1
-	addi.w	$a2, $s4, 8
+	slli.d	$a1, $s1, 8
+	or	$s1, $a0, $a1
+	addi.w	$a2, $s3, 8
 	ori	$a0, $zero, 17
-	bge	$s4, $a0, .LBB5_90
+	bge	$s3, $a0, .LBB5_90
 .LBB5_72:                               #   Parent Loop BB5_9 Depth=1
                                         #     Parent Loop BB5_68 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB5_83 Depth 4
 	ld.w	$a0, $sp, 144
-	move	$s4, $a2
+	move	$s3, $a2
 	beqz	$a0, .LBB5_76
 # %bb.73:                               #   in Loop: Header=BB5_72 Depth=3
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s4, .LBB5_88
+	bgez	$s3, .LBB5_88
 .LBB5_74:                               #   in Loop: Header=BB5_72 Depth=3
-	ld.w	$a0, $s1, 0
+	ld.w	$a0, $s2, 0
 	beqz	$a0, .LBB5_70
 # %bb.75:                               #   in Loop: Header=BB5_72 Depth=3
 	move	$a0, $zero
@@ -2028,38 +2024,38 @@ decode_mcu:                             # @decode_mcu
 .LBB5_76:                               #   in Loop: Header=BB5_72 Depth=3
 	beqz	$fp, .LBB5_78
 # %bb.77:                               #   in Loop: Header=BB5_72 Depth=3
-	ld.bu	$a0, $s3, 0
+	ld.bu	$a0, $s6, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s3, $s3, 1
+	addi.d	$s6, $s6, 1
 	bne	$a0, $s0, .LBB5_71
 	b	.LBB5_80
 .LBB5_78:                               #   in Loop: Header=BB5_72 Depth=3
-	ld.d	$a0, $s5, 32
+	ld.d	$a0, $s4, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.79:                               #   in Loop: Header=BB5_72 Depth=3
-	ld.d	$a0, $s5, 32
-	ld.d	$s3, $a0, 0
+	ld.d	$a0, $s4, 32
+	ld.d	$s6, $a0, 0
 	ld.d	$fp, $a0, 8
-	ld.bu	$a0, $s3, 0
+	ld.bu	$a0, $s6, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s3, $s3, 1
+	addi.d	$s6, $s6, 1
 	bne	$a0, $s0, .LBB5_71
 .LBB5_80:                               # %.preheader.i308.preheader
                                         #   in Loop: Header=BB5_72 Depth=3
-	ld.d	$s6, $sp, 168
+	ld.d	$s5, $sp, 168
 	b	.LBB5_83
 	.p2align	4, , 16
 .LBB5_81:                               #   in Loop: Header=BB5_83 Depth=4
-	ld.d	$a0, $s6, 32
-	ld.d	$s3, $a0, 0
+	ld.d	$a0, $s5, 32
+	ld.d	$s6, $a0, 0
 	ld.d	$fp, $a0, 8
 .LBB5_82:                               #   in Loop: Header=BB5_83 Depth=4
-	ld.bu	$a0, $s3, 0
+	ld.bu	$a0, $s6, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s3, $s3, 1
+	addi.d	$s6, $s6, 1
 	bne	$a0, $s0, .LBB5_85
 .LBB5_83:                               # %.preheader.i308
                                         #   Parent Loop BB5_9 Depth=1
@@ -2068,9 +2064,9 @@ decode_mcu:                             # @decode_mcu
                                         # =>      This Inner Loop Header: Depth=4
 	bnez	$fp, .LBB5_82
 # %bb.84:                               #   in Loop: Header=BB5_83 Depth=4
-	ld.d	$a0, $s6, 32
+	ld.d	$a0, $s5, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB5_81
 	b	.LBB5_183
@@ -2082,50 +2078,46 @@ decode_mcu:                             # @decode_mcu
 	b	.LBB5_71
 .LBB5_87:                               #   in Loop: Header=BB5_72 Depth=3
 	st.w	$a0, $sp, 144
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s4, .LBB5_74
+	bltz	$s3, .LBB5_74
 .LBB5_88:                               #   in Loop: Header=BB5_68 Depth=2
-	st.d	$s3, $sp, 128
+	st.d	$s6, $sp, 128
 	st.d	$fp, $sp, 136
-	st.d	$s2, $sp, 152
-	st.w	$s4, $sp, 160
-	ori	$s5, $zero, 7
-	bltu	$s5, $s4, .LBB5_91
+	st.d	$s1, $sp, 152
+	st.w	$s3, $sp, 160
+	ori	$s4, $zero, 7
+	bltu	$s4, $s3, .LBB5_91
 # %bb.89:                               # %.split211
                                         #   in Loop: Header=BB5_68 Depth=2
 	addi.d	$a0, $sp, 128
 	ori	$a4, $zero, 1
-	move	$a1, $s2
-	move	$a2, $s4
+	move	$a1, $s1
+	move	$a2, $s3
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	move	$s1, $s7
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB5_121
 .LBB5_90:                               # %.thread597
                                         #   in Loop: Header=BB5_68 Depth=2
-	st.d	$s3, $sp, 128
+	st.d	$s6, $sp, 128
 	st.d	$fp, $sp, 136
-	st.d	$s2, $sp, 152
+	st.d	$s1, $sp, 152
 	st.w	$a2, $sp, 160
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 	b	.LBB5_92
 .LBB5_91:                               #   in Loop: Header=BB5_68 Depth=2
-	move	$a2, $s4
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	move	$a2, $s3
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 .LBB5_92:                               #   in Loop: Header=BB5_68 Depth=2
-	move	$s1, $s7
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
 .LBB5_93:                               #   in Loop: Header=BB5_68 Depth=2
 	addi.d	$a0, $a2, -8
-	sra.d	$a0, $s2, $a0
+	sra.d	$a0, $s1, $a0
 	andi	$a0, $a0, 255
 	slli.d	$a1, $a0, 2
 	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
@@ -2135,88 +2127,88 @@ decode_mcu:                             # @decode_mcu
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a0, $a3, $a0
 	sub.w	$a2, $a2, $a1
-	andi	$s7, $a0, 15
-	bstrpick.d	$s6, $a0, 31, 4
-	beqz	$s7, .LBB5_123
+	andi	$s6, $a0, 15
+	bstrpick.d	$s5, $a0, 31, 4
+	beqz	$s6, .LBB5_123
 .LBB5_95:                               #   in Loop: Header=BB5_68 Depth=2
-	bge	$a2, $s7, .LBB5_117
+	bge	$a2, $s6, .LBB5_117
 # %bb.96:                               # %.lr.ph.i322
                                         #   in Loop: Header=BB5_68 Depth=2
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$fp, $sp, 128
-	ld.d	$s8, $sp, 136
-	ld.d	$s4, $sp, 168
-	ld.d	$s1, $sp, 176
+	ld.d	$s7, $sp, 136
+	ld.d	$s3, $sp, 168
+	ld.d	$s2, $sp, 176
 	b	.LBB5_99
 	.p2align	4, , 16
 .LBB5_97:                               #   in Loop: Header=BB5_99 Depth=3
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 113
 	st.w	$a1, $a0, 40
 	addi.w	$a1, $zero, -1
-	move	$a0, $s4
+	move	$a0, $s3
 	jirl	$ra, $a2, 0
 	move	$a0, $zero
 	ori	$a1, $zero, 1
-	st.w	$a1, $s1, 0
+	st.w	$a1, $s2, 0
 .LBB5_98:                               # %.loopexit58.i332
                                         #   in Loop: Header=BB5_99 Depth=3
-	slli.d	$a1, $s2, 8
-	or	$s2, $a0, $a1
-	addi.w	$a2, $s3, 8
+	slli.d	$a1, $s1, 8
+	or	$s1, $a0, $a1
+	addi.w	$a2, $s8, 8
 	ori	$a0, $zero, 17
-	bge	$s3, $a0, .LBB5_116
+	bge	$s8, $a0, .LBB5_116
 .LBB5_99:                               #   Parent Loop BB5_9 Depth=1
                                         #     Parent Loop BB5_68 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB5_110 Depth 4
 	ld.w	$a0, $sp, 144
-	move	$s3, $a2
+	move	$s8, $a2
 	beqz	$a0, .LBB5_103
 # %bb.100:                              #   in Loop: Header=BB5_99 Depth=3
-	bge	$s3, $s7, .LBB5_115
+	bge	$s8, $s6, .LBB5_115
 .LBB5_101:                              #   in Loop: Header=BB5_99 Depth=3
-	ld.w	$a0, $s1, 0
+	ld.w	$a0, $s2, 0
 	beqz	$a0, .LBB5_97
 # %bb.102:                              #   in Loop: Header=BB5_99 Depth=3
 	move	$a0, $zero
 	b	.LBB5_98
 	.p2align	4, , 16
 .LBB5_103:                              #   in Loop: Header=BB5_99 Depth=3
-	beqz	$s8, .LBB5_105
+	beqz	$s7, .LBB5_105
 # %bb.104:                              #   in Loop: Header=BB5_99 Depth=3
 	ld.bu	$a0, $fp, 0
-	addi.d	$s8, $s8, -1
+	addi.d	$s7, $s7, -1
 	addi.d	$fp, $fp, 1
 	bne	$a0, $s0, .LBB5_98
 	b	.LBB5_107
 .LBB5_105:                              #   in Loop: Header=BB5_99 Depth=3
-	ld.d	$a0, $s4, 32
+	ld.d	$a0, $s3, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s4
+	move	$a0, $s3
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.106:                              #   in Loop: Header=BB5_99 Depth=3
-	ld.d	$a0, $s4, 32
+	ld.d	$a0, $s3, 32
 	ld.d	$fp, $a0, 0
-	ld.d	$s8, $a0, 8
+	ld.d	$s7, $a0, 8
 	ld.bu	$a0, $fp, 0
-	addi.d	$s8, $s8, -1
+	addi.d	$s7, $s7, -1
 	addi.d	$fp, $fp, 1
 	bne	$a0, $s0, .LBB5_98
 .LBB5_107:                              # %.preheader.i338.preheader
                                         #   in Loop: Header=BB5_99 Depth=3
-	ld.d	$s5, $sp, 168
+	ld.d	$s4, $sp, 168
 	b	.LBB5_110
 	.p2align	4, , 16
 .LBB5_108:                              #   in Loop: Header=BB5_110 Depth=4
-	ld.d	$a0, $s5, 32
+	ld.d	$a0, $s4, 32
 	ld.d	$fp, $a0, 0
-	ld.d	$s8, $a0, 8
+	ld.d	$s7, $a0, 8
 .LBB5_109:                              #   in Loop: Header=BB5_110 Depth=4
 	ld.bu	$a0, $fp, 0
-	addi.d	$s8, $s8, -1
+	addi.d	$s7, $s7, -1
 	addi.d	$fp, $fp, 1
 	bne	$a0, $s0, .LBB5_112
 .LBB5_110:                              # %.preheader.i338
@@ -2224,16 +2216,16 @@ decode_mcu:                             # @decode_mcu
                                         #     Parent Loop BB5_68 Depth=2
                                         #       Parent Loop BB5_99 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	bnez	$s8, .LBB5_109
+	bnez	$s7, .LBB5_109
 # %bb.111:                              #   in Loop: Header=BB5_110 Depth=4
-	ld.d	$a0, $s5, 32
+	ld.d	$a0, $s4, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB5_108
 	b	.LBB5_183
 .LBB5_112:                              #   in Loop: Header=BB5_99 Depth=3
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 	bnez	$a0, .LBB5_114
 # %bb.113:                              # %.loopexit58.i332.loopexit
                                         #   in Loop: Header=BB5_99 Depth=3
@@ -2241,27 +2233,27 @@ decode_mcu:                             # @decode_mcu
 	b	.LBB5_98
 .LBB5_114:                              #   in Loop: Header=BB5_99 Depth=3
 	st.w	$a0, $sp, 144
-	blt	$s3, $s7, .LBB5_101
+	blt	$s8, $s6, .LBB5_101
 .LBB5_115:                              #   in Loop: Header=BB5_68 Depth=2
-	move	$a2, $s3
+	move	$a2, $s8
 .LBB5_116:                              #   in Loop: Header=BB5_68 Depth=2
 	st.d	$fp, $sp, 128
-	st.d	$s8, $sp, 136
-	st.d	$s2, $sp, 152
+	st.d	$s7, $sp, 136
+	st.d	$s1, $sp, 152
 	st.w	$a2, $sp, 160
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
 .LBB5_117:                              #   in Loop: Header=BB5_68 Depth=2
-	sub.w	$a2, $a2, $s7
-	sra.d	$a1, $s2, $a2
+	sub.w	$a2, $a2, $s6
+	sra.d	$a1, $s1, $a2
 	addi.d	$a3, $zero, -1
-	slli.d	$a0, $s7, 2
+	slli.d	$a0, $s6, 2
 	pcalau12i	$a4, %pc_hi20(extend_test)
 	addi.d	$a4, $a4, %pc_lo12(extend_test)
 	ldx.w	$a4, $a4, $a0
-	sll.w	$a3, $a3, $s7
+	sll.w	$a3, $a3, $s6
 	andn	$a1, $a1, $a3
 	addi.w	$a1, $a1, 0
 	bge	$a1, $a4, .LBB5_119
@@ -2273,13 +2265,13 @@ decode_mcu:                             # @decode_mcu
 .LBB5_119:                              #   in Loop: Header=BB5_68 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(jpeg_natural_order)
 	ld.d	$a3, $a0, %got_pc_lo12(jpeg_natural_order)
-	add.w	$a0, $s6, $s1
+	add.w	$a0, $s5, $s3
 	slli.d	$a4, $a0, 2
 	ldx.w	$a3, $a3, $a4
 	slli.d	$a3, $a3, 1
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	stx.h	$a1, $a4, $a3
-	addi.d	$s1, $a0, 1
+	addi.d	$s3, $a0, 1
 	ori	$a1, $zero, 63
 	blt	$a0, $a1, .LBB5_68
 	b	.LBB5_180
@@ -2287,112 +2279,111 @@ decode_mcu:                             # @decode_mcu
                                         #   in Loop: Header=BB5_68 Depth=2
 	addi.d	$a0, $sp, 128
 	ori	$a4, $zero, 9
-	move	$a1, $s2
+	move	$a1, $s1
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
 .LBB5_121:                              #   in Loop: Header=BB5_68 Depth=2
 	bltz	$a0, .LBB5_183
 # %bb.122:                              #   in Loop: Header=BB5_68 Depth=2
-	ld.d	$s2, $sp, 152
+	ld.d	$s1, $sp, 152
 	ld.w	$a2, $sp, 160
-	andi	$s7, $a0, 15
-	bstrpick.d	$s6, $a0, 31, 4
-	bnez	$s7, .LBB5_95
+	andi	$s6, $a0, 15
+	bstrpick.d	$s5, $a0, 31, 4
+	bnez	$s6, .LBB5_95
 .LBB5_123:                              #   in Loop: Header=BB5_68 Depth=2
-	addi.w	$a0, $s6, 0
+	addi.w	$a0, $s5, 0
 	ori	$a1, $zero, 15
 	bne	$a0, $a1, .LBB5_180
 # %bb.124:                              #   in Loop: Header=BB5_68 Depth=2
-	addi.w	$a0, $s1, 15
-	addi.d	$s1, $a0, 1
+	addi.w	$a0, $s3, 15
+	addi.d	$s3, $a0, 1
 	ori	$a1, $zero, 63
 	blt	$a0, $a1, .LBB5_68
 	b	.LBB5_180
 	.p2align	4, , 16
 .LBB5_125:                              #   in Loop: Header=BB5_9 Depth=1
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 .LBB5_126:                              #   Parent Loop BB5_9 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_130 Depth 3
                                         #         Child Loop BB5_140 Depth 4
                                         #       Child Loop BB5_156 Depth 3
                                         #         Child Loop BB5_166 Depth 4
-	blt	$s5, $a2, .LBB5_150
+	blt	$s4, $a2, .LBB5_150
 # %bb.127:                              # %.lr.ph.i352
                                         #   in Loop: Header=BB5_126 Depth=2
-	ld.d	$s1, $sp, 128
+	ld.d	$s2, $sp, 128
 	ld.d	$fp, $sp, 136
-	ld.d	$s5, $sp, 168
-	ld.d	$s7, $sp, 176
+	ld.d	$s4, $sp, 168
+	ld.d	$s6, $sp, 176
 	b	.LBB5_130
 	.p2align	4, , 16
 .LBB5_128:                              #   in Loop: Header=BB5_130 Depth=3
 	move	$a0, $zero
 .LBB5_129:                              # %.loopexit58.i362
                                         #   in Loop: Header=BB5_130 Depth=3
-	slli.d	$a1, $s2, 8
-	or	$s2, $a0, $a1
-	addi.w	$a2, $s4, 8
+	slli.d	$a1, $s1, 8
+	or	$s1, $a0, $a1
+	addi.w	$a2, $s3, 8
 	ori	$a0, $zero, 17
-	bge	$s4, $a0, .LBB5_148
+	bge	$s3, $a0, .LBB5_148
 .LBB5_130:                              #   Parent Loop BB5_9 Depth=1
                                         #     Parent Loop BB5_126 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB5_140 Depth 4
 	ld.w	$a0, $sp, 144
-	move	$s4, $a2
+	move	$s3, $a2
 	beqz	$a0, .LBB5_134
 # %bb.131:                              #   in Loop: Header=BB5_130 Depth=3
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s4, .LBB5_146
+	bgez	$s3, .LBB5_146
 .LBB5_132:                              #   in Loop: Header=BB5_130 Depth=3
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $s6, 0
 	bnez	$a0, .LBB5_128
 # %bb.133:                              #   in Loop: Header=BB5_130 Depth=3
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 113
 	st.w	$a1, $a0, 40
 	addi.w	$a1, $zero, -1
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a2, 0
 	move	$a0, $zero
 	ori	$a1, $zero, 1
-	st.w	$a1, $s7, 0
+	st.w	$a1, $s6, 0
 	b	.LBB5_129
 	.p2align	4, , 16
 .LBB5_134:                              #   in Loop: Header=BB5_130 Depth=3
 	beqz	$fp, .LBB5_136
 # %bb.135:                              #   in Loop: Header=BB5_130 Depth=3
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_129
 	b	.LBB5_138
 .LBB5_136:                              #   in Loop: Header=BB5_130 Depth=3
-	ld.d	$a0, $s5, 32
+	ld.d	$a0, $s4, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.137:                              #   in Loop: Header=BB5_130 Depth=3
-	ld.d	$a0, $s5, 32
-	ld.d	$s1, $a0, 0
+	ld.d	$a0, $s4, 32
+	ld.d	$s2, $a0, 0
 	ld.d	$fp, $a0, 8
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_129
 .LBB5_138:                              # %.preheader.i368.preheader
                                         #   in Loop: Header=BB5_130 Depth=3
-	ld.d	$s6, $sp, 168
+	ld.d	$s5, $sp, 168
 	b	.LBB5_140
 	.p2align	4, , 16
 .LBB5_139:                              #   in Loop: Header=BB5_140 Depth=4
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_143
 .LBB5_140:                              # %.preheader.i368
                                         #   Parent Loop BB5_9 Depth=1
@@ -2401,14 +2392,14 @@ decode_mcu:                             # @decode_mcu
                                         # =>      This Inner Loop Header: Depth=4
 	bnez	$fp, .LBB5_139
 # %bb.141:                              #   in Loop: Header=BB5_140 Depth=4
-	ld.d	$a0, $s6, 32
+	ld.d	$a0, $s5, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.142:                              #   in Loop: Header=BB5_140 Depth=4
-	ld.d	$a0, $s6, 32
-	ld.d	$s1, $a0, 0
+	ld.d	$a0, $s5, 32
+	ld.d	$s2, $a0, 0
 	ld.d	$fp, $a0, 8
 	b	.LBB5_139
 .LBB5_143:                              #   in Loop: Header=BB5_130 Depth=3
@@ -2419,45 +2410,44 @@ decode_mcu:                             # @decode_mcu
 	b	.LBB5_129
 .LBB5_145:                              #   in Loop: Header=BB5_130 Depth=3
 	st.w	$a0, $sp, 144
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s4, .LBB5_132
+	bltz	$s3, .LBB5_132
 .LBB5_146:                              #   in Loop: Header=BB5_126 Depth=2
-	st.d	$s1, $sp, 128
+	st.d	$s2, $sp, 128
 	st.d	$fp, $sp, 136
-	st.d	$s2, $sp, 152
-	st.w	$s4, $sp, 160
-	ori	$s5, $zero, 7
-	bltu	$s5, $s4, .LBB5_149
+	st.d	$s1, $sp, 152
+	st.w	$s3, $sp, 160
+	ori	$s4, $zero, 7
+	bltu	$s4, $s3, .LBB5_149
 # %bb.147:                              # %.split216
                                         #   in Loop: Header=BB5_126 Depth=2
 	addi.d	$a0, $sp, 128
 	ori	$a4, $zero, 1
-	move	$a1, $s2
-	move	$a2, $s4
+	move	$a1, $s1
+	move	$a2, $s3
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB5_176
 .LBB5_148:                              # %.thread602
                                         #   in Loop: Header=BB5_126 Depth=2
-	st.d	$s1, $sp, 128
+	st.d	$s2, $sp, 128
 	st.d	$fp, $sp, 136
-	st.d	$s2, $sp, 152
+	st.d	$s1, $sp, 152
 	st.w	$a2, $sp, 160
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 	b	.LBB5_150
 .LBB5_149:                              #   in Loop: Header=BB5_126 Depth=2
-	move	$a2, $s4
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	move	$a2, $s3
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB5_150:                              #   in Loop: Header=BB5_126 Depth=2
 	addi.d	$a0, $a2, -8
-	sra.d	$a0, $s2, $a0
+	sra.d	$a0, $s1, $a0
 	andi	$a0, $a0, 255
 	slli.d	$a1, $a0, 2
 	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
@@ -2467,35 +2457,35 @@ decode_mcu:                             # @decode_mcu
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a0, $a3, $a0
 	sub.w	$a2, $a2, $a1
-	andi	$s7, $a0, 15
-	bstrpick.d	$s6, $a0, 31, 4
-	beqz	$s7, .LBB5_178
+	andi	$s6, $a0, 15
+	bstrpick.d	$s5, $a0, 31, 4
+	beqz	$s6, .LBB5_178
 .LBB5_152:                              #   in Loop: Header=BB5_126 Depth=2
-	bge	$a2, $s7, .LBB5_174
+	bge	$a2, $s6, .LBB5_174
 # %bb.153:                              # %.lr.ph.i382
                                         #   in Loop: Header=BB5_126 Depth=2
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$s1, $sp, 128
-	ld.d	$s3, $sp, 136
-	ld.d	$s4, $sp, 168
-	ld.d	$s8, $sp, 176
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$s2, $sp, 128
+	ld.d	$s8, $sp, 136
+	ld.d	$s3, $sp, 168
+	ld.d	$s7, $sp, 176
 	b	.LBB5_156
 	.p2align	4, , 16
 .LBB5_154:                              #   in Loop: Header=BB5_156 Depth=3
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 113
 	st.w	$a1, $a0, 40
 	addi.w	$a1, $zero, -1
-	move	$a0, $s4
+	move	$a0, $s3
 	jirl	$ra, $a2, 0
 	move	$a0, $zero
 	ori	$a1, $zero, 1
-	st.w	$a1, $s8, 0
+	st.w	$a1, $s7, 0
 .LBB5_155:                              # %.loopexit58.i392
                                         #   in Loop: Header=BB5_156 Depth=3
-	slli.d	$a1, $s2, 8
-	or	$s2, $a0, $a1
+	slli.d	$a1, $s1, 8
+	or	$s1, $a0, $a1
 	addi.w	$a2, $fp, 8
 	ori	$a0, $zero, 17
 	bge	$fp, $a0, .LBB5_173
@@ -2507,65 +2497,65 @@ decode_mcu:                             # @decode_mcu
 	move	$fp, $a2
 	beqz	$a0, .LBB5_160
 # %bb.157:                              #   in Loop: Header=BB5_156 Depth=3
-	bge	$fp, $s7, .LBB5_172
+	bge	$fp, $s6, .LBB5_172
 .LBB5_158:                              #   in Loop: Header=BB5_156 Depth=3
-	ld.w	$a0, $s8, 0
+	ld.w	$a0, $s7, 0
 	beqz	$a0, .LBB5_154
 # %bb.159:                              #   in Loop: Header=BB5_156 Depth=3
 	move	$a0, $zero
 	b	.LBB5_155
 	.p2align	4, , 16
 .LBB5_160:                              #   in Loop: Header=BB5_156 Depth=3
-	beqz	$s3, .LBB5_162
+	beqz	$s8, .LBB5_162
 # %bb.161:                              #   in Loop: Header=BB5_156 Depth=3
-	ld.bu	$a0, $s1, 0
-	addi.d	$s3, $s3, -1
-	addi.d	$s1, $s1, 1
+	ld.bu	$a0, $s2, 0
+	addi.d	$s8, $s8, -1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_155
 	b	.LBB5_164
 .LBB5_162:                              #   in Loop: Header=BB5_156 Depth=3
-	ld.d	$a0, $s4, 32
+	ld.d	$a0, $s3, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s4
+	move	$a0, $s3
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.163:                              #   in Loop: Header=BB5_156 Depth=3
-	ld.d	$a0, $s4, 32
-	ld.d	$s1, $a0, 0
-	ld.d	$s3, $a0, 8
-	ld.bu	$a0, $s1, 0
-	addi.d	$s3, $s3, -1
-	addi.d	$s1, $s1, 1
+	ld.d	$a0, $s3, 32
+	ld.d	$s2, $a0, 0
+	ld.d	$s8, $a0, 8
+	ld.bu	$a0, $s2, 0
+	addi.d	$s8, $s8, -1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_155
 .LBB5_164:                              # %.preheader.i398.preheader
                                         #   in Loop: Header=BB5_156 Depth=3
-	ld.d	$s5, $sp, 168
+	ld.d	$s4, $sp, 168
 	b	.LBB5_166
 	.p2align	4, , 16
 .LBB5_165:                              #   in Loop: Header=BB5_166 Depth=4
-	ld.bu	$a0, $s1, 0
-	addi.d	$s3, $s3, -1
-	addi.d	$s1, $s1, 1
+	ld.bu	$a0, $s2, 0
+	addi.d	$s8, $s8, -1
+	addi.d	$s2, $s2, 1
 	bne	$a0, $s0, .LBB5_169
 .LBB5_166:                              # %.preheader.i398
                                         #   Parent Loop BB5_9 Depth=1
                                         #     Parent Loop BB5_126 Depth=2
                                         #       Parent Loop BB5_156 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	bnez	$s3, .LBB5_165
+	bnez	$s8, .LBB5_165
 # %bb.167:                              #   in Loop: Header=BB5_166 Depth=4
-	ld.d	$a0, $s5, 32
+	ld.d	$a0, $s4, 32
 	ld.d	$a1, $a0, 24
-	move	$a0, $s5
+	move	$a0, $s4
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB5_183
 # %bb.168:                              #   in Loop: Header=BB5_166 Depth=4
-	ld.d	$a0, $s5, 32
-	ld.d	$s1, $a0, 0
-	ld.d	$s3, $a0, 8
+	ld.d	$a0, $s4, 32
+	ld.d	$s2, $a0, 0
+	ld.d	$s8, $a0, 8
 	b	.LBB5_165
 .LBB5_169:                              #   in Loop: Header=BB5_156 Depth=3
-	ori	$s5, $zero, 7
+	ori	$s4, $zero, 7
 	bnez	$a0, .LBB5_171
 # %bb.170:                              # %.loopexit58.i392.loopexit
                                         #   in Loop: Header=BB5_156 Depth=3
@@ -2573,63 +2563,62 @@ decode_mcu:                             # @decode_mcu
 	b	.LBB5_155
 .LBB5_171:                              #   in Loop: Header=BB5_156 Depth=3
 	st.w	$a0, $sp, 144
-	blt	$fp, $s7, .LBB5_158
+	blt	$fp, $s6, .LBB5_158
 .LBB5_172:                              #   in Loop: Header=BB5_126 Depth=2
 	move	$a2, $fp
 .LBB5_173:                              #   in Loop: Header=BB5_126 Depth=2
-	st.d	$s1, $sp, 128
-	st.d	$s3, $sp, 136
-	st.d	$s2, $sp, 152
+	st.d	$s2, $sp, 128
+	st.d	$s8, $sp, 136
+	st.d	$s1, $sp, 152
 	st.w	$a2, $sp, 160
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 .LBB5_174:                              #   in Loop: Header=BB5_126 Depth=2
-	sub.w	$a2, $a2, $s7
+	sub.w	$a2, $a2, $s6
 	b	.LBB5_179
 	.p2align	4, , 16
 .LBB5_175:                              # %.split214
                                         #   in Loop: Header=BB5_126 Depth=2
 	addi.d	$a0, $sp, 128
 	ori	$a4, $zero, 9
-	move	$a1, $s2
+	move	$a1, $s1
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
 .LBB5_176:                              #   in Loop: Header=BB5_126 Depth=2
 	bltz	$a0, .LBB5_183
 # %bb.177:                              #   in Loop: Header=BB5_126 Depth=2
-	ld.d	$s2, $sp, 152
+	ld.d	$s1, $sp, 152
 	ld.w	$a2, $sp, 160
-	andi	$s7, $a0, 15
-	bstrpick.d	$s6, $a0, 31, 4
-	bnez	$s7, .LBB5_152
+	andi	$s6, $a0, 15
+	bstrpick.d	$s5, $a0, 31, 4
+	bnez	$s6, .LBB5_152
 .LBB5_178:                              #   in Loop: Header=BB5_126 Depth=2
-	addi.w	$a0, $s6, 0
+	addi.w	$a0, $s5, 0
 	ori	$a1, $zero, 15
 	bne	$a0, $a1, .LBB5_180
 .LBB5_179:                              #   in Loop: Header=BB5_126 Depth=2
-	add.d	$a0, $s8, $s6
-	addi.w	$s8, $a0, 1
+	add.d	$a0, $s7, $s5
+	addi.w	$s7, $a0, 1
 	ori	$a0, $zero, 64
-	blt	$s8, $a0, .LBB5_126
+	blt	$s7, $a0, .LBB5_126
 .LBB5_180:                              # %.loopexit
                                         #   in Loop: Header=BB5_9 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 464
-	ld.d	$s6, $sp, 0                     # 8-byte Folded Reload
-	addi.d	$s6, $s6, 1
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	blt	$s6, $a0, .LBB5_9
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$s5, $s5, 1
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	blt	$s5, $a0, .LBB5_9
 # %bb.181:                              # %._crit_edge.loopexit
 	ld.d	$a1, $sp, 128
 	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $s0, 32
 	ld.d	$a3, $sp, 136
 	ld.w	$a4, $sp, 144
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 .LBB5_182:                              # %._crit_edge
 	addi.d	$a5, $fp, 32
 	st.d	$a1, $a0, 0
@@ -2637,7 +2626,7 @@ decode_mcu:                             # @decode_mcu
 	st.w	$a4, $s0, 524
 	vld	$vr0, $sp, 112
 	ld.w	$a0, $fp, 48
-	st.d	$s2, $fp, 16
+	st.d	$s1, $fp, 16
 	st.w	$a2, $fp, 24
 	vst	$vr0, $a5, 0
 	addi.d	$a0, $a0, -1

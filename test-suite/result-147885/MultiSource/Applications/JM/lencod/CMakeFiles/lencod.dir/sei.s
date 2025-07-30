@@ -644,8 +644,7 @@ finalize_sei_message:                   # @finalize_sei_message
 AppendTmpbits2Buf:                      # @AppendTmpbits2Buf
 # %bb.0:
 	ld.w	$a2, $a1, 0
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB6_21
+	blez	$a2, .LBB6_21
 # %bb.1:                                # %.preheader.lr.ph
 	ld.bu	$a5, $a0, 8
 	move	$a2, $zero
@@ -1640,8 +1639,7 @@ UpdateSubseqInfo:                       # @UpdateSubseqInfo
 	st.w	$zero, $a0, %pc_lo12(seiSubseqInfo+8)
 	ret
 .LBB14_12:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB14_7
+	blez	$a3, .LBB14_7
 # %bb.13:
 	ori	$a3, $zero, 2096
 	ldx.w	$a3, $a0, $a3
@@ -1822,9 +1820,8 @@ FinalizeSubseqLayerInfo:                # @FinalizeSubseqLayerInfo
 	pcalau12i	$a0, %pc_hi20(seiSubseqLayerInfo)
 	addi.d	$a0, $a0, %pc_lo12(seiSubseqLayerInfo)
 	ld.w	$a1, $a0, 16
-	ori	$a2, $zero, 1
 	st.w	$zero, $a0, 20
-	blt	$a1, $a2, .LBB20_4
+	blez	$a1, .LBB20_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a2, $a0, 4
 	addi.d	$a3, $a0, 10
@@ -2081,8 +2078,7 @@ FinalizeSubseqChar:                     # @FinalizeSubseqChar
 	pcaddu18i	$ra, %call36(writeSyntaxElement2Buf_UVLC)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 28
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB24_7
+	blez	$a0, .LBB24_7
 # %bb.5:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	addi.d	$s2, $s0, 52
@@ -2757,9 +2753,8 @@ FinalizeUser_data_unregistered:         # @FinalizeUser_data_unregistered
 	ld.w	$a1, $s0, 8
 	ld.d	$fp, $s0, 16
 	st.w	$zero, $sp, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 32
-	blt	$a1, $a2, .LBB38_3
+	blez	$a1, .LBB38_3
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	ori	$s2, $zero, 8
@@ -3050,8 +3045,7 @@ FinalizeUser_data_registered_itu_t_t35: # @FinalizeUser_data_registered_itu_t_t3
 	jirl	$ra, $ra, 0
 .LBB43_2:
 	ld.w	$a0, $s0, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB43_5
+	blez	$a0, .LBB43_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 8

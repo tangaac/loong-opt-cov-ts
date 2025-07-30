@@ -15,7 +15,6 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a7, $a5, 448
 	ld.d	$a5, $a4, 0
 	ld.w	$a6, $a4, 16
@@ -45,8 +44,8 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	slti	$a1, $a6, 0
 	ld.d	$a2, $s3, 8
 	masknez	$a0, $a0, $a1
-	addi.w	$s7, $zero, -1
-	maskeqz	$a3, $s7, $a1
+	addi.w	$a3, $zero, -1
+	maskeqz	$a3, $a3, $a1
 	ld.d	$t0, $a2, 64
 	or	$s5, $a3, $a0
 	masknez	$a0, $a5, $a1
@@ -60,7 +59,7 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	move	$a6, $s6
 	move	$a7, $s5
 	jirl	$ra, $t0, 0
-	blt	$s7, $a0, .LBB0_7
+	bgez	$a0, .LBB0_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s4
@@ -74,7 +73,6 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 .LBB0_7:
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
@@ -94,7 +92,6 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	move	$a2, $s1
 	move	$a3, $s0
 	move	$a4, $fp
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
@@ -111,9 +108,8 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	ld.d	$a7, $s4, 0
 	ld.d	$a4, $s3, 8
 	mul.w	$a1, $a3, $a1
-	addi.w	$t0, $zero, -1
 	add.d	$a1, $a7, $a1
-	bge	$t0, $a6, .LBB0_11
+	bltz	$a6, .LBB0_11
 # %bb.10:
 	ld.d	$t0, $a4, 72
 	st.d	$a0, $sp, 8
@@ -132,7 +128,6 @@ gz_fill_rectangle:                      # @gz_fill_rectangle
 	move	$a5, $s1
 	move	$a6, $s0
 	move	$a7, $fp
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
@@ -191,14 +186,12 @@ gx_default_tile_rectangle:              # @gx_default_tile_rectangle
 # %bb.4:
 	ld.d	$s4, $a0, 72
                                         # implicit-def: $r29
-	ori	$a0, $zero, 1
-	bge	$a5, $a0, .LBB1_6
+	bgtz	$a5, .LBB1_6
 	b	.LBB1_18
 .LBB1_5:
 	ld.d	$s6, $a0, 80
                                         # implicit-def: $r27
-	ori	$a0, $zero, 1
-	blt	$a5, $a0, .LBB1_18
+	blez	$a5, .LBB1_18
 .LBB1_6:                                # %.lr.ph137
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a6, $a2, 16
@@ -426,14 +419,13 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	srli.d	$s5, $a2, 12
 	add.d	$a1, $a2, $a5
 	add.d	$a0, $a1, $a0
-	srli.d	$s4, $a0, 12
-	sub.w	$s2, $s4, $s5
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB2_39
+	srli.d	$s6, $a0, 12
+	sub.w	$s2, $s6, $s5
+	blez	$s2, .LBB2_39
 # %bb.2:
 	ld.d	$a0, $sp, 160
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	sub.w	$s6, $s8, $s7
+	sub.w	$s4, $s8, $s7
 	bnez	$a6, .LBB2_4
 # %bb.3:
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -482,7 +474,7 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	addi.w	$a0, $s5, 0
 	move	$a1, $s3
 	move	$a2, $s2
-	move	$a3, $s6
+	move	$a3, $s4
 	b	.LBB2_38
 .LBB2_16:
 	div.wu	$s0, $t0, $s2
@@ -514,14 +506,14 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	sub.w	$t0, $a0, $t0
 .LBB2_21:
 	srai.d	$s3, $a7, 1
-	srai.d	$s1, $t0, 1
+	srai.d	$s4, $t0, 1
 	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
 	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$t1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$t3, $sp, 16                    # 8-byte Folded Spill
-	addi.w	$fp, $s4, 0
+	addi.w	$fp, $s6, 0
 	beqz	$a6, .LBB2_27
 # %bb.22:                               # %.split.preheader
 	move	$a0, $s7
@@ -552,29 +544,29 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	masknez	$a1, $s2, $a1
 	sub.d	$s3, $a0, $a1
 	add.d	$s7, $a2, $s6
-	add.w	$a0, $s1, $t0
+	add.w	$a0, $s4, $t0
 	slt	$a1, $a0, $s2
 	masknez	$a2, $t3, $a1
 	maskeqz	$a3, $s0, $a1
 	or	$a2, $a3, $a2
 	masknez	$a1, $s2, $a1
-	sub.d	$s1, $a0, $a1
+	sub.d	$s4, $a0, $a1
 	addi.w	$s5, $s5, 1
-	add.d	$s8, $a2, $s4
+	add.d	$s8, $a2, $s1
 	move	$a0, $s6
-	move	$a3, $s4
+	move	$a3, $s1
 	bge	$s5, $fp, .LBB2_32
 .LBB2_25:                               # %.split
                                         # =>This Inner Loop Header: Depth=1
 	move	$s6, $s7
 	addi.w	$a1, $a0, 0
 	addi.w	$a2, $s7, 0
-	move	$s4, $s8
+	move	$s1, $s8
 	bne	$a2, $a1, .LBB2_23
 # %bb.26:                               # %.split
                                         #   in Loop: Header=BB2_25 Depth=1
 	addi.w	$a2, $a3, 0
-	addi.w	$a4, $s4, 0
+	addi.w	$a4, $s1, 0
 	beq	$a4, $a2, .LBB2_24
 	b	.LBB2_23
 .LBB2_27:                               # %.split.us.preheader
@@ -606,29 +598,29 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	masknez	$a1, $s2, $a1
 	sub.d	$s3, $a0, $a1
 	add.d	$s7, $a2, $s6
-	add.w	$a0, $s1, $t0
+	add.w	$a0, $s4, $t0
 	slt	$a1, $a0, $s2
 	masknez	$a2, $t3, $a1
 	maskeqz	$a3, $s0, $a1
 	or	$a2, $a3, $a2
 	masknez	$a1, $s2, $a1
-	sub.d	$s1, $a0, $a1
+	sub.d	$s4, $a0, $a1
 	addi.w	$s5, $s5, 1
-	add.d	$s8, $a2, $s4
+	add.d	$s8, $a2, $s1
 	move	$a1, $s6
-	move	$a2, $s4
+	move	$a2, $s1
 	bge	$s5, $fp, .LBB2_32
 .LBB2_30:                               # %.split.us
                                         # =>This Inner Loop Header: Depth=1
 	move	$s6, $s7
 	addi.w	$a0, $a1, 0
 	addi.w	$a3, $s7, 0
-	move	$s4, $s8
+	move	$s1, $s8
 	bne	$a3, $a0, .LBB2_28
 # %bb.31:                               # %.split.us
                                         #   in Loop: Header=BB2_30 Depth=1
 	addi.w	$a3, $a2, 0
-	addi.w	$a4, $s4, 0
+	addi.w	$a4, $s1, 0
 	beq	$a4, $a3, .LBB2_29
 	b	.LBB2_28
 .LBB2_32:                               # %.split213.us
@@ -639,12 +631,12 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	beqz	$a0, .LBB2_35
 # %bb.34:
 	sub.w	$a2, $s5, $a5
-	sub.w	$a3, $s4, $s6
+	sub.w	$a3, $s1, $s6
 	addi.w	$a1, $s6, 0
 	move	$a0, $a4
 	b	.LBB2_38
 .LBB2_35:
-	sub.w	$a2, $s4, $s6
+	sub.w	$a2, $s1, $s6
 	sub.w	$a3, $s5, $a5
 	addi.w	$a0, $s6, 0
 	move	$a1, $a4
@@ -660,18 +652,17 @@ gz_fill_trapezoid_fixed:                # @gz_fill_trapezoid_fixed
 	move	$s1, $a6
 	sub.w	$a6, $s0, $fp
 	addi.w	$a2, $s5, 0
-	addi.w	$a5, $s4, 0
+	addi.w	$a5, $s6, 0
 	move	$a1, $s3
-	move	$a3, $s6
+	move	$a3, $s4
 	jirl	$ra, $t0, 0
 	move	$a6, $s1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2_39
+	bgez	$a0, .LBB2_39
 	b	.LBB2_4
 .LBB2_37:
 	addi.w	$a1, $s5, 0
 	move	$a0, $s3
-	move	$a2, $s6
+	move	$a2, $s4
 	move	$a3, $s2
 .LBB2_38:                               # %.critedge
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
@@ -743,8 +734,7 @@ gz_draw_line_fixed:                     # @gz_draw_line_fixed
 	sub.d	$t0, $t1, $t0
 	bge	$t0, $a4, .LBB3_9
 # %bb.5:
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a7, .LBB3_12
+	bltz	$a7, .LBB3_12
 # %bb.6:
 	move	$t0, $a3
 	move	$a3, $a1
@@ -764,8 +754,7 @@ gz_draw_line_fixed:                     # @gz_draw_line_fixed
 	jirl	$ra, $ra, 0
 	b	.LBB3_17
 .LBB3_9:
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a6, .LBB3_14
+	bltz	$a6, .LBB3_14
 # %bb.10:
 	move	$a7, $a2
 	move	$a3, $a1
@@ -794,10 +783,9 @@ gz_draw_line_fixed:                     # @gz_draw_line_fixed
 	move	$a3, $s3
 	move	$a2, $s2
 	move	$a5, $s4
-	addi.w	$a6, $zero, -1
 	move	$a4, $a0
 	move	$a0, $s0
-	blt	$a6, $a4, .LBB3_17
+	bgez	$a4, .LBB3_17
 	b	.LBB3_4
 .LBB3_12:
 	sub.d	$a7, $zero, $a7

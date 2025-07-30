@@ -587,8 +587,7 @@ _ZNK10btBoxShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_ZNK10b
 	.type	_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB10_5
+	blez	$a3, .LBB10_5
 # %bb.1:                                # %.lr.ph
 	ori	$a4, $zero, 8
 	bgeu	$a3, $a4, .LBB10_6

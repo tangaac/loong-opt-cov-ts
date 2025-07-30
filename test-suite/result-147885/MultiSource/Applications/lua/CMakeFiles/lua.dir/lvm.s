@@ -1932,8 +1932,7 @@ luaV_execute:                           # @luaV_execute
 	alsl.d	$a0, $s4, $s3, 4
 	st.d	$a0, $fp, 16
 	move	$a0, $s4
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB9_146
+	bgtz	$a0, .LBB9_146
 	b	.LBB9_6
 .LBB9_77:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $s3, 32
@@ -2373,8 +2372,7 @@ luaV_execute:                           # @luaV_execute
 	b	.LBB9_56
 .LBB9_145:                              #   in Loop: Header=BB9_6 Depth=2
 	addi.w	$a0, $a0, -1
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_6
+	blez	$a0, .LBB9_6
 .LBB9_146:                              # %.lr.ph
                                         #   in Loop: Header=BB9_6 Depth=2
 	move	$a1, $zero
@@ -2461,8 +2459,7 @@ luaV_execute:                           # @luaV_execute
 	jirl	$ra, $ra, 0
 .LBB9_159:                              #   in Loop: Header=BB9_6 Depth=2
 	addi.w	$a0, $s6, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_6
+	blez	$a0, .LBB9_6
 # %bb.160:                              # %.lr.ph852
                                         #   in Loop: Header=BB9_6 Depth=2
 	addi.d	$s1, $a0, 1

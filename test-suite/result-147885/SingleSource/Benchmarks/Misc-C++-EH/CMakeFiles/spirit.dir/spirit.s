@@ -454,17 +454,16 @@ _ZN5boost6spirit4impl14object_with_idINS1_11grammar_tagEmED2Ev: # @_ZN5boost6spi
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception3
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -473,7 +472,6 @@ _ZN5boost6spirit4impl14object_with_idINS1_11grammar_tagEmED2Ev: # @_ZN5boost6spi
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	ld.d	$s2, $a0, 0
 	ld.d	$s4, $a0, 16
 	ld.d	$a1, $s2, 0
@@ -500,11 +498,11 @@ _ZN5boost6spirit4impl14object_with_idINS1_11grammar_tagEmED2Ev: # @_ZN5boost6spi
 	beq	$s0, $a0, .LBB3_12
 # %bb.5:                                # %_ZNKSt6vectorImSaImEE12_M_check_lenEmPKc.exit.i.i.i.i
 	srai.d	$a0, $s0, 3
-	ori	$s6, $zero, 1
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -520,7 +518,7 @@ _ZN5boost6spirit4impl14object_with_idINS1_11grammar_tagEmED2Ev: # @_ZN5boost6spi
 # %bb.6:                                # %.noexc1
 	move	$s1, $a0
 	stx.d	$s4, $a0, $s0
-	blt	$s0, $s6, .LBB3_8
+	blez	$s0, .LBB3_8
 # %bb.7:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -544,16 +542,15 @@ _ZN5boost6spirit4impl14object_with_idINS1_11grammar_tagEmED2Ev: # @_ZN5boost6spi
 	move	$a0, $s3
 .LBB3_11:                               # %_ZN5boost6spirit4impl19object_with_id_baseINS1_11grammar_tagEmE17release_object_idEm.exit
 	addi.d	$a0, $a0, 8
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(_ZN5boost6detail12shared_countD2Ev)
 	jr	$t8
 .LBB3_12:
@@ -1494,16 +1491,15 @@ GCC_except_table17:
 _ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10parse_infoIT_EERKSA_SD_RKT0_RKS3_: # @_ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10parse_infoIT_EERKSA_SD_RKT0_RKS3_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1511,25 +1507,23 @@ _ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.d	$a1, $a1, 0
 	move	$s1, $a4
 	move	$s2, $a3
 	move	$s0, $a2
 	move	$fp, $a0
-	st.d	$a1, $sp, 32
-	ld.d	$s4, $a2, 0
-	st.d	$a4, $sp, 8
-	addi.d	$a0, $sp, 32
-	st.d	$a0, $sp, 16
-	st.d	$s4, $sp, 24
-	st.d	$a4, $sp, 40
-	st.d	$a0, $sp, 48
-	st.d	$s4, $sp, 56
-	addi.w	$s3, $zero, -1
+	st.d	$a1, $sp, 24
+	ld.d	$s3, $a2, 0
+	st.d	$a4, $sp, 0
+	addi.d	$a0, $sp, 24
+	st.d	$a0, $sp, 8
+	st.d	$s3, $sp, 16
+	st.d	$a4, $sp, 32
+	st.d	$a0, $sp, 40
+	st.d	$s3, $sp, 48
 	.p2align	4, , 16
 .LBB18_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s5, $sp, 32
+	ld.d	$s4, $sp, 24
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -1539,11 +1533,11 @@ _ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10
                                         #   in Loop: Header=BB18_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 32
 	jirl	$ra, $a2, 0
-	blt	$s3, $a0, .LBB18_1
+	bgez	$a0, .LBB18_1
 .LBB18_3:                               # %_ZN5boost6spirit7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEC2ERS3_S3_RKSB_.exit
-	st.d	$s5, $sp, 32
+	st.d	$s4, $sp, 24
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI9c_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISJ_T0_EE)
 	jirl	$ra, $ra, 0
@@ -1552,24 +1546,24 @@ _ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10
 # %bb.4:
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	ld.d	$s1, $sp, 8
-	ld.d	$a1, $sp, 16
-	ld.d	$s4, $sp, 24
+	ld.d	$s1, $sp, 0
+	ld.d	$a1, $sp, 8
+	ld.d	$s3, $sp, 16
 	move	$s2, $a0
 	b	.LBB18_6
 .LBB18_5:
-	addi.d	$a1, $sp, 32
-	move	$s2, $s3
+	addi.w	$s2, $zero, -1
+	addi.d	$a1, $sp, 24
 .LBB18_6:                               # %_ZNK5boost6spirit7grammarI9c_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSL_.exit
-	st.d	$s1, $sp, 40
-	st.d	$a1, $sp, 48
-	st.d	$s4, $sp, 56
+	st.d	$s1, $sp, 32
+	st.d	$a1, $sp, 40
+	st.d	$s3, $sp, 48
 	.p2align	4, , 16
 .LBB18_7:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 16
-	ld.d	$s4, $a0, 0
+	ld.d	$a0, $sp, 8
+	ld.d	$s3, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -1579,13 +1573,13 @@ _ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10
                                         #   in Loop: Header=BB18_7 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 32
 	jirl	$ra, $a2, 0
-	blt	$s3, $a0, .LBB18_7
+	bgez	$a0, .LBB18_7
 .LBB18_9:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
-	ld.d	$a0, $sp, 16
-	st.d	$s4, $a0, 0
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 8
+	st.d	$s3, $a0, 0
+	ld.d	$a0, $sp, 24
 	ld.d	$a1, $s0, 0
 	addi.w	$a2, $zero, -1
 	slt	$a2, $a2, $s2
@@ -1596,15 +1590,14 @@ _ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10
 	st.b	$a2, $fp, 8
 	st.b	$a1, $fp, 9
 	st.d	$s2, $fp, 16
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end18:
 	.size	_ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10parse_infoIT_EERKSA_SD_RKT0_RKS3_, .Lfunc_end18-_ZN5boost6spirit4impl13phrase_parserI12skip_grammarE5parseIPKc9c_grammarEENS0_10parse_infoIT_EERKSA_SD_RKT0_RKS3_
@@ -2305,11 +2298,11 @@ _ZN5boost6spirit4impl14grammar_helperINS0_7grammarI9c_grammarNS0_14parser_contex
 	beq	$s3, $a0, .LBB22_19
 # %bb.11:                               # %_ZNKSt6vectorIPN5boost6spirit4impl19grammar_helper_baseINS1_7grammarI9c_grammarNS1_14parser_contextINS1_5nil_tEEEEEEESaISB_EE12_M_check_lenEmPKc.exit.i.i.i
 	srai.d	$a0, $s3, 3
-	ori	$s7, $zero, 1
-	sltu	$a1, $s7, $a0
-	masknez	$a2, $s7, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -2325,7 +2318,7 @@ _ZN5boost6spirit4impl14grammar_helperINS0_7grammarI9c_grammarNS0_14parser_contex
 # %bb.12:                               # %.noexc18
 	move	$s4, $a0
 	stx.d	$fp, $a0, $s3
-	blt	$s3, $s7, .LBB22_14
+	blez	$s3, .LBB22_14
 # %bb.13:
 	move	$a0, $s4
 	move	$a1, $s2
@@ -13635,7 +13628,6 @@ _ZNSt6vectorIPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_po
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -13645,7 +13637,6 @@ _ZNSt6vectorIPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_po
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB39_15
 # %bb.1:
 	move	$s0, $a1
@@ -13678,9 +13669,9 @@ _ZNSt6vectorIPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_po
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.d	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB39_5
+	ori	$a0, $zero, 1
+	stx.d	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB39_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 8
 	slli.d	$a1, $s0, 3
@@ -13689,7 +13680,7 @@ _ZNSt6vectorIPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_po
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB39_5:                               # %_ZSt27__uninitialized_default_n_aIPPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_policiesINS3_28skip_parser_iteration_policyI12skip_grammarNS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEmSH_ET_SJ_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB39_7
+	blez	$s2, .LBB39_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -13731,7 +13722,6 @@ _ZNSt6vectorIPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_po
 .LBB39_14:                              # %_ZSt27__uninitialized_default_n_aIPPN9c_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_policiesINS3_28skip_parser_iteration_policyI12skip_grammarNS3_16iteration_policyEEENS3_12match_policyENS3_13action_policyEEEEEEEmSH_ET_SJ_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB39_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -13817,93 +13807,90 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_5chlitIcEENS0_6str
 _ZNK5boost6spirit11alternativeINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSL_: # @_ZNK5boost6spirit11alternativeINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSL_
 	.cfi_startproc
 # %bb.0:                                # %_ZN5boost6spirit5matchIcED2Ev.exit
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s1, $a1, 0
 	move	$s0, $a0
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB43_11
-# %bb.1:
+	ld.d	$a0, $sp, 0
+	bltz	$a0, .LBB43_2
+.LBB43_1:                               # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
+	ret
+.LBB43_2:
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a1, $sp, 24
+	st.d	$s1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a1, $sp, 16
 	.p2align	4, , 16
-.LBB43_2:                               # =>This Inner Loop Header: Depth=1
+.LBB43_3:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB43_4
-# %bb.3:                                # %_ZNK5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS2_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSM_.exit.i.i.i.i
-                                        #   in Loop: Header=BB43_2 Depth=1
+	beqz	$a0, .LBB43_5
+# %bb.4:                                # %_ZNK5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS2_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSM_.exit.i.i.i.i
+                                        #   in Loop: Header=BB43_3 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB43_2
-.LBB43_4:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
+	bgez	$a0, .LBB43_3
+.LBB43_5:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 8
 	ld.d	$a3, $s0, 16
-	beq	$a3, $a2, .LBB43_10
-# %bb.5:                                # %.lr.ph.i.i.i.i
+	beq	$a3, $a2, .LBB43_11
+# %bb.6:                                # %.lr.ph.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
-.LBB43_6:                               # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB43_9
-# %bb.7:                                #   in Loop: Header=BB43_6 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB43_9
-# %bb.8:                                #   in Loop: Header=BB43_6 Depth=1
+.LBB43_7:                               # =>This Inner Loop Header: Depth=1
+	beq	$a6, $a4, .LBB43_1
+# %bb.8:                                #   in Loop: Header=BB43_7 Depth=1
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB43_1
+# %bb.9:                                #   in Loop: Header=BB43_7 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
-	bne	$a2, $a3, .LBB43_6
-	b	.LBB43_11
-.LBB43_9:
-	move	$a0, $s2
-	b	.LBB43_11
-.LBB43_10:
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
+	bne	$a2, $a3, .LBB43_7
+# %bb.10:
+	move	$a0, $a5
+	b	.LBB43_1
+.LBB43_11:
 	move	$a0, $zero
-.LBB43_11:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
-	ret
+	b	.LBB43_1
 .Lfunc_end43:
 	.size	_ZNK5boost6spirit11alternativeINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSL_, .Lfunc_end43-_ZNK5boost6spirit11alternativeINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSL_
 	.cfi_endproc
@@ -13923,26 +13910,23 @@ _ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scann
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$s0, $a2
 	ld.d	$s2, $a2, 0
 	vld	$vr0, $a2, 8
 	move	$s1, $a1
 	move	$fp, $a0
-	st.d	$s2, $sp, 0
-	vst	$vr0, $sp, 8
-	addi.w	$s3, $zero, -1
+	st.d	$s2, $sp, 8
+	vst	$vr0, $sp, 16
 	.p2align	4, , 16
 .LBB44_1:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 8
-	ld.d	$s4, $a0, 0
+	ld.d	$s3, $a0, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -13952,12 +13936,12 @@ _ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scann
                                         #   in Loop: Header=BB44_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s3, $a0, .LBB44_1
+	bgez	$a0, .LBB44_1
 .LBB44_3:                               # %_ZNK5boost6spirit7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEE6at_endEv.exit
 	ld.d	$a0, $s0, 8
-	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 0
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $s0, 16
 	beq	$a1, $a2, .LBB44_9
@@ -13970,13 +13954,13 @@ _ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scann
 	st.d	$a1, $a0, 0
 	ld.d	$s1, $s0, 0
 	ld.d	$a1, $s0, 16
-	st.d	$s1, $sp, 0
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a0, $sp, 16
+	st.d	$a1, $sp, 24
 	.p2align	4, , 16
 .LBB44_6:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 8
-	ld.d	$s4, $a0, 0
+	ld.d	$s3, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -13986,22 +13970,22 @@ _ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scann
                                         #   in Loop: Header=BB44_6 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s3, $a0, .LBB44_6
+	bgez	$a0, .LBB44_6
 .LBB44_8:
 	ld.d	$a0, $s0, 8
-	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 0
 	ori	$a0, $zero, 1
 	st.d	$a0, $fp, 0
 	st.b	$s2, $fp, 9
 	st.b	$a0, $fp, 8
 	b	.LBB44_10
 .LBB44_9:                               # %.thread
-	st.d	$s3, $fp, 0
+	addi.w	$a0, $zero, -1
+	st.d	$a0, $fp, 0
 	st.b	$zero, $fp, 8
 .LBB44_10:
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
@@ -14033,32 +14017,29 @@ _ZN5boost6spirit4impl15concrete_parserINS0_6strlitIPKcEENS0_7scannerIS5_NS0_16sc
 _ZNK5boost6spirit4impl15concrete_parserINS0_6strlitIPKcEENS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSG_: # @_ZNK5boost6spirit4impl15concrete_parserINS0_6strlitIPKcEENS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSG_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s0, $a1
-	ld.d	$s2, $a1, 0
+	move	$fp, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
-	move	$s1, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$fp, $zero, -1
+	move	$s0, $a0
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB46_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s0, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $fp, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -14067,45 +14048,44 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_6strlitIPKcEENS0_7scannerIS5_NS0_16s
                                         #   in Loop: Header=BB46_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$fp, $a0, .LBB46_1
+	bgez	$a0, .LBB46_1
 .LBB46_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
-	ld.d	$a0, $s0, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 8
-	ld.d	$a2, $s1, 16
-	beq	$a2, $a1, .LBB46_9
-# %bb.4:                                # %.lr.ph.i.i.i.i
+	ld.d	$a1, $fp, 8
+	st.d	$s2, $a1, 0
+	ld.d	$a2, $s0, 8
 	ld.d	$a3, $s0, 16
-	ld.d	$a5, $a0, 0
-	sub.d	$a4, $a2, $a1
+	beq	$a3, $a2, .LBB46_9
+# %bb.4:                                # %.lr.ph.i.i.i.i
+	ld.d	$a4, $fp, 16
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB46_5:                               # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a3, .LBB46_10
+	beq	$a6, $a4, .LBB46_10
 # %bb.6:                                #   in Loop: Header=BB46_5 Depth=1
-	ld.bu	$a6, $a1, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB46_10
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB46_10
 # %bb.7:                                #   in Loop: Header=BB46_5 Depth=1
-	addi.d	$a1, $a1, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a0, 0
-	bne	$a1, $a2, .LBB46_5
+	addi.d	$a2, $a2, 1
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
+	bne	$a2, $a3, .LBB46_5
 # %bb.8:
-	move	$fp, $a4
+	move	$a0, $a5
 	b	.LBB46_10
 .LBB46_9:
-	move	$fp, $zero
+	move	$a0, $zero
 .LBB46_10:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	move	$a0, $fp
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end46:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_6strlitIPKcEENS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSG_, .Lfunc_end46-_ZNK5boost6spirit4impl15concrete_parserINS0_6strlitIPKcEENS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSG_
@@ -14160,27 +14140,24 @@ _ZN5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_10differenceINS0_8se
 _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_10differenceINS0_8sequenceINS0_11alternativeINS6_INS0_12alpha_parserENS0_5chlitIcEEEES9_EENS0_11kleene_starINS6_INS6_INS0_12alnum_parserES9_EES9_EEEEEENS5_INS0_7symbolsIicNS1_3tstIicEEEENS4_INS0_14anychar_parserESF_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKS12_: # @_ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_10differenceINS0_8sequenceINS0_11alternativeINS6_INS0_12alpha_parserENS0_5chlitIcEEEES9_EENS0_11kleene_starINS6_INS6_INS0_12alnum_parserES9_EES9_EEEEEENS5_INS0_7symbolsIicNS1_3tstIicEEEENS4_INS0_14anychar_parserESF_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKS12_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$s0, $a0
-	st.d	$s1, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s3, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB49_1:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
@@ -14194,28 +14171,27 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_10differenceINS0_8s
                                         #   in Loop: Header=BB49_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s3, $a0, .LBB49_1
+	bgez	$a0, .LBB49_1
 .LBB49_3:                               # %_ZNK5boost6spirit10contiguousINS0_10differenceINS0_8sequenceINS0_11alternativeINS4_INS0_12alpha_parserENS0_5chlitIcEEEES7_EENS0_11kleene_starINS4_INS4_INS0_12alnum_parserES7_EES7_EEEEEENS3_INS0_7symbolsIicNS0_4impl3tstIicEEEENS2_INS0_14anychar_parserESD_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISP_T_E4typeERKS14_.exit
 	ld.d	$a1, $fp, 8
 	st.d	$s2, $a1, 0
 	ld.d	$a2, $fp, 0
 	ld.d	$a3, $fp, 16
 	addi.d	$a0, $s0, 8
-	st.d	$a2, $sp, 8
-	st.d	$a1, $sp, 16
-	st.d	$a3, $sp, 24
-	addi.d	$a1, $sp, 8
+	st.d	$a2, $sp, 0
+	st.d	$a1, $sp, 8
+	st.d	$a3, $sp, 16
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit10differenceINS0_8sequenceINS0_11alternativeINS3_INS0_12alpha_parserENS0_5chlitIcEEEES6_EENS0_11kleene_starINS3_INS3_INS0_12alnum_parserES6_EES6_EEEEEENS2_INS0_7symbolsIicNS0_4impl3tstIicEEEENS1_INS0_14anychar_parserESC_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISN_T_E4typeERKS14_)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end49:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_10differenceINS0_8sequenceINS0_11alternativeINS6_INS0_12alpha_parserENS0_5chlitIcEEEES9_EENS0_11kleene_starINS6_INS6_INS0_12alnum_parserES9_EES9_EEEEEENS5_INS0_7symbolsIicNS1_3tstIicEEEENS4_INS0_14anychar_parserESF_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKS12_, .Lfunc_end49-_ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_10differenceINS0_8sequenceINS0_11alternativeINS6_INS0_12alpha_parserENS0_5chlitIcEEEES9_EENS0_11kleene_starINS6_INS6_INS0_12alnum_parserES9_EES9_EEEEEENS5_INS0_7symbolsIicNS1_3tstIicEEEENS4_INS0_14anychar_parserESF_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKS12_
@@ -14600,32 +14576,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_
 _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES9_EEEEEEEES9_EENS0_7scannerISG_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEST_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE: # @_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES9_EEEEEEEES9_EENS0_7scannerISG_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEST_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB56_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -14634,118 +14607,117 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
                                         #   in Loop: Header=BB56_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB56_1
+	bgez	$a0, .LBB56_1
 .LBB56_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
-	ld.d	$a0, $s1, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 16
-	ld.d	$a3, $a0, 0
-	beq	$a3, $a1, .LBB56_5
+	ld.d	$a1, $s0, 8
+	st.d	$s2, $a1, 0
+	ld.d	$a2, $s0, 16
+	ld.d	$a4, $a1, 0
+	beq	$a4, $a2, .LBB56_5
 # %bb.4:
-	ld.bu	$a2, $a3, 0
-	ld.bu	$a4, $fp, 0
-	xor	$a2, $a2, $a4
-	sltui	$a2, $a2, 1
-	add.d	$a3, $a3, $a2
-	addi.d	$a2, $a2, 1
-	st.d	$a3, $a0, 0
-	bne	$a3, $a1, .LBB56_6
+	ld.bu	$a0, $a4, 0
+	ld.bu	$a3, $fp, 0
+	xor	$a0, $a0, $a3
+	sltui	$a0, $a0, 1
+	add.d	$a4, $a4, $a0
+	addi.d	$a3, $a0, 1
+	st.d	$a4, $a1, 0
+	addi.w	$a0, $zero, -1
+	bne	$a4, $a2, .LBB56_6
 	b	.LBB56_21
 .LBB56_5:
-	ori	$a2, $zero, 1
-	st.d	$a3, $a0, 0
-	beq	$a3, $a1, .LBB56_21
+	ori	$a3, $zero, 1
+	st.d	$a4, $a1, 0
+	addi.w	$a0, $zero, -1
+	beq	$a4, $a2, .LBB56_21
 .LBB56_6:
-	ld.bu	$a4, $a3, 0
-	ld.bu	$a5, $fp, 1
-	bne	$a4, $a5, .LBB56_21
+	ld.bu	$a5, $a4, 0
+	ld.bu	$a6, $fp, 1
+	bne	$a5, $a6, .LBB56_21
 # %bb.7:                                # %_ZNK5boost6spirit8sequenceINS0_8optionalINS0_5chlitIcEEEES4_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSN_.exit.i.i
-	addi.d	$a3, $a3, 1
-	st.d	$a3, $a0, 0
+	addi.d	$a5, $a4, 1
+	st.d	$a5, $a1, 0
 	ld.bu	$a4, $fp, 24
-	ld.d	$a6, $fp, 8
-	ld.d	$a7, $fp, 16
-	move	$a5, $zero
-	addi.w	$s0, $zero, -1
-	bne	$a7, $a6, .LBB56_9
+	ld.d	$a7, $fp, 8
+	ld.d	$t0, $fp, 16
+	move	$a6, $zero
+	bne	$t0, $a7, .LBB56_9
 	.p2align	4, , 16
 .LBB56_8:                               # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $zero, $a5
-	beq	$a7, $a6, .LBB56_8
+	add.d	$a6, $zero, $a6
+	beq	$t0, $a7, .LBB56_8
 .LBB56_9:                               # %.lr.ph.i.i.i.i.i.i.i.i.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB56_10 Depth 2
-	move	$t1, $zero
-	sub.d	$t0, $a7, $a6
+	move	$t2, $zero
+	sub.d	$t1, $t0, $a7
 	.p2align	4, , 16
 .LBB56_10:                              # %.lr.ph.i.i.i.i.i.i.i.i
                                         #   Parent Loop BB56_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$t2, $a3, $t1
-	beq	$t2, $a1, .LBB56_15
+	add.d	$t3, $a5, $t2
+	beq	$t3, $a2, .LBB56_15
 # %bb.11:                               #   in Loop: Header=BB56_10 Depth=2
-	ldx.bu	$t3, $a6, $t1
-	ld.bu	$t4, $t2, 0
-	bne	$t3, $t4, .LBB56_15
+	ldx.bu	$t4, $a7, $t2
+	ld.bu	$t5, $t3, 0
+	bne	$t4, $t5, .LBB56_15
 # %bb.12:                               #   in Loop: Header=BB56_10 Depth=2
+	addi.d	$t3, $t3, 1
 	addi.d	$t2, $t2, 1
-	addi.d	$t1, $t1, 1
-	add.d	$t3, $a6, $t1
-	st.d	$t2, $a0, 0
-	bne	$t3, $a7, .LBB56_10
+	add.d	$t4, $a7, $t2
+	st.d	$t3, $a1, 0
+	bne	$t4, $t0, .LBB56_10
 # %bb.13:                               # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.i.i.i.i
                                         #   in Loop: Header=BB56_9 Depth=1
-	bge	$s0, $t0, .LBB56_15
+	bltz	$t1, .LBB56_15
 # %bb.14:                               #   in Loop: Header=BB56_9 Depth=1
-	add.d	$t1, $a3, $t1
+	add.d	$t2, $a5, $t2
 	b	.LBB56_17
 	.p2align	4, , 16
 .LBB56_15:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.thread.i.i.i.i
                                         #   in Loop: Header=BB56_9 Depth=1
-	st.d	$a3, $a0, 0
-	beq	$a3, $a1, .LBB56_21
+	st.d	$a5, $a1, 0
+	beq	$a5, $a2, .LBB56_21
 # %bb.16:                               # %_ZN5boost6spirit5matchIcED2Ev.exit.thread.sink.split.i.i.i.i.i
                                         #   in Loop: Header=BB56_9 Depth=1
-	ld.bu	$a6, $a3, 0
-	addi.d	$t1, $a3, 1
-	st.d	$t1, $a0, 0
-	ori	$t0, $zero, 1
-	beq	$a6, $a4, .LBB56_18
+	ld.bu	$a7, $a5, 0
+	addi.d	$t2, $a5, 1
+	st.d	$t2, $a1, 0
+	ori	$t1, $zero, 1
+	beq	$a7, $a4, .LBB56_18
 .LBB56_17:                              # %_ZNK5boost6spirit11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISB_T_E4typeERKSQ_.exit._ZNK5boost6spirit11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISB_T_E4typeERKSQ_.exit.thread16_crit_edge.i.i.i
                                         #   in Loop: Header=BB56_9 Depth=1
-	ld.d	$a6, $fp, 8
-	ld.d	$a7, $fp, 16
-	move	$a3, $t1
-	add.d	$a5, $t0, $a5
-	bne	$a7, $a6, .LBB56_9
+	ld.d	$a7, $fp, 8
+	ld.d	$t0, $fp, 16
+	move	$a5, $t2
+	add.d	$a6, $t1, $a6
+	bne	$t0, $a7, .LBB56_9
 	b	.LBB56_8
 .LBB56_18:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_8optionalINS0_5chlitIcEEEES4_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES4_EEEEEEE5parseINS0_7scannerISB_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSX_.exit.i
-	addi.w	$s0, $zero, -1
-	slt	$a1, $s0, $a5
-	add.d	$a2, $a5, $a2
-	maskeqz	$a2, $a2, $a1
-	masknez	$a1, $s0, $a1
-	or	$a1, $a2, $a1
-	st.d	$a3, $a0, 0
-	bltz	$a1, .LBB56_21
+	addi.w	$a0, $zero, -1
+	slt	$a2, $a0, $a6
+	add.d	$a3, $a6, $a3
+	maskeqz	$a3, $a3, $a2
+	masknez	$a2, $a0, $a2
+	or	$a2, $a3, $a2
+	st.d	$a5, $a1, 0
+	bltz	$a2, .LBB56_21
 # %bb.19:
-	ld.bu	$a2, $a3, 0
-	ld.bu	$a3, $fp, 32
-	bne	$a2, $a3, .LBB56_21
+	ld.bu	$a3, $a5, 0
+	ld.bu	$a4, $fp, 32
+	bne	$a3, $a4, .LBB56_21
 # %bb.20:
-	st.d	$t1, $a0, 0
-	addi.d	$s0, $a1, 1
+	st.d	$t2, $a1, 0
+	addi.d	$a0, $a2, 1
 .LBB56_21:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8optionalINS0_5chlitIcEEEES4_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES4_EEEEEEEES4_E5parseINS0_7scannerISB_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISJ_T_E4typeERKSY_.exit
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end56:
 	.size	_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES9_EEEEEEEES9_EENS0_7scannerISG_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEST_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE, .Lfunc_end56-_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_11kleene_starINS0_11alternativeINS0_6strlitIPKcEENS0_10differenceINS0_14anychar_parserES9_EEEEEEEES9_EENS0_7scannerISG_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEST_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
@@ -14777,17 +14749,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8positiveINS0_4ruleINS0_7scannerIPKc
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s0, $a0
 	ld.d	$a0, $a0, 8
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB58_8
+	beqz	$a0, .LBB58_7
 # %bb.1:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i
 	move	$s1, $a1
 	ld.d	$a1, $a0, 0
@@ -14795,47 +14765,44 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8positiveINS0_4ruleINS0_7scannerIPKc
 	move	$a1, $s1
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
-	bltz	$a0, .LBB58_9
+	bltz	$a0, .LBB58_8
 # %bb.2:                                # %.preheader.i
 	ld.d	$a0, $s0, 8
 	ld.d	$a2, $s1, 8
 	ld.d	$a0, $a0, 0
 	ld.d	$s2, $a2, 0
-	beqz	$a0, .LBB58_7
+	beqz	$a0, .LBB58_6
 # %bb.3:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit11.i.preheader
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $s1
 	jirl	$ra, $a2, 0
 	ld.d	$a2, $s1, 8
-	bltz	$a0, .LBB58_7
-# %bb.4:                                # %.lr.ph.preheader
-	addi.w	$s3, $zero, -1
+	bltz	$a0, .LBB58_6
 	.p2align	4, , 16
-.LBB58_5:                               # %.lr.ph
+.LBB58_4:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 8
 	ld.d	$a1, $a1, 0
 	ld.d	$s2, $a2, 0
 	add.d	$fp, $a0, $fp
-	beqz	$a1, .LBB58_7
-# %bb.6:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit11.i
-                                        #   in Loop: Header=BB58_5 Depth=1
+	beqz	$a1, .LBB58_6
+# %bb.5:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit11.i
+                                        #   in Loop: Header=BB58_4 Depth=1
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 16
 	move	$a0, $a1
 	move	$a1, $s1
 	jirl	$ra, $a2, 0
 	ld.d	$a2, $s1, 8
-	blt	$s3, $a0, .LBB58_5
-.LBB58_7:                               # %.thread.i
+	bgez	$a0, .LBB58_4
+.LBB58_6:                               # %.thread.i
 	st.d	$s2, $a2, 0
-	b	.LBB58_9
-.LBB58_8:
+	b	.LBB58_8
+.LBB58_7:
 	addi.w	$fp, $zero, -1
-.LBB58_9:                               # %_ZNK5boost6spirit8positiveINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EEE5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit
+.LBB58_8:                               # %_ZNK5boost6spirit8positiveINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EEE5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit
 	move	$a0, $fp
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -14963,18 +14930,17 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 0
+	st.d	$s1, $sp, 0
 	vst	$vr0, $sp, 8
-	addi.w	$s0, $zero, -1
 	.p2align	4, , 16
 .LBB63_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -14985,44 +14951,46 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
 	ld.d	$a2, $a1, 16
 	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB63_1
+	bgez	$a0, .LBB63_1
 .LBB63_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
-	ld.d	$s2, $s1, 8
-	st.d	$s3, $s2, 0
-	ld.d	$s1, $s1, 16
-	ld.d	$s4, $s2, 0
-	beq	$s4, $s1, .LBB63_21
+	ld.d	$s1, $s0, 8
+	st.d	$s2, $s1, 0
+	ld.d	$s0, $s0, 16
+	ld.d	$s4, $s1, 0
+	addi.w	$a0, $zero, -1
+	beq	$s4, $s0, .LBB63_14
 # %bb.4:
-	ld.bu	$a0, $s4, 0
-	ld.bu	$a1, $fp, 0
-	bne	$a0, $a1, .LBB63_21
+	ld.bu	$a1, $s4, 0
+	ld.bu	$a2, $fp, 0
+	bne	$a1, $a2, .LBB63_14
 # %bb.5:
-	addi.d	$a0, $s4, 1
-	st.d	$a0, $s2, 0
-	beq	$a0, $s1, .LBB63_21
+	addi.d	$a1, $s4, 1
+	st.d	$a1, $s1, 0
+	beq	$a1, $s0, .LBB63_14
 # %bb.6:
-	ld.bu	$a0, $a0, 0
+	move	$s2, $a0
+	ld.bu	$a0, $a1, 0
 	pcaddu18i	$ra, %call36(tolower)
 	jirl	$ra, $ra, 0
 	ld.bu	$a1, $fp, 1
 	andi	$a0, $a0, 255
-	bne	$a1, $a0, .LBB63_21
+	bne	$a1, $a0, .LBB63_13
 # %bb.7:
 	addi.d	$a0, $s4, 2
-	st.d	$a0, $s2, 0
-	beq	$a0, $s1, .LBB63_21
+	st.d	$a0, $s1, 0
+	beq	$a0, $s0, .LBB63_13
 # %bb.8:
 	ld.bu	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(isxdigit)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB63_21
+	beqz	$a0, .LBB63_13
 # %bb.9:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
 	addi.d	$s3, $s4, 3
-	st.d	$s3, $s2, 0
-	beq	$s3, $s1, .LBB63_13
+	st.d	$s3, $s1, 0
+	beq	$s3, $s0, .LBB63_15
 # %bb.10:                               # %.lr.ph.i.i.preheader
 	move	$s6, $zero
-	sub.d	$a0, $s1, $s4
+	sub.d	$a0, $s0, $s4
 	addi.d	$s5, $a0, -2
 	.p2align	4, , 16
 .LBB63_11:                              # %.lr.ph.i.i
@@ -15031,30 +14999,45 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
 	ld.bu	$a0, $s3, 3
 	pcaddu18i	$ra, %call36(isxdigit)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB63_14
+	beqz	$a0, .LBB63_16
 # %bb.12:                               #   in Loop: Header=BB63_11 Depth=1
 	addi.d	$a0, $s3, 4
 	addi.d	$s6, $s6, 1
 	add.d	$a1, $s4, $s6
 	addi.d	$s3, $a1, 3
-	st.d	$a0, $s2, 0
-	bne	$s3, $s1, .LBB63_11
-	b	.LBB63_15
-.LBB63_13:
-	ori	$s0, $zero, 3
+	st.d	$a0, $s1, 0
+	bne	$s3, $s0, .LBB63_11
 	b	.LBB63_17
-.LBB63_14:                              # %.lr.ph.i.i._ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit_crit_edge
+.LBB63_13:
+	move	$a0, $s2
+.LBB63_14:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS4_INS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISG_T_E4typeERKSX_.exit
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
+	ret
+.LBB63_15:
+	ori	$s2, $zero, 3
+	b	.LBB63_19
+.LBB63_16:                              # %.lr.ph.i.i._ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit_crit_edge
 	addi.d	$s3, $s3, 3
 	addi.d	$s5, $s6, 1
-.LBB63_15:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
-	addi.w	$a0, $zero, -2
-	st.d	$s3, $s2, 0
-	blt	$s5, $a0, .LBB63_21
-# %bb.16:
-	addi.d	$s0, $s5, 2
-.LBB63_17:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit.thread15
-	beq	$s3, $s1, .LBB63_19
+.LBB63_17:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit
+	addi.w	$a1, $zero, -2
+	st.d	$s3, $s1, 0
+	move	$a0, $s2
+	blt	$s5, $a1, .LBB63_14
 # %bb.18:
+	addi.d	$s2, $s5, 2
+.LBB63_19:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSR_.exit.thread15
+	beq	$s3, $s0, .LBB63_21
+# %bb.20:
 	ld.bu	$a0, $s3, 0
 	pcaddu18i	$ra, %call36(tolower)
 	jirl	$ra, $ra, 0
@@ -15068,25 +15051,13 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
 	sltui	$a0, $a0, 1
 	or	$a0, $a1, $a0
 	add.d	$s3, $s3, $a0
-	b	.LBB63_20
-.LBB63_19:
+	b	.LBB63_22
+.LBB63_21:
 	move	$a0, $zero
-.LBB63_20:
-	st.d	$s3, $s2, 0
-	add.d	$s0, $a0, $s0
-.LBB63_21:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_12inhibit_caseIS3_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS4_INS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISG_T_E4typeERKSX_.exit
-	move	$a0, $s0
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
-	ret
+.LBB63_22:
+	st.d	$s3, $s1, 0
+	add.d	$a0, $a0, $s2
+	b	.LBB63_14
 .Lfunc_end63:
 	.size	_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_5chlitIcEENS0_12inhibit_caseIS8_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS9_INS0_11alternativeIS8_S8_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESS_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE, .Lfunc_end63-_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_5chlitIcEENS0_12inhibit_caseIS8_EEEENS0_8positiveINS0_13xdigit_parserEEEEENS0_8optionalINS9_INS0_11alternativeIS8_S8_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESS_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
 	.cfi_endproc
@@ -15157,32 +15128,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS0_
 _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS8_S8_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESR_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE: # @_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS8_S8_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESR_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB67_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -15191,61 +15159,62 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
                                         #   in Loop: Header=BB67_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB67_1
+	bgez	$a0, .LBB67_1
 .LBB67_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
-	ld.d	$s2, $s1, 8
-	st.d	$s3, $s2, 0
-	ld.d	$a0, $s1, 16
-	ld.d	$a1, $s2, 0
-	beq	$a1, $a0, .LBB67_20
+	ld.d	$s1, $s0, 8
+	st.d	$s2, $s1, 0
+	ld.d	$a1, $s0, 16
+	ld.d	$a2, $s1, 0
+	addi.w	$a0, $zero, -1
+	beq	$a2, $a1, .LBB67_20
 # %bb.4:
-	ld.bu	$a2, $a1, 0
-	ld.bu	$a3, $fp, 0
-	bne	$a2, $a3, .LBB67_20
+	ld.bu	$a3, $a2, 0
+	ld.bu	$a4, $fp, 0
+	bne	$a3, $a4, .LBB67_20
 # %bb.5:
-	addi.d	$a2, $a1, 1
-	st.d	$a2, $s2, 0
-	beq	$a2, $a0, .LBB67_20
+	addi.d	$a3, $a2, 1
+	st.d	$a3, $s1, 0
+	beq	$a3, $a1, .LBB67_20
 # %bb.6:
-	ld.b	$a3, $a2, 0
-	ld.b	$a2, $fp, 1
-	blt	$a3, $a2, .LBB67_20
-# %bb.7:
-	ld.b	$a4, $fp, 2
+	ld.b	$a4, $a3, 0
+	ld.b	$a3, $fp, 1
 	blt	$a4, $a3, .LBB67_20
+# %bb.7:
+	ld.b	$a5, $fp, 2
+	blt	$a5, $a4, .LBB67_20
 # %bb.8:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-	addi.d	$s1, $a1, 2
-	st.d	$s1, $s2, 0
-	beq	$s1, $a0, .LBB67_13
+	addi.d	$s0, $a2, 2
+	st.d	$s0, $s1, 0
+	beq	$s0, $a1, .LBB67_13
 # %bb.9:                                # %.lr.ph.i.i.i.preheader
-	move	$a4, $zero
-	nor	$a3, $a1, $zero
-	add.d	$a3, $a3, $a0
+	move	$a0, $zero
+	nor	$a4, $a2, $zero
+	add.d	$a4, $a4, $a1
 	.p2align	4, , 16
 .LBB67_10:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a4
+	add.d	$a5, $a2, $a0
 	ld.b	$a6, $a5, 2
-	blt	$a6, $a2, .LBB67_15
+	blt	$a6, $a3, .LBB67_15
 # %bb.11:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB67_10 Depth=1
 	ld.b	$a7, $fp, 2
 	blt	$a7, $a6, .LBB67_15
 # %bb.12:                               #   in Loop: Header=BB67_10 Depth=1
 	addi.d	$a5, $a5, 3
-	addi.d	$a4, $a4, 1
-	add.d	$a6, $a1, $a4
-	addi.d	$s1, $a6, 2
-	st.d	$a5, $s2, 0
-	bne	$s1, $a0, .LBB67_10
+	addi.d	$a0, $a0, 1
+	add.d	$a6, $a2, $a0
+	addi.d	$s0, $a6, 2
+	st.d	$a5, $s1, 0
+	bne	$s0, $a1, .LBB67_10
 	b	.LBB67_16
 .LBB67_13:
-	ori	$s0, $zero, 2
-	beq	$s1, $a0, .LBB67_18
+	ori	$s2, $zero, 2
+	beq	$s0, $a1, .LBB67_18
 .LBB67_14:
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(tolower)
 	jirl	$ra, $ra, 0
 	ld.bu	$a1, $fp, 3
@@ -15257,32 +15226,30 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
 	xor	$a0, $a2, $a0
 	sltui	$a0, $a0, 1
 	or	$a0, $a1, $a0
-	add.d	$s1, $s1, $a0
+	add.d	$s0, $s0, $a0
 	b	.LBB67_19
 .LBB67_15:                              # %.lr.ph.i.i.i._ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i_crit_edge
-	addi.d	$a3, $a4, 1
-	addi.d	$s1, $a5, 2
+	addi.d	$a4, $a0, 1
+	addi.d	$s0, $a5, 2
 .LBB67_16:                              # %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSP_.exit.i
-	addi.w	$s0, $zero, -1
-	st.d	$s1, $s2, 0
-	blt	$a3, $s0, .LBB67_20
+	addi.w	$a0, $zero, -1
+	st.d	$s0, $s1, 0
+	blt	$a4, $a0, .LBB67_20
 # %bb.17:
-	addi.d	$s0, $a3, 1
-	bne	$s1, $a0, .LBB67_14
+	addi.d	$s2, $a4, 1
+	bne	$s0, $a1, .LBB67_14
 .LBB67_18:
 	move	$a0, $zero
 .LBB67_19:
-	st.d	$s1, $s2, 0
-	add.d	$s0, $a0, $s0
+	st.d	$s0, $s1, 0
+	add.d	$a0, $a0, $s2
 .LBB67_20:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS3_S3_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSW_.exit
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end67:
 	.size	_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS8_S8_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESR_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE, .Lfunc_end67-_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS0_5chlitIcEENS0_8positiveINS0_5rangeIcEEEEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeIS8_S8_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESR_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
@@ -15353,32 +15320,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS0_8posi
 _ZNK5boost6spirit10contiguousINS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESA_EEEEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSU_: # @_ZNK5boost6spirit10contiguousINS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESA_EEEEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSU_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB71_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -15387,50 +15351,51 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS0_8positiveINS0_12digit_parserEEEN
                                         #   in Loop: Header=BB71_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB71_1
+	bgez	$a0, .LBB71_1
 .LBB71_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i
-	ld.d	$s2, $s1, 8
-	st.d	$s3, $s2, 0
-	ld.d	$a0, $s1, 16
-	ld.d	$a1, $s2, 0
-	beq	$a1, $a0, .LBB71_15
+	ld.d	$s1, $s0, 8
+	st.d	$s2, $s1, 0
+	ld.d	$a1, $s0, 16
+	ld.d	$a2, $s1, 0
+	addi.w	$a0, $zero, -1
+	beq	$a2, $a1, .LBB71_15
 # %bb.4:
-	ld.bu	$a2, $a1, 0
-	addi.d	$a2, $a2, -48
-	ori	$a3, $zero, 9
-	bltu	$a3, $a2, .LBB71_15
+	ld.bu	$a3, $a2, 0
+	addi.d	$a3, $a3, -48
+	ori	$a4, $zero, 9
+	bltu	$a4, $a3, .LBB71_15
 # %bb.5:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i.i
-	addi.d	$s1, $a1, 1
-	st.d	$s1, $s2, 0
-	beq	$s1, $a0, .LBB71_9
+	addi.d	$s2, $a2, 1
+	st.d	$s2, $s1, 0
+	beq	$s2, $a1, .LBB71_9
 # %bb.6:                                # %.lr.ph.i.i.preheader.i
-	move	$a2, $zero
-	sub.d	$s0, $a0, $a1
+	move	$a0, $zero
+	sub.d	$s0, $a1, $a2
 	ori	$a3, $zero, 9
 	.p2align	4, , 16
 .LBB71_7:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $a1, $a2
+	add.d	$a4, $a2, $a0
 	ld.bu	$a5, $a4, 1
 	addi.d	$a5, $a5, -48
 	bltu	$a3, $a5, .LBB71_12
 # %bb.8:                                #   in Loop: Header=BB71_7 Depth=1
 	addi.d	$a4, $a4, 2
-	addi.d	$a2, $a2, 1
-	add.d	$a5, $a1, $a2
-	addi.d	$s1, $a5, 1
-	st.d	$a4, $s2, 0
-	bne	$s1, $a0, .LBB71_7
+	addi.d	$a0, $a0, 1
+	add.d	$a5, $a2, $a0
+	addi.d	$s2, $a5, 1
+	st.d	$a4, $s1, 0
+	bne	$s2, $a1, .LBB71_7
 	b	.LBB71_10
 .LBB71_9:
 	ori	$s0, $zero, 1
 .LBB71_10:                              # %_ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.thread14.i.i
-	st.d	$s1, $s2, 0
-	beq	$s1, $a0, .LBB71_13
+	st.d	$s2, $s1, 0
+	beq	$s2, $a1, .LBB71_13
 .LBB71_11:
-	ld.bu	$a0, $s1, 0
+	ld.bu	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(tolower)
 	jirl	$ra, $ra, 0
 	ld.bu	$a1, $fp, 1
@@ -15442,27 +15407,25 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS0_8positiveINS0_12digit_parserEEEN
 	xor	$a0, $a2, $a0
 	sltui	$a0, $a0, 1
 	or	$a0, $a1, $a0
-	add.d	$s1, $s1, $a0
+	add.d	$s2, $s2, $a0
 	b	.LBB71_14
 .LBB71_12:                              # %.lr.ph.i.i.i._ZNK5boost6spirit8positiveINS0_12digit_parserEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSK_.exit.thread14.i.i.loopexit_crit_edge
-	addi.d	$s0, $a2, 1
-	add.d	$s1, $s0, $a1
-	st.d	$s1, $s2, 0
-	bne	$s1, $a0, .LBB71_11
+	addi.d	$s0, $a0, 1
+	add.d	$s2, $s0, $a2
+	st.d	$s2, $s1, 0
+	bne	$s2, $a1, .LBB71_11
 .LBB71_13:
 	move	$a0, $zero
 .LBB71_14:
-	st.d	$s1, $s2, 0
-	add.d	$s0, $a0, $s0
+	st.d	$s2, $s1, 0
+	add.d	$a0, $a0, $s0
 .LBB71_15:                              # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESE_EEEEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESP_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end71:
 	.size	_ZNK5boost6spirit10contiguousINS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESA_EEEEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSU_, .Lfunc_end71-_ZNK5boost6spirit10contiguousINS0_8sequenceINS0_8positiveINS0_12digit_parserEEENS0_8optionalINS0_12inhibit_caseINS0_11alternativeINS0_5chlitIcEESA_EEEEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSU_
@@ -15536,32 +15499,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_
 _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_19longest_alternativeINSC_INS0_14anychar_parserENS6_INS6_IS9_S9_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS6_IS9_SD_EEEEEES9_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESV_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE: # @_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_19longest_alternativeINSC_INS0_14anychar_parserENS6_INS6_IS9_S9_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS6_IS9_SD_EEEEEES9_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESV_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
-	move	$s0, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$fp, $zero, -1
+	move	$fp, $a0
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB75_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -15570,73 +15530,74 @@ _ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequ
                                         #   in Loop: Header=BB75_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$fp, $a0, .LBB75_1
+	bgez	$a0, .LBB75_1
 .LBB75_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit
-	ld.d	$a0, $s1, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 16
+	ld.d	$a1, $s0, 8
+	st.d	$s2, $a1, 0
+	ld.d	$a0, $s0, 0
+	ld.d	$a3, $s0, 16
+	st.d	$a0, $sp, 0
 	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a2, $sp, 24
-	ld.d	$a1, $a0, 0
-	beq	$a1, $a2, .LBB75_5
+	st.d	$a3, $sp, 16
+	ld.d	$a2, $a1, 0
+	beq	$a2, $a3, .LBB75_5
 # %bb.4:
-	ld.bu	$a3, $a1, 0
-	ld.bu	$a4, $s0, 0
-	xor	$a3, $a3, $a4
-	sltui	$a3, $a3, 1
-	add.d	$a1, $a1, $a3
-	addi.d	$s1, $a3, 1
-	st.d	$a1, $a0, 0
-	bne	$a1, $a2, .LBB75_6
+	ld.bu	$a0, $a2, 0
+	ld.bu	$a4, $fp, 0
+	xor	$a0, $a0, $a4
+	sltui	$a0, $a0, 1
+	add.d	$a2, $a2, $a0
+	addi.d	$s0, $a0, 1
+	st.d	$a2, $a1, 0
+	addi.w	$a0, $zero, -1
+	bne	$a2, $a3, .LBB75_6
 	b	.LBB75_11
 .LBB75_5:
-	ori	$s1, $zero, 1
-	st.d	$a1, $a0, 0
-	beq	$a1, $a2, .LBB75_11
+	ori	$s0, $zero, 1
+	st.d	$a2, $a1, 0
+	addi.w	$a0, $zero, -1
+	beq	$a2, $a3, .LBB75_11
 .LBB75_6:
-	ld.bu	$a2, $a1, 0
-	ld.bu	$a3, $s0, 1
-	bne	$a2, $a3, .LBB75_11
+	ld.bu	$a3, $a2, 0
+	ld.bu	$a4, $fp, 1
+	bne	$a3, $a4, .LBB75_11
 # %bb.7:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_8optionalINS0_5chlitIcEEEES4_EENS0_19longest_alternativeINS7_INS0_14anychar_parserENS1_INS1_IS4_S4_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS1_IS4_S8_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_.exit.i
-	addi.d	$a1, $a1, 1
-	st.d	$a1, $a0, 0
-	addi.d	$a0, $s0, 4
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $a2, 1
+	st.d	$a0, $a1, 0
+	addi.d	$a0, $fp, 4
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit19longest_alternativeINS1_INS0_14anychar_parserENS0_8sequenceINS3_INS0_5chlitIcEES5_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS3_IS5_S2_EEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISE_T_E4typeERKSV_)
 	jirl	$ra, $ra, 0
-	addi.w	$fp, $zero, -1
-	slt	$a1, $fp, $a0
-	add.d	$a0, $a0, $s1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $fp, $a1
-	or	$a0, $a0, $a1
-	bltz	$a0, .LBB75_11
+	move	$a1, $a0
+	addi.w	$a0, $zero, -1
+	slt	$a2, $a0, $a1
+	add.d	$a1, $a1, $s0
+	maskeqz	$a1, $a1, $a2
+	masknez	$a2, $a0, $a2
+	or	$a1, $a1, $a2
+	bltz	$a1, .LBB75_11
 # %bb.8:
-	ld.d	$a1, $sp, 16
-	ld.d	$a2, $a1, 0
-	ld.d	$a3, $sp, 24
-	beq	$a2, $a3, .LBB75_11
+	ld.d	$a2, $sp, 8
+	ld.d	$a3, $a2, 0
+	ld.d	$a4, $sp, 16
+	beq	$a3, $a4, .LBB75_11
 # %bb.9:
-	ld.bu	$a3, $a2, 0
-	ld.bu	$a4, $s0, 24
-	bne	$a3, $a4, .LBB75_11
+	ld.bu	$a4, $a3, 0
+	ld.bu	$a5, $fp, 24
+	bne	$a4, $a5, .LBB75_11
 # %bb.10:
-	addi.d	$a2, $a2, 1
-	st.d	$a2, $a1, 0
-	addi.d	$fp, $a0, 1
+	addi.d	$a0, $a3, 1
+	st.d	$a0, $a2, 0
+	addi.d	$a0, $a1, 1
 .LBB75_11:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8optionalINS0_5chlitIcEEEES4_EENS0_19longest_alternativeINS7_INS0_14anychar_parserENS1_INS1_IS4_S4_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS1_IS4_S8_EEEEEES4_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISJ_T_E4typeERKS10_.exit
-	move	$a0, $fp
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end75:
 	.size	_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_19longest_alternativeINSC_INS0_14anychar_parserENS6_INS6_IS9_S9_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS6_IS9_SD_EEEEEES9_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESV_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE, .Lfunc_end75-_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS0_8optionalINS0_5chlitIcEEEES9_EENS0_19longest_alternativeINSC_INS0_14anychar_parserENS6_INS6_IS9_S9_EENS0_11finite_loopINS0_5rangeIcEEiiEEEEEENS6_IS9_SD_EEEEEES9_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESV_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE
@@ -15804,8 +15765,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB78_12
+	bgez	$a0, .LBB78_12
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB78_3:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -15818,8 +15778,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB78_12
+	bgez	$a0, .LBB78_12
 # %bb.5:                                # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB78_6:                               # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread.i.i
@@ -15832,8 +15791,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS0_4ruleINS
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB78_12
+	bgez	$a0, .LBB78_12
 # %bb.8:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit._ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
 .LBB78_9:                               # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread.i
@@ -15959,32 +15917,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_
 _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES8_EEEENS0_8optionalIS9_EEEES5_EENSB_INS0_12inhibit_caseIS9_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISJ_T_E4typeERKSY_: # @_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES8_EEEENS0_8optionalIS9_EEEES5_EENSB_INS0_12inhibit_caseIS9_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISJ_T_E4typeERKSY_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB83_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -15993,28 +15948,28 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12d
                                         #   in Loop: Header=BB83_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB83_1
+	bgez	$a0, .LBB83_1
 .LBB83_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i
-	ld.d	$a0, $s1, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 16
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a2, $sp, 24
-	addi.d	$a1, $sp, 8
+	ld.d	$a0, $s0, 8
+	st.d	$s2, $a0, 0
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 16
+	st.d	$a1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a2, $sp, 16
+	addi.d	$a1, $sp, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES7_EEEENS0_8optionalIS8_EEEES4_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSU_)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB83_8
+	bltz	$a0, .LBB83_6
 # %bb.4:
-	move	$s1, $a0
-	ld.d	$s0, $sp, 16
-	ld.d	$s2, $s0, 0
-	ld.d	$a0, $sp, 24
-	beq	$s2, $a0, .LBB83_6
+	move	$s0, $a0
+	ld.d	$s1, $sp, 8
+	ld.d	$s2, $s1, 0
+	ld.d	$a0, $sp, 16
+	beq	$s2, $a0, .LBB83_7
 # %bb.5:
 	ld.bu	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -16029,21 +15984,22 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12d
 	sltui	$a0, $a0, 1
 	or	$a0, $a1, $a0
 	add.d	$s2, $s2, $a0
-	b	.LBB83_7
+	b	.LBB83_8
 .LBB83_6:
-	move	$a0, $zero
+	addi.w	$a0, $zero, -1
+	b	.LBB83_9
 .LBB83_7:
-	st.d	$s2, $s0, 0
-	add.d	$s0, $a0, $s1
-.LBB83_8:                               # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS6_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEESC_EEEENS0_8optionalISD_EEEES9_EENSF_INS0_12inhibit_caseISD_EEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEST_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	move	$a0, $zero
+.LBB83_8:
+	st.d	$s2, $s1, 0
+	add.d	$a0, $a0, $s0
+.LBB83_9:                               # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS6_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEESC_EEEENS0_8optionalISD_EEEES9_EENSF_INS0_12inhibit_caseISD_EEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEST_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end83:
 	.size	_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES8_EEEENS0_8optionalIS9_EEEES5_EENSB_INS0_12inhibit_caseIS9_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISJ_T_E4typeERKSY_, .Lfunc_end83-_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_11alternativeINS0_5chlitIcEES8_EEEENS0_8optionalIS9_EEEES5_EENSB_INS0_12inhibit_caseIS9_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISJ_T_E4typeERKSY_
@@ -16248,32 +16204,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_
 _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEESA_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_: # @_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEESA_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB88_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -16282,28 +16235,28 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_11kleene_starINS0
                                         #   in Loop: Header=BB88_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB88_1
+	bgez	$a0, .LBB88_1
 .LBB88_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i
-	ld.d	$a0, $s1, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 16
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a2, $sp, 24
-	addi.d	$a1, $sp, 8
+	ld.d	$a0, $s0, 8
+	st.d	$s2, $a0, 0
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 16
+	st.d	$a1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a2, $sp, 16
+	addi.d	$a1, $sp, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES9_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB88_8
+	bltz	$a0, .LBB88_6
 # %bb.4:
-	move	$s1, $a0
-	ld.d	$s0, $sp, 16
-	ld.d	$s2, $s0, 0
-	ld.d	$a0, $sp, 24
-	beq	$s2, $a0, .LBB88_6
+	move	$s0, $a0
+	ld.d	$s1, $sp, 8
+	ld.d	$s2, $s1, 0
+	ld.d	$a0, $sp, 16
+	beq	$s2, $a0, .LBB88_7
 # %bb.5:
 	ld.bu	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -16318,21 +16271,22 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_11kleene_starINS0
 	sltui	$a0, $a0, 1
 	or	$a0, $a1, $a0
 	add.d	$s2, $s2, $a0
-	b	.LBB88_7
+	b	.LBB88_8
 .LBB88_6:
-	move	$a0, $zero
+	addi.w	$a0, $zero, -1
+	b	.LBB88_9
 .LBB88_7:
-	st.d	$s2, $s0, 0
-	add.d	$s0, $a0, $s1
-.LBB88_8:                               # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS6_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS8_EEEENS0_8optionalINS6_INS6_INS0_11alternativeISB_SB_EENSG_ISI_EEEESE_EEEEEENSG_INS0_12inhibit_caseISI_EEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESY_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	move	$a0, $zero
+.LBB88_8:
+	st.d	$s2, $s1, 0
+	add.d	$a0, $a0, $s0
+.LBB88_9:                               # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS6_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS8_EEEENS0_8optionalINS6_INS6_INS0_11alternativeISB_SB_EENSG_ISI_EEEESE_EEEEEENSG_INS0_12inhibit_caseISI_EEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESY_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end88:
 	.size	_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEESA_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_, .Lfunc_end88-_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_11kleene_starINS0_12digit_parserEEENS0_5chlitIcEEEENS0_8positiveIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEESA_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_
@@ -16506,8 +16460,7 @@ _ZNK5boost6spirit8sequenceINS1_INS1_INS0_11kleene_starINS0_12digit_parserEEENS0_
 	ori	$a1, $zero, 1
 .LBB89_34:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i
 	add.d	$a0, $a1, $a0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB89_36
+	bgez	$a0, .LBB89_36
 .LBB89_35:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.thread.i
 	move	$a0, $zero
 	move	$a6, $a4
@@ -16585,32 +16538,29 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_10contiguousINS0_8sequenceINS4_INS4_
 _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEES5_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_: # @_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEES5_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	move	$s1, $a1
-	ld.d	$s2, $a1, 0
+	move	$s0, $a1
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
 	move	$fp, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB93_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$a0, $s0, 8
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -16619,28 +16569,28 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12d
                                         #   in Loop: Header=BB93_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB93_1
+	bgez	$a0, .LBB93_1
 .LBB93_3:                               # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i
-	ld.d	$a0, $s1, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 16
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a2, $sp, 24
-	addi.d	$a1, $sp, 8
+	ld.d	$a0, $s0, 8
+	st.d	$s2, $a0, 0
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 16
+	st.d	$a1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a2, $sp, 16
+	addi.d	$a1, $sp, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS3_EEEENS0_8optionalINS1_INS1_INS0_11alternativeIS6_S6_EENSB_ISD_EEEES4_EEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISI_T_E4typeERKSZ_)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB93_8
+	bltz	$a0, .LBB93_6
 # %bb.4:
-	move	$s1, $a0
-	ld.d	$s0, $sp, 16
-	ld.d	$s2, $s0, 0
-	ld.d	$a0, $sp, 24
-	beq	$s2, $a0, .LBB93_6
+	move	$s0, $a0
+	ld.d	$s1, $sp, 8
+	ld.d	$s2, $s1, 0
+	ld.d	$a0, $sp, 16
+	beq	$s2, $a0, .LBB93_7
 # %bb.5:
 	ld.bu	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(tolower)
@@ -16655,21 +16605,22 @@ _ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12d
 	sltui	$a0, $a0, 1
 	or	$a0, $a1, $a0
 	add.d	$s2, $s2, $a0
-	b	.LBB93_7
+	b	.LBB93_8
 .LBB93_6:
-	move	$a0, $zero
+	addi.w	$a0, $zero, -1
+	b	.LBB93_9
 .LBB93_7:
-	st.d	$s2, $s0, 0
-	add.d	$s0, $a0, $s1
-.LBB93_8:                               # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS6_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS8_EEEENS0_8optionalINS6_INS6_INS0_11alternativeISB_SB_EENSG_ISI_EEEES9_EEEEEENSG_INS0_12inhibit_caseISI_EEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESY_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	move	$a0, $zero
+.LBB93_8:
+	st.d	$s2, $s1, 0
+	add.d	$a0, $a0, $s0
+.LBB93_9:                               # %_ZN5boost6spirit4impl23contiguous_parser_parseINS0_5matchINS0_5nil_tEEENS0_8sequenceINS6_INS6_INS6_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS8_EEEENS0_8optionalINS6_INS6_INS0_11alternativeISB_SB_EENSG_ISI_EEEES9_EEEEEENSG_INS0_12inhibit_caseISI_EEEEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEESY_EET_RKT0_RKT1_RKNS0_24skipper_iteration_policyIT2_EE.exit
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end93:
 	.size	_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEES5_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_, .Lfunc_end93-_ZNK5boost6spirit10contiguousINS0_8sequenceINS2_INS2_INS2_INS0_8positiveINS0_12digit_parserEEENS0_5chlitIcEEEENS0_11kleene_starIS4_EEEENS0_8optionalINS2_INS2_INS0_11alternativeIS7_S7_EENSC_ISE_EEEES5_EEEEEENSC_INS0_12inhibit_caseISE_EEEEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_
@@ -16839,8 +16790,7 @@ _ZNK5boost6spirit8sequenceINS1_INS1_INS0_8positiveINS0_12digit_parserEEENS0_5chl
 	ori	$a1, $zero, 1
 .LBB94_32:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.i
 	add.d	$a0, $a1, $a0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB94_34
+	bgez	$a0, .LBB94_34
 .LBB94_33:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_11alternativeINS0_5chlitIcEES4_EENS0_8optionalIS5_EEEENS0_8positiveINS0_12digit_parserEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKST_.exit.thread.i
 	move	$a0, $zero
 	move	$a6, $a4
@@ -16894,8 +16844,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_4ruleINS0_7sc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB96_9
+	bgez	$a0, .LBB96_9
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB96_3:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -16908,8 +16857,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_4ruleINS0_7sc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB96_9
+	bgez	$a0, .LBB96_9
 # %bb.5:                                # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
 .LBB96_6:                               # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread.i
@@ -17038,7 +16986,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_19longest_alternativeINS0_4ruleINS0_
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 .LBB99_4:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit11.i
-	blt	$s0, $s1, .LBB99_6
+	bgez	$s1, .LBB99_6
 # %bb.5:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit11.i
 	bltz	$a0, .LBB99_8
 .LBB99_6:
@@ -17182,8 +17130,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB104_13
+	bgez	$a0, .LBB104_13
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB104_3:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -17196,8 +17143,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB104_13
+	bgez	$a0, .LBB104_13
 # %bb.5:                                # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
 .LBB104_6:                              # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread.i
@@ -17210,8 +17156,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB104_13
+	bgez	$a0, .LBB104_13
 # %bb.8:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit._ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB104_9:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread
@@ -17401,8 +17346,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS1_INS1_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS1_ISL_SH_EEEENS1_INS0_6strlitIS6_EESH_EEEESU_EESU_EESH_E5parseISF_EENS0_13parser_resultISZ_T_E4typeERKS12_)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB109_2
+	bgez	$a0, .LBB109_2
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
@@ -17462,34 +17406,31 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 _ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS1_INS1_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS1_ISL_SH_EEEENS1_INS0_6strlitIS6_EESH_EEEESU_EESU_EESH_E5parseISF_EENS0_13parser_resultISZ_T_E4typeERKS12_: # @_ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS1_INS1_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS1_ISL_SH_EEEENS1_INS0_6strlitIS6_EESH_EEEESU_EESU_EESH_E5parseISF_EENS0_13parser_resultISZ_T_E4typeERKS12_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
-	move	$s1, $a0
+	ld.d	$s2, $a1, 0
+	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_E5parseISF_EENS0_13parser_resultISX_T_E4typeERKS10_)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $zero, -1
-	move	$s2, $a0
-	bge	$s0, $a0, .LBB111_4
+	move	$s1, $a0
+	bltz	$a0, .LBB111_3
 .LBB111_1:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_EESU_E5parseISF_EENS0_13parser_resultISY_T_E4typeERKS11_.exit.thread14
-	ld.d	$a0, $s1, 120
+	ld.d	$a0, $s0, 120
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB111_3
+	beqz	$a0, .LBB111_12
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
@@ -17497,71 +17438,73 @@ _ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4
 	jirl	$ra, $a2, 0
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
-	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $s1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
-	or	$s0, $a0, $a1
-.LBB111_3:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_EESU_E5parseISF_EENS0_13parser_resultISY_T_E4typeERKS11_.exit.thread
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
-	ret
-.LBB111_4:
+	or	$a0, $a0, $a1
+	b	.LBB111_13
+.LBB111_3:
 	ld.d	$a0, $fp, 8
-	ld.d	$s2, $fp, 0
-	st.d	$s3, $a0, 0
+	ld.d	$s1, $fp, 0
+	st.d	$s2, $a0, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s2, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a1, $sp, 24
+	st.d	$s1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a1, $sp, 16
 	.p2align	4, , 16
-.LBB111_5:                              # =>This Inner Loop Header: Depth=1
+.LBB111_4:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB111_7
-# %bb.6:                                # %_ZNK5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS2_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSM_.exit.i.i.i.i.i
-                                        #   in Loop: Header=BB111_5 Depth=1
+	beqz	$a0, .LBB111_6
+# %bb.5:                                # %_ZNK5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS2_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSM_.exit.i.i.i.i.i
+                                        #   in Loop: Header=BB111_4 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB111_5
-.LBB111_7:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
-	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 104
-	ld.d	$a2, $s1, 112
-	beq	$a2, $a1, .LBB111_13
-# %bb.8:                                # %.lr.ph.i.i.i.i.i
-	ld.d	$a3, $fp, 16
-	ld.d	$a4, $a0, 0
-	sub.d	$s2, $a2, $a1
+	bgez	$a0, .LBB111_4
+.LBB111_6:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
+	ld.d	$a1, $fp, 8
+	st.d	$s2, $a1, 0
+	ld.d	$a2, $s0, 104
+	ld.d	$a3, $s0, 112
+	beq	$a3, $a2, .LBB111_14
+# %bb.7:                                # %.lr.ph.i.i.i.i.i
+	ld.d	$a4, $fp, 16
+	ld.d	$a5, $a1, 0
+	sub.d	$s1, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
-.LBB111_9:                              # =>This Inner Loop Header: Depth=1
-	beq	$a4, $a3, .LBB111_3
-# %bb.10:                               #   in Loop: Header=BB111_9 Depth=1
-	ld.bu	$a5, $a1, 0
-	ld.bu	$a6, $a4, 0
-	bne	$a5, $a6, .LBB111_3
-# %bb.11:                               #   in Loop: Header=BB111_9 Depth=1
-	addi.d	$a1, $a1, 1
-	addi.d	$a4, $a4, 1
-	st.d	$a4, $a0, 0
-	bne	$a1, $a2, .LBB111_9
-# %bb.12:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_EESU_E5parseISF_EENS0_13parser_resultISY_T_E4typeERKS11_.exit
-	bgez	$s2, .LBB111_1
-	b	.LBB111_3
-.LBB111_13:
-	move	$s2, $zero
+.LBB111_8:                              # =>This Inner Loop Header: Depth=1
+	beq	$a5, $a4, .LBB111_13
+# %bb.9:                                #   in Loop: Header=BB111_8 Depth=1
+	ld.bu	$a6, $a2, 0
+	ld.bu	$a7, $a5, 0
+	bne	$a6, $a7, .LBB111_13
+# %bb.10:                               #   in Loop: Header=BB111_8 Depth=1
+	addi.d	$a2, $a2, 1
+	addi.d	$a5, $a5, 1
+	st.d	$a5, $a1, 0
+	bne	$a2, $a3, .LBB111_8
+# %bb.11:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_EESU_E5parseISF_EENS0_13parser_resultISY_T_E4typeERKS11_.exit
+	bgez	$s1, .LBB111_1
+	b	.LBB111_13
+.LBB111_12:
+	addi.w	$a0, $zero, -1
+.LBB111_13:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_EESU_E5parseISF_EENS0_13parser_resultISY_T_E4typeERKS11_.exit.thread
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
+	ret
+.LBB111_14:
+	move	$s1, $zero
 	b	.LBB111_1
 .Lfunc_end111:
 	.size	_ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS1_INS1_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS1_ISL_SH_EEEENS1_INS0_6strlitIS6_EESH_EEEESU_EESU_EESH_E5parseISF_EENS0_13parser_resultISZ_T_E4typeERKS12_, .Lfunc_end111-_ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS1_INS1_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS1_ISL_SH_EEEENS1_INS0_6strlitIS6_EESH_EEEESU_EESU_EESH_E5parseISF_EENS0_13parser_resultISZ_T_E4typeERKS12_
@@ -17574,20 +17517,18 @@ _ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS2_INS2_INS1_INS1_INS0_4
 _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_E5parseISF_EENS0_13parser_resultISX_T_E4typeERKS10_: # @_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_E5parseISF_EENS0_13parser_resultISX_T_E4typeERKS10_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s1, $a1, 0
@@ -17595,18 +17536,17 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEE5parseISF_EENS0_13parser_resultISQ_T_E4typeERKST_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB112_16
+	bgez	$a0, .LBB112_16
 # %bb.1:
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	addi.d	$a1, $s0, 48
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 8
-	bltz	$s3, .LBB112_5
+	ld.d	$s2, $sp, 0
+	bltz	$s2, .LBB112_5
 # %bb.2:
 	ld.d	$a0, $s0, 56
 	ld.d	$a0, $a0, 0
@@ -17616,11 +17556,10 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB112_5
+	bltz	$a0, .LBB112_5
 # %bb.4:
-	add.d	$a0, $a0, $s3
-	blt	$s2, $a0, .LBB112_16
+	add.d	$a0, $a0, $s2
+	bgez	$a0, .LBB112_16
 	b	.LBB112_6
 .LBB112_5:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEE5parseISF_EENS0_13parser_resultISS_T_E4typeERKSV_.exit.thread.i
 	ld.d	$a0, $fp, 8
@@ -17629,19 +17568,19 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_)
 	jirl	$ra, $ra, 0
-	blt	$s2, $a0, .LBB112_16
+	bgez	$a0, .LBB112_16
 .LBB112_6:
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a1, $sp, 24
+	st.d	$s1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a1, $sp, 16
 	.p2align	4, , 16
 .LBB112_7:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -17651,45 +17590,44 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7
                                         #   in Loop: Header=BB112_7 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB112_7
+	bgez	$a0, .LBB112_7
 .LBB112_9:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 88
 	ld.d	$a3, $s0, 96
 	beq	$a3, $a2, .LBB112_15
 # %bb.10:                               # %.lr.ph.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB112_11:                             # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB112_14
+	beq	$a6, $a4, .LBB112_16
 # %bb.12:                               #   in Loop: Header=BB112_11 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB112_14
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB112_16
 # %bb.13:                               #   in Loop: Header=BB112_11 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
 	bne	$a2, $a3, .LBB112_11
-	b	.LBB112_16
-.LBB112_14:
-	move	$a0, $s2
+# %bb.14:
+	move	$a0, $a5
 	b	.LBB112_16
 .LBB112_15:
 	move	$a0, $zero
 .LBB112_16:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end112:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_E5parseISF_EENS0_13parser_resultISX_T_E4typeERKS10_, .Lfunc_end112-_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EENS2_INS2_INS0_5chlitIcEENS0_8optionalISH_EEEESL_EEEENS2_ISL_SH_EEEENS2_INS0_6strlitIS6_EESH_EEEESU_E5parseISF_EENS0_13parser_resultISX_T_E4typeERKS10_
@@ -17702,32 +17640,29 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7
 _ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_: # @_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
-	ld.d	$s2, $a1, 0
+	ld.d	$s1, $a1, 0
 	vld	$vr0, $a1, 8
-	move	$s1, $a0
-	st.d	$s2, $sp, 8
-	vst	$vr0, $sp, 16
-	addi.w	$s0, $zero, -1
+	move	$s0, $a0
+	st.d	$s1, $sp, 0
+	vst	$vr0, $sp, 8
 	.p2align	4, , 16
 .LBB113_1:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
-	move	$a0, $s2
+	ld.d	$s2, $a0, 0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
@@ -17736,35 +17671,36 @@ _ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scan
                                         #   in Loop: Header=BB113_1 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB113_1
+	bgez	$a0, .LBB113_1
 .LBB113_3:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
-	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 8
-	sub.d	$s2, $a2, $a1
-	beq	$a2, $a1, .LBB113_9
+	ld.d	$a1, $fp, 8
+	st.d	$s2, $a1, 0
+	ld.d	$a2, $s0, 0
+	ld.d	$a3, $s0, 8
+	sub.d	$s1, $a3, $a2
+	beq	$a3, $a2, .LBB113_9
 # %bb.4:                                # %.lr.ph.i.i.i.i
-	ld.d	$a3, $fp, 16
-	ld.d	$a4, $a0, 0
+	ld.d	$a4, $fp, 16
+	ld.d	$a5, $a1, 0
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB113_5:                              # =>This Inner Loop Header: Depth=1
-	beq	$a4, $a3, .LBB113_11
+	beq	$a5, $a4, .LBB113_12
 # %bb.6:                                #   in Loop: Header=BB113_5 Depth=1
-	ld.bu	$a5, $a1, 0
-	ld.bu	$a6, $a4, 0
-	bne	$a5, $a6, .LBB113_11
+	ld.bu	$a6, $a2, 0
+	ld.bu	$a7, $a5, 0
+	bne	$a6, $a7, .LBB113_12
 # %bb.7:                                #   in Loop: Header=BB113_5 Depth=1
-	addi.d	$a1, $a1, 1
-	addi.d	$a4, $a4, 1
-	st.d	$a4, $a0, 0
-	bne	$a1, $a2, .LBB113_5
+	addi.d	$a2, $a2, 1
+	addi.d	$a5, $a5, 1
+	st.d	$a5, $a1, 0
+	bne	$a2, $a3, .LBB113_5
 # %bb.8:                                # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	bltz	$s2, .LBB113_11
+	bltz	$s1, .LBB113_12
 .LBB113_9:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit.thread14
-	ld.d	$a0, $s1, 16
+	ld.d	$a0, $s0, 16
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB113_11
 # %bb.10:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit
@@ -17774,19 +17710,20 @@ _ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scan
 	jirl	$ra, $a2, 0
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
-	add.d	$a0, $a0, $s2
+	add.d	$a0, $a0, $s1
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
-	or	$s0, $a0, $a1
-.LBB113_11:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit.thread
-	move	$a0, $s0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	or	$a0, $a0, $a1
+	b	.LBB113_12
+.LBB113_11:
+	addi.w	$a0, $zero, -1
+.LBB113_12:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit.thread
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end113:
 	.size	_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_, .Lfunc_end113-_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_
@@ -17806,13 +17743,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
@@ -17836,11 +17771,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$s3, $zero, -1
-	slt	$a1, $s3, $a0
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s3, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s1, $a0, $a1
 	bltz	$s1, .LBB114_7
 # %bb.4:
@@ -17855,16 +17790,16 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	bltz	$a0, .LBB114_7
 # %bb.6:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit
 	add.d	$a0, $a0, $s1
-	blt	$s3, $a0, .LBB114_14
+	bgez	$a0, .LBB114_14
 .LBB114_7:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s2, $a0, 0
 	addi.d	$a1, $s0, 24
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 0
+	ld.d	$s1, $sp, 8
 	bltz	$s1, .LBB114_13
 # %bb.8:
 	ld.d	$a0, $s0, 32
@@ -17877,8 +17812,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB114_12
+	bgez	$a0, .LBB114_12
 # %bb.10:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB114_11:                             # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -17887,11 +17821,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 .LBB114_12:                             # %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_8optionalINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEEE5parseISH_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.i
 	add.d	$s1, $a0, $s1
 	addi.d	$a1, $s0, 40
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
 	add.d	$a0, $s1, $a0
@@ -17902,7 +17836,6 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 .LBB114_13:
 	addi.w	$a0, $zero, -1
 .LBB114_14:                             # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_8optionalINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEEEES3_E5parseISH_EENS0_13parser_resultISM_T_E4typeERKSP_.exit
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -18069,7 +18002,7 @@ _ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s5, $a1
 	or	$a0, $a0, $a1
-	blt	$s5, $a0, .LBB118_5
+	bgez	$a0, .LBB118_5
 	b	.LBB118_9
 .LBB118_8:
 	move	$s4, $zero
@@ -18131,8 +18064,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_4ru
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINS0_6strlitIS5_EESG_EEEESK_EENSH_ISG_SG_EEE5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB120_2
+	bltz	$a0, .LBB120_2
 # %bb.1:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINS0_6strlitIS5_EESG_EEEESK_EENSH_ISG_SG_EEEENSH_ISG_NS1_ISG_NSH_INSH_INS0_5chlitIcEESG_EESQ_EEEEEEE5parseISE_EENS0_13parser_resultISV_T_E4typeERKSY_.exit
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -18225,8 +18157,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB122_11
+	bgez	$a0, .LBB122_5
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB122_3:                              # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINS0_6strlitIS5_EESG_EEE5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.i
@@ -18235,8 +18166,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB122_11
+	bgez	$a0, .LBB122_5
 # %bb.4:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINS0_6strlitIS5_EESG_EEEESK_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
@@ -18244,18 +18174,24 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	bge	$s2, $a0, .LBB122_6
-# %bb.5:
-	move	$a0, $a1
-	b	.LBB122_11
+	bltz	$a0, .LBB122_6
+.LBB122_5:                              # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+	ret
 .LBB122_6:
-	ld.d	$a1, $s0, 56
+	ld.d	$a0, $s0, 56
 	ld.d	$a2, $fp, 8
-	ld.d	$a1, $a1, 0
+	ld.d	$a1, $a0, 0
 	st.d	$s1, $a2, 0
-	beqz	$a1, .LBB122_10
+	addi.w	$a0, $zero, -1
+	beqz	$a1, .LBB122_5
 # %bb.7:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i
+	move	$s2, $a0
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 16
 	move	$a0, $a1
@@ -18267,7 +18203,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	ld.d	$a0, $s0, 64
 	ld.d	$a1, $a0, 0
 	move	$a0, $s2
-	beqz	$a1, .LBB122_11
+	beqz	$a1, .LBB122_5
 # %bb.9:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit8.i
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 16
@@ -18280,17 +18216,10 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	b	.LBB122_11
+	b	.LBB122_5
 .LBB122_10:
 	move	$a0, $s2
-.LBB122_11:                             # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
-	ret
+	b	.LBB122_5
 .Lfunc_end122:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINS0_6strlitIS5_EESG_EEEESK_EENSH_ISG_SG_EEE5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_, .Lfunc_end122-_ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINS0_6strlitIS5_EESG_EEEESK_EENSH_ISG_SG_EEE5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_
 	.cfi_endproc
@@ -18340,8 +18269,7 @@ _ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB123_9
+	bgez	$a0, .LBB123_9
 # %bb.4:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i
 	ld.d	$a1, $s0, 8
 .LBB123_5:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i
@@ -18422,18 +18350,16 @@ _ZN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0
 _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_5chlitIcEES5_EES5_EES5_EES5_EES5_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSM_: # @_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_5chlitIcEES5_EES5_EES5_EES5_EES5_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSM_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s1, $a1, 0
@@ -18442,34 +18368,32 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSL_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB125_3
+	bgez	$a0, .LBB125_3
 # %bb.1:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_5chlitIcEES3_EES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS7_T_E4typeERKSM_.exit.i
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	addi.d	$a1, $s0, 12
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	blt	$s2, $a0, .LBB125_3
+	ld.d	$a0, $sp, 0
+	bgez	$a0, .LBB125_3
 # %bb.2:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	addi.d	$a1, $s0, 13
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
+	ld.d	$a0, $sp, 0
 .LBB125_3:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_5chlitIcEES3_EES3_EES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSN_.exit
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end125:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_5chlitIcEES5_EES5_EES5_EES5_EES5_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSM_, .Lfunc_end125-_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_5chlitIcEES5_EES5_EES5_EES5_EES5_EENS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKSM_
@@ -18514,66 +18438,62 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 _ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSL_: # @_ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSL_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s1, $a1, 0
 	move	$s0, $a0
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB127_4
+	ld.d	$a0, $sp, 0
+	bgez	$a0, .LBB127_4
 # %bb.1:                                # %_ZNK5boost6spirit11alternativeINS0_5chlitIcEES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.i
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	addi.d	$a1, $s0, 1
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	blt	$s2, $a0, .LBB127_4
+	ld.d	$a0, $sp, 0
+	bgez	$a0, .LBB127_4
 # %bb.2:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_5chlitIcEES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSK_.exit
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	addi.d	$a1, $s0, 2
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	blt	$s2, $a0, .LBB127_4
+	ld.d	$a0, $sp, 0
+	bgez	$a0, .LBB127_4
 # %bb.3:                                # %_ZN5boost6spirit5matchIcED2Ev.exit
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
 	addi.d	$a1, $s0, 3
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
+	ld.d	$a0, $sp, 0
 .LBB127_4:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_5chlitIcEES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSK_.exit.thread
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end127:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSL_, .Lfunc_end127-_ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEES3_EES3_EES3_E5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSL_
@@ -18698,8 +18618,8 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS2_INS0_5chlitIcEENS0_4ruleIN
 	add.d	$a0, $a0, $s3
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s2, $a1
-	or	$s3, $a0, $a1
-	bltz	$s3, .LBB131_7
+	or	$s2, $a0, $a1
+	bltz	$s2, .LBB131_7
 # %bb.4:
 	ld.d	$a0, $s0, 24
 	ld.d	$a0, $a0, 0
@@ -18711,8 +18631,8 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS2_INS0_5chlitIcEENS0_4ruleIN
 	jirl	$ra, $a2, 0
 	bltz	$a0, .LBB131_7
 # %bb.6:                                # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEEES3_EESI_E5parseISG_EENS0_13parser_resultISL_T_E4typeERKSO_.exit
-	add.d	$a0, $a0, $s3
-	blt	$s2, $a0, .LBB131_10
+	add.d	$a0, $a0, $s2
+	bgez	$a0, .LBB131_10
 .LBB131_7:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEEES3_EESI_E5parseISG_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
@@ -18790,8 +18710,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB133_4
+	bltz	$a0, .LBB133_4
 # %bb.3:
 	add.d	$a0, $a0, $s0
 	b	.LBB133_5
@@ -18886,8 +18805,7 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7s
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB135_6
+	bgez	$a0, .LBB135_6
 .LBB135_3:                              # %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread.i
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
@@ -18910,8 +18828,7 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7s
 	bltz	$a0, .LBB135_7
 .LBB135_6:
 	add.d	$a0, $a0, $s2
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB135_10
+	bgez	$a0, .LBB135_10
 .LBB135_7:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_E5parseISH_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
@@ -18985,8 +18902,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_11alternativeINS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EESJ_E5parseISH_EENS0_13parser_resultISM_T_E4typeERKSP_)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB137_2
+	bgez	$a0, .LBB137_2
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
@@ -19074,8 +18990,7 @@ _ZNK5boost6spirit8sequenceINS0_11alternativeINS1_INS0_5chlitIcEENS0_4ruleINS0_7s
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB139_4
+	bltz	$a0, .LBB139_4
 # %bb.3:
 	add.d	$s1, $a0, $s2
 	addi.w	$a0, $zero, -1
@@ -19164,13 +19079,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s2, $a1, 0
@@ -19179,8 +19092,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS4_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $zero, -1
-	blt	$s3, $a0, .LBB141_2
+	bgez	$a0, .LBB141_2
 # %bb.1:                                # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_E5parseISH_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.i.i
 	ld.d	$a0, $fp, 8
 	st.d	$s2, $a0, 0
@@ -19202,13 +19114,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	bltz	$a0, .LBB141_5
 # %bb.4:                                # %_ZNK5boost6spirit8sequenceINS0_11alternativeINS1_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EESJ_E5parseISH_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.i
 	add.d	$a0, $a0, $s1
-	blt	$s3, $a0, .LBB141_6
+	bgez	$a0, .LBB141_6
 .LBB141_5:                              # %_ZNK5boost6spirit8sequenceINS0_11alternativeINS1_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EESJ_E5parseISH_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.thread.i
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
 	st.d	$s2, $a1, 0
 .LBB141_6:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS1_INS2_INS0_6strlitIPKcEENS0_4ruleINS0_7scannerIS5_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EESJ_EENS0_14epsilon_parserEE5parseISH_EENS0_13parser_resultISO_T_E4typeERKSR_.exit
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -19282,13 +19193,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s2, $a1, 0
@@ -19297,8 +19206,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EENS2_INS0_6strlitIS8_EESJ_EEE5parseISH_EENS0_13parser_resultISP_T_E4typeERKSS_)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $zero, -1
-	blt	$s3, $a0, .LBB144_2
+	bgez	$a0, .LBB144_2
 # %bb.1:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EENS2_INS0_6strlitIS8_EESJ_EEEESO_E5parseISH_EENS0_13parser_resultISQ_T_E4typeERKST_.exit.i.i
 	ld.d	$a0, $fp, 8
 	st.d	$s2, $a0, 0
@@ -19320,13 +19228,12 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS3
 	bltz	$a0, .LBB144_5
 # %bb.4:                                # %_ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EENS1_INS0_6strlitIS8_EESJ_EEEESO_EESJ_E5parseISH_EENS0_13parser_resultISR_T_E4typeERKSU_.exit.i
 	add.d	$a0, $a0, $s1
-	blt	$s3, $a0, .LBB144_6
+	bgez	$a0, .LBB144_6
 .LBB144_5:                              # %_ZNK5boost6spirit8sequenceINS0_11alternativeINS2_INS2_INS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EENS1_INS0_6strlitIS8_EESJ_EEEESO_EESJ_E5parseISH_EENS0_13parser_resultISR_T_E4typeERKSU_.exit.thread.i
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
 	st.d	$s2, $a1, 0
 .LBB144_6:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS1_INS1_INS1_INS2_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_EENS2_INS0_6strlitIS8_EESJ_EEEESO_EESJ_EENS0_14epsilon_parserEE5parseISH_EENS0_13parser_resultIST_T_E4typeERKSW_.exit
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -19415,8 +19322,7 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7s
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB146_6
+	bgez	$a0, .LBB146_6
 .LBB146_3:                              # %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEE5parseISG_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread.i
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
@@ -19439,8 +19345,7 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7s
 	bltz	$a0, .LBB146_7
 .LBB146_6:
 	add.d	$a0, $a0, $s2
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB146_8
+	bgez	$a0, .LBB146_8
 .LBB146_7:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESK_E5parseISH_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s1, $a0, 0
@@ -19486,24 +19391,22 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s1, $a1, 0
 	move	$s0, $a0
 	addi.d	$a1, $a0, 8
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 0
-	bltz	$s3, .LBB148_6
+	ld.d	$s2, $sp, 8
+	bltz	$s2, .LBB148_6
 # %bb.1:
 	ld.d	$a0, $s0, 16
 	ld.d	$a0, $a0, 0
@@ -19513,13 +19416,13 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$s2, $zero, -1
-	slt	$a1, $s2, $a0
-	add.d	$a0, $a0, $s3
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s2, $a1
-	or	$s3, $a0, $a1
-	bltz	$s3, .LBB148_6
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
+	add.d	$a0, $a0, $s2
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$s2, $a0, $a1
+	bltz	$s2, .LBB148_6
 # %bb.3:
 	ld.d	$a0, $s0, 24
 	ld.d	$a0, $a0, 0
@@ -19529,16 +19432,15 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	bge	$s2, $a0, .LBB148_6
+	bltz	$a0, .LBB148_6
 # %bb.5:
-	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $s2
 	b	.LBB148_7
 .LBB148_6:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEEESI_E5parseISG_EENS0_13parser_resultISK_T_E4typeERKSN_.exit.thread.i
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
 	st.d	$s1, $a1, 0
 .LBB148_7:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EEEESJ_EENS0_14epsilon_parserEE5parseISH_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -19632,8 +19534,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB151_4
+	bltz	$a0, .LBB151_4
 # %bb.3:
 	add.d	$a0, $a0, $s0
 	b	.LBB151_5
@@ -19719,8 +19620,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_5chlitIcEENS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EEEES3_EESI_EESI_E5parseISG_EENS0_13parser_resultISM_T_E4typeERKSP_)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB154_2
+	bgez	$a0, .LBB154_2
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
@@ -19899,13 +19799,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 8
@@ -19929,11 +19827,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$s3, $zero, -1
-	slt	$a1, $s3, $a0
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s3, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s1, $a0, $a1
 	bltz	$s1, .LBB158_7
 # %bb.4:
@@ -19945,7 +19843,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	bge	$s3, $a0, .LBB158_7
+	bltz	$a0, .LBB158_7
 # %bb.6:
 	add.d	$a0, $a0, $s1
 	b	.LBB158_10
@@ -19959,7 +19857,6 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -19970,7 +19867,6 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS0
 .LBB158_9:
 	addi.w	$a0, $zero, -1
 .LBB158_10:                             # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EESH_EESH_E5parseISF_EENS0_13parser_resultISK_T_E4typeERKSN_.exit
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -20033,91 +19929,88 @@ _ZN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3
 _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_5chlitIcEENS0_6strlitIPKcEEEES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EENS0_7scannerIS8_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKST_: # @_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_5chlitIcEENS0_6strlitIPKcEEEES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EENS0_7scannerIS8_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKST_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	move	$s0, $a0
 	addi.d	$a0, $a0, 8
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISG_T_E4typeERKST_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB161_11
-# %bb.1:
+	bltz	$a0, .LBB161_2
+.LBB161_1:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISH_T_E4typeERKSU_.exit
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
+	ret
+.LBB161_2:
 	ld.d	$a0, $fp, 8
 	ld.d	$s1, $fp, 0
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 8
-	st.d	$a0, $sp, 16
-	st.d	$a1, $sp, 24
+	st.d	$s1, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a1, $sp, 16
 	.p2align	4, , 16
-.LBB161_2:                              # =>This Inner Loop Header: Depth=1
+.LBB161_3:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB161_4
-# %bb.3:                                # %_ZNK5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS2_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSM_.exit.i.i.i.i.i
-                                        #   in Loop: Header=BB161_2 Depth=1
+	beqz	$a0, .LBB161_5
+# %bb.4:                                # %_ZNK5boost6spirit7grammarI12skip_grammarNS0_14parser_contextINS0_5nil_tEEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS2_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS6_T_E4typeERKSM_.exit.i.i.i.i.i
+                                        #   in Loop: Header=BB161_3 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB161_2
-.LBB161_4:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
+	bgez	$a0, .LBB161_3
+.LBB161_5:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 160
 	ld.d	$a3, $s0, 168
-	beq	$a3, $a2, .LBB161_10
-# %bb.5:                                # %.lr.ph.i.i.i.i.i
+	beq	$a3, $a2, .LBB161_11
+# %bb.6:                                # %.lr.ph.i.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
-.LBB161_6:                              # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB161_9
-# %bb.7:                                #   in Loop: Header=BB161_6 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB161_9
-# %bb.8:                                #   in Loop: Header=BB161_6 Depth=1
+.LBB161_7:                              # =>This Inner Loop Header: Depth=1
+	beq	$a6, $a4, .LBB161_1
+# %bb.8:                                #   in Loop: Header=BB161_7 Depth=1
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB161_1
+# %bb.9:                                #   in Loop: Header=BB161_7 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
-	bne	$a2, $a3, .LBB161_6
-	b	.LBB161_11
-.LBB161_9:
-	move	$a0, $s2
-	b	.LBB161_11
-.LBB161_10:
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
+	bne	$a2, $a3, .LBB161_7
+# %bb.10:
+	move	$a0, $a5
+	b	.LBB161_1
+.LBB161_11:
 	move	$a0, $zero
-.LBB161_11:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISH_T_E4typeERKSU_.exit
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
-	ret
+	b	.LBB161_1
 .Lfunc_end161:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_5chlitIcEENS0_6strlitIPKcEEEES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EENS0_7scannerIS8_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKST_, .Lfunc_end161-_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_5chlitIcEENS0_6strlitIPKcEEEES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EES9_EENS0_7scannerIS8_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKST_
 	.cfi_endproc
@@ -20175,35 +20068,32 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chli
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISE_T_E4typeERKSR_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB163_21
+	bgez	$a0, .LBB163_21
 # %bb.1:
 	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a0, $sp, 16
+	st.d	$a1, $sp, 24
 	.p2align	4, , 16
 .LBB163_2:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s4, $a0, 0
+	ld.d	$s3, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20213,15 +20103,15 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chli
                                         #   in Loop: Header=BB163_2 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB163_2
+	bgez	$a0, .LBB163_2
 .LBB163_4:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s4, $a1, 0
+	st.d	$s3, $a1, 0
 	ld.d	$a2, $s0, 120
 	ld.d	$a3, $s0, 128
-	beq	$a3, $a2, .LBB163_19
+	beq	$a3, $a2, .LBB163_20
 # %bb.5:                                # %.lr.ph.i.i.i.i.i
 	ld.d	$a4, $fp, 16
 	ld.d	$a5, $a1, 0
@@ -20239,20 +20129,20 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chli
 	st.d	$a5, $a1, 0
 	bne	$a2, $a3, .LBB163_6
 # %bb.9:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSS_.exit
-	blt	$s2, $a0, .LBB163_21
+	bgez	$a0, .LBB163_21
 # %bb.10:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSS_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSS_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB163_11:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISF_T_E4typeERKSS_.exit.thread
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a0, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a1, $sp, 16
+	st.d	$a0, $sp, 24
 	.p2align	4, , 16
 .LBB163_12:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20262,39 +20152,38 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_5chli
                                         #   in Loop: Header=BB163_12 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB163_12
+	bgez	$a0, .LBB163_12
 .LBB163_14:                             # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 136
 	ld.d	$a3, $s0, 144
-	beq	$a3, $a2, .LBB163_19
+	beq	$a3, $a2, .LBB163_20
 # %bb.15:                               # %.lr.ph.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB163_16:                             # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB163_20
+	beq	$a6, $a4, .LBB163_21
 # %bb.17:                               #   in Loop: Header=BB163_16 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB163_20
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB163_21
 # %bb.18:                               #   in Loop: Header=BB163_16 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
 	bne	$a2, $a3, .LBB163_16
-	b	.LBB163_21
-.LBB163_19:
-	move	$a0, $zero
+# %bb.19:
+	move	$a0, $a5
 	b	.LBB163_21
 .LBB163_20:
-	move	$a0, $s2
+	move	$a0, $zero
 .LBB163_21:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
@@ -20322,35 +20211,32 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKSP_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB164_21
+	bgez	$a0, .LBB164_21
 # %bb.1:
 	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a0, $sp, 16
+	st.d	$a1, $sp, 24
 	.p2align	4, , 16
 .LBB164_2:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s4, $a0, 0
+	ld.d	$s3, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20360,15 +20246,15 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6
                                         #   in Loop: Header=BB164_2 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB164_2
+	bgez	$a0, .LBB164_2
 .LBB164_4:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s4, $a1, 0
+	st.d	$s3, $a1, 0
 	ld.d	$a2, $s0, 88
 	ld.d	$a3, $s0, 96
-	beq	$a3, $a2, .LBB164_19
+	beq	$a3, $a2, .LBB164_20
 # %bb.5:                                # %.lr.ph.i.i.i.i.i
 	ld.d	$a4, $fp, 16
 	ld.d	$a5, $a1, 0
@@ -20386,20 +20272,20 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6
 	st.d	$a5, $a1, 0
 	bne	$a2, $a3, .LBB164_6
 # %bb.9:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSQ_.exit
-	blt	$s2, $a0, .LBB164_21
+	bgez	$a0, .LBB164_21
 # %bb.10:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSQ_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSQ_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB164_11:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSQ_.exit.thread
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a0, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a1, $sp, 16
+	st.d	$a0, $sp, 24
 	.p2align	4, , 16
 .LBB164_12:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20409,39 +20295,38 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6
                                         #   in Loop: Header=BB164_12 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB164_12
+	bgez	$a0, .LBB164_12
 .LBB164_14:                             # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 104
 	ld.d	$a3, $s0, 112
-	beq	$a3, $a2, .LBB164_19
+	beq	$a3, $a2, .LBB164_20
 # %bb.15:                               # %.lr.ph.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB164_16:                             # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB164_20
+	beq	$a6, $a4, .LBB164_21
 # %bb.17:                               #   in Loop: Header=BB164_16 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB164_20
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB164_21
 # %bb.18:                               #   in Loop: Header=BB164_16 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
 	bne	$a2, $a3, .LBB164_16
-	b	.LBB164_21
-.LBB164_19:
-	move	$a0, $zero
+# %bb.19:
+	move	$a0, $a5
 	b	.LBB164_21
 .LBB164_20:
-	move	$a0, $s2
+	move	$a0, $zero
 .LBB164_21:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
@@ -20469,35 +20354,32 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKc
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISA_T_E4typeERKSN_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB165_21
+	bgez	$a0, .LBB165_21
 # %bb.1:
 	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a0, $sp, 16
+	st.d	$a1, $sp, 24
 	.p2align	4, , 16
 .LBB165_2:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s4, $a0, 0
+	ld.d	$s3, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20507,15 +20389,15 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKc
                                         #   in Loop: Header=BB165_2 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB165_2
+	bgez	$a0, .LBB165_2
 .LBB165_4:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s4, $a1, 0
+	st.d	$s3, $a1, 0
 	ld.d	$a2, $s0, 56
 	ld.d	$a3, $s0, 64
-	beq	$a3, $a2, .LBB165_19
+	beq	$a3, $a2, .LBB165_20
 # %bb.5:                                # %.lr.ph.i.i.i.i.i
 	ld.d	$a4, $fp, 16
 	ld.d	$a5, $a1, 0
@@ -20533,20 +20415,20 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKc
 	st.d	$a5, $a1, 0
 	bne	$a2, $a3, .LBB165_6
 # %bb.9:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISB_T_E4typeERKSO_.exit
-	blt	$s2, $a0, .LBB165_21
+	bgez	$a0, .LBB165_21
 # %bb.10:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISB_T_E4typeERKSO_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISB_T_E4typeERKSO_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB165_11:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES7_EES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISB_T_E4typeERKSO_.exit.thread
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a0, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a1, $sp, 16
+	st.d	$a0, $sp, 24
 	.p2align	4, , 16
 .LBB165_12:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20556,39 +20438,38 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_5chlitIcEENS0_6strlitIPKc
                                         #   in Loop: Header=BB165_12 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB165_12
+	bgez	$a0, .LBB165_12
 .LBB165_14:                             # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 72
 	ld.d	$a3, $s0, 80
-	beq	$a3, $a2, .LBB165_19
+	beq	$a3, $a2, .LBB165_20
 # %bb.15:                               # %.lr.ph.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB165_16:                             # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB165_20
+	beq	$a6, $a4, .LBB165_21
 # %bb.17:                               #   in Loop: Header=BB165_16 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB165_20
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB165_21
 # %bb.18:                               #   in Loop: Header=BB165_16 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
 	bne	$a2, $a3, .LBB165_16
-	b	.LBB165_21
-.LBB165_19:
-	move	$a0, $zero
+# %bb.19:
+	move	$a0, $a5
 	b	.LBB165_21
 .LBB165_20:
-	move	$a0, $s2
+	move	$a0, $zero
 .LBB165_21:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
@@ -20616,35 +20497,32 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSL_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	blt	$s2, $a0, .LBB166_21
+	bgez	$a0, .LBB166_21
 # %bb.1:
 	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a1, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a0, $sp, 16
+	st.d	$a1, $sp, 24
 	.p2align	4, , 16
 .LBB166_2:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s4, $a0, 0
+	ld.d	$s3, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20654,15 +20532,15 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES
                                         #   in Loop: Header=BB166_2 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB166_2
+	bgez	$a0, .LBB166_2
 .LBB166_4:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s4, $a1, 0
+	st.d	$s3, $a1, 0
 	ld.d	$a2, $s0, 24
 	ld.d	$a3, $s0, 32
-	beq	$a3, $a2, .LBB166_19
+	beq	$a3, $a2, .LBB166_20
 # %bb.5:                                # %.lr.ph.i.i.i.i.i
 	ld.d	$a4, $fp, 16
 	ld.d	$a5, $a1, 0
@@ -20680,20 +20558,20 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES
 	st.d	$a5, $a1, 0
 	bne	$a2, $a3, .LBB166_6
 # %bb.9:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSM_.exit
-	blt	$s2, $a0, .LBB166_21
+	bgez	$a0, .LBB166_21
 # %bb.10:                               # %_ZNK5boost6spirit11alternativeINS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSM_.exit._ZNK5boost6spirit11alternativeINS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSM_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB166_11:                             # %_ZNK5boost6spirit11alternativeINS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS9_T_E4typeERKSM_.exit.thread
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$s1, $fp, 0
 	ld.d	$a0, $fp, 16
-	st.d	$s1, $sp, 0
-	st.d	$a1, $sp, 8
-	st.d	$a0, $sp, 16
+	st.d	$s1, $sp, 8
+	st.d	$a1, $sp, 16
+	st.d	$a0, $sp, 24
 	.p2align	4, , 16
 .LBB166_12:                             # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s3, $a0, 0
+	ld.d	$s2, $a0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN5boost6spirit4impl14get_definitionI12skip_grammarNS0_14parser_contextINS0_5nil_tEEENS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyIS3_NS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEERNT_10definitionIT1_EEPKNS0_7grammarISK_T0_EE)
 	jirl	$ra, $ra, 0
@@ -20703,39 +20581,38 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_5chlitIcEENS0_6strlitIPKcEEEES7_EES
                                         #   in Loop: Header=BB166_12 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	jirl	$ra, $a2, 0
-	blt	$s2, $a0, .LBB166_12
+	bgez	$a0, .LBB166_12
 .LBB166_14:                             # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $fp, 8
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	ld.d	$a2, $s0, 40
 	ld.d	$a3, $s0, 48
-	beq	$a3, $a2, .LBB166_19
+	beq	$a3, $a2, .LBB166_20
 # %bb.15:                               # %.lr.ph.i.i.i.i
 	ld.d	$a4, $fp, 16
-	ld.d	$a5, $a1, 0
-	sub.d	$a0, $a3, $a2
+	ld.d	$a6, $a1, 0
+	sub.d	$a5, $a3, $a2
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB166_16:                             # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB166_20
+	beq	$a6, $a4, .LBB166_21
 # %bb.17:                               #   in Loop: Header=BB166_16 Depth=1
-	ld.bu	$a6, $a2, 0
-	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB166_20
+	ld.bu	$a7, $a2, 0
+	ld.bu	$t0, $a6, 0
+	bne	$a7, $t0, .LBB166_21
 # %bb.18:                               #   in Loop: Header=BB166_16 Depth=1
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a5, 1
-	st.d	$a5, $a1, 0
+	addi.d	$a6, $a6, 1
+	st.d	$a6, $a1, 0
 	bne	$a2, $a3, .LBB166_16
-	b	.LBB166_21
-.LBB166_19:
-	move	$a0, $zero
+# %bb.19:
+	move	$a0, $a5
 	b	.LBB166_21
 .LBB166_20:
-	move	$a0, $s2
+	move	$a0, $zero
 .LBB166_21:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
@@ -20866,8 +20743,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS0_4ruleINS0_7scanne
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB171_6
+	bgez	$a0, .LBB171_6
 # %bb.4:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB171_5:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -20975,8 +20851,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB174_5
+	bgez	$a0, .LBB174_5
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a2, $fp, 8
 .LBB174_3:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -20989,8 +20864,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB174_12
+	bltz	$a0, .LBB174_12
 .LBB174_5:
 	move	$s1, $a0
 .LBB174_6:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread17.i
@@ -21004,8 +20878,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS4_INS0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB174_10
+	bgez	$a0, .LBB174_10
 # %bb.8:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB174_9:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -21141,8 +21014,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	ld.d	$a2, $a1, 16
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB177_6
+	bltz	$a0, .LBB177_6
 # %bb.5:
 	add.d	$a0, $a0, $s3
 	b	.LBB177_7
@@ -21287,8 +21159,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16sc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB182_15
+	bgez	$a0, .LBB182_15
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB182_3:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -21301,8 +21172,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16sc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB182_15
+	bgez	$a0, .LBB182_15
 # %bb.5:                                # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB182_6:                              # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread.i.i
@@ -21315,8 +21185,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16sc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB182_15
+	bgez	$a0, .LBB182_15
 # %bb.8:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit._ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
 .LBB182_9:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit.thread.i
@@ -21329,8 +21198,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16sc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB182_15
+	bgez	$a0, .LBB182_15
 # %bb.11:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB182_12:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread
@@ -21380,69 +21248,64 @@ _ZN5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3
 _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESG_SH_E16do_parse_virtualERKSG_: # @_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESG_SH_E16do_parse_virtualERKSG_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s2, $a1, 0
-	move	$s1, $a0
+	ld.d	$s1, $a1, 0
+	move	$s0, $a0
 	addi.d	$a0, $a0, 8
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $zero, -1
-	bge	$s0, $a0, .LBB184_3
-.LBB184_1:
-	move	$s0, $a0
-.LBB184_2:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISQ_T_E4typeERKST_.exit
-	move	$a0, $s0
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	bltz	$a0, .LBB184_2
+.LBB184_1:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISQ_T_E4typeERKST_.exit
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
-.LBB184_3:
-	ld.d	$a0, $s1, 80
+.LBB184_2:
+	ld.d	$a0, $s0, 80
 	ld.d	$a1, $fp, 8
 	ld.d	$a0, $a0, 0
-	st.d	$s2, $a1, 0
-	beqz	$a0, .LBB184_6
-# %bb.4:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.i
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB184_5
+# %bb.3:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.i
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB184_1
-# %bb.5:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.thread_crit_edge.i
+	bgez	$a0, .LBB184_1
+# %bb.4:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
-.LBB184_6:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.thread.i
-	ld.d	$a0, $s1, 88
+.LBB184_5:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.thread.i
+	ld.d	$a0, $s0, 88
 	ld.d	$a0, $a0, 0
-	st.d	$s2, $a1, 0
-	beqz	$a0, .LBB184_2
-# %bb.7:
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB184_7
+# %bb.6:
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	jr	$a2
+.LBB184_7:
+	addi.w	$a0, $zero, -1
+	b	.LBB184_1
 .Lfunc_end184:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESG_SH_E16do_parse_virtualERKSG_, .Lfunc_end184-_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESI_EESG_SH_E16do_parse_virtualERKSG_
 	.cfi_endproc
@@ -21492,94 +21355,89 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 _ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_: # @_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s2, $a1, 0
-	move	$s1, $a0
+	ld.d	$s1, $a1, 0
+	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $zero, -1
-	bge	$s0, $a0, .LBB186_3
-.LBB186_1:
-	move	$s0, $a0
-.LBB186_2:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit
-	move	$a0, $s0
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	bltz	$a0, .LBB186_2
+.LBB186_1:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
-.LBB186_3:
-	ld.d	$a0, $s1, 40
+.LBB186_2:
+	ld.d	$a0, $s0, 40
 	ld.d	$a1, $fp, 8
 	ld.d	$a0, $a0, 0
-	st.d	$s2, $a1, 0
-	beqz	$a0, .LBB186_6
-# %bb.4:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.i.i
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB186_5
+# %bb.3:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.i.i
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB186_1
-# %bb.5:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread_crit_edge.i.i
+	bgez	$a0, .LBB186_1
+# %bb.4:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
-.LBB186_6:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread.i.i
-	ld.d	$a0, $s1, 48
+.LBB186_5:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread.i.i
+	ld.d	$a0, $s0, 48
 	ld.d	$a0, $a0, 0
-	st.d	$s2, $a1, 0
-	beqz	$a0, .LBB186_9
-# %bb.7:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.i
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB186_8
+# %bb.6:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.i
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB186_1
-# %bb.8:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.thread_crit_edge.i
+	bgez	$a0, .LBB186_1
+# %bb.7:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
-.LBB186_9:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.thread.i
-	ld.d	$a0, $s1, 56
+.LBB186_8:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.thread.i
+	ld.d	$a0, $s0, 56
 	ld.d	$a0, $a0, 0
-	st.d	$s2, $a1, 0
-	beqz	$a0, .LBB186_12
-# %bb.10:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB186_11
+# %bb.9:                                # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	blt	$s0, $a0, .LBB186_1
-# %bb.11:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit.thread_crit_edge
+	bgez	$a0, .LBB186_1
+# %bb.10:                               # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit._ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
-.LBB186_12:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit.thread
-	ld.d	$a0, $s1, 64
+.LBB186_11:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit.thread
+	ld.d	$a0, $s0, 64
 	ld.d	$a0, $a0, 0
-	st.d	$s2, $a1, 0
-	beqz	$a0, .LBB186_2
-# %bb.13:
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB186_13
+# %bb.12:
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	jr	$a2
+.LBB186_13:
+	addi.w	$a0, $zero, -1
+	b	.LBB186_1
 .Lfunc_end186:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_, .Lfunc_end186-_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_
 	.cfi_endproc
@@ -21703,7 +21561,6 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -21711,7 +21568,6 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
@@ -21748,11 +21604,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$s5, $zero, -1
-	slt	$a1, $s5, $a0
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s2
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s5, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s2, $a0, $a1
 	bltz	$s2, .LBB190_9
 # %bb.6:
@@ -21764,7 +21620,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	bge	$s5, $a0, .LBB190_9
+	bltz	$a0, .LBB190_9
 # %bb.8:
 	add.d	$a0, $a0, $s2
 	b	.LBB190_10
@@ -21774,8 +21630,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	st.d	$s4, $a1, 0
 .LBB190_10:                             # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalINS1_INS1_ISG_SG_EESG_EEEEE5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit
 	add.d	$s1, $a0, $s1
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s1, .LBB190_18
+	bgez	$s1, .LBB190_18
 # %bb.11:                               # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalINS1_INS1_ISG_SG_EESG_EEEEE5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit._ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalINS1_INS1_ISG_SG_EESG_EEEEE5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread_crit_edge
 	ld.d	$a1, $fp, 8
 .LBB190_12:                             # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalINS1_INS1_ISG_SG_EESG_EEEEE5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit.thread
@@ -21824,7 +21679,6 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	or	$s1, $a0, $a1
 .LBB190_18:                             # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_E5parseISE_EENS0_13parser_resultISI_T_E4typeERKSL_.exit
 	move	$a0, $s1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -21878,8 +21732,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_4ruleINS0_7scanner
 	ld.d	$a2, $a2, 16
 	move	$s1, $a1
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB192_6
+	bgez	$a0, .LBB192_6
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i
 	move	$a1, $s1
 	ld.d	$a2, $s1, 8
@@ -22101,8 +21954,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS0_4rul
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB198_5
+	bgez	$a0, .LBB198_5
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB198_3:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -22129,8 +21981,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_11alternativeINS0_4rul
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB198_9
+	bgez	$a0, .LBB198_9
 # %bb.7:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i8.i
 	ld.d	$a1, $fp, 8
 .LBB198_8:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i10.i
@@ -22454,8 +22305,7 @@ _ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanne
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB207_6
+	bgez	$a0, .LBB207_6
 # %bb.4:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB207_5:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i.i
@@ -22567,9 +22417,8 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_8optionalINS0_4ruleINS
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $a0
-	bge	$a1, $a0, .LBB209_4
+	bltz	$a0, .LBB209_4
 # %bb.2:
 	ld.d	$a0, $s0, 16
 	ld.d	$a0, $a0, 0
@@ -22729,9 +22578,8 @@ _ZNK5boost6spirit8sequenceINS0_11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $a0
-	bge	$a1, $a0, .LBB214_4
+	bltz	$a0, .LBB214_4
 .LBB214_2:                              # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8sequenceINSH_INS0_5chlitIcEESG_EESJ_EEE5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.thread21
 	ld.d	$a0, $s0, 32
 	ld.d	$a0, $a0, 0
@@ -22859,8 +22707,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB216_4
+	bltz	$a0, .LBB216_4
 # %bb.3:
 	add.d	$a0, $a0, $s0
 	b	.LBB216_5
@@ -22964,9 +22811,8 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $a0
-	bge	$a1, $a0, .LBB218_5
+	bltz	$a0, .LBB218_5
 # %bb.4:                                # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.i
 	ld.d	$a0, $s0, 16
 	ld.d	$a0, $a0, 0
@@ -22989,8 +22835,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 # %bb.8:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEEESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit
 	add.d	$a1, $s2, $s1
 	add.d	$a0, $a1, $a0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB218_19
+	bgez	$a0, .LBB218_19
 .LBB218_9:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEEESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s3, $a0, 0
@@ -23012,8 +22857,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB218_17
+	bgez	$a0, .LBB218_17
 # %bb.12:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB218_13:                             # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i.i
@@ -23026,8 +22870,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB218_17
+	bgez	$a0, .LBB218_17
 # %bb.15:                               # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB218_16:                             # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread.i.i.i
@@ -23129,8 +22972,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_5chlitIcEENS0_8optiona
 	move	$a0, $a1
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB220_11
+	bltz	$a0, .LBB220_11
 # %bb.5:
 	add.d	$a0, $a0, $s2
 	b	.LBB220_13
@@ -23144,8 +22986,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_5chlitIcEENS0_8optiona
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB220_13
+	bgez	$a0, .LBB220_13
 # %bb.8:                                # %_ZNK5boost6spirit13sequential_orINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit13sequential_orINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i.i
 	ld.d	$a2, $fp, 8
 .LBB220_9:                              # %_ZNK5boost6spirit8optionalINS0_13sequential_orINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EEE5parseISF_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread.i
@@ -23257,8 +23098,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS8_T_E4typeERKSL_)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB223_4
+	bgez	$a0, .LBB223_4
 # %bb.3:
 	ld.d	$a1, $fp, 8
 	move	$a0, $zero
@@ -23341,13 +23181,13 @@ _ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $sp, 0
+	addi.w	$fp, $zero, -1
 	bltz	$s3, .LBB225_11
 # %bb.1:
 	ld.d	$s2, $s0, 0
 	vld	$vr0, $s0, 8
 	st.d	$s2, $sp, 0
 	vst	$vr0, $sp, 8
-	addi.w	$fp, $zero, -1
 	.p2align	4, , 16
 .LBB225_2:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 8
@@ -23363,7 +23203,7 @@ _ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS
 	ld.d	$a2, $a1, 16
 	addi.d	$a1, $sp, 0
 	jirl	$ra, $a2, 0
-	blt	$fp, $a0, .LBB225_2
+	bgez	$a0, .LBB225_2
 .LBB225_4:                              # %_ZNK5boost6spirit28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEE4skipINS0_7scannerIPKcNS0_16scanner_policiesIS4_NS0_12match_policyENS0_13action_policyEEEEEEEvRKT_.exit.i.i
 	ld.d	$a1, $s0, 8
 	st.d	$s4, $a1, 0
@@ -23376,24 +23216,21 @@ _ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_6strlitIPKcEEE5parseINS0_7scannerIS
 	ld.d	$a5, $a1, 0
 	.p2align	4, , 16
 .LBB225_6:                              # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB225_12
+	beq	$a5, $a4, .LBB225_11
 # %bb.7:                                #   in Loop: Header=BB225_6 Depth=1
 	ld.bu	$a6, $a2, 0
 	ld.bu	$a7, $a5, 0
-	bne	$a6, $a7, .LBB225_12
+	bne	$a6, $a7, .LBB225_11
 # %bb.8:                                #   in Loop: Header=BB225_6 Depth=1
 	addi.d	$a2, $a2, 1
 	addi.d	$a5, $a5, 1
 	st.d	$a5, $a1, 0
 	bne	$a2, $a3, .LBB225_6
 # %bb.9:                                # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit
-	bltz	$a0, .LBB225_12
+	bltz	$a0, .LBB225_11
 .LBB225_10:                             # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSH_.exit.thread18
 	add.d	$fp, $a0, $s3
-	b	.LBB225_12
-.LBB225_11:
-	addi.w	$fp, $zero, -1
-.LBB225_12:                             # %.thread
+.LBB225_11:                             # %.thread
 	move	$a0, $fp
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
@@ -23463,8 +23300,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	ld.d	$a2, $a1, 16
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB227_9
+	bgez	$a0, .LBB227_9
 # %bb.4:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $s0, 8
 .LBB227_5:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -23477,8 +23313,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	ld.d	$a2, $a1, 16
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB227_9
+	bgez	$a0, .LBB227_9
 # %bb.7:                                # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $s0, 8
 .LBB227_8:                              # %_ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread.i.i
@@ -23586,8 +23421,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_4ruleINS0_7scannerIPKc
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB230_6
+	bgez	$a0, .LBB230_6
 # %bb.4:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB230_5:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -23693,8 +23527,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_13sequential_orINS0_4ruleINS0_7scann
 	move	$a0, $a1
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB233_8
+	bltz	$a0, .LBB233_8
 # %bb.4:
 	add.d	$a0, $a0, $s1
 	b	.LBB233_10
@@ -23904,8 +23737,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_5chlitIcEENS1_INS2_INS0_4ruleIN
 	bltz	$a0, .LBB238_3
 # %bb.2:                                # %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EES3_EENS1_INS0_8optionalISJ_EES3_EEEEE5parseISH_EENS0_13parser_resultISP_T_E4typeERKSS_.exit
 	add.d	$s1, $a0, $s1
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s1, .LBB238_11
+	bgez	$s1, .LBB238_11
 .LBB238_3:                              # %_ZNK5boost6spirit8sequenceINS0_5chlitIcEENS0_11alternativeINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EES3_EENS1_INS0_8optionalISJ_EES3_EEEEE5parseISH_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.thread
 	ld.d	$a0, $s0, 40
 	ld.d	$a1, $fp, 8
@@ -23931,8 +23763,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_5chlitIcEENS1_INS2_INS0_4ruleIN
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB238_9
+	bgez	$a0, .LBB238_9
 # %bb.7:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB238_8:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -24012,8 +23843,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	bltz	$a0, .LBB239_4
 # %bb.3:                                # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit
 	add.d	$a0, $a0, $s1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB239_9
+	bgez	$a0, .LBB239_9
 .LBB239_4:                              # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread
 	ld.d	$a1, $fp, 8
 	st.d	$s2, $a1, 0
@@ -24025,9 +23855,8 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16sca
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $a0
-	blt	$a1, $a0, .LBB239_8
+	bgez	$a0, .LBB239_8
 # %bb.6:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB239_7:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -24108,8 +23937,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS3_INS4
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB241_4
+	bltz	$a0, .LBB241_4
 # %bb.3:
 	add.d	$a0, $a0, $s0
 	b	.LBB241_5
@@ -24213,9 +24041,8 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $a0
-	bge	$a1, $a0, .LBB243_5
+	bltz	$a0, .LBB243_5
 # %bb.4:                                # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.i
 	ld.d	$a0, $s0, 16
 	ld.d	$a0, $a0, 0
@@ -24238,8 +24065,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 # %bb.8:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEEESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit
 	add.d	$a1, $s2, $s1
 	add.d	$a0, $a1, $a0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB243_16
+	bgez	$a0, .LBB243_16
 .LBB243_9:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEEESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s3, $a0, 0
@@ -24261,8 +24087,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB243_14
+	bgez	$a0, .LBB243_14
 # %bb.12:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i10
 	ld.d	$a1, $fp, 8
 .LBB243_13:                             # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i12
@@ -24373,11 +24198,13 @@ _ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesI
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
+	.cfi_offset 26, -48
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
@@ -24390,8 +24217,7 @@ _ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesI
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB247_12
+	bgez	$a0, .LBB247_12
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge
 	ld.d	$a2, $fp, 8
 .LBB247_3:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread
@@ -24429,23 +24255,24 @@ _ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesI
 	or	$s1, $a1, $a2
 	bltz	$s1, .LBB247_12
 # %bb.7:
+	move	$s2, $a0
 	ld.d	$a0, $fp, 8
-	ld.d	$s2, $a0, 0
+	ld.d	$s3, $a0, 0
 	addi.d	$a1, $s0, 24
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 8
-	addi.w	$a0, $zero, -1
-	blt	$a0, $a2, .LBB247_9
+	ld.d	$a2, $sp, 0
+	bgez	$a2, .LBB247_9
 # %bb.8:
-	ld.d	$a1, $fp, 8
+	ld.d	$a0, $fp, 8
 	move	$a2, $zero
-	st.d	$s2, $a1, 0
+	st.d	$s3, $a0, 0
 .LBB247_9:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_8optionalINS0_5chlitIcEEEEE5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit.i
-	ld.d	$a1, $s0, 32
-	ld.d	$a1, $a1, 0
+	ld.d	$a0, $s0, 32
+	ld.d	$a1, $a0, 0
+	move	$a0, $s2
 	beqz	$a1, .LBB247_12
 # %bb.10:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i
 	ld.d	$a0, $a1, 0
@@ -24464,6 +24291,7 @@ _ZNK5boost6spirit11alternativeINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesI
 .LBB247_11:
 	move	$a0, $s2
 .LBB247_12:                             # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_8optionalINS0_5chlitIcEEEEEESG_E5parseISE_EENS0_13parser_resultISN_T_E4typeERKSQ_.exit
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -24512,8 +24340,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB249_2
+	bltz	$a0, .LBB249_2
 .LBB249_1:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EESG_EESG_EESG_EESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -24523,15 +24350,13 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 	ret
 .LBB249_2:
 	ld.d	$a0, $s0, 48
-	ld.d	$a3, $fp, 8
-	ld.d	$a1, $a0, 0
-	st.d	$s1, $a3, 0
-	move	$a0, $a2
-	beqz	$a1, .LBB249_1
+	ld.d	$a1, $fp, 8
+	ld.d	$a0, $a0, 0
+	st.d	$s1, $a1, 0
+	beqz	$a0, .LBB249_4
 # %bb.3:
-	ld.d	$a0, $a1, 0
-	ld.d	$a2, $a0, 16
-	move	$a0, $a1
+	ld.d	$a1, $a0, 0
+	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -24539,6 +24364,9 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	jr	$a2
+.LBB249_4:
+	addi.w	$a0, $zero, -1
+	b	.LBB249_1
 .Lfunc_end249:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESG_SH_E16do_parse_virtualERKSG_, .Lfunc_end249-_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS3_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESH_EESI_EESI_EESI_EESI_EESI_EESG_SH_E16do_parse_virtualERKSG_
 	.cfi_endproc
@@ -24616,8 +24444,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_8sequenceINS4
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EENS2_INS2_INS2_ISH_SH_EESJ_EESH_EEE5parseISF_EENS0_13parser_resultISP_T_E4typeERKSS_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	bge	$s2, $a0, .LBB252_2
+	bltz	$a0, .LBB252_2
 .LBB252_1:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EENS2_INS2_INS2_ISH_SH_EESJ_EESH_EEEESL_E5parseISF_EENS0_13parser_resultISQ_T_E4typeERKST_.exit
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
@@ -24628,13 +24455,16 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_8sequenceINS4
 	ret
 .LBB252_2:
 	ld.d	$a0, $s0, 64
-	ld.d	$a1, $fp, 8
-	ld.d	$a0, $a0, 0
-	st.d	$s1, $a1, 0
-	beqz	$a0, .LBB252_7
-# %bb.3:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i.i.i
+	ld.d	$a2, $fp, 8
 	ld.d	$a1, $a0, 0
-	ld.d	$a2, $a1, 16
+	st.d	$s1, $a2, 0
+	addi.w	$a0, $zero, -1
+	beqz	$a1, .LBB252_1
+# %bb.3:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i.i.i
+	ld.d	$a2, $a1, 0
+	ld.d	$a2, $a2, 16
+	move	$s2, $a0
+	move	$a0, $a1
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$s1, $a0
@@ -24670,9 +24500,6 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_8sequenceINS4
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	b	.LBB252_1
-.LBB252_7:
-	move	$a0, $s2
 	b	.LBB252_1
 .Lfunc_end252:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_8sequenceINS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS0_5chlitIcEEEESJ_EENS4_INS4_INS4_ISJ_SJ_EESL_EESJ_EEEESN_EESH_SI_E16do_parse_virtualERKSH_, .Lfunc_end252-_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_8sequenceINS4_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESI_EENS0_5chlitIcEEEESJ_EENS4_INS4_INS4_ISJ_SJ_EESL_EESJ_EEEESN_EESH_SI_E16do_parse_virtualERKSH_
@@ -24730,13 +24557,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
@@ -24753,16 +24578,16 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 # %bb.2:                                # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.i
 	move	$s1, $a0
 	addi.d	$a1, $s0, 8
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
-	addi.w	$s3, $zero, -1
-	slt	$a1, $s3, $a0
+	ld.d	$a0, $sp, 8
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s3, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s1, $a0, $a1
 	bltz	$s1, .LBB254_6
 # %bb.3:
@@ -24777,7 +24602,7 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	bltz	$a0, .LBB254_6
 # %bb.5:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit
 	add.d	$s1, $a0, $s1
-	blt	$s3, $s1, .LBB254_13
+	bgez	$s1, .LBB254_13
 .LBB254_6:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_E5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s2, $a0, 0
@@ -24810,11 +24635,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	bltz	$s2, .LBB254_13
 # %bb.10:                               # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit.i
 	addi.d	$a1, $s0, 40
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	addi.w	$s1, $zero, -1
 	slt	$a1, $s1, $a0
 	add.d	$a0, $a0, $s2
@@ -24839,7 +24664,6 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	or	$s1, $a0, $a1
 .LBB254_13:                             # %_ZNK5boost6spirit8sequenceINS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_5chlitIcEEEESG_E5parseISE_EENS0_13parser_resultISL_T_E4typeERKSO_.exit
 	move	$a0, $s1
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -24970,8 +24794,7 @@ _ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policies
 	move	$a0, $a1
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB258_15
+	bltz	$a0, .LBB258_15
 # %bb.6:
 	add.d	$a0, $a0, $s4
 	b	.LBB258_12
@@ -24985,8 +24808,7 @@ _ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policies
 	ld.d	$a2, $a1, 16
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB258_12
+	bgez	$a0, .LBB258_12
 # %bb.9:                                # %_ZNK5boost6spirit13sequential_orINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit._ZNK5boost6spirit13sequential_orINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_E5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit.thread_crit_edge.i.i
 	ld.d	$a2, $s0, 8
 .LBB258_10:                             # %_ZNK5boost6spirit8optionalINS0_13sequential_orINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EEE5parseISF_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.thread.i
@@ -25072,9 +24894,8 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS0_8optionalINS0_4ruleINS
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $a0
-	blt	$a1, $a0, .LBB260_4
+	bgez	$a0, .LBB260_4
 # %bb.2:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i
 	ld.d	$a1, $fp, 8
 .LBB260_3:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i
@@ -25201,13 +25022,11 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB263_8
+	bltz	$a0, .LBB263_8
 # %bb.5:
 	add.d	$a0, $a0, $s2
 	add.d	$a0, $a0, $s1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB263_9
+	bgez	$a0, .LBB263_9
 .LBB263_6:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESI_EESG_EENS0_8optionalINS1_ISG_SG_EEEEE5parseISE_EENS0_13parser_resultISQ_T_E4typeERKST_.exit._ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESI_EESG_EENS0_8optionalINS1_ISG_SG_EEEEE5parseISE_EENS0_13parser_resultISQ_T_E4typeERKST_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
 .LBB263_7:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESI_EESG_EENS0_8optionalINS1_ISG_SG_EEEEE5parseISE_EENS0_13parser_resultISQ_T_E4typeERKST_.exit.thread.i
@@ -25229,8 +25048,7 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS0_8sequenceINS4_INS4
 	move	$a0, $zero
 	st.d	$s4, $a1, 0
 	add.d	$a0, $a0, $s1
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB263_6
+	bltz	$a0, .LBB263_6
 .LBB263_9:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS2_INS2_INS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EESJ_EESH_EENS0_8optionalINS2_ISH_SH_EEEEEESN_E5parseISF_EENS0_13parser_resultISS_T_E4typeERKSV_.exit
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -25458,22 +25276,18 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS0_8sequenceINS4
 _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EESJ_EESH_EENS2_INS2_INS2_INS2_INS2_INS2_ISH_SH_EESH_EESJ_EESH_EESJ_EESJ_EEEENS2_INS2_INS2_INS2_ISL_SH_EENS0_8optionalISH_EEEESJ_EESH_EEE5parseISF_EENS0_13parser_resultIS11_T_E4typeERKS14_: # @_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EESJ_EESH_EENS2_INS2_INS2_INS2_INS2_INS2_ISH_SH_EESH_EESJ_EESH_EESJ_EESJ_EEEENS2_INS2_INS2_INS2_ISL_SH_EENS0_8optionalISH_EEEESJ_EESH_EEE5parseISF_EENS0_13parser_resultIS11_T_E4typeERKS14_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
 	ld.d	$s2, $a1, 0
@@ -25481,17 +25295,14 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESI_EESG_E5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB269_2
+	bltz	$a0, .LBB269_2
 .LBB269_1:                              # %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESG_EENS0_8optionalISG_EEEESI_EESG_E5parseISE_EENS0_13parser_resultISQ_T_E4typeERKST_.exit
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .LBB269_2:
 	ld.d	$a0, $fp, 8
@@ -25509,11 +25320,11 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8
-	addi.w	$s4, $zero, -1
-	slt	$a1, $s4, $a0
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s4, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s1, $a0, $a1
 	bltz	$s1, .LBB269_6
 # %bb.4:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
@@ -25526,7 +25337,7 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7
 	bltz	$a0, .LBB269_6
 # %bb.5:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
 	add.d	$a0, $a0, $s1
-	blt	$s4, $a0, .LBB269_1
+	bgez	$a0, .LBB269_1
 .LBB269_6:                              # %_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EESJ_EESH_EENS2_INS2_INS2_INS2_INS2_INS2_ISH_SH_EESH_EESJ_EESH_EESJ_EESJ_EEE5parseISF_EENS0_13parser_resultISU_T_E4typeERKSX_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s2, $a0, 0
@@ -25534,10 +25345,9 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESG_EENS0_8optionalISG_EEE5parseISE_EENS0_13parser_resultISO_T_E4typeERKSR_)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	move	$a0, $s3
-	bltz	$s1, .LBB269_1
+	bltz	$a0, .LBB269_10
 # %bb.7:                                # %_ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEEESG_EESG_EENS0_8optionalISG_EEEESI_E5parseISE_EENS0_13parser_resultISP_T_E4typeERKSS_.exit.i
+	move	$s1, $a0
 	addi.d	$a1, $s0, 136
 	addi.d	$a0, $sp, 8
 	move	$a2, $fp
@@ -25567,6 +25377,9 @@ _ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
+	b	.LBB269_1
+.LBB269_10:
+	addi.w	$a0, $zero, -1
 	b	.LBB269_1
 .Lfunc_end269:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EESJ_EESH_EENS2_INS2_INS2_INS2_INS2_INS2_ISH_SH_EESH_EESJ_EESH_EESJ_EESJ_EEEENS2_INS2_INS2_INS2_ISL_SH_EENS0_8optionalISH_EEEESJ_EESH_EEE5parseISF_EENS0_13parser_resultIS11_T_E4typeERKS14_, .Lfunc_end269-_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS2_INS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EENS0_5chlitIcEEEESH_EESJ_EESH_EENS2_INS2_INS2_INS2_INS2_INS2_ISH_SH_EESH_EESJ_EESH_EESJ_EESJ_EEEENS2_INS2_INS2_INS2_ISL_SH_EENS0_8optionalISH_EEEESJ_EESH_EEE5parseISF_EENS0_13parser_resultIS11_T_E4typeERKS14_
@@ -25767,8 +25580,7 @@ _ZNK5boost6spirit8sequenceINS1_INS1_INS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanne
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB271_11
+	bgez	$a0, .LBB271_11
 # %bb.9:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i
 	ld.d	$a1, $fp, 8
 .LBB271_10:                             # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i
@@ -25867,24 +25679,20 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scann
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	move	$s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EENS0_5chlitIcEEEENS2_ISH_SK_EEE5parseISF_EENS0_13parser_resultISN_T_E4typeERKSQ_)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	bge	$s2, $a0, .LBB275_2
+	bltz	$a0, .LBB275_2
 .LBB275_1:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEEENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISM_T_E4typeERKSP_.exit
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -25894,7 +25702,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scann
 	ret
 .LBB275_2:
 	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $s0, 40
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB275_6
@@ -25907,24 +25715,27 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scann
 # %bb.4:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
 	move	$s1, $a0
 	addi.d	$a1, $s0, 48
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	bltz	$a0, .LBB275_6
 # %bb.5:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i.i
 	add.d	$a0, $a0, $s1
-	blt	$s2, $a0, .LBB275_1
+	bgez	$a0, .LBB275_1
 .LBB275_6:                              # %_ZNK5boost6spirit11alternativeINS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EENS0_5chlitIcEEEENS2_ISH_SK_EEEESM_E5parseISF_EENS0_13parser_resultISO_T_E4typeERKSR_.exit.thread
 	ld.d	$a0, $fp, 8
-	st.d	$s3, $a0, 0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $s0, 56
-	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB275_13
-# %bb.7:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i.i7
 	ld.d	$a1, $a0, 0
-	ld.d	$a2, $a1, 16
+	addi.w	$a0, $zero, -1
+	beqz	$a1, .LBB275_1
+# %bb.7:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i.i7
+	ld.d	$a2, $a1, 0
+	ld.d	$a2, $a2, 16
+	move	$s2, $a0
+	move	$a0, $a1
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$s1, $a0
@@ -25941,8 +25752,7 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scann
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB275_12
+	bgez	$a0, .LBB275_12
 # %bb.10:                               # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a1, $fp, 8
 .LBB275_11:                             # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -25951,20 +25761,17 @@ _ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scann
 .LBB275_12:                             # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_8optionalISG_EEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit.i
 	add.d	$s1, $a0, $s1
 	addi.d	$a1, $s0, 72
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
 	add.d	$a0, $s1, $a0
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	b	.LBB275_1
-.LBB275_13:
-	move	$a0, $s2
 	b	.LBB275_1
 .Lfunc_end275:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EENS0_5chlitIcEEEENS2_ISH_SK_EEEESM_EENS2_INS2_ISH_NS0_8optionalISH_EEEESK_EEE5parseISF_EENS0_13parser_resultIST_T_E4typeERKSW_, .Lfunc_end275-_ZNK5boost6spirit11alternativeINS1_INS1_INS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EESH_EENS0_5chlitIcEEEENS2_ISH_SK_EEEESM_EENS2_INS2_ISH_NS0_8optionalISH_EEEESK_EEE5parseISF_EENS0_13parser_resultIST_T_E4typeERKSW_
@@ -25984,13 +25791,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
@@ -26014,24 +25819,24 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$s3, $zero, -1
-	slt	$a1, $s3, $a0
+	addi.w	$a1, $zero, -1
+	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s3, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s1, $a0, $a1
 	bltz	$s1, .LBB276_6
 # %bb.4:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit
 	addi.d	$a1, $s0, 16
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	bltz	$a0, .LBB276_6
 # %bb.5:                                # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit
 	add.d	$s1, $a0, $s1
-	blt	$s3, $s1, .LBB276_9
+	bgez	$s1, .LBB276_9
 .LBB276_6:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EESG_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISK_T_E4typeERKSN_.exit.thread
 	ld.d	$a0, $fp, 8
 	st.d	$s2, $a0, 0
@@ -26048,11 +25853,11 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 # %bb.8:                                # %_ZN5boost6spirit5matchIcED2Ev.exit.i8
 	move	$s2, $a0
 	addi.d	$a1, $s0, 32
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11char_parserINS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS3_T_E4typeERKSJ_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
 	add.d	$a0, $a0, $s2
@@ -26061,7 +25866,6 @@ _ZNK5boost6spirit11alternativeINS0_8sequenceINS2_INS0_4ruleINS0_7scannerIPKcNS0_
 	or	$s1, $a0, $a1
 .LBB276_9:                              # %_ZNK5boost6spirit8sequenceINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EENS0_5chlitIcEEE5parseISE_EENS0_13parser_resultISJ_T_E4typeERKSM_.exit
 	move	$a0, $s1
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -26118,9 +25922,8 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS0_8optionalINS
 	ld.d	$a2, $a1, 16
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $a0
-	bge	$a1, $a0, .LBB278_10
+	bltz	$a0, .LBB278_10
 # %bb.2:
 	ld.d	$a0, $s0, 16
 	ld.d	$a0, $a0, 0
@@ -26151,10 +25954,9 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_8sequenceINS3_INS3_INS0_8optionalINS
 	move	$a0, $a1
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
-	addi.w	$a2, $zero, -1
 	move	$a1, $a0
 	move	$a0, $s3
-	blt	$a2, $a1, .LBB278_8
+	bgez	$a1, .LBB278_8
 # %bb.6:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit._ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread_crit_edge.i.i.i
 	ld.d	$a2, $fp, 8
 .LBB278_7:                              # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.thread.i.i.i
@@ -26269,19 +26071,17 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11kleene_starINS0_4ruleINS0_7scanner
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s0, $a0
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a1, 8
 	ld.d	$a0, $a0, 0
 	ld.d	$s2, $a2, 0
-	beqz	$a0, .LBB282_5
+	beqz	$a0, .LBB282_4
 # %bb.1:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i.preheader
 	move	$fp, $a1
 	ld.d	$a1, $a0, 0
@@ -26290,33 +26090,30 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11kleene_starINS0_4ruleINS0_7scanner
 	jirl	$ra, $a2, 0
 	ld.d	$a2, $fp, 8
 	move	$s1, $zero
-	bltz	$a0, .LBB282_6
-# %bb.2:                                # %.lr.ph.preheader
-	addi.w	$s3, $zero, -1
+	bltz	$a0, .LBB282_5
 	.p2align	4, , 16
-.LBB282_3:                              # %.lr.ph
+.LBB282_2:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 8
 	ld.d	$a1, $a1, 0
 	ld.d	$s2, $a2, 0
 	add.d	$s1, $a0, $s1
-	beqz	$a1, .LBB282_6
-# %bb.4:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i
-                                        #   in Loop: Header=BB282_3 Depth=1
+	beqz	$a1, .LBB282_5
+# %bb.3:                                # %_ZNK5boost6spirit4impl9rule_baseINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESG_EERKSH_SF_SG_SG_E5parseISF_EENS0_13parser_resultISH_T_E4typeERKSN_.exit.i
+                                        #   in Loop: Header=BB282_2 Depth=1
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 16
 	move	$a0, $a1
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	ld.d	$a2, $fp, 8
-	blt	$s3, $a0, .LBB282_3
-	b	.LBB282_6
-.LBB282_5:
+	bgez	$a0, .LBB282_2
+	b	.LBB282_5
+.LBB282_4:
 	move	$s1, $zero
-.LBB282_6:                              # %_ZNK5boost6spirit11kleene_starINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EEE5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit
+.LBB282_5:                              # %_ZNK5boost6spirit11kleene_starINS0_4ruleINS0_7scannerIPKcNS0_16scanner_policiesINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tESF_EEE5parseISE_EENS0_13parser_resultISH_T_E4typeERKSK_.exit
 	st.d	$s2, $a2, 0
 	move	$a0, $s1
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -27093,11 +26890,11 @@ _ZN5boost6spirit4impl14grammar_helperINS0_7grammarI12skip_grammarNS0_14parser_co
 	beq	$s4, $a0, .LBB287_19
 # %bb.11:                               # %_ZNKSt6vectorIPN5boost6spirit4impl19grammar_helper_baseINS1_7grammarI12skip_grammarNS1_14parser_contextINS1_5nil_tEEEEEEESaISB_EE12_M_check_lenEmPKc.exit.i.i.i
 	srai.d	$a0, $s4, 3
-	ori	$a2, $zero, 1
-	sltu	$a1, $a2, $a0
-	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 255
@@ -27114,8 +26911,7 @@ _ZN5boost6spirit4impl14grammar_helperINS0_7grammarI12skip_grammarNS0_14parser_co
 	move	$s5, $a0
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	stx.d	$fp, $a0, $s4
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB287_14
+	blez	$s4, .LBB287_14
 # %bb.13:
 	move	$a0, $s5
 	move	$a1, $s3
@@ -27767,7 +27563,6 @@ _ZNSt6vectorIPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanne
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -27777,7 +27572,6 @@ _ZNSt6vectorIPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanne
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB298_15
 # %bb.1:
 	move	$s0, $a1
@@ -27810,9 +27604,9 @@ _ZNSt6vectorIPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanne
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.d	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB298_5
+	ori	$a0, $zero, 1
+	stx.d	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB298_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 8
 	slli.d	$a1, $s0, 3
@@ -27821,7 +27615,7 @@ _ZNSt6vectorIPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanne
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB298_5:                              # %_ZSt27__uninitialized_default_n_aIPPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_policiesINS3_27no_skipper_iteration_policyINS3_28skip_parser_iteration_policyIS0_NS3_16iteration_policyEEEEENS3_12match_policyENS3_13action_policyEEEEEEEmSI_ET_SK_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB298_7
+	blez	$s2, .LBB298_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -27863,7 +27657,6 @@ _ZNSt6vectorIPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanne
 .LBB298_14:                             # %_ZSt27__uninitialized_default_n_aIPPN12skip_grammar10definitionIN5boost6spirit7scannerIPKcNS3_16scanner_policiesINS3_27no_skipper_iteration_policyINS3_28skip_parser_iteration_policyIS0_NS3_16iteration_policyEEEEENS3_12match_policyENS3_13action_policyEEEEEEEmSI_ET_SK_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB298_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -27931,82 +27724,82 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_12s
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISN_T_E4typeERKS12_)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB301_16
-# %bb.1:
-	ld.d	$a2, $fp, 8
-	st.d	$s1, $a2, 0
-	ld.d	$a3, $s0, 120
-	ld.d	$a4, $s0, 128
-	sub.d	$a0, $a4, $a3
-	beq	$a4, $a3, .LBB301_6
-	.p2align	4, , 16
-.LBB301_2:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $fp, 16
-	beq	$s1, $a5, .LBB301_15
-# %bb.3:                                #   in Loop: Header=BB301_2 Depth=1
-	ld.bu	$a5, $a3, 0
-	ld.bu	$a6, $s1, 0
-	bne	$a5, $a6, .LBB301_15
-# %bb.4:                                #   in Loop: Header=BB301_2 Depth=1
-	addi.d	$a3, $a3, 1
-	addi.d	$s1, $s1, 1
-	st.d	$s1, $a2, 0
-	bne	$a3, $a4, .LBB301_2
-# %bb.5:                                # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.i.i.i
-	bltz	$a0, .LBB301_15
-.LBB301_6:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.thread14.i.i.i
-	ld.d	$a3, $fp, 16
-	beq	$s1, $a3, .LBB301_11
-# %bb.7:                                # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.lr.ph.i.i.i.i
-	ld.bu	$a4, $s0, 136
-	move	$a3, $zero
-	.p2align	4, , 16
-.LBB301_8:                              # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.i.i.i.i
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a6, $s1, $a3
-	add.d	$a5, $s1, $a3
-	addi.d	$a7, $a5, 1
-	st.d	$a7, $a2, 0
-	beq	$a6, $a4, .LBB301_10
-# %bb.9:                                #   in Loop: Header=BB301_8 Depth=1
-	ld.d	$a6, $fp, 16
-	addi.d	$a3, $a3, 1
-	add.d	$a5, $s1, $a3
-	bne	$a5, $a6, .LBB301_8
-.LBB301_10:                             # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.i.i.i.i._ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSS_.exit.i.i.loopexit_crit_edge
-	move	$s1, $a5
-	add.d	$a3, $a3, $a0
-	st.d	$s1, $a2, 0
-	bgez	$a3, .LBB301_12
-	b	.LBB301_15
-.LBB301_11:
-	move	$a3, $zero
-	add.d	$a3, $a3, $a0
-	st.d	$s1, $a2, 0
-	bltz	$a3, .LBB301_15
-.LBB301_12:                             # %_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSS_.exit.i.i
-	ld.d	$a0, $fp, 16
-	beq	$s1, $a0, .LBB301_15
-# %bb.13:
-	ld.bu	$a4, $s1, 0
-	ld.bu	$a5, $s0, 144
-	move	$a0, $a1
-	bne	$a4, $a5, .LBB301_16
-# %bb.14:
-	addi.d	$a0, $s1, 1
-	st.d	$a0, $a2, 0
-	addi.d	$a0, $a3, 1
-	b	.LBB301_16
-.LBB301_15:
-	move	$a0, $a1
-.LBB301_16:                             # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_EESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_.exit
+	bltz	$a0, .LBB301_2
+.LBB301_1:                              # %_ZNK5boost6spirit11alternativeINS1_INS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_EESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISO_T_E4typeERKS13_.exit
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
+.LBB301_2:
+	ld.d	$a1, $fp, 8
+	st.d	$s1, $a1, 0
+	ld.d	$a3, $s0, 120
+	ld.d	$a4, $s0, 128
+	sub.d	$a2, $a4, $a3
+	beq	$a4, $a3, .LBB301_8
+# %bb.3:                                # %.lr.ph.i.i.i.i.i.i.i
+	addi.w	$a0, $zero, -1
+	.p2align	4, , 16
+.LBB301_4:                              # =>This Inner Loop Header: Depth=1
+	ld.d	$a5, $fp, 16
+	beq	$s1, $a5, .LBB301_1
+# %bb.5:                                #   in Loop: Header=BB301_4 Depth=1
+	ld.bu	$a5, $a3, 0
+	ld.bu	$a6, $s1, 0
+	bne	$a5, $a6, .LBB301_1
+# %bb.6:                                #   in Loop: Header=BB301_4 Depth=1
+	addi.d	$a3, $a3, 1
+	addi.d	$s1, $s1, 1
+	st.d	$s1, $a1, 0
+	bne	$a3, $a4, .LBB301_4
+# %bb.7:                                # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.i.i.i
+	bltz	$a2, .LBB301_1
+.LBB301_8:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.thread14.i.i.i
+	ld.d	$a0, $fp, 16
+	beq	$s1, $a0, .LBB301_13
+# %bb.9:                                # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.lr.ph.i.i.i.i
+	ld.bu	$a3, $s0, 136
+	move	$a0, $zero
+	.p2align	4, , 16
+.LBB301_10:                             # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.i.i.i.i
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.bu	$a5, $s1, $a0
+	add.d	$a4, $s1, $a0
+	addi.d	$a6, $a4, 1
+	st.d	$a6, $a1, 0
+	beq	$a5, $a3, .LBB301_12
+# %bb.11:                               #   in Loop: Header=BB301_10 Depth=1
+	ld.d	$a5, $fp, 16
+	addi.d	$a0, $a0, 1
+	add.d	$a4, $s1, $a0
+	bne	$a4, $a5, .LBB301_10
+.LBB301_12:                             # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.i.i.i.i._ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSS_.exit.i.i.loopexit_crit_edge
+	move	$s1, $a4
+	st.d	$s1, $a1, 0
+	add.d	$a2, $a0, $a2
+	addi.w	$a0, $zero, -1
+	bgez	$a2, .LBB301_14
+	b	.LBB301_1
+.LBB301_13:
+	move	$a0, $zero
+	st.d	$s1, $a1, 0
+	add.d	$a2, $a0, $a2
+	addi.w	$a0, $zero, -1
+	bltz	$a2, .LBB301_1
+.LBB301_14:                             # %_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSS_.exit.i.i
+	ld.d	$a3, $fp, 16
+	beq	$s1, $a3, .LBB301_1
+# %bb.15:
+	ld.bu	$a3, $s1, 0
+	ld.bu	$a4, $s0, 144
+	bne	$a3, $a4, .LBB301_1
+# %bb.16:
+	addi.d	$a0, $s1, 1
+	st.d	$a0, $a1, 0
+	addi.d	$a0, $a2, 1
+	b	.LBB301_1
 .Lfunc_end301:
 	.size	_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_12space_parserENS0_8sequenceINS5_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESE_EEEENS5_INS5_IS9_NSA_INSB_ISC_S9_EEEEEES9_EEEESI_EESI_EENS0_7scannerIS8_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKS12_, .Lfunc_end301-_ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_12space_parserENS0_8sequenceINS5_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESE_EEEENS5_INS5_IS9_NSA_INSB_ISC_S9_EEEEEES9_EEEESI_EESI_EENS0_7scannerIS8_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEENS0_5nil_tEE16do_parse_virtualERKS12_
 	.cfi_endproc
@@ -28056,110 +27849,107 @@ _ZNK5boost6spirit4impl15concrete_parserINS0_11alternativeINS3_INS3_INS3_INS0_12s
 _ZNK5boost6spirit11alternativeINS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISN_T_E4typeERKS12_: # @_ZNK5boost6spirit11alternativeINS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISN_T_E4typeERKS12_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
-	move	$s1, $a1
+	move	$s0, $a1
 	ld.d	$a1, $a1, 8
-	ld.d	$s2, $a1, 0
-	move	$s0, $a0
-	move	$a1, $s1
+	ld.d	$s1, $a1, 0
+	move	$fp, $a0
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit11alternativeINS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISH_T_E4typeERKSW_)
 	jirl	$ra, $ra, 0
-	addi.w	$fp, $zero, -1
-	blt	$fp, $a0, .LBB303_2
+	bgez	$a0, .LBB303_2
 # %bb.1:                                # %_ZNK5boost6spirit11alternativeINS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEE5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISM_T_E4typeERKS11_.exit
-	ld.d	$a0, $s1, 8
-	st.d	$s2, $a0, 0
-	addi.d	$a0, $s0, 32
-	move	$a1, $s1
+	ld.d	$a0, $s0, 8
+	st.d	$s1, $a0, 0
+	addi.d	$a0, $fp, 32
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNK5boost6spirit8sequenceINS1_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserES5_EEEEEES5_E5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISC_T_E4typeERKSR_)
 	jirl	$ra, $ra, 0
-	bge	$fp, $a0, .LBB303_4
-.LBB303_2:
-	move	$fp, $a0
-.LBB303_3:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESA_E5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISE_T_E4typeERKST_.exit
-	move	$a0, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	bltz	$a0, .LBB303_3
+.LBB303_2:                              # %_ZNK5boost6spirit8sequenceINS1_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESA_E5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISE_T_E4typeERKST_.exit
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
-.LBB303_4:
-	ld.d	$a0, $s1, 8
-	st.d	$s2, $a0, 0
-	ld.d	$a2, $s0, 80
-	ld.d	$a3, $s0, 88
-	sub.d	$a1, $a3, $a2
-	beq	$a3, $a2, .LBB303_9
+.LBB303_3:
+	ld.d	$a1, $s0, 8
+	st.d	$s1, $a1, 0
+	ld.d	$a3, $fp, 80
+	ld.d	$a4, $fp, 88
+	sub.d	$a2, $a4, $a3
+	beq	$a4, $a3, .LBB303_9
+# %bb.4:                                # %.lr.ph.i.i.i.i.i.i
+	addi.w	$a0, $zero, -1
 	.p2align	4, , 16
 .LBB303_5:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $s1, 16
-	beq	$s2, $a4, .LBB303_3
+	ld.d	$a5, $s0, 16
+	beq	$s1, $a5, .LBB303_2
 # %bb.6:                                #   in Loop: Header=BB303_5 Depth=1
-	ld.bu	$a4, $a2, 0
-	ld.bu	$a5, $s2, 0
-	bne	$a4, $a5, .LBB303_3
+	ld.bu	$a5, $a3, 0
+	ld.bu	$a6, $s1, 0
+	bne	$a5, $a6, .LBB303_2
 # %bb.7:                                #   in Loop: Header=BB303_5 Depth=1
-	addi.d	$a2, $a2, 1
-	addi.d	$s2, $s2, 1
-	st.d	$s2, $a0, 0
-	bne	$a2, $a3, .LBB303_5
+	addi.d	$a3, $a3, 1
+	addi.d	$s1, $s1, 1
+	st.d	$s1, $a1, 0
+	bne	$a3, $a4, .LBB303_5
 # %bb.8:                                # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.i.i
-	bltz	$a1, .LBB303_3
+	bltz	$a2, .LBB303_2
 .LBB303_9:                              # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.thread14.i.i
-	ld.d	$a2, $s1, 16
-	beq	$s2, $a2, .LBB303_14
+	ld.d	$a0, $s0, 16
+	beq	$s1, $a0, .LBB303_14
 # %bb.10:                               # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.lr.ph.i.i.i
-	ld.bu	$a3, $s0, 96
-	move	$a2, $zero
+	ld.bu	$a3, $fp, 96
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB303_11:                             # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a5, $s2, $a2
-	add.d	$a4, $s2, $a2
+	ldx.bu	$a5, $s1, $a0
+	add.d	$a4, $s1, $a0
 	addi.d	$a6, $a4, 1
-	st.d	$a6, $a0, 0
+	st.d	$a6, $a1, 0
 	beq	$a5, $a3, .LBB303_13
 # %bb.12:                               #   in Loop: Header=BB303_11 Depth=1
-	ld.d	$a5, $s1, 16
-	addi.d	$a2, $a2, 1
-	add.d	$a4, $s2, $a2
+	ld.d	$a5, $s0, 16
+	addi.d	$a0, $a0, 1
+	add.d	$a4, $s1, $a0
 	bne	$a4, $a5, .LBB303_11
 .LBB303_13:                             # %_ZNK5boost6spirit10differenceINS0_14anychar_parserENS0_5chlitIcEEE5parseINS0_7scannerIPKcNS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS5_T_E4typeERKSM_.exit.i.i.i._ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSS_.exit.i.loopexit_crit_edge
-	move	$s2, $a4
-	add.d	$a1, $a2, $a1
-	st.d	$s2, $a0, 0
-	bgez	$a1, .LBB303_15
-	b	.LBB303_3
+	move	$s1, $a4
+	st.d	$s1, $a1, 0
+	add.d	$a2, $a0, $a2
+	addi.w	$a0, $zero, -1
+	bgez	$a2, .LBB303_15
+	b	.LBB303_2
 .LBB303_14:
-	move	$a2, $zero
-	add.d	$a1, $a2, $a1
-	st.d	$s2, $a0, 0
-	bltz	$a1, .LBB303_3
+	move	$a0, $zero
+	st.d	$s1, $a1, 0
+	add.d	$a2, $a0, $a2
+	addi.w	$a0, $zero, -1
+	bltz	$a2, .LBB303_2
 .LBB303_15:                             # %_ZNK5boost6spirit8sequenceINS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEE5parseINS0_7scannerIS4_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISD_T_E4typeERKSS_.exit.i
-	ld.d	$a2, $s1, 16
-	beq	$s2, $a2, .LBB303_3
+	ld.d	$a3, $s0, 16
+	beq	$s1, $a3, .LBB303_2
 # %bb.16:
-	ld.bu	$a2, $s2, 0
-	ld.bu	$a3, $s0, 104
-	bne	$a2, $a3, .LBB303_3
+	ld.bu	$a3, $s1, 0
+	ld.bu	$a4, $fp, 104
+	bne	$a3, $a4, .LBB303_2
 # %bb.17:
-	addi.d	$a2, $s2, 1
-	st.d	$a2, $a0, 0
-	addi.d	$fp, $a1, 1
-	b	.LBB303_3
+	addi.d	$a0, $s1, 1
+	st.d	$a0, $a1, 0
+	addi.d	$a0, $a2, 1
+	b	.LBB303_2
 .Lfunc_end303:
 	.size	_ZNK5boost6spirit11alternativeINS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISN_T_E4typeERKS12_, .Lfunc_end303-_ZNK5boost6spirit11alternativeINS1_INS1_INS0_12space_parserENS0_8sequenceINS3_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differenceINS0_14anychar_parserENS0_5chlitIcEEEEEEEESC_EEEENS3_INS3_IS7_NS8_INS9_ISA_S7_EEEEEES7_EEEESG_E5parseINS0_7scannerIS6_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultISN_T_E4typeERKS12_
 	.cfi_endproc
@@ -28312,45 +28102,44 @@ _ZNK5boost6spirit8sequenceINS1_INS0_6strlitIPKcEENS0_11kleene_starINS0_10differe
 	beq	$a4, $a2, .LBB305_15
 # %bb.7:                                # %.lr.ph.i.i
 	move	$a2, $zero
-	addi.w	$a6, $zero, -1
 	b	.LBB305_9
 	.p2align	4, , 16
 .LBB305_8:                              # %.loopexit.i.i
                                         #   in Loop: Header=BB305_9 Depth=1
 	addi.d	$a4, $a4, 1
 	st.d	$a4, $a3, 0
-	ld.d	$a7, $a1, 16
+	ld.d	$a6, $a1, 16
 	addi.d	$a2, $a2, 1
-	beq	$a4, $a7, .LBB305_16
+	beq	$a4, $a6, .LBB305_16
 .LBB305_9:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB305_11 Depth 2
-	ld.d	$a7, $a0, 16
-	ld.d	$t0, $a0, 24
-	beq	$t0, $a7, .LBB305_8
+	ld.d	$a6, $a0, 16
+	ld.d	$a7, $a0, 24
+	beq	$a7, $a6, .LBB305_8
 # %bb.10:                               # %.lr.ph.i.i.i.i.i.i.i.preheader
                                         #   in Loop: Header=BB305_9 Depth=1
-	move	$t2, $zero
-	sub.d	$t1, $t0, $a7
+	move	$t1, $zero
+	sub.d	$t0, $a7, $a6
 	.p2align	4, , 16
 .LBB305_11:                             # %.lr.ph.i.i.i.i.i.i.i
                                         #   Parent Loop BB305_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t4, $a1, 16
-	add.d	$t3, $a4, $t2
-	beq	$t3, $t4, .LBB305_8
+	ld.d	$t3, $a1, 16
+	add.d	$t2, $a4, $t1
+	beq	$t2, $t3, .LBB305_8
 # %bb.12:                               #   in Loop: Header=BB305_11 Depth=2
-	ldx.bu	$t4, $a7, $t2
-	ld.bu	$t5, $t3, 0
-	bne	$t4, $t5, .LBB305_8
+	ldx.bu	$t3, $a6, $t1
+	ld.bu	$t4, $t2, 0
+	bne	$t3, $t4, .LBB305_8
 # %bb.13:                               #   in Loop: Header=BB305_11 Depth=2
-	addi.d	$t3, $t3, 1
 	addi.d	$t2, $t2, 1
-	add.d	$t4, $a7, $t2
-	st.d	$t3, $a3, 0
-	bne	$t4, $t0, .LBB305_11
+	addi.d	$t1, $t1, 1
+	add.d	$t3, $a6, $t1
+	st.d	$t2, $a3, 0
+	bne	$t3, $a7, .LBB305_11
 # %bb.14:                               # %_ZNK5boost6spirit6strlitIPKcE5parseINS0_7scannerIS3_NS0_16scanner_policiesINS0_27no_skipper_iteration_policyINS0_28skip_parser_iteration_policyI12skip_grammarNS0_16iteration_policyEEEEENS0_12match_policyENS0_13action_policyEEEEEEENS0_13parser_resultIS4_T_E4typeERKSJ_.exit.i.i.i
                                         #   in Loop: Header=BB305_9 Depth=1
-	bge	$a6, $t1, .LBB305_8
+	bltz	$t0, .LBB305_8
 	b	.LBB305_16
 .LBB305_15:
 	move	$a2, $zero

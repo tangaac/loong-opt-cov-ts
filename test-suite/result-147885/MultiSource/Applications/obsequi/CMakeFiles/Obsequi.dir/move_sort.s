@@ -21,26 +21,26 @@ sort_moves:                             # @sort_moves
 	ori	$a3, $a3, 3216
 	sub.d	$sp, $sp, $a3
 	move	$fp, $a2
-	move	$s8, $a1
+	move	$s6, $a1
 	move	$s0, $a0
 	bge	$a1, $a2, .LBB0_12
 # %bb.1:                                # %.preheader54.preheader
 	move	$s4, $zero
-	ori	$s5, $zero, 1
 	ori	$t0, $zero, 128
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s2, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.1)
+	ori	$t1, $zero, 1
 	addi.d	$s7, $sp, 1064
-	addi.d	$t1, $sp, 552
-	addi.d	$t2, $sp, 40
-	move	$s1, $s8
+	addi.d	$t2, $sp, 552
+	addi.d	$s5, $sp, 40
+	move	$s1, $s6
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
 	alsl.d	$a0, $s4, $s4, 1
-	alsl.d	$a1, $s1, $s6, 2
+	alsl.d	$a1, $s1, $s8, 2
 	add.d	$a2, $s0, $a1
 	ldx.d	$a1, $s0, $a1
 	ld.w	$a2, $a2, 8
@@ -49,8 +49,8 @@ sort_moves:                             # @sort_moves
 	stx.d	$a1, $a0, $s7
 	st.w	$a2, $a3, 8
 	slli.d	$a0, $s4, 2
-	stx.w	$a2, $a0, $t1
-	stx.w	$s5, $a0, $t2
+	stx.w	$a2, $a0, $t2
+	stx.w	$t1, $a0, $s5
 	addi.w	$s4, $s4, 1
 .LBB0_3:                                #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$s1, $s1, 1
@@ -59,12 +59,12 @@ sort_moves:                             # @sort_moves
 .LBB0_4:                                # %.preheader54
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_6 Depth 2
-	slli.d	$s6, $s1, 3
+	slli.d	$s8, $s1, 3
 	move	$a0, $zero
-	blt	$s4, $s5, .LBB0_9
+	blez	$s4, .LBB0_9
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	alsl.d	$a1, $s1, $s6, 2
+	alsl.d	$a1, $s1, $s8, 2
 	add.d	$a1, $s0, $a1
 	ld.w	$a4, $a1, 8
 	addi.d	$a3, $sp, 40
@@ -110,15 +110,15 @@ sort_moves:                             # @sort_moves
 	move	$a3, $s3
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
-	addi.d	$t2, $sp, 40
-	addi.d	$t1, $sp, 552
+	addi.d	$t2, $sp, 552
+	ori	$t1, $zero, 1
 	ori	$t0, $zero, 128
 	b	.LBB0_2
 .LBB0_12:                               # %.preheader53.thread
-	beq	$s8, $fp, .LBB0_14
+	beq	$s6, $fp, .LBB0_14
 	b	.LBB0_27
 .LBB0_13:                               # %.preheader53
-	bne	$s8, $fp, .LBB0_15
+	bne	$s6, $fp, .LBB0_15
 .LBB0_14:                               # %._crit_edge
 	lu12i.w	$a0, 95
 	ori	$a0, $a0, 3216
@@ -152,9 +152,9 @@ sort_moves:                             # @sort_moves
 	.p2align	4, , 16
 .LBB0_17:                               # %.loopexit128
                                         #   in Loop: Header=BB0_18 Depth=1
-	addi.w	$a0, $s8, 0
+	addi.w	$a0, $s6, 0
 	addi.d	$a1, $sp, 552
-	stx.w	$s2, $s6, $a1
+	stx.w	$s2, $s1, $a1
 	beq	$fp, $a0, .LBB0_14
 .LBB0_18:                               # %.lr.ph68.us
                                         # =>This Loop Header: Depth=1
@@ -183,11 +183,11 @@ sort_moves:                             # @sort_moves
 	bnez	$a2, .LBB0_19
 # %bb.20:                               # %..preheader_crit_edge.us
                                         #   in Loop: Header=BB0_18 Depth=1
-	slli.d	$s6, $a1, 2
+	slli.d	$s1, $a1, 2
 	addi.d	$a0, $sp, 40
-	ldx.w	$s4, $s6, $a0
-	addi.w	$s8, $s8, 0
-	mul.d	$a0, $s8, $s5
+	ldx.w	$s4, $s1, $a0
+	addi.w	$s6, $s6, 0
+	mul.d	$a0, $s6, $s5
 	add.d	$a0, $s0, $a0
 	alsl.d	$a1, $a1, $a1, 1
 	slli.d	$a1, $a1, 10
@@ -196,8 +196,8 @@ sort_moves:                             # @sort_moves
 	slt	$a2, $s7, $s4
 	maskeqz	$a3, $s4, $a2
 	masknez	$a2, $s7, $a2
-	or	$s1, $a3, $a2
-	mul.d	$a2, $s1, $s5
+	or	$s8, $a3, $a2
+	mul.d	$a2, $s8, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 4
@@ -208,9 +208,9 @@ sort_moves:                             # @sort_moves
 	.p2align	4, , 16
 .LBB0_22:                               # %vector.ph115
                                         #   in Loop: Header=BB0_18 Depth=1
-	bstrpick.d	$a0, $s1, 30, 2
+	bstrpick.d	$a0, $s8, 30, 2
 	slli.d	$a0, $a0, 2
-	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $s6, 0
 	vinsgr2vr.d	$vr1, $zero, 0
 	vpackev.d	$vr0, $vr1, $vr0
 	move	$a1, $a0
@@ -228,13 +228,13 @@ sort_moves:                             # @sort_moves
 	vadd.d	$vr0, $vr1, $vr0
 	vreplvei.d	$vr1, $vr0, 1
 	vadd.d	$vr0, $vr0, $vr1
-	vpickve2gr.d	$s8, $vr0, 0
-	beq	$a0, $s1, .LBB0_17
+	vpickve2gr.d	$s6, $vr0, 0
+	beq	$a0, $s8, .LBB0_17
 .LBB0_25:                               # %scalar.ph113.preheader
                                         #   in Loop: Header=BB0_18 Depth=1
-	sub.d	$a1, $s1, $a0
-	add.d	$a2, $s8, $s1
-	sub.d	$s8, $a2, $a0
+	sub.d	$a1, $s8, $a0
+	add.d	$a2, $s6, $s8
+	sub.d	$s6, $a2, $a0
 	.p2align	4, , 16
 .LBB0_26:                               # %scalar.ph113
                                         #   Parent Loop BB0_18 Depth=1
@@ -260,15 +260,15 @@ sort_moves:                             # @sort_moves
 	.p2align	4, , 16
 .LBB0_28:                               # %.loopexit129
                                         #   in Loop: Header=BB0_29 Depth=1
-	addi.w	$a0, $s8, 0
+	addi.w	$a0, $s6, 0
 	beq	$fp, $a0, .LBB0_14
 .LBB0_29:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_32 Depth 2
                                         #     Child Loop BB0_35 Depth 2
-	addi.w	$s8, $s8, 0
-	slli.d	$a0, $s8, 3
-	alsl.d	$a0, $s8, $a0, 2
+	addi.w	$s6, $s6, 0
+	slli.d	$a0, $s6, 3
+	alsl.d	$a0, $s6, $a0, 2
 	add.d	$a0, $s0, $a0
 	addi.d	$a1, $sp, 1064
 	move	$a2, $s2
@@ -281,7 +281,7 @@ sort_moves:                             # @sort_moves
 	.p2align	4, , 16
 .LBB0_31:                               # %vector.ph
                                         #   in Loop: Header=BB0_29 Depth=1
-	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $s6, 0
 	vinsgr2vr.d	$vr1, $zero, 0
 	vpackev.d	$vr0, $vr1, $vr0
 	move	$a0, $s4
@@ -299,14 +299,14 @@ sort_moves:                             # @sort_moves
 	vadd.d	$vr0, $vr1, $vr0
 	vreplvei.d	$vr1, $vr0, 1
 	vadd.d	$vr0, $vr0, $vr1
-	vpickve2gr.d	$s8, $vr0, 0
+	vpickve2gr.d	$s6, $vr0, 0
 	move	$a0, $s4
 	beq	$s4, $s3, .LBB0_28
 .LBB0_34:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_29 Depth=1
 	sub.d	$a1, $s3, $a0
-	add.d	$a2, $s3, $s8
-	sub.d	$s8, $a2, $a0
+	add.d	$a2, $s3, $s6
+	sub.d	$s6, $a2, $a0
 	.p2align	4, , 16
 .LBB0_35:                               # %scalar.ph
                                         #   Parent Loop BB0_29 Depth=1

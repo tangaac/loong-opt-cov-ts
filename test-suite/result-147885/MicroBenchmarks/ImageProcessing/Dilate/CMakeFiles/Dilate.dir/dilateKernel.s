@@ -5,10 +5,9 @@
 	.type	dilateKernel,@function
 dilateKernel:                           # @dilateKernel
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB0_25
+	blez	$a0, .LBB0_25
 # %bb.1:
-	blt	$a1, $a5, .LBB0_25
+	blez	$a1, .LBB0_25
 # %bb.2:                                # %.preheader75.us.preheader
 	addi.d	$sp, $sp, -32
 	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
@@ -96,11 +95,11 @@ dilateKernel:                           # @dilateKernel
 	or	$fp, $s0, $fp
 	b	.LBB0_10
 .LBB0_13:                               # %.preheader73
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_24
+	blez	$a0, .LBB0_24
 # %bb.14:                               # %.preheader72.us.preheader
 	move	$a6, $zero
-	sub.d	$a2, $zero, $a5
+	sub.d	$a1, $zero, $a5
+	ori	$a2, $zero, 1
 	b	.LBB0_16
 	.p2align	4, , 16
 .LBB0_15:                               # %._crit_edge.us85
@@ -115,7 +114,7 @@ dilateKernel:                           # @dilateKernel
 	move	$t1, $zero
 	addi.d	$a7, $a6, 1
 	add.d	$t0, $a4, $a5
-	add.d	$t2, $a4, $a2
+	add.d	$t2, $a4, $a1
 	b	.LBB0_18
 	.p2align	4, , 16
 .LBB0_17:                               #   in Loop: Header=BB0_18 Depth=2
@@ -125,7 +124,7 @@ dilateKernel:                           # @dilateKernel
 .LBB0_18:                               # %.preheader.us
                                         #   Parent Loop BB0_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bgeu	$a1, $a6, .LBB0_20
+	bgeu	$a2, $a6, .LBB0_20
 # %bb.19:                               # %.thread122
                                         #   in Loop: Header=BB0_18 Depth=2
 	ldx.w	$t3, $t2, $t1

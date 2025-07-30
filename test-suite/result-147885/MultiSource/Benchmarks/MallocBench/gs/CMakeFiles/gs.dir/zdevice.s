@@ -445,9 +445,8 @@ zmakeimagedevice:                       # @zmakeimagedevice
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB8_19
 # %bb.11:
-	ori	$a1, $zero, 1
 	move	$a0, $s2
-	blt	$fp, $a1, .LBB8_16
+	blez	$fp, .LBB8_16
 # %bb.12:                               # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	addi.d	$s3, $a0, 8

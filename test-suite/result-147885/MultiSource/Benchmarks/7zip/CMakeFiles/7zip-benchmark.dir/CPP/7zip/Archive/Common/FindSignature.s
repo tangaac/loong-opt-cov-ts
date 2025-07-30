@@ -83,9 +83,6 @@ _Z21FindSignatureInStreamP19ISequentialInStreamPKhjPKyRy: # @_Z21FindSignatureIn
 	ori	$s0, $zero, 1
 	st.d	$s0, $s7, 0
 	sub.d	$a0, $zero, $s2
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	beqz	$s1, .LBB0_9
 .LBB0_8:
@@ -116,25 +113,24 @@ _Z21FindSignatureInStreamP19ISequentialInStreamPKhjPKyRy: # @_Z21FindSignatureIn
 	add.w	$s3, $a0, $s8
 	bltu	$s3, $s2, .LBB0_9
 # %bb.13:                               #   in Loop: Header=BB0_9 Depth=1
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	sub.d	$a1, $s3, $s2
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a3, $a1, 1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	and	$a1, $a3, $a1
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	beqz	$a1, .LBB0_15
+	slli.d	$a1, $a3, 31
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	bgez	$a1, .LBB0_15
 # %bb.14:                               #   in Loop: Header=BB0_9 Depth=1
 	move	$s1, $zero
 	b	.LBB0_23
 .LBB0_15:                               # %.lr.ph
                                         #   in Loop: Header=BB0_9 Depth=1
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
 	move	$a1, $zero
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.bu	$s0, $a2, 0
 	bstrpick.d	$s1, $a3, 31, 0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a2, $a2, $s8
 	add.w	$a0, $a2, $a0
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
@@ -173,20 +169,20 @@ _Z21FindSignatureInStreamP19ISequentialInStreamPKhjPKyRy: # @_Z21FindSignatureIn
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	bltu	$a1, $a0, .LBB0_16
 .LBB0_22:                               #   in Loop: Header=BB0_9 Depth=1
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
 .LBB0_23:                               # %.thread117
                                         #   in Loop: Header=BB0_9 Depth=1
 	ld.d	$a0, $s7, 0
 	add.d	$s0, $a0, $s1
 	st.d	$s0, $s7, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	sub.w	$s3, $s3, $a0
 	add.d	$a1, $s6, $s1
 	bstrpick.d	$a2, $s3, 31, 0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
 	bnez	$s1, .LBB0_8
 	b	.LBB0_9
 .LBB0_24:
@@ -225,7 +221,7 @@ _Z21FindSignatureInStreamP19ISequentialInStreamPKhjPKyRy: # @_Z21FindSignatureIn
 	addi.d	$sp, $sp, 160
 	ret
 .LBB0_31:                               # %.thread127
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a0, $a1, 0
 	move	$s0, $zero
 	add.d	$a0, $a0, $s8

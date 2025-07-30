@@ -131,10 +131,9 @@ initialize:                             # @initialize
 	ori	$a0, $zero, 9
 	pcaddu18i	$ra, %call36(glibc_compat_srand)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB1_6
+	blez	$s2, .LBB1_6
 # %bb.1:
-	blt	$s1, $a0, .LBB1_6
+	blez	$s1, .LBB1_6
 # %bb.2:                                # %.preheader18.us.preheader
 	move	$s3, $zero
 	slli.d	$s4, $s1, 2
@@ -223,8 +222,7 @@ initialize:                             # @initialize
 	.type	printResult,@function
 printResult:                            # @printResult
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_4
+	blez	$a0, .LBB2_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill

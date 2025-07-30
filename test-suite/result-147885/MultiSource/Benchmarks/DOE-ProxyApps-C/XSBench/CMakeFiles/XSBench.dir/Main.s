@@ -102,9 +102,8 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 328
 	ori	$a1, $zero, 36
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 344
-	blt	$a0, $a2, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	move	$s8, $zero
 	move	$s4, $zero

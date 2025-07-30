@@ -310,10 +310,9 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	ld.d	$a1, $a1, 128
 	jirl	$ra, $a1, 0
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(_ZL18btUnitSpherePoints)
-	addi.d	$s2, $a1, %pc_lo12(_ZL18btUnitSpherePoints)
-	blt	$s0, $a0, .LBB5_4
+	pcalau12i	$a0, %pc_hi20(_ZL18btUnitSpherePoints)
+	addi.d	$s2, $a0, %pc_lo12(_ZL18btUnitSpherePoints)
+	blez	$s0, .LBB5_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	addi.d	$s3, $s2, 672
@@ -413,13 +412,11 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 # %bb.13:                               # %.noexc
 	move	$s1, $a0
 	ld.w	$a0, $fp, 4
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB5_15
+	bgtz	$a0, .LBB5_15
 	b	.LBB5_17
 .LBB5_14:
 	move	$s1, $zero
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_17
+	blez	$a0, .LBB5_17
 .LBB5_15:                               # %.lr.ph.i.i.i
 	move	$a1, $zero
 	slli.d	$a0, $a0, 4
@@ -449,9 +446,8 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	st.d	$s1, $fp, 16
 	st.w	$s2, $fp, 8
 .LBB5_21:                               # %.loopexit65
-	ori	$a0, $zero, 1
 	st.w	$s2, $fp, 4
-	blt	$a1, $a0, .LBB5_24
+	blez	$a1, .LBB5_24
 # %bb.22:                               # %.lr.ph72
 	move	$a0, $zero
 	move	$a1, $zero
@@ -487,8 +483,7 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	move	$s1, $a0
 	ld.w	$a1, $fp, 36
 	ld.d	$a0, $fp, 48
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_39
+	blez	$a1, .LBB5_39
 .LBB5_29:                               # %.lr.ph.i.i.i47
 	ori	$a3, $zero, 8
 	move	$a2, $zero
@@ -531,8 +526,7 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	bnez	$a1, .LBB5_35
 .LBB5_36:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.thread.i.i
 	ld.bu	$a1, $fp, 56
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB5_41
+	bnez	$a1, .LBB5_41
 	b	.LBB5_42
 .LBB5_37:                               # %..lr.ph.i38_crit_edge
 	ld.d	$s1, $fp, 48
@@ -541,8 +535,7 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	move	$s1, $zero
 	move	$a1, $s3
 	ld.d	$a0, $fp, 48
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB5_29
+	bgtz	$a1, .LBB5_29
 .LBB5_39:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
 	beqz	$a0, .LBB5_42
 # %bb.40:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
@@ -568,9 +561,8 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 64
 .LBB5_44:                               # %.loopexit
-	ori	$a1, $zero, 1
 	st.w	$s2, $fp, 36
-	blt	$a0, $a1, .LBB5_47
+	blez	$a0, .LBB5_47
 # %bb.45:                               # %.lr.ph75
 	ld.d	$a0, $sp, 72
 	ld.d	$a1, $fp, 48

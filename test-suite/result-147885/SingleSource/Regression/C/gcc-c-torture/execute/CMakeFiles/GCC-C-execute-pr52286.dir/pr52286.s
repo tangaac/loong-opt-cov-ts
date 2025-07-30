@@ -9,8 +9,7 @@ main:                                   # @main
 	#APP
 	#NO_APP
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_2
+	bltz	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
 	ret

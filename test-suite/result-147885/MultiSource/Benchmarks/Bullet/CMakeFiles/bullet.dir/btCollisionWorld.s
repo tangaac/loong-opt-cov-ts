@@ -189,9 +189,8 @@ _ZN16btCollisionWorldD2Ev:              # @_ZN16btCollisionWorldD2Ev
 	ld.w	$a0, $a0, 12
 	pcalau12i	$a1, %pc_hi20(_ZTV16btCollisionWorld+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV16btCollisionWorld+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	blt	$a0, $a2, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	move	$s2, $zero
@@ -424,8 +423,7 @@ _ZN16btCollisionWorld18addCollisionObjectEP17btCollisionObjectss: # @_ZN16btColl
 	ld.w	$a4, $s2, 12
 	move	$s3, $a0
 	ld.d	$a0, $s2, 24
-	ori	$a1, $zero, 1
-	blt	$a4, $a1, .LBB5_13
+	blez	$a4, .LBB5_13
 .LBB5_4:                                # %.lr.ph.i.i.i
 	ori	$a2, $zero, 4
 	move	$a1, $zero
@@ -468,14 +466,12 @@ _ZN16btCollisionWorld18addCollisionObjectEP17btCollisionObjectss: # @_ZN16btColl
 	bnez	$a2, .LBB5_10
 .LBB5_11:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a1, $s2, 32
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB5_15
+	bnez	$a1, .LBB5_15
 	b	.LBB5_16
 .LBB5_12:
 	move	$s3, $zero
 	ld.d	$a0, $s2, 24
-	ori	$a1, $zero, 1
-	bge	$a4, $a1, .LBB5_4
+	bgtz	$a4, .LBB5_4
 .LBB5_13:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB5_16
 # %bb.14:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i
@@ -689,8 +685,7 @@ _ZN16btCollisionWorld11updateAabbsEv:   # @_ZN16btCollisionWorld11updateAabbsEv
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_8
+	blez	$a0, .LBB7_8
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -1026,8 +1021,7 @@ _ZN16btCollisionWorld21removeCollisionObjectEP17btCollisionObject: # @_ZN16btCol
 	st.d	$zero, $s0, 192
 .LBB9_2:
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_8
+	blez	$a0, .LBB9_8
 # %bb.3:                                # %.lr.ph.i.i
 	ld.d	$a1, $fp, 24
 	move	$a3, $zero
@@ -1346,8 +1340,7 @@ _ZN16btCollisionWorld13rayTestSingleERK11btTransformS2_P17btCollisionObjectPK16b
 	bne	$a0, $a1, .LBB10_31
 # %bb.14:                               # %.preheader
 	ld.w	$a0, $s1, 28
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_31
+	blez	$a0, .LBB10_31
 # %bb.15:                               # %.lr.ph
 	move	$s5, $zero
 	ori	$s6, $zero, 64
@@ -2113,8 +2106,7 @@ _ZN16btCollisionWorld17objectQuerySingleEPK13btConvexShapeRK11btTransformS5_P17b
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 28
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB12_17
+	blez	$a0, .LBB12_17
 # %bb.14:                               # %.lr.ph
 	move	$s6, $zero
 	ori	$s7, $zero, 64

@@ -22,9 +22,9 @@ bmha_init:                              # @bmha_init
 	addi.d	$a3, $a1, -1
 	pcalau12i	$a1, %pc_hi20(skip)
 	addi.d	$a4, $a1, %pc_lo12(skip)
-	ori	$a5, $zero, 1
 	pcalau12i	$a1, %pc_hi20(lowervec)
 	addi.d	$a1, $a1, %pc_lo12(lowervec)
+	ori	$a5, $zero, 1
 	lu12i.w	$a6, 7
 	ori	$a6, $a6, 4095
 	ori	$a7, $zero, 256
@@ -46,7 +46,7 @@ bmha_init:                              # @bmha_init
 	move	$t1, $t3
 	add.d	$t3, $a0, $t3
 	addi.w	$t3, $t3, -1
-	blt	$t3, $a5, .LBB0_6
+	blez	$t3, .LBB0_6
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=2
 	ld.bu	$t3, $t2, 0
 	ldx.bu	$t4, $a1, $a2
@@ -105,8 +105,7 @@ bmha_search:                            # @bmha_search
 	ld.w	$a5, $a2, %pc_lo12(patlen)
 	nor	$a2, $a1, $zero
 	add.w	$a2, $a5, $a2
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a2, .LBB1_3
+	bltz	$a2, .LBB1_3
 .LBB1_1:
 	move	$a0, $zero
 .LBB1_2:                                # %.critedge.thread
@@ -133,9 +132,8 @@ bmha_search:                            # @bmha_search
 	add.d	$a1, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(skip)
 	addi.d	$t1, $a0, %pc_lo12(skip)
-	ori	$t2, $zero, 1
 	pcalau12i	$a0, %pc_hi20(lowervec)
-	addi.d	$t3, $a0, %pc_lo12(lowervec)
+	addi.d	$t2, $a0, %pc_lo12(lowervec)
 .LBB1_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_7 Depth 2
 	ldx.bu	$a0, $a3, $a2
@@ -146,25 +144,25 @@ bmha_search:                            # @bmha_search
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
 	blt	$a2, $a4, .LBB1_1
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
-	add.w	$t4, $a2, $a6
-	sub.w	$a0, $t4, $a5
+	add.w	$t3, $a2, $a6
+	sub.w	$a0, $t3, $a5
 	add.d	$a0, $a3, $a0
-	add.d	$t4, $a1, $t4
-	move	$t5, $t0
-	move	$t6, $a5
+	add.d	$t3, $a1, $t3
+	move	$t4, $t0
+	move	$t5, $a5
 	.p2align	4, , 16
 .LBB1_7:                                #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$t6, $t2, .LBB1_2
+	blez	$t5, .LBB1_2
 # %bb.8:                                #   in Loop: Header=BB1_7 Depth=2
+	ld.bu	$t6, $t3, 0
 	ld.bu	$t7, $t4, 0
-	ld.bu	$t8, $t5, 0
-	ldx.bu	$t7, $t3, $t7
-	ldx.bu	$t8, $t3, $t8
-	addi.w	$t6, $t6, -1
-	addi.d	$t5, $t5, -1
+	ldx.bu	$t6, $t2, $t6
+	ldx.bu	$t7, $t2, $t7
+	addi.w	$t5, $t5, -1
 	addi.d	$t4, $t4, -1
-	beq	$t7, $t8, .LBB1_7
+	addi.d	$t3, $t3, -1
+	beq	$t6, $t7, .LBB1_7
 # %bb.9:                                # %.critedge
                                         #   in Loop: Header=BB1_4 Depth=1
 	add.w	$a2, $a2, $a7

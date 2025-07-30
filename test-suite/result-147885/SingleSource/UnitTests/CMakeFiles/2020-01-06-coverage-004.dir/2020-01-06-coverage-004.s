@@ -93,7 +93,6 @@ j:                                      # @j
 .LBB1_9:
 	ret
 .LBB1_10:                               # %scalar.ph.preheader
-	lu12i.w	$a6, 16
 	ori	$a5, $a5, 4095
 	lu32i.d	$a5, 474
 	div.d	$a4, $a5, $a4
@@ -106,9 +105,9 @@ j:                                      # @j
                                         #   in Loop: Header=BB1_13 Depth=1
 	bstrpick.d	$a1, $a1, 15, 0
 	addi.d	$a1, $a1, 1
-	and	$a7, $a1, $a6
+	slli.d	$a6, $a1, 47
 	st.d	$a5, $a3, 0
-	bnez	$a7, .LBB1_8
+	bltz	$a6, .LBB1_8
 .LBB1_13:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0

@@ -114,10 +114,9 @@ outpin:                                 # @outpin
 	ld.d	$a3, $a3, %got_pc_lo12(numnets)
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a3, $a3, 0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB0_32
+	blez	$a3, .LBB0_32
 # %bb.15:                               # %.lr.ph80.preheader
-	slt	$a7, $a7, $a1
+	slt	$a4, $a7, $a1
 	slt	$a5, $a5, $a1
 	slt	$a2, $a2, $a1
 	slt	$a1, $a6, $a1
@@ -129,15 +128,16 @@ outpin:                                 # @outpin
 	or	$a0, $a0, $a6
 	maskeqz	$a2, $a0, $a5
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a2, %got_pc_hi20(netarray)
-	ld.d	$a6, $a2, %got_pc_lo12(netarray)
 	add.w	$a0, $a0, $a5
-	maskeqz	$a2, $a0, $a7
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	add.w	$a2, $a0, $a7
-	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
-	ld.d	$a0, $a6, 0
-	maskeqz	$s8, $a2, $a1
+	pcalau12i	$a2, %got_pc_hi20(netarray)
+	ld.d	$a2, $a2, %got_pc_lo12(netarray)
+	maskeqz	$a5, $a0, $a4
+	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
+	add.w	$a0, $a0, $a4
+	maskeqz	$s8, $a0, $a1
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	ld.d	$a0, $a2, 0
+	ori	$a1, $zero, 1
 	ori	$a5, $zero, 2
 	ori	$s3, $zero, 3
 	b	.LBB0_18
@@ -156,14 +156,14 @@ outpin:                                 # @outpin
 	ori	$a5, $zero, 2
 .LBB0_17:                               # %._crit_edge.thread
                                         #   in Loop: Header=BB0_18 Depth=1
-	addi.d	$a4, $s5, 1
+	addi.d	$a1, $s5, 1
 	bge	$s5, $a3, .LBB0_32
 .LBB0_18:                               # %.lr.ph80
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_20 Depth 2
                                         #     Child Loop BB0_26 Depth 2
-	move	$s5, $a4
-	slli.d	$a1, $a4, 3
+	move	$s5, $a1
+	slli.d	$a1, $a1, 3
 	ldx.d	$s0, $a0, $a1
 	ld.d	$a1, $s0, 0
 	beqz	$a1, .LBB0_17

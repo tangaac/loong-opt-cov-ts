@@ -85,67 +85,67 @@ goverlap:                               # @goverlap
 	ld.d	$t5, $t5, %got_pc_lo12(numBinsY)
 	ld.w	$t0, $t0, 0
 	ld.w	$t1, $t1, 0
-	or	$a3, $a6, $a3
-	ld.w	$a6, $t5, 0
+	or	$a6, $a6, $a3
+	ld.w	$a3, $t5, 0
 	sub.w	$t5, $a5, $t0
 	div.w	$t5, $t5, $t1
 	slti	$t8, $t5, 1
-	slt	$fp, $t5, $a6
+	slt	$fp, $t5, $a3
 	maskeqz	$t5, $t5, $fp
-	masknez	$fp, $a6, $fp
+	masknez	$fp, $a3, $fp
 	or	$t5, $t5, $fp
 	masknez	$t5, $t5, $t8
 	maskeqz	$t8, $t7, $t8
 	or	$t8, $t8, $t5
 	sub.w	$t0, $t6, $t0
 	div.w	$t0, $t0, $t1
-	slt	$t1, $a6, $t0
+	slt	$t1, $a3, $t0
 	slt	$t5, $t7, $t0
 	maskeqz	$t0, $t0, $t5
 	masknez	$t5, $t7, $t5
 	or	$t0, $t0, $t5
 	masknez	$t0, $t0, $t1
-	maskeqz	$a6, $a6, $t1
-	or	$a6, $a6, $t0
-	xor	$t0, $s1, $a3
+	maskeqz	$a3, $a3, $t1
+	or	$t1, $a3, $t0
+	xor	$a3, $s1, $a6
+	sltui	$a3, $a3, 1
+	xor	$t0, $t8, $t1
 	sltui	$t0, $t0, 1
-	xor	$t1, $t8, $a6
-	sltui	$t1, $t1, 1
-	and	$t0, $t0, $t1
-	pcalau12i	$t1, %got_pc_hi20(binX)
-	ld.d	$t1, $t1, %got_pc_lo12(binX)
+	and	$a3, $a3, $t0
+	pcalau12i	$t0, %got_pc_hi20(binX)
+	ld.d	$t0, $t0, %got_pc_lo12(binX)
 	pcalau12i	$t5, %got_pc_hi20(binY)
 	ld.d	$t5, $t5, %got_pc_lo12(binY)
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	maskeqz	$t7, $s1, $t0
+	maskeqz	$t7, $s1, $a3
 	st.d	$t8, $sp, 48                    # 8-byte Folded Spill
-	maskeqz	$t0, $t8, $t0
-	st.w	$t7, $t1, 0
-	st.w	$t0, $t5, 0
-	bltz	$a3, .LBB0_55
-# %bb.3:                                # %.lr.ph316
+	maskeqz	$a3, $t8, $a3
+	st.w	$t7, $t0, 0
+	st.w	$a3, $t5, 0
 	bltz	$a6, .LBB0_55
+# %bb.3:                                # %.lr.ph316
+	bltz	$t1, .LBB0_55
 # %bb.4:                                # %.lr.ph316.split.preheader
 	st.d	$a5, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	pcalau12i	$t0, %got_pc_hi20(blockarray)
-	ld.d	$t0, $t0, %got_pc_lo12(blockarray)
-	pcalau12i	$t1, %got_pc_hi20(lapFactor)
-	ld.d	$t1, $t1, %got_pc_lo12(lapFactor)
+	pcalau12i	$a3, %got_pc_hi20(blockarray)
+	ld.d	$a3, $a3, %got_pc_lo12(blockarray)
+	pcalau12i	$t0, %got_pc_hi20(lapFactor)
+	ld.d	$t0, $t0, %got_pc_lo12(lapFactor)
 	pcalau12i	$t5, %got_pc_hi20(offset)
 	ld.d	$t5, $t5, %got_pc_lo12(offset)
 	move	$a5, $zero
 	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
-	ld.d	$t0, $t0, 0
-	st.d	$t0, $sp, 0                     # 8-byte Folded Spill
-	fld.d	$fa0, $t1, 0
-	ld.w	$t0, $t5, 0
-	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a3, $a3, 0
+	st.d	$a3, $sp, 0                     # 8-byte Folded Spill
+	fld.d	$fa0, $t0, 0
+	ld.w	$a3, $t5, 0
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$a3, $t1, 1
 	addi.d	$a6, $a6, 1
-	addi.d	$a3, $a3, 1
+	bstrpick.d	$a6, $a6, 31, 0
+	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a3, $a3, 31, 0
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	bstrpick.d	$a3, $a6, 31, 0
 	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB0_6
@@ -193,7 +193,7 @@ goverlap:                               # @goverlap
                                         #         Child Loop BB0_33 Depth 4
                                         #           Child Loop BB0_37 Depth 5
 	or	$a3, $s5, $a5
-	bstrpick.d	$a3, $a3, 31, 0
+	slli.d	$a3, $a3, 32
 	beqz	$a3, .LBB0_12
 # %bb.11:                               #   in Loop: Header=BB0_10 Depth=2
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
@@ -207,8 +207,7 @@ goverlap:                               # @goverlap
 	slli.d	$a6, $s5, 3
 	ldx.d	$s8, $a3, $a6
 	ld.w	$a3, $s8, 0
-	ori	$a5, $zero, 1
-	blt	$a3, $a5, .LBB0_9
+	blez	$a3, .LBB0_9
 # %bb.13:                               # %.lr.ph304.preheader
                                         #   in Loop: Header=BB0_10 Depth=2
 	addi.d	$a3, $a3, 1
@@ -251,60 +250,60 @@ goverlap:                               # @goverlap
 	addi.d	$a3, $a3, 152
 	move	$t0, $s7
 .LBB0_20:                               #   in Loop: Header=BB0_16 Depth=3
-	ld.d	$a3, $a3, 0
+	ld.d	$t8, $a3, 0
 	ld.w	$t7, $t0, 16
 	ld.w	$s2, $t0, 12
-	ld.w	$t0, $a3, 56
-	ld.w	$t5, $a3, 60
-	ld.w	$t8, $a3, 64
-	ld.w	$fp, $a3, 68
-	add.w	$s6, $t0, $s2
-	add.w	$s3, $t5, $s2
-	add.w	$s1, $t8, $t7
-	add.w	$t8, $fp, $t7
+	ld.w	$a3, $t8, 56
+	ld.w	$t0, $t8, 60
+	ld.w	$t5, $t8, 64
+	ld.w	$fp, $t8, 68
+	add.w	$s6, $a3, $s2
+	add.w	$s4, $t0, $s2
+	add.w	$s3, $t5, $t7
+	add.w	$s1, $fp, $t7
 	blt	$t2, $a6, .LBB0_22
 # %bb.21:                               #   in Loop: Header=BB0_16 Depth=3
-	ld.w	$t0, $a3, 40
-	ld.w	$t5, $a3, 44
-	ld.w	$fp, $a3, 48
-	ld.w	$s4, $a3, 52
-	sub.w	$s6, $s6, $t0
-	add.w	$s3, $t5, $s3
-	sub.w	$s1, $s1, $fp
-	add.w	$t8, $s4, $t8
+	ld.w	$a3, $t8, 40
+	ld.w	$t0, $t8, 44
+	ld.w	$t5, $t8, 48
+	ld.w	$fp, $t8, 52
+	sub.w	$s6, $s6, $a3
+	add.w	$s4, $t0, $s4
+	sub.w	$s3, $s3, $t5
+	add.w	$s1, $fp, $s1
 .LBB0_22:                               #   in Loop: Header=BB0_16 Depth=3
 	bge	$s6, $t4, .LBB0_15
 # %bb.23:                               #   in Loop: Header=BB0_16 Depth=3
-	bge	$t3, $s3, .LBB0_15
+	bge	$t3, $s4, .LBB0_15
 # %bb.24:                               #   in Loop: Header=BB0_16 Depth=3
-	bge	$s1, $t6, .LBB0_15
+	bge	$s3, $t6, .LBB0_15
 # %bb.25:                               #   in Loop: Header=BB0_16 Depth=3
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	bge	$a5, $t8, .LBB0_15
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	bge	$a3, $s1, .LBB0_15
 # %bb.26:                               #   in Loop: Header=BB0_16 Depth=3
-	ld.w	$t0, $s7, 60
+	ld.w	$a3, $s7, 60
 	ori	$a5, $zero, 1
-	bne	$t0, $a5, .LBB0_29
+	bne	$a3, $a5, .LBB0_29
 # %bb.27:                               #   in Loop: Header=BB0_16 Depth=3
-	ld.w	$t0, $t1, 60
+	ld.w	$a3, $t1, 60
 	ori	$a5, $zero, 1
-	bne	$t0, $a5, .LBB0_29
+	bne	$a3, $a5, .LBB0_29
 # %bb.28:                               #   in Loop: Header=BB0_16 Depth=3
 	slt	$a3, $s6, $t3
 	masknez	$a6, $s6, $a3
 	maskeqz	$a3, $t3, $a3
 	or	$a3, $a3, $a6
-	slt	$a6, $t4, $s3
-	masknez	$t0, $s3, $a6
+	slt	$a6, $t4, $s4
+	masknez	$t0, $s4, $a6
 	maskeqz	$a6, $t4, $a6
 	or	$a6, $a6, $t0
 	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	slt	$t0, $s1, $a5
-	masknez	$t1, $s1, $t0
+	slt	$t0, $s3, $a5
+	masknez	$t1, $s3, $t0
 	maskeqz	$t0, $a5, $t0
 	or	$t0, $t0, $t1
-	slt	$t1, $t6, $t8
-	masknez	$t5, $t8, $t1
+	slt	$t1, $t6, $s1
+	masknez	$t5, $s1, $t1
 	maskeqz	$t1, $t6, $t1
 	or	$t1, $t1, $t5
 	sub.d	$t0, $t1, $t0
@@ -322,13 +321,13 @@ goverlap:                               # @goverlap
 	st.d	$a5, $sp, 96                    # 8-byte Folded Spill
 	b	.LBB0_15
 .LBB0_29:                               #   in Loop: Header=BB0_16 Depth=3
-	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s6, $a5, 0
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s6, $a3, 0
 	beqz	$s6, .LBB0_15
 # %bb.30:                               # %.lr.ph287
                                         #   in Loop: Header=BB0_16 Depth=3
-	ld.d	$a3, $a3, 0
-	beqz	$a3, .LBB0_15
+	ld.d	$s4, $t8, 0
+	beqz	$s4, .LBB0_15
 # %bb.31:                               # %.lr.ph287.split
                                         #   in Loop: Header=BB0_16 Depth=3
 	move	$s1, $zero
@@ -345,27 +344,27 @@ goverlap:                               # @goverlap
                                         #       Parent Loop BB0_16 Depth=3
                                         # =>      This Loop Header: Depth=4
                                         #           Child Loop BB0_37 Depth 5
-	ld.w	$a6, $s6, 56
+	ld.w	$a3, $s6, 56
 	ld.w	$t0, $s6, 60
 	ld.w	$t5, $s6, 64
 	ld.w	$t8, $s6, 68
-	add.w	$a6, $a6, $a1
+	add.w	$a6, $a3, $a1
 	add.w	$t1, $t0, $a1
 	add.w	$s3, $t5, $a2
 	add.w	$s7, $t8, $a2
 	blt	$t2, $a0, .LBB0_35
 # %bb.34:                               #   in Loop: Header=BB0_33 Depth=4
-	ld.w	$t0, $s6, 40
-	ld.w	$t5, $s6, 44
-	ld.w	$t8, $s6, 48
-	ld.w	$fp, $s6, 52
-	sub.w	$a6, $a6, $t0
-	add.w	$t1, $t5, $t1
-	sub.w	$s3, $s3, $t8
-	add.w	$s7, $fp, $s7
+	ld.w	$a3, $s6, 40
+	ld.w	$t0, $s6, 44
+	ld.w	$t5, $s6, 48
+	ld.w	$t8, $s6, 52
+	sub.w	$a6, $a6, $a3
+	add.w	$t1, $t0, $t1
+	sub.w	$s3, $s3, $t5
+	add.w	$s7, $t8, $s7
 .LBB0_35:                               # %.lr.ph.us
                                         #   in Loop: Header=BB0_33 Depth=4
-	move	$t8, $a3
+	move	$t8, $s4
 	b	.LBB0_37
 	.p2align	4, , 16
 .LBB0_36:                               #   in Loop: Header=BB0_37 Depth=5
@@ -376,42 +375,42 @@ goverlap:                               # @goverlap
                                         #       Parent Loop BB0_16 Depth=3
                                         #         Parent Loop BB0_33 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.w	$t0, $t8, 56
-	add.w	$t0, $t0, $s2
-	bge	$t0, $t1, .LBB0_36
+	ld.w	$a3, $t8, 56
+	add.w	$a3, $a3, $s2
+	bge	$a3, $t1, .LBB0_36
 # %bb.38:                               #   in Loop: Header=BB0_37 Depth=5
-	ld.w	$t5, $t8, 60
-	add.w	$t5, $t5, $s2
-	bge	$a6, $t5, .LBB0_36
+	ld.w	$t0, $t8, 60
+	add.w	$t0, $t0, $s2
+	bge	$a6, $t0, .LBB0_36
 # %bb.39:                               #   in Loop: Header=BB0_37 Depth=5
-	ld.w	$fp, $t8, 64
-	add.w	$fp, $fp, $t7
-	bge	$fp, $s7, .LBB0_36
+	ld.w	$t5, $t8, 64
+	add.w	$t5, $t5, $t7
+	bge	$t5, $s7, .LBB0_36
 # %bb.40:                               #   in Loop: Header=BB0_37 Depth=5
-	ld.w	$s4, $t8, 68
-	add.w	$s4, $s4, $t7
-	bge	$s3, $s4, .LBB0_36
+	ld.w	$fp, $t8, 68
+	add.w	$fp, $fp, $t7
+	bge	$s3, $fp, .LBB0_36
 # %bb.41:                               #   in Loop: Header=BB0_37 Depth=5
-	slt	$a5, $t0, $a6
-	masknez	$t0, $t0, $a5
+	slt	$a5, $a3, $a6
+	masknez	$a3, $a3, $a5
 	maskeqz	$a5, $a6, $a5
+	or	$a3, $a5, $a3
+	slt	$a5, $t1, $t0
+	masknez	$t0, $t0, $a5
+	maskeqz	$a5, $t1, $a5
 	or	$a5, $a5, $t0
-	slt	$t0, $t1, $t5
+	slt	$t0, $t5, $s3
 	masknez	$t5, $t5, $t0
-	maskeqz	$t0, $t1, $t0
+	maskeqz	$t0, $s3, $t0
 	or	$t0, $t0, $t5
-	slt	$t5, $fp, $s3
+	slt	$t5, $s7, $fp
 	masknez	$fp, $fp, $t5
-	maskeqz	$t5, $s3, $t5
+	maskeqz	$t5, $s7, $t5
 	or	$t5, $t5, $fp
-	slt	$fp, $s7, $s4
-	masknez	$s4, $s4, $fp
-	maskeqz	$fp, $s7, $fp
-	or	$fp, $fp, $s4
-	sub.d	$t5, $fp, $t5
-	sub.d	$a5, $t0, $a5
-	mul.d	$a5, $t5, $a5
-	add.w	$s1, $a5, $s1
+	sub.d	$t0, $t5, $t0
+	sub.d	$a3, $a5, $a3
+	mul.d	$a3, $t0, $a3
+	add.w	$s1, $a3, $s1
 	b	.LBB0_36
 	.p2align	4, , 16
 .LBB0_42:                               # %..loopexit_crit_edge.split
@@ -424,27 +423,27 @@ goverlap:                               # @goverlap
                                         #       Parent Loop BB0_16 Depth=3
                                         # =>      This Loop Header: Depth=4
                                         #           Child Loop BB0_47 Depth 5
-	ld.w	$a5, $s6, 56
-	ld.w	$t0, $s6, 60
-	ld.w	$t1, $s6, 64
+	ld.w	$a3, $s6, 56
+	ld.w	$a5, $s6, 60
+	ld.w	$t0, $s6, 64
 	ld.w	$t5, $s6, 68
-	add.w	$a6, $a5, $a1
-	add.w	$s7, $t0, $a1
-	add.w	$t1, $t1, $a2
+	add.w	$a6, $a3, $a1
+	add.w	$s7, $a5, $a1
+	add.w	$t1, $t0, $a2
 	add.w	$s3, $t5, $a2
 	blt	$t2, $a0, .LBB0_45
 # %bb.44:                               #   in Loop: Header=BB0_43 Depth=4
-	ld.w	$a5, $s6, 40
-	ld.w	$t0, $s6, 44
-	ld.w	$t5, $s6, 48
-	ld.w	$t8, $s6, 52
-	sub.w	$a6, $a6, $a5
-	add.w	$s7, $t0, $s7
-	sub.w	$t1, $t1, $t5
-	add.w	$s3, $t8, $s3
+	ld.w	$a3, $s6, 40
+	ld.w	$a5, $s6, 44
+	ld.w	$t0, $s6, 48
+	ld.w	$t5, $s6, 52
+	sub.w	$a6, $a6, $a3
+	add.w	$s7, $a5, $s7
+	sub.w	$t1, $t1, $t0
+	add.w	$s3, $t5, $s3
 .LBB0_45:                               # %.lr.ph
                                         #   in Loop: Header=BB0_43 Depth=4
-	move	$t8, $a3
+	move	$t8, $s4
 	b	.LBB0_47
 	.p2align	4, , 16
 .LBB0_46:                               #   in Loop: Header=BB0_47 Depth=5
@@ -455,11 +454,11 @@ goverlap:                               # @goverlap
                                         #       Parent Loop BB0_16 Depth=3
                                         #         Parent Loop BB0_43 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.w	$a5, $t8, 56
-	ld.w	$t0, $t8, 40
-	add.d	$a5, $a5, $s2
-	sub.w	$s4, $a5, $t0
-	bge	$s4, $s7, .LBB0_46
+	ld.w	$a3, $t8, 56
+	ld.w	$a5, $t8, 40
+	add.d	$a3, $a3, $s2
+	sub.w	$a3, $a3, $a5
+	bge	$a3, $s7, .LBB0_46
 # %bb.48:                               #   in Loop: Header=BB0_47 Depth=5
 	ld.w	$a5, $t8, 60
 	ld.w	$t0, $t8, 44
@@ -479,26 +478,26 @@ goverlap:                               # @goverlap
 	add.w	$t5, $t5, $a5
 	bge	$t1, $t5, .LBB0_46
 # %bb.51:                               #   in Loop: Header=BB0_47 Depth=5
-	slt	$a5, $s4, $a6
-	masknez	$s4, $s4, $a5
+	slt	$a5, $a3, $a6
+	masknez	$a3, $a3, $a5
 	maskeqz	$a5, $a6, $a5
-	or	$a5, $a5, $s4
-	slt	$s4, $s7, $fp
-	masknez	$fp, $fp, $s4
-	maskeqz	$s4, $s7, $s4
-	or	$fp, $s4, $fp
-	slt	$s4, $t0, $t1
-	masknez	$t0, $t0, $s4
-	maskeqz	$s4, $t1, $s4
-	or	$t0, $s4, $t0
-	slt	$s4, $s3, $t5
-	masknez	$t5, $t5, $s4
-	maskeqz	$s4, $s3, $s4
-	or	$t5, $s4, $t5
+	or	$a3, $a5, $a3
+	slt	$a5, $s7, $fp
+	masknez	$fp, $fp, $a5
+	maskeqz	$a5, $s7, $a5
+	or	$a5, $a5, $fp
+	slt	$fp, $t0, $t1
+	masknez	$t0, $t0, $fp
+	maskeqz	$fp, $t1, $fp
+	or	$t0, $fp, $t0
+	slt	$fp, $s3, $t5
+	masknez	$t5, $t5, $fp
+	maskeqz	$fp, $s3, $fp
+	or	$t5, $fp, $t5
 	sub.d	$t0, $t5, $t0
-	sub.d	$a5, $fp, $a5
-	mul.d	$a5, $t0, $a5
-	add.w	$s1, $a5, $s1
+	sub.d	$a3, $a5, $a3
+	mul.d	$a3, $t0, $a3
+	add.w	$s1, $a3, $s1
 	b	.LBB0_46
 .LBB0_52:                               # %._crit_edge
                                         #   in Loop: Header=BB0_16 Depth=3

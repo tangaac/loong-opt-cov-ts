@@ -1656,7 +1656,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	b	.LBB3_483
 .LBB3_176:                              # %.preheader1203
 	move	$s4, $zero
-	ori	$s8, $zero, 16
+	ori	$s5, $zero, 16
 	lu12i.w	$a0, 190278
 	ori	$a0, $a0, 3118
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -1667,14 +1667,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ori	$a0, $a0, 1326
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	addi.w	$s7, $zero, -1
 	b	.LBB3_178
 	.p2align	4, , 16
 .LBB3_177:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit599
                                         #   in Loop: Header=BB3_178 Depth=1
-	andi	$a0, $s5, 1
+	andi	$a0, $s8, 1
 	addi.d	$s4, $s4, 128
-	move	$s0, $s2
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	move	$s0, $s8
 	beqz	$a0, .LBB3_433
 .LBB3_178:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 72
@@ -1690,11 +1690,11 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a3, $fp, 16
 	srli.d	$a1, $a1, 7
 	alsl.d	$a0, $a0, $a1, 2
-	addi.d	$a4, $s0, 1
+	addi.d	$s7, $s0, 1
 	sub.d	$a1, $a2, $a3
 	srli.d	$a1, $a1, 7
 	add.w	$a0, $a0, $a1
-	bge	$a4, $a0, .LBB3_429
+	bge	$s7, $a0, .LBB3_429
 # %bb.179:                              #   in Loop: Header=BB3_178 Depth=1
 	ld.d	$a2, $fp, 96
 	ld.d	$a1, $fp, 104
@@ -1703,7 +1703,6 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	srai.d	$a1, $a1, 7
 	add.d	$a3, $s0, $a1
 	addi.d	$a3, $a3, 1
-	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
 	bltz	$a3, .LBB3_182
 # %bb.180:                              #   in Loop: Header=BB3_178 Depth=1
 	ori	$a4, $zero, 3
@@ -1732,7 +1731,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $s3
-	bltu	$a1, $s8, .LBB3_188
+	bltu	$a1, $s5, .LBB3_188
 # %bb.186:                              # %.noexc.i.i
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp264:
@@ -1764,6 +1763,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB3_192:                              #   in Loop: Header=BB3_178 Depth=1
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 272
 	ld.d	$s2, $sp, 208
 	st.d	$a0, $sp, 216
@@ -1776,12 +1776,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	sltui	$s5, $a0, 1
+	sltui	$s8, $a0, 1
 	bne	$s2, $s3, .LBB3_195
 	b	.LBB3_196
 	.p2align	4, , 16
 .LBB3_194:                              #   in Loop: Header=BB3_178 Depth=1
-	move	$s5, $zero
+	move	$s8, $zero
 	beq	$s2, $s3, .LBB3_196
 .LBB3_195:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i443
                                         #   in Loop: Header=BB3_178 Depth=1
@@ -1828,7 +1828,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_205
+	bltu	$a1, $s5, .LBB3_205
 # %bb.203:                              # %.noexc.i.i449
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp267:
@@ -1845,6 +1845,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	st.d	$a1, $sp, 224
 .LBB3_205:                              # %._crit_edge.i.i.i448
                                         #   in Loop: Header=BB3_178 Depth=1
+	addi.w	$s7, $zero, -1
 	beq	$a1, $s7, .LBB3_209
 # %bb.206:                              # %._crit_edge.i.i.i448
                                         #   in Loop: Header=BB3_178 Depth=1
@@ -1872,7 +1873,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	or	$s5, $a0, $s5
+	or	$s8, $a0, $s8
 .LBB3_211:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit456
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a0, $sp, 224
@@ -1922,7 +1923,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_222
+	bltu	$a1, $s5, .LBB3_222
 # %bb.220:                              # %.noexc.i.i463
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp270:
@@ -1966,7 +1967,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	or	$s5, $a0, $s5
+	or	$s8, $a0, $s8
 .LBB3_228:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit470
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a0, $sp, 224
@@ -2016,7 +2017,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_239
+	bltu	$a1, $s5, .LBB3_239
 # %bb.237:                              # %.noexc.i.i477
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp273:
@@ -2060,7 +2061,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	or	$s5, $a0, $s5
+	or	$s8, $a0, $s8
 .LBB3_245:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit484
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a0, $sp, 224
@@ -2110,7 +2111,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_256
+	bltu	$a1, $s5, .LBB3_256
 # %bb.254:                              # %.noexc.i.i491
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp276:
@@ -2154,7 +2155,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	or	$s5, $a0, $s5
+	or	$s8, $a0, $s8
 .LBB3_262:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit498
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a0, $sp, 224
@@ -2204,7 +2205,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_273
+	bltu	$a1, $s5, .LBB3_273
 # %bb.271:                              # %.noexc.i.i505
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp279:
@@ -2248,7 +2249,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	sltui	$a0, $a0, 1
-	or	$s5, $a0, $s5
+	or	$s8, $a0, $s8
 .LBB3_279:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit512
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a0, $sp, 224
@@ -2298,7 +2299,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_290
+	bltu	$a1, $s5, .LBB3_290
 # %bb.288:                              # %.noexc.i.i519
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp282:
@@ -2339,7 +2340,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	or	$s5, $a1, $s5
+	or	$s8, $a1, $s8
 .LBB3_296:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit526
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a1, $sp, 224
@@ -2388,7 +2389,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_307
+	bltu	$a1, $s5, .LBB3_307
 # %bb.305:                              # %.noexc.i.i533
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp285:
@@ -2429,7 +2430,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	or	$s5, $a1, $s5
+	or	$s8, $a1, $s8
 .LBB3_313:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit540
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a1, $sp, 224
@@ -2478,7 +2479,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_324
+	bltu	$a1, $s5, .LBB3_324
 # %bb.322:                              # %.noexc.i.i547
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp288:
@@ -2519,7 +2520,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	or	$s5, $a1, $s5
+	or	$s8, $a1, $s8
 .LBB3_330:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit554
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a1, $sp, 224
@@ -2568,7 +2569,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_341
+	bltu	$a1, $s5, .LBB3_341
 # %bb.339:                              # %.noexc.i.i561
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp291:
@@ -2610,7 +2611,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ori	$a2, $a2, 3630
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	or	$s5, $a1, $s5
+	or	$s8, $a1, $s8
 .LBB3_347:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit568
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a1, $sp, 224
@@ -2659,7 +2660,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_358
+	bltu	$a1, $s5, .LBB3_358
 # %bb.356:                              # %.noexc.i.i575
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp294:
@@ -2701,7 +2702,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ori	$a2, $a2, 1838
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	or	$s5, $a1, $s5
+	or	$s8, $a1, $s8
 .LBB3_364:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit582
                                         #   in Loop: Header=BB3_178 Depth=1
 	addi.d	$a1, $sp, 224
@@ -2750,7 +2751,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s2, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s8, .LBB3_375
+	bltu	$a1, $s5, .LBB3_375
 # %bb.373:                              # %.noexc.i.i589
                                         #   in Loop: Header=BB3_178 Depth=1
 .Ltmp297:
@@ -2792,10 +2793,9 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ori	$a2, $a2, 1838
 	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	or	$s5, $a1, $s5
+	or	$s8, $a1, $s8
 .LBB3_381:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit596
                                         #   in Loop: Header=BB3_178 Depth=1
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$a1, $sp, 224
 	beq	$a0, $a1, .LBB3_177
 # %bb.382:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i597
@@ -3105,7 +3105,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a3, $a1, $s2
+	add.d	$a3, $a1, $s8
 	bltz	$a3, .LBB3_558
 # %bb.434:
 	ori	$a4, $zero, 3
@@ -3832,7 +3832,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 2
 	sub.d	$a1, $a1, $a2
-	add.d	$a1, $a1, $s2
+	add.d	$a1, $a1, $s8
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
 .LBB3_561:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit604
@@ -3999,8 +3999,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a3, $a1, $a3
+	add.d	$a3, $a1, $s8
 	bltz	$a3, .LBB3_590
 # %bb.588:
 	ori	$a4, $zero, 3
@@ -4019,8 +4018,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ldx.d	$a0, $a0, $a3
 	slli.d	$a2, $a2, 2
 	sub.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $s8
 	slli.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
 .LBB3_593:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit620
@@ -4143,8 +4141,8 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	jirl	$ra, $ra, 0
 .LBB3_616:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit637
 	ld.d	$a0, $s0, 72
-	ld.d	$s3, $s0, 40
-	sub.d	$a1, $a0, $s3
+	ld.d	$s5, $s0, 40
+	sub.d	$a1, $a0, $s5
 	srli.d	$a1, $a1, 3
 	sltu	$a0, $zero, $a0
 	ld.d	$a2, $s0, 48
@@ -4160,12 +4158,11 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	srai.d	$a1, $a1, 5
 	add.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_670
+	blez	$a1, .LBB3_670
 # %bb.617:                              # %.lr.ph1364
 	ld.d	$a1, $s0, 24
-	move	$s5, $zero
 	move	$s4, $zero
+	move	$s3, $zero
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	sub.d	$s8, $a2, $a1
 	ld.d	$s0, $fp, 496
@@ -4175,18 +4172,18 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	b	.LBB3_619
 .LBB3_618:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit.thread1199
                                         #   in Loop: Header=BB3_619 Depth=1
-	addi.d	$s4, $s4, 1
-	addi.d	$s5, $s5, -4
+	addi.d	$s3, $s3, 1
+	addi.d	$s4, $s4, -4
 	addi.d	$s8, $s8, 32
-	beq	$s7, $s4, .LBB3_670
+	beq	$s7, $s3, .LBB3_670
 .LBB3_619:                              # =>This Inner Loop Header: Depth=1
-	add.d	$a0, $s2, $s4
+	add.d	$a0, $s2, $s3
 	bltz	$a0, .LBB3_622
 # %bb.620:                              #   in Loop: Header=BB3_619 Depth=1
 	ori	$a1, $zero, 15
 	bltu	$a1, $a0, .LBB3_623
 # %bb.621:                              #   in Loop: Header=BB3_619 Depth=1
-	slli.d	$a0, $s4, 5
+	slli.d	$a0, $s3, 5
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.d	$a1, $a0, 8
@@ -4199,7 +4196,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	srli.d	$a0, $a0, 4
 .LBB3_624:                              #   in Loop: Header=BB3_619 Depth=1
 	slli.d	$a1, $a0, 3
-	ldx.d	$a1, $s3, $a1
+	ldx.d	$a1, $s5, $a1
 	slli.d	$a0, $a0, 9
 	sub.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s8
@@ -4222,13 +4219,13 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $a1, 24
 	ld.d	$a1, $a1, 40
 	sub.d	$a0, $a2, $a0
-	add.d	$a3, $a0, $s4
+	add.d	$a3, $a0, $s3
 	bltz	$a3, .LBB3_630
 # %bb.628:
 	ori	$a4, $zero, 511
 	bltu	$a4, $a3, .LBB3_631
 # %bb.629:
-	add.d	$a0, $a2, $s4
+	add.d	$a0, $a2, $s3
 	b	.LBB3_633
 .LBB3_630:
 	srai.d	$a2, $a3, 9
@@ -4241,15 +4238,15 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	slli.d	$a2, $a2, 9
 	sub.d	$a0, $a0, $a2
 	add.d	$a0, $a1, $a0
-	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $s3
 .LBB3_633:                              # %_ZNSt5dequeIbSaIbEEixEm.exit
-	ld.bu	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB3_635
+	ld.bu	$a0, $a0, 0
+	beqz	$a0, .LBB3_635
 # %bb.634:
+	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 480
 .LBB3_635:
-	beqz	$s4, .LBB3_644
+	beqz	$s3, .LBB3_644
 # %bb.636:                              # %.lr.ph1367
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $a2, 16
@@ -4275,7 +4272,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	add.w	$s1, $a6, $s1
 	addi.d	$a1, $a1, 1
 	addi.d	$a3, $a3, 4
-	beq	$s4, $a1, .LBB3_645
+	beq	$s3, $a1, .LBB3_645
 .LBB3_640:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a4, $a1
 	bltz	$a6, .LBB3_637
@@ -4290,12 +4287,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 .LBB3_644:
 	move	$s1, $zero
 .LBB3_645:                              # %.preheader
+	move	$s7, $zero
 	move	$s8, $zero
-	move	$s3, $zero
-	addi.d	$s7, $sp, 224
-	sub.d	$s2, $zero, $s5
+	addi.d	$s5, $sp, 224
+	sub.d	$s2, $zero, $s4
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
-	addi.d	$s5, $a0, %pc_lo12(.L.str.33)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.33)
 	pcalau12i	$a0, %pc_hi20(.L.str.50)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.50)
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
@@ -4304,8 +4301,8 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 .LBB3_646:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit660
                                         #   in Loop: Header=BB3_647 Depth=1
 	addi.d	$s0, $s0, 1
-	addi.d	$s3, $s3, 1
-	addi.d	$s8, $s8, 32
+	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 32
 .LBB3_647:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a2, $a0, 16
@@ -4313,7 +4310,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $a0, 40
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 2
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s3, $a1
 	bltz	$a1, .LBB3_650
 # %bb.648:                              #   in Loop: Header=BB3_647 Depth=1
 	ori	$a3, $zero, 127
@@ -4335,19 +4332,19 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 .LBB3_653:                              # %_ZNSt5dequeIiSaIiEEixEm.exit644
                                         #   in Loop: Header=BB3_647 Depth=1
 	ld.w	$a1, $a0, 0
-	add.d	$a0, $s1, $s3
+	add.d	$a0, $s1, $s8
 	add.w	$a1, $a1, $s1
 	bge	$a0, $a1, .LBB3_670
 # %bb.654:                              # %._crit_edge.i.i645
                                         #   in Loop: Header=BB3_647 Depth=1
-	ld.w	$a1, $s5, 0
-	st.d	$s7, $sp, 208
-	ld.b	$a2, $s5, 4
-	st.w	$a1, $s7, 0
+	ld.w	$a1, $s4, 0
+	st.d	$s5, $sp, 208
+	ld.b	$a2, $s4, 4
+	st.w	$a1, $s5, 0
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a3, $a4, 16
 	ld.d	$a1, $a4, 24
-	st.b	$a2, $s7, 4
+	st.b	$a2, $s5, 4
 	ori	$a2, $zero, 5
 	st.d	$a2, $sp, 216
 	ld.d	$a2, $a4, 40
@@ -4361,8 +4358,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 # %bb.656:                              #   in Loop: Header=BB3_647 Depth=1
 	add.d	$a0, $a3, $s0
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB3_660
+	bnez	$a0, .LBB3_660
 	b	.LBB3_661
 .LBB3_657:                              #   in Loop: Header=BB3_647 Depth=1
 	srai.d	$a0, $a0, 9
@@ -4376,10 +4372,9 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	sub.d	$a0, $a1, $a0
 	add.d	$a0, $a2, $a0
 	add.d	$a0, $a0, $s1
-	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $s8
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB3_661
+	beqz	$a0, .LBB3_661
 .LBB3_660:                              #   in Loop: Header=BB3_647 Depth=1
 .Ltmp259:
 	addi.d	$a0, $sp, 208
@@ -4397,13 +4392,13 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 360
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 5
-	add.d	$a1, $s3, $a1
+	add.d	$a1, $s8, $a1
 	bltz	$a1, .LBB3_664
 # %bb.662:                              #   in Loop: Header=BB3_647 Depth=1
 	ori	$a3, $zero, 15
 	bltu	$a3, $a1, .LBB3_665
 # %bb.663:                              #   in Loop: Header=BB3_647 Depth=1
-	add.d	$a0, $a2, $s8
+	add.d	$a0, $a2, $s7
 	b	.LBB3_667
 .LBB3_664:                              #   in Loop: Header=BB3_647 Depth=1
 	srai.d	$a2, $a1, 4
@@ -4427,7 +4422,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 # %bb.668:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSERKS4_.exit
                                         #   in Loop: Header=BB3_647 Depth=1
 	ld.d	$a0, $sp, 208
-	beq	$a0, $s7, .LBB3_646
+	beq	$a0, $s5, .LBB3_646
 # %bb.669:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i658
                                         #   in Loop: Header=BB3_647 Depth=1
 	ld.d	$a1, $sp, 224
@@ -4443,12 +4438,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	st.b	$zero, $a0, 0
 .LBB3_672:
-	move	$s3, $zero
 	move	$s4, $zero
+	move	$s5, $zero
 	ori	$s8, $zero, 3
-	ori	$s7, $zero, 16
+	ori	$s3, $zero, 16
 	addi.w	$s0, $zero, -1
-	ori	$s5, $zero, 6
+	ori	$s7, $zero, 6
 	pcalau12i	$a0, %pc_hi20(.L.str.34)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.34)
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
@@ -4470,20 +4465,20 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	sub.d	$a1, $a1, $a4
 	srli.d	$a1, $a1, 7
 	add.w	$a0, $a0, $a1
-	bge	$s4, $a0, .LBB3_831
+	bge	$s5, $a0, .LBB3_831
 # %bb.674:                              #   in Loop: Header=BB3_673 Depth=1
 	ld.d	$a2, $fp, 96
 	ld.d	$a1, $fp, 104
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	st.b	$zero, $sp, 175
 	bltz	$a1, .LBB3_677
 # %bb.675:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_678
 # %bb.676:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_680
 .LBB3_677:                              #   in Loop: Header=BB3_673 Depth=1
 	srai.d	$a2, $a1, 2
@@ -4505,7 +4500,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s1, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s7, .LBB3_683
+	bltu	$a1, $s3, .LBB3_683
 # %bb.681:                              # %.noexc.i.i665
                                         #   in Loop: Header=BB3_673 Depth=1
 .Ltmp236:
@@ -4533,7 +4528,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	bne	$a0, $s5, .LBB3_689
+	bne	$a0, $s7, .LBB3_689
 .LBB3_687:                              #   in Loop: Header=BB3_673 Depth=1
 	ori	$a2, $zero, 6
 	move	$a0, $s1
@@ -4552,7 +4547,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	beq	$a0, $s5, .LBB3_687
+	beq	$a0, $s7, .LBB3_687
 .LBB3_689:                              #   in Loop: Header=BB3_673 Depth=1
 	move	$s2, $zero
 	addi.d	$a0, $sp, 224
@@ -4573,14 +4568,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	ori	$a3, $zero, 1
 	st.b	$a3, $sp, 175
 	bltz	$a1, .LBB3_698
 # %bb.693:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_700
 # %bb.694:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_702
 	.p2align	4, , 16
 .LBB3_695:                              #   in Loop: Header=BB3_673 Depth=1
@@ -4589,12 +4584,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	bltz	$a1, .LBB3_699
 # %bb.696:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_703
 # %bb.697:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_705
 .LBB3_698:                              #   in Loop: Header=BB3_673 Depth=1
 	srai.d	$a2, $a1, 2
@@ -4633,7 +4628,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s1, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s7, .LBB3_708
+	bltu	$a1, $s3, .LBB3_708
 # %bb.706:                              # %.noexc.i.i681
                                         #   in Loop: Header=BB3_673 Depth=1
 .Ltmp239:
@@ -4661,7 +4656,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	bne	$a0, $s5, .LBB3_714
+	bne	$a0, $s7, .LBB3_714
 .LBB3_712:                              #   in Loop: Header=BB3_673 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.35)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.35)
@@ -4681,7 +4676,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	beq	$a0, $s5, .LBB3_712
+	beq	$a0, $s7, .LBB3_712
 .LBB3_714:                              #   in Loop: Header=BB3_673 Depth=1
 	move	$s2, $zero
 	addi.d	$a0, $sp, 224
@@ -4702,14 +4697,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	ori	$a3, $zero, 1
 	st.b	$a3, $sp, 175
 	bltz	$a1, .LBB3_723
 # %bb.718:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_725
 # %bb.719:                              #   in Loop: Header=BB3_673 Depth=1
-	slli.d	$a0, $s4, 7
+	slli.d	$a0, $s5, 7
 	add.d	$a0, $a2, $a0
 	b	.LBB3_727
 .LBB3_720:                              #   in Loop: Header=BB3_673 Depth=1
@@ -4718,12 +4713,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	bltz	$a1, .LBB3_724
 # %bb.721:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_728
 # %bb.722:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_730
 .LBB3_723:                              #   in Loop: Header=BB3_673 Depth=1
 	srai.d	$a2, $a1, 2
@@ -4762,7 +4757,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s1, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s7, .LBB3_733
+	bltu	$a1, $s3, .LBB3_733
 # %bb.731:                              # %.noexc.i.i697
                                         #   in Loop: Header=BB3_673 Depth=1
 .Ltmp242:
@@ -4790,7 +4785,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	bne	$a0, $s5, .LBB3_739
+	bne	$a0, $s7, .LBB3_739
 .LBB3_737:                              #   in Loop: Header=BB3_673 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.36)
@@ -4808,7 +4803,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	beq	$a0, $s5, .LBB3_737
+	beq	$a0, $s7, .LBB3_737
 .LBB3_739:                              #   in Loop: Header=BB3_673 Depth=1
 	move	$s2, $zero
 .LBB3_740:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit701
@@ -4831,14 +4826,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	ori	$a3, $zero, 1
 	st.b	$a3, $sp, 175
 	bltz	$a1, .LBB3_749
 # %bb.744:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_751
 # %bb.745:                              #   in Loop: Header=BB3_673 Depth=1
-	slli.d	$a0, $s4, 7
+	slli.d	$a0, $s5, 7
 	add.d	$a0, $a2, $a0
 	b	.LBB3_753
 .LBB3_746:                              #   in Loop: Header=BB3_673 Depth=1
@@ -4847,12 +4842,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	bltz	$a1, .LBB3_750
 # %bb.747:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_754
 # %bb.748:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_756
 .LBB3_749:                              #   in Loop: Header=BB3_673 Depth=1
 	srai.d	$a2, $a1, 2
@@ -4891,7 +4886,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s1, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s7, .LBB3_759
+	bltu	$a1, $s3, .LBB3_759
 # %bb.757:                              # %.noexc.i.i713
                                         #   in Loop: Header=BB3_673 Depth=1
 .Ltmp245:
@@ -4925,7 +4920,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	bne	$a0, $s5, .LBB3_765
+	bne	$a0, $s7, .LBB3_765
 # %bb.764:                              #   in Loop: Header=BB3_673 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.37)
@@ -4957,14 +4952,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	ori	$a3, $zero, 1
 	st.b	$a3, $sp, 175
 	bltz	$a1, .LBB3_775
 # %bb.770:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_777
 # %bb.771:                              #   in Loop: Header=BB3_673 Depth=1
-	slli.d	$a0, $s4, 7
+	slli.d	$a0, $s5, 7
 	add.d	$a0, $a2, $a0
 	b	.LBB3_779
 .LBB3_772:                              #   in Loop: Header=BB3_673 Depth=1
@@ -4973,12 +4968,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	bltz	$a1, .LBB3_776
 # %bb.773:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_780
 # %bb.774:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_782
 .LBB3_775:                              #   in Loop: Header=BB3_673 Depth=1
 	srai.d	$a2, $a1, 2
@@ -5017,7 +5012,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s1, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s7, .LBB3_785
+	bltu	$a1, $s3, .LBB3_785
 # %bb.783:                              # %.noexc.i.i729
                                         #   in Loop: Header=BB3_673 Depth=1
 .Ltmp248:
@@ -5051,7 +5046,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	bne	$a0, $s5, .LBB3_791
+	bne	$a0, $s7, .LBB3_791
 # %bb.790:                              #   in Loop: Header=BB3_673 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.38)
@@ -5083,14 +5078,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	ori	$a3, $zero, 1
 	st.b	$a3, $sp, 175
 	bltz	$a1, .LBB3_801
 # %bb.796:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_803
 # %bb.797:                              #   in Loop: Header=BB3_673 Depth=1
-	slli.d	$a0, $s4, 7
+	slli.d	$a0, $s5, 7
 	add.d	$a0, $a2, $a0
 	b	.LBB3_805
 .LBB3_798:                              #   in Loop: Header=BB3_673 Depth=1
@@ -5099,12 +5094,12 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	bltz	$a1, .LBB3_802
 # %bb.799:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_806
 # %bb.800:                              #   in Loop: Header=BB3_673 Depth=1
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	b	.LBB3_808
 .LBB3_801:                              #   in Loop: Header=BB3_673 Depth=1
 	srai.d	$a2, $a1, 2
@@ -5143,7 +5138,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$s1, $a0, 0
 	st.d	$a1, $sp, 272
 	move	$a0, $a2
-	bltu	$a1, $s7, .LBB3_811
+	bltu	$a1, $s3, .LBB3_811
 # %bb.809:                              # %.noexc.i.i745
                                         #   in Loop: Header=BB3_673 Depth=1
 .Ltmp251:
@@ -5177,7 +5172,7 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $sp, 272
 	ld.d	$s1, $sp, 208
 	st.d	$a0, $sp, 216
-	bne	$a0, $s5, .LBB3_817
+	bne	$a0, $s7, .LBB3_817
 # %bb.816:                              #   in Loop: Header=BB3_673 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.39)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.39)
@@ -5209,14 +5204,14 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	ld.d	$a0, $fp, 120
 	sub.d	$a1, $a2, $a1
 	srai.d	$a1, $a1, 7
-	add.d	$a1, $s4, $a1
+	add.d	$a1, $s5, $a1
 	ori	$a3, $zero, 1
 	st.b	$a3, $sp, 175
 	bltz	$a1, .LBB3_824
 # %bb.822:                              #   in Loop: Header=BB3_673 Depth=1
 	bltu	$s8, $a1, .LBB3_825
 # %bb.823:                              #   in Loop: Header=BB3_673 Depth=1
-	slli.d	$a0, $s4, 7
+	slli.d	$a0, $s5, 7
 	add.d	$a0, $a2, $a0
 	b	.LBB3_827
 .LBB3_824:                              #   in Loop: Header=BB3_673 Depth=1
@@ -5250,8 +5245,8 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	jirl	$ra, $ra, 0
 .Ltmp257:
 # %bb.830:                              #   in Loop: Header=BB3_673 Depth=1
-	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 128
+	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 128
 	b	.LBB3_673
 .LBB3_831:
 .Ltmp228:
@@ -5347,126 +5342,128 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 # %bb.853:                              # %.noexc1181
 .LBB3_854:
 .Ltmp253:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_855:
 .Ltmp336:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_856:
 .Ltmp250:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_857:
 .Ltmp230:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_858:
 .Ltmp227:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_859:
 .Ltmp247:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_860:
 .Ltmp244:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_861:
 .Ltmp349:
-	b	.LBB3_892
+	b	.LBB3_891
 .LBB3_862:
 .Ltmp241:
-	b	.LBB3_900
+	b	.LBB3_899
 .LBB3_863:
 .Ltmp224:
-	b	.LBB3_865
-.LBB3_864:
-.Ltmp263:
-.LBB3_865:
 	ld.d	$a2, $sp, 208
 	move	$s0, $a0
-	bne	$a2, $s7, .LBB3_893
-	b	.LBB3_901
-.LBB3_866:
+	bne	$a2, $s7, .LBB3_892
+	b	.LBB3_900
+.LBB3_864:
+.Ltmp263:
+	ld.d	$a2, $sp, 208
+	move	$s0, $a0
+	bne	$a2, $s5, .LBB3_892
+	b	.LBB3_900
+.LBB3_865:
 .Ltmp238:
-	b	.LBB3_900
-.LBB3_867:
+	b	.LBB3_899
+.LBB3_866:
 .Ltmp266:
-	b	.LBB3_900
-.LBB3_868:
+	b	.LBB3_899
+.LBB3_867:
 .Ltmp272:
-	b	.LBB3_900
-.LBB3_869:
+	b	.LBB3_899
+.LBB3_868:
 .Ltmp278:
-	b	.LBB3_900
-.LBB3_870:
+	b	.LBB3_899
+.LBB3_869:
 .Ltmp284:
-	b	.LBB3_900
-.LBB3_871:
+	b	.LBB3_899
+.LBB3_870:
 .Ltmp290:
-	b	.LBB3_900
-.LBB3_872:
+	b	.LBB3_899
+.LBB3_871:
 .Ltmp296:
-	b	.LBB3_900
-.LBB3_873:
+	b	.LBB3_899
+.LBB3_872:
 .Ltmp269:
-	b	.LBB3_900
-.LBB3_874:
+	b	.LBB3_899
+.LBB3_873:
 .Ltmp275:
-	b	.LBB3_900
-.LBB3_875:
+	b	.LBB3_899
+.LBB3_874:
 .Ltmp281:
-	b	.LBB3_900
-.LBB3_876:
+	b	.LBB3_899
+.LBB3_875:
 .Ltmp287:
-	b	.LBB3_900
-.LBB3_877:
+	b	.LBB3_899
+.LBB3_876:
 .Ltmp293:
-	b	.LBB3_900
-.LBB3_878:
+	b	.LBB3_899
+.LBB3_877:
 .Ltmp299:
-	b	.LBB3_900
-.LBB3_879:
+	b	.LBB3_899
+.LBB3_878:
 .Ltmp352:
-	b	.LBB3_900
-.LBB3_880:
+	b	.LBB3_899
+.LBB3_879:
 .Ltmp218:
 	ld.d	$a2, $sp, 176
 	move	$s0, $a0
-	beq	$a2, $s4, .LBB3_901
-# %bb.881:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i426
+	beq	$a2, $s4, .LBB3_900
+# %bb.880:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i426
 	ld.d	$a0, $sp, 192
-	b	.LBB3_894
-.LBB3_882:
+	b	.LBB3_893
+.LBB3_881:
 .Ltmp38:
-	b	.LBB3_904
-.LBB3_883:
+	b	.LBB3_903
+.LBB3_882:
 .Ltmp258:
-	b	.LBB3_900
-.LBB3_884:
+	b	.LBB3_899
+.LBB3_883:
 .Ltmp417:
-	b	.LBB3_900
-.LBB3_885:
+	b	.LBB3_899
+.LBB3_884:
 .Ltmp35:
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
+	move	$s0, $a0
+	b	.LBB3_907
+.LBB3_885:
+.Ltmp32:
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $a0
 	b	.LBB3_908
 .LBB3_886:
-.Ltmp32:
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+.Ltmp29:
 	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $a0
 	b	.LBB3_909
 .LBB3_887:
-.Ltmp29:
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+.Ltmp26:
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $a0
 	b	.LBB3_910
 .LBB3_888:
-.Ltmp26:
-	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
-	move	$s0, $a0
-	b	.LBB3_911
-.LBB3_889:
 .Ltmp23:
 	move	$s0, $a0
 	move	$a0, $fp
@@ -5475,86 +5472,86 @@ _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB3_890:
+.LBB3_889:
 .Ltmp235:
-	b	.LBB3_900
-.LBB3_891:
+	b	.LBB3_899
+.LBB3_890:
 .Ltmp482:
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
-.LBB3_892:
+.LBB3_891:
 	ld.d	$a2, $sp, 208
 	move	$s0, $a0
-	beq	$a2, $s3, .LBB3_901
-.LBB3_893:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i377
+	beq	$a2, $s3, .LBB3_900
+.LBB3_892:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i377
 	ld.d	$a0, $sp, 224
-.LBB3_894:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
+.LBB3_893:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB3_901
-.LBB3_895:
+	b	.LBB3_900
+.LBB3_894:
 .Ltmp221:
-	b	.LBB3_900
-.LBB3_896:
-.Ltmp113:
-	b	.LBB3_900
-.LBB3_897:
-.Ltmp110:
 	b	.LBB3_899
-.LBB3_898:
+.LBB3_895:
+.Ltmp113:
+	b	.LBB3_899
+.LBB3_896:
+.Ltmp110:
+	b	.LBB3_898
+.LBB3_897:
 .Ltmp107:
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-.LBB3_899:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
+.LBB3_898:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
-.LBB3_900:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
+.LBB3_899:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
 	move	$s0, $a0
-.LBB3_901:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
+.LBB3_900:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit428
 	ld.d	$a0, $sp, 240
 	addi.d	$a1, $sp, 256
-	beq	$a0, $a1, .LBB3_905
-# %bb.902:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i769
+	beq	$a0, $a1, .LBB3_904
+# %bb.901:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i769
 	ld.d	$a1, $sp, 256
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB3_905
-.LBB3_903:
+	b	.LBB3_904
+.LBB3_902:
 .Ltmp561:
-.LBB3_904:
+.LBB3_903:
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $a0
-.LBB3_905:
+.LBB3_904:
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB3_907
-# %bb.906:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i772
+	beq	$a0, $a1, .LBB3_906
+# %bb.905:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i772
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB3_907:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit774
+.LBB3_906:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit774
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIbSaIbEED2Ev)
 	jirl	$ra, $ra, 0
-.LBB3_908:
+.LBB3_907:
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
-.LBB3_909:
+.LBB3_908:
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev)
 	jirl	$ra, $ra, 0
-.LBB3_910:
+.LBB3_909:
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev)
 	jirl	$ra, $ra, 0
-.LBB3_911:
+.LBB3_910:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIN2PP4WordESaIS1_EED2Ev)
 	jirl	$ra, $ra, 0
@@ -6945,8 +6942,7 @@ _ZN2PP12Restartblock8check_rbERSt6vectorINSt7__cxx1112basic_stringIcSt11char_tra
 	srai.d	$a1, $a1, 7
 	add.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_153
+	blez	$a1, .LBB9_153
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	move	$s4, $zero
@@ -7220,8 +7216,7 @@ _ZN2PP12Restartblock8check_rbERSt6vectorINSt7__cxx1112basic_stringIcSt11char_tra
 # %bb.42:                               #   in Loop: Header=BB9_4 Depth=1
 	add.d	$a0, $a2, $s5
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB9_46
+	bnez	$a0, .LBB9_46
 	b	.LBB9_112
 	.p2align	4, , 16
 .LBB9_43:                               #   in Loop: Header=BB9_4 Depth=1
@@ -7238,15 +7233,14 @@ _ZN2PP12Restartblock8check_rbERSt6vectorINSt7__cxx1112basic_stringIcSt11char_tra
 	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s5
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB9_112
+	beqz	$a0, .LBB9_112
 .LBB9_46:                               #   in Loop: Header=BB9_4 Depth=1
 	ld.d	$a0, $sp, 312
 	ld.d	$a2, $sp, 320
 	ld.d	$a1, $sp, 336
 	sub.d	$a3, $a0, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a2, .LBB9_52
+	bltz	$a3, .LBB9_52
 # %bb.47:                               #   in Loop: Header=BB9_4 Depth=1
 	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB9_54
@@ -7627,7 +7621,7 @@ _ZN2PP12Restartblock8check_rbERSt6vectorINSt7__cxx1112basic_stringIcSt11char_tra
 	ld.d	$a0, $sp, 336
 	sub.d	$a3, $a1, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a2, .LBB9_116
+	bltz	$a3, .LBB9_116
 # %bb.114:                              #   in Loop: Header=BB9_4 Depth=1
 	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB9_118
@@ -7862,7 +7856,7 @@ _ZN2PP12Restartblock8check_rbERSt6vectorINSt7__cxx1112basic_stringIcSt11char_tra
 	ld.d	$a1, $sp, 416
 	sub.d	$a3, $a0, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a2, .LBB9_157
+	bltz	$a3, .LBB9_157
 # %bb.155:
 	ori	$a3, $zero, 4
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
@@ -8190,9 +8184,8 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	sub.d	$a3, $a3, $a5
 	srai.d	$a3, $a3, 7
 	add.w	$a4, $a4, $a3
-	ori	$a5, $zero, 1
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
-	blt	$a4, $a5, .LBB10_120
+	blez	$a4, .LBB10_120
 # %bb.1:                                # %.preheader371.lr.ph
 	move	$s3, $zero
 	addi.d	$s8, $sp, 576
@@ -8213,8 +8206,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	sub.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 5
 	addi.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_2
+	blez	$a0, .LBB10_2
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB10_3 Depth=1
 	move	$s2, $zero
@@ -8938,22 +8930,22 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	addi.w	$s8, $a0, -1
 	ori	$a0, $zero, 6
 	ori	$s3, $zero, 5
-	ori	$fp, $zero, 3
+	ori	$s7, $zero, 3
 	b	.LBB10_122
 	.p2align	4, , 16
 .LBB10_121:                             # %._crit_edge450
                                         #   in Loop: Header=BB10_122 Depth=1
-	addi.w	$a0, $s7, -1
-	beqz	$s7, .LBB10_263
+	addi.w	$a0, $fp, -1
+	beqz	$fp, .LBB10_263
 .LBB10_122:                             # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_126 Depth 2
-	move	$s7, $a0
+	move	$fp, $a0
 	bltz	$s8, .LBB10_121
 # %bb.123:                              # %.lr.ph449
                                         #   in Loop: Header=BB10_122 Depth=1
 	move	$s2, $zero
-	addi.d	$a0, $s7, -2
+	addi.d	$a0, $fp, -2
 	sltui	$a0, $a0, 1
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB10_126
@@ -8986,7 +8978,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 # %bb.129:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit203.thread
                                         #   in Loop: Header=BB10_126 Depth=2
 	ld.w	$a0, $a0, 44
-	beq	$s7, $a0, .LBB10_136
+	beq	$fp, $a0, .LBB10_136
 	b	.LBB10_125
 	.p2align	4, , 16
 .LBB10_130:                             #   in Loop: Header=BB10_126 Depth=2
@@ -9008,11 +9000,11 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 # %bb.133:                              # %_ZNSt5dequeIN2PP4WordESaIS1_EEixEm.exit203
                                         #   in Loop: Header=BB10_126 Depth=2
 	ld.w	$a3, $a3, 44
-	bne	$s7, $a3, .LBB10_125
+	bne	$fp, $a3, .LBB10_125
 # %bb.134:                              #   in Loop: Header=BB10_126 Depth=2
 	bltz	$a0, .LBB10_137
 # %bb.135:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a0, .LBB10_138
+	bltu	$s7, $a0, .LBB10_138
 .LBB10_136:                             # %.thread361
                                         #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a0, $s2, 7
@@ -9084,7 +9076,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	st.d	$a1, $sp, 568
 	bltz	$a2, .LBB10_149
 # %bb.147:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a2, .LBB10_150
+	bltu	$s7, $a2, .LBB10_150
 # %bb.148:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a0, $s2, 7
 	add.d	$a0, $a3, $a0
@@ -9189,7 +9181,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a1, $a1, $s2
 	bltz	$a1, .LBB10_167
 # %bb.165:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a1, .LBB10_168
+	bltu	$s7, $a1, .LBB10_168
 # %bb.166:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a0, $s2, 7
 	add.d	$a0, $a2, $a0
@@ -9255,7 +9247,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 # %bb.178:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit245.thread.thread489
                                         #   in Loop: Header=BB10_126 Depth=2
 	ori	$a0, $zero, 2
-	beq	$s7, $a0, .LBB10_196
+	beq	$fp, $a0, .LBB10_196
 .LBB10_179:                             #   in Loop: Header=BB10_126 Depth=2
 	ld.d	$a4, $s1, 16
 	ld.d	$a3, $s1, 24
@@ -9266,7 +9258,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a2, $a5, $s3
 	bltz	$a2, .LBB10_200
 # %bb.180:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a2, .LBB10_202
+	bltu	$s7, $a2, .LBB10_202
 # %bb.181:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a1, $s3, 7
 	add.d	$a2, $a4, $a1
@@ -9300,7 +9292,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	ori	$a1, $zero, 2
-	bne	$s7, $a1, .LBB10_192
+	bne	$fp, $a1, .LBB10_192
 # %bb.186:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit245
                                         #   in Loop: Header=BB10_126 Depth=2
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
@@ -9355,7 +9347,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
-	beq	$s7, $a1, .LBB10_195
+	beq	$fp, $a1, .LBB10_195
 # %bb.193:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit247
                                         #   in Loop: Header=BB10_126 Depth=2
 	bnez	$a0, .LBB10_195
@@ -9384,7 +9376,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a2, $a5, $s2
 	bltz	$a2, .LBB10_201
 # %bb.197:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a2, .LBB10_207
+	bltu	$s7, $a2, .LBB10_207
 # %bb.198:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a1, $s2, 7
 	add.d	$a2, $a4, $a1
@@ -9415,7 +9407,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a5, $a5, $a6
 	bltz	$a5, .LBB10_182
 .LBB10_204:                             #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a5, .LBB10_212
+	bltu	$s7, $a5, .LBB10_212
 # %bb.205:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a5, $a6, 7
 	add.d	$a4, $a4, $a5
@@ -9440,7 +9432,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a5, $a5, $a6
 	bltz	$a5, .LBB10_199
 .LBB10_209:                             #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a5, .LBB10_216
+	bltu	$s7, $a5, .LBB10_216
 # %bb.210:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a5, $a6, 7
 	add.d	$a4, $a4, $a5
@@ -9466,7 +9458,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	addi.d	$a3, $a5, 1
 	blt	$a5, $s0, .LBB10_206
 .LBB10_214:                             #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a3, .LBB10_220
+	bltu	$s7, $a3, .LBB10_220
 # %bb.215:                              #   in Loop: Header=BB10_126 Depth=2
 	addi.d	$a3, $a4, 128
 	b	.LBB10_222
@@ -9485,7 +9477,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	addi.d	$a3, $a5, 1
 	blt	$a5, $s0, .LBB10_211
 .LBB10_218:                             #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a3, .LBB10_234
+	bltu	$s7, $a3, .LBB10_234
 # %bb.219:                              #   in Loop: Header=BB10_126 Depth=2
 	addi.d	$a3, $a4, 128
 	b	.LBB10_236
@@ -9531,7 +9523,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a3, $a3, $s3
 	bltz	$a3, .LBB10_229
 # %bb.224:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a3, .LBB10_230
+	bltu	$s7, $a3, .LBB10_230
 # %bb.225:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a3, $s3, 7
 	add.d	$a3, $a0, $a3
@@ -9626,7 +9618,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	add.d	$a3, $a3, $s2
 	bltz	$a3, .LBB10_243
 # %bb.238:                              #   in Loop: Header=BB10_126 Depth=2
-	bltu	$fp, $a3, .LBB10_244
+	bltu	$s7, $a3, .LBB10_244
 # %bb.239:                              #   in Loop: Header=BB10_126 Depth=2
 	slli.d	$a3, $s2, 7
 	add.d	$a3, $a0, $a3
@@ -9796,7 +9788,7 @@ _ZN2PP12Restartblock13process_wordsERSt5dequeINS_4WordESaIS2_EERSt6vectorINSt7__
 	ld.d	$a2, $s1, 24
 	sub.d	$a3, $a0, $a2
 	srai.d	$a2, $a3, 7
-	bltz	$a2, .LBB10_267
+	bltz	$a3, .LBB10_267
 # %bb.265:
 	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB10_269
@@ -10436,8 +10428,7 @@ _ZN2PP12Restartblock14list_conditionENSt7__cxx1112basic_stringIcSt11char_traitsI
 # %bb.24:                               #   in Loop: Header=BB12_2 Depth=1
 	add.d	$a0, $a3, $s6
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB12_28
+	bnez	$a0, .LBB12_28
 	b	.LBB12_51
 	.p2align	4, , 16
 .LBB12_25:                              #   in Loop: Header=BB12_2 Depth=1
@@ -10454,8 +10445,7 @@ _ZN2PP12Restartblock14list_conditionENSt7__cxx1112basic_stringIcSt11char_traitsI
 	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $s6
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB12_51
+	beqz	$a0, .LBB12_51
 .LBB12_28:                              #   in Loop: Header=BB12_2 Depth=1
 	ld.d	$a0, $sp, 184
 	ori	$a1, $zero, 4
@@ -13893,8 +13883,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	sub.d	$a1, $a0, $a1
 	srai.d	$fp, $a1, 7
-	ori	$a1, $zero, 1
-	bge	$fp, $a1, .LBB27_20
+	bgtz	$fp, .LBB27_20
 .LBB27_2:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$s8, $a1, 0
@@ -13913,8 +13902,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	ld.d	$a0, $a2, 16
 	sub.d	$a1, $a0, $a1
 	srai.d	$fp, $a1, 7
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB27_41
+	blez	$fp, .LBB27_41
 # %bb.4:                                # %.lr.ph.i8.preheader
 	ori	$s5, $zero, 4
 	b	.LBB27_31
@@ -14049,10 +14037,10 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 .LBB27_20:                              # %.lr.ph.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB27_24 Depth 2
-	sub.d	$s2, $s8, $s6
+	sub.d	$s7, $s8, $s6
 	beq	$s8, $s6, .LBB27_22
 # %bb.21:                               #   in Loop: Header=BB27_20 Depth=1
-	srai.d	$a1, $s2, 7
+	srai.d	$a1, $s7, 7
 	slt	$a2, $a1, $fp
 	maskeqz	$a1, $a1, $a2
 	masknez	$a2, $fp, $a2
@@ -14073,7 +14061,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 .LBB27_23:                              # %.lr.ph.i.preheader.i
                                         #   in Loop: Header=BB27_20 Depth=1
 	sub.d	$s0, $zero, $s1
-	slli.d	$s7, $s0, 7
+	slli.d	$s2, $s0, 7
 	slli.d	$a2, $s1, 7
 	sub.d	$a2, $a0, $a2
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
@@ -14092,12 +14080,12 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0
 	addi.d	$s3, $s3, -128
-	addi.d	$s7, $s7, 128
+	addi.d	$s2, $s2, 128
 	addi.d	$s4, $s4, -128
-	bnez	$s7, .LBB27_24
+	bnez	$s2, .LBB27_24
 # %bb.25:                               # %_ZSt23__copy_move_backward_a2ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i
                                         #   in Loop: Header=BB27_20 Depth=1
-	srai.d	$a0, $s2, 7
+	srai.d	$a0, $s7, 7
 	sub.d	$a0, $a0, $s1
 	bltz	$a0, .LBB27_18
 # %bb.26:                               #   in Loop: Header=BB27_20 Depth=1
@@ -14135,10 +14123,10 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 .LBB27_31:                              # %.lr.ph.i8
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB27_35 Depth 2
-	sub.d	$s2, $s8, $s6
+	sub.d	$s7, $s8, $s6
 	beq	$s8, $s6, .LBB27_33
 # %bb.32:                               #   in Loop: Header=BB27_31 Depth=1
-	srai.d	$a1, $s2, 7
+	srai.d	$a1, $s7, 7
 	slt	$a2, $a1, $fp
 	maskeqz	$a1, $a1, $a2
 	masknez	$a2, $fp, $a2
@@ -14158,7 +14146,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 .LBB27_34:                              # %.lr.ph.i.preheader.i14
                                         #   in Loop: Header=BB27_31 Depth=1
 	sub.d	$s3, $zero, $s4
-	slli.d	$s7, $s3, 7
+	slli.d	$s2, $s3, 7
 	slli.d	$a2, $s4, 7
 	sub.d	$a2, $a0, $a2
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
@@ -14177,12 +14165,12 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	pcaddu18i	$ra, %call36(_ZN2PP4WordD1Ev)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, -128
-	addi.d	$s7, $s7, 128
+	addi.d	$s2, $s2, 128
 	addi.d	$s1, $s1, -128
-	bnez	$s7, .LBB27_35
+	bnez	$s2, .LBB27_35
 # %bb.36:                               # %_ZSt23__copy_move_backward_a2ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i22
                                         #   in Loop: Header=BB27_31 Depth=1
-	srai.d	$a0, $s2, 7
+	srai.d	$a0, $s7, 7
 	sub.d	$a0, $a0, $s4
 	bltz	$a0, .LBB27_29
 # %bb.37:                               #   in Loop: Header=BB27_31 Depth=1
@@ -14210,8 +14198,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	sub.d	$a1, $a0, $a1
 	srai.d	$fp, $a1, 7
-	ori	$a1, $zero, 1
-	bge	$fp, $a1, .LBB27_44
+	bgtz	$fp, .LBB27_44
 .LBB27_41:                              # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit32
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.d	$s8, $a0, 0
@@ -14370,8 +14357,7 @@ _ZSt15__copy_move_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S3_EET3_S4
 	ld.d	$s7, $a3, 24
 	sub.d	$a0, $a0, $fp
 	srai.d	$s2, $a0, 7
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB28_18
+	bgtz	$s2, .LBB28_18
 .LBB28_2:                               # %_ZSt14__copy_move_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$s8, $a1, 0
@@ -14389,8 +14375,7 @@ _ZSt15__copy_move_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S3_EET3_S4
 	ld.d	$a0, $a2, 0
 	sub.d	$a0, $a0, $fp
 	srai.d	$s2, $a0, 7
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB28_36
+	blez	$s2, .LBB28_36
 # %bb.4:                                # %.lr.ph.i9.preheader
 	ori	$s6, $zero, 3
 	b	.LBB28_28
@@ -14642,8 +14627,7 @@ _ZSt15__copy_move_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S3_EET3_S4
 	ld.d	$s7, $a3, 24
 	sub.d	$a0, $a0, $fp
 	srai.d	$s2, $a0, 7
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB28_39
+	bgtz	$s2, .LBB28_39
 .LBB28_36:                              # %_ZSt14__copy_move_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit26
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	st.d	$s8, $a0, 0

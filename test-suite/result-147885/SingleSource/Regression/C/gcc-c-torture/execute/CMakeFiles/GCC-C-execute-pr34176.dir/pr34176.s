@@ -20,9 +20,8 @@ foo:                                    # @foo
 	pcalau12i	$a0, %pc_hi20(foo.count)
 	ld.w	$a1, $a0, %pc_lo12(foo.count)
 	addi.d	$a2, $a1, 1
-	ori	$a3, $zero, 1
 	st.w	$a2, $a0, %pc_lo12(foo.count)
-	bge	$a1, $a3, .LBB1_2
+	bgtz	$a1, .LBB1_2
 # %bb.1:
 	move	$a0, $zero
 	ret

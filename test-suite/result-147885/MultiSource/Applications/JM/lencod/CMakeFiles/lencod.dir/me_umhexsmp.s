@@ -1111,7 +1111,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	move	$a7, $a0
 .LBB3_84:
 	or	$a0, $fp, $s1
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB3_87
 .LBB3_85:
 	move	$s4, $s3
@@ -1122,7 +1122,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
 	or	$a0, $fp, $s1
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	beqz	$a0, .LBB3_85
 .LBB3_87:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -1661,8 +1661,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	move	$s3, $s4
 	b	.LBB3_170
 .LBB3_133:                              # %.preheader774
-	ori	$a0, $zero, 1
-	blt	$t2, $a0, .LBB3_168
+	blez	$t2, .LBB3_168
 # %bb.134:                              # %.preheader773.preheader
 	move	$a2, $zero
 	pcalau12i	$a0, %pc_hi20(Hexagon_X)
@@ -2591,13 +2590,13 @@ smpUMHEXFullSubPelBlockMotionSearch:    # @smpUMHEXFullSubPelBlockMotionSearch
 .LBB4_20:
 	ld.d	$s3, $sp, 280
 	pcalau12i	$a3, %got_pc_hi20(ref_access_method)
-	ld.d	$a6, $a3, %got_pc_lo12(ref_access_method)
+	ld.d	$a5, $a3, %got_pc_lo12(ref_access_method)
 	ld.w	$s5, $sp, 272
-	st.w	$a2, $a6, 0
+	st.w	$a2, $a5, 0
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
 	bge	$s2, $s8, .LBB4_26
 # %bb.21:                               # %.lr.ph
-	st.d	$a6, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
 	st.d	$t8, $sp, 8                     # 8-byte Folded Spill
 	st.d	$t6, $sp, 16                    # 8-byte Folded Spill
 	move	$s1, $zero
@@ -2696,7 +2695,7 @@ smpUMHEXFullSubPelBlockMotionSearch:    # @smpUMHEXFullSubPelBlockMotionSearch
 	b	.LBB4_22
 .LBB4_26:
 	bstrpick.d	$a0, $a1, 15, 0
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	bnez	$a1, .LBB4_38
 	b	.LBB4_36
 .LBB4_27:
@@ -2740,8 +2739,8 @@ smpUMHEXFullSubPelBlockMotionSearch:    # @smpUMHEXFullSubPelBlockMotionSearch
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a6, $sp, 0                     # 8-byte Folded Reload
-	bstrpick.d	$a1, $a0, 15, 0
+	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
+	slli.d	$a1, $a0, 48
 	bnez	$a1, .LBB4_38
 .LBB4_36:
 	ld.h	$a1, $ra, 0
@@ -2749,7 +2748,7 @@ smpUMHEXFullSubPelBlockMotionSearch:    # @smpUMHEXFullSubPelBlockMotionSearch
 	or	$a1, $a2, $a1
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	or	$a1, $a1, $a2
-	bstrpick.d	$a1, $a1, 15, 0
+	slli.d	$a1, $a1, 48
 	bnez	$a1, .LBB4_38
 # %bb.37:
 	pcalau12i	$a1, %pc_hi20(SubPelThreshold1)
@@ -2764,34 +2763,33 @@ smpUMHEXFullSubPelBlockMotionSearch:    # @smpUMHEXFullSubPelBlockMotionSearch
 	pcalau12i	$a1, %pc_hi20(start_me_refinement_qp)
 	ld.w	$s4, $a1, %pc_lo12(start_me_refinement_qp)
 	ld.d	$s8, $sp, 264
-	sltui	$a3, $s4, 1
-	masknez	$a1, $s5, $a3
-	lu12i.w	$a2, 524287
-	ori	$a5, $a2, 4095
+	sltui	$a2, $s4, 1
+	masknez	$a1, $s5, $a2
+	lu12i.w	$a3, 524287
+	ori	$a4, $a3, 4095
 	ext.w.h	$a0, $a0
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $a2, $a0
-	ori	$a2, $zero, 1
-	maskeqz	$a0, $a5, $a3
-	blt	$a4, $a2, .LBB4_43
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	add.w	$a3, $a3, $a0
+	maskeqz	$a0, $a4, $a2
+	blez	$a3, .LBB4_42
 # %bb.39:
-	ori	$a3, $zero, 160
-	alsl.w	$a5, $t8, $a3, 2
-	bge	$a4, $a5, .LBB4_43
+	ori	$a2, $zero, 160
+	alsl.w	$a4, $t8, $a2, 2
+	bge	$a3, $a4, .LBB4_42
 # %bb.40:
-	ld.h	$a4, $ra, 0
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
-	add.w	$a4, $a5, $a4
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB4_43
+	ld.h	$a3, $ra, 0
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	add.w	$a3, $a4, $a3
+	blez	$a3, .LBB4_42
 # %bb.41:
-	alsl.w	$a3, $t6, $a3, 2
-	bge	$a4, $a3, .LBB4_43
-# %bb.42:
+	alsl.w	$a4, $t6, $a2, 2
 	move	$a2, $zero
+	blt	$a3, $a4, .LBB4_43
+.LBB4_42:
+	ori	$a2, $zero, 1
 .LBB4_43:
 	or	$s5, $a0, $a1
-	st.w	$a2, $a6, 0
+	st.w	$a2, $a5, 0
 	bge	$s4, $s8, .LBB4_52
 # %bb.44:                               # %.lr.ph216
 	move	$s0, $zero
@@ -3180,7 +3178,7 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	beqz	$a1, .LBB5_25
 # %bb.24:
 	bstrpick.d	$a0, $s2, 15, 0
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	pcalau12i	$a2, %pc_hi20(block_type_shift_factor)
 	addi.d	$s5, $a2, %pc_lo12(block_type_shift_factor)
 	bnez	$a1, .LBB5_32
@@ -3236,7 +3234,7 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	maskeqz	$a1, $a1, $a2
 	masknez	$a2, $s5, $a2
 	or	$t3, $a1, $a2
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	pcalau12i	$a2, %pc_hi20(block_type_shift_factor)
 	addi.d	$s5, $a2, %pc_lo12(block_type_shift_factor)
 	bnez	$a1, .LBB5_32
@@ -4159,7 +4157,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	or	$a2, $a2, $a3
 	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	or	$a2, $a2, $a3
-	or	$a3, $a0, $a1
+	or	$s6, $a0, $a1
 	st.d	$s8, $sp, 240                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 280                   # 8-byte Folded Spill
 	beqz	$a2, .LBB6_32
@@ -4173,21 +4171,18 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
 	bge	$t0, $a0, .LBB6_33
 # %bb.31:
-	move	$s6, $a7
+	move	$s8, $a7
 	ld.d	$t2, $sp, 280                   # 8-byte Folded Reload
 	move	$s0, $t2
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
-	move	$s8, $a3
 	b	.LBB6_38
 .LBB6_32:
-	move	$s6, $s8
 	move	$s0, $s3
 	move	$a7, $s8
 	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	move	$t2, $s3
 	move	$s5, $s4
-	move	$s8, $a3
 	b	.LBB6_38
 .LBB6_33:
 	ld.d	$t2, $sp, 280                   # 8-byte Folded Reload
@@ -4196,7 +4191,6 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
-	move	$s8, $a3
 	bltu	$t0, $a0, .LBB6_37
 # %bb.34:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
@@ -4220,11 +4214,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a0, $a0, $t1
 	srai.d	$a0, $a0, 16
 	add.d	$s0, $a0, $a1
-	bge	$s0, $s8, .LBB6_37
+	bge	$s0, $s6, .LBB6_37
 # %bb.35:
 	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a0, 0
-	sub.w	$a3, $s8, $s0
+	sub.w	$a3, $s6, $s0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	addi.w	$a6, $a0, 80
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
@@ -4240,16 +4234,16 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 240                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $s0
-	move	$s6, $a7
+	move	$s8, $a7
 	move	$s0, $t2
-	bge	$a0, $s8, .LBB6_38
+	bge	$a0, $s6, .LBB6_38
 # %bb.36:
-	move	$s6, $s5
+	move	$s8, $s5
 	move	$s0, $s7
-	move	$s8, $a0
+	move	$s6, $a0
 	b	.LBB6_38
 .LBB6_37:
-	move	$s6, $a7
+	move	$s8, $a7
 	move	$s0, $t2
 .LBB6_38:
 	pcalau12i	$a5, %pc_hi20(ConvergeThreshold)
@@ -4259,15 +4253,14 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	pcalau12i	$a2, %pc_hi20(block_type_shift_factor)
 	addi.d	$a2, $a2, %pc_lo12(block_type_shift_factor)
 	ldx.hu	$a2, $a2, $a1
-	slli.w	$a1, $s8, 3
+	slli.w	$a1, $s6, 3
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	srl.w	$a0, $a0, $a2
-	addi.d	$s3, $a7, -1
+	addi.d	$s2, $a7, -1
 	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
 	bge	$a1, $a0, .LBB6_46
 # %bb.39:                               # %.preheader.preheader
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB6_53
+	blez	$t0, .LBB6_53
 # %bb.40:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -4275,7 +4268,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ldx.w	$a2, $a1, $a0
 	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	ldx.w	$a3, $a1, $a0
-	slli.d	$a0, $s3, 2
+	slli.d	$a0, $s2, 2
 	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	sub.w	$a4, $a0, $a4
 	slli.d	$a4, $a4, 2
@@ -4288,11 +4281,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$s1, $a1, $a2
-	bge	$s1, $s8, .LBB6_43
+	bge	$s1, $s6, .LBB6_43
 # %bb.41:
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
-	sub.w	$a3, $s8, $s1
+	sub.w	$a3, $s6, $s1
 	addi.d	$a6, $a0, 80
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
@@ -4305,11 +4298,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 240                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $s1
-	bge	$a0, $s8, .LBB6_43
+	bge	$a0, $s6, .LBB6_43
 # %bb.42:
-	move	$s6, $s3
+	move	$s8, $s2
 	move	$s0, $t2
-	move	$s8, $a0
+	move	$s6, $a0
 .LBB6_43:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -4331,12 +4324,12 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$fp, $a1, $a2
-	bge	$fp, $s8, .LBB6_55
+	bge	$fp, $s6, .LBB6_55
 # %bb.44:
 	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
-	sub.w	$a3, $s8, $fp
+	sub.w	$a3, $s6, $fp
 	addi.d	$a6, $a0, 80
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
@@ -4348,17 +4341,15 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $fp
-	bge	$a0, $s8, .LBB6_56
+	bge	$a0, $s6, .LBB6_56
 # %bb.45:
-	move	$s6, $s1
+	move	$s8, $s1
 	move	$s0, $t2
-	move	$s8, $a0
+	move	$s6, $a0
 	b	.LBB6_56
 .LBB6_46:                               # %.preheader1115.preheader
-	move	$s7, $s6
-	ori	$s2, $zero, 1
 	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
-	blt	$t0, $s2, .LBB6_54
+	blez	$t0, .LBB6_54
 # %bb.47:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -4366,7 +4357,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ldx.w	$a2, $a1, $a0
 	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	ldx.w	$a3, $a1, $a0
-	slli.d	$a0, $s3, 2
+	slli.d	$a0, $s2, 2
 	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	sub.w	$a4, $a0, $a4
 	slli.d	$a4, $a4, 2
@@ -4379,11 +4370,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$s1, $a1, $a2
-	bge	$s1, $s8, .LBB6_50
+	bge	$s1, $s6, .LBB6_50
 # %bb.48:
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
-	sub.w	$a3, $s8, $s1
+	sub.w	$a3, $s6, $s1
 	addi.d	$a6, $a0, 80
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
@@ -4396,11 +4387,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 240                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $s1
-	bge	$a0, $s8, .LBB6_50
+	bge	$a0, $s6, .LBB6_50
 # %bb.49:
-	move	$s7, $s3
+	move	$s8, $s2
 	move	$s0, $t2
-	move	$s8, $a0
+	move	$s6, $a0
 .LBB6_50:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -4422,12 +4413,12 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$fp, $a1, $a2
-	bge	$fp, $s8, .LBB6_63
+	bge	$fp, $s6, .LBB6_63
 # %bb.51:
-	ld.d	$s5, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
-	sub.w	$a3, $s8, $fp
+	sub.w	$a3, $s6, $fp
 	addi.d	$a6, $a0, 80
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
@@ -4439,26 +4430,22 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	add.w	$a0, $a0, $fp
-	bge	$a0, $s8, .LBB6_64
+	bge	$a0, $s6, .LBB6_64
 # %bb.52:
-	move	$s7, $s1
+	move	$s8, $s1
 	move	$s0, $t2
-	move	$s8, $a0
+	move	$s6, $a0
 	b	.LBB6_64
 .LBB6_53:
-	move	$s7, $s6
+	move	$s7, $s8
 	move	$s4, $s0
-	move	$t3, $s8
+	move	$t3, $s6
 	b	.LBB6_210
 .LBB6_54:
-	move	$s4, $s7
-	move	$s3, $s0
-	move	$t3, $s8
-	slli.w	$a0, $t3, 2
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
-	beq	$a1, $s2, .LBB6_72
-	b	.LBB6_73
+	move	$s4, $s8
+	move	$s2, $s0
+	move	$t3, $s6
+	b	.LBB6_71
 .LBB6_55:
 	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
 .LBB6_56:
@@ -4483,11 +4470,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$fp, $a1, $a2
-	bge	$fp, $s8, .LBB6_58
+	bge	$fp, $s6, .LBB6_58
 # %bb.57:
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
-	sub.w	$a3, $s8, $fp
+	sub.w	$a3, $s6, $fp
 	addi.d	$a7, $a0, 80
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
@@ -4500,11 +4487,11 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	add.w	$t3, $a0, $fp
 	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
-	blt	$t3, $s8, .LBB6_59
+	blt	$t3, $s6, .LBB6_59
 .LBB6_58:                               # %.preheader.3
-	move	$t3, $s8
+	move	$t3, $s6
 	move	$s4, $s0
-	move	$s7, $s6
+	move	$s7, $s8
 .LBB6_59:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -4551,16 +4538,16 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	move	$t3, $a0
 	b	.LBB6_210
 .LBB6_63:
-	ld.d	$s5, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 .LBB6_64:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
-	addi.d	$s3, $t2, -1
+	addi.d	$s2, $t2, -1
 	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
 	ldx.w	$a2, $a1, $a0
 	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	ldx.w	$a3, $a1, $a0
-	slli.d	$a0, $s3, 2
+	slli.d	$a0, $s2, 2
 	ld.d	$a4, $sp, 328                   # 8-byte Folded Reload
 	sub.w	$a4, $a0, $a4
 	slli.d	$a4, $a4, 2
@@ -4574,28 +4561,28 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$fp, $a1, $a2
-	bge	$fp, $s8, .LBB6_66
+	bge	$fp, $s6, .LBB6_66
 # %bb.65:
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
-	sub.w	$a3, $s8, $fp
+	sub.w	$a3, $s6, $fp
 	addi.d	$a7, $a0, 80
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
-	move	$a6, $s5
+	move	$a6, $s3
 	jirl	$ra, $t0, 0
 	ld.d	$t2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 288                   # 8-byte Folded Reload
 	add.w	$t3, $a0, $fp
 	ld.d	$s4, $sp, 240                   # 8-byte Folded Reload
-	blt	$t3, $s8, .LBB6_67
+	blt	$t3, $s6, .LBB6_67
 .LBB6_66:                               # %.preheader1115.3
-	move	$t3, $s8
-	move	$s3, $s0
-	move	$s4, $s7
+	move	$t3, $s6
+	move	$s2, $s0
+	move	$s4, $s8
 .LBB6_67:
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -4617,7 +4604,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	mul.w	$a1, $a1, $t1
 	srai.d	$a1, $a1, 16
 	add.d	$s0, $a1, $a2
-	bge	$s0, $t3, .LBB6_71
+	bge	$s0, $t3, .LBB6_70
 # %bb.68:
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$t0, $a1, 0
@@ -4628,7 +4615,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	ld.d	$a2, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
-	move	$a6, $s5
+	move	$a6, $s3
 	move	$s1, $t3
 	jirl	$ra, $t0, 0
 	move	$t3, $s1
@@ -4637,25 +4624,22 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	add.w	$a0, $a0, $s0
 	ld.d	$a7, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
-	bge	$a0, $s1, .LBB6_70
+	bge	$a0, $s1, .LBB6_71
 # %bb.69:
 	move	$s4, $a7
-	move	$s3, $fp
+	move	$s2, $fp
 	move	$t3, $a0
-.LBB6_70:                               # %.preheader1115.3.thread
-	slli.w	$a0, $t3, 2
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
-	beq	$a1, $s2, .LBB6_72
-	b	.LBB6_73
-.LBB6_71:
+	b	.LBB6_71
+.LBB6_70:
 	ld.d	$a7, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
+.LBB6_71:                               # %.preheader1115.3.thread
+	ori	$a1, $zero, 1
 	slli.w	$a0, $t3, 2
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
-	bne	$a1, $s2, .LBB6_73
-.LBB6_72:
+	bne	$a2, $a1, .LBB6_73
+# %bb.72:
 	pcalau12i	$a1, %pc_hi20(SymmetricalCrossSearchThreshold1)
 	ld.hu	$a1, $a1, %pc_lo12(SymmetricalCrossSearchThreshold1)
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
@@ -4672,7 +4656,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	bge	$t0, $a0, .LBB6_112
 # %bb.75:
 	st.d	$s4, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
 .LBB6_76:                               # %.preheader1114
 	move	$s2, $zero
 	pcalau12i	$a0, %pc_hi20(Hexagon_X)
@@ -4767,7 +4751,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	b	.LBB6_86
 .LBB6_85:
-	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 224                   # 8-byte Folded Spill
 .LBB6_86:                               # %.loopexit1113
 	ori	$a0, $zero, 2
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
@@ -5069,18 +5053,18 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	move	$s6, $s7
 	b	.LBB6_151
 .LBB6_112:                              # %.lr.ph
-	move	$a4, $s3
+	move	$a4, $s2
 	move	$s7, $zero
-	sub.w	$a0, $s3, $t2
+	sub.w	$a0, $s2, $t2
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a5, $a0, $a1
-	slli.d	$a6, $s3, 2
+	slli.d	$a6, $s2, 2
 	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	sub.w	$a0, $a6, $a0
 	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	ori	$a0, $zero, 80
-	alsl.w	$a1, $s3, $a0, 2
+	alsl.w	$a1, $s2, $a0, 2
 	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	sub.w	$a1, $s4, $a7
 	srai.d	$a2, $a1, 31
@@ -5735,8 +5719,7 @@ smpUMHEXBipredIntegerPelBlockMotionSearch: # @smpUMHEXBipredIntegerPelBlockMotio
 	or	$t3, $a0, $a1
 	b	.LBB6_170
 .LBB6_156:                              # %.preheader1110
-	ori	$a0, $zero, 1
-	blt	$t0, $a0, .LBB6_204
+	blez	$t0, .LBB6_204
 # %bb.157:                              # %.preheader1109.preheader
 	move	$s3, $zero
 	pcalau12i	$a0, %pc_hi20(Hexagon_X)
@@ -6415,20 +6398,19 @@ smpUMHEX_decide_intrabk_SAD:            # @smpUMHEX_decide_intrabk_SAD
 smpUMHEX_skip_intrabk_SAD:              # @smpUMHEX_skip_intrabk_SAD
 # %bb.0:
 	pcalau12i	$a1, %got_pc_hi20(img)
-	ld.d	$a3, $a1, %got_pc_lo12(img)
-	ld.d	$a1, $a3, 0
-	ld.w	$a4, $a1, 0
-	ori	$a2, $zero, 1
+	ld.d	$a2, $a1, %got_pc_lo12(img)
+	ld.d	$a1, $a2, 0
+	ld.w	$a3, $a1, 0
 	addi.w	$a0, $a0, -9
-	blt	$a4, $a2, .LBB8_2
+	blez	$a3, .LBB8_2
 # %bb.1:
-	pcalau12i	$a4, %pc_hi20(smpUMHEX_flag_intra)
+	pcalau12i	$a3, %pc_hi20(smpUMHEX_flag_intra)
 	ld.w	$a1, $a1, 176
-	ld.d	$a4, $a4, %pc_lo12(smpUMHEX_flag_intra)
-	sltui	$a5, $a0, 2
+	ld.d	$a3, $a3, %pc_lo12(smpUMHEX_flag_intra)
+	sltui	$a4, $a0, 2
 	srai.d	$a1, $a1, 4
-	stx.b	$a5, $a4, $a1
-	ld.d	$a1, $a3, 0
+	stx.b	$a4, $a3, $a1
+	ld.d	$a1, $a2, 0
 .LBB8_2:                                # %._crit_edge
 	addi.d	$sp, $sp, -192
 	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
@@ -6442,6 +6424,7 @@ smpUMHEX_skip_intrabk_SAD:              # @smpUMHEX_skip_intrabk_SAD
 	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	ori	$a2, $zero, 1
 	bltu	$a2, $a0, .LBB8_6
 # %bb.3:                                # %._crit_edge
 	ld.w	$a0, $a1, 20

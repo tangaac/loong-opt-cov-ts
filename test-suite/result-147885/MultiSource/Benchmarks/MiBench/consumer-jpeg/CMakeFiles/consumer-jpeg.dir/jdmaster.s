@@ -37,17 +37,17 @@ jpeg_calc_output_dimensions:            # @jpeg_calc_output_dimensions
 	slli.w	$a1, $a1, 1
 	bgeu	$a2, $a1, .LBB0_10
 # %bb.5:                                # %.thread
-	ld.w	$a1, $fp, 44
+	ld.w	$a2, $fp, 44
 	st.w	$a0, $fp, 128
-	st.w	$a1, $fp, 132
 	ld.w	$a1, $fp, 48
+	st.w	$a2, $fp, 132
 	ori	$a0, $zero, 8
 	st.w	$a0, $fp, 396
-	ori	$a2, $zero, 1
 	addi.d	$s0, $fp, 296
-	blt	$a1, $a2, .LBB0_26
+	blez	$a1, .LBB0_26
 # %bb.6:                                # %.critedge.preheader
 	ld.d	$a0, $fp, 296
+	ori	$a2, $zero, 1
 	bne	$a1, $a2, .LBB0_19
 # %bb.7:
 	move	$a2, $zero

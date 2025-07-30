@@ -68,8 +68,7 @@ _Z24MultiByteToUnicodeStringRK11CStringBaseIcEj: # @_Z24MultiByteToUnicodeString
 	pcaddu18i	$ra, %call36(mbstowcs)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB0_7
+	bltz	$a1, .LBB0_7
 # %bb.6:                                # %_ZN11CStringBaseIwED2Ev.exit21
 	bstrpick.d	$a1, $a0, 30, 0
 	slli.d	$a1, $a1, 2
@@ -85,13 +84,12 @@ _Z24MultiByteToUnicodeStringRK11CStringBaseIcEj: # @_Z24MultiByteToUnicodeString
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $fp, 0
 	ld.w	$a1, $s0, 8
+	st.d	$a0, $fp, 0
 	st.w	$zero, $a0, 0
 	ori	$a0, $zero, 4
-	ori	$a2, $zero, 1
 	st.w	$a0, $fp, 12
-	blt	$a1, $a2, .LBB0_12
+	blez	$a1, .LBB0_12
 # %bb.9:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	.p2align	4, , 16
@@ -186,7 +184,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -194,7 +191,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -216,8 +212,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -236,11 +232,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB1_11
+	blez	$s4, .LBB1_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB1_12
+	blez	$s0, .LBB1_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -310,7 +305,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -395,8 +389,7 @@ _Z24UnicodeStringToMultiByteRK11CStringBaseIwEj: # @_Z24UnicodeStringToMultiByte
 	pcaddu18i	$ra, %call36(wcstombs)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_7
+	bltz	$a1, .LBB2_7
 # %bb.6:                                # %_ZN11CStringBaseIcED2Ev.exit24
 	bstrpick.d	$a1, $a0, 30, 0
 	stx.b	$zero, $s1, $a1
@@ -415,9 +408,8 @@ _Z24UnicodeStringToMultiByteRK11CStringBaseIwEj: # @_Z24UnicodeStringToMultiByte
 	ld.w	$a1, $s0, 8
 	st.d	$a0, $fp, 0
 	st.b	$zero, $a0, 0
-	ori	$a0, $zero, 1
 	st.w	$s1, $fp, 12
-	blt	$a1, $a0, .LBB2_12
+	blez	$a1, .LBB2_12
 # %bb.9:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -521,7 +513,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -529,7 +520,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s1, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s1, $zero
@@ -551,8 +541,8 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -566,11 +556,10 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s4, $s5, .LBB3_11
+	blez	$s4, .LBB3_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB3_12
+	blez	$s1, .LBB3_12
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -666,7 +655,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $a0, 8
 	stx.b	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

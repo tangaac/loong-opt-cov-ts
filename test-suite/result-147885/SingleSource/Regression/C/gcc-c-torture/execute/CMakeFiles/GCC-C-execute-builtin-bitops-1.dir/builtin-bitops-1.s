@@ -51,99 +51,81 @@ my_ffs:                                 # @my_ffs
 	ori	$a1, $zero, 11
 	bnez	$a2, .LBB0_32
 # %bb.12:                               # %.preheader.11
-	andi	$a2, $a0, 2048
+	slli.d	$a2, $a0, 52
 	ori	$a1, $zero, 12
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.13:                               # %.preheader.12
-	lu12i.w	$a1, 1
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 51
 	ori	$a1, $zero, 13
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.14:                               # %.preheader.13
-	lu12i.w	$a1, 2
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 50
 	ori	$a1, $zero, 14
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.15:                               # %.preheader.14
-	lu12i.w	$a1, 4
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 49
 	ori	$a1, $zero, 15
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.16:                               # %.preheader.15
-	lu12i.w	$a1, 8
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 48
 	ori	$a1, $zero, 16
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.17:                               # %.preheader.16
-	lu12i.w	$a1, 16
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 47
 	ori	$a1, $zero, 17
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.18:                               # %.preheader.17
-	lu12i.w	$a1, 32
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 46
 	ori	$a1, $zero, 18
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.19:                               # %.preheader.18
-	lu12i.w	$a1, 64
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 45
 	ori	$a1, $zero, 19
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.20:                               # %.preheader.19
-	lu12i.w	$a1, 128
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 44
 	ori	$a1, $zero, 20
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.21:                               # %.preheader.20
-	lu12i.w	$a1, 256
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 43
 	ori	$a1, $zero, 21
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.22:                               # %.preheader.21
-	lu12i.w	$a1, 512
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 42
 	ori	$a1, $zero, 22
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.23:                               # %.preheader.22
-	lu12i.w	$a1, 1024
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 41
 	ori	$a1, $zero, 23
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.24:                               # %.preheader.23
-	lu12i.w	$a1, 2048
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 40
 	ori	$a1, $zero, 24
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.25:                               # %.preheader.24
-	lu12i.w	$a1, 4096
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 39
 	ori	$a1, $zero, 25
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.26:                               # %.preheader.25
-	lu12i.w	$a1, 8192
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 38
 	ori	$a1, $zero, 26
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.27:                               # %.preheader.26
-	lu12i.w	$a1, 16384
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 37
 	ori	$a1, $zero, 27
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.28:                               # %.preheader.27
-	lu12i.w	$a1, 32768
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 36
 	ori	$a1, $zero, 28
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.29:                               # %.preheader.28
-	lu12i.w	$a1, 65536
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 35
 	ori	$a1, $zero, 29
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.30:                               # %.preheader.29
-	lu12i.w	$a1, 131072
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 34
 	ori	$a1, $zero, 30
-	bnez	$a2, .LBB0_32
+	bltz	$a2, .LBB0_32
 # %bb.31:                               # %.preheader.30
 	lu12i.w	$a1, 262144
 	and	$a0, $a0, $a1
@@ -206,104 +188,85 @@ my_ctz:                                 # @my_ctz
 	ori	$a1, $zero, 10
 	bnez	$a2, .LBB1_32
 # %bb.11:
-	andi	$a2, $a0, 2048
+	slli.d	$a2, $a0, 52
 	ori	$a1, $zero, 11
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.12:
-	lu12i.w	$a1, 1
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 51
 	ori	$a1, $zero, 12
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.13:
-	lu12i.w	$a1, 2
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 50
 	ori	$a1, $zero, 13
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.14:
-	lu12i.w	$a1, 4
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 49
 	ori	$a1, $zero, 14
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.15:
-	lu12i.w	$a1, 8
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 48
 	ori	$a1, $zero, 15
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.16:
-	lu12i.w	$a1, 16
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 47
 	ori	$a1, $zero, 16
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.17:
-	lu12i.w	$a1, 32
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 46
 	ori	$a1, $zero, 17
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.18:
-	lu12i.w	$a1, 64
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 45
 	ori	$a1, $zero, 18
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.19:
-	lu12i.w	$a1, 128
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 44
 	ori	$a1, $zero, 19
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.20:
-	lu12i.w	$a1, 256
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 43
 	ori	$a1, $zero, 20
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.21:
-	lu12i.w	$a1, 512
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 42
 	ori	$a1, $zero, 21
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.22:
-	lu12i.w	$a1, 1024
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 41
 	ori	$a1, $zero, 22
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.23:
-	lu12i.w	$a1, 2048
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 40
 	ori	$a1, $zero, 23
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.24:
-	lu12i.w	$a1, 4096
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 39
 	ori	$a1, $zero, 24
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.25:
-	lu12i.w	$a1, 8192
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 38
 	ori	$a1, $zero, 25
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.26:
-	lu12i.w	$a1, 16384
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 37
 	ori	$a1, $zero, 26
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.27:
-	lu12i.w	$a1, 32768
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 36
 	ori	$a1, $zero, 27
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.28:
-	lu12i.w	$a1, 65536
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 35
 	ori	$a1, $zero, 28
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.29:
-	lu12i.w	$a1, 131072
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 34
 	ori	$a1, $zero, 29
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.30:
-	lu12i.w	$a1, 262144
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 33
 	ori	$a1, $zero, 30
-	bnez	$a2, .LBB1_32
+	bltz	$a2, .LBB1_32
 # %bb.31:
 	sltui	$a0, $a0, 1
 	addi.d	$a1, $a0, 31
@@ -906,7 +869,7 @@ my_ffsl:                                # @my_ffsl
 	addi.d	$s0, $a1, -16
 	bnez	$a1, .LBB6_2
 .LBB6_4:                                # %middle.split
-	bstrpick.d	$a1, $s1, 15, 0
+	slli.d	$a1, $s1, 48
 	beqz	$a1, .LBB6_7
 # %bb.5:                                # %vector.early.exit
 	andi	$a1, $t6, 15
@@ -1171,7 +1134,7 @@ my_ctzl:                                # @my_ctzl
 	addi.d	$s0, $a1, -16
 	bnez	$a1, .LBB7_1
 .LBB7_3:                                # %middle.split
-	bstrpick.d	$a1, $s1, 15, 0
+	slli.d	$a1, $s1, 48
 	beqz	$a1, .LBB7_5
 # %bb.4:                                # %vector.early.exit
 	andi	$a1, $t6, 15
@@ -1434,7 +1397,7 @@ my_clzl:                                # @my_clzl
 	addi.d	$s0, $a1, -16
 	bnez	$a1, .LBB8_1
 .LBB8_3:                                # %middle.split
-	bstrpick.d	$a1, $s1, 15, 0
+	slli.d	$a1, $s1, 48
 	beqz	$a1, .LBB8_5
 # %bb.4:                                # %vector.early.exit
 	andi	$a1, $t6, 15
@@ -2151,7 +2114,7 @@ my_ffsll:                               # @my_ffsll
 	addi.d	$s0, $a1, -16
 	bnez	$a1, .LBB12_2
 .LBB12_4:                               # %middle.split
-	bstrpick.d	$a1, $s1, 15, 0
+	slli.d	$a1, $s1, 48
 	beqz	$a1, .LBB12_7
 # %bb.5:                                # %vector.early.exit
 	andi	$a1, $t6, 15
@@ -2416,7 +2379,7 @@ my_ctzll:                               # @my_ctzll
 	addi.d	$s0, $a1, -16
 	bnez	$a1, .LBB13_1
 .LBB13_3:                               # %middle.split
-	bstrpick.d	$a1, $s1, 15, 0
+	slli.d	$a1, $s1, 48
 	beqz	$a1, .LBB13_5
 # %bb.4:                                # %vector.early.exit
 	andi	$a1, $t6, 15
@@ -2679,7 +2642,7 @@ my_clzll:                               # @my_clzll
 	addi.d	$s0, $a1, -16
 	bnez	$a1, .LBB14_1
 .LBB14_3:                               # %middle.split
-	bstrpick.d	$a1, $s1, 15, 0
+	slli.d	$a1, $s1, 48
 	beqz	$a1, .LBB14_5
 # %bb.4:                                # %vector.early.exit
 	andi	$a1, $t6, 15
@@ -3586,7 +3549,7 @@ main:                                   # @main
 	bnez	$t3, .LBB18_12
 .LBB18_14:                              # %middle.split1090
                                         #   in Loop: Header=BB18_10 Depth=1
-	bstrpick.d	$a4, $a5, 15, 0
+	slli.d	$a4, $a5, 48
 	beqz	$a4, .LBB18_16
 # %bb.15:                               # %vector.early.exit1092
                                         #   in Loop: Header=BB18_10 Depth=1
@@ -3806,7 +3769,7 @@ main:                                   # @main
 	bne	$t3, $s4, .LBB18_18
 .LBB18_20:                              # %middle.split1077
                                         #   in Loop: Header=BB18_10 Depth=1
-	bstrpick.d	$a5, $a5, 15, 0
+	slli.d	$a5, $a5, 48
 	beqz	$a5, .LBB18_80
 # %bb.21:                               # %vector.early.exit1079
                                         #   in Loop: Header=BB18_10 Depth=1
@@ -4018,7 +3981,7 @@ main:                                   # @main
 	bne	$a2, $s4, .LBB18_23
 .LBB18_25:                              # %middle.split1064
                                         #   in Loop: Header=BB18_10 Depth=1
-	bstrpick.d	$a2, $s3, 15, 0
+	slli.d	$a2, $s3, 48
 	beqz	$a2, .LBB18_80
 # %bb.26:                               # %vector.early.exit1066
                                         #   in Loop: Header=BB18_10 Depth=1
@@ -4589,7 +4552,7 @@ main:                                   # @main
 	bnez	$t3, .LBB18_47
 .LBB18_49:                              # %middle.split1144
                                         #   in Loop: Header=BB18_45 Depth=1
-	bstrpick.d	$a4, $a5, 15, 0
+	slli.d	$a4, $a5, 48
 	beqz	$a4, .LBB18_51
 # %bb.50:                               # %vector.early.exit1146
                                         #   in Loop: Header=BB18_45 Depth=1
@@ -4809,7 +4772,7 @@ main:                                   # @main
 	bne	$t3, $s8, .LBB18_53
 .LBB18_55:                              # %middle.split1131
                                         #   in Loop: Header=BB18_45 Depth=1
-	bstrpick.d	$a5, $a5, 15, 0
+	slli.d	$a5, $a5, 48
 	beqz	$a5, .LBB18_80
 # %bb.56:                               # %vector.early.exit1133
                                         #   in Loop: Header=BB18_45 Depth=1
@@ -5021,7 +4984,7 @@ main:                                   # @main
 	bne	$a2, $s8, .LBB18_58
 .LBB18_60:                              # %middle.split1118
                                         #   in Loop: Header=BB18_45 Depth=1
-	bstrpick.d	$a2, $s2, 15, 0
+	slli.d	$a2, $s2, 48
 	beqz	$a2, .LBB18_80
 # %bb.61:                               # %vector.early.exit1120
                                         #   in Loop: Header=BB18_45 Depth=1

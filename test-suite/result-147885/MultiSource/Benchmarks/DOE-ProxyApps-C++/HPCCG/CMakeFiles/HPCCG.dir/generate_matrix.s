@@ -114,26 +114,25 @@ _Z15generate_matrixiiiPP24HPC_Sparse_Matrix_STRUCTPPdS3_S3_: # @_Z15generate_mat
 	or	$a0, $s7, $a0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $s5, 88
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	blt	$a2, $a1, .LBB0_66
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	blez	$a1, .LBB0_66
 # %bb.1:
-	blt	$s1, $a1, .LBB0_66
+	blez	$s1, .LBB0_66
 # %bb.2:
-	ori	$a1, $zero, 1
-	blt	$s2, $a1, .LBB0_66
+	blez	$s2, .LBB0_66
 # %bb.3:                                # %.preheader172.lr.ph.split.us.split.us
 	move	$a2, $zero
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$a3, $a3, 0
-	st.d	$a3, $sp, 160                   # 8-byte Folded Spill
-	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a3, $a3, 0
-	st.d	$a3, $sp, 152                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a1, $a1, 0
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a1, $a1, 0
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	sub.d	$a4, $zero, $fp
 	nor	$t1, $fp, $zero
+	ori	$a1, $zero, 1
 	sub.d	$a1, $a1, $s1
 	mul.d	$a6, $s2, $a1
 	addi.d	$ra, $a6, -1

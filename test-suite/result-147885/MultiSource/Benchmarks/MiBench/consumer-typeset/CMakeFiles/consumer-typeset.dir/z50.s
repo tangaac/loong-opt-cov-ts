@@ -768,8 +768,7 @@ PDF_PrintPageSetupForFont:              # @PDF_PrintPageSetupForFont
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.b	$a0, $s1, 60
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_2
+	bltz	$a0, .LBB10_2
 # %bb.1:
 	move	$a3, $zero
 	b	.LBB10_3

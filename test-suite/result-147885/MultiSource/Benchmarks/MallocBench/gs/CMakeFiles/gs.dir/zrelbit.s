@@ -515,8 +515,7 @@ zbitshift:                              # @zbitshift
 	b	.LBB12_7
 .LBB12_4:
 	ld.d	$a2, $a0, -16
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a1, .LBB12_6
+	bltz	$a1, .LBB12_6
 # %bb.5:
 	sll.d	$a1, $a2, $a1
 	b	.LBB12_7

@@ -16,9 +16,9 @@ find:                                   # @find
 	mul.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 2
 	addi.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:
+	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB0_3
 # %bb.2:
 	move	$a0, $zero

@@ -468,10 +468,10 @@ gentrimatrix_double_p:                  # @gentrimatrix_double_p
 	st.d	$s3, $a0, 0
 	st.d	$s4, $a0, 8
 	st.d	$s6, $a0, 16
-	ori	$a1, $zero, 1
 	st.d	$a0, $s7, %pc_lo12(genmalloc_memory_head)
-	blt	$s1, $a1, .LBB7_12
+	blez	$s1, .LBB7_12
 # %bb.1:                                # %.lr.ph47
+	ori	$a1, $zero, 1
 	mul.w	$a0, $s2, $fp
 	bge	$a1, $fp, .LBB7_9
 # %bb.2:                                # %.lr.ph47.split.us.preheader
@@ -518,7 +518,6 @@ gentrimatrix_double_p:                  # @gentrimatrix_double_p
 	bne	$a1, $s1, .LBB7_3
 	b	.LBB7_12
 .LBB7_9:
-	ori	$a1, $zero, 1
 	beq	$s1, $a1, .LBB7_12
 # %bb.10:                               # %.lr.ph47.split.peel.next.preheader
 	addi.d	$a1, $s0, 8
@@ -617,10 +616,10 @@ gentrimatrix_int_p:                     # @gentrimatrix_int_p
 	st.d	$s3, $a0, 0
 	st.d	$s4, $a0, 8
 	st.d	$s6, $a0, 16
-	ori	$a1, $zero, 1
 	st.d	$a0, $s7, %pc_lo12(genmalloc_memory_head)
-	blt	$s1, $a1, .LBB8_12
+	blez	$s1, .LBB8_12
 # %bb.1:                                # %.lr.ph47
+	ori	$a1, $zero, 1
 	mul.w	$a0, $s2, $fp
 	bge	$a1, $fp, .LBB8_9
 # %bb.2:                                # %.lr.ph47.split.us.preheader
@@ -667,7 +666,6 @@ gentrimatrix_int_p:                     # @gentrimatrix_int_p
 	bne	$a1, $s1, .LBB8_3
 	b	.LBB8_12
 .LBB8_9:
-	ori	$a1, $zero, 1
 	beq	$s1, $a1, .LBB8_12
 # %bb.10:                               # %.lr.ph47.split.peel.next.preheader
 	addi.d	$a1, $s0, 8

@@ -38,7 +38,7 @@ findwinner:                             # @findwinner
 	pcalau12i	$a0, %got_pc_hi20(lib)
 	ld.d	$s6, $a0, %got_pc_lo12(lib)
 	pcalau12i	$a0, %got_pc_hi20(mymove)
-	ld.d	$s7, $a0, %got_pc_lo12(mymove)
+	ld.d	$s8, $a0, %got_pc_lo12(mymove)
 	b	.LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                #   in Loop: Header=BB0_2 Depth=1
@@ -84,13 +84,13 @@ findwinner:                             # @findwinner
 	bltu	$a1, $a0, .LBB0_3
 # %bb.6:                                #   in Loop: Header=BB0_4 Depth=2
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	add.d	$s2, $a0, $fp
+	add.d	$s7, $a0, $fp
 	st.w	$zero, $sp, 92
 	pcaddu18i	$ra, %call36(initmark)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a4, $a0, 0
-	ld.bu	$a5, $s2, 0
+	ld.bu	$a5, $s7, 0
 	addi.d	$a2, $sp, 108
 	addi.d	$a3, $sp, 96
 	addi.d	$a6, $sp, 92
@@ -100,7 +100,7 @@ findwinner:                             # @findwinner
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_3
 # %bb.7:                                #   in Loop: Header=BB0_4 Depth=2
-	ld.bu	$a0, $s2, 0
+	ld.bu	$a0, $s7, 0
 	beqz	$a0, .LBB0_3
 # %bb.8:                                #   in Loop: Header=BB0_4 Depth=2
 	ori	$a1, $zero, 1
@@ -123,7 +123,7 @@ findwinner:                             # @findwinner
 	b	.LBB0_3
 .LBB0_11:                               # %.preheader.preheader
                                         #   in Loop: Header=BB0_4 Depth=2
-	move	$s0, $zero
+	move	$s2, $zero
 	ori	$a0, $zero, 1
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB0_14
@@ -132,9 +132,9 @@ findwinner:                             # @findwinner
 	move	$a0, $zero
 .LBB0_13:                               # %._crit_edge
                                         #   in Loop: Header=BB0_14 Depth=3
-	addi.d	$s0, $s0, 1
+	addi.d	$s2, $s2, 1
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	bgeu	$s0, $a0, .LBB0_3
+	bgeu	$s2, $a0, .LBB0_3
 .LBB0_14:                               # %.preheader
                                         #   Parent Loop BB0_2 Depth=1
                                         #     Parent Loop BB0_4 Depth=2
@@ -143,11 +143,11 @@ findwinner:                             # @findwinner
 	beqz	$a0, .LBB0_12
 # %bb.15:                               # %.lr.ph
                                         #   in Loop: Header=BB0_14 Depth=3
-	move	$s1, $zero
-	addi.d	$s8, $sp, 108
-	alsl.d	$s3, $s0, $s8, 2
+	move	$s0, $zero
+	addi.d	$s1, $sp, 108
+	alsl.d	$s3, $s2, $s1, 2
 	addi.d	$s5, $sp, 96
-	alsl.d	$fp, $s0, $s5, 2
+	alsl.d	$fp, $s2, $s5, 2
 	b	.LBB0_18
 	.p2align	4, , 16
 .LBB0_16:                               #   in Loop: Header=BB0_18 Depth=4
@@ -157,33 +157,32 @@ findwinner:                             # @findwinner
 	add.d	$a1, $a2, $a1
 	stx.b	$zero, $a1, $a0
 .LBB0_17:                               #   in Loop: Header=BB0_18 Depth=4
-	ld.bu	$a0, $s2, 0
-	addi.d	$s1, $s1, 1
+	ld.bu	$a0, $s7, 0
+	addi.d	$s0, $s0, 1
 	addi.d	$s5, $s5, 4
-	addi.d	$s8, $s8, 4
-	bgeu	$s1, $a0, .LBB0_13
+	addi.d	$s1, $s1, 4
+	bgeu	$s0, $a0, .LBB0_13
 .LBB0_18:                               #   Parent Loop BB0_2 Depth=1
                                         #     Parent Loop BB0_4 Depth=2
                                         #       Parent Loop BB0_14 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	beq	$s0, $s1, .LBB0_17
+	beq	$s2, $s0, .LBB0_17
 # %bb.19:                               #   in Loop: Header=BB0_18 Depth=4
 	ld.w	$a0, $s3, 0
 	ld.w	$a1, $fp, 0
-	ld.w	$a2, $s7, 0
+	ld.w	$a2, $s8, 0
 	st.w	$zero, $s6, 0
 	pcaddu18i	$ra, %call36(countlib)
 	jirl	$ra, $ra, 0
 	ld.w	$s4, $s6, 0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB0_17
+	blez	$s4, .LBB0_17
 # %bb.20:                               #   in Loop: Header=BB0_18 Depth=4
 	ld.w	$a0, $s3, 0
-	ld.b	$a3, $s7, 0
+	ld.b	$a3, $s8, 0
 	ld.w	$a4, $fp, 0
 	alsl.d	$a1, $a0, $a0, 3
 	alsl.d	$a5, $a1, $a0, 1
-	ld.w	$a0, $s8, 0
+	ld.w	$a0, $s1, 0
 	ld.w	$a1, $s5, 0
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, 0

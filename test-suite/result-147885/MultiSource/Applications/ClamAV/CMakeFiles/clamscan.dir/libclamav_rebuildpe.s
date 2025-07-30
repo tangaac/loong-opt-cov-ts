@@ -52,8 +52,7 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	ori	$a0, $zero, 96
 	blt	$a0, $s3, .LBB0_17
 # %bb.3:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB0_6
+	blez	$fp, .LBB0_6
 # %bb.4:                                # %.lr.ph.preheader
 	ori	$a0, $zero, 8
 	bgeu	$fp, $a0, .LBB0_7
@@ -211,8 +210,7 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	lu32i.d	$a2, 0
 	and	$a1, $a1, $a2
 	add.d	$s7, $a1, $s7
-	ori	$s4, $zero, 1
-	bge	$fp, $s4, .LBB0_19
+	bgtz	$fp, .LBB0_19
 .LBB0_16:
 	move	$s5, $s2
 	b	.LBB0_21
@@ -221,10 +219,10 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	b	.LBB0_22
 .LBB0_18:
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	ori	$s4, $zero, 1
-	blt	$fp, $s4, .LBB0_16
+	blez	$fp, .LBB0_16
 .LBB0_19:                               # %.lr.ph119.preheader
 	addi.d	$s1, $a0, 12
+	ori	$s4, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill

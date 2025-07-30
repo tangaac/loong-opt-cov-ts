@@ -37,10 +37,11 @@ zarray:                                 # @zarray
 	st.d	$a0, $s0, 0
 	ori	$a1, $zero, 770
 	st.h	$a1, $s0, 8
-	bstrpick.d	$a1, $fp, 15, 0
+	slli.d	$a1, $fp, 48
 	st.h	$fp, $s0, 10
 	beqz	$a1, .LBB0_12
 # %bb.6:                                # %.lr.ph.preheader
+	bstrpick.d	$a1, $fp, 15, 0
 	ori	$a2, $zero, 2
 	bltu	$a1, $a2, .LBB0_10
 # %bb.7:                                # %vector.ph
@@ -70,8 +71,8 @@ zarray:                                 # @zarray
 .LBB0_11:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -1
-	bstrpick.d	$a2, $fp, 15, 0
 	st.h	$a1, $a0, 0
+	slli.d	$a2, $fp, 48
 	addi.d	$a0, $a0, 16
 	bnez	$a2, .LBB0_11
 .LBB0_12:

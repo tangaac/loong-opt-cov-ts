@@ -20,7 +20,6 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	st.d	$s4, $sp, 1208                  # 8-byte Folded Spill
 	st.d	$s5, $sp, 1200                  # 8-byte Folded Spill
 	st.d	$s6, $sp, 1192                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1184                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -30,27 +29,26 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	addi.w	$s4, $zero, -1
 	move	$s0, $a2
 	move	$fp, $a1
 	move	$s1, $a0
 	move	$a0, $s4
 	lu32i.d	$a0, 0
-	st.w	$a0, $sp, 104
-	st.d	$zero, $sp, 120
+	st.w	$a0, $sp, 112
+	st.d	$zero, $sp, 128
 	ori	$a0, $zero, 4
 	ori	$s2, $zero, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 112
+	st.d	$a0, $sp, 120
 	st.b	$zero, $a0, 0
-	st.w	$s2, $sp, 124
+	st.w	$s2, $sp, 132
 	pcalau12i	$a0, %pc_hi20(_ZTVN8NWindows5NFile3NIO7CInFileE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTVN8NWindows5NFile3NIO7CInFileE+16)
-	st.d	$a0, $sp, 96
+	st.d	$a0, $sp, 104
 .Ltmp0:
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 104
 	ori	$a2, $zero, 1
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO7CInFile4OpenEPKwb)
@@ -60,20 +58,20 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	beqz	$a0, .LBB0_16
 # %bb.2:
 .Ltmp3:
-	addi.d	$a0, $sp, 96
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 104
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(_ZNK8NWindows5NFile3NIO9CFileBase9GetLengthERy)
 	jirl	$ra, $ra, 0
 .Ltmp4:
 # %bb.3:
-	ld.d	$s2, $sp, 88
+	ld.d	$s2, $sp, 96
 	ori	$a1, $zero, 1
 	bstrins.d	$a1, $a1, 32, 31
 	sltu	$a1, $s2, $a1
 	and	$a0, $a0, $a1
 	beqz	$a0, .LBB0_16
 # %bb.4:
-	st.d	$zero, $sp, 80
+	st.d	$zero, $sp, 88
 .Ltmp6:
 	ori	$a0, $zero, 4
 	ori	$s3, $zero, 4
@@ -82,11 +80,11 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .Ltmp7:
 # %bb.5:
 	move	$s1, $a0
-	st.d	$a0, $sp, 72
+	st.d	$a0, $sp, 80
 	st.b	$zero, $a0, 0
 	addi.w	$a2, $s2, 0
 	ori	$a0, $zero, 3
-	st.w	$s3, $sp, 84
+	st.w	$s3, $sp, 92
 	blt	$a2, $a0, .LBB0_8
 # %bb.6:
 	addi.w	$s2, $s2, 2
@@ -100,16 +98,16 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 80
-	ld.w	$a2, $sp, 88
-	st.d	$s3, $sp, 72
+	ld.w	$a0, $sp, 88
+	ld.w	$a2, $sp, 96
+	st.d	$s3, $sp, 80
 	stx.b	$zero, $s3, $a0
-	st.w	$s2, $sp, 84
+	st.w	$s2, $sp, 92
 	move	$s1, $s3
 .LBB0_8:
 .Ltmp12:
-	addi.d	$a0, $sp, 96
-	addi.d	$a3, $sp, 68
+	addi.d	$a0, $sp, 104
+	addi.d	$a3, $sp, 76
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO7CInFile4ReadEPvjRj)
 	jirl	$ra, $ra, 0
@@ -117,39 +115,39 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 # %bb.9:
 	beqz	$a0, .LBB0_18
 # %bb.10:
-	ld.wu	$a0, $sp, 88
-	ld.d	$s2, $sp, 72
+	ld.wu	$a0, $sp, 96
+	ld.d	$s2, $sp, 80
 	stx.b	$zero, $s1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
 	stx.b	$zero, $s2, $a1
-	st.w	$a0, $sp, 80
+	st.w	$a0, $sp, 88
 .Ltmp14:
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO9CFileBase5CloseEv)
 	jirl	$ra, $ra, 0
 .Ltmp15:
 # %bb.11:
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 64
 .Ltmp17:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp18:
 # %bb.12:
-	st.d	$a0, $sp, 48
+	st.d	$a0, $sp, 56
 	st.w	$zero, $a0, 0
 	ori	$a0, $zero, 4
 	lu12i.w	$s2, 15
 	ori	$a1, $s2, 3561
-	st.w	$a0, $sp, 60
+	st.w	$a0, $sp, 68
 	bne	$s0, $a1, .LBB0_19
 # %bb.13:
 .Ltmp26:
-	addi.d	$a0, $sp, 72
-	addi.d	$a1, $sp, 48
+	addi.d	$a0, $sp, 80
+	addi.d	$a1, $sp, 56
 	pcaddu18i	$ra, %call36(_Z20ConvertUTF8ToUnicodeRK11CStringBaseIcERS_IwE)
 	jirl	$ra, $ra, 0
 .Ltmp27:
@@ -161,11 +159,10 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .LBB0_16:
 	move	$fp, $zero
 .LBB0_17:
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO9CFileBaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-	ld.d	$s7, $sp, 1184                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1192                  # 8-byte Folded Reload
 	ld.d	$s5, $sp, 1200                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1208                  # 8-byte Folded Reload
@@ -182,18 +179,18 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	b	.LBB0_75
 .LBB0_19:
 .Ltmp20:
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 72
+	addi.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 80
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(_Z24MultiByteToUnicodeStringRK11CStringBaseIcEj)
 	jirl	$ra, $ra, 0
 .Ltmp21:
 # %bb.20:
-	ld.d	$s1, $sp, 48
-	st.w	$zero, $sp, 56
+	ld.d	$s1, $sp, 56
+	st.w	$zero, $sp, 64
 	st.w	$zero, $s1, 0
-	ld.w	$a0, $sp, 40
-	ld.w	$s5, $sp, 60
+	ld.w	$a0, $sp, 48
+	ld.w	$s5, $sp, 68
 	addi.w	$s3, $a0, 1
 	bne	$s3, $s5, .LBB0_22
 # %bb.21:
@@ -211,23 +208,22 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .Ltmp24:
 # %bb.23:                               # %.noexc47
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB0_25
+	blez	$s5, .LBB0_25
 # %bb.24:                               # %._crit_edge.thread.i.i46
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 56
+	ld.w	$a0, $sp, 64
 	b	.LBB0_26
 .LBB0_25:
 	move	$a0, $zero
 .LBB0_26:
-	st.d	$s0, $sp, 48
+	st.d	$s0, $sp, 56
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s0, $a0
-	st.w	$s3, $sp, 60
+	st.w	$s3, $sp, 68
 .LBB0_27:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 40
 	move	$a1, $zero
 	.p2align	4, , 16
 .LBB0_28:                               # =>This Inner Loop Header: Depth=1
@@ -236,20 +232,19 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB0_28
 # %bb.29:
-	ld.w	$a1, $sp, 40
-	st.w	$a1, $sp, 56
+	ld.w	$a1, $sp, 48
+	st.w	$a1, $sp, 64
 	beqz	$a0, .LBB0_31
 # %bb.30:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_31:
-	ld.w	$s0, $sp, 56
+	ld.w	$s0, $sp, 64
 	beqz	$s0, .LBB0_35
 # %bb.32:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB0_36
+	blez	$s0, .LBB0_36
 # %bb.33:
-	ld.d	$a0, $sp, 48
+	ld.d	$a0, $sp, 56
 	ld.w	$a1, $a0, 0
 	ori	$a2, $s2, 3839
 	bne	$a1, $a2, .LBB0_36
@@ -258,77 +253,74 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	slli.d	$a2, $s0, 2
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 56
+	ld.w	$a0, $sp, 64
 	addi.w	$s0, $a0, -1
-	st.w	$s0, $sp, 56
+	st.w	$s0, $sp, 64
 	b	.LBB0_36
 .LBB0_35:
 	move	$s0, $zero
 .LBB0_36:                               # %_ZN11CStringBaseIwE6DeleteEii.exit
-	st.d	$zero, $sp, 40
+	st.d	$zero, $sp, 48
 .Ltmp29:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp30:
 # %bb.37:                               # %_ZN11CStringBaseIwEC2Ev.exit51
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 40
 	st.w	$zero, $a0, 0
 	ori	$a0, $zero, 4
-	st.w	$a0, $sp, 44
-	ori	$a0, $zero, 1
+	st.w	$a0, $sp, 52
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	blt	$s0, $a0, .LBB0_57
+	blez	$s0, .LBB0_57
 # %bb.38:                               # %.lr.ph
 	move	$s1, $zero
 	ori	$s2, $zero, 13
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
-	ori	$s5, $zero, 10
+	ori	$s3, $zero, 10
 	b	.LBB0_41
 	.p2align	4, , 16
 .LBB0_39:                               #   in Loop: Header=BB0_41 Depth=1
 .Ltmp45:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLEw)
 	jirl	$ra, $ra, 0
 .Ltmp46:
 # %bb.40:                               #   in Loop: Header=BB0_41 Depth=1
-	ld.w	$a0, $sp, 56
+	ld.w	$a0, $sp, 64
 	addi.d	$s1, $s1, 1
 	bge	$s1, $a0, .LBB0_57
 .LBB0_41:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_53 Depth 2
-	ld.d	$a0, $sp, 48
+	ld.d	$a0, $sp, 56
 	slli.d	$a1, $s1, 2
 	ldx.w	$a1, $a0, $a1
 	beq	$a1, $s2, .LBB0_43
 # %bb.42:                               #   in Loop: Header=BB0_41 Depth=1
-	bne	$a1, $s5, .LBB0_39
+	bne	$a1, $s3, .LBB0_39
 .LBB0_43:                               #   in Loop: Header=BB0_41 Depth=1
 .Ltmp32:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwE9TrimRightEv)
 	jirl	$ra, $ra, 0
 .Ltmp33:
 # %bb.44:                               # %.noexc54
                                         #   in Loop: Header=BB0_41 Depth=1
 .Ltmp34:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwE8TrimLeftEv)
 	jirl	$ra, $ra, 0
 .Ltmp35:
 # %bb.45:                               # %_ZN11CStringBaseIwE4TrimEv.exit56
                                         #   in Loop: Header=BB0_41 Depth=1
 .Ltmp36:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZL11RemoveQuoteR11CStringBaseIwE)
 	jirl	$ra, $ra, 0
 .Ltmp37:
 # %bb.46:                               #   in Loop: Header=BB0_41 Depth=1
-	ld.w	$s6, $sp, 40
-	beqz	$s6, .LBB0_56
+	ld.w	$s5, $sp, 48
+	beqz	$s5, .LBB0_56
 # %bb.47:                               #   in Loop: Header=BB0_41 Depth=1
 .Ltmp38:
 	ori	$a0, $zero, 16
@@ -338,19 +330,19 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 # %bb.48:                               # %.noexc57
                                         #   in Loop: Header=BB0_41 Depth=1
 	move	$s0, $a0
-	bstrpick.d	$a0, $s6, 31, 0
-	addi.d	$s7, $a0, 1
-	and	$a0, $s7, $s3
+	bstrpick.d	$a0, $s5, 31, 0
+	addi.d	$s6, $a0, 1
+	slli.d	$a0, $s6, 31
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s0, 0
-	beqz	$a0, .LBB0_50
+	bgez	$a0, .LBB0_50
 # %bb.49:                               #   in Loop: Header=BB0_41 Depth=1
 	move	$a0, $zero
 	b	.LBB0_52
 	.p2align	4, , 16
 .LBB0_50:                               #   in Loop: Header=BB0_41 Depth=1
-	addi.w	$a0, $s7, 0
-	slti	$a1, $s6, -1
+	addi.w	$a0, $s6, 0
+	slti	$a1, $s5, -1
 	slli.d	$a0, $a0, 2
 	maskeqz	$a2, $s4, $a1
 	masknez	$a0, $a0, $a1
@@ -363,10 +355,10 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
                                         #   in Loop: Header=BB0_41 Depth=1
 	st.d	$a0, $s0, 0
 	st.w	$zero, $a0, 0
-	st.w	$s7, $s0, 12
+	st.w	$s6, $s0, 12
 .LBB0_52:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
                                         #   in Loop: Header=BB0_41 Depth=1
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 40
 	.p2align	4, , 16
 .LBB0_53:                               #   Parent Loop BB0_41 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -377,7 +369,7 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	move	$a0, $a3
 	bnez	$a2, .LBB0_53
 # %bb.54:                               #   in Loop: Header=BB0_41 Depth=1
-	st.w	$s6, $s0, 8
+	st.w	$s5, $s0, 8
 .Ltmp43:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
@@ -392,32 +384,32 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 12
 .LBB0_56:                               #   in Loop: Header=BB0_41 Depth=1
-	ld.d	$a0, $sp, 32
-	st.w	$zero, $sp, 40
+	ld.d	$a0, $sp, 40
+	st.w	$zero, $sp, 48
 	st.w	$zero, $a0, 0
-	ld.w	$a0, $sp, 56
+	ld.w	$a0, $sp, 64
 	addi.d	$s1, $s1, 1
 	blt	$s1, $a0, .LBB0_41
 .LBB0_57:                               # %._crit_edge
 .Ltmp48:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwE9TrimRightEv)
 	jirl	$ra, $ra, 0
 .Ltmp49:
 # %bb.58:                               # %.noexc52
 .Ltmp50:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwE8TrimLeftEv)
 	jirl	$ra, $ra, 0
 .Ltmp51:
 # %bb.59:                               # %_ZN11CStringBaseIwE4TrimEv.exit
 .Ltmp52:
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZL11RemoveQuoteR11CStringBaseIwE)
 	jirl	$ra, $ra, 0
 .Ltmp53:
 # %bb.60:
-	ld.w	$s1, $sp, 40
+	ld.w	$s1, $sp, 48
 	beqz	$s1, .LBB0_70
 # %bb.61:
 .Ltmp54:
@@ -429,12 +421,10 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	move	$s0, $a0
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s0, 0
-	beqz	$a0, .LBB0_64
+	bgez	$a0, .LBB0_64
 # %bb.63:
 	move	$a0, $zero
 	b	.LBB0_66
@@ -454,7 +444,7 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	st.w	$zero, $a0, 0
 	st.w	$s2, $s0, 12
 .LBB0_66:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i60
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 40
 	.p2align	4, , 16
 .LBB0_67:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
@@ -478,7 +468,7 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 12
 .LBB0_70:
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB0_72
 # %bb.71:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -486,13 +476,13 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .LBB0_72:                               # %_ZN11CStringBaseIwED2Ev.exit69
 	ori	$fp, $zero, 1
 .LBB0_73:
-	ld.d	$a0, $sp, 48
+	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB0_75
 # %bb.74:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_75:
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB0_17
 # %bb.76:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -503,7 +493,7 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 	b	.LBB0_90
 .LBB0_78:
 .Ltmp25:
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 40
 	move	$fp, $a0
 	beqz	$a1, .LBB0_99
 # %bb.79:
@@ -534,7 +524,7 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .Ltmp16:
 .LBB0_88:
 	move	$fp, $a0
-	ld.d	$s1, $sp, 72
+	ld.d	$s1, $sp, 80
 	beqz	$s1, .LBB0_101
 	b	.LBB0_103
 .LBB0_89:
@@ -556,7 +546,7 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .Ltmp2:
 .LBB0_94:
 	move	$fp, $a0
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO9CFileBaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -567,19 +557,19 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .LBB0_96:                               # %.body
 	move	$fp, $a0
 .LBB0_97:                               # %.body
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB0_99
 .LBB0_98:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_99:
-	ld.d	$a0, $sp, 48
+	ld.d	$a0, $sp, 56
 	bnez	$a0, .LBB0_102
 # %bb.100:
-	ld.d	$s1, $sp, 72
+	ld.d	$s1, $sp, 80
 	bnez	$s1, .LBB0_103
 .LBB0_101:
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO9CFileBaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -588,13 +578,13 @@ _Z21ReadNamesFromListFilePKwR13CObjectVectorI11CStringBaseIwEEj: # @_Z21ReadName
 .LBB0_102:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 72
+	ld.d	$s1, $sp, 80
 	beqz	$s1, .LBB0_101
 .LBB0_103:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile3NIO9CFileBaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -855,8 +845,7 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 .Ltmp66:
 # %bb.21:                               # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB1_23
+	blez	$s5, .LBB1_23
 # %bb.22:                               # %._crit_edge.thread.i.i
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -965,7 +954,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -973,7 +961,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -995,8 +982,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -1015,11 +1002,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB2_11
+	blez	$s4, .LBB2_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB2_12
+	blez	$s0, .LBB2_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -1089,7 +1075,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1235,8 +1220,7 @@ _ZN11CStringBaseIwE9TrimRightEv:        # @_ZN11CStringBaseIwE9TrimRightEv
 	sub.d	$a3, $t1, $a1
 	srli.d	$a2, $a3, 2
 	sub.w	$a2, $a4, $a2
-	ori	$a5, $zero, 1
-	blt	$a2, $a5, .LBB4_15
+	blez	$a2, .LBB4_15
 # %bb.14:
 	slli.d	$a0, $a4, 2
 	ldx.w	$a0, $a1, $a0
@@ -1392,8 +1376,7 @@ _ZN11CStringBaseIwE8TrimLeftEv:         # @_ZN11CStringBaseIwE8TrimLeftEv
 	masknez	$a1, $a1, $a4
 	maskeqz	$a4, $a2, $a4
 	or	$s0, $a4, $a1
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB5_12
+	blez	$s0, .LBB5_12
 # %bb.11:
 	alsl.d	$a1, $s0, $a3, 2
 	sub.d	$a0, $a2, $s0

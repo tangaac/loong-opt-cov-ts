@@ -854,8 +854,7 @@ main:                                   # @main
 	ori	$a3, $zero, 2
 	bgeu	$a2, $a3, .LBB0_96
 .LBB0_103:                              #   in Loop: Header=BB0_10 Depth=1
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_98
+	blez	$a1, .LBB0_98
 # %bb.104:                              #   in Loop: Header=BB0_10 Depth=1
 	addi.d	$a0, $sp, 792
 	stx.b	$zero, $a1, $a0
@@ -1027,9 +1026,8 @@ main:                                   # @main
 	st.d	$a3, $a4, 24
 	b	.LBB0_98
 .LBB0_119:                              #   in Loop: Header=BB0_10 Depth=1
-	ori	$a0, $zero, 1
 	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB0_173
+	blez	$a1, .LBB0_173
 # %bb.120:                              #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a2, $s3, 0
 	addi.d	$a0, $sp, 792

@@ -160,23 +160,23 @@ LexPush:                                # @LexPush
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, %pc_lo12(stack_free)
-	ori	$fp, $zero, 1
-	blt	$a0, $fp, .LBB2_7
+	blez	$a0, .LBB2_7
 # %bb.5:                                # %.lr.ph.preheader
-	addi.d	$s0, $a0, 1
+	addi.d	$fp, $a0, 1
 	ori	$a1, $zero, 120
 	mul.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $s6
-	pcalau12i	$a1, %got_pc_hi20(no_fpos)
-	ld.d	$s1, $a1, %got_pc_lo12(no_fpos)
-	addi.d	$s2, $a0, -72
+	addi.d	$s0, $a0, -72
+	pcalau12i	$a0, %got_pc_hi20(no_fpos)
+	ld.d	$s1, $a0, %got_pc_lo12(no_fpos)
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.21)
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s5, $s1, 0
-	ld.hu	$a0, $s2, 0
+	ld.hu	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(EchoFileSource)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -187,9 +187,9 @@ LexPush:                                # @LexPush
 	move	$a4, $s5
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	addi.d	$s0, $s0, -1
-	addi.d	$s2, $s2, -120
-	bltu	$fp, $s0, .LBB2_6
+	addi.d	$fp, $fp, -1
+	addi.d	$s0, $s0, -120
+	bltu	$s2, $fp, .LBB2_6
 .LBB2_7:                                # %._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -1601,14 +1601,13 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 0
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	ld.h	$a1, $a2, 2
-	st.d	$a0, $a0, 16
 	ld.w	$a2, $a2, 4
+	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
-	ori	$a1, $zero, 1
 	st.w	$a2, $a0, 36
 	move	$s4, $s7
-	blt	$s1, $a1, .LBB5_114
+	blez	$s1, .LBB5_114
 # %bb.112:                              # %iter.check637
 	ori	$a1, $zero, 16
 	bgeu	$s1, $a1, .LBB5_115
@@ -1758,13 +1757,12 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 0
 	ld.h	$a1, $s1, 2
-	st.d	$a0, $a0, 16
 	ld.w	$a2, $s1, 4
+	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
-	ori	$a1, $zero, 1
 	st.w	$a2, $a0, 36
-	blt	$s2, $a1, .LBB5_137
+	blez	$s2, .LBB5_137
 # %bb.132:                              # %iter.check605
 	ori	$a1, $zero, 16
 	bltu	$s2, $a1, .LBB5_134
@@ -1907,13 +1905,12 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 0
 	ld.h	$a1, $s1, 2
-	st.d	$a0, $a0, 16
 	ld.w	$a2, $s1, 4
+	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
-	ori	$a1, $zero, 1
 	st.w	$a2, $a0, 36
-	blt	$s3, $a1, .LBB5_162
+	blez	$s3, .LBB5_162
 # %bb.157:                              # %iter.check573
 	ori	$a1, $zero, 16
 	bltu	$s3, $a1, .LBB5_159
@@ -2012,14 +2009,13 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 0
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	ld.h	$a1, $a2, 2
-	st.d	$a0, $a0, 16
 	ld.w	$a2, $a2, 4
+	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
-	ori	$a1, $zero, 1
 	st.w	$a2, $a0, 36
 	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
-	blt	$s1, $a1, .LBB5_180
+	blez	$s1, .LBB5_180
 # %bb.175:                              # %iter.check535
 	ori	$a1, $zero, 16
 	bltu	$s1, $a1, .LBB5_177
@@ -2069,13 +2065,12 @@ LexGetToken:                            # @LexGetToken
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 0
 	ld.h	$a1, $s1, 2
-	st.d	$a0, $a0, 16
 	ld.w	$a2, $s1, 4
+	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.h	$a1, $a0, 34
-	ori	$a1, $zero, 1
 	st.w	$a2, $a0, 36
-	blt	$s3, $a1, .LBB5_189
+	blez	$s3, .LBB5_189
 # %bb.184:                              # %iter.check
 	ori	$a1, $zero, 16
 	bltu	$s3, $a1, .LBB5_186
@@ -2494,6 +2489,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$s1, $zero, 1
 	pcalau12i	$a0, %pc_hi20(chtbl)
 	addi.d	$s7, $a0, %pc_lo12(chtbl)
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
@@ -2514,7 +2510,6 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	pcalau12i	$a0, %pc_hi20(.LJTI7_0)
 	addi.d	$s5, $a0, %pc_lo12(.LJTI7_0)
 	ori	$s2, $zero, 511
-	ori	$s1, $zero, 1
 	b	.LBB7_6
 	.p2align	4, , 16
 .LBB7_3:                                # %._crit_edge310
@@ -2555,8 +2550,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	add.d	$a0, $s5, $a0
 	jr	$a0
 .LBB7_8:                                #   in Loop: Header=BB7_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_3
+	blez	$s0, .LBB7_3
 # %bb.9:                                # %.lr.ph309.preheader
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$s1, $sp, 648
@@ -2672,8 +2666,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	bne	$a5, $a0, .LBB7_107
 # %bb.32:                               # %.preheader262
                                         #   in Loop: Header=BB7_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_95
+	blez	$s0, .LBB7_95
 # %bb.33:                               # %.lr.ph294.preheader
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$s1, $sp, 648
@@ -2743,18 +2736,17 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB7_127
 .LBB7_46:                               #   in Loop: Header=BB7_6 Depth=1
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.49)
 	move	$a0, $s8
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(StringBeginsWith)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	move	$s1, $a0
 	ori	$s4, $zero, 8
-	blt	$s0, $a0, .LBB7_49
+	blez	$s0, .LBB7_49
 # %bb.47:                               # %.lr.ph271
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$s6, $sp, 648
@@ -2772,8 +2764,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	bnez	$s0, .LBB7_48
 .LBB7_49:                               # %._crit_edge272
                                         #   in Loop: Header=BB7_6 Depth=1
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	sltui	$s6, $a0, 1
+	sltui	$s6, $s1, 1
 	ori	$a0, $zero, 11
 	masknez	$a0, $a0, $s6
 	maskeqz	$a1, $s4, $s6
@@ -2789,8 +2780,9 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	beq	$a1, $a2, .LBB7_51
 # %bb.50:                               #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$a4, $a0, 32
-	masknez	$a0, $s1, $s6
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	masknez	$a0, $a0, $s6
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	maskeqz	$a1, $a1, $s6
 	or	$a6, $a1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.50)
@@ -3054,8 +3046,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	b	.LBB7_6
 .LBB7_84:                               # %.preheader265
                                         #   in Loop: Header=BB7_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_3
+	blez	$s0, .LBB7_3
 # %bb.85:                               # %.lr.ph
                                         #   in Loop: Header=BB7_6 Depth=1
 	ori	$s6, $zero, 8
@@ -3138,8 +3129,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	beqz	$a0, .LBB7_139
 # %bb.98:                               # %.preheader263
                                         #   in Loop: Header=BB7_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_116
+	blez	$s0, .LBB7_116
 # %bb.99:                               # %.lr.ph289.preheader
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$s1, $sp, 648
@@ -3181,8 +3171,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	b	.LBB7_101
 .LBB7_107:                              # %.preheader261
                                         #   in Loop: Header=BB7_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_3
+	blez	$s0, .LBB7_3
 # %bb.108:                              # %.lr.ph299.preheader
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$s1, $sp, 648
@@ -3292,8 +3281,7 @@ LexScanVerbatim:                        # @LexScanVerbatim
 	b	.LBB7_138
 .LBB7_127:                              # %.preheader264
                                         #   in Loop: Header=BB7_6 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_3
+	blez	$s0, .LBB7_3
 # %bb.128:                              # %.lr.ph283
                                         #   in Loop: Header=BB7_6 Depth=1
 	addi.d	$s1, $sp, 648
@@ -3530,8 +3518,7 @@ BuildLines:                             # @BuildLines
 	st.h	$a0, $fp, 34
 	st.w	$a1, $fp, 36
 	ld.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_12
+	blez	$a0, .LBB8_12
 # %bb.6:                                # %.lr.ph
 	move	$a0, $zero
 	addi.d	$a1, $fp, 64

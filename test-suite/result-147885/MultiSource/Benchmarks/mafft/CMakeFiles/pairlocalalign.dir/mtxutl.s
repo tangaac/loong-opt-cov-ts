@@ -5,8 +5,7 @@
 	.type	MtxuntDouble,@function
 MtxuntDouble:                           # @MtxuntDouble
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_11
+	blez	$a1, .LBB0_11
 # %bb.1:                                # %.preheader17.us.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -112,9 +111,8 @@ MtxmltDouble:                           # @MtxmltDouble
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$fp, $a1, .LBB1_7
+	blez	$fp, .LBB1_7
 # %bb.1:                                # %.preheader33.us.us.preheader
 	move	$s5, $zero
 	slli.d	$s3, $fp, 3
@@ -218,8 +216,7 @@ AllocateCharVec:                        # @AllocateCharVec
 	.type	ReallocateCharMtx,@function
 ReallocateCharMtx:                      # @ReallocateCharMtx
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB3_6
+	blez	$a1, .LBB3_6
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
@@ -298,8 +295,7 @@ AllocateCharMtx:                        # @AllocateCharMtx
 	move	$s1, $a0
 	beqz	$fp, .LBB4_6
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB4_6
+	blez	$s0, .LBB4_6
 # %bb.3:                                # %.lr.ph
 	move	$s2, $s0
 	move	$s3, $s1
@@ -532,8 +528,7 @@ AllocateFloatMtx:                       # @AllocateFloatMtx
 	move	$s1, $a0
 	beqz	$fp, .LBB9_6
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB9_6
+	blez	$s0, .LBB9_6
 # %bb.3:                                # %.lr.ph
 	move	$s2, $s0
 	move	$s3, $s1
@@ -595,9 +590,8 @@ FreeFloatHalfMtx:                       # @FreeFloatHalfMtx
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB10_5
+	blez	$a1, .LBB10_5
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a1
 	move	$s1, $fp
@@ -724,8 +718,7 @@ AllocateFloatTri:                       # @AllocateFloatTri
 	beqz	$a0, .LBB14_7
 # %bb.1:                                # %.preheader
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB14_5
+	blez	$fp, .LBB14_5
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	ori	$s1, $zero, 3
@@ -841,8 +834,7 @@ AllocateIntMtx:                         # @AllocateIntMtx
 	move	$s1, $a0
 	beqz	$fp, .LBB16_6
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB16_6
+	blez	$s0, .LBB16_6
 # %bb.3:                                # %.lr.ph
 	move	$s2, $s0
 	move	$s3, $s1
@@ -924,8 +916,7 @@ AllocateCharCub:                        # @AllocateCharCub
 	move	$s2, $a0
 	beqz	$s0, .LBB17_5
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB17_5
+	blez	$s1, .LBB17_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s3, $s1
 	move	$s4, $s2
@@ -1038,9 +1029,8 @@ freeintmtx:                             # @freeintmtx
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB19_3
+	blez	$a1, .LBB19_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a1
 	move	$s1, $fp
@@ -1126,23 +1116,21 @@ AllocateCharHcu:                        # @AllocateCharHcu
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	beqz	$a0, .LBB21_28
 # %bb.1:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB21_24
+	blez	$s3, .LBB21_24
 # %bb.2:                                # %.lr.ph
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	addi.w	$a1, $a2, 1
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	blt	$a2, $a0, .LBB21_15
+	addi.w	$a0, $a2, 1
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	blez	$a2, .LBB21_15
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a0, .LBB21_15
 # %bb.4:                                # %.lr.ph.split.us
 	bstrpick.d	$s8, $a2, 31, 0
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	addi.w	$s5, $a1, 1
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	addi.w	$s5, $a0, 1
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB21_18
+	blez	$a0, .LBB21_18
 # %bb.5:                                # %.lr.ph.split.us
 	beqz	$fp, .LBB21_18
 # %bb.6:                                # %.lr.ph.split.us.split.us.preheader
@@ -1465,8 +1453,7 @@ AllocateIntCub:                         # @AllocateIntCub
 	beqz	$a0, .LBB25_5
 # %bb.1:                                # %.preheader
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB25_4
+	blez	$s0, .LBB25_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s3, $s0
 	move	$s4, $s2
@@ -1591,8 +1578,7 @@ AllocateDoubleMtx:                      # @AllocateDoubleMtx
 	move	$s1, $a0
 	beqz	$s0, .LBB27_5
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB27_5
+	blez	$fp, .LBB27_5
 # %bb.3:                                # %.lr.ph
 	move	$s2, $fp
 	move	$s3, $s1
@@ -1690,8 +1676,7 @@ AllocateFloatCub:                       # @AllocateFloatCub
 	beqz	$a0, .LBB29_5
 # %bb.1:                                # %.preheader
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB29_4
+	blez	$s0, .LBB29_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s3, $s0
 	move	$s4, $s2
@@ -1819,11 +1804,10 @@ AllocateDoubleCub:                      # @AllocateDoubleCub
 	beqz	$a0, .LBB31_14
 # %bb.1:                                # %.preheader
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB31_12
+	blez	$fp, .LBB31_12
 # %bb.2:                                # %.lr.ph
 	addi.w	$s1, $s3, 1
-	blt	$s3, $a0, .LBB31_9
+	blez	$s3, .LBB31_9
 # %bb.3:                                # %.lr.ph
 	beqz	$s2, .LBB31_9
 # %bb.4:                                # %.lr.ph.split.us.preheader
@@ -2049,8 +2033,7 @@ AllocateShortMtx:                       # @AllocateShortMtx
 	beqz	$a0, .LBB35_7
 # %bb.1:                                # %.preheader
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB35_5
+	blez	$s0, .LBB35_5
 # %bb.2:                                # %.lr.ph
 	move	$s2, $s0
 	move	$s3, $s1

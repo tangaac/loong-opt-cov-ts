@@ -8,8 +8,7 @@ createIndexNode:                        # @createIndexNode
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_3
+	bltz	$a0, .LBB0_3
 # %bb.1:
 	move	$fp, $a0
 	ori	$a0, $zero, 16

@@ -482,8 +482,7 @@ DetermineByteOrder:                     # @DetermineByteOrder
 	.type	SwapBytesInWords,@function
 SwapBytesInWords:                       # @SwapBytesInWords
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB6_2
+	blez	$a1, .LBB6_2
 	.p2align	4, , 16
 .LBB6_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -685,9 +684,8 @@ putbits:                                # @putbits
 # %bb.1:
 	ld.d	$a3, $a0, 40
 	add.d	$a3, $a3, $a2
-	ori	$a4, $zero, 1
 	st.d	$a3, $a0, 40
-	blt	$a2, $a4, .LBB12_6
+	blez	$a2, .LBB12_6
 .LBB12_2:                               # %.lr.ph
 	pcalau12i	$a3, %pc_hi20(putmask)
 	addi.d	$a3, $a3, %pc_lo12(putmask)

@@ -150,8 +150,7 @@ plot:                                   # @plot
 	jirl	$ra, $ra, 0
 	pcalau12i	$s1, %pc_hi20(max_active_block)
 	ld.w	$a0, $s1, %pc_lo12(max_active_block)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_19
+	blez	$a0, .LBB0_19
 # %bb.15:                               # %.lr.ph45.preheader
 	pcalau12i	$s2, %pc_hi20(blocks)
 	ld.d	$a1, $s2, %pc_lo12(blocks)

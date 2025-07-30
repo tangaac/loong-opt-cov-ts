@@ -116,9 +116,8 @@ _ZN27btConvex2dConvex2dAlgorithmD2Ev:   # @_ZN27btConvex2dConvex2dAlgorithmD2Ev
 	ld.bu	$a0, $a0, 32
 	pcalau12i	$a1, %pc_hi20(_ZTV27btConvex2dConvex2dAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV27btConvex2dConvex2dAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB4_3
+	beqz	$a0, .LBB4_3
 # %bb.1:
 	ld.d	$a1, $fp, 40
 	beqz	$a1, .LBB4_3
@@ -231,9 +230,8 @@ _ZN27btConvex2dConvex2dAlgorithmD0Ev:   # @_ZN27btConvex2dConvex2dAlgorithmD0Ev
 	ld.bu	$a0, $a0, 32
 	pcalau12i	$a1, %pc_hi20(_ZTV27btConvex2dConvex2dAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV27btConvex2dConvex2dAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB6_3
+	beqz	$a0, .LBB6_3
 # %bb.1:
 	ld.d	$a1, $fp, 40
 	beqz	$a1, .LBB6_3
@@ -437,8 +435,7 @@ _ZN27btConvex2dConvex2dAlgorithm16processCollisionEP17btCollisionObjectS1_RK16bt
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetector16getClosestPointsERKN36btDiscreteCollisionDetectorInterface17ClosestPointInputERNS0_6ResultEP12btIDebugDrawb)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s0, 32
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_5
+	beqz	$a0, .LBB8_5
 # %bb.3:
 	ld.d	$a0, $fp, 8
 	ld.w	$a1, $a0, 728
@@ -971,8 +968,7 @@ _ZN27btConvex2dConvex2dAlgorithm22getAllContactManifoldsER20btAlignedObjectArray
 	move	$fp, $a0
 	move	$a0, $s1
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB12_15
+	blez	$a3, .LBB12_15
 .LBB12_6:                               # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -1015,14 +1011,12 @@ _ZN27btConvex2dConvex2dAlgorithm22getAllContactManifoldsER20btAlignedObjectArray
 	bnez	$a5, .LBB12_12
 .LBB12_13:                              # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a1, 24
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB12_17
+	bnez	$a4, .LBB12_17
 	b	.LBB12_18
 .LBB12_14:
 	move	$fp, $zero
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	bge	$a3, $a4, .LBB12_6
+	bgtz	$a3, .LBB12_6
 .LBB12_15:                              # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a2, .LBB12_18
 # %bb.16:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i

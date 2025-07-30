@@ -37,9 +37,9 @@ outgeo:                                 # @outgeo
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_9
+	blez	$a0, .LBB0_9
 # %bb.2:                                # %.lr.ph279.preheader
+	ori	$a1, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -142,19 +142,19 @@ outgeo:                                 # @outgeo
 	pcalau12i	$a1, %got_pc_hi20(numpads)
 	ld.d	$s8, $a1, %got_pc_lo12(numpads)
 	ld.w	$a1, $s8, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_37
+	blez	$a1, .LBB0_37
 # %bb.10:                               # %.lr.ph287
-	pcalau12i	$a3, %got_pc_hi20(cellarray)
-	ld.d	$s7, $a3, %got_pc_lo12(cellarray)
-	ld.d	$a3, $s7, 0
+	pcalau12i	$a2, %got_pc_hi20(cellarray)
+	ld.d	$s7, $a2, %got_pc_lo12(cellarray)
+	ld.d	$a2, $s7, 0
 	add.w	$a1, $a1, $a0
-	alsl.d	$a3, $a0, $a3, 3
+	alsl.d	$a2, $a0, $a2, 3
+	addi.d	$a2, $a2, 8
 	lu12i.w	$s5, 24414
 	ori	$s2, $s5, 256
 	lu12i.w	$s6, -24415
 	ori	$s1, $s6, 3840
-	addi.d	$a3, $a3, 8
+	ori	$a3, $zero, 1
 	move	$a4, $a0
 	move	$s3, $s1
 	move	$s4, $s2
@@ -162,12 +162,12 @@ outgeo:                                 # @outgeo
 	.p2align	4, , 16
 .LBB0_11:                               #   in Loop: Header=BB0_12 Depth=1
 	addi.d	$a4, $a4, 1
-	addi.d	$a3, $a3, 8
+	addi.d	$a2, $a2, 8
 	bge	$a4, $a1, .LBB0_14
 .LBB0_12:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, 0
+	ld.d	$a5, $a2, 0
 	ld.w	$a6, $a5, 80
-	bne	$a6, $a2, .LBB0_11
+	bne	$a6, $a3, .LBB0_11
 # %bb.13:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.w	$a6, $a5, 56
 	alsl.d	$a6, $a6, $a5, 3

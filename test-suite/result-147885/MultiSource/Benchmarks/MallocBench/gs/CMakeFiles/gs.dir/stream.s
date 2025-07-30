@@ -203,12 +203,11 @@ sread_file:                             # @sread_file
 	.type	sfread,@function
 sfread:                                 # @sfread
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 29
 	beqz	$a0, .LBB10_3
@@ -231,7 +230,6 @@ sfread:                                 # @sfread
 	ld.wu	$a2, $fp, 24
 	ld.d	$a3, $fp, 96
 	ori	$a1, $zero, 1
-	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 16
@@ -243,7 +241,7 @@ sfread:                                 # @sfread
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
 	st.b	$a0, $fp, 29
-	blt	$s1, $s2, .LBB10_7
+	blez	$s1, .LBB10_7
 # %bb.6:
 	ld.d	$a0, $fp, 0
 	bstrpick.d	$a1, $s0, 30, 0
@@ -260,12 +258,11 @@ sfread:                                 # @sfread
 # %bb.8:
 	move	$a0, $zero
 .LBB10_9:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB10_10:
 	ori	$a0, $zero, 1

@@ -43,24 +43,22 @@ main:                                   # @main
 	addi.w	$a4, $a3, -1
 	pcalau12i	$a3, %pc_hi20(s)
 	addi.w	$a5, $zero, -1
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
 	b	.LBB1_5
 	.p2align	4, , 16
 .LBB1_4:                                #   in Loop: Header=BB1_5 Depth=1
 	bstrpick.d	$a4, $a4, 31, 0
 	addi.d	$a4, $a4, 1
-	and	$a7, $a4, $a6
-	bnez	$a7, .LBB1_7
+	slli.d	$a6, $a4, 31
+	bltz	$a6, .LBB1_7
 .LBB1_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$zero, $a3, %pc_lo12(s)
-	ext.w.b	$a7, $a0
-	slt	$t0, $a5, $a7
-	slli.d	$t0, $t0, 1
-	sll.d	$t0, $a0, $t0
-	ext.w.b	$t0, $t0
-	bge	$a7, $t0, .LBB1_4
+	ext.w.b	$a6, $a0
+	slt	$a7, $a5, $a6
+	slli.d	$a7, $a7, 1
+	sll.d	$a7, $a0, $a7
+	ext.w.b	$a7, $a7
+	bge	$a6, $a7, .LBB1_4
 # %bb.6:                                #   in Loop: Header=BB1_5 Depth=1
 	move	$a0, $zero
 	st.w	$zero, $a2, %pc_lo12(c)

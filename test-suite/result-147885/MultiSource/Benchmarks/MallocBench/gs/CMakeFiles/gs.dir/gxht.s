@@ -137,9 +137,8 @@ gx_color_load:                          # @gx_color_load
 	maskeqz	$t2, $t1, $a7
 	ori	$t3, $zero, 25
 	masknez	$a7, $t3, $a7
-	ori	$t3, $zero, 1
 	or	$a7, $t2, $a7
-	blt	$t1, $t3, .LBB1_7
+	blez	$t1, .LBB1_7
 # %bb.5:                                # %.lr.ph.i
 	move	$t1, $zero
 	ld.d	$t2, $a2, 0
@@ -177,8 +176,7 @@ gx_color_load:                          # @gx_color_load
 	beq	$s3, $s0, .LBB1_18
 # %bb.10:
 	ld.d	$fp, $s2, 8
-	addi.w	$a2, $zero, -1
-	blt	$a2, $s3, .LBB1_15
+	bgez	$s3, .LBB1_15
 # %bb.11:
 	move	$s4, $a0
 	ld.w	$a0, $s2, 16
@@ -272,9 +270,8 @@ init_ht:                                # @init_ht
 	maskeqz	$t1, $t0, $a6
 	ori	$t2, $zero, 25
 	masknez	$a6, $t2, $a6
-	ori	$t2, $zero, 1
 	or	$a6, $t1, $a6
-	blt	$t0, $t2, .LBB2_5
+	blez	$t0, .LBB2_5
 # %bb.3:                                # %.lr.ph
 	move	$t0, $zero
 	ld.d	$t1, $a0, 0
@@ -320,10 +317,9 @@ render_ht:                              # @render_ht
 	move	$fp, $a0
 	ld.d	$s2, $a2, 16
 	ld.w	$s3, $a0, 0
-	ld.d	$s0, $a0, 8
-	addi.w	$a0, $zero, -1
-	move	$s1, $a1
-	blt	$a0, $s3, .LBB3_4
+	ld.d	$s1, $a0, 8
+	move	$s0, $a1
+	bgez	$s3, .LBB3_4
 # %bb.1:
 	ld.w	$a0, $fp, 16
 	ld.w	$a1, $fp, 24
@@ -331,9 +327,9 @@ render_ht:                              # @render_ht
 	mul.d	$a0, $a1, $a0
 	srai.d	$a1, $s3, 1
 	bstrpick.d	$a2, $a0, 31, 0
-	bge	$s1, $a1, .LBB3_3
+	bge	$s0, $a1, .LBB3_3
 # %bb.2:
-	move	$a0, $s0
+	move	$a0, $s1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
@@ -341,17 +337,17 @@ render_ht:                              # @render_ht
 	b	.LBB3_4
 .LBB3_3:
 	ori	$a1, $zero, 255
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB3_4:
-	slt	$a0, $s3, $s1
+	slt	$a0, $s3, $s0
 	masknez	$a1, $s3, $a0
-	maskeqz	$a0, $s1, $a0
+	maskeqz	$a0, $s0, $a0
 	or	$a1, $a0, $a1
-	slt	$a0, $s1, $s3
+	slt	$a0, $s0, $s3
 	masknez	$a2, $s3, $a0
-	maskeqz	$a0, $s1, $a0
+	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a2
 	alsl.d	$a0, $a0, $s2, 2
 	alsl.d	$a1, $a1, $s2, 2
@@ -359,13 +355,13 @@ render_ht:                              # @render_ht
 .LBB3_5:                                # =>This Inner Loop Header: Depth=1
 	ld.hu	$a2, $a0, 0
 	ld.h	$a3, $a0, 2
-	ldx.h	$a4, $s0, $a2
+	ldx.h	$a4, $s1, $a2
 	xor	$a3, $a4, $a3
 	addi.d	$a0, $a0, 4
-	stx.h	$a3, $s0, $a2
+	stx.h	$a3, $s1, $a2
 	bltu	$a0, $a1, .LBB3_5
 # %bb.6:
-	st.w	$s1, $fp, 0
+	st.w	$s0, $fp, 0
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload

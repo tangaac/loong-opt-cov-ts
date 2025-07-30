@@ -23,9 +23,8 @@ do_sm_minimum_cover:                    # @do_sm_minimum_cover
 	ld.w	$a2, $fp, 12
 	ld.w	$a1, $fp, 0
 	mul.w	$a2, $a1, $a2
-	ori	$a3, $zero, 1
 	move	$s0, $a0
-	blt	$a2, $a3, .LBB0_11
+	blez	$a2, .LBB0_11
 # %bb.1:                                # %.lr.ph49.preheader
 	ld.d	$s3, $fp, 24
 	move	$s1, $zero

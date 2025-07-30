@@ -157,9 +157,8 @@ string_IntToString:                     # @string_IntToString
 	ori	$s0, $zero, 1
 	blt	$a1, $a0, .LBB3_3
 # %bb.1:
-	addi.w	$a1, $zero, -1
 	ori	$a0, $zero, 2
-	blt	$a1, $fp, .LBB3_4
+	bgez	$fp, .LBB3_4
 # %bb.2:
 	sub.w	$a0, $zero, $fp
 	ori	$s0, $zero, 2
@@ -457,39 +456,36 @@ string_Suffix:                          # @string_Suffix
 	.type	string_Tokens,@function
 string_Tokens:                          # @string_Tokens
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a1
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	ori	$s5, $zero, 1
-	blt	$a0, $s5, .LBB11_9
+	blez	$a0, .LBB11_9
 # %bb.1:                                # %.preheader.lr.ph
 	add.d	$a0, $s1, $a0
-	addi.d	$s7, $a0, -1
+	addi.d	$s5, $a0, -1
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	move	$s0, $zero
-	lu12i.w	$s6, 2
 	b	.LBB11_3
 	.p2align	4, , 16
 .LBB11_2:                               # %.critedge2
                                         #   in Loop: Header=BB11_3 Depth=1
-	ld.b	$fp, $s8, 1
-	st.b	$zero, $s8, 1
-	addi.d	$s3, $s7, 1
+	ld.b	$s7, $s6, 1
+	st.b	$zero, $s6, 1
+	addi.d	$s3, $s5, 1
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -505,45 +501,45 @@ string_Tokens:                          # @string_Tokens
 	jirl	$ra, $ra, 0
 	st.d	$s4, $a0, 8
 	st.d	$s0, $a0, 0
-	st.b	$fp, $s8, 1
+	st.b	$s7, $s6, 1
 	move	$s0, $a0
-	bltu	$s7, $s1, .LBB11_10
+	bltu	$s5, $s1, .LBB11_10
 .LBB11_3:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_4 Depth 2
                                         #     Child Loop BB11_7 Depth 2
 	ld.d	$a0, $s2, 0
-	addi.d	$a1, $s7, -1
-	move	$s8, $s7
+	addi.d	$a1, $s5, -1
+	move	$s6, $s5
 	.p2align	4, , 16
 .LBB11_4:                               #   Parent Loop BB11_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$a2, $s8, 0
+	ld.b	$a2, $s6, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a0, $a2
-	and	$a2, $a2, $s6
-	beqz	$a2, .LBB11_7
+	slli.d	$a2, $a2, 50
+	bgez	$a2, .LBB11_7
 # %bb.5:                                #   in Loop: Header=BB11_4 Depth=2
-	addi.d	$s8, $s8, -1
+	addi.d	$s6, $s6, -1
 	addi.d	$a1, $a1, -1
-	bgeu	$s8, $s1, .LBB11_4
+	bgeu	$s6, $s1, .LBB11_4
 # %bb.6:                                #   in Loop: Header=BB11_3 Depth=1
-	move	$s7, $s8
-	bgeu	$s7, $s1, .LBB11_3
+	move	$s5, $s6
+	bgeu	$s5, $s1, .LBB11_3
 	b	.LBB11_10
 	.p2align	4, , 16
 .LBB11_7:                               # %.critedge
                                         #   Parent Loop BB11_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$s7, $a1
+	move	$s5, $a1
 	bltu	$a1, $s1, .LBB11_2
 # %bb.8:                                #   in Loop: Header=BB11_7 Depth=2
-	ld.b	$a1, $s7, 0
+	ld.b	$a1, $s5, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a0, $a1
-	and	$a2, $a1, $s6
-	addi.d	$a1, $s7, -1
-	beqz	$a2, .LBB11_7
+	slli.d	$a2, $a1, 50
+	addi.d	$a1, $s5, -1
+	bgez	$a2, .LBB11_7
 	b	.LBB11_2
 .LBB11_9:
 	move	$s0, $zero
@@ -552,7 +548,6 @@ string_Tokens:                          # @string_Tokens
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 2
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	st.w	$a0, $fp, 0
 	slli.w	$a0, $a0, 3
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -596,26 +591,28 @@ string_Tokens:                          # @string_Tokens
 	move	$s0, $a7
 	bnez	$a7, .LBB11_12
 # %bb.13:                               # %._crit_edge59.loopexit
-	bstrpick.d	$s5, $a2, 31, 0
-.LBB11_14:                              # %._crit_edge59
-	slli.d	$a1, $s5, 3
+	bstrpick.d	$a1, $a2, 31, 0
+	b	.LBB11_15
+.LBB11_14:
+	ori	$a1, $zero, 1
+.LBB11_15:                              # %._crit_edge59
+	slli.d	$a1, $a1, 3
 	stx.d	$zero, $s1, $a1
 	ld.w	$a1, $fp, 0
 	addi.d	$a1, $a1, -1
 	st.w	$a1, $fp, 0
 	move	$a0, $s1
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end11:
 	.size	string_Tokens, .Lfunc_end11-string_Tokens

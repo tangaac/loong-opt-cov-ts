@@ -557,11 +557,9 @@ luaB_error:                             # @luaB_error
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 1
-	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(luaL_optinteger)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -576,7 +574,7 @@ luaB_error:                             # @luaB_error
 	beqz	$a0, .LBB9_3
 # %bb.1:
 	addi.w	$a1, $s0, 0
-	blt	$a1, $s1, .LBB9_3
+	blez	$a1, .LBB9_3
 # %bb.2:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaL_where)
@@ -591,7 +589,6 @@ luaB_error:                             # @luaB_error
 	jirl	$ra, $ra, 0
 .LBB9_3:
 	move	$a0, $fp
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -904,8 +901,7 @@ luaB_print:                             # @luaB_print
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_getfield)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB17_6
+	blez	$s0, .LBB17_6
 # %bb.1:                                # %.lr.ph.preheader
 	addi.w	$s1, $zero, -1
 	move	$a0, $fp
@@ -1401,17 +1397,16 @@ luaB_tonumber:                          # @luaB_tonumber
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	lu12i.w	$a1, 2
 	.p2align	4, , 16
 .LBB24_7:                               # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $s2, 0
-	slli.d	$a3, $a2, 1
-	ldx.hu	$a3, $a0, $a3
-	and	$a3, $a3, $a1
+	ld.bu	$a1, $s2, 0
+	slli.d	$a2, $a1, 1
+	ldx.hu	$a2, $a0, $a2
+	slli.d	$a2, $a2, 50
 	addi.d	$s2, $s2, 1
-	bnez	$a3, .LBB24_7
+	bltz	$a2, .LBB24_7
 # %bb.8:
-	beqz	$a2, .LBB24_10
+	beqz	$a1, .LBB24_10
 .LBB24_9:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_pushnil)
@@ -1762,8 +1757,7 @@ getfunc:                                # @getfunc
 	pcaddu18i	$ra, %call36(luaL_optinteger)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $a0, 0
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s0, .LBB29_5
+	bgez	$s0, .LBB29_5
 .LBB29_4:
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.42)
@@ -1815,8 +1809,7 @@ getfunc:                                # @getfunc
 	pcaddu18i	$ra, %call36(luaL_checkinteger)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $a0, 0
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s0, .LBB29_5
+	bgez	$s0, .LBB29_5
 	b	.LBB29_4
 .Lfunc_end29:
 	.size	getfunc, .Lfunc_end29-getfunc
@@ -1972,8 +1965,7 @@ luaB_coresume:                          # @luaB_coresume
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(auxresume)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB32_4
+	bltz	$a0, .LBB32_4
 # %bb.3:
 	move	$s1, $a0
 	ori	$a1, $zero, 1
@@ -2365,8 +2357,7 @@ luaB_auxwrap:                           # @luaB_auxwrap
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(auxresume)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB38_4
+	bgez	$a0, .LBB38_4
 # %bb.1:
 	move	$s0, $a0
 	addi.w	$a1, $zero, -1

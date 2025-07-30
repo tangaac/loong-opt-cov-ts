@@ -5,8 +5,7 @@
 	.type	Scaling_List,@function
 Scaling_List:                           # @Scaling_List
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB0_13
+	blez	$a1, .LBB0_13
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -96
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill

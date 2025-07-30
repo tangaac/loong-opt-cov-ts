@@ -99,50 +99,49 @@ ord_Compare:                            # @ord_Compare
 ord_CheckDomPred:                       # @ord_CheckDomPred
 # %bb.0:
 	addi.w	$a4, $a0, 0
-	addi.w	$a5, $zero, -1
-	blt	$a5, $a4, .LBB1_3
+	bgez	$a4, .LBB1_3
 # %bb.1:                                # %term_IsAtom.exit
 	pcalau12i	$a3, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a3, $a3, %got_pc_lo12(symbol_TYPEMASK)
-	ld.w	$a6, $a3, 0
-	sub.w	$t1, $zero, $a0
-	and	$a3, $a6, $t1
-	ori	$a7, $zero, 2
-	bne	$a3, $a7, .LBB1_3
+	ld.w	$a5, $a3, 0
+	sub.w	$t0, $zero, $a0
+	and	$a3, $a5, $t0
+	ori	$a6, $zero, 2
+	bne	$a3, $a6, .LBB1_3
 # %bb.2:
 	pcalau12i	$a3, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a3, $a3, %got_pc_lo12(symbol_TYPESTATBITS)
-	pcalau12i	$a7, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$a7, $a7, %got_pc_lo12(symbol_SIGNATURE)
-	ld.wu	$t0, $a3, 0
-	ld.d	$a7, $a7, 0
-	srl.w	$a3, $t1, $t0
+	pcalau12i	$a6, %got_pc_hi20(symbol_SIGNATURE)
+	ld.d	$a6, $a6, %got_pc_lo12(symbol_SIGNATURE)
+	ld.wu	$a7, $a3, 0
+	ld.d	$a6, $a6, 0
+	srl.w	$a3, $t0, $a7
 	slli.d	$a3, $a3, 3
-	ldx.d	$a3, $a7, $a3
+	ldx.d	$a3, $a6, $a3
 	ld.bu	$a3, $a3, 20
 	andi	$a3, $a3, 64
 	bnez	$a3, .LBB1_10
 .LBB1_3:                                # %term_IsAtom.exit.thread
 	ld.w	$a3, $a1, 0
-	blt	$a5, $a3, .LBB1_6
+	bgez	$a3, .LBB1_6
 # %bb.4:                                # %term_IsAtom.exit37
-	pcalau12i	$a6, %got_pc_hi20(symbol_TYPEMASK)
-	ld.d	$a6, $a6, %got_pc_lo12(symbol_TYPEMASK)
-	ld.w	$a6, $a6, 0
+	pcalau12i	$a5, %got_pc_hi20(symbol_TYPEMASK)
+	ld.d	$a5, $a5, %got_pc_lo12(symbol_TYPEMASK)
+	ld.w	$a5, $a5, 0
 	sub.w	$a3, $zero, $a3
-	and	$a7, $a6, $a3
-	ori	$t0, $zero, 2
-	bne	$a7, $t0, .LBB1_6
+	and	$a6, $a5, $a3
+	ori	$a7, $zero, 2
+	bne	$a6, $a7, .LBB1_6
 # %bb.5:
-	pcalau12i	$a7, %got_pc_hi20(symbol_TYPESTATBITS)
-	ld.d	$a7, $a7, %got_pc_lo12(symbol_TYPESTATBITS)
-	pcalau12i	$t0, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$t1, $t0, %got_pc_lo12(symbol_SIGNATURE)
-	ld.wu	$t0, $a7, 0
-	ld.d	$a7, $t1, 0
-	srl.w	$a3, $a3, $t0
+	pcalau12i	$a6, %got_pc_hi20(symbol_TYPESTATBITS)
+	ld.d	$a6, $a6, %got_pc_lo12(symbol_TYPESTATBITS)
+	pcalau12i	$a7, %got_pc_hi20(symbol_SIGNATURE)
+	ld.d	$t0, $a7, %got_pc_lo12(symbol_SIGNATURE)
+	ld.wu	$a7, $a6, 0
+	ld.d	$a6, $t0, 0
+	srl.w	$a3, $a3, $a7
 	slli.d	$a3, $a3, 3
-	ldx.d	$a3, $a7, $a3
+	ldx.d	$a3, $a6, $a3
 	ld.bu	$a3, $a3, 20
 	andi	$a3, $a3, 64
 	bnez	$a3, .LBB1_8
@@ -153,36 +152,36 @@ ord_CheckDomPred:                       # @ord_CheckDomPred
 	ret
 .LBB1_8:
 	ori	$a3, $zero, 1
-	blt	$a5, $a4, .LBB1_7
+	bgez	$a4, .LBB1_7
 # %bb.9:                                # %.term_IsAtom.exit39_crit_edge
-	sub.w	$t1, $zero, $a0
+	sub.w	$t0, $zero, $a0
 .LBB1_10:                               # %term_IsAtom.exit39
-	and	$a0, $a6, $t1
+	and	$a0, $a5, $t0
 	ori	$a3, $zero, 2
 	bne	$a0, $a3, .LBB1_14
 # %bb.11:
 	ld.w	$a0, $a1, 0
 	ori	$a3, $zero, 3
-	blt	$a5, $a0, .LBB1_7
+	bgez	$a0, .LBB1_7
 # %bb.12:                               # %term_IsAtom.exit41
-	sub.w	$a5, $zero, $a0
-	and	$a1, $a6, $a5
-	ori	$a6, $zero, 2
-	bne	$a1, $a6, .LBB1_7
+	sub.w	$t1, $zero, $a0
+	and	$a1, $a5, $t1
+	ori	$a5, $zero, 2
+	bne	$a1, $a5, .LBB1_7
 # %bb.13:
-	srl.w	$a1, $t1, $t0
-	slli.d	$a6, $a1, 3
-	ldx.d	$a6, $a7, $a6
-	ld.bu	$a6, $a6, 20
-	andi	$a6, $a6, 64
-	bnez	$a6, .LBB1_15
+	srl.w	$a1, $t0, $a7
+	slli.d	$a5, $a1, 3
+	ldx.d	$a5, $a6, $a5
+	ld.bu	$a5, $a5, 20
+	andi	$a5, $a5, 64
+	bnez	$a5, .LBB1_15
 .LBB1_14:
 	ori	$a0, $zero, 1
 	ret
 .LBB1_15:
-	srl.w	$a5, $a5, $t0
-	slli.d	$a6, $a5, 3
-	ldx.d	$a6, $a7, $a6
+	srl.w	$a5, $t1, $a7
+	slli.d	$a7, $a5, 3
+	ldx.d	$a6, $a6, $a7
 	ld.bu	$a6, $a6, 20
 	andi	$a6, $a6, 64
 	beqz	$a6, .LBB1_7

@@ -76,7 +76,7 @@ qux:                                    # @qux
 	addi.d	$a3, $a3, 16
 	bne	$a1, $a0, .LBB2_1
 .LBB2_3:                                # %middle.split
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB2_9
 # %bb.4:                                # %scalar.ph
 	ld.bu	$a1, $sp, 104
@@ -193,7 +193,7 @@ main:                                   # @main
 	addi.d	$a3, $a3, 16
 	bne	$a1, $a0, .LBB5_1
 .LBB5_3:                                # %middle.split
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB5_11
 # %bb.4:                                # %scalar.ph
 	ld.bu	$a1, $sp, 104

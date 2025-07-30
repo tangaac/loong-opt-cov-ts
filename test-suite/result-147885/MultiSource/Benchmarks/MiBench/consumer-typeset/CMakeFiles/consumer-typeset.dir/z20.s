@@ -224,9 +224,8 @@ FlushGalley:                            # @FlushGalley
 	b	.LBB0_22
 .LBB0_17:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.hu	$a0, $s1, 42
-	lu12i.w	$a1, 1
-	and	$a0, $a0, $a1
-	bnez	$a0, .LBB0_235
+	slli.d	$a0, $a0, 51
+	bltz	$a0, .LBB0_235
 # %bb.18:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $s6, 80
 	pcalau12i	$a1, %got_pc_hi20(ForceGalleySym)
@@ -694,8 +693,7 @@ FlushGalley:                            # @FlushGalley
 	beqz	$a0, .LBB0_83
 # %bb.82:                               #   in Loop: Header=BB0_29 Depth=2
 	ld.w	$a1, $a2, 160
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB0_335
+	blez	$a1, .LBB0_335
 .LBB0_83:                               #   in Loop: Header=BB0_29 Depth=2
 	ld.d	$a1, $sp, 1464
 	ld.hu	$a4, $a2, 42
@@ -4338,10 +4336,9 @@ FlushGalley:                            # @FlushGalley
 	ld.d	$a4, $s1, 88
 	ld.hu	$a0, $s1, 42
 	xor	$a1, $a2, $a4
-	lu12i.w	$a3, 1
-	and	$a0, $a0, $a3
+	slli.d	$a0, $a0, 51
 	sltui	$s0, $a1, 1
-	bnez	$a0, .LBB0_500
+	bltz	$a0, .LBB0_500
 # %bb.490:
 	ld.hu	$a0, $s6, 42
 	bstrpick.d	$a0, $a0, 5, 5

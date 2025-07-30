@@ -694,128 +694,127 @@ _Z13gim_heap_sortI15GIM_RSORT_TOKEN26GIM_RSORT_TOKEN_COMPARATOREvPT_jT0_: # @_Z1
 	ori	$a2, $zero, 2
 	bltu	$a1, $a2, .LBB1_19
 # %bb.1:                                # %.lr.ph.i.preheader.lr.ph
-	bstrpick.d	$a4, $a1, 31, 1
+	bstrpick.d	$a3, $a1, 31, 1
 	addi.d	$a2, $a0, -8
-	addi.w	$a3, $zero, -1
-	addi.w	$a5, $a4, 0
+	addi.w	$a4, $a3, 0
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_4 Depth=1
-	move	$t0, $a7
+	move	$a7, $a6
 .LBB1_3:                                # %.thread.loopexit.i
                                         #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$a7, $t0, -1
-	bstrpick.d	$a7, $a7, 31, 0
-	slli.d	$a7, $a7, 3
-	stx.d	$a6, $a0, $a7
-	beqz	$a4, .LBB1_9
+	addi.d	$a6, $a7, -1
+	bstrpick.d	$a6, $a6, 31, 0
+	slli.d	$a6, $a6, 3
+	stx.d	$a5, $a0, $a6
+	beqz	$a3, .LBB1_9
 .LBB1_4:                                # %.lr.ph.i.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_5 Depth 2
-	move	$a7, $a4
-	addi.w	$a4, $a4, -1
-	bstrpick.d	$a6, $a4, 31, 0
-	slli.d	$a6, $a6, 3
-	ldx.d	$a6, $a0, $a6
+	move	$a6, $a3
+	addi.w	$a3, $a3, -1
+	bstrpick.d	$a5, $a3, 31, 0
+	slli.d	$a5, $a5, 3
+	ldx.d	$a5, $a0, $a5
 	.p2align	4, , 16
 .LBB1_5:                                # %.lr.ph.i
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.w	$t0, $a7, 1
-	bge	$t0, $a1, .LBB1_7
+	slli.w	$a7, $a6, 1
+	bge	$a7, $a1, .LBB1_7
 # %bb.6:                                #   in Loop: Header=BB1_5 Depth=2
-	alsl.d	$t1, $t0, $a0, 3
-	slli.d	$t2, $t0, 3
-	ld.w	$t1, $t1, -8
-	ldx.w	$t2, $a0, $t2
-	sub.d	$t1, $t1, $t2
-	bstrpick.d	$t1, $t1, 31, 31
-	or	$t0, $t1, $t0
+	alsl.d	$t0, $a7, $a0, 3
+	slli.d	$t1, $a7, 3
+	ld.w	$t0, $t0, -8
+	ldx.w	$t1, $a0, $t1
+	sub.d	$t0, $t0, $t1
+	bstrpick.d	$t0, $t0, 31, 31
+	or	$a7, $t0, $a7
 .LBB1_7:                                #   in Loop: Header=BB1_5 Depth=2
-	addi.w	$t1, $t0, 0
-	slli.d	$t2, $t1, 3
-	ldx.w	$t2, $a2, $t2
-	sub.w	$t2, $a6, $t2
-	blt	$a3, $t2, .LBB1_2
+	addi.w	$t0, $a7, 0
+	slli.d	$t1, $t0, 3
+	ldx.w	$t1, $a2, $t1
+	sub.w	$t1, $a5, $t1
+	bgez	$t1, .LBB1_2
 # %bb.8:                                #   in Loop: Header=BB1_5 Depth=2
-	alsl.d	$t2, $t1, $a2, 3
-	ld.d	$t2, $t2, 0
-	addi.d	$a7, $a7, -1
-	bstrpick.d	$a7, $a7, 31, 0
-	slli.d	$a7, $a7, 3
-	stx.d	$t2, $a0, $a7
-	move	$a7, $t0
-	bgeu	$a5, $t1, .LBB1_5
+	alsl.d	$t1, $t0, $a2, 3
+	ld.d	$t1, $t1, 0
+	addi.d	$a6, $a6, -1
+	bstrpick.d	$a6, $a6, 31, 0
+	slli.d	$a6, $a6, 3
+	stx.d	$t1, $a0, $a6
+	move	$a6, $a7
+	bgeu	$a4, $t0, .LBB1_5
 	b	.LBB1_3
 .LBB1_9:                                # %.lr.ph
-	bstrpick.d	$a4, $a1, 31, 0
+	bstrpick.d	$a3, $a1, 31, 0
 	ori	$a1, $zero, 2
-	ori	$a5, $zero, 1
+	ori	$a4, $zero, 1
 	b	.LBB1_11
 	.p2align	4, , 16
 .LBB1_10:                               #   in Loop: Header=BB1_11 Depth=1
-	move	$t0, $zero
-	slli.d	$t0, $t0, 3
-	stx.d	$a7, $a0, $t0
-	bgeu	$a5, $a6, .LBB1_19
+	move	$a7, $zero
+	slli.d	$a7, $a7, 3
+	stx.d	$a6, $a0, $a7
+	bgeu	$a4, $a5, .LBB1_19
 .LBB1_11:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_13 Depth 2
-	move	$t0, $a4
-	addi.d	$a4, $a4, -1
-	addi.w	$a6, $a4, 0
-	bstrpick.d	$a7, $a6, 31, 0
-	slli.d	$a7, $a7, 3
-	ldx.d	$t1, $a0, $a7
-	ld.d	$t2, $a0, 0
-	st.d	$t1, $a0, 0
-	stx.d	$t2, $a0, $a7
-	ld.d	$a7, $a0, 0
-	beq	$t0, $a1, .LBB1_10
+	move	$a7, $a3
+	addi.d	$a3, $a3, -1
+	addi.w	$a5, $a3, 0
+	bstrpick.d	$a6, $a5, 31, 0
+	slli.d	$a6, $a6, 3
+	ldx.d	$t0, $a0, $a6
+	ld.d	$t1, $a0, 0
+	st.d	$t0, $a0, 0
+	stx.d	$t1, $a0, $a6
+	ld.d	$a6, $a0, 0
+	beq	$a7, $a1, .LBB1_10
 # %bb.12:                               # %.lr.ph.i17.preheader
                                         #   in Loop: Header=BB1_11 Depth=1
-	bstrpick.d	$t0, $a6, 31, 1
-	ori	$t2, $zero, 1
-	addi.w	$t0, $t0, 0
+	bstrpick.d	$a7, $a5, 31, 1
+	ori	$t1, $zero, 1
+	addi.w	$a7, $a7, 0
 	.p2align	4, , 16
 .LBB1_13:                               # %.lr.ph.i17
                                         #   Parent Loop BB1_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.w	$t1, $t2, 1
-	bge	$t1, $a6, .LBB1_15
+	slli.w	$t0, $t1, 1
+	bge	$t0, $a5, .LBB1_15
 # %bb.14:                               #   in Loop: Header=BB1_13 Depth=2
-	alsl.d	$t3, $t1, $a0, 3
-	slli.d	$t4, $t1, 3
-	ld.w	$t3, $t3, -8
-	ldx.w	$t4, $a0, $t4
-	sub.d	$t3, $t3, $t4
-	bstrpick.d	$t3, $t3, 31, 31
-	or	$t1, $t3, $t1
+	alsl.d	$t2, $t0, $a0, 3
+	slli.d	$t3, $t0, 3
+	ld.w	$t2, $t2, -8
+	ldx.w	$t3, $a0, $t3
+	sub.d	$t2, $t2, $t3
+	bstrpick.d	$t2, $t2, 31, 31
+	or	$t0, $t2, $t0
 .LBB1_15:                               #   in Loop: Header=BB1_13 Depth=2
-	addi.w	$t3, $t1, 0
-	slli.d	$t4, $t3, 3
-	ldx.w	$t4, $a2, $t4
-	sub.w	$t4, $a7, $t4
-	blt	$a3, $t4, .LBB1_17
+	addi.w	$t2, $t0, 0
+	slli.d	$t3, $t2, 3
+	ldx.w	$t3, $a2, $t3
+	sub.w	$t3, $a6, $t3
+	bgez	$t3, .LBB1_17
 # %bb.16:                               #   in Loop: Header=BB1_13 Depth=2
-	alsl.d	$t4, $t3, $a2, 3
-	ld.d	$t4, $t4, 0
-	addi.d	$t2, $t2, -1
-	bstrpick.d	$t2, $t2, 31, 0
-	slli.d	$t2, $t2, 3
-	stx.d	$t4, $a0, $t2
-	move	$t2, $t1
-	bgeu	$t0, $t3, .LBB1_13
+	alsl.d	$t3, $t2, $a2, 3
+	ld.d	$t3, $t3, 0
+	addi.d	$t1, $t1, -1
+	bstrpick.d	$t1, $t1, 31, 0
+	slli.d	$t1, $t1, 3
+	stx.d	$t3, $a0, $t1
+	move	$t1, $t0
+	bgeu	$a7, $t2, .LBB1_13
 	b	.LBB1_18
 	.p2align	4, , 16
 .LBB1_17:                               #   in Loop: Header=BB1_11 Depth=1
-	move	$t1, $t2
+	move	$t0, $t1
 .LBB1_18:                               # %.thread.loopexit.i21
                                         #   in Loop: Header=BB1_11 Depth=1
-	addi.d	$t0, $t1, -1
-	bstrpick.d	$t0, $t0, 31, 0
-	slli.d	$t0, $t0, 3
-	stx.d	$a7, $a0, $t0
-	bltu	$a5, $a6, .LBB1_11
+	addi.d	$a7, $t0, -1
+	bstrpick.d	$a7, $a7, 31, 0
+	slli.d	$a7, $a7, 3
+	stx.d	$a6, $a0, $a7
+	bltu	$a4, $a5, .LBB1_11
 .LBB1_19:                               # %._crit_edge
 	ret
 .Lfunc_end1:

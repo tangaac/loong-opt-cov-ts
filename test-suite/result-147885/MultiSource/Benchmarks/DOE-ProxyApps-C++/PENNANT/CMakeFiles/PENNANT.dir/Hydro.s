@@ -33,19 +33,19 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:                                # %._crit_edge.i.i
-	addi.d	$sp, $sp, -256
-	.cfi_def_cfa_offset 256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	.cfi_def_cfa_offset 240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -61,64 +61,64 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	move	$fp, $a0
 	st.d	$a2, $a0, 0
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$zero, $fp, 32
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 40
 	vst	$vr0, $fp, 112
 	vst	$vr0, $fp, 128
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $fp, 144
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	ld.h	$a1, $a0, 0
 	ld.b	$a0, $a0, 2
-	addi.d	$s1, $sp, 152
-	st.d	$s1, $sp, 136
-	st.h	$a1, $sp, 152
-	st.b	$a0, $sp, 154
+	addi.d	$s1, $sp, 136
+	st.d	$s1, $sp, 120
+	st.h	$a1, $sp, 136
+	st.b	$a0, $sp, 138
 	ori	$a0, $zero, 3
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 155
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 139
 .Ltmp0:
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_0)
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp1:
 # %bb.1:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 56
 	beq	$a0, $s1, .LBB0_3
 # %bb.2:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_3:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	st.d	$s1, $sp, 136
+	st.d	$s1, $sp, 120
 	lu12i.w	$a0, 485062
 	ori	$a0, $a0, 1635
-	st.w	$a0, $sp, 152
+	st.w	$a0, $sp, 136
 	ori	$a0, $zero, 4
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 156
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 140
 .Ltmp3:
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_1)
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp4:
 # %bb.4:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 64
 	beq	$a0, $s1, .LBB0_6
 # %bb.5:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i75
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -127,25 +127,25 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	ld.w	$a1, $a0, 0
 	ld.b	$a0, $a0, 4
-	st.d	$s1, $sp, 136
-	st.w	$a1, $sp, 152
-	st.b	$a0, $sp, 156
+	st.d	$s1, $sp, 120
+	st.w	$a1, $sp, 136
+	st.b	$a0, $sp, 140
 	ori	$a0, $zero, 5
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 157
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 141
 .Ltmp6:
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	vldi	$vr0, -912
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp7:
 # %bb.7:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 72
 	beq	$a0, $s1, .LBB0_9
 # %bb.8:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i82
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -154,69 +154,69 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
 	ld.w	$a1, $a0, 0
 	ld.b	$a0, $a0, 4
-	st.d	$s1, $sp, 136
-	st.w	$a1, $sp, 152
-	st.b	$a0, $sp, 156
+	st.d	$s1, $sp, 120
+	st.w	$a1, $sp, 136
+	st.b	$a0, $sp, 140
 	ori	$a0, $zero, 5
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 157
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 141
 .Ltmp9:
 	movgr2fr.d	$fa0, $zero
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp10:
 # %bb.10:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 80
 	beq	$a0, $s1, .LBB0_12
 # %bb.11:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i89
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_12:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit91
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
-	st.d	$s1, $sp, 136
-	vst	$vr0, $sp, 144
-	st.b	$zero, $sp, 160
+	st.d	$s1, $sp, 120
+	vst	$vr0, $sp, 128
+	st.b	$zero, $sp, 144
 .Ltmp12:
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	vldi	$vr0, -912
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp13:
 # %bb.13:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 88
 	beq	$a0, $s1, .LBB0_15
 # %bb.14:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i96
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_15:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit98
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_3)
-	st.d	$s1, $sp, 136
-	vst	$vr0, $sp, 144
-	st.b	$zero, $sp, 160
+	st.d	$s1, $sp, 120
+	vst	$vr0, $sp, 128
+	st.b	$zero, $sp, 144
 .Ltmp15:
 	movgr2fr.d	$fa0, $zero
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp16:
 # %bb.16:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 96
 	beq	$a0, $s1, .LBB0_18
 # %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i103
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -225,25 +225,25 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
 	ld.d	$a1, $a0, 0
 	ld.w	$a0, $a0, 7
-	st.d	$s1, $sp, 136
-	st.d	$a1, $sp, 152
-	st.w	$a0, $sp, 159
+	st.d	$s1, $sp, 120
+	st.d	$a1, $sp, 136
+	st.w	$a0, $sp, 143
 	ori	$a0, $zero, 11
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 163
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 147
 .Ltmp18:
 	movgr2fr.d	$fa0, $zero
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 120
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getDoubleERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEd)
 	jirl	$ra, $ra, 0
 .Ltmp19:
 # %bb.19:
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	fst.d	$fa0, $fp, 104
 	beq	$a0, $s1, .LBB0_21
 # %bb.20:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i110
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -252,58 +252,58 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	ld.h	$a1, $a0, 0
 	ld.b	$a0, $a0, 2
-	st.d	$s1, $sp, 136
-	st.h	$a1, $sp, 152
-	st.b	$a0, $sp, 154
+	st.d	$s1, $sp, 120
+	st.h	$a1, $sp, 136
+	st.b	$a0, $sp, 138
 	ori	$a0, $zero, 3
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 155
-	st.d	$zero, $sp, 104
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 88
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 139
+	st.d	$zero, $sp, 88
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 72
 .Ltmp21:
-	addi.d	$a0, $sp, 112
-	addi.d	$a2, $sp, 136
-	addi.d	$a3, $sp, 88
+	addi.d	$a0, $sp, 96
+	addi.d	$a2, $sp, 120
+	addi.d	$a3, $sp, 72
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile13getDoubleListERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIdSaIdEE)
 	jirl	$ra, $ra, 0
 .Ltmp22:
 # %bb.22:
-	vld	$vr0, $sp, 112
-	ld.d	$a2, $sp, 128
+	vld	$vr0, $sp, 96
+	ld.d	$a2, $sp, 112
 	ld.d	$a0, $fp, 112
 	ld.d	$a1, $fp, 128
 	vst	$vr0, $fp, 112
 	st.d	$a2, $fp, 128
-	st.d	$zero, $sp, 128
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 112
+	st.d	$zero, $sp, 112
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 96
 	beqz	$a0, .LBB0_25
 # %bb.23:                               # %_ZNSt6vectorIdSaIdEEaSEOS1_.exit
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112
+	ld.d	$a0, $sp, 96
 	beqz	$a0, .LBB0_25
 # %bb.24:
-	ld.d	$a1, $sp, 128
+	ld.d	$a1, $sp, 112
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_25:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB0_27
 # %bb.26:
-	ld.d	$a1, $sp, 104
+	ld.d	$a1, $sp, 88
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_27:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit118
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	beq	$a0, $s1, .LBB0_29
 # %bb.28:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i119
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -312,58 +312,58 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
 	ld.h	$a1, $a0, 0
 	ld.b	$a0, $a0, 2
-	st.d	$s1, $sp, 136
-	st.h	$a1, $sp, 152
-	st.b	$a0, $sp, 154
+	st.d	$s1, $sp, 120
+	st.h	$a1, $sp, 136
+	st.b	$a0, $sp, 138
 	ori	$a0, $zero, 3
-	st.d	$a0, $sp, 144
-	st.b	$zero, $sp, 155
-	st.d	$zero, $sp, 104
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 88
+	st.d	$a0, $sp, 128
+	st.b	$zero, $sp, 139
+	st.d	$zero, $sp, 88
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 72
 .Ltmp24:
-	addi.d	$a0, $sp, 112
-	addi.d	$a2, $sp, 136
-	addi.d	$a3, $sp, 88
+	addi.d	$a0, $sp, 96
+	addi.d	$a2, $sp, 120
+	addi.d	$a3, $sp, 72
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile13getDoubleListERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIdSaIdEE)
 	jirl	$ra, $ra, 0
 .Ltmp25:
 # %bb.30:
-	vld	$vr0, $sp, 112
-	ld.d	$a2, $sp, 128
+	vld	$vr0, $sp, 96
+	ld.d	$a2, $sp, 112
 	ld.d	$a0, $fp, 136
 	ld.d	$a1, $fp, 152
 	vst	$vr0, $fp, 136
 	st.d	$a2, $fp, 152
-	st.d	$zero, $sp, 128
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 112
+	st.d	$zero, $sp, 112
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 96
 	beqz	$a0, .LBB0_33
 # %bb.31:                               # %_ZNSt6vectorIdSaIdEEaSEOS1_.exit127
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112
+	ld.d	$a0, $sp, 96
 	beqz	$a0, .LBB0_33
 # %bb.32:
-	ld.d	$a1, $sp, 128
+	ld.d	$a1, $sp, 112
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_33:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit129
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB0_35
 # %bb.34:
-	ld.d	$a1, $sp, 104
+	ld.d	$a1, $sp, 88
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_35:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit131
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	beq	$a0, $s1, .LBB0_37
 # %bb.36:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i132
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -421,18 +421,16 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	move	$s6, $zero
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_4)
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	addi.w	$a0, $zero, -8
 	lu52i.d	$a0, $a0, 2047
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
-	lu52i.d	$a0, $a0, 255
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s4, $zero, 1
+	lu52i.d	$s4, $a0, 255
 	b	.LBB0_47
 	.p2align	4, , 16
 .LBB0_45:                               #   in Loop: Header=BB0_47 Depth=1
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -454,20 +452,20 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 # %bb.48:                               #   in Loop: Header=BB0_47 Depth=1
 	move	$s1, $a0
 	ld.d	$s0, $fp, 0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 64
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 48
 	fldx.d	$fa0, $s2, $s5
 .Ltmp46:
-	addi.d	$a0, $sp, 136
+	addi.d	$a0, $sp, 120
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN4Mesh9getXPlaneEd)
 	jirl	$ra, $ra, 0
 .Ltmp47:
 # %bb.49:                               #   in Loop: Header=BB0_47 Depth=1
-	ori	$s7, $zero, 1
+	ori	$s8, $zero, 1
 .Ltmp49:
-	addi.d	$a2, $sp, 64
-	addi.d	$a3, $sp, 136
+	addi.d	$a2, $sp, 48
+	addi.d	$a3, $sp, 120
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN7HydroBCC1EP4Mesh7double2RKSt6vectorIiSaIiEE)
@@ -481,15 +479,15 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	st.d	$s1, $a0, 0
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $fp, 40
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	bnez	$a0, .LBB0_45
 	b	.LBB0_46
 	.p2align	4, , 16
 .LBB0_52:                               #   in Loop: Header=BB0_47 Depth=1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $a1, 0
 	sub.d	$s0, $a0, $s2
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	beq	$s0, $a0, .LBB0_76
 # %bb.53:                               # %_ZNKSt6vectorIP7HydroBCSaIS1_EE12_M_check_lenEmPKc.exit.i.i.i
                                         #   in Loop: Header=BB0_47 Depth=1
@@ -500,14 +498,13 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
+	sltu	$a1, $a0, $s4
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
-	or	$s8, $a0, $a1
-	slli.d	$a0, $s8, 3
+	masknez	$a1, $s4, $a1
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 3
 .Ltmp51:
-	move	$s7, $zero
+	move	$s8, $zero
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp52:
@@ -515,7 +512,7 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
                                         #   in Loop: Header=BB0_47 Depth=1
 	move	$s3, $a0
 	stx.d	$s1, $a0, $s0
-	blt	$s0, $s4, .LBB0_56
+	blez	$s0, .LBB0_56
 # %bb.55:                               #   in Loop: Header=BB0_47 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -537,9 +534,9 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, 8
 	st.d	$s3, $fp, 32
 	st.d	$a0, $fp, 40
-	alsl.d	$a0, $s8, $s3, 3
+	alsl.d	$a0, $s7, $s3, 3
 	st.d	$a0, $fp, 48
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	bnez	$a0, .LBB0_45
 	b	.LBB0_46
 .LBB0_59:                               # %.preheader
@@ -551,18 +548,16 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	move	$s6, $zero
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_5)
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	addi.w	$a0, $zero, -8
 	lu52i.d	$a0, $a0, 2047
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
-	lu52i.d	$a0, $a0, 255
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s4, $zero, 1
+	lu52i.d	$s4, $a0, 255
 	b	.LBB0_63
 	.p2align	4, , 16
 .LBB0_61:                               #   in Loop: Header=BB0_63 Depth=1
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -584,20 +579,20 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 # %bb.64:                               #   in Loop: Header=BB0_63 Depth=1
 	move	$s1, $a0
 	ld.d	$s0, $fp, 0
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 48
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 32
 	fldx.d	$fa0, $s2, $s5
 .Ltmp60:
-	addi.d	$a0, $sp, 136
+	addi.d	$a0, $sp, 120
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN4Mesh9getYPlaneEd)
 	jirl	$ra, $ra, 0
 .Ltmp61:
 # %bb.65:                               #   in Loop: Header=BB0_63 Depth=1
-	ori	$s7, $zero, 1
+	ori	$s8, $zero, 1
 .Ltmp63:
-	addi.d	$a2, $sp, 48
-	addi.d	$a3, $sp, 136
+	addi.d	$a2, $sp, 32
+	addi.d	$a3, $sp, 120
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZN7HydroBCC1EP4Mesh7double2RKSt6vectorIiSaIiEE)
@@ -611,15 +606,15 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	st.d	$s1, $a0, 0
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $fp, 40
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	bnez	$a0, .LBB0_61
 	b	.LBB0_62
 	.p2align	4, , 16
 .LBB0_68:                               #   in Loop: Header=BB0_63 Depth=1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $a1, 0
 	sub.d	$s0, $a0, $s2
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	beq	$s0, $a0, .LBB0_78
 # %bb.69:                               # %_ZNKSt6vectorIP7HydroBCSaIS1_EE12_M_check_lenEmPKc.exit.i.i.i172
                                         #   in Loop: Header=BB0_63 Depth=1
@@ -630,14 +625,13 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	sltu	$a1, $a0, $a2
+	sltu	$a1, $a0, $s4
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a2, $a1
-	or	$s8, $a0, $a1
-	slli.d	$a0, $s8, 3
+	masknez	$a1, $s4, $a1
+	or	$s7, $a0, $a1
+	slli.d	$a0, $s7, 3
 .Ltmp65:
-	move	$s7, $zero
+	move	$s8, $zero
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp66:
@@ -645,7 +639,7 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
                                         #   in Loop: Header=BB0_63 Depth=1
 	move	$s3, $a0
 	stx.d	$s1, $a0, $s0
-	blt	$s0, $s4, .LBB0_72
+	blez	$s0, .LBB0_72
 # %bb.71:                               #   in Loop: Header=BB0_63 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -667,27 +661,27 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	addi.d	$a0, $a0, 8
 	st.d	$s3, $fp, 32
 	st.d	$a0, $fp, 40
-	alsl.d	$a0, $s8, $s3, 3
+	alsl.d	$a0, $s7, $s3, 3
 	st.d	$a0, $fp, 48
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	bnez	$a0, .LBB0_61
 	b	.LBB0_62
 .LBB0_75:                               # %._crit_edge
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN5Hydro4initEv)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .LBB0_76:
 .Ltmp54:
@@ -725,20 +719,20 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 .LBB0_85:
 .Ltmp23:
 .LBB0_86:
-	ld.d	$a2, $sp, 88
+	ld.d	$a2, $sp, 72
 	move	$s0, $a0
 	beqz	$a2, .LBB0_88
 # %bb.87:
-	ld.d	$a0, $sp, 104
+	ld.d	$a0, $sp, 88
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_88:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit157
-	ld.d	$a0, $sp, 136
+	ld.d	$a0, $sp, 120
 	beq	$a0, $s1, .LBB0_115
 # %bb.89:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i158
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	b	.LBB0_114
 .LBB0_90:
@@ -762,11 +756,11 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 .LBB0_96:
 .Ltmp2:
 .LBB0_97:
-	ld.d	$a2, $sp, 136
+	ld.d	$a2, $sp, 120
 	move	$s0, $a0
 	beq	$a2, $s1, .LBB0_115
 # %bb.98:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i135
-	ld.d	$a0, $sp, 152
+	ld.d	$a0, $sp, 136
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	b	.LBB0_114
@@ -780,11 +774,11 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 .LBB0_101:                              # %.thread
 .Ltmp56:
 .LBB0_102:                              # %.thread
-	ld.d	$a2, $sp, 136
+	ld.d	$a2, $sp, 120
 	move	$s0, $a0
 	beqz	$a2, .LBB0_115
 # %bb.103:                              # %.thread261
-	ld.d	$a0, $sp, 152
+	ld.d	$a0, $sp, 136
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	b	.LBB0_114
@@ -806,23 +800,23 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	b	.LBB0_112
 .LBB0_108:
 .Ltmp67:
-	ld.d	$a2, $sp, 136
+	ld.d	$a2, $sp, 120
 	move	$s0, $a0
 	bnez	$a2, .LBB0_110
 	b	.LBB0_111
 .LBB0_109:
 .Ltmp53:
-	ld.d	$a2, $sp, 136
+	ld.d	$a2, $sp, 120
 	move	$s0, $a0
 	beqz	$a2, .LBB0_111
 .LBB0_110:
-	ld.d	$a0, $sp, 152
+	ld.d	$a0, $sp, 136
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_111:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit170
-	beqz	$s7, .LBB0_115
+	beqz	$s8, .LBB0_115
 .LBB0_112:
 	ori	$a1, $zero, 88
 .LBB0_113:
@@ -838,7 +832,7 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	ld.d	$a0, $s1, 0
 	bnez	$a0, .LBB0_120
 .LBB0_117:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit188
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	bnez	$a0, .LBB0_121
 .LBB0_118:                              # %_ZNSt6vectorIP7HydroBCSaIS1_EED2Ev.exit
@@ -857,7 +851,7 @@ _ZN5HydroC2EPK9InputFileP4Mesh:         # @_ZN5HydroC2EPK9InputFileP4Mesh
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	beqz	$a0, .LBB0_118
 .LBB0_121:
@@ -1170,10 +1164,9 @@ _ZN5Hydro4initEv:                       # @_ZN5Hydro4initEv
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 400
-	ori	$a0, $zero, 1
 	pcalau12i	$s6, %pc_hi20(.LCPI1_1)
 	st.d	$s4, $sp, 176                   # 8-byte Folded Spill
-	blt	$s4, $a0, .LBB1_34
+	blez	$s4, .LBB1_34
 # %bb.1:                                # %.lr.ph100
 	move	$s5, $zero
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
@@ -1469,8 +1462,7 @@ _ZN5Hydro4initEv:                       # @_ZN5Hydro4initEv
 .LBB1_34:                               # %.preheader
 	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_51
+	blez	$s1, .LBB1_51
 # %bb.35:                               # %.lr.ph102
 	fld.d	$fa0, $fp, 104
 	movgr2fr.d	$fs0, $zero
@@ -1836,26 +1828,27 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	.cfi_offset 56, -96
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.w	$s1, $a0, 504
+	ld.w	$s0, $a0, 504
 	ld.w	$a1, $a0, 400
 	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 240
 	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 248
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 256
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a1, $a0, 296
+	ld.d	$a1, $a0, 256
 	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a1, $a0, 304
+	ld.d	$a1, $a0, 296
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
-	ld.d	$a1, $a0, 312
+	ld.d	$a1, $a0, 304
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$t5, $a0, 320
+	ld.d	$a1, $a0, 312
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$a1, $a0, 320
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 328
 	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 336
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$s8, $a0, 344
 	ld.d	$a1, $a0, 352
 	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
@@ -1864,26 +1857,25 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ld.d	$a1, $a0, 368
 	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a1, $a0, 376
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$t6, $a0, 288
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$t4, $a0, 288
 	ld.d	$s4, $a0, 264
 	ld.d	$a1, $a0, 272
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$a1, $a0, 280
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$a1, $a0, 280
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$s3, $a0, 384
 	ld.d	$a1, $a0, 392
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	ori	$a1, $zero, 1
+	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
                                         # kill: def $f0_64 killed $f0_64 def $vr0
 	vst	$vr0, $sp, 224                  # 16-byte Folded Spill
-	blt	$s1, $a1, .LBB5_11
+	blez	$s0, .LBB5_11
 # %bb.1:                                # %.lr.ph
-	move	$a2, $zero
-	ld.d	$a3, $a0, 512
-	ld.d	$a4, $a0, 536
-	ld.d	$a5, $fp, 248
-	ld.d	$a6, $fp, 256
+	move	$a1, $zero
+	ld.d	$a2, $a0, 512
+	ld.d	$a3, $a0, 536
+	ld.d	$a4, $fp, 248
+	ld.d	$a5, $fp, 256
 	vldi	$vr0, -928
 	vld	$vr1, $sp, 224                  # 16-byte Folded Reload
 	fmul.d	$fa0, $fa1, $fa0
@@ -1892,84 +1884,83 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	.p2align	4, , 16
 .LBB5_2:                                # %_ZN5Hydro10advPosHalfEPK7double2S2_dPS0_ii.exit
                                         #   in Loop: Header=BB5_3 Depth=1
-	addi.d	$a2, $a2, 1
-	beq	$a2, $s1, .LBB5_11
+	addi.d	$a1, $a1, 1
+	beq	$a1, $s0, .LBB5_11
 .LBB5_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_5 Depth 2
                                         #     Child Loop BB5_7 Depth 2
                                         #     Child Loop BB5_10 Depth 2
-	slli.d	$t0, $a2, 2
-	ldx.w	$a7, $a3, $t0
-	ldx.w	$t0, $a4, $t0
-	beq	$a7, $t0, .LBB5_8
+	slli.d	$a7, $a1, 2
+	ldx.w	$a6, $a2, $a7
+	ldx.w	$a7, $a3, $a7
+	beq	$a6, $a7, .LBB5_8
 # %bb.4:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB5_3 Depth=1
-	alsl.d	$t2, $a7, $t6, 4
-	slli.d	$t1, $a7, 4
-	slli.d	$t3, $t0, 4
-	sub.d	$t1, $t3, $t1
-	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
-	alsl.d	$t3, $a7, $t3, 4
-	move	$t4, $t1
+	alsl.d	$t1, $a6, $t4, 4
+	slli.d	$t0, $a6, 4
+	slli.d	$t2, $a7, 4
+	sub.d	$t0, $t2, $t0
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	alsl.d	$t2, $a6, $t2, 4
+	move	$t3, $t0
 	.p2align	4, , 16
 .LBB5_5:                                # %.lr.ph.i.i
                                         #   Parent Loop BB5_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr1, $t3, 0
-	vst	$vr1, $t2, 0
+	vld	$vr1, $t2, 0
+	vst	$vr1, $t1, 0
+	addi.d	$t1, $t1, 16
+	addi.d	$t3, $t3, -16
 	addi.d	$t2, $t2, 16
-	addi.d	$t4, $t4, -16
-	addi.d	$t3, $t3, 16
-	bnez	$t4, .LBB5_5
+	bnez	$t3, .LBB5_5
 # %bb.6:                                # %.lr.ph.i.i159.preheader
                                         #   in Loop: Header=BB5_3 Depth=1
-	alsl.d	$t2, $a7, $a6, 4
-	alsl.d	$t3, $a7, $a5, 4
+	alsl.d	$t1, $a6, $a5, 4
+	alsl.d	$t2, $a6, $a4, 4
 	.p2align	4, , 16
 .LBB5_7:                                # %.lr.ph.i.i159
                                         #   Parent Loop BB5_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr1, $t3, 0
-	vst	$vr1, $t2, 0
+	vld	$vr1, $t2, 0
+	vst	$vr1, $t1, 0
+	addi.d	$t1, $t1, 16
+	addi.d	$t0, $t0, -16
 	addi.d	$t2, $t2, 16
-	addi.d	$t1, $t1, -16
-	addi.d	$t3, $t3, 16
-	bnez	$t1, .LBB5_7
+	bnez	$t0, .LBB5_7
 .LBB5_8:                                # %_ZSt4copyIP7double2S1_ET0_T_S3_S2_.exit164
                                         #   in Loop: Header=BB5_3 Depth=1
-	bge	$a7, $t0, .LBB5_2
+	bge	$a6, $a7, .LBB5_2
 # %bb.9:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB5_3 Depth=1
-	sub.d	$t0, $t0, $a7
-	alsl.d	$t1, $a7, $s4, 4
-	alsl.d	$t2, $a7, $a6, 4
-	alsl.d	$a7, $a7, $t6, 4
+	sub.d	$a7, $a7, $a6
+	alsl.d	$t0, $a6, $s4, 4
+	alsl.d	$t1, $a6, $a5, 4
+	alsl.d	$a6, $a6, $t4, 4
 	.p2align	4, , 16
 .LBB5_10:                               # %.lr.ph.i
                                         #   Parent Loop BB5_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr1, $t2, 0
-	vld	$vr2, $a7, 0
+	vld	$vr1, $t1, 0
+	vld	$vr2, $a6, 0
 	vfmul.d	$vr1, $vr0, $vr1
 	vfadd.d	$vr1, $vr1, $vr2
-	vst	$vr1, $t1, 0
-	addi.d	$t0, $t0, -1
+	vst	$vr1, $t0, 0
+	addi.d	$a7, $a7, -1
+	addi.d	$t0, $t0, 16
 	addi.d	$t1, $t1, 16
-	addi.d	$t2, $t2, 16
-	addi.d	$a7, $a7, 16
-	bnez	$t0, .LBB5_10
+	addi.d	$a6, $a6, 16
+	bnez	$a7, .LBB5_10
 	b	.LBB5_2
 .LBB5_11:                               # %.preheader
-	st.d	$t6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$t5, $sp, 200                   # 8-byte Folded Spill
-	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
-	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
-	blt	$a2, $a1, .LBB5_35
+	st.d	$t4, $sp, 32                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	blez	$a1, .LBB5_35
 # %bb.12:                               # %.lr.ph219
 	move	$a4, $zero
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB5_14
 	.p2align	4, , 16
 .LBB5_13:                               # %_ZN5Hydro12sumCrnrForceEPK7double2S2_S2_PS0_ii.exit
@@ -1994,7 +1985,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ldx.w	$a6, $a3, $a4
 	ldx.w	$s0, $a1, $a4
 	ldx.w	$s5, $a5, $a4
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a1, $s6, $a1, 3
 	sub.d	$a4, $a6, $s6
 	ld.d	$a2, $sp, 264                   # 8-byte Folded Reload
@@ -2012,9 +2003,9 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 .LBB5_16:                               # %_ZSt4copyIPdS0_ET0_T_S2_S1_.exit
                                         #   in Loop: Header=BB5_14 Depth=1
 	move	$a1, $s4
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $s2
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	move	$a3, $s1
 	move	$a4, $s0
 	move	$a5, $s5
@@ -2026,7 +2017,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	move	$a2, $s1
 	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
 	move	$a3, $s7
-	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	move	$a5, $s8
 	ld.d	$a6, $sp, 240                   # 8-byte Folded Reload
 	move	$a7, $s0
@@ -2042,14 +2033,14 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
 	move	$a1, $s4
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	move	$a3, $s0
 	move	$a4, $s5
 	pcaddu18i	$ra, %call36(_ZN4Mesh11calcEdgeLenEPK7double2Pdii)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
 	move	$a1, $s7
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
 	move	$a3, $s0
 	move	$a4, $s5
 	pcaddu18i	$ra, %call36(_ZN4Mesh11calcCharLenEPKdPdii)
@@ -2227,7 +2218,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	addi.d	$a3, $a3, 16
 	alsl.d	$a4, $s6, $a0, 3
 	addi.d	$a4, $a4, 16
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
 	alsl.d	$a5, $s6, $a5, 3
 	move	$a7, $a2
 	.p2align	4, , 16
@@ -2260,7 +2251,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	b	.LBB5_16
 .LBB5_34:                               # %._crit_edge.loopexit
 	ld.d	$a0, $fp, 0
-	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 .LBB5_35:                               # %._crit_edge
 	pcaddu18i	$ra, %call36(_ZN4Mesh13checkBadSidesEv)
 	jirl	$ra, $ra, 0
@@ -2274,11 +2265,11 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ld.d	$a2, $fp, 272
 	pcaddu18i	$ra, %call36(_ZN4Mesh11sumToPointsI7double2EEvPKT_PS2_)
 	jirl	$ra, $ra, 0
-	ori	$s0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(.LCPI5_0)
-	blt	$s1, $s0, .LBB5_47
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	blez	$s0, .LBB5_47
 # %bb.36:                               # %.lr.ph226
-	move	$s1, $zero
+	move	$s0, $zero
 	ld.d	$a1, $fp, 40
 	ld.d	$a0, $fp, 32
 	fld.d	$fs0, $s2, %pc_lo12(.LCPI5_0)
@@ -2292,9 +2283,8 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	.p2align	4, , 16
 .LBB5_37:                               # %_ZN5Hydro10advPosFullEPK7double2S2_S2_dPS0_S3_ii.exit
                                         #   in Loop: Header=BB5_38 Depth=1
-	addi.d	$s1, $s1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
-	beq	$s1, $a2, .LBB5_47
+	addi.d	$s0, $s0, 1
+	beq	$s0, $t1, .LBB5_47
 .LBB5_38:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_40 Depth 2
                                         #     Child Loop BB5_44 Depth 2
@@ -2302,57 +2292,59 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ld.d	$a2, $fp, 0
 	ld.d	$a3, $a2, 512
 	ld.d	$a2, $a2, 536
-	slli.d	$s6, $s1, 2
-	ldx.w	$s3, $a3, $s6
-	ldx.w	$s5, $a2, $s6
+	slli.d	$s5, $s0, 2
+	ldx.w	$s1, $a3, $s5
+	ldx.w	$s3, $a2, $s5
 	beq	$a1, $a0, .LBB5_42
 # %bb.39:                               # %.lr.ph222.preheader
                                         #   in Loop: Header=BB5_38 Depth=1
+	move	$s6, $zero
 	move	$s7, $zero
-	move	$s8, $zero
 	.p2align	4, , 16
 .LBB5_40:                               # %.lr.ph222
                                         #   Parent Loop BB5_38 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$a0, $a0, $s7
+	ldx.d	$a0, $a0, $s6
 	ld.d	$a1, $a0, 40
 	ld.d	$a2, $a0, 64
-	ldx.w	$a3, $a1, $s6
-	ldx.w	$a4, $a2, $s6
+	ldx.w	$a3, $a1, $s5
+	ldx.w	$a4, $a2, $s5
 	ld.d	$a1, $fp, 256
 	ld.d	$a2, $fp, 272
 	pcaddu18i	$ra, %call36(_ZN7HydroBC12applyFixedBCEP7double2S1_ii)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a0, $fp, 32
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	sub.d	$a2, $a1, $a0
 	srai.d	$a2, $a2, 3
-	addi.d	$s7, $s7, 8
-	bltu	$s8, $a2, .LBB5_40
+	addi.d	$s6, $s6, 8
+	bltu	$s7, $a2, .LBB5_40
 # %bb.41:                               # %._crit_edge223
                                         #   in Loop: Header=BB5_38 Depth=1
+	ld.d	$t1, $sp, 112                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 240                  # 16-byte Folded Reload
 	vld	$vr4, $sp, 160                  # 16-byte Folded Reload
-	bge	$s3, $s5, .LBB5_37
+	bge	$s1, $s3, .LBB5_37
 	b	.LBB5_43
 	.p2align	4, , 16
 .LBB5_42:                               #   in Loop: Header=BB5_38 Depth=1
 	move	$a1, $a0
+	ld.d	$t1, $sp, 112                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 240                  # 16-byte Folded Reload
 	vld	$vr4, $sp, 160                  # 16-byte Folded Reload
-	bge	$s3, $s5, .LBB5_37
+	bge	$s1, $s3, .LBB5_37
 .LBB5_43:                               # %.cont.preheader.i
                                         #   in Loop: Header=BB5_38 Depth=1
 	ld.d	$a3, $fp, 264
 	ld.d	$a6, $fp, 272
 	ld.d	$a5, $fp, 280
-	sub.d	$a2, $s5, $s3
-	alsl.d	$a4, $s3, $a3, 4
-	slli.d	$a7, $s3, 4
+	sub.d	$a2, $s3, $s1
+	alsl.d	$a4, $s1, $a3, 4
+	slli.d	$a7, $s1, 4
 	addi.d	$a4, $a4, 8
-	alsl.d	$a5, $s3, $a5, 3
-	alsl.d	$a6, $s3, $a6, 4
+	alsl.d	$a5, $s1, $a5, 3
+	alsl.d	$a6, $s1, $a6, 4
 	addi.d	$a6, $a6, 8
 	move	$t0, $a2
 	.p2align	4, , 16
@@ -2380,7 +2372,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ld.d	$t0, $fp, 256
 	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
 	add.d	$a4, $a4, $a7
-	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a5, $a5, $a7
 	add.d	$a6, $a6, $a7
 	add.d	$a3, $a3, $a7
@@ -2410,6 +2402,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	bnez	$a2, .LBB5_46
 	b	.LBB5_37
 .LBB5_47:                               # %._crit_edge227
+	st.d	$s2, $sp, 160                   # 8-byte Folded Spill
 	lu12i.w	$a0, -382855
 	ori	$a0, $a0, 3886
 	lu32i.d	$a0, -179538
@@ -2422,7 +2415,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	st.d	$a2, $fp, 168
 	st.d	$a1, $fp, 174
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	blt	$a0, $s0, .LBB5_55
+	blez	$a0, .LBB5_55
 # %bb.48:                               # %.lr.ph230
 	move	$s3, $zero
 	vldi	$vr0, -800
@@ -2449,8 +2442,9 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ldx.w	$s7, $a5, $a2
 	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
 	move	$a1, $s5
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	move	$s2, $s8
+	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
 	move	$a3, $s8
 	move	$a4, $s0
 	move	$a5, $s1
@@ -2460,10 +2454,11 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	st.d	$s1, $sp, 0
 	move	$a1, $s5
 	move	$a2, $s8
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 200                   # 8-byte Folded Reload
+	move	$s8, $s2
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
+	move	$a6, $s2
 	move	$a7, $s0
 	pcaddu18i	$ra, %call36(_ZN4Mesh8calcVolsEPK7double2S2_PdS3_S3_S3_ii)
 	jirl	$ra, $ra, 0
@@ -2562,16 +2557,15 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
 	ld.w	$a1, $a0, 560
-	ori	$a2, $zero, 1
-	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
-	blt	$a1, $a2, .LBB5_85
+	ld.d	$s2, $sp, 160                   # 8-byte Folded Reload
+	blez	$a1, .LBB5_85
 # %bb.56:                               # %.lr.ph234
 	move	$s0, $zero
 	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
 	frecip.d	$ft0, $fa0
 	vreplvei.d	$vr0, $vr8, 0
 	vst	$vr0, $sp, 208                  # 16-byte Folded Spill
-	addi.d	$s1, $s6, 16
+	addi.d	$s1, $s8, 16
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$s3, $a1, 16
 	ori	$s4, $zero, 4
@@ -2588,8 +2582,8 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 .LBB5_57:                               # %_ZN5Hydro7calcRhoEPKdS1_Pdii.exit215
                                         #   in Loop: Header=BB5_58 Depth=1
 	move	$a0, $fp
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
-	move	$a2, $s6
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	move	$a2, $s8
 	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
 	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
@@ -2630,7 +2624,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	alsl.d	$a1, $a6, $a1, 3
 	ld.d	$t0, $sp, 264                   # 8-byte Folded Reload
 	alsl.d	$t0, $a6, $t0, 3
-	alsl.d	$a6, $a6, $s6, 3
+	alsl.d	$a6, $a6, $s8, 3
 	.p2align	4, , 16
 .LBB5_61:                               # %.lr.ph.i199
                                         #   Parent Loop BB5_58 Depth=1
@@ -2687,7 +2681,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
                                         #   in Loop: Header=BB5_58 Depth=1
 	sub.d	$a0, $a5, $a3
 	alsl.d	$a2, $a3, $a2, 3
-	alsl.d	$a6, $a3, $s6, 3
+	alsl.d	$a6, $a3, $s8, 3
 	alsl.d	$a1, $a3, $a1, 3
 	.p2align	4, , 16
 .LBB5_67:                               # %.lr.ph.i211
@@ -2706,7 +2700,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	.p2align	4, , 16
 .LBB5_68:                               # %vector.memcheck301
                                         #   in Loop: Header=BB5_58 Depth=1
-	sub.d	$a7, $a3, $s6
+	sub.d	$a7, $a3, $s8
 	move	$a6, $a4
 	bltu	$a7, $s5, .LBB5_60
 # %bb.69:                               # %vector.memcheck301
@@ -2825,7 +2819,7 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	bltu	$a6, $s5, .LBB5_66
 # %bb.81:                               # %vector.memcheck261
                                         #   in Loop: Header=BB5_58 Depth=1
-	sub.d	$a6, $a2, $s6
+	sub.d	$a6, $a2, $s8
 	move	$a3, $a4
 	bltu	$a6, $s5, .LBB5_66
 # %bb.82:                               # %vector.ph267
@@ -3995,9 +3989,8 @@ _ZN5Hydro16writeEnergyCheckEv:          # @_ZN5Hydro16writeEnergyCheckEv
 	ld.d	$a1, $a0, 0
 	ld.w	$a2, $a1, 400
 	st.d	$zero, $sp, 16
-	ori	$a3, $zero, 1
 	st.d	$zero, $sp, 8
-	blt	$a2, $a3, .LBB20_11
+	blez	$a2, .LBB20_11
 # %bb.1:                                # %.lr.ph
 	ld.d	$a3, $a1, 408
 	ld.d	$a4, $a1, 432

@@ -22,8 +22,7 @@ main:                                   # @main
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(b)
 	ld.h	$a2, $a0, %pc_lo12(b)
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB1_2
+	blez	$a2, .LBB1_2
 # %bb.1:                                # %.._crit_edge_crit_edge
 	pcalau12i	$a1, %pc_hi20(a+4)
 	ld.bu	$a1, $a1, %pc_lo12(a+4)

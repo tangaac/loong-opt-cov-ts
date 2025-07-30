@@ -116,7 +116,7 @@ Fast_IDCT:                              # @Fast_IDCT
 	or	$s4, $s4, $s1
 	or	$s4, $s4, $s0
 	or	$s4, $s4, $fp
-	bstrpick.d	$s4, $s4, 15, 0
+	slli.d	$s4, $s4, 48
 	bnez	$s4, .LBB0_1
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.h	$t7, $t6, -14
@@ -250,7 +250,7 @@ Fast_IDCT:                              # @Fast_IDCT
 	or	$s5, $s4, $s1
 	ld.h	$s4, $t6, -96
 	or	$s5, $s5, $s0
-	bstrpick.d	$s5, $s5, 15, 0
+	slli.d	$s5, $s5, 48
 	bnez	$s5, .LBB0_6
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1
 	addi.d	$t7, $s4, 32

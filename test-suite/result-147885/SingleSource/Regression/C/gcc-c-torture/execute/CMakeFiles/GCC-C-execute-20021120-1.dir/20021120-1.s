@@ -48,10 +48,9 @@ foo:                                    # @foo
 	fld.d	$fa4, $a1, 232
 	fld.d	$fa1, $a1, 240
 	fld.d	$fa0, $a1, 248
-	ori	$a2, $zero, 1
 	fst.d	$fa2, $sp, 360                  # 8-byte Folded Spill
 	fst.d	$fa3, $sp, 352                  # 8-byte Folded Spill
-	blt	$a0, $a2, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a2, %pc_hi20(gf)
 	addi.d	$a2, $a2, %pc_lo12(gf)

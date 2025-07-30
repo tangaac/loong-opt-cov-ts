@@ -11,8 +11,7 @@ g:                                      # @g
 	ld.d	$a1, $a1, %pc_lo12(b)
 	sltu	$a0, $zero, $a0
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	beqz	$a0, .LBB0_2
+	beq	$a0, $a1, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
 	ret
@@ -33,8 +32,7 @@ f:                                      # @f
 	ld.d	$a1, $a1, %pc_lo12(b)
 	sltu	$a0, $zero, $a0
 	sltui	$a1, $a1, 1
-	xor	$a0, $a0, $a1
-	beqz	$a0, .LBB1_2
+	beq	$a0, $a1, .LBB1_2
 # %bb.1:                                # %g.exit
 	move	$a0, $zero
 	ret

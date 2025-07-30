@@ -82,26 +82,26 @@ ReportError:                            # @ReportError
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	addi.w	$a0, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.5:                                # %.lr.ph.preheader
 	move	$a0, $s4
-	addi.d	$a3, $s4, -1
+	addi.d	$a2, $s4, -1
 	bstrpick.d	$a6, $a1, 30, 0
-	ori	$a4, $zero, 47
-	ori	$a5, $zero, 92
+	ori	$a3, $zero, 47
+	ori	$a4, $zero, 92
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB1_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a6
-	ldx.bu	$a6, $a3, $a6
-	beq	$a6, $a4, .LBB1_11
+	ldx.bu	$a6, $a2, $a6
+	beq	$a6, $a3, .LBB1_11
 # %bb.7:                                # %.lr.ph
                                         #   in Loop: Header=BB1_6 Depth=1
-	beq	$a6, $a5, .LBB1_11
+	beq	$a6, $a4, .LBB1_11
 # %bb.8:                                #   in Loop: Header=BB1_6 Depth=1
 	addi.d	$a6, $a1, -1
-	blt	$a2, $a1, .LBB1_6
+	blt	$a5, $a1, .LBB1_6
 # %bb.9:
 	move	$a1, $zero
 	b	.LBB1_11

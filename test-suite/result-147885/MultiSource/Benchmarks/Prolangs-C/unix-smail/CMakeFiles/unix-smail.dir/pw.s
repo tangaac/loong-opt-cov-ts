@@ -141,8 +141,8 @@ fullname:                               # @fullname
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB3_6
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB3_6
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(fullname.fname)
 	addi.d	$fp, $a0, %pc_lo12(fullname.fname)

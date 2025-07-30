@@ -344,8 +344,8 @@ cli_caloff:                             # @cli_caloff
 	ext.w.b	$a2, $a1
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB2_24
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB2_24
 # %bb.15:
 	ld.bu	$a0, $s0, 32
 	ori	$a2, $zero, 1
@@ -738,9 +738,8 @@ cli_scandesc:                           # @cli_scandesc
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	blt	$a0, $a1, .LBB4_47
+	blez	$a0, .LBB4_47
 # %bb.28:                               # %.lr.ph
 	move	$s0, $a0
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill

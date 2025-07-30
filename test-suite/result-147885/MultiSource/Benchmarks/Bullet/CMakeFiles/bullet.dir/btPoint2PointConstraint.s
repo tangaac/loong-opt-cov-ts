@@ -560,8 +560,7 @@ _ZN23btPoint2PointConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstr
 _ZN23btPoint2PointConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN23btPoint2PointConstraint23solveConstraintObsoleteER12btSolverBodyS1_f
 # %bb.0:
 	ld.bu	$a3, $a0, 380
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB8_12
+	beqz	$a3, .LBB8_12
 # %bb.1:
 	addi.d	$sp, $sp, -64
 	fst.d	$fs0, $sp, 56                   # 8-byte Folded Spill

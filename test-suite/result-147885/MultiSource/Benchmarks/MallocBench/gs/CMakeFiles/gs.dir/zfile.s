@@ -11,7 +11,6 @@ zfile_init:                             # @zfile_init
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(stdin)
 	ld.d	$a1, $a0, %got_pc_lo12(stdin)
 	pcalau12i	$a0, %pc_hi20(std_files)
@@ -46,45 +45,44 @@ zfile_init:                             # @zfile_init
 	addi.d	$s1, $a0, %pc_lo12(std_file_names)
 	ld.d	$a0, $s1, 0
 	addi.d	$a1, $fp, 16
-	ori	$s3, $zero, 32
-	st.h	$s3, $fp, 24
+	ori	$s2, $zero, 32
+	st.h	$s2, $fp, 24
 	pcalau12i	$a2, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(string_to_ref)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	bge	$s2, $a0, .LBB0_6
+	bltz	$a0, .LBB0_6
 .LBB0_1:
 	ld.d	$a0, $s1, 8
 	st.d	$zero, $fp, 48
 	addi.d	$a1, $fp, 48
-	st.h	$s3, $fp, 56
+	st.h	$s2, $fp, 56
 	pcalau12i	$a2, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(string_to_ref)
 	jirl	$ra, $ra, 0
-	bge	$s2, $a0, .LBB0_7
+	bltz	$a0, .LBB0_7
 .LBB0_2:
 	st.d	$zero, $fp, 80
 	ld.d	$a0, $s1, 16
 	addi.d	$a1, $fp, 80
-	ori	$s3, $zero, 32
-	st.h	$s3, $fp, 88
+	ori	$s2, $zero, 32
+	st.h	$s2, $fp, 88
 	pcalau12i	$a2, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(string_to_ref)
 	jirl	$ra, $ra, 0
-	bge	$s2, $a0, .LBB0_8
+	bltz	$a0, .LBB0_8
 .LBB0_3:
 	ld.d	$a0, $s1, 24
 	st.d	$zero, $fp, 112
 	addi.d	$a1, $fp, 112
-	st.h	$s3, $fp, 120
+	st.h	$s2, $fp, 120
 	pcalau12i	$a2, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(string_to_ref)
 	jirl	$ra, $ra, 0
-	bge	$s2, $a0, .LBB0_9
+	bltz	$a0, .LBB0_9
 .LBB0_4:
 	st.d	$zero, $fp, 144
 	ld.d	$a0, $s1, 32
@@ -95,9 +93,8 @@ zfile_init:                             # @zfile_init
 	addi.d	$a2, $a2, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(string_to_ref)
 	jirl	$ra, $ra, 0
-	bge	$s2, $a0, .LBB0_10
+	bltz	$a0, .LBB0_10
 # %bb.5:
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -202,7 +199,6 @@ zfile_init:                             # @zfile_init
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -2320,8 +2316,7 @@ lib_file_open:                          # @lib_file_open
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(file_open)
 	jirl	$ra, $ra, 0
-	addi.w	$s8, $zero, -1
-	bge	$s8, $a0, .LBB31_2
+	bltz	$a0, .LBB31_2
 .LBB31_1:
 	move	$s3, $zero
 	b	.LBB31_4
@@ -2364,13 +2359,12 @@ lib_file_open:                          # @lib_file_open
 	sub.d	$a0, $a2, $a0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(gp_file_name_list_separator)
-	ld.d	$s4, $a0, %got_pc_lo12(gp_file_name_list_separator)
+	ld.d	$s8, $a0, %got_pc_lo12(gp_file_name_list_separator)
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$s5, $a0, %pc_lo12(.L.str.9)
 	b	.LBB31_8
 .LBB31_7:                               #   in Loop: Header=BB31_8 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $a0, 8
 	addi.d	$a1, $a0, 8
 	beqz	$s2, .LBB31_4
@@ -2378,25 +2372,25 @@ lib_file_open:                          # @lib_file_open
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB31_10 Depth 2
                                         #       Child Loop BB31_11 Depth 3
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB31_10
 	.p2align	4, , 16
 .LBB31_9:                               #   in Loop: Header=BB31_10 Depth=2
-	add.d	$s2, $s2, $s5
+	add.d	$s2, $s2, $s4
 	ld.bu	$a0, $s2, -1
 	beqz	$a0, .LBB31_7
 .LBB31_10:                              #   Parent Loop BB31_8 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB31_11 Depth 3
-	ld.bu	$a0, $s4, 0
-	move	$s5, $zero
-	move	$s6, $s8
+	ld.bu	$a0, $s8, 0
+	move	$s4, $zero
+	addi.d	$s6, $zero, -1
 	.p2align	4, , 16
 .LBB31_11:                              #   Parent Loop BB31_8 Depth=1
                                         #     Parent Loop BB31_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.bu	$a1, $s2, $s5
-	addi.d	$s5, $s5, 1
+	ldx.bu	$a1, $s2, $s4
+	addi.d	$s4, $s4, 1
 	addi.w	$s6, $s6, 1
 	beqz	$a1, .LBB31_13
 # %bb.12:                               #   in Loop: Header=BB31_11 Depth=3
@@ -2417,7 +2411,7 @@ lib_file_open:                          # @lib_file_open
 	lu12i.w	$a0, 1
 	blt	$a0, $s6, .LBB31_9
 # %bb.14:                               #   in Loop: Header=BB31_10 Depth=2
-	addi.d	$a0, $s5, -1
+	addi.d	$a0, $s4, -1
 	bstrpick.d	$s3, $a0, 31, 0
 	addi.d	$a0, $sp, 40
 	move	$a1, $s2
@@ -2437,12 +2431,12 @@ lib_file_open:                          # @lib_file_open
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $sp, 40
 	move	$a1, $s6
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	move	$a2, $s5
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(file_open)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	bge	$s8, $a0, .LBB31_9
+	bltz	$a0, .LBB31_9
 	b	.LBB31_1
 .Lfunc_end31:
 	.size	lib_file_open, .Lfunc_end31-lib_file_open

@@ -10,9 +10,9 @@
 	.type	test_matrix,@function
 test_matrix:                            # @test_matrix
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_8
+	blez	$a0, .LBB0_8
 # %bb.1:                                # %.lr.ph.preheader
+	ori	$a4, $zero, 1
 	move	$a3, $zero
 	beq	$a0, $a4, .LBB0_6
 # %bb.2:                                # %.lr.ph.preheader
@@ -148,10 +148,10 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(dallocvector)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 108
-	ori	$fp, $zero, 1
-	blt	$a0, $fp, .LBB1_22
+	blez	$a0, .LBB1_22
 # %bb.1:                                # %.lr.ph16.preheader
-	move	$s0, $zero
+	move	$fp, $zero
+	ori	$s0, $zero, 1
 	ori	$s1, $zero, 6
 	ori	$s2, $zero, 32
 	vrepli.b	$vr4, 0
@@ -181,9 +181,9 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(dbisect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 108
-	addi.w	$s0, $s0, 1
+	addi.w	$fp, $fp, 1
 	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
-	bge	$s0, $a0, .LBB1_22
+	bge	$fp, $a0, .LBB1_22
 .LBB1_4:                                # %.lr.ph16
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_8 Depth 2
@@ -193,11 +193,11 @@ main:                                   # @main
 	ld.w	$a3, $sp, 104
 	ld.d	$a0, $sp, 72
 	ld.d	$a1, $sp, 64
-	blt	$a3, $fp, .LBB1_2
+	blez	$a3, .LBB1_2
 # %bb.5:                                # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$a2, $zero
-	beq	$a3, $fp, .LBB1_10
+	beq	$a3, $s0, .LBB1_10
 # %bb.6:                                # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB1_4 Depth=1
 	sub.d	$a4, $a0, $a1

@@ -221,16 +221,13 @@ _ZN21btConeTwistConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: #
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 575
-	ori	$s1, $zero, 1
 	move	$fp, $a1
-	bne	$a0, $s1, .LBB4_2
+	beqz	$a0, .LBB4_2
 # %bb.1:
 	move	$a0, $zero
 	st.w	$zero, $fp, 0
@@ -249,7 +246,7 @@ _ZN21btConeTwistConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: #
 	pcaddu18i	$ra, %call36(_ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s0, 574
-	bne	$a0, $s1, .LBB4_6
+	beqz	$a0, .LBB4_6
 # %bb.3:
 	ld.w	$a0, $fp, 0
 	ld.w	$a1, $fp, 4
@@ -272,8 +269,7 @@ _ZN21btConeTwistConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: #
 	st.w	$a0, $fp, 4
 .LBB4_6:
 	ld.bu	$a0, $s0, 573
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_9
+	beqz	$a0, .LBB4_9
 # %bb.7:
 	ld.w	$a0, $fp, 0
 	ld.w	$a1, $fp, 4
@@ -283,7 +279,6 @@ _ZN21btConeTwistConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: #
 .LBB4_8:                                # %.sink.split
 	st.w	$a0, $fp, 4
 .LBB4_9:
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -349,9 +344,8 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	move	$s2, $a2
 	move	$s3, $a1
 	st.d	$zero, $fp, 548
-	ori	$a1, $zero, 1
 	st.h	$zero, $fp, 573
-	bne	$a0, $a1, .LBB5_4
+	beqz	$a0, .LBB5_4
 # %bb.1:
 	ld.b	$a0, $fp, 575
 	andi	$a0, $a0, 1
@@ -1639,8 +1633,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fst.s	$fa3, $fp, 544
 .LBB5_57:
 	ld.bu	$a0, $fp, 574
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_59
+	beqz	$a0, .LBB5_59
 # %bb.58:
 	vld	$vr11, $sp, 64                  # 16-byte Folded Reload
 	fneg.s	$fa3, $ft3
@@ -1859,9 +1852,9 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	fmul.s	$fa3, $fa3, $fa4
 	ld.d	$a6, $s0, 48
 	fld.s	$fa4, $s2, 48
-	ld.d	$t0, $s0, 64
+	ld.d	$a7, $s0, 64
 	fld.s	$fa5, $s1, 48
-	ld.d	$t1, $s0, 72
+	ld.d	$t0, $s0, 72
 	fadd.s	$fa4, $ft2, $fa4
 	fsub.s	$fa2, $fa4, $fa2
 	fsub.s	$fa2, $fa2, $fa5
@@ -1870,10 +1863,10 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	lu12i.w	$a3, -2049
 	ori	$a3, $a3, 4095
 	lu32i.d	$a3, 0
-	st.w	$a3, $t0, 0
+	st.w	$a3, $a7, 0
 	lu12i.w	$a4, 522239
 	ori	$a4, $a4, 4095
-	st.w	$a4, $t1, 0
+	st.w	$a4, $t0, 0
 	fld.s	$fa2, $s2, 52
 	fld.s	$fa4, $s1, 52
 	fadd.s	$fa2, $ft5, $fa2
@@ -1881,22 +1874,21 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	fsub.s	$fa0, $fa0, $fa4
 	fmul.s	$fa0, $fa3, $fa0
 	fstx.s	$fa0, $a6, $a5
-	stx.w	$a3, $t0, $a5
-	stx.w	$a4, $t1, $a5
+	stx.w	$a3, $a7, $a5
+	stx.w	$a4, $t0, $a5
 	fld.s	$fa0, $s2, 56
 	fld.s	$fa2, $s1, 56
 	fadd.s	$fa0, $fa6, $fa0
 	fsub.s	$fa0, $fa0, $fa1
 	fsub.s	$fa0, $fa0, $fa2
 	fmul.s	$fa0, $fa3, $fa0
-	slli.d	$a7, $a1, 3
-	fstx.s	$fa0, $a6, $a7
-	ld.bu	$t3, $fp, 574
-	stx.w	$a3, $t0, $a7
-	stx.w	$a4, $t1, $a7
-	ori	$a7, $zero, 1
-	alsl.w	$t2, $a1, $a1, 1
-	bne	$t3, $a7, .LBB8_4
+	slli.d	$t1, $a1, 3
+	ld.bu	$t2, $fp, 574
+	fstx.s	$fa0, $a6, $t1
+	stx.w	$a3, $a7, $t1
+	stx.w	$a4, $t0, $t1
+	alsl.w	$t1, $a1, $a1, 1
+	beqz	$t2, .LBB8_4
 # %bb.1:
 	fld.s	$fa1, $fp, 492
 	fld.s	$fa0, $fp, 504
@@ -1940,33 +1932,33 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	fmul.s	$fa7, $fa7, $ft4
 	fmadd.s	$fa7, $ft0, $ft8, $fa7
 	fmadd.s	$ft0, $ft2, $ft9, $fa7
-	slli.w	$t0, $a1, 2
-	slli.d	$a5, $t2, 2
+	slli.w	$a7, $a1, 2
+	slli.d	$a5, $t1, 2
 	fstx.s	$fa1, $a0, $a5
-	addi.d	$t1, $a5, 4
-	fstx.s	$ft7, $a0, $t1
-	addi.d	$t2, $a5, 8
-	fstx.s	$fa5, $a0, $t2
-	slli.d	$t3, $t0, 2
-	fstx.s	$fa0, $a0, $t3
-	addi.w	$t4, $t0, 1
-	slli.d	$t4, $t4, 2
-	fstx.s	$ft10, $a0, $t4
-	addi.w	$t0, $t0, 2
-	slli.d	$t0, $t0, 2
-	fstx.s	$ft0, $a0, $t0
+	addi.d	$t0, $a5, 4
+	fstx.s	$ft7, $a0, $t0
+	addi.d	$t1, $a5, 8
+	fstx.s	$fa5, $a0, $t1
+	slli.d	$t2, $a7, 2
+	fstx.s	$fa0, $a0, $t2
+	addi.w	$t3, $a7, 1
+	slli.d	$t3, $t3, 2
+	fstx.s	$ft10, $a0, $t3
+	addi.w	$a7, $a7, 2
+	slli.d	$a7, $a7, 2
+	fstx.s	$ft0, $a0, $a7
 	fnmadd.s	$ft1, $fa6, $fa4, $ft1
 	fstx.s	$ft1, $a2, $a5
 	fnmadd.s	$ft1, $fa6, $ft5, $ft6
-	fstx.s	$ft1, $a2, $t1
+	fstx.s	$ft1, $a2, $t0
 	fnmadd.s	$fa2, $fa6, $ft9, $fa2
-	fstx.s	$fa2, $a2, $t2
+	fstx.s	$fa2, $a2, $t1
 	fnmadd.s	$fa2, $ft2, $fa4, $fa3
-	fstx.s	$fa2, $a2, $t3
+	fstx.s	$fa2, $a2, $t2
 	fnmadd.s	$fa2, $ft2, $ft5, $ft3
-	fstx.s	$fa2, $a2, $t4
+	fstx.s	$fa2, $a2, $t3
 	fnmadd.s	$fa2, $ft2, $ft9, $fa7
-	fstx.s	$fa2, $a2, $t0
+	fstx.s	$fa2, $a2, $a7
 	fld.s	$fa2, $s0, 0
 	fld.s	$fa3, $fp, 484
 	fld.s	$fa4, $fp, 512
@@ -1984,22 +1976,22 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	fmul.s	$fa1, $ft10, $fa1
 	fmadd.s	$fa0, $fa3, $fa0, $fa1
 	fmadd.s	$fa0, $fa4, $ft0, $fa0
-	ld.d	$t0, $s0, 64
-	ld.d	$t1, $s0, 72
+	ld.d	$a7, $s0, 64
+	ld.d	$t0, $s0, 72
 	fmul.s	$fa0, $fa2, $fa0
-	fstx.s	$fa0, $a6, $t3
-	stx.w	$a3, $t0, $a5
-	stx.w	$a4, $t1, $a5
-	stx.w	$a3, $t0, $t3
-	stx.w	$a4, $t1, $t3
+	fstx.s	$fa0, $a6, $t2
+	stx.w	$a3, $a7, $a5
+	stx.w	$a4, $t0, $a5
+	stx.w	$a3, $a7, $t2
+	stx.w	$a4, $t0, $t2
 	alsl.w	$a5, $a1, $a1, 2
 	ld.bu	$a1, $fp, 573
-	beq	$a1, $a7, .LBB8_6
+	bnez	$a1, .LBB8_6
 	b	.LBB8_11
 .LBB8_4:
-	move	$a5, $t2
+	move	$a5, $t1
 	ld.bu	$a1, $fp, 573
-	beq	$a1, $a7, .LBB8_6
+	bnez	$a1, .LBB8_6
 	b	.LBB8_11
 .LBB8_5:
 	fld.s	$fa0, $fp, 508
@@ -2012,30 +2004,30 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	fmul.s	$fa0, $fa1, $fa0
 	fmul.s	$fa2, $fa1, $fa2
 	fmul.s	$fa1, $fa1, $fa3
-	slli.d	$a1, $t2, 2
+	slli.d	$a1, $t1, 2
 	fstx.s	$fa0, $a0, $a1
-	addi.d	$t2, $a1, 4
-	fstx.s	$fa2, $a0, $t2
-	addi.d	$t3, $a1, 8
-	fstx.s	$fa1, $a0, $t3
+	addi.d	$t1, $a1, 4
+	fstx.s	$fa2, $a0, $t1
+	addi.d	$t2, $a1, 8
+	fstx.s	$fa1, $a0, $t2
 	fneg.s	$fa0, $fa0
 	fstx.s	$fa0, $a2, $a1
 	fneg.s	$fa0, $fa2
-	fstx.s	$fa0, $a2, $t2
+	fstx.s	$fa0, $a2, $t1
 	fneg.s	$fa0, $fa1
-	fstx.s	$fa0, $a2, $t3
+	fstx.s	$fa0, $a2, $t2
 	fld.s	$fa0, $s0, 0
 	fld.s	$fa1, $fp, 480
 	fld.s	$fa2, $fp, 552
-	ld.d	$t2, $s0, 56
+	ld.d	$t1, $s0, 56
 	fmul.s	$fa0, $fa0, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fstx.s	$fa0, $a6, $a1
-	stx.w	$zero, $t2, $a1
-	stx.w	$zero, $t0, $a1
-	stx.w	$a4, $t1, $a1
+	stx.w	$zero, $t1, $a1
+	stx.w	$zero, $a7, $a1
+	stx.w	$a4, $t0, $a1
 	ld.bu	$a1, $fp, 573
-	bne	$a1, $a7, .LBB8_11
+	beqz	$a1, .LBB8_11
 .LBB8_6:
 	fld.s	$fa0, $fp, 524
 	fld.s	$fa1, $fp, 484
@@ -2052,14 +2044,14 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	fstx.s	$fa0, $a0, $a5
 	addi.d	$a6, $a5, 4
 	fstx.s	$fa2, $a0, $a6
-	addi.d	$a7, $a5, 8
-	fstx.s	$fa1, $a0, $a7
+	addi.d	$t1, $a5, 8
+	fstx.s	$fa1, $a0, $t1
 	fneg.s	$fa0, $fa0
 	fstx.s	$fa0, $a2, $a5
 	fneg.s	$fa0, $fa2
 	fstx.s	$fa0, $a2, $a6
 	fneg.s	$fa0, $fa1
-	fstx.s	$fa0, $a2, $a7
+	fstx.s	$fa0, $a2, $t1
 	fld.s	$fa0, $s0, 0
 	fld.s	$fa1, $fp, 480
 	fld.s	$fa2, $fp, 556
@@ -2075,17 +2067,17 @@ _ZN21btConeTwistConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstrai
 	bcnez	$fcc0, .LBB8_9
 # %bb.7:
 	fld.s	$fa1, $fp, 556
-	alsl.d	$a0, $a1, $t0, 2
+	alsl.d	$a0, $a1, $a7, 2
 	fcmp.cule.s	$fcc0, $fa1, $fa0
-	alsl.d	$a1, $a1, $t1, 2
+	alsl.d	$a1, $a1, $t0, 2
 	bcnez	$fcc0, .LBB8_10
 # %bb.8:
 	st.w	$zero, $a0, 0
 	st.w	$a4, $a1, 0
 	b	.LBB8_11
 .LBB8_9:
-	stx.w	$a3, $t0, $a5
-	stx.w	$a4, $t1, $a5
+	stx.w	$a3, $a7, $a5
+	stx.w	$a4, $t0, $a5
 	b	.LBB8_11
 .LBB8_10:
 	st.w	$a3, $a0, 0
@@ -2123,8 +2115,7 @@ _ZN21btConeTwistConstraint13buildJacobianEv: # @_ZN21btConeTwistConstraint13buil
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a1, $a0, 575
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB9_4
+	beqz	$a1, .LBB9_4
 # %bb.1:
 	ld.bu	$a1, $a0, 572
 	st.w	$zero, $a0, 40
@@ -2496,8 +2487,7 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	.cfi_offset 63, -104
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 575
-	ori	$a3, $zero, 1
-	bne	$a0, $a3, .LBB10_40
+	beqz	$a0, .LBB10_40
 # %bb.1:
 	fmov.s	$fs0, $fa0
 	ld.d	$a3, $fp, 24
@@ -2797,8 +2787,7 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	bne	$a4, $a5, .LBB10_7
 .LBB10_8:                               # %.loopexit
 	ld.bu	$a4, $fp, 600
-	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB10_12
+	beqz	$a4, .LBB10_12
 # %bb.9:
 	addi.d	$a4, $a3, 8
 	vld	$vr0, $a4, 0
@@ -3813,12 +3802,11 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fadd.s	$fa4, $fa6, $fa7
 	fadd.s	$fa1, $ft0, $ft1
 .LBB10_36:                              # %_ZNK12btSolverBody18getAngularVelocityER9btVector3.exit607
-	ld.bu	$a3, $fp, 574
-	ori	$a0, $zero, 1
+	ld.bu	$a0, $fp, 574
 	fsub.s	$fa0, $fa5, $fa0
 	fsub.s	$fa2, $fa4, $fa2
 	fsub.s	$fa1, $fa1, $fa3
-	bne	$a3, $a0, .LBB10_38
+	beqz	$a0, .LBB10_38
 # %bb.37:
 	fld.s	$fa3, $fp, 576
 	fld.s	$fa4, $fp, 552
@@ -3863,27 +3851,27 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fmul.s	$fa4, $ft0, $ft0
 	fmadd.s	$fa4, $fa6, $fa6, $fa4
 	fmadd.s	$fa5, $ft1, $ft1, $fa4
-	ld.d	$a3, $fp, 24
+	ld.d	$a0, $fp, 24
 	fsqrt.s	$fa4, $fa5
 	frsqrt.s	$ft2, $fa5
 	fmul.s	$fa5, $fa6, $ft2
-	fld.s	$ft3, $a3, 284
+	fld.s	$ft3, $a0, 284
 	fmul.s	$fa7, $ft0, $ft2
 	fmul.s	$fa6, $ft1, $ft2
-	fld.s	$ft0, $a3, 280
+	fld.s	$ft0, $a0, 280
 	fmul.s	$ft1, $ft3, $fa7
-	fld.s	$ft2, $a3, 288
-	fld.s	$ft3, $a3, 300
+	fld.s	$ft2, $a0, 288
+	fld.s	$ft3, $a0, 300
 	fmadd.s	$ft0, $ft0, $fa5, $ft1
-	fld.s	$ft1, $a3, 296
+	fld.s	$ft1, $a0, 296
 	fmadd.s	$ft0, $ft2, $fa6, $ft0
 	fmul.s	$ft2, $ft3, $fa7
-	fld.s	$ft3, $a3, 304
+	fld.s	$ft3, $a0, 304
 	fmadd.s	$ft1, $ft1, $fa5, $ft2
-	fld.s	$ft2, $a3, 316
-	fld.s	$ft4, $a3, 312
+	fld.s	$ft2, $a0, 316
+	fld.s	$ft4, $a0, 312
 	fmadd.s	$ft1, $ft3, $fa6, $ft1
-	fld.s	$ft3, $a3, 320
+	fld.s	$ft3, $a0, 320
 	fmul.s	$ft2, $ft2, $fa7
 	fmadd.s	$ft2, $ft4, $fa5, $ft2
 	fld.s	$ft4, $a1, 0
@@ -3915,21 +3903,21 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fst.s	$ft0, $a1, 20
 	fadd.s	$ft0, $ft2, $ft3
 	fst.s	$ft0, $a1, 24
-	ld.d	$a3, $fp, 32
-	fld.s	$ft0, $a3, 284
-	fld.s	$ft1, $a3, 280
+	ld.d	$a0, $fp, 32
+	fld.s	$ft0, $a0, 284
+	fld.s	$ft1, $a0, 280
 	fmul.s	$ft0, $fa7, $ft0
-	fld.s	$ft2, $a3, 288
-	fld.s	$ft3, $a3, 300
-	fld.s	$ft4, $a3, 296
+	fld.s	$ft2, $a0, 288
+	fld.s	$ft3, $a0, 300
+	fld.s	$ft4, $a0, 296
 	fmadd.s	$ft0, $ft1, $fa5, $ft0
 	fmadd.s	$ft0, $ft2, $fa6, $ft0
 	fmul.s	$ft1, $fa7, $ft3
 	fmadd.s	$ft1, $ft4, $fa5, $ft1
-	fld.s	$ft2, $a3, 304
-	fld.s	$ft3, $a3, 316
-	fld.s	$ft4, $a3, 312
-	fld.s	$ft5, $a3, 320
+	fld.s	$ft2, $a0, 304
+	fld.s	$ft3, $a0, 316
+	fld.s	$ft4, $a0, 312
+	fld.s	$ft5, $a0, 320
 	fmadd.s	$ft1, $ft2, $fa6, $ft1
 	fmul.s	$fa7, $fa7, $ft3
 	fmadd.s	$fa5, $ft4, $fa5, $fa7
@@ -3964,8 +3952,8 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fsub.s	$fa3, $fa7, $fa4
 	fst.s	$fa3, $a2, 24
 .LBB10_38:
-	ld.bu	$a3, $fp, 573
-	bne	$a3, $a0, .LBB10_40
+	ld.bu	$a0, $fp, 573
+	beqz	$a0, .LBB10_40
 # %bb.39:
 	fld.s	$fa3, $fp, 580
 	fld.s	$fa4, $fp, 556

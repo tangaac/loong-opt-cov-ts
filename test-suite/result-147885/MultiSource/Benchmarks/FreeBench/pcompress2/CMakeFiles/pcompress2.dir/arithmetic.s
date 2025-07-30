@@ -177,23 +177,23 @@ do_ari:                                 # @do_ari
                                         #   in Loop: Header=BB0_7 Depth=1
 	alsl.d	$a0, $s0, $s7, 2
 	slli.d	$a1, $s0, 2
-	ldx.w	$a2, $s7, $a1
+	ldx.w	$a3, $s7, $a1
 	addi.d	$a1, $s0, 1
 	addi.d	$a4, $a0, 4
 	move	$a5, $s0
-	addi.d	$a3, $zero, -1
+	addi.d	$a2, $zero, -1
 	.p2align	4, , 16
 .LBB0_11:                               #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $a5
 	ld.w	$a6, $a4, -8
-	addi.w	$a3, $a3, 1
+	addi.w	$a2, $a2, 1
 	addi.d	$a1, $a1, -1
 	addi.d	$a4, $a4, -4
 	addi.w	$a5, $a5, -1
-	beq	$a2, $a6, .LBB0_11
+	beq	$a3, $a6, .LBB0_11
 # %bb.12:                               #   in Loop: Header=BB0_7 Depth=1
-	sub.w	$a5, $s0, $a3
+	sub.w	$a5, $s0, $a2
 	bge	$a5, $s0, .LBB0_14
 # %bb.13:                               #   in Loop: Header=BB0_7 Depth=1
 	ldx.bu	$a6, $s6, $s0
@@ -205,13 +205,13 @@ do_ari:                                 # @do_ari
 	slli.d	$a6, $a6, 2
 	stx.w	$a5, $s5, $a6
 .LBB0_14:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.d	$a2, $a2, 1
-	st.w	$a2, $a4, 0
-	blt	$a1, $s2, .LBB0_6
+	addi.d	$a3, $a3, 1
+	st.w	$a3, $a4, 0
+	blez	$a1, .LBB0_6
 # %bb.15:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB0_7 Depth=1
 	bstrpick.d	$a1, $a5, 31, 0
-	xor	$a2, $s0, $a3
+	xor	$a2, $s0, $a2
 	sltu	$a3, $zero, $a2
 	sub.d	$a2, $a1, $a3
 	addi.d	$a2, $a2, 1
@@ -293,13 +293,13 @@ do_ari:                                 # @do_ari
 	ori	$a1, $zero, 8
 	st.w	$a1, $t1, %pc_lo12(bits_to_go)
 .LBB0_24:                               # %output_bit.exit.i.i
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB0_37
+	blez	$a2, .LBB0_37
 # %bb.25:                               # %.lr.ph.split.us.i.i.preheader
-	pcalau12i	$a4, %got_pc_hi20(ari)
-	ld.d	$a4, $a4, %got_pc_lo12(ari)
-	addi.w	$a5, $zero, -258
-	lu32i.d	$a5, 0
+	pcalau12i	$a3, %got_pc_hi20(ari)
+	ld.d	$a3, $a3, %got_pc_lo12(ari)
+	addi.w	$a4, $zero, -258
+	lu32i.d	$a4, 0
+	ori	$a5, $zero, 1
 	b	.LBB0_27
 	.p2align	4, , 16
 .LBB0_26:                               # %output_bit.exit4.us.i.i
@@ -307,17 +307,17 @@ do_ari:                                 # @do_ari
 	move	$a6, $a2
 	addi.d	$a2, $a2, -1
 	st.d	$a2, $t2, %pc_lo12(bits_to_follow)
-	bge	$a3, $a6, .LBB0_36
+	bge	$a5, $a6, .LBB0_36
 .LBB0_27:                               # %.lr.ph.split.us.i.i
                                         # =>This Inner Loop Header: Depth=1
-	and	$a0, $a0, $a5
+	and	$a0, $a0, $a4
 	srli.d	$a0, $a0, 1
 	addi.w	$a1, $a1, -1
 	addi.d	$a0, $a0, 128
 	bnez	$a1, .LBB0_26
 # %bb.28:                               #   in Loop: Header=BB0_27 Depth=1
 	ld.wu	$a1, $a7, %pc_lo12(ari_pos)
-	ld.d	$a2, $a4, 0
+	ld.d	$a2, $a3, 0
 	addi.d	$a6, $a1, 1
 	st.w	$a6, $a7, %pc_lo12(ari_pos)
 	stx.b	$a0, $a2, $a1
@@ -345,11 +345,11 @@ do_ari:                                 # @do_ari
 	ori	$a1, $zero, 8
 	st.w	$a1, $t1, %pc_lo12(bits_to_go)
 .LBB0_31:                               # %output_bit.exit.i1.i
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB0_37
+	blez	$a2, .LBB0_37
 # %bb.32:                               # %.lr.ph.split.i.i.preheader
-	pcalau12i	$a4, %got_pc_hi20(ari)
-	ld.d	$a4, $a4, %got_pc_lo12(ari)
+	pcalau12i	$a3, %got_pc_hi20(ari)
+	ld.d	$a3, $a3, %got_pc_lo12(ari)
+	ori	$a4, $zero, 1
 	b	.LBB0_34
 	.p2align	4, , 16
 .LBB0_33:                               # %output_bit.exit4.i.i
@@ -357,7 +357,7 @@ do_ari:                                 # @do_ari
 	move	$a5, $a2
 	addi.d	$a2, $a2, -1
 	st.d	$a2, $t2, %pc_lo12(bits_to_follow)
-	bge	$a3, $a5, .LBB0_36
+	bge	$a4, $a5, .LBB0_36
 .LBB0_34:                               # %.lr.ph.split.i.i
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$a1, $a1, -1
@@ -365,7 +365,7 @@ do_ari:                                 # @do_ari
 	bnez	$a1, .LBB0_33
 # %bb.35:                               #   in Loop: Header=BB0_34 Depth=1
 	ld.wu	$a1, $a7, %pc_lo12(ari_pos)
-	ld.d	$a2, $a4, 0
+	ld.d	$a2, $a3, 0
 	addi.d	$a5, $a1, 1
 	st.w	$a5, $a7, %pc_lo12(ari_pos)
 	stx.b	$a0, $a2, $a1
@@ -441,9 +441,9 @@ encode_symbol:                          # @encode_symbol
 	ld.d	$a5, $a5, %got_pc_lo12(ari)
 	pcalau12i	$a7, %pc_hi20(ari_pos)
 	pcalau12i	$t0, %pc_hi20(bits_to_follow)
-	ori	$t1, $zero, 1
-	addi.w	$t2, $zero, -258
-	lu32i.d	$t2, 0
+	addi.w	$t1, $zero, -258
+	lu32i.d	$t1, 0
+	ori	$t2, $zero, 1
 	lu12i.w	$t3, 8
 	lu12i.w	$t4, -8
 	ori	$t5, $zero, 2
@@ -493,11 +493,11 @@ encode_symbol:                          # @encode_symbol
 # %bb.9:                                # %output_bit.exit.i
                                         #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$fp, $t0, %pc_lo12(bits_to_follow)
-	bge	$fp, $t1, .LBB1_14
+	bgtz	$fp, .LBB1_14
 	b	.LBB1_2
 	.p2align	4, , 16
 .LBB1_10:                               #   in Loop: Header=BB1_3 Depth=1
-	and	$a6, $a6, $t2
+	and	$a6, $a6, $t1
 	srli.d	$a6, $a6, 1
 	addi.d	$a6, $a6, 128
 	st.w	$a6, $a0, %pc_lo12(buffer)
@@ -507,7 +507,7 @@ encode_symbol:                          # @encode_symbol
 # %bb.11:                               # %output_bit.exit.i9
                                         #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$fp, $t0, %pc_lo12(bits_to_follow)
-	bge	$fp, $t1, .LBB1_18
+	bgtz	$fp, .LBB1_18
 	b	.LBB1_21
 .LBB1_12:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.wu	$t8, $a7, %pc_lo12(ari_pos)
@@ -518,7 +518,7 @@ encode_symbol:                          # @encode_symbol
 	ori	$t8, $zero, 8
 	st.w	$t8, $a3, %pc_lo12(bits_to_go)
 	ld.d	$fp, $t0, %pc_lo12(bits_to_follow)
-	bge	$fp, $t1, .LBB1_14
+	bgtz	$fp, .LBB1_14
 	b	.LBB1_2
 	.p2align	4, , 16
 .LBB1_13:                               # %output_bit.exit4.us.i
@@ -526,11 +526,11 @@ encode_symbol:                          # @encode_symbol
 	move	$s0, $fp
 	addi.d	$fp, $fp, -1
 	st.d	$fp, $t0, %pc_lo12(bits_to_follow)
-	bge	$t1, $s0, .LBB1_1
+	bge	$t2, $s0, .LBB1_1
 .LBB1_14:                               # %.lr.ph.split.us.i
                                         #   Parent Loop BB1_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	and	$a6, $a6, $t2
+	and	$a6, $a6, $t1
 	srli.d	$a6, $a6, 1
 	addi.w	$t8, $t8, -1
 	addi.d	$a6, $a6, 128
@@ -553,7 +553,7 @@ encode_symbol:                          # @encode_symbol
 	ori	$t8, $zero, 8
 	st.w	$t8, $a3, %pc_lo12(bits_to_go)
 	ld.d	$fp, $t0, %pc_lo12(bits_to_follow)
-	bge	$fp, $t1, .LBB1_18
+	bgtz	$fp, .LBB1_18
 	b	.LBB1_21
 	.p2align	4, , 16
 .LBB1_17:                               # %output_bit.exit4.i
@@ -561,7 +561,7 @@ encode_symbol:                          # @encode_symbol
 	move	$s0, $fp
 	addi.d	$fp, $fp, -1
 	st.d	$fp, $t0, %pc_lo12(bits_to_follow)
-	bge	$t1, $s0, .LBB1_20
+	bge	$t2, $s0, .LBB1_20
 .LBB1_18:                               # %.lr.ph.split.i
                                         #   Parent Loop BB1_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2

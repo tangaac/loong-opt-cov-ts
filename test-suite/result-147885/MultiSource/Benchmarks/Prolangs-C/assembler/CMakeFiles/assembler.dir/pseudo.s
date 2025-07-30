@@ -1270,8 +1270,7 @@ PSEUDO_START:                           # @PSEUDO_START
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(OUTPUT_BUFFER)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s4, .LBB8_10
+	bltz	$s4, .LBB8_10
 # %bb.9:
 	st.w	$s4, $s3, 20
 	ld.d	$a0, $sp, 0

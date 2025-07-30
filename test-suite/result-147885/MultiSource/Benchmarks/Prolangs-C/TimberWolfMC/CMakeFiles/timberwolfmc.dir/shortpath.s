@@ -5,8 +5,7 @@
 	.type	shortpath,@function
 shortpath:                              # @shortpath
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_14
+	blez	$a0, .LBB0_14
 # %bb.1:                                # %.lr.ph50.preheader
 	addi.d	$sp, $sp, -144
 	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
@@ -24,6 +23,8 @@ shortpath:                              # @shortpath
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	ori	$a0, $zero, 1
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(numnodes)
 	ld.d	$s3, $a0, %got_pc_lo12(numnodes)
 	pcalau12i	$a0, %got_pc_hi20(pnodeArray)
@@ -33,8 +34,6 @@ shortpath:                              # @shortpath
 	ld.d	$s5, $a0, %got_pc_lo12(gnodeArray)
 	lu12i.w	$a0, 244140
 	ori	$s6, $a0, 2560
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph50
@@ -49,38 +48,37 @@ shortpath:                              # @shortpath
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	alsl.d	$a2, $a3, $a2, 3
 	add.d	$a1, $a1, $a2
-	ld.d	$s1, $a1, 8
+	ld.d	$s8, $a1, 8
 	add.w	$a1, $a0, $fp
 	st.d	$zero, $sp, 48
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_11
+	blez	$a1, .LBB0_11
 # %bb.3:                                # %.lr.ph
                                         #   in Loop: Header=BB0_2 Depth=1
-	move	$s2, $zero
+	move	$s1, $zero
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	add.w	$s0, $a0, $a1
 	slli.d	$a1, $s0, 3
 	alsl.d	$a1, $s0, $a1, 2
-	add.d	$a1, $s1, $a1
+	add.d	$a1, $s8, $a1
 	addi.d	$s4, $a1, 8
-	addi.d	$s7, $s1, 16
+	addi.d	$s2, $s8, 16
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a0, $a0, 31, 0
-	addi.d	$s8, $a0, -1
+	addi.d	$s7, $a0, -1
 	b	.LBB0_5
 	.p2align	4, , 16
 .LBB0_4:                                #   in Loop: Header=BB0_5 Depth=2
-	st.w	$a0, $s7, 0
+	st.w	$a0, $s2, 0
 	ld.w	$a0, $s3, 0
 	add.w	$a0, $a0, $fp
-	addi.d	$s2, $s2, 1
-	addi.d	$s7, $s7, 12
-	bge	$s2, $a0, .LBB0_11
+	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 12
+	bge	$s1, $a0, .LBB0_11
 .LBB0_5:                                #   Parent Loop BB0_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $s6
-	bne	$s8, $s2, .LBB0_4
+	bne	$s7, $s1, .LBB0_4
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=2
 	addi.d	$a0, $sp, 48
 	move	$a1, $zero
@@ -96,25 +94,25 @@ shortpath:                              # @shortpath
 	ld.w	$a0, $sp, 32
 	ld.d	$a1, $s5, 0
 	slli.d	$a0, $a0, 3
-	ldx.d	$s2, $a1, $a0
-	bnez	$s2, .LBB0_9
+	ldx.d	$s1, $a1, $a0
+	bnez	$s1, .LBB0_9
 	b	.LBB0_11
 	.p2align	4, , 16
 .LBB0_8:                                #   in Loop: Header=BB0_9 Depth=3
-	ld.d	$s2, $s2, 32
-	beqz	$s2, .LBB0_11
+	ld.d	$s1, $s1, 32
+	beqz	$s1, .LBB0_11
 .LBB0_9:                                # %.lr.ph45
                                         #   Parent Loop BB0_2 Depth=1
                                         #     Parent Loop BB0_11 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$s0, $s2, 0
-	ld.w	$s4, $s2, 8
+	ld.w	$s0, $s1, 0
+	ld.w	$s2, $s1, 8
 	slli.d	$a0, $s0, 3
 	alsl.d	$a0, $s0, $a0, 2
-	add.d	$s7, $s1, $a0
+	add.d	$s4, $s8, $a0
 	ld.w	$a0, $sp, 36
-	ld.w	$a1, $s7, 4
-	add.w	$a0, $a0, $s4
+	ld.w	$a1, $s4, 4
+	add.w	$a0, $a0, $s2
 	bge	$a0, $a1, .LBB0_8
 # %bb.10:                               #   in Loop: Header=BB0_9 Depth=3
 	addi.d	$a0, $sp, 48
@@ -122,16 +120,16 @@ shortpath:                              # @shortpath
 	pcaddu18i	$ra, %call36(tdelete)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 36
-	add.w	$a1, $a0, $s4
+	add.w	$a1, $a0, $s2
 	addi.d	$a0, $sp, 48
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 36
-	add.d	$a0, $a0, $s4
-	st.w	$a0, $s7, 4
+	add.d	$a0, $a0, $s2
+	st.w	$a0, $s4, 4
 	ld.h	$a0, $sp, 32
-	st.h	$a0, $s7, 8
+	st.h	$a0, $s4, 8
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_11:                               # %.loopexit

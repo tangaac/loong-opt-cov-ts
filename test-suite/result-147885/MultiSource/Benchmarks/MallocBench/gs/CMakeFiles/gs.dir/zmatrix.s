@@ -91,8 +91,7 @@ ztranslate:                             # @ztranslate
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(write_matrix)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB3_3
+	bltz	$a0, .LBB3_3
 # %bb.1:
 	ld.d	$s0, $fp, 0
 	addi.d	$a0, $fp, -16
@@ -158,8 +157,7 @@ zscale:                                 # @zscale
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(write_matrix)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB4_3
+	bltz	$a0, .LBB4_3
 # %bb.1:
 	ld.d	$s0, $fp, 0
 	addi.d	$a0, $fp, -16
@@ -226,8 +224,7 @@ zrotate:                                # @zrotate
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(write_matrix)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB5_3
+	bltz	$a0, .LBB5_3
 # %bb.1:
 	ld.d	$s1, $fp, 0
 	addi.d	$s0, $fp, -16
@@ -407,8 +404,7 @@ ztransform:                             # @ztransform
 	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(gs_point_transform)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB8_13
+	bltz	$a0, .LBB8_13
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -528,8 +524,7 @@ common_transform:                       # @common_transform
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 104
 	jirl	$ra, $s0, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB9_13
+	bltz	$a0, .LBB9_13
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -650,8 +645,7 @@ zdtransform:                            # @zdtransform
 	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(gs_distance_transform)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_13
+	bltz	$a0, .LBB10_13
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -770,8 +764,7 @@ zitransform:                            # @zitransform
 	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(gs_point_transform_inverse)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_13
+	bltz	$a0, .LBB11_13
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -890,8 +883,7 @@ zidtransform:                           # @zidtransform
 	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(gs_distance_transform_inverse)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB12_13
+	bltz	$a0, .LBB12_13
 # %bb.5:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)

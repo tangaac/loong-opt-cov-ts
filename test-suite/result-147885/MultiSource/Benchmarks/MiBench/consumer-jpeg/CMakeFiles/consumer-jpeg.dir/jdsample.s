@@ -51,25 +51,23 @@ jinit_upsampler:                        # @jinit_upsampler
 	slt	$a0, $a1, $a0
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 48
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB0_5
+	bgtz	$a0, .LBB0_5
 	b	.LBB0_28
 .LBB0_4:
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	ld.w	$a0, $fp, 48
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_28
+	blez	$a0, .LBB0_28
 .LBB0_5:                                # %.lr.ph
 	ld.d	$a0, $fp, 296
-	move	$s3, $zero
-	addi.d	$s4, $s0, 104
+	move	$s2, $zero
+	addi.d	$s3, $s0, 104
 	addi.d	$a1, $s0, 24
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$s6, $a0, 36
-	ori	$s2, $zero, 232
-	ori	$s7, $zero, 192
+	addi.d	$s5, $a0, 36
+	ori	$s8, $zero, 232
+	ori	$s6, $zero, 192
 	pcalau12i	$a0, %pc_hi20(noop_upsample)
-	addi.d	$s8, $a0, %pc_lo12(noop_upsample)
+	addi.d	$s7, $a0, %pc_lo12(noop_upsample)
 	pcalau12i	$a0, %pc_hi20(fullsize_upsample)
 	addi.d	$s1, $a0, %pc_lo12(fullsize_upsample)
 	pcalau12i	$a0, %pc_hi20(h2v1_fancy_upsample)
@@ -86,13 +84,13 @@ jinit_upsampler:                        # @jinit_upsampler
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB0_10
 .LBB0_6:                                #   in Loop: Header=BB0_10 Depth=1
-	add.d	$a0, $s0, $s3
+	add.d	$a0, $s0, $s2
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 .LBB0_7:                                #   in Loop: Header=BB0_10 Depth=1
 	st.d	$a1, $a0, 104
 .LBB0_8:                                #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a0, $fp, 8
-	ld.d	$s5, $a0, 16
+	ld.d	$s4, $a0, 16
 	ld.wu	$a0, $fp, 128
 	ld.w	$a1, $fp, 388
 	pcaddu18i	$ra, %call36(jround_up)
@@ -101,38 +99,38 @@ jinit_upsampler:                        # @jinit_upsampler
 	addi.w	$a2, $a0, 0
 	ori	$a1, $zero, 1
 	move	$a0, $fp
-	jirl	$ra, $s5, 0
+	jirl	$ra, $s4, 0
 	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
 .LBB0_9:                                # %.critedge
                                         #   in Loop: Header=BB0_10 Depth=1
-	stx.d	$a0, $a6, $s3
+	stx.d	$a0, $a6, $s2
 	ld.w	$a0, $fp, 48
-	addi.d	$s3, $s3, 8
-	addi.d	$s6, $s6, 96
-	addi.d	$a1, $s2, -231
-	addi.d	$s2, $s2, 1
-	addi.d	$s7, $s7, 4
+	addi.d	$s2, $s2, 8
+	addi.d	$s5, $s5, 96
+	addi.d	$a1, $s8, -231
+	addi.d	$s8, $s8, 1
+	addi.d	$s6, $s6, 4
 	bge	$a1, $a0, .LBB0_28
 .LBB0_10:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $s6, 0
-	ld.w	$a0, $s6, -24
+	ld.w	$a4, $s5, 0
+	ld.w	$a0, $s5, -24
 	ld.w	$a5, $fp, 396
-	ld.w	$a7, $s6, -28
+	ld.w	$a7, $s5, -28
 	mul.w	$a0, $a0, $a4
 	div.w	$a1, $a0, $a5
 	ld.w	$a3, $fp, 388
 	ld.w	$a2, $fp, 392
-	stx.w	$a1, $s0, $s7
-	ld.w	$t0, $s6, 12
-	move	$a6, $s4
-	move	$a0, $s8
+	stx.w	$a1, $s0, $s6
+	ld.w	$t0, $s5, 12
+	move	$a6, $s3
+	move	$a0, $s7
 	beqz	$t0, .LBB0_9
 # %bb.11:                               #   in Loop: Header=BB0_10 Depth=1
 	mul.w	$a0, $a4, $a7
 	div.w	$a4, $a0, $a5
 	bne	$a4, $a3, .LBB0_13
 # %bb.12:                               #   in Loop: Header=BB0_10 Depth=1
-	move	$a6, $s4
+	move	$a6, $s3
 	move	$a0, $s1
 	beq	$a1, $a2, .LBB0_9
 .LBB0_13:                               #   in Loop: Header=BB0_10 Depth=1
@@ -144,11 +142,11 @@ jinit_upsampler:                        # @jinit_upsampler
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_6
 # %bb.16:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.w	$a0, $s6, 4
+	ld.w	$a0, $s5, 4
 	ori	$a1, $zero, 3
 	bltu	$a0, $a1, .LBB0_6
 # %bb.17:                               #   in Loop: Header=BB0_10 Depth=1
-	add.d	$a0, $s0, $s3
+	add.d	$a0, $s0, $s2
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB0_7
 .LBB0_18:                               #   in Loop: Header=BB0_10 Depth=1
@@ -160,11 +158,11 @@ jinit_upsampler:                        # @jinit_upsampler
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_26
 # %bb.21:                               #   in Loop: Header=BB0_10 Depth=1
-	ld.w	$a0, $s6, 4
+	ld.w	$a0, $s5, 4
 	ori	$a1, $zero, 3
 	bltu	$a0, $a1, .LBB0_26
 # %bb.22:                               #   in Loop: Header=BB0_10 Depth=1
-	add.d	$a0, $s0, $s3
+	add.d	$a0, $s0, $s2
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a1, $a0, 104
 	ori	$a0, $zero, 1
@@ -189,16 +187,16 @@ jinit_upsampler:                        # @jinit_upsampler
 	jirl	$ra, $a1, 0
 	b	.LBB0_8
 .LBB0_26:                               #   in Loop: Header=BB0_10 Depth=1
-	add.d	$a0, $s0, $s3
+	add.d	$a0, $s0, $s2
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB0_7
 .LBB0_27:                               #   in Loop: Header=BB0_10 Depth=1
-	add.d	$a1, $s0, $s3
+	add.d	$a1, $s0, $s2
 	pcalau12i	$a2, %pc_hi20(int_upsample)
 	addi.d	$a2, $a2, %pc_lo12(int_upsample)
 	st.d	$a2, $a1, 104
-	add.d	$a1, $s0, $s2
-	stx.b	$a0, $s0, $s2
+	add.d	$a1, $s0, $s8
+	stx.b	$a0, $s0, $s8
 	st.b	$a3, $a1, 10
 	b	.LBB0_8
 .LBB0_28:                               # %._crit_edge
@@ -257,8 +255,7 @@ sep_upsample:                           # @sep_upsample
 # %bb.1:
 	move	$s2, $a1
 	ld.w	$a1, $s0, 48
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_5
+	blez	$a1, .LBB2_5
 # %bb.2:                                # %.lr.ph
 	st.d	$a6, $sp, 0                     # 8-byte Folded Spill
 	move	$s6, $a4
@@ -396,8 +393,7 @@ fullsize_upsample:                      # @fullsize_upsample
 h2v1_fancy_upsample:                    # @h2v1_fancy_upsample
 # %bb.0:
 	ld.w	$a4, $a0, 392
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB5_17
+	blez	$a4, .LBB5_17
 # %bb.1:                                # %.lr.ph42
 	addi.d	$sp, $sp, -112
 	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
@@ -677,8 +673,7 @@ h2v1_fancy_upsample:                    # @h2v1_fancy_upsample
 h2v1_upsample:                          # @h2v1_upsample
 # %bb.0:
 	ld.w	$a6, $a0, 392
-	ori	$a1, $zero, 1
-	blt	$a6, $a1, .LBB6_13
+	blez	$a6, .LBB6_13
 # %bb.1:                                # %.lr.ph22
 	ld.d	$a1, $a3, 0
 	move	$a3, $zero
@@ -807,8 +802,7 @@ h2v1_upsample:                          # @h2v1_upsample
 h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 # %bb.0:
 	ld.w	$a4, $a0, 392
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB7_31
+	blez	$a4, .LBB7_31
 # %bb.1:                                # %.preheader.lr.ph
 	addi.d	$sp, $sp, -160
 	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
@@ -1501,8 +1495,7 @@ h2v2_upsample:                          # @h2v2_upsample
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 392
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_14
+	blez	$a0, .LBB8_14
 # %bb.1:                                # %.lr.ph30
 	move	$s0, $a2
 	ld.d	$s1, $a3, 0
@@ -1639,9 +1632,8 @@ int_upsample:                           # @int_upsample
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 392
-	ori	$a4, $zero, 1
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	blt	$a0, $a4, .LBB9_16
+	blez	$a0, .LBB9_16
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $fp, 592
 	ld.w	$a1, $a1, 4

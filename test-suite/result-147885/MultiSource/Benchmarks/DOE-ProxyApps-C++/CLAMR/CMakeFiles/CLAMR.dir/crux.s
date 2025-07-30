@@ -43,9 +43,8 @@ _ZN4CruxC2Eiib:                         # @_ZN4CruxC2Eiib
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(crux_data)
-	ori	$a2, $zero, 1
 	st.d	$a0, $a1, %pc_lo12(crux_data)
-	blt	$s0, $a2, .LBB0_8
+	blez	$s0, .LBB0_8
 # %bb.6:                                # %.lr.ph.preheader
 	move	$a0, $zero
 	.p2align	4, , 16
@@ -108,38 +107,35 @@ _ZN4CruxD2Ev:                           # @_ZN4CruxD2Ev
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 0                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 8                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
-	.cfi_offset 56, -56
-	.cfi_offset 57, -64
+	.cfi_offset 56, -48
+	.cfi_offset 57, -56
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$s0, $zero, 1
-	pcalau12i	$s1, %pc_hi20(crux_data)
-	blt	$a0, $s0, .LBB1_3
+	pcalau12i	$s0, %pc_hi20(crux_data)
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
+	move	$s1, $zero
 	move	$s2, $zero
-	move	$s3, $zero
 	.p2align	4, , 16
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, %pc_lo12(crux_data)
-	ldx.d	$a0, $a0, $s2
+	ld.d	$a0, $s0, %pc_lo12(crux_data)
+	ldx.d	$a0, $a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$s2, $s2, 8
-	blt	$s3, $a0, .LBB1_2
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 8
+	blt	$s2, $a0, .LBB1_2
 .LBB1_3:                                # %._crit_edge
-	ld.d	$a0, $s1, %pc_lo12(crux_data)
+	ld.d	$a0, $s0, %pc_lo12(crux_data)
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(crux_data_size)
@@ -148,7 +144,7 @@ _ZN4CruxD2Ev:                           # @_ZN4CruxD2Ev
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(do_crux_timing)
 	ld.bu	$a0, $a0, %pc_lo12(do_crux_timing)
-	bne	$a0, $s0, .LBB1_6
+	beqz	$a0, .LBB1_6
 # %bb.4:                                # %._crit_edge
 	pcalau12i	$s0, %pc_hi20(checkpoint_timing_count)
 	ld.w	$a0, $s0, %pc_lo12(checkpoint_timing_count)
@@ -197,9 +193,8 @@ _ZN4CruxD2Ev:                           # @_ZN4CruxD2Ev
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, %pc_lo12(crux_time_fp)
-	fld.d	$fs1, $sp, 0                    # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -209,9 +204,8 @@ _ZN4CruxD2Ev:                           # @_ZN4CruxD2Ev
 	pcaddu18i	$t8, %call36(fclose)
 	jr	$t8
 .LBB1_6:
-	fld.d	$fs1, $sp, 0                    # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
@@ -530,8 +524,7 @@ _ZN4Crux11store_beginEmi:               # @_ZN4Crux11store_beginEmi
 .LBB8_5:
 	pcalau12i	$a0, %pc_hi20(do_crux_timing)
 	ld.bu	$a0, $a0, %pc_lo12(do_crux_timing)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_7
+	beqz	$a0, .LBB8_7
 .LBB8_6:
 	srli.d	$a0, $fp, 1
 	andi	$a1, $fp, 1
@@ -605,8 +598,7 @@ _ZN4Crux11store_beginEmi:               # @_ZN4Crux11store_beginEmi
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(do_crux_timing)
 	ld.bu	$a0, $a0, %pc_lo12(do_crux_timing)
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB8_6
+	bnez	$a0, .LBB8_6
 	b	.LBB8_7
 .Lfunc_end8:
 	.size	_ZN4Crux11store_beginEmi, .Lfunc_end8-_ZN4Crux11store_beginEmi
@@ -901,8 +893,7 @@ _ZN4Crux9store_endEv:                   # @_ZN4Crux9store_endEv
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(do_crux_timing)
 	ld.bu	$a0, $a0, %pc_lo12(do_crux_timing)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB20_2
+	beqz	$a0, .LBB20_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(crux_time_fp)
 	ld.d	$a0, $a0, %pc_lo12(crux_time_fp)
@@ -1656,8 +1647,7 @@ _ZN4Crux11restore_endEv:                # @_ZN4Crux11restore_endEv
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(do_crux_timing)
 	ld.bu	$a0, $a0, %pc_lo12(do_crux_timing)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB33_5
+	beqz	$a0, .LBB33_5
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(restore_type)
 	ld.w	$a0, $a0, %pc_lo12(restore_type)

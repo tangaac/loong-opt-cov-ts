@@ -72,7 +72,6 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 	move	$a3, $s8
 	move	$a4, $s6
 	move	$a5, $s5
-	ori	$s5, $zero, 1
 	move	$a6, $s4
 	pcaddu18i	$ra, %call36(hypre_CommPkgCreateInfo)
 	jirl	$ra, $ra, 0
@@ -85,7 +84,7 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 	st.d	$a1, $fp, 24
 	st.d	$a2, $fp, 40
 	st.d	$a3, $fp, 72
-	blt	$a4, $s5, .LBB0_3
+	blez	$a4, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	move	$s4, $s2
@@ -108,7 +107,7 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 8
-	blt	$a0, $s5, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.4:                                # %.lr.ph75.preheader
 	move	$s0, $zero
 	move	$s2, $s8
@@ -153,10 +152,9 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 	pcaddu18i	$ra, %call36(hypre_CommTypeBuildMPI)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 8
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB0_19
+	blez	$a0, .LBB0_19
 # %bb.7:                                # %.lr.ph79.preheader
-	move	$s2, $zero
+	move	$s1, $zero
 	b	.LBB0_11
 	.p2align	4, , 16
 .LBB0_8:                                # %.loopexit.loopexit.i
@@ -173,13 +171,13 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 	ld.w	$a0, $fp, 8
 .LBB0_10:                               # %hypre_CommTypeDestroy.exit
                                         #   in Loop: Header=BB0_11 Depth=1
-	addi.d	$s2, $s2, 1
-	bge	$s2, $a0, .LBB0_19
+	addi.d	$s1, $s1, 1
+	bge	$s1, $a0, .LBB0_19
 .LBB0_11:                               # %.lr.ph79
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_16 Depth 2
 	ld.d	$a1, $fp, 32
-	slli.d	$a2, $s2, 3
+	slli.d	$a2, $s1, 3
 	ldx.d	$s0, $a1, $a2
 	beqz	$s0, .LBB0_10
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=1
@@ -188,23 +186,23 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 # %bb.13:                               # %.preheader.i
                                         #   in Loop: Header=BB0_11 Depth=1
 	ld.w	$a1, $s0, 8
-	blt	$a1, $s1, .LBB0_9
+	blez	$a1, .LBB0_9
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_11 Depth=1
+	move	$s2, $zero
 	move	$s3, $zero
-	move	$s4, $zero
 	b	.LBB0_16
 	.p2align	4, , 16
 .LBB0_15:                               # %hypre_CommTypeEntryDestroy.exit.i
                                         #   in Loop: Header=BB0_16 Depth=2
-	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 8
-	bge	$s4, $a1, .LBB0_8
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 8
+	bge	$s3, $a1, .LBB0_8
 .LBB0_16:                               # %.lr.ph.i
                                         #   Parent Loop BB0_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s0, 0
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s2
 	beqz	$a0, .LBB0_15
 # %bb.17:                               #   in Loop: Header=BB0_16 Depth=2
 	pcaddu18i	$ra, %call36(hypre_Free)
@@ -221,10 +219,9 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 12
 	st.d	$zero, $fp, 32
-	blt	$a0, $s1, .LBB0_32
+	blez	$a0, .LBB0_32
 # %bb.20:                               # %.lr.ph83.preheader
 	move	$s1, $zero
-	ori	$s2, $zero, 1
 	b	.LBB0_24
 	.p2align	4, , 16
 .LBB0_21:                               # %.loopexit.loopexit.i69
@@ -256,23 +253,23 @@ hypre_CommPkgCreate:                    # @hypre_CommPkgCreate
 # %bb.26:                               # %.preheader.i61
                                         #   in Loop: Header=BB0_24 Depth=1
 	ld.w	$a1, $s0, 8
-	blt	$a1, $s2, .LBB0_22
+	blez	$a1, .LBB0_22
 # %bb.27:                               # %.lr.ph.i63.preheader
                                         #   in Loop: Header=BB0_24 Depth=1
+	move	$s2, $zero
 	move	$s3, $zero
-	move	$s4, $zero
 	b	.LBB0_29
 	.p2align	4, , 16
 .LBB0_28:                               # %hypre_CommTypeEntryDestroy.exit.i67
                                         #   in Loop: Header=BB0_29 Depth=2
-	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 8
-	bge	$s4, $a1, .LBB0_21
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 8
+	bge	$s3, $a1, .LBB0_21
 .LBB0_29:                               # %.lr.ph.i63
                                         #   Parent Loop BB0_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s0, 0
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s2
 	beqz	$a0, .LBB0_28
 # %bb.30:                               #   in Loop: Header=BB0_29 Depth=2
 	pcaddu18i	$ra, %call36(hypre_Free)
@@ -329,7 +326,7 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	move	$s4, $a3
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	move	$s3, $a0
+	move	$s2, $a0
 	addi.d	$a1, $sp, 132
 	move	$a0, $a5
 	pcaddu18i	$ra, %call36(hypre_MPI_Comm_size)
@@ -342,20 +339,19 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.w	$a4, $s3, 8
-	ori	$fp, $zero, 1
+	ld.w	$a4, $s2, 8
 	move	$s1, $a0
-	blt	$a4, $fp, .LBB1_9
+	blez	$a4, .LBB1_9
 # %bb.1:                                # %.lr.ph164
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	move	$a1, $zero
-	move	$s2, $zero
+	move	$fp, $zero
 	addi.w	$a2, $zero, -1
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                # %._crit_edge.loopexit
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.w	$a4, $s3, 8
+	ld.w	$a4, $s2, 8
 .LBB1_3:                                # %._crit_edge
                                         #   in Loop: Header=BB1_4 Depth=1
 	addi.d	$a1, $a1, 1
@@ -365,7 +361,7 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	slli.d	$a3, $a1, 3
 	ldx.d	$a3, $a0, $a3
 	ld.w	$t0, $a3, 8
-	blt	$t0, $fp, .LBB1_3
+	blez	$t0, .LBB1_3
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB1_4 Depth=1
 	ld.d	$a7, $a3, 0
@@ -418,10 +414,10 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	ld.w	$t0, $a3, 8
 	sltu	$t1, $zero, $t1
 	and	$t1, $t2, $t1
-	add.w	$s2, $s2, $t1
+	add.w	$fp, $fp, $t1
 	b	.LBB1_6
 .LBB1_9:
-	move	$s2, $zero
+	move	$fp, $zero
 .LBB1_10:                               # %._crit_edge165
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a0, $sp, 132
@@ -429,27 +425,27 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	slli.w	$a0, $s2, 2
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	slli.w	$a0, $fp, 2
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s3, 8
+	ld.w	$a1, $s2, 8
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $fp, .LBB1_22
+	blez	$a1, .LBB1_22
 # %bb.11:                               # %.lr.ph177.preheader
 	move	$a4, $zero
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	addi.w	$s5, $zero, -1
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB1_14
 	.p2align	4, , 16
 .LBB1_12:                               # %._crit_edge171.loopexit
                                         #   in Loop: Header=BB1_14 Depth=1
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.w	$a1, $s3, 8
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a1, $s2, 8
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
 .LBB1_13:                               # %._crit_edge171
@@ -485,7 +481,7 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 .LBB1_14:                               # %.lr.ph177
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_18 Depth 2
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	slli.d	$a2, $a4, 3
 	ldx.d	$s8, $a0, $a2
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
@@ -495,9 +491,8 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	alsl.d	$a3, $a4, $a3, 3
 	add.d	$a0, $a0, $a3
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	ori	$a0, $zero, 1
 	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
-	blt	$a2, $a0, .LBB1_13
+	blez	$a2, .LBB1_13
 # %bb.15:                               # %.lr.ph170
                                         #   in Loop: Header=BB1_14 Depth=1
 	move	$s2, $zero
@@ -586,10 +581,9 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	slli.w	$a0, $s8, 3
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	blt	$s8, $a1, .LBB1_25
+	blez	$s8, .LBB1_25
 # %bb.23:                               # %.lr.ph181.preheader
 	move	$s0, $s8
 	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
@@ -730,8 +724,7 @@ hypre_CommTypeDestroy:                  # @hypre_CommTypeDestroy
 	beqz	$a0, .LBB3_8
 # %bb.2:                                # %.preheader
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_9
+	blez	$a1, .LBB3_9
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	move	$s1, $zero
@@ -793,8 +786,7 @@ hypre_CommPkgDestroy:                   # @hypre_CommPkgDestroy
 	beqz	$s0, .LBB4_6
 # %bb.2:                                # %.preheader22.i
 	ld.w	$a0, $fp, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_5
+	blez	$a0, .LBB4_5
 # %bb.3:                                # %.lr.ph.i.preheader
 	move	$s2, $zero
 	move	$s1, $s0
@@ -817,8 +809,7 @@ hypre_CommPkgDestroy:                   # @hypre_CommPkgDestroy
 	beqz	$s0, .LBB4_11
 # %bb.7:                                # %.preheader.i
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_10
+	blez	$a0, .LBB4_10
 # %bb.8:                                # %.lr.ph25.i.preheader
 	move	$s2, $zero
 	move	$s1, $s0
@@ -852,8 +843,7 @@ hypre_CommPkgDestroy:                   # @hypre_CommPkgDestroy
 	beqz	$a0, .LBB4_19
 # %bb.13:                               # %.preheader.i10
 	ld.w	$a1, $s0, 8
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_20
+	blez	$a1, .LBB4_20
 # %bb.14:                               # %.lr.ph.i11.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -894,8 +884,7 @@ hypre_CommPkgDestroy:                   # @hypre_CommPkgDestroy
 	beqz	$a0, .LBB4_29
 # %bb.23:                               # %.preheader.i16
 	ld.w	$a1, $s0, 8
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_30
+	blez	$a1, .LBB4_30
 # %bb.24:                               # %.lr.ph.i18.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -962,8 +951,7 @@ hypre_CommPkgUnCommit:                  # @hypre_CommPkgUnCommit
 	beqz	$s0, .LBB5_6
 # %bb.2:                                # %.preheader22
 	ld.w	$a0, $fp, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_5
+	blez	$a0, .LBB5_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	move	$s1, $s0
@@ -986,8 +974,7 @@ hypre_CommPkgUnCommit:                  # @hypre_CommPkgUnCommit
 	beqz	$s0, .LBB5_11
 # %bb.7:                                # %.preheader
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_10
+	blez	$a0, .LBB5_10
 # %bb.8:                                # %.lr.ph25.preheader
 	move	$s2, $zero
 	move	$s1, $s0
@@ -1052,34 +1039,32 @@ hypre_InitializeCommunication:          # @hypre_InitializeCommunication
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	blt	$s8, $a1, .LBB6_4
+	blez	$s8, .LBB6_4
 # %bb.1:                                # %.lr.ph
-	move	$s6, $zero
-	slli.d	$fp, $s8, 2
+	move	$fp, $zero
+	slli.d	$s6, $s8, 2
 	.p2align	4, , 16
 .LBB6_2:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 56
 	ld.d	$a1, $s0, 24
-	ldx.w	$a2, $a0, $s6
-	ldx.w	$a3, $a1, $s6
-	add.d	$a6, $s4, $s6
+	ldx.w	$a2, $a0, $fp
+	ldx.w	$a3, $a1, $fp
+	add.d	$a6, $s4, $fp
 	ori	$a1, $zero, 1
 	move	$a0, $s1
 	move	$a4, $zero
 	move	$a5, $s5
 	pcaddu18i	$ra, %call36(hypre_MPI_Irecv)
 	jirl	$ra, $ra, 0
-	addi.d	$s6, $s6, 4
-	bne	$fp, $s6, .LBB6_2
-# %bb.3:                                # %.preheader.loopexit
-	ori	$a1, $zero, 1
-	bge	$s7, $a1, .LBB6_5
+	addi.d	$fp, $fp, 4
+	bne	$s6, $fp, .LBB6_2
+# %bb.3:                                # %.preheader
+	bgtz	$s7, .LBB6_5
 	b	.LBB6_7
 .LBB6_4:
 	move	$s8, $zero
-	blt	$s7, $a1, .LBB6_7
+	blez	$s7, .LBB6_7
 .LBB6_5:                                # %.lr.ph52
 	move	$fp, $zero
 	slli.d	$s7, $s7, 2
@@ -1153,9 +1138,8 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a3, $a0, 64
 	ld.w	$a4, $a3, 8
-	ori	$a5, $zero, 1
 	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
-	blt	$a4, $a5, .LBB7_22
+	blez	$a4, .LBB7_22
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $a0, 72
 	move	$a4, $zero
@@ -1167,7 +1151,7 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a0, $a1, 16
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	ori	$t1, $zero, 4
+	ori	$t0, $zero, 4
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_2:                                # %.loopexit
@@ -1188,82 +1172,78 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
 	ldx.d	$a3, $a3, $a0
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	ldx.d	$a0, $a4, $a0
-	ld.w	$t2, $a3, 24
-	ld.w	$t3, $a0, 24
-	alsl.d	$t4, $t2, $a1, 3
-	alsl.d	$t5, $t3, $a2, 3
-	beq	$t5, $t4, .LBB7_2
+	ld.w	$t1, $a3, 24
+	ld.w	$t2, $a0, 24
+	alsl.d	$t3, $t1, $a1, 3
+	alsl.d	$t4, $t2, $a2, 3
+	beq	$t4, $t3, .LBB7_2
 # %bb.4:                                #   in Loop: Header=BB7_3 Depth=1
-	ld.w	$a5, $a3, 44
-	ori	$a4, $zero, 1
-	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
-	blt	$a5, $a4, .LBB7_2
+	ld.w	$a4, $a3, 44
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
+	blez	$a4, .LBB7_2
 # %bb.5:                                # %.preheader58.lr.ph
                                         #   in Loop: Header=BB7_3 Depth=1
-	ld.w	$a5, $a3, 40
-	ori	$a4, $zero, 1
-	st.d	$a5, $sp, 112                   # 8-byte Folded Spill
-	blt	$a5, $a4, .LBB7_2
+	ld.w	$a4, $a3, 40
+	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
+	blez	$a4, .LBB7_2
 # %bb.6:                                # %.preheader58.lr.ph.split.us
                                         #   in Loop: Header=BB7_3 Depth=1
-	ld.w	$t8, $a3, 36
-	ori	$a4, $zero, 1
-	blt	$t8, $a4, .LBB7_2
+	ld.w	$t7, $a3, 36
+	blez	$t7, .LBB7_2
 # %bb.7:                                # %.preheader58.lr.ph.split.us.split.us
                                         #   in Loop: Header=BB7_3 Depth=1
-	ld.w	$fp, $a3, 32
-	ori	$a4, $zero, 1
-	blt	$fp, $a4, .LBB7_2
+	ld.w	$t8, $a3, 32
+	blez	$t8, .LBB7_2
 # %bb.8:                                # %.preheader58.lr.ph.split.us.split.us.split.us
                                         #   in Loop: Header=BB7_3 Depth=1
-	move	$t7, $zero
-	move	$s4, $zero
+	move	$t6, $zero
+	move	$s3, $zero
 	move	$a7, $zero
 	ld.w	$a4, $a3, 60
 	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
 	ld.w	$a4, $a3, 56
 	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
-	ld.w	$s5, $a3, 52
+	ld.w	$s4, $a3, 52
 	ld.w	$a4, $a0, 60
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a4, $a3, 48
 	ld.w	$a3, $a0, 56
 	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
-	ld.w	$a5, $a0, 48
-	ld.w	$s8, $a0, 52
+	ld.w	$a6, $a0, 48
+	ld.w	$s7, $a0, 52
 	addi.d	$a0, $a4, -1
 	sltu	$a0, $zero, $a0
-	addi.d	$a3, $a5, -1
+	addi.d	$a3, $a6, -1
 	sltu	$a3, $zero, $a3
-	or	$ra, $a3, $a0
-	bstrpick.d	$a0, $fp, 30, 2
-	slli.d	$a6, $a0, 2
-	mul.d	$a0, $a6, $a5
+	or	$s8, $a3, $a0
+	bstrpick.d	$a0, $t8, 30, 2
+	slli.d	$a3, $a0, 2
+	mul.d	$a0, $a3, $a6
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	mul.d	$a0, $a6, $a4
+	mul.d	$a0, $a3, $a4
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	alsl.d	$a0, $t3, $a0, 3
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	slli.d	$a3, $a5, 5
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	alsl.d	$a0, $t2, $a0, 3
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	slli.d	$a5, $a6, 5
+	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
+	alsl.d	$a0, $t1, $a0, 3
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	slli.d	$s3, $a4, 5
-	slli.d	$s6, $a5, 3
-	slli.d	$t6, $a4, 3
+	slli.d	$s2, $a4, 5
+	slli.d	$s5, $a6, 3
+	slli.d	$t5, $a4, 3
 	b	.LBB7_10
 	.p2align	4, , 16
 .LBB7_9:                                # %._crit_edge.split.us.split.us.us.us.us
                                         #   in Loop: Header=BB7_10 Depth=2
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
 	addi.w	$a7, $a7, 1
-	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	add.w	$s4, $s4, $a0
-	ld.d	$t7, $sp, 88                    # 8-byte Folded Reload
+	add.w	$s3, $s3, $a0
+	ld.d	$t6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	add.w	$t7, $t7, $a0
+	add.w	$t6, $t6, $a0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	beq	$a7, $a0, .LBB7_2
 .LBB7_10:                               # %.preheader58.us.us.us
@@ -1275,17 +1255,17 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
                                         #           Child Loop BB7_18 Depth 5
 	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
 	move	$a0, $zero
-	st.d	$t7, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$t6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB7_12
 	.p2align	4, , 16
 .LBB7_11:                               # %._crit_edge64.split.us.us.us.us.us.us
                                         #   in Loop: Header=BB7_12 Depth=3
 	addi.w	$a0, $a0, 1
 	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
-	add.w	$s4, $s4, $a4
+	add.w	$s3, $s3, $a4
 	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	add.w	$t7, $t7, $a4
+	add.w	$t6, $t6, $a4
 	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	beq	$a0, $a4, .LBB7_9
 .LBB7_12:                               # %.preheader.us.us.us.us.us
@@ -1295,17 +1275,17 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
                                         #         Child Loop BB7_14 Depth 4
                                         #           Child Loop BB7_20 Depth 5
                                         #           Child Loop BB7_18 Depth 5
-	move	$s2, $zero
-	move	$s0, $t7
-	move	$s1, $s4
+	move	$s1, $zero
+	move	$fp, $t6
+	move	$s0, $s3
 	b	.LBB7_14
 	.p2align	4, , 16
 .LBB7_13:                               # %._crit_edge.us.us.us.us.us.us
                                         #   in Loop: Header=BB7_14 Depth=4
-	addi.w	$s2, $s2, 1
-	add.w	$s1, $s1, $s5
-	add.w	$s0, $s0, $s8
-	beq	$s2, $t8, .LBB7_11
+	addi.w	$s1, $s1, 1
+	add.w	$s0, $s0, $s4
+	add.w	$fp, $fp, $s7
+	beq	$s1, $t7, .LBB7_11
 .LBB7_14:                               # %.lr.ph.us.us.us.us.us.us
                                         #   Parent Loop BB7_3 Depth=1
                                         #     Parent Loop BB7_10 Depth=2
@@ -1313,26 +1293,26 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
                                         # =>      This Loop Header: Depth=4
                                         #           Child Loop BB7_20 Depth 5
                                         #           Child Loop BB7_18 Depth 5
-	bltu	$fp, $t1, .LBB7_16
+	bltu	$t8, $t0, .LBB7_16
 # %bb.15:                               # %vector.scevcheck
                                         #   in Loop: Header=BB7_14 Depth=4
-	add.d	$a4, $t3, $s0
+	add.d	$a4, $t2, $fp
 	alsl.d	$a4, $a4, $a2, 3
-	add.d	$a5, $t2, $s1
-	alsl.d	$a5, $a5, $a1, 3
-	sub.d	$a4, $a4, $a5
+	add.d	$a6, $t1, $s0
+	alsl.d	$a6, $a6, $a1, 3
+	sub.d	$a4, $a4, $a6
 	sltui	$a4, $a4, 32
-	or	$a4, $ra, $a4
+	or	$a4, $s8, $a4
 	beqz	$a4, .LBB7_19
 .LBB7_16:                               #   in Loop: Header=BB7_14 Depth=4
 	move	$a7, $zero
-	move	$s7, $s0
-	move	$t0, $s1
+	move	$s6, $fp
+	move	$a6, $s0
 .LBB7_17:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB7_14 Depth=4
-	alsl.d	$a4, $s7, $t5, 3
-	alsl.d	$a5, $t0, $t4, 3
-	sub.d	$t0, $fp, $a7
+	alsl.d	$a4, $s6, $t4, 3
+	alsl.d	$a6, $a6, $t3, 3
+	sub.d	$a7, $t8, $a7
 	.p2align	4, , 16
 .LBB7_18:                               # %scalar.ph
                                         #   Parent Loop BB7_3 Depth=1
@@ -1340,25 +1320,25 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
                                         #       Parent Loop BB7_12 Depth=3
                                         #         Parent Loop BB7_14 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	fld.d	$fa0, $a5, 0
+	fld.d	$fa0, $a6, 0
 	fst.d	$fa0, $a4, 0
-	add.d	$a4, $a4, $s6
-	addi.w	$t0, $t0, -1
-	add.d	$a5, $a5, $t6
-	bnez	$t0, .LBB7_18
+	add.d	$a4, $a4, $s5
+	addi.w	$a7, $a7, -1
+	add.d	$a6, $a6, $t5
+	bnez	$a7, .LBB7_18
 	b	.LBB7_13
 	.p2align	4, , 16
 .LBB7_19:                               # %vector.ph
                                         #   in Loop: Header=BB7_14 Depth=4
 	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	alsl.d	$a7, $fp, $a4, 3
+	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a4, $s0, $a4, 3
-	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
-	alsl.d	$a5, $s1, $a5, 3
-	ld.d	$a7, $sp, 144                   # 8-byte Folded Reload
-	add.d	$s7, $a7, $s0
-	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-	add.d	$t0, $a7, $s1
-	move	$a7, $a6
+	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
+	add.d	$s6, $a6, $fp
+	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
+	add.d	$a6, $a6, $s0
+	move	$ra, $a3
 	.p2align	4, , 16
 .LBB7_20:                               # %vector.body
                                         #   Parent Loop BB7_3 Depth=1
@@ -1366,18 +1346,18 @@ hypre_ExchangeLocalData:                # @hypre_ExchangeLocalData
                                         #       Parent Loop BB7_12 Depth=3
                                         #         Parent Loop BB7_14 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
-	vst	$vr0, $a4, -16
-	vst	$vr1, $a4, 0
-	addi.d	$a7, $a7, -4
-	add.d	$a4, $a4, $a3
-	add.d	$a5, $a5, $s3
-	bnez	$a7, .LBB7_20
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$ra, $ra, -4
+	add.d	$a7, $a7, $a5
+	add.d	$a4, $a4, $s2
+	bnez	$ra, .LBB7_20
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB7_14 Depth=4
-	move	$a7, $a6
-	beq	$a6, $fp, .LBB7_13
+	move	$a7, $a3
+	beq	$a3, $t8, .LBB7_13
 	b	.LBB7_17
 .LBB7_22:                               # %._crit_edge
 	move	$a0, $zero
@@ -2003,13 +1983,13 @@ hypre_CommTypeBuildMPI:                 # @hypre_CommTypeBuildMPI
 	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	ori	$s8, $zero, 1
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	blt	$a0, $s8, .LBB13_9
+	blez	$a0, .LBB13_9
 # %bb.1:                                # %.lr.ph47.preheader
-	move	$fp, $zero
+	move	$s8, $zero
+	ori	$fp, $zero, 1
 	b	.LBB13_4
 	.p2align	4, , 16
 .LBB13_2:                               # %._crit_edge44.critedge
@@ -2035,14 +2015,14 @@ hypre_CommTypeBuildMPI:                 # @hypre_CommTypeBuildMPI
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
-	addi.d	$fp, $fp, 1
+	addi.d	$s8, $s8, 1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	beq	$fp, $a0, .LBB13_9
+	beq	$s8, $a0, .LBB13_9
 .LBB13_4:                               # %.lr.ph47
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB13_6 Depth 2
                                         #     Child Loop BB13_8 Depth 2
-	slli.d	$a0, $fp, 3
+	slli.d	$a0, $s8, 3
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ldx.d	$s0, $a1, $a0
 	ld.w	$s5, $s0, 8
@@ -2060,8 +2040,8 @@ hypre_CommTypeBuildMPI:                 # @hypre_CommTypeBuildMPI
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	alsl.d	$s1, $fp, $a0, 2
-	blt	$s5, $s8, .LBB13_2
+	alsl.d	$s1, $s8, $a0, 2
+	blez	$s5, .LBB13_2
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB13_4 Depth=1
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
@@ -2077,7 +2057,7 @@ hypre_CommTypeBuildMPI:                 # @hypre_CommTypeBuildMPI
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s0, 0
 	ldx.d	$a0, $a0, $s1
-	st.w	$s8, $s3, 0
+	st.w	$fp, $s3, 0
 	ld.w	$a1, $a0, 24
 	slli.d	$a1, $a1, 3
 	st.w	$a1, $s6, 0

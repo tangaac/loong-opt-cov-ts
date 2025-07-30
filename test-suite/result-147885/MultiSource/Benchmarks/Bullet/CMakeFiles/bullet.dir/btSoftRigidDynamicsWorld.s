@@ -23,13 +23,11 @@ _ZN24btSoftRigidDynamicsWorldC2EP12btDispatcherP21btBroadphaseInterfaceP18btCons
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s1, $a2
 	move	$s2, $a1
 	move	$fp, $a0
@@ -39,17 +37,17 @@ _ZN24btSoftRigidDynamicsWorldC2EP12btDispatcherP21btBroadphaseInterfaceP18btCons
 	addi.d	$a0, $a0, %pc_lo12(_ZTV24btSoftRigidDynamicsWorld+16)
 	st.d	$a0, $fp, 0
 	addi.d	$s0, $fp, 376
-	ori	$s3, $zero, 1
-	st.b	$s3, $fp, 400
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 400
 	st.d	$zero, $fp, 392
 	st.d	$zero, $fp, 380
-	st.b	$s3, $fp, 504
+	st.b	$a0, $fp, 504
 	st.d	$zero, $fp, 496
 	st.d	$zero, $fp, 484
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 206
-	st.w	$a0, $fp, 408
-	st.h	$s3, $fp, 412
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 206
+	st.w	$a1, $fp, 408
+	st.h	$a0, $fp, 412
 	st.b	$zero, $fp, 414
 	st.d	$s1, $fp, 448
 	st.d	$s2, $fp, 456
@@ -61,7 +59,7 @@ _ZN24btSoftRigidDynamicsWorldC2EP12btDispatcherP21btBroadphaseInterfaceP18btCons
 .Ltmp1:
 # %bb.1:
 	ld.w	$s0, $fp, 484
-	blt	$s0, $s3, .LBB0_6
+	blez	$s0, .LBB0_6
 # %bb.2:                                # %.lr.ph14.i
 	move	$s1, $zero
 	b	.LBB0_4
@@ -93,7 +91,6 @@ _ZN24btSoftRigidDynamicsWorldC2EP12btDispatcherP21btBroadphaseInterfaceP18btCons
 	lu12i.w	$a0, 256000
 	st.w	$a0, $fp, 512
 	vst	$vr0, $fp, 516
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -216,8 +213,7 @@ _ZN11btSparseSdfILi3EE10InitializeEi:   # @_ZN11btSparseSdfILi3EE10InitializeEi
 	ld.w	$a1, $fp, 4
 	move	$s1, $a0
 	ld.d	$a0, $fp, 16
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_14
+	blez	$a1, .LBB1_14
 .LBB1_4:                                # %.lr.ph.i.i.i
 	ori	$a3, $zero, 4
 	move	$a2, $zero
@@ -260,8 +256,7 @@ _ZN11btSparseSdfILi3EE10InitializeEi:   # @_ZN11btSparseSdfILi3EE10InitializeEi
 	bnez	$a1, .LBB1_10
 .LBB1_11:                               # %_ZNK20btAlignedObjectArrayIPN11btSparseSdfILi3EE4CellEE4copyEiiPS3_.exit.thread.i.i
 	ld.bu	$a1, $fp, 24
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB1_16
+	bnez	$a1, .LBB1_16
 	b	.LBB1_17
 .LBB1_12:                               # %..lr.ph.i_crit_edge
 	ld.d	$s1, $fp, 16
@@ -270,8 +265,7 @@ _ZN11btSparseSdfILi3EE10InitializeEi:   # @_ZN11btSparseSdfILi3EE10InitializeEi
 	move	$s1, $zero
 	move	$a1, $s2
 	ld.d	$a0, $fp, 16
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB1_4
+	bgtz	$a1, .LBB1_4
 .LBB1_14:                               # %_ZNK20btAlignedObjectArrayIPN11btSparseSdfILi3EE4CellEE4copyEiiPS3_.exit.i.i
 	beqz	$a0, .LBB1_17
 # %bb.15:                               # %_ZNK20btAlignedObjectArrayIPN11btSparseSdfILi3EE4CellEE4copyEiiPS3_.exit.i.i
@@ -294,9 +288,8 @@ _ZN11btSparseSdfILi3EE10InitializeEi:   # @_ZN11btSparseSdfILi3EE10InitializeEi
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB1_19:                               # %_ZN20btAlignedObjectArrayIPN11btSparseSdfILi3EE4CellEE6resizeEiRKS3_.exit
-	ori	$a0, $zero, 1
 	st.w	$s0, $fp, 4
-	blt	$s0, $a0, .LBB1_24
+	blez	$s0, .LBB1_24
 # %bb.20:                               # %.lr.ph14.i
 	move	$s1, $zero
 	b	.LBB1_22
@@ -644,8 +637,7 @@ _ZN24btSoftRigidDynamicsWorld25predictUnconstraintMotionEf: # @_ZN24btSoftRigidD
 	pcaddu18i	$ra, %call36(_ZN23btDiscreteDynamicsWorld25predictUnconstraintMotionEf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 380
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_3
+	blez	$a0, .LBB7_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -681,18 +673,16 @@ _ZN24btSoftRigidDynamicsWorld28internalSingleStepSimulationEf: # @_ZN24btSoftRig
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception3
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(_ZN23btDiscreteDynamicsWorld28internalSingleStepSimulationEf)
 	jirl	$ra, $ra, 0
@@ -700,29 +690,28 @@ _ZN24btSoftRigidDynamicsWorld28internalSingleStepSimulationEf: # @_ZN24btSoftRig
 	pcaddu18i	$ra, %call36(_ZN24btSoftRigidDynamicsWorld26solveSoftBodiesConstraintsEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 380
-	ori	$s0, $zero, 1
-	blt	$a0, $s0, .LBB8_3
+	blez	$a0, .LBB8_3
 # %bb.1:                                # %.lr.ph
+	move	$s0, $zero
 	move	$s1, $zero
-	move	$s2, $zero
 	.p2align	4, , 16
 .LBB8_2:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 392
-	ldx.d	$a0, $a0, $s1
+	ldx.d	$a0, $a0, $s0
 	move	$a1, $a0
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody23defaultCollisionHandlerEPS_)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 380
-	addi.d	$s2, $s2, 1
-	addi.d	$s1, $s1, 8
-	blt	$s2, $a0, .LBB8_2
+	addi.d	$s1, $s1, 1
+	addi.d	$s0, $s0, 8
+	blt	$s1, $a0, .LBB8_2
 .LBB8_3:                                # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 380
-	blt	$a0, $s0, .LBB8_7
+	blez	$a0, .LBB8_7
 # %bb.4:                                # %.lr.ph.i
 	move	$s0, $zero
 	move	$s1, $zero
@@ -740,12 +729,11 @@ _ZN24btSoftRigidDynamicsWorld28internalSingleStepSimulationEf: # @_ZN24btSoftRig
 	addi.d	$s0, $s0, 8
 	blt	$s1, $a0, .LBB8_5
 .LBB8_7:                                # %_ZN24btSoftRigidDynamicsWorld16updateSoftBodiesEv.exit
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(_ZN15CProfileManager12Stop_ProfileEv)
 	jr	$t8
 .LBB8_8:
@@ -842,8 +830,7 @@ _ZN24btSoftRigidDynamicsWorld26solveSoftBodiesConstraintsEv: # @_ZN24btSoftRigid
 .Ltmp31:
 # %bb.2:
 	ld.w	$a0, $fp, 380
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_6
+	blez	$a0, .LBB9_6
 # %bb.3:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -961,8 +948,7 @@ _ZN24btSoftRigidDynamicsWorld16updateSoftBodiesEv: # @_ZN24btSoftRigidDynamicsWo
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 380
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_4
+	blez	$a0, .LBB10_4
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -1096,8 +1082,7 @@ _ZN24btSoftRigidDynamicsWorld11addSoftBodyEP10btSoftBodyss: # @_ZN24btSoftRigidD
 	move	$fp, $a0
 	move	$a0, $s4
 	ld.d	$a4, $a0, 392
-	ori	$a1, $zero, 1
-	blt	$a5, $a1, .LBB11_13
+	blez	$a5, .LBB11_13
 .LBB11_4:                               # %.lr.ph.i.i.i
 	ori	$a7, $zero, 4
 	move	$a6, $zero
@@ -1143,14 +1128,12 @@ _ZN24btSoftRigidDynamicsWorld11addSoftBodyEP10btSoftBodyss: # @_ZN24btSoftRigidD
 	bnez	$a7, .LBB11_10
 .LBB11_11:                              # %_ZNK20btAlignedObjectArrayIP10btSoftBodyE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a6, $a0, 400
-	ori	$a7, $zero, 1
-	beq	$a6, $a7, .LBB11_15
+	bnez	$a6, .LBB11_15
 	b	.LBB11_16
 .LBB11_12:
 	move	$fp, $zero
 	ld.d	$a4, $a0, 392
-	ori	$a1, $zero, 1
-	bge	$a5, $a1, .LBB11_4
+	bgtz	$a5, .LBB11_4
 .LBB11_13:                              # %_ZNK20btAlignedObjectArrayIP10btSoftBodyE4copyEiiPS1_.exit.i.i
 	move	$a3, $s3
 	move	$a2, $s2
@@ -1202,8 +1185,7 @@ _ZN24btSoftRigidDynamicsWorld14removeSoftBodyEP10btSoftBody: # @_ZN24btSoftRigid
 	.cfi_startproc
 # %bb.0:
 	ld.w	$a2, $a0, 380
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB12_4
+	blez	$a2, .LBB12_4
 # %bb.1:                                # %.lr.ph.i.i
 	ld.d	$a3, $a0, 392
 	move	$a5, $zero
@@ -1250,8 +1232,7 @@ _ZN24btSoftRigidDynamicsWorld21removeCollisionObjectEP17btCollisionObject: # @_Z
 	bne	$a2, $a3, .LBB13_7
 # %bb.2:
 	ld.w	$a2, $a0, 380
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB13_6
+	blez	$a2, .LBB13_6
 # %bb.3:                                # %.lr.ph.i.i.i
 	ld.d	$a3, $a0, 392
 	move	$a5, $zero
@@ -1294,22 +1275,20 @@ _ZN24btSoftRigidDynamicsWorld21removeCollisionObjectEP17btCollisionObject: # @_Z
 _ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv: # @_ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(_ZN23btDiscreteDynamicsWorld14debugDrawWorldEv)
 	jirl	$ra, $ra, 0
@@ -1320,22 +1299,21 @@ _ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv: # @_ZN24btSoftRigidDynamicsWorl
 	beqz	$a0, .LBB14_12
 # %bb.1:                                # %.preheader
 	ld.w	$a0, $fp, 380
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB14_12
+	blez	$a0, .LBB14_12
 # %bb.2:                                # %.lr.ph
+	move	$s2, $zero
 	move	$s3, $zero
-	move	$s4, $zero
 	addi.w	$s0, $zero, -1
 	b	.LBB14_4
 	.p2align	4, , 16
 .LBB14_3:                               #   in Loop: Header=BB14_4 Depth=1
 	ld.w	$a0, $fp, 380
-	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 8
-	bge	$s4, $a0, .LBB14_12
+	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 8
+	bge	$s3, $a0, .LBB14_12
 .LBB14_4:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 392
-	ldx.d	$s1, $a0, $s3
+	ldx.d	$s1, $a0, $s2
 	ld.d	$a1, $fp, 120
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN17btSoftBodyHelpers9DrawFrameEP10btSoftBodyP12btIDebugDraw)
@@ -1355,13 +1333,13 @@ _ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv: # @_ZN24btSoftRigidDynamicsWorl
 	beqz	$a0, .LBB14_3
 # %bb.6:                                #   in Loop: Header=BB14_4 Depth=1
 	ld.bu	$a0, $fp, 412
-	beq	$a0, $s2, .LBB14_9
+	bnez	$a0, .LBB14_9
 # %bb.7:                                #   in Loop: Header=BB14_4 Depth=1
 	ld.bu	$a0, $fp, 413
-	beq	$a0, $s2, .LBB14_10
+	bnez	$a0, .LBB14_10
 .LBB14_8:                               #   in Loop: Header=BB14_4 Depth=1
 	ld.bu	$a0, $fp, 414
-	bne	$a0, $s2, .LBB14_3
+	beqz	$a0, .LBB14_3
 	b	.LBB14_11
 .LBB14_9:                               #   in Loop: Header=BB14_4 Depth=1
 	ld.d	$a1, $fp, 120
@@ -1371,7 +1349,7 @@ _ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv: # @_ZN24btSoftRigidDynamicsWorl
 	pcaddu18i	$ra, %call36(_ZN17btSoftBodyHelpers12DrawNodeTreeEP10btSoftBodyP12btIDebugDrawii)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 413
-	bne	$a0, $s2, .LBB14_8
+	beqz	$a0, .LBB14_8
 .LBB14_10:                              #   in Loop: Header=BB14_4 Depth=1
 	ld.d	$a1, $fp, 120
 	move	$a0, $s1
@@ -1380,7 +1358,7 @@ _ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv: # @_ZN24btSoftRigidDynamicsWorl
 	pcaddu18i	$ra, %call36(_ZN17btSoftBodyHelpers12DrawFaceTreeEP10btSoftBodyP12btIDebugDrawii)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 414
-	bne	$a0, $s2, .LBB14_3
+	beqz	$a0, .LBB14_3
 .LBB14_11:                              #   in Loop: Header=BB14_4 Depth=1
 	ld.d	$a1, $fp, 120
 	move	$a0, $s1
@@ -1390,14 +1368,13 @@ _ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv: # @_ZN24btSoftRigidDynamicsWorl
 	jirl	$ra, $ra, 0
 	b	.LBB14_3
 .LBB14_12:                              # %.loopexit
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end14:
 	.size	_ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv, .Lfunc_end14-_ZN24btSoftRigidDynamicsWorld14debugDrawWorldEv

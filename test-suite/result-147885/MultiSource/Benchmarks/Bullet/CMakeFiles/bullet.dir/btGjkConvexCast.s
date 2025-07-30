@@ -26,25 +26,24 @@ _ZN15btGjkConvexCastC2EPK13btConvexShapeS2_P22btVoronoiSimplexSolver: # @_ZN15bt
 _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast10CastResultE: # @_ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast10CastResultE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -464
-	.cfi_def_cfa_offset 464
-	st.d	$ra, $sp, 456                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 448                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 440                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 432                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 424                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 416                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 408                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 392                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 384                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 376                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 368                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 360                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 352                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 344                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 336                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 328                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -448
+	.cfi_def_cfa_offset 448
+	st.d	$ra, $sp, 440                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 432                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 424                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 416                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 408                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 400                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 392                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 384                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 376                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 368                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 360                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 352                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 344                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 336                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 328                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 320                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -53,15 +52,14 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
-	.cfi_offset 56, -80
-	.cfi_offset 57, -88
-	.cfi_offset 58, -96
-	.cfi_offset 59, -104
-	.cfi_offset 60, -112
-	.cfi_offset 61, -120
-	.cfi_offset 62, -128
-	.cfi_offset 63, -136
+	.cfi_offset 56, -72
+	.cfi_offset 57, -80
+	.cfi_offset 58, -88
+	.cfi_offset 59, -96
+	.cfi_offset 60, -104
+	.cfi_offset 61, -112
+	.cfi_offset 62, -120
+	.cfi_offset 63, -128
 	move	$s4, $a0
 	ld.d	$a0, $a0, 8
 	move	$fp, $a5
@@ -72,13 +70,13 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	pcaddu18i	$ra, %call36(_ZN22btVoronoiSimplexSolver5resetEv)
 	jirl	$ra, $ra, 0
 	fld.s	$fa0, $s2, 48
-	fst.s	$fa0, $sp, 20                   # 4-byte Folded Spill
-	fld.s	$fa0, $s3, 48
-	fst.s	$fa0, $sp, 16                   # 4-byte Folded Spill
-	fld.s	$fa0, $s2, 52
 	fst.s	$fa0, $sp, 12                   # 4-byte Folded Spill
-	fld.s	$fa0, $s3, 52
+	fld.s	$fa0, $s3, 48
 	fst.s	$fa0, $sp, 8                    # 4-byte Folded Spill
+	fld.s	$fa0, $s2, 52
+	fst.s	$fa0, $sp, 4                    # 4-byte Folded Spill
+	fld.s	$fa0, $s3, 52
+	fst.s	$fa0, $sp, 0                    # 4-byte Folded Spill
 	fld.s	$fs4, $s2, 56
 	fld.s	$fs5, $s3, 56
 	fld.s	$fs6, $s0, 48
@@ -89,75 +87,73 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	fld.s	$fs3, $s1, 56
 	pcalau12i	$a0, %pc_hi20(_ZTV16btPointCollector+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV16btPointCollector+16)
-	st.d	$a0, $sp, 264
+	st.d	$a0, $sp, 256
 	lu12i.w	$a0, 382432
 	ld.d	$a1, $s4, 16
 	ld.d	$a2, $s4, 24
 	ld.d	$a3, $s4, 8
 	ori	$s4, $a0, 2923
-	st.w	$s4, $sp, 304
-	st.b	$zero, $sp, 308
-	addi.d	$a0, $sp, 168
+	st.w	$s4, $sp, 296
+	st.b	$zero, $sp, 300
+	addi.d	$a0, $sp, 160
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetectorC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s3, 0
 	vld	$vr1, $s3, 16
 	vld	$vr2, $s3, 32
-	vst	$vr0, $sp, 24
-	vst	$vr1, $sp, 40
+	vst	$vr0, $sp, 16
+	vst	$vr1, $sp, 32
 	vld	$vr0, $s3, 48
-	vst	$vr2, $sp, 56
+	vst	$vr2, $sp, 48
 	vld	$vr1, $s1, 0
 	vld	$vr2, $s1, 16
-	vst	$vr0, $sp, 72
+	vst	$vr0, $sp, 64
 	vld	$vr0, $s1, 32
-	vst	$vr1, $sp, 88
-	vst	$vr2, $sp, 104
+	vst	$vr1, $sp, 80
+	vst	$vr2, $sp, 96
 	vld	$vr1, $s1, 48
-	vst	$vr0, $sp, 120
-	st.w	$s4, $sp, 152
-	st.d	$zero, $sp, 160
-	vst	$vr1, $sp, 136
-	addi.d	$a0, $sp, 168
-	addi.d	$a1, $sp, 24
-	addi.d	$a2, $sp, 264
+	vst	$vr0, $sp, 112
+	st.w	$s4, $sp, 144
+	st.d	$zero, $sp, 152
+	vst	$vr1, $sp, 128
+	addi.d	$a0, $sp, 160
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 256
 	move	$a3, $zero
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetector16getClosestPointsERKN36btDiscreteCollisionDetectorInterface17ClosestPointInputERNS0_6ResultEP12btIDebugDrawb)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 308
-	vld	$vr0, $sp, 288
-	ori	$a1, $zero, 1
-	vst	$vr0, $sp, 312
-	bne	$a0, $a1, .LBB1_14
+	ld.bu	$a0, $sp, 300
+	vld	$vr0, $sp, 280
+	vst	$vr0, $sp, 304
+	beqz	$a0, .LBB1_14
 # %bb.1:
-	fld.s	$fa0, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$fa1, $sp, 16                   # 4-byte Folded Reload
+	fld.s	$fa0, $sp, 12                   # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 8                    # 4-byte Folded Reload
 	fsub.s	$fa0, $fa0, $fa1
-	fld.s	$fa1, $sp, 12                   # 4-byte Folded Reload
-	fld.s	$fa2, $sp, 8                    # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 4                    # 4-byte Folded Reload
+	fld.s	$fa2, $sp, 0                    # 4-byte Folded Reload
 	fsub.s	$fa4, $fa1, $fa2
 	fsub.s	$fa5, $fs4, $fs5
 	fsub.s	$fa1, $fs6, $fs7
 	fsub.s	$fa6, $fs0, $fs1
 	fsub.s	$fa7, $fs2, $fs3
 	fsub.s	$fs1, $fa0, $fa1
-	fld.s	$fa3, $sp, 304
-	fld.s	$fa0, $sp, 272
+	fld.s	$fa3, $sp, 296
+	fld.s	$fa0, $sp, 264
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	fld.s	$fs4, $a0, %pc_lo12(.LCPI1_0)
-	fld.s	$fa2, $sp, 276
-	fld.s	$fa1, $sp, 280
+	fld.s	$fa2, $sp, 268
+	fld.s	$fa1, $sp, 272
 	fsub.s	$fs2, $fa4, $fa6
 	fcmp.cule.s	$fcc0, $fa3, $fs4
 	fsub.s	$fs3, $fa5, $fa7
 	bcnez	$fcc0, .LBB1_11
 # %bb.2:                                # %.lr.ph
-	addi.d	$s4, $sp, 288
+	addi.d	$s4, $sp, 280
 	movgr2fr.w	$fs5, $zero
 	ori	$s5, $zero, 33
-	ori	$s6, $zero, 1
 	fmov.s	$fa4, $fs5
 	.p2align	4, , 16
 .LBB1_3:                                # =>This Inner Loop Header: Depth=1
@@ -193,57 +189,57 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	fld.s	$fa3, $s2, 52
 	fmadd.s	$fa0, $fa2, $fa1, $fa0
 	fld.s	$fa1, $s3, 52
-	fst.s	$fa0, $sp, 72
+	fst.s	$fa0, $sp, 64
 	fmul.s	$fa0, $fs0, $fa3
 	fld.s	$fa3, $s2, 56
 	fmadd.s	$fa0, $fa2, $fa1, $fa0
 	fld.s	$fa1, $s3, 56
-	fst.s	$fa0, $sp, 76
+	fst.s	$fa0, $sp, 68
 	fmul.s	$fa0, $fs0, $fa3
 	fld.s	$fa3, $s0, 48
 	fmadd.s	$fa0, $fa2, $fa1, $fa0
 	fld.s	$fa1, $s1, 48
-	fst.s	$fa0, $sp, 80
+	fst.s	$fa0, $sp, 72
 	fmul.s	$fa0, $fs0, $fa3
 	fld.s	$fa3, $s0, 52
 	fmadd.s	$fa0, $fa2, $fa1, $fa0
-	fst.s	$fa0, $sp, 136
+	fst.s	$fa0, $sp, 128
 	fld.s	$fa0, $s1, 52
 	fmul.s	$fa1, $fs0, $fa3
 	fld.s	$fa3, $s0, 56
 	fld.s	$fa4, $s1, 56
 	fmadd.s	$fa0, $fa2, $fa0, $fa1
-	fst.s	$fa0, $sp, 140
+	fst.s	$fa0, $sp, 132
 	fmul.s	$fa0, $fs0, $fa3
 	fmadd.s	$fa0, $fa2, $fa4, $fa0
-	fst.s	$fa0, $sp, 144
-	addi.d	$a0, $sp, 168
-	addi.d	$a1, $sp, 24
-	addi.d	$a2, $sp, 264
+	fst.s	$fa0, $sp, 136
+	addi.d	$a0, $sp, 160
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 256
 	move	$a3, $zero
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetector16getClosestPointsERKN36btDiscreteCollisionDetectorInterface17ClosestPointInputERNS0_6ResultEP12btIDebugDrawb)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 308
-	bne	$a0, $s6, .LBB1_14
+	ld.bu	$a0, $sp, 300
+	beqz	$a0, .LBB1_14
 # %bb.8:                                #   in Loop: Header=BB1_3 Depth=1
-	fld.s	$fa3, $sp, 304
+	fld.s	$fa3, $sp, 296
 	fcmp.cule.s	$fcc0, $fs5, $fa3
 	bceqz	$fcc0, .LBB1_15
 # %bb.9:                                #   in Loop: Header=BB1_3 Depth=1
 	vld	$vr4, $s4, 0
-	fld.s	$fa0, $sp, 272
-	fld.s	$fa2, $sp, 276
-	fld.s	$fa1, $sp, 280
+	fld.s	$fa0, $sp, 264
+	fld.s	$fa2, $sp, 268
+	fld.s	$fa1, $sp, 272
 	fcmp.clt.s	$fcc0, $fs4, $fa3
-	vst	$vr4, $sp, 312
+	vst	$vr4, $sp, 304
 	fmov.s	$fa4, $fs0
 	bcnez	$fcc0, .LBB1_3
 # %bb.10:                               # %._crit_edge.loopexit
-	fld.s	$fa3, $sp, 284
+	fld.s	$fa3, $sp, 276
 	b	.LBB1_12
 .LBB1_11:
-	fld.s	$fa3, $sp, 284
+	fld.s	$fa3, $sp, 276
 	movgr2fr.w	$fs0, $zero
 .LBB1_12:                               # %._crit_edge
 	fld.s	$fa4, $fp, 184
@@ -255,16 +251,16 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	bcnez	$fcc0, .LBB1_14
 # %bb.13:
 	fst.s	$fs0, $fp, 168
-	addi.d	$s4, $sp, 312
+	addi.d	$s4, $sp, 304
 	b	.LBB1_16
 .LBB1_14:
 	move	$a0, $zero
 	b	.LBB1_17
 .LBB1_15:
-	fld.s	$fa0, $sp, 272
-	fld.s	$fa2, $sp, 276
-	fld.s	$fa1, $sp, 280
-	fld.s	$fa3, $sp, 284
+	fld.s	$fa0, $sp, 264
+	fld.s	$fa2, $sp, 268
+	fld.s	$fa1, $sp, 272
+	fld.s	$fa3, $sp, 276
 	fst.s	$fs0, $fp, 168
 .LBB1_16:                               # %.thread.sink.split
 	fst.s	$fa0, $fp, 136
@@ -275,24 +271,23 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	vst	$vr0, $fp, 152
 	ori	$a0, $zero, 1
 .LBB1_17:                               # %.thread
-	fld.d	$fs7, $sp, 328                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 336                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 344                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 352                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 360                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 368                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 376                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 384                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 416                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 424                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 432                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 440                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 448                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 456                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 464
+	fld.d	$fs7, $sp, 320                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 328                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 336                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 344                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 352                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 360                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 368                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 376                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 440                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 448
 	ret
 .Lfunc_end1:
 	.size	_ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast10CastResultE, .Lfunc_end1-_ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast10CastResultE

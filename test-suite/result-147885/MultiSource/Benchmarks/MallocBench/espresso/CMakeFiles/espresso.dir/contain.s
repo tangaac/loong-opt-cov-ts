@@ -20,9 +20,8 @@ sf_contain:                             # @sf_contain
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
 	mul.w	$a1, $a1, $s1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s2, $a1, $s1, 2
@@ -274,9 +273,8 @@ sf_rev_contain:                         # @sf_rev_contain
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
 	mul.w	$a1, $a1, $s1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB1_4
+	blez	$a1, .LBB1_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s2, $a1, $s1, 2
@@ -529,9 +527,8 @@ sf_ind_contain:                         # @sf_ind_contain
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
 	mul.w	$a1, $a1, $s2
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB2_4
+	blez	$a1, .LBB2_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$s2, $fp, 24
 	alsl.d	$s3, $a1, $s2, 2
@@ -712,9 +709,8 @@ sf_dupl:                                # @sf_dupl
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
 	mul.w	$a1, $a1, $s1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB3_4
+	blez	$a1, .LBB3_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s2, $a1, $s1, 2
@@ -899,21 +895,20 @@ sf_union:                               # @sf_union
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	move	$s2, $a0
+	move	$s0, $a0
 	ld.w	$fp, $a0, 12
 	move	$s5, $a1
 	slli.d	$a0, $fp, 3
 	addi.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.w	$a3, $s2, 0
+	ld.w	$a3, $s0, 0
 	mul.w	$a2, $a3, $fp
-	ori	$s0, $zero, 1
 	move	$s1, $a0
 	move	$a1, $a0
-	blt	$a2, $s0, .LBB4_3
+	blez	$a2, .LBB4_3
 # %bb.1:                                # %.lr.ph.i
-	ld.d	$a0, $s2, 24
+	ld.d	$a0, $s0, 24
 	alsl.d	$a2, $a2, $a0, 2
 	slli.d	$a3, $a3, 2
 	move	$a4, $s1
@@ -925,18 +920,18 @@ sf_union:                               # @sf_union
 	move	$a4, $a1
 	bltu	$a0, $a2, .LBB4_2
 .LBB4_3:                                # %sf_list.exit
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$s3, $s5, 12
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	ld.w	$s0, $s5, 12
 	st.d	$zero, $a1, 0
-	slli.d	$a0, $s3, 3
+	slli.d	$a0, $s0, 3
 	addi.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s5, 0
-	mul.w	$a1, $a2, $s3
+	mul.w	$a1, $a2, $s0
 	move	$s2, $a0
 	move	$a3, $a0
-	blt	$a1, $s0, .LBB4_6
+	blez	$a1, .LBB4_6
 # %bb.4:                                # %.lr.ph.i24
 	ld.d	$a0, $s5, 24
 	alsl.d	$a1, $a1, $a0, 2
@@ -951,8 +946,8 @@ sf_union:                               # @sf_union
 	bltu	$a0, $a1, .LBB4_5
 .LBB4_6:                                # %sf_list.exit27
 	st.d	$zero, $a3, 0
-	slt	$a0, $s3, $fp
-	masknez	$a1, $s3, $a0
+	slt	$a0, $s0, $fp
+	masknez	$a1, $s0, $a0
 	maskeqz	$a0, $fp, $a0
 	or	$a0, $a0, $a1
 	slli.d	$a0, $a0, 3
@@ -1255,9 +1250,8 @@ dist_merge:                             # @dist_merge
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
 	mul.w	$a1, $a1, $s1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB5_4
+	blez	$a1, .LBB5_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s2, $a1, $s1, 2
@@ -1993,9 +1987,8 @@ sf_sort:                                # @sf_sort
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 0
 	mul.w	$a1, $a1, $s2
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB13_4
+	blez	$a1, .LBB13_4
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s2, $s1, 24
 	alsl.d	$s3, $a1, $s2, 2
@@ -2058,9 +2051,8 @@ sf_list:                                # @sf_list
 	jirl	$ra, $ra, 0
 	ld.w	$a3, $fp, 0
 	mul.w	$a2, $a3, $s0
-	ori	$a1, $zero, 1
 	move	$a4, $a0
-	blt	$a2, $a1, .LBB14_3
+	blez	$a2, .LBB14_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $fp, 24
 	alsl.d	$a2, $a2, $a1, 2
@@ -2292,8 +2284,7 @@ sf_ind_unlist:                          # @sf_ind_unlist
 	bnez	$a7, .LBB16_10
 	b	.LBB16_2
 .LBB16_11:                              # %.preheader
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB16_13
+	blez	$s3, .LBB16_13
 # %bb.12:                               # %.lr.ph47.preheader
 	move	$a0, $s1
 	move	$a1, $s4

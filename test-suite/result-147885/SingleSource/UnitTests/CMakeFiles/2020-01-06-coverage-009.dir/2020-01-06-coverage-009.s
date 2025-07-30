@@ -31,7 +31,7 @@ i:                                      # @i
 	sltu	$t0, $t0, $t2
 	st.w	$t0, $a7, %pc_lo12(h)
 	addi.d	$a2, $a2, -1
-	bstrpick.d	$t0, $a2, 15, 0
+	slli.d	$t0, $a2, 48
 	st.w	$zero, $a4, 0
 	bnez	$t0, .LBB0_2
 # %bb.3:                                # %._crit_edge

@@ -2417,8 +2417,7 @@ test_isfpclass_float:                   # @test_isfpclass_float
 	jirl	$ra, $ra, 0
 	fld.s	$fa0, $fp, 4
 	movfr2gr.s	$a0, $fa0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_4
+	bltz	$a0, .LBB11_4
 .LBB11_2:
 	pcaddu18i	$ra, %call36(test_fcPosZero_float)
 	jirl	$ra, $ra, 0
@@ -2428,8 +2427,7 @@ test_isfpclass_float:                   # @test_isfpclass_float
 	jirl	$ra, $ra, 0
 	fld.s	$fa0, $fp, 4
 	movfr2gr.s	$a0, $fa0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB11_2
+	bgez	$a0, .LBB11_2
 .LBB11_4:
 	pcaddu18i	$ra, %call36(test_fcNegZero_float)
 	jirl	$ra, $ra, 0
@@ -5435,8 +5433,7 @@ test_isfpclass_double:                  # @test_isfpclass_double
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $fp, 8
 	movfr2gr.d	$a0, $fa0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB23_4
+	bltz	$a0, .LBB23_4
 .LBB23_2:
 	pcaddu18i	$ra, %call36(test_fcPosZero_double)
 	jirl	$ra, $ra, 0
@@ -5446,8 +5443,7 @@ test_isfpclass_double:                  # @test_isfpclass_double
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $fp, 8
 	movfr2gr.d	$a0, $fa0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB23_2
+	bgez	$a0, .LBB23_2
 .LBB23_4:
 	pcaddu18i	$ra, %call36(test_fcNegZero_double)
 	jirl	$ra, $ra, 0
@@ -8314,18 +8310,16 @@ test_fcNegZero_ldouble:                 # @test_fcNegZero_ldouble
 	.type	test_isfpclass_ldouble,@function
 test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(LongDoubleZeroValues)
 	addi.d	$fp, $a0, %pc_lo12(LongDoubleZeroValues)
 	ld.d	$a1, $fp, 8
 	ld.d	$a0, $fp, 0
-	addi.w	$s1, $zero, -1
-	bge	$s1, $a1, .LBB36_3
+	bltz	$a1, .LBB36_3
 # %bb.1:
 	pcaddu18i	$ra, %call36(test_fcPosZero_ldouble)
 	jirl	$ra, $ra, 0
@@ -8347,16 +8341,16 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	jirl	$ra, $ra, 0
 .LBB36_5:                               # %.preheader50.preheader
 	pcalau12i	$a0, %pc_hi20(LongDoubleDenormValues)
-	addi.d	$s2, $a0, %pc_lo12(LongDoubleDenormValues)
-	ld.d	$fp, $s2, 8
-	ld.d	$s0, $s2, 0
+	addi.d	$s1, $a0, %pc_lo12(LongDoubleDenormValues)
+	ld.d	$fp, $s1, 8
+	ld.d	$s0, $s1, 0
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(__lttf2)
 	jirl	$ra, $ra, 0
-	blt	$s1, $a0, .LBB36_7
+	bgez	$a0, .LBB36_7
 # %bb.6:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -8369,8 +8363,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcPosSubnormal_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_8:                               # %.preheader50.1
-	ld.d	$fp, $s2, 24
-	ld.d	$s0, $s2, 16
+	ld.d	$fp, $s1, 24
+	ld.d	$s0, $s1, 16
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8391,16 +8385,16 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	jirl	$ra, $ra, 0
 .LBB36_11:                              # %.preheader49.preheader
 	pcalau12i	$a0, %pc_hi20(LongDoubleNormalValues)
-	addi.d	$s2, $a0, %pc_lo12(LongDoubleNormalValues)
-	ld.d	$fp, $s2, 8
-	ld.d	$s0, $s2, 0
+	addi.d	$s1, $a0, %pc_lo12(LongDoubleNormalValues)
+	ld.d	$fp, $s1, 8
+	ld.d	$s0, $s1, 0
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(__lttf2)
 	jirl	$ra, $ra, 0
-	blt	$s1, $a0, .LBB36_13
+	bgez	$a0, .LBB36_13
 # %bb.12:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -8413,8 +8407,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcPosNormal_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_14:                              # %.preheader49.1
-	ld.d	$fp, $s2, 24
-	ld.d	$s0, $s2, 16
+	ld.d	$fp, $s1, 24
+	ld.d	$s0, $s1, 16
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8434,8 +8428,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcPosNormal_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_17:                              # %.preheader49.2
-	ld.d	$fp, $s2, 40
-	ld.d	$s0, $s2, 32
+	ld.d	$fp, $s1, 40
+	ld.d	$s0, $s1, 32
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8455,8 +8449,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcPosNormal_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_20:                              # %.preheader49.3
-	ld.d	$fp, $s2, 56
-	ld.d	$s0, $s2, 48
+	ld.d	$fp, $s1, 56
+	ld.d	$s0, $s1, 48
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8476,8 +8470,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcPosNormal_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_23:                              # %.preheader49.4
-	ld.d	$fp, $s2, 72
-	ld.d	$s0, $s2, 64
+	ld.d	$fp, $s1, 72
+	ld.d	$s0, $s1, 64
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8497,8 +8491,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcPosNormal_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_26:                              # %.preheader49.5
-	ld.d	$fp, $s2, 88
-	ld.d	$s0, $s2, 80
+	ld.d	$fp, $s1, 88
+	ld.d	$s0, $s1, 80
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8519,17 +8513,16 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	jirl	$ra, $ra, 0
 .LBB36_29:                              # %.preheader48.preheader
 	pcalau12i	$a0, %pc_hi20(LongDoubleInfValues)
-	addi.d	$s2, $a0, %pc_lo12(LongDoubleInfValues)
-	ld.d	$fp, $s2, 8
-	ld.d	$s0, $s2, 0
+	addi.d	$s1, $a0, %pc_lo12(LongDoubleInfValues)
+	ld.d	$fp, $s1, 8
+	ld.d	$s0, $s1, 0
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(__gttf2)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB36_31
+	blez	$a0, .LBB36_31
 # %bb.30:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -8542,8 +8535,8 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	pcaddu18i	$ra, %call36(test_fcNegInf_ldouble)
 	jirl	$ra, $ra, 0
 .LBB36_32:                              # %.preheader48.1
-	ld.d	$fp, $s2, 24
-	ld.d	$s0, $s2, 16
+	ld.d	$fp, $s1, 24
+	ld.d	$s0, $s1, 16
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $zero
@@ -8578,8 +8571,9 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	sltui	$a6, $a2, 1
 	maskeqz	$a0, $a6, $a0
 	or	$a5, $a0, $a5
-	lu32i.d	$s1, -32769
-	lu52i.d	$a0, $s1, 2047
+	addi.w	$a0, $zero, -1
+	lu32i.d	$a0, -32769
+	lu52i.d	$a0, $a0, 2047
 	slt	$a6, $a0, $a4
 	or	$a5, $a5, $a6
 	beqz	$a5, .LBB36_48
@@ -8719,12 +8713,11 @@ test_isfpclass_ldouble:                 # @test_isfpclass_ldouble
 	or	$a0, $a4, $a0
 	bnez	$a0, .LBB36_51
 # %bb.47:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB36_48:
 	pcalau12i	$a0, %pc_hi20(.L.str.174)

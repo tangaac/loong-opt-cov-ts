@@ -326,7 +326,7 @@ decodeMP3:                              # @decodeMP3
 	andn	$a0, $a3, $a0
 	stptr.w	$a0, $fp, 23160
 	st.w	$zero, $a2, 0
-	blt	$a1, $a3, .LBB2_45
+	blez	$a1, .LBB2_45
 # %bb.38:                               # %.lr.ph
 	move	$s5, $zero
 	vrepli.b	$vr0, 0
@@ -455,16 +455,13 @@ set_pointer:                            # @set_pointer
 # %bb.0:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(gmp)
 	ld.d	$a1, $a1, %pc_lo12(gmp)
 	ld.w	$a3, $a1, 24
-	ori	$a4, $zero, 1
 	move	$a2, $a0
-	blt	$a0, $a4, .LBB3_2
+	blez	$a0, .LBB3_2
 # %bb.1:
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a3, .LBB3_5
+	bltz	$a3, .LBB3_5
 .LBB3_2:
 	pcalau12i	$a0, %got_pc_hi20(wordpointer)
 	ld.d	$a5, $a0, %got_pc_lo12(wordpointer)
@@ -488,7 +485,6 @@ set_pointer:                            # @set_pointer
 	ld.d	$a1, $a0, %got_pc_lo12(bitindex)
 	move	$a0, $zero
 	st.w	$zero, $a1, 0
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -498,11 +494,9 @@ set_pointer:                            # @set_pointer
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
-	move	$fp, $a4
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	addi.w	$a0, $zero, -1
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret

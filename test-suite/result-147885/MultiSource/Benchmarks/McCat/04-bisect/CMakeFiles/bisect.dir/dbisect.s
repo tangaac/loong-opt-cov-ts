@@ -9,8 +9,7 @@
 	.type	sturm,@function
 sturm:                                  # @sturm
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
 	fld.d	$fa1, $a4, %pc_lo12(.LCPI0_0)
@@ -217,12 +216,11 @@ dbisect:                                # @dbisect
 	addi.d	$a2, $a0, 8
 	bstrpick.d	$a3, $s1, 31, 0
 	alsl.d	$a4, $s0, $a0, 3
+	pcalau12i	$a5, %pc_hi20(.LCPI1_3)
+	fld.d	$fa0, $a5, %pc_lo12(.LCPI1_3)
 	addi.d	$a5, $s5, 1
-	pcalau12i	$a6, %pc_hi20(.LCPI1_3)
-	fld.d	$fa0, $a6, %pc_lo12(.LCPI1_3)
 	alsl.d	$a6, $s5, $a0, 3
 	vldi	$vr1, -928
-	ori	$a7, $zero, 1
 	b	.LBB1_16
 	.p2align	4, , 16
 .LBB1_14:                               # %._crit_edge149
@@ -230,36 +228,36 @@ dbisect:                                # @dbisect
 	st.w	$a1, $fp, 0
 .LBB1_15:                               # %._crit_edge164
                                         #   in Loop: Header=BB1_16 Depth=1
-	alsl.d	$t1, $t0, $s6, 3
+	alsl.d	$t0, $a7, $s6, 3
 	fmul.d	$fa2, $fa3, $fa1
-	fst.d	$fa2, $t1, 0
-	addi.d	$s5, $t0, -1
+	fst.d	$fa2, $t0, 0
+	addi.d	$s5, $a7, -1
 	addi.d	$a5, $a5, -1
 	addi.d	$a6, $a6, -8
-	bge	$s0, $t0, .LBB1_6
+	bge	$s0, $a7, .LBB1_6
 .LBB1_16:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_17 Depth 2
                                         #     Child Loop BB1_23 Depth 2
                                         #       Child Loop BB1_27 Depth 3
-	move	$t0, $s5
-	move	$t1, $a6
-	move	$t2, $a5
+	move	$a7, $s5
+	move	$t0, $a6
+	move	$t1, $a5
 	.p2align	4, , 16
 .LBB1_17:                               #   Parent Loop BB1_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa2, $t1, 0
+	fld.d	$fa2, $t0, 0
 	fcmp.cule.d	$fcc0, $fa2, $fs0
 	bceqz	$fcc0, .LBB1_20
 # %bb.18:                               #   in Loop: Header=BB1_17 Depth=2
-	addi.d	$t2, $t2, -1
-	addi.d	$t1, $t1, -8
-	blt	$s0, $t2, .LBB1_17
+	addi.d	$t1, $t1, -1
+	addi.d	$t0, $t0, -8
+	blt	$s0, $t1, .LBB1_17
 # %bb.19:                               #   in Loop: Header=BB1_16 Depth=1
 	fmov.d	$fa2, $fs0
 .LBB1_20:                               #   in Loop: Header=BB1_16 Depth=1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa3, $s6, $t1
+	slli.d	$t0, $a7, 3
+	fldx.d	$fa3, $s6, $t0
 	fcmp.clt.d	$fcc0, $fa3, $fs1
 	fsel	$fs1, $fs1, $fa3, $fcc0
 	fsub.d	$fa3, $fs1, $fa2
@@ -289,35 +287,35 @@ dbisect:                                # @dbisect
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_27 Depth 3
 	fmul.d	$fa3, $fa3, $fa1
-	move	$t1, $zero
-	blt	$s1, $a7, .LBB1_29
+	move	$t0, $zero
+	blez	$s1, .LBB1_29
 # %bb.24:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB1_23 Depth=2
 	vldi	$vr4, -912
-	move	$t2, $s4
-	move	$t3, $s3
-	move	$t4, $a3
-	move	$t5, $s2
+	move	$t1, $s4
+	move	$t2, $s3
+	move	$t3, $a3
+	move	$t4, $s2
 	b	.LBB1_27
 	.p2align	4, , 16
 .LBB1_25:                               #   in Loop: Header=BB1_27 Depth=3
-	fld.d	$fa4, $t3, 0
-	pcalau12i	$t6, %pc_hi20(.LCPI1_4)
-	fld.d	$fa5, $t6, %pc_lo12(.LCPI1_4)
+	fld.d	$fa4, $t2, 0
+	pcalau12i	$t5, %pc_hi20(.LCPI1_4)
+	fld.d	$fa5, $t5, %pc_lo12(.LCPI1_4)
 	fabs.d	$fa4, $fa4
 	fmul.d	$fa4, $fa4, $fa5
 .LBB1_26:                               #   in Loop: Header=BB1_27 Depth=3
-	fld.d	$fa5, $t2, 0
+	fld.d	$fa5, $t1, 0
 	fsub.d	$fa5, $fa5, $fa3
 	fsub.d	$fa4, $fa5, $fa4
 	fcmp.clt.d	$fcc0, $fa4, $fs2
-	movcf2gr	$t6, $fcc0
-	add.w	$t1, $t1, $t6
-	addi.d	$t5, $t5, 8
-	addi.d	$t4, $t4, -1
-	addi.d	$t3, $t3, 8
+	movcf2gr	$t5, $fcc0
+	add.w	$t0, $t0, $t5
+	addi.d	$t4, $t4, 8
+	addi.d	$t3, $t3, -1
 	addi.d	$t2, $t2, 8
-	beqz	$t4, .LBB1_29
+	addi.d	$t1, $t1, 8
+	beqz	$t3, .LBB1_29
 .LBB1_27:                               # %.lr.ph.i
                                         #   Parent Loop BB1_16 Depth=1
                                         #     Parent Loop BB1_23 Depth=2
@@ -325,28 +323,28 @@ dbisect:                                # @dbisect
 	fcmp.ceq.d	$fcc0, $fa4, $fs2
 	bcnez	$fcc0, .LBB1_25
 # %bb.28:                               #   in Loop: Header=BB1_27 Depth=3
-	fld.d	$fa5, $t5, 0
+	fld.d	$fa5, $t4, 0
 	fdiv.d	$fa4, $fa5, $fa4
 	b	.LBB1_26
 	.p2align	4, , 16
 .LBB1_29:                               # %sturm.exit
                                         #   in Loop: Header=BB1_23 Depth=2
-	bge	$t1, $t0, .LBB1_21
+	bge	$t0, $a7, .LBB1_21
 # %bb.30:                               #   in Loop: Header=BB1_23 Depth=2
-	bge	$t1, $s0, .LBB1_32
+	bge	$t0, $s0, .LBB1_32
 # %bb.31:                               #   in Loop: Header=BB1_23 Depth=2
 	fst.d	$fa3, $a4, 0
 	b	.LBB1_34
 	.p2align	4, , 16
 .LBB1_32:                               #   in Loop: Header=BB1_23 Depth=2
-	slli.d	$t2, $t1, 3
-	fldx.d	$fa2, $s6, $t2
+	slli.d	$t1, $t0, 3
+	fldx.d	$fa2, $s6, $t1
 	fcmp.cule.d	$fcc0, $fa2, $fa3
-	fstx.d	$fa3, $a2, $t2
+	fstx.d	$fa3, $a2, $t1
 	bcnez	$fcc0, .LBB1_34
 # %bb.33:                               #   in Loop: Header=BB1_23 Depth=2
-	alsl.d	$t1, $t1, $s6, 3
-	fst.d	$fa3, $t1, 0
+	alsl.d	$t0, $t0, $s6, 3
+	fst.d	$fa3, $t0, 0
 .LBB1_34:                               #   in Loop: Header=BB1_23 Depth=2
 	fmov.d	$fa2, $fa3
 	b	.LBB1_22

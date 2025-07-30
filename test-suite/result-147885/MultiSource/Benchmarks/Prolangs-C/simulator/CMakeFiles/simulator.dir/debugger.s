@@ -26,7 +26,7 @@ IS_PREFIX_TO:                           # @IS_PREFIX_TO
 	b	.LBB0_6
 .LBB0_2:                                # %.preheader
 	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_6
+	blez	$s2, .LBB0_6
 # %bb.3:                                # %.lr.ph.preheader
 	bstrpick.d	$a1, $s1, 30, 0
 	.p2align	4, , 16
@@ -1275,10 +1275,9 @@ SET_BP:                                 # @SET_BP
 # %bb.16:
 	st.w	$a0, $fp, 0
 	pcalau12i	$a5, %pc_hi20(SORTED_BREAK_POINTS)
-	ori	$a7, $zero, 1
 	addi.d	$a5, $a5, %pc_lo12(SORTED_BREAK_POINTS)
 	move	$a6, $a3
-	blt	$a3, $a7, .LBB5_21
+	blez	$a3, .LBB5_21
 # %bb.17:
 	slli.d	$a6, $a3, 2
 	ldx.w	$a7, $a5, $a6
@@ -2678,8 +2677,8 @@ DEBUGGER:                               # @DEBUGGER
 	jirl	$ra, $ra, 0
 	beqz	$fp, .LBB18_3
 # %bb.1:                                # %.preheader46
-	pcalau12i	$fp, %pc_hi20(RETURN_STATUS)
-	ld.w	$a0, $fp, %pc_lo12(RETURN_STATUS)
+	pcalau12i	$s0, %pc_hi20(RETURN_STATUS)
+	ld.w	$a0, $s0, %pc_lo12(RETURN_STATUS)
 	ori	$s2, $zero, 3
 	bne	$a0, $s2, .LBB18_4
 .LBB18_2:                               # %.loopexit47
@@ -2773,10 +2772,10 @@ DEBUGGER:                               # @DEBUGGER
 	pcalau12i	$a0, %pc_hi20(.Lstr.33)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.33)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	ori	$s5, $zero, 25
+	ori	$fp, $zero, 25
 	pcalau12i	$a0, %pc_hi20(COMMANDS)
-	addi.d	$s0, $a0, %pc_lo12(COMMANDS)
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	addi.d	$s5, $a0, %pc_lo12(COMMANDS)
+	st.d	$s0, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
@@ -2790,7 +2789,7 @@ DEBUGGER:                               # @DEBUGGER
 	jirl	$ra, $ra, 0
 .LBB18_7:                               # %thread-pre-split
                                         #   in Loop: Header=BB18_9 Depth=1
-	ld.w	$a0, $fp, %pc_lo12(RETURN_STATUS)
+	ld.w	$a0, $s0, %pc_lo12(RETURN_STATUS)
 	ori	$s3, $zero, 32
 .LBB18_8:                               #   in Loop: Header=BB18_9 Depth=1
 	beq	$a0, $s2, .LBB18_2
@@ -2831,37 +2830,37 @@ DEBUGGER:                               # @DEBUGGER
 	b	.LBB18_16
 	.p2align	4, , 16
 .LBB18_15:                              #   in Loop: Header=BB18_16 Depth=2
-	addi.d	$s3, $fp, 1
+	addi.d	$s3, $s0, 1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	bgeu	$fp, $a0, .LBB18_18
+	bgeu	$s0, $a0, .LBB18_18
 .LBB18_16:                              # %.preheader
                                         #   Parent Loop BB18_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$fp, $s3
+	move	$s0, $s3
 	ldx.bu	$a0, $s6, $s3
 	addi.d	$a1, $a0, -97
 	andi	$a1, $a1, 255
-	bltu	$s5, $a1, .LBB18_15
+	bltu	$fp, $a1, .LBB18_15
 # %bb.17:                               #   in Loop: Header=BB18_16 Depth=2
 	addi.d	$a0, $a0, -32
-	stx.b	$a0, $s6, $fp
+	stx.b	$a0, $s6, $s0
 	b	.LBB18_15
 	.p2align	4, , 16
 .LBB18_18:                              # %.lr.ph.preheader
                                         #   in Loop: Header=BB18_9 Depth=1
-	move	$s4, $zero
+	move	$s0, $zero
 	.p2align	4, , 16
 .LBB18_19:                              # %.lr.ph
                                         #   Parent Loop BB18_9 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB18_27 Depth 3
                                         #       Child Loop BB18_23 Depth 3
-	slli.d	$a0, $s4, 4
-	alsl.d	$a0, $s4, $a0, 3
-	add.d	$fp, $s0, $a0
-	ld.d	$s8, $fp, 8
+	slli.d	$a0, $s0, 4
+	alsl.d	$a0, $s0, $a0, 3
+	add.d	$s4, $s5, $a0
+	ld.d	$s8, $s4, 8
 	ld.d	$s6, $sp, 144
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(strlen)
@@ -2875,7 +2874,7 @@ DEBUGGER:                               # @DEBUGGER
 	bgeu	$a0, $s2, .LBB18_25
 .LBB18_20:                              # %.loopexit
                                         #   in Loop: Header=BB18_19 Depth=2
-	ld.d	$s8, $fp, 0
+	ld.d	$s8, $s4, 0
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -2884,8 +2883,7 @@ DEBUGGER:                               # @DEBUGGER
 	bltu	$s3, $a0, .LBB18_30
 # %bb.21:                               # %.preheader.i32
                                         #   in Loop: Header=BB18_19 Depth=2
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB18_29
+	blez	$a0, .LBB18_29
 # %bb.22:                               # %.lr.ph.preheader.i34
                                         #   in Loop: Header=BB18_19 Depth=2
 	bstrpick.d	$a0, $s7, 30, 0
@@ -2907,8 +2905,7 @@ DEBUGGER:                               # @DEBUGGER
 	.p2align	4, , 16
 .LBB18_25:                              # %.preheader.i
                                         #   in Loop: Header=BB18_19 Depth=2
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB18_29
+	blez	$s2, .LBB18_29
 # %bb.26:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB18_19 Depth=2
 	bstrpick.d	$a0, $s7, 30, 0
@@ -2928,7 +2925,7 @@ DEBUGGER:                               # @DEBUGGER
 	bnez	$a0, .LBB18_27
 .LBB18_29:                              # %IS_PREFIX_TO.exit41.thread.sink.split
                                         #   in Loop: Header=BB18_19 Depth=2
-	ld.w	$a0, $fp, 16
+	ld.w	$a0, $s4, 16
 	add.d	$a1, $s6, $s7
 	addi.d	$a2, $sp, 140
 	pcaddu18i	$ra, %call36(CALL_FUNCTION)
@@ -2936,14 +2933,14 @@ DEBUGGER:                               # @DEBUGGER
 .LBB18_30:                              # %IS_PREFIX_TO.exit41.thread
                                         #   in Loop: Header=BB18_19 Depth=2
 	ld.w	$a0, $sp, 140
-	bltu	$s1, $s4, .LBB18_32
+	bltu	$s1, $s0, .LBB18_32
 # %bb.31:                               # %IS_PREFIX_TO.exit41.thread
                                         #   in Loop: Header=BB18_19 Depth=2
-	addi.d	$s4, $s4, 1
+	addi.d	$s0, $s0, 1
 	beqz	$a0, .LBB18_19
 .LBB18_32:                              # %CAPITALIZE_STRING.exit._crit_edge
                                         #   in Loop: Header=BB18_9 Depth=1
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
 	ori	$s2, $zero, 3
 	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
@@ -2952,14 +2949,14 @@ DEBUGGER:                               # @DEBUGGER
 	beqz	$a0, .LBB18_37
 .LBB18_33:                              # %.loopexit61
                                         #   in Loop: Header=BB18_9 Depth=1
-	ld.w	$a0, $fp, %pc_lo12(RETURN_STATUS)
+	ld.w	$a0, $s0, %pc_lo12(RETURN_STATUS)
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB18_8
 .LBB18_34:                              #   in Loop: Header=BB18_9 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 36
 	ori	$a1, $zero, 1
-	st.w	$a1, $fp, %pc_lo12(RETURN_STATUS)
+	st.w	$a1, $s0, %pc_lo12(RETURN_STATUS)
 	bstrpick.d	$a1, $a0, 62, 55
 	add.d	$a1, $a0, $a1
 	bstrpick.d	$a1, $a1, 31, 8
@@ -2991,7 +2988,7 @@ DEBUGGER:                               # @DEBUGGER
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.32)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(RETURN_STATUS)
+	ld.w	$a0, $s0, %pc_lo12(RETURN_STATUS)
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB18_8
 	b	.LBB18_34

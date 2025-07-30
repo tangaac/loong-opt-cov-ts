@@ -299,7 +299,6 @@ graph_StronglyConnectedComponents:      # @graph_StronglyConnectedComponents
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 16
 	beqz	$a0, .LBB9_4
@@ -325,32 +324,28 @@ graph_StronglyConnectedComponents:      # @graph_StronglyConnectedComponents
 	pcalau12i	$a0, %pc_hi20(graph_UNFINISHED)
 	st.d	$zero, $a0, %pc_lo12(graph_UNFINISHED)
 	ld.d	$s0, $fp, 8
-	beqz	$s0, .LBB9_9
-# %bb.5:                                # %.lr.ph.preheader
-	addi.w	$s1, $zero, -1
-	b	.LBB9_7
-	.p2align	4, , 16
-.LBB9_6:                                #   in Loop: Header=BB9_7 Depth=1
-	ld.d	$s0, $s0, 0
-	beqz	$s0, .LBB9_9
-.LBB9_7:                                # %.lr.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $s0, 8
-	ld.w	$a0, $a1, 4
-	blt	$s1, $a0, .LBB9_6
-# %bb.8:                                #   in Loop: Header=BB9_7 Depth=1
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(graph_InternSCC)
-	jirl	$ra, $ra, 0
-	b	.LBB9_6
-.LBB9_9:                                # %._crit_edge
+	bnez	$s0, .LBB9_7
+.LBB9_5:                                # %._crit_edge
 	ld.w	$a0, $fp, 20
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
+	.p2align	4, , 16
+.LBB9_6:                                #   in Loop: Header=BB9_7 Depth=1
+	ld.d	$s0, $s0, 0
+	beqz	$s0, .LBB9_5
+.LBB9_7:                                # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a1, $s0, 8
+	ld.w	$a0, $a1, 4
+	bgez	$a0, .LBB9_6
+# %bb.8:                                #   in Loop: Header=BB9_7 Depth=1
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(graph_InternSCC)
+	jirl	$ra, $ra, 0
+	b	.LBB9_6
 .Lfunc_end9:
 	.size	graph_StronglyConnectedComponents, .Lfunc_end9-graph_StronglyConnectedComponents
                                         # -- End function
@@ -368,7 +363,6 @@ graph_InternSCC:                        # @graph_InternSCC
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$s2, $a0, 16
 	move	$s0, $a1
@@ -398,7 +392,6 @@ graph_InternSCC:                        # @graph_InternSCC
 	ld.d	$s5, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
-	addi.w	$s7, $zero, -1
 	b	.LBB10_4
 	.p2align	4, , 16
 .LBB10_2:                               #   in Loop: Header=BB10_4 Depth=1
@@ -414,10 +407,10 @@ graph_InternSCC:                        # @graph_InternSCC
                                         #     Child Loop BB10_7 Depth 2
 	ld.d	$a1, $s4, 8
 	ld.w	$a0, $a1, 4
-	bge	$s7, $a0, .LBB10_2
+	bltz	$a0, .LBB10_2
 # %bb.5:                                #   in Loop: Header=BB10_4 Depth=1
 	ld.w	$a1, $a1, 8
-	blt	$s7, $a1, .LBB10_3
+	bgez	$a1, .LBB10_3
 # %bb.6:                                #   in Loop: Header=BB10_4 Depth=1
 	ld.d	$a1, $s1, %pc_lo12(graph_ROOTS)
 	beqz	$a1, .LBB10_3
@@ -496,7 +489,6 @@ graph_InternSCC:                        # @graph_InternSCC
 	st.d	$a0, $a1, 0
 	st.d	$a6, $s1, %pc_lo12(graph_ROOTS)
 .LBB10_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

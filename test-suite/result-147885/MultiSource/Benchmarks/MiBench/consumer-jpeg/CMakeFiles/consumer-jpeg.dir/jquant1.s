@@ -150,7 +150,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	jirl	$ra, $a1, 0
 .LBB0_16:
 	addi.d	$s2, $s1, 60
-	blt	$s4, $s3, .LBB0_27
+	blez	$s4, .LBB0_27
 # %bb.17:                               # %.lr.ph.preheader.i.i
 	ori	$a0, $zero, 8
 	bgeu	$s4, $a0, .LBB0_19
@@ -249,7 +249,6 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ld.d	$a2, $a2, 8
 	st.w	$a1, $a0, 40
 	ori	$a1, $zero, 1
-	ori	$s4, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	ld.d	$a0, $fp, 8
@@ -261,7 +260,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	move	$a2, $s0
 	jirl	$ra, $a4, 0
 	ld.w	$a5, $fp, 136
-	blt	$a5, $s4, .LBB0_43
+	blez	$a5, .LBB0_43
 # %bb.31:                               # %.lr.ph74.preheader.i
 	move	$a1, $zero
 	move	$a2, $s3
@@ -283,10 +282,10 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ldx.w	$a3, $s2, $a3
 	addi.w	$a4, $a2, 0
 	div.w	$a2, $a4, $a3
-	blt	$a3, $s4, .LBB0_33
+	blez	$a3, .LBB0_33
 # %bb.35:                               # %.lr.ph70.i
                                         #   in Loop: Header=BB0_34 Depth=1
-	blt	$a2, $s4, .LBB0_33
+	blez	$a2, .LBB0_33
 # %bb.36:                               # %.lr.ph70.split.us.preheader.i
                                         #   in Loop: Header=BB0_34 Depth=1
 	move	$a5, $zero
@@ -348,8 +347,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	bne	$a0, $a1, .LBB0_47
 # %bb.44:
 	ld.w	$a0, $fp, 136
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_47
+	blez	$a0, .LBB0_47
 # %bb.45:                               # %.lr.ph.i24
 	ld.w	$a0, $fp, 128
 	move	$s1, $zero
@@ -537,8 +535,7 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	bnez	$a0, .LBB1_29
 .LBB1_13:
 	ld.w	$a1, $fp, 136
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_29
+	blez	$a1, .LBB1_29
 # %bb.14:                               # %.lr.ph26.i
 	ld.d	$a0, $fp, 608
 	move	$s0, $zero
@@ -680,8 +677,7 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	b	.LBB1_16
 .LBB1_23:
 	ld.w	$a0, $fp, 136
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_29
+	blez	$a0, .LBB1_29
 # %bb.24:                               # %.lr.ph.i30
 	ld.w	$a0, $fp, 128
 	move	$s2, $zero
@@ -703,8 +699,7 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	addi.d	$s3, $s3, 8
 	blt	$s2, $a1, .LBB1_25
 .LBB1_26:                               # %alloc_fs_workspace.exit
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_29
+	blez	$a1, .LBB1_29
 # %bb.27:                               # %.lr.ph.preheader
 	ld.w	$a0, $fp, 128
 	move	$s2, $zero
@@ -787,7 +782,7 @@ create_colorindex:                      # @create_colorindex
 	jirl	$ra, $a4, 0
 	ld.w	$a1, $fp, 136
 	st.d	$a0, $s1, 48
-	blt	$a1, $s3, .LBB4_13
+	blez	$a1, .LBB4_13
 # %bb.1:                                # %.lr.ph62
 	move	$a0, $zero
 	ld.w	$a1, $s1, 40
@@ -889,8 +884,7 @@ create_colorindex:                      # @create_colorindex
 	.type	color_quantize3,@function
 color_quantize3:                        # @color_quantize3
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB5_6
+	blez	$a3, .LBB5_6
 # %bb.1:
 	ld.w	$a4, $a0, 128
 	beqz	$a4, .LBB5_6
@@ -938,8 +932,7 @@ color_quantize3:                        # @color_quantize3
 	.type	color_quantize,@function
 color_quantize:                         # @color_quantize
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB6_16
+	blez	$a3, .LBB6_16
 # %bb.1:
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
@@ -1106,8 +1099,7 @@ color_quantize:                         # @color_quantize
 	.type	quantize3_ord_dither,@function
 quantize3_ord_dither:                   # @quantize3_ord_dither
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB7_10
+	blez	$a3, .LBB7_10
 # %bb.1:                                # %.lr.ph52
 	addi.d	$sp, $sp, -48
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
@@ -1200,8 +1192,7 @@ quantize3_ord_dither:                   # @quantize3_ord_dither
 	.type	quantize_ord_dither,@function
 quantize_ord_dither:                    # @quantize_ord_dither
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB8_13
+	blez	$a3, .LBB8_13
 # %bb.1:                                # %.lr.ph54
 	addi.d	$sp, $sp, -96
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
@@ -1352,10 +1343,9 @@ quantize_fs_dither:                     # @quantize_fs_dither
 	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	ori	$a4, $zero, 1
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	blt	$a3, $a4, .LBB9_14
+	blez	$a3, .LBB9_14
 # %bb.1:                                # %.lr.ph105
 	move	$s8, $a2
 	ld.w	$s4, $a0, 136

@@ -213,7 +213,6 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(onintr)
 	addi.d	$s1, $a0, %pc_lo12(onintr)
 	ori	$a0, $zero, 1
-	ori	$s4, $zero, 1
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(signal)
 	jirl	$ra, $ra, 0
@@ -233,7 +232,7 @@ main:                                   # @main
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(signal)
 	jirl	$ra, $ra, 0
-	bge	$s3, $s4, .LBB1_34
+	bgtz	$s3, .LBB1_34
 # %bb.30:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(process)
@@ -268,21 +267,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB1_34:                               # %.preheader.preheader
 	alsl.d	$a1, $s2, $fp, 3
-	sub.w	$s0, $s2, $s0
-	ori	$fp, $zero, 0
-	lu32i.d	$fp, 1
+	sub.w	$fp, $s2, $s0
 	.p2align	4, , 16
 .LBB1_35:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $a1, 0
-	addi.d	$s1, $a1, 8
+	addi.d	$s0, $a1, 8
 	pcaddu18i	$ra, %call36(process)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s0, 31, 0
-	addi.d	$s0, $a0, 1
-	and	$a0, $s0, $fp
-	move	$a1, $s1
-	beqz	$a0, .LBB1_35
+	bstrpick.d	$a0, $fp, 31, 0
+	addi.d	$fp, $a0, 1
+	slli.d	$a0, $fp, 31
+	move	$a1, $s0
+	bgez	$a0, .LBB1_35
 # %bb.36:                               # %.loopexit
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)
@@ -624,8 +621,7 @@ process:                                # @process
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fstat)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB5_85
+	bltz	$a0, .LBB5_85
 # %bb.11:
 	ld.wu	$a0, $s1, 16
 	lu12i.w	$a1, 15
@@ -831,8 +827,7 @@ process:                                # @process
 	st.d	$zero, $s6, %pc_lo12(out)
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB5_46
+	bgez	$a0, .LBB5_46
 # %bb.44:
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
@@ -943,8 +938,7 @@ process:                                # @process
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB5_90
+	bltz	$a0, .LBB5_90
 # %bb.66:
 	beq	$a1, $fp, .LBB5_68
 # %bb.67:
@@ -996,8 +990,7 @@ process:                                # @process
 .LBB5_75:
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB5_41
+	bgez	$a0, .LBB5_41
 # %bb.76:
 	ld.d	$a0, $s4, 0
 	pcaddu18i	$ra, %call36(perror)
@@ -1296,64 +1289,60 @@ process:                                # @process
 	.type	process_decode,@function
 process_decode:                         # @process_decode
 # %bb.0:
-	addi.d	$sp, $sp, -416
-	st.d	$ra, $sp, 408                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 360                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -400
+	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(gsm_create)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB6_10
 # %bb.1:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(f_fast)
 	addi.d	$a2, $a0, %pc_lo12(f_fast)
 	ori	$a1, $zero, 2
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_option)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(f_verbose)
 	addi.d	$a2, $a0, %pc_lo12(f_verbose)
 	ori	$a1, $zero, 1
-	ori	$s1, $zero, 1
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_option)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s2, %pc_hi20(in)
-	ori	$s3, $zero, 33
-	pcalau12i	$s4, %pc_hi20(output)
-	addi.w	$fp, $zero, -1
+	pcalau12i	$s0, %pc_hi20(in)
+	ori	$s1, $zero, 33
+	pcalau12i	$s2, %pc_hi20(output)
 	.p2align	4, , 16
 .LBB6_2:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $s2, %pc_lo12(in)
+	ld.d	$a3, $s0, %pc_lo12(in)
 	addi.d	$a0, $sp, 327
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 33
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s1, .LBB6_7
+	blez	$a1, .LBB6_7
 # %bb.3:                                #   in Loop: Header=BB6_2 Depth=1
 	bstrpick.d	$a1, $a0, 30, 0
-	bne	$a1, $s3, .LBB6_11
+	bne	$a1, $s1, .LBB6_11
 # %bb.4:                                #   in Loop: Header=BB6_2 Depth=1
 	addi.d	$a1, $sp, 327
 	addi.d	$a2, $sp, 6
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_decode)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB6_12
 # %bb.5:                                #   in Loop: Header=BB6_2 Depth=1
-	ld.d	$a1, $s4, %pc_lo12(output)
+	ld.d	$a1, $s2, %pc_lo12(output)
 	addi.d	$a0, $sp, 6
 	jirl	$ra, $a1, 0
-	blt	$fp, $a0, .LBB6_2
+	bgez	$a0, .LBB6_2
 # %bb.6:
-	pcalau12i	$s1, %pc_hi20(outname)
-	ld.d	$a0, $s1, %pc_lo12(outname)
+	pcalau12i	$s0, %pc_hi20(outname)
+	ld.d	$a0, $s0, %pc_lo12(outname)
 	pcaddu18i	$ra, %call36(perror)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(stderr)
@@ -1361,34 +1350,31 @@ process_decode:                         # @process_decode
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(progname)
 	ld.d	$a2, $a1, %pc_lo12(progname)
-	ld.d	$a3, $s1, %pc_lo12(outname)
+	ld.d	$a3, $s0, %pc_lo12(outname)
 	pcalau12i	$a1, %pc_hi20(.L.str.58)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.58)
 	b	.LBB6_15
 .LBB6_7:
-	bge	$fp, $a1, .LBB6_14
+	bltz	$a1, .LBB6_14
 # %bb.8:
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_destroy)
 	jirl	$ra, $ra, 0
-	move	$fp, $zero
+	move	$a0, $zero
 .LBB6_9:
-	move	$a0, $fp
-	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 416
+	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 400
 	ret
 .LBB6_10:
 	pcalau12i	$a0, %pc_hi20(progname)
 	ld.d	$a0, $a0, %pc_lo12(progname)
 	pcaddu18i	$ra, %call36(perror)
 	jirl	$ra, $ra, 0
-	addi.w	$fp, $zero, -1
+	addi.w	$a0, $zero, -1
 	b	.LBB6_9
 .LBB6_11:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
@@ -1435,42 +1421,44 @@ process_decode:                         # @process_decode
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB6_13:
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_destroy)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	st.w	$zero, $a0, 0
+	addi.w	$a0, $zero, -1
 	b	.LBB6_9
 .LBB6_14:
-	pcalau12i	$s1, %pc_hi20(inname)
-	ld.d	$a0, $s1, %pc_lo12(inname)
+	pcalau12i	$s0, %pc_hi20(inname)
+	ld.d	$a0, $s0, %pc_lo12(inname)
 	sltui	$a1, $a0, 1
 	masknez	$a0, $a0, $a1
 	pcalau12i	$a2, %pc_hi20(.L.str.37)
-	addi.d	$s2, $a2, %pc_lo12(.L.str.37)
-	maskeqz	$a1, $s2, $a1
+	addi.d	$s1, $a2, %pc_lo12(.L.str.37)
+	maskeqz	$a1, $s1, $a1
 	or	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(perror)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	ld.d	$a1, $s1, %pc_lo12(inname)
+	ld.d	$a1, $s0, %pc_lo12(inname)
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a2, %pc_hi20(progname)
 	ld.d	$a2, $a2, %pc_lo12(progname)
 	sltui	$a3, $a1, 1
 	masknez	$a1, $a1, $a3
-	maskeqz	$a3, $s2, $a3
+	maskeqz	$a3, $s1, $a3
 	or	$a3, $a3, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.59)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.59)
 .LBB6_15:
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_destroy)
 	jirl	$ra, $ra, 0
+	addi.w	$a0, $zero, -1
 	b	.LBB6_9
 .Lfunc_end6:
 	.size	process_decode, .Lfunc_end6-process_decode
@@ -1530,7 +1518,7 @@ process_encode:                         # @process_encode
 	ld.d	$a1, $s1, %pc_lo12(input)
 	addi.d	$a0, $sp, 48
 	jirl	$ra, $a1, 0
-	blt	$a0, $s0, .LBB7_6
+	blez	$a0, .LBB7_6
 # %bb.4:                                #   in Loop: Header=BB7_3 Depth=1
 	bltu	$s3, $a0, .LBB7_2
 # %bb.5:                                #   in Loop: Header=BB7_3 Depth=1
@@ -1543,8 +1531,7 @@ process_encode:                         # @process_encode
 	jirl	$ra, $ra, 0
 	b	.LBB7_2
 .LBB7_6:
-	addi.w	$s0, $zero, -1
-	bge	$s0, $a0, .LBB7_11
+	bltz	$a0, .LBB7_11
 # %bb.7:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_destroy)
@@ -1591,42 +1578,37 @@ process_encode:                         # @process_encode
 	or	$a3, $a3, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.58)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.58)
+	b	.LBB7_12
+.LBB7_11:
+	pcalau12i	$s0, %pc_hi20(inname)
+	ld.d	$a0, $s0, %pc_lo12(inname)
+	sltui	$a1, $a0, 1
+	masknez	$a0, $a0, $a1
+	pcalau12i	$a2, %pc_hi20(.L.str.37)
+	addi.d	$s1, $a2, %pc_lo12(.L.str.37)
+	maskeqz	$a1, $s1, $a1
+	or	$a0, $a1, $a0
+	pcaddu18i	$ra, %call36(perror)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %got_pc_hi20(stderr)
+	ld.d	$a0, $a0, %got_pc_lo12(stderr)
+	ld.d	$a1, $s0, %pc_lo12(inname)
+	ld.d	$a0, $a0, 0
+	pcalau12i	$a2, %pc_hi20(progname)
+	ld.d	$a2, $a2, %pc_lo12(progname)
+	sltui	$a3, $a1, 1
+	masknez	$a1, $a1, $a3
+	maskeqz	$a3, $s1, $a3
+	or	$a3, $a3, $a1
+	pcalau12i	$a1, %pc_hi20(.L.str.59)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.59)
+.LBB7_12:
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gsm_destroy)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -1
-	b	.LBB7_8
-.LBB7_11:
-	pcalau12i	$s1, %pc_hi20(inname)
-	ld.d	$a0, $s1, %pc_lo12(inname)
-	sltui	$a1, $a0, 1
-	masknez	$a0, $a0, $a1
-	pcalau12i	$a2, %pc_hi20(.L.str.37)
-	addi.d	$s2, $a2, %pc_lo12(.L.str.37)
-	maskeqz	$a1, $s2, $a1
-	or	$a0, $a1, $a0
-	pcaddu18i	$ra, %call36(perror)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %got_pc_hi20(stderr)
-	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	ld.d	$a1, $s1, %pc_lo12(inname)
-	ld.d	$a0, $a0, 0
-	pcalau12i	$a2, %pc_hi20(progname)
-	ld.d	$a2, $a2, %pc_lo12(progname)
-	sltui	$a3, $a1, 1
-	masknez	$a1, $a1, $a3
-	maskeqz	$a3, $s2, $a3
-	or	$a3, $a3, $a1
-	pcalau12i	$a1, %pc_hi20(.L.str.59)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.59)
-	pcaddu18i	$ra, %call36(fprintf)
-	jirl	$ra, $ra, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(gsm_destroy)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
 	b	.LBB7_8
 .Lfunc_end7:
 	.size	process_encode, .Lfunc_end7-process_encode

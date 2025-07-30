@@ -93,8 +93,7 @@ insertEntry:                            # @insertEntry
 	ori	$a0, $zero, 1
 	b	.LBB0_29
 .LBB0_15:                               # %._crit_edge.thread
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB0_18
+	blez	$s1, .LBB0_18
 # %bb.16:
 	st.d	$a1, $s0, 8
 .LBB0_17:

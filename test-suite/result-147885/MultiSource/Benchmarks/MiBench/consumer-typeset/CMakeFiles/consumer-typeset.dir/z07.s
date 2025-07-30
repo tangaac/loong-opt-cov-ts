@@ -74,12 +74,10 @@ DisposeObject:                          # @DisposeObject
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
 	ld.d	$s2, $a1, %got_pc_lo12(no_fpos)
 	pcalau12i	$a1, %pc_hi20(.L.str)
-	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$s0, $a1, %pc_lo12(.L.str)
 	pcalau12i	$a1, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	ori	$s1, $zero, 1
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.18)
 	pcalau12i	$a2, %got_pc_hi20(xx_link)
 	ld.d	$s7, $a2, %got_pc_lo12(xx_link)
@@ -94,7 +92,7 @@ DisposeObject:                          # @DisposeObject
 	pcalau12i	$a2, %got_pc_hi20(zz_free)
 	ld.d	$s4, $a2, %got_pc_lo12(zz_free)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB1_2
 	.p2align	4, , 16
 .LBB1_1:                                #   in Loop: Header=BB1_2 Depth=1
@@ -182,20 +180,20 @@ DisposeObject:                          # @DisposeObject
 # %bb.12:                               # %.preheader19.preheader
                                         #   in Loop: Header=BB1_2 Depth=1
 	ori	$a3, $zero, 1
-	move	$s0, $a0
+	move	$s1, $a0
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB1_13:                               # %.preheader19
                                         #   Parent Loop BB1_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s0, $s0, 8
+	ld.d	$s1, $s1, 8
 	ld.d	$a2, $a2, 24
-	xor	$a4, $s0, $a0
+	xor	$a4, $s1, $a0
 	sltu	$a4, $zero, $a4
 	xor	$a5, $a2, $a0
 	sltu	$a5, $zero, $a5
 	and	$a4, $a4, $a5
-	bne	$a4, $s1, .LBB1_15
+	beqz	$a4, .LBB1_15
 # %bb.14:                               # %.preheader19
                                         #   in Loop: Header=BB1_13 Depth=2
 	move	$a5, $a3
@@ -216,40 +214,40 @@ DisposeObject:                          # @DisposeObject
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_17:                               #   in Loop: Header=BB1_2 Depth=1
-	ld.d	$a0, $s0, 24
-	st.d	$s0, $s7, 0
-	beq	$a0, $s0, .LBB1_42
+	ld.d	$a0, $s1, 24
+	st.d	$s1, $s7, 0
+	beq	$a0, $s1, .LBB1_42
 # %bb.18:                               #   in Loop: Header=BB1_2 Depth=1
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_res)
-	ld.d	$a2, $s0, 16
+	ld.d	$a2, $s1, 16
 	st.d	$a0, $a1, 0
 	st.d	$a2, $a0, 16
 	st.d	$a0, $a2, 24
-	st.d	$s0, $s0, 24
-	st.d	$s0, $s0, 16
-	ld.d	$a1, $s0, 8
+	st.d	$s1, $s1, 24
+	st.d	$s1, $s1, 16
+	ld.d	$a1, $s1, 8
 	st.d	$a0, $s8, 0
-	st.d	$s0, $s3, 0
-	beq	$a1, $s0, .LBB1_20
+	st.d	$s1, $s3, 0
+	beq	$a1, $s1, .LBB1_20
 .LBB1_19:                               #   in Loop: Header=BB1_2 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(zz_res)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_res)
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $s0, 0
+	ld.d	$a2, $s1, 0
 	st.d	$a2, $a1, 0
 	ld.d	$a1, $s3, 0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a1, 0
 	st.d	$a0, $a2, 8
 	st.d	$a1, $a1, 0
-	ld.d	$s0, $s7, 0
+	ld.d	$s1, $s7, 0
 	st.d	$a1, $a1, 8
 .LBB1_20:                               #   in Loop: Header=BB1_2 Depth=1
-	ld.bu	$a0, $s0, 32
+	ld.bu	$a0, $s1, 32
 	addi.d	$a1, $a0, -11
 	sltui	$a1, $a1, 2
-	addi.d	$a2, $s0, 33
+	addi.d	$a2, $s1, 33
 	add.d	$a0, $s6, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
@@ -257,9 +255,9 @@ DisposeObject:                          # @DisposeObject
 	ld.bu	$a0, $a0, 0
 	slli.d	$a1, $a0, 3
 	ldx.d	$a1, $s4, $a1
-	st.d	$s0, $s3, 0
+	st.d	$s1, $s3, 0
 	st.w	$a0, $s5, 0
-	st.d	$a1, $s0, 0
+	st.d	$a1, $s1, 0
 	ld.w	$a1, $s5, 0
 	ld.d	$a2, $s3, 0
 	ld.d	$a0, $s8, 0
@@ -343,20 +341,20 @@ DisposeObject:                          # @DisposeObject
 # %bb.29:                               # %.preheader18.preheader
                                         #   in Loop: Header=BB1_2 Depth=1
 	ori	$a3, $zero, 1
-	move	$s0, $a0
+	move	$s1, $a0
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB1_30:                               # %.preheader18
                                         #   Parent Loop BB1_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s0, $s0, 8
+	ld.d	$s1, $s1, 8
 	ld.d	$a2, $a2, 24
-	xor	$a4, $s0, $a0
+	xor	$a4, $s1, $a0
 	sltu	$a4, $zero, $a4
 	xor	$a5, $a2, $a0
 	sltu	$a5, $zero, $a5
 	and	$a4, $a4, $a5
-	bne	$a4, $s1, .LBB1_32
+	beqz	$a4, .LBB1_32
 # %bb.31:                               # %.preheader18
                                         #   in Loop: Header=BB1_30 Depth=2
 	move	$a5, $a3
@@ -377,40 +375,40 @@ DisposeObject:                          # @DisposeObject
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_34:                               #   in Loop: Header=BB1_2 Depth=1
-	ld.d	$a0, $s0, 24
-	st.d	$s0, $s7, 0
-	beq	$a0, $s0, .LBB1_45
+	ld.d	$a0, $s1, 24
+	st.d	$s1, $s7, 0
+	beq	$a0, $s1, .LBB1_45
 # %bb.35:                               #   in Loop: Header=BB1_2 Depth=1
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_res)
-	ld.d	$a2, $s0, 16
+	ld.d	$a2, $s1, 16
 	st.d	$a0, $a1, 0
 	st.d	$a2, $a0, 16
 	st.d	$a0, $a2, 24
-	st.d	$s0, $s0, 24
-	st.d	$s0, $s0, 16
-	ld.d	$a1, $s0, 8
+	st.d	$s1, $s1, 24
+	st.d	$s1, $s1, 16
+	ld.d	$a1, $s1, 8
 	st.d	$a0, $s8, 0
-	st.d	$s0, $s3, 0
-	beq	$a1, $s0, .LBB1_37
+	st.d	$s1, $s3, 0
+	beq	$a1, $s1, .LBB1_37
 .LBB1_36:                               #   in Loop: Header=BB1_2 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(zz_res)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_res)
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $s0, 0
+	ld.d	$a2, $s1, 0
 	st.d	$a2, $a1, 0
 	ld.d	$a1, $s3, 0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a1, 0
 	st.d	$a0, $a2, 8
 	st.d	$a1, $a1, 0
-	ld.d	$s0, $s7, 0
+	ld.d	$s1, $s7, 0
 	st.d	$a1, $a1, 8
 .LBB1_37:                               #   in Loop: Header=BB1_2 Depth=1
-	ld.bu	$a0, $s0, 32
+	ld.bu	$a0, $s1, 32
 	addi.d	$a1, $a0, -11
 	sltui	$a1, $a1, 2
-	addi.d	$a2, $s0, 33
+	addi.d	$a2, $s1, 33
 	add.d	$a0, $s6, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
@@ -418,9 +416,9 @@ DisposeObject:                          # @DisposeObject
 	ld.bu	$a0, $a0, 0
 	slli.d	$a1, $a0, 3
 	ldx.d	$a1, $s4, $a1
-	st.d	$s0, $s3, 0
+	st.d	$s1, $s3, 0
 	st.w	$a0, $s5, 0
-	st.d	$a1, $s0, 0
+	st.d	$a1, $s1, 0
 	ld.w	$a1, $s5, 0
 	ld.d	$a2, $s3, 0
 	ld.d	$a0, $s8, 0
@@ -453,9 +451,9 @@ DisposeObject:                          # @DisposeObject
 	ld.d	$a4, $s2, 0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 2
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	move	$a2, $s0
 	move	$a3, $zero
-	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
@@ -465,9 +463,9 @@ DisposeObject:                          # @DisposeObject
 	ld.d	$a4, $s2, 0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 2
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	move	$a2, $s0
 	move	$a3, $zero
-	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
@@ -477,10 +475,10 @@ DisposeObject:                          # @DisposeObject
 	b	.LBB1_9
 .LBB1_42:                               #   in Loop: Header=BB1_2 Depth=1
 	move	$a0, $zero
-	ld.d	$a1, $s0, 8
+	ld.d	$a1, $s1, 8
 	st.d	$a0, $s8, 0
-	st.d	$s0, $s3, 0
-	bne	$a1, $s0, .LBB1_19
+	st.d	$s1, $s3, 0
+	bne	$a1, $s1, .LBB1_19
 	b	.LBB1_20
 .LBB1_43:                               #   in Loop: Header=BB1_2 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)
@@ -499,10 +497,10 @@ DisposeObject:                          # @DisposeObject
 	b	.LBB1_24
 .LBB1_45:                               #   in Loop: Header=BB1_2 Depth=1
 	move	$a0, $zero
-	ld.d	$a1, $s0, 8
+	ld.d	$a1, $s1, 8
 	st.d	$a0, $s8, 0
-	st.d	$s0, $s3, 0
-	bne	$a1, $s0, .LBB1_36
+	st.d	$s1, $s3, 0
+	bne	$a1, $s1, .LBB1_36
 	b	.LBB1_37
 .LBB1_46:                               #   in Loop: Header=BB1_2 Depth=1
 	pcaddu18i	$ra, %call36(DisposeObject)

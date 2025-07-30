@@ -332,9 +332,8 @@ COM_handler:                            # @COM_handler
 	addi.d	$a0, $a1, 1
 	st.d	$a0, $s1, 0
 	ld.bu	$s1, $a1, 0
-	ori	$a0, $zero, 1
 	or	$s2, $s0, $s1
-	bge	$s3, $a0, .LBB1_13
+	bgtz	$s3, .LBB1_13
 # %bb.7:                                # %.thread
 	ori	$a0, $zero, 3
 	bltu	$s2, $a0, .LBB1_30
@@ -407,12 +406,12 @@ COM_handler:                            # @COM_handler
 	blez	$s5, .LBB1_28
 .LBB1_17:                               # %.lr.ph.split.us
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s0, $fp, 32
-	ld.d	$a0, $s0, 8
-	move	$s6, $s2
+	ld.d	$s6, $fp, 32
+	ld.d	$a0, $s6, 8
+	move	$s0, $s2
 	bnez	$a0, .LBB1_20
 # %bb.18:                               #   in Loop: Header=BB1_17 Depth=1
-	ld.d	$a1, $s0, 24
+	ld.d	$a1, $s6, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB1_20
@@ -426,12 +425,12 @@ COM_handler:                            # @COM_handler
 	.p2align	4, , 16
 .LBB1_20:                               # %jpeg_getc.exit27.us
                                         #   in Loop: Header=BB1_17 Depth=1
-	ld.d	$a0, $s0, 8
-	ld.d	$a1, $s0, 0
+	ld.d	$a0, $s6, 8
+	ld.d	$a1, $s6, 0
 	addi.d	$a0, $a0, -1
-	st.d	$a0, $s0, 8
+	st.d	$a0, $s6, 8
 	addi.d	$a0, $a1, 1
-	st.d	$a0, $s0, 0
+	st.d	$a0, $s6, 0
 	ld.bu	$s2, $a1, 0
 	beq	$s2, $s7, .LBB1_25
 # %bb.21:                               # %jpeg_getc.exit27.us
@@ -447,9 +446,8 @@ COM_handler:                            # @COM_handler
 	slli.d	$a1, $s2, 1
 	ldx.hu	$a0, $a0, $a1
 	ld.d	$a1, $s4, 0
-	lu12i.w	$a2, 4
-	and	$a0, $a0, $a2
-	beqz	$a0, .LBB1_27
+	slli.d	$a0, $a0, 49
+	bgez	$a0, .LBB1_27
 # %bb.24:                               #   in Loop: Header=BB1_17 Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(putc)
@@ -457,7 +455,7 @@ COM_handler:                            # @COM_handler
 	b	.LBB1_16
 	.p2align	4, , 16
 .LBB1_25:                               #   in Loop: Header=BB1_17 Depth=1
-	bne	$s6, $s8, .LBB1_15
+	bne	$s0, $s8, .LBB1_15
 	b	.LBB1_16
 .LBB1_26:                               #   in Loop: Header=BB1_17 Depth=1
 	ld.d	$a3, $s4, 0
@@ -475,8 +473,7 @@ COM_handler:                            # @COM_handler
 	jirl	$ra, $ra, 0
 	b	.LBB1_16
 .LBB1_28:                               # %._crit_edge
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB1_30
+	blez	$s3, .LBB1_30
 .LBB1_29:                               # %._crit_edge.thread30
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)

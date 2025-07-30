@@ -1037,13 +1037,13 @@ SubPelBlockMotionSearch:                # @SubPelBlockMotionSearch
 	ori	$a2, $zero, 1
 .LBB2_20:
 	pcalau12i	$a3, %got_pc_hi20(ref_access_method)
-	ld.d	$a6, $a3, %got_pc_lo12(ref_access_method)
+	ld.d	$a5, $a3, %got_pc_lo12(ref_access_method)
 	ld.w	$s2, $sp, 256
-	st.w	$a2, $a6, 0
+	st.w	$a2, $a5, 0
 	st.d	$ra, $sp, 64                    # 8-byte Folded Spill
 	bge	$s0, $s3, .LBB2_25
 # %bb.21:                               # %.lr.ph
-	st.d	$a6, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
 	st.d	$t8, $sp, 8                     # 8-byte Folded Spill
 	st.d	$t6, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
@@ -1151,39 +1151,38 @@ SubPelBlockMotionSearch:                # @SubPelBlockMotionSearch
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a6, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
 .LBB2_29:                               # %._crit_edge.thread
 	pcalau12i	$a0, %pc_hi20(start_me_refinement_qp)
 	ld.w	$s1, $a0, %pc_lo12(start_me_refinement_qp)
 	ld.d	$s3, $sp, 248
-	sltui	$a3, $s1, 1
-	masknez	$a0, $s2, $a3
-	lu12i.w	$a2, 524287
-	ori	$a5, $a2, 4095
+	sltui	$a2, $s1, 1
+	masknez	$a0, $s2, $a2
+	lu12i.w	$a3, 524287
+	ori	$a4, $a3, 4095
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
-	add.w	$a4, $a2, $a1
-	ori	$a2, $zero, 1
-	maskeqz	$a1, $a5, $a3
-	blt	$a4, $a2, .LBB2_34
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	add.w	$a3, $a3, $a1
+	maskeqz	$a1, $a4, $a2
+	blez	$a3, .LBB2_33
 # %bb.30:                               # %._crit_edge.thread
-	ori	$a3, $zero, 160
-	alsl.w	$a5, $t8, $a3, 2
-	bge	$a4, $a5, .LBB2_34
+	ori	$a2, $zero, 160
+	alsl.w	$a4, $t8, $a2, 2
+	bge	$a3, $a4, .LBB2_33
 # %bb.31:
-	ld.h	$a4, $ra, 0
-	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
-	add.w	$a4, $a5, $a4
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB2_34
+	ld.h	$a3, $ra, 0
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
+	add.w	$a3, $a4, $a3
+	blez	$a3, .LBB2_33
 # %bb.32:
-	alsl.w	$a3, $t6, $a3, 2
-	bge	$a4, $a3, .LBB2_34
-# %bb.33:
+	alsl.w	$a4, $t6, $a2, 2
 	move	$a2, $zero
+	blt	$a3, $a4, .LBB2_34
+.LBB2_33:
+	ori	$a2, $zero, 1
 .LBB2_34:
 	or	$s4, $a1, $a0
-	st.w	$a2, $a6, 0
+	st.w	$a2, $a5, 0
 	bge	$s1, $s3, .LBB2_41
 # %bb.35:                               # %.lr.ph196
 	move	$s0, $zero
@@ -1681,14 +1680,14 @@ SubPelBlockSearchBiPred:                # @SubPelBlockSearchBiPred
 	ori	$a0, $zero, 1
 .LBB3_32:
 	pcalau12i	$a2, %got_pc_hi20(bipred1_access_method)
-	ld.d	$a7, $a2, %got_pc_lo12(bipred1_access_method)
+	ld.d	$a5, $a2, %got_pc_lo12(bipred1_access_method)
 	ld.w	$s2, $sp, 304
-	ori	$a5, $zero, 160
-	st.w	$a0, $a7, 0
+	ori	$a7, $zero, 160
+	st.w	$a0, $a5, 0
 	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
 	bge	$s6, $s1, .LBB3_37
 # %bb.33:                               # %.lr.ph
-	st.d	$a7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
@@ -1781,65 +1780,63 @@ SubPelBlockSearchBiPred:                # @SubPelBlockSearchBiPred
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 8                     # 8-byte Folded Reload
-	ori	$a5, $zero, 160
+	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
+	ori	$a7, $zero, 160
 .LBB3_41:                               # %._crit_edge.thread
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	alsl.w	$a1, $a0, $a5, 2
 	pcalau12i	$a0, %got_pc_hi20(computeBiPred2)
-	ld.d	$a3, $a0, %got_pc_lo12(computeBiPred2)
-	pcalau12i	$a0, %got_pc_hi20(computeBiPred1)
-	ld.d	$a4, $a0, %got_pc_lo12(computeBiPred1)
+	ld.d	$a0, $a0, %got_pc_lo12(computeBiPred2)
+	pcalau12i	$a1, %got_pc_hi20(computeBiPred1)
+	ld.d	$a3, $a1, %got_pc_lo12(computeBiPred1)
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	alsl.w	$a1, $a1, $a7, 2
+	sltui	$a4, $s4, 1
+	masknez	$a0, $a0, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a0, $a3, $a0
+	ld.d	$a3, $a0, 16
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	alsl.w	$a0, $a0, $a5, 2
-	sltui	$a5, $s4, 1
-	masknez	$a3, $a3, $a5
-	maskeqz	$a4, $a4, $a5
-	or	$a3, $a4, $a3
-	ld.d	$a4, $a3, 16
+	alsl.w	$a0, $a0, $a7, 2
 	ext.w.h	$a2, $a2
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	add.w	$a3, $a3, $a2
-	ori	$a2, $zero, 1
-	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
-	st.d	$a4, $a5, 0
-	blt	$a3, $a2, .LBB3_46
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	add.w	$a2, $a4, $a2
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	st.d	$a3, $a4, 0
+	blez	$a2, .LBB3_45
 # %bb.42:                               # %._crit_edge.thread
-	bge	$a3, $a1, .LBB3_46
+	bge	$a2, $a1, .LBB3_45
 # %bb.43:
-	ld.h	$a3, $s3, 0
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
-	add.w	$a3, $a4, $a3
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB3_46
+	ld.h	$a2, $s3, 0
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	add.w	$a3, $a3, $a2
+	blez	$a3, .LBB3_45
 # %bb.44:
-	bge	$a3, $a0, .LBB3_46
-# %bb.45:
 	move	$a2, $zero
+	blt	$a3, $a0, .LBB3_46
+.LBB3_45:
+	ori	$a2, $zero, 1
 .LBB3_46:
 	ld.h	$a3, $s8, 0
 	ld.d	$s1, $sp, 296
 	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
-	add.w	$a4, $a4, $a3
-	ori	$a3, $zero, 1
+	add.w	$a3, $a4, $a3
 	st.w	$a2, $a6, 0
-	blt	$a4, $a3, .LBB3_51
+	blez	$a3, .LBB3_50
 # %bb.47:
-	bge	$a4, $a1, .LBB3_51
+	bge	$a3, $a1, .LBB3_50
 # %bb.48:
 	ld.h	$a1, $s7, 0
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	add.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_51
+	add.w	$a2, $a2, $a1
+	blez	$a2, .LBB3_50
 # %bb.49:
-	bge	$a1, $a0, .LBB3_51
-# %bb.50:
-	move	$a3, $zero
+	move	$a1, $zero
+	blt	$a2, $a0, .LBB3_51
+.LBB3_50:
+	ori	$a1, $zero, 1
 .LBB3_51:
 	pcalau12i	$a0, %pc_hi20(start_me_refinement_qp)
 	ld.w	$fp, $a0, %pc_lo12(start_me_refinement_qp)
-	st.w	$a3, $a7, 0
+	st.w	$a1, $a5, 0
 	sltui	$a0, $fp, 1
 	masknez	$a1, $s2, $a0
 	lu12i.w	$a2, 524287

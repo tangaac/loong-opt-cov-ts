@@ -697,7 +697,7 @@ _ZN9NCompress2NZ8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStream
 	sltu	$a0, $zero, $a0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	or	$s3, $a1, $a0
-	bne	$s3, $s7, .LBB6_57
+	beqz	$s3, .LBB6_57
 # %bb.43:                               # %.preheader
                                         #   in Loop: Header=BB6_18 Depth=3
 	ori	$a0, $zero, 256

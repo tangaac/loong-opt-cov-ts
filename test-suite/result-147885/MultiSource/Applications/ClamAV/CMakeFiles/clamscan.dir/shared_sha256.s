@@ -157,11 +157,9 @@ sha256_block:                           # @sha256_block
 # %bb.0:
 	ld.wu	$a2, $a0, 32
 	addi.d	$a2, $a2, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	and	$a3, $a2, $a3
+	slli.d	$a3, $a2, 31
 	st.w	$a2, $a0, 32
-	beqz	$a3, .LBB2_2
+	bgez	$a3, .LBB2_2
 # %bb.1:
 	ld.w	$a2, $a0, 36
 	addi.d	$a2, $a2, 1

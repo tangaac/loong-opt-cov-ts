@@ -51,9 +51,8 @@ write_node_info:                        # @write_node_info
 	ld.d	$s4, $a0, %got_pc_lo12(g_board_size)
 	slli.d	$a0, $fp, 2
 	ldx.w	$a0, $s4, $a0
-	ori	$s1, $zero, 1
 	slli.d	$s3, $fp, 7
-	blt	$a0, $s1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.3:                                # %.lr.ph.preheader.i
 	pcalau12i	$a1, %got_pc_hi20(g_board)
 	ld.d	$a1, $a1, %got_pc_lo12(g_board)
@@ -255,7 +254,7 @@ write_node_info:                        # @write_node_info
 	xori	$s0, $fp, 1
 	slli.d	$a0, $s0, 2
 	ldx.w	$a0, $s4, $a0
-	blt	$a0, $s1, .LBB0_15
+	blez	$a0, .LBB0_15
 # %bb.13:                               # %.lr.ph.preheader.i20
 	pcalau12i	$a1, %got_pc_hi20(g_board)
 	ld.d	$a1, $a1, %got_pc_lo12(g_board)
@@ -479,7 +478,6 @@ write_node_info:                        # @write_node_info
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, %pc_lo12(trait_file)
 	ori	$a2, $zero, 1
-	ori	$s0, $zero, 1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -489,7 +487,7 @@ write_node_info:                        # @write_node_info
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	blt	$a0, $s0, .LBB0_25
+	blez	$a0, .LBB0_25
 # %bb.23:                               # %.lr.ph.preheader.i32
 	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB0_26
@@ -1024,8 +1022,7 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	ld.d	$a1, $a1, %got_pc_lo12(g_board_size)
 	slli.d	$a2, $a0, 2
 	ldx.w	$a2, $a1, $a2
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB1_3
+	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a1, %got_pc_hi20(g_board)
 	ld.d	$a3, $a1, %got_pc_lo12(g_board)

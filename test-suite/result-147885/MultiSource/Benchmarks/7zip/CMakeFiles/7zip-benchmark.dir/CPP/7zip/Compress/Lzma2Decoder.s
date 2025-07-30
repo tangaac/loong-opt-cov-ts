@@ -1748,9 +1748,9 @@ _ZN9NCompress6NLzma28CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStream
 	jirl	$ra, $a4, 0
 	bnez	$a0, .LBB24_19
 .LBB24_4:                               #   in Loop: Header=BB24_2 Depth=1
-	ld.d	$s8, $fp, 128
+	ld.d	$s7, $fp, 128
 	ld.d	$a0, $fp, 136
-	sub.d	$a0, $a0, $s8
+	sub.d	$a0, $a0, $s7
 	srli.d	$a1, $a0, 22
 	ld.bu	$a2, $fp, 248
 	sltui	$a1, $a1, 1
@@ -1758,8 +1758,7 @@ _ZN9NCompress6NLzma28CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStream
 	lu12i.w	$a3, 1024
 	masknez	$a1, $a3, $a1
 	or	$a0, $a0, $a1
-	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB24_6
+	beqz	$a2, .LBB24_6
 # %bb.5:                                #   in Loop: Header=BB24_2 Depth=1
 	ld.d	$a1, $fp, 256
 	ld.d	$a2, $fp, 272
@@ -1775,7 +1774,7 @@ _ZN9NCompress6NLzma28CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStream
 	ld.d	$a3, $fp, 64
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a1, $sp, 16
-	add.d	$a1, $a0, $s8
+	add.d	$a1, $a0, $s7
 	add.d	$a2, $a3, $a2
 	addi.d	$a3, $sp, 16
 	addi.d	$a5, $sp, 12
@@ -1792,25 +1791,25 @@ _ZN9NCompress6NLzma28CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStream
 	ld.d	$a4, $fp, 272
 	add.d	$a3, $a3, $a1
 	st.d	$a3, $fp, 264
-	sub.d	$a3, $a2, $s8
+	sub.d	$a3, $a2, $s7
 	add.d	$a3, $a4, $a3
 	st.d	$a3, $fp, 272
 	bnez	$a0, .LBB24_17
 # %bb.7:                                #   in Loop: Header=BB24_2 Depth=1
 	sltui	$a0, $a1, 1
-	xor	$a1, $a2, $s8
+	xor	$a1, $a2, $s7
 	sltui	$a1, $a1, 1
 	ld.d	$a4, $fp, 256
-	and	$s8, $a0, $a1
+	and	$s7, $a0, $a1
 	ld.bu	$a1, $fp, 248
 	ld.d	$a0, $fp, 136
 	sltu	$a3, $a3, $a4
 	xori	$a3, $a3, 1
-	and	$s7, $a1, $a3
+	and	$s8, $a1, $a3
 	xor	$a1, $a2, $a0
 	sltui	$a1, $a1, 1
-	or	$a1, $a1, $s8
 	or	$a1, $a1, $s7
+	or	$a1, $a1, $s8
 	andi	$a1, $a1, 1
 	beqz	$a1, .LBB24_12
 # %bb.8:                                #   in Loop: Header=BB24_2 Depth=1
@@ -1819,11 +1818,11 @@ _ZN9NCompress6NLzma28CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStream
 	pcaddu18i	$ra, %call36(_Z11WriteStreamP20ISequentialOutStreamPKvm)
 	jirl	$ra, $ra, 0
 	sltu	$a1, $zero, $a0
-	or	$a1, $a1, $s7
+	or	$a1, $a1, $s8
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB24_10
 # %bb.9:                                #   in Loop: Header=BB24_2 Depth=1
-	xori	$a2, $s8, 1
+	xori	$a2, $s7, 1
 	beqz	$a2, .LBB24_18
 .LBB24_10:                              #   in Loop: Header=BB24_2 Depth=1
 	bnez	$a1, .LBB24_19
@@ -1894,7 +1893,6 @@ _ZN9NCompress6NLzma28CDecoder4ReadEPvjPj: # @_ZN9NCompress6NLzma28CDecoder4ReadE
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1903,7 +1901,6 @@ _ZN9NCompress6NLzma28CDecoder4ReadEPvjPj: # @_ZN9NCompress6NLzma28CDecoder4ReadE
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$fp, $a3
 	move	$s2, $a2
 	move	$s0, $a1
@@ -1915,7 +1912,6 @@ _ZN9NCompress6NLzma28CDecoder4ReadEPvjPj: # @_ZN9NCompress6NLzma28CDecoder4ReadE
 	addi.d	$s3, $s1, 76
 	addi.d	$s4, $s1, 80
 	lu12i.w	$s5, 256
-	ori	$s6, $zero, 1
 	.p2align	4, , 16
 .LBB25_3:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s1, 72
@@ -1939,8 +1935,8 @@ _ZN9NCompress6NLzma28CDecoder4ReadEPvjPj: # @_ZN9NCompress6NLzma28CDecoder4ReadE
 	ld.bu	$a2, $s1, 248
 	sub.d	$a1, $a1, $a0
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a1, $sp, 16
-	bne	$a2, $s6, .LBB25_8
+	st.d	$a1, $sp, 24
+	beqz	$a2, .LBB25_8
 # %bb.7:                                #   in Loop: Header=BB25_3 Depth=1
 	ld.d	$a1, $s1, 256
 	ld.d	$a2, $s1, 272
@@ -1953,21 +1949,21 @@ _ZN9NCompress6NLzma28CDecoder4ReadEPvjPj: # @_ZN9NCompress6NLzma28CDecoder4ReadE
 .LBB25_8:                               #   in Loop: Header=BB25_3 Depth=1
 	ld.d	$a1, $s1, 64
 	bstrpick.d	$a2, $s2, 31, 0
-	st.d	$a2, $sp, 8
+	st.d	$a2, $sp, 16
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a3, $a1, $a0
-	addi.d	$a2, $sp, 8
-	addi.d	$a4, $sp, 16
-	addi.d	$a6, $sp, 4
+	addi.d	$a2, $sp, 16
+	addi.d	$a4, $sp, 24
+	addi.d	$a6, $sp, 12
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(Lzma2Dec_DecodeToBuf)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 16
+	ld.d	$a2, $sp, 24
 	ld.w	$a1, $s1, 72
 	add.d	$a3, $a1, $a2
-	ld.d	$a1, $sp, 8
+	ld.d	$a1, $sp, 16
 	vld	$vr0, $s1, 264
 	st.w	$a3, $s1, 72
 	vinsgr2vr.d	$vr1, $a2, 0
@@ -2012,7 +2008,6 @@ _ZN9NCompress6NLzma28CDecoder4ReadEPvjPj: # @_ZN9NCompress6NLzma28CDecoder4ReadE
 	lu12i.w	$a0, -524176
 	ori	$a0, $a0, 14
 .LBB25_19:                              # %.loopexit
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload

@@ -68,7 +68,6 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -76,7 +75,6 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s1, $a1
 	ld.d	$a1, $a1, 32
 	ld.d	$a4, $s1, 8
@@ -106,7 +104,7 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	mul.d	$a1, $a4, $a1
 	div.du	$a0, $a1, $a0
 	srli.d	$a0, $a0, 10
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPcj)
 	jirl	$ra, $ra, 0
@@ -114,7 +112,7 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
@@ -122,8 +120,6 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	blt	$a2, $a1, .LBB1_6
 # %bb.4:                                # %.lr.ph.i.preheader
 	addi.w	$s3, $a0, -7
-	ori	$s5, $zero, 0
-	lu32i.d	$s5, 1
 	.p2align	4, , 16
 .LBB1_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -133,10 +129,10 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s3, 31, 0
 	addi.d	$s3, $a0, 1
-	and	$a0, $s3, $s5
-	beqz	$a0, .LBB1_5
+	slli.d	$a0, $s3, 31
+	bgez	$a0, .LBB1_5
 .LBB1_6:                                # %_ZL11PrintNumberP8_IO_FILEyi.exit
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
@@ -166,7 +162,6 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	vinsgr2vr.d	$vr0, $s1, 1
 	vadd.d	$vr0, $vr1, $vr0
 	vst	$vr0, $fp, 16
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
@@ -666,13 +661,11 @@ _ZL17PrintRequirementsP8_IO_FILEPKcyS2_j: # @_ZL17PrintRequirementsP8_IO_FILEPKc
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a4
 	move	$s0, $a3
 	move	$s2, $a2
@@ -684,7 +677,7 @@ _ZL17PrintRequirementsP8_IO_FILEPKcyS2_j: # @_ZL17PrintRequirementsP8_IO_FILEPKc
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	srli.d	$a0, $s2, 20
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPcj)
 	jirl	$ra, $ra, 0
@@ -692,7 +685,7 @@ _ZL17PrintRequirementsP8_IO_FILEPKcyS2_j: # @_ZL17PrintRequirementsP8_IO_FILEPKc
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
@@ -700,8 +693,6 @@ _ZL17PrintRequirementsP8_IO_FILEPKcyS2_j: # @_ZL17PrintRequirementsP8_IO_FILEPKc
 	blt	$a2, $a1, .LBB4_3
 # %bb.1:                                # %.lr.ph.i.preheader
 	addi.w	$s2, $a0, -5
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	.p2align	4, , 16
 .LBB4_2:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -711,10 +702,10 @@ _ZL17PrintRequirementsP8_IO_FILEPKcyS2_j: # @_ZL17PrintRequirementsP8_IO_FILEPKc
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s3
-	beqz	$a0, .LBB4_2
+	slli.d	$a0, $s2, 31
+	bgez	$a0, .LBB4_2
 .LBB4_3:                                # %_ZL11PrintNumberP8_IO_FILEyi.exit
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
@@ -725,7 +716,6 @@ _ZL17PrintRequirementsP8_IO_FILEPKcyS2_j: # @_ZL17PrintRequirementsP8_IO_FILEPKc
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
@@ -777,7 +767,7 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	ori	$s3, $zero, 1
 	pcaddu18i	$ra, %call36(_Z15CrcInternalTestv)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_82
+	beqz	$a0, .LBB5_85
 # %bb.1:
 	pcaddu18i	$ra, %call36(_ZN8NWindows7NSystem10GetRamSizeEv)
 	jirl	$ra, $ra, 0
@@ -804,9 +794,9 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	masknez	$a1, $fp, $a0
 	lu12i.w	$a2, 4096
 	maskeqz	$a0, $a2, $a0
-	or	$s7, $a0, $a1
-	bstrpick.d	$s8, $s6, 31, 0
-	slli.d	$a0, $s8, 3
+	or	$s5, $a0, $a1
+	bstrpick.d	$s7, $s6, 31, 0
+	slli.d	$a0, $s7, 3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
@@ -818,11 +808,12 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	beqz	$s6, .LBB5_29
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.15)
-	move	$s4, $s8
+	move	$s4, $s7
 	move	$s5, $fp
 	.p2align	4, , 16
 .LBB5_3:                                # %.lr.ph
@@ -842,51 +833,48 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 1
+	ori	$s2, $zero, 1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB5_80
+	beqz	$s1, .LBB5_83
 # %bb.5:                                # %.preheader.us.preheader
-	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
-	move	$a1, $zero
-	move	$s5, $zero
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	move	$a2, $zero
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$a3, $a0, %pc_lo12(.L.str.16)
+	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	lu12i.w	$a0, -524284
 	ori	$a0, $a0, 4
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ori	$s6, $zero, 4
-	ori	$s2, $zero, 0
-	lu32i.d	$s2, 1
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 .LBB5_6:                                # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_7 Depth 2
                                         #       Child Loop BB5_10 Depth 3
                                         #         Child Loop BB5_17 Depth 4
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$a0, $s5, 22
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 22
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	ori	$a2, $zero, 10
+	ori	$s3, $zero, 10
 .LBB5_7:                                #   Parent Loop BB5_6 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_10 Depth 3
                                         #         Child Loop BB5_17 Depth 4
-	ori	$a0, $zero, 1
-	sll.w	$s4, $a0, $a2
-	bltu	$s7, $s4, .LBB5_20
+	sll.w	$s4, $s2, $s3
+	bltu	$a3, $s4, .LBB5_20
 # %bb.8:                                # %.lr.ph138.us.us
                                         #   in Loop: Header=BB5_7 Depth=2
-	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
 	move	$a0, $s0
-	move	$a1, $a3
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	move	$s7, $zero
+	move	$s5, $zero
 	b	.LBB5_10
 	.p2align	4, , 16
 .LBB5_9:                                # %.loopexit127.us.us
@@ -896,13 +884,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 96
-	slli.d	$a1, $s7, 3
+	slli.d	$a1, $s5, 3
 	ldx.d	$a2, $fp, $a1
 	add.d	$a0, $a2, $a0
 	stx.d	$a0, $fp, $a1
-	move	$s7, $s5
-	move	$s8, $s3
-	beq	$s5, $s3, .LBB5_18
+	move	$s5, $s2
+	move	$s7, $s8
+	beq	$s2, $s8, .LBB5_18
 .LBB5_10:                               #   Parent Loop BB5_6 Depth=1
                                         #     Parent Loop BB5_7 Depth=2
                                         # =>    This Loop Header: Depth=3
@@ -912,18 +900,18 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	jirl	$ra, $ra, 0
 .Ltmp1:
 # %bb.11:                               #   in Loop: Header=BB5_10 Depth=3
-	bnez	$a0, .LBB5_77
+	bnez	$a0, .LBB5_80
 # %bb.12:                               #   in Loop: Header=BB5_10 Depth=3
-	addi.d	$s5, $s7, 1
+	addi.d	$s2, $s5, 1
 .Ltmp2:
-	addi.w	$a0, $s5, 0
+	addi.w	$a0, $s2, 0
 	addi.d	$a2, $sp, 96
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_Z8CrcBenchjjRy)
 	jirl	$ra, $ra, 0
 .Ltmp3:
 # %bb.13:                               #   in Loop: Header=BB5_10 Depth=3
-	bnez	$a0, .LBB5_78
+	bnez	$a0, .LBB5_81
 # %bb.14:                               #   in Loop: Header=BB5_10 Depth=3
 	ld.d	$a0, $sp, 96
 	srli.d	$a0, $a0, 20
@@ -935,7 +923,7 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 .Ltmp6:
 # %bb.15:                               # %.noexc.us.us
                                         #   in Loop: Header=BB5_10 Depth=3
-	move	$s3, $s8
+	move	$s8, $s7
 	ori	$a0, $zero, 32
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
@@ -947,7 +935,7 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	blt	$s6, $a1, .LBB5_9
 # %bb.16:                               # %.lr.ph.i.us.us.preheader
                                         #   in Loop: Header=BB5_10 Depth=3
-	addi.w	$s8, $a0, -5
+	addi.w	$s7, $a0, -5
 	.p2align	4, , 16
 .LBB5_17:                               # %.lr.ph.i.us.us
                                         #   Parent Loop BB5_6 Depth=1
@@ -958,10 +946,10 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s8, 31, 0
-	addi.d	$s8, $a0, 1
-	and	$a0, $s8, $s2
-	beqz	$a0, .LBB5_17
+	bstrpick.d	$a0, $s7, 31, 0
+	addi.d	$s7, $a0, 1
+	slli.d	$a0, $s7, 31
+	bgez	$a0, .LBB5_17
 	b	.LBB5_9
 .LBB5_18:                               # %._crit_edge139.us.us
                                         #   in Loop: Header=BB5_7 Depth=2
@@ -969,24 +957,27 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 1
-	addi.w	$a0, $s5, 0
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
-	addi.w	$a2, $a2, 1
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB5_7
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	addi.w	$a0, $a0, 0
+	addi.w	$s3, $s3, 1
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ori	$s2, $zero, 1
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	bne	$a2, $a0, .LBB5_7
 # %bb.19:                               #   in Loop: Header=BB5_6 Depth=1
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 .LBB5_20:                               # %.thread103.split.us.us
                                         #   in Loop: Header=BB5_6 Depth=1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	addi.w	$a1, $a1, 1
-	bne	$a1, $s1, .LBB5_6
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a2, $a2, 1
+	bne	$a2, $s1, .LBB5_6
 .LBB5_21:                               # %.thread123
-	beqz	$s5, .LBB5_80
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	beqz	$s4, .LBB5_83
 # %bb.22:
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
@@ -995,13 +986,11 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	beqz	$a0, .LBB5_79
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	beqz	$a0, .LBB5_82
 # %bb.23:                               # %.lr.ph158.preheader
 	move	$s1, $zero
 	ori	$s2, $zero, 4
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	b	.LBB5_25
 	.p2align	4, , 16
 .LBB5_24:                               # %.loopexit
@@ -1011,13 +1000,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	addi.d	$s1, $s1, 1
-	beq	$s1, $s8, .LBB5_79
+	beq	$s1, $s7, .LBB5_82
 .LBB5_25:                               # %.lr.ph158
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_28 Depth 2
 	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $fp, $a0
-	div.du	$a0, $a0, $s5
+	div.du	$a0, $a0, $s4
 	srli.d	$a0, $a0, 20
 .Ltmp8:
 	addi.d	$a1, $sp, 104
@@ -1038,7 +1027,7 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	blt	$s2, $a1, .LBB5_24
 # %bb.27:                               # %.lr.ph.i89.preheader
                                         #   in Loop: Header=BB5_25 Depth=1
-	addi.w	$s4, $a0, -5
+	addi.w	$s3, $a0, -5
 	.p2align	4, , 16
 .LBB5_28:                               # %.lr.ph.i89
                                         #   Parent Loop BB5_25 Depth=1
@@ -1047,10 +1036,10 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s4, 31, 0
-	addi.d	$s4, $a0, 1
-	and	$a0, $s4, $s3
-	beqz	$a0, .LBB5_28
+	bstrpick.d	$a0, $s3, 31, 0
+	addi.d	$s3, $a0, 1
+	slli.d	$a0, $s3, 31
+	bgez	$a0, .LBB5_28
 	b	.LBB5_24
 .LBB5_29:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
@@ -1060,45 +1049,48 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB5_80
+	beqz	$s1, .LBB5_83
 # %bb.30:                               # %.preheader.preheader
-	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
-	move	$s5, $zero
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
 	ori	$s3, $zero, 1024
-	bstrpick.d	$s4, $s7, 31, 11
+	bstrpick.d	$s4, $s5, 31, 11
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.16)
-	bstrpick.d	$s6, $s7, 31, 12
-	bstrpick.d	$a0, $s7, 31, 13
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 14
+	bstrpick.d	$s6, $s5, 31, 12
+	bstrpick.d	$s8, $s5, 31, 13
+	bstrpick.d	$a0, $s5, 31, 14
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 15
+	bstrpick.d	$a0, $s5, 31, 15
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 16
+	bstrpick.d	$a0, $s5, 31, 16
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	bstrpick.d	$a0, $s5, 31, 17
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 17
+	bstrpick.d	$a0, $s5, 31, 18
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 18
+	bstrpick.d	$a0, $s5, 31, 19
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 19
+	bstrpick.d	$a0, $s5, 31, 20
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 20
+	bstrpick.d	$a0, $s5, 31, 21
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	bstrpick.d	$a0, $s7, 31, 21
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	b	.LBB5_33
+	b	.LBB5_34
 	.p2align	4, , 16
-.LBB5_31:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 1
+.LBB5_31:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 1
 .LBB5_32:                               # %.thread103.split
-                                        #   in Loop: Header=BB5_33 Depth=1
+                                        #   in Loop: Header=BB5_34 Depth=1
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+.LBB5_33:                               # %.thread103.split
+                                        #   in Loop: Header=BB5_34 Depth=1
 	addi.w	$s1, $s1, -1
 	beqz	$s1, .LBB5_21
-.LBB5_33:                               # %.preheader
+.LBB5_34:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	bltu	$s7, $s3, .LBB5_32
-# %bb.34:                               #   in Loop: Header=BB5_33 Depth=1
+	bltu	$s5, $s3, .LBB5_33
+# %bb.35:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 10
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1109,7 +1101,7 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	beqz	$s4, .LBB5_31
-# %bb.35:                               #   in Loop: Header=BB5_33 Depth=1
+# %bb.36:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 11
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1119,11 +1111,12 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s6, .LBB5_37
-# %bb.36:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 2
+	bnez	$s6, .LBB5_38
+# %bb.37:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 2
 	b	.LBB5_32
-.LBB5_37:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_38:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 12
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1133,12 +1126,12 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
+	bnez	$s8, .LBB5_40
+# %bb.39:                               #   in Loop: Header=BB5_34 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_39
-# %bb.38:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 3
+	addi.d	$a0, $a0, 3
 	b	.LBB5_32
-.LBB5_39:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_40:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 13
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1149,11 +1142,12 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_41
-# %bb.40:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 4
+	bnez	$a0, .LBB5_42
+# %bb.41:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 4
 	b	.LBB5_32
-.LBB5_41:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_42:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 14
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1164,11 +1158,12 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_43
-# %bb.42:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 5
+	bnez	$a0, .LBB5_44
+# %bb.43:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 5
 	b	.LBB5_32
-.LBB5_43:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_44:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 15
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1178,12 +1173,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_45
-# %bb.44:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 6
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	bnez	$a0, .LBB5_46
+# %bb.45:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 6
 	b	.LBB5_32
-.LBB5_45:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_46:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 16
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1193,12 +1189,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_47
-# %bb.46:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 7
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	bnez	$a0, .LBB5_48
+# %bb.47:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 7
 	b	.LBB5_32
-.LBB5_47:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_48:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 17
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1208,12 +1205,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_49
-# %bb.48:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 8
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	bnez	$a0, .LBB5_50
+# %bb.49:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 8
 	b	.LBB5_32
-.LBB5_49:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_50:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 18
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1223,12 +1221,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	bnez	$a0, .LBB5_51
-# %bb.50:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 9
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	bnez	$a0, .LBB5_52
+# %bb.51:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 9
 	b	.LBB5_32
-.LBB5_51:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_52:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 19
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1238,12 +1237,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	bnez	$a0, .LBB5_53
-# %bb.52:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 10
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	bnez	$a0, .LBB5_54
+# %bb.53:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 10
 	b	.LBB5_32
-.LBB5_53:                               #   in Loop: Header=BB5_33 Depth=1
+.LBB5_54:                               #   in Loop: Header=BB5_34 Depth=1
 	ori	$a2, $zero, 20
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1253,14 +1253,16 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	bnez	$a0, .LBB5_55
-# %bb.54:                               #   in Loop: Header=BB5_33 Depth=1
-	addi.d	$s5, $s5, 11
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	bnez	$a0, .LBB5_56
+# %bb.55:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 11
 	b	.LBB5_32
-.LBB5_55:                               #   in Loop: Header=BB5_33 Depth=1
-	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
-	bstrpick.d	$s5, $s7, 31, 22
+.LBB5_56:                               #   in Loop: Header=BB5_34 Depth=1
+	st.d	$s8, $sp, 0                     # 8-byte Folded Spill
+	move	$s8, $s5
+	bstrpick.d	$s5, $s5, 31, 22
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 21
@@ -1271,13 +1273,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_57
-# %bb.56:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 12
-	b	.LBB5_32
-.LBB5_57:                               #   in Loop: Header=BB5_33 Depth=1
-	bstrpick.d	$s5, $s7, 31, 23
+	bnez	$s5, .LBB5_58
+# %bb.57:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 12
+	b	.LBB5_60
+.LBB5_58:                               #   in Loop: Header=BB5_34 Depth=1
+	bstrpick.d	$s5, $s8, 31, 23
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 22
@@ -1288,13 +1290,17 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_59
-# %bb.58:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 13
-	b	.LBB5_32
-.LBB5_59:                               #   in Loop: Header=BB5_33 Depth=1
-	bstrpick.d	$s5, $s7, 31, 24
+	bnez	$s5, .LBB5_61
+# %bb.59:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 13
+.LBB5_60:                               # %.thread103.split
+                                        #   in Loop: Header=BB5_34 Depth=1
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	move	$s5, $s8
+	b	.LBB5_79
+.LBB5_61:                               #   in Loop: Header=BB5_34 Depth=1
+	bstrpick.d	$s5, $s8, 31, 24
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 23
@@ -1305,13 +1311,15 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_61
-# %bb.60:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 14
-	b	.LBB5_32
-.LBB5_61:                               #   in Loop: Header=BB5_33 Depth=1
-	bstrpick.d	$s5, $s7, 31, 25
+	bnez	$s5, .LBB5_63
+# %bb.62:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 14
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_63:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bstrpick.d	$s5, $a0, 31, 25
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 24
@@ -1322,14 +1330,15 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_63
-# %bb.62:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 15
-	b	.LBB5_32
-.LBB5_63:                               #   in Loop: Header=BB5_33 Depth=1
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	bstrpick.d	$s5, $s7, 31, 26
+	bnez	$s5, .LBB5_65
+# %bb.64:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 15
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_65:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bstrpick.d	$s5, $a0, 31, 26
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 25
@@ -1340,13 +1349,14 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_65
-# %bb.64:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 16
-	b	.LBB5_76
-.LBB5_65:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s5, .LBB5_67
+# %bb.66:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 16
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_67:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	bstrpick.d	$s5, $a0, 31, 27
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
@@ -1358,13 +1368,14 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_67
-# %bb.66:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 17
-	b	.LBB5_76
-.LBB5_67:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s5, .LBB5_69
+# %bb.68:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 17
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_69:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	bstrpick.d	$s5, $a0, 31, 28
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
@@ -1376,13 +1387,14 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_69
-# %bb.68:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 18
-	b	.LBB5_76
-.LBB5_69:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s5, .LBB5_71
+# %bb.70:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 18
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_71:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	bstrpick.d	$s5, $a0, 31, 29
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
@@ -1394,13 +1406,14 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_71
-# %bb.70:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 19
-	b	.LBB5_76
-.LBB5_71:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	bnez	$s5, .LBB5_73
+# %bb.72:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 19
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_73:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	bstrpick.d	$s5, $a0, 31, 30
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
@@ -1412,12 +1425,13 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB5_73
-# %bb.72:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 20
-	b	.LBB5_76
-.LBB5_73:                               #   in Loop: Header=BB5_33 Depth=1
+	bnez	$s5, .LBB5_75
+# %bb.74:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 20
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_75:                               #   in Loop: Header=BB5_34 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 30
@@ -1428,16 +1442,17 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -1
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB5_75
-# %bb.74:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 21
-	b	.LBB5_76
-.LBB5_75:                               #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s5, $s5, 22
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bltz	$a0, .LBB5_77
+# %bb.76:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 21
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB5_78
+.LBB5_77:                               #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 22
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	ori	$a2, $zero, 31
@@ -1448,27 +1463,30 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-.LBB5_76:                               # %.thread103.split
-                                        #   in Loop: Header=BB5_33 Depth=1
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	b	.LBB5_32
-.LBB5_77:
+.LBB5_78:                               # %.thread103.split
+                                        #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+.LBB5_79:                               # %.thread103.split
+                                        #   in Loop: Header=BB5_34 Depth=1
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
+	b	.LBB5_33
+.LBB5_80:
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-.LBB5_78:                               # %.split144.us
+.LBB5_81:                               # %.split144.us
 	move	$s3, $a0
-	b	.LBB5_81
-.LBB5_79:                               # %._crit_edge159
+	b	.LBB5_84
+.LBB5_82:                               # %._crit_edge159
 	ori	$a0, $zero, 10
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-.LBB5_80:                               # %_ZN11CTempValuesD2Ev.exit
+.LBB5_83:                               # %_ZN11CTempValuesD2Ev.exit
 	move	$s3, $zero
-.LBB5_81:                               # %_ZN11CTempValuesD2Ev.exit
+.LBB5_84:                               # %_ZN11CTempValuesD2Ev.exit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_82:
+.LBB5_85:
 	move	$a0, $s3
 	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
@@ -1483,15 +1501,15 @@ _Z11CrcBenchConP8_IO_FILEjjj:           # @_Z11CrcBenchConP8_IO_FILEjjj
 	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 224
 	ret
-.LBB5_83:
+.LBB5_86:
 .Ltmp10:
-	b	.LBB5_86
-.LBB5_84:                               # %.split147.us.split.us
+	b	.LBB5_89
+.LBB5_87:                               # %.split147.us.split.us
 .Ltmp4:
-	b	.LBB5_86
-.LBB5_85:                               # %.split.us.split.us
+	b	.LBB5_89
+.LBB5_88:                               # %.split.us.split.us
 .Ltmp7:
-.LBB5_86:                               # %_ZN11CTempValuesD2Ev.exit95
+.LBB5_89:                               # %_ZN11CTempValuesD2Ev.exit95
 	move	$s0, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1548,22 +1566,20 @@ GCC_except_table5:
 _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$fp, $a0
@@ -1576,7 +1592,7 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	lu52i.d	$a1, $a1, 838
 	mulh.du	$a0, $a0, $a1
 	srli.d	$a0, $a0, 11
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPcj)
 	jirl	$ra, $ra, 0
@@ -1584,7 +1600,7 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
@@ -1592,8 +1608,6 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	blt	$a2, $a1, .LBB6_3
 # %bb.1:                                # %.lr.ph.i.preheader
 	addi.w	$s2, $a0, -5
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	.p2align	4, , 16
 .LBB6_2:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -1603,10 +1617,10 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s2, $a0, 1
-	and	$a0, $s2, $s3
-	beqz	$a0, .LBB6_2
+	slli.d	$a0, $s2, 31
+	bgez	$a0, .LBB6_2
 .LBB6_3:                                # %_ZL11PrintNumberP8_IO_FILEyi.exit
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
@@ -1616,7 +1630,7 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	lu52i.d	$s2, $a0, 1073
 	mulh.du	$a0, $s1, $s2
 	srli.d	$a0, $a0, 18
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPcj)
 	jirl	$ra, $ra, 0
@@ -1624,7 +1638,7 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
@@ -1632,8 +1646,6 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	blt	$s1, $a1, .LBB6_6
 # %bb.4:                                # %.lr.ph.i.i.preheader
 	addi.w	$s3, $a0, -6
-	ori	$s4, $zero, 0
-	lu32i.d	$s4, 1
 	.p2align	4, , 16
 .LBB6_5:                                # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
@@ -1643,16 +1655,16 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s3, 31, 0
 	addi.d	$s3, $a0, 1
-	and	$a0, $s3, $s4
-	beqz	$a0, .LBB6_5
+	slli.d	$a0, $s3, 31
+	bgez	$a0, .LBB6_5
 .LBB6_6:                                # %_ZL11PrintRatingP8_IO_FILEy.exit
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	mulh.du	$a0, $s0, $s2
 	srli.d	$a0, $a0, 18
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 0
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPcj)
 	jirl	$ra, $ra, 0
@@ -1660,15 +1672,13 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
 	blt	$s1, $a1, .LBB6_9
 # %bb.7:                                # %.lr.ph.i.i6.preheader
 	addi.w	$s0, $a0, -6
-	ori	$s1, $zero, 0
-	lu32i.d	$s1, 1
 	.p2align	4, , 16
 .LBB6_8:                                # %.lr.ph.i.i6
                                         # =>This Inner Loop Header: Depth=1
@@ -1678,21 +1688,20 @@ _ZL12PrintResultsP8_IO_FILEyyy:         # @_ZL12PrintResultsP8_IO_FILEyyy
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s0, 31, 0
 	addi.d	$s0, $a0, 1
-	and	$a0, $s0, $s1
-	beqz	$a0, .LBB6_8
+	slli.d	$a0, $s0, 31
+	bgez	$a0, .LBB6_8
 .LBB6_9:                                # %_ZL11PrintRatingP8_IO_FILEy.exit10
-	addi.d	$a0, $sp, 8
+	addi.d	$a0, $sp, 0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end6:
 	.size	_ZL12PrintResultsP8_IO_FILEyyy, .Lfunc_end6-_ZL12PrintResultsP8_IO_FILEyyy

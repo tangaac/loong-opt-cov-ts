@@ -188,8 +188,7 @@ _ZN8NWindows6NError15MyFormatMessageEjR11CStringBaseIwE: # @_ZN8NWindows6NError1
 .Ltmp12:
 # %bb.29:                               # %.noexc37
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB0_31
+	blez	$s3, .LBB0_31
 # %bb.30:                               # %._crit_edge.thread.i.i35
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -447,12 +446,11 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s5, $a1, .LBB1_19
+	blez	$s5, .LBB1_19
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s4, $a1, .LBB1_11
+	blez	$s4, .LBB1_11
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero

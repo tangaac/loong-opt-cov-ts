@@ -48,8 +48,7 @@ main:                                   # @main
 	ori	$a0, $zero, 42
 	pcaddu18i	$ra, %call36(try_a)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB2_2
+	bltz	$a0, .LBB2_2
 # %bb.1:
 	move	$a0, $zero
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload

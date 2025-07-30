@@ -107,8 +107,7 @@ GetAnnexbNALU:                          # @GetAnnexbNALU
 	masknez	$s4, $a3, $a1
 	bnez	$a2, .LBB0_17
 # %bb.15:
-	ori	$a1, $zero, 1
-	blt	$s4, $a1, .LBB0_17
+	blez	$s4, .LBB0_17
 # %bb.16:
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)

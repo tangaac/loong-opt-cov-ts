@@ -8,8 +8,7 @@ _Z4ddotiPKdS0_PdRd:                     # @_Z4ddotiPKdS0_PdRd
 	movgr2fr.d	$fa0, $zero
 	beq	$a2, $a1, .LBB0_3
 # %bb.1:                                # %.preheader24
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_5
+	blez	$a0, .LBB0_5
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -23,8 +22,7 @@ _Z4ddotiPKdS0_PdRd:                     # @_Z4ddotiPKdS0_PdRd
 	bnez	$a0, .LBB0_2
 	b	.LBB0_5
 .LBB0_3:                                # %.preheader
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_5
+	blez	$a0, .LBB0_5
 	.p2align	4, , 16
 .LBB0_4:                                # %.lr.ph30
                                         # =>This Inner Loop Header: Depth=1

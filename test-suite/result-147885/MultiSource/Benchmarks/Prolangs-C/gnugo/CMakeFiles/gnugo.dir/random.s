@@ -21,9 +21,8 @@ random_nasko:                           # @random_nasko
 	ori	$a3, $zero, 3833
 	mul.d	$a1, $a1, $a3
 	sub.w	$a1, $a2, $a1
-	addi.w	$a2, $zero, -1
 	st.w	$a1, $a0, 0
-	bge	$a2, $a1, .LBB0_4
+	bltz	$a1, .LBB0_4
 # %bb.2:
 	ret
 .LBB0_3:

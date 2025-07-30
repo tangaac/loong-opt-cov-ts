@@ -1223,6 +1223,7 @@ db_errorfb:                             # @db_errorfb
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB14_27
 # %bb.10:                               # %.lr.ph.lr.ph
+	ori	$s2, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.44)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
@@ -1245,7 +1246,6 @@ db_errorfb:                             # @db_errorfb
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.49)
-	ori	$s2, $zero, 1
 	b	.LBB14_13
 	.p2align	4, , 16
 .LBB14_11:                              #   in Loop: Header=BB14_13 Depth=1
@@ -1293,8 +1293,7 @@ db_errorfb:                             # @db_errorfb
 	pcaddu18i	$ra, %call36(lua_pushfstring)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $sp, 72
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB14_16
+	blez	$a2, .LBB14_16
 # %bb.15:                               #   in Loop: Header=BB14_13 Depth=1
 	move	$a0, $fp
 	move	$a1, $s7

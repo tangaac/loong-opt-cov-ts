@@ -59,8 +59,7 @@ cli_uuencode:                           # @cli_uuencode
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s0, .LBB0_7
+	bgez	$s0, .LBB0_7
 	b	.LBB0_9
 .LBB0_5:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -120,8 +119,7 @@ uudecodeFile:                           # @uudecodeFile
 	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
-	addi.d	$sp, $sp, -80
+	addi.d	$sp, $sp, -64
 	move	$fp, $a3
 	move	$s3, $a2
 	move	$a3, $a1
@@ -153,7 +151,7 @@ uudecodeFile:                           # @uudecodeFile
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 1047
+	addi.d	$a0, $sp, 1039
 	ori	$a1, $zero, 1000
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fgets)
@@ -162,26 +160,25 @@ uudecodeFile:                           # @uudecodeFile
 # %bb.3:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.6)
-	addi.d	$s3, $sp, 23
+	addi.d	$s3, $sp, 15
 	ori	$s4, $zero, 62
-	addi.w	$s5, $zero, -1
 	.p2align	4, , 16
 .LBB1_4:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 1047
+	addi.d	$a0, $sp, 1039
 	pcaddu18i	$ra, %call36(cli_chomp)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 1047
+	addi.d	$a0, $sp, 1039
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(strcasecmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_11
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
-	ld.bu	$a0, $sp, 1047
+	ld.bu	$a0, $sp, 1039
 	beqz	$a0, .LBB1_11
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
 	ori	$a1, $zero, 5
-	addi.d	$a2, $sp, 1047
-	addi.d	$a3, $sp, 23
+	addi.d	$a2, $sp, 1039
+	addi.d	$a3, $sp, 15
 	ori	$a4, $zero, 1024
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(decodeLine)
@@ -193,13 +190,13 @@ uudecodeFile:                           # @uudecodeFile
 	sub.d	$a2, $a0, $s3
 	bltu	$s4, $a2, .LBB1_11
 # %bb.9:                                #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$a1, $sp, 23
+	addi.d	$a1, $sp, 15
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fileblobAddData)
 	jirl	$ra, $ra, 0
-	bge	$s5, $a0, .LBB1_11
+	bltz	$a0, .LBB1_11
 # %bb.10:                               #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$a0, $sp, 1047
+	addi.d	$a0, $sp, 1039
 	ori	$a1, $zero, 1000
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fgets)
@@ -217,8 +214,7 @@ uudecodeFile:                           # @uudecodeFile
 	jirl	$ra, $ra, 0
 .LBB1_13:
 	move	$a0, $s4
-	addi.d	$sp, $sp, 80
-	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload

@@ -27,20 +27,19 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	beqz	$s0, .LBB0_7
 # %bb.2:
 	movgr2fr.d	$fa0, $zero
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 8
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $fp, 24
+	ld.bu	$a1, $fp, 24
 	fmov.d	$fa1, $fa0
-	bne	$a2, $a0, .LBB0_5
+	beqz	$a1, .LBB0_5
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.d	$a2, $fp, 16
-	ld.d	$a3, $fp, 0
-	ld.d	$a4, $fp, 8
-	sub.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a4
-	movgr2fr.d	$fa1, $a2
+	ld.d	$a1, $fp, 16
+	ld.d	$a2, $fp, 0
+	ld.d	$a3, $fp, 8
+	sub.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
+	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa1
 .LBB0_5:                                # %_ZNK9benchmark5State10iterationsEv.exit
@@ -102,35 +101,34 @@ _Z13BM_spin_emptyRN9benchmark5StateE:   # @_Z13BM_spin_emptyRN9benchmark5StateE
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB1_9
 # %bb.2:                                # %.lr.ph
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 12
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.d	$a0, $sp, 12
 	.p2align	4, , 16
 .LBB1_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_5 Depth 2
 	st.w	$zero, $sp, 12
-	beq	$a2, $a3, .LBB1_10
+	beq	$a1, $a2, .LBB1_10
 # %bb.4:                                # %_ZNK9benchmark5State5rangeEm.exit.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$a4, $a3, 0
-	blt	$a4, $a0, .LBB1_7
+	ld.d	$a3, $a2, 0
+	blez	$a3, .LBB1_7
 	.p2align	4, , 16
 .LBB1_5:                                # %.lr.ph37
                                         #   Parent Loop BB1_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	#APP
 	#NO_APP
-	ld.w	$a4, $sp, 12
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	addi.w	$a4, $a4, 1
-	st.w	$a4, $sp, 12
-	beq	$a2, $a3, .LBB1_10
+	ld.w	$a3, $sp, 12
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.w	$a3, $a3, 1
+	st.w	$a3, $sp, 12
+	beq	$a1, $a2, .LBB1_10
 # %bb.6:                                # %_ZNK9benchmark5State5rangeEm.exit
                                         #   in Loop: Header=BB1_5 Depth=2
-	ld.d	$a5, $a3, 0
-	blt	$a4, $a5, .LBB1_5
+	ld.d	$a4, $a2, 0
+	blt	$a3, $a4, .LBB1_5
 .LBB1_7:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         #   in Loop: Header=BB1_3 Depth=1
 	blez	$s0, .LBB1_11
@@ -230,36 +228,35 @@ _Z20BM_spin_pause_beforeRN9benchmark5StateE: # @_Z20BM_spin_pause_beforeRN9bench
 # %bb.6:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB2_14
 # %bb.7:                                # %.lr.ph.preheader
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.d	$a0, $sp, 8
 	.p2align	4, , 16
 .LBB2_8:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_10 Depth 2
 	st.w	$zero, $sp, 8
-	beq	$a2, $a3, .LBB2_4
+	beq	$a1, $a2, .LBB2_4
 # %bb.9:                                # %_ZNK9benchmark5State5rangeEm.exit.preheader
                                         #   in Loop: Header=BB2_8 Depth=1
-	ld.d	$a4, $a3, 0
-	blt	$a4, $a0, .LBB2_12
+	ld.d	$a3, $a2, 0
+	blez	$a3, .LBB2_12
 	.p2align	4, , 16
 .LBB2_10:                               # %.lr.ph47
                                         #   Parent Loop BB2_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	#APP
 	#NO_APP
-	ld.w	$a4, $sp, 8
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	addi.w	$a4, $a4, 1
-	st.w	$a4, $sp, 8
-	beq	$a2, $a3, .LBB2_4
+	ld.w	$a3, $sp, 8
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.w	$a3, $a3, 1
+	st.w	$a3, $sp, 8
+	beq	$a1, $a2, .LBB2_4
 # %bb.11:                               # %_ZNK9benchmark5State5rangeEm.exit
                                         #   in Loop: Header=BB2_10 Depth=2
-	ld.d	$a5, $a3, 0
-	blt	$a4, $a5, .LBB2_10
+	ld.d	$a4, $a2, 0
+	blt	$a3, $a4, .LBB2_10
 .LBB2_12:                               # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         #   in Loop: Header=BB2_8 Depth=1
 	blez	$s0, .LBB2_15
@@ -507,35 +504,34 @@ _Z19BM_spin_pause_afterRN9benchmark5StateE: # @_Z19BM_spin_pause_afterRN9benchma
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB5_9
 # %bb.2:                                # %.lr.ph
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 12
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.d	$a0, $sp, 12
 	.p2align	4, , 16
 .LBB5_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_5 Depth 2
 	st.w	$zero, $sp, 12
-	beq	$a2, $a3, .LBB5_13
+	beq	$a1, $a2, .LBB5_13
 # %bb.4:                                # %_ZNK9benchmark5State5rangeEm.exit15.preheader
                                         #   in Loop: Header=BB5_3 Depth=1
-	ld.d	$a4, $a3, 0
-	blt	$a4, $a0, .LBB5_7
+	ld.d	$a3, $a2, 0
+	blez	$a3, .LBB5_7
 	.p2align	4, , 16
 .LBB5_5:                                # %.lr.ph44
                                         #   Parent Loop BB5_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	#APP
 	#NO_APP
-	ld.w	$a4, $sp, 12
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	addi.w	$a4, $a4, 1
-	st.w	$a4, $sp, 12
-	beq	$a2, $a3, .LBB5_13
+	ld.w	$a3, $sp, 12
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.w	$a3, $a3, 1
+	st.w	$a3, $sp, 12
+	beq	$a1, $a2, .LBB5_13
 # %bb.6:                                # %_ZNK9benchmark5State5rangeEm.exit15
                                         #   in Loop: Header=BB5_5 Depth=2
-	ld.d	$a5, $a3, 0
-	blt	$a4, $a5, .LBB5_5
+	ld.d	$a4, $a2, 0
+	blt	$a3, $a4, .LBB5_5
 .LBB5_7:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         #   in Loop: Header=BB5_3 Depth=1
 	blez	$s0, .LBB5_15
@@ -648,36 +644,35 @@ _Z30BM_spin_pause_before_and_afterRN9benchmark5StateE: # @_Z30BM_spin_pause_befo
 # %bb.5:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB6_13
 # %bb.6:                                # %.lr.ph.preheader
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.d	$a0, $sp, 8
 	.p2align	4, , 16
 .LBB6_7:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_9 Depth 2
 	st.w	$zero, $sp, 8
-	beq	$a2, $a3, .LBB6_17
+	beq	$a1, $a2, .LBB6_17
 # %bb.8:                                # %_ZNK9benchmark5State5rangeEm.exit17.preheader
                                         #   in Loop: Header=BB6_7 Depth=1
-	ld.d	$a4, $a3, 0
-	blt	$a4, $a0, .LBB6_11
+	ld.d	$a3, $a2, 0
+	blez	$a3, .LBB6_11
 	.p2align	4, , 16
 .LBB6_9:                                # %.lr.ph54
                                         #   Parent Loop BB6_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	#APP
 	#NO_APP
-	ld.w	$a4, $sp, 8
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	addi.w	$a4, $a4, 1
-	st.w	$a4, $sp, 8
-	beq	$a2, $a3, .LBB6_17
+	ld.w	$a3, $sp, 8
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.w	$a3, $a3, 1
+	st.w	$a3, $sp, 8
+	beq	$a1, $a2, .LBB6_17
 # %bb.10:                               # %_ZNK9benchmark5State5rangeEm.exit17
                                         #   in Loop: Header=BB6_9 Depth=2
-	ld.d	$a5, $a3, 0
-	blt	$a4, $a5, .LBB6_9
+	ld.d	$a4, $a2, 0
+	blt	$a3, $a4, .LBB6_9
 .LBB6_11:                               # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         #   in Loop: Header=BB6_7 Depth=1
 	blez	$s0, .LBB6_19
@@ -805,11 +800,9 @@ _Z14BM_KeepRunningRN9benchmark5StateE:  # @_Z14BM_KeepRunningRN9benchmark5StateE
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.bu	$a1, $a0, 24
 	ld.d	$a0, $a0, 0
@@ -822,7 +815,6 @@ _Z14BM_KeepRunningRN9benchmark5StateE:  # @_Z14BM_KeepRunningRN9benchmark5StateE
 	bne	$a1, $a2, .LBB8_13
 .LBB8_2:                                # %.critedge.preheader
 	move	$s0, $zero
-	ori	$s1, $zero, 1
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_3:                                #   in Loop: Header=BB8_4 Depth=1
@@ -843,14 +835,13 @@ _Z14BM_KeepRunningRN9benchmark5StateE:  # @_Z14BM_KeepRunningRN9benchmark5StateE
 	bnez	$a0, .LBB8_8
 # %bb.7:                                #   in Loop: Header=BB8_4 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s1, .LBB8_3
+	bgtz	$a0, .LBB8_3
 .LBB8_8:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_11
+	beqz	$a0, .LBB8_11
 # %bb.9:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -859,7 +850,6 @@ _Z14BM_KeepRunningRN9benchmark5StateE:  # @_Z14BM_KeepRunningRN9benchmark5StateE
 	add.d	$a0, $a0, $a2
 	bne	$a0, $s0, .LBB8_12
 .LBB8_10:
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -948,8 +938,7 @@ _Z19BM_KeepRunningBatchRN9benchmark5StateE: # @_Z19BM_KeepRunningBatchRN9benchma
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB9_14
+	beqz	$a0, .LBB9_14
 # %bb.10:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0

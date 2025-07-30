@@ -532,8 +532,7 @@ shellescape:                            # @shellescape
 	beqz	$a0, .LBB9_34
 # %bb.15:
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB9_31
+	blez	$a0, .LBB9_31
 	.p2align	4, , 16
 .LBB9_16:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1

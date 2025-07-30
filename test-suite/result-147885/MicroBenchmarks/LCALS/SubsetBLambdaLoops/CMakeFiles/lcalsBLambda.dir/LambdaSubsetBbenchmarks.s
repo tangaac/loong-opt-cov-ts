@@ -53,8 +53,7 @@ _ZL15BM_INIT3_LAMBDARN9benchmark5StateE: # @_ZL15BM_INIT3_LAMBDARN9benchmark5Sta
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 0
 	addi.w	$a0, $a1, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.3:                                # %.lr.ph.us.preheader
 	bstrpick.d	$a0, $a1, 30, 0
 	sub.d	$a2, $s2, $s3
@@ -227,8 +226,7 @@ _ZL19BM_MULADDSUB_LAMBDARN9benchmark5StateE: # @_ZL19BM_MULADDSUB_LAMBDARN9bench
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 0
 	addi.w	$a0, $a1, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_12
+	blez	$a0, .LBB1_12
 # %bb.3:                                # %.lr.ph.us.preheader
 	bstrpick.d	$a0, $a1, 30, 0
 	alsl.d	$a2, $a0, $s1, 3
@@ -430,15 +428,14 @@ _ZL17BM_IF_QUAD_LAMBDARN9benchmark5StateE: # @_ZL17BM_IF_QUAD_LAMBDARN9benchmark
 	beqz	$s5, .LBB2_12
 # %bb.2:                                # %.lr.ph38
 	ld.d	$a1, $a0, 32
-	ld.d	$a3, $a1, 0
-	addi.w	$a1, $a3, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_12
+	ld.d	$a2, $a1, 0
+	addi.w	$a1, $a2, 0
+	blez	$a1, .LBB2_12
 # %bb.3:                                # %.lr.ph.us.preheader
-	move	$a6, $s6
-	move	$a5, $s3
-	move	$a4, $s2
-	bstrpick.d	$s6, $a3, 30, 0
+	move	$a5, $s6
+	move	$a4, $s3
+	move	$a3, $s2
+	bstrpick.d	$s6, $a2, 30, 0
 	vldi	$vr3, -880
 	movgr2fr.d	$fs0, $zero
 	b	.LBB2_5
@@ -453,9 +450,9 @@ _ZL17BM_IF_QUAD_LAMBDARN9benchmark5StateE: # @_ZL17BM_IF_QUAD_LAMBDARN9benchmark
 	move	$s7, $s6
 	move	$s8, $s4
 	move	$s0, $fp
-	move	$s3, $a6
-	move	$s2, $a4
-	move	$s1, $a5
+	move	$s3, $a5
+	move	$s2, $a3
+	move	$s1, $a4
 	b	.LBB2_8
 	.p2align	4, , 16
 .LBB2_6:                                #   in Loop: Header=BB2_8 Depth=2
@@ -502,15 +499,15 @@ _ZL17BM_IF_QUAD_LAMBDARN9benchmark5StateE: # @_ZL17BM_IF_QUAD_LAMBDARN9benchmark
                                         #   in Loop: Header=BB2_8 Depth=2
 	fmov.d	$fa0, $fa1
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a6, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	vldi	$vr3, -880
-	ld.d	$a6, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB2_10
 .LBB2_12:                               # %._crit_edge
@@ -602,10 +599,9 @@ _ZL18BM_TRAP_INT_LAMBDARN9benchmark5StateE: # @_ZL18BM_TRAP_INT_LAMBDARN9benchma
 	fadd.d	$fa2, $fa2, $fa3
 	vldi	$vr3, -928
 	fmul.d	$fa2, $fa2, $fa3
-	ori	$a0, $zero, 1
 	movgr2fr.d	$fa3, $zero
 	vldi	$vr4, -912
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 8
 	b	.LBB3_4
 	.p2align	4, , 16
 .LBB3_3:                                # %"_Z6forallIZL18BM_TRAP_INT_LAMBDARN9benchmark5StateEE3$_0Ev9simd_execiiT_.exit"
@@ -618,9 +614,9 @@ _ZL18BM_TRAP_INT_LAMBDARN9benchmark5StateE: # @_ZL18BM_TRAP_INT_LAMBDARN9benchma
 	beqz	$s0, .LBB3_7
 .LBB3_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_6 Depth 2
-	ld.d	$a2, $fp, 32
-	ld.w	$a2, $a2, 0
-	blt	$a2, $a0, .LBB3_3
+	ld.d	$a1, $fp, 32
+	ld.w	$a1, $a1, 0
+	blez	$a1, .LBB3_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
 	fmov.d	$fa5, $fa3
@@ -633,9 +629,9 @@ _ZL18BM_TRAP_INT_LAMBDARN9benchmark5StateE: # @_ZL18BM_TRAP_INT_LAMBDARN9benchma
 	fmadd.d	$fa6, $fa6, $fa6, $fa1
 	frsqrt.d	$fa6, $fa6
 	fadd.d	$fa2, $fa2, $fa6
-	addi.w	$a2, $a2, -1
+	addi.w	$a1, $a1, -1
 	fadd.d	$fa5, $fa5, $fa4
-	bnez	$a2, .LBB3_6
+	bnez	$a1, .LBB3_6
 	b	.LBB3_3
 .LBB3_7:                                # %._crit_edge
 	move	$a0, $fp

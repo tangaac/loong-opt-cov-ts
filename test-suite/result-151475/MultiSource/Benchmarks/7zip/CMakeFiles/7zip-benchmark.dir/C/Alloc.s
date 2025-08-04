@@ -52,21 +52,16 @@ MidAlloc:                               # @MidAlloc
 	.type	VirtualAlloc,@function
 VirtualAlloc:                           # @VirtualAlloc
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s8, $sp
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 144
 	move	$s0, $a0
 	beqz	$a1, .LBB3_8
 # %bb.1:                                # %vector.ph
@@ -75,68 +70,43 @@ VirtualAlloc:                           # @VirtualAlloc
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI3_0)
-	addi.w	$s4, $zero, -4
+	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
+	addi.w	$s5, $zero, -4
 	pcalau12i	$a0, %pc_hi20(g_HugePageAddr)
 	addi.d	$a0, $a0, %pc_lo12(g_HugePageAddr)
-	xvreplgr2vr.d	$xr3, $a0
+	xvreplgr2vr.d	$xr1, $a0
 	ori	$a0, $zero, 56
 	.p2align	4, , 16
 .LBB3_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr0, $xr2, 3
-	xvadd.d	$xr0, $xr3, $xr0
-	xvpickve2gr.d	$a1, $xr0, 0
-	xvld	$xr1, $a1, 0
-	move	$a1, $s4
-	xvseqi.d	$xr1, $xr1, 0
-	xvmskltz.d	$xr4, $xr1
-	xvpickve2gr.wu	$a2, $xr4, 0
-	xvpickve2gr.wu	$a3, $xr4, 4
+	xvslli.d	$xr2, $xr0, 3
+	xvadd.d	$xr3, $xr1, $xr2
+	xvpickve2gr.d	$a1, $xr3, 0
+	xvld	$xr2, $a1, 0
+	move	$a1, $s5
+	xvseqi.d	$xr4, $xr2, 0
+	xvmskltz.d	$xr2, $xr4
+	xvpickve2gr.wu	$a2, $xr2, 0
+	xvpickve2gr.wu	$a3, $xr2, 4
 	bstrins.d	$a2, $a3, 3, 2
-	addi.d	$s4, $s4, 4
+	addi.d	$s5, $s5, 4
 	bnez	$a2, .LBB3_4
 # %bb.3:                                # %vector.body
                                         #   in Loop: Header=BB3_2 Depth=1
-	xvaddi.du	$xr2, $xr2, 4
+	xvaddi.du	$xr0, $xr0, 4
 	bne	$a1, $a0, .LBB3_2
 .LBB3_4:                                # %middle.split
 	andi	$a0, $a2, 15
 	beqz	$a0, .LBB3_9
 # %bb.5:                                # %vector.early.exit
-	xvpickve2gr.d	$a0, $xr1, 0
-	andi	$a0, $a0, 4
-	xvpickve2gr.d	$a1, $xr1, 1
-	andi	$a1, $a1, 3
-	sltu	$a2, $a1, $a0
-	masknez	$a1, $a1, $a2
-	maskeqz	$a0, $a0, $a2
-	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr1, 2
-	andi	$a1, $a1, 2
-	sltu	$a2, $a1, $a0
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr1, 3
-	andi	$a1, $a1, 1
-	sltu	$a2, $a1, $a0
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	ori	$a1, $zero, 4
-	sub.d	$a0, $a1, $a0
-	andi	$s7, $a0, 255
-	addi.d	$a0, $s8, 32
-	bstrins.d	$a0, $s7, 4, 3
-	xvst	$xr0, $s8, 32
-	ld.d	$s6, $a0, 0
+	xvst	$xr4, $fp, -144                 # 32-byte Folded Spill
+	xvst	$xr3, $fp, -112                 # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(g_HugetlbPath)
 	ld.d	$s2, $a0, %pc_lo12(g_HugetlbPath)
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$s5, $sp
+	move	$s4, $sp
 	addi.d	$a1, $a0, 12
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 15
@@ -181,28 +151,57 @@ VirtualAlloc:                           # @VirtualAlloc
 	jirl	$ra, $ra, 0
 	beq	$s1, $s3, .LBB3_11
 # %bb.7:
-	add.d	$a0, $s7, $s4
+	xvld	$xr0, $fp, -144                 # 32-byte Folded Reload
+	xvpickve2gr.d	$a0, $xr0, 0
+	andi	$a0, $a0, 4
+	xvpickve2gr.d	$a1, $xr0, 1
+	andi	$a1, $a1, 3
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a0, $a0, $a2
+	or	$a0, $a0, $a1
+	xvpickve2gr.d	$a1, $xr0, 2
+	andi	$a1, $a1, 2
+	sltu	$a2, $a1, $a0
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	xvpickve2gr.d	$a1, $xr0, 3
+	andi	$a1, $a1, 1
+	sltu	$a2, $a1, $a0
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	ori	$a1, $zero, 4
+	sub.d	$a0, $a1, $a0
+	andi	$a0, $a0, 255
+	xvreplgr2vr.w	$xr0, $a0
+	xvslli.w	$xr0, $xr0, 1
+	xvld	$xr2, $fp, -112                 # 32-byte Folded Reload
+	xvperm.w	$xr1, $xr2, $xr0
+	xvaddi.wu	$xr0, $xr0, 1
+	xvperm.w	$xr0, $xr2, $xr0
+	xvilvl.w	$xr0, $xr0, $xr1
+	xvpickve2gr.d	$a1, $xr0, 0
+	add.d	$a0, $a0, $s5
 	slli.d	$a0, $a0, 3
-	pcalau12i	$a1, %pc_hi20(g_HugePageLen)
-	addi.d	$a1, $a1, %pc_lo12(g_HugePageLen)
-	stx.d	$s0, $a1, $a0
-	st.d	$s1, $s6, 0
+	pcalau12i	$a2, %pc_hi20(g_HugePageLen)
+	addi.d	$a2, $a2, %pc_lo12(g_HugePageLen)
+	stx.d	$s0, $a2, $a0
+	st.d	$s1, $a1, 0
 	b	.LBB3_12
 .LBB3_8:
 	move	$a0, $s0
-	addi.d	$sp, $fp, -160
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -144
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	pcaddu18i	$t8, %call36(malloc)
 	jr	$t8
 .LBB3_9:
@@ -227,26 +226,23 @@ VirtualAlloc:                           # @VirtualAlloc
 .LBB3_11:
 	move	$s1, $zero
 .LBB3_12:
-	move	$sp, $s5
+	move	$sp, $s4
 .LBB3_13:                               # %.loopexit
 	pcalau12i	$a0, %pc_hi20(VirtualAlloc.mutex)
 	addi.d	$a0, $a0, %pc_lo12(VirtualAlloc.mutex)
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
-	addi.d	$sp, $fp, -160
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -144
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end3:
 	.size	VirtualAlloc, .Lfunc_end3-VirtualAlloc
@@ -264,12 +260,9 @@ VirtualAlloc:                           # @VirtualAlloc
 	.type	MidFree,@function
 MidFree:                                # @MidFree
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	beqz	$a0, .LBB4_6
 # %bb.1:                                # %vector.ph
 	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
@@ -326,31 +319,30 @@ MidFree:                                # @MidFree
 	ori	$a3, $zero, 4
 	sub.d	$a2, $a3, $a2
 	andi	$a2, $a2, 255
-	addi.d	$a3, $sp, 32
-	bstrins.d	$a3, $a2, 4, 3
-	xvst	$xr0, $sp, 32
-	ld.d	$s0, $a3, 0
+	xvreplgr2vr.w	$xr1, $a2
+	xvslli.w	$xr1, $xr1, 1
+	xvperm.w	$xr2, $xr0, $xr1
+	xvaddi.wu	$xr1, $xr1, 1
 	add.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 3
 	pcalau12i	$a2, %pc_hi20(g_HugePageLen)
 	addi.d	$a2, $a2, %pc_lo12(g_HugePageLen)
 	ldx.d	$a1, $a2, $a1
+	xvperm.w	$xr0, $xr0, $xr1
+	xvilvl.w	$xr0, $xr0, $xr2
+	xvpickve2gr.d	$fp, $xr0, 0
 	pcaddu18i	$ra, %call36(munmap)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $s0, 0
+	st.d	$zero, $fp, 0
 .LBB4_6:                                # %VirtualFree.exit
-	addi.d	$sp, $fp, -96
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .LBB4_7:                                # %middle.block
-	addi.d	$sp, $fp, -96
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .Lfunc_end4:
@@ -539,12 +531,9 @@ BigAlloc:                               # @BigAlloc
 	.type	BigFree,@function
 BigFree:                                # @BigFree
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	beqz	$a0, .LBB8_6
 # %bb.1:                                # %vector.ph
 	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
@@ -601,31 +590,30 @@ BigFree:                                # @BigFree
 	ori	$a3, $zero, 4
 	sub.d	$a2, $a3, $a2
 	andi	$a2, $a2, 255
-	addi.d	$a3, $sp, 32
-	bstrins.d	$a3, $a2, 4, 3
-	xvst	$xr0, $sp, 32
-	ld.d	$s0, $a3, 0
+	xvreplgr2vr.w	$xr1, $a2
+	xvslli.w	$xr1, $xr1, 1
+	xvperm.w	$xr2, $xr0, $xr1
+	xvaddi.wu	$xr1, $xr1, 1
 	add.d	$a1, $a2, $a1
 	slli.d	$a1, $a1, 3
 	pcalau12i	$a2, %pc_hi20(g_HugePageLen)
 	addi.d	$a2, $a2, %pc_lo12(g_HugePageLen)
 	ldx.d	$a1, $a2, $a1
+	xvperm.w	$xr0, $xr0, $xr1
+	xvilvl.w	$xr0, $xr0, $xr2
+	xvpickve2gr.d	$fp, $xr0, 0
 	pcaddu18i	$ra, %call36(munmap)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $s0, 0
+	st.d	$zero, $fp, 0
 .LBB8_6:                                # %VirtualFree.exit
-	addi.d	$sp, $fp, -96
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .LBB8_7:                                # %middle.block
-	addi.d	$sp, $fp, -96
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .Lfunc_end8:

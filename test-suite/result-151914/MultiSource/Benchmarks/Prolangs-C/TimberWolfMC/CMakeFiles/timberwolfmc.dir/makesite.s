@@ -543,10 +543,8 @@ Vside:                                  # @Vside
 # %bb.32:                               # %middle.block185
 	bne	$a4, $a5, .LBB0_34
 .LBB0_33:
-	xvpickve2gr.d	$a1, $xr6, 3
-	movgr2fr.d	$fa3, $a1
-	xvpickve2gr.d	$a1, $xr7, 3
-	movgr2fr.d	$fa2, $a1
+	xvpickve.d	$xr3, $xr6, 3
+	xvpickve.d	$xr2, $xr7, 3
 	b	.LBB0_36
 .LBB0_34:                               # %scalar.ph172.preheader
 	sub.d	$a3, $a3, $a1
@@ -1166,10 +1164,8 @@ Hside:                                  # @Hside
 # %bb.32:                               # %middle.block186
 	bne	$a4, $a5, .LBB1_34
 .LBB1_33:
-	xvpickve2gr.d	$a1, $xr6, 3
-	movgr2fr.d	$fa3, $a1
-	xvpickve2gr.d	$a1, $xr7, 3
-	movgr2fr.d	$fa2, $a1
+	xvpickve.d	$xr3, $xr6, 3
+	xvpickve.d	$xr2, $xr7, 3
 	b	.LBB1_36
 .LBB1_34:                               # %scalar.ph173.preheader
 	sub.d	$a3, $a3, $a1

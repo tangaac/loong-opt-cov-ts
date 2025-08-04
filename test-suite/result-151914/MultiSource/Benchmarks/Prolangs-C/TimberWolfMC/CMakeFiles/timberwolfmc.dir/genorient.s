@@ -125,8 +125,7 @@ genorient:                              # @genorient
 	fst.d	$fa1, $s5, 16
 	b	.LBB0_19
 .LBB0_12:                               #   in Loop: Header=BB0_4 Depth=1
-	xvpickve2gr.d	$a0, $xr0, 2
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 78
 	xvrepl128vei.d	$xr0, $xr0, 1
 	vextrins.d	$vr0, $vr1, 16
@@ -136,12 +135,10 @@ genorient:                              # @genorient
 	fld.d	$fa1, $s0, 8
 	fst.d	$fa1, $s5, 16
 	xvstelm.d	$xr0, $s5, 24, 2
-	xvpickve2gr.d	$a0, $xr0, 3
-	movgr2fr.d	$fa0, $a0
+	xvpickve.d	$xr0, $xr0, 3
 	b	.LBB0_19
 .LBB0_14:                               #   in Loop: Header=BB0_4 Depth=1
-	xvpickve2gr.d	$a0, $xr0, 2
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 78
 	xvrepl128vei.d	$xr0, $xr0, 1
 	vextrins.d	$vr0, $vr1, 16
@@ -323,8 +320,7 @@ genorient:                              # @genorient
 	fst.d	$fa1, $s5, 16
 	b	.LBB0_46
 .LBB0_39:                               #   in Loop: Header=BB0_34 Depth=2
-	xvpickve2gr.d	$a0, $xr0, 2
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 78
 	xvrepl128vei.d	$xr0, $xr0, 1
 	vextrins.d	$vr0, $vr1, 16
@@ -334,12 +330,10 @@ genorient:                              # @genorient
 	fld.d	$fa1, $s0, 8
 	fst.d	$fa1, $s5, 16
 	xvstelm.d	$xr0, $s5, 24, 2
-	xvpickve2gr.d	$a0, $xr0, 3
-	movgr2fr.d	$fa0, $a0
+	xvpickve.d	$xr0, $xr0, 3
 	b	.LBB0_46
 .LBB0_41:                               #   in Loop: Header=BB0_34 Depth=2
-	xvpickve2gr.d	$a0, $xr0, 2
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 78
 	xvrepl128vei.d	$xr0, $xr0, 1
 	vextrins.d	$vr0, $vr1, 16

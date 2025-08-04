@@ -1441,35 +1441,27 @@ matgen:                                 # @matgen
 	xvfmul.d	$xr11, $xr13, $xr4
 	xvfdiv.d	$xr11, $xr11, $xr3
 	xvfdiv.d	$xr10, $xr10, $xr3
-	xvpickve2gr.d	$t2, $xr10, 1
-	movgr2fr.d	$ft4, $t2
+	xvpickve.d	$xr12, $xr10, 1
 	fcvt.s.d	$ft4, $ft4
-	xvpickve2gr.d	$t2, $xr10, 0
-	movgr2fr.d	$ft5, $t2
+	xvpickve.d	$xr13, $xr10, 0
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr13, $xr12, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	movgr2fr.d	$ft4, $t2
+	xvpickve.d	$xr12, $xr10, 2
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr13, $xr12, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	movgr2fr.d	$ft2, $t2
+	xvpickve.d	$xr10, $xr10, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr13, $xr10, 3
-	xvpickve2gr.d	$t2, $xr11, 0
-	movgr2fr.d	$ft2, $t2
+	xvpickve.d	$xr10, $xr11, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr13, $xr10, 4
-	xvpickve2gr.d	$t2, $xr11, 1
-	movgr2fr.d	$ft2, $t2
+	xvpickve.d	$xr10, $xr11, 1
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr13, $xr10, 5
-	xvpickve2gr.d	$t2, $xr11, 2
-	movgr2fr.d	$ft2, $t2
+	xvpickve.d	$xr10, $xr11, 2
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr13, $xr10, 6
-	xvpickve2gr.d	$t2, $xr11, 3
-	movgr2fr.d	$ft2, $t2
+	xvpickve.d	$xr10, $xr11, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr13, $xr10, 7
 	xvst	$xr13, $t0, 0
@@ -1856,35 +1848,27 @@ matgen:                                 # @matgen
 	xvinsve0.d	$xr13, $xr10, 3
 	xvfdiv.d	$xr10, $xr13, $xr4
 	xvfdiv.d	$xr11, $xr12, $xr4
-	xvpickve2gr.d	$t2, $xr11, 1
-	movgr2fr.d	$ft4, $t2
+	xvpickve.d	$xr12, $xr11, 1
 	fcvt.s.d	$ft4, $ft4
-	xvpickve2gr.d	$t2, $xr11, 0
-	movgr2fr.d	$ft5, $t2
+	xvpickve.d	$xr13, $xr11, 0
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr13, $xr12, 1
-	xvpickve2gr.d	$t2, $xr11, 2
-	movgr2fr.d	$ft4, $t2
+	xvpickve.d	$xr12, $xr11, 2
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr13, $xr12, 2
-	xvpickve2gr.d	$t2, $xr11, 3
-	movgr2fr.d	$ft3, $t2
+	xvpickve.d	$xr11, $xr11, 3
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr13, $xr11, 3
-	xvpickve2gr.d	$t2, $xr10, 0
-	movgr2fr.d	$ft3, $t2
+	xvpickve.d	$xr11, $xr10, 0
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr13, $xr11, 4
-	xvpickve2gr.d	$t2, $xr10, 1
-	movgr2fr.d	$ft3, $t2
+	xvpickve.d	$xr11, $xr10, 1
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr13, $xr11, 5
-	xvpickve2gr.d	$t2, $xr10, 2
-	movgr2fr.d	$ft3, $t2
+	xvpickve.d	$xr11, $xr10, 2
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr13, $xr11, 6
-	xvpickve2gr.d	$t2, $xr10, 3
-	movgr2fr.d	$ft2, $t2
+	xvpickve.d	$xr10, $xr10, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr13, $xr10, 7
 	xvst	$xr13, $t0, 0

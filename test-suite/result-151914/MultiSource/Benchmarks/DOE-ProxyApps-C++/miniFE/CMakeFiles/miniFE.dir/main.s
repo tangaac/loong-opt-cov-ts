@@ -20852,32 +20852,32 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	xvldx	$xr10, $a2, $a3
-	xvpickve2gr.d	$a2, $xr7, 3
 	xvpermi.d	$xr2, $xr7, 68
-	xvld	$xr11, $s2, 128
 	xvrepl128vei.d	$xr2, $xr2, 1
-	xvld	$xr12, $s2, 160
-	xvinsgr2vr.d	$xr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr11, 3
-	xvinsgr2vr.d	$xr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 1
-	xvinsgr2vr.d	$xr2, $a2, 3
-	xvpickve2gr.d	$a2, $xr10, 3
-	xvpermi.d	$xr13, $xr10, 68
-	xvrepl128vei.d	$xr13, $xr13, 1
-	xvinsgr2vr.d	$xr13, $a2, 1
-	xvpickve2gr.d	$a2, $xr9, 3
-	xvinsgr2vr.d	$xr13, $a2, 2
-	xvpickve2gr.d	$a2, $xr8, 1
-	xvinsgr2vr.d	$xr13, $a2, 3
-	xvfmul.d	$xr14, $xr13, $xr4
+	xvld	$xr11, $s2, 128
+	xvpickve.d	$xr12, $xr7, 3
+	xvld	$xr13, $s2, 160
+	xvinsve0.d	$xr2, $xr12, 1
+	xvpickve.d	$xr12, $xr11, 3
+	xvinsve0.d	$xr2, $xr12, 2
+	xvpickve.d	$xr12, $xr13, 1
+	xvinsve0.d	$xr2, $xr12, 3
+	xvpermi.d	$xr12, $xr10, 68
+	xvrepl128vei.d	$xr12, $xr12, 1
+	xvpickve.d	$xr14, $xr10, 3
+	xvinsve0.d	$xr12, $xr14, 1
+	xvpickve.d	$xr14, $xr9, 3
+	xvinsve0.d	$xr12, $xr14, 2
+	xvpickve.d	$xr14, $xr8, 1
+	xvinsve0.d	$xr12, $xr14, 3
+	xvfmul.d	$xr14, $xr12, $xr4
 	xvfmul.d	$xr15, $xr2, $xr4
 	xvld	$xr17, $sp, 64                  # 32-byte Folded Reload
 	xvori.b	$xr16, $xr17, 0
 	xvshuf.d	$xr16, $xr11, $xr7
 	xvld	$xr18, $sp, 32                  # 32-byte Folded Reload
 	xvori.b	$xr4, $xr18, 0
-	xvshuf.d	$xr4, $xr12, $xr16
+	xvshuf.d	$xr4, $xr13, $xr16
 	xvori.b	$xr16, $xr17, 0
 	xvshuf.d	$xr16, $xr9, $xr10
 	xvori.b	$xr17, $xr18, 0
@@ -20887,32 +20887,32 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	xvfmul.d	$xr5, $xr4, $xr5
 	xvfadd.d	$xr5, $xr15, $xr5
 	xvfadd.d	$xr14, $xr14, $xr16
-	xvpickve2gr.d	$a2, $xr9, 1
-	xvpermi.d	$xr9, $xr10, 78
-	xvrepl128vei.d	$xr9, $xr9, 0
-	xvinsgr2vr.d	$xr9, $a2, 1
-	xvpickve2gr.d	$a2, $xr8, 0
-	xvinsgr2vr.d	$xr9, $a2, 2
-	xvpickve2gr.d	$a2, $xr8, 3
-	xvinsgr2vr.d	$xr9, $a2, 3
-	xvpickve2gr.d	$a2, $xr11, 1
+	xvpermi.d	$xr10, $xr10, 78
+	xvrepl128vei.d	$xr10, $xr10, 0
+	xvpickve.d	$xr9, $xr9, 1
+	xvinsve0.d	$xr10, $xr9, 1
+	xvpickve.d	$xr9, $xr8, 0
+	xvinsve0.d	$xr10, $xr9, 2
+	xvpickve.d	$xr8, $xr8, 3
+	xvinsve0.d	$xr10, $xr8, 3
 	xvpermi.d	$xr7, $xr7, 78
 	xvrepl128vei.d	$xr7, $xr7, 0
-	xvinsgr2vr.d	$xr7, $a2, 1
-	xvpickve2gr.d	$a2, $xr12, 0
-	xvinsgr2vr.d	$xr7, $a2, 2
-	xvpickve2gr.d	$a2, $xr12, 3
-	xvinsgr2vr.d	$xr7, $a2, 3
+	xvpickve.d	$xr8, $xr11, 1
+	xvinsve0.d	$xr7, $xr8, 1
+	xvpickve.d	$xr8, $xr13, 0
+	xvinsve0.d	$xr7, $xr8, 2
+	xvpickve.d	$xr8, $xr13, 3
+	xvinsve0.d	$xr7, $xr8, 3
 	xvpermi.d	$xr6, $xr6, 68
 	xvrepl128vei.d	$xr6, $xr6, 0
 	xvfmul.d	$xr8, $xr7, $xr6
-	xvfmul.d	$xr6, $xr9, $xr6
+	xvfmul.d	$xr6, $xr10, $xr6
 	xvfadd.d	$xr6, $xr14, $xr6
-	vld	$vr10, $sp, 168
+	vld	$vr9, $sp, 168
 	xvfadd.d	$xr5, $xr5, $xr8
 	xvst	$xr5, $sp, 384
 	xvst	$xr6, $sp, 352
-	xvpermi.d	$xr5, $xr10, 68
+	xvpermi.d	$xr5, $xr9, 68
 	vld	$vr6, $sp, 192
 	xvbsrl.v	$xr8, $xr5, 8
 	xvbsll.v	$xr5, $xr5, 8
@@ -20921,26 +20921,26 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	xvbsrl.v	$xr11, $xr8, 8
 	xvbsll.v	$xr8, $xr8, 8
 	xvor.v	$xr8, $xr8, $xr11
-	xvfmul.d	$xr11, $xr13, $xr8
+	xvfmul.d	$xr11, $xr12, $xr8
 	xvpermi.q	$xr6, $xr6, 2
-	xvfmul.d	$xr12, $xr17, $xr6
-	xvfadd.d	$xr11, $xr11, $xr12
+	xvfmul.d	$xr13, $xr17, $xr6
+	xvfadd.d	$xr11, $xr11, $xr13
 	xvreplve0.d	$xr3, $xr3
-	xvfmul.d	$xr12, $xr9, $xr3
-	xvfadd.d	$xr11, $xr11, $xr12
+	xvfmul.d	$xr13, $xr10, $xr3
+	xvfadd.d	$xr11, $xr11, $xr13
 	xvst	$xr11, $sp, 224
-	xvfmul.d	$xr11, $xr13, $xr5
+	xvfmul.d	$xr11, $xr12, $xr5
 	xvfmul.d	$xr5, $xr2, $xr5
-	xvpermi.q	$xr10, $xr10, 2
-	xvfmul.d	$xr12, $xr17, $xr10
-	xvfmul.d	$xr10, $xr4, $xr10
-	xvfadd.d	$xr5, $xr5, $xr10
-	xvfadd.d	$xr10, $xr11, $xr12
+	xvpermi.q	$xr9, $xr9, 2
+	xvfmul.d	$xr12, $xr17, $xr9
+	xvfmul.d	$xr9, $xr4, $xr9
+	xvfadd.d	$xr5, $xr5, $xr9
+	xvfadd.d	$xr9, $xr11, $xr12
 	xvpermi.d	$xr1, $xr1, 68
 	xvrepl128vei.d	$xr1, $xr1, 0
 	xvfmul.d	$xr11, $xr7, $xr1
-	xvfmul.d	$xr1, $xr9, $xr1
-	xvfadd.d	$xr1, $xr10, $xr1
+	xvfmul.d	$xr1, $xr10, $xr1
+	xvfadd.d	$xr1, $xr9, $xr1
 	xvfadd.d	$xr5, $xr5, $xr11
 	xvst	$xr5, $sp, 320
 	xvst	$xr1, $sp, 288

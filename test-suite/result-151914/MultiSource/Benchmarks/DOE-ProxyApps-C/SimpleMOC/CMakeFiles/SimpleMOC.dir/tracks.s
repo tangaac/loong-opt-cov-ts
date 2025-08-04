@@ -747,35 +747,27 @@ generate_polar_angles:                  # @generate_polar_angles
 	xvfmul.d	$xr5, $xr5, $xr4
 	xvfdiv.d	$xr5, $xr5, $xr2
 	xvfdiv.d	$xr6, $xr6, $xr2
-	xvpickve2gr.d	$a4, $xr6, 1
-	movgr2fr.d	$fa7, $a4
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a4, $xr6, 0
-	movgr2fr.d	$ft0, $a4
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$a4, $xr6, 2
-	movgr2fr.d	$fa7, $a4
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$a4, $xr6, 3
-	movgr2fr.d	$fa6, $a4
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 3
-	xvpickve2gr.d	$a4, $xr5, 0
-	movgr2fr.d	$fa6, $a4
+	xvpickve.d	$xr6, $xr5, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 4
-	xvpickve2gr.d	$a4, $xr5, 1
-	movgr2fr.d	$fa6, $a4
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 5
-	xvpickve2gr.d	$a4, $xr5, 2
-	movgr2fr.d	$fa6, $a4
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 6
-	xvpickve2gr.d	$a4, $xr5, 3
-	movgr2fr.d	$fa5, $a4
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
 	xvst	$xr8, $a2, 0

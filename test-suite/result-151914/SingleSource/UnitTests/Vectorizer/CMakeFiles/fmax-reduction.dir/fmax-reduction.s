@@ -7518,98 +7518,66 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvori.b	$xr1, $xr5, 0
 	xvori.b	$xr2, $xr0, 0
 	xvldx	$xr4, $a6, $a3
-	xvpickve2gr.w	$a6, $xr3, 1
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 1
-	movgr2fr.w	$fa5, $a6
+	xvpickve.w	$xr0, $xr3, 1
+	xvpickve.w	$xr5, $xr2, 1
 	fmax.s	$fa5, $fa5, $fa0
-	xvpickve2gr.w	$a6, $xr3, 0
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 0
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr0, $xr3, 0
+	xvpickve.w	$xr6, $xr2, 0
 	fmax.s	$fa0, $fa6, $fa0
 	xvinsve0.w	$xr0, $xr5, 1
-	xvpickve2gr.w	$a6, $xr3, 2
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 2
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 2
+	xvpickve.w	$xr6, $xr2, 2
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 2
-	xvpickve2gr.w	$a6, $xr3, 3
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 3
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 3
+	xvpickve.w	$xr6, $xr2, 3
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 3
-	xvpickve2gr.w	$a6, $xr3, 4
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 4
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 4
+	xvpickve.w	$xr6, $xr2, 4
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 4
-	xvpickve2gr.w	$a6, $xr3, 5
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 5
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 5
+	xvpickve.w	$xr6, $xr2, 5
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 5
-	xvpickve2gr.w	$a6, $xr3, 6
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 6
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 6
+	xvpickve.w	$xr6, $xr2, 6
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 6
-	xvpickve2gr.w	$a6, $xr3, 7
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 7
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 7
+	xvpickve.w	$xr6, $xr2, 7
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 7
-	xvpickve2gr.w	$a6, $xr4, 1
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 1
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr4, 1
+	xvpickve.w	$xr6, $xr1, 1
 	fmax.s	$fa6, $fa6, $fa5
-	xvpickve2gr.w	$a6, $xr4, 0
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 0
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr5, $xr4, 0
+	xvpickve.w	$xr7, $xr1, 0
 	fmax.s	$fa5, $fa7, $fa5
 	xvinsve0.w	$xr5, $xr6, 1
-	xvpickve2gr.w	$a6, $xr4, 2
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 2
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 2
+	xvpickve.w	$xr7, $xr1, 2
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 2
-	xvpickve2gr.w	$a6, $xr4, 3
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 3
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 3
+	xvpickve.w	$xr7, $xr1, 3
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 3
-	xvpickve2gr.w	$a6, $xr4, 4
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 4
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 4
+	xvpickve.w	$xr7, $xr1, 4
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 4
-	xvpickve2gr.w	$a6, $xr4, 5
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 5
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 5
+	xvpickve.w	$xr7, $xr1, 5
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 5
-	xvpickve2gr.w	$a6, $xr4, 6
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 6
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 6
+	xvpickve.w	$xr7, $xr1, 6
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 6
-	xvpickve2gr.w	$a6, $xr4, 7
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 7
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 7
+	xvpickve.w	$xr7, $xr1, 7
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 7
 	xvfcmp.cun.s	$xr3, $xr3, $xr4
@@ -7630,45 +7598,29 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvsrai.w	$xr3, $xr3, 31
 	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
 	xvbitsel.v	$xr1, $xr5, $xr1, $xr3
-	xvpickve2gr.w	$a3, $xr1, 7
-	movgr2fr.w	$fa2, $a3
-	xvpickve2gr.w	$a3, $xr0, 7
-	movgr2fr.w	$fa3, $a3
+	xvpickve.w	$xr2, $xr1, 7
+	xvpickve.w	$xr3, $xr0, 7
 	fmax.s	$fa2, $fa3, $fa2
-	xvpickve2gr.w	$a3, $xr1, 6
-	movgr2fr.w	$fa3, $a3
-	xvpickve2gr.w	$a3, $xr0, 6
-	movgr2fr.w	$fa4, $a3
+	xvpickve.w	$xr3, $xr1, 6
+	xvpickve.w	$xr4, $xr0, 6
 	fmax.s	$fa3, $fa4, $fa3
-	xvpickve2gr.w	$a3, $xr1, 5
-	movgr2fr.w	$fa4, $a3
-	xvpickve2gr.w	$a3, $xr0, 5
-	movgr2fr.w	$fa5, $a3
+	xvpickve.w	$xr4, $xr1, 5
+	xvpickve.w	$xr5, $xr0, 5
 	fmax.s	$fa4, $fa5, $fa4
-	xvpickve2gr.w	$a3, $xr1, 4
-	movgr2fr.w	$fa5, $a3
-	xvpickve2gr.w	$a3, $xr0, 4
-	movgr2fr.w	$fa6, $a3
+	xvpickve.w	$xr5, $xr1, 4
+	xvpickve.w	$xr6, $xr0, 4
 	fmax.s	$fa5, $fa6, $fa5
-	xvpickve2gr.w	$a3, $xr1, 3
-	movgr2fr.w	$fa6, $a3
-	xvpickve2gr.w	$a3, $xr0, 3
-	movgr2fr.w	$fa7, $a3
+	xvpickve.w	$xr6, $xr1, 3
+	xvpickve.w	$xr7, $xr0, 3
 	fmax.s	$fa6, $fa7, $fa6
-	xvpickve2gr.w	$a3, $xr1, 2
-	movgr2fr.w	$fa7, $a3
-	xvpickve2gr.w	$a3, $xr0, 2
-	movgr2fr.w	$ft0, $a3
+	xvpickve.w	$xr7, $xr1, 2
+	xvpickve.w	$xr8, $xr0, 2
 	fmax.s	$fa7, $ft0, $fa7
-	xvpickve2gr.w	$a3, $xr1, 1
-	movgr2fr.w	$ft0, $a3
-	xvpickve2gr.w	$a3, $xr0, 1
-	movgr2fr.w	$ft1, $a3
+	xvpickve.w	$xr8, $xr1, 1
+	xvpickve.w	$xr9, $xr0, 1
 	fmax.s	$ft0, $ft1, $ft0
-	xvpickve2gr.w	$a3, $xr1, 0
-	movgr2fr.w	$fa1, $a3
-	xvpickve2gr.w	$a3, $xr0, 0
-	movgr2fr.w	$fa0, $a3
+	xvpickve.w	$xr1, $xr1, 0
+	xvpickve.w	$xr0, $xr0, 0
 	fmax.s	$fa0, $fa0, $fa1
 	fmax.s	$fa0, $fa0, $ft0
 	fmax.s	$fa0, $fa0, $fa7
@@ -7786,98 +7738,66 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvori.b	$xr1, $xr5, 0
 	xvori.b	$xr2, $xr0, 0
 	xvldx	$xr4, $a6, $a3
-	xvpickve2gr.w	$a6, $xr3, 1
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 1
-	movgr2fr.w	$fa5, $a6
+	xvpickve.w	$xr0, $xr3, 1
+	xvpickve.w	$xr5, $xr2, 1
 	fmax.s	$fa5, $fa5, $fa0
-	xvpickve2gr.w	$a6, $xr3, 0
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 0
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr0, $xr3, 0
+	xvpickve.w	$xr6, $xr2, 0
 	fmax.s	$fa0, $fa6, $fa0
 	xvinsve0.w	$xr0, $xr5, 1
-	xvpickve2gr.w	$a6, $xr3, 2
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 2
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 2
+	xvpickve.w	$xr6, $xr2, 2
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 2
-	xvpickve2gr.w	$a6, $xr3, 3
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 3
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 3
+	xvpickve.w	$xr6, $xr2, 3
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 3
-	xvpickve2gr.w	$a6, $xr3, 4
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 4
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 4
+	xvpickve.w	$xr6, $xr2, 4
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 4
-	xvpickve2gr.w	$a6, $xr3, 5
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 5
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 5
+	xvpickve.w	$xr6, $xr2, 5
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 5
-	xvpickve2gr.w	$a6, $xr3, 6
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 6
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 6
+	xvpickve.w	$xr6, $xr2, 6
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 6
-	xvpickve2gr.w	$a6, $xr3, 7
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 7
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 7
+	xvpickve.w	$xr6, $xr2, 7
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 7
-	xvpickve2gr.w	$a6, $xr4, 1
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 1
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr4, 1
+	xvpickve.w	$xr6, $xr1, 1
 	fmax.s	$fa6, $fa6, $fa5
-	xvpickve2gr.w	$a6, $xr4, 0
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 0
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr5, $xr4, 0
+	xvpickve.w	$xr7, $xr1, 0
 	fmax.s	$fa5, $fa7, $fa5
 	xvinsve0.w	$xr5, $xr6, 1
-	xvpickve2gr.w	$a6, $xr4, 2
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 2
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 2
+	xvpickve.w	$xr7, $xr1, 2
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 2
-	xvpickve2gr.w	$a6, $xr4, 3
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 3
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 3
+	xvpickve.w	$xr7, $xr1, 3
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 3
-	xvpickve2gr.w	$a6, $xr4, 4
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 4
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 4
+	xvpickve.w	$xr7, $xr1, 4
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 4
-	xvpickve2gr.w	$a6, $xr4, 5
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 5
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 5
+	xvpickve.w	$xr7, $xr1, 5
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 5
-	xvpickve2gr.w	$a6, $xr4, 6
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 6
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 6
+	xvpickve.w	$xr7, $xr1, 6
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 6
-	xvpickve2gr.w	$a6, $xr4, 7
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 7
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 7
+	xvpickve.w	$xr7, $xr1, 7
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 7
 	xvfcmp.cun.s	$xr3, $xr3, $xr4
@@ -7898,45 +7818,29 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvsrai.w	$xr3, $xr3, 31
 	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
 	xvbitsel.v	$xr1, $xr5, $xr1, $xr3
-	xvpickve2gr.w	$a3, $xr1, 7
-	movgr2fr.w	$fa2, $a3
-	xvpickve2gr.w	$a3, $xr0, 7
-	movgr2fr.w	$fa3, $a3
+	xvpickve.w	$xr2, $xr1, 7
+	xvpickve.w	$xr3, $xr0, 7
 	fmax.s	$fa2, $fa3, $fa2
-	xvpickve2gr.w	$a3, $xr1, 6
-	movgr2fr.w	$fa3, $a3
-	xvpickve2gr.w	$a3, $xr0, 6
-	movgr2fr.w	$fa4, $a3
+	xvpickve.w	$xr3, $xr1, 6
+	xvpickve.w	$xr4, $xr0, 6
 	fmax.s	$fa3, $fa4, $fa3
-	xvpickve2gr.w	$a3, $xr1, 5
-	movgr2fr.w	$fa4, $a3
-	xvpickve2gr.w	$a3, $xr0, 5
-	movgr2fr.w	$fa5, $a3
+	xvpickve.w	$xr4, $xr1, 5
+	xvpickve.w	$xr5, $xr0, 5
 	fmax.s	$fa4, $fa5, $fa4
-	xvpickve2gr.w	$a3, $xr1, 4
-	movgr2fr.w	$fa5, $a3
-	xvpickve2gr.w	$a3, $xr0, 4
-	movgr2fr.w	$fa6, $a3
+	xvpickve.w	$xr5, $xr1, 4
+	xvpickve.w	$xr6, $xr0, 4
 	fmax.s	$fa5, $fa6, $fa5
-	xvpickve2gr.w	$a3, $xr1, 3
-	movgr2fr.w	$fa6, $a3
-	xvpickve2gr.w	$a3, $xr0, 3
-	movgr2fr.w	$fa7, $a3
+	xvpickve.w	$xr6, $xr1, 3
+	xvpickve.w	$xr7, $xr0, 3
 	fmax.s	$fa6, $fa7, $fa6
-	xvpickve2gr.w	$a3, $xr1, 2
-	movgr2fr.w	$fa7, $a3
-	xvpickve2gr.w	$a3, $xr0, 2
-	movgr2fr.w	$ft0, $a3
+	xvpickve.w	$xr7, $xr1, 2
+	xvpickve.w	$xr8, $xr0, 2
 	fmax.s	$fa7, $ft0, $fa7
-	xvpickve2gr.w	$a3, $xr1, 1
-	movgr2fr.w	$ft0, $a3
-	xvpickve2gr.w	$a3, $xr0, 1
-	movgr2fr.w	$ft1, $a3
+	xvpickve.w	$xr8, $xr1, 1
+	xvpickve.w	$xr9, $xr0, 1
 	fmax.s	$ft0, $ft1, $ft0
-	xvpickve2gr.w	$a3, $xr1, 0
-	movgr2fr.w	$fa1, $a3
-	xvpickve2gr.w	$a3, $xr0, 0
-	movgr2fr.w	$fa0, $a3
+	xvpickve.w	$xr1, $xr1, 0
+	xvpickve.w	$xr0, $xr0, 0
 	fmax.s	$fa0, $fa0, $fa1
 	fmax.s	$fa0, $fa0, $ft0
 	fmax.s	$fa0, $fa0, $fa7
@@ -8053,98 +7957,66 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvori.b	$xr1, $xr5, 0
 	xvori.b	$xr2, $xr0, 0
 	xvldx	$xr4, $a6, $a3
-	xvpickve2gr.w	$a6, $xr3, 1
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 1
-	movgr2fr.w	$fa5, $a6
+	xvpickve.w	$xr0, $xr3, 1
+	xvpickve.w	$xr5, $xr2, 1
 	fmax.s	$fa5, $fa5, $fa0
-	xvpickve2gr.w	$a6, $xr3, 0
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 0
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr0, $xr3, 0
+	xvpickve.w	$xr6, $xr2, 0
 	fmax.s	$fa0, $fa6, $fa0
 	xvinsve0.w	$xr0, $xr5, 1
-	xvpickve2gr.w	$a6, $xr3, 2
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 2
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 2
+	xvpickve.w	$xr6, $xr2, 2
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 2
-	xvpickve2gr.w	$a6, $xr3, 3
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 3
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 3
+	xvpickve.w	$xr6, $xr2, 3
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 3
-	xvpickve2gr.w	$a6, $xr3, 4
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 4
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 4
+	xvpickve.w	$xr6, $xr2, 4
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 4
-	xvpickve2gr.w	$a6, $xr3, 5
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 5
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 5
+	xvpickve.w	$xr6, $xr2, 5
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 5
-	xvpickve2gr.w	$a6, $xr3, 6
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 6
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 6
+	xvpickve.w	$xr6, $xr2, 6
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 6
-	xvpickve2gr.w	$a6, $xr3, 7
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 7
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 7
+	xvpickve.w	$xr6, $xr2, 7
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 7
-	xvpickve2gr.w	$a6, $xr4, 1
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 1
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr4, 1
+	xvpickve.w	$xr6, $xr1, 1
 	fmax.s	$fa6, $fa6, $fa5
-	xvpickve2gr.w	$a6, $xr4, 0
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 0
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr5, $xr4, 0
+	xvpickve.w	$xr7, $xr1, 0
 	fmax.s	$fa5, $fa7, $fa5
 	xvinsve0.w	$xr5, $xr6, 1
-	xvpickve2gr.w	$a6, $xr4, 2
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 2
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 2
+	xvpickve.w	$xr7, $xr1, 2
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 2
-	xvpickve2gr.w	$a6, $xr4, 3
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 3
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 3
+	xvpickve.w	$xr7, $xr1, 3
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 3
-	xvpickve2gr.w	$a6, $xr4, 4
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 4
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 4
+	xvpickve.w	$xr7, $xr1, 4
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 4
-	xvpickve2gr.w	$a6, $xr4, 5
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 5
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 5
+	xvpickve.w	$xr7, $xr1, 5
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 5
-	xvpickve2gr.w	$a6, $xr4, 6
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 6
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 6
+	xvpickve.w	$xr7, $xr1, 6
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 6
-	xvpickve2gr.w	$a6, $xr4, 7
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 7
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 7
+	xvpickve.w	$xr7, $xr1, 7
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 7
 	xvfcmp.cun.s	$xr3, $xr3, $xr4
@@ -8165,45 +8037,29 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvsrai.w	$xr3, $xr3, 31
 	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
 	xvbitsel.v	$xr1, $xr5, $xr1, $xr3
-	xvpickve2gr.w	$a3, $xr1, 7
-	movgr2fr.w	$fa2, $a3
-	xvpickve2gr.w	$a3, $xr0, 7
-	movgr2fr.w	$fa3, $a3
+	xvpickve.w	$xr2, $xr1, 7
+	xvpickve.w	$xr3, $xr0, 7
 	fmax.s	$fa2, $fa3, $fa2
-	xvpickve2gr.w	$a3, $xr1, 6
-	movgr2fr.w	$fa3, $a3
-	xvpickve2gr.w	$a3, $xr0, 6
-	movgr2fr.w	$fa4, $a3
+	xvpickve.w	$xr3, $xr1, 6
+	xvpickve.w	$xr4, $xr0, 6
 	fmax.s	$fa3, $fa4, $fa3
-	xvpickve2gr.w	$a3, $xr1, 5
-	movgr2fr.w	$fa4, $a3
-	xvpickve2gr.w	$a3, $xr0, 5
-	movgr2fr.w	$fa5, $a3
+	xvpickve.w	$xr4, $xr1, 5
+	xvpickve.w	$xr5, $xr0, 5
 	fmax.s	$fa4, $fa5, $fa4
-	xvpickve2gr.w	$a3, $xr1, 4
-	movgr2fr.w	$fa5, $a3
-	xvpickve2gr.w	$a3, $xr0, 4
-	movgr2fr.w	$fa6, $a3
+	xvpickve.w	$xr5, $xr1, 4
+	xvpickve.w	$xr6, $xr0, 4
 	fmax.s	$fa5, $fa6, $fa5
-	xvpickve2gr.w	$a3, $xr1, 3
-	movgr2fr.w	$fa6, $a3
-	xvpickve2gr.w	$a3, $xr0, 3
-	movgr2fr.w	$fa7, $a3
+	xvpickve.w	$xr6, $xr1, 3
+	xvpickve.w	$xr7, $xr0, 3
 	fmax.s	$fa6, $fa7, $fa6
-	xvpickve2gr.w	$a3, $xr1, 2
-	movgr2fr.w	$fa7, $a3
-	xvpickve2gr.w	$a3, $xr0, 2
-	movgr2fr.w	$ft0, $a3
+	xvpickve.w	$xr7, $xr1, 2
+	xvpickve.w	$xr8, $xr0, 2
 	fmax.s	$fa7, $ft0, $fa7
-	xvpickve2gr.w	$a3, $xr1, 1
-	movgr2fr.w	$ft0, $a3
-	xvpickve2gr.w	$a3, $xr0, 1
-	movgr2fr.w	$ft1, $a3
+	xvpickve.w	$xr8, $xr1, 1
+	xvpickve.w	$xr9, $xr0, 1
 	fmax.s	$ft0, $ft1, $ft0
-	xvpickve2gr.w	$a3, $xr1, 0
-	movgr2fr.w	$fa1, $a3
-	xvpickve2gr.w	$a3, $xr0, 0
-	movgr2fr.w	$fa0, $a3
+	xvpickve.w	$xr1, $xr1, 0
+	xvpickve.w	$xr0, $xr0, 0
 	fmax.s	$fa0, $fa0, $fa1
 	fmax.s	$fa0, $fa0, $ft0
 	fmax.s	$fa0, $fa0, $fa7
@@ -8321,98 +8177,66 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvori.b	$xr1, $xr5, 0
 	xvori.b	$xr2, $xr0, 0
 	xvldx	$xr4, $a6, $a3
-	xvpickve2gr.w	$a6, $xr3, 1
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 1
-	movgr2fr.w	$fa5, $a6
+	xvpickve.w	$xr0, $xr3, 1
+	xvpickve.w	$xr5, $xr2, 1
 	fmax.s	$fa5, $fa5, $fa0
-	xvpickve2gr.w	$a6, $xr3, 0
-	movgr2fr.w	$fa0, $a6
-	xvpickve2gr.w	$a6, $xr2, 0
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr0, $xr3, 0
+	xvpickve.w	$xr6, $xr2, 0
 	fmax.s	$fa0, $fa6, $fa0
 	xvinsve0.w	$xr0, $xr5, 1
-	xvpickve2gr.w	$a6, $xr3, 2
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 2
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 2
+	xvpickve.w	$xr6, $xr2, 2
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 2
-	xvpickve2gr.w	$a6, $xr3, 3
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 3
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 3
+	xvpickve.w	$xr6, $xr2, 3
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 3
-	xvpickve2gr.w	$a6, $xr3, 4
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 4
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 4
+	xvpickve.w	$xr6, $xr2, 4
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 4
-	xvpickve2gr.w	$a6, $xr3, 5
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 5
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 5
+	xvpickve.w	$xr6, $xr2, 5
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 5
-	xvpickve2gr.w	$a6, $xr3, 6
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 6
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 6
+	xvpickve.w	$xr6, $xr2, 6
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 6
-	xvpickve2gr.w	$a6, $xr3, 7
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr2, 7
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr3, 7
+	xvpickve.w	$xr6, $xr2, 7
 	fmax.s	$fa5, $fa6, $fa5
 	xvinsve0.w	$xr0, $xr5, 7
-	xvpickve2gr.w	$a6, $xr4, 1
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 1
-	movgr2fr.w	$fa6, $a6
+	xvpickve.w	$xr5, $xr4, 1
+	xvpickve.w	$xr6, $xr1, 1
 	fmax.s	$fa6, $fa6, $fa5
-	xvpickve2gr.w	$a6, $xr4, 0
-	movgr2fr.w	$fa5, $a6
-	xvpickve2gr.w	$a6, $xr1, 0
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr5, $xr4, 0
+	xvpickve.w	$xr7, $xr1, 0
 	fmax.s	$fa5, $fa7, $fa5
 	xvinsve0.w	$xr5, $xr6, 1
-	xvpickve2gr.w	$a6, $xr4, 2
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 2
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 2
+	xvpickve.w	$xr7, $xr1, 2
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 2
-	xvpickve2gr.w	$a6, $xr4, 3
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 3
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 3
+	xvpickve.w	$xr7, $xr1, 3
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 3
-	xvpickve2gr.w	$a6, $xr4, 4
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 4
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 4
+	xvpickve.w	$xr7, $xr1, 4
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 4
-	xvpickve2gr.w	$a6, $xr4, 5
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 5
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 5
+	xvpickve.w	$xr7, $xr1, 5
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 5
-	xvpickve2gr.w	$a6, $xr4, 6
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 6
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 6
+	xvpickve.w	$xr7, $xr1, 6
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 6
-	xvpickve2gr.w	$a6, $xr4, 7
-	movgr2fr.w	$fa6, $a6
-	xvpickve2gr.w	$a6, $xr1, 7
-	movgr2fr.w	$fa7, $a6
+	xvpickve.w	$xr6, $xr4, 7
+	xvpickve.w	$xr7, $xr1, 7
 	fmax.s	$fa6, $fa7, $fa6
 	xvinsve0.w	$xr5, $xr6, 7
 	xvfcmp.cun.s	$xr3, $xr3, $xr4
@@ -8433,45 +8257,29 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	xvsrai.w	$xr3, $xr3, 31
 	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
 	xvbitsel.v	$xr1, $xr5, $xr1, $xr3
-	xvpickve2gr.w	$a3, $xr1, 7
-	movgr2fr.w	$fa2, $a3
-	xvpickve2gr.w	$a3, $xr0, 7
-	movgr2fr.w	$fa3, $a3
+	xvpickve.w	$xr2, $xr1, 7
+	xvpickve.w	$xr3, $xr0, 7
 	fmax.s	$fa2, $fa3, $fa2
-	xvpickve2gr.w	$a3, $xr1, 6
-	movgr2fr.w	$fa3, $a3
-	xvpickve2gr.w	$a3, $xr0, 6
-	movgr2fr.w	$fa4, $a3
+	xvpickve.w	$xr3, $xr1, 6
+	xvpickve.w	$xr4, $xr0, 6
 	fmax.s	$fa3, $fa4, $fa3
-	xvpickve2gr.w	$a3, $xr1, 5
-	movgr2fr.w	$fa4, $a3
-	xvpickve2gr.w	$a3, $xr0, 5
-	movgr2fr.w	$fa5, $a3
+	xvpickve.w	$xr4, $xr1, 5
+	xvpickve.w	$xr5, $xr0, 5
 	fmax.s	$fa4, $fa5, $fa4
-	xvpickve2gr.w	$a3, $xr1, 4
-	movgr2fr.w	$fa5, $a3
-	xvpickve2gr.w	$a3, $xr0, 4
-	movgr2fr.w	$fa6, $a3
+	xvpickve.w	$xr5, $xr1, 4
+	xvpickve.w	$xr6, $xr0, 4
 	fmax.s	$fa5, $fa6, $fa5
-	xvpickve2gr.w	$a3, $xr1, 3
-	movgr2fr.w	$fa6, $a3
-	xvpickve2gr.w	$a3, $xr0, 3
-	movgr2fr.w	$fa7, $a3
+	xvpickve.w	$xr6, $xr1, 3
+	xvpickve.w	$xr7, $xr0, 3
 	fmax.s	$fa6, $fa7, $fa6
-	xvpickve2gr.w	$a3, $xr1, 2
-	movgr2fr.w	$fa7, $a3
-	xvpickve2gr.w	$a3, $xr0, 2
-	movgr2fr.w	$ft0, $a3
+	xvpickve.w	$xr7, $xr1, 2
+	xvpickve.w	$xr8, $xr0, 2
 	fmax.s	$fa7, $ft0, $fa7
-	xvpickve2gr.w	$a3, $xr1, 1
-	movgr2fr.w	$ft0, $a3
-	xvpickve2gr.w	$a3, $xr0, 1
-	movgr2fr.w	$ft1, $a3
+	xvpickve.w	$xr8, $xr1, 1
+	xvpickve.w	$xr9, $xr0, 1
 	fmax.s	$ft0, $ft1, $ft0
-	xvpickve2gr.w	$a3, $xr1, 0
-	movgr2fr.w	$fa1, $a3
-	xvpickve2gr.w	$a3, $xr0, 0
-	movgr2fr.w	$fa0, $a3
+	xvpickve.w	$xr1, $xr1, 0
+	xvpickve.w	$xr0, $xr0, 0
 	fmax.s	$fa0, $fa0, $fa1
 	fmax.s	$fa0, $fa0, $ft0
 	fmax.s	$fa0, $fa0, $fa7

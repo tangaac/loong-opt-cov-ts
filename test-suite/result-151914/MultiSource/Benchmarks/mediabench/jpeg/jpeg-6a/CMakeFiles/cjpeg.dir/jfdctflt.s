@@ -252,12 +252,12 @@ jpeg_fdct_float:                        # @jpeg_fdct_float
 	xvpermi.d	$xr0, $xr8, 68
 	xvpermi.d	$xr5, $xr5, 68
 	xvshuf.d	$xr9, $xr5, $xr0
-	xvpickve2gr.w	$a1, $xr10, 0
-	xvinsgr2vr.w	$xr9, $a1, 5
-	xvpickve2gr.d	$a1, $xr7, 0
-	xvinsgr2vr.d	$xr9, $a1, 3
-	xvpickve2gr.w	$a1, $xr11, 0
-	xvinsgr2vr.w	$xr9, $a1, 7
+	xvpickve.w	$xr0, $xr10, 0
+	xvinsve0.w	$xr9, $xr0, 5
+	xvpickve.d	$xr0, $xr7, 0
+	xvinsve0.d	$xr9, $xr0, 3
+	xvpickve.w	$xr0, $xr11, 0
+	xvinsve0.w	$xr9, $xr0, 7
 	xvst	$xr9, $a0, 0
 	xvstelm.w	$xr11, $a0, 60, 1
 	xvstelm.w	$xr11, $a0, 92, 2

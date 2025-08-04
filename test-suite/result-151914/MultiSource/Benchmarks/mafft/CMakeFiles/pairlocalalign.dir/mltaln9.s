@@ -9539,34 +9539,26 @@ fastsupg:                               # @fastsupg
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $t0, -32
 	xvld	$xr1, $t0, 0
-	xvpickve2gr.d	$t2, $xr0, 1
-	movgr2fr.d	$fa2, $t2
+	xvpickve.d	$xr2, $xr0, 1
 	fcvt.s.d	$fa2, $fa2
-	xvpickve2gr.d	$t2, $xr0, 0
-	movgr2fr.d	$fa3, $t2
+	xvpickve.d	$xr3, $xr0, 0
 	fcvt.s.d	$fa3, $fa3
 	vextrins.w	$vr3, $vr2, 16
-	xvpickve2gr.d	$t2, $xr0, 2
-	movgr2fr.d	$fa2, $t2
+	xvpickve.d	$xr2, $xr0, 2
 	fcvt.s.d	$fa2, $fa2
 	vextrins.w	$vr3, $vr2, 32
-	xvpickve2gr.d	$t2, $xr0, 3
-	movgr2fr.d	$fa0, $t2
+	xvpickve.d	$xr0, $xr0, 3
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr3, $vr0, 48
-	xvpickve2gr.d	$t2, $xr1, 1
-	movgr2fr.d	$fa0, $t2
+	xvpickve.d	$xr0, $xr1, 1
 	fcvt.s.d	$fa0, $fa0
-	xvpickve2gr.d	$t2, $xr1, 0
-	movgr2fr.d	$fa2, $t2
+	xvpickve.d	$xr2, $xr1, 0
 	fcvt.s.d	$fa2, $fa2
 	vextrins.w	$vr2, $vr0, 16
-	xvpickve2gr.d	$t2, $xr1, 2
-	movgr2fr.d	$fa0, $t2
+	xvpickve.d	$xr0, $xr1, 2
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr2, $vr0, 32
-	xvpickve2gr.d	$t2, $xr1, 3
-	movgr2fr.d	$fa0, $t2
+	xvpickve.d	$xr0, $xr1, 3
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr2, $vr0, 48
 	vst	$vr3, $a7, -16
@@ -10134,34 +10126,26 @@ supg:                                   # @supg
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $a7, -32
 	xvld	$xr1, $a7, 0
-	xvpickve2gr.d	$t1, $xr0, 1
-	movgr2fr.d	$fa2, $t1
+	xvpickve.d	$xr2, $xr0, 1
 	fcvt.s.d	$fa2, $fa2
-	xvpickve2gr.d	$t1, $xr0, 0
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr0, 0
 	fcvt.s.d	$fa3, $fa3
 	vextrins.w	$vr3, $vr2, 16
-	xvpickve2gr.d	$t1, $xr0, 2
-	movgr2fr.d	$fa2, $t1
+	xvpickve.d	$xr2, $xr0, 2
 	fcvt.s.d	$fa2, $fa2
 	vextrins.w	$vr3, $vr2, 32
-	xvpickve2gr.d	$t1, $xr0, 3
-	movgr2fr.d	$fa0, $t1
+	xvpickve.d	$xr0, $xr0, 3
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr3, $vr0, 48
-	xvpickve2gr.d	$t1, $xr1, 1
-	movgr2fr.d	$fa0, $t1
+	xvpickve.d	$xr0, $xr1, 1
 	fcvt.s.d	$fa0, $fa0
-	xvpickve2gr.d	$t1, $xr1, 0
-	movgr2fr.d	$fa2, $t1
+	xvpickve.d	$xr2, $xr1, 0
 	fcvt.s.d	$fa2, $fa2
 	vextrins.w	$vr2, $vr0, 16
-	xvpickve2gr.d	$t1, $xr1, 2
-	movgr2fr.d	$fa0, $t1
+	xvpickve.d	$xr0, $xr1, 2
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr2, $vr0, 32
-	xvpickve2gr.d	$t1, $xr1, 3
-	movgr2fr.d	$fa0, $t1
+	xvpickve.d	$xr0, $xr1, 3
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr2, $vr0, 48
 	vst	$vr3, $a6, -16

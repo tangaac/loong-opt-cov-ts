@@ -1151,8 +1151,7 @@ mp_mul_radix_test:                      # @mp_mul_radix_test
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a3, 0
-	xvpickve2gr.d	$a5, $xr1, 3
-	movgr2fr.d	$fa2, $a5
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -2885,8 +2884,7 @@ mp_squh:                                # @mp_squh
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a3, 0
-	xvpickve2gr.d	$a5, $xr1, 3
-	movgr2fr.d	$fa2, $a5
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -3530,8 +3528,7 @@ mp_squ:                                 # @mp_squ
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a3, 0
-	xvpickve2gr.d	$a5, $xr1, 3
-	movgr2fr.d	$fa2, $a5
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -4756,8 +4753,7 @@ mp_mul_csqu:                            # @mp_mul_csqu
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a5, 0
-	xvpickve2gr.d	$a7, $xr1, 3
-	movgr2fr.d	$fa2, $a7
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -5978,8 +5974,7 @@ mp_squh_use_in1fft:                     # @mp_squh_use_in1fft
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a4, 0
-	xvpickve2gr.d	$t0, $xr1, 3
-	movgr2fr.d	$fa2, $t0
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -6635,13 +6630,13 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	srli.d	$a0, $a1, 1
 	addi.d	$a1, $a0, 1
 	bstrpick.d	$a0, $a1, 62, 2
-	slli.d	$t0, $a0, 2
+	slli.d	$a5, $a0, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI36_0)
 	xvld	$xr0, $a3, %pc_lo12(.LCPI36_0)
 	slli.d	$a0, $a0, 3
 	addi.d	$a0, $a0, 3
 	addi.d	$a3, $s4, 40
-	move	$a4, $t0
+	move	$a4, $a5
 	.p2align	4, , 16
 .LBB36_13:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -6667,8 +6662,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a3, 0
-	xvpickve2gr.d	$a5, $xr1, 3
-	movgr2fr.d	$fa2, $a5
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -6679,7 +6673,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB36_13
 # %bb.14:                               # %middle.block
-	beq	$a1, $t0, .LBB36_17
+	beq	$a1, $a5, .LBB36_17
 .LBB36_15:                              # %.lr.ph.i.i.preheader203
 	alsl.d	$a1, $a0, $s4, 3
 	addi.d	$a1, $a1, 8
@@ -6835,13 +6829,13 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	srli.d	$a0, $a1, 1
 	addi.d	$a1, $a0, 1
 	bstrpick.d	$a0, $a1, 62, 2
-	slli.d	$a6, $a0, 2
+	slli.d	$a5, $a0, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI36_0)
 	xvld	$xr0, $a3, %pc_lo12(.LCPI36_0)
 	slli.d	$a0, $a0, 3
 	addi.d	$a0, $a0, 3
 	addi.d	$a3, $s4, 40
-	move	$a4, $a6
+	move	$a4, $a5
 	.p2align	4, , 16
 .LBB36_32:                              # %vector.body188
                                         # =>This Inner Loop Header: Depth=1
@@ -6867,8 +6861,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	xvori.b	$xr2, $xr0, 0
 	xvshuf.d	$xr2, $xr1, $xr3
 	xvst	$xr2, $a3, 0
-	xvpickve2gr.d	$a5, $xr1, 3
-	movgr2fr.d	$fa2, $a5
+	xvpickve.d	$xr2, $xr1, 3
 	xvpermi.d	$xr4, $xr3, 78
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr2, 16
@@ -6879,7 +6872,7 @@ mp_sqrt_newton:                         # @mp_sqrt_newton
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB36_32
 # %bb.33:                               # %middle.block192
-	beq	$a1, $a6, .LBB36_37
+	beq	$a1, $a5, .LBB36_37
 .LBB36_34:                              # %.lr.ph.i.i115.preheader
 	alsl.d	$a1, $a0, $s4, 3
 	addi.d	$a1, $a1, 8

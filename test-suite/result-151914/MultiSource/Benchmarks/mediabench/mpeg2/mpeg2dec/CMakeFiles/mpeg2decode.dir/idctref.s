@@ -592,22 +592,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvfmadd.d	$xr12, $xr12, $xr10, $xr11
 	xvreplgr2vr.d	$xr11, $a3
 	xvfadd.d	$xr12, $xr12, $xr11
-	xvpickve2gr.d	$a4, $xr12, 1
-	movgr2fr.d	$ft5, $a4
+	xvpickve.d	$xr13, $xr12, 1
 	vreplvei.d	$vr13, $vr13, 0
 	vfrintrm.d	$vr13, $vr13
-	xvpickve2gr.d	$a4, $xr12, 0
-	movgr2fr.d	$ft6, $a4
+	xvpickve.d	$xr14, $xr12, 0
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr14, $xr13, 1
-	xvpickve2gr.d	$a4, $xr12, 2
-	movgr2fr.d	$ft5, $a4
+	xvpickve.d	$xr13, $xr12, 2
 	vreplvei.d	$vr13, $vr13, 0
 	vfrintrm.d	$vr13, $vr13
 	xvinsve0.d	$xr14, $xr13, 2
-	xvpickve2gr.d	$a4, $xr12, 3
-	movgr2fr.d	$ft4, $a4
+	xvpickve.d	$xr12, $xr12, 3
 	vreplvei.d	$vr12, $vr12, 0
 	vfrintrm.d	$vr12, $vr12
 	xvinsve0.d	$xr14, $xr12, 3
@@ -638,22 +634,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvld	$xr15, $sp, 1008                # 32-byte Folded Reload
 	xvfmadd.d	$xr14, $xr15, $xr10, $xr14
 	xvfadd.d	$xr14, $xr14, $xr11
-	xvpickve2gr.d	$a5, $xr14, 1
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 1
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
-	xvpickve2gr.d	$a5, $xr14, 0
-	movgr2fr.d	$ft8, $a5
+	xvpickve.d	$xr16, $xr14, 0
 	vreplvei.d	$vr16, $vr16, 0
 	vfrintrm.d	$vr16, $vr16
 	xvinsve0.d	$xr16, $xr15, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 2
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
 	xvinsve0.d	$xr16, $xr15, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	movgr2fr.d	$ft6, $a5
+	xvpickve.d	$xr14, $xr14, 3
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr16, $xr14, 3
@@ -681,22 +673,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvld	$xr15, $sp, 752                 # 32-byte Folded Reload
 	xvfmadd.d	$xr14, $xr15, $xr10, $xr14
 	xvfadd.d	$xr14, $xr14, $xr11
-	xvpickve2gr.d	$a5, $xr14, 1
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 1
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
-	xvpickve2gr.d	$a5, $xr14, 0
-	movgr2fr.d	$ft8, $a5
+	xvpickve.d	$xr16, $xr14, 0
 	vreplvei.d	$vr16, $vr16, 0
 	vfrintrm.d	$vr16, $vr16
 	xvinsve0.d	$xr16, $xr15, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 2
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
 	xvinsve0.d	$xr16, $xr15, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	movgr2fr.d	$ft6, $a5
+	xvpickve.d	$xr14, $xr14, 3
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr16, $xr14, 3
@@ -724,22 +712,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvld	$xr15, $sp, 496                 # 32-byte Folded Reload
 	xvfmadd.d	$xr14, $xr15, $xr10, $xr14
 	xvfadd.d	$xr14, $xr14, $xr11
-	xvpickve2gr.d	$a5, $xr14, 1
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 1
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
-	xvpickve2gr.d	$a5, $xr14, 0
-	movgr2fr.d	$ft8, $a5
+	xvpickve.d	$xr16, $xr14, 0
 	vreplvei.d	$vr16, $vr16, 0
 	vfrintrm.d	$vr16, $vr16
 	xvinsve0.d	$xr16, $xr15, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 2
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
 	xvinsve0.d	$xr16, $xr15, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	movgr2fr.d	$ft6, $a5
+	xvpickve.d	$xr14, $xr14, 3
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr16, $xr14, 3
@@ -767,22 +751,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvld	$xr15, $sp, 240                 # 32-byte Folded Reload
 	xvfmadd.d	$xr14, $xr15, $xr10, $xr14
 	xvfadd.d	$xr14, $xr14, $xr11
-	xvpickve2gr.d	$a5, $xr14, 1
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 1
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
-	xvpickve2gr.d	$a5, $xr14, 0
-	movgr2fr.d	$ft8, $a5
+	xvpickve.d	$xr16, $xr14, 0
 	vreplvei.d	$vr16, $vr16, 0
 	vfrintrm.d	$vr16, $vr16
 	xvinsve0.d	$xr16, $xr15, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 2
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
 	xvinsve0.d	$xr16, $xr15, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	movgr2fr.d	$ft6, $a5
+	xvpickve.d	$xr14, $xr14, 3
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr16, $xr14, 3
@@ -809,22 +789,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvfmadd.d	$xr14, $xr15, $xr9, $xr14
 	xvfmadd.d	$xr14, $xr17, $xr10, $xr14
 	xvfadd.d	$xr14, $xr14, $xr11
-	xvpickve2gr.d	$a5, $xr14, 1
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 1
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
-	xvpickve2gr.d	$a5, $xr14, 0
-	movgr2fr.d	$ft8, $a5
+	xvpickve.d	$xr16, $xr14, 0
 	vreplvei.d	$vr16, $vr16, 0
 	vfrintrm.d	$vr16, $vr16
 	xvinsve0.d	$xr16, $xr15, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 2
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
 	xvinsve0.d	$xr16, $xr15, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	movgr2fr.d	$ft6, $a5
+	xvpickve.d	$xr14, $xr14, 3
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr16, $xr14, 3
@@ -844,22 +820,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvfmadd.d	$xr14, $xr24, $xr9, $xr14
 	xvfmadd.d	$xr14, $xr25, $xr10, $xr14
 	xvfadd.d	$xr14, $xr14, $xr11
-	xvpickve2gr.d	$a5, $xr14, 1
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 1
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
-	xvpickve2gr.d	$a5, $xr14, 0
-	movgr2fr.d	$ft8, $a5
+	xvpickve.d	$xr16, $xr14, 0
 	vreplvei.d	$vr16, $vr16, 0
 	vfrintrm.d	$vr16, $vr16
 	xvinsve0.d	$xr16, $xr15, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	movgr2fr.d	$ft7, $a5
+	xvpickve.d	$xr15, $xr14, 2
 	vreplvei.d	$vr15, $vr15, 0
 	vfrintrm.d	$vr15, $vr15
 	xvinsve0.d	$xr16, $xr15, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	movgr2fr.d	$ft6, $a5
+	xvpickve.d	$xr14, $xr14, 3
 	vreplvei.d	$vr14, $vr14, 0
 	vfrintrm.d	$vr14, $vr14
 	xvinsve0.d	$xr16, $xr14, 3
@@ -879,22 +851,18 @@ Reference_IDCT:                         # @Reference_IDCT
 	xvfmadd.d	$xr3, $xr1, $xr9, $xr3
 	xvfmadd.d	$xr3, $xr2, $xr10, $xr3
 	xvfadd.d	$xr3, $xr3, $xr11
-	xvpickve2gr.d	$a5, $xr3, 1
-	movgr2fr.d	$fa4, $a5
+	xvpickve.d	$xr4, $xr3, 1
 	vreplvei.d	$vr4, $vr4, 0
 	vfrintrm.d	$vr4, $vr4
-	xvpickve2gr.d	$a5, $xr3, 0
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr3, 0
 	vreplvei.d	$vr5, $vr5, 0
 	vfrintrm.d	$vr5, $vr5
 	xvinsve0.d	$xr5, $xr4, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	movgr2fr.d	$fa4, $a5
+	xvpickve.d	$xr4, $xr3, 2
 	vreplvei.d	$vr4, $vr4, 0
 	vfrintrm.d	$vr4, $vr4
 	xvinsve0.d	$xr5, $xr4, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	movgr2fr.d	$fa3, $a5
+	xvpickve.d	$xr3, $xr3, 3
 	vreplvei.d	$vr3, $vr3, 0
 	vfrintrm.d	$vr3, $vr3
 	xvinsve0.d	$xr5, $xr3, 3

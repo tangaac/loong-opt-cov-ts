@@ -3841,10 +3841,8 @@ cftf1st:                                # @cftf1st
 	fld.d	$fa1, $a2, 24
 	ori	$a5, $zero, 4
 	addi.d	$a4, $a0, -2
-	bge	$a5, $a0, .LBB14_4
+	bge	$a5, $a0, .LBB14_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	slli.d	$t2, $a0, 1
 	slli.d	$t0, $t2, 3
 	addi.d	$a5, $t0, -32
@@ -3883,60 +3881,52 @@ cftf1st:                                # @cftf1st
 	fneg.d	$fa3, $ft3
 	add.d	$t5, $a1, $a3
 	xvfsub.d	$xr14, $xr12, $xr13
-	xvpickve2gr.d	$t7, $xr14, 0
-	movgr2fr.d	$ft7, $t7
-	xvpickve2gr.d	$t7, $xr14, 1
-	movgr2fr.d	$ft8, $t7
+	xvpickve.d	$xr15, $xr14, 0
+	xvpickve.d	$xr16, $xr14, 1
+	xvldx	$xr17, $a1, $t0
+	xvld	$xr18, $t5, 16
 	xvfadd.d	$xr12, $xr12, $xr13
-	xvpickve2gr.d	$t7, $xr14, 2
-	xvldx	$xr13, $a1, $t0
-	xvld	$xr17, $t5, 16
-	movgr2fr.d	$ft10, $t7
-	xvpickve2gr.d	$t7, $xr14, 3
-	movgr2fr.d	$ft6, $t7
-	xvfsub.d	$xr19, $xr13, $xr17
-	xvpickve2gr.d	$t7, $xr19, 0
-	movgr2fr.d	$ft12, $t7
-	xvpickve2gr.d	$t7, $xr19, 1
-	movgr2fr.d	$ft13, $t7
-	xvfadd.d	$xr13, $xr13, $xr17
-	xvpickve2gr.d	$t7, $xr19, 2
-	movgr2fr.d	$ft9, $t7
-	xvpickve2gr.d	$t7, $xr19, 3
-	movgr2fr.d	$ft11, $t7
-	xvfadd.d	$xr22, $xr12, $xr13
+	xvpickve.d	$xr13, $xr14, 2
+	xvpickve.d	$xr14, $xr14, 3
+	xvfsub.d	$xr19, $xr17, $xr18
+	xvpickve.d	$xr20, $xr19, 0
+	xvpickve.d	$xr21, $xr19, 1
+	xvfadd.d	$xr17, $xr17, $xr18
+	xvpickve.d	$xr18, $xr19, 2
+	xvpickve.d	$xr19, $xr19, 3
+	xvfadd.d	$xr22, $xr12, $xr17
 	xvstx	$xr22, $a1, $t4
-	xvfsub.d	$xr12, $xr12, $xr13
+	xvfsub.d	$xr12, $xr12, $xr17
 	xvstx	$xr12, $a1, $t0
 	fsub.d	$ft4, $ft7, $ft13
-	fadd.d	$ft5, $ft8, $ft12
-	fneg.d	$ft14, $ft5
+	fadd.d	$ft9, $ft8, $ft12
+	fneg.d	$ft14, $ft9
 	fmul.d	$ft14, $ft2, $ft14
 	fmadd.d	$ft14, $ft1, $ft4, $ft14
 	fst.d	$ft14, $t6, 16
 	fmul.d	$ft4, $ft2, $ft4
-	fmadd.d	$ft4, $ft1, $ft5, $ft4
+	fmadd.d	$ft4, $ft1, $ft9, $ft4
 	fst.d	$ft4, $t6, 24
-	fsub.d	$ft4, $ft10, $ft11
-	fadd.d	$ft5, $ft6, $ft9
-	fneg.d	$ft14, $ft5
+	fsub.d	$ft4, $ft5, $ft11
+	fadd.d	$ft9, $ft6, $ft10
+	fneg.d	$ft14, $ft9
 	fmul.d	$ft14, $fa5, $ft14
 	fmadd.d	$ft14, $fa4, $ft4, $ft14
 	fst.d	$ft14, $t6, 32
 	fmul.d	$ft4, $fa5, $ft4
-	fmadd.d	$ft4, $fa4, $ft5, $ft4
+	fmadd.d	$ft4, $fa4, $ft9, $ft4
 	fst.d	$ft4, $t6, 40
 	fadd.d	$ft4, $ft7, $ft13
-	fsub.d	$ft5, $ft8, $ft12
-	fmul.d	$ft7, $ft0, $ft5
-	fmadd.d	$ft7, $fa7, $ft4, $ft7
-	fst.d	$ft7, $t5, 16
+	fsub.d	$ft7, $ft8, $ft12
+	fmul.d	$ft8, $ft0, $ft7
+	fmadd.d	$ft8, $fa7, $ft4, $ft8
+	fst.d	$ft8, $t5, 16
 	fneg.d	$ft4, $ft4
 	fmul.d	$ft4, $ft0, $ft4
-	fmadd.d	$ft4, $fa7, $ft5, $ft4
+	fmadd.d	$ft4, $fa7, $ft7, $ft4
 	fst.d	$ft4, $t5, 24
-	fadd.d	$ft4, $ft10, $ft11
-	fsub.d	$ft5, $ft6, $ft9
+	fadd.d	$ft4, $ft5, $ft11
+	fsub.d	$ft5, $ft6, $ft10
 	fmul.d	$ft6, $ft5, $fa3
 	fmadd.d	$ft6, $fa6, $ft4, $ft6
 	fst.d	$ft6, $t5, 32
@@ -3950,42 +3940,34 @@ cftf1st:                                # @cftf1st
 	alsl.d	$t5, $a7, $a1, 3
 	slli.d	$t8, $a7, 3
 	xvfsub.d	$xr13, $xr11, $xr12
-	xvpickve2gr.d	$fp, $xr13, 2
-	movgr2fr.d	$ft6, $fp
-	xvpickve2gr.d	$fp, $xr13, 3
-	movgr2fr.d	$ft7, $fp
+	xvpickve.d	$xr14, $xr13, 2
+	xvpickve.d	$xr15, $xr13, 3
+	xvldx	$xr16, $a1, $t2
+	xvld	$xr17, $t5, -16
 	xvfadd.d	$xr11, $xr11, $xr12
-	xvpickve2gr.d	$fp, $xr13, 0
-	xvldx	$xr12, $a1, $t2
-	xvld	$xr16, $t5, -16
-	movgr2fr.d	$ft9, $fp
-	xvpickve2gr.d	$fp, $xr13, 1
-	movgr2fr.d	$ft5, $fp
-	xvfsub.d	$xr18, $xr12, $xr16
-	xvpickve2gr.d	$fp, $xr18, 2
-	movgr2fr.d	$ft11, $fp
-	xvpickve2gr.d	$fp, $xr18, 3
-	movgr2fr.d	$ft12, $fp
-	xvfadd.d	$xr12, $xr12, $xr16
-	xvpickve2gr.d	$fp, $xr18, 0
-	movgr2fr.d	$ft8, $fp
-	xvpickve2gr.d	$fp, $xr18, 1
-	movgr2fr.d	$ft10, $fp
-	xvfadd.d	$xr21, $xr11, $xr12
+	xvpickve.d	$xr12, $xr13, 0
+	xvpickve.d	$xr13, $xr13, 1
+	xvfsub.d	$xr18, $xr16, $xr17
+	xvpickve.d	$xr19, $xr18, 2
+	xvpickve.d	$xr20, $xr18, 3
+	xvfadd.d	$xr16, $xr16, $xr17
+	xvpickve.d	$xr17, $xr18, 0
+	xvpickve.d	$xr18, $xr18, 1
+	xvfadd.d	$xr21, $xr11, $xr16
 	xvstx	$xr21, $a1, $a5
-	xvfsub.d	$xr11, $xr11, $xr12
+	xvfsub.d	$xr11, $xr11, $xr16
 	xvstx	$xr11, $a1, $t2
 	fsub.d	$ft3, $ft6, $ft12
-	fadd.d	$ft4, $ft7, $ft11
-	fneg.d	$ft13, $ft4
+	fadd.d	$ft8, $ft7, $ft11
+	fneg.d	$ft13, $ft8
 	fmul.d	$ft13, $ft1, $ft13
 	fmadd.d	$ft13, $ft2, $ft3, $ft13
 	fstx.d	$ft13, $a1, $t7
 	fmul.d	$ft1, $ft1, $ft3
-	fmadd.d	$ft1, $ft2, $ft4, $ft1
+	fmadd.d	$ft1, $ft2, $ft8, $ft1
 	fst.d	$ft1, $t6, 8
-	fsub.d	$ft1, $ft9, $ft10
-	fadd.d	$ft2, $ft5, $ft8
+	fsub.d	$ft1, $ft4, $ft10
+	fadd.d	$ft2, $ft5, $ft9
 	fneg.d	$ft3, $ft2
 	fmul.d	$ft3, $fa4, $ft3
 	fmadd.d	$ft3, $fa5, $ft1, $ft3
@@ -4002,8 +3984,8 @@ cftf1st:                                # @cftf1st
 	fmul.d	$fa7, $fa7, $ft1
 	fmadd.d	$fa7, $ft0, $ft2, $fa7
 	fst.d	$fa7, $t5, 8
-	fadd.d	$fa7, $ft9, $ft10
-	fsub.d	$ft0, $ft5, $ft8
+	fadd.d	$fa7, $ft4, $ft10
+	fsub.d	$ft0, $ft5, $ft9
 	fmul.d	$ft1, $fa6, $ft0
 	fmadd.d	$ft1, $fa3, $fa7, $ft1
 	fst.d	$ft1, $t5, -16
@@ -4025,16 +4007,13 @@ cftf1st:                                # @cftf1st
 	fmov.d	$ft0, $fa5
 	fmov.d	$ft1, $fa4
 	bltu	$t3, $a4, .LBB14_2
-# %bb.3:
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	b	.LBB14_5
-.LBB14_4:                               # %.._crit_edge_crit_edge
+	b	.LBB14_4
+.LBB14_3:                               # %.._crit_edge_crit_edge
 	movgr2fr.d	$fa5, $zero
 	vldi	$vr4, -912
 	vldi	$vr6, -912
 	fmov.d	$fa3, $fa5
-.LBB14_5:                               # %._crit_edge
+.LBB14_4:                               # %._crit_edge
 	fadd.d	$fa4, $fa0, $fa4
 	fmul.d	$fa4, $fa2, $fa4
 	fadd.d	$fa5, $fa0, $fa5

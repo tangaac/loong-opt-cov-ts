@@ -2658,32 +2658,31 @@ mdct_init48:                            # @mdct_init48
 	ori	$a0, $a0, 1365
 	lu32i.d	$a0, 349525
 	lu52i.d	$a0, $a0, 1021
-	xvreplgr2vr.d	$xr1, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI1_49)
-	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_49)
-	xvfmul.d	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a0, $xr0, 1
-	movgr2fr.d	$fa1, $a0
-	fmul.d	$fa2, $fa1, $fa2
+	pcalau12i	$a1, %pc_hi20(.LCPI1_49)
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_49)
+	xvreplgr2vr.d	$xr2, $a0
+	xvfmul.d	$xr0, $xr0, $xr2
+	xvpickve.d	$xr2, $xr0, 1
+	fmul.d	$fa1, $fa2, $fa1
 	pcalau12i	$a0, %pc_hi20(cos_s)
 	addi.d	$a0, $a0, %pc_lo12(cos_s)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_50)
 	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_50)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_51)
 	vld	$vr4, $a1, %pc_lo12(.LCPI1_51)
-	fst.d	$fa2, $a0, 32
-	fmul.d	$fa2, $fa1, $fa3
-	fst.d	$fa2, $a0, 128
-	vfmul.d	$vr2, $vr0, $vr4
-	vstelm.d	$vr2, $a0, 80, 1
+	fst.d	$fa1, $a0, 32
+	fmul.d	$fa1, $fa2, $fa3
+	fst.d	$fa1, $a0, 128
+	vfmul.d	$vr1, $vr0, $vr4
+	vstelm.d	$vr1, $a0, 80, 1
 	pcalau12i	$a1, %pc_hi20(.LCPI1_52)
 	fld.d	$fa3, $a1, %pc_lo12(.LCPI1_52)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_53)
 	fld.d	$fa4, $a1, %pc_lo12(.LCPI1_53)
-	vst	$vr2, $a0, 144
-	fmul.d	$fa2, $fa1, $fa3
-	fst.d	$fa2, $a0, 200
-	fmul.d	$fa1, $fa1, $fa4
+	vst	$vr1, $a0, 144
+	fmul.d	$fa1, $fa2, $fa3
+	fst.d	$fa1, $a0, 200
+	fmul.d	$fa1, $fa2, $fa4
 	pcalau12i	$a1, %pc_hi20(.LCPI1_54)
 	vld	$vr2, $a1, %pc_lo12(.LCPI1_54)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_55)
@@ -2697,38 +2696,37 @@ mdct_init48:                            # @mdct_init48
 	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_56)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_57)
 	xvld	$xr2, $a1, %pc_lo12(.LCPI1_57)
+	xvpermi.d	$xr3, $xr0, 78
 	pcalau12i	$a1, %pc_hi20(.LCPI1_58)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI1_58)
-	xvpickve2gr.d	$a1, $xr0, 2
-	xvpermi.d	$xr4, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr4
-	movgr2fr.d	$fa4, $a1
-	fmul.d	$fa1, $fa4, $fa1
-	xvshuf.d	$xr3, $xr2, $xr0
+	xvld	$xr4, $a1, %pc_lo12(.LCPI1_58)
+	xvshuf.d	$xr2, $xr0, $xr3
+	xvpickve.d	$xr3, $xr0, 2
+	fmul.d	$fa1, $fa3, $fa1
+	xvshuf.d	$xr4, $xr2, $xr0
 	pcalau12i	$a1, %pc_hi20(.LCPI1_59)
 	xvld	$xr0, $a1, %pc_lo12(.LCPI1_59)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_60)
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_60)
 	fst.d	$fa1, $a0, 40
-	xvfmul.d	$xr0, $xr3, $xr0
+	xvfmul.d	$xr0, $xr4, $xr0
 	xvst	$xr0, $a0, 48
-	fmul.d	$fa0, $fa4, $fa2
+	fmul.d	$fa0, $fa3, $fa2
 	pcalau12i	$a1, %pc_hi20(.LCPI1_61)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI1_61)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_62)
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_62)
 	fst.d	$fa0, $a0, 88
-	xvfmul.d	$xr0, $xr3, $xr1
+	xvfmul.d	$xr0, $xr4, $xr1
 	xvst	$xr0, $a0, 96
-	fmul.d	$fa0, $fa4, $fa2
+	fmul.d	$fa0, $fa3, $fa2
 	pcalau12i	$a1, %pc_hi20(.LCPI1_63)
 	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_63)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_64)
 	xvld	$xr2, $a1, %pc_lo12(.LCPI1_64)
 	fst.d	$fa0, $a0, 136
-	fmul.d	$fa0, $fa4, $fa1
+	fmul.d	$fa0, $fa3, $fa1
 	fst.d	$fa0, $a0, 160
-	xvfmul.d	$xr0, $xr3, $xr2
+	xvfmul.d	$xr0, $xr4, $xr2
 	xvst	$xr0, $a0, 168
 	pcalau12i	$a1, %pc_hi20(.LCPI1_65)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_65)
@@ -2739,17 +2737,17 @@ mdct_init48:                            # @mdct_init48
 	lu32i.d	$a1, -487951
 	lu52i.d	$a1, $a1, 1022
 	st.d	$a1, $fp, 592
-	fmul.d	$fa0, $fa4, $fa0
+	fmul.d	$fa0, $fa3, $fa0
 	fst.d	$fa0, $a0, 208
-	xvfmul.d	$xr0, $xr3, $xr1
+	xvfmul.d	$xr0, $xr4, $xr1
 	pcalau12i	$a1, %pc_hi20(.LCPI1_67)
 	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_67)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_68)
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_68)
 	xvst	$xr0, $a0, 216
-	fmul.d	$fa0, $fa4, $fa1
+	fmul.d	$fa0, $fa3, $fa1
 	fst.d	$fa0, $a0, 256
-	fmul.d	$fa0, $fa4, $fa2
+	fmul.d	$fa0, $fa3, $fa2
 	fst.d	$fa0, $a0, 280
 	fld.d	$fs7, $sp, 504                  # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 512                  # 8-byte Folded Reload

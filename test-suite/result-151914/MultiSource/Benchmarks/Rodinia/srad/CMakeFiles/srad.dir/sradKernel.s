@@ -680,35 +680,27 @@ srad_kernel:                            # @srad_kernel
 	xvfmul.d	$xr15, $xr18, $xr15
 	xvfadd.d	$xr15, $xr13, $xr15
 	xvfadd.d	$xr14, $xr14, $xr16
-	xvpickve2gr.d	$a7, $xr14, 1
-	movgr2fr.d	$ft5, $a7
+	xvpickve.d	$xr13, $xr14, 1
 	fcvt.s.d	$ft8, $ft5
-	xvpickve2gr.d	$a7, $xr14, 0
-	movgr2fr.d	$ft5, $a7
+	xvpickve.d	$xr13, $xr14, 0
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr13, $xr16, 1
-	xvpickve2gr.d	$a7, $xr14, 2
-	movgr2fr.d	$ft8, $a7
+	xvpickve.d	$xr16, $xr14, 2
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr13, $xr16, 2
-	xvpickve2gr.d	$a7, $xr14, 3
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr14, 3
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr13, $xr14, 3
-	xvpickve2gr.d	$a7, $xr15, 0
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr13, $xr14, 4
-	xvpickve2gr.d	$a7, $xr15, 1
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 1
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr13, $xr14, 5
-	xvpickve2gr.d	$a7, $xr15, 2
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 2
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr13, $xr14, 6
-	xvpickve2gr.d	$a7, $xr15, 3
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 3
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr13, $xr14, 7
 	xvpermi.q	$xr14, $xr12, 1
@@ -742,35 +734,27 @@ srad_kernel:                            # @srad_kernel
 	xvreplgr2vr.d	$xr12, $a7
 	xvfadd.d	$xr15, $xr15, $xr12
 	xvfadd.d	$xr14, $xr14, $xr12
-	xvpickve2gr.d	$a7, $xr14, 1
-	movgr2fr.d	$ft8, $a7
+	xvpickve.d	$xr16, $xr14, 1
 	fcvt.s.d	$ft8, $ft8
-	xvpickve2gr.d	$a7, $xr14, 0
-	movgr2fr.d	$ft9, $a7
+	xvpickve.d	$xr17, $xr14, 0
 	fcvt.s.d	$ft9, $ft9
 	xvinsve0.w	$xr17, $xr16, 1
-	xvpickve2gr.d	$a7, $xr14, 2
-	movgr2fr.d	$ft8, $a7
+	xvpickve.d	$xr16, $xr14, 2
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr17, $xr16, 2
-	xvpickve2gr.d	$a7, $xr14, 3
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr14, 3
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr17, $xr14, 3
-	xvpickve2gr.d	$a7, $xr15, 0
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr17, $xr14, 4
-	xvpickve2gr.d	$a7, $xr15, 1
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 1
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr17, $xr14, 5
-	xvpickve2gr.d	$a7, $xr15, 2
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 2
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr17, $xr14, 6
-	xvpickve2gr.d	$a7, $xr15, 3
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr15, 3
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr17, $xr14, 7
 	xvfmul.s	$xr14, $xr17, $xr17
@@ -804,35 +788,27 @@ srad_kernel:                            # @srad_kernel
 	xvfadd.d	$xr12, $xr16, $xr12
 	xvfrecip.d	$xr12, $xr12
 	xvfrecip.d	$xr13, $xr13
-	xvpickve2gr.d	$a7, $xr13, 1
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr13, 1
 	fcvt.s.d	$ft6, $ft6
-	xvpickve2gr.d	$a7, $xr13, 0
-	movgr2fr.d	$ft7, $a7
+	xvpickve.d	$xr15, $xr13, 0
 	fcvt.s.d	$ft7, $ft7
 	xvinsve0.w	$xr15, $xr14, 1
-	xvpickve2gr.d	$a7, $xr13, 2
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr13, 2
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr15, $xr14, 2
-	xvpickve2gr.d	$a7, $xr13, 3
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr13, 3
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr15, $xr14, 3
-	xvpickve2gr.d	$a7, $xr12, 0
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr12, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr15, $xr14, 4
-	xvpickve2gr.d	$a7, $xr12, 1
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr12, 1
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr15, $xr14, 5
-	xvpickve2gr.d	$a7, $xr12, 2
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr12, 2
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr15, $xr14, 6
-	xvpickve2gr.d	$a7, $xr12, 3
-	movgr2fr.d	$ft6, $a7
+	xvpickve.d	$xr14, $xr12, 3
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr15, $xr14, 7
 	add.d	$s2, $t1, $s6
@@ -1122,14 +1098,14 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
 	ori	$s2, $zero, 4092
-	ori	$t1, $zero, 4068
+	ori	$a4, $zero, 4068
 	.p2align	4, , 16
 .LBB0_54:                               # %vector.body721
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a1, $s8, $a0
 	xvldx	$xr7, $a1, $t4
-	xvldx	$xr8, $a1, $t1
+	xvldx	$xr8, $a1, $a4
 	add.d	$a1, $t8, $a0
 	xvldx	$xr9, $a1, $t4
 	add.d	$a1, $fp, $a0
@@ -1142,8 +1118,8 @@ srad_kernel:                            # @srad_kernel
 	xvfmul.s	$xr7, $xr7, $xr11
 	add.d	$a1, $s1, $a0
 	xvldx	$xr10, $a1, $t4
-	add.d	$a4, $a7, $a0
-	xvldx	$xr11, $a4, $t4
+	add.d	$a1, $a7, $a0
+	xvldx	$xr11, $a1, $t4
 	xvfadd.s	$xr7, $xr9, $xr7
 	xvfmul.s	$xr8, $xr8, $xr10
 	xvfadd.s	$xr8, $xr7, $xr8
@@ -1197,39 +1173,31 @@ srad_kernel:                            # @srad_kernel
 	xvfmul.d	$xr10, $xr12, $xr6
 	xvfadd.d	$xr9, $xr10, $xr9
 	xvfadd.d	$xr7, $xr8, $xr7
-	xvpickve2gr.d	$a1, $xr7, 1
-	movgr2fr.d	$ft0, $a1
+	xvpickve.d	$xr8, $xr7, 1
 	fcvt.s.d	$ft0, $ft0
-	xvpickve2gr.d	$a1, $xr7, 0
-	movgr2fr.d	$ft2, $a1
+	xvpickve.d	$xr10, $xr7, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr10, $xr8, 1
-	xvpickve2gr.d	$a1, $xr7, 2
-	movgr2fr.d	$ft0, $a1
+	xvpickve.d	$xr8, $xr7, 2
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr10, $xr8, 2
-	xvpickve2gr.d	$a1, $xr7, 3
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr7, 3
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 3
-	xvpickve2gr.d	$a1, $xr9, 0
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 0
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 4
-	xvpickve2gr.d	$a1, $xr9, 1
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 1
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 5
-	xvpickve2gr.d	$a1, $xr9, 2
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 6
-	xvpickve2gr.d	$a1, $xr9, 3
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 3
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 7
 	addi.d	$a0, $a0, 32
-	xvstx	$xr10, $a4, $t4
+	xvstx	$xr10, $a1, $t4
 	bnez	$a0, .LBB0_54
 # %bb.55:                               #   in Loop: Header=BB0_1 Depth=1
 	ori	$a1, $zero, 1016
@@ -1396,35 +1364,27 @@ srad_kernel:                            # @srad_kernel
 	xvfmul.d	$xr10, $xr12, $xr6
 	xvfadd.d	$xr9, $xr10, $xr9
 	xvfadd.d	$xr7, $xr8, $xr7
-	xvpickve2gr.d	$a1, $xr7, 1
-	movgr2fr.d	$ft0, $a1
+	xvpickve.d	$xr8, $xr7, 1
 	fcvt.s.d	$ft0, $ft0
-	xvpickve2gr.d	$a1, $xr7, 0
-	movgr2fr.d	$ft2, $a1
+	xvpickve.d	$xr10, $xr7, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr10, $xr8, 1
-	xvpickve2gr.d	$a1, $xr7, 2
-	movgr2fr.d	$ft0, $a1
+	xvpickve.d	$xr8, $xr7, 2
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr10, $xr8, 2
-	xvpickve2gr.d	$a1, $xr7, 3
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr7, 3
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 3
-	xvpickve2gr.d	$a1, $xr9, 0
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 0
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 4
-	xvpickve2gr.d	$a1, $xr9, 1
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 1
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 5
-	xvpickve2gr.d	$a1, $xr9, 2
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 6
-	xvpickve2gr.d	$a1, $xr9, 3
-	movgr2fr.d	$fa7, $a1
+	xvpickve.d	$xr7, $xr9, 3
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr10, $xr7, 7
 	addi.d	$t8, $t8, 32

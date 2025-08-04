@@ -808,20 +808,16 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	xvfmul.d	$xr2, $xr5, $xr3
 	xvfmul.d	$xr2, $xr2, $xr6
 	xvfrecip.d	$xr2, $xr2
-	xvpickve2gr.d	$a3, $xr2, 1
-	movgr2fr.d	$fa3, $a3
+	xvpickve.d	$xr3, $xr2, 1
 	fcvt.s.d	$fa3, $fa3
-	xvpickve2gr.d	$a3, $xr2, 0
-	movgr2fr.d	$fa4, $a3
+	xvpickve.d	$xr4, $xr2, 0
 	fcvt.s.d	$fa4, $fa4
-	xvpickve2gr.d	$a3, $xr2, 2
-	movgr2fr.d	$fa5, $a3
-	xvpickve2gr.d	$a3, $xr2, 3
-	movgr2fr.d	$fa2, $a3
-	ld.hu	$a3, $a2, 0
 	vextrins.w	$vr4, $vr3, 16
-	fcvt.s.d	$fa3, $fa5
+	xvpickve.d	$xr3, $xr2, 2
+	ld.hu	$a3, $a2, 0
+	fcvt.s.d	$fa3, $fa3
 	vextrins.w	$vr4, $vr3, 32
+	xvpickve.d	$xr2, $xr2, 3
 	movgr2fr.w	$fa3, $a3
 	ld.hu	$a3, $a2, 2
 	fcvt.s.d	$fa2, $fa2
@@ -853,19 +849,15 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	xvfmul.d	$xr0, $xr0, $xr3
 	xvfmul.d	$xr0, $xr0, $xr6
 	xvfrecip.d	$xr0, $xr0
-	xvpickve2gr.d	$a3, $xr0, 1
-	movgr2fr.d	$fa1, $a3
+	xvpickve.d	$xr1, $xr0, 1
 	fcvt.s.d	$fa1, $fa1
-	xvpickve2gr.d	$a3, $xr0, 0
-	movgr2fr.d	$fa2, $a3
+	xvpickve.d	$xr2, $xr0, 0
 	fcvt.s.d	$fa2, $fa2
 	vextrins.w	$vr2, $vr1, 16
-	xvpickve2gr.d	$a3, $xr0, 2
-	movgr2fr.d	$fa1, $a3
+	xvpickve.d	$xr1, $xr0, 2
 	fcvt.s.d	$fa1, $fa1
 	vextrins.w	$vr2, $vr1, 32
-	xvpickve2gr.d	$a3, $xr0, 3
-	movgr2fr.d	$fa0, $a3
+	xvpickve.d	$xr0, $xr0, 3
 	fcvt.s.d	$fa0, $fa0
 	vextrins.w	$vr2, $vr0, 48
 	vst	$vr2, $a0, 0

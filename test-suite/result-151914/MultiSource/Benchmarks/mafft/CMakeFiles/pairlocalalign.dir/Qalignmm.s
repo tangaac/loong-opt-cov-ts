@@ -1876,35 +1876,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr12, $xr12, $xr1
 	xvfmul.d	$xr11, $xr11, $xr3
 	xvfmul.d	$xr12, $xr12, $xr3
-	xvpickve2gr.d	$fp, $xr12, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr12, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr12, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr12, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr12, 3
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr12, 3
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 3
-	xvpickve2gr.d	$fp, $xr11, 0
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 0
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 4
-	xvpickve2gr.d	$fp, $xr11, 1
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 1
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 5
-	xvpickve2gr.d	$fp, $xr11, 2
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 2
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 6
-	xvpickve2gr.d	$fp, $xr11, 3
-	movgr2fr.d	$ft3, $fp
+	xvpickve.d	$xr11, $xr11, 3
 	xvld	$xr12, $t6, 0
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr14, $xr11, 7
@@ -1940,35 +1932,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr16, $xr16, $xr1
 	xvfmul.d	$xr15, $xr15, $xr3
 	xvfmul.d	$xr16, $xr16, $xr3
-	xvpickve2gr.d	$fp, $xr16, 1
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 1
 	fcvt.s.d	$ft9, $ft9
-	xvpickve2gr.d	$fp, $xr16, 0
-	movgr2fr.d	$ft10, $fp
+	xvpickve.d	$xr18, $xr16, 0
 	fcvt.s.d	$ft10, $ft10
 	xvinsve0.w	$xr18, $xr17, 1
-	xvpickve2gr.d	$fp, $xr16, 2
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 2
 	fcvt.s.d	$ft9, $ft9
 	xvinsve0.w	$xr18, $xr17, 2
-	xvpickve2gr.d	$fp, $xr16, 3
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr16, 3
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 3
-	xvpickve2gr.d	$fp, $xr15, 0
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 0
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 4
-	xvpickve2gr.d	$fp, $xr15, 1
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 1
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 5
-	xvpickve2gr.d	$fp, $xr15, 2
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 2
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 6
-	xvpickve2gr.d	$fp, $xr15, 3
-	movgr2fr.d	$ft7, $fp
+	xvpickve.d	$xr15, $xr15, 3
 	fcvt.s.d	$ft7, $ft7
 	xvinsve0.w	$xr18, $xr15, 7
 	xvst	$xr18, $t7, 0
@@ -1980,35 +1964,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr10, $xr10, $xr3
 	xvfmul.d	$xr9, $xr9, $xr1
 	xvfmul.d	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$fp, $xr10, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr10, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr10, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr10, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr10, 3
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr10, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 3
-	xvpickve2gr.d	$fp, $xr9, 0
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 4
-	xvpickve2gr.d	$fp, $xr9, 1
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 1
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 5
-	xvpickve2gr.d	$fp, $xr9, 2
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 2
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 6
-	xvpickve2gr.d	$fp, $xr9, 3
-	movgr2fr.d	$ft1, $fp
+	xvpickve.d	$xr9, $xr9, 3
 	fcvt.s.d	$ft1, $ft1
 	xvinsve0.w	$xr14, $xr9, 7
 	xvst	$xr14, $t8, 0
@@ -2020,35 +1996,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr6, $xr6, $xr3
 	xvfmul.d	$xr5, $xr5, $xr1
 	xvfmul.d	$xr6, $xr6, $xr1
-	xvpickve2gr.d	$fp, $xr6, 1
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$fp, $xr6, 0
-	movgr2fr.d	$ft0, $fp
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$fp, $xr6, 2
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$fp, $xr6, 3
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 3
-	xvpickve2gr.d	$fp, $xr5, 0
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 4
-	xvpickve2gr.d	$fp, $xr5, 1
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 5
-	xvpickve2gr.d	$fp, $xr5, 2
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 6
-	xvpickve2gr.d	$fp, $xr5, 3
-	movgr2fr.d	$fa5, $fp
+	xvpickve.d	$xr5, $xr5, 3
 	xvld	$xr6, $s3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
@@ -2311,35 +2279,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr12, $xr12, $xr1
 	xvfmul.d	$xr11, $xr11, $xr3
 	xvfmul.d	$xr12, $xr12, $xr3
-	xvpickve2gr.d	$fp, $xr12, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr12, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr12, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr12, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr12, 3
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr12, 3
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 3
-	xvpickve2gr.d	$fp, $xr11, 0
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 0
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 4
-	xvpickve2gr.d	$fp, $xr11, 1
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 1
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 5
-	xvpickve2gr.d	$fp, $xr11, 2
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 2
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 6
-	xvpickve2gr.d	$fp, $xr11, 3
-	movgr2fr.d	$ft3, $fp
+	xvpickve.d	$xr11, $xr11, 3
 	xvld	$xr12, $t6, 0
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr14, $xr11, 7
@@ -2375,35 +2335,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr16, $xr16, $xr1
 	xvfmul.d	$xr15, $xr15, $xr3
 	xvfmul.d	$xr16, $xr16, $xr3
-	xvpickve2gr.d	$fp, $xr16, 1
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 1
 	fcvt.s.d	$ft9, $ft9
-	xvpickve2gr.d	$fp, $xr16, 0
-	movgr2fr.d	$ft10, $fp
+	xvpickve.d	$xr18, $xr16, 0
 	fcvt.s.d	$ft10, $ft10
 	xvinsve0.w	$xr18, $xr17, 1
-	xvpickve2gr.d	$fp, $xr16, 2
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 2
 	fcvt.s.d	$ft9, $ft9
 	xvinsve0.w	$xr18, $xr17, 2
-	xvpickve2gr.d	$fp, $xr16, 3
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr16, 3
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 3
-	xvpickve2gr.d	$fp, $xr15, 0
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 0
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 4
-	xvpickve2gr.d	$fp, $xr15, 1
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 1
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 5
-	xvpickve2gr.d	$fp, $xr15, 2
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 2
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 6
-	xvpickve2gr.d	$fp, $xr15, 3
-	movgr2fr.d	$ft7, $fp
+	xvpickve.d	$xr15, $xr15, 3
 	fcvt.s.d	$ft7, $ft7
 	xvinsve0.w	$xr18, $xr15, 7
 	xvst	$xr18, $t7, 0
@@ -2415,35 +2367,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr10, $xr10, $xr3
 	xvfmul.d	$xr9, $xr9, $xr1
 	xvfmul.d	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$fp, $xr10, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr10, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr10, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr10, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr10, 3
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr10, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 3
-	xvpickve2gr.d	$fp, $xr9, 0
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 4
-	xvpickve2gr.d	$fp, $xr9, 1
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 1
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 5
-	xvpickve2gr.d	$fp, $xr9, 2
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 2
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 6
-	xvpickve2gr.d	$fp, $xr9, 3
-	movgr2fr.d	$ft1, $fp
+	xvpickve.d	$xr9, $xr9, 3
 	fcvt.s.d	$ft1, $ft1
 	xvinsve0.w	$xr14, $xr9, 7
 	xvst	$xr14, $t8, 0
@@ -2455,35 +2399,27 @@ Q__align:                               # @Q__align
 	xvfmul.d	$xr6, $xr6, $xr3
 	xvfmul.d	$xr5, $xr5, $xr1
 	xvfmul.d	$xr6, $xr6, $xr1
-	xvpickve2gr.d	$fp, $xr6, 1
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$fp, $xr6, 0
-	movgr2fr.d	$ft0, $fp
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$fp, $xr6, 2
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$fp, $xr6, 3
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 3
-	xvpickve2gr.d	$fp, $xr5, 0
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 4
-	xvpickve2gr.d	$fp, $xr5, 1
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 5
-	xvpickve2gr.d	$fp, $xr5, 2
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 6
-	xvpickve2gr.d	$fp, $xr5, 3
-	movgr2fr.d	$fa5, $fp
+	xvpickve.d	$xr5, $xr5, 3
 	xvld	$xr6, $s3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
@@ -2774,35 +2710,27 @@ Q__align:                               # @Q__align
 	xvinsve0.d	$xr7, $xr5, 3
 	xvfadd.d	$xr4, $xr8, $xr4
 	xvfadd.d	$xr3, $xr7, $xr3
-	xvpickve2gr.d	$a7, $xr3, 1
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr3, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$a7, $xr3, 0
-	movgr2fr.d	$fa6, $a7
+	xvpickve.d	$xr6, $xr3, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$a7, $xr3, 2
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr3, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$a7, $xr3, 3
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 3
-	xvpickve2gr.d	$a7, $xr4, 0
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr4, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 4
-	xvpickve2gr.d	$a7, $xr4, 1
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr4, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 5
-	xvpickve2gr.d	$a7, $xr4, 2
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr4, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 6
-	xvpickve2gr.d	$a7, $xr4, 3
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr4, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a5, 0
@@ -2902,35 +2830,27 @@ Q__align:                               # @Q__align
 	xvinsve0.d	$xr7, $xr5, 3
 	xvfadd.d	$xr4, $xr8, $xr4
 	xvfadd.d	$xr3, $xr7, $xr3
-	xvpickve2gr.d	$t0, $xr3, 1
-	movgr2fr.d	$fa5, $t0
+	xvpickve.d	$xr5, $xr3, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$t0, $xr3, 0
-	movgr2fr.d	$fa6, $t0
+	xvpickve.d	$xr6, $xr3, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	movgr2fr.d	$fa5, $t0
+	xvpickve.d	$xr5, $xr3, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$t0, $xr3, 3
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 3
-	xvpickve2gr.d	$t0, $xr4, 0
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 4
-	xvpickve2gr.d	$t0, $xr4, 1
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 5
-	xvpickve2gr.d	$t0, $xr4, 2
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 6
-	xvpickve2gr.d	$t0, $xr4, 3
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a6, 0
@@ -3744,35 +3664,27 @@ Q__align:                               # @Q__align
 	xvinsve0.d	$xr9, $xr7, 3
 	xvfadd.d	$xr6, $xr10, $xr6
 	xvfadd.d	$xr5, $xr9, $xr5
-	xvpickve2gr.d	$a7, $xr5, 1
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr5, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a7, $xr5, 0
-	movgr2fr.d	$ft0, $a7
+	xvpickve.d	$xr8, $xr5, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr5, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 3
-	xvpickve2gr.d	$a7, $xr6, 0
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 4
-	xvpickve2gr.d	$a7, $xr6, 1
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 1
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 5
-	xvpickve2gr.d	$a7, $xr6, 2
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 6
-	xvpickve2gr.d	$a7, $xr6, 3
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
 	xvst	$xr8, $a5, 0
@@ -3858,19 +3770,15 @@ Q__align:                               # @Q__align
 	fcvt.d.s	$fa7, $fa7
 	xvinsve0.d	$xr9, $xr7, 3
 	xvfmadd.d	$xr6, $xr3, $xr6, $xr9
-	xvpickve2gr.d	$a7, $xr6, 1
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a7, $xr6, 0
-	movgr2fr.d	$ft0, $a7
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	vextrins.w	$vr8, $vr7, 16
-	xvpickve2gr.d	$a7, $xr6, 2
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	vextrins.w	$vr8, $vr7, 32
-	xvpickve2gr.d	$a7, $xr6, 3
-	movgr2fr.d	$fa6, $a7
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	vextrins.w	$vr8, $vr6, 48
 	vst	$vr8, $a5, 0
@@ -7005,35 +6913,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvinsve0.d	$xr7, $xr5, 3
 	xvfadd.d	$xr4, $xr8, $xr4
 	xvfadd.d	$xr3, $xr7, $xr3
-	xvpickve2gr.d	$t0, $xr3, 1
-	movgr2fr.d	$fa5, $t0
+	xvpickve.d	$xr5, $xr3, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$t0, $xr3, 0
-	movgr2fr.d	$fa6, $t0
+	xvpickve.d	$xr6, $xr3, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	movgr2fr.d	$fa5, $t0
+	xvpickve.d	$xr5, $xr3, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$t0, $xr3, 3
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 3
-	xvpickve2gr.d	$t0, $xr4, 0
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 4
-	xvpickve2gr.d	$t0, $xr4, 1
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 5
-	xvpickve2gr.d	$t0, $xr4, 2
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 6
-	xvpickve2gr.d	$t0, $xr4, 3
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr4, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a6, 0
@@ -7127,35 +7027,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvinsve0.d	$xr7, $xr5, 3
 	xvfadd.d	$xr4, $xr8, $xr4
 	xvfadd.d	$xr3, $xr7, $xr3
-	xvpickve2gr.d	$t1, $xr3, 1
-	movgr2fr.d	$fa5, $t1
+	xvpickve.d	$xr5, $xr3, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$t1, $xr3, 0
-	movgr2fr.d	$fa6, $t1
+	xvpickve.d	$xr6, $xr3, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$t1, $xr3, 2
-	movgr2fr.d	$fa5, $t1
+	xvpickve.d	$xr5, $xr3, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$t1, $xr3, 3
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 3
-	xvpickve2gr.d	$t1, $xr4, 0
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr4, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 4
-	xvpickve2gr.d	$t1, $xr4, 1
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr4, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 5
-	xvpickve2gr.d	$t1, $xr4, 2
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr4, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 6
-	xvpickve2gr.d	$t1, $xr4, 3
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr4, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a7, 0
@@ -7453,35 +7345,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr12, $xr12, $xr1
 	xvfmul.d	$xr11, $xr11, $xr3
 	xvfmul.d	$xr12, $xr12, $xr3
-	xvpickve2gr.d	$fp, $xr12, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr12, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr12, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr12, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr12, 3
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr12, 3
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 3
-	xvpickve2gr.d	$fp, $xr11, 0
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 0
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 4
-	xvpickve2gr.d	$fp, $xr11, 1
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 1
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 5
-	xvpickve2gr.d	$fp, $xr11, 2
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 2
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 6
-	xvpickve2gr.d	$fp, $xr11, 3
-	movgr2fr.d	$ft3, $fp
+	xvpickve.d	$xr11, $xr11, 3
 	xvld	$xr12, $t6, 0
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr14, $xr11, 7
@@ -7517,35 +7401,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr16, $xr16, $xr1
 	xvfmul.d	$xr15, $xr15, $xr3
 	xvfmul.d	$xr16, $xr16, $xr3
-	xvpickve2gr.d	$fp, $xr16, 1
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 1
 	fcvt.s.d	$ft9, $ft9
-	xvpickve2gr.d	$fp, $xr16, 0
-	movgr2fr.d	$ft10, $fp
+	xvpickve.d	$xr18, $xr16, 0
 	fcvt.s.d	$ft10, $ft10
 	xvinsve0.w	$xr18, $xr17, 1
-	xvpickve2gr.d	$fp, $xr16, 2
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 2
 	fcvt.s.d	$ft9, $ft9
 	xvinsve0.w	$xr18, $xr17, 2
-	xvpickve2gr.d	$fp, $xr16, 3
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr16, 3
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 3
-	xvpickve2gr.d	$fp, $xr15, 0
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 0
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 4
-	xvpickve2gr.d	$fp, $xr15, 1
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 1
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 5
-	xvpickve2gr.d	$fp, $xr15, 2
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 2
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 6
-	xvpickve2gr.d	$fp, $xr15, 3
-	movgr2fr.d	$ft7, $fp
+	xvpickve.d	$xr15, $xr15, 3
 	fcvt.s.d	$ft7, $ft7
 	xvinsve0.w	$xr18, $xr15, 7
 	xvst	$xr18, $t7, 0
@@ -7557,35 +7433,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr10, $xr10, $xr3
 	xvfmul.d	$xr9, $xr9, $xr1
 	xvfmul.d	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$fp, $xr10, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr10, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr10, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr10, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr10, 3
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr10, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 3
-	xvpickve2gr.d	$fp, $xr9, 0
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 4
-	xvpickve2gr.d	$fp, $xr9, 1
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 1
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 5
-	xvpickve2gr.d	$fp, $xr9, 2
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 2
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 6
-	xvpickve2gr.d	$fp, $xr9, 3
-	movgr2fr.d	$ft1, $fp
+	xvpickve.d	$xr9, $xr9, 3
 	fcvt.s.d	$ft1, $ft1
 	xvinsve0.w	$xr14, $xr9, 7
 	xvst	$xr14, $t8, 0
@@ -7597,35 +7465,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr6, $xr6, $xr3
 	xvfmul.d	$xr5, $xr5, $xr1
 	xvfmul.d	$xr6, $xr6, $xr1
-	xvpickve2gr.d	$fp, $xr6, 1
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$fp, $xr6, 0
-	movgr2fr.d	$ft0, $fp
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$fp, $xr6, 2
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$fp, $xr6, 3
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 3
-	xvpickve2gr.d	$fp, $xr5, 0
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 4
-	xvpickve2gr.d	$fp, $xr5, 1
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 5
-	xvpickve2gr.d	$fp, $xr5, 2
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 6
-	xvpickve2gr.d	$fp, $xr5, 3
-	movgr2fr.d	$fa5, $fp
+	xvpickve.d	$xr5, $xr5, 3
 	xvld	$xr6, $s3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
@@ -7887,35 +7747,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr12, $xr12, $xr1
 	xvfmul.d	$xr11, $xr11, $xr3
 	xvfmul.d	$xr12, $xr12, $xr3
-	xvpickve2gr.d	$fp, $xr12, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr12, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr12, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr12, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr12, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr12, 3
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr12, 3
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 3
-	xvpickve2gr.d	$fp, $xr11, 0
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 0
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 4
-	xvpickve2gr.d	$fp, $xr11, 1
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 1
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 5
-	xvpickve2gr.d	$fp, $xr11, 2
-	movgr2fr.d	$ft4, $fp
+	xvpickve.d	$xr12, $xr11, 2
 	fcvt.s.d	$ft4, $ft4
 	xvinsve0.w	$xr14, $xr12, 6
-	xvpickve2gr.d	$fp, $xr11, 3
-	movgr2fr.d	$ft3, $fp
+	xvpickve.d	$xr11, $xr11, 3
 	xvld	$xr12, $t6, 0
 	fcvt.s.d	$ft3, $ft3
 	xvinsve0.w	$xr14, $xr11, 7
@@ -7951,35 +7803,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr16, $xr16, $xr1
 	xvfmul.d	$xr15, $xr15, $xr3
 	xvfmul.d	$xr16, $xr16, $xr3
-	xvpickve2gr.d	$fp, $xr16, 1
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 1
 	fcvt.s.d	$ft9, $ft9
-	xvpickve2gr.d	$fp, $xr16, 0
-	movgr2fr.d	$ft10, $fp
+	xvpickve.d	$xr18, $xr16, 0
 	fcvt.s.d	$ft10, $ft10
 	xvinsve0.w	$xr18, $xr17, 1
-	xvpickve2gr.d	$fp, $xr16, 2
-	movgr2fr.d	$ft9, $fp
+	xvpickve.d	$xr17, $xr16, 2
 	fcvt.s.d	$ft9, $ft9
 	xvinsve0.w	$xr18, $xr17, 2
-	xvpickve2gr.d	$fp, $xr16, 3
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr16, 3
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 3
-	xvpickve2gr.d	$fp, $xr15, 0
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 0
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 4
-	xvpickve2gr.d	$fp, $xr15, 1
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 1
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 5
-	xvpickve2gr.d	$fp, $xr15, 2
-	movgr2fr.d	$ft8, $fp
+	xvpickve.d	$xr16, $xr15, 2
 	fcvt.s.d	$ft8, $ft8
 	xvinsve0.w	$xr18, $xr16, 6
-	xvpickve2gr.d	$fp, $xr15, 3
-	movgr2fr.d	$ft7, $fp
+	xvpickve.d	$xr15, $xr15, 3
 	fcvt.s.d	$ft7, $ft7
 	xvinsve0.w	$xr18, $xr15, 7
 	xvst	$xr18, $t7, 0
@@ -7991,35 +7835,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr10, $xr10, $xr3
 	xvfmul.d	$xr9, $xr9, $xr1
 	xvfmul.d	$xr10, $xr10, $xr1
-	xvpickve2gr.d	$fp, $xr10, 1
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 1
 	fcvt.s.d	$ft5, $ft5
-	xvpickve2gr.d	$fp, $xr10, 0
-	movgr2fr.d	$ft6, $fp
+	xvpickve.d	$xr14, $xr10, 0
 	fcvt.s.d	$ft6, $ft6
 	xvinsve0.w	$xr14, $xr13, 1
-	xvpickve2gr.d	$fp, $xr10, 2
-	movgr2fr.d	$ft5, $fp
+	xvpickve.d	$xr13, $xr10, 2
 	fcvt.s.d	$ft5, $ft5
 	xvinsve0.w	$xr14, $xr13, 2
-	xvpickve2gr.d	$fp, $xr10, 3
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr10, 3
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 3
-	xvpickve2gr.d	$fp, $xr9, 0
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 0
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 4
-	xvpickve2gr.d	$fp, $xr9, 1
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 1
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 5
-	xvpickve2gr.d	$fp, $xr9, 2
-	movgr2fr.d	$ft2, $fp
+	xvpickve.d	$xr10, $xr9, 2
 	fcvt.s.d	$ft2, $ft2
 	xvinsve0.w	$xr14, $xr10, 6
-	xvpickve2gr.d	$fp, $xr9, 3
-	movgr2fr.d	$ft1, $fp
+	xvpickve.d	$xr9, $xr9, 3
 	fcvt.s.d	$ft1, $ft1
 	xvinsve0.w	$xr14, $xr9, 7
 	xvst	$xr14, $t8, 0
@@ -8031,35 +7867,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvfmul.d	$xr6, $xr6, $xr3
 	xvfmul.d	$xr5, $xr5, $xr1
 	xvfmul.d	$xr6, $xr6, $xr1
-	xvpickve2gr.d	$fp, $xr6, 1
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$fp, $xr6, 0
-	movgr2fr.d	$ft0, $fp
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$fp, $xr6, 2
-	movgr2fr.d	$fa7, $fp
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$fp, $xr6, 3
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 3
-	xvpickve2gr.d	$fp, $xr5, 0
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 4
-	xvpickve2gr.d	$fp, $xr5, 1
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 5
-	xvpickve2gr.d	$fp, $xr5, 2
-	movgr2fr.d	$fa6, $fp
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr8, $xr6, 6
-	xvpickve2gr.d	$fp, $xr5, 3
-	movgr2fr.d	$fa5, $fp
+	xvpickve.d	$xr5, $xr5, 3
 	xvld	$xr6, $s3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
@@ -8690,35 +8518,27 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	xvinsve0.d	$xr9, $xr7, 3
 	xvfadd.d	$xr6, $xr10, $xr6
 	xvfadd.d	$xr5, $xr9, $xr5
-	xvpickve2gr.d	$a7, $xr5, 1
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr5, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a7, $xr5, 0
-	movgr2fr.d	$ft0, $a7
+	xvpickve.d	$xr8, $xr5, 0
 	fcvt.s.d	$ft0, $ft0
 	xvinsve0.w	$xr8, $xr7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr5, 2
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr8, $xr7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 3
-	xvpickve2gr.d	$a7, $xr6, 0
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 4
-	xvpickve2gr.d	$a7, $xr6, 1
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 1
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 5
-	xvpickve2gr.d	$a7, $xr6, 2
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 6
-	xvpickve2gr.d	$a7, $xr6, 3
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr6, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr8, $xr5, 7
 	xvst	$xr8, $a5, 0
@@ -8805,19 +8625,15 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	fcvt.d.s	$fa7, $fa7
 	xvinsve0.d	$xr9, $xr7, 3
 	xvfmadd.d	$xr6, $xr3, $xr6, $xr9
-	xvpickve2gr.d	$a7, $xr6, 1
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr6, 1
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a7, $xr6, 0
-	movgr2fr.d	$ft0, $a7
+	xvpickve.d	$xr8, $xr6, 0
 	fcvt.s.d	$ft0, $ft0
 	vextrins.w	$vr8, $vr7, 16
-	xvpickve2gr.d	$a7, $xr6, 2
-	movgr2fr.d	$fa7, $a7
+	xvpickve.d	$xr7, $xr6, 2
 	fcvt.s.d	$fa7, $fa7
 	vextrins.w	$vr8, $vr7, 32
-	xvpickve2gr.d	$a7, $xr6, 3
-	movgr2fr.d	$fa6, $a7
+	xvpickve.d	$xr6, $xr6, 3
 	fcvt.s.d	$fa6, $fa6
 	vextrins.w	$vr8, $vr6, 48
 	vst	$vr8, $a5, 0

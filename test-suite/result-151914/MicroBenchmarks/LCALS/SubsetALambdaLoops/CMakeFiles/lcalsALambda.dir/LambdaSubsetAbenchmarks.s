@@ -211,8 +211,7 @@ _ZL23BM_PRESSURE_CALC_LAMBDARN9benchmark5StateE: # @_ZL23BM_PRESSURE_CALC_LAMBDA
                                         #   in Loop: Header=BB0_16 Depth=2
 	xvpickve2gr.d	$t5, $xr9, 0
 	andi	$t5, $t5, 1
-	xvpickve2gr.d	$t6, $xr8, 0
-	movgr2fr.d	$ft2, $t6
+	xvpickve.d	$xr10, $xr8, 0
 	movgr2cf	$fcc0, $t5
 	fsel	$ft2, $ft2, $ft6, $fcc0
 	fst.d	$ft2, $t3, 0
@@ -244,8 +243,7 @@ _ZL23BM_PRESSURE_CALC_LAMBDARN9benchmark5StateE: # @_ZL23BM_PRESSURE_CALC_LAMBDA
                                         #   in Loop: Header=BB0_16 Depth=2
 	xvpickve2gr.d	$t4, $xr9, 1
 	andi	$t4, $t4, 1
-	xvpickve2gr.d	$t5, $xr8, 1
-	movgr2fr.d	$ft3, $t5
+	xvpickve.d	$xr11, $xr8, 1
 	movgr2cf	$fcc0, $t4
 	fsel	$ft3, $ft3, $ft6, $fcc0
 	fst.d	$ft3, $t3, 8
@@ -256,8 +254,7 @@ _ZL23BM_PRESSURE_CALC_LAMBDARN9benchmark5StateE: # @_ZL23BM_PRESSURE_CALC_LAMBDA
                                         #   in Loop: Header=BB0_16 Depth=2
 	xvpickve2gr.d	$t4, $xr9, 2
 	andi	$t4, $t4, 1
-	xvpickve2gr.d	$t5, $xr8, 2
-	movgr2fr.d	$ft3, $t5
+	xvpickve.d	$xr11, $xr8, 2
 	movgr2cf	$fcc0, $t4
 	fsel	$ft3, $ft3, $ft6, $fcc0
 	fst.d	$ft3, $t3, 16
@@ -268,8 +265,7 @@ _ZL23BM_PRESSURE_CALC_LAMBDARN9benchmark5StateE: # @_ZL23BM_PRESSURE_CALC_LAMBDA
                                         #   in Loop: Header=BB0_16 Depth=2
 	xvpickve2gr.d	$t4, $xr9, 3
 	andi	$t4, $t4, 1
-	xvpickve2gr.d	$t5, $xr8, 3
-	movgr2fr.d	$ft0, $t5
+	xvpickve.d	$xr8, $xr8, 3
 	movgr2cf	$fcc0, $t4
 	fsel	$ft0, $ft0, $ft6, $fcc0
 	fst.d	$ft0, $t3, 24

@@ -265,12 +265,12 @@ Aalign:                                 # @Aalign
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(outgap)
-	ld.d	$t3, $a0, %got_pc_lo12(outgap)
-	ld.w	$t0, $t3, 0
-	ld.d	$t2, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$a0, $t2, 1
-	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
-	bne	$t0, $a1, .LBB0_35
+	ld.d	$t2, $a0, %got_pc_lo12(outgap)
+	ld.w	$a7, $t2, 0
+	ld.d	$t1, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$a0, $t1, 1
+	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	bne	$a7, $a1, .LBB0_35
 # %bb.21:                               # %.preheader176
 	blt	$s4, $a1, .LBB0_28
 # %bb.22:                               # %.lr.ph184
@@ -279,7 +279,7 @@ Aalign:                                 # @Aalign
 	ld.w	$a1, $a1, 0
 	movgr2fr.w	$fa0, $a1
 	ffint.d.w	$fa0, $fa0
-	addi.d	$a1, $t1, 1
+	addi.d	$a1, $t0, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, -1
 	ori	$a4, $zero, 8
@@ -326,35 +326,27 @@ Aalign:                                 # @Aalign
 	xvinsve0.d	$xr5, $xr3, 3
 	xvfmadd.d	$xr3, $xr1, $xr2, $xr6
 	xvfmadd.d	$xr4, $xr1, $xr2, $xr5
-	xvpickve2gr.d	$a7, $xr4, 1
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$a7, $xr4, 0
-	movgr2fr.d	$fa6, $a7
+	xvpickve.d	$xr6, $xr4, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$a7, $xr4, 2
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$a7, $xr4, 3
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr4, 3
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 3
-	xvpickve2gr.d	$a7, $xr3, 0
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr3, 0
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 4
-	xvpickve2gr.d	$a7, $xr3, 1
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 5
-	xvpickve2gr.d	$a7, $xr3, 2
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 6
-	xvpickve2gr.d	$a7, $xr3, 3
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a5, 0
@@ -432,35 +424,27 @@ Aalign:                                 # @Aalign
 	xvinsve0.d	$xr5, $xr3, 3
 	xvfmadd.d	$xr3, $xr1, $xr2, $xr6
 	xvfmadd.d	$xr4, $xr1, $xr2, $xr5
-	xvpickve2gr.d	$a7, $xr4, 1
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$a7, $xr4, 0
-	movgr2fr.d	$fa6, $a7
+	xvpickve.d	$xr6, $xr4, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$a7, $xr4, 2
-	movgr2fr.d	$fa5, $a7
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$a7, $xr4, 3
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr4, 3
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 3
-	xvpickve2gr.d	$a7, $xr3, 0
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr3, 0
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 4
-	xvpickve2gr.d	$a7, $xr3, 1
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 5
-	xvpickve2gr.d	$a7, $xr3, 2
-	movgr2fr.d	$fa4, $a7
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 6
-	xvpickve2gr.d	$a7, $xr3, 3
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a5, 0
@@ -527,7 +511,7 @@ Aalign:                                 # @Aalign
 	addi.d	$a1, $a1, 4
 	bnez	$a0, .LBB0_39
 .LBB0_40:                               # %._crit_edge192.loopexit
-	ld.w	$t0, $t3, 0
+	ld.w	$a7, $t2, 0
 	b	.LBB0_47
 .LBB0_41:                               # %vector.memcheck318
 	alsl.d	$a3, $a0, $a2, 2
@@ -588,35 +572,27 @@ Aalign:                                 # @Aalign
 	xvinsve0.d	$xr5, $xr3, 3
 	xvfmadd.d	$xr3, $xr0, $xr1, $xr6
 	xvfmadd.d	$xr4, $xr0, $xr1, $xr5
-	xvpickve2gr.d	$t0, $xr4, 1
-	movgr2fr.d	$fa5, $t0
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$t0, $xr4, 0
-	movgr2fr.d	$fa6, $t0
+	xvpickve.d	$xr6, $xr4, 0
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr6, $xr5, 1
-	xvpickve2gr.d	$t0, $xr4, 2
-	movgr2fr.d	$fa5, $t0
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr6, $xr5, 2
-	xvpickve2gr.d	$t0, $xr4, 3
-	movgr2fr.d	$fa4, $t0
+	xvpickve.d	$xr4, $xr4, 3
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 3
-	xvpickve2gr.d	$t0, $xr3, 0
-	movgr2fr.d	$fa4, $t0
+	xvpickve.d	$xr4, $xr3, 0
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 4
-	xvpickve2gr.d	$t0, $xr3, 1
-	movgr2fr.d	$fa4, $t0
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 5
-	xvpickve2gr.d	$t0, $xr3, 2
-	movgr2fr.d	$fa4, $t0
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr6, $xr4, 6
-	xvpickve2gr.d	$t0, $xr3, 3
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr6, $xr3, 7
 	xvst	$xr6, $a5, 0
@@ -633,7 +609,7 @@ Aalign:                                 # @Aalign
 	addi.w	$a0, $a0, 0
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 .LBB0_47:                               # %._crit_edge192
-	slli.d	$a0, $t2, 32
+	slli.d	$a0, $t1, 32
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, -1
 	add.d	$a0, $a0, $a1
@@ -641,14 +617,14 @@ Aalign:                                 # @Aalign
 	fldx.s	$fa0, $s7, $a1
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s8, $a1, %pc_lo12(Aalign.lastverticalw)
-	sltu	$a1, $zero, $t0
-	add.w	$a2, $a1, $t1
+	sltu	$a1, $zero, $a7
+	add.w	$a2, $a1, $t0
 	ori	$a1, $zero, 2
 	fst.s	$fa0, $s8, 0
 	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	blt	$a2, $a1, .LBB0_59
 # %bb.48:                               # %.lr.ph201
-	st.d	$t3, $sp, 8                     # 8-byte Folded Spill
+	st.d	$t2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	srai.d	$a0, $a0, 32
 	pcalau12i	$a1, %pc_hi20(Aalign.previousw)
@@ -810,7 +786,7 @@ Aalign:                                 # @Aalign
 	b	.LBB0_52
 .LBB0_59:
 	movgr2fr.w	$fs0, $zero
-	st.d	$t0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 168                   # 8-byte Folded Spill
 	b	.LBB0_61
 .LBB0_60:                               # %._crit_edge202.loopexit
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload

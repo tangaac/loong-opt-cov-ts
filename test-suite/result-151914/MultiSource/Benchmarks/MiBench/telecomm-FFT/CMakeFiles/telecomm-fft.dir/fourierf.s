@@ -382,35 +382,27 @@ fft_float:                              # @fft_float
 	xvinsve0.d	$xr4, $xr2, 3
 	xvfdiv.d	$xr2, $xr5, $xr1
 	xvfdiv.d	$xr3, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr3, 1
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
-	xvpickve2gr.d	$a4, $xr3, 0
-	movgr2fr.d	$fa5, $a4
+	xvpickve.d	$xr5, $xr3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr5, $xr4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr5, $xr4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 4
-	xvpickve2gr.d	$a4, $xr2, 1
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 5
-	xvpickve2gr.d	$a4, $xr2, 2
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 6
-	xvpickve2gr.d	$a4, $xr2, 3
-	movgr2fr.d	$fa2, $a4
+	xvpickve.d	$xr2, $xr2, 3
 	xvld	$xr3, $a2, 0
 	fcvt.s.d	$fa2, $fa2
 	xvinsve0.w	$xr5, $xr2, 7
@@ -440,35 +432,27 @@ fft_float:                              # @fft_float
 	xvinsve0.d	$xr4, $xr2, 3
 	xvfdiv.d	$xr2, $xr5, $xr1
 	xvfdiv.d	$xr3, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr3, 1
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
-	xvpickve2gr.d	$a4, $xr3, 0
-	movgr2fr.d	$fa5, $a4
+	xvpickve.d	$xr5, $xr3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr5, $xr4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr5, $xr4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 4
-	xvpickve2gr.d	$a4, $xr2, 1
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 5
-	xvpickve2gr.d	$a4, $xr2, 2
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 6
-	xvpickve2gr.d	$a4, $xr2, 3
-	movgr2fr.d	$fa2, $a4
+	xvpickve.d	$xr2, $xr2, 3
 	fcvt.s.d	$fa2, $fa2
 	xvinsve0.w	$xr5, $xr2, 7
 	xvst	$xr5, $a2, 0
@@ -919,35 +903,27 @@ fft_float_StrictFP:                     # @fft_float_StrictFP
 	xvinsve0.d	$xr4, $xr2, 3
 	xvfdiv.d	$xr2, $xr5, $xr1
 	xvfdiv.d	$xr3, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr3, 1
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
-	xvpickve2gr.d	$a4, $xr3, 0
-	movgr2fr.d	$fa5, $a4
+	xvpickve.d	$xr5, $xr3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr5, $xr4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr5, $xr4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 4
-	xvpickve2gr.d	$a4, $xr2, 1
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 5
-	xvpickve2gr.d	$a4, $xr2, 2
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 6
-	xvpickve2gr.d	$a4, $xr2, 3
-	movgr2fr.d	$fa2, $a4
+	xvpickve.d	$xr2, $xr2, 3
 	xvld	$xr3, $a2, 0
 	fcvt.s.d	$fa2, $fa2
 	xvinsve0.w	$xr5, $xr2, 7
@@ -977,35 +953,27 @@ fft_float_StrictFP:                     # @fft_float_StrictFP
 	xvinsve0.d	$xr4, $xr2, 3
 	xvfdiv.d	$xr2, $xr5, $xr1
 	xvfdiv.d	$xr3, $xr4, $xr1
-	xvpickve2gr.d	$a4, $xr3, 1
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 1
 	fcvt.s.d	$fa4, $fa4
-	xvpickve2gr.d	$a4, $xr3, 0
-	movgr2fr.d	$fa5, $a4
+	xvpickve.d	$xr5, $xr3, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr5, $xr4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	movgr2fr.d	$fa4, $a4
+	xvpickve.d	$xr4, $xr3, 2
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr5, $xr4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr3, 3
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 3
-	xvpickve2gr.d	$a4, $xr2, 0
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 0
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 4
-	xvpickve2gr.d	$a4, $xr2, 1
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 1
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 5
-	xvpickve2gr.d	$a4, $xr2, 2
-	movgr2fr.d	$fa3, $a4
+	xvpickve.d	$xr3, $xr2, 2
 	fcvt.s.d	$fa3, $fa3
 	xvinsve0.w	$xr5, $xr3, 6
-	xvpickve2gr.d	$a4, $xr2, 3
-	movgr2fr.d	$fa2, $a4
+	xvpickve.d	$xr2, $xr2, 3
 	fcvt.s.d	$fa2, $fa2
 	xvinsve0.w	$xr5, $xr2, 7
 	xvst	$xr5, $a2, 0

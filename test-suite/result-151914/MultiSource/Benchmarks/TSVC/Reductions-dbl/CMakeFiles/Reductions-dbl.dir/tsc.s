@@ -11983,109 +11983,93 @@ s31111:                                 # @s31111
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $fp, 32
 	xvld	$xr1, $fp, 0
-	xvpickve2gr.d	$a0, $xr0, 0
-	movgr2fr.d	$fa2, $a0
+	xvpickve.d	$xr2, $xr0, 0
 	xvpermi.d	$xr3, $xr1, 68
 	xvpermi.d	$xr4, $xr1, 78
                                         # kill: def $vr1 killed $vr1 killed $xr1
 	vextrins.d	$vr1, $vr2, 16
 	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
 	vfadd.d	$vr1, $vr1, $vr6
-	xvpickve2gr.d	$a0, $xr0, 1
-	movgr2fr.d	$fa2, $a0
+	xvpickve.d	$xr2, $xr0, 1
 	xvrepl128vei.d	$xr3, $xr3, 1
 	vextrins.d	$vr3, $vr2, 16
 	vfadd.d	$vr1, $vr1, $vr3
-	xvpickve2gr.d	$a0, $xr0, 2
-	movgr2fr.d	$fa2, $a0
+	xvpickve.d	$xr2, $xr0, 2
 	xvrepl128vei.d	$xr3, $xr4, 0
 	vextrins.d	$vr3, $vr2, 16
 	vfadd.d	$vr1, $vr1, $vr3
-	xvpickve2gr.d	$a0, $xr0, 3
-	movgr2fr.d	$fa0, $a0
+	xvpickve.d	$xr0, $xr0, 3
 	xvrepl128vei.d	$xr2, $xr4, 1
 	vextrins.d	$vr2, $vr0, 16
 	vfadd.d	$vr0, $vr1, $vr2
 	vreplvei.d	$vr1, $vr0, 0
 	xvld	$xr2, $fp, 96
-	vreplvei.d	$vr0, $vr0, 1
 	xvld	$xr3, $fp, 64
+	vreplvei.d	$vr0, $vr0, 1
 	fadd.d	$fa0, $fa1, $fa0
-	xvpickve2gr.d	$a0, $xr2, 0
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr2, 0
 	xvpermi.d	$xr4, $xr3, 68
 	xvpermi.d	$xr5, $xr3, 78
                                         # kill: def $vr3 killed $vr3 killed $xr3
 	vextrins.d	$vr3, $vr1, 16
 	vfadd.d	$vr1, $vr3, $vr6
-	xvpickve2gr.d	$a0, $xr2, 1
-	movgr2fr.d	$fa3, $a0
+	xvpickve.d	$xr3, $xr2, 1
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr1, $vr1, $vr4
-	xvpickve2gr.d	$a0, $xr2, 2
-	movgr2fr.d	$fa3, $a0
+	xvpickve.d	$xr3, $xr2, 2
 	xvrepl128vei.d	$xr4, $xr5, 0
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr1, $vr1, $vr4
-	xvpickve2gr.d	$a0, $xr2, 3
-	movgr2fr.d	$fa2, $a0
+	xvpickve.d	$xr2, $xr2, 3
 	xvrepl128vei.d	$xr3, $xr5, 1
 	vextrins.d	$vr3, $vr2, 16
 	vfadd.d	$vr1, $vr1, $vr3
 	vreplvei.d	$vr2, $vr1, 0
 	fadd.d	$fa0, $fa0, $fa2
 	xvld	$xr2, $fp, 160
-	vreplvei.d	$vr1, $vr1, 1
 	xvld	$xr3, $fp, 128
+	vreplvei.d	$vr1, $vr1, 1
 	fadd.d	$fa0, $fa0, $fa1
-	xvpickve2gr.d	$a0, $xr2, 0
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr2, 0
 	xvpermi.d	$xr4, $xr3, 68
 	xvpermi.d	$xr5, $xr3, 78
                                         # kill: def $vr3 killed $vr3 killed $xr3
 	vextrins.d	$vr3, $vr1, 16
 	vfadd.d	$vr1, $vr3, $vr6
-	xvpickve2gr.d	$a0, $xr2, 1
-	movgr2fr.d	$fa3, $a0
+	xvpickve.d	$xr3, $xr2, 1
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr1, $vr1, $vr4
-	xvpickve2gr.d	$a0, $xr2, 2
-	movgr2fr.d	$fa3, $a0
+	xvpickve.d	$xr3, $xr2, 2
 	xvrepl128vei.d	$xr4, $xr5, 0
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr1, $vr1, $vr4
-	xvpickve2gr.d	$a0, $xr2, 3
-	movgr2fr.d	$fa2, $a0
+	xvpickve.d	$xr2, $xr2, 3
 	xvrepl128vei.d	$xr3, $xr5, 1
 	vextrins.d	$vr3, $vr2, 16
 	vfadd.d	$vr1, $vr1, $vr3
 	vreplvei.d	$vr2, $vr1, 0
 	fadd.d	$fa0, $fa0, $fa2
 	xvld	$xr2, $fp, 224
-	vreplvei.d	$vr1, $vr1, 1
 	xvld	$xr3, $fp, 192
+	vreplvei.d	$vr1, $vr1, 1
 	fadd.d	$fa0, $fa0, $fa1
-	xvpickve2gr.d	$a0, $xr2, 0
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr2, 0
 	xvpermi.d	$xr4, $xr3, 68
 	xvpermi.d	$xr5, $xr3, 78
                                         # kill: def $vr3 killed $vr3 killed $xr3
 	vextrins.d	$vr3, $vr1, 16
 	vfadd.d	$vr1, $vr3, $vr6
-	xvpickve2gr.d	$a0, $xr2, 1
-	movgr2fr.d	$fa3, $a0
+	xvpickve.d	$xr3, $xr2, 1
 	xvrepl128vei.d	$xr4, $xr4, 1
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr1, $vr1, $vr4
-	xvpickve2gr.d	$a0, $xr2, 2
-	movgr2fr.d	$fa3, $a0
+	xvpickve.d	$xr3, $xr2, 2
 	xvrepl128vei.d	$xr4, $xr5, 0
 	vextrins.d	$vr4, $vr3, 16
 	vfadd.d	$vr1, $vr1, $vr4
-	xvpickve2gr.d	$a0, $xr2, 3
-	movgr2fr.d	$fa2, $a0
+	xvpickve.d	$xr2, $xr2, 3
 	xvrepl128vei.d	$xr3, $xr5, 1
 	vextrins.d	$vr3, $vr2, 16
 	vfadd.d	$vr1, $vr1, $vr3

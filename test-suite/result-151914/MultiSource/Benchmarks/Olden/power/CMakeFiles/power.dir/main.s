@@ -144,12 +144,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	xvld	$xr0, $fp, 0
 	xvst	$xr0, $fp, 32
-	xvpickve2gr.d	$a0, $xr0, 2
-	movgr2fr.d	$fa1, $a0
+	xvpickve.d	$xr1, $xr0, 2
 	fadd.d	$fa1, $fs7, $fa1
 	fst.d	$fa1, $fp, 16
-	xvpickve2gr.d	$a0, $xr0, 3
-	movgr2fr.d	$fa0, $a0
+	xvpickve.d	$xr0, $xr0, 3
 	fadd.d	$fa0, $fs2, $fa0
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	fst.d	$fa0, $fp, 24

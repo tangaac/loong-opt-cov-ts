@@ -511,21 +511,18 @@ hotspotKernel:                          # @hotspotKernel
 	xvfadd.d	$xr13, $xr14, $xr13
 	xvfmul.d	$xr13, $xr9, $xr13
 	xvfadd.d	$xr13, $xr16, $xr13
-	xvpickve2gr.d	$a1, $xr13, 1
-	movgr2fr.d	$ft6, $a1
+	xvpickve.d	$xr14, $xr13, 1
 	xvpermi.d	$xr15, $xr12, 68
 	xvpermi.d	$xr16, $xr12, 78
 	xvstelm.d	$xr12, $s6, 0, 3
                                         # kill: def $vr12 killed $vr12 killed $xr12
 	vextrins.d	$vr12, $vr14, 16
 	vstx	$vr12, $a6, $a4
-	xvpickve2gr.d	$a1, $xr13, 2
-	movgr2fr.d	$ft4, $a1
+	xvpickve.d	$xr12, $xr13, 2
 	xvrepl128vei.d	$xr14, $xr15, 1
 	vextrins.d	$vr14, $vr12, 16
 	vst	$vr14, $a6, 0
-	xvpickve2gr.d	$a1, $xr13, 3
-	movgr2fr.d	$ft4, $a1
+	xvpickve.d	$xr12, $xr13, 3
 	xvrepl128vei.d	$xr14, $xr16, 0
 	vextrins.d	$vr14, $vr12, 16
 	vstx	$vr14, $a6, $t2

@@ -4102,25 +4102,21 @@ _ZN27btGImpactCollisionAlgorithm37gimpacttrimeshpart_vs_plane_collisionEP17btCol
 _ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS1_P23btGImpactShapeInterfaceP15btCompoundShapeb: # @_ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS1_P23btGImpactShapeInterfaceP15btCompoundShapeb
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	.cfi_def_cfa_offset 256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 176                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 168                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 160                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 152                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 136                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 128                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 120                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -448
+	.cfi_def_cfa_offset 448
+	st.d	$ra, $sp, 440                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 432                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 424                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 416                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 408                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 400                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 392                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 376                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 368                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 360                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 352                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 344                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4134,10 +4130,6 @@ _ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS
 	.cfi_offset 57, -88
 	.cfi_offset 58, -96
 	.cfi_offset 59, -104
-	.cfi_offset 60, -112
-	.cfi_offset 61, -120
-	.cfi_offset 62, -128
-	.cfi_offset 63, -136
 	ld.w	$s5, $a4, 28
 	beqz	$s5, .LBB18_3
 # %bb.1:                                # %.lr.ph
@@ -4148,33 +4140,29 @@ _ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS
 	move	$s3, $a1
 	move	$s4, $a0
 	xvld	$xr0, $a2, 8
-	fld.s	$fa1, $a2, 12
-	fst.s	$fa1, $sp, 76                   # 4-byte Folded Spill
+	fld.s	$fs0, $a2, 12
 	fld.s	$fs1, $a2, 8
 	xvld	$xr1, $a2, 40
 	fld.s	$fs2, $a2, 44
 	fld.s	$fs3, $a2, 40
-	xvpickve2gr.w	$a0, $xr0, 2
-	movgr2fr.w	$fs4, $a0
-	xvpickve2gr.w	$a0, $xr0, 4
-	movgr2fr.w	$fs5, $a0
-	xvpickve2gr.w	$a0, $xr0, 5
-	movgr2fr.w	$fs6, $a0
+	xvpickve.w	$xr2, $xr0, 2
+	xvst	$xr2, $sp, 240                  # 32-byte Folded Spill
+	xvpickve.w	$xr2, $xr0, 4
+	xvst	$xr2, $sp, 208                  # 32-byte Folded Spill
+	xvpickve.w	$xr2, $xr0, 5
+	xvst	$xr2, $sp, 176                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 304                  # 32-byte Folded Spill
+	xvpickve.w	$xr0, $xr0, 6
+	xvst	$xr0, $sp, 144                  # 32-byte Folded Spill
+	xvpickve.w	$xr0, $xr1, 2
+	xvst	$xr0, $sp, 112                  # 32-byte Folded Spill
+	xvpickve.w	$xr0, $xr1, 4
 	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
-	xvpickve2gr.w	$a0, $xr0, 6
-	movgr2fr.w	$fs7, $a0
-	xvpickve2gr.w	$a0, $xr1, 2
-	movgr2fr.w	$fs0, $a0
-	xvpickve2gr.w	$a0, $xr1, 4
-	movgr2fr.w	$fa0, $a0
-	fst.s	$fa0, $sp, 28                   # 4-byte Folded Spill
-	xvpickve2gr.w	$a0, $xr1, 5
-	movgr2fr.w	$fa0, $a0
-	fst.s	$fa0, $sp, 24                   # 4-byte Folded Spill
-	xvst	$xr1, $sp, 32                   # 32-byte Folded Spill
-	xvpickve2gr.w	$a0, $xr1, 6
-	movgr2fr.w	$fa0, $a0
-	fst.s	$fa0, $sp, 20                   # 4-byte Folded Spill
+	xvpickve.w	$xr0, $xr1, 5
+	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr1, $sp, 272                  # 32-byte Folded Spill
+	xvpickve.w	$xr0, $xr1, 6
+	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	ori	$a0, $zero, 88
 	mul.d	$s6, $s5, $a0
 	.p2align	4, , 16
@@ -4185,58 +4173,62 @@ _ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS
 	addi.d	$s5, $s5, -1
 	ld.d	$a4, $a0, -24
 	fld.s	$fa1, $a0, -88
-	fld.s	$ft7, $sp, 76                   # 4-byte Folded Reload
-	fmul.s	$fa2, $ft7, $fa0
+	fmul.s	$fa2, $fs0, $fa0
 	fld.s	$fa3, $a0, -56
 	fld.s	$fa4, $a0, -68
 	fld.s	$fa5, $a0, -84
 	fmadd.s	$fa2, $fa1, $fs1, $fa2
-	fmadd.s	$fa2, $fa3, $fs4, $fa2
-	fmul.s	$fa6, $ft7, $fa4
+	xvld	$xr15, $sp, 240                 # 32-byte Folded Reload
+	fmadd.s	$fa2, $fa3, $ft7, $fa2
+	fmul.s	$fa6, $fs0, $fa4
 	fmadd.s	$fa6, $fa5, $fs1, $fa6
 	fld.s	$fa7, $a0, -52
 	fld.s	$ft0, $a0, -64
 	fld.s	$ft1, $a0, -80
 	fld.s	$ft2, $a0, -48
-	fmadd.s	$fa6, $fa7, $fs4, $fa6
-	fmul.s	$ft3, $ft7, $ft0
+	fmadd.s	$fa6, $fa7, $ft7, $fa6
+	fmul.s	$ft3, $fs0, $ft0
 	fmadd.s	$ft3, $ft1, $fs1, $ft3
-	fmadd.s	$ft3, $ft2, $fs4, $ft3
-	fmul.s	$ft4, $fs6, $fa0
-	fmadd.s	$ft4, $fa1, $fs5, $ft4
-	fmadd.s	$ft4, $fa3, $fs7, $ft4
-	fmul.s	$ft5, $fs6, $fa4
-	fmadd.s	$ft5, $fa5, $fs5, $ft5
-	fmadd.s	$ft5, $fa7, $fs7, $ft5
-	fmul.s	$ft6, $fs6, $ft0
-	fmadd.s	$ft6, $ft1, $fs5, $ft6
-	fmadd.s	$ft6, $ft2, $fs7, $ft6
+	fmadd.s	$ft3, $ft2, $ft7, $ft3
+	xvld	$xr17, $sp, 176                 # 32-byte Folded Reload
+	fmul.s	$ft4, $ft9, $fa0
+	xvld	$xr16, $sp, 208                 # 32-byte Folded Reload
+	fmadd.s	$ft4, $fa1, $ft8, $ft4
+	xvld	$xr18, $sp, 144                 # 32-byte Folded Reload
+	fmadd.s	$ft4, $fa3, $ft10, $ft4
+	fmul.s	$ft5, $ft9, $fa4
+	fmadd.s	$ft5, $fa5, $ft8, $ft5
+	fmadd.s	$ft5, $fa7, $ft10, $ft5
+	fmul.s	$ft6, $ft9, $ft0
+	fmadd.s	$ft6, $ft1, $ft8, $ft6
+	fmadd.s	$ft6, $ft2, $ft10, $ft6
 	fmul.s	$fa0, $fs2, $fa0
 	fmadd.s	$fa0, $fa1, $fs3, $fa0
-	fmadd.s	$fa0, $fa3, $fs0, $fa0
+	xvld	$xr19, $sp, 112                 # 32-byte Folded Reload
+	fmadd.s	$fa0, $fa3, $ft11, $fa0
 	fmul.s	$fa1, $fs2, $fa4
 	fmadd.s	$fa1, $fa5, $fs3, $fa1
-	fmadd.s	$fa1, $fa7, $fs0, $fa1
+	fmadd.s	$fa1, $fa7, $ft11, $fa1
 	fmul.s	$fa3, $fs2, $ft0
 	fmadd.s	$fa3, $ft1, $fs3, $fa3
 	fld.s	$fa4, $a0, -36
 	fld.s	$fa5, $a0, -40
 	fld.s	$fa7, $a0, -32
-	fmadd.s	$fa3, $ft2, $fs0, $fa3
-	fmul.s	$ft0, $ft7, $fa4
+	fmadd.s	$fa3, $ft2, $ft11, $fa3
+	fmul.s	$ft0, $fs0, $fa4
 	fmadd.s	$ft0, $fs1, $fa5, $ft0
-	fmadd.s	$ft0, $fs4, $fa7, $ft0
-	fld.s	$ft1, $sp, 28                   # 4-byte Folded Reload
+	fmadd.s	$ft0, $ft7, $fa7, $ft0
+	xvld	$xr9, $sp, 80                   # 32-byte Folded Reload
 	fadd.s	$ft0, $ft1, $ft0
-	fmul.s	$ft1, $fs6, $fa4
-	fmadd.s	$ft1, $fs5, $fa5, $ft1
-	fmadd.s	$ft1, $fs7, $fa7, $ft1
-	fld.s	$ft2, $sp, 24                   # 4-byte Folded Reload
+	fmul.s	$ft1, $ft9, $fa4
+	fmadd.s	$ft1, $ft8, $fa5, $ft1
+	fmadd.s	$ft1, $ft10, $fa7, $ft1
+	xvld	$xr10, $sp, 48                  # 32-byte Folded Reload
 	fadd.s	$ft1, $ft2, $ft1
 	fmul.s	$fa4, $fs2, $fa4
 	fmadd.s	$fa4, $fs3, $fa5, $fa4
-	fmadd.s	$fa4, $fs0, $fa7, $fa4
-	fld.s	$fa5, $sp, 20                   # 4-byte Folded Reload
+	fmadd.s	$fa4, $ft11, $fa7, $fa4
+	xvld	$xr5, $sp, 16                   # 32-byte Folded Reload
 	fadd.s	$fa4, $fa5, $fa4
 	movfr2gr.s	$a0, $ft0
 	movfr2gr.s	$a1, $ft1
@@ -4264,31 +4256,27 @@ _ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS
 	move	$a5, $s0
 	pcaddu18i	$ra, %call36(_ZN27btGImpactCollisionAlgorithm16gimpact_vs_shapeEP17btCollisionObjectS1_P23btGImpactShapeInterfaceP16btCollisionShapeb)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
+	xvld	$xr0, $sp, 304                  # 32-byte Folded Reload
 	xvst	$xr0, $s2, 8
-	xvld	$xr0, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr0, $sp, 272                  # 32-byte Folded Reload
 	xvst	$xr0, $s2, 40
 	addi.d	$s6, $s6, -88
 	bnez	$s5, .LBB18_2
 .LBB18_3:                               # %._crit_edge
-	fld.d	$fs7, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 136                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 144                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 152                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 160                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 168                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 176                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	fld.d	$fs3, $sp, 344                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 352                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 360                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 368                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 440                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 448
 	ret
 .Lfunc_end18:
 	.size	_ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS1_P23btGImpactShapeInterfaceP15btCompoundShapeb, .Lfunc_end18-_ZN27btGImpactCollisionAlgorithm24gimpact_vs_compoundshapeEP17btCollisionObjectS1_P23btGImpactShapeInterfaceP15btCompoundShapeb

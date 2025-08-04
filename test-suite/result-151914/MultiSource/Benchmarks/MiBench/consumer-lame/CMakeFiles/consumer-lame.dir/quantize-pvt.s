@@ -3613,38 +3613,30 @@ quantize_xrpow:                         # @quantize_xrpow
 	addi.d	$a5, $a1, 32
 	xvfmul.d	$xr1, $xr0, $xr1
 	xvfmul.d	$xr2, $xr0, $xr2
-	xvpickve2gr.d	$a6, $xr2, 0
-	movgr2fr.d	$fa3, $a6
+	xvpickve.d	$xr3, $xr2, 0
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$a6, $fa3
-	xvpickve2gr.d	$a7, $xr2, 1
-	movgr2fr.d	$fa3, $a7
+	xvpickve.d	$xr3, $xr2, 1
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$a7, $fa3
-	xvpickve2gr.d	$t0, $xr2, 2
-	movgr2fr.d	$fa3, $t0
+	xvpickve.d	$xr3, $xr2, 2
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$t0, $fa3
-	xvpickve2gr.d	$t1, $xr2, 3
-	movgr2fr.d	$fa3, $t1
+	xvpickve.d	$xr3, $xr2, 3
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$t1, $fa3
-	xvpickve2gr.d	$t2, $xr1, 0
-	movgr2fr.d	$fa3, $t2
+	xvpickve.d	$xr3, $xr1, 0
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$t2, $fa3
-	xvpickve2gr.d	$t3, $xr1, 1
-	movgr2fr.d	$fa3, $t3
+	xvpickve.d	$xr3, $xr1, 1
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$t3, $fa3
-	xvpickve2gr.d	$t4, $xr1, 2
-	movgr2fr.d	$fa3, $t4
+	xvpickve.d	$xr3, $xr1, 2
 	ftintrz.w.d	$fa3, $fa3
 	movfr2gr.s	$t4, $fa3
 	slli.d	$a6, $a6, 3
 	fldx.d	$fa3, $a3, $a6
-	xvpickve2gr.d	$a6, $xr1, 3
-	movgr2fr.d	$fa4, $a6
+	xvpickve.d	$xr4, $xr1, 3
 	ftintrz.w.d	$fa4, $fa4
 	movfr2gr.s	$a6, $fa4
 	slli.d	$a7, $a7, 3

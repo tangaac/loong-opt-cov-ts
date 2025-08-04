@@ -3042,22 +3042,18 @@ rc_init_GOP:                            # @rc_init_GOP
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr3, $t0, 0
 	xvfmadd.d	$xr3, $xr3, $xr1, $xr2
-	xvpickve2gr.d	$t3, $xr3, 1
-	movgr2fr.d	$fa4, $t3
+	xvpickve.d	$xr4, $xr3, 1
 	vreplvei.d	$vr4, $vr4, 0
 	vfrintrm.d	$vr4, $vr4
-	xvpickve2gr.d	$t3, $xr3, 0
-	movgr2fr.d	$fa5, $t3
+	xvpickve.d	$xr5, $xr3, 0
 	vreplvei.d	$vr5, $vr5, 0
 	vfrintrm.d	$vr5, $vr5
 	xvinsve0.d	$xr5, $xr4, 1
-	xvpickve2gr.d	$t3, $xr3, 2
-	movgr2fr.d	$fa4, $t3
+	xvpickve.d	$xr4, $xr3, 2
 	vreplvei.d	$vr4, $vr4, 0
 	vfrintrm.d	$vr4, $vr4
 	xvinsve0.d	$xr5, $xr4, 2
-	xvpickve2gr.d	$t3, $xr3, 3
-	movgr2fr.d	$fa3, $t3
+	xvpickve.d	$xr3, $xr3, 3
 	vreplvei.d	$vr3, $vr3, 0
 	vfrintrm.d	$vr3, $vr3
 	xvinsve0.d	$xr5, $xr3, 3
@@ -5421,8 +5417,7 @@ updateMADModel:                         # @updateMADModel
 	fst.d	$fs0, $fp, 288
 	bne	$a0, $a3, .LBB17_6
 # %bb.4:
-	xvpickve2gr.d	$a0, $xr0, 0
-	movgr2fr.d	$fa0, $a0
+	xvpickve.d	$xr0, $xr0, 0
 	b	.LBB17_11
 .LBB17_5:
 	ret

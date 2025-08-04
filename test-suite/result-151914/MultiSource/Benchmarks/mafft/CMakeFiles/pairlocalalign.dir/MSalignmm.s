@@ -226,9 +226,9 @@ MSalignmm:                              # @MSalignmm
 	ori	$a0, $zero, 1
 	fcvt.d.s	$fa0, $fs0
 	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
 	blt	$s8, $a0, .LBB0_18
 # %bb.12:                               # %.lr.ph219
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
@@ -236,16 +236,16 @@ MSalignmm:                              # @MSalignmm
 	ori	$a2, $zero, 8
 	bltu	$a1, $a2, .LBB0_15
 # %bb.13:                               # %vector.memcheck
-	alsl.d	$a2, $a1, $a7, 2
-	bgeu	$t1, $a2, .LBB0_42
+	alsl.d	$a2, $a1, $a6, 2
+	bgeu	$t0, $a2, .LBB0_42
 # %bb.14:                               # %vector.memcheck
-	alsl.d	$a2, $a1, $t1, 2
-	bgeu	$a7, $a2, .LBB0_42
+	alsl.d	$a2, $a1, $t0, 2
+	bgeu	$a6, $a2, .LBB0_42
 .LBB0_15:
 	move	$a2, $zero
 .LBB0_16:                               # %scalar.ph.preheader
-	alsl.d	$a3, $a2, $a7, 2
-	alsl.d	$a4, $a2, $t1, 2
+	alsl.d	$a3, $a2, $a6, 2
+	alsl.d	$a4, $a2, $t0, 2
 	sub.d	$a1, $a1, $a2
 	vldi	$vr1, -912
 	vldi	$vr2, -928
@@ -279,15 +279,15 @@ MSalignmm:                              # @MSalignmm
 	ori	$a1, $zero, 8
 	bltu	$a0, $a1, .LBB0_22
 # %bb.20:                               # %vector.memcheck277
-	alsl.d	$a1, $a0, $t0, 2
+	alsl.d	$a1, $a0, $a7, 2
 	bgeu	$s1, $a1, .LBB0_45
 # %bb.21:                               # %vector.memcheck277
 	alsl.d	$a1, $a0, $s1, 2
-	bgeu	$t0, $a1, .LBB0_45
+	bgeu	$a7, $a1, .LBB0_45
 .LBB0_22:
 	move	$a1, $zero
 .LBB0_23:                               # %scalar.ph283.preheader
-	alsl.d	$a2, $a1, $t0, 2
+	alsl.d	$a2, $a1, $a7, 2
 	alsl.d	$a3, $a1, $s1, 2
 	sub.d	$a0, $a0, $a1
 	vldi	$vr1, -912
@@ -315,10 +315,10 @@ MSalignmm:                              # @MSalignmm
 	bnez	$a0, .LBB0_24
 .LBB0_25:                               # %._crit_edge222
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.d	$t1, $a1, 0
-	st.d	$a7, $a1, 8
+	st.d	$t0, $a1, 0
+	st.d	$a6, $a1, 8
 	st.d	$s1, $a1, 16
-	st.d	$t0, $a1, 24
+	st.d	$a7, $a1, 24
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	addi.w	$a7, $a0, -1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -482,8 +482,8 @@ MSalignmm:                              # @MSalignmm
 	xvreplgr2vr.d	$xr2, $a3
 	lu52i.d	$a3, $zero, 1022
 	xvreplgr2vr.d	$xr3, $a3
-	move	$a3, $t1
-	move	$a4, $a7
+	move	$a3, $t0
+	move	$a4, $a6
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB0_43:                               # %vector.body
@@ -518,35 +518,27 @@ MSalignmm:                              # @MSalignmm
 	xvfmul.d	$xr5, $xr5, $xr3
 	xvfmul.d	$xr4, $xr4, $xr1
 	xvfmul.d	$xr5, $xr5, $xr1
-	xvpickve2gr.d	$a6, $xr5, 1
-	movgr2fr.d	$fa6, $a6
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
-	xvpickve2gr.d	$a6, $xr5, 0
-	movgr2fr.d	$fa7, $a6
+	xvpickve.d	$xr7, $xr5, 0
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr7, $xr6, 1
-	xvpickve2gr.d	$a6, $xr5, 2
-	movgr2fr.d	$fa6, $a6
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr7, $xr6, 2
-	xvpickve2gr.d	$a6, $xr5, 3
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 3
-	xvpickve2gr.d	$a6, $xr4, 0
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr4, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 4
-	xvpickve2gr.d	$a6, $xr4, 1
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 5
-	xvpickve2gr.d	$a6, $xr4, 2
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 6
-	xvpickve2gr.d	$a6, $xr4, 3
-	movgr2fr.d	$fa4, $a6
+	xvpickve.d	$xr4, $xr4, 3
 	xvld	$xr5, $a4, 0
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr7, $xr4, 7
@@ -580,35 +572,27 @@ MSalignmm:                              # @MSalignmm
 	xvfmul.d	$xr5, $xr5, $xr3
 	xvfmul.d	$xr4, $xr4, $xr1
 	xvfmul.d	$xr5, $xr5, $xr1
-	xvpickve2gr.d	$a6, $xr5, 1
-	movgr2fr.d	$fa6, $a6
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
-	xvpickve2gr.d	$a6, $xr5, 0
-	movgr2fr.d	$fa7, $a6
+	xvpickve.d	$xr7, $xr5, 0
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr7, $xr6, 1
-	xvpickve2gr.d	$a6, $xr5, 2
-	movgr2fr.d	$fa6, $a6
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr7, $xr6, 2
-	xvpickve2gr.d	$a6, $xr5, 3
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 3
-	xvpickve2gr.d	$a6, $xr4, 0
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr4, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 4
-	xvpickve2gr.d	$a6, $xr4, 1
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 5
-	xvpickve2gr.d	$a6, $xr4, 2
-	movgr2fr.d	$fa5, $a6
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 6
-	xvpickve2gr.d	$a6, $xr4, 3
-	movgr2fr.d	$fa4, $a6
+	xvpickve.d	$xr4, $xr4, 3
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr7, $xr4, 7
 	xvst	$xr7, $a4, 0
@@ -629,7 +613,7 @@ MSalignmm:                              # @MSalignmm
 	lu52i.d	$a2, $zero, 1022
 	xvreplgr2vr.d	$xr3, $a2
 	move	$a2, $s1
-	move	$a3, $t0
+	move	$a3, $a7
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB0_46:                               # %vector.body290
@@ -664,35 +648,27 @@ MSalignmm:                              # @MSalignmm
 	xvfmul.d	$xr5, $xr5, $xr3
 	xvfmul.d	$xr4, $xr4, $xr1
 	xvfmul.d	$xr5, $xr5, $xr1
-	xvpickve2gr.d	$a5, $xr5, 1
-	movgr2fr.d	$fa6, $a5
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
-	xvpickve2gr.d	$a5, $xr5, 0
-	movgr2fr.d	$fa7, $a5
+	xvpickve.d	$xr7, $xr5, 0
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr7, $xr6, 1
-	xvpickve2gr.d	$a5, $xr5, 2
-	movgr2fr.d	$fa6, $a5
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr7, $xr6, 2
-	xvpickve2gr.d	$a5, $xr5, 3
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr4, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 4
-	xvpickve2gr.d	$a5, $xr4, 1
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 5
-	xvpickve2gr.d	$a5, $xr4, 2
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 6
-	xvpickve2gr.d	$a5, $xr4, 3
-	movgr2fr.d	$fa4, $a5
+	xvpickve.d	$xr4, $xr4, 3
 	xvld	$xr5, $a3, 0
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr7, $xr4, 7
@@ -726,35 +702,27 @@ MSalignmm:                              # @MSalignmm
 	xvfmul.d	$xr5, $xr5, $xr3
 	xvfmul.d	$xr4, $xr4, $xr1
 	xvfmul.d	$xr5, $xr5, $xr1
-	xvpickve2gr.d	$a5, $xr5, 1
-	movgr2fr.d	$fa6, $a5
+	xvpickve.d	$xr6, $xr5, 1
 	fcvt.s.d	$fa6, $fa6
-	xvpickve2gr.d	$a5, $xr5, 0
-	movgr2fr.d	$fa7, $a5
+	xvpickve.d	$xr7, $xr5, 0
 	fcvt.s.d	$fa7, $fa7
 	xvinsve0.w	$xr7, $xr6, 1
-	xvpickve2gr.d	$a5, $xr5, 2
-	movgr2fr.d	$fa6, $a5
+	xvpickve.d	$xr6, $xr5, 2
 	fcvt.s.d	$fa6, $fa6
 	xvinsve0.w	$xr7, $xr6, 2
-	xvpickve2gr.d	$a5, $xr5, 3
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr5, 3
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr4, 0
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 4
-	xvpickve2gr.d	$a5, $xr4, 1
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr4, 1
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 5
-	xvpickve2gr.d	$a5, $xr4, 2
-	movgr2fr.d	$fa5, $a5
+	xvpickve.d	$xr5, $xr4, 2
 	fcvt.s.d	$fa5, $fa5
 	xvinsve0.w	$xr7, $xr5, 6
-	xvpickve2gr.d	$a5, $xr4, 3
-	movgr2fr.d	$fa4, $a5
+	xvpickve.d	$xr4, $xr4, 3
 	fcvt.s.d	$fa4, $fa4
 	xvinsve0.w	$xr7, $xr4, 7
 	xvst	$xr7, $a3, 0

@@ -1187,33 +1187,41 @@ int_downsample:                         # @int_downsample
 	vinsgr2vr.w	$vr2, $t1, 0
 	vinsgr2vr.w	$vr3, $t2, 0
 	vpickve2gr.b	$t1, $vr2, 0
-	vori.b	$vr4, $vr6, 0
-	vinsgr2vr.b	$vr4, $t1, 0
+	xvreplgr2vr.b	$xr4, $t1
+	xvpermi.q	$xr4, $xr6, 18
+	xvori.b	$xr5, $xr6, 0
+	xvextrins.b	$xr5, $xr4, 0
 	vpickve2gr.b	$t1, $vr2, 1
-	vinsgr2vr.b	$vr4, $t1, 8
+	xvreplgr2vr.b	$xr4, $t1
+	xvpermi.q	$xr4, $xr5, 18
+	xvextrins.b	$xr5, $xr4, 136
 	vpickve2gr.b	$t1, $vr2, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.b	$vr5, $t1, 0
-	xvpermi.q	$xr4, $xr5, 2
+	xvreplgr2vr.b	$xr4, $t1
+	xvpermi.q	$xr4, $xr5, 48
+	xvextrins.b	$xr5, $xr4, 0
 	vpickve2gr.b	$t1, $vr2, 3
-	xvpermi.d	$xr2, $xr4, 14
-	vinsgr2vr.b	$vr2, $t1, 8
-	xvpermi.q	$xr4, $xr2, 2
+	xvreplgr2vr.b	$xr2, $t1
+	xvpermi.q	$xr2, $xr5, 48
+	xvextrins.b	$xr5, $xr2, 136
 	vpickve2gr.b	$t1, $vr3, 0
-	vori.b	$vr2, $vr6, 0
-	vinsgr2vr.b	$vr2, $t1, 0
+	xvreplgr2vr.b	$xr2, $t1
+	xvpermi.q	$xr2, $xr6, 18
+	xvori.b	$xr4, $xr6, 0
+	xvextrins.b	$xr4, $xr2, 0
 	vpickve2gr.b	$t1, $vr3, 1
-	vinsgr2vr.b	$vr2, $t1, 8
+	xvreplgr2vr.b	$xr2, $t1
+	xvpermi.q	$xr2, $xr4, 18
+	xvextrins.b	$xr4, $xr2, 136
 	vpickve2gr.b	$t1, $vr3, 2
-	xvpermi.d	$xr5, $xr2, 14
-	vinsgr2vr.b	$vr5, $t1, 0
-	xvpermi.q	$xr2, $xr5, 2
+	xvreplgr2vr.b	$xr2, $t1
+	xvpermi.q	$xr2, $xr4, 48
+	xvextrins.b	$xr4, $xr2, 0
 	vpickve2gr.b	$t1, $vr3, 3
-	xvpermi.d	$xr3, $xr2, 14
-	vinsgr2vr.b	$vr3, $t1, 8
-	xvpermi.q	$xr2, $xr3, 2
-	xvadd.d	$xr0, $xr0, $xr4
-	xvadd.d	$xr1, $xr1, $xr2
+	xvreplgr2vr.b	$xr2, $t1
+	xvpermi.q	$xr2, $xr4, 48
+	xvextrins.b	$xr4, $xr2, 136
+	xvadd.d	$xr0, $xr0, $xr5
+	xvadd.d	$xr1, $xr1, $xr4
 	addi.d	$t0, $t0, -8
 	addi.d	$a7, $a7, 8
 	bnez	$t0, .LBB8_20

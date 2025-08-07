@@ -56,10 +56,12 @@ bug:                                    # @bug
 	b	.LBB1_9
 .LBB1_5:                                # %vector.ph
 	move	$a4, $a3
-	xvrepli.b	$xr0, 0
 	bstrins.d	$a4, $zero, 4, 0
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.h	$vr1, $a0, 0
+	xvrepli.b	$xr0, 0
+	xvreplgr2vr.h	$xr2, $a0
+	xvpermi.q	$xr2, $xr0, 18
+	xvori.b	$xr1, $xr0, 0
+	xvextrins.h	$xr1, $xr2, 0
 	addi.d	$a0, $a1, 32
 	move	$a5, $a4
 	.p2align	4, , 16

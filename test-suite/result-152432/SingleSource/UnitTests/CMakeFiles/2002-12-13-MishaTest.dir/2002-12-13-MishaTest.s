@@ -46,10 +46,12 @@ sum:                                    # @sum
 	b	.LBB0_14
 .LBB0_10:                               # %vector.ph
 	bstrpick.d	$a5, $a3, 31, 5
-	xvrepli.b	$xr0, 0
 	slli.d	$a5, $a5, 5
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.h	$vr1, $a4, 0
+	xvrepli.b	$xr0, 0
+	xvreplgr2vr.h	$xr2, $a4
+	xvpermi.q	$xr2, $xr0, 18
+	xvori.b	$xr1, $xr0, 0
+	xvextrins.h	$xr1, $xr2, 0
 	addi.d	$a4, $a1, 32
 	move	$a6, $a5
 	.p2align	4, , 16

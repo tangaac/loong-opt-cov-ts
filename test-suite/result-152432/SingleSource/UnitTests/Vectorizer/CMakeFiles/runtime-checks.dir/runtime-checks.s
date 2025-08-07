@@ -11427,8 +11427,17 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 # %bb.0:
 	ld.w	$a0, $a3, 0
 	ori	$a3, $zero, 3
-	bltu	$a0, $a3, .LBB71_7
+	bltu	$a0, $a3, .LBB71_8
 # %bb.1:                                # %iter.check
+	addi.d	$sp, $sp, -80
+	fst.d	$fs0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 16                   # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	addi.d	$a3, $a0, -3
@@ -11443,11 +11452,11 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	add.d	$a7, $a1, $a3
 	addi.d	$a6, $a4, 1
 	add.d	$t0, $a2, $a6
-	bgeu	$a7, $t0, .LBB71_8
+	bgeu	$a7, $t0, .LBB71_9
 # %bb.3:                                # %vector.memcheck
 	add.d	$a6, $a1, $a6
 	add.d	$a3, $a2, $a3
-	bgeu	$a3, $a6, .LBB71_8
+	bgeu	$a3, $a6, .LBB71_9
 .LBB71_4:
 	move	$a6, $a4
 .LBB71_5:                               # %.lr.ph.i.i.i.preheader
@@ -11464,17 +11473,27 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a1, $a1, -2
 	addi.d	$a2, $a2, -2
 	bltu	$a3, $a0, .LBB71_6
-.LBB71_7:                               # %"_ZSt10__invoke_rIvRZ4mainE3$_9JPhS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
+.LBB71_7:
+	fld.d	$fs7, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 72                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
+.LBB71_8:                               # %"_ZSt10__invoke_rIvRZ4mainE3$_9JPhS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
-.LBB71_8:                               # %vector.main.loop.iter.check
+.LBB71_9:                               # %vector.main.loop.iter.check
 	bstrpick.d	$a3, $a5, 31, 1
 	ori	$a6, $zero, 62
 	addi.d	$a3, $a3, 1
-	bgeu	$a5, $a6, .LBB71_10
-# %bb.9:
+	bgeu	$a5, $a6, .LBB71_11
+# %bb.10:
 	move	$a5, $zero
-	b	.LBB71_14
-.LBB71_10:                              # %vector.ph
+	b	.LBB71_15
+.LBB71_11:                              # %vector.ph
 	bstrpick.d	$a5, $a3, 31, 5
 	slli.d	$a5, $a5, 5
 	addi.d	$a7, $a4, -30
@@ -11482,104 +11501,136 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	add.d	$a7, $a1, $a7
 	move	$t0, $a5
 	.p2align	4, , 16
-.LBB71_11:                              # %vector.body
+.LBB71_12:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$t1, $a6, 30
 	ld.b	$t2, $a6, 28
 	ld.b	$t3, $a6, 26
-	vinsgr2vr.b	$vr0, $t1, 0
-	ld.b	$t1, $a6, 24
-	vinsgr2vr.b	$vr0, $t2, 1
-	ld.b	$t2, $a6, 22
-	vinsgr2vr.b	$vr0, $t3, 2
-	ld.b	$t3, $a6, 20
-	vinsgr2vr.b	$vr0, $t1, 3
-	ld.b	$t1, $a6, 18
-	vinsgr2vr.b	$vr0, $t2, 4
-	ld.b	$t2, $a6, 16
-	vinsgr2vr.b	$vr0, $t3, 5
-	ld.b	$t3, $a6, 14
-	vinsgr2vr.b	$vr0, $t1, 6
-	ld.b	$t1, $a6, 12
-	vinsgr2vr.b	$vr0, $t2, 7
-	ld.b	$t2, $a6, 10
-	vinsgr2vr.b	$vr0, $t3, 8
-	ld.b	$t3, $a6, 8
-	vinsgr2vr.b	$vr0, $t1, 9
+	ld.b	$t4, $a6, 24
+	xvreplgr2vr.b	$xr0, $t1
+	ld.b	$t1, $a6, 22
+	xvreplgr2vr.b	$xr1, $t2
+	ld.b	$t2, $a6, 20
+	xvreplgr2vr.b	$xr2, $t3
+	ld.b	$t3, $a6, 18
+	xvreplgr2vr.b	$xr3, $t4
+	ld.b	$t4, $a6, 16
+	xvreplgr2vr.b	$xr4, $t1
+	ld.b	$t1, $a6, 14
+	xvreplgr2vr.b	$xr5, $t2
+	ld.b	$t2, $a6, 12
+	xvreplgr2vr.b	$xr6, $t3
+	ld.b	$t3, $a6, 10
+	xvreplgr2vr.b	$xr7, $t4
+	ld.b	$t4, $a6, 8
+	xvreplgr2vr.b	$xr8, $t1
 	ld.b	$t1, $a6, 6
-	vinsgr2vr.b	$vr0, $t2, 10
+	xvreplgr2vr.b	$xr9, $t2
 	ld.b	$t2, $a6, 4
-	vinsgr2vr.b	$vr0, $t3, 11
+	xvreplgr2vr.b	$xr10, $t3
 	ld.b	$t3, $a6, 2
-	vinsgr2vr.b	$vr0, $t1, 12
-	ld.b	$t1, $a6, 0
-	vinsgr2vr.b	$vr0, $t2, 13
-	vinsgr2vr.b	$vr0, $t3, 14
-	ld.b	$t2, $a6, -2
-	vinsgr2vr.b	$vr0, $t1, 15
-	ld.b	$t1, $a6, -4
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 0
-	ld.b	$t2, $a6, -6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 1
-	ld.b	$t1, $a6, -8
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 2
-	ld.b	$t2, $a6, -10
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 3
-	ld.b	$t1, $a6, -12
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 4
-	ld.b	$t2, $a6, -14
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 5
-	ld.b	$t1, $a6, -16
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 6
-	ld.b	$t2, $a6, -18
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 7
-	ld.b	$t1, $a6, -20
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 8
-	ld.b	$t2, $a6, -22
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 9
-	ld.b	$t1, $a6, -24
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 10
-	ld.b	$t2, $a6, -26
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 11
-	ld.b	$t1, $a6, -28
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 12
-	ld.b	$t2, $a6, -30
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 13
-	ld.b	$t1, $a6, -32
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t2, 14
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 15
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.b	$xr11, $t4
+	ld.b	$t4, $a6, 0
+	xvreplgr2vr.b	$xr12, $t1
+	ld.b	$t1, $a6, -2
+	xvreplgr2vr.b	$xr13, $t2
+	ld.b	$t2, $a6, -4
+	xvreplgr2vr.b	$xr14, $t3
+	ld.b	$t3, $a6, -6
+	xvreplgr2vr.b	$xr15, $t4
+	ld.b	$t4, $a6, -8
+	xvreplgr2vr.b	$xr16, $t1
+	ld.b	$t1, $a6, -10
+	xvreplgr2vr.b	$xr17, $t2
+	ld.b	$t2, $a6, -12
+	xvreplgr2vr.b	$xr18, $t3
+	ld.b	$t3, $a6, -14
+	xvreplgr2vr.b	$xr19, $t4
+	ld.b	$t4, $a6, -16
+	xvreplgr2vr.b	$xr20, $t1
+	ld.b	$t1, $a6, -18
+	xvreplgr2vr.b	$xr21, $t2
+	ld.b	$t2, $a6, -20
+	xvreplgr2vr.b	$xr22, $t3
+	ld.b	$t3, $a6, -22
+	xvreplgr2vr.b	$xr23, $t4
+	ld.b	$t4, $a6, -24
+	xvreplgr2vr.b	$xr24, $t1
+	ld.b	$t1, $a6, -26
+	xvreplgr2vr.b	$xr25, $t2
+	ld.b	$t2, $a6, -28
+	xvreplgr2vr.b	$xr26, $t3
+	ld.b	$t3, $a6, -30
+	xvreplgr2vr.b	$xr27, $t4
+	ld.b	$t4, $a6, -32
+	xvreplgr2vr.b	$xr28, $t1
+	xvreplgr2vr.b	$xr29, $t2
+	xvreplgr2vr.b	$xr30, $t3
+	xvreplgr2vr.b	$xr31, $t4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr0, $xr1, 17
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr0, $xr2, 34
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr0, $xr3, 51
+	xvpermi.q	$xr4, $xr0, 18
+	xvextrins.b	$xr0, $xr4, 68
+	xvpermi.q	$xr5, $xr0, 18
+	xvextrins.b	$xr0, $xr5, 85
+	xvpermi.q	$xr6, $xr0, 18
+	xvextrins.b	$xr0, $xr6, 102
+	xvpermi.q	$xr7, $xr0, 18
+	xvextrins.b	$xr0, $xr7, 119
+	xvpermi.q	$xr8, $xr0, 18
+	xvextrins.b	$xr0, $xr8, 136
+	xvpermi.q	$xr9, $xr0, 18
+	xvextrins.b	$xr0, $xr9, 153
+	xvpermi.q	$xr10, $xr0, 18
+	xvextrins.b	$xr0, $xr10, 170
+	xvpermi.q	$xr11, $xr0, 18
+	xvextrins.b	$xr0, $xr11, 187
+	xvpermi.q	$xr12, $xr0, 18
+	xvextrins.b	$xr0, $xr12, 204
+	xvpermi.q	$xr13, $xr0, 18
+	xvextrins.b	$xr0, $xr13, 221
+	xvpermi.q	$xr14, $xr0, 18
+	xvextrins.b	$xr0, $xr14, 238
+	xvpermi.q	$xr15, $xr0, 18
+	xvextrins.b	$xr0, $xr15, 255
+	xvpermi.q	$xr16, $xr0, 48
+	xvextrins.b	$xr0, $xr16, 0
+	xvpermi.q	$xr17, $xr0, 48
+	xvextrins.b	$xr0, $xr17, 17
+	xvpermi.q	$xr18, $xr0, 48
+	xvextrins.b	$xr0, $xr18, 34
+	xvpermi.q	$xr19, $xr0, 48
+	xvextrins.b	$xr0, $xr19, 51
+	xvpermi.q	$xr20, $xr0, 48
+	xvextrins.b	$xr0, $xr20, 68
+	xvpermi.q	$xr21, $xr0, 48
+	xvextrins.b	$xr0, $xr21, 85
+	xvpermi.q	$xr22, $xr0, 48
+	xvextrins.b	$xr0, $xr22, 102
+	xvpermi.q	$xr23, $xr0, 48
+	xvextrins.b	$xr0, $xr23, 119
+	xvpermi.q	$xr24, $xr0, 48
+	xvextrins.b	$xr0, $xr24, 136
+	xvpermi.q	$xr25, $xr0, 48
+	xvextrins.b	$xr0, $xr25, 153
+	xvpermi.q	$xr26, $xr0, 48
+	xvextrins.b	$xr0, $xr26, 170
+	xvpermi.q	$xr27, $xr0, 48
+	xvextrins.b	$xr0, $xr27, 187
+	xvpermi.q	$xr28, $xr0, 48
+	xvextrins.b	$xr0, $xr28, 204
+	xvpermi.q	$xr29, $xr0, 48
+	xvextrins.b	$xr0, $xr29, 221
+	xvpermi.q	$xr30, $xr0, 48
+	xvextrins.b	$xr0, $xr30, 238
+	xvpermi.q	$xr31, $xr0, 48
+	xvextrins.b	$xr0, $xr31, 255
 	xvaddi.bu	$xr0, $xr0, 10
 	xvstelm.b	$xr0, $a7, 30, 0
 	xvstelm.b	$xr0, $a7, 28, 1
@@ -11616,13 +11667,13 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$t0, $t0, -32
 	addi.d	$a6, $a6, -64
 	addi.d	$a7, $a7, -64
-	bnez	$t0, .LBB71_11
-# %bb.12:                               # %middle.block
+	bnez	$t0, .LBB71_12
+# %bb.13:                               # %middle.block
 	beq	$a5, $a3, .LBB71_7
-# %bb.13:                               # %vec.epilog.iter.check
+# %bb.14:                               # %vec.epilog.iter.check
 	andi	$a6, $a3, 24
-	beqz	$a6, .LBB71_17
-.LBB71_14:                              # %vec.epilog.ph
+	beqz	$a6, .LBB71_18
+.LBB71_15:                              # %vec.epilog.ph
 	bstrpick.d	$a6, $a3, 31, 3
 	slli.d	$a7, $a6, 3
 	slli.d	$t0, $a6, 4
@@ -11635,7 +11686,7 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	add.d	$a4, $a2, $a5
 	add.d	$a5, $a1, $a5
 	.p2align	4, , 16
-.LBB71_15:                              # %vec.epilog.vector.body
+.LBB71_16:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$t1, $a4, 6
 	ld.b	$t2, $a4, 4
@@ -11665,11 +11716,11 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$t0, $t0, 8
 	addi.d	$a4, $a4, -16
 	addi.d	$a5, $a5, -16
-	bnez	$t0, .LBB71_15
-# %bb.16:                               # %vec.epilog.middle.block
+	bnez	$t0, .LBB71_16
+# %bb.17:                               # %vec.epilog.middle.block
 	bne	$a7, $a3, .LBB71_5
 	b	.LBB71_7
-.LBB71_17:
+.LBB71_18:
 	slli.d	$a3, $a5, 1
 	sub.d	$a6, $a4, $a3
 	sub.d	$a0, $a0, $a3
@@ -12119,13 +12170,21 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a3, $a3, 0
 	beqz	$a3, .LBB83_8
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -288
+	st.d	$fp, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 240                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 232                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 224                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 216                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 208                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 200                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 184                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 176                  # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
 	ld.d	$a0, $a2, 0
 	ori	$a4, $zero, 16
@@ -12156,13 +12215,21 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a1, $a1, 1
 	bnez	$a2, .LBB83_6
 .LBB83_7:
-	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	fld.d	$fs7, $sp, 176                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 208                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 216                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 224                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 232                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 288
 .LBB83_8:                               # %"_ZSt10__invoke_rIvRZ4mainE4$_11JPhS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .LBB83_9:                               # %vector.main.loop.iter.check
@@ -12268,189 +12335,231 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB83_14:                              # %vector.ph
 	bstrpick.d	$a6, $a2, 31, 5
 	pcalau12i	$a3, %pc_hi20(.LCPI83_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI83_0)
+	xvld	$xr11, $a3, %pc_lo12(.LCPI83_0)
 	pcalau12i	$a3, %pc_hi20(.LCPI83_1)
 	xvld	$xr1, $a3, %pc_lo12(.LCPI83_1)
 	xvld	$xr2, $a5, %pc_lo12(.LCPI83_2)
 	xvld	$xr3, $a4, %pc_lo12(.LCPI83_3)
 	slli.d	$a3, $a6, 5
 	slli.d	$a6, $a6, 6
-	xvrepli.w	$xr4, 64
+	xvrepli.w	$xr0, 64
+	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	move	$a7, $a1
 	move	$t0, $a3
 	.p2align	4, , 16
 .LBB83_15:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t1, $vr3, 1
-	vpickve2gr.w	$t2, $vr3, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
+	xvpermi.q	$xr5, $xr11, 1
+	vpickve2gr.w	$t1, $vr5, 3
 	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	vinsgr2vr.b	$vr5, $t2, 0
-	vpickve2gr.w	$t2, $vr3, 3
-	vinsgr2vr.b	$vr5, $t1, 1
-	vpickve2gr.w	$t1, $vr3, 2
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
+	vpickve2gr.w	$t2, $vr5, 2
 	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	xvpermi.q	$xr7, $xr3, 1
-	vinsgr2vr.b	$vr5, $t1, 2
-	vpickve2gr.w	$t1, $vr7, 1
-	vinsgr2vr.b	$vr5, $t2, 3
-	vpickve2gr.w	$t2, $vr7, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
 	xvpermi.q	$xr6, $xr1, 1
-	vinsgr2vr.b	$vr5, $t2, 4
-	vpickve2gr.w	$t2, $vr7, 3
-	vinsgr2vr.b	$vr5, $t1, 5
-	vpickve2gr.w	$t1, $vr7, 2
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	xvpermi.q	$xr7, $xr2, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	vinsgr2vr.b	$vr5, $t1, 6
-	vpickve2gr.w	$t1, $vr2, 0
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	vinsgr2vr.b	$vr5, $t2, 7
-	vpickve2gr.w	$t2, $vr2, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	vinsgr2vr.b	$vr5, $t1, 8
-	vpickve2gr.w	$t1, $vr2, 2
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	vinsgr2vr.b	$vr5, $t2, 9
-	vpickve2gr.w	$t2, $vr2, 3
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	vinsgr2vr.b	$vr5, $t1, 10
-	vpickve2gr.w	$t1, $vr7, 0
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	vinsgr2vr.b	$vr5, $t2, 11
-	vpickve2gr.w	$t2, $vr7, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	vinsgr2vr.b	$vr5, $t1, 12
-	vpickve2gr.w	$t1, $vr7, 2
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	vinsgr2vr.b	$vr5, $t2, 13
-	vpickve2gr.w	$t2, $vr7, 3
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	vinsgr2vr.b	$vr5, $t1, 14
-	vpickve2gr.w	$t1, $vr1, 0
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	vinsgr2vr.b	$vr5, $t2, 15
-	vpickve2gr.w	$t2, $vr1, 2
-	bstrpick.d	$t2, $t2, 31, 0
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 0
-	vpickve2gr.w	$t1, $vr1, 1
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	ldx.b	$t2, $a0, $t2
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 1
-	vpickve2gr.w	$t1, $vr6, 1
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 2
-	vpickve2gr.w	$t2, $vr1, 3
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	bstrpick.d	$t1, $t1, 31, 0
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 3
-	vpickve2gr.w	$t2, $vr6, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	ldx.b	$t1, $a0, $t1
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 4
-	vpickve2gr.w	$t2, $vr6, 3
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 5
-	vpickve2gr.w	$t1, $vr6, 2
-	xvpermi.q	$xr6, $xr0, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	ldx.b	$t2, $a0, $t2
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 6
-	vpickve2gr.w	$t1, $vr0, 2
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 7
-	vpickve2gr.w	$t2, $vr0, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	bstrpick.d	$t1, $t1, 31, 0
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 8
-	vpickve2gr.w	$t2, $vr0, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	ldx.b	$t2, $a0, $t2
-	ldx.b	$t1, $a0, $t1
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 9
-	vpickve2gr.w	$t2, $vr6, 1
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 10
-	vpickve2gr.w	$t1, $vr0, 3
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	bstrpick.d	$t2, $t2, 31, 0
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 11
-	vpickve2gr.w	$t1, $vr6, 0
-	bstrpick.d	$t1, $t1, 31, 0
-	ldx.b	$t1, $a0, $t1
-	ldx.b	$t2, $a0, $t2
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t1, 12
-	vpickve2gr.w	$t1, $vr6, 3
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr7, $xr5, 14
-	vinsgr2vr.b	$vr7, $t2, 13
-	vpickve2gr.w	$t2, $vr6, 2
-	bstrpick.d	$t1, $t1, 31, 0
-	bstrpick.d	$t2, $t2, 31, 0
+	xvpermi.q	$xr16, $xr2, 1
+	xvpermi.q	$xr13, $xr3, 1
+	vpickve2gr.w	$t3, $vr3, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	vpickve2gr.w	$t4, $vr3, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr10, $t3
+	vpickve2gr.w	$t3, $vr3, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr12, $t4
+	vpickve2gr.w	$t4, $vr3, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr0, $t3
+	xvst	$xr0, $sp, 144                  # 32-byte Folded Spill
+	vpickve2gr.w	$t3, $vr13, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr0, $t4
+	xvst	$xr0, $sp, 112                  # 32-byte Folded Spill
+	vpickve2gr.w	$t4, $vr13, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr0, $t3
+	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	vpickve2gr.w	$t3, $vr13, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr0, $t4
+	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
+	vpickve2gr.w	$t4, $vr13, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr13, $t3
+	vpickve2gr.w	$t3, $vr2, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr14, $t4
+	vpickve2gr.w	$t4, $vr2, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr15, $t3
+	vpickve2gr.w	$t3, $vr2, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr17, $t4
+	vpickve2gr.w	$t4, $vr2, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr18, $t3
+	vpickve2gr.w	$t3, $vr16, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr19, $t4
+	vpickve2gr.w	$t4, $vr16, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr20, $t3
+	vpickve2gr.w	$t3, $vr16, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr21, $t4
+	vpickve2gr.w	$t4, $vr16, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr16, $t3
+	vpickve2gr.w	$t3, $vr1, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr22, $t4
+	vpickve2gr.w	$t4, $vr1, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr23, $t3
+	vpickve2gr.w	$t3, $vr1, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr24, $t4
+	vpickve2gr.w	$t4, $vr1, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr25, $t3
+	vpickve2gr.w	$t3, $vr6, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr26, $t4
+	vpickve2gr.w	$t4, $vr6, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr27, $t3
+	vpickve2gr.w	$t3, $vr6, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr28, $t4
+	vpickve2gr.w	$t4, $vr6, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr6, $t3
+	vpickve2gr.w	$t3, $vr11, 0
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr29, $t4
+	vpickve2gr.w	$t4, $vr11, 1
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr30, $t3
+	vpickve2gr.w	$t3, $vr11, 2
+	bstrpick.d	$t3, $t3, 31, 0
+	ldx.b	$t3, $a0, $t3
+	xvreplgr2vr.b	$xr31, $t4
+	vpickve2gr.w	$t4, $vr11, 3
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	xvreplgr2vr.b	$xr4, $t3
+	vpickve2gr.w	$t3, $vr5, 1
+	bstrpick.d	$t3, $t3, 31, 0
+	xvreplgr2vr.b	$xr0, $t4
+	vpickve2gr.w	$t4, $vr5, 0
+	bstrpick.d	$t4, $t4, 31, 0
+	ldx.b	$t4, $a0, $t4
+	ldx.b	$t3, $a0, $t3
 	ldx.b	$t2, $a0, $t2
 	ldx.b	$t1, $a0, $t1
-	xvpermi.q	$xr5, $xr7, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.b	$vr6, $t2, 14
-	xvpermi.q	$xr5, $xr6, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.b	$vr6, $t1, 15
-	xvpermi.q	$xr5, $xr6, 2
-	xvaddi.bu	$xr5, $xr5, 10
-	xvst	$xr5, $a7, 0
-	xvadd.w	$xr3, $xr3, $xr4
-	xvadd.w	$xr2, $xr2, $xr4
-	xvadd.w	$xr1, $xr1, $xr4
-	xvadd.w	$xr0, $xr0, $xr4
+	xvreplgr2vr.b	$xr5, $t4
+	xvreplgr2vr.b	$xr7, $t3
+	xvreplgr2vr.b	$xr8, $t2
+	xvreplgr2vr.b	$xr9, $t1
+	xvpermi.q	$xr10, $xr0, 18
+	xvextrins.b	$xr10, $xr10, 0
+	xvpermi.q	$xr12, $xr10, 18
+	xvextrins.b	$xr10, $xr12, 17
+	xvld	$xr12, $sp, 144                 # 32-byte Folded Reload
+	xvpermi.q	$xr12, $xr10, 18
+	xvextrins.b	$xr10, $xr12, 34
+	xvld	$xr12, $sp, 112                 # 32-byte Folded Reload
+	xvpermi.q	$xr12, $xr10, 18
+	xvextrins.b	$xr10, $xr12, 51
+	xvld	$xr12, $sp, 80                  # 32-byte Folded Reload
+	xvpermi.q	$xr12, $xr10, 18
+	xvextrins.b	$xr10, $xr12, 68
+	xvld	$xr12, $sp, 48                  # 32-byte Folded Reload
+	xvpermi.q	$xr12, $xr10, 18
+	xvextrins.b	$xr10, $xr12, 85
+	xvpermi.q	$xr13, $xr10, 18
+	xvextrins.b	$xr10, $xr13, 102
+	xvpermi.q	$xr14, $xr10, 18
+	xvextrins.b	$xr10, $xr14, 119
+	xvpermi.q	$xr15, $xr10, 18
+	xvextrins.b	$xr10, $xr15, 136
+	xvpermi.q	$xr17, $xr10, 18
+	xvextrins.b	$xr10, $xr17, 153
+	xvpermi.q	$xr18, $xr10, 18
+	xvextrins.b	$xr10, $xr18, 170
+	xvpermi.q	$xr19, $xr10, 18
+	xvextrins.b	$xr10, $xr19, 187
+	xvpermi.q	$xr20, $xr10, 18
+	xvextrins.b	$xr10, $xr20, 204
+	xvpermi.q	$xr21, $xr10, 18
+	xvextrins.b	$xr10, $xr21, 221
+	xvpermi.q	$xr16, $xr10, 18
+	xvextrins.b	$xr10, $xr16, 238
+	xvpermi.q	$xr22, $xr10, 18
+	xvextrins.b	$xr10, $xr22, 255
+	xvpermi.q	$xr23, $xr10, 48
+	xvextrins.b	$xr10, $xr23, 0
+	xvpermi.q	$xr24, $xr10, 48
+	xvextrins.b	$xr10, $xr24, 17
+	xvpermi.q	$xr25, $xr10, 48
+	xvextrins.b	$xr10, $xr25, 34
+	xvpermi.q	$xr26, $xr10, 48
+	xvextrins.b	$xr10, $xr26, 51
+	xvpermi.q	$xr27, $xr10, 48
+	xvextrins.b	$xr10, $xr27, 68
+	xvpermi.q	$xr28, $xr10, 48
+	xvextrins.b	$xr10, $xr28, 85
+	xvpermi.q	$xr6, $xr10, 48
+	xvextrins.b	$xr10, $xr6, 102
+	xvpermi.q	$xr29, $xr10, 48
+	xvextrins.b	$xr10, $xr29, 119
+	xvpermi.q	$xr30, $xr10, 48
+	xvextrins.b	$xr10, $xr30, 136
+	xvpermi.q	$xr31, $xr10, 48
+	xvextrins.b	$xr10, $xr31, 153
+	xvpermi.q	$xr4, $xr10, 48
+	xvextrins.b	$xr10, $xr4, 170
+	xvpermi.q	$xr0, $xr10, 48
+	xvextrins.b	$xr10, $xr0, 187
+	xvpermi.q	$xr5, $xr10, 48
+	xvextrins.b	$xr10, $xr5, 204
+	xvpermi.q	$xr7, $xr10, 48
+	xvextrins.b	$xr10, $xr7, 221
+	xvpermi.q	$xr8, $xr10, 48
+	xvextrins.b	$xr10, $xr8, 238
+	xvpermi.q	$xr9, $xr10, 48
+	xvextrins.b	$xr10, $xr9, 255
+	xvaddi.bu	$xr0, $xr10, 10
+	xvst	$xr0, $a7, 0
+	xvld	$xr0, $sp, 16                   # 32-byte Folded Reload
+	xvadd.w	$xr3, $xr3, $xr0
+	xvadd.w	$xr2, $xr2, $xr0
+	xvadd.w	$xr1, $xr1, $xr0
+	xvadd.w	$xr11, $xr11, $xr0
 	addi.d	$t0, $t0, -32
 	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB83_15
@@ -12888,15 +12997,23 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a4, $a3, 0
 	beqz	$a4, .LBB95_18
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -80
-	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$fp, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 16                   # 8-byte Folded Spill
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ori	$a3, $zero, 31
@@ -13003,99 +13120,131 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.b	$t0, $a6, -32
 	ld.b	$t1, $a6, -30
 	ld.b	$t2, $a6, -28
-	vinsgr2vr.b	$vr0, $t0, 0
-	ld.b	$t0, $a6, -26
-	vinsgr2vr.b	$vr0, $t1, 1
-	ld.b	$t1, $a6, -24
-	vinsgr2vr.b	$vr0, $t2, 2
-	ld.b	$t2, $a6, -22
-	vinsgr2vr.b	$vr0, $t0, 3
-	ld.b	$t0, $a6, -20
-	vinsgr2vr.b	$vr0, $t1, 4
-	ld.b	$t1, $a6, -18
-	vinsgr2vr.b	$vr0, $t2, 5
-	ld.b	$t2, $a6, -16
-	vinsgr2vr.b	$vr0, $t0, 6
-	ld.b	$t0, $a6, -14
-	vinsgr2vr.b	$vr0, $t1, 7
-	ld.b	$t1, $a6, -12
-	vinsgr2vr.b	$vr0, $t2, 8
-	ld.b	$t2, $a6, -10
-	vinsgr2vr.b	$vr0, $t0, 9
+	ld.b	$t3, $a6, -26
+	xvreplgr2vr.b	$xr0, $t0
+	ld.b	$t0, $a6, -24
+	xvreplgr2vr.b	$xr1, $t1
+	ld.b	$t1, $a6, -22
+	xvreplgr2vr.b	$xr2, $t2
+	ld.b	$t2, $a6, -20
+	xvreplgr2vr.b	$xr3, $t3
+	ld.b	$t3, $a6, -18
+	xvreplgr2vr.b	$xr4, $t0
+	ld.b	$t0, $a6, -16
+	xvreplgr2vr.b	$xr5, $t1
+	ld.b	$t1, $a6, -14
+	xvreplgr2vr.b	$xr6, $t2
+	ld.b	$t2, $a6, -12
+	xvreplgr2vr.b	$xr7, $t3
+	ld.b	$t3, $a6, -10
+	xvreplgr2vr.b	$xr8, $t0
 	ld.b	$t0, $a6, -8
-	vinsgr2vr.b	$vr0, $t1, 10
+	xvreplgr2vr.b	$xr9, $t1
 	ld.b	$t1, $a6, -6
-	vinsgr2vr.b	$vr0, $t2, 11
+	xvreplgr2vr.b	$xr10, $t2
 	ld.b	$t2, $a6, -4
-	vinsgr2vr.b	$vr0, $t0, 12
-	ld.b	$t0, $a6, -2
-	vinsgr2vr.b	$vr0, $t1, 13
-	vinsgr2vr.b	$vr0, $t2, 14
-	ld.b	$t1, $a6, 0
-	vinsgr2vr.b	$vr0, $t0, 15
-	ld.b	$t0, $a6, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 0
-	ld.b	$t1, $a6, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 1
-	ld.b	$t0, $a6, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 2
-	ld.b	$t1, $a6, 8
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 3
-	ld.b	$t0, $a6, 10
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 4
-	ld.b	$t1, $a6, 12
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 5
-	ld.b	$t0, $a6, 14
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 6
-	ld.b	$t1, $a6, 16
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 7
-	ld.b	$t0, $a6, 18
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 8
-	ld.b	$t1, $a6, 20
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 9
-	ld.b	$t0, $a6, 22
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 10
-	ld.b	$t1, $a6, 24
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 11
-	ld.b	$t0, $a6, 26
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 12
-	ld.b	$t1, $a6, 28
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 13
-	ld.b	$t0, $a6, 30
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t1, 14
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $t0, 15
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.b	$xr11, $t3
+	ld.b	$t3, $a6, -2
+	xvreplgr2vr.b	$xr12, $t0
+	ld.b	$t0, $a6, 0
+	xvreplgr2vr.b	$xr13, $t1
+	ld.b	$t1, $a6, 2
+	xvreplgr2vr.b	$xr14, $t2
+	ld.b	$t2, $a6, 4
+	xvreplgr2vr.b	$xr15, $t3
+	ld.b	$t3, $a6, 6
+	xvreplgr2vr.b	$xr16, $t0
+	ld.b	$t0, $a6, 8
+	xvreplgr2vr.b	$xr17, $t1
+	ld.b	$t1, $a6, 10
+	xvreplgr2vr.b	$xr18, $t2
+	ld.b	$t2, $a6, 12
+	xvreplgr2vr.b	$xr19, $t3
+	ld.b	$t3, $a6, 14
+	xvreplgr2vr.b	$xr20, $t0
+	ld.b	$t0, $a6, 16
+	xvreplgr2vr.b	$xr21, $t1
+	ld.b	$t1, $a6, 18
+	xvreplgr2vr.b	$xr22, $t2
+	ld.b	$t2, $a6, 20
+	xvreplgr2vr.b	$xr23, $t3
+	ld.b	$t3, $a6, 22
+	xvreplgr2vr.b	$xr24, $t0
+	ld.b	$t0, $a6, 24
+	xvreplgr2vr.b	$xr25, $t1
+	ld.b	$t1, $a6, 26
+	xvreplgr2vr.b	$xr26, $t2
+	ld.b	$t2, $a6, 28
+	xvreplgr2vr.b	$xr27, $t3
+	ld.b	$t3, $a6, 30
+	xvreplgr2vr.b	$xr28, $t0
+	xvreplgr2vr.b	$xr29, $t1
+	xvreplgr2vr.b	$xr30, $t2
+	xvreplgr2vr.b	$xr31, $t3
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr0, $xr1, 17
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr0, $xr2, 34
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr0, $xr3, 51
+	xvpermi.q	$xr4, $xr0, 18
+	xvextrins.b	$xr0, $xr4, 68
+	xvpermi.q	$xr5, $xr0, 18
+	xvextrins.b	$xr0, $xr5, 85
+	xvpermi.q	$xr6, $xr0, 18
+	xvextrins.b	$xr0, $xr6, 102
+	xvpermi.q	$xr7, $xr0, 18
+	xvextrins.b	$xr0, $xr7, 119
+	xvpermi.q	$xr8, $xr0, 18
+	xvextrins.b	$xr0, $xr8, 136
+	xvpermi.q	$xr9, $xr0, 18
+	xvextrins.b	$xr0, $xr9, 153
+	xvpermi.q	$xr10, $xr0, 18
+	xvextrins.b	$xr0, $xr10, 170
+	xvpermi.q	$xr11, $xr0, 18
+	xvextrins.b	$xr0, $xr11, 187
+	xvpermi.q	$xr12, $xr0, 18
+	xvextrins.b	$xr0, $xr12, 204
+	xvpermi.q	$xr13, $xr0, 18
+	xvextrins.b	$xr0, $xr13, 221
+	xvpermi.q	$xr14, $xr0, 18
+	xvextrins.b	$xr0, $xr14, 238
+	xvpermi.q	$xr15, $xr0, 18
+	xvextrins.b	$xr0, $xr15, 255
+	xvpermi.q	$xr16, $xr0, 48
+	xvextrins.b	$xr0, $xr16, 0
+	xvpermi.q	$xr17, $xr0, 48
+	xvextrins.b	$xr0, $xr17, 17
+	xvpermi.q	$xr18, $xr0, 48
+	xvextrins.b	$xr0, $xr18, 34
+	xvpermi.q	$xr19, $xr0, 48
+	xvextrins.b	$xr0, $xr19, 51
+	xvpermi.q	$xr20, $xr0, 48
+	xvextrins.b	$xr0, $xr20, 68
+	xvpermi.q	$xr21, $xr0, 48
+	xvextrins.b	$xr0, $xr21, 85
+	xvpermi.q	$xr22, $xr0, 48
+	xvextrins.b	$xr0, $xr22, 102
+	xvpermi.q	$xr23, $xr0, 48
+	xvextrins.b	$xr0, $xr23, 119
+	xvpermi.q	$xr24, $xr0, 48
+	xvextrins.b	$xr0, $xr24, 136
+	xvpermi.q	$xr25, $xr0, 48
+	xvextrins.b	$xr0, $xr25, 153
+	xvpermi.q	$xr26, $xr0, 48
+	xvextrins.b	$xr0, $xr26, 170
+	xvpermi.q	$xr27, $xr0, 48
+	xvextrins.b	$xr0, $xr27, 187
+	xvpermi.q	$xr28, $xr0, 48
+	xvextrins.b	$xr0, $xr28, 204
+	xvpermi.q	$xr29, $xr0, 48
+	xvextrins.b	$xr0, $xr29, 221
+	xvpermi.q	$xr30, $xr0, 48
+	xvextrins.b	$xr0, $xr30, 238
+	xvpermi.q	$xr31, $xr0, 48
+	xvextrins.b	$xr0, $xr31, 255
 	xvaddi.bu	$xr0, $xr0, 10
 	xvstelm.b	$xr0, $a5, -32, 0
 	xvstelm.b	$xr0, $a5, -30, 1
@@ -13149,15 +13298,23 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a5, $a5, 2
 	bltu	$a5, $a2, .LBB95_16
 .LBB95_17:
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	fld.d	$fs7, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 72                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 .LBB95_18:                              # %"_ZSt10__invoke_rIvRZ4mainE4$_13JPhS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end95:

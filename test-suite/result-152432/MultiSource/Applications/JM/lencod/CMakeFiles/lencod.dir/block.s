@@ -1784,26 +1784,43 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vsrai.w	$vr22, $vr21, 5
 	vmaxi.w	$vr22, $vr22, 0
 	vmin.w	$vr22, $vr22, $vr2
-	vori.b	$vr23, $vr19, 0
-	vshuf.h	$vr23, $vr22, $vr24
 	vstelm.h	$vr22, $a0, -80, 2
 	vstelm.h	$vr22, $a0, -48, 4
 	vstelm.h	$vr22, $a0, -16, 6
+	vori.b	$vr23, $vr19, 0
+	vshuf.h	$vr23, $vr22, $vr24
 	vpickve2gr.h	$a2, $vr23, 0
-	vinsgr2vr.h	$vr22, $a2, 0
+	xvreplgr2vr.h	$xr22, $a2
+	xvpermi.q	$xr22, $xr0, 18
+	xvextrins.h	$xr22, $xr22, 0
 	vpickve2gr.h	$a2, $vr23, 1
-	vinsgr2vr.h	$vr22, $a2, 1
+	xvreplgr2vr.h	$xr24, $a2
+	xvpermi.q	$xr24, $xr22, 18
+	xvextrins.h	$xr22, $xr24, 17
 	vpickve2gr.h	$a2, $vr23, 2
-	vinsgr2vr.h	$vr22, $a2, 2
+	xvreplgr2vr.h	$xr24, $a2
+	xvpermi.q	$xr24, $xr22, 18
+	xvextrins.h	$xr22, $xr24, 34
 	vpickve2gr.h	$a2, $vr23, 3
-	vinsgr2vr.h	$vr22, $a2, 3
+	xvreplgr2vr.h	$xr24, $a2
+	xvpermi.q	$xr24, $xr22, 18
+	xvextrins.h	$xr22, $xr24, 51
 	vpickve2gr.h	$a2, $vr23, 4
-	vinsgr2vr.h	$vr22, $a2, 4
+	xvreplgr2vr.h	$xr24, $a2
+	xvpermi.q	$xr24, $xr22, 18
+	xvextrins.h	$xr22, $xr24, 68
 	vpickve2gr.h	$a2, $vr23, 5
-	vinsgr2vr.h	$vr22, $a2, 5
+	xvreplgr2vr.h	$xr24, $a2
+	xvpermi.q	$xr24, $xr22, 18
+	xvextrins.h	$xr22, $xr24, 85
 	vpickve2gr.h	$a2, $vr23, 6
-	vinsgr2vr.h	$vr22, $a2, 6
+	xvreplgr2vr.h	$xr24, $a2
+	xvpermi.q	$xr24, $xr22, 18
+	xvextrins.h	$xr22, $xr24, 102
 	vpickve2gr.h	$a2, $vr23, 7
+	xvreplgr2vr.h	$xr23, $a2
+	xvpermi.q	$xr23, $xr22, 18
+	xvextrins.h	$xr22, $xr23, 119
 	vadd.w	$vr23, $vr21, $vr0
 	vsrai.w	$vr23, $vr23, 5
 	vmaxi.w	$vr23, $vr23, 0
@@ -1811,11 +1828,10 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vstelm.h	$vr23, $a0, -78, 2
 	vstelm.h	$vr23, $a0, -46, 4
 	vstelm.h	$vr23, $a0, -14, 6
-	vinsgr2vr.h	$vr22, $a2, 7
 	vpickve2gr.h	$a2, $vr23, 0
-	xvpermi.d	$xr23, $xr22, 14
-	vinsgr2vr.h	$vr23, $a2, 0
-	xvpermi.q	$xr22, $xr23, 2
+	xvreplgr2vr.h	$xr23, $a2
+	xvpermi.q	$xr23, $xr22, 48
+	xvextrins.h	$xr22, $xr23, 0
 	vadd.w	$vr23, $vr21, $vr9
 	vsrai.w	$vr23, $vr23, 5
 	vmaxi.w	$vr23, $vr23, 0
@@ -1824,9 +1840,9 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vstelm.h	$vr23, $a0, -44, 4
 	vstelm.h	$vr23, $a0, -12, 6
 	vpickve2gr.h	$a2, $vr23, 0
-	xvpermi.d	$xr23, $xr22, 14
-	vinsgr2vr.h	$vr23, $a2, 1
-	xvpermi.q	$xr22, $xr23, 2
+	xvreplgr2vr.h	$xr23, $a2
+	xvpermi.q	$xr23, $xr22, 48
+	xvextrins.h	$xr22, $xr23, 17
 	vadd.w	$vr23, $vr21, $vr10
 	vsrai.w	$vr23, $vr23, 5
 	vmaxi.w	$vr23, $vr23, 0
@@ -1844,9 +1860,9 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vstelm.h	$vr23, $a0, -8, 6
 	xvinsgr2vr.w	$xr22, $a2, 5
 	vpickve2gr.h	$a2, $vr23, 0
-	xvpermi.d	$xr23, $xr22, 14
-	vinsgr2vr.h	$vr23, $a2, 3
-	xvpermi.q	$xr22, $xr23, 2
+	xvreplgr2vr.h	$xr23, $a2
+	xvpermi.q	$xr23, $xr22, 48
+	xvextrins.h	$xr22, $xr23, 51
 	vadd.w	$vr23, $vr21, $vr11
 	vsrai.w	$vr23, $vr23, 5
 	vmaxi.w	$vr23, $vr23, 0
@@ -1864,9 +1880,9 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vstelm.h	$vr23, $a0, -4, 6
 	xvinsgr2vr.d	$xr22, $a2, 3
 	vpickve2gr.h	$a2, $vr23, 0
-	xvpermi.d	$xr23, $xr22, 14
-	vinsgr2vr.h	$vr23, $a2, 5
-	xvpermi.q	$xr22, $xr23, 2
+	xvreplgr2vr.h	$xr23, $a2
+	xvpermi.q	$xr23, $xr22, 48
+	xvextrins.h	$xr22, $xr23, 85
 	vadd.w	$vr23, $vr21, $vr13
 	vsrai.w	$vr23, $vr23, 5
 	vmaxi.w	$vr23, $vr23, 0
@@ -1881,9 +1897,9 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	xvpickve2gr.w	$a2, $xr23, 0
 	xvinsgr2vr.w	$xr22, $a2, 7
 	vpickve2gr.h	$a2, $vr21, 0
-	xvpermi.d	$xr23, $xr22, 14
-	vinsgr2vr.h	$vr23, $a2, 7
-	xvpermi.q	$xr22, $xr23, 2
+	xvreplgr2vr.h	$xr23, $a2
+	xvpermi.q	$xr23, $xr22, 48
+	xvextrins.h	$xr22, $xr23, 119
 	xvst	$xr22, $a0, -126
 	vstelm.h	$vr21, $a0, -64, 2
 	vstelm.h	$vr21, $a0, -32, 4

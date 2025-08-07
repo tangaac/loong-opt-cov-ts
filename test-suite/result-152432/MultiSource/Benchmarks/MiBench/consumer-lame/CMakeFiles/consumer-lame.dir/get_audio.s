@@ -720,38 +720,54 @@ get_audio:                              # @get_audio
 	ldx.h	$t1, $s5, $a3
 	ldx.h	$t0, $s6, $a3
 	ldx.h	$a7, $s7, $a3
-	vinsgr2vr.h	$vr8, $s8, 0
-	vinsgr2vr.h	$vr8, $ra, 1
-	vinsgr2vr.h	$vr8, $a1, 2
-	vinsgr2vr.h	$vr8, $a2, 3
-	vinsgr2vr.h	$vr8, $a4, 4
-	vinsgr2vr.h	$vr8, $t4, 5
-	vinsgr2vr.h	$vr8, $t5, 6
-	vinsgr2vr.h	$vr8, $t6, 7
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $t7, 0
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $t8, 1
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $s2, 2
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $t3, 3
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $t2, 4
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $t1, 5
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $t0, 6
-	xvpermi.q	$xr8, $xr9, 2
-	xvpermi.d	$xr9, $xr8, 14
-	vinsgr2vr.h	$vr9, $a7, 7
-	xvpermi.q	$xr8, $xr9, 2
+	xvreplgr2vr.h	$xr8, $s8
+	xvpermi.q	$xr8, $xr0, 18
+	xvextrins.h	$xr8, $xr8, 0
+	xvreplgr2vr.h	$xr9, $ra
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 17
+	xvreplgr2vr.h	$xr9, $a1
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 34
+	xvreplgr2vr.h	$xr9, $a2
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 51
+	xvreplgr2vr.h	$xr9, $a4
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 68
+	xvreplgr2vr.h	$xr9, $t4
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 85
+	xvreplgr2vr.h	$xr9, $t5
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 102
+	xvreplgr2vr.h	$xr9, $t6
+	xvpermi.q	$xr9, $xr8, 18
+	xvextrins.h	$xr8, $xr9, 119
+	xvreplgr2vr.h	$xr9, $t7
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 0
+	xvreplgr2vr.h	$xr9, $t8
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 17
+	xvreplgr2vr.h	$xr9, $s2
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 34
+	xvreplgr2vr.h	$xr9, $t3
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 51
+	xvreplgr2vr.h	$xr9, $t2
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 68
+	xvreplgr2vr.h	$xr9, $t1
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 85
+	xvreplgr2vr.h	$xr9, $t0
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 102
+	xvreplgr2vr.h	$xr9, $a7
+	xvpermi.q	$xr9, $xr8, 48
+	xvextrins.h	$xr8, $xr9, 119
 	xvst	$xr8, $a5, 0
 	xvbitseti.d	$xr4, $xr4, 0
 	xvbitseti.d	$xr5, $xr5, 0
@@ -805,38 +821,54 @@ get_audio:                              # @get_audio
 	ldx.h	$t1, $s2, $a3
 	ldx.h	$t0, $s3, $a3
 	ldx.h	$a7, $s4, $a3
-	vinsgr2vr.h	$vr4, $a1, 0
-	vinsgr2vr.h	$vr4, $a2, 1
-	vinsgr2vr.h	$vr4, $a4, 2
-	vinsgr2vr.h	$vr4, $s5, 3
-	vinsgr2vr.h	$vr4, $s6, 4
-	vinsgr2vr.h	$vr4, $s7, 5
-	vinsgr2vr.h	$vr4, $s8, 6
-	vinsgr2vr.h	$vr4, $ra, 7
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t4, 0
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t5, 1
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t6, 2
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t3, 3
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t2, 4
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t1, 5
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $t0, 6
-	xvpermi.q	$xr4, $xr5, 2
-	xvpermi.d	$xr5, $xr4, 14
-	vinsgr2vr.h	$vr5, $a7, 7
-	xvpermi.q	$xr4, $xr5, 2
+	xvreplgr2vr.h	$xr4, $a1
+	xvpermi.q	$xr4, $xr0, 18
+	xvextrins.h	$xr4, $xr4, 0
+	xvreplgr2vr.h	$xr5, $a2
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 17
+	xvreplgr2vr.h	$xr5, $a4
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 34
+	xvreplgr2vr.h	$xr5, $s5
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 51
+	xvreplgr2vr.h	$xr5, $s6
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 68
+	xvreplgr2vr.h	$xr5, $s7
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 85
+	xvreplgr2vr.h	$xr5, $s8
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 102
+	xvreplgr2vr.h	$xr5, $ra
+	xvpermi.q	$xr5, $xr4, 18
+	xvextrins.h	$xr4, $xr5, 119
+	xvreplgr2vr.h	$xr5, $t4
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 0
+	xvreplgr2vr.h	$xr5, $t5
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 17
+	xvreplgr2vr.h	$xr5, $t6
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 34
+	xvreplgr2vr.h	$xr5, $t3
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 51
+	xvreplgr2vr.h	$xr5, $t2
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 68
+	xvreplgr2vr.h	$xr5, $t1
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 85
+	xvreplgr2vr.h	$xr5, $t0
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 102
+	xvreplgr2vr.h	$xr5, $a7
+	xvpermi.q	$xr5, $xr4, 48
+	xvextrins.h	$xr4, $xr5, 119
 	ori	$a1, $zero, 2304
 	xvstx	$xr4, $a5, $a1
 	xvaddi.du	$xr3, $xr3, 16

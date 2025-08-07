@@ -4271,7 +4271,7 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	st.w	$a3, $a0, 60
 	ld.b	$s1, $a0, 11
 	ld.b	$s2, $a0, 10
-	ld.b	$fp, $a0, 43
+	ld.b	$s0, $a0, 43
 	ld.b	$a4, $a0, 42
 	ld.b	$a5, $a0, 41
 	ld.b	$a6, $a0, 40
@@ -4285,20 +4285,22 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	ld.b	$t6, $a0, 48
 	ld.b	$t7, $a0, 55
 	ld.h	$s3, $a0, 8
-	ld.b	$s0, $a0, 54
+	ld.b	$fp, $a0, 54
 	ld.b	$t8, $a0, 53
 	ld.b	$a3, $a0, 52
 	vinsgr2vr.h	$vr0, $s3, 0
 	st.b	$s1, $a0, 8
 	vld	$vr2, $a0, 12
 	ld.d	$s1, $a0, 28
-	pcalau12i	$s3, %pc_hi20(.LCPI27_0)
-	xvld	$xr1, $s3, %pc_lo12(.LCPI27_0)
 	ld.w	$s3, $a0, 36
-	vinsgr2vr.b	$vr3, $s2, 0
-	xvpermi.d	$xr3, $xr3, 68
+	xvreplgr2vr.b	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 18
+	pcalau12i	$s2, %pc_hi20(.LCPI27_0)
+	xvld	$xr3, $s2, %pc_lo12(.LCPI27_0)
+	xvextrins.b	$xr1, $xr1, 0
+	xvpermi.d	$xr1, $xr1, 68
 	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.b	$xr0, $xr0, $xr3, $xr1
+	xvshuf.b	$xr0, $xr0, $xr1, $xr3
 	pcalau12i	$s2, %pc_hi20(.LCPI27_1)
 	xvld	$xr3, $s2, %pc_lo12(.LCPI27_1)
 	vinsgr2vr.w	$vr1, $s3, 0
@@ -4307,56 +4309,56 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	xvshuf.b	$xr0, $xr2, $xr0, $xr3
 	xvinsgr2vr.d	$xr2, $s1, 0
 	vpickve2gr.b	$s1, $vr2, 3
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 3
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 51
 	vpickve2gr.b	$s1, $vr2, 2
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 4
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 68
 	vpickve2gr.b	$s1, $vr2, 1
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 5
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 85
 	vpickve2gr.b	$s1, $vr2, 0
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 6
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 102
 	vpickve2gr.b	$s1, $vr2, 7
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 7
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 119
 	vpickve2gr.b	$s1, $vr2, 6
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 8
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 136
 	vpickve2gr.b	$s1, $vr2, 5
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $s1, 9
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $s1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 153
 	vpickve2gr.b	$s1, $vr2, 4
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.b	$vr2, $s1, 10
-	xvpermi.q	$xr0, $xr2, 2
+	xvreplgr2vr.b	$xr2, $s1
+	xvpermi.q	$xr2, $xr0, 48
+	xvextrins.b	$xr0, $xr2, 170
 	vpickve2gr.b	$s1, $vr1, 3
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.b	$vr2, $s1, 11
-	xvpermi.q	$xr0, $xr2, 2
+	xvreplgr2vr.b	$xr2, $s1
+	xvpermi.q	$xr2, $xr0, 48
+	xvextrins.b	$xr0, $xr2, 187
 	vpickve2gr.b	$s1, $vr1, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.b	$vr2, $s1, 12
-	xvpermi.q	$xr0, $xr2, 2
+	xvreplgr2vr.b	$xr2, $s1
+	xvpermi.q	$xr2, $xr0, 48
+	xvextrins.b	$xr0, $xr2, 204
 	vpickve2gr.b	$s1, $vr1, 1
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.b	$vr2, $s1, 13
-	xvpermi.q	$xr0, $xr2, 2
+	xvreplgr2vr.b	$xr2, $s1
+	xvpermi.q	$xr2, $xr0, 48
+	xvextrins.b	$xr0, $xr2, 221
 	vpickve2gr.b	$s1, $vr1, 0
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $s1, 14
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.b	$vr1, $fp, 15
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.b	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.b	$xr0, $xr1, 238
+	xvreplgr2vr.b	$xr1, $s0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.b	$xr0, $xr1, 255
 	xvst	$xr0, $a0, 9
 	st.b	$a4, $a0, 41
 	st.b	$a5, $a0, 42
@@ -4370,7 +4372,7 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	st.b	$t5, $a0, 50
 	st.b	$t6, $a0, 51
 	st.b	$t7, $a0, 52
-	st.b	$s0, $a0, 53
+	st.b	$fp, $a0, 53
 	ld.w	$a4, $a0, 200
 	st.b	$t8, $a0, 54
 	ld.w	$a5, $a0, 240

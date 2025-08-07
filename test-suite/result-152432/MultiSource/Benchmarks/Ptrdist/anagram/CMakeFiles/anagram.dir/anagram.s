@@ -507,71 +507,87 @@ BuildWord:                              # @BuildWord
 	vinsgr2vr.d	$vr3, $a0, 0
 	vinsgr2vr.d	$vr2, $a1, 0
 	ld.bu	$a0, $sp, 48
-	xvrepli.b	$xr1, 0
 	vpickve2gr.b	$a1, $vr3, 0
-	vori.b	$vr0, $vr1, 0
-	vinsgr2vr.b	$vr0, $a1, 0
+	xvrepli.b	$xr0, 0
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr0, 18
+	xvori.b	$xr1, $xr0, 0
+	xvextrins.b	$xr1, $xr4, 0
 	vpickve2gr.b	$a1, $vr3, 1
-	vinsgr2vr.b	$vr0, $a1, 4
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr1, 18
+	xvextrins.b	$xr1, $xr4, 68
 	vpickve2gr.b	$a1, $vr3, 2
-	vinsgr2vr.b	$vr0, $a1, 8
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr1, 18
+	xvextrins.b	$xr1, $xr4, 136
 	vpickve2gr.b	$a1, $vr3, 3
-	vinsgr2vr.b	$vr0, $a1, 12
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr1, 18
+	xvextrins.b	$xr1, $xr4, 204
 	vpickve2gr.b	$a1, $vr3, 4
-	xvpermi.d	$xr4, $xr0, 14
-	vinsgr2vr.b	$vr4, $a1, 0
-	xvpermi.q	$xr0, $xr4, 2
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr1, 48
+	xvextrins.b	$xr1, $xr4, 0
 	vpickve2gr.b	$a1, $vr3, 5
-	xvpermi.d	$xr4, $xr0, 14
-	vinsgr2vr.b	$vr4, $a1, 4
-	xvpermi.q	$xr0, $xr4, 2
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr1, 48
+	xvextrins.b	$xr1, $xr4, 68
 	vpickve2gr.b	$a1, $vr3, 6
-	xvpermi.d	$xr4, $xr0, 14
-	vinsgr2vr.b	$vr4, $a1, 8
-	xvpermi.q	$xr0, $xr4, 2
+	xvreplgr2vr.b	$xr4, $a1
+	xvpermi.q	$xr4, $xr1, 48
+	xvextrins.b	$xr1, $xr4, 136
 	vpickve2gr.b	$a1, $vr3, 7
-	xvpermi.d	$xr3, $xr0, 14
-	vinsgr2vr.b	$vr3, $a1, 12
-	xvpermi.q	$xr0, $xr3, 2
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr1, 48
+	xvextrins.b	$xr1, $xr3, 204
 	vpickve2gr.b	$a1, $vr2, 0
-	vinsgr2vr.b	$vr1, $a1, 0
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr0, $xr3, 0
 	vpickve2gr.b	$a1, $vr2, 1
-	vinsgr2vr.b	$vr1, $a1, 4
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr0, $xr3, 68
 	vpickve2gr.b	$a1, $vr2, 2
-	vinsgr2vr.b	$vr1, $a1, 8
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr0, $xr3, 136
 	vpickve2gr.b	$a1, $vr2, 3
-	vinsgr2vr.b	$vr1, $a1, 12
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr0, $xr3, 204
 	vpickve2gr.b	$a1, $vr2, 4
-	xvpermi.d	$xr3, $xr1, 14
-	vinsgr2vr.b	$vr3, $a1, 0
-	xvpermi.q	$xr1, $xr3, 2
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 0
 	vpickve2gr.b	$a1, $vr2, 5
-	xvpermi.d	$xr3, $xr1, 14
-	vinsgr2vr.b	$vr3, $a1, 4
-	xvpermi.q	$xr1, $xr3, 2
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 68
 	vpickve2gr.b	$a1, $vr2, 6
-	xvpermi.d	$xr3, $xr1, 14
-	vinsgr2vr.b	$vr3, $a1, 8
-	xvpermi.q	$xr1, $xr3, 2
+	xvreplgr2vr.b	$xr3, $a1
+	xvpermi.q	$xr3, $xr0, 48
+	xvextrins.b	$xr0, $xr3, 136
 	vpickve2gr.b	$a1, $vr2, 7
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.b	$vr2, $a1, 12
-	xvpermi.q	$xr1, $xr2, 2
+	xvreplgr2vr.b	$xr2, $a1
+	xvpermi.q	$xr2, $xr0, 48
+	xvextrins.b	$xr0, $xr2, 204
 	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
 	b	.LBB6_8
 .LBB6_7:
-	xvrepli.b	$xr0, 0
+	xvrepli.b	$xr1, 0
 	move	$a0, $zero
 	move	$s2, $zero
-	xvori.b	$xr1, $xr0, 0
+	xvori.b	$xr0, $xr1, 0
 .LBB6_8:                                # %.preheader
 	pcalau12i	$a1, %pc_hi20(auGlobalFrequency)
 	addi.d	$a3, $a1, %pc_lo12(auGlobalFrequency)
 	xvld	$xr2, $a3, 0
 	xvld	$xr3, $a3, 32
-	xvadd.w	$xr0, $xr2, $xr0
-	xvst	$xr0, $a3, 0
-	xvadd.w	$xr0, $xr3, $xr1
+	xvadd.w	$xr1, $xr2, $xr1
+	xvst	$xr1, $a3, 0
+	xvadd.w	$xr0, $xr3, $xr0
 	xvst	$xr0, $a3, 32
 	ld.bu	$a1, $sp, 49
 	ld.bu	$a2, $sp, 50

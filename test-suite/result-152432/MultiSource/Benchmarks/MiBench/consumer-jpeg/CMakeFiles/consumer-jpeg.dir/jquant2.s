@@ -1024,37 +1024,45 @@ finish_pass1:                           # @finish_pass1
 	xvslli.d	$xr16, $xr16, 48
 	xvsrai.d	$xr16, $xr16, 48
 	vpickve2gr.h	$a1, $vr18, 0
-	vori.b	$vr17, $vr1, 0
-	vinsgr2vr.h	$vr17, $a1, 0
+	xvreplgr2vr.h	$xr20, $a1
+	xvpermi.q	$xr20, $xr1, 18
+	xvori.b	$xr17, $xr1, 0
+	xvextrins.h	$xr17, $xr20, 0
 	vpickve2gr.h	$a1, $vr18, 1
-	vinsgr2vr.h	$vr17, $a1, 4
+	xvreplgr2vr.h	$xr20, $a1
+	xvpermi.q	$xr20, $xr17, 18
+	xvextrins.h	$xr17, $xr20, 68
 	vpickve2gr.h	$a1, $vr18, 2
-	xvpermi.d	$xr20, $xr17, 14
-	vinsgr2vr.h	$vr20, $a1, 0
-	xvpermi.q	$xr17, $xr20, 2
+	xvreplgr2vr.h	$xr20, $a1
+	xvpermi.q	$xr20, $xr17, 48
+	xvextrins.h	$xr17, $xr20, 0
 	vpickve2gr.h	$a1, $vr18, 3
-	xvpermi.d	$xr18, $xr17, 14
-	vinsgr2vr.h	$vr18, $a1, 4
-	xvpermi.q	$xr17, $xr18, 2
+	xvreplgr2vr.h	$xr18, $a1
+	xvpermi.q	$xr18, $xr17, 48
+	xvextrins.h	$xr17, $xr18, 68
 	vpickve2gr.h	$a1, $vr19, 0
-	vori.b	$vr18, $vr1, 0
-	vinsgr2vr.h	$vr18, $a1, 0
+	xvreplgr2vr.h	$xr18, $a1
+	xvpermi.q	$xr18, $xr1, 18
+	xvori.b	$xr20, $xr1, 0
+	xvextrins.h	$xr20, $xr18, 0
 	vpickve2gr.h	$a1, $vr19, 1
-	vinsgr2vr.h	$vr18, $a1, 4
+	xvreplgr2vr.h	$xr18, $a1
+	xvpermi.q	$xr18, $xr20, 18
+	xvextrins.h	$xr20, $xr18, 68
 	vpickve2gr.h	$a1, $vr19, 2
-	xvpermi.d	$xr20, $xr18, 14
-	vinsgr2vr.h	$vr20, $a1, 0
-	xvpermi.q	$xr18, $xr20, 2
+	xvreplgr2vr.h	$xr18, $a1
+	xvpermi.q	$xr18, $xr20, 48
+	xvextrins.h	$xr20, $xr18, 0
 	vpickve2gr.h	$a1, $vr19, 3
-	xvpermi.d	$xr19, $xr18, 14
-	vinsgr2vr.h	$vr19, $a1, 4
-	xvpermi.q	$xr18, $xr19, 2
+	xvreplgr2vr.h	$xr18, $a1
+	xvpermi.q	$xr18, $xr20, 48
+	xvextrins.h	$xr20, $xr18, 68
 	xvadd.d	$xr5, $xr5, $xr17
-	xvadd.d	$xr7, $xr7, $xr18
-	xvmul.d	$xr19, $xr4, $xr17
-	xvmul.d	$xr20, $xr4, $xr18
+	xvadd.d	$xr7, $xr7, $xr20
+	xvmul.d	$xr18, $xr4, $xr17
+	xvmul.d	$xr19, $xr4, $xr20
 	xvmul.d	$xr21, $xr13, $xr17
-	xvmul.d	$xr22, $xr13, $xr18
+	xvmul.d	$xr22, $xr13, $xr20
 	vslli.w	$vr23, $vr14, 3
 	vbitseti.w	$vr24, $vr23, 2
 	vadd.w	$vr23, $vr23, $vr2
@@ -1075,18 +1083,18 @@ finish_pass1:                           # @finish_pass1
 	vpickve2gr.w	$a1, $vr23, 3
 	xvinsgr2vr.d	$xr24, $a1, 3
 	xvmul.d	$xr17, $xr17, $xr25
-	xvmul.d	$xr18, $xr18, $xr24
-	xvbitsel.v	$xr19, $xr19, $xr1, $xr15
-	xvadd.d	$xr6, $xr6, $xr19
-	xvbitsel.v	$xr19, $xr20, $xr1, $xr16
-	xvadd.d	$xr9, $xr9, $xr19
-	xvbitsel.v	$xr19, $xr21, $xr1, $xr15
-	xvadd.d	$xr8, $xr8, $xr19
-	xvbitsel.v	$xr19, $xr22, $xr1, $xr16
-	xvadd.d	$xr11, $xr11, $xr19
+	xvmul.d	$xr20, $xr20, $xr24
+	xvbitsel.v	$xr18, $xr18, $xr1, $xr15
+	xvadd.d	$xr6, $xr6, $xr18
+	xvbitsel.v	$xr18, $xr19, $xr1, $xr16
+	xvadd.d	$xr9, $xr9, $xr18
+	xvbitsel.v	$xr18, $xr21, $xr1, $xr15
+	xvadd.d	$xr8, $xr8, $xr18
+	xvbitsel.v	$xr18, $xr22, $xr1, $xr16
+	xvadd.d	$xr11, $xr11, $xr18
 	xvbitsel.v	$xr15, $xr17, $xr1, $xr15
 	xvadd.d	$xr10, $xr10, $xr15
-	xvbitsel.v	$xr15, $xr18, $xr1, $xr16
+	xvbitsel.v	$xr15, $xr20, $xr1, $xr16
 	xvadd.d	$xr12, $xr12, $xr15
 	vaddi.wu	$vr14, $vr14, 8
 	addi.d	$s1, $s1, -8

@@ -37,10 +37,12 @@ ba_compute_psd:                         # @ba_compute_psd
 	b	.LBB0_9
 .LBB0_5:                                # %vector.ph
 	bstrpick.d	$a6, $a4, 32, 5
-	xvrepli.b	$xr0, 0
 	slli.d	$a6, $a6, 5
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.h	$vr1, $a5, 0
+	xvrepli.b	$xr0, 0
+	xvreplgr2vr.h	$xr2, $a5
+	xvpermi.q	$xr2, $xr0, 18
+	xvori.b	$xr1, $xr0, 0
+	xvextrins.h	$xr1, $xr2, 0
 	alsl.d	$a5, $a0, $a2, 1
 	addi.d	$a5, $a5, 34
 	move	$a7, $a6

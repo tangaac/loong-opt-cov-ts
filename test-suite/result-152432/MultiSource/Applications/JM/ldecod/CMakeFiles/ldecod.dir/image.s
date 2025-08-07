@@ -108,8 +108,8 @@ MbAffPostProc:                          # @MbAffPostProc
 	addi.d	$s1, $s0, 11
 	addi.d	$s2, $s0, 12
 	addi.d	$s3, $s0, 13
-	addi.d	$s5, $s0, 14
-	addi.d	$s6, $s0, 15
+	addi.d	$s6, $s0, 14
+	addi.d	$s5, $s0, 15
 	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 	move	$a0, $ra
 	.p2align	4, , 16
@@ -170,10 +170,10 @@ MbAffPostProc:                          # @MbAffPostProc
 	slli.d	$t6, $s3, 1
 	ldx.h	$t7, $s4, $t6
 	st.h	$t7, $s7, 896
-	slli.d	$t7, $s5, 1
+	slli.d	$t7, $s6, 1
 	ldx.h	$t8, $s4, $t7
 	st.h	$t8, $s7, 960
-	slli.d	$t8, $s6, 1
+	slli.d	$t8, $s5, 1
 	ldx.h	$s4, $s4, $t8
 	st.h	$s4, $s7, 1024
 	addi.d	$s7, $sp, 264
@@ -268,22 +268,20 @@ MbAffPostProc:                          # @MbAffPostProc
 	lu12i.w	$a0, 77
 	ori	$a0, $a0, 1652
 	ldx.w	$a0, $t2, $a0
-	ori	$s5, $zero, 8
 	beqz	$a0, .LBB0_2
 # %bb.10:                               # %.preheader63
                                         #   in Loop: Header=BB0_4 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$a0, $a0, %got_pc_lo12(img)
 	ld.d	$a0, $a0, 0
-	ldptr.w	$a6, $a0, 5932
+	ldptr.w	$s5, $a0, 5932
 	ld.w	$a3, $sp, 260
 	ori	$ra, $zero, 16
-	div.w	$a4, $ra, $a6
+	div.w	$a4, $ra, $s5
 	ldptr.w	$a2, $a0, 5936
 	ld.w	$a0, $sp, 256
-	div.w	$a1, $a3, $a4
-	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
-	st.w	$a1, $sp, 260
+	div.w	$a3, $a3, $a4
+	st.w	$a3, $sp, 260
 	div.w	$a4, $ra, $a2
 	div.w	$s6, $a0, $a4
 	st.w	$s6, $sp, 256
@@ -291,7 +289,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	blt	$a2, $a1, .LBB0_2
 # %bb.11:                               # %.preheader63
                                         #   in Loop: Header=BB0_4 Depth=1
-	blt	$a6, $a1, .LBB0_2
+	blt	$s5, $a1, .LBB0_2
 # %bb.12:                               # %.preheader61.lr.ph.split.us
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$a7, $zero
@@ -299,38 +297,38 @@ MbAffPostProc:                          # @MbAffPostProc
 	slli.d	$a4, $a2, 1
 	addi.w	$a0, $a4, 0
 	addi.d	$a2, $s6, 1
-	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
 	slt	$a5, $a1, $a0
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	st.d	$a6, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 208                   # 8-byte Folded Spill
 	ld.d	$a6, $a2, 0
 	masknez	$t0, $a1, $a5
 	maskeqz	$a0, $a0, $a5
 	or	$s0, $a0, $t0
 	alsl.d	$t0, $s6, $a6, 3
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
-	slli.d	$a0, $a3, 6
+	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
+	slli.d	$a0, $s5, 6
 	addi.d	$a2, $sp, 200
 	add.d	$a0, $a2, $a0
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	alsl.d	$a0, $s0, $a0, 1
 	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
-	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	add.d	$a5, $a6, $a3
+	add.d	$a5, $a6, $s5
 	slli.d	$s8, $a5, 1
-	bstrpick.d	$a2, $a3, 30, 4
+	bstrpick.d	$a2, $s5, 30, 4
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	slli.d	$a2, $a2, 4
-	andi	$a5, $a3, 8
-	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
-	bstrpick.d	$a5, $a3, 30, 3
-	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
-	slli.d	$t1, $a5, 3
+	andi	$a3, $s5, 8
+	st.d	$a3, $sp, 144                   # 8-byte Folded Spill
+	bstrpick.d	$a3, $s5, 30, 3
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	slli.d	$t1, $a3, 3
 	sub.d	$s2, $zero, $t1
 	slli.d	$s3, $a6, 1
 	addi.d	$t3, $sp, 264
 	addi.d	$t4, $sp, 712
 	addi.d	$t5, $sp, 776
+	ori	$a3, $zero, 8
 	b	.LBB0_14
 	.p2align	4, , 16
 .LBB0_13:                               # %._crit_edge.us
@@ -349,7 +347,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	slli.d	$a5, $a7, 3
 	ldx.d	$a5, $t0, $a5
 	add.d	$t6, $a5, $s3
-	bltu	$a3, $s5, .LBB0_17
+	bltu	$s5, $a3, .LBB0_17
 # %bb.15:                               # %vector.memcheck265
                                         #   in Loop: Header=BB0_14 Depth=2
 	add.d	$t7, $a5, $s8
@@ -366,7 +364,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	alsl.d	$a5, $t7, $t6, 1
 	slli.d	$t6, $t7, 6
 	add.d	$t6, $t3, $t6
-	sub.d	$t7, $a3, $t7
+	sub.d	$t7, $s5, $t7
 	.p2align	4, , 16
 .LBB0_19:                               # %vec.epilog.scalar.ph287
                                         #   Parent Loop BB0_4 Depth=1
@@ -382,7 +380,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	.p2align	4, , 16
 .LBB0_20:                               # %vector.main.loop.iter.check276
                                         #   in Loop: Header=BB0_14 Depth=2
-	bgeu	$a3, $ra, .LBB0_25
+	bgeu	$s5, $ra, .LBB0_25
 # %bb.21:                               #   in Loop: Header=BB0_14 Depth=2
 	move	$t8, $zero
 .LBB0_22:                               # %vec.epilog.ph288
@@ -418,7 +416,7 @@ MbAffPostProc:                          # @MbAffPostProc
                                         #   in Loop: Header=BB0_14 Depth=2
 	move	$t7, $t1
 	move	$s0, $a0
-	beq	$t1, $a3, .LBB0_13
+	beq	$t1, $s5, .LBB0_13
 	b	.LBB0_18
 .LBB0_25:                               # %vector.body280.preheader
                                         #   in Loop: Header=BB0_14 Depth=2
@@ -461,7 +459,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	bnez	$t8, .LBB0_26
 # %bb.27:                               # %middle.block284
                                         #   in Loop: Header=BB0_14 Depth=2
-	beq	$a2, $a3, .LBB0_13
+	beq	$a2, $s5, .LBB0_13
 # %bb.28:                               # %vec.epilog.iter.check289
                                         #   in Loop: Header=BB0_14 Depth=2
 	move	$t8, $a2
@@ -502,10 +500,11 @@ MbAffPostProc:                          # @MbAffPostProc
 	move	$t3, $s1
 	st.d	$t6, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$s3, $sp, 776
-	ld.d	$t1, $sp, 184                   # 8-byte Folded Reload
-	st.d	$s8, $sp, 192                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
-	st.d	$t2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 168                   # 8-byte Folded Spill
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 176                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB0_32
@@ -529,7 +528,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	alsl.w	$a5, $s6, $t1, 1
 	slli.d	$a5, $a5, 3
 	ldx.d	$fp, $s0, $a5
-	bgeu	$a3, $s5, .LBB0_36
+	bgeu	$s5, $a3, .LBB0_36
 # %bb.33:                               #   in Loop: Header=BB0_32 Depth=2
 	move	$a5, $zero
 .LBB0_34:                               # %vec.epilog.scalar.ph252.preheader
@@ -538,7 +537,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	alsl.d	$a0, $a1, $s4, 1
 	alsl.d	$a7, $a1, $fp, 1
 	slli.d	$t0, $a5, 6
-	sub.d	$a5, $a3, $a5
+	sub.d	$a5, $s5, $a5
 	.p2align	4, , 16
 .LBB0_35:                               # %vec.epilog.scalar.ph252
                                         #   Parent Loop BB0_4 Depth=1
@@ -597,7 +596,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	bnez	$t4, .LBB0_34
 # %bb.41:                               # %vector.main.loop.iter.check242
                                         #   in Loop: Header=BB0_32 Depth=2
-	bgeu	$a3, $ra, .LBB0_46
+	bgeu	$s5, $ra, .LBB0_46
 # %bb.42:                               #   in Loop: Header=BB0_32 Depth=2
 	move	$t4, $zero
 .LBB0_43:                               # %vec.epilog.ph253
@@ -605,70 +604,71 @@ MbAffPostProc:                          # @MbAffPostProc
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	add.d	$a7, $a0, $t4
 	add.d	$a0, $a6, $t4
-	alsl.d	$a5, $a0, $s4, 1
-	alsl.d	$t0, $a0, $fp, 1
-	slli.d	$t7, $t4, 6
-	move	$fp, $t6
+	alsl.d	$t0, $a0, $s4, 1
+	alsl.d	$t7, $a0, $fp, 1
+	slli.d	$fp, $t4, 6
+	move	$s5, $t6
 	move	$s4, $t8
 	.p2align	4, , 16
 .LBB0_44:                               # %vec.epilog.vector.body259
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_32 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a0, $s4, $t7
-	ldx.h	$a1, $s4, $t7
+	add.d	$a0, $s4, $fp
+	ldx.h	$a1, $s4, $fp
 	ld.h	$a2, $a0, 64
 	ld.h	$a3, $a0, 128
-	ld.h	$a6, $a0, 192
-	ld.h	$t1, $a0, 256
-	ld.h	$t2, $a0, 320
-	ld.h	$t4, $a0, 384
+	ld.h	$a5, $a0, 192
+	ld.h	$a6, $a0, 256
+	ld.h	$t1, $a0, 320
+	ld.h	$t2, $a0, 384
 	ld.h	$a0, $a0, 448
 	vinsgr2vr.h	$vr0, $a1, 0
 	vinsgr2vr.h	$vr0, $a2, 1
 	vinsgr2vr.h	$vr0, $a3, 2
-	vinsgr2vr.h	$vr0, $a6, 3
-	vinsgr2vr.h	$vr0, $t1, 4
-	vinsgr2vr.h	$vr0, $t2, 5
-	vinsgr2vr.h	$vr0, $t4, 6
+	vinsgr2vr.h	$vr0, $a5, 3
+	vinsgr2vr.h	$vr0, $a6, 4
+	vinsgr2vr.h	$vr0, $t1, 5
+	vinsgr2vr.h	$vr0, $t2, 6
 	vinsgr2vr.h	$vr0, $a0, 7
-	vst	$vr0, $a5, 0
-	add.d	$a0, $fp, $t7
+	vst	$vr0, $t0, 0
+	add.d	$a0, $s5, $fp
 	ld.h	$a1, $a0, -448
 	ld.h	$a2, $a0, -384
 	ld.h	$a3, $a0, -320
-	ld.h	$a6, $a0, -256
-	ld.h	$t1, $a0, -192
-	ld.h	$t2, $a0, -128
+	ld.h	$a5, $a0, -256
+	ld.h	$a6, $a0, -192
+	ld.h	$t1, $a0, -128
 	ld.h	$a0, $a0, -64
-	ldx.h	$t4, $fp, $t7
+	ldx.h	$t2, $s5, $fp
 	vinsgr2vr.h	$vr0, $a1, 0
 	vinsgr2vr.h	$vr0, $a2, 1
 	vinsgr2vr.h	$vr0, $a3, 2
-	vinsgr2vr.h	$vr0, $a6, 3
-	vinsgr2vr.h	$vr0, $t1, 4
-	vinsgr2vr.h	$vr0, $t2, 5
+	vinsgr2vr.h	$vr0, $a5, 3
+	vinsgr2vr.h	$vr0, $a6, 4
+	vinsgr2vr.h	$vr0, $t1, 5
 	vinsgr2vr.h	$vr0, $a0, 6
-	vinsgr2vr.h	$vr0, $t4, 7
-	vst	$vr0, $t0, 0
+	vinsgr2vr.h	$vr0, $t2, 7
+	vst	$vr0, $t7, 0
 	addi.d	$a7, $a7, 8
-	addi.d	$a5, $a5, 16
 	addi.d	$t0, $t0, 16
+	addi.d	$t7, $t7, 16
 	addi.d	$s4, $s4, 512
-	addi.d	$fp, $fp, 512
+	addi.d	$s5, $s5, 512
 	bnez	$a7, .LBB0_44
 # %bb.45:                               # %vec.epilog.middle.block262
                                         #   in Loop: Header=BB0_32 Depth=2
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	move	$a5, $a0
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ori	$a3, $zero, 8
+	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
-	beq	$a0, $a3, .LBB0_31
+	beq	$a0, $s5, .LBB0_31
 	b	.LBB0_34
 .LBB0_46:                               # %vector.body246.preheader
                                         #   in Loop: Header=BB0_32 Depth=2
@@ -691,42 +691,58 @@ MbAffPostProc:                          # @MbAffPostProc
 	ld.h	$a0, $t7, 64
 	ld.h	$ra, $t7, 128
 	ld.h	$t4, $t7, 192
-	ld.h	$s7, $t7, 256
-	ld.h	$s4, $t7, 320
-	ld.h	$a5, $t7, 384
+	ld.h	$a5, $t7, 256
+	ld.h	$s7, $t7, 320
+	ld.h	$s4, $t7, 384
 	ld.h	$s5, $t7, 448
-	vinsgr2vr.h	$vr0, $t5, 0
-	vinsgr2vr.h	$vr0, $a2, 1
-	vinsgr2vr.h	$vr0, $s0, 2
-	vinsgr2vr.h	$vr0, $s2, 3
-	vinsgr2vr.h	$vr0, $a6, 4
-	vinsgr2vr.h	$vr0, $a3, 5
-	vinsgr2vr.h	$vr0, $s8, 6
-	vinsgr2vr.h	$vr0, $t2, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a0, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $ra, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t4, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s7, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s4, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a5, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s5, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t5
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $a2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s0
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $a0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $a5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $s7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvst	$xr0, $t0, 0
 	add.d	$a0, $t7, $a4
 	ld.h	$a2, $a0, -512
@@ -741,42 +757,58 @@ MbAffPostProc:                          # @MbAffPostProc
 	ld.h	$ra, $a0, 64
 	ld.h	$a1, $a0, 128
 	ld.h	$t4, $a0, 192
-	ld.h	$s7, $a0, 256
-	ld.h	$s4, $a0, 320
-	ld.h	$a5, $a0, 384
+	ld.h	$a5, $a0, 256
+	ld.h	$s7, $a0, 320
+	ld.h	$s4, $a0, 384
 	ld.h	$s5, $a0, 448
-	vinsgr2vr.h	$vr0, $a2, 0
-	vinsgr2vr.h	$vr0, $a3, 1
-	vinsgr2vr.h	$vr0, $a6, 2
-	vinsgr2vr.h	$vr0, $t1, 3
-	vinsgr2vr.h	$vr0, $t2, 4
-	vinsgr2vr.h	$vr0, $t5, 5
-	vinsgr2vr.h	$vr0, $s0, 6
-	vinsgr2vr.h	$vr0, $s2, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s8, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $ra, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a1, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t4, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s7, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s4, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a5, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s5, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $a2
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s0
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $s8
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $a1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $a5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $s7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvst	$xr0, $a7, 0
 	addi.d	$fp, $fp, -16
 	addi.d	$t0, $t0, 32
@@ -787,20 +819,20 @@ MbAffPostProc:                          # @MbAffPostProc
                                         #   in Loop: Header=BB0_32 Depth=2
 	addi.d	$s7, $sp, 264
 	ori	$ra, $zero, 16
-	ori	$s5, $zero, 8
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ori	$a3, $zero, 8
+	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
-	beq	$a0, $a3, .LBB0_31
+	beq	$a0, $s5, .LBB0_31
 # %bb.49:                               # %vec.epilog.iter.check254
                                         #   in Loop: Header=BB0_32 Depth=2
 	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
@@ -849,7 +881,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	slli.d	$a1, $a0, 3
 	ldx.d	$a5, $a7, $a1
 	add.d	$fp, $a5, $s4
-	bltu	$a3, $s5, .LBB0_57
+	bltu	$s5, $a3, .LBB0_57
 # %bb.55:                               # %vector.memcheck174
                                         #   in Loop: Header=BB0_54 Depth=2
 	add.d	$a1, $a5, $s8
@@ -864,7 +896,7 @@ MbAffPostProc:                          # @MbAffPostProc
 .LBB0_58:                               # %vec.epilog.scalar.ph195.preheader
                                         #   in Loop: Header=BB0_54 Depth=2
 	alsl.d	$a5, $s0, $fp, 1
-	sub.d	$t4, $a3, $s0
+	sub.d	$t4, $s5, $s0
 	slli.d	$a1, $s0, 6
 	add.d	$fp, $t6, $a1
 	.p2align	4, , 16
@@ -882,7 +914,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	.p2align	4, , 16
 .LBB0_60:                               # %vector.main.loop.iter.check185
                                         #   in Loop: Header=BB0_54 Depth=2
-	bgeu	$a3, $ra, .LBB0_65
+	bgeu	$s5, $ra, .LBB0_65
 # %bb.61:                               #   in Loop: Header=BB0_54 Depth=2
 	move	$s2, $zero
 .LBB0_62:                               # %vec.epilog.ph196
@@ -916,7 +948,7 @@ MbAffPostProc:                          # @MbAffPostProc
 # %bb.64:                               # %vec.epilog.middle.block206
                                         #   in Loop: Header=BB0_54 Depth=2
 	move	$s0, $t3
-	beq	$t3, $a3, .LBB0_53
+	beq	$t3, $s5, .LBB0_53
 	b	.LBB0_58
 .LBB0_65:                               # %vector.body189.preheader
                                         #   in Loop: Header=BB0_54 Depth=2
@@ -959,7 +991,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	bnez	$s0, .LBB0_66
 # %bb.67:                               # %middle.block192
                                         #   in Loop: Header=BB0_54 Depth=2
-	beq	$t0, $a3, .LBB0_53
+	beq	$t0, $s5, .LBB0_53
 # %bb.68:                               # %vec.epilog.iter.check197
                                         #   in Loop: Header=BB0_54 Depth=2
 	move	$s2, $t0
@@ -982,8 +1014,8 @@ MbAffPostProc:                          # @MbAffPostProc
 	slli.d	$a0, $a0, 3
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	addi.d	$s3, $sp, 776
-	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$t6, $sp, 120                   # 8-byte Folded Reload
 	st.d	$t7, $sp, 224                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
@@ -1009,12 +1041,12 @@ MbAffPostProc:                          # @MbAffPostProc
 	alsl.w	$a0, $t8, $t1, 1
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $t7, $a0
-	bgeu	$a3, $s5, .LBB0_75
+	bgeu	$s5, $a3, .LBB0_75
 # %bb.72:                               #   in Loop: Header=BB0_71 Depth=2
 	move	$a5, $zero
 .LBB0_73:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB0_71 Depth=2
-	sub.d	$a7, $a3, $a5
+	sub.d	$a7, $s5, $a5
 	add.d	$a1, $a6, $a5
 	alsl.d	$a0, $a1, $a0, 1
 	alsl.d	$t4, $a1, $s6, 1
@@ -1039,7 +1071,7 @@ MbAffPostProc:                          # @MbAffPostProc
                                         #   in Loop: Header=BB0_71 Depth=2
 	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
 	add.d	$s8, $s6, $a2
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	add.d	$fp, $s6, $a1
 	add.d	$a7, $a0, $a2
 	add.d	$t4, $a0, $a1
@@ -1074,7 +1106,7 @@ MbAffPostProc:                          # @MbAffPostProc
 	bnez	$a1, .LBB0_73
 # %bb.80:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB0_71 Depth=2
-	bgeu	$a3, $ra, .LBB0_85
+	bgeu	$s5, $ra, .LBB0_85
 # %bb.81:                               #   in Loop: Header=BB0_71 Depth=2
 	move	$t4, $zero
 .LBB0_82:                               # %vec.epilog.ph
@@ -1082,69 +1114,70 @@ MbAffPostProc:                          # @MbAffPostProc
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	add.d	$a7, $a1, $t4
 	add.d	$a1, $a6, $t4
-	alsl.d	$a5, $a1, $s6, 1
-	alsl.d	$fp, $a1, $a0, 1
-	slli.d	$s5, $t4, 6
-	move	$s8, $t6
+	alsl.d	$fp, $a1, $s6, 1
+	alsl.d	$s5, $a1, $a0, 1
+	slli.d	$s8, $t4, 6
+	move	$ra, $t6
 	move	$s4, $t3
 	.p2align	4, , 16
 .LBB0_83:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_71 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $s4, $s5
-	ldx.h	$a2, $s4, $s5
+	add.d	$a1, $s4, $s8
+	ldx.h	$a2, $s4, $s8
 	ld.h	$a3, $a1, 64
-	ld.h	$a6, $a1, 128
-	ld.h	$t0, $a1, 192
-	ld.h	$t1, $a1, 256
-	ld.h	$t2, $a1, 320
-	ld.h	$t4, $a1, 384
+	ld.h	$a5, $a1, 128
+	ld.h	$a6, $a1, 192
+	ld.h	$t0, $a1, 256
+	ld.h	$t1, $a1, 320
+	ld.h	$t2, $a1, 384
 	ld.h	$a1, $a1, 448
 	vinsgr2vr.h	$vr0, $a2, 0
 	vinsgr2vr.h	$vr0, $a3, 1
-	vinsgr2vr.h	$vr0, $a6, 2
-	vinsgr2vr.h	$vr0, $t0, 3
-	vinsgr2vr.h	$vr0, $t1, 4
-	vinsgr2vr.h	$vr0, $t2, 5
-	vinsgr2vr.h	$vr0, $t4, 6
+	vinsgr2vr.h	$vr0, $a5, 2
+	vinsgr2vr.h	$vr0, $a6, 3
+	vinsgr2vr.h	$vr0, $t0, 4
+	vinsgr2vr.h	$vr0, $t1, 5
+	vinsgr2vr.h	$vr0, $t2, 6
 	vinsgr2vr.h	$vr0, $a1, 7
-	vst	$vr0, $a5, 0
-	add.d	$a1, $s8, $s5
+	vst	$vr0, $fp, 0
+	add.d	$a1, $ra, $s8
 	ld.h	$a2, $a1, -448
 	ld.h	$a3, $a1, -384
-	ld.h	$a6, $a1, -320
-	ld.h	$t0, $a1, -256
-	ld.h	$t1, $a1, -192
-	ld.h	$t2, $a1, -128
+	ld.h	$a5, $a1, -320
+	ld.h	$a6, $a1, -256
+	ld.h	$t0, $a1, -192
+	ld.h	$t1, $a1, -128
 	ld.h	$a1, $a1, -64
-	ldx.h	$t4, $s8, $s5
+	ldx.h	$t2, $ra, $s8
 	vinsgr2vr.h	$vr0, $a2, 0
 	vinsgr2vr.h	$vr0, $a3, 1
-	vinsgr2vr.h	$vr0, $a6, 2
-	vinsgr2vr.h	$vr0, $t0, 3
-	vinsgr2vr.h	$vr0, $t1, 4
-	vinsgr2vr.h	$vr0, $t2, 5
+	vinsgr2vr.h	$vr0, $a5, 2
+	vinsgr2vr.h	$vr0, $a6, 3
+	vinsgr2vr.h	$vr0, $t0, 4
+	vinsgr2vr.h	$vr0, $t1, 5
 	vinsgr2vr.h	$vr0, $a1, 6
-	vinsgr2vr.h	$vr0, $t4, 7
-	vst	$vr0, $fp, 0
+	vinsgr2vr.h	$vr0, $t2, 7
+	vst	$vr0, $s5, 0
 	addi.d	$a7, $a7, 8
-	addi.d	$a5, $a5, 16
 	addi.d	$fp, $fp, 16
+	addi.d	$s5, $s5, 16
 	addi.d	$s4, $s4, 512
-	addi.d	$s8, $s8, 512
+	addi.d	$ra, $ra, 512
 	bnez	$a7, .LBB0_83
 # %bb.84:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_71 Depth=2
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a5, $a1
-	ori	$s5, $zero, 8
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ori	$ra, $zero, 16
+	ori	$a3, $zero, 8
+	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
-	beq	$a1, $a3, .LBB0_70
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
+	beq	$a1, $s5, .LBB0_70
 	b	.LBB0_73
 .LBB0_85:                               # %vector.body.preheader
                                         #   in Loop: Header=BB0_71 Depth=2
@@ -1168,42 +1201,58 @@ MbAffPostProc:                          # @MbAffPostProc
 	ld.h	$t7, $ra, 64
 	ld.h	$t0, $ra, 128
 	ld.h	$t4, $ra, 192
-	ld.h	$s7, $ra, 256
-	ld.h	$s4, $ra, 320
-	ld.h	$a5, $ra, 384
+	ld.h	$a5, $ra, 256
+	ld.h	$s7, $ra, 320
+	ld.h	$s4, $ra, 384
 	ld.h	$s5, $ra, 448
-	vinsgr2vr.h	$vr0, $a1, 0
-	vinsgr2vr.h	$vr0, $a2, 1
-	vinsgr2vr.h	$vr0, $a3, 2
-	vinsgr2vr.h	$vr0, $a6, 3
-	vinsgr2vr.h	$vr0, $t1, 4
-	vinsgr2vr.h	$vr0, $t2, 5
-	vinsgr2vr.h	$vr0, $t5, 6
-	vinsgr2vr.h	$vr0, $t6, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t7, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t4, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s7, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s4, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a5, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s5, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $a1
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $a2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $a5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $s7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvst	$xr0, $s8, 0
 	add.d	$a1, $ra, $a4
 	ld.h	$a2, $a1, -512
@@ -1218,42 +1267,58 @@ MbAffPostProc:                          # @MbAffPostProc
 	ld.h	$s2, $a1, 64
 	ld.h	$s0, $a1, 128
 	ld.h	$t4, $a1, 192
-	ld.h	$s7, $a1, 256
-	ld.h	$s4, $a1, 320
-	ld.h	$a5, $a1, 384
+	ld.h	$a5, $a1, 256
+	ld.h	$s7, $a1, 320
+	ld.h	$s4, $a1, 384
 	ld.h	$s5, $a1, 448
-	vinsgr2vr.h	$vr0, $a2, 0
-	vinsgr2vr.h	$vr0, $a3, 1
-	vinsgr2vr.h	$vr0, $a6, 2
-	vinsgr2vr.h	$vr0, $t0, 3
-	vinsgr2vr.h	$vr0, $t1, 4
-	vinsgr2vr.h	$vr0, $t2, 5
-	vinsgr2vr.h	$vr0, $t5, 6
-	vinsgr2vr.h	$vr0, $t6, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t7, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s0, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t4, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s7, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s4, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a5, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s5, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $a2
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $a5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $s7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s5
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvst	$xr0, $a7, 0
 	addi.d	$fp, $fp, -16
 	addi.d	$s8, $s8, 32
@@ -1264,19 +1329,19 @@ MbAffPostProc:                          # @MbAffPostProc
                                         #   in Loop: Header=BB0_71 Depth=2
 	addi.d	$s7, $sp, 264
 	ori	$ra, $zero, 16
-	ori	$s5, $zero, 8
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	ori	$a3, $zero, 8
+	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$t6, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$t7, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	beq	$a1, $a3, .LBB0_70
+	beq	$a1, $s5, .LBB0_70
 # %bb.88:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB0_71 Depth=2
 	ld.d	$a5, $sp, 248                   # 8-byte Folded Reload

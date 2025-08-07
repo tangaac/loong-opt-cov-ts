@@ -2381,11 +2381,11 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 .LBB10_4:                               # %vector.ph
 	bstrpick.d	$a1, $a3, 30, 3
 	slli.d	$a2, $a1, 3
-	xvrepli.b	$xr1, 0
+	xvrepli.b	$xr2, 0
 	addi.d	$a1, $a0, 4
 	move	$a4, $a2
-	xvori.b	$xr0, $xr1, 0
-	xvori.b	$xr2, $xr1, 0
+	xvori.b	$xr0, $xr2, 0
+	xvori.b	$xr1, $xr2, 0
 	.p2align	4, , 16
 .LBB10_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -2394,43 +2394,51 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	vinsgr2vr.w	$vr3, $a5, 0
 	vinsgr2vr.w	$vr4, $a6, 0
 	vpickve2gr.b	$a5, $vr3, 0
-	vori.b	$vr5, $vr1, 0
-	vinsgr2vr.b	$vr5, $a5, 0
+	xvreplgr2vr.b	$xr5, $a5
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.b	$xr6, $xr5, 0
 	vpickve2gr.b	$a5, $vr3, 1
-	vinsgr2vr.b	$vr5, $a5, 8
+	xvreplgr2vr.b	$xr5, $a5
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.b	$xr6, $xr5, 136
 	vpickve2gr.b	$a5, $vr3, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.b	$vr6, $a5, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.b	$xr5, $a5
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.b	$xr6, $xr5, 0
 	vpickve2gr.b	$a5, $vr3, 3
-	xvpermi.d	$xr3, $xr5, 14
-	vinsgr2vr.b	$vr3, $a5, 8
-	xvpermi.q	$xr5, $xr3, 2
+	xvreplgr2vr.b	$xr3, $a5
+	xvpermi.q	$xr3, $xr6, 48
+	xvextrins.b	$xr6, $xr3, 136
 	vpickve2gr.b	$a5, $vr4, 0
-	vori.b	$vr3, $vr1, 0
-	vinsgr2vr.b	$vr3, $a5, 0
+	xvreplgr2vr.b	$xr3, $a5
+	xvpermi.q	$xr3, $xr2, 18
+	xvori.b	$xr5, $xr2, 0
+	xvextrins.b	$xr5, $xr3, 0
 	vpickve2gr.b	$a5, $vr4, 1
-	vinsgr2vr.b	$vr3, $a5, 8
+	xvreplgr2vr.b	$xr3, $a5
+	xvpermi.q	$xr3, $xr5, 18
+	xvextrins.b	$xr5, $xr3, 136
 	vpickve2gr.b	$a5, $vr4, 2
-	xvpermi.d	$xr6, $xr3, 14
-	vinsgr2vr.b	$vr6, $a5, 0
-	xvpermi.q	$xr3, $xr6, 2
+	xvreplgr2vr.b	$xr3, $a5
+	xvpermi.q	$xr3, $xr5, 48
+	xvextrins.b	$xr5, $xr3, 0
 	vpickve2gr.b	$a5, $vr4, 3
-	xvpermi.d	$xr4, $xr3, 14
-	vinsgr2vr.b	$vr4, $a5, 8
-	xvpermi.q	$xr3, $xr4, 2
-	xvadd.d	$xr0, $xr0, $xr5
-	xvadd.d	$xr2, $xr2, $xr3
+	xvreplgr2vr.b	$xr3, $a5
+	xvpermi.q	$xr3, $xr5, 48
+	xvextrins.b	$xr5, $xr3, 136
+	xvadd.d	$xr0, $xr0, $xr6
+	xvadd.d	$xr1, $xr1, $xr5
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 8
 	bnez	$a4, .LBB10_5
 # %bb.6:                                # %middle.block
 	pcalau12i	$a1, %pc_hi20(.LCPI10_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI10_0)
-	xvadd.d	$xr0, $xr2, $xr0
-	xvpermi.d	$xr2, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvadd.d	$xr0, $xr0, $xr1
+	xvld	$xr2, $a1, %pc_lo12(.LCPI10_0)
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpermi.d	$xr1, $xr0, 78
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.d	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.d	$xr0, $xr0, $xr1
@@ -2705,11 +2713,11 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 .LBB14_4:                               # %vector.ph
 	bstrpick.d	$a1, $a3, 30, 3
 	slli.d	$a2, $a1, 3
-	xvrepli.b	$xr1, 0
+	xvrepli.b	$xr2, 0
 	addi.d	$a1, $a0, 8
 	move	$a4, $a2
-	xvori.b	$xr0, $xr1, 0
-	xvori.b	$xr2, $xr1, 0
+	xvori.b	$xr0, $xr2, 0
+	xvori.b	$xr1, $xr2, 0
 	.p2align	4, , 16
 .LBB14_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -2718,43 +2726,51 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	vinsgr2vr.d	$vr3, $a5, 0
 	vinsgr2vr.d	$vr4, $a6, 0
 	vpickve2gr.h	$a5, $vr3, 0
-	vori.b	$vr5, $vr1, 0
-	vinsgr2vr.h	$vr5, $a5, 0
+	xvreplgr2vr.h	$xr5, $a5
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a5, $vr3, 1
-	vinsgr2vr.h	$vr5, $a5, 4
+	xvreplgr2vr.h	$xr5, $a5
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$a5, $vr3, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $a5, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $a5
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a5, $vr3, 3
-	xvpermi.d	$xr3, $xr5, 14
-	vinsgr2vr.h	$vr3, $a5, 4
-	xvpermi.q	$xr5, $xr3, 2
+	xvreplgr2vr.h	$xr3, $a5
+	xvpermi.q	$xr3, $xr6, 48
+	xvextrins.h	$xr6, $xr3, 68
 	vpickve2gr.h	$a5, $vr4, 0
-	vori.b	$vr3, $vr1, 0
-	vinsgr2vr.h	$vr3, $a5, 0
+	xvreplgr2vr.h	$xr3, $a5
+	xvpermi.q	$xr3, $xr2, 18
+	xvori.b	$xr5, $xr2, 0
+	xvextrins.h	$xr5, $xr3, 0
 	vpickve2gr.h	$a5, $vr4, 1
-	vinsgr2vr.h	$vr3, $a5, 4
+	xvreplgr2vr.h	$xr3, $a5
+	xvpermi.q	$xr3, $xr5, 18
+	xvextrins.h	$xr5, $xr3, 68
 	vpickve2gr.h	$a5, $vr4, 2
-	xvpermi.d	$xr6, $xr3, 14
-	vinsgr2vr.h	$vr6, $a5, 0
-	xvpermi.q	$xr3, $xr6, 2
+	xvreplgr2vr.h	$xr3, $a5
+	xvpermi.q	$xr3, $xr5, 48
+	xvextrins.h	$xr5, $xr3, 0
 	vpickve2gr.h	$a5, $vr4, 3
-	xvpermi.d	$xr4, $xr3, 14
-	vinsgr2vr.h	$vr4, $a5, 4
-	xvpermi.q	$xr3, $xr4, 2
-	xvadd.d	$xr0, $xr0, $xr5
-	xvadd.d	$xr2, $xr2, $xr3
+	xvreplgr2vr.h	$xr3, $a5
+	xvpermi.q	$xr3, $xr5, 48
+	xvextrins.h	$xr5, $xr3, 68
+	xvadd.d	$xr0, $xr0, $xr6
+	xvadd.d	$xr1, $xr1, $xr5
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 16
 	bnez	$a4, .LBB14_5
 # %bb.6:                                # %middle.block
 	pcalau12i	$a1, %pc_hi20(.LCPI14_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI14_0)
-	xvadd.d	$xr0, $xr2, $xr0
-	xvpermi.d	$xr2, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvadd.d	$xr0, $xr0, $xr1
+	xvld	$xr2, $a1, %pc_lo12(.LCPI14_0)
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpermi.d	$xr1, $xr0, 78
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.d	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.d	$xr0, $xr0, $xr1

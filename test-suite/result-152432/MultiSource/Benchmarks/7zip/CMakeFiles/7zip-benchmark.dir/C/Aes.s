@@ -237,30 +237,38 @@ AesGenTables:                           # @AesGenTables
 	ldx.d	$a6, $a0, $a2
 	vinsgr2vr.d	$vr9, $a6, 0
 	vpickve2gr.b	$a6, $vr9, 0
-	vori.b	$vr8, $vr0, 0
-	vinsgr2vr.b	$vr8, $a6, 0
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr0, 18
+	xvori.b	$xr8, $xr0, 0
+	xvextrins.b	$xr8, $xr10, 0
 	vpickve2gr.b	$a6, $vr9, 1
-	vinsgr2vr.b	$vr8, $a6, 4
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.b	$xr8, $xr10, 68
 	vpickve2gr.b	$a6, $vr9, 2
-	vinsgr2vr.b	$vr8, $a6, 8
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.b	$xr8, $xr10, 136
 	vpickve2gr.b	$a6, $vr9, 3
-	vinsgr2vr.b	$vr8, $a6, 12
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.b	$xr8, $xr10, 204
 	vpickve2gr.b	$a6, $vr9, 4
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 0
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 0
 	vpickve2gr.b	$a6, $vr9, 5
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 4
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 68
 	vpickve2gr.b	$a6, $vr9, 6
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 8
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 136
 	vpickve2gr.b	$a6, $vr9, 7
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 12
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 204
 	xvslli.w	$xr10, $xr8, 1
 	vslt.b	$vr9, $vr1, $vr9
 	xvpermi.d	$xr9, $xr9, 68
@@ -299,30 +307,38 @@ AesGenTables:                           # @AesGenTables
 	xvst	$xr8, $a4, 1024
 	vinsgr2vr.d	$vr9, $a6, 0
 	vpickve2gr.b	$a6, $vr9, 0
-	vori.b	$vr8, $vr0, 0
-	vinsgr2vr.b	$vr8, $a6, 0
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr0, 18
+	xvori.b	$xr8, $xr0, 0
+	xvextrins.b	$xr8, $xr10, 0
 	vpickve2gr.b	$a6, $vr9, 1
-	vinsgr2vr.b	$vr8, $a6, 4
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.b	$xr8, $xr10, 68
 	vpickve2gr.b	$a6, $vr9, 2
-	vinsgr2vr.b	$vr8, $a6, 8
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.b	$xr8, $xr10, 136
 	vpickve2gr.b	$a6, $vr9, 3
-	vinsgr2vr.b	$vr8, $a6, 12
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 18
+	xvextrins.b	$xr8, $xr10, 204
 	vpickve2gr.b	$a6, $vr9, 4
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 0
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 0
 	vpickve2gr.b	$a6, $vr9, 5
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 4
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 68
 	vpickve2gr.b	$a6, $vr9, 6
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 8
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 136
 	vpickve2gr.b	$a6, $vr9, 7
-	xvpermi.d	$xr10, $xr8, 14
-	vinsgr2vr.b	$vr10, $a6, 12
-	xvpermi.q	$xr8, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a6
+	xvpermi.q	$xr10, $xr8, 48
+	xvextrins.b	$xr8, $xr10, 204
 	xvslli.w	$xr10, $xr8, 1
 	vslt.b	$vr9, $vr1, $vr9
 	xvpermi.d	$xr9, $xr9, 68

@@ -2068,41 +2068,49 @@ susan_smoothing:                        # @susan_smoothing
 	vilvl.b	$vr9, $vr0, $vr9
 	vilvl.h	$vr9, $vr0, $vr9
 	vpickve2gr.b	$a1, $vr10, 0
-	vori.b	$vr12, $vr1, 0
-	vinsgr2vr.b	$vr12, $a1, 0
+	xvreplgr2vr.b	$xr12, $a1
+	xvpermi.q	$xr12, $xr1, 18
+	xvori.b	$xr13, $xr1, 0
+	xvextrins.b	$xr13, $xr12, 0
 	vpickve2gr.b	$a1, $vr10, 1
-	vinsgr2vr.b	$vr12, $a1, 8
+	xvreplgr2vr.b	$xr12, $a1
+	xvpermi.q	$xr12, $xr13, 18
+	xvextrins.b	$xr13, $xr12, 136
 	vpickve2gr.b	$a1, $vr10, 2
-	xvpermi.d	$xr13, $xr12, 14
-	vinsgr2vr.b	$vr13, $a1, 0
-	xvpermi.q	$xr12, $xr13, 2
+	xvreplgr2vr.b	$xr12, $a1
+	xvpermi.q	$xr12, $xr13, 48
+	xvextrins.b	$xr13, $xr12, 0
 	vpickve2gr.b	$a1, $vr10, 3
-	xvpermi.d	$xr10, $xr12, 14
-	vinsgr2vr.b	$vr10, $a1, 8
-	xvpermi.q	$xr12, $xr10, 2
+	xvreplgr2vr.b	$xr10, $a1
+	xvpermi.q	$xr10, $xr13, 48
+	xvextrins.b	$xr13, $xr10, 136
 	vpickve2gr.b	$a1, $vr11, 0
-	vori.b	$vr10, $vr1, 0
-	vinsgr2vr.b	$vr10, $a1, 0
+	xvreplgr2vr.b	$xr10, $a1
+	xvpermi.q	$xr10, $xr1, 18
+	xvori.b	$xr12, $xr1, 0
+	xvextrins.b	$xr12, $xr10, 0
 	vpickve2gr.b	$a1, $vr11, 1
-	vinsgr2vr.b	$vr10, $a1, 8
+	xvreplgr2vr.b	$xr10, $a1
+	xvpermi.q	$xr10, $xr12, 18
+	xvextrins.b	$xr12, $xr10, 136
 	vpickve2gr.b	$a1, $vr11, 2
-	xvpermi.d	$xr13, $xr10, 14
-	vinsgr2vr.b	$vr13, $a1, 0
-	xvpermi.q	$xr10, $xr13, 2
+	xvreplgr2vr.b	$xr10, $a1
+	xvpermi.q	$xr10, $xr12, 48
+	xvextrins.b	$xr12, $xr10, 0
 	vpickve2gr.b	$a1, $vr11, 3
-	xvpermi.d	$xr11, $xr10, 14
-	vinsgr2vr.b	$vr11, $a1, 8
-	xvpermi.q	$xr10, $xr11, 2
+	xvreplgr2vr.b	$xr10, $a1
+	xvpermi.q	$xr10, $xr12, 48
+	xvextrins.b	$xr12, $xr10, 136
+	xvneg.d	$xr10, $xr13
 	xvneg.d	$xr11, $xr12
-	xvneg.d	$xr10, $xr10
-	xvpickve2gr.d	$a1, $xr11, 0
-	xvpickve2gr.d	$fp, $xr11, 1
-	xvpickve2gr.d	$t4, $xr11, 2
-	xvpickve2gr.d	$s3, $xr11, 3
-	xvpickve2gr.d	$t0, $xr10, 0
-	xvpickve2gr.d	$t3, $xr10, 1
-	xvpickve2gr.d	$s6, $xr10, 2
-	xvpickve2gr.d	$s0, $xr10, 3
+	xvpickve2gr.d	$a1, $xr10, 0
+	xvpickve2gr.d	$fp, $xr10, 1
+	xvpickve2gr.d	$t4, $xr10, 2
+	xvpickve2gr.d	$s3, $xr10, 3
+	xvpickve2gr.d	$t0, $xr11, 0
+	xvpickve2gr.d	$t3, $xr11, 1
+	xvpickve2gr.d	$s6, $xr11, 2
+	xvpickve2gr.d	$s0, $xr11, 3
 	ldx.b	$a1, $s7, $a1
 	ldx.b	$fp, $s7, $fp
 	ldx.b	$t4, $s7, $t4

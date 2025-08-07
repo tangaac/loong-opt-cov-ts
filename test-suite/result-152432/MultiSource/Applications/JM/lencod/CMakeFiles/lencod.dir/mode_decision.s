@@ -371,19 +371,23 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.d	$vr5, $s1, 0
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$s0, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $s0, 0
+	xvreplgr2vr.h	$xr5, $s0
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$s0, $vr4, 1
-	vinsgr2vr.h	$vr5, $s0, 4
+	xvreplgr2vr.h	$xr5, $s0
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$s0, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $s0, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $s0
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$s0, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $s0, 4
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvreplgr2vr.h	$xr4, $s0
+	xvpermi.q	$xr4, $xr6, 48
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	ld.d	$s0, $t8, 8
 	ld.d	$s1, $t8, 16
 	ld.d	$t8, $t8, 24
@@ -413,38 +417,46 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.h	$vr5, $t7, 3
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$t7, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $t7, 0
+	xvreplgr2vr.h	$xr5, $t7
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t7, $vr4, 1
-	vinsgr2vr.h	$vr5, $t7, 4
+	xvreplgr2vr.h	$xr5, $t7
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$t7, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $t7, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $t7
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t7, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $t7, 4
+	xvreplgr2vr.h	$xr4, $t7
+	xvpermi.q	$xr4, $xr6, 48
 	ldx.d	$t7, $a5, $a3
 	ldx.d	$t8, $a4, $t4
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	vinsgr2vr.d	$vr4, $t7, 0
 	vinsgr2vr.d	$vr5, $t8, 0
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$t7, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $t7, 0
+	xvreplgr2vr.h	$xr5, $t7
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t7, $vr4, 1
-	vinsgr2vr.h	$vr5, $t7, 4
+	xvreplgr2vr.h	$xr5, $t7
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$t7, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $t7, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $t7
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t7, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $t7, 4
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvreplgr2vr.h	$xr4, $t7
+	xvpermi.q	$xr4, $xr6, 48
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	ld.d	$t7, $t6, 8
 	ld.d	$t8, $t6, 16
 	ld.d	$t6, $t6, 24
@@ -474,40 +486,48 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.h	$vr5, $t5, 3
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$t5, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $t5, 0
+	xvreplgr2vr.h	$xr5, $t5
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t5, $vr4, 1
-	vinsgr2vr.h	$vr5, $t5, 4
+	xvreplgr2vr.h	$xr5, $t5
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$t5, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $t5, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $t5
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t5, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $t5, 4
+	xvreplgr2vr.h	$xr4, $t5
+	xvpermi.q	$xr4, $xr6, 48
 	addi.d	$t5, $a3, 8
 	ldx.d	$t6, $t3, $t5
 	addi.d	$t3, $t4, 8
 	ldx.d	$t2, $t2, $t3
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	vinsgr2vr.d	$vr4, $t6, 0
 	vinsgr2vr.d	$vr5, $t2, 0
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$t2, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $t2, 0
+	xvreplgr2vr.h	$xr5, $t2
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t2, $vr4, 1
-	vinsgr2vr.h	$vr5, $t2, 4
+	xvreplgr2vr.h	$xr5, $t2
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$t2, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $t2, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $t2
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$t2, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $t2, 4
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvreplgr2vr.h	$xr4, $t2
+	xvpermi.q	$xr4, $xr6, 48
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	addi.d	$t0, $t0, 32
 	add.d	$t2, $t1, $t0
 	ldx.d	$t1, $t1, $t0
@@ -542,38 +562,46 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.h	$vr5, $t1, 3
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$a7, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $a7, 0
+	xvreplgr2vr.h	$xr5, $a7
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a7, $vr4, 1
-	vinsgr2vr.h	$vr5, $a7, 4
+	xvreplgr2vr.h	$xr5, $a7
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$a7, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $a7, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $a7
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a7, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $a7, 4
+	xvreplgr2vr.h	$xr4, $a7
+	xvpermi.q	$xr4, $xr6, 48
 	ldx.d	$a5, $a5, $t5
 	ldx.d	$a4, $a4, $t3
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	vinsgr2vr.d	$vr4, $a5, 0
 	vinsgr2vr.d	$vr5, $a4, 0
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$a4, $vr4, 0
-	vori.b	$vr5, $vr2, 0
-	vinsgr2vr.h	$vr5, $a4, 0
+	xvreplgr2vr.h	$xr5, $a4
+	xvpermi.q	$xr5, $xr2, 18
+	xvori.b	$xr6, $xr2, 0
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a4, $vr4, 1
-	vinsgr2vr.h	$vr5, $a4, 4
+	xvreplgr2vr.h	$xr5, $a4
+	xvpermi.q	$xr5, $xr6, 18
+	xvextrins.h	$xr6, $xr5, 68
 	vpickve2gr.h	$a4, $vr4, 2
-	xvpermi.d	$xr6, $xr5, 14
-	vinsgr2vr.h	$vr6, $a4, 0
-	xvpermi.q	$xr5, $xr6, 2
+	xvreplgr2vr.h	$xr5, $a4
+	xvpermi.q	$xr5, $xr6, 48
+	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a4, $vr4, 3
-	xvpermi.d	$xr4, $xr5, 14
-	vinsgr2vr.h	$vr4, $a4, 4
-	xvpermi.q	$xr5, $xr4, 2
-	xvadd.d	$xr3, $xr3, $xr5
+	xvreplgr2vr.h	$xr4, $a4
+	xvpermi.q	$xr4, $xr6, 48
+	xvextrins.h	$xr6, $xr4, 68
+	xvadd.d	$xr3, $xr3, $xr6
 	add.d	$a4, $a2, $t0
 	ldx.d	$a2, $a2, $t0
 	ld.d	$a5, $a4, 8
@@ -606,17 +634,21 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.h	$vr5, $a1, 3
 	vabsd.hu	$vr4, $vr4, $vr5
 	vpickve2gr.h	$a0, $vr4, 0
-	vinsgr2vr.h	$vr2, $a0, 0
+	xvreplgr2vr.h	$xr5, $a0
+	xvpermi.q	$xr5, $xr2, 18
+	xvextrins.h	$xr2, $xr5, 0
 	vpickve2gr.h	$a0, $vr4, 1
-	vinsgr2vr.h	$vr2, $a0, 4
+	xvreplgr2vr.h	$xr5, $a0
+	xvpermi.q	$xr5, $xr2, 18
+	xvextrins.h	$xr2, $xr5, 68
 	vpickve2gr.h	$a0, $vr4, 2
-	xvpermi.d	$xr5, $xr2, 14
-	vinsgr2vr.h	$vr5, $a0, 0
-	xvpermi.q	$xr2, $xr5, 2
+	xvreplgr2vr.h	$xr5, $a0
+	xvpermi.q	$xr5, $xr2, 48
+	xvextrins.h	$xr2, $xr5, 0
 	vpickve2gr.h	$a0, $vr4, 3
-	xvpermi.d	$xr4, $xr2, 14
-	vinsgr2vr.h	$vr4, $a0, 4
-	xvpermi.q	$xr2, $xr4, 2
+	xvreplgr2vr.h	$xr4, $a0
+	xvpermi.q	$xr4, $xr2, 48
+	xvextrins.h	$xr2, $xr4, 68
 	xvadd.d	$xr2, $xr3, $xr2
 	xvpermi.d	$xr3, $xr2, 78
 	xvshuf.d	$xr1, $xr0, $xr3

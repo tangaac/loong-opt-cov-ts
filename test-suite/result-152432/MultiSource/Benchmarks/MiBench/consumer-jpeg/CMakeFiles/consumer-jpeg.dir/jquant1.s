@@ -1127,59 +1127,65 @@ color_quantize:                         # @color_quantize
 	vinsgr2vr.w	$vr6, $t6, 0
 	vinsgr2vr.w	$vr5, $t5, 0
 	vpickve2gr.b	$t5, $vr6, 0
-	vori.b	$vr7, $vr1, 0
-	vinsgr2vr.b	$vr7, $t5, 0
+	xvreplgr2vr.b	$xr7, $t5
+	xvpermi.q	$xr7, $xr1, 18
+	xvori.b	$xr8, $xr1, 0
+	xvextrins.b	$xr8, $xr7, 0
 	vpickve2gr.b	$t5, $vr6, 1
-	xvpickve2gr.d	$t6, $xr7, 0
-                                        # kill: def $vr7 killed $vr7 killed $xr7 def $xr7
-	vinsgr2vr.b	$vr7, $t5, 8
-	vpickve2gr.b	$t5, $vr6, 2
-	xvpermi.d	$xr8, $xr7, 14
-	vinsgr2vr.b	$vr8, $t5, 0
-	xvpickve2gr.d	$t5, $xr7, 1
-	xvpermi.q	$xr7, $xr8, 2
+	xvreplgr2vr.b	$xr7, $t5
+	xvpermi.q	$xr7, $xr8, 18
+	xvpickve2gr.d	$t5, $xr8, 0
+	xvextrins.b	$xr8, $xr7, 136
+	vpickve2gr.b	$t6, $vr6, 2
+	xvreplgr2vr.b	$xr7, $t6
+	xvpermi.q	$xr7, $xr8, 48
+	xvpickve2gr.d	$t6, $xr8, 1
+	xvextrins.b	$xr8, $xr7, 0
 	vpickve2gr.b	$t7, $vr6, 3
-	xvpermi.d	$xr6, $xr7, 14
-	vinsgr2vr.b	$vr6, $t7, 8
-	xvpickve2gr.d	$t7, $xr7, 2
-	xvpermi.q	$xr7, $xr6, 2
+	xvreplgr2vr.b	$xr6, $t7
+	xvpermi.q	$xr6, $xr8, 48
+	xvpickve2gr.d	$t7, $xr8, 2
+	xvextrins.b	$xr8, $xr6, 136
 	vpickve2gr.b	$t8, $vr5, 0
-	vori.b	$vr6, $vr1, 0
-	vinsgr2vr.b	$vr6, $t8, 0
+	xvreplgr2vr.b	$xr6, $t8
+	xvpermi.q	$xr6, $xr1, 18
+	xvori.b	$xr7, $xr1, 0
+	xvextrins.b	$xr7, $xr6, 0
 	vpickve2gr.b	$t8, $vr5, 1
-	xvpickve2gr.d	$s2, $xr6, 0
-                                        # kill: def $vr6 killed $vr6 killed $xr6 def $xr6
-	vinsgr2vr.b	$vr6, $t8, 8
-	vpickve2gr.b	$t8, $vr5, 2
-	xvpermi.d	$xr8, $xr6, 14
-	vinsgr2vr.b	$vr8, $t8, 0
-	xvpickve2gr.d	$t8, $xr6, 1
-	xvpermi.q	$xr6, $xr8, 2
+	xvreplgr2vr.b	$xr6, $t8
+	xvpermi.q	$xr6, $xr7, 18
+	xvpickve2gr.d	$t8, $xr7, 0
+	xvextrins.b	$xr7, $xr6, 136
+	vpickve2gr.b	$s2, $vr5, 2
+	xvreplgr2vr.b	$xr6, $s2
+	xvpermi.q	$xr6, $xr7, 48
+	xvpickve2gr.d	$s2, $xr7, 1
+	xvextrins.b	$xr7, $xr6, 0
 	vpickve2gr.b	$s3, $vr5, 3
-	xvpermi.d	$xr5, $xr6, 14
-	vinsgr2vr.b	$vr5, $s3, 8
-	xvpickve2gr.d	$s3, $xr6, 2
-	xvpermi.q	$xr6, $xr5, 2
+	xvreplgr2vr.b	$xr5, $s3
+	xvpermi.q	$xr5, $xr7, 48
+	xvpickve2gr.d	$s3, $xr7, 2
+	xvextrins.b	$xr7, $xr5, 136
 	ld.d	$s4, $t4, -16
 	ld.d	$s5, $t4, -8
 	ld.d	$s6, $t4, 0
 	ld.d	$s7, $t4, 8
-	xvpickve2gr.d	$s8, $xr7, 3
+	xvpickve2gr.d	$s8, $xr8, 3
 	xvpickve2gr.d	$ra, $xr4, 0
 	xvpickve2gr.d	$s1, $xr4, 1
 	xvpickve2gr.d	$s0, $xr4, 2
 	xvpickve2gr.d	$fp, $xr4, 3
-	xvpickve2gr.d	$a3, $xr6, 3
-	ldx.b	$t6, $s4, $t6
-	ldx.b	$t5, $s5, $t5
+	xvpickve2gr.d	$a3, $xr7, 3
+	ldx.b	$t5, $s4, $t5
+	ldx.b	$t6, $s5, $t6
 	ldx.b	$t7, $s6, $t7
 	ldx.b	$s4, $s7, $s8
-	vinsgr2vr.b	$vr4, $t6, 0
-	vinsgr2vr.b	$vr4, $t5, 1
+	vinsgr2vr.b	$vr4, $t5, 0
+	vinsgr2vr.b	$vr4, $t6, 1
 	vinsgr2vr.b	$vr4, $t7, 2
 	vinsgr2vr.b	$vr4, $s4, 3
-	ldx.b	$t5, $ra, $s2
-	ldx.b	$t6, $s1, $t8
+	ldx.b	$t5, $ra, $t8
+	ldx.b	$t6, $s1, $s2
 	ldx.b	$t7, $s0, $s3
 	ldx.b	$a3, $fp, $a3
 	vinsgr2vr.b	$vr5, $t5, 0

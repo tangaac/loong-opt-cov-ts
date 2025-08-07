@@ -9826,38 +9826,54 @@ qtm_decompress:                         # @qtm_decompress
 	ld.h	$t0, $a4, -24
 	ld.h	$a7, $a4, -28
 	ld.h	$a6, $a4, -32
-	vinsgr2vr.h	$vr0, $t3, 0
-	vinsgr2vr.h	$vr0, $t4, 1
-	vinsgr2vr.h	$vr0, $t5, 2
-	vinsgr2vr.h	$vr0, $t6, 3
-	vinsgr2vr.h	$vr0, $t7, 4
-	vinsgr2vr.h	$vr0, $t8, 5
-	vinsgr2vr.h	$vr0, $s1, 6
-	vinsgr2vr.h	$vr0, $s4, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $ra, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a1, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t2, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a7, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a6, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t3
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $a1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $a7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvaddi.hu	$xr0, $xr0, 8
 	xvstelm.h	$xr0, $a4, 28, 0
 	xvstelm.h	$xr0, $a4, 24, 1
@@ -10313,38 +10329,54 @@ qtm_decompress:                         # @qtm_decompress
 	ld.h	$t1, $a5, -24
 	ld.h	$t0, $a5, -28
 	ld.h	$a7, $a5, -32
-	vinsgr2vr.h	$vr0, $t4, 0
-	vinsgr2vr.h	$vr0, $t5, 1
-	vinsgr2vr.h	$vr0, $t6, 2
-	vinsgr2vr.h	$vr0, $t7, 3
-	vinsgr2vr.h	$vr0, $t8, 4
-	vinsgr2vr.h	$vr0, $s1, 5
-	vinsgr2vr.h	$vr0, $s4, 6
-	vinsgr2vr.h	$vr0, $ra, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a2, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a4, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t3, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t2, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a7, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $a2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $a4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t3
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $a7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvaddi.hu	$xr0, $xr0, 8
 	xvstelm.h	$xr0, $a5, 28, 0
 	xvstelm.h	$xr0, $a5, 24, 1
@@ -10710,38 +10742,54 @@ qtm_decompress:                         # @qtm_decompress
 	ld.h	$t0, $a4, -24
 	ld.h	$a7, $a4, -28
 	ld.h	$a6, $a4, -32
-	vinsgr2vr.h	$vr0, $t3, 0
-	vinsgr2vr.h	$vr0, $t4, 1
-	vinsgr2vr.h	$vr0, $t5, 2
-	vinsgr2vr.h	$vr0, $t6, 3
-	vinsgr2vr.h	$vr0, $t7, 4
-	vinsgr2vr.h	$vr0, $t8, 5
-	vinsgr2vr.h	$vr0, $s1, 6
-	vinsgr2vr.h	$vr0, $s4, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $ra, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a1, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t2, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a7, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a6, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t3
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $a1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $a7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvaddi.hu	$xr0, $xr0, 8
 	xvstelm.h	$xr0, $a4, 28, 0
 	xvstelm.h	$xr0, $a4, 24, 1
@@ -10999,38 +11047,54 @@ qtm_decompress:                         # @qtm_decompress
 	ld.h	$t0, $a4, -24
 	ld.h	$a7, $a4, -28
 	ld.h	$a6, $a4, -32
-	vinsgr2vr.h	$vr0, $t3, 0
-	vinsgr2vr.h	$vr0, $t4, 1
-	vinsgr2vr.h	$vr0, $t5, 2
-	vinsgr2vr.h	$vr0, $t6, 3
-	vinsgr2vr.h	$vr0, $t7, 4
-	vinsgr2vr.h	$vr0, $t8, 5
-	vinsgr2vr.h	$vr0, $s1, 6
-	vinsgr2vr.h	$vr0, $s4, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $ra, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a1, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t2, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a7, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a6, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t3
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $a1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $a7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvaddi.hu	$xr0, $xr0, 8
 	xvstelm.h	$xr0, $a4, 28, 0
 	xvstelm.h	$xr0, $a4, 24, 1
@@ -11284,38 +11348,54 @@ qtm_decompress:                         # @qtm_decompress
 	ld.h	$t0, $a4, -24
 	ld.h	$a7, $a4, -28
 	ld.h	$a6, $a4, -32
-	vinsgr2vr.h	$vr0, $t3, 0
-	vinsgr2vr.h	$vr0, $t4, 1
-	vinsgr2vr.h	$vr0, $t5, 2
-	vinsgr2vr.h	$vr0, $t6, 3
-	vinsgr2vr.h	$vr0, $t7, 4
-	vinsgr2vr.h	$vr0, $t8, 5
-	vinsgr2vr.h	$vr0, $s1, 6
-	vinsgr2vr.h	$vr0, $s4, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $ra, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a1, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t2, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a7, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a6, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t3
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $ra
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $a1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $a7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvaddi.hu	$xr0, $xr0, 8
 	xvstelm.h	$xr0, $a4, 28, 0
 	xvstelm.h	$xr0, $a4, 24, 1
@@ -11688,38 +11768,54 @@ qtm_decompress:                         # @qtm_decompress
 	ld.h	$t0, $a4, -24
 	ld.h	$a7, $a4, -28
 	ld.h	$a6, $a4, -32
-	vinsgr2vr.h	$vr0, $t3, 0
-	vinsgr2vr.h	$vr0, $t4, 1
-	vinsgr2vr.h	$vr0, $t5, 2
-	vinsgr2vr.h	$vr0, $t6, 3
-	vinsgr2vr.h	$vr0, $t7, 4
-	vinsgr2vr.h	$vr0, $t8, 5
-	vinsgr2vr.h	$vr0, $s0, 6
-	vinsgr2vr.h	$vr0, $s1, 7
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s2, 0
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s4, 1
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $s6, 2
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t2, 3
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t1, 4
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $t0, 5
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a7, 6
-	xvpermi.q	$xr0, $xr1, 2
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr1, $a6, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvreplgr2vr.h	$xr0, $t3
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $t4
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $t5
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t6
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t7
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t8
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $s0
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $s1
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr0, $xr1, 119
+	xvreplgr2vr.h	$xr1, $s2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 0
+	xvreplgr2vr.h	$xr1, $s4
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 17
+	xvreplgr2vr.h	$xr1, $s6
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 34
+	xvreplgr2vr.h	$xr1, $t2
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 51
+	xvreplgr2vr.h	$xr1, $t1
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 68
+	xvreplgr2vr.h	$xr1, $t0
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 85
+	xvreplgr2vr.h	$xr1, $a7
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 102
+	xvreplgr2vr.h	$xr1, $a6
+	xvpermi.q	$xr1, $xr0, 48
+	xvextrins.h	$xr0, $xr1, 119
 	xvaddi.hu	$xr0, $xr0, 8
 	xvstelm.h	$xr0, $a4, 28, 0
 	xvstelm.h	$xr0, $a4, 24, 1
@@ -12448,13 +12544,11 @@ qtm_decompress:                         # @qtm_decompress
 	.type	qtm_update_model,@function
 qtm_update_model:                       # @qtm_update_model
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$a1, $a0, 0
 	addi.w	$a1, $a1, -1
 	st.w	$a1, $a0, 0
@@ -12501,15 +12595,15 @@ qtm_update_model:                       # @qtm_update_model
 .LBB14_7:                               # %vector.ph
 	bstrpick.d	$a3, $a1, 30, 4
 	slli.d	$a3, $a3, 4
-	xvpermi.d	$xr0, $xr0, 14
-	vinsgr2vr.h	$vr0, $a4, 7
-	xvpermi.q	$xr0, $xr0, 2
+	xvreplgr2vr.h	$xr0, $a4
+	xvpermi.q	$xr0, $xr0, 48
+	xvextrins.h	$xr1, $xr0, 119
 	addi.d	$a5, $a2, 34
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB14_8:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$s3, $a5, -28
+	ld.h	$a4, $a5, -28
 	ld.h	$s2, $a5, -24
 	ld.h	$s1, $a5, -20
 	ld.h	$s0, $a5, -16
@@ -12524,92 +12618,124 @@ qtm_update_model:                       # @qtm_update_model
 	ld.h	$t1, $a5, 20
 	ld.h	$t0, $a5, 24
 	ld.h	$a7, $a5, 28
+	xvreplgr2vr.h	$xr0, $a4
 	ld.hu	$a4, $a5, 32
-	xvpermi.d	$xr1, $xr0, 14
-	vinsgr2vr.h	$vr0, $s3, 0
-	vinsgr2vr.h	$vr0, $s2, 1
-	vinsgr2vr.h	$vr0, $s1, 2
-	vinsgr2vr.h	$vr0, $s0, 3
-	vinsgr2vr.h	$vr0, $fp, 4
-	vinsgr2vr.h	$vr0, $t8, 5
-	vinsgr2vr.h	$vr0, $t7, 6
-	vinsgr2vr.h	$vr0, $t6, 7
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $t5, 0
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $t4, 1
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $t3, 2
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $t2, 3
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $t1, 4
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $t0, 5
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $a7, 6
-	xvpermi.q	$xr0, $xr2, 2
-	xvpermi.d	$xr2, $xr0, 14
-	vinsgr2vr.h	$vr2, $a4, 7
-	xvpermi.q	$xr0, $xr2, 2
-	vpickve2gr.h	$s4, $vr1, 7
-	vinsgr2vr.h	$vr1, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 1
-	vinsgr2vr.h	$vr1, $s2, 2
-	vinsgr2vr.h	$vr1, $s1, 3
-	vinsgr2vr.h	$vr1, $s0, 4
-	vinsgr2vr.h	$vr1, $fp, 5
-	vinsgr2vr.h	$vr1, $t8, 6
-	vinsgr2vr.h	$vr1, $t7, 7
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t6, 0
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t5, 1
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t4, 2
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t3, 3
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t2, 4
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t1, 5
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $t0, 6
-	xvpermi.q	$xr1, $xr2, 2
-	xvpermi.d	$xr2, $xr1, 14
-	vinsgr2vr.h	$vr2, $a7, 7
-	xvpermi.q	$xr1, $xr2, 2
-	xvsub.h	$xr1, $xr1, $xr0
-	xvaddi.hu	$xr1, $xr1, 1
-	xvsrli.h	$xr1, $xr1, 1
-	xvstelm.h	$xr1, $a5, -32, 0
-	xvstelm.h	$xr1, $a5, -28, 1
-	xvstelm.h	$xr1, $a5, -24, 2
-	xvstelm.h	$xr1, $a5, -20, 3
-	xvstelm.h	$xr1, $a5, -16, 4
-	xvstelm.h	$xr1, $a5, -12, 5
-	xvstelm.h	$xr1, $a5, -8, 6
-	xvstelm.h	$xr1, $a5, -4, 7
-	xvstelm.h	$xr1, $a5, 0, 8
-	xvstelm.h	$xr1, $a5, 4, 9
-	xvstelm.h	$xr1, $a5, 8, 10
-	xvstelm.h	$xr1, $a5, 12, 11
-	xvstelm.h	$xr1, $a5, 16, 12
-	xvstelm.h	$xr1, $a5, 20, 13
-	xvstelm.h	$xr1, $a5, 24, 14
-	xvstelm.h	$xr1, $a5, 28, 15
+	xvori.b	$xr3, $xr0, 0
+	xvpermi.q	$xr3, $xr0, 18
+	xvreplgr2vr.h	$xr2, $s2
+	xvpermi.d	$xr16, $xr1, 14
+	xvextrins.h	$xr1, $xr3, 0
+	xvori.b	$xr4, $xr2, 0
+	xvpermi.q	$xr4, $xr1, 18
+	xvreplgr2vr.h	$xr3, $s1
+	xvextrins.h	$xr1, $xr4, 17
+	xvori.b	$xr5, $xr3, 0
+	xvpermi.q	$xr5, $xr1, 18
+	xvreplgr2vr.h	$xr4, $s0
+	xvextrins.h	$xr1, $xr5, 34
+	xvori.b	$xr6, $xr4, 0
+	xvpermi.q	$xr6, $xr1, 18
+	xvreplgr2vr.h	$xr5, $fp
+	xvextrins.h	$xr1, $xr6, 51
+	xvori.b	$xr7, $xr5, 0
+	xvpermi.q	$xr7, $xr1, 18
+	xvreplgr2vr.h	$xr6, $t8
+	xvextrins.h	$xr1, $xr7, 68
+	xvori.b	$xr8, $xr6, 0
+	xvpermi.q	$xr8, $xr1, 18
+	xvreplgr2vr.h	$xr7, $t7
+	xvextrins.h	$xr1, $xr8, 85
+	xvori.b	$xr9, $xr7, 0
+	xvpermi.q	$xr9, $xr1, 18
+	xvreplgr2vr.h	$xr8, $t6
+	xvextrins.h	$xr1, $xr9, 102
+	xvori.b	$xr10, $xr8, 0
+	xvpermi.q	$xr10, $xr1, 18
+	xvreplgr2vr.h	$xr9, $t5
+	xvextrins.h	$xr1, $xr10, 119
+	xvori.b	$xr11, $xr9, 0
+	xvpermi.q	$xr11, $xr1, 48
+	xvreplgr2vr.h	$xr10, $t4
+	xvextrins.h	$xr1, $xr11, 0
+	xvori.b	$xr12, $xr10, 0
+	xvpermi.q	$xr12, $xr1, 48
+	xvreplgr2vr.h	$xr11, $t3
+	xvextrins.h	$xr1, $xr12, 17
+	xvori.b	$xr13, $xr11, 0
+	xvpermi.q	$xr13, $xr1, 48
+	xvreplgr2vr.h	$xr12, $t2
+	xvextrins.h	$xr1, $xr13, 34
+	xvori.b	$xr14, $xr12, 0
+	xvpermi.q	$xr14, $xr1, 48
+	xvreplgr2vr.h	$xr13, $t1
+	xvextrins.h	$xr1, $xr14, 51
+	xvori.b	$xr15, $xr13, 0
+	xvpermi.q	$xr15, $xr1, 48
+	xvreplgr2vr.h	$xr14, $t0
+	xvextrins.h	$xr1, $xr15, 68
+	xvori.b	$xr17, $xr14, 0
+	xvpermi.q	$xr17, $xr1, 48
+	xvreplgr2vr.h	$xr15, $a7
+	xvextrins.h	$xr1, $xr17, 85
+	xvori.b	$xr17, $xr15, 0
+	xvpermi.q	$xr17, $xr1, 48
+	xvextrins.h	$xr1, $xr17, 102
+	xvreplgr2vr.h	$xr17, $a4
+	xvpermi.q	$xr17, $xr1, 48
+	xvextrins.h	$xr1, $xr17, 119
+	vpickve2gr.h	$a7, $vr16, 7
+	xvreplgr2vr.h	$xr16, $a7
+	xvpermi.q	$xr16, $xr0, 18
+	xvextrins.h	$xr16, $xr16, 0
+	xvpermi.q	$xr0, $xr16, 18
+	xvextrins.h	$xr16, $xr0, 17
+	xvpermi.q	$xr2, $xr16, 18
+	xvextrins.h	$xr16, $xr2, 34
+	xvpermi.q	$xr3, $xr16, 18
+	xvextrins.h	$xr16, $xr3, 51
+	xvpermi.q	$xr4, $xr16, 18
+	xvextrins.h	$xr16, $xr4, 68
+	xvpermi.q	$xr5, $xr16, 18
+	xvextrins.h	$xr16, $xr5, 85
+	xvpermi.q	$xr6, $xr16, 18
+	xvextrins.h	$xr16, $xr6, 102
+	xvpermi.q	$xr7, $xr16, 18
+	xvextrins.h	$xr16, $xr7, 119
+	xvpermi.q	$xr8, $xr16, 48
+	xvextrins.h	$xr16, $xr8, 0
+	xvpermi.q	$xr9, $xr16, 48
+	xvextrins.h	$xr16, $xr9, 17
+	xvpermi.q	$xr10, $xr16, 48
+	xvextrins.h	$xr16, $xr10, 34
+	xvpermi.q	$xr11, $xr16, 48
+	xvextrins.h	$xr16, $xr11, 51
+	xvpermi.q	$xr12, $xr16, 48
+	xvextrins.h	$xr16, $xr12, 68
+	xvpermi.q	$xr13, $xr16, 48
+	xvextrins.h	$xr16, $xr13, 85
+	xvpermi.q	$xr14, $xr16, 48
+	xvextrins.h	$xr16, $xr14, 102
+	xvpermi.q	$xr15, $xr16, 48
+	xvextrins.h	$xr16, $xr15, 119
+	xvsub.h	$xr0, $xr16, $xr1
+	xvaddi.hu	$xr0, $xr0, 1
+	xvsrli.h	$xr0, $xr0, 1
+	xvstelm.h	$xr0, $a5, -32, 0
+	xvstelm.h	$xr0, $a5, -28, 1
+	xvstelm.h	$xr0, $a5, -24, 2
+	xvstelm.h	$xr0, $a5, -20, 3
+	xvstelm.h	$xr0, $a5, -16, 4
+	xvstelm.h	$xr0, $a5, -12, 5
+	xvstelm.h	$xr0, $a5, -8, 6
+	xvstelm.h	$xr0, $a5, -4, 7
+	xvstelm.h	$xr0, $a5, 0, 8
+	xvstelm.h	$xr0, $a5, 4, 9
+	xvstelm.h	$xr0, $a5, 8, 10
+	xvstelm.h	$xr0, $a5, 12, 11
+	xvstelm.h	$xr0, $a5, 16, 12
+	xvstelm.h	$xr0, $a5, 20, 13
+	xvstelm.h	$xr0, $a5, 24, 14
+	xvstelm.h	$xr0, $a5, 28, 15
 	addi.d	$a6, $a6, -16
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB14_8
@@ -12699,13 +12825,11 @@ qtm_update_model:                       # @qtm_update_model
 	st.h	$a4, $a3, 2
 	bne	$a1, $a2, .LBB14_23
 .LBB14_24:                              # %.loopexit
-	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end14:
 	.size	qtm_update_model, .Lfunc_end14-qtm_update_model

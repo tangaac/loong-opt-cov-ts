@@ -6510,10 +6510,18 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bstrpick.d	$a0, $s0, 30, 6
 	move	$a3, $s2
 	slli.d	$s2, $a0, 6
-	vinsgr2vr.b	$vr0, $s4, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	vinsgr2vr.b	$vr2, $s5, 0
-	vinsgr2vr.b	$vr3, $s3, 0
+	xvreplgr2vr.b	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvreplgr2vr.b	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr1, $xr1, 0
+	xvreplgr2vr.b	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr2, $xr2, 0
+	xvreplgr2vr.b	$xr3, $s3
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr3, $xr3, 0
 	xvand.v	$xr0, $xr0, $xr1
 	xvand.v	$xr0, $xr0, $xr2
 	xvand.v	$xr0, $xr0, $xr3
@@ -7138,10 +7146,18 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bstrpick.d	$a0, $s0, 30, 6
 	move	$a3, $s2
 	slli.d	$s2, $a0, 6
-	vinsgr2vr.b	$vr0, $s4, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	vinsgr2vr.b	$vr2, $s5, 0
-	vinsgr2vr.b	$vr3, $s3, 0
+	xvreplgr2vr.b	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvreplgr2vr.b	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr1, $xr1, 0
+	xvreplgr2vr.b	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr2, $xr2, 0
+	xvreplgr2vr.b	$xr3, $s3
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr3, $xr3, 0
 	xvor.v	$xr0, $xr0, $xr1
 	xvor.v	$xr0, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr3
@@ -7766,10 +7782,18 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bstrpick.d	$a0, $s0, 30, 6
 	move	$a3, $s2
 	slli.d	$s2, $a0, 6
-	vinsgr2vr.b	$vr0, $s4, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	vinsgr2vr.b	$vr2, $s5, 0
-	vinsgr2vr.b	$vr3, $s3, 0
+	xvreplgr2vr.b	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvreplgr2vr.b	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr1, $xr1, 0
+	xvreplgr2vr.b	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr2, $xr2, 0
+	xvreplgr2vr.b	$xr3, $s3
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr3, $xr3, 0
 	xvxor.v	$xr0, $xr0, $xr1
 	xvxor.v	$xr0, $xr0, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
@@ -12133,10 +12157,18 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bstrpick.d	$a0, $s0, 30, 6
 	move	$a3, $s2
 	slli.d	$s2, $a0, 6
-	vinsgr2vr.b	$vr0, $s4, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	vinsgr2vr.b	$vr2, $s5, 0
-	vinsgr2vr.b	$vr3, $s3, 0
+	xvreplgr2vr.b	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvreplgr2vr.b	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr1, $xr1, 0
+	xvreplgr2vr.b	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr2, $xr2, 0
+	xvreplgr2vr.b	$xr3, $s3
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr3, $xr3, 0
 	xvand.v	$xr0, $xr0, $xr1
 	xvand.v	$xr0, $xr0, $xr2
 	xvand.v	$xr0, $xr0, $xr3
@@ -12761,10 +12793,18 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bstrpick.d	$a0, $s0, 30, 6
 	move	$a3, $s2
 	slli.d	$s2, $a0, 6
-	vinsgr2vr.b	$vr0, $s4, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	vinsgr2vr.b	$vr2, $s5, 0
-	vinsgr2vr.b	$vr3, $s3, 0
+	xvreplgr2vr.b	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvreplgr2vr.b	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr1, $xr1, 0
+	xvreplgr2vr.b	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr2, $xr2, 0
+	xvreplgr2vr.b	$xr3, $s3
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr3, $xr3, 0
 	xvor.v	$xr0, $xr0, $xr1
 	xvor.v	$xr0, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr3
@@ -13389,10 +13429,18 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bstrpick.d	$a0, $s0, 30, 6
 	move	$a3, $s2
 	slli.d	$s2, $a0, 6
-	vinsgr2vr.b	$vr0, $s4, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	vinsgr2vr.b	$vr2, $s5, 0
-	vinsgr2vr.b	$vr3, $s3, 0
+	xvreplgr2vr.b	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.b	$xr0, $xr0, 0
+	xvreplgr2vr.b	$xr1, $a3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.b	$xr1, $xr1, 0
+	xvreplgr2vr.b	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.b	$xr2, $xr2, 0
+	xvreplgr2vr.b	$xr3, $s3
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.b	$xr3, $xr3, 0
 	xvxor.v	$xr0, $xr0, $xr1
 	xvxor.v	$xr0, $xr0, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
@@ -17668,10 +17716,18 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 5
 	slli.d	$s2, $a0, 5
-	vinsgr2vr.h	$vr0, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 0
-	vinsgr2vr.h	$vr2, $s5, 0
-	vinsgr2vr.h	$vr3, $s6, 0
+	xvreplgr2vr.h	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $s3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr1, $xr1, 0
+	xvreplgr2vr.h	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.h	$xr2, $xr2, 0
+	xvreplgr2vr.h	$xr3, $s6
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.h	$xr3, $xr3, 0
 	xvand.v	$xr0, $xr0, $xr1
 	xvand.v	$xr0, $xr0, $xr2
 	xvand.v	$xr0, $xr0, $xr3
@@ -18304,10 +18360,18 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 5
 	slli.d	$s2, $a0, 5
-	vinsgr2vr.h	$vr0, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 0
-	vinsgr2vr.h	$vr2, $s5, 0
-	vinsgr2vr.h	$vr3, $s6, 0
+	xvreplgr2vr.h	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $s3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr1, $xr1, 0
+	xvreplgr2vr.h	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.h	$xr2, $xr2, 0
+	xvreplgr2vr.h	$xr3, $s6
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.h	$xr3, $xr3, 0
 	xvor.v	$xr0, $xr0, $xr1
 	xvor.v	$xr0, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr3
@@ -18940,10 +19004,18 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 5
 	slli.d	$s2, $a0, 5
-	vinsgr2vr.h	$vr0, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 0
-	vinsgr2vr.h	$vr2, $s5, 0
-	vinsgr2vr.h	$vr3, $s6, 0
+	xvreplgr2vr.h	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $s3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr1, $xr1, 0
+	xvreplgr2vr.h	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.h	$xr2, $xr2, 0
+	xvreplgr2vr.h	$xr3, $s6
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.h	$xr3, $xr3, 0
 	xvxor.v	$xr0, $xr0, $xr1
 	xvxor.v	$xr0, $xr0, $xr2
 	xvxor.v	$xr0, $xr0, $xr3
@@ -23343,10 +23415,18 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 5
 	slli.d	$s2, $a0, 5
-	vinsgr2vr.h	$vr0, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 0
-	vinsgr2vr.h	$vr2, $s5, 0
-	vinsgr2vr.h	$vr3, $s6, 0
+	xvreplgr2vr.h	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $s3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr1, $xr1, 0
+	xvreplgr2vr.h	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.h	$xr2, $xr2, 0
+	xvreplgr2vr.h	$xr3, $s6
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.h	$xr3, $xr3, 0
 	xvand.v	$xr0, $xr0, $xr1
 	xvand.v	$xr0, $xr0, $xr2
 	xvand.v	$xr0, $xr0, $xr3
@@ -23979,10 +24059,18 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 5
 	slli.d	$s2, $a0, 5
-	vinsgr2vr.h	$vr0, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 0
-	vinsgr2vr.h	$vr2, $s5, 0
-	vinsgr2vr.h	$vr3, $s6, 0
+	xvreplgr2vr.h	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $s3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr1, $xr1, 0
+	xvreplgr2vr.h	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.h	$xr2, $xr2, 0
+	xvreplgr2vr.h	$xr3, $s6
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.h	$xr3, $xr3, 0
 	xvor.v	$xr0, $xr0, $xr1
 	xvor.v	$xr0, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr3
@@ -24615,10 +24703,18 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	move	$s7, $zero
 	bstrpick.d	$a0, $s0, 30, 5
 	slli.d	$s2, $a0, 5
-	vinsgr2vr.h	$vr0, $s4, 0
-	vinsgr2vr.h	$vr1, $s3, 0
-	vinsgr2vr.h	$vr2, $s5, 0
-	vinsgr2vr.h	$vr3, $s6, 0
+	xvreplgr2vr.h	$xr0, $s4
+	xvpermi.q	$xr0, $xr0, 18
+	xvextrins.h	$xr0, $xr0, 0
+	xvreplgr2vr.h	$xr1, $s3
+	xvpermi.q	$xr1, $xr0, 18
+	xvextrins.h	$xr1, $xr1, 0
+	xvreplgr2vr.h	$xr2, $s5
+	xvpermi.q	$xr2, $xr0, 18
+	xvextrins.h	$xr2, $xr2, 0
+	xvreplgr2vr.h	$xr3, $s6
+	xvpermi.q	$xr3, $xr0, 18
+	xvextrins.h	$xr3, $xr3, 0
 	xvxor.v	$xr0, $xr0, $xr1
 	xvxor.v	$xr0, $xr0, $xr2
 	xvxor.v	$xr0, $xr0, $xr3

@@ -7334,14 +7334,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve2gr.d	$t0, $xr6, 3
-	xvinsgr2vr.d	$xr6, $t0, 0
-	xvpickve2gr.d	$t0, $xr0, 0
-	xvinsgr2vr.d	$xr6, $t0, 1
-	xvpickve2gr.d	$t0, $xr0, 1
-	xvinsgr2vr.d	$xr6, $t0, 2
-	xvpickve2gr.d	$t0, $xr0, 2
-	xvinsgr2vr.d	$xr6, $t0, 3
+	xvpickve.d	$xr6, $xr6, 3
+	xvinsve0.d	$xr6, $xr6, 0
+	xvpickve.d	$xr7, $xr0, 0
+	xvinsve0.d	$xr6, $xr7, 1
+	xvpickve.d	$xr7, $xr0, 1
+	xvinsve0.d	$xr6, $xr7, 2
+	xvpickve.d	$xr7, $xr0, 2
+	xvinsve0.d	$xr6, $xr7, 3
 	xvand.v	$xr6, $xr6, $xr1
 	xvldx	$xr7, $a7, $a5
 	xvand.v	$xr8, $xr0, $xr2
@@ -7845,14 +7845,14 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s2, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve2gr.d	$a3, $xr3, 3
-	xvinsgr2vr.d	$xr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 0
-	xvinsgr2vr.d	$xr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 1
-	xvinsgr2vr.d	$xr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 2
-	xvinsgr2vr.d	$xr3, $a3, 3
+	xvpickve.d	$xr3, $xr3, 3
+	xvinsve0.d	$xr3, $xr3, 0
+	xvpickve.d	$xr4, $xr2, 0
+	xvinsve0.d	$xr3, $xr4, 1
+	xvpickve.d	$xr4, $xr2, 1
+	xvinsve0.d	$xr3, $xr4, 2
+	xvpickve.d	$xr4, $xr2, 2
+	xvinsve0.d	$xr3, $xr4, 3
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s5
 	xvand.v	$xr5, $xr2, $xr7

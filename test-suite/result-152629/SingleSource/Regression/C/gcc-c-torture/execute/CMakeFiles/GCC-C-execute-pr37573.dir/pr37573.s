@@ -253,22 +253,22 @@ foo:                                    # @foo
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a6, $a0, $a4
 	xvld	$xr0, $a6, 16
-	xvpickve2gr.w	$a7, $xr6, 7
-	xvinsgr2vr.w	$xr6, $a7, 0
-	xvpickve2gr.w	$a7, $xr0, 0
-	xvinsgr2vr.w	$xr6, $a7, 1
-	xvpickve2gr.w	$a7, $xr0, 1
-	xvinsgr2vr.w	$xr6, $a7, 2
-	xvpickve2gr.w	$a7, $xr0, 2
-	xvinsgr2vr.w	$xr6, $a7, 3
-	xvpickve2gr.w	$a7, $xr0, 3
-	xvinsgr2vr.w	$xr6, $a7, 4
-	xvpickve2gr.w	$a7, $xr0, 4
-	xvinsgr2vr.w	$xr6, $a7, 5
-	xvpickve2gr.w	$a7, $xr0, 5
-	xvinsgr2vr.w	$xr6, $a7, 6
-	xvpickve2gr.w	$a7, $xr0, 6
-	xvinsgr2vr.w	$xr6, $a7, 7
+	xvpickve.w	$xr6, $xr6, 7
+	xvinsve0.w	$xr6, $xr6, 0
+	xvpickve.w	$xr7, $xr0, 0
+	xvinsve0.w	$xr6, $xr7, 1
+	xvpickve.w	$xr7, $xr0, 1
+	xvinsve0.w	$xr6, $xr7, 2
+	xvpickve.w	$xr7, $xr0, 2
+	xvinsve0.w	$xr6, $xr7, 3
+	xvpickve.w	$xr7, $xr0, 3
+	xvinsve0.w	$xr6, $xr7, 4
+	xvpickve.w	$xr7, $xr0, 4
+	xvinsve0.w	$xr6, $xr7, 5
+	xvpickve.w	$xr7, $xr0, 5
+	xvinsve0.w	$xr6, $xr7, 6
+	xvpickve.w	$xr7, $xr0, 6
+	xvinsve0.w	$xr6, $xr7, 7
 	xvand.v	$xr7, $xr0, $xr1
 	xvand.v	$xr6, $xr6, $xr2
 	xvor.v	$xr6, $xr7, $xr6

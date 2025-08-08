@@ -57,10 +57,10 @@ _Z18ConvertUInt32ToHexjPw:              # @_Z18ConvertUInt32ToHexjPw
 	xvinsgr2vr.w	$xr2, $a3, 3
 	xvinsgr2vr.w	$xr2, $a2, 6
 	xvinsgr2vr.w	$xr2, $a0, 7
-	xvpickve2gr.d	$a2, $xr1, 0
-	xvpickve2gr.d	$a3, $xr2, 3
-	xvinsgr2vr.d	$xr2, $a2, 2
-	xvinsgr2vr.d	$xr2, $a3, 3
+	xvpickve.d	$xr0, $xr1, 0
+	xvpickve.d	$xr1, $xr2, 3
+	xvinsve0.d	$xr2, $xr0, 2
+	xvinsve0.d	$xr2, $xr1, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
 	xvld	$xr0, $a2, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
@@ -331,10 +331,10 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	xvinsgr2vr.w	$xr3, $a3, 3
 	xvinsgr2vr.w	$xr3, $a2, 6
 	xvinsgr2vr.w	$xr3, $a1, 7
-	xvpickve2gr.d	$a2, $xr1, 0
-	xvpickve2gr.d	$a3, $xr3, 3
-	xvinsgr2vr.d	$xr3, $a2, 2
-	xvinsgr2vr.d	$xr3, $a3, 3
+	xvpickve.d	$xr0, $xr1, 0
+	xvpickve.d	$xr1, $xr3, 3
+	xvinsve0.d	$xr3, $xr0, 2
+	xvinsve0.d	$xr3, $xr1, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI1_6)
 	xvld	$xr0, $a2, %pc_lo12(.LCPI1_6)
 	pcalau12i	$a2, %pc_hi20(.LCPI1_7)

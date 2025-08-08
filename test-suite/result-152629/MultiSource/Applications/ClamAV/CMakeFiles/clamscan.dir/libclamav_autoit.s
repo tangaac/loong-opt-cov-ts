@@ -4892,22 +4892,22 @@ MT_decrypt:                             # @MT_decrypt
 	xvori.b	$xr11, $xr10, 0
 	add.d	$a2, $a3, $t7
 	xvld	$xr10, $a2, 4
-	xvpickve2gr.w	$t8, $xr11, 7
-	xvinsgr2vr.w	$xr11, $t8, 0
-	xvpickve2gr.w	$t8, $xr10, 0
-	xvinsgr2vr.w	$xr11, $t8, 1
-	xvpickve2gr.w	$t8, $xr10, 1
-	xvinsgr2vr.w	$xr11, $t8, 2
-	xvpickve2gr.w	$t8, $xr10, 2
-	xvinsgr2vr.w	$xr11, $t8, 3
-	xvpickve2gr.w	$t8, $xr10, 3
-	xvinsgr2vr.w	$xr11, $t8, 4
-	xvpickve2gr.w	$t8, $xr10, 4
-	xvinsgr2vr.w	$xr11, $t8, 5
-	xvpickve2gr.w	$t8, $xr10, 5
-	xvinsgr2vr.w	$xr11, $t8, 6
-	xvpickve2gr.w	$t8, $xr10, 6
-	xvinsgr2vr.w	$xr11, $t8, 7
+	xvpickve.w	$xr11, $xr11, 7
+	xvinsve0.w	$xr11, $xr11, 0
+	xvpickve.w	$xr12, $xr10, 0
+	xvinsve0.w	$xr11, $xr12, 1
+	xvpickve.w	$xr12, $xr10, 1
+	xvinsve0.w	$xr11, $xr12, 2
+	xvpickve.w	$xr12, $xr10, 2
+	xvinsve0.w	$xr11, $xr12, 3
+	xvpickve.w	$xr12, $xr10, 3
+	xvinsve0.w	$xr11, $xr12, 4
+	xvpickve.w	$xr12, $xr10, 4
+	xvinsve0.w	$xr11, $xr12, 5
+	xvpickve.w	$xr12, $xr10, 5
+	xvinsve0.w	$xr11, $xr12, 6
+	xvpickve.w	$xr12, $xr10, 6
+	xvinsve0.w	$xr11, $xr12, 7
 	xvand.v	$xr12, $xr10, $xr0
 	xvand.v	$xr11, $xr11, $xr1
 	xvor.v	$xr11, $xr12, $xr11

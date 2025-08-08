@@ -1227,14 +1227,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve2gr.d	$t0, $xr6, 3
-	xvinsgr2vr.d	$xr6, $t0, 0
-	xvpickve2gr.d	$t0, $xr0, 0
-	xvinsgr2vr.d	$xr6, $t0, 1
-	xvpickve2gr.d	$t0, $xr0, 1
-	xvinsgr2vr.d	$xr6, $t0, 2
-	xvpickve2gr.d	$t0, $xr0, 2
-	xvinsgr2vr.d	$xr6, $t0, 3
+	xvpickve.d	$xr6, $xr6, 3
+	xvinsve0.d	$xr6, $xr6, 0
+	xvpickve.d	$xr7, $xr0, 0
+	xvinsve0.d	$xr6, $xr7, 1
+	xvpickve.d	$xr7, $xr0, 1
+	xvinsve0.d	$xr6, $xr7, 2
+	xvpickve.d	$xr7, $xr0, 2
+	xvinsve0.d	$xr6, $xr7, 3
 	xvand.v	$xr6, $xr6, $xr1
 	xvldx	$xr7, $a7, $a5
 	xvand.v	$xr8, $xr0, $xr2

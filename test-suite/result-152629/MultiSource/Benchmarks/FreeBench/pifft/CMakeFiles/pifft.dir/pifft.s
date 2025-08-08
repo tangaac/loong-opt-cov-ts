@@ -463,21 +463,21 @@ main:                                   # @main
 	add.d	$a2, $a2, $a5
 	bstrpick.d	$a2, $a2, 31, 0
 	addi.d	$a4, $a2, -2
-	ori	$t1, $zero, 2
+	ori	$t0, $zero, 2
 	slli.d	$a1, $a1, 2
 	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 240                   # 8-byte Folded Reload
-	xvld	$xr3, $sp, 128                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
 	ori	$a6, $zero, 8
 	bltu	$a4, $a6, .LBB0_21
 # %bb.18:                               # %vector.ph
                                         #   in Loop: Header=BB0_15 Depth=1
 	move	$a6, $a4
 	bstrins.d	$a6, $zero, 2, 0
-	move	$t1, $a4
+	move	$t0, $a4
 	ori	$a7, $zero, 2
-	bstrins.d	$t1, $a7, 2, 0
+	bstrins.d	$t0, $a7, 2, 0
 	xvinsgr2vr.w	$xr0, $a5, 7
 	move	$a5, $a6
 	ld.d	$a7, $sp, 88                    # 8-byte Folded Reload
@@ -486,25 +486,25 @@ main:                                   # @main
                                         #   Parent Loop BB0_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvldx	$xr1, $a7, $a1
-	xvand.v	$xr2, $xr1, $xr4
-	xvpickve2gr.w	$t0, $xr0, 7
+	xvand.v	$xr2, $xr1, $xr5
+	xvpickve.w	$xr3, $xr0, 7
 	xvneg.w	$xr0, $xr2
-	xvinsgr2vr.w	$xr2, $t0, 0
-	xvpickve2gr.w	$t0, $xr0, 0
-	xvinsgr2vr.w	$xr2, $t0, 1
-	xvpickve2gr.w	$t0, $xr0, 1
-	xvinsgr2vr.w	$xr2, $t0, 2
-	xvpickve2gr.w	$t0, $xr0, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvpickve2gr.w	$t0, $xr0, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvpickve2gr.w	$t0, $xr0, 4
-	xvinsgr2vr.w	$xr2, $t0, 5
-	xvpickve2gr.w	$t0, $xr0, 5
-	xvinsgr2vr.w	$xr2, $t0, 6
-	xvpickve2gr.w	$t0, $xr0, 6
-	xvinsgr2vr.w	$xr2, $t0, 7
-	xvand.v	$xr2, $xr2, $xr3
+	xvinsve0.w	$xr2, $xr3, 0
+	xvpickve.w	$xr3, $xr0, 0
+	xvinsve0.w	$xr2, $xr3, 1
+	xvpickve.w	$xr3, $xr0, 1
+	xvinsve0.w	$xr2, $xr3, 2
+	xvpickve.w	$xr3, $xr0, 2
+	xvinsve0.w	$xr2, $xr3, 3
+	xvpickve.w	$xr3, $xr0, 3
+	xvinsve0.w	$xr2, $xr3, 4
+	xvpickve.w	$xr3, $xr0, 4
+	xvinsve0.w	$xr2, $xr3, 5
+	xvpickve.w	$xr3, $xr0, 5
+	xvinsve0.w	$xr2, $xr3, 6
+	xvpickve.w	$xr3, $xr0, 6
+	xvinsve0.w	$xr2, $xr3, 7
+	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 1
 	xvst	$xr1, $a7, 0
@@ -517,8 +517,8 @@ main:                                   # @main
 	beq	$a4, $a6, .LBB0_23
 .LBB0_21:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_15 Depth=1
-	sub.d	$a2, $a2, $t1
-	alsl.d	$a7, $t1, $s7, 2
+	sub.d	$a2, $a2, $t0
+	alsl.d	$a7, $t0, $s7, 2
 	.p2align	4, , 16
 .LBB0_22:                               # %.lr.ph.i
                                         #   Parent Loop BB0_15 Depth=1
@@ -564,8 +564,8 @@ main:                                   # @main
 	addi.d	$a5, $a3, -2
 	ori	$a6, $zero, 8
 	slli.d	$a1, $a1, 2
-	xvld	$xr3, $sp, 128                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
 	bltu	$a5, $a6, .LBB0_30
 # %bb.27:                               # %vector.ph330
 	move	$a6, $a5
@@ -580,25 +580,25 @@ main:                                   # @main
 .LBB0_28:                               # %vector.body335
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr1, $a7, $a1
-	xvand.v	$xr2, $xr1, $xr4
-	xvpickve2gr.w	$t0, $xr0, 7
+	xvand.v	$xr2, $xr1, $xr5
+	xvpickve.w	$xr3, $xr0, 7
 	xvneg.w	$xr0, $xr2
-	xvinsgr2vr.w	$xr2, $t0, 0
-	xvpickve2gr.w	$t0, $xr0, 0
-	xvinsgr2vr.w	$xr2, $t0, 1
-	xvpickve2gr.w	$t0, $xr0, 1
-	xvinsgr2vr.w	$xr2, $t0, 2
-	xvpickve2gr.w	$t0, $xr0, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvpickve2gr.w	$t0, $xr0, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvpickve2gr.w	$t0, $xr0, 4
-	xvinsgr2vr.w	$xr2, $t0, 5
-	xvpickve2gr.w	$t0, $xr0, 5
-	xvinsgr2vr.w	$xr2, $t0, 6
-	xvpickve2gr.w	$t0, $xr0, 6
-	xvinsgr2vr.w	$xr2, $t0, 7
-	xvand.v	$xr2, $xr2, $xr3
+	xvinsve0.w	$xr2, $xr3, 0
+	xvpickve.w	$xr3, $xr0, 0
+	xvinsve0.w	$xr2, $xr3, 1
+	xvpickve.w	$xr3, $xr0, 1
+	xvinsve0.w	$xr2, $xr3, 2
+	xvpickve.w	$xr3, $xr0, 2
+	xvinsve0.w	$xr2, $xr3, 3
+	xvpickve.w	$xr3, $xr0, 3
+	xvinsve0.w	$xr2, $xr3, 4
+	xvpickve.w	$xr3, $xr0, 4
+	xvinsve0.w	$xr2, $xr3, 5
+	xvpickve.w	$xr3, $xr0, 5
+	xvinsve0.w	$xr2, $xr3, 6
+	xvpickve.w	$xr3, $xr0, 6
+	xvinsve0.w	$xr2, $xr3, 7
+	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 1
 	xvst	$xr1, $a7, 0
@@ -752,38 +752,38 @@ main:                                   # @main
 	bstrins.d	$a2, $a7, 2, 0
 	xvinsgr2vr.w	$xr0, $a4, 7
 	move	$a4, $a6
-	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
-	xvld	$xr3, $sp, 128                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 96                   # 32-byte Folded Reload
+	ld.d	$a7, $sp, 88                    # 8-byte Folded Reload
+	xvld	$xr4, $sp, 128                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
 	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_39:                               # %vector.body354
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr1, $t0, $a1
-	xvand.v	$xr2, $xr1, $xr4
-	xvpickve2gr.w	$a7, $xr0, 7
+	xvldx	$xr1, $a7, $a1
+	xvand.v	$xr2, $xr1, $xr5
+	xvpickve.w	$xr3, $xr0, 7
 	xvneg.w	$xr0, $xr2
-	xvinsgr2vr.w	$xr2, $a7, 0
-	xvpickve2gr.w	$a7, $xr0, 0
-	xvinsgr2vr.w	$xr2, $a7, 1
-	xvpickve2gr.w	$a7, $xr0, 1
-	xvinsgr2vr.w	$xr2, $a7, 2
-	xvpickve2gr.w	$a7, $xr0, 2
-	xvinsgr2vr.w	$xr2, $a7, 3
-	xvpickve2gr.w	$a7, $xr0, 3
-	xvinsgr2vr.w	$xr2, $a7, 4
-	xvpickve2gr.w	$a7, $xr0, 4
-	xvinsgr2vr.w	$xr2, $a7, 5
-	xvpickve2gr.w	$a7, $xr0, 5
-	xvinsgr2vr.w	$xr2, $a7, 6
-	xvpickve2gr.w	$a7, $xr0, 6
-	xvinsgr2vr.w	$xr2, $a7, 7
-	xvand.v	$xr2, $xr2, $xr3
+	xvinsve0.w	$xr2, $xr3, 0
+	xvpickve.w	$xr3, $xr0, 0
+	xvinsve0.w	$xr2, $xr3, 1
+	xvpickve.w	$xr3, $xr0, 1
+	xvinsve0.w	$xr2, $xr3, 2
+	xvpickve.w	$xr3, $xr0, 2
+	xvinsve0.w	$xr2, $xr3, 3
+	xvpickve.w	$xr3, $xr0, 3
+	xvinsve0.w	$xr2, $xr3, 4
+	xvpickve.w	$xr3, $xr0, 4
+	xvinsve0.w	$xr2, $xr3, 5
+	xvpickve.w	$xr3, $xr0, 5
+	xvinsve0.w	$xr2, $xr3, 6
+	xvpickve.w	$xr3, $xr0, 6
+	xvinsve0.w	$xr2, $xr3, 7
+	xvand.v	$xr2, $xr2, $xr4
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 1
-	xvst	$xr1, $t0, 0
+	xvst	$xr1, $a7, 0
 	addi.d	$a4, $a4, -8
-	addi.d	$t0, $t0, 32
+	addi.d	$a7, $a7, 32
 	bnez	$a4, .LBB0_39
 # %bb.40:                               # %middle.block361
 	xvpickve2gr.w	$a4, $xr0, 7

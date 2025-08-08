@@ -521,13 +521,13 @@ gs_type1_interpret:                     # @gs_type1_interpret
 	b	.LBB4_63
 .LBB4_23:                               #   in Loop: Header=BB4_12 Depth=2
 	xvld	$xr0, $sp, 200
-	xvpickve2gr.d	$a0, $xr0, 0
-	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
-	xvinsgr2vr.d	$xr1, $a0, 0
-	xvpickve2gr.d	$a0, $xr0, 1
-	xvinsgr2vr.d	$xr1, $a0, 2
+	xvpickve.d	$xr1, $xr0, 0
+	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
+	xvinsve0.d	$xr2, $xr1, 0
+	xvpickve.d	$xr0, $xr0, 1
+	xvinsve0.d	$xr2, $xr0, 2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	xvst	$xr1, $a0, 464
+	xvst	$xr2, $a0, 464
 	st.d	$zero, $sp, 208
 .LBB4_24:                               #   in Loop: Header=BB4_12 Depth=2
 	move	$a2, $s6

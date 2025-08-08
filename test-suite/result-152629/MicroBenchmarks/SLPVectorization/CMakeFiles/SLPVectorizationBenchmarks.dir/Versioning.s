@@ -1636,14 +1636,14 @@ _ZL9init_dataIiEvPT_j:                  # @_ZL9init_dataIiEvPT_j
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s4, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve2gr.d	$a3, $xr3, 3
-	xvinsgr2vr.d	$xr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 0
-	xvinsgr2vr.d	$xr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 1
-	xvinsgr2vr.d	$xr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 2
-	xvinsgr2vr.d	$xr3, $a3, 3
+	xvpickve.d	$xr3, $xr3, 3
+	xvinsve0.d	$xr3, $xr3, 0
+	xvpickve.d	$xr4, $xr2, 0
+	xvinsve0.d	$xr3, $xr4, 1
+	xvpickve.d	$xr4, $xr2, 1
+	xvinsve0.d	$xr3, $xr4, 2
+	xvpickve.d	$xr4, $xr2, 2
+	xvinsve0.d	$xr3, $xr4, 3
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s6
 	xvand.v	$xr5, $xr2, $xr7
@@ -2267,14 +2267,14 @@ _ZL9init_dataIdEvPT_j:                  # @_ZL9init_dataIdEvPT_j
 	xvori.b	$xr3, $xr2, 0
 	add.d	$a2, $s4, $a1
 	xvld	$xr2, $a2, 8
-	xvpickve2gr.d	$a3, $xr3, 3
-	xvinsgr2vr.d	$xr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 0
-	xvinsgr2vr.d	$xr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 1
-	xvinsgr2vr.d	$xr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 2
-	xvinsgr2vr.d	$xr3, $a3, 3
+	xvpickve.d	$xr3, $xr3, 3
+	xvinsve0.d	$xr3, $xr3, 0
+	xvpickve.d	$xr4, $xr2, 0
+	xvinsve0.d	$xr3, $xr4, 1
+	xvpickve.d	$xr4, $xr2, 1
+	xvinsve0.d	$xr3, $xr4, 2
+	xvpickve.d	$xr4, $xr2, 2
+	xvinsve0.d	$xr3, $xr4, 3
 	xvand.v	$xr3, $xr3, $xr6
 	xvldx	$xr4, $a2, $s6
 	xvand.v	$xr5, $xr2, $xr7

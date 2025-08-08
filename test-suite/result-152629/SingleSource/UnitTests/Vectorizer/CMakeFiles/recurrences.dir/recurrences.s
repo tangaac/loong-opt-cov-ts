@@ -862,14 +862,14 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	xvori.b	$xr6, $xr0, 0
 	add.d	$a7, $a0, $a4
 	xvld	$xr0, $a7, 8
-	xvpickve2gr.d	$t0, $xr6, 3
-	xvinsgr2vr.d	$xr6, $t0, 0
-	xvpickve2gr.d	$t0, $xr0, 0
-	xvinsgr2vr.d	$xr6, $t0, 1
-	xvpickve2gr.d	$t0, $xr0, 1
-	xvinsgr2vr.d	$xr6, $t0, 2
-	xvpickve2gr.d	$t0, $xr0, 2
-	xvinsgr2vr.d	$xr6, $t0, 3
+	xvpickve.d	$xr6, $xr6, 3
+	xvinsve0.d	$xr6, $xr6, 0
+	xvpickve.d	$xr7, $xr0, 0
+	xvinsve0.d	$xr6, $xr7, 1
+	xvpickve.d	$xr7, $xr0, 1
+	xvinsve0.d	$xr6, $xr7, 2
+	xvpickve.d	$xr7, $xr0, 2
+	xvinsve0.d	$xr6, $xr7, 3
 	xvand.v	$xr6, $xr6, $xr1
 	xvldx	$xr7, $a7, $a5
 	xvand.v	$xr8, $xr0, $xr2
@@ -1080,22 +1080,22 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 .LBB7_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvori.b	$xr0, $xr1, 0
-	xvpickve2gr.w	$a5, $xr2, 7
-	xvinsgr2vr.w	$xr1, $a5, 0
-	xvpickve2gr.w	$a5, $xr0, 0
-	xvinsgr2vr.w	$xr1, $a5, 1
-	xvpickve2gr.w	$a5, $xr0, 1
-	xvinsgr2vr.w	$xr1, $a5, 2
-	xvpickve2gr.w	$a5, $xr0, 2
-	xvinsgr2vr.w	$xr1, $a5, 3
-	xvpickve2gr.w	$a5, $xr0, 3
-	xvinsgr2vr.w	$xr1, $a5, 4
-	xvpickve2gr.w	$a5, $xr0, 4
-	xvinsgr2vr.w	$xr1, $a5, 5
-	xvpickve2gr.w	$a5, $xr0, 5
-	xvinsgr2vr.w	$xr1, $a5, 6
-	xvpickve2gr.w	$a5, $xr0, 6
-	xvinsgr2vr.w	$xr1, $a5, 7
+	xvpickve.w	$xr1, $xr2, 7
+	xvinsve0.w	$xr1, $xr1, 0
+	xvpickve.w	$xr2, $xr0, 0
+	xvinsve0.w	$xr1, $xr2, 1
+	xvpickve.w	$xr2, $xr0, 1
+	xvinsve0.w	$xr1, $xr2, 2
+	xvpickve.w	$xr2, $xr0, 2
+	xvinsve0.w	$xr1, $xr2, 3
+	xvpickve.w	$xr2, $xr0, 3
+	xvinsve0.w	$xr1, $xr2, 4
+	xvpickve.w	$xr2, $xr0, 4
+	xvinsve0.w	$xr1, $xr2, 5
+	xvpickve.w	$xr2, $xr0, 5
+	xvinsve0.w	$xr1, $xr2, 6
+	xvpickve.w	$xr2, $xr0, 6
+	xvinsve0.w	$xr1, $xr2, 7
 	xvadd.w	$xr1, $xr1, $xr0
 	xvst	$xr1, $a3, 0
 	xvaddi.wu	$xr1, $xr0, 8
@@ -1209,9 +1209,9 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	bstrpick.d	$a2, $a6, 31, 0
-	ori	$a5, $zero, 33
+	ori	$a4, $zero, 33
 	ori	$a7, $zero, 8
-	ori	$a4, $zero, 22
+	ori	$a5, $zero, 22
 	bltu	$a6, $a7, .LBB11_7
 # %bb.2:                                # %.lr.ph.preheader.i.i.i
 	sub.d	$a6, $a1, $a0
@@ -1222,53 +1222,55 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	slli.d	$a3, $a3, 3
 	xvrepli.w	$xr0, 33
 	xvrepli.w	$xr1, 22
-	move	$a5, $a0
-	move	$a6, $a1
-	move	$a7, $a3
+	move	$a4, $a0
+	move	$a5, $a1
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB11_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvori.b	$xr2, $xr0, 0
-	xvld	$xr0, $a5, 0
-	xvpickve2gr.w	$a4, $xr2, 7
-	xvpickve2gr.w	$t0, $xr1, 7
-	xvinsgr2vr.w	$xr1, $a4, 0
-	xvpickve2gr.w	$a4, $xr0, 0
-	xvinsgr2vr.w	$xr1, $a4, 1
-	xvpickve2gr.w	$a4, $xr0, 1
-	xvinsgr2vr.w	$xr1, $a4, 2
-	xvpickve2gr.w	$a4, $xr0, 2
-	xvinsgr2vr.w	$xr1, $a4, 3
-	xvpickve2gr.w	$t1, $xr0, 3
-	xvinsgr2vr.w	$xr1, $t1, 4
-	xvpickve2gr.w	$t2, $xr0, 4
-	xvinsgr2vr.w	$xr1, $t2, 5
-	xvpickve2gr.w	$t3, $xr0, 5
-	xvinsgr2vr.w	$xr1, $t3, 6
-	xvpickve2gr.w	$a4, $xr0, 6
-	xvinsgr2vr.w	$xr1, $a4, 7
-	xvinsgr2vr.w	$xr2, $t0, 0
-	xvpickve2gr.w	$t0, $xr1, 0
-	xvinsgr2vr.w	$xr2, $t0, 1
-	xvpickve2gr.w	$t0, $xr1, 1
-	xvinsgr2vr.w	$xr2, $t0, 2
-	xvpickve2gr.w	$t0, $xr1, 2
-	xvinsgr2vr.w	$xr2, $t0, 3
-	xvpickve2gr.w	$t0, $xr1, 3
-	xvinsgr2vr.w	$xr2, $t0, 4
-	xvinsgr2vr.w	$xr2, $t1, 5
-	xvinsgr2vr.w	$xr2, $t2, 6
-	xvinsgr2vr.w	$xr2, $t3, 7
-	xvadd.w	$xr2, $xr1, $xr2
-	xvst	$xr2, $a6, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a6, $a6, 32
+	xvld	$xr0, $a4, 0
+	xvpickve.w	$xr2, $xr2, 7
+	xvpickve.w	$xr1, $xr1, 7
+	xvinsve0.w	$xr2, $xr2, 0
+	xvpickve.w	$xr3, $xr0, 0
+	xvinsve0.w	$xr2, $xr3, 1
+	xvpickve.w	$xr3, $xr0, 1
+	xvinsve0.w	$xr2, $xr3, 2
+	xvpickve.w	$xr3, $xr0, 2
+	xvinsve0.w	$xr2, $xr3, 3
+	xvpickve.w	$xr3, $xr0, 3
+	xvinsve0.w	$xr2, $xr3, 4
+	xvpickve.w	$xr4, $xr0, 4
+	xvinsve0.w	$xr2, $xr4, 5
+	xvpickve.w	$xr5, $xr0, 5
+	xvinsve0.w	$xr2, $xr5, 6
+	xvpickve.w	$xr6, $xr0, 6
+	xvinsve0.w	$xr2, $xr6, 7
+	xvinsve0.w	$xr1, $xr1, 0
+	xvpickve.w	$xr6, $xr2, 0
+	xvinsve0.w	$xr1, $xr6, 1
+	xvpickve.w	$xr6, $xr2, 1
+	xvinsve0.w	$xr1, $xr6, 2
+	xvpickve.w	$xr6, $xr2, 2
+	xvinsve0.w	$xr1, $xr6, 3
+	xvpickve.w	$xr6, $xr2, 3
+	xvinsve0.w	$xr1, $xr6, 4
+	xvinsve0.w	$xr1, $xr3, 5
+	xvinsve0.w	$xr1, $xr4, 6
+	xvinsve0.w	$xr1, $xr5, 7
+	xvadd.w	$xr1, $xr2, $xr1
+	xvst	$xr1, $a5, 0
+	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
-	bnez	$a7, .LBB11_4
+	addi.d	$a4, $a4, 32
+	xvori.b	$xr1, $xr2, 0
+	bnez	$a6, .LBB11_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a2, .LBB11_9
 # %bb.6:
-	xvpickve2gr.w	$a5, $xr0, 7
+	xvpickve2gr.w	$a5, $xr0, 6
+	xvpickve2gr.w	$a4, $xr0, 7
 .LBB11_7:                               # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a1, $a3, $a1, 2
@@ -1276,9 +1278,9 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	.p2align	4, , 16
 .LBB11_8:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a5, $a4
-	move	$a4, $a5
-	ld.w	$a5, $a0, 0
+	add.d	$a3, $a4, $a5
+	move	$a5, $a4
+	ld.w	$a4, $a0, 0
 	st.w	$a3, $a1, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
@@ -1377,10 +1379,10 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	bstrpick.d	$a2, $a7, 31, 0
-	ori	$a5, $zero, 11
+	ori	$a6, $zero, 11
 	ori	$a4, $zero, 22
 	ori	$t0, $zero, 8
-	ori	$a6, $zero, 33
+	ori	$a5, $zero, 33
 	bltu	$a7, $t0, .LBB15_7
 # %bb.2:                                # %.lr.ph.preheader.i.i.i
 	sub.d	$a7, $a1, $a0
@@ -1392,66 +1394,69 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	xvrepli.w	$xr1, 11
 	xvrepli.w	$xr2, 22
 	xvrepli.w	$xr0, 33
-	move	$a6, $a0
-	move	$a7, $a1
-	move	$t0, $a3
+	move	$a4, $a0
+	move	$a5, $a1
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB15_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvori.b	$xr3, $xr0, 0
-	xvld	$xr0, $a6, 0
-	xvpickve2gr.w	$a4, $xr3, 7
-	xvpickve2gr.w	$t1, $xr2, 7
-	xvinsgr2vr.w	$xr2, $a4, 0
-	xvpickve2gr.w	$a4, $xr0, 0
-	xvinsgr2vr.w	$xr2, $a4, 1
-	xvpickve2gr.w	$a4, $xr0, 1
-	xvinsgr2vr.w	$xr2, $a4, 2
-	xvpickve2gr.w	$t2, $xr0, 2
-	xvinsgr2vr.w	$xr2, $t2, 3
-	xvpickve2gr.w	$t3, $xr0, 3
-	xvinsgr2vr.w	$xr2, $t3, 4
-	xvpickve2gr.w	$t4, $xr0, 4
-	xvinsgr2vr.w	$xr2, $t4, 5
-	xvpickve2gr.w	$a5, $xr0, 5
-	xvinsgr2vr.w	$xr2, $a5, 6
-	xvpickve2gr.w	$a4, $xr0, 6
-	xvinsgr2vr.w	$xr2, $a4, 7
-	xvpickve2gr.w	$t5, $xr1, 7
-	xvinsgr2vr.w	$xr1, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 0
-	xvinsgr2vr.w	$xr1, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 1
-	xvinsgr2vr.w	$xr1, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 2
-	xvinsgr2vr.w	$xr1, $t1, 3
-	xvinsgr2vr.w	$xr1, $t2, 4
-	xvinsgr2vr.w	$xr1, $t3, 5
-	xvinsgr2vr.w	$xr1, $t4, 6
-	xvinsgr2vr.w	$xr1, $a5, 7
-	xvpickve2gr.w	$t1, $xr1, 0
-	xvinsgr2vr.w	$xr3, $t5, 0
-	xvinsgr2vr.w	$xr3, $t1, 1
-	xvpickve2gr.w	$t1, $xr1, 1
-	xvinsgr2vr.w	$xr3, $t1, 2
-	xvpickve2gr.w	$t1, $xr1, 2
-	xvinsgr2vr.w	$xr3, $t1, 3
-	xvpickve2gr.w	$t1, $xr1, 3
-	xvinsgr2vr.w	$xr3, $t1, 4
-	xvinsgr2vr.w	$xr3, $t2, 5
-	xvinsgr2vr.w	$xr3, $t3, 6
-	xvinsgr2vr.w	$xr3, $t4, 7
-	xvadd.w	$xr4, $xr1, $xr2
-	xvadd.w	$xr3, $xr4, $xr3
-	xvst	$xr3, $a7, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 32
-	addi.d	$a6, $a6, 32
-	bnez	$t0, .LBB15_4
+	xvld	$xr0, $a4, 0
+	xvpickve.w	$xr3, $xr3, 7
+	xvpickve.w	$xr4, $xr2, 7
+	xvinsve0.w	$xr2, $xr3, 0
+	xvpickve.w	$xr3, $xr0, 0
+	xvinsve0.w	$xr2, $xr3, 1
+	xvpickve.w	$xr3, $xr0, 1
+	xvinsve0.w	$xr2, $xr3, 2
+	xvpickve.w	$xr3, $xr0, 2
+	xvinsve0.w	$xr2, $xr3, 3
+	xvpickve.w	$xr5, $xr0, 3
+	xvinsve0.w	$xr2, $xr5, 4
+	xvpickve.w	$xr6, $xr0, 4
+	xvinsve0.w	$xr2, $xr6, 5
+	xvpickve.w	$xr7, $xr0, 5
+	xvinsve0.w	$xr2, $xr7, 6
+	xvpickve.w	$xr8, $xr0, 6
+	xvinsve0.w	$xr2, $xr8, 7
+	xvpickve.w	$xr1, $xr1, 7
+	xvinsve0.w	$xr4, $xr4, 0
+	xvpickve.w	$xr8, $xr2, 0
+	xvinsve0.w	$xr4, $xr8, 1
+	xvpickve.w	$xr8, $xr2, 1
+	xvinsve0.w	$xr4, $xr8, 2
+	xvpickve.w	$xr8, $xr2, 2
+	xvinsve0.w	$xr4, $xr8, 3
+	xvinsve0.w	$xr4, $xr3, 4
+	xvinsve0.w	$xr4, $xr5, 5
+	xvinsve0.w	$xr4, $xr6, 6
+	xvinsve0.w	$xr4, $xr7, 7
+	xvpickve.w	$xr7, $xr4, 0
+	xvinsve0.w	$xr1, $xr1, 0
+	xvinsve0.w	$xr1, $xr7, 1
+	xvpickve.w	$xr7, $xr4, 1
+	xvinsve0.w	$xr1, $xr7, 2
+	xvpickve.w	$xr7, $xr4, 2
+	xvinsve0.w	$xr1, $xr7, 3
+	xvpickve.w	$xr7, $xr4, 3
+	xvinsve0.w	$xr1, $xr7, 4
+	xvinsve0.w	$xr1, $xr3, 5
+	xvinsve0.w	$xr1, $xr5, 6
+	xvinsve0.w	$xr1, $xr6, 7
+	xvadd.w	$xr3, $xr4, $xr2
+	xvadd.w	$xr1, $xr3, $xr1
+	xvst	$xr1, $a5, 0
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 32
+	addi.d	$a4, $a4, 32
+	xvori.b	$xr1, $xr4, 0
+	bnez	$a6, .LBB15_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a2, .LBB15_9
 # %bb.6:
-	xvpickve2gr.w	$a6, $xr0, 7
+	xvpickve2gr.w	$a5, $xr0, 7
+	xvpickve2gr.w	$a4, $xr0, 6
+	xvpickve2gr.w	$a6, $xr0, 5
 .LBB15_7:                               # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a1, $a3, $a1, 2
@@ -1460,15 +1465,15 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 .LBB15_8:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a3, $a4
-	move	$a4, $a6
-	ld.w	$a6, $a0, 0
+	move	$a4, $a5
+	ld.w	$a5, $a0, 0
 	add.d	$a7, $a3, $a4
-	add.d	$a5, $a7, $a5
-	st.w	$a5, $a1, 0
+	add.d	$a6, $a7, $a6
+	st.w	$a6, $a1, 0
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	addi.d	$a0, $a0, 4
-	move	$a5, $a3
+	move	$a6, $a3
 	bnez	$a2, .LBB15_8
 .LBB15_9:                               # %"_ZSt10__invoke_rIvRZ4mainE3$_5JPjS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret

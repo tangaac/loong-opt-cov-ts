@@ -591,11 +591,9 @@ unpc_block:                             # @unpc_block
 # %bb.60:                               # %middle.block
                                         #   in Loop: Header=BB0_54 Depth=1
 	vadd.w	$vr1, $vr3, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$s3, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$s3, $vr1, 0
 	move	$s5, $t1
 	beq	$t1, $t0, .LBB0_63
 .LBB0_61:                               # %.lr.ph558.preheader629

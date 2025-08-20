@@ -211,7 +211,15 @@ freematrix:                             # @freematrix
 .Lfunc_end2:
 	.size	freematrix, .Lfunc_end2-freematrix
                                         # -- End function
-	.globl	mmult                           # -- Begin function mmult
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function mmult
+.LCPI3_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	mmult
 	.p2align	5
 	.type	mmult,@function
 mmult:                                  # @mmult
@@ -303,10 +311,13 @@ mmult:                                  # @mmult
 	bnez	$t8, .LBB3_9
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB3_6 Depth=2
+	pcalau12i	$t6, %pc_hi20(.LCPI3_0)
+	vld	$vr3, $t6, %pc_lo12(.LCPI3_0)
 	vadd.w	$vr1, $vr2, $vr1
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t6, $vr1, 0
+	vand.v	$vr1, $vr1, $vr3
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t6, $vr1, 0
 	move	$fp, $a6
 	beq	$a6, $a1, .LBB3_5
 .LBB3_11:                               # %scalar.ph.preheader

@@ -3633,11 +3633,9 @@ intrapred_chroma:                       # @intrapred_chroma
 	bnez	$t3, .LBB2_130
 # %bb.131:                              # %middle.block895
 	vadd.w	$vr0, $vr5, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	bne	$t1, $t0, .LBB2_74
 	b	.LBB2_76
 .LBB2_132:                              # %vector.ph900

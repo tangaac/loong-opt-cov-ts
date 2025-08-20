@@ -4570,11 +4570,9 @@ edgeDistortion:                         # @edgeDistortion
 	vadd.w	$vr1, $vr3, $vr1
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a4, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$a4, $vr1, 0
 	add.w	$t0, $a4, $t0
 .LBB24_4:                               # %.loopexit
                                         #   in Loop: Header=BB24_6 Depth=2

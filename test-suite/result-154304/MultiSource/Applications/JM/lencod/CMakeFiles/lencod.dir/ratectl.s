@@ -371,22 +371,21 @@ update_rc:                              # @update_rc
 	bne	$a2, $a4, .LBB0_1
 # %bb.2:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
 	pcalau12i	$a2, %got_pc_hi20(img)
 	ld.d	$a2, $a2, %got_pc_lo12(img)
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	pcalau12i	$a3, %pc_hi20(generic_RC)
 	ld.d	$a4, $a3, %pc_lo12(generic_RC)
 	ld.d	$a2, $a2, 0
 	pcalau12i	$a3, %got_pc_hi20(input)
 	ld.d	$a3, $a3, %got_pc_lo12(input)
-	ld.d	$a5, $a4, 64
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	ld.w	$a6, $a2, 12
-	vreplvei.w	$vr1, $vr0, 1
+	ld.d	$a5, $a4, 64
 	ld.d	$a3, $a3, 0
-	vadd.w	$vr0, $vr0, $vr1
-	alsl.d	$a6, $a6, $a5, 2
-	vstelm.w	$vr0, $a6, 0, 0
+	vpickve2gr.d	$a7, $vr0, 0
+	slli.d	$a6, $a6, 2
+	stx.w	$a7, $a5, $a6
 	ldptr.w	$a6, $a3, 5128
 	ldptr.w	$a7, $a2, 15352
 	bgeu	$a6, $a7, .LBB0_8
@@ -817,11 +816,10 @@ calc_MAD:                               # @calc_MAD
 	bne	$a0, $a2, .LBB1_1
 # %bb.2:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	ret
 .Lfunc_end1:
 	.size	calc_MAD, .Lfunc_end1-calc_MAD
@@ -984,8 +982,7 @@ ComputeFrameMAD:                        # @ComputeFrameMAD
 	bnez	$a4, .LBB4_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a0, .LBB4_9
 .LBB4_7:                                # %scalar.ph.preheader

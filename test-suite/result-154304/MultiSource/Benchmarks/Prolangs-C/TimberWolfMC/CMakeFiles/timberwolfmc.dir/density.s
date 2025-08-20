@@ -727,11 +727,9 @@ density:                                # @density
 # %bb.91:                               # %middle.block531
                                         #   in Loop: Header=BB0_84 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$s2, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$s2, $vr1, 0
 	beq	$s1, $fp, .LBB0_94
 .LBB0_92:                               # %.lr.ph369.preheader558
                                         #   in Loop: Header=BB0_84 Depth=2
@@ -973,11 +971,9 @@ density:                                # @density
 # %bb.119:                              # %middle.block547
                                         #   in Loop: Header=BB0_112 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$s0, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$s0, $vr1, 0
 	beq	$fp, $t7, .LBB0_122
 .LBB0_120:                              # %.lr.ph385.preheader555
                                         #   in Loop: Header=BB0_112 Depth=2

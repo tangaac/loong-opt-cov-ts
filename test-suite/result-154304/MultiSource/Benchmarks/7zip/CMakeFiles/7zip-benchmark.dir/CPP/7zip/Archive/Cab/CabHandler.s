@@ -74,7 +74,15 @@ _ZN8NArchive4NCab8CHandler22GetArchivePropertyInfoEjPPwPjPt: # @_ZN8NArchive4NCa
 .Lfunc_end3:
 	.size	_ZN8NArchive4NCab8CHandler22GetArchivePropertyInfoEjPPwPjPt, .Lfunc_end3-_ZN8NArchive4NCab8CHandler22GetArchivePropertyInfoEjPPwPjPt
                                         # -- End function
-	.globl	_ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT # -- Begin function _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT
+.LCPI4_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	_ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT
 	.p2align	2
 	.type	_ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT,@function
 _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT
@@ -123,12 +131,12 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB4_81
 # %bb.4:                                # %.lr.ph
-	ld.d	$a2, $s1, 32
-	ori	$a1, $zero, 4
-	bgeu	$a0, $a1, .LBB4_82
+	ld.d	$a1, $s1, 32
+	ori	$a2, $zero, 4
+	bgeu	$a0, $a2, .LBB4_82
 # %bb.5:
+	move	$a2, $zero
 	move	$a3, $zero
-	move	$a1, $zero
 	b	.LBB4_85
 .LBB4_6:
 	ld.w	$a1, $s1, 28
@@ -626,22 +634,22 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB4_88
 .LBB4_81:
-	move	$a1, $zero
+	move	$a3, $zero
 	b	.LBB4_87
 .LBB4_82:                               # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a3, $a1, 2
+	bstrpick.d	$a2, $a0, 30, 2
+	slli.d	$a2, $a2, 2
 	vrepli.b	$vr0, 0
-	addi.d	$a1, $a2, 16
-	move	$a4, $a3
+	addi.d	$a3, $a1, 16
+	move	$a4, $a2
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB4_83:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -16
-	ld.d	$a6, $a1, -8
-	ld.d	$a7, $a1, 0
-	ld.d	$t0, $a1, 8
+	ld.d	$a5, $a3, -16
+	ld.d	$a6, $a3, -8
+	ld.d	$a7, $a3, 0
+	ld.d	$t0, $a3, 8
 	ld.w	$a5, $a5, 108
 	ld.w	$a6, $a6, 108
 	ld.w	$a7, $a7, 108
@@ -653,28 +661,32 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	vadd.w	$vr0, $vr2, $vr0
 	vadd.w	$vr1, $vr3, $vr1
 	addi.d	$a4, $a4, -4
-	addi.d	$a1, $a1, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB4_83
 # %bb.84:                               # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI4_0)
+	vld	$vr2, $a3, %pc_lo12(.LCPI4_0)
 	vadd.w	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
-	beq	$a3, $a0, .LBB4_87
+	vand.v	$vr0, $vr0, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	beq	$a2, $a0, .LBB4_87
 .LBB4_85:                               # %scalar.ph.preheader
-	alsl.d	$a2, $a3, $a2, 3
-	sub.d	$a0, $a0, $a3
+	alsl.d	$a1, $a2, $a1, 3
+	sub.d	$a0, $a0, $a2
 	.p2align	4, , 16
 .LBB4_86:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a2, 0
-	ld.w	$a3, $a3, 108
-	add.w	$a1, $a3, $a1
+	ld.d	$a2, $a1, 0
+	ld.w	$a2, $a2, 108
+	add.d	$a3, $a2, $a3
 	addi.d	$a0, $a0, -1
-	addi.d	$a2, $a2, 8
+	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB4_86
 .LBB4_87:                               # %._crit_edge
 .Ltmp2:                                 # EH_LABEL
+	addi.w	$a1, $a3, 0
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariantaSEj)
 	jirl	$ra, $ra, 0

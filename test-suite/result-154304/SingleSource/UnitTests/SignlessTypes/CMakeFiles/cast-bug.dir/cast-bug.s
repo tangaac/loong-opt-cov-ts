@@ -56,13 +56,11 @@ main:                                   # @main
 	bnez	$a4, .LBB0_3
 # %bb.4:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	addi.w	$a3, $a3, 0
 	addi.w	$a4, $a2, 0
-	vpickve2gr.w	$a2, $vr0, 0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a4, $a3, .LBB0_7
 .LBB0_5:                                # %.lr.ph.preheader11
 	addi.w	$a1, $a1, 1
@@ -71,14 +69,15 @@ main:                                   # @main
                                         # =>This Inner Loop Header: Depth=1
 	andi	$a3, $a0, 1
 	sltui	$a3, $a3, 1
-	addi.w	$a4, $a2, 17
+	addi.d	$a4, $a2, 17
 	masknez	$a2, $a2, $a3
 	maskeqz	$a3, $a4, $a3
 	addi.w	$a0, $a0, 1
 	or	$a2, $a3, $a2
 	bne	$a1, $a0, .LBB0_6
 .LBB0_7:                                # %._crit_edge.loopexit
-	addi.d	$a0, $a2, -35
+	addi.w	$a0, $a2, 0
+	addi.d	$a0, $a0, -35
 	sltu	$a0, $zero, $a0
 	ret
 .LBB0_8:

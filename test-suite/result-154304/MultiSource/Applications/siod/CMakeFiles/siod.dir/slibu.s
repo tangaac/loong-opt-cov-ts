@@ -4388,8 +4388,7 @@ html_encode:                            # @html_encode
 	bnez	$a2, .LBB76_9
 # %bb.10:                               # %middle.block
 	vadd.d	$vr0, $vr8, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	bne	$s1, $a1, .LBB76_24
 .LBB76_11:                              # %._crit_edge

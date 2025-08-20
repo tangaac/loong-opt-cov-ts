@@ -4507,9 +4507,28 @@ _Z13test_constantIa20custom_xor_constantsIaEEvPT_iPKc: # @_Z13test_constantIa20c
 	.size	_Z13test_constantIa20custom_xor_constantsIaEEvPT_iPKc, .Lfunc_end20-_Z13test_constantIa20custom_xor_constantsIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc
 .LCPI21_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI21_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa19custom_constant_addIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa19custom_constant_addIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa19custom_constant_addIaEEvPT_iPKc
@@ -4624,15 +4643,11 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB21_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB21_4 Depth=1
@@ -4660,13 +4675,14 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB21_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI21_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI21_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB21_17
 .LBB21_15:                              # %vec.epilog.scalar.ph.preheader
@@ -4757,8 +4773,8 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB21_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI21_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI21_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI21_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI21_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -4795,9 +4811,28 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	.size	_Z13test_constantIa19custom_constant_addIaEEvPT_iPKc, .Lfunc_end21-_Z13test_constantIa19custom_constant_addIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc
 .LCPI22_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI22_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc
@@ -4912,15 +4947,11 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB22_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB22_4 Depth=1
@@ -4948,13 +4979,14 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB22_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI22_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI22_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB22_17
 .LBB22_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5045,8 +5077,8 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB22_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI22_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI22_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI22_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI22_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -5083,9 +5115,28 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc, .Lfunc_end22-_Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc
 .LCPI23_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI23_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa19custom_constant_subIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa19custom_constant_subIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa19custom_constant_subIaEEvPT_iPKc
@@ -5202,15 +5253,11 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB23_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB23_4 Depth=1
@@ -5238,13 +5285,14 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB23_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI23_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI23_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB23_17
 .LBB23_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5336,8 +5384,8 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB23_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI23_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI23_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -5374,9 +5422,28 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	.size	_Z13test_constantIa19custom_constant_subIaEEvPT_iPKc, .Lfunc_end23-_Z13test_constantIa19custom_constant_subIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc
 .LCPI24_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI24_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc
@@ -5493,15 +5560,11 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB24_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB24_4 Depth=1
@@ -5529,13 +5592,14 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB24_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI24_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI24_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB24_17
 .LBB24_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5627,8 +5691,8 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB24_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI24_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI24_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI24_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI24_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -5665,9 +5729,28 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc, .Lfunc_end24-_Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc
 .LCPI25_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI25_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc
@@ -5781,15 +5864,11 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB25_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB25_4 Depth=1
@@ -5816,13 +5895,14 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB25_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI25_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI25_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB25_17
 .LBB25_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5880,8 +5960,8 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB25_23:                              # %_Z13record_resultdPKc.exit
-	pcalau12i	$a1, %pc_hi20(.LCPI25_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI25_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI25_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI25_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -5919,9 +5999,28 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	.size	_Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc, .Lfunc_end25-_Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc
 .LCPI26_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI26_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc
@@ -6035,15 +6134,11 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB26_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB26_4 Depth=1
@@ -6070,13 +6165,14 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB26_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI26_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI26_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB26_17
 .LBB26_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6134,8 +6230,8 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB26_23:                              # %_Z13record_resultdPKc.exit
-	pcalau12i	$a1, %pc_hi20(.LCPI26_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI26_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI26_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI26_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -6173,9 +6269,28 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	.size	_Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc, .Lfunc_end26-_Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc
 .LCPI27_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI27_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc
@@ -6291,15 +6406,11 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB27_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB27_4 Depth=1
@@ -6327,13 +6438,14 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB27_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI27_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB27_17
 .LBB27_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6423,8 +6535,8 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB27_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI27_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI27_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI27_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI27_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -6461,9 +6573,28 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 	.size	_Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc, .Lfunc_end27-_Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc
 .LCPI28_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI28_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc
@@ -6591,15 +6722,11 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB28_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB28_4 Depth=1
@@ -6682,13 +6809,14 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	bnez	$a0, .LBB28_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI28_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI28_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB28_17
 .LBB28_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6791,8 +6919,8 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB28_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI28_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI28_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI28_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI28_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -6829,9 +6957,28 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	.size	_Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc, .Lfunc_end28-_Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc
 .LCPI29_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI29_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc
@@ -6961,15 +7108,11 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB29_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB29_4 Depth=1
@@ -7060,13 +7203,14 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB29_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI29_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI29_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB29_17
 .LBB29_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7171,8 +7315,8 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB29_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI29_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI29_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI29_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI29_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -7209,9 +7353,28 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	.size	_Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc, .Lfunc_end29-_Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc
 .LCPI30_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI30_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc
@@ -7326,15 +7489,11 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB30_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB30_4 Depth=1
@@ -7362,13 +7521,14 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB30_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI30_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI30_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB30_17
 .LBB30_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7459,8 +7619,8 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB30_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI30_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI30_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI30_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI30_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -7497,9 +7657,28 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 	.size	_Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc, .Lfunc_end30-_Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc
 .LCPI31_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI31_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc
@@ -7611,15 +7790,11 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB31_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB31_4 Depth=1
@@ -7646,13 +7821,14 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB31_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI31_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI31_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB31_17
 .LBB31_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7740,8 +7916,8 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB31_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI31_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI31_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI31_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI31_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -7778,9 +7954,28 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 	.size	_Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc, .Lfunc_end31-_Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc
 .LCPI32_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI32_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa19custom_constant_andIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa19custom_constant_andIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa19custom_constant_andIaEEvPT_iPKc
@@ -7894,15 +8089,11 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB32_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB32_4 Depth=1
@@ -7930,13 +8121,14 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB32_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI32_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI32_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB32_17
 .LBB32_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8025,8 +8217,8 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB32_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI32_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI32_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI32_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI32_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -8063,9 +8255,28 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	.size	_Z13test_constantIa19custom_constant_andIaEEvPT_iPKc, .Lfunc_end32-_Z13test_constantIa19custom_constant_andIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc
 .LCPI33_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI33_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc
@@ -8179,15 +8390,11 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB33_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB33_4 Depth=1
@@ -8215,13 +8422,14 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB33_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI33_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI33_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB33_17
 .LBB33_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8310,8 +8518,8 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB33_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI33_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI33_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI33_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI33_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -8348,9 +8556,28 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc, .Lfunc_end33-_Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc
 .LCPI34_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI34_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa18custom_constant_orIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa18custom_constant_orIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa18custom_constant_orIaEEvPT_iPKc
@@ -8464,15 +8691,11 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB34_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB34_4 Depth=1
@@ -8500,13 +8723,14 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 	bnez	$a0, .LBB34_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI34_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI34_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB34_17
 .LBB34_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8584,8 +8808,8 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB34_25:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI34_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI34_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI34_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI34_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -8622,9 +8846,28 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 	.size	_Z13test_constantIa18custom_constant_orIaEEvPT_iPKc, .Lfunc_end34-_Z13test_constantIa18custom_constant_orIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc
 .LCPI35_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI35_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc
@@ -8738,15 +8981,11 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB35_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB35_4 Depth=1
@@ -8774,13 +9013,14 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB35_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI35_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI35_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB35_17
 .LBB35_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8852,8 +9092,8 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB35_25:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI35_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI35_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI35_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI35_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -8890,9 +9130,28 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 	.size	_Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc, .Lfunc_end35-_Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc
 .LCPI36_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI36_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc
@@ -9007,15 +9266,11 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB36_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB36_4 Depth=1
@@ -9043,13 +9298,14 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB36_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI36_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI36_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB36_17
 .LBB36_15:                              # %vec.epilog.scalar.ph.preheader
@@ -9140,8 +9396,8 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB36_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI36_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI36_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI36_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI36_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -9178,9 +9434,28 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	.size	_Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc, .Lfunc_end36-_Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc
 .LCPI37_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI37_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc,"axG",@progbits,_Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc
@@ -9295,15 +9570,11 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB37_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB37_4 Depth=1
@@ -9331,13 +9602,14 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB37_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI37_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI37_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB37_17
 .LBB37_15:                              # %vec.epilog.scalar.ph.preheader
@@ -9428,8 +9700,8 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB37_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI37_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI37_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI37_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI37_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -11464,9 +11736,28 @@ _Z13test_constantIh20custom_xor_constantsIhEEvPT_iPKc: # @_Z13test_constantIh20c
 	.size	_Z13test_constantIh20custom_xor_constantsIhEEvPT_iPKc, .Lfunc_end52-_Z13test_constantIh20custom_xor_constantsIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc
 .LCPI53_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI53_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh19custom_constant_addIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh19custom_constant_addIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh19custom_constant_addIhEEvPT_iPKc
@@ -11581,15 +11872,11 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB53_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB53_4 Depth=1
@@ -11617,13 +11904,14 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB53_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI53_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI53_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB53_17
 .LBB53_15:                              # %vec.epilog.scalar.ph.preheader
@@ -11714,8 +12002,8 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB53_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI53_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI53_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI53_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI53_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -11752,9 +12040,28 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	.size	_Z13test_constantIh19custom_constant_addIhEEvPT_iPKc, .Lfunc_end53-_Z13test_constantIh19custom_constant_addIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc
 .LCPI54_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI54_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc
@@ -11869,15 +12176,11 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB54_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB54_4 Depth=1
@@ -11905,13 +12208,14 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB54_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI54_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI54_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB54_17
 .LBB54_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12002,8 +12306,8 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB54_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI54_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI54_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI54_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI54_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -12040,9 +12344,28 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc, .Lfunc_end54-_Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc
 .LCPI55_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI55_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh19custom_constant_subIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh19custom_constant_subIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh19custom_constant_subIhEEvPT_iPKc
@@ -12159,15 +12482,11 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB55_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB55_4 Depth=1
@@ -12195,13 +12514,14 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB55_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI55_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI55_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB55_17
 .LBB55_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12293,8 +12613,8 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB55_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI55_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI55_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI55_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI55_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -12331,9 +12651,28 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	.size	_Z13test_constantIh19custom_constant_subIhEEvPT_iPKc, .Lfunc_end55-_Z13test_constantIh19custom_constant_subIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc
 .LCPI56_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI56_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc
@@ -12450,15 +12789,11 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB56_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB56_4 Depth=1
@@ -12486,13 +12821,14 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB56_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI56_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI56_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB56_17
 .LBB56_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12584,8 +12920,8 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB56_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI56_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI56_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI56_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI56_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -12622,9 +12958,28 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc, .Lfunc_end56-_Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc
 .LCPI57_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI57_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc
@@ -12738,15 +13093,11 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB57_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB57_4 Depth=1
@@ -12773,13 +13124,14 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB57_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI57_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI57_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB57_17
 .LBB57_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12837,8 +13189,8 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB57_23:                              # %_Z13record_resultdPKc.exit
-	pcalau12i	$a1, %pc_hi20(.LCPI57_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI57_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI57_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI57_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -12876,9 +13228,28 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	.size	_Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc, .Lfunc_end57-_Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc
 .LCPI58_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI58_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc
@@ -12992,15 +13363,11 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB58_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB58_4 Depth=1
@@ -13027,13 +13394,14 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB58_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI58_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI58_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB58_17
 .LBB58_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13091,8 +13459,8 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB58_23:                              # %_Z13record_resultdPKc.exit
-	pcalau12i	$a1, %pc_hi20(.LCPI58_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI58_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI58_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI58_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -13130,9 +13498,28 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	.size	_Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc, .Lfunc_end58-_Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc
 .LCPI59_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI59_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc
@@ -13248,15 +13635,11 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB59_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB59_4 Depth=1
@@ -13284,13 +13667,14 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB59_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI59_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI59_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB59_17
 .LBB59_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13380,8 +13764,8 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB59_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI59_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI59_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI59_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI59_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -13418,9 +13802,28 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 	.size	_Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc, .Lfunc_end59-_Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc
 .LCPI60_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI60_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc
@@ -13544,15 +13947,11 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB60_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB60_4 Depth=1
@@ -13611,13 +14010,14 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 	bnez	$a0, .LBB60_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI60_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI60_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB60_17
 .LBB60_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13712,8 +14112,8 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB60_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI60_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI60_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI60_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI60_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -13750,9 +14150,28 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 	.size	_Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc, .Lfunc_end60-_Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc
 .LCPI61_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI61_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc
@@ -13874,15 +14293,11 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB61_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB61_4 Depth=1
@@ -13941,13 +14356,14 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB61_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI61_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI61_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB61_17
 .LBB61_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14042,8 +14458,8 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB61_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI61_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI61_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI61_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI61_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -14080,9 +14496,28 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 	.size	_Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc, .Lfunc_end61-_Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc
 .LCPI62_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI62_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc
@@ -14197,15 +14632,11 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB62_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB62_4 Depth=1
@@ -14233,13 +14664,14 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB62_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI62_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI62_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB62_17
 .LBB62_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14330,8 +14762,8 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB62_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI62_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI62_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI62_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI62_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -14368,9 +14800,28 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 	.size	_Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc, .Lfunc_end62-_Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc
 .LCPI63_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI63_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc
@@ -14482,15 +14933,11 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB63_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB63_4 Depth=1
@@ -14517,13 +14964,14 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB63_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI63_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI63_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB63_17
 .LBB63_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14611,8 +15059,8 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB63_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI63_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI63_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI63_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI63_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -14649,9 +15097,28 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 	.size	_Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc, .Lfunc_end63-_Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc
 .LCPI64_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI64_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh19custom_constant_andIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh19custom_constant_andIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh19custom_constant_andIhEEvPT_iPKc
@@ -14765,15 +15232,11 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB64_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB64_4 Depth=1
@@ -14801,13 +15264,14 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB64_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI64_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI64_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB64_17
 .LBB64_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14896,8 +15360,8 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB64_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI64_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI64_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI64_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI64_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -14934,9 +15398,28 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	.size	_Z13test_constantIh19custom_constant_andIhEEvPT_iPKc, .Lfunc_end64-_Z13test_constantIh19custom_constant_andIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc
 .LCPI65_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI65_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc
@@ -15050,15 +15533,11 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB65_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB65_4 Depth=1
@@ -15086,13 +15565,14 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB65_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI65_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI65_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB65_17
 .LBB65_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15181,8 +15661,8 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB65_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI65_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI65_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI65_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI65_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -15219,9 +15699,28 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc, .Lfunc_end65-_Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc
 .LCPI66_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI66_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh18custom_constant_orIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh18custom_constant_orIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh18custom_constant_orIhEEvPT_iPKc
@@ -15335,15 +15834,11 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB66_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB66_4 Depth=1
@@ -15371,13 +15866,14 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 	bnez	$a0, .LBB66_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI66_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI66_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB66_17
 .LBB66_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15455,8 +15951,8 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB66_25:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI66_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI66_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI66_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI66_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -15493,9 +15989,28 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 	.size	_Z13test_constantIh18custom_constant_orIhEEvPT_iPKc, .Lfunc_end66-_Z13test_constantIh18custom_constant_orIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc
 .LCPI67_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI67_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc
@@ -15609,15 +16124,11 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB67_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB67_4 Depth=1
@@ -15645,13 +16156,14 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB67_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI67_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI67_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB67_17
 .LBB67_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15723,8 +16235,8 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB67_25:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI67_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI67_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI67_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI67_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -15761,9 +16273,28 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 	.size	_Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc, .Lfunc_end67-_Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc
 .LCPI68_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI68_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc
@@ -15878,15 +16409,11 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB68_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB68_4 Depth=1
@@ -15914,13 +16441,14 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB68_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI68_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI68_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB68_17
 .LBB68_15:                              # %vec.epilog.scalar.ph.preheader
@@ -16011,8 +16539,8 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB68_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI68_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI68_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI68_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI68_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -16049,9 +16577,28 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	.size	_Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc, .Lfunc_end68-_Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc
 .LCPI69_0:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI69_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc,"axG",@progbits,_Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc
@@ -16166,15 +16713,11 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB69_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB69_4 Depth=1
@@ -16202,13 +16745,14 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB69_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI69_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI69_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB69_17
 .LBB69_15:                              # %vec.epilog.scalar.ph.preheader
@@ -16299,8 +16843,8 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB69_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI69_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI69_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI69_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI69_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -18347,9 +18891,20 @@ _Z13test_constantIs20custom_xor_constantsIsEEvPT_iPKc: # @_Z13test_constantIs20c
 	.size	_Z13test_constantIs20custom_xor_constantsIsEEvPT_iPKc, .Lfunc_end84-_Z13test_constantIs20custom_xor_constantsIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc
 .LCPI85_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI85_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs19custom_constant_addIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs19custom_constant_addIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs19custom_constant_addIsEEvPT_iPKc
@@ -18468,13 +19023,10 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB85_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB85_4 Depth=1
@@ -18502,11 +19054,13 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB85_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI85_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI85_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB85_17
 .LBB85_15:                              # %vec.epilog.scalar.ph.preheader
@@ -18604,8 +19158,8 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB85_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI85_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI85_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI85_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI85_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -18642,9 +19196,20 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	.size	_Z13test_constantIs19custom_constant_addIsEEvPT_iPKc, .Lfunc_end85-_Z13test_constantIs19custom_constant_addIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc
 .LCPI86_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI86_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc
@@ -18763,13 +19328,10 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB86_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB86_4 Depth=1
@@ -18797,11 +19359,13 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB86_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI86_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI86_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB86_17
 .LBB86_15:                              # %vec.epilog.scalar.ph.preheader
@@ -18899,8 +19463,8 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB86_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI86_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI86_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI86_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI86_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -18937,9 +19501,20 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc, .Lfunc_end86-_Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc
 .LCPI87_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI87_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs19custom_constant_subIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs19custom_constant_subIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs19custom_constant_subIsEEvPT_iPKc
@@ -19060,13 +19635,10 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB87_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB87_4 Depth=1
@@ -19094,11 +19666,13 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB87_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI87_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI87_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB87_17
 .LBB87_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19197,8 +19771,8 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB87_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI87_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI87_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI87_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI87_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -19235,9 +19809,20 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	.size	_Z13test_constantIs19custom_constant_subIsEEvPT_iPKc, .Lfunc_end87-_Z13test_constantIs19custom_constant_subIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc
 .LCPI88_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI88_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc
@@ -19358,13 +19943,10 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB88_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB88_4 Depth=1
@@ -19392,11 +19974,13 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB88_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI88_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI88_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB88_17
 .LBB88_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19495,8 +20079,8 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB88_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI88_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI88_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI88_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI88_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -19533,9 +20117,20 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc, .Lfunc_end88-_Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc
 .LCPI89_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI89_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc
@@ -19653,13 +20248,10 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB89_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB89_4 Depth=1
@@ -19686,11 +20278,13 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB89_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI89_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI89_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB89_17
 .LBB89_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19786,8 +20380,8 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB89_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI89_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI89_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI89_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI89_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -19824,9 +20418,20 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 	.size	_Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc, .Lfunc_end89-_Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc
 .LCPI90_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI90_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc
@@ -19944,13 +20549,10 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB90_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB90_4 Depth=1
@@ -19977,11 +20579,13 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB90_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI90_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI90_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB90_17
 .LBB90_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20077,8 +20681,8 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB90_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI90_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI90_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI90_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI90_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -20115,9 +20719,20 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 	.size	_Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc, .Lfunc_end90-_Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc
 .LCPI91_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI91_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc
@@ -20238,13 +20853,10 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB91_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB91_4 Depth=1
@@ -20272,11 +20884,13 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB91_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI91_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI91_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB91_17
 .LBB91_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20375,8 +20989,8 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB91_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI91_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI91_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI91_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI91_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -20413,9 +21027,20 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 	.size	_Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc, .Lfunc_end91-_Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc
 .LCPI92_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI92_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc
@@ -20546,13 +21171,10 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB92_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB92_4 Depth=1
@@ -20607,11 +21229,13 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	bnez	$a0, .LBB92_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI92_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI92_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB92_17
 .LBB92_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20722,8 +21346,8 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB92_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI92_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI92_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI92_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI92_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -20760,9 +21384,20 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	.size	_Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc, .Lfunc_end92-_Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc
 .LCPI93_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI93_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc
@@ -20898,13 +21533,10 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB93_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB93_4 Depth=1
@@ -20963,11 +21595,13 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB93_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI93_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI93_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB93_17
 .LBB93_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21088,8 +21722,8 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB93_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI93_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI93_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI93_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI93_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -21126,9 +21760,20 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	.size	_Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc, .Lfunc_end93-_Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc
 .LCPI94_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI94_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc
@@ -21247,13 +21892,10 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB94_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB94_4 Depth=1
@@ -21281,11 +21923,13 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB94_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI94_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI94_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB94_17
 .LBB94_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21383,8 +22027,8 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB94_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI94_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI94_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI94_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI94_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -21421,9 +22065,20 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 	.size	_Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc, .Lfunc_end94-_Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc
 .LCPI95_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI95_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc
@@ -21537,13 +22192,10 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB95_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB95_4 Depth=1
@@ -21570,11 +22222,13 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB95_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI95_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI95_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB95_17
 .LBB95_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21668,8 +22322,8 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB95_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI95_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI95_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI95_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI95_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -21706,9 +22360,20 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 	.size	_Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc, .Lfunc_end95-_Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc
 .LCPI96_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI96_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs19custom_constant_andIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs19custom_constant_andIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs19custom_constant_andIsEEvPT_iPKc
@@ -21826,13 +22491,10 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB96_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB96_4 Depth=1
@@ -21860,11 +22522,13 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB96_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI96_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI96_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB96_17
 .LBB96_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21962,8 +22626,8 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB96_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI96_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI96_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI96_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI96_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -22000,9 +22664,20 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	.size	_Z13test_constantIs19custom_constant_andIsEEvPT_iPKc, .Lfunc_end96-_Z13test_constantIs19custom_constant_andIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc
 .LCPI97_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI97_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc
@@ -22120,13 +22795,10 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB97_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB97_4 Depth=1
@@ -22154,11 +22826,13 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB97_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI97_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI97_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB97_17
 .LBB97_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22256,8 +22930,8 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB97_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI97_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI97_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI97_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI97_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -22294,9 +22968,20 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc, .Lfunc_end97-_Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc
 .LCPI98_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI98_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs18custom_constant_orIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs18custom_constant_orIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs18custom_constant_orIsEEvPT_iPKc
@@ -22414,13 +23099,10 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB98_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB98_4 Depth=1
@@ -22448,11 +23130,13 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 	bnez	$a0, .LBB98_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI98_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI98_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB98_17
 .LBB98_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22533,8 +23217,8 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB98_25:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI98_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI98_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI98_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI98_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -22571,9 +23255,20 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 	.size	_Z13test_constantIs18custom_constant_orIsEEvPT_iPKc, .Lfunc_end98-_Z13test_constantIs18custom_constant_orIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc
 .LCPI99_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI99_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc
@@ -22694,13 +23389,10 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB99_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB99_4 Depth=1
@@ -22728,11 +23420,13 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB99_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI99_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI99_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB99_17
 .LBB99_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22812,8 +23506,8 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB99_25:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI99_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI99_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI99_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI99_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -22850,9 +23544,20 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 	.size	_Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc, .Lfunc_end99-_Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc
 .LCPI100_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI100_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc
@@ -22970,13 +23675,10 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB100_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB100_4 Depth=1
@@ -23004,11 +23706,13 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB100_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI100_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI100_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB100_17
 .LBB100_15:                             # %vec.epilog.scalar.ph.preheader
@@ -23106,8 +23810,8 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB100_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI100_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI100_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI100_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI100_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -23144,9 +23848,20 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	.size	_Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc, .Lfunc_end100-_Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc
 .LCPI101_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI101_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc,"axG",@progbits,_Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc
@@ -23264,13 +23979,10 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB101_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB101_4 Depth=1
@@ -23298,11 +24010,13 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB101_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI101_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI101_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB101_17
 .LBB101_15:                             # %vec.epilog.scalar.ph.preheader
@@ -23400,8 +24114,8 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB101_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI101_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI101_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI101_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI101_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -25448,9 +26162,20 @@ _Z13test_constantIt20custom_xor_constantsItEEvPT_iPKc: # @_Z13test_constantIt20c
 	.size	_Z13test_constantIt20custom_xor_constantsItEEvPT_iPKc, .Lfunc_end116-_Z13test_constantIt20custom_xor_constantsItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_addItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_addItEEvPT_iPKc
 .LCPI117_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI117_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt19custom_constant_addItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt19custom_constant_addItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt19custom_constant_addItEEvPT_iPKc
@@ -25569,13 +26294,10 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB117_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB117_4 Depth=1
@@ -25603,11 +26325,13 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB117_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI117_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI117_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB117_17
 .LBB117_15:                             # %vec.epilog.scalar.ph.preheader
@@ -25705,8 +26429,8 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB117_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI117_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI117_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI117_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI117_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -25743,9 +26467,20 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	.size	_Z13test_constantIt19custom_constant_addItEEvPT_iPKc, .Lfunc_end117-_Z13test_constantIt19custom_constant_addItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc
 .LCPI118_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI118_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc
@@ -25864,13 +26599,10 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB118_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB118_4 Depth=1
@@ -25898,11 +26630,13 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB118_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI118_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI118_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB118_17
 .LBB118_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26000,8 +26734,8 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB118_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI118_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI118_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI118_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI118_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -26038,9 +26772,20 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc, .Lfunc_end118-_Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_subItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_subItEEvPT_iPKc
 .LCPI119_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI119_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt19custom_constant_subItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt19custom_constant_subItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt19custom_constant_subItEEvPT_iPKc
@@ -26161,13 +26906,10 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB119_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB119_4 Depth=1
@@ -26195,11 +26937,13 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB119_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI119_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI119_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB119_17
 .LBB119_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26298,8 +27042,8 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB119_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI119_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI119_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI119_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI119_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -26336,9 +27080,20 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	.size	_Z13test_constantIt19custom_constant_subItEEvPT_iPKc, .Lfunc_end119-_Z13test_constantIt19custom_constant_subItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc
 .LCPI120_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI120_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc
@@ -26459,13 +27214,10 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB120_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB120_4 Depth=1
@@ -26493,11 +27245,13 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB120_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI120_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI120_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB120_17
 .LBB120_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26596,8 +27350,8 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB120_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI120_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI120_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI120_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI120_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -26634,9 +27388,20 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc, .Lfunc_end120-_Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc
 .LCPI121_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI121_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc
@@ -26754,13 +27519,10 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB121_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB121_4 Depth=1
@@ -26787,11 +27549,13 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB121_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI121_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI121_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB121_17
 .LBB121_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26887,8 +27651,8 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB121_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI121_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI121_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI121_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI121_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -26925,9 +27689,20 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 	.size	_Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc, .Lfunc_end121-_Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc
 .LCPI122_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI122_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc
@@ -27045,13 +27820,10 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB122_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB122_4 Depth=1
@@ -27078,11 +27850,13 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB122_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI122_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI122_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB122_17
 .LBB122_15:                             # %vec.epilog.scalar.ph.preheader
@@ -27178,8 +27952,8 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB122_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI122_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI122_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI122_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI122_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -27216,9 +27990,20 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 	.size	_Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc, .Lfunc_end122-_Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc
 .LCPI123_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI123_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc
@@ -27339,13 +28124,10 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB123_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB123_4 Depth=1
@@ -27373,11 +28155,13 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB123_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI123_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI123_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB123_17
 .LBB123_15:                             # %vec.epilog.scalar.ph.preheader
@@ -27476,8 +28260,8 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB123_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI123_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI123_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI123_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI123_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -27514,9 +28298,20 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 	.size	_Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc, .Lfunc_end123-_Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc
 .LCPI124_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI124_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt22custom_constant_divideItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt22custom_constant_divideItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt22custom_constant_divideItEEvPT_iPKc
@@ -27643,13 +28438,10 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB124_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB124_4 Depth=1
@@ -27692,11 +28484,13 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 	bnez	$a0, .LBB124_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI124_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI124_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB124_17
 .LBB124_15:                             # %vec.epilog.scalar.ph.preheader
@@ -27801,8 +28595,8 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB124_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI124_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI124_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI124_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI124_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -27839,9 +28633,20 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 	.size	_Z13test_constantIt22custom_constant_divideItEEvPT_iPKc, .Lfunc_end124-_Z13test_constantIt22custom_constant_divideItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc
 .LCPI125_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI125_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc
@@ -27968,13 +28773,10 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB125_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB125_4 Depth=1
@@ -28017,11 +28819,13 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB125_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI125_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI125_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB125_17
 .LBB125_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28126,8 +28930,8 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB125_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI125_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI125_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI125_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI125_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -28164,9 +28968,20 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 	.size	_Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc, .Lfunc_end125-_Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc
 .LCPI126_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI126_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc
@@ -28285,13 +29100,10 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB126_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB126_4 Depth=1
@@ -28319,11 +29131,13 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB126_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI126_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI126_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB126_17
 .LBB126_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28421,8 +29235,8 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB126_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI126_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI126_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI126_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI126_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -28459,9 +29273,20 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 	.size	_Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc, .Lfunc_end126-_Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc
 .LCPI127_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI127_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc
@@ -28575,13 +29400,10 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB127_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB127_4 Depth=1
@@ -28608,11 +29430,13 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB127_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI127_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI127_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB127_17
 .LBB127_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28706,8 +29530,8 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB127_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI127_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI127_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI127_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI127_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -28744,9 +29568,20 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 	.size	_Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc, .Lfunc_end127-_Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_andItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_andItEEvPT_iPKc
 .LCPI128_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI128_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt19custom_constant_andItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt19custom_constant_andItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt19custom_constant_andItEEvPT_iPKc
@@ -28864,13 +29699,10 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB128_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB128_4 Depth=1
@@ -28898,11 +29730,13 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB128_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI128_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI128_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB128_17
 .LBB128_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29000,8 +29834,8 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB128_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI128_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI128_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI128_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI128_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29038,9 +29872,20 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	.size	_Z13test_constantIt19custom_constant_andItEEvPT_iPKc, .Lfunc_end128-_Z13test_constantIt19custom_constant_andItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc
 .LCPI129_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI129_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc
@@ -29158,13 +30003,10 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB129_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB129_4 Depth=1
@@ -29192,11 +30034,13 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB129_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI129_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI129_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB129_17
 .LBB129_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29294,8 +30138,8 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB129_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI129_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI129_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI129_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI129_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29332,9 +30176,20 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc, .Lfunc_end129-_Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt18custom_constant_orItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt18custom_constant_orItEEvPT_iPKc
 .LCPI130_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI130_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt18custom_constant_orItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt18custom_constant_orItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt18custom_constant_orItEEvPT_iPKc
@@ -29452,13 +30307,10 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB130_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB130_4 Depth=1
@@ -29486,11 +30338,13 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 	bnez	$a0, .LBB130_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI130_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI130_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB130_17
 .LBB130_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29571,8 +30425,8 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB130_25:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI130_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI130_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI130_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI130_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29609,9 +30463,20 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 	.size	_Z13test_constantIt18custom_constant_orItEEvPT_iPKc, .Lfunc_end130-_Z13test_constantIt18custom_constant_orItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc
 .LCPI131_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI131_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc
@@ -29732,13 +30597,10 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB131_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB131_4 Depth=1
@@ -29766,11 +30628,13 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB131_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI131_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI131_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB131_17
 .LBB131_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29850,8 +30714,8 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB131_25:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI131_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI131_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI131_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI131_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29888,9 +30752,20 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 	.size	_Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc, .Lfunc_end131-_Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc
 .LCPI132_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI132_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt19custom_constant_xorItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt19custom_constant_xorItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt19custom_constant_xorItEEvPT_iPKc
@@ -30008,13 +30883,10 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB132_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB132_4 Depth=1
@@ -30042,11 +30914,13 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB132_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI132_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI132_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB132_17
 .LBB132_15:                             # %vec.epilog.scalar.ph.preheader
@@ -30144,8 +31018,8 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB132_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI132_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI132_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI132_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI132_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -30182,9 +31056,20 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	.size	_Z13test_constantIt19custom_constant_xorItEEvPT_iPKc, .Lfunc_end132-_Z13test_constantIt19custom_constant_xorItEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc
 .LCPI133_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI133_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc,"axG",@progbits,_Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc
@@ -30302,13 +31187,10 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s0, .LBB133_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB133_4 Depth=1
@@ -30336,11 +31218,13 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB133_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI133_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI133_0)
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB133_17
 .LBB133_15:                             # %vec.epilog.scalar.ph.preheader
@@ -30438,8 +31322,8 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB133_27:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI133_0)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI133_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI133_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI133_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -32585,11 +33469,9 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB149_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB149_11
 .LBB149_9:                              # %scalar.ph.preheader
@@ -32602,7 +33484,7 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB149_10
@@ -32613,6 +33495,7 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB149_3
 # %bb.12:                               #   in Loop: Header=BB149_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -32824,11 +33707,9 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB150_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB150_11
 .LBB150_9:                              # %scalar.ph.preheader
@@ -32841,7 +33722,7 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB150_10
@@ -32852,6 +33733,7 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB150_3
 # %bb.12:                               #   in Loop: Header=BB150_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -33065,11 +33947,9 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB151_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB151_11
 .LBB151_9:                              # %scalar.ph.preheader
@@ -33082,7 +33962,7 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB151_10
@@ -33093,6 +33973,7 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB151_3
 # %bb.12:                               #   in Loop: Header=BB151_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -33307,11 +34188,9 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB152_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB152_11
 .LBB152_9:                              # %scalar.ph.preheader
@@ -33324,7 +34203,7 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB152_10
@@ -33335,6 +34214,7 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB152_3
 # %bb.12:                               #   in Loop: Header=BB152_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -33546,11 +34426,9 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB153_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB153_11
 .LBB153_9:                              # %scalar.ph.preheader
@@ -33563,7 +34441,7 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB153_10
@@ -33573,6 +34451,7 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB153_3
 # %bb.12:                               #   in Loop: Header=BB153_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -33779,11 +34658,9 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB154_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB154_11
 .LBB154_9:                              # %scalar.ph.preheader
@@ -33796,7 +34673,7 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB154_10
@@ -33806,6 +34683,7 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB154_3
 # %bb.12:                               #   in Loop: Header=BB154_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34015,11 +34893,9 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB155_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB155_11
 .LBB155_9:                              # %scalar.ph.preheader
@@ -34032,7 +34908,7 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 120
+	addi.d	$a0, $a0, 120
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB155_10
@@ -34043,6 +34919,7 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB155_3
 # %bb.12:                               #   in Loop: Header=BB155_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -34263,11 +35140,9 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB156_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB156_11
 .LBB156_9:                              # %scalar.ph.preheader
@@ -34283,7 +35158,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	srli.d	$a5, $a4, 63
 	srai.d	$a4, $a4, 33
 	add.d	$a4, $a4, $a5
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB156_10
@@ -34297,6 +35172,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	srai.d	$a2, $a2, 33
 	add.d	$a2, $a2, $a3
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB156_3
 # %bb.12:                               #   in Loop: Header=BB156_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34516,11 +35392,9 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB157_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB157_11
 .LBB157_9:                              # %scalar.ph.preheader
@@ -34538,7 +35412,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	bstrpick.d	$a5, $a4, 31, 31
 	srli.d	$a4, $a4, 6
 	add.d	$a4, $a4, $a5
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB157_10
@@ -34554,6 +35428,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	srli.d	$a2, $a2, 6
 	add.d	$a2, $a2, $a3
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB157_3
 # %bb.12:                               #   in Loop: Header=BB157_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34763,11 +35638,9 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB158_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB158_11
 .LBB158_9:                              # %scalar.ph.preheader
@@ -34780,7 +35653,7 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 2
+	addi.d	$a0, $a0, 2
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB158_10
@@ -34791,6 +35664,7 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB158_3
 # %bb.12:                               #   in Loop: Header=BB158_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -34997,11 +35871,9 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB159_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB159_11
 .LBB159_9:                              # %scalar.ph.preheader
@@ -35013,7 +35885,7 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
                                         #   Parent Loop BB159_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB159_10
@@ -35023,6 +35895,7 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB159_3
 # %bb.12:                               #   in Loop: Header=BB159_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35228,11 +36101,9 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB160_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB160_11
 .LBB160_9:                              # %scalar.ph.preheader
@@ -35245,7 +36116,7 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB160_10
@@ -35256,6 +36127,7 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	andi	$a2, $a2, 10
 	mul.d	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB160_3
 # %bb.12:                               #   in Loop: Header=BB160_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35463,11 +36335,9 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB161_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB161_11
 .LBB161_9:                              # %scalar.ph.preheader
@@ -35480,7 +36350,7 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 14
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB161_10
@@ -35491,6 +36361,7 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	andi	$a2, $a2, 14
 	mul.d	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB161_3
 # %bb.12:                               #   in Loop: Header=BB161_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35698,11 +36569,9 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB162_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB162_11
 .LBB162_9:                              # %scalar.ph.preheader
@@ -35715,7 +36584,7 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB162_10
@@ -35726,6 +36595,7 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 	movfr2gr.s	$a2, $fa0
 	ori	$a2, $a2, 10
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB162_3
 # %bb.12:                               #   in Loop: Header=BB162_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35921,11 +36791,9 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB163_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB163_11
 .LBB163_9:                              # %scalar.ph.preheader
@@ -35938,7 +36806,7 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 63
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB163_10
@@ -35949,6 +36817,7 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 	movfr2gr.s	$a2, $fa0
 	ori	$a2, $a2, 63
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB163_3
 # %bb.12:                               #   in Loop: Header=BB163_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -36144,11 +37013,9 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB164_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB164_11
 .LBB164_9:                              # %scalar.ph.preheader
@@ -36161,7 +37028,7 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB164_10
@@ -36172,6 +37039,7 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	xori	$a2, $a2, 10
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB164_3
 # %bb.12:                               #   in Loop: Header=BB164_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -36379,11 +37247,9 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB165_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB165_11
 .LBB165_9:                              # %scalar.ph.preheader
@@ -36396,7 +37262,7 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 49
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB165_10
@@ -36407,6 +37273,7 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	xori	$a2, $a2, 49
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB165_3
 # %bb.12:                               #   in Loop: Header=BB165_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -38620,11 +39487,9 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB181_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB181_11
 .LBB181_9:                              # %scalar.ph.preheader
@@ -38637,7 +39502,7 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB181_10
@@ -38648,6 +39513,7 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB181_3
 # %bb.12:                               #   in Loop: Header=BB181_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -38859,11 +39725,9 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB182_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB182_11
 .LBB182_9:                              # %scalar.ph.preheader
@@ -38876,7 +39740,7 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB182_10
@@ -38887,6 +39751,7 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB182_3
 # %bb.12:                               #   in Loop: Header=BB182_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -39100,11 +39965,9 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB183_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB183_11
 .LBB183_9:                              # %scalar.ph.preheader
@@ -39117,7 +39980,7 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB183_10
@@ -39128,6 +39991,7 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB183_3
 # %bb.12:                               #   in Loop: Header=BB183_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -39342,11 +40206,9 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB184_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB184_11
 .LBB184_9:                              # %scalar.ph.preheader
@@ -39359,7 +40221,7 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB184_10
@@ -39370,6 +40232,7 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB184_3
 # %bb.12:                               #   in Loop: Header=BB184_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -39581,11 +40444,9 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB185_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB185_11
 .LBB185_9:                              # %scalar.ph.preheader
@@ -39598,7 +40459,7 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB185_10
@@ -39608,6 +40469,7 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB185_3
 # %bb.12:                               #   in Loop: Header=BB185_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -39817,11 +40679,9 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB186_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB186_11
 .LBB186_9:                              # %scalar.ph.preheader
@@ -39834,7 +40694,7 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB186_10
@@ -39844,6 +40704,7 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB186_3
 # %bb.12:                               #   in Loop: Header=BB186_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40056,11 +40917,9 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB187_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB187_11
 .LBB187_9:                              # %scalar.ph.preheader
@@ -40073,7 +40932,7 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 120
+	addi.d	$a0, $a0, 120
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB187_10
@@ -40084,6 +40943,7 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB187_3
 # %bb.12:                               #   in Loop: Header=BB187_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -40301,11 +41161,9 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB188_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB188_11
 .LBB188_9:                              # %scalar.ph.preheader
@@ -40319,7 +41177,7 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	ld.wu	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	srli.d	$a4, $a4, 34
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB188_10
@@ -40331,6 +41189,7 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	mul.d	$a2, $a2, $s4
 	srli.d	$a2, $a2, 34
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB188_3
 # %bb.12:                               #   in Loop: Header=BB188_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40551,11 +41410,9 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB189_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB189_11
 .LBB189_9:                              # %scalar.ph.preheader
@@ -40569,7 +41426,7 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	ld.wu	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	srli.d	$a4, $a4, 38
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB189_10
@@ -40581,6 +41438,7 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	mul.d	$a2, $a2, $s4
 	srli.d	$a2, $a2, 38
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB189_3
 # %bb.12:                               #   in Loop: Header=BB189_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40796,11 +41654,9 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB190_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB190_11
 .LBB190_9:                              # %scalar.ph.preheader
@@ -40813,7 +41669,7 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 2
+	addi.d	$a0, $a0, 2
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB190_10
@@ -40824,6 +41680,7 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB190_3
 # %bb.12:                               #   in Loop: Header=BB190_4 Depth=1
 	ld.w	$a1, $s8, %pc_lo12(current_test)
@@ -41030,11 +41887,9 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB191_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB191_11
 .LBB191_9:                              # %scalar.ph.preheader
@@ -41046,7 +41901,7 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
                                         #   Parent Loop BB191_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB191_10
@@ -41056,6 +41911,7 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB191_3
 # %bb.12:                               #   in Loop: Header=BB191_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41264,11 +42120,9 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB192_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB192_11
 .LBB192_9:                              # %scalar.ph.preheader
@@ -41281,7 +42135,7 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB192_10
@@ -41292,6 +42146,7 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	andi	$a2, $a2, 10
 	mul.d	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB192_3
 # %bb.12:                               #   in Loop: Header=BB192_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41499,11 +42354,9 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB193_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB193_11
 .LBB193_9:                              # %scalar.ph.preheader
@@ -41516,7 +42369,7 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 14
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB193_10
@@ -41527,6 +42380,7 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	andi	$a2, $a2, 14
 	mul.d	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB193_3
 # %bb.12:                               #   in Loop: Header=BB193_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41734,11 +42588,9 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB194_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB194_11
 .LBB194_9:                              # %scalar.ph.preheader
@@ -41751,7 +42603,7 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB194_10
@@ -41762,6 +42614,7 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 	movfr2gr.d	$a2, $fa0
 	ori	$a2, $a2, 10
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB194_3
 # %bb.12:                               #   in Loop: Header=BB194_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41957,11 +42810,9 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB195_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB195_11
 .LBB195_9:                              # %scalar.ph.preheader
@@ -41974,7 +42825,7 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 63
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB195_10
@@ -41985,6 +42836,7 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 	movfr2gr.d	$a2, $fa0
 	ori	$a2, $a2, 63
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB195_3
 # %bb.12:                               #   in Loop: Header=BB195_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -42180,11 +43032,9 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB196_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB196_11
 .LBB196_9:                              # %scalar.ph.preheader
@@ -42197,7 +43047,7 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB196_10
@@ -42208,6 +43058,7 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	xori	$a2, $a2, 10
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB196_3
 # %bb.12:                               #   in Loop: Header=BB196_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -42418,11 +43269,9 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB197_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB197_11
 .LBB197_9:                              # %scalar.ph.preheader
@@ -42435,7 +43284,7 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 49
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB197_10
@@ -42446,6 +43295,7 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	xori	$a2, $a2, 49
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB197_3
 # %bb.12:                               #   in Loop: Header=BB197_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -44661,8 +45511,7 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB213_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB213_11
@@ -44898,8 +45747,7 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB214_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB214_11
@@ -45137,8 +45985,7 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB215_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB215_11
@@ -45377,8 +46224,7 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB216_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB216_11
@@ -45614,8 +46460,7 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB217_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB217_11
@@ -45845,8 +46690,7 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB218_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB218_11
@@ -46079,8 +46923,7 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB219_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB219_11
@@ -46327,8 +47170,7 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB220_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB220_11
@@ -46580,8 +47422,7 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB221_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB221_11
@@ -46823,8 +47664,7 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB222_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB222_11
@@ -47055,8 +47895,7 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB223_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB223_11
@@ -47284,8 +48123,7 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB224_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB224_11
@@ -47517,8 +48355,7 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB225_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB225_11
@@ -47750,8 +48587,7 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB226_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB226_11
@@ -47971,8 +48807,7 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB227_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB227_11
@@ -48192,8 +49027,7 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB228_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB228_11
@@ -48425,8 +49259,7 @@ _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB229_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB229_11
@@ -50669,8 +51502,7 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB245_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB245_11
@@ -50931,8 +51763,7 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB246_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB246_11
@@ -51195,8 +52026,7 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB247_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB247_11
@@ -51460,8 +52290,7 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB248_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB248_11
@@ -51722,8 +52551,7 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB249_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB249_11
@@ -51981,8 +52809,7 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB250_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB250_11
@@ -52243,8 +53070,7 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB251_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB251_11
@@ -52514,8 +53340,7 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB252_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB252_11
@@ -52797,8 +53622,7 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB253_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB253_11
@@ -53072,8 +53896,7 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB254_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB254_11
@@ -53329,8 +54152,7 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB255_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB255_11
@@ -53586,8 +54408,7 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB256_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB256_11
@@ -53844,8 +54665,7 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB257_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB257_11
@@ -54102,8 +54922,7 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB258_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB258_11
@@ -54338,8 +55157,7 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB259_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB259_11
@@ -54574,8 +55392,7 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB260_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB260_11
@@ -54835,8 +55652,7 @@ _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB261_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB261_11

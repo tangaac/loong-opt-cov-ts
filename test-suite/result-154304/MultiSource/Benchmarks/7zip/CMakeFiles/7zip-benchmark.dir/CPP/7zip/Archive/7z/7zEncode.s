@@ -2788,11 +2788,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.31:                               # %middle.block258
                                         #   in Loop: Header=BB3_25 Depth=1
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$a2, $a4, .LBB3_33
 	.p2align	4, , 16
 .LBB3_32:                               # %scalar.ph245
@@ -2884,11 +2882,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.38:                               # %middle.block
                                         #   in Loop: Header=BB3_25 Depth=1
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	beq	$a2, $a4, .LBB3_24
 	.p2align	4, , 16
 .LBB3_39:                               # %scalar.ph
@@ -2994,7 +2990,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	beqz	$a0, .LBB3_96
 # %bb.58:                               # %.lr.ph.i108.lr.ph
 	ld.wu	$a1, $fp, 180
-	ld.d	$t0, $fp, 216
+	ld.d	$t1, $fp, 216
 	ld.d	$a2, $fp, 152
 	addi.w	$a3, $a1, 0
 	ld.d	$a4, $fp, 184
@@ -3010,7 +3006,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
                                         #     Child Loop BB3_67 Depth 2
                                         #     Child Loop BB3_69 Depth 2
                                         #     Child Loop BB3_72 Depth 2
-	ld.w	$t1, $t0, 0
+	ld.w	$t1, $t1, 0
 	move	$t0, $zero
 	.p2align	4, , 16
 .LBB3_60:                               #   Parent Loop BB3_59 Depth=1
@@ -3104,12 +3100,10 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.68:                               # %middle.block277
                                         #   in Loop: Header=BB3_59 Depth=1
 	vadd.w	$vr2, $vr4, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
 	addi.w	$t2, $t1, 0
-	vpickve2gr.w	$s4, $vr2, 0
+	vpickve2gr.d	$s4, $vr2, 0
 	beq	$t0, $t2, .LBB3_70
 	.p2align	4, , 16
 .LBB3_69:                               # %.lr.ph.i110
@@ -3119,25 +3113,26 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	alsl.d	$t2, $t2, $a2, 3
 	ld.w	$t2, $t2, 4
 	addi.w	$t1, $t1, 1
-	add.w	$s4, $t2, $s4
+	add.d	$s4, $t2, $s4
 	bne	$t0, $t1, .LBB3_69
 .LBB3_70:                               # %_ZNK11NCoderMixer9CBindInfo22GetCoderOutStreamIndexEj.exit116
                                         #   in Loop: Header=BB3_59 Depth=1
+	addi.w	$t0, $s4, 0
 	blt	$a3, $a5, .LBB3_74
 # %bb.71:                               # %.lr.ph.i120.preheader
                                         #   in Loop: Header=BB3_59 Depth=1
-	move	$t1, $a1
-	move	$t0, $a4
+	move	$t2, $a1
+	move	$t1, $a4
 	.p2align	4, , 16
 .LBB3_72:                               # %.lr.ph.i120
                                         #   Parent Loop BB3_59 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t2, $t0, 4
-	beq	$t2, $s4, .LBB3_59
+	ld.w	$t3, $t1, 4
+	beq	$t3, $t0, .LBB3_59
 # %bb.73:                               #   in Loop: Header=BB3_72 Depth=2
-	addi.d	$t1, $t1, -1
-	addi.d	$t0, $t0, 8
-	bnez	$t1, .LBB3_72
+	addi.d	$t2, $t2, -1
+	addi.d	$t1, $t1, 8
+	bnez	$t2, .LBB3_72
 .LBB3_74:                               # %.preheader
 	ld.w	$a0, $fp, 244
 	ori	$s0, $zero, 1
@@ -3148,7 +3143,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	.p2align	4, , 16
 .LBB3_76:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
-	beq	$a3, $s4, .LBB3_79
+	beq	$a3, $t0, .LBB3_79
 # %bb.77:                               #   in Loop: Header=BB3_76 Depth=1
 	addi.w	$a1, $a1, 1
 	addi.d	$a0, $a0, -1

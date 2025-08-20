@@ -82,20 +82,20 @@ main:                                   # @main
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -592
-	.cfi_def_cfa_offset 592
-	st.d	$ra, $sp, 584                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 576                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 568                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 560                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -560
+	.cfi_def_cfa_offset 560
+	st.d	$ra, $sp, 552                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 544                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 536                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 528                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	st.w	$a0, $sp, 556
+	st.w	$a0, $sp, 524
 	pcalau12i	$a0, %got_pc_hi20(_ZN9benchmark16PrintDefaultHelpEv)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN9benchmark16PrintDefaultHelpEv)
-	addi.d	$a0, $sp, 556
+	addi.d	$a0, $sp, 524
 	pcaddu18i	$ra, %call36(_ZN9benchmark10InitializeEPiPPcPFvvE)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
@@ -143,11 +143,11 @@ main:                                   # @main
 # %bb.4:                                # %_Z4initv.exit
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 8
 	ori	$a2, $zero, 16
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEEC1EPKcSt13_Ios_Openmode)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 152
+	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(_ZNKSt12__basic_fileIcE7is_openEv)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
@@ -188,28 +188,23 @@ main:                                   # @main
 	bne	$a0, $a3, .LBB1_6
 # %bb.9:                                # %_ZL5test1v.exit
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$fp, $vr0, 0
 	pcalau12i	$a0, %pc_hi20(y)
-	addi.d	$a0, $a0, %pc_lo12(y)
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vstelm.w	$vr0, $a0, 0, 0
+	st.w	$fp, $a0, %pc_lo12(y)
 .Ltmp0:                                 # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 8
 	ori	$a2, $zero, 7
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.10:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	bstrpick.d	$a1, $a0, 31, 0
+	bstrpick.d	$a1, $fp, 31, 0
 .Ltmp2:                                 # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp3:                                 # EH_LABEL
@@ -222,7 +217,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp5:                                 # EH_LABEL
 # %bb.12:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit10
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 16
 .Ltmp6:                                 # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt13basic_filebufIcSt11char_traitsIcEE5closeEv)
 	jirl	$ra, $ra, 0
@@ -230,9 +225,9 @@ main:                                   # @main
 # %bb.13:                               # %.noexc
 	bnez	$a0, .LBB1_15
 # %bb.14:
-	ld.d	$a0, $sp, 40
+	ld.d	$a0, $sp, 8
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 8
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 32
 	ori	$a1, $a1, 4
@@ -248,15 +243,15 @@ main:                                   # @main
 # %bb.16:
 	move	$fp, $zero
 .LBB1_17:
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-	ld.d	$s1, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 568                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 576                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 584                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 592
+	ld.d	$s1, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 552                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 560
 	ret
 .LBB1_18:
 .Ltmp13:                                # EH_LABEL
@@ -265,7 +260,7 @@ main:                                   # @main
 .Ltmp10:                                # EH_LABEL
 .LBB1_20:
 	move	$fp, $a0
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -337,7 +332,6 @@ _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
 	ori	$a3, $a2, 16
 	ori	$a4, $zero, 1024
 	pcalau12i	$a5, %pc_hi20(y)
-	addi.d	$a5, $a5, %pc_lo12(y)
 	addi.d	$a6, $sp, 12
 	.p2align	4, , 16
 .LBB2_3:                                # %.preheader
@@ -378,13 +372,11 @@ _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
 # %bb.7:                                # %_ZL5test1v.exit
                                         #   in Loop: Header=BB2_3 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
+	vhaddw.d.w	$vr1, $vr1, $vr1
 	ld.w	$a7, $sp, 12
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t0, $vr1, 0
-	vstelm.w	$vr1, $a5, 0, 0
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t0, $vr1, 0
+	st.w	$t0, $a5, %pc_lo12(y)
 	add.d	$a7, $a7, $t0
 	st.w	$a7, $sp, 12
 	#APP

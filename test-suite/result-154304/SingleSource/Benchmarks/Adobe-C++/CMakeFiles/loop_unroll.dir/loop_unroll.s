@@ -940,7 +940,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $fp
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -980,11 +980,9 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB6_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a1, .LBB6_13
 .LBB6_11:                               # %.lr.ph54.us.preheader118
@@ -997,7 +995,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $fp
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB6_12
@@ -1009,6 +1007,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s3
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB6_3
 # %bb.14:                               #   in Loop: Header=BB6_4 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -1082,11 +1081,9 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB6_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB6_25
 .LBB6_23:                               # %scalar.ph.preheader
@@ -1100,7 +1097,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB6_24
@@ -1111,6 +1108,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB6_17
 # %bb.26:                               #   in Loop: Header=BB6_18 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -1407,7 +1405,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -1447,11 +1445,9 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB7_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB7_13
@@ -1465,7 +1461,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s6
+	add.d	$a0, $a0, $s6
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB7_12
@@ -1477,6 +1473,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s8
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB7_3
 # %bb.14:                               #   in Loop: Header=BB7_4 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -1550,11 +1547,9 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB7_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB7_25
 .LBB7_23:                               # %scalar.ph.preheader
@@ -1568,7 +1563,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB7_24
@@ -1579,6 +1574,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB7_17
 # %bb.26:                               #   in Loop: Header=BB7_18 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -1867,7 +1863,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -1907,11 +1903,9 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB8_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB8_13
@@ -1925,7 +1919,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB8_12
@@ -1937,6 +1931,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB8_3
 # %bb.14:                               #   in Loop: Header=BB8_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -2012,11 +2007,9 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB8_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB8_25
 .LBB8_23:                               # %scalar.ph.preheader
@@ -2030,7 +2023,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB8_24
@@ -2041,6 +2034,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB8_17
 # %bb.26:                               #   in Loop: Header=BB8_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -2409,7 +2403,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -2449,11 +2443,9 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB10_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB10_13
@@ -2467,7 +2459,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB10_12
@@ -2479,6 +2471,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB10_3
 # %bb.14:                               #   in Loop: Header=BB10_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -2554,11 +2547,9 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB10_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB10_25
 .LBB10_23:                              # %scalar.ph.preheader
@@ -2572,7 +2563,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB10_24
@@ -2583,6 +2574,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB10_17
 # %bb.26:                               #   in Loop: Header=BB10_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -2868,7 +2860,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -2908,11 +2900,9 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block111
                                         #   in Loop: Header=BB11_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB11_13
@@ -2926,7 +2916,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB11_12
@@ -2938,6 +2928,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB11_3
 # %bb.14:                               #   in Loop: Header=BB11_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -3013,11 +3004,9 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB11_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB11_25
 .LBB11_23:                              # %scalar.ph.preheader
@@ -3031,7 +3020,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB11_24
@@ -3042,6 +3031,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB11_17
 # %bb.26:                               #   in Loop: Header=BB11_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -3324,7 +3314,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -3364,11 +3354,9 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block110
                                         #   in Loop: Header=BB12_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB12_13
@@ -3382,7 +3370,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB12_12
@@ -3394,6 +3382,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB12_3
 # %bb.14:                               #   in Loop: Header=BB12_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -3469,11 +3458,9 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB12_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB12_25
 .LBB12_23:                              # %scalar.ph.preheader
@@ -3487,7 +3474,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB12_24
@@ -3498,6 +3485,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB12_17
 # %bb.26:                               #   in Loop: Header=BB12_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -3815,11 +3803,9 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block109
                                         #   in Loop: Header=BB13_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	beq	$a2, $s8, .LBB13_13
 .LBB13_11:                              # %.lr.ph48.us.preheader114
@@ -3832,7 +3818,7 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB13_12
@@ -3844,6 +3830,7 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB13_3
 # %bb.14:                               #   in Loop: Header=BB13_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -3919,11 +3906,9 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB13_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB13_25
 .LBB13_23:                              # %scalar.ph.preheader
@@ -3937,7 +3922,7 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB13_24
@@ -3948,6 +3933,7 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB13_17
 # %bb.26:                               #   in Loop: Header=BB13_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -4229,7 +4215,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 25
 	addi.d	$a4, $a3, 25
 	addi.d	$a5, $a5, 100
@@ -4269,11 +4255,9 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block108
                                         #   in Loop: Header=BB14_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a4, .LBB14_13
@@ -4287,7 +4271,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB14_12
@@ -4299,6 +4283,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB14_3
 # %bb.14:                               #   in Loop: Header=BB14_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -4374,11 +4359,9 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB14_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB14_25
 .LBB14_23:                              # %scalar.ph.preheader
@@ -4392,7 +4375,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB14_24
@@ -4403,6 +4386,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB14_17
 # %bb.26:                               #   in Loop: Header=BB14_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -4679,7 +4663,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 24
 	addi.d	$a4, $a3, 24
 	addi.d	$a5, $a5, 96
@@ -4719,11 +4703,9 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block107
                                         #   in Loop: Header=BB15_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a4, .LBB15_13
@@ -4737,7 +4719,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB15_12
@@ -4749,6 +4731,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB15_3
 # %bb.14:                               #   in Loop: Header=BB15_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -4824,11 +4807,9 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB15_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB15_25
 .LBB15_23:                              # %scalar.ph.preheader
@@ -4842,7 +4823,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB15_24
@@ -4853,6 +4834,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB15_17
 # %bb.26:                               #   in Loop: Header=BB15_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -5072,86 +5054,86 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
                                         #     Child Loop BB16_5 Depth 2
                                         #     Child Loop BB16_9 Depth 2
                                         #     Child Loop BB16_12 Depth 2
-	move	$a3, $zero
+	move	$a2, $zero
 	move	$a0, $zero
 	ori	$a4, $zero, 23
 	move	$a5, $fp
 	.p2align	4, , 16
 .LBB16_5:                               #   Parent Loop BB16_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a2, $a3, $s1, 2
-	slli.d	$a6, $a3, 2
+	alsl.d	$a3, $a2, $s1, 2
+	slli.d	$a6, $a2, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a2, 4
-	ld.w	$t0, $a2, 8
-	ld.w	$t1, $a2, 12
+	ld.w	$a7, $a3, 4
+	ld.w	$t0, $a3, 8
+	ld.w	$t1, $a3, 12
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
+	ld.w	$a7, $a3, 16
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
+	ld.w	$t0, $a3, 20
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 24
+	ld.w	$t1, $a3, 24
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
+	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
+	ld.w	$t0, $a3, 32
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 36
+	ld.w	$t1, $a3, 36
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
+	ld.w	$a7, $a3, 40
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
+	ld.w	$t0, $a3, 44
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 48
+	ld.w	$t1, $a3, 48
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
+	ld.w	$a7, $a3, 52
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
+	ld.w	$t0, $a3, 56
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
+	ld.w	$t1, $a3, 60
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
+	ld.w	$a7, $a3, 64
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
+	ld.w	$t0, $a3, 68
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
+	ld.w	$t1, $a3, 72
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
+	ld.w	$a7, $a3, 76
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
+	ld.w	$t0, $a3, 80
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	ld.w	$t2, $a2, 88
-	add.d	$a2, $a6, $a7
-	add.d	$a2, $a2, $t0
-	add.d	$a7, $a2, $t1
-	move	$a2, $a4
+	ld.w	$t1, $a3, 84
+	ld.w	$t2, $a3, 88
+	add.d	$a3, $a6, $a7
+	add.d	$a3, $a3, $t0
+	add.d	$a7, $a3, $t1
+	move	$a3, $a4
 	move	$a6, $a5
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
-	addi.d	$a3, $a3, 23
-	addi.d	$a4, $a2, 23
+	add.d	$a0, $a0, $s3
+	addi.d	$a2, $a2, 23
+	addi.d	$a4, $a3, 23
 	addi.d	$a5, $a5, 92
-	bltu	$a3, $s2, .LBB16_5
+	bltu	$a2, $s2, .LBB16_5
 # %bb.6:                                # %..preheader_crit_edge.us
                                         #   in Loop: Header=BB16_4 Depth=1
-	addi.w	$a3, $a3, 0
-	bge	$a3, $s0, .LBB16_13
+	addi.w	$a2, $a2, 0
+	bge	$a2, $s0, .LBB16_13
 # %bb.7:                                # %.lr.ph45.us.preheader
                                         #   in Loop: Header=BB16_4 Depth=1
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ori	$a4, $zero, 8
-	bltu	$a3, $a4, .LBB16_11
+	bltu	$a2, $a4, .LBB16_11
 # %bb.8:                                # %vector.ph96
                                         #   in Loop: Header=BB16_4 Depth=1
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $a2
 	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
-	move	$a0, $a3
+	move	$a0, $a2
 	.p2align	4, , 16
 .LBB16_9:                               # %vector.body99
                                         #   Parent Loop BB16_4 Depth=1
@@ -5170,28 +5152,26 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block106
                                         #   in Loop: Header=BB16_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	beq	$a3, $a4, .LBB16_13
+	beq	$a2, $a4, .LBB16_13
 .LBB16_11:                              # %.lr.ph45.us.preheader111
                                         #   in Loop: Header=BB16_4 Depth=1
-	alsl.d	$a3, $a2, $s1, 2
+	alsl.d	$a2, $a3, $s1, 2
 	.p2align	4, , 16
 .LBB16_12:                              # %.lr.ph45.us
                                         #   Parent Loop BB16_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a4, $a3, 0
+	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
-	addi.d	$a2, $a2, 1
-	addi.d	$a3, $a3, 4
-	bltu	$a2, $s0, .LBB16_12
+	add.d	$a0, $a0, $s5
+	addi.d	$a3, $a3, 1
+	addi.d	$a2, $a2, 4
+	bltu	$a3, $s0, .LBB16_12
 .LBB16_13:                              # %._crit_edge.us
                                         #   in Loop: Header=BB16_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(init_value)
@@ -5200,6 +5180,7 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB16_3
 # %bb.14:                               #   in Loop: Header=BB16_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -5275,11 +5256,9 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB16_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB16_25
 .LBB16_23:                              # %scalar.ph.preheader
@@ -5293,7 +5272,7 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB16_24
@@ -5304,6 +5283,7 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB16_17
 # %bb.26:                               #   in Loop: Header=BB16_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -5576,7 +5556,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, 22
 	addi.d	$a4, $a2, 22
 	addi.d	$a5, $a5, 88
@@ -5616,11 +5596,9 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block105
                                         #   in Loop: Header=BB17_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB17_13
@@ -5634,7 +5612,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB17_12
@@ -5646,6 +5624,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB17_3
 # %bb.14:                               #   in Loop: Header=BB17_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -5721,11 +5700,9 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB17_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB17_25
 .LBB17_23:                              # %scalar.ph.preheader
@@ -5739,7 +5716,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB17_24
@@ -5750,6 +5727,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB17_17
 # %bb.26:                               #   in Loop: Header=BB17_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -6023,7 +6001,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, 21
 	addi.d	$a4, $a2, 21
 	addi.d	$a5, $a5, 84
@@ -6063,11 +6041,9 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB18_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB18_13
@@ -6081,7 +6057,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB18_12
@@ -6093,6 +6069,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB18_3
 # %bb.14:                               #   in Loop: Header=BB18_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -6168,11 +6145,9 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB18_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB18_25
 .LBB18_23:                              # %scalar.ph.preheader
@@ -6186,7 +6161,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB18_24
@@ -6197,6 +6172,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB18_17
 # %bb.26:                               #   in Loop: Header=BB18_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -6550,7 +6526,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a0, 20
 	addi.d	$a6, $a3, 80
@@ -6592,11 +6568,9 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB20_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB20_13
@@ -6610,7 +6584,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB20_12
@@ -6624,6 +6598,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB20_3
@@ -6701,11 +6676,9 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB20_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB20_25
 .LBB20_23:                              # %scalar.ph.preheader
@@ -6719,7 +6692,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB20_24
@@ -6730,6 +6703,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB20_17
 # %bb.26:                               #   in Loop: Header=BB20_18 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -7002,7 +6976,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a0, 19
 	addi.d	$a6, $a3, 76
@@ -7043,11 +7017,9 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB21_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB21_13
@@ -7061,7 +7033,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB21_12
@@ -7075,6 +7047,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB21_3
@@ -7152,11 +7125,9 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB21_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB21_25
 .LBB21_23:                              # %scalar.ph.preheader
@@ -7170,7 +7141,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB21_24
@@ -7181,6 +7152,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB21_17
 # %bb.26:                               #   in Loop: Header=BB21_18 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -7450,7 +7422,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a0, 18
 	addi.d	$a6, $a3, 72
@@ -7490,11 +7462,9 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB22_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB22_13
@@ -7508,7 +7478,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB22_12
@@ -7522,6 +7492,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB22_3
@@ -7599,11 +7570,9 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB22_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB22_25
 .LBB22_23:                              # %scalar.ph.preheader
@@ -7617,7 +7586,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB22_24
@@ -7628,6 +7597,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB22_17
 # %bb.26:                               #   in Loop: Header=BB22_18 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -7896,7 +7866,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a0, 17
 	addi.d	$a6, $a3, 68
@@ -7936,11 +7906,9 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB23_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB23_13
@@ -7954,7 +7922,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB23_12
@@ -7968,6 +7936,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB23_3
 # %bb.14:                               #   in Loop: Header=BB23_4 Depth=1
@@ -8044,11 +8013,9 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB23_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB23_25
 .LBB23_23:                              # %scalar.ph.preheader
@@ -8062,7 +8029,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB23_24
@@ -8073,6 +8040,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB23_17
 # %bb.26:                               #   in Loop: Header=BB23_18 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -8335,7 +8303,7 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s8
+	add.d	$a2, $a2, $s8
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a0, 16
 	addi.d	$a6, $a3, 64
@@ -8375,11 +8343,9 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a3, .LBB24_13
 .LBB24_11:                              # %.lr.ph37.us.preheader86
@@ -8392,7 +8358,7 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s7
+	add.d	$a2, $a2, $s7
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB24_12
@@ -8406,6 +8372,7 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	mul.d	$a0, $a0, $a3
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a3
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB24_3
 # %bb.14:                               #   in Loop: Header=BB24_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -8719,7 +8686,7 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a0, 15
 	addi.d	$a6, $a3, 60
@@ -8759,11 +8726,9 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB25_13
@@ -8777,7 +8742,7 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB25_12
@@ -8790,6 +8755,7 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB25_3
 # %bb.14:                               #   in Loop: Header=BB25_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -9100,7 +9066,7 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a0, 14
 	addi.d	$a6, $a3, 56
@@ -9140,11 +9106,9 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB26_13
@@ -9158,7 +9122,7 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB26_12
@@ -9170,6 +9134,7 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB26_3
 # %bb.14:                               #   in Loop: Header=BB26_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -9513,11 +9478,9 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $s8, .LBB27_13
 .LBB27_11:                              # %.lr.ph34.us.preheader83
@@ -9530,7 +9493,7 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB27_12
@@ -9542,6 +9505,7 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s5
 	add.w	$a0, $a0, $s6
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB27_3
 # %bb.14:                               #   in Loop: Header=BB27_4 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -9846,7 +9810,7 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a0, 12
 	addi.d	$a6, $a3, 48
@@ -9886,11 +9850,9 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB28_13
@@ -9904,7 +9866,7 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB28_12
@@ -9916,6 +9878,7 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB28_3
 # %bb.14:                               #   in Loop: Header=BB28_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -10299,7 +10262,7 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a0, 11
 	addi.d	$a6, $a3, 44
@@ -10339,11 +10302,9 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB30_13
@@ -10357,7 +10318,7 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB30_12
@@ -10369,6 +10330,7 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB30_3
 # %bb.14:                               #   in Loop: Header=BB30_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -10669,7 +10631,7 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a0, 10
 	addi.d	$a6, $a3, 40
@@ -10709,11 +10671,9 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB31_13
@@ -10727,7 +10687,7 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB31_12
@@ -10739,6 +10699,7 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB31_3
 # %bb.14:                               #   in Loop: Header=BB31_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -11039,7 +11000,7 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a0, 9
 	addi.d	$a6, $a3, 36
@@ -11079,11 +11040,9 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB32_13
@@ -11097,7 +11056,7 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB32_12
@@ -11109,6 +11068,7 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s8
 	add.w	$a0, $a0, $s7
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB32_3
 # %bb.14:                               #   in Loop: Header=BB32_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -11404,7 +11364,7 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $fp
+	add.d	$a2, $a2, $fp
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a0, 8
 	addi.d	$a6, $a3, 32
@@ -11443,11 +11403,9 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a3, .LBB33_13
 .LBB33_11:                              # %.lr.ph29.us.preheader78
@@ -11460,7 +11418,7 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s8
+	add.d	$a2, $a2, $s8
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB33_12
@@ -11472,6 +11430,7 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s3
 	add.w	$a0, $a0, $s5
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB33_3
 # %bb.14:                               #   in Loop: Header=BB33_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -11771,7 +11730,7 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a0, 7
 	addi.d	$a6, $a3, 28
@@ -11811,11 +11770,9 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB34_13
@@ -11829,7 +11786,7 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB34_12
@@ -11841,6 +11798,7 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB34_3
 # %bb.14:                               #   in Loop: Header=BB34_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -12133,7 +12091,7 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a0, 6
 	addi.d	$a6, $a3, 24
@@ -12173,11 +12131,9 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB35_13
@@ -12191,7 +12147,7 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB35_12
@@ -12203,6 +12159,7 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB35_3
 # %bb.14:                               #   in Loop: Header=BB35_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -12607,11 +12564,9 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block86
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -12637,7 +12592,7 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a5, $t1
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, 5
 	addi.d	$a3, $a3, 5
 	addi.d	$a4, $a4, 20
@@ -12683,11 +12638,9 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB36_19
@@ -12702,7 +12655,7 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB36_18
@@ -12714,6 +12667,7 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB36_3
 # %bb.20:                               #   in Loop: Header=BB36_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -13093,11 +13047,9 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block85
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -13121,7 +13073,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -13167,11 +13119,9 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB37_19
@@ -13186,7 +13136,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB37_18
@@ -13198,6 +13148,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB37_3
 # %bb.20:                               #   in Loop: Header=BB37_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -13567,11 +13518,9 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block84
                                         #   in Loop: Header=BB38_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -13593,7 +13542,7 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s1
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 3
 	addi.d	$a3, $a3, 3
 	addi.d	$a4, $a4, 12
@@ -13639,11 +13588,9 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB38_19
@@ -13658,7 +13605,7 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s1
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB38_18
@@ -13670,6 +13617,7 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB38_3
 # %bb.20:                               #   in Loop: Header=BB38_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -14012,11 +13960,9 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block80
                                         #   in Loop: Header=BB39_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s3
@@ -14036,7 +13982,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s4
+	add.d	$a0, $a0, $s4
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
@@ -14082,11 +14028,9 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB39_19
@@ -14101,7 +14045,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s0
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s2
+	add.d	$a0, $a0, $s2
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s1, .LBB39_18
@@ -14113,6 +14057,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB39_3
 # %bb.20:                               #   in Loop: Header=BB39_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -14379,11 +14324,9 @@ _Z27test_for_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB40_11
 .LBB40_9:                               # %scalar.ph.preheader
@@ -14397,7 +14340,7 @@ _Z27test_for_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB40_10
@@ -14408,6 +14351,7 @@ _Z27test_for_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB40_3
 # %bb.12:                               #   in Loop: Header=BB40_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -14702,7 +14646,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $fp
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -14742,11 +14686,9 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB41_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a1, .LBB41_13
 .LBB41_11:                              # %.lr.ph54.us.preheader118
@@ -14759,7 +14701,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $fp
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB41_12
@@ -14771,6 +14713,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s3
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB41_3
 # %bb.14:                               #   in Loop: Header=BB41_4 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -14844,11 +14787,9 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB41_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB41_25
 .LBB41_23:                              # %scalar.ph.preheader
@@ -14862,7 +14803,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB41_24
@@ -14873,6 +14814,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB41_17
 # %bb.26:                               #   in Loop: Header=BB41_18 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -15169,7 +15111,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -15209,11 +15151,9 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB42_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB42_13
@@ -15227,7 +15167,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a2, $a1, 0
 	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s6
+	add.d	$a0, $a0, $s6
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 4
 	bltu	$a4, $s0, .LBB42_12
@@ -15239,6 +15179,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s8
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB42_3
 # %bb.14:                               #   in Loop: Header=BB42_4 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -15312,11 +15253,9 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB42_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB42_25
 .LBB42_23:                              # %scalar.ph.preheader
@@ -15330,7 +15269,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB42_24
@@ -15341,6 +15280,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB42_17
 # %bb.26:                               #   in Loop: Header=BB42_18 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -15629,7 +15569,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -15669,11 +15609,9 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB43_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB43_13
@@ -15687,7 +15625,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB43_12
@@ -15699,6 +15637,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB43_3
 # %bb.14:                               #   in Loop: Header=BB43_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -15774,11 +15713,9 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB43_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB43_25
 .LBB43_23:                              # %scalar.ph.preheader
@@ -15792,7 +15729,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB43_24
@@ -15803,6 +15740,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB43_17
 # %bb.26:                               #   in Loop: Header=BB43_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -16171,7 +16109,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -16211,11 +16149,9 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB45_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB45_13
@@ -16229,7 +16165,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB45_12
@@ -16241,6 +16177,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB45_3
 # %bb.14:                               #   in Loop: Header=BB45_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -16316,11 +16253,9 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB45_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB45_25
 .LBB45_23:                              # %scalar.ph.preheader
@@ -16334,7 +16269,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB45_24
@@ -16345,6 +16280,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB45_17
 # %bb.26:                               #   in Loop: Header=BB45_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -16630,7 +16566,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -16670,11 +16606,9 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block111
                                         #   in Loop: Header=BB46_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB46_13
@@ -16688,7 +16622,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB46_12
@@ -16700,6 +16634,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB46_3
 # %bb.14:                               #   in Loop: Header=BB46_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -16775,11 +16710,9 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB46_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB46_25
 .LBB46_23:                              # %scalar.ph.preheader
@@ -16793,7 +16726,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB46_24
@@ -16804,6 +16737,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB46_17
 # %bb.26:                               #   in Loop: Header=BB46_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -17086,7 +17020,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -17126,11 +17060,9 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block110
                                         #   in Loop: Header=BB47_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB47_13
@@ -17144,7 +17076,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a3, $a2, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a5, $a5, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a5, $s0, .LBB47_12
@@ -17156,6 +17088,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB47_3
 # %bb.14:                               #   in Loop: Header=BB47_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -17231,11 +17164,9 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB47_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB47_25
 .LBB47_23:                              # %scalar.ph.preheader
@@ -17249,7 +17180,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB47_24
@@ -17260,6 +17191,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB47_17
 # %bb.26:                               #   in Loop: Header=BB47_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -17577,11 +17509,9 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block109
                                         #   in Loop: Header=BB48_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	beq	$a2, $s8, .LBB48_13
 .LBB48_11:                              # %.lr.ph48.us.preheader114
@@ -17594,7 +17524,7 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB48_12
@@ -17606,6 +17536,7 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB48_3
 # %bb.14:                               #   in Loop: Header=BB48_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -17681,11 +17612,9 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB48_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB48_25
 .LBB48_23:                              # %scalar.ph.preheader
@@ -17699,7 +17628,7 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB48_24
@@ -17710,6 +17639,7 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB48_17
 # %bb.26:                               #   in Loop: Header=BB48_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -17991,7 +17921,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 25
 	addi.d	$a4, $a3, 25
 	addi.d	$a5, $a5, 100
@@ -18031,11 +17961,9 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block108
                                         #   in Loop: Header=BB49_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a4, .LBB49_13
@@ -18049,7 +17977,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB49_12
@@ -18061,6 +17989,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB49_3
 # %bb.14:                               #   in Loop: Header=BB49_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -18136,11 +18065,9 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB49_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB49_25
 .LBB49_23:                              # %scalar.ph.preheader
@@ -18154,7 +18081,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB49_24
@@ -18165,6 +18092,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB49_17
 # %bb.26:                               #   in Loop: Header=BB49_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -18441,7 +18369,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 24
 	addi.d	$a4, $a3, 24
 	addi.d	$a5, $a5, 96
@@ -18481,11 +18409,9 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block107
                                         #   in Loop: Header=BB50_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a4, .LBB50_13
@@ -18499,7 +18425,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
 	bltu	$a3, $s0, .LBB50_12
@@ -18511,6 +18437,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB50_3
 # %bb.14:                               #   in Loop: Header=BB50_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -18586,11 +18513,9 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB50_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB50_25
 .LBB50_23:                              # %scalar.ph.preheader
@@ -18604,7 +18529,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB50_24
@@ -18615,6 +18540,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB50_17
 # %bb.26:                               #   in Loop: Header=BB50_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -18834,86 +18760,86 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
                                         #     Child Loop BB51_5 Depth 2
                                         #     Child Loop BB51_9 Depth 2
                                         #     Child Loop BB51_12 Depth 2
-	move	$a3, $zero
+	move	$a2, $zero
 	move	$a0, $zero
 	ori	$a4, $zero, 23
 	move	$a5, $fp
 	.p2align	4, , 16
 .LBB51_5:                               #   Parent Loop BB51_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a2, $a3, $s1, 2
-	slli.d	$a6, $a3, 2
+	alsl.d	$a3, $a2, $s1, 2
+	slli.d	$a6, $a2, 2
 	ldx.w	$a6, $s1, $a6
-	ld.w	$a7, $a2, 4
-	ld.w	$t0, $a2, 8
-	ld.w	$t1, $a2, 12
+	ld.w	$a7, $a3, 4
+	ld.w	$t0, $a3, 8
+	ld.w	$t1, $a3, 12
 	add.d	$a6, $a7, $a6
-	ld.w	$a7, $a2, 16
+	ld.w	$a7, $a3, 16
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 20
+	ld.w	$t0, $a3, 20
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 24
+	ld.w	$t1, $a3, 24
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 28
+	ld.w	$a7, $a3, 28
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 32
+	ld.w	$t0, $a3, 32
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 36
+	ld.w	$t1, $a3, 36
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 40
+	ld.w	$a7, $a3, 40
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 44
+	ld.w	$t0, $a3, 44
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 48
+	ld.w	$t1, $a3, 48
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 52
+	ld.w	$a7, $a3, 52
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 56
+	ld.w	$t0, $a3, 56
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 60
+	ld.w	$t1, $a3, 60
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 64
+	ld.w	$a7, $a3, 64
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 68
+	ld.w	$t0, $a3, 68
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 72
+	ld.w	$t1, $a3, 72
 	add.d	$a6, $a6, $a7
-	ld.w	$a7, $a2, 76
+	ld.w	$a7, $a3, 76
 	add.d	$a6, $a6, $t0
-	ld.w	$t0, $a2, 80
+	ld.w	$t0, $a3, 80
 	add.d	$a6, $a6, $t1
-	ld.w	$t1, $a2, 84
-	ld.w	$t2, $a2, 88
-	add.d	$a2, $a6, $a7
-	add.d	$a2, $a2, $t0
-	add.d	$a7, $a2, $t1
-	move	$a2, $a4
+	ld.w	$t1, $a3, 84
+	ld.w	$t2, $a3, 88
+	add.d	$a3, $a6, $a7
+	add.d	$a3, $a3, $t0
+	add.d	$a7, $a3, $t1
+	move	$a3, $a4
 	move	$a6, $a5
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
-	addi.d	$a3, $a3, 23
-	addi.d	$a4, $a2, 23
+	add.d	$a0, $a0, $s3
+	addi.d	$a2, $a2, 23
+	addi.d	$a4, $a3, 23
 	addi.d	$a5, $a5, 92
-	bltu	$a3, $s2, .LBB51_5
+	bltu	$a2, $s2, .LBB51_5
 # %bb.6:                                # %..preheader_crit_edge.us
                                         #   in Loop: Header=BB51_4 Depth=1
-	addi.w	$a3, $a3, 0
-	bge	$a3, $s0, .LBB51_13
+	addi.w	$a2, $a2, 0
+	bge	$a2, $s0, .LBB51_13
 # %bb.7:                                # %.lr.ph45.us.preheader
                                         #   in Loop: Header=BB51_4 Depth=1
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ori	$a4, $zero, 8
-	bltu	$a3, $a4, .LBB51_11
+	bltu	$a2, $a4, .LBB51_11
 # %bb.8:                                # %vector.ph96
                                         #   in Loop: Header=BB51_4 Depth=1
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $a2
 	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.w	$vr0, $a0, 0
-	move	$a0, $a3
+	move	$a0, $a2
 	.p2align	4, , 16
 .LBB51_9:                               # %vector.body99
                                         #   Parent Loop BB51_4 Depth=1
@@ -18932,28 +18858,26 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block106
                                         #   in Loop: Header=BB51_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	beq	$a3, $a4, .LBB51_13
+	beq	$a2, $a4, .LBB51_13
 .LBB51_11:                              # %.lr.ph45.us.preheader111
                                         #   in Loop: Header=BB51_4 Depth=1
-	alsl.d	$a3, $a2, $s1, 2
+	alsl.d	$a2, $a3, $s1, 2
 	.p2align	4, , 16
 .LBB51_12:                              # %.lr.ph45.us
                                         #   Parent Loop BB51_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a4, $a3, 0
+	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
-	addi.d	$a2, $a2, 1
-	addi.d	$a3, $a3, 4
-	bltu	$a2, $s0, .LBB51_12
+	add.d	$a0, $a0, $s5
+	addi.d	$a3, $a3, 1
+	addi.d	$a2, $a2, 4
+	bltu	$a3, $s0, .LBB51_12
 .LBB51_13:                              # %._crit_edge.us
                                         #   in Loop: Header=BB51_4 Depth=1
 	pcalau12i	$a2, %pc_hi20(init_value)
@@ -18962,6 +18886,7 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB51_3
 # %bb.14:                               #   in Loop: Header=BB51_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -19037,11 +18962,9 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB51_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB51_25
 .LBB51_23:                              # %scalar.ph.preheader
@@ -19055,7 +18978,7 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB51_24
@@ -19066,6 +18989,7 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB51_17
 # %bb.26:                               #   in Loop: Header=BB51_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -19338,7 +19262,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, 22
 	addi.d	$a4, $a2, 22
 	addi.d	$a5, $a5, 88
@@ -19378,11 +19302,9 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block105
                                         #   in Loop: Header=BB52_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB52_13
@@ -19396,7 +19318,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB52_12
@@ -19408,6 +19330,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB52_3
 # %bb.14:                               #   in Loop: Header=BB52_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -19483,11 +19406,9 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB52_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB52_25
 .LBB52_23:                              # %scalar.ph.preheader
@@ -19501,7 +19422,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB52_24
@@ -19512,6 +19433,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB52_17
 # %bb.26:                               #   in Loop: Header=BB52_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -19785,7 +19707,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a4, $a7, $t2
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, 21
 	addi.d	$a4, $a2, 21
 	addi.d	$a5, $a5, 84
@@ -19825,11 +19747,9 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB53_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB53_13
@@ -19843,7 +19763,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB53_12
@@ -19855,6 +19775,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB53_3
 # %bb.14:                               #   in Loop: Header=BB53_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -19930,11 +19851,9 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB53_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB53_25
 .LBB53_23:                              # %scalar.ph.preheader
@@ -19948,7 +19867,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB53_24
@@ -19959,6 +19878,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB53_17
 # %bb.26:                               #   in Loop: Header=BB53_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -20312,7 +20232,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a0, 20
 	addi.d	$a6, $a3, 80
@@ -20354,11 +20274,9 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB55_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB55_13
@@ -20372,7 +20290,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB55_12
@@ -20386,6 +20304,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB55_3
@@ -20463,11 +20382,9 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB55_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB55_25
 .LBB55_23:                              # %scalar.ph.preheader
@@ -20481,7 +20398,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB55_24
@@ -20492,6 +20409,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB55_17
 # %bb.26:                               #   in Loop: Header=BB55_18 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -20764,7 +20682,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a0, 19
 	addi.d	$a6, $a3, 76
@@ -20805,11 +20723,9 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB56_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB56_13
@@ -20823,7 +20739,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB56_12
@@ -20837,6 +20753,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB56_3
@@ -20914,11 +20831,9 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB56_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB56_25
 .LBB56_23:                              # %scalar.ph.preheader
@@ -20932,7 +20847,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB56_24
@@ -20943,6 +20858,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB56_17
 # %bb.26:                               #   in Loop: Header=BB56_18 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -21212,7 +21128,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a0, 18
 	addi.d	$a6, $a3, 72
@@ -21252,11 +21168,9 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB57_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB57_13
@@ -21270,7 +21184,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB57_12
@@ -21284,6 +21198,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB57_3
@@ -21361,11 +21276,9 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB57_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB57_25
 .LBB57_23:                              # %scalar.ph.preheader
@@ -21379,7 +21292,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB57_24
@@ -21390,6 +21303,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB57_17
 # %bb.26:                               #   in Loop: Header=BB57_18 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -21658,7 +21572,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a1, $a2, $a1
-	add.w	$a2, $a1, $s3
+	add.d	$a2, $a1, $s3
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a0, 17
 	addi.d	$a6, $a3, 68
@@ -21698,11 +21612,9 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB58_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB58_13
@@ -21716,7 +21628,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB58_12
@@ -21730,6 +21642,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	mul.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a1
+	addi.w	$a2, $a2, 0
 	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB58_3
 # %bb.14:                               #   in Loop: Header=BB58_4 Depth=1
@@ -21806,11 +21719,9 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB58_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB58_25
 .LBB58_23:                              # %scalar.ph.preheader
@@ -21824,7 +21735,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB58_24
@@ -21835,6 +21746,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB58_17
 # %bb.26:                               #   in Loop: Header=BB58_18 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -22097,7 +22009,7 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s8
+	add.d	$a2, $a2, $s8
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a0, 16
 	addi.d	$a6, $a3, 64
@@ -22137,11 +22049,9 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a3, .LBB59_13
 .LBB59_11:                              # %.lr.ph37.us.preheader86
@@ -22154,7 +22064,7 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s7
+	add.d	$a2, $a2, $s7
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB59_12
@@ -22168,6 +22078,7 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	mul.d	$a0, $a0, $a3
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $a3
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB59_3
 # %bb.14:                               #   in Loop: Header=BB59_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -22481,7 +22392,7 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a0, 15
 	addi.d	$a6, $a3, 60
@@ -22521,11 +22432,9 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB60_13
@@ -22539,7 +22448,7 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB60_12
@@ -22552,6 +22461,7 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a3
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB60_3
 # %bb.14:                               #   in Loop: Header=BB60_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -22862,7 +22772,7 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a0, 14
 	addi.d	$a6, $a3, 56
@@ -22902,11 +22812,9 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB61_13
@@ -22920,7 +22828,7 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB61_12
@@ -22932,6 +22840,7 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB61_3
 # %bb.14:                               #   in Loop: Header=BB61_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -23275,11 +23184,9 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $s8, .LBB62_13
 .LBB62_11:                              # %.lr.ph34.us.preheader83
@@ -23292,7 +23199,7 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB62_12
@@ -23304,6 +23211,7 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s5
 	add.w	$a0, $a0, $s6
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB62_3
 # %bb.14:                               #   in Loop: Header=BB62_4 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -23608,7 +23516,7 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a0, 12
 	addi.d	$a6, $a3, 48
@@ -23648,11 +23556,9 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB63_13
@@ -23666,7 +23572,7 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB63_12
@@ -23678,6 +23584,7 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB63_3
 # %bb.14:                               #   in Loop: Header=BB63_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -24061,7 +23968,7 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a0, 11
 	addi.d	$a6, $a3, 44
@@ -24101,11 +24008,9 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB65_13
@@ -24119,7 +24024,7 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB65_12
@@ -24131,6 +24036,7 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB65_3
 # %bb.14:                               #   in Loop: Header=BB65_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -24431,7 +24337,7 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a0, 10
 	addi.d	$a6, $a3, 40
@@ -24471,11 +24377,9 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB66_13
@@ -24489,7 +24393,7 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB66_12
@@ -24501,6 +24405,7 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB66_3
 # %bb.14:                               #   in Loop: Header=BB66_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -24801,7 +24706,7 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a0, 9
 	addi.d	$a6, $a3, 36
@@ -24841,11 +24746,9 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB67_13
@@ -24859,7 +24762,7 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB67_12
@@ -24871,6 +24774,7 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s8
 	add.w	$a0, $a0, $s7
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB67_3
 # %bb.14:                               #   in Loop: Header=BB67_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -25166,7 +25070,7 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $fp
+	add.d	$a2, $a2, $fp
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a0, 8
 	addi.d	$a6, $a3, 32
@@ -25205,11 +25109,9 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a3, .LBB68_13
 .LBB68_11:                              # %.lr.ph29.us.preheader78
@@ -25222,7 +25124,7 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s8
+	add.d	$a2, $a2, $s8
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB68_12
@@ -25234,6 +25136,7 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s3
 	add.w	$a0, $a0, $s5
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB68_3
 # %bb.14:                               #   in Loop: Header=BB68_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -25533,7 +25436,7 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a0, 7
 	addi.d	$a6, $a3, 28
@@ -25573,11 +25476,9 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB69_13
@@ -25591,7 +25492,7 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB69_12
@@ -25603,6 +25504,7 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB69_3
 # %bb.14:                               #   in Loop: Header=BB69_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -25895,7 +25797,7 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a2, $a2, $a5
-	add.w	$a2, $a2, $s3
+	add.d	$a2, $a2, $s3
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a0, 6
 	addi.d	$a6, $a3, 24
@@ -25935,11 +25837,9 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB70_13
@@ -25953,7 +25853,7 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a2, $a2, $a4
-	add.w	$a2, $a2, $s5
+	add.d	$a2, $a2, $s5
 	addi.d	$a0, $a0, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a0, $s0, .LBB70_12
@@ -25965,6 +25865,7 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a0, $fa0
 	mul.d	$a0, $a0, $s6
 	add.w	$a0, $a0, $s8
+	addi.w	$a2, $a2, 0
 	beq	$a2, $a0, .LBB70_3
 # %bb.14:                               #   in Loop: Header=BB70_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -26369,11 +26270,9 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block86
                                         #   in Loop: Header=BB71_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -26399,7 +26298,7 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a5, $t1
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, 5
 	addi.d	$a3, $a3, 5
 	addi.d	$a4, $a4, 20
@@ -26445,11 +26344,9 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB71_19
@@ -26464,7 +26361,7 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB71_18
@@ -26476,6 +26373,7 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB71_3
 # %bb.20:                               #   in Loop: Header=BB71_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -26855,11 +26753,9 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block85
                                         #   in Loop: Header=BB72_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -26883,7 +26779,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -26929,11 +26825,9 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB72_19
@@ -26948,7 +26842,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB72_18
@@ -26960,6 +26854,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB72_3
 # %bb.20:                               #   in Loop: Header=BB72_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -27329,11 +27224,9 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block84
                                         #   in Loop: Header=BB73_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -27355,7 +27248,7 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s1
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 3
 	addi.d	$a3, $a3, 3
 	addi.d	$a4, $a4, 12
@@ -27401,11 +27294,9 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB73_19
@@ -27420,7 +27311,7 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s1
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s0, .LBB73_18
@@ -27432,6 +27323,7 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB73_3
 # %bb.20:                               #   in Loop: Header=BB73_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -27774,11 +27666,9 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block80
                                         #   in Loop: Header=BB74_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s3
@@ -27798,7 +27688,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s4
+	add.d	$a0, $a0, $s4
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
@@ -27844,11 +27734,9 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB74_19
@@ -27863,7 +27751,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s0
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s2
+	add.d	$a0, $a0, $s2
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 4
 	bltu	$a2, $s1, .LBB74_18
@@ -27875,6 +27763,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB74_3
 # %bb.20:                               #   in Loop: Header=BB74_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -28141,11 +28030,9 @@ _Z29test_while_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB75_11
 .LBB75_9:                               # %scalar.ph.preheader
@@ -28159,7 +28046,7 @@ _Z29test_while_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB75_10
@@ -28170,6 +28057,7 @@ _Z29test_while_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB75_3
 # %bb.12:                               #   in Loop: Header=BB75_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -28460,7 +28348,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $fp
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -28500,11 +28388,9 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB76_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a1, .LBB76_13
 .LBB76_11:                              # %.preheader.us.preheader118
@@ -28518,7 +28404,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $fp
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB76_12
@@ -28530,6 +28416,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s3
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB76_3
 # %bb.14:                               #   in Loop: Header=BB76_4 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -28603,11 +28490,9 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB76_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB76_25
 .LBB76_23:                              # %scalar.ph.preheader
@@ -28621,7 +28506,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB76_24
@@ -28632,6 +28517,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB76_17
 # %bb.26:                               #   in Loop: Header=BB76_18 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -28923,7 +28809,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -28963,11 +28849,9 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB77_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB77_13
@@ -28982,7 +28866,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s6
+	add.d	$a0, $a0, $s6
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB77_12
@@ -28994,6 +28878,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s8
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB77_3
 # %bb.14:                               #   in Loop: Header=BB77_4 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -29067,11 +28952,9 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB77_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB77_25
 .LBB77_23:                              # %scalar.ph.preheader
@@ -29085,7 +28968,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB77_24
@@ -29096,6 +28979,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB77_17
 # %bb.26:                               #   in Loop: Header=BB77_18 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -29381,7 +29265,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -29421,11 +29305,9 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB78_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB78_13
@@ -29440,7 +29322,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB78_12
@@ -29452,6 +29334,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB78_3
 # %bb.14:                               #   in Loop: Header=BB78_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -29527,11 +29410,9 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB78_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB78_25
 .LBB78_23:                              # %scalar.ph.preheader
@@ -29545,7 +29426,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB78_24
@@ -29556,6 +29437,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB78_17
 # %bb.26:                               #   in Loop: Header=BB78_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -29921,7 +29803,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -29961,11 +29843,9 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB80_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB80_13
@@ -29980,7 +29860,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB80_12
@@ -29992,6 +29872,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB80_3
 # %bb.14:                               #   in Loop: Header=BB80_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -30067,11 +29948,9 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB80_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB80_25
 .LBB80_23:                              # %scalar.ph.preheader
@@ -30085,7 +29964,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB80_24
@@ -30096,6 +29975,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB80_17
 # %bb.26:                               #   in Loop: Header=BB80_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -30378,7 +30258,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -30418,11 +30298,9 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block111
                                         #   in Loop: Header=BB81_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB81_13
@@ -30437,7 +30315,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB81_12
@@ -30449,6 +30327,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB81_3
 # %bb.14:                               #   in Loop: Header=BB81_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -30524,11 +30403,9 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB81_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB81_25
 .LBB81_23:                              # %scalar.ph.preheader
@@ -30542,7 +30419,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB81_24
@@ -30553,6 +30430,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB81_17
 # %bb.26:                               #   in Loop: Header=BB81_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -30832,7 +30710,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -30872,11 +30750,9 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block110
                                         #   in Loop: Header=BB82_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB82_13
@@ -30891,7 +30767,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB82_12
@@ -30903,6 +30779,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB82_3
 # %bb.14:                               #   in Loop: Header=BB82_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -30978,11 +30855,9 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB82_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB82_25
 .LBB82_23:                              # %scalar.ph.preheader
@@ -30996,7 +30871,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB82_24
@@ -31007,6 +30882,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB82_17
 # %bb.26:                               #   in Loop: Header=BB82_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -31321,11 +31197,9 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block109
                                         #   in Loop: Header=BB83_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	beq	$a2, $s8, .LBB83_13
 .LBB83_11:                              # %.preheader.us.preheader114
@@ -31339,7 +31213,7 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB83_12
@@ -31351,6 +31225,7 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB83_3
 # %bb.14:                               #   in Loop: Header=BB83_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -31426,11 +31301,9 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB83_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB83_25
 .LBB83_23:                              # %scalar.ph.preheader
@@ -31444,7 +31317,7 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB83_24
@@ -31455,6 +31328,7 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB83_17
 # %bb.26:                               #   in Loop: Header=BB83_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -31733,7 +31607,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 25
 	addi.d	$a3, $a5, 25
 	addi.d	$a4, $a4, 100
@@ -31773,11 +31647,9 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block108
                                         #   in Loop: Header=BB84_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB84_13
@@ -31792,7 +31664,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB84_12
@@ -31804,6 +31676,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB84_3
 # %bb.14:                               #   in Loop: Header=BB84_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -31879,11 +31752,9 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB84_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB84_25
 .LBB84_23:                              # %scalar.ph.preheader
@@ -31897,7 +31768,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB84_24
@@ -31908,6 +31779,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB84_17
 # %bb.26:                               #   in Loop: Header=BB84_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -32181,7 +32053,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 24
 	addi.d	$a3, $a5, 24
 	addi.d	$a4, $a4, 96
@@ -32221,11 +32093,9 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block107
                                         #   in Loop: Header=BB85_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB85_13
@@ -32240,7 +32110,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB85_12
@@ -32252,6 +32122,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB85_3
 # %bb.14:                               #   in Loop: Header=BB85_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -32327,11 +32198,9 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB85_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB85_25
 .LBB85_23:                              # %scalar.ph.preheader
@@ -32345,7 +32214,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB85_24
@@ -32356,6 +32225,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB85_17
 # %bb.26:                               #   in Loop: Header=BB85_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -32630,7 +32500,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 23
 	addi.d	$a3, $a5, 23
 	addi.d	$a4, $a4, 92
@@ -32670,11 +32540,9 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block106
                                         #   in Loop: Header=BB86_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB86_13
@@ -32689,7 +32557,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB86_12
@@ -32701,6 +32569,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB86_3
 # %bb.14:                               #   in Loop: Header=BB86_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -32776,11 +32645,9 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB86_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB86_25
 .LBB86_23:                              # %scalar.ph.preheader
@@ -32794,7 +32661,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB86_24
@@ -32805,6 +32672,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB86_17
 # %bb.26:                               #   in Loop: Header=BB86_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -33074,7 +32942,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 22
 	addi.d	$a3, $a5, 22
 	addi.d	$a4, $a4, 88
@@ -33114,11 +32982,9 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block105
                                         #   in Loop: Header=BB87_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB87_13
@@ -33133,7 +32999,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB87_12
@@ -33145,6 +33011,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB87_3
 # %bb.14:                               #   in Loop: Header=BB87_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -33220,11 +33087,9 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB87_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB87_25
 .LBB87_23:                              # %scalar.ph.preheader
@@ -33238,7 +33103,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB87_24
@@ -33249,6 +33114,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB87_17
 # %bb.26:                               #   in Loop: Header=BB87_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -33519,7 +33385,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 21
 	addi.d	$a3, $a5, 21
 	addi.d	$a4, $a4, 84
@@ -33559,11 +33425,9 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB88_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB88_13
@@ -33578,7 +33442,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB88_12
@@ -33590,6 +33454,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB88_3
 # %bb.14:                               #   in Loop: Header=BB88_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -33665,11 +33530,9 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB88_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB88_25
 .LBB88_23:                              # %scalar.ph.preheader
@@ -33683,7 +33546,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB88_24
@@ -33694,6 +33557,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB88_17
 # %bb.26:                               #   in Loop: Header=BB88_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -34044,7 +33908,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a2, 20
 	addi.d	$a6, $a3, 80
@@ -34087,11 +33951,9 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB90_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB90_14
@@ -34106,7 +33968,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB90_12
@@ -34124,6 +33986,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB90_3
 # %bb.15:                               #   in Loop: Header=BB90_4 Depth=1
@@ -34200,11 +34063,9 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB90_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB90_26
 .LBB90_24:                              # %scalar.ph.preheader
@@ -34218,7 +34079,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB90_25
@@ -34229,6 +34090,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB90_18
 # %bb.27:                               #   in Loop: Header=BB90_19 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -34498,7 +34360,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a2, 19
 	addi.d	$a6, $a3, 76
@@ -34540,11 +34402,9 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB91_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB91_14
@@ -34559,7 +34419,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB91_12
@@ -34577,6 +34437,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB91_3
 # %bb.15:                               #   in Loop: Header=BB91_4 Depth=1
@@ -34653,11 +34514,9 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB91_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB91_26
 .LBB91_24:                              # %scalar.ph.preheader
@@ -34671,7 +34530,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB91_25
@@ -34682,6 +34541,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB91_18
 # %bb.27:                               #   in Loop: Header=BB91_19 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -34948,7 +34808,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a2, 18
 	addi.d	$a6, $a3, 72
@@ -34990,11 +34850,9 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB92_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB92_14
@@ -35009,7 +34867,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB92_12
@@ -35027,6 +34885,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB92_3
 # %bb.15:                               #   in Loop: Header=BB92_4 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -35102,11 +34961,9 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB92_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB92_26
 .LBB92_24:                              # %scalar.ph.preheader
@@ -35120,7 +34977,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB92_25
@@ -35131,6 +34988,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB92_18
 # %bb.27:                               #   in Loop: Header=BB92_19 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -35398,7 +35256,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a2, 17
 	addi.d	$a6, $a3, 68
@@ -35440,11 +35298,9 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB93_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB93_14
@@ -35459,7 +35315,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB93_12
@@ -35477,6 +35333,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB93_3
 # %bb.15:                               #   in Loop: Header=BB93_4 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -35551,11 +35408,9 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB93_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $a5, .LBB93_26
 .LBB93_24:                              # %scalar.ph.preheader
@@ -35569,7 +35424,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB93_25
@@ -35580,6 +35435,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB93_18
 # %bb.27:                               #   in Loop: Header=BB93_19 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -35839,7 +35695,7 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a2, 16
 	addi.d	$a6, $a3, 64
@@ -35879,11 +35735,9 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a3, .LBB94_13
 .LBB94_11:                              # %.preheader.us.preheader86
@@ -35897,7 +35751,7 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB94_12
@@ -35911,6 +35765,7 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	mul.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.w	$a2, $a2, $a3
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB94_3
 # %bb.14:                               #   in Loop: Header=BB94_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -36219,7 +36074,7 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a2, 15
 	addi.d	$a6, $a3, 60
@@ -36259,11 +36114,9 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB95_13
@@ -36278,7 +36131,7 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB95_12
@@ -36291,6 +36144,7 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	mul.d	$a2, $a2, $a3
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB95_3
 # %bb.14:                               #   in Loop: Header=BB95_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -36598,7 +36452,7 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a2, 14
 	addi.d	$a6, $a3, 56
@@ -36638,11 +36492,9 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB96_13
@@ -36657,7 +36509,7 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB96_12
@@ -36669,6 +36521,7 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB96_3
 # %bb.14:                               #   in Loop: Header=BB96_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -37009,11 +36862,9 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $s8, .LBB97_13
 .LBB97_11:                              # %.preheader.us.preheader83
@@ -37027,7 +36878,7 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB97_12
@@ -37039,6 +36890,7 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB97_3
 # %bb.14:                               #   in Loop: Header=BB97_4 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -37340,7 +37192,7 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a2, 12
 	addi.d	$a6, $a3, 48
@@ -37380,11 +37232,9 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB98_13
@@ -37399,7 +37249,7 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB98_12
@@ -37411,6 +37261,7 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB98_3
 # %bb.14:                               #   in Loop: Header=BB98_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -37791,7 +37642,7 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a2, 11
 	addi.d	$a6, $a3, 44
@@ -37831,11 +37682,9 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB100_13
@@ -37850,7 +37699,7 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB100_12
@@ -37862,6 +37711,7 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB100_3
 # %bb.14:                               #   in Loop: Header=BB100_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -38159,7 +38009,7 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a2, 10
 	addi.d	$a6, $a3, 40
@@ -38199,11 +38049,9 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB101_13
@@ -38218,7 +38066,7 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB101_12
@@ -38230,6 +38078,7 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB101_3
 # %bb.14:                               #   in Loop: Header=BB101_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -38527,7 +38376,7 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a2, 9
 	addi.d	$a6, $a3, 36
@@ -38567,11 +38416,9 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB102_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB102_13
@@ -38586,7 +38433,7 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB102_12
@@ -38598,6 +38445,7 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB102_3
 # %bb.14:                               #   in Loop: Header=BB102_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -38889,7 +38737,7 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $fp
+	add.d	$a0, $a0, $fp
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a2, 8
 	addi.d	$a6, $a3, 32
@@ -38928,11 +38776,9 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB103_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a3, .LBB103_13
 .LBB103_11:                             # %.preheader.us.preheader78
@@ -38946,7 +38792,7 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB103_12
@@ -38958,6 +38804,7 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB103_3
 # %bb.14:                               #   in Loop: Header=BB103_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -39252,7 +39099,7 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a2, 7
 	addi.d	$a6, $a3, 28
@@ -39292,11 +39139,9 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB104_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB104_13
@@ -39311,7 +39156,7 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB104_12
@@ -39323,6 +39168,7 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB104_3
 # %bb.14:                               #   in Loop: Header=BB104_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -39612,7 +39458,7 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a2, 6
 	addi.d	$a6, $a3, 24
@@ -39652,11 +39498,9 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB105_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB105_13
@@ -39671,7 +39515,7 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB105_12
@@ -39683,6 +39527,7 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB105_3
 # %bb.14:                               #   in Loop: Header=BB105_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -40082,11 +39927,9 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block86
                                         #   in Loop: Header=BB106_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -40112,7 +39955,7 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a5, $t1
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 5
 	addi.d	$a3, $a3, 5
 	addi.d	$a4, $a4, 20
@@ -40158,11 +40001,9 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB106_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB106_19
@@ -40178,7 +40019,7 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB106_18
@@ -40190,6 +40031,7 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB106_3
 # %bb.20:                               #   in Loop: Header=BB106_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -40564,11 +40406,9 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block85
                                         #   in Loop: Header=BB107_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -40592,7 +40432,7 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -40638,11 +40478,9 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB107_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB107_19
@@ -40658,7 +40496,7 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB107_18
@@ -40670,6 +40508,7 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB107_3
 # %bb.20:                               #   in Loop: Header=BB107_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -41034,11 +40873,9 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block84
                                         #   in Loop: Header=BB108_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -41060,7 +40897,7 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s1
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 3
 	addi.d	$a3, $a3, 3
 	addi.d	$a4, $a4, 12
@@ -41106,11 +40943,9 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB108_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB108_19
@@ -41126,7 +40961,7 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s1
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB108_18
@@ -41138,6 +40973,7 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB108_3
 # %bb.20:                               #   in Loop: Header=BB108_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -41475,11 +41311,9 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block81
                                         #   in Loop: Header=BB109_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s3
@@ -41499,7 +41333,7 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s4
+	add.d	$a0, $a0, $s4
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
@@ -41545,11 +41379,9 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB109_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB109_19
@@ -41565,7 +41397,7 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s0
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s2
+	add.d	$a0, $a0, $s2
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB109_18
@@ -41577,6 +41409,7 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB109_3
 # %bb.20:                               #   in Loop: Header=BB109_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -41843,11 +41676,9 @@ _Z26test_do_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB110_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB110_11
 .LBB110_9:                              # %scalar.ph.preheader
@@ -41861,7 +41692,7 @@ _Z26test_do_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB110_10
@@ -41872,6 +41703,7 @@ _Z26test_do_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB110_3
 # %bb.12:                               #   in Loop: Header=BB110_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -42162,7 +41994,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $fp
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a4, 32
 	addi.d	$a3, $a3, 128
@@ -42202,11 +42034,9 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB111_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a1, .LBB111_13
 .LBB111_11:                             # %.preheader.us.preheader118
@@ -42220,7 +42050,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $fp
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB111_12
@@ -42232,6 +42062,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s3
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB111_3
 # %bb.14:                               #   in Loop: Header=BB111_4 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -42305,11 +42136,9 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB111_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB111_25
 .LBB111_23:                             # %scalar.ph.preheader
@@ -42323,7 +42152,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB111_24
@@ -42334,6 +42163,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB111_17
 # %bb.26:                               #   in Loop: Header=BB111_18 Depth=1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -42625,7 +42455,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a2, $a6, $t1
 	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a2
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a1, $a1, 31
 	addi.d	$a2, $a4, 31
 	addi.d	$a3, $a3, 124
@@ -42665,11 +42495,9 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB112_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	beq	$a1, $a2, .LBB112_13
@@ -42684,7 +42512,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a3, $a1, 0
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s6
+	add.d	$a0, $a0, $s6
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB112_12
@@ -42696,6 +42524,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s8
 	add.w	$a1, $a1, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB112_3
 # %bb.14:                               #   in Loop: Header=BB112_4 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -42769,11 +42598,9 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB112_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB112_25
 .LBB112_23:                             # %scalar.ph.preheader
@@ -42787,7 +42614,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB112_24
@@ -42798,6 +42625,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB112_17
 # %bb.26:                               #   in Loop: Header=BB112_18 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
@@ -43083,7 +42911,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 30
 	addi.d	$a3, $a5, 30
 	addi.d	$a4, $a4, 120
@@ -43123,11 +42951,9 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block113
                                         #   in Loop: Header=BB113_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB113_13
@@ -43142,7 +42968,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB113_12
@@ -43154,6 +42980,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB113_3
 # %bb.14:                               #   in Loop: Header=BB113_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -43229,11 +43056,9 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB113_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB113_25
 .LBB113_23:                             # %scalar.ph.preheader
@@ -43247,7 +43072,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB113_24
@@ -43258,6 +43083,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB113_17
 # %bb.26:                               #   in Loop: Header=BB113_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -43623,7 +43449,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 29
 	addi.d	$a3, $a5, 29
 	addi.d	$a4, $a4, 116
@@ -43663,11 +43489,9 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block112
                                         #   in Loop: Header=BB115_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB115_13
@@ -43682,7 +43506,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB115_12
@@ -43694,6 +43518,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB115_3
 # %bb.14:                               #   in Loop: Header=BB115_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -43769,11 +43594,9 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB115_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB115_25
 .LBB115_23:                             # %scalar.ph.preheader
@@ -43787,7 +43610,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB115_24
@@ -43798,6 +43621,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB115_17
 # %bb.26:                               #   in Loop: Header=BB115_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -44080,7 +43904,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 28
 	addi.d	$a3, $a5, 28
 	addi.d	$a4, $a4, 112
@@ -44120,11 +43944,9 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block111
                                         #   in Loop: Header=BB116_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB116_13
@@ -44139,7 +43961,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB116_12
@@ -44151,6 +43973,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB116_3
 # %bb.14:                               #   in Loop: Header=BB116_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -44226,11 +44049,9 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB116_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB116_25
 .LBB116_23:                             # %scalar.ph.preheader
@@ -44244,7 +44065,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB116_24
@@ -44255,6 +44076,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB116_17
 # %bb.26:                               #   in Loop: Header=BB116_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -44534,7 +44356,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 27
 	addi.d	$a3, $a5, 27
 	addi.d	$a4, $a4, 108
@@ -44574,11 +44396,9 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block110
                                         #   in Loop: Header=BB117_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB117_13
@@ -44593,7 +44413,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB117_12
@@ -44605,6 +44425,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB117_3
 # %bb.14:                               #   in Loop: Header=BB117_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -44680,11 +44501,9 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB117_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB117_25
 .LBB117_23:                             # %scalar.ph.preheader
@@ -44698,7 +44517,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB117_24
@@ -44709,6 +44528,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB117_17
 # %bb.26:                               #   in Loop: Header=BB117_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -45023,11 +44843,9 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block109
                                         #   in Loop: Header=BB118_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	beq	$a2, $s8, .LBB118_13
 .LBB118_11:                             # %.preheader.us.preheader114
@@ -45041,7 +44859,7 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB118_12
@@ -45053,6 +44871,7 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB118_3
 # %bb.14:                               #   in Loop: Header=BB118_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -45128,11 +44947,9 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB118_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB118_25
 .LBB118_23:                             # %scalar.ph.preheader
@@ -45146,7 +44963,7 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB118_24
@@ -45157,6 +44974,7 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB118_17
 # %bb.26:                               #   in Loop: Header=BB118_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -45435,7 +45253,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 25
 	addi.d	$a3, $a5, 25
 	addi.d	$a4, $a4, 100
@@ -45475,11 +45293,9 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block108
                                         #   in Loop: Header=BB119_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB119_13
@@ -45494,7 +45310,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB119_12
@@ -45506,6 +45322,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB119_3
 # %bb.14:                               #   in Loop: Header=BB119_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -45581,11 +45398,9 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB119_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB119_25
 .LBB119_23:                             # %scalar.ph.preheader
@@ -45599,7 +45414,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB119_24
@@ -45610,6 +45425,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB119_17
 # %bb.26:                               #   in Loop: Header=BB119_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -45883,7 +45699,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 24
 	addi.d	$a3, $a5, 24
 	addi.d	$a4, $a4, 96
@@ -45923,11 +45739,9 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block107
                                         #   in Loop: Header=BB120_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB120_13
@@ -45942,7 +45756,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB120_12
@@ -45954,6 +45768,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB120_3
 # %bb.14:                               #   in Loop: Header=BB120_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -46029,11 +45844,9 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB120_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB120_25
 .LBB120_23:                             # %scalar.ph.preheader
@@ -46047,7 +45860,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB120_24
@@ -46058,6 +45871,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB120_17
 # %bb.26:                               #   in Loop: Header=BB120_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -46332,7 +46146,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 23
 	addi.d	$a3, $a5, 23
 	addi.d	$a4, $a4, 92
@@ -46372,11 +46186,9 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block106
                                         #   in Loop: Header=BB121_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB121_13
@@ -46391,7 +46203,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB121_12
@@ -46403,6 +46215,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB121_3
 # %bb.14:                               #   in Loop: Header=BB121_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -46478,11 +46291,9 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB121_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB121_25
 .LBB121_23:                             # %scalar.ph.preheader
@@ -46496,7 +46307,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB121_24
@@ -46507,6 +46318,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB121_17
 # %bb.26:                               #   in Loop: Header=BB121_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -46776,7 +46588,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 22
 	addi.d	$a3, $a5, 22
 	addi.d	$a4, $a4, 88
@@ -46816,11 +46628,9 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block105
                                         #   in Loop: Header=BB122_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB122_13
@@ -46835,7 +46645,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB122_12
@@ -46847,6 +46657,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB122_3
 # %bb.14:                               #   in Loop: Header=BB122_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -46922,11 +46733,9 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB122_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB122_25
 .LBB122_23:                             # %scalar.ph.preheader
@@ -46940,7 +46749,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB122_24
@@ -46951,6 +46760,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB122_17
 # %bb.26:                               #   in Loop: Header=BB122_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -47221,7 +47031,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a3, $a7, $t2
 	mul.d	$a3, $a3, $s4
 	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 21
 	addi.d	$a3, $a5, 21
 	addi.d	$a4, $a4, 84
@@ -47261,11 +47071,9 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB123_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB123_13
@@ -47280,7 +47088,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB123_12
@@ -47292,6 +47100,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB123_3
 # %bb.14:                               #   in Loop: Header=BB123_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -47367,11 +47176,9 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB123_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB123_25
 .LBB123_23:                             # %scalar.ph.preheader
@@ -47385,7 +47192,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s6
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB123_24
@@ -47396,6 +47203,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB123_17
 # %bb.26:                               #   in Loop: Header=BB123_18 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -47746,7 +47554,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 20
 	addi.d	$a5, $a2, 20
 	addi.d	$a6, $a3, 80
@@ -47789,11 +47597,9 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB125_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB125_14
@@ -47808,7 +47614,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB125_12
@@ -47826,6 +47632,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB125_3
 # %bb.15:                               #   in Loop: Header=BB125_4 Depth=1
@@ -47902,11 +47709,9 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB125_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB125_26
 .LBB125_24:                             # %scalar.ph.preheader
@@ -47920,7 +47725,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB125_25
@@ -47931,6 +47736,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB125_18
 # %bb.27:                               #   in Loop: Header=BB125_19 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -48200,7 +48006,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 19
 	addi.d	$a5, $a2, 19
 	addi.d	$a6, $a3, 76
@@ -48242,11 +48048,9 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB126_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB126_14
@@ -48261,7 +48065,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB126_12
@@ -48279,6 +48083,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB126_3
 # %bb.15:                               #   in Loop: Header=BB126_4 Depth=1
@@ -48355,11 +48160,9 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB126_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB126_26
 .LBB126_24:                             # %scalar.ph.preheader
@@ -48373,7 +48176,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB126_25
@@ -48384,6 +48187,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB126_18
 # %bb.27:                               #   in Loop: Header=BB126_19 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -48650,7 +48454,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 18
 	addi.d	$a5, $a2, 18
 	addi.d	$a6, $a3, 72
@@ -48692,11 +48496,9 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB127_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB127_14
@@ -48711,7 +48513,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB127_12
@@ -48729,6 +48531,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB127_3
 # %bb.15:                               #   in Loop: Header=BB127_4 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -48804,11 +48607,9 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB127_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB127_26
 .LBB127_24:                             # %scalar.ph.preheader
@@ -48822,7 +48623,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB127_25
@@ -48833,6 +48634,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB127_18
 # %bb.27:                               #   in Loop: Header=BB127_19 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -49100,7 +48902,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a1, $a1, $a5
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 17
 	addi.d	$a5, $a2, 17
 	addi.d	$a6, $a3, 68
@@ -49142,11 +48944,9 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB128_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB128_14
@@ -49161,7 +48961,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a3, 0
 	mul.d	$a1, $a1, $s4
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB128_12
@@ -49179,6 +48979,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mul.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB128_3
 # %bb.15:                               #   in Loop: Header=BB128_4 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -49253,11 +49054,9 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB128_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $a5, .LBB128_26
 .LBB128_24:                             # %scalar.ph.preheader
@@ -49271,7 +49070,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a1, $a2, 0
 	mul.d	$a1, $a1, $s6
 	add.d	$a0, $a0, $a1
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB128_25
@@ -49282,6 +49081,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a1, $fa0
 	mul.d	$a1, $a1, $s5
 	add.w	$a1, $a1, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a1, .LBB128_18
 # %bb.27:                               #   in Loop: Header=BB128_19 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -49541,7 +49341,7 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $fp
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a2, 16
 	addi.d	$a6, $a3, 64
@@ -49581,11 +49381,9 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a3, .LBB129_13
 .LBB129_11:                             # %.preheader.us.preheader86
@@ -49599,7 +49397,7 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $fp
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s7
+	add.d	$a0, $a0, $s7
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB129_12
@@ -49613,6 +49411,7 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	mul.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.w	$a2, $a2, $a3
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB129_3
 # %bb.14:                               #   in Loop: Header=BB129_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -49921,7 +49720,7 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 15
 	addi.d	$a5, $a2, 15
 	addi.d	$a6, $a3, 60
@@ -49961,11 +49760,9 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB130_13
@@ -49980,7 +49777,7 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB130_12
@@ -49993,6 +49790,7 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	mul.d	$a2, $a2, $a3
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB130_3
 # %bb.14:                               #   in Loop: Header=BB130_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -50300,7 +50098,7 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 14
 	addi.d	$a5, $a2, 14
 	addi.d	$a6, $a3, 56
@@ -50340,11 +50138,9 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB131_13
@@ -50359,7 +50155,7 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB131_12
@@ -50371,6 +50167,7 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB131_3
 # %bb.14:                               #   in Loop: Header=BB131_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -50711,11 +50508,9 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $s8, .LBB132_13
 .LBB132_11:                             # %.preheader.us.preheader83
@@ -50729,7 +50524,7 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB132_12
@@ -50741,6 +50536,7 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s5
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB132_3
 # %bb.14:                               #   in Loop: Header=BB132_4 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -51042,7 +50838,7 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 12
 	addi.d	$a5, $a2, 12
 	addi.d	$a6, $a3, 48
@@ -51082,11 +50878,9 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB133_13
@@ -51101,7 +50895,7 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB133_12
@@ -51113,6 +50907,7 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB133_3
 # %bb.14:                               #   in Loop: Header=BB133_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -51493,7 +51288,7 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 11
 	addi.d	$a5, $a2, 11
 	addi.d	$a6, $a3, 44
@@ -51533,11 +51328,9 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB135_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB135_13
@@ -51552,7 +51345,7 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB135_12
@@ -51564,6 +51357,7 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB135_3
 # %bb.14:                               #   in Loop: Header=BB135_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -51861,7 +51655,7 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 10
 	addi.d	$a5, $a2, 10
 	addi.d	$a6, $a3, 40
@@ -51901,11 +51695,9 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB136_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB136_13
@@ -51920,7 +51712,7 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB136_12
@@ -51932,6 +51724,7 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB136_3
 # %bb.14:                               #   in Loop: Header=BB136_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -52229,7 +52022,7 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 9
 	addi.d	$a5, $a2, 9
 	addi.d	$a6, $a3, 36
@@ -52269,11 +52062,9 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB137_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB137_13
@@ -52288,7 +52079,7 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB137_12
@@ -52300,6 +52091,7 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB137_3
 # %bb.14:                               #   in Loop: Header=BB137_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -52591,7 +52383,7 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $fp
+	add.d	$a0, $a0, $fp
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a2, 8
 	addi.d	$a6, $a3, 32
@@ -52630,11 +52422,9 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB138_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a3, .LBB138_13
 .LBB138_11:                             # %.preheader.us.preheader78
@@ -52648,7 +52438,7 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s8
+	add.d	$a0, $a0, $s8
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB138_12
@@ -52660,6 +52450,7 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s3
 	add.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB138_3
 # %bb.14:                               #   in Loop: Header=BB138_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -52954,7 +52745,7 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 7
 	addi.d	$a5, $a2, 7
 	addi.d	$a6, $a3, 28
@@ -52994,11 +52785,9 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB139_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB139_13
@@ -53013,7 +52802,7 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB139_12
@@ -53025,6 +52814,7 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB139_3
 # %bb.14:                               #   in Loop: Header=BB139_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -53314,7 +53104,7 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s4
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a4, $a4, 6
 	addi.d	$a5, $a2, 6
 	addi.d	$a6, $a3, 24
@@ -53354,11 +53144,9 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB140_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB140_13
@@ -53373,7 +53161,7 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB140_12
@@ -53385,6 +53173,7 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s6
 	add.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB140_3
 # %bb.14:                               #   in Loop: Header=BB140_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -53784,11 +53573,9 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block86
                                         #   in Loop: Header=BB141_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -53814,7 +53601,7 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a5, $t1
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 5
 	addi.d	$a3, $a3, 5
 	addi.d	$a4, $a4, 20
@@ -53860,11 +53647,9 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB141_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB141_19
@@ -53880,7 +53665,7 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB141_18
@@ -53892,6 +53677,7 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB141_3
 # %bb.20:                               #   in Loop: Header=BB141_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -54266,11 +54052,9 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block85
                                         #   in Loop: Header=BB142_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -54294,7 +54078,7 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $s3
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
@@ -54340,11 +54124,9 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB142_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB142_19
@@ -54360,7 +54142,7 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s3
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s1
+	add.d	$a0, $a0, $s1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB142_18
@@ -54372,6 +54154,7 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB142_3
 # %bb.20:                               #   in Loop: Header=BB142_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -54736,11 +54519,9 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block84
                                         #   in Loop: Header=BB143_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $a3
@@ -54762,7 +54543,7 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a5, $a7
 	mul.d	$a5, $a5, $s1
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a2, $a2, 3
 	addi.d	$a3, $a3, 3
 	addi.d	$a4, $a4, 12
@@ -54808,11 +54589,9 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB143_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB143_19
@@ -54828,7 +54607,7 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s1
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s5
+	add.d	$a0, $a0, $s5
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB143_18
@@ -54840,6 +54619,7 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s6
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB143_3
 # %bb.20:                               #   in Loop: Header=BB143_4 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -55177,11 +54957,9 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block81
                                         #   in Loop: Header=BB144_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s3
@@ -55201,7 +54979,7 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	add.d	$a5, $a6, $a5
 	mul.d	$a5, $a5, $s0
 	add.d	$a0, $a0, $a5
-	add.w	$a0, $a0, $s4
+	add.d	$a0, $a0, $s4
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a4, $a4, 8
@@ -55247,11 +55025,9 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB144_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	beq	$a3, $a4, .LBB144_19
@@ -55267,7 +55043,7 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a3, 0
 	mul.d	$a4, $a4, $s0
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s2
+	add.d	$a0, $a0, $s2
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB144_18
@@ -55279,6 +55055,7 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB144_3
 # %bb.20:                               #   in Loop: Header=BB144_4 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -55545,11 +55322,9 @@ _Z28test_goto_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB145_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB145_11
 .LBB145_9:                              # %scalar.ph.preheader
@@ -55563,7 +55338,7 @@ _Z28test_goto_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
 	add.d	$a0, $a0, $a4
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB145_10
@@ -55574,6 +55349,7 @@ _Z28test_goto_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB145_3
 # %bb.12:                               #   in Loop: Header=BB145_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload

@@ -3236,8 +3236,7 @@ _ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi: # @_ZNK8NArchive
 	bnez	$a5, .LBB11_10
 # %bb.11:                               # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	bne	$a4, $a2, .LBB11_3
 	b	.LBB11_5

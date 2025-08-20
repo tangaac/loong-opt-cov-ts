@@ -5156,7 +5156,15 @@ _ZN6Solver11verifyModelEv:              # @_ZN6Solver11verifyModelEv
 .Lfunc_end23:
 	.size	_ZN6Solver11verifyModelEv, .Lfunc_end23-_ZN6Solver11verifyModelEv
                                         # -- End function
-	.globl	_ZN6Solver17checkLiteralCountEv # -- Begin function _ZN6Solver17checkLiteralCountEv
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN6Solver17checkLiteralCountEv
+.LCPI24_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	_ZN6Solver17checkLiteralCountEv
 	.p2align	2
 	.type	_ZN6Solver17checkLiteralCountEv,@function
 _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
@@ -5169,27 +5177,27 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	ori	$a3, $zero, 4
 	bgeu	$a1, $a3, .LBB24_4
 # %bb.2:
-	move	$a4, $zero
 	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB24_7
 .LBB24_3:
-	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB24_9
 .LBB24_4:                               # %vector.ph
 	bstrpick.d	$a3, $a1, 30, 2
-	slli.d	$a4, $a3, 2
-	addi.d	$a3, $a2, 16
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $a2, 16
 	vrepli.b	$vr0, 0
-	vrepli.w	$vr1, 6
-	move	$a5, $a4
-	vori.b	$vr2, $vr0, 0
+	vrepli.w	$vr2, 6
+	move	$a5, $a3
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB24_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -16
-	ld.d	$a7, $a3, -8
-	ld.d	$t0, $a3, 0
-	ld.d	$t1, $a3, 8
+	ld.d	$a6, $a4, -16
+	ld.d	$a7, $a4, -8
+	ld.d	$t0, $a4, 0
+	ld.d	$t1, $a4, 8
 	ld.w	$a6, $a6, 0
 	ld.w	$a7, $a7, 0
 	ld.w	$t0, $t0, 0
@@ -5198,8 +5206,8 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	vinsgr2vr.w	$vr3, $a7, 1
 	vinsgr2vr.w	$vr4, $t0, 0
 	vinsgr2vr.w	$vr4, $t1, 1
-	vand.v	$vr5, $vr3, $vr1
-	vand.v	$vr6, $vr4, $vr1
+	vand.v	$vr5, $vr3, $vr2
+	vand.v	$vr6, $vr4, $vr2
 	vseqi.w	$vr5, $vr5, 0
 	vseqi.w	$vr6, $vr6, 0
 	vsrli.w	$vr3, $vr3, 3
@@ -5207,34 +5215,38 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	vand.v	$vr3, $vr5, $vr3
 	vand.v	$vr4, $vr6, $vr4
 	vadd.w	$vr0, $vr3, $vr0
-	vadd.w	$vr2, $vr4, $vr2
+	vadd.w	$vr1, $vr4, $vr1
 	addi.d	$a5, $a5, -4
-	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB24_5
 # %bb.6:                                # %middle.block
-	vadd.w	$vr0, $vr2, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a4, $a1, .LBB24_9
+	pcalau12i	$a4, %pc_hi20(.LCPI24_0)
+	vld	$vr2, $a4, %pc_lo12(.LCPI24_0)
+	vadd.w	$vr0, $vr1, $vr0
+	vand.v	$vr0, $vr0, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	beq	$a3, $a1, .LBB24_9
 .LBB24_7:                               # %scalar.ph.preheader
-	alsl.d	$a2, $a4, $a2, 3
-	sub.d	$a1, $a1, $a4
+	alsl.d	$a2, $a3, $a2, 3
+	sub.d	$a1, $a1, $a3
 	.p2align	4, , 16
 .LBB24_8:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a2, 0
-	ld.wu	$a4, $a4, 0
-	andi	$a5, $a4, 6
+	ld.d	$a3, $a2, 0
+	ld.wu	$a3, $a3, 0
+	andi	$a5, $a3, 6
 	sltui	$a5, $a5, 1
-	srli.d	$a4, $a4, 3
-	maskeqz	$a4, $a4, $a5
-	add.w	$a3, $a4, $a3
+	srli.d	$a3, $a3, 3
+	maskeqz	$a3, $a3, $a5
+	add.d	$a4, $a3, $a4
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 8
 	bnez	$a1, .LBB24_8
 .LBB24_9:                               # %._crit_edge
 	ld.w	$a2, $a0, 144
+	addi.w	$a3, $a4, 0
 	bne	$a3, $a2, .LBB24_11
 # %bb.10:
 	ret

@@ -2802,7 +2802,7 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	stx.b	$zero, $a0, $s0
 	bltz	$fp, .LBB1_211
 # %bb.183:                              # %.lr.ph146.i.i.preheader
-	move	$a6, $zero
+	move	$a5, $zero
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 111
 	ori	$a2, $zero, 45
@@ -2818,18 +2818,18 @@ MSalignmm_rec:                          # @MSalignmm_rec
                                         #     Child Loop BB1_201 Depth 2
                                         #     Child Loop BB1_197 Depth 2
                                         #     Child Loop BB1_206 Depth 2
-	slli.d	$a5, $s6, 3
+	slli.d	$a6, $s6, 3
 	ld.d	$a7, $sp, 496                   # 8-byte Folded Reload
-	ldx.d	$a5, $a7, $a5
+	ldx.d	$a6, $a7, $a6
 	slli.d	$a7, $s0, 2
-	ldx.w	$a7, $a5, $a7
+	ldx.w	$a7, $a6, $a7
 	bge	$s7, $a7, .LBB1_192
 # %bb.185:                              #   in Loop: Header=BB1_184 Depth=1
 	beqz	$a7, .LBB1_210
 # %bb.186:                              #   in Loop: Header=BB1_184 Depth=1
-	sub.w	$a5, $s6, $a7
+	sub.w	$a6, $s6, $a7
 	move	$a7, $s7
-	nor	$t0, $a5, $zero
+	nor	$t0, $a6, $zero
 	add.w	$t1, $s6, $t0
 	beqz	$t1, .LBB1_193
 .LBB1_187:                              # %.lr.ph125.i.i.preheader
@@ -2866,8 +2866,8 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	b	.LBB1_202
 	.p2align	4, , 16
 .LBB1_192:                              #   in Loop: Header=BB1_184 Depth=1
-	addi.w	$a5, $s6, -1
-	nor	$t0, $a5, $zero
+	addi.w	$a6, $s6, -1
+	nor	$t0, $a6, $zero
 	add.w	$t1, $s6, $t0
 	bnez	$t1, .LBB1_187
 	.p2align	4, , 16
@@ -2891,8 +2891,8 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	sub.d	$t0, $s8, $t4
 	sub.d	$t1, $s1, $t4
 	vori.b	$vr3, $vr0, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	addi.d	$a6, $s1, -4
+	vinsgr2vr.w	$vr3, $a5, 0
+	addi.d	$a5, $s1, -4
 	addi.d	$t5, $s8, -4
 	move	$t6, $t4
 	vori.b	$vr4, $vr0, 0
@@ -2900,24 +2900,22 @@ MSalignmm_rec:                          # @MSalignmm_rec
 .LBB1_197:                              # %vector.body345
                                         #   Parent Loop BB1_184 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vstelm.w	$vr1, $a6, 0, 0
-	vstelm.w	$vr1, $a6, -4, 0
+	vstelm.w	$vr1, $a5, 0, 0
+	vstelm.w	$vr1, $a5, -4, 0
 	vstelm.w	$vr2, $t5, 0, 0
 	vstelm.w	$vr2, $t5, -4, 0
 	vaddi.wu	$vr3, $vr3, 1
 	vaddi.wu	$vr4, $vr4, 1
 	addi.d	$t6, $t6, -8
-	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, -8
 	addi.d	$t5, $t5, -8
 	bnez	$t6, .LBB1_197
 # %bb.198:                              # %middle.block352
                                         #   in Loop: Header=BB1_184 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr4
-	vpickve2gr.w	$a6, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$a5, $vr3, 0
 	bne	$t4, $t3, .LBB1_205
 	b	.LBB1_207
 	.p2align	4, , 16
@@ -2942,8 +2940,8 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	bnez	$t1, .LBB1_201
 .LBB1_202:                              # %._crit_edge126.loopexit.i.i
                                         #   in Loop: Header=BB1_184 Depth=1
-	add.d	$a6, $s6, $a6
-	add.d	$a6, $t0, $a6
+	add.d	$a5, $s6, $a5
+	add.d	$a5, $t0, $a5
 	move	$s1, $t3
 	move	$s8, $t2
 	bne	$a7, $s7, .LBB1_194
@@ -2959,7 +2957,7 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	move	$t1, $s1
 .LBB1_205:                              # %.lr.ph134.i.i.preheader
                                         #   in Loop: Header=BB1_184 Depth=1
-	add.d	$a6, $a6, $t2
+	add.d	$a5, $a5, $t2
 	.p2align	4, , 16
 .LBB1_206:                              # %.lr.ph134.i.i
                                         #   Parent Loop BB1_184 Depth=1
@@ -2981,16 +2979,16 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	addi.d	$s1, $t1, -1
 	st.b	$a1, $t1, -1
 	addi.d	$s8, $t0, -1
-	addi.w	$a6, $a6, 2
+	addi.w	$a5, $a5, 2
 	st.b	$a1, $t0, -1
-	move	$s6, $a5
-	bge	$fp, $a6, .LBB1_184
+	move	$s6, $a6
+	bge	$fp, $a5, .LBB1_184
 	b	.LBB1_211
 	.p2align	4, , 16
 .LBB1_210:                              #   in Loop: Header=BB1_184 Depth=1
-	addi.w	$a5, $s6, -1
+	addi.w	$a6, $s6, -1
 	move	$a7, $s7
-	nor	$t0, $a5, $zero
+	nor	$t0, $a6, $zero
 	add.w	$t1, $s6, $t0
 	bnez	$t1, .LBB1_187
 	b	.LBB1_193

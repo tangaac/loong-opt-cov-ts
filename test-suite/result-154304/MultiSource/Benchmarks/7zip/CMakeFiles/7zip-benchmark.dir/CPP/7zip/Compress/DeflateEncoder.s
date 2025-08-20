@@ -2137,20 +2137,20 @@ _ZN9NCompress8NDeflate8NEncoder16Huffman_GetPriceEPKjPKhj: # @_ZN9NCompress8NDef
 	bstrpick.d	$a3, $a2, 31, 0
 	bgeu	$a2, $a4, .LBB17_4
 # %bb.2:
-	move	$a4, $zero
 	move	$a2, $zero
+	move	$a4, $zero
 	b	.LBB17_7
 .LBB17_3:
-	move	$a2, $zero
-	move	$a0, $a2
+	move	$a4, $zero
+	addi.w	$a0, $a4, 0
 	ret
 .LBB17_4:                               # %vector.ph
 	bstrpick.d	$a2, $a3, 31, 3
-	slli.d	$a4, $a2, 3
-	addi.d	$a2, $a0, 16
+	slli.d	$a2, $a2, 3
+	addi.d	$a4, $a0, 16
 	vrepli.b	$vr0, 0
 	addi.d	$a5, $a1, 4
-	move	$a6, $a4
+	move	$a6, $a2
 	vori.b	$vr1, $vr0, 0
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
@@ -2162,41 +2162,39 @@ _ZN9NCompress8NDeflate8NEncoder16Huffman_GetPriceEPKjPKhj: # @_ZN9NCompress8NDef
 	vinsgr2vr.w	$vr4, $t0, 0
 	vilvl.b	$vr3, $vr0, $vr3
 	vilvl.h	$vr3, $vr0, $vr3
-	vld	$vr5, $a2, -16
-	vld	$vr6, $a2, 0
+	vld	$vr5, $a4, -16
+	vld	$vr6, $a4, 0
 	vilvl.b	$vr4, $vr0, $vr4
 	vilvl.h	$vr4, $vr0, $vr4
 	vmadd.w	$vr1, $vr5, $vr3
 	vmadd.w	$vr2, $vr6, $vr4
 	addi.d	$a6, $a6, -8
-	addi.d	$a2, $a2, 32
+	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 8
 	bnez	$a6, .LBB17_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
-	beq	$a4, $a3, .LBB17_9
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	beq	$a2, $a3, .LBB17_9
 .LBB17_7:                               # %.lr.ph.preheader15
-	add.d	$a1, $a1, $a4
-	alsl.d	$a0, $a4, $a0, 2
-	sub.d	$a3, $a3, $a4
+	add.d	$a1, $a1, $a2
+	alsl.d	$a0, $a2, $a0, 2
+	sub.d	$a2, $a3, $a2
 	.p2align	4, , 16
 .LBB17_8:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a4, $a1, 0
+	ld.bu	$a3, $a1, 0
 	ld.w	$a5, $a0, 0
-	mul.d	$a4, $a5, $a4
-	add.w	$a2, $a4, $a2
+	mul.d	$a3, $a5, $a3
+	add.d	$a4, $a3, $a4
 	addi.d	$a1, $a1, 1
-	addi.d	$a3, $a3, -1
+	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 4
-	bnez	$a3, .LBB17_8
+	bnez	$a2, .LBB17_8
 .LBB17_9:                               # %._crit_edge
-	move	$a0, $a2
+	addi.w	$a0, $a4, 0
 	ret
 .Lfunc_end17:
 	.size	_ZN9NCompress8NDeflate8NEncoder16Huffman_GetPriceEPKjPKhj, .Lfunc_end17-_ZN9NCompress8NDeflate8NEncoder16Huffman_GetPriceEPKjPKhj
@@ -2248,11 +2246,9 @@ _ZN9NCompress8NDeflate8NEncoder21Huffman_GetPrice_SpecEPKjPKhjS5_j: # @_ZN9NComp
 	bnez	$t1, .LBB18_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	beq	$a7, $a6, .LBB18_9
 .LBB18_7:                               # %.lr.ph.i.preheader
 	sub.d	$a6, $a6, $a7
@@ -2315,11 +2311,9 @@ _ZN9NCompress8NDeflate8NEncoder21Huffman_GetPrice_SpecEPKjPKhjS5_j: # @_ZN9NComp
 	bnez	$t0, .LBB18_14
 # %bb.15:                               # %middle.block40
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a6, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
 	beq	$a4, $a2, .LBB18_18
 .LBB18_16:                              # %.lr.ph.i10.preheader
 	sub.d	$a2, $a2, $a4
@@ -2429,11 +2423,9 @@ _ZNK9NCompress8NDeflate8NEncoder6CCoder15GetLzBlockPriceEv: # @_ZNK9NCompress8ND
 	bne	$a1, $a5, .LBB19_1
 # %bb.2:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	ld.bu	$a7, $a2, 16
 	ori	$a3, $zero, 3348
 	ldx.w	$t0, $a0, $a3
@@ -2601,11 +2593,9 @@ _ZNK9NCompress8NDeflate8NEncoder6CCoder15GetLzBlockPriceEv: # @_ZNK9NCompress8ND
 	vadd.w	$vr0, $vr22, $vr15
 	vadd.w	$vr1, $vr16, $vr17
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.d	$a0, $a0, $a7
 	add.d	$a2, $t0, $t5
 	add.d	$a7, $t6, $t7

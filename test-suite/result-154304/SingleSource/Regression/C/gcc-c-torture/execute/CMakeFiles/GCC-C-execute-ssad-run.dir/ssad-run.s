@@ -23,11 +23,9 @@ bar:                                    # @bar
 	vadd.w	$vr1, $vr1, $vr2
 	vadd.w	$vr2, $vr4, $vr3
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a6, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$a6, $vr1, 0
 	add.d	$a4, $a6, $a4
 	addi.d	$a0, $a0, 16
 	addi.w	$a5, $a5, -1

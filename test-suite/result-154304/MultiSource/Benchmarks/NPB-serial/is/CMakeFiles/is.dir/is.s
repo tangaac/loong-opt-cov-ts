@@ -418,16 +418,14 @@ full_verify:                            # @full_verify
 # %bb.4:                                # %.preheader
 	vpickve2gr.w	$a1, $vr1, 3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	lu12i.w	$a2, 32767
 	ori	$a3, $a2, 4068
 	ldx.w	$a3, $a0, $a3
 	ori	$a4, $a2, 4072
 	ldx.w	$a4, $a0, $a4
-	vpickve2gr.w	$a5, $vr0, 0
+	vpickve2gr.d	$a5, $vr0, 0
 	slt	$a1, $a3, $a1
 	add.d	$a1, $a5, $a1
 	slt	$a3, $a4, $a3
@@ -1068,16 +1066,14 @@ main:                                   # @main
 # %bb.4:                                # %.preheader.i
 	vpickve2gr.w	$a1, $vr1, 3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	lu12i.w	$a2, 32767
 	ori	$a3, $a2, 4068
 	ldx.w	$a3, $a0, $a3
 	ori	$a4, $a2, 4072
 	ldx.w	$a4, $a0, $a4
-	vpickve2gr.w	$a5, $vr0, 0
+	vpickve2gr.d	$a5, $vr0, 0
 	slt	$a1, $a3, $a1
 	add.d	$a1, $a5, $a1
 	slt	$a3, $a4, $a3

@@ -333,7 +333,15 @@ er_hint_cmp_fn:                         # @er_hint_cmp_fn
 .Lfunc_end7:
 	.size	er_hint_cmp_fn, .Lfunc_end7-er_hint_cmp_fn
                                         # -- End function
-	.globl	write_parser_tables_as_C        # -- Begin function write_parser_tables_as_C
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function write_parser_tables_as_C
+.LCPI8_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	write_parser_tables_as_C
 	.p2align	5
 	.type	write_parser_tables_as_C,@function
 write_parser_tables_as_C:               # @write_parser_tables_as_C
@@ -1122,12 +1130,12 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 .LBB8_93:                               # %vector.ph
 	bstrpick.d	$a2, $s2, 31, 2
 	slli.d	$a2, $a2, 2
-	vinsgr2vr.w	$vr0, $a0, 0
-	vinsgr2vr.w	$vr0, $a0, 1
-	vrepli.b	$vr1, 0
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a0, 1
+	vrepli.b	$vr0, 0
 	addi.d	$a3, $a1, 16
 	move	$a4, $a2
-	vori.b	$vr2, $vr1, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB8_94:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -1143,16 +1151,19 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	vinsgr2vr.w	$vr3, $a6, 1
 	vinsgr2vr.w	$vr4, $a7, 0
 	vinsgr2vr.w	$vr4, $t0, 1
-	vmadd.w	$vr1, $vr3, $vr0
-	vmadd.w	$vr2, $vr4, $vr0
+	vmadd.w	$vr0, $vr3, $vr1
+	vmadd.w	$vr2, $vr4, $vr1
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_94
 # %bb.95:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	pcalau12i	$a3, %pc_hi20(.LCPI8_0)
+	vld	$vr1, $a3, %pc_lo12(.LCPI8_0)
+	vadd.w	$vr0, $vr2, $vr0
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $s2, .LBB8_98
 .LBB8_96:                               # %scalar.ph.preheader
@@ -1164,16 +1175,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$a2, $a1, 0
 	ld.w	$a2, $a2, 296
 	mul.d	$a2, $a2, $a0
-	add.w	$a3, $a2, $a3
+	add.d	$a3, $a2, $a3
 	addi.d	$a4, $a4, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a4, .LBB8_97
 .LBB8_98:                               # %._crit_edge428.loopexit.i
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $a3
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a0, $a1, $a0
+	addi.w	$a0, $a3, 0
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	slli.d	$a0, $a0, 5
 .LBB8_99:                               # %._crit_edge428.i
 	pcaddu18i	$ra, %call36(malloc)

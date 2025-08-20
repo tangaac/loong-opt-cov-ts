@@ -857,11 +857,9 @@ maktab:                                 # @maktab
 	bnez	$a3, .LBB0_89
 # %bb.90:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s0, $vr0, 0
 	beq	$a1, $a0, .LBB0_93
 .LBB0_91:                               # %.lr.ph264.preheader331
 	pcalau12i	$a2, %got_pc_hi20(sep)

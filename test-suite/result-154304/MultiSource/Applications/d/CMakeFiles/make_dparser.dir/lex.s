@@ -4509,7 +4509,15 @@ nfacmp:                                 # @nfacmp
 .Lfunc_end2:
 	.size	nfacmp, .Lfunc_end2-nfacmp
                                         # -- End function
-	.p2align	5                               # -- Begin function trans_hash_fn
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function trans_hash_fn
+.LCPI3_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.p2align	5
 	.type	trans_hash_fn,@function
 trans_hash_fn:                          # @trans_hash_fn
 # %bb.0:
@@ -4570,10 +4578,13 @@ trans_hash_fn:                          # @trans_hash_fn
 	addi.d	$a1, $a1, 32
 	bnez	$a4, .LBB3_9
 # %bb.10:                               # %middle.block45
+	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
+	vld	$vr2, $a1, %pc_lo12(.LCPI3_0)
 	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vand.v	$vr0, $vr0, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB3_13
 .LBB3_11:                               # %scalar.ph33.preheader
 	alsl.d	$a0, $a3, $a0, 3
@@ -4584,21 +4595,21 @@ trans_hash_fn:                          # @trans_hash_fn
 	ld.d	$a3, $a0, 0
 	ld.w	$a3, $a3, 32
 	alsl.d	$a3, $a3, $a3, 1
-	add.w	$a1, $a3, $a1
+	add.d	$a1, $a3, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB3_12
 .LBB3_13:                               # %._crit_edge
-	move	$a0, $a1
+	addi.w	$a0, $a1, 0
 	ret
 .LBB3_14:                               # %vector.ph
 	bstrpick.d	$a1, $a3, 31, 2
 	slli.d	$a4, $a1, 2
 	addi.d	$a1, $a2, 16
 	vrepli.b	$vr0, 0
-	vrepli.w	$vr1, 3
+	vrepli.w	$vr2, 3
 	move	$a5, $a4
-	vori.b	$vr2, $vr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB3_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -4614,16 +4625,19 @@ trans_hash_fn:                          # @trans_hash_fn
 	vinsgr2vr.w	$vr3, $a7, 1
 	vinsgr2vr.w	$vr4, $t0, 0
 	vinsgr2vr.w	$vr4, $t1, 1
-	vmadd.w	$vr0, $vr3, $vr1
-	vmadd.w	$vr2, $vr4, $vr1
+	vmadd.w	$vr0, $vr3, $vr2
+	vmadd.w	$vr1, $vr4, $vr2
 	addi.d	$a5, $a5, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a5, .LBB3_15
 # %bb.16:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
+	vld	$vr2, $a1, %pc_lo12(.LCPI3_0)
+	vadd.w	$vr0, $vr1, $vr0
+	vand.v	$vr0, $vr0, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a4, $a3, .LBB3_2
 .LBB3_17:                               # %scalar.ph.preheader
 	alsl.d	$a2, $a4, $a2, 3
@@ -4634,7 +4648,7 @@ trans_hash_fn:                          # @trans_hash_fn
 	ld.d	$a4, $a2, 0
 	ld.w	$a4, $a4, 32
 	alsl.d	$a4, $a4, $a4, 1
-	add.w	$a1, $a4, $a1
+	add.d	$a1, $a4, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 8
 	bnez	$a3, .LBB3_18

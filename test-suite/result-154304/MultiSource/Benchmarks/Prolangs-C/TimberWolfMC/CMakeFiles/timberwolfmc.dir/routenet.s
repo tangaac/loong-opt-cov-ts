@@ -743,7 +743,7 @@ recursePath:                            # @recursePath
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(MAXPATHS)
 	ld.d	$a1, $a1, %got_pc_lo12(MAXPATHS)
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a1, $a1, 0
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	mul.w	$s1, $a1, $s2
@@ -775,15 +775,14 @@ recursePath:                            # @recursePath
 	st.w	$a0, $sp, 244
 .LBB1_13:
 	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 160                   # 8-byte Folded Spill
 	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a0, $s1, 1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	addi.d	$s4, $a0, 2
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$s3, $a0, 2
 	slli.d	$s6, $s1, 1
 	blt	$s1, $fp, .LBB1_15
 # %bb.14:                               # %.lr.ph417
@@ -793,12 +792,12 @@ recursePath:                            # @recursePath
 	addi.d	$a1, $a0, 2
 	bstrpick.d	$a0, $s6, 31, 1
 	slli.d	$a2, $a0, 1
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB1_15:                               # %._crit_edge418
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
 	add.w	$s5, $s5, $s7
 	addi.w	$s1, $s5, 1
@@ -808,7 +807,7 @@ recursePath:                            # @recursePath
 	move	$s6, $a0
 	ori	$fp, $zero, 1
 	addi.d	$s7, $a0, 2
-	slli.d	$s4, $s5, 1
+	slli.d	$s3, $s5, 1
 	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
 	blt	$s5, $fp, .LBB1_17
 # %bb.16:                               # %.lr.ph422
@@ -816,20 +815,21 @@ recursePath:                            # @recursePath
 	ld.d	$a0, $a0, %got_pc_lo12(addTargetList)
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a0, 2
-	bstrpick.d	$a0, $s4, 31, 1
+	bstrpick.d	$a0, $s3, 31, 1
 	slli.d	$a2, $a0, 1
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB1_17:                               # %.preheader403
-	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	blt	$a0, $fp, .LBB1_25
 # %bb.18:                               # %.lr.ph429
 	pcalau12i	$a0, %got_pc_hi20(sourceList)
 	ld.d	$a0, $a0, %got_pc_lo12(sourceList)
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a0, 2
 	ori	$a3, $zero, 1
@@ -840,7 +840,7 @@ recursePath:                            # @recursePath
 	slli.d	$a6, $s0, 1
 	ldx.h	$a6, $a0, $a6
 	addi.w	$s0, $s0, -1
-	st.w	$s0, $t4, 0
+	st.w	$s0, $t3, 0
 	st.h	$a6, $a5, 0
 .LBB1_20:                               # %.loopexit402
                                         #   in Loop: Header=BB1_21 Depth=1
@@ -852,7 +852,7 @@ recursePath:                            # @recursePath
 # %bb.22:                               # %.lr.ph426.preheader
                                         #   in Loop: Header=BB1_21 Depth=1
 	slli.d	$a5, $a4, 1
-	ldx.hu	$a6, $s3, $a5
+	ldx.hu	$a6, $t1, $a5
 	addi.d	$a5, $s0, 1
 	bstrpick.d	$a5, $a5, 31, 0
 	addi.d	$a7, $a5, -1
@@ -869,11 +869,11 @@ recursePath:                            # @recursePath
 	bnez	$a7, .LBB1_23
 	b	.LBB1_20
 .LBB1_25:                               # %.preheader401
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	ori	$s3, $zero, 1
+	st.d	$s4, $sp, 160                   # 8-byte Folded Spill
+	ori	$s4, $zero, 1
 	ori	$a0, $zero, 1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	blt	$a1, $s3, .LBB1_34
+	blt	$a1, $s4, .LBB1_34
 # %bb.26:                               # %.lr.ph433
 	pcalau12i	$a0, %got_pc_hi20(targetPtr)
 	ld.d	$s0, $a0, %got_pc_lo12(targetPtr)
@@ -883,7 +883,7 @@ recursePath:                            # @recursePath
 	ld.d	$a0, $a0, 0
 	alsl.d	$a0, $s5, $a0, 1
 	addi.d	$a0, $a0, 2
-	bstrpick.d	$a1, $s4, 31, 1
+	bstrpick.d	$a1, $s3, 31, 1
 	slli.d	$a2, $a1, 1
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(memcpy)
@@ -893,7 +893,7 @@ recursePath:                            # @recursePath
 	ori	$a1, $zero, 1
 	bgeu	$s1, $a2, .LBB1_28
 # %bb.27:
-	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 	b	.LBB1_31
 .LBB1_28:                               # %vector.ph
 	addi.d	$a2, $a0, -1
@@ -915,10 +915,9 @@ recursePath:                            # @recursePath
 	bnez	$a4, .LBB1_29
 # %bb.30:                               # %middle.block
 	vadd.d	$vr0, $vr0, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s5, $vr0, 0
-	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB1_33
 .LBB1_31:                               # %scalar.ph.preheader
 	sub.d	$a2, $a0, $a1
@@ -936,19 +935,18 @@ recursePath:                            # @recursePath
 .LBB1_34:
 	st.w	$a0, $sp, 244
 	lu12i.w	$s0, 244140
-	ld.d	$t1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 56                    # 8-byte Folded Reload
-	blt	$t2, $s3, .LBB1_48
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 56                    # 8-byte Folded Reload
+	blt	$t1, $s4, .LBB1_48
 # %bb.35:                               # %.preheader399
 	ori	$a0, $zero, 1
 	st.w	$a0, $sp, 244
-	blt	$t3, $a0, .LBB1_48
+	blt	$t2, $a0, .LBB1_48
 # %bb.36:                               # %.lr.ph448
 	pcalau12i	$a1, %got_pc_hi20(gnodeArray)
 	ld.d	$a1, $a1, %got_pc_lo12(gnodeArray)
 	ld.d	$a1, $a1, 0
-	addi.d	$a2, $t3, 1
+	addi.d	$a2, $t2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ori	$a3, $s0, 2560
 	b	.LBB1_39
@@ -963,8 +961,8 @@ recursePath:                            # @recursePath
 .LBB1_39:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_42 Depth 2
                                         #     Child Loop BB1_46 Depth 2
-	move	$a6, $t2
-	beq	$a0, $t3, .LBB1_41
+	move	$a6, $t1
+	beq	$a0, $t2, .LBB1_41
 # %bb.40:                               #   in Loop: Header=BB1_39 Depth=1
 	alsl.d	$a4, $a0, $s6, 1
 	ld.h	$a6, $a4, 2
@@ -1040,20 +1038,21 @@ recursePath:                            # @recursePath
 	ori	$a0, $zero, 1
                                         # implicit-def: $r5
                                         # kill: killed $r5
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	b	.LBB1_54
 .LBB1_50:                               #   in Loop: Header=BB1_54 Depth=1
 	move	$s7, $s4
 .LBB1_51:                               #   in Loop: Header=BB1_54 Depth=1
-	ld.d	$t1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 .LBB1_52:                               # %.loopexit395
                                         #   in Loop: Header=BB1_54 Depth=1
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
 .LBB1_53:                               # %.loopexit395
                                         #   in Loop: Header=BB1_54 Depth=1
-	ld.w	$a1, $t1, 0
-	addi.w	$a0, $a2, 1
-	bge	$a2, $a1, .LBB1_88
+	ld.w	$a1, $a2, 0
+	addi.w	$a0, $a3, 1
+	bge	$a3, $a1, .LBB1_88
 .LBB1_54:                               # %.lr.ph496
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_60 Depth 2
@@ -1063,9 +1062,9 @@ recursePath:                            # @recursePath
                                         #           Child Loop BB1_72 Depth 5
                                         #     Child Loop BB1_81 Depth 2
                                         #       Child Loop BB1_85 Depth 3
-	move	$a2, $a0
+	move	$a3, $a0
 	ori	$a0, $zero, 2
-	bltu	$a2, $a0, .LBB1_56
+	bltu	$a3, $a0, .LBB1_56
 # %bb.55:                               # %.lr.ph496
                                         #   in Loop: Header=BB1_54 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -1073,11 +1072,11 @@ recursePath:                            # @recursePath
 	bnez	$a0, .LBB1_88
 .LBB1_56:                               # %.preheader396
                                         #   in Loop: Header=BB1_54 Depth=1
-	ld.w	$a7, $t4, 0
+	ld.w	$a7, $t3, 0
 	blt	$a7, $ra, .LBB1_53
 # %bb.57:                               # %.preheader393.lr.ph
                                         #   in Loop: Header=BB1_54 Depth=1
-	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 184                   # 8-byte Folded Spill
 	move	$t6, $zero
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
@@ -1303,8 +1302,8 @@ recursePath:                            # @recursePath
 	.p2align	4, , 16
 .LBB1_86:                               #   in Loop: Header=BB1_54 Depth=1
 	move	$s7, $s4
-	ld.d	$t1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 	ori	$ra, $zero, 1
 	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB1_52
@@ -1774,7 +1773,7 @@ recursePath:                            # @recursePath
 .LBB1_144:                              # %._crit_edge566
 	pcalau12i	$s0, %pc_hi20(treeSize)
 	ld.w	$a0, $s0, %pc_lo12(treeSize)
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a1, $s2, 0
 	sub.w	$s1, $a0, $a1
 	ori	$a0, $zero, 1
@@ -1848,7 +1847,7 @@ recursePath:                            # @recursePath
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s0, $s6
 	st.w	$a0, $s5, 0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 .LBB1_152:
 	pcalau12i	$a1, %got_pc_hi20(targetPtr)
 	ld.d	$a1, $a1, %got_pc_lo12(targetPtr)
@@ -1915,7 +1914,7 @@ recursePath:                            # @recursePath
 .LBB1_162:                              # %.loopexit
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload

@@ -5,33 +5,33 @@
 	.type	SumArray,@function
 SumArray:                               # @SumArray
 # %bb.0:
-	move	$a3, $zero
+	move	$t0, $zero
 	beqz	$a1, .LBB0_11
 # %bb.1:
 	beqz	$a2, .LBB0_11
 # %bb.2:                                # %.preheader.us.preheader
-	move	$a4, $zero
 	move	$a3, $zero
+	move	$t0, $zero
 	bstrpick.d	$a1, $a1, 31, 0
-	bstrpick.d	$a5, $a2, 31, 0
-	bstrpick.d	$a6, $a2, 31, 3
-	slli.d	$a6, $a6, 3
-	addi.d	$a7, $a0, 16
-	ori	$t0, $zero, 8
+	bstrpick.d	$a4, $a2, 31, 0
+	bstrpick.d	$a5, $a2, 31, 3
+	slli.d	$a5, $a5, 3
+	addi.d	$a6, $a0, 16
+	ori	$a7, $zero, 8
 	vrepli.b	$vr0, 0
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_3:                                # %._crit_edge.us
                                         #   in Loop: Header=BB0_4 Depth=1
-	addi.d	$a4, $a4, 1
-	addi.d	$a7, $a7, 400
+	addi.d	$a3, $a3, 1
+	addi.d	$a6, $a6, 400
 	addi.d	$a0, $a0, 400
-	beq	$a4, $a1, .LBB0_11
+	beq	$a3, $a1, .LBB0_11
 .LBB0_4:                                # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_7 Depth 2
                                         #     Child Loop BB0_10 Depth 2
-	bgeu	$a2, $t0, .LBB0_6
+	bgeu	$a2, $a7, .LBB0_6
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$t2, $zero
 	b	.LBB0_9
@@ -39,47 +39,45 @@ SumArray:                               # @SumArray
 .LBB0_6:                                # %vector.ph
                                         #   in Loop: Header=BB0_4 Depth=1
 	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $a3, 0
-	move	$a3, $a7
-	move	$t1, $a6
+	vinsgr2vr.w	$vr1, $t0, 0
+	move	$t0, $a6
+	move	$t1, $a5
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr3, $a3, -16
-	vld	$vr4, $a3, 0
+	vld	$vr3, $t0, -16
+	vld	$vr4, $t0, 0
 	vadd.w	$vr1, $vr3, $vr1
 	vadd.w	$vr2, $vr4, $vr2
 	addi.d	$t1, $t1, -8
-	addi.d	$a3, $a3, 32
+	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB0_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB0_4 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a3, $vr1, 0
-	move	$t2, $a6
-	beq	$a6, $a5, .LBB0_3
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t0, $vr1, 0
+	move	$t2, $a5
+	beq	$a5, $a4, .LBB0_3
 .LBB0_9:                                # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	alsl.d	$t1, $t2, $a0, 2
-	sub.d	$t2, $a5, $t2
+	sub.d	$t2, $a4, $t2
 	.p2align	4, , 16
 .LBB0_10:                               # %scalar.ph
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t3, $t1, 0
-	add.w	$a3, $t3, $a3
+	add.d	$t0, $t3, $t0
 	addi.d	$t2, $t2, -1
 	addi.d	$t1, $t1, 4
 	bnez	$t2, .LBB0_10
 	b	.LBB0_3
 .LBB0_11:                               # %._crit_edge16
-	move	$a0, $a3
+	addi.w	$a0, $t0, 0
 	ret
 .Lfunc_end0:
 	.size	SumArray, .Lfunc_end0-SumArray
@@ -289,11 +287,9 @@ main:                                   # @main
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a2, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$a2, $vr1, 0
 	ld.w	$a3, $a1, 176
 	ld.w	$a4, $a1, 180
 	ld.w	$a5, $a1, 184

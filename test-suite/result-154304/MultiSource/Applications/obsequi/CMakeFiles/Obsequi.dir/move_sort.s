@@ -225,8 +225,7 @@ sort_moves:                             # @sort_moves
 # %bb.24:                               # %middle.block126
                                         #   in Loop: Header=BB0_18 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s8, $vr0, 0
 	beq	$a0, $s1, .LBB0_17
 .LBB0_25:                               # %scalar.ph116.preheader
@@ -295,8 +294,7 @@ sort_moves:                             # @sort_moves
 # %bb.33:                               # %middle.block
                                         #   in Loop: Header=BB0_29 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s8, $vr0, 0
 	move	$a0, $s4
 	beq	$s4, $s3, .LBB0_28

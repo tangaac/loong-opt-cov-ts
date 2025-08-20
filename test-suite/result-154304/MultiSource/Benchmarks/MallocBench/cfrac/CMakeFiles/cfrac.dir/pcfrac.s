@@ -161,11 +161,9 @@ printSoln:                              # @printSoln
 	bnez	$a6, .LBB3_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	beq	$a3, $a4, .LBB3_9
 .LBB3_7:                                # %.lr.ph.preheader62
 	add.d	$a3, $s5, $a2
@@ -175,12 +173,13 @@ printSoln:                              # @printSoln
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a3, 0
 	sltu	$a2, $zero, $a2
-	add.w	$a5, $a5, $a2
+	add.d	$a5, $a5, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 1
 	bnez	$a0, .LBB3_8
 .LBB3_9:                                # %._crit_edge.loopexit
-	sltui	$s6, $a5, 1
+	addi.w	$a0, $a5, 0
+	sltui	$s6, $a0, 1
 	move	$a0, $a1
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fputs)

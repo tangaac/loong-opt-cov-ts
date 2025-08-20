@@ -1174,8 +1174,7 @@ main:                                   # @main
 # %bb.99:                               # %middle.block817
                                         #   in Loop: Header=BB0_95 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB0_102
 .LBB0_100:                              # %scalar.ph805.preheader
@@ -1323,8 +1322,7 @@ main:                                   # @main
 # %bb.119:                              # %middle.block803
                                         #   in Loop: Header=BB0_115 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB0_122
 .LBB0_120:                              # %scalar.ph795.preheader

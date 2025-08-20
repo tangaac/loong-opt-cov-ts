@@ -3039,11 +3039,9 @@ H__align:                               # @H__align
 # %bb.231:                              # %middle.block1146
                                         #   in Loop: Header=BB2_222 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr4
-	vpickve2gr.w	$a6, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$a6, $vr3, 0
 	bne	$t7, $t6, .LBB2_233
 	b	.LBB2_235
 	.p2align	4, , 16
@@ -3324,11 +3322,9 @@ H__align:                               # @H__align
 # %bb.273:                              # %middle.block1070
                                         #   in Loop: Header=BB2_264 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr4
-	vpickve2gr.w	$t1, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$t1, $vr3, 0
 	move	$s6, $a0
 	bne	$s5, $s4, .LBB2_275
 	b	.LBB2_277

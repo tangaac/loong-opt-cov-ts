@@ -1318,8 +1318,7 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 # %bb.50:                               # %middle.block
                                         #   in Loop: Header=BB12_19 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s2, $vr0, 0
 	bne	$a3, $a1, .LBB12_41
 	b	.LBB12_45
@@ -2851,8 +2850,7 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 # %bb.269:                              # %middle.block2473
                                         #   in Loop: Header=BB12_234 Depth=2
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s4, $vr0, 0
 	bne	$a3, $a2, .LBB12_239
 	b	.LBB12_245
@@ -3332,8 +3330,7 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 # %bb.335:                              # %middle.block2497
                                         #   in Loop: Header=BB12_234 Depth=2
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	vstelm.d	$vr0, $a2, 0, 0
 	beq	$a3, $a4, .LBB12_339
@@ -4055,8 +4052,7 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 # %bb.435:                              # %middle.block2455
                                         #   in Loop: Header=BB12_383 Depth=2
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vstelm.d	$vr0, $a6, 0, 0
 	beq	$a3, $a4, .LBB12_439
 # %bb.436:                              #   in Loop: Header=BB12_383 Depth=2

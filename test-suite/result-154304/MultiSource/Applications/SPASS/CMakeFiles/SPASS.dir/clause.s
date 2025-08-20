@@ -12209,61 +12209,71 @@ clause_NumberDelete:                    # @clause_NumberDelete
 .Lfunc_end115:
 	.size	clause_NumberDelete, .Lfunc_end115-clause_NumberDelete
                                         # -- End function
-	.globl	clause_NumberOfMaxAntecedentLits # -- Begin function clause_NumberOfMaxAntecedentLits
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function clause_NumberOfMaxAntecedentLits
+.LCPI116_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	clause_NumberOfMaxAntecedentLits
 	.p2align	5
 	.type	clause_NumberOfMaxAntecedentLits,@function
 clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 # %bb.0:
-	ld.w	$a4, $a0, 64
+	ld.w	$a3, $a0, 64
 	ld.w	$a1, $a0, 68
-	add.w	$a3, $a4, $a1
-	addi.w	$a1, $a3, -1
-	bgeu	$a1, $a4, .LBB116_2
+	add.w	$a2, $a3, $a1
+	addi.w	$a1, $a2, -1
+	bgeu	$a1, $a3, .LBB116_2
 # %bb.1:
-	move	$a0, $zero
+	move	$a6, $zero
+	addi.w	$a0, $a6, 0
 	ret
 .LBB116_2:                              # %.lr.ph
-	ld.d	$a2, $a0, 56
-	addi.w	$a0, $a4, 1
-	sltu	$a5, $a0, $a3
-	maskeqz	$a3, $a3, $a5
-	masknez	$a0, $a0, $a5
-	or	$a0, $a3, $a0
-	sub.w	$a5, $a0, $a4
-	ori	$a3, $zero, 8
-	bltu	$a5, $a3, .LBB116_4
+	ld.d	$a0, $a0, 56
+	addi.w	$a4, $a3, 1
+	sltu	$a5, $a4, $a2
+	maskeqz	$a2, $a2, $a5
+	masknez	$a4, $a4, $a5
+	or	$a2, $a2, $a4
+	sub.w	$a4, $a2, $a3
+	ori	$a5, $zero, 8
+	bltu	$a4, $a5, .LBB116_4
 # %bb.3:                                # %vector.scevcheck
-	addi.w	$a0, $a0, -1
-	bge	$a0, $a4, .LBB116_7
+	addi.w	$a2, $a2, -1
+	bge	$a2, $a3, .LBB116_7
 .LBB116_4:
-	move	$a0, $zero
-	move	$a3, $a4
+	move	$a6, $zero
+	move	$a2, $a3
 	.p2align	4, , 16
 .LBB116_5:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$a4, $a3, 3
-	ldx.d	$a4, $a2, $a4
-	ld.wu	$a4, $a4, 0
-	andi	$a4, $a4, 1
-	addi.w	$a3, $a3, 1
-	add.w	$a0, $a4, $a0
-	bgeu	$a1, $a3, .LBB116_5
+	slli.d	$a3, $a2, 3
+	ldx.d	$a3, $a0, $a3
+	ld.wu	$a3, $a3, 0
+	andi	$a3, $a3, 1
+	addi.w	$a2, $a2, 1
+	add.d	$a6, $a3, $a6
+	bgeu	$a1, $a2, .LBB116_5
 .LBB116_6:                              # %._crit_edge
+	addi.w	$a0, $a6, 0
 	ret
 .LBB116_7:                              # %vector.ph
-	move	$a6, $a5
-	bstrins.d	$a6, $zero, 1, 0
-	add.w	$a3, $a4, $a6
+	move	$a5, $a4
+	bstrins.d	$a5, $zero, 1, 0
+	add.w	$a2, $a3, $a5
 	vrepli.b	$vr0, 0
-	vrepli.w	$vr1, 1
-	move	$a0, $a6
-	vori.b	$vr2, $vr0, 0
+	vrepli.w	$vr2, 1
+	move	$a6, $a5
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB116_8:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	alsl.d	$a7, $a4, $a2, 3
-	slli.d	$t0, $a4, 3
-	ldx.d	$t0, $a2, $t0
+	alsl.d	$a7, $a3, $a0, 3
+	slli.d	$t0, $a3, 3
+	ldx.d	$t0, $a0, $t0
 	ld.d	$t1, $a7, 8
 	ld.d	$t2, $a7, 16
 	ld.d	$a7, $a7, 24
@@ -12275,24 +12285,35 @@ clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 	vinsgr2vr.w	$vr3, $t1, 1
 	vinsgr2vr.w	$vr4, $t2, 0
 	vinsgr2vr.w	$vr4, $a7, 1
-	vand.v	$vr3, $vr3, $vr1
-	vand.v	$vr4, $vr4, $vr1
+	vand.v	$vr3, $vr3, $vr2
+	vand.v	$vr4, $vr4, $vr2
 	vadd.w	$vr0, $vr3, $vr0
-	vadd.w	$vr2, $vr4, $vr2
-	addi.w	$a0, $a0, -4
-	addi.w	$a4, $a4, 4
-	bnez	$a0, .LBB116_8
+	vadd.w	$vr1, $vr4, $vr1
+	addi.w	$a6, $a6, -4
+	addi.w	$a3, $a3, 4
+	bnez	$a6, .LBB116_8
 # %bb.9:                                # %middle.block
-	vadd.w	$vr0, $vr2, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
-	bne	$a5, $a6, .LBB116_5
+	pcalau12i	$a3, %pc_hi20(.LCPI116_0)
+	vld	$vr2, $a3, %pc_lo12(.LCPI116_0)
+	vadd.w	$vr0, $vr1, $vr0
+	vand.v	$vr0, $vr0, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
+	bne	$a4, $a5, .LBB116_5
 	b	.LBB116_6
 .Lfunc_end116:
 	.size	clause_NumberOfMaxAntecedentLits, .Lfunc_end116-clause_NumberOfMaxAntecedentLits
                                         # -- End function
-	.globl	clause_SelectLiteral            # -- Begin function clause_SelectLiteral
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function clause_SelectLiteral
+.LCPI117_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	clause_SelectLiteral
 	.p2align	5
 	.type	clause_SelectLiteral,@function
 clause_SelectLiteral:                   # @clause_SelectLiteral
@@ -12377,11 +12398,12 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	ld.wu	$a5, $a5, 0
 	andi	$a5, $a5, 1
 	addi.w	$a4, $a4, 1
-	add.w	$a7, $a5, $a7
+	add.d	$a7, $a5, $a7
 	bne	$a3, $a4, .LBB117_13
 .LBB117_14:                             # %clause_NumberOfMaxLits.exit
-	ori	$a3, $zero, 2
-	bgeu	$a7, $a3, .LBB117_6
+	addi.w	$a3, $a7, 0
+	ori	$a4, $zero, 2
+	bgeu	$a3, $a4, .LBB117_6
 .LBB117_15:                             # %clause_NumberOfMaxLits.exit.thread
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -12393,10 +12415,10 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	bstrins.d	$a6, $zero, 1, 0
 	add.w	$a4, $a2, $a6
 	vrepli.b	$vr0, 0
-	vrepli.w	$vr1, 1
+	vrepli.w	$vr2, 1
 	move	$a7, $a2
 	move	$t0, $a6
-	vori.b	$vr2, $vr0, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB117_17:                             # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -12414,18 +12436,21 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	vinsgr2vr.w	$vr3, $t3, 1
 	vinsgr2vr.w	$vr4, $t4, 0
 	vinsgr2vr.w	$vr4, $t1, 1
-	vand.v	$vr3, $vr3, $vr1
-	vand.v	$vr4, $vr4, $vr1
+	vand.v	$vr3, $vr3, $vr2
+	vand.v	$vr4, $vr4, $vr2
 	vadd.w	$vr0, $vr3, $vr0
-	vadd.w	$vr2, $vr4, $vr2
+	vadd.w	$vr1, $vr4, $vr1
 	addi.w	$t0, $t0, -4
 	addi.w	$a7, $a7, 4
 	bnez	$t0, .LBB117_17
 # %bb.18:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a7, $vr0, 0
+	pcalau12i	$a7, %pc_hi20(.LCPI117_0)
+	vld	$vr2, $a7, %pc_lo12(.LCPI117_0)
+	vadd.w	$vr0, $vr1, $vr0
+	vand.v	$vr0, $vr0, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a7, $vr0, 0
 	bne	$a5, $a6, .LBB117_13
 	b	.LBB117_14
 .Lfunc_end117:

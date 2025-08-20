@@ -172,12 +172,10 @@ cover_cost:                             # @cover_cost
 	bnez	$a7, .LBB0_24
 # %bb.25:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
-	vstelm.w	$vr0, $a4, 0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	st.w	$a3, $a4, 0
 	bne	$a6, $a2, .LBB0_7
 	b	.LBB0_10
 .Lfunc_end0:

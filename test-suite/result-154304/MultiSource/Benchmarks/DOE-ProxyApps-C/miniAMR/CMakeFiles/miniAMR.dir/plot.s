@@ -72,59 +72,57 @@ plot:                                   # @plot
 	bltz	$a3, .LBB0_8
 # %bb.6:                                # %.lr.ph40
 	pcalau12i	$a0, %pc_hi20(num_blocks)
-	ld.d	$a0, $a0, %pc_lo12(num_blocks)
-	addi.d	$a1, $a3, 1
-	ori	$a2, $zero, 7
-	bstrpick.d	$a1, $a1, 31, 0
-	bgeu	$a3, $a2, .LBB0_9
+	ld.d	$a1, $a0, %pc_lo12(num_blocks)
+	addi.d	$a0, $a3, 1
+	ori	$a4, $zero, 7
+	bstrpick.d	$a2, $a0, 31, 0
+	bgeu	$a3, $a4, .LBB0_9
 # %bb.7:
 	move	$a4, $zero
-	move	$a2, $zero
+	move	$a0, $zero
 	b	.LBB0_12
 .LBB0_8:
-	move	$a2, $zero
+	move	$a0, $zero
 	b	.LBB0_14
 .LBB0_9:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 31, 3
-	slli.d	$a4, $a2, 3
+	bstrpick.d	$a0, $a2, 31, 3
+	slli.d	$a4, $a0, 3
 	vrepli.b	$vr0, 0
-	addi.d	$a2, $a0, 16
+	addi.d	$a0, $a1, 16
 	move	$a5, $a4
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB0_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a2, -16
-	vld	$vr3, $a2, 0
+	vld	$vr2, $a0, -16
+	vld	$vr3, $a0, 0
 	vadd.w	$vr0, $vr2, $vr0
 	vadd.w	$vr1, $vr3, $vr1
 	addi.d	$a5, $a5, -8
-	addi.d	$a2, $a2, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a5, .LBB0_10
 # %bb.11:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
-	beq	$a4, $a1, .LBB0_14
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	beq	$a4, $a2, .LBB0_14
 .LBB0_12:                               # %scalar.ph.preheader
-	alsl.d	$a0, $a4, $a0, 2
-	sub.d	$a1, $a1, $a4
+	alsl.d	$a1, $a4, $a1, 2
+	sub.d	$a2, $a2, $a4
 	.p2align	4, , 16
 .LBB0_13:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a0, 0
-	add.w	$a2, $a4, $a2
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB0_13
+	ld.w	$a4, $a1, 0
+	add.d	$a0, $a4, $a0
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 4
+	bnez	$a2, .LBB0_13
 .LBB0_14:                               # %._crit_edge
-	pcalau12i	$a0, %pc_hi20(npx)
-	ld.w	$a0, $a0, %pc_lo12(npx)
-	pcalau12i	$a1, %pc_hi20(init_block_x)
-	ld.w	$a1, $a1, %pc_lo12(init_block_x)
+	pcalau12i	$a1, %pc_hi20(npx)
+	ld.w	$a1, $a1, %pc_lo12(npx)
+	pcalau12i	$a2, %pc_hi20(init_block_x)
+	ld.w	$a2, $a2, %pc_lo12(init_block_x)
 	pcalau12i	$a4, %pc_hi20(npy)
 	ld.w	$a5, $a4, %pc_lo12(npy)
 	pcalau12i	$a4, %pc_hi20(init_block_y)
@@ -133,9 +131,10 @@ plot:                                   # @plot
 	ld.w	$a7, $a4, %pc_lo12(npz)
 	pcalau12i	$a4, %pc_hi20(init_block_z)
 	ld.w	$t0, $a4, %pc_lo12(init_block_z)
-	mul.w	$a4, $a1, $a0
+	mul.w	$a4, $a2, $a1
 	mul.w	$a5, $a6, $a5
 	mul.w	$a6, $t0, $a7
+	addi.w	$a2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
 	move	$a0, $fp

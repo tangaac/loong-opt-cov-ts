@@ -782,11 +782,9 @@ pc_block:                               # @pc_block
 # %bb.72:                               # %middle.block673
                                         #   in Loop: Header=BB2_66 Depth=1
 	vadd.w	$vr1, $vr3, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$s2, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$s2, $vr1, 0
 	move	$s5, $t1
 	beq	$t1, $t0, .LBB2_75
 .LBB2_73:                               # %.lr.ph566.preheader677

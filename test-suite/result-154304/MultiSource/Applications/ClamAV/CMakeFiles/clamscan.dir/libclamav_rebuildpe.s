@@ -114,11 +114,9 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	bnez	$t0, .LBB0_8
 # %bb.9:                                # %middle.block
 	vadd.w	$vr0, $vr5, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a0, $fp, .LBB0_12
 .LBB0_10:                               # %.lr.ph.preheader140
 	slli.d	$t0, $a0, 5
@@ -141,8 +139,9 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	addi.d	$t0, $t0, 36
 	bnez	$a0, .LBB0_11
 .LBB0_12:                               # %._crit_edge
-	lu12i.w	$a0, 45056
-	bltu	$a0, $a2, .LBB0_17
+	addi.w	$a0, $a2, 0
+	lu12i.w	$t0, 45056
+	bltu	$t0, $a0, .LBB0_17
 .LBB0_13:                               # %._crit_edge.thread
 	move	$s1, $a4
 	move	$s0, $a3

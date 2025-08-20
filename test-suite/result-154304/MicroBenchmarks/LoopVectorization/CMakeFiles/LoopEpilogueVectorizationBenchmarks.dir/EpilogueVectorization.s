@@ -2366,8 +2366,7 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	bnez	$a4, .LBB10_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr2, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a2, $a3, .LBB10_9
 .LBB10_7:                               # %.lr.ph.preheader11
@@ -2655,8 +2654,7 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	bnez	$a4, .LBB14_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr2, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a2, $a3, .LBB14_9
 .LBB14_7:                               # %.lr.ph.preheader11
@@ -2922,8 +2920,7 @@ _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIjE
 	bnez	$a4, .LBB18_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr2, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a2, $a3, .LBB18_9
 .LBB18_7:                               # %.lr.ph.preheader11

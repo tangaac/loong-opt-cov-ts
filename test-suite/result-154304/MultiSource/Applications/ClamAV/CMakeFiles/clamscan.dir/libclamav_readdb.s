@@ -141,11 +141,9 @@ cli_parse_add:                          # @cli_parse_add
 	bnez	$a3, .LBB0_14
 # %bb.15:                               # %middle.block
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	bne	$a1, $a0, .LBB0_18
 .LBB0_16:                               # %._crit_edge
 	addi.w	$s0, $a2, 1
@@ -366,11 +364,9 @@ cli_parse_add:                          # @cli_parse_add
 	bnez	$a3, .LBB0_46
 # %bb.47:                               # %middle.block414
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB0_50
 .LBB0_48:                               # %.lr.ph268.preheader425
 	add.d	$a3, $s5, $a0

@@ -2593,7 +2593,19 @@ DoAssign:                               # @DoAssign
 .Lfunc_end9:
 	.size	DoAssign, .Lfunc_end9-DoAssign
                                         # -- End function
-	.p2align	5                               # -- Begin function DoAssignIteration
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function DoAssignIteration
+.LCPI10_0:
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.half	0                               # 0x0
+	.text
+	.p2align	5
 	.type	DoAssignIteration,@function
 DoAssignIteration:                      # @DoAssignIteration
 # %bb.0:
@@ -3704,31 +3716,31 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_91:                              # %pred.store.continue75
                                         #   in Loop: Header=BB10_51 Depth=4
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vilvl.h	$vr0, $vr7, $vr0
-	vilvl.w	$vr0, $vr7, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	vori.b	$vr0, $vr7, 0
+	vinsgr2vr.h	$vr0, $a3, 0
 	vand.v	$vr1, $vr2, $vr9
 	vpickve2gr.w	$a3, $vr1, 0
 	vinsgr2vr.h	$vr2, $a3, 0
 	vpickve2gr.w	$a3, $vr1, 1
 	vinsgr2vr.h	$vr2, $a3, 1
 	vpickve2gr.w	$a3, $vr1, 2
+	vpickve2gr.w	$a4, $vr1, 3
+	pcalau12i	$a5, %pc_hi20(.LCPI10_0)
+	vld	$vr1, $a5, %pc_lo12(.LCPI10_0)
 	vinsgr2vr.h	$vr2, $a3, 2
-	vpickve2gr.w	$a3, $vr1, 3
-	vinsgr2vr.h	$vr2, $a3, 3
+	vinsgr2vr.h	$vr2, $a4, 3
 	vadd.h	$vr0, $vr0, $vr2
-	vshuf4i.h	$vr1, $vr0, 14
+	vand.v	$vr0, $vr0, $vr1
 	ori	$a3, $s4, 3816
 	ldx.hu	$a2, $a2, $a3
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a4, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	bne	$a2, $s2, .LBB10_50
 # %bb.92:                               # %pred.store.continue75
                                         #   in Loop: Header=BB10_51 Depth=4

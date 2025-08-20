@@ -933,7 +933,15 @@ color_quantize3:                        # @color_quantize3
 .Lfunc_end5:
 	.size	color_quantize3, .Lfunc_end5-color_quantize3
                                         # -- End function
-	.p2align	5                               # -- Begin function color_quantize
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function color_quantize
+.LCPI6_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.p2align	5
 	.type	color_quantize,@function
 color_quantize:                         # @color_quantize
 # %bb.0:
@@ -1051,10 +1059,13 @@ color_quantize:                         # @color_quantize
 	bne	$a4, $t3, .LBB6_10
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB6_7 Depth=2
+	pcalau12i	$t3, %pc_hi20(.LCPI6_0)
+	vld	$vr3, $t3, %pc_lo12(.LCPI6_0)
 	vadd.w	$vr1, $vr2, $vr1
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t3, $vr1, 0
+	vand.v	$vr1, $vr1, $vr3
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t3, $vr1, 0
 	move	$t5, $a4
 	beq	$a4, $a2, .LBB6_6
 .LBB6_12:                               # %scalar.ph.preheader

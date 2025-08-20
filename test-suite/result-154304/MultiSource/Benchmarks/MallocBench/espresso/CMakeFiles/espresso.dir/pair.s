@@ -346,11 +346,9 @@ set_pair1:                              # @set_pair1
 	bnez	$a4, .LBB1_61
 # %bb.62:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s4, $vr0, 0
 	beq	$a0, $s0, .LBB1_65
 .LBB1_63:                               # %.lr.ph218.preheader349
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload

@@ -60,8 +60,7 @@ Sum:                                    # @Sum
 	bnez	$a4, .LBB0_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr4, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB0_9
 .LBB0_7:                                # %scalar.ph.preheader
@@ -145,8 +144,7 @@ Sum2:                                   # @Sum2
 	bnez	$a4, .LBB1_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr4, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB1_9
 .LBB1_7:                                # %scalar.ph.preheader

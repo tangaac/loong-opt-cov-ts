@@ -661,11 +661,9 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	bnez	$a4, .LBB8_26
 # %bb.27:                               # %middle.block206
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB8_30
 .LBB8_28:                               # %scalar.ph196.preheader
 	slli.d	$a4, $a2, 4
@@ -920,11 +918,9 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	bnez	$a4, .LBB8_42
 # %bb.43:                               # %middle.block220
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a0, .LBB8_46
 .LBB8_44:                               # %scalar.ph210.preheader
 	slli.d	$a4, $a2, 4

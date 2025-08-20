@@ -1526,7 +1526,15 @@ hypre_CycRedSetupCoarseOp:              # @hypre_CycRedSetupCoarseOp
 .Lfunc_end2:
 	.size	hypre_CycRedSetupCoarseOp, .Lfunc_end2-hypre_CycRedSetupCoarseOp
                                         # -- End function
-	.globl	hypre_CyclicReductionSetup      # -- Begin function hypre_CyclicReductionSetup
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function hypre_CyclicReductionSetup
+.LCPI3_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.text
+	.globl	hypre_CyclicReductionSetup
 	.p2align	5
 	.type	hypre_CyclicReductionSetup,@function
 hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
@@ -2199,10 +2207,13 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	addi.d	$a0, $a0, 32
 	bnez	$a4, .LBB3_30
 # %bb.31:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI3_0)
 	vadd.w	$vr0, $vr4, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vand.v	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$a2, $a3, .LBB3_34
 .LBB3_32:                               # %scalar.ph.preheader
 	alsl.d	$a2, $a1, $s2, 3

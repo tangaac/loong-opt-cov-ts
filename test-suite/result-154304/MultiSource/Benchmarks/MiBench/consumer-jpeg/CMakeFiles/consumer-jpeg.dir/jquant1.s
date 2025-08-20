@@ -1052,8 +1052,7 @@ color_quantize:                         # @color_quantize
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB6_7 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
 	vpickve2gr.w	$t3, $vr1, 0
 	move	$t5, $a4
 	beq	$a4, $a2, .LBB6_6

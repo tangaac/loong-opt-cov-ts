@@ -234,11 +234,10 @@ Innerproduct:                           # @Innerproduct
 	vmadd.w	$vr0, $vr4, $vr2
 	vmadd.w	$vr1, $vr5, $vr3
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vstelm.w	$vr0, $a0, 0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
+	st.w	$a1, $a0, 0
 	ret
 .LBB3_3:                                # %scalar.ph.preheader
 	move	$a2, $zero

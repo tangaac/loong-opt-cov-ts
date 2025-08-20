@@ -221,11 +221,9 @@ procesnet:                              # @procesnet
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB0_12 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$s0, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$s0, $vr1, 0
 	beq	$a5, $a3, .LBB0_11
 .LBB0_17:                               # %.lr.ph337.preheader463
                                         #   in Loop: Header=BB0_12 Depth=2
@@ -239,7 +237,7 @@ procesnet:                              # @procesnet
                                         # =>    This Inner Loop Header: Depth=3
 	ld.h	$a4, $a2, 0
 	slt	$a4, $a0, $a4
-	add.w	$s0, $s0, $a4
+	add.d	$s0, $s0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 2
 	bnez	$a3, .LBB0_18
@@ -251,7 +249,8 @@ procesnet:                              # @procesnet
                                         #   in Loop: Header=BB0_3 Depth=1
 	st.d	$t2, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$s1, $s1, 1
-	slli.d	$a0, $s0, 2
+	addi.w	$a0, $s0, 0
+	slli.d	$a0, $a0, 2
 	addi.d	$a0, $a0, 4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0

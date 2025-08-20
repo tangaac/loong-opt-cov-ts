@@ -1419,11 +1419,9 @@ hypre_UnionBoxes:                       # @hypre_UnionBoxes
 	bnez	$a2, .LBB2_183
 # %bb.184:                              # %middle.block801
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a0, $a3, .LBB2_187
 .LBB2_185:                              # %.lr.ph283.preheader804
 	alsl.d	$a2, $a0, $s1, 2
@@ -1433,11 +1431,12 @@ hypre_UnionBoxes:                       # @hypre_UnionBoxes
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
 	sltu	$a3, $zero, $a3
-	add.w	$a1, $a1, $a3
+	add.d	$a1, $a1, $a3
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a0, .LBB2_186
 .LBB2_187:                              # %._crit_edge284
+	addi.w	$a1, $a1, 0
 	move	$a0, $t6
 	pcaddu18i	$ra, %call36(hypre_BoxArraySetSize)
 	jirl	$ra, $ra, 0

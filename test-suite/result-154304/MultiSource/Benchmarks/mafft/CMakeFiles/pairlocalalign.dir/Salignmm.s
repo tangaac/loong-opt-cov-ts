@@ -2357,11 +2357,9 @@ A__align:                               # @A__align
 # %bb.166:                              # %middle.block809
                                         #   in Loop: Header=BB3_152 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr4
-	vpickve2gr.w	$t1, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$t1, $vr3, 0
 	bne	$s2, $s1, .LBB3_173
 	b	.LBB3_175
 	.p2align	4, , 16
@@ -3619,11 +3617,9 @@ Atracking:                              # @Atracking
 # %bb.38:                               # %middle.block33
                                         #   in Loop: Header=BB5_29 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr4
-	vpickve2gr.w	$a6, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$a6, $vr3, 0
 	bne	$t7, $t6, .LBB5_40
 	b	.LBB5_42
 	.p2align	4, , 16
@@ -5590,11 +5586,9 @@ A__align_gapmap:                        # @A__align_gapmap
 # %bb.157:                              # %middle.block731
                                         #   in Loop: Header=BB6_143 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr4
-	vpickve2gr.w	$t1, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$t1, $vr3, 0
 	bne	$s1, $s0, .LBB6_164
 	b	.LBB6_166
 	.p2align	4, , 16

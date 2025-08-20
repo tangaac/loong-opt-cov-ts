@@ -915,8 +915,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	bnez	$a3, .LBB7_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB7_9
 .LBB7_7:                                # %scalar.ph.preheader

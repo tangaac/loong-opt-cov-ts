@@ -117,11 +117,9 @@ main:                                   # @main
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	ld.w	$a2, $a0, 384
 	ld.w	$a3, $a0, 388
 	ld.w	$a4, $a0, 392
@@ -183,11 +181,9 @@ main:                                   # @main
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ld.w	$a1, $fp, 384
 	ld.w	$a2, $fp, 388
 	ld.w	$a3, $fp, 392

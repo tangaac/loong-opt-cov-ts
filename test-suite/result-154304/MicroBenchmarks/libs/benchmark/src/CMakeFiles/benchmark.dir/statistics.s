@@ -493,8 +493,7 @@ _ZN9benchmark12ComputeStatsERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @
 	bnez	$a5, .LBB4_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr3, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a2, $a3, .LBB4_8
 	.p2align	4, , 16

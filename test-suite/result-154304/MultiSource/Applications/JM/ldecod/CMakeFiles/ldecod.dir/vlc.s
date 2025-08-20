@@ -995,11 +995,10 @@ more_rbsp_data:                         # @more_rbsp_data
 	vor.v	$vr3, $vr4, $vr3
 	vslt.wu	$vr0, $vr0, $vr3
 	vbitsel.v	$vr0, $vr1, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	sltu	$a0, $zero, $a0
 .LBB16_7:                               # %._crit_edge
 	ret
@@ -1086,11 +1085,10 @@ uvlc_startcode_follows:                 # @uvlc_startcode_follows
 	vor.v	$vr3, $vr4, $vr3
 	vslt.wu	$vr0, $vr0, $vr3
 	vbitsel.v	$vr0, $vr1, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	sltui	$a0, $a0, 1
 .LBB17_6:                               # %more_rbsp_data.exit
 	ret

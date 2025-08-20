@@ -5138,17 +5138,13 @@ SIM4:                                   # @SIM4
 # %bb.571:                              # %middle.block
                                         #   in Loop: Header=BB0_562 Depth=3
 	vadd.w	$vr1, $vr3, $vr1
-	vshuf4i.w	$vr3, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr3
-	vreplvei.w	$vr3, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr3
-	vpickve2gr.w	$a6, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$a6, $vr1, 0
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s6, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s6, $vr0, 0
 	beq	$t2, $a7, .LBB0_574
 .LBB0_572:                              # %.lr.ph.i516.preheader1166
                                         #   in Loop: Header=BB0_562 Depth=3
@@ -7315,47 +7311,47 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	bstrpick.d	$t3, $a3, 31, 0
 	bgeu	$a4, $a5, .LBB8_15
 # %bb.2:
-	move	$t1, $zero
+	move	$t2, $zero
 	move	$a3, $zero
 	move	$t0, $zero
-	move	$a5, $zero
-	move	$t2, $zero
-	move	$a4, $t3
+	move	$a4, $zero
+	move	$t1, $zero
+	move	$a5, $t3
 	b	.LBB8_18
 .LBB8_3:
-	move	$t2, $zero
-	move	$a5, $zero
+	move	$t1, $zero
+	move	$a4, $zero
 	move	$t0, $zero
 	move	$a3, $zero
-	move	$t1, $zero
+	move	$t2, $zero
 .LBB8_4:                                # %._crit_edge
-	add.d	$a0, $a0, $t1
+	add.d	$a0, $a0, $t2
 	sub.d	$a0, $a1, $a0
 	addi.w	$a1, $a0, 1
-	slli.d	$a0, $t2, 3
-	alsl.w	$a0, $t2, $a0, 1
-	ori	$a4, $zero, 29
+	slli.d	$a0, $t1, 3
+	alsl.w	$a0, $t1, $a0, 1
+	ori	$a5, $zero, 29
 	div.wu	$a2, $a0, $a1
-	bltu	$a4, $a1, .LBB8_9
+	bltu	$a5, $a1, .LBB8_9
 # %bb.5:
-	ori	$a4, $zero, 6
+	ori	$a5, $zero, 6
 	ori	$a0, $zero, 1
-	bltu	$a4, $a2, .LBB8_14
+	bltu	$a5, $a2, .LBB8_14
 # %bb.6:
-	add.d	$a2, $t0, $t2
-	slli.d	$a4, $a2, 3
-	alsl.w	$a2, $a2, $a4, 1
+	add.d	$a2, $t0, $t1
+	slli.d	$a5, $a2, 3
+	alsl.w	$a2, $a2, $a5, 1
 	div.wu	$a2, $a2, $a1
-	ori	$a4, $zero, 7
-	bltu	$a4, $a2, .LBB8_14
+	ori	$a5, $zero, 7
+	bltu	$a5, $a2, .LBB8_14
 # %bb.7:
 	slli.d	$a2, $a3, 3
 	alsl.w	$a2, $a3, $a2, 1
 	div.wu	$a2, $a2, $a1
-	ori	$a4, $zero, 6
-	bltu	$a4, $a2, .LBB8_14
+	ori	$a5, $zero, 6
+	bltu	$a5, $a2, .LBB8_14
 # %bb.8:
-	add.d	$a2, $a3, $a5
+	add.d	$a2, $a3, $a4
 	slli.d	$a3, $a2, 3
 	alsl.w	$a2, $a2, $a3, 1
 	div.wu	$a1, $a2, $a1
@@ -7363,24 +7359,24 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	bgeu	$a2, $a1, .LBB8_13
 	b	.LBB8_14
 .LBB8_9:
-	ori	$a4, $zero, 7
+	ori	$a5, $zero, 7
 	ori	$a0, $zero, 1
-	bltu	$a4, $a2, .LBB8_14
+	bltu	$a5, $a2, .LBB8_14
 # %bb.10:
-	add.d	$a2, $t0, $t2
-	ori	$a4, $zero, 100
-	mul.w	$a2, $a2, $a4
+	add.d	$a2, $t0, $t1
+	ori	$a5, $zero, 100
+	mul.w	$a2, $a2, $a5
 	div.wu	$a2, $a2, $a1
-	ori	$a4, $zero, 94
-	bltu	$a4, $a2, .LBB8_14
+	ori	$a5, $zero, 94
+	bltu	$a5, $a2, .LBB8_14
 # %bb.11:
 	slli.d	$a2, $a3, 3
 	alsl.w	$a2, $a3, $a2, 1
 	div.wu	$a2, $a2, $a1
-	ori	$a4, $zero, 7
-	bltu	$a4, $a2, .LBB8_14
+	ori	$a5, $zero, 7
+	bltu	$a5, $a2, .LBB8_14
 # %bb.12:
-	add.d	$a2, $a3, $a5
+	add.d	$a2, $a3, $a4
 	ori	$a3, $zero, 100
 	mul.w	$a2, $a2, $a3
 	div.wu	$a1, $a2, $a1
@@ -7401,26 +7397,26 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	addi.d	$a6, $a3, 1
 	bstrpick.d	$a3, $a6, 32, 3
 	slli.d	$a7, $a3, 3
-	alsl.d	$a4, $a3, $t3, 3
+	alsl.d	$a5, $a3, $t3, 3
 	add.d	$a3, $t3, $a2
 	addi.d	$a3, $a3, 4
-	vrepli.b	$vr4, 0
-	vrepli.b	$vr7, 65
-	vrepli.b	$vr8, 67
-	vrepli.b	$vr9, 71
-	vrepli.b	$vr11, 84
-	vrepli.b	$vr13, -1
-	vrepli.w	$vr14, 1
-	move	$a5, $a7
-	vori.b	$vr15, $vr4, 0
-	vori.b	$vr10, $vr4, 0
-	vori.b	$vr12, $vr4, 0
-	vori.b	$vr5, $vr4, 0
-	vori.b	$vr6, $vr4, 0
-	vori.b	$vr2, $vr4, 0
-	vori.b	$vr3, $vr4, 0
-	vori.b	$vr0, $vr4, 0
-	vori.b	$vr1, $vr4, 0
+	vrepli.b	$vr0, 0
+	vrepli.b	$vr3, 65
+	vrepli.b	$vr5, 67
+	vrepli.b	$vr7, 71
+	vrepli.b	$vr9, 84
+	vrepli.b	$vr11, -1
+	vrepli.w	$vr13, 1
+	move	$a4, $a7
+	vori.b	$vr15, $vr0, 0
+	vori.b	$vr12, $vr0, 0
+	vori.b	$vr14, $vr0, 0
+	vori.b	$vr8, $vr0, 0
+	vori.b	$vr10, $vr0, 0
+	vori.b	$vr4, $vr0, 0
+	vori.b	$vr6, $vr0, 0
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB8_16:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -7428,29 +7424,29 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	ld.w	$t1, $a3, 0
 	vinsgr2vr.w	$vr16, $t0, 0
 	vinsgr2vr.w	$vr17, $t1, 0
-	vseq.b	$vr18, $vr16, $vr7
-	vseq.b	$vr19, $vr17, $vr7
-	vseq.b	$vr20, $vr16, $vr11
+	vseq.b	$vr18, $vr16, $vr3
+	vseq.b	$vr19, $vr17, $vr3
+	vseq.b	$vr20, $vr16, $vr9
 	vilvl.b	$vr20, $vr20, $vr20
 	vilvl.h	$vr20, $vr20, $vr20
 	vslli.w	$vr21, $vr20, 24
 	vsrai.w	$vr21, $vr21, 24
-	vseq.b	$vr22, $vr17, $vr11
+	vseq.b	$vr22, $vr17, $vr9
 	vilvl.b	$vr22, $vr22, $vr22
 	vilvl.h	$vr22, $vr22, $vr22
 	vslli.w	$vr23, $vr22, 24
 	vsrai.w	$vr23, $vr23, 24
-	vseq.b	$vr24, $vr16, $vr8
+	vseq.b	$vr24, $vr16, $vr5
 	vor.v	$vr18, $vr18, $vr24
-	vseq.b	$vr25, $vr17, $vr8
+	vseq.b	$vr25, $vr17, $vr5
 	vor.v	$vr19, $vr19, $vr25
-	vseq.b	$vr16, $vr16, $vr9
+	vseq.b	$vr16, $vr16, $vr7
 	vor.v	$vr18, $vr18, $vr16
 	vilvl.b	$vr18, $vr18, $vr18
 	vilvl.h	$vr18, $vr18, $vr18
 	vslli.w	$vr18, $vr18, 24
 	vsrai.w	$vr18, $vr18, 24
-	vseq.b	$vr17, $vr17, $vr9
+	vseq.b	$vr17, $vr17, $vr7
 	vor.v	$vr19, $vr19, $vr17
 	vilvl.b	$vr19, $vr19, $vr19
 	vilvl.h	$vr19, $vr19, $vr19
@@ -7466,10 +7462,10 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	vslli.w	$vr28, $vr28, 24
 	vsrai.w	$vr28, $vr28, 24
 	vor.v	$vr21, $vr21, $vr28
-	vxor.v	$vr21, $vr21, $vr13
+	vxor.v	$vr21, $vr21, $vr11
 	vand.v	$vr18, $vr18, $vr21
-	vand.v	$vr18, $vr18, $vr14
-	vadd.w	$vr0, $vr0, $vr18
+	vand.v	$vr18, $vr18, $vr13
+	vadd.w	$vr1, $vr1, $vr18
 	vilvl.b	$vr18, $vr25, $vr25
 	vilvl.h	$vr18, $vr18, $vr18
 	vilvl.b	$vr17, $vr17, $vr17
@@ -7478,64 +7474,54 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	vslli.w	$vr21, $vr21, 24
 	vsrai.w	$vr21, $vr21, 24
 	vor.v	$vr21, $vr23, $vr21
-	vxor.v	$vr21, $vr21, $vr13
+	vxor.v	$vr21, $vr21, $vr11
 	vand.v	$vr19, $vr19, $vr21
-	vand.v	$vr19, $vr19, $vr14
-	vadd.w	$vr1, $vr1, $vr19
-	vand.v	$vr19, $vr24, $vr14
+	vand.v	$vr19, $vr19, $vr13
 	vadd.w	$vr2, $vr2, $vr19
-	vand.v	$vr18, $vr18, $vr14
-	vadd.w	$vr3, $vr3, $vr18
-	vand.v	$vr16, $vr16, $vr14
-	vadd.w	$vr5, $vr5, $vr16
-	vand.v	$vr16, $vr17, $vr14
-	vadd.w	$vr6, $vr6, $vr16
-	vand.v	$vr16, $vr20, $vr14
+	vand.v	$vr19, $vr24, $vr13
+	vadd.w	$vr4, $vr4, $vr19
+	vand.v	$vr18, $vr18, $vr13
+	vadd.w	$vr6, $vr6, $vr18
+	vand.v	$vr16, $vr16, $vr13
+	vadd.w	$vr8, $vr8, $vr16
+	vand.v	$vr16, $vr17, $vr13
 	vadd.w	$vr10, $vr10, $vr16
-	vand.v	$vr16, $vr22, $vr14
+	vand.v	$vr16, $vr20, $vr13
 	vadd.w	$vr12, $vr12, $vr16
-	vadd.w	$vr4, $vr4, $vr26
-	vaddi.wu	$vr4, $vr4, 1
+	vand.v	$vr16, $vr22, $vr13
+	vadd.w	$vr14, $vr14, $vr16
+	vadd.w	$vr0, $vr0, $vr26
+	vaddi.wu	$vr0, $vr0, 1
 	vadd.w	$vr15, $vr15, $vr27
 	vaddi.wu	$vr15, $vr15, 1
-	addi.d	$a5, $a5, -8
+	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 8
-	bnez	$a5, .LBB8_16
+	bnez	$a4, .LBB8_16
 # %bb.17:                               # %middle.block
-	vadd.w	$vr4, $vr15, $vr4
-	vshuf4i.w	$vr7, $vr4, 14
-	vadd.w	$vr4, $vr4, $vr7
-	vreplvei.w	$vr7, $vr4, 1
-	vadd.w	$vr4, $vr4, $vr7
-	vpickve2gr.w	$t1, $vr4, 0
-	vadd.w	$vr4, $vr12, $vr10
-	vshuf4i.w	$vr7, $vr4, 14
-	vadd.w	$vr4, $vr4, $vr7
-	vreplvei.w	$vr7, $vr4, 1
-	vadd.w	$vr4, $vr4, $vr7
-	vpickve2gr.w	$a3, $vr4, 0
-	vadd.w	$vr4, $vr6, $vr5
-	vshuf4i.w	$vr5, $vr4, 14
-	vadd.w	$vr4, $vr4, $vr5
-	vreplvei.w	$vr5, $vr4, 1
-	vadd.w	$vr4, $vr4, $vr5
-	vpickve2gr.w	$t0, $vr4, 0
-	vadd.w	$vr2, $vr3, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$a5, $vr2, 0
-	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t2, $vr0, 0
+	vadd.w	$vr0, $vr15, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t2, $vr0, 0
+	vadd.w	$vr0, $vr14, $vr12
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	vadd.w	$vr0, $vr10, $vr8
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t0, $vr0, 0
+	vadd.w	$vr0, $vr6, $vr4
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	vadd.w	$vr0, $vr2, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t1, $vr0, 0
 	beq	$a6, $a7, .LBB8_4
 .LBB8_18:                               # %.lr.ph.preheader71
-	add.d	$a2, $a2, $a4
-	sub.d	$a4, $a1, $a4
+	add.d	$a2, $a2, $a5
+	sub.d	$a5, $a1, $a5
 	ori	$a6, $zero, 19
 	pcalau12i	$a7, %pc_hi20(.LJTI8_0)
 	addi.d	$a7, $a7, %pc_lo12(.LJTI8_0)
@@ -7544,9 +7530,9 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 .LBB8_19:                               #   in Loop: Header=BB8_21 Depth=1
 	addi.d	$t0, $t0, 1
 .LBB8_20:                               #   in Loop: Header=BB8_21 Depth=1
-	addi.w	$a4, $a4, -1
+	addi.w	$a5, $a5, -1
 	addi.d	$a2, $a2, 1
-	beqz	$a4, .LBB8_4
+	beqz	$a5, .LBB8_4
 .LBB8_21:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$t3, $a2, 0
@@ -7559,16 +7545,16 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	add.d	$t3, $a7, $t3
 	jr	$t3
 .LBB8_23:                               #   in Loop: Header=BB8_21 Depth=1
-	addi.d	$t2, $t2, 1
+	addi.d	$t1, $t1, 1
 	b	.LBB8_20
 .LBB8_24:                               #   in Loop: Header=BB8_21 Depth=1
-	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 1
 	b	.LBB8_20
 .LBB8_25:                               #   in Loop: Header=BB8_21 Depth=1
 	addi.d	$a3, $a3, 1
 	b	.LBB8_20
 .LBB8_26:                               #   in Loop: Header=BB8_21 Depth=1
-	addi.d	$t1, $t1, 1
+	addi.d	$t2, $t2, 1
 	b	.LBB8_20
 .Lfunc_end8:
 	.size	is_polyAT_exon_p, .Lfunc_end8-is_polyAT_exon_p

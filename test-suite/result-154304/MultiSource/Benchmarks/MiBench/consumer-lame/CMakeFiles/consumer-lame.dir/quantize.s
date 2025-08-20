@@ -1411,8 +1411,7 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	bnez	$a4, .LBB4_38
 # %bb.39:                               # %middle.block
 	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$fp, $vr0, 0
 	beq	$a1, $a0, .LBB4_42
 .LBB4_40:                               # %.lr.ph376.preheader538

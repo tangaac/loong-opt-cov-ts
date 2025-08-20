@@ -348,17 +348,16 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vilvl.h	$vr4, $vr1, $vr4
 	vilvl.w	$vr4, $vr1, $vr4
 	vilvl.h	$vr5, $vr1, $vr5
-	vilvl.w	$vr5, $vr1, $vr5
 	pcalau12i	$a3, %pc_hi20(imgUV_org)
 	ld.d	$a5, $a3, %pc_lo12(imgUV_org)
+	vilvl.w	$vr5, $vr1, $vr5
 	vadd.d	$vr3, $vr3, $vr4
 	vadd.d	$vr2, $vr2, $vr5
-	vadd.d	$vr2, $vr2, $vr3
 	ld.d	$a3, $a5, 0
 	ld.w	$a6, $a0, 204
 	ldptr.d	$a7, $a1, 6472
-	vreplvei.d	$vr3, $vr2, 1
 	vadd.d	$vr2, $vr2, $vr3
+	vhaddw.q.d	$vr3, $vr2, $vr2
 	alsl.d	$a1, $a6, $a3, 3
 	ld.d	$a4, $a7, 0
 	ld.w	$t0, $a0, 188
@@ -374,7 +373,8 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	ldx.d	$t1, $t3, $t1
 	alsl.d	$a6, $t0, $a7, 3
 	ld.d	$t3, $a6, -8
-	vshuf4i.d	$vr2, $vr1, 12
+	vori.b	$vr2, $vr1, 0
+	vextrins.d	$vr2, $vr3, 0
 	alsl.d	$a7, $a3, $t2, 1
 	alsl.d	$t0, $a3, $t1, 1
 	alsl.d	$t1, $a0, $t4, 1
@@ -447,8 +447,7 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	addi.d	$t2, $t2, 4
 	bne	$a2, $t3, .LBB1_5
 # %bb.6:                                # %middle.block78
-	vreplvei.d	$vr1, $vr2, 1
-	vadd.d	$vr1, $vr2, $vr1
+	vhaddw.q.d	$vr1, $vr2, $vr2
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
 	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_1)
 	vpickve2gr.d	$a0, $vr1, 0

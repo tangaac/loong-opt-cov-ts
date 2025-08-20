@@ -153,11 +153,9 @@ msum_i4:                                # @msum_i4
 # %bb.15:                               # %middle.block56
                                         #   in Loop: Header=BB0_11 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t1, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t1, $vr1, 0
 	move	$t3, $a2
 	beq	$a2, $s1, .LBB0_10
 .LBB0_16:                               # %scalar.ph46.preheader

@@ -1129,11 +1129,9 @@ binate_split_select:                    # @binate_split_select
 	bnez	$a5, .LBB3_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr4, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	beq	$a3, $a4, .LBB3_7
 	.p2align	4, , 16
 .LBB3_6:                                # %.lr.ph
@@ -1148,8 +1146,9 @@ binate_split_select:                    # @binate_split_select
 	add.w	$a5, $a3, $a5
 	bne	$a1, $a2, .LBB3_6
 .LBB3_7:                                # %._crit_edge
-	ori	$a2, $zero, 2
-	bgeu	$a5, $a2, .LBB3_17
+	addi.w	$a2, $a5, 0
+	ori	$a3, $zero, 2
+	bgeu	$a2, $a3, .LBB3_17
 .LBB3_8:                                # %.preheader
 	bge	$s4, $a0, .LBB3_13
 .LBB3_9:                                # %._crit_edge59

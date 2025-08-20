@@ -1731,11 +1731,9 @@ Decode_Picture:                         # @Decode_Picture
 	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr1, $vr5
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	andi	$a2, $a2, 1
 	vst	$vr2, $a1, -14
 	bnez	$a2, .LBB0_186

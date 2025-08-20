@@ -3545,11 +3545,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.54:                               # %middle.block1069
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr7, $vr3
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$s3, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$s3, $vr2, 0
 	ld.d	$a3, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 320                   # 8-byte Folded Reload
@@ -3701,11 +3699,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.61:                               # %middle.block1033
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr7, $vr3
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$s6, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$s6, $vr2, 0
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 320                   # 8-byte Folded Reload
@@ -3857,11 +3853,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.68:                               # %middle.block997
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr7, $vr3
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$ra, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$ra, $vr2, 0
 	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 320                   # 8-byte Folded Reload
@@ -4012,11 +4006,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.75:                               # %middle.block
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr6, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$t8, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$t8, $vr2, 0
 	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 320                   # 8-byte Folded Reload
@@ -4396,11 +4388,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.93:                               # %middle.block1277
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t7, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t7, $vr0, 0
 	move	$t8, $t3
 	beq	$t1, $t0, .LBB4_96
 .LBB4_94:                               # %scalar.ph1258.preheader
@@ -4517,11 +4507,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.100:                              # %middle.block1251
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t6, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t6, $vr0, 0
 	move	$a0, $t3
 	beq	$t1, $t0, .LBB4_103
 .LBB4_101:                              # %.lr.ph593.us.preheader1288
@@ -4638,11 +4626,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.107:                              # %middle.block1225
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t5, $vr0, 0
 	move	$s2, $t3
 	beq	$t1, $t0, .LBB4_110
 .LBB4_108:                              # %.lr.ph601.us.preheader1287
@@ -4759,11 +4745,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.114:                              # %middle.block1199
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t4, $vr0, 0
 	move	$s1, $t3
 	beq	$t1, $t0, .LBB4_88
 .LBB4_115:                              # %.lr.ph609.us.preheader1286
@@ -5000,11 +4984,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.130:                              # %middle.block1173
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t7, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t7, $vr0, 0
 	move	$s1, $t3
 	beq	$t1, $t0, .LBB4_133
 .LBB4_131:                              # %scalar.ph1154.preheader
@@ -5121,11 +5103,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.137:                              # %middle.block1147
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t6, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t6, $vr0, 0
 	move	$s2, $t3
 	beq	$t1, $t0, .LBB4_140
 .LBB4_138:                              # %.lr.ph593.us.1.preheader
@@ -5242,11 +5222,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.144:                              # %middle.block1121
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t5, $vr0, 0
 	move	$s2, $t3
 	beq	$t1, $t0, .LBB4_147
 .LBB4_145:                              # %.lr.ph601.us.1.preheader
@@ -5363,11 +5341,9 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.151:                              # %middle.block1095
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t4, $vr0, 0
 	move	$s1, $t3
 	beq	$t1, $t0, .LBB4_125
 .LBB4_152:                              # %.lr.ph609.us.1.preheader

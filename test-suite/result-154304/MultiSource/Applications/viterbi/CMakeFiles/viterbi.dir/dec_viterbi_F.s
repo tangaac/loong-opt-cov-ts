@@ -362,8 +362,7 @@ dec_viterbi_F:                          # @dec_viterbi_F
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB0_10 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a7, $a0, .LBB0_32
 .LBB0_30:                               # %.lr.ph212.preheader263

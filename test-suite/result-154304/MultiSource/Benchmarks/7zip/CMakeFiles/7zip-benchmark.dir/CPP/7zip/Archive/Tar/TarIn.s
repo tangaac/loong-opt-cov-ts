@@ -1130,11 +1130,10 @@ _ZN8NArchive4NTar8ReadItemEP19ISequentialInStreamRbRNS0_7CItemExER11CStringBaseI
                                         #   in Loop: Header=BB0_2 Depth=1
 	addi.w	$a1, $s5, 0
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a2, $a0, 0
 	ori	$a0, $zero, 1
 	bne	$a2, $a1, .LBB0_160
 # %bb.159:                              #   in Loop: Header=BB0_2 Depth=1

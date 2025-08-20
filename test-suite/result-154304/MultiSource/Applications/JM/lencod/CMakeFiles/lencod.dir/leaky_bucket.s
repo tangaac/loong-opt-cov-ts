@@ -420,8 +420,7 @@ calc_buffer:                            # @calc_buffer
 	bnez	$a4, .LBB4_11
 # %bb.12:                               # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a0, $a2, .LBB4_15
 .LBB4_13:                               # %scalar.ph.preheader

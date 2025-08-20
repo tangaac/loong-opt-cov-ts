@@ -304,8 +304,7 @@ mmult:                                  # @mmult
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB3_6 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
 	vpickve2gr.w	$t6, $vr1, 0
 	move	$fp, $a6
 	beq	$a6, $a1, .LBB3_5

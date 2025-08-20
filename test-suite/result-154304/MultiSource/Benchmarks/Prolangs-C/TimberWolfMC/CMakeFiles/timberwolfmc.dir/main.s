@@ -427,8 +427,7 @@ main:                                   # @main
 	bnez	$a6, .LBB0_23
 # %bb.24:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	beq	$a4, $a0, .LBB0_27
 .LBB0_25:                               # %scalar.ph.preheader
@@ -990,8 +989,7 @@ main:                                   # @main
 	bnez	$a7, .LBB0_68
 # %bb.69:                               # %middle.block187
 	vadd.w	$vr0, $vr2, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	beq	$a4, $a5, .LBB0_72
 .LBB0_70:                               # %scalar.ph174.preheader
@@ -1691,12 +1689,10 @@ prepSpots:                              # @prepSpots
 # %bb.52:                               # %middle.block
                                         #   in Loop: Header=BB1_44 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
-	vadd.w	$vr7, $vr7, $vr8
-	vreplvei.w	$vr8, $vr7, 1
-	vadd.w	$vr7, $vr7, $vr8
-	vpickve2gr.w	$t1, $vr7, 0
-	vstelm.w	$vr7, $fp, 0, 0
+	vhaddw.d.w	$vr7, $vr7, $vr7
+	vhaddw.q.d	$vr7, $vr7, $vr7
+	vpickve2gr.d	$t1, $vr7, 0
+	st.w	$t1, $fp, 0
 	move	$t2, $a4
 	beq	$a4, $a1, .LBB1_43
 	b	.LBB1_48

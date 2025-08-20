@@ -657,8 +657,7 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	bnez	$a4, .LBB4_83
 # %bb.84:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a1, $vr0, 0
 	beq	$a3, $a0, .LBB4_87
 .LBB4_85:                               # %scalar.ph.preheader

@@ -13,51 +13,49 @@ SumArray:                               # @SumArray
 	bstrpick.d	$a2, $a1, 31, 0
 	bgeu	$a1, $a3, .LBB0_4
 # %bb.2:
-	move	$a3, $zero
 	move	$a1, $zero
+	move	$a3, $zero
 	b	.LBB0_7
 .LBB0_3:
-	move	$a1, $zero
-	move	$a0, $a1
+	move	$a3, $zero
+	addi.w	$a0, $a3, 0
 	ret
 .LBB0_4:                                # %vector.ph
 	bstrpick.d	$a1, $a2, 31, 3
-	slli.d	$a3, $a1, 3
+	slli.d	$a1, $a1, 3
 	vrepli.b	$vr0, 0
-	addi.d	$a1, $a0, 16
-	move	$a4, $a3
+	addi.d	$a3, $a0, 16
+	move	$a4, $a1
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a1, -16
-	vld	$vr3, $a1, 0
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
 	vadd.w	$vr0, $vr2, $vr0
 	vadd.w	$vr1, $vr3, $vr1
 	addi.d	$a4, $a4, -8
-	addi.d	$a1, $a1, 32
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
-	beq	$a3, $a2, .LBB0_9
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	beq	$a1, $a2, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader12
-	alsl.d	$a0, $a3, $a0, 2
-	sub.d	$a2, $a2, $a3
+	alsl.d	$a0, $a1, $a0, 2
+	sub.d	$a1, $a2, $a1
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a0, 0
-	add.w	$a1, $a3, $a1
-	addi.d	$a2, $a2, -1
+	ld.w	$a2, $a0, 0
+	add.d	$a3, $a2, $a3
+	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB0_8
+	bnez	$a1, .LBB0_8
 .LBB0_9:                                # %._crit_edge
-	move	$a0, $a1
+	addi.w	$a0, $a3, 0
 	ret
 .Lfunc_end0:
 	.size	SumArray, .Lfunc_end0-SumArray
@@ -294,11 +292,9 @@ main:                                   # @main
 	vadd.w	$vr1, $vr3, $vr1
 	vadd.w	$vr0, $vr0, $vr1
 	vadd.w	$vr0, $vr0, $vr4
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	ld.w	$a2, $a0, 384
 	ld.w	$a3, $a0, 388
 	ld.w	$a4, $a0, 392

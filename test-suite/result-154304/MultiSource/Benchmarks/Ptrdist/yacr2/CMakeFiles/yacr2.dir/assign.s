@@ -384,8 +384,7 @@ MaxNetsAssign:                          # @MaxNetsAssign
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB3_16 Depth=2
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$t2, $vr0, 0
 	move	$t4, $a7
 	beq	$a3, $a5, .LBB3_14
@@ -904,8 +903,7 @@ LeftNetsAssign:                         # @LeftNetsAssign
 # %bb.61:                               # %middle.block
                                         #   in Loop: Header=BB4_56 Depth=3
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$t2, $vr0, 0
 	move	$t4, $a7
 	beq	$a4, $a5, .LBB4_54
@@ -1454,8 +1452,7 @@ RightNetsAssign:                        # @RightNetsAssign
 # %bb.62:                               # %middle.block
                                         #   in Loop: Header=BB5_57 Depth=3
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$t2, $vr0, 0
 	move	$t4, $a7
 	beq	$a4, $a5, .LBB5_55
@@ -1612,8 +1609,7 @@ Select:                                 # @Select
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB6_5 Depth=1
 	vadd.d	$vr1, $vr2, $vr1
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$t4, $vr1, 0
 	move	$t6, $t0
 	beq	$a4, $a6, .LBB6_3

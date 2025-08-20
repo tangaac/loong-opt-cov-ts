@@ -821,8 +821,7 @@ SCCofVCG:                               # @SCCofVCG
 # %bb.32:                               # %middle.block
                                         #   in Loop: Header=BB7_27 Depth=1
 	vadd.d	$vr1, $vr3, $vr2
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$t0, $vr1, 0
 	beq	$t1, $t2, .LBB7_26
 .LBB7_33:                               # %.lr.ph79.preheader133

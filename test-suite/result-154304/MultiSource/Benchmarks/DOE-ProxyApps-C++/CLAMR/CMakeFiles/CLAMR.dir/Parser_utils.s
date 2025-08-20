@@ -848,11 +848,9 @@ _ZN2PP12Parser_utils13print_stringsESt6vectorIS1_INSt7__cxx1112basic_stringIcSt1
 	bnez	$a3, .LBB3_65
 # %bb.66:                               # %middle.block558
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB3_69
 .LBB3_67:                               # %.lr.ph365.preheader569

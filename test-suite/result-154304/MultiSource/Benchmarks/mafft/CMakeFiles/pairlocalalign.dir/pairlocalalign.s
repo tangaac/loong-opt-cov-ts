@@ -912,11 +912,12 @@ countamino:                             # @countamino
 	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB1_4
 # %bb.2:
+	move	$a5, $zero
 	move	$a2, $a0
-	move	$a0, $zero
 	b	.LBB1_7
 .LBB1_3:
-	move	$a0, $zero
+	move	$a5, $zero
+	addi.w	$a0, $a5, 0
 	ret
 .LBB1_4:                                # %vector.ph
 	bstrpick.d	$a3, $a1, 31, 0
@@ -954,23 +955,22 @@ countamino:                             # @countamino
 	bnez	$a5, .LBB1_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	beq	$a4, $a3, .LBB1_8
 	.p2align	4, , 16
 .LBB1_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a3, $a2, 0
+	ld.bu	$a0, $a2, 0
 	addi.w	$a1, $a1, -1
 	addi.d	$a2, $a2, 1
-	addi.d	$a3, $a3, -45
-	sltu	$a3, $zero, $a3
-	add.w	$a0, $a0, $a3
+	addi.d	$a0, $a0, -45
+	sltu	$a0, $zero, $a0
+	add.d	$a5, $a5, $a0
 	bnez	$a1, .LBB1_7
 .LBB1_8:                                # %._crit_edge
+	addi.w	$a0, $a5, 0
 	ret
 .Lfunc_end1:
 	.size	countamino, .Lfunc_end1-countamino

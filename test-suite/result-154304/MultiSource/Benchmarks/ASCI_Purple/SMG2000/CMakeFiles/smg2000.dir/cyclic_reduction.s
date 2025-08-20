@@ -2200,8 +2200,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	bnez	$a4, .LBB3_30
 # %bb.31:                               # %middle.block
 	vadd.w	$vr0, $vr4, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	beq	$a2, $a3, .LBB3_34
 .LBB3_32:                               # %scalar.ph.preheader

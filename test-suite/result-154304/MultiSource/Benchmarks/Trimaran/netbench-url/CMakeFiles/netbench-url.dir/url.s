@@ -53,8 +53,7 @@ internet_checksum:                      # @internet_checksum
 	bnez	$a3, .LBB0_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr3, $vr2
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a5, $a4, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader40

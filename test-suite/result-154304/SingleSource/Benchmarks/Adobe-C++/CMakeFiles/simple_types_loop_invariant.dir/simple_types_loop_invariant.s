@@ -2401,15 +2401,11 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB6_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB6_4 Depth=1
@@ -2437,13 +2433,10 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB6_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB6_17
 .LBB6_15:                               # %vec.epilog.scalar.ph.preheader
@@ -2692,15 +2685,11 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB7_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB7_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB7_4 Depth=1
@@ -2727,13 +2716,10 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB7_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB7_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB7_17
 .LBB7_15:                               # %vec.epilog.scalar.ph.preheader
@@ -2930,7 +2916,7 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	andi	$a0, $s0, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr5, $s3, 0
 	vinsgr2vr.b	$vr5, $s3, 1
 	vinsgr2vr.b	$vr5, $s3, 2
@@ -2941,10 +2927,10 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr5, $s3, 7
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s7
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -2999,15 +2985,11 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB8_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB8_4 Depth=1
@@ -3035,15 +3017,12 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB8_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s0, .LBB8_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s0, .LBB8_17
 .LBB8_15:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB8_4 Depth=1
 	add.d	$a2, $s1, $a3
@@ -3060,7 +3039,7 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a3, .LBB8_16
 .LBB8_17:                               # %._crit_edge.us
                                         #   in Loop: Header=BB8_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s3, $a2
@@ -3301,15 +3280,11 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB9_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB9_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB9_4 Depth=1
@@ -3337,13 +3312,10 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB9_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB9_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB9_17
 .LBB9_15:                               # %vec.epilog.scalar.ph.preheader
@@ -3540,7 +3512,7 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	andi	$a0, $s0, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr5, $s3, 0
 	vinsgr2vr.b	$vr5, $s3, 1
 	vinsgr2vr.b	$vr5, $s3, 2
@@ -3551,10 +3523,10 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr5, $s3, 7
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s7
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -3609,15 +3581,11 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB10_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB10_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB10_4 Depth=1
@@ -3645,15 +3613,12 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB10_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB10_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s0, .LBB10_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s0, .LBB10_17
 .LBB10_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB10_4 Depth=1
 	add.d	$a2, $s1, $a3
@@ -3670,7 +3635,7 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a3, .LBB10_16
 .LBB10_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB10_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	sub.d	$a2, $a2, $s3
@@ -3911,15 +3876,11 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB11_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB11_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB11_4 Depth=1
@@ -3946,13 +3907,10 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB11_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB11_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB11_17
 .LBB11_15:                              # %vec.epilog.scalar.ph.preheader
@@ -4219,15 +4177,11 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB12_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s0, .LBB12_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB12_4 Depth=1
@@ -4254,13 +4208,10 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB12_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB12_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB12_17
 .LBB12_15:                              # %vec.epilog.scalar.ph.preheader
@@ -4528,15 +4479,11 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB13_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s0, .LBB13_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB13_4 Depth=1
@@ -4564,13 +4511,10 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB13_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB13_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB13_17
 .LBB13_15:                              # %vec.epilog.scalar.ph.preheader
@@ -4837,15 +4781,11 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB14_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB14_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB14_4 Depth=1
@@ -4877,13 +4817,10 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB14_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB14_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB14_17
 .LBB14_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5025,19 +4962,19 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -256
+	.cfi_def_cfa_offset 256
+	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5049,7 +4986,7 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s0, $a5
 	move	$s1, $a4
 	move	$s2, $a3
@@ -5058,14 +4995,15 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$s5, $a0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	pcalau12i	$fp, %pc_hi20(iterations)
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	pcalau12i	$a1, %pc_hi20(iterations)
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	ld.w	$a1, $a1, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB15_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB15_19
@@ -5078,16 +5016,15 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	vreplgr2vr.h	$vr8, $s1
 	vreplgr2vr.h	$vr9, $s0
 	andi	$a0, $s4, 24
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s4, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a2, $s5, 16
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $a0
+	slli.d	$s7, $a0, 3
+	addi.d	$a0, $s5, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	sub.d	$a0, $zero, $s7
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
@@ -5125,7 +5062,7 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	.p2align	4, , 16
 .LBB15_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB15_4 Depth=1
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s6
 	vld	$vr1, $sp, 128                  # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -5173,27 +5110,23 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB15_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s6, $s4, .LBB15_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB15_4 Depth=1
 	move	$a3, $s6
 	move	$a2, $s6
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB15_15
 .LBB15_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB15_4 Depth=1
 	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
 	vinsgr2vr.b	$vr0, $a0, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
 	add.d	$a2, $s5, $a2
 	.p2align	4, , 16
@@ -5216,16 +5149,12 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB15_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB15_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	move	$a3, $a2
-	beq	$a2, $s4, .LBB15_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s4, .LBB15_17
 .LBB15_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB15_4 Depth=1
 	add.d	$a2, $s5, $a3
@@ -5248,7 +5177,7 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a3, .LBB15_16
 .LBB15_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB15_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	div.d	$a2, $a2, $s3
@@ -5263,7 +5192,7 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $a0, 255
 	beq	$a0, $a2, .LBB15_3
 # %bb.18:                               #   in Loop: Header=BB15_4 Depth=1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
@@ -5273,20 +5202,21 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	vld	$vr8, $sp, 80                   # 16-byte Folded Reload
 	vld	$vr7, $sp, 96                   # 16-byte Folded Reload
 	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB15_3
 .LBB15_19:                              # %.preheader.preheader
-	pcalau12i	$s5, %pc_hi20(init_value)
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
-	move	$s6, $zero
+	pcalau12i	$fp, %pc_hi20(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
+	move	$s5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.179)
 	b	.LBB15_21
 	.p2align	4, , 16
 .LBB15_20:                              # %_Z26check_shifted_variable_sumIa31custom_divide_multiple_variableIaEEvT_S2_S2_S2_S2_.exit
                                         #   in Loop: Header=BB15_21 Depth=1
-	addi.w	$s6, $s6, 1
-	bge	$s6, $a1, .LBB15_23
+	addi.w	$s5, $s5, 1
+	bge	$s5, $a1, .LBB15_23
 .LBB15_21:                              # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ftintrz.l.d	$fa1, $fa0
@@ -5301,18 +5231,19 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $a0, 3
 	beqz	$a0, .LBB15_20
 # %bb.22:                               #   in Loop: Header=BB15_21 Depth=1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB15_20
 .LBB15_23:                              # %._crit_edge22
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -5321,7 +5252,7 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
 	beqz	$a2, .LBB15_25
 # %bb.24:                               # %._crit_edge22
 	ld.w	$a0, $s3, %pc_lo12(current_test)
@@ -5339,7 +5270,7 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB15_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI15_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI15_0)
 	sub.d	$a1, $s0, $fp
@@ -5352,18 +5283,18 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 256
 	ret
 .LBB15_28:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -5514,15 +5445,11 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB16_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB16_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB16_4 Depth=1
@@ -5550,13 +5477,10 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB16_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB16_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB16_17
 .LBB16_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5837,15 +5761,11 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB17_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s7, $s1, .LBB17_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB17_4 Depth=1
@@ -5874,13 +5794,10 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB17_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB17_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s1, .LBB17_17
 .LBB17_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6077,7 +5994,7 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s5, $a0, 3
 	vinsgr2vr.b	$vr5, $s0, 0
 	vinsgr2vr.b	$vr5, $s0, 1
 	vinsgr2vr.b	$vr5, $s0, 2
@@ -6088,10 +6005,10 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	vinsgr2vr.b	$vr5, $s0, 7
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -6146,15 +6063,11 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB18_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB18_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB18_4 Depth=1
@@ -6182,15 +6095,12 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB18_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB18_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB18_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB18_17
 .LBB18_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB18_4 Depth=1
 	add.d	$a2, $s2, $a3
@@ -6207,7 +6117,7 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB18_16
 .LBB18_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB18_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	and	$a2, $s0, $a2
@@ -6464,15 +6374,11 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB19_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB19_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB19_4 Depth=1
@@ -6500,13 +6406,10 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB19_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB19_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB19_17
 .LBB19_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6767,15 +6670,11 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB20_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB20_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB20_4 Depth=1
@@ -6803,13 +6702,10 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	bnez	$a0, .LBB20_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB20_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB20_17
 .LBB20_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7085,15 +6981,11 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB21_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB21_4 Depth=1
@@ -7121,13 +7013,10 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB21_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB21_17
 .LBB21_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7388,15 +7277,11 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB22_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB22_4 Depth=1
@@ -7424,13 +7309,10 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB22_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB22_17
 .LBB22_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7706,15 +7588,11 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB23_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB23_4 Depth=1
@@ -7742,13 +7620,10 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB23_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB23_17
 .LBB23_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8009,15 +7884,11 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB24_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB24_4 Depth=1
@@ -8045,13 +7916,10 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB24_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB24_17
 .LBB24_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8300,15 +8168,11 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB25_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB25_4 Depth=1
@@ -8335,13 +8199,10 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB25_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB25_17
 .LBB25_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8538,7 +8399,7 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	andi	$a0, $s0, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr5, $s3, 0
 	vinsgr2vr.b	$vr5, $s3, 1
 	vinsgr2vr.b	$vr5, $s3, 2
@@ -8549,10 +8410,10 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr5, $s3, 7
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s7
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -8607,15 +8468,11 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB26_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB26_4 Depth=1
@@ -8643,15 +8500,12 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB26_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s0, .LBB26_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s0, .LBB26_17
 .LBB26_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB26_4 Depth=1
 	add.d	$a2, $s1, $a3
@@ -8668,7 +8522,7 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a3, .LBB26_16
 .LBB26_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB26_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s3, $a2
@@ -8909,15 +8763,11 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB27_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB27_4 Depth=1
@@ -8945,13 +8795,10 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB27_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB27_17
 .LBB27_15:                              # %vec.epilog.scalar.ph.preheader
@@ -9148,7 +8995,7 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	andi	$a0, $s0, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr5, $s3, 0
 	vinsgr2vr.b	$vr5, $s3, 1
 	vinsgr2vr.b	$vr5, $s3, 2
@@ -9159,10 +9006,10 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	vinsgr2vr.b	$vr5, $s3, 7
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s7
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -9217,15 +9064,11 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB28_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB28_4 Depth=1
@@ -9253,15 +9096,12 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB28_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s0, .LBB28_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s0, .LBB28_17
 .LBB28_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB28_4 Depth=1
 	add.d	$a2, $s1, $a3
@@ -9278,7 +9118,7 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a3, .LBB28_16
 .LBB28_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB28_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	sub.d	$a2, $a2, $s3
@@ -9519,15 +9359,11 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB29_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB29_4 Depth=1
@@ -9554,13 +9390,10 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB29_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB29_17
 .LBB29_15:                              # %vec.epilog.scalar.ph.preheader
@@ -9827,15 +9660,11 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s0, .LBB30_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB30_4 Depth=1
@@ -9862,13 +9691,10 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB30_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB30_17
 .LBB30_15:                              # %vec.epilog.scalar.ph.preheader
@@ -10136,15 +9962,11 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s0, .LBB31_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB31_4 Depth=1
@@ -10172,13 +9994,10 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB31_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB31_17
 .LBB31_15:                              # %vec.epilog.scalar.ph.preheader
@@ -10438,15 +10257,11 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB32_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB32_4 Depth=1
@@ -10521,13 +10336,10 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB32_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB32_17
 .LBB32_15:                              # %vec.epilog.scalar.ph.preheader
@@ -10670,19 +10482,19 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -304
-	.cfi_def_cfa_offset 304
-	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -320
+	.cfi_def_cfa_offset 320
+	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -10694,7 +10506,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s0, $a5
 	move	$s1, $a4
 	move	$s2, $a3
@@ -10703,14 +10515,15 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$s5, $a0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	pcalau12i	$fp, %pc_hi20(iterations)
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	pcalau12i	$a1, %pc_hi20(iterations)
+	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	ld.w	$a1, $a1, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 224                   # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB33_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB33_19
@@ -10723,9 +10536,9 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	vreplgr2vr.b	$vr6, $s1
 	vreplgr2vr.b	$vr7, $s0
 	andi	$a0, $s4, 24
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s4, 30, 3
-	slli.d	$a0, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr8, $s3, 0
 	vinsgr2vr.b	$vr8, $s3, 1
 	vinsgr2vr.b	$vr8, $s3, 2
@@ -10758,13 +10571,12 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	vinsgr2vr.b	$vr11, $s0, 5
 	vinsgr2vr.b	$vr11, $s0, 6
 	vinsgr2vr.b	$vr11, $s0, 7
-	addi.d	$a2, $s5, 16
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $a0
+	addi.d	$a0, $s5, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	sub.d	$a0, $zero, $s7
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$t4, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
@@ -10806,7 +10618,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	.p2align	4, , 16
 .LBB33_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB33_4 Depth=1
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s6
 	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -10832,27 +10644,23 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s6, $s4, .LBB33_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB33_4 Depth=1
 	move	$a3, $s6
 	move	$a2, $s6
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a4, .LBB33_15
 .LBB33_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB33_4 Depth=1
 	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
 	vinsgr2vr.b	$vr0, $a0, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
 	add.d	$a2, $s5, $a2
 	.p2align	4, , 16
@@ -10987,16 +10795,12 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB33_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	move	$a3, $a2
-	beq	$a2, $s4, .LBB33_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s4, .LBB33_17
 .LBB33_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB33_4 Depth=1
 	add.d	$a2, $s5, $a3
@@ -11016,7 +10820,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a3, .LBB33_16
 .LBB33_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB33_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	div.du	$a2, $a2, $s3
@@ -11028,7 +10832,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $a0, 255
 	beq	$a0, $a2, .LBB33_3
 # %bb.18:                               #   in Loop: Header=BB33_4 Depth=1
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
@@ -11042,20 +10846,21 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
 	vld	$vr5, $sp, 160                  # 16-byte Folded Reload
 	vld	$vr4, $sp, 176                  # 16-byte Folded Reload
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB33_3
 .LBB33_19:                              # %.preheader.preheader
-	pcalau12i	$s5, %pc_hi20(init_value)
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
-	move	$s6, $zero
+	pcalau12i	$fp, %pc_hi20(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
+	move	$s5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.179)
 	b	.LBB33_21
 	.p2align	4, , 16
 .LBB33_20:                              # %_Z26check_shifted_variable_sumIh31custom_divide_multiple_variableIhEEvT_S2_S2_S2_S2_.exit
                                         #   in Loop: Header=BB33_21 Depth=1
-	addi.w	$s6, $s6, 1
-	bge	$s6, $a1, .LBB33_23
+	addi.w	$s5, $s5, 1
+	bge	$s5, $a1, .LBB33_23
 .LBB33_21:                              # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ftintrz.l.d	$fa1, $fa0
@@ -11067,18 +10872,19 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $a0, 3
 	beqz	$a0, .LBB33_20
 # %bb.22:                               #   in Loop: Header=BB33_21 Depth=1
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB33_20
 .LBB33_23:                              # %._crit_edge22
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(results)
 	ld.d	$a2, $s2, %pc_lo12(results)
@@ -11087,7 +10893,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
 	beqz	$a2, .LBB33_25
 # %bb.24:                               # %._crit_edge22
 	ld.w	$a0, $s3, %pc_lo12(current_test)
@@ -11105,7 +10911,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB33_27:                              # %_Z13record_resultdPKc.exit
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI33_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI33_0)
 	sub.d	$a1, $s0, $fp
@@ -11118,18 +10924,18 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 304
+	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 320
 	ret
 .LBB33_28:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -11209,7 +11015,7 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	andi	$a0, $s0, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr5, $s3, 0
 	vinsgr2vr.b	$vr5, $s3, 1
 	vinsgr2vr.b	$vr5, $s3, 2
@@ -11220,10 +11026,10 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	vinsgr2vr.b	$vr5, $s3, 7
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s7
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -11278,15 +11084,11 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB34_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB34_4 Depth=1
@@ -11314,15 +11116,12 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB34_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s0, .LBB34_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s0, .LBB34_17
 .LBB34_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB34_4 Depth=1
 	add.d	$a2, $s1, $a3
@@ -11339,7 +11138,7 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a3, .LBB34_16
 .LBB34_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB34_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s3, $a2
@@ -11517,7 +11316,7 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	andi	$a0, $s0, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s7, $a0, 3
 	vinsgr2vr.b	$vr5, $s3, 0
 	vinsgr2vr.b	$vr5, $s3, 1
 	vinsgr2vr.b	$vr5, $s3, 2
@@ -11528,10 +11327,10 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	vinsgr2vr.b	$vr5, $s3, 7
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s7
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -11586,15 +11385,11 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB35_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB35_4 Depth=1
@@ -11622,15 +11417,12 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB35_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s0, .LBB35_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s7
+	beq	$s7, $s0, .LBB35_17
 .LBB35_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB35_4 Depth=1
 	add.d	$a2, $s1, $a3
@@ -11647,7 +11439,7 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a3, .LBB35_16
 .LBB35_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB35_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s3, $a2
@@ -11819,7 +11611,7 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 24
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 3
-	slli.d	$fp, $a0, 3
+	slli.d	$s5, $a0, 3
 	vinsgr2vr.b	$vr5, $s0, 0
 	vinsgr2vr.b	$vr5, $s0, 1
 	vinsgr2vr.b	$vr5, $s0, 2
@@ -11830,10 +11622,10 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	vinsgr2vr.b	$vr5, $s0, 7
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a5, $zero, 7
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -11888,15 +11680,11 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB36_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB36_4 Depth=1
@@ -11924,15 +11712,12 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB36_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB36_17
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB36_17
 .LBB36_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB36_4 Depth=1
 	add.d	$a2, $s2, $a3
@@ -11949,7 +11734,7 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB36_16
 .LBB36_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB36_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	and	$a2, $s0, $a2
@@ -12206,15 +11991,11 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB37_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB37_4 Depth=1
@@ -12242,13 +12023,10 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB37_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB37_17
 .LBB37_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12509,15 +12287,11 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB38_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB38_4 Depth=1
@@ -12545,13 +12319,10 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	bnez	$a0, .LBB38_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB38_17
 .LBB38_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12827,15 +12598,11 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB39_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB39_4 Depth=1
@@ -12863,13 +12630,10 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB39_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB39_17
 .LBB39_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13130,15 +12894,11 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB40_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB40_4 Depth=1
@@ -13166,13 +12926,10 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB40_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB40_17
 .LBB40_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13448,15 +13205,11 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB41_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB41_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB41_4 Depth=1
@@ -13484,13 +13237,10 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB41_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB41_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB41_17
 .LBB41_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13682,17 +13432,17 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -13750,13 +13500,10 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB42_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB42_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB42_4 Depth=1
@@ -13784,13 +13531,11 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB42_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB42_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB42_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB42_17
 .LBB42_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB42_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -13807,7 +13552,7 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB42_16
 .LBB42_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB42_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s0, $a2
@@ -14045,13 +13790,10 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB43_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB43_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB43_4 Depth=1
@@ -14078,11 +13820,9 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB43_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB43_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB43_17
 .LBB43_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14354,13 +14094,10 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB44_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB44_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB44_4 Depth=1
@@ -14388,11 +14125,9 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB44_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB44_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB44_17
 .LBB44_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14588,17 +14323,17 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -14656,13 +14391,10 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB45_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB45_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB45_4 Depth=1
@@ -14690,13 +14422,11 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB45_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB45_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB45_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB45_17
 .LBB45_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB45_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -14713,7 +14443,7 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB45_16
 .LBB45_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB45_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	sub.d	$a2, $a2, $s0
@@ -14964,13 +14694,10 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB46_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB46_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB46_4 Depth=1
@@ -14998,11 +14725,9 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB46_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB46_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB46_17
 .LBB46_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15265,13 +14990,10 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB47_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB47_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB47_4 Depth=1
@@ -15298,11 +15020,9 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB47_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB47_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB47_17
 .LBB47_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15567,13 +15287,10 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB48_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s0, .LBB48_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB48_4 Depth=1
@@ -15600,11 +15317,9 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB48_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB48_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB48_17
 .LBB48_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15868,13 +15583,10 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB49_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s3, $s0, .LBB49_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB49_4 Depth=1
@@ -15902,11 +15614,9 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB49_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB49_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB49_17
 .LBB49_15:                              # %vec.epilog.scalar.ph.preheader
@@ -16185,13 +15895,10 @@ _Z14test_variable1Is22custom_divide_variableIsEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB50_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB50_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB50_4 Depth=1
@@ -16223,11 +15930,9 @@ _Z14test_variable1Is22custom_divide_variableIsEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB50_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB50_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB50_17
 .LBB50_15:                              # %vec.epilog.scalar.ph.preheader
@@ -16525,13 +16230,10 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB51_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s6, $s4, .LBB51_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB51_4 Depth=1
@@ -16566,11 +16268,9 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB51_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB51_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	move	$a3, $a2
 	beq	$a2, $s4, .LBB51_17
@@ -16857,13 +16557,10 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB52_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB52_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB52_4 Depth=1
@@ -16891,11 +16588,9 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB52_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB52_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB52_17
 .LBB52_15:                              # %vec.epilog.scalar.ph.preheader
@@ -17165,13 +16860,10 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB53_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB53_4 Depth=1
@@ -17199,11 +16891,9 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB53_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB53_17
 .LBB53_15:                              # %vec.epilog.scalar.ph.preheader
@@ -17399,17 +17089,17 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -17467,13 +17157,10 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB54_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB54_4 Depth=1
@@ -17501,13 +17188,11 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB54_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB54_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB54_17
 .LBB54_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB54_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -17524,7 +17209,7 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB54_16
 .LBB54_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB54_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	and	$a2, $s0, $a2
@@ -17784,13 +17469,10 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB55_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB55_4 Depth=1
@@ -17818,11 +17500,9 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB55_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB55_17
 .LBB55_15:                              # %vec.epilog.scalar.ph.preheader
@@ -18022,17 +17702,17 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -18090,13 +17770,10 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB56_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB56_4 Depth=1
@@ -18124,13 +17801,11 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	bnez	$a0, .LBB56_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB56_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB56_17
 .LBB56_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB56_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -18147,7 +17822,7 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	bnez	$a3, .LBB56_16
 .LBB56_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB56_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	or	$a2, $s0, $a2
@@ -18407,13 +18082,10 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB57_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB57_4 Depth=1
@@ -18441,11 +18113,9 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB57_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB57_17
 .LBB57_15:                              # %vec.epilog.scalar.ph.preheader
@@ -18645,17 +18315,17 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -18713,13 +18383,10 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB58_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB58_4 Depth=1
@@ -18747,13 +18414,11 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB58_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB58_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB58_17
 .LBB58_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB58_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -18770,7 +18435,7 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB58_16
 .LBB58_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB58_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	xor	$a2, $s0, $a2
@@ -19030,13 +18695,10 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB59_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB59_4 Depth=1
@@ -19064,11 +18726,9 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB59_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB59_17
 .LBB59_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19268,17 +18928,17 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -19336,13 +18996,10 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB60_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB60_4 Depth=1
@@ -19370,13 +19027,11 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB60_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB60_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB60_17
 .LBB60_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB60_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -19393,7 +19048,7 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB60_16
 .LBB60_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB60_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s0, $a2
@@ -19631,13 +19286,10 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB61_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB61_4 Depth=1
@@ -19664,11 +19316,9 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB61_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB61_17
 .LBB61_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19940,13 +19590,10 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB62_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB62_4 Depth=1
@@ -19974,11 +19621,9 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB62_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB62_17
 .LBB62_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20174,17 +19819,17 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -20242,13 +19887,10 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB63_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB63_4 Depth=1
@@ -20276,13 +19918,11 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB63_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB63_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB63_17
 .LBB63_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB63_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -20299,7 +19939,7 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB63_16
 .LBB63_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB63_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	sub.d	$a2, $a2, $s0
@@ -20550,13 +20190,10 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB64_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB64_4 Depth=1
@@ -20584,11 +20221,9 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB64_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB64_17
 .LBB64_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20851,13 +20486,10 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s1, .LBB65_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB65_4 Depth=1
@@ -20884,11 +20516,9 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB65_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s1, .LBB65_17
 .LBB65_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21153,13 +20783,10 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$fp, $s0, .LBB66_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB66_4 Depth=1
@@ -21186,11 +20813,9 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB66_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB66_17
 .LBB66_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21454,13 +21079,10 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s3, $s0, .LBB67_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB67_4 Depth=1
@@ -21488,11 +21110,9 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB67_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB67_17
 .LBB67_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21760,13 +21380,10 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB68_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB68_4 Depth=1
@@ -21817,11 +21434,9 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB68_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB68_17
 .LBB68_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22118,13 +21733,10 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s6, $s4, .LBB69_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB69_4 Depth=1
@@ -22211,11 +21823,9 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB69_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	move	$a3, $a2
 	beq	$a2, $s4, .LBB69_17
@@ -22506,13 +22116,10 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB70_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB70_4 Depth=1
@@ -22540,11 +22147,9 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB70_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB70_17
 .LBB70_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22814,13 +22419,10 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s5, $s0, .LBB71_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB71_4 Depth=1
@@ -22848,11 +22450,9 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB71_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB71_17
 .LBB71_15:                              # %vec.epilog.scalar.ph.preheader
@@ -23048,17 +22648,17 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -23116,13 +22716,10 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB72_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB72_4 Depth=1
@@ -23150,13 +22747,11 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB72_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB72_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB72_17
 .LBB72_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB72_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -23173,7 +22768,7 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB72_16
 .LBB72_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB72_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	and	$a2, $s0, $a2
@@ -23433,13 +23028,10 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB73_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB73_4 Depth=1
@@ -23467,11 +23059,9 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB73_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB73_17
 .LBB73_15:                              # %vec.epilog.scalar.ph.preheader
@@ -23671,17 +23261,17 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -23739,13 +23329,10 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB74_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB74_4 Depth=1
@@ -23773,13 +23360,11 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	bnez	$a0, .LBB74_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB74_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB74_17
 .LBB74_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB74_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -23796,7 +23381,7 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	bnez	$a3, .LBB74_16
 .LBB74_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB74_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	or	$a2, $s0, $a2
@@ -24056,13 +23641,10 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB75_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB75_4 Depth=1
@@ -24090,11 +23672,9 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB75_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB75_17
 .LBB75_15:                              # %vec.epilog.scalar.ph.preheader
@@ -24294,17 +23874,17 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	andi	$a0, $s1, 12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s1, 30, 2
-	slli.d	$fp, $a0, 2
+	slli.d	$s5, $a0, 2
 	vinsgr2vr.h	$vr5, $s0, 0
 	vinsgr2vr.h	$vr5, $s0, 1
 	vinsgr2vr.h	$vr5, $s0, 2
 	vinsgr2vr.h	$vr5, $s0, 3
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $fp
+	sub.d	$a0, $zero, $s5
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a5, $zero, 3
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
@@ -24362,13 +23942,10 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB76_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s8, $s1, .LBB76_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB76_4 Depth=1
@@ -24396,13 +23973,11 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB76_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB76_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	move	$a3, $fp
-	beq	$fp, $s1, .LBB76_17
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	move	$a3, $s5
+	beq	$s5, $s1, .LBB76_17
 .LBB76_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB76_4 Depth=1
 	alsl.d	$a2, $a3, $s2, 1
@@ -24419,7 +23994,7 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB76_16
 .LBB76_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB76_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	xor	$a2, $s0, $a2
@@ -24679,13 +24254,10 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB77_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	beq	$s2, $s0, .LBB77_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB77_4 Depth=1
@@ -24713,11 +24285,9 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB77_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB77_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	move	$a3, $s3
 	beq	$s3, $s0, .LBB77_17
 .LBB77_15:                              # %vec.epilog.scalar.ph.preheader
@@ -24963,11 +24533,9 @@ _Z14test_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB78_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB78_11
 .LBB78_9:                               # %scalar.ph.preheader
@@ -24980,7 +24548,7 @@ _Z14test_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $s0
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB78_10
@@ -24991,6 +24559,7 @@ _Z14test_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.s	$a2, $fa0
 	add.d	$a2, $s0, $a2
 	mul.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB78_3
 # %bb.12:                               #   in Loop: Header=BB78_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -25198,11 +24767,9 @@ _Z22test_hoisted_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB79_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB79_11
 .LBB79_9:                               # %scalar.ph.preheader
@@ -25446,11 +25013,9 @@ _Z14test_variable4Ii28custom_add_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB80_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB80_11
 .LBB80_9:                               # %scalar.ph.preheader
@@ -25463,7 +25028,7 @@ _Z14test_variable4Ii28custom_add_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $s3, $a0
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB80_10
@@ -25474,6 +25039,7 @@ _Z14test_variable4Ii28custom_add_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.s	$a2, $fa0
 	add.d	$a2, $s3, $a2
 	mul.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB80_3
 # %bb.12:                               #   in Loop: Header=BB80_4 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
@@ -25683,11 +25249,9 @@ _Z14test_variable1Ii19custom_sub_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB81_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB81_11
 .LBB81_9:                               # %scalar.ph.preheader
@@ -25700,7 +25264,7 @@ _Z14test_variable1Ii19custom_sub_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	sub.d	$a0, $a0, $s0
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB81_10
@@ -25711,6 +25275,7 @@ _Z14test_variable1Ii19custom_sub_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.s	$a2, $fa0
 	sub.d	$a2, $a2, $s0
 	mul.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB81_3
 # %bb.12:                               #   in Loop: Header=BB81_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -25879,9 +25444,9 @@ _Z14test_variable4Ii28custom_sub_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	addi.d	$a0, $s1, 16
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$s6, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
-	ori	$s6, $a0, 3904
+	ori	$s7, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -25925,11 +25490,9 @@ _Z14test_variable4Ii28custom_sub_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB82_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB82_11
 .LBB82_9:                               # %scalar.ph.preheader
@@ -25942,17 +25505,18 @@ _Z14test_variable4Ii28custom_sub_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	sub.d	$a0, $a0, $s3
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB82_10
 .LBB82_11:                              # %._crit_edge.us
                                         #   in Loop: Header=BB82_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $s6, %pc_lo12(init_value)
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	sub.d	$a2, $a2, $s3
-	mul.w	$a2, $a2, $s6
+	mul.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB82_3
 # %bb.12:                               #   in Loop: Header=BB82_4 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
@@ -26160,11 +25724,9 @@ _Z14test_variable1Ii24custom_multiply_variableIiEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB83_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB83_11
 .LBB83_9:                               # %scalar.ph.preheader
@@ -26177,7 +25739,7 @@ _Z14test_variable1Ii24custom_multiply_variableIiEEvPT_iS2_PKc: # @_Z14test_varia
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB83_10
@@ -26187,6 +25749,7 @@ _Z14test_variable1Ii24custom_multiply_variableIiEEvPT_iS2_PKc: # @_Z14test_varia
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $s7, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB83_3
 # %bb.12:                               #   in Loop: Header=BB83_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -26403,11 +25966,9 @@ _Z14test_variable4Ii33custom_multiply_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB84_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB84_11
 .LBB84_9:                               # %scalar.ph.preheader
@@ -26420,7 +25981,7 @@ _Z14test_variable4Ii33custom_multiply_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc:
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $s3, $a4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB84_10
@@ -26430,6 +25991,7 @@ _Z14test_variable4Ii33custom_multiply_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc:
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $s4, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB84_3
 # %bb.12:                               #   in Loop: Header=BB84_4 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -26571,7 +26133,7 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_offset 31, -88
 	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
 	move	$s4, $a5
-	move	$fp, $a4
+	move	$s2, $a4
 	move	$s5, $a3
 	move	$s3, $a2
 	move	$s0, $a1
@@ -26584,17 +26146,18 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
-	pcalau12i	$s2, %pc_hi20(current_test)
+	pcalau12i	$a2, %pc_hi20(current_test)
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB85_17
 # %bb.1:                                # %.preheader.lr.ph
 	mul.d	$a0, $s5, $s4
-	mul.d	$a2, $a0, $fp
+	mul.d	$a2, $a0, $s2
 	mul.w	$s4, $a2, $s3
 	blez	$s0, .LBB85_13
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s5, $zero
 	mul.d	$a0, $a0, $s3
-	mul.d	$s3, $a0, $fp
+	mul.d	$s3, $a0, $s2
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$fp, $a0, 3
 	vreplgr2vr.w	$vr4, $s3
@@ -26605,8 +26168,7 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	lu12i.w	$a0, 1
 	ori	$s7, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
@@ -26648,11 +26210,9 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB85_11
 .LBB85_9:                               # %scalar.ph.preheader
@@ -26665,7 +26225,7 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $s3
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB85_10
@@ -26676,10 +26236,12 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	movfr2gr.s	$a2, $fa0
 	add.d	$a2, $s4, $a2
 	mul.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB85_3
 # %bb.12:                               #   in Loop: Header=BB85_4 Depth=1
-	ld.w	$a1, $s2, %pc_lo12(current_test)
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 8
@@ -26705,7 +26267,8 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	sub.w	$a0, $zero, $a0
 	beq	$s4, $a0, .LBB85_14
 # %bb.16:                               #   in Loop: Header=BB85_15 Depth=1
-	ld.w	$a1, $s2, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -26717,16 +26280,17 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
-	pcalau12i	$s3, %pc_hi20(results)
-	ld.d	$a2, $s3, %pc_lo12(results)
+	pcalau12i	$s2, %pc_hi20(results)
+	ld.d	$a2, $s2, %pc_lo12(results)
 	pcalau12i	$s1, %pc_hi20(allocated_results)
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a2, .LBB85_19
 # %bb.18:                               # %._crit_edge26
-	ld.w	$a0, $s2, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB85_21
 .LBB85_19:
 	addi.w	$a0, $a1, 10
@@ -26735,11 +26299,11 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, %pc_lo12(results)
+	st.d	$a0, $s2, %pc_lo12(results)
 	beqz	$a0, .LBB85_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s2, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB85_21:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI85_0)
@@ -26753,7 +26317,7 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s2, %pc_lo12(current_test)
+	st.w	$a0, $s3, %pc_lo12(current_test)
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
@@ -26885,11 +26449,9 @@ _Z14test_variable1Ii22custom_divide_variableIiEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB86_11
 .LBB86_9:                               # %scalar.ph.preheader
@@ -26902,7 +26464,7 @@ _Z14test_variable1Ii22custom_divide_variableIiEEvPT_iS2_PKc: # @_Z14test_variabl
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	div.w	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB86_10
@@ -26913,6 +26475,7 @@ _Z14test_variable1Ii22custom_divide_variableIiEEvPT_iS2_PKc: # @_Z14test_variabl
 	movfr2gr.s	$a2, $fa0
 	div.w	$a2, $a2, $s0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB86_3
 # %bb.12:                               #   in Loop: Header=BB86_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -27140,11 +26703,9 @@ _Z14test_variable4Ii31custom_divide_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s6
 	beq	$s6, $s4, .LBB87_11
 .LBB87_9:                               # %scalar.ph.preheader
@@ -27160,7 +26721,7 @@ _Z14test_variable4Ii31custom_divide_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: #
 	div.w	$a4, $a4, $s2
 	div.w	$a4, $a4, $s1
 	div.w	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB87_10
@@ -27174,6 +26735,7 @@ _Z14test_variable4Ii31custom_divide_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: #
 	div.w	$a2, $a2, $s1
 	div.w	$a2, $a2, $s0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB87_3
 # %bb.12:                               #   in Loop: Header=BB87_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
@@ -27400,11 +26962,9 @@ _Z14test_variable4Ii32custom_divide_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB88_11
 .LBB88_9:                               # %scalar.ph.preheader
@@ -27417,7 +26977,7 @@ _Z14test_variable4Ii32custom_divide_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc: 
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a4, $a0
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB88_10
@@ -27428,6 +26988,7 @@ _Z14test_variable4Ii32custom_divide_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc: 
 	movfr2gr.s	$a2, $fa0
 	add.d	$a2, $s3, $a2
 	mul.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB88_3
 # %bb.12:                               #   in Loop: Header=BB88_4 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
@@ -27649,11 +27210,9 @@ _Z14test_variable4Ii30custom_mixed_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s1, .LBB89_11
 .LBB89_9:                               # %scalar.ph.preheader
@@ -27667,7 +27226,7 @@ _Z14test_variable4Ii30custom_mixed_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $s0
 	add.d	$a0, $a0, $a4
-	sub.w	$a0, $a0, $s5
+	sub.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB89_10
@@ -27678,6 +27237,7 @@ _Z14test_variable4Ii30custom_mixed_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # 
 	movfr2gr.s	$a2, $fa0
 	add.d	$a2, $s4, $a2
 	mul.w	$a2, $a2, $s3
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB89_3
 # %bb.12:                               #   in Loop: Header=BB89_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -27891,11 +27451,9 @@ _Z14test_variable1Ii19custom_variable_andIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB90_11
 .LBB90_9:                               # %scalar.ph.preheader
@@ -27908,7 +27466,7 @@ _Z14test_variable1Ii19custom_variable_andIiEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	and	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB90_10
@@ -27919,6 +27477,7 @@ _Z14test_variable1Ii19custom_variable_andIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.s	$a2, $fa0
 	and	$a2, $s0, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB90_3
 # %bb.12:                               #   in Loop: Header=BB90_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -28144,11 +27703,9 @@ _Z14test_variable4Ii28custom_multiple_variable_andIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB91_11
 .LBB91_9:                               # %scalar.ph.preheader
@@ -28161,7 +27718,7 @@ _Z14test_variable4Ii28custom_multiple_variable_andIiEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	and	$a4, $a4, $s3
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB91_10
@@ -28172,6 +27729,7 @@ _Z14test_variable4Ii28custom_multiple_variable_andIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.s	$a2, $fa0
 	and	$a2, $fp, $a2
 	mul.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB91_3
 # %bb.12:                               #   in Loop: Header=BB91_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -28384,11 +27942,9 @@ _Z14test_variable1Ii18custom_variable_orIiEEvPT_iS2_PKc: # @_Z14test_variable1Ii
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB92_11
 .LBB92_9:                               # %scalar.ph.preheader
@@ -28401,7 +27957,7 @@ _Z14test_variable1Ii18custom_variable_orIiEEvPT_iS2_PKc: # @_Z14test_variable1Ii
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	or	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB92_10
@@ -28412,6 +27968,7 @@ _Z14test_variable1Ii18custom_variable_orIiEEvPT_iS2_PKc: # @_Z14test_variable1Ii
 	movfr2gr.s	$a2, $fa0
 	or	$a2, $s0, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB92_3
 # %bb.12:                               #   in Loop: Header=BB92_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -28637,11 +28194,9 @@ _Z14test_variable4Ii27custom_multiple_variable_orIiEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB93_11
 .LBB93_9:                               # %scalar.ph.preheader
@@ -28654,7 +28209,7 @@ _Z14test_variable4Ii27custom_multiple_variable_orIiEEvPT_iS2_S2_S2_S2_PKc: # @_Z
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	or	$a4, $a4, $s3
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB93_10
@@ -28665,6 +28220,7 @@ _Z14test_variable4Ii27custom_multiple_variable_orIiEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	movfr2gr.s	$a2, $fa0
 	or	$a2, $fp, $a2
 	mul.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB93_3
 # %bb.12:                               #   in Loop: Header=BB93_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -28877,11 +28433,9 @@ _Z14test_variable1Ii19custom_variable_xorIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB94_11
 .LBB94_9:                               # %scalar.ph.preheader
@@ -28894,7 +28448,7 @@ _Z14test_variable1Ii19custom_variable_xorIiEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xor	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB94_10
@@ -28905,6 +28459,7 @@ _Z14test_variable1Ii19custom_variable_xorIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.s	$a2, $fa0
 	xor	$a2, $s0, $a2
 	mul.w	$a2, $a2, $s4
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB94_3
 # %bb.12:                               #   in Loop: Header=BB94_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -29129,11 +28684,9 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB95_11
 .LBB95_9:                               # %scalar.ph.preheader
@@ -29146,7 +28699,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xor	$a4, $a4, $s3
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB95_10
@@ -29157,6 +28710,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.s	$a2, $fa0
 	xor	$a2, $fp, $a2
 	mul.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB95_3
 # %bb.12:                               #   in Loop: Header=BB95_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -29368,11 +28922,9 @@ _Z14test_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB96_11
 .LBB96_9:                               # %scalar.ph.preheader
@@ -29385,7 +28937,7 @@ _Z14test_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $s0
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB96_10
@@ -29396,6 +28948,7 @@ _Z14test_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s0, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB96_3
 # %bb.12:                               #   in Loop: Header=BB96_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -29606,11 +29159,9 @@ _Z22test_hoisted_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB97_11
 .LBB97_9:                               # %scalar.ph.preheader
@@ -29854,11 +29405,9 @@ _Z14test_variable4Ij28custom_add_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB98_11
 .LBB98_9:                               # %scalar.ph.preheader
@@ -29871,7 +29420,7 @@ _Z14test_variable4Ij28custom_add_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $s3, $a0
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB98_10
@@ -29882,6 +29431,7 @@ _Z14test_variable4Ij28custom_add_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s3, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB98_3
 # %bb.12:                               #   in Loop: Header=BB98_4 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -30094,11 +29644,9 @@ _Z14test_variable1Ij19custom_sub_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB99_11
 .LBB99_9:                               # %scalar.ph.preheader
@@ -30111,7 +29659,7 @@ _Z14test_variable1Ij19custom_sub_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	sub.d	$a0, $a0, $s0
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB99_10
@@ -30122,6 +29670,7 @@ _Z14test_variable1Ij19custom_sub_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.d	$a2, $fa0
 	sub.d	$a2, $a2, $s0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB99_3
 # %bb.12:                               #   in Loop: Header=BB99_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -30340,11 +29889,9 @@ _Z14test_variable4Ij28custom_sub_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB100_11
 .LBB100_9:                              # %scalar.ph.preheader
@@ -30357,7 +29904,7 @@ _Z14test_variable4Ij28custom_sub_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	sub.d	$a0, $a0, $s3
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB100_10
@@ -30368,6 +29915,7 @@ _Z14test_variable4Ij28custom_sub_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.d	$a2, $fa0
 	sub.d	$a2, $a2, $s3
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB100_3
 # %bb.12:                               #   in Loop: Header=BB100_4 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -30579,11 +30127,9 @@ _Z14test_variable1Ij24custom_multiply_variableIjEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB101_11
 .LBB101_9:                              # %scalar.ph.preheader
@@ -30596,7 +30142,7 @@ _Z14test_variable1Ij24custom_multiply_variableIjEEvPT_iS2_PKc: # @_Z14test_varia
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB101_10
@@ -30606,6 +30152,7 @@ _Z14test_variable1Ij24custom_multiply_variableIjEEvPT_iS2_PKc: # @_Z14test_varia
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $s7, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB101_3
 # %bb.12:                               #   in Loop: Header=BB101_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -30822,11 +30369,9 @@ _Z14test_variable4Ij33custom_multiply_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB102_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB102_11
 .LBB102_9:                              # %scalar.ph.preheader
@@ -30839,7 +30384,7 @@ _Z14test_variable4Ij33custom_multiply_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc:
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $s3, $a4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB102_10
@@ -30849,6 +30394,7 @@ _Z14test_variable4Ij33custom_multiply_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc:
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $s4, $a2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB102_3
 # %bb.12:                               #   in Loop: Header=BB102_4 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -31067,11 +30613,9 @@ _Z14test_variable4Ij34custom_multiply_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB103_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB103_11
 .LBB103_9:                              # %scalar.ph.preheader
@@ -31084,7 +30628,7 @@ _Z14test_variable4Ij34custom_multiply_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $s3
-	add.w	$a0, $a0, $a4
+	add.d	$a0, $a0, $a4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB103_10
@@ -31095,6 +30639,7 @@ _Z14test_variable4Ij34custom_multiply_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s4, $a2
 	mul.w	$a2, $a2, $s7
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB103_3
 # %bb.12:                               #   in Loop: Header=BB103_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -31310,11 +30855,9 @@ _Z14test_variable1Ij22custom_divide_variableIjEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB104_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB104_11
 .LBB104_9:                              # %scalar.ph.preheader
@@ -31327,7 +30870,7 @@ _Z14test_variable1Ij22custom_divide_variableIjEEvPT_iS2_PKc: # @_Z14test_variabl
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	div.wu	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB104_10
@@ -31339,6 +30882,7 @@ _Z14test_variable1Ij22custom_divide_variableIjEEvPT_iS2_PKc: # @_Z14test_variabl
 	addi.w	$a2, $a2, 0
 	div.wu	$a2, $a2, $s0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB104_3
 # %bb.12:                               #   in Loop: Header=BB104_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -31570,11 +31114,9 @@ _Z14test_variable4Ij31custom_divide_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB105_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s4, .LBB105_11
 .LBB105_9:                              # %scalar.ph.preheader
@@ -31590,7 +31132,7 @@ _Z14test_variable4Ij31custom_divide_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: #
 	div.wu	$a4, $a4, $s2
 	div.wu	$a4, $a4, $s1
 	div.wu	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB105_10
@@ -31605,6 +31147,7 @@ _Z14test_variable4Ij31custom_divide_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: #
 	div.wu	$a2, $a2, $s1
 	div.wu	$a2, $a2, $s0
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB105_3
 # %bb.12:                               #   in Loop: Header=BB105_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
@@ -31835,11 +31378,9 @@ _Z14test_variable4Ij32custom_divide_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB106_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB106_11
 .LBB106_9:                              # %scalar.ph.preheader
@@ -31852,7 +31393,7 @@ _Z14test_variable4Ij32custom_divide_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc: 
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a4, $a0
-	add.w	$a0, $a0, $s3
+	add.d	$a0, $a0, $s3
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB106_10
@@ -31863,6 +31404,7 @@ _Z14test_variable4Ij32custom_divide_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc: 
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s3, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB106_3
 # %bb.12:                               #   in Loop: Header=BB106_4 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(current_test)
@@ -32087,11 +31629,9 @@ _Z14test_variable4Ij30custom_mixed_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB107_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s1, .LBB107_11
 .LBB107_9:                              # %scalar.ph.preheader
@@ -32105,7 +31645,7 @@ _Z14test_variable4Ij30custom_mixed_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $s0
 	add.d	$a0, $a0, $a4
-	sub.w	$a0, $a0, $s5
+	sub.d	$a0, $a0, $s5
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB107_10
@@ -32116,6 +31656,7 @@ _Z14test_variable4Ij30custom_mixed_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # 
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s4, $a2
 	mul.w	$a2, $a2, $s3
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB107_3
 # %bb.12:                               #   in Loop: Header=BB107_4 Depth=1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -32331,11 +31872,9 @@ _Z14test_variable1Ij19custom_variable_andIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB108_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB108_11
 .LBB108_9:                              # %scalar.ph.preheader
@@ -32348,7 +31887,7 @@ _Z14test_variable1Ij19custom_variable_andIjEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	and	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB108_10
@@ -32359,6 +31898,7 @@ _Z14test_variable1Ij19custom_variable_andIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.d	$a2, $fa0
 	and	$a2, $s0, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB108_3
 # %bb.12:                               #   in Loop: Header=BB108_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -32587,11 +32127,9 @@ _Z14test_variable4Ij28custom_multiple_variable_andIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB109_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB109_11
 .LBB109_9:                              # %scalar.ph.preheader
@@ -32604,7 +32142,7 @@ _Z14test_variable4Ij28custom_multiple_variable_andIjEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	and	$a4, $a4, $s3
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB109_10
@@ -32615,6 +32153,7 @@ _Z14test_variable4Ij28custom_multiple_variable_andIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.d	$a2, $fa0
 	and	$a2, $fp, $a2
 	mul.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB109_3
 # %bb.12:                               #   in Loop: Header=BB109_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -32830,11 +32369,9 @@ _Z14test_variable1Ij18custom_variable_orIjEEvPT_iS2_PKc: # @_Z14test_variable1Ij
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB110_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB110_11
 .LBB110_9:                              # %scalar.ph.preheader
@@ -32847,7 +32384,7 @@ _Z14test_variable1Ij18custom_variable_orIjEEvPT_iS2_PKc: # @_Z14test_variable1Ij
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	or	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB110_10
@@ -32858,6 +32395,7 @@ _Z14test_variable1Ij18custom_variable_orIjEEvPT_iS2_PKc: # @_Z14test_variable1Ij
 	movfr2gr.d	$a2, $fa0
 	or	$a2, $s0, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB110_3
 # %bb.12:                               #   in Loop: Header=BB110_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -33086,11 +32624,9 @@ _Z14test_variable4Ij27custom_multiple_variable_orIjEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB111_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB111_11
 .LBB111_9:                              # %scalar.ph.preheader
@@ -33103,7 +32639,7 @@ _Z14test_variable4Ij27custom_multiple_variable_orIjEEvPT_iS2_S2_S2_S2_PKc: # @_Z
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	or	$a4, $a4, $s3
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB111_10
@@ -33114,6 +32650,7 @@ _Z14test_variable4Ij27custom_multiple_variable_orIjEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	movfr2gr.d	$a2, $fa0
 	or	$a2, $fp, $a2
 	mul.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB111_3
 # %bb.12:                               #   in Loop: Header=BB111_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -33329,11 +32866,9 @@ _Z14test_variable1Ij19custom_variable_xorIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB112_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB112_11
 .LBB112_9:                              # %scalar.ph.preheader
@@ -33346,7 +32881,7 @@ _Z14test_variable1Ij19custom_variable_xorIjEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xor	$a4, $a4, $s0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB112_10
@@ -33357,6 +32892,7 @@ _Z14test_variable1Ij19custom_variable_xorIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 	movfr2gr.d	$a2, $fa0
 	xor	$a2, $s0, $a2
 	mul.w	$a2, $a2, $fp
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB112_3
 # %bb.12:                               #   in Loop: Header=BB112_4 Depth=1
 	ld.w	$a1, $s4, %pc_lo12(current_test)
@@ -33585,11 +33121,9 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB113_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB113_11
 .LBB113_9:                              # %scalar.ph.preheader
@@ -33602,7 +33136,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xor	$a4, $a4, $s3
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB113_10
@@ -33613,6 +33147,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 	movfr2gr.d	$a2, $fa0
 	xor	$a2, $fp, $a2
 	mul.w	$a2, $a2, $s5
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB113_3
 # %bb.12:                               #   in Loop: Header=BB113_4 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -33782,9 +33317,9 @@ _Z14test_variable1Il19custom_add_variableIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 	addi.d	$a0, $s2, 16
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ori	$a5, $zero, 4
-	pcalau12i	$s5, %pc_hi20(init_value)
+	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
-	ori	$s4, $a0, 3904
+	ori	$s5, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
@@ -33828,8 +33363,7 @@ _Z14test_variable1Il19custom_add_variableIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB114_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB114_11
@@ -33849,11 +33383,11 @@ _Z14test_variable1Il19custom_add_variableIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a3, .LBB114_10
 .LBB114_11:                             # %._crit_edge.us
                                         #   in Loop: Header=BB114_4 Depth=1
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
+	fld.d	$fa0, $s4, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	add.d	$a2, $s0, $a2
-	mul.d	$a2, $a2, $s4
+	mul.d	$a2, $a2, $s5
 	beq	$a0, $a2, .LBB114_3
 # %bb.12:                               #   in Loop: Header=BB114_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34061,8 +33595,7 @@ _Z22test_hoisted_variable1Il19custom_add_variableIlEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB115_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB115_11
@@ -34307,8 +33840,7 @@ _Z14test_variable4Il28custom_add_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB116_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB116_11
@@ -34542,8 +34074,7 @@ _Z14test_variable1Il19custom_sub_variableIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB117_11
@@ -34782,8 +34313,7 @@ _Z14test_variable4Il28custom_sub_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB118_11
@@ -35015,8 +34545,7 @@ _Z14test_variable1Il24custom_multiply_variableIlEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB119_11
@@ -35256,8 +34785,7 @@ _Z14test_variable4Il33custom_multiply_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB120_11
@@ -35499,8 +35027,7 @@ _Z14test_variable4Il34custom_multiply_multiple_variable2IlEEvPT_iS2_S2_S2_S2_PKc
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB121_11
@@ -35737,8 +35264,7 @@ _Z14test_variable1Il22custom_divide_variableIlEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB122_11
@@ -35990,8 +35516,7 @@ _Z14test_variable4Il31custom_divide_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s6
 	beq	$s6, $s4, .LBB123_11
@@ -36248,8 +35773,7 @@ _Z14test_variable4Il32custom_divide_multiple_variable2IlEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB124_11
@@ -36495,8 +36019,7 @@ _Z14test_variable4Il30custom_mixed_multiple_variableIlEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s1, .LBB125_11
@@ -36735,8 +36258,7 @@ _Z14test_variable1Il19custom_variable_andIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB126_11
@@ -36986,8 +36508,7 @@ _Z14test_variable4Il28custom_multiple_variable_andIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB127_11
@@ -37224,8 +36745,7 @@ _Z14test_variable1Il18custom_variable_orIlEEvPT_iS2_PKc: # @_Z14test_variable1Il
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB128_11
@@ -37475,8 +36995,7 @@ _Z14test_variable4Il27custom_multiple_variable_orIlEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB129_11
@@ -37713,8 +37232,7 @@ _Z14test_variable1Il19custom_variable_xorIlEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB130_11
@@ -37963,8 +37481,7 @@ _Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB131_11
@@ -38146,7 +37663,8 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(current_test)
+	pcalau12i	$a2, %pc_hi20(current_test)
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB132_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB132_13
@@ -38155,19 +37673,18 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bstrpick.d	$a0, $s1, 30, 2
 	slli.d	$s8, $a0, 2
 	vreplgr2vr.d	$vr4, $s0
-	addi.d	$a0, $s2, 16
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $s2, 16
 	ori	$a5, $zero, 4
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI132_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI132_0)
 	lu12i.w	$a0, 1
-	ori	$fp, $a0, 3904
+	ori	$s4, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB132_4
 	.p2align	4, , 16
 .LBB132_3:                              # %_Z26check_shifted_variable_sumIm19custom_add_variableImEEvT_S2_.exit.us
@@ -38186,7 +37703,7 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.p2align	4, , 16
 .LBB132_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB132_4 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $fp
 	move	$a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -38206,8 +37723,7 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB132_11
@@ -38239,15 +37755,16 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
 	add.d	$a2, $s0, $a2
-	mul.d	$a2, $a2, $fp
+	mul.d	$a2, $a2, $s4
 	beq	$a0, $a2, .LBB132_3
 # %bb.12:                               #   in Loop: Header=BB132_4 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 4
-	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s6, %pc_lo12(iterations)
 	b	.LBB132_3
 .LBB132_13:                             # %.preheader.preheader
@@ -38282,7 +37799,8 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	mul.d	$a0, $a0, $s3
 	beqz	$a0, .LBB132_14
 # %bb.16:                               #   in Loop: Header=BB132_15 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -38301,9 +37819,10 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a2, .LBB132_19
 # %bb.18:                               # %._crit_edge16
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB132_21
 .LBB132_19:
 	addi.w	$a0, $a1, 10
@@ -38316,7 +37835,7 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	beqz	$a0, .LBB132_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB132_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI132_1)
@@ -38330,7 +37849,7 @@ _Z14test_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s4, %pc_lo12(current_test)
+	st.w	$a0, $s3, %pc_lo12(current_test)
 	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
@@ -38467,8 +37986,7 @@ _Z22test_hoisted_variable1Im19custom_add_variableImEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB133_11
@@ -38738,8 +38256,7 @@ _Z14test_variable4Im28custom_add_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB134_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB134_11
@@ -38944,7 +38461,8 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(current_test)
+	pcalau12i	$a2, %pc_hi20(current_test)
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB135_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB135_13
@@ -38953,19 +38471,18 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bstrpick.d	$a0, $s1, 30, 2
 	slli.d	$s8, $a0, 2
 	vreplgr2vr.d	$vr4, $s0
-	addi.d	$a0, $s2, 16
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $s2, 16
 	ori	$a5, $zero, 4
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI135_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI135_0)
 	lu12i.w	$a0, 1
-	ori	$fp, $a0, 3904
+	ori	$s4, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB135_4
 	.p2align	4, , 16
 .LBB135_3:                              # %_Z26check_shifted_variable_sumIm19custom_sub_variableImEEvT_S2_.exit.us
@@ -38984,7 +38501,7 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.p2align	4, , 16
 .LBB135_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB135_4 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $fp
 	move	$a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -39004,8 +38521,7 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB135_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB135_11
@@ -39037,15 +38553,16 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
 	sub.d	$a2, $a2, $s0
-	mul.d	$a2, $a2, $fp
+	mul.d	$a2, $a2, $s4
 	beq	$a0, $a2, .LBB135_3
 # %bb.12:                               #   in Loop: Header=BB135_4 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 4
-	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s6, %pc_lo12(iterations)
 	b	.LBB135_3
 .LBB135_13:                             # %.preheader.preheader
@@ -39080,7 +38597,8 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	mul.d	$a0, $a0, $s3
 	beqz	$a0, .LBB135_14
 # %bb.16:                               #   in Loop: Header=BB135_15 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -39099,9 +38617,10 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a2, .LBB135_19
 # %bb.18:                               # %._crit_edge16
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB135_21
 .LBB135_19:
 	addi.w	$a0, $a1, 10
@@ -39114,7 +38633,7 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	beqz	$a0, .LBB135_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB135_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI135_1)
@@ -39128,7 +38647,7 @@ _Z14test_variable1Im19custom_sub_variableImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s4, %pc_lo12(current_test)
+	st.w	$a0, $s3, %pc_lo12(current_test)
 	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
@@ -39273,8 +38792,7 @@ _Z14test_variable4Im28custom_sub_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB136_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB136_11
@@ -39540,8 +39058,7 @@ _Z14test_variable1Im24custom_multiply_variableImEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB137_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s1, .LBB137_11
@@ -39811,8 +39328,7 @@ _Z14test_variable4Im33custom_multiply_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB138_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB138_11
@@ -40082,8 +39598,7 @@ _Z14test_variable4Im34custom_multiply_multiple_variable2ImEEvPT_iS2_S2_S2_S2_PKc
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB139_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB139_11
@@ -40350,8 +39865,7 @@ _Z14test_variable1Im22custom_divide_variableImEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB140_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB140_11
@@ -40639,8 +40153,7 @@ _Z14test_variable4Im31custom_divide_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB141_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s4, .LBB141_11
@@ -40929,8 +40442,7 @@ _Z14test_variable4Im32custom_divide_multiple_variable2ImEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB142_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s5
 	beq	$s5, $s0, .LBB142_11
@@ -41207,8 +40719,7 @@ _Z14test_variable4Im30custom_mixed_multiple_variableImEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB143_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s7
 	beq	$s7, $s1, .LBB143_11
@@ -41414,7 +40925,8 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(current_test)
+	pcalau12i	$a2, %pc_hi20(current_test)
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB144_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB144_13
@@ -41423,19 +40935,18 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bstrpick.d	$a0, $s1, 30, 2
 	slli.d	$s8, $a0, 2
 	vreplgr2vr.d	$vr4, $s0
-	addi.d	$a0, $s2, 16
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $s2, 16
 	ori	$a5, $zero, 4
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI144_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI144_0)
 	lu12i.w	$a0, 1
-	ori	$fp, $a0, 3904
+	ori	$s4, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB144_4
 	.p2align	4, , 16
 .LBB144_3:                              # %_Z26check_shifted_variable_sumIm19custom_variable_andImEEvT_S2_.exit.us
@@ -41454,7 +40965,7 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.p2align	4, , 16
 .LBB144_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB144_4 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $fp
 	move	$a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -41474,8 +40985,7 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB144_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB144_11
@@ -41507,15 +41017,16 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
 	and	$a2, $s0, $a2
-	mul.d	$a2, $a2, $fp
+	mul.d	$a2, $a2, $s4
 	beq	$a0, $a2, .LBB144_3
 # %bb.12:                               #   in Loop: Header=BB144_4 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 4
-	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s6, %pc_lo12(iterations)
 	b	.LBB144_3
 .LBB144_13:                             # %.preheader.preheader
@@ -41550,7 +41061,8 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	mul.d	$a0, $a0, $s3
 	beqz	$a0, .LBB144_14
 # %bb.16:                               #   in Loop: Header=BB144_15 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -41569,9 +41081,10 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a2, .LBB144_19
 # %bb.18:                               # %._crit_edge16
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB144_21
 .LBB144_19:
 	addi.w	$a0, $a1, 10
@@ -41584,7 +41097,7 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	beqz	$a0, .LBB144_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB144_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI144_1)
@@ -41598,7 +41111,7 @@ _Z14test_variable1Im19custom_variable_andImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s4, %pc_lo12(current_test)
+	st.w	$a0, $s3, %pc_lo12(current_test)
 	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
@@ -41753,8 +41266,7 @@ _Z14test_variable4Im28custom_multiple_variable_andImEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB145_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB145_11
@@ -41959,7 +41471,8 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(current_test)
+	pcalau12i	$a2, %pc_hi20(current_test)
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB146_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB146_13
@@ -41968,19 +41481,18 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	bstrpick.d	$a0, $s1, 30, 2
 	slli.d	$s8, $a0, 2
 	vreplgr2vr.d	$vr4, $s0
-	addi.d	$a0, $s2, 16
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $s2, 16
 	ori	$a5, $zero, 4
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI146_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI146_0)
 	lu12i.w	$a0, 1
-	ori	$fp, $a0, 3904
+	ori	$s4, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB146_4
 	.p2align	4, , 16
 .LBB146_3:                              # %_Z26check_shifted_variable_sumIm18custom_variable_orImEEvT_S2_.exit.us
@@ -41999,7 +41511,7 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	.p2align	4, , 16
 .LBB146_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB146_4 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $fp
 	move	$a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -42019,8 +41531,7 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB146_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB146_11
@@ -42052,15 +41563,16 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
 	or	$a2, $s0, $a2
-	mul.d	$a2, $a2, $fp
+	mul.d	$a2, $a2, $s4
 	beq	$a0, $a2, .LBB146_3
 # %bb.12:                               #   in Loop: Header=BB146_4 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 4
-	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s6, %pc_lo12(iterations)
 	b	.LBB146_3
 .LBB146_13:                             # %.preheader.preheader
@@ -42095,7 +41607,8 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	mul.d	$a0, $a0, $s3
 	beqz	$a0, .LBB146_14
 # %bb.16:                               #   in Loop: Header=BB146_15 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -42114,9 +41627,10 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a2, .LBB146_19
 # %bb.18:                               # %._crit_edge16
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB146_21
 .LBB146_19:
 	addi.w	$a0, $a1, 10
@@ -42129,7 +41643,7 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	beqz	$a0, .LBB146_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB146_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI146_1)
@@ -42143,7 +41657,7 @@ _Z14test_variable1Im18custom_variable_orImEEvPT_iS2_PKc: # @_Z14test_variable1Im
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s4, %pc_lo12(current_test)
+	st.w	$a0, $s3, %pc_lo12(current_test)
 	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
@@ -42298,8 +41812,7 @@ _Z14test_variable4Im27custom_multiple_variable_orImEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB147_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB147_11
@@ -42504,7 +42017,8 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(current_test)
+	pcalau12i	$a2, %pc_hi20(current_test)
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB148_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s1, .LBB148_13
@@ -42513,19 +42027,18 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bstrpick.d	$a0, $s1, 30, 2
 	slli.d	$s8, $a0, 2
 	vreplgr2vr.d	$vr4, $s0
-	addi.d	$a0, $s2, 16
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $s2, 16
 	ori	$a5, $zero, 4
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI148_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI148_0)
 	lu12i.w	$a0, 1
-	ori	$fp, $a0, 3904
+	ori	$s4, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB148_4
 	.p2align	4, , 16
 .LBB148_3:                              # %_Z26check_shifted_variable_sumIm19custom_variable_xorImEEvT_S2_.exit.us
@@ -42544,7 +42057,7 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.p2align	4, , 16
 .LBB148_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB148_4 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $fp
 	move	$a2, $s8
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
@@ -42564,8 +42077,7 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB148_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s8
 	beq	$s8, $s1, .LBB148_11
@@ -42597,15 +42109,16 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
 	xor	$a2, $s0, $a2
-	mul.d	$a2, $a2, $fp
+	mul.d	$a2, $a2, $s4
 	beq	$a0, $a2, .LBB148_3
 # %bb.12:                               #   in Loop: Header=BB148_4 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 4
-	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	ld.w	$a1, $s6, %pc_lo12(iterations)
 	b	.LBB148_3
 .LBB148_13:                             # %.preheader.preheader
@@ -42640,7 +42153,8 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	mul.d	$a0, $a0, $s3
 	beqz	$a0, .LBB148_14
 # %bb.16:                               #   in Loop: Header=BB148_15 Depth=1
-	ld.w	$a1, $s4, %pc_lo12(current_test)
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -42659,9 +42173,10 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a2, .LBB148_19
 # %bb.18:                               # %._crit_edge16
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB148_21
 .LBB148_19:
 	addi.w	$a0, $a1, 10
@@ -42674,7 +42189,7 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	beqz	$a0, .LBB148_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s4, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB148_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI148_1)
@@ -42688,7 +42203,7 @@ _Z14test_variable1Im19custom_variable_xorImEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s4, %pc_lo12(current_test)
+	st.w	$a0, $s3, %pc_lo12(current_test)
 	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
@@ -42843,8 +42358,7 @@ _Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB149_4 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $s4
 	beq	$s4, $s0, .LBB149_11

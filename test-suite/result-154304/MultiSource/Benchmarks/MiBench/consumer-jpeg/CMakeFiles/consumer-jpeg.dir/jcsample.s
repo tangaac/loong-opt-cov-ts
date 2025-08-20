@@ -1277,8 +1277,7 @@ int_downsample:                         # @int_downsample
 # %bb.19:                               # %middle.block
                                         #   in Loop: Header=BB8_15 Depth=3
 	vadd.d	$vr1, $vr2, $vr1
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$t7, $vr1, 0
 	move	$s1, $a6
 	beq	$a6, $s3, .LBB8_14

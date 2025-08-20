@@ -3137,13 +3137,11 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	add.w	$s6, $a0, $a1
 	vadd.w	$vr1, $vr2, $vr1
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	ld.w	$a0, $sp, 1504
 	ld.d	$a1, $fp, 32
-	vpickve2gr.w	$a2, $vr0, 0
+	vpickve2gr.d	$a2, $vr0, 0
 	ld.w	$a3, $sp, 1508
 	add.d	$a0, $a0, $a2
 	ld.w	$a4, $a1, 0
@@ -3684,7 +3682,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	slli.d	$a7, $a7, 3
 	move	$t0, $a2
 	bstrins.d	$t0, $zero, 2, 0
-	addi.w	$t1, $zero, -1
+	addi.d	$t1, $zero, -1
 	b	.LBB29_112
 	.p2align	4, , 16
 .LBB29_111:                             #   in Loop: Header=BB29_112 Depth=4
@@ -3760,11 +3758,9 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 # %bb.116:                              # %middle.block737
                                         #   in Loop: Header=BB29_112 Depth=4
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t3, $vr0, 0
 	move	$t4, $a7
 	ori	$s0, $zero, 8
 	addi.d	$t7, $sp, 280
@@ -3781,13 +3777,15 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
                                         # =>        This Inner Loop Header: Depth=5
 	ld.wu	$t6, $t5, 0
 	ldx.bu	$t6, $t2, $t6
-	add.w	$t3, $t3, $t6
+	add.d	$t3, $t3, $t6
 	addi.d	$t4, $t4, 1
 	addi.d	$t5, $t5, 4
 	bne	$a2, $t4, .LBB29_118
 .LBB29_119:                             # %.loopexit
                                         #   in Loop: Header=BB29_112 Depth=4
-	bgeu	$t3, $t1, .LBB29_111
+	addi.w	$t2, $t1, 0
+	addi.w	$t4, $t3, 0
+	bgeu	$t4, $t2, .LBB29_111
 # %bb.120:                              #   in Loop: Header=BB29_112 Depth=4
 	stx.b	$a6, $s5, $a5
 	move	$t1, $t3

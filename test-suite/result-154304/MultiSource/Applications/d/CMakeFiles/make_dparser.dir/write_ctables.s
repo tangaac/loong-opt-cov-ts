@@ -1150,8 +1150,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	bnez	$a4, .LBB8_94
 # %bb.95:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $s2, .LBB8_98

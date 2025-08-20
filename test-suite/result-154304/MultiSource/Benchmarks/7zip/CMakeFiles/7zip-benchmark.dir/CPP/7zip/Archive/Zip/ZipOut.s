@@ -1068,8 +1068,7 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	bnez	$a5, .LBB12_25
 # %bb.26:                               # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a3, $a1, .LBB12_29
 .LBB12_27:                              # %scalar.ph.preheader
@@ -1292,8 +1291,7 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	bnez	$a4, .LBB12_56
 # %bb.57:                               # %middle.block104
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a0, .LBB12_60
 .LBB12_58:                              # %scalar.ph92.preheader
@@ -1705,8 +1703,7 @@ _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE: # @_ZN8NArchiv
 	bnez	$a5, .LBB13_25
 # %bb.26:                               # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a3, $a1, .LBB13_29
 .LBB13_27:                              # %scalar.ph.preheader

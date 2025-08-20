@@ -56,13 +56,10 @@ ba_compute_psd:                         # @ba_compute_psd
 	bnez	$a7, .LBB0_6
 # %bb.7:                                # %middle.block
 	vadd.h	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a4, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a5, $a6, .LBB0_15
 # %bb.8:                                # %vec.epilog.iter.check
 	andi	$a7, $a5, 12
@@ -88,11 +85,9 @@ ba_compute_psd:                         # @ba_compute_psd
 	addi.d	$a0, $a0, 8
 	bnez	$a4, .LBB0_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a4, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a4, $vr0, 0
 	bne	$a5, $t0, .LBB0_13
 	b	.LBB0_15
 .LBB0_12:

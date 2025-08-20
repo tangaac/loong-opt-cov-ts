@@ -191,8 +191,9 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 	.p2align	4, , 16
 .LBB2_4:                                # %.loopexit
                                         #   in Loop: Header=BB2_5 Depth=1
+	addi.w	$a1, $s0, 0
 	move	$s1, $a0
-	beqz	$s0, .LBB2_13
+	beqz	$a1, .LBB2_13
 .LBB2_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_8 Depth 2
                                         #     Child Loop BB2_12 Depth 2
@@ -229,8 +230,9 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha18CContext5FinalEPh)
 	jirl	$ra, $ra, 0
 	move	$a1, $zero
+	addi.w	$a0, $s0, 0
 	addi.w	$a2, $s0, -1
-	bltu	$s0, $s6, .LBB2_10
+	bltu	$a0, $s6, .LBB2_10
 # %bb.6:                                #   in Loop: Header=BB2_5 Depth=1
 	sub.d	$a0, $s1, $s4
 	bltu	$a0, $s6, .LBB2_10
@@ -265,11 +267,9 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB2_5 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s0, $vr0, 0
 	beq	$a1, $a3, .LBB2_4
 	b	.LBB2_11
 	.p2align	4, , 16
@@ -287,7 +287,7 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 	addi.d	$a2, $a2, 1
 	add.d	$a1, $s0, $a1
 	nor	$a4, $a4, $zero
-	add.w	$s0, $a4, $a1
+	add.d	$s0, $a4, $a1
 	.p2align	4, , 16
 .LBB2_12:                               # %scalar.ph
                                         #   Parent Loop BB2_5 Depth=1

@@ -160,11 +160,9 @@ search_for_move:                        # @search_for_move
 	bnez	$a4, .LBB0_8
 # %bb.9:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB0_12
 .LBB0_10:                               # %.lr.ph.preheader381
 	pcalau12i	$a3, %got_pc_hi20(g_board)

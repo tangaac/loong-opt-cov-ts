@@ -1707,8 +1707,7 @@ bc_multiply:                            # @bc_multiply
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB15_3 Depth=1
 	vadd.d	$vr1, $vr2, $vr1
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$a4, $vr1, 0
 	beq	$s1, $a7, .LBB15_2
 	.p2align	4, , 16
@@ -1879,8 +1878,7 @@ bc_multiply:                            # @bc_multiply
 # %bb.19:                               # %middle.block218
                                         #   in Loop: Header=BB15_14 Depth=1
 	vadd.d	$vr1, $vr2, $vr1
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$a4, $vr1, 0
 	ori	$ra, $zero, 4
 	beq	$t3, $s8, .LBB15_13

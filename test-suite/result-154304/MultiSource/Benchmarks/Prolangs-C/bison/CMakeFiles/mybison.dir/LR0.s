@@ -1701,24 +1701,23 @@ get_state:                              # @get_state
 	bnez	$a5, .LBB10_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a2, $a3, .LBB10_8
 	.p2align	4, , 16
 .LBB10_7:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a2, $a1, 0
 	addi.d	$a3, $a1, 2
-	add.w	$a4, $a4, $a2
+	add.d	$a4, $a4, $a2
 	move	$a1, $a3
 	bltu	$a3, $s0, .LBB10_7
 .LBB10_8:                               # %._crit_edge.loopexit
-	lu12i.w	$a1, -516494
-	ori	$a1, $a1, 707
-	mul.d	$a1, $a4, $a1
+	addi.w	$a1, $a4, 0
+	lu12i.w	$a2, -516494
+	ori	$a2, $a2, 707
+	mul.d	$a1, $a1, $a2
 	srli.d	$a1, $a1, 32
 	add.w	$a1, $a1, $a4
 	bstrpick.d	$a2, $a1, 31, 31

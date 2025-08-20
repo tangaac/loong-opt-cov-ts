@@ -552,8 +552,7 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 # %bb.73:                               # %middle.block
                                         #   in Loop: Header=BB0_44 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$s5, $vr0, 0
 	bne	$a2, $a1, .LBB0_60
 	b	.LBB0_63

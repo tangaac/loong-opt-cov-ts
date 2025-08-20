@@ -115,7 +115,8 @@ reduceg:                                # @reduceg
 .LBB0_12:                               # %._crit_edge
                                         #   in Loop: Header=BB0_14 Depth=2
 	ld.w	$a2, $sp, 132
-	div.w	$a0, $a4, $s7
+	addi.w	$a0, $a4, 0
+	div.w	$a0, $a0, $s7
 	st.w	$a0, $sp, 128
 	slli.d	$a1, $a2, 3
 	stx.d	$s6, $fp, $a1
@@ -270,11 +271,9 @@ reduceg:                                # @reduceg
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB0_14 Depth=2
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a3, $s7, .LBB0_12
 .LBB0_23:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_14 Depth=2
@@ -291,7 +290,7 @@ reduceg:                                # @reduceg
 	mul.d	$a3, $a3, $s4
 	add.d	$a3, $a0, $a3
 	ld.w	$a3, $a3, 20
-	add.w	$a4, $a4, $a3
+	add.d	$a4, $a4, $a3
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB0_24
@@ -351,7 +350,8 @@ reduceg:                                # @reduceg
 .LBB0_31:                               # %._crit_edge762
                                         #   in Loop: Header=BB0_33 Depth=2
 	ld.w	$a2, $sp, 132
-	div.w	$a0, $a4, $s2
+	addi.w	$a0, $a4, 0
+	div.w	$a0, $a0, $s2
 	st.w	$a0, $sp, 128
 	slli.d	$a1, $a2, 3
 	stx.d	$s1, $fp, $a1
@@ -505,11 +505,9 @@ reduceg:                                # @reduceg
 # %bb.41:                               # %middle.block1107
                                         #   in Loop: Header=BB0_33 Depth=2
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a3, $s2, .LBB0_31
 .LBB0_42:                               # %scalar.ph1094.preheader
                                         #   in Loop: Header=BB0_33 Depth=2
@@ -526,7 +524,7 @@ reduceg:                                # @reduceg
 	mul.d	$a3, $a3, $s4
 	add.d	$a3, $a0, $a3
 	ld.w	$a3, $a3, 20
-	add.w	$a4, $a4, $a3
+	add.d	$a4, $a4, $a3
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB0_43

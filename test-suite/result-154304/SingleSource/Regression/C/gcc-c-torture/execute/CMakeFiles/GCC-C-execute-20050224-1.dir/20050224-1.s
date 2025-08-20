@@ -86,44 +86,44 @@ main:                                   # @main
 	vreplgr2vr.d	$vr3, $a4
 	vreplgr2vr.d	$vr6, $t4
 	vadd.d	$vr4, $vr6, $vr4
-	vadd.d	$vr7, $vr6, $vr5
+	vadd.d	$vr6, $vr6, $vr5
 	vrepli.b	$vr5, 0
 	lu12i.w	$t1, 4
-	vreplgr2vr.d	$vr9, $t1
-	vrepli.b	$vr11, -1
-	vrepli.w	$vr13, 1
+	vreplgr2vr.d	$vr7, $t1
+	vrepli.b	$vr9, -1
+	vrepli.w	$vr11, 1
 	lu12i.w	$t1, 8
 	vreplgr2vr.d	$vr14, $t1
 	move	$t1, $t0
 	vori.b	$vr15, $vr5, 0
-	vori.b	$vr10, $vr5, 0
 	vori.b	$vr12, $vr5, 0
-	vori.b	$vr6, $vr5, 0
+	vori.b	$vr13, $vr5, 0
 	vori.b	$vr8, $vr5, 0
+	vori.b	$vr10, $vr5, 0
 	.p2align	4, , 16
 .LBB1_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vadd.d	$vr16, $vr4, $vr9
-	vadd.d	$vr17, $vr7, $vr9
-	vsle.du	$vr18, $vr0, $vr7
+	vadd.d	$vr16, $vr4, $vr7
+	vadd.d	$vr17, $vr6, $vr7
+	vsle.du	$vr18, $vr0, $vr6
 	vsle.du	$vr19, $vr0, $vr4
 	vpickev.w	$vr18, $vr19, $vr18
 	vsle.du	$vr19, $vr0, $vr17
 	vsle.du	$vr20, $vr0, $vr16
 	vpickev.w	$vr19, $vr20, $vr19
-	vsle.du	$vr20, $vr1, $vr7
+	vsle.du	$vr20, $vr1, $vr6
 	vsle.du	$vr21, $vr1, $vr4
 	vpickev.w	$vr20, $vr21, $vr20
 	vsle.du	$vr21, $vr1, $vr17
 	vsle.du	$vr22, $vr1, $vr16
 	vpickev.w	$vr21, $vr22, $vr21
-	vslt.du	$vr22, $vr7, $vr2
+	vslt.du	$vr22, $vr6, $vr2
 	vslt.du	$vr23, $vr4, $vr2
 	vpickev.w	$vr22, $vr23, $vr22
 	vslt.du	$vr23, $vr17, $vr2
 	vslt.du	$vr24, $vr16, $vr2
 	vpickev.w	$vr23, $vr24, $vr23
-	vslt.du	$vr24, $vr7, $vr3
+	vslt.du	$vr24, $vr6, $vr3
 	vslt.du	$vr25, $vr4, $vr3
 	vpickev.w	$vr24, $vr25, $vr24
 	vslt.du	$vr25, $vr17, $vr3
@@ -133,59 +133,56 @@ main:                                   # @main
 	vand.v	$vr20, $vr20, $vr22
 	vand.v	$vr21, $vr19, $vr21
 	vand.v	$vr21, $vr21, $vr23
-	vslt.du	$vr22, $vr7, $vr0
+	vslt.du	$vr22, $vr6, $vr0
 	vslt.du	$vr23, $vr4, $vr0
 	vpickev.w	$vr22, $vr23, $vr22
-	vsub.w	$vr6, $vr6, $vr22
+	vsub.w	$vr8, $vr8, $vr22
 	vslt.du	$vr17, $vr17, $vr0
 	vslt.du	$vr16, $vr16, $vr0
 	vpickev.w	$vr16, $vr16, $vr17
-	vsub.w	$vr8, $vr8, $vr16
-	vxor.v	$vr16, $vr20, $vr11
+	vsub.w	$vr10, $vr10, $vr16
+	vxor.v	$vr16, $vr20, $vr9
 	vand.v	$vr16, $vr16, $vr18
 	vand.v	$vr16, $vr16, $vr24
-	vand.v	$vr16, $vr16, $vr13
-	vadd.w	$vr10, $vr10, $vr16
-	vxor.v	$vr16, $vr21, $vr11
+	vand.v	$vr16, $vr16, $vr11
+	vadd.w	$vr12, $vr12, $vr16
+	vxor.v	$vr16, $vr21, $vr9
 	vand.v	$vr16, $vr16, $vr19
 	vand.v	$vr16, $vr16, $vr25
-	vand.v	$vr16, $vr16, $vr13
-	vadd.w	$vr12, $vr12, $vr16
+	vand.v	$vr16, $vr16, $vr11
+	vadd.w	$vr13, $vr13, $vr16
 	vsub.w	$vr5, $vr5, $vr20
 	vsub.w	$vr15, $vr15, $vr21
 	vadd.d	$vr4, $vr4, $vr14
 	addi.d	$t1, $t1, -8
-	vadd.d	$vr7, $vr7, $vr14
+	vadd.d	$vr6, $vr6, $vr14
 	bnez	$t1, .LBB1_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr15, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t1, $vr0, 0
-	vadd.w	$vr0, $vr12, $vr10
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t2, $vr0, 0
-	vadd.w	$vr0, $vr8, $vr6
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t1, $vr0, 0
+	vadd.w	$vr0, $vr13, $vr12
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t2, $vr0, 0
+	vadd.w	$vr0, $vr10, $vr8
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t3, $vr0, 0
 	bne	$a7, $t0, .LBB1_12
 .LBB1_6:                                # %._crit_edge
-	ori	$a0, $zero, 444
-	bne	$t3, $a0, .LBB1_17
+	addi.w	$a0, $t3, 0
+	ori	$a1, $zero, 444
+	bne	$a0, $a1, .LBB1_17
 # %bb.7:                                # %._crit_edge
-	ori	$a0, $zero, 245
-	bne	$t2, $a0, .LBB1_17
+	addi.w	$a0, $t2, 0
+	ori	$a1, $zero, 245
+	bne	$a0, $a1, .LBB1_17
 # %bb.8:                                # %._crit_edge
-	ori	$a0, $zero, 36
-	bne	$t1, $a0, .LBB1_17
+	addi.w	$a0, $t1, 0
+	ori	$a1, $zero, 36
+	bne	$a0, $a1, .LBB1_17
 # %bb.9:                                # %foo.exit
 	move	$a0, $zero
 	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
@@ -195,7 +192,7 @@ main:                                   # @main
 	ret
 	.p2align	4, , 16
 .LBB1_10:                               #   in Loop: Header=BB1_12 Depth=1
-	addi.w	$t3, $t3, 1
+	addi.d	$t3, $t3, 1
 .LBB1_11:                               #   in Loop: Header=BB1_12 Depth=1
 	add.d	$a6, $a6, $a5
 	bgeu	$a6, $a0, .LBB1_6
@@ -207,12 +204,12 @@ main:                                   # @main
 # %bb.14:                               #   in Loop: Header=BB1_12 Depth=1
 	bgeu	$a6, $a3, .LBB1_16
 # %bb.15:                               #   in Loop: Header=BB1_12 Depth=1
-	addi.w	$t1, $t1, 1
+	addi.d	$t1, $t1, 1
 	b	.LBB1_11
 	.p2align	4, , 16
 .LBB1_16:                               #   in Loop: Header=BB1_12 Depth=1
 	sltu	$a7, $a6, $a4
-	add.w	$t2, $t2, $a7
+	add.d	$t2, $t2, $a7
 	b	.LBB1_11
 .LBB1_17:                               # %._crit_edge.thread
 	pcaddu18i	$ra, %call36(abort)

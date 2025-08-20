@@ -6795,8 +6795,7 @@ cnf_Flotter:                            # @cnf_Flotter
 # %bb.85:                               # %middle.block432
                                         #   in Loop: Header=BB31_74 Depth=1
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB31_88
 .LBB31_86:                              # %scalar.ph424.preheader

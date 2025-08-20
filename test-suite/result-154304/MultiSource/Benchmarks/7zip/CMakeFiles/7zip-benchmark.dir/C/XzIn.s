@@ -260,8 +260,7 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	bnez	$a4, .LBB6_5
 # %bb.6:                                # %middle.block
 	vadd.d	$vr0, $vr1, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
 	beq	$a1, $a3, .LBB6_9
 .LBB6_7:                                # %scalar.ph.preheader

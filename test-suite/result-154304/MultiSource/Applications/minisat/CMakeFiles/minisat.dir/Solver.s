@@ -5213,8 +5213,7 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	bnez	$a5, .LBB24_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a4, $a1, .LBB24_9
 .LBB24_7:                               # %scalar.ph.preheader

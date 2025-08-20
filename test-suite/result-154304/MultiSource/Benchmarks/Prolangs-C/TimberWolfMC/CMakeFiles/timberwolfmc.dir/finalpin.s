@@ -2243,19 +2243,18 @@ finalpin:                               # @finalpin
 # %bb.238:                              # %middle.block
                                         #   in Loop: Header=BB0_16 Depth=2
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	bne	$a4, $s7, .LBB0_274
 .LBB0_239:                              # %.preheader742
                                         #   in Loop: Header=BB0_16 Depth=2
+	addi.w	$a3, $a2, 0
 	addi.d	$t7, $sp, 1016
 	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	ori	$s0, $zero, 44
 	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
-	blt	$a2, $s5, .LBB0_213
+	blt	$a3, $s5, .LBB0_213
 # %bb.240:                              # %.lr.ph940
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
@@ -2565,7 +2564,7 @@ finalpin:                               # @finalpin
 	beqz	$a5, .LBB0_275
 # %bb.277:                              #   in Loop: Header=BB0_276 Depth=3
 	ld.w	$a5, $a4, -4
-	add.w	$a2, $a5, $a2
+	add.d	$a2, $a5, $a2
 	b	.LBB0_275
 .LBB0_278:                              # %vector.ph1409
                                         #   in Loop: Header=BB0_16 Depth=2

@@ -443,11 +443,10 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	bne	$a0, $a2, .LBB2_59
 # %bb.60:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a1, $a0, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL16MakeOctalString8EPcj)
 	jirl	$ra, $ra, 0

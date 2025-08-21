@@ -777,16 +777,11 @@ density:                                # @density
 # %bb.93:                               # %middle.block532
                                         #   in Loop: Header=BB0_84 Depth=2
 	xvadd.w	$xr2, $xr3, $xr2
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$s2, $xr2, 0
+	xvhaddw.d.w	$xr2, $xr2, $xr2
+	xvhaddw.q.d	$xr2, $xr2, $xr2
+	xvpermi.d	$xr3, $xr2, 2
+	xvadd.d	$xr2, $xr3, $xr2
+	xvpickve2gr.d	$s2, $xr2, 0
 	bne	$s1, $s0, .LBB0_95
 # %bb.94:                               #   in Loop: Header=BB0_84 Depth=2
 	ori	$a5, $zero, 4
@@ -843,11 +838,9 @@ density:                                # @density
 	bnez	$s1, .LBB0_98
 # %bb.99:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_84 Depth=2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$s2, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$s2, $vr2, 0
 	bne	$s4, $s0, .LBB0_101
 	b	.LBB0_103
 .LBB0_100:                              #   in Loop: Header=BB0_84 Depth=2
@@ -1143,16 +1136,11 @@ density:                                # @density
 # %bb.130:                              # %middle.block560
                                         #   in Loop: Header=BB0_121 Depth=2
 	xvadd.w	$xr2, $xr3, $xr2
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$s0, $xr2, 0
+	xvhaddw.d.w	$xr2, $xr2, $xr2
+	xvhaddw.q.d	$xr2, $xr2, $xr2
+	xvpermi.d	$xr3, $xr2, 2
+	xvadd.d	$xr2, $xr3, $xr2
+	xvpickve2gr.d	$s0, $xr2, 0
 	bne	$fp, $t8, .LBB0_132
 # %bb.131:                              #   in Loop: Header=BB0_121 Depth=2
 	ori	$a5, $zero, 4
@@ -1209,11 +1197,9 @@ density:                                # @density
 	bnez	$fp, .LBB0_135
 # %bb.136:                              # %vec.epilog.middle.block578
                                         #   in Loop: Header=BB0_121 Depth=2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$s0, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$s0, $vr2, 0
 	bne	$s2, $t8, .LBB0_138
 	b	.LBB0_140
 .LBB0_137:                              #   in Loop: Header=BB0_121 Depth=2

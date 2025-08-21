@@ -11961,56 +11961,58 @@ clause_NumberDelete:                    # @clause_NumberDelete
 	.type	clause_NumberOfMaxAntecedentLits,@function
 clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 # %bb.0:
-	ld.w	$a4, $a0, 64
+	ld.w	$a3, $a0, 64
 	ld.w	$a1, $a0, 68
-	add.w	$a3, $a4, $a1
-	addi.w	$a1, $a3, -1
-	bgeu	$a1, $a4, .LBB116_2
+	add.w	$a2, $a3, $a1
+	addi.w	$a1, $a2, -1
+	bgeu	$a1, $a3, .LBB116_2
 # %bb.1:
-	move	$a0, $zero
+	move	$a6, $zero
+	addi.w	$a0, $a6, 0
 	ret
 .LBB116_2:                              # %.lr.ph
-	ld.d	$a2, $a0, 56
-	addi.w	$a0, $a4, 1
-	sltu	$a5, $a0, $a3
-	maskeqz	$a3, $a3, $a5
-	masknez	$a0, $a0, $a5
-	or	$a0, $a3, $a0
-	sub.w	$a5, $a0, $a4
-	ori	$a3, $zero, 8
-	bltu	$a5, $a3, .LBB116_4
+	ld.d	$a0, $a0, 56
+	addi.w	$a4, $a3, 1
+	sltu	$a5, $a4, $a2
+	maskeqz	$a2, $a2, $a5
+	masknez	$a4, $a4, $a5
+	or	$a2, $a2, $a4
+	sub.w	$a4, $a2, $a3
+	ori	$a5, $zero, 8
+	bltu	$a4, $a5, .LBB116_4
 # %bb.3:                                # %vector.scevcheck
-	addi.w	$a0, $a0, -1
-	bge	$a0, $a4, .LBB116_7
+	addi.w	$a2, $a2, -1
+	bge	$a2, $a3, .LBB116_7
 .LBB116_4:
-	move	$a0, $zero
-	move	$a3, $a4
+	move	$a6, $zero
+	move	$a2, $a3
 	.p2align	4, , 16
 .LBB116_5:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$a4, $a3, 3
-	ldx.d	$a4, $a2, $a4
-	ld.wu	$a4, $a4, 0
-	andi	$a4, $a4, 1
-	addi.w	$a3, $a3, 1
-	add.w	$a0, $a4, $a0
-	bgeu	$a1, $a3, .LBB116_5
+	slli.d	$a3, $a2, 3
+	ldx.d	$a3, $a0, $a3
+	ld.wu	$a3, $a3, 0
+	andi	$a3, $a3, 1
+	addi.w	$a2, $a2, 1
+	add.d	$a6, $a3, $a6
+	bgeu	$a1, $a2, .LBB116_5
 .LBB116_6:                              # %._crit_edge
+	addi.w	$a0, $a6, 0
 	ret
 .LBB116_7:                              # %vector.ph
-	move	$a6, $a5
-	bstrins.d	$a6, $zero, 2, 0
-	add.w	$a3, $a4, $a6
+	move	$a5, $a4
+	bstrins.d	$a5, $zero, 2, 0
+	add.w	$a2, $a3, $a5
 	vrepli.b	$vr0, 0
 	vrepli.w	$vr1, 1
-	move	$a0, $a6
+	move	$a6, $a5
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB116_8:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	alsl.d	$a7, $a4, $a2, 3
-	slli.d	$t0, $a4, 3
-	ldx.d	$t0, $a2, $t0
+	alsl.d	$a7, $a3, $a0, 3
+	slli.d	$t0, $a3, 3
+	ldx.d	$t0, $a0, $t0
 	ld.d	$t1, $a7, 8
 	ld.d	$t2, $a7, 16
 	ld.d	$t3, $a7, 24
@@ -12038,17 +12040,15 @@ clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 	vand.v	$vr4, $vr4, $vr1
 	vadd.w	$vr0, $vr3, $vr0
 	vadd.w	$vr2, $vr4, $vr2
-	addi.w	$a0, $a0, -8
-	addi.w	$a4, $a4, 8
-	bnez	$a0, .LBB116_8
+	addi.w	$a6, $a6, -8
+	addi.w	$a3, $a3, 8
+	bnez	$a6, .LBB116_8
 # %bb.9:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
-	bne	$a5, $a6, .LBB116_5
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
+	bne	$a4, $a5, .LBB116_5
 	b	.LBB116_6
 .Lfunc_end116:
 	.size	clause_NumberOfMaxAntecedentLits, .Lfunc_end116-clause_NumberOfMaxAntecedentLits
@@ -12138,11 +12138,12 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	ld.wu	$a5, $a5, 0
 	andi	$a5, $a5, 1
 	addi.w	$a4, $a4, 1
-	add.w	$a7, $a5, $a7
+	add.d	$a7, $a5, $a7
 	bne	$a3, $a4, .LBB117_13
 .LBB117_14:                             # %clause_NumberOfMaxLits.exit
-	ori	$a3, $zero, 2
-	bgeu	$a7, $a3, .LBB117_6
+	addi.w	$a3, $a7, 0
+	ori	$a4, $zero, 2
+	bgeu	$a3, $a4, .LBB117_6
 .LBB117_15:                             # %clause_NumberOfMaxLits.exit.thread
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -12196,11 +12197,9 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	bnez	$t0, .LBB117_17
 # %bb.18:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a7, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a7, $vr0, 0
 	bne	$a5, $a6, .LBB117_13
 	b	.LBB117_14
 .Lfunc_end117:

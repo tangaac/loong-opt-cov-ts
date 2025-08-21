@@ -4405,19 +4405,12 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_187:                             # %pred.store.continue107
                                         #   in Loop: Header=BB10_112 Depth=4
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	vrepli.b	$vr0, 0
 	vinsgr2vr.h	$vr0, $a0, 0
 	vrepli.w	$vr1, 1
@@ -4430,14 +4423,12 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.h	$vr2, $a0, 2
 	vpickve2gr.w	$a0, $vr1, 3
 	vinsgr2vr.h	$vr2, $a0, 3
-	vadd.h	$vr0, $vr0, $vr2
-	vshuf4i.h	$vr1, $vr0, 14
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ldx.hu	$a1, $a4, $a0
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vadd.h	$vr0, $vr0, $vr2
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	bne	$a1, $s4, .LBB10_111
 # %bb.188:                              # %pred.store.continue107
                                         #   in Loop: Header=BB10_112 Depth=4

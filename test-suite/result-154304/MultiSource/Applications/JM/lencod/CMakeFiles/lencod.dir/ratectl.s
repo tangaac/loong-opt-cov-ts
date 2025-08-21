@@ -582,27 +582,23 @@ update_rc:                              # @update_rc
 	xvmax.w	$xr2, $xr3, $xr2
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
 	pcalau12i	$a2, %got_pc_hi20(img)
 	ld.d	$a2, $a2, %got_pc_lo12(img)
-	xvpermi.d	$xr1, $xr0, 68
+	xvpermi.d	$xr1, $xr0, 2
 	pcalau12i	$a3, %pc_hi20(generic_RC)
 	ld.d	$a4, $a3, %pc_lo12(generic_RC)
 	ld.d	$a2, $a2, 0
 	pcalau12i	$a3, %got_pc_hi20(input)
 	ld.d	$a3, $a3, %got_pc_lo12(input)
-	ld.d	$a5, $a4, 64
+	xvadd.d	$xr0, $xr1, $xr0
 	ld.w	$a6, $a2, 12
-	xvrepl128vei.w	$xr1, $xr1, 1
+	ld.d	$a5, $a4, 64
 	ld.d	$a3, $a3, 0
-	xvadd.w	$xr0, $xr0, $xr1
-	alsl.d	$a6, $a6, $a5, 2
-	xvstelm.w	$xr0, $a6, 0, 0
+	xvpickve2gr.d	$a7, $xr0, 0
+	slli.d	$a6, $a6, 2
+	stx.w	$a7, $a5, $a6
 	ldptr.w	$a6, $a3, 5128
 	ldptr.w	$a7, $a2, 15352
 	bgeu	$a6, $a7, .LBB0_6
@@ -1244,16 +1240,12 @@ calc_MAD:                               # @calc_MAD
 	xvadd.w	$xr2, $xr2, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
+	addi.w	$a0, $a0, 0
 	ret
 .Lfunc_end1:
 	.size	calc_MAD, .Lfunc_end1-calc_MAD
@@ -1360,16 +1352,9 @@ Qstep2QP:                               # @Qstep2QP
 .Lfunc_end3:
 	.size	Qstep2QP, .Lfunc_end3-Qstep2QP
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function ComputeFrameMAD
-.LCPI4_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI4_1:
+	.p2align	3, 0x0                          # -- Begin function ComputeFrameMAD
+.LCPI4_0:
 	.dword	0x4070000000000000              # double 256
 	.text
 	.globl	ComputeFrameMAD
@@ -1430,15 +1415,10 @@ ComputeFrameMAD:                        # @ComputeFrameMAD
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB4_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a3, %pc_hi20(.LCPI4_0)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI4_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a2, $a0, .LBB4_9
 .LBB4_7:                                # %scalar.ph.preheader
@@ -1456,8 +1436,8 @@ ComputeFrameMAD:                        # @ComputeFrameMAD
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fa0, $fa0
 .LBB4_10:                               # %._crit_edge
-	pcalau12i	$a1, %pc_hi20(.LCPI4_1)
-	fld.d	$fa1, $a1, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI4_0)
 	movgr2fr.d	$fa2, $a0
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa2, $fa1

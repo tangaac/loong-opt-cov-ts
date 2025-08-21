@@ -9009,11 +9009,10 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vsub.w	$vr0, $vr2, $vr0
 	vld	$vr1, $sp, 352                  # 16-byte Folded Reload
 	vbitsel.v	$vr0, $vr6, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 2
-	vadd.w	$vr1, $vr0, $vr1
-	vreplvei.w	$vr0, $vr0, 1
-	vadd.w	$vr0, $vr1, $vr0
-	vpickve2gr.w	$s4, $vr0, 0
+	vinsgr2vr.w	$vr0, $zero, 3
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s4, $vr0, 0
 	addi.w	$s6, $s6, 1
 	addi.w	$s0, $s0, 3
 	move	$s1, $a0

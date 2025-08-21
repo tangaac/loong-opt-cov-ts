@@ -78,83 +78,76 @@ plot:                                   # @plot
 	bstrpick.d	$a1, $a1, 31, 0
 	bgeu	$a3, $a2, .LBB0_9
 # %bb.7:
-	move	$a4, $zero
 	move	$a2, $zero
+	move	$a7, $zero
 	b	.LBB0_18
 .LBB0_8:
-	move	$a2, $zero
+	move	$a7, $zero
 	b	.LBB0_20
 .LBB0_9:                                # %vector.main.loop.iter.check
 	ori	$a2, $zero, 15
 	bgeu	$a3, $a2, .LBB0_11
 # %bb.10:
-	move	$a4, $zero
 	move	$a2, $zero
+	move	$a7, $zero
 	b	.LBB0_15
 .LBB0_11:                               # %vector.ph
 	bstrpick.d	$a2, $a1, 31, 4
-	slli.d	$a4, $a2, 4
+	slli.d	$a2, $a2, 4
 	xvrepli.b	$xr0, 0
-	addi.d	$a2, $a0, 32
-	move	$a5, $a4
+	addi.d	$a4, $a0, 32
+	move	$a5, $a2
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB0_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a2, -32
-	xvld	$xr3, $a2, 0
+	xvld	$xr2, $a4, -32
+	xvld	$xr3, $a4, 0
 	xvadd.w	$xr0, $xr2, $xr0
 	xvadd.w	$xr1, $xr3, $xr1
 	addi.d	$a5, $a5, -16
-	addi.d	$a2, $a2, 64
+	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB0_12
 # %bb.13:                               # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
-	beq	$a4, $a1, .LBB0_20
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a7, $xr0, 0
+	beq	$a2, $a1, .LBB0_20
 # %bb.14:                               # %vec.epilog.iter.check
-	andi	$a5, $a1, 12
-	beqz	$a5, .LBB0_18
+	andi	$a4, $a1, 12
+	beqz	$a4, .LBB0_18
 .LBB0_15:                               # %vec.epilog.ph
-	move	$a5, $a4
-	bstrpick.d	$a4, $a1, 31, 2
-	slli.d	$a4, $a4, 2
+	move	$a5, $a2
+	bstrpick.d	$a2, $a1, 31, 2
+	slli.d	$a2, $a2, 2
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a2, 0
-	sub.d	$a2, $a5, $a4
+	vinsgr2vr.w	$vr0, $a7, 0
+	sub.d	$a4, $a5, $a2
 	alsl.d	$a5, $a5, $a0, 2
 	.p2align	4, , 16
 .LBB0_16:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a5, 0
 	vadd.w	$vr0, $vr1, $vr0
-	addi.d	$a2, $a2, 4
+	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 16
-	bnez	$a2, .LBB0_16
+	bnez	$a4, .LBB0_16
 # %bb.17:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
-	beq	$a4, $a1, .LBB0_20
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a7, $vr0, 0
+	beq	$a2, $a1, .LBB0_20
 .LBB0_18:                               # %vec.epilog.scalar.ph.preheader
-	alsl.d	$a0, $a4, $a0, 2
-	sub.d	$a1, $a1, $a4
+	alsl.d	$a0, $a2, $a0, 2
+	sub.d	$a1, $a1, $a2
 	.p2align	4, , 16
 .LBB0_19:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a0, 0
-	add.w	$a2, $a4, $a2
+	ld.w	$a2, $a0, 0
+	add.d	$a7, $a2, $a7
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB0_19
@@ -163,17 +156,18 @@ plot:                                   # @plot
 	ld.w	$a0, $a0, %pc_lo12(npx)
 	pcalau12i	$a1, %pc_hi20(init_block_x)
 	ld.w	$a1, $a1, %pc_lo12(init_block_x)
-	pcalau12i	$a4, %pc_hi20(npy)
-	ld.w	$a5, $a4, %pc_lo12(npy)
+	pcalau12i	$a2, %pc_hi20(npy)
+	ld.w	$a2, $a2, %pc_lo12(npy)
 	pcalau12i	$a4, %pc_hi20(init_block_y)
-	ld.w	$a6, $a4, %pc_lo12(init_block_y)
+	ld.w	$a5, $a4, %pc_lo12(init_block_y)
 	pcalau12i	$a4, %pc_hi20(npz)
-	ld.w	$a7, $a4, %pc_lo12(npz)
+	ld.w	$a6, $a4, %pc_lo12(npz)
 	pcalau12i	$a4, %pc_hi20(init_block_z)
 	ld.w	$t0, $a4, %pc_lo12(init_block_z)
 	mul.w	$a4, $a1, $a0
-	mul.w	$a5, $a6, $a5
-	mul.w	$a6, $t0, $a7
+	mul.w	$a5, $a5, $a2
+	mul.w	$a6, $t0, $a6
+	addi.w	$a2, $a7, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
 	move	$a0, $fp

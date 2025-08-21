@@ -8872,16 +8872,12 @@ _Z8example9Pj:                          # @_Z8example9Pj
 	bnez	$a1, .LBB10_1
 # %bb.2:                                # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvstelm.w	$xr0, $a0, 0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a1, $xr0, 0
+	st.w	$a1, $a0, 0
 	ret
 .Lfunc_end10:
 	.size	_Z8example9Pj, .Lfunc_end10-_Z8example9Pj
@@ -9179,7 +9175,7 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	move	$a1, $zero
+	move	$a3, $zero
 	xvrepli.b	$xr0, 0
 	ori	$a5, $zero, 3840
 	ori	$a6, $zero, 3872
@@ -9201,8 +9197,8 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 .LBB15_1:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_2 Depth 2
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	slli.d	$s4, $a1, 3
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	slli.d	$s4, $a3, 3
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ldx.d	$s5, $a0, $s4
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
@@ -9291,22 +9287,18 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB15_1 Depth=1
 	xvadd.w	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	alsl.d	$a0, $a1, $a0, 2
-	addi.d	$a1, $a1, 1
-	xvstelm.w	$xr1, $a0, 0, 0
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$a0, $xr1, 0
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	slli.d	$a1, $a3, 2
+	addi.d	$a3, $a3, 1
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	stx.w	$a0, $a2, $a1
 	ori	$a0, $zero, 32
-	bne	$a1, $a0, .LBB15_1
+	bne	$a3, $a0, .LBB15_1
 # %bb.4:
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
@@ -9407,12 +9399,10 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB16_1 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
-	vpickve2gr.w	$a7, $vr1, 0
+	vpickve2gr.d	$a7, $vr1, 0
 	bne	$a3, $a6, .LBB16_1
 # %bb.4:                                # %.preheader19.1
 	move	$a3, $zero
@@ -9493,12 +9483,10 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.7:                                # %middle.block52
                                         #   in Loop: Header=BB16_5 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
-	vpickve2gr.w	$t0, $vr1, 0
+	vpickve2gr.d	$t0, $vr1, 0
 	bne	$a3, $a7, .LBB16_5
 # %bb.8:                                # %.preheader19.2
 	move	$a3, $zero
@@ -9578,12 +9566,10 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.11:                               # %middle.block65
                                         #   in Loop: Header=BB16_9 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
-	vpickve2gr.w	$a7, $vr1, 0
+	vpickve2gr.d	$a7, $vr1, 0
 	bne	$a3, $a6, .LBB16_9
 # %bb.12:                               # %.preheader19.3
 	move	$a3, $zero
@@ -9663,12 +9649,10 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.15:                               # %middle.block78
                                         #   in Loop: Header=BB16_13 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a3, $a3, 1
-	vpickve2gr.w	$a6, $vr1, 0
+	vpickve2gr.d	$a6, $vr1, 0
 	bne	$a3, $a5, .LBB16_13
 # %bb.16:
 	st.w	$a6, $a2, 12
@@ -9727,16 +9711,11 @@ _Z9example21Pii:                        # @_Z9example21Pii
 	bnez	$a4, .LBB17_7
 # %bb.8:                                # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a3, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a2, $a1, .LBB17_13
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a4, $a1, 12
@@ -9763,11 +9742,9 @@ _Z9example21Pii:                        # @_Z9example21Pii
 	addi.d	$a3, $a3, -16
 	bnez	$a2, .LBB17_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	bne	$a5, $a1, .LBB17_15
 .LBB17_13:                              # %._crit_edge
 	st.w	$a3, $a0, 0
@@ -11478,16 +11455,11 @@ main:                                   # @main
 	bnez	$a3, .LBB24_157
 # %bb.158:                              # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a1, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a0, $a2, .LBB24_166
 # %bb.159:                              # %vec.epilog.iter.check
 	andi	$a3, $a0, 12
@@ -11509,11 +11481,9 @@ main:                                   # @main
 	addi.d	$a1, $a1, 16
 	bnez	$a2, .LBB24_161
 # %bb.162:                              # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	bne	$a0, $a4, .LBB24_164
 	b	.LBB24_166
 .LBB24_163:
@@ -11525,13 +11495,14 @@ main:                                   # @main
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a0, 4
 	addi.d	$a3, $a0, 4
-	add.w	$a1, $a2, $a1
+	add.d	$a1, $a2, $a1
 	move	$a0, $a3
 	bne	$a3, $s2, .LBB24_165
 .LBB24_166:                             # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPjSt6vectorIjSaIjEEEEiET0_T_S8_S7_.exit
 .Ltmp32:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
+	addi.w	$a1, $a1, 0
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp33:                                # EH_LABEL

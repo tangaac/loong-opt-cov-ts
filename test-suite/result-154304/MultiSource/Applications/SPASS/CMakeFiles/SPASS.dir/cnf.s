@@ -6020,11 +6020,6 @@ list_PairFree:                          # @list_PairFree
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
-.LCPI31_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	cnf_Flotter
 	.p2align	5
@@ -6835,15 +6830,10 @@ cnf_Flotter:                            # @cnf_Flotter
 	bnez	$a4, .LBB31_84
 # %bb.85:                               # %middle.block432
                                         #   in Loop: Header=BB31_74 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI31_1)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI31_1)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a2, $a1, .LBB31_88
 .LBB31_86:                              # %scalar.ph424.preheader

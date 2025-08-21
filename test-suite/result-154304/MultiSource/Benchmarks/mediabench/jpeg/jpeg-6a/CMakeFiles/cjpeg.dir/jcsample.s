@@ -1003,15 +1003,7 @@ h2v2_downsample:                        # @h2v2_downsample
 .Lfunc_end7:
 	.size	h2v2_downsample, .Lfunc_end7-h2v2_downsample
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function int_downsample
-.LCPI8_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function int_downsample
 	.type	int_downsample,@function
 int_downsample:                         # @int_downsample
 # %bb.0:
@@ -1208,15 +1200,10 @@ int_downsample:                         # @int_downsample
 	bnez	$t8, .LBB8_18
 # %bb.19:                               # %middle.block
                                         #   in Loop: Header=BB8_15 Depth=3
-	pcalau12i	$t7, %pc_hi20(.LCPI8_0)
-	xvld	$xr3, $t7, %pc_lo12(.LCPI8_0)
 	xvadd.d	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf.d	$xr3, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr3
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.d	$xr2, $xr2, 1
-	xvadd.d	$xr1, $xr1, $xr2
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
 	xvpickve2gr.d	$t7, $xr1, 0
 	move	$s1, $a6
 	beq	$a6, $s3, .LBB8_14

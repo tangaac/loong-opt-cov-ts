@@ -895,17 +895,13 @@ endgame:                                # @endgame
 # %bb.17:                               # %middle.block
 	move	$a2, $zero
 	vadd.w	$vr0, $vr7, $vr6
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$fp, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s0, $vr0, 0
 	vadd.w	$vr0, $vr5, $vr4
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$fp, $vr0, 0
 	ori	$a3, $zero, 57
 	.p2align	4, , 16
 .LBB0_18:                               # %.preheader
@@ -917,11 +913,11 @@ endgame:                                # @endgame
 	sltu	$a7, $zero, $a6
 	sltui	$a6, $a6, 1
 	xor	$a5, $a1, $a5
-	add.d	$a6, $s0, $a6
+	add.d	$a6, $fp, $a6
 	ld.b	$t0, $a4, 305
 	sltui	$a5, $a5, 1
 	and	$a5, $a7, $a5
-	add.d	$a5, $fp, $a5
+	add.d	$a5, $s0, $a5
 	andi	$a7, $t0, 255
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
@@ -1098,10 +1094,10 @@ endgame:                                # @endgame
 	sltui	$a7, $a7, 1
 	xor	$a4, $a1, $a4
 	sltui	$a4, $a4, 1
-	add.w	$s0, $a6, $a7
+	add.w	$fp, $a6, $a7
 	and	$a4, $t0, $a4
 	addi.d	$a2, $a2, 19
-	add.w	$fp, $a5, $a4
+	add.w	$s0, $a5, $a4
 	bne	$a2, $a3, .LBB0_18
 # %bb.19:
 	ori	$a0, $zero, 19
@@ -1111,12 +1107,12 @@ endgame:                                # @endgame
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload

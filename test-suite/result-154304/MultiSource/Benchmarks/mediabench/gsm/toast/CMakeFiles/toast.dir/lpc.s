@@ -465,8 +465,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	bne	$a0, $a3, .LBB0_15
 # %bb.16:                               # %middle.block177
 	vadd.d	$vr16, $vr16, $vr17
-	vreplvei.d	$vr17, $vr16, 1
-	vadd.d	$vr16, $vr16, $vr17
+	vhaddw.q.d	$vr16, $vr16, $vr16
 	vpickve2gr.d	$a0, $vr16, 0
 	slli.d	$s1, $a0, 1
 	beqz	$a2, .LBB0_18
@@ -734,22 +733,14 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vadd.d	$vr5, $vr12, $vr5
 	vadd.d	$vr6, $vr13, $vr6
 	vadd.d	$vr7, $vr15, $vr14
-	vreplvei.d	$vr8, $vr0, 1
-	vreplvei.d	$vr9, $vr1, 1
-	vreplvei.d	$vr10, $vr2, 1
-	vreplvei.d	$vr11, $vr3, 1
-	vreplvei.d	$vr12, $vr4, 1
-	vreplvei.d	$vr13, $vr5, 1
-	vreplvei.d	$vr14, $vr6, 1
-	vreplvei.d	$vr15, $vr7, 1
-	vadd.d	$vr0, $vr0, $vr8
-	vadd.d	$vr1, $vr1, $vr9
-	vadd.d	$vr2, $vr2, $vr10
-	vadd.d	$vr3, $vr3, $vr11
-	vadd.d	$vr4, $vr4, $vr12
-	vadd.d	$vr5, $vr5, $vr13
-	vadd.d	$vr6, $vr6, $vr14
-	vadd.d	$vr7, $vr7, $vr15
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr4, $vr4, $vr4
+	vhaddw.q.d	$vr5, $vr5, $vr5
+	vhaddw.q.d	$vr6, $vr6, $vr6
+	vhaddw.q.d	$vr7, $vr7, $vr7
 	vpickve2gr.d	$a0, $vr0, 0
 	vpickve2gr.d	$a1, $vr1, 0
 	vpickve2gr.d	$a2, $vr2, 0

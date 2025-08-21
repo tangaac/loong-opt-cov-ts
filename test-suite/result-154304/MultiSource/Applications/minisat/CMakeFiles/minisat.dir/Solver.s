@@ -5375,27 +5375,27 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	ori	$a3, $zero, 8
 	bgeu	$a1, $a3, .LBB24_4
 # %bb.2:
-	move	$a4, $zero
 	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB24_7
 .LBB24_3:
-	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB24_9
 .LBB24_4:                               # %vector.ph
 	bstrpick.d	$a3, $a1, 30, 3
-	slli.d	$a4, $a3, 3
-	addi.d	$a3, $a2, 32
+	slli.d	$a3, $a3, 3
+	addi.d	$a4, $a2, 32
 	vrepli.b	$vr0, 0
 	vrepli.w	$vr1, 6
-	move	$a5, $a4
+	move	$a5, $a3
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB24_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, -32
-	ld.d	$a7, $a3, -24
-	ld.d	$t0, $a3, -16
-	ld.d	$t1, $a3, -8
+	ld.d	$a6, $a4, -32
+	ld.d	$a7, $a4, -24
+	ld.d	$t0, $a4, -16
+	ld.d	$t1, $a4, -8
 	ld.w	$a6, $a6, 0
 	ld.w	$a7, $a7, 0
 	ld.w	$t0, $t0, 0
@@ -5404,10 +5404,10 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	vinsgr2vr.w	$vr3, $a7, 1
 	vinsgr2vr.w	$vr3, $t0, 2
 	vinsgr2vr.w	$vr3, $t1, 3
-	ld.d	$a6, $a3, 0
-	ld.d	$a7, $a3, 8
-	ld.d	$t0, $a3, 16
-	ld.d	$t1, $a3, 24
+	ld.d	$a6, $a4, 0
+	ld.d	$a7, $a4, 8
+	ld.d	$t0, $a4, 16
+	ld.d	$t1, $a4, 24
 	ld.w	$a6, $a6, 0
 	ld.w	$a7, $a7, 0
 	ld.w	$t0, $t0, 0
@@ -5427,34 +5427,33 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	vadd.w	$vr0, $vr3, $vr0
 	vadd.w	$vr2, $vr4, $vr2
 	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
+	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB24_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a4, $a1, .LBB24_9
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	beq	$a3, $a1, .LBB24_9
 .LBB24_7:                               # %scalar.ph.preheader
-	alsl.d	$a2, $a4, $a2, 3
-	sub.d	$a1, $a1, $a4
+	alsl.d	$a2, $a3, $a2, 3
+	sub.d	$a1, $a1, $a3
 	.p2align	4, , 16
 .LBB24_8:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a2, 0
-	ld.wu	$a4, $a4, 0
-	andi	$a5, $a4, 6
+	ld.d	$a3, $a2, 0
+	ld.wu	$a3, $a3, 0
+	andi	$a5, $a3, 6
 	sltui	$a5, $a5, 1
-	srli.d	$a4, $a4, 3
-	maskeqz	$a4, $a4, $a5
-	add.w	$a3, $a4, $a3
+	srli.d	$a3, $a3, 3
+	maskeqz	$a3, $a3, $a5
+	add.d	$a4, $a3, $a4
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 8
 	bnez	$a1, .LBB24_8
 .LBB24_9:                               # %._crit_edge
 	ld.w	$a2, $a0, 144
+	addi.w	$a3, $a4, 0
 	bne	$a3, $a2, .LBB24_11
 # %bb.10:
 	ret

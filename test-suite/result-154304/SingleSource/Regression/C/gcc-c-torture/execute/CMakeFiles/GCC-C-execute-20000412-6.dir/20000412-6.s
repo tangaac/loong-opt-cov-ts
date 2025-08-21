@@ -76,19 +76,12 @@ bug:                                    # @bug
 	bnez	$a5, .LBB1_6
 # %bb.7:                                # %middle.block
 	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$a3, $a4, .LBB1_14
 # %bb.8:                                # %vec.epilog.iter.check
 	andi	$a5, $a3, 24
@@ -110,13 +103,10 @@ bug:                                    # @bug
 	addi.d	$a0, $a0, 16
 	bnez	$a1, .LBB1_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	bne	$a3, $a6, .LBB1_13
 	b	.LBB1_14
 .LBB1_12:

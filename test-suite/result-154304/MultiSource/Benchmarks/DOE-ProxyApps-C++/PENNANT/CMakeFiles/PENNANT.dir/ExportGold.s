@@ -1445,20 +1445,20 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception2
 # %bb.0:
-	addi.d	$sp, $sp, -944
-	.cfi_def_cfa_offset 944
-	st.d	$ra, $sp, 936                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 928                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 920                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 912                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 904                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 896                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 888                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 880                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 872                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 864                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 856                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 848                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -960
+	.cfi_def_cfa_offset 960
+	st.d	$ra, $sp, 952                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 944                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 936                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 928                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 920                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 912                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 904                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 896                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 888                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 880                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 872                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 864                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1474,44 +1474,44 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	fmov.d	$fs0, $fa0
 	move	$fp, $a2
 	move	$s2, $a1
-	move	$s8, $a0
-	addi.d	$a0, $sp, 336
+	move	$s4, $a0
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEEC1Ev)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$s3, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
 	ld.w	$a0, $s3, 0
-	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 216                   # 8-byte Folded Spill
 	bnez	$a0, .LBB5_73
 # %bb.1:
 	ld.d	$s0, $s2, 0
 	ld.d	$s2, $s2, 8
-	addi.d	$s3, $sp, 320
-	st.d	$s3, $sp, 304
-	st.d	$zero, $sp, 312
-	st.b	$zero, $sp, 320
+	addi.d	$s3, $sp, 336
+	st.d	$s3, $sp, 320
+	st.d	$zero, $sp, 328
+	st.b	$zero, $sp, 336
 	addi.d	$a1, $s2, 4
 .Ltmp162:                               # EH_LABEL
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 320
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7reserveEm)
 	jirl	$ra, $ra, 0
 .Ltmp163:                               # EH_LABEL
 # %bb.2:
-	ld.d	$a0, $sp, 312
+	ld.d	$a0, $sp, 328
 	addi.w	$a1, $zero, -2
 	lu52i.d	$a1, $a1, 2047
 	sub.d	$a0, $a1, $a0
 	bltu	$a0, $s2, .LBB5_537
 # %bb.3:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE15_M_check_lengthEmmPKc.exit.i.i.i
 .Ltmp164:                               # EH_LABEL
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 320
 	move	$a1, $s0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcm)
 	jirl	$ra, $ra, 0
 .Ltmp165:                               # EH_LABEL
 # %bb.4:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6appendEPKcm.exit.i.i
-	ld.d	$a0, $sp, 312
+	ld.d	$a0, $sp, 328
 	addi.w	$a1, $zero, -5
 	lu52i.d	$a1, $a1, 2047
 	bgeu	$a0, $a1, .LBB5_537
@@ -1519,14 +1519,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp166:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.12)
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 320
 	ori	$a2, $zero, 4
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcm)
 	jirl	$ra, $ra, 0
 .Ltmp167:                               # EH_LABEL
 # %bb.6:                                # %_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EERKS8_PKS5_.exit
-	ld.d	$a1, $sp, 304
-	addi.d	$a0, $sp, 344
+	ld.d	$a1, $sp, 320
+	addi.d	$a0, $sp, 360
 .Ltmp168:                               # EH_LABEL
 	ori	$a2, $zero, 16
 	pcaddu18i	$ra, %call36(_ZNSt13basic_filebufIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode)
@@ -1534,9 +1534,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a1, $a0
 .Ltmp169:                               # EH_LABEL
 # %bb.7:                                # %.noexc
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a2, $sp, 336
+	addi.d	$a2, $sp, 352
 	add.d	$a0, $a2, $a0
 	beqz	$a1, .LBB5_9
 # %bb.8:
@@ -1551,28 +1551,28 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp171:                               # EH_LABEL
 # %bb.11:                               # %_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode.exit
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 336
+	addi.d	$a1, $sp, 352
 	add.d	$a0, $a1, $a0
 	ld.w	$a0, $a0, 32
 	bnez	$a0, .LBB5_543
 # %bb.12:
-	ld.d	$a0, $sp, 304
+	ld.d	$a0, $sp, 320
 	beq	$a0, $s3, .LBB5_14
 # %bb.13:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i240
-	ld.d	$a1, $sp, 320
+	ld.d	$a1, $sp, 336
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_14:
-	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	ld.w	$a0, $s3, 0
 	bnez	$a0, .LBB5_73
 # %bb.15:
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$s0, $sp, 336
+	addi.d	$s0, $sp, 352
 	add.d	$a0, $s0, $a0
 	ld.wu	$a1, $a0, 24
 	addi.w	$a2, $zero, -261
@@ -1583,19 +1583,19 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp181:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.20)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 8
 	ori	$s1, $zero, 8
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp182:                               # EH_LABEL
 # %bb.16:
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s0, $a0
 	st.d	$s1, $a0, 16
 .Ltmp183:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
@@ -1640,28 +1640,28 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp192:                               # EH_LABEL
 # %bb.24:
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	add.d	$a0, $fp, $a0
 	ori	$a1, $zero, 8
 	st.d	$a1, $a0, 8
 .Ltmp193:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.21)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 4
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp194:                               # EH_LABEL
 # %bb.25:
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ori	$a1, $zero, 15
 	st.d	$a1, $a0, 16
 .Ltmp195:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIdEERSoT_)
 	jirl	$ra, $ra, 0
@@ -1709,14 +1709,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp205:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.22)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 14
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp206:                               # EH_LABEL
 # %bb.34:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit256
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$fp, $a0, 240
@@ -1744,7 +1744,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_39:                               # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i563
 .Ltmp211:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp212:                               # EH_LABEL
@@ -1757,14 +1757,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp215:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.23)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 16
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp216:                               # EH_LABEL
 # %bb.42:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit260
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$fp, $a0, 240
@@ -1792,7 +1792,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_47:                               # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i574
 .Ltmp221:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp222:                               # EH_LABEL
@@ -1805,14 +1805,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp225:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.24)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 4
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp226:                               # EH_LABEL
 # %bb.50:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit264
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$fp, $a0, 240
@@ -1840,7 +1840,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_55:                               # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i585
 .Ltmp231:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp232:                               # EH_LABEL
@@ -1850,14 +1850,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp234:                               # EH_LABEL
 # %bb.57:
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 336
+	addi.d	$a1, $sp, 352
 	add.d	$a0, $a1, $a0
 	ori	$a1, $zero, 10
 	st.d	$a1, $a0, 16
 .Ltmp235:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
@@ -1905,14 +1905,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp245:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.25)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 8
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp246:                               # EH_LABEL
 # %bb.66:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit271
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$fp, $a0, 240
@@ -1940,7 +1940,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_71:                               # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i607
 .Ltmp251:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp252:                               # EH_LABEL
@@ -1950,12 +1950,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp254:                               # EH_LABEL
 .LBB5_73:                               # %_ZNSolsEPFRSoS_E.exit273
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s4, 0
 	ld.w	$fp, $a0, 60
 	ld.d	$s0, $a0, 240
-	st.w	$fp, $sp, 304
+	st.w	$fp, $sp, 320
 .Ltmp255:                               # EH_LABEL
-	addi.d	$a0, $sp, 304
+	addi.d	$a0, $sp, 320
 	pcaddu18i	$ra, %call36(_ZN8Parallel9globalSumERi)
 	jirl	$ra, $ra, 0
 .Ltmp256:                               # EH_LABEL
@@ -1963,14 +1963,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel5numpeE)
 	ld.d	$a1, $a0, %got_pc_lo12(_ZN8Parallel5numpeE)
 	ld.w	$a0, $s3, 0
-	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
 	ld.w	$a1, $a1, 0
 	sltui	$a0, $a0, 1
 	maskeqz	$s1, $a1, $a0
 	addi.w	$a0, $zero, -1
-	bge	$a0, $s1, .LBB5_513
+	bge	$a0, $s1, .LBB5_515
 # %bb.75:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i
-	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	beqz	$s1, .LBB5_80
 # %bb.76:
 	slli.d	$s3, $s1, 2
@@ -1995,7 +1995,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 	move	$s2, $s1
 .LBB5_79:                               # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit
-	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	b	.LBB5_81
 .LBB5_80:
 	move	$s6, $zero
@@ -2010,7 +2010,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp261:                               # EH_LABEL
 # %bb.82:
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	sltui	$a0, $a0, 1
 	addi.w	$a1, $a1, 1
@@ -2018,9 +2018,10 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a1, $a0
 	or	$s1, $a0, $a2
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	bge	$a0, $s1, .LBB5_515
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	bge	$a0, $s1, .LBB5_517
 # %bb.83:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i276
+	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
 	beqz	$s1, .LBB5_88
 # %bb.84:
 	slli.d	$s3, $s1, 2
@@ -2031,8 +2032,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp264:                               # EH_LABEL
 # %bb.85:                               # %.noexc282
 	move	$s7, $a0
-	alsl.d	$a0, $s1, $a0, 2
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	alsl.d	$s8, $s1, $a0, 2
 	ori	$a0, $zero, 1
 	st.w	$zero, $s7, 0
 	beq	$s1, $a0, .LBB5_87
@@ -2043,11 +2043,11 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB5_87:                               # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit283
-	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
 	bne	$s5, $s2, .LBB5_89
 	b	.LBB5_92
 .LBB5_88:
-	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	move	$s8, $zero
 	move	$s7, $zero
 	beq	$s5, $s2, .LBB5_92
 .LBB5_89:
@@ -2068,18 +2068,18 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	bne	$a1, $s2, .LBB5_91
 .LBB5_92:                               # %_ZSt11partial_sumIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEES2_ET0_T_S8_S7_.exit
 .Ltmp265:                               # EH_LABEL
-	addi.d	$a1, $sp, 300
+	addi.d	$a1, $sp, 316
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZN8Parallel7scatterEPKiRi)
 	jirl	$ra, $ra, 0
 .Ltmp266:                               # EH_LABEL
 # %bb.93:
 	ld.w	$a0, $s3, 0
-	ld.w	$a1, $sp, 304
+	ld.w	$a1, $sp, 320
 	sltui	$a0, $a0, 1
 	maskeqz	$s1, $a1, $a0
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	bge	$a0, $s1, .LBB5_517
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	bge	$a0, $s1, .LBB5_519
 # %bb.94:                               # %_ZNSt6vectorI7double2SaIS0_EE17_S_check_init_lenEmRKS1_.exit.i
 	beqz	$s1, .LBB5_97
 # %bb.95:                               # %.lr.ph.preheader.i.i.i.i.i
@@ -2092,7 +2092,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 # %bb.96:                               # %.noexc288
 	move	$s4, $a0
 	alsl.d	$a0, $s1, $a0, 4
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	move	$a0, $s4
 	move	$a1, $zero
 	move	$a2, $s2
@@ -2101,12 +2101,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	b	.LBB5_98
 .LBB5_97:
 	move	$s4, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
 .LBB5_98:                               # %_ZNSt6vectorI7double2SaIS0_EEC2EmRKS1_.exit
 .Ltmp270:                               # EH_LABEL
 	move	$a0, $s0
 	move	$a1, $fp
-	st.d	$s4, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
 	move	$a2, $s4
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervI7double2EEvPKT_iPS2_PKi)
@@ -2116,54 +2116,56 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.w	$a0, $s3, 0
 	beqz	$a0, .LBB5_104
 .LBB5_100:                              # %.loopexit1095
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a0, $s8, 0
+	st.d	$s8, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 120                   # 8-byte Folded Spill
+	ld.d	$s7, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $s7, 0
 	ld.d	$a1, $a0, 232
-	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
 	ld.d	$a0, $a0, 88
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$s0, $s8, 16
-	ld.d	$s5, $s8, 8
-	ld.d	$s1, $s8, 40
-	ld.d	$s4, $s8, 32
-	ld.d	$fp, $s8, 64
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	ld.d	$s2, $s8, 56
+	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	ld.d	$s0, $s7, 16
+	ld.d	$s5, $s7, 8
+	ld.d	$s1, $s7, 40
+	ld.d	$s4, $s7, 32
+	ld.d	$fp, $s7, 64
+	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
+	ld.w	$a0, $s3, 0
+	ld.d	$s2, $s7, 56
 	bnez	$a0, .LBB5_122
 # %bb.101:
-	ld.d	$a0, $s8, 112
-	ld.d	$a2, $s8, 104
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $s7, 112
+	ld.d	$a2, $s7, 104
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	sub.d	$a3, $a0, $a2
 	srai.d	$a3, $a3, 2
 	bgeu	$a3, $a1, .LBB5_108
 # %bb.102:
-	addi.d	$a0, $s8, 104
+	addi.d	$a0, $s7, 104
 	sub.d	$a1, $a1, $a3
 .Ltmp325:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .Ltmp326:                               # EH_LABEL
 # %bb.103:                              # %._ZNSt6vectorIiSaIiEE6resizeEm.exit_crit_edge
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
 	b	.LBB5_111
 .LBB5_104:
 .Ltmp272:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.26)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.26)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 11
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp273:                               # EH_LABEL
 # %bb.105:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit290
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$fp, $a0, 240
@@ -2180,22 +2182,22 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a2, $a1, $a2, 2
 	beq	$a0, $a2, .LBB5_111
 # %bb.110:
-	st.d	$a2, $s8, 112
+	st.d	$a2, $s7, 112
 .LBB5_111:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit
-	ld.d	$a0, $s8, 136
-	ld.d	$a2, $s8, 128
+	ld.d	$a0, $s7, 136
+	ld.d	$a2, $s7, 128
 	sub.d	$a3, $a0, $a2
 	srai.d	$a3, $a3, 2
 	bgeu	$a3, $a1, .LBB5_114
 # %bb.112:
-	addi.d	$a0, $s8, 128
+	addi.d	$a0, $s7, 128
 	sub.d	$a1, $a1, $a3
 .Ltmp327:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .Ltmp328:                               # EH_LABEL
 # %bb.113:                              # %._ZNSt6vectorIiSaIiEE6resizeEm.exit315_crit_edge
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
 	b	.LBB5_117
 .LBB5_114:
@@ -2204,15 +2206,15 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a2, $a1, $a2, 2
 	beq	$a0, $a2, .LBB5_117
 # %bb.116:
-	st.d	$a2, $s8, 136
+	st.d	$a2, $s7, 136
 .LBB5_117:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit315
-	ld.d	$a0, $s8, 160
-	ld.d	$a2, $s8, 152
+	ld.d	$a0, $s7, 160
+	ld.d	$a2, $s7, 152
 	sub.d	$a3, $a0, $a2
 	srai.d	$a3, $a3, 2
 	bgeu	$a3, $a1, .LBB5_119
 # %bb.118:
-	addi.d	$a0, $s8, 152
+	addi.d	$a0, $s7, 152
 	sub.d	$a1, $a1, $a3
 .Ltmp329:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
@@ -2225,32 +2227,33 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a1, $a1, $a2, 2
 	beq	$a0, $a1, .LBB5_122
 # %bb.121:
-	st.d	$a1, $s8, 160
+	st.d	$a1, $s7, 160
 .LBB5_122:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit318
-	ld.d	$a1, $s8, 104
+	ld.d	$a1, $s7, 104
 	sub.d	$a0, $s0, $s5
-	srai.d	$s7, $a0, 2
+	srai.d	$s6, $a0, 2
 .Ltmp331:                               # EH_LABEL
-	addi.w	$s0, $s7, 0
+	addi.w	$s0, $s6, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8Parallel6gatherEiPi)
 	jirl	$ra, $ra, 0
 .Ltmp332:                               # EH_LABEL
 # %bb.123:
-	ld.d	$a1, $s8, 128
+	ld.d	$a1, $s7, 128
 	sub.d	$a0, $s1, $s4
 	srai.d	$a0, $a0, 2
 .Ltmp333:                               # EH_LABEL
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
-	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN8Parallel6gatherEiPi)
 	jirl	$ra, $ra, 0
 .Ltmp334:                               # EH_LABEL
 # %bb.124:
-	ld.d	$a1, $s8, 152
-	sub.d	$fp, $fp, $s2
-	srai.d	$s5, $fp, 2
+	ld.d	$a1, $s7, 152
+	sub.d	$a0, $fp, $s2
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
+	srai.d	$s5, $a0, 2
 .Ltmp335:                               # EH_LABEL
 	addi.w	$s1, $s5, 0
 	move	$a0, $s1
@@ -2258,15 +2261,13 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp336:                               # EH_LABEL
 # %bb.125:
-	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
-	ld.d	$s2, $s8, 104
-	ld.d	$a0, $s8, 112
+	ld.d	$s2, $s7, 104
+	ld.d	$a0, $s7, 112
 	beq	$s2, $a0, .LBB5_128
 # %bb.126:                              # %iter.check
 	sub.d	$a1, $a0, $s2
 	addi.d	$a2, $a1, -4
 	ori	$a1, $zero, 12
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
 	bgeu	$a2, $a1, .LBB5_129
 # %bb.127:
 	move	$fp, $zero
@@ -2274,7 +2275,6 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	b	.LBB5_184
 .LBB5_128:
 	move	$fp, $zero
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
 	b	.LBB5_185
 .LBB5_129:                              # %vector.main.loop.iter.check
 	srli.d	$a1, $a2, 2
@@ -2304,16 +2304,11 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	bnez	$a4, .LBB5_132
 # %bb.133:                              # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$fp, $xr0, 0
 	beq	$a1, $a2, .LBB5_185
 # %bb.134:                              # %vec.epilog.iter.check
 	andi	$a3, $a1, 12
@@ -2335,11 +2330,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a5, $a5, 16
 	bnez	$a2, .LBB5_136
 # %bb.137:                              # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$fp, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$fp, $vr0, 0
 	bne	$a1, $a4, .LBB5_184
 	b	.LBB5_185
 .LBB5_138:
@@ -2359,7 +2352,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_140:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i618
 .Ltmp278:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp279:                               # EH_LABEL
@@ -2369,15 +2362,15 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp281:                               # EH_LABEL
 # %bb.142:
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a2, $sp, 336
-	ld.w	$a1, $sp, 304
+	addi.d	$a2, $sp, 352
+	ld.w	$a1, $sp, 320
 	add.d	$a0, $a2, $a0
 	ori	$a2, $zero, 10
 	st.d	$a2, $a0, 16
 .Ltmp282:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp283:                               # EH_LABEL
@@ -2421,10 +2414,10 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp291:                               # EH_LABEL
 # %bb.150:                              # %_ZNSolsEPFRSoS_E.exit295
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$s1, $sp, 336
-	ld.w	$a1, $sp, 304
+	addi.d	$s1, $sp, 352
+	ld.w	$a1, $sp, 320
 	add.d	$a0, $s1, $a0
 	ori	$a2, $zero, 5
 	ori	$a3, $zero, 1
@@ -2433,17 +2426,17 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 # %bb.151:                              # %.lr.ph.preheader
 	move	$s2, $zero
 	ori	$s3, $zero, 12
-	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB5_152:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	fld.d	$fa0, $s4, 0
 	add.d	$a0, $s1, $a0
 	st.d	$s3, $a0, 16
 .Ltmp292:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIdEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp293:                               # EH_LABEL
@@ -2454,7 +2447,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_499
+	beqz	$s0, .LBB5_501
 # %bb.154:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i638
                                         #   in Loop: Header=BB5_152 Depth=1
 	ld.bu	$a0, $s0, 56
@@ -2494,7 +2487,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp301:                               # EH_LABEL
 # %bb.160:                              # %_ZNSolsEPFRSoS_E.exit301
                                         #   in Loop: Header=BB5_152 Depth=1
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 320
 	addi.d	$s2, $s2, 1
 	addi.d	$s4, $s4, 16
 	blt	$s2, $a0, .LBB5_152
@@ -2503,20 +2496,20 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	blt	$a0, $a1, .LBB5_100
 # %bb.162:                              # %.lr.ph1133.preheader
 	move	$s1, $zero
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$s2, $a0, 8
-	addi.d	$s3, $sp, 336
+	addi.d	$s3, $sp, 352
 	ori	$s4, $zero, 12
 	.p2align	4, , 16
 .LBB5_163:                              # %.lr.ph1133
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	fld.d	$fa0, $s2, 0
 	add.d	$a0, $s3, $a0
 	st.d	$s4, $a0, 16
 .Ltmp303:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIdEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp304:                               # EH_LABEL
@@ -2527,7 +2520,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_507
+	beqz	$s0, .LBB5_509
 # %bb.165:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i649
                                         #   in Loop: Header=BB5_163 Depth=1
 	ld.bu	$a0, $s0, 56
@@ -2567,7 +2560,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp312:                               # EH_LABEL
 # %bb.171:                              # %_ZNSolsEPFRSoS_E.exit306
                                         #   in Loop: Header=BB5_163 Depth=1
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 320
 	addi.d	$s1, $s1, 1
 	addi.d	$s2, $s2, 16
 	blt	$s1, $a0, .LBB5_163
@@ -2576,18 +2569,18 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	blt	$a0, $a1, .LBB5_100
 # %bb.173:                              # %.lr.ph1135.preheader
 	move	$s1, $zero
-	addi.d	$s2, $sp, 336
+	addi.d	$s2, $sp, 352
 	ori	$s3, $zero, 12
 	movgr2fr.d	$fs0, $zero
 	.p2align	4, , 16
 .LBB5_174:                              # %.lr.ph1135
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	st.d	$s3, $a0, 16
 .Ltmp314:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIdEERSoT_)
 	jirl	$ra, $ra, 0
@@ -2599,7 +2592,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_511
+	beqz	$s0, .LBB5_513
 # %bb.176:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i660
                                         #   in Loop: Header=BB5_174 Depth=1
 	ld.bu	$a0, $s0, 56
@@ -2639,7 +2632,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp323:                               # EH_LABEL
 # %bb.182:                              # %_ZNSolsEPFRSoS_E.exit311
                                         #   in Loop: Header=BB5_174 Depth=1
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 320
 	addi.w	$s1, $s1, 1
 	blt	$s1, $a0, .LBB5_174
 	b	.LBB5_100
@@ -2650,12 +2643,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a3, 0
 	addi.d	$a3, $a3, 4
-	add.w	$fp, $a1, $fp
+	add.d	$fp, $a1, $fp
 	bne	$a3, $a0, .LBB5_184
 .LBB5_185:                              # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEiET0_T_S8_S7_.exit
-	ld.d	$a2, $s8, 128
-	ld.d	$a0, $s8, 136
-	st.w	$fp, $s8, 176
+	ld.d	$a2, $s7, 128
+	ld.d	$a0, $s7, 136
+	st.w	$fp, $s7, 176
 	beq	$a2, $a0, .LBB5_188
 # %bb.186:                              # %iter.check1401
 	sub.d	$a1, $a0, $a2
@@ -2663,11 +2656,11 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ori	$a1, $zero, 12
 	bgeu	$a3, $a1, .LBB5_189
 # %bb.187:
-	move	$a4, $zero
+	move	$a3, $zero
 	move	$a5, $a2
 	b	.LBB5_199
 .LBB5_188:
-	move	$a4, $zero
+	move	$a3, $zero
 	b	.LBB5_200
 .LBB5_189:                              # %vector.main.loop.iter.check1403
 	srli.d	$a1, $a3, 2
@@ -2675,39 +2668,34 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a1, $a1, 1
 	bgeu	$a3, $a4, .LBB5_191
 # %bb.190:
-	move	$a3, $zero
 	move	$a4, $zero
+	move	$a3, $zero
 	b	.LBB5_195
 .LBB5_191:                              # %vector.ph1404
 	bstrpick.d	$a3, $a1, 62, 4
-	slli.d	$a3, $a3, 4
+	slli.d	$a4, $a3, 4
 	xvrepli.b	$xr0, 0
-	addi.d	$a4, $a2, 32
-	move	$a5, $a3
+	addi.d	$a3, $a2, 32
+	move	$a5, $a4
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB5_192:                              # %vector.body1407
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a4, -32
-	xvld	$xr3, $a4, 0
+	xvld	$xr2, $a3, -32
+	xvld	$xr3, $a3, 0
 	xvadd.w	$xr0, $xr2, $xr0
 	xvadd.w	$xr1, $xr3, $xr1
 	addi.d	$a5, $a5, -16
-	addi.d	$a4, $a4, 64
+	addi.d	$a3, $a3, 64
 	bnez	$a5, .LBB5_192
 # %bb.193:                              # %middle.block1415
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
-	beq	$a1, $a3, .LBB5_200
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
+	beq	$a1, $a4, .LBB5_200
 # %bb.194:                              # %vec.epilog.iter.check1422
 	andi	$a5, $a1, 12
 	beqz	$a5, .LBB5_198
@@ -2716,9 +2704,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	slli.d	$a6, $a5, 2
 	alsl.d	$a5, $a5, $a2, 4
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a4, 0
-	alsl.d	$a2, $a3, $a2, 2
-	sub.d	$a3, $a3, $a6
+	vinsgr2vr.w	$vr0, $a3, 0
+	alsl.d	$a2, $a4, $a2, 2
+	sub.d	$a3, $a4, $a6
 	.p2align	4, , 16
 .LBB5_196:                              # %vec.epilog.vector.body1427
                                         # =>This Inner Loop Header: Depth=1
@@ -2728,27 +2716,25 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB5_196
 # %bb.197:                              # %vec.epilog.middle.block1434
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	bne	$a1, $a6, .LBB5_199
 	b	.LBB5_200
 .LBB5_198:
-	alsl.d	$a5, $a3, $a2, 2
+	alsl.d	$a5, $a4, $a2, 2
 	.p2align	4, , 16
 .LBB5_199:                              # %.lr.ph.i324
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $a5, 0
 	addi.d	$a5, $a5, 4
-	add.d	$a4, $a1, $a4
+	add.d	$a3, $a1, $a3
 	bne	$a5, $a0, .LBB5_199
 .LBB5_200:                              # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEiET0_T_S8_S7_.exit330
-	ld.d	$a2, $s8, 152
-	ld.d	$a0, $s8, 160
-	st.w	$a4, $s8, 180
-	st.d	$s1, $sp, 168                   # 8-byte Folded Spill
+	ld.d	$a2, $s7, 152
+	ld.d	$a0, $s7, 160
+	st.w	$a3, $s7, 180
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
 	beq	$a2, $a0, .LBB5_203
 # %bb.201:                              # %iter.check1441
 	sub.d	$a1, $a0, $a2
@@ -2790,16 +2776,11 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	bnez	$a5, .LBB5_207
 # %bb.208:                              # %middle.block1455
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a3, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a1, $a4, .LBB5_215
 # %bb.209:                              # %vec.epilog.iter.check1462
 	andi	$a5, $a1, 12
@@ -2821,11 +2802,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB5_211
 # %bb.212:                              # %vec.epilog.middle.block1474
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	bne	$a1, $a6, .LBB5_214
 	b	.LBB5_215
 .LBB5_213:
@@ -2838,14 +2817,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	add.d	$a3, $a1, $a3
 	bne	$a5, $a0, .LBB5_214
 .LBB5_215:                              # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEiET0_T_S8_S7_.exit339
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+	ld.w	$a0, $s3, 0
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	sltui	$a0, $a0, 1
 	maskeqz	$s1, $a1, $a0
-	st.w	$a3, $s8, 184
-	bge	$s6, $s1, .LBB5_519
+	st.w	$a3, $s7, 184
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	bge	$a0, $s1, .LBB5_521
 # %bb.216:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i340
 	beqz	$s1, .LBB5_220
 # %bb.217:
@@ -2857,87 +2836,36 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp339:                               # EH_LABEL
 # %bb.218:                              # %.noexc346
 	alsl.d	$a1, $s1, $a0, 2
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
 	ori	$a1, $zero, 1
 	addi.d	$a3, $a0, 4
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
-	beq	$s1, $a1, .LBB5_221
-# %bb.219:                              # %.lr.ph.i.preheader.i.i.i.i.i342
-	add.d	$s1, $a0, $s4
-	addi.d	$a2, $s4, -4
-	move	$a0, $a3
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-	move	$a3, $s1
-	b	.LBB5_221
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
+	bne	$s1, $a1, .LBB5_241
+# %bb.219:
+	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	blt	$a0, $s0, .LBB5_221
+	b	.LBB5_242
 .LBB5_220:
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 208                 # 8-byte Folded Spill
-	move	$a3, $zero
-.LBB5_221:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit347
-	ld.d	$s1, $sp, 232                   # 8-byte Folded Reload
-	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
-	bge	$s6, $s0, .LBB5_521
-# %bb.222:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i348
-	alsl.w	$s5, $s7, $s7, 1
-	beqz	$s0, .LBB5_231
-# %bb.223:
-	move	$s4, $a3
-	slli.d	$s6, $s5, 2
+	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	bge	$a0, $s0, .LBB5_242
+.LBB5_221:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i348
+	st.d	$s6, $sp, 224                   # 8-byte Folded Spill
+	alsl.w	$s8, $s6, $s6, 1
+	beqz	$s0, .LBB5_230
+# %bb.222:
+	slli.d	$s6, $s8, 2
 .Ltmp340:                               # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp341:                               # EH_LABEL
-# %bb.224:                              # %.noexc354
-	alsl.d	$a1, $s5, $a0, 2
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
-	st.w	$zero, $a0, 0
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
-	addi.d	$a0, $a0, 4
-	addi.d	$a2, $s6, -4
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
-	move	$a3, $s4
-	bge	$s6, $fp, .LBB5_232
-.LBB5_225:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i356
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
-	beqz	$fp, .LBB5_234
-# %bb.226:
-	slli.d	$s6, $fp, 2
-.Ltmp342:                               # EH_LABEL
-	move	$a0, $s6
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-.Ltmp343:                               # EH_LABEL
-# %bb.227:                              # %.noexc362
-	move	$s1, $a0
-	ori	$a0, $zero, 1
-	st.w	$zero, $s1, 0
-	beq	$fp, $a0, .LBB5_229
-# %bb.228:                              # %.lr.ph.i.preheader.i.i.i.i.i358
-	addi.d	$a0, $s1, 4
-	addi.d	$a2, $s6, -4
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-.LBB5_229:
-	move	$s4, $s1
-	alsl.d	$a0, $fp, $s1, 2
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	alsl.w	$fp, $fp, $fp, 1
-	slli.d	$s6, $fp, 2
-.Ltmp344:                               # EH_LABEL
-	move	$a0, $s6
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-.Ltmp345:                               # EH_LABEL
-# %bb.230:                              # %.noexc370
-	alsl.d	$a1, $fp, $a0, 2
+# %bb.223:                              # %.noexc354
+	alsl.d	$a1, $s8, $a0, 2
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
 	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
@@ -2946,72 +2874,136 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
+	addi.w	$s1, $fp, 0
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	bge	$a0, $s1, .LBB5_231
+.LBB5_224:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i356
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	beqz	$s1, .LBB5_233
+# %bb.225:
+	slli.d	$s6, $s1, 2
+.Ltmp342:                               # EH_LABEL
+	move	$a0, $s6
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+.Ltmp343:                               # EH_LABEL
+# %bb.226:                              # %.noexc362
+	move	$s5, $a0
+	ori	$a0, $zero, 1
+	st.w	$zero, $s5, 0
+	beq	$s1, $a0, .LBB5_228
+# %bb.227:                              # %.lr.ph.i.preheader.i.i.i.i.i358
+	addi.d	$a0, $s5, 4
+	addi.d	$a2, $s6, -4
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(memset)
+	jirl	$ra, $ra, 0
+.LBB5_228:
+	move	$s4, $s5
+	alsl.d	$a0, $s1, $s5, 2
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	alsl.w	$fp, $fp, $fp, 1
+	slli.d	$s6, $fp, 2
+.Ltmp344:                               # EH_LABEL
+	move	$a0, $s6
+	pcaddu18i	$ra, %call36(_Znwm)
+	jirl	$ra, $ra, 0
+.Ltmp345:                               # EH_LABEL
+# %bb.229:                              # %.noexc370
+	alsl.d	$a1, $fp, $a0, 2
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	st.w	$zero, $a0, 0
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	addi.d	$a0, $a0, 4
+	addi.d	$a2, $s6, -4
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(memset)
+	jirl	$ra, $ra, 0
 	move	$a2, $s4
-	ld.d	$s1, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
-	b	.LBB5_235
+	b	.LBB5_234
+.LBB5_230:
+	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
+	addi.w	$s1, $fp, 0
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	blt	$a0, $s1, .LBB5_224
 .LBB5_231:
-	st.d	$zero, $sp, 184                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
-	blt	$s6, $fp, .LBB5_225
-.LBB5_232:
 .Ltmp586:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp587:                               # EH_LABEL
-# %bb.233:                              # %.noexc361
-.LBB5_234:
-	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
+# %bb.232:                              # %.noexc361
+.LBB5_233:
+	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
 	move	$a2, $zero
-	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
-.LBB5_235:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit371
-	ld.d	$a0, $s8, 8
+	st.d	$zero, $sp, 208                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
+.LBB5_234:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit371
+	ld.d	$s5, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $s7, 8
 .Ltmp347:                               # EH_LABEL
 	move	$a1, $s0
-	st.d	$a2, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 304                   # 8-byte Folded Spill
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp348:                               # EH_LABEL
-# %bb.236:
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	bnez	$a1, .LBB5_251
-# %bb.237:                              # %.preheader1092
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+# %bb.235:
+	move	$s6, $s3
+	ld.w	$a1, $s3, 0
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	bnez	$a1, .LBB5_253
+# %bb.236:                              # %.preheader1092
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a6, $a1, 0
 	ori	$a1, $zero, 1
-	blt	$a6, $a1, .LBB5_251
-# %bb.238:                              # %iter.check1482
-	ld.d	$a1, $s8, 104
+	blt	$a6, $a1, .LBB5_253
+# %bb.237:                              # %iter.check1482
+	ld.d	$a1, $s7, 104
 	ori	$a3, $zero, 4
 	move	$a2, $zero
-	bltu	$a6, $a3, .LBB5_249
-# %bb.239:                              # %iter.check1482
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	bltu	$a6, $a3, .LBB5_251
+# %bb.238:                              # %iter.check1482
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	sub.d	$a3, $a3, $a1
 	ori	$a4, $zero, 63
-	bgeu	$a4, $a3, .LBB5_249
-# %bb.240:                              # %vector.main.loop.iter.check1484
+	bgeu	$a4, $a3, .LBB5_251
+# %bb.239:                              # %vector.main.loop.iter.check1484
 	ori	$a2, $zero, 16
-	bgeu	$a6, $a2, .LBB5_242
-# %bb.241:
+	bgeu	$a6, $a2, .LBB5_244
+# %bb.240:
 	move	$a2, $zero
-	b	.LBB5_246
-.LBB5_242:                              # %vector.ph1485
+	b	.LBB5_248
+.LBB5_241:                              # %.lr.ph.i.preheader.i.i.i.i.i342
+	add.d	$s1, $a0, $s4
+	addi.d	$a2, $s4, -4
+	move	$a0, $a3
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(memset)
+	jirl	$ra, $ra, 0
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	blt	$a0, $s0, .LBB5_221
+.LBB5_242:
+.Ltmp589:                               # EH_LABEL
+	pcalau12i	$a0, %pc_hi20(.L.str.33)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
+	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
+	jirl	$ra, $ra, 0
+.Ltmp590:                               # EH_LABEL
+# %bb.243:                              # %.noexc353
+.LBB5_244:                              # %vector.ph1485
 	bstrpick.d	$a2, $a6, 30, 4
 	slli.d	$a2, $a2, 4
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a1, 32
 	xvrepli.w	$xr0, 3
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB5_243:                              # %vector.body1488
+.LBB5_245:                              # %vector.body1488
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a4, -32
 	xvld	$xr2, $a4, 0
@@ -3022,23 +3014,23 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a5, $a5, -16
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_243
-# %bb.244:                              # %middle.block1493
-	beq	$a2, $a6, .LBB5_251
-# %bb.245:                              # %vec.epilog.iter.check1498
+	bnez	$a5, .LBB5_245
+# %bb.246:                              # %middle.block1493
+	beq	$a2, $a6, .LBB5_253
+# %bb.247:                              # %vec.epilog.iter.check1498
 	andi	$a3, $a6, 12
-	beqz	$a3, .LBB5_249
-.LBB5_246:                              # %vec.epilog.ph1497
+	beqz	$a3, .LBB5_251
+.LBB5_248:                              # %vec.epilog.ph1497
 	move	$a5, $a2
 	bstrpick.d	$a2, $a6, 30, 2
 	slli.d	$a2, $a2, 2
 	sub.d	$a3, $a5, $a2
-	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a4, $a5, $a4, 2
 	alsl.d	$a5, $a5, $a1, 2
 	vrepli.w	$vr0, 3
 	.p2align	4, , 16
-.LBB5_247:                              # %vec.epilog.vector.body1503
+.LBB5_249:                              # %vec.epilog.vector.body1503
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a5, 0
 	vmul.w	$vr1, $vr1, $vr0
@@ -3046,16 +3038,16 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB5_247
-# %bb.248:                              # %vec.epilog.middle.block1507
-	beq	$a2, $a6, .LBB5_251
-.LBB5_249:                              # %vec.epilog.scalar.ph1496.preheader
+	bnez	$a3, .LBB5_249
+# %bb.250:                              # %vec.epilog.middle.block1507
+	beq	$a2, $a6, .LBB5_253
+.LBB5_251:                              # %vec.epilog.scalar.ph1496.preheader
 	alsl.d	$a1, $a2, $a1, 2
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a3, $a2, $a3, 2
 	sub.d	$a4, $a6, $a2
 	.p2align	4, , 16
-.LBB5_250:                              # %vec.epilog.scalar.ph1496
+.LBB5_252:                              # %vec.epilog.scalar.ph1496
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
 	alsl.d	$a2, $a2, $a2, 1
@@ -3063,23 +3055,24 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 4
-	bnez	$a4, .LBB5_250
-.LBB5_251:                              # %.loopexit1093
-	beqz	$s0, .LBB5_254
-# %bb.252:                              # %.lr.ph1140
-	ld.d	$a7, $s8, 8
-	ld.d	$a1, $s8, 80
-	ld.w	$a2, $sp, 300
-	bstrpick.d	$a3, $s7, 30, 0
+	bnez	$a4, .LBB5_252
+.LBB5_253:                              # %.loopexit1093
+	beqz	$s0, .LBB5_256
+# %bb.254:                              # %.lr.ph1140
+	ld.d	$a7, $s7, 8
+	ld.d	$a1, $s7, 80
+	ld.w	$a2, $sp, 316
+	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
+	bstrpick.d	$a3, $a3, 30, 0
 	addi.d	$a4, $a0, 8
 	.p2align	4, , 16
-.LBB5_253:                              # =>This Inner Loop Header: Depth=1
+.LBB5_255:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a7, 0
 	slli.d	$a5, $a5, 2
 	ldx.w	$a5, $a1, $a5
 	slli.d	$a6, $a5, 2
-	ldx.w	$a6, $s1, $a6
-	alsl.d	$a5, $a5, $s1, 2
+	ldx.w	$a6, $s5, $a6
+	alsl.d	$a5, $a5, $s5, 2
 	add.d	$a6, $a2, $a6
 	st.w	$a6, $a4, -8
 	ld.w	$a6, $a5, 4
@@ -3091,53 +3084,53 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a4, $a4, 12
 	addi.d	$a3, $a3, -1
 	addi.d	$a7, $a7, 4
-	bnez	$a3, .LBB5_253
-.LBB5_254:                              # %._crit_edge
+	bnez	$a3, .LBB5_255
+.LBB5_256:                              # %._crit_edge
 .Ltmp349:                               # EH_LABEL
-	move	$a1, $s5
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	move	$a1, $s8
+	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp350:                               # EH_LABEL
-# %bb.255:
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	ld.d	$s5, $sp, 264                   # 8-byte Folded Reload
-	bnez	$a0, .LBB5_297
-# %bb.256:
-	ld.w	$a0, $s8, 176
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_297
 # %bb.257:
+	ld.w	$a0, $s6, 0
+	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	bnez	$a0, .LBB5_299
+# %bb.258:
+	ld.w	$a0, $s7, 176
+	ori	$a1, $zero, 1
+	blt	$a0, $a1, .LBB5_299
+# %bb.259:
 .Ltmp351:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.27)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.27)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 5
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp352:                               # EH_LABEL
-# %bb.258:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit373
-	ld.d	$a0, $sp, 336
+# %bb.260:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit373
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB5_523
-# %bb.259:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i671
+# %bb.261:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i671
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_261
-# %bb.260:
+	beqz	$a0, .LBB5_263
+# %bb.262:
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_263
-.LBB5_261:
+	b	.LBB5_265
+.LBB5_263:
 .Ltmp353:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp354:                               # EH_LABEL
-# %bb.262:                              # %.noexc676
+# %bb.264:                              # %.noexc676
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp355:                               # EH_LABEL
@@ -3145,51 +3138,51 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp356:                               # EH_LABEL
-.LBB5_263:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i673
+.LBB5_265:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i673
 .Ltmp357:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp358:                               # EH_LABEL
-# %bb.264:                              # %.noexc678
+# %bb.266:                              # %.noexc678
 .Ltmp359:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp360:                               # EH_LABEL
-# %bb.265:
-	ld.d	$a0, $sp, 336
+# %bb.267:
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a2, $sp, 336
-	ld.w	$a1, $s8, 176
+	addi.d	$a2, $sp, 352
+	ld.w	$a1, $s7, 176
 	add.d	$a0, $a2, $a0
 	ori	$a2, $zero, 10
 	st.d	$a2, $a0, 16
 .Ltmp361:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp362:                               # EH_LABEL
-# %bb.266:
+# %bb.268:
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s0, $a0
 	ld.d	$s2, $a0, 240
 	beqz	$s2, .LBB5_523
-# %bb.267:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i682
+# %bb.269:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i682
 	ld.bu	$a0, $s2, 56
-	beqz	$a0, .LBB5_269
-# %bb.268:
+	beqz	$a0, .LBB5_271
+# %bb.270:
 	ld.bu	$a0, $s2, 67
-	b	.LBB5_271
-.LBB5_269:
+	b	.LBB5_273
+.LBB5_271:
 .Ltmp363:                               # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp364:                               # EH_LABEL
-# %bb.270:                              # %.noexc687
+# %bb.272:                              # %.noexc687
 	ld.d	$a0, $s2, 0
 	ld.d	$a2, $a0, 48
 .Ltmp365:                               # EH_LABEL
@@ -3197,65 +3190,64 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s2
 	jirl	$ra, $a2, 0
 .Ltmp366:                               # EH_LABEL
-.LBB5_271:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i684
+.LBB5_273:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i684
 .Ltmp367:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp368:                               # EH_LABEL
-# %bb.272:                              # %.noexc689
+# %bb.274:                              # %.noexc689
 .Ltmp369:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp370:                               # EH_LABEL
-# %bb.273:                              # %_ZNSolsEPFRSoS_E.exit378.preheader
-	ld.w	$a0, $s8, 176
+# %bb.275:                              # %_ZNSolsEPFRSoS_E.exit378.preheader
+	ld.w	$a0, $s7, 176
 	ori	$a1, $zero, 1
-	ld.d	$s5, $sp, 264                   # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB5_297
-# %bb.274:                              # %.lr.ph1142.preheader
+	blt	$a0, $a1, .LBB5_299
+# %bb.276:                              # %.lr.ph1142.preheader
 	move	$fp, $zero
-	addi.d	$s1, $sp, 336
+	addi.d	$s1, $sp, 352
 	ori	$s3, $zero, 10
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_275:                              # %.lr.ph1142
+.LBB5_277:                              # %.lr.ph1142
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s4, 0
 	add.d	$a0, $s1, $a0
 	st.d	$s3, $a0, 16
 	addi.w	$a1, $a1, 1
 .Ltmp371:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp372:                               # EH_LABEL
-# %bb.276:                              #   in Loop: Header=BB5_275 Depth=1
+# %bb.278:                              #   in Loop: Header=BB5_277 Depth=1
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s0, $a0
 	ld.d	$s2, $a0, 240
-	beqz	$s2, .LBB5_493
-# %bb.277:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i693
-                                        #   in Loop: Header=BB5_275 Depth=1
+	beqz	$s2, .LBB5_495
+# %bb.279:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i693
+                                        #   in Loop: Header=BB5_277 Depth=1
 	ld.bu	$a0, $s2, 56
-	beqz	$a0, .LBB5_279
-# %bb.278:                              #   in Loop: Header=BB5_275 Depth=1
+	beqz	$a0, .LBB5_281
+# %bb.280:                              #   in Loop: Header=BB5_277 Depth=1
 	ld.bu	$a0, $s2, 67
-	b	.LBB5_281
+	b	.LBB5_283
 	.p2align	4, , 16
-.LBB5_279:                              #   in Loop: Header=BB5_275 Depth=1
+.LBB5_281:                              #   in Loop: Header=BB5_277 Depth=1
 .Ltmp373:                               # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp374:                               # EH_LABEL
-# %bb.280:                              # %.noexc698
-                                        #   in Loop: Header=BB5_275 Depth=1
+# %bb.282:                              # %.noexc698
+                                        #   in Loop: Header=BB5_277 Depth=1
 	ld.d	$a0, $s2, 0
 	ld.d	$a2, $a0, 48
 .Ltmp375:                               # EH_LABEL
@@ -3263,95 +3255,96 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s2
 	jirl	$ra, $a2, 0
 .Ltmp376:                               # EH_LABEL
-.LBB5_281:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i695
-                                        #   in Loop: Header=BB5_275 Depth=1
+.LBB5_283:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i695
+                                        #   in Loop: Header=BB5_277 Depth=1
 .Ltmp377:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp378:                               # EH_LABEL
-# %bb.282:                              # %.noexc700
-                                        #   in Loop: Header=BB5_275 Depth=1
+# %bb.284:                              # %.noexc700
+                                        #   in Loop: Header=BB5_277 Depth=1
 .Ltmp379:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp380:                               # EH_LABEL
-# %bb.283:                              # %_ZNSolsEPFRSoS_E.exit381
-                                        #   in Loop: Header=BB5_275 Depth=1
-	ld.w	$a0, $s8, 176
+# %bb.285:                              # %_ZNSolsEPFRSoS_E.exit381
+                                        #   in Loop: Header=BB5_277 Depth=1
+	ld.w	$a0, $s7, 176
 	addi.d	$fp, $fp, 1
 	addi.d	$s4, $s4, 4
-	blt	$fp, $a0, .LBB5_275
-# %bb.284:                              # %.preheader1080
+	blt	$fp, $a0, .LBB5_277
+# %bb.286:                              # %.preheader1080
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_297
-# %bb.285:                              # %.preheader1079.preheader
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	blt	$a0, $a1, .LBB5_299
+# %bb.287:                              # %.preheader1079.preheader
 	move	$fp, $zero
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	addi.d	$s1, $a0, 8
-	addi.d	$s2, $sp, 336
+	addi.d	$s2, $sp, 352
 	ori	$s4, $zero, 10
 	.p2align	4, , 16
-.LBB5_286:                              # %.preheader1079
+.LBB5_288:                              # %.preheader1079
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	st.d	$s4, $a0, 16
 	ld.w	$a0, $s1, -8
 	addi.w	$a1, $a0, 1
 .Ltmp382:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp383:                               # EH_LABEL
-# %bb.287:                              #   in Loop: Header=BB5_286 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.289:                              #   in Loop: Header=BB5_288 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	st.d	$s4, $a0, 16
 	ld.w	$a0, $s1, -4
 	addi.w	$a1, $a0, 1
 .Ltmp384:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp385:                               # EH_LABEL
-# %bb.288:                              #   in Loop: Header=BB5_286 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.290:                              #   in Loop: Header=BB5_288 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s1, 0
 	add.d	$a0, $s2, $a0
 	st.d	$s4, $a0, 16
 	addi.w	$a1, $a1, 1
 .Ltmp386:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp387:                               # EH_LABEL
-# %bb.289:                              #   in Loop: Header=BB5_286 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.291:                              #   in Loop: Header=BB5_288 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_501
-# %bb.290:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i704
-                                        #   in Loop: Header=BB5_286 Depth=1
+	beqz	$s0, .LBB5_503
+# %bb.292:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i704
+                                        #   in Loop: Header=BB5_288 Depth=1
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_292
-# %bb.291:                              #   in Loop: Header=BB5_286 Depth=1
+	beqz	$a0, .LBB5_294
+# %bb.293:                              #   in Loop: Header=BB5_288 Depth=1
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_294
+	b	.LBB5_296
 	.p2align	4, , 16
-.LBB5_292:                              #   in Loop: Header=BB5_286 Depth=1
+.LBB5_294:                              #   in Loop: Header=BB5_288 Depth=1
 .Ltmp389:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp390:                               # EH_LABEL
-# %bb.293:                              # %.noexc709
-                                        #   in Loop: Header=BB5_286 Depth=1
+# %bb.295:                              # %.noexc709
+                                        #   in Loop: Header=BB5_288 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp391:                               # EH_LABEL
@@ -3359,76 +3352,78 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp392:                               # EH_LABEL
-.LBB5_294:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i706
-                                        #   in Loop: Header=BB5_286 Depth=1
+.LBB5_296:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i706
+                                        #   in Loop: Header=BB5_288 Depth=1
 .Ltmp393:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp394:                               # EH_LABEL
-# %bb.295:                              # %.noexc711
-                                        #   in Loop: Header=BB5_286 Depth=1
+# %bb.297:                              # %.noexc711
+                                        #   in Loop: Header=BB5_288 Depth=1
 .Ltmp395:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp396:                               # EH_LABEL
-# %bb.296:                              # %_ZNSolsEPFRSoS_E.exit383
-                                        #   in Loop: Header=BB5_286 Depth=1
-	ld.w	$a0, $s8, 176
+# %bb.298:                              # %_ZNSolsEPFRSoS_E.exit383
+                                        #   in Loop: Header=BB5_288 Depth=1
+	ld.w	$a0, $s7, 176
 	addi.d	$fp, $fp, 1
 	addi.d	$s1, $s1, 12
-	blt	$fp, $a0, .LBB5_286
-.LBB5_297:                              # %.loopexit1081
-	bge	$s6, $s5, .LBB5_525
-# %bb.298:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i385
+	blt	$fp, $a0, .LBB5_288
+.LBB5_299:                              # %.loopexit1081
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	bge	$a0, $a1, .LBB5_525
+# %bb.300:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i385
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	slli.w	$s4, $a0, 2
-	beqz	$s5, .LBB5_307
-# %bb.299:
+	beqz	$a1, .LBB5_309
+# %bb.301:
 	slli.d	$s0, $s4, 2
 .Ltmp398:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp399:                               # EH_LABEL
-# %bb.300:                              # %.noexc391
+# %bb.302:                              # %.noexc391
 	alsl.d	$a1, $s4, $a0, 2
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $s0, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 232                   # 8-byte Folded Reload
-	ld.w	$fp, $s8, 180
-	bge	$s6, $fp, .LBB5_308
-.LBB5_301:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i393
-	beqz	$fp, .LBB5_310
-# %bb.302:
+	ld.w	$fp, $s7, 180
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	bge	$a0, $fp, .LBB5_310
+.LBB5_303:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i393
+	beqz	$fp, .LBB5_312
+# %bb.304:
 	slli.d	$s0, $fp, 2
 .Ltmp400:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp401:                               # EH_LABEL
-# %bb.303:                              # %.noexc399
-	move	$s2, $a0
+# %bb.305:                              # %.noexc399
+	move	$s1, $a0
 	ori	$a0, $zero, 1
-	st.w	$zero, $s2, 0
-	beq	$fp, $a0, .LBB5_305
-# %bb.304:                              # %.lr.ph.i.preheader.i.i.i.i.i395
-	addi.d	$a0, $s2, 4
+	st.w	$zero, $s1, 0
+	beq	$fp, $a0, .LBB5_307
+# %bb.306:                              # %.lr.ph.i.preheader.i.i.i.i.i395
+	addi.d	$a0, $s1, 4
 	addi.d	$a2, $s0, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB5_305:
-	move	$s6, $s2
-	alsl.d	$a0, $fp, $s2, 2
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+.LBB5_307:
+	move	$s2, $s1
+	alsl.d	$a0, $fp, $s1, 2
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	addi.w	$fp, $s0, 0
 	slli.d	$s0, $fp, 2
 .Ltmp402:                               # EH_LABEL
@@ -3436,82 +3431,81 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp403:                               # EH_LABEL
-# %bb.306:                              # %.noexc407
-	move	$s2, $a0
-	alsl.d	$a0, $fp, $a0, 2
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	st.w	$zero, $s2, 0
-	addi.d	$a0, $s2, 4
+# %bb.308:                              # %.noexc407
+	alsl.d	$a1, $fp, $a0, 2
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.w	$zero, $a0, 0
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	addi.d	$a0, $a0, 4
 	addi.d	$a2, $s0, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	move	$a2, $s6
-	move	$s6, $s2
-	b	.LBB5_311
-.LBB5_307:
-	st.d	$zero, $sp, 176                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
-	ld.d	$s1, $sp, 232                   # 8-byte Folded Reload
-	ld.w	$fp, $s8, 180
-	blt	$s6, $fp, .LBB5_301
-.LBB5_308:
+	move	$a2, $s2
+	b	.LBB5_313
+.LBB5_309:
+	st.d	$zero, $sp, 184                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
+	ld.w	$fp, $s7, 180
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	blt	$a0, $fp, .LBB5_303
+.LBB5_310:
 .Ltmp571:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp572:                               # EH_LABEL
-# %bb.309:                              # %.noexc398
-.LBB5_310:
-	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
-	move	$a2, $zero
-	move	$s6, $zero
+# %bb.311:                              # %.noexc398
+.LBB5_312:
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-.LBB5_311:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit408
-	ld.d	$a0, $s8, 32
-	ld.d	$a3, $s8, 128
+	move	$a2, $zero
+	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
+.LBB5_313:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit408
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $s7, 32
+	ld.d	$a3, $s7, 128
 .Ltmp405:                               # EH_LABEL
-	move	$a1, $s5
-	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
+	move	$a1, $fp
+	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp406:                               # EH_LABEL
-# %bb.312:
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	bnez	$a1, .LBB5_327
-# %bb.313:                              # %.preheader1077
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
+# %bb.314:
+	ld.w	$a1, $s6, 0
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	bnez	$a1, .LBB5_329
+# %bb.315:                              # %.preheader1077
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a6, $a1, 0
 	ori	$a1, $zero, 1
-	blt	$a6, $a1, .LBB5_327
-# %bb.314:                              # %iter.check1514
-	ld.d	$a1, $s8, 128
+	blt	$a6, $a1, .LBB5_329
+# %bb.316:                              # %iter.check1514
+	ld.d	$a1, $s7, 128
 	ori	$a3, $zero, 4
 	move	$a2, $zero
-	bltu	$a6, $a3, .LBB5_325
-# %bb.315:                              # %iter.check1514
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	bltu	$a6, $a3, .LBB5_327
+# %bb.317:                              # %iter.check1514
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	sub.d	$a3, $a3, $a1
 	ori	$a4, $zero, 63
-	bgeu	$a4, $a3, .LBB5_325
-# %bb.316:                              # %vector.main.loop.iter.check1516
+	bgeu	$a4, $a3, .LBB5_327
+# %bb.318:                              # %vector.main.loop.iter.check1516
 	ori	$a2, $zero, 16
-	bgeu	$a6, $a2, .LBB5_318
-# %bb.317:
+	bgeu	$a6, $a2, .LBB5_320
+# %bb.319:
 	move	$a2, $zero
-	b	.LBB5_322
-.LBB5_318:                              # %vector.ph1517
+	b	.LBB5_324
+.LBB5_320:                              # %vector.ph1517
 	bstrpick.d	$a2, $a6, 30, 4
 	slli.d	$a2, $a2, 4
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a1, 32
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB5_319:                              # %vector.body1520
+.LBB5_321:                              # %vector.body1520
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a4, -32
 	xvld	$xr1, $a4, 0
@@ -3522,22 +3516,22 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a5, $a5, -16
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB5_319
-# %bb.320:                              # %middle.block1525
-	beq	$a2, $a6, .LBB5_327
-# %bb.321:                              # %vec.epilog.iter.check1530
+	bnez	$a5, .LBB5_321
+# %bb.322:                              # %middle.block1525
+	beq	$a2, $a6, .LBB5_329
+# %bb.323:                              # %vec.epilog.iter.check1530
 	andi	$a3, $a6, 12
-	beqz	$a3, .LBB5_325
-.LBB5_322:                              # %vec.epilog.ph1529
+	beqz	$a3, .LBB5_327
+.LBB5_324:                              # %vec.epilog.ph1529
 	move	$a5, $a2
 	bstrpick.d	$a2, $a6, 30, 2
 	slli.d	$a2, $a2, 2
 	sub.d	$a3, $a5, $a2
-	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a4, $a5, $a4, 2
 	alsl.d	$a5, $a5, $a1, 2
 	.p2align	4, , 16
-.LBB5_323:                              # %vec.epilog.vector.body1535
+.LBB5_325:                              # %vec.epilog.vector.body1535
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, 0
 	vslli.w	$vr0, $vr0, 2
@@ -3545,16 +3539,16 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB5_323
-# %bb.324:                              # %vec.epilog.middle.block1539
-	beq	$a2, $a6, .LBB5_327
-.LBB5_325:                              # %vec.epilog.scalar.ph1528.preheader
+	bnez	$a3, .LBB5_325
+# %bb.326:                              # %vec.epilog.middle.block1539
+	beq	$a2, $a6, .LBB5_329
+.LBB5_327:                              # %vec.epilog.scalar.ph1528.preheader
 	alsl.d	$a1, $a2, $a1, 2
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a3, $a2, $a3, 2
 	sub.d	$a4, $a6, $a2
 	.p2align	4, , 16
-.LBB5_326:                              # %vec.epilog.scalar.ph1528
+.LBB5_328:                              # %vec.epilog.scalar.ph1528
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
 	slli.d	$a2, $a2, 2
@@ -3562,24 +3556,24 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a1, $a1, 4
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 4
-	bnez	$a4, .LBB5_326
-.LBB5_327:                              # %.loopexit1078
-	beqz	$s5, .LBB5_330
-# %bb.328:                              # %.lr.ph1150
-	ld.d	$a7, $s8, 32
-	ld.d	$a1, $s8, 80
-	ld.w	$a2, $sp, 300
+	bnez	$a4, .LBB5_328
+.LBB5_329:                              # %.loopexit1078
+	beqz	$fp, .LBB5_332
+# %bb.330:                              # %.lr.ph1150
+	ld.d	$a7, $s7, 32
+	ld.d	$a1, $s7, 80
+	ld.w	$a2, $sp, 316
 	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
 	bstrpick.d	$a3, $a3, 30, 0
 	addi.d	$a4, $a0, 8
 	.p2align	4, , 16
-.LBB5_329:                              # =>This Inner Loop Header: Depth=1
+.LBB5_331:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a7, 0
 	slli.d	$a5, $a5, 2
 	ldx.w	$a5, $a1, $a5
 	slli.d	$a6, $a5, 2
-	ldx.w	$a6, $s1, $a6
-	alsl.d	$a5, $a5, $s1, 2
+	ldx.w	$a6, $s5, $a6
+	alsl.d	$a5, $a5, $s5, 2
 	add.d	$a6, $a2, $a6
 	st.w	$a6, $a4, -8
 	ld.w	$a6, $a5, 4
@@ -3594,53 +3588,51 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a7, $a7, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB5_329
-.LBB5_330:                              # %._crit_edge1151
+	bnez	$a3, .LBB5_331
+.LBB5_332:                              # %._crit_edge1151
 .Ltmp407:                               # EH_LABEL
 	move	$a1, $s4
-	move	$a2, $s6
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp408:                               # EH_LABEL
-# %bb.331:
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	bnez	$a0, .LBB5_374
-# %bb.332:
-	ld.w	$a0, $s8, 180
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_374
 # %bb.333:
+	ld.w	$a0, $s6, 0
+	bnez	$a0, .LBB5_376
+# %bb.334:
+	ld.w	$a0, $s7, 180
+	ori	$a1, $zero, 1
+	blt	$a0, $a1, .LBB5_376
+# %bb.335:
 .Ltmp409:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.28)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.28)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 5
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp410:                               # EH_LABEL
-# %bb.334:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit410
-	ld.d	$a0, $sp, 336
+# %bb.336:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit410
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$fp, $a0, 240
 	beqz	$fp, .LBB5_527
-# %bb.335:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i715
+# %bb.337:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i715
 	ld.bu	$a0, $fp, 56
-	beqz	$a0, .LBB5_337
-# %bb.336:
+	beqz	$a0, .LBB5_339
+# %bb.338:
 	ld.bu	$a0, $fp, 67
-	b	.LBB5_339
-.LBB5_337:
+	b	.LBB5_341
+.LBB5_339:
 .Ltmp411:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp412:                               # EH_LABEL
-# %bb.338:                              # %.noexc720
+# %bb.340:                              # %.noexc720
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 48
 .Ltmp413:                               # EH_LABEL
@@ -3648,51 +3640,51 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 .Ltmp414:                               # EH_LABEL
-.LBB5_339:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i717
+.LBB5_341:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i717
 .Ltmp415:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp416:                               # EH_LABEL
-# %bb.340:                              # %.noexc722
+# %bb.342:                              # %.noexc722
 .Ltmp417:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp418:                               # EH_LABEL
-# %bb.341:
-	ld.d	$a0, $sp, 336
+# %bb.343:
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a2, $sp, 336
-	ld.w	$a1, $s8, 180
+	addi.d	$a2, $sp, 352
+	ld.w	$a1, $s7, 180
 	add.d	$a0, $a2, $a0
 	ori	$a2, $zero, 10
 	st.d	$a2, $a0, 16
 .Ltmp419:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp420:                               # EH_LABEL
-# %bb.342:
+# %bb.344:
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB5_527
-# %bb.343:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i726
+# %bb.345:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i726
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_345
-# %bb.344:
+	beqz	$a0, .LBB5_347
+# %bb.346:
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_347
-.LBB5_345:
+	b	.LBB5_349
+.LBB5_347:
 .Ltmp421:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp422:                               # EH_LABEL
-# %bb.346:                              # %.noexc731
+# %bb.348:                              # %.noexc731
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp423:                               # EH_LABEL
@@ -3700,64 +3692,64 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp424:                               # EH_LABEL
-.LBB5_347:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i728
+.LBB5_349:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i728
 .Ltmp425:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp426:                               # EH_LABEL
-# %bb.348:                              # %.noexc733
+# %bb.350:                              # %.noexc733
 .Ltmp427:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp428:                               # EH_LABEL
-# %bb.349:                              # %_ZNSolsEPFRSoS_E.exit415.preheader
-	ld.w	$a0, $s8, 180
+# %bb.351:                              # %_ZNSolsEPFRSoS_E.exit415.preheader
+	ld.w	$a0, $s7, 180
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_374
-# %bb.350:                              # %.lr.ph1153.preheader
+	blt	$a0, $a1, .LBB5_376
+# %bb.352:                              # %.lr.ph1153.preheader
 	move	$s1, $zero
-	addi.d	$s2, $sp, 336
+	addi.d	$s2, $sp, 352
 	ori	$s3, $zero, 10
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_351:                              # %.lr.ph1153
+.LBB5_353:                              # %.lr.ph1153
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s4, 0
 	add.d	$a0, $s2, $a0
 	st.d	$s3, $a0, 16
 	addi.w	$a1, $a1, 1
 .Ltmp429:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp430:                               # EH_LABEL
-# %bb.352:                              #   in Loop: Header=BB5_351 Depth=1
+# %bb.354:                              #   in Loop: Header=BB5_353 Depth=1
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_495
-# %bb.353:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i737
-                                        #   in Loop: Header=BB5_351 Depth=1
+	beqz	$s0, .LBB5_497
+# %bb.355:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i737
+                                        #   in Loop: Header=BB5_353 Depth=1
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_355
-# %bb.354:                              #   in Loop: Header=BB5_351 Depth=1
+	beqz	$a0, .LBB5_357
+# %bb.356:                              #   in Loop: Header=BB5_353 Depth=1
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_357
+	b	.LBB5_359
 	.p2align	4, , 16
-.LBB5_355:                              #   in Loop: Header=BB5_351 Depth=1
+.LBB5_357:                              #   in Loop: Header=BB5_353 Depth=1
 .Ltmp431:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp432:                               # EH_LABEL
-# %bb.356:                              # %.noexc742
-                                        #   in Loop: Header=BB5_351 Depth=1
+# %bb.358:                              # %.noexc742
+                                        #   in Loop: Header=BB5_353 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp433:                               # EH_LABEL
@@ -3765,106 +3757,108 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp434:                               # EH_LABEL
-.LBB5_357:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i739
-                                        #   in Loop: Header=BB5_351 Depth=1
+.LBB5_359:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i739
+                                        #   in Loop: Header=BB5_353 Depth=1
 .Ltmp435:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp436:                               # EH_LABEL
-# %bb.358:                              # %.noexc744
-                                        #   in Loop: Header=BB5_351 Depth=1
+# %bb.360:                              # %.noexc744
+                                        #   in Loop: Header=BB5_353 Depth=1
 .Ltmp437:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp438:                               # EH_LABEL
-# %bb.359:                              # %_ZNSolsEPFRSoS_E.exit418
-                                        #   in Loop: Header=BB5_351 Depth=1
-	ld.w	$a0, $s8, 180
+# %bb.361:                              # %_ZNSolsEPFRSoS_E.exit418
+                                        #   in Loop: Header=BB5_353 Depth=1
+	ld.w	$a0, $s7, 180
 	addi.d	$s1, $s1, 1
 	addi.d	$s4, $s4, 4
-	blt	$s1, $a0, .LBB5_351
-# %bb.360:                              # %.preheader1065
+	blt	$s1, $a0, .LBB5_353
+# %bb.362:                              # %.preheader1065
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_374
-# %bb.361:                              # %.preheader1064.preheader
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	blt	$a0, $a1, .LBB5_376
+# %bb.363:                              # %.preheader1064.preheader
 	move	$s0, $zero
-	addi.d	$s2, $s6, 8
-	addi.d	$s4, $sp, 336
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$s2, $a0, 8
+	addi.d	$s4, $sp, 352
 	ori	$s1, $zero, 10
 	.p2align	4, , 16
-.LBB5_362:                              # %.preheader1064
+.LBB5_364:                              # %.preheader1064
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	st.d	$s1, $a0, 16
 	ld.w	$a0, $s2, -8
 	addi.w	$a1, $a0, 1
 .Ltmp440:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp441:                               # EH_LABEL
-# %bb.363:                              #   in Loop: Header=BB5_362 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.365:                              #   in Loop: Header=BB5_364 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	st.d	$s1, $a0, 16
 	ld.w	$a0, $s2, -4
 	addi.w	$a1, $a0, 1
 .Ltmp442:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp443:                               # EH_LABEL
-# %bb.364:                              #   in Loop: Header=BB5_362 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.366:                              #   in Loop: Header=BB5_364 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s2, 0
 	add.d	$a0, $s4, $a0
 	st.d	$s1, $a0, 16
 	addi.w	$a1, $a1, 1
 .Ltmp444:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp445:                               # EH_LABEL
-# %bb.365:                              #   in Loop: Header=BB5_362 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.367:                              #   in Loop: Header=BB5_364 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	st.d	$s1, $a0, 16
 	ld.w	$a0, $s2, 4
 	addi.w	$a1, $a0, 1
 .Ltmp446:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp447:                               # EH_LABEL
-# %bb.366:                              #   in Loop: Header=BB5_362 Depth=1
-	ld.d	$a0, $sp, 336
+# %bb.368:                              #   in Loop: Header=BB5_364 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	ld.d	$fp, $a0, 240
-	beqz	$fp, .LBB5_503
-# %bb.367:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i748
-                                        #   in Loop: Header=BB5_362 Depth=1
+	beqz	$fp, .LBB5_505
+# %bb.369:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i748
+                                        #   in Loop: Header=BB5_364 Depth=1
 	ld.bu	$a0, $fp, 56
-	beqz	$a0, .LBB5_369
-# %bb.368:                              #   in Loop: Header=BB5_362 Depth=1
+	beqz	$a0, .LBB5_371
+# %bb.370:                              #   in Loop: Header=BB5_364 Depth=1
 	ld.bu	$a0, $fp, 67
-	b	.LBB5_371
+	b	.LBB5_373
 	.p2align	4, , 16
-.LBB5_369:                              #   in Loop: Header=BB5_362 Depth=1
+.LBB5_371:                              #   in Loop: Header=BB5_364 Depth=1
 .Ltmp449:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp450:                               # EH_LABEL
-# %bb.370:                              # %.noexc753
-                                        #   in Loop: Header=BB5_362 Depth=1
+# %bb.372:                              # %.noexc753
+                                        #   in Loop: Header=BB5_364 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 48
 .Ltmp451:                               # EH_LABEL
@@ -3872,199 +3866,198 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 .Ltmp452:                               # EH_LABEL
-.LBB5_371:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i750
-                                        #   in Loop: Header=BB5_362 Depth=1
+.LBB5_373:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i750
+                                        #   in Loop: Header=BB5_364 Depth=1
 .Ltmp453:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp454:                               # EH_LABEL
-# %bb.372:                              # %.noexc755
-                                        #   in Loop: Header=BB5_362 Depth=1
+# %bb.374:                              # %.noexc755
+                                        #   in Loop: Header=BB5_364 Depth=1
 .Ltmp455:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp456:                               # EH_LABEL
-# %bb.373:                              # %_ZNSolsEPFRSoS_E.exit420
-                                        #   in Loop: Header=BB5_362 Depth=1
-	ld.w	$a0, $s8, 180
+# %bb.375:                              # %_ZNSolsEPFRSoS_E.exit420
+                                        #   in Loop: Header=BB5_364 Depth=1
+	ld.w	$a0, $s7, 180
 	addi.d	$s0, $s0, 1
 	addi.d	$s2, $s2, 16
-	blt	$s0, $a0, .LBB5_362
-.LBB5_374:                              # %.loopexit1066
+	blt	$s0, $a0, .LBB5_364
+.LBB5_376:                              # %.loopexit1066
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	slli.d	$fp, $a0, 30
 	srai.d	$s1, $fp, 32
 	srli.d	$a0, $s1, 61
 	bnez	$a0, .LBB5_529
-# %bb.375:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i422
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	beqz	$fp, .LBB5_379
-# %bb.376:
+# %bb.377:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i422
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	beqz	$fp, .LBB5_381
+# %bb.378:
 	srai.d	$s0, $fp, 30
 .Ltmp458:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp459:                               # EH_LABEL
-# %bb.377:                              # %.noexc428
+# %bb.379:                              # %.noexc428
 	alsl.d	$a1, $s1, $a0, 2
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 1
 	st.w	$zero, $a0, 0
-	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
-	beq	$fp, $a1, .LBB5_380
-# %bb.378:                              # %.lr.ph.i.preheader.i.i.i.i.i424
+	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
+	beq	$fp, $a1, .LBB5_382
+# %bb.380:                              # %.lr.ph.i.preheader.i.i.i.i.i424
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $s0, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	b	.LBB5_380
-.LBB5_379:
-	st.d	$zero, $sp, 256                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
-.LBB5_380:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit429
-	ld.d	$s1, $sp, 168                   # 8-byte Folded Reload
-	ld.w	$fp, $s8, 184
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	b	.LBB5_382
+.LBB5_381:
+	st.d	$zero, $sp, 272                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
+.LBB5_382:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit429
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.w	$fp, $s7, 184
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	bge	$a0, $fp, .LBB5_531
-# %bb.381:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i430
-	beqz	$fp, .LBB5_389
-# %bb.382:
+# %bb.383:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i430
+	beqz	$fp, .LBB5_391
+# %bb.384:
 	slli.d	$s2, $fp, 2
 .Ltmp460:                               # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp461:                               # EH_LABEL
-# %bb.383:                              # %.noexc436
+# %bb.385:                              # %.noexc436
 	move	$s0, $a0
 	ori	$a0, $zero, 1
 	st.w	$zero, $s0, 0
-	beq	$fp, $a0, .LBB5_385
-# %bb.384:                              # %.lr.ph.i.preheader.i.i.i.i.i432
+	beq	$fp, $a0, .LBB5_387
+# %bb.386:                              # %.lr.ph.i.preheader.i.i.i.i.i432
 	addi.d	$a0, $s0, 4
 	addi.d	$a2, $s2, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB5_385:
+.LBB5_387:
 .Ltmp462:                               # EH_LABEL
 	move	$s3, $s0
 	alsl.d	$a0, $fp, $s0, 2
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp463:                               # EH_LABEL
-# %bb.386:                              # %.noexc444
+# %bb.388:                              # %.noexc444
 	alsl.d	$a2, $fp, $a0, 2
 	ori	$a1, $zero, 1
 	st.w	$zero, $a0, 0
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	beq	$fp, $a1, .LBB5_388
-# %bb.387:                              # %.lr.ph.i.preheader.i.i.i.i.i440
+	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	beq	$fp, $a1, .LBB5_390
+# %bb.389:                              # %.lr.ph.i.preheader.i.i.i.i.i440
 	addi.d	$a0, $a0, 4
 	addi.d	$a2, $s2, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-.LBB5_388:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit445
-	move	$a2, $s3
-	b	.LBB5_390
-.LBB5_389:
-	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
-	move	$a2, $zero
-	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
 .LBB5_390:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit445
-	ld.d	$a0, $s8, 56
-	ld.d	$a3, $s8, 152
+	move	$a2, $s3
+	b	.LBB5_392
+.LBB5_391:
+	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
+	move	$a2, $zero
+	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+.LBB5_392:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit445
+	ld.d	$a0, $s7, 56
+	ld.d	$a3, $s7, 152
 .Ltmp465:                               # EH_LABEL
-	move	$s7, $zero
+	move	$s8, $zero
 	move	$s3, $zero
 	move	$a1, $s1
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp466:                               # EH_LABEL
-# %bb.391:                              # %.preheader1063
+# %bb.393:                              # %.preheader1063
 	ori	$s5, $zero, 1
-	st.d	$s8, $sp, 264                   # 8-byte Folded Spill
-	blt	$s1, $s5, .LBB5_407
-# %bb.392:                              # %.lr.ph1169
+	blt	$s1, $s5, .LBB5_409
+# %bb.394:                              # %.lr.ph1169
 	move	$a1, $zero
-	move	$s7, $zero
+	move	$s8, $zero
 	move	$s0, $zero
 	move	$a6, $zero
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 30, 0
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	lu52i.d	$s1, $a0, 511
-	b	.LBB5_394
-	.p2align	4, , 16
-.LBB5_393:                              # %._crit_edge1162
-                                        #   in Loop: Header=BB5_394 Depth=1
-	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
-	addi.d	$a1, $a1, 1
-	ld.d	$s8, $sp, 264                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 296                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB5_406
-.LBB5_394:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB5_398 Depth 2
-	ld.d	$a0, $s8, 56
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
+	lu52i.d	$s1, $a0, 511
+	b	.LBB5_396
+	.p2align	4, , 16
+.LBB5_395:                              # %._crit_edge1162
+                                        #   in Loop: Header=BB5_396 Depth=1
+	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
+	addi.d	$a1, $a1, 1
+	ld.d	$s7, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB5_408
+.LBB5_396:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB5_400 Depth 2
+	ld.d	$a0, $s7, 56
+	st.d	$a1, $sp, 288                   # 8-byte Folded Spill
 	slli.d	$a2, $a1, 2
 	ldx.w	$a0, $a0, $a2
-	ld.d	$a1, $s8, 80
+	ld.d	$a1, $s7, 80
 	slli.d	$a3, $a0, 2
-	ld.d	$a5, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 264                   # 8-byte Folded Reload
 	ldx.w	$a4, $a5, $a3
 	ldx.w	$a1, $a1, $a3
-	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
 	stx.w	$a4, $a3, $a2
-	blt	$a4, $s5, .LBB5_393
-# %bb.395:                              # %.lr.ph1161.preheader
-                                        #   in Loop: Header=BB5_394 Depth=1
+	blt	$a4, $s5, .LBB5_395
+# %bb.397:                              # %.lr.ph1161.preheader
+                                        #   in Loop: Header=BB5_396 Depth=1
 	move	$s3, $zero
-	alsl.d	$s8, $a0, $a5, 2
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	alsl.d	$s7, $a0, $a5, 2
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	alsl.d	$s6, $a1, $a0, 2
 	move	$s2, $a6
-	b	.LBB5_398
+	b	.LBB5_400
 	.p2align	4, , 16
-.LBB5_396:                              #   in Loop: Header=BB5_398 Depth=2
+.LBB5_398:                              #   in Loop: Header=BB5_400 Depth=2
 	st.w	$s4, $s0, 0
 	move	$a6, $s2
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-.LBB5_397:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
-                                        #   in Loop: Header=BB5_398 Depth=2
-	ld.w	$a0, $s8, 0
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+.LBB5_399:                              # %_ZNSt6vectorIiSaIiEE9push_backEOi.exit
+                                        #   in Loop: Header=BB5_400 Depth=2
+	ld.w	$a0, $s7, 0
 	addi.d	$s0, $s0, 4
 	addi.d	$s3, $s3, 1
 	addi.d	$s6, $s6, 4
-	bge	$s3, $a0, .LBB5_393
-.LBB5_398:                              # %.lr.ph1161
-                                        #   Parent Loop BB5_394 Depth=1
+	bge	$s3, $a0, .LBB5_395
+.LBB5_400:                              # %.lr.ph1161
+                                        #   Parent Loop BB5_396 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a0, $s6, 0
-	ld.w	$a1, $sp, 300
+	ld.w	$a1, $sp, 316
 	add.d	$s4, $a1, $a0
-	bne	$s0, $s7, .LBB5_396
-# %bb.399:                              #   in Loop: Header=BB5_398 Depth=2
-	sub.d	$s0, $s7, $s2
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
-	beq	$s0, $a0, .LBB5_491
-# %bb.400:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
-                                        #   in Loop: Header=BB5_398 Depth=2
+	bne	$s0, $s8, .LBB5_398
+# %bb.401:                              #   in Loop: Header=BB5_400 Depth=2
+	sub.d	$s0, $s8, $s2
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
+	beq	$s0, $a0, .LBB5_493
+# %bb.402:                              # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i.i
+                                        #   in Loop: Header=BB5_400 Depth=2
 	srai.d	$a0, $s0, 2
 	sltu	$a1, $s5, $a0
 	masknez	$a2, $s5, $a1
@@ -4080,95 +4073,95 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp468:                               # EH_LABEL
-# %bb.401:                              # %.noexc449
-                                        #   in Loop: Header=BB5_398 Depth=2
+# %bb.403:                              # %.noexc449
+                                        #   in Loop: Header=BB5_400 Depth=2
 	stx.w	$s4, $a0, $s0
-	move	$s7, $a0
-	blt	$s0, $s5, .LBB5_403
-# %bb.402:                              #   in Loop: Header=BB5_398 Depth=2
-	move	$a0, $s7
+	move	$s8, $a0
+	blt	$s0, $s5, .LBB5_405
+# %bb.404:                              #   in Loop: Header=BB5_400 Depth=2
+	move	$a0, $s8
 	move	$a1, $s2
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB5_403:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i
-                                        #   in Loop: Header=BB5_398 Depth=2
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	beqz	$s2, .LBB5_405
-# %bb.404:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i
-                                        #   in Loop: Header=BB5_398 Depth=2
+.LBB5_405:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i.i.i
+                                        #   in Loop: Header=BB5_400 Depth=2
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	beqz	$s2, .LBB5_407
+# %bb.406:                              # %_ZNSt12_Vector_baseIiSaIiEE13_M_deallocateEPim.exit.i.i.i.i
+                                        #   in Loop: Header=BB5_400 Depth=2
 	move	$a0, $s2
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_405:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i
-                                        #   in Loop: Header=BB5_398 Depth=2
-	add.d	$s0, $s7, $s0
-	move	$s2, $s7
-	alsl.d	$s7, $fp, $s7, 2
+.LBB5_407:                              # %_ZNSt6vectorIiSaIiEE17_M_realloc_appendIJiEEEvDpOT_.exit.i.i
+                                        #   in Loop: Header=BB5_400 Depth=2
+	add.d	$s0, $s8, $s0
+	move	$s2, $s8
+	alsl.d	$s8, $fp, $s8, 2
 	move	$a6, $s2
-	b	.LBB5_397
-.LBB5_406:                              # %._crit_edge1170.loopexit
-	ld.d	$s1, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	move	$s3, $s7
-	move	$s7, $a6
-	b	.LBB5_408
-.LBB5_407:
-	move	$s7, $zero
+	b	.LBB5_399
+.LBB5_408:                              # %._crit_edge1170.loopexit
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	move	$s3, $s8
+	move	$s8, $a6
+	b	.LBB5_410
+.LBB5_409:
+	move	$s8, $zero
 	move	$s0, $zero
 	move	$s3, $zero
-.LBB5_408:                              # %._crit_edge1170
-	ld.d	$a3, $s8, 152
+.LBB5_410:                              # %._crit_edge1170
+	ld.d	$a3, $s7, 152
 .Ltmp470:                               # EH_LABEL
-	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	move	$a1, $s1
-	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp471:                               # EH_LABEL
-	ld.d	$s1, $sp, 216                   # 8-byte Folded Reload
-# %bb.409:
-	sub.d	$a0, $s0, $s7
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+# %bb.411:
+	sub.d	$a0, $s0, $s8
 	srai.d	$a0, $a0, 2
 	addi.w	$s2, $a0, 0
 .Ltmp473:                               # EH_LABEL
 	move	$a0, $s2
-	ld.d	$s0, $sp, 208                   # 8-byte Folded Reload
-	move	$a1, $s0
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN8Parallel6gatherEiPi)
 	jirl	$ra, $ra, 0
 .Ltmp474:                               # EH_LABEL
-# %bb.410:
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
-	beq	$s0, $a5, .LBB5_429
-# %bb.411:                              # %iter.check1545
-	sub.d	$a0, $a5, $s0
+# %bb.412:
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	beq	$fp, $a6, .LBB5_431
+# %bb.413:                              # %iter.check1545
+	sub.d	$a0, $a6, $fp
 	addi.d	$a1, $a0, -4
 	ori	$a0, $zero, 12
-	bgeu	$a1, $a0, .LBB5_413
-# %bb.412:
-	move	$fp, $zero
-	b	.LBB5_423
-.LBB5_413:                              # %vector.main.loop.iter.check1547
+	bgeu	$a1, $a0, .LBB5_415
+# %bb.414:
+	move	$a2, $zero
+	b	.LBB5_425
+.LBB5_415:                              # %vector.main.loop.iter.check1547
 	srli.d	$a0, $a1, 2
 	ori	$a2, $zero, 60
 	addi.d	$a0, $a0, 1
-	bgeu	$a1, $a2, .LBB5_415
-# %bb.414:
+	bgeu	$a1, $a2, .LBB5_417
+# %bb.416:
 	move	$a1, $zero
-	move	$fp, $zero
-	b	.LBB5_419
-.LBB5_415:                              # %vector.ph1548
+	move	$a2, $zero
+	b	.LBB5_421
+.LBB5_417:                              # %vector.ph1548
 	bstrpick.d	$a1, $a0, 62, 4
 	slli.d	$a1, $a1, 4
 	xvrepli.b	$xr0, 0
-	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 32
 	move	$a3, $a1
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB5_416:                              # %vector.body1551
+.LBB5_418:                              # %vector.body1551
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a2, -32
 	xvld	$xr3, $a2, 0
@@ -4176,132 +4169,125 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	xvadd.w	$xr1, $xr3, $xr1
 	addi.d	$a3, $a3, -16
 	addi.d	$a2, $a2, 64
-	bnez	$a3, .LBB5_416
-# %bb.417:                              # %middle.block1559
+	bnez	$a3, .LBB5_418
+# %bb.419:                              # %middle.block1559
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$fp, $xr0, 0
-	beq	$a0, $a1, .LBB5_424
-# %bb.418:                              # %vec.epilog.iter.check1566
-	andi	$a2, $a0, 12
-	beqz	$a2, .LBB5_422
-.LBB5_419:                              # %vec.epilog.ph1565
-	bstrpick.d	$a2, $a0, 62, 2
-	slli.d	$a3, $a2, 2
-	ld.d	$a4, $sp, 208                   # 8-byte Folded Reload
-	alsl.d	$s0, $a2, $a4, 4
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a2, $xr0, 0
+	beq	$a0, $a1, .LBB5_426
+# %bb.420:                              # %vec.epilog.iter.check1566
+	andi	$a3, $a0, 12
+	beqz	$a3, .LBB5_424
+.LBB5_421:                              # %vec.epilog.ph1565
+	bstrpick.d	$a3, $a0, 62, 2
+	slli.d	$a4, $a3, 2
+	ld.d	$a5, $sp, 232                   # 8-byte Folded Reload
+	alsl.d	$fp, $a3, $a5, 4
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $fp, 0
-	alsl.d	$a4, $a1, $a4, 2
-	sub.d	$a1, $a1, $a3
+	vinsgr2vr.w	$vr0, $a2, 0
+	alsl.d	$a2, $a1, $a5, 2
+	sub.d	$a1, $a1, $a4
 	.p2align	4, , 16
-.LBB5_420:                              # %vec.epilog.vector.body1571
+.LBB5_422:                              # %vec.epilog.vector.body1571
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, 0
+	vld	$vr1, $a2, 0
 	vadd.w	$vr0, $vr1, $vr0
 	addi.d	$a1, $a1, 4
-	addi.d	$a4, $a4, 16
-	bnez	$a1, .LBB5_420
-# %bb.421:                              # %vec.epilog.middle.block1578
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$fp, $vr0, 0
-	bne	$a0, $a3, .LBB5_423
-	b	.LBB5_424
-.LBB5_422:
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	alsl.d	$s0, $a1, $a0, 2
+	addi.d	$a2, $a2, 16
+	bnez	$a1, .LBB5_422
+# %bb.423:                              # %vec.epilog.middle.block1578
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
+	bne	$a0, $a4, .LBB5_425
+	b	.LBB5_426
+.LBB5_424:
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	alsl.d	$fp, $a1, $a0, 2
 	.p2align	4, , 16
-.LBB5_423:                              # %.lr.ph.i452
+.LBB5_425:                              # %.lr.ph.i452
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s0, 0
-	addi.d	$s0, $s0, 4
-	add.w	$fp, $a0, $fp
-	bne	$s0, $a5, .LBB5_423
-.LBB5_424:                              # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEiET0_T_S8_S7_.exit458
+	ld.w	$a0, $fp, 0
+	addi.d	$fp, $fp, 4
+	add.d	$a2, $a0, $a2
+	bne	$fp, $a6, .LBB5_425
+.LBB5_426:                              # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPiSt6vectorIiSaIiEEEEiET0_T_S8_S7_.exit458
+	addi.w	$fp, $a2, 0
 	bge	$s1, $fp, .LBB5_541
-# %bb.425:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i459
-	beqz	$fp, .LBB5_429
-# %bb.426:
+# %bb.427:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i459
+	beqz	$fp, .LBB5_431
+# %bb.428:
 	slli.d	$s0, $fp, 2
 .Ltmp476:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp477:                               # EH_LABEL
-# %bb.427:                              # %.noexc465
+# %bb.429:                              # %.noexc465
 	move	$s5, $a0
 	alsl.d	$a0, $fp, $a0, 2
-	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 296                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	st.w	$zero, $s5, 0
-	beq	$fp, $a0, .LBB5_430
-# %bb.428:                              # %.lr.ph.i.preheader.i.i.i.i.i461
+	beq	$fp, $a0, .LBB5_432
+# %bb.430:                              # %.lr.ph.i.preheader.i.i.i.i.i461
 	addi.d	$a0, $s5, 4
 	addi.d	$a2, $s0, -4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	b	.LBB5_430
-.LBB5_429:
+	b	.LBB5_432
+.LBB5_431:
 	move	$s5, $zero
-	st.d	$zero, $sp, 280                 # 8-byte Folded Spill
-.LBB5_430:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit466
+	st.d	$zero, $sp, 296                 # 8-byte Folded Spill
+.LBB5_432:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit466
 .Ltmp481:                               # EH_LABEL
-	move	$a0, $s7
+	move	$a0, $s8
 	move	$a1, $s2
 	move	$a2, $s5
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8Parallel7gathervIiEEvPKT_iPS1_PKi)
 	jirl	$ra, $ra, 0
 .Ltmp482:                               # EH_LABEL
-# %bb.431:
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	bnez	$a0, .LBB5_486
-# %bb.432:
-	ld.w	$a1, $s8, 184
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_486
 # %bb.433:
+	ld.w	$a0, $s6, 0
+	bnez	$a0, .LBB5_488
+# %bb.434:
+	ld.w	$a1, $s7, 184
+	ori	$a2, $zero, 1
+	blt	$a1, $a2, .LBB5_488
+# %bb.435:
 .Ltmp483:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.29)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.29)
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	ori	$a2, $zero, 6
-	addi.d	$fp, $sp, 336
+	addi.d	$fp, $sp, 352
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp484:                               # EH_LABEL
-# %bb.434:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit468
-	ld.d	$a0, $sp, 336
+# %bb.436:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit468
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $fp, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB5_533
-# %bb.435:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i759
+# %bb.437:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i759
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_437
-# %bb.436:
+	beqz	$a0, .LBB5_439
+# %bb.438:
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_439
-.LBB5_437:
+	b	.LBB5_441
+.LBB5_439:
 .Ltmp485:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp486:                               # EH_LABEL
-# %bb.438:                              # %.noexc764
+# %bb.440:                              # %.noexc764
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp487:                               # EH_LABEL
@@ -4309,51 +4295,51 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp488:                               # EH_LABEL
-.LBB5_439:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i761
+.LBB5_441:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i761
 .Ltmp489:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp490:                               # EH_LABEL
-# %bb.440:                              # %.noexc766
+# %bb.442:                              # %.noexc766
 .Ltmp491:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp492:                               # EH_LABEL
-# %bb.441:
-	ld.d	$a0, $sp, 336
+# %bb.443:
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a2, $sp, 336
-	ld.w	$a1, $s8, 184
+	addi.d	$a2, $sp, 352
+	ld.w	$a1, $s7, 184
 	add.d	$a0, $a2, $a0
 	ori	$a2, $zero, 10
 	st.d	$a2, $a0, 16
 .Ltmp493:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp494:                               # EH_LABEL
-# %bb.442:
+# %bb.444:
 	move	$s2, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	ld.d	$s0, $a0, 240
 	beqz	$s0, .LBB5_533
-# %bb.443:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i770
+# %bb.445:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i770
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_445
-# %bb.444:
+	beqz	$a0, .LBB5_447
+# %bb.446:
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_447
-.LBB5_445:
+	b	.LBB5_449
+.LBB5_447:
 .Ltmp495:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp496:                               # EH_LABEL
-# %bb.446:                              # %.noexc775
+# %bb.448:                              # %.noexc775
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp497:                               # EH_LABEL
@@ -4361,66 +4347,66 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp498:                               # EH_LABEL
-.LBB5_447:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i772
+.LBB5_449:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i772
 .Ltmp499:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp500:                               # EH_LABEL
-# %bb.448:                              # %.noexc777
+# %bb.450:                              # %.noexc777
 .Ltmp501:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp502:                               # EH_LABEL
-# %bb.449:                              # %_ZNSolsEPFRSoS_E.exit473.preheader
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
-	ld.w	$a0, $s8, 184
+# %bb.451:                              # %_ZNSolsEPFRSoS_E.exit473.preheader
+	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
+	ld.w	$a0, $s7, 184
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_485
-# %bb.450:                              # %.lr.ph1175.preheader
+	blt	$a0, $a1, .LBB5_487
+# %bb.452:                              # %.lr.ph1175.preheader
 	move	$fp, $zero
-	addi.d	$s1, $sp, 336
+	addi.d	$s1, $sp, 352
 	ori	$s3, $zero, 10
-	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 280                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_451:                              # %.lr.ph1175
+.LBB5_453:                              # %.lr.ph1175
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s4, 0
 	add.d	$a0, $s1, $a0
 	st.d	$s3, $a0, 16
 	addi.w	$a1, $a1, 1
 .Ltmp503:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp504:                               # EH_LABEL
-# %bb.452:                              #   in Loop: Header=BB5_451 Depth=1
+# %bb.454:                              #   in Loop: Header=BB5_453 Depth=1
 	move	$s2, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_497
-# %bb.453:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i781
-                                        #   in Loop: Header=BB5_451 Depth=1
+	beqz	$s0, .LBB5_499
+# %bb.455:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i781
+                                        #   in Loop: Header=BB5_453 Depth=1
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_455
-# %bb.454:                              #   in Loop: Header=BB5_451 Depth=1
+	beqz	$a0, .LBB5_457
+# %bb.456:                              #   in Loop: Header=BB5_453 Depth=1
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_457
+	b	.LBB5_459
 	.p2align	4, , 16
-.LBB5_455:                              #   in Loop: Header=BB5_451 Depth=1
+.LBB5_457:                              #   in Loop: Header=BB5_453 Depth=1
 .Ltmp505:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp506:                               # EH_LABEL
-# %bb.456:                              # %.noexc786
-                                        #   in Loop: Header=BB5_451 Depth=1
+# %bb.458:                              # %.noexc786
+                                        #   in Loop: Header=BB5_453 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp507:                               # EH_LABEL
@@ -4428,71 +4414,71 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp508:                               # EH_LABEL
-.LBB5_457:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i783
-                                        #   in Loop: Header=BB5_451 Depth=1
+.LBB5_459:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i783
+                                        #   in Loop: Header=BB5_453 Depth=1
 .Ltmp509:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp510:                               # EH_LABEL
-# %bb.458:                              # %.noexc788
-                                        #   in Loop: Header=BB5_451 Depth=1
+# %bb.460:                              # %.noexc788
+                                        #   in Loop: Header=BB5_453 Depth=1
 .Ltmp511:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp512:                               # EH_LABEL
-# %bb.459:                              # %_ZNSolsEPFRSoS_E.exit476
-                                        #   in Loop: Header=BB5_451 Depth=1
+# %bb.461:                              # %_ZNSolsEPFRSoS_E.exit476
+                                        #   in Loop: Header=BB5_453 Depth=1
 	ld.w	$a0, $s6, 184
 	addi.d	$fp, $fp, 1
 	addi.d	$s4, $s4, 4
-	blt	$fp, $a0, .LBB5_451
-# %bb.460:                              # %.preheader1047
+	blt	$fp, $a0, .LBB5_453
+# %bb.462:                              # %.preheader1047
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_485
-# %bb.461:                              # %.lr.ph1177.preheader
+	blt	$a0, $a1, .LBB5_487
+# %bb.463:                              # %.lr.ph1177.preheader
 	move	$fp, $zero
-	addi.d	$s1, $sp, 336
+	addi.d	$s1, $sp, 352
 	ori	$s3, $zero, 10
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 280                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_462:                              # %.lr.ph1177
+.LBB5_464:                              # %.lr.ph1177
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s4, 0
 	add.d	$a0, $s1, $a0
 	st.d	$s3, $a0, 16
 .Ltmp514:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp515:                               # EH_LABEL
-# %bb.463:                              #   in Loop: Header=BB5_462 Depth=1
+# %bb.465:                              #   in Loop: Header=BB5_464 Depth=1
 	move	$s2, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s2, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_505
-# %bb.464:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i792
-                                        #   in Loop: Header=BB5_462 Depth=1
+	beqz	$s0, .LBB5_507
+# %bb.466:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i792
+                                        #   in Loop: Header=BB5_464 Depth=1
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_466
-# %bb.465:                              #   in Loop: Header=BB5_462 Depth=1
+	beqz	$a0, .LBB5_468
+# %bb.467:                              #   in Loop: Header=BB5_464 Depth=1
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_468
+	b	.LBB5_470
 	.p2align	4, , 16
-.LBB5_466:                              #   in Loop: Header=BB5_462 Depth=1
+.LBB5_468:                              #   in Loop: Header=BB5_464 Depth=1
 .Ltmp516:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp517:                               # EH_LABEL
-# %bb.467:                              # %.noexc797
-                                        #   in Loop: Header=BB5_462 Depth=1
+# %bb.469:                              # %.noexc797
+                                        #   in Loop: Header=BB5_464 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp518:                               # EH_LABEL
@@ -4500,90 +4486,90 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp519:                               # EH_LABEL
-.LBB5_468:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i794
-                                        #   in Loop: Header=BB5_462 Depth=1
+.LBB5_470:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i794
+                                        #   in Loop: Header=BB5_464 Depth=1
 .Ltmp520:                               # EH_LABEL
 	ext.w.b	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp521:                               # EH_LABEL
-# %bb.469:                              # %.noexc799
-                                        #   in Loop: Header=BB5_462 Depth=1
+# %bb.471:                              # %.noexc799
+                                        #   in Loop: Header=BB5_464 Depth=1
 .Ltmp522:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp523:                               # EH_LABEL
-# %bb.470:                              # %_ZNSolsEPFRSoS_E.exit479
-                                        #   in Loop: Header=BB5_462 Depth=1
+# %bb.472:                              # %_ZNSolsEPFRSoS_E.exit479
+                                        #   in Loop: Header=BB5_464 Depth=1
 	ld.w	$a0, $s6, 184
 	addi.d	$fp, $fp, 1
 	addi.d	$s4, $s4, 4
-	blt	$fp, $a0, .LBB5_462
-# %bb.471:                              # %.preheader1046
+	blt	$fp, $a0, .LBB5_464
+# %bb.473:                              # %.preheader1046
 	ori	$fp, $zero, 1
-	blt	$a0, $fp, .LBB5_485
-# %bb.472:                              # %.preheader.preheader
+	blt	$a0, $fp, .LBB5_487
+# %bb.474:                              # %.preheader.preheader
 	move	$s1, $zero
 	move	$s2, $zero
-	addi.d	$s4, $sp, 336
-	ori	$s8, $zero, 10
+	addi.d	$s4, $sp, 352
+	ori	$s7, $zero, 10
 	.p2align	4, , 16
-.LBB5_473:                              # %.preheader
+.LBB5_475:                              # %.preheader
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB5_475 Depth 2
+                                        #     Child Loop BB5_477 Depth 2
 	slli.d	$a0, $s1, 2
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	ldx.w	$a0, $a1, $a0
 	alsl.d	$s3, $s1, $a1, 2
-	blt	$a0, $fp, .LBB5_477
-# %bb.474:                              # %.lr.ph1179.preheader
-                                        #   in Loop: Header=BB5_473 Depth=1
+	blt	$a0, $fp, .LBB5_479
+# %bb.476:                              # %.lr.ph1179.preheader
+                                        #   in Loop: Header=BB5_475 Depth=1
 	move	$s0, $zero
 	alsl.d	$s6, $s2, $s5, 2
 	.p2align	4, , 16
-.LBB5_475:                              # %.lr.ph1179
-                                        #   Parent Loop BB5_473 Depth=1
+.LBB5_477:                              # %.lr.ph1179
+                                        #   Parent Loop BB5_475 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	ld.w	$a1, $s6, 0
 	add.d	$a0, $s4, $a0
-	st.d	$s8, $a0, 16
+	st.d	$s7, $a0, 16
 	addi.w	$a1, $a1, 1
 .Ltmp525:                               # EH_LABEL
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp526:                               # EH_LABEL
-# %bb.476:                              #   in Loop: Header=BB5_475 Depth=2
+# %bb.478:                              #   in Loop: Header=BB5_477 Depth=2
 	ld.w	$a0, $s3, 0
 	addi.d	$s0, $s0, 1
 	addi.d	$s6, $s6, 4
-	blt	$s0, $a0, .LBB5_475
-.LBB5_477:                              # %._crit_edge1180
-                                        #   in Loop: Header=BB5_473 Depth=1
-	ld.d	$a0, $sp, 336
+	blt	$s0, $a0, .LBB5_477
+.LBB5_479:                              # %._crit_edge1180
+                                        #   in Loop: Header=BB5_475 Depth=1
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
 	add.d	$a0, $s4, $a0
 	ld.d	$s0, $a0, 240
-	beqz	$s0, .LBB5_509
-# %bb.478:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i803
-                                        #   in Loop: Header=BB5_473 Depth=1
+	beqz	$s0, .LBB5_511
+# %bb.480:                              # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i803
+                                        #   in Loop: Header=BB5_475 Depth=1
 	ld.bu	$a0, $s0, 56
-	beqz	$a0, .LBB5_480
-# %bb.479:                              #   in Loop: Header=BB5_473 Depth=1
+	beqz	$a0, .LBB5_482
+# %bb.481:                              #   in Loop: Header=BB5_475 Depth=1
 	ld.bu	$a0, $s0, 67
-	b	.LBB5_482
+	b	.LBB5_484
 	.p2align	4, , 16
-.LBB5_480:                              #   in Loop: Header=BB5_473 Depth=1
+.LBB5_482:                              #   in Loop: Header=BB5_475 Depth=1
 .Ltmp528:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
 .Ltmp529:                               # EH_LABEL
-# %bb.481:                              # %.noexc808
-                                        #   in Loop: Header=BB5_473 Depth=1
+# %bb.483:                              # %.noexc808
+                                        #   in Loop: Header=BB5_475 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
 .Ltmp530:                               # EH_LABEL
@@ -4591,48 +4577,47 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .Ltmp531:                               # EH_LABEL
-.LBB5_482:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i805
-                                        #   in Loop: Header=BB5_473 Depth=1
+.LBB5_484:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i805
+                                        #   in Loop: Header=BB5_475 Depth=1
 .Ltmp532:                               # EH_LABEL
 	ext.w.b	$a1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .Ltmp533:                               # EH_LABEL
-# %bb.483:                              # %.noexc810
-                                        #   in Loop: Header=BB5_473 Depth=1
+# %bb.485:                              # %.noexc810
+                                        #   in Loop: Header=BB5_475 Depth=1
 .Ltmp534:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
 .Ltmp535:                               # EH_LABEL
-# %bb.484:                              # %_ZNSolsEPFRSoS_E.exit481
-                                        #   in Loop: Header=BB5_473 Depth=1
+# %bb.486:                              # %_ZNSolsEPFRSoS_E.exit481
+                                        #   in Loop: Header=BB5_475 Depth=1
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 184
 	addi.d	$s1, $s1, 1
 	add.w	$s2, $a0, $s2
-	blt	$s1, $a1, .LBB5_473
-.LBB5_485:                              # %thread-pre-split
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	blt	$s1, $a1, .LBB5_475
+.LBB5_487:                              # %thread-pre-split
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-.LBB5_486:
-	bnez	$a0, .LBB5_490
-# %bb.487:
-	addi.d	$a0, $sp, 344
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
+.LBB5_488:
+	bnez	$a0, .LBB5_492
+# %bb.489:
+	addi.d	$a0, $sp, 360
 .Ltmp537:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt13basic_filebufIcSt11char_traitsIcEE5closeEv)
 	jirl	$ra, $ra, 0
 .Ltmp538:                               # EH_LABEL
-# %bb.488:                              # %.noexc484
-	bnez	$a0, .LBB5_490
-# %bb.489:
-	ld.d	$a0, $sp, 336
+# %bb.490:                              # %.noexc484
+	bnez	$a0, .LBB5_492
+# %bb.491:
+	ld.d	$a0, $sp, 352
 	ld.d	$a0, $a0, -24
-	addi.d	$a1, $sp, 336
+	addi.d	$a1, $sp, 352
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 32
 	ori	$a1, $a1, 4
@@ -4640,44 +4625,55 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	pcaddu18i	$ra, %call36(_ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate)
 	jirl	$ra, $ra, 0
 .Ltmp540:                               # EH_LABEL
-.LBB5_490:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit512
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+.LBB5_492:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit512
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	sub.d	$a1, $a0, $s5
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	sub.d	$a1, $s3, $s7
-	move	$a0, $s7
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s6
-	move	$a0, $s6
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	sub.d	$a1, $s3, $s8
+	move	$a0, $s8
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	sub.d	$a1, $a0, $a2
+	move	$a0, $a2
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	sub.d	$a1, $a0, $s4
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
@@ -4685,164 +4681,145 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s4
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 336
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
-	fld.d	$fs0, $sp, 848                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 856                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 864                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 872                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 880                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 888                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 896                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 904                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 912                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 920                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 928                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 936                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 944
+	fld.d	$fs0, $sp, 864                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 872                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 880                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 888                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 896                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 904                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 912                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 920                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 928                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 936                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 944                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 952                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 960
 	ret
-.LBB5_491:
+.LBB5_493:
 .Ltmp553:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.35)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.35)
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp554:                               # EH_LABEL
-# %bb.492:                              # %.noexc448
-.LBB5_493:
+# %bb.494:                              # %.noexc448
+.LBB5_495:
 .Ltmp580:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp581:                               # EH_LABEL
-# %bb.494:                              # %.noexc697
-.LBB5_495:
+# %bb.496:                              # %.noexc697
+.LBB5_497:
 .Ltmp565:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp566:                               # EH_LABEL
-# %bb.496:                              # %.noexc741
-.LBB5_497:
+# %bb.498:                              # %.noexc741
+.LBB5_499:
 .Ltmp547:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp548:                               # EH_LABEL
-# %bb.498:                              # %.noexc785
-.LBB5_499:
+# %bb.500:                              # %.noexc785
+.LBB5_501:
 .Ltmp601:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp602:                               # EH_LABEL
-# %bb.500:                              # %.noexc642
-.LBB5_501:
+# %bb.502:                              # %.noexc642
+.LBB5_503:
 .Ltmp577:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp578:                               # EH_LABEL
-# %bb.502:                              # %.noexc708
-.LBB5_503:
+# %bb.504:                              # %.noexc708
+.LBB5_505:
 .Ltmp562:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp563:                               # EH_LABEL
-# %bb.504:                              # %.noexc752
-.LBB5_505:
+# %bb.506:                              # %.noexc752
+.LBB5_507:
 .Ltmp544:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp545:                               # EH_LABEL
-# %bb.506:                              # %.noexc796
-.LBB5_507:
+# %bb.508:                              # %.noexc796
+.LBB5_509:
 .Ltmp598:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp599:                               # EH_LABEL
-# %bb.508:                              # %.noexc653
-.LBB5_509:
+# %bb.510:                              # %.noexc653
+.LBB5_511:
 .Ltmp541:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp542:                               # EH_LABEL
-# %bb.510:                              # %.noexc807
-.LBB5_511:
+# %bb.512:                              # %.noexc807
+.LBB5_513:
 .Ltmp595:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp596:                               # EH_LABEL
-# %bb.512:                              # %.noexc664
-.LBB5_513:
+# %bb.514:                              # %.noexc664
+.LBB5_515:
 .Ltmp613:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp614:                               # EH_LABEL
-# %bb.514:                              # %.noexc274
-.LBB5_515:
+# %bb.516:                              # %.noexc274
+.LBB5_517:
 .Ltmp610:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp611:                               # EH_LABEL
-# %bb.516:                              # %.noexc281
-.LBB5_517:
+# %bb.518:                              # %.noexc281
+.LBB5_519:
 .Ltmp607:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp608:                               # EH_LABEL
-# %bb.518:                              # %.noexc287
-.LBB5_519:
+# %bb.520:                              # %.noexc287
+.LBB5_521:
 .Ltmp592:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp593:                               # EH_LABEL
-# %bb.520:                              # %.noexc345
-.LBB5_521:
-.Ltmp589:                               # EH_LABEL
-	pcalau12i	$a0, %pc_hi20(.L.str.33)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
-	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
-	jirl	$ra, $ra, 0
-.Ltmp590:                               # EH_LABEL
-# %bb.522:                              # %.noexc353
+# %bb.522:                              # %.noexc345
 .LBB5_523:                              # %.invoke1368
 .Ltmp583:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
@@ -4867,7 +4844,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp559:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp560:                               # EH_LABEL
@@ -4925,8 +4902,8 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp173:                               # EH_LABEL
 # %bb.544:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
-	ld.d	$a1, $sp, 304
-	ld.d	$a2, $sp, 312
+	ld.d	$a1, $sp, 320
+	ld.d	$a2, $sp, 328
 .Ltmp174:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -4956,160 +4933,171 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_548:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit516.thread
 .Ltmp464:                               # EH_LABEL
 	move	$s1, $a0
-	move	$s7, $zero
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	move	$s8, $zero
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	move	$a0, $s3
 	move	$s3, $zero
-	b	.LBB5_644
+	b	.LBB5_643
 .LBB5_549:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit524.thread
 .Ltmp404:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	b	.LBB5_641
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	move	$a2, $s2
+	b	.LBB5_640
 .LBB5_550:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit530.thread
 .Ltmp346:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	b	.LBB5_637
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	b	.LBB5_635
 .LBB5_551:
 .Ltmp475:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	move	$fp, $s0
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB5_556
 .LBB5_552:
 .Ltmp267:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_632
+	b	.LBB5_630
 .LBB5_553:
 .Ltmp262:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_633
+	b	.LBB5_631
 .LBB5_554:
 .Ltmp257:                               # EH_LABEL
 	b	.LBB5_579
 .LBB5_555:
 .Ltmp480:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 .LBB5_556:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit514.thread
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
-	b	.LBB5_643
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	b	.LBB5_642
 .LBB5_557:
 .Ltmp180:                               # EH_LABEL
 	b	.LBB5_569
 .LBB5_558:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit518.thread
 .Ltmp558:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB5_618
 .LBB5_559:
 .Ltmp561:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	b	.LBB5_620
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	beqz	$a2, .LBB5_620
+	b	.LBB5_639
 .LBB5_560:
 .Ltmp573:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	b	.LBB5_642
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	b	.LBB5_641
 .LBB5_561:
 .Ltmp576:                               # EH_LABEL
 	b	.LBB5_606
 .LBB5_562:
 .Ltmp588:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	b	.LBB5_638
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	b	.LBB5_636
 .LBB5_563:
 .Ltmp591:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	bnez	$fp, .LBB5_630
-	b	.LBB5_631
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	bnez	$fp, .LBB5_628
+	b	.LBB5_629
 .LBB5_564:
 .Ltmp594:                               # EH_LABEL
 	b	.LBB5_574
 .LBB5_565:
 .Ltmp609:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_632
+	b	.LBB5_630
 .LBB5_566:
 .Ltmp612:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_633
+	b	.LBB5_631
 .LBB5_567:
 .Ltmp615:                               # EH_LABEL
 	b	.LBB5_579
 .LBB5_568:
 .Ltmp621:                               # EH_LABEL
 .LBB5_569:
-	ld.d	$a2, $sp, 304
+	ld.d	$a2, $sp, 320
 	move	$s1, $a0
-	beq	$a2, $s3, .LBB5_635
+	beq	$a2, $s3, .LBB5_633
 # %bb.570:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i
-	ld.d	$a0, $sp, 320
+	ld.d	$a0, $sp, 336
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
-	b	.LBB5_634
+	b	.LBB5_632
 .LBB5_571:
 .Ltmp472:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB5_613
 .LBB5_572:                              # %.loopexit.split-lp1097
 .Ltmp597:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_573:
 .Ltmp337:                               # EH_LABEL
 .LBB5_574:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit536.thread
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB5_631
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	b	.LBB5_629
 .LBB5_575:                              # %.loopexit.split-lp
 .Ltmp543:                               # EH_LABEL
 	b	.LBB5_602
 .LBB5_576:
 .Ltmp606:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_577:                              # %.loopexit.split-lp1103
 .Ltmp600:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_578:
 .Ltmp618:                               # EH_LABEL
 .LBB5_579:
 	move	$s1, $a0
-	addi.d	$a0, $sp, 336
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
@@ -5120,45 +5108,40 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	b	.LBB5_602
 .LBB5_581:                              # %.loopexit.split-lp1068
 .Ltmp564:                               # EH_LABEL
-	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB5_640
+	b	.LBB5_599
 .LBB5_582:                              # %.loopexit.split-lp1083
 .Ltmp579:                               # EH_LABEL
 	b	.LBB5_596
 .LBB5_583:
 .Ltmp552:                               # EH_LABEL
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
 	b	.LBB5_602
 .LBB5_584:
 .Ltmp570:                               # EH_LABEL
 	b	.LBB5_604
 .LBB5_585:
 .Ltmp585:                               # EH_LABEL
-	b	.LBB5_606
+	move	$s1, $a0
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	b	.LBB5_624
 .LBB5_586:                              # %.loopexit.split-lp1108
 .Ltmp603:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_587:                              # %.loopexit.split-lp1054
 .Ltmp549:                               # EH_LABEL
 	b	.LBB5_602
 .LBB5_588:                              # %.loopexit.split-lp1073
 .Ltmp567:                               # EH_LABEL
-	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB5_621
+	b	.LBB5_604
 .LBB5_589:                              # %.loopexit.split-lp1088
 .Ltmp582:                               # EH_LABEL
 	b	.LBB5_606
@@ -5168,7 +5151,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_591:                              # %.loopexit1096
 .Ltmp324:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_592:                              # %.loopexit1067
 .Ltmp457:                               # EH_LABEL
 	b	.LBB5_599
@@ -5178,18 +5161,19 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_594:                              # %.loopexit1102
 .Ltmp313:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_595:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528.thread
 .Ltmp388:                               # EH_LABEL
 .LBB5_596:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528.thread1341
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	b	.LBB5_636
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	b	.LBB5_634
 .LBB5_597:                              # %.loopexit1048
 .Ltmp524:                               # EH_LABEL
 	b	.LBB5_602
@@ -5197,215 +5181,220 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .Ltmp448:                               # EH_LABEL
 .LBB5_599:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522.thread1331
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	b	.LBB5_640
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	b	.LBB5_639
 .LBB5_600:                              # %.loopexit1107
 .Ltmp302:                               # EH_LABEL
 	move	$s1, $a0
-	b	.LBB5_631
+	b	.LBB5_629
 .LBB5_601:                              # %.loopexit1053
 .Ltmp513:                               # EH_LABEL
 .LBB5_602:
 	move	$s1, $a0
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
 	bnez	$s5, .LBB5_608
 	b	.LBB5_609
 .LBB5_603:                              # %.loopexit1072
 .Ltmp439:                               # EH_LABEL
 .LBB5_604:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	b	.LBB5_620
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	beqz	$a2, .LBB5_620
+	b	.LBB5_639
 .LBB5_605:                              # %.loopexit1087
 .Ltmp381:                               # EH_LABEL
 .LBB5_606:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	b	.LBB5_626
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	b	.LBB5_624
 .LBB5_607:                              # %.thread991
 .Ltmp527:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
 .LBB5_608:
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	sub.d	$a1, $a0, $s5
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_609:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit514
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB5_613
 .LBB5_610:                              # %.loopexit1058
 .Ltmp469:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB5_612
 .LBB5_611:                              # %.loopexit.split-lp1059
 .Ltmp555:                               # EH_LABEL
 	move	$s1, $a0
-	ld.d	$s4, $sp, 288                   # 8-byte Folded Reload
 .LBB5_612:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit514
-	move	$s3, $s7
-	move	$s7, $s2
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	move	$s3, $s8
+	move	$s8, $s2
 .LBB5_613:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit514
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
-	bnez	$a0, .LBB5_643
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	bnez	$a0, .LBB5_642
 # %bb.614:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit516
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	bnez	$a0, .LBB5_644
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	bnez	$a0, .LBB5_643
 .LBB5_615:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit518
-	beqz	$s7, .LBB5_617
+	beqz	$s8, .LBB5_617
 .LBB5_616:
-	sub.d	$a1, $s3, $s7
-	move	$a0, $s7
+	sub.d	$a1, $s3, $s8
+	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB5_617:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit520
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
 .LBB5_618:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit520
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
-	beqz	$a0, .LBB5_620
-# %bb.619:
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB5_620:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-.LBB5_621:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522
-	bnez	$s6, .LBB5_640
-# %bb.622:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit524
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	bnez	$s6, .LBB5_641
-.LBB5_623:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit526
-	move	$s6, $s0
-	beqz	$a0, .LBB5_625
-.LBB5_624:
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB5_625:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	bnez	$a0, .LBB5_638
+# %bb.619:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-.LBB5_626:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	bnez	$a2, .LBB5_636
-# %bb.627:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit530
-	bnez	$s4, .LBB5_637
-.LBB5_628:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit532
-	bnez	$a0, .LBB5_639
-.LBB5_629:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit534
-	beqz	$fp, .LBB5_631
-.LBB5_630:
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	bnez	$a2, .LBB5_639
+.LBB5_620:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit524
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	bnez	$a2, .LBB5_640
+.LBB5_621:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit526
+	beqz	$a0, .LBB5_623
+.LBB5_622:
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB5_623:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+.LBB5_624:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528
+	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	bnez	$a2, .LBB5_634
+# %bb.625:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit530
+	bnez	$s4, .LBB5_635
+.LBB5_626:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit532
+	bnez	$a0, .LBB5_637
+.LBB5_627:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit534
+	beqz	$fp, .LBB5_629
+.LBB5_628:
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_631:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit536.thread
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+.LBB5_629:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit536.thread
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_632:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit540
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s7
+.LBB5_630:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit540
+	sub.d	$a1, $s8, $s7
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_633:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit540.thread
+.LBB5_631:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit540.thread
 	sub.d	$a1, $s6, $s5
 	move	$a0, $s5
-.LBB5_634:
+.LBB5_632:
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_635:
-	addi.d	$a0, $sp, 336
+.LBB5_633:
+	addi.d	$a0, $sp, 352
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB5_636:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528.thread1341
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+.LBB5_634:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit528.thread1341
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	sub.d	$a1, $a0, $a2
+	move	$a0, $a2
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	beqz	$s4, .LBB5_626
+.LBB5_635:
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	sub.d	$a1, $a0, $s4
+	move	$a0, $s4
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB5_636:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit532
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	beqz	$a0, .LBB5_627
+.LBB5_637:
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	bnez	$fp, .LBB5_628
+	b	.LBB5_629
+.LBB5_638:
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	sub.d	$a1, $a1, $a0
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	beqz	$a2, .LBB5_620
+.LBB5_639:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522.thread1331
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	beqz	$s4, .LBB5_628
-.LBB5_637:
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s4
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB5_638:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit532
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	beqz	$a0, .LBB5_629
-.LBB5_639:
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	sub.d	$a1, $a1, $a0
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	bnez	$fp, .LBB5_630
-	b	.LBB5_631
-.LBB5_640:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit522.thread1331
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	beqz	$a2, .LBB5_621
+.LBB5_640:
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s6
-	move	$a0, $s6
+	sub.d	$a1, $a0, $a2
+	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	beqz	$s6, .LBB5_623
-.LBB5_641:
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s6
-	move	$a0, $s6
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB5_642:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit526
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	move	$s6, $s0
-	bnez	$a0, .LBB5_624
-	b	.LBB5_625
-.LBB5_643:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit514.thread
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+.LBB5_641:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit526
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	bnez	$a0, .LBB5_622
+	b	.LBB5_623
+.LBB5_642:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit514.thread
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	beqz	$a0, .LBB5_615
-.LBB5_644:
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+.LBB5_643:
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s7, .LBB5_616
+	bnez	$s8, .LBB5_616
 	b	.LBB5_617
 .Lfunc_end5:
 	.size	_ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEid, .Lfunc_end5-_ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEid
@@ -5511,287 +5500,291 @@ GCC_except_table5:
 	.uleb128 .Ltmp339-.Ltmp338              #   Call between .Ltmp338 and .Ltmp339
 	.uleb128 .Ltmp594-.Lfunc_begin2         #     jumps to .Ltmp594
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp339-.Lfunc_begin2         # >> Call Site 24 <<
-	.uleb128 .Ltmp340-.Ltmp339              #   Call between .Ltmp339 and .Ltmp340
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp340-.Lfunc_begin2         # >> Call Site 25 <<
+	.uleb128 .Ltmp340-.Lfunc_begin2         # >> Call Site 24 <<
 	.uleb128 .Ltmp341-.Ltmp340              #   Call between .Ltmp340 and .Ltmp341
 	.uleb128 .Ltmp591-.Lfunc_begin2         #     jumps to .Ltmp591
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp341-.Lfunc_begin2         # >> Call Site 26 <<
+	.uleb128 .Ltmp341-.Lfunc_begin2         # >> Call Site 25 <<
 	.uleb128 .Ltmp342-.Ltmp341              #   Call between .Ltmp341 and .Ltmp342
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp342-.Lfunc_begin2         # >> Call Site 27 <<
+	.uleb128 .Ltmp342-.Lfunc_begin2         # >> Call Site 26 <<
 	.uleb128 .Ltmp343-.Ltmp342              #   Call between .Ltmp342 and .Ltmp343
 	.uleb128 .Ltmp588-.Lfunc_begin2         #     jumps to .Ltmp588
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp343-.Lfunc_begin2         # >> Call Site 28 <<
+	.uleb128 .Ltmp343-.Lfunc_begin2         # >> Call Site 27 <<
 	.uleb128 .Ltmp344-.Ltmp343              #   Call between .Ltmp343 and .Ltmp344
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp344-.Lfunc_begin2         # >> Call Site 29 <<
+	.uleb128 .Ltmp344-.Lfunc_begin2         # >> Call Site 28 <<
 	.uleb128 .Ltmp345-.Ltmp344              #   Call between .Ltmp344 and .Ltmp345
 	.uleb128 .Ltmp346-.Lfunc_begin2         #     jumps to .Ltmp346
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp345-.Lfunc_begin2         # >> Call Site 30 <<
+	.uleb128 .Ltmp345-.Lfunc_begin2         # >> Call Site 29 <<
 	.uleb128 .Ltmp586-.Ltmp345              #   Call between .Ltmp345 and .Ltmp586
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp586-.Lfunc_begin2         # >> Call Site 31 <<
+	.uleb128 .Ltmp586-.Lfunc_begin2         # >> Call Site 30 <<
 	.uleb128 .Ltmp587-.Ltmp586              #   Call between .Ltmp586 and .Ltmp587
 	.uleb128 .Ltmp588-.Lfunc_begin2         #     jumps to .Ltmp588
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp347-.Lfunc_begin2         # >> Call Site 32 <<
-	.uleb128 .Ltmp370-.Ltmp347              #   Call between .Ltmp347 and .Ltmp370
+	.uleb128 .Ltmp347-.Lfunc_begin2         # >> Call Site 31 <<
+	.uleb128 .Ltmp348-.Ltmp347              #   Call between .Ltmp347 and .Ltmp348
 	.uleb128 .Ltmp585-.Lfunc_begin2         #     jumps to .Ltmp585
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp371-.Lfunc_begin2         # >> Call Site 33 <<
-	.uleb128 .Ltmp380-.Ltmp371              #   Call between .Ltmp371 and .Ltmp380
-	.uleb128 .Ltmp381-.Lfunc_begin2         #     jumps to .Ltmp381
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp382-.Lfunc_begin2         # >> Call Site 34 <<
-	.uleb128 .Ltmp387-.Ltmp382              #   Call between .Ltmp382 and .Ltmp387
-	.uleb128 .Ltmp388-.Lfunc_begin2         #     jumps to .Ltmp388
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp389-.Lfunc_begin2         # >> Call Site 35 <<
-	.uleb128 .Ltmp396-.Ltmp389              #   Call between .Ltmp389 and .Ltmp396
-	.uleb128 .Ltmp397-.Lfunc_begin2         #     jumps to .Ltmp397
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp398-.Lfunc_begin2         # >> Call Site 36 <<
-	.uleb128 .Ltmp399-.Ltmp398              #   Call between .Ltmp398 and .Ltmp399
-	.uleb128 .Ltmp576-.Lfunc_begin2         #     jumps to .Ltmp576
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp399-.Lfunc_begin2         # >> Call Site 37 <<
-	.uleb128 .Ltmp400-.Ltmp399              #   Call between .Ltmp399 and .Ltmp400
+	.uleb128 .Ltmp348-.Lfunc_begin2         # >> Call Site 32 <<
+	.uleb128 .Ltmp589-.Ltmp348              #   Call between .Ltmp348 and .Ltmp589
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp400-.Lfunc_begin2         # >> Call Site 38 <<
-	.uleb128 .Ltmp401-.Ltmp400              #   Call between .Ltmp400 and .Ltmp401
-	.uleb128 .Ltmp573-.Lfunc_begin2         #     jumps to .Ltmp573
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp401-.Lfunc_begin2         # >> Call Site 39 <<
-	.uleb128 .Ltmp402-.Ltmp401              #   Call between .Ltmp401 and .Ltmp402
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp402-.Lfunc_begin2         # >> Call Site 40 <<
-	.uleb128 .Ltmp403-.Ltmp402              #   Call between .Ltmp402 and .Ltmp403
-	.uleb128 .Ltmp404-.Lfunc_begin2         #     jumps to .Ltmp404
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp403-.Lfunc_begin2         # >> Call Site 41 <<
-	.uleb128 .Ltmp571-.Ltmp403              #   Call between .Ltmp403 and .Ltmp571
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp571-.Lfunc_begin2         # >> Call Site 42 <<
-	.uleb128 .Ltmp572-.Ltmp571              #   Call between .Ltmp571 and .Ltmp572
-	.uleb128 .Ltmp573-.Lfunc_begin2         #     jumps to .Ltmp573
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp405-.Lfunc_begin2         # >> Call Site 43 <<
-	.uleb128 .Ltmp428-.Ltmp405              #   Call between .Ltmp405 and .Ltmp428
-	.uleb128 .Ltmp570-.Lfunc_begin2         #     jumps to .Ltmp570
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp429-.Lfunc_begin2         # >> Call Site 44 <<
-	.uleb128 .Ltmp438-.Ltmp429              #   Call between .Ltmp429 and .Ltmp438
-	.uleb128 .Ltmp439-.Lfunc_begin2         #     jumps to .Ltmp439
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp440-.Lfunc_begin2         # >> Call Site 45 <<
-	.uleb128 .Ltmp447-.Ltmp440              #   Call between .Ltmp440 and .Ltmp447
-	.uleb128 .Ltmp448-.Lfunc_begin2         #     jumps to .Ltmp448
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp449-.Lfunc_begin2         # >> Call Site 46 <<
-	.uleb128 .Ltmp456-.Ltmp449              #   Call between .Ltmp449 and .Ltmp456
-	.uleb128 .Ltmp457-.Lfunc_begin2         #     jumps to .Ltmp457
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp458-.Lfunc_begin2         # >> Call Site 47 <<
-	.uleb128 .Ltmp459-.Ltmp458              #   Call between .Ltmp458 and .Ltmp459
-	.uleb128 .Ltmp561-.Lfunc_begin2         #     jumps to .Ltmp561
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp459-.Lfunc_begin2         # >> Call Site 48 <<
-	.uleb128 .Ltmp460-.Ltmp459              #   Call between .Ltmp459 and .Ltmp460
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp460-.Lfunc_begin2         # >> Call Site 49 <<
-	.uleb128 .Ltmp461-.Ltmp460              #   Call between .Ltmp460 and .Ltmp461
-	.uleb128 .Ltmp558-.Lfunc_begin2         #     jumps to .Ltmp558
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp461-.Lfunc_begin2         # >> Call Site 50 <<
-	.uleb128 .Ltmp462-.Ltmp461              #   Call between .Ltmp461 and .Ltmp462
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp462-.Lfunc_begin2         # >> Call Site 51 <<
-	.uleb128 .Ltmp463-.Ltmp462              #   Call between .Ltmp462 and .Ltmp463
-	.uleb128 .Ltmp464-.Lfunc_begin2         #     jumps to .Ltmp464
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp463-.Lfunc_begin2         # >> Call Site 52 <<
-	.uleb128 .Ltmp465-.Ltmp463              #   Call between .Ltmp463 and .Ltmp465
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp465-.Lfunc_begin2         # >> Call Site 53 <<
-	.uleb128 .Ltmp466-.Ltmp465              #   Call between .Ltmp465 and .Ltmp466
-	.uleb128 .Ltmp472-.Lfunc_begin2         #     jumps to .Ltmp472
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp467-.Lfunc_begin2         # >> Call Site 54 <<
-	.uleb128 .Ltmp468-.Ltmp467              #   Call between .Ltmp467 and .Ltmp468
-	.uleb128 .Ltmp469-.Lfunc_begin2         #     jumps to .Ltmp469
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp468-.Lfunc_begin2         # >> Call Site 55 <<
-	.uleb128 .Ltmp470-.Ltmp468              #   Call between .Ltmp468 and .Ltmp470
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp470-.Lfunc_begin2         # >> Call Site 56 <<
-	.uleb128 .Ltmp471-.Ltmp470              #   Call between .Ltmp470 and .Ltmp471
-	.uleb128 .Ltmp472-.Lfunc_begin2         #     jumps to .Ltmp472
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp473-.Lfunc_begin2         # >> Call Site 57 <<
-	.uleb128 .Ltmp474-.Ltmp473              #   Call between .Ltmp473 and .Ltmp474
-	.uleb128 .Ltmp475-.Lfunc_begin2         #     jumps to .Ltmp475
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp476-.Lfunc_begin2         # >> Call Site 58 <<
-	.uleb128 .Ltmp477-.Ltmp476              #   Call between .Ltmp476 and .Ltmp477
-	.uleb128 .Ltmp480-.Lfunc_begin2         #     jumps to .Ltmp480
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp477-.Lfunc_begin2         # >> Call Site 59 <<
-	.uleb128 .Ltmp481-.Ltmp477              #   Call between .Ltmp477 and .Ltmp481
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp481-.Lfunc_begin2         # >> Call Site 60 <<
-	.uleb128 .Ltmp502-.Ltmp481              #   Call between .Ltmp481 and .Ltmp502
-	.uleb128 .Ltmp552-.Lfunc_begin2         #     jumps to .Ltmp552
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp503-.Lfunc_begin2         # >> Call Site 61 <<
-	.uleb128 .Ltmp512-.Ltmp503              #   Call between .Ltmp503 and .Ltmp512
-	.uleb128 .Ltmp513-.Lfunc_begin2         #     jumps to .Ltmp513
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp514-.Lfunc_begin2         # >> Call Site 62 <<
-	.uleb128 .Ltmp523-.Ltmp514              #   Call between .Ltmp514 and .Ltmp523
-	.uleb128 .Ltmp524-.Lfunc_begin2         #     jumps to .Ltmp524
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp525-.Lfunc_begin2         # >> Call Site 63 <<
-	.uleb128 .Ltmp526-.Ltmp525              #   Call between .Ltmp525 and .Ltmp526
-	.uleb128 .Ltmp527-.Lfunc_begin2         #     jumps to .Ltmp527
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp528-.Lfunc_begin2         # >> Call Site 64 <<
-	.uleb128 .Ltmp535-.Ltmp528              #   Call between .Ltmp528 and .Ltmp535
-	.uleb128 .Ltmp536-.Lfunc_begin2         #     jumps to .Ltmp536
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp537-.Lfunc_begin2         # >> Call Site 65 <<
-	.uleb128 .Ltmp540-.Ltmp537              #   Call between .Ltmp537 and .Ltmp540
-	.uleb128 .Ltmp552-.Lfunc_begin2         #     jumps to .Ltmp552
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp540-.Lfunc_begin2         # >> Call Site 66 <<
-	.uleb128 .Ltmp553-.Ltmp540              #   Call between .Ltmp540 and .Ltmp553
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp553-.Lfunc_begin2         # >> Call Site 67 <<
-	.uleb128 .Ltmp554-.Ltmp553              #   Call between .Ltmp553 and .Ltmp554
-	.uleb128 .Ltmp555-.Lfunc_begin2         #     jumps to .Ltmp555
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp580-.Lfunc_begin2         # >> Call Site 68 <<
-	.uleb128 .Ltmp581-.Ltmp580              #   Call between .Ltmp580 and .Ltmp581
-	.uleb128 .Ltmp582-.Lfunc_begin2         #     jumps to .Ltmp582
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp565-.Lfunc_begin2         # >> Call Site 69 <<
-	.uleb128 .Ltmp566-.Ltmp565              #   Call between .Ltmp565 and .Ltmp566
-	.uleb128 .Ltmp567-.Lfunc_begin2         #     jumps to .Ltmp567
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp547-.Lfunc_begin2         # >> Call Site 70 <<
-	.uleb128 .Ltmp548-.Ltmp547              #   Call between .Ltmp547 and .Ltmp548
-	.uleb128 .Ltmp549-.Lfunc_begin2         #     jumps to .Ltmp549
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp601-.Lfunc_begin2         # >> Call Site 71 <<
-	.uleb128 .Ltmp602-.Ltmp601              #   Call between .Ltmp601 and .Ltmp602
-	.uleb128 .Ltmp603-.Lfunc_begin2         #     jumps to .Ltmp603
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp577-.Lfunc_begin2         # >> Call Site 72 <<
-	.uleb128 .Ltmp578-.Ltmp577              #   Call between .Ltmp577 and .Ltmp578
-	.uleb128 .Ltmp579-.Lfunc_begin2         #     jumps to .Ltmp579
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp562-.Lfunc_begin2         # >> Call Site 73 <<
-	.uleb128 .Ltmp563-.Ltmp562              #   Call between .Ltmp562 and .Ltmp563
-	.uleb128 .Ltmp564-.Lfunc_begin2         #     jumps to .Ltmp564
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp544-.Lfunc_begin2         # >> Call Site 74 <<
-	.uleb128 .Ltmp545-.Ltmp544              #   Call between .Ltmp544 and .Ltmp545
-	.uleb128 .Ltmp546-.Lfunc_begin2         #     jumps to .Ltmp546
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp598-.Lfunc_begin2         # >> Call Site 75 <<
-	.uleb128 .Ltmp599-.Ltmp598              #   Call between .Ltmp598 and .Ltmp599
-	.uleb128 .Ltmp600-.Lfunc_begin2         #     jumps to .Ltmp600
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp541-.Lfunc_begin2         # >> Call Site 76 <<
-	.uleb128 .Ltmp542-.Ltmp541              #   Call between .Ltmp541 and .Ltmp542
-	.uleb128 .Ltmp543-.Lfunc_begin2         #     jumps to .Ltmp543
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp595-.Lfunc_begin2         # >> Call Site 77 <<
-	.uleb128 .Ltmp596-.Ltmp595              #   Call between .Ltmp595 and .Ltmp596
-	.uleb128 .Ltmp597-.Lfunc_begin2         #     jumps to .Ltmp597
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp613-.Lfunc_begin2         # >> Call Site 78 <<
-	.uleb128 .Ltmp614-.Ltmp613              #   Call between .Ltmp613 and .Ltmp614
-	.uleb128 .Ltmp615-.Lfunc_begin2         #     jumps to .Ltmp615
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp610-.Lfunc_begin2         # >> Call Site 79 <<
-	.uleb128 .Ltmp611-.Ltmp610              #   Call between .Ltmp610 and .Ltmp611
-	.uleb128 .Ltmp612-.Lfunc_begin2         #     jumps to .Ltmp612
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp607-.Lfunc_begin2         # >> Call Site 80 <<
-	.uleb128 .Ltmp608-.Ltmp607              #   Call between .Ltmp607 and .Ltmp608
-	.uleb128 .Ltmp609-.Lfunc_begin2         #     jumps to .Ltmp609
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp592-.Lfunc_begin2         # >> Call Site 81 <<
-	.uleb128 .Ltmp593-.Ltmp592              #   Call between .Ltmp592 and .Ltmp593
-	.uleb128 .Ltmp594-.Lfunc_begin2         #     jumps to .Ltmp594
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp589-.Lfunc_begin2         # >> Call Site 82 <<
+	.uleb128 .Ltmp589-.Lfunc_begin2         # >> Call Site 33 <<
 	.uleb128 .Ltmp590-.Ltmp589              #   Call between .Ltmp589 and .Ltmp590
 	.uleb128 .Ltmp591-.Lfunc_begin2         #     jumps to .Ltmp591
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp583-.Lfunc_begin2         # >> Call Site 83 <<
+	.uleb128 .Ltmp349-.Lfunc_begin2         # >> Call Site 34 <<
+	.uleb128 .Ltmp370-.Ltmp349              #   Call between .Ltmp349 and .Ltmp370
+	.uleb128 .Ltmp585-.Lfunc_begin2         #     jumps to .Ltmp585
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp371-.Lfunc_begin2         # >> Call Site 35 <<
+	.uleb128 .Ltmp380-.Ltmp371              #   Call between .Ltmp371 and .Ltmp380
+	.uleb128 .Ltmp381-.Lfunc_begin2         #     jumps to .Ltmp381
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp382-.Lfunc_begin2         # >> Call Site 36 <<
+	.uleb128 .Ltmp387-.Ltmp382              #   Call between .Ltmp382 and .Ltmp387
+	.uleb128 .Ltmp388-.Lfunc_begin2         #     jumps to .Ltmp388
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp389-.Lfunc_begin2         # >> Call Site 37 <<
+	.uleb128 .Ltmp396-.Ltmp389              #   Call between .Ltmp389 and .Ltmp396
+	.uleb128 .Ltmp397-.Lfunc_begin2         #     jumps to .Ltmp397
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp398-.Lfunc_begin2         # >> Call Site 38 <<
+	.uleb128 .Ltmp399-.Ltmp398              #   Call between .Ltmp398 and .Ltmp399
+	.uleb128 .Ltmp576-.Lfunc_begin2         #     jumps to .Ltmp576
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp399-.Lfunc_begin2         # >> Call Site 39 <<
+	.uleb128 .Ltmp400-.Ltmp399              #   Call between .Ltmp399 and .Ltmp400
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp400-.Lfunc_begin2         # >> Call Site 40 <<
+	.uleb128 .Ltmp401-.Ltmp400              #   Call between .Ltmp400 and .Ltmp401
+	.uleb128 .Ltmp573-.Lfunc_begin2         #     jumps to .Ltmp573
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp401-.Lfunc_begin2         # >> Call Site 41 <<
+	.uleb128 .Ltmp402-.Ltmp401              #   Call between .Ltmp401 and .Ltmp402
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp402-.Lfunc_begin2         # >> Call Site 42 <<
+	.uleb128 .Ltmp403-.Ltmp402              #   Call between .Ltmp402 and .Ltmp403
+	.uleb128 .Ltmp404-.Lfunc_begin2         #     jumps to .Ltmp404
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp403-.Lfunc_begin2         # >> Call Site 43 <<
+	.uleb128 .Ltmp571-.Ltmp403              #   Call between .Ltmp403 and .Ltmp571
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp571-.Lfunc_begin2         # >> Call Site 44 <<
+	.uleb128 .Ltmp572-.Ltmp571              #   Call between .Ltmp571 and .Ltmp572
+	.uleb128 .Ltmp573-.Lfunc_begin2         #     jumps to .Ltmp573
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp405-.Lfunc_begin2         # >> Call Site 45 <<
+	.uleb128 .Ltmp428-.Ltmp405              #   Call between .Ltmp405 and .Ltmp428
+	.uleb128 .Ltmp570-.Lfunc_begin2         #     jumps to .Ltmp570
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp429-.Lfunc_begin2         # >> Call Site 46 <<
+	.uleb128 .Ltmp438-.Ltmp429              #   Call between .Ltmp429 and .Ltmp438
+	.uleb128 .Ltmp439-.Lfunc_begin2         #     jumps to .Ltmp439
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp440-.Lfunc_begin2         # >> Call Site 47 <<
+	.uleb128 .Ltmp447-.Ltmp440              #   Call between .Ltmp440 and .Ltmp447
+	.uleb128 .Ltmp448-.Lfunc_begin2         #     jumps to .Ltmp448
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp449-.Lfunc_begin2         # >> Call Site 48 <<
+	.uleb128 .Ltmp456-.Ltmp449              #   Call between .Ltmp449 and .Ltmp456
+	.uleb128 .Ltmp457-.Lfunc_begin2         #     jumps to .Ltmp457
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp458-.Lfunc_begin2         # >> Call Site 49 <<
+	.uleb128 .Ltmp459-.Ltmp458              #   Call between .Ltmp458 and .Ltmp459
+	.uleb128 .Ltmp561-.Lfunc_begin2         #     jumps to .Ltmp561
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp459-.Lfunc_begin2         # >> Call Site 50 <<
+	.uleb128 .Ltmp460-.Ltmp459              #   Call between .Ltmp459 and .Ltmp460
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp460-.Lfunc_begin2         # >> Call Site 51 <<
+	.uleb128 .Ltmp461-.Ltmp460              #   Call between .Ltmp460 and .Ltmp461
+	.uleb128 .Ltmp558-.Lfunc_begin2         #     jumps to .Ltmp558
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp461-.Lfunc_begin2         # >> Call Site 52 <<
+	.uleb128 .Ltmp462-.Ltmp461              #   Call between .Ltmp461 and .Ltmp462
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp462-.Lfunc_begin2         # >> Call Site 53 <<
+	.uleb128 .Ltmp463-.Ltmp462              #   Call between .Ltmp462 and .Ltmp463
+	.uleb128 .Ltmp464-.Lfunc_begin2         #     jumps to .Ltmp464
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp463-.Lfunc_begin2         # >> Call Site 54 <<
+	.uleb128 .Ltmp465-.Ltmp463              #   Call between .Ltmp463 and .Ltmp465
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp465-.Lfunc_begin2         # >> Call Site 55 <<
+	.uleb128 .Ltmp466-.Ltmp465              #   Call between .Ltmp465 and .Ltmp466
+	.uleb128 .Ltmp472-.Lfunc_begin2         #     jumps to .Ltmp472
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp467-.Lfunc_begin2         # >> Call Site 56 <<
+	.uleb128 .Ltmp468-.Ltmp467              #   Call between .Ltmp467 and .Ltmp468
+	.uleb128 .Ltmp469-.Lfunc_begin2         #     jumps to .Ltmp469
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp468-.Lfunc_begin2         # >> Call Site 57 <<
+	.uleb128 .Ltmp470-.Ltmp468              #   Call between .Ltmp468 and .Ltmp470
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp470-.Lfunc_begin2         # >> Call Site 58 <<
+	.uleb128 .Ltmp471-.Ltmp470              #   Call between .Ltmp470 and .Ltmp471
+	.uleb128 .Ltmp472-.Lfunc_begin2         #     jumps to .Ltmp472
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp473-.Lfunc_begin2         # >> Call Site 59 <<
+	.uleb128 .Ltmp474-.Ltmp473              #   Call between .Ltmp473 and .Ltmp474
+	.uleb128 .Ltmp475-.Lfunc_begin2         #     jumps to .Ltmp475
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp476-.Lfunc_begin2         # >> Call Site 60 <<
+	.uleb128 .Ltmp477-.Ltmp476              #   Call between .Ltmp476 and .Ltmp477
+	.uleb128 .Ltmp480-.Lfunc_begin2         #     jumps to .Ltmp480
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp477-.Lfunc_begin2         # >> Call Site 61 <<
+	.uleb128 .Ltmp481-.Ltmp477              #   Call between .Ltmp477 and .Ltmp481
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp481-.Lfunc_begin2         # >> Call Site 62 <<
+	.uleb128 .Ltmp502-.Ltmp481              #   Call between .Ltmp481 and .Ltmp502
+	.uleb128 .Ltmp552-.Lfunc_begin2         #     jumps to .Ltmp552
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp503-.Lfunc_begin2         # >> Call Site 63 <<
+	.uleb128 .Ltmp512-.Ltmp503              #   Call between .Ltmp503 and .Ltmp512
+	.uleb128 .Ltmp513-.Lfunc_begin2         #     jumps to .Ltmp513
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp514-.Lfunc_begin2         # >> Call Site 64 <<
+	.uleb128 .Ltmp523-.Ltmp514              #   Call between .Ltmp514 and .Ltmp523
+	.uleb128 .Ltmp524-.Lfunc_begin2         #     jumps to .Ltmp524
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp525-.Lfunc_begin2         # >> Call Site 65 <<
+	.uleb128 .Ltmp526-.Ltmp525              #   Call between .Ltmp525 and .Ltmp526
+	.uleb128 .Ltmp527-.Lfunc_begin2         #     jumps to .Ltmp527
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp528-.Lfunc_begin2         # >> Call Site 66 <<
+	.uleb128 .Ltmp535-.Ltmp528              #   Call between .Ltmp528 and .Ltmp535
+	.uleb128 .Ltmp536-.Lfunc_begin2         #     jumps to .Ltmp536
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp537-.Lfunc_begin2         # >> Call Site 67 <<
+	.uleb128 .Ltmp540-.Ltmp537              #   Call between .Ltmp537 and .Ltmp540
+	.uleb128 .Ltmp552-.Lfunc_begin2         #     jumps to .Ltmp552
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp540-.Lfunc_begin2         # >> Call Site 68 <<
+	.uleb128 .Ltmp553-.Ltmp540              #   Call between .Ltmp540 and .Ltmp553
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp553-.Lfunc_begin2         # >> Call Site 69 <<
+	.uleb128 .Ltmp554-.Ltmp553              #   Call between .Ltmp553 and .Ltmp554
+	.uleb128 .Ltmp555-.Lfunc_begin2         #     jumps to .Ltmp555
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp580-.Lfunc_begin2         # >> Call Site 70 <<
+	.uleb128 .Ltmp581-.Ltmp580              #   Call between .Ltmp580 and .Ltmp581
+	.uleb128 .Ltmp582-.Lfunc_begin2         #     jumps to .Ltmp582
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp565-.Lfunc_begin2         # >> Call Site 71 <<
+	.uleb128 .Ltmp566-.Ltmp565              #   Call between .Ltmp565 and .Ltmp566
+	.uleb128 .Ltmp567-.Lfunc_begin2         #     jumps to .Ltmp567
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp547-.Lfunc_begin2         # >> Call Site 72 <<
+	.uleb128 .Ltmp548-.Ltmp547              #   Call between .Ltmp547 and .Ltmp548
+	.uleb128 .Ltmp549-.Lfunc_begin2         #     jumps to .Ltmp549
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp601-.Lfunc_begin2         # >> Call Site 73 <<
+	.uleb128 .Ltmp602-.Ltmp601              #   Call between .Ltmp601 and .Ltmp602
+	.uleb128 .Ltmp603-.Lfunc_begin2         #     jumps to .Ltmp603
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp577-.Lfunc_begin2         # >> Call Site 74 <<
+	.uleb128 .Ltmp578-.Ltmp577              #   Call between .Ltmp577 and .Ltmp578
+	.uleb128 .Ltmp579-.Lfunc_begin2         #     jumps to .Ltmp579
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp562-.Lfunc_begin2         # >> Call Site 75 <<
+	.uleb128 .Ltmp563-.Ltmp562              #   Call between .Ltmp562 and .Ltmp563
+	.uleb128 .Ltmp564-.Lfunc_begin2         #     jumps to .Ltmp564
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp544-.Lfunc_begin2         # >> Call Site 76 <<
+	.uleb128 .Ltmp545-.Ltmp544              #   Call between .Ltmp544 and .Ltmp545
+	.uleb128 .Ltmp546-.Lfunc_begin2         #     jumps to .Ltmp546
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp598-.Lfunc_begin2         # >> Call Site 77 <<
+	.uleb128 .Ltmp599-.Ltmp598              #   Call between .Ltmp598 and .Ltmp599
+	.uleb128 .Ltmp600-.Lfunc_begin2         #     jumps to .Ltmp600
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp541-.Lfunc_begin2         # >> Call Site 78 <<
+	.uleb128 .Ltmp542-.Ltmp541              #   Call between .Ltmp541 and .Ltmp542
+	.uleb128 .Ltmp543-.Lfunc_begin2         #     jumps to .Ltmp543
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp595-.Lfunc_begin2         # >> Call Site 79 <<
+	.uleb128 .Ltmp596-.Ltmp595              #   Call between .Ltmp595 and .Ltmp596
+	.uleb128 .Ltmp597-.Lfunc_begin2         #     jumps to .Ltmp597
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp613-.Lfunc_begin2         # >> Call Site 80 <<
+	.uleb128 .Ltmp614-.Ltmp613              #   Call between .Ltmp613 and .Ltmp614
+	.uleb128 .Ltmp615-.Lfunc_begin2         #     jumps to .Ltmp615
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp610-.Lfunc_begin2         # >> Call Site 81 <<
+	.uleb128 .Ltmp611-.Ltmp610              #   Call between .Ltmp610 and .Ltmp611
+	.uleb128 .Ltmp612-.Lfunc_begin2         #     jumps to .Ltmp612
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp607-.Lfunc_begin2         # >> Call Site 82 <<
+	.uleb128 .Ltmp608-.Ltmp607              #   Call between .Ltmp607 and .Ltmp608
+	.uleb128 .Ltmp609-.Lfunc_begin2         #     jumps to .Ltmp609
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp592-.Lfunc_begin2         # >> Call Site 83 <<
+	.uleb128 .Ltmp593-.Ltmp592              #   Call between .Ltmp592 and .Ltmp593
+	.uleb128 .Ltmp594-.Lfunc_begin2         #     jumps to .Ltmp594
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp583-.Lfunc_begin2         # >> Call Site 84 <<
 	.uleb128 .Ltmp584-.Ltmp583              #   Call between .Ltmp583 and .Ltmp584
 	.uleb128 .Ltmp585-.Lfunc_begin2         #     jumps to .Ltmp585
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp574-.Lfunc_begin2         # >> Call Site 84 <<
+	.uleb128 .Ltmp574-.Lfunc_begin2         # >> Call Site 85 <<
 	.uleb128 .Ltmp575-.Ltmp574              #   Call between .Ltmp574 and .Ltmp575
 	.uleb128 .Ltmp576-.Lfunc_begin2         #     jumps to .Ltmp576
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp568-.Lfunc_begin2         # >> Call Site 85 <<
+	.uleb128 .Ltmp568-.Lfunc_begin2         # >> Call Site 86 <<
 	.uleb128 .Ltmp569-.Ltmp568              #   Call between .Ltmp568 and .Ltmp569
 	.uleb128 .Ltmp570-.Lfunc_begin2         #     jumps to .Ltmp570
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp559-.Lfunc_begin2         # >> Call Site 86 <<
+	.uleb128 .Ltmp559-.Lfunc_begin2         # >> Call Site 87 <<
 	.uleb128 .Ltmp560-.Ltmp559              #   Call between .Ltmp559 and .Ltmp560
 	.uleb128 .Ltmp561-.Lfunc_begin2         #     jumps to .Ltmp561
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp556-.Lfunc_begin2         # >> Call Site 87 <<
+	.uleb128 .Ltmp556-.Lfunc_begin2         # >> Call Site 88 <<
 	.uleb128 .Ltmp557-.Ltmp556              #   Call between .Ltmp556 and .Ltmp557
 	.uleb128 .Ltmp558-.Lfunc_begin2         #     jumps to .Ltmp558
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp550-.Lfunc_begin2         # >> Call Site 88 <<
+	.uleb128 .Ltmp550-.Lfunc_begin2         # >> Call Site 89 <<
 	.uleb128 .Ltmp551-.Ltmp550              #   Call between .Ltmp550 and .Ltmp551
 	.uleb128 .Ltmp552-.Lfunc_begin2         #     jumps to .Ltmp552
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp616-.Lfunc_begin2         # >> Call Site 89 <<
+	.uleb128 .Ltmp616-.Lfunc_begin2         # >> Call Site 90 <<
 	.uleb128 .Ltmp617-.Ltmp616              #   Call between .Ltmp616 and .Ltmp617
 	.uleb128 .Ltmp618-.Lfunc_begin2         #     jumps to .Ltmp618
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp619-.Lfunc_begin2         # >> Call Site 90 <<
+	.uleb128 .Ltmp619-.Lfunc_begin2         # >> Call Site 91 <<
 	.uleb128 .Ltmp620-.Ltmp619              #   Call between .Ltmp619 and .Ltmp620
 	.uleb128 .Ltmp621-.Lfunc_begin2         #     jumps to .Ltmp621
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp604-.Lfunc_begin2         # >> Call Site 91 <<
+	.uleb128 .Ltmp604-.Lfunc_begin2         # >> Call Site 92 <<
 	.uleb128 .Ltmp605-.Ltmp604              #   Call between .Ltmp604 and .Ltmp605
 	.uleb128 .Ltmp606-.Lfunc_begin2         #     jumps to .Ltmp606
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp478-.Lfunc_begin2         # >> Call Site 92 <<
+	.uleb128 .Ltmp478-.Lfunc_begin2         # >> Call Site 93 <<
 	.uleb128 .Ltmp479-.Ltmp478              #   Call between .Ltmp478 and .Ltmp479
 	.uleb128 .Ltmp480-.Lfunc_begin2         #     jumps to .Ltmp480
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp172-.Lfunc_begin2         # >> Call Site 93 <<
+	.uleb128 .Ltmp172-.Lfunc_begin2         # >> Call Site 94 <<
 	.uleb128 .Ltmp179-.Ltmp172              #   Call between .Ltmp172 and .Ltmp179
 	.uleb128 .Ltmp180-.Lfunc_begin2         #     jumps to .Ltmp180
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp179-.Lfunc_begin2         # >> Call Site 94 <<
+	.uleb128 .Ltmp179-.Lfunc_begin2         # >> Call Site 95 <<
 	.uleb128 .Lfunc_end5-.Ltmp179           #   Call between .Ltmp179 and .Lfunc_end5
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup

@@ -1545,13 +1545,13 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	ld.w	$a0, $a0, 0
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$s1, $a1, 8
-	ld.w	$s2, $fp, 8
+	ld.d	$s2, $a1, 8
+	ld.w	$s1, $fp, 8
 	addi.d	$a0, $fp, 12
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	addi.d	$a0, $fp, 24
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a0, $s1, 40
+	ld.d	$a0, $s2, 40
 	st.d	$zero, $sp, 184
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -1560,7 +1560,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
 	addi.d	$s5, $a0, 12
-	slli.d	$s3, $s2, 2
+	slli.d	$s3, $s1, 2
 	ldx.w	$a0, $s5, $s3
 	ldx.w	$a1, $s8, $s3
 	sub.w	$a0, $a0, $a1
@@ -1577,7 +1577,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	move	$a0, $s1
+	move	$a0, $s2
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(hypre_StructGridRef)
 	jirl	$ra, $ra, 0
@@ -1598,8 +1598,8 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	st.d	$s3, $sp, 152                   # 8-byte Folded Spill
 	ldx.w	$a1, $s8, $s3
 	move	$s3, $zero
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	alsl.d	$s2, $s2, $a0, 2
+	st.d	$s1, $sp, 104                   # 8-byte Folded Spill
+	alsl.d	$s1, $s1, $a0, 2
 	addi.d	$s7, $s0, 8
 	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
@@ -1637,16 +1637,16 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 244
 	st.w	$s3, $sp, 252
-	ld.w	$a0, $s2, 0
+	ld.w	$a0, $s1, 0
 	st.d	$zero, $sp, 268
 	st.w	$zero, $sp, 276
 	ld.w	$a1, $fp, 0
 	slli.d	$a0, $a0, 1
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s1, 0
 	ld.w	$a0, $s6, 0
 	beq	$a0, $a1, .LBB3_4
 # %bb.2:                                # %.lr.ph.preheader
-	addi.d	$s1, $s0, 16
+	addi.d	$s2, $s0, 16
 	ori	$s4, $zero, 1
 	lu32i.d	$s4, 1
 	ori	$s3, $zero, 1
@@ -1670,25 +1670,25 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(hypre_StructMapFineToCoarse)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, -8
+	ld.d	$a0, $s2, -8
 	addi.d	$a1, $sp, 268
 	addi.d	$a2, $sp, 244
 	ori	$a3, $zero, 1
-	move	$a4, $s1
+	move	$a4, $s2
 	pcaddu18i	$ra, %call36(hypre_StructCoarsen)
 	jirl	$ra, $ra, 0
 	st.d	$s4, $sp, 244
 	ori	$a0, $zero, 1
 	st.w	$a0, $sp, 252
-	ld.w	$a0, $s2, 0
+	ld.w	$a0, $s1, 0
 	st.d	$zero, $sp, 268
 	st.w	$zero, $sp, 276
 	ld.w	$a1, $fp, 0
 	slli.d	$a0, $a0, 1
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s1, 0
 	ld.w	$a0, $s6, 0
 	addi.w	$s3, $s3, 1
-	addi.d	$s1, $s1, 8
+	addi.d	$s2, $s2, 8
 	bne	$a0, $a1, .LBB3_3
 .LBB3_4:                                # %.loopexit
 	addi.d	$fp, $s3, 1
@@ -1702,12 +1702,12 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	st.d	$s0, $s4, 40
 	pcaddu18i	$ra, %call36(hypre_BoxArrayDuplicate)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s2, $a0
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_ProjectBoxArray)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $s4, 48
+	st.d	$s2, $s4, 48
 	slli.w	$s5, $fp, 3
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
@@ -1736,12 +1736,12 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	st.d	$a0, $sp, 248
 	ld.d	$a0, $s0, 0
 	st.w	$a1, $sp, 244
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s1, 0
 	addi.d	$a2, $a2, 1
 	ld.d	$a0, $a0, 8
 	stx.w	$a2, $a3, $fp
 	slli.d	$a1, $a1, 1
-	st.w	$a1, $s2, 0
+	st.w	$a1, $s1, 0
 	pcaddu18i	$ra, %call36(hypre_BoxArrayDuplicate)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s8, 0
@@ -1754,7 +1754,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 # %bb.6:                                # %.peel.next277.preheader
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	alsl.d	$fp, $a0, $fp, 2
-	addi.d	$s1, $s8, 8
+	addi.d	$s2, $s8, 8
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$s3, $a0, -1
 	ori	$s4, $zero, 1
@@ -1771,20 +1771,20 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	st.d	$s6, $sp, 244
 	ld.d	$a1, $s7, 0
 	st.w	$s4, $sp, 252
-	ld.w	$a2, $s2, 0
+	ld.w	$a2, $s1, 0
 	addi.d	$a3, $a0, 1
 	ld.d	$a0, $a1, 8
 	st.w	$a3, $fp, 0
 	slli.d	$a1, $a2, 1
-	st.w	$a1, $s2, 0
+	st.w	$a1, $s1, 0
 	pcaddu18i	$ra, %call36(hypre_BoxArrayDuplicate)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s2, 0
 	addi.d	$a1, $sp, 256
 	addi.d	$a2, $sp, 244
 	pcaddu18i	$ra, %call36(hypre_ProjectBoxArray)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, 8
+	addi.d	$s2, $s2, 8
 	addi.d	$s3, $s3, -1
 	addi.d	$s7, $s7, 8
 	bnez	$s3, .LBB3_7
@@ -1820,7 +1820,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s2, $a0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_StructMatrixRef)
 	jirl	$ra, $ra, 0
@@ -1828,7 +1828,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_StructVectorRef)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s2, 0
 	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 	slli.w	$a0, $s0, 1
 	slli.d	$a1, $a0, 2
@@ -1863,7 +1863,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(hypre_StructVectorCreate)
 	jirl	$ra, $ra, 0
-	add.d	$s7, $s1, $s4
+	add.d	$s7, $s2, $s4
 	st.d	$a0, $s7, 8
 	addi.d	$a1, $sp, 168
 	pcaddu18i	$ra, %call36(hypre_StructVectorSetNumGhost)
@@ -1895,7 +1895,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s6, 8
 	ld.w	$a1, $a0, 60
-	add.d	$s6, $s1, $s5
+	add.d	$s6, $s2, $s5
 	ld.d	$a0, $s6, 8
 	alsl.d	$s4, $a1, $s4, 3
 	move	$a1, $s4
@@ -1917,15 +1917,15 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	st.w	$a0, $sp, 244
 	ld.d	$a0, $a3, 16
 	st.d	$a1, $sp, 248
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s1, 0
 	st.w	$a2, $sp, 268
 	st.d	$a0, $sp, 272
 	slli.d	$a2, $a1, 1
 	ld.d	$a0, $s3, 0
 	ld.d	$a1, $s3, 8
-	st.w	$a2, $s2, 0
+	st.w	$a2, $s1, 0
 	st.d	$s3, $a3, 72
-	st.d	$s1, $a3, 80
+	st.d	$s2, $a3, 80
 	addi.d	$a2, $sp, 268
 	addi.d	$a3, $sp, 244
 	pcaddu18i	$ra, %call36(hypre_CycRedSetupCoarseOp)
@@ -1945,12 +1945,12 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	st.d	$zero, $sp, 268
 	st.d	$s6, $sp, 244
 	st.w	$fp, $sp, 252
-	ld.w	$a2, $s2, 0
+	ld.w	$a2, $s1, 0
 	ld.d	$a0, $s4, -8
 	ld.d	$a1, $s4, 0
 	st.w	$zero, $sp, 276
 	slli.d	$a2, $a2, 1
-	st.w	$a2, $s2, 0
+	st.w	$a2, $s1, 0
 	addi.d	$a2, $sp, 268
 	addi.d	$a3, $sp, 244
 	pcaddu18i	$ra, %call36(hypre_CycRedSetupCoarseOp)
@@ -1966,7 +1966,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, 64
 	st.d	$s3, $s4, 72
-	st.d	$s1, $s4, 80
+	st.d	$s2, $s4, 80
 .LBB3_21:                               # %._crit_edge254
 	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	slli.w	$s4, $fp, 3
@@ -2010,11 +2010,11 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	ldx.d	$a1, $s3, $s7
 	st.w	$a0, $sp, 252
-	ld.w	$a2, $s2, 0
+	ld.w	$a2, $s1, 0
 	ldx.d	$a0, $s0, $s7
 	ld.d	$a1, $a1, 24
 	slli.d	$a2, $a2, 1
-	st.w	$a2, $s2, 0
+	st.w	$a2, $s1, 0
 	addi.d	$a2, $sp, 232
 	addi.d	$a3, $sp, 224
 	addi.d	$a4, $sp, 216
@@ -2047,7 +2047,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	ld.d	$a1, $sp, 224
 	ld.d	$a4, $sp, 216
 	ld.d	$a5, $sp, 208
-	ldx.d	$a2, $s1, $s7
+	ldx.d	$a2, $s2, $s7
 	ld.d	$a6, $sp, 200
 	ld.d	$a7, $sp, 192
 	ldx.d	$a3, $s0, $s7
@@ -2097,7 +2097,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	ld.d	$a1, $sp, 224
 	ld.d	$a4, $sp, 216
 	ld.d	$a5, $sp, 208
-	ldx.d	$a2, $s1, $s7
+	ldx.d	$a2, $s2, $s7
 	ld.d	$a6, $sp, 200
 	ld.d	$a7, $sp, 192
 	ldx.d	$a3, $s0, $s7
@@ -2133,7 +2133,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 .LBB3_27:                               # %._crit_edge258
 	ld.d	$t5, $sp, 144                   # 8-byte Folded Reload
 	st.d	$s5, $t5, 88
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s2, 0
 	ld.w	$a1, $t5, 24
 	ld.w	$a2, $t5, 28
 	ld.w	$a3, $t5, 32
@@ -2172,7 +2172,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	bstrins.d	$a0, $a4, 2, 0
 	vori.b	$vr0, $vr4, 0
 	vinsgr2vr.w	$vr0, $a1, 0
-	addi.d	$a1, $s1, 32
+	addi.d	$a1, $s2, 32
 	vrepli.w	$vr1, 5
 	move	$a4, $a3
 	.p2align	4, , 16
@@ -2209,14 +2209,12 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	bnez	$a4, .LBB3_30
 # %bb.31:                               # %middle.block
 	vadd.w	$vr0, $vr4, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a2, $a3, .LBB3_34
 .LBB3_32:                               # %scalar.ph.preheader
-	alsl.d	$a2, $a0, $s1, 3
+	alsl.d	$a2, $a0, $s2, 3
 	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	sub.d	$a0, $a3, $a0
 	.p2align	4, , 16
@@ -2238,7 +2236,7 @@ hypre_CyclicReductionSetup:             # @hypre_CyclicReductionSetup
 	beq	$a3, $a2, .LBB3_37
 # %bb.36:
 	slli.d	$a0, $a0, 3
-	ldx.d	$a0, $s1, $a0
+	ldx.d	$a0, $s2, $a0
 	ld.wu	$a0, $a0, 72
 	srli.d	$a2, $a0, 31
 	add.w	$a0, $a0, $a2

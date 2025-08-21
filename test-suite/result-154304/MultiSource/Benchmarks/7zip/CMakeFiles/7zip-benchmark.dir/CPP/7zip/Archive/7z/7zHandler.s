@@ -3220,15 +3220,8 @@ GCC_except_table10:
 .Lttbase3:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi
-.LCPI11_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.text._ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi,"axG",@progbits,_ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi,comdat
-	.weak	_ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi
+	.weak	_ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi # -- Begin function _ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi
 	.p2align	2
 	.type	_ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi,@function
 _ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi: # @_ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi
@@ -3296,15 +3289,10 @@ _ZNK8NArchive3N7z18CArchiveDatabaseEx21GetFolderFullPackSizeEi: # @_ZNK8NArchive
 	addi.w	$a0, $a0, 8
 	bnez	$a5, .LBB11_10
 # %bb.11:                               # %middle.block
-	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI11_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	bne	$a4, $a2, .LBB11_3
 	b	.LBB11_5

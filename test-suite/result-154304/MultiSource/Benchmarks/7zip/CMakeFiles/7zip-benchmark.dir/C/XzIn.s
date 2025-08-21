@@ -217,15 +217,7 @@ Xzs_Free:                               # @Xzs_Free
 .Lfunc_end5:
 	.size	Xzs_Free, .Lfunc_end5-Xzs_Free
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Xzs_GetNumBlocks
-.LCPI6_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	Xzs_GetNumBlocks
+	.globl	Xzs_GetNumBlocks                # -- Begin function Xzs_GetNumBlocks
 	.p2align	5
 	.type	Xzs_GetNumBlocks,@function
 Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
@@ -275,15 +267,10 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	addi.d	$a0, $a0, 320
 	bnez	$a4, .LBB6_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI6_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$a1, $a3, .LBB6_9
 .LBB6_7:                                # %scalar.ph.preheader

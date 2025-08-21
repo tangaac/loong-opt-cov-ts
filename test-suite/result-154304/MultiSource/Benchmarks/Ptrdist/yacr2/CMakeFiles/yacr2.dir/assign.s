@@ -194,15 +194,7 @@ NetsAssign:                             # @NetsAssign
 .Lfunc_end2:
 	.size	NetsAssign, .Lfunc_end2-NetsAssign
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function MaxNetsAssign
-.LCPI3_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	MaxNetsAssign
+	.globl	MaxNetsAssign                   # -- Begin function MaxNetsAssign
 	.p2align	5
 	.type	MaxNetsAssign,@function
 MaxNetsAssign:                          # @MaxNetsAssign
@@ -391,15 +383,10 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	bnez	$t3, .LBB3_20
 # %bb.21:                               # %middle.block
                                         #   in Loop: Header=BB3_16 Depth=2
-	pcalau12i	$t2, %pc_hi20(.LCPI3_0)
-	xvld	$xr2, $t2, %pc_lo12(.LCPI3_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$t2, $xr0, 0
 	move	$t4, $a7
 	beq	$a3, $a5, .LBB3_14
@@ -463,15 +450,7 @@ MaxNetsAssign:                          # @MaxNetsAssign
 .Lfunc_end3:
 	.size	MaxNetsAssign, .Lfunc_end3-MaxNetsAssign
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function LeftNetsAssign
-.LCPI4_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	LeftNetsAssign
+	.globl	LeftNetsAssign                  # -- Begin function LeftNetsAssign
 	.p2align	5
 	.type	LeftNetsAssign,@function
 LeftNetsAssign:                         # @LeftNetsAssign
@@ -925,15 +904,10 @@ LeftNetsAssign:                         # @LeftNetsAssign
 	bnez	$t3, .LBB4_60
 # %bb.61:                               # %middle.block
                                         #   in Loop: Header=BB4_56 Depth=3
-	pcalau12i	$t2, %pc_hi20(.LCPI4_0)
-	xvld	$xr2, $t2, %pc_lo12(.LCPI4_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$t2, $xr0, 0
 	move	$t4, $a7
 	beq	$a4, $a5, .LBB4_54
@@ -1007,15 +981,7 @@ LeftNetsAssign:                         # @LeftNetsAssign
 .Lfunc_end4:
 	.size	LeftNetsAssign, .Lfunc_end4-LeftNetsAssign
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function RightNetsAssign
-.LCPI5_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	RightNetsAssign
+	.globl	RightNetsAssign                 # -- Begin function RightNetsAssign
 	.p2align	5
 	.type	RightNetsAssign,@function
 RightNetsAssign:                        # @RightNetsAssign
@@ -1489,15 +1455,10 @@ RightNetsAssign:                        # @RightNetsAssign
 	bnez	$t3, .LBB5_61
 # %bb.62:                               # %middle.block
                                         #   in Loop: Header=BB5_57 Depth=3
-	pcalau12i	$t2, %pc_hi20(.LCPI5_0)
-	xvld	$xr2, $t2, %pc_lo12(.LCPI5_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$t2, $xr0, 0
 	move	$t4, $a7
 	beq	$a4, $a5, .LBB5_55
@@ -1557,15 +1518,7 @@ RightNetsAssign:                        # @RightNetsAssign
 .Lfunc_end5:
 	.size	RightNetsAssign, .Lfunc_end5-RightNetsAssign
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Select
-.LCPI6_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	Select
+	.globl	Select                          # -- Begin function Select
 	.p2align	5
 	.type	Select,@function
 Select:                                 # @Select
@@ -1661,15 +1614,10 @@ Select:                                 # @Select
 	bnez	$t5, .LBB6_9
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB6_5 Depth=1
-	pcalau12i	$t4, %pc_hi20(.LCPI6_0)
-	xvld	$xr3, $t4, %pc_lo12(.LCPI6_0)
 	xvadd.d	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf.d	$xr3, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr3
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.d	$xr2, $xr2, 1
-	xvadd.d	$xr1, $xr1, $xr2
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
 	xvpickve2gr.d	$t4, $xr1, 0
 	move	$t6, $t0
 	beq	$a4, $a6, .LBB6_3

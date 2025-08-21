@@ -1643,11 +1643,9 @@ token_actions:                          # @token_actions
 	bnez	$a4, .LBB12_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s1, $vr0, 0
 	beq	$a2, $a0, .LBB12_8
 .LBB12_6:                               # %scalar.ph.preheader
 	sub.d	$a0, $a0, $a2
@@ -1657,12 +1655,13 @@ token_actions:                          # @token_actions
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$a2, $a1, 0
 	sltu	$a2, $zero, $a2
-	add.w	$s1, $s1, $a2
+	add.d	$s1, $s1, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 2
 	bnez	$a0, .LBB12_7
 .LBB12_8:                               # %._crit_edge.i
-	beqz	$s1, .LBB12_15
+	addi.w	$a0, $s1, 0
+	beqz	$a0, .LBB12_15
 # %bb.9:
 	slli.w	$s0, $s1, 1
 	move	$a0, $s0
@@ -1838,11 +1837,9 @@ token_actions:                          # @token_actions
 # %bb.27:                               # %middle.block53
                                         #   in Loop: Header=BB12_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s3, $vr0, 0
 	beq	$a2, $a0, .LBB12_30
 .LBB12_28:                              # %scalar.ph41.preheader
                                         #   in Loop: Header=BB12_19 Depth=1
@@ -1854,13 +1851,14 @@ token_actions:                          # @token_actions
                                         # =>  This Inner Loop Header: Depth=2
 	ld.hu	$a2, $a1, 0
 	sltu	$a2, $zero, $a2
-	add.w	$s3, $s3, $a2
+	add.d	$s3, $s3, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 2
 	bnez	$a0, .LBB12_29
 .LBB12_30:                              # %._crit_edge.i18
                                         #   in Loop: Header=BB12_19 Depth=1
-	beqz	$s3, .LBB12_18
+	addi.w	$a0, $s3, 0
+	beqz	$a0, .LBB12_18
 # %bb.31:                               #   in Loop: Header=BB12_19 Depth=1
 	move	$s5, $s8
 	move	$s8, $s1
@@ -3451,6 +3449,7 @@ action_row:                             # @action_row
 	.p2align	4, , 16
 .LBB21_58:                              # %._crit_edge151.us
                                         #   in Loop: Header=BB21_59 Depth=1
+	addi.w	$t3, $t3, 0
 	slt	$t4, $a4, $t3
 	masknez	$a0, $a0, $t4
 	maskeqz	$t2, $t2, $t4
@@ -3504,11 +3503,9 @@ action_row:                             # @action_row
 # %bb.63:                               # %middle.block
                                         #   in Loop: Header=BB21_59 Depth=1
 	vadd.w	$vr1, $vr3, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t3, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t3, $vr1, 0
 	move	$t5, $a7
 	beq	$a7, $s0, .LBB21_58
 .LBB21_64:                              # %scalar.ph.preheader
@@ -3522,7 +3519,7 @@ action_row:                             # @action_row
 	ld.h	$t6, $t4, 0
 	xor	$t6, $t6, $t2
 	sltui	$t6, $t6, 1
-	add.w	$t3, $t3, $t6
+	add.d	$t3, $t3, $t6
 	addi.d	$t5, $t5, -1
 	addi.d	$t4, $t4, 2
 	bnez	$t5, .LBB21_65
@@ -4165,11 +4162,9 @@ save_row:                               # @save_row
 	bnez	$a4, .LBB22_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s4, $vr0, 0
 	beq	$a2, $a1, .LBB22_8
 .LBB22_6:                               # %scalar.ph.preheader
 	alsl.d	$a0, $a2, $a0, 1
@@ -4179,12 +4174,13 @@ save_row:                               # @save_row
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$a2, $a0, 0
 	sltu	$a2, $zero, $a2
-	add.w	$s4, $s4, $a2
+	add.d	$s4, $s4, $a2
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 2
 	bnez	$a1, .LBB22_7
 .LBB22_8:                               # %._crit_edge
-	beqz	$s4, .LBB22_15
+	addi.w	$a0, $s4, 0
+	beqz	$a0, .LBB22_15
 # %bb.9:
 	slli.w	$s1, $s4, 1
 	move	$a0, $s1
@@ -4416,11 +4412,9 @@ save_column:                            # @save_column
 	bnez	$a7, .LBB24_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s4, $vr0, 0
 	beq	$s1, $a5, .LBB24_8
 .LBB24_6:                               # %scalar.ph.preheader
 	alsl.d	$a3, $a4, $a3, 1
@@ -4431,12 +4425,13 @@ save_column:                            # @save_column
 	ld.h	$a4, $a3, 0
 	xor	$a4, $a1, $a4
 	sltu	$a4, $zero, $a4
-	add.w	$s4, $s4, $a4
+	add.d	$s4, $s4, $a4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 2
 	bnez	$a2, .LBB24_7
 .LBB24_8:                               # %._crit_edge
-	beqz	$s4, .LBB24_14
+	addi.w	$a2, $s4, 0
+	beqz	$a2, .LBB24_14
 # %bb.9:                                # %.lr.ph44
 	pcalau12i	$a2, %got_pc_hi20(ntokens)
 	ld.d	$a2, $a2, %got_pc_lo12(ntokens)

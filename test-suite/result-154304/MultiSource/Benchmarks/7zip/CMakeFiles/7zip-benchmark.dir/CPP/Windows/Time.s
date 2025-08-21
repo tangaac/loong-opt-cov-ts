@@ -245,11 +245,9 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	bnez	$t1, .LBB4_9
 # %bb.10:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$t0, $a7, .LBB4_13
 .LBB4_11:                               # %.lr.ph.preheader73
 	addi.d	$t1, $sp, 0

@@ -13850,20 +13850,15 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a5, .LBB111_11
 # %bb.12:                               # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvstelm.w	$xr0, $a0, 0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a4, $xr0, 0
+	st.w	$a4, $a0, 0
 	beq	$a3, $a2, .LBB111_7
 # %bb.13:                               # %vec.epilog.iter.check
 	andi	$a5, $a2, 12
-	xvpickve2gr.w	$a4, $xr0, 0
 	beqz	$a5, .LBB111_5
 .LBB111_14:                             # %vec.epilog.ph
 	move	$a5, $a3
@@ -13883,15 +13878,12 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a5, $a5, 16
 	bnez	$a4, .LBB111_15
 # %bb.16:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vstelm.w	$vr0, $a0, 0, 0
-	beq	$a3, $a2, .LBB111_7
-# %bb.17:
-	vpickve2gr.w	$a4, $vr0, 0
-	b	.LBB111_5
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	st.w	$a4, $a0, 0
+	bne	$a3, $a2, .LBB111_5
+	b	.LBB111_7
 .Lfunc_end111:
 	.size	_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end111-_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
                                         # -- End function

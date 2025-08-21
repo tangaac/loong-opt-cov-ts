@@ -114,12 +114,10 @@ main:                                   # @main
 	bnez	$s1, .LBB2_3
 # %bb.4:                                # %middle.block
 	vadd.d	$vr1, $vr7, $vr1
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$a0, $vr1, 0
 	vadd.d	$vr0, $vr6, $vr0
-	vreplvei.d	$vr1, $vr0, 1
-	vadd.d	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	or	$a0, $a0, $a1
 	sltu	$fp, $zero, $a0

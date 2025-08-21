@@ -169,16 +169,11 @@ msum_i4:                                # @msum_i4
 # %bb.15:                               # %middle.block56
                                         #   in Loop: Header=BB0_11 Depth=1
 	xvadd.w	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$t1, $xr1, 0
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$t1, $xr1, 0
 	move	$t3, $a2
 	beq	$a2, $s1, .LBB0_10
 .LBB0_16:                               # %scalar.ph46.preheader

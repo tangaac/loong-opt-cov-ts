@@ -2352,15 +2352,8 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	.size	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv, .Lfunc_end9-_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i
-.LCPI10_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i
 	.type	_ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i,@function
 _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i
 # %bb.0:
@@ -2380,11 +2373,11 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 .LBB10_4:                               # %vector.ph
 	bstrpick.d	$a1, $a3, 30, 3
 	slli.d	$a2, $a1, 3
-	xvrepli.b	$xr2, 0
+	xvrepli.b	$xr0, 0
 	addi.d	$a1, $a0, 4
 	move	$a4, $a2
-	xvori.b	$xr0, $xr2, 0
-	xvori.b	$xr1, $xr2, 0
+	xvori.b	$xr1, $xr0, 0
+	xvori.b	$xr2, $xr0, 0
 	.p2align	4, , 16
 .LBB10_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -2394,8 +2387,8 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	vinsgr2vr.w	$vr4, $a6, 0
 	vpickve2gr.b	$a5, $vr3, 0
 	xvreplgr2vr.b	$xr5, $a5
-	xvpermi.q	$xr5, $xr2, 18
-	xvori.b	$xr6, $xr2, 0
+	xvpermi.q	$xr5, $xr0, 18
+	xvori.b	$xr6, $xr0, 0
 	xvextrins.b	$xr6, $xr5, 0
 	vpickve2gr.b	$a5, $vr3, 1
 	xvreplgr2vr.b	$xr5, $a5
@@ -2411,8 +2404,8 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	xvextrins.b	$xr6, $xr3, 136
 	vpickve2gr.b	$a5, $vr4, 0
 	xvreplgr2vr.b	$xr3, $a5
-	xvpermi.q	$xr3, $xr2, 18
-	xvori.b	$xr5, $xr2, 0
+	xvpermi.q	$xr3, $xr0, 18
+	xvori.b	$xr5, $xr0, 0
 	xvextrins.b	$xr5, $xr3, 0
 	vpickve2gr.b	$a5, $vr4, 1
 	xvreplgr2vr.b	$xr3, $a5
@@ -2426,21 +2419,16 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	xvreplgr2vr.b	$xr3, $a5
 	xvpermi.q	$xr3, $xr5, 48
 	xvextrins.b	$xr5, $xr3, 136
-	xvadd.d	$xr0, $xr0, $xr6
-	xvadd.d	$xr1, $xr1, $xr5
+	xvadd.d	$xr1, $xr1, $xr6
+	xvadd.d	$xr2, $xr2, $xr5
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 8
 	bnez	$a4, .LBB10_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a1, %pc_hi20(.LCPI10_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI10_0)
+	xvadd.d	$xr0, $xr2, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a2, $a3, .LBB10_9
 .LBB10_7:                               # %.lr.ph.preheader11
@@ -2684,15 +2672,8 @@ _ZNSt24uniform_int_distributionItEclISt23mersenne_twister_engineImLm32ELm624ELm3
 	.size	_ZNSt24uniform_int_distributionItEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEtRT_RKNS0_10param_typeE, .Lfunc_end13-_ZNSt24uniform_int_distributionItEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEtRT_RKNS0_10param_typeE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i
-.LCPI14_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i
 	.type	_ZL24loopWithReductionAutoVecItEmPT_S1_S1_i,@function
 _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItEmPT_S1_S1_i
 # %bb.0:
@@ -2712,11 +2693,11 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 .LBB14_4:                               # %vector.ph
 	bstrpick.d	$a1, $a3, 30, 3
 	slli.d	$a2, $a1, 3
-	xvrepli.b	$xr2, 0
+	xvrepli.b	$xr0, 0
 	addi.d	$a1, $a0, 8
 	move	$a4, $a2
-	xvori.b	$xr0, $xr2, 0
-	xvori.b	$xr1, $xr2, 0
+	xvori.b	$xr1, $xr0, 0
+	xvori.b	$xr2, $xr0, 0
 	.p2align	4, , 16
 .LBB14_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -2726,8 +2707,8 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	vinsgr2vr.d	$vr4, $a6, 0
 	vpickve2gr.h	$a5, $vr3, 0
 	xvreplgr2vr.h	$xr5, $a5
-	xvpermi.q	$xr5, $xr2, 18
-	xvori.b	$xr6, $xr2, 0
+	xvpermi.q	$xr5, $xr0, 18
+	xvori.b	$xr6, $xr0, 0
 	xvextrins.h	$xr6, $xr5, 0
 	vpickve2gr.h	$a5, $vr3, 1
 	xvreplgr2vr.h	$xr5, $a5
@@ -2743,8 +2724,8 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	xvextrins.h	$xr6, $xr3, 68
 	vpickve2gr.h	$a5, $vr4, 0
 	xvreplgr2vr.h	$xr3, $a5
-	xvpermi.q	$xr3, $xr2, 18
-	xvori.b	$xr5, $xr2, 0
+	xvpermi.q	$xr3, $xr0, 18
+	xvori.b	$xr5, $xr0, 0
 	xvextrins.h	$xr5, $xr3, 0
 	vpickve2gr.h	$a5, $vr4, 1
 	xvreplgr2vr.h	$xr3, $a5
@@ -2758,21 +2739,16 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	xvreplgr2vr.h	$xr3, $a5
 	xvpermi.q	$xr3, $xr5, 48
 	xvextrins.h	$xr5, $xr3, 68
-	xvadd.d	$xr0, $xr0, $xr6
-	xvadd.d	$xr1, $xr1, $xr5
+	xvadd.d	$xr1, $xr1, $xr6
+	xvadd.d	$xr2, $xr2, $xr5
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 16
 	bnez	$a4, .LBB14_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a1, %pc_hi20(.LCPI14_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI14_0)
+	xvadd.d	$xr0, $xr2, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a2, $a3, .LBB14_9
 .LBB14_7:                               # %.lr.ph.preheader11
@@ -3027,15 +3003,8 @@ _ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm3
 	.size	_ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEjRT_RKNS0_10param_typeE, .Lfunc_end17-_ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEjRT_RKNS0_10param_typeE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i
-.LCPI18_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i
 	.type	_ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i,@function
 _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i
 # %bb.0:
@@ -3094,15 +3063,10 @@ _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIjE
 	addi.d	$a1, $a1, 32
 	bnez	$a4, .LBB18_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a1, %pc_hi20(.LCPI18_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI18_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a2, $a3, .LBB18_9
 .LBB18_7:                               # %.lr.ph.preheader11

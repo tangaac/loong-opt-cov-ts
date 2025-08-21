@@ -806,15 +806,7 @@ generate_polar_angles:                  # @generate_polar_angles
 .Lfunc_end6:
 	.size	generate_polar_angles, .Lfunc_end6-generate_polar_angles
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function load_OpenMOC_tracks
-.LCPI7_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	load_OpenMOC_tracks
+	.globl	load_OpenMOC_tracks             # -- Begin function load_OpenMOC_tracks
 	.p2align	5
 	.type	load_OpenMOC_tracks,@function
 load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
@@ -975,15 +967,10 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB7_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a2, %pc_hi20(.LCPI7_0)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI7_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a2, $xr0, 0
 	beq	$a1, $a0, .LBB7_9
 .LBB7_7:                                # %scalar.ph.preheader

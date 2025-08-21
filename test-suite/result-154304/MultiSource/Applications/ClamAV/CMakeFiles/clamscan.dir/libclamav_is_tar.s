@@ -130,10 +130,10 @@ is_tar:                                 # @is_tar
 	or	$a3, $a0, $a2
 .LBB0_23:                               # %vector.ph
 	move	$a0, $zero
-	vrepli.b	$vr0, 0
+	vrepli.b	$vr2, 0
 	ori	$a2, $zero, 512
-	vori.b	$vr1, $vr0, 0
-	vori.b	$vr2, $vr0, 0
+	vori.b	$vr0, $vr2, 0
+	vori.b	$vr1, $vr2, 0
 	.p2align	4, , 16
 .LBB0_24:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -142,33 +142,31 @@ is_tar:                                 # @is_tar
 	ld.w	$a4, $a4, 4
 	vinsgr2vr.w	$vr3, $a5, 0
 	vinsgr2vr.w	$vr4, $a4, 0
-	vilvl.b	$vr3, $vr0, $vr3
-	vilvl.h	$vr3, $vr0, $vr3
-	vilvl.b	$vr4, $vr0, $vr4
-	vilvl.h	$vr4, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr3
+	vilvl.b	$vr3, $vr2, $vr3
+	vilvl.h	$vr3, $vr2, $vr3
+	vilvl.b	$vr4, $vr2, $vr4
+	vilvl.h	$vr4, $vr2, $vr4
+	vadd.w	$vr0, $vr0, $vr3
 	addi.d	$a0, $a0, 8
-	vadd.w	$vr2, $vr2, $vr4
+	vadd.w	$vr1, $vr1, $vr4
 	bne	$a0, $a2, .LBB0_24
 # %bb.25:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr1
 	ld.bu	$a0, $fp, 155
 	ld.bu	$a2, $fp, 154
-	vshuf4i.w	$vr1, $vr0, 14
 	ld.bu	$a4, $fp, 153
-	vadd.w	$vr0, $vr0, $vr1
+	vadd.w	$vr0, $vr1, $vr0
 	add.d	$a0, $a0, $a2
 	ld.bu	$a2, $fp, 152
 	add.d	$a0, $a0, $a4
 	ld.bu	$a4, $fp, 151
-	vreplvei.w	$vr1, $vr0, 1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	add.d	$a0, $a0, $a2
 	ld.bu	$a2, $fp, 150
 	add.d	$a0, $a0, $a4
 	ld.bu	$a4, $fp, 149
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
 	add.d	$a0, $a0, $a2
-	vpickve2gr.w	$a2, $vr0, 0
+	vpickve2gr.d	$a2, $vr0, 0
 	add.d	$a0, $a0, $a4
 	add.d	$a0, $a0, $a1
 	sub.d	$a0, $a2, $a0

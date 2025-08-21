@@ -1047,16 +1047,11 @@ _ZN2PP12Parser_utils13print_stringsESt6vectorIS1_INSt7__cxx1112basic_stringIcSt1
 	bnez	$a3, .LBB3_74
 # %bb.75:                               # %middle.block571
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a1, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$s8, $a0, .LBB3_82
 # %bb.76:                               # %vec.epilog.iter.check576
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
@@ -1085,11 +1080,9 @@ _ZN2PP12Parser_utils13print_stringsESt6vectorIS1_INSt7__cxx1112basic_stringIcSt1
 	addi.d	$a3, $a3, 16
 	bnez	$a1, .LBB3_78
 # %bb.79:                               # %vec.epilog.middle.block587
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$s8, $a0, .LBB3_82
 .LBB3_80:                               # %.lr.ph365.preheader
 	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload

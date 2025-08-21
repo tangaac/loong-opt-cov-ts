@@ -442,11 +442,9 @@ acttab_insert:                          # @acttab_insert
 # %bb.34:                               # %middle.block
                                         #   in Loop: Header=BB4_9 Depth=1
 	vadd.w	$vr2, $vr6, $vr5
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$t5, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$t5, $vr2, 0
 	move	$t7, $a7
 	move	$t8, $a7
 	beq	$a7, $a6, .LBB4_37
@@ -464,13 +462,14 @@ acttab_insert:                          # @acttab_insert
 	xor	$s0, $t8, $s0
 	sltui	$s0, $s0, 1
 	and	$s0, $s1, $s0
-	add.w	$t5, $t5, $s0
+	add.d	$t5, $t5, $s0
 	addi.d	$t6, $t6, 8
 	addi.d	$t7, $t7, -1
 	addi.w	$t8, $t8, 1
 	bnez	$t7, .LBB4_36
 .LBB4_37:                               # %._crit_edge
                                         #   in Loop: Header=BB4_9 Depth=1
+	addi.w	$t5, $t5, 0
 	bne	$t5, $t4, .LBB4_8
 .LBB4_38:
 	move	$a0, $a4

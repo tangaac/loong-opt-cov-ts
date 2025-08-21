@@ -1810,16 +1810,11 @@ Decode_Picture:                         # @Decode_Picture
 	xvadd.w	$xr2, $xr2, $xr3
 	xvadd.w	$xr1, $xr1, $xr5
 	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a2, $xr1, 0
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$a2, $xr1, 0
 	andi	$a2, $a2, 1
 	vst	$vr0, $a1, 112
 	bnez	$a2, .LBB0_185

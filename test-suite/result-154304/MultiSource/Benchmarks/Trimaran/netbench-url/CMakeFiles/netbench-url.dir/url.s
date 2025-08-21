@@ -1,13 +1,6 @@
 	.file	"url.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function internet_checksum
-.LCPI0_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
-	.globl	internet_checksum
+	.globl	internet_checksum               # -- Begin function internet_checksum
 	.p2align	5
 	.type	internet_checksum,@function
 internet_checksum:                      # @internet_checksum
@@ -35,11 +28,11 @@ internet_checksum:                      # @internet_checksum
 	sub.w	$a1, $a1, $a5
 	alsl.d	$a2, $a2, $a0, 4
 	addi.d	$a0, $a0, 8
-	xvrepli.b	$xr2, 0
-	xvrepli.b	$xr3, -1
+	xvrepli.b	$xr0, 0
+	xvrepli.b	$xr1, -1
 	move	$a5, $a4
-	xvori.b	$xr0, $xr2, 0
-	xvori.b	$xr1, $xr2, 0
+	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr3, $xr0, 0
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -49,8 +42,8 @@ internet_checksum:                      # @internet_checksum
 	vinsgr2vr.d	$vr5, $a7, 0
 	vpickve2gr.h	$a6, $vr4, 0
 	xvreplgr2vr.h	$xr6, $a6
-	xvpermi.q	$xr6, $xr2, 18
-	xvori.b	$xr7, $xr2, 0
+	xvpermi.q	$xr6, $xr0, 18
+	xvori.b	$xr7, $xr0, 0
 	xvextrins.h	$xr7, $xr6, 0
 	vpickve2gr.h	$a6, $vr4, 1
 	xvreplgr2vr.h	$xr6, $a6
@@ -66,8 +59,8 @@ internet_checksum:                      # @internet_checksum
 	xvextrins.h	$xr7, $xr4, 68
 	vpickve2gr.h	$a6, $vr5, 0
 	xvreplgr2vr.h	$xr4, $a6
-	xvpermi.q	$xr4, $xr2, 18
-	xvori.b	$xr6, $xr2, 0
+	xvpermi.q	$xr4, $xr0, 18
+	xvori.b	$xr6, $xr0, 0
 	xvextrins.h	$xr6, $xr4, 0
 	vpickve2gr.h	$a6, $vr5, 1
 	xvreplgr2vr.h	$xr4, $a6
@@ -81,23 +74,18 @@ internet_checksum:                      # @internet_checksum
 	xvreplgr2vr.h	$xr4, $a6
 	xvpermi.q	$xr4, $xr6, 48
 	xvextrins.h	$xr6, $xr4, 68
-	xvxor.v	$xr4, $xr7, $xr3
-	xvxor.v	$xr5, $xr6, $xr3
-	xvadd.d	$xr0, $xr0, $xr4
-	xvadd.d	$xr1, $xr1, $xr5
+	xvxor.v	$xr4, $xr7, $xr1
+	xvxor.v	$xr5, $xr6, $xr1
+	xvadd.d	$xr2, $xr2, $xr4
+	xvadd.d	$xr3, $xr3, $xr5
 	addi.d	$a5, $a5, -8
 	addi.d	$a0, $a0, 16
 	bnez	$a5, .LBB0_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_0)
+	xvadd.d	$xr0, $xr3, $xr2
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
 	xvpickve2gr.d	$a5, $xr0, 0
 	beq	$a4, $a3, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader40

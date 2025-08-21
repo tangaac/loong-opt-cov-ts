@@ -3864,16 +3864,11 @@ rc_init_pict:                           # @rc_init_pict
 	bnez	$t4, .LBB9_84
 # %bb.85:                               # %middle.block
 	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$t2, $xr1, 0
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$t2, $xr1, 0
 	beq	$t3, $t1, .LBB9_92
 # %bb.86:                               # %vec.epilog.iter.check
 	andi	$t4, $t1, 12
@@ -3896,11 +3891,9 @@ rc_init_pict:                           # @rc_init_pict
 	addi.d	$t4, $t4, 16
 	bnez	$t2, .LBB9_88
 # %bb.89:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t2, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t2, $vr1, 0
 	beq	$t3, $t1, .LBB9_92
 .LBB9_90:                               # %vec.epilog.scalar.ph.preheader
 	alsl.d	$t4, $t3, $a6, 2
@@ -5183,11 +5176,9 @@ RCModelEstimator:                       # @RCModelEstimator
 	bnez	$a5, .LBB16_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a4, $a1, .LBB16_9
 .LBB16_7:                               # %.lr.ph.preheader161
 	alsl.d	$a5, $a4, $a2, 2
@@ -5260,6 +5251,7 @@ RCModelEstimator:                       # @RCModelEstimator
 	fst.d	$fa0, $a4, 0
 	b	.LBB16_14
 .LBB16_17:                              # %._crit_edge118
+	addi.w	$a3, $a3, 0
 	ori	$a4, $zero, 1
 	movgr2fr.d	$fa1, $zero
 	blt	$a3, $a4, .LBB16_26
@@ -5730,11 +5722,9 @@ MADModelEstimator:                      # @MADModelEstimator
 	bnez	$a5, .LBB18_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	beq	$a4, $a1, .LBB18_9
 .LBB18_7:                               # %.lr.ph.preheader161
 	alsl.d	$a5, $a4, $a2, 2
@@ -5807,6 +5797,7 @@ MADModelEstimator:                      # @MADModelEstimator
 	fst.d	$fa0, $a4, 0
 	b	.LBB18_14
 .LBB18_17:                              # %._crit_edge118
+	addi.w	$a3, $a3, 0
 	ori	$a4, $zero, 1
 	movgr2fr.d	$fa3, $zero
 	blt	$a3, $a4, .LBB18_26

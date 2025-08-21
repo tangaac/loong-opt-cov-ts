@@ -18,11 +18,6 @@
 	.half	0                               # 0x0
 	.half	0                               # 0x0
 	.half	0                               # 0x0
-.LCPI0_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	Gsm_Long_Term_Predictor
 	.p2align	5
@@ -499,16 +494,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	xvslli.d	$xr0, $xr0, 48
 	xvsrai.d	$xr0, $xr0, 48
 	xvmadd.d	$xr1, $xr3, $xr3
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI0_1)
 	xvmadd.d	$xr2, $xr0, $xr0
 	xvadd.d	$xr0, $xr2, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr3, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	slli.d	$s5, $a0, 1
 	bge	$s0, $s5, .LBB0_10

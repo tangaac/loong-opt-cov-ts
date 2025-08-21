@@ -1204,11 +1204,9 @@ color_quantize:                         # @color_quantize
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB6_7 Depth=2
 	vadd.w	$vr2, $vr3, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$t3, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$t3, $vr2, 0
 	move	$t5, $a4
 	beq	$a4, $a1, .LBB6_6
 .LBB6_12:                               # %scalar.ph.preheader

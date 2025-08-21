@@ -305,16 +305,9 @@ Sort:                                   # @Sort
 .Lfunc_end3:
 	.size	Sort, .Lfunc_end3-Sort
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function calc_buffer
-.LCPI4_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst4,"aM",@progbits,4
-	.p2align	2, 0x0
-.LCPI4_1:
+	.p2align	2, 0x0                          # -- Begin function calc_buffer
+.LCPI4_0:
 	.word	0x5f000000                      # float 9.22337203E+18
 	.text
 	.globl	calc_buffer
@@ -426,15 +419,10 @@ calc_buffer:                            # @calc_buffer
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB4_11
 # %bb.12:                               # %middle.block
-	pcalau12i	$a3, %pc_hi20(.LCPI4_0)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI4_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a0, $a2, .LBB4_15
 .LBB4_13:                               # %scalar.ph.preheader
@@ -469,8 +457,8 @@ calc_buffer:                            # @calc_buffer
 	fadd.s	$fa1, $fa1, $fa1
 	slti	$a1, $a0, 0
 	movgr2fr.d	$fa2, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
-	fld.s	$fs0, $a0, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
+	fld.s	$fs0, $a0, %pc_lo12(.LCPI4_0)
 	ffint.s.l	$fa2, $fa2
 	movgr2cf	$fcc0, $a1
 	fsel	$fa1, $fa2, $fa1, $fcc0

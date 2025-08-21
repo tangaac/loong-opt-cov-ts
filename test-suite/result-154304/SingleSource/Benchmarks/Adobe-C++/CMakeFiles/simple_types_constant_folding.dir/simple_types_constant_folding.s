@@ -4626,22 +4626,13 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB21_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB21_4 Depth=1
@@ -4668,15 +4659,11 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB21_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB21_17
 .LBB21_15:                              # %vec.epilog.scalar.ph.preheader
@@ -4924,22 +4911,13 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB22_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB22_4 Depth=1
@@ -4966,15 +4944,11 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB22_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB22_17
 .LBB22_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5226,22 +5200,13 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB23_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB23_4 Depth=1
@@ -5268,15 +5233,11 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB23_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB23_17
 .LBB23_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5530,22 +5491,13 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB24_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB24_4 Depth=1
@@ -5572,15 +5524,11 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB24_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB24_17
 .LBB24_15:                              # %vec.epilog.scalar.ph.preheader
@@ -5831,22 +5779,13 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB25_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB25_4 Depth=1
@@ -5872,15 +5811,11 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB25_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB25_17
 .LBB25_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6098,22 +6033,13 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB26_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB26_4 Depth=1
@@ -6139,15 +6065,11 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB26_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB26_17
 .LBB26_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6367,22 +6289,13 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB27_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB27_4 Depth=1
@@ -6409,15 +6322,11 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB27_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB27_17
 .LBB27_15:                              # %vec.epilog.scalar.ph.preheader
@@ -6675,22 +6584,13 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB28_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB28_4 Depth=1
@@ -6720,15 +6620,11 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	bnez	$a0, .LBB28_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB28_17
 .LBB28_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7001,22 +6897,13 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB29_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB29_4 Depth=1
@@ -7047,15 +6934,11 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB29_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB29_17
 .LBB29_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7318,22 +7201,13 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB30_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB30_4 Depth=1
@@ -7360,15 +7234,11 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB30_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB30_17
 .LBB30_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7613,22 +7483,13 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB31_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB31_4 Depth=1
@@ -7654,15 +7515,11 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB31_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB31_17
 .LBB31_15:                              # %vec.epilog.scalar.ph.preheader
@@ -7906,22 +7763,13 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB32_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB32_4 Depth=1
@@ -7948,15 +7796,11 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB32_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB32_17
 .LBB32_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8201,22 +8045,13 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB33_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB33_4 Depth=1
@@ -8243,15 +8078,11 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB33_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB33_17
 .LBB33_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8496,22 +8327,13 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB34_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB34_4 Depth=1
@@ -8538,15 +8360,11 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 	bnez	$a0, .LBB34_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB34_17
 .LBB34_15:                              # %vec.epilog.scalar.ph.preheader
@@ -8780,22 +8598,13 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB35_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB35_4 Depth=1
@@ -8822,15 +8631,11 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB35_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB35_17
 .LBB35_15:                              # %vec.epilog.scalar.ph.preheader
@@ -9059,22 +8864,13 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB36_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB36_4 Depth=1
@@ -9101,15 +8897,11 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB36_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB36_17
 .LBB36_15:                              # %vec.epilog.scalar.ph.preheader
@@ -9356,22 +9148,13 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB37_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB37_4 Depth=1
@@ -9398,15 +9181,11 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB37_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB37_17
 .LBB37_15:                              # %vec.epilog.scalar.ph.preheader
@@ -11652,22 +11431,13 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB53_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB53_4 Depth=1
@@ -11694,15 +11464,11 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB53_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB53_17
 .LBB53_15:                              # %vec.epilog.scalar.ph.preheader
@@ -11950,22 +11716,13 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB54_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB54_4 Depth=1
@@ -11992,15 +11749,11 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB54_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB54_17
 .LBB54_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12252,22 +12005,13 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB55_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB55_4 Depth=1
@@ -12294,15 +12038,11 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB55_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB55_17
 .LBB55_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12556,22 +12296,13 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB56_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB56_4 Depth=1
@@ -12598,15 +12329,11 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB56_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB56_17
 .LBB56_15:                              # %vec.epilog.scalar.ph.preheader
@@ -12857,22 +12584,13 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB57_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB57_4 Depth=1
@@ -12898,15 +12616,11 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB57_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB57_17
 .LBB57_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13124,22 +12838,13 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB58_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB58_4 Depth=1
@@ -13165,15 +12870,11 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB58_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB58_17
 .LBB58_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13393,22 +13094,13 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB59_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB59_4 Depth=1
@@ -13435,15 +13127,11 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB59_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB59_17
 .LBB59_15:                              # %vec.epilog.scalar.ph.preheader
@@ -13697,22 +13385,13 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB60_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB60_4 Depth=1
@@ -13740,15 +13419,11 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 	bnez	$a0, .LBB60_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB60_17
 .LBB60_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14006,22 +13681,13 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB61_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB61_4 Depth=1
@@ -14049,15 +13715,11 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB61_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB61_17
 .LBB61_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14309,22 +13971,13 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB62_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB62_4 Depth=1
@@ -14351,15 +14004,11 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB62_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB62_17
 .LBB62_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14604,22 +14253,13 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB63_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB63_4 Depth=1
@@ -14645,15 +14285,11 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB63_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB63_17
 .LBB63_15:                              # %vec.epilog.scalar.ph.preheader
@@ -14897,22 +14533,13 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB64_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB64_4 Depth=1
@@ -14939,15 +14566,11 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB64_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB64_17
 .LBB64_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15192,22 +14815,13 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB65_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB65_4 Depth=1
@@ -15234,15 +14848,11 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB65_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB65_17
 .LBB65_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15487,22 +15097,13 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB66_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB66_4 Depth=1
@@ -15529,15 +15130,11 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 	bnez	$a0, .LBB66_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB66_17
 .LBB66_15:                              # %vec.epilog.scalar.ph.preheader
@@ -15771,22 +15368,13 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB67_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB67_4 Depth=1
@@ -15813,15 +15401,11 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB67_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB67_17
 .LBB67_15:                              # %vec.epilog.scalar.ph.preheader
@@ -16050,22 +15634,13 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB68_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB68_4 Depth=1
@@ -16092,15 +15667,11 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB68_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB68_17
 .LBB68_15:                              # %vec.epilog.scalar.ph.preheader
@@ -16347,22 +15918,13 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	xvadd.b	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvadd.b	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvadd.b	$xr0, $xr0, $xr1
-	vpickve2gr.b	$a0, $vr0, 0
+	xvhaddw.h.b	$xr0, $xr0, $xr0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB69_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB69_4 Depth=1
@@ -16389,15 +15951,11 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB69_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
-	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vadd.b	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vadd.b	$vr0, $vr0, $vr1
-	vpickve2gr.b	$a0, $vr0, 0
+	vhaddw.h.b	$vr0, $vr0, $vr0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB69_17
 .LBB69_15:                              # %vec.epilog.scalar.ph.preheader
@@ -18659,19 +18217,12 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB85_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB85_4 Depth=1
@@ -18698,13 +18249,10 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB85_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB85_17
 .LBB85_15:                              # %vec.epilog.scalar.ph.preheader
@@ -18963,19 +18511,12 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB86_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB86_4 Depth=1
@@ -19002,13 +18543,10 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB86_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB86_17
 .LBB86_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19271,19 +18809,12 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB87_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB87_4 Depth=1
@@ -19310,13 +18841,10 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB87_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB87_17
 .LBB87_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19581,19 +19109,12 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB88_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB88_4 Depth=1
@@ -19620,13 +19141,10 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB88_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB88_17
 .LBB88_15:                              # %vec.epilog.scalar.ph.preheader
@@ -19888,19 +19406,12 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB89_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB89_4 Depth=1
@@ -19926,13 +19437,10 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB89_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB89_17
 .LBB89_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20191,19 +19699,12 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB90_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB90_4 Depth=1
@@ -20229,13 +19730,10 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB90_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB90_17
 .LBB90_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20497,19 +19995,12 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB91_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB91_4 Depth=1
@@ -20536,13 +20027,10 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB91_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB91_17
 .LBB91_15:                              # %vec.epilog.scalar.ph.preheader
@@ -20810,19 +20298,12 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB92_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB92_4 Depth=1
@@ -20853,13 +20334,10 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	bnez	$a0, .LBB92_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB92_17
 .LBB92_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21142,19 +20620,12 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB93_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB93_4 Depth=1
@@ -21185,13 +20656,10 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB93_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB93_17
 .LBB93_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21473,19 +20941,12 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB94_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB94_4 Depth=1
@@ -21512,13 +20973,10 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB94_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB94_17
 .LBB94_15:                              # %vec.epilog.scalar.ph.preheader
@@ -21772,19 +21230,12 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB95_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB95_4 Depth=1
@@ -21810,13 +21261,10 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB95_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB95_17
 .LBB95_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22072,19 +21520,12 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB96_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB96_4 Depth=1
@@ -22111,13 +21552,10 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB96_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB96_17
 .LBB96_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22378,19 +21816,12 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB97_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB97_4 Depth=1
@@ -22417,13 +21848,10 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB97_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB97_17
 .LBB97_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22684,19 +22112,12 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB98_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB98_4 Depth=1
@@ -22723,13 +22144,10 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 	bnez	$a0, .LBB98_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB98_17
 .LBB98_15:                              # %vec.epilog.scalar.ph.preheader
@@ -22976,19 +22394,12 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB99_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB99_4 Depth=1
@@ -23015,13 +22426,10 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB99_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB99_17
 .LBB99_15:                              # %vec.epilog.scalar.ph.preheader
@@ -23264,19 +22672,12 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB100_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB100_4 Depth=1
@@ -23303,13 +22704,10 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB100_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB100_17
 .LBB100_15:                             # %vec.epilog.scalar.ph.preheader
@@ -23570,19 +22968,12 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB101_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB101_4 Depth=1
@@ -23609,13 +23000,10 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB101_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB101_17
 .LBB101_15:                             # %vec.epilog.scalar.ph.preheader
@@ -25885,19 +25273,12 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB117_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB117_4 Depth=1
@@ -25924,13 +25305,10 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB117_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB117_17
 .LBB117_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26189,19 +25567,12 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB118_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB118_4 Depth=1
@@ -26228,13 +25599,10 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB118_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB118_17
 .LBB118_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26497,19 +25865,12 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB119_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB119_4 Depth=1
@@ -26536,13 +25897,10 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB119_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB119_17
 .LBB119_15:                             # %vec.epilog.scalar.ph.preheader
@@ -26807,19 +26165,12 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB120_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB120_4 Depth=1
@@ -26846,13 +26197,10 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB120_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB120_17
 .LBB120_15:                             # %vec.epilog.scalar.ph.preheader
@@ -27114,19 +26462,12 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB121_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB121_4 Depth=1
@@ -27152,13 +26493,10 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB121_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB121_17
 .LBB121_15:                             # %vec.epilog.scalar.ph.preheader
@@ -27417,19 +26755,12 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB122_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB122_4 Depth=1
@@ -27455,13 +26786,10 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB122_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB122_17
 .LBB122_15:                             # %vec.epilog.scalar.ph.preheader
@@ -27723,19 +27051,12 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB123_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB123_4 Depth=1
@@ -27762,13 +27083,10 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB123_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB123_17
 .LBB123_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28034,19 +27352,12 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB124_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB124_4 Depth=1
@@ -28074,13 +27385,10 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 	bnez	$a0, .LBB124_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB124_17
 .LBB124_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28349,19 +27657,12 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB125_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB125_4 Depth=1
@@ -28389,13 +27690,10 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB125_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB125_17
 .LBB125_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28659,19 +27957,12 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB126_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB126_4 Depth=1
@@ -28698,13 +27989,10 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB126_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB126_17
 .LBB126_15:                             # %vec.epilog.scalar.ph.preheader
@@ -28958,19 +28246,12 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB127_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB127_4 Depth=1
@@ -28996,13 +28277,10 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB127_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB127_17
 .LBB127_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29258,19 +28536,12 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB128_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB128_4 Depth=1
@@ -29297,13 +28568,10 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB128_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB128_17
 .LBB128_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29564,19 +28832,12 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB129_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB129_4 Depth=1
@@ -29603,13 +28864,10 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB129_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB129_17
 .LBB129_15:                             # %vec.epilog.scalar.ph.preheader
@@ -29870,19 +29128,12 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB130_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB130_4 Depth=1
@@ -29909,13 +29160,10 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 	bnez	$a0, .LBB130_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB130_17
 .LBB130_15:                             # %vec.epilog.scalar.ph.preheader
@@ -30162,19 +29410,12 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB131_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB131_4 Depth=1
@@ -30201,13 +29442,10 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB131_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB131_17
 .LBB131_15:                             # %vec.epilog.scalar.ph.preheader
@@ -30450,19 +29688,12 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB132_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB132_4 Depth=1
@@ -30489,13 +29720,10 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB132_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB132_17
 .LBB132_15:                             # %vec.epilog.scalar.ph.preheader
@@ -30756,19 +29984,12 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a0, $vr0, 0
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB133_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB133_4 Depth=1
@@ -30795,13 +30016,10 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB133_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB133_17
 .LBB133_15:                             # %vec.epilog.scalar.ph.preheader
@@ -33066,16 +32284,11 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB149_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB149_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB149_4 Depth=1
@@ -33102,11 +32315,9 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	bnez	$a0, .LBB149_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB149_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB149_17
 .LBB149_15:                             # %vec.epilog.scalar.ph.preheader
@@ -33119,7 +32330,7 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB149_16
@@ -33130,6 +32341,7 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB149_3
 # %bb.18:                               #   in Loop: Header=BB149_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -33360,16 +32572,11 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB150_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB150_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB150_4 Depth=1
@@ -33396,11 +32603,9 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB150_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB150_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB150_17
 .LBB150_15:                             # %vec.epilog.scalar.ph.preheader
@@ -33413,7 +32618,7 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB150_16
@@ -33424,6 +32629,7 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB150_3
 # %bb.18:                               #   in Loop: Header=BB150_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -33658,16 +32864,11 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB151_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB151_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB151_4 Depth=1
@@ -33694,11 +32895,9 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	bnez	$a0, .LBB151_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB151_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB151_17
 .LBB151_15:                             # %vec.epilog.scalar.ph.preheader
@@ -33711,7 +32910,7 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB151_16
@@ -33722,6 +32921,7 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB151_3
 # %bb.18:                               #   in Loop: Header=BB151_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -33958,16 +33158,11 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB152_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB152_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB152_4 Depth=1
@@ -33994,11 +33189,9 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB152_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB152_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB152_17
 .LBB152_15:                             # %vec.epilog.scalar.ph.preheader
@@ -34011,7 +33204,7 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB152_16
@@ -34022,6 +33215,7 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB152_3
 # %bb.18:                               #   in Loop: Header=BB152_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34255,16 +33449,11 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB153_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB153_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB153_4 Depth=1
@@ -34290,11 +33479,9 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB153_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB153_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB153_17
 .LBB153_15:                             # %vec.epilog.scalar.ph.preheader
@@ -34307,7 +33494,7 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB153_16
@@ -34317,6 +33504,7 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB153_3
 # %bb.18:                               #   in Loop: Header=BB153_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34545,16 +33733,11 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB154_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB154_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB154_4 Depth=1
@@ -34580,11 +33763,9 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB154_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB154_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB154_17
 .LBB154_15:                             # %vec.epilog.scalar.ph.preheader
@@ -34597,7 +33778,7 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB154_16
@@ -34607,6 +33788,7 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB154_3
 # %bb.18:                               #   in Loop: Header=BB154_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -34838,16 +34020,11 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB155_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB155_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB155_4 Depth=1
@@ -34874,11 +34051,9 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB155_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB155_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB155_17
 .LBB155_15:                             # %vec.epilog.scalar.ph.preheader
@@ -34891,7 +34066,7 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 120
+	addi.d	$a0, $a0, 120
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB155_16
@@ -34902,6 +34077,7 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB155_3
 # %bb.18:                               #   in Loop: Header=BB155_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35141,16 +34317,11 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB156_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB156_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB156_4 Depth=1
@@ -35181,11 +34352,9 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	bnez	$a0, .LBB156_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB156_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB156_17
 .LBB156_15:                             # %vec.epilog.scalar.ph.preheader
@@ -35201,7 +34370,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	srli.d	$a5, $a4, 63
 	srai.d	$a4, $a4, 33
 	add.d	$a4, $a4, $a5
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB156_16
@@ -35215,6 +34384,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	srai.d	$a2, $a2, 33
 	add.d	$a2, $a2, $a3
 	mul.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB156_3
 # %bb.18:                               #   in Loop: Header=BB156_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35451,16 +34621,11 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB157_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB157_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB157_4 Depth=1
@@ -35492,11 +34657,9 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB157_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB157_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB157_17
 .LBB157_15:                             # %vec.epilog.scalar.ph.preheader
@@ -35514,7 +34677,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	bstrpick.d	$a5, $a4, 31, 31
 	srli.d	$a4, $a4, 6
 	add.d	$a4, $a4, $a5
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB157_16
@@ -35530,6 +34693,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	srli.d	$a2, $a2, 6
 	add.d	$a2, $a2, $a3
 	mul.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB157_3
 # %bb.18:                               #   in Loop: Header=BB157_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -35757,16 +34921,11 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB158_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB158_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB158_4 Depth=1
@@ -35793,11 +34952,9 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB158_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB158_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB158_17
 .LBB158_15:                             # %vec.epilog.scalar.ph.preheader
@@ -35810,7 +34967,7 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 2
+	addi.d	$a0, $a0, 2
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB158_16
@@ -35821,6 +34978,7 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 	movfr2gr.s	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB158_3
 # %bb.18:                               #   in Loop: Header=BB158_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -36046,16 +35204,11 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB159_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB159_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB159_4 Depth=1
@@ -36081,11 +35234,9 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB159_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB159_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB159_17
 .LBB159_15:                             # %vec.epilog.scalar.ph.preheader
@@ -36097,7 +35248,7 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
                                         #   Parent Loop BB159_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB159_16
@@ -36107,6 +35258,7 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB159_3
 # %bb.18:                               #   in Loop: Header=BB159_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -36333,16 +35485,11 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB160_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB160_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB160_4 Depth=1
@@ -36369,11 +35516,9 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	bnez	$a0, .LBB160_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB160_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB160_17
 .LBB160_15:                             # %vec.epilog.scalar.ph.preheader
@@ -36386,7 +35531,7 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB160_16
@@ -36397,6 +35542,7 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	andi	$a2, $a2, 10
 	mul.d	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB160_3
 # %bb.18:                               #   in Loop: Header=BB160_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -36626,16 +35772,11 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB161_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB161_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB161_4 Depth=1
@@ -36662,11 +35803,9 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB161_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB161_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB161_17
 .LBB161_15:                             # %vec.epilog.scalar.ph.preheader
@@ -36679,7 +35818,7 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 14
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB161_16
@@ -36690,6 +35829,7 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	andi	$a2, $a2, 14
 	mul.d	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB161_3
 # %bb.18:                               #   in Loop: Header=BB161_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -36919,16 +36059,11 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB162_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB162_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB162_4 Depth=1
@@ -36955,11 +36090,9 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 	bnez	$a0, .LBB162_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB162_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB162_17
 .LBB162_15:                             # %vec.epilog.scalar.ph.preheader
@@ -36972,7 +36105,7 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB162_16
@@ -36983,6 +36116,7 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 	movfr2gr.s	$a2, $fa0
 	ori	$a2, $a2, 10
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB162_3
 # %bb.18:                               #   in Loop: Header=BB162_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -37200,16 +36334,11 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB163_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB163_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB163_4 Depth=1
@@ -37236,11 +36365,9 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB163_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB163_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB163_17
 .LBB163_15:                             # %vec.epilog.scalar.ph.preheader
@@ -37253,7 +36380,7 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 63
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB163_16
@@ -37264,6 +36391,7 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 	movfr2gr.s	$a2, $fa0
 	ori	$a2, $a2, 63
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB163_3
 # %bb.18:                               #   in Loop: Header=BB163_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -37481,16 +36609,11 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB164_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB164_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB164_4 Depth=1
@@ -37517,11 +36640,9 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	bnez	$a0, .LBB164_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB164_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB164_17
 .LBB164_15:                             # %vec.epilog.scalar.ph.preheader
@@ -37534,7 +36655,7 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB164_16
@@ -37545,6 +36666,7 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	movfr2gr.s	$a2, $fa0
 	xori	$a2, $a2, 10
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB164_3
 # %bb.18:                               #   in Loop: Header=BB164_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -37774,16 +36896,11 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB165_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB165_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB165_4 Depth=1
@@ -37810,11 +36927,9 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB165_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB165_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB165_17
 .LBB165_15:                             # %vec.epilog.scalar.ph.preheader
@@ -37827,7 +36942,7 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 49
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB165_16
@@ -37838,6 +36953,7 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.s	$a2, $fa0
 	xori	$a2, $a2, 49
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB165_3
 # %bb.18:                               #   in Loop: Header=BB165_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40071,16 +39187,11 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB181_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB181_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB181_4 Depth=1
@@ -40107,11 +39218,9 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	bnez	$a0, .LBB181_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB181_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB181_17
 .LBB181_15:                             # %vec.epilog.scalar.ph.preheader
@@ -40124,7 +39233,7 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB181_16
@@ -40135,6 +39244,7 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB181_3
 # %bb.18:                               #   in Loop: Header=BB181_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40365,16 +39475,11 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB182_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB182_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB182_4 Depth=1
@@ -40401,11 +39506,9 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB182_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB182_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB182_17
 .LBB182_15:                             # %vec.epilog.scalar.ph.preheader
@@ -40418,7 +39521,7 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 10
+	addi.d	$a0, $a0, 10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB182_16
@@ -40429,6 +39532,7 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB182_3
 # %bb.18:                               #   in Loop: Header=BB182_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40663,16 +39767,11 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB183_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB183_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB183_4 Depth=1
@@ -40699,11 +39798,9 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	bnez	$a0, .LBB183_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB183_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB183_17
 .LBB183_15:                             # %vec.epilog.scalar.ph.preheader
@@ -40716,7 +39813,7 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB183_16
@@ -40727,6 +39824,7 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB183_3
 # %bb.18:                               #   in Loop: Header=BB183_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -40963,16 +40061,11 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB184_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB184_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB184_4 Depth=1
@@ -40999,11 +40092,9 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB184_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB184_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB184_17
 .LBB184_15:                             # %vec.epilog.scalar.ph.preheader
@@ -41016,7 +40107,7 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, -10
+	addi.d	$a0, $a0, -10
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB184_16
@@ -41027,6 +40118,7 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB184_3
 # %bb.18:                               #   in Loop: Header=BB184_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41260,16 +40352,11 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB185_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB185_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB185_4 Depth=1
@@ -41295,11 +40382,9 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB185_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB185_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB185_17
 .LBB185_15:                             # %vec.epilog.scalar.ph.preheader
@@ -41312,7 +40397,7 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB185_16
@@ -41322,6 +40407,7 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB185_3
 # %bb.18:                               #   in Loop: Header=BB185_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41553,16 +40639,11 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB186_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB186_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB186_4 Depth=1
@@ -41588,11 +40669,9 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB186_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB186_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB186_17
 .LBB186_15:                             # %vec.epilog.scalar.ph.preheader
@@ -41605,7 +40684,7 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	mul.d	$a4, $a4, $s4
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB186_16
@@ -41615,6 +40694,7 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB186_3
 # %bb.18:                               #   in Loop: Header=BB186_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -41849,16 +40929,11 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB187_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB187_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB187_4 Depth=1
@@ -41885,11 +40960,9 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB187_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB187_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB187_17
 .LBB187_15:                             # %vec.epilog.scalar.ph.preheader
@@ -41902,7 +40975,7 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 120
+	addi.d	$a0, $a0, 120
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB187_16
@@ -41913,6 +40986,7 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB187_3
 # %bb.18:                               #   in Loop: Header=BB187_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -42086,10 +41160,10 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	sub.d	$a0, $zero, $fp
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	lu12i.w	$a0, -209716
-	ori	$s4, $a0, 3277
+	ori	$s8, $a0, 3277
 	ori	$a5, $zero, 3
-	move	$s8, $s4
-	lu32i.d	$s8, 0
+	move	$s4, $s8
+	lu32i.d	$s4, 0
 	pcalau12i	$s2, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
@@ -42098,7 +41172,7 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	vreplgr2vr.w	$vr5, $s4
+	vreplgr2vr.w	$vr5, $s8
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
@@ -42140,7 +41214,7 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $a0, -32
 	xvld	$xr3, $a0, 0
-	xvreplgr2vr.w	$xr4, $s4
+	xvreplgr2vr.w	$xr4, $s8
 	xvmuh.wu	$xr2, $xr2, $xr4
 	xvsrli.w	$xr2, $xr2, 2
 	xvmuh.wu	$xr3, $xr3, $xr4
@@ -42153,16 +41227,11 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB188_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB188_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB188_4 Depth=1
@@ -42190,11 +41259,9 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	bnez	$a0, .LBB188_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB188_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB188_17
 .LBB188_15:                             # %vec.epilog.scalar.ph.preheader
@@ -42206,9 +41273,9 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
                                         #   Parent Loop BB188_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
-	mul.d	$a4, $a4, $s8
+	mul.d	$a4, $a4, $s4
 	srli.d	$a4, $a4, 34
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB188_16
@@ -42217,9 +41284,10 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	fld.d	$fa0, $s2, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	mul.d	$a2, $a2, $s8
+	mul.d	$a2, $a2, $s4
 	srli.d	$a2, $a2, 34
 	mul.w	$a2, $a2, $s3
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB188_3
 # %bb.18:                               #   in Loop: Header=BB188_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
@@ -42398,10 +41466,10 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	sub.d	$a0, $zero, $fp
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	lu12i.w	$a0, -489336
-	ori	$s4, $a0, 2185
+	ori	$s8, $a0, 2185
 	ori	$a5, $zero, 3
-	move	$s8, $s4
-	lu32i.d	$s8, 0
+	move	$s4, $s8
+	lu32i.d	$s4, 0
 	pcalau12i	$s2, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
@@ -42410,7 +41478,7 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
-	vreplgr2vr.w	$vr5, $s4
+	vreplgr2vr.w	$vr5, $s8
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	vst	$vr5, $sp, 112                  # 16-byte Folded Spill
@@ -42452,7 +41520,7 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $a0, -32
 	xvld	$xr3, $a0, 0
-	xvreplgr2vr.w	$xr4, $s4
+	xvreplgr2vr.w	$xr4, $s8
 	xvmuh.wu	$xr2, $xr2, $xr4
 	xvsrli.w	$xr2, $xr2, 6
 	xvmuh.wu	$xr3, $xr3, $xr4
@@ -42465,16 +41533,11 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB189_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB189_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB189_4 Depth=1
@@ -42502,11 +41565,9 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB189_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB189_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB189_17
 .LBB189_15:                             # %vec.epilog.scalar.ph.preheader
@@ -42518,9 +41579,9 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
                                         #   Parent Loop BB189_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
-	mul.d	$a4, $a4, $s8
+	mul.d	$a4, $a4, $s4
 	srli.d	$a4, $a4, 38
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB189_16
@@ -42529,9 +41590,10 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	fld.d	$fa0, $s2, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
-	mul.d	$a2, $a2, $s8
+	mul.d	$a2, $a2, $s4
 	srli.d	$a2, $a2, 38
 	mul.w	$a2, $a2, $s3
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB189_3
 # %bb.18:                               #   in Loop: Header=BB189_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
@@ -42769,16 +41831,11 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB190_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB190_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB190_4 Depth=1
@@ -42805,11 +41862,9 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB190_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB190_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB190_17
 .LBB190_15:                             # %vec.epilog.scalar.ph.preheader
@@ -42822,7 +41877,7 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	add.d	$a0, $a0, $a4
-	addi.w	$a0, $a0, 2
+	addi.d	$a0, $a0, 2
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB190_16
@@ -42833,6 +41888,7 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 	movfr2gr.d	$a2, $fa0
 	mul.d	$a2, $a2, $s8
 	add.w	$a2, $a2, $s2
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB190_3
 # %bb.18:                               #   in Loop: Header=BB190_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -43058,16 +42114,11 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB191_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB191_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB191_4 Depth=1
@@ -43093,11 +42144,9 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB191_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB191_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB191_17
 .LBB191_15:                             # %vec.epilog.scalar.ph.preheader
@@ -43109,7 +42158,7 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
                                         #   Parent Loop BB191_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB191_16
@@ -43119,6 +42168,7 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB191_3
 # %bb.18:                               #   in Loop: Header=BB191_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -43348,16 +42398,11 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB192_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB192_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB192_4 Depth=1
@@ -43384,11 +42429,9 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	bnez	$a0, .LBB192_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB192_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB192_17
 .LBB192_15:                             # %vec.epilog.scalar.ph.preheader
@@ -43401,7 +42444,7 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB192_16
@@ -43412,6 +42455,7 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	andi	$a2, $a2, 10
 	mul.d	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB192_3
 # %bb.18:                               #   in Loop: Header=BB192_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -43641,16 +42685,11 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB193_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB193_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB193_4 Depth=1
@@ -43677,11 +42716,9 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB193_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB193_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB193_17
 .LBB193_15:                             # %vec.epilog.scalar.ph.preheader
@@ -43694,7 +42731,7 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a4, $a2, 0
 	andi	$a4, $a4, 14
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB193_16
@@ -43705,6 +42742,7 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	andi	$a2, $a2, 14
 	mul.d	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB193_3
 # %bb.18:                               #   in Loop: Header=BB193_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -43934,16 +42972,11 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB194_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB194_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB194_4 Depth=1
@@ -43970,11 +43003,9 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 	bnez	$a0, .LBB194_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB194_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB194_17
 .LBB194_15:                             # %vec.epilog.scalar.ph.preheader
@@ -43987,7 +43018,7 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB194_16
@@ -43998,6 +43029,7 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 	movfr2gr.d	$a2, $fa0
 	ori	$a2, $a2, 10
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB194_3
 # %bb.18:                               #   in Loop: Header=BB194_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -44215,16 +43247,11 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB195_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB195_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB195_4 Depth=1
@@ -44251,11 +43278,9 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB195_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB195_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB195_17
 .LBB195_15:                             # %vec.epilog.scalar.ph.preheader
@@ -44268,7 +43293,7 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	ori	$a4, $a4, 63
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB195_16
@@ -44279,6 +43304,7 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 	movfr2gr.d	$a2, $fa0
 	ori	$a2, $a2, 63
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB195_3
 # %bb.18:                               #   in Loop: Header=BB195_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -44496,16 +43522,11 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB196_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB196_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB196_4 Depth=1
@@ -44532,11 +43553,9 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	bnez	$a0, .LBB196_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB196_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB196_17
 .LBB196_15:                             # %vec.epilog.scalar.ph.preheader
@@ -44549,7 +43568,7 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 10
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB196_16
@@ -44560,6 +43579,7 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	movfr2gr.d	$a2, $fa0
 	xori	$a2, $a2, 10
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB196_3
 # %bb.18:                               #   in Loop: Header=BB196_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -44792,16 +43812,11 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB197_4 Depth=1
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	beq	$s7, $s0, .LBB197_17
 # %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB197_4 Depth=1
@@ -44828,11 +43843,9 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB197_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB197_4 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	move	$a3, $fp
 	beq	$fp, $s0, .LBB197_17
 .LBB197_15:                             # %vec.epilog.scalar.ph.preheader
@@ -44845,7 +43858,7 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a2, 0
 	xori	$a4, $a4, 49
-	add.w	$a0, $a4, $a0
+	add.d	$a0, $a4, $a0
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB197_16
@@ -44856,6 +43869,7 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 	movfr2gr.d	$a2, $fa0
 	xori	$a2, $a2, 49
 	mul.w	$a2, $a2, $s8
+	addi.w	$a0, $a0, 0
 	beq	$a0, $a2, .LBB197_3
 # %bb.18:                               #   in Loop: Header=BB197_4 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -46968,16 +45982,9 @@ _Z13test_constantIl20custom_xor_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 	.size	_Z13test_constantIl20custom_xor_constantsIlEEvPT_iPKc, .Lfunc_end212-_Z13test_constantIl20custom_xor_constantsIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc
-.LCPI213_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI213_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc
+.LCPI213_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl19custom_constant_addIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl19custom_constant_addIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl19custom_constant_addIlEEvPT_iPKc
@@ -46986,19 +45993,19 @@ _Z13test_constantIl20custom_xor_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19custom_constant_addIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -47030,16 +46037,13 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 19
 	ori	$fp, $a0, 2176
-	pcalau12i	$a0, %pc_hi20(.LCPI213_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI213_0)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -47062,7 +46066,7 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	.p2align	4, , 16
 .LBB213_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB213_4 Depth=1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -47082,13 +46086,9 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB213_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB213_11
@@ -47182,8 +46182,8 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB213_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI213_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI213_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI213_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI213_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -47194,18 +46194,18 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB213_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -47220,16 +46220,9 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	.size	_Z13test_constantIl19custom_constant_addIlEEvPT_iPKc, .Lfunc_end213-_Z13test_constantIl19custom_constant_addIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc
-.LCPI214_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI214_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc
+.LCPI214_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc
@@ -47238,19 +46231,19 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -47282,16 +46275,13 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 19
 	ori	$fp, $a0, 2176
-	pcalau12i	$a0, %pc_hi20(.LCPI214_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI214_0)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -47314,7 +46304,7 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 	.p2align	4, , 16
 .LBB214_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB214_4 Depth=1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -47334,13 +46324,9 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB214_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB214_11
@@ -47434,8 +46420,8 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB214_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI214_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI214_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI214_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI214_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -47446,18 +46432,18 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB214_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -47472,16 +46458,9 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc, .Lfunc_end214-_Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc
-.LCPI215_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI215_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc
+.LCPI215_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl19custom_constant_subIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl19custom_constant_subIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl19custom_constant_subIlEEvPT_iPKc
@@ -47490,19 +46469,19 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19custom_constant_subIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -47534,16 +46513,13 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, -20
 	ori	$fp, $a0, 1920
-	pcalau12i	$a0, %pc_hi20(.LCPI215_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI215_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -47568,7 +46544,7 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	.p2align	4, , 16
 .LBB215_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB215_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -47588,13 +46564,9 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB215_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB215_11
@@ -47689,8 +46661,8 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB215_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI215_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI215_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI215_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI215_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -47701,18 +46673,18 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB215_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -47727,16 +46699,9 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	.size	_Z13test_constantIl19custom_constant_subIlEEvPT_iPKc, .Lfunc_end215-_Z13test_constantIl19custom_constant_subIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc
-.LCPI216_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI216_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc
+.LCPI216_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc
@@ -47745,19 +46710,19 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -47789,16 +46754,13 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, -20
 	ori	$fp, $a0, 1920
-	pcalau12i	$a0, %pc_hi20(.LCPI216_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI216_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -47823,7 +46785,7 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 	.p2align	4, , 16
 .LBB216_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB216_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -47843,13 +46805,9 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB216_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB216_11
@@ -47944,8 +46902,8 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB216_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI216_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI216_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI216_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI216_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -47956,18 +46914,18 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB216_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -47982,16 +46940,9 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc, .Lfunc_end216-_Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc
-.LCPI217_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI217_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc
+.LCPI217_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc
@@ -48000,19 +46951,19 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -48044,15 +46995,12 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	ori	$s4, $zero, 120
 	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 234
 	ori	$s8, $a0, 1536
-	pcalau12i	$a0, %pc_hi20(.LCPI217_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI217_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -48077,7 +47025,7 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 	.p2align	4, , 16
 .LBB217_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB217_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -48095,13 +47043,9 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB217_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB217_11
@@ -48190,8 +47134,8 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB217_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI217_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI217_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI217_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI217_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -48202,18 +47146,18 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB217_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -48228,16 +47172,9 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 	.size	_Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc, .Lfunc_end217-_Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc
-.LCPI218_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI218_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc
+.LCPI218_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc
@@ -48246,19 +47183,19 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -48290,15 +47227,12 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	ori	$s4, $zero, 120
 	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 234
 	ori	$s8, $a0, 1536
-	pcalau12i	$a0, %pc_hi20(.LCPI218_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI218_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -48323,7 +47257,7 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 	.p2align	4, , 16
 .LBB218_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB218_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -48341,13 +47275,9 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB218_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB218_11
@@ -48436,8 +47366,8 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB218_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI218_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI218_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI218_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI218_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -48448,18 +47378,18 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB218_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -48474,16 +47404,9 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 	.size	_Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc, .Lfunc_end218-_Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc
-.LCPI219_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI219_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc
+.LCPI219_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc
@@ -48492,19 +47415,19 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -48536,16 +47459,13 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 234
 	ori	$fp, $a0, 1536
-	pcalau12i	$a0, %pc_hi20(.LCPI219_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI219_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -48570,7 +47490,7 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 	.p2align	4, , 16
 .LBB219_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB219_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -48590,13 +47510,9 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB219_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB219_11
@@ -48691,8 +47607,8 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB219_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI219_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI219_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI219_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI219_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -48703,18 +47619,18 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB219_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -48729,16 +47645,9 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 	.size	_Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc, .Lfunc_end219-_Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc
-.LCPI220_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI220_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc
+.LCPI220_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc
@@ -48747,19 +47656,19 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -48791,7 +47700,7 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a6, $zero, 8
 	lu12i.w	$a0, 419430
 	ori	$a0, $a0, 1639
@@ -48800,9 +47709,6 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s8, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI220_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI220_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -48827,7 +47733,7 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	.p2align	4, , 16
 .LBB220_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB220_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -48853,13 +47759,9 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB220_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB220_11
@@ -48957,8 +47859,8 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB220_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI220_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI220_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI220_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI220_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -48969,18 +47871,18 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB220_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -48995,16 +47897,9 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	.size	_Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc, .Lfunc_end220-_Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc
-.LCPI221_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI221_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc
+.LCPI221_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc
@@ -49013,19 +47908,19 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -49057,7 +47952,7 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a6, $zero, 8
 	lu12i.w	$a0, -489336
 	ori	$a0, $a0, 2185
@@ -49066,9 +47961,6 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$fp, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s8, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI221_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI221_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -49093,7 +47985,7 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	.p2align	4, , 16
 .LBB221_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB221_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -49121,13 +48013,9 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB221_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB221_11
@@ -49227,8 +48115,8 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB221_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI221_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI221_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI221_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI221_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -49239,18 +48127,18 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB221_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -49265,16 +48153,9 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	.size	_Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc, .Lfunc_end221-_Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc
-.LCPI222_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI222_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc
+.LCPI222_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc
@@ -49283,19 +48164,19 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -49327,16 +48208,13 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 3
 	ori	$fp, $a0, 3712
-	pcalau12i	$a0, %pc_hi20(.LCPI222_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI222_0)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -49359,7 +48237,7 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 	.p2align	4, , 16
 .LBB222_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB222_4 Depth=1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -49379,13 +48257,9 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB222_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB222_11
@@ -49479,8 +48353,8 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB222_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI222_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI222_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI222_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI222_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -49491,18 +48365,18 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB222_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -49517,16 +48391,9 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 	.size	_Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc, .Lfunc_end222-_Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc
-.LCPI223_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI223_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc
+.LCPI223_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc
@@ -49535,19 +48402,19 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -49583,9 +48450,6 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$s4, %pc_hi20(init_value)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI223_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI223_0)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -49626,13 +48490,9 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB223_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB223_11
@@ -49719,8 +48579,8 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB223_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI223_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI223_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI223_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI223_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -49731,18 +48591,18 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB223_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -49757,16 +48617,9 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 	.size	_Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc, .Lfunc_end223-_Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc
-.LCPI224_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI224_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc
+.LCPI224_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl19custom_constant_andIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl19custom_constant_andIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl19custom_constant_andIlEEvPT_iPKc
@@ -49775,19 +48628,19 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19custom_constant_andIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -49824,9 +48677,6 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
-	pcalau12i	$a2, %pc_hi20(.LCPI224_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI224_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
@@ -49870,13 +48720,9 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB224_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB224_11
@@ -49967,8 +48813,8 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB224_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI224_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI224_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI224_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI224_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -49979,18 +48825,18 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB224_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -50005,16 +48851,9 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	.size	_Z13test_constantIl19custom_constant_andIlEEvPT_iPKc, .Lfunc_end224-_Z13test_constantIl19custom_constant_andIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc
-.LCPI225_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI225_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc
+.LCPI225_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc
@@ -50023,19 +48862,19 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -50072,9 +48911,6 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
-	pcalau12i	$a2, %pc_hi20(.LCPI225_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI225_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
@@ -50118,13 +48954,9 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB225_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB225_11
@@ -50215,8 +49047,8 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB225_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI225_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI225_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI225_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI225_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -50227,18 +49059,18 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB225_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -50253,16 +49085,9 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc, .Lfunc_end225-_Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc
-.LCPI226_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI226_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc
+.LCPI226_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl18custom_constant_orIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl18custom_constant_orIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl18custom_constant_orIlEEvPT_iPKc
@@ -50271,19 +49096,19 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18custom_constant_orIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -50320,9 +49145,6 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
-	pcalau12i	$a2, %pc_hi20(.LCPI226_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI226_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
@@ -50366,13 +49188,9 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB226_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB226_11
@@ -50451,8 +49269,8 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB226_19:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI226_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI226_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI226_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI226_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -50463,18 +49281,18 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB226_20:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -50489,16 +49307,9 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 	.size	_Z13test_constantIl18custom_constant_orIlEEvPT_iPKc, .Lfunc_end226-_Z13test_constantIl18custom_constant_orIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc
-.LCPI227_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI227_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc
+.LCPI227_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc
@@ -50507,19 +49318,19 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -50556,9 +49367,6 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
-	pcalau12i	$a2, %pc_hi20(.LCPI227_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI227_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
@@ -50602,13 +49410,9 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB227_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB227_11
@@ -50687,8 +49491,8 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB227_19:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI227_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI227_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI227_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI227_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -50699,18 +49503,18 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB227_20:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -50725,16 +49529,9 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 	.size	_Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc, .Lfunc_end227-_Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc
-.LCPI228_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI228_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc
+.LCPI228_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc
@@ -50743,19 +49540,19 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -50792,9 +49589,6 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
-	pcalau12i	$a2, %pc_hi20(.LCPI228_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI228_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
@@ -50838,13 +49632,9 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB228_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB228_11
@@ -50935,8 +49725,8 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB228_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI228_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI228_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI228_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI228_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -50947,18 +49737,18 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB228_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -50973,16 +49763,9 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	.size	_Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc, .Lfunc_end228-_Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc
-.LCPI229_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI229_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc
+.LCPI229_0:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc,"axG",@progbits,_Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc
@@ -50991,19 +49774,19 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -51040,9 +49823,6 @@ _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_const
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
-	pcalau12i	$a2, %pc_hi20(.LCPI229_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI229_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
@@ -51086,13 +49866,9 @@ _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB229_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB229_11
@@ -51183,8 +49959,8 @@ _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB229_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI229_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI229_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI229_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI229_0)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -51195,18 +49971,18 @@ _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB229_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -53229,15 +52005,8 @@ _Z13test_constantIm20custom_xor_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm19custom_constant_addImEEvPT_iPKc
 .LCPI245_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI245_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI245_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm19custom_constant_addImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm19custom_constant_addImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm19custom_constant_addImEEvPT_iPKc
 	.p2align	5
@@ -53245,20 +52014,20 @@ _Z13test_constantIm20custom_xor_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19custom_constant_addImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -53291,7 +52060,7 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI245_0)
@@ -53300,9 +52069,6 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 19
 	ori	$fp, $a0, 2176
-	pcalau12i	$a0, %pc_hi20(.LCPI245_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI245_1)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -53325,7 +52091,7 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	.p2align	4, , 16
 .LBB245_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB245_4 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -53345,13 +52111,9 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB245_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB245_11
@@ -53463,8 +52225,8 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB245_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI245_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI245_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI245_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI245_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -53475,19 +52237,19 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB245_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -53506,15 +52268,8 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc
 .LCPI246_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI246_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI246_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc
 	.p2align	5
@@ -53522,20 +52277,20 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -53568,7 +52323,7 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI246_0)
@@ -53577,9 +52332,6 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 19
 	ori	$fp, $a0, 2176
-	pcalau12i	$a0, %pc_hi20(.LCPI246_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI246_1)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -53602,7 +52354,7 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	.p2align	4, , 16
 .LBB246_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB246_4 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -53622,13 +52374,9 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB246_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB246_11
@@ -53740,8 +52488,8 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB246_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI246_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI246_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI246_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI246_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -53752,19 +52500,19 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB246_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -53783,15 +52531,8 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm19custom_constant_subImEEvPT_iPKc
 .LCPI247_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI247_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI247_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm19custom_constant_subImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm19custom_constant_subImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm19custom_constant_subImEEvPT_iPKc
 	.p2align	5
@@ -53799,20 +52540,20 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19custom_constant_subImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -53845,7 +52586,7 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI247_0)
@@ -53854,9 +52595,6 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, -20
 	ori	$fp, $a0, 1920
-	pcalau12i	$a0, %pc_hi20(.LCPI247_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI247_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -53881,7 +52619,7 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	.p2align	4, , 16
 .LBB247_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB247_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -53901,13 +52639,9 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB247_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB247_11
@@ -54020,8 +52754,8 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB247_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI247_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI247_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI247_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI247_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -54032,19 +52766,19 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB247_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -54063,15 +52797,8 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc
 .LCPI248_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI248_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI248_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc
 	.p2align	5
@@ -54079,20 +52806,20 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -54125,7 +52852,7 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI248_0)
@@ -54134,9 +52861,6 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, -20
 	ori	$fp, $a0, 1920
-	pcalau12i	$a0, %pc_hi20(.LCPI248_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI248_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -54161,7 +52885,7 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	.p2align	4, , 16
 .LBB248_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB248_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -54181,13 +52905,9 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB248_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB248_11
@@ -54300,8 +53020,8 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB248_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI248_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI248_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI248_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI248_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -54312,19 +53032,19 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB248_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -54343,15 +53063,8 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc
 .LCPI249_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI249_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI249_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc
 	.p2align	5
@@ -54359,20 +53072,20 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -54405,7 +53118,7 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	ori	$s4, $zero, 120
 	pcalau12i	$fp, %pc_hi20(init_value)
@@ -54413,9 +53126,6 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI249_0)
 	lu12i.w	$a0, 234
 	ori	$s8, $a0, 1536
-	pcalau12i	$a0, %pc_hi20(.LCPI249_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI249_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -54440,7 +53150,7 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	.p2align	4, , 16
 .LBB249_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB249_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -54458,13 +53168,9 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB249_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB249_11
@@ -54574,8 +53280,8 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB249_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI249_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI249_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI249_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI249_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -54586,19 +53292,19 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB249_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -54617,15 +53323,8 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc
 .LCPI250_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI250_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI250_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc
 	.p2align	5
@@ -54633,20 +53332,20 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -54679,7 +53378,7 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	ori	$s4, $zero, 120
 	pcalau12i	$fp, %pc_hi20(init_value)
@@ -54687,9 +53386,6 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI250_0)
 	lu12i.w	$a0, 234
 	ori	$s8, $a0, 1536
-	pcalau12i	$a0, %pc_hi20(.LCPI250_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI250_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -54714,7 +53410,7 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	.p2align	4, , 16
 .LBB250_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB250_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -54732,13 +53428,9 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB250_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB250_11
@@ -54848,8 +53540,8 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB250_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI250_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI250_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI250_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI250_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -54860,19 +53552,19 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB250_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -54891,15 +53583,8 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc
 .LCPI251_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI251_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI251_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc
 	.p2align	5
@@ -54907,20 +53592,20 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -54953,7 +53638,7 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI251_0)
@@ -54962,9 +53647,6 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 234
 	ori	$fp, $a0, 1536
-	pcalau12i	$a0, %pc_hi20(.LCPI251_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI251_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -54989,7 +53671,7 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	.p2align	4, , 16
 .LBB251_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB251_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -55009,13 +53691,9 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB251_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB251_11
@@ -55128,8 +53806,8 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB251_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI251_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI251_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI251_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI251_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -55140,19 +53818,19 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB251_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -55171,15 +53849,8 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc
 .LCPI252_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI252_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI252_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm22custom_constant_divideImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm22custom_constant_divideImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm22custom_constant_divideImEEvPT_iPKc
 	.p2align	5
@@ -55187,20 +53858,20 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm22custom_constant_divideImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -55218,14 +53889,14 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s8, %pc_hi20(iterations)
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	pcalau12i	$s5, %pc_hi20(iterations)
+	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB252_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB252_13
@@ -55234,7 +53905,7 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	lu12i.w	$a0, -209716
 	ori	$a0, $a0, 3277
@@ -55243,12 +53914,9 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI252_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI252_0)
-	lu52i.d	$s5, $zero, -2048
+	lu52i.d	$s3, $zero, -2048
 	lu12i.w	$a0, 1
-	ori	$s3, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI252_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI252_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	ori	$s8, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -55273,7 +53941,7 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	.p2align	4, , 16
 .LBB252_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB252_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -55295,13 +53963,9 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB252_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB252_11
@@ -55327,7 +53991,7 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	fsub.d	$fa1, $fa0, $fs0
 	ftintrz.l.d	$fa1, $fa1
 	movfr2gr.d	$a2, $fa1
-	xor	$a2, $a2, $s5
+	xor	$a2, $a2, $s3
 	movcf2gr	$a3, $fcc0
 	masknez	$a2, $a2, $a3
 	ftintrz.l.d	$fa0, $fa0
@@ -55336,17 +54000,17 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	or	$a2, $a3, $a2
 	mulh.du	$a2, $a2, $s4
 	srli.d	$a2, $a2, 2
-	mul.d	$a2, $a2, $s3
+	mul.d	$a2, $a2, $s8
 	beq	$a0, $a2, .LBB252_3
 # %bb.12:                               #   in Loop: Header=BB252_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	xvld	$xr4, $sp, 32                   # 32-byte Folded Reload
 	ori	$a5, $zero, 8
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	ld.w	$a1, $s5, %pc_lo12(iterations)
 	b	.LBB252_3
 .LBB252_13:                             # %.preheader.preheader
 	move	$fp, $zero
@@ -55387,13 +54051,13 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	mul.d	$a0, $a0, $s4
 	beqz	$a0, .LBB252_14
 # %bb.16:                               #   in Loop: Header=BB252_15 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	ld.w	$a1, $s5, %pc_lo12(iterations)
 	b	.LBB252_14
 .LBB252_17:                             # %._crit_edge14
 	pcaddu18i	$ra, %call36(clock)
@@ -55407,10 +54071,10 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	beqz	$a2, .LBB252_19
 # %bb.18:                               # %._crit_edge14
-	ld.w	$a0, $s8, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB252_21
 .LBB252_19:
 	addi.w	$a0, $a1, 10
@@ -55423,11 +54087,11 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	beqz	$a0, .LBB252_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s8, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB252_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI252_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI252_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI252_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI252_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -55437,20 +54101,20 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	st.w	$a0, $s3, %pc_lo12(current_test)
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB252_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -55469,15 +54133,8 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc
 .LCPI253_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI253_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI253_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc
 	.p2align	5
@@ -55485,20 +54142,20 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -55516,14 +54173,14 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s8, %pc_hi20(iterations)
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	pcalau12i	$s5, %pc_hi20(iterations)
+	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB253_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB253_13
@@ -55532,7 +54189,7 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	lu12i.w	$a0, -489336
 	ori	$a0, $a0, 2185
@@ -55541,12 +54198,9 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI253_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI253_0)
-	lu52i.d	$s5, $zero, -2048
+	lu52i.d	$s3, $zero, -2048
 	lu12i.w	$a0, 1
-	ori	$s3, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI253_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI253_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	ori	$s8, $a0, 3904
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -55571,7 +54225,7 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	.p2align	4, , 16
 .LBB253_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB253_4 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -55593,13 +54247,9 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB253_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB253_11
@@ -55625,7 +54275,7 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	fsub.d	$fa1, $fa0, $fs0
 	ftintrz.l.d	$fa1, $fa1
 	movfr2gr.d	$a2, $fa1
-	xor	$a2, $a2, $s5
+	xor	$a2, $a2, $s3
 	movcf2gr	$a3, $fcc0
 	masknez	$a2, $a2, $a3
 	ftintrz.l.d	$fa0, $fa0
@@ -55634,17 +54284,17 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	or	$a2, $a3, $a2
 	mulh.du	$a2, $a2, $s4
 	srli.d	$a2, $a2, 6
-	mul.d	$a2, $a2, $s3
+	mul.d	$a2, $a2, $s8
 	beq	$a0, $a2, .LBB253_3
 # %bb.12:                               #   in Loop: Header=BB253_4 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	xvld	$xr4, $sp, 32                   # 32-byte Folded Reload
 	ori	$a5, $zero, 8
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	ld.w	$a1, $s5, %pc_lo12(iterations)
 	b	.LBB253_3
 .LBB253_13:                             # %.preheader.preheader
 	move	$fp, $zero
@@ -55685,13 +54335,13 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	mul.d	$a0, $a0, $s4
 	beqz	$a0, .LBB253_14
 # %bb.16:                               #   in Loop: Header=BB253_15 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	ld.w	$a1, $s8, %pc_lo12(iterations)
+	ld.w	$a1, $s5, %pc_lo12(iterations)
 	b	.LBB253_14
 .LBB253_17:                             # %._crit_edge14
 	pcaddu18i	$ra, %call36(clock)
@@ -55705,10 +54355,10 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	beqz	$a2, .LBB253_19
 # %bb.18:                               # %._crit_edge14
-	ld.w	$a0, $s8, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 	blt	$a0, $a1, .LBB253_21
 .LBB253_19:
 	addi.w	$a0, $a1, 10
@@ -55721,11 +54371,11 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	beqz	$a0, .LBB253_22
 # %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
-	ld.w	$a0, $s8, %pc_lo12(current_test)
+	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB253_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI253_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI253_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI253_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI253_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -55735,20 +54385,20 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	fstx.d	$fa0, $a2, $a3
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	st.w	$a0, $s3, %pc_lo12(current_test)
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB253_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -55767,15 +54417,8 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc
 .LCPI254_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI254_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI254_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc
 	.p2align	5
@@ -55783,20 +54426,20 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -55829,7 +54472,7 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$s7, $a0, 3
 	addi.d	$a0, $s1, 32
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI254_0)
@@ -55838,9 +54481,6 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	ori	$s3, $a0, 3904
 	lu12i.w	$a0, 3
 	ori	$fp, $a0, 3712
-	pcalau12i	$a0, %pc_hi20(.LCPI254_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI254_1)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -55863,7 +54503,7 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	.p2align	4, , 16
 .LBB254_6:                              # %vector.body.preheader
                                         #   in Loop: Header=BB254_4 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s7
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -55883,13 +54523,9 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB254_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB254_11
@@ -56001,8 +54637,8 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a0, $s8, %pc_lo12(current_test)
 .LBB254_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI254_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI254_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI254_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI254_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -56013,19 +54649,19 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB254_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -56044,15 +54680,8 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc
 .LCPI255_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI255_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI255_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc
 	.p2align	5
@@ -56060,20 +54689,20 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -56112,9 +54741,6 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI255_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI255_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI255_1)
-	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -56155,13 +54781,9 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB255_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 64                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB255_11
@@ -56269,8 +54891,8 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB255_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI255_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI255_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI255_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI255_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -56281,19 +54903,19 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB255_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -56312,15 +54934,8 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm19custom_constant_andImEEvPT_iPKc
 .LCPI256_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI256_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI256_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm19custom_constant_andImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm19custom_constant_andImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm19custom_constant_andImEEvPT_iPKc
 	.p2align	5
@@ -56328,20 +54943,20 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19custom_constant_andImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -56380,9 +54995,6 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI256_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI256_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI256_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -56427,13 +55039,9 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB256_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB256_11
@@ -56542,8 +55150,8 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB256_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI256_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI256_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI256_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI256_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -56554,19 +55162,19 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB256_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -56585,15 +55193,8 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc
 .LCPI257_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI257_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI257_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc
 	.p2align	5
@@ -56601,20 +55202,20 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -56653,9 +55254,6 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI257_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI257_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI257_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -56700,13 +55298,9 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB257_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB257_11
@@ -56815,8 +55409,8 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB257_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI257_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI257_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI257_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI257_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -56827,19 +55421,19 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB257_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -56854,18 +55448,11 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 	.size	_Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc, .Lfunc_end257-_Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIm18custom_constant_orImEEvPT_iPKc
-.LCPI258_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI258_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm18custom_constant_orImEEvPT_iPKc
+.LCPI258_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI258_2:
+.LCPI258_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm18custom_constant_orImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm18custom_constant_orImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm18custom_constant_orImEEvPT_iPKc
@@ -56874,20 +55461,20 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18custom_constant_orImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -56922,13 +55509,10 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 	addi.d	$s8, $s1, 32
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
-	pcalau12i	$a0, %pc_hi20(.LCPI258_1)
-	fld.d	$fs0, $a0, %pc_lo12(.LCPI258_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI258_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI258_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI258_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI258_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -56973,13 +55557,9 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB258_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB258_11
@@ -57066,8 +55646,8 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB258_19:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI258_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI258_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI258_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI258_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -57078,19 +55658,19 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB258_20:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -57105,18 +55685,11 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 	.size	_Z13test_constantIm18custom_constant_orImEEvPT_iPKc, .Lfunc_end258-_Z13test_constantIm18custom_constant_orImEEvPT_iPKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc
-.LCPI259_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI259_1:
+	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc
+.LCPI259_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI259_2:
+.LCPI259_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc
@@ -57125,20 +55698,20 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -57173,13 +55746,10 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 	addi.d	$s8, $s1, 32
 	ori	$a5, $zero, 8
 	pcalau12i	$s4, %pc_hi20(init_value)
-	pcalau12i	$a0, %pc_hi20(.LCPI259_1)
-	fld.d	$fs0, $a0, %pc_lo12(.LCPI259_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI259_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI259_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI259_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI259_0)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -57224,13 +55794,9 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB259_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB259_11
@@ -57317,8 +55883,8 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB259_19:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI259_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI259_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI259_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI259_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -57329,19 +55895,19 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB259_20:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -57360,15 +55926,8 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc
 .LCPI260_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI260_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI260_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm19custom_constant_xorImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm19custom_constant_xorImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm19custom_constant_xorImEEvPT_iPKc
 	.p2align	5
@@ -57376,20 +55935,20 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19custom_constant_xorImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -57428,9 +55987,6 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI260_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI260_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI260_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -57475,13 +56031,9 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB260_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB260_11
@@ -57593,8 +56145,8 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB260_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI260_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI260_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI260_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI260_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -57605,19 +56157,19 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB260_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -57636,15 +56188,8 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	.p2align	3, 0x0                          # -- Begin function _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc
 .LCPI261_0:
 	.dword	0x43e0000000000000              # double 9.2233720368547758E+18
-.LCPI261_2:
-	.dword	0x412e848000000000              # double 1.0E+6
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
 .LCPI261_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
+	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc,"axG",@progbits,_Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc,comdat
 	.weak	_Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc
 	.p2align	5
@@ -57652,20 +56197,20 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -57704,9 +56249,6 @@ _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_const
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI261_0)
 	lu12i.w	$a0, 1
 	ori	$fp, $a0, 3904
-	pcalau12i	$a0, %pc_hi20(.LCPI261_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI261_1)
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.299)
 	xvrepli.b	$xr0, 0
@@ -57751,13 +56293,9 @@ _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB261_4 Depth=1
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	move	$a3, $s7
 	beq	$s7, $s0, .LBB261_11
@@ -57869,8 +56407,8 @@ _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB261_21:                             # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI261_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI261_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI261_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI261_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -57881,19 +56419,19 @@ _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_const
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB261_22:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)

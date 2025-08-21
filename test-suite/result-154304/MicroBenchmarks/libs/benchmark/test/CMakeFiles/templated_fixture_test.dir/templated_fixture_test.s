@@ -227,16 +227,11 @@ _ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN23MyFixtu
 	bnez	$a1, .LBB1_4
 # %bb.5:                                # %middle.block
 	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 .LBB1_6:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $a0, 1

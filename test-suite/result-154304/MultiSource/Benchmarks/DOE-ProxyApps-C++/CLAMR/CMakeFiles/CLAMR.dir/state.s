@@ -1227,11 +1227,9 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	bnez	$t1, .LBB6_83
 # %bb.84:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a6, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload

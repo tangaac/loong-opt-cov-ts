@@ -2749,11 +2749,6 @@ GCC_except_table18:
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
-.LCPI19_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	_ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
 	.p2align	2
@@ -2916,12 +2911,12 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	move	$a3, $a2
 	bstrins.d	$a3, $zero, 2, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI19_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI19_0)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI19_0)
 	addi.d	$a1, $a0, 32
-	xvrepli.b	$xr0, 0
-	vrepli.b	$vr3, 50
+	xvrepli.b	$xr1, 0
+	vrepli.b	$vr2, 50
 	move	$a4, $a3
-	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr3, $xr1, 0
 	.p2align	4, , 16
 .LBB19_16:                              # %vector.body311
                                         # =>This Inner Loop Header: Depth=1
@@ -2949,14 +2944,14 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	vinsgr2vr.b	$vr5, $t6, 1
 	vinsgr2vr.b	$vr5, $t7, 2
 	vinsgr2vr.b	$vr5, $t8, 3
-	vseq.b	$vr4, $vr4, $vr3
+	vseq.b	$vr4, $vr4, $vr2
 	xvpermi.d	$xr4, $xr4, 68
-	xvshuf.b	$xr4, $xr0, $xr4, $xr1
+	xvshuf.b	$xr4, $xr0, $xr4, $xr0
 	xvslli.d	$xr4, $xr4, 56
 	xvsrai.d	$xr4, $xr4, 56
-	vseq.b	$vr5, $vr5, $vr3
+	vseq.b	$vr5, $vr5, $vr2
 	xvpermi.d	$xr5, $xr5, 68
-	xvshuf.b	$xr5, $xr0, $xr5, $xr1
+	xvshuf.b	$xr5, $xr0, $xr5, $xr0
 	xvslli.d	$xr5, $xr5, 56
 	xvsrai.d	$xr5, $xr5, 56
 	ld.d	$t5, $a5, 16
@@ -2997,21 +2992,16 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	xvinsgr2vr.d	$xr9, $t4, 3
 	xvbitsel.v	$xr4, $xr6, $xr8, $xr4
 	xvbitsel.v	$xr5, $xr7, $xr9, $xr5
-	xvadd.d	$xr0, $xr4, $xr0
-	xvadd.d	$xr2, $xr5, $xr2
+	xvadd.d	$xr1, $xr4, $xr1
+	xvadd.d	$xr3, $xr5, $xr3
 	addi.w	$a4, $a4, -8
 	addi.d	$a1, $a1, 64
 	bnez	$a4, .LBB19_16
 # %bb.17:                               # %middle.block317
-	pcalau12i	$a1, %pc_hi20(.LCPI19_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI19_1)
-	xvadd.d	$xr0, $xr2, $xr0
-	xvpermi.d	$xr2, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvadd.d	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvadd.d	$xr0, $xr3, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	addi.w	$a4, $a3, 0
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a2, $a4, .LBB19_19

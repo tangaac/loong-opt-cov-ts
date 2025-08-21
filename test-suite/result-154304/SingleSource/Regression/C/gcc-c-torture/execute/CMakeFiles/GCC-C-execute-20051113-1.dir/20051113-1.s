@@ -6,11 +6,6 @@
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
-.LCPI0_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	Sum
 	.p2align	5
@@ -34,20 +29,20 @@ Sum:                                    # @Sum
 .LBB0_4:                                # %vector.ph
 	addi.d	$a1, $a0, 10
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI0_0)
+	xvld	$xr0, $a3, %pc_lo12(.LCPI0_0)
 	bstrpick.d	$a3, $a2, 30, 3
 	slli.d	$a3, $a3, 3
-	xvrepli.b	$xr0, 0
-	xvrepli.d	$xr3, 30
-	xvrepli.d	$xr4, 120
+	xvrepli.b	$xr1, 0
+	xvrepli.d	$xr2, 30
+	xvrepli.d	$xr3, 120
 	move	$a4, $a3
-	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr4, $xr1, 0
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr1, $xr3
-	xvori.b	$xr6, $xr4, 0
-	xvmadd.d	$xr6, $xr1, $xr3
+	xvmul.d	$xr5, $xr0, $xr2
+	xvori.b	$xr6, $xr3, 0
+	xvmadd.d	$xr6, $xr0, $xr2
 	xvpickve2gr.d	$a5, $xr5, 0
 	xvpickve2gr.d	$a6, $xr5, 1
 	xvpickve2gr.d	$a7, $xr5, 2
@@ -72,21 +67,16 @@ Sum:                                    # @Sum
 	xvinsgr2vr.d	$xr6, $a6, 1
 	xvinsgr2vr.d	$xr6, $a7, 2
 	xvinsgr2vr.d	$xr6, $t0, 3
-	xvadd.d	$xr0, $xr5, $xr0
-	xvadd.d	$xr2, $xr6, $xr2
+	xvadd.d	$xr1, $xr5, $xr1
+	xvadd.d	$xr4, $xr6, $xr4
 	addi.d	$a4, $a4, -8
-	xvaddi.du	$xr1, $xr1, 8
+	xvaddi.du	$xr0, $xr0, 8
 	bnez	$a4, .LBB0_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
-	xvadd.d	$xr0, $xr2, $xr0
-	xvpermi.d	$xr2, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvadd.d	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvadd.d	$xr0, $xr4, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a3, $a2, .LBB0_9
 .LBB0_7:                                # %scalar.ph.preheader
@@ -116,11 +106,6 @@ Sum:                                    # @Sum
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
-.LCPI1_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	Sum2
 	.p2align	5
@@ -144,20 +129,20 @@ Sum2:                                   # @Sum2
 .LBB1_4:                                # %vector.ph
 	addi.d	$a1, $a0, 18
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI1_0)
+	xvld	$xr0, $a3, %pc_lo12(.LCPI1_0)
 	bstrpick.d	$a3, $a2, 30, 3
 	slli.d	$a3, $a3, 3
-	xvrepli.b	$xr0, 0
-	xvrepli.d	$xr3, 30
-	xvrepli.d	$xr4, 120
+	xvrepli.b	$xr1, 0
+	xvrepli.d	$xr2, 30
+	xvrepli.d	$xr3, 120
 	move	$a4, $a3
-	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr4, $xr1, 0
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr5, $xr1, $xr3
-	xvori.b	$xr6, $xr4, 0
-	xvmadd.d	$xr6, $xr1, $xr3
+	xvmul.d	$xr5, $xr0, $xr2
+	xvori.b	$xr6, $xr3, 0
+	xvmadd.d	$xr6, $xr0, $xr2
 	xvpickve2gr.d	$a5, $xr5, 0
 	xvpickve2gr.d	$a6, $xr5, 1
 	xvpickve2gr.d	$a7, $xr5, 2
@@ -182,21 +167,16 @@ Sum2:                                   # @Sum2
 	xvinsgr2vr.d	$xr6, $a6, 1
 	xvinsgr2vr.d	$xr6, $a7, 2
 	xvinsgr2vr.d	$xr6, $t0, 3
-	xvadd.d	$xr0, $xr5, $xr0
-	xvadd.d	$xr2, $xr6, $xr2
+	xvadd.d	$xr1, $xr5, $xr1
+	xvadd.d	$xr4, $xr6, $xr4
 	addi.d	$a4, $a4, -8
-	xvaddi.du	$xr1, $xr1, 8
+	xvaddi.du	$xr0, $xr0, 8
 	bnez	$a4, .LBB1_5
 # %bb.6:                                # %middle.block
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_1)
-	xvadd.d	$xr0, $xr2, $xr0
-	xvpermi.d	$xr2, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvadd.d	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvadd.d	$xr0, $xr4, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a3, $a2, .LBB1_9
 .LBB1_7:                                # %scalar.ph.preheader

@@ -864,16 +864,11 @@ maktab:                                 # @maktab
 	bnez	$a3, .LBB0_91
 # %bb.92:                               # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$s0, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$s0, $xr0, 0
 	beq	$a1, $a0, .LBB0_99
 # %bb.93:                               # %vec.epilog.iter.check
 	andi	$a2, $a0, 12
@@ -897,11 +892,9 @@ maktab:                                 # @maktab
 	addi.d	$a3, $a3, 16
 	bnez	$a2, .LBB0_95
 # %bb.96:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s0, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$s0, $vr0, 0
 	beq	$a1, $a0, .LBB0_99
 .LBB0_97:                               # %.lr.ph264.preheader
 	pcalau12i	$a2, %got_pc_hi20(sep)

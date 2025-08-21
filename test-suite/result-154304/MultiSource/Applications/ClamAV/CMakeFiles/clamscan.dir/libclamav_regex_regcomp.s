@@ -4748,11 +4748,9 @@ p_bracket:                              # @p_bracket
 	bne	$a4, $a5, .LBB4_214
 # %bb.215:                              # %middle.block349
 	vadd.w	$vr0, $vr2, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	bne	$a4, $a1, .LBB4_226
 	b	.LBB4_227
 .LBB4_216:                              # %nch.exit.thread
@@ -4804,9 +4802,10 @@ p_bracket:                              # @p_bracket
 	and	$a6, $a6, $a3
 	sltu	$a6, $zero, $a6
 	addi.d	$a4, $a4, 1
-	add.w	$a5, $a5, $a6
+	add.d	$a5, $a5, $a6
 	bne	$a1, $a4, .LBB4_226
 .LBB4_227:                              # %nch.exit
+	addi.w	$a5, $a5, 0
 	ori	$a4, $zero, 1
 	bne	$a5, $a4, .LBB4_232
 # %bb.228:                              # %.lr.ph.i156.preheader

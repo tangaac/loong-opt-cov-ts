@@ -4611,11 +4611,9 @@ trans_hash_fn:                          # @trans_hash_fn
 	bnez	$a4, .LBB3_9
 # %bb.10:                               # %middle.block45
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a3, $a2, .LBB3_13
 .LBB3_11:                               # %scalar.ph33.preheader
 	alsl.d	$a0, $a3, $a0, 3
@@ -4626,12 +4624,12 @@ trans_hash_fn:                          # @trans_hash_fn
 	ld.d	$a3, $a0, 0
 	ld.w	$a3, $a3, 32
 	alsl.d	$a3, $a3, $a3, 1
-	add.w	$a1, $a3, $a1
+	add.d	$a1, $a3, $a1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB3_12
 .LBB3_13:                               # %._crit_edge
-	move	$a0, $a1
+	addi.w	$a0, $a1, 0
 	ret
 .LBB3_14:                               # %vector.ph
 	bstrpick.d	$a1, $a3, 31, 3
@@ -4675,11 +4673,9 @@ trans_hash_fn:                          # @trans_hash_fn
 	bnez	$a5, .LBB3_15
 # %bb.16:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a4, $a3, .LBB3_2
 .LBB3_17:                               # %scalar.ph.preheader
 	alsl.d	$a2, $a4, $a2, 3
@@ -4690,7 +4686,7 @@ trans_hash_fn:                          # @trans_hash_fn
 	ld.d	$a4, $a2, 0
 	ld.w	$a4, $a4, 32
 	alsl.d	$a4, $a4, $a4, 1
-	add.w	$a1, $a4, $a1
+	add.d	$a1, $a4, $a1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 8
 	bnez	$a3, .LBB3_18

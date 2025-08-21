@@ -877,11 +877,9 @@ F_floatmul:                             # @F_floatmul
 	bnez	$a5, .LBB4_13
 # %bb.14:                               # %middle.block
 	vadd.w	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	beq	$s3, $a4, .LBB4_16
 	.p2align	4, , 16
 .LBB4_15:                               # %.lr.ph
@@ -889,7 +887,7 @@ F_floatmul:                             # @F_floatmul
 	ld.b	$a4, $a3, 0
 	add.d	$a1, $a1, $a4
 	addi.d	$a3, $a3, -1
-	addi.w	$a1, $a1, -48
+	addi.d	$a1, $a1, -48
 	bgeu	$a3, $s1, .LBB4_15
 .LBB4_16:                               # %.preheader55
 	addi.d	$a2, $a2, -1
@@ -939,11 +937,9 @@ F_floatmul:                             # @F_floatmul
 	bnez	$a5, .LBB4_21
 # %bb.22:                               # %middle.block105
 	vadd.w	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	beq	$a0, $a3, .LBB4_24
 	.p2align	4, , 16
 .LBB4_23:                               # %.lr.ph65
@@ -951,10 +947,12 @@ F_floatmul:                             # @F_floatmul
 	ld.b	$a0, $a2, 0
 	add.d	$a0, $a4, $a0
 	addi.d	$a2, $a2, -1
-	addi.w	$a4, $a0, -48
+	addi.d	$a4, $a0, -48
 	bgeu	$a2, $s2, .LBB4_23
 .LBB4_24:                               # %._crit_edge
-	slt	$a0, $a4, $a1
+	addi.w	$a0, $a1, 0
+	addi.w	$a1, $a4, 0
+	slt	$a0, $a1, $a0
 	masknez	$a1, $s2, $a0
 	maskeqz	$a2, $s1, $a0
 	or	$s3, $a2, $a1

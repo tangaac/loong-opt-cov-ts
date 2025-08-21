@@ -2383,16 +2383,11 @@ finalpin:                               # @finalpin
 # %bb.237:                              # %middle.block
                                         #   in Loop: Header=BB0_16 Depth=2
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a2, $xr0, 0
 	bne	$t7, $s7, .LBB0_244
 # %bb.238:                              #   in Loop: Header=BB0_16 Depth=2
 	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
@@ -2511,19 +2506,18 @@ finalpin:                               # @finalpin
 	bnez	$a2, .LBB0_246
 # %bb.247:                              # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_16 Depth=2
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	bne	$a5, $s7, .LBB0_284
 .LBB0_248:                              # %.preheader742
                                         #   in Loop: Header=BB0_16 Depth=2
+	addi.w	$a3, $a2, 0
 	addi.d	$t8, $sp, 1096
 	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$s0, $sp, 280
 	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
-	blt	$a2, $s5, .LBB0_209
+	blt	$a3, $s5, .LBB0_209
 # %bb.249:                              # %.lr.ph940
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
@@ -2835,7 +2829,7 @@ finalpin:                               # @finalpin
 	beqz	$a5, .LBB0_285
 # %bb.287:                              #   in Loop: Header=BB0_286 Depth=3
 	ld.w	$a5, $a3, -4
-	add.w	$a2, $a5, $a2
+	add.d	$a2, $a5, $a2
 	b	.LBB0_285
 	.p2align	4, , 16
 .LBB0_288:                              # %.preheader753.loopexit

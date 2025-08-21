@@ -479,16 +479,16 @@ initcheck:                              # @initcheck
 	srli.d	$t0, $a4, 3
 	ori	$a5, $zero, 1
 	bstrins.d	$a5, $t0, 30, 3
-	vrepli.b	$vr4, 0
+	vrepli.b	$vr0, 0
 	addi.d	$t0, $a6, 32
 	move	$t1, $a7
-	vori.b	$vr7, $vr4, 0
-	vori.b	$vr5, $vr4, 0
-	vori.b	$vr6, $vr4, 0
-	vori.b	$vr2, $vr4, 0
-	vori.b	$vr3, $vr4, 0
-	vori.b	$vr0, $vr4, 0
-	vori.b	$vr1, $vr4, 0
+	vori.b	$vr7, $vr0, 0
+	vori.b	$vr5, $vr0, 0
+	vori.b	$vr6, $vr0, 0
+	vori.b	$vr1, $vr0, 0
+	vori.b	$vr3, $vr0, 0
+	vori.b	$vr2, $vr0, 0
+	vori.b	$vr4, $vr0, 0
 	.p2align	4, , 16
 .LBB1_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -534,7 +534,7 @@ initcheck:                              # @initcheck
 	vinsgr2vr.w	$vr15, $s3, 3
 	vsub.w	$vr10, $vr9, $vr14
 	vsub.w	$vr8, $vr13, $vr15
-	vadd.w	$vr4, $vr4, $vr10
+	vadd.w	$vr0, $vr0, $vr10
 	vadd.w	$vr7, $vr7, $vr8
 	ld.w	$s0, $t7, 40
 	ld.w	$s1, $t8, 40
@@ -578,7 +578,7 @@ initcheck:                              # @initcheck
 	vadd.w	$vr15, $vr15, $vr19
 	vsub.w	$vr9, $vr9, $vr14
 	vsub.w	$vr13, $vr13, $vr15
-	vadd.w	$vr2, $vr9, $vr2
+	vadd.w	$vr1, $vr9, $vr1
 	fld.d	$ft1, $t7, 48
 	fld.d	$ft6, $t8, 48
 	fld.d	$ft7, $fp, 48
@@ -632,38 +632,30 @@ initcheck:                              # @initcheck
 	xvftintrz.l.d	$xr11, $xr11
 	xvpermi.d	$xr12, $xr11, 238
 	xvpickev.w	$xr11, $xr12, $xr11
-	vadd.w	$vr0, $vr0, $vr9
-	vadd.w	$vr1, $vr1, $vr8
-	vadd.w	$vr0, $vr0, $vr10
-	vadd.w	$vr1, $vr1, $vr11
+	vadd.w	$vr2, $vr2, $vr9
+	vadd.w	$vr4, $vr4, $vr8
+	vadd.w	$vr2, $vr2, $vr10
+	vadd.w	$vr4, $vr4, $vr11
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 64
 	bnez	$t1, .LBB1_4
 # %bb.5:                                # %middle.block
-	vadd.w	$vr4, $vr7, $vr4
-	vshuf4i.w	$vr7, $vr4, 14
-	vadd.w	$vr4, $vr4, $vr7
-	vreplvei.w	$vr7, $vr4, 1
-	vadd.w	$vr4, $vr4, $vr7
-	vpickve2gr.w	$t0, $vr4, 0
-	vadd.w	$vr4, $vr6, $vr5
-	vshuf4i.w	$vr5, $vr4, 14
-	vadd.w	$vr4, $vr4, $vr5
-	vreplvei.w	$vr5, $vr4, 1
-	vadd.w	$vr4, $vr4, $vr5
-	vpickve2gr.w	$t1, $vr4, 0
-	vadd.w	$vr2, $vr3, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$t2, $vr2, 0
-	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t3, $vr0, 0
+	vadd.w	$vr0, $vr7, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t0, $vr0, 0
+	vadd.w	$vr0, $vr6, $vr5
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t1, $vr0, 0
+	vadd.w	$vr0, $vr3, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t2, $vr0, 0
+	vadd.w	$vr0, $vr4, $vr2
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t3, $vr0, 0
 	beq	$a7, $a4, .LBB1_8
 .LBB1_6:                                # %scalar.ph.preheader
 	addi.d	$a4, $a4, 1

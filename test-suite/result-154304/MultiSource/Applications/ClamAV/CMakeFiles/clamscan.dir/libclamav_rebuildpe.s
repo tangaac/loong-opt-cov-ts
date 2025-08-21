@@ -48,9 +48,9 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	add.w	$a0, $t0, $a0
 	slli.d	$s6, $a0, 9
 .LBB0_2:
-	add.w	$s0, $fp, $a2
+	add.w	$s3, $fp, $a2
 	ori	$a0, $zero, 96
-	blt	$a0, $s0, .LBB0_23
+	blt	$a0, $s3, .LBB0_23
 # %bb.3:                                # %.preheader
 	ori	$a0, $zero, 1
 	blt	$fp, $a0, .LBB0_6
@@ -137,16 +137,11 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	bnez	$t0, .LBB0_10
 # %bb.11:                               # %middle.block
 	xvadd.w	$xr0, $xr5, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a2, $xr0, 0
 	beq	$a0, $fp, .LBB0_18
 # %bb.12:                               # %vec.epilog.iter.check
 	andi	$t0, $fp, 12
@@ -189,11 +184,9 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	addi.d	$t0, $t0, 144
 	bnez	$a2, .LBB0_14
 # %bb.15:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a0, $fp, .LBB0_18
 .LBB0_16:                               # %.lr.ph.preheader
 	slli.d	$t0, $a0, 5
@@ -216,11 +209,12 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	addi.d	$t0, $t0, 36
 	bnez	$a0, .LBB0_17
 .LBB0_18:                               # %._crit_edge
-	lu12i.w	$a0, 45056
-	bltu	$a0, $a2, .LBB0_23
+	addi.w	$a0, $a2, 0
+	lu12i.w	$t0, 45056
+	bltu	$t0, $a0, .LBB0_23
 .LBB0_19:                               # %._crit_edge.thread
-	move	$s3, $a4
-	move	$s1, $a3
+	move	$s1, $a4
+	move	$s0, $a3
 	move	$s8, $a5
 	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
@@ -245,9 +239,9 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	slli.d	$a0, $a0, 12
 	add.w	$s7, $a0, $s6
 	bstrins.d	$s7, $zero, 11, 0
-	st.h	$s0, $s2, 214
-	st.w	$s3, $s2, 248
-	st.w	$s1, $s2, 260
+	st.h	$s3, $s2, 214
+	st.w	$s1, $s2, 248
+	st.w	$s0, $s2, 260
 	st.w	$s6, $s2, 292
 	addi.d	$a0, $s2, 328
 	ori	$a2, $zero, 128

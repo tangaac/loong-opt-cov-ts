@@ -794,15 +794,7 @@ _ZN8NArchive4NZip11COutArchive6SeekToEy: # @_ZN8NArchive4NZip11COutArchive6SeekT
 	.size	_ZN8NArchive4NZip11COutArchive6SeekToEy, .Lfunc_end11-_ZN8NArchive4NZip11COutArchive6SeekToEy
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE
-.LCPI12_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	_ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE
+	.globl	_ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE # -- Begin function _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE
 	.p2align	2
 	.type	_ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE,@function
 _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE
@@ -1087,15 +1079,10 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB12_25
 # %bb.26:                               # %middle.block
-	pcalau12i	$a4, %pc_hi20(.LCPI12_0)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI12_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a4, $xr0, 0
 	beq	$a3, $a1, .LBB12_29
 .LBB12_27:                              # %scalar.ph.preheader
@@ -1329,15 +1316,10 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB12_56
 # %bb.57:                               # %middle.block104
-	pcalau12i	$a3, %pc_hi20(.LCPI12_0)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI12_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a2, $a0, .LBB12_60
 .LBB12_58:                              # %scalar.ph92.preheader
@@ -1435,15 +1417,7 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	.size	_ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE, .Lfunc_end12-_ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE
-.LCPI13_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	_ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE
+	.globl	_ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE # -- Begin function _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE
 	.p2align	2
 	.type	_ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE,@function
 _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE: # @_ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE
@@ -1768,15 +1742,10 @@ _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE: # @_ZN8NArchiv
 	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB13_25
 # %bb.26:                               # %middle.block
-	pcalau12i	$a4, %pc_hi20(.LCPI13_0)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI13_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a4, $xr0, 0
 	beq	$a3, $a1, .LBB13_29
 .LBB13_27:                              # %scalar.ph.preheader

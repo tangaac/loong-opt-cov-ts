@@ -29420,15 +29420,7 @@ _Z6expandR6StringS0_PKci:               # @_Z6expandR6StringS0_PKci
 	.size	_Z6expandR6StringS0_PKci, .Lfunc_end103-_Z6expandR6StringS0_PKci
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z7paqmainiPPc
-.LCPI104_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	_Z7paqmainiPPc
+	.globl	_Z7paqmainiPPc                  # -- Begin function _Z7paqmainiPPc
 	.p2align	5
 	.type	_Z7paqmainiPPc,@function
 _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
@@ -30570,15 +30562,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	addi.d	$a1, $a1, 64
 	bnez	$a2, .LBB104_187
 # %bb.188:                              # %middle.block
-	pcalau12i	$a1, %pc_hi20(.LCPI104_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI104_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$s5, $xr0, 0
 	beq	$a0, $s4, .LBB104_191
 .LBB104_189:                            # %.lr.ph601.preheader863

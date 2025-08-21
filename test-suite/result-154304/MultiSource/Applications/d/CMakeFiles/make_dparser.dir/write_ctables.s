@@ -1161,11 +1161,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	bnez	$a4, .LBB8_94
 # %bb.95:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $s2, .LBB8_98
 .LBB8_96:                               # %scalar.ph.preheader
@@ -1177,16 +1175,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$a2, $a1, 0
 	ld.w	$a2, $a2, 296
 	mul.d	$a2, $a2, $a0
-	add.w	$a3, $a2, $a3
+	add.d	$a3, $a2, $a3
 	addi.d	$a4, $a4, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a4, .LBB8_97
 .LBB8_98:                               # %._crit_edge428.loopexit.i
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $a3
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a0, $a1, $a0
+	addi.w	$a0, $a3, 0
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	slli.d	$a0, $a0, 5
 .LBB8_99:                               # %._crit_edge428.i
 	pcaddu18i	$ra, %call36(malloc)

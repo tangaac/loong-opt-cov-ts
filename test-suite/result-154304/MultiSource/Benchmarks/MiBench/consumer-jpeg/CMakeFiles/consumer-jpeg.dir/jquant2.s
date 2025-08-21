@@ -667,11 +667,6 @@ prescan_quantize:                       # @prescan_quantize
 	.half	0                               # 0x0
 	.half	0                               # 0x0
 	.half	0                               # 0x0
-.LCPI5_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.p2align	5
 	.type	finish_pass1,@function
@@ -984,21 +979,21 @@ finish_pass1:                           # @finish_pass1
 .LBB5_28:                               # %vector.ph
                                         #   in Loop: Header=BB5_26 Depth=3
 	add.d	$s6, $s6, $t5
-	xvori.b	$xr10, $xr1, 0
-	xvinsgr2vr.d	$xr10, $s8, 0
 	xvori.b	$xr8, $xr1, 0
-	xvinsgr2vr.d	$xr8, $ra, 0
+	xvinsgr2vr.d	$xr8, $s8, 0
+	xvori.b	$xr7, $xr1, 0
+	xvinsgr2vr.d	$xr7, $ra, 0
 	xvori.b	$xr6, $xr1, 0
 	xvinsgr2vr.d	$xr6, $s1, 0
 	xvori.b	$xr5, $xr1, 0
 	xvinsgr2vr.d	$xr5, $s2, 0
-	xvreplgr2vr.d	$xr13, $s7
+	xvreplgr2vr.d	$xr12, $s7
 	move	$s1, $t3
 	move	$s2, $s4
-	xvori.b	$xr12, $xr1, 0
+	xvori.b	$xr13, $xr1, 0
 	xvori.b	$xr11, $xr1, 0
+	xvori.b	$xr10, $xr1, 0
 	xvori.b	$xr9, $xr1, 0
-	xvori.b	$xr7, $xr1, 0
 	vori.b	$vr14, $vr3, 0
 	.p2align	4, , 16
 .LBB5_29:                               # %vector.body
@@ -1058,11 +1053,11 @@ finish_pass1:                           # @finish_pass1
 	xvpermi.q	$xr18, $xr20, 48
 	xvextrins.h	$xr20, $xr18, 68
 	xvadd.d	$xr5, $xr5, $xr17
-	xvadd.d	$xr7, $xr7, $xr20
+	xvadd.d	$xr9, $xr9, $xr20
 	xvmul.d	$xr18, $xr4, $xr17
 	xvmul.d	$xr19, $xr4, $xr20
-	xvmul.d	$xr21, $xr13, $xr17
-	xvmul.d	$xr22, $xr13, $xr20
+	xvmul.d	$xr21, $xr12, $xr17
+	xvmul.d	$xr22, $xr12, $xr20
 	vslli.w	$vr23, $vr14, 3
 	vbitseti.w	$vr24, $vr23, 2
 	vadd.w	$vr23, $vr23, $vr2
@@ -1087,57 +1082,40 @@ finish_pass1:                           # @finish_pass1
 	xvbitsel.v	$xr18, $xr18, $xr1, $xr15
 	xvadd.d	$xr6, $xr6, $xr18
 	xvbitsel.v	$xr18, $xr19, $xr1, $xr16
-	xvadd.d	$xr9, $xr9, $xr18
+	xvadd.d	$xr10, $xr10, $xr18
 	xvbitsel.v	$xr18, $xr21, $xr1, $xr15
-	xvadd.d	$xr8, $xr8, $xr18
+	xvadd.d	$xr7, $xr7, $xr18
 	xvbitsel.v	$xr18, $xr22, $xr1, $xr16
 	xvadd.d	$xr11, $xr11, $xr18
 	xvbitsel.v	$xr15, $xr17, $xr1, $xr15
-	xvadd.d	$xr10, $xr10, $xr15
+	xvadd.d	$xr8, $xr8, $xr15
 	xvbitsel.v	$xr15, $xr20, $xr1, $xr16
-	xvadd.d	$xr12, $xr12, $xr15
+	xvadd.d	$xr13, $xr13, $xr15
 	vaddi.wu	$vr14, $vr14, 8
 	addi.d	$s1, $s1, -8
 	addi.d	$s2, $s2, 16
 	bnez	$s1, .LBB5_29
 # %bb.30:                               # %middle.block
                                         #   in Loop: Header=BB5_26 Depth=3
-	pcalau12i	$a1, %pc_hi20(.LCPI5_3)
-	xvld	$xr13, $a1, %pc_lo12(.LCPI5_3)
-	xvadd.d	$xr10, $xr12, $xr10
-	xvpermi.d	$xr12, $xr10, 78
-	xvori.b	$xr14, $xr13, 0
-	xvshuf.d	$xr14, $xr0, $xr12
-	xvadd.d	$xr10, $xr10, $xr14
-	xvpermi.d	$xr12, $xr10, 68
-	xvrepl128vei.d	$xr12, $xr12, 1
-	xvadd.d	$xr10, $xr10, $xr12
-	xvpickve2gr.d	$s8, $xr10, 0
-	xvadd.d	$xr8, $xr11, $xr8
-	xvpermi.d	$xr10, $xr8, 78
-	xvori.b	$xr11, $xr13, 0
-	xvshuf.d	$xr11, $xr0, $xr10
-	xvadd.d	$xr8, $xr8, $xr11
-	xvpermi.d	$xr10, $xr8, 68
-	xvrepl128vei.d	$xr10, $xr10, 1
-	xvadd.d	$xr8, $xr8, $xr10
-	xvpickve2gr.d	$ra, $xr8, 0
-	xvadd.d	$xr6, $xr9, $xr6
-	xvpermi.d	$xr8, $xr6, 78
-	xvori.b	$xr9, $xr13, 0
-	xvshuf.d	$xr9, $xr0, $xr8
-	xvadd.d	$xr6, $xr6, $xr9
-	xvpermi.d	$xr8, $xr6, 68
-	xvrepl128vei.d	$xr8, $xr8, 1
-	xvadd.d	$xr6, $xr6, $xr8
+	xvadd.d	$xr8, $xr13, $xr8
+	xvhaddw.q.d	$xr8, $xr8, $xr8
+	xvpermi.d	$xr12, $xr8, 2
+	xvadd.d	$xr8, $xr12, $xr8
+	xvpickve2gr.d	$s8, $xr8, 0
+	xvadd.d	$xr7, $xr11, $xr7
+	xvhaddw.q.d	$xr7, $xr7, $xr7
+	xvpermi.d	$xr8, $xr7, 2
+	xvadd.d	$xr7, $xr8, $xr7
+	xvpickve2gr.d	$ra, $xr7, 0
+	xvadd.d	$xr6, $xr10, $xr6
+	xvhaddw.q.d	$xr6, $xr6, $xr6
+	xvpermi.d	$xr7, $xr6, 2
+	xvadd.d	$xr6, $xr7, $xr6
 	xvpickve2gr.d	$s1, $xr6, 0
-	xvadd.d	$xr5, $xr7, $xr5
-	xvpermi.d	$xr6, $xr5, 78
-	xvshuf.d	$xr13, $xr0, $xr6
-	xvadd.d	$xr5, $xr5, $xr13
-	xvpermi.d	$xr6, $xr5, 68
-	xvrepl128vei.d	$xr6, $xr6, 1
-	xvadd.d	$xr5, $xr5, $xr6
+	xvadd.d	$xr5, $xr9, $xr5
+	xvhaddw.q.d	$xr5, $xr5, $xr5
+	xvpermi.d	$xr6, $xr5, 2
+	xvadd.d	$xr5, $xr6, $xr5
 	xvpickve2gr.d	$s2, $xr5, 0
 	move	$s0, $t4
 	beq	$t2, $t3, .LBB5_25
@@ -2034,8 +2012,7 @@ update_box:                             # @update_box
 # %bb.78:                               # %middle.block
                                         #   in Loop: Header=BB9_74 Depth=2
 	vadd.d	$vr3, $vr4, $vr3
-	vreplvei.d	$vr4, $vr3, 1
-	vadd.d	$vr3, $vr3, $vr4
+	vhaddw.q.d	$vr3, $vr3, $vr3
 	vpickve2gr.d	$fp, $vr3, 0
 	move	$s4, $t5
 	beq	$t1, $t2, .LBB9_73

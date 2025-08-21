@@ -11,98 +11,88 @@ ba_compute_psd:                         # @ba_compute_psd
 	ldx.h	$a1, $a1, $a3
 	pcalau12i	$a2, %pc_hi20(psd)
 	addi.d	$a2, $a2, %pc_lo12(psd)
-	ldx.hu	$a5, $a2, $a3
+	ldx.hu	$a4, $a2, $a3
 	pcalau12i	$a3, %pc_hi20(bndpsd)
 	addi.d	$a3, $a3, %pc_lo12(bndpsd)
 	slli.d	$a6, $a1, 1
-	ori	$a4, $zero, 2
-	stx.h	$a5, $a3, $a6
-	blt	$a4, $a0, .LBB0_16
+	ori	$a5, $zero, 2
+	stx.h	$a4, $a3, $a6
+	blt	$a5, $a0, .LBB0_16
 # %bb.1:                                # %iter.check
 	alsl.d	$a1, $a1, $a3, 1
-	sub.d	$a6, $a4, $a0
-	ori	$a4, $zero, 7
+	sub.d	$a6, $a5, $a0
+	ori	$a5, $zero, 7
 	addi.d	$a3, $a0, 1
-	bgeu	$a6, $a4, .LBB0_3
+	bgeu	$a6, $a5, .LBB0_3
 # %bb.2:
 	move	$a7, $a0
 	b	.LBB0_13
 .LBB0_3:                                # %vector.main.loop.iter.check
-	bstrpick.d	$a4, $a6, 31, 0
+	bstrpick.d	$a5, $a6, 31, 0
 	ori	$a7, $zero, 31
-	addi.d	$a4, $a4, 1
+	addi.d	$a5, $a5, 1
 	bgeu	$a6, $a7, .LBB0_5
 # %bb.4:
 	move	$a6, $zero
 	b	.LBB0_9
 .LBB0_5:                                # %vector.ph
-	bstrpick.d	$a6, $a4, 32, 5
+	bstrpick.d	$a6, $a5, 32, 5
 	slli.d	$a6, $a6, 5
 	xvrepli.b	$xr0, 0
-	xvreplgr2vr.h	$xr2, $a5
+	xvreplgr2vr.h	$xr2, $a4
 	xvpermi.q	$xr2, $xr0, 18
 	xvori.b	$xr1, $xr0, 0
 	xvextrins.h	$xr1, $xr2, 0
-	alsl.d	$a5, $a0, $a2, 1
-	addi.d	$a5, $a5, 34
+	alsl.d	$a4, $a0, $a2, 1
+	addi.d	$a4, $a4, 34
 	move	$a7, $a6
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a5, -32
-	xvld	$xr3, $a5, 0
+	xvld	$xr2, $a4, -32
+	xvld	$xr3, $a4, 0
 	xvadd.h	$xr1, $xr2, $xr1
 	xvadd.h	$xr0, $xr3, $xr0
 	addi.d	$a7, $a7, -32
-	addi.d	$a5, $a5, 64
+	addi.d	$a4, $a4, 64
 	bnez	$a7, .LBB0_6
 # %bb.7:                                # %middle.block
 	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvadd.h	$xr0, $xr0, $xr1
-	vpickve2gr.h	$a5, $vr0, 0
-	beq	$a4, $a6, .LBB0_15
+	xvhaddw.w.h	$xr0, $xr0, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a4, $xr0, 0
+	beq	$a5, $a6, .LBB0_15
 # %bb.8:                                # %vec.epilog.iter.check
-	andi	$a7, $a4, 24
+	andi	$a7, $a5, 24
 	beqz	$a7, .LBB0_12
 .LBB0_9:                                # %vec.epilog.ph
-	bstrpick.d	$t1, $a4, 32, 3
+	bstrpick.d	$t1, $a5, 32, 3
 	slli.d	$t0, $t1, 3
 	alsl.d	$a7, $t1, $a0, 3
 	alsl.w	$a3, $t1, $a3, 3
 	vrepli.b	$vr0, 0
-	vinsgr2vr.h	$vr0, $a5, 0
+	vinsgr2vr.h	$vr0, $a4, 0
 	add.d	$a0, $a6, $a0
 	alsl.d	$a0, $a0, $a2, 1
 	addi.d	$a0, $a0, 2
-	sub.d	$a5, $a6, $t0
+	sub.d	$a4, $a6, $t0
 	.p2align	4, , 16
 .LBB0_10:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a0, 0
 	vadd.h	$vr0, $vr1, $vr0
-	addi.d	$a5, $a5, 8
+	addi.d	$a4, $a4, 8
 	addi.d	$a0, $a0, 16
-	bnez	$a5, .LBB0_10
+	bnez	$a4, .LBB0_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vbsrl.v	$vr1, $vr0, 8
-	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vadd.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vadd.h	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a5, $vr0, 0
-	bne	$a4, $t0, .LBB0_13
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	bne	$a5, $t0, .LBB0_13
 	b	.LBB0_15
 .LBB0_12:
 	add.d	$a7, $a6, $a0
@@ -116,15 +106,15 @@ ba_compute_psd:                         # @ba_compute_psd
 	.p2align	4, , 16
 .LBB0_14:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a4, $a0, 0
-	add.d	$a5, $a4, $a5
+	ld.h	$a5, $a0, 0
+	add.d	$a4, $a5, $a4
 	bstrpick.d	$a3, $a3, 31, 0
 	addi.d	$a3, $a3, 1
-	and	$a4, $a3, $a2
+	and	$a5, $a3, $a2
 	addi.d	$a0, $a0, 2
-	beqz	$a4, .LBB0_14
+	beqz	$a5, .LBB0_14
 .LBB0_15:                               # %._crit_edge
-	st.h	$a5, $a1, 0
+	st.h	$a4, $a1, 0
 .LBB0_16:
 	ret
 .Lfunc_end0:

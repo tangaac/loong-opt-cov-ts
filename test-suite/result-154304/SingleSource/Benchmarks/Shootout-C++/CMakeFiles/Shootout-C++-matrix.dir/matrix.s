@@ -326,11 +326,9 @@ _Z5mmultiiPPiS0_S0_:                    # @_Z5mmultiiPPiS0_S0_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB3_6 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t6, $vr1, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$t6, $vr1, 0
 	move	$fp, $a6
 	beq	$a6, $a1, .LBB3_5
 .LBB3_11:                               # %scalar.ph.preheader

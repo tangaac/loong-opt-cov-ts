@@ -259,16 +259,11 @@ search_for_move:                        # @search_for_move
 	bnez	$a4, .LBB0_10
 # %bb.11:                               # %middle.block
 	xvadd.w	$xr0, $xr3, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a2, $xr0, 0
 	beq	$a1, $a0, .LBB0_18
 # %bb.12:                               # %vec.epilog.iter.check
 	andi	$a3, $a0, 12
@@ -339,11 +334,9 @@ search_for_move:                        # @search_for_move
 	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB0_14
 # %bb.15:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB0_18
 .LBB0_16:                               # %.lr.ph.preheader
 	pcalau12i	$a3, %got_pc_hi20(g_board)

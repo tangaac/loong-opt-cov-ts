@@ -5678,15 +5678,8 @@ _ZN11CStringBaseIcEaSERKS0_:            # @_ZN11CStringBaseIcEaSERKS0_
 	.size	_ZN11CStringBaseIcEaSERKS0_, .Lfunc_end25-_ZN11CStringBaseIcEaSERKS0_
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
-.LCPI26_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
-	.globl	_ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
+	.globl	_ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback # -- Begin function _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
 	.p2align	2
 	.type	_ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback,@function
 _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
@@ -5852,15 +5845,10 @@ _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	addi.d	$a1, $a1, 64
 	bnez	$a4, .LBB26_13
 # %bb.14:                               # %middle.block255
-	pcalau12i	$a1, %pc_hi20(.LCPI26_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI26_0)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	addi.w	$a4, $a3, 0
 	xvpickve2gr.d	$a1, $xr0, 0
 	beq	$a2, $a4, .LBB26_16

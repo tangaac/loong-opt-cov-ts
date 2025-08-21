@@ -4,13 +4,6 @@
 .LCPI0_0:
 	.dword	1                               # 0x1
 	.dword	0                               # 0x0
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI0_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	_ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
 	.p2align	2
@@ -560,15 +553,10 @@ _ZN8NArchive3N7z8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArchi
 	bnez	$a4, .LBB0_72
 # %bb.73:                               # %middle.block
                                         #   in Loop: Header=BB0_44 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI0_1)
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$s5, $xr0, 0
 	bne	$a2, $a1, .LBB0_60
 	b	.LBB0_63

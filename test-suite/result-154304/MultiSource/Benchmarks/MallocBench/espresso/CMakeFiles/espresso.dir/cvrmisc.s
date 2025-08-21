@@ -180,17 +180,12 @@ cover_cost:                             # @cover_cost
 	bnez	$a7, .LBB0_26
 # %bb.27:                               # %middle.block
 	xvadd.w	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a3, $xr1, 0
-	xvstelm.w	$xr1, $a4, 0, 0
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$a3, $xr1, 0
+	st.w	$a3, $a4, 0
 	beq	$a6, $a2, .LBB0_10
 # %bb.28:                               # %vec.epilog.iter.check
 	andi	$a7, $a2, 12
@@ -211,12 +206,10 @@ cover_cost:                             # @cover_cost
 	addi.d	$a7, $a7, 16
 	bnez	$a3, .LBB0_30
 # %bb.31:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
-	vstelm.w	$vr0, $a4, 0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	st.w	$a3, $a4, 0
 	bne	$a6, $a2, .LBB0_7
 	b	.LBB0_10
 .Lfunc_end0:

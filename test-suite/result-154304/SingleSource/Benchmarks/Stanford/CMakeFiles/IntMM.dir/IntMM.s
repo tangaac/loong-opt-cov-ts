@@ -78,19 +78,7 @@ Initmatrix:                             # @Initmatrix
 .Lfunc_end2:
 	.size	Initmatrix, .Lfunc_end2-Initmatrix
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Innerproduct
-.LCPI3_0:
-	.word	0                               # 0x0
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-	.text
-	.globl	Innerproduct
+	.globl	Innerproduct                    # -- Begin function Innerproduct
 	.p2align	5
 	.type	Innerproduct,@function
 Innerproduct:                           # @Innerproduct
@@ -210,20 +198,14 @@ Innerproduct:                           # @Innerproduct
 	xvmadd.w	$xr4, $xr2, $xr1
 	xvmadd.w	$xr5, $xr3, $xr0
 	xvadd.w	$xr0, $xr5, $xr4
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	pcalau12i	$a4, %pc_hi20(.LCPI3_0)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI3_0)
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvrepli.b	$xr1, 0
-	xvshuf.w	$xr2, $xr1, $xr0
-	xvld	$xr0, $a1, 132
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a4, $xr0, 0
+	xvrepli.b	$xr0, 0
+	xvinsgr2vr.w	$xr0, $a4, 0
+	xvld	$xr1, $a1, 132
 	ori	$a1, $a3, 1316
 	ldx.w	$a1, $a2, $a1
 	ori	$a4, $a3, 1480
@@ -240,25 +222,21 @@ Innerproduct:                           # @Innerproduct
 	ldx.w	$t1, $a2, $t1
 	ori	$a3, $a3, 2464
 	ldx.w	$a2, $a2, $a3
-	xvinsgr2vr.w	$xr1, $a1, 0
-	xvinsgr2vr.w	$xr1, $a4, 1
-	xvinsgr2vr.w	$xr1, $a5, 2
-	xvinsgr2vr.w	$xr1, $a6, 3
-	xvinsgr2vr.w	$xr1, $a7, 4
-	xvinsgr2vr.w	$xr1, $t0, 5
-	xvinsgr2vr.w	$xr1, $t1, 6
-	xvinsgr2vr.w	$xr1, $a2, 7
-	xvmadd.w	$xr2, $xr1, $xr0
-	xvpermi.d	$xr0, $xr2, 78
-	xvshuf4i.w	$xr0, $xr0, 228
-	xvadd.w	$xr0, $xr2, $xr0
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvstelm.w	$xr0, $a0, 0, 0
+	xvinsgr2vr.w	$xr2, $a1, 0
+	xvinsgr2vr.w	$xr2, $a4, 1
+	xvinsgr2vr.w	$xr2, $a5, 2
+	xvinsgr2vr.w	$xr2, $a6, 3
+	xvinsgr2vr.w	$xr2, $a7, 4
+	xvinsgr2vr.w	$xr2, $t0, 5
+	xvinsgr2vr.w	$xr2, $t1, 6
+	xvinsgr2vr.w	$xr2, $a2, 7
+	xvmadd.w	$xr0, $xr2, $xr1
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a1, $xr0, 0
+	st.w	$a1, $a0, 0
 	ret
 .LBB3_3:                                # %vec.epilog.scalar.ph.preheader
 	move	$a2, $zero

@@ -2143,17 +2143,13 @@ susan_smoothing:                        # @susan_smoothing
 # %bb.36:                               # %middle.block
                                         #   in Loop: Header=BB10_32 Depth=3
 	vadd.w	$vr3, $vr5, $vr3
-	vshuf4i.w	$vr5, $vr3, 14
-	vadd.w	$vr3, $vr3, $vr5
-	vreplvei.w	$vr5, $vr3, 1
-	vadd.w	$vr3, $vr3, $vr5
-	vpickve2gr.w	$a5, $vr3, 0
+	vhaddw.d.w	$vr3, $vr3, $vr3
+	vhaddw.q.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$a5, $vr3, 0
 	vadd.w	$vr2, $vr4, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$a7, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$a7, $vr2, 0
 	move	$a1, $a6
 	beq	$a4, $s2, .LBB10_31
 .LBB10_37:                              # %scalar.ph.preheader

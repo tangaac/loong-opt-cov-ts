@@ -1478,18 +1478,18 @@ decode_poc:                             # @decode_poc
 	div.wu	$a7, $a6, $a4
 	stptr.w	$a7, $a0, 5728
 	mul.d	$a4, $a7, $a4
-	sub.w	$a4, $a6, $a4
-	stptr.w	$a4, $a0, 5732
-	mul.d	$a6, $t1, $a7
-	stptr.w	$a6, $a0, 5724
-	bltz	$a4, .LBB4_47
+	sub.w	$a6, $a6, $a4
+	stptr.w	$a6, $a0, 5732
+	mul.d	$a4, $t1, $a7
+	stptr.w	$a4, $a0, 5724
+	bltz	$a6, .LBB4_47
 # %bb.40:                               # %iter.check275
 	ori	$a7, $a3, 1628
 	ori	$t0, $zero, 3
 	add.d	$a7, $a0, $a7
-	bltu	$a4, $t0, .LBB4_43
+	bltu	$a6, $t0, .LBB4_43
 # %bb.41:                               # %vector.memcheck267
-	alsl.d	$t0, $a4, $a1, 2
+	alsl.d	$t0, $a6, $a1, 2
 	addi.d	$t0, $t0, 1040
 	bgeu	$a7, $t0, .LBB4_84
 # %bb.42:                               # %vector.memcheck267
@@ -1506,21 +1506,21 @@ decode_poc:                             # @decode_poc
 .LBB4_45:                               # %vec.epilog.scalar.ph293
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a3, 0
-	add.d	$a6, $a6, $t0
-	st.w	$a6, $a7, 0
+	add.d	$a4, $a4, $t0
+	st.w	$a4, $a7, 0
 	addi.d	$a5, $a5, 1
 	addi.d	$a3, $a3, 4
-	bltu	$a5, $a4, .LBB4_45
+	bltu	$a5, $a6, .LBB4_45
 	b	.LBB4_47
 .LBB4_46:
-	move	$a6, $zero
+	move	$a4, $zero
 	stptr.w	$zero, $a0, 5724
 .LBB4_47:                               # %.loopexit
 	bnez	$a2, .LBB4_49
 .LBB4_48:
 	ld.w	$a2, $a1, 1024
-	add.d	$a6, $a6, $a2
-	stptr.w	$a6, $a0, 5724
+	add.d	$a4, $a4, $a2
+	stptr.w	$a4, $a0, 5724
 .LBB4_49:
 	ldptr.w	$a2, $a0, 5680
 	beqz	$a2, .LBB4_52
@@ -1532,7 +1532,7 @@ decode_poc:                             # @decode_poc
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1600
 	ldx.w	$a2, $a0, $a2
-	add.d	$a1, $a1, $a6
+	add.d	$a1, $a1, $a4
 	add.d	$a1, $a1, $a2
 	stptr.w	$a1, $a0, 5668
 	b	.LBB4_54
@@ -1543,7 +1543,7 @@ decode_poc:                             # @decode_poc
 	ld.w	$a1, $a1, 1028
 	ori	$a2, $a2, 1604
 	ldx.w	$a2, $a0, $a2
-	add.w	$a3, $a3, $a6
+	add.w	$a3, $a3, $a4
 	stptr.w	$a3, $a0, 5664
 	add.d	$a1, $a1, $a3
 	add.w	$a1, $a1, $a2
@@ -1557,7 +1557,7 @@ decode_poc:                             # @decode_poc
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1600
 	ldx.w	$a1, $a0, $a1
-	add.d	$a1, $a1, $a6
+	add.d	$a1, $a1, $a4
 	stptr.w	$a1, $a0, 5664
 .LBB4_54:
 	stptr.w	$a1, $a0, 5752
@@ -1613,7 +1613,7 @@ decode_poc:                             # @decode_poc
 	bnez	$a4, .LBB4_14
 .LBB4_65:                               # %.thread231
 	ldptr.w	$a2, $a0, 5808
-	move	$a6, $zero
+	move	$a4, $zero
 	stptr.d	$zero, $a0, 5720
 	stptr.w	$zero, $a0, 5744
 	bnez	$a2, .LBB4_49
@@ -1705,8 +1705,8 @@ decode_poc:                             # @decode_poc
 	b	.LBB4_37
 .LBB4_84:                               # %vector.main.loop.iter.check277
 	ori	$a3, $zero, 15
-	addi.d	$a5, $a4, 1
-	bgeu	$a4, $a3, .LBB4_93
+	addi.d	$a5, $a6, 1
+	bgeu	$a6, $a3, .LBB4_93
 # %bb.85:
 	move	$a3, $zero
 	b	.LBB4_97
@@ -1729,17 +1729,12 @@ decode_poc:                             # @decode_poc
 	bnez	$t2, .LBB4_87
 # %bb.88:                               # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t1, $xr0, 0
-	xvstelm.w	$xr0, $a7, 0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$t1, $xr0, 0
+	st.w	$t1, $a7, 0
 	beq	$t0, $a4, .LBB4_38
 # %bb.89:                               # %vec.epilog.iter.check
 	andi	$t2, $a4, 12
@@ -1762,12 +1757,10 @@ decode_poc:                             # @decode_poc
 	addi.d	$t2, $t2, 16
 	bnez	$t1, .LBB4_91
 # %bb.92:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t1, $vr0, 0
-	vstelm.w	$vr0, $a7, 0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t1, $vr0, 0
+	st.w	$t1, $a7, 0
 	bne	$t0, $a4, .LBB4_20
 	b	.LBB4_38
 .LBB4_93:                               # %vector.ph278
@@ -1775,32 +1768,27 @@ decode_poc:                             # @decode_poc
 	xvrepli.b	$xr0, 0
 	slli.d	$a3, $a3, 4
 	xvori.b	$xr1, $xr0, 0
-	xvinsgr2vr.w	$xr1, $a6, 0
-	addi.d	$a6, $a1, 1068
+	xvinsgr2vr.w	$xr1, $a4, 0
+	addi.d	$a4, $a1, 1068
 	move	$t0, $a3
 	.p2align	4, , 16
 .LBB4_94:                               # %vector.body281
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a6, 0
+	xvld	$xr2, $a4, -32
+	xvld	$xr3, $a4, 0
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr3
 	addi.d	$t0, $t0, -16
-	addi.d	$a6, $a6, 64
+	addi.d	$a4, $a4, 64
 	bnez	$t0, .LBB4_94
 # %bb.95:                               # %middle.block288
 	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
-	xvstelm.w	$xr0, $a7, 0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a4, $xr0, 0
+	st.w	$a4, $a7, 0
 	beq	$a5, $a3, .LBB4_47
 # %bb.96:                               # %vec.epilog.iter.check295
 	andi	$t0, $a5, 12
@@ -1810,24 +1798,22 @@ decode_poc:                             # @decode_poc
 	bstrpick.d	$a3, $a5, 31, 2
 	slli.d	$a3, $a3, 2
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a6, 0
-	alsl.d	$a6, $t0, $a1, 2
-	addi.d	$a6, $a6, 1036
+	vinsgr2vr.w	$vr0, $a4, 0
+	alsl.d	$a4, $t0, $a1, 2
+	addi.d	$a4, $a4, 1036
 	.p2align	4, , 16
 .LBB4_98:                               # %vec.epilog.vector.body300
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a6, 0
+	vld	$vr1, $a4, 0
 	vadd.w	$vr0, $vr0, $vr1
 	addi.d	$t0, $t0, 4
-	addi.d	$a6, $a6, 16
+	addi.d	$a4, $a4, 16
 	bne	$a3, $t0, .LBB4_98
 # %bb.99:                               # %vec.epilog.middle.block305
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a6, $vr0, 0
-	vstelm.w	$vr0, $a7, 0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+	st.w	$a4, $a7, 0
 	beq	$a5, $a3, .LBB4_47
 	b	.LBB4_44
 .Lfunc_end4:

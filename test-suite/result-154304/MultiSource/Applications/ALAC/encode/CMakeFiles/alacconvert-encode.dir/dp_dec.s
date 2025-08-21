@@ -654,16 +654,11 @@ unpc_block:                             # @unpc_block
 # %bb.62:                               # %middle.block
                                         #   in Loop: Header=BB0_54 Depth=1
 	xvadd.w	$xr2, $xr4, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvadd.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$s8, $xr2, 0
+	xvhaddw.d.w	$xr2, $xr2, $xr2
+	xvhaddw.q.d	$xr2, $xr2, $xr2
+	xvpermi.d	$xr3, $xr2, 2
+	xvadd.d	$xr2, $xr3, $xr2
+	xvpickve2gr.d	$s8, $xr2, 0
 	beq	$t1, $t0, .LBB0_69
 # %bb.63:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB0_54 Depth=1
@@ -700,11 +695,9 @@ unpc_block:                             # @unpc_block
 	bnez	$a4, .LBB0_65
 # %bb.66:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_54 Depth=1
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$s8, $vr2, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$s8, $vr2, 0
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	move	$ra, $a4
 	beq	$a4, $t0, .LBB0_69

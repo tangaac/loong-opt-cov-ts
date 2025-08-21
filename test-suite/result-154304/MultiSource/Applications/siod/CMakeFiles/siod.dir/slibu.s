@@ -4302,11 +4302,6 @@ url_decode:                             # @url_decode
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
-.LCPI76_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
 	.globl	html_encode
 	.p2align	5
@@ -4369,10 +4364,10 @@ html_encode:                            # @html_encode
 	vrepli.b	$vr4, 60
 	xvrepli.d	$xr5, 4
 	xvrepli.d	$xr6, 1
-	xvrepli.d	$xr8, 5
-	xvrepli.d	$xr9, 6
+	xvrepli.d	$xr7, 5
+	xvrepli.d	$xr8, 6
 	move	$a2, $a1
-	xvori.b	$xr7, $xr0, 0
+	xvori.b	$xr9, $xr0, 0
 	.p2align	4, , 16
 .LBB76_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -4413,26 +4408,21 @@ html_encode:                            # @html_encode
 	xvslli.d	$xr11, $xr11, 56
 	xvsrai.d	$xr11, $xr11, 56
 	xvbitsel.v	$xr10, $xr6, $xr5, $xr10
-	xvbitsel.v	$xr10, $xr10, $xr8, $xr12
-	xvbitsel.v	$xr10, $xr10, $xr9, $xr14
+	xvbitsel.v	$xr10, $xr10, $xr7, $xr12
+	xvbitsel.v	$xr10, $xr10, $xr8, $xr14
 	xvbitsel.v	$xr11, $xr6, $xr5, $xr11
-	xvbitsel.v	$xr11, $xr11, $xr8, $xr13
-	xvbitsel.v	$xr11, $xr11, $xr9, $xr15
+	xvbitsel.v	$xr11, $xr11, $xr7, $xr13
+	xvbitsel.v	$xr11, $xr11, $xr8, $xr15
 	xvadd.d	$xr0, $xr0, $xr10
-	xvadd.d	$xr7, $xr7, $xr11
+	xvadd.d	$xr9, $xr9, $xr11
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB76_9
 # %bb.10:                               # %middle.block
-	pcalau12i	$a0, %pc_hi20(.LCPI76_1)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI76_1)
-	xvadd.d	$xr0, $xr7, $xr0
-	xvpermi.d	$xr2, $xr0, 78
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvadd.d	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvadd.d	$xr0, $xr9, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a0, $xr0, 0
 	bne	$s1, $a1, .LBB76_24
 .LBB76_11:                              # %._crit_edge

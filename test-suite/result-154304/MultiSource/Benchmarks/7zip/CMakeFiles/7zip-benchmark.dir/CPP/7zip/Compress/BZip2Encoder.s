@@ -3291,25 +3291,20 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	xvadd.w	$xr2, $xr2, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	ld.d	$a0, $sp, 1536
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.w	$vr0, $a1, 0
+	xvpickve2gr.d	$a2, $xr0, 0
+	vld	$vr0, $sp, 240                  # 16-byte Folded Reload
 	ld.d	$a1, $fp, 32
+	vinsgr2vr.w	$vr0, $a2, 0
 	vinsgr2vr.d	$vr1, $a0, 0
 	vadd.w	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr1, 1
 	ld.w	$a0, $a1, 0
 	ld.w	$a2, $a1, 4
-	vadd.w	$vr0, $vr0, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$t0, $vr0, 0
 	slli.d	$a0, $a0, 3
 	sub.d	$t1, $a0, $a2
@@ -4081,7 +4076,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	slli.d	$a7, $a7, 3
 	move	$t0, $a2
 	bstrins.d	$t0, $zero, 2, 0
-	addi.w	$t1, $zero, -1
+	addi.d	$t1, $zero, -1
 	b	.LBB29_119
 	.p2align	4, , 16
 .LBB29_118:                             #   in Loop: Header=BB29_119 Depth=4
@@ -4161,11 +4156,9 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 # %bb.123:                              # %middle.block787
                                         #   in Loop: Header=BB29_119 Depth=4
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$t3, $vr0, 0
 	move	$t4, $a7
 	ori	$s0, $zero, 8
 	addi.d	$t7, $sp, 312
@@ -4182,13 +4175,15 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
                                         # =>        This Inner Loop Header: Depth=5
 	ld.wu	$t6, $t5, 0
 	ldx.bu	$t6, $t2, $t6
-	add.w	$t3, $t3, $t6
+	add.d	$t3, $t3, $t6
 	addi.d	$t4, $t4, 1
 	addi.d	$t5, $t5, 4
 	bne	$a2, $t4, .LBB29_125
 .LBB29_126:                             # %.loopexit
                                         #   in Loop: Header=BB29_119 Depth=4
-	bgeu	$t3, $t1, .LBB29_118
+	addi.w	$t2, $t1, 0
+	addi.w	$t4, $t3, 0
+	bgeu	$t4, $t2, .LBB29_118
 # %bb.127:                              #   in Loop: Header=BB29_119 Depth=4
 	stx.b	$a6, $s5, $a5
 	move	$t1, $t3

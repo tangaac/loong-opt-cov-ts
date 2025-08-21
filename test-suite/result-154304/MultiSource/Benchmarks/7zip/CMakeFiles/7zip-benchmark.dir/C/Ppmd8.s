@@ -2548,8 +2548,8 @@ RestoreModel:                           # @RestoreModel
                                         #   in Loop: Header=BB14_14 Depth=1
 	andi	$a1, $s6, 240
 	xvld	$xr12, $sp, 16                  # 32-byte Folded Reload
-	xvori.b	$xr3, $xr12, 0
-	xvinsgr2vr.w	$xr3, $a3, 0
+	xvori.b	$xr2, $xr12, 0
+	xvinsgr2vr.w	$xr2, $a3, 0
 	xvori.b	$xr1, $xr12, 0
 	xvinsgr2vr.w	$xr1, $a4, 0
 	xvori.b	$xr0, $xr12, 0
@@ -2558,7 +2558,7 @@ RestoreModel:                           # @RestoreModel
 	move	$a3, $a1
 	xvori.b	$xr5, $xr12, 0
 	xvori.b	$xr4, $xr12, 0
-	xvori.b	$xr2, $xr12, 0
+	xvori.b	$xr3, $xr12, 0
 	.p2align	4, , 16
 .LBB14_21:                              # %vector.body
                                         #   Parent Loop BB14_14 Depth=1
@@ -2669,7 +2669,7 @@ RestoreModel:                           # @RestoreModel
 	xvreplgr2vr.b	$xr9, $a4
 	xvpermi.q	$xr9, $xr10, 48
 	xvextrins.b	$xr10, $xr9, 204
-	xvsub.w	$xr3, $xr3, $xr8
+	xvsub.w	$xr2, $xr2, $xr8
 	xvsub.w	$xr5, $xr5, $xr10
 	vsrli.b	$vr8, $vr7, 1
 	vsub.b	$vr8, $vr7, $vr8
@@ -2804,35 +2804,25 @@ RestoreModel:                           # @RestoreModel
 	xvand.v	$xr7, $xr7, $xr13
 	xvslli.w	$xr7, $xr7, 3
 	xvor.v	$xr0, $xr6, $xr0
-	xvor.v	$xr2, $xr7, $xr2
+	xvor.v	$xr3, $xr7, $xr3
 	addi.d	$a3, $a3, -16
 	addi.d	$a2, $a2, 96
 	bnez	$a3, .LBB14_21
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB14_14 Depth=1
-	xvadd.w	$xr3, $xr5, $xr3
-	xvpermi.d	$xr5, $xr3, 78
-	xvshuf4i.w	$xr5, $xr5, 228
-	xvadd.w	$xr3, $xr3, $xr5
-	xvpermi.d	$xr5, $xr3, 68
-	xvshuf4i.w	$xr5, $xr5, 14
-	xvadd.w	$xr3, $xr3, $xr5
-	xvpermi.d	$xr5, $xr3, 68
-	xvrepl128vei.w	$xr5, $xr5, 1
-	xvadd.w	$xr3, $xr3, $xr5
-	xvpickve2gr.w	$a3, $xr3, 0
+	xvadd.w	$xr2, $xr5, $xr2
+	xvhaddw.d.w	$xr2, $xr2, $xr2
+	xvhaddw.q.d	$xr2, $xr2, $xr2
+	xvpermi.d	$xr5, $xr2, 2
+	xvadd.d	$xr2, $xr5, $xr2
+	xvpickve2gr.d	$a3, $xr2, 0
 	xvadd.w	$xr1, $xr4, $xr1
-	xvpermi.d	$xr3, $xr1, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvadd.w	$xr1, $xr1, $xr3
-	xvpermi.d	$xr3, $xr1, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvadd.w	$xr1, $xr1, $xr3
-	xvpermi.d	$xr3, $xr1, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvadd.w	$xr1, $xr1, $xr3
-	xvpickve2gr.w	$a4, $xr1, 0
-	xvor.v	$xr0, $xr2, $xr0
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$a4, $xr1, 0
+	xvor.v	$xr0, $xr3, $xr0
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.w	$xr1, $xr1, 228
 	xvor.v	$xr0, $xr0, $xr1
@@ -2909,16 +2899,12 @@ RestoreModel:                           # @RestoreModel
 	bnez	$a3, .LBB14_25
 # %bb.26:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB14_14 Depth=1
-	vshuf4i.w	$vr3, $vr2, 14
-	vadd.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vadd.w	$vr2, $vr2, $vr3
-	vpickve2gr.w	$a3, $vr2, 0
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a4, $vr1, 0
+	vhaddw.d.w	$vr2, $vr2, $vr2
+	vhaddw.q.d	$vr2, $vr2, $vr2
+	vpickve2gr.d	$a3, $vr2, 0
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
+	vpickve2gr.d	$a4, $vr1, 0
 	vshuf4i.w	$vr1, $vr0, 14
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
@@ -3970,24 +3956,24 @@ CutOff:                                 # @CutOff
 	b	.LBB17_50
 .LBB17_38:                              # %vector.ph
 	bstrpick.d	$a4, $a2, 32, 4
-	xvrepli.b	$xr4, 0
+	xvrepli.b	$xr3, 0
 	slli.d	$a4, $a4, 4
-	xvori.b	$xr5, $xr4, 0
-	xvinsgr2vr.w	$xr5, $a5, 0
-	xvori.b	$xr2, $xr4, 0
+	xvori.b	$xr4, $xr3, 0
+	xvinsgr2vr.w	$xr4, $a5, 0
+	xvori.b	$xr2, $xr3, 0
 	xvinsgr2vr.w	$xr2, $a6, 0
-	xvori.b	$xr1, $xr4, 0
+	xvori.b	$xr1, $xr3, 0
 	xvinsgr2vr.w	$xr1, $a7, 0
-	xvreplgr2vr.w	$xr6, $s1
+	xvreplgr2vr.w	$xr5, $s1
 	pcalau12i	$a5, %pc_hi20(.LCPI17_0)
-	xvld	$xr8, $a5, %pc_lo12(.LCPI17_0)
+	xvld	$xr7, $a5, %pc_lo12(.LCPI17_0)
 	addi.d	$a5, $a0, 48
 	xvrepli.w	$xr9, 255
 	xvrepli.w	$xr10, 1
 	move	$a6, $a4
-	xvori.b	$xr11, $xr4, 0
-	xvori.b	$xr7, $xr4, 0
-	xvori.b	$xr3, $xr4, 0
+	xvori.b	$xr11, $xr3, 0
+	xvori.b	$xr8, $xr3, 0
+	xvori.b	$xr6, $xr3, 0
 	.p2align	4, , 16
 .LBB17_39:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -4025,8 +4011,8 @@ CutOff:                                 # @CutOff
 	vinsgr2vr.b	$vr12, $t6, 7
 	vpickve2gr.b	$a7, $vr14, 0
 	xvreplgr2vr.b	$xr15, $a7
-	xvpermi.q	$xr15, $xr4, 18
-	xvori.b	$xr13, $xr4, 0
+	xvpermi.q	$xr15, $xr3, 18
+	xvori.b	$xr13, $xr3, 0
 	xvextrins.b	$xr13, $xr15, 0
 	vpickve2gr.b	$a7, $vr14, 1
 	xvreplgr2vr.b	$xr15, $a7
@@ -4058,8 +4044,8 @@ CutOff:                                 # @CutOff
 	xvextrins.b	$xr13, $xr14, 204
 	vpickve2gr.b	$a7, $vr12, 0
 	xvreplgr2vr.b	$xr14, $a7
-	xvpermi.q	$xr14, $xr4, 18
-	xvori.b	$xr15, $xr4, 0
+	xvpermi.q	$xr14, $xr3, 18
+	xvori.b	$xr15, $xr3, 0
 	xvextrins.b	$xr15, $xr14, 0
 	vpickve2gr.b	$a7, $vr12, 1
 	xvreplgr2vr.b	$xr14, $a7
@@ -4089,12 +4075,12 @@ CutOff:                                 # @CutOff
 	xvreplgr2vr.b	$xr12, $a7
 	xvpermi.q	$xr12, $xr15, 48
 	xvextrins.b	$xr15, $xr12, 204
-	xvsub.w	$xr5, $xr5, $xr13
+	xvsub.w	$xr4, $xr4, $xr13
 	xvsub.w	$xr11, $xr11, $xr15
-	xvadd.w	$xr12, $xr6, $xr13
-	xvadd.w	$xr13, $xr6, $xr15
-	xvsrl.w	$xr12, $xr12, $xr6
-	xvsrl.w	$xr13, $xr13, $xr6
+	xvadd.w	$xr12, $xr5, $xr13
+	xvadd.w	$xr13, $xr5, $xr15
+	xvsrl.w	$xr12, $xr12, $xr5
+	xvsrl.w	$xr13, $xr13, $xr5
 	xvpickve2gr.w	$a7, $xr12, 7
 	xvpickve2gr.w	$t0, $xr12, 6
 	xvpickve2gr.w	$t1, $xr12, 5
@@ -4130,7 +4116,7 @@ CutOff:                                 # @CutOff
 	xvand.v	$xr12, $xr12, $xr9
 	xvand.v	$xr13, $xr13, $xr9
 	xvadd.w	$xr2, $xr12, $xr2
-	xvadd.w	$xr7, $xr13, $xr7
+	xvadd.w	$xr8, $xr13, $xr8
 	ld.b	$a7, $a5, -42
 	ld.b	$t0, $a5, -36
 	ld.b	$t1, $a5, -30
@@ -4165,43 +4151,33 @@ CutOff:                                 # @CutOff
 	vinsgr2vr.b	$vr13, $t6, 7
 	vslt.bu	$vr12, $vr0, $vr12
 	xvpermi.d	$xr12, $xr12, 68
-	xvshuf.b	$xr12, $xr0, $xr12, $xr8
+	xvshuf.b	$xr12, $xr0, $xr12, $xr7
 	xvand.v	$xr12, $xr12, $xr10
 	xvslli.w	$xr12, $xr12, 3
 	vslt.bu	$vr13, $vr0, $vr13
 	xvpermi.d	$xr13, $xr13, 68
-	xvshuf.b	$xr13, $xr0, $xr13, $xr8
+	xvshuf.b	$xr13, $xr0, $xr13, $xr7
 	xvand.v	$xr13, $xr13, $xr10
 	xvslli.w	$xr13, $xr13, 3
 	xvor.v	$xr1, $xr12, $xr1
-	xvor.v	$xr3, $xr13, $xr3
+	xvor.v	$xr6, $xr13, $xr6
 	addi.d	$a6, $a6, -16
 	addi.d	$a5, $a5, 96
 	bnez	$a6, .LBB17_39
 # %bb.40:                               # %middle.block
-	xvadd.w	$xr4, $xr11, $xr5
-	xvpermi.d	$xr5, $xr4, 78
-	xvshuf4i.w	$xr5, $xr5, 228
-	xvadd.w	$xr4, $xr4, $xr5
-	xvpermi.d	$xr5, $xr4, 68
-	xvshuf4i.w	$xr5, $xr5, 14
-	xvadd.w	$xr4, $xr4, $xr5
-	xvpermi.d	$xr5, $xr4, 68
-	xvrepl128vei.w	$xr5, $xr5, 1
-	xvadd.w	$xr4, $xr4, $xr5
-	xvpickve2gr.w	$a5, $xr4, 0
-	xvadd.w	$xr2, $xr7, $xr2
-	xvpermi.d	$xr4, $xr2, 78
-	xvshuf4i.w	$xr4, $xr4, 228
-	xvadd.w	$xr2, $xr2, $xr4
-	xvpermi.d	$xr4, $xr2, 68
-	xvshuf4i.w	$xr4, $xr4, 14
-	xvadd.w	$xr2, $xr2, $xr4
-	xvpermi.d	$xr4, $xr2, 68
-	xvrepl128vei.w	$xr4, $xr4, 1
-	xvadd.w	$xr2, $xr2, $xr4
-	xvpickve2gr.w	$a6, $xr2, 0
-	xvor.v	$xr1, $xr3, $xr1
+	xvadd.w	$xr3, $xr11, $xr4
+	xvhaddw.d.w	$xr3, $xr3, $xr3
+	xvhaddw.q.d	$xr3, $xr3, $xr3
+	xvpermi.d	$xr4, $xr3, 2
+	xvadd.d	$xr3, $xr4, $xr3
+	xvpickve2gr.d	$a5, $xr3, 0
+	xvadd.w	$xr2, $xr8, $xr2
+	xvhaddw.d.w	$xr2, $xr2, $xr2
+	xvhaddw.q.d	$xr2, $xr2, $xr2
+	xvpermi.d	$xr3, $xr2, 2
+	xvadd.d	$xr2, $xr3, $xr2
+	xvpickve2gr.d	$a6, $xr2, 0
+	xvor.v	$xr1, $xr6, $xr1
 	xvpermi.d	$xr2, $xr1, 78
 	xvshuf4i.w	$xr2, $xr2, 228
 	xvor.v	$xr1, $xr1, $xr2
@@ -4222,13 +4198,13 @@ CutOff:                                 # @CutOff
 	sub.d	$s3, $s3, $t1
 	slli.d	$t2, $t0, 4
 	alsl.d	$t0, $t0, $t2, 3
-	vrepli.b	$vr4, 0
+	vrepli.b	$vr3, 0
 	add.d	$t0, $a0, $t0
-	vori.b	$vr3, $vr4, 0
-	vinsgr2vr.w	$vr3, $a5, 0
-	vori.b	$vr2, $vr4, 0
+	vori.b	$vr4, $vr3, 0
+	vinsgr2vr.w	$vr4, $a5, 0
+	vori.b	$vr2, $vr3, 0
 	vinsgr2vr.w	$vr2, $a6, 0
-	vori.b	$vr1, $vr4, 0
+	vori.b	$vr1, $vr3, 0
 	vinsgr2vr.w	$vr1, $a7, 0
 	vreplgr2vr.w	$vr5, $s1
 	sub.d	$a5, $a4, $t1
@@ -4245,12 +4221,12 @@ CutOff:                                 # @CutOff
 	ld.b	$a6, $a0, 1
 	ld.b	$a7, $a0, 7
 	ld.b	$t2, $a0, 13
-	vori.b	$vr8, $vr4, 0
+	vori.b	$vr8, $vr3, 0
 	vinsgr2vr.b	$vr8, $a4, 0
 	vinsgr2vr.b	$vr8, $a6, 4
 	vinsgr2vr.b	$vr8, $a7, 8
 	vinsgr2vr.b	$vr8, $t2, 12
-	vsub.w	$vr3, $vr3, $vr8
+	vsub.w	$vr4, $vr4, $vr8
 	vadd.w	$vr8, $vr5, $vr8
 	vsrl.w	$vr8, $vr8, $vr5
 	vstelm.b	$vr8, $a0, -5, 0
@@ -4277,16 +4253,12 @@ CutOff:                                 # @CutOff
 	addi.d	$a0, $a0, 24
 	bnez	$a5, .LBB17_43
 # %bb.44:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr0, $vr3, 14
-	vadd.w	$vr0, $vr3, $vr0
-	vreplvei.w	$vr3, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr3
-	vpickve2gr.w	$a5, $vr0, 0
-	vshuf4i.w	$vr0, $vr2, 14
-	vadd.w	$vr0, $vr2, $vr0
-	vreplvei.w	$vr2, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr2
-	vpickve2gr.w	$a6, $vr0, 0
+	vhaddw.d.w	$vr0, $vr4, $vr4
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr2, $vr2
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
 	vshuf4i.w	$vr0, $vr1, 14
 	vor.v	$vr0, $vr1, $vr0
 	vreplvei.w	$vr1, $vr0, 1

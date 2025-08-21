@@ -8939,11 +8939,9 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 # %bb.155:                              # %middle.block809
                                         #   in Loop: Header=BB17_27 Depth=1
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a1, $vr0, 0
 	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	move	$a7, $a5
 	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
@@ -9050,11 +9048,9 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 # %bb.165:                              # %middle.block787
                                         #   in Loop: Header=BB17_27 Depth=1
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a4, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
 	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
 	move	$a7, $a5
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
@@ -17299,12 +17295,10 @@ find_sad_16x16:                         # @find_sad_16x16
 	vadd.w	$vr1, $vr15, $vr1
 	vadd.w	$vr1, $vr4, $vr1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
-	vadd.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vadd.w	$vr1, $vr1, $vr2
+	vhaddw.d.w	$vr1, $vr1, $vr1
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	addi.d	$a6, $a6, 4
-	vpickve2gr.w	$s6, $vr1, 0
+	vpickve2gr.d	$s6, $vr1, 0
 	bne	$a6, $a1, .LBB38_55
 # %bb.56:                               # %.preheader251
                                         #   in Loop: Header=BB38_41 Depth=1

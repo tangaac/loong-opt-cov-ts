@@ -1782,16 +1782,11 @@ get_state:                              # @get_state
 	bnez	$a4, .LBB10_7
 # %bb.8:                                # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a3, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a1, $a2, .LBB10_15
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a4, $a1, 12
@@ -1817,11 +1812,9 @@ get_state:                              # @get_state
 	addi.d	$a3, $a3, 8
 	bnez	$a2, .LBB10_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a3, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	bne	$a1, $a5, .LBB10_14
 	b	.LBB10_15
 .LBB10_13:
@@ -1831,13 +1824,14 @@ get_state:                              # @get_state
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a1, $a4, 0
 	addi.d	$a2, $a4, 2
-	add.w	$a3, $a3, $a1
+	add.d	$a3, $a3, $a1
 	move	$a4, $a2
 	bltu	$a2, $s0, .LBB10_14
 .LBB10_15:                              # %._crit_edge.loopexit
-	lu12i.w	$a1, -516494
-	ori	$a1, $a1, 707
-	mul.d	$a1, $a3, $a1
+	addi.w	$a1, $a3, 0
+	lu12i.w	$a2, -516494
+	ori	$a2, $a2, 707
+	mul.d	$a1, $a1, $a2
 	srli.d	$a1, $a1, 32
 	add.w	$a1, $a1, $a3
 	bstrpick.d	$a2, $a1, 31, 31

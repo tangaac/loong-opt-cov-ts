@@ -704,15 +704,7 @@ routenet:                               # @routenet
 .Lfunc_end0:
 	.size	routenet, .Lfunc_end0-routenet
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function recursePath
-.LCPI1_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.globl	recursePath
+	.globl	recursePath                     # -- Begin function recursePath
 	.p2align	5
 	.type	recursePath,@function
 recursePath:                            # @recursePath
@@ -958,15 +950,10 @@ recursePath:                            # @recursePath
 	xvaddi.du	$xr0, $xr0, 1
 	bnez	$a4, .LBB1_26
 # %bb.27:                               # %middle.block
-	pcalau12i	$a4, %pc_hi20(.LCPI1_0)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI1_0)
 	xvadd.d	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvadd.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvadd.d	$xr0, $xr0, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$s5, $xr0, 0
 	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
 	beq	$a2, $a3, .LBB1_30

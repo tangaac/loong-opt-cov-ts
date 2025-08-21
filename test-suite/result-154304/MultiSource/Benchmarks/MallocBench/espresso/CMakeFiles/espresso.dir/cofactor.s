@@ -1171,16 +1171,11 @@ binate_split_select:                    # @binate_split_select
 	bnez	$a5, .LBB3_6
 # %bb.7:                                # %middle.block
 	xvadd.w	$xr0, $xr4, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvadd.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a5, $xr0, 0
 	beq	$a2, $a4, .LBB3_13
 # %bb.8:                                # %vec.epilog.iter.check
 	andi	$a6, $a2, 12
@@ -1226,11 +1221,9 @@ binate_split_select:                    # @binate_split_select
 	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a4, .LBB3_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vadd.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a5, $vr0, 0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	beq	$a2, $a6, .LBB3_13
 	.p2align	4, , 16
 .LBB3_12:                               # %.lr.ph
@@ -1245,8 +1238,9 @@ binate_split_select:                    # @binate_split_select
 	add.w	$a5, $a2, $a5
 	bne	$a1, $a3, .LBB3_12
 .LBB3_13:                               # %._crit_edge
-	ori	$a2, $zero, 2
-	bgeu	$a5, $a2, .LBB3_23
+	addi.w	$a2, $a5, 0
+	ori	$a3, $zero, 2
+	bgeu	$a2, $a3, .LBB3_23
 .LBB3_14:                               # %.preheader
 	bge	$s4, $a0, .LBB3_19
 .LBB3_15:                               # %._crit_edge59

@@ -471,27 +471,21 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
 	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$t7, $xr2, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vmax.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.w	$vr2, $vr3, $vr2
+	vpickve2gr.w	$t7, $vr2, 0
 	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t8, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t8, $vr0, 0
 	beq	$t6, $t5, .LBB8_3
 # %bb.12:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB8_4 Depth=1
@@ -536,15 +530,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	bnez	$t7, .LBB8_14
 # %bb.15:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	vshuf4i.w	$vr2, $vr1, 14
-	vmax.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmax.w	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmax.w	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.w	$vr1, $vr2, $vr1
 	vpickve2gr.w	$t7, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t8, $vr0, 0
 	beq	$t6, $t5, .LBB8_3
 .LBB8_16:                               # %.lr.ph.preheader

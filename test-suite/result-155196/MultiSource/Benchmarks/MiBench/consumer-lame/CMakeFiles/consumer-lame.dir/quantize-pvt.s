@@ -1681,16 +1681,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t1, .LBB8_14
 # %bb.15:                               # %middle.block
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a4, $vr0, 0
 	beq	$t0, $a5, .LBB8_22
 # %bb.16:                               # %vec.epilog.iter.check
 	andi	$t1, $a5, 12
@@ -1711,10 +1708,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t1, $t1, 16
 	bnez	$a4, .LBB8_18
 # %bb.19:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$t0, $a5, .LBB8_22
 .LBB8_20:                               # %.lr.ph.preheader
@@ -1781,16 +1778,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t3, .LBB8_31
 # %bb.32:                               # %middle.block198
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	beq	$t2, $t0, .LBB8_73
 # %bb.33:                               # %vec.epilog.iter.check205
 	andi	$t3, $t0, 12
@@ -1812,10 +1806,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t1, $t1, 16
 	bnez	$a6, .LBB8_35
 # %bb.36:                               # %vec.epilog.middle.block217
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	bne	$t4, $t0, .LBB8_71
 	b	.LBB8_73
@@ -1936,16 +1930,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t3, .LBB8_38
 # %bb.39:                               # %middle.block321
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a4, $vr0, 0
 	beq	$t2, $t1, .LBB8_46
 # %bb.40:                               # %vec.epilog.iter.check328
 	andi	$t3, $t2, 12
@@ -1994,10 +1985,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t3, $t3, 48
 	bnez	$a4, .LBB8_42
 # %bb.43:                               # %vec.epilog.middle.block339
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$t2, $t1, .LBB8_46
 .LBB8_44:                               # %.preheader.preheader
@@ -2194,16 +2185,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t6, .LBB8_57
 # %bb.58:                               # %middle.block397
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t1, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t1, $vr0, 0
 	beq	$t4, $t5, .LBB8_107
 # %bb.59:                               # %vec.epilog.iter.check404
 	andi	$t6, $t4, 12
@@ -2253,10 +2241,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t5, $t5, 48
 	bnez	$t1, .LBB8_61
 # %bb.62:                               # %vec.epilog.middle.block416
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t1, $vr0, 0
 	bne	$t4, $t6, .LBB8_105
 	b	.LBB8_107
@@ -2380,16 +2368,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t4, .LBB8_64
 # %bb.65:                               # %middle.block358
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	beq	$t2, $t3, .LBB8_122
 # %bb.66:                               # %vec.epilog.iter.check365
 	andi	$t4, $t2, 12
@@ -2439,10 +2424,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t3, $t3, 48
 	bnez	$a6, .LBB8_68
 # %bb.69:                               # %vec.epilog.middle.block377
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	bne	$t2, $t4, .LBB8_120
 	b	.LBB8_122
@@ -2503,16 +2488,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t4, .LBB8_79
 # %bb.80:                               # %middle.block239
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t1, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t1, $vr0, 0
 	beq	$t3, $t2, .LBB8_88
 # %bb.81:                               # %vec.epilog.iter.check246
 	andi	$t4, $t2, 12
@@ -2534,10 +2516,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t3, $t3, 16
 	bnez	$t1, .LBB8_83
 # %bb.84:                               # %vec.epilog.middle.block259
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t1, $vr0, 0
 	bne	$t5, $t2, .LBB8_86
 	b	.LBB8_88
@@ -2597,16 +2579,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t3, .LBB8_94
 # %bb.95:                               # %middle.block281
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t3, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t3, $vr0, 0
 	beq	$t0, $a7, .LBB8_103
 # %bb.96:                               # %vec.epilog.iter.check288
 	andi	$t2, $a7, 12
@@ -2628,10 +2607,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a5, $a5, 16
 	bnez	$t3, .LBB8_98
 # %bb.99:                               # %vec.epilog.middle.block301
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t3, $vr0, 0
 	bne	$t4, $a7, .LBB8_101
 	b	.LBB8_103
@@ -2830,16 +2809,13 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t5, .LBB8_113
 # %bb.114:                              # %middle.block436
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t3, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t3, $vr0, 0
 	beq	$t2, $t4, .LBB8_128
 # %bb.115:                              # %vec.epilog.iter.check443
 	andi	$t5, $t2, 12
@@ -2889,10 +2865,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a5, $a5, 48
 	bnez	$t3, .LBB8_117
 # %bb.118:                              # %vec.epilog.middle.block455
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t3, $vr0, 0
 	bne	$t2, $t5, .LBB8_126
 	b	.LBB8_128

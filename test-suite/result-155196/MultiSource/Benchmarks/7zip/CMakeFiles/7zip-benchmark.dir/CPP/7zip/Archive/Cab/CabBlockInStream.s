@@ -388,10 +388,10 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	bnez	$t0, .LBB4_10
 # %bb.11:                               # %middle.block
 	vxor.v	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t0, $vr0, 0
 	beq	$a5, $a6, .LBB4_13
 	.p2align	4, , 16
@@ -661,10 +661,10 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	bnez	$a4, .LBB5_19
 # %bb.20:                               # %middle.block
 	vxor.v	$vr0, $vr6, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB5_23
 .LBB5_21:                               # %scalar.ph.preheader

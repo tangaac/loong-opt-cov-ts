@@ -405,16 +405,13 @@ choose_table_short:                     # @choose_table_short
 	bnez	$a6, .LBB1_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a7, $vr0, 0
 	beq	$a3, $a4, .LBB1_15
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a5, $a3, 12
@@ -453,10 +450,10 @@ choose_table_short:                     # @choose_table_short
 	addi.d	$a4, $a4, 32
 	bnez	$a7, .LBB1_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	bne	$a3, $a6, .LBB1_14
 	b	.LBB1_15
@@ -1860,16 +1857,13 @@ choose_table:                           # @choose_table
 	bnez	$a7, .LBB3_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a7, $vr0, 0
 	beq	$fp, $a5, .LBB3_15
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a6, $fp, 12
@@ -1908,10 +1902,10 @@ choose_table:                           # @choose_table
 	addi.d	$a5, $a5, 32
 	bnez	$a7, .LBB3_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	bne	$fp, $t0, .LBB3_14
 	b	.LBB3_15
@@ -3229,65 +3223,62 @@ best_scalefac_store:                    # @best_scalefac_store
 	bstrpick.d	$a7, $a3, 31, 0
 	bgeu	$a3, $t0, .LBB4_50
 # %bb.48:
-	move	$t0, $zero
 	move	$t1, $zero
+	move	$t0, $zero
 	b	.LBB4_59
 .LBB4_49:
-	move	$t1, $zero
+	move	$t0, $zero
 	b	.LBB4_61
 .LBB4_50:                               # %vector.main.loop.iter.check
 	ori	$t0, $zero, 16
 	bgeu	$a3, $t0, .LBB4_52
 # %bb.51:
-	move	$t0, $zero
 	move	$t1, $zero
+	move	$t0, $zero
 	b	.LBB4_56
 .LBB4_52:                               # %vector.ph
 	bstrpick.d	$t0, $a7, 31, 4
-	slli.d	$t0, $t0, 4
-	ori	$t1, $zero, 488
-	mul.d	$t1, $a1, $t1
+	slli.d	$t1, $t0, 4
+	ori	$t0, $zero, 488
+	mul.d	$t0, $a1, $t0
 	ori	$t2, $zero, 244
 	mul.d	$t2, $a2, $t2
-	add.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $a5
+	add.d	$t0, $t0, $t2
+	add.d	$t0, $t0, $a5
 	xvrepli.b	$xr0, 0
-	addi.d	$t1, $t1, 32
-	move	$t2, $t0
+	addi.d	$t0, $t0, 32
+	move	$t2, $t1
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB4_53:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $t1, -32
-	xvld	$xr3, $t1, 0
+	xvld	$xr2, $t0, -32
+	xvld	$xr3, $t0, 0
 	xvor.v	$xr0, $xr2, $xr0
 	xvor.v	$xr1, $xr3, $xr1
 	addi.d	$t2, $t2, -16
-	addi.d	$t1, $t1, 64
+	addi.d	$t0, $t0, 64
 	bnez	$t2, .LBB4_53
 # %bb.54:                               # %middle.block
 	xvor.v	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t1, $xr0, 0
-	beq	$t0, $a7, .LBB4_61
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t0, $vr0, 0
+	beq	$t1, $a7, .LBB4_61
 # %bb.55:                               # %vec.epilog.iter.check
 	andi	$t2, $a7, 12
 	beqz	$t2, .LBB4_59
 .LBB4_56:                               # %vec.epilog.ph
-	move	$t2, $t0
-	bstrpick.d	$t0, $a7, 31, 2
-	slli.d	$t0, $t0, 2
+	move	$t2, $t1
+	bstrpick.d	$t1, $a7, 31, 2
+	slli.d	$t1, $t1, 2
 	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $t1, 0
-	sub.d	$t1, $t2, $t0
+	vinsgr2vr.w	$vr0, $t0, 0
+	sub.d	$t0, $t2, $t1
 	ori	$t3, $zero, 488
 	mul.d	$t3, $a1, $t3
 	ori	$t4, $zero, 244
@@ -3300,39 +3291,39 @@ best_scalefac_store:                    # @best_scalefac_store
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $t2, 0
 	vor.v	$vr0, $vr1, $vr0
-	addi.d	$t1, $t1, 4
+	addi.d	$t0, $t0, 4
 	addi.d	$t2, $t2, 16
-	bnez	$t1, .LBB4_57
+	bnez	$t0, .LBB4_57
 # %bb.58:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t1, $vr0, 0
-	beq	$t0, $a7, .LBB4_61
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t0, $vr0, 0
+	beq	$t1, $a7, .LBB4_61
 .LBB4_59:                               # %vec.epilog.scalar.ph.preheader
 	ori	$t2, $zero, 488
 	mul.d	$t2, $a1, $t2
 	ori	$t3, $zero, 244
 	mul.d	$t3, $a2, $t3
 	add.d	$t2, $t2, $t3
-	alsl.d	$t2, $t0, $t2, 2
+	alsl.d	$t2, $t1, $t2, 2
 	add.d	$t2, $a5, $t2
-	sub.d	$a7, $a7, $t0
+	sub.d	$a7, $a7, $t1
 	.p2align	4, , 16
 .LBB4_60:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $t2, 0
-	or	$t1, $t0, $t1
+	ld.w	$t1, $t2, 0
+	or	$t0, $t1, $t0
 	addi.d	$a7, $a7, -1
 	addi.d	$t2, $t2, 4
 	bnez	$a7, .LBB4_60
 .LBB4_61:                               # %._crit_edge168
 	ld.w	$a7, $fp, 84
-	ori	$t0, $zero, 11
-	bltu	$t0, $a7, .LBB4_64
+	ori	$t1, $zero, 11
+	bltu	$t1, $a7, .LBB4_64
 # %bb.62:                               # %.preheader144.lr.ph
-	addi.d	$t0, $a7, 1
+	addi.d	$t1, $a7, 1
 	ori	$t2, $zero, 488
 	mul.d	$t2, $a1, $t2
 	ori	$t3, $zero, 244
@@ -3350,17 +3341,17 @@ best_scalefac_store:                    # @best_scalefac_store
 	ld.w	$t4, $t2, -8
 	ld.w	$t5, $t2, -4
 	ld.w	$t6, $t2, 0
-	or	$t1, $t4, $t1
-	or	$t1, $t5, $t1
-	or	$t1, $t6, $t1
-	bstrpick.d	$t4, $t0, 31, 0
-	addi.d	$t0, $t0, 1
+	or	$t0, $t4, $t0
+	or	$t0, $t5, $t0
+	or	$t0, $t6, $t0
+	bstrpick.d	$t4, $t1, 31, 0
+	addi.d	$t1, $t1, 1
 	addi.d	$t2, $t2, 12
 	bne	$t4, $t3, .LBB4_63
 .LBB4_64:                               # %._crit_edge174
-	beqz	$t1, .LBB4_77
+	beqz	$t0, .LBB4_77
 # %bb.65:                               # %._crit_edge174
-	andi	$t0, $t1, 1
+	andi	$t0, $t0, 1
 	bnez	$t0, .LBB4_77
 # %bb.66:                               # %.preheader143
 	beqz	$a3, .LBB4_70

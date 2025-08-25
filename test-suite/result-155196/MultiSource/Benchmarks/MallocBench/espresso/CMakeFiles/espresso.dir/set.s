@@ -736,16 +736,13 @@ set_andp:                               # @set_andp
 	addi.d	$t1, $t1, -32
 	bnez	$a6, .LBB11_10
 # %bb.11:                               # %vec.epilog.middle.block
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	bne	$a4, $t0, .LBB11_2
 	b	.LBB11_4
 .LBB11_12:                              # %vector.ph
@@ -782,16 +779,13 @@ set_andp:                               # @set_andp
 	bnez	$t2, .LBB11_13
 # %bb.14:                               # %middle.block
 	xvor.v	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	beq	$a4, $a7, .LBB11_4
 # %bb.15:                               # %vec.epilog.iter.check
 	andi	$t0, $a4, 8
@@ -886,16 +880,13 @@ set_orp:                                # @set_orp
 	addi.d	$t1, $t1, -32
 	bnez	$a6, .LBB12_10
 # %bb.11:                               # %vec.epilog.middle.block
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	bne	$a4, $t0, .LBB12_2
 	b	.LBB12_4
 .LBB12_12:                              # %vector.ph
@@ -932,16 +923,13 @@ set_orp:                                # @set_orp
 	bnez	$t2, .LBB12_13
 # %bb.14:                               # %middle.block
 	xvor.v	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	beq	$a4, $a7, .LBB12_4
 # %bb.15:                               # %vec.epilog.iter.check
 	andi	$t0, $a4, 8

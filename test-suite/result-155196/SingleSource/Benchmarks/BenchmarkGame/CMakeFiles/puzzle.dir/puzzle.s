@@ -476,16 +476,13 @@ findDuplicate:                          # @findDuplicate
 	bnez	$a5, .LBB5_7
 # %bb.8:                                # %middle.block
 	xvxor.v	$xr0, $xr3, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a2, $a1, .LBB5_15
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a5, $a1, 12
@@ -521,10 +518,10 @@ findDuplicate:                          # @findDuplicate
 	addi.d	$a4, $a4, 16
 	bnez	$a3, .LBB5_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr0, $vr1, 14
-	vxor.v	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 1
+	vbsrl.v	$vr0, $vr1, 8
 	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a2, $a1, .LBB5_15
 .LBB5_13:                               # %.lr.ph.preheader
@@ -639,16 +636,13 @@ main:                                   # @main
 # %bb.4:
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -715,16 +709,13 @@ main:                                   # @main
 # %bb.8:
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -791,16 +782,13 @@ main:                                   # @main
 # %bb.12:
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -867,16 +855,13 @@ main:                                   # @main
 # %bb.16:
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -942,16 +927,13 @@ main:                                   # @main
 # %bb.20:
 	ldx.w	$a1, $a0, $s1
 	xvxor.v	$xr0, $xr6, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	xor	$fp, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0

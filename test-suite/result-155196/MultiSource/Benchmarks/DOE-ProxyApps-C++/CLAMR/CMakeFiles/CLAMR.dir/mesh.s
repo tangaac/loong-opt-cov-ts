@@ -7082,49 +7082,37 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	bnez	$t3, .LBB16_141
 # %bb.142:                              # %middle.block649
 	xvmin.w	$xr5, $xr5, $xr10
-	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvmin.w	$xr5, $xr5, $xr6
-	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
-	xvmin.w	$xr5, $xr5, $xr6
-	xvpermi.d	$xr6, $xr5, 68
-	xvrepl128vei.w	$xr6, $xr6, 1
-	xvmin.w	$xr5, $xr5, $xr6
-	xvpickve2gr.w	$t0, $xr5, 0
+	xvpermi.q	$xr6, $xr5, 1
+	vmin.w	$vr5, $vr5, $vr6
+	vbsrl.v	$vr6, $vr5, 8
+	vmin.w	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vmin.w	$vr5, $vr6, $vr5
+	vpickve2gr.w	$t0, $vr5, 0
 	xvmin.w	$xr3, $xr3, $xr7
-	xvpermi.d	$xr5, $xr3, 78
-	xvshuf4i.w	$xr5, $xr5, 228
-	xvmin.w	$xr3, $xr3, $xr5
-	xvpermi.d	$xr5, $xr3, 68
-	xvshuf4i.w	$xr5, $xr5, 14
-	xvmin.w	$xr3, $xr3, $xr5
-	xvpermi.d	$xr5, $xr3, 68
-	xvrepl128vei.w	$xr5, $xr5, 1
-	xvmin.w	$xr3, $xr3, $xr5
-	xvpickve2gr.w	$t1, $xr3, 0
+	xvpermi.q	$xr5, $xr3, 1
+	vmin.w	$vr3, $vr3, $vr5
+	vbsrl.v	$vr5, $vr3, 8
+	vmin.w	$vr3, $vr5, $vr3
+	vbsrl.v	$vr5, $vr3, 4
+	vmin.w	$vr3, $vr5, $vr3
+	vpickve2gr.w	$t1, $vr3, 0
 	xvmax.w	$xr0, $xr0, $xr4
-	xvpermi.d	$xr3, $xr0, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmax.w	$xr0, $xr0, $xr3
-	xvpermi.d	$xr3, $xr0, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmax.w	$xr0, $xr0, $xr3
-	xvpermi.d	$xr3, $xr0, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmax.w	$xr0, $xr0, $xr3
-	xvpickve2gr.w	$t2, $xr0, 0
+	xvpermi.q	$xr3, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr3
+	vbsrl.v	$vr3, $vr0, 8
+	vmax.w	$vr0, $vr3, $vr0
+	vbsrl.v	$vr3, $vr0, 4
+	vmax.w	$vr0, $vr3, $vr0
+	vpickve2gr.w	$t2, $vr0, 0
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$t3, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$t3, $vr0, 0
 	beq	$a0, $a7, .LBB16_30
 # %bb.143:                              # %vec.epilog.iter.check660
 	andi	$t4, $a0, 12
@@ -7170,25 +7158,25 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	addi.d	$t3, $t3, 16
 	bnez	$t0, .LBB16_145
 # %bb.146:                              # %vec.epilog.middle.block685
-	vshuf4i.w	$vr4, $vr3, 14
-	vmin.w	$vr3, $vr3, $vr4
-	vreplvei.w	$vr4, $vr3, 1
-	vmin.w	$vr3, $vr3, $vr4
+	vbsrl.v	$vr4, $vr3, 8
+	vmin.w	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmin.w	$vr3, $vr4, $vr3
 	vpickve2gr.w	$t0, $vr3, 0
-	vshuf4i.w	$vr3, $vr2, 14
-	vmin.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vmin.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmin.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmin.w	$vr2, $vr3, $vr2
 	vpickve2gr.w	$t1, $vr2, 0
-	vshuf4i.w	$vr2, $vr1, 14
-	vmax.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmax.w	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmax.w	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.w	$vr1, $vr2, $vr1
 	vpickve2gr.w	$t2, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t3, $vr0, 0
 	bne	$a0, $a7, .LBB16_28
 	b	.LBB16_30

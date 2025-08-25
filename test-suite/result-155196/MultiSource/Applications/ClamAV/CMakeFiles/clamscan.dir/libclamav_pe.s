@@ -4088,16 +4088,13 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a2, .LBB0_612
 # %bb.613:                              # %middle.block3975
 	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$s5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
+	vpickve2gr.w	$s5, $vr0, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_620
 # %bb.614:                              # %vec.epilog.iter.check3982
@@ -4139,10 +4136,10 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 144
 	bnez	$a1, .LBB0_616
 # %bb.617:                              # %vec.epilog.middle.block3993
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s5, $vr0, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_620
@@ -5236,16 +5233,13 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a2, .LBB0_772
 # %bb.773:                              # %middle.block3949
 	xvmin.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmin.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmin.wu	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$s6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmin.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.wu	$vr0, $vr1, $vr0
+	vpickve2gr.w	$s6, $vr0, 0
 	beq	$a0, $s7, .LBB0_780
 # %bb.774:                              # %vec.epilog.iter.check
 	andi	$a1, $s7, 12
@@ -5276,10 +5270,10 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 144
 	bnez	$a1, .LBB0_776
 # %bb.777:                              # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s6, $vr0, 0
 	beq	$a0, $s7, .LBB0_780
 .LBB0_778:                              # %.lr.ph3469.preheader

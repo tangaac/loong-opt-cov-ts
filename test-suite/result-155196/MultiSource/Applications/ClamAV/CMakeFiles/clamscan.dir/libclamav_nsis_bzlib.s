@@ -2193,16 +2193,16 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 # %bb.251:                              # %middle.block586
                                         #   in Loop: Header=BB3_245 Depth=2
 	vmin.wu	$vr2, $vr2, $vr3
-	vshuf4i.w	$vr3, $vr2, 14
-	vmin.wu	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vmin.wu	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmin.wu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmin.wu	$vr2, $vr3, $vr2
 	vpickve2gr.w	$s8, $vr2, 0
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$fp, $vr0, 0
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	move	$a1, $a0

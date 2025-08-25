@@ -104,18 +104,14 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvmax.hu	$xr1, $xr3, $xr1
 	xvmax.hu	$xr0, $xr0, $xr2
 	xvmax.hu	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.hu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.hu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.hu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.hu	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.hu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.hu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.hu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a0, $vr0, 0
 	bstrpick.d	$a0, $a0, 15, 0
 	move	$s2, $a2

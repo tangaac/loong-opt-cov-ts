@@ -6444,16 +6444,13 @@ _ZN17btSoftBodyHelpers17CreateFromTriMeshER19btSoftBodyWorldInfoPKfPKii: # @_ZN1
 	bnez	$a3, .LBB18_6
 # %bb.7:                                # %middle.block
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB18_14
 # %bb.8:                                # %vec.epilog.iter.check
 	andi	$a3, $a0, 12
@@ -6474,10 +6471,10 @@ _ZN17btSoftBodyHelpers17CreateFromTriMeshER19btSoftBodyWorldInfoPKfPKii: # @_ZN1
 	addi.d	$a3, $a3, 16
 	bnez	$a2, .LBB18_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB18_14
 .LBB18_12:                              # %.lr.ph.preheader

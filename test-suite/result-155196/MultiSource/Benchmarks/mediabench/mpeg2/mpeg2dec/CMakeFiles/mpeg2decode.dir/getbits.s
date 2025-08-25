@@ -327,10 +327,10 @@ Flush_Buffer:                           # @Flush_Buffer
 	addi.d	$a2, $a2, 5
 	stptr.d	$a2, $a1, 2056
 	vor.v	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	stptr.w	$a5, $a1, 2080
 	bne	$t0, $a6, .LBB1_8

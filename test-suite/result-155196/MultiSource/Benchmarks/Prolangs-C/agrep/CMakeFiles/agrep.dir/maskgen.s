@@ -460,16 +460,13 @@ maskgen:                                # @maskgen
 	bnez	$t1, .LBB0_52
 # %bb.53:                               # %middle.block
 	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a7, $vr0, 0
 	beq	$t0, $a6, .LBB0_61
 # %bb.54:                               # %vec.epilog.iter.check
 	andi	$t1, $a6, 12
@@ -494,10 +491,10 @@ maskgen:                                # @maskgen
 	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB0_56
 # %bb.57:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	bne	$t2, $a6, .LBB0_59
 	b	.LBB0_61

@@ -22980,10 +22980,10 @@ _ZN10btSoftBody13solveClustersERK20btAlignedObjectArrayIPS_E: # @_ZN10btSoftBody
 	bnez	$a3, .LBB108_4
 # %bb.5:                                # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s0, $vr0, 0
 	beq	$a1, $s1, .LBB108_8
 .LBB108_6:                              # %scalar.ph.preheader

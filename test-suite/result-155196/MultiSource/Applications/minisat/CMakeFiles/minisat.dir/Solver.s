@@ -862,16 +862,13 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 	bnez	$a3, .LBB3_29
 # %bb.30:                               # %middle.block
 	xvor.v	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB3_37
 # %bb.31:                               # %vec.epilog.iter.check
 	andi	$a3, $a0, 12
@@ -895,10 +892,10 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 	addi.d	$a3, $a3, 16
 	bnez	$a2, .LBB3_33
 # %bb.34:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB3_37
 .LBB3_35:                               # %vec.epilog.scalar.ph.preheader
@@ -2516,16 +2513,13 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	bnez	$a6, .LBB13_60
 # %bb.61:                               # %middle.block336
 	xvor.v	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$s2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$s2, $vr0, 0
 	beq	$a3, $a4, .LBB13_83
 # %bb.62:                               # %vec.epilog.iter.check341
 	andi	$a5, $a3, 12
@@ -2567,10 +2561,10 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	addi.d	$a7, $a7, 16
 	bnez	$a4, .LBB13_64
 # %bb.65:                               # %vec.epilog.middle.block352
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s2, $vr0, 0
 	bne	$a3, $a6, .LBB13_81
 	b	.LBB13_83

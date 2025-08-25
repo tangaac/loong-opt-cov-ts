@@ -1630,17 +1630,14 @@ very_real_unpack:                       # @very_real_unpack
 # %bb.221:                              # %middle.block821
                                         #   in Loop: Header=BB1_15 Depth=1
 	xvor.v	$xr0, $xr2, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	addi.w	$a6, $a4, 0
-	xvpickve2gr.w	$a3, $xr0, 0
+	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a2, $a6, .LBB1_227
 # %bb.222:                              # %vec.epilog.iter.check826
                                         #   in Loop: Header=BB1_15 Depth=1
@@ -1666,10 +1663,10 @@ very_real_unpack:                       # @very_real_unpack
 	bnez	$a3, .LBB1_224
 # %bb.225:                              # %vec.epilog.middle.block840
                                         #   in Loop: Header=BB1_15 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	addi.w	$a6, $a5, 0
 	vpickve2gr.w	$a3, $vr0, 0
 	move	$a4, $a5
@@ -3051,16 +3048,13 @@ get_bb:                                 # @get_bb
 	bnez	$a0, .LBB8_26
 # %bb.27:                               # %middle.block
 	xvor.v	$xr0, $xr3, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
 	beq	$a1, $a2, .LBB8_34
 # %bb.28:                               # %vec.epilog.iter.check
 	andi	$a3, $a1, 12
@@ -3086,10 +3080,10 @@ get_bb:                                 # @get_bb
 	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a0, .LBB8_30
 # %bb.31:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	beq	$a1, $a2, .LBB8_34
 .LBB8_32:                               # %getbit_from_table.exit.us.preheader

@@ -83,16 +83,13 @@ buster:                                 # @buster
 	bnez	$a6, .LBB0_7
 # %bb.8:                                # %middle.block
 	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a3, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a5, $a4, .LBB0_16
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a6, $a4, 12
@@ -123,10 +120,10 @@ buster:                                 # @buster
 	addi.d	$a5, $a5, 32
 	bnez	$a3, .LBB0_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	bne	$a7, $a4, .LBB0_14
 	b	.LBB0_16

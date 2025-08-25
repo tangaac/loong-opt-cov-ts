@@ -168,16 +168,13 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	bnez	$a3, .LBB0_7
 # %bb.8:                                # %middle.block
 	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $fp, .LBB0_15
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a3, $fp, 12
@@ -232,10 +229,10 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	addi.d	$a3, $a3, 48
 	bnez	$a2, .LBB0_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $fp, .LBB0_15
 .LBB0_13:                               # %.preheader.preheader
@@ -678,16 +675,13 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	bnez	$a3, .LBB4_23
 # %bb.24:                               # %middle.block
 	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.wu	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s5, .LBB4_31
 # %bb.25:                               # %vec.epilog.iter.check
 	andi	$a3, $s5, 12
@@ -742,10 +736,10 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	addi.d	$a3, $a3, 48
 	bnez	$a2, .LBB4_27
 # %bb.28:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s5, .LBB4_31
 .LBB4_29:                               # %.preheader.i.preheader

@@ -2593,15 +2593,7 @@ DoAssign:                               # @DoAssign
 .Lfunc_end9:
 	.size	DoAssign, .Lfunc_end9-DoAssign
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function DoAssignIteration
-.LCPI10_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function DoAssignIteration
 	.type	DoAssignIteration,@function
 DoAssignIteration:                      # @DoAssignIteration
 # %bb.0:
@@ -2618,7 +2610,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	lu12i.w	$a2, 4
-	ori	$a2, $a2, 2736
+	ori	$a2, $a2, 2704
 	sub.d	$sp, $sp, $a2
 	move	$s5, $a1
 	move	$s3, $a0
@@ -2780,29 +2772,26 @@ DoAssignIteration:                      # @DoAssignIteration
 	addi.d	$a6, $a0, 1185
 	lu12i.w	$t6, 1
 	ori	$a0, $t6, 146
-	addi.d	$a3, $sp, 240
+	addi.d	$a3, $sp, 208
 	add.d	$a0, $a3, $a0
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
-	xvld	$xr14, $a0, %pc_lo12(.LCPI10_0)
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	lu12i.w	$a0, 18
 	ori	$a0, $a0, 3840
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ori	$t3, $zero, 101
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 4018
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	ori	$s4, $zero, 1
 	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
 	lu12i.w	$a0, -5
 	ori	$a0, $a0, 1088
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	lu12i.w	$s7, 5
-	xvrepli.b	$xr0, -1
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
+	xvrepli.b	$xr1, -1
 	lu12i.w	$t5, 19
-	xvst	$xr14, $sp, 128                 # 32-byte Folded Spill
+	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	xvst	$xr1, $sp, 48                   # 32-byte Folded Spill
 	b	.LBB10_18
 	.p2align	4, , 16
 .LBB10_17:                              # %Assignment.exit
@@ -2901,15 +2890,12 @@ DoAssignIteration:                      # @DoAssignIteration
 	xvmin.d	$xr4, $xr4, $xr5
 	xvmin.d	$xr3, $xr3, $xr4
 	xvmin.d	$xr0, $xr0, $xr3
-	xvpermi.d	$xr3, $xr0, 78
-	xvori.b	$xr4, $xr14, 0
-	xvshuf.d	$xr4, $xr0, $xr3
-	xvmin.d	$xr0, $xr0, $xr4
-	xvpermi.d	$xr3, $xr0, 68
+	xvpermi.q	$xr3, $xr0, 1
+	vmin.d	$vr0, $vr0, $vr3
 	ld.d	$a2, $a0, 352
-	xvrepl128vei.d	$xr3, $xr3, 1
-	xvmin.d	$xr0, $xr0, $xr3
-	xvpickve2gr.d	$a3, $xr0, 0
+	vbsrl.v	$vr3, $vr0, 8
+	vmin.d	$vr0, $vr3, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
 	slt	$a4, $a2, $a3
 	ld.d	$a5, $a0, 360
 	masknez	$a3, $a3, $a4
@@ -3079,16 +3065,13 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.24:                               # %middle.block152
                                         #   in Loop: Header=BB10_22 Depth=2
 	xvmin.d	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvori.b	$xr2, $xr14, 0
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvmin.d	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	xvpermi.q	$xr1, $xr0, 1
+	vmin.d	$vr0, $vr0, $vr1
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	ldx.d	$a4, $a3, $a4
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvmin.d	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a5, $xr0, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.d	$vr0, $vr1, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
 	slt	$a6, $a4, $a5
 	ori	$a7, $t5, 552
 	ldx.d	$a7, $a3, $a7
@@ -3146,7 +3129,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_28:                              # %calc_minimum_costs.exit.i.preheader
                                         #   in Loop: Header=BB10_18 Depth=1
 	st.d	$t2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$t4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 152                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB10_29:                              # %calc_minimum_costs.exit.i
                                         #   Parent Loop BB10_18 Depth=1
@@ -3173,19 +3156,18 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_207 Depth 4
                                         #       Child Loop BB10_211 Depth 3
                                         #         Child Loop BB10_214 Depth 4
-	addi.d	$a0, $sp, 240
+	addi.d	$a0, $sp, 208
 	move	$a1, $zero
-	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a3, $zero
 	move	$a1, $zero
 	move	$a0, $zero
 	move	$a2, $zero
-	ld.d	$t4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 152                   # 8-byte Folded Reload
 	lu12i.w	$t5, 19
 	lu12i.w	$t6, 1
-	xvld	$xr14, $sp, 128                 # 32-byte Folded Reload
 	ori	$t3, $zero, 101
 	ori	$t7, $zero, 202
 	ori	$t8, $zero, 2
@@ -3209,7 +3191,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	move	$a6, $zero
 	move	$a7, $zero
 	mul.d	$a4, $a3, $t7
-	addi.d	$t0, $sp, 240
+	addi.d	$t0, $sp, 208
 	add.d	$a4, $t0, $a4
 	ori	$t0, $zero, 808
 	mul.d	$t0, $a3, $t0
@@ -3241,7 +3223,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	move	$a5, $zero
 	slli.d	$a6, $a1, 1
 	stx.h	$s4, $a4, $a6
-	addi.d	$a4, $sp, 240
+	addi.d	$a4, $sp, 208
 	alsl.d	$a4, $a1, $a4, 1
 	slli.d	$a6, $a1, 3
 	b	.LBB10_39
@@ -3274,7 +3256,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.44:                               # %.preheader154.i.i.preheader
                                         #   in Loop: Header=BB10_31 Depth=3
 	move	$a3, $zero
-	addi.d	$a4, $sp, 240
+	addi.d	$a4, $sp, 208
 	move	$a5, $t4
 	b	.LBB10_46
 	.p2align	4, , 16
@@ -3327,7 +3309,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.52:                               #   in Loop: Header=BB10_46 Depth=4
 	move	$a6, $zero
 	mul.d	$a7, $a1, $t7
-	addi.d	$t0, $sp, 240
+	addi.d	$t0, $sp, 208
 	add.d	$a7, $t0, $a7
 	slli.d	$t0, $a3, 1
 	stx.h	$s4, $a7, $t0
@@ -3368,8 +3350,8 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.59:                               # %.preheader150.i.i.preheader
                                         #   in Loop: Header=BB10_29 Depth=2
 	move	$a1, $zero
-	addi.d	$a2, $sp, 240
-	addi.d	$a3, $sp, 240
+	addi.d	$a2, $sp, 208
+	addi.d	$a3, $sp, 208
 	move	$a4, $t4
 	b	.LBB10_62
 	.p2align	4, , 16
@@ -3395,7 +3377,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	add.d	$t1, $t4, $a5
 	mul.d	$a5, $a1, $t7
 	add.d	$t0, $a2, $a5
-	addi.d	$a5, $sp, 240
+	addi.d	$a5, $sp, 208
 	move	$a6, $t4
 	b	.LBB10_64
 	.p2align	4, , 16
@@ -3470,14 +3452,14 @@ DoAssignIteration:                      # @DoAssignIteration
 	beq	$a0, $t3, .LBB10_17
 # %bb.77:                               #   in Loop: Header=BB10_29 Depth=2
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 376
+	ori	$a0, $a0, 344
 	add.d	$a0, $sp, $a0
 	ori	$a2, $zero, 202
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 168
+	ori	$a0, $a0, 136
 	add.d	$a0, $sp, $a0
 	ori	$a2, $zero, 202
 	move	$a1, $zero
@@ -3486,19 +3468,17 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$t1, $zero, 202
 	ori	$t0, $zero, 101
 	move	$a0, $zero
-	addi.d	$a1, $sp, 240
+	addi.d	$a1, $sp, 208
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 168
+	ori	$a2, $a2, 136
 	add.d	$t2, $sp, $a2
-	xvld	$xr8, $sp, 80                   # 32-byte Folded Reload
-	xvld	$xr9, $sp, 48                   # 32-byte Folded Reload
 	b	.LBB10_80
 	.p2align	4, , 16
 .LBB10_78:                              # %.critedge.i.i
                                         #   in Loop: Header=BB10_80 Depth=3
 	slli.d	$a2, $a0, 1
 	lu12i.w	$a3, 5
-	ori	$a3, $a3, 376
+	ori	$a3, $a3, 344
 	add.d	$a3, $sp, $a3
 	stx.h	$s4, $a2, $a3
 .LBB10_79:                              # %.loopexit118.i.i
@@ -3527,7 +3507,9 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_83:                              # %.preheader116.i.i.preheader
                                         #   in Loop: Header=BB10_29 Depth=2
 	move	$a0, $zero
-	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 152                   # 8-byte Folded Reload
+	xvld	$xr8, $sp, 80                   # 32-byte Folded Reload
+	xvld	$xr9, $sp, 48                   # 32-byte Folded Reload
 	b	.LBB10_85
 	.p2align	4, , 16
 .LBB10_84:                              #   in Loop: Header=BB10_85 Depth=3
@@ -3543,7 +3525,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #           Child Loop BB10_115 Depth 5
 	slli.d	$a1, $a0, 1
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 376
+	ori	$a2, $a2, 344
 	add.d	$a2, $sp, $a2
 	ldx.hu	$a1, $a1, $a2
 	bne	$a1, $s4, .LBB10_109
@@ -3554,7 +3536,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	add.d	$a1, $a7, $a1
 	ori	$a2, $zero, 32
 	lu12i.w	$a3, 5
-	ori	$a3, $a3, 176
+	ori	$a3, $a3, 144
 	add.d	$a3, $sp, $a3
 	b	.LBB10_88
 	.p2align	4, , 16
@@ -3688,21 +3670,21 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_85 Depth=3
 	move	$a2, $zero
 	move	$a0, $zero
-	addi.d	$a1, $sp, 240
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	addi.d	$a1, $sp, 208
+	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
 	b	.LBB10_112
 	.p2align	4, , 16
 .LBB10_111:                             # %.loopexit112.i.i
                                         #   in Loop: Header=BB10_112 Depth=4
 	addi.d	$a2, $a2, 1
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 2
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 2
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
 	beq	$a2, $t0, .LBB10_84
 .LBB10_112:                             # %.preheader115.i.i
                                         #   Parent Loop BB10_18 Depth=1
@@ -3715,18 +3697,18 @@ DoAssignIteration:                      # @DoAssignIteration
 	bne	$a1, $s4, .LBB10_111
 # %bb.113:                              # %iter.check
                                         #   in Loop: Header=BB10_112 Depth=4
-	addi.d	$a1, $sp, 240
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
+	addi.d	$a1, $sp, 208
+	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
 	alsl.d	$a1, $a2, $a1, 1
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	xvreplgr2vr.h	$xr1, $a0
 	xvpermi.q	$xr1, $xr8, 18
 	xvori.b	$xr0, $xr8, 0
 	xvextrins.h	$xr0, $xr1, 0
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 408
+	ori	$a0, $a0, 376
 	add.d	$a5, $sp, $a0
-	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
 	xvori.b	$xr1, $xr8, 0
 	b	.LBB10_115
 	.p2align	4, , 16
@@ -3745,9 +3727,9 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #       Parent Loop BB10_85 Depth=3
                                         #         Parent Loop BB10_112 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	add.d	$t3, $a0, $a6
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	add.d	$t4, $a0, $a6
 	lu12i.w	$t8, 4
 	ori	$a7, $t8, 3008
@@ -3759,10 +3741,10 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$t2, $t8, 3614
 	ldx.h	$t6, $t3, $t2
 	ori	$a2, $t8, 3816
-	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	ldx.h	$t7, $t3, $a2
 	vinsgr2vr.h	$vr2, $a0, 0
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ldx.h	$a0, $t3, $a0
 	xvreplgr2vr.h	$xr3, $a1
 	ori	$t5, $s7, 124
@@ -4331,7 +4313,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	.p2align	4, , 16
 .LBB10_179:                             # %vec.epilog.iter.check
                                         #   in Loop: Header=BB10_112 Depth=4
-	ld.d	$a4, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ldx.h	$a0, $a4, $a7
 	ldx.h	$a1, $a4, $t0
 	ldx.h	$a3, $a4, $t1
@@ -4339,7 +4321,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.h	$vr2, $a0, 0
 	vinsgr2vr.h	$vr2, $a1, 1
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 568
+	ori	$a0, $a0, 536
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	vinsgr2vr.h	$vr2, $a3, 2
@@ -4359,7 +4341,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.180:                              # %pred.store.if100
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 568
+	ori	$a0, $a0, 536
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_181:                             # %pred.store.continue101
@@ -4370,7 +4352,7 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.182:                              # %pred.store.if102
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 570
+	ori	$a0, $a0, 538
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_183:                             # %pred.store.continue103
@@ -4378,28 +4360,28 @@ DoAssignIteration:                      # @DoAssignIteration
 	vpickve2gr.w	$a0, $vr3, 2
 	andi	$a0, $a0, 1
 	ori	$t0, $zero, 101
-	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	beqz	$a0, .LBB10_185
 # %bb.184:                              # %pred.store.if104
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 572
+	ori	$a0, $a0, 540
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_185:                             # %pred.store.continue105
                                         #   in Loop: Header=BB10_112 Depth=4
 	vpickve2gr.w	$a0, $vr3, 3
 	andi	$a0, $a0, 1
-	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 152                   # 8-byte Folded Reload
 	ori	$t1, $zero, 202
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 168
+	ori	$a1, $a1, 136
 	add.d	$t2, $sp, $a1
 	beqz	$a0, .LBB10_187
 # %bb.186:                              # %pred.store.if106
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a0, 5
-	ori	$a0, $a0, 574
+	ori	$a0, $a0, 542
 	add.d	$a0, $sp, $a0
 	st.h	$s4, $a0, 0
 .LBB10_187:                             # %pred.store.continue107
@@ -4423,7 +4405,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.h	$vr2, $a0, 2
 	vpickve2gr.w	$a0, $vr1, 3
 	vinsgr2vr.h	$vr2, $a0, 3
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	ldx.hu	$a1, $a4, $a0
 	vadd.h	$vr0, $vr0, $vr2
 	vhaddw.w.h	$vr0, $vr0, $vr0
@@ -4433,48 +4415,48 @@ DoAssignIteration:                      # @DoAssignIteration
 # %bb.188:                              # %pred.store.continue107
                                         #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 576
+	ori	$a1, $a1, 544
 	add.d	$a1, $sp, $a1
 	ld.hu	$a1, $a1, 0
 	beq	$a1, $s4, .LBB10_111
 # %bb.189:                              #   in Loop: Header=BB10_112 Depth=4
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 576
+	ori	$a1, $a1, 544
 	add.d	$a1, $sp, $a1
 	st.h	$s4, $a1, 0
 	addi.d	$a0, $a0, 1
 	b	.LBB10_111
 .LBB10_190:                             #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 360
+	ori	$a2, $a2, 328
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a2, $a1, 776
 	bnez	$a2, .LBB10_106
 .LBB10_191:                             #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 362
+	ori	$a2, $a2, 330
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a2, $a1, 784
 	bnez	$a2, .LBB10_107
 .LBB10_192:                             #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 364
+	ori	$a2, $a2, 332
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a2, $a1, 792
 	bnez	$a2, .LBB10_108
 .LBB10_193:                             #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a2, 5
-	ori	$a2, $a2, 366
+	ori	$a2, $a2, 334
 	add.d	$a2, $sp, $a2
 	st.h	$s4, $a2, 0
 	ld.d	$a1, $a1, 800
 	bnez	$a1, .LBB10_109
 .LBB10_194:                             #   in Loop: Header=BB10_85 Depth=3
 	lu12i.w	$a1, 5
-	ori	$a1, $a1, 368
+	ori	$a1, $a1, 336
 	add.d	$a1, $sp, $a1
 	st.h	$s4, $a1, 0
 	addi.d	$a0, $a0, 1
@@ -4500,7 +4482,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_200 Depth 4
 	slli.d	$a3, $a1, 1
 	lu12i.w	$a4, 5
-	ori	$a4, $a4, 376
+	ori	$a4, $a4, 344
 	add.d	$a4, $sp, $a4
 	ldx.hu	$a3, $a3, $a4
 	beqz	$a3, .LBB10_196
@@ -4546,7 +4528,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_207 Depth 4
 	slli.d	$a3, $a1, 1
 	lu12i.w	$a4, 5
-	ori	$a4, $a4, 376
+	ori	$a4, $a4, 344
 	add.d	$a4, $sp, $a4
 	ldx.hu	$a3, $a3, $a4
 	beqz	$a3, .LBB10_203
@@ -4590,7 +4572,7 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #         Child Loop BB10_214 Depth 4
 	slli.d	$a3, $a1, 1
 	lu12i.w	$a4, 5
-	ori	$a4, $a4, 376
+	ori	$a4, $a4, 344
 	add.d	$a4, $sp, $a4
 	ldx.hu	$a3, $a3, $a4
 	bnez	$a3, .LBB10_210
@@ -4619,7 +4601,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 .LBB10_217:                             # %._crit_edge
 	lu12i.w	$a1, 4
-	ori	$a1, $a1, 2736
+	ori	$a1, $a1, 2704
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload

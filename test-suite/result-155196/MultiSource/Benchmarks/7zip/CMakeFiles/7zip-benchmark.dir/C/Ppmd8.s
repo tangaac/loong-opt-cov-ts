@@ -1136,21 +1136,16 @@ Rescale:                                # @Rescale
 	bnez	$t2, .LBB7_23
 # %bb.24:                               # %middle.block
 	xvor.v	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.b	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.b	$t1, $vr0, 0
 	beq	$a7, $t0, .LBB7_32
 # %bb.25:                               # %vec.epilog.iter.check
@@ -1198,12 +1193,12 @@ Rescale:                                # @Rescale
 	addi.d	$t0, $t0, 48
 	bnez	$t1, .LBB7_27
 # %bb.28:                               # %vec.epilog.middle.block
-	vsrli.d	$vr1, $vr0, 32
-	vor.v	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.b	$t1, $vr0, 0
 	bne	$a7, $t2, .LBB7_30
 	b	.LBB7_32
@@ -2823,16 +2818,13 @@ RestoreModel:                           # @RestoreModel
 	xvadd.d	$xr1, $xr2, $xr1
 	xvpickve2gr.d	$a4, $xr1, 0
 	xvor.v	$xr0, $xr3, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	beq	$a1, $s6, .LBB14_30
 # %bb.23:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB14_14 Depth=1
@@ -2905,10 +2897,10 @@ RestoreModel:                           # @RestoreModel
 	vhaddw.d.w	$vr1, $vr1, $vr1
 	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$a4, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	bne	$a7, $s6, .LBB14_28
 	b	.LBB14_30
@@ -4178,16 +4170,13 @@ CutOff:                                 # @CutOff
 	xvadd.d	$xr2, $xr3, $xr2
 	xvpickve2gr.d	$a6, $xr2, 0
 	xvor.v	$xr1, $xr6, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvor.v	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvor.v	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvor.v	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a7, $xr1, 0
+	xvpermi.q	$xr2, $xr1, 1
+	vor.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a7, $vr1, 0
 	beq	$a2, $a4, .LBB17_48
 # %bb.41:                               # %vec.epilog.iter.check
 	andi	$t0, $a2, 12
@@ -4259,10 +4248,10 @@ CutOff:                                 # @CutOff
 	vhaddw.d.w	$vr0, $vr2, $vr2
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a6, $vr0, 0
-	vshuf4i.w	$vr0, $vr1, 14
-	vor.v	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 1
+	vbsrl.v	$vr0, $vr1, 8
 	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	bne	$a2, $t1, .LBB17_46
 	b	.LBB17_48

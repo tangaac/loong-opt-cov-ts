@@ -1102,20 +1102,17 @@ maxOccupancy:                           # @maxOccupancy
 	bnez	$a4, .LBB8_11
 # %bb.12:                               # %middle.block
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvstelm.w	$xr0, $sp, 4, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vstelm.w	$vr0, $sp, 4, 0
 	beq	$a2, $a1, .LBB8_7
 # %bb.13:                               # %vec.epilog.iter.check
 	andi	$a4, $a1, 12
-	xvpickve2gr.w	$a3, $xr0, 0
+	vpickve2gr.w	$a3, $vr0, 0
 	beqz	$a4, .LBB8_5
 .LBB8_14:                               # %vec.epilog.ph
 	move	$a4, $a2
@@ -1133,10 +1130,10 @@ maxOccupancy:                           # @maxOccupancy
 	addi.d	$a4, $a4, 16
 	bnez	$a3, .LBB8_15
 # %bb.16:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vstelm.w	$vr0, $sp, 4, 0
 	beq	$a2, $a1, .LBB8_7
 # %bb.17:

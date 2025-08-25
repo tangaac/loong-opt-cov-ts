@@ -1348,16 +1348,13 @@ initmask:                               # @initmask
 	bnez	$a3, .LBB4_7
 # %bb.8:                                # %middle.block
 	xvor.v	$xr0, $xr3, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a3, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a1, $a2, .LBB4_14
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a5, $a1, 12
@@ -1383,10 +1380,10 @@ initmask:                               # @initmask
 	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a3, .LBB4_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a1, $a2, .LBB4_14
 	.p2align	4, , 16

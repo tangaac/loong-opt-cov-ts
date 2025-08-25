@@ -3096,10 +3096,10 @@ _ZN8NArchive3NXzL14GetCheckStringERK4CXzs: # @_ZN8NArchive3NXzL14GetCheckStringE
 	bnez	$a4, .LBB13_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s6, $vr0, 0
 	beq	$a1, $a0, .LBB13_9
 .LBB13_7:                               # %.lr.ph.preheader77

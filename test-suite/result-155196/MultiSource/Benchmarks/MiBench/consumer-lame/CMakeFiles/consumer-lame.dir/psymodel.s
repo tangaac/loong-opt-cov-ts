@@ -526,18 +526,14 @@ L3psycho_anal:                          # @L3psycho_anal
 	xvmax.w	$xr1, $xr1, $xr5
 	xvmax.w	$xr0, $xr0, $xr1
 	xvmaxi.w	$xr0, $xr0, 0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
 	ldptr.w	$a0, $s6, 2048
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a1, $xr0, 0
-	bstrpick.d	$a1, $a1, 30, 0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a1, $vr0, 0
 	slt	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2

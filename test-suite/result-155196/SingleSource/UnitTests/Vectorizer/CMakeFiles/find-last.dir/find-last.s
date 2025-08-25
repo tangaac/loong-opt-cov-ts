@@ -6668,16 +6668,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	bnez	$a7, .LBB9_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a6, $a5, $a4
 	sltui	$a6, $a6, 1
 	masknez	$a5, $a5, $a6
@@ -6718,10 +6715,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB9_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -7240,16 +7237,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	bnez	$a7, .LBB14_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a6, $a5, $a4
 	sltui	$a6, $a6, 1
 	masknez	$a5, $a5, $a6
@@ -7290,10 +7284,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB14_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -7595,18 +7589,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	bnez	$t0, .LBB19_7
 # %bb.8:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a6, $vr0, 0
 	bstrpick.d	$a7, $a6, 15, 0
 	xor	$a7, $a7, $a4
@@ -7652,11 +7642,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	bnez	$a5, .LBB19_11
 # %bb.12:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
 	bstrpick.d	$a6, $a5, 15, 0
 	xor	$a4, $a6, $a4
@@ -7844,16 +7834,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	bnez	$a7, .LBB23_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a6, $a5, $a4
 	sltui	$a6, $a6, 1
 	masknez	$a5, $a5, $a6
@@ -7894,10 +7881,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB23_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -8087,16 +8074,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	bnez	$a7, .LBB27_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a6, $a5, $a4
 	sltui	$a6, $a6, 1
 	masknez	$a5, $a5, $a6
@@ -8137,10 +8121,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB27_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -8348,18 +8332,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	bnez	$t0, .LBB31_7
 # %bb.8:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a6, $vr0, 0
 	bstrpick.d	$a7, $a6, 15, 0
 	xor	$a7, $a7, $a4
@@ -8405,11 +8385,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	bnez	$a5, .LBB31_11
 # %bb.12:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
 	bstrpick.d	$a6, $a5, 15, 0
 	xor	$a4, $a6, $a4
@@ -8594,16 +8574,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	bnez	$a7, .LBB35_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a6, $a5, $a4
 	sltui	$a6, $a6, 1
 	masknez	$a5, $a5, $a6
@@ -8643,10 +8620,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB35_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -8832,16 +8809,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	bnez	$a7, .LBB39_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a6, $a5, $a4
 	sltui	$a6, $a6, 1
 	masknez	$a5, $a5, $a6
@@ -8881,10 +8855,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB39_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -9085,18 +9059,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t0, .LBB43_6
 # %bb.7:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a6, $vr0, 0
 	bstrpick.d	$a7, $a6, 15, 0
 	xor	$a7, $a7, $a5
@@ -9144,11 +9114,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a6, .LBB43_11
 # %bb.12:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a6, $vr0, 0
 	bstrpick.d	$a7, $a6, 15, 0
 	xor	$a5, $a7, $a5
@@ -10056,16 +10026,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB71_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -10108,10 +10075,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB71_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -10311,16 +10278,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB75_7
 # %bb.8:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -10363,10 +10327,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_21E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB75_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -10584,18 +10548,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t3, .LBB79_7
 # %bb.8:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$t1, $vr0, 0
 	bstrpick.d	$t2, $t1, 15, 0
 	xor	$t2, $t2, $a4
@@ -10644,11 +10604,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a5, .LBB79_11
 # %bb.12:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
 	bstrpick.d	$a6, $a5, 15, 0
 	xor	$a4, $a6, $a4
@@ -10839,16 +10799,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB83_5
 # %bb.6:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -10891,10 +10848,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB83_9
 # %bb.10:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -11087,16 +11044,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB87_5
 # %bb.6:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -11139,10 +11093,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_25E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB87_9
 # %bb.10:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -11349,18 +11303,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t2, .LBB91_5
 # %bb.6:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$t0, $vr0, 0
 	bstrpick.d	$t1, $t0, 15, 0
 	xor	$t1, $t1, $a4
@@ -11409,11 +11359,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a5, .LBB91_9
 # %bb.10:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
 	bstrpick.d	$a6, $a5, 15, 0
 	xor	$a4, $a6, $a4
@@ -11606,16 +11556,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB95_6
 # %bb.7:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -11658,10 +11605,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB95_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -11856,16 +11803,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB99_6
 # %bb.7:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -11908,10 +11852,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_29E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB99_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -12120,18 +12064,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t2, .LBB103_6
 # %bb.7:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$t0, $vr0, 0
 	bstrpick.d	$t1, $t0, 15, 0
 	xor	$t1, $t1, $a4
@@ -12180,11 +12120,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a5, .LBB103_10
 # %bb.11:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
 	bstrpick.d	$a6, $a5, 15, 0
 	xor	$a4, $a6, $a4
@@ -12373,16 +12313,13 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB107_5
 # %bb.6:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -12425,10 +12362,10 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB107_9
 # %bb.10:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -12619,16 +12556,13 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t1, .LBB111_5
 # %bb.6:                                # %middle.block
 	xvmax.w	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a6, $vr0, 0
 	xor	$t0, $a6, $a4
 	sltui	$t0, $t0, 1
 	masknez	$a6, $a6, $t0
@@ -12671,10 +12605,10 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB111_9
 # %bb.10:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	xor	$a4, $a5, $a4
 	sltui	$a4, $a4, 1
@@ -12881,18 +12815,14 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$t2, .LBB115_6
 # %bb.7:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
-	xvmax.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.h	$xr1, $xr1, 1
-	xvmax.h	$xr0, $xr0, $xr1
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.h	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$t0, $vr0, 0
 	bstrpick.d	$t1, $t0, 15, 0
 	xor	$t1, $t1, $a4
@@ -12941,11 +12871,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a5, .LBB115_10
 # %bb.11:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
 	bstrpick.d	$a6, $a5, 15, 0
 	xor	$a4, $a6, $a4

@@ -2489,15 +2489,8 @@ GCC_except_table21:
 .Lcst_end10:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-.LCPI22_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
-	.dword	0                               # 0x0
 	.text
-	.hidden	_ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+	.hidden	_ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE # -- Begin function _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	.globl	_ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	.p2align	5
 	.type	_ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE,@function
@@ -2931,16 +2924,12 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	bnez	$a6, .LBB22_55
 # %bb.56:                               # %middle.block
                                         #   in Loop: Header=BB22_48 Depth=1
-	pcalau12i	$a5, %pc_hi20(.LCPI22_0)
-	xvld	$xr2, $a5, %pc_lo12(.LCPI22_0)
 	xvmax.du	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf.d	$xr2, $xr0, $xr1
-	xvmax.du	$xr0, $xr0, $xr2
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.d	$xr1, $xr1, 1
-	xvmax.du	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$s4, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.du	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.du	$vr0, $vr1, $vr0
+	vpickve2gr.d	$s4, $vr0, 0
 	beq	$a3, $a4, .LBB22_47
 	.p2align	4, , 16
 .LBB22_57:                              # %.lr.ph.i
@@ -3157,11 +3146,11 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	move	$s5, $zero
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 2472
-	add.d	$s2, $sp, $a0
+	add.d	$s1, $sp, $a0
 	pcalau12i	$a0, %pc_hi20(_ZSt19piecewise_construct)
 	addi.d	$s7, $a0, %pc_lo12(_ZSt19piecewise_construct)
-	ori	$s8, $zero, 16
-	ori	$s1, $zero, 24
+	ori	$s2, $zero, 16
+	ori	$s8, $zero, 24
 	b	.LBB22_86
 	.p2align	4, , 16
 .LBB22_84:                              #   in Loop: Header=BB22_86 Depth=1
@@ -3202,8 +3191,8 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	ld.w	$a1, $a3, 32
 	slt	$a1, $a1, $a2
 	masknez	$a4, $a3, $a1
-	masknez	$a5, $s8, $a1
-	maskeqz	$a6, $s1, $a1
+	masknez	$a5, $s2, $a1
+	maskeqz	$a6, $s8, $a1
 	or	$a5, $a6, $a5
 	ldx.d	$a3, $a3, $a5
 	maskeqz	$a5, $a0, $a1
@@ -3261,7 +3250,7 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1536
 	add.d	$a2, $sp, $a2
-	st.d	$s2, $a2, 0
+	st.d	$s1, $a2, 0
 	beq	$a0, $a1, .LBB22_98
 # %bb.96:                               #   in Loop: Header=BB22_86 Depth=1
 .Ltmp115:                               # EH_LABEL

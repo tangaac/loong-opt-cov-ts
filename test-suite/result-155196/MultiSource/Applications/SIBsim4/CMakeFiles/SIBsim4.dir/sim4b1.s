@@ -6350,16 +6350,16 @@ exon_cores:                             # @exon_cores
 	bnez	$a4, .LBB2_81
 # %bb.82:                               # %middle.block
 	vmin.wu	$vr1, $vr1, $vr3
-	vshuf4i.w	$vr3, $vr1, 14
-	vmin.wu	$vr1, $vr1, $vr3
-	vreplvei.w	$vr3, $vr1, 1
-	vmin.wu	$vr1, $vr1, $vr3
+	vbsrl.v	$vr3, $vr1, 8
+	vmin.wu	$vr1, $vr3, $vr1
+	vbsrl.v	$vr3, $vr1, 4
+	vmin.wu	$vr1, $vr3, $vr1
 	vpickve2gr.w	$a6, $vr1, 0
 	vmax.wu	$vr0, $vr0, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB2_85
 .LBB2_83:                               # %scalar.ph.preheader

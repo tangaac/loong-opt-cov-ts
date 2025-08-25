@@ -75,7 +75,7 @@ VirtualAlloc:                           # @VirtualAlloc
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI3_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI3_0)
 	addi.w	$s4, $zero, -4
 	pcalau12i	$a0, %pc_hi20(g_HugePageAddr)
 	addi.d	$a0, $a0, %pc_lo12(g_HugePageAddr)
@@ -84,13 +84,13 @@ VirtualAlloc:                           # @VirtualAlloc
 	.p2align	4, , 16
 .LBB3_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr0, $xr2, 3
+	xvslli.d	$xr0, $xr1, 3
 	xvadd.d	$xr0, $xr3, $xr0
 	xvpickve2gr.d	$a1, $xr0, 0
-	xvld	$xr1, $a1, 0
+	xvld	$xr2, $a1, 0
 	move	$a1, $s4
-	xvseqi.d	$xr1, $xr1, 0
-	xvmskltz.d	$xr4, $xr1
+	xvseqi.d	$xr2, $xr2, 0
+	xvmskltz.d	$xr4, $xr2
 	xvpickve2gr.wu	$a2, $xr4, 0
 	xvpickve2gr.wu	$a3, $xr4, 4
 	bstrins.d	$a2, $a3, 3, 2
@@ -98,32 +98,29 @@ VirtualAlloc:                           # @VirtualAlloc
 	bnez	$a2, .LBB3_4
 # %bb.3:                                # %vector.body
                                         #   in Loop: Header=BB3_2 Depth=1
-	xvaddi.du	$xr2, $xr2, 4
+	xvaddi.du	$xr1, $xr1, 4
 	bne	$a1, $a0, .LBB3_2
 .LBB3_4:                                # %middle.split
 	andi	$a0, $a2, 15
 	beqz	$a0, .LBB3_9
 # %bb.5:                                # %vector.early.exit
-	xvpickve2gr.d	$a0, $xr1, 0
-	andi	$a0, $a0, 4
-	xvpickve2gr.d	$a1, $xr1, 1
-	andi	$a1, $a1, 3
-	sltu	$a2, $a1, $a0
-	masknez	$a1, $a1, $a2
-	maskeqz	$a0, $a0, $a2
-	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr1, 2
-	andi	$a1, $a1, 2
-	sltu	$a2, $a1, $a0
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr1, 3
-	andi	$a1, $a1, 1
-	sltu	$a2, $a1, $a0
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
+	xvpickve2gr.d	$a0, $xr2, 0
+	vinsgr2vr.b	$vr1, $a0, 0
+	xvpickve2gr.d	$a0, $xr2, 1
+	vinsgr2vr.b	$vr1, $a0, 1
+	xvpickve2gr.d	$a0, $xr2, 2
+	vinsgr2vr.b	$vr1, $a0, 2
+	xvpickve2gr.d	$a0, $xr2, 3
+	vinsgr2vr.b	$vr1, $a0, 3
+	lu12i.w	$a0, 4128
+	ori	$a0, $a0, 772
+	vreplgr2vr.w	$vr2, $a0
+	vand.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a0, $vr1, 0
 	ori	$a1, $zero, 4
 	sub.d	$a0, $a1, $a0
 	andi	$s7, $a0, 255
@@ -273,8 +270,8 @@ MidFree:                                # @MidFree
 	beqz	$a0, .LBB4_6
 # %bb.1:                                # %vector.ph
 	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI4_0)
-	xvreplgr2vr.d	$xr3, $a0
+	xvld	$xr1, $a1, %pc_lo12(.LCPI4_0)
+	xvreplgr2vr.d	$xr2, $a0
 	addi.w	$a1, $zero, -4
 	pcalau12i	$a2, %pc_hi20(g_HugePageAddr)
 	addi.d	$a2, $a2, %pc_lo12(g_HugePageAddr)
@@ -283,13 +280,13 @@ MidFree:                                # @MidFree
 	.p2align	4, , 16
 .LBB4_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr0, $xr2, 3
+	xvslli.d	$xr0, $xr1, 3
 	xvadd.d	$xr0, $xr4, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
-	xvld	$xr1, $a3, 0
+	xvld	$xr3, $a3, 0
 	move	$a3, $a1
-	xvseq.d	$xr1, $xr1, $xr3
-	xvmskltz.d	$xr5, $xr1
+	xvseq.d	$xr3, $xr3, $xr2
+	xvmskltz.d	$xr5, $xr3
 	xvpickve2gr.wu	$a4, $xr5, 0
 	xvpickve2gr.wu	$a1, $xr5, 4
 	bstrins.d	$a4, $a1, 3, 2
@@ -297,32 +294,29 @@ MidFree:                                # @MidFree
 	bnez	$a4, .LBB4_4
 # %bb.3:                                # %vector.body
                                         #   in Loop: Header=BB4_2 Depth=1
-	xvaddi.du	$xr2, $xr2, 4
+	xvaddi.du	$xr1, $xr1, 4
 	bne	$a3, $a2, .LBB4_2
 .LBB4_4:                                # %middle.split
 	andi	$a2, $a4, 15
 	beqz	$a2, .LBB4_7
 # %bb.5:                                # %vector.early.exit
-	xvpickve2gr.d	$a2, $xr1, 0
-	andi	$a2, $a2, 4
-	xvpickve2gr.d	$a3, $xr1, 1
-	andi	$a3, $a3, 3
-	sltu	$a4, $a3, $a2
-	masknez	$a3, $a3, $a4
-	maskeqz	$a2, $a2, $a4
-	or	$a2, $a2, $a3
-	xvpickve2gr.d	$a3, $xr1, 2
-	andi	$a3, $a3, 2
-	sltu	$a4, $a3, $a2
-	maskeqz	$a2, $a2, $a4
-	masknez	$a3, $a3, $a4
-	or	$a2, $a2, $a3
-	xvpickve2gr.d	$a3, $xr1, 3
-	andi	$a3, $a3, 1
-	sltu	$a4, $a3, $a2
-	maskeqz	$a2, $a2, $a4
-	masknez	$a3, $a3, $a4
-	or	$a2, $a2, $a3
+	xvpickve2gr.d	$a2, $xr3, 0
+	vinsgr2vr.b	$vr1, $a2, 0
+	xvpickve2gr.d	$a2, $xr3, 1
+	vinsgr2vr.b	$vr1, $a2, 1
+	xvpickve2gr.d	$a2, $xr3, 2
+	vinsgr2vr.b	$vr1, $a2, 2
+	xvpickve2gr.d	$a2, $xr3, 3
+	vinsgr2vr.b	$vr1, $a2, 3
+	lu12i.w	$a2, 4128
+	ori	$a2, $a2, 772
+	vreplgr2vr.w	$vr2, $a2
+	vand.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a2, $vr1, 0
 	ori	$a3, $zero, 4
 	sub.d	$a2, $a3, $a2
 	andi	$a2, $a2, 255
@@ -548,8 +542,8 @@ BigFree:                                # @BigFree
 	beqz	$a0, .LBB8_6
 # %bb.1:                                # %vector.ph
 	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI8_0)
-	xvreplgr2vr.d	$xr3, $a0
+	xvld	$xr1, $a1, %pc_lo12(.LCPI8_0)
+	xvreplgr2vr.d	$xr2, $a0
 	addi.w	$a1, $zero, -4
 	pcalau12i	$a2, %pc_hi20(g_HugePageAddr)
 	addi.d	$a2, $a2, %pc_lo12(g_HugePageAddr)
@@ -558,13 +552,13 @@ BigFree:                                # @BigFree
 	.p2align	4, , 16
 .LBB8_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvslli.d	$xr0, $xr2, 3
+	xvslli.d	$xr0, $xr1, 3
 	xvadd.d	$xr0, $xr4, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
-	xvld	$xr1, $a3, 0
+	xvld	$xr3, $a3, 0
 	move	$a3, $a1
-	xvseq.d	$xr1, $xr1, $xr3
-	xvmskltz.d	$xr5, $xr1
+	xvseq.d	$xr3, $xr3, $xr2
+	xvmskltz.d	$xr5, $xr3
 	xvpickve2gr.wu	$a4, $xr5, 0
 	xvpickve2gr.wu	$a1, $xr5, 4
 	bstrins.d	$a4, $a1, 3, 2
@@ -572,32 +566,29 @@ BigFree:                                # @BigFree
 	bnez	$a4, .LBB8_4
 # %bb.3:                                # %vector.body
                                         #   in Loop: Header=BB8_2 Depth=1
-	xvaddi.du	$xr2, $xr2, 4
+	xvaddi.du	$xr1, $xr1, 4
 	bne	$a3, $a2, .LBB8_2
 .LBB8_4:                                # %middle.split
 	andi	$a2, $a4, 15
 	beqz	$a2, .LBB8_7
 # %bb.5:                                # %vector.early.exit
-	xvpickve2gr.d	$a2, $xr1, 0
-	andi	$a2, $a2, 4
-	xvpickve2gr.d	$a3, $xr1, 1
-	andi	$a3, $a3, 3
-	sltu	$a4, $a3, $a2
-	masknez	$a3, $a3, $a4
-	maskeqz	$a2, $a2, $a4
-	or	$a2, $a2, $a3
-	xvpickve2gr.d	$a3, $xr1, 2
-	andi	$a3, $a3, 2
-	sltu	$a4, $a3, $a2
-	maskeqz	$a2, $a2, $a4
-	masknez	$a3, $a3, $a4
-	or	$a2, $a2, $a3
-	xvpickve2gr.d	$a3, $xr1, 3
-	andi	$a3, $a3, 1
-	sltu	$a4, $a3, $a2
-	maskeqz	$a2, $a2, $a4
-	masknez	$a3, $a3, $a4
-	or	$a2, $a2, $a3
+	xvpickve2gr.d	$a2, $xr3, 0
+	vinsgr2vr.b	$vr1, $a2, 0
+	xvpickve2gr.d	$a2, $xr3, 1
+	vinsgr2vr.b	$vr1, $a2, 1
+	xvpickve2gr.d	$a2, $xr3, 2
+	vinsgr2vr.b	$vr1, $a2, 2
+	xvpickve2gr.d	$a2, $xr3, 3
+	vinsgr2vr.b	$vr1, $a2, 3
+	lu12i.w	$a2, 4128
+	ori	$a2, $a2, 772
+	vreplgr2vr.w	$vr2, $a2
+	vand.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a2, $vr1, 0
 	ori	$a3, $zero, 4
 	sub.d	$a2, $a3, $a2
 	andi	$a2, $a2, 255

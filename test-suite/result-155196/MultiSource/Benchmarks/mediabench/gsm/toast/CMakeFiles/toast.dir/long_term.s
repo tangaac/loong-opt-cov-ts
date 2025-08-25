@@ -71,25 +71,26 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vmax.h	$vr0, $vr0, $vr1
 	vmaxi.h	$vr0, $vr0, 0
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vld	$vr1, $s4, 64
-	vreplvei.h	$vr3, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr3
-	vreplvei.h	$vr0, $vr0, 0
-	vslti.h	$vr3, $vr1, 0
-	vseq.h	$vr2, $vr1, $vr2
-	vneg.h	$vr4, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vld	$vr3, $s4, 64
+	vmax.h	$vr0, $vr1, $vr0
+	vpickve2gr.h	$a0, $vr0, 0
+	vreplgr2vr.h	$vr0, $a0
+	vslti.h	$vr1, $vr3, 0
+	vseq.h	$vr2, $vr3, $vr2
+	vneg.h	$vr4, $vr3
 	vbitsel.v	$vr2, $vr4, $vr6, $vr2
-	vbitsel.v	$vr1, $vr1, $vr2, $vr3
+	vbitsel.v	$vr1, $vr3, $vr2, $vr1
 	vmax.h	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.h	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.h	$vr0, $vr0, $vr1
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.h	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a0, $vr0, 0
 	bstrpick.d	$a0, $a0, 15, 0
 	st.d	$a6, $sp, 24                    # 8-byte Folded Spill

@@ -433,16 +433,13 @@ main:                                   # @main
 # %bb.20:                               # %middle.block
                                         #   in Loop: Header=BB0_11 Depth=1
 	xvxor.v	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_27
 # %bb.21:                               # %vec.epilog.iter.check
@@ -465,10 +462,10 @@ main:                                   # @main
 	bnez	$a0, .LBB0_23
 # %bb.24:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_11 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload

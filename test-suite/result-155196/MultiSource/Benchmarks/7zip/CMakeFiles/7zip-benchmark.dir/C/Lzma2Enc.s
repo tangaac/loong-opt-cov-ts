@@ -508,49 +508,34 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	beqz	$a1, .LBB5_5
 # %bb.4:                                # %vector.early.exit
 	xvpickve2gr.w	$a1, $xr0, 0
-	andi	$a1, $a1, 8
-	xvpickve2gr.w	$a2, $xr0, 1
-	andi	$a2, $a2, 7
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a1, $a1, $a3
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 2
-	andi	$a2, $a2, 6
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 3
-	andi	$a2, $a2, 5
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 4
-	andi	$a2, $a2, 4
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 5
-	andi	$a2, $a2, 3
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 6
-	andi	$a2, $a2, 2
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 7
-	andi	$a2, $a2, 1
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
+	vinsgr2vr.b	$vr1, $a1, 0
+	xvpickve2gr.w	$a1, $xr0, 1
+	vinsgr2vr.b	$vr1, $a1, 1
+	xvpickve2gr.w	$a1, $xr0, 2
+	vinsgr2vr.b	$vr1, $a1, 2
+	xvpickve2gr.w	$a1, $xr0, 3
+	vinsgr2vr.b	$vr1, $a1, 3
+	xvpickve2gr.w	$a1, $xr0, 4
+	vinsgr2vr.b	$vr1, $a1, 4
+	xvpickve2gr.w	$a1, $xr0, 5
+	vinsgr2vr.b	$vr1, $a1, 5
+	xvpickve2gr.w	$a1, $xr0, 6
+	vinsgr2vr.b	$vr1, $a1, 6
+	xvpickve2gr.w	$a1, $xr0, 7
+	vinsgr2vr.b	$vr1, $a1, 7
+	lu12i.w	$a1, 20576
+	ori	$a1, $a1, 1800
+	lu32i.d	$a1, 131844
+	lu52i.d	$a1, $a1, 16
+	vreplgr2vr.d	$vr0, $a1
+	vand.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a1, $vr0, 0
 	ori	$a2, $zero, 8
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255

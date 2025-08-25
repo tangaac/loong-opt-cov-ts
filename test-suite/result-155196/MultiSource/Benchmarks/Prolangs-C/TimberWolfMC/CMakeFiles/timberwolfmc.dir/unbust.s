@@ -129,16 +129,13 @@ unbust:                                 # @unbust
 	bnez	$a4, .LBB0_13
 # %bb.14:                               # %middle.block
 	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a3, $a0, .LBB0_22
 # %bb.15:                               # %vec.epilog.iter.check
 	andi	$a4, $a0, 12
@@ -169,10 +166,10 @@ unbust:                                 # @unbust
 	addi.d	$a3, $a3, 32
 	bnez	$a2, .LBB0_17
 # %bb.18:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	bne	$a5, $a0, .LBB0_20
 	b	.LBB0_22
@@ -560,16 +557,13 @@ firstP:                                 # @firstP
 	bnez	$a6, .LBB2_7
 # %bb.8:                                # %middle.block
 	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmin.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a4, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a5, $a3, .LBB2_16
 # %bb.9:                                # %vec.epilog.iter.check
 	andi	$a6, $a3, 12
@@ -600,10 +594,10 @@ firstP:                                 # @firstP
 	addi.d	$a5, $a5, 32
 	bnez	$a4, .LBB2_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	bne	$a7, $a3, .LBB2_14
 	b	.LBB2_16

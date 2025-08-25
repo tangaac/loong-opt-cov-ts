@@ -424,27 +424,21 @@ int_to_uchar:                           # @int_to_uchar
 	bnez	$a5, .LBB4_6
 # %bb.7:                                # %middle.block
 	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$a3, $xr2, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vmin.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmin.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmin.w	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a3, $vr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	beq	$a4, $a2, .LBB4_14
 # %bb.8:                                # %vec.epilog.iter.check
 	andi	$a6, $a2, 12
@@ -467,15 +461,15 @@ int_to_uchar:                           # @int_to_uchar
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB4_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
-	vmin.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmin.w	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmin.w	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vmin.w	$vr1, $vr2, $vr1
 	vpickve2gr.w	$a3, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	beq	$a4, $a2, .LBB4_14
 .LBB4_12:                               # %.lr.ph.preheader
@@ -7763,27 +7757,21 @@ main:                                   # @main
 	bnez	$a2, .LBB18_66
 # %bb.67:                               # %middle.block272
 	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$a0, $xr2, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vmin.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmin.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmin.w	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a0, $vr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s3, .LBB18_74
 # %bb.68:                               # %vec.epilog.iter.check281
 	andi	$a3, $s3, 12
@@ -7806,15 +7794,15 @@ main:                                   # @main
 	addi.d	$a2, $a2, 16
 	bnez	$a0, .LBB18_70
 # %bb.71:                               # %vec.epilog.middle.block296
-	vshuf4i.w	$vr2, $vr1, 14
-	vmin.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmin.w	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmin.w	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vmin.w	$vr1, $vr2, $vr1
 	vpickve2gr.w	$a0, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s3, .LBB18_74
 .LBB18_72:                              # %.lr.ph.i.preheader
@@ -7972,27 +7960,21 @@ main:                                   # @main
 	bnez	$a2, .LBB18_88
 # %bb.89:                               # %middle.block
 	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmin.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$a0, $xr2, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vmin.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmin.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmin.w	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a0, $vr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s5, .LBB18_96
 # %bb.90:                               # %vec.epilog.iter.check
 	andi	$a3, $s5, 12
@@ -8015,15 +7997,15 @@ main:                                   # @main
 	addi.d	$a2, $a2, 16
 	bnez	$a0, .LBB18_92
 # %bb.93:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
-	vmin.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmin.w	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmin.w	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vmin.w	$vr1, $vr2, $vr1
 	vpickve2gr.w	$a0, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s5, .LBB18_96
 .LBB18_94:                              # %.lr.ph.i99.preheader

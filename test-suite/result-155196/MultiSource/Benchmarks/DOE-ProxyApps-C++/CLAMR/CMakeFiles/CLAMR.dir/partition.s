@@ -4195,27 +4195,21 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	bnez	$a6, .LBB4_255
 # %bb.256:                              # %middle.block854
 	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$a4, $xr2, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vmax.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.w	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a4, $vr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvrepl128vei.w	$xr1, $xr1, 1
-	xvmax.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
 	beq	$s4, $a3, .LBB4_62
 # %bb.257:                              # %vec.epilog.iter.check861
 	andi	$a6, $s4, 12
@@ -4241,15 +4235,15 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, 16
 	bnez	$a4, .LBB4_259
 # %bb.260:                              # %vec.epilog.middle.block877
-	vshuf4i.w	$vr2, $vr1, 14
-	vmax.w	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmax.w	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmax.w	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.w	$vr1, $vr2, $vr1
 	vpickve2gr.w	$a4, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	bne	$s4, $a3, .LBB4_60
 	b	.LBB4_62

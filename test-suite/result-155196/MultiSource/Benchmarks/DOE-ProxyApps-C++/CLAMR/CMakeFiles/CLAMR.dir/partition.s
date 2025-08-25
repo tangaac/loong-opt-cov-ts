@@ -3371,16 +3371,16 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	bnez	$a5, .LBB4_126
 # %bb.127:                              # %middle.block843
 	vmax.w	$vr2, $vr7, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
-	vmax.w	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 1
-	vmax.w	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.w	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.w	$vr2, $vr3, $vr2
 	vpickve2gr.w	$a3, $vr2, 0
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	bne	$s4, $a2, .LBB4_54
 	b	.LBB4_56

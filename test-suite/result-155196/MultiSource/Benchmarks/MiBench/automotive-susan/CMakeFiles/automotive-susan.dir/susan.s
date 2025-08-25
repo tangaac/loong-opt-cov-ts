@@ -417,16 +417,16 @@ int_to_uchar:                           # @int_to_uchar
 	bnez	$a5, .LBB4_4
 # %bb.5:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr3
-	vreplvei.w	$vr3, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr3
+	vbsrl.v	$vr3, $vr0, 8
+	vmin.w	$vr0, $vr3, $vr0
+	vbsrl.v	$vr3, $vr0, 4
+	vmin.w	$vr0, $vr3, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	vmax.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	beq	$a4, $a2, .LBB4_8
 .LBB4_6:                                # %.lr.ph.preheader74
@@ -7264,16 +7264,16 @@ main:                                   # @main
 	bnez	$a2, .LBB18_58
 # %bb.59:                               # %middle.block233
 	vmin.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr3
-	vreplvei.w	$vr3, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr3
+	vbsrl.v	$vr3, $vr0, 8
+	vmin.w	$vr0, $vr3, $vr0
+	vbsrl.v	$vr3, $vr0, 4
+	vmin.w	$vr0, $vr3, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	vmax.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s3, .LBB18_62
 .LBB18_60:                              # %.lr.ph.i.preheader
@@ -7370,16 +7370,16 @@ main:                                   # @main
 	bnez	$a2, .LBB18_70
 # %bb.71:                               # %middle.block
 	vmin.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr3
-	vreplvei.w	$vr3, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr3
+	vbsrl.v	$vr3, $vr0, 8
+	vmin.w	$vr0, $vr3, $vr0
+	vbsrl.v	$vr3, $vr0, 4
+	vmin.w	$vr0, $vr3, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	vmax.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $s5, .LBB18_74
 .LBB18_72:                              # %.lr.ph.i99.preheader

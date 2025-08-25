@@ -397,8 +397,8 @@ specul_time_o:                          # @specul_time_o
 	bnez	$a3, .LBB3_26
 # %bb.27:                               # %middle.block128
 	vmax.du	$vr0, $vr0, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vmax.du	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$s5, $vr0, 0
 	beq	$a1, $s3, .LBB3_30
 .LBB3_28:                               # %.lr.ph93.preheader131
@@ -782,8 +782,8 @@ specul_time_r:                          # @specul_time_r
 # %bb.21:                               # %middle.block285
                                         #   in Loop: Header=BB4_16 Depth=1
 	vmax.du	$vr1, $vr1, $vr2
-	vreplvei.d	$vr2, $vr1, 1
-	vmax.du	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vmax.du	$vr1, $vr2, $vr1
 	vpickve2gr.d	$t8, $vr1, 0
 	beq	$s7, $s8, .LBB4_24
 .LBB4_22:                               # %.lr.ph185.preheader364
@@ -973,8 +973,8 @@ specul_time_r:                          # @specul_time_r
 	bnez	$a3, .LBB4_47
 # %bb.48:                               # %middle.block309
 	vmax.du	$vr0, $vr0, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vmax.du	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a2, $s4, .LBB4_78
 .LBB4_49:                               # %.lr.ph202.preheader358
@@ -1150,8 +1150,8 @@ specul_time_r:                          # @specul_time_r
 	bnez	$a3, .LBB4_74
 # %bb.75:                               # %middle.block348
 	vmax.du	$vr0, $vr0, $vr1
-	vreplvei.d	$vr1, $vr0, 1
-	vmax.du	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a2, $s4, .LBB4_78
 .LBB4_76:                               # %.lr.ph219.preheader354

@@ -433,6 +433,23 @@ _Z17GetRatingPerUsageRK10CBenchInfoy:   # @_Z17GetRatingPerUsageRK10CBenchInfoy
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
+.LCPI7_4:
+	.byte	16                              # 0x10
+	.byte	15                              # 0xf
+	.byte	14                              # 0xe
+	.byte	13                              # 0xd
+	.byte	12                              # 0xc
+	.byte	11                              # 0xb
+	.byte	10                              # 0xa
+	.byte	9                               # 0x9
+	.byte	8                               # 0x8
+	.byte	7                               # 0x7
+	.byte	6                               # 0x6
+	.byte	5                               # 0x5
+	.byte	4                               # 0x4
+	.byte	3                               # 0x3
+	.byte	2                               # 0x2
+	.byte	1                               # 0x1
 	.text
 	.globl	_Z17GetCompressRatingjyyy
 	.p2align	5
@@ -1444,100 +1461,20 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	ori	$t0, $zero, 3328
 	beqz	$a4, .LBB7_109
 .LBB7_104:                              # %.loopexit27.i.sink.split
-	vslli.b	$vr0, $vr1, 7
-	vsrai.b	$vr0, $vr0, 7
+	pcalau12i	$a4, %pc_hi20(.LCPI7_4)
+	vld	$vr0, $a4, %pc_lo12(.LCPI7_4)
+	vslli.b	$vr1, $vr1, 7
+	vsrai.b	$vr1, $vr1, 7
+	vand.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
 	vpickve2gr.b	$a4, $vr0, 0
-	andi	$a4, $a4, 16
-	vpickve2gr.b	$a5, $vr0, 1
-	andi	$a5, $a5, 15
-	sltu	$a6, $a5, $a4
-	masknez	$a5, $a5, $a6
-	maskeqz	$a4, $a4, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 2
-	andi	$a5, $a5, 14
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 3
-	andi	$a5, $a5, 13
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 4
-	andi	$a5, $a5, 12
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 5
-	andi	$a5, $a5, 11
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 6
-	andi	$a5, $a5, 10
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 7
-	andi	$a5, $a5, 9
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 8
-	andi	$a5, $a5, 8
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 9
-	andi	$a5, $a5, 7
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 10
-	andi	$a5, $a5, 6
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 11
-	andi	$a5, $a5, 5
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 12
-	andi	$a5, $a5, 4
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 13
-	andi	$a5, $a5, 3
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 14
-	andi	$a5, $a5, 2
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
-	vpickve2gr.b	$a5, $vr0, 15
-	andi	$a5, $a5, 1
-	sltu	$a6, $a5, $a4
-	maskeqz	$a4, $a4, $a6
-	masknez	$a5, $a5, $a6
-	or	$a4, $a4, $a5
 	ori	$a5, $zero, 16
 	sub.d	$a4, $a5, $a4
 	andi	$a4, $a4, 255

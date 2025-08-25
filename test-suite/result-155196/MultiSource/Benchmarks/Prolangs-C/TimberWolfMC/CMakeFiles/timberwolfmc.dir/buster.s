@@ -63,10 +63,10 @@ buster:                                 # @buster
 	bnez	$a7, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a1, $vr0, 0
 	beq	$a6, $a5, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader302

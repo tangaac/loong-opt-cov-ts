@@ -457,10 +457,10 @@ maskgen:                                # @maskgen
 	bnez	$t2, .LBB0_50
 # %bb.51:                               # %middle.block
 	vor.v	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	beq	$t1, $t0, .LBB0_54
 .LBB0_52:                               # %scalar.ph.preheader

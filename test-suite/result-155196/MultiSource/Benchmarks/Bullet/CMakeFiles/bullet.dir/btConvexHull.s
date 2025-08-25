@@ -1225,10 +1225,10 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	bnez	$a4, .LBB11_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr6, $vr15, $vr12
-	vshuf4i.w	$vr7, $vr6, 14
-	vor.v	$vr6, $vr6, $vr7
-	vreplvei.w	$vr7, $vr6, 1
-	vor.v	$vr6, $vr6, $vr7
+	vbsrl.v	$vr7, $vr6, 8
+	vor.v	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 4
+	vor.v	$vr6, $vr7, $vr6
 	vpickve2gr.w	$a3, $vr6, 0
 	beq	$a1, $a2, .LBB11_9
 .LBB11_7:                               # %scalar.ph.preheader

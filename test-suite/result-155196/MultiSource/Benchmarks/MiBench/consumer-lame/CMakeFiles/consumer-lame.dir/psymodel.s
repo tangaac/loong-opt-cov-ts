@@ -511,11 +511,11 @@ L3psycho_anal:                          # @L3psycho_anal
 	bne	$a0, $a1, .LBB0_10
 # %bb.11:                               # %middle.block1477
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
 	ldptr.w	$a0, $s0, 2048
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a1, $vr0, 0
 	slt	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2

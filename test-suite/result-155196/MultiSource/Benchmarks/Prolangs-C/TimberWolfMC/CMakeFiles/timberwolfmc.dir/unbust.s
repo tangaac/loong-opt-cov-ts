@@ -109,10 +109,10 @@ unbust:                                 # @unbust
 	bnez	$a5, .LBB0_11
 # %bb.12:                               # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a4, $a0, .LBB0_15
 .LBB0_13:                               # %.lr.ph.i106.preheader
@@ -477,10 +477,10 @@ firstP:                                 # @firstP
 	bnez	$a7, .LBB2_5
 # %bb.6:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a6, $a5, .LBB2_9
 .LBB2_7:                                # %.lr.ph.preheader44

@@ -410,10 +410,10 @@ findDuplicate:                          # @findDuplicate
 	bnez	$a4, .LBB5_5
 # %bb.6:                                # %middle.block
 	vxor.v	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB5_9
 .LBB5_7:                                # %.lr.ph.preheader15
@@ -509,10 +509,10 @@ main:                                   # @main
 # %bb.4:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
@@ -565,10 +565,10 @@ main:                                   # @main
 # %bb.8:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
@@ -621,10 +621,10 @@ main:                                   # @main
 # %bb.12:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
@@ -677,10 +677,10 @@ main:                                   # @main
 # %bb.16:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	xor	$s0, $a1, $a2
 	pcaddu18i	$ra, %call36(free)
@@ -732,10 +732,10 @@ main:                                   # @main
 # %bb.20:
 	ldx.w	$a1, $a0, $s1
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	xor	$fp, $a1, $a2
 	pcaddu18i	$ra, %call36(free)

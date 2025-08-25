@@ -491,7 +491,7 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	pcaddu18i	$ra, %call36(LzmaEncProps_GetDictSize)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
-	vld	$vr1, $a1, %pc_lo12(.LCPI5_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI5_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI5_1)
 	vld	$vr2, $a1, %pc_lo12(.LCPI5_1)
 	vreplgr2vr.w	$vr3, $a0
@@ -502,19 +502,19 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 .LBB5_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	move	$a2, $a0
-	vand.v	$vr0, $vr1, $vr4
+	vand.v	$vr1, $vr0, $vr4
 	vand.v	$vr5, $vr2, $vr4
 	vbitseti.w	$vr5, $vr5, 1
-	vbitseti.w	$vr0, $vr0, 1
-	vsrli.w	$vr6, $vr1, 1
+	vbitseti.w	$vr1, $vr1, 1
+	vsrli.w	$vr6, $vr0, 1
 	vsrli.w	$vr7, $vr2, 1
 	vaddi.wu	$vr7, $vr7, 11
 	vaddi.wu	$vr6, $vr6, 11
-	vsll.w	$vr0, $vr0, $vr6
+	vsll.w	$vr1, $vr1, $vr6
 	vsll.w	$vr5, $vr5, $vr7
 	vsle.wu	$vr5, $vr3, $vr5
-	vsle.wu	$vr0, $vr3, $vr0
-	vpickev.h	$vr6, $vr0, $vr5
+	vsle.wu	$vr1, $vr3, $vr1
+	vpickev.h	$vr6, $vr1, $vr5
 	vmskltz.h	$vr6, $vr6
 	vpickve2gr.hu	$a3, $vr6, 0
 	addi.w	$a0, $a0, 8
@@ -522,56 +522,41 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB5_1 Depth=1
 	vaddi.wu	$vr2, $vr2, 8
-	vaddi.wu	$vr1, $vr1, 8
+	vaddi.wu	$vr0, $vr0, 8
 	bne	$a2, $a1, .LBB5_1
 .LBB5_3:                                # %middle.split
 	andi	$a1, $a3, 255
 	beqz	$a1, .LBB5_5
 # %bb.4:                                # %vector.early.exit
 	vpickve2gr.w	$a1, $vr5, 0
-	andi	$a1, $a1, 8
-	vpickve2gr.w	$a2, $vr5, 1
-	andi	$a2, $a2, 7
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a1, $a1, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr5, 2
-	andi	$a2, $a2, 6
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr5, 3
-	andi	$a2, $a2, 5
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr0, 0
-	andi	$a2, $a2, 4
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 3
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr0, 2
-	andi	$a2, $a2, 2
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr0, 3
-	andi	$a2, $a2, 1
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
+	vinsgr2vr.b	$vr0, $a1, 0
+	vpickve2gr.w	$a1, $vr5, 1
+	vinsgr2vr.b	$vr0, $a1, 1
+	vpickve2gr.w	$a1, $vr5, 2
+	vinsgr2vr.b	$vr0, $a1, 2
+	vpickve2gr.w	$a1, $vr5, 3
+	vinsgr2vr.b	$vr0, $a1, 3
+	vpickve2gr.w	$a1, $vr1, 0
+	vinsgr2vr.b	$vr0, $a1, 4
+	vpickve2gr.w	$a1, $vr1, 1
+	vinsgr2vr.b	$vr0, $a1, 5
+	vpickve2gr.w	$a1, $vr1, 2
+	vinsgr2vr.b	$vr0, $a1, 6
+	vpickve2gr.w	$a1, $vr1, 3
+	vinsgr2vr.b	$vr0, $a1, 7
+	lu12i.w	$a1, 20576
+	ori	$a1, $a1, 1800
+	lu32i.d	$a1, 131844
+	lu52i.d	$a1, $a1, 16
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a1, $vr0, 0
 	ori	$a2, $zero, 8
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255

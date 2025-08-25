@@ -6051,12 +6051,12 @@ exon_cores:                             # @exon_cores
 	bnez	$a4, .LBB2_81
 # %bb.82:                               # %middle.block
 	vmin.wu	$vr0, $vr0, $vr3
-	vreplvei.w	$vr3, $vr0, 1
-	vmin.wu	$vr0, $vr0, $vr3
+	vbsrl.v	$vr3, $vr0, 4
+	vmin.wu	$vr0, $vr3, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	vmax.wu	$vr0, $vr1, $vr2
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a2, $a1, .LBB2_85
 .LBB2_83:                               # %scalar.ph.preheader

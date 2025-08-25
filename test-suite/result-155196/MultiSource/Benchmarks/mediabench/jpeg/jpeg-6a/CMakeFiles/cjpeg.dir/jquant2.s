@@ -2954,8 +2954,8 @@ fill_inverse_cmap:                      # @fill_inverse_cmap
 	bnez	$s7, .LBB10_77
 # %bb.78:                               # %middle.block
 	vmin.d	$vr0, $vr9, $vr12
-	vreplvei.d	$vr1, $vr0, 1
-	vmin.d	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.d	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	bne	$s2, $t2, .LBB10_83
 .LBB10_79:                              # %.lr.ph170.i.preheader

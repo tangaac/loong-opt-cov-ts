@@ -1590,10 +1590,10 @@ very_real_unpack:                       # @very_real_unpack
 # %bb.220:                              # %middle.block813
                                         #   in Loop: Header=BB1_15 Depth=1
 	vor.v	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	addi.w	$a3, $a5, 0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a2, $a3, .LBB1_222
@@ -2955,10 +2955,10 @@ get_bb:                                 # @get_bb
 	bnez	$a0, .LBB8_24
 # %bb.25:                               # %middle.block
 	vor.v	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	beq	$a1, $a2, .LBB8_28
 .LBB8_26:                               # %getbit_from_table.exit.us.preheader

@@ -880,13 +880,13 @@ Rescale:                                # @Rescale
 # %bb.24:                               # %middle.block
 	vor.v	$vr1, $vr1, $vr2
 	vbsrl.v	$vr2, $vr1, 8
-	vor.v	$vr1, $vr1, $vr2
-	vsrli.d	$vr2, $vr1, 32
-	vor.v	$vr1, $vr1, $vr2
-	vshuf4i.b	$vr2, $vr1, 14
-	vor.v	$vr1, $vr1, $vr2
-	vreplvei.b	$vr2, $vr1, 1
-	vor.v	$vr1, $vr1, $vr2
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vor.v	$vr1, $vr2, $vr1
 	vpickve2gr.b	$t1, $vr1, 0
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	beq	$s2, $t0, .LBB7_32
@@ -934,12 +934,12 @@ Rescale:                                # @Rescale
 	addi.d	$t0, $t0, 48
 	bnez	$t1, .LBB7_27
 # %bb.28:                               # %vec.epilog.middle.block
-	vsrli.d	$vr0, $vr1, 32
+	vbsrl.v	$vr0, $vr1, 4
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 2
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.b	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.b	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 1
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.b	$t1, $vr0, 0
 	bne	$s2, $t2, .LBB7_30
 	b	.LBB7_32
@@ -2342,10 +2342,10 @@ RestoreModel:                           # @RestoreModel
 	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$a5, $vr1, 0
 	vor.v	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a3, $s4, .LBB14_23
 .LBB14_21:                              # %scalar.ph.preheader
@@ -3329,10 +3329,10 @@ CutOff:                                 # @CutOff
 	vhaddw.q.d	$vr1, $vr1, $vr1
 	vpickve2gr.d	$t0, $vr1, 0
 	vor.v	$vr0, $vr6, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	beq	$a4, $a5, .LBB17_39
 .LBB17_37:                              # %scalar.ph.preheader

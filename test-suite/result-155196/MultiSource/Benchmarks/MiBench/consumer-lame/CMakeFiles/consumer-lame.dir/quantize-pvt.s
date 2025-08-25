@@ -1652,10 +1652,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t3, .LBB8_10
 # %bb.11:                               # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	beq	$t2, $t0, .LBB8_14
 .LBB8_12:                               # %.lr.ph.preheader316
@@ -1716,10 +1716,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t5, .LBB8_21
 # %bb.22:                               # %middle.block186
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	beq	$t3, $t2, .LBB8_25
 .LBB8_23:                               # %scalar.ph174.preheader
@@ -1770,10 +1770,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t7, .LBB8_29
 # %bb.30:                               # %middle.block205
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t3, $vr0, 0
 	beq	$t5, $t4, .LBB8_33
 .LBB8_31:                               # %scalar.ph192.preheader
@@ -1823,10 +1823,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t1, .LBB8_37
 # %bb.38:                               # %middle.block224
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t1, $vr0, 0
 	beq	$t2, $t4, .LBB8_41
 .LBB8_39:                               # %scalar.ph211.preheader
@@ -1917,10 +1917,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t5, .LBB8_43
 # %bb.44:                               # %middle.block240
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a6, $vr0, 0
 	beq	$t4, $t3, .LBB8_47
 .LBB8_45:                               # %.preheader.preheader304
@@ -2055,10 +2055,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$fp, .LBB8_54
 # %bb.55:                               # %middle.block274
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t3, $vr0, 0
 	beq	$t8, $t6, .LBB8_58
 .LBB8_56:                               # %.preheader.2.preheader
@@ -2179,10 +2179,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t7, .LBB8_62
 # %bb.63:                               # %middle.block257
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	beq	$t6, $t4, .LBB8_66
 .LBB8_64:                               # %.preheader.1.preheader
@@ -2300,10 +2300,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t1, .LBB8_70
 # %bb.71:                               # %middle.block291
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$t1, $vr0, 0
 	beq	$t7, $t5, .LBB8_74
 .LBB8_72:                               # %.preheader.3.preheader

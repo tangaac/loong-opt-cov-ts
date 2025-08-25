@@ -1043,6 +1043,23 @@ Trial:                                  # @Trial
 	.word	3                               # 0x3
 	.word	1                               # 0x1
 	.word	1                               # 0x1
+.LCPI6_6:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
 	.text
 	.globl	Puzzle
 	.p2align	5
@@ -1536,26 +1553,18 @@ Puzzle:                                 # @Puzzle
 	andi	$a1, $a4, 15
 	beqz	$a1, .LBB6_60
 # %bb.59:                               # %vector.early.exit
+	pcalau12i	$a1, %pc_hi20(.LCPI6_6)
+	vld	$vr1, $a1, %pc_lo12(.LCPI6_6)
+	vshuf.b	$vr0, $vr0, $vr0, $vr1
+	lu12i.w	$a1, 4128
+	ori	$a1, $a1, 772
+	vreplgr2vr.w	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
 	vpickve2gr.b	$a1, $vr0, 0
-	andi	$a1, $a1, 4
-	vpickve2gr.b	$a2, $vr0, 4
-	andi	$a2, $a2, 3
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a1, $a1, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 8
-	andi	$a2, $a2, 2
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 12
-	andi	$a2, $a2, 1
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
 	ori	$a2, $zero, 4
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255

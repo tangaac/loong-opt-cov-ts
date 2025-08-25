@@ -637,26 +637,34 @@ clause_CopySuccedentExcept:             # @clause_CopySuccedentExcept
 .LCPI11_7:
 	.dword	63                              # 0x3f
 	.dword	62                              # 0x3e
+.LCPI11_8:
+	.byte	16                              # 0x10
+	.byte	15                              # 0xf
+	.byte	14                              # 0xe
+	.byte	13                              # 0xd
+	.byte	12                              # 0xc
+	.byte	11                              # 0xb
+	.byte	10                              # 0xa
+	.byte	9                               # 0x9
+	.byte	8                               # 0x8
+	.byte	7                               # 0x7
+	.byte	6                               # 0x6
+	.byte	5                               # 0x5
+	.byte	4                               # 0x4
+	.byte	3                               # 0x3
+	.byte	2                               # 0x2
+	.byte	1                               # 0x1
 	.text
 	.globl	clause_IsUnorderedClause
 	.p2align	5
 	.type	clause_IsUnorderedClause,@function
 clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
-	beqz	$a0, .LBB11_21
+	addi.d	$sp, $sp, -16
+	beqz	$a0, .LBB11_5
 # %bb.1:
 	ld.w	$a2, $a0, 12
-	beqz	$a2, .LBB11_5
+	beqz	$a2, .LBB11_7
 # %bb.2:
 	ld.w	$a4, $a0, 24
 	bstrpick.d	$a1, $a2, 31, 0
@@ -670,21 +678,27 @@ clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 	.p2align	4, , 16
 .LBB11_3:                               # =>This Inner Loop Header: Depth=1
 	addi.w	$a4, $a4, -1
-	bltz	$a4, .LBB11_7
+	bltz	$a4, .LBB11_9
 # %bb.4:                                #   in Loop: Header=BB11_3 Depth=1
 	slli.d	$a7, $a4, 3
 	ldx.d	$a7, $a3, $a7
 	beqz	$a7, .LBB11_3
-	b	.LBB11_8
+	b	.LBB11_10
 .LBB11_5:
-	ld.d	$a1, $a0, 16
-	bnez	$a1, .LBB11_21
-# %bb.6:
-	move	$a3, $zero
-	b	.LBB11_14
+	move	$a1, $zero
+.LBB11_6:                               # %clause_DependsOnSplitLevel.exit
+	move	$a0, $a1
+	addi.d	$sp, $sp, 16
+	ret
 .LBB11_7:
+	ld.d	$a1, $a0, 16
+	bnez	$a1, .LBB11_23
+# %bb.8:
+	move	$a3, $zero
+	b	.LBB11_16
+.LBB11_9:
 	move	$a4, $a6
-.LBB11_8:                               # %vector.ph
+.LBB11_10:                              # %vector.ph
 	alsl.d	$a6, $a4, $a3, 3
 	vldrepl.d	$vr0, $a6, 0
 	pcalau12i	$a6, %pc_hi20(.LCPI11_0)
@@ -703,15 +717,15 @@ clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 	vld	$vr7, $a6, %pc_lo12(.LCPI11_6)
 	pcalau12i	$a6, %pc_hi20(.LCPI11_7)
 	vld	$vr8, $a6, %pc_lo12(.LCPI11_7)
-	addi.w	$a7, $zero, -16
+	addi.w	$t0, $zero, -16
 	vrepli.d	$vr9, 1
 	vrepli.b	$vr10, -1
 	vrepli.d	$vr11, -16
 	ori	$a6, $zero, 32
 	.p2align	4, , 16
-.LBB11_9:                               # %vector.body
+.LBB11_11:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$t0, $a7
+	move	$a7, $t0
 	vsll.d	$vr12, $vr9, $vr8
 	vsll.d	$vr13, $vr9, $vr7
 	vsll.d	$vr14, $vr9, $vr6
@@ -729,84 +743,83 @@ clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 	vand.v	$vr13, $vr13, $vr0
 	vand.v	$vr12, $vr12, $vr0
 	vseqi.d	$vr12, $vr12, 0
+	vxor.v	$vr20, $vr12, $vr10
+	vseqi.d	$vr12, $vr13, 0
 	vxor.v	$vr12, $vr12, $vr10
-	vseqi.d	$vr13, $vr13, 0
+	vpickev.w	$vr12, $vr12, $vr20
+	vseqi.d	$vr13, $vr14, 0
 	vxor.v	$vr13, $vr13, $vr10
-	vpickev.w	$vr13, $vr13, $vr12
-	vseqi.d	$vr14, $vr14, 0
-	vxor.v	$vr14, $vr14, $vr10
-	vseqi.d	$vr15, $vr15, 0
-	vxor.v	$vr15, $vr15, $vr10
-	vpickev.w	$vr14, $vr15, $vr14
-	vpickev.h	$vr13, $vr14, $vr13
-	vpickve2gr.b	$s3, $vr13, 2
-	vpickve2gr.b	$s6, $vr12, 0
-	andi	$a7, $s3, 1
-	move	$t1, $s6
-	bstrins.d	$t1, $a7, 63, 1
-	vpickve2gr.b	$s4, $vr13, 4
-	bstrins.d	$t1, $s4, 2, 2
-	vpickve2gr.b	$s0, $vr13, 6
-	bstrins.d	$t1, $s0, 3, 3
-	vpickve2gr.b	$t7, $vr13, 8
-	bstrins.d	$t1, $t7, 4, 4
-	vpickve2gr.b	$t4, $vr13, 10
-	bstrins.d	$t1, $t4, 5, 5
-	vpickve2gr.b	$t2, $vr13, 12
-	andi	$a7, $t2, 1
-	slli.d	$a7, $a7, 6
-	or	$a7, $t1, $a7
-	vpickve2gr.b	$t1, $vr13, 14
-	andi	$t3, $t1, 1
-	slli.d	$t3, $t3, 7
-	or	$a7, $a7, $t3
-	vseqi.d	$vr12, $vr16, 0
-	vxor.v	$vr12, $vr12, $vr10
-	vpickve2gr.b	$t3, $vr12, 0
-	andi	$t5, $t3, 1
-	slli.d	$t5, $t5, 8
-	or	$a7, $a7, $t5
-	vseqi.d	$vr13, $vr17, 0
-	vxor.v	$vr13, $vr13, $vr10
-	vpickev.w	$vr12, $vr13, $vr12
-	vseqi.d	$vr13, $vr18, 0
-	vxor.v	$vr13, $vr13, $vr10
-	vseqi.d	$vr14, $vr19, 0
+	vseqi.d	$vr14, $vr15, 0
 	vxor.v	$vr14, $vr14, $vr10
 	vpickev.w	$vr13, $vr14, $vr13
 	vpickev.h	$vr12, $vr13, $vr12
-	vpickve2gr.b	$s5, $vr12, 2
-	andi	$t5, $s5, 1
-	slli.d	$t5, $t5, 9
-	or	$a7, $a7, $t5
-	vpickve2gr.b	$s2, $vr12, 4
-	andi	$t5, $s2, 1
-	slli.d	$t5, $t5, 10
-	or	$a7, $a7, $t5
-	vpickve2gr.b	$s1, $vr12, 6
-	andi	$t5, $s1, 1
-	slli.d	$t5, $t5, 11
-	or	$a7, $a7, $t5
-	vpickve2gr.b	$fp, $vr12, 8
-	andi	$t5, $fp, 1
-	slli.d	$t5, $t5, 12
-	or	$a7, $a7, $t5
-	vpickve2gr.b	$t8, $vr12, 10
-	andi	$t5, $t8, 1
-	slli.d	$t5, $t5, 13
-	or	$a7, $a7, $t5
-	vpickve2gr.b	$t6, $vr12, 12
-	andi	$t5, $t6, 1
-	slli.d	$t5, $t5, 14
-	or	$a7, $a7, $t5
-	vpickve2gr.b	$t5, $vr12, 14
-	slli.d	$s7, $t5, 15
-	or	$a7, $a7, $s7
-	bstrpick.d	$s7, $a7, 15, 0
-	addi.d	$a7, $t0, 16
-	bnez	$s7, .LBB11_11
-# %bb.10:                               # %vector.body
-                                        #   in Loop: Header=BB11_9 Depth=1
+	vpickve2gr.b	$t0, $vr12, 2
+	andi	$t0, $t0, 1
+	vpickve2gr.b	$t1, $vr20, 0
+	bstrins.d	$t1, $t0, 63, 1
+	vpickve2gr.b	$t0, $vr12, 4
+	bstrins.d	$t1, $t0, 2, 2
+	vpickve2gr.b	$t0, $vr12, 6
+	bstrins.d	$t1, $t0, 3, 3
+	vpickve2gr.b	$t0, $vr12, 8
+	bstrins.d	$t1, $t0, 4, 4
+	vpickve2gr.b	$t0, $vr12, 10
+	bstrins.d	$t1, $t0, 5, 5
+	vpickve2gr.b	$t0, $vr12, 12
+	andi	$t0, $t0, 1
+	slli.d	$t0, $t0, 6
+	or	$t0, $t1, $t0
+	vpickve2gr.b	$t1, $vr12, 14
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 7
+	or	$t0, $t0, $t1
+	vseqi.d	$vr13, $vr16, 0
+	vxor.v	$vr13, $vr13, $vr10
+	vpickve2gr.b	$t1, $vr13, 0
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 8
+	or	$t0, $t0, $t1
+	vseqi.d	$vr14, $vr17, 0
+	vxor.v	$vr14, $vr14, $vr10
+	vpickev.w	$vr13, $vr14, $vr13
+	vseqi.d	$vr14, $vr18, 0
+	vxor.v	$vr14, $vr14, $vr10
+	vseqi.d	$vr15, $vr19, 0
+	vxor.v	$vr15, $vr15, $vr10
+	vpickev.w	$vr14, $vr15, $vr14
+	vpickev.h	$vr13, $vr14, $vr13
+	vpickve2gr.b	$t1, $vr13, 2
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 9
+	or	$t0, $t0, $t1
+	vpickve2gr.b	$t1, $vr13, 4
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 10
+	or	$t0, $t0, $t1
+	vpickve2gr.b	$t1, $vr13, 6
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 11
+	or	$t0, $t0, $t1
+	vpickve2gr.b	$t1, $vr13, 8
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 12
+	or	$t0, $t0, $t1
+	vpickve2gr.b	$t1, $vr13, 10
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 13
+	or	$t0, $t0, $t1
+	vpickve2gr.b	$t1, $vr13, 12
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 14
+	or	$t0, $t0, $t1
+	vpickve2gr.b	$t1, $vr13, 14
+	slli.d	$t1, $t1, 15
+	or	$t0, $t0, $t1
+	bstrpick.d	$t1, $t0, 15, 0
+	addi.d	$t0, $a7, 16
+	bnez	$t1, .LBB11_13
+# %bb.12:                               # %vector.body
+                                        #   in Loop: Header=BB11_11 Depth=1
 	vadd.d	$vr8, $vr8, $vr11
 	vadd.d	$vr7, $vr7, $vr11
 	vadd.d	$vr6, $vr6, $vr11
@@ -815,143 +828,70 @@ clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 	vadd.d	$vr3, $vr3, $vr11
 	vadd.d	$vr2, $vr2, $vr11
 	vadd.d	$vr1, $vr1, $vr11
-	bne	$t0, $a6, .LBB11_9
-.LBB11_11:                              # %middle.split
-	bstrpick.d	$a6, $s7, 15, 0
-	beqz	$a6, .LBB11_13
-# %bb.12:                               # %vector.early.exit
-	andi	$a5, $s3, 15
-	andi	$a6, $s6, 16
-	sltu	$t0, $a5, $a6
-	masknez	$a5, $a5, $t0
-	maskeqz	$a6, $a6, $t0
-	or	$a5, $a6, $a5
-	andi	$a6, $s4, 14
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $s0, 13
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t7, 12
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t4, 11
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t2, 10
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t1, 9
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t3, 8
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $s5, 7
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $s2, 6
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $s1, 5
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $fp, 4
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t8, 3
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t6, 2
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
-	andi	$a6, $t5, 1
-	sltu	$t0, $a6, $a5
-	maskeqz	$a5, $a5, $t0
-	masknez	$a6, $a6, $t0
-	or	$a5, $a5, $a6
+	bne	$a7, $a6, .LBB11_11
+.LBB11_13:                              # %middle.split
+	bstrpick.d	$a6, $t1, 15, 0
+	beqz	$a6, .LBB11_15
+# %bb.14:                               # %vector.early.exit
+	pcalau12i	$a5, %pc_hi20(.LCPI11_8)
+	vld	$vr0, $a5, %pc_lo12(.LCPI11_8)
+	vpickev.b	$vr1, $vr13, $vr12
+	vand.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a5, $vr0, 0
 	ori	$a6, $zero, 16
 	sub.d	$a5, $a6, $a5
 	andi	$a5, $a5, 255
-	add.d	$a5, $a5, $a7
+	add.d	$a5, $a5, $t0
 	slli.d	$a5, $a5, 32
 	ori	$a6, $zero, 0
 	lu32i.d	$a6, 63
 	sub.d	$a5, $a6, $a5
 	srai.d	$a5, $a5, 32
-.LBB11_13:                              # %clause_CheckSplitLevel.exit
+.LBB11_15:                              # %clause_CheckSplitLevel.exit
 	slli.d	$a4, $a4, 6
 	add.d	$a4, $a5, $a4
-	bne	$a4, $a1, .LBB11_21
-.LBB11_14:
+	bne	$a4, $a1, .LBB11_23
+.LBB11_16:
 	ld.w	$a1, $a0, 68
-	bnez	$a1, .LBB11_17
-# %bb.15:
+	bnez	$a1, .LBB11_19
+# %bb.17:
 	ld.w	$a1, $a0, 72
-	bnez	$a1, .LBB11_17
-# %bb.16:                               # %clause_IsEmptyClause.exit
+	bnez	$a1, .LBB11_19
+# %bb.18:                               # %clause_IsEmptyClause.exit
 	ld.w	$a1, $a0, 64
-	beqz	$a1, .LBB11_25
-.LBB11_17:                              # %clause_IsEmptyClause.exit.thread
+	beqz	$a1, .LBB11_26
+.LBB11_19:                              # %clause_IsEmptyClause.exit.thread
 	ld.d	$a1, $a0, 56
 	ld.d	$a1, $a1, 0
-	beqz	$a1, .LBB11_21
-# %bb.18:
+	beqz	$a1, .LBB11_23
+# %bb.20:
 	ld.d	$a4, $a1, 24
 	pcalau12i	$a1, %got_pc_hi20(fol_NOT)
 	ld.d	$a5, $a1, %got_pc_lo12(fol_NOT)
 	ld.w	$a1, $a4, 0
 	ld.w	$a5, $a5, 0
-	bne	$a1, $a5, .LBB11_20
-# %bb.19:
+	bne	$a1, $a5, .LBB11_22
+# %bb.21:
 	ld.d	$a1, $a4, 16
 	ld.d	$a1, $a1, 8
 	ld.w	$a1, $a1, 0
-.LBB11_20:                              # %clause_LiteralPredicate.exit.i
+.LBB11_22:                              # %clause_LiteralPredicate.exit.i
 	addi.w	$a4, $zero, -1
-	bge	$a4, $a1, .LBB11_23
-.LBB11_21:
+	bge	$a4, $a1, .LBB11_24
+.LBB11_23:
 	move	$a1, $zero
-.LBB11_22:                              # %clause_DependsOnSplitLevel.exit
 	move	$a0, $a1
-	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	addi.d	$sp, $sp, 16
 	ret
-.LBB11_23:                              # %clause_LiteralIsLiteral.exit
+.LBB11_24:                              # %clause_LiteralIsLiteral.exit
 	pcalau12i	$a4, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a4, $a4, %got_pc_lo12(symbol_TYPEMASK)
 	ld.w	$a4, $a4, 0
@@ -959,34 +899,38 @@ clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 	and	$a4, $a4, $a1
 	addi.d	$a1, $a4, -2
 	sltui	$a1, $a1, 1
-	beqz	$a2, .LBB11_22
-# %bb.24:                               # %clause_LiteralIsLiteral.exit
+	beqz	$a2, .LBB11_6
+# %bb.25:                               # %clause_LiteralIsLiteral.exit
 	ori	$a5, $zero, 2
-	beq	$a4, $a5, .LBB11_26
-	b	.LBB11_22
-.LBB11_25:
-	beqz	$a2, .LBB11_29
+	beq	$a4, $a5, .LBB11_27
+	b	.LBB11_6
 .LBB11_26:
+	beqz	$a2, .LBB11_30
+.LBB11_27:
 	ld.w	$a0, $a0, 24
-	beqz	$a0, .LBB11_21
-# %bb.27:
+	beqz	$a0, .LBB11_23
+# %bb.28:
 	ori	$a1, $zero, 63
 	sltu	$a1, $a1, $a2
 	addi.d	$a4, $a2, -64
 	bstrpick.d	$a4, $a4, 31, 6
 	addi.d	$a4, $a4, 1
 	maskeqz	$a1, $a4, $a1
-	bgeu	$a1, $a0, .LBB11_21
-# %bb.28:
+	bgeu	$a1, $a0, .LBB11_23
+# %bb.29:
 	addi.w	$a0, $a1, 0
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $a3, $a0
 	srl.d	$a0, $a0, $a2
 	andi	$a1, $a0, 1
-	b	.LBB11_22
-.LBB11_29:
+	move	$a0, $a1
+	addi.d	$sp, $sp, 16
+	ret
+.LBB11_30:
 	ori	$a1, $zero, 1
-	b	.LBB11_22
+	move	$a0, $a1
+	addi.d	$sp, $sp, 16
+	ret
 .Lfunc_end11:
 	.size	clause_IsUnorderedClause, .Lfunc_end11-clause_IsUnorderedClause
                                         # -- End function

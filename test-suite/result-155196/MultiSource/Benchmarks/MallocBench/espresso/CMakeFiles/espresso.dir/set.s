@@ -601,10 +601,10 @@ set_andp:                               # @set_andp
 	bnez	$t1, .LBB11_9
 # %bb.10:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	bne	$a3, $a6, .LBB11_3
 	b	.LBB11_5
@@ -695,10 +695,10 @@ set_orp:                                # @set_orp
 	bnez	$t1, .LBB12_9
 # %bb.10:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
 	bne	$a3, $a6, .LBB12_3
 	b	.LBB12_5

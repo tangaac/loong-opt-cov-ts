@@ -1,6 +1,25 @@
 	.file	"ShrinkDecoder.cpp"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo
+.LCPI0_0:
+	.byte	16                              # 0x10
+	.byte	15                              # 0xf
+	.byte	14                              # 0xe
+	.byte	13                              # 0xd
+	.byte	12                              # 0xc
+	.byte	11                              # 0xb
+	.byte	10                              # 0xa
+	.byte	9                               # 0x9
+	.byte	8                               # 0x8
+	.byte	7                               # 0x7
+	.byte	6                               # 0x6
+	.byte	5                               # 0x5
+	.byte	4                               # 0x4
+	.byte	3                               # 0x3
+	.byte	2                               # 0x2
+	.byte	1                               # 0x1
 	.text
-	.globl	_ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo # -- Begin function _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo
+	.globl	_ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo
 	.p2align	5
 	.type	_ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo,@function
 _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo: # @_ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStreamPKyS7_P21ICompressProgressInfo
@@ -813,99 +832,19 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	beqz	$a1, .LBB0_132
 # %bb.113:                              # %vector.early.exit
                                         #   in Loop: Header=BB0_10 Depth=1
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_0)
 	vsrai.b	$vr0, $vr0, 7
+	vand.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
 	vpickve2gr.b	$a1, $vr0, 0
-	andi	$a1, $a1, 16
-	vpickve2gr.b	$a2, $vr0, 1
-	andi	$a2, $a2, 15
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a1, $a1, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 2
-	andi	$a2, $a2, 14
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 3
-	andi	$a2, $a2, 13
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 4
-	andi	$a2, $a2, 12
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 5
-	andi	$a2, $a2, 11
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 6
-	andi	$a2, $a2, 10
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 7
-	andi	$a2, $a2, 9
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 8
-	andi	$a2, $a2, 8
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 9
-	andi	$a2, $a2, 7
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 10
-	andi	$a2, $a2, 6
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 11
-	andi	$a2, $a2, 5
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 12
-	andi	$a2, $a2, 4
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 13
-	andi	$a2, $a2, 3
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 14
-	andi	$a2, $a2, 2
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr0, 15
-	andi	$a2, $a2, 1
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
 	ori	$a2, $zero, 16
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255

@@ -409,10 +409,10 @@ main:                                   # @main
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB0_11 Depth=1
 	vxor.v	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
-	vxor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload

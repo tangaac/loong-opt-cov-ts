@@ -3002,8 +3002,8 @@ DoAssignIteration:                      # @DoAssignIteration
 	vmin.d	$vr2, $vr2, $vr3
 	vmin.d	$vr0, $vr0, $vr2
 	ld.d	$a2, $a0, 400
-	vreplvei.d	$vr2, $vr0, 1
-	vmin.d	$vr0, $vr0, $vr2
+	vbsrl.v	$vr2, $vr0, 8
+	vmin.d	$vr0, $vr2, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
 	slt	$a4, $a2, $a3
 	masknez	$a3, $a3, $a4
@@ -3211,8 +3211,8 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_22 Depth=2
 	vmin.d	$vr0, $vr0, $vr1
 	ldx.d	$a4, $a3, $t4
-	vreplvei.d	$vr1, $vr0, 1
-	vmin.d	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.d	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a5, $vr0, 0
 	slt	$a6, $a4, $a5
 	masknez	$a5, $a5, $a6

@@ -3823,10 +3823,10 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a2, .LBB0_580
 # %bb.581:                              # %middle.block3988
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s6, $vr0, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_584
@@ -4789,10 +4789,10 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a2, .LBB0_720
 # %bb.721:                              # %middle.block3975
 	vmin.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmin.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmin.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmin.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmin.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s6, $vr0, 0
 	beq	$a0, $s7, .LBB0_724
 .LBB0_722:                              # %.lr.ph3469.preheader3999

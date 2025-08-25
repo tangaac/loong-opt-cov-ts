@@ -113,10 +113,10 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	bnez	$a3, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a1, $fp, .LBB0_9
 .LBB0_7:                                # %.preheader.preheader31
@@ -504,10 +504,10 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	bnez	$a3, .LBB4_21
 # %bb.22:                               # %middle.block
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.wu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a1, $s5, .LBB4_25
 .LBB4_23:                               # %.preheader.i.preheader

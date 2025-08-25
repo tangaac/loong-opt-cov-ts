@@ -228,11 +228,11 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vmax.hu	$vr0, $vr0, $vr3
 	vmax.hu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
-	vmax.hu	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
-	vmax.hu	$vr0, $vr0, $vr1
-	vreplvei.h	$vr1, $vr0, 1
-	vmax.hu	$vr0, $vr0, $vr1
+	vmax.hu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.hu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a0, $vr0, 0
 	bstrpick.d	$a0, $a0, 15, 0
 	move	$s2, $a2

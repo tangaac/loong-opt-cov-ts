@@ -6106,8 +6106,8 @@ add_Reduction:                          # @add_Reduction
 	bnez	$t1, .LBB40_7
 # %bb.8:                                # %middle.block
 	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$t0, $a7, .LBB40_11
 .LBB40_9:                               # %scalar.ph.preheader
@@ -6198,8 +6198,8 @@ add_Reduction:                          # @add_Reduction
 # %bb.22:                               # %middle.block104
                                         #   in Loop: Header=BB40_14 Depth=1
 	vmax.wu	$vr1, $vr1, $vr2
-	vreplvei.w	$vr2, $vr1, 1
-	vmax.wu	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.wu	$vr1, $vr2, $vr1
 	vpickve2gr.w	$t4, $vr1, 0
 	beq	$t3, $t2, .LBB40_25
 .LBB40_23:                              # %scalar.ph92.preheader

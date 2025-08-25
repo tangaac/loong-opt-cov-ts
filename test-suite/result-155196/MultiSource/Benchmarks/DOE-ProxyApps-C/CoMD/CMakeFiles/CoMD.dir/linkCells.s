@@ -1097,10 +1097,10 @@ maxOccupancy:                           # @maxOccupancy
 	bnez	$a4, .LBB8_9
 # %bb.10:                               # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vstelm.w	$vr0, $sp, 4, 0
 	beq	$a2, $a1, .LBB8_7
 # %bb.11:

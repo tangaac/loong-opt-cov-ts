@@ -2795,10 +2795,10 @@ re1:                                    # @re1
 	bne	$a4, $a3, .LBB7_6
 # %bb.7:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s7, $vr0, 0
 	bne	$s6, $a2, .LBB7_9
 	b	.LBB7_11

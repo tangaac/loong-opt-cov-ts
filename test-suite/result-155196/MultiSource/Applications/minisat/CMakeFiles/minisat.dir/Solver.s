@@ -857,10 +857,10 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 	bnez	$a3, .LBB3_27
 # %bb.28:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a2, $vr0, 0
 	beq	$a1, $a0, .LBB3_31
 .LBB3_29:                               # %scalar.ph.preheader
@@ -2451,10 +2451,10 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	bnez	$a7, .LBB13_58
 # %bb.59:                               # %middle.block326
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s2, $vr0, 0
 	beq	$a4, $a5, .LBB13_62
 .LBB13_60:                              # %scalar.ph314.preheader

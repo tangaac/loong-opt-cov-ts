@@ -368,10 +368,10 @@ choose_table_short:                     # @choose_table_short
 	bnez	$a7, .LBB1_5
 # %bb.6:                                # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	beq	$a4, $a5, .LBB1_8
 	.p2align	4, , 16
@@ -1767,10 +1767,10 @@ choose_table:                           # @choose_table
 	bnez	$t0, .LBB3_5
 # %bb.6:                                # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	beq	$a3, $a6, .LBB3_8
 	.p2align	4, , 16
@@ -2817,10 +2817,10 @@ best_scalefac_store:                    # @best_scalefac_store
 	bnez	$t2, .LBB4_51
 # %bb.52:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
-	vor.v	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a7, $vr0, 0
 	beq	$t1, $t0, .LBB4_55
 .LBB4_53:                               # %scalar.ph.preheader

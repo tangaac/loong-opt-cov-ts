@@ -2254,8 +2254,8 @@ build_scanners:                         # @build_scanners
 # %bb.352:                              # %middle.block412
                                         #   in Loop: Header=BB0_347 Depth=3
 	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s1, $vr0, 0
 	beq	$a7, $a6, .LBB0_346
 .LBB0_353:                              # %scalar.ph401.preheader

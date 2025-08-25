@@ -11992,10 +11992,10 @@ s331:                                   # @s331
 # %bb.4:                                # %middle.block
                                         #   in Loop: Header=BB6_2 Depth=1
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vmax.w	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.w	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	lu12i.w	$a1, -524288
 	xor	$a1, $a0, $a1
@@ -12075,42 +12075,69 @@ max:                                    # @max
 .Lfunc_end7:
 	.size	max, .Lfunc_end7-max
                                         # -- End function
-	.globl	s332                            # -- Begin function s332
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function s332
+.LCPI8_0:
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	8                               # 0x8
+	.byte	12                              # 0xc
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.text
+	.globl	s332
 	.p2align	5
 	.type	s332,@function
 s332:                                   # @s332
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
                                         # kill: def $f0 killed $f0 def $vr0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.89)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.89)
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(ntimes)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB8_9
 # %bb.1:                                # %vector.ph.preheader
 	move	$s8, $zero
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vreplvei.w	$vr3, $vr0, 0
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$fp, $a0, %pc_lo12(global_data)
 	lu12i.w	$a0, 7
 	ori	$s7, $a0, 3324
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI8_0)
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	lu12i.w	$a0, 4128
+	ori	$a0, $a0, 772
+	vreplgr2vr.w	$vr0, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	lu12i.w	$a0, 31
 	ori	$a0, $a0, 1040
 	add.d	$s0, $fp, $a0
@@ -12132,31 +12159,20 @@ s332:                                   # @s332
 	lu12i.w	$a0, 284
 	ori	$a0, $a0, 1376
 	add.d	$s6, $fp, $a0
-	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr3, $sp, 48                   # 16-byte Folded Spill
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_2:                                # %vector.early.exit
                                         #   in Loop: Header=BB8_4 Depth=1
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
+	vshuf.b	$vr1, $vr0, $vr1, $vr2
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vand.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
 	vpickve2gr.b	$a1, $vr1, 0
-	andi	$a1, $a1, 4
-	vpickve2gr.b	$a2, $vr1, 4
-	andi	$a2, $a2, 3
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a1, $a1, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr1, 8
-	andi	$a2, $a2, 2
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
-	vpickve2gr.b	$a2, $vr1, 12
-	andi	$a2, $a2, 1
-	sltu	$a3, $a2, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a2, $a2, $a3
-	or	$a1, $a1, $a2
 	ori	$a2, $zero, 4
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255
@@ -12167,7 +12183,7 @@ s332:                                   # @s332
 	ffint.s.l	$fa0, $fa0
 .LBB8_3:                                # %.loopexit
                                         #   in Loop: Header=BB8_4 Depth=1
-	vst	$vr1, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 80                   # 16-byte Folded Spill
 	fadd.s	$fa0, $fa1, $fa0
 	move	$a0, $fp
 	move	$a1, $s0
@@ -12179,10 +12195,10 @@ s332:                                   # @s332
 	move	$a7, $s6
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	addi.w	$s8, $s8, 1
-	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 48                   # 16-byte Folded Reload
 	bge	$s8, $a0, .LBB8_10
 .LBB8_4:                                # %vector.ph
                                         # =>This Loop Header: Depth=1
@@ -12216,7 +12232,7 @@ s332:                                   # @s332
 	b	.LBB8_3
 .LBB8_9:
                                         # implicit-def: $f0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 .LBB8_10:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str.138)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.138)
@@ -12226,7 +12242,7 @@ s332:                                   # @s332
 	pcalau12i	$a0, %pc_hi20(digits)
 	ld.w	$a1, $a0, %pc_lo12(digits)
 	pcalau12i	$a0, %pc_hi20(temp)
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	fst.s	$fa0, $a0, %pc_lo12(temp)
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
@@ -12235,18 +12251,18 @@ s332:                                   # @s332
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end8:
 	.size	s332, .Lfunc_end8-s332

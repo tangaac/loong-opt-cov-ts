@@ -614,8 +614,8 @@ main:                                   # @main
 # %bb.57:                               # %middle.block222
                                         #   in Loop: Header=BB0_40 Depth=1
 	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a3, $a0, .LBB0_60
 .LBB0_58:                               # %scalar.ph210.preheader
@@ -680,8 +680,8 @@ main:                                   # @main
 # %bb.65:                               # %middle.block
                                         #   in Loop: Header=BB0_40 Depth=1
 	vmax.wu	$vr0, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 1
-	vmax.wu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$a6, $a2, .LBB0_68
 .LBB0_66:                               # %scalar.ph.preheader

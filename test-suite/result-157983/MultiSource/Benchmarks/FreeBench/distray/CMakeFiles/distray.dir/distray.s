@@ -1074,10 +1074,13 @@ IntersectObjs:                          # @IntersectObjs
 	vreplvei.d	$vr1, $vr0, 0
 	ftintrz.w.d	$fa1, $fa1
 	movfr2gr.s	$a5, $fa1
+	vinsgr2vr.w	$vr1, $a5, 0
 	vreplvei.d	$vr0, $vr0, 1
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a6, $fa0
-	add.d	$a5, $a6, $a5
+	movfr2gr.s	$a5, $fa0
+	vinsgr2vr.w	$vr0, $a5, 0
+	vadd.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a5, $vr0, 0
 	andi	$a6, $a5, 1
 	slli.d	$a6, $a6, 5
 	bstrins.d	$a6, $a5, 4, 4
@@ -1170,7 +1173,7 @@ IntersectObjs:                          # @IntersectObjs
 	fsqrt.d	$fa1, $fa0
 	fcmp.cor.d	$fcc0, $fa1, $fa1
 	bceqz	$fcc0, .LBB2_34
-.LBB2_13:                               # %.split147
+.LBB2_13:                               # %.split148
 	fsub.d	$fa0, $fs5, $fa1
 	fadd.d	$fa1, $fs5, $fa1
 	fcmp.clt.d	$fcc0, $fa0, $fa5
@@ -1212,7 +1215,7 @@ IntersectObjs:                          # @IntersectObjs
 	fsqrt.d	$fa1, $fa0
 	fcmp.cor.d	$fcc0, $fa1, $fa1
 	bceqz	$fcc0, .LBB2_35
-.LBB2_19:                               # %.split149
+.LBB2_19:                               # %.split150
 	fsub.d	$fa0, $fs7, $fa1
 	fadd.d	$fa1, $fs7, $fa1
 	fcmp.clt.d	$fcc0, $fa0, $fa5
@@ -1254,7 +1257,7 @@ IntersectObjs:                          # @IntersectObjs
 	fsqrt.d	$fa2, $fa1
 	fcmp.cor.d	$fcc0, $fa2, $fa2
 	bceqz	$fcc0, .LBB2_36
-.LBB2_25:                               # %.split151
+.LBB2_25:                               # %.split152
 	fsub.d	$fa1, $fs3, $fa2
 	fadd.d	$fa2, $fs3, $fa2
 	fcmp.clt.d	$fcc0, $fa1, $fa5
@@ -1440,7 +1443,7 @@ IntersectObjs:                          # @IntersectObjs
 	move	$a4, $s0
 	fmov.d	$fa1, $fa0
 	b	.LBB2_7
-.LBB2_34:                               # %call.sqrt148
+.LBB2_34:                               # %call.sqrt149
 	move	$s0, $a4
 	move	$s3, $a2
 	move	$s1, $a0
@@ -1467,7 +1470,7 @@ IntersectObjs:                          # @IntersectObjs
 	move	$a4, $s0
 	fmov.d	$fa1, $fa0
 	b	.LBB2_13
-.LBB2_35:                               # %call.sqrt150
+.LBB2_35:                               # %call.sqrt151
 	move	$s0, $a4
 	move	$s3, $a2
 	move	$s1, $a0
@@ -1494,7 +1497,7 @@ IntersectObjs:                          # @IntersectObjs
 	move	$a4, $s0
 	fmov.d	$fa1, $fa0
 	b	.LBB2_19
-.LBB2_36:                               # %call.sqrt152
+.LBB2_36:                               # %call.sqrt153
 	fst.d	$fa0, $sp, 56                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fa1
 	move	$s0, $a4

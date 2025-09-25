@@ -1807,10 +1807,9 @@ init_lists_for_non_reference_loss:      # @init_lists_for_non_reference_loss
 .LBB5_52:                               # %.loopexit203
 	bnez	$a5, .LBB5_54
 # %bb.53:
-	ld.d	$a2, $a1, 8
-	ld.d	$a3, $a1, 0
-	st.d	$a2, $a1, 0
-	st.d	$a3, $a1, 8
+	vld	$vr0, $a1, 0
+	vshuf4i.d	$vr0, $vr0, 1
+	vst	$vr0, $a1, 0
 .LBB5_54:
 	ld.d	$a1, $s2, %pc_lo12(active_sps)
 	ldptr.w	$a1, $a1, 2060

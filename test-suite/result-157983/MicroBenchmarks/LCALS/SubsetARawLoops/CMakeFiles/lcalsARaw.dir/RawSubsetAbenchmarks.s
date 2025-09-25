@@ -1904,9 +1904,9 @@ _ZL21BM_DEL_DOT_VEC_2D_RAWRN9benchmark5StateE: # @_ZL21BM_DEL_DOT_VEC_2D_RAWRN9b
 	fadd.d	$fa4, $ft0, $fa4
 	fadd.d	$fa4, $fa4, $fa6
 	fdiv.d	$fa4, $fa7, $fa4
-	vreplvei.d	$vr6, $vr5, 0
-	vreplvei.d	$vr5, $vr5, 1
-	fadd.d	$fa5, $fa6, $fa5
+	vreplvei.d	$vr6, $vr5, 1
+	vfadd.d	$vr5, $vr5, $vr6
+	vreplvei.d	$vr5, $vr5, 0
 	fadd.d	$fa4, $fa4, $fa5
 	fstx.d	$fa4, $s0, $t4
 	addi.d	$t2, $t2, -1

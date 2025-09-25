@@ -1196,9 +1196,9 @@ _ZL6createP6node_tii3v_tS1_d:           # @_ZL6createP6node_tii3v_tS1_d
 	vfadd.d	$vr0, $vr2, $vr0
 	fadd.d	$fa1, $fa4, $fa1
 	vfmul.d	$vr2, $vr0, $vr0
-	vreplvei.d	$vr3, $vr2, 0
-	vreplvei.d	$vr2, $vr2, 1
-	fadd.d	$fa2, $fa3, $fa2
+	vreplvei.d	$vr3, $vr2, 1
+	vfadd.d	$vr2, $vr2, $vr3
+	vreplvei.d	$vr2, $vr2, 0
 	fmul.d	$fa3, $fa1, $fa1
 	fadd.d	$fa2, $fa3, $fa2
 	fclass.d	$fa3, $fa2
@@ -1445,9 +1445,9 @@ _ZL6createP6node_tii3v_tS1_d:           # @_ZL6createP6node_tii3v_tS1_d
 	vfadd.d	$vr0, $vr2, $vr0
 	fadd.d	$fa1, $fa4, $fa1
 	vfmul.d	$vr2, $vr0, $vr0
-	vreplvei.d	$vr3, $vr2, 0
-	vreplvei.d	$vr2, $vr2, 1
-	fadd.d	$fa2, $fa3, $fa2
+	vreplvei.d	$vr3, $vr2, 1
+	vfadd.d	$vr2, $vr2, $vr3
+	vreplvei.d	$vr2, $vr2, 0
 	fmul.d	$fa3, $fa1, $fa1
 	fadd.d	$fa2, $fa3, $fa2
 	fclass.d	$fa3, $fa2

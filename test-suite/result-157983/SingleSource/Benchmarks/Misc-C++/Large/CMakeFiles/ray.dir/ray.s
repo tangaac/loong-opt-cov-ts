@@ -181,9 +181,9 @@ _Z9ray_traceRK3VecRK3RayRK5Scene:       # @_Z9ray_traceRK3VecRK3RayRK5Scene
 	vfmul.d	$vr0, $vr2, $vr4
 	fld.d	$fa6, $sp, 136
 	fld.d	$fa5, $s1, 16
-	vreplvei.d	$vr7, $vr0, 0
-	vreplvei.d	$vr0, $vr0, 1
-	fadd.d	$fa0, $fa7, $fa0
+	vreplvei.d	$vr7, $vr0, 1
+	vfadd.d	$vr0, $vr0, $vr7
+	vreplvei.d	$vr0, $vr0, 0
 	fmul.d	$fa7, $fa6, $fa5
 	fadd.d	$fs0, $fa0, $fa7
 	movgr2fr.d	$fa0, $zero
@@ -1016,9 +1016,9 @@ main:                                   # @main
 	vld	$vr3, $sp, 96                   # 16-byte Folded Reload
 	vfmul.d	$vr4, $vr1, $vr3
 	fld.d	$fa3, $sp, 304
-	vreplvei.d	$vr5, $vr4, 0
-	vreplvei.d	$vr4, $vr4, 1
-	fsub.d	$fa4, $fa5, $fa4
+	vreplvei.d	$vr5, $vr4, 1
+	vfsub.d	$vr4, $vr4, $vr5
+	vreplvei.d	$vr4, $vr4, 0
 	fld.d	$fa5, $sp, 88                   # 8-byte Folded Reload
 	fmul.d	$fa5, $fa3, $fa5
 	fadd.d	$fs3, $fa4, $fa5
@@ -1424,17 +1424,16 @@ _ZN5GroupD0Ev:                          # @_ZN5GroupD0Ev
 _ZNK5Group9intersectERKSt4pairId3VecERK3Ray: # @_ZNK5Group9intersectERKSt4pairId3VecERK3Ray
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1443,40 +1442,41 @@ _ZNK5Group9intersectERKSt4pairId3VecERK3Ray: # @_ZNK5Group9intersectERKSt4pairId
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
-	.cfi_offset 57, -72
-	vld	$vr0, $a2, 16
 	move	$s0, $a3
 	move	$fp, $a0
-	vst	$vr0, $sp, 56
-	fld.d	$fa0, $a1, 16
-	fld.d	$fa1, $a3, 0
-	fld.d	$fa2, $a3, 24
-	vld	$vr3, $a1, 24
-	vld	$vr4, $a3, 8
-	vld	$vr5, $a3, 32
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa1, $fa0, $fa2
+	vld	$vr0, $a2, 16
+	fld.d	$fa1, $a1, 32
+	fld.d	$fa2, $a3, 16
+	vld	$vr3, $a1, 16
+	vld	$vr4, $a3, 0
+	vst	$vr0, $sp, 80
+	vld	$vr0, $a3, 24
+	fsub.d	$fa1, $fa1, $fa2
 	vfsub.d	$vr2, $vr3, $vr4
-	vfmul.d	$vr3, $vr2, $vr5
-	vreplvei.d	$vr4, $vr3, 0
-	fadd.d	$fa1, $fa1, $fa4
-	vld	$vr4, $a2, 0
-	vreplvei.d	$vr3, $vr3, 1
-	fadd.d	$fs0, $fa1, $fa3
-	fmul.d	$fa0, $fa0, $fa0
-	vfmul.d	$vr1, $vr2, $vr2
-	vreplvei.d	$vr2, $vr1, 0
-	fadd.d	$fa0, $fa0, $fa2
-	vreplvei.d	$vr1, $vr1, 1
-	fld.d	$fa2, $a1, 40
-	fadd.d	$fa0, $fa0, $fa1
-	fmul.d	$fa1, $fs0, $fs0
-	fsub.d	$fa0, $fa1, $fa0
-	fmul.d	$fa1, $fa2, $fa2
+	fld.d	$fa3, $a3, 40
+	vori.b	$vr4, $vr2, 0
+	vshuf4i.d	$vr4, $vr0, 12
+	vfmul.d	$vr4, $vr2, $vr4
+	vshuf4i.d	$vr0, $vr2, 3
+	vshuf4i.d	$vr2, $vr0, 1
+	vfmul.d	$vr0, $vr2, $vr0
+	vld	$vr2, $a2, 0
+	vreplvei.d	$vr1, $vr1, 0
+	vfadd.d	$vr0, $vr4, $vr0
+	vori.b	$vr4, $vr1, 0
+	vextrins.d	$vr4, $vr3, 16
+	vfmul.d	$vr1, $vr1, $vr4
+	vfadd.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr4, $vr0, 1
+	fld.d	$fa1, $a1, 40
+	fmul.d	$fa3, $fa4, $fa4
+	vreplvei.d	$vr0, $vr0, 0
+	fsub.d	$fa0, $fa3, $fa0
+	fmul.d	$fa1, $fa1, $fa1
 	fadd.d	$fa0, $fa1, $fa0
-	movgr2fr.d	$fs1, $zero
-	fcmp.cule.d	$fcc0, $fs1, $fa0
-	vst	$vr4, $sp, 40
+	movgr2fr.d	$fs0, $zero
+	fcmp.cule.d	$fcc0, $fs0, $fa0
+	vst	$vr2, $sp, 64
 	bcnez	$fcc0, .LBB14_3
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(infinity)
@@ -1493,13 +1493,13 @@ _ZNK5Group9intersectERKSt4pairId3VecERK3Ray: # @_ZNK5Group9intersectERKSt4pairId
 	fcmp.cor.d	$fcc0, $fa1, $fa1
 	bceqz	$fcc0, .LBB14_10
 .LBB14_4:                               # %.split
-	fadd.d	$fa0, $fs0, $fa1
+	fadd.d	$fa0, $fa4, $fa1
 	pcalau12i	$a0, %pc_hi20(infinity)
 	fld.d	$fa2, $a0, %pc_lo12(infinity)
-	fsub.d	$fa1, $fs0, $fa1
-	fcmp.clt.d	$fcc0, $fs1, $fa1
+	fsub.d	$fa1, $fa4, $fa1
+	fcmp.clt.d	$fcc0, $fs0, $fa1
 	fsel	$fa1, $fa0, $fa1, $fcc0
-	fcmp.clt.d	$fcc0, $fa0, $fs1
+	fcmp.clt.d	$fcc0, $fa0, $fs0
 	fsel	$fa0, $fa1, $fa2, $fcc0
 	fld.d	$fa1, $a2, 0
 	fcmp.cult.d	$fcc0, $fa0, $fa1
@@ -1509,47 +1509,48 @@ _ZNK5Group9intersectERKSt4pairId3VecERK3Ray: # @_ZNK5Group9intersectERKSt4pairId
 	addi.d	$s2, $a1, 48
 	beq	$s1, $s2, .LBB14_8
 # %bb.6:                                # %.lr.ph
-	addi.d	$s3, $sp, 16
-	addi.d	$s4, $sp, 48
+	addi.d	$s3, $sp, 40
+	addi.d	$s4, $sp, 72
 	.p2align	4, , 16
 .LBB14_7:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s1, 16
 	ld.d	$a0, $a1, 0
 	ld.d	$a4, $a0, 16
-	addi.d	$a0, $sp, 8
-	addi.d	$a2, $sp, 40
+	addi.d	$a0, $sp, 32
+	addi.d	$a2, $sp, 64
 	move	$a3, $s0
 	jirl	$ra, $a4, 0
 	ld.d	$a0, $s3, 0
 	vld	$vr0, $s3, 8
-	fld.d	$fa1, $sp, 8
+	fld.d	$fa1, $sp, 32
 	st.d	$a0, $s4, 0
 	vst	$vr0, $s4, 8
 	ld.d	$s1, $s1, 0
-	fst.d	$fa1, $sp, 40
+	fst.d	$fa1, $sp, 64
 	bne	$s1, $s2, .LBB14_7
 .LBB14_8:                               # %._crit_edge
-	vld	$vr0, $sp, 56
-	vld	$vr1, $sp, 40
+	vld	$vr0, $sp, 80
+	vld	$vr1, $sp, 64
 .LBB14_9:
 	vst	$vr0, $fp, 16
 	vst	$vr1, $fp, 0
-	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB14_10:                              # %call.sqrt
 	move	$s1, $a2
 	move	$s2, $a1
+	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
+	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
 	move	$a1, $s2
 	move	$a2, $s1
 	fmov.d	$fa1, $fa0

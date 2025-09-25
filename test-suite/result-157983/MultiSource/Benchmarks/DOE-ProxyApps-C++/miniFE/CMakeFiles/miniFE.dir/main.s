@@ -21842,13 +21842,12 @@ _ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_: # @_ZN6miniFE4Hex818gradien
 	vshuf4i.d	$vr5, $vr0, 1
 	vfmul.d	$vr3, $vr5, $vr15
 	vfadd.d	$vr3, $vr6, $vr3
-	vreplvei.d	$vr4, $vr3, 0
-	vreplvei.d	$vr5, $vr3, 1
-	fmul.d	$fa4, $fa4, $fa5
-	vreplvei.d	$vr5, $vr0, 0
-	vreplvei.d	$vr6, $vr0, 1
-	fmul.d	$fa5, $fa5, $fa6
-	fsub.d	$fa4, $fa4, $fa5
+	vpackev.d	$vr4, $vr0, $vr3
+	vpackod.d	$vr5, $vr0, $vr3
+	vfmul.d	$vr4, $vr4, $vr5
+	vreplvei.d	$vr5, $vr4, 0
+	vreplvei.d	$vr4, $vr4, 1
+	fsub.d	$fa4, $fa5, $fa4
 	vfmul.d	$vr3, $vr2, $vr3
 	vshuf4i.d	$vr2, $vr0, 1
 	vfmul.d	$vr0, $vr2, $vr0

@@ -4771,28 +4771,26 @@ _ZN9benchmark8internal9Benchmark11ArgsProductERKSt6vectorIS2_IlSaIlEESaIS4_EE: #
 	slli.d	$a3, $a0, 5
 	alsl.d	$a0, $a0, $a3, 4
 	add.d	$a0, $s7, $a0
-	addi.d	$a4, $s7, 32
-	ori	$a3, $zero, 1
-	move	$a5, $a2
-	ori	$a6, $zero, 1
+	vrepli.d	$vr0, 1
+	move	$a3, $s7
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB25_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a4, -32
-	ld.d	$t0, $a4, -8
-	ld.d	$t1, $a4, -24
-	ld.d	$t2, $a4, 0
-	sub.d	$a7, $t1, $a7
-	sub.d	$t0, $t2, $t0
-	srai.d	$a7, $a7, 3
-	srai.d	$t0, $t0, 3
-	mul.d	$a3, $a7, $a3
-	mul.d	$a6, $t0, $a6
-	addi.d	$a5, $a5, -2
-	addi.d	$a4, $a4, 48
-	bnez	$a5, .LBB25_6
+	vld	$vr1, $a3, 0
+	vld	$vr2, $a3, 24
+	vpackod.d	$vr3, $vr2, $vr1
+	vpackev.d	$vr1, $vr2, $vr1
+	vsub.d	$vr1, $vr3, $vr1
+	vsrai.d	$vr1, $vr1, 3
+	vmul.d	$vr0, $vr1, $vr0
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 48
+	bnez	$a4, .LBB25_6
 # %bb.7:                                # %middle.block
-	mul.d	$s8, $a6, $a3
+	vpickve2gr.d	$a3, $vr0, 0
+	vpickve2gr.d	$a4, $vr0, 1
+	mul.d	$s8, $a4, $a3
 	beq	$a1, $a2, .LBB25_9
 	.p2align	4, , 16
 .LBB25_8:                               # %.lr.ph.i

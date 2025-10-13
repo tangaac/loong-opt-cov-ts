@@ -71,7 +71,7 @@ main:                                   # @main
 .LBB0_8:
 	move	$a1, $s2
 	move	$a2, $s3
-	pcaddu18i	$ra, %call36(__truncdfsf2)
+	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB0_9:
 	ld.d	$a0, $sp, 48

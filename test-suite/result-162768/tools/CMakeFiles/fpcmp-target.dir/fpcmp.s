@@ -688,7 +688,7 @@ diff_file:                              # @diff_file
 	move	$s6, $a0
 	move	$a1, $s3
 	move	$a2, $s0
-	pcaddu18i	$ra, %call36(__truncdfsf2)
+	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	sub.d	$a0, $s1, $s3
 	bstrpick.d	$a0, $a0, 31, 0
@@ -721,7 +721,7 @@ diff_file:                              # @diff_file
 	move	$s6, $a0
 	move	$a1, $s4
 	move	$a2, $s0
-	pcaddu18i	$ra, %call36(__truncdfsf2)
+	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	sub.d	$a0, $s1, $s4
 	bstrpick.d	$a0, $a0, 31, 0

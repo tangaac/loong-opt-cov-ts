@@ -6043,51 +6043,53 @@ _ZN5State32calc_finite_difference_via_facesEd: # @_ZN5State32calc_finite_differe
 	fmul.d	$fa4, $fa5, $fa4
 	fdiv.d	$fa6, $fa5, $fa7
 	fmin.d	$fa6, $fa6, $fa3
+	vori.b	$vr8, $vr5, 0
+	vextrins.d	$vr8, $vr7, 16
+	vfmul.d	$vr8, $vr8, $vr8
 	fmul.d	$fa6, $fa7, $fa6
-	fmul.d	$ft0, $fa5, $fa5
-	fmul.d	$ft1, $fa7, $fa7
-	fdiv.d	$ft2, $ft1, $ft0
-	fmin.d	$ft2, $ft2, $fa1
-	fmul.d	$ft2, $ft0, $ft2
-	fdiv.d	$ft0, $ft0, $ft1
-	fldx.d	$ft3, $a3, $t3
-	fldx.d	$ft4, $a3, $t2
-	fmin.d	$ft0, $ft0, $fa1
-	fmul.d	$ft0, $ft1, $ft0
-	fmul.d	$ft1, $fa5, $ft3
-	fmul.d	$ft3, $fa7, $ft4
-	fadd.d	$ft1, $ft1, $ft3
-	fldx.d	$ft3, $a4, $t3
-	fldx.d	$ft4, $a4, $t2
-	fadd.d	$ft5, $fa5, $fa7
-	fdiv.d	$ft1, $ft1, $ft5
-	fmul.d	$ft3, $fa6, $ft3
-	fmul.d	$ft4, $fa4, $ft4
-	fsub.d	$ft3, $ft3, $ft4
-	fmul.d	$ft3, $fa2, $ft3
-	fadd.d	$ft0, $ft0, $ft2
-	fdiv.d	$ft2, $ft3, $ft0
+	vori.b	$vr9, $vr8, 0
+	vshuf4i.d	$vr9, $vr0, 1
+	vfdiv.d	$vr9, $vr9, $vr8
+	fldx.d	$ft2, $a3, $t3
+	fldx.d	$ft3, $a3, $t2
+	vfmin.d	$vr9, $vr9, $vr1
+	vfmul.d	$vr8, $vr8, $vr9
+	fmul.d	$ft1, $fa5, $ft2
+	fmul.d	$ft2, $fa7, $ft3
+	fadd.d	$ft1, $ft1, $ft2
+	fldx.d	$ft2, $a4, $t3
+	fldx.d	$ft3, $a4, $t2
+	fadd.d	$ft4, $fa5, $fa7
+	fdiv.d	$ft1, $ft1, $ft4
+	fmul.d	$ft2, $fa6, $ft2
+	fmul.d	$ft3, $fa4, $ft3
+	fsub.d	$ft2, $ft2, $ft3
+	fmul.d	$ft2, $fa2, $ft2
+	vreplvei.d	$vr11, $vr8, 0
+	vreplvei.d	$vr8, $vr8, 1
+	fadd.d	$ft0, $ft0, $ft3
+	fdiv.d	$ft2, $ft2, $ft0
 	fsub.d	$ft1, $ft1, $ft2
 	fst.d	$ft1, $a5, 0
 	fldx.d	$ft1, $a4, $t3
 	fldx.d	$ft2, $a4, $t2
 	fmul.d	$ft3, $fa5, $ft1
-	fldx.d	$ft4, $a3, $t3
+	fldx.d	$ft5, $a3, $t3
 	fmul.d	$ft6, $fa7, $ft2
 	fadd.d	$ft3, $ft3, $ft6
 	fmul.d	$ft1, $ft1, $ft1
-	fdiv.d	$ft1, $ft1, $ft4
-	fmul.d	$ft4, $ft4, $ft4
-	fmul.d	$ft4, $ft4, $fa0
-	fadd.d	$ft1, $ft1, $ft4
-	fldx.d	$ft4, $a3, $t2
-	fdiv.d	$ft3, $ft3, $ft5
+	fdiv.d	$ft1, $ft1, $ft5
+	fmul.d	$ft5, $ft5, $ft5
+	fmul.d	$ft5, $ft5, $fa0
+	fadd.d	$ft1, $ft1, $ft5
+	fldx.d	$ft5, $a3, $t2
+	fdiv.d	$ft3, $ft3, $ft4
 	fmul.d	$ft1, $fa6, $ft1
 	fmul.d	$ft2, $ft2, $ft2
-	fdiv.d	$ft2, $ft2, $ft4
-	fmul.d	$ft4, $ft4, $ft4
-	fmul.d	$ft4, $ft4, $fa0
-	fadd.d	$ft2, $ft2, $ft4
+	fdiv.d	$ft2, $ft2, $ft5
+	fmul.d	$ft5, $ft5, $ft5
+	fmul.d	$ft5, $ft5, $fa0
+	fadd.d	$ft2, $ft2, $ft5
 	fmul.d	$ft2, $fa4, $ft2
 	fsub.d	$ft1, $ft1, $ft2
 	fmul.d	$ft1, $fa2, $ft1
@@ -6100,7 +6102,7 @@ _ZN5State32calc_finite_difference_via_facesEd: # @_ZN5State32calc_finite_differe
 	fmul.d	$fa7, $fa7, $ft2
 	fldx.d	$ft3, $a4, $t3
 	fadd.d	$fa5, $fa5, $fa7
-	fdiv.d	$fa5, $fa5, $ft5
+	fdiv.d	$fa5, $fa5, $ft4
 	fldx.d	$fa7, $a3, $t3
 	fmul.d	$ft1, $ft1, $ft3
 	fldx.d	$ft3, $a4, $t2
@@ -6307,45 +6309,47 @@ _ZN5State32calc_finite_difference_via_facesEd: # @_ZN5State32calc_finite_differe
 	fmul.d	$fa4, $fa5, $fa4
 	fdiv.d	$fa6, $fa5, $fa7
 	fmin.d	$fa6, $fa6, $fa3
+	vori.b	$vr8, $vr5, 0
+	vextrins.d	$vr8, $vr7, 16
+	vfmul.d	$vr8, $vr8, $vr8
 	fmul.d	$fa6, $fa7, $fa6
-	fmul.d	$ft0, $fa5, $fa5
-	fmul.d	$ft1, $fa7, $fa7
-	fdiv.d	$ft2, $ft1, $ft0
-	fmin.d	$ft2, $ft2, $fa1
-	fmul.d	$ft2, $ft0, $ft2
-	fdiv.d	$ft0, $ft0, $ft1
-	fldx.d	$ft3, $a4, $t4
-	fldx.d	$ft4, $a4, $t3
-	fmin.d	$ft0, $ft0, $fa1
-	fmul.d	$ft0, $ft1, $ft0
-	fmul.d	$ft1, $fa5, $ft3
-	fmul.d	$ft3, $fa7, $ft4
-	fadd.d	$ft1, $ft1, $ft3
-	fldx.d	$ft3, $a5, $t4
-	fldx.d	$ft4, $a5, $t3
-	fadd.d	$ft5, $fa5, $fa7
-	fdiv.d	$ft1, $ft1, $ft5
-	fmul.d	$ft3, $fa6, $ft3
-	fmul.d	$ft4, $fa4, $ft4
-	fsub.d	$ft3, $ft3, $ft4
-	fmul.d	$ft3, $fa2, $ft3
-	fadd.d	$ft0, $ft0, $ft2
-	fdiv.d	$ft2, $ft3, $ft0
+	vori.b	$vr9, $vr8, 0
+	vshuf4i.d	$vr9, $vr0, 1
+	vfdiv.d	$vr9, $vr9, $vr8
+	fldx.d	$ft2, $a4, $t4
+	fldx.d	$ft3, $a4, $t3
+	vfmin.d	$vr9, $vr9, $vr1
+	vfmul.d	$vr8, $vr8, $vr9
+	fmul.d	$ft1, $fa5, $ft2
+	fmul.d	$ft2, $fa7, $ft3
+	fadd.d	$ft1, $ft1, $ft2
+	fldx.d	$ft2, $a5, $t4
+	fldx.d	$ft3, $a5, $t3
+	fadd.d	$ft4, $fa5, $fa7
+	fdiv.d	$ft1, $ft1, $ft4
+	fmul.d	$ft2, $fa6, $ft2
+	fmul.d	$ft3, $fa4, $ft3
+	fsub.d	$ft2, $ft2, $ft3
+	fmul.d	$ft2, $fa2, $ft2
+	vreplvei.d	$vr11, $vr8, 0
+	vreplvei.d	$vr8, $vr8, 1
+	fadd.d	$ft0, $ft0, $ft3
+	fdiv.d	$ft2, $ft2, $ft0
 	fsub.d	$ft1, $ft1, $ft2
 	fst.d	$ft1, $a6, 0
 	fldx.d	$ft1, $a7, $t4
 	fldx.d	$ft2, $a7, $t3
 	fmul.d	$ft3, $fa5, $ft1
-	fmul.d	$ft4, $fa7, $ft2
+	fmul.d	$ft5, $fa7, $ft2
 	fldx.d	$ft6, $a5, $t4
 	fldx.d	$ft7, $a4, $t4
-	fadd.d	$ft3, $ft3, $ft4
-	fldx.d	$ft4, $a5, $t3
+	fadd.d	$ft3, $ft3, $ft5
+	fldx.d	$ft5, $a5, $t3
 	fmul.d	$ft1, $ft1, $ft6
 	fdiv.d	$ft1, $ft1, $ft7
 	fldx.d	$ft6, $a4, $t3
-	fmul.d	$ft2, $ft2, $ft4
-	fdiv.d	$ft3, $ft3, $ft5
+	fmul.d	$ft2, $ft2, $ft5
+	fdiv.d	$ft3, $ft3, $ft4
 	fmul.d	$ft1, $fa6, $ft1
 	fdiv.d	$ft2, $ft2, $ft6
 	fmul.d	$ft2, $fa4, $ft2
@@ -6360,7 +6364,7 @@ _ZN5State32calc_finite_difference_via_facesEd: # @_ZN5State32calc_finite_differe
 	fmul.d	$fa7, $fa7, $ft2
 	fldx.d	$ft3, $a4, $t4
 	fadd.d	$fa5, $fa5, $fa7
-	fdiv.d	$fa5, $fa5, $ft5
+	fdiv.d	$fa5, $fa5, $ft4
 	fmul.d	$fa7, $ft1, $ft1
 	fdiv.d	$fa7, $fa7, $ft3
 	fmul.d	$ft1, $ft3, $ft3

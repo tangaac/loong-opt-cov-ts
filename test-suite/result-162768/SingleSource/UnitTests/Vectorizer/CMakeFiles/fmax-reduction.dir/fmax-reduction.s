@@ -6398,91 +6398,56 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	ld.d	$a0, $a1, 0
 	vldi	$vr0, -3136
 	lu12i.w	$a1, -2
-	ori	$a6, $a1, 4064
+	ori	$a2, $a1, 4064
 	lu12i.w	$a1, 1
-	ori	$a2, $a1, 32
-	ori	$a3, $a1, 48
-	addi.w	$a4, $zero, -64
-	vldi	$vr3, -3136
+	ori	$a3, $a1, 32
+	ori	$a4, $a1, 48
+	addi.w	$a5, $zero, -64
+	vldi	$vr1, -3136
 	.p2align	4, , 16
 .LBB9_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a6
-	add.d	$a6, $a0, $a6
-	vldx	$vr4, $a6, $a2
-	vori.b	$vr1, $vr3, 0
-	vori.b	$vr2, $vr0, 0
-	vldx	$vr5, $a6, $a3
-	vreplvei.w	$vr0, $vr4, 1
-	vreplvei.w	$vr3, $vr2, 1
-	fmax.s	$fa3, $fa3, $fa0
-	vreplvei.w	$vr0, $vr4, 0
-	vreplvei.w	$vr6, $vr2, 0
-	fmax.s	$fa0, $fa6, $fa0
-	vextrins.w	$vr0, $vr3, 16
-	vreplvei.w	$vr3, $vr4, 2
-	vreplvei.w	$vr6, $vr2, 2
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 32
-	vreplvei.w	$vr3, $vr4, 3
-	vreplvei.w	$vr6, $vr2, 3
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 48
-	vreplvei.w	$vr3, $vr5, 1
-	vreplvei.w	$vr6, $vr1, 1
-	fmax.s	$fa6, $fa6, $fa3
-	vreplvei.w	$vr3, $vr5, 0
-	vreplvei.w	$vr7, $vr1, 0
-	fmax.s	$fa3, $fa7, $fa3
-	vextrins.w	$vr3, $vr6, 16
-	vreplvei.w	$vr6, $vr5, 2
-	vreplvei.w	$vr7, $vr1, 2
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 32
-	vreplvei.w	$vr6, $vr5, 3
-	vreplvei.w	$vr7, $vr1, 3
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 48
+	move	$a6, $a2
+	add.d	$a2, $a0, $a2
+	vldx	$vr4, $a2, $a3
+	vldx	$vr5, $a2, $a4
+	vori.b	$vr2, $vr1, 0
+	vori.b	$vr3, $vr0, 0
+	vfmax.s	$vr0, $vr0, $vr4
+	vfmax.s	$vr1, $vr1, $vr5
 	vfcmp.cun.s	$vr4, $vr4, $vr5
 	vmskltz.w	$vr4, $vr4
 	vpickve2gr.hu	$a7, $vr4, 0
-	addi.d	$a6, $a5, 32
+	addi.d	$a2, $a6, 32
 	bnez	$a7, .LBB9_3
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB9_1 Depth=1
-	bne	$a5, $a4, .LBB9_1
+	bne	$a6, $a5, .LBB9_1
 .LBB9_3:                                # %middle.block
-	andi	$a2, $a7, 15
-	sltu	$a3, $zero, $a2
-	vreplgr2vr.w	$vr4, $a3
+	andi	$a3, $a7, 15
+	sltu	$a4, $zero, $a3
+	vreplgr2vr.w	$vr4, $a4
 	vslli.w	$vr4, $vr4, 31
 	vsrai.w	$vr4, $vr4, 31
-	vbitsel.v	$vr0, $vr0, $vr2, $vr4
-	vbitsel.v	$vr1, $vr3, $vr1, $vr4
-	vreplvei.w	$vr2, $vr1, 3
-	vreplvei.w	$vr3, $vr0, 3
-	fmax.s	$fa2, $fa3, $fa2
-	vreplvei.w	$vr3, $vr1, 2
-	vreplvei.w	$vr4, $vr0, 2
-	fmax.s	$fa3, $fa4, $fa3
-	vreplvei.w	$vr4, $vr1, 1
-	vreplvei.w	$vr5, $vr0, 1
-	fmax.s	$fa4, $fa5, $fa4
-	vreplvei.w	$vr1, $vr1, 0
+	vbitsel.v	$vr0, $vr0, $vr3, $vr4
+	vbitsel.v	$vr1, $vr1, $vr2, $vr4
+	vfmax.s	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 3
+	vreplvei.w	$vr2, $vr0, 2
+	vreplvei.w	$vr3, $vr0, 1
 	vreplvei.w	$vr0, $vr0, 0
-	fmax.s	$fa0, $fa0, $fa1
-	fmax.s	$fa0, $fa0, $fa4
 	fmax.s	$fa0, $fa0, $fa3
 	fmax.s	$fa0, $fa0, $fa2
-	beqz	$a2, .LBB9_5
+	fmax.s	$fa0, $fa0, $fa1
+	beqz	$a3, .LBB9_5
 	.p2align	4, , 16
 .LBB9_4:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a0, $a6
-	fldx.s	$fa1, $a2, $a1
-	addi.d	$a6, $a6, 4
+	add.d	$a3, $a0, $a2
+	fldx.s	$fa1, $a3, $a1
+	addi.d	$a2, $a2, 4
 	fmax.s	$fa0, $fa0, $fa1
-	bnez	$a6, .LBB9_4
+	bnez	$a2, .LBB9_4
 .LBB9_5:                                # %"_ZSt10__invoke_rIfRZ4mainE3$_1JPfjEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end9:
@@ -6562,91 +6527,56 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	ld.d	$a0, $a1, 0
 	vldi	$vr0, -3456
 	lu12i.w	$a1, -2
-	ori	$a6, $a1, 4064
+	ori	$a2, $a1, 4064
 	lu12i.w	$a1, 1
-	ori	$a2, $a1, 32
-	ori	$a3, $a1, 48
-	addi.w	$a4, $zero, -64
-	vldi	$vr3, -3456
+	ori	$a3, $a1, 32
+	ori	$a4, $a1, 48
+	addi.w	$a5, $zero, -64
+	vldi	$vr1, -3456
 	.p2align	4, , 16
 .LBB13_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a6
-	add.d	$a6, $a0, $a6
-	vldx	$vr4, $a6, $a2
-	vori.b	$vr1, $vr3, 0
-	vori.b	$vr2, $vr0, 0
-	vldx	$vr5, $a6, $a3
-	vreplvei.w	$vr0, $vr4, 1
-	vreplvei.w	$vr3, $vr2, 1
-	fmax.s	$fa3, $fa3, $fa0
-	vreplvei.w	$vr0, $vr4, 0
-	vreplvei.w	$vr6, $vr2, 0
-	fmax.s	$fa0, $fa6, $fa0
-	vextrins.w	$vr0, $vr3, 16
-	vreplvei.w	$vr3, $vr4, 2
-	vreplvei.w	$vr6, $vr2, 2
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 32
-	vreplvei.w	$vr3, $vr4, 3
-	vreplvei.w	$vr6, $vr2, 3
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 48
-	vreplvei.w	$vr3, $vr5, 1
-	vreplvei.w	$vr6, $vr1, 1
-	fmax.s	$fa6, $fa6, $fa3
-	vreplvei.w	$vr3, $vr5, 0
-	vreplvei.w	$vr7, $vr1, 0
-	fmax.s	$fa3, $fa7, $fa3
-	vextrins.w	$vr3, $vr6, 16
-	vreplvei.w	$vr6, $vr5, 2
-	vreplvei.w	$vr7, $vr1, 2
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 32
-	vreplvei.w	$vr6, $vr5, 3
-	vreplvei.w	$vr7, $vr1, 3
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 48
+	move	$a6, $a2
+	add.d	$a2, $a0, $a2
+	vldx	$vr4, $a2, $a3
+	vldx	$vr5, $a2, $a4
+	vori.b	$vr2, $vr1, 0
+	vori.b	$vr3, $vr0, 0
+	vfmax.s	$vr0, $vr0, $vr4
+	vfmax.s	$vr1, $vr1, $vr5
 	vfcmp.cun.s	$vr4, $vr4, $vr5
 	vmskltz.w	$vr4, $vr4
 	vpickve2gr.hu	$a7, $vr4, 0
-	addi.d	$a6, $a5, 32
+	addi.d	$a2, $a6, 32
 	bnez	$a7, .LBB13_3
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB13_1 Depth=1
-	bne	$a5, $a4, .LBB13_1
+	bne	$a6, $a5, .LBB13_1
 .LBB13_3:                               # %middle.block
-	andi	$a2, $a7, 15
-	sltu	$a3, $zero, $a2
-	vreplgr2vr.w	$vr4, $a3
+	andi	$a3, $a7, 15
+	sltu	$a4, $zero, $a3
+	vreplgr2vr.w	$vr4, $a4
 	vslli.w	$vr4, $vr4, 31
 	vsrai.w	$vr4, $vr4, 31
-	vbitsel.v	$vr0, $vr0, $vr2, $vr4
-	vbitsel.v	$vr1, $vr3, $vr1, $vr4
-	vreplvei.w	$vr2, $vr1, 3
-	vreplvei.w	$vr3, $vr0, 3
-	fmax.s	$fa2, $fa3, $fa2
-	vreplvei.w	$vr3, $vr1, 2
-	vreplvei.w	$vr4, $vr0, 2
-	fmax.s	$fa3, $fa4, $fa3
-	vreplvei.w	$vr4, $vr1, 1
-	vreplvei.w	$vr5, $vr0, 1
-	fmax.s	$fa4, $fa5, $fa4
-	vreplvei.w	$vr1, $vr1, 0
+	vbitsel.v	$vr0, $vr0, $vr3, $vr4
+	vbitsel.v	$vr1, $vr1, $vr2, $vr4
+	vfmax.s	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 3
+	vreplvei.w	$vr2, $vr0, 2
+	vreplvei.w	$vr3, $vr0, 1
 	vreplvei.w	$vr0, $vr0, 0
-	fmax.s	$fa0, $fa0, $fa1
-	fmax.s	$fa0, $fa0, $fa4
 	fmax.s	$fa0, $fa0, $fa3
 	fmax.s	$fa0, $fa0, $fa2
-	beqz	$a2, .LBB13_5
+	fmax.s	$fa0, $fa0, $fa1
+	beqz	$a3, .LBB13_5
 	.p2align	4, , 16
 .LBB13_4:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a0, $a6
-	fldx.s	$fa1, $a2, $a1
-	addi.d	$a6, $a6, 4
+	add.d	$a3, $a0, $a2
+	fldx.s	$fa1, $a3, $a1
+	addi.d	$a2, $a2, 4
 	fmax.s	$fa0, $fa0, $fa1
-	bnez	$a6, .LBB13_4
+	bnez	$a2, .LBB13_4
 .LBB13_5:                               # %"_ZSt10__invoke_rIfRZ4mainE3$_3JPfjEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end13:
@@ -6726,91 +6656,56 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	ld.d	$a0, $a1, 0
 	vrepli.w	$vr0, 1
 	lu12i.w	$a1, -2
-	ori	$a6, $a1, 4064
+	ori	$a2, $a1, 4064
 	lu12i.w	$a1, 1
-	ori	$a2, $a1, 32
-	ori	$a3, $a1, 48
-	addi.w	$a4, $zero, -64
-	vori.b	$vr3, $vr0, 0
+	ori	$a3, $a1, 32
+	ori	$a4, $a1, 48
+	addi.w	$a5, $zero, -64
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB17_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a6
-	add.d	$a6, $a0, $a6
-	vldx	$vr4, $a6, $a2
-	vori.b	$vr1, $vr3, 0
-	vori.b	$vr2, $vr0, 0
-	vldx	$vr5, $a6, $a3
-	vreplvei.w	$vr0, $vr4, 1
-	vreplvei.w	$vr3, $vr2, 1
-	fmax.s	$fa3, $fa3, $fa0
-	vreplvei.w	$vr0, $vr4, 0
-	vreplvei.w	$vr6, $vr2, 0
-	fmax.s	$fa0, $fa6, $fa0
-	vextrins.w	$vr0, $vr3, 16
-	vreplvei.w	$vr3, $vr4, 2
-	vreplvei.w	$vr6, $vr2, 2
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 32
-	vreplvei.w	$vr3, $vr4, 3
-	vreplvei.w	$vr6, $vr2, 3
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 48
-	vreplvei.w	$vr3, $vr5, 1
-	vreplvei.w	$vr6, $vr1, 1
-	fmax.s	$fa6, $fa6, $fa3
-	vreplvei.w	$vr3, $vr5, 0
-	vreplvei.w	$vr7, $vr1, 0
-	fmax.s	$fa3, $fa7, $fa3
-	vextrins.w	$vr3, $vr6, 16
-	vreplvei.w	$vr6, $vr5, 2
-	vreplvei.w	$vr7, $vr1, 2
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 32
-	vreplvei.w	$vr6, $vr5, 3
-	vreplvei.w	$vr7, $vr1, 3
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 48
+	move	$a6, $a2
+	add.d	$a2, $a0, $a2
+	vldx	$vr4, $a2, $a3
+	vldx	$vr5, $a2, $a4
+	vori.b	$vr2, $vr1, 0
+	vori.b	$vr3, $vr0, 0
+	vfmax.s	$vr0, $vr0, $vr4
+	vfmax.s	$vr1, $vr1, $vr5
 	vfcmp.cun.s	$vr4, $vr4, $vr5
 	vmskltz.w	$vr4, $vr4
 	vpickve2gr.hu	$a7, $vr4, 0
-	addi.d	$a6, $a5, 32
+	addi.d	$a2, $a6, 32
 	bnez	$a7, .LBB17_3
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB17_1 Depth=1
-	bne	$a5, $a4, .LBB17_1
+	bne	$a6, $a5, .LBB17_1
 .LBB17_3:                               # %middle.block
-	andi	$a2, $a7, 15
-	sltu	$a3, $zero, $a2
-	vreplgr2vr.w	$vr4, $a3
+	andi	$a3, $a7, 15
+	sltu	$a4, $zero, $a3
+	vreplgr2vr.w	$vr4, $a4
 	vslli.w	$vr4, $vr4, 31
 	vsrai.w	$vr4, $vr4, 31
-	vbitsel.v	$vr0, $vr0, $vr2, $vr4
-	vbitsel.v	$vr1, $vr3, $vr1, $vr4
-	vreplvei.w	$vr2, $vr1, 3
-	vreplvei.w	$vr3, $vr0, 3
-	fmax.s	$fa2, $fa3, $fa2
-	vreplvei.w	$vr3, $vr1, 2
-	vreplvei.w	$vr4, $vr0, 2
-	fmax.s	$fa3, $fa4, $fa3
-	vreplvei.w	$vr4, $vr1, 1
-	vreplvei.w	$vr5, $vr0, 1
-	fmax.s	$fa4, $fa5, $fa4
-	vreplvei.w	$vr1, $vr1, 0
+	vbitsel.v	$vr0, $vr0, $vr3, $vr4
+	vbitsel.v	$vr1, $vr1, $vr2, $vr4
+	vfmax.s	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 3
+	vreplvei.w	$vr2, $vr0, 2
+	vreplvei.w	$vr3, $vr0, 1
 	vreplvei.w	$vr0, $vr0, 0
-	fmax.s	$fa0, $fa0, $fa1
-	fmax.s	$fa0, $fa0, $fa4
 	fmax.s	$fa0, $fa0, $fa3
 	fmax.s	$fa0, $fa0, $fa2
-	beqz	$a2, .LBB17_5
+	fmax.s	$fa0, $fa0, $fa1
+	beqz	$a3, .LBB17_5
 	.p2align	4, , 16
 .LBB17_4:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a0, $a6
-	fldx.s	$fa1, $a2, $a1
-	addi.d	$a6, $a6, 4
+	add.d	$a3, $a0, $a2
+	fldx.s	$fa1, $a3, $a1
+	addi.d	$a2, $a2, 4
 	fmax.s	$fa0, $fa0, $fa1
-	bnez	$a6, .LBB17_4
+	bnez	$a2, .LBB17_4
 .LBB17_5:                               # %"_ZSt10__invoke_rIfRZ4mainE3$_5JPfjEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end17:
@@ -6891,91 +6786,56 @@ _ZNSt17_Function_handlerIFfPfjEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_Oj: # @"
 	vreplgr2vr.w	$vr0, $a0
 	ld.d	$a0, $a1, 0
 	lu12i.w	$a1, -2
-	ori	$a6, $a1, 4064
+	ori	$a2, $a1, 4064
 	lu12i.w	$a1, 1
-	ori	$a2, $a1, 32
-	ori	$a3, $a1, 48
-	addi.w	$a4, $zero, -64
-	vori.b	$vr3, $vr0, 0
+	ori	$a3, $a1, 32
+	ori	$a4, $a1, 48
+	addi.w	$a5, $zero, -64
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB21_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a6
-	add.d	$a6, $a0, $a6
-	vldx	$vr4, $a6, $a2
-	vori.b	$vr1, $vr3, 0
-	vori.b	$vr2, $vr0, 0
-	vldx	$vr5, $a6, $a3
-	vreplvei.w	$vr0, $vr4, 1
-	vreplvei.w	$vr3, $vr2, 1
-	fmax.s	$fa3, $fa3, $fa0
-	vreplvei.w	$vr0, $vr4, 0
-	vreplvei.w	$vr6, $vr2, 0
-	fmax.s	$fa0, $fa6, $fa0
-	vextrins.w	$vr0, $vr3, 16
-	vreplvei.w	$vr3, $vr4, 2
-	vreplvei.w	$vr6, $vr2, 2
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 32
-	vreplvei.w	$vr3, $vr4, 3
-	vreplvei.w	$vr6, $vr2, 3
-	fmax.s	$fa3, $fa6, $fa3
-	vextrins.w	$vr0, $vr3, 48
-	vreplvei.w	$vr3, $vr5, 1
-	vreplvei.w	$vr6, $vr1, 1
-	fmax.s	$fa6, $fa6, $fa3
-	vreplvei.w	$vr3, $vr5, 0
-	vreplvei.w	$vr7, $vr1, 0
-	fmax.s	$fa3, $fa7, $fa3
-	vextrins.w	$vr3, $vr6, 16
-	vreplvei.w	$vr6, $vr5, 2
-	vreplvei.w	$vr7, $vr1, 2
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 32
-	vreplvei.w	$vr6, $vr5, 3
-	vreplvei.w	$vr7, $vr1, 3
-	fmax.s	$fa6, $fa7, $fa6
-	vextrins.w	$vr3, $vr6, 48
+	move	$a6, $a2
+	add.d	$a2, $a0, $a2
+	vldx	$vr4, $a2, $a3
+	vldx	$vr5, $a2, $a4
+	vori.b	$vr2, $vr1, 0
+	vori.b	$vr3, $vr0, 0
+	vfmax.s	$vr0, $vr0, $vr4
+	vfmax.s	$vr1, $vr1, $vr5
 	vfcmp.cun.s	$vr4, $vr4, $vr5
 	vmskltz.w	$vr4, $vr4
 	vpickve2gr.hu	$a7, $vr4, 0
-	addi.d	$a6, $a5, 32
+	addi.d	$a2, $a6, 32
 	bnez	$a7, .LBB21_3
 # %bb.2:                                # %vector.body
                                         #   in Loop: Header=BB21_1 Depth=1
-	bne	$a5, $a4, .LBB21_1
+	bne	$a6, $a5, .LBB21_1
 .LBB21_3:                               # %middle.block
-	andi	$a2, $a7, 15
-	sltu	$a3, $zero, $a2
-	vreplgr2vr.w	$vr4, $a3
+	andi	$a3, $a7, 15
+	sltu	$a4, $zero, $a3
+	vreplgr2vr.w	$vr4, $a4
 	vslli.w	$vr4, $vr4, 31
 	vsrai.w	$vr4, $vr4, 31
-	vbitsel.v	$vr0, $vr0, $vr2, $vr4
-	vbitsel.v	$vr1, $vr3, $vr1, $vr4
-	vreplvei.w	$vr2, $vr1, 3
-	vreplvei.w	$vr3, $vr0, 3
-	fmax.s	$fa2, $fa3, $fa2
-	vreplvei.w	$vr3, $vr1, 2
-	vreplvei.w	$vr4, $vr0, 2
-	fmax.s	$fa3, $fa4, $fa3
-	vreplvei.w	$vr4, $vr1, 1
-	vreplvei.w	$vr5, $vr0, 1
-	fmax.s	$fa4, $fa5, $fa4
-	vreplvei.w	$vr1, $vr1, 0
+	vbitsel.v	$vr0, $vr0, $vr3, $vr4
+	vbitsel.v	$vr1, $vr1, $vr2, $vr4
+	vfmax.s	$vr0, $vr0, $vr1
+	vreplvei.w	$vr1, $vr0, 3
+	vreplvei.w	$vr2, $vr0, 2
+	vreplvei.w	$vr3, $vr0, 1
 	vreplvei.w	$vr0, $vr0, 0
-	fmax.s	$fa0, $fa0, $fa1
-	fmax.s	$fa0, $fa0, $fa4
 	fmax.s	$fa0, $fa0, $fa3
 	fmax.s	$fa0, $fa0, $fa2
-	beqz	$a2, .LBB21_5
+	fmax.s	$fa0, $fa0, $fa1
+	beqz	$a3, .LBB21_5
 	.p2align	4, , 16
 .LBB21_4:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $a0, $a6
-	fldx.s	$fa1, $a2, $a1
-	addi.d	$a6, $a6, 4
+	add.d	$a3, $a0, $a2
+	fldx.s	$fa1, $a3, $a1
+	addi.d	$a2, $a2, 4
 	fmax.s	$fa0, $fa0, $fa1
-	bnez	$a6, .LBB21_4
+	bnez	$a2, .LBB21_4
 .LBB21_5:                               # %"_ZSt10__invoke_rIfRZ4mainE3$_7JPfjEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end21:

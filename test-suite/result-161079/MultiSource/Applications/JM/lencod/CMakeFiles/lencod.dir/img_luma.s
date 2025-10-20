@@ -2652,13 +2652,11 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
                                         #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr3, $s8, 0
-	vilvl.h	$vr4, $vr0, $vr3
-	vilvh.h	$vr3, $vr0, $vr3
-	vadd.w	$vr3, $vr3, $vr2
-	vadd.w	$vr4, $vr4, $vr1
-	vsrli.w	$vr4, $vr4, 1
-	vsrli.w	$vr3, $vr3, 1
-	vpickev.h	$vr3, $vr3, $vr4
+	vilvh.h	$vr4, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vavg.wu	$vr3, $vr3, $vr1
+	vavg.wu	$vr4, $vr4, $vr2
+	vpickev.h	$vr3, $vr4, $vr3
 	vst	$vr3, $s7, 0
 	addi.d	$s5, $s5, -8
 	addi.d	$s7, $s7, 16
@@ -2767,13 +2765,11 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr3, $s2, 0
-	vilvl.h	$vr4, $vr0, $vr3
-	vilvh.h	$vr3, $vr0, $vr3
-	vadd.w	$vr3, $vr3, $vr2
-	vadd.w	$vr4, $vr4, $vr1
-	vsrli.w	$vr4, $vr4, 1
-	vsrli.w	$vr3, $vr3, 1
-	vpickev.h	$vr3, $vr3, $vr4
+	vilvh.h	$vr4, $vr0, $vr3
+	vilvl.h	$vr3, $vr0, $vr3
+	vavg.wu	$vr3, $vr3, $vr1
+	vavg.wu	$vr4, $vr4, $vr2
+	vpickev.h	$vr3, $vr4, $vr3
 	vst	$vr3, $s1, 0
 	addi.d	$s3, $s3, -8
 	addi.d	$s1, $s1, 16

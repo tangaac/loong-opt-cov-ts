@@ -1168,33 +1168,32 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 .LBB2_17:                               # %vector.ph93
 	addi.d	$a5, $fp, 10
 	bstrpick.d	$a4, $a2, 31, 3
+	slli.d	$a4, $a4, 3
 	pcalau12i	$a6, %pc_hi20(.LCPI2_0)
 	vld	$vr0, $a6, %pc_lo12(.LCPI2_0)
-	slli.d	$a4, $a4, 3
 	vinsgr2vr.h	$vr1, $a3, 7
 	vrepli.b	$vr2, 0
+	vrepli.w	$vr3, 1
 	move	$a3, $a4
 	.p2align	4, , 16
 .LBB2_18:                               # %vector.body96
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr3, $vr1, 0
+	vori.b	$vr4, $vr1, 0
 	vld	$vr1, $a5, 0
-	vbsrl.v	$vr3, $vr3, 14
-	vbsll.v	$vr4, $vr1, 2
-	vor.v	$vr3, $vr4, $vr3
-	vori.b	$vr4, $vr0, 0
-	vshuf.h	$vr4, $vr2, $vr1
-	vilvl.h	$vr3, $vr2, $vr3
-	vilvh.h	$vr5, $vr2, $vr1
-	vilvl.h	$vr6, $vr2, $vr1
-	vsub.w	$vr3, $vr3, $vr6
-	vaddi.wu	$vr3, $vr3, 1
-	vsub.w	$vr4, $vr4, $vr5
-	vaddi.wu	$vr4, $vr4, 1
-	vsrli.w	$vr4, $vr4, 1
-	vsrli.w	$vr3, $vr3, 1
-	vpickev.h	$vr3, $vr4, $vr3
-	vst	$vr3, $a5, -2
+	vbsrl.v	$vr4, $vr4, 14
+	vbsll.v	$vr5, $vr1, 2
+	vor.v	$vr4, $vr5, $vr4
+	vori.b	$vr5, $vr0, 0
+	vshuf.h	$vr5, $vr2, $vr1
+	vilvl.h	$vr4, $vr2, $vr4
+	vilvh.h	$vr6, $vr2, $vr1
+	vilvl.h	$vr7, $vr2, $vr1
+	vsub.w	$vr4, $vr4, $vr7
+	vsub.w	$vr5, $vr5, $vr6
+	vavg.wu	$vr5, $vr5, $vr3
+	vavg.wu	$vr4, $vr4, $vr3
+	vpickev.h	$vr4, $vr5, $vr4
+	vst	$vr4, $a5, -2
 	addi.d	$a3, $a3, -8
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB2_18

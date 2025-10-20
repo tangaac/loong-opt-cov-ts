@@ -730,45 +730,44 @@ _Z5trainPsS_ii:                         # @_Z5trainPsS_ii
 	bstrpick.d	$a6, $a4, 30, 3
 	slli.d	$a6, $a6, 3
 	vreplgr2vr.w	$vr0, $a3
-	vreplgr2vr.w	$vr1, $a2
+	vrepli.w	$vr1, 1
+	vreplgr2vr.w	$vr2, $a2
 	ori	$a7, $a5, 4095
-	vreplgr2vr.w	$vr2, $a7
+	vreplgr2vr.w	$vr3, $a7
 	move	$a7, $a1
 	move	$t0, $a0
 	move	$t1, $a6
 	.p2align	4, , 16
 .LBB13_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr3, $a7, 0
-	vilvh.h	$vr4, $vr3, $vr3
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vld	$vr5, $t0, 0
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvl.h	$vr6, $vr5, $vr5
-	vslli.w	$vr6, $vr6, 16
-	vsrai.w	$vr6, $vr6, 16
-	vilvh.h	$vr5, $vr5, $vr5
+	vld	$vr4, $a7, 0
+	vilvh.h	$vr5, $vr4, $vr4
 	vslli.w	$vr5, $vr5, 16
 	vsrai.w	$vr5, $vr5, 16
-	vmul.w	$vr5, $vr0, $vr5
+	vld	$vr6, $t0, 0
+	vilvl.h	$vr4, $vr4, $vr4
+	vslli.w	$vr4, $vr4, 16
+	vsrai.w	$vr4, $vr4, 16
+	vilvl.h	$vr7, $vr6, $vr6
+	vslli.w	$vr7, $vr7, 16
+	vsrai.w	$vr7, $vr7, 16
+	vilvh.h	$vr6, $vr6, $vr6
+	vslli.w	$vr6, $vr6, 16
+	vsrai.w	$vr6, $vr6, 16
 	vmul.w	$vr6, $vr0, $vr6
+	vmul.w	$vr7, $vr0, $vr7
+	vsrai.w	$vr7, $vr7, 15
 	vsrai.w	$vr6, $vr6, 15
-	vsrai.w	$vr5, $vr5, 15
-	vaddi.wu	$vr5, $vr5, 1
-	vsrai.w	$vr5, $vr5, 1
-	vaddi.wu	$vr6, $vr6, 1
-	vsrai.w	$vr6, $vr6, 1
-	vadd.w	$vr3, $vr6, $vr3
-	vadd.w	$vr4, $vr5, $vr4
-	vmax.w	$vr4, $vr4, $vr1
-	vmax.w	$vr3, $vr3, $vr1
-	vmin.w	$vr3, $vr3, $vr2
-	vmin.w	$vr4, $vr4, $vr2
-	vpickev.h	$vr3, $vr4, $vr3
-	vst	$vr3, $a7, 0
+	vavg.w	$vr6, $vr6, $vr1
+	vavg.w	$vr7, $vr7, $vr1
+	vadd.w	$vr4, $vr7, $vr4
+	vadd.w	$vr5, $vr6, $vr5
+	vmax.w	$vr5, $vr5, $vr2
+	vmax.w	$vr4, $vr4, $vr2
+	vmin.w	$vr4, $vr4, $vr3
+	vmin.w	$vr5, $vr5, $vr3
+	vpickev.h	$vr4, $vr5, $vr4
+	vst	$vr4, $a7, 0
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 16
 	addi.d	$a7, $a7, 16
@@ -16220,7 +16219,8 @@ _ZN5Mixer6updateEv:                     # @_ZN5Mixer6updateEv
 	lu12i.w	$t8, -8
 	lu12i.w	$fp, 7
 	ori	$fp, $fp, 4095
-	vreplgr2vr.w	$vr0, $t8
+	vrepli.w	$vr0, 1
+	vreplgr2vr.w	$vr1, $t8
 	b	.LBB57_4
 	.p2align	4, , 16
 .LBB57_3:                               # %_Z5trainPsS_ii.exit.us
@@ -16286,44 +16286,42 @@ _ZN5Mixer6updateEv:                     # @_ZN5Mixer6updateEv
 	b	.LBB57_3
 .LBB57_11:                              # %vector.ph
                                         #   in Loop: Header=BB57_4 Depth=1
-	vreplgr2vr.w	$vr1, $s0
+	vreplgr2vr.w	$vr2, $s0
 	move	$s3, $a5
 	move	$s4, $t5
 	.p2align	4, , 16
 .LBB57_12:                              # %vector.body
                                         #   Parent Loop BB57_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr2, $s2, 0
-	vilvh.h	$vr3, $vr2, $vr2
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vld	$vr4, $s3, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr5, $vr4, $vr4
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
-	vilvh.h	$vr4, $vr4, $vr4
+	vld	$vr3, $s2, 0
+	vilvh.h	$vr4, $vr3, $vr3
 	vslli.w	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 16
-	vmul.w	$vr4, $vr1, $vr4
-	vmul.w	$vr5, $vr1, $vr5
+	vld	$vr5, $s3, 0
+	vilvl.h	$vr3, $vr3, $vr3
+	vslli.w	$vr3, $vr3, 16
+	vsrai.w	$vr3, $vr3, 16
+	vilvl.h	$vr6, $vr5, $vr5
+	vslli.w	$vr6, $vr6, 16
+	vsrai.w	$vr6, $vr6, 16
+	vilvh.h	$vr5, $vr5, $vr5
+	vslli.w	$vr5, $vr5, 16
+	vsrai.w	$vr5, $vr5, 16
+	vmul.w	$vr5, $vr2, $vr5
+	vmul.w	$vr6, $vr2, $vr6
+	vsrai.w	$vr6, $vr6, 15
 	vsrai.w	$vr5, $vr5, 15
-	vsrai.w	$vr4, $vr4, 15
-	vaddi.wu	$vr4, $vr4, 1
-	vsrai.w	$vr4, $vr4, 1
-	vaddi.wu	$vr5, $vr5, 1
-	vsrai.w	$vr5, $vr5, 1
-	vadd.w	$vr2, $vr5, $vr2
-	vadd.w	$vr3, $vr4, $vr3
-	vmax.w	$vr3, $vr3, $vr0
-	vmax.w	$vr2, $vr2, $vr0
-	vreplgr2vr.w	$vr4, $fp
-	vmin.w	$vr2, $vr2, $vr4
-	vmin.w	$vr3, $vr3, $vr4
-	vpickev.h	$vr2, $vr3, $vr2
-	vst	$vr2, $s2, 0
+	vavg.w	$vr5, $vr5, $vr0
+	vavg.w	$vr6, $vr6, $vr0
+	vadd.w	$vr3, $vr6, $vr3
+	vadd.w	$vr4, $vr5, $vr4
+	vmax.w	$vr4, $vr4, $vr1
+	vmax.w	$vr3, $vr3, $vr1
+	vreplgr2vr.w	$vr5, $fp
+	vmin.w	$vr3, $vr3, $vr5
+	vmin.w	$vr4, $vr4, $vr5
+	vpickev.h	$vr3, $vr4, $vr3
+	vst	$vr3, $s2, 0
 	addi.d	$s4, $s4, -8
 	addi.d	$s3, $s3, 16
 	addi.d	$s2, $s2, 16
@@ -16521,19 +16519,19 @@ _ZN2BHILi9EEixEj:                       # @_ZN2BHILi9EEixEj
 _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -16554,9 +16552,11 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	lu12i.w	$s4, -8
 	lu12i.w	$a0, 7
 	ori	$s5, $a0, 4095
-	vreplgr2vr.w	$vr5, $s4
+	vrepli.w	$vr5, 1
+	vreplgr2vr.w	$vr6, $s4
 	ori	$s6, $zero, 2
-	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr5, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr6, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB59_3
 	.p2align	4, , 16
 .LBB59_1:                               # %._crit_edge32.loopexit
@@ -16608,7 +16608,8 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 # %bb.6:                                # %._crit_edge
                                         #   in Loop: Header=BB59_3 Depth=1
 	st.w	$a2, $fp, 96
-	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
 	b	.LBB59_8
 	.p2align	4, , 16
 .LBB59_7:                               #   in Loop: Header=BB59_3 Depth=1
@@ -16617,7 +16618,7 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	ld.d	$a0, $fp, 128
 	pcalau12i	$a1, %pc_hi20(_ZZ6squashiE1t)
 	addi.d	$a1, $a1, %pc_lo12(_ZZ6squashiE1t)
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	beqz	$a0, .LBB59_40
 # %bb.9:                                #   in Loop: Header=BB59_3 Depth=1
 	ld.w	$a2, $a0, 88
@@ -16743,14 +16744,12 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	vmul.w	$vr4, $vr0, $vr4
 	vsrai.w	$vr4, $vr4, 15
 	vsrai.w	$vr3, $vr3, 15
-	vaddi.wu	$vr3, $vr3, 1
-	vsrai.w	$vr3, $vr3, 1
-	vaddi.wu	$vr4, $vr4, 1
-	vsrai.w	$vr4, $vr4, 1
+	vavg.w	$vr3, $vr3, $vr5
+	vavg.w	$vr4, $vr4, $vr5
 	vadd.w	$vr1, $vr4, $vr1
 	vadd.w	$vr2, $vr3, $vr2
-	vmax.w	$vr2, $vr2, $vr5
-	vmax.w	$vr1, $vr1, $vr5
+	vmax.w	$vr2, $vr2, $vr6
+	vmax.w	$vr1, $vr1, $vr6
 	vreplgr2vr.w	$vr3, $s5
 	vmin.w	$vr1, $vr1, $vr3
 	vmin.w	$vr2, $vr2, $vr3
@@ -16781,13 +16780,13 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	ld.d	$a4, $fp, 120
 	ld.d	$a5, $a0, 32
 	addi.d	$a1, $t0, 4
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a1, $t1, 4
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$a1, $t0, 2
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	addi.d	$a1, $t1, 2
+	addi.d	$a1, $t1, 4
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$a1, $t0, 2
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$a1, $t1, 2
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB59_28
 	.p2align	4, , 16
 .LBB59_25:                              #   in Loop: Header=BB59_28 Depth=2
@@ -16795,7 +16794,7 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 .LBB59_26:                              # %.thread
                                         #   in Loop: Header=BB59_28 Depth=2
 	srai.d	$a1, $t3, 7
-	ld.d	$a6, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $a6, 2
 	ld.w	$a6, $a1, 64
 	ld.w	$a1, $a1, 68
@@ -16856,9 +16855,9 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	bstrpick.d	$t4, $t6, 62, 1
 	slli.d	$t8, $t4, 1
 	slli.d	$t4, $t4, 2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	alsl.d	$s3, $t5, $a1, 1
-	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
 	move	$ra, $t8
 	.p2align	4, , 16
 .LBB59_32:                              # %vector.body
@@ -16898,9 +16897,9 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
                                         #   in Loop: Header=BB59_28 Depth=2
 	slli.d	$a1, $t4, 1
 	alsl.d	$a1, $t5, $a1, 1
-	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
 	add.d	$t5, $a6, $a1
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	alsl.d	$t6, $t4, $a1, 1
 	.p2align	4, , 16
 .LBB59_35:                              # %.lr.ph.i9
@@ -17026,7 +17025,7 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 .LBB59_52:                              # %.thread23
 	andi	$a0, $a2, 127
 	srai.d	$a1, $a2, 7
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $a2, 2
 	ld.w	$a2, $a1, 64
 	ld.w	$a1, $a1, 68
@@ -17040,18 +17039,18 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 .LBB59_53:                              # %_Z6squashi.exit20
 	ld.d	$a1, $fp, 120
 	st.w	$a0, $a1, 0
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end59:
 	.size	_ZN5Mixer1pEv, .Lfunc_end59-_ZN5Mixer1pEv
@@ -21660,7 +21659,8 @@ _Z13contextModel2v:                     # @_Z13contextModel2v
 	lu12i.w	$t7, -8
 	lu12i.w	$t8, 7
 	ori	$t8, $t8, 4095
-	vreplgr2vr.w	$vr0, $t7
+	vrepli.w	$vr0, 1
+	vreplgr2vr.w	$vr1, $t7
 	b	.LBB69_10
 	.p2align	4, , 16
 .LBB69_9:                               # %_Z5trainPsS_ii.exit.us.i
@@ -21726,44 +21726,42 @@ _Z13contextModel2v:                     # @_Z13contextModel2v
 	b	.LBB69_9
 .LBB69_17:                              # %vector.ph
                                         #   in Loop: Header=BB69_10 Depth=1
-	vreplgr2vr.w	$vr1, $s0
+	vreplgr2vr.w	$vr2, $s0
 	move	$s3, $a0
 	move	$s4, $t4
 	.p2align	4, , 16
 .LBB69_18:                              # %vector.body
                                         #   Parent Loop BB69_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr2, $s2, 0
-	vilvh.h	$vr3, $vr2, $vr2
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vld	$vr4, $s3, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr5, $vr4, $vr4
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
-	vilvh.h	$vr4, $vr4, $vr4
+	vld	$vr3, $s2, 0
+	vilvh.h	$vr4, $vr3, $vr3
 	vslli.w	$vr4, $vr4, 16
 	vsrai.w	$vr4, $vr4, 16
-	vmul.w	$vr4, $vr1, $vr4
-	vmul.w	$vr5, $vr1, $vr5
+	vld	$vr5, $s3, 0
+	vilvl.h	$vr3, $vr3, $vr3
+	vslli.w	$vr3, $vr3, 16
+	vsrai.w	$vr3, $vr3, 16
+	vilvl.h	$vr6, $vr5, $vr5
+	vslli.w	$vr6, $vr6, 16
+	vsrai.w	$vr6, $vr6, 16
+	vilvh.h	$vr5, $vr5, $vr5
+	vslli.w	$vr5, $vr5, 16
+	vsrai.w	$vr5, $vr5, 16
+	vmul.w	$vr5, $vr2, $vr5
+	vmul.w	$vr6, $vr2, $vr6
+	vsrai.w	$vr6, $vr6, 15
 	vsrai.w	$vr5, $vr5, 15
-	vsrai.w	$vr4, $vr4, 15
-	vaddi.wu	$vr4, $vr4, 1
-	vsrai.w	$vr4, $vr4, 1
-	vaddi.wu	$vr5, $vr5, 1
-	vsrai.w	$vr5, $vr5, 1
-	vadd.w	$vr2, $vr5, $vr2
-	vadd.w	$vr3, $vr4, $vr3
-	vmax.w	$vr3, $vr3, $vr0
-	vmax.w	$vr2, $vr2, $vr0
-	vreplgr2vr.w	$vr4, $t8
-	vmin.w	$vr2, $vr2, $vr4
-	vmin.w	$vr3, $vr3, $vr4
-	vpickev.h	$vr2, $vr3, $vr2
-	vst	$vr2, $s2, 0
+	vavg.w	$vr5, $vr5, $vr0
+	vavg.w	$vr6, $vr6, $vr0
+	vadd.w	$vr3, $vr6, $vr3
+	vadd.w	$vr4, $vr5, $vr4
+	vmax.w	$vr4, $vr4, $vr1
+	vmax.w	$vr3, $vr3, $vr1
+	vreplgr2vr.w	$vr5, $t8
+	vmin.w	$vr3, $vr3, $vr5
+	vmin.w	$vr4, $vr4, $vr5
+	vpickev.h	$vr3, $vr4, $vr3
+	vst	$vr3, $s2, 0
 	addi.d	$s4, $s4, -8
 	addi.d	$s3, $s3, 16
 	addi.d	$s2, $s2, 16

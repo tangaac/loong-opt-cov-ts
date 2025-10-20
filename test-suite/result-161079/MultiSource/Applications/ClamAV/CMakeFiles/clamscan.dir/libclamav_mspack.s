@@ -11485,8 +11485,9 @@ qtm_update_model:                       # @qtm_update_model
 .LBB14_7:                               # %vector.ph
 	bstrpick.d	$a4, $a1, 30, 3
 	slli.d	$a4, $a4, 3
-	vinsgr2vr.h	$vr0, $a3, 7
+	vinsgr2vr.h	$vr1, $a3, 7
 	addi.d	$a5, $a2, 18
+	vrepli.h	$vr0, 1
 	move	$a6, $a4
 	.p2align	4, , 16
 .LBB14_8:                               # %vector.body
@@ -11499,31 +11500,30 @@ qtm_update_model:                       # @qtm_update_model
 	ld.h	$t4, $a5, 8
 	ld.h	$t5, $a5, 12
 	ld.hu	$a3, $a5, 16
-	vbsrl.v	$vr0, $vr0, 14
-	vinsgr2vr.h	$vr1, $a7, 0
-	vinsgr2vr.h	$vr1, $t0, 1
-	vinsgr2vr.h	$vr1, $t1, 2
-	vinsgr2vr.h	$vr1, $t2, 3
-	vinsgr2vr.h	$vr1, $t3, 4
-	vinsgr2vr.h	$vr1, $t4, 5
-	vinsgr2vr.h	$vr1, $t5, 6
-	vbsll.v	$vr2, $vr1, 2
-	vinsgr2vr.h	$vr1, $a3, 7
-	vor.v	$vr0, $vr2, $vr0
-	vsub.h	$vr0, $vr0, $vr1
-	vaddi.hu	$vr0, $vr0, 1
-	vsrli.h	$vr0, $vr0, 1
-	vstelm.h	$vr0, $a5, -16, 0
-	vstelm.h	$vr0, $a5, -12, 1
-	vstelm.h	$vr0, $a5, -8, 2
-	vstelm.h	$vr0, $a5, -4, 3
-	vstelm.h	$vr0, $a5, 0, 4
-	vstelm.h	$vr0, $a5, 4, 5
-	vstelm.h	$vr0, $a5, 8, 6
-	vstelm.h	$vr0, $a5, 12, 7
+	vbsrl.v	$vr1, $vr1, 14
+	vinsgr2vr.h	$vr2, $a7, 0
+	vinsgr2vr.h	$vr2, $t0, 1
+	vinsgr2vr.h	$vr2, $t1, 2
+	vinsgr2vr.h	$vr2, $t2, 3
+	vinsgr2vr.h	$vr2, $t3, 4
+	vinsgr2vr.h	$vr2, $t4, 5
+	vinsgr2vr.h	$vr2, $t5, 6
+	vbsll.v	$vr3, $vr2, 2
+	vinsgr2vr.h	$vr2, $a3, 7
+	vor.v	$vr1, $vr3, $vr1
+	vsub.h	$vr1, $vr1, $vr2
+	vavg.hu	$vr1, $vr1, $vr0
+	vstelm.h	$vr1, $a5, -16, 0
+	vstelm.h	$vr1, $a5, -12, 1
+	vstelm.h	$vr1, $a5, -8, 2
+	vstelm.h	$vr1, $a5, -4, 3
+	vstelm.h	$vr1, $a5, 0, 4
+	vstelm.h	$vr1, $a5, 4, 5
+	vstelm.h	$vr1, $a5, 8, 6
+	vstelm.h	$vr1, $a5, 12, 7
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
-	vori.b	$vr0, $vr1, 0
+	vori.b	$vr1, $vr2, 0
 	bnez	$a6, .LBB14_8
 # %bb.9:                                # %middle.block
 	beq	$a4, $a1, .LBB14_12

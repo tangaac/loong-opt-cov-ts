@@ -1346,12 +1346,8 @@ form_component_prediction:              # @form_component_prediction
 	vaddi.hu	$vr2, $vr2, 2
 	vsrli.h	$vr2, $vr2, 2
 	vsrli.h	$vr4, $vr4, 2
-	vadd.h	$vr1, $vr1, $vr4
-	vaddi.hu	$vr1, $vr1, 1
-	vsrli.h	$vr1, $vr1, 1
-	vadd.h	$vr2, $vr3, $vr2
-	vaddi.hu	$vr2, $vr2, 1
-	vsrli.h	$vr2, $vr2, 1
+	vavgr.hu	$vr1, $vr1, $vr4
+	vavgr.hu	$vr2, $vr3, $vr2
 	vpickev.b	$vr1, $vr2, $vr1
 	vst	$vr1, $a7, 0
 	beq	$t5, $t1, .LBB2_63

@@ -3777,74 +3777,66 @@ get_block:                              # @get_block
 	slt	$a6, $a0, $t0
 	maskeqz	$a0, $a0, $a6
 	ld.d	$a7, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$t1, $a7, 0
+	ld.d	$a7, $a7, 0
 	masknez	$a6, $t0, $a6
-	or	$a7, $a0, $a6
+	or	$a6, $a0, $a6
 	slli.d	$a0, $a1, 1
-	ldx.h	$t0, $t1, $a0
+	ldx.h	$t0, $a7, $a0
 	slli.d	$a4, $a4, 1
-	ldx.h	$t2, $t1, $a4
-	slli.d	$a6, $a5, 1
-	ldx.h	$a5, $t1, $a6
-	slli.d	$a7, $a7, 1
-	ldx.h	$t1, $t1, $a7
+	ldx.h	$t1, $a7, $a4
+	slli.d	$a5, $a5, 1
+	ldx.h	$t2, $a7, $a5
+	slli.d	$a6, $a6, 1
+	ldx.h	$a7, $a7, $a6
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	vld	$vr0, $a1, 0
 	vinsgr2vr.h	$vr1, $t0, 0
-	vinsgr2vr.h	$vr1, $t2, 1
-	vinsgr2vr.h	$vr1, $a5, 2
-	vinsgr2vr.h	$vr1, $t1, 3
+	vinsgr2vr.h	$vr1, $t1, 1
+	vinsgr2vr.h	$vr1, $t2, 2
+	vinsgr2vr.h	$vr1, $a7, 3
 	vrepli.b	$vr2, 0
+	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a7, $a7, 0
 	vilvl.h	$vr1, $vr2, $vr1
-	vadd.w	$vr0, $vr0, $vr1
-	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a5, $a5, 0
-	vaddi.wu	$vr0, $vr0, 1
-	vsrai.w	$vr0, $vr0, 1
+	vavgr.w	$vr0, $vr0, $vr1
 	vst	$vr0, $a1, 0
-	ldx.h	$t0, $a5, $a0
-	ldx.h	$t1, $a5, $a4
-	ldx.h	$t2, $a5, $a6
-	ldx.h	$a5, $a5, $a7
+	ldx.h	$t0, $a7, $a0
+	ldx.h	$t1, $a7, $a4
+	ldx.h	$t2, $a7, $a5
+	ldx.h	$a7, $a7, $a6
 	vld	$vr0, $a1, 16
 	vinsgr2vr.h	$vr1, $t0, 0
 	vinsgr2vr.h	$vr1, $t1, 1
 	vinsgr2vr.h	$vr1, $t2, 2
-	vinsgr2vr.h	$vr1, $a5, 3
+	vinsgr2vr.h	$vr1, $a7, 3
 	vilvl.h	$vr1, $vr2, $vr1
-	vadd.w	$vr0, $vr0, $vr1
-	vaddi.wu	$vr0, $vr0, 1
-	vsrai.w	$vr0, $vr0, 1
+	vavgr.w	$vr0, $vr0, $vr1
 	vst	$vr0, $a1, 16
-	ldx.h	$a5, $a3, $a0
+	ldx.h	$a7, $a3, $a0
 	ldx.h	$t0, $a3, $a4
-	ldx.h	$t1, $a3, $a6
-	ldx.h	$a3, $a3, $a7
+	ldx.h	$t1, $a3, $a5
+	ldx.h	$a3, $a3, $a6
 	vld	$vr0, $a1, 32
-	vinsgr2vr.h	$vr1, $a5, 0
+	vinsgr2vr.h	$vr1, $a7, 0
 	vinsgr2vr.h	$vr1, $t0, 1
 	vinsgr2vr.h	$vr1, $t1, 2
 	vinsgr2vr.h	$vr1, $a3, 3
-	vilvl.h	$vr1, $vr2, $vr1
-	vadd.w	$vr0, $vr0, $vr1
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a3, $a3, 0
-	vaddi.wu	$vr0, $vr0, 1
-	vsrai.w	$vr0, $vr0, 1
+	vilvl.h	$vr1, $vr2, $vr1
+	vavgr.w	$vr0, $vr0, $vr1
 	vst	$vr0, $a1, 32
 	ldx.h	$a0, $a3, $a0
 	ldx.h	$a4, $a3, $a4
-	ldx.h	$a5, $a3, $a6
-	ldx.h	$a6, $a3, $a7
+	ldx.h	$a5, $a3, $a5
+	ldx.h	$a6, $a3, $a6
 	vld	$vr0, $a1, 48
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr1, $a4, 1
 	vinsgr2vr.h	$vr1, $a5, 2
 	vinsgr2vr.h	$vr1, $a6, 3
 	vilvl.h	$vr1, $vr2, $vr1
-	vadd.w	$vr0, $vr0, $vr1
-	vaddi.wu	$vr0, $vr0, 1
-	vsrai.w	$vr0, $vr0, 1
+	vavgr.w	$vr0, $vr0, $vr1
 	vst	$vr0, $a1, 48
 	st.d	$a3, $a2, %pc_lo12(get_block.cur_lineY)
 	b	.LBB6_34
@@ -4087,8 +4079,6 @@ get_block:                              # @get_block
 	vinsgr2vr.h	$vr2, $t2, 2
 	vinsgr2vr.h	$vr2, $t6, 3
 	vrepli.b	$vr0, 0
-	vilvl.h	$vr2, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr2
 	slt	$a5, $t5, $a3
 	maskeqz	$a6, $a3, $a5
 	masknez	$a5, $t5, $a5
@@ -4100,8 +4090,8 @@ get_block:                              # @get_block
 	or	$a5, $a5, $a6
 	slli.d	$a5, $a5, 3
 	ldx.d	$a5, $a0, $a5
-	vaddi.wu	$vr1, $vr1, 1
-	vsrai.w	$vr1, $vr1, 1
+	vilvl.h	$vr2, $vr0, $vr2
+	vavgr.w	$vr1, $vr1, $vr2
 	vst	$vr1, $a4, 0
 	ldx.h	$a6, $a5, $a7
 	ldx.h	$t2, $a5, $t0
@@ -4112,8 +4102,6 @@ get_block:                              # @get_block
 	vinsgr2vr.h	$vr2, $t2, 1
 	vinsgr2vr.h	$vr2, $t5, 2
 	vinsgr2vr.h	$vr2, $a5, 3
-	vilvl.h	$vr2, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr2
 	slt	$a5, $t4, $a3
 	maskeqz	$a6, $a3, $a5
 	masknez	$a5, $t4, $a5
@@ -4125,8 +4113,8 @@ get_block:                              # @get_block
 	or	$a5, $a5, $a6
 	slli.d	$a5, $a5, 3
 	ldx.d	$a5, $a0, $a5
-	vaddi.wu	$vr1, $vr1, 1
-	vsrai.w	$vr1, $vr1, 1
+	vilvl.h	$vr2, $vr0, $vr2
+	vavgr.w	$vr1, $vr1, $vr2
 	vst	$vr1, $a4, 16
 	ldx.h	$a6, $a5, $a7
 	ldx.h	$t2, $a5, $t0
@@ -4137,8 +4125,6 @@ get_block:                              # @get_block
 	vinsgr2vr.h	$vr2, $t2, 1
 	vinsgr2vr.h	$vr2, $t4, 2
 	vinsgr2vr.h	$vr2, $a5, 3
-	vilvl.h	$vr2, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr2
 	slt	$a5, $a2, $a3
 	maskeqz	$a3, $a3, $a5
 	masknez	$a2, $a2, $a5
@@ -4150,8 +4136,8 @@ get_block:                              # @get_block
 	or	$a1, $a2, $a1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	vaddi.wu	$vr1, $vr1, 1
-	vsrai.w	$vr1, $vr1, 1
+	vilvl.h	$vr2, $vr0, $vr2
+	vavgr.w	$vr1, $vr1, $vr2
 	vst	$vr1, $a4, 32
 	ldx.h	$a1, $a0, $a7
 	ldx.h	$a2, $a0, $t0
@@ -4163,9 +4149,7 @@ get_block:                              # @get_block
 	vinsgr2vr.h	$vr2, $a3, 2
 	vinsgr2vr.h	$vr2, $a5, 3
 	vilvl.h	$vr0, $vr0, $vr2
-	vadd.w	$vr0, $vr1, $vr0
-	vaddi.wu	$vr0, $vr0, 1
-	vsrai.w	$vr0, $vr0, 1
+	vavgr.w	$vr0, $vr1, $vr0
 	vst	$vr0, $a4, 48
 	b	.LBB6_15
 .LBB6_24:

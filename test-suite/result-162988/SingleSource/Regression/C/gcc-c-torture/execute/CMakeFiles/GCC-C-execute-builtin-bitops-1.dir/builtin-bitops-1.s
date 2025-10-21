@@ -3372,9 +3372,9 @@ main:                                   # @main
 	bne	$a4, $s1, .LBB18_18
 .LBB18_20:                              # %middle.split1081
                                         #   in Loop: Header=BB18_10 Depth=1
-	slli.d	$a4, $a6, 48
+	bstrpick.d	$a4, $a6, 15, 0
 	beqz	$a4, .LBB18_80
-# %bb.21:                               # %my_clzl.exit
+# %bb.21:                               # %middle.split1081
                                         #   in Loop: Header=BB18_10 Depth=1
 	vld	$vr1, $a2, %pc_lo12(.LCPI18_8)
 	vpickev.b	$vr2, $vr10, $vr9
@@ -3518,9 +3518,9 @@ main:                                   # @main
 	bne	$a1, $s1, .LBB18_23
 .LBB18_25:                              # %middle.split1069
                                         #   in Loop: Header=BB18_10 Depth=1
-	slli.d	$a1, $a3, 48
+	bstrpick.d	$a1, $a3, 15, 0
 	beqz	$a1, .LBB18_80
-# %bb.26:                               # %my_ctzl.exit
+# %bb.26:                               # %middle.split1069
                                         #   in Loop: Header=BB18_10 Depth=1
 	vpickev.b	$vr2, $vr11, $vr10
 	vand.v	$vr1, $vr2, $vr1
@@ -4147,9 +4147,9 @@ main:                                   # @main
 	bne	$a3, $s1, .LBB18_53
 .LBB18_55:                              # %middle.split1131
                                         #   in Loop: Header=BB18_45 Depth=1
-	slli.d	$a3, $a5, 48
+	bstrpick.d	$a3, $a5, 15, 0
 	beqz	$a3, .LBB18_80
-# %bb.56:                               # %my_clzll.exit
+# %bb.56:                               # %middle.split1131
                                         #   in Loop: Header=BB18_45 Depth=1
 	pcalau12i	$a3, %pc_hi20(.LCPI18_8)
 	vld	$vr1, $a3, %pc_lo12(.LCPI18_8)
@@ -4294,9 +4294,9 @@ main:                                   # @main
 	bne	$a1, $s1, .LBB18_58
 .LBB18_60:                              # %middle.split1119
                                         #   in Loop: Header=BB18_45 Depth=1
-	slli.d	$a1, $a3, 48
+	bstrpick.d	$a1, $a3, 15, 0
 	beqz	$a1, .LBB18_80
-# %bb.61:                               # %my_ctzll.exit
+# %bb.61:                               # %middle.split1119
                                         #   in Loop: Header=BB18_45 Depth=1
 	vpickev.b	$vr2, $vr11, $vr10
 	vand.v	$vr1, $vr2, $vr1

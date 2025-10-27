@@ -434,7 +434,7 @@ pmain:                                  # @pmain
 	jirl	$ra, $ra, 0
 	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 8
-	bne	$s6, $s3, .LBB2_50
+	bltu	$s3, $s6, .LBB2_50
 .LBB2_51:                               # %._crit_edge.i.i
 	move	$a0, $fp
 	move	$a1, $s0

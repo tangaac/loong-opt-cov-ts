@@ -2581,43 +2581,61 @@ _ZThn16_N9NCompress8NQuantum8CDecoderD0Ev: # @_ZThn16_N9NCompress8NQuantum8CDeco
 .Lfunc_end26:
 	.size	_ZThn16_N9NCompress8NQuantum8CDecoderD0Ev, .Lfunc_end26-_ZThn16_N9NCompress8NQuantum8CDecoderD0Ev
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj
+.LCPI27_0:
+	.word	0                               # 0x0
+	.word	5                               # 0x5
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
 	.section	.text._ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj,"axG",@progbits,_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj,comdat
-	.weak	_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj # -- Begin function _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj
+	.weak	_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj
 	.p2align	5
 	.type	_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj,@function
 _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj: # @_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$fp, $a0
-	ld.w	$a0, $a0, 4
-	ld.w	$a4, $fp, 0
-	mul.w	$a2, $a0, $a2
+	ld.w	$a0, $a0, 0
+	vld	$vr0, $fp, 4
+	ld.w	$a4, $fp, 8
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a0, 1
+	vreplvei.w	$vr0, $vr0, 0
+	vinsgr2vr.w	$vr2, $a2, 0
+	vinsgr2vr.w	$vr2, $a1, 1
+	vmul.w	$vr0, $vr0, $vr2
+	vpickve2gr.w	$a1, $vr0, 1
+	div.wu	$a1, $a1, $a3
+	vpickve2gr.w	$a2, $vr0, 0
 	div.wu	$a2, $a2, $a3
-	mul.w	$a0, $a0, $a1
-	ld.w	$a1, $fp, 8
-	add.d	$a2, $a4, $a2
-	addi.w	$s2, $a2, -1
-	div.wu	$a0, $a0, $a3
-	sub.d	$s1, $a1, $a0
+	vinsgr2vr.w	$vr0, $a2, 0
+	vinsgr2vr.w	$vr0, $a1, 1
+	vadd.w	$vr0, $vr1, $vr0
+	vldi	$vr1, -1777
+	sub.d	$s1, $a4, $a1
 	st.w	$s1, $fp, 8
-	add.w	$a1, $a0, $a4
-	st.w	$a1, $fp, 0
+	add.d	$a0, $a1, $a0
+	vadd.w	$vr4, $vr0, $vr1
+	st.w	$a0, $fp, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
+	vld	$vr2, $a0, %pc_lo12(.LCPI27_0)
 	addi.d	$s0, $fp, 24
-	lu12i.w	$s3, 4
+	lu12i.w	$s2, 4
+	vldi	$vr3, -2497
+	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB27_4
 	.p2align	4, , 16
 .LBB27_1:                               #   in Loop: Header=BB27_4 Depth=1
@@ -2629,29 +2647,36 @@ _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj: # @_ZN9NCompress8NQuant
 	addi.d	$a0, $a0, 256
 .LBB27_3:                               # %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit
                                         #   in Loop: Header=BB27_4 Depth=1
-	ori	$a2, $zero, 1
-	bstrins.d	$a2, $s2, 15, 1
-	slli.d	$a3, $s1, 1
+	vpickve2gr.w	$a2, $vr4, 0
+	ori	$a3, $zero, 1
+	bstrins.d	$a3, $a2, 15, 1
+	slli.d	$a2, $s1, 1
 	bstrpick.d	$a4, $a0, 7, 7
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $fp, 16
-	or	$s1, $a4, $a3
+	or	$s1, $a4, $a2
 	st.w	$s1, $fp, 8
-	move	$s2, $a2
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a1, 1
 .LBB27_4:                               # =>This Inner Loop Header: Depth=1
-	xor	$a0, $a1, $s2
-	slli.d	$a0, $a0, 48
-	bgez	$a0, .LBB27_8
+	vpickve2gr.w	$a0, $vr4, 0
+	vpickve2gr.w	$a1, $vr4, 1
+	xor	$a2, $a1, $a0
+	slli.d	$a2, $a2, 48
+	bgez	$a2, .LBB27_8
 # %bb.5:                                #   in Loop: Header=BB27_4 Depth=1
-	slli.d	$a0, $s2, 49
-	bltz	$a0, .LBB27_11
+	slli.d	$a2, $a0, 49
+	bltz	$a2, .LBB27_11
 # %bb.6:                                #   in Loop: Header=BB27_4 Depth=1
-	and	$a0, $a1, $s3
-	beqz	$a0, .LBB27_11
+	and	$a2, $a1, $s2
+	beqz	$a2, .LBB27_11
 # %bb.7:                                #   in Loop: Header=BB27_4 Depth=1
-	bstrpick.d	$a1, $a1, 13, 0
-	or	$s2, $s2, $s3
+	vbitseti.w	$vr0, $vr4, 14
+	vand.v	$vr1, $vr4, $vr3
+	vori.b	$vr4, $vr2, 0
+	vshuf.w	$vr4, $vr1, $vr0
 .LBB27_8:                               #   in Loop: Header=BB27_4 Depth=1
+	vpickve2gr.w	$a1, $vr4, 1
 	ld.wu	$a0, $fp, 16
 	slli.d	$a1, $a1, 1
 	bstrpick.d	$a1, $a1, 15, 1
@@ -2665,21 +2690,24 @@ _ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj: # @_ZN9NCompress8NQuant
 	bltu	$a0, $a2, .LBB27_1
 # %bb.10:                               #   in Loop: Header=BB27_4 Depth=1
 	move	$a0, $s0
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer10ReadBlock2Ev)
 	jirl	$ra, $ra, 0
+	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
+	vldi	$vr3, -2497
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	ld.w	$a1, $fp, 0
 	b	.LBB27_2
 .LBB27_11:
-	sub.d	$a0, $s2, $a1
+	sub.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 4
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end27:
 	.size	_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj, .Lfunc_end27-_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj

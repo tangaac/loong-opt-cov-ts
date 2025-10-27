@@ -236,15 +236,15 @@ Ppmd7_Init:                             # @Ppmd7_Init
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function RestartModel
 .LCPI4_0:
-	.word	15581                           # 0x3cdd
-	.word	7999                            # 0x1f3f
-	.word	22975                           # 0x59bf
-	.word	18675                           # 0x48f3
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
 .LCPI4_1:
-	.word	25761                           # 0x64a1
-	.word	23228                           # 0x5abc
-	.word	26162                           # 0x6632
-	.word	24657                           # 0x6051
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.p2align	5
 	.type	RestartModel,@function
@@ -322,44 +322,639 @@ RestartModel:                           # @RestartModel
 	addi.d	$a0, $a0, 12
 	bne	$a3, $a2, .LBB4_1
 # %bb.2:                                # %.preheader69
-	addi.d	$a0, $fp, 2047
-	addi.d	$a0, $a0, 865
-	ori	$a1, $zero, 2
-	lu12i.w	$a2, -4
-	pcalau12i	$a3, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI4_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI4_1)
-	vld	$vr1, $a3, %pc_lo12(.LCPI4_1)
-	vldi	$vr2, -2752
-	lu12i.w	$t1, 3
-	ori	$a3, $t1, 3984
-	ori	$a4, $t1, 4000
-	ori	$a5, $t1, 4016
-	ori	$a6, $t1, 4032
-	ori	$a7, $t1, 4048
-	ori	$t0, $t1, 4064
-	ori	$t1, $t1, 4080
-	lu12i.w	$t2, 4
-	.p2align	4, , 16
-.LBB4_3:                                # %.preheader68
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$t3, $a0, $a2
+	move	$a0, $zero
+	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI4_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI4_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI4_1)
+	lu12i.w	$a1, 3
+	ori	$a1, $a1, 3293
+	vreplgr2vr.w	$vr2, $a1
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 3903
 	vreplgr2vr.w	$vr3, $a1
-	vdiv.wu	$vr4, $vr0, $vr3
-	vdiv.wu	$vr3, $vr1, $vr3
-	vpickev.h	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr2, $vr3
-	vstx	$vr3, $t3, $a3
-	vstx	$vr3, $t3, $a4
-	vstx	$vr3, $t3, $a5
-	vstx	$vr3, $t3, $a6
-	vstx	$vr3, $t3, $a7
-	vstx	$vr3, $t3, $t0
-	vstx	$vr3, $t3, $t1
-	vstx	$vr3, $t3, $t2
-	addi.d	$a2, $a2, 128
-	addi.d	$a1, $a1, 1
-	bnez	$a2, .LBB4_3
+	lu12i.w	$a2, 5
+	ori	$a1, $a2, 2495
+	vreplgr2vr.w	$vr4, $a1
+	lu12i.w	$a1, 4
+	ori	$a1, $a1, 2291
+	vreplgr2vr.w	$vr5, $a1
+	lu12i.w	$a3, 6
+	ori	$a1, $a3, 1185
+	vreplgr2vr.w	$vr6, $a1
+	addi.d	$a1, $fp, 2047
+	addi.d	$a1, $a1, 753
+	vldi	$vr7, -2752
+	ori	$a2, $a2, 2748
+	vreplgr2vr.w	$vr8, $a2
+	ori	$a2, $a3, 1586
+	vreplgr2vr.w	$vr9, $a2
+	ori	$a2, $a3, 81
+	vreplgr2vr.w	$vr10, $a2
+	ori	$a2, $zero, 128
+	.p2align	4, , 16
+.LBB4_3:                                # %vector.body91
+                                        # =>This Inner Loop Header: Depth=1
+	slli.d	$a3, $a0, 7
+	add.d	$a3, $a1, $a3
+	vaddi.wu	$vr11, $vr0, 2
+	vaddi.wu	$vr12, $vr1, 2
+	vdiv.wu	$vr13, $vr2, $vr12
+	vdiv.wu	$vr14, $vr2, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vpickve2gr.h	$a4, $vr13, 2
+	vpickve2gr.h	$a5, $vr13, 3
+	vpickve2gr.h	$a6, $vr13, 4
+	vpickve2gr.h	$a7, $vr13, 5
+	vpickve2gr.h	$t0, $vr13, 6
+	vpickve2gr.h	$t1, $vr13, 7
+	vstelm.h	$vr13, $a3, 0, 0
+	vstelm.h	$vr13, $a3, 128, 1
+	st.h	$a4, $a3, 256
+	st.h	$a5, $a3, 384
+	st.h	$a6, $a3, 512
+	st.h	$a7, $a3, 640
+	st.h	$t0, $a3, 768
+	st.h	$t1, $a3, 896
+	vstelm.h	$vr13, $a3, 16, 0
+	vstelm.h	$vr13, $a3, 144, 1
+	st.h	$a4, $a3, 272
+	st.h	$a5, $a3, 400
+	st.h	$a6, $a3, 528
+	st.h	$a7, $a3, 656
+	st.h	$t0, $a3, 784
+	st.h	$t1, $a3, 912
+	vstelm.h	$vr13, $a3, 32, 0
+	vstelm.h	$vr13, $a3, 160, 1
+	st.h	$a4, $a3, 288
+	st.h	$a5, $a3, 416
+	st.h	$a6, $a3, 544
+	st.h	$a7, $a3, 672
+	st.h	$t0, $a3, 800
+	st.h	$t1, $a3, 928
+	vstelm.h	$vr13, $a3, 48, 0
+	vstelm.h	$vr13, $a3, 176, 1
+	st.h	$a4, $a3, 304
+	st.h	$a5, $a3, 432
+	st.h	$a6, $a3, 560
+	st.h	$a7, $a3, 688
+	st.h	$t0, $a3, 816
+	st.h	$t1, $a3, 944
+	vstelm.h	$vr13, $a3, 64, 0
+	vstelm.h	$vr13, $a3, 192, 1
+	st.h	$a4, $a3, 320
+	st.h	$a5, $a3, 448
+	st.h	$a6, $a3, 576
+	st.h	$a7, $a3, 704
+	st.h	$t0, $a3, 832
+	st.h	$t1, $a3, 960
+	vstelm.h	$vr13, $a3, 80, 0
+	vstelm.h	$vr13, $a3, 208, 1
+	st.h	$a4, $a3, 336
+	st.h	$a5, $a3, 464
+	st.h	$a6, $a3, 592
+	st.h	$a7, $a3, 720
+	st.h	$t0, $a3, 848
+	st.h	$t1, $a3, 976
+	vstelm.h	$vr13, $a3, 96, 0
+	vstelm.h	$vr13, $a3, 224, 1
+	st.h	$a4, $a3, 352
+	st.h	$a5, $a3, 480
+	st.h	$a6, $a3, 608
+	st.h	$a7, $a3, 736
+	st.h	$t0, $a3, 864
+	st.h	$t1, $a3, 992
+	vstelm.h	$vr13, $a3, 112, 0
+	vstelm.h	$vr13, $a3, 240, 1
+	st.h	$a4, $a3, 368
+	st.h	$a5, $a3, 496
+	st.h	$a6, $a3, 624
+	st.h	$a7, $a3, 752
+	st.h	$t0, $a3, 880
+	st.h	$t1, $a3, 1008
+	vdiv.wu	$vr13, $vr3, $vr12
+	vdiv.wu	$vr14, $vr3, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vpickve2gr.h	$a4, $vr13, 2
+	vpickve2gr.h	$a5, $vr13, 3
+	vpickve2gr.h	$a6, $vr13, 4
+	vpickve2gr.h	$a7, $vr13, 5
+	vpickve2gr.h	$t0, $vr13, 6
+	vpickve2gr.h	$t1, $vr13, 7
+	vstelm.h	$vr13, $a3, 2, 0
+	vstelm.h	$vr13, $a3, 130, 1
+	st.h	$a4, $a3, 258
+	st.h	$a5, $a3, 386
+	st.h	$a6, $a3, 514
+	st.h	$a7, $a3, 642
+	st.h	$t0, $a3, 770
+	st.h	$t1, $a3, 898
+	vstelm.h	$vr13, $a3, 18, 0
+	vstelm.h	$vr13, $a3, 146, 1
+	st.h	$a4, $a3, 274
+	st.h	$a5, $a3, 402
+	st.h	$a6, $a3, 530
+	st.h	$a7, $a3, 658
+	st.h	$t0, $a3, 786
+	st.h	$t1, $a3, 914
+	vstelm.h	$vr13, $a3, 34, 0
+	vstelm.h	$vr13, $a3, 162, 1
+	st.h	$a4, $a3, 290
+	st.h	$a5, $a3, 418
+	st.h	$a6, $a3, 546
+	st.h	$a7, $a3, 674
+	st.h	$t0, $a3, 802
+	st.h	$t1, $a3, 930
+	vstelm.h	$vr13, $a3, 50, 0
+	vstelm.h	$vr13, $a3, 178, 1
+	st.h	$a4, $a3, 306
+	st.h	$a5, $a3, 434
+	st.h	$a6, $a3, 562
+	st.h	$a7, $a3, 690
+	st.h	$t0, $a3, 818
+	st.h	$t1, $a3, 946
+	vstelm.h	$vr13, $a3, 66, 0
+	vstelm.h	$vr13, $a3, 194, 1
+	st.h	$a4, $a3, 322
+	st.h	$a5, $a3, 450
+	st.h	$a6, $a3, 578
+	st.h	$a7, $a3, 706
+	st.h	$t0, $a3, 834
+	st.h	$t1, $a3, 962
+	vstelm.h	$vr13, $a3, 82, 0
+	vstelm.h	$vr13, $a3, 210, 1
+	st.h	$a4, $a3, 338
+	st.h	$a5, $a3, 466
+	st.h	$a6, $a3, 594
+	st.h	$a7, $a3, 722
+	st.h	$t0, $a3, 850
+	st.h	$t1, $a3, 978
+	vstelm.h	$vr13, $a3, 98, 0
+	vstelm.h	$vr13, $a3, 226, 1
+	st.h	$a4, $a3, 354
+	st.h	$a5, $a3, 482
+	st.h	$a6, $a3, 610
+	st.h	$a7, $a3, 738
+	st.h	$t0, $a3, 866
+	st.h	$t1, $a3, 994
+	vstelm.h	$vr13, $a3, 114, 0
+	vstelm.h	$vr13, $a3, 242, 1
+	st.h	$a4, $a3, 370
+	st.h	$a5, $a3, 498
+	st.h	$a6, $a3, 626
+	st.h	$a7, $a3, 754
+	st.h	$t0, $a3, 882
+	st.h	$t1, $a3, 1010
+	vdiv.wu	$vr13, $vr4, $vr12
+	vdiv.wu	$vr14, $vr4, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vpickve2gr.h	$a4, $vr13, 2
+	vpickve2gr.h	$a5, $vr13, 3
+	vpickve2gr.h	$a6, $vr13, 4
+	vpickve2gr.h	$a7, $vr13, 5
+	vpickve2gr.h	$t0, $vr13, 6
+	vpickve2gr.h	$t1, $vr13, 7
+	vstelm.h	$vr13, $a3, 4, 0
+	vstelm.h	$vr13, $a3, 132, 1
+	st.h	$a4, $a3, 260
+	st.h	$a5, $a3, 388
+	st.h	$a6, $a3, 516
+	st.h	$a7, $a3, 644
+	st.h	$t0, $a3, 772
+	st.h	$t1, $a3, 900
+	vstelm.h	$vr13, $a3, 20, 0
+	vstelm.h	$vr13, $a3, 148, 1
+	st.h	$a4, $a3, 276
+	st.h	$a5, $a3, 404
+	st.h	$a6, $a3, 532
+	st.h	$a7, $a3, 660
+	st.h	$t0, $a3, 788
+	st.h	$t1, $a3, 916
+	vstelm.h	$vr13, $a3, 36, 0
+	vstelm.h	$vr13, $a3, 164, 1
+	st.h	$a4, $a3, 292
+	st.h	$a5, $a3, 420
+	st.h	$a6, $a3, 548
+	st.h	$a7, $a3, 676
+	st.h	$t0, $a3, 804
+	st.h	$t1, $a3, 932
+	vstelm.h	$vr13, $a3, 52, 0
+	vstelm.h	$vr13, $a3, 180, 1
+	st.h	$a4, $a3, 308
+	st.h	$a5, $a3, 436
+	st.h	$a6, $a3, 564
+	st.h	$a7, $a3, 692
+	st.h	$t0, $a3, 820
+	st.h	$t1, $a3, 948
+	vstelm.h	$vr13, $a3, 68, 0
+	vstelm.h	$vr13, $a3, 196, 1
+	st.h	$a4, $a3, 324
+	st.h	$a5, $a3, 452
+	st.h	$a6, $a3, 580
+	st.h	$a7, $a3, 708
+	st.h	$t0, $a3, 836
+	st.h	$t1, $a3, 964
+	vstelm.h	$vr13, $a3, 84, 0
+	vstelm.h	$vr13, $a3, 212, 1
+	st.h	$a4, $a3, 340
+	st.h	$a5, $a3, 468
+	st.h	$a6, $a3, 596
+	st.h	$a7, $a3, 724
+	st.h	$t0, $a3, 852
+	st.h	$t1, $a3, 980
+	vstelm.h	$vr13, $a3, 100, 0
+	vstelm.h	$vr13, $a3, 228, 1
+	st.h	$a4, $a3, 356
+	st.h	$a5, $a3, 484
+	st.h	$a6, $a3, 612
+	st.h	$a7, $a3, 740
+	st.h	$t0, $a3, 868
+	st.h	$t1, $a3, 996
+	vstelm.h	$vr13, $a3, 116, 0
+	vstelm.h	$vr13, $a3, 244, 1
+	st.h	$a4, $a3, 372
+	st.h	$a5, $a3, 500
+	st.h	$a6, $a3, 628
+	st.h	$a7, $a3, 756
+	st.h	$t0, $a3, 884
+	st.h	$t1, $a3, 1012
+	vdiv.wu	$vr13, $vr5, $vr12
+	vdiv.wu	$vr14, $vr5, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vpickve2gr.h	$a5, $vr13, 2
+	vpickve2gr.h	$a6, $vr13, 3
+	vpickve2gr.h	$a7, $vr13, 4
+	vpickve2gr.h	$t0, $vr13, 5
+	vpickve2gr.h	$t1, $vr13, 6
+	vpickve2gr.h	$a4, $vr13, 7
+	vstelm.h	$vr13, $a3, 6, 0
+	vstelm.h	$vr13, $a3, 134, 1
+	st.h	$a5, $a3, 262
+	st.h	$a6, $a3, 390
+	st.h	$a7, $a3, 518
+	st.h	$t0, $a3, 646
+	st.h	$t1, $a3, 774
+	st.h	$a4, $a3, 902
+	vstelm.h	$vr13, $a3, 22, 0
+	vstelm.h	$vr13, $a3, 150, 1
+	st.h	$a5, $a3, 278
+	st.h	$a6, $a3, 406
+	st.h	$a7, $a3, 534
+	st.h	$t0, $a3, 662
+	st.h	$t1, $a3, 790
+	st.h	$a4, $a3, 918
+	vstelm.h	$vr13, $a3, 38, 0
+	vstelm.h	$vr13, $a3, 166, 1
+	st.h	$a5, $a3, 294
+	st.h	$a6, $a3, 422
+	st.h	$a7, $a3, 550
+	st.h	$t0, $a3, 678
+	st.h	$t1, $a3, 806
+	st.h	$a4, $a3, 934
+	vstelm.h	$vr13, $a3, 54, 0
+	vstelm.h	$vr13, $a3, 182, 1
+	st.h	$a5, $a3, 310
+	st.h	$a6, $a3, 438
+	st.h	$a7, $a3, 566
+	st.h	$t0, $a3, 694
+	st.h	$t1, $a3, 822
+	st.h	$a4, $a3, 950
+	vstelm.h	$vr13, $a3, 70, 0
+	vstelm.h	$vr13, $a3, 198, 1
+	st.h	$a5, $a3, 326
+	st.h	$a6, $a3, 454
+	st.h	$a7, $a3, 582
+	st.h	$t0, $a3, 710
+	st.h	$t1, $a3, 838
+	st.h	$a4, $a3, 966
+	vstelm.h	$vr13, $a3, 86, 0
+	vstelm.h	$vr13, $a3, 214, 1
+	st.h	$a5, $a3, 342
+	st.h	$a6, $a3, 470
+	st.h	$a7, $a3, 598
+	st.h	$t0, $a3, 726
+	st.h	$t1, $a3, 854
+	st.h	$a4, $a3, 982
+	vstelm.h	$vr13, $a3, 102, 0
+	vstelm.h	$vr13, $a3, 230, 1
+	st.h	$a5, $a3, 358
+	st.h	$a6, $a3, 486
+	st.h	$a7, $a3, 614
+	st.h	$t0, $a3, 742
+	st.h	$t1, $a3, 870
+	st.h	$a4, $a3, 998
+	vstelm.h	$vr13, $a3, 118, 0
+	vstelm.h	$vr13, $a3, 246, 1
+	st.h	$a5, $a3, 374
+	st.h	$a6, $a3, 502
+	st.h	$a7, $a3, 630
+	st.h	$t0, $a3, 758
+	st.h	$t1, $a3, 886
+	vdiv.wu	$vr13, $vr6, $vr12
+	vdiv.wu	$vr14, $vr6, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vstelm.h	$vr13, $a3, 8, 0
+	st.h	$a4, $a3, 1014
+	vpickve2gr.h	$a5, $vr13, 2
+	vpickve2gr.h	$a6, $vr13, 3
+	vpickve2gr.h	$a7, $vr13, 4
+	vpickve2gr.h	$t0, $vr13, 5
+	vpickve2gr.h	$t1, $vr13, 6
+	vpickve2gr.h	$a4, $vr13, 7
+	vstelm.h	$vr13, $a3, 136, 1
+	st.h	$a5, $a3, 264
+	st.h	$a6, $a3, 392
+	st.h	$a7, $a3, 520
+	st.h	$t0, $a3, 648
+	st.h	$t1, $a3, 776
+	st.h	$a4, $a3, 904
+	vstelm.h	$vr13, $a3, 24, 0
+	vstelm.h	$vr13, $a3, 152, 1
+	st.h	$a5, $a3, 280
+	st.h	$a6, $a3, 408
+	st.h	$a7, $a3, 536
+	st.h	$t0, $a3, 664
+	st.h	$t1, $a3, 792
+	st.h	$a4, $a3, 920
+	vstelm.h	$vr13, $a3, 40, 0
+	vstelm.h	$vr13, $a3, 168, 1
+	st.h	$a5, $a3, 296
+	st.h	$a6, $a3, 424
+	st.h	$a7, $a3, 552
+	st.h	$t0, $a3, 680
+	st.h	$t1, $a3, 808
+	st.h	$a4, $a3, 936
+	vstelm.h	$vr13, $a3, 56, 0
+	vstelm.h	$vr13, $a3, 184, 1
+	st.h	$a5, $a3, 312
+	st.h	$a6, $a3, 440
+	st.h	$a7, $a3, 568
+	st.h	$t0, $a3, 696
+	st.h	$t1, $a3, 824
+	st.h	$a4, $a3, 952
+	vstelm.h	$vr13, $a3, 72, 0
+	vstelm.h	$vr13, $a3, 200, 1
+	st.h	$a5, $a3, 328
+	st.h	$a6, $a3, 456
+	st.h	$a7, $a3, 584
+	st.h	$t0, $a3, 712
+	st.h	$t1, $a3, 840
+	st.h	$a4, $a3, 968
+	vstelm.h	$vr13, $a3, 88, 0
+	vstelm.h	$vr13, $a3, 216, 1
+	st.h	$a5, $a3, 344
+	st.h	$a6, $a3, 472
+	st.h	$a7, $a3, 600
+	st.h	$t0, $a3, 728
+	st.h	$t1, $a3, 856
+	st.h	$a4, $a3, 984
+	vstelm.h	$vr13, $a3, 104, 0
+	vstelm.h	$vr13, $a3, 232, 1
+	st.h	$a5, $a3, 360
+	st.h	$a6, $a3, 488
+	st.h	$a7, $a3, 616
+	st.h	$t0, $a3, 744
+	st.h	$t1, $a3, 872
+	st.h	$a4, $a3, 1000
+	vstelm.h	$vr13, $a3, 120, 0
+	vstelm.h	$vr13, $a3, 248, 1
+	st.h	$a5, $a3, 376
+	st.h	$a6, $a3, 504
+	st.h	$a7, $a3, 632
+	st.h	$t0, $a3, 760
+	st.h	$t1, $a3, 888
+	vdiv.wu	$vr13, $vr8, $vr12
+	st.h	$a4, $a3, 1016
+	vdiv.wu	$vr14, $vr8, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vpickve2gr.h	$a5, $vr13, 2
+	vpickve2gr.h	$a6, $vr13, 3
+	vpickve2gr.h	$a7, $vr13, 4
+	vpickve2gr.h	$t0, $vr13, 5
+	vpickve2gr.h	$t1, $vr13, 6
+	vpickve2gr.h	$a4, $vr13, 7
+	vstelm.h	$vr13, $a3, 10, 0
+	vstelm.h	$vr13, $a3, 138, 1
+	st.h	$a5, $a3, 266
+	st.h	$a6, $a3, 394
+	st.h	$a7, $a3, 522
+	st.h	$t0, $a3, 650
+	st.h	$t1, $a3, 778
+	st.h	$a4, $a3, 906
+	vstelm.h	$vr13, $a3, 26, 0
+	vstelm.h	$vr13, $a3, 154, 1
+	st.h	$a5, $a3, 282
+	st.h	$a6, $a3, 410
+	st.h	$a7, $a3, 538
+	st.h	$t0, $a3, 666
+	st.h	$t1, $a3, 794
+	st.h	$a4, $a3, 922
+	vstelm.h	$vr13, $a3, 42, 0
+	vstelm.h	$vr13, $a3, 170, 1
+	st.h	$a5, $a3, 298
+	st.h	$a6, $a3, 426
+	st.h	$a7, $a3, 554
+	st.h	$t0, $a3, 682
+	st.h	$t1, $a3, 810
+	st.h	$a4, $a3, 938
+	vstelm.h	$vr13, $a3, 58, 0
+	vstelm.h	$vr13, $a3, 186, 1
+	st.h	$a5, $a3, 314
+	st.h	$a6, $a3, 442
+	st.h	$a7, $a3, 570
+	st.h	$t0, $a3, 698
+	st.h	$t1, $a3, 826
+	st.h	$a4, $a3, 954
+	vstelm.h	$vr13, $a3, 74, 0
+	vstelm.h	$vr13, $a3, 202, 1
+	st.h	$a5, $a3, 330
+	st.h	$a6, $a3, 458
+	st.h	$a7, $a3, 586
+	st.h	$t0, $a3, 714
+	st.h	$t1, $a3, 842
+	st.h	$a4, $a3, 970
+	vstelm.h	$vr13, $a3, 90, 0
+	vstelm.h	$vr13, $a3, 218, 1
+	st.h	$a5, $a3, 346
+	st.h	$a6, $a3, 474
+	st.h	$a7, $a3, 602
+	st.h	$t0, $a3, 730
+	st.h	$t1, $a3, 858
+	st.h	$a4, $a3, 986
+	vstelm.h	$vr13, $a3, 106, 0
+	vstelm.h	$vr13, $a3, 234, 1
+	st.h	$a5, $a3, 362
+	st.h	$a6, $a3, 490
+	st.h	$a7, $a3, 618
+	st.h	$t0, $a3, 746
+	st.h	$t1, $a3, 874
+	st.h	$a4, $a3, 1002
+	vstelm.h	$vr13, $a3, 122, 0
+	vstelm.h	$vr13, $a3, 250, 1
+	st.h	$a5, $a3, 378
+	st.h	$a6, $a3, 506
+	st.h	$a7, $a3, 634
+	st.h	$t0, $a3, 762
+	st.h	$t1, $a3, 890
+	vdiv.wu	$vr13, $vr9, $vr12
+	st.h	$a4, $a3, 1018
+	vdiv.wu	$vr14, $vr9, $vr11
+	vpickev.h	$vr13, $vr14, $vr13
+	vsub.h	$vr13, $vr7, $vr13
+	vpickve2gr.h	$a5, $vr13, 2
+	vpickve2gr.h	$a6, $vr13, 3
+	vpickve2gr.h	$a7, $vr13, 4
+	vpickve2gr.h	$t0, $vr13, 5
+	vpickve2gr.h	$t1, $vr13, 6
+	vpickve2gr.h	$a4, $vr13, 7
+	vstelm.h	$vr13, $a3, 12, 0
+	vstelm.h	$vr13, $a3, 140, 1
+	st.h	$a5, $a3, 268
+	st.h	$a6, $a3, 396
+	st.h	$a7, $a3, 524
+	st.h	$t0, $a3, 652
+	st.h	$t1, $a3, 780
+	st.h	$a4, $a3, 908
+	vstelm.h	$vr13, $a3, 28, 0
+	vstelm.h	$vr13, $a3, 156, 1
+	st.h	$a5, $a3, 284
+	st.h	$a6, $a3, 412
+	st.h	$a7, $a3, 540
+	st.h	$t0, $a3, 668
+	st.h	$t1, $a3, 796
+	st.h	$a4, $a3, 924
+	vstelm.h	$vr13, $a3, 44, 0
+	vstelm.h	$vr13, $a3, 172, 1
+	st.h	$a5, $a3, 300
+	st.h	$a6, $a3, 428
+	st.h	$a7, $a3, 556
+	st.h	$t0, $a3, 684
+	st.h	$t1, $a3, 812
+	st.h	$a4, $a3, 940
+	vstelm.h	$vr13, $a3, 60, 0
+	vstelm.h	$vr13, $a3, 188, 1
+	st.h	$a5, $a3, 316
+	st.h	$a6, $a3, 444
+	st.h	$a7, $a3, 572
+	st.h	$t0, $a3, 700
+	st.h	$t1, $a3, 828
+	st.h	$a4, $a3, 956
+	vstelm.h	$vr13, $a3, 76, 0
+	vstelm.h	$vr13, $a3, 204, 1
+	st.h	$a5, $a3, 332
+	st.h	$a6, $a3, 460
+	st.h	$a7, $a3, 588
+	st.h	$t0, $a3, 716
+	st.h	$t1, $a3, 844
+	st.h	$a4, $a3, 972
+	vstelm.h	$vr13, $a3, 92, 0
+	vstelm.h	$vr13, $a3, 220, 1
+	st.h	$a5, $a3, 348
+	st.h	$a6, $a3, 476
+	st.h	$a7, $a3, 604
+	st.h	$t0, $a3, 732
+	st.h	$t1, $a3, 860
+	st.h	$a4, $a3, 988
+	vstelm.h	$vr13, $a3, 108, 0
+	vstelm.h	$vr13, $a3, 236, 1
+	st.h	$a5, $a3, 364
+	st.h	$a6, $a3, 492
+	st.h	$a7, $a3, 620
+	st.h	$t0, $a3, 748
+	st.h	$t1, $a3, 876
+	st.h	$a4, $a3, 1004
+	vstelm.h	$vr13, $a3, 124, 0
+	vstelm.h	$vr13, $a3, 252, 1
+	st.h	$a5, $a3, 380
+	st.h	$a6, $a3, 508
+	st.h	$a7, $a3, 636
+	st.h	$t0, $a3, 764
+	st.h	$t1, $a3, 892
+	vdiv.wu	$vr12, $vr10, $vr12
+	st.h	$a4, $a3, 1020
+	vdiv.wu	$vr11, $vr10, $vr11
+	vpickev.h	$vr11, $vr11, $vr12
+	vsub.h	$vr11, $vr7, $vr11
+	vpickve2gr.h	$a4, $vr11, 2
+	vpickve2gr.h	$a5, $vr11, 3
+	vpickve2gr.h	$a6, $vr11, 4
+	vpickve2gr.h	$a7, $vr11, 5
+	vpickve2gr.h	$t0, $vr11, 6
+	vpickve2gr.h	$t1, $vr11, 7
+	vstelm.h	$vr11, $a3, 14, 0
+	vstelm.h	$vr11, $a3, 142, 1
+	st.h	$a4, $a3, 270
+	st.h	$a5, $a3, 398
+	st.h	$a6, $a3, 526
+	st.h	$a7, $a3, 654
+	st.h	$t0, $a3, 782
+	st.h	$t1, $a3, 910
+	vstelm.h	$vr11, $a3, 30, 0
+	vstelm.h	$vr11, $a3, 158, 1
+	st.h	$a4, $a3, 286
+	st.h	$a5, $a3, 414
+	st.h	$a6, $a3, 542
+	st.h	$a7, $a3, 670
+	st.h	$t0, $a3, 798
+	st.h	$t1, $a3, 926
+	vstelm.h	$vr11, $a3, 46, 0
+	vstelm.h	$vr11, $a3, 174, 1
+	st.h	$a4, $a3, 302
+	st.h	$a5, $a3, 430
+	st.h	$a6, $a3, 558
+	st.h	$a7, $a3, 686
+	st.h	$t0, $a3, 814
+	st.h	$t1, $a3, 942
+	vstelm.h	$vr11, $a3, 62, 0
+	vstelm.h	$vr11, $a3, 190, 1
+	st.h	$a4, $a3, 318
+	st.h	$a5, $a3, 446
+	st.h	$a6, $a3, 574
+	st.h	$a7, $a3, 702
+	st.h	$t0, $a3, 830
+	st.h	$t1, $a3, 958
+	vstelm.h	$vr11, $a3, 78, 0
+	vstelm.h	$vr11, $a3, 206, 1
+	st.h	$a4, $a3, 334
+	st.h	$a5, $a3, 462
+	st.h	$a6, $a3, 590
+	st.h	$a7, $a3, 718
+	st.h	$t0, $a3, 846
+	st.h	$t1, $a3, 974
+	vstelm.h	$vr11, $a3, 94, 0
+	vstelm.h	$vr11, $a3, 222, 1
+	st.h	$a4, $a3, 350
+	st.h	$a5, $a3, 478
+	st.h	$a6, $a3, 606
+	st.h	$a7, $a3, 734
+	st.h	$t0, $a3, 862
+	st.h	$t1, $a3, 990
+	vstelm.h	$vr11, $a3, 110, 0
+	vstelm.h	$vr11, $a3, 238, 1
+	st.h	$a4, $a3, 366
+	st.h	$a5, $a3, 494
+	st.h	$a6, $a3, 622
+	st.h	$a7, $a3, 750
+	st.h	$t0, $a3, 878
+	st.h	$t1, $a3, 1006
+	vstelm.h	$vr11, $a3, 126, 0
+	vstelm.h	$vr11, $a3, 254, 1
+	st.h	$a4, $a3, 382
+	st.h	$a5, $a3, 510
+	st.h	$a6, $a3, 638
+	st.h	$a7, $a3, 766
+	st.h	$t0, $a3, 894
+	st.h	$t1, $a3, 1022
+	addi.d	$a0, $a0, 8
+	vaddi.wu	$vr1, $vr1, 8
+	vaddi.wu	$vr0, $vr0, 8
+	bne	$a0, $a2, .LBB4_3
 # %bb.4:                                # %.preheader67
 	move	$a0, $zero
 	addi.d	$a1, $fp, 1263

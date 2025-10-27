@@ -15,8 +15,8 @@ setpwates:                              # @setpwates
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a2, %got_pc_hi20(pinsPerLen)
 	ld.d	$a2, $a2, %got_pc_lo12(pinsPerLen)
+	fld.d	$fa0, $a2, 0
 	addi.d	$a1, $a1, 1
-	vldrepl.d	$vr0, $a2, 0
 	bstrpick.d	$a1, $a1, 31, 0
 	ori	$a2, $zero, 1
 	vldi	$vr1, -912
@@ -36,16 +36,26 @@ setpwates:                              # @setpwates
 .LBB0_4:                                # %.lr.ph
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr2, $a3, 8
-	vfcmp.clt.d	$vr3, $vr0, $vr2
-	vld	$vr4, $a3, 24
-	vfdiv.d	$vr2, $vr2, $vr0
-	vbitsel.v	$vr2, $vr1, $vr2, $vr3
-	vst	$vr2, $a3, 8
-	vfcmp.clt.d	$vr2, $vr0, $vr4
-	vfdiv.d	$vr3, $vr4, $vr0
-	vbitsel.v	$vr2, $vr1, $vr3, $vr2
-	vst	$vr2, $a3, 24
+	fld.d	$fa2, $a3, 8
+	fcmp.clt.d	$fcc0, $fa0, $fa2
+	fld.d	$fa3, $a3, 16
+	fdiv.d	$fa2, $fa2, $fa0
+	fsel	$fa2, $fa1, $fa2, $fcc0
+	fst.d	$fa2, $a3, 8
+	fcmp.clt.d	$fcc0, $fa0, $fa3
+	fld.d	$fa2, $a3, 24
+	fdiv.d	$fa3, $fa3, $fa0
+	fsel	$fa3, $fa1, $fa3, $fcc0
+	fst.d	$fa3, $a3, 16
+	fcmp.clt.d	$fcc0, $fa0, $fa2
+	fld.d	$fa3, $a3, 32
+	fdiv.d	$fa2, $fa2, $fa0
+	fsel	$fa2, $fa1, $fa2, $fcc0
+	fst.d	$fa2, $a3, 24
+	fdiv.d	$fa2, $fa3, $fa0
+	fcmp.clt.d	$fcc0, $fa0, $fa3
+	fsel	$fa2, $fa1, $fa2, $fcc0
+	fst.d	$fa2, $a3, 32
 	ld.d	$a3, $a3, 0
 	bnez	$a3, .LBB0_4
 	b	.LBB0_2

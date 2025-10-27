@@ -724,102 +724,109 @@ alloc_frame_store:                      # @alloc_frame_store
 	.type	alloc_storable_picture,@function
 alloc_storable_picture:                 # @alloc_storable_picture
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	move	$fp, $a4
-	move	$s1, $a3
-	move	$s2, $a2
-	move	$s3, $a1
-	move	$s4, $a0
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	move	$s4, $a4
+	move	$s0, $a3
+	move	$s3, $a2
+	move	$s1, $a1
+	move	$s2, $a0
 	lu12i.w	$s8, 77
 	ori	$a1, $s8, 1712
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
-	ori	$s5, $s8, 1432
-	bnez	$a0, .LBB6_2
+	move	$fp, $a0
+	ori	$a0, $s8, 1432
+	add.d	$s7, $fp, $a0
+	bnez	$fp, .LBB6_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB6_2:
-	add.d	$s7, $s0, $s5
-	beqz	$s4, .LBB6_4
-# %bb.3:
-	bstrpick.d	$a0, $s2, 31, 31
-	add.w	$a0, $s2, $a0
-	srai.d	$s2, $a0, 1
-	bstrpick.d	$a0, $fp, 31, 31
-	add.w	$a0, $fp, $a0
-	srai.d	$fp, $a0, 1
-.LBB6_4:
-	mul.w	$a0, $s2, $s3
+	sltui	$a0, $s2, 1
+	vinsgr2vr.w	$vr0, $s4, 0
+	vinsgr2vr.w	$vr0, $s3, 1
+	vsrli.w	$vr1, $vr0, 31
+	vadd.w	$vr1, $vr0, $vr1
+	vsrai.w	$vr1, $vr1, 1
+	addi.d	$a1, $zero, -1
+	maskeqz	$a0, $a1, $a0
+	vreplgr2vr.w	$vr2, $a0
+	vand.v	$vr0, $vr0, $vr2
+	vandn.v	$vr1, $vr2, $vr1
+	vor.v	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vpickve2gr.w	$s3, $vr0, 1
+	mul.w	$a0, $s3, $s1
 	bstrpick.d	$a1, $a0, 62, 55
 	add.w	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
 	st.w	$a0, $s7, 88
 	ori	$a0, $s8, 1528
-	add.d	$a0, $s0, $a0
-	move	$a1, $s2
-	move	$a2, $s3
+	add.d	$a0, $fp, $a0
+	move	$a1, $s3
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(get_mem2Dpel)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(active_sps)
 	ld.d	$a0, $a0, %pc_lo12(active_sps)
 	ld.w	$a0, $a0, 32
-	beqz	$a0, .LBB6_6
-# %bb.5:
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vpickve2gr.w	$s4, $vr0, 0
+	beqz	$a0, .LBB6_4
+# %bb.3:
 	ori	$a0, $s8, 1536
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	ori	$a1, $zero, 2
-	move	$a2, $fp
-	move	$a3, $s1
+	move	$a2, $s4
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(get_mem3Dpel)
 	jirl	$ra, $ra, 0
-.LBB6_6:
+.LBB6_4:
 	ld.wu	$a0, $s7, 88
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s7, 112
-	bnez	$a0, .LBB6_8
-# %bb.7:
+	bnez	$a0, .LBB6_6
+# %bb.5:
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
-.LBB6_8:
+.LBB6_6:
 	ori	$a0, $s8, 1552
-	add.d	$a0, $s0, $a0
-	srli.d	$s5, $s2, 31
+	add.d	$a0, $fp, $a0
+	srli.d	$s5, $s3, 31
 	bstrpick.d	$a1, $s5, 31, 28
-	add.w	$a1, $s2, $a1
+	add.w	$a1, $s3, $a1
 	srai.d	$a1, $a1, 4
-	srli.d	$s6, $s3, 31
+	srli.d	$s6, $s1, 31
 	bstrpick.d	$a2, $s6, 31, 28
-	add.w	$a2, $s3, $a2
+	add.w	$a2, $s1, $a2
 	srai.d	$a2, $a2, 4
 	pcaddu18i	$ra, %call36(get_mem2Dshort)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1560
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	bstrpick.d	$a1, $s5, 31, 30
-	add.w	$a1, $s2, $a1
+	add.w	$a1, $s3, $a1
 	srai.d	$s5, $a1, 2
 	bstrpick.d	$a1, $s6, 31, 30
-	add.w	$a1, $s3, $a1
+	add.w	$a1, $s1, $a1
 	srai.d	$s6, $a1, 2
 	ori	$a1, $zero, 2
 	move	$a2, $s5
@@ -827,21 +834,21 @@ alloc_storable_picture:                 # @alloc_storable_picture
 	pcaddu18i	$ra, %call36(get_mem3D)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1568
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	ori	$a1, $zero, 6
 	move	$a2, $s5
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(get_mem3Dint64)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1576
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	ori	$a1, $zero, 6
 	move	$a2, $s5
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(get_mem3Dint64)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1584
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	ori	$a1, $zero, 2
 	ori	$a4, $zero, 2
 	move	$a2, $s5
@@ -849,61 +856,61 @@ alloc_storable_picture:                 # @alloc_storable_picture
 	pcaddu18i	$ra, %call36(get_mem4Dshort)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1592
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	move	$a1, $s5
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1600
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $fp, $a0
 	move	$a1, $s5
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(get_mem2D)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s8, 1440
-	add.d	$a1, $s0, $a0
+	add.d	$a1, $fp, $a0
 	st.w	$zero, $s7, 0
-	stx.d	$zero, $s0, $a0
+	stx.d	$zero, $fp, $a0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a1, 8
 	st.d	$zero, $a1, 22
-	st.w	$s4, $s0, 0
-	st.w	$s3, $s7, 40
-	st.w	$s2, $s7, 44
-	st.w	$s1, $s7, 48
-	vinsgr2vr.w	$vr0, $fp, 0
+	st.w	$s2, $fp, 0
+	st.w	$s1, $s7, 40
+	st.w	$s3, $s7, 44
+	st.w	$s0, $s7, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
-	vld	$vr1, $a0, %pc_lo12(.LCPI6_0)
-	vinsgr2vr.w	$vr0, $s3, 1
-	vinsgr2vr.w	$vr0, $s2, 2
-	vinsgr2vr.w	$vr0, $s1, 3
-	vadd.w	$vr0, $vr0, $vr1
+	vld	$vr0, $a0, %pc_lo12(.LCPI6_0)
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vinsgr2vr.w	$vr1, $s1, 1
+	vinsgr2vr.w	$vr1, $s3, 2
+	vinsgr2vr.w	$vr1, $s0, 3
+	vadd.w	$vr0, $vr1, $vr0
 	pcalau12i	$a0, %pc_hi20(no_reference_picture)
 	ld.d	$a0, $a0, %pc_lo12(no_reference_picture)
 	vst	$vr0, $s7, 52
-	addi.d	$a1, $fp, -1
+	addi.d	$a1, $s4, -1
 	st.w	$a1, $s7, 68
 	st.d	$a0, $s7, 176
 	st.d	$a0, $s7, 184
 	st.d	$a0, $s7, 192
 	st.d	$zero, $s7, 264
 	st.d	$zero, $s7, 76
-	st.w	$zero, $s0, 4
-	st.w	$zero, $s0, 12
-	st.w	$zero, $s0, 8
-	move	$a0, $s0
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	st.w	$zero, $fp, 4
+	st.w	$zero, $fp, 12
+	st.w	$zero, $fp, 8
+	move	$a0, $fp
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end6:
 	.size	alloc_storable_picture, .Lfunc_end6-alloc_storable_picture

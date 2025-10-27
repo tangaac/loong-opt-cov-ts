@@ -5,9 +5,11 @@
 	.type	Compute_Tree,@function
 Compute_Tree:                           # @Compute_Tree
 # %bb.0:
-	addi.d	$sp, $sp, -352
-	st.d	$ra, $sp, 344                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 336                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 0                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 64
 	fld.d	$fa0, $fp, 16
@@ -19,10 +21,9 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 72
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 320                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 304                  # 16-byte Folded Spill
+	movgr2fr.d	$fa4, $zero
+	fadd.d	$fs0, $fa0, $fa4
+	fadd.d	$fs1, $fa1, $fa4
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -30,10 +31,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 80
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 288                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 272                  # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -41,10 +40,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 88
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 256                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 240                  # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -52,10 +49,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 96
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 224                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 208                  # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -63,10 +58,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 104
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 176                  # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -74,10 +67,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 112
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 144                  # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -85,10 +76,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 120
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 112                  # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -96,10 +85,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 128
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 80                   # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -107,10 +94,8 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 136
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 48                   # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
@@ -118,63 +103,21 @@ Compute_Tree:                           # @Compute_Tree
 	ld.d	$a0, $fp, 144
 	fld.d	$fa2, $fp, 16
 	fld.d	$fa3, $fp, 24
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	fadd.d	$fs0, $fs0, $fa0
+	fadd.d	$fs1, $fs1, $fa1
 	fmov.d	$fa0, $fa2
 	fmov.d	$fa1, $fa3
 	pcaddu18i	$ra, %call36(Compute_Lateral)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr2, $sp, 304                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr2, 16
-	vrepli.b	$vr2, 0
-	vfadd.d	$vr2, $vr3, $vr2
-	vld	$vr3, $sp, 288                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 272                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 256                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 240                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 224                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 208                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 192                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 176                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 160                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 144                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 128                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 112                  # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 96                   # 16-byte Folded Reload
-	vld	$vr4, $sp, 80                   # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 64                   # 16-byte Folded Reload
-	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
-	vextrins.d	$vr3, $vr4, 16
-	vfadd.d	$vr2, $vr2, $vr3
-	vextrins.d	$vr0, $vr1, 16
-	vfadd.d	$vr0, $vr2, $vr0
-	vst	$vr0, $fp, 0
-	ld.d	$fp, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 344                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 352
+	fadd.d	$fa0, $fs0, $fa0
+	fadd.d	$fa1, $fs1, $fa1
+	fst.d	$fa0, $fp, 0
+	fst.d	$fa1, $fp, 8
+	fld.d	$fs1, $sp, 0                    # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end0:
 	.size	Compute_Tree, .Lfunc_end0-Compute_Tree
@@ -1223,25 +1166,26 @@ find_dd_grad_f:                         # @find_dd_grad_f
 	fld.d	$fa2, $a1, %pc_lo12(P)
 	pcalau12i	$a1, %pc_hi20(Q)
 	fld.d	$fa3, $a1, %pc_lo12(Q)
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vextrins.d	$vr2, $vr3, 16
-	vldi	$vr3, -912
-	vfadd.d	$vr2, $vr2, $vr3
-	vfrecip.d	$vr2, $vr2
-	vextrins.d	$vr0, $vr1, 16
-	vfsub.d	$vr0, $vr2, $vr0
-	vfmul.d	$vr1, $vr0, $vr0
-	vreplvei.d	$vr1, $vr1, 1
-	vreplvei.d	$vr3, $vr0, 0
-	fmadd.d	$fa1, $fa3, $fa3, $fa1
-	fsqrt.d	$fa1, $fa1
-	vbitrevi.d	$vr3, $vr2, 63
-	vfmul.d	$vr2, $vr2, $vr3
-	vfmul.d	$vr0, $vr2, $vr0
-	vreplvei.d	$vr1, $vr1, 0
-	vfdiv.d	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 0
+	vldi	$vr4, -912
+	fadd.d	$fa2, $fa2, $fa4
+	frecip.d	$fa2, $fa2
+	fadd.d	$fa3, $fa3, $fa4
+	frecip.d	$fa3, $fa3
+	fsub.d	$fa0, $fa2, $fa0
+	fsub.d	$fa1, $fa3, $fa1
+	fmul.d	$fa4, $fa1, $fa1
+	fmadd.d	$fa4, $fa0, $fa0, $fa4
+	fsqrt.d	$fa4, $fa4
+	fneg.d	$fa5, $fa2
+	fmul.d	$fa2, $fa2, $fa5
+	fmul.d	$fa0, $fa2, $fa0
+	fdiv.d	$fa0, $fa0, $fa4
+	fst.d	$fa0, $a0, 0
+	fneg.d	$fa0, $fa3
+	fmul.d	$fa0, $fa3, $fa0
+	fmul.d	$fa0, $fa0, $fa1
+	fdiv.d	$fa0, $fa0, $fa4
+	fst.d	$fa0, $a0, 8
 	ret
 .Lfunc_end9:
 	.size	find_dd_grad_f, .Lfunc_end9-find_dd_grad_f

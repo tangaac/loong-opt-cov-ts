@@ -1262,27 +1262,27 @@ inf_EqualityFactoringApplicable:        # @inf_EqualityFactoringApplicable
 	.type	inf_ApplyEqualityFactoring,@function
 inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 64
 	ld.w	$t0, $fp, 68
 	ld.w	$t1, $fp, 72
-	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s5, $a5
-	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	move	$s6, $a2
 	move	$s7, $a1
 	add.d	$a0, $t0, $a0
@@ -1293,27 +1293,25 @@ inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 	move	$s3, $a0
 	st.w	$s4, $a0, 64
 	ld.w	$a0, $fp, 68
-	add.w	$s0, $s4, $a0
+	add.d	$a1, $s4, $a0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, 68
 	ld.w	$a0, $fp, 72
-	ld.w	$a1, $fp, 64
-	ld.w	$a2, $fp, 68
-	addi.w	$s2, $s0, -1
+	ld.w	$a2, $fp, 64
+	ld.w	$a3, $fp, 68
+	addi.w	$s0, $a1, -1
 	addi.d	$a0, $a0, -1
-	add.d	$a1, $a0, $a1
-	add.w	$s1, $a1, $a2
+	add.d	$a1, $a0, $a2
+	add.w	$s1, $a1, $a3
 	st.w	$a0, $s3, 72
-	blez	$s4, .LBB5_5
+	blez	$s4, .LBB5_4
 # %bb.1:                                # %.lr.ph
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	move	$s7, $s6
-	move	$s8, $zero
-	slli.d	$s6, $s4, 3
+	move	$s2, $zero
+	slli.d	$s8, $s4, 3
 	.p2align	4, , 16
 .LBB5_2:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 56
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
@@ -1325,28 +1323,29 @@ inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	stx.d	$a0, $a1, $s8
-	addi.d	$s8, $s8, 8
-	bne	$s6, $s8, .LBB5_2
-# %bb.3:
-	move	$s6, $s7
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	bge	$s2, $s4, .LBB5_6
-.LBB5_4:                                # %.preheader.._crit_edge_crit_edge
-	move	$s2, $s4
-	b	.LBB5_9
-.LBB5_5:
+	stx.d	$a0, $a1, $s2
+	addi.d	$s2, $s2, 8
+	bne	$s8, $s2, .LBB5_2
+# %bb.3:                                # %.preheader
+	bge	$s0, $s4, .LBB5_5
+	b	.LBB5_7
+.LBB5_4:
 	move	$s4, $zero
-	blt	$s2, $s4, .LBB5_4
-.LBB5_6:                                # %.lr.ph80
+	blt	$s0, $s4, .LBB5_7
+.LBB5_5:                                # %.lr.ph80
 	bstrpick.d	$a0, $s4, 31, 0
-	bstrpick.d	$s2, $s0, 31, 0
-	slli.d	$s4, $a0, 3
-	sub.d	$s8, $s2, $a0
+	bstrpick.d	$s0, $s0, 31, 0
+	addi.d	$s8, $a0, -1
+	slli.d	$s2, $a0, 3
+	sltu	$a1, $s0, $a0
+	masknez	$a2, $s0, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	addi.w	$s4, $a0, 1
 	.p2align	4, , 16
-.LBB5_7:                                # =>This Inner Loop Header: Depth=1
+.LBB5_6:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 56
-	ldx.d	$a0, $a0, $s4
+	ldx.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
@@ -1358,13 +1357,11 @@ inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	stx.d	$a0, $a1, $s4
-	addi.d	$s8, $s8, -1
-	addi.d	$s4, $s4, 8
-	bnez	$s8, .LBB5_7
-# %bb.8:
-	move	$s4, $s0
-.LBB5_9:                                # %._crit_edge
+	stx.d	$a0, $a1, $s2
+	addi.d	$s8, $s8, 1
+	addi.d	$s2, $s2, 8
+	bltu	$s8, $s0, .LBB5_6
+.LBB5_7:                                # %._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(fol_EQUALITY)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_EQUALITY)
 	ld.w	$s8, $a0, 0
@@ -1411,19 +1408,20 @@ inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, 56
-	slli.d	$s0, $s2, 3
-	stx.d	$a0, $a1, $s0
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	blt	$s1, $s4, .LBB5_14
-# %bb.10:                               # %.lr.ph86
-	bstrpick.d	$a0, $s7, 31, 0
-	addi.d	$s4, $s2, -1
-	sub.d	$s2, $a0, $s2
-	ori	$s6, $zero, 1
-	b	.LBB5_12
+	ld.d	$a2, $s3, 56
+	bstrpick.d	$a1, $s4, 31, 0
+	slli.d	$s0, $a1, 3
+	stx.d	$a0, $a2, $s0
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	blt	$s1, $s4, .LBB5_12
+# %bb.8:                                # %.lr.ph86
+	bstrpick.d	$a0, $s2, 31, 0
+	addi.d	$s4, $s4, -1
+	sub.d	$s6, $a0, $a1
+	ori	$s7, $zero, 1
+	b	.LBB5_10
 	.p2align	4, , 16
-.LBB5_11:                               #   in Loop: Header=BB5_12 Depth=1
+.LBB5_9:                                #   in Loop: Header=BB5_10 Depth=1
 	ld.d	$a0, $fp, 56
 	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 24
@@ -1437,21 +1435,21 @@ inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	alsl.d	$a1, $s6, $a1, 3
+	alsl.d	$a1, $s7, $a1, 3
 	stx.d	$a0, $a1, $s0
 	addi.d	$s0, $s0, 8
 	addi.w	$s4, $s4, 1
-	addi.d	$s2, $s2, -1
-	bge	$s4, $s1, .LBB5_14
-.LBB5_12:                               # =>This Inner Loop Header: Depth=1
-	bnez	$s2, .LBB5_11
-# %bb.13:                               #   in Loop: Header=BB5_12 Depth=1
-	move	$s6, $zero
+	addi.d	$s6, $s6, -1
+	bge	$s4, $s1, .LBB5_12
+.LBB5_10:                               # =>This Inner Loop Header: Depth=1
+	bnez	$s6, .LBB5_9
+# %bb.11:                               #   in Loop: Header=BB5_10 Depth=1
+	move	$s7, $zero
 	addi.d	$s0, $s0, 8
 	addi.w	$s4, $s4, 1
-	addi.d	$s2, $s2, -1
-	blt	$s4, $s1, .LBB5_12
-.LBB5_14:                               # %._crit_edge87
+	addi.d	$s6, $s6, -1
+	blt	$s4, $s1, .LBB5_10
+.LBB5_12:                               # %._crit_edge87
 	ld.w	$s0, $fp, 0
 	ld.d	$s1, $s3, 32
 	ori	$a0, $zero, 16
@@ -1464,32 +1462,32 @@ inf_ApplyEqualityFactoring:             # @inf_ApplyEqualityFactoring
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a1, $a0, 8
 	st.d	$s0, $a0, 0
 	st.d	$a0, $s3, 40
 	move	$a0, $s3
 	move	$a1, $fp
-	move	$a2, $s7
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	move	$a2, $s2
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(clause_SetDataFromFather)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 4
 	st.w	$a0, $s3, 76
 	move	$a0, $s3
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end5:
 	.size	inf_ApplyEqualityFactoring, .Lfunc_end5-inf_ApplyEqualityFactoring
@@ -4612,92 +4610,89 @@ inf_ApplyGenRes:                        # @inf_ApplyGenRes
 	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s2, $a1, 16
-	ld.d	$s7, $a0, 16
-	ld.wu	$s8, $s2, 64
-	ld.w	$a7, $s2, 68
-	ld.w	$s1, $s2, 72
-	ld.d	$a6, $s2, 56
-	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$s7, $a1, 16
+	ld.d	$s4, $a0, 16
+	ld.wu	$s8, $s7, 64
+	ld.w	$t0, $s7, 68
+	ld.w	$a7, $s7, 72
+	ld.d	$a6, $s7, 56
+	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
 	addi.d	$s3, $zero, -1
 	.p2align	4, , 16
 .LBB13_1:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $a6, 0
+	ld.d	$a3, $a6, 0
 	addi.w	$s3, $s3, 1
 	addi.d	$a6, $a6, 8
-	bne	$a2, $a1, .LBB13_1
+	bne	$a3, $a1, .LBB13_1
 # %bb.2:                                # %clause_LiteralGetIndex.exit
-	ld.wu	$a4, $s7, 64
-	ld.w	$a5, $s7, 68
-	ld.w	$a1, $s7, 72
-	ld.d	$a2, $s7, 56
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	ld.wu	$s1, $s4, 64
+	ld.w	$a1, $s4, 68
+	ld.w	$a2, $s4, 72
+	ld.d	$a3, $s4, 56
 	addi.d	$s5, $zero, -1
 	.p2align	4, , 16
 .LBB13_3:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a2, 0
+	ld.d	$a4, $a3, 0
 	addi.w	$s5, $s5, 1
-	addi.d	$a2, $a2, 8
-	bne	$a3, $a0, .LBB13_3
+	addi.d	$a3, $a3, 8
+	bne	$a4, $a0, .LBB13_3
 # %bb.4:                                # %clause_LiteralGetIndex.exit167
 	addi.w	$a0, $s8, -1
-	addi.w	$fp, $a4, -1
-	add.w	$a2, $fp, $a5
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	add.w	$a2, $a2, $a1
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	addi.w	$fp, $s1, -1
+	add.w	$a3, $fp, $a1
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	add.w	$a3, $a3, $a2
+	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	slt	$s4, $a0, $s3
-	xori	$s0, $s4, 1
+	slt	$s2, $a0, $s3
+	xori	$s0, $s2, 1
 	sub.d	$a0, $zero, $s0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a7, $sp, 96                    # 8-byte Folded Spill
-	add.w	$a0, $s8, $a7
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 32                    # 8-byte Folded Spill
+	add.d	$a0, $s8, $t0
+	st.d	$a7, $sp, 40                    # 8-byte Folded Spill
+	add.d	$a0, $a0, $a7
 	add.d	$a0, $a0, $s1
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
-	add.d	$a0, $a0, $a4
-	st.d	$a5, $sp, 8                     # 8-byte Folded Spill
-	add.d	$a0, $a0, $a5
 	add.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $a2
 	addi.w	$a0, $a0, -2
 	pcaddu18i	$ra, %call36(clause_CreateBody)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s7, 64
-	ld.w	$a2, $s2, 64
+	ld.w	$a1, $s4, 64
+	ld.w	$a2, $s7, 64
 	move	$s6, $a0
 	sub.d	$a0, $a1, $s0
 	add.d	$a0, $a0, $a2
 	st.w	$a0, $s6, 64
-	ld.w	$a0, $s7, 68
-	ld.w	$a1, $s2, 68
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
-	sub.d	$a0, $a0, $s4
+	ld.w	$a0, $s4, 68
+	ld.w	$a1, $s7, 68
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	sub.d	$a0, $a0, $s2
 	add.d	$a0, $a0, $a1
 	st.w	$a0, $s6, 68
-	ld.w	$a0, $s7, 72
-	ld.w	$a1, $s2, 72
+	ld.w	$a0, $s4, 72
+	ld.w	$a1, $s7, 72
 	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $s6, 72
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	bltz	$fp, .LBB13_8
+	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	bltz	$fp, .LBB13_7
 # %bb.5:                                # %.lr.ph
 	move	$fp, $zero
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	slli.d	$s0, $s4, 3
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	slli.d	$s0, $s1, 3
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB13_6:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s7, 56
+	ld.d	$a0, $s4, 56
 	ldx.d	$a0, $a0, $fp
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$a1, $s6
@@ -4707,89 +4702,143 @@ inf_ApplyGenRes:                        # @inf_ApplyGenRes
 	stx.d	$a0, $a1, $fp
 	addi.d	$fp, $fp, 8
 	bne	$s0, $fp, .LBB13_6
-# %bb.7:
-	move	$s1, $s4
-	b	.LBB13_9
-.LBB13_8:
+	b	.LBB13_8
+.LBB13_7:
 	move	$s1, $zero
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-.LBB13_9:                               # %._crit_edge
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	ld.w	$a1, $s2, 64
+.LBB13_8:                               # %._crit_edge
+	ld.w	$a1, $s7, 64
 	addi.w	$a0, $s1, 0
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	add.w	$fp, $a1, $a2
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB13_13
-# %bb.10:                               # %.lr.ph183
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	add.w	$a1, $s4, $a1
-	slli.d	$s2, $fp, 3
+	add.w	$a3, $a1, $a2
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	blt	$a2, $a0, .LBB13_12
+# %bb.9:                                # %.lr.ph183
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	slli.d	$s0, $a3, 3
 	slli.d	$s4, $a0, 3
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	sub.d	$s1, $a1, $s1
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
+	addi.d	$fp, $a0, -1
+	slt	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	addi.w	$s1, $a0, 1
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB13_11:                              # =>This Inner Loop Header: Depth=1
+.LBB13_10:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s7, 56
 	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 56
-	add.d	$a1, $a1, $s2
+	add.d	$a1, $a1, $s0
 	stx.d	$a0, $a1, $s4
-	addi.w	$s1, $s1, -1
+	addi.d	$fp, $fp, 1
 	addi.d	$s4, $s4, 8
-	bnez	$s1, .LBB13_11
-# %bb.12:
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-.LBB13_13:                              # %._crit_edge184
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	blt	$fp, $a0, .LBB13_10
+# %bb.11:
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+.LBB13_12:                              # %._crit_edge184
 	addi.w	$a0, $s1, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a2
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB13_20
-.LBB13_14:                              # %._crit_edge191
-	ld.w	$s7, $s7, 64
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	add.w	$a0, $a1, $a0
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	bge	$a1, $a0, .LBB13_19
+.LBB13_13:                              # %._crit_edge191
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.w	$s2, $a0, 64
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	add.w	$a1, $a2, $a1
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	bstrpick.d	$a2, $s3, 31, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	bltz	$a0, .LBB13_25
-# %bb.15:                               # %.lr.ph196
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	bltz	$a1, .LBB13_24
+# %bb.14:                               # %.lr.ph196
 	move	$fp, $zero
 	move	$s0, $zero
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	slli.d	$s4, $a2, 3
-	slli.d	$s1, $s8, 3
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	b	.LBB13_17
+	slli.d	$s7, $s8, 3
+	b	.LBB13_16
 	.p2align	4, , 16
-.LBB13_16:                              #   in Loop: Header=BB13_17 Depth=1
-	addi.d	$s7, $s7, -1
+.LBB13_15:                              #   in Loop: Header=BB13_16 Depth=1
+	addi.d	$s2, $s2, -1
 	addi.d	$fp, $fp, 8
 	addi.d	$s0, $s0, 1
-	beq	$s1, $fp, .LBB13_19
-.LBB13_17:                              # =>This Inner Loop Header: Depth=1
-	beq	$s4, $fp, .LBB13_16
-# %bb.18:                               #   in Loop: Header=BB13_17 Depth=1
-	ld.d	$a0, $s2, 56
+	beq	$s7, $fp, .LBB13_18
+.LBB13_16:                              # =>This Inner Loop Header: Depth=1
+	beq	$s4, $fp, .LBB13_15
+# %bb.17:                               #   in Loop: Header=BB13_16 Depth=1
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $a0, 56
 	ldx.d	$a0, $a0, $fp
 	ld.d	$a0, $a0, 24
-	add.w	$s2, $s7, $s0
+	add.w	$s1, $s2, $s0
+	pcaddu18i	$ra, %call36(term_Copy)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(subst_Apply)
+	jirl	$ra, $ra, 0
+	move	$a1, $s6
+	pcaddu18i	$ra, %call36(clause_LiteralCreate)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s6, 56
+	slli.d	$a2, $s1, 3
+	stx.d	$a0, $a1, $a2
+	addi.d	$fp, $fp, 8
+	addi.d	$s0, $s0, 1
+	bne	$s7, $fp, .LBB13_16
+.LBB13_18:
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	b	.LBB13_25
+.LBB13_19:                              # %.lr.ph190
+	ld.w	$a0, $s7, 68
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	sub.d	$a1, $zero, $a1
+	add.d	$a1, $a3, $a1
+	add.d	$s2, $a1, $a0
+	bstrpick.d	$s4, $s1, 31, 0
+	slli.d	$fp, $s4, 3
+	bstrpick.d	$a0, $s5, 31, 0
+	sub.d	$s0, $a0, $s4
+	b	.LBB13_22
+	.p2align	4, , 16
+.LBB13_20:                              #   in Loop: Header=BB13_22 Depth=1
+	addi.d	$s2, $s2, -1
+	move	$a0, $s4
+.LBB13_21:                              #   in Loop: Header=BB13_22 Depth=1
+	addi.d	$s4, $s4, 1
+	addi.w	$a0, $a0, 0
+	addi.d	$s1, $s1, 1
+	addi.d	$fp, $fp, 8
+	addi.d	$s0, $s0, -1
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	bge	$a0, $a1, .LBB13_13
+.LBB13_22:                              # =>This Inner Loop Header: Depth=1
+	beqz	$s0, .LBB13_20
+# %bb.23:                               #   in Loop: Header=BB13_22 Depth=1
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 56
+	ldx.d	$a0, $a0, $fp
+	ld.d	$a0, $a0, 24
+	add.w	$s7, $s1, $s2
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
@@ -4800,87 +4849,35 @@ inf_ApplyGenRes:                        # @inf_ApplyGenRes
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 56
-	slli.d	$a2, $s2, 3
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	stx.d	$a0, $a1, $a2
-	addi.d	$fp, $fp, 8
-	addi.d	$s0, $s0, 1
-	bne	$s1, $fp, .LBB13_17
-.LBB13_19:
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	b	.LBB13_26
-.LBB13_20:                              # %.lr.ph190
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 68
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	sub.d	$a1, $zero, $a1
-	add.d	$a1, $fp, $a1
-	add.d	$s2, $a1, $a0
-	bstrpick.d	$s4, $s1, 31, 0
-	slli.d	$fp, $s4, 3
-	bstrpick.d	$a0, $s5, 31, 0
-	sub.d	$s0, $a0, $s4
-	b	.LBB13_23
-	.p2align	4, , 16
-.LBB13_21:                              #   in Loop: Header=BB13_23 Depth=1
-	addi.d	$s2, $s2, -1
-	move	$a0, $s4
-.LBB13_22:                              #   in Loop: Header=BB13_23 Depth=1
-	addi.d	$s4, $s4, 1
-	addi.w	$a0, $a0, 0
-	addi.d	$s1, $s1, 1
-	addi.d	$fp, $fp, 8
-	addi.d	$s0, $s0, -1
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB13_14
-.LBB13_23:                              # =>This Inner Loop Header: Depth=1
-	beqz	$s0, .LBB13_21
-# %bb.24:                               #   in Loop: Header=BB13_23 Depth=1
-	ld.d	$a0, $s7, 56
-	ldx.d	$a0, $a0, $fp
-	ld.d	$a0, $a0, 24
-	add.w	$s7, $s1, $s2
-	pcaddu18i	$ra, %call36(term_Copy)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(subst_Apply)
-	jirl	$ra, $ra, 0
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(clause_LiteralCreate)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 56
 	slli.d	$a2, $s7, 3
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
 	stx.d	$a0, $a1, $a2
 	move	$a0, $s1
-	b	.LBB13_22
-.LBB13_25:
+	b	.LBB13_21
+.LBB13_24:
 	move	$s8, $zero
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-.LBB13_26:                              # %._crit_edge197
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+.LBB13_25:                              # %._crit_edge197
 	ld.w	$a0, $a0, 68
 	addi.w	$a1, $s8, 0
-	add.d	$s7, $a0, $s7
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB13_31
-.LBB13_27:                              # %._crit_edge205
+	add.d	$s2, $a0, $s2
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	bge	$a0, $a1, .LBB13_30
+.LBB13_26:                              # %._crit_edge205
 	addi.w	$a0, $s8, 0
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
-	blt	$s8, $a0, .LBB13_30
-# %bb.28:                               # %.lr.ph211
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	ld.w	$a1, $a1, 72
-	add.d	$a1, $s7, $a1
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	blt	$s8, $a0, .LBB13_29
+# %bb.27:                               # %.lr.ph211
+	ld.w	$a1, $s1, 72
+	add.d	$a1, $s2, $a1
 	addi.w	$a1, $a1, -1
 	slli.d	$fp, $a1, 3
 	slli.d	$s0, $a0, 3
-	addi.d	$s1, $a0, -1
+	addi.d	$s2, $a0, -1
 	.p2align	4, , 16
-.LBB13_29:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, 56
+.LBB13_28:                              # =>This Inner Loop Header: Depth=1
+	ld.d	$a0, $s7, 56
 	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
@@ -4895,17 +4892,17 @@ inf_ApplyGenRes:                        # @inf_ApplyGenRes
 	ld.d	$a1, $s6, 56
 	add.d	$a1, $a1, $fp
 	stx.d	$a0, $a1, $s0
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	addi.d	$s0, $s0, 8
-	blt	$s1, $s8, .LBB13_29
-.LBB13_30:                              # %._crit_edge212
+	blt	$s2, $s8, .LBB13_28
+.LBB13_29:                              # %._crit_edge212
 	move	$a0, $s6
-	move	$a1, $s2
+	move	$a1, $s7
 	move	$a2, $s3
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	move	$a3, $s1
 	move	$a4, $s5
-	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(clause_SetDataFromParents)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 13
@@ -4924,30 +4921,34 @@ inf_ApplyGenRes:                        # @inf_ApplyGenRes
 	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 208
 	ret
-.LBB13_31:                              # %.lr.ph204
-	slli.d	$fp, $s8, 3
-	sub.d	$s0, $a2, $s8
-	b	.LBB13_34
+.LBB13_30:                              # %.lr.ph204
+	slli.d	$s4, $s8, 3
+	sub.d	$fp, $a2, $s8
+	move	$s0, $s8
+	b	.LBB13_33
 	.p2align	4, , 16
-.LBB13_32:                              #   in Loop: Header=BB13_34 Depth=1
-	addi.d	$s7, $s7, -1
-.LBB13_33:                              #   in Loop: Header=BB13_34 Depth=1
-	addi.w	$s8, $s8, 1
-	addi.d	$fp, $fp, 8
-	addi.d	$s0, $s0, -1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	beq	$a0, $s8, .LBB13_27
-.LBB13_34:                              # =>This Inner Loop Header: Depth=1
-	beqz	$s0, .LBB13_32
-# %bb.35:                               #   in Loop: Header=BB13_34 Depth=1
-	ld.d	$a0, $s2, 56
-	ldx.d	$a0, $a0, $fp
+.LBB13_31:                              #   in Loop: Header=BB13_33 Depth=1
+	addi.d	$s2, $s2, -1
+	move	$a0, $s0
+.LBB13_32:                              #   in Loop: Header=BB13_33 Depth=1
+	addi.d	$s0, $s0, 1
+	addi.w	$a0, $a0, 0
+	addi.d	$s8, $s8, 1
+	addi.d	$s4, $s4, 8
+	addi.d	$fp, $fp, -1
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	bge	$a0, $a1, .LBB13_26
+.LBB13_33:                              # =>This Inner Loop Header: Depth=1
+	beqz	$fp, .LBB13_31
+# %bb.34:                               #   in Loop: Header=BB13_33 Depth=1
+	ld.d	$a0, $s7, 56
+	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
-	add.w	$s1, $s8, $s7
+	add.w	$s1, $s8, $s2
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s4
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$a1, $s6
@@ -4956,7 +4957,8 @@ inf_ApplyGenRes:                        # @inf_ApplyGenRes
 	ld.d	$a1, $s6, 56
 	slli.d	$a2, $s1, 3
 	stx.d	$a0, $a1, $a2
-	b	.LBB13_33
+	move	$a0, $s8
+	b	.LBB13_32
 .Lfunc_end13:
 	.size	inf_ApplyGenRes, .Lfunc_end13-inf_ApplyGenRes
                                         # -- End function
@@ -5821,21 +5823,21 @@ inf_BoundedDepthUnitResolution:         # @inf_BoundedDepthUnitResolution
 	.type	inf_GeneralFactoring,@function
 inf_GeneralFactoring:                   # @inf_GeneralFactoring
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s3, $a0
@@ -5843,11 +5845,11 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB16_49
 # %bb.1:
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	ld.bu	$a0, $s3, 48
 	andi	$a0, $a0, 2
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
+	st.d	$s1, $sp, 104                   # 8-byte Folded Spill
 	bnez	$a0, .LBB16_46
 # %bb.2:
 	ld.w	$a1, $s3, 64
@@ -5859,34 +5861,34 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	blt	$fp, $s6, .LBB16_46
 # %bb.3:                                # %.lr.ph287
 	add.w	$a0, $s6, $a0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
-	ld.d	$s4, $a0, %got_pc_lo12(fol_NOT)
+	ld.d	$s0, $a0, %got_pc_lo12(fol_NOT)
 	pcalau12i	$a0, %got_pc_hi20(fol_EQUALITY)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_EQUALITY)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cont_LEFTCONTEXT)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_LEFTCONTEXT)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s2, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
-	ld.d	$s0, $a0, %got_pc_lo12(cont_BINDINGS)
+	ld.d	$s4, $a0, %got_pc_lo12(cont_BINDINGS)
 	pcalau12i	$a0, %got_pc_hi20(cont_STACKPOINTER)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_STACKPOINTER)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	b	.LBB16_5
 	.p2align	4, , 16
 .LBB16_4:                               # %.loopexit275
                                         #   in Loop: Header=BB16_5 Depth=1
 	addi.d	$s6, $s6, 1
 	addi.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB16_46
 .LBB16_5:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_17 Depth 2
@@ -5903,8 +5905,8 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 .LBB16_7:                               #   in Loop: Header=BB16_5 Depth=1
 	ld.d	$s7, $a0, 24
 	ld.w	$a0, $s7, 0
-	ld.w	$a1, $s4, 0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.w	$a1, $s0, 0
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	bnez	$a2, .LBB16_11
 # %bb.8:                                #   in Loop: Header=BB16_5 Depth=1
 	move	$a2, $a0
@@ -5915,7 +5917,7 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.w	$a2, $a2, 0
 .LBB16_10:                              # %clause_LiteralIsEquality.exit
                                         #   in Loop: Header=BB16_5 Depth=1
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a3, $a3, 0
 	beq	$a2, $a3, .LBB16_4
 .LBB16_11:                              # %._crit_edge
@@ -5936,13 +5938,13 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	b	.LBB16_17
 .LBB16_15:                              # %cont_Reset.exit228
                                         #   in Loop: Header=BB16_17 Depth=2
-	st.w	$zero, $s0, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	st.w	$zero, $s4, 0
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
 	ori	$a0, $zero, 2000
-	st.w	$a0, $s4, 0
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	st.w	$a0, $s0, 0
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB16_16:                              #   in Loop: Header=BB16_17 Depth=2
 	addi.d	$a0, $s8, 1
@@ -5959,7 +5961,7 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ldx.d	$a0, $a0, $a1
 	ld.d	$s5, $a0, 24
 	ld.w	$a1, $s5, 0
-	ld.w	$a2, $s4, 0
+	ld.w	$a2, $s0, 0
 	bne	$a1, $a2, .LBB16_20
 # %bb.19:                               #   in Loop: Header=BB16_17 Depth=2
 	ld.d	$a1, $s5, 16
@@ -5981,7 +5983,7 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	move	$s3, $s1
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 0
 	move	$a1, $s7
 	move	$a2, $s5
@@ -5990,41 +5992,41 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	beqz	$a0, .LBB16_27
 # %bb.25:                               #   in Loop: Header=BB16_17 Depth=2
 	ld.d	$a0, $s1, 0
-	addi.d	$a1, $sp, 128
+	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(subst_ExtractUnifierCom)
 	jirl	$ra, $ra, 0
 	beqz	$s3, .LBB16_28
 # %bb.26:                               #   in Loop: Header=BB16_17 Depth=2
 	move	$s1, $s3
-	ld.d	$a3, $sp, 128
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 144
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 	move	$a0, $s3
 	move	$a1, $s6
 	move	$a2, $s8
 	move	$a4, $zero
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(inf_LitMax)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB16_29
 	b	.LBB16_30
 .LBB16_27:                              #   in Loop: Header=BB16_17 Depth=2
 	move	$s1, $s3
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $s2, 0
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 	bnez	$a0, .LBB16_31
 	b	.LBB16_33
-.LBB16_28:                              # %._crit_edge315
+.LBB16_28:                              # %._crit_edge313
                                         #   in Loop: Header=BB16_17 Depth=2
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 .LBB16_29:                              #   in Loop: Header=BB16_17 Depth=2
-	ld.d	$a3, $sp, 128
+	ld.d	$a3, $sp, 144
 	addi.w	$a1, $s6, 0
 	addi.w	$a2, $s8, 0
 	move	$a0, $s3
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(inf_ApplyGeneralFactoring)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -6032,20 +6034,20 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s1, $a0, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 .LBB16_30:                              #   in Loop: Header=BB16_17 Depth=2
-	ld.d	$a0, $sp, 128
+	ld.d	$a0, $sp, 144
 	pcaddu18i	$ra, %call36(subst_Delete)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 	beqz	$a0, .LBB16_33
 .LBB16_31:                              # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB16_17 Depth=2
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $s4, 0
 	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB16_32:                              # %.lr.ph.i
@@ -6062,21 +6064,21 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.d	$a2, $a2, 0
 	ld.d	$a0, $s2, 0
 	st.d	$zero, $a2, 24
-	st.w	$a1, $s0, 0
+	st.w	$a1, $s4, 0
 	addi.d	$a1, $a1, -1
 	bnez	$a0, .LBB16_32
 .LBB16_33:                              # %cont_Reset.exit
                                         #   in Loop: Header=BB16_17 Depth=2
-	st.w	$zero, $s0, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	st.w	$zero, $s4, 0
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_INDEXVARSCANNER)
-	ld.d	$s4, $a0, %got_pc_lo12(cont_INDEXVARSCANNER)
+	ld.d	$s0, $a0, %got_pc_lo12(cont_INDEXVARSCANNER)
 	ori	$a0, $zero, 2000
-	st.w	$a0, $s4, 0
+	st.w	$a0, $s0, 0
 	ld.w	$a0, $s7, 0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	bne	$a0, $a1, .LBB16_43
 # %bb.34:                               #   in Loop: Header=BB16_17 Depth=2
@@ -6084,7 +6086,7 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.d	$a0, $s7, 16
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $s5, 16
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a1, 8
 	ld.d	$a2, $a2, 8
@@ -6103,38 +6105,38 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	beqz	$a0, .LBB16_38
 # %bb.36:                               #   in Loop: Header=BB16_17 Depth=2
 	ld.d	$a0, $s1, 0
-	addi.d	$a1, $sp, 128
+	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(subst_ExtractUnifierCom)
 	jirl	$ra, $ra, 0
 	beqz	$s3, .LBB16_39
 # %bb.37:                               #   in Loop: Header=BB16_17 Depth=2
 	move	$s1, $s3
-	ld.d	$a3, $sp, 128
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 144
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 	move	$a0, $s3
 	move	$a1, $s6
 	move	$a2, $s8
 	move	$a4, $zero
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(inf_LitMax)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB16_40
 	b	.LBB16_41
 .LBB16_38:                              #   in Loop: Header=BB16_17 Depth=2
 	move	$s1, $s3
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB16_42
-.LBB16_39:                              # %._crit_edge316
+.LBB16_39:                              # %._crit_edge314
                                         #   in Loop: Header=BB16_17 Depth=2
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
 .LBB16_40:                              #   in Loop: Header=BB16_17 Depth=2
-	ld.d	$a3, $sp, 128
+	ld.d	$a3, $sp, 144
 	addi.w	$a1, $s6, 0
 	addi.w	$a2, $s8, 0
 	move	$a0, $s3
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(inf_ApplyGeneralFactoring)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -6142,22 +6144,22 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s1, $a0, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 .LBB16_41:                              #   in Loop: Header=BB16_17 Depth=2
-	ld.d	$a0, $sp, 128
+	ld.d	$a0, $sp, 144
 	pcaddu18i	$ra, %call36(subst_Delete)
 	jirl	$ra, $ra, 0
 .LBB16_42:                              #   in Loop: Header=BB16_17 Depth=2
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 .LBB16_43:                              #   in Loop: Header=BB16_17 Depth=2
 	ld.d	$a0, $s2, 0
 	beqz	$a0, .LBB16_15
 # %bb.44:                               # %.lr.ph.preheader.i223
                                         #   in Loop: Header=BB16_17 Depth=2
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $s4, 0
 	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB16_45:                              # %.lr.ph.i225
@@ -6174,71 +6176,75 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.d	$a2, $a2, 0
 	ld.d	$a0, $s2, 0
 	st.d	$zero, $a2, 24
-	st.w	$a1, $s0, 0
+	st.w	$a1, $s4, 0
 	addi.d	$a1, $a1, -1
 	bnez	$a0, .LBB16_45
 	b	.LBB16_15
 .LBB16_46:                              # %.loopexit276
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a0, .LBB16_48
 # %bb.47:
 	ld.w	$s5, $s3, 64
 	ld.w	$a0, $s3, 68
-	add.w	$fp, $s5, $a0
-	addi.w	$a0, $fp, -1
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	bge	$a0, $s5, .LBB16_51
+	add.d	$a1, $s5, $a0
+	addi.w	$fp, $a1, -1
+	bge	$fp, $s5, .LBB16_51
 .LBB16_48:                              # %.loopexit274
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB16_50
 .LBB16_49:
 	move	$a0, $zero
 .LBB16_50:
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .LBB16_51:                              # %.lr.ph301
+	add.w	$a0, $a0, $s5
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
 	ld.d	$s0, $a0, %got_pc_lo12(fol_NOT)
 	pcalau12i	$a0, %got_pc_hi20(fol_EQUALITY)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_EQUALITY)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cont_LEFTCONTEXT)
-	ld.d	$s2, $a0, %got_pc_lo12(cont_LEFTCONTEXT)
+	ld.d	$a0, $a0, %got_pc_lo12(cont_LEFTCONTEXT)
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s4, $a0, %got_pc_lo12(cont_LASTBINDING)
+	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
+	ld.d	$s2, $a0, %got_pc_lo12(cont_BINDINGS)
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB16_53
 	.p2align	4, , 16
 .LBB16_52:                              # %.loopexit
                                         #   in Loop: Header=BB16_53 Depth=1
 	addi.d	$s5, $s5, 1
 	addi.w	$a0, $s5, 0
-	beq	$fp, $a0, .LBB16_48
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB16_48
 .LBB16_53:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB16_66 Depth 2
-                                        #       Child Loop BB16_84 Depth 3
-                                        #       Child Loop BB16_97 Depth 3
+                                        #     Child Loop BB16_67 Depth 2
+                                        #       Child Loop BB16_85 Depth 3
+                                        #       Child Loop BB16_98 Depth 3
 	ld.d	$a0, $s3, 56
 	slli.d	$a1, $s5, 3
 	ldx.d	$a3, $a0, $a1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	bnez	$a0, .LBB16_57
 # %bb.54:                               #   in Loop: Header=BB16_53 Depth=1
 	ld.d	$a1, $a3, 24
@@ -6272,38 +6278,38 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.d	$s6, $a3, 24
 	ld.w	$a0, $s6, 0
 	ld.w	$a1, $s0, 0
-	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
 	bne	$a0, $a1, .LBB16_63
 # %bb.62:                               #   in Loop: Header=BB16_53 Depth=1
 	ld.d	$a0, $s6, 16
 	ld.d	$s6, $a0, 8
 .LBB16_63:                              # %clause_LiteralAtom.exit241
                                         #   in Loop: Header=BB16_53 Depth=1
-	ld.w	$s7, $s3, 64
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	bge	$a0, $s7, .LBB16_66
-	b	.LBB16_52
+	ld.w	$a0, $s3, 64
+	blt	$fp, $a0, .LBB16_52
+# %bb.64:                               # %.lr.ph295
+                                        #   in Loop: Header=BB16_53 Depth=1
+	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
+	b	.LBB16_67
 	.p2align	4, , 16
-.LBB16_64:                              # %cont_Reset.exit267
-                                        #   in Loop: Header=BB16_66 Depth=2
-	st.w	$zero, $s0, 0
+.LBB16_65:                              # %cont_Reset.exit267
+                                        #   in Loop: Header=BB16_67 Depth=2
+	st.w	$zero, $s2, 0
 	ori	$a0, $zero, 1
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s0, 0
 	ori	$a0, $zero, 2000
 	st.w	$a0, $s1, 0
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-.LBB16_65:                              #   in Loop: Header=BB16_66 Depth=2
-	addi.d	$s7, $s7, 1
-	addi.w	$a0, $s7, 0
-	beq	$fp, $a0, .LBB16_52
-.LBB16_66:                              #   Parent Loop BB16_53 Depth=1
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+.LBB16_66:                              #   in Loop: Header=BB16_67 Depth=2
+	addi.d	$a0, $s7, 1
+	bge	$s7, $fp, .LBB16_52
+.LBB16_67:                              #   Parent Loop BB16_53 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB16_84 Depth 3
-                                        #       Child Loop BB16_97 Depth 3
-	beq	$s7, $s5, .LBB16_65
-# %bb.67:                               #   in Loop: Header=BB16_66 Depth=2
+                                        #       Child Loop BB16_85 Depth 3
+                                        #       Child Loop BB16_98 Depth 3
+	move	$s7, $a0
+	beq	$a0, $s5, .LBB16_66
+# %bb.68:                               #   in Loop: Header=BB16_67 Depth=2
 	ld.d	$a0, $s3, 56
 	slli.d	$a1, $s7, 3
 	ldx.d	$a2, $a0, $a1
@@ -6311,73 +6317,74 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.w	$a0, $s8, 0
 	ld.w	$a1, $s0, 0
 	move	$a3, $s8
-	bne	$a0, $a1, .LBB16_69
-# %bb.68:                               #   in Loop: Header=BB16_66 Depth=2
+	bne	$a0, $a1, .LBB16_70
+# %bb.69:                               #   in Loop: Header=BB16_67 Depth=2
 	ld.d	$a3, $s8, 16
 	ld.d	$a3, $a3, 8
-.LBB16_69:                              # %clause_LiteralAtom.exit247
-                                        #   in Loop: Header=BB16_66 Depth=2
-	blt	$s5, $s7, .LBB16_73
-# %bb.70:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+.LBB16_70:                              # %clause_LiteralAtom.exit247
+                                        #   in Loop: Header=BB16_67 Depth=2
+	blt	$s5, $s7, .LBB16_74
+# %bb.71:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	ld.bu	$a4, $a4, 0
 	andi	$a4, $a4, 4
-	bnez	$a4, .LBB16_73
-# %bb.71:                               #   in Loop: Header=BB16_66 Depth=2
-	beqz	$s1, .LBB16_65
-# %bb.72:                               #   in Loop: Header=BB16_66 Depth=2
+	bnez	$a4, .LBB16_74
+# %bb.72:                               #   in Loop: Header=BB16_67 Depth=2
+	beqz	$s1, .LBB16_66
+# %bb.73:                               #   in Loop: Header=BB16_67 Depth=2
 	ld.bu	$a2, $a2, 0
 	andi	$a2, $a2, 1
-	bnez	$a2, .LBB16_65
+	bnez	$a2, .LBB16_66
 	.p2align	4, , 16
-.LBB16_73:                              #   in Loop: Header=BB16_66 Depth=2
+.LBB16_74:                              #   in Loop: Header=BB16_67 Depth=2
 	ld.w	$a2, $s6, 0
 	ld.w	$a3, $a3, 0
-	bne	$a2, $a3, .LBB16_65
-# %bb.74:                               #   in Loop: Header=BB16_66 Depth=2
-	bne	$a0, $a1, .LBB16_76
-# %bb.75:                               #   in Loop: Header=BB16_66 Depth=2
+	bne	$a2, $a3, .LBB16_66
+# %bb.75:                               #   in Loop: Header=BB16_67 Depth=2
+	bne	$a0, $a1, .LBB16_77
+# %bb.76:                               #   in Loop: Header=BB16_67 Depth=2
 	ld.d	$a0, $s8, 16
 	ld.d	$s8, $a0, 8
-.LBB16_76:                              # %clause_LiteralAtom.exit253
-                                        #   in Loop: Header=BB16_66 Depth=2
+.LBB16_77:                              # %clause_LiteralAtom.exit253
+                                        #   in Loop: Header=BB16_67 Depth=2
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $fp, 0
 	move	$a1, $s6
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(unify_UnifyCom)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_82
-# %bb.77:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $s2, 0
-	addi.d	$a1, $sp, 128
+	beqz	$a0, .LBB16_83
+# %bb.78:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $fp, 0
+	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(subst_ExtractUnifierCom)
 	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB16_80
-# %bb.78:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	beqz	$s1, .LBB16_81
+# %bb.79:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 0
 	andi	$a0, $a0, 4
-	bnez	$a0, .LBB16_80
-# %bb.79:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a3, $sp, 128
+	bnez	$a0, .LBB16_81
+# %bb.80:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a3, $sp, 144
 	move	$a0, $s3
 	move	$a1, $s5
 	move	$a2, $s7
 	move	$a4, $zero
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(inf_LitMax)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_81
-.LBB16_80:                              #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a3, $sp, 128
+	beqz	$a0, .LBB16_82
+.LBB16_81:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a3, $sp, 144
 	move	$a0, $s3
 	move	$a1, $s5
 	move	$a2, $s7
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(inf_ApplyGeneralFactoring)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -6385,140 +6392,31 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s1, $a0, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-.LBB16_81:                              #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $sp, 128
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+.LBB16_82:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144
 	pcaddu18i	$ra, %call36(subst_Delete)
 	jirl	$ra, $ra, 0
-.LBB16_82:                              #   in Loop: Header=BB16_66 Depth=2
 	ld.d	$a0, $s4, 0
 	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
-	beqz	$a0, .LBB16_85
-# %bb.83:                               # %.lr.ph.preheader.i255
-                                        #   in Loop: Header=BB16_66 Depth=2
-	pcalau12i	$a1, %got_pc_hi20(cont_BINDINGS)
-	ld.d	$a1, $a1, %got_pc_lo12(cont_BINDINGS)
-	ld.w	$a2, $a1, 0
-	addi.d	$a2, $a2, -1
-	.p2align	4, , 16
-.LBB16_84:                              # %.lr.ph.i257
-                                        #   Parent Loop BB16_53 Depth=1
-                                        #     Parent Loop BB16_66 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	pcalau12i	$a3, %got_pc_hi20(cont_CURRENTBINDING)
-	ld.d	$a3, $a3, %got_pc_lo12(cont_CURRENTBINDING)
-	st.d	$a0, $a3, 0
-	ld.d	$a4, $a0, 24
-	st.d	$a4, $s4, 0
-	st.w	$zero, $a0, 20
-	vst	$vr0, $a0, 4
-	ld.d	$a3, $a3, 0
-	ld.d	$a0, $s4, 0
-	st.d	$zero, $a3, 24
-	st.w	$a2, $a1, 0
-	addi.d	$a2, $a2, -1
 	bnez	$a0, .LBB16_84
-.LBB16_85:                              # %cont_Reset.exit260
-                                        #   in Loop: Header=BB16_66 Depth=2
-	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
-	ld.d	$s0, $a0, %got_pc_lo12(cont_BINDINGS)
-	st.w	$zero, $s0, 0
-	pcalau12i	$a0, %got_pc_hi20(cont_STACKPOINTER)
-	ld.d	$s2, $a0, %got_pc_lo12(cont_STACKPOINTER)
-	ori	$a0, $zero, 1
-	st.w	$a0, $s2, 0
-	pcalau12i	$a0, %got_pc_hi20(cont_INDEXVARSCANNER)
-	ld.d	$s1, $a0, %got_pc_lo12(cont_INDEXVARSCANNER)
-	ori	$a0, $zero, 2000
-	st.w	$a0, $s1, 0
-	ld.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	ld.w	$a1, $a1, 0
-	bne	$a0, $a1, .LBB16_95
-# %bb.86:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $s6, 16
-	ld.d	$a1, $a0, 0
-	ld.d	$a2, $s8, 16
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $a1, 8
-	ld.d	$a2, $a2, 8
-	pcaddu18i	$ra, %call36(unify_UnifyCom)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_93
-# %bb.87:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $s8, 16
-	ld.d	$a1, $s6, 16
-	ld.d	$a2, $a0, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $a1, 8
-	ld.d	$a2, $a2, 8
-	pcaddu18i	$ra, %call36(unify_UnifyCom)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_93
-# %bb.88:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $fp, 0
-	addi.d	$a1, $sp, 128
-	pcaddu18i	$ra, %call36(subst_ExtractUnifierCom)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	beqz	$a0, .LBB16_91
-# %bb.89:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	ld.bu	$a0, $a0, 0
-	andi	$a0, $a0, 4
-	bnez	$a0, .LBB16_91
-# %bb.90:                               #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a3, $sp, 128
-	move	$a0, $s3
-	move	$a1, $s5
-	move	$a2, $s7
-	move	$a4, $zero
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(inf_LitMax)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_92
-.LBB16_91:                              #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$a3, $sp, 128
-	move	$a0, $s3
-	move	$a1, $s5
-	move	$a2, $s7
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(inf_ApplyGeneralFactoring)
-	jirl	$ra, $ra, 0
-	move	$s8, $a0
-	ori	$a0, $zero, 16
-	pcaddu18i	$ra, %call36(memory_Malloc)
-	jirl	$ra, $ra, 0
-	st.d	$s8, $a0, 8
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.d	$a1, $a0, 0
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-.LBB16_92:                              #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 128
-	pcaddu18i	$ra, %call36(subst_Delete)
-	jirl	$ra, $ra, 0
-	b	.LBB16_94
-.LBB16_93:                              #   in Loop: Header=BB16_66 Depth=2
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-.LBB16_94:                              #   in Loop: Header=BB16_66 Depth=2
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
-.LBB16_95:                              #   in Loop: Header=BB16_66 Depth=2
+	b	.LBB16_86
+.LBB16_83:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $s4, 0
-	beqz	$a0, .LBB16_64
-# %bb.96:                               # %.lr.ph.preheader.i262
-                                        #   in Loop: Header=BB16_66 Depth=2
-	ld.w	$a1, $s0, 0
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	beqz	$a0, .LBB16_86
+.LBB16_84:                              # %.lr.ph.preheader.i255
+                                        #   in Loop: Header=BB16_67 Depth=2
+	ld.w	$a1, $s2, 0
 	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
-.LBB16_97:                              # %.lr.ph.i264
+.LBB16_85:                              # %.lr.ph.i257
                                         #   Parent Loop BB16_53 Depth=1
-                                        #     Parent Loop BB16_66 Depth=2
+                                        #     Parent Loop BB16_67 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	pcalau12i	$a2, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$a2, $a2, %got_pc_lo12(cont_CURRENTBINDING)
@@ -6530,10 +6428,121 @@ inf_GeneralFactoring:                   # @inf_GeneralFactoring
 	ld.d	$a2, $a2, 0
 	ld.d	$a0, $s4, 0
 	st.d	$zero, $a2, 24
-	st.w	$a1, $s0, 0
+	st.w	$a1, $s2, 0
 	addi.d	$a1, $a1, -1
-	bnez	$a0, .LBB16_97
-	b	.LBB16_64
+	bnez	$a0, .LBB16_85
+.LBB16_86:                              # %cont_Reset.exit260
+                                        #   in Loop: Header=BB16_67 Depth=2
+	st.w	$zero, $s2, 0
+	pcalau12i	$a0, %got_pc_hi20(cont_STACKPOINTER)
+	ld.d	$s0, $a0, %got_pc_lo12(cont_STACKPOINTER)
+	ori	$a0, $zero, 1
+	st.w	$a0, $s0, 0
+	pcalau12i	$a0, %got_pc_hi20(cont_INDEXVARSCANNER)
+	ld.d	$s1, $a0, %got_pc_lo12(cont_INDEXVARSCANNER)
+	ori	$a0, $zero, 2000
+	st.w	$a0, $s1, 0
+	ld.w	$a0, $s6, 0
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.w	$a1, $a1, 0
+	bne	$a0, $a1, .LBB16_96
+# %bb.87:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $s6, 16
+	ld.d	$a1, $a0, 0
+	ld.d	$a2, $s8, 16
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $a1, 8
+	ld.d	$a2, $a2, 8
+	pcaddu18i	$ra, %call36(unify_UnifyCom)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB16_94
+# %bb.88:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $s8, 16
+	ld.d	$a1, $s6, 16
+	ld.d	$a2, $a0, 0
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $a1, 8
+	ld.d	$a2, $a2, 8
+	pcaddu18i	$ra, %call36(unify_UnifyCom)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB16_94
+# %bb.89:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $fp, 0
+	addi.d	$a1, $sp, 144
+	pcaddu18i	$ra, %call36(subst_ExtractUnifierCom)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	beqz	$a0, .LBB16_92
+# %bb.90:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.bu	$a0, $a0, 0
+	andi	$a0, $a0, 4
+	bnez	$a0, .LBB16_92
+# %bb.91:                               #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a3, $sp, 144
+	move	$a0, $s3
+	move	$a1, $s5
+	move	$a2, $s7
+	move	$a4, $zero
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(inf_LitMax)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB16_93
+.LBB16_92:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a3, $sp, 144
+	move	$a0, $s3
+	move	$a1, $s5
+	move	$a2, $s7
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(inf_ApplyGeneralFactoring)
+	jirl	$ra, $ra, 0
+	move	$s8, $a0
+	ori	$a0, $zero, 16
+	pcaddu18i	$ra, %call36(memory_Malloc)
+	jirl	$ra, $ra, 0
+	st.d	$s8, $a0, 8
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	st.d	$a1, $a0, 0
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+.LBB16_93:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144
+	pcaddu18i	$ra, %call36(subst_Delete)
+	jirl	$ra, $ra, 0
+	b	.LBB16_95
+.LBB16_94:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+.LBB16_95:                              #   in Loop: Header=BB16_67 Depth=2
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+.LBB16_96:                              #   in Loop: Header=BB16_67 Depth=2
+	ld.d	$a0, $s4, 0
+	beqz	$a0, .LBB16_65
+# %bb.97:                               # %.lr.ph.preheader.i262
+                                        #   in Loop: Header=BB16_67 Depth=2
+	ld.w	$a1, $s2, 0
+	addi.d	$a1, $a1, -1
+	.p2align	4, , 16
+.LBB16_98:                              # %.lr.ph.i264
+                                        #   Parent Loop BB16_53 Depth=1
+                                        #     Parent Loop BB16_67 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	pcalau12i	$a2, %got_pc_hi20(cont_CURRENTBINDING)
+	ld.d	$a2, $a2, %got_pc_lo12(cont_CURRENTBINDING)
+	st.d	$a0, $a2, 0
+	ld.d	$a3, $a0, 24
+	st.d	$a3, $s4, 0
+	st.w	$zero, $a0, 20
+	vst	$vr0, $a0, 4
+	ld.d	$a2, $a2, 0
+	ld.d	$a0, $s4, 0
+	st.d	$zero, $a2, 24
+	st.w	$a1, $s2, 0
+	addi.d	$a1, $a1, -1
+	bnez	$a0, .LBB16_98
+	b	.LBB16_65
 .Lfunc_end16:
 	.size	inf_GeneralFactoring, .Lfunc_end16-inf_GeneralFactoring
                                         # -- End function
@@ -8259,21 +8268,17 @@ inf_GeneralHyperResolution:             # @inf_GeneralHyperResolution
 	ld.w	$a4, $fp, 68
 	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
-	addi.w	$a1, $a0, -1
+	addi.w	$a2, $a0, -1
 	add.d	$a0, $a4, $a3
-	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB21_14
+	addi.w	$a1, $a0, 0
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	bge	$a2, $a1, .LBB21_14
 # %bb.13:                               # %inf_BackwardHyperResolution.exit.thread39
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(clause_Delete)
 	jirl	$ra, $ra, 0
 	b	.LBB21_63
 .LBB21_14:                              # %.lr.ph131.i
-	slt	$a2, $a1, $a0
-	maskeqz	$a3, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$a1, $a3, $a1
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(fol_NOT)
 	ld.d	$fp, $a1, %got_pc_lo12(fol_NOT)
 	pcalau12i	$a1, %got_pc_hi20(cont_LEFTCONTEXT)
@@ -8299,7 +8304,7 @@ inf_GeneralHyperResolution:             # @inf_GeneralHyperResolution
                                         #   in Loop: Header=BB21_17 Depth=1
 	addi.d	$a0, $a2, 1
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	beq	$a2, $a1, .LBB21_57
+	bge	$a2, $a1, .LBB21_57
 .LBB21_17:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB21_22 Depth 2
                                         #       Child Loop BB21_29 Depth 3
@@ -9744,48 +9749,46 @@ misc_Error:                             # @misc_Error
 	.type	inf_ApplyGenSuperposition,@function
 inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	move	$fp, $a3
-	ld.wu	$a3, $a3, 64
-	ld.w	$t0, $fp, 68
-	st.d	$a7, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 64                    # 8-byte Folded Spill
-	move	$s7, $a5
+	ld.wu	$t0, $a3, 64
+	ld.w	$a3, $a3, 68
+	st.d	$a7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
 	move	$s0, $a4
-	move	$s6, $a2
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	move	$s7, $a2
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	move	$s2, $a0
 	ld.w	$a0, $fp, 72
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
-	addi.w	$a1, $a3, -1
-	st.d	$t0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	add.w	$a2, $a1, $t0
+	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
+	addi.w	$a1, $t0, -1
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	add.w	$a3, $a1, $a3
 	ld.wu	$s8, $s2, 64
-	ld.w	$a3, $s2, 68
-	ld.w	$a1, $s2, 72
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	add.w	$a0, $a2, $a0
-	addi.w	$s1, $s8, -1
-	add.w	$s5, $s1, $a3
-	add.w	$a2, $s5, $a1
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	ld.w	$a1, $s2, 68
+	ld.w	$a2, $s2, 72
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
+	add.w	$a0, $a3, $a0
+	addi.w	$s4, $s8, -1
+	add.w	$s1, $s4, $a1
+	add.w	$a3, $s1, $a2
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	add.d	$a0, $a0, $s8
-	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
-	add.d	$a0, $a0, $a3
-	add.w	$a0, $a0, $a1
+	add.d	$a0, $a0, $a1
+	add.w	$a0, $a0, $a2
 	pcaddu18i	$ra, %call36(clause_CreateBody)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 64
@@ -9798,96 +9801,92 @@ inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 	add.d	$a0, $a1, $a0
 	st.w	$a0, $s3, 68
 	ld.w	$a0, $s2, 72
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a1, $fp, 72
 	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $s3, 72
-	bltz	$s1, .LBB24_5
+	bltz	$s4, .LBB24_4
 # %bb.1:                                # %.lr.ph
-	move	$s1, $zero
-	slli.d	$s4, $s8, 3
+	move	$s4, $zero
+	slli.d	$s5, $s8, 3
 	.p2align	4, , 16
 .LBB24_2:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 56
-	ldx.d	$a0, $a0, $s1
+	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s6
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	stx.d	$a0, $a1, $s1
-	addi.d	$s1, $s1, 8
-	bne	$s4, $s1, .LBB24_2
-# %bb.3:
-	move	$s1, $s8
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	ld.w	$s4, $fp, 64
-	addi.w	$a0, $s1, 0
-	bge	$s5, $a0, .LBB24_6
-.LBB24_4:                               # %._crit_edge179
-	addi.w	$a0, $s1, 0
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB24_9
-	b	.LBB24_14
-.LBB24_5:
-	move	$s1, $zero
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	ld.w	$s4, $fp, 64
-	addi.w	$a0, $s1, 0
-	blt	$s5, $a0, .LBB24_4
-.LBB24_6:                               # %.lr.ph178
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	add.w	$a1, $s8, $a1
-	slli.d	$s6, $s4, 3
-	slli.d	$s8, $a0, 3
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	sub.d	$s1, $a1, $s1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	stx.d	$a0, $a1, $s4
+	addi.d	$s4, $s4, 8
+	bne	$s5, $s4, .LBB24_2
+# %bb.3:                                # %._crit_edge
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.w	$fp, $a0, 64
+	addi.w	$a0, $s8, 0
+	bge	$s1, $a0, .LBB24_5
+	b	.LBB24_7
+.LBB24_4:
+	move	$s8, $zero
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.w	$fp, $a0, 64
+	addi.w	$a0, $s8, 0
+	blt	$s1, $a0, .LBB24_7
+.LBB24_5:                               # %.lr.ph178
+	slli.d	$s5, $fp, 3
+	slli.d	$s6, $a0, 3
+	addi.d	$s4, $a0, -1
+	slt	$a1, $s1, $a0
+	masknez	$a2, $s1, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	addi.w	$s8, $a0, 1
 	.p2align	4, , 16
-.LBB24_7:                               # =>This Inner Loop Header: Depth=1
+.LBB24_6:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 56
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s6
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s5
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	add.d	$a1, $a1, $s6
-	stx.d	$a0, $a1, $s8
-	addi.w	$s1, $s1, -1
-	addi.d	$s8, $s8, 8
-	bnez	$s1, .LBB24_7
-# %bb.8:
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	addi.w	$a0, $s1, 0
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB24_14
-.LBB24_9:                               # %._crit_edge186
+	add.d	$a1, $a1, $s5
+	stx.d	$a0, $a1, $s6
+	addi.d	$s4, $s4, 1
+	addi.d	$s6, $s6, 8
+	blt	$s4, $s1, .LBB24_6
+.LBB24_7:                               # %._crit_edge179
+	addi.w	$a0, $s8, 0
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	bge	$a1, $a0, .LBB24_13
+.LBB24_8:                               # %._crit_edge186
 	ld.w	$s1, $s2, 64
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	bltz	$a0, .LBB24_19
-# %bb.10:                               # %.lr.ph190
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	bltz	$a0, .LBB24_18
+# %bb.9:                                # %.lr.ph190
 	move	$s4, $zero
 	slli.d	$s5, $s1, 3
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	slli.d	$s6, $a0, 3
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB24_11:                              # =>This Inner Loop Header: Depth=1
+.LBB24_10:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 56
 	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
@@ -9904,54 +9903,52 @@ inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 	add.d	$a1, $a1, $s5
 	stx.d	$a0, $a1, $s4
 	addi.d	$s4, $s4, 8
-	bne	$s6, $s4, .LBB24_11
-# %bb.12:
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	ld.w	$a1, $s2, 68
-	addi.w	$s4, $a0, 0
+	bne	$s6, $s4, .LBB24_10
+# %bb.11:
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	bge	$a2, $s4, .LBB24_20
-.LBB24_13:                              # %._crit_edge197
-	ld.d	$s1, $sp, 192
-	addi.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
-	blt	$a2, $a0, .LBB24_26
-	b	.LBB24_33
-.LBB24_14:                              # %.lr.ph185
-	ld.w	$a0, $fp, 68
-	add.d	$s5, $a0, $s4
-	bstrpick.d	$s6, $s1, 31, 0
+	ld.w	$a1, $s2, 68
+	addi.w	$a0, $a2, 0
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	bge	$a3, $a0, .LBB24_19
+.LBB24_12:                              # %._crit_edge197
+	ld.d	$s1, $sp, 176
+	addi.w	$a0, $a2, 0
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	blt	$a2, $a0, .LBB24_25
+	b	.LBB24_32
+.LBB24_13:                              # %.lr.ph185
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.w	$a0, $a0, 68
+	add.d	$s1, $a0, $fp
+	bstrpick.d	$s5, $s8, 31, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
-	slli.d	$s8, $s6, 3
-	sub.d	$s4, $a0, $s6
-	b	.LBB24_17
+	slli.d	$s4, $s5, 3
+	sub.d	$s6, $a0, $s5
+	b	.LBB24_16
 	.p2align	4, , 16
-.LBB24_15:                              #   in Loop: Header=BB24_17 Depth=1
-	addi.d	$s5, $s5, -1
-	move	$a0, $s6
-.LBB24_16:                              #   in Loop: Header=BB24_17 Depth=1
-	addi.d	$s6, $s6, 1
+.LBB24_14:                              #   in Loop: Header=BB24_16 Depth=1
+	addi.d	$s1, $s1, -1
+	move	$a0, $s5
+.LBB24_15:                              #   in Loop: Header=BB24_16 Depth=1
+	addi.d	$s5, $s5, 1
 	addi.w	$a0, $a0, 0
-	addi.d	$s1, $s1, 1
-	addi.d	$s8, $s8, 8
-	addi.d	$s4, $s4, -1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB24_9
-.LBB24_17:                              # =>This Inner Loop Header: Depth=1
-	beqz	$s4, .LBB24_15
-# %bb.18:                               #   in Loop: Header=BB24_17 Depth=1
+	addi.d	$s8, $s8, 1
+	addi.d	$s4, $s4, 8
+	addi.d	$s6, $s6, -1
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	bge	$a0, $a1, .LBB24_8
+.LBB24_16:                              # =>This Inner Loop Header: Depth=1
+	beqz	$s6, .LBB24_14
+# %bb.17:                               #   in Loop: Header=BB24_16 Depth=1
 	ld.d	$a0, $s2, 56
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
-	move	$s7, $s0
-	move	$s0, $s2
-	move	$s2, $fp
-	add.w	$fp, $s1, $s5
+	add.w	$fp, $s8, $s1
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$a1, $s3
@@ -9959,63 +9956,62 @@ inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
 	slli.d	$a2, $fp, 3
-	move	$fp, $s2
-	move	$s2, $s0
-	move	$s0, $s7
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
 	stx.d	$a0, $a1, $a2
-	move	$a0, $s1
-	b	.LBB24_16
-.LBB24_19:
-	move	$a0, $zero
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	move	$a0, $s8
+	b	.LBB24_15
+.LBB24_18:
+	move	$a2, $zero
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a1, $s2, 68
-	addi.w	$s4, $a0, 0
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	blt	$a2, $s4, .LBB24_13
-.LBB24_20:                              # %.lr.ph196
+	addi.w	$a0, $a2, 0
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	blt	$a3, $a0, .LBB24_12
+.LBB24_19:                              # %.lr.ph196
 	add.w	$a1, $a1, $s1
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	slli.d	$s8, $s4, 3
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	sub.d	$s1, $a2, $a0
-	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
-	ld.d	$s5, $a0, %got_pc_lo12(fol_NOT)
-	slli.d	$s6, $a1, 3
-	b	.LBB24_23
+	slli.d	$s1, $a0, 3
+	slt	$a2, $a3, $a0
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a2, $a2, $a3
+	addi.d	$a2, $a2, 1
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	pcalau12i	$a2, %got_pc_hi20(fol_NOT)
+	ld.d	$s4, $a2, %got_pc_lo12(fol_NOT)
+	slli.d	$s5, $a1, 3
+	b	.LBB24_22
 	.p2align	4, , 16
-.LBB24_21:                              #   in Loop: Header=BB24_23 Depth=1
-	ld.w	$s7, $s5, 0
+.LBB24_20:                              #   in Loop: Header=BB24_22 Depth=1
+	ld.w	$s7, $s4, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	st.d	$a0, $a1, 8
-	st.d	$zero, $a1, 0
+	st.d	$s8, $a0, 8
+	st.d	$zero, $a0, 0
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
 	move	$s7, $s0
-.LBB24_22:                              #   in Loop: Header=BB24_23 Depth=1
+.LBB24_21:                              #   in Loop: Header=BB24_22 Depth=1
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
 	alsl.d	$a1, $s7, $a1, 3
-	stx.d	$a0, $a1, $s6
-	addi.d	$s4, $s4, 1
-	addi.w	$s1, $s1, -1
-	addi.d	$s8, $s8, 8
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	beqz	$s1, .LBB24_25
-.LBB24_23:                              # =>This Inner Loop Header: Depth=1
-	beq	$s0, $s4, .LBB24_21
-# %bb.24:                               #   in Loop: Header=BB24_23 Depth=1
+	stx.d	$a0, $a1, $s5
+	addi.d	$a0, $s6, 1
+	addi.d	$s1, $s1, 8
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	bge	$s6, $a1, .LBB24_24
+.LBB24_22:                              # =>This Inner Loop Header: Depth=1
+	move	$s6, $a0
+	beq	$s0, $a0, .LBB24_20
+# %bb.23:                               #   in Loop: Header=BB24_22 Depth=1
 	ld.d	$a0, $fp, 56
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s1
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
@@ -10023,37 +10019,36 @@ inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
-	move	$s7, $s4
-	b	.LBB24_22
-.LBB24_25:                              # %._crit_edge197.loopexit
+	move	$s7, $s6
+	b	.LBB24_21
+.LBB24_24:                              # %._crit_edge197.loopexit
 	ld.w	$a1, $s2, 68
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192
-	addi.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
-	bge	$a2, $a0, .LBB24_33
-.LBB24_26:                              # %._crit_edge203
-	ld.d	$a6, $sp, 216
-	ld.d	$a5, $sp, 208
-	ld.d	$a0, $sp, 200
-	beqz	$s1, .LBB24_30
-# %bb.27:                               # %._crit_edge203
-	beqz	$a0, .LBB24_30
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176
+	addi.w	$a0, $a2, 0
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	bge	$a2, $a0, .LBB24_32
+.LBB24_25:                              # %._crit_edge203
+	ld.d	$a6, $sp, 200
+	ld.d	$a5, $sp, 192
+	ld.d	$a0, $sp, 184
+	beqz	$s1, .LBB24_29
+# %bb.26:                               # %._crit_edge203
+	beqz	$a0, .LBB24_29
+# %bb.27:
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	beqz	$a0, .LBB24_37
 # %bb.28:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	beqz	$a0, .LBB24_38
-# %bb.29:
 	ori	$a0, $zero, 8
-	b	.LBB24_39
-.LBB24_30:
-	beqz	$s1, .LBB24_37
+	b	.LBB24_38
+.LBB24_29:
+	beqz	$s1, .LBB24_36
+# %bb.30:
+	bnez	$a0, .LBB24_36
 # %bb.31:
-	bnez	$a0, .LBB24_37
-# %bb.32:
 	ori	$a0, $zero, 7
-	b	.LBB24_39
-.LBB24_33:                              # %.lr.ph202
+	b	.LBB24_38
+.LBB24_32:                              # %.lr.ph202
 	ld.w	$a2, $s2, 64
 	ld.w	$a3, $s2, 72
 	add.d	$a1, $a2, $a1
@@ -10061,9 +10056,9 @@ inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 	addi.w	$a1, $a1, -1
 	slli.d	$s4, $a0, 3
 	slli.d	$s5, $a1, 3
-	b	.LBB24_35
+	b	.LBB24_34
 	.p2align	4, , 16
-.LBB24_34:                              #   in Loop: Header=BB24_35 Depth=1
+.LBB24_33:                              #   in Loop: Header=BB24_34 Depth=1
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
@@ -10072,52 +10067,52 @@ inf_ApplyGenSuperposition:              # @inf_ApplyGenSuperposition
 	stx.d	$a0, $a1, $s5
 	addi.d	$a0, $s6, 1
 	addi.d	$s4, $s4, 8
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	bge	$s6, $a1, .LBB24_26
-.LBB24_35:                              # =>This Inner Loop Header: Depth=1
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	bge	$s6, $a1, .LBB24_25
+.LBB24_34:                              # =>This Inner Loop Header: Depth=1
 	move	$s6, $a0
 	move	$a0, $s8
 	move	$s7, $s0
-	beq	$s0, $s6, .LBB24_34
-# %bb.36:                               #   in Loop: Header=BB24_35 Depth=1
+	beq	$s0, $s6, .LBB24_33
+# %bb.35:                               #   in Loop: Header=BB24_34 Depth=1
 	ld.d	$a0, $fp, 56
 	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	move	$s7, $s6
-	b	.LBB24_34
-.LBB24_37:
+	b	.LBB24_33
+.LBB24_36:
 	ori	$a0, $zero, 6
-	b	.LBB24_39
-.LBB24_38:
+	b	.LBB24_38
+.LBB24_37:
 	ori	$a0, $zero, 9
-.LBB24_39:
+.LBB24_38:
 	st.w	$a0, $s3, 76
 	move	$a0, $s3
 	move	$a1, $fp
 	move	$a2, $s0
 	move	$a3, $s2
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(clause_SetDataFromParents)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end24:
 	.size	inf_ApplyGenSuperposition, .Lfunc_end24-inf_ApplyGenSuperposition
@@ -11815,58 +11810,56 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
-	move	$s4, $a2
-	move	$s2, $a1
+	move	$s8, $a2
+	move	$s5, $a1
 	move	$s1, $a0
 	ld.d	$s6, $sp, 232
-	ld.wu	$a1, $a1, 64
-	ld.w	$a2, $s2, 68
+	ld.wu	$a2, $a1, 64
+	ld.w	$a0, $a1, 68
 	ld.d	$s7, $sp, 224
-	ld.w	$a0, $s2, 72
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
-	addi.w	$a1, $a1, -1
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	add.w	$a2, $a1, $a2
+	ld.w	$a1, $a1, 72
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	addi.w	$a2, $a2, -1
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	add.w	$a3, $a2, $a0
 	ld.wu	$fp, $s1, 64
-	ld.w	$s5, $s1, 68
-	ld.w	$a1, $s1, 72
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	add.w	$a0, $a2, $a0
+	ld.w	$a0, $s1, 68
+	ld.w	$a2, $s1, 72
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	add.w	$a1, $a3, $a1
 	addi.w	$s0, $fp, -1
-	add.w	$s8, $s0, $s5
-	add.w	$a2, $s8, $a1
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	add.d	$a0, $a0, $fp
-	add.d	$a0, $a0, $s5
-	add.w	$a0, $a0, $a1
+	add.w	$s2, $s0, $a0
+	add.w	$a3, $s2, $a2
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	add.d	$a1, $a1, $fp
+	add.d	$a0, $a1, $a0
+	add.w	$a0, $a0, $a2
 	pcaddu18i	$ra, %call36(clause_CreateBody)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 64
-	ld.w	$a2, $s2, 64
+	ld.w	$a2, $s5, 64
 	move	$s3, $a0
 	add.d	$a0, $a2, $a1
 	st.w	$a0, $s3, 64
 	ld.w	$a0, $s1, 68
-	ld.w	$a1, $s2, 68
+	ld.w	$a1, $s5, 68
 	add.d	$a0, $a1, $a0
 	st.w	$a0, $s3, 68
 	ld.w	$a0, $s1, 72
-	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
-	ld.w	$a1, $s2, 72
+	ld.w	$a1, $s5, 72
 	add.d	$a0, $a0, $a1
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $s3, 72
 	bltz	$s0, .LBB29_5
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
-	slli.d	$s2, $fp, 3
+	slli.d	$s4, $fp, 3
 	.p2align	4, , 16
 .LBB29_2:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 56
@@ -11888,33 +11881,38 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	ld.d	$a1, $s3, 56
 	stx.d	$a0, $a1, $s0
 	addi.d	$s0, $s0, 8
-	bne	$s2, $s0, .LBB29_2
-# %bb.3:
-	move	$s2, $fp
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$s0, $a0, 64
-	addi.w	$a0, $s2, 0
-	bge	$s8, $a0, .LBB29_6
+	bne	$s4, $s0, .LBB29_2
+# %bb.3:                                # %._crit_edge
+	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
+	ld.w	$a2, $s5, 64
+	addi.w	$a0, $fp, 0
+	bge	$s2, $a0, .LBB29_6
 .LBB29_4:                               # %._crit_edge184
-	addi.w	$a0, $s2, 0
+	addi.w	$a0, $fp, 0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	blt	$a1, $a0, .LBB29_9
 	b	.LBB29_13
 .LBB29_5:
-	move	$s2, $zero
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$s0, $a0, 64
-	addi.w	$a0, $s2, 0
-	blt	$s8, $a0, .LBB29_4
+	move	$fp, $zero
+	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
+	ld.w	$a2, $s5, 64
+	addi.w	$a0, $fp, 0
+	blt	$s2, $a0, .LBB29_4
 .LBB29_6:                               # %.lr.ph183
-	add.w	$fp, $fp, $s5
-	slli.d	$s5, $s0, 3
-	slli.d	$s8, $a0, 3
-	sub.d	$s2, $fp, $s2
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	move	$s8, $a2
+	slli.d	$s4, $a2, 3
+	slli.d	$s5, $a0, 3
+	addi.d	$s0, $a0, -1
+	slt	$a1, $s2, $a0
+	masknez	$a2, $s2, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	addi.w	$fp, $a0, 1
 	.p2align	4, , 16
 .LBB29_7:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 56
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s5
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
@@ -11930,14 +11928,15 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	add.d	$a1, $a1, $s5
-	stx.d	$a0, $a1, $s8
-	addi.w	$s2, $s2, -1
-	addi.d	$s8, $s8, 8
-	bnez	$s2, .LBB29_7
+	add.d	$a1, $a1, $s4
+	stx.d	$a0, $a1, $s5
+	addi.d	$s0, $s0, 1
+	addi.d	$s5, $s5, 8
+	blt	$s0, $s2, .LBB29_7
 # %bb.8:
-	move	$s2, $fp
-	addi.w	$a0, $s2, 0
+	move	$a2, $s8
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	addi.w	$a0, $fp, 0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	bge	$a1, $a0, .LBB29_13
 .LBB29_9:                               # %._crit_edge191
@@ -11947,12 +11946,12 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 # %bb.10:                               # %.lr.ph195
 	move	$s0, $zero
 	slli.d	$s2, $fp, 3
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	slli.d	$s4, $a0, 3
-	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB29_11:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s8, 56
+	ld.d	$a0, $s5, 56
 	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
@@ -11974,36 +11973,36 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	addi.d	$s0, $s0, 8
 	bne	$s4, $s0, .LBB29_11
 # %bb.12:
-	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB29_19
 .LBB29_13:                              # %.lr.ph190
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 68
-	add.d	$fp, $a0, $s0
-	bstrpick.d	$s5, $s2, 31, 0
-	bstrpick.d	$a0, $s4, 31, 0
-	slli.d	$s8, $s5, 3
-	sub.d	$s0, $a0, $s5
+	add.d	$s2, $a0, $a2
+	bstrpick.d	$s5, $fp, 31, 0
+	bstrpick.d	$a0, $s8, 31, 0
+	slli.d	$s0, $s5, 3
+	sub.d	$s4, $a0, $s5
 	b	.LBB29_16
 	.p2align	4, , 16
 .LBB29_14:                              #   in Loop: Header=BB29_16 Depth=1
-	addi.d	$fp, $fp, -1
+	addi.d	$s2, $s2, -1
 	move	$a0, $s5
 .LBB29_15:                              #   in Loop: Header=BB29_16 Depth=1
 	addi.d	$s5, $s5, 1
 	addi.w	$a0, $a0, 0
-	addi.d	$s2, $s2, 1
-	addi.d	$s8, $s8, 8
-	addi.d	$s0, $s0, -1
+	addi.d	$fp, $fp, 1
+	addi.d	$s0, $s0, 8
+	addi.d	$s4, $s4, -1
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	bge	$a0, $a1, .LBB29_9
 .LBB29_16:                              # =>This Inner Loop Header: Depth=1
-	beqz	$s0, .LBB29_14
+	beqz	$s4, .LBB29_14
 # %bb.17:                               #   in Loop: Header=BB29_16 Depth=1
 	ld.d	$a0, $s1, 56
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s0
 	ld.d	$a0, $a0, 24
-	add.w	$s4, $s2, $fp
+	add.w	$s8, $fp, $s2
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
@@ -12018,30 +12017,33 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	slli.d	$a2, $s4, 3
+	slli.d	$a2, $s8, 3
 	stx.d	$a0, $a1, $a2
-	move	$a0, $s2
+	move	$a0, $fp
 	b	.LBB29_15
 .LBB29_18:
-	move	$s5, $zero
-	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+	move	$s8, $zero
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 .LBB29_19:                              # %._crit_edge196
 	ld.w	$a1, $s1, 68
-	addi.w	$a0, $s5, 0
-	add.w	$fp, $a1, $fp
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB29_23
+	addi.w	$a0, $s8, 0
+	add.w	$s2, $a1, $fp
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	blt	$fp, $a0, .LBB29_23
 # %bb.20:                               # %.lr.ph201
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	add.d	$s0, $a1, $a2
-	slli.d	$s2, $fp, 3
-	slli.d	$s4, $a0, 3
-	sub.d	$s5, $s0, $s5
+	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
+	slli.d	$s0, $s2, 3
+	slli.d	$s2, $a0, 3
+	addi.d	$s4, $a0, -1
+	slt	$a1, $fp, $a0
+	masknez	$a2, $fp, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	addi.d	$s8, $a0, 1
 	.p2align	4, , 16
 .LBB29_21:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s8, 56
-	ldx.d	$a0, $a0, $s4
+	ld.d	$a0, $s5, 56
+	ldx.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
@@ -12057,38 +12059,37 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	pcaddu18i	$ra, %call36(clause_LiteralCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 56
-	add.d	$a1, $a1, $s2
-	stx.d	$a0, $a1, $s4
-	addi.w	$s5, $s5, -1
-	addi.d	$s4, $s4, 8
-	bnez	$s5, .LBB29_21
+	add.d	$a1, $a1, $s0
+	stx.d	$a0, $a1, $s2
+	addi.d	$s4, $s4, 1
+	addi.d	$s2, $s2, 8
+	blt	$s4, $fp, .LBB29_21
 # %bb.22:
-	move	$s5, $s0
+	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
 .LBB29_23:                              # %._crit_edge202
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 248
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a1, $sp, 240
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$fp, $sp, 248
+	ld.d	$a0, $sp, 240
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$s0, $s1, 72
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $s5, 0
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	addi.w	$a1, $s8, 0
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	bge	$a0, $a1, .LBB29_25
 .LBB29_24:                              # %._crit_edge208
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 5
 	st.w	$a0, $s3, 76
-	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$fp, $s2, 0
+	ld.w	$fp, $s5, 0
 	ld.d	$s0, $s3, 32
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -12100,12 +12101,12 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a4, $a0, 8
 	st.d	$fp, $a0, 0
 	st.d	$a0, $s3, 40
 	move	$a0, $s3
-	move	$a1, $s2
+	move	$a1, $s5
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	move	$a3, $s1
 	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
@@ -12135,19 +12136,18 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 208
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	add.d	$a0, $fp, $s0
+	add.d	$a0, $s2, $s0
 	addi.w	$a0, $a0, -1
 	slli.d	$a0, $a0, 3
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$s2, $a1, 3
 	pcalau12i	$a0, %got_pc_hi20(fol_EQUALITY)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_EQUALITY)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB29_28
 	.p2align	4, , 16
 .LBB29_26:                              #   in Loop: Header=BB29_28 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, 56
+	ld.d	$a0, $s5, 56
 	ldx.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Copy)
@@ -12177,8 +12177,8 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB29_31
 # %bb.29:                               #   in Loop: Header=BB29_28 Depth=1
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beq	$a0, $fp, .LBB29_33
 # %bb.30:                               #   in Loop: Header=BB29_28 Depth=1
 	pcaddu18i	$ra, %call36(term_Copy)
@@ -12191,12 +12191,12 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	b	.LBB29_34
 	.p2align	4, , 16
 .LBB29_31:                              #   in Loop: Header=BB29_28 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	bne	$a0, $s8, .LBB29_26
 # %bb.32:                               #   in Loop: Header=BB29_28 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$fp, $a0, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -12216,6 +12216,7 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	move	$a1, $a0
 	st.d	$s0, $a0, 8
 	st.d	$s5, $a0, 0
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
@@ -12226,9 +12227,9 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 .LBB29_34:                              #   in Loop: Header=BB29_28 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$s5, $a0, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -12256,6 +12257,7 @@ inf_ApplyMParamod:                      # @inf_ApplyMParamod
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB29_27
 .Lfunc_end29:
 	.size	inf_ApplyMParamod, .Lfunc_end29-inf_ApplyMParamod

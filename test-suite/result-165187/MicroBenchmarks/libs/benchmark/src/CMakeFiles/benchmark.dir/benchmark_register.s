@@ -22259,17 +22259,19 @@ _ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEElNS0_
 _ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops15_Iter_less_iterEEvT_S9_T0_: # @_ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops15_Iter_less_iterEEvT_S9_T0_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -22279,33 +22281,35 @@ _ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEE
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
+	.cfi_offset 30, -80
+	.cfi_offset 31, -88
 	move	$fp, $a1
 	move	$s0, $a0
 	sub.d	$a0, $a1, $a0
 	ori	$a1, $zero, 17
 	blt	$a0, $a1, .LBB158_7
 # %bb.1:
-	addi.d	$s2, $s0, 16
+	addi.d	$s1, $s0, 16
 	beqz	$zero, .LBB158_20
 .LBB158_2:                              # %_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops15_Iter_less_iterEEvT_S9_T0_.exit
-	bne	$fp, $s2, .LBB158_4
+	bne	$fp, $s1, .LBB158_4
 	b	.LBB158_19
 	.p2align	4, , 16
 .LBB158_3:                              # %_ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops14_Val_less_iterEEvT_T0_.exit.i
                                         #   in Loop: Header=BB158_4 Depth=1
-	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 1
 	st.b	$a0, $a1, 0
-	beq	$s2, $fp, .LBB158_19
+	beq	$s1, $fp, .LBB158_19
 .LBB158_4:                              # %.lr.ph.i10
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB158_6 Depth 2
-	ld.b	$a0, $s2, 0
-	ld.b	$a2, $s2, -1
-	move	$a1, $s2
+	ld.b	$a0, $s1, 0
+	ld.b	$a2, $s1, -1
+	move	$a1, $s1
 	bge	$a0, $a2, .LBB158_3
 # %bb.5:                                # %.lr.ph.i.i12.preheader
                                         #   in Loop: Header=BB158_4 Depth=1
-	move	$a1, $s2
+	move	$a1, $s1
 	.p2align	4, , 16
 .LBB158_6:                              # %.lr.ph.i.i12
                                         #   Parent Loop BB158_4 Depth=1
@@ -22318,132 +22322,135 @@ _ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEE
 .LBB158_7:
 	beq	$fp, $s0, .LBB158_19
 # %bb.8:
-	addi.d	$s1, $s0, 1
-	beq	$s1, $fp, .LBB158_19
+	addi.d	$a0, $s0, 1
+	beq	$a0, $fp, .LBB158_19
 # %bb.9:                                # %.lr.ph.i19.preheader
-	ori	$s2, $zero, 2
-	ori	$s3, $zero, 1
-	move	$a1, $s1
-	move	$s4, $s0
+	ori	$s1, $zero, 2
+	ori	$s2, $zero, 1
+	move	$s3, $s0
 	b	.LBB158_11
 	.p2align	4, , 16
 .LBB158_10:                             # %_ZSt23__copy_move_backward_a2ILb1EPcS0_ET1_T0_S2_S1_.exit.i22
                                         #   in Loop: Header=BB158_11 Depth=1
-	addi.d	$a1, $s4, 1
-	st.b	$s5, $a0, 0
-	beq	$a1, $fp, .LBB158_19
+	addi.d	$a0, $s3, 1
+	st.b	$s4, $a1, 0
+	beq	$a0, $fp, .LBB158_19
 .LBB158_11:                             # %.lr.ph.i19
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB158_16 Depth 2
-	move	$a0, $s4
-	move	$s4, $a1
-	ld.b	$s5, $a1, 0
-	ld.b	$a1, $s0, 0
-	bge	$s5, $a1, .LBB158_14
+	move	$a1, $s3
+	move	$s3, $a0
+	ld.b	$s4, $a0, 0
+	ld.b	$a3, $s0, 0
+	bge	$s4, $a3, .LBB158_14
 # %bb.12:                               # %_ZSt9__advanceIPclEvRT_T0_St26random_access_iterator_tag.exit.i.i32
                                         #   in Loop: Header=BB158_11 Depth=1
-	sub.d	$a2, $s4, $s0
-	blt	$a2, $s2, .LBB158_17
-# %bb.13:                               #   in Loop: Header=BB158_11 Depth=1
-	move	$a0, $s1
+	sub.d	$a2, $s3, $s0
+	sub.d	$a0, $a1, $a2
+	addi.d	$a0, $a0, 2
 	move	$a1, $s0
+	blt	$a2, $s1, .LBB158_17
+# %bb.13:                               #   in Loop: Header=BB158_11 Depth=1
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a1, $s0
 	b	.LBB158_10
 	.p2align	4, , 16
 .LBB158_14:                             #   in Loop: Header=BB158_11 Depth=1
-	ld.b	$a1, $a0, 0
-	move	$a0, $s4
-	bge	$s5, $a1, .LBB158_10
+	ld.b	$a0, $a1, 0
+	move	$a1, $s3
+	bge	$s4, $a0, .LBB158_10
 # %bb.15:                               # %.lr.ph.i.i26.preheader
                                         #   in Loop: Header=BB158_11 Depth=1
-	move	$a0, $s4
+	move	$a1, $s3
 	.p2align	4, , 16
 .LBB158_16:                             # %.lr.ph.i.i26
                                         #   Parent Loop BB158_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.b	$a1, $a0, 0
-	ld.b	$a1, $a0, -2
-	addi.d	$a0, $a0, -1
-	blt	$s5, $a1, .LBB158_16
+	st.b	$a0, $a1, 0
+	ld.b	$a0, $a1, -2
+	addi.d	$a1, $a1, -1
+	blt	$s4, $a0, .LBB158_16
 	b	.LBB158_10
 .LBB158_17:                             # %_ZSt9__advanceIPclEvRT_T0_St26random_access_iterator_tag.exit.thread.i.i33
                                         #   in Loop: Header=BB158_11 Depth=1
-	move	$a0, $s0
-	bne	$a2, $s3, .LBB158_10
+	bne	$a2, $s2, .LBB158_10
 # %bb.18:                               #   in Loop: Header=BB158_11 Depth=1
-	st.b	$a1, $s0, 1
-	move	$a0, $s0
+	st.b	$a3, $a0, 0
+	move	$a1, $s0
 	b	.LBB158_10
 .LBB158_19:                             # %_ZSt26__unguarded_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops15_Iter_less_iterEEvT_S9_T0_.exit
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB158_20:                             # %.lr.ph.i.preheader
-	addi.d	$s1, $s0, 1
-	ori	$s3, $zero, 2
-	ori	$s4, $zero, 1
-	move	$a1, $s1
-	move	$s5, $s0
+	addi.d	$s2, $s0, 1
+	ori	$s3, $zero, 1
+	ori	$s4, $zero, 2
+	ori	$s5, $zero, 16
+	ori	$s6, $zero, 1
+	move	$s7, $s0
 	b	.LBB158_22
 	.p2align	4, , 16
 .LBB158_21:                             # %_ZSt23__copy_move_backward_a2ILb1EPcS0_ET1_T0_S2_S1_.exit.i
                                         #   in Loop: Header=BB158_22 Depth=1
-	addi.d	$a1, $s5, 1
-	st.b	$s6, $a0, 0
-	beq	$a1, $s2, .LBB158_2
+	st.b	$s8, $a1, 0
+	addi.d	$s6, $s6, 1
+	addi.d	$s2, $s2, 1
+	beq	$s6, $s5, .LBB158_2
 .LBB158_22:                             # %.lr.ph.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB158_27 Depth 2
-	move	$a0, $s5
-	move	$s5, $a1
-	ld.b	$s6, $a1, 0
-	ld.b	$a1, $s0, 0
-	bge	$s6, $a1, .LBB158_25
+	ldx.b	$s8, $s0, $s6
+	ld.b	$a3, $s0, 0
+	move	$a0, $s7
+	add.d	$s7, $s0, $s6
+	bge	$s8, $a3, .LBB158_25
 # %bb.23:                               # %_ZSt9__advanceIPclEvRT_T0_St26random_access_iterator_tag.exit.i.i
                                         #   in Loop: Header=BB158_22 Depth=1
-	sub.d	$a2, $s5, $s0
-	blt	$a2, $s3, .LBB158_28
-# %bb.24:                               #   in Loop: Header=BB158_22 Depth=1
-	move	$a0, $s1
+	sub.d	$a2, $s7, $s0
+	sub.d	$a0, $a0, $a2
+	addi.d	$a0, $a0, 2
 	move	$a1, $s0
+	blt	$a2, $s4, .LBB158_28
+# %bb.24:                               #   in Loop: Header=BB158_22 Depth=1
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a1, $s0
 	b	.LBB158_21
 	.p2align	4, , 16
 .LBB158_25:                             #   in Loop: Header=BB158_22 Depth=1
-	ld.b	$a1, $a0, 0
-	move	$a0, $s5
-	bge	$s6, $a1, .LBB158_21
+	ld.b	$a0, $a0, 0
+	move	$a1, $s7
+	bge	$s8, $a0, .LBB158_21
 # %bb.26:                               # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB158_22 Depth=1
-	move	$a0, $s5
+	move	$a1, $s2
 	.p2align	4, , 16
 .LBB158_27:                             # %.lr.ph.i.i
                                         #   Parent Loop BB158_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.b	$a1, $a0, 0
-	ld.b	$a1, $a0, -2
-	addi.d	$a0, $a0, -1
-	blt	$s6, $a1, .LBB158_27
+	st.b	$a0, $a1, 0
+	ld.b	$a0, $a1, -2
+	addi.d	$a1, $a1, -1
+	blt	$s8, $a0, .LBB158_27
 	b	.LBB158_21
 .LBB158_28:                             # %_ZSt9__advanceIPclEvRT_T0_St26random_access_iterator_tag.exit.thread.i.i
                                         #   in Loop: Header=BB158_22 Depth=1
-	move	$a0, $s0
-	bne	$a2, $s4, .LBB158_21
+	bne	$a2, $s3, .LBB158_21
 # %bb.29:                               #   in Loop: Header=BB158_22 Depth=1
-	st.b	$a1, $s0, 1
-	move	$a0, $s0
+	st.b	$a3, $a0, 0
+	move	$a1, $s0
 	b	.LBB158_21
 .Lfunc_end158:
 	.size	_ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops15_Iter_less_iterEEvT_S9_T0_, .Lfunc_end158-_ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPcSt6vectorIcSaIcEEEENS0_5__ops15_Iter_less_iterEEvT_S9_T0_
@@ -39584,24 +39591,26 @@ _ZNSt5dequeINSt8__detail9_StateSeqINSt7__cxx1112regex_traitsIcEEEESaIS5_EE16_M_p
 	sub.d	$a0, $s1, $a0
 	srai.d	$a0, $a0, 3
 	sltu	$a2, $zero, $s1
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	sub.d	$a0, $a0, $a2
 	alsl.d	$a2, $a0, $a0, 2
+	vld	$vr0, $fp, 48
+	ld.d	$a3, $fp, 32
+	ld.d	$a4, $fp, 16
 	alsl.d	$a0, $a2, $a0, 2
-	sub.d	$a2, $a3, $a4
-	srai.d	$a2, $a2, 3
-	lu12i.w	$a3, -349526
-	ori	$a3, $a3, 2731
-	lu32i.d	$a3, -349526
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
-	lu52i.d	$a3, $a3, -1366
-	mul.d	$a2, $a2, $a3
+	vreplvei.d	$vr1, $vr0, 1
+	vinsgr2vr.d	$vr0, $a3, 1
+	vinsgr2vr.d	$vr1, $a4, 1
+	vsub.d	$vr0, $vr0, $vr1
+	vsrai.d	$vr0, $vr0, 3
+	lu12i.w	$a2, -349526
+	ori	$a2, $a2, 2731
+	lu32i.d	$a2, -349526
+	lu52i.d	$a2, $a2, -1366
+	vreplgr2vr.d	$vr1, $a2
+	vmul.d	$vr0, $vr0, $vr1
+	vpickve2gr.d	$a2, $vr0, 0
 	add.d	$a0, $a0, $a2
-	sub.d	$a2, $a4, $a5
-	srai.d	$a2, $a2, 3
-	mul.d	$a2, $a2, $a3
+	vpickve2gr.d	$a2, $vr0, 1
 	add.d	$a0, $a0, $a2
 	lu12i.w	$a2, 349525
 	ori	$a2, $a2, 1365
@@ -39834,24 +39843,26 @@ _ZNSt5dequeINSt8__detail9_StateSeqINSt7__cxx1112regex_traitsIcEEEESaIS5_EE16_M_p
 	sub.d	$a0, $s1, $a0
 	srai.d	$a0, $a0, 3
 	sltu	$a2, $zero, $s1
-	ld.d	$a3, $fp, 48
-	ld.d	$a4, $fp, 56
 	sub.d	$a0, $a0, $a2
 	alsl.d	$a2, $a0, $a0, 2
+	vld	$vr0, $fp, 48
+	ld.d	$a3, $fp, 32
+	ld.d	$a4, $fp, 16
 	alsl.d	$a0, $a2, $a0, 2
-	sub.d	$a2, $a3, $a4
-	srai.d	$a2, $a2, 3
-	lu12i.w	$a3, -349526
-	ori	$a3, $a3, 2731
-	lu32i.d	$a3, -349526
-	ld.d	$a4, $fp, 32
-	ld.d	$a5, $fp, 16
-	lu52i.d	$a3, $a3, -1366
-	mul.d	$a2, $a2, $a3
+	vreplvei.d	$vr1, $vr0, 1
+	vinsgr2vr.d	$vr0, $a3, 1
+	vinsgr2vr.d	$vr1, $a4, 1
+	vsub.d	$vr0, $vr0, $vr1
+	vsrai.d	$vr0, $vr0, 3
+	lu12i.w	$a2, -349526
+	ori	$a2, $a2, 2731
+	lu32i.d	$a2, -349526
+	lu52i.d	$a2, $a2, -1366
+	vreplgr2vr.d	$vr1, $a2
+	vmul.d	$vr0, $vr0, $vr1
+	vpickve2gr.d	$a2, $vr0, 0
 	add.d	$a0, $a0, $a2
-	sub.d	$a2, $a4, $a5
-	srai.d	$a2, $a2, 3
-	mul.d	$a2, $a2, $a3
+	vpickve2gr.d	$a2, $vr0, 1
 	add.d	$a0, $a0, $a2
 	lu12i.w	$a2, 349525
 	ori	$a2, $a2, 1365

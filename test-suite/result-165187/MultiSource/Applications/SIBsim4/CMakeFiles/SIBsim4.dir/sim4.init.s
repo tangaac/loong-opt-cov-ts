@@ -1541,109 +1541,114 @@ print_res:                              # @print_res
 	slli.d	$a0, $a0, 3
 	ldx.d	$s3, $a1, $a0
 	ld.w	$a0, $s3, 12
-	ldptr.w	$a1, $s0, 4148
+	ldptr.w	$a4, $s0, 4148
 	bstrpick.d	$a3, $a0, 31, 0
-	sub.d	$a4, $a1, $a0
-	bgeu	$a0, $a1, .LBB4_19
+	bgeu	$a0, $a4, .LBB4_19
 # %bb.9:
-	ld.d	$a7, $s0, 16
-	ldx.bu	$a2, $a7, $a3
-	sltu	$a5, $a1, $a4
-	masknez	$a5, $a4, $a5
-	addi.d	$a2, $a2, -65
-	addi.w	$a6, $a5, 0
-	ori	$a5, $zero, 1
-	sltui	$a2, $a2, 1
-	beq	$a6, $a5, .LBB4_20
+	ld.d	$a5, $s0, 16
+	ldx.bu	$a1, $a5, $a3
+	bstrpick.d	$a6, $a4, 31, 0
+	addi.d	$a1, $a1, -65
+	sltui	$a2, $a1, 1
+	addi.d	$a7, $a3, 1
+	ori	$a1, $zero, 1
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.10:
-	add.d	$a7, $a7, $a3
-	ld.bu	$a5, $a7, 1
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 2
-	add.w	$a2, $t0, $a2
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a1, $a2
+	addi.d	$a7, $a3, 2
+	ori	$a1, $zero, 2
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.11:
-	ld.bu	$a5, $a7, 2
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 3
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 3
+	ori	$a1, $zero, 3
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.12:
-	ld.bu	$a5, $a7, 3
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 4
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 4
+	ori	$a1, $zero, 4
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.13:
-	ld.bu	$a5, $a7, 4
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 5
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 5
+	ori	$a1, $zero, 5
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.14:
-	ld.bu	$a5, $a7, 5
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 6
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 6
+	ori	$a1, $zero, 6
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.15:
-	ld.bu	$a5, $a7, 6
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 7
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 7
+	ori	$a1, $zero, 7
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.16:
-	ld.bu	$a5, $a7, 7
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 8
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 8
+	ori	$a1, $zero, 8
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.17:
-	ld.bu	$a5, $a7, 8
-	addi.d	$a5, $a5, -65
-	sltui	$t0, $a5, 1
-	ori	$a5, $zero, 9
-	add.w	$a2, $a2, $t0
-	beq	$a6, $a5, .LBB4_20
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	addi.d	$a7, $a3, 9
+	ori	$a1, $zero, 9
+	bgeu	$a7, $a6, .LBB4_20
 # %bb.18:
-	ld.bu	$a5, $a7, 9
-	addi.d	$a5, $a5, -65
-	sltui	$a5, $a5, 1
-	add.w	$a2, $a2, $a5
-	ori	$a5, $zero, 10
+	ldx.bu	$a1, $a5, $a7
+	addi.d	$a1, $a1, -65
+	sltui	$a1, $a1, 1
+	add.w	$a2, $a2, $a1
+	ori	$a1, $zero, 10
 	b	.LBB4_20
 .LBB4_19:
-	move	$a5, $zero
+	move	$a1, $zero
 	move	$a2, $zero
 .LBB4_20:                               # %.critedge.i
-	add.w	$a6, $a5, $a0
-	bgeu	$a6, $a1, .LBB4_25
+	add.w	$a5, $a1, $a0
+	bgeu	$a5, $a4, .LBB4_25
 # %bb.21:                               # %.lr.ph.i
 	ld.d	$a6, $s0, 16
+	sub.w	$a5, $a4, $a0
 	ori	$a7, $zero, 65
 	.p2align	4, , 16
 .LBB4_22:                               # =>This Inner Loop Header: Depth=1
-	add.d	$t0, $a0, $a5
+	add.d	$t0, $a0, $a1
 	bstrpick.d	$t0, $t0, 31, 0
 	ldx.bu	$t0, $a6, $t0
 	bne	$t0, $a7, .LBB4_25
 # %bb.23:                               #   in Loop: Header=BB4_22 Depth=1
-	addi.w	$a5, $a5, 1
-	add.w	$t0, $a0, $a5
+	addi.w	$a1, $a1, 1
+	add.w	$t0, $a0, $a1
 	addi.w	$a2, $a2, 1
-	bltu	$t0, $a1, .LBB4_22
+	bltu	$t0, $a4, .LBB4_22
 # %bb.24:
-	move	$a5, $a4
+	move	$a1, $a5
 .LBB4_25:                               # %.critedge2.i
 	ldptr.w	$a4, $s1, 4148
-	addi.w	$a1, $a5, 0
 	sltu	$a5, $a1, $a4
 	masknez	$a4, $a4, $a5
 	maskeqz	$a5, $a1, $a5
@@ -1847,25 +1852,21 @@ print_res:                              # @print_res
 	bgeu	$a3, $a7, .LBB4_52
 # %bb.48:                               # %.lr.ph167.i
 	ld.d	$a3, $s0, 16
-	add.d	$a4, $a2, $a1
-	nor	$a5, $a0, $zero
-	add.w	$a4, $a4, $a5
 	sub.d	$a1, $a1, $a0
 	addi.w	$a1, $a1, -2
-	ori	$a5, $zero, 84
-	addi.w	$a6, $zero, -1
+	ori	$a4, $zero, 84
+	addi.w	$a5, $zero, -1
 	.p2align	4, , 16
 .LBB4_49:                               # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$t0, $a1, 31, 0
-	ldx.bu	$t0, $a3, $t0
-	bne	$t0, $a5, .LBB4_52
+	bstrpick.d	$a6, $a1, 31, 0
+	ldx.bu	$a6, $a3, $a6
+	bne	$a6, $a4, .LBB4_52
 # %bb.50:                               #   in Loop: Header=BB4_49 Depth=1
 	addi.w	$a2, $a2, 1
 	addi.w	$a1, $a1, -1
 	addi.w	$a0, $a0, 1
-	bne	$a1, $a6, .LBB4_49
+	bne	$a1, $a5, .LBB4_49
 # %bb.51:
-	move	$a2, $a4
 	move	$a0, $a7
 .LBB4_52:                               # %.critedge6.i
 	ld.w	$a4, $s2, 0
@@ -1884,12 +1885,12 @@ print_res:                              # @print_res
 # %bb.54:
 	move	$t1, $zero
 	move	$t2, $zero
-.LBB4_55:                               # %scalar.ph50.preheader
+.LBB4_55:                               # %scalar.ph59.preheader
 	sub.d	$a6, $a6, $t1
 	sub.d	$a4, $a4, $t1
 	addi.w	$a4, $a4, -2
 	.p2align	4, , 16
-.LBB4_56:                               # %scalar.ph50
+.LBB4_56:                               # %scalar.ph59
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t1, $a4, 31, 0
 	ldx.bu	$t1, $t0, $t1
@@ -2055,17 +2056,17 @@ print_res:                              # @print_res
 	vpickve2gr.d	$t2, $vr0, 0
 	bne	$a6, $a4, .LBB4_28
 	b	.LBB4_31
-.LBB4_74:                               # %vector.scevcheck49
+.LBB4_74:                               # %vector.scevcheck58
 	addi.w	$t3, $a4, -2
 	addi.d	$t2, $a6, -1
 	addi.w	$t4, $t2, 0
 	move	$t1, $zero
 	bltu	$t3, $t4, .LBB4_80
-# %bb.75:                               # %vector.scevcheck49
+# %bb.75:                               # %vector.scevcheck58
 	srli.d	$t4, $t2, 32
 	move	$t2, $t1
 	bnez	$t4, .LBB4_55
-# %bb.76:                               # %vector.ph52
+# %bb.76:                               # %vector.ph61
 	bstrpick.d	$t1, $a6, 31, 3
 	slli.d	$t1, $t1, 3
 	vrepli.b	$vr0, 0
@@ -2074,7 +2075,7 @@ print_res:                              # @print_res
 	move	$t2, $t1
 	vori.b	$vr3, $vr0, 0
 	.p2align	4, , 16
-.LBB4_77:                               # %vector.body55
+.LBB4_77:                               # %vector.body64
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t4, $t3, 31, 0
 	add.d	$t4, $t0, $t4
@@ -2097,7 +2098,7 @@ print_res:                              # @print_res
 	addi.d	$t2, $t2, -8
 	addi.w	$t3, $t3, -8
 	bnez	$t2, .LBB4_77
-# %bb.78:                               # %middle.block63
+# %bb.78:                               # %middle.block72
 	vadd.w	$vr0, $vr3, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0

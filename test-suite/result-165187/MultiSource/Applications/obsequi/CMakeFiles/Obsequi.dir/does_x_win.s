@@ -1,6 +1,23 @@
 	.file	"does_x_win.c"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function does_next_player_win
+.LCPI0_0:
+	.word	2147483647                      # 0x7fffffff
+	.word	2147483649                      # 0x80000001
+	.word	1431655765                      # 0x55555555
+	.word	1431655766                      # 0x55555556
+.LCPI0_1:
+	.word	4294967295                      # 0xffffffff
+	.word	1                               # 0x1
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+.LCPI0_2:
+	.word	0                               # 0x0
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	0                               # 0x0
 	.text
-	.globl	does_next_player_win            # -- Begin function does_next_player_win
+	.globl	does_next_player_win
 	.p2align	5
 	.type	does_next_player_win,@function
 does_next_player_win:                   # @does_next_player_win
@@ -247,96 +264,97 @@ does_next_player_win:                   # @does_next_player_win
 	addi.w	$a3, $a2, 2
 	masknez	$a2, $a2, $a1
 	maskeqz	$a3, $a3, $a1
-	or	$a4, $a3, $a2
+	or	$a2, $a3, $a2
 	sub.d	$a1, $s0, $a1
-	ori	$a5, $a0, 1366
-	mul.d	$a3, $a4, $a5
-	ld.wu	$a2, $sp, 172
-	srli.d	$a6, $a3, 63
+	ori	$a0, $a0, 1366
+	mul.d	$a3, $a2, $a0
+	ld.wu	$a0, $sp, 172
+	srli.d	$a4, $a3, 63
 	srli.d	$a3, $a3, 32
-	add.d	$a6, $a3, $a6
-	srli.d	$a3, $a2, 31
-	add.w	$a3, $a2, $a3
-	srli.d	$a3, $a3, 1
+	add.d	$a3, $a3, $a4
+	srli.d	$a4, $a0, 31
+	add.w	$a4, $a0, $a4
+	srli.d	$a4, $a4, 1
 	add.d	$a1, $a1, $s1
-	add.d	$a1, $a1, $a6
-	add.w	$a1, $a1, $a3
-	alsl.d	$a6, $a6, $a6, 1
-	sub.w	$a7, $a4, $a6
-	andi	$t0, $a2, 1
-	beqz	$a7, .LBB0_31
+	add.d	$a1, $a1, $a3
+	add.w	$a1, $a1, $a4
+	alsl.d	$a3, $a3, $a3, 1
+	sub.w	$a4, $a2, $a3
+	andi	$a5, $a0, 1
+	beqz	$a4, .LBB0_31
 # %bb.29:
-	beqz	$t0, .LBB0_31
+	beqz	$a5, .LBB0_31
 # %bb.30:                               # %.thread
-	ld.w	$a7, $sp, 164
-	ld.w	$a6, $sp, 160
+	ld.w	$a4, $sp, 164
+	ld.w	$a3, $sp, 160
 	addi.w	$a1, $a1, 1
-	addi.d	$a7, $a7, -1
-	st.w	$a7, $sp, 164
+	addi.d	$a4, $a4, -1
+	st.w	$a4, $sp, 164
 	b	.LBB0_32
 .LBB0_31:
-	ld.w	$a6, $sp, 160
-	or	$a7, $a7, $t0
-	bnez	$a7, .LBB0_38
+	ld.w	$a3, $sp, 160
+	or	$a4, $a4, $a5
+	bnez	$a4, .LBB0_38
 .LBB0_32:
+	ori	$a4, $zero, 1
+	bstrins.d	$a4, $a4, 32, 31
+	and	$a4, $a3, $a4
+	ld.w	$a5, $sp, 156
+	addi.w	$a4, $a4, 0
+	addi.d	$a4, $a4, -1
+	sltui	$a6, $a4, 1
+	add.w	$a4, $a5, $a6
+	ld.w	$a5, $sp, 152
 	ori	$a7, $zero, 1
-	bstrins.d	$a7, $a7, 32, 31
-	and	$a7, $a6, $a7
-	ld.w	$t0, $sp, 156
-	addi.w	$a7, $a7, 0
-	addi.d	$a7, $a7, -1
-	sltui	$t1, $a7, 1
-	add.w	$a7, $t0, $t1
-	ld.w	$t0, $sp, 152
-	ori	$t2, $zero, 1
-	move	$t3, $a7
-	bstrins.d	$t3, $zero, 30, 1
-	sub.w	$a6, $a6, $t1
-	bne	$t3, $t2, .LBB0_34
+	move	$t0, $a4
+	bstrins.d	$t0, $zero, 30, 1
+	sub.w	$a3, $a3, $a6
+	bne	$t0, $a7, .LBB0_34
 .LBB0_33:
-	addi.w	$a7, $a7, -1
-	addi.w	$t0, $t0, 1
+	addi.w	$a4, $a4, -1
+	addi.w	$a5, $a5, 1
 .LBB0_34:
-	ld.w	$t1, $sp, 176
-	ori	$a0, $a0, 1365
-	mul.d	$a0, $a4, $a0
-	srli.d	$a0, $a0, 32
-	sub.w	$a0, $a0, $a4
-	bstrpick.d	$t2, $a0, 31, 31
-	srli.d	$a0, $a0, 1
-	add.d	$a0, $a0, $t2
-	sub.w	$a4, $a4, $t1
-	mul.d	$a4, $a4, $a5
-	srli.d	$a5, $a4, 63
-	srli.d	$a4, $a4, 32
-	ld.w	$t2, $sp, 164
-	add.d	$a4, $a4, $a5
-	ld.w	$a5, $sp, 168
-	add.d	$a0, $t1, $a0
-	add.d	$a0, $a0, $t2
-	add.w	$a0, $a0, $a4
-	sub.d	$a2, $a2, $a5
-	bstrpick.d	$a4, $a2, 31, 31
-	add.w	$a2, $a2, $a4
-	srli.d	$a2, $a2, 1
-	sub.d	$a3, $a5, $a3
+	ld.w	$a6, $sp, 176
+	ld.w	$a7, $sp, 168
+	sub.d	$t0, $a2, $a6
+	sub.d	$t1, $a0, $a7
+	vinsgr2vr.w	$vr0, $a0, 0
+	vinsgr2vr.w	$vr0, $t1, 1
+	vinsgr2vr.w	$vr0, $a2, 2
+	vinsgr2vr.w	$vr0, $t0, 3
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_2)
+	vmuh.w	$vr1, $vr0, $vr1
+	vmadd.w	$vr1, $vr0, $vr2
+	ld.w	$a0, $sp, 164
+	vsra.w	$vr0, $vr1, $vr3
+	vsrli.w	$vr1, $vr0, 31
+	vadd.w	$vr0, $vr0, $vr1
+	bstrpick.d	$a2, $a3, 31, 31
 	add.w	$a2, $a3, $a2
-	add.d	$a0, $a2, $a0
-	bstrpick.d	$a2, $a6, 31, 31
-	add.w	$a2, $a6, $a2
-	srai.d	$a3, $a2, 1
-	bstrins.d	$a2, $zero, 0, 0
-	add.d	$a2, $a2, $a3
-	add.d	$a0, $a0, $a2
-	bstrpick.d	$a2, $a7, 31, 31
-	add.d	$a2, $a7, $a2
+	srli.d	$a3, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 1
-	alsl.d	$a0, $a2, $a0, 1
-	bstrpick.d	$a2, $t0, 31, 31
-	add.w	$a2, $t0, $a2
-	srli.d	$a2, $a2, 1
+	alsl.d	$a2, $a2, $a3, 1
+	bstrpick.d	$a3, $a4, 31, 31
+	add.w	$a3, $a4, $a3
+	srli.d	$a3, $a3, 1
+	bstrpick.d	$a4, $a5, 31, 31
+	add.w	$a4, $a5, $a4
+	srli.d	$a4, $a4, 1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a5, $vr0, 0
+	add.d	$a4, $a5, $a4
+	add.d	$a3, $a3, $a1
+	add.d	$a0, $a2, $a0
+	add.d	$a2, $a6, $a7
+	alsl.d	$a3, $a3, $a4, 1
 	add.d	$a0, $a0, $a2
-	alsl.w	$a0, $a1, $a0, 1
+	add.w	$a0, $a3, $a0
 	sub.d	$a0, $s3, $a0
 	bstrpick.d	$a2, $a0, 31, 31
 	add.w	$a0, $a0, $a2
@@ -366,45 +384,45 @@ does_next_player_win:                   # @does_next_player_win
 	addi.d	$sp, $sp, 240
 	ret
 .LBB0_38:                               # %.thread68
-	ori	$t1, $zero, 1
-	ori	$t2, $zero, 1
-	bstrins.d	$t2, $t2, 32, 31
-	and	$a7, $a6, $t2
-	addi.w	$a7, $a7, 0
-	bne	$a7, $t1, .LBB0_40
+	ori	$a6, $zero, 1
+	ori	$a7, $zero, 1
+	bstrins.d	$a7, $a7, 32, 31
+	and	$a4, $a3, $a7
+	addi.w	$a4, $a4, 0
+	bne	$a4, $a6, .LBB0_40
 # %bb.39:
-	ld.w	$t0, $sp, 164
-	ld.wu	$a7, $sp, 156
-	addi.d	$t3, $t0, 3
-	ld.w	$t0, $sp, 152
-	and	$t2, $a7, $t2
-	addi.w	$t2, $t2, 0
-	st.w	$t3, $sp, 164
-	beq	$t2, $t1, .LBB0_33
+	ld.w	$a5, $sp, 164
+	ld.wu	$a4, $sp, 156
+	addi.d	$t0, $a5, 3
+	ld.w	$a5, $sp, 152
+	and	$a7, $a4, $a7
+	addi.w	$a7, $a7, 0
+	st.w	$t0, $sp, 164
+	beq	$a7, $a6, .LBB0_33
 	b	.LBB0_34
 .LBB0_40:
-	ld.wu	$a7, $sp, 156
-	and	$t0, $a7, $t2
-	addi.w	$t0, $t0, 0
-	bne	$t0, $t1, .LBB0_42
+	ld.wu	$a4, $sp, 156
+	and	$a5, $a4, $a7
+	addi.w	$a5, $a5, 0
+	bne	$a5, $a6, .LBB0_42
 # %bb.41:
-	ld.w	$t1, $sp, 164
-	ld.w	$t0, $sp, 152
-	addi.d	$t1, $t1, 2
+	ld.w	$a6, $sp, 164
+	ld.w	$a5, $sp, 152
+	addi.d	$a6, $a6, 2
 	b	.LBB0_44
 .LBB0_42:
-	ld.wu	$t0, $sp, 152
-	ori	$t1, $zero, 1
-	ori	$t2, $zero, 1
-	bstrins.d	$t2, $t2, 32, 31
-	and	$t2, $t0, $t2
-	addi.w	$t2, $t2, 0
-	bne	$t2, $t1, .LBB0_34
+	ld.wu	$a5, $sp, 152
+	ori	$a6, $zero, 1
+	ori	$a7, $zero, 1
+	bstrins.d	$a7, $a7, 32, 31
+	and	$a7, $a5, $a7
+	addi.w	$a7, $a7, 0
+	bne	$a7, $a6, .LBB0_34
 # %bb.43:
-	ld.w	$t1, $sp, 164
-	addi.d	$t1, $t1, 1
+	ld.w	$a6, $sp, 164
+	addi.d	$a6, $a6, 1
 .LBB0_44:
-	st.w	$t1, $sp, 164
+	st.w	$a6, $sp, 164
 	b	.LBB0_34
 .LBB0_45:
 	blez	$s0, .LBB0_47

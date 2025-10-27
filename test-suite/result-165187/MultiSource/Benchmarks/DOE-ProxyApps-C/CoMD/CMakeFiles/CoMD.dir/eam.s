@@ -377,23 +377,21 @@ initEamPot:                             # @initEamPot
 	addi.d	$s1, $s1, 8
 	blt	$s2, $s3, .LBB0_19
 # %bb.20:                               # %.preheader.i25
-	fld.d	$ft0, $sp, 72
-	ori	$a0, $zero, 2
-	vst	$vr8, $sp, 16                   # 16-byte Folded Spill
-	blt	$s3, $a0, .LBB0_28
+	fld.d	$fa7, $sp, 72
+	ori	$a1, $zero, 2
+	vst	$vr7, $sp, 16                   # 16-byte Folded Spill
+	blt	$s3, $a1, .LBB0_28
 # %bb.21:                               # %.lr.ph70.i
-	ori	$a1, $zero, 5
 	ori	$a0, $zero, 1
-	bltu	$s3, $a1, .LBB0_25
+	beq	$s3, $a1, .LBB0_25
 # %bb.22:                               # %vector.ph
 	addi.d	$a1, $s3, -1
 	move	$a2, $a1
-	bstrins.d	$a2, $zero, 1, 0
+	bstrins.d	$a2, $zero, 0, 0
+	ori	$a0, $a1, 1
+	vreplvei.d	$vr0, $vr7, 0
+	addi.d	$a3, $s6, 8
 	ori	$a4, $zero, 1
-	move	$a0, $a1
-	bstrins.d	$a0, $a4, 1, 0
-	vreplvei.d	$vr0, $vr8, 0
-	addi.d	$a3, $s6, 24
 	lu32i.d	$a4, 2
 	vreplgr2vr.d	$vr1, $a4
 	lu12i.w	$a4, 261366
@@ -402,44 +400,28 @@ initEamPot:                             # @initEamPot
 	lu52i.d	$a4, $a4, 1026
 	vreplgr2vr.d	$vr2, $a4
 	move	$a4, $a2
-	vld	$vr7, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr3, $vr1, 2
 	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa4, $a5
-	ffint.d.l	$fa4, $fa4
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa5, $a5
-	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a5, $vr3, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa4, $a5
-	ffint.d.l	$fa4, $fa4
-	vpickve2gr.w	$a5, $vr3, 0
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$fa3, $a5
 	ffint.d.l	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
-	vld	$vr4, $a3, -16
-	vld	$vr6, $a3, 0
-	vfmadd.d	$vr5, $vr5, $vr0, $vr7
-	vfmadd.d	$vr3, $vr3, $vr0, $vr7
-	vfdiv.d	$vr5, $vr4, $vr5
-	vfdiv.d	$vr3, $vr6, $vr3
-	vfmul.d	$vr4, $vr4, $vr5
-	vfmul.d	$vr3, $vr6, $vr3
-	vfmul.d	$vr4, $vr4, $vr2
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa4, $a5
+	vld	$vr5, $a3, 0
+	ffint.d.l	$fa4, $fa4
+	vextrins.d	$vr4, $vr3, 16
+	vfmadd.d	$vr3, $vr4, $vr0, $vr6
+	vfdiv.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr3, $vr5, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vst	$vr4, $a3, -16
 	vst	$vr3, $a3, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 32
+	vaddi.wu	$vr1, $vr1, 2
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB0_23
 # %bb.24:                               # %middle.block
 	beq	$a1, $a2, .LBB0_28
@@ -456,7 +438,7 @@ initEamPot:                             # @initEamPot
 	fld.d	$fa2, $a2, 0
 	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
-	fmadd.d	$fa3, $fa3, $ft0, $fa1
+	fmadd.d	$fa3, $fa3, $fa7, $fa1
 	fdiv.d	$fa3, $fa2, $fa3
 	fmul.d	$fa2, $fa2, $fa3
 	fmul.d	$fa2, $fa2, $fa0
@@ -725,77 +707,61 @@ initEamPot:                             # @initEamPot
 	addi.d	$s1, $s1, 8
 	blt	$s3, $s2, .LBB0_46
 # %bb.47:                               # %.preheader.i
-	fld.d	$fa7, $sp, 104
-	ori	$a0, $zero, 2
-	vst	$vr7, $sp, 16                   # 16-byte Folded Spill
-	blt	$s2, $a0, .LBB0_55
+	fld.d	$fa6, $sp, 104
+	ori	$a1, $zero, 2
+	vst	$vr6, $sp, 16                   # 16-byte Folded Spill
+	blt	$s2, $a1, .LBB0_55
 # %bb.48:                               # %.lr.ph72.i
-	ori	$a1, $zero, 5
 	ori	$a0, $zero, 1
 	addi.d	$s1, $fp, 72
 	addi.d	$s3, $fp, 32
-	bltu	$s2, $a1, .LBB0_52
-# %bb.49:                               # %vector.ph70
+	beq	$s2, $a1, .LBB0_52
+# %bb.49:                               # %vector.ph69
 	addi.d	$a1, $s2, -1
 	move	$a2, $a1
-	bstrins.d	$a2, $zero, 1, 0
+	bstrins.d	$a2, $zero, 0, 0
+	ori	$a0, $a1, 1
+	vreplvei.d	$vr0, $vr6, 0
+	addi.d	$a3, $s5, 8
 	ori	$a4, $zero, 1
-	move	$a0, $a1
-	bstrins.d	$a0, $a4, 1, 0
-	vreplvei.d	$vr0, $vr7, 0
-	addi.d	$a3, $s5, 24
 	lu32i.d	$a4, 2
 	vreplgr2vr.d	$vr1, $a4
 	move	$a4, $a2
-	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB0_50:                               # %vector.body75
+.LBB0_50:                               # %vector.body74
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa4, $a5
-	ffint.d.l	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$fa2, $a5
 	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vld	$vr3, $a3, -16
-	vld	$vr5, $a3, 0
-	vfmadd.d	$vr4, $vr4, $vr0, $vr6
-	vfmadd.d	$vr2, $vr2, $vr0, $vr6
-	vfdiv.d	$vr3, $vr3, $vr4
-	vfdiv.d	$vr2, $vr5, $vr2
-	vst	$vr3, $a3, -16
+	vpickve2gr.w	$a5, $vr1, 0
+	bstrpick.d	$a5, $a5, 31, 0
+	movgr2fr.d	$fa3, $a5
+	vld	$vr4, $a3, 0
+	ffint.d.l	$fa3, $fa3
+	vextrins.d	$vr3, $vr2, 16
+	vfmadd.d	$vr2, $vr3, $vr0, $vr5
+	vfdiv.d	$vr2, $vr4, $vr2
 	vst	$vr2, $a3, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 32
+	vaddi.wu	$vr1, $vr1, 2
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB0_50
-# %bb.51:                               # %middle.block84
+# %bb.51:                               # %middle.block81
 	beq	$a1, $a2, .LBB0_57
-.LBB0_52:                               # %scalar.ph68.preheader
+.LBB0_52:                               # %scalar.ph67.preheader
 	sub.d	$a1, $s2, $a0
 	alsl.d	$a2, $a0, $s5, 3
 	movgr2fr.d	$fa0, $zero
 	.p2align	4, , 16
-.LBB0_53:                               # %scalar.ph68
+.LBB0_53:                               # %scalar.ph67
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a3, $a0, 31, 0
 	fld.d	$fa1, $a2, 0
 	movgr2fr.d	$fa2, $a3
 	ffint.d.l	$fa2, $fa2
-	fmadd.d	$fa2, $fa2, $fa7, $fa0
+	fmadd.d	$fa2, $fa2, $fa6, $fa0
 	fdiv.d	$fa1, $fa1, $fa2
 	fst.d	$fa1, $a2, 0
 	addi.d	$a1, $a1, -1

@@ -11124,7 +11124,7 @@ counteff_simple_float:                  # @counteff_simple_float
 	bnez	$a3, .LBB35_3
 # %bb.4:                                # %middle.block
 	beq	$a1, $fp, .LBB35_7
-.LBB35_5:                               # %.lr.ph.preheader120
+.LBB35_5:                               # %.lr.ph.preheader119
 	alsl.d	$a2, $a1, $a0, 3
 	sub.d	$a1, $fp, $a1
 	lu52i.d	$a3, $zero, 1023
@@ -11235,7 +11235,7 @@ counteff_simple_float:                  # @counteff_simple_float
 	bnez	$a2, .LBB35_19
 # %bb.20:                               # %middle.block102
 	beq	$a0, $fp, .LBB35_23
-.LBB35_21:                              # %.lr.ph61.preheader119
+.LBB35_21:                              # %.lr.ph61.preheader118
 	pcalau12i	$a1, %pc_hi20(counteff_simple_float.rootnode)
 	addi.d	$a1, $a1, %pc_lo12(counteff_simple_float.rootnode)
 	pcalau12i	$a2, %pc_hi20(.LCPI35_0)
@@ -11263,35 +11263,32 @@ counteff_simple_float:                  # @counteff_simple_float
 	addi.d	$s1, $s1, 8
 	bnez	$a0, .LBB35_24
 # %bb.25:                               # %.lr.ph66.preheader
-	ori	$a0, $zero, 4
-	bgeu	$fp, $a0, .LBB35_27
+	ori	$a0, $zero, 1
+	bne	$fp, $a0, .LBB35_27
 # %bb.26:
 	move	$a0, $zero
 	b	.LBB35_30
 .LBB35_27:                              # %vector.ph107
-	bstrpick.d	$a0, $fp, 30, 2
-	slli.d	$a0, $a0, 2
+	bstrpick.d	$a0, $fp, 30, 1
+	slli.d	$a0, $a0, 1
 	vreplvei.d	$vr1, $vr0, 0
-	pcalau12i	$a1, %pc_hi20(counteff_simple_float.rootnode+16)
-	addi.d	$a1, $a1, %pc_lo12(counteff_simple_float.rootnode+16)
-	addi.d	$a2, $s0, 16
+	pcalau12i	$a1, %pc_hi20(counteff_simple_float.rootnode)
+	addi.d	$a1, $a1, %pc_lo12(counteff_simple_float.rootnode)
+	move	$a2, $s0
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB35_28:                              # %vector.body110
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a1, -16
-	vld	$vr3, $a1, 0
+	vld	$vr2, $a1, 0
 	vfdiv.d	$vr2, $vr2, $vr1
-	vfdiv.d	$vr3, $vr3, $vr1
-	vst	$vr2, $a2, -16
-	vst	$vr3, $a2, 0
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
-	addi.d	$a1, $a1, 32
+	vst	$vr2, $a2, 0
+	addi.d	$a3, $a3, -2
+	addi.d	$a2, $a2, 16
+	addi.d	$a1, $a1, 16
 	bnez	$a3, .LBB35_28
-# %bb.29:                               # %middle.block115
+# %bb.29:                               # %middle.block114
 	beq	$a0, $fp, .LBB35_32
-.LBB35_30:                              # %.lr.ph66.preheader118
+.LBB35_30:                              # %.lr.ph66.preheader117
 	alsl.d	$a1, $a0, $s0, 3
 	pcalau12i	$a2, %pc_hi20(counteff_simple_float.rootnode)
 	addi.d	$a2, $a2, %pc_lo12(counteff_simple_float.rootnode)
@@ -11371,7 +11368,7 @@ counteff_simple:                        # @counteff_simple
 	bnez	$a3, .LBB36_3
 # %bb.4:                                # %middle.block
 	beq	$a1, $fp, .LBB36_7
-.LBB36_5:                               # %.lr.ph.preheader120
+.LBB36_5:                               # %.lr.ph.preheader119
 	alsl.d	$a2, $a1, $a0, 3
 	sub.d	$a1, $fp, $a1
 	lu52i.d	$a3, $zero, 1023
@@ -11480,7 +11477,7 @@ counteff_simple:                        # @counteff_simple
 	bnez	$a2, .LBB36_19
 # %bb.20:                               # %middle.block102
 	beq	$a0, $fp, .LBB36_23
-.LBB36_21:                              # %.lr.ph61.preheader119
+.LBB36_21:                              # %.lr.ph61.preheader118
 	pcalau12i	$a1, %pc_hi20(counteff_simple.rootnode)
 	addi.d	$a1, $a1, %pc_lo12(counteff_simple.rootnode)
 	pcalau12i	$a2, %pc_hi20(.LCPI36_0)
@@ -11508,35 +11505,32 @@ counteff_simple:                        # @counteff_simple
 	addi.d	$s1, $s1, 8
 	bnez	$a0, .LBB36_24
 # %bb.25:                               # %.lr.ph66.preheader
-	ori	$a0, $zero, 4
-	bgeu	$fp, $a0, .LBB36_27
+	ori	$a0, $zero, 1
+	bne	$fp, $a0, .LBB36_27
 # %bb.26:
 	move	$a0, $zero
 	b	.LBB36_30
 .LBB36_27:                              # %vector.ph107
-	bstrpick.d	$a0, $fp, 30, 2
-	slli.d	$a0, $a0, 2
+	bstrpick.d	$a0, $fp, 30, 1
+	slli.d	$a0, $a0, 1
 	vreplvei.d	$vr1, $vr0, 0
-	pcalau12i	$a1, %pc_hi20(counteff_simple.rootnode+16)
-	addi.d	$a1, $a1, %pc_lo12(counteff_simple.rootnode+16)
-	addi.d	$a2, $s0, 16
+	pcalau12i	$a1, %pc_hi20(counteff_simple.rootnode)
+	addi.d	$a1, $a1, %pc_lo12(counteff_simple.rootnode)
+	move	$a2, $s0
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB36_28:                              # %vector.body110
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a1, -16
-	vld	$vr3, $a1, 0
+	vld	$vr2, $a1, 0
 	vfdiv.d	$vr2, $vr2, $vr1
-	vfdiv.d	$vr3, $vr3, $vr1
-	vst	$vr2, $a2, -16
-	vst	$vr3, $a2, 0
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
-	addi.d	$a1, $a1, 32
+	vst	$vr2, $a2, 0
+	addi.d	$a3, $a3, -2
+	addi.d	$a2, $a2, 16
+	addi.d	$a1, $a1, 16
 	bnez	$a3, .LBB36_28
-# %bb.29:                               # %middle.block115
+# %bb.29:                               # %middle.block114
 	beq	$a0, $fp, .LBB36_32
-.LBB36_30:                              # %.lr.ph66.preheader118
+.LBB36_30:                              # %.lr.ph66.preheader117
 	alsl.d	$a1, $a0, $s0, 3
 	pcalau12i	$a2, %pc_hi20(counteff_simple.rootnode)
 	addi.d	$a2, $a2, %pc_lo12(counteff_simple.rootnode)

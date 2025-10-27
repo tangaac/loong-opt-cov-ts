@@ -728,43 +728,34 @@ init_enc_mb_params:                     # @init_enc_mb_params
 	vst	$vr0, $a1, 44
 	st.h	$zero, $a1, 60
 	st.w	$zero, $a1, 68
-	ld.w	$t0, $a4, 176
-	ld.w	$t3, $a4, 180
+	ld.w	$t1, $a4, 176
+	ld.w	$t4, $a4, 180
 	pcalau12i	$a5, %pc_hi20(lrec)
 	ld.d	$a5, $a5, %pc_lo12(lrec)
-	addi.w	$a6, $t0, 15
-	addi.w	$a7, $t3, 15
-	slt	$t1, $a6, $t0
-	masknez	$a6, $a6, $t1
-	maskeqz	$t1, $t0, $t1
-	or	$t1, $t1, $a6
-	slt	$a6, $a7, $t3
-	masknez	$a7, $a7, $a6
-	maskeqz	$a6, $t3, $a6
-	or	$a6, $a6, $a7
-	sub.d	$a7, $t1, $t0
-	addi.d	$a7, $a7, 1
-	slli.d	$t0, $t0, 2
-	addi.w	$t1, $zero, -16
+	addi.w	$a6, $t1, 15
+	addi.w	$a7, $t4, 15
+	addi.d	$t0, $t1, -1
+	slli.d	$t1, $t1, 2
+	addi.w	$t2, $zero, -16
 .LBB2_11:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_12 Depth 2
-	move	$t2, $t3
-	slli.d	$t3, $t3, 3
-	ldx.d	$t3, $a5, $t3
-	add.d	$t3, $t3, $t0
-	move	$t4, $a7
+	move	$t3, $t4
+	slli.d	$t4, $t4, 3
+	ldx.d	$t4, $a5, $t4
+	add.d	$t4, $t4, $t1
+	move	$t5, $t0
 	.p2align	4, , 16
 .LBB2_12:                               #   Parent Loop BB2_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t5, $t3, 0
-	bne	$t5, $t1, .LBB2_16
+	ld.w	$t6, $t4, 0
+	bne	$t6, $t2, .LBB2_16
 # %bb.13:                               #   in Loop: Header=BB2_12 Depth=2
-	addi.d	$t4, $t4, -1
-	addi.d	$t3, $t3, 4
-	bnez	$t4, .LBB2_12
+	addi.d	$t5, $t5, 1
+	addi.d	$t4, $t4, 4
+	blt	$t5, $a6, .LBB2_12
 # %bb.14:                               #   in Loop: Header=BB2_11 Depth=1
-	addi.d	$t3, $t2, 1
-	bne	$t2, $a6, .LBB2_11
+	addi.d	$t4, $t3, 1
+	blt	$t3, $a7, .LBB2_11
 # %bb.15:
 	move	$a6, $zero
 	ori	$a5, $zero, 1
@@ -782,43 +773,34 @@ init_enc_mb_params:                     # @init_enc_mb_params
 	ld.w	$a2, $a2, %pc_lo12(sp2_frame_indicator)
 	beqz	$a2, .LBB2_28
 # %bb.20:
-	ld.w	$a7, $a4, 176
-	ld.w	$t2, $a4, 180
+	ld.w	$t0, $a4, 176
+	ld.w	$t3, $a4, 180
 	pcalau12i	$a2, %pc_hi20(lrec)
 	ld.d	$a2, $a2, %pc_lo12(lrec)
-	addi.w	$a5, $a7, 15
-	addi.w	$a6, $t2, 15
-	slt	$t0, $a5, $a7
-	masknez	$a5, $a5, $t0
-	maskeqz	$t0, $a7, $t0
-	or	$t0, $t0, $a5
-	slt	$a5, $a6, $t2
-	masknez	$a6, $a6, $a5
-	maskeqz	$a5, $t2, $a5
-	or	$a5, $a5, $a6
-	sub.d	$a6, $t0, $a7
-	addi.d	$a6, $a6, 1
-	slli.d	$a7, $a7, 2
-	addi.w	$t0, $zero, -16
+	addi.w	$a5, $t0, 15
+	addi.w	$a6, $t3, 15
+	addi.d	$a7, $t0, -1
+	slli.d	$t0, $t0, 2
+	addi.w	$t1, $zero, -16
 .LBB2_21:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_22 Depth 2
-	move	$t1, $t2
-	slli.d	$t2, $t2, 3
-	ldx.d	$t2, $a2, $t2
-	add.d	$t2, $t2, $a7
-	move	$t3, $a6
+	move	$t2, $t3
+	slli.d	$t3, $t3, 3
+	ldx.d	$t3, $a2, $t3
+	add.d	$t3, $t3, $t0
+	move	$t4, $a7
 	.p2align	4, , 16
 .LBB2_22:                               #   Parent Loop BB2_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t4, $t2, 0
-	bne	$t4, $t0, .LBB2_26
+	ld.w	$t5, $t3, 0
+	bne	$t5, $t1, .LBB2_26
 # %bb.23:                               #   in Loop: Header=BB2_22 Depth=2
-	addi.d	$t3, $t3, -1
-	addi.d	$t2, $t2, 4
-	bnez	$t3, .LBB2_22
+	addi.d	$t4, $t4, 1
+	addi.d	$t3, $t3, 4
+	blt	$t4, $a5, .LBB2_22
 # %bb.24:                               #   in Loop: Header=BB2_21 Depth=1
-	addi.d	$t2, $t1, 1
-	bne	$t1, $a5, .LBB2_21
+	addi.d	$t3, $t2, 1
+	blt	$t2, $a6, .LBB2_21
 # %bb.25:                               # %check_for_SI16.exit159
 	st.h	$zero, $a1, 72
 	vst	$vr0, $a1, 44
@@ -830,7 +812,7 @@ init_enc_mb_params:                     # @init_enc_mb_params
 	move	$a2, $zero
 	st.w	$zero, $a1, 70
 	st.h	$zero, $a1, 44
-.LBB2_27:                               # %.sink.split257
+.LBB2_27:                               # %.sink.split246
 	st.h	$a2, $a1, 64
 .LBB2_28:
 	beqz	$a3, .LBB2_31
@@ -935,7 +917,7 @@ init_enc_mb_params:                     # @init_enc_mb_params
 .LBB2_36:                               # %._crit_edge
                                         #   in Loop: Header=BB2_37 Depth=1
 	addi.d	$t1, $t0, 1
-	beq	$t0, $a0, .LBB2_83
+	bge	$t0, $a0, .LBB2_83
 .LBB2_37:                               # %.preheader182
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_48 Depth 2
@@ -1077,7 +1059,7 @@ init_enc_mb_params:                     # @init_enc_mb_params
 .LBB2_56:                               # %._crit_edge191
                                         #   in Loop: Header=BB2_57 Depth=1
 	addi.d	$t1, $a3, 1
-	beq	$a3, $a0, .LBB2_83
+	bge	$a3, $a0, .LBB2_83
 .LBB2_57:                               # %.preheader180
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_59 Depth 2
@@ -1144,7 +1126,7 @@ init_enc_mb_params:                     # @init_enc_mb_params
 	bnez	$a6, .LBB2_65
 # %bb.66:                               # %middle.block
 	beq	$a3, $a1, .LBB2_69
-.LBB2_67:                               # %.thread176.preheader294
+.LBB2_67:                               # %.thread176.preheader283
 	alsl.d	$a2, $a3, $a2, 3
 	.p2align	4, , 16
 .LBB2_68:                               # %.thread176
@@ -1204,13 +1186,13 @@ init_enc_mb_params:                     # @init_enc_mb_params
 # %bb.77:
 	move	$a2, $zero
 	b	.LBB2_81
-.LBB2_78:                               # %vector.ph280
+.LBB2_78:                               # %vector.ph269
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
 	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB2_79:                               # %vector.body283
+.LBB2_79:                               # %vector.body272
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a3, -16
 	ld.d	$a6, $a3, -8
@@ -1223,9 +1205,9 @@ init_enc_mb_params:                     # @init_enc_mb_params
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB2_79
-# %bb.80:                               # %middle.block288
+# %bb.80:                               # %middle.block277
 	beq	$a2, $a0, .LBB2_83
-.LBB2_81:                               # %.thread176.1.preheader291
+.LBB2_81:                               # %.thread176.1.preheader280
 	alsl.d	$a1, $a2, $a1, 3
 	.p2align	4, , 16
 .LBB2_82:                               # %.thread176.1

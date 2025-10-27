@@ -399,7 +399,13 @@ do_ari:                                 # @do_ari
 .Lfunc_end0:
 	.size	do_ari, .Lfunc_end0-do_ari
                                         # -- End function
-	.p2align	5                               # -- Begin function encode_symbol
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function encode_symbol
+.LCPI1_0:
+	.dword	-1                              # 0xffffffffffffffff
+	.dword	0                               # 0x0
+	.text
+	.p2align	5
 	.type	encode_symbol,@function
 encode_symbol:                          # @encode_symbol
 # %bb.0:
@@ -408,31 +414,37 @@ encode_symbol:                          # @encode_symbol
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(high)
-	ld.d	$a3, $a1, %pc_lo12(high)
-	pcalau12i	$a2, %pc_hi20(low)
-	ld.d	$a4, $a2, %pc_lo12(low)
-	sub.d	$a3, $a3, $a4
-	addi.d	$a3, $a3, 1
-	pcalau12i	$a5, %pc_hi20(cum_freq)
-	addi.d	$a5, $a5, %pc_lo12(cum_freq)
-	alsl.d	$a6, $a0, $a5, 2
-	ld.w	$a6, $a6, -4
-	ld.w	$a7, $a5, 0
-	slli.d	$a0, $a0, 2
-	mul.d	$a6, $a3, $a6
-	div.d	$a6, $a6, $a7
-	ldx.w	$a0, $a5, $a0
-	add.d	$a5, $a4, $a6
-	addi.d	$fp, $a5, -1
-	st.d	$fp, $a1, %pc_lo12(high)
-	mul.d	$a0, $a3, $a0
-	div.d	$a0, $a0, $a7
-	add.d	$s0, $a0, $a4
-	pcalau12i	$a0, %pc_hi20(buffer)
-	ld.w	$a5, $a0, %pc_lo12(buffer)
+	addi.d	$a1, $a1, %pc_lo12(high)
+	ld.d	$a2, $a1, 0
+	pcalau12i	$a3, %pc_hi20(cum_freq)
+	addi.d	$a3, $a3, %pc_lo12(cum_freq)
+	ld.w	$a4, $a3, 0
+	alsl.d	$a3, $a0, $a3, 2
+	pcalau12i	$a0, %pc_hi20(low)
+	addi.d	$a0, $a0, %pc_lo12(low)
+	ld.d	$a5, $a0, 0
+	ld.d	$a3, $a3, -4
+	sub.d	$a2, $a2, $a5
+	addi.d	$a2, $a2, 1
+	vinsgr2vr.d	$vr0, $a3, 0
+	vshuf4i.w	$vr0, $vr0, 16
+	vslli.d	$vr0, $vr0, 32
+	vsrai.d	$vr0, $vr0, 32
+	vreplgr2vr.d	$vr1, $a2
+	vmul.d	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a4
+	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
+	vld	$vr2, $a2, %pc_lo12(.LCPI1_0)
+	vdiv.d	$vr0, $vr0, $vr1
+	vreplgr2vr.d	$vr1, $a5
+	vadd.d	$vr0, $vr1, $vr0
+	vadd.d	$vr0, $vr0, $vr2
+	vstelm.d	$vr0, $a1, 0, 0
+	pcalau12i	$a2, %pc_hi20(buffer)
+	ld.w	$a5, $a2, %pc_lo12(buffer)
 	pcalau12i	$a3, %pc_hi20(bits_to_go)
 	ld.w	$t8, $a3, %pc_lo12(bits_to_go)
-	st.d	$s0, $a2, %pc_lo12(low)
+	vstelm.d	$vr0, $a0, 0, 1
 	lu12i.w	$a4, 7
 	ori	$a4, $a4, 4095
 	pcalau12i	$a6, %got_pc_hi20(ari)
@@ -451,22 +463,26 @@ encode_symbol:                          # @encode_symbol
 	.p2align	4, , 16
 .LBB1_1:                                # %._crit_edge.i
                                         #   in Loop: Header=BB1_3 Depth=1
-	st.w	$a5, $a0, %pc_lo12(buffer)
+	st.w	$a5, $a2, %pc_lo12(buffer)
 	st.w	$t8, $a3, %pc_lo12(bits_to_go)
 .LBB1_2:                                # %bit_plus_follow.exit
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$fp, $a2, %pc_lo12(low)
-	ld.d	$s1, $a1, %pc_lo12(high)
-	slli.d	$s0, $fp, 1
-	st.d	$s0, $a2, %pc_lo12(low)
-	slli.d	$fp, $s1, 1
-	addi.d	$fp, $fp, 1
-	st.d	$fp, $a1, %pc_lo12(high)
+	ld.d	$fp, $a0, 0
+	ld.d	$s0, $a1, 0
+	slli.d	$fp, $fp, 1
+	st.d	$fp, $a0, 0
+	slli.d	$s0, $s0, 1
+	addi.d	$s0, $s0, 1
+	st.d	$s0, $a1, 0
+	vinsgr2vr.d	$vr0, $s0, 0
+	vinsgr2vr.d	$vr0, $fp, 1
 .LBB1_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_18 Depth 2
                                         #     Child Loop BB1_14 Depth 2
+	vpickve2gr.d	$fp, $vr0, 0
 	bge	$a4, $fp, .LBB1_8
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
+	vpickve2gr.d	$s0, $vr0, 1
 	bge	$s0, $t3, .LBB1_10
 # %bb.5:                                #   in Loop: Header=BB1_3 Depth=1
 	srli.d	$s1, $fp, 14
@@ -478,13 +494,13 @@ encode_symbol:                          # @encode_symbol
 	addi.d	$s1, $s1, 1
 	st.d	$s1, $t0, %pc_lo12(bits_to_follow)
 	add.d	$s0, $s0, $t7
-	st.d	$s0, $a2, %pc_lo12(low)
+	st.d	$s0, $a0, 0
 	add.d	$fp, $fp, $t7
 	b	.LBB1_22
 	.p2align	4, , 16
 .LBB1_8:                                #   in Loop: Header=BB1_3 Depth=1
 	bstrpick.d	$a5, $a5, 31, 1
-	st.w	$a5, $a0, %pc_lo12(buffer)
+	st.w	$a5, $a2, %pc_lo12(buffer)
 	addi.w	$t8, $t8, -1
 	st.w	$t8, $a3, %pc_lo12(bits_to_go)
 	beqz	$t8, .LBB1_12
@@ -498,7 +514,7 @@ encode_symbol:                          # @encode_symbol
 	and	$a5, $a5, $t1
 	srli.d	$a5, $a5, 1
 	addi.d	$a5, $a5, 128
-	st.w	$a5, $a0, %pc_lo12(buffer)
+	st.w	$a5, $a2, %pc_lo12(buffer)
 	addi.w	$t8, $t8, -1
 	st.w	$t8, $a3, %pc_lo12(bits_to_go)
 	beqz	$t8, .LBB1_16
@@ -577,18 +593,18 @@ encode_symbol:                          # @encode_symbol
 	b	.LBB1_17
 .LBB1_20:                               # %._crit_edge.i13
                                         #   in Loop: Header=BB1_3 Depth=1
-	st.w	$a5, $a0, %pc_lo12(buffer)
+	st.w	$a5, $a2, %pc_lo12(buffer)
 	st.w	$t8, $a3, %pc_lo12(bits_to_go)
 .LBB1_21:                               # %bit_plus_follow.exit14
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.d	$fp, $a2, %pc_lo12(low)
-	ld.d	$s0, $a1, %pc_lo12(high)
+	ld.d	$fp, $a0, 0
+	ld.d	$s0, $a1, 0
 	add.d	$fp, $fp, $t4
-	st.d	$fp, $a2, %pc_lo12(low)
+	st.d	$fp, $a0, 0
 	add.d	$fp, $s0, $t4
 .LBB1_22:                               # %bit_plus_follow.exit
                                         #   in Loop: Header=BB1_3 Depth=1
-	st.d	$fp, $a1, %pc_lo12(high)
+	st.d	$fp, $a1, 0
 	b	.LBB1_2
 .LBB1_23:
 	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload

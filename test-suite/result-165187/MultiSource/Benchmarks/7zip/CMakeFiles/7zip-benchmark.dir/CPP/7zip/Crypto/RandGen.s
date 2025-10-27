@@ -281,22 +281,22 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 	sltui	$a4, $a2, 19
 	masknez	$a5, $s5, $a4
 	maskeqz	$a2, $a2, $a4
-	or	$a4, $a2, $a5
-	sub.d	$a2, $a4, $a1
-	addi.d	$a2, $a2, 1
-	add.d	$a1, $s0, $a1
-	nor	$a4, $a4, $zero
-	add.d	$s0, $a4, $a1
+	or	$a2, $a2, $a5
+	sub.d	$a1, $a2, $a1
+	addi.d	$a1, $a1, 1
+	move	$a2, $a0
 	.p2align	4, , 16
 .LBB2_12:                               # %scalar.ph
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$a1, $a3, 0
-	st.b	$a1, $a0, 0
-	addi.d	$a0, $a0, 1
-	addi.d	$a2, $a2, -1
+	ld.b	$a4, $a3, 0
+	addi.d	$a0, $a2, 1
+	st.b	$a4, $a2, 0
+	addi.d	$s0, $s0, -1
+	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 1
-	bnez	$a2, .LBB2_12
+	move	$a2, $a0
+	bnez	$a1, .LBB2_12
 	b	.LBB2_4
 .LBB2_13:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(_ZL17g_CriticalSection)

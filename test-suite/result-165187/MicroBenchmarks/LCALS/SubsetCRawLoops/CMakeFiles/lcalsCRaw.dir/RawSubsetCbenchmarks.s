@@ -414,18 +414,10 @@ _ZL18BM_BAND_LIN_EQ_RAWRN9benchmark5StateE: # @_ZL18BM_BAND_LIN_EQ_RAWRN9benchma
 # %bb.2:                                # %.preheader.lr.ph
 	ld.d	$a0, $fp, 32
 	ld.d	$a0, $a0, 0
+	fld.d	$fa0, $s1, 40
 	ori	$a1, $zero, 4
 	bge	$a1, $a0, .LBB3_11
 # %bb.3:                                # %.preheader.us.preheader
-	addi.d	$a0, $a0, -5
-	lu12i.w	$a1, -209716
-	ori	$a1, $a1, 3277
-	lu32i.d	$a1, -209716
-	lu52i.d	$a1, $a1, -820
-	mulh.du	$a0, $a0, $a1
-	srli.d	$a0, $a0, 2
-	fld.d	$fa0, $s1, 40
-	addi.d	$a0, $a0, 1
 	addi.d	$a1, $s0, 32
 	addi.d	$a2, $s1, 2047
 	addi.d	$a2, $a2, 1929
@@ -440,60 +432,60 @@ _ZL18BM_BAND_LIN_EQ_RAWRN9benchmark5StateE: # @_ZL18BM_BAND_LIN_EQ_RAWRN9benchma
                                         #     Child Loop BB3_5 Depth 2
                                         #     Child Loop BB3_7 Depth 2
                                         #     Child Loop BB3_9 Depth 2
-	move	$a6, $a1
-	move	$a7, $s1
-	move	$t0, $a0
+	ori	$a6, $zero, 4
+	move	$a7, $a1
+	move	$t0, $s1
 	.p2align	4, , 16
 .LBB3_5:                                #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa1, $a7, 0
-	fld.d	$fa2, $a6, 0
+	fld.d	$fa1, $t0, 0
+	fld.d	$fa2, $a7, 0
 	fneg.d	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fa2, $fa0
-	addi.d	$t0, $t0, -1
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 40
-	bnez	$t0, .LBB3_5
+	addi.d	$a6, $a6, 5
+	addi.d	$t0, $t0, 8
+	addi.d	$a7, $a7, 40
+	blt	$a6, $a0, .LBB3_5
 # %bb.6:                                # %._crit_edge.us.us
                                         #   in Loop: Header=BB3_4 Depth=1
 	fld.d	$fa2, $s0, 32
 	fldx.d	$fa1, $s1, $a4
 	fmul.d	$fa0, $fa0, $fa2
 	fst.d	$fa0, $s1, 40
-	move	$a6, $a1
-	move	$a7, $a2
-	move	$t0, $a0
+	ori	$a6, $zero, 4
+	move	$a7, $a1
+	move	$t0, $a2
 	.p2align	4, , 16
 .LBB3_7:                                #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa2, $a7, 0
-	fld.d	$fa3, $a6, 0
+	fld.d	$fa2, $t0, 0
+	fld.d	$fa3, $a7, 0
 	fneg.d	$fa2, $fa2
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
-	addi.d	$t0, $t0, -1
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 40
-	bnez	$t0, .LBB3_7
+	addi.d	$a6, $a6, 5
+	addi.d	$t0, $t0, 8
+	addi.d	$a7, $a7, 40
+	blt	$a6, $a0, .LBB3_7
 # %bb.8:                                # %._crit_edge.us.us.1
                                         #   in Loop: Header=BB3_4 Depth=1
 	fld.d	$fa3, $s0, 32
 	fldx.d	$fa2, $s1, $a5
 	fmul.d	$fa1, $fa1, $fa3
 	fstx.d	$fa1, $s1, $a4
-	move	$a6, $a1
-	move	$a7, $a3
-	move	$t0, $a0
+	ori	$a6, $zero, 4
+	move	$a7, $a1
+	move	$t0, $a3
 	.p2align	4, , 16
 .LBB3_9:                                #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa1, $a7, 0
-	fld.d	$fa3, $a6, 0
+	fld.d	$fa1, $t0, 0
+	fld.d	$fa3, $a7, 0
 	fneg.d	$fa1, $fa1
 	fmadd.d	$fa2, $fa1, $fa3, $fa2
-	addi.d	$t0, $t0, -1
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 40
-	bnez	$t0, .LBB3_9
+	addi.d	$a6, $a6, 5
+	addi.d	$t0, $t0, 8
+	addi.d	$a7, $a7, 40
+	blt	$a6, $a0, .LBB3_9
 # %bb.10:                               # %._crit_edge.us.us.2
                                         #   in Loop: Header=BB3_4 Depth=1
 	fld.d	$fa1, $s0, 32
@@ -503,7 +495,6 @@ _ZL18BM_BAND_LIN_EQ_RAWRN9benchmark5StateE: # @_ZL18BM_BAND_LIN_EQ_RAWRN9benchma
 	bnez	$s2, .LBB3_4
 	b	.LBB3_13
 .LBB3_11:                               # %.preheader.preheader
-	fld.d	$fa0, $s1, 40
 	ori	$a0, $zero, 4016
 	fldx.d	$fa1, $s1, $a0
 	lu12i.w	$a1, 1

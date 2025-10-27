@@ -555,7 +555,7 @@ hsfc3sort:                              # @hsfc3sort
 	jirl	$ra, $ra, 0
 	beqz	$s3, .LBB2_21
 # %bb.17:                               # %.lr.ph119.preheader
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 12
 	ori	$a0, $zero, 3
 	bgeu	$s3, $a1, .LBB2_26
 .LBB2_18:
@@ -617,7 +617,7 @@ hsfc3sort:                              # @hsfc3sort
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 12
 	ori	$a0, $zero, 3
 	bltu	$s3, $a1, .LBB2_18
 .LBB2_26:                               # %vector.scevcheck141

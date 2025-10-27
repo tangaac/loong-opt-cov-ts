@@ -1,6 +1,14 @@
 	.file	"aesxam.c"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function fillrand
+.LCPI0_0:
+	.dword	13822                           # 0x35fe
+	.dword	60147                           # 0xeaf3
+.LCPI0_1:
+	.dword	18000                           # 0x4650
+	.dword	36969                           # 0x9069
 	.text
-	.globl	fillrand                        # -- Begin function fillrand
+	.globl	fillrand
 	.p2align	5
 	.type	fillrand,@function
 fillrand:                               # @fillrand
@@ -8,11 +16,15 @@ fillrand:                               # @fillrand
 	pcalau12i	$a4, %pc_hi20(fillrand.mt)
 	ld.bu	$a5, $a4, %pc_lo12(fillrand.mt)
 	pcalau12i	$a2, %pc_hi20(fillrand.a.0)
+	addi.d	$a2, $a2, %pc_lo12(fillrand.a.0)
 	pcalau12i	$a3, %pc_hi20(fillrand.a.1)
+	addi.d	$a3, $a3, %pc_lo12(fillrand.a.1)
 	beqz	$a5, .LBB0_3
 # %bb.1:                                # %._crit_edge5
-	ld.d	$a4, $a2, %pc_lo12(fillrand.a.0)
-	ld.d	$a5, $a3, %pc_lo12(fillrand.a.1)
+	ld.d	$a4, $a3, 0
+	ld.d	$a5, $a2, 0
+	vinsgr2vr.d	$vr0, $a4, 0
+	vinsgr2vr.d	$vr0, $a5, 1
 	bgtz	$a1, .LBB0_4
 .LBB0_2:
 	ret
@@ -21,145 +33,155 @@ fillrand:                               # @fillrand
 	st.b	$a5, $a4, %pc_lo12(fillrand.mt)
 	lu12i.w	$a4, 14
 	ori	$a4, $a4, 2803
-	st.d	$a4, $a2, %pc_lo12(fillrand.a.0)
-	lu12i.w	$a5, 3
-	ori	$a5, $a5, 1534
-	st.d	$a5, $a3, %pc_lo12(fillrand.a.1)
+	st.d	$a4, $a2, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI0_0)
+	lu12i.w	$a4, 3
+	ori	$a4, $a4, 1534
+	st.d	$a4, $a3, 0
 	blez	$a1, .LBB0_2
 .LBB0_4:                                # %.lr.ph.preheader
-	pcalau12i	$a6, %pc_hi20(fillrand.count)
-	ld.d	$t3, $a6, %pc_lo12(fillrand.count)
-	ori	$a7, $zero, 4
-	lu12i.w	$t0, 9
-	ori	$t0, $t0, 105
-	lu12i.w	$t1, 4
-	ori	$t1, $t1, 1616
-	pcalau12i	$t2, %pc_hi20(fillrand.r)
-	addi.d	$t2, $t2, %pc_lo12(fillrand.r)
+	pcalau12i	$a4, %pc_hi20(fillrand.count)
+	ld.d	$a7, $a4, %pc_lo12(fillrand.count)
+	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a5, %pc_lo12(.LCPI0_1)
+	ori	$a5, $zero, 4
+	vldi	$vr2, -1789
+	pcalau12i	$a6, %pc_hi20(fillrand.r)
+	addi.d	$a6, $a6, %pc_lo12(fillrand.r)
 	b	.LBB0_6
 	.p2align	4, , 16
 .LBB0_5:                                #   in Loop: Header=BB0_6 Depth=1
-	bstrpick.d	$t3, $a4, 15, 0
-	mul.d	$t3, $t3, $t0
-	srli.d	$a4, $a4, 16
-	add.d	$a4, $t3, $a4
-	st.d	$a4, $a2, %pc_lo12(fillrand.a.0)
-	slli.d	$t3, $a4, 16
-	bstrpick.d	$t4, $a5, 15, 0
-	mul.d	$t4, $t4, $t1
-	srli.d	$a5, $a5, 16
-	add.d	$t4, $t4, $a5
-	st.d	$t4, $a3, %pc_lo12(fillrand.a.1)
-	add.d	$a5, $t4, $t3
-	st.d	$a5, $t2, 0
-	ori	$t3, $zero, 1
-	move	$a5, $t4
-	st.b	$t4, $a0, 0
+	vand.v	$vr3, $vr0, $vr2
+	vsrli.d	$vr0, $vr0, 16
+	vmadd.d	$vr0, $vr3, $vr1
+	vpickve2gr.d	$a7, $vr0, 1
+	vstelm.d	$vr0, $a2, 0, 1
+	slli.d	$a7, $a7, 16
+	vpickve2gr.d	$t0, $vr0, 0
+	vstelm.d	$vr0, $a3, 0, 0
+	add.d	$a7, $t0, $a7
+	st.d	$a7, $a6, 0
+	ori	$a7, $zero, 1
+	st.b	$t0, $a0, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
 	beqz	$a1, .LBB0_8
 .LBB0_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	beq	$t3, $a7, .LBB0_5
+	beq	$a7, $a5, .LBB0_5
 # %bb.7:                                # %.lr.ph._crit_edge
                                         #   in Loop: Header=BB0_6 Depth=1
-	ldx.bu	$t4, $t2, $t3
-	addi.d	$t3, $t3, 1
-	st.b	$t4, $a0, 0
+	ldx.bu	$t0, $a6, $a7
+	addi.d	$a7, $a7, 1
+	st.b	$t0, $a0, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 1
 	bnez	$a1, .LBB0_6
 .LBB0_8:                                # %._crit_edge
-	st.d	$t3, $a6, %pc_lo12(fillrand.count)
+	st.d	$a7, $a4, %pc_lo12(fillrand.count)
 	ret
 .Lfunc_end0:
 	.size	fillrand, .Lfunc_end0-fillrand
                                         # -- End function
-	.globl	encfile                         # -- Begin function encfile
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function encfile
+.LCPI1_0:
+	.dword	13822                           # 0x35fe
+	.dword	60147                           # 0xeaf3
+.LCPI1_1:
+	.dword	18000                           # 0x4650
+	.dword	36969                           # 0x9069
+	.text
+	.globl	encfile
 	.p2align	5
 	.type	encfile,@function
 encfile:                                # @encfile
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	move	$s2, $a0
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$s7, %pc_hi20(fillrand.mt)
-	ld.bu	$a0, $s7, %pc_lo12(fillrand.mt)
-	pcalau12i	$s5, %pc_hi20(fillrand.a.0)
-	pcalau12i	$s4, %pc_hi20(fillrand.a.1)
-	lu12i.w	$a3, 14
+	ld.bu	$a4, $s7, %pc_lo12(fillrand.mt)
+	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	move	$s2, $a0
+	pcalau12i	$a0, %pc_hi20(fillrand.a.0)
+	addi.d	$s5, $a0, %pc_lo12(fillrand.a.0)
+	pcalau12i	$a0, %pc_hi20(fillrand.a.1)
+	addi.d	$s4, $a0, %pc_lo12(fillrand.a.1)
+	lu12i.w	$a2, 14
 	lu12i.w	$a1, 3
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	beqz	$a0, .LBB1_2
+	pcalau12i	$fp, %pc_hi20(.LCPI1_0)
+	beqz	$a4, .LBB1_2
 # %bb.1:                                # %._crit_edge5.i
-	ld.d	$a0, $s5, %pc_lo12(fillrand.a.0)
-	ld.d	$a1, $s4, %pc_lo12(fillrand.a.1)
+	move	$s0, $a1
+	ld.d	$a0, $s4, 0
+	ld.d	$a1, $s5, 0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vinsgr2vr.d	$vr0, $a1, 1
 	b	.LBB1_3
 .LBB1_2:
 	ori	$a0, $zero, 1
 	st.b	$a0, $s7, %pc_lo12(fillrand.mt)
-	ori	$a0, $a3, 2803
-	st.d	$a0, $s5, %pc_lo12(fillrand.a.0)
-	ori	$a1, $a1, 1534
-	st.d	$a1, $s4, %pc_lo12(fillrand.a.1)
+	ori	$a0, $a2, 2803
+	vld	$vr0, $fp, %pc_lo12(.LCPI1_0)
+	st.d	$a0, $s5, 0
+	move	$s0, $a1
+	ori	$a0, $a1, 1534
+	st.d	$a0, $s4, 0
 .LBB1_3:
 	pcalau12i	$s6, %pc_hi20(fillrand.count)
-	ld.d	$a6, $s6, %pc_lo12(fillrand.count)
-	ori	$a2, $zero, 4
-	lu12i.w	$a3, 9
-	ori	$s1, $a3, 105
-	lu12i.w	$a3, 4
-	ori	$fp, $a3, 1616
-	pcalau12i	$a3, %pc_hi20(fillrand.r)
-	addi.d	$s8, $a3, %pc_lo12(fillrand.r)
-	move	$a3, $zero
-	addi.d	$a4, $sp, 32
-	ori	$a5, $zero, 16
+	ld.d	$a1, $s6, %pc_lo12(fillrand.count)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_1)
+	ori	$a0, $zero, 4
+	vldi	$vr1, -1789
+	pcalau12i	$a2, %pc_hi20(fillrand.r)
+	addi.d	$s1, $a2, %pc_lo12(fillrand.r)
+	move	$a2, $zero
+	addi.d	$a3, $sp, 48
+	ori	$a4, $zero, 16
 	b	.LBB1_5
 	.p2align	4, , 16
 .LBB1_4:                                #   in Loop: Header=BB1_5 Depth=1
-	bstrpick.d	$a6, $a0, 15, 0
-	mul.d	$a6, $a6, $s1
-	srli.d	$a0, $a0, 16
-	add.d	$a0, $a6, $a0
-	st.d	$a0, $s5, %pc_lo12(fillrand.a.0)
-	slli.d	$a6, $a0, 16
-	bstrpick.d	$a7, $a1, 15, 0
-	mul.d	$a7, $a7, $fp
-	srli.d	$a1, $a1, 16
-	add.d	$a7, $a7, $a1
-	st.d	$a7, $s4, %pc_lo12(fillrand.a.1)
-	add.d	$a1, $a7, $a6
-	st.d	$a1, $s8, 0
-	ori	$a6, $zero, 1
-	move	$a1, $a7
-	stx.b	$a7, $a3, $a4
-	addi.d	$a3, $a3, 1
-	beq	$a3, $a5, .LBB1_7
+	vand.v	$vr2, $vr0, $vr1
+	vsrli.d	$vr0, $vr0, 16
+	vmadd.d	$vr0, $vr2, $vr3
+	vpickve2gr.d	$a1, $vr0, 1
+	vstelm.d	$vr0, $s5, 0, 1
+	slli.d	$a1, $a1, 16
+	vpickve2gr.d	$a5, $vr0, 0
+	vstelm.d	$vr0, $s4, 0, 0
+	add.d	$a1, $a5, $a1
+	st.d	$a1, $s1, 0
+	ori	$a1, $zero, 1
+	stx.b	$a5, $a2, $a3
+	addi.d	$a2, $a2, 1
+	beq	$a2, $a4, .LBB1_7
 .LBB1_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	beq	$a6, $a2, .LBB1_4
+	beq	$a1, $a0, .LBB1_4
 # %bb.6:                                # %.lr.ph._crit_edge.i
                                         #   in Loop: Header=BB1_5 Depth=1
-	ldx.bu	$a7, $s8, $a6
-	addi.d	$a6, $a6, 1
-	stx.b	$a7, $a3, $a4
-	addi.d	$a3, $a3, 1
-	bne	$a3, $a5, .LBB1_5
+	ldx.bu	$a5, $s1, $a1
+	addi.d	$a1, $a1, 1
+	stx.b	$a5, $a2, $a3
+	addi.d	$a2, $a2, 1
+	bne	$a2, $a4, .LBB1_5
 .LBB1_7:                                # %fillrand.exit
-	st.d	$a6, $s6, %pc_lo12(fillrand.count)
+	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
+	st.d	$a1, $s6, %pc_lo12(fillrand.count)
 	ori	$a2, $zero, 2
 	move	$a0, $s2
 	move	$a1, $zero
@@ -174,64 +196,66 @@ encfile:                                # @encfile
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 16
-	ori	$s0, $zero, 1
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ori	$s8, $zero, 1
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s7, %pc_lo12(fillrand.mt)
 	beqz	$a0, .LBB1_10
 # %bb.8:                                # %._crit_edge5.i47
-	ld.d	$a1, $s5, %pc_lo12(fillrand.a.0)
-	ld.d	$a0, $s4, %pc_lo12(fillrand.a.1)
-	ld.d	$a2, $s6, %pc_lo12(fillrand.count)
-	ori	$a3, $zero, 4
-	beq	$a2, $a3, .LBB1_11
+	ld.d	$a0, $s4, 0
+	ld.d	$a1, $s5, 0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vinsgr2vr.d	$vr0, $a1, 1
+	ld.d	$a1, $s6, %pc_lo12(fillrand.count)
+	ori	$a0, $zero, 4
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	beq	$a1, $a0, .LBB1_11
 .LBB1_9:                                # %.lr.ph._crit_edge.i42
-	ldx.bu	$a0, $s8, $a2
-	addi.d	$a1, $a2, 1
+	ldx.bu	$a0, $s1, $a1
+	addi.d	$a1, $a1, 1
 	b	.LBB1_12
 .LBB1_10:
-	st.b	$s0, $s7, %pc_lo12(fillrand.mt)
+	st.b	$s8, $s7, %pc_lo12(fillrand.mt)
 	lu12i.w	$a0, 14
-	ori	$a1, $a0, 2803
-	st.d	$a1, $s5, %pc_lo12(fillrand.a.0)
-	lu12i.w	$a0, 3
-	ori	$a0, $a0, 1534
-	st.d	$a0, $s4, %pc_lo12(fillrand.a.1)
-	ld.d	$a2, $s6, %pc_lo12(fillrand.count)
-	ori	$a3, $zero, 4
-	bne	$a2, $a3, .LBB1_9
+	ori	$a0, $a0, 2803
+	vld	$vr0, $fp, %pc_lo12(.LCPI1_0)
+	st.d	$a0, $s5, 0
+	ori	$a0, $s0, 1534
+	st.d	$a0, $s4, 0
+	ld.d	$a1, $s6, %pc_lo12(fillrand.count)
+	ori	$a0, $zero, 4
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	bne	$a1, $a0, .LBB1_9
 .LBB1_11:
-	bstrpick.d	$a2, $a1, 15, 0
-	mul.d	$a2, $a2, $s1
-	srli.d	$a1, $a1, 16
-	add.d	$a1, $a2, $a1
-	st.d	$a1, $s5, %pc_lo12(fillrand.a.0)
-	slli.d	$a1, $a1, 16
-	bstrpick.d	$a2, $a0, 15, 0
-	mul.d	$a2, $a2, $fp
-	srli.d	$a0, $a0, 16
-	add.d	$a0, $a2, $a0
-	st.d	$a0, $s4, %pc_lo12(fillrand.a.1)
+	vldi	$vr1, -1789
+	vand.v	$vr1, $vr0, $vr1
+	vsrli.d	$vr0, $vr0, 16
+	vmadd.d	$vr0, $vr1, $vr2
+	vpickve2gr.d	$a0, $vr0, 1
+	vstelm.d	$vr0, $s5, 0, 1
+	slli.d	$a1, $a0, 16
+	vpickve2gr.d	$a0, $vr0, 0
+	vstelm.d	$vr0, $s4, 0, 0
 	add.d	$a1, $a0, $a1
-	st.d	$a1, $s8, 0
+	st.d	$a1, $s1, 0
 	ori	$a1, $zero, 1
 .LBB1_12:                               # %fillrand.exit50
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a1, $s6, %pc_lo12(fillrand.count)
 	bstrpick.d	$a0, $a0, 7, 4
 	bstrins.d	$s3, $a0, 63, 4
-	st.b	$s3, $sp, 48
+	st.b	$s3, $sp, 64
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	beqz	$a0, .LBB1_17
 .LBB1_13:                               # %.lr.ph64.preheader
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 64
 	add.d	$a0, $a0, $a1
 	ori	$a2, $zero, 16
 	sub.d	$a2, $a2, $a1
@@ -239,20 +263,20 @@ encfile:                                # @encfile
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB1_14:                               # %.preheader
-	vld	$vr0, $sp, 32
-	vld	$vr1, $sp, 48
+	vld	$vr0, $sp, 48
+	vld	$vr1, $sp, 64
 	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $sp, 48
-	addi.d	$a0, $sp, 48
-	addi.d	$a1, $sp, 32
-	move	$a2, $s1
+	vst	$vr0, $sp, 64
+	addi.d	$a0, $sp, 64
+	addi.d	$a1, $sp, 48
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(encrypt)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 16
 	ori	$fp, $zero, 16
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	beq	$a0, $fp, .LBB1_28
@@ -266,29 +290,29 @@ encfile:                                # @encfile
 	jirl	$ra, $ra, 0
 	b	.LBB1_29
 .LBB1_17:                               # %.lr.ph
-	addi.d	$a0, $sp, 49
+	addi.d	$a0, $sp, 65
 	ori	$fp, $zero, 1
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 15
-	ori	$s0, $zero, 15
+	ori	$s1, $zero, 15
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	bltu	$a0, $s0, .LBB1_21
+	bltu	$a0, $s1, .LBB1_21
 # %bb.18:                               # %.preheader52.preheader.peel
-	vld	$vr0, $sp, 32
-	vld	$vr1, $sp, 48
+	vld	$vr0, $sp, 48
+	vld	$vr1, $sp, 64
 	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $sp, 48
-	addi.d	$a0, $sp, 48
-	addi.d	$a1, $sp, 32
-	move	$a2, $s1
+	vst	$vr0, $sp, 64
+	addi.d	$a0, $sp, 64
+	addi.d	$a1, $sp, 48
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(encrypt)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 16
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 16
@@ -314,7 +338,7 @@ encfile:                                # @encfile
 	.p2align	4, , 16
 .LBB1_24:                               # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 64
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 16
 	move	$a3, $s2
@@ -323,19 +347,19 @@ encfile:                                # @encfile
 	bltu	$a0, $fp, .LBB1_27
 # %bb.25:                               # %.preheader52.preheader
                                         #   in Loop: Header=BB1_24 Depth=1
-	vld	$vr0, $sp, 32
-	vld	$vr1, $sp, 48
+	vld	$vr0, $sp, 48
+	vld	$vr1, $sp, 64
 	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $sp, 48
-	addi.d	$a0, $sp, 48
-	addi.d	$a1, $sp, 32
-	move	$a2, $s1
+	vst	$vr0, $sp, 64
+	addi.d	$a0, $sp, 64
+	addi.d	$a1, $sp, 48
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(encrypt)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 16
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $fp, .LBB1_16
@@ -353,18 +377,18 @@ encfile:                                # @encfile
 	move	$s3, $zero
 .LBB1_29:
 	move	$a0, $s3
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end1:
 	.size	encfile, .Lfunc_end1-encfile

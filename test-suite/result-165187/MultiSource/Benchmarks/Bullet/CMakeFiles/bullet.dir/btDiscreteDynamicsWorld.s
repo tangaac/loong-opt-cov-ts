@@ -2744,19 +2744,17 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception4
 # %bb.0:
-	addi.d	$sp, $sp, -416
-	.cfi_def_cfa_offset 416
-	st.d	$ra, $sp, 408                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 328                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -400
+	.cfi_def_cfa_offset 400
+	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 320                  # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 312                  # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 304                  # 8-byte Folded Spill
@@ -2774,16 +2772,14 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	.cfi_offset 31, -88
-	.cfi_offset 56, -96
-	.cfi_offset 57, -104
-	.cfi_offset 58, -112
-	.cfi_offset 59, -120
-	.cfi_offset 60, -128
-	.cfi_offset 61, -136
-	.cfi_offset 62, -144
-	.cfi_offset 63, -152
+	.cfi_offset 56, -80
+	.cfi_offset 57, -88
+	.cfi_offset 58, -96
+	.cfi_offset 59, -104
+	.cfi_offset 60, -112
+	.cfi_offset 61, -120
+	.cfi_offset 62, -128
+	.cfi_offset 63, -136
 	move	$s1, $a0
 	ld.d	$a0, $a0, 0
 	move	$s0, $a1
@@ -3372,33 +3368,40 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	bltu	$s5, $s3, .LBB10_22
 	b	.LBB10_30
 .LBB10_23:
-	ld.w	$s7, $s2, 64
-	addi.w	$a1, $s7, 2
-	lu12i.w	$a0, 349525
-	ori	$s8, $a0, 1366
-	mul.d	$a0, $a1, $s8
-	srli.d	$a2, $a0, 63
-	srli.d	$a0, $a0, 32
-	add.d	$a2, $a0, $a2
+	ld.w	$a1, $s2, 64
 	addi.d	$a0, $s2, 40
-	slli.d	$a3, $s7, 2
-	fldx.s	$fa0, $a0, $a3
-	alsl.d	$a2, $a2, $a2, 1
-	sub.w	$a1, $a1, $a2
-	slli.d	$s2, $a1, 2
+	slli.d	$a2, $a1, 2
+	fldx.s	$fa0, $a0, $a2
 	fneg.s	$fa1, $fa0
 	vrepli.b	$vr2, 0
 	vst	$vr2, $sp, 240
-	addi.d	$s3, $sp, 240
-	fstx.s	$fa1, $a3, $s3
+	addi.d	$s2, $sp, 240
+	fstx.s	$fa1, $a2, $s2
 	vst	$vr2, $sp, 224
-	vld	$vr1, $s0, 0
-	addi.d	$s4, $sp, 224
-	vld	$vr2, $s6, 0
-	fstx.s	$fa0, $a3, $s4
-	vst	$vr1, $sp, 80
+	addi.d	$s3, $sp, 224
+	fstx.s	$fa0, $a2, $s3
+	vinsgr2vr.w	$vr0, $a1, 0
+	vinsgr2vr.w	$vr0, $a1, 1
+	ori	$a1, $zero, 1
+	lu32i.d	$a1, 2
+	vreplgr2vr.d	$vr1, $a1
+	vadd.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a1, $vr0, 1
+	ori	$a2, $zero, 3
+	vpickve2gr.w	$a3, $vr0, 0
+	mod.w	$a3, $a3, $a2
+	vinsgr2vr.w	$vr0, $a3, 0
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	mod.w	$a1, $a1, $a2
+	vinsgr2vr.w	$vr0, $a1, 1
+	vpickve2gr.b	$a1, $vr0, 4
+	vld	$vr0, $s0, 0
+	ext.w.b	$a1, $a1
+	vld	$vr1, $s6, 0
+	slli.d	$s4, $a1, 2
+	vst	$vr0, $sp, 80
 	vld	$vr0, $s5, 0
-	vst	$vr2, $sp, 96
+	vst	$vr1, $sp, 96
 	fld.s	$fa1, $s0, 4
 	fld.s	$fa2, $sp, 244
 	vst	$vr0, $sp, 112
@@ -3424,7 +3427,7 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fmadd.s	$fa2, $fa7, $fa3, $fa2
 	fld.s	$fa3, $s0, 40
 	fld.s	$fa4, $s0, 56
-	fldx.s	$fs0, $a0, $s2
+	fldx.s	$fs0, $a0, $s4
 	fadd.s	$fa1, $fa6, $fa1
 	fmadd.s	$fa2, $fa3, $fa5, $fa2
 	fadd.s	$fa2, $fa4, $fa2
@@ -3490,17 +3493,13 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.s	$fs1, $s0, 48
 	fld.s	$fs2, $s0, 52
 	fld.s	$fs3, $s0, 56
-	addi.w	$a0, $s7, 1
-	mul.d	$a1, $a0, $s8
-	srli.d	$a2, $a1, 63
-	srli.d	$a1, $a1, 32
-	add.d	$a1, $a1, $a2
-	alsl.d	$a1, $a1, $a1, 1
-	sub.w	$a0, $a0, $a1
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
+	vpickve2gr.b	$a0, $vr0, 0
+	ext.w.b	$a0, $a0
 	ld.d	$a1, $s1, 0
 	slli.d	$s5, $a0, 2
+	fstx.s	$fs0, $s5, $s2
 	fstx.s	$fs0, $s5, $s3
-	fstx.s	$fs0, $s5, $s4
 	ld.d	$a1, $a1, 32
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
@@ -3565,8 +3564,8 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	jirl	$ra, $a4, 0
 	ld.d	$a0, $s1, 0
 	fneg.s	$fs4, $fs0
+	fstx.s	$fs4, $s5, $s2
 	fstx.s	$fs4, $s5, $s3
-	fstx.s	$fs4, $s5, $s4
 	ld.d	$a1, $a0, 32
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
@@ -3629,11 +3628,11 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	addi.d	$a2, $sp, 208
 	move	$a3, $fp
 	jirl	$ra, $a4, 0
+	stx.w	$zero, $s5, $s2
+	ld.d	$a0, $s1, 0
 	stx.w	$zero, $s5, $s3
-	ld.d	$a0, $s1, 0
-	stx.w	$zero, $s5, $s4
-	fstx.s	$fs0, $s2, $s3
-	fstx.s	$fs0, $s2, $s4
+	fstx.s	$fs0, $s4, $s2
+	fstx.s	$fs0, $s4, $s3
 	ld.d	$a1, $a0, 32
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
@@ -3697,8 +3696,8 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	move	$a3, $fp
 	jirl	$ra, $a4, 0
 	ld.d	$a0, $s1, 0
-	fstx.s	$fs4, $s2, $s3
-	fstx.s	$fs4, $s2, $s4
+	fstx.s	$fs4, $s4, $s2
+	fstx.s	$fs4, $s4, $s3
 	ld.d	$a1, $a0, 32
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
@@ -4442,18 +4441,16 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.d	$fs2, $sp, 304                  # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 312                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 320                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 416
+	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 400
 	ret
 .LBB10_31:
 .Ltmp138:                               # EH_LABEL

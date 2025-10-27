@@ -320,8 +320,8 @@ scofactor:                              # @scofactor
 	ld.d	$a1, $s8, 48
 	ld.d	$a2, $s2, 8
 	slli.d	$a3, $s3, 2
-	ldx.w	$s6, $a0, $a3
-	ldx.w	$s7, $a1, $a3
+	ldx.w	$s7, $a0, $a3
+	ldx.w	$s6, $a1, $a3
 	sub.d	$a0, $a2, $s2
 	slli.d	$a0, $a0, 29
 	ori	$a1, $zero, 0
@@ -373,14 +373,9 @@ scofactor:                              # @scofactor
 	ld.d	$a3, $s2, 16
 	beqz	$a3, .LBB1_10
 # %bb.3:                                # %.lr.ph.preheader
-	addi.d	$a0, $s2, 24
-	slt	$a1, $s7, $s6
-	masknez	$a2, $s7, $a1
-	maskeqz	$a1, $s6, $a1
-	or	$a2, $a1, $a2
-	slli.d	$a1, $s6, 2
-	sub.d	$a2, $a2, $s6
-	addi.d	$a2, $a2, 1
+	addi.d	$a2, $s2, 24
+	addi.d	$a0, $s7, -1
+	slli.d	$a1, $s7, 2
 	b	.LBB1_6
 	.p2align	4, , 16
 .LBB1_4:                                #   in Loop: Header=BB1_6 Depth=1
@@ -389,8 +384,8 @@ scofactor:                              # @scofactor
 	move	$s3, $a4
 .LBB1_5:                                # %.loopexit
                                         #   in Loop: Header=BB1_6 Depth=1
-	ld.d	$a3, $a0, 0
-	addi.d	$a0, $a0, 8
+	ld.d	$a3, $a2, 0
+	addi.d	$a2, $a2, 8
 	beqz	$a3, .LBB1_10
 .LBB1_6:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -398,20 +393,20 @@ scofactor:                              # @scofactor
 	beq	$a3, $fp, .LBB1_5
 # %bb.7:                                # %.preheader.preheader
                                         #   in Loop: Header=BB1_6 Depth=1
-	move	$a4, $a2
-	move	$a5, $a1
+	move	$a4, $a1
+	move	$a5, $a0
 	.p2align	4, , 16
 .LBB1_8:                                # %.preheader
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$a6, $a3, $a5
-	ldx.w	$a7, $s0, $a5
+	ldx.w	$a6, $a3, $a4
+	ldx.w	$a7, $s0, $a4
 	and	$a6, $a7, $a6
 	bnez	$a6, .LBB1_4
 # %bb.9:                                #   in Loop: Header=BB1_8 Depth=2
-	addi.w	$a4, $a4, -1
-	addi.d	$a5, $a5, 4
-	bnez	$a4, .LBB1_8
+	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 4
+	blt	$a5, $s6, .LBB1_8
 	b	.LBB1_5
 .LBB1_10:                               # %._crit_edge
 	addi.d	$a0, $s3, 8

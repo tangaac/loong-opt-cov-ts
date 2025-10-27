@@ -70259,25 +70259,25 @@ _Z27test_for_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 _Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 56                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -70295,7 +70295,7 @@ _Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
 	.cfi_offset 61, -136
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
@@ -70414,31 +70414,25 @@ _Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB179_3
 .LBB179_10:                             # %.preheader17.lr.ph.split
-	pcalau12i	$fp, %pc_hi20(init_value)
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB179_15
 # %bb.11:                               # %._crit_edge.us35.preheader
-	ori	$a0, $zero, 0
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, -516992
-	lu52i.d	$a2, $a2, 1036
-	vreplgr2vr.d	$vr3, $a2
-	lu32i.d	$a0, -268678
-	lu52i.d	$a0, $a0, 1042
-	pcalau12i	$a2, %pc_hi20(.LCPI179_2)
-	fld.d	$fs0, $a2, %pc_lo12(.LCPI179_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI179_4)
-	fld.d	$fs1, $a2, %pc_lo12(.LCPI179_4)
-	pcalau12i	$a2, %pc_hi20(.LCPI179_3)
-	fld.d	$fs2, $a2, %pc_lo12(.LCPI179_3)
-	vreplgr2vr.d	$vr4, $a0
-	vldi	$vr5, -854
-	movgr2fr.d	$fs3, $zero
+	pcalau12i	$a0, %pc_hi20(.LCPI179_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI179_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI179_1)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI179_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI179_2)
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI179_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI179_4)
+	fld.d	$fs3, $a0, %pc_lo12(.LCPI179_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI179_3)
+	fld.d	$fs4, $a0, %pc_lo12(.LCPI179_3)
+	vldi	$vr3, -854
+	movgr2fr.d	$fs5, $zero
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.19)
 	move	$s5, $zero
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB179_13
 	.p2align	4, , 16
 .LBB179_12:                             # %_Z9check_sumIdEvT_.exit.us31
@@ -70448,37 +70442,39 @@ _Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 .LBB179_13:                             # %._crit_edge.us35
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $s1, 0
+	fadd.d	$fa0, $fa0, $fs0
+	fmadd.d	$fa0, $fa0, $fs1, $fa3
+	fadd.d	$fa0, $fa0, $fs0
+	fmadd.d	$fa0, $fa0, $fs1, $fa3
 	fld.d	$fa1, $fp, %pc_lo12(init_value)
-	vextrins.d	$vr0, $vr1, 16
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmadd.d	$vr0, $vr0, $vr4, $vr5
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmadd.d	$vr0, $vr0, $vr4, $vr5
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmadd.d	$vr0, $vr0, $vr4, $vr5
-	vreplvei.d	$vr1, $vr0, 0
-	fadd.d	$fa1, $fa1, $fs3
-	vreplvei.d	$vr0, $vr0, 1
-	fmul.d	$fa0, $fa0, $fs0
-	fadd.d	$fa0, $fa1, $fa0
-	fabs.d	$fa2, $fa1
-	fdiv.d	$fa1, $fa0, $fa1
-	fcmp.clt.d	$fcc0, $fs1, $fa2
-	fsel	$fa0, $fa0, $fa1, $fcc0
+	fadd.d	$fa0, $fa0, $fs0
+	fmadd.d	$fa0, $fa0, $fs1, $fa3
+	fadd.d	$fa0, $fa0, $fs5
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa3
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa3
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa3
+	fmul.d	$fa1, $fa1, $fs2
+	fadd.d	$fa1, $fa0, $fa1
+	fabs.d	$fa2, $fa0
+	fdiv.d	$fa0, $fa1, $fa0
+	fcmp.clt.d	$fcc0, $fs3, $fa2
+	fsel	$fa0, $fa1, $fa0, $fcc0
 	fabs.d	$fa0, $fa0
-	fcmp.clt.d	$fcc0, $fa0, $fs2
+	fcmp.clt.d	$fcc0, $fa0, $fs4
 	bcnez	$fcc0, .LBB179_12
 # %bb.14:                               #   in Loop: Header=BB179_13 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vldi	$vr5, -854
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vldi	$vr3, -854
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB179_12
 .LBB179_15:                             # %.preheader17.preheader
+	pcalau12i	$fp, %pc_hi20(init_value)
 	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI179_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI179_0)
@@ -70558,28 +70554,28 @@ _Z27test_for_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a2, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s2, %pc_lo12(current_test)
-	fld.d	$fs5, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	fld.d	$fs5, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB179_24:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -85715,25 +85711,25 @@ _Z29test_while_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 _Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 56                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -85751,7 +85747,7 @@ _Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
 	.cfi_offset 61, -136
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
@@ -85870,31 +85866,25 @@ _Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB214_3
 .LBB214_10:                             # %.preheader17.lr.ph.split
-	pcalau12i	$fp, %pc_hi20(init_value)
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB214_15
 # %bb.11:                               # %._crit_edge.us35.preheader
-	ori	$a0, $zero, 0
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, -516992
-	lu52i.d	$a2, $a2, 1036
-	vreplgr2vr.d	$vr3, $a2
-	lu32i.d	$a0, -268678
-	lu52i.d	$a0, $a0, 1042
-	pcalau12i	$a2, %pc_hi20(.LCPI214_2)
-	fld.d	$fs0, $a2, %pc_lo12(.LCPI214_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI214_4)
-	fld.d	$fs1, $a2, %pc_lo12(.LCPI214_4)
-	pcalau12i	$a2, %pc_hi20(.LCPI214_3)
-	fld.d	$fs2, $a2, %pc_lo12(.LCPI214_3)
-	vreplgr2vr.d	$vr4, $a0
-	vldi	$vr5, -854
-	movgr2fr.d	$fs3, $zero
+	pcalau12i	$a0, %pc_hi20(.LCPI214_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI214_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI214_1)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI214_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI214_2)
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI214_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI214_4)
+	fld.d	$fs3, $a0, %pc_lo12(.LCPI214_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI214_3)
+	fld.d	$fs4, $a0, %pc_lo12(.LCPI214_3)
+	vldi	$vr3, -854
+	movgr2fr.d	$fs5, $zero
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.19)
 	move	$s5, $zero
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB214_13
 	.p2align	4, , 16
 .LBB214_12:                             # %_Z9check_sumIdEvT_.exit.us31
@@ -85904,37 +85894,39 @@ _Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 .LBB214_13:                             # %._crit_edge.us35
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $s1, 0
+	fadd.d	$fa0, $fa0, $fs0
+	fmadd.d	$fa0, $fa0, $fs1, $fa3
+	fadd.d	$fa0, $fa0, $fs0
+	fmadd.d	$fa0, $fa0, $fs1, $fa3
 	fld.d	$fa1, $fp, %pc_lo12(init_value)
-	vextrins.d	$vr0, $vr1, 16
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmadd.d	$vr0, $vr0, $vr4, $vr5
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmadd.d	$vr0, $vr0, $vr4, $vr5
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmadd.d	$vr0, $vr0, $vr4, $vr5
-	vreplvei.d	$vr1, $vr0, 0
-	fadd.d	$fa1, $fa1, $fs3
-	vreplvei.d	$vr0, $vr0, 1
-	fmul.d	$fa0, $fa0, $fs0
-	fadd.d	$fa0, $fa1, $fa0
-	fabs.d	$fa2, $fa1
-	fdiv.d	$fa1, $fa0, $fa1
-	fcmp.clt.d	$fcc0, $fs1, $fa2
-	fsel	$fa0, $fa0, $fa1, $fcc0
+	fadd.d	$fa0, $fa0, $fs0
+	fmadd.d	$fa0, $fa0, $fs1, $fa3
+	fadd.d	$fa0, $fa0, $fs5
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa3
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa3
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa3
+	fmul.d	$fa1, $fa1, $fs2
+	fadd.d	$fa1, $fa0, $fa1
+	fabs.d	$fa2, $fa0
+	fdiv.d	$fa0, $fa1, $fa0
+	fcmp.clt.d	$fcc0, $fs3, $fa2
+	fsel	$fa0, $fa1, $fa0, $fcc0
 	fabs.d	$fa0, $fa0
-	fcmp.clt.d	$fcc0, $fa0, $fs2
+	fcmp.clt.d	$fcc0, $fa0, $fs4
 	bcnez	$fcc0, .LBB214_12
 # %bb.14:                               #   in Loop: Header=BB214_13 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vldi	$vr5, -854
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vldi	$vr3, -854
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB214_12
 .LBB214_15:                             # %.preheader17.preheader
+	pcalau12i	$fp, %pc_hi20(init_value)
 	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	pcalau12i	$a0, %pc_hi20(.LCPI214_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI214_0)
@@ -86014,28 +86006,28 @@ _Z29test_while_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a2, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s2, %pc_lo12(current_test)
-	fld.d	$fs5, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	fld.d	$fs5, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB214_24:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -101381,25 +101373,25 @@ _Z26test_do_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -101417,7 +101409,7 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
 	.cfi_offset 61, -136
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
@@ -101425,7 +101417,7 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(current_test)
 	blez	$a1, .LBB249_20
@@ -101547,27 +101539,21 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB249_16
 # %bb.12:                               # %.preheader.us35.preheader
-	ori	$a0, $zero, 0
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, -516992
-	lu52i.d	$a2, $a2, 1036
-	vreplgr2vr.d	$vr4, $a2
-	lu32i.d	$a0, -268678
-	lu52i.d	$a0, $a0, 1042
-	pcalau12i	$a2, %pc_hi20(.LCPI249_2)
-	fld.d	$fs0, $a2, %pc_lo12(.LCPI249_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI249_4)
-	fld.d	$fs1, $a2, %pc_lo12(.LCPI249_4)
-	pcalau12i	$a2, %pc_hi20(.LCPI249_3)
-	fld.d	$fs2, $a2, %pc_lo12(.LCPI249_3)
-	vreplgr2vr.d	$vr5, $a0
-	vldi	$vr6, -854
-	movgr2fr.d	$fs3, $zero
+	pcalau12i	$a0, %pc_hi20(.LCPI249_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI249_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI249_1)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI249_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI249_2)
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI249_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI249_4)
+	fld.d	$fs3, $a0, %pc_lo12(.LCPI249_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI249_3)
+	fld.d	$fs4, $a0, %pc_lo12(.LCPI249_3)
+	vldi	$vr4, -854
+	movgr2fr.d	$fs5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.19)
 	move	$fp, $zero
-	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
-	vst	$vr5, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB249_14
 	.p2align	4, , 16
 .LBB249_13:                             # %_Z9check_sumIdEvT_.exit.us34
@@ -101577,33 +101563,34 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 .LBB249_14:                             # %.preheader.us35
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $s1, 0
-	vextrins.d	$vr1, $vr0, 16
-	vfadd.d	$vr1, $vr1, $vr4
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vfadd.d	$vr1, $vr1, $vr4
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vfadd.d	$vr1, $vr1, $vr4
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vreplvei.d	$vr2, $vr1, 0
-	fadd.d	$fa2, $fa2, $fs3
-	vreplvei.d	$vr1, $vr1, 1
-	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa2, $fa1
-	fabs.d	$fa3, $fa2
-	fdiv.d	$fa2, $fa1, $fa2
-	fcmp.clt.d	$fcc0, $fs1, $fa3
-	fsel	$fa1, $fa1, $fa2, $fcc0
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa4
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa4
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa4
+	fadd.d	$fa1, $fa1, $fs5
+	fadd.d	$fa2, $fa0, $fs0
+	fmadd.d	$fa2, $fa2, $fs1, $fa4
+	fadd.d	$fa2, $fa2, $fs0
+	fmadd.d	$fa2, $fa2, $fs1, $fa4
+	fadd.d	$fa2, $fa2, $fs0
+	fmadd.d	$fa2, $fa2, $fs1, $fa4
+	fmul.d	$fa2, $fa2, $fs2
+	fadd.d	$fa2, $fa1, $fa2
+	fabs.d	$fa3, $fa1
+	fdiv.d	$fa1, $fa2, $fa1
+	fcmp.clt.d	$fcc0, $fs3, $fa3
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	fabs.d	$fa1, $fa1
-	fcmp.clt.d	$fcc0, $fa1, $fs2
+	fcmp.clt.d	$fcc0, $fa1, $fs4
 	bcnez	$fcc0, .LBB249_13
 # %bb.15:                               #   in Loop: Header=BB249_14 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vldi	$vr6, -854
-	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
-	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
+	vldi	$vr4, -854
 	fld.d	$fa0, $s5, %pc_lo12(init_value)
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB249_13
@@ -101652,7 +101639,7 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 .LBB249_20:                             # %._crit_edge
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s3, %pc_hi20(results)
 	ld.d	$a2, $s3, %pc_lo12(results)
@@ -101687,28 +101674,28 @@ _Z26test_do_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a2, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s2, %pc_lo12(current_test)
-	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs5, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB249_25:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -117054,25 +117041,25 @@ _Z28test_goto_loop_unroll_factorILi3EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -117090,7 +117077,7 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
 	.cfi_offset 61, -136
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(clock)
@@ -117098,7 +117085,7 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	pcalau12i	$s2, %pc_hi20(current_test)
 	blez	$a1, .LBB284_20
@@ -117220,27 +117207,21 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	ori	$a0, $zero, 1
 	bne	$s0, $a0, .LBB284_16
 # %bb.12:                               # %.preheader.us35.preheader
-	ori	$a0, $zero, 0
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, -516992
-	lu52i.d	$a2, $a2, 1036
-	vreplgr2vr.d	$vr4, $a2
-	lu32i.d	$a0, -268678
-	lu52i.d	$a0, $a0, 1042
-	pcalau12i	$a2, %pc_hi20(.LCPI284_2)
-	fld.d	$fs0, $a2, %pc_lo12(.LCPI284_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI284_4)
-	fld.d	$fs1, $a2, %pc_lo12(.LCPI284_4)
-	pcalau12i	$a2, %pc_hi20(.LCPI284_3)
-	fld.d	$fs2, $a2, %pc_lo12(.LCPI284_3)
-	vreplgr2vr.d	$vr5, $a0
-	vldi	$vr6, -854
-	movgr2fr.d	$fs3, $zero
+	pcalau12i	$a0, %pc_hi20(.LCPI284_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI284_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI284_1)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI284_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI284_2)
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI284_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI284_4)
+	fld.d	$fs3, $a0, %pc_lo12(.LCPI284_4)
+	pcalau12i	$a0, %pc_hi20(.LCPI284_3)
+	fld.d	$fs4, $a0, %pc_lo12(.LCPI284_3)
+	vldi	$vr4, -854
+	movgr2fr.d	$fs5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.19)
 	move	$fp, $zero
-	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
-	vst	$vr5, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB284_14
 	.p2align	4, , 16
 .LBB284_13:                             # %_Z9check_sumIdEvT_.exit.us34
@@ -117250,33 +117231,34 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 .LBB284_14:                             # %.preheader.us35
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $s1, 0
-	vextrins.d	$vr1, $vr0, 16
-	vfadd.d	$vr1, $vr1, $vr4
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vfadd.d	$vr1, $vr1, $vr4
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vfadd.d	$vr1, $vr1, $vr4
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vreplvei.d	$vr2, $vr1, 0
-	fadd.d	$fa2, $fa2, $fs3
-	vreplvei.d	$vr1, $vr1, 1
-	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa2, $fa1
-	fabs.d	$fa3, $fa2
-	fdiv.d	$fa2, $fa1, $fa2
-	fcmp.clt.d	$fcc0, $fs1, $fa3
-	fsel	$fa1, $fa1, $fa2, $fcc0
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa4
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa4
+	fadd.d	$fa1, $fa1, $fs0
+	fmadd.d	$fa1, $fa1, $fs1, $fa4
+	fadd.d	$fa1, $fa1, $fs5
+	fadd.d	$fa2, $fa0, $fs0
+	fmadd.d	$fa2, $fa2, $fs1, $fa4
+	fadd.d	$fa2, $fa2, $fs0
+	fmadd.d	$fa2, $fa2, $fs1, $fa4
+	fadd.d	$fa2, $fa2, $fs0
+	fmadd.d	$fa2, $fa2, $fs1, $fa4
+	fmul.d	$fa2, $fa2, $fs2
+	fadd.d	$fa2, $fa1, $fa2
+	fabs.d	$fa3, $fa1
+	fdiv.d	$fa1, $fa2, $fa1
+	fcmp.clt.d	$fcc0, $fs3, $fa3
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	fabs.d	$fa1, $fa1
-	fcmp.clt.d	$fcc0, $fa1, $fs2
+	fcmp.clt.d	$fcc0, $fa1, $fs4
 	bcnez	$fcc0, .LBB284_13
 # %bb.15:                               #   in Loop: Header=BB284_14 Depth=1
 	ld.w	$a1, $s2, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vldi	$vr6, -854
-	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
-	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
+	vldi	$vr4, -854
 	fld.d	$fa0, $s5, %pc_lo12(init_value)
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	b	.LBB284_13
@@ -117325,7 +117307,7 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 .LBB284_20:                             # %._crit_edge
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$fp, $a1, %pc_lo12(start_time)
 	pcalau12i	$s3, %pc_hi20(results)
 	ld.d	$a2, $s3, %pc_lo12(results)
@@ -117360,28 +117342,28 @@ _Z28test_goto_loop_unroll_factorILi2EdEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a2, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s2, %pc_lo12(current_test)
-	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs5, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB284_25:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)

@@ -344,11 +344,11 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	pcaddu18i	$ra, %call36(_Z8loopInitj)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	ld.d	$a0, $fp, 16
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
-	ld.d	$a0, $fp, 24
+	ld.d	$a0, $fp, 16
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	ld.d	$a0, $fp, 24
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$s4, $fp, 32
 	ld.d	$s5, $fp, 40
 	ld.d	$s6, $fp, 48
@@ -357,15 +357,15 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	ld.d	$s1, $fp, 72
 	ld.d	$s2, $fp, 80
 	ld.d	$a0, $fp, 88
-	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
-	ld.d	$a0, $fp, 96
 	st.d	$a0, $sp, 360                   # 8-byte Folded Spill
-	ld.d	$a0, $fp, 104
+	ld.d	$a0, $fp, 96
 	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
-	ld.d	$a0, $fp, 112
+	ld.d	$a0, $fp, 104
 	st.d	$a0, $sp, 344                   # 8-byte Folded Spill
+	ld.d	$a0, $fp, 112
+	st.d	$a0, $sp, 336                   # 8-byte Folded Spill
 	ld.d	$a0, $fp, 120
-	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
 	fld.d	$fs0, $fp, 384
 	fld.d	$fa0, $fp, 392
 	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
@@ -377,11 +377,11 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
-	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
-	vld	$vr8, $sp, 128                  # 16-byte Folded Reload
-	ld.d	$t8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$t7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 168                   # 8-byte Folded Reload
+	vld	$vr11, $sp, 112                 # 16-byte Folded Reload
+	vld	$vr10, $sp, 128                 # 16-byte Folded Reload
+	ld.d	$t8, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
 	move	$t5, $s0
 	bnez	$fp, .LBB1_52
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
@@ -397,41 +397,41 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	alsl.d	$a4, $s0, $s5, 3
 	alsl.d	$a5, $s0, $s7, 3
 	alsl.d	$a6, $s0, $s2, 3
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 184                   # 8-byte Folded Spill
 	alsl.d	$a7, $s0, $s6, 3
 	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
 	sub.d	$t0, $t6, $t7
 	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
 	sub.d	$t1, $t6, $t8
-	st.d	$s7, $sp, 184                   # 8-byte Folded Spill
-	ld.d	$t2, $sp, 192                   # 8-byte Folded Reload
+	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
+	ld.d	$t2, $sp, 184                   # 8-byte Folded Reload
 	sub.d	$t2, $t6, $t2
-	st.d	$s8, $sp, 176                   # 8-byte Folded Spill
-	ld.d	$t3, $sp, 184                   # 8-byte Folded Reload
+	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
 	sub.d	$t3, $t6, $t3
 	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	ld.d	$t4, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 168                   # 8-byte Folded Reload
 	sub.d	$t4, $t6, $t4
 	sltui	$t0, $t0, 32
 	sltui	$t1, $t1, 32
 	or	$t0, $t0, $t1
 	sltui	$t1, $t2, 32
-	ld.d	$t2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	or	$t0, $t0, $t1
 	sltui	$t1, $t3, 32
-	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 	or	$t0, $t0, $t1
 	sltui	$t1, $t4, 32
 	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
 	or	$t0, $t0, $t1
 	bstrpick.d	$t1, $a0, 30, 2
 	slli.d	$t1, $t1, 2
-	st.d	$t1, $sp, 320                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 328                   # 8-byte Folded Spill
 	sltu	$a3, $t6, $a3
 	sltu	$t1, $t8, $a1
 	and	$a3, $a3, $t1
 	sltu	$a4, $t6, $a4
-	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 184                   # 8-byte Folded Reload
 	sltu	$t1, $t1, $a1
 	and	$a4, $a4, $t1
 	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
@@ -446,50 +446,51 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	and	$a4, $a4, $a5
 	or	$a3, $a3, $a4
 	sltu	$a4, $t6, $a7
-	ld.d	$a7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
 	sltu	$a5, $t1, $a1
 	and	$a4, $a4, $a5
 	or	$a3, $a3, $a4
-	st.d	$a3, $sp, 280                   # 8-byte Folded Spill
-	bstrpick.d	$a3, $a0, 30, 1
-	slli.d	$a3, $a3, 1
-	st.d	$a3, $sp, 272                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 264                   # 8-byte Folded Spill
 	sltu	$a2, $t6, $a2
 	sltu	$a1, $t3, $a1
 	and	$a1, $a2, $a1
-	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	vreplvei.d	$vr10, $vr8, 0
-	vreplvei.d	$vr11, $vr9, 0
-	addi.d	$a1, $t7, 16
-	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
-	addi.d	$a1, $t6, 16
 	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
-	addi.d	$a1, $t8, 16
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
-	addi.d	$a1, $t3, 16
-	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
-	addi.d	$a1, $a7, 16
+	vreplvei.d	$vr12, $vr10, 0
+	vreplvei.d	$vr13, $vr11, 0
+	addi.d	$a1, $t7, 16
 	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	addi.d	$a1, $t6, 16
+	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
+	addi.d	$a1, $t8, 16
+	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
+	addi.d	$a1, $t3, 16
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
+	addi.d	$a1, $a7, 16
+	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
 	addi.d	$a1, $t2, 16
+	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
+	addi.d	$a1, $t1, 16
 	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
+	addi.d	$a1, $t4, 16
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
-	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 336                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 368                   # 8-byte Folded Spill
 	sltui	$a0, $s0, 4
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
 	or	$a0, $a0, $t0
 	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
 	andi	$a0, $a0, 1
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
-	vldi	$vr12, -800
-	vldi	$vr13, -928
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	vldi	$vr14, -800
+	vldi	$vr15, -928
 	movgr2fr.d	$fs2, $zero
-	vldi	$vr14, -880
-	vldi	$vr15, -1016
-	vldi	$vr16, -864
-	vldi	$vr17, -996
-	vldi	$vr18, -872
-	vldi	$vr19, -912
+	vldi	$vr16, -880
+	vldi	$vr17, -1016
+	vldi	$vr18, -864
+	vldi	$vr19, -996
+	vldi	$vr20, -872
+	vldi	$vr21, -912
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_3:                                # %"_Z6forallIZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEE3$_5Ev9simd_execiiT_.exit"
@@ -506,28 +507,28 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
                                         #     Child Loop BB1_33 Depth 2
                                         #     Child Loop BB1_37 Depth 2
                                         #     Child Loop BB1_45 Depth 2
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	blez	$a0, .LBB1_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	st.d	$a6, $sp, 296                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	st.d	$a6, $sp, 288                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_7
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
 	move	$a6, $zero
 	b	.LBB1_10
 	.p2align	4, , 16
-.LBB1_7:                                # %vector.body290.preheader
+.LBB1_7:                                # %vector.body296.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 328                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB1_8:                                # %vector.body290
+.LBB1_8:                                # %vector.body296
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a5, -16
@@ -540,14 +541,14 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	vld	$vr7, $a3, 0
 	vfadd.d	$vr2, $vr2, $vr4
 	vfadd.d	$vr3, $vr3, $vr5
-	vfmul.d	$vr4, $vr6, $vr12
-	vfmul.d	$vr5, $vr7, $vr12
+	vfmul.d	$vr4, $vr6, $vr14
+	vfmul.d	$vr5, $vr7, $vr14
 	vld	$vr6, $a2, -16
 	vld	$vr7, $a2, 0
 	vfmadd.d	$vr0, $vr4, $vr2, $vr0
 	vfmadd.d	$vr1, $vr5, $vr3, $vr1
-	vfmadd.d	$vr0, $vr6, $vr13, $vr0
-	vfmadd.d	$vr1, $vr7, $vr13, $vr1
+	vfmadd.d	$vr0, $vr6, $vr15, $vr0
+	vfmadd.d	$vr1, $vr7, $vr15, $vr1
 	vst	$vr0, $a4, -16
 	vst	$vr1, $a4, 0
 	addi.d	$a6, $a6, -4
@@ -558,23 +559,23 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	addi.d	$a1, $a1, 32
 	addi.d	$a0, $a0, 32
 	bnez	$a6, .LBB1_8
-# %bb.9:                                # %middle.block303
+# %bb.9:                                # %middle.block309
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a1, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	move	$a6, $a1
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	move	$fp, $a0
 	move	$s0, $t8
 	move	$s1, $t0
-	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 352                   # 8-byte Folded Reload
 	move	$s3, $t6
-	ld.d	$s4, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
 	move	$s5, $t4
-	ld.d	$s6, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
 	move	$s8, $t1
 	beq	$a0, $a1, .LBB1_16
-.LBB1_10:                               # %.lr.ph.preheader308
+.LBB1_10:                               # %.lr.ph.preheader314
                                         #   in Loop: Header=BB1_4 Depth=1
 	alsl.d	$a0, $a6, $t6, 3
 	alsl.d	$a1, $a6, $t3, 3
@@ -582,7 +583,7 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	alsl.d	$a3, $a6, $a7, 3
 	alsl.d	$a4, $a6, $t8, 3
 	alsl.d	$a5, $a6, $t7, 3
-	ld.d	$fp, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
 	sub.d	$a6, $fp, $a6
 	.p2align	4, , 16
 .LBB1_11:                               # %.lr.ph
@@ -594,9 +595,9 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	fld.d	$fa3, $a5, 0
 	fld.d	$fa4, $a1, 0
 	fadd.d	$fa0, $fa0, $fa1
-	fmul.d	$fa1, $fa2, $ft4
+	fmul.d	$fa1, $fa2, $ft6
 	fmadd.d	$fa0, $fa1, $fa0, $fa3
-	fmadd.d	$fa0, $fa4, $ft5, $fa0
+	fmadd.d	$fa0, $fa4, $ft7, $fa0
 	fst.d	$fa0, $a0, 0
 	addi.d	$a0, $a0, 8
 	addi.d	$a1, $a1, 8
@@ -607,14 +608,15 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	addi.d	$a5, $a5, 8
 	bnez	$a6, .LBB1_11
 # %bb.12:                               #   in Loop: Header=BB1_4 Depth=1
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
 	move	$s0, $t8
 	move	$s1, $t0
-	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 352                   # 8-byte Folded Reload
 	move	$s3, $t6
-	ld.d	$s4, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
 	move	$s5, $t4
-	ld.d	$s6, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
 	move	$s8, $t1
 	b	.LBB1_16
 	.p2align	4, , 16
@@ -649,7 +651,7 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	bcnez	$fcc0, .LBB1_15
 # %bb.17:                               #   in Loop: Header=BB1_16 Depth=2
 	fld.d	$fa0, $s1, 0
-	fadd.d	$fa0, $fa0, $ft11
+	fadd.d	$fa0, $fa0, $ft13
 	frecip.d	$fa0, $fa0
 	fld.d	$fa1, $s2, 0
 	fld.d	$fa2, $s4, 0
@@ -672,47 +674,46 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	fmov.d	$fa0, $fa1
 	st.d	$t5, $sp, 80                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	vst	$vr10, $sp, 48                  # 16-byte Folded Spill
-	vst	$vr11, $sp, 32                  # 16-byte Folded Spill
-	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
+	vst	$vr12, $sp, 48                  # 16-byte Folded Spill
+	vst	$vr13, $sp, 32                  # 16-byte Folded Spill
+	st.d	$a0, $sp, 304                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	vldi	$vr19, -912
-	vldi	$vr18, -872
-	vldi	$vr17, -996
-	vldi	$vr16, -864
-	vldi	$vr15, -1016
-	vldi	$vr14, -880
-	vldi	$vr13, -928
-	vldi	$vr12, -800
-	vld	$vr11, $sp, 32                  # 16-byte Folded Reload
-	vld	$vr10, $sp, 48                  # 16-byte Folded Reload
-	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
-	vld	$vr8, $sp, 128                  # 16-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	vldi	$vr21, -912
+	vldi	$vr20, -872
+	vldi	$vr19, -996
+	vldi	$vr18, -864
+	vldi	$vr17, -1016
+	vldi	$vr16, -880
+	vldi	$vr15, -928
+	vldi	$vr14, -800
+	vld	$vr13, $sp, 32                  # 16-byte Folded Reload
+	vld	$vr12, $sp, 48                  # 16-byte Folded Reload
+	vld	$vr11, $sp, 112                 # 16-byte Folded Reload
+	vld	$vr10, $sp, 128                 # 16-byte Folded Reload
 	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$t7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB1_14
 	.p2align	4, , 16
 .LBB1_20:                               # %"_Z6forallIZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEE3$_1Ev9simd_execiiT_.exit.preheader"
                                         #   in Loop: Header=BB1_4 Depth=1
-	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
-	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
-	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
-	sltui	$a0, $s7, 2
-	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
-	or	$a0, $a0, $a1
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 304                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
+	or	$a0, $a1, $a0
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB1_22
 # %bb.21:                               #   in Loop: Header=BB1_4 Depth=1
@@ -721,44 +722,58 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	.p2align	4, , 16
 .LBB1_22:                               # %vector.body264.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	move	$a0, $t6
-	move	$a1, $t8
-	move	$a2, $a7
-	move	$a3, $t2
-	move	$a4, $t4
-	move	$a5, $t1
-	ld.d	$a6, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 328                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_23:                               # %vector.body264
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a2, 0
-	vld	$vr1, $a3, 0
-	vld	$vr2, $a1, 0
-	vld	$vr3, $a4, 0
-	vld	$vr4, $a5, 0
-	vfadd.d	$vr0, $vr0, $vr1
-	vld	$vr1, $a0, 0
-	vfmul.d	$vr2, $vr2, $vr13
-	vfadd.d	$vr3, $vr3, $vr4
-	vfmul.d	$vr3, $vr3, $vr14
-	vfmadd.d	$vr0, $vr0, $vr15, $vr3
-	vfmadd.d	$vr0, $vr2, $vr0, $vr1
-	vst	$vr0, $a0, 0
-	addi.d	$a6, $a6, -2
-	addi.d	$a5, $a5, 16
-	addi.d	$a4, $a4, 16
-	addi.d	$a3, $a3, 16
-	addi.d	$a2, $a2, 16
-	addi.d	$a1, $a1, 16
-	addi.d	$a0, $a0, 16
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vld	$vr4, $a0, -16
+	vld	$vr5, $a0, 0
+	vld	$vr6, $a3, -16
+	vld	$vr7, $a3, 0
+	vfadd.d	$vr2, $vr2, $vr4
+	vfadd.d	$vr3, $vr3, $vr5
+	vld	$vr4, $a2, -16
+	vld	$vr5, $a2, 0
+	vld	$vr8, $a4, -16
+	vld	$vr9, $a4, 0
+	vfmul.d	$vr6, $vr6, $vr15
+	vfmul.d	$vr7, $vr7, $vr15
+	vfadd.d	$vr4, $vr4, $vr8
+	vfadd.d	$vr5, $vr5, $vr9
+	vfmul.d	$vr4, $vr4, $vr16
+	vfmul.d	$vr5, $vr5, $vr16
+	vfmadd.d	$vr2, $vr2, $vr17, $vr4
+	vfmadd.d	$vr3, $vr3, $vr17, $vr5
+	vfmadd.d	$vr0, $vr6, $vr2, $vr0
+	vfmadd.d	$vr1, $vr7, $vr3, $vr1
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 32
+	addi.d	$a4, $a4, 32
+	addi.d	$a3, $a3, 32
+	addi.d	$a2, $a2, 32
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, 32
 	bnez	$a6, .LBB1_23
-# %bb.24:                               # %middle.block273
+# %bb.24:                               # %middle.block279
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
-	move	$a6, $a0
-	beq	$s7, $a0, .LBB1_27
-.LBB1_25:                               # %"_Z6forallIZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEE3$_1Ev9simd_execiiT_.exit.preheader307"
+	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
+	move	$a6, $a1
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
+	beq	$a0, $a1, .LBB1_27
+.LBB1_25:                               # %"_Z6forallIZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEE3$_1Ev9simd_execiiT_.exit.preheader313"
                                         #   in Loop: Header=BB1_4 Depth=1
 	alsl.d	$a0, $a6, $t1, 3
 	alsl.d	$a1, $a6, $t4, 3
@@ -766,7 +781,8 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	alsl.d	$a3, $a6, $a7, 3
 	alsl.d	$a4, $a6, $t8, 3
 	alsl.d	$a5, $a6, $t6, 3
-	sub.d	$a6, $s7, $a6
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	sub.d	$a6, $fp, $a6
 	.p2align	4, , 16
 .LBB1_26:                               # %"_Z6forallIZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEE3$_1Ev9simd_execiiT_.exit"
                                         #   Parent Loop BB1_4 Depth=1
@@ -778,10 +794,10 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	fld.d	$fa4, $a0, 0
 	fadd.d	$fa0, $fa0, $fa1
 	fld.d	$fa1, $a5, 0
-	fmul.d	$fa2, $fa2, $ft5
+	fmul.d	$fa2, $fa2, $ft7
 	fadd.d	$fa3, $fa3, $fa4
-	fmul.d	$fa3, $fa3, $ft6
-	fmadd.d	$fa0, $fa0, $ft7, $fa3
+	fmul.d	$fa3, $fa3, $ft8
+	fmadd.d	$fa0, $fa0, $ft9, $fa3
 	fmadd.d	$fa0, $fa2, $fa0, $fa1
 	fst.d	$fa0, $a5, 0
 	addi.d	$a0, $a0, 8
@@ -794,22 +810,22 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	bnez	$a6, .LBB1_26
 .LBB1_27:                               # %"_ZZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEENK3$_3clEi.exit.preheader"
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB1_29
 # %bb.28:                               #   in Loop: Header=BB1_4 Depth=1
 	move	$a2, $zero
-	ld.d	$a6, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 288                   # 8-byte Folded Reload
 	b	.LBB1_32
 	.p2align	4, , 16
 .LBB1_29:                               # %vector.body.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 288                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_30:                               # %vector.body
                                         #   Parent Loop BB1_4 Depth=1
@@ -818,18 +834,18 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	vld	$vr1, $a0, 0
 	vld	$vr2, $a1, -16
 	vld	$vr3, $a1, 0
-	vfmadd.d	$vr0, $vr0, $vr13, $vr2
-	vfmadd.d	$vr1, $vr1, $vr13, $vr3
+	vfmadd.d	$vr0, $vr0, $vr15, $vr2
+	vfmadd.d	$vr1, $vr1, $vr15, $vr3
 	vbitclri.d	$vr2, $vr0, 63
 	vbitclri.d	$vr3, $vr1, 63
-	vfcmp.cule.d	$vr2, $vr10, $vr2
+	vfcmp.cule.d	$vr2, $vr12, $vr2
 	vand.v	$vr0, $vr2, $vr0
-	vfcmp.cule.d	$vr2, $vr10, $vr3
+	vfcmp.cule.d	$vr2, $vr12, $vr3
 	vand.v	$vr1, $vr2, $vr1
-	vfcmp.clt.d	$vr2, $vr0, $vr11
-	vfcmp.clt.d	$vr3, $vr1, $vr11
-	vbitsel.v	$vr0, $vr0, $vr11, $vr2
-	vbitsel.v	$vr1, $vr1, $vr11, $vr3
+	vfcmp.clt.d	$vr2, $vr0, $vr13
+	vfcmp.clt.d	$vr3, $vr1, $vr13
+	vbitsel.v	$vr0, $vr0, $vr13, $vr2
+	vbitsel.v	$vr1, $vr1, $vr13, $vr3
 	vst	$vr0, $a1, -16
 	vst	$vr1, $a1, 0
 	addi.d	$a2, $a2, -4
@@ -838,26 +854,28 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	bnez	$a2, .LBB1_30
 # %bb.31:                               # %middle.block
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
-	move	$a2, $a0
-	beq	$s7, $a0, .LBB1_34
-.LBB1_32:                               # %"_ZZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEENK3$_3clEi.exit.preheader306"
+	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
+	move	$a2, $a1
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
+	beq	$a0, $a1, .LBB1_34
+.LBB1_32:                               # %"_ZZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEENK3$_3clEi.exit.preheader312"
                                         #   in Loop: Header=BB1_4 Depth=1
 	alsl.d	$a0, $a2, $t6, 3
 	alsl.d	$a1, $a2, $t3, 3
-	sub.d	$a2, $s7, $a2
+	ld.d	$a3, $sp, 368                   # 8-byte Folded Reload
+	sub.d	$a2, $a3, $a2
 	.p2align	4, , 16
 .LBB1_33:                               # %"_ZZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEENK3$_3clEi.exit"
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa0, $a1, 0
 	fld.d	$fa1, $a0, 0
-	fmadd.d	$fa0, $fa0, $ft5, $fa1
+	fmadd.d	$fa0, $fa0, $ft7, $fa1
 	fabs.d	$fa1, $fa0
-	fcmp.clt.d	$fcc0, $fa1, $ft0
+	fcmp.clt.d	$fcc0, $fa1, $ft2
 	fsel	$fa0, $fa0, $fs2, $fcc0
-	fcmp.clt.d	$fcc0, $fa0, $ft1
-	fsel	$fa0, $fa0, $ft1, $fcc0
+	fcmp.clt.d	$fcc0, $fa0, $ft3
+	fsel	$fa0, $fa0, $ft3, $fcc0
 	fst.d	$fa0, $a0, 0
 	addi.d	$a0, $a0, 8
 	addi.d	$a2, $a2, -1
@@ -865,51 +883,52 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	bnez	$a2, .LBB1_33
 .LBB1_34:                               # %.lr.ph195.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
+	ld.d	$s7, $sp, 368                   # 8-byte Folded Reload
 	move	$s3, $t8
-	ld.d	$a2, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 336                   # 8-byte Folded Reload
 	move	$s5, $a7
 	move	$s2, $t2
 	move	$fp, $t4
-	move	$s0, $t1
-	move	$s6, $t6
-	move	$s4, $ra
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
+	move	$s6, $t1
+	move	$s4, $t6
+	move	$s0, $ra
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	b	.LBB1_37
 	.p2align	4, , 16
 .LBB1_35:                               # %._crit_edge.i
                                         #   in Loop: Header=BB1_37 Depth=2
-	fld.d	$fs4, $s6, 0
-	fld.d	$fs5, $s4, 0
+	fld.d	$fs4, $s4, 0
+	fld.d	$fs5, $s0, 0
 	fmov.d	$fa0, $fs2
 .LBB1_36:                               # %"_ZZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateEENK3$_4clEi.exit"
                                         #   in Loop: Header=BB1_37 Depth=2
 	fld.d	$fa1, $s5, 0
 	fld.d	$fa2, $s2, 0
 	fld.d	$fa3, $fp, 0
-	fld.d	$fa4, $s0, 0
+	fld.d	$fa4, $s6, 0
 	fadd.d	$fa1, $fa1, $fa2
 	fadd.d	$fa2, $fa3, $fa4
-	fmul.d	$fa2, $fa2, $ft8
-	fmadd.d	$fa1, $fa1, $ft9, $fa2
+	fmul.d	$fa2, $fa2, $ft10
+	fmadd.d	$fa1, $fa1, $ft11, $fa2
 	fadd.d	$fa0, $fs5, $fa0
 	fadd.d	$fa0, $fa0, $fa1
 	fmul.d	$fa0, $fs3, $fa0
-	fdiv.d	$fa0, $fa0, $ft10
+	fdiv.d	$fa0, $fa0, $ft12
 	fadd.d	$fa0, $fs4, $fa0
 	fabs.d	$fa1, $fa0
-	fcmp.clt.d	$fcc0, $fa1, $ft0
+	fcmp.clt.d	$fcc0, $fa1, $ft2
 	fsel	$fa0, $fa0, $fs2, $fcc0
-	fcmp.clt.d	$fcc0, $fa0, $ft1
-	fsel	$fa0, $fa0, $ft1, $fcc0
-	fst.d	$fa0, $s6, 0
+	fcmp.clt.d	$fcc0, $fa0, $ft3
+	fsel	$fa0, $fa0, $ft3, $fcc0
+	fst.d	$fa0, $s4, 0
+	addi.d	$s0, $s0, 8
 	addi.d	$s4, $s4, 8
 	addi.d	$s6, $s6, 8
-	addi.d	$s0, $s0, 8
 	addi.d	$fp, $fp, 8
 	addi.d	$s2, $s2, 8
 	addi.d	$s5, $s5, 8
@@ -931,8 +950,8 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
 	fld.d	$fa2, $a4, 0
-	fld.d	$fs4, $s6, 0
-	fld.d	$fs5, $s4, 0
+	fld.d	$fs4, $s4, 0
+	fld.d	$fs5, $s0, 0
 	fmul.d	$fa1, $fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_1)
@@ -945,13 +964,13 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	fsqrt.d	$fa0, $fa1
 	fcmp.cor.d	$fcc0, $fa0, $fa0
 	bcnez	$fcc0, .LBB1_42
-# %bb.40:                               # %call.sqrt472
+# %bb.40:                               # %call.sqrt486
                                         #   in Loop: Header=BB1_37 Depth=2
 	fmov.d	$fa0, $fa1
 	st.d	$t5, $sp, 80                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	vst	$vr10, $sp, 48                  # 16-byte Folded Spill
-	vst	$vr11, $sp, 32                  # 16-byte Folded Spill
+	vst	$vr12, $sp, 48                  # 16-byte Folded Spill
+	vst	$vr13, $sp, 32                  # 16-byte Folded Spill
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
@@ -960,31 +979,31 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	vldi	$vr19, -912
-	vldi	$vr18, -872
-	vldi	$vr17, -996
-	vldi	$vr16, -864
-	vldi	$vr15, -1016
-	vldi	$vr14, -880
-	vldi	$vr13, -928
-	vldi	$vr12, -800
-	vld	$vr11, $sp, 32                  # 16-byte Folded Reload
-	vld	$vr10, $sp, 48                  # 16-byte Folded Reload
-	ld.d	$a6, $sp, 296                   # 8-byte Folded Reload
-	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
-	vld	$vr8, $sp, 128                  # 16-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	vldi	$vr21, -912
+	vldi	$vr20, -872
+	vldi	$vr19, -996
+	vldi	$vr18, -864
+	vldi	$vr17, -1016
+	vldi	$vr16, -880
+	vldi	$vr15, -928
+	vldi	$vr14, -800
+	vld	$vr13, $sp, 32                  # 16-byte Folded Reload
+	vld	$vr12, $sp, 48                  # 16-byte Folded Reload
+	ld.d	$a6, $sp, 288                   # 8-byte Folded Reload
+	vld	$vr11, $sp, 112                 # 16-byte Folded Reload
+	vld	$vr10, $sp, 128                 # 16-byte Folded Reload
 	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$t7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB1_42
 	.p2align	4, , 16
@@ -998,15 +1017,15 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	.p2align	4, , 16
 .LBB1_43:                               # %.lr.ph197.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$fp, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
 	move	$s0, $t8
-	ld.d	$s1, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
 	move	$s2, $t6
-	ld.d	$s3, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
 	move	$s5, $ra
-	ld.d	$s6, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
 	move	$s8, $t1
 	b	.LBB1_45
 	.p2align	4, , 16
@@ -1047,40 +1066,40 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	fsqrt.d	$fa0, $fa1
 	fcmp.cor.d	$fcc0, $fa0, $fa0
 	bcnez	$fcc0, .LBB1_50
-# %bb.48:                               # %call.sqrt474
+# %bb.48:                               # %call.sqrt488
                                         #   in Loop: Header=BB1_45 Depth=2
 	fmov.d	$fa0, $fa1
 	st.d	$t5, $sp, 80                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	vst	$vr10, $sp, 48                  # 16-byte Folded Spill
-	vst	$vr11, $sp, 32                  # 16-byte Folded Spill
+	vst	$vr12, $sp, 48                  # 16-byte Folded Spill
+	vst	$vr13, $sp, 32                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	vldi	$vr19, -912
-	vldi	$vr18, -872
-	vldi	$vr17, -996
-	vldi	$vr16, -864
-	vldi	$vr15, -1016
-	vldi	$vr14, -880
-	vldi	$vr13, -928
-	vldi	$vr12, -800
-	vld	$vr11, $sp, 32                  # 16-byte Folded Reload
-	vld	$vr10, $sp, 48                  # 16-byte Folded Reload
-	ld.d	$a6, $sp, 296                   # 8-byte Folded Reload
-	vld	$vr9, $sp, 112                  # 16-byte Folded Reload
-	vld	$vr8, $sp, 128                  # 16-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	vldi	$vr21, -912
+	vldi	$vr20, -872
+	vldi	$vr19, -996
+	vldi	$vr18, -864
+	vldi	$vr17, -1016
+	vldi	$vr16, -880
+	vldi	$vr15, -928
+	vldi	$vr14, -800
+	vld	$vr13, $sp, 32                  # 16-byte Folded Reload
+	vld	$vr12, $sp, 48                  # 16-byte Folded Reload
+	ld.d	$a6, $sp, 288                   # 8-byte Folded Reload
+	vld	$vr11, $sp, 112                 # 16-byte Folded Reload
+	vld	$vr10, $sp, 128                 # 16-byte Folded Reload
 	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$t7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB1_50
 	.p2align	4, , 16
@@ -1699,14 +1718,9 @@ GCC_except_table2:
 .Lcst_end0:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZL24BM_DEL_DOT_VEC_2D_LAMBDARN9benchmark5StateE
-.LCPI3_0:
-	.dword	0xbfe0000000000000              # double -0.5
-	.dword	0x3fe0000000000000              # double 0.5
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI3_1:
+	.p2align	3, 0x0                          # -- Begin function _ZL24BM_DEL_DOT_VEC_2D_LAMBDARN9benchmark5StateE
+.LCPI3_0:
 	.dword	0x3bc79ca10c924223              # double 9.9999999999999995E-21
 	.text
 	.p2align	5
@@ -1776,109 +1790,100 @@ _ZL24BM_DEL_DOT_VEC_2D_LAMBDARN9benchmark5StateE: # @_ZL24BM_DEL_DOT_VEC_2D_LAMB
 	addi.d	$a1, $s1, 8
 	alsl.d	$a2, $s6, $a1, 3
 	alsl.d	$a3, $s6, $s1, 3
-	alsl.d	$a4, $s6, $s2, 3
-	addi.d	$a5, $s3, 8
-	alsl.d	$a6, $s6, $a5, 3
-	ld.d	$a7, $sp, 80
-	pcalau12i	$t0, %pc_hi20(.LCPI3_0)
-	vld	$vr0, $t0, %pc_lo12(.LCPI3_0)
-	pcalau12i	$t0, %pc_hi20(.LCPI3_1)
-	fld.d	$fa1, $t0, %pc_lo12(.LCPI3_1)
-	alsl.d	$t0, $s6, $s3, 3
-	alsl.d	$t1, $s6, $s4, 3
-	vldi	$vr2, -928
+	addi.d	$a4, $s2, 8
+	alsl.d	$a5, $s6, $a4, 3
+	alsl.d	$a6, $s6, $s2, 3
+	addi.d	$a7, $s3, 8
+	alsl.d	$t0, $s6, $a7, 3
+	alsl.d	$t1, $s6, $s3, 3
+	addi.d	$t2, $s4, 8
+	alsl.d	$t3, $s6, $t2, 3
+	ld.d	$t4, $sp, 80
+	pcalau12i	$t5, %pc_hi20(.LCPI3_0)
+	fld.d	$fa0, $t5, %pc_lo12(.LCPI3_0)
+	alsl.d	$t5, $s6, $s4, 3
+	vldi	$vr1, -928
+	vldi	$vr2, -800
 	.p2align	4, , 16
 .LBB3_5:                                # %.lr.ph.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_6 Depth 2
-	move	$t2, $a0
-	move	$t3, $a7
+	move	$t6, $a0
+	move	$t7, $t4
 	.p2align	4, , 16
 .LBB3_6:                                #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t4, $t3, 0
-	slli.d	$t4, $t4, 3
-	vldx	$vr6, $a3, $t4
-	fldx.d	$fa3, $a2, $t4
-	fldx.d	$fa4, $a3, $t4
-	fldx.d	$fa5, $s1, $t4
-	fldx.d	$fa7, $a1, $t4
-	vldx	$vr8, $s1, $t4
-	fadd.d	$fa3, $fa3, $fa4
-	fsub.d	$fa3, $fa3, $fa5
-	fsub.d	$fa3, $fa3, $fa7
-	fmul.d	$fa4, $fa3, $fa2
-	vldx	$vr7, $a4, $t4
-	fldx.d	$fa3, $a4, $t4
-	vldx	$vr9, $t1, $t4
-	vldx	$vr10, $s2, $t4
-	fldx.d	$fa5, $s2, $t4
-	vpackod.d	$vr11, $vr8, $vr7
-	vpackev.d	$vr12, $vr9, $vr7
-	vshuf4i.d	$vr7, $vr6, 12
-	vldx	$vr13, $s4, $t4
-	vfadd.d	$vr7, $vr11, $vr7
-	vpackev.d	$vr6, $vr6, $vr10
-	vfsub.d	$vr6, $vr7, $vr6
-	vpackev.d	$vr7, $vr13, $vr10
-	vshuf4i.d	$vr10, $vr8, 9
-	vfsub.d	$vr6, $vr6, $vr10
-	vfmul.d	$vr6, $vr6, $vr2
-	vldx	$vr8, $t0, $t4
-	fldx.d	$ft6, $a6, $t4
-	fldx.d	$ft7, $t0, $t4
-	fldx.d	$ft8, $s3, $t4
-	fldx.d	$ft9, $a5, $t4
-	vldx	$vr18, $s3, $t4
-	fadd.d	$ft6, $ft6, $ft7
-	fsub.d	$ft6, $ft6, $ft8
-	fsub.d	$ft6, $ft6, $ft9
-	fmul.d	$ft6, $ft6, $fa2
-	fldx.d	$ft7, $t1, $t4
-	fldx.d	$ft8, $s4, $t4
-	vshuf4i.d	$vr10, $vr13, 12
-	vshuf4i.d	$vr11, $vr9, 12
-	vfadd.d	$vr11, $vr10, $vr11
-	vfsub.d	$vr12, $vr11, $vr12
-	vfsub.d	$vr12, $vr12, $vr7
-	vpackod.d	$vr13, $vr9, $vr18
-	vori.b	$vr17, $vr8, 0
-	vshuf4i.d	$vr17, $vr9, 9
-	vfadd.d	$vr9, $vr13, $vr17
-	vshuf4i.d	$vr8, $vr7, 12
-	vfsub.d	$vr7, $vr9, $vr8
-	vshuf4i.d	$vr18, $vr10, 12
-	vfsub.d	$vr7, $vr7, $vr18
-	vfmul.d	$vr7, $vr7, $vr2
-	vfmul.d	$vr8, $vr12, $vr0
-	vreplvei.d	$vr9, $vr8, 0
-	fmul.d	$ft1, $fa4, $ft1
-	vreplvei.d	$vr10, $vr6, 0
-	vreplvei.d	$vr12, $vr6, 1
-	fmadd.d	$ft1, $ft4, $ft2, $ft1
-	fadd.d	$ft1, $ft1, $fa1
-	frecip.d	$ft1, $ft1
-	fneg.d	$fa4, $fa4
-	vextrins.d	$vr14, $vr4, 16
-	vfmul.d	$vr4, $vr8, $vr14
-	vfmadd.d	$vr4, $vr7, $vr6, $vr4
-	vreplvei.d	$vr6, $vr9, 0
-	vfmul.d	$vr4, $vr6, $vr4
-	vreplvei.d	$vr6, $vr11, 1
-	fadd.d	$fa6, $fa6, $ft7
-	fadd.d	$fa6, $fa6, $ft8
-	vreplvei.d	$vr7, $vr11, 0
-	fadd.d	$fa3, $fa7, $fa3
-	fadd.d	$fa3, $fa3, $fa5
-	fdiv.d	$fa3, $fa6, $fa3
-	vreplvei.d	$vr5, $vr4, 0
-	vreplvei.d	$vr4, $vr4, 1
-	fadd.d	$fa4, $fa5, $fa4
-	fadd.d	$fa3, $fa3, $fa4
-	fstx.d	$fa3, $s0, $t4
-	addi.d	$t2, $t2, -1
-	addi.d	$t3, $t3, 4
-	bnez	$t2, .LBB3_6
+	ld.w	$t8, $t7, 0
+	slli.d	$t8, $t8, 3
+	fldx.d	$fa3, $a1, $t8
+	fldx.d	$fa4, $a2, $t8
+	fldx.d	$fa5, $a3, $t8
+	fldx.d	$fa6, $s1, $t8
+	fadd.d	$fa7, $fa3, $fa4
+	fsub.d	$fa7, $fa7, $fa5
+	fsub.d	$fa7, $fa7, $fa6
+	fmul.d	$fa7, $fa7, $fa1
+	fadd.d	$fa4, $fa4, $fa5
+	fsub.d	$fa4, $fa4, $fa6
+	fsub.d	$fa3, $fa4, $fa3
+	fldx.d	$fa4, $a4, $t8
+	fldx.d	$fa5, $a5, $t8
+	fldx.d	$fa6, $a6, $t8
+	fldx.d	$ft0, $s2, $t8
+	fmul.d	$fa3, $fa3, $fa1
+	fadd.d	$ft1, $fa4, $fa5
+	fsub.d	$ft2, $ft1, $fa6
+	fsub.d	$ft2, $ft2, $ft0
+	fadd.d	$fa5, $fa5, $fa6
+	fsub.d	$fa5, $fa5, $ft0
+	fsub.d	$fa4, $fa5, $fa4
+	fldx.d	$fa5, $a7, $t8
+	fldx.d	$ft3, $t0, $t8
+	fldx.d	$ft4, $t1, $t8
+	fldx.d	$ft5, $s3, $t8
+	fmul.d	$fa4, $fa4, $fa1
+	fadd.d	$ft6, $fa5, $ft3
+	fsub.d	$ft6, $ft6, $ft4
+	fsub.d	$ft6, $ft6, $ft5
+	fmul.d	$ft6, $ft6, $fa1
+	fadd.d	$ft3, $ft3, $ft4
+	fsub.d	$ft3, $ft3, $ft5
+	fsub.d	$fa5, $ft3, $fa5
+	fldx.d	$ft3, $t2, $t8
+	fldx.d	$ft4, $t3, $t8
+	fldx.d	$ft5, $t5, $t8
+	fldx.d	$ft7, $s4, $t8
+	fmul.d	$fa5, $fa5, $fa1
+	fadd.d	$ft8, $ft3, $ft4
+	fsub.d	$ft9, $ft8, $ft5
+	fsub.d	$ft9, $ft9, $ft7
+	fmul.d	$ft9, $ft9, $fa2
+	fadd.d	$ft4, $ft4, $ft5
+	fsub.d	$ft4, $ft4, $ft7
+	fsub.d	$ft3, $ft4, $ft3
+	fmul.d	$ft3, $ft3, $fa1
+	fmul.d	$ft2, $ft2, $fa2
+	fmul.d	$ft4, $fa3, $ft2
+	fmadd.d	$ft4, $fa7, $fa4, $ft4
+	fadd.d	$ft4, $ft4, $fa0
+	frecip.d	$ft4, $ft4
+	fmul.d	$fa5, $ft2, $fa5
+	fmadd.d	$fa4, $ft6, $fa4, $fa5
+	fmul.d	$fa4, $ft4, $fa4
+	fmul.d	$fa3, $ft9, $fa3
+	fmadd.d	$fa3, $ft3, $fa7, $fa3
+	fmul.d	$fa3, $ft4, $fa3
+	fadd.d	$fa5, $ft8, $ft5
+	fadd.d	$fa5, $fa5, $ft7
+	fadd.d	$fa6, $ft1, $fa6
+	fadd.d	$fa6, $fa6, $ft0
+	fdiv.d	$fa5, $fa5, $fa6
+	fadd.d	$fa3, $fa4, $fa3
+	fadd.d	$fa3, $fa5, $fa3
+	fstx.d	$fa3, $s0, $t8
+	addi.d	$t6, $t6, -1
+	addi.d	$t7, $t7, 4
+	bnez	$t6, .LBB3_6
 # %bb.7:                                # %"._Z6forallI9simd_execZL24BM_DEL_DOT_VEC_2D_LAMBDARN9benchmark5StateEE3$_0EviiT0_.exit_crit_edge.us"
                                         #   in Loop: Header=BB3_5 Depth=1
 	addi.d	$s5, $s5, -1

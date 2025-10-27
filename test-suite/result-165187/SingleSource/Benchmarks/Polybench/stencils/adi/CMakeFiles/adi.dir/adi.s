@@ -202,43 +202,38 @@ main:                                   # @main
 	vreplgr2vr.d	$vr1, $a3
 	lu12i.w	$a3, 1
 	ori	$s4, $a3, 3904
-	ori	$a3, $a3, 3920
-	ori	$a4, $zero, 1000
-	move	$a5, $fp
-	ld.d	$t0, $sp, 32                    # 8-byte Folded Reload
+	ori	$a3, $zero, 1000
+	move	$a4, $fp
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB7_9:                                # %.preheader.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_10 Depth 2
-	addi.d	$a6, $a1, 1000
-	vreplgr2vr.d	$vr2, $a6
-	move	$a6, $a2
+	addi.d	$a5, $a1, 1000
+	vreplgr2vr.d	$vr2, $a5
+	move	$a5, $a2
 	vori.b	$vr3, $vr0, 0
 	.p2align	4, , 16
 .LBB7_10:                               # %vector.body
                                         #   Parent Loop BB7_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vsub.d	$vr4, $vr2, $vr3
-	vsubi.du	$vr5, $vr4, 2
 	vffint.d.lu	$vr4, $vr4
-	vffint.d.lu	$vr5, $vr5
 	vfdiv.d	$vr4, $vr4, $vr1
-	vfdiv.d	$vr5, $vr5, $vr1
-	add.d	$a7, $a5, $a6
-	vstx	$vr4, $a7, $s4
-	vstx	$vr5, $a7, $a3
-	addi.d	$a6, $a6, 32
-	vaddi.du	$vr3, $vr3, 4
-	bnez	$a6, .LBB7_10
+	add.d	$a6, $a4, $a5
+	vstx	$vr4, $a6, $s4
+	addi.d	$a5, $a5, 16
+	vaddi.du	$vr3, $vr3, 2
+	bnez	$a5, .LBB7_10
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB7_9 Depth=1
 	addi.d	$a1, $a1, 1
-	add.d	$a5, $a5, $s4
-	bne	$a1, $a4, .LBB7_9
+	add.d	$a4, $a4, $s4
+	bne	$a1, $a3, .LBB7_9
 # %bb.12:                               # %init_array.exit
 	lu12i.w	$a1, 1951
 	ori	$a1, $a1, 704
-	add.d	$a1, $t0, $a1
+	add.d	$a1, $a7, $a1
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 3912
@@ -252,9 +247,9 @@ main:                                   # @main
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a2, 1949
 	ori	$a2, $a2, 904
-	add.d	$a2, $t0, $a2
+	add.d	$a2, $a7, $a2
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	add.d	$a1, $t0, $a1
+	add.d	$a1, $a7, $a1
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	ori	$t0, $zero, 1
 	lu12i.w	$s5, 3

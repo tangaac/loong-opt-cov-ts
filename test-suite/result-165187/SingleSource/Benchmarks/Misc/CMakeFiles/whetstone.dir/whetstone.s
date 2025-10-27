@@ -416,7 +416,7 @@ main:                                   # @main
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	beq	$a1, $a3, .LBB0_21
-.LBB0_19:                               # %.lr.ph218.preheader329
+.LBB0_19:                               # %.lr.ph218.preheader330
                                         #   in Loop: Header=BB0_11 Depth=1
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	sub.d	$a0, $a1, $a0

@@ -674,50 +674,50 @@ image_render_skip:                      # @image_render_skip
 	.type	image_render_color,@function
 image_render_color:                     # @image_render_color
 # %bb.0:
-	addi.d	$sp, $sp, -416
-	st.d	$ra, $sp, 408                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 328                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -432
+	st.d	$ra, $sp, 424                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 416                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 408                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 400                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 392                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 376                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 344                   # 8-byte Folded Spill
 	move	$fp, $a1
-	ld.d	$s4, $a0, 72
+	ld.d	$s6, $a0, 72
 	ld.d	$a1, $a0, 24
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	ld.d	$a1, $a0, 32
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	ld.d	$a1, $a0, 40
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a1, $a0, 48
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a4, $a0, 12
 	ld.w	$a3, $a0, 100
 	bstrpick.d	$a1, $a2, 31, 0
 	add.d	$a2, $fp, $a1
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	sub.d	$a2, $a2, $a4
 	ld.b	$a2, $a2, 0
-	ld.d	$s8, $a0, 160
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$s5, $a0, 160
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$s2, $a0, 168
 	nor	$a2, $a2, $zero
 	stx.b	$a2, $fp, $a1
                                         # implicit-def: $r23
-                                        # implicit-def: $r29
+                                        # implicit-def: $r27
                                         # implicit-def: $r24
 	bnez	$a3, .LBB11_2
 # %bb.1:
 	addi.d	$a0, $s2, 2047
 	addi.d	$a0, $a0, 1
 	srli.d	$s1, $a0, 12
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 12
 	sub.w	$a0, $a0, $s1
@@ -725,163 +725,179 @@ image_render_color:                     # @image_render_color
 	xor	$a2, $a0, $a1
 	sub.d	$s0, $a2, $a1
 	srai.d	$a1, $a0, 63
-	and	$s6, $a1, $a0
+	and	$s4, $a1, $a0
 .LBB11_2:                               # %.lr.ph
-	st.h	$zero, $sp, 322
-	st.w	$zero, $sp, 318
-	addi.d	$a0, $sp, 318
+	st.h	$zero, $sp, 338
+	st.w	$zero, $sp, 334
+	addi.d	$a0, $sp, 334
 	pcaddu18i	$ra, %call36(gx_color_from_rgb)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 318
-	addi.d	$a1, $sp, 280
-	addi.d	$s5, $sp, 280
-	move	$a2, $s4
+	addi.d	$a0, $sp, 334
+	addi.d	$a1, $sp, 296
+	addi.d	$s3, $sp, 296
+	move	$a2, $s6
 	pcaddu18i	$ra, %call36(gx_color_render)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	move	$s3, $s4
-	addi.d	$a1, $s4, 8
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	add.w	$a1, $s1, $s6
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$a1, $s6, 8
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$a1, $s8, 2047
-	addi.d	$s1, $a1, 1
-	addi.d	$s6, $sp, 248
-	ori	$a7, $zero, 4
-	lu12i.w	$a1, 8
-	ori	$s7, $a1, 129
-	addi.w	$a1, $s0, 0
+	add.w	$a1, $s1, $s4
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$a1, $s5, 2047
+	addi.d	$s1, $a1, 1
+	addi.d	$s6, $sp, 264
+	ori	$a5, $zero, 4
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	lu12i.w	$a1, 4112
+	ori	$a1, $a1, 258
+	lu32i.d	$a1, 65793
+	lu52i.d	$s7, $a1, 16
+	lu12i.w	$a1, 8
+	ori	$a1, $a1, 129
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	addi.w	$a1, $s0, 0
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	move	$s4, $s2
 	b	.LBB11_5
 	.p2align	4, , 16
 .LBB11_3:                               #   in Loop: Header=BB11_5 Depth=1
-	move	$s4, $s8
+	move	$s8, $s5
 	move	$s0, $a0
 	move	$a0, $s6
-	move	$s6, $s5
+	move	$s6, $s3
 .LBB11_4:                               # %.thread164
                                         #   in Loop: Header=BB11_5 Depth=1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	add.d	$s2, $s2, $a1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.d	$s1, $s1, $a1
-	move	$s5, $s6
+	move	$s3, $s6
 	move	$s6, $a0
 	move	$a0, $s0
-	move	$s8, $s4
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	move	$s5, $s8
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	bltu	$a1, $fp, .LBB11_21
 .LBB11_5:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	bne	$a1, $a7, .LBB11_7
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	bne	$a1, $a5, .LBB11_7
 # %bb.6:                                #   in Loop: Header=BB11_5 Depth=1
 	ld.bu	$a1, $fp, 3
-	ld.bu	$a2, $fp, 0
-	xori	$a3, $a1, 255
-	xori	$a1, $a2, 255
-	ld.bu	$a2, $fp, 1
-	mul.d	$a1, $a1, $a3
-	mul.d	$a1, $a1, $s7
+	ld.h	$a2, $fp, 0
+	xori	$a1, $a1, 255
+	vinsgr2vr.h	$vr0, $a2, 0
+	vxori.b	$vr0, $vr0, 255
+	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
+	vilvl.b	$vr0, $vr1, $vr0
+	vinsgr2vr.h	$vr1, $a1, 0
+	vinsgr2vr.h	$vr1, $a1, 1
+	vmul.h	$vr0, $vr1, $vr0
+	vpickve2gr.h	$a2, $vr0, 1
+	bstrpick.d	$a2, $a2, 15, 0
+	vpickve2gr.h	$a3, $vr0, 0
+	bstrpick.d	$a3, $a3, 15, 0
+	mulh.du	$a3, $a3, $s7
+	vinsgr2vr.h	$vr0, $a3, 0
+	ld.bu	$a3, $fp, 2
+	mulh.du	$a2, $a2, $s7
+	vinsgr2vr.h	$vr0, $a2, 1
+	vshuf4i.b	$vr0, $vr0, 8
+	xori	$a2, $a3, 255
+	mul.d	$a1, $a2, $a1
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	mul.d	$a1, $a1, $a2
 	srli.d	$a1, $a1, 23
-	xori	$a2, $a2, 255
-	ld.bu	$a4, $fp, 2
-	mul.d	$a2, $a2, $a3
-	mul.d	$a2, $a2, $s7
-	srli.d	$a2, $a2, 23
-	xori	$a4, $a4, 255
-	mul.d	$a3, $a4, $a3
-	mul.d	$a3, $a3, $s7
-	srli.d	$a3, $a3, 23
-	ori	$a4, $zero, 4
+	ori	$a2, $zero, 4
 	b	.LBB11_8
 	.p2align	4, , 16
 .LBB11_7:                               #   in Loop: Header=BB11_5 Depth=1
-	ld.bu	$a1, $fp, 0
-	ld.bu	$a2, $fp, 1
-	ld.bu	$a3, $fp, 2
-	ori	$a4, $zero, 3
+	ld.h	$a2, $fp, 0
+	ld.bu	$a1, $fp, 2
+	vinsgr2vr.h	$vr0, $a2, 0
+	ori	$a2, $zero, 3
 .LBB11_8:                               #   in Loop: Header=BB11_5 Depth=1
-	slli.d	$a5, $a3, 16
-	slli.d	$a6, $a2, 8
-	or	$a5, $a6, $a5
-	or	$s0, $a5, $a1
-	add.d	$fp, $fp, $a4
+	slli.d	$s0, $a1, 16
+	vpickve2gr.b	$a3, $vr0, 1
+	bstrins.d	$s0, $a3, 15, 8
+	vpickve2gr.b	$a4, $vr0, 0
+	bstrins.d	$s0, $a4, 7, 0
+	add.d	$fp, $fp, $a2
 	beq	$s0, $a0, .LBB11_3
 # %bb.9:                                #   in Loop: Header=BB11_5 Depth=1
-	bstrins.d	$a1, $a1, 63, 8
-	st.h	$a1, $sp, 318
-	bstrins.d	$a2, $a2, 63, 8
-	st.h	$a2, $sp, 320
+	bstrins.d	$a4, $a4, 63, 8
+	st.h	$a4, $sp, 334
 	bstrins.d	$a3, $a3, 63, 8
-	st.h	$a3, $sp, 322
-	addi.d	$a0, $sp, 318
+	st.h	$a3, $sp, 336
+	bstrins.d	$a1, $a1, 63, 8
+	st.h	$a1, $sp, 338
+	addi.d	$a0, $sp, 334
 	pcaddu18i	$ra, %call36(gx_color_from_rgb)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 318
+	addi.d	$a0, $sp, 334
 	move	$a1, $s6
-	move	$a2, $s3
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(gx_color_render)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 280
-	ld.d	$a1, $sp, 248
+	ld.d	$a0, $sp, 296
+	ld.d	$a1, $sp, 264
 	bne	$a0, $a1, .LBB11_15
 # %bb.10:                               #   in Loop: Header=BB11_5 Depth=1
-	ld.w	$a0, $sp, 296
-	ld.w	$a1, $sp, 264
+	ld.w	$a0, $sp, 312
+	ld.w	$a1, $sp, 280
 	bne	$a0, $a1, .LBB11_15
 # %bb.11:                               #   in Loop: Header=BB11_5 Depth=1
 	beqz	$a0, .LBB11_13
 # %bb.12:                               #   in Loop: Header=BB11_5 Depth=1
-	ld.d	$a0, $sp, 288
-	ld.d	$a1, $sp, 256
+	ld.d	$a0, $sp, 304
+	ld.d	$a1, $sp, 272
 	bne	$a0, $a1, .LBB11_15
 .LBB11_13:                              #   in Loop: Header=BB11_5 Depth=1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	bltu	$a0, $fp, .LBB11_15
 # %bb.14:                               #   in Loop: Header=BB11_5 Depth=1
-	move	$s4, $s8
+	move	$s8, $s5
 	move	$a0, $s6
-	move	$s6, $s5
+	move	$s6, $s3
 	b	.LBB11_20
 	.p2align	4, , 16
 .LBB11_15:                              #   in Loop: Header=BB11_5 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 104
-	addi.d	$s4, $s1, -2048
+	addi.d	$s8, $s1, -2048
 	beqz	$a0, .LBB11_18
 # %bb.16:                               #   in Loop: Header=BB11_5 Depth=1
-	addi.d	$a0, $sp, 104
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	addi.d	$a0, $sp, 120
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(gx_path_init)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $s1
 	addi.d	$a5, $a0, -2048
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a6, $a0, $s2
-	addi.d	$a0, $sp, 104
-	move	$a1, $s8
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	move	$a3, $s4
+	addi.d	$a0, $sp, 120
+	move	$a1, $s5
+	move	$a2, $s4
+	move	$a3, $s8
 	move	$a4, $s2
 	pcaddu18i	$ra, %call36(gx_path_add_pgram)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB11_22
 # %bb.17:                               #   in Loop: Header=BB11_5 Depth=1
 	addi.w	$a3, $zero, -1
-	addi.d	$a0, $sp, 104
-	move	$a1, $s5
-	move	$a2, $s3
+	addi.d	$a0, $sp, 120
+	move	$a1, $s3
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(gx_fill_path)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 104
+	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(gx_path_release)
 	jirl	$ra, $ra, 0
 	b	.LBB11_19
 .LBB11_18:                              #   in Loop: Header=BB11_5 Depth=1
-	addi.d	$a0, $s8, 2047
+	addi.d	$a0, $s5, 2047
 	addi.d	$a0, $a0, 1
 	srli.d	$a0, $a0, 12
 	srli.d	$a1, $s1, 12
@@ -894,42 +910,42 @@ image_render_color:                     # @image_render_color
 	xor	$a2, $a2, $a1
 	sub.w	$a2, $a2, $a1
 	addi.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	move	$a4, $s5
-	move	$a5, $s3
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	move	$a4, $s3
+	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(gz_fill_rectangle)
 	jirl	$ra, $ra, 0
 .LBB11_19:                              # %.thread164
                                         #   in Loop: Header=BB11_5 Depth=1
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
-	move	$a0, $s5
+	move	$s4, $s2
+	move	$a0, $s3
 .LBB11_20:                              # %.thread164
                                         #   in Loop: Header=BB11_5 Depth=1
-	ori	$a7, $zero, 4
+	ori	$a5, $zero, 4
 	b	.LBB11_4
 .LBB11_21:
 	ori	$a0, $zero, 1
 	b	.LBB11_23
 .LBB11_22:
 	move	$fp, $a0
-	addi.d	$a0, $sp, 104
+	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(gx_path_release)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 .LBB11_23:                              # %.loopexit
-	ld.d	$s8, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 416
+	ld.d	$s8, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 424                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 432
 	ret
 .Lfunc_end11:
 	.size	image_render_color, .Lfunc_end11-image_render_color

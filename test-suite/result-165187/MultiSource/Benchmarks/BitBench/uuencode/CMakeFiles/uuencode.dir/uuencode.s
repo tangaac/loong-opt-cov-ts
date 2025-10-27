@@ -41,7 +41,7 @@ encode_line:                            # @encode_line
 	masknez	$a5, $a5, $a6
 	maskeqz	$a4, $a4, $a6
 	or	$a5, $a4, $a5
-	ori	$a6, $zero, 16
+	ori	$a6, $zero, 32
 	ori	$a4, $zero, 1
 	bltu	$a5, $a6, .LBB1_7
 # %bb.2:                                # %vector.memcheck

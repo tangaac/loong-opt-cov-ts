@@ -124,8 +124,8 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	st.d	$a5, $sp, 16                    # 8-byte Folded Spill
 	st.w	$zero, $a5, 0
 	ld.w	$a0, $s0, 92
-	ori	$s7, $zero, 274
-	bne	$a0, $s7, .LBB2_12
+	ori	$fp, $zero, 274
+	bne	$a0, $fp, .LBB2_12
 .LBB2_10:                               # %._crit_edge233
 	ld.w	$a1, $s0, 44
 	ori	$a0, $zero, 1
@@ -144,6 +144,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	lu12i.w	$a1, 16384
 	ori	$a1, $a1, 1024
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	ori	$t1, $zero, 3
 	b	.LBB2_17
 .LBB2_13:                               #   in Loop: Header=BB2_17 Depth=1
 	add.d	$a0, $s4, $s2
@@ -166,7 +167,8 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	add.d	$s4, $s4, $a1
 	sub.d	$s2, $s2, $a1
 	vldi	$vr0, -2812
-	beq	$a0, $s7, .LBB2_10
+	ori	$t1, $zero, 3
+	beq	$a0, $fp, .LBB2_10
 .LBB2_17:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_21 Depth 2
                                         #     Child Loop BB2_36 Depth 2
@@ -182,35 +184,30 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
                                         #   in Loop: Header=BB2_17 Depth=1
 	ori	$a2, $zero, 4
 	bltu	$a2, $a1, .LBB2_25
-# %bb.20:                               # %.lr.ph304
+# %bb.20:                               # %.lr.ph303
                                         #   in Loop: Header=BB2_17 Depth=1
 	move	$a6, $zero
-	ori	$a3, $zero, 5
-	sltu	$a2, $a3, $a1
-	masknez	$a3, $a3, $a2
-	maskeqz	$a2, $a1, $a2
-	or	$a2, $a2, $a3
-	bstrpick.d	$a2, $a2, 31, 0
-	addi.d	$a3, $s2, -1
-	add.d	$a4, $s6, $a1
-	sub.d	$a5, $a2, $a1
+	addi.d	$a4, $s2, -1
+	add.d	$a5, $s6, $a1
 	addi.w	$a7, $a1, 1
 	.p2align	4, , 16
 .LBB2_21:                               #   Parent Loop BB2_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a2, $a6
-	ldx.b	$a1, $s4, $a6
-	stx.b	$a1, $a4, $a6
+	ldx.b	$a3, $s4, $a6
+	stx.b	$a3, $a5, $a6
 	ld.d	$a6, $s1, 0
-	move	$a1, $a7
+	move	$a3, $a7
 	st.w	$a7, $s0, 108
 	addi.d	$a6, $a6, 1
 	st.d	$a6, $s1, 0
-	beq	$a3, $a2, .LBB2_26
+	beq	$a4, $a2, .LBB2_26
 # %bb.22:                               #   in Loop: Header=BB2_21 Depth=2
 	addi.d	$a6, $a2, 1
-	addi.w	$a7, $a1, 1
-	bne	$a5, $a6, .LBB2_21
+	add.d	$a7, $a1, $a6
+	addi.d	$t0, $a7, -1
+	addi.w	$a7, $a3, 1
+	bgeu	$t1, $t0, .LBB2_21
 # %bb.23:                               # %.critedge.loopexit
                                         #   in Loop: Header=BB2_17 Depth=1
 	sub.d	$s2, $s2, $a6
@@ -228,8 +225,9 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	move	$s2, $zero
 .LBB2_27:                               # %.critedge
                                         #   in Loop: Header=BB2_17 Depth=1
-	add.d	$a2, $s4, $a2
-	addi.d	$s4, $a2, 1
+	add.d	$a1, $s4, $a2
+	addi.d	$s4, $a1, 1
+	move	$a1, $a3
 	ori	$a2, $zero, 4
 	bgeu	$a2, $a1, .LBB2_66
 .LBB2_28:                               #   in Loop: Header=BB2_17 Depth=1
@@ -245,8 +243,8 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	st.w	$zero, $s0, 96
 	st.w	$zero, $s0, 108
 .LBB2_30:                               #   in Loop: Header=BB2_17 Depth=1
-	ld.d	$s3, $s0, 48
-	bltu	$s3, $s5, .LBB2_34
+	ld.d	$s7, $s0, 48
+	bltu	$s7, $s5, .LBB2_34
 # %bb.31:                               #   in Loop: Header=BB2_17 Depth=1
 	bnez	$a0, .LBB2_67
 # %bb.32:                               #   in Loop: Header=BB2_17 Depth=1
@@ -272,7 +270,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	addi.d	$a3, $a0, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB2_36:                               # %vector.body318
+.LBB2_36:                               # %vector.body317
                                         #   Parent Loop BB2_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $a3, -16
@@ -296,14 +294,14 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	vst	$vr0, $s0, 72
 	st.w	$zero, $s0, 100
 .LBB2_38:                               #   in Loop: Header=BB2_17 Depth=1
-	ld.w	$fp, $s0, 108
-	beqz	$fp, .LBB2_47
+	ld.w	$s3, $s0, 108
+	beqz	$s3, .LBB2_47
 # %bb.39:                               # %.preheader
                                         #   in Loop: Header=BB2_17 Depth=1
-	move	$s7, $zero
-	sltui	$a1, $fp, 20
+	move	$fp, $zero
+	sltui	$a1, $s3, 20
 	ori	$a0, $zero, 19
-	bltu	$a0, $fp, .LBB2_57
+	bltu	$a0, $s3, .LBB2_57
 # %bb.40:                               # %.preheader
                                         #   in Loop: Header=BB2_17 Depth=1
 	beqz	$s2, .LBB2_57
@@ -311,7 +309,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
                                         #   in Loop: Header=BB2_17 Depth=1
 	addi.d	$a0, $s2, -1
 	ori	$a1, $zero, 19
-	sub.d	$a1, $a1, $fp
+	sub.d	$a1, $a1, $s3
 	sltu	$a2, $a0, $a1
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
@@ -321,35 +319,35 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	bltu	$a1, $a2, .LBB2_43
 # %bb.42:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_17 Depth=1
-	add.d	$a0, $s6, $fp
+	add.d	$a0, $s6, $s3
 	sub.d	$a0, $a0, $s4
 	bgeu	$a0, $a2, .LBB2_52
 .LBB2_43:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$s7, $zero
-.LBB2_44:                               # %.lr.ph224.preheader329
+	move	$fp, $zero
+.LBB2_44:                               # %.lr.ph224.preheader328
                                         #   in Loop: Header=BB2_17 Depth=1
-	move	$a0, $fp
+	move	$a0, $s3
 	.p2align	4, , 16
 .LBB2_45:                               # %.lr.ph224
                                         #   Parent Loop BB2_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.b	$a1, $s4, $s7
+	ldx.b	$a1, $s4, $fp
 	move	$a2, $a0
-	addi.d	$s7, $s7, 1
+	addi.d	$fp, $fp, 1
 	addi.d	$a0, $a0, 1
 	stx.b	$a1, $s6, $a2
 	sltui	$a1, $a2, 19
 	bltu	$s8, $a2, .LBB2_56
 # %bb.46:                               # %.lr.ph224
                                         #   in Loop: Header=BB2_45 Depth=2
-	bltu	$s7, $s2, .LBB2_45
+	bltu	$fp, $s2, .LBB2_45
 	b	.LBB2_56
 	.p2align	4, , 16
 .LBB2_47:                               #   in Loop: Header=BB2_17 Depth=1
 	ori	$a0, $zero, 20
 	bltu	$s2, $a0, .LBB2_49
 # %bb.48:                               #   in Loop: Header=BB2_17 Depth=1
-	bltu	$s3, $s5, .LBB2_13
+	bltu	$s7, $s5, .LBB2_13
 .LBB2_49:                               #   in Loop: Header=BB2_17 Depth=1
 	move	$a0, $s0
 	move	$a1, $s4
@@ -359,7 +357,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	beqz	$a0, .LBB2_72
 # %bb.50:                               #   in Loop: Header=BB2_17 Depth=1
 	move	$a2, $s4
-	bltu	$s3, $s5, .LBB2_14
+	bltu	$s7, $s5, .LBB2_14
 # %bb.51:                               #   in Loop: Header=BB2_17 Depth=1
 	move	$a2, $s4
 	ori	$a1, $zero, 2
@@ -367,12 +365,12 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	b	.LBB2_68
 .LBB2_52:                               # %vector.ph
                                         #   in Loop: Header=BB2_17 Depth=1
-	move	$s7, $a1
-	bstrins.d	$s7, $zero, 3, 0
-	add.d	$a0, $s7, $fp
-	addi.d	$a2, $fp, 112
+	move	$fp, $a1
+	bstrins.d	$fp, $zero, 3, 0
+	add.d	$a0, $fp, $s3
+	addi.d	$a2, $s3, 112
 	move	$a3, $s4
-	move	$a4, $s7
+	move	$a4, $fp
 	.p2align	4, , 16
 .LBB2_53:                               # %vector.body
                                         #   Parent Loop BB2_17 Depth=1
@@ -385,30 +383,30 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	bnez	$a4, .LBB2_53
 # %bb.54:                               # %middle.block
                                         #   in Loop: Header=BB2_17 Depth=1
-	bne	$a1, $s7, .LBB2_64
+	bne	$a1, $fp, .LBB2_64
 # %bb.55:                               #   in Loop: Header=BB2_17 Depth=1
 	addi.d	$a1, $a2, -113
 	sltui	$a1, $a1, 19
 	.p2align	4, , 16
 .LBB2_56:                               # %._crit_edge.loopexit
                                         #   in Loop: Header=BB2_17 Depth=1
-	move	$fp, $a0
+	move	$s3, $a0
 .LBB2_57:                               # %._crit_edge
                                         #   in Loop: Header=BB2_17 Depth=1
-	st.w	$fp, $s0, 108
-	bgeu	$s3, $s5, .LBB2_59
+	st.w	$s3, $s0, 108
+	bgeu	$s7, $s5, .LBB2_59
 # %bb.58:                               # %._crit_edge
                                         #   in Loop: Header=BB2_17 Depth=1
 	beqz	$a1, .LBB2_62
 .LBB2_59:                               #   in Loop: Header=BB2_17 Depth=1
-	bstrpick.d	$a2, $fp, 31, 0
+	bstrpick.d	$a2, $s3, 31, 0
 	move	$a0, $s0
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(LzmaDec_TryDummy)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_71
 # %bb.60:                               #   in Loop: Header=BB2_17 Depth=1
-	bltu	$s3, $s5, .LBB2_62
+	bltu	$s7, $s5, .LBB2_62
 # %bb.61:                               #   in Loop: Header=BB2_17 Depth=1
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB2_68
@@ -424,16 +422,16 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	ld.d	$a0, $s0, 32
 	sub.d	$a0, $a0, $s6
 	ld.d	$a2, $s1, 0
-	sub.d	$a1, $s7, $fp
+	sub.d	$a1, $fp, $s3
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a1, $a0, 31, 0
 	add.d	$a0, $a2, $a1
 	st.d	$a0, $s1, 0
 	st.w	$zero, $s0, 108
-	ori	$s7, $zero, 274
+	ori	$fp, $zero, 274
 	b	.LBB2_16
 .LBB2_64:                               #   in Loop: Header=BB2_17 Depth=1
-	move	$fp, $a0
+	move	$s3, $a0
 	b	.LBB2_44
 .LBB2_65:
 	ori	$a0, $zero, 1
@@ -461,7 +459,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 .LBB2_71:
 	ld.d	$a1, $s1, 0
 	move	$a0, $zero
-	add.d	$a1, $a1, $s7
+	add.d	$a1, $a1, $fp
 	b	.LBB2_73
 .LBB2_72:
 	move	$a0, $s6

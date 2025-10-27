@@ -1080,97 +1080,101 @@ mdct_sub48:                             # @mdct_sub48
 	bne	$a1, $a2, .LBB0_28
 # %bb.29:                               # %mdct_long.exit
                                         #   in Loop: Header=BB0_24 Depth=3
-	vld	$vr0, $s6, 640
-	vld	$vr1, $s6, 608
-	vshuf4i.d	$vr0, $vr0, 1
-	vfadd.d	$vr0, $vr1, $vr0
-	vld	$vr1, $s6, 728
-	fld.d	$fa2, $s6, 624
-	fld.d	$fa3, $s6, 632
-	fld.d	$fa4, $s6, 744
-	vld	$vr5, $s6, 656
-	vld	$vr6, $s6, 680
-	vfadd.d	$vr0, $vr0, $vr1
-	fadd.d	$fa1, $fa2, $fa3
-	fadd.d	$fa1, $fa1, $fa4
-	vfsub.d	$vr2, $vr5, $vr6
-	vld	$vr3, $s6, 712
-	fld.d	$fa4, $s6, 672
-	fld.d	$fa5, $s6, 696
-	fld.d	$fa6, $s6, 704
-	vshuf4i.d	$vr3, $vr0, 1
-	vfadd.d	$vr7, $vr2, $vr3
-	fsub.d	$fa2, $fa4, $fa5
-	fadd.d	$fa2, $fa2, $fa6
-	fld.d	$fa4, $a0, -104
-	fld.d	$fa6, $a0, -112
-	vreplvei.d	$vr3, $vr0, 1
-	fld.d	$ft0, $a0, -96
-	fmul.d	$fa4, $fa3, $fa4
-	vreplvei.d	$vr5, $vr0, 0
-	fmadd.d	$fa0, $fa5, $fa6, $fa4
-	fmadd.d	$fa0, $fa1, $ft0, $fa0
-	fld.d	$fa6, $a0, -88
-	vreplvei.d	$vr4, $vr7, 0
-	fld.d	$ft0, $a0, -80
-	fld.d	$ft1, $a0, -72
-	fmadd.d	$fa0, $fa4, $fa6, $fa0
-	vreplvei.d	$vr6, $vr7, 1
-	fmadd.d	$fa0, $fa6, $ft0, $fa0
-	fmadd.d	$fa0, $fa2, $ft1, $fa0
+	fld.d	$fa0, $s6, 608
+	fld.d	$fa1, $s6, 648
+	fld.d	$fa2, $s6, 728
+	fadd.d	$fa0, $fa0, $fa1
+	fadd.d	$fa1, $fa0, $fa2
+	fld.d	$fa0, $s6, 616
+	fld.d	$fa2, $s6, 640
+	fld.d	$fa3, $s6, 736
+	fld.d	$fa4, $s6, 624
+	fld.d	$fa5, $s6, 632
+	fld.d	$fa6, $s6, 744
+	fadd.d	$fa0, $fa0, $fa2
+	fadd.d	$fa3, $fa0, $fa3
+	fadd.d	$fa0, $fa4, $fa5
+	fadd.d	$fa2, $fa0, $fa6
+	fld.d	$fa0, $s6, 656
+	fld.d	$fa4, $s6, 680
+	fld.d	$fa5, $s6, 720
+	fld.d	$fa6, $s6, 664
+	fld.d	$fa7, $s6, 688
+	fld.d	$ft0, $s6, 712
+	fsub.d	$fa0, $fa0, $fa4
+	fadd.d	$fa4, $fa0, $fa5
+	fsub.d	$fa0, $fa6, $fa7
+	fadd.d	$fa5, $fa0, $ft0
+	fld.d	$fa0, $s6, 672
+	fld.d	$fa6, $s6, 696
+	fld.d	$fa7, $s6, 704
+	fld.d	$ft0, $a0, -104
+	fld.d	$ft1, $a0, -112
+	fsub.d	$fa0, $fa0, $fa6
+	fadd.d	$fa6, $fa0, $fa7
+	fmul.d	$fa0, $fa3, $ft0
+	fmadd.d	$fa0, $fa1, $ft1, $fa0
+	fld.d	$fa7, $a0, -96
+	fld.d	$ft0, $a0, -88
+	fld.d	$ft1, $a0, -80
+	fld.d	$ft2, $a0, -72
+	fmadd.d	$fa0, $fa2, $fa7, $fa0
+	fmadd.d	$fa0, $fa4, $ft0, $fa0
+	fmadd.d	$fa0, $fa5, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft2, $fa0
 	fst.d	$fa0, $s5, 128
 	fld.d	$fa0, $a0, -56
 	fld.d	$fa7, $a0, -64
 	fmul.d	$fa0, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa7, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fld.d	$fa7, $a0, -48
 	fld.d	$ft0, $a0, -40
 	fld.d	$ft1, $a0, -32
 	fld.d	$ft2, $a0, -24
-	fmadd.d	$fa0, $fa1, $fa7, $fa0
+	fmadd.d	$fa0, $fa2, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	fmadd.d	$fa0, $fa6, $ft1, $fa0
-	fmadd.d	$fa0, $fa2, $ft2, $fa0
+	fmadd.d	$fa0, $fa5, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft2, $fa0
 	fst.d	$fa0, $s5, 80
 	fld.d	$fa0, $a0, -8
 	fld.d	$fa7, $a0, -16
 	fmul.d	$fa0, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa7, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fld.d	$fa7, $a0, 0
 	fld.d	$ft0, $a0, 8
 	fld.d	$ft1, $a0, 16
 	fld.d	$ft2, $a0, 24
-	fmadd.d	$fa0, $fa1, $fa7, $fa0
+	fmadd.d	$fa0, $fa2, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	fmadd.d	$fa0, $fa6, $ft1, $fa0
-	fmadd.d	$fa0, $fa2, $ft2, $fa0
+	fmadd.d	$fa0, $fa5, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft2, $fa0
 	fst.d	$fa0, $s5, 56
 	fld.d	$fa0, $a0, 40
 	fld.d	$fa7, $a0, 32
 	fmul.d	$fa0, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa7, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fld.d	$fa7, $a0, 48
 	fld.d	$ft0, $a0, 56
 	fld.d	$ft1, $a0, 64
 	fld.d	$ft2, $a0, 72
-	fmadd.d	$fa0, $fa1, $fa7, $fa0
+	fmadd.d	$fa0, $fa2, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	fmadd.d	$fa0, $fa6, $ft1, $fa0
-	fmadd.d	$fa0, $fa2, $ft2, $fa0
+	fmadd.d	$fa0, $fa5, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft2, $fa0
 	fst.d	$fa0, $s5, 8
-	fsub.d	$fa3, $fa5, $fa3
-	fadd.d	$fa2, $fa3, $fa2
+	fsub.d	$fa1, $fa1, $fa3
+	fadd.d	$fa1, $fa1, $fa6
 	fld.d	$fa3, $a0, 88
-	fld.d	$fa5, $a0, 80
-	fsub.d	$fa1, $fa1, $fa4
-	fsub.d	$fa1, $fa1, $fa6
-	fmul.d	$fa3, $fa1, $fa3
-	fmadd.d	$fa3, $fa2, $fa5, $fa3
+	fld.d	$fa6, $a0, 80
+	fsub.d	$fa2, $fa2, $fa4
+	fsub.d	$fa2, $fa2, $fa5
+	fmul.d	$fa3, $fa2, $fa3
+	fmadd.d	$fa3, $fa1, $fa6, $fa3
 	fst.d	$fa3, $s5, 104
 	fld.d	$fa3, $a0, 104
 	fld.d	$fa4, $a0, 96
-	fmul.d	$fa1, $fa1, $fa3
-	fmadd.d	$fa1, $fa2, $fa4, $fa1
+	fmul.d	$fa2, $fa2, $fa3
+	fmadd.d	$fa1, $fa1, $fa4, $fa2
 	fst.d	$fa1, $s5, 32
 	bnez	$s0, .LBB0_31
 	b	.LBB0_23
@@ -2122,26 +2126,31 @@ mdct_init48:                            # @mdct_init48
 	vst	$vr3, $s0, 96
 	pcalau12i	$a0, %pc_hi20(enwindow)
 	addi.d	$a0, $a0, %pc_lo12(enwindow)
-	fld.d	$fa4, $a0, 1984
+	fld.d	$fa3, $a0, 1984
 	fld.d	$fa0, $a0, 0
-	fdiv.d	$fa1, $fa0, $fa4
-	vld	$vr2, $a0, 8
-	vld	$vr3, $a0, 24
-	fst.d	$fa1, $sp, 264
-	vreplvei.d	$vr1, $vr0, 0
-	vfdiv.d	$vr2, $vr2, $vr1
-	vfdiv.d	$vr1, $vr3, $vr1
-	fld.d	$fa3, $a0, 40
-	vst	$vr1, $a0, 16
-	vst	$vr2, $a0, 0
-	fld.d	$fa1, $a0, 48
-	fdiv.d	$fa2, $fa3, $fa0
-	fst.d	$fa2, $a0, 32
-	fld.d	$fa2, $a0, 56
+	fld.d	$fa1, $a0, 8
+	fdiv.d	$fa2, $fa0, $fa3
+	fst.d	$fa2, $sp, 264
+	fld.d	$fa2, $a0, 16
 	fdiv.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $a0, 40
+	fst.d	$fa1, $a0, 0
+	fld.d	$fa1, $a0, 24
+	fdiv.d	$fa2, $fa2, $fa0
+	fst.d	$fa2, $a0, 8
+	fld.d	$fa2, $a0, 32
+	fdiv.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $a0, 16
+	fld.d	$fa1, $a0, 40
+	fdiv.d	$fa2, $fa2, $fa0
+	fst.d	$fa2, $a0, 24
+	fld.d	$fa2, $a0, 48
+	fdiv.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $a0, 32
+	fld.d	$fa1, $a0, 56
+	fdiv.d	$fa2, $fa2, $fa0
+	fst.d	$fa2, $a0, 40
 	addi.d	$a6, $a0, 56
-	fdiv.d	$fa0, $fa2, $fa0
+	fdiv.d	$fa0, $fa1, $fa0
 	fst.d	$fa0, $a0, 48
 	addi.d	$a0, $a0, 120
 	ori	$a2, $zero, 128
@@ -2196,7 +2205,7 @@ mdct_init48:                            # @mdct_init48
 	fdiv.d	$fa1, $fa1, $fa0
 	fst.d	$fa1, $a6, 104
 	fld.d	$fa1, $a0, 64
-	fdiv.d	$fa2, $fa0, $fa4
+	fdiv.d	$fa2, $fa0, $fa3
 	fstx.d	$fa2, $a2, $a4
 	fstx.d	$fa2, $a3, $a4
 	fdiv.d	$fa0, $fa1, $fa0
@@ -2208,26 +2217,26 @@ mdct_init48:                            # @mdct_init48
 	bne	$a2, $a5, .LBB1_3
 # %bb.4:                                # %.preheader197.preheader
 	fld.d	$fa0, $a0, -48
-	fdiv.d	$fa0, $fa0, $fa4
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 120
 	fld.d	$fa0, $a0, -40
-	fdiv.d	$fa0, $fa0, $fa4
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 128
 	fld.d	$fa0, $a0, -32
-	fdiv.d	$fa0, $fa0, $fa4
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 136
 	fld.d	$fa0, $a0, -24
-	fdiv.d	$fa0, $fa0, $fa4
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 144
 	fld.d	$fa0, $a0, -16
-	fdiv.d	$fa0, $fa0, $fa4
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 152
 	fld.d	$fa0, $a0, -8
-	fdiv.d	$fa0, $fa0, $fa4
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 160
 	fld.d	$fa0, $a0, 0
-	vst	$vr4, $sp, 128                  # 16-byte Folded Spill
-	fdiv.d	$fa0, $fa0, $fa4
+	vst	$vr3, $sp, 128                  # 16-byte Folded Spill
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 168
 	ori	$s2, $zero, 31
 	pcalau12i	$a0, %pc_hi20(mm)
@@ -3627,7 +3636,7 @@ all:
 
 	.type	enwindow,@object                # @enwindow
 	.data
-	.p2align	5, 0x0
+	.p2align	3, 0x0
 enwindow:
 	.dword	0x3fa251e002c5be4c              # double 0.035780907000000001
 	.dword	0x3f924e1ffc2760f6              # double 0.017876148000000001

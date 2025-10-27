@@ -57,32 +57,29 @@ InOrder:                                # @InOrder
 	.type	mult,@function
 mult:                                   # @mult
 # %bb.0:
-	lu12i.w	$a2, 429496
-	ori	$a2, $a2, 2989
-	mul.d	$a3, $a0, $a2
-	srli.d	$a4, $a3, 63
-	srai.d	$a3, $a3, 44
-	add.d	$a3, $a3, $a4
-	lu12i.w	$a4, 2
-	ori	$a4, $a4, 1808
-	mul.d	$a5, $a3, $a4
-	sub.d	$a0, $a0, $a5
-	mul.d	$a5, $a1, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 44
-	add.d	$a5, $a5, $a6
-	mul.d	$a6, $a5, $a4
-	sub.d	$a1, $a1, $a6
-	mul.d	$a5, $a5, $a0
-	mul.d	$a3, $a1, $a3
-	add.w	$a3, $a5, $a3
+	lu12i.w	$a2, 2
+	ori	$a2, $a2, 1808
+	div.w	$a3, $a1, $a2
+	div.w	$a4, $a0, $a2
+	vinsgr2vr.w	$vr0, $a4, 0
+	vinsgr2vr.w	$vr0, $a3, 1
+	mod.w	$a0, $a0, $a2
+	mod.w	$a1, $a1, $a2
+	vinsgr2vr.w	$vr1, $a1, 0
+	vinsgr2vr.w	$vr1, $a0, 1
+	vmul.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a3, $vr0, 0
+	vpickve2gr.w	$a4, $vr0, 1
+	add.w	$a3, $a4, $a3
+	lu12i.w	$a4, 429496
+	ori	$a4, $a4, 2989
+	mul.d	$a4, $a3, $a4
+	srli.d	$a5, $a4, 63
+	srai.d	$a4, $a4, 44
+	add.d	$a4, $a4, $a5
+	mul.d	$a4, $a4, $a2
+	sub.d	$a3, $a3, $a4
 	mul.d	$a2, $a3, $a2
-	srli.d	$a5, $a2, 63
-	srai.d	$a2, $a2, 44
-	add.d	$a2, $a2, $a5
-	mul.d	$a2, $a2, $a4
-	sub.d	$a2, $a3, $a2
-	mul.d	$a2, $a2, $a4
 	mul.d	$a0, $a1, $a0
 	add.w	$a0, $a2, $a0
 	ret

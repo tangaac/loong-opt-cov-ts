@@ -166,8 +166,8 @@ main:                                   # @main
 	bnez	$a0, .LBB7_38
 # %bb.4:                                # %polybench_alloc_data.exit15
 	st.d	$zero, $sp, 24
-	lu12i.w	$fp, 2
-	ori	$s2, $fp, 1408
+	lu12i.w	$a0, 2
+	ori	$s2, $a0, 1408
 	lu12i.w	$a1, 1
 	addi.d	$a0, $sp, 24
 	move	$a2, $s2
@@ -203,49 +203,42 @@ main:                                   # @main
 	lu32i.d	$a4, 180224
 	lu52i.d	$a4, $a4, 1033
 	vreplgr2vr.d	$vr2, $a4
-	ori	$a4, $fp, 1424
-	ori	$a5, $zero, 1400
-	move	$a6, $s5
+	ori	$a4, $zero, 1400
+	move	$a5, $s5
 	.p2align	4, , 16
 .LBB7_9:                                # %.preheader.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_10 Depth 2
-	srli.d	$a7, $a0, 32
-	or	$a7, $a7, $a1
-	movgr2fr.d	$fa3, $a7
+	srli.d	$a6, $a0, 32
+	or	$a6, $a6, $a1
+	movgr2fr.d	$fa3, $a6
 	fsub.d	$fa3, $fa3, $fa0
-	move	$a7, $a0
-	bstrins.d	$a7, $a2, 63, 32
-	movgr2fr.d	$fa4, $a7
+	move	$a6, $a0
+	bstrins.d	$a6, $a2, 63, 32
+	movgr2fr.d	$fa4, $a6
 	fadd.d	$fa4, $fa4, $fa3
 	vreplgr2vr.d	$vr3, $a0
 	vreplvei.d	$vr4, $vr4, 0
-	move	$a7, $a3
+	move	$a6, $a3
 	vori.b	$vr5, $vr1, 0
 	.p2align	4, , 16
 .LBB7_10:                               # %vector.body
                                         #   Parent Loop BB7_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vaddi.du	$vr6, $vr5, 2
-	vmul.d	$vr7, $vr5, $vr3
-	vmul.d	$vr6, $vr6, $vr3
-	vffint.d.lu	$vr7, $vr7
+	vmul.d	$vr6, $vr5, $vr3
 	vffint.d.lu	$vr6, $vr6
-	vfdiv.d	$vr7, $vr7, $vr2
 	vfdiv.d	$vr6, $vr6, $vr2
-	vfadd.d	$vr7, $vr7, $vr4
 	vfadd.d	$vr6, $vr6, $vr4
-	add.d	$t0, $a6, $a7
-	vstx	$vr7, $t0, $s2
-	vstx	$vr6, $t0, $a4
-	addi.d	$a7, $a7, 32
-	vaddi.du	$vr5, $vr5, 4
-	bnez	$a7, .LBB7_10
+	add.d	$a7, $a5, $a6
+	vstx	$vr6, $a7, $s2
+	addi.d	$a6, $a6, 16
+	vaddi.du	$vr5, $vr5, 2
+	bnez	$a6, .LBB7_10
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB7_9 Depth=1
 	addi.d	$a0, $a0, 1
-	add.d	$a6, $a6, $s2
-	bne	$a0, $a5, .LBB7_9
+	add.d	$a5, $a5, $s2
+	bne	$a0, $a4, .LBB7_9
 # %bb.12:                               # %init_array.exit.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI7_1)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI7_1)

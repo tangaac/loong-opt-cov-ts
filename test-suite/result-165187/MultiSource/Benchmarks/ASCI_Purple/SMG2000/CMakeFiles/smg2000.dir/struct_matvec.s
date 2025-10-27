@@ -2244,7 +2244,7 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	alsl.d	$s1, $t1, $t3, 3
 	alsl.d	$a0, $t1, $a1, 3
 	st.d	$a0, $sp, 616                   # 8-byte Folded Spill
-	ori	$a0, $zero, 5
+	ori	$a0, $zero, 7
 	sltu	$a1, $a0, $ra
 	mul.d	$a0, $s7, $s6
 	add.w	$t2, $s3, $a0
@@ -2549,9 +2549,9 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	mul.d	$t8, $t8, $a3
 	add.d	$s1, $t8, $s1
 	mul.d	$t8, $s2, $a3
-	add.d	$s3, $t8, $s3
+	add.d	$s2, $t8, $s3
 	ld.d	$s5, $sp, 288                   # 8-byte Folded Reload
-	ld.w	$s2, $s5, 0
+	ld.w	$s3, $s5, 0
 	ld.w	$s4, $s5, 4
 	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	ld.w	$t8, $a0, 4
@@ -2570,7 +2570,7 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	ld.w	$t8, $a0, 12
 	mul.d	$s6, $s7, $s6
 	add.d	$s6, $ra, $s6
-	sub.d	$ra, $s2, $s8
+	sub.d	$ra, $s3, $s8
 	sub.w	$t8, $t8, $s8
 	slt	$s8, $a5, $t8
 	maskeqz	$t8, $t8, $s8
@@ -2580,7 +2580,7 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	mul.d	$t8, $s6, $s8
 	ld.w	$s6, $a2, 8
 	add.w	$t8, $ra, $t8
-	sub.d	$t7, $s2, $t7
+	sub.d	$t7, $s3, $t7
 	sub.d	$t1, $s4, $t1
 	sub.d	$s6, $s5, $s6
 	mul.d	$s6, $s6, $a3
@@ -2604,7 +2604,7 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	ld.w	$s5, $a0, 12
 	add.d	$t1, $s4, $t1
 	ld.w	$s4, $a6, 12
-	sub.d	$s2, $s2, $s6
+	sub.d	$s3, $s3, $s6
 	sub.w	$s5, $s5, $s6
 	slt	$s6, $a5, $s5
 	maskeqz	$s5, $s5, $s6
@@ -2614,9 +2614,9 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	ld.w	$s6, $a0, 28
 	mul.d	$a5, $t1, $s5
-	add.w	$a5, $s2, $a5
+	add.w	$a5, $s3, $a5
 	ld.w	$t1, $a0, 24
-	mul.d	$s2, $s5, $s6
+	mul.d	$s3, $s5, $s6
 	mul.d	$t7, $s5, $t7
 	ld.w	$s5, $a0, 32
 	mul.d	$s7, $s8, $s7
@@ -2639,48 +2639,48 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	st.d	$a2, $sp, 528                   # 8-byte Folded Spill
 	sub.d	$a2, $s6, $a3
 	st.d	$a2, $sp, 520                   # 8-byte Folded Spill
-	sub.d	$a2, $s2, $a3
+	sub.d	$a2, $s3, $a3
 	st.d	$a2, $sp, 512                   # 8-byte Folded Spill
-	mul.d	$a3, $a0, $s2
+	mul.d	$a3, $a0, $s3
 	sub.d	$a0, $t7, $a3
 	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
 	ld.w	$a3, $a6, 16
 	ld.w	$t7, $a6, 24
 	ld.w	$a2, $a6, 20
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
-	add.d	$s2, $a4, $a0
-	addi.d	$s2, $s2, 8
+	add.d	$s3, $a4, $a0
+	addi.d	$s3, $s3, 8
 	alsl.d	$a0, $t7, $a4, 3
 	st.d	$a0, $sp, 632                   # 8-byte Folded Spill
-	alsl.d	$a0, $t7, $s2, 3
+	alsl.d	$a0, $t7, $s3, 3
 	st.d	$a0, $sp, 496                   # 8-byte Folded Spill
 	alsl.d	$a0, $a2, $a4, 3
 	st.d	$a0, $sp, 624                   # 8-byte Folded Spill
-	alsl.d	$a0, $a2, $s2, 3
+	alsl.d	$a0, $a2, $s3, 3
 	st.d	$a0, $sp, 488                   # 8-byte Folded Spill
 	alsl.d	$a0, $a3, $a4, 3
 	st.d	$a0, $sp, 616                   # 8-byte Folded Spill
-	alsl.d	$a0, $a3, $s2, 3
+	alsl.d	$a0, $a3, $s3, 3
 	st.d	$a0, $sp, 480                   # 8-byte Folded Spill
 	alsl.d	$a0, $s4, $a4, 3
 	st.d	$a0, $sp, 608                   # 8-byte Folded Spill
-	alsl.d	$a0, $s4, $s2, 3
+	alsl.d	$a0, $s4, $s3, 3
 	st.d	$a0, $sp, 472                   # 8-byte Folded Spill
 	alsl.d	$a0, $a7, $a4, 3
 	st.d	$a0, $sp, 600                   # 8-byte Folded Spill
-	alsl.d	$a0, $a7, $s2, 3
+	alsl.d	$a0, $a7, $s3, 3
 	st.d	$a0, $sp, 456                   # 8-byte Folded Spill
 	alsl.d	$a0, $t2, $a4, 3
 	st.d	$a0, $sp, 592                   # 8-byte Folded Spill
-	alsl.d	$a0, $t2, $s2, 3
+	alsl.d	$a0, $t2, $s3, 3
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 568                   # 8-byte Folded Reload
 	alsl.d	$a0, $a3, $a4, 3
 	st.d	$a0, $sp, 584                   # 8-byte Folded Spill
 	ld.w	$a2, $a1, 72
-	alsl.d	$a0, $a3, $s2, 3
+	alsl.d	$a0, $a3, $s3, 3
 	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
-	mul.d	$a3, $s3, $t3
+	mul.d	$a3, $s2, $t3
 	ld.w	$a4, $a1, 60
 	add.w	$a2, $a2, $a3
 	mul.d	$a3, $s1, $t3
@@ -2844,21 +2844,21 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 # %bb.161:                              # %vector.memcheck
                                         #   in Loop: Header=BB2_155 Depth=6
 	ld.d	$a1, $sp, 592                   # 8-byte Folded Reload
-	alsl.d	$s8, $t8, $a1, 3
+	alsl.d	$s2, $t8, $a1, 3
 	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	alsl.d	$a1, $t8, $a1, 3
 	sltu	$a1, $t3, $a1
-	sltu	$a2, $s8, $a3
+	sltu	$a2, $s2, $a3
 	and	$a1, $a1, $a2
 	bnez	$a1, .LBB2_174
 # %bb.162:                              # %vector.memcheck
                                         #   in Loop: Header=BB2_155 Depth=6
 	ld.d	$a1, $sp, 584                   # 8-byte Folded Reload
-	alsl.d	$s2, $t8, $a1, 3
+	alsl.d	$s8, $t8, $a1, 3
 	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
 	alsl.d	$a1, $t8, $a1, 3
 	sltu	$a1, $t3, $a1
-	sltu	$a2, $s2, $a3
+	sltu	$a2, $s8, $a3
 	and	$a1, $a1, $a2
 	bnez	$a1, .LBB2_174
 # %bb.163:                              # %vector.memcheck
@@ -2945,9 +2945,9 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
                                         #           Parent Loop BB2_153 Depth=5
                                         #             Parent Loop BB2_155 Depth=6
                                         # =>            This Inner Loop Header: Depth=7
-	vldx	$vr0, $s2, $a0
+	vldx	$vr0, $s8, $a0
 	vldx	$vr1, $t0, $a0
-	vldx	$vr2, $s8, $a0
+	vldx	$vr2, $s2, $a0
 	vldx	$vr3, $a4, $a0
 	vldx	$vr4, $a6, $a0
 	vldx	$vr5, $t7, $a0
@@ -3794,7 +3794,7 @@ hypre_StructMatvecCompute:              # @hypre_StructMatvecCompute
 	add.w	$a0, $a0, $t0
 	addi.d	$t0, $a3, -1
 	sltui	$t0, $t0, 1
-	ori	$t3, $zero, 7
+	ori	$t3, $zero, 9
 	sltu	$t3, $t3, $s5
 	and	$t0, $t3, $t0
 	st.d	$t0, $sp, 536                   # 8-byte Folded Spill

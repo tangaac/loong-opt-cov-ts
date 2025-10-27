@@ -523,14 +523,12 @@ _Z12LzmaBenchConP8_IO_FILEjjj:          # @_Z12LzmaBenchConP8_IO_FILEjjj
 	ld.d	$a0, $sp, 24
 	beqz	$a0, .LBB3_20
 # %bb.19:
-	ld.d	$a1, $sp, 32
-	ld.d	$a2, $sp, 40
-	div.du	$a1, $a1, $a0
-	ld.d	$a3, $sp, 48
-	st.d	$a1, $sp, 32
-	div.du	$a1, $a2, $a0
-	st.d	$a1, $sp, 40
-	div.du	$a0, $a3, $a0
+	vld	$vr0, $sp, 32
+	ld.d	$a1, $sp, 48
+	vreplgr2vr.d	$vr1, $a0
+	vdiv.du	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 32
+	div.du	$a0, $a1, $a0
 	st.d	$a0, $sp, 48
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 24
@@ -538,14 +536,12 @@ _Z12LzmaBenchConP8_IO_FILEjjj:          # @_Z12LzmaBenchConP8_IO_FILEjjj
 	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB3_22
 # %bb.21:
-	ld.d	$a1, $sp, 64
-	ld.d	$a2, $sp, 72
-	div.du	$a1, $a1, $a0
-	ld.d	$a3, $sp, 80
-	st.d	$a1, $sp, 64
-	div.du	$a1, $a2, $a0
-	st.d	$a1, $sp, 72
-	div.du	$a0, $a3, $a0
+	vld	$vr0, $sp, 64
+	ld.d	$a1, $sp, 80
+	vreplgr2vr.d	$vr1, $a0
+	vdiv.du	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 64
+	div.du	$a0, $a1, $a0
 	st.d	$a0, $sp, 80
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 56

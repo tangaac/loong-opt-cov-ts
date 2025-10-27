@@ -1609,7 +1609,7 @@ bc_multiply:                            # @bc_multiply
 	add.d	$a5, $a5, $a6
 	addi.w	$a7, $a7, 1
 	addi.w	$t3, $t3, 1
-	beq	$a7, $s4, .LBB15_13
+	bge	$a7, $s4, .LBB15_13
 .LBB15_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_8 Depth 2
                                         #     Child Loop BB15_11 Depth 2

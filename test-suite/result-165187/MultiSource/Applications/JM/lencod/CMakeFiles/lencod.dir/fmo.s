@@ -288,18 +288,16 @@ FmoInit:                                # @FmoInit
                                         #       Child Loop BB0_48 Depth 3
 	move	$a2, $a3
 	slli.d	$a3, $a3, 2
-	ldx.w	$a5, $a0, $a3
-	ldx.w	$a6, $fp, $s6
+	ldptr.w	$a6, $fp, 15336
 	ldx.w	$a7, $a1, $a3
-	div.wu	$a3, $a5, $a6
-	div.wu	$a4, $a7, $a6
-	bltu	$a4, $a3, .LBB0_44
+	ldx.w	$a5, $a0, $a3
+	div.wu	$a3, $a7, $a6
+	div.wu	$a4, $a5, $a6
+	bltu	$a3, $a4, .LBB0_44
 # %bb.46:                               # %.preheader.lr.ph.i.i
                                         #   in Loop: Header=BB0_45 Depth=1
-	mul.d	$t0, $a3, $a6
-	sub.w	$a5, $a5, $t0
-	mul.d	$a6, $a4, $a6
-	sub.w	$a6, $a7, $a6
+	mod.wu	$a5, $a5, $a6
+	mod.wu	$a6, $a7, $a6
 	bltu	$a6, $a5, .LBB0_44
 	.p2align	4, , 16
 .LBB0_47:                               # %.preheader.i30.i
@@ -313,7 +311,7 @@ FmoInit:                                # @FmoInit
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.w	$t0, $fp, $s6
 	ld.d	$t1, $s4, %pc_lo12(MapUnitToSliceGroupMap)
-	mul.d	$t0, $t0, $a3
+	mul.d	$t0, $t0, $a4
 	add.d	$t0, $t0, $a7
 	bstrpick.d	$t0, $t0, 31, 0
 	addi.w	$a7, $a7, 1
@@ -321,8 +319,8 @@ FmoInit:                                # @FmoInit
 	bgeu	$a6, $a7, .LBB0_48
 # %bb.49:                               # %._crit_edge38.i.i
                                         #   in Loop: Header=BB0_47 Depth=2
-	addi.w	$a3, $a3, 1
-	bgeu	$a4, $a3, .LBB0_47
+	addi.w	$a4, $a4, 1
+	bgeu	$a3, $a4, .LBB0_47
 	b	.LBB0_44
 .LBB0_50:
 	beqz	$s2, .LBB0_22

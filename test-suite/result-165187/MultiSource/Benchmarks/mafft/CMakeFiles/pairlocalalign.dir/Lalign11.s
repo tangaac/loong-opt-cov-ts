@@ -709,13 +709,13 @@ L__align11:                             # @L__align11
 	alsl.d	$a1, $a1, $t3, 3
 	ld.d	$a1, $a1, 0
 	ldx.w	$a5, $a1, $s5
-	move	$a2, $zero
-	addi.w	$a1, $zero, -1
+	move	$a1, $zero
+	addi.w	$a2, $zero, -1
 	ori	$a3, $zero, 45
 	.p2align	4, , 16
 .LBB0_68:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_74 Depth 2
-                                        #     Child Loop BB0_78 Depth 2
+                                        #     Child Loop BB0_77 Depth 2
 	bltz	$a5, .LBB0_71
 # %bb.69:                               #   in Loop: Header=BB0_68 Depth=1
 	beqz	$a5, .LBB0_72
@@ -726,63 +726,63 @@ L__align11:                             # @L__align11
 .LBB0_71:                               #   in Loop: Header=BB0_68 Depth=1
 	addi.w	$a4, $s8, -1
 	nor	$a6, $a4, $zero
-	add.w	$a7, $s8, $a6
-	bnez	$a7, .LBB0_74
-	b	.LBB0_76
+	add.w	$a6, $s8, $a6
+	bnez	$a6, .LBB0_74
+	b	.LBB0_75
 	.p2align	4, , 16
 .LBB0_72:                               #   in Loop: Header=BB0_68 Depth=1
 	addi.w	$a4, $s8, -1
 .LBB0_73:                               #   in Loop: Header=BB0_68 Depth=1
-	move	$a5, $a1
+	move	$a5, $a2
 	nor	$a6, $a4, $zero
-	add.w	$a7, $s8, $a6
-	beqz	$a7, .LBB0_76
+	add.w	$a6, $s8, $a6
+	beqz	$a6, .LBB0_75
 	.p2align	4, , 16
 .LBB0_74:                               # %.lr.ph9.i
                                         #   Parent Loop BB0_68 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t0, $s0, 0
-	ld.d	$t1, $s2, 0
-	add.d	$t0, $t0, $a4
-	ldx.b	$t0, $t0, $a7
-	addi.d	$t2, $t1, -1
-	st.d	$t2, $s2, 0
-	st.b	$t0, $t1, -1
-	ld.d	$t0, $s1, 0
+	ld.d	$a7, $s0, 0
+	ld.d	$t0, $s2, 0
+	add.d	$a7, $a7, $a4
+	ldx.b	$a7, $a7, $a6
 	addi.d	$t1, $t0, -1
-	st.d	$t1, $s1, 0
-	addi.d	$a7, $a7, -1
-	st.b	$a3, $t0, -1
-	bnez	$a7, .LBB0_74
-# %bb.75:                               # %._crit_edge10.loopexit.i
-                                        #   in Loop: Header=BB0_68 Depth=1
-	add.d	$a2, $s8, $a2
-	add.d	$a2, $a6, $a2
-.LBB0_76:                               # %._crit_edge10.i
+	st.d	$t1, $s2, 0
+	st.b	$a7, $t0, -1
+	ld.d	$a7, $s1, 0
+	addi.d	$t0, $a7, -1
+	st.d	$t0, $s1, 0
+	st.b	$a3, $a7, -1
+	addi.d	$a6, $a6, -1
+	addi.d	$a1, $a1, 1
+	bnez	$a6, .LBB0_74
+.LBB0_75:                               # %._crit_edge10.i
                                         #   in Loop: Header=BB0_68 Depth=1
 	add.w	$a6, $a5, $s3
-	beq	$a5, $a1, .LBB0_79
-# %bb.77:                               # %.lr.ph14.preheader.i
+	beq	$a5, $a2, .LBB0_79
+# %bb.76:                               # %.lr.ph14.preheader.i
                                         #   in Loop: Header=BB0_68 Depth=1
 	nor	$a5, $a5, $zero
+	move	$a7, $a5
 	.p2align	4, , 16
-.LBB0_78:                               # %.lr.ph14.i
+.LBB0_77:                               # %.lr.ph14.i
                                         #   Parent Loop BB0_68 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a7, $s2, 0
-	addi.d	$t0, $a7, -1
-	st.d	$t0, $s2, 0
-	st.b	$a3, $a7, -1
-	ld.d	$a7, $fp, 0
-	ld.d	$t0, $s1, 0
-	add.d	$a7, $a7, $a6
-	ldx.b	$a7, $a7, $a5
+	ld.d	$t0, $s2, 0
 	addi.d	$t1, $t0, -1
-	st.d	$t1, $s1, 0
-	st.b	$a7, $t0, -1
-	addi.d	$a5, $a5, -1
-	addi.d	$a2, $a2, 1
-	bnez	$a5, .LBB0_78
+	st.d	$t1, $s2, 0
+	st.b	$a3, $t0, -1
+	ld.d	$t0, $fp, 0
+	ld.d	$t1, $s1, 0
+	add.d	$t0, $t0, $a6
+	ldx.b	$t0, $t0, $a7
+	addi.d	$t2, $t1, -1
+	st.d	$t2, $s1, 0
+	addi.d	$a7, $a7, -1
+	st.b	$t0, $t1, -1
+	bnez	$a7, .LBB0_77
+# %bb.78:                               # %._crit_edge15.loopexit.i
+                                        #   in Loop: Header=BB0_68 Depth=1
+	add.d	$a1, $a1, $a5
 .LBB0_79:                               # %._crit_edge15.i
                                         #   in Loop: Header=BB0_68 Depth=1
 	addi.w	$a5, $s8, 0
@@ -809,10 +809,10 @@ L__align11:                             # @L__align11
 	ldx.w	$a5, $a5, $a7
 	beq	$a5, $s7, .LBB0_83
 # %bb.82:                               #   in Loop: Header=BB0_68 Depth=1
-	addi.w	$a2, $a2, 2
+	addi.w	$a1, $a1, 2
 	move	$s8, $a4
 	move	$s3, $a6
-	bge	$a0, $a2, .LBB0_68
+	bge	$a0, $a1, .LBB0_68
 .LBB0_83:                               # %._crit_edge23.i
 	addi.d	$a0, $a4, 1
 	sltui	$a0, $a0, 1

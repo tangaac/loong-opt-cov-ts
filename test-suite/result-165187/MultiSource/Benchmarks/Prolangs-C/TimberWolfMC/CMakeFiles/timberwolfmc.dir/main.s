@@ -1305,12 +1305,17 @@ prepSpots:                              # @prepSpots
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(spotXhash)
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	ld.w	$a3, $a2, %pc_lo12(spotSize)
-	sub.w	$a2, $s3, $a1
-	div.w	$a2, $a2, $a3
-	sub.w	$a1, $s2, $a1
-	div.w	$a1, $a1, $a3
-	addi.w	$a4, $a2, 1
+	ld.w	$a2, $a2, %pc_lo12(spotSize)
+	vinsgr2vr.w	$vr0, $s3, 0
+	vinsgr2vr.w	$vr0, $s2, 1
+	vinsgr2vr.w	$vr1, $a1, 0
+	vinsgr2vr.w	$vr1, $a1, 1
+	vsub.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a1, $vr0, 1
+	div.w	$a1, $a1, $a2
+	vpickve2gr.w	$a3, $vr0, 0
+	div.w	$a3, $a3, $a2
+	addi.w	$a4, $a3, 1
 	bge	$a4, $a1, .LBB1_17
 # %bb.19:                               # %.preheader135.lr.ph
                                         #   in Loop: Header=BB1_18 Depth=1
@@ -1318,17 +1323,17 @@ prepSpots:                              # @prepSpots
 	ld.w	$a5, $a4, %pc_lo12(spotYhash)
 	add.d	$a0, $a0, $s0
 	sub.w	$a0, $a0, $a5
-	div.w	$a4, $a0, $a3
+	div.w	$a4, $a0, $a2
 	add.d	$a0, $s1, $a5
 	sub.w	$a0, $fp, $a0
-	div.w	$a3, $a0, $a3
-	addi.w	$a0, $a3, 1
+	div.w	$a5, $a0, $a2
+	addi.w	$a0, $a5, 1
 	bge	$a0, $a4, .LBB1_17
 # %bb.20:                               # %.preheader135.us.preheader
                                         #   in Loop: Header=BB1_18 Depth=1
-	addi.d	$a0, $a3, 1
-	addi.d	$a2, $a2, 1
-	nor	$a3, $a3, $zero
+	addi.d	$a0, $a5, 1
+	addi.d	$a2, $a3, 1
+	nor	$a3, $a5, $zero
 	add.d	$a3, $a3, $a4
 	.p2align	4, , 16
 .LBB1_21:                               # %.preheader135.us

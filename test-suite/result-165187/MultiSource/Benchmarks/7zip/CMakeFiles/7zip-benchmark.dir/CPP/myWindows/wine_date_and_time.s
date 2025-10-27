@@ -410,7 +410,13 @@ LocalFileTimeToFileTime:                # @LocalFileTimeToFileTime
 .Lfunc_end6:
 	.size	LocalFileTimeToFileTime, .Lfunc_end6-LocalFileTimeToFileTime
                                         # -- End function
-	.globl	GetSystemTime                   # -- Begin function GetSystemTime
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function GetSystemTime
+.LCPI7_0:
+	.dword	10000000                        # 0x989680
+	.dword	10                              # 0xa
+	.text
+	.globl	GetSystemTime
 	.p2align	5
 	.type	GetSystemTime,@function
 GetSystemTime:                          # @GetSystemTime
@@ -423,13 +429,12 @@ GetSystemTime:                          # @GetSystemTime
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
-	ld.d	$a1, $sp, 8
-	lu12i.w	$a2, 2441
-	ori	$a2, $a2, 1664
-	mul.d	$a0, $a0, $a2
-	alsl.d	$a1, $a1, $a1, 2
-	slli.d	$a1, $a1, 1
+	vld	$vr0, $sp, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI7_0)
+	vmul.d	$vr0, $vr0, $vr1
+	vpickve2gr.d	$a0, $vr0, 0
+	vpickve2gr.d	$a1, $vr0, 1
 	add.d	$a0, $a0, $a1
 	lu12i.w	$a1, -175128
 	lu32i.d	$a1, -151074
@@ -441,38 +446,40 @@ GetSystemTime:                          # @GetSystemTime
 	lu52i.d	$a0, $a0, -661
 	mulh.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $a1
-	srli.d	$a3, $a0, 63
-	srai.d	$a0, $a0, 23
-	add.d	$a3, $a0, $a3
-	mul.d	$a0, $a3, $a2
-	sub.d	$a0, $a1, $a0
-	lu12i.w	$a2, 429496
-	ori	$a2, $a2, 2989
-	mul.d	$a0, $a0, $a2
 	srli.d	$a2, $a0, 63
+	srai.d	$a0, $a0, 23
+	add.d	$a2, $a0, $a2
+	lu12i.w	$a0, 2441
+	ori	$a0, $a0, 1664
+	mul.d	$a0, $a2, $a0
+	sub.d	$a0, $a1, $a0
+	lu12i.w	$a3, 429496
+	ori	$a3, $a3, 2989
+	mul.d	$a0, $a0, $a3
+	srli.d	$a3, $a0, 63
 	srli.d	$a0, $a0, 44
-	add.d	$a0, $a0, $a2
-	lu12i.w	$a2, -122792
-	ori	$a2, $a2, 483
-	lu32i.d	$a2, 261917
-	lu52i.d	$a2, $a2, -1490
-	mulh.d	$a2, $a1, $a2
-	add.d	$a1, $a2, $a1
-	srli.d	$a2, $a1, 63
+	add.d	$a0, $a0, $a3
+	lu12i.w	$a3, -122792
+	ori	$a3, $a3, 483
+	lu32i.d	$a3, 261917
+	lu52i.d	$a3, $a3, -1490
+	mulh.d	$a3, $a1, $a3
+	add.d	$a1, $a3, $a1
+	srli.d	$a3, $a1, 63
 	srai.d	$a1, $a1, 39
-	add.d	$a5, $a1, $a2
+	add.d	$a5, $a1, $a3
 	lu12i.w	$a1, -203502
 	ori	$a1, $a1, 2391
 	lu32i.d	$a1, 379040
 	lu52i.d	$a1, $a1, 388
-	mulh.d	$a1, $a3, $a1
-	srli.d	$a2, $a1, 63
+	mulh.d	$a1, $a2, $a1
+	srli.d	$a3, $a1, 63
 	srai.d	$a1, $a1, 13
-	add.d	$a1, $a1, $a2
-	lu12i.w	$a2, 21
-	ori	$a2, $a2, 384
-	mul.d	$a1, $a1, $a2
-	sub.d	$a2, $a3, $a1
+	add.d	$a1, $a1, $a3
+	lu12i.w	$a3, 21
+	ori	$a3, $a3, 384
+	mul.d	$a1, $a1, $a3
+	sub.d	$a2, $a2, $a1
 	lu12i.w	$a1, -452053
 	ori	$a1, $a1, 965
 	mul.d	$a1, $a2, $a1

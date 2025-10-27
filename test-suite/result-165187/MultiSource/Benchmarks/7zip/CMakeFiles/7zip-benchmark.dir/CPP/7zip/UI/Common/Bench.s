@@ -4092,18 +4092,18 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	bltu	$a2, $a1, .LBB13_72
 # %bb.2:
 	ori	$a1, $zero, 1
-	sltu	$a1, $a1, $a0
-	addi.d	$a1, $a1, 1
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	ori	$a2, $zero, 2
-	sltu	$a1, $a2, $a0
-	masknez	$a2, $a2, $a1
+	sltu	$a3, $a1, $a0
+	ori	$a1, $zero, 2
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	maskeqz	$a1, $a0, $a1
-	or	$a0, $a1, $a2
-	bstrpick.d	$a0, $a0, 31, 1
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	addi.w	$s1, $a0, 0
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
+	bstrpick.d	$a1, $a1, 31, 1
+	addi.d	$a0, $a3, 1
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	addi.w	$s1, $a1, 0
 	ori	$a0, $zero, 224
 	mul.d	$s0, $s1, $a0
 	addi.d	$a0, $s0, 8
@@ -4195,7 +4195,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	move	$a1, $s7
 	ori	$a2, $zero, 224
 	bne	$s8, $a0, .LBB13_5
-# %bb.13:                               # %.lr.ph344.preheader
+# %bb.13:                               # %.lr.ph341.preheader
 	lu12i.w	$a0, 88485
 	ori	$a0, $a0, 1509
 	lu32i.d	$a0, 146357
@@ -4205,7 +4205,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	move	$s5, $a1
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	move	$s7, $a1
-.LBB13_14:                              # %.lr.ph344
+.LBB13_14:                              # %.lr.ph341
                                         # =>This Inner Loop Header: Depth=1
 .Ltmp75:                                # EH_LABEL
 	addi.d	$a3, $sp, 184
@@ -4222,13 +4222,13 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$s0, $s0, -1
 	addi.d	$s5, $s5, 224
 	bnez	$s0, .LBB13_14
-# %bb.17:                               # %._crit_edge345
+# %bb.17:                               # %._crit_edge342
 .Ltmp78:                                # EH_LABEL
 	addi.d	$a0, $sp, 136
 	pcaddu18i	$ra, %call36(CriticalSection_Init)
 	jirl	$ra, $ra, 0
 .Ltmp79:                                # EH_LABEL
-# %bb.18:                               # %.lr.ph348
+# %bb.18:                               # %.lr.ph345
 	st.w	$zero, $sp, 176
 	ori	$s0, $zero, 1
 	st.b	$s0, $sp, 180
@@ -4283,7 +4283,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 .Ltmp87:                                # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp88:                                # EH_LABEL
-# %bb.25:                               # %._crit_edge511
+# %bb.25:                               # %._crit_edge508
 	ld.d	$a1, $fp, 56
 	ld.d	$s4, $fp, 48
 .LBB13_26:
@@ -4320,7 +4320,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$s0, $s1, 8
 	addi.d	$s2, $fp, -216
 	.p2align	4, , 16
-.LBB13_31:                              # %.preheader.i308
+.LBB13_31:                              # %.preheader.i305
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a0, $s2, $s1
 	pcaddu18i	$ra, %call36(_ZN12CEncoderInfoD2Ev)
@@ -4396,7 +4396,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 .Ltmp98:                                # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp99:                                # EH_LABEL
-# %bb.42:                               # %._crit_edge514
+# %bb.42:                               # %._crit_edge511
                                         #   in Loop: Header=BB13_39 Depth=1
 	ld.d	$a1, $s4, 40
 .LBB13_43:                              #   in Loop: Header=BB13_39 Depth=1
@@ -4424,7 +4424,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 .Ltmp102:                               # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp103:                               # EH_LABEL
-# %bb.46:                               # %._crit_edge516
+# %bb.46:                               # %._crit_edge513
                                         #   in Loop: Header=BB13_39 Depth=1
 	ld.d	$a1, $s4, 48
 .LBB13_47:                              #   in Loop: Header=BB13_39 Depth=1
@@ -4455,13 +4455,13 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$s5, $s5, -1
 	addi.d	$s4, $s4, 224
 	bnez	$s5, .LBB13_39
-.LBB13_52:                              # %._crit_edge349
+.LBB13_52:                              # %._crit_edge346
 	ori	$a0, $zero, 4
 	bltu	$s1, $a0, .LBB13_56
-# %bb.53:                               # %.lr.ph351.preheader
+# %bb.53:                               # %.lr.ph348.preheader
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
 	move	$s3, $s7
-.LBB13_54:                              # %.lr.ph351
+.LBB13_54:                              # %.lr.ph348
                                         # =>This Inner Loop Header: Depth=1
 .Ltmp111:                               # EH_LABEL
 	move	$a0, $s3
@@ -4473,7 +4473,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$s0, $s0, -1
 	addi.d	$s3, $s3, 224
 	bnez	$s0, .LBB13_54
-.LBB13_56:                              # %.loopexit331
+.LBB13_56:                              # %.loopexit328
 	ld.w	$s3, $sp, 176
 	bnez	$s3, .LBB13_69
 # %bb.57:
@@ -4497,7 +4497,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	ld.d	$a1, $sp, 208
 	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a0, $a1
-.LBB13_60:                              # %.lr.ph355.preheader
+.LBB13_60:                              # %.lr.ph352.preheader
 	ld.d	$a1, $s0, 24
 	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 80
@@ -4543,14 +4543,14 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	add.d	$a2, $a4, $a3
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a0, $a3, .LBB13_67
-.LBB13_65:                              # %.lr.ph355.preheader600
+.LBB13_65:                              # %.lr.ph352.preheader597
 	ori	$a3, $zero, 224
 	mul.d	$a3, $a0, $a3
 	add.d	$a3, $a3, $fp
 	addi.d	$a3, $a3, 176
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	sub.d	$a0, $a4, $a0
-.LBB13_66:                              # %.lr.ph355
+.LBB13_66:                              # %.lr.ph352
                                         # =>This Inner Loop Header: Depth=1
 	ld.wu	$a4, $a3, -4
 	ld.wu	$a5, $a3, 0
@@ -4559,7 +4559,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 224
 	bnez	$a0, .LBB13_66
-.LBB13_67:                              # %.loopexit586
+.LBB13_67:                              # %.loopexit583
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a3, $a0, 0
@@ -4574,7 +4574,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 # %bb.68:
 	move	$s3, $a0
 	beqz	$a0, .LBB13_73
-.LBB13_69:                              # %.thread312
+.LBB13_69:                              # %.thread309
 	addi.d	$a0, $sp, 136
 	pcaddu18i	$ra, %call36(pthread_mutex_destroy)
 	jirl	$ra, $ra, 0
@@ -4602,7 +4602,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 304
 	ret
-.LBB13_73:                              # %.lr.ph362
+.LBB13_73:                              # %.lr.ph359
 	ori	$a0, $zero, 1
 	sltu	$a1, $a0, $s1
 	st.w	$zero, $sp, 176
@@ -4652,7 +4652,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	ld.d	$a1, $sp, 208
 	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a0, $a1
-.LBB13_78:                              # %_ZL12SetStartTimeR10CBenchInfo.exit303
+.LBB13_78:                              # %_ZL12SetStartTimeR10CBenchInfo.exit300
                                         #   in Loop: Header=BB13_74 Depth=1
 	st.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(clock)
@@ -4663,7 +4663,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	ori	$a1, $zero, 2
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	bltu	$a0, $a1, .LBB13_85
-# %bb.80:                               # %.preheader328
+# %bb.80:                               # %.preheader325
                                         #   in Loop: Header=BB13_74 Depth=1
 	move	$s0, $zero
 	move	$s2, $zero
@@ -4735,7 +4735,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	pcaddu18i	$ra, %call36(Thread_Wait)
 	jirl	$ra, $ra, 0
 .Ltmp124:                               # EH_LABEL
-# %bb.92:                               # %_ZN8NWindows7CThread4WaitEv.exit306
+# %bb.92:                               # %_ZN8NWindows7CThread4WaitEv.exit303
                                         #   in Loop: Header=BB13_91 Depth=2
 	ld.w	$a0, $s1, 0
 	sltui	$a1, $a0, 1
@@ -4752,13 +4752,13 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$s2, $s2, 224
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	bne	$s0, $a0, .LBB13_90
-# %bb.94:                               # %._crit_edge368
+# %bb.94:                               # %._crit_edge365
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	bnez	$s3, .LBB13_69
-.LBB13_95:                              # %.thread322
+.LBB13_95:                              # %.thread319
 	ld.w	$s3, $sp, 176
 	bnez	$s3, .LBB13_69
-# %bb.96:                               # %.lr.ph373.preheader
+# %bb.96:                               # %.lr.ph370.preheader
 	ld.d	$a0, $fp, 48
 	addi.d	$a0, $a0, 24
 	addi.d	$a1, $sp, 80
@@ -4775,7 +4775,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	move	$a1, $zero
 	move	$a2, $zero
 	b	.LBB13_101
-.LBB13_98:                              # %vector.ph568
+.LBB13_98:                              # %vector.ph565
 	move	$a1, $zero
 	move	$a2, $zero
 	move	$a3, $zero
@@ -4785,7 +4785,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	slli.d	$a0, $a0, 1
 	addi.d	$a5, $fp, 400
 	move	$a6, $a0
-.LBB13_99:                              # %vector.body571
+.LBB13_99:                              # %vector.body568
                                         # =>This Inner Loop Header: Depth=1
 	ld.wu	$a7, $a5, -228
 	ld.wu	$t0, $a5, -4
@@ -4798,19 +4798,19 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 448
 	bnez	$a6, .LBB13_99
-# %bb.100:                              # %middle.block578
+# %bb.100:                              # %middle.block575
 	add.d	$a1, $a2, $a1
 	add.d	$a2, $a4, $a3
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a0, $a3, .LBB13_103
-.LBB13_101:                             # %.lr.ph373.preheader587
+.LBB13_101:                             # %.lr.ph370.preheader584
 	ori	$a3, $zero, 224
 	mul.d	$a3, $a0, $a3
 	add.d	$a3, $a3, $fp
 	addi.d	$a3, $a3, 176
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	sub.d	$a0, $a4, $a0
-.LBB13_102:                             # %.lr.ph373
+.LBB13_102:                             # %.lr.ph370
                                         # =>This Inner Loop Header: Depth=1
 	ld.wu	$a4, $a3, -4
 	ld.wu	$a5, $a3, 0
@@ -4819,7 +4819,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 224
 	bnez	$a0, .LBB13_102
-.LBB13_103:                             # %.loopexit585
+.LBB13_103:                             # %.loopexit582
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a3, $a0, 0
 	st.d	$a1, $sp, 112
@@ -4857,10 +4857,10 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 .LBB13_110:
 .Ltmp116:                               # EH_LABEL
 	b	.LBB13_121
-.LBB13_111:                             # %.loopexit.split-lp412
+.LBB13_111:                             # %.loopexit.split-lp409
 .Ltmp92:                                # EH_LABEL
 	b	.LBB13_121
-.LBB13_112:                             # %.loopexit.split-lp417
+.LBB13_112:                             # %.loopexit.split-lp414
 .Ltmp95:                                # EH_LABEL
 	b	.LBB13_121
 .LBB13_113:
@@ -4872,10 +4872,10 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 .LBB13_115:
 .Ltmp122:                               # EH_LABEL
 	b	.LBB13_121
-.LBB13_116:                             # %.loopexit416
+.LBB13_116:                             # %.loopexit413
 .Ltmp110:                               # EH_LABEL
 	b	.LBB13_121
-.LBB13_117:                             # %.loopexit411
+.LBB13_117:                             # %.loopexit408
 .Ltmp107:                               # EH_LABEL
 	b	.LBB13_121
 .LBB13_118:                             # %.loopexit.split-lp
@@ -4884,7 +4884,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 .LBB13_119:
 .Ltmp113:                               # EH_LABEL
 	b	.LBB13_121
-.LBB13_120:                             # %.loopexit410
+.LBB13_120:                             # %.loopexit407
 .Ltmp104:                               # EH_LABEL
 .LBB13_121:
 	move	$fp, $a0

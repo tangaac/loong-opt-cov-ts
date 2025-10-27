@@ -31,9 +31,9 @@ woverlapf:                              # @woverlapf
 	ld.w	$a5, $fp, 60
 	ld.w	$a4, $fp, 64
 	ld.w	$a3, $fp, 68
-	add.w	$t0, $a6, $a1
+	add.w	$t2, $a6, $a1
 	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
-	add.w	$t1, $a5, $a1
+	add.w	$t3, $a5, $a1
 	add.w	$s2, $a4, $a2
 	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
 	add.w	$s3, $a3, $a2
@@ -45,11 +45,11 @@ woverlapf:                              # @woverlapf
 	blt	$a1, $a0, .LBB0_2
 # %bb.1:
 	fld.d	$fa0, $fp, 8
-	move	$a0, $t0
+	move	$a0, $t2
 	move	$a1, $s2
 	move	$a2, $s3
-	move	$s0, $t0
-	move	$s1, $t1
+	move	$s0, $t2
+	move	$s1, $t3
 	pcaddu18i	$ra, %call36(wireestx)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $fp, 16
@@ -73,14 +73,14 @@ woverlapf:                              # @woverlapf
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(wireesty)
 	jirl	$ra, $ra, 0
-	move	$t1, $s1
-	move	$t0, $s0
+	move	$t3, $s1
+	move	$t2, $s0
 	add.w	$s3, $a0, $s3
 .LBB0_2:
 	pcalau12i	$a0, %got_pc_hi20(binOffsetX)
 	ld.d	$a0, $a0, %got_pc_lo12(binOffsetX)
 	ld.w	$a0, $a0, 0
-	sub.w	$a1, $t0, $a0
+	sub.w	$a1, $t2, $a0
 	pcalau12i	$a2, %got_pc_hi20(binWidthX)
 	ld.d	$a2, $a2, %got_pc_lo12(binWidthX)
 	ld.w	$a2, $a2, 0
@@ -96,57 +96,70 @@ woverlapf:                              # @woverlapf
 	masknez	$a1, $a1, $a3
 	ori	$a5, $zero, 1
 	maskeqz	$a3, $a5, $a3
-	or	$t2, $a3, $a1
-	sub.w	$a0, $t1, $a0
-	div.w	$a0, $a0, $a2
-	slt	$a1, $a4, $a0
-	slt	$a2, $a5, $a0
-	maskeqz	$a0, $a0, $a2
-	masknez	$a2, $a5, $a2
-	or	$a0, $a0, $a2
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a4, $a1
-	or	$a0, $a1, $a0
+	or	$t4, $a3, $a1
 	pcalau12i	$a1, %got_pc_hi20(binOffsetY)
 	ld.d	$a1, $a1, %got_pc_lo12(binOffsetY)
 	ld.w	$a1, $a1, 0
 	st.d	$s2, $sp, 176                   # 8-byte Folded Spill
-	sub.w	$a2, $s2, $a1
-	pcalau12i	$a3, %got_pc_hi20(binWidthY)
-	ld.d	$a3, $a3, %got_pc_lo12(binWidthY)
-	ld.w	$a3, $a3, 0
-	div.w	$a2, $a2, $a3
-	slti	$a4, $a2, 1
-	pcalau12i	$a6, %got_pc_hi20(numBinsY)
-	ld.d	$a6, $a6, %got_pc_lo12(numBinsY)
+	sub.w	$a3, $s2, $a1
+	pcalau12i	$a6, %got_pc_hi20(binWidthY)
+	ld.d	$a6, $a6, %got_pc_lo12(binWidthY)
 	ld.w	$a6, $a6, 0
-	slt	$a7, $a2, $a6
-	maskeqz	$a2, $a2, $a7
-	masknez	$a7, $a6, $a7
-	or	$a2, $a2, $a7
-	masknez	$a2, $a2, $a4
-	maskeqz	$a4, $a5, $a4
-	or	$a4, $a4, $a2
+	div.w	$a3, $a3, $a6
+	slti	$a7, $a3, 1
+	pcalau12i	$t0, %got_pc_hi20(numBinsY)
+	ld.d	$t0, $t0, %got_pc_lo12(numBinsY)
+	ld.w	$t0, $t0, 0
+	slt	$t1, $a3, $t0
+	maskeqz	$a3, $a3, $t1
+	masknez	$t1, $t0, $t1
+	or	$a3, $a3, $t1
+	masknez	$a3, $a3, $a7
+	maskeqz	$a7, $a5, $a7
+	or	$a7, $a7, $a3
+	vinsgr2vr.w	$vr0, $t3, 0
 	st.d	$s3, $sp, 168                   # 8-byte Folded Spill
-	sub.w	$a1, $s3, $a1
-	div.w	$a1, $a1, $a3
-	slt	$a2, $a6, $a1
-	slt	$a3, $a5, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $a5, $a3
-	or	$a1, $a1, $a3
+	vinsgr2vr.w	$vr0, $s3, 1
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a1, 1
+	vsub.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr0, 1
+	div.w	$a1, $a0, $a6
+	vpickve2gr.w	$a0, $vr0, 0
+	div.w	$a0, $a0, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	vinsgr2vr.w	$vr0, $a1, 1
+	slt	$a2, $a5, $a0
+	maskeqz	$a0, $a0, $a2
+	masknez	$a2, $a5, $a2
+	or	$a0, $a0, $a2
+	vinsgr2vr.w	$vr1, $a4, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vslt.w	$vr0, $vr1, $vr0
+	vshuf4i.w	$vr1, $vr0, 16
+	vpickve2gr.d	$a2, $vr0, 0
+	andi	$a2, $a2, 1
+	masknez	$a0, $a0, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a0, $a2, $a0
+	slt	$a2, $a5, $a1
+	maskeqz	$a1, $a1, $a2
+	masknez	$a2, $a5, $a2
+	or	$a1, $a1, $a2
+	vpickve2gr.d	$a2, $vr1, 1
+	andi	$a2, $a2, 1
 	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $a6, $a2
+	maskeqz	$a2, $t0, $a2
 	or	$a1, $a2, $a1
-	xor	$a2, $t2, $a0
+	xor	$a2, $t4, $a0
 	sltui	$a2, $a2, 1
-	xor	$a3, $a4, $a1
+	xor	$a3, $a7, $a1
 	sltui	$a3, $a3, 1
 	and	$a2, $a2, $a3
-	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
-	maskeqz	$a3, $t2, $a2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
-	maskeqz	$a2, $a4, $a2
+	st.d	$t4, $sp, 16                    # 8-byte Folded Spill
+	maskeqz	$a3, $t4, $a2
+	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
+	maskeqz	$a2, $a7, $a2
 	pcalau12i	$a4, %got_pc_hi20(binX)
 	ld.d	$a4, $a4, %got_pc_lo12(binX)
 	st.w	$a3, $a4, 0
@@ -169,8 +182,8 @@ woverlapf:                              # @woverlapf
 	move	$a1, $zero
 	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$t0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$t1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$t3, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 64                    # 8-byte Folded Spill
@@ -241,13 +254,13 @@ woverlapf:                              # @woverlapf
 	st.d	$a5, $sp, 160                   # 8-byte Folded Spill
 	b	.LBB0_19
 .LBB0_14:                               #   in Loop: Header=BB0_19 Depth=3
-	slt	$a0, $s2, $t0
+	slt	$a0, $s2, $t2
 	masknez	$a1, $s2, $a0
-	maskeqz	$a0, $t0, $a0
+	maskeqz	$a0, $t2, $a0
 	or	$a0, $a0, $a1
-	slt	$a1, $t1, $s4
+	slt	$a1, $t3, $s4
 	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $t1, $a1
+	maskeqz	$a1, $t3, $a1
 	or	$a1, $a1, $a2
 	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
 	slt	$a2, $s1, $a4
@@ -305,8 +318,8 @@ woverlapf:                              # @woverlapf
 	jirl	$ra, $ra, 0
 .LBB0_16:                               # %._crit_edge.thread
                                         #   in Loop: Header=BB0_19 Depth=3
-	ld.d	$t0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
 .LBB0_17:                               # %._crit_edge.thread
                                         #   in Loop: Header=BB0_19 Depth=3
@@ -399,15 +412,15 @@ woverlapf:                              # @woverlapf
 	ld.d	$a7, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 152                   # 8-byte Folded Reload
 	add.w	$s0, $a0, $s0
 .LBB0_26:                               #   in Loop: Header=BB0_19 Depth=3
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	bge	$s2, $t1, .LBB0_17
+	bge	$s2, $t3, .LBB0_17
 # %bb.27:                               #   in Loop: Header=BB0_19 Depth=3
-	bge	$t0, $s4, .LBB0_17
+	bge	$t2, $s4, .LBB0_17
 # %bb.28:                               #   in Loop: Header=BB0_19 Depth=3
 	bge	$s1, $a1, .LBB0_17
 # %bb.29:                               #   in Loop: Header=BB0_19 Depth=3

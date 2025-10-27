@@ -2007,20 +2007,18 @@ mymergesort:                            # @mymergesort
 .LBB1_9:                                # %scalar.ph.preheader
 	alsl.d	$a4, $a3, $a4, 3
 	alsl.d	$a6, $a5, $fp, 3
-	sub.d	$a7, $s3, $a5
-	addi.d	$a7, $a7, 1
-	add.d	$a3, $a3, $s3
-	sub.d	$a3, $a3, $a5
-	addi.d	$a3, $a3, 1
+	sub.d	$a5, $s3, $a5
+	addi.d	$a5, $a5, 1
 	.p2align	4, , 16
 .LBB1_10:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a6, 0
-	st.d	$a5, $a4, 0
+	ld.d	$a7, $a6, 0
+	addi.d	$a3, $a3, 1
+	st.d	$a7, $a4, 0
 	addi.d	$a4, $a4, 8
-	addi.d	$a7, $a7, -1
+	addi.d	$a5, $a5, -1
 	addi.d	$a6, $a6, 8
-	bnez	$a7, .LBB1_10
+	bnez	$a5, .LBB1_10
 .LBB1_11:                               # %.loopexit87
 	addi.w	$a4, $s3, 0
 	bgeu	$a4, $s1, .LBB1_15

@@ -37,6 +37,15 @@
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
+.LCPI0_4:
+	.half	1                               # 0x1
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	8                               # 0x8
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
+	.half	65535                           # 0xffff
 	.text
 	.globl	Gsm_RPE_Encoding
 	.p2align	5
@@ -292,193 +301,195 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vori.b	$vr14, $vr11, 0
 	bne	$a2, $a4, .LBB0_1
 # %bb.2:                                # %Weighting_filter.exit
+	ld.h	$a3, $sp, 108
+	ld.h	$a4, $sp, 114
+	ld.h	$a5, $sp, 120
+	ld.w	$a6, $sp, 102
+	vld	$vr0, $sp, 98
+	ld.h	$a7, $sp, 126
 	ld.h	$a2, $sp, 96
-	ld.h	$a3, $sp, 98
-	srai.d	$a2, $a2, 2
-	mul.d	$a2, $a2, $a2
-	ld.h	$a4, $sp, 104
-	srai.d	$a3, $a3, 2
-	mul.d	$a3, $a3, $a3
-	ld.h	$a5, $sp, 110
-	srai.d	$a4, $a4, 2
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a4, $a3
-	srai.d	$a4, $a5, 2
-	ld.h	$a5, $sp, 116
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a3, $a4
-	ld.h	$a4, $sp, 122
-	srai.d	$a5, $a5, 2
-	mul.d	$a5, $a5, $a5
-	add.d	$a3, $a3, $a5
-	srai.d	$a4, $a4, 2
-	ld.h	$a5, $sp, 128
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a3, $a4
-	ld.h	$a4, $sp, 134
-	srai.d	$a5, $a5, 2
-	mul.d	$a5, $a5, $a5
-	add.d	$a3, $a3, $a5
-	srai.d	$a4, $a4, 2
-	ld.h	$a5, $sp, 140
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a3, $a4
-	ld.h	$a4, $sp, 146
-	srai.d	$a5, $a5, 2
-	mul.d	$a5, $a5, $a5
-	add.d	$a3, $a3, $a5
-	srai.d	$a4, $a4, 2
-	ld.h	$a5, $sp, 152
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a3, $a4
-	ld.h	$a4, $sp, 158
-	srai.d	$a5, $a5, 2
-	mul.d	$a5, $a5, $a5
-	add.d	$a3, $a3, $a5
-	srai.d	$a4, $a4, 2
-	ld.h	$a5, $sp, 164
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a3, $a4
-	ld.h	$a4, $sp, 170
-	srai.d	$a5, $a5, 2
-	mul.d	$a5, $a5, $a5
-	add.d	$a3, $a3, $a5
-	srai.d	$a4, $a4, 2
-	ld.w	$a5, $sp, 100
-	mul.d	$a4, $a4, $a4
-	add.d	$a3, $a3, $a4
-	slli.d	$a3, $a3, 1
-	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr1, $a6, 0
+	vpackev.w	$vr0, $vr1, $vr0
 	vsrai.h	$vr0, $vr0, 2
-	ld.w	$a4, $sp, 106
-	vilvl.h	$vr0, $vr0, $vr0
 	vslli.w	$vr0, $vr0, 16
 	vsrai.w	$vr0, $vr0, 16
-	vinsgr2vr.w	$vr1, $a4, 0
+	vreplvei.h	$vr1, $vr1, 1
+	vinsgr2vr.h	$vr1, $a3, 1
 	vsrai.h	$vr1, $vr1, 2
 	vilvl.h	$vr1, $vr1, $vr1
 	vslli.w	$vr1, $vr1, 16
-	ld.w	$a4, $sp, 112
+	vld	$vr2, $sp, 110
 	vsrai.w	$vr1, $vr1, 16
 	vmul.w	$vr1, $vr1, $vr1
 	vmadd.w	$vr1, $vr0, $vr0
-	vinsgr2vr.w	$vr0, $a4, 0
-	vsrai.h	$vr0, $vr0, 2
-	vilvl.h	$vr0, $vr0, $vr0
-	ld.w	$a4, $sp, 118
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vmadd.w	$vr1, $vr0, $vr0
-	vinsgr2vr.w	$vr0, $a4, 0
-	vsrai.h	$vr0, $vr0, 2
+	vinsgr2vr.h	$vr2, $a4, 1
+	vsrai.h	$vr0, $vr2, 2
 	vilvl.h	$vr0, $vr0, $vr0
 	vilvl.w	$vr0, $vr0, $vr0
-	ld.w	$a4, $sp, 124
+	vld	$vr2, $sp, 116
 	vslli.d	$vr0, $vr0, 48
-	ld.w	$a5, $sp, 130
-	vsrai.d	$vr2, $vr0, 48
-	vinsgr2vr.w	$vr0, $a4, 0
-	vsrai.h	$vr3, $vr0, 2
-	vinsgr2vr.w	$vr0, $a5, 0
-	vsrai.h	$vr4, $vr0, 2
-	ld.h	$a4, $sp, 138
+	vld	$vr3, $sp, 122
+	vsrai.d	$vr4, $vr0, 48
+	vinsgr2vr.h	$vr2, $a5, 1
+	vsrai.h	$vr2, $vr2, 2
+	vinsgr2vr.h	$vr3, $a7, 1
+	vsrai.h	$vr3, $vr3, 2
+	vld	$vr5, $sp, 128
 	vrepli.b	$vr0, 0
 	vilvl.w	$vr0, $vr0, $vr1
-	vmadd.d	$vr0, $vr2, $vr2
+	vmadd.d	$vr0, $vr4, $vr4
+	vilvl.h	$vr1, $vr2, $vr2
+	vilvl.w	$vr1, $vr1, $vr1
+	vslli.d	$vr1, $vr1, 48
+	vsrai.d	$vr1, $vr1, 48
+	vmadd.d	$vr0, $vr1, $vr1
 	vilvl.h	$vr1, $vr3, $vr3
 	vilvl.w	$vr1, $vr1, $vr1
+	ld.w	$a3, $sp, 132
 	vslli.d	$vr1, $vr1, 48
 	vsrai.d	$vr1, $vr1, 48
 	vmadd.d	$vr0, $vr1, $vr1
-	vilvl.h	$vr1, $vr4, $vr4
-	vilvl.w	$vr1, $vr1, $vr1
-	vld	$vr2, $sp, 136
-	vslli.d	$vr1, $vr1, 48
-	vsrai.d	$vr1, $vr1, 48
-	vmadd.d	$vr0, $vr1, $vr1
-	vinsgr2vr.h	$vr2, $a4, 1
-	vsrai.h	$vr1, $vr2, 2
-	vilvl.h	$vr1, $vr1, $vr1
-	vilvl.w	$vr1, $vr1, $vr1
-	ld.w	$a4, $sp, 142
-	vslli.d	$vr1, $vr1, 48
-	vsrai.d	$vr1, $vr1, 48
-	vmadd.d	$vr0, $vr1, $vr1
-	vinsgr2vr.w	$vr1, $a4, 0
+	vinsgr2vr.w	$vr2, $a3, 0
+	vpickev.h	$vr1, $vr2, $vr5
+	vsrai.h	$vr3, $vr1, 2
+	ld.w	$a3, $sp, 138
+	pcalau12i	$a4, %pc_hi20(.LCPI0_4)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_4)
+	vslli.d	$vr3, $vr3, 48
+	vsrai.d	$vr3, $vr3, 48
+	vmadd.d	$vr0, $vr3, $vr3
+	vinsgr2vr.w	$vr3, $a3, 0
+	vori.b	$vr4, $vr1, 0
+	vshuf.h	$vr4, $vr3, $vr2
+	vsrai.h	$vr2, $vr4, 2
+	ld.w	$a3, $sp, 144
+	vslli.d	$vr2, $vr2, 48
+	vsrai.d	$vr2, $vr2, 48
+	vmadd.d	$vr0, $vr2, $vr2
+	vinsgr2vr.w	$vr2, $a3, 0
+	vori.b	$vr4, $vr1, 0
+	vshuf.h	$vr4, $vr2, $vr3
+	vsrai.h	$vr3, $vr4, 2
+	ld.w	$a3, $sp, 150
+	vslli.d	$vr3, $vr3, 48
+	vsrai.d	$vr3, $vr3, 48
+	vmadd.d	$vr0, $vr3, $vr3
+	vinsgr2vr.w	$vr3, $a3, 0
+	vori.b	$vr4, $vr1, 0
+	vshuf.h	$vr4, $vr3, $vr2
+	vsrai.h	$vr2, $vr4, 2
+	ld.w	$a3, $sp, 156
+	vslli.d	$vr2, $vr2, 48
+	vsrai.d	$vr2, $vr2, 48
+	vmadd.d	$vr0, $vr2, $vr2
+	vinsgr2vr.w	$vr2, $a3, 0
+	vori.b	$vr4, $vr1, 0
+	vshuf.h	$vr4, $vr2, $vr3
+	vsrai.h	$vr3, $vr4, 2
+	ld.w	$a3, $sp, 162
+	vslli.d	$vr3, $vr3, 48
+	vsrai.d	$vr3, $vr3, 48
+	vmadd.d	$vr0, $vr3, $vr3
+	vinsgr2vr.w	$vr3, $a3, 0
+	vori.b	$vr4, $vr1, 0
+	vshuf.h	$vr4, $vr3, $vr2
+	vsrai.h	$vr2, $vr4, 2
+	ld.w	$a3, $sp, 168
+	vslli.d	$vr2, $vr2, 48
+	vsrai.d	$vr2, $vr2, 48
+	vmadd.d	$vr0, $vr2, $vr2
+	vinsgr2vr.w	$vr2, $a3, 0
+	vshuf.h	$vr1, $vr2, $vr3
 	vsrai.h	$vr1, $vr1, 2
-	vilvl.h	$vr1, $vr1, $vr1
-	vilvl.w	$vr1, $vr1, $vr1
-	ld.w	$a4, $sp, 148
 	vslli.d	$vr1, $vr1, 48
 	vsrai.d	$vr1, $vr1, 48
 	vmadd.d	$vr0, $vr1, $vr1
-	vinsgr2vr.w	$vr1, $a4, 0
-	vsrai.h	$vr1, $vr1, 2
-	vilvl.h	$vr1, $vr1, $vr1
-	vilvl.w	$vr1, $vr1, $vr1
-	ld.w	$a4, $sp, 154
-	vslli.d	$vr1, $vr1, 48
-	vsrai.d	$vr1, $vr1, 48
-	vmadd.d	$vr0, $vr1, $vr1
-	vinsgr2vr.w	$vr1, $a4, 0
-	vsrai.h	$vr1, $vr1, 2
-	vilvl.h	$vr1, $vr1, $vr1
-	vilvl.w	$vr1, $vr1, $vr1
-	ld.w	$a4, $sp, 160
-	vslli.d	$vr1, $vr1, 48
-	vsrai.d	$vr1, $vr1, 48
-	vmadd.d	$vr0, $vr1, $vr1
-	vinsgr2vr.w	$vr1, $a4, 0
-	vsrai.h	$vr1, $vr1, 2
-	vilvl.h	$vr1, $vr1, $vr1
-	vilvl.w	$vr1, $vr1, $vr1
-	ld.w	$a4, $sp, 166
-	vslli.d	$vr1, $vr1, 48
-	vsrai.d	$vr1, $vr1, 48
-	vmadd.d	$vr0, $vr1, $vr1
-	vinsgr2vr.w	$vr1, $a4, 0
-	vsrai.h	$vr1, $vr1, 2
-	vilvl.h	$vr1, $vr1, $vr1
-	vilvl.w	$vr1, $vr1, $vr1
-	vslli.d	$vr1, $vr1, 48
-	vsrai.d	$vr1, $vr1, 48
-	vmadd.d	$vr0, $vr1, $vr1
-	vpickve2gr.d	$a4, $vr0, 1
-	add.d	$a2, $a4, $a2
-	slli.d	$a2, $a2, 1
-	slt	$a4, $a2, $a3
-	ld.w	$a5, $sp, 172
-	masknez	$a2, $a2, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$a2, $a3, $a2
-	vinsgr2vr.w	$vr1, $a5, 0
+	vreplvei.h	$vr1, $vr2, 1
+	vinsgr2vr.h	$vr1, $a2, 1
 	vsrai.h	$vr1, $vr1, 2
 	vilvl.h	$vr1, $vr1, $vr1
 	vilvl.w	$vr1, $vr1, $vr1
 	vslli.d	$vr1, $vr1, 48
 	vsrai.d	$vr1, $vr1, 48
+	vpickve2gr.d	$a2, $vr0, 1
 	vmadd.d	$vr0, $vr1, $vr1
 	vslli.d	$vr0, $vr0, 1
-	vpickve2gr.d	$a3, $vr0, 0
-	slt	$a5, $a2, $a3
-	masknez	$a6, $a2, $a5
-	maskeqz	$a3, $a3, $a5
-	or	$a3, $a3, $a6
-	vinsgr2vr.d	$vr1, $a2, 0
-	vinsgr2vr.d	$vr1, $a3, 1
-	vslt.d	$vr0, $vr1, $vr0
-	vpickve2gr.d	$a2, $vr0, 0
-	andi	$a2, $a2, 1
-	masknez	$a3, $a4, $a2
-	ori	$a4, $zero, 2
-	maskeqz	$a2, $a4, $a2
-	or	$a2, $a2, $a3
-	vpickve2gr.d	$a3, $vr0, 1
-	andi	$a3, $a3, 1
-	masknez	$a2, $a2, $a3
+	vpickve2gr.d	$a4, $vr0, 0
+	vpickve2gr.d	$a5, $vr0, 1
+	slt	$a3, $a5, $a4
+	masknez	$a5, $a5, $a3
+	ld.h	$a6, $sp, 100
+	maskeqz	$a4, $a4, $a3
+	or	$a4, $a4, $a5
+	ld.h	$a5, $sp, 106
+	srai.d	$a6, $a6, 2
+	mul.d	$a6, $a6, $a6
+	ld.h	$a7, $sp, 112
+	srai.d	$a5, $a5, 2
+	mul.d	$a5, $a5, $a5
+	add.d	$a5, $a5, $a6
+	srai.d	$a6, $a7, 2
+	ld.h	$a7, $sp, 118
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 124
+	srai.d	$a7, $a7, 2
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
+	srai.d	$a6, $a6, 2
+	ld.h	$a7, $sp, 130
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 136
+	srai.d	$a7, $a7, 2
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
+	srai.d	$a6, $a6, 2
+	ld.h	$a7, $sp, 142
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 148
+	srai.d	$a7, $a7, 2
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
+	srai.d	$a6, $a6, 2
+	ld.h	$a7, $sp, 154
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 160
+	srai.d	$a7, $a7, 2
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
+	srai.d	$a6, $a6, 2
+	ld.h	$a7, $sp, 166
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	ld.h	$a6, $sp, 172
+	srai.d	$a7, $a7, 2
+	mul.d	$a7, $a7, $a7
+	add.d	$a5, $a5, $a7
+	srai.d	$a6, $a6, 2
+	mul.d	$a6, $a6, $a6
+	add.d	$a5, $a5, $a6
+	slli.d	$a5, $a5, 1
+	slt	$a6, $a4, $a5
+	masknez	$a4, $a4, $a6
+	maskeqz	$a5, $a5, $a6
+	or	$a4, $a5, $a4
+	masknez	$a3, $a3, $a6
+	ld.h	$a5, $sp, 174
+	ori	$a7, $zero, 2
+	maskeqz	$a6, $a7, $a6
+	or	$a3, $a6, $a3
+	srai.d	$a5, $a5, 2
+	mul.d	$a5, $a5, $a5
+	add.d	$a2, $a5, $a2
+	slli.d	$a2, $a2, 1
+	slt	$a2, $a4, $a2
+	masknez	$a3, $a3, $a2
 	ori	$a4, $zero, 3
-	maskeqz	$a3, $a4, $a3
-	or	$a3, $a3, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a3, $a2, $a3
 	addi.d	$a4, $sp, 96
 	alsl.d	$a2, $a3, $a4, 1
 	slli.d	$a5, $a3, 1

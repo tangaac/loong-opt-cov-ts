@@ -821,14 +821,12 @@ _ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7
 	.type	_ZN7GenMesh9calcNumPEEv,@function
 _ZN7GenMesh9calcNumPEEv:                # @_ZN7GenMesh9calcNumPEEv
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 8                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
 	ld.w	$a1, $a0, 32
 	ld.w	$a2, $a0, 36
 	movgr2fr.w	$fa0, $a1
@@ -836,15 +834,15 @@ _ZN7GenMesh9calcNumPEEv:                # @_ZN7GenMesh9calcNumPEEv
 	movgr2fr.w	$fa0, $a2
 	ffint.d.w	$fs1, $fa0
 	fcmp.clt.d	$fcc0, $fs1, $fs0
-	fsel	$fs2, $fs1, $fs0, $fcc0
-	fsel	$fs3, $fs0, $fs1, $fcc0
+	fsel	$fa3, $fs1, $fs0, $fcc0
+	fsel	$fa2, $fs0, $fs1, $fcc0
 	pcalau12i	$a1, %got_pc_hi20(_ZN8Parallel5numpeE)
 	ld.d	$fp, $a1, %got_pc_lo12(_ZN8Parallel5numpeE)
 	ld.w	$a1, $fp, 0
 	movgr2fr.w	$fa0, $a1
 	ffint.d.w	$fa0, $fa0
-	fmul.d	$fa0, $fs3, $fa0
-	fdiv.d	$fa1, $fa0, $fs2
+	fmul.d	$fa0, $fa2, $fa0
+	fdiv.d	$fa1, $fa0, $fa3
 	fsqrt.d	$fa0, $fa1
 	fcmp.cor.d	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB3_9
@@ -864,51 +862,51 @@ _ZN7GenMesh9calcNumPEEv:                # @_ZN7GenMesh9calcNumPEEv
 	or	$a2, $a2, $a3
 	.p2align	4, , 16
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
-	div.w	$a3, $a1, $a2
-	mul.d	$a4, $a3, $a2
-	sub.w	$a4, $a1, $a4
+	mod.w	$a3, $a1, $a2
 	addi.w	$a2, $a2, -1
-	bnez	$a4, .LBB3_2
+	bnez	$a3, .LBB3_2
 # %bb.3:
-	pcalau12i	$a4, %pc_hi20(.LCPI3_1)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI3_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI3_1)
+	fld.d	$fa1, $a3, %pc_lo12(.LCPI3_1)
 	fadd.d	$fa0, $fa0, $fa1
 	vreplvei.d	$vr0, $vr0, 0
 	vfrintrp.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a4, $fa0
+	movfr2gr.s	$a3, $fa0
 	addi.w	$a2, $a2, 1
 	.p2align	4, , 16
 .LBB3_4:                                # =>This Inner Loop Header: Depth=1
-	div.w	$a5, $a1, $a4
-	mul.d	$a6, $a5, $a4
-	sub.w	$a6, $a1, $a6
-	addi.w	$a4, $a4, 1
-	bnez	$a6, .LBB3_4
+	mod.w	$a4, $a1, $a3
+	addi.w	$a3, $a3, 1
+	bnez	$a4, .LBB3_4
 # %bb.5:
+	addi.d	$a3, $a3, -1
+	addi.w	$a4, $a3, 0
 	movgr2fr.w	$fa0, $a2
 	ffint.d.w	$fa0, $fa0
-	fdiv.d	$fa0, $fs3, $fa0
 	movgr2fr.w	$fa1, $a3
 	ffint.d.w	$fa1, $fa1
-	fdiv.d	$fa1, $fs2, $fa1
-	fcmp.clt.d	$fcc0, $fa0, $fa1
-	fsel	$fa0, $fa0, $fa1, $fcc0
-	addi.d	$a3, $a4, -1
-	movgr2fr.w	$fa1, $a3
+	vextrins.d	$vr0, $vr1, 16
+	vreplvei.d	$vr1, $vr2, 0
+	vfdiv.d	$vr0, $vr1, $vr0
+	div.w	$a3, $a1, $a4
+	div.w	$a5, $a1, $a2
+	movgr2fr.w	$fa1, $a5
 	ffint.d.w	$fa1, $fa1
-	fdiv.d	$fa1, $fs3, $fa1
-	movgr2fr.w	$fa2, $a5
+	movgr2fr.w	$fa2, $a3
 	ffint.d.w	$fa2, $fa2
-	fdiv.d	$fa2, $fs2, $fa2
-	fcmp.clt.d	$fcc0, $fa1, $fa2
-	fsel	$fa1, $fa1, $fa2, $fcc0
-	fcmp.cle.d	$fcc0, $fa0, $fa1
-	addi.w	$a3, $a3, 0
-	movcf2gr	$a4, $fcc0
-	masknez	$a3, $a3, $a4
-	maskeqz	$a2, $a2, $a4
-	or	$a2, $a2, $a3
+	vextrins.d	$vr1, $vr2, 16
+	vreplvei.d	$vr2, $vr3, 0
+	vfdiv.d	$vr1, $vr2, $vr1
+	vfcmp.clt.d	$vr2, $vr0, $vr1
+	vbitsel.v	$vr0, $vr0, $vr1, $vr2
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	fcmp.cle.d	$fcc0, $fa1, $fa0
+	movcf2gr	$a3, $fcc0
+	masknez	$a4, $a4, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a2, $a2, $a4
 	st.w	$a2, $a0, 56
 	div.w	$a1, $a1, $a2
 	fcmp.cule.d	$fcc0, $fs0, $fs1
@@ -929,20 +927,22 @@ _ZN7GenMesh9calcNumPEEv:                # @_ZN7GenMesh9calcNumPEEv
 	sub.d	$a1, $a2, $a1
 	st.w	$a1, $a0, 64
 	st.w	$a3, $a0, 68
-	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB3_9:                                # %call.sqrt
 	fmov.d	$fa0, $fa1
 	move	$s0, $a0
+	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
 	move	$a0, $s0
 	b	.LBB3_1
 .Lfunc_end3:

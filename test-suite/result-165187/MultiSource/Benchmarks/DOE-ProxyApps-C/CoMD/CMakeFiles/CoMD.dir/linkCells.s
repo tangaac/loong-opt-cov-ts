@@ -130,15 +130,17 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	ld.w	$a4, $a0, 12
 	bge	$a1, $a4, .LBB2_2
 # %bb.1:
-	ld.w	$a3, $a0, 0
-	ld.w	$a4, $a0, 4
-	div.w	$a5, $a1, $a3
-	mul.d	$a3, $a5, $a3
-	sub.w	$a3, $a1, $a3
-	div.w	$a1, $a5, $a4
-	mul.d	$a4, $a1, $a4
-	sub.w	$a4, $a5, $a4
-	b	.LBB2_12
+	ld.d	$a3, $a0, 0
+	vinsgr2vr.d	$vr0, $a3, 0
+	vpickve2gr.w	$a3, $vr0, 0
+	div.w	$a4, $a1, $a3
+	vpickve2gr.w	$a5, $vr0, 1
+	mod.w	$a6, $a4, $a5
+	mod.w	$a1, $a1, $a3
+	vinsgr2vr.w	$vr0, $a1, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	div.w	$a1, $a4, $a5
+	b	.LBB2_11
 .LBB2_2:
 	ld.w	$a3, $a0, 4
 	ld.w	$a5, $a0, 8
@@ -161,16 +163,19 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	bge	$a4, $t0, .LBB2_9
 # %bb.6:
 	mul.d	$a6, $a7, $a3
-	sub.w	$a6, $a4, $a6
-	addi.w	$a7, $a1, 2
-	mul.w	$a1, $a7, $a5
-	slt	$a5, $a6, $a1
+	sub.w	$a4, $a4, $a6
+	addi.w	$a6, $a1, 2
+	mul.w	$a1, $a6, $a5
+	slt	$a5, $a4, $a1
 	addi.d	$a3, $a3, 1
-	masknez	$a4, $a3, $a5
+	masknez	$a3, $a3, $a5
 	masknez	$a1, $a1, $a5
-	sub.w	$a3, $a6, $a1
-	div.w	$a1, $a3, $a7
-	mul.d	$a5, $a1, $a7
+	sub.w	$a4, $a4, $a1
+	div.w	$a1, $a4, $a6
+	mul.d	$a5, $a1, $a6
+	sub.d	$a4, $a4, $a5
+	vinsgr2vr.w	$vr0, $a4, 0
+	vinsgr2vr.w	$vr0, $a3, 1
 	b	.LBB2_10
 .LBB2_7:
 	ld.w	$a5, $a0, 0
@@ -180,27 +185,30 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	div.w	$a1, $a4, $a3
 	mul.d	$a3, $a1, $a3
 	sub.d	$a3, $a4, $a3
-	addi.d	$a4, $a3, 1
-	b	.LBB2_11
+	addi.d	$a3, $a3, 1
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $a3, 1
+	b	.LBB2_10
 .LBB2_9:
 	sub.w	$a3, $a4, $t0
-	addi.w	$a7, $a1, 2
-	mul.w	$a4, $a7, $a6
-	slt	$a6, $a3, $a4
-	masknez	$a1, $a5, $a6
+	addi.w	$a4, $a1, 2
+	mul.w	$a6, $a4, $a6
+	slt	$a7, $a3, $a6
+	masknez	$a1, $a5, $a7
 	addi.w	$a5, $zero, -1
-	maskeqz	$a5, $a5, $a6
+	maskeqz	$a5, $a5, $a7
 	or	$a1, $a5, $a1
-	masknez	$a4, $a4, $a6
-	sub.w	$a3, $a3, $a4
-	div.w	$a4, $a3, $a7
-	mul.d	$a5, $a4, $a7
+	masknez	$a5, $a6, $a7
+	sub.w	$a3, $a3, $a5
+	div.w	$a5, $a3, $a4
+	mul.d	$a4, $a5, $a4
+	sub.d	$a3, $a3, $a4
+	vinsgr2vr.w	$vr0, $a3, 0
+	vinsgr2vr.w	$vr0, $a5, 1
 .LBB2_10:
-	sub.d	$a5, $a3, $a5
-.LBB2_11:
-	addi.w	$a3, $a5, -1
-	addi.w	$a4, $a4, -1
-.LBB2_12:                               # %getTuple.exit
+	vrepli.b	$vr1, -1
+	vadd.w	$vr0, $vr0, $vr1
+.LBB2_11:                               # %getTuple.exit
 	addi.d	$sp, $sp, -80
 	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
@@ -211,42 +219,44 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
-	move	$a5, $zero
-	addi.w	$a7, $a3, -1
+	move	$a3, $zero
+	vpickve2gr.w	$a4, $vr0, 0
 	addi.w	$a6, $a4, -1
+	vpickve2gr.w	$a5, $vr0, 1
+	addi.w	$a7, $a5, -1
 	addi.d	$t0, $a1, -1
 	sub.w	$t1, $zero, $a1
 	slli.d	$t2, $a1, 1
 	addi.d	$t3, $a1, -2
-	b	.LBB2_14
+	b	.LBB2_13
 	.p2align	4, , 16
-.LBB2_13:                               #   in Loop: Header=BB2_14 Depth=1
-	blt	$a3, $t4, .LBB2_33
-.LBB2_14:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_16 Depth 2
-                                        #       Child Loop BB2_20 Depth 3
-	move	$t4, $a7
-	addi.w	$a7, $a7, 1
-	move	$t5, $a4
-	move	$t6, $a6
-	b	.LBB2_16
+.LBB2_12:                               #   in Loop: Header=BB2_13 Depth=1
+	blt	$a4, $t4, .LBB2_32
+.LBB2_13:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB2_15 Depth 2
+                                        #       Child Loop BB2_19 Depth 3
+	move	$t4, $a6
+	addi.w	$a6, $a6, 1
+	move	$t5, $a5
+	move	$t6, $a7
+	b	.LBB2_15
 	.p2align	4, , 16
-.LBB2_15:                               #   in Loop: Header=BB2_16 Depth=2
+.LBB2_14:                               #   in Loop: Header=BB2_15 Depth=2
 	addi.d	$t5, $t5, 1
-	blt	$a4, $fp, .LBB2_13
-.LBB2_16:                               #   Parent Loop BB2_14 Depth=1
+	blt	$a5, $fp, .LBB2_12
+.LBB2_15:                               #   Parent Loop BB2_13 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB2_20 Depth 3
+                                        #       Child Loop BB2_19 Depth 3
 	move	$t7, $zero
-	move	$t8, $a5
+	move	$t8, $a3
 	move	$fp, $t6
 	slli.d	$s0, $t6, 1
 	addi.w	$t6, $t6, 1
-	alsl.d	$s1, $a5, $a2, 2
+	alsl.d	$s1, $a3, $a2, 2
 	move	$s2, $t2
-	b	.LBB2_20
+	b	.LBB2_19
 	.p2align	4, , 16
-.LBB2_17:                               #   in Loop: Header=BB2_20 Depth=3
+.LBB2_16:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s4, $a0, 4
 	ld.w	$s5, $a0, 0
 	ld.w	$s6, $a0, 12
@@ -255,27 +265,27 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	addi.d	$s5, $s5, 2
 	alsl.d	$s3, $s3, $t6, 1
 	mul.d	$s3, $s5, $s3
-	add.d	$s5, $a7, $s6
+	add.d	$s5, $a6, $s6
 	add.d	$s4, $s5, $s4
-.LBB2_18:                               # %getBoxFromTuple.exit
-                                        #   in Loop: Header=BB2_20 Depth=3
+.LBB2_17:                               # %getBoxFromTuple.exit
+                                        #   in Loop: Header=BB2_19 Depth=3
 	add.d	$s3, $s4, $s3
-.LBB2_19:                               # %getBoxFromTuple.exit
-                                        #   in Loop: Header=BB2_20 Depth=3
-	addi.w	$a5, $a5, 1
+.LBB2_18:                               # %getBoxFromTuple.exit
+                                        #   in Loop: Header=BB2_19 Depth=3
+	addi.w	$a3, $a3, 1
 	st.w	$s3, $s1, 0
 	addi.d	$s1, $s1, 4
 	addi.w	$t7, $t7, 1
 	add.w	$s3, $t3, $t7
 	addi.d	$s2, $s2, 2
-	blt	$a1, $s3, .LBB2_15
-.LBB2_20:                               #   Parent Loop BB2_14 Depth=1
-                                        #     Parent Loop BB2_16 Depth=2
+	blt	$a1, $s3, .LBB2_14
+.LBB2_19:                               #   Parent Loop BB2_13 Depth=1
+                                        #     Parent Loop BB2_15 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$s3, $a0, 8
 	add.w	$s4, $t0, $t7
-	bne	$s4, $s3, .LBB2_23
-# %bb.21:                               #   in Loop: Header=BB2_20 Depth=3
+	bne	$s4, $s3, .LBB2_22
+# %bb.20:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s3, $a0, 4
 	ld.w	$s4, $a0, 0
 	ld.w	$s5, $a0, 12
@@ -285,63 +295,63 @@ getNeighborBoxes:                       # @getNeighborBoxes
 	add.d	$s7, $t5, $s2
 	add.d	$s3, $s7, $s3
 	mul.d	$s3, $s4, $s3
-	add.d	$s4, $a7, $s5
-.LBB2_22:                               # %getBoxFromTuple.exit
-                                        #   in Loop: Header=BB2_20 Depth=3
+	add.d	$s4, $a6, $s5
+.LBB2_21:                               # %getBoxFromTuple.exit
+                                        #   in Loop: Header=BB2_19 Depth=3
 	add.d	$s4, $s4, $s6
-	b	.LBB2_18
+	b	.LBB2_17
 	.p2align	4, , 16
-.LBB2_23:                               #   in Loop: Header=BB2_20 Depth=3
-	beq	$t1, $t7, .LBB2_17
-# %bb.24:                               #   in Loop: Header=BB2_20 Depth=3
+.LBB2_22:                               #   in Loop: Header=BB2_19 Depth=3
+	beq	$t1, $t7, .LBB2_16
+# %bb.23:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s5, $a0, 4
-	bne	$fp, $s5, .LBB2_26
-# %bb.25:                               #   in Loop: Header=BB2_20 Depth=3
+	bne	$fp, $s5, .LBB2_25
+# %bb.24:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s5, $a0, 0
 	ld.w	$s6, $a0, 12
 	mul.d	$s7, $s0, $s3
 	addi.d	$s5, $s5, 2
 	add.d	$s3, $s4, $s3
 	mul.d	$s3, $s5, $s3
-	add.d	$s4, $a7, $s7
-	b	.LBB2_22
-.LBB2_26:                               #   in Loop: Header=BB2_20 Depth=3
+	add.d	$s4, $a6, $s7
+	b	.LBB2_21
+.LBB2_25:                               #   in Loop: Header=BB2_19 Depth=3
 	addi.w	$s7, $zero, -1
-	beq	$fp, $s7, .LBB2_29
-# %bb.27:                               #   in Loop: Header=BB2_20 Depth=3
+	beq	$fp, $s7, .LBB2_28
+# %bb.26:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s6, $a0, 0
-	bne	$t4, $s6, .LBB2_30
-# %bb.28:                               #   in Loop: Header=BB2_20 Depth=3
+	bne	$t4, $s6, .LBB2_29
+# %bb.27:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s6, $a0, 12
 	add.d	$s3, $s4, $s3
 	mul.d	$s3, $s5, $s3
 	add.d	$s3, $s3, $fp
 	add.d	$s3, $s3, $s6
-	b	.LBB2_19
-.LBB2_29:                               #   in Loop: Header=BB2_20 Depth=3
+	b	.LBB2_18
+.LBB2_28:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s6, $a0, 0
 	ld.w	$s7, $a0, 12
 	mul.d	$s3, $s3, $s5
 	addi.d	$s5, $s6, 2
 	mul.d	$s4, $s5, $s4
-	alsl.d	$s3, $s3, $a7, 1
+	alsl.d	$s3, $s3, $a6, 1
 	add.d	$s3, $s3, $s7
 	add.d	$s3, $s3, $s4
-	b	.LBB2_19
-.LBB2_30:                               #   in Loop: Header=BB2_20 Depth=3
+	b	.LBB2_18
+.LBB2_29:                               #   in Loop: Header=BB2_19 Depth=3
 	mul.d	$s3, $s5, $s4
-	beq	$t4, $s7, .LBB2_32
-# %bb.31:                               #   in Loop: Header=BB2_20 Depth=3
+	beq	$t4, $s7, .LBB2_31
+# %bb.30:                               #   in Loop: Header=BB2_19 Depth=3
 	add.d	$s3, $s3, $fp
 	mul.d	$s3, $s6, $s3
 	add.d	$s3, $s3, $t4
-	b	.LBB2_19
-.LBB2_32:                               #   in Loop: Header=BB2_20 Depth=3
+	b	.LBB2_18
+.LBB2_31:                               #   in Loop: Header=BB2_19 Depth=3
 	ld.w	$s4, $a0, 12
 	add.d	$s3, $s3, $fp
 	add.d	$s3, $s3, $s4
-	b	.LBB2_19
-.LBB2_33:
+	b	.LBB2_18
+.LBB2_32:
 	add.w	$a0, $t8, $t7
 	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload

@@ -132,27 +132,23 @@ gs_translate:                           # @gs_translate
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB4_2
 # %bb.1:
-	fld.s	$fa0, $fp, 88
-	ld.d	$a1, $sp, 8
-	fld.s	$fa1, $fp, 104
+	fld.s	$fa0, $sp, 8
+	fld.s	$fa1, $fp, 88
+	fld.s	$fa2, $sp, 12
+	fld.s	$fa3, $fp, 104
 	move	$a0, $zero
-	vinsgr2vr.d	$vr2, $a1, 0
-	vextrins.w	$vr0, $vr1, 16
-	vfadd.s	$vr0, $vr2, $vr0
+	fadd.s	$fa0, $fa0, $fa1
+	fadd.s	$fa1, $fa2, $fa3
 	lu12i.w	$a1, 284672
-	vreplgr2vr.w	$vr1, $a1
-	vfmul.s	$vr1, $vr0, $vr1
-	vreplvei.w	$vr2, $vr1, 0
-	ftintrz.l.s	$fa2, $fa2
-	movfr2gr.d	$a1, $fa2
-	vinsgr2vr.d	$vr2, $a1, 0
-	vreplvei.w	$vr1, $vr1, 1
-	ftintrz.l.s	$fa1, $fa1
-	movfr2gr.d	$a1, $fa1
-	vinsgr2vr.d	$vr2, $a1, 1
-	vstelm.w	$vr0, $fp, 88, 0
-	vstelm.w	$vr0, $fp, 104, 1
-	vst	$vr2, $fp, 120
+	movgr2fr.w	$fa2, $a1
+	fst.s	$fa0, $fp, 88
+	fst.s	$fa1, $fp, 104
+	fmul.s	$fa0, $fa0, $fa2
+	ftintrz.l.s	$fa0, $fa0
+	fst.d	$fa0, $fp, 120
+	fmul.s	$fa0, $fa1, $fa2
+	ftintrz.l.s	$fa0, $fa0
+	fst.d	$fa0, $fp, 128
 	st.w	$zero, $fp, 232
 .LBB4_2:
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload

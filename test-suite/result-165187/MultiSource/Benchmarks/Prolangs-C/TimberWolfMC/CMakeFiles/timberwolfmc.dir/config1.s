@@ -160,71 +160,73 @@ config1:                                # @config1
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(blockr)
 	ld.d	$a0, $a0, %got_pc_lo12(blockr)
+	ld.w	$a2, $a0, 0
+	pcalau12i	$a0, %got_pc_hi20(blockl)
+	ld.d	$a0, $a0, %got_pc_lo12(blockl)
 	ld.w	$a0, $a0, 0
-	pcalau12i	$a1, %got_pc_hi20(blockl)
-	ld.d	$a1, $a1, %got_pc_lo12(blockl)
-	ld.w	$a1, $a1, 0
-	add.d	$a2, $a1, $a0
-	bstrpick.d	$a3, $a2, 31, 31
-	add.w	$a2, $a2, $a3
-	srli.d	$a2, $a2, 1
+	add.d	$a1, $a0, $a2
+	bstrpick.d	$a3, $a1, 31, 31
+	add.w	$a1, $a1, $a3
+	srli.d	$a1, $a1, 1
 	pcalau12i	$a3, %got_pc_hi20(blockmx)
 	ld.d	$a3, $a3, %got_pc_lo12(blockmx)
-	st.w	$a2, $a3, 0
-	pcalau12i	$a2, %got_pc_hi20(blockt)
-	ld.d	$a2, $a2, %got_pc_lo12(blockt)
-	ld.w	$a2, $a2, 0
-	pcalau12i	$a3, %got_pc_hi20(blockb)
-	ld.d	$a3, $a3, %got_pc_lo12(blockb)
-	ld.w	$a3, $a3, 0
-	add.d	$a4, $a3, $a2
+	st.w	$a1, $a3, 0
+	pcalau12i	$a1, %got_pc_hi20(blockt)
+	ld.d	$a1, $a1, %got_pc_lo12(blockt)
+	ld.w	$a3, $a1, 0
+	pcalau12i	$a1, %got_pc_hi20(blockb)
+	ld.d	$a1, $a1, %got_pc_lo12(blockb)
+	ld.w	$a1, $a1, 0
+	add.d	$a4, $a1, $a3
 	bstrpick.d	$a5, $a4, 31, 31
 	add.w	$a4, $a4, $a5
 	srli.d	$a4, $a4, 1
 	pcalau12i	$a5, %got_pc_hi20(blockmy)
 	ld.d	$a5, $a5, %got_pc_lo12(blockmy)
 	st.w	$a4, $a5, 0
-	sub.w	$a4, $a0, $a1
-	pcalau12i	$a5, %got_pc_hi20(numBinsX)
-	ld.d	$a5, $a5, %got_pc_lo12(numBinsX)
-	ld.wu	$a5, $a5, 0
-	addi.w	$a6, $a5, 0
-	div.w	$a4, $a4, $a6
-	mul.d	$a6, $a4, $a5
-	add.d	$a6, $a1, $a6
-	sub.w	$a0, $a0, $a6
-	srli.d	$a6, $a5, 31
-	add.w	$a5, $a5, $a6
-	srai.d	$a5, $a5, 1
-	slt	$a0, $a0, $a5
-	xori	$a0, $a0, 1
-	add.d	$a0, $a4, $a0
+	pcalau12i	$a4, %got_pc_hi20(numBinsX)
+	ld.d	$a4, $a4, %got_pc_lo12(numBinsX)
+	pcalau12i	$a5, %got_pc_hi20(numBinsY)
+	ld.d	$a5, $a5, %got_pc_lo12(numBinsY)
+	vinsgr2vr.w	$vr0, $a3, 0
+	vinsgr2vr.w	$vr0, $a2, 1
+	vinsgr2vr.w	$vr1, $a1, 0
+	ld.w	$a2, $a5, 0
+	ld.w	$a3, $a4, 0
+	vinsgr2vr.w	$vr1, $a0, 1
+	vsub.w	$vr2, $vr0, $vr1
+	vinsgr2vr.w	$vr3, $a2, 0
+	vinsgr2vr.w	$vr3, $a3, 1
+	vpickve2gr.w	$a4, $vr2, 1
+	div.w	$a3, $a4, $a3
+	vpickve2gr.w	$a4, $vr2, 0
+	div.w	$a2, $a4, $a2
+	vinsgr2vr.w	$vr2, $a2, 0
+	vinsgr2vr.w	$vr2, $a3, 1
+	vmadd.w	$vr1, $vr2, $vr3
+	vsub.w	$vr0, $vr0, $vr1
+	vsrli.w	$vr1, $vr3, 31
+	vadd.w	$vr1, $vr3, $vr1
+	vsrai.w	$vr1, $vr1, 1
+	vsle.w	$vr0, $vr1, $vr0
+	vshuf4i.w	$vr1, $vr0, 16
+	vpickve2gr.d	$a4, $vr1, 1
+	sub.d	$a3, $a3, $a4
 	pcalau12i	$a4, %got_pc_hi20(binWidthX)
 	ld.d	$a4, $a4, %got_pc_lo12(binWidthX)
-	st.w	$a0, $a4, 0
-	sub.d	$a0, $a1, $a0
+	st.w	$a3, $a4, 0
+	sub.d	$a0, $a0, $a3
 	addi.d	$a0, $a0, 1
-	pcalau12i	$a1, %got_pc_hi20(binOffsetX)
-	ld.d	$a1, $a1, %got_pc_lo12(binOffsetX)
-	st.w	$a0, $a1, 0
-	sub.w	$a0, $a2, $a3
-	pcalau12i	$a1, %got_pc_hi20(numBinsY)
-	ld.d	$a1, $a1, %got_pc_lo12(numBinsY)
-	ld.w	$a1, $a1, 0
-	div.w	$a0, $a0, $a1
-	mul.d	$a4, $a0, $a1
-	add.d	$a4, $a3, $a4
-	sub.w	$a2, $a2, $a4
-	bstrpick.d	$a4, $a1, 31, 31
-	add.w	$a1, $a1, $a4
-	srai.d	$a1, $a1, 1
-	slt	$a1, $a2, $a1
-	xori	$a1, $a1, 1
-	add.d	$a0, $a0, $a1
-	pcalau12i	$a1, %got_pc_hi20(binWidthY)
-	ld.d	$a1, $a1, %got_pc_lo12(binWidthY)
-	st.w	$a0, $a1, 0
-	sub.d	$a0, $a3, $a0
+	pcalau12i	$a3, %got_pc_hi20(binOffsetX)
+	ld.d	$a3, $a3, %got_pc_lo12(binOffsetX)
+	st.w	$a0, $a3, 0
+	vpickve2gr.d	$a0, $vr0, 0
+	andi	$a0, $a0, 1
+	add.d	$a0, $a2, $a0
+	pcalau12i	$a2, %got_pc_hi20(binWidthY)
+	ld.d	$a2, $a2, %got_pc_lo12(binWidthY)
+	st.w	$a0, $a2, 0
+	sub.d	$a0, $a1, $a0
 	addi.d	$a1, $a0, 1
 	pcalau12i	$a0, %got_pc_hi20(binOffsetY)
 	ld.d	$a2, $a0, %got_pc_lo12(binOffsetY)

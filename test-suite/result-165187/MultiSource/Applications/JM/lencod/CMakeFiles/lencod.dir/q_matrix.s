@@ -709,26 +709,28 @@ PatchMatrix:                            # @PatchMatrix
 	.type	allocate_QMatrix,@function
 allocate_QMatrix:                       # @allocate_QMatrix
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(input)
 	ld.d	$a0, $a0, %got_pc_lo12(input)
 	ld.d	$a0, $a0, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1160
-	ldx.w	$a0, $a0, $a1
-	slli.d	$a1, $a0, 2
-	alsl.d	$a0, $a0, $a1, 1
+	ldx.w	$s1, $a0, $a1
+	slli.d	$s2, $s1, 2
+	alsl.d	$a0, $s1, $s2, 1
 	addi.w	$s0, $a0, 4
 	slli.d	$fp, $s0, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s1, %pc_hi20(qp_per_matrix)
-	st.d	$a0, $s1, %pc_lo12(qp_per_matrix)
+	pcalau12i	$s3, %pc_hi20(qp_per_matrix)
+	st.d	$a0, $s3, %pc_lo12(qp_per_matrix)
 	bnez	$a0, .LBB3_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
@@ -750,46 +752,41 @@ allocate_QMatrix:                       # @allocate_QMatrix
 .LBB3_4:
 	blez	$s0, .LBB3_12
 # %bb.5:                                # %.lr.ph
-	ld.d	$a1, $s1, %pc_lo12(qp_per_matrix)
-	ld.d	$a2, $fp, %pc_lo12(qp_rem_matrix)
 	move	$a0, $zero
-	ori	$a4, $zero, 8
+	ld.d	$a1, $s3, %pc_lo12(qp_per_matrix)
+	ld.d	$a2, $fp, %pc_lo12(qp_rem_matrix)
+	alsl.w	$a4, $s1, $s2, 1
+	addi.w	$a5, $zero, -5
 	lu12i.w	$a3, -349526
-	bltu	$s0, $a4, .LBB3_10
+	bltu	$a5, $a4, .LBB3_10
 # %bb.6:                                # %.lr.ph
 	sub.d	$a4, $a2, $a1
-	ori	$a5, $zero, 32
+	ori	$a5, $zero, 16
 	bltu	$a4, $a5, .LBB3_10
 # %bb.7:                                # %vector.ph
-	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a4, $a2, 16
-	pcalau12i	$a5, %pc_hi20(.LCPI3_0)
-	vld	$vr2, $a5, %pc_lo12(.LCPI3_0)
-	addi.d	$a5, $a1, 16
-	ori	$a6, $a3, 2731
-	vreplgr2vr.w	$vr0, $a6
+	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
+	vld	$vr2, $a0, %pc_lo12(.LCPI3_0)
+	bstrpick.d	$a0, $s0, 30, 2
+	slli.d	$a0, $a0, 2
+	ori	$a4, $a3, 2731
+	vreplgr2vr.w	$vr0, $a4
 	vrepli.w	$vr1, 6
+	move	$a4, $a1
+	move	$a5, $a2
 	move	$a6, $a0
 	.p2align	4, , 16
 .LBB3_8:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr3, $vr2, 4
-	vmuh.wu	$vr4, $vr2, $vr0
-	vsrli.w	$vr4, $vr4, 2
-	vmuh.wu	$vr5, $vr3, $vr0
-	vsrli.w	$vr5, $vr5, 2
-	vst	$vr4, $a5, -16
-	vst	$vr5, $a5, 0
-	vaddi.wu	$vr6, $vr2, 8
-	vmsub.w	$vr2, $vr4, $vr1
-	vmsub.w	$vr3, $vr5, $vr1
-	vst	$vr2, $a4, -16
+	vmuh.wu	$vr3, $vr2, $vr0
+	vsrli.w	$vr3, $vr3, 2
 	vst	$vr3, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	vori.b	$vr2, $vr6, 0
+	vaddi.wu	$vr4, $vr2, 4
+	vmsub.w	$vr2, $vr3, $vr1
+	vst	$vr2, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 16
+	addi.d	$a4, $a4, 16
+	vori.b	$vr2, $vr4, 0
 	bnez	$a6, .LBB3_8
 # %bb.9:                                # %middle.block
 	beq	$a0, $s0, .LBB3_12
@@ -864,11 +861,13 @@ allocate_QMatrix:                       # @allocate_QMatrix
 	ori	$a2, $zero, 6
 	ori	$a3, $zero, 8
 	ori	$a4, $zero, 8
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(get_mem4Dint)
 	jr	$t8
 .Lfunc_end3:

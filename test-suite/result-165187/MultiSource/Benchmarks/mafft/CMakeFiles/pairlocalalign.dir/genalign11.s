@@ -774,7 +774,7 @@ genL__align11:                          # @genL__align11
 	sub.d	$a6, $a2, $a1
 	ori	$a7, $zero, 32
 	bltu	$a6, $a7, .LBB0_59
-# %bb.56:                               # %vector.ph394
+# %bb.56:                               # %vector.ph395
 	bstrpick.d	$a4, $a5, 31, 3
 	slli.d	$a4, $a4, 3
 	vreplgr2vr.w	$vr0, $s6
@@ -782,7 +782,7 @@ genL__align11:                          # @genL__align11
 	addi.d	$a6, $a1, 16
 	move	$a7, $a4
 	.p2align	4, , 16
-.LBB0_57:                               # %vector.body397
+.LBB0_57:                               # %vector.body398
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a6, -16
 	vst	$vr0, $a6, 0
@@ -792,14 +792,14 @@ genL__align11:                          # @genL__align11
 	addi.d	$a5, $a5, 32
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB0_57
-# %bb.58:                               # %middle.block400
+# %bb.58:                               # %middle.block401
 	beq	$a3, $a4, .LBB0_61
-.LBB0_59:                               # %scalar.ph392.preheader
+.LBB0_59:                               # %scalar.ph393.preheader
 	sub.d	$a3, $a3, $a4
 	alsl.d	$a2, $a4, $a2, 2
 	alsl.d	$a1, $a4, $a1, 2
 	.p2align	4, , 16
-.LBB0_60:                               # %scalar.ph392
+.LBB0_60:                               # %scalar.ph393
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$s6, $a1, 0
 	st.w	$s6, $a2, 0
@@ -825,8 +825,8 @@ genL__align11:                          # @genL__align11
 	ldx.d	$a2, $t2, $s3
 	ldx.w	$a5, $a1, $s5
 	ldx.w	$a6, $a2, $s5
-	move	$a2, $zero
-	ori	$a1, $zero, 45
+	move	$a1, $zero
+	ori	$a2, $zero, 45
 	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -834,53 +834,53 @@ genL__align11:                          # @genL__align11
                                         #     Child Loop BB0_64 Depth 2
                                         #     Child Loop BB0_67 Depth 2
 	move	$a4, $a5
-	nor	$a5, $a5, $zero
-	add.w	$a7, $s8, $a5
+	nor	$a3, $a5, $zero
+	add.w	$a5, $s8, $a3
 	move	$a3, $a6
-	beqz	$a7, .LBB0_66
+	beqz	$a5, .LBB0_65
 	.p2align	4, , 16
 .LBB0_64:                               # %.lr.ph9.i
                                         #   Parent Loop BB0_63 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a6, $s0, 0
-	ld.d	$t0, $s4, 0
+	ld.d	$a7, $s4, 0
 	add.d	$a6, $a6, $a4
-	ldx.b	$a6, $a6, $a7
-	addi.d	$t1, $t0, -1
-	st.d	$t1, $s4, 0
-	st.b	$a6, $t0, -1
+	ldx.b	$a6, $a6, $a5
+	addi.d	$t0, $a7, -1
+	st.d	$t0, $s4, 0
+	st.b	$a6, $a7, -1
 	ld.d	$a6, $s2, 0
-	addi.d	$t0, $a6, -1
-	st.d	$t0, $s2, 0
-	addi.d	$a7, $a7, -1
-	st.b	$a1, $a6, -1
-	bnez	$a7, .LBB0_64
-# %bb.65:                               # %._crit_edge10.loopexit.i
-                                        #   in Loop: Header=BB0_63 Depth=1
-	add.d	$a2, $a2, $a5
-	add.d	$a2, $a2, $s8
-.LBB0_66:                               # %._crit_edge10.i
+	addi.d	$a7, $a6, -1
+	st.d	$a7, $s2, 0
+	st.b	$a2, $a6, -1
+	addi.d	$a5, $a5, -1
+	addi.d	$a1, $a1, 1
+	bnez	$a5, .LBB0_64
+.LBB0_65:                               # %._crit_edge10.i
                                         #   in Loop: Header=BB0_63 Depth=1
 	nor	$a5, $a3, $zero
 	add.w	$a5, $s1, $a5
 	beqz	$a5, .LBB0_68
+# %bb.66:                               # %.lr.ph14.preheader.i
+                                        #   in Loop: Header=BB0_63 Depth=1
+	add.d	$a1, $a5, $a1
+	add.d	$a6, $a3, $a5
 	.p2align	4, , 16
 .LBB0_67:                               # %.lr.ph14.i
                                         #   Parent Loop BB0_63 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a6, $s4, 0
-	addi.d	$a7, $a6, -1
-	st.d	$a7, $s4, 0
-	st.b	$a1, $a6, -1
-	ld.d	$a6, $fp, 0
-	ld.d	$a7, $s2, 0
-	add.d	$a6, $a6, $a3
-	ldx.b	$a6, $a6, $a5
+	ld.d	$a7, $s4, 0
 	addi.d	$t0, $a7, -1
-	st.d	$t0, $s2, 0
-	st.b	$a6, $a7, -1
-	addi.d	$a5, $a5, -1
-	addi.d	$a2, $a2, 1
+	st.d	$t0, $s4, 0
+	st.b	$a2, $a7, -1
+	ld.d	$a7, $fp, 0
+	ld.d	$t0, $s2, 0
+	ldx.b	$a7, $a7, $a6
+	addi.d	$t1, $t0, -1
+	st.d	$t1, $s2, 0
+	st.b	$a7, $t0, -1
+	addi.w	$a5, $a5, -1
+	addi.d	$a6, $a6, -1
 	bnez	$a5, .LBB0_67
 .LBB0_68:                               # %._crit_edge15.i
                                         #   in Loop: Header=BB0_63 Depth=1
@@ -913,10 +913,10 @@ genL__align11:                          # @genL__align11
 	ldx.w	$a6, $a6, $a7
 	beq	$a6, $s6, .LBB0_73
 # %bb.72:                               #   in Loop: Header=BB0_63 Depth=1
-	addi.w	$a2, $a2, 2
+	addi.w	$a1, $a1, 2
 	move	$s8, $a4
 	move	$s1, $a3
-	bge	$a0, $a2, .LBB0_63
+	bge	$a0, $a1, .LBB0_63
 .LBB0_73:                               # %._crit_edge23.i
 	addi.d	$a0, $a4, 1
 	sltui	$a0, $a0, 1

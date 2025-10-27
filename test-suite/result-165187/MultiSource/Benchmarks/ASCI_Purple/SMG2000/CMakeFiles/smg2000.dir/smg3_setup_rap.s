@@ -5869,7 +5869,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	lu32i.d	$a2, 0
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 	vrepli.b	$vr6, 0
                                         # implicit-def: $r4
                                         # kill: killed $r4
@@ -6391,7 +6391,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	sltu	$a1, $t4, $s8
 	sltu	$t6, $t8, $a7
 	and	$a1, $a1, $t6
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 	bnez	$a1, .LBB3_42
 # %bb.35:                               # %vector.memcheck1031
                                         #   in Loop: Header=BB3_13 Depth=3
@@ -6460,7 +6460,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
 	b	.LBB3_16
 .LBB3_41:                               #   in Loop: Header=BB3_13 Depth=3
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 .LBB3_42:                               #   in Loop: Header=BB3_13 Depth=3
 	move	$s8, $a3
 .LBB3_43:                               #   in Loop: Header=BB3_13 Depth=3
@@ -6473,7 +6473,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
 	b	.LBB3_16
 .LBB3_45:                               #   in Loop: Header=BB3_13 Depth=3
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 	move	$s8, $a3
 	ld.d	$s6, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
@@ -6483,11 +6483,11 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB3_44
 .LBB3_47:                               #   in Loop: Header=BB3_13 Depth=3
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 	move	$s8, $a3
 	b	.LBB3_46
 .LBB3_48:                               #   in Loop: Header=BB3_13 Depth=3
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
@@ -6751,7 +6751,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	ld.d	$a2, $sp, 264                   # 8-byte Folded Reload
 	sub.d	$t7, $zero, $a2
 	move	$t8, $a5
-	ori	$t3, $zero, 12
+	ori	$t3, $zero, 14
 	b	.LBB3_71
 	.p2align	4, , 16
 .LBB3_70:                               # %._crit_edge776.split.us.us.us.us.us.us
@@ -6895,7 +6895,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	sltu	$a4, $s5, $a6
 	sltu	$a2, $a2, $s8
 	and	$a2, $a4, $a2
-	ori	$t3, $zero, 12
+	ori	$t3, $zero, 14
 	bnez	$a2, .LBB3_92
 # %bb.86:                               # %vector.memcheck922
                                         #   in Loop: Header=BB3_72 Depth=3
@@ -6951,7 +6951,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	bne	$t6, $a0, .LBB3_74
 	b	.LBB3_76
 .LBB3_91:                               #   in Loop: Header=BB3_72 Depth=3
-	ori	$t3, $zero, 12
+	ori	$t3, $zero, 14
 .LBB3_92:                               #   in Loop: Header=BB3_72 Depth=3
 	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 296                   # 8-byte Folded Reload
@@ -6968,7 +6968,7 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	b	.LBB3_74
 .LBB3_96:                               # %.preheader710.lr.ph
                                         #   in Loop: Header=BB3_4 Depth=1
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 18
 	blez	$a0, .LBB3_3
 # %bb.97:                               # %.preheader710.lr.ph
                                         #   in Loop: Header=BB3_4 Depth=1
@@ -7624,7 +7624,7 @@ hypre_SMG3RAPPeriodicNoSym:             # @hypre_SMG3RAPPeriodicNoSym
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB4_122 Depth 4
                                         #         Child Loop BB4_128 Depth 4
-	ori	$a0, $zero, 38
+	ori	$a0, $zero, 46
 	st.d	$t3, $sp, 520                   # 8-byte Folded Spill
 	bgeu	$s0, $a0, .LBB4_16
 # %bb.15:                               #   in Loop: Header=BB4_14 Depth=3
@@ -8835,7 +8835,7 @@ hypre_SMG3RAPPeriodicNoSym:             # @hypre_SMG3RAPPeriodicNoSym
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB4_236 Depth 4
                                         #         Child Loop BB4_240 Depth 4
-	ori	$a0, $zero, 30
+	ori	$a0, $zero, 36
 	bgeu	$s4, $a0, .LBB4_169
 # %bb.168:                              #   in Loop: Header=BB4_167 Depth=3
 	move	$t2, $zero

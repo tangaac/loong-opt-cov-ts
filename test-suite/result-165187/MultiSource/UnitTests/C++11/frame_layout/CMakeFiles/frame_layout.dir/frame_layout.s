@@ -10,27 +10,27 @@
 _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -448
-	.cfi_def_cfa_offset 448
-	st.d	$ra, $sp, 440                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 432                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 424                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 416                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 408                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 360                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 352                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 344                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 336                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 328                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 320                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 312                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 304                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 296                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -336
+	.cfi_def_cfa_offset 336
+	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 248                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 240                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 232                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 224                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 216                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 208                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 200                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 184                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -121,411 +121,530 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	jirl	$ra, $ra, 0
 	or	$a0, $s0, $a0
 	or	$fp, $fp, $a0
-	ld.d	$a4, $sp, 456
-	ld.d	$a0, $sp, 448
+	ld.d	$a4, $sp, 344
+	ld.d	$a0, $sp, 336
 	bnez	$s1, .LBB0_3
 	b	.LBB0_4
 .LBB0_2:
 	addi.d	$s7, $s0, 40
 	addi.d	$s3, $s3, 2
-	ld.d	$a4, $sp, 456
-	ld.d	$a0, $sp, 448
+	ld.d	$a4, $sp, 344
+	ld.d	$a0, $sp, 336
 	beqz	$s1, .LBB0_4
 .LBB0_3:
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	ld.b	$a0, $s3, 1
+	ld.b	$a5, $s3, 0
 	movgr2fr.w	$fa0, $a0
-	ffint.d.w	$fa0, $fa0
-	fadd.d	$ft2, $fa0, $fa0
-	fadd.d	$ft3, $ft2, $fa0
-	fadd.d	$ft4, $ft3, $fa0
-	fadd.d	$ft5, $ft4, $fa0
-	fadd.d	$ft6, $ft5, $fa0
-	fadd.d	$fa6, $ft6, $fa0
-	fadd.d	$fa7, $fa6, $fa0
-	fadd.d	$fs6, $fa7, $fa0
-	fadd.d	$fs7, $fs6, $fa0
-	fadd.d	$fa1, $fs7, $fa0
-	fst.d	$fa1, $sp, 240                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $sp, 232                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $sp, 224                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $sp, 288                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $sp, 216                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $sp, 280                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $sp, 272                  # 8-byte Folded Spill
-	fadd.d	$fs5, $fa1, $fa0
-	fadd.d	$fa1, $fs5, $fa0
-	fst.d	$fa1, $sp, 208                  # 8-byte Folded Spill
-	fadd.d	$fs4, $fa1, $fa0
-	fadd.d	$ft10, $fs4, $fa0
-	fadd.d	$ft9, $ft10, $fa0
-	fadd.d	$ft8, $ft9, $fa0
-	fadd.d	$ft11, $ft8, $fa0
-	fadd.d	$ft12, $ft11, $fa0
-	fadd.d	$ft13, $ft12, $fa0
-	fadd.d	$ft14, $ft13, $fa0
-	fadd.d	$fs3, $ft14, $fa0
-	fadd.d	$fs0, $fs3, $fa0
-	fadd.d	$fs1, $fs0, $fa0
-	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
-	fadd.d	$fs2, $fs1, $fa0
-	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
-	fadd.d	$ft1, $fs2, $fa0
-	fst.d	$fs2, $sp, 112                  # 8-byte Folded Spill
-	fadd.d	$ft7, $ft1, $fa0
-	fst.d	$ft1, $sp, 128                  # 8-byte Folded Spill
-	fadd.d	$fa5, $ft7, $fa0
-	fadd.d	$fa4, $fa5, $fa0
-	fst.d	$fa5, $sp, 136                  # 8-byte Folded Spill
-	fadd.d	$fa3, $fa4, $fa0
-	fst.d	$fa4, $sp, 152                  # 8-byte Folded Spill
-	fadd.d	$fa1, $fa3, $fa0
-	fst.d	$fa3, $sp, 160                  # 8-byte Folded Spill
-	fadd.d	$ft0, $fa1, $fa0
-	fst.d	$fa1, $sp, 168                  # 8-byte Folded Spill
-	fadd.d	$fa2, $ft0, $fa0
-	fst.d	$fa2, $sp, 192                  # 8-byte Folded Spill
-	fst.d	$ft0, $sp, 184                  # 8-byte Folded Spill
-	fdiv.d	$ft0, $fa2, $ft0
-	fdiv.d	$ft0, $ft0, $fa1
-	fdiv.d	$ft0, $ft0, $fa3
-	fdiv.d	$ft0, $ft0, $fa4
-	fdiv.d	$ft0, $ft0, $fa5
-	fdiv.d	$ft0, $ft0, $ft7
-	fdiv.d	$ft0, $ft0, $ft1
-	fdiv.d	$ft0, $ft0, $fs2
-	fdiv.d	$ft0, $ft0, $fs1
-	fdiv.d	$ft0, $ft0, $fs0
-	fdiv.d	$ft0, $ft0, $fs3
-	fdiv.d	$ft0, $ft0, $ft14
-	fdiv.d	$ft0, $ft0, $ft13
-	fdiv.d	$ft0, $ft0, $ft12
-	fdiv.d	$ft0, $ft0, $ft11
-	fdiv.d	$ft0, $ft0, $ft8
-	fdiv.d	$ft0, $ft0, $ft9
-	fdiv.d	$ft0, $ft0, $ft10
-	fdiv.d	$ft0, $ft0, $fs4
-	fld.d	$fa5, $sp, 208                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa5
-	fdiv.d	$ft0, $ft0, $fs5
-	fld.d	$fa1, $sp, 272                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa1
-	fld.d	$fa1, $sp, 280                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa1
-	fld.d	$fa4, $sp, 216                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa4
-	fld.d	$fa1, $sp, 288                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa1
-	fld.d	$fa3, $sp, 224                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa3
-	fld.d	$fa2, $sp, 232                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $fa2
-	fld.d	$ft1, $sp, 240                  # 8-byte Folded Reload
-	fdiv.d	$ft0, $ft0, $ft1
-	fdiv.d	$ft0, $ft0, $fs7
-	fdiv.d	$ft0, $ft0, $fs6
-	fdiv.d	$ft0, $ft0, $fa7
-	fdiv.d	$ft0, $ft0, $fa6
-	fdiv.d	$ft0, $ft0, $ft6
-	fdiv.d	$ft0, $ft0, $ft5
-	fdiv.d	$ft0, $ft0, $ft4
-	fdiv.d	$ft0, $ft0, $ft3
-	fdiv.d	$ft0, $ft0, $ft2
-	fdiv.d	$fa1, $fa0, $ft2
-	fdiv.d	$fa1, $fa1, $ft3
-	fdiv.d	$fa1, $fa1, $ft4
-	fdiv.d	$fa1, $fa1, $ft5
-	fdiv.d	$fa1, $fa1, $ft6
-	fdiv.d	$fa1, $fa1, $fa6
-	fdiv.d	$fa1, $fa1, $fa7
-	ld.b	$a0, $s3, 0
-	fdiv.d	$fa1, $fa1, $fs6
-	fdiv.d	$fa1, $fa1, $fs7
-	ori	$a1, $zero, 39
-	mul.d	$a2, $a0, $a1
-	st.d	$a2, $sp, 200                   # 8-byte Folded Spill
-	ori	$a1, $zero, 38
-	mul.d	$a1, $a0, $a1
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
-	div.d	$a1, $a2, $a1
+	vinsgr2vr.b	$vr1, $a5, 0
+	vinsgr2vr.b	$vr1, $a5, 2
+	vslli.h	$vr1, $vr1, 8
+	vsrai.h	$vr2, $vr1, 8
+	lu12i.w	$a0, 32
+	ori	$a0, $a0, 39
+	vreplgr2vr.w	$vr1, $a0
+	vmul.h	$vr1, $vr2, $vr1
+	lu12i.w	$a0, 48
+	ori	$a0, $a0, 38
+	vreplgr2vr.w	$vr3, $a0
+	vmul.h	$vr3, $vr2, $vr3
+	lu12i.w	$a0, 64
+	ori	$a0, $a0, 37
+	vreplgr2vr.w	$vr4, $a0
+	vmul.h	$vr4, $vr2, $vr4
+	lu12i.w	$a0, 80
+	ori	$a0, $a0, 36
+	vreplgr2vr.w	$vr5, $a0
+	vmul.h	$vr8, $vr2, $vr5
+	lu12i.w	$a0, 96
+	ori	$a0, $a0, 35
+	vreplgr2vr.w	$vr5, $a0
+	vmul.h	$vr9, $vr2, $vr5
+	lu12i.w	$a0, 112
+	ori	$a0, $a0, 34
+	vreplgr2vr.w	$vr5, $a0
+	vmul.h	$vr10, $vr2, $vr5
+	lu12i.w	$a0, 128
+	ori	$a0, $a0, 33
+	vreplgr2vr.w	$vr5, $a0
+	vmul.h	$vr7, $vr2, $vr5
+	lu12i.w	$a0, 144
+	ori	$a0, $a0, 32
+	vreplgr2vr.w	$vr5, $a0
+	vmul.h	$vr5, $vr2, $vr5
+	lu12i.w	$a0, 160
+	ori	$a0, $a0, 31
+	vreplgr2vr.w	$vr6, $a0
+	vinsgr2vr.h	$vr11, $a5, 0
+	vinsgr2vr.h	$vr11, $a5, 1
+	vmul.h	$vr6, $vr11, $vr6
+	vpickve2gr.h	$a0, $vr1, 1
+	ext.w.h	$a0, $a0
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	div.d	$a0, $a5, $a0
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a1, $vr3, 1
 	ext.w.h	$a1, $a1
-	alsl.d	$s5, $a0, $a0, 3
-	alsl.d	$a2, $s5, $a0, 2
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	slli.d	$t5, $a0, 5
-	alsl.d	$a2, $a0, $t5, 2
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	div.d	$a0, $a0, $a1
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a1, $vr3, 0
+	ext.w.h	$a2, $a1
 	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	vpickve2gr.h	$a1, $vr1, 0
+	ext.w.h	$a1, $a1
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	alsl.d	$t7, $a0, $a0, 4
-	alsl.d	$a2, $t7, $a0, 1
+	vpickve2gr.h	$a2, $vr4, 0
+	ext.w.h	$a2, $a2
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	div.d	$a1, $a1, $a2
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr4, 1
+	ext.w.h	$a2, $a2
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr8, 1
+	ext.w.h	$a2, $a2
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr8, 0
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	alsl.d	$a2, $a0, $t5, 1
+	vpickve2gr.h	$a2, $vr9, 0
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	add.d	$a2, $t5, $a0
+	vpickve2gr.h	$a2, $vr9, 1
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t5
-	ext.w.h	$a1, $a1
-	sub.d	$a2, $t5, $a0
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr10, 1
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	ori	$a2, $zero, 30
-	mul.d	$a2, $a0, $a2
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr10, 0
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ori	$a2, $zero, 29
-	mul.d	$a2, $a0, $a2
+	lu12i.w	$a2, 320
+	ori	$a2, $a2, 21
+	vreplgr2vr.w	$vr1, $a2
+	vmul.h	$vr1, $vr11, $vr1
+	lu12i.w	$a2, 352
+	ori	$a2, $a2, 19
+	vreplgr2vr.w	$vr3, $a2
+	vmul.h	$vr3, $vr2, $vr3
+	lu12i.w	$a2, 368
+	ori	$a2, $a2, 18
+	vreplgr2vr.w	$vr4, $a2
+	vmul.h	$vr4, $vr2, $vr4
+	lu12i.w	$a2, 384
+	ori	$a2, $a2, 17
+	vreplgr2vr.w	$vr8, $a2
+	vmul.h	$vr8, $vr2, $vr8
+	lu12i.w	$a2, 400
+	ori	$a2, $a2, 16
+	vreplgr2vr.w	$vr9, $a2
+	vmul.h	$vr9, $vr2, $vr9
+	lu12i.w	$a2, 416
+	ori	$a2, $a2, 15
+	vreplgr2vr.w	$vr10, $a2
+	vmul.h	$vr10, $vr2, $vr10
+	lu12i.w	$a2, 432
+	ori	$a2, $a2, 14
+	vreplgr2vr.w	$vr11, $a2
+	vmul.h	$vr11, $vr2, $vr11
+	lu12i.w	$a2, 448
+	ori	$a2, $a2, 13
+	vreplgr2vr.w	$vr12, $a2
+	vmul.h	$vr12, $vr2, $vr12
+	lu12i.w	$a2, 464
+	ori	$a2, $a2, 12
+	vreplgr2vr.w	$vr13, $a2
+	vmul.h	$vr13, $vr2, $vr13
+	lu12i.w	$a2, 480
+	ori	$a2, $a2, 11
+	vreplgr2vr.w	$vr14, $a2
+	vmul.h	$vr2, $vr2, $vr14
+	vpickve2gr.h	$a2, $vr7, 0
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ori	$a2, $zero, 28
-	mul.d	$a2, $a0, $a2
+	vpickve2gr.h	$a2, $vr7, 1
+	ext.w.h	$a2, $a2
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a2, $a1
-	alsl.d	$a7, $a0, $a0, 1
-	alsl.d	$a1, $a7, $a7, 3
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	div.d	$a2, $a2, $a1
-	ext.w.h	$a2, $a2
-	ori	$a3, $zero, 26
-	mul.d	$a1, $a0, $a3
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	div.d	$a2, $a2, $a1
-	ext.w.h	$a2, $a2
-	alsl.d	$t8, $a7, $a0, 3
-	div.d	$a2, $a2, $t8
-	ext.w.h	$a2, $a2
-	slli.d	$s6, $a0, 4
-	alsl.d	$s1, $a0, $s6, 3
-	div.d	$a2, $a2, $s1
-	ext.w.h	$a2, $a2
-	ori	$a3, $zero, 23
-	mul.d	$s3, $a0, $a3
-	div.d	$a2, $a2, $s3
-	ext.w.h	$a2, $a2
-	ori	$a3, $zero, 22
-	mul.d	$s4, $a0, $a3
-	div.d	$a2, $a2, $s4
-	ext.w.h	$a2, $a2
-	move	$t6, $fp
-	alsl.d	$fp, $a0, $a0, 2
-	alsl.d	$ra, $fp, $a0, 2
-	div.d	$a2, $a2, $ra
-	ext.w.h	$a2, $a2
-	st.d	$s8, $sp, 264                   # 8-byte Folded Spill
-	alsl.d	$s8, $a0, $s6, 2
-	div.d	$a2, $a2, $s8
-	ext.w.h	$a2, $a2
-	alsl.d	$s0, $s5, $a0, 1
-	div.d	$a2, $a2, $s0
-	ext.w.h	$a2, $a2
-	alsl.d	$s2, $a0, $s6, 1
-	div.d	$a2, $a2, $s2
-	ext.w.h	$a2, $a2
-	div.d	$a2, $a2, $t7
-	ext.w.h	$a2, $a2
-	div.d	$a2, $a2, $s6
-	ext.w.h	$a2, $a2
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	sub.d	$s7, $s6, $a0
-	div.d	$a2, $a2, $s7
-	ext.w.h	$a3, $a2
-	ori	$a2, $zero, 14
-	mul.d	$t4, $a0, $a2
-	div.d	$a3, $a3, $t4
-	ext.w.h	$a3, $a3
-	alsl.d	$t3, $a7, $a0, 2
-	div.d	$a3, $a3, $t3
-	ext.w.h	$a3, $a3
-	st.d	$a4, $sp, 256                   # 8-byte Folded Spill
-	slli.d	$a4, $a0, 3
-	alsl.d	$t2, $a0, $a4, 2
-	div.d	$a3, $a3, $t2
-	ext.w.h	$a3, $a3
-	alsl.d	$t1, $fp, $a0, 1
-	div.d	$a3, $a3, $t1
-	ext.w.h	$a3, $a3
-	alsl.d	$t0, $a0, $a4, 1
-	div.d	$a3, $a3, $t0
-	ext.w.h	$a3, $a3
-	div.d	$a3, $a3, $s5
-	ext.w.h	$a3, $a3
-	div.d	$a3, $a3, $a4
-	ext.w.h	$a3, $a3
-	sub.d	$a6, $a4, $a0
-	div.d	$a3, $a3, $a6
-	ext.w.h	$a3, $a3
-	slli.d	$a2, $a0, 2
-	alsl.d	$a5, $a0, $a2, 1
-	div.d	$a3, $a3, $a5
-	ext.w.h	$a3, $a3
-	div.d	$a3, $a3, $fp
-	ext.w.h	$a3, $a3
-	div.d	$a3, $a3, $a2
-	ext.w.h	$a3, $a3
-	div.d	$a3, $a3, $a7
-	ext.w.h	$a3, $a3
-	slli.d	$a1, $a0, 1
-	div.d	$a3, $a3, $a1
-	div.d	$a1, $a0, $a1
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr5, 1
+	ext.w.h	$t7, $a2
+	div.d	$a0, $a0, $t7
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr5, 0
+	ext.w.h	$t8, $a2
+	div.d	$a1, $a1, $t8
 	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr6, 0
+	ext.w.h	$s1, $a2
+	div.d	$a1, $a1, $s1
+	vpickve2gr.h	$a2, $vr6, 1
+	ext.w.h	$s3, $a2
+	div.d	$a0, $a0, $s3
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr2, 0
+	ext.w.h	$s4, $a2
+	div.d	$a0, $a0, $s4
+	ext.w.h	$a0, $a0
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr2, 1
+	ext.w.h	$s5, $a2
+	div.d	$a1, $a1, $s5
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr13, 1
+	ext.w.h	$s6, $a2
+	div.d	$a1, $a1, $s6
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr13, 0
+	ext.w.h	$ra, $a2
+	div.d	$a0, $a0, $ra
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr12, 0
+	st.d	$s8, $sp, 176                   # 8-byte Folded Spill
+	ext.w.h	$s8, $a2
+	div.d	$a0, $a0, $s8
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr12, 1
+	ext.w.h	$s0, $a2
+	div.d	$a1, $a1, $s0
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr11, 1
+	ext.w.h	$s2, $a2
+	div.d	$a1, $a1, $s2
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr11, 0
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	ext.w.h	$s7, $a2
+	div.d	$a0, $a0, $s7
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr10, 0
+	move	$t6, $fp
+	ext.w.h	$fp, $a2
+	div.d	$a0, $a0, $fp
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a2, $vr10, 1
+	st.d	$a4, $sp, 168                   # 8-byte Folded Spill
+	ext.w.h	$a4, $a2
+	div.d	$a1, $a1, $a4
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr9, 1
+	ext.w.h	$a3, $a2
+	div.d	$a1, $a1, $a3
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$a2, $vr9, 0
+	ext.w.h	$a2, $a2
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a6, $vr8, 0
+	ext.w.h	$a6, $a6
+	div.d	$a0, $a0, $a6
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a7, $vr8, 1
+	ext.w.h	$a7, $a7
 	div.d	$a1, $a1, $a7
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$t0, $vr4, 1
+	ext.w.h	$t0, $t0
+	div.d	$a1, $a1, $t0
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$t1, $vr4, 0
+	ext.w.h	$t1, $t1
+	div.d	$a0, $a0, $t1
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$t2, $vr3, 0
+	ext.w.h	$t2, $t2
+	div.d	$a0, $a0, $t2
+	vpickve2gr.h	$t3, $vr3, 1
+	ext.w.h	$t3, $t3
+	div.d	$a1, $a1, $t3
+	ext.w.h	$a1, $a1
+	vpickve2gr.h	$t4, $vr1, 0
+	ext.w.h	$t4, $t4
+	div.d	$a1, $a1, $t4
+	ext.w.h	$a0, $a0
+	vpickve2gr.h	$t5, $vr1, 1
+	ext.w.h	$t5, $t5
+	div.d	$a0, $a0, $t5
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $t4
+	ext.w.h	$a1, $a1
+	div.d	$a1, $a1, $t5
+	ext.w.h	$a1, $a1
+	div.d	$a1, $a1, $t2
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $t3
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $t0
+	ext.w.h	$a1, $a1
+	div.d	$a1, $a1, $t1
+	ext.w.h	$a1, $a1
+	div.d	$a1, $a1, $a6
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $a7
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $a3
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $fp
 	move	$fp, $t6
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $a5
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $a6
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $a4
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $s5
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t0
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t1
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t2
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t3
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t4
-	fdiv.d	$fa1, $fa1, $ft1
-	fdiv.d	$fa1, $fa1, $fa2
-	fdiv.d	$fa1, $fa1, $fa3
-	fld.d	$fa2, $sp, 288                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fdiv.d	$fa1, $fa1, $fa4
-	fld.d	$fa2, $sp, 280                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 272                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fdiv.d	$fa1, $fa1, $fs5
-	fdiv.d	$fa1, $fa1, $fa5
-	fdiv.d	$fa1, $fa1, $fs4
-	fdiv.d	$fa1, $fa1, $ft10
-	fdiv.d	$fa1, $fa1, $ft9
-	fdiv.d	$fa1, $fa1, $ft8
-	fdiv.d	$fa1, $fa1, $ft11
-	fdiv.d	$fa1, $fa1, $ft12
-	fdiv.d	$fa1, $fa1, $ft13
-	fdiv.d	$fa1, $fa1, $ft14
-	fdiv.d	$fa1, $fa1, $fs3
-	fld.d	$fa2, $sp, 96                   # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 104                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 112                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 128                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fdiv.d	$fa1, $fa1, $ft7
-	fld.d	$fa2, $sp, 136                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 152                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 168                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 184                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fld.d	$fa2, $sp, 192                  # 8-byte Folded Reload
-	fdiv.d	$fa1, $fa1, $fa2
-	fdiv.d	$fa2, $ft0, $fa0
-	fdiv.d	$fa0, $fa1, $fa0
-	fmul.d	$fs0, $fa0, $fa2
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $a4
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $s2
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $s7
 	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $s6
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t7
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $s2
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $s0
-	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $s8
-	ld.d	$s8, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $s0
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $s6
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $ra
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $s4
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $s5
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $s1
 	ext.w.h	$a1, $a1
 	div.d	$a1, $a1, $s3
 	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $s1
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t8
-	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
+	div.d	$a1, $a1, $t7
+	ext.w.h	$a0, $a0
+	div.d	$a0, $a0, $t8
+	ext.w.h	$a0, $a0
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
 	ext.w.h	$a1, $a1
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	div.d	$a1, $a1, $t5
+	ext.w.h	$a0, $a0
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
 	ext.w.h	$a1, $a1
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
+	ext.w.h	$a0, $a0
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a1, $a1
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	div.d	$a1, $a1, $a2
+	ext.w.h	$a0, $a0
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a0, $a0
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	div.d	$a0, $a0, $a2
+	ext.w.h	$a1, $a1
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	div.d	$a1, $a1, $a2
+	ffint.d.w	$fa0, $fa0
+	fadd.d	$fa1, $fa0, $fa0
+	fst.d	$fa1, $sp, 152                  # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 136                  # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 128                  # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 120                  # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 104                  # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 96                   # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 88                   # 8-byte Folded Spill
+	fadd.d	$fa1, $fa1, $fa0
+	fst.d	$fa1, $sp, 80                   # 8-byte Folded Spill
+	fadd.d	$ft1, $fa1, $fa0
+	fadd.d	$ft2, $ft1, $fa0
+	fadd.d	$ft3, $ft2, $fa0
+	fadd.d	$ft4, $ft3, $fa0
+	fadd.d	$ft5, $ft4, $fa0
+	fadd.d	$ft6, $ft5, $fa0
+	fadd.d	$ft13, $ft6, $fa0
+	fadd.d	$ft14, $ft13, $fa0
+	fadd.d	$ft0, $ft14, $fa0
+	fst.d	$ft14, $sp, 16                  # 8-byte Folded Spill
+	fadd.d	$fa6, $ft0, $fa0
+	fst.d	$ft0, $sp, 24                   # 8-byte Folded Spill
+	fadd.d	$fa5, $fa6, $fa0
+	fst.d	$fa6, $sp, 32                   # 8-byte Folded Spill
+	fadd.d	$fa4, $fa5, $fa0
+	fst.d	$fa5, $sp, 40                   # 8-byte Folded Spill
+	fadd.d	$fa3, $fa4, $fa0
+	fst.d	$fa4, $sp, 48                   # 8-byte Folded Spill
+	fadd.d	$fa2, $fa3, $fa0
+	fst.d	$fa3, $sp, 64                   # 8-byte Folded Spill
+	fadd.d	$ft15, $fa2, $fa0
+	fst.d	$fa2, $sp, 72                   # 8-byte Folded Spill
+	fadd.d	$fs0, $ft15, $fa0
+	fadd.d	$fs1, $fs0, $fa0
+	fadd.d	$fs2, $fs1, $fa0
+	fadd.d	$fs3, $fs2, $fa0
+	fadd.d	$fs4, $fs3, $fa0
+	fadd.d	$fs5, $fs4, $fa0
+	fadd.d	$fs6, $fs5, $fa0
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a1, $a1
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
-	div.d	$a1, $a1, $a2
-	ext.w.h	$a2, $a3
-	div.d	$a2, $a2, $a0
-	ext.w.h	$a1, $a1
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
-	div.d	$a1, $a1, $a3
-	ext.w.h	$a1, $a1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	div.d	$a1, $a1, $a5
+	div.d	$a0, $a0, $a5
+	vinsgr2vr.h	$vr1, $a0, 0
+	vpickve2gr.b	$a0, $vr1, 0
+	vinsgr2vr.h	$vr1, $a1, 1
+	vpickve2gr.b	$a1, $vr1, 2
+	fadd.d	$fs7, $fs6, $fa0
+	fadd.d	$ft12, $fs7, $fa0
+	fadd.d	$ft7, $ft12, $fa0
+	fadd.d	$ft8, $ft7, $fa0
+	fadd.d	$ft9, $ft8, $fa0
+	fadd.d	$ft10, $ft9, $fa0
+	fadd.d	$ft11, $ft10, $fa0
+	fadd.d	$fa1, $ft11, $fa0
+	fst.d	$fa1, $sp, 112                  # 8-byte Folded Spill
+	fdiv.d	$fa7, $fa1, $ft11
+	fdiv.d	$fa7, $fa7, $ft10
+	fdiv.d	$fa7, $fa7, $ft9
+	fdiv.d	$fa7, $fa7, $ft8
+	fdiv.d	$fa7, $fa7, $ft7
+	fdiv.d	$fa7, $fa7, $ft12
+	fdiv.d	$fa7, $fa7, $fs7
+	fdiv.d	$fa7, $fa7, $fs6
+	fdiv.d	$fa7, $fa7, $fs5
+	fdiv.d	$fa7, $fa7, $fs4
+	fdiv.d	$fa7, $fa7, $fs3
+	fdiv.d	$fa7, $fa7, $fs2
+	fdiv.d	$fa7, $fa7, $fs1
+	fdiv.d	$fa7, $fa7, $fs0
+	fdiv.d	$fa7, $fa7, $ft15
+	fdiv.d	$fa7, $fa7, $fa2
+	fdiv.d	$fa7, $fa7, $fa3
+	fdiv.d	$fa7, $fa7, $fa4
+	fdiv.d	$fa7, $fa7, $fa5
+	fdiv.d	$fa7, $fa7, $fa6
+	fdiv.d	$fa7, $fa7, $ft0
+	fdiv.d	$fa7, $fa7, $ft14
+	fdiv.d	$fa7, $fa7, $ft13
+	fmov.d	$ft14, $ft13
+	fdiv.d	$fa7, $fa7, $ft6
+	fmov.d	$ft13, $ft6
+	fdiv.d	$fa7, $fa7, $ft5
+	fmov.d	$ft6, $ft5
+	fdiv.d	$fa7, $fa7, $ft4
+	fmov.d	$ft5, $ft4
+	fdiv.d	$fa7, $fa7, $ft3
+	fmov.d	$ft4, $ft3
+	fdiv.d	$fa7, $fa7, $ft2
+	fmov.d	$ft3, $ft2
+	fmov.d	$ft2, $ft1
+	fdiv.d	$fa7, $fa7, $ft1
+	fld.d	$ft1, $sp, 80                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $ft1
+	fld.d	$ft0, $sp, 88                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $ft0
+	fld.d	$fa6, $sp, 96                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa6
+	fld.d	$fa5, $sp, 104                  # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa5
+	fld.d	$fa4, $sp, 120                  # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa4
+	fld.d	$fa3, $sp, 128                  # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa3
+	fld.d	$fa2, $sp, 136                  # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa2
+	fld.d	$fa1, $sp, 152                  # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fst.d	$fa7, $sp, 56                   # 8-byte Folded Spill
+	fdiv.d	$fa7, $fa0, $fa1
+	fdiv.d	$fa7, $fa7, $fa2
+	fdiv.d	$fa7, $fa7, $fa3
+	fdiv.d	$fa7, $fa7, $fa4
+	fdiv.d	$fa7, $fa7, $fa5
+	fdiv.d	$fa7, $fa7, $fa6
+	fdiv.d	$fa7, $fa7, $ft0
+	fdiv.d	$fa7, $fa7, $ft1
+	fdiv.d	$fa7, $fa7, $ft2
+	fdiv.d	$fa7, $fa7, $ft3
+	fdiv.d	$fa7, $fa7, $ft4
+	fdiv.d	$fa7, $fa7, $ft5
+	fdiv.d	$fa7, $fa7, $ft6
+	fdiv.d	$fa7, $fa7, $ft13
+	fdiv.d	$fa7, $fa7, $ft14
+	fld.d	$fa1, $sp, 16                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fld.d	$fa1, $sp, 24                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fld.d	$fa1, $sp, 32                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fld.d	$fa1, $sp, 40                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fld.d	$fa1, $sp, 48                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fld.d	$fa1, $sp, 64                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fld.d	$fa1, $sp, 72                   # 8-byte Folded Reload
+	fdiv.d	$fa7, $fa7, $fa1
+	fdiv.d	$fa7, $fa7, $ft15
+	fdiv.d	$fa7, $fa7, $fs0
+	fdiv.d	$fa7, $fa7, $fs1
+	fdiv.d	$fa7, $fa7, $fs2
+	fdiv.d	$fa7, $fa7, $fs3
+	fdiv.d	$fa7, $fa7, $fs4
+	fdiv.d	$fa7, $fa7, $fs5
+	fdiv.d	$fa7, $fa7, $fs6
+	fdiv.d	$fa7, $fa7, $fs7
+	fdiv.d	$fa1, $fa7, $ft12
+	fdiv.d	$fa1, $fa1, $ft7
+	fdiv.d	$fa1, $fa1, $ft8
+	fdiv.d	$fa1, $fa1, $ft9
+	fdiv.d	$fa1, $fa1, $ft10
+	fdiv.d	$fa1, $fa1, $ft11
+	fld.d	$fa2, $sp, 112                  # 8-byte Folded Reload
+	fdiv.d	$fa1, $fa1, $fa2
+	fld.d	$fa2, $sp, 56                   # 8-byte Folded Reload
+	fdiv.d	$fa2, $fa2, $fa0
+	fdiv.d	$fa0, $fa1, $fa0
+	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
 	ld.b	$a4, $s0, 0
-	div.d	$a0, $a1, $a0
-	mul.d	$a0, $a0, $a2
+	fmul.d	$fs0, $fa0, $fa2
+	mul.d	$a0, $a0, $a1
 	ext.w.b	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
@@ -547,10 +666,10 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_ZL35check_and_print_value_and_alignmentIcEbPKcS1_jPKvT_S4_)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	or	$a0, $s1, $a0
 	or	$fp, $fp, $a0
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 .LBB0_4:
 	addi.d	$a0, $a0, -1
 	ori	$a5, $a0, 42
@@ -562,26 +681,26 @@ _Z11check_tracePKcS0_PK13trace_elementdjbjjbbi: # @_Z11check_tracePKcS0_PK13trac
 	pcaddu18i	$ra, %call36(_ZL35check_and_print_value_and_alignmentIiEbPKcS1_jPKvT_S4_)
 	jirl	$ra, $ra, 0
 	or	$a0, $fp, $a0
-	fld.d	$fs7, $sp, 296                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 304                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 312                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 320                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 328                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 336                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 344                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 352                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 416                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 424                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 432                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 440                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 448
+	fld.d	$fs7, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 208                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 216                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 224                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 232                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 240                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 336
 	ret
 .Lfunc_end0:
 	.size	_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi, .Lfunc_end0-_Z11check_tracePKcS0_PK13trace_elementdjbjjbbi

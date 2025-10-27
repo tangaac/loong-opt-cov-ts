@@ -40,9 +40,8 @@ routenet:                               # @routenet
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
 	ori	$a2, $zero, 3
 	move	$fp, $a1
 	move	$s0, $a0
@@ -54,7 +53,7 @@ routenet:                               # @routenet
 	addi.w	$a1, $s0, -1
 	bstrpick.d	$a2, $a1, 31, 0
 	div.w	$a0, $a0, $a1
-	st.w	$a0, $sp, 20
+	st.w	$a0, $sp, 28
 	ori	$s2, $zero, 1
 	slt	$a1, $s2, $a0
 	maskeqz	$a0, $a0, $a1
@@ -256,7 +255,7 @@ routenet:                               # @routenet
 	add.w	$a1, $a0, $fp
 	st.w	$fp, $a2, 0
 	blez	$a1, .LBB0_42
-# %bb.28:                               # %iter.check273
+# %bb.28:                               # %iter.check271
 	pcalau12i	$a2, %got_pc_hi20(targetList)
 	ld.d	$a2, $a2, %got_pc_lo12(targetList)
 	ld.d	$a2, $a2, 0
@@ -266,16 +265,16 @@ routenet:                               # @routenet
 	ori	$a5, $zero, 8
 	ori	$a4, $zero, 1
 	bltu	$a1, $a5, .LBB0_40
-# %bb.29:                               # %iter.check273
+# %bb.29:                               # %iter.check271
 	sub.d	$a5, $a3, $a2
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB0_40
-# %bb.30:                               # %vector.main.loop.iter.check275
+# %bb.30:                               # %vector.main.loop.iter.check273
 	ori	$a4, $zero, 16
 	bgeu	$a1, $a4, .LBB0_35
 # %bb.31:
 	move	$a5, $zero
-.LBB0_32:                               # %vec.epilog.ph288
+.LBB0_32:                               # %vec.epilog.ph286
 	bstrpick.d	$a4, $a1, 30, 3
 	slli.d	$a6, $a4, 3
 	srli.d	$a7, $a1, 3
@@ -288,7 +287,7 @@ routenet:                               # @routenet
 	sub.d	$a5, $a5, $a6
 	vrepli.b	$vr0, 0
 	.p2align	4, , 16
-.LBB0_33:                               # %vec.epilog.vector.body291
+.LBB0_33:                               # %vec.epilog.vector.body289
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a7, 0
 	vst	$vr0, $t0, 0
@@ -296,10 +295,10 @@ routenet:                               # @routenet
 	addi.d	$a5, $a5, 8
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB0_33
-# %bb.34:                               # %vec.epilog.middle.block295
+# %bb.34:                               # %vec.epilog.middle.block293
 	bne	$a6, $a1, .LBB0_40
 	b	.LBB0_42
-.LBB0_35:                               # %vector.ph276
+.LBB0_35:                               # %vector.ph274
 	andi	$a4, $a1, 8
 	bstrpick.d	$a5, $a1, 30, 4
 	slli.d	$a5, $a5, 4
@@ -308,7 +307,7 @@ routenet:                               # @routenet
 	vrepli.b	$vr0, 0
 	move	$t0, $a5
 	.p2align	4, , 16
-.LBB0_36:                               # %vector.body279
+.LBB0_36:                               # %vector.body277
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a6, -16
 	vst	$vr0, $a6, 0
@@ -318,20 +317,20 @@ routenet:                               # @routenet
 	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB0_36
-# %bb.37:                               # %middle.block282
+# %bb.37:                               # %middle.block280
 	beq	$a5, $a1, .LBB0_42
-# %bb.38:                               # %vec.epilog.iter.check286
+# %bb.38:                               # %vec.epilog.iter.check284
 	bnez	$a4, .LBB0_32
 # %bb.39:
 	addi.d	$a4, $a5, 1
-.LBB0_40:                               # %vec.epilog.scalar.ph285.preheader
+.LBB0_40:                               # %vec.epilog.scalar.ph283.preheader
 	addi.d	$a5, $a1, 1
 	bstrpick.d	$a5, $a5, 31, 0
 	alsl.d	$a3, $a4, $a3, 1
 	alsl.d	$a2, $a4, $a2, 1
 	sub.d	$a4, $a5, $a4
 	.p2align	4, , 16
-.LBB0_41:                               # %vec.epilog.scalar.ph285
+.LBB0_41:                               # %vec.epilog.scalar.ph283
                                         # =>This Inner Loop Header: Depth=1
 	st.h	$zero, $a2, 0
 	st.h	$zero, $a3, 0
@@ -346,97 +345,93 @@ routenet:                               # @routenet
 	pcalau12i	$a2, %got_pc_hi20(segPtr)
 	ld.d	$a2, $a2, %got_pc_lo12(segPtr)
 	st.w	$zero, $a2, 0
-	addi.w	$a3, $a0, 1
-	st.w	$a3, $sp, 20
+	addi.w	$a4, $a0, 1
+	st.w	$a4, $sp, 28
 	pcalau12i	$a2, %got_pc_hi20(pnodeArray)
 	ld.d	$a2, $a2, %got_pc_lo12(pnodeArray)
 	ld.d	$a2, $a2, 0
-                                        # implicit-def: $r8
+                                        # implicit-def: $r7
 	bge	$a0, $a1, .LBB0_56
 # %bb.43:                               # %.lr.ph158
 	move	$a5, $zero
-	slt	$a4, $a1, $a3
-	masknez	$a6, $a1, $a4
-	maskeqz	$a4, $a3, $a4
-	or	$a6, $a4, $a6
-	addi.d	$a7, $a3, -1
-	ori	$a4, $zero, 24
-	mul.d	$t0, $a3, $a4
-	mul.d	$a4, $a0, $a4
-	sub.d	$a4, $t0, $a4
-	add.d	$t0, $a2, $a4
-	slli.d	$a4, $a3, 3
-	alsl.d	$a4, $a3, $a4, 2
-	addi.d	$t1, $a4, 4
-	addi.d	$t2, $a0, 2
-	lu12i.w	$a4, 244140
-	ori	$t3, $a4, 2560
-	move	$t5, $a3
-                                        # implicit-def: $r8
+	addi.d	$a6, $a4, -1
+	ori	$a3, $zero, 24
+	mul.d	$a7, $a4, $a3
+	mul.d	$a3, $a0, $a3
+	sub.d	$a3, $a7, $a3
+	add.d	$a7, $a2, $a3
+	slli.d	$a3, $a4, 3
+	alsl.d	$a3, $a4, $a3, 2
+	addi.d	$t0, $a3, 4
+	addi.d	$t1, $a0, 2
+	lu12i.w	$a3, 244140
+	ori	$t2, $a3, 2560
+	move	$t4, $a4
+                                        # implicit-def: $r7
 	b	.LBB0_45
 	.p2align	4, , 16
 .LBB0_44:                               # %.loopexit119
                                         #   in Loop: Header=BB0_45 Depth=1
-	addi.w	$t5, $t4, 1
-	st.w	$t5, $sp, 20
+	addi.w	$t4, $t3, 1
+	st.w	$t4, $sp, 28
 	addi.w	$a5, $a5, 1
-	beq	$t4, $a6, .LBB0_56
+	bge	$t3, $a1, .LBB0_56
 .LBB0_45:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_49 Depth 2
-	move	$t4, $t5
-	sub.w	$t5, $t5, $a0
-	slli.d	$t6, $t5, 4
-	alsl.d	$t6, $t5, $t6, 3
-	add.d	$t6, $a2, $t6
-	ld.d	$t7, $t6, 8
-	st.w	$a3, $sp, 16
+	move	$t3, $t4
+	sub.w	$t4, $t4, $a0
+	slli.d	$t5, $t4, 4
+	alsl.d	$t5, $t4, $t5, 3
+	add.d	$t5, $a2, $t5
+	ld.d	$t6, $t5, 8
+	st.w	$a4, $sp, 24
 	blez	$fp, .LBB0_44
 # %bb.46:                               # %.lr.ph147.preheader
                                         #   in Loop: Header=BB0_45 Depth=1
-	move	$s1, $zero
-	add.d	$t7, $t7, $t1
-	move	$t8, $t0
-	move	$s0, $a7
+	move	$s0, $zero
+	add.d	$t6, $t6, $t0
+	move	$t7, $a7
+	move	$t8, $a6
 	b	.LBB0_49
 	.p2align	4, , 16
 .LBB0_47:                               #   in Loop: Header=BB0_49 Depth=2
-	ld.w	$s5, $t7, 0
-	slt	$s6, $s5, $t3
-	masknez	$t3, $t3, $s6
-	maskeqz	$s5, $s5, $s6
-	or	$t3, $s5, $t3
-	masknez	$a4, $a4, $s6
-	maskeqz	$s5, $t4, $s6
-	or	$a4, $s5, $a4
+	ld.w	$s4, $t6, 0
+	slt	$s5, $s4, $t2
+	masknez	$t2, $t2, $s5
+	maskeqz	$s4, $s4, $s5
+	or	$t2, $s4, $t2
+	masknez	$a3, $a3, $s5
+	maskeqz	$s4, $t3, $s5
+	or	$a3, $s4, $a3
 .LBB0_48:                               #   in Loop: Header=BB0_49 Depth=2
-	add.d	$s4, $t2, $s4
-	st.w	$s4, $sp, 16
-	addi.d	$s0, $s0, 1
-	addi.d	$t8, $t8, 24
-	addi.d	$t7, $t7, 12
-	bge	$s0, $a1, .LBB0_44
+	add.d	$s1, $t1, $s1
+	st.w	$s1, $sp, 24
+	addi.d	$t8, $t8, 1
+	addi.d	$t7, $t7, 24
+	addi.d	$t6, $t6, 12
+	bge	$t8, $a1, .LBB0_44
 .LBB0_49:                               # %.lr.ph147
                                         #   Parent Loop BB0_45 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$s4, $s1
-	addi.w	$s1, $s1, 1
-	beq	$a5, $s4, .LBB0_48
+	move	$s1, $s0
+	addi.w	$s0, $s0, 1
+	beq	$a5, $s1, .LBB0_48
 # %bb.50:                               #   in Loop: Header=BB0_49 Depth=2
-	ld.w	$s6, $t6, 0
-	ld.w	$s5, $t8, 0
-	beqz	$s6, .LBB0_53
+	ld.w	$s5, $t5, 0
+	ld.w	$s4, $t7, 0
+	beqz	$s5, .LBB0_53
 # %bb.51:                               #   in Loop: Header=BB0_49 Depth=2
-	beqz	$s5, .LBB0_55
+	beqz	$s4, .LBB0_55
 # %bb.52:                               #   in Loop: Header=BB0_49 Depth=2
-	bne	$s6, $s5, .LBB0_47
+	bne	$s5, $s4, .LBB0_47
 	b	.LBB0_48
 .LBB0_53:                               #   in Loop: Header=BB0_49 Depth=2
-	beqz	$s5, .LBB0_47
+	beqz	$s4, .LBB0_47
 # %bb.54:                               #   in Loop: Header=BB0_49 Depth=2
-	beq	$s5, $t5, .LBB0_48
+	beq	$s4, $t4, .LBB0_48
 	b	.LBB0_47
 .LBB0_55:                               #   in Loop: Header=BB0_49 Depth=2
-	bne	$s1, $s6, .LBB0_47
+	bne	$s0, $s5, .LBB0_47
 	b	.LBB0_48
 .LBB0_56:                               # %._crit_edge159
 	pcalau12i	$a1, %got_pc_hi20(pathLength)
@@ -446,16 +441,16 @@ routenet:                               # @routenet
 	st.w	$zero, $a1, %pc_lo12(pathIndex)
 	pcalau12i	$a1, %got_pc_hi20(delSourceList)
 	ld.d	$a1, $a1, %got_pc_lo12(delSourceList)
-	ld.d	$a3, $a1, 0
-	st.h	$a4, $a3, 2
+	ld.d	$a4, $a1, 0
+	st.h	$a3, $a4, 2
 	pcalau12i	$a1, %got_pc_hi20(addTargetList)
 	ld.d	$fp, $a1, %got_pc_lo12(addTargetList)
 	ld.d	$a1, $fp, 0
-	sub.w	$a5, $a4, $a0
+	sub.w	$a5, $a3, $a0
 	slli.d	$a6, $a5, 4
 	alsl.d	$a5, $a5, $a6, 3
 	ldx.w	$a6, $a2, $a5
-	st.h	$a4, $a1, 2
+	st.h	$a3, $a1, 2
 	beqz	$a6, .LBB0_63
 # %bb.57:
 	slli.d	$a5, $a6, 4
@@ -463,17 +458,17 @@ routenet:                               # @routenet
 	add.d	$a2, $a2, $a5
 	ld.d	$a5, $a2, 16
 	add.d	$a2, $a6, $a0
-	st.h	$a2, $a3, 4
+	st.h	$a2, $a4, 4
 	st.h	$a2, $a1, 4
 	ori	$a2, $zero, 1
 	beqz	$a5, .LBB0_67
 # %bb.58:                               # %.lr.ph165.preheader
-	addi.w	$a4, $a4, 0
+	addi.w	$a3, $a3, 0
 	.p2align	4, , 16
 .LBB0_59:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a5, 0
 	add.w	$a7, $a6, $a0
-	bne	$a7, $a4, .LBB0_61
+	bne	$a7, $a3, .LBB0_61
 # %bb.60:                               #   in Loop: Header=BB0_59 Depth=1
 	ld.d	$a5, $a5, 8
 	bnez	$a5, .LBB0_59
@@ -484,7 +479,7 @@ routenet:                               # @routenet
 	ld.d	$a5, $a5, 8
 	slli.d	$a2, $a2, 1
 	addi.d	$a2, $a2, 4
-	stx.h	$a7, $a3, $a2
+	stx.h	$a7, $a4, $a2
 	stx.h	$a7, $a1, $a2
 	move	$a2, $a6
 	bnez	$a5, .LBB0_59
@@ -493,24 +488,24 @@ routenet:                               # @routenet
 	b	.LBB0_67
 .LBB0_63:
 	add.d	$a2, $a2, $a5
-	ld.d	$a4, $a2, 16
-	beqz	$a4, .LBB0_66
+	ld.d	$a3, $a2, 16
+	beqz	$a3, .LBB0_66
 # %bb.64:                               # %.lr.ph178.preheader
 	move	$a2, $zero
 	addi.d	$a5, $a1, 4
-	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 4
 	.p2align	4, , 16
 .LBB0_65:                               # %.lr.ph178
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a4, 0
+	ld.w	$a6, $a3, 0
 	add.d	$a6, $a6, $a0
-	st.h	$a6, $a3, 0
-	ld.d	$a4, $a4, 8
+	st.h	$a6, $a4, 0
+	ld.d	$a3, $a3, 8
 	st.h	$a6, $a5, 0
 	addi.d	$a5, $a5, 2
-	addi.d	$a3, $a3, 2
+	addi.d	$a4, $a4, 2
 	addi.d	$a2, $a2, 1
-	bnez	$a4, .LBB0_65
+	bnez	$a3, .LBB0_65
 	b	.LBB0_67
 .LBB0_66:
 	move	$a2, $zero
@@ -573,7 +568,7 @@ routenet:                               # @routenet
 .LBB0_74:                               # %._crit_edge197
                                         #   in Loop: Header=BB0_75 Depth=1
 	addi.d	$a2, $a2, 1
-	st.w	$a2, $sp, 20
+	st.w	$a2, $sp, 28
 	beq	$a2, $s0, .LBB0_79
 .LBB0_75:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_76 Depth 2
@@ -612,13 +607,13 @@ routenet:                               # @routenet
 	.p2align	4, , 16
 .LBB0_81:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $sp, 8
-	addi.d	$a2, $sp, 20
-	addi.d	$a3, $sp, 16
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 28
+	addi.d	$a3, $sp, 24
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
+	ld.d	$a0, $sp, 16
 	bnez	$a0, .LBB0_81
 .LBB0_82:                               # %.loopexit
 	beqz	$s2, .LBB0_84
@@ -627,9 +622,8 @@ routenet:                               # @routenet
 	ld.d	$a0, $a0, %got_pc_lo12(bareMinimum)
 	st.w	$zero, $a0, 0
 .LBB0_84:
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload

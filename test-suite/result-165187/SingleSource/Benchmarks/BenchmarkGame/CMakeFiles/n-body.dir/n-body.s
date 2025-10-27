@@ -188,36 +188,36 @@ offset_momentum:                        # @offset_momentum
 # %bb.0:
 	blez	$a0, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$a2, $a1, 48
-	vrepli.b	$vr1, 0
 	movgr2fr.d	$fa0, $zero
+	addi.d	$a2, $a1, 48
+	fmov.d	$fa1, $fa0
+	fmov.d	$fa2, $fa0
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa2, $a2, 0
-	vld	$vr3, $a2, -24
-	fld.d	$fa4, $a2, -8
-	vreplvei.d	$vr5, $vr2, 0
-	vfmadd.d	$vr1, $vr3, $vr5, $vr1
-	fmadd.d	$fa0, $fa4, $fa2, $fa0
+	fld.d	$fa3, $a2, -24
+	fld.d	$fa4, $a2, 0
+	fld.d	$fa5, $a2, -16
+	fld.d	$fa6, $a2, -8
+	fmadd.d	$fa2, $fa3, $fa4, $fa2
+	fmadd.d	$fa1, $fa5, $fa4, $fa1
+	fmadd.d	$fa0, $fa6, $fa4, $fa0
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 56
 	bnez	$a0, .LBB2_2
 	b	.LBB2_4
 .LBB2_3:
-	vrepli.b	$vr1, 0
-	movgr2fr.d	$fa0, $zero
+	movgr2fr.d	$fa2, $zero
+	fmov.d	$fa1, $fa2
+	fmov.d	$fa0, $fa2
 .LBB2_4:                                # %._crit_edge
-	lu12i.w	$a0, -222236
-	ori	$a0, $a0, 1502
-	lu32i.d	$a0, 245052
-	lu52i.d	$a0, $a0, -1020
-	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
-	fld.d	$fa2, $a2, %pc_lo12(.LCPI2_0)
-	vreplgr2vr.d	$vr3, $a0
-	vfdiv.d	$vr1, $vr1, $vr3
-	vst	$vr1, $a1, 24
-	fdiv.d	$fa0, $fa0, $fa2
+	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
+	fld.d	$fa3, $a0, %pc_lo12(.LCPI2_0)
+	fdiv.d	$fa2, $fa2, $fa3
+	fst.d	$fa2, $a1, 24
+	fdiv.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $a1, 32
+	fdiv.d	$fa0, $fa0, $fa3
 	fst.d	$fa0, $a1, 40
 	ret
 .Lfunc_end2:

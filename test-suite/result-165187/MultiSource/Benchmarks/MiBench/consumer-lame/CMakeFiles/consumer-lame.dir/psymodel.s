@@ -83,78 +83,78 @@
 	.type	L3psycho_anal,@function
 L3psycho_anal:                          # @L3psycho_anal
 # %bb.0:
-	addi.d	$sp, $sp, -1232
-	st.d	$ra, $sp, 1224                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1216                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1208                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1200                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1192                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1184                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1176                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1168                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1160                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1152                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1144                  # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 1136                 # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 1128                 # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 1120                 # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 1112                 # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 1104                 # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 1096                 # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 1088                 # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 1080                 # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1216
+	st.d	$ra, $sp, 1208                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1200                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1192                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1184                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1176                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1168                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1160                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1152                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1144                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1136                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1128                  # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 1120                 # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 1112                 # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 1104                 # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 1096                 # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 1088                 # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 1080                 # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 1072                 # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 1064                 # 8-byte Folded Spill
 	move	$s8, $a7
 	move	$s1, $a6
-	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.cw_lower_index)
-	st.d	$a0, $sp, 296                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.cw_upper_index)
-	st.d	$a0, $sp, 304                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 296                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.cw)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.cw)
-	st.d	$a0, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 400                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.w2_s)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.w2_s)
-	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.w1_s)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.w1_s)
-	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.bo_s)
 	addi.d	$s4, $a0, %pc_lo12(L3psycho_anal.bo_s)
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.bu_s)
 	addi.d	$s6, $a0, %pc_lo12(L3psycho_anal.bu_s)
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.w2_l)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.w2_l)
-	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.w1_l)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.w1_l)
-	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.bo_l)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.bo_l)
-	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.bu_l)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.bu_l)
-	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(L3psycho_anal.npart_l_orig)
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(L3psycho_anal.npart_s_orig)
+	pcalau12i	$a0, %pc_hi20(L3psycho_anal.npart_l_orig)
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(L3psycho_anal.npart_s_orig)
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.npart_l)
-	st.d	$a0, $sp, 496                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 480                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.npart_s)
-	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.s3ind_s)
 	addi.d	$s2, $a0, %pc_lo12(L3psycho_anal.s3ind_s)
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.s3ind)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.s3ind)
-	st.d	$a0, $sp, 544                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 528                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 200                   # 8-byte Folded Spill
 	bnez	$a2, .LBB0_69
 # %bb.1:
 	ld.d	$a0, $s3, 168
@@ -168,15 +168,15 @@ L3psycho_anal:                          # @L3psycho_anal
 	lu12i.w	$a0, 7
 	ori	$a3, $a0, 3327
 	st.d	$a4, $a1, %pc_lo12(L3psycho_anal.blocktype_old)
-	st.d	$s8, $sp, 528                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 512                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 512                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 496                   # 8-byte Folded Spill
 	blt	$a3, $s7, .LBB0_6
 # %bb.3:
 	lu12i.w	$a0, 3
 	ori	$a0, $a0, 3712
-	ld.d	$s0, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 264                   # 8-byte Folded Reload
 	beq	$s7, $a0, .LBB0_9
 # %bb.4:
 	lu12i.w	$a0, 5
@@ -188,9 +188,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	b	.LBB0_275
 .LBB0_6:
 	ori	$a0, $a0, 3328
-	ld.d	$s0, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 264                   # 8-byte Folded Reload
 	beq	$s7, $a0, .LBB0_9
 # %bb.7:
 	lu12i.w	$a0, 10
@@ -233,9 +233,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	fld.s	$fa0, $fp, 152
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_0)
 	movgr2fr.w	$fa2, $zero
 	fcmp.clt.s	$fcc0, $fa2, $fa0
@@ -247,7 +247,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_1)
 	fmul.d	$fa0, $fa0, $fa1
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	st.b	$a0, $a1, %pc_lo12(L3psycho_anal.cw_lower_index)
 	fsel	$fa0, $fa2, $fa0, $fcc0
 	bstrpick.d	$a0, $s7, 31, 0
@@ -266,7 +266,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$a2, $zero, 509
 	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 296                   # 8-byte Folded Reload
 	st.w	$a0, $a1, %pc_lo12(L3psycho_anal.cw_upper_index)
 	lu12i.w	$a0, 257228
 	ori	$a0, $a0, 3277
@@ -468,18 +468,18 @@ L3psycho_anal:                          # @L3psycho_anal
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	st.d	$s1, $sp, 64
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 56
 	st.d	$s4, $sp, 48
 	st.d	$s6, $sp, 40
 	st.d	$s3, $sp, 32
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 24
-	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 16
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 8
-	addi.d	$a0, $sp, 560
+	addi.d	$a0, $sp, 544
 	st.d	$a0, $sp, 0
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.numlines_l)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.numlines_l)
@@ -528,12 +528,12 @@ L3psycho_anal:                          # @L3psycho_anal
 	maskeqz	$a0, $a0, $a2
 	or	$t1, $a0, $a1
 	addi.w	$a6, $t1, 1
-	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	st.w	$a6, $a0, %pc_lo12(L3psycho_anal.npart_l_orig)
 	addi.d	$a2, $s7, -16
 	addi.d	$a3, $zero, -2
 	addi.w	$a4, $zero, -1
-	ld.d	$t3, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 480                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_12:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $fp, 0
@@ -543,20 +543,20 @@ L3psycho_anal:                          # @L3psycho_anal
 	addi.d	$fp, $fp, 4
 	bgez	$a0, .LBB0_12
 # %bb.13:
-	ld.d	$t2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 320                   # 8-byte Folded Reload
 	ld.w	$t0, $t2, 80
 	addi.w	$a5, $a3, 1
 	ld.w	$a7, $s4, 44
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	st.w	$a5, $a0, %pc_lo12(L3psycho_anal.npart_s_orig)
 	addi.w	$a1, $t0, 1
 	st.w	$a1, $t3, %pc_lo12(L3psycho_anal.npart_l)
 	addi.w	$a0, $a7, 1
-	ld.d	$t4, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 312                   # 8-byte Folded Reload
 	st.w	$a0, $t4, %pc_lo12(L3psycho_anal.npart_s)
 	blt	$t1, $t0, .LBB0_16
 # %bb.14:
-	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 312                   # 8-byte Folded Reload
 	bge	$a7, $a5, .LBB0_17
 .LBB0_15:
 	move	$s1, $s5
@@ -568,7 +568,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	lu52i.d	$a1, $zero, 1023
 	st.d	$a1, $s3, 160
 	move	$a1, $a6
-	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 312                   # 8-byte Folded Reload
 	blt	$a7, $a5, .LBB0_15
 .LBB0_17:
 	st.w	$a5, $s3, %pc_lo12(L3psycho_anal.npart_s)
@@ -625,7 +625,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$t5, $a6
 .LBB0_25:                               # %._crit_edge
                                         #   in Loop: Header=BB0_21 Depth=1
-	ld.d	$t8, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 528                   # 8-byte Folded Reload
 	alsl.d	$t6, $t3, $t8, 3
 	slli.d	$t7, $t3, 3
 	stx.w	$t5, $t8, $t7
@@ -723,7 +723,7 @@ L3psycho_anal:                          # @L3psycho_anal
                                         #     Child Loop BB0_44 Depth 2
                                         #     Child Loop BB0_47 Depth 2
                                         #     Child Loop BB0_50 Depth 2
-	ld.d	$a6, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 528                   # 8-byte Folded Reload
 	alsl.d	$a5, $a2, $a6, 3
 	slli.d	$a4, $a2, 3
 	ldx.w	$a4, $a6, $a4
@@ -791,18 +791,18 @@ L3psycho_anal:                          # @L3psycho_anal
 	bnez	$a4, .LBB0_50
 	b	.LBB0_41
 .LBB0_51:                               # %._crit_edge1009
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 192
 	ori	$a2, $zero, 1
 	bne	$a1, $a2, .LBB0_67
 # %bb.52:                               # %._crit_edge1009
-	ld.d	$s8, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 512                   # 8-byte Folded Reload
 	blez	$a0, .LBB0_55
 # %bb.53:                               # %.lr.ph1011.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI0_19)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_19)
 	move	$fp, $zero
-	addi.d	$s0, $sp, 560
+	addi.d	$s0, $sp, 544
 	.p2align	4, , 16
 .LBB0_54:                               # %.lr.ph1011
                                         # =>This Inner Loop Header: Depth=1
@@ -820,7 +820,7 @@ L3psycho_anal:                          # @L3psycho_anal
 .LBB0_56:                               # %.lr.ph1025.preheader
 	move	$a1, $zero
 	movgr2fr.d	$fa0, $zero
-	addi.d	$a2, $sp, 560
+	addi.d	$a2, $sp, 544
 	ori	$a3, $zero, 3
 	b	.LBB0_58
 	.p2align	4, , 16
@@ -902,13 +902,13 @@ L3psycho_anal:                          # @L3psycho_anal
 	bnez	$a4, .LBB0_66
 	b	.LBB0_57
 .LBB0_67:
-	ld.d	$s8, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 512                   # 8-byte Folded Reload
 	bgtz	$a0, .LBB0_56
 .LBB0_68:                               # %._crit_edge1026
 	pcaddu18i	$ra, %call36(init_fft)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
 .LBB0_69:
 	ld.w	$a1, $s3, 36
 	ld.w	$a0, $s3, 204
@@ -920,41 +920,41 @@ L3psycho_anal:                          # @L3psycho_anal
 	or	$a3, $a3, $a0
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.thm)
 	addi.d	$s5, $a0, %pc_lo12(L3psycho_anal.thm)
-	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 304                   # 8-byte Folded Spill
 	blez	$a3, .LBB0_202
 # %bb.70:                               # %.lr.ph1133
-	ld.d	$a0, $sp, 1240
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 1232
+	ld.d	$a0, $sp, 1224
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 1216
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.s3_s)
 	addi.d	$t6, $a0, %pc_lo12(L3psycho_anal.s3_s)
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.numlines_s)
 	addi.d	$t8, $a0, %pc_lo12(L3psycho_anal.numlines_s)
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.s3_l)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.s3_l)
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1952
 	mul.d	$a0, $a2, $a0
 	add.d	$a1, $s8, $a0
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
 	add.d	$a0, $s1, $a0
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.ax_sav)
 	addi.d	$a1, $a0, %pc_lo12(L3psycho_anal.ax_sav)
 	ori	$a0, $zero, 2056
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
 	add.d	$a2, $a1, $a0
 	pcalau12i	$a1, %pc_hi20(L3psycho_anal.bx_sav)
 	addi.d	$a1, $a1, %pc_lo12(L3psycho_anal.bx_sav)
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	add.d	$a1, $a1, $a0
-	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 416                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(L3psycho_anal.rx_sav)
 	addi.d	$a1, $a1, %pc_lo12(L3psycho_anal.rx_sav)
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	add.d	$a0, $a1, $a0
-	st.d	$a0, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 408                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.wsamp_L)
 	addi.d	$s1, $a0, %pc_lo12(L3psycho_anal.wsamp_L)
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.wsamp_S)
@@ -965,38 +965,38 @@ L3psycho_anal:                          # @L3psycho_anal
 	movgr2fr.w	$fa0, $zero
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 2044
-	st.d	$a0, $sp, 400                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 8
-	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	lu12i.w	$a0, 258896
 	ori	$a0, $a0, 1267
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$t6, $sp, 232                   # 8-byte Folded Spill
-	st.d	$t8, $sp, 224                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 368                   # 8-byte Folded Spill
-	fst.s	$fa0, $sp, 132                  # 4-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 344                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 224                   # 8-byte Folded Spill
+	st.d	$t8, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 360                   # 8-byte Folded Spill
+	fst.s	$fa0, $sp, 124                  # 4-byte Folded Spill
 	b	.LBB0_72
 	.p2align	4, , 16
 .LBB0_71:                               #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	ld.d	$s8, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 336                   # 8-byte Folded Reload
 	xori	$s8, $s8, 1
-	ld.d	$a2, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
-	ld.d	$a0, $sp, 432                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $a3
-	st.d	$a0, $sp, 432                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a3
 	st.d	$a0, $sp, 416                   # 8-byte Folded Spill
-	ld.d	$s5, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $a3
+	st.d	$a0, $sp, 408                   # 8-byte Folded Spill
+	ld.d	$s5, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 360                   # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB0_196
 .LBB0_72:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_76 Depth 2
@@ -1025,7 +1025,7 @@ L3psycho_anal:                          # @L3psycho_anal
                                         #         Child Loop BB0_188 Depth 4
                                         #       Child Loop BB0_191 Depth 3
                                         #         Child Loop BB0_193 Depth 4
-	st.d	$a2, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 376                   # 8-byte Folded Spill
 	andi	$a0, $a1, 1
 	ori	$a2, $zero, 3072
 	mul.d	$a2, $a0, $a2
@@ -1039,37 +1039,37 @@ L3psycho_anal:                          # @L3psycho_anal
 	mul.d	$s1, $a1, $a0
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.en)
 	addi.d	$s0, $a0, %pc_lo12(L3psycho_anal.en)
-	st.d	$a1, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 528                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 512                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 480                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 464                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 328                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 512                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 496                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 464                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 448                   # 8-byte Folded Spill
 	bltu	$s7, $a1, .LBB0_74
 # %bb.73:                               #   in Loop: Header=BB0_72 Depth=1
 	move	$a0, $a5
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 184                   # 8-byte Folded Reload
 	move	$s0, $a2
 	move	$a2, $fp
 	move	$s5, $a4
 	pcaddu18i	$ra, %call36(fft_long)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fft_short)
 	jirl	$ra, $ra, 0
 	fldx.d	$fa0, $s0, $s5
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $s5
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	ori	$a1, $zero, 976
 	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	add.d	$fp, $a1, $a0
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	add.d	$a1, $a0, $s1
 	ori	$a2, $zero, 488
 	move	$a0, $fp
@@ -1080,22 +1080,22 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$a2, $zero, 488
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	vldi	$vr6, -1184
 	ori	$t2, $zero, 2044
-	ld.d	$t0, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 344                   # 8-byte Folded Reload
 	b	.LBB0_83
 	.p2align	4, , 16
 .LBB0_74:                               #   in Loop: Header=BB0_72 Depth=1
 	fldx.d	$fa0, $a2, $a4
 	addi.d	$a0, $a1, -2
 	slli.d	$a1, $a0, 3
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	fstx.d	$fa0, $a2, $a1
 	ori	$a1, $zero, 976
 	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	add.d	$fp, $a1, $a0
 	addi.d	$a0, $fp, 488
 	add.d	$a1, $s0, $s1
@@ -1107,19 +1107,19 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	vldi	$vr6, -1184
 	ori	$t2, $zero, 2044
 	ori	$a0, $zero, 2
 	ori	$a6, $zero, 4080
-	ld.d	$t0, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 344                   # 8-byte Folded Reload
 	bne	$t1, $a0, .LBB0_83
 # %bb.75:                               # %vector.body1572.preheader
                                         #   in Loop: Header=BB0_72 Depth=1
 	lu12i.w	$a5, 1
 	move	$a0, $a5
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ori	$a7, $zero, 3056
 	.p2align	4, , 16
 .LBB0_76:                               # %vector.body1572
@@ -1196,7 +1196,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	bne	$a1, $a0, .LBB0_82
 .LBB0_83:                               # %.loopexit960
                                         #   in Loop: Header=BB0_72 Depth=1
-	st.d	$s8, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 336                   # 8-byte Folded Spill
 	andi	$a0, $s8, 1
 	ori	$a1, $zero, 3072
 	mul.d	$t4, $a0, $a1
@@ -1207,7 +1207,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	addi.d	$a1, $a4, 1008
 	addi.d	$a2, $a4, 1028
 	addi.d	$a3, $a4, 2032
-	ld.d	$a5, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 448                   # 8-byte Folded Reload
 	fld.s	$fs0, $a5, 0
 	addi.d	$a5, $a4, 2047
 	addi.d	$a4, $a5, 5
@@ -1216,7 +1216,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	pcalau12i	$a6, %pc_hi20(L3psycho_anal.energy)
 	addi.d	$t3, $a6, %pc_lo12(L3psycho_anal.energy)
 	fst.s	$fa0, $t3, 0
-	addi.d	$a6, $sp, 560
+	addi.d	$a6, $sp, 544
 	alsl.d	$a6, $t1, $a6, 2
 	ori	$a7, $zero, 4092
 	ori	$t0, $zero, 4
@@ -1237,7 +1237,7 @@ L3psycho_anal:                          # @L3psycho_anal
 # %bb.85:                               # %.preheader958
                                         #   in Loop: Header=BB0_72 Depth=1
 	ori	$a7, $zero, 2048
-	ld.d	$t5, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 464                   # 8-byte Folded Reload
 	fldx.s	$fa1, $t5, $a7
 	fst.s	$fa0, $a6, 0
 	fmul.s	$fa0, $fa1, $fa1
@@ -1245,7 +1245,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	addi.d	$fp, $a6, %pc_lo12(L3psycho_anal.energy_s)
 	move	$a6, $zero
 	fst.s	$fa0, $fp, 1032
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
 	ori	$t2, $zero, 512
 	ori	$ra, $zero, 3
 	.p2align	4, , 16
@@ -1307,19 +1307,19 @@ L3psycho_anal:                          # @L3psycho_anal
 	bne	$a2, $t2, .LBB0_90
 # %bb.91:                               # %.preheader957
                                         #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 288                   # 8-byte Folded Reload
 	ld.bu	$a0, $a3, %pc_lo12(L3psycho_anal.cw_lower_index)
-	ld.d	$a5, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 376                   # 8-byte Folded Reload
 	beqz	$a0, .LBB0_109
 # %bb.92:                               # %.lr.ph1036
                                         #   in Loop: Header=BB0_72 Depth=1
 	slli.d	$a0, $t1, 12
 	alsl.d	$a0, $t1, $a0, 3
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
 	add.d	$a1, $a4, $a0
-	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a2, $a6, $a0
-	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 128                   # 8-byte Folded Reload
 	add.d	$s0, $a7, $a0
 	ori	$t2, $zero, 2052
 	fldx.s	$fs5, $a1, $t2
@@ -1336,11 +1336,11 @@ L3psycho_anal:                          # @L3psycho_anal
 	fsqrt.s	$fa0, $fa1
 	fcmp.cor.s	$fcc0, $fa0, $fa0
 	fstx.s	$fs0, $a6, $a0
-	ld.d	$s1, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 400                   # 8-byte Folded Reload
 	bceqz	$fcc0, .LBB0_194
 # %bb.93:                               # %.lr.ph1036.split
                                         #   in Loop: Header=BB0_72 Depth=1
-	fld.s	$fa4, $sp, 132                  # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 124                  # 4-byte Folded Reload
 	fcmp.ceq.s	$fcc0, $fs3, $fa4
 	fst.s	$fa0, $s0, 0
 	bcnez	$fcc0, .LBB0_195
@@ -1401,7 +1401,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	.p2align	4, , 16
 .LBB0_100:                              #   in Loop: Header=BB0_101 Depth=2
 	ld.bu	$a0, $a3, %pc_lo12(L3psycho_anal.cw_lower_index)
-	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 400                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $s0
 	fst.s	$fa0, $a1, 4
 	addi.d	$s1, $s1, 1
@@ -1415,13 +1415,13 @@ L3psycho_anal:                          # @L3psycho_anal
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a0, $a5, $s0
 	fldx.s	$fs6, $a5, $s0
-	ld.d	$a2, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 416                   # 8-byte Folded Reload
 	add.d	$a1, $a2, $s0
 	fldx.s	$fs7, $a2, $s0
-	ld.d	$a6, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 392                   # 8-byte Folded Reload
 	fldx.s	$fs2, $a0, $a6
 	fldx.s	$fs1, $a1, $a6
-	ld.d	$a4, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 408                   # 8-byte Folded Reload
 	add.d	$s5, $a4, $s0
 	fldx.s	$fs3, $a4, $s0
 	fstx.s	$fs2, $a5, $s0
@@ -1489,24 +1489,24 @@ L3psycho_anal:                          # @L3psycho_anal
 	fdiv.d	$fa0, $fa1, $fa0
 	fcvt.s.d	$fa0, $fa0
 	b	.LBB0_100
-.LBB0_107:                              # %call.sqrt1987
+.LBB0_107:                              # %call.sqrt1989
                                         #   in Loop: Header=BB0_101 Depth=2
 	fmov.s	$fa0, $fa1
-	st.d	$t3, $sp, 480                   # 8-byte Folded Spill
-	st.d	$t4, $sp, 464                   # 8-byte Folded Spill
-	fst.s	$fa7, $sp, 448                  # 4-byte Folded Spill
+	st.d	$t3, $sp, 464                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 448                   # 8-byte Folded Spill
+	fst.s	$fa7, $sp, 432                  # 4-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrtf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa7, $sp, 448                  # 4-byte Folded Reload
-	ld.d	$t4, $sp, 464                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 480                   # 8-byte Folded Reload
+	fld.s	$fa7, $sp, 432                  # 4-byte Folded Reload
+	ld.d	$t4, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 464                   # 8-byte Folded Reload
 	ori	$ra, $zero, 3
-	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
 	vldi	$vr6, -1184
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 288                   # 8-byte Folded Reload
 	fcmp.ceq.s	$fcc0, $fs5, $fa7
 	fstx.s	$fa0, $s5, $a0
 	bceqz	$fcc0, .LBB0_103
@@ -1523,18 +1523,18 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$s5, $zero
 .LBB0_110:                              # %.preheader956
                                         #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a2, $a3, %pc_lo12(L3psycho_anal.cw_upper_index)
 	bge	$s5, $a2, .LBB0_125
 # %bb.111:                              # %.lr.ph1039
                                         #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 2
 	addi.d	$s8, $a0, 8
 	addi.d	$a0, $s5, 2
 	andi	$a0, $a0, 12
 	sub.d	$a1, $t4, $a0
-	ld.d	$a2, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 360                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 2047
 	addi.d	$a2, $a2, 1
 	add.d	$s0, $a2, $a1
@@ -1575,22 +1575,22 @@ L3psycho_anal:                          # @L3psycho_anal
 	fcmp.cor.s	$fcc0, $fs0, $fs0
 	fmul.s	$fs3, $fa0, $fa6
 	bcnez	$fcc0, .LBB0_117
-# %bb.115:                              # %call.sqrt1988
+# %bb.115:                              # %call.sqrt1990
                                         #   in Loop: Header=BB0_113 Depth=2
 	fmov.s	$fa0, $fa5
-	st.d	$t3, $sp, 480                   # 8-byte Folded Spill
-	vst	$vr5, $sp, 464                  # 16-byte Folded Spill
-	vst	$vr7, $sp, 448                  # 16-byte Folded Spill
+	st.d	$t3, $sp, 464                   # 8-byte Folded Spill
+	vst	$vr5, $sp, 448                  # 16-byte Folded Spill
+	vst	$vr7, $sp, 432                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrtf)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 448                  # 16-byte Folded Reload
-	vld	$vr5, $sp, 464                  # 16-byte Folded Reload
-	ld.d	$t3, $sp, 480                   # 8-byte Folded Reload
+	vld	$vr7, $sp, 432                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 448                  # 16-byte Folded Reload
+	ld.d	$t3, $sp, 464                   # 8-byte Folded Reload
 	ori	$ra, $zero, 3
 	vldi	$vr6, -1184
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
 	fmov.s	$fs0, $fa0
 	b	.LBB0_117
 	.p2align	4, , 16
@@ -1609,7 +1609,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	fsqrt.s	$fa0, $fs1
 	fcmp.cor.s	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB0_124
-.LBB0_119:                              # %.split1989
+.LBB0_119:                              # %.split1991
                                         #   in Loop: Header=BB0_113 Depth=2
 	fadd.s	$fa1, $fa7, $fs3
 	fadd.s	$fa2, $fs4, $fs2
@@ -1627,7 +1627,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	fsqrt.s	$fa0, $fa1
 	fcmp.cor.s	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB0_123
-.LBB0_121:                              # %.split1991
+.LBB0_121:                              # %.split1993
                                         #   in Loop: Header=BB0_113 Depth=2
 	vldi	$vr1, -1280
 	fmsub.s	$fa1, $fs0, $fa1, $fs1
@@ -1655,39 +1655,39 @@ L3psycho_anal:                          # @L3psycho_anal
 	fdiv.d	$fa0, $fa1, $fa0
 	fcvt.s.d	$fa0, $fa0
 	b	.LBB0_112
-.LBB0_123:                              # %call.sqrt1992
+.LBB0_123:                              # %call.sqrt1994
                                         #   in Loop: Header=BB0_113 Depth=2
 	fmov.s	$fa0, $fa1
-	st.d	$t3, $sp, 480                   # 8-byte Folded Spill
-	vst	$vr5, $sp, 464                  # 16-byte Folded Spill
-	vst	$vr7, $sp, 448                  # 16-byte Folded Spill
+	st.d	$t3, $sp, 464                   # 8-byte Folded Spill
+	vst	$vr5, $sp, 448                  # 16-byte Folded Spill
+	vst	$vr7, $sp, 432                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrtf)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 448                  # 16-byte Folded Reload
-	vld	$vr5, $sp, 464                  # 16-byte Folded Reload
-	ld.d	$t3, $sp, 480                   # 8-byte Folded Reload
+	vld	$vr7, $sp, 432                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 448                  # 16-byte Folded Reload
+	ld.d	$t3, $sp, 464                   # 8-byte Folded Reload
 	ori	$ra, $zero, 3
 	vldi	$vr6, -1184
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
 	b	.LBB0_121
-.LBB0_124:                              # %call.sqrt1990
+.LBB0_124:                              # %call.sqrt1992
                                         #   in Loop: Header=BB0_113 Depth=2
 	fmov.s	$fa0, $fs1
-	st.d	$t3, $sp, 480                   # 8-byte Folded Spill
-	vst	$vr5, $sp, 464                  # 16-byte Folded Spill
-	vst	$vr7, $sp, 448                  # 16-byte Folded Spill
+	st.d	$t3, $sp, 464                   # 8-byte Folded Spill
+	vst	$vr5, $sp, 448                  # 16-byte Folded Spill
+	vst	$vr7, $sp, 432                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrtf)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 448                  # 16-byte Folded Reload
-	vld	$vr5, $sp, 464                  # 16-byte Folded Reload
-	ld.d	$t3, $sp, 480                   # 8-byte Folded Reload
+	vld	$vr7, $sp, 432                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 448                  # 16-byte Folded Reload
+	ld.d	$t3, $sp, 464                   # 8-byte Folded Reload
 	ori	$ra, $zero, 3
 	vldi	$vr6, -1184
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
 	b	.LBB0_119
 	.p2align	4, , 16
 .LBB0_125:                              # %.preheader955
@@ -1703,7 +1703,7 @@ L3psycho_anal:                          # @L3psycho_anal
                                         #   in Loop: Header=BB0_72 Depth=1
 	move	$a0, $zero
 	move	$a1, $zero
-	ld.d	$a7, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 400                   # 8-byte Folded Reload
 	ori	$t2, $zero, 2
 	b	.LBB0_129
 	.p2align	4, , 16
@@ -1762,7 +1762,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$t2, $zero, 2
 .LBB0_134:                              # %.preheader954
                                         #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
 	ld.w	$a2, $a2, %pc_lo12(L3psycho_anal.npart_l_orig)
 	addi.w	$a3, $a0, 0
 	bge	$a3, $a2, .LBB0_141
@@ -1817,31 +1817,31 @@ L3psycho_anal:                          # @L3psycho_anal
 .LBB0_141:                              # %._crit_edge1069
                                         #   in Loop: Header=BB0_72 Depth=1
 	ld.w	$a0, $t0, %pc_lo12(L3psycho_anal.npart_l)
-	ld.d	$a2, $sp, 528                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 496                   # 8-byte Folded Reload
 	stx.d	$zero, $a2, $a1
 	pcalau12i	$a1, %pc_hi20(L3psycho_anal.thr)
 	addi.d	$s5, $a1, %pc_lo12(L3psycho_anal.thr)
 	blez	$a0, .LBB0_156
 # %bb.142:                              # %.lr.ph1081
                                         #   in Loop: Header=BB0_72 Depth=1
-	st.d	$t5, $sp, 464                   # 8-byte Folded Spill
-	st.d	$t4, $sp, 480                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 464                   # 8-byte Folded Spill
 	alsl.d	$a0, $t1, $a2, 3
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 432                   # 8-byte Folded Spill
 	ori	$a0, $zero, 504
 	mul.d	$a0, $t1, $a0
 	pcalau12i	$a1, %pc_hi20(L3psycho_anal.nb_1)
 	addi.d	$a1, $a1, %pc_lo12(L3psycho_anal.nb_1)
 	add.d	$a1, $a1, $a0
-	st.d	$a1, $sp, 528                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 512                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(L3psycho_anal.nb_2)
 	addi.d	$a1, $a1, %pc_lo12(L3psycho_anal.nb_2)
 	move	$s0, $zero
 	movgr2fr.d	$fs1, $zero
 	add.d	$a0, $a1, $a0
-	st.d	$a0, $sp, 512                   # 8-byte Folded Spill
-	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 496                   # 8-byte Folded Spill
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
 	fmov.d	$fs0, $fs1
 	b	.LBB0_144
 	.p2align	4, , 16
@@ -1853,7 +1853,7 @@ L3psycho_anal:                          # @L3psycho_anal
 .LBB0_144:                              #   Parent Loop BB0_72 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_146 Depth 3
-	ld.d	$a1, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 528                   # 8-byte Folded Reload
 	alsl.d	$a0, $s0, $a1, 3
 	slli.d	$s1, $s0, 3
 	ldx.w	$a3, $a1, $s1
@@ -1865,7 +1865,7 @@ L3psycho_anal:                          # @L3psycho_anal
                                         #   in Loop: Header=BB0_144 Depth=2
 	alsl.d	$a0, $a3, $s3, 3
 	alsl.d	$a1, $a3, $s8, 3
-	ld.d	$a2, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 448                   # 8-byte Folded Reload
 	alsl.d	$a2, $a3, $a2, 3
 	sub.d	$a3, $a4, $a3
 	movgr2fr.d	$fa0, $zero
@@ -1922,7 +1922,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	ori	$ra, $zero, 3
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 def $vr0
 	.p2align	4, , 16
 .LBB0_154:                              # %._crit_edge1076.thread
@@ -1931,9 +1931,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.minval)
 	fldx.d	$fa1, $a0, $s1
 	fcmp.clt.d	$fcc0, $fa1, $fa0
-	ld.d	$a1, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
 	fldx.d	$fa2, $a1, $s1
-	ld.d	$a2, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
 	fldx.d	$fa3, $a2, $s1
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	fmul.d	$fa4, $fs3, $fa0
@@ -1957,7 +1957,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	bcnez	$fcc0, .LBB0_143
 # %bb.155:                              #   in Loop: Header=BB0_144 Depth=2
 	slli.d	$a0, $s0, 2
-	ld.d	$a1, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
 	ldx.w	$a0, $a1, $a0
 	movgr2fr.w	$fa2, $a0
 	ffint.d.w	$fs2, $fa2
@@ -1965,10 +1965,10 @@ L3psycho_anal:                          # @L3psycho_anal
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
 	ori	$ra, $zero, 3
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
 	fneg.d	$fa1, $fs2
 	fmadd.d	$fs0, $fa1, $fa0, $fs0
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 432                   # 8-byte Folded Reload
 	fst.d	$fs0, $a0, 0
 	b	.LBB0_143
 	.p2align	4, , 16
@@ -1976,28 +1976,28 @@ L3psycho_anal:                          # @L3psycho_anal
 	movgr2fr.d	$fs0, $zero
 .LBB0_157:                              # %._crit_edge1082
                                         #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$t4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$t7, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	ori	$a2, $zero, 260
 	ori	$s0, $zero, 21
 	bltu	$s7, $a0, .LBB0_168
 # %bb.158:                              #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 160
 	beqz	$a0, .LBB0_160
 # %bb.159:                              #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	slli.d	$a0, $a0, 2
-	addi.d	$a1, $sp, 1064
+	addi.d	$a1, $sp, 1048
 	stx.w	$s7, $a0, $a1
 	b	.LBB0_168
 .LBB0_160:                              #   in Loop: Header=BB0_72 Depth=1
@@ -2006,9 +2006,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	fcmp.clt.d	$fcc0, $fa0, $fs0
 	bceqz	$fcc0, .LBB0_162
 # %bb.161:                              #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	slli.d	$a0, $a0, 2
-	addi.d	$a1, $sp, 1064
+	addi.d	$a1, $sp, 1048
 	stx.w	$zero, $a0, $a1
 	b	.LBB0_168
 .LBB0_162:                              # %.preheader953.preheader
@@ -2041,8 +2041,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	fsel	$fa1, $fa1, $fa2, $fcc0
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa0, $fa1, $fcc0
-	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 1064
+	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 1048
 	alsl.d	$a0, $a1, $a2, 2
 	slli.d	$a1, $a1, 2
 	vldi	$vr1, -1218
@@ -2051,7 +2051,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	stx.w	$s7, $a1, $a2
 	bceqz	$fcc0, .LBB0_167
 # %bb.165:                              #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	fld.d	$fa1, $a1, %pc_lo12(.LCPI0_0)
 	fcmp.cule.d	$fcc0, $fs0, $fa1
 	bcnez	$fcc0, .LBB0_168
@@ -2065,9 +2065,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	.p2align	4, , 16
 .LBB0_168:                              #   in Loop: Header=BB0_72 Depth=1
 	move	$a0, $zero
-	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 328                   # 8-byte Folded Reload
 	add.d	$a3, $t7, $a2
-	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 368                   # 8-byte Folded Reload
 	add.d	$a4, $a1, $a2
 	b	.LBB0_170
 	.p2align	4, , 16
@@ -2123,13 +2123,13 @@ L3psycho_anal:                          # @L3psycho_anal
 	.p2align	4, , 16
 .LBB0_173:                              # %.preheader952
                                         #   in Loop: Header=BB0_72 Depth=1
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(L3psycho_anal.npart_s_orig)
 	ld.w	$a1, $t6, %pc_lo12(L3psycho_anal.npart_s)
 	move	$a2, $zero
 	addi.d	$a3, $a3, 176
 	addi.d	$a4, $a4, 176
-	ld.d	$t6, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 224                   # 8-byte Folded Reload
 	ori	$s0, $zero, 12
 	b	.LBB0_175
 	.p2align	4, , 16
@@ -2321,11 +2321,11 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$t3, $s3
 	ori	$ra, $zero, 3
 	vldi	$vr6, -1184
-	ld.d	$t1, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
-	fld.s	$fa4, $sp, 132                  # 4-byte Folded Reload
+	ld.d	$t1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 288                   # 8-byte Folded Reload
+	fld.s	$fa4, $sp, 124                  # 4-byte Folded Reload
 	fcmp.ceq.s	$fcc0, $fs3, $fa4
 	fst.s	$fa0, $s0, 0
 	bceqz	$fcc0, .LBB0_94
@@ -2338,9 +2338,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	b	.LBB0_96
 .LBB0_196:                              # %._crit_edge1134
 	ori	$a1, $zero, 4
-	ld.d	$a2, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 304                   # 8-byte Folded Reload
 	addi.d	$a0, $a2, -4
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
 	bne	$a2, $a1, .LBB0_215
 # %bb.197:                              # %.preheader947.preheader
 	pcalau12i	$a1, %pc_hi20(.LCPI0_27)
@@ -2395,7 +2395,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	movgr2fr.d	$fs1, $zero
 	fmov.d	$fs0, $fs1
 	ld.w	$s2, $s3, 204
-	ld.d	$s0, $sp, 1248
+	ld.d	$s0, $sp, 1232
 	bgtz	$s2, .LBB0_250
 	b	.LBB0_269
 .LBB0_204:                              # %.preheader945.preheader
@@ -2507,7 +2507,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	bne	$a1, $a0, .LBB0_203
 .LBB0_216:                              # %.preheader944.preheader
 	move	$s0, $zero
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_0)
 	movgr2fr.d	$fs0, $zero
 	vldi	$vr3, -912
@@ -2544,46 +2544,46 @@ L3psycho_anal:                          # @L3psycho_anal
 	fadd.d	$fs0, $fs0, $fa3
 	bne	$s0, $s1, .LBB0_218
 .LBB0_220:                              # %.preheader.preheader
-	vrepli.b	$vr3, 0
+	movgr2fr.d	$fs3, $zero
 	addi.w	$s0, $zero, -24
+	fmov.d	$fs4, $fs3
 	b	.LBB0_223
 	.p2align	4, , 16
 .LBB0_221:                              #   in Loop: Header=BB0_223 Depth=1
 	fdiv.d	$fa0, $fa1, $fa0
-	vst	$vr4, $sp, 416                  # 16-byte Folded Spill
+	vst	$vr5, $sp, 416                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(log10)
 	jirl	$ra, $ra, 0
-	vld	$vr4, $sp, 416                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 416                  # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 def $vr0
 .LBB0_222:                              #   in Loop: Header=BB0_223 Depth=1
-	vldi	$vr3, -912
 	vld	$vr1, $sp, 528                  # 16-byte Folded Reload
-	vpackev.d	$vr1, $vr1, $vr3
-	vld	$vr2, $sp, 544                  # 16-byte Folded Reload
-	vfadd.d	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 512                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 496                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 480                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 464                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 448                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 432                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vpackev.d	$vr2, $vr4, $vr3
-	vfadd.d	$vr1, $vr1, $vr2
-	vpackev.d	$vr0, $vr0, $vr3
+	fadd.d	$fa1, $fs4, $fa1
+	vldi	$vr3, -912
+	fadd.d	$fa2, $fs3, $fa3
+	vld	$vr4, $sp, 512                  # 16-byte Folded Reload
+	fadd.d	$fa1, $fa1, $fa4
+	fadd.d	$fa2, $fa2, $fa3
+	vld	$vr4, $sp, 496                  # 16-byte Folded Reload
+	fadd.d	$fa1, $fa1, $fa4
+	fadd.d	$fa2, $fa2, $fa3
+	vld	$vr4, $sp, 480                  # 16-byte Folded Reload
+	fadd.d	$fa1, $fa1, $fa4
+	fadd.d	$fa2, $fa2, $fa3
+	vld	$vr4, $sp, 464                  # 16-byte Folded Reload
+	fadd.d	$fa1, $fa1, $fa4
+	fadd.d	$fa2, $fa2, $fa3
+	vld	$vr4, $sp, 448                  # 16-byte Folded Reload
+	fadd.d	$fa1, $fa1, $fa4
+	fadd.d	$fa2, $fa2, $fa3
+	vld	$vr4, $sp, 432                  # 16-byte Folded Reload
+	fadd.d	$fa1, $fa1, $fa4
+	fadd.d	$fa2, $fa2, $fa3
+	fadd.d	$fa1, $fa1, $fa5
+	fadd.d	$fa2, $fa2, $fa3
+	fadd.d	$fs4, $fa1, $fa0
 	addi.d	$s0, $s0, 8
-	vfadd.d	$vr3, $vr1, $vr0
+	fadd.d	$fs3, $fa2, $fa3
 	beqz	$s0, .LBB0_249
 .LBB0_223:                              # %.preheader
                                         # =>This Inner Loop Header: Depth=1
@@ -2596,7 +2596,6 @@ L3psycho_anal:                          # @L3psycho_anal
 	fsel	$fa1, $fa2, $fa1, $fcc0
 	fmul.d	$fa2, $fa0, $fs1
 	fcmp.cle.d	$fcc0, $fa2, $fa1
-	vst	$vr3, $sp, 544                  # 16-byte Folded Spill
 	bcnez	$fcc0, .LBB0_225
 # %bb.224:                              #   in Loop: Header=BB0_223 Depth=1
 	fdiv.d	$fa0, $fa1, $fa0
@@ -2742,11 +2741,11 @@ L3psycho_anal:                          # @L3psycho_anal
 	fdiv.d	$fa0, $fa1, $fa0
 	pcaddu18i	$ra, %call36(log10)
 	jirl	$ra, $ra, 0
-	fmov.d	$fa4, $fa0
+	fmov.d	$fa5, $fa0
 	b	.LBB0_247
 	.p2align	4, , 16
 .LBB0_246:                              #   in Loop: Header=BB0_223 Depth=1
-	vldi	$vr4, -1016
+	vldi	$vr5, -1016
 .LBB0_247:                              #   in Loop: Header=BB0_223 Depth=1
 	fld.d	$fa1, $s1, 464
 	fld.d	$fa2, $s1, 952
@@ -2767,18 +2766,16 @@ L3psycho_anal:                          # @L3psycho_anal
 	fmul.d	$fa1, $fa1, $fa0
 	vldi	$vr2, -928
 	fmin.d	$fs0, $fa1, $fa2
-	vreplvei.d	$vr1, $vr3, 0
-	vreplvei.d	$vr3, $vr3, 1
-	fdiv.d	$fa1, $fa3, $fa1
+	fdiv.d	$fa1, $fs4, $fs3
 	fmul.d	$fa0, $fa1, $fa0
 	fmin.d	$fs1, $fa0, $fa2
 	ld.w	$s2, $s3, 204
-	ld.d	$s0, $sp, 1248
+	ld.d	$s0, $sp, 1232
 	blez	$s2, .LBB0_269
 .LBB0_250:                              # %._crit_edge1154
 	slli.d	$a2, $s2, 2
-	addi.d	$a0, $sp, 1072
-	addi.d	$s1, $sp, 1072
+	addi.d	$a0, $sp, 1056
+	addi.d	$s1, $sp, 1056
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
@@ -2792,17 +2789,17 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB0_256
 .LBB0_253:
-	ld.w	$a0, $sp, 1064
+	ld.w	$a0, $sp, 1048
 	beqz	$a0, .LBB0_255
 # %bb.254:
-	ld.w	$a0, $sp, 1068
+	ld.w	$a0, $sp, 1052
 	bnez	$a0, .LBB0_256
 .LBB0_255:
-	st.d	$zero, $sp, 1064
+	st.d	$zero, $sp, 1048
 .LBB0_256:                              # %.lr.ph1158.preheader
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.blocktype_old)
 	addi.d	$a0, $a0, %pc_lo12(L3psycho_anal.blocktype_old)
-	addi.d	$a1, $sp, 1064
+	addi.d	$a1, $sp, 1048
 	ori	$a2, $zero, 3
 	pcalau12i	$a3, %pc_hi20(.LJTI0_0)
 	addi.d	$a3, $a3, %pc_lo12(.LJTI0_0)
@@ -2872,20 +2869,20 @@ L3psycho_anal:                          # @L3psycho_anal
 	maskeqz	$a0, $a1, $a0
 	or	$a0, $a0, $a3
 	fld.d	$fa0, $a0, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	fst.d	$fa0, $a0, 0
 	fst.d	$fs1, $a1, 0
 	fst.d	$fs0, $a2, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	fst.d	$fs0, $a0, 0
 	beqz	$fp, .LBB0_272
 # %bb.270:
-	fld.s	$fa0, $sp, 572
-	fld.s	$fa1, $sp, 568
+	fld.s	$fa0, $sp, 556
+	fld.s	$fa1, $sp, 552
 	pcalau12i	$a0, %pc_hi20(L3psycho_anal.ms_ener_ratio_old)
 	fld.d	$fa2, $a0, %pc_lo12(L3psycho_anal.ms_ener_ratio_old)
 	fadd.s	$fa1, $fa0, $fa1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	fst.d	$fa2, $a1, 0
 	movgr2fr.w	$fa2, $zero
 	fcmp.cule.s	$fcc0, $fa1, $fa2
@@ -2897,29 +2894,29 @@ L3psycho_anal:                          # @L3psycho_anal
 	fst.d	$fa0, $a0, %pc_lo12(L3psycho_anal.ms_ener_ratio_old)
 	b	.LBB0_273
 .LBB0_272:
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	st.d	$zero, $a0, 0
 .LBB0_273:
-	fld.d	$fs7, $sp, 1080                 # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 1088                 # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 1096                 # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 1104                 # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 1112                 # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 1120                 # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 1128                 # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 1136                 # 8-byte Folded Reload
-	ld.d	$s8, $sp, 1144                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1152                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1160                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1168                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1176                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1184                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1192                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1200                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1208                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1216                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1224                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1232
+	fld.d	$fs7, $sp, 1064                 # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 1072                 # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 1080                 # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 1088                 # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 1096                 # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 1104                 # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 1112                 # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 1120                 # 8-byte Folded Reload
+	ld.d	$s8, $sp, 1128                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1136                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1144                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1152                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1160                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1168                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1176                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1184                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1192                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1200                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1208                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1216
 	ret
 .LBB0_274:
 	pcalau12i	$a0, %got_pc_hi20(stderr)

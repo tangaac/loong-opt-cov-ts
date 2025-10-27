@@ -25,27 +25,27 @@ goverlap:                               # @goverlap
 	slli.d	$a5, $a0, 3
 	ldx.d	$s7, $a7, $a5
 	alsl.d	$a3, $a3, $s7, 3
-	ld.d	$s0, $a3, 152
-	ld.w	$a3, $s0, 56
-	ld.w	$a5, $s0, 60
-	ld.w	$a6, $s0, 64
-	ld.w	$t0, $s0, 68
+	ld.d	$s2, $a3, 152
+	ld.w	$a3, $s2, 56
+	ld.w	$a5, $s2, 60
+	ld.w	$a6, $s2, 64
+	ld.w	$t0, $s2, 68
 	add.w	$t2, $a3, $a1
 	add.w	$t3, $a5, $a1
-	add.w	$s1, $a6, $a2
+	add.w	$s3, $a6, $a2
 	add.w	$t5, $t0, $a2
 	pcalau12i	$a3, %got_pc_hi20(numcells)
 	ld.d	$a3, $a3, %got_pc_lo12(numcells)
 	ld.w	$t6, $a3, 0
 	blt	$t6, $a0, .LBB0_2
 # %bb.1:
-	ld.w	$a3, $s0, 40
-	ld.w	$a5, $s0, 44
-	ld.w	$a6, $s0, 48
-	ld.w	$t0, $s0, 52
+	ld.w	$a3, $s2, 40
+	ld.w	$a5, $s2, 44
+	ld.w	$a6, $s2, 48
+	ld.w	$t0, $s2, 52
 	sub.w	$t2, $t2, $a3
 	add.w	$t3, $a5, $t3
-	sub.w	$s1, $s1, $a6
+	sub.w	$s3, $s3, $a6
 	add.w	$t5, $t0, $t5
 .LBB0_2:
 	pcalau12i	$a3, %got_pc_hi20(binOffsetX)
@@ -67,55 +67,68 @@ goverlap:                               # @goverlap
 	masknez	$a5, $a5, $t0
 	ori	$t7, $zero, 1
 	maskeqz	$t0, $t7, $t0
-	or	$s2, $t0, $a5
-	sub.w	$a3, $t3, $a3
-	div.w	$a3, $a3, $a6
-	slt	$a5, $t1, $a3
-	slt	$a6, $t7, $a3
-	maskeqz	$a3, $a3, $a6
-	masknez	$a6, $t7, $a6
-	or	$a3, $a3, $a6
-	masknez	$a3, $a3, $a5
-	maskeqz	$a5, $t1, $a5
-	or	$a6, $a5, $a3
-	pcalau12i	$a3, %got_pc_hi20(binOffsetY)
-	ld.d	$a3, $a3, %got_pc_lo12(binOffsetY)
-	ld.w	$a3, $a3, 0
-	sub.w	$a5, $s1, $a3
-	pcalau12i	$t0, %got_pc_hi20(binWidthY)
-	ld.d	$t0, $t0, %got_pc_lo12(binWidthY)
-	ld.w	$t0, $t0, 0
-	div.w	$a5, $a5, $t0
-	slti	$t1, $a5, 1
-	pcalau12i	$t8, %got_pc_hi20(numBinsY)
-	ld.d	$t8, $t8, %got_pc_lo12(numBinsY)
+	or	$s4, $t0, $a5
+	pcalau12i	$a5, %got_pc_hi20(binOffsetY)
+	ld.d	$a5, $a5, %got_pc_lo12(binOffsetY)
+	ld.w	$a5, $a5, 0
+	sub.w	$t0, $s3, $a5
+	pcalau12i	$t8, %got_pc_hi20(binWidthY)
+	ld.d	$t8, $t8, %got_pc_lo12(binWidthY)
 	ld.w	$t8, $t8, 0
-	slt	$fp, $a5, $t8
-	maskeqz	$a5, $a5, $fp
-	masknez	$fp, $t8, $fp
-	or	$a5, $a5, $fp
-	masknez	$a5, $a5, $t1
-	maskeqz	$t1, $t7, $t1
-	or	$fp, $t1, $a5
-	sub.w	$a3, $t5, $a3
-	div.w	$a3, $a3, $t0
-	slt	$a5, $t8, $a3
-	slt	$t0, $t7, $a3
-	maskeqz	$a3, $a3, $t0
-	masknez	$t0, $t7, $t0
-	or	$a3, $a3, $t0
+	div.w	$t0, $t0, $t8
+	slti	$fp, $t0, 1
+	pcalau12i	$s0, %got_pc_hi20(numBinsY)
+	ld.d	$s0, $s0, %got_pc_lo12(numBinsY)
+	ld.w	$s0, $s0, 0
+	slt	$s1, $t0, $s0
+	maskeqz	$t0, $t0, $s1
+	masknez	$s1, $s0, $s1
+	or	$t0, $t0, $s1
+	masknez	$t0, $t0, $fp
+	maskeqz	$fp, $t7, $fp
+	or	$t0, $fp, $t0
+	vinsgr2vr.w	$vr0, $t3, 0
+	vinsgr2vr.w	$vr0, $t5, 1
+	vinsgr2vr.w	$vr1, $a3, 0
+	vinsgr2vr.w	$vr1, $a5, 1
+	vsub.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a3, $vr0, 1
+	div.w	$a3, $a3, $t8
+	vpickve2gr.w	$a5, $vr0, 0
+	div.w	$a5, $a5, $a6
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $a3, 1
+	slt	$a6, $t7, $a5
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $t7, $a6
+	or	$a5, $a5, $a6
+	vinsgr2vr.w	$vr1, $t1, 0
+	vinsgr2vr.w	$vr1, $s0, 1
+	vslt.w	$vr0, $vr1, $vr0
+	vshuf4i.w	$vr1, $vr0, 16
+	vpickve2gr.d	$a6, $vr0, 0
+	andi	$a6, $a6, 1
+	masknez	$a5, $a5, $a6
+	maskeqz	$a6, $t1, $a6
+	or	$a6, $a6, $a5
+	slt	$a5, $t7, $a3
+	maskeqz	$a3, $a3, $a5
+	masknez	$a5, $t7, $a5
+	or	$a3, $a3, $a5
+	vpickve2gr.d	$a5, $vr1, 1
+	andi	$a5, $a5, 1
 	masknez	$a3, $a3, $a5
-	maskeqz	$a5, $t8, $a5
+	maskeqz	$a5, $s0, $a5
 	or	$t1, $a5, $a3
-	xor	$a3, $s2, $a6
+	xor	$a3, $s4, $a6
 	sltui	$a3, $a3, 1
-	xor	$a5, $fp, $t1
+	xor	$a5, $t0, $t1
 	sltui	$a5, $a5, 1
 	and	$a3, $a3, $a5
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	maskeqz	$a5, $s2, $a3
-	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
-	maskeqz	$a3, $fp, $a3
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	maskeqz	$a5, $s4, $a3
+	st.d	$t0, $sp, 72                    # 8-byte Folded Spill
+	maskeqz	$a3, $t0, $a3
 	pcalau12i	$t0, %got_pc_hi20(binX)
 	ld.d	$t0, $t0, %got_pc_lo12(binX)
 	st.w	$a5, $t0, 0
@@ -126,8 +139,8 @@ goverlap:                               # @goverlap
 # %bb.3:                                # %.lr.ph316
 	bltz	$t1, .LBB0_55
 # %bb.4:                                # %.lr.ph316.split.preheader
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a3, %got_pc_hi20(blockarray)
 	ld.d	$a3, $a3, %got_pc_lo12(blockarray)
 	ld.d	$a3, $a3, 0
@@ -426,11 +439,11 @@ goverlap:                               # @goverlap
 	ld.w	$a3, $s6, 56
 	ld.w	$a5, $s6, 60
 	ld.w	$t0, $s6, 64
-	ld.w	$t1, $s6, 68
+	ld.w	$t4, $s6, 68
 	add.w	$a6, $a3, $a1
 	add.w	$s7, $a5, $a1
-	add.w	$s3, $t0, $a2
-	add.w	$t1, $t1, $a2
+	add.w	$t1, $t0, $a2
+	add.w	$s3, $t4, $a2
 	blt	$t6, $a0, .LBB0_45
 # %bb.44:                               #   in Loop: Header=BB0_43 Depth=4
 	ld.w	$a3, $s6, 40
@@ -439,8 +452,8 @@ goverlap:                               # @goverlap
 	ld.w	$t4, $s6, 52
 	sub.w	$a6, $a6, $a3
 	add.w	$s7, $a5, $s7
-	sub.w	$s3, $s3, $t0
-	add.w	$t1, $t4, $t1
+	sub.w	$t1, $t1, $t0
+	add.w	$s3, $t4, $s3
 .LBB0_45:                               # %.lr.ph
                                         #   in Loop: Header=BB0_43 Depth=4
 	move	$t8, $s4
@@ -470,13 +483,13 @@ goverlap:                               # @goverlap
 	ld.w	$t0, $t8, 48
 	add.d	$a5, $a5, $t7
 	sub.w	$t0, $a5, $t0
-	bge	$t0, $t1, .LBB0_46
+	bge	$t0, $s3, .LBB0_46
 # %bb.50:                               #   in Loop: Header=BB0_47 Depth=5
 	ld.w	$a5, $t8, 68
 	ld.w	$t4, $t8, 52
 	add.d	$a5, $a5, $t7
 	add.w	$a5, $t4, $a5
-	bge	$s3, $a5, .LBB0_46
+	bge	$t1, $a5, .LBB0_46
 # %bb.51:                               #   in Loop: Header=BB0_47 Depth=5
 	slt	$t4, $a3, $a6
 	masknez	$a3, $a3, $t4
@@ -486,13 +499,13 @@ goverlap:                               # @goverlap
 	masknez	$s0, $s0, $t4
 	maskeqz	$t4, $s7, $t4
 	or	$t4, $t4, $s0
-	slt	$s0, $t0, $s3
+	slt	$s0, $t0, $t1
 	masknez	$t0, $t0, $s0
-	maskeqz	$s0, $s3, $s0
-	or	$t0, $s0, $t0
-	slt	$s0, $t1, $a5
-	masknez	$a5, $a5, $s0
 	maskeqz	$s0, $t1, $s0
+	or	$t0, $s0, $t0
+	slt	$s0, $s3, $a5
+	masknez	$a5, $a5, $s0
+	maskeqz	$s0, $s3, $s0
 	or	$a5, $s0, $a5
 	sub.d	$a5, $a5, $t0
 	sub.d	$a3, $t4, $a3

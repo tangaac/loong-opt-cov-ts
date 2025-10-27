@@ -1194,26 +1194,26 @@ access_virt_sarray:                     # @access_virt_sarray
 	move	$a0, $s0
 	beqz	$a1, .LBB8_34
 .LBB8_27:
-	ld.w	$a2, $fp, 28
-	sub.w	$a1, $a0, $a2
-	sub.w	$a2, $s6, $a2
-	bgeu	$a1, $a2, .LBB8_30
+	ld.w	$a1, $fp, 28
+	sub.w	$a0, $a0, $a1
+	sub.w	$a1, $s6, $a1
+	bgeu	$a0, $a1, .LBB8_30
 # %bb.28:                               # %.lr.ph.preheader
 	ld.wu	$s2, $fp, 12
-	bstrpick.d	$a1, $a1, 31, 0
-	slli.d	$s3, $a1, 3
-	sub.d	$s4, $s6, $a0
+	bstrpick.d	$s3, $a0, 31, 0
+	bstrpick.d	$s4, $a1, 31, 0
+	slli.d	$s5, $s3, 3
 	.p2align	4, , 16
 .LBB8_29:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s5
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
-	addi.w	$s4, $s4, -1
-	addi.d	$s3, $s3, 8
-	bnez	$s4, .LBB8_29
+	addi.d	$s3, $s3, 1
+	addi.d	$s5, $s5, 8
+	bltu	$s3, $s4, .LBB8_29
 .LBB8_30:                               # %.loopexit
 	beqz	$s1, .LBB8_32
 .LBB8_31:                               # %.loopexit.thread119
@@ -1457,27 +1457,27 @@ access_virt_barray:                     # @access_virt_barray
 	move	$a0, $s0
 	beqz	$a1, .LBB9_34
 .LBB9_27:
-	ld.w	$a2, $fp, 28
-	sub.w	$a1, $a0, $a2
-	sub.w	$a2, $s6, $a2
-	bgeu	$a1, $a2, .LBB9_30
+	ld.w	$a1, $fp, 28
+	sub.w	$a0, $a0, $a1
+	sub.w	$a1, $s6, $a1
+	bgeu	$a0, $a1, .LBB9_30
 # %bb.28:                               # %.lr.ph.preheader
 	ld.wu	$a2, $fp, 12
 	slli.d	$s2, $a2, 7
-	bstrpick.d	$a1, $a1, 31, 0
-	slli.d	$s3, $a1, 3
-	sub.d	$s4, $s6, $a0
+	bstrpick.d	$s3, $a0, 31, 0
+	bstrpick.d	$s4, $a1, 31, 0
+	slli.d	$s5, $s3, 3
 	.p2align	4, , 16
 .LBB9_29:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s5
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
-	addi.w	$s4, $s4, -1
-	addi.d	$s3, $s3, 8
-	bnez	$s4, .LBB9_29
+	addi.d	$s3, $s3, 1
+	addi.d	$s5, $s5, 8
+	bltu	$s3, $s4, .LBB9_29
 .LBB9_30:                               # %.loopexit
 	beqz	$s1, .LBB9_32
 .LBB9_31:                               # %.loopexit.thread119

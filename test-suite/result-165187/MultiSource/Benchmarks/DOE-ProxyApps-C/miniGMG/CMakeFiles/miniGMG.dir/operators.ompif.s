@@ -3611,7 +3611,7 @@ restriction_betas:                      # @restriction_betas
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	mul.d	$a0, $fp, $a0
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ori	$a5, $zero, 28
+	ori	$a5, $zero, 118
 	vldi	$vr0, -944
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
@@ -7978,7 +7978,7 @@ initialize_problem:                     # @initialize_problem
 	vreplvei.d	$vr0, $vr3, 0
 	ori	$a3, $zero, 216
 	mul.d	$a3, $s6, $a3
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 6
 	b	.LBB22_22
 	.p2align	4, , 16
 .LBB22_21:                              # %._crit_edge.i
@@ -8128,7 +8128,7 @@ initialize_problem:                     # @initialize_problem
 	vreplvei.d	$vr1, $vr0, 0
 	ori	$a3, $zero, 216
 	mul.d	$a3, $s6, $a3
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 6
 	b	.LBB22_41
 	.p2align	4, , 16
 .LBB22_40:                              # %._crit_edge.i298

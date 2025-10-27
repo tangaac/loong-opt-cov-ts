@@ -4677,7 +4677,7 @@ hypre_SMG2RAPPeriodicSym:               # @hypre_SMG2RAPPeriodicSym
 	bstrpick.d	$a2, $a0, 30, 1
 	slli.d	$t5, $a2, 1
 	move	$t6, $a5
-	ori	$a7, $zero, 8
+	ori	$a7, $zero, 10
 	vldi	$vr5, -1024
 	b	.LBB3_10
 	.p2align	4, , 16
@@ -4794,7 +4794,7 @@ hypre_SMG2RAPPeriodicSym:               # @hypre_SMG2RAPPeriodicSym
 	sltu	$a4, $fp, $a6
 	sltu	$a6, $ra, $a2
 	and	$a4, $a4, $a6
-	ori	$a7, $zero, 8
+	ori	$a7, $zero, 10
 	bnez	$a4, .LBB3_14
 # %bb.22:                               # %vector.memcheck425
                                         #   in Loop: Header=BB3_12 Depth=3
@@ -4835,7 +4835,7 @@ hypre_SMG2RAPPeriodicSym:               # @hypre_SMG2RAPPeriodicSym
 	beq	$t5, $a0, .LBB3_11
 	b	.LBB3_14
 .LBB3_26:                               #   in Loop: Header=BB3_12 Depth=3
-	ori	$a7, $zero, 8
+	ori	$a7, $zero, 10
 	b	.LBB3_14
 	.p2align	4, , 16
 .LBB3_27:                               # %.preheader331.lr.ph
@@ -5019,7 +5019,7 @@ hypre_SMG2RAPPeriodicNoSym:             # @hypre_SMG2RAPPeriodicNoSym
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ori	$s5, $zero, 20
+	ori	$s5, $zero, 24
 	vrepli.b	$vr4, 0
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
@@ -5396,7 +5396,7 @@ hypre_SMG2RAPPeriodicNoSym:             # @hypre_SMG2RAPPeriodicNoSym
 	sltu	$s4, $s0, $a1
 	sltu	$s3, $t5, $s3
 	and	$s3, $s4, $s3
-	ori	$s5, $zero, 20
+	ori	$s5, $zero, 24
 	bnez	$s3, .LBB4_59
 # %bb.29:                               # %vector.memcheck
                                         #   in Loop: Header=BB4_12 Depth=3
@@ -5652,7 +5652,7 @@ hypre_SMG2RAPPeriodicNoSym:             # @hypre_SMG2RAPPeriodicNoSym
 	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB4_63
 .LBB4_58:                               #   in Loop: Header=BB4_12 Depth=3
-	ori	$s5, $zero, 20
+	ori	$s5, $zero, 24
 .LBB4_59:                               #   in Loop: Header=BB4_12 Depth=3
 	move	$t6, $s6
 	move	$s6, $s7

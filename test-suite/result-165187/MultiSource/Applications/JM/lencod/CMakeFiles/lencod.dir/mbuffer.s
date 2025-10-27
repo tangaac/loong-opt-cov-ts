@@ -7611,7 +7611,7 @@ dpb_combine_field:                      # @dpb_combine_field
 	ld.d	$a2, $fp, 56
 	ld.d	$a3, $fp, 40
 	addi.d	$a4, $a5, 1
-	ori	$a6, $zero, 15
+	ori	$a6, $zero, 11
 	bstrpick.d	$a4, $a4, 31, 1
 	bgeu	$a5, $a6, .LBB34_39
 # %bb.2:
@@ -7654,7 +7654,7 @@ dpb_combine_field:                      # @dpb_combine_field
 	ld.d	$a0, $fp, 56
 	ld.d	$a1, $fp, 40
 	addi.d	$a2, $a3, 1
-	ori	$a4, $zero, 15
+	ori	$a4, $zero, 11
 	bstrpick.d	$a2, $a2, 31, 1
 	bgeu	$a3, $a4, .LBB34_44
 # %bb.7:

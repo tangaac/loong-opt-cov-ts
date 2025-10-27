@@ -30,19 +30,19 @@ Crystal_pow:                            # @Crystal_pow
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 4
-	bgeu	$s0, $a0, .LBB0_3
+	ori	$a0, $zero, 1
+	bne	$s0, $a0, .LBB0_3
 # %bb.2:
 	move	$a0, $zero
 	b	.LBB0_6
 .LBB0_3:                                # %vector.ph
-	bstrpick.d	$a0, $s0, 30, 2
-	slli.d	$a0, $a0, 2
-	addi.d	$a1, $sp, 128
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
-	vreplgr2vr.d	$vr0, $a2
-	addi.d	$a2, $sp, 32
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr0, $a0
+	bstrpick.d	$a0, $s0, 30, 1
+	slli.d	$a0, $a0, 1
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 16
 	vldi	$vr1, -912
 	lu12i.w	$a3, -419431
 	ori	$a3, $a3, 2458
@@ -59,39 +59,24 @@ Crystal_pow:                            # @Crystal_pow
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr5, $vr0, 2
-	vst	$vr1, $a2, -16
 	vst	$vr1, $a2, 0
 	vpickve2gr.w	$a4, $vr0, 1
 	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a4, $vr0, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa7, $a4
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a4, $vr5, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a4, $vr5, 0
-	bstrpick.d	$a4, $a4, 31, 0
 	movgr2fr.d	$fa5, $a4
 	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr6, 16
-	vfmul.d	$vr6, $vr7, $vr2
-	vfmul.d	$vr5, $vr5, $vr2
-	vfmul.d	$vr6, $vr6, $vr3
+	vpickve2gr.w	$a4, $vr0, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa6, $a4
+	ffint.d.l	$fa6, $fa6
+	vextrins.d	$vr6, $vr5, 16
+	vfmul.d	$vr5, $vr6, $vr2
 	vfmul.d	$vr5, $vr5, $vr3
-	vfdiv.d	$vr6, $vr6, $vr4
 	vfdiv.d	$vr5, $vr5, $vr4
-	vst	$vr6, $a1, -16
 	vst	$vr5, $a1, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a1, $a1, 32
-	addi.d	$a2, $a2, 32
+	vaddi.wu	$vr0, $vr0, 2
+	addi.d	$a3, $a3, -2
+	addi.d	$a1, $a1, 16
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a0, $s0, .LBB0_8

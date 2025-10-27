@@ -239,30 +239,38 @@ Plain_PrintBeforeFirstPage:             # @Plain_PrintBeforeFirstPage
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(PlainCharWidth)
-	ld.w	$a2, $a2, %pc_lo12(PlainCharWidth)
-	addi.w	$a0, $a0, -1
-	div.w	$s1, $a0, $a2
-	addi.w	$fp, $s1, 1
+	vinsgr2vr.w	$vr0, $a0, 0
+	vinsgr2vr.w	$vr0, $a1, 1
+	vrepli.b	$vr1, -1
+	vadd.w	$vr0, $vr0, $vr1
 	pcalau12i	$a0, %pc_hi20(PlainCharHeight)
 	ld.w	$a0, $a0, %pc_lo12(PlainCharHeight)
-	pcalau12i	$a2, %pc_hi20(hsize)
-	st.w	$fp, $a2, %pc_lo12(hsize)
-	addi.w	$a1, $a1, -1
-	div.w	$s2, $a1, $a0
-	addi.w	$s0, $s2, 1
+	pcalau12i	$a1, %pc_hi20(PlainCharWidth)
+	ld.w	$a1, $a1, %pc_lo12(PlainCharWidth)
+	vpickve2gr.w	$a2, $vr0, 1
+	div.w	$s1, $a2, $a0
+	vpickve2gr.w	$a0, $vr0, 0
+	div.w	$s2, $a0, $a1
+	vinsgr2vr.w	$vr0, $s2, 0
+	vinsgr2vr.w	$vr0, $s1, 1
+	vaddi.wu	$vr0, $vr0, 1
+	vpickve2gr.w	$fp, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(hsize)
+	addi.d	$a0, $a0, %pc_lo12(hsize)
+	vstelm.w	$vr0, $a0, 0, 0
+	vpickve2gr.w	$s0, $vr0, 1
 	pcalau12i	$a0, %pc_hi20(vsize)
-	st.w	$s0, $a0, %pc_lo12(vsize)
+	addi.d	$a0, $a0, %pc_lo12(vsize)
+	vstelm.w	$vr0, $a0, 0, 1
 	mul.w	$a0, $s0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(page)
-	or	$a2, $s2, $s1
+	or	$a2, $s1, $s2
 	st.d	$a0, $a1, %pc_lo12(page)
 	bltz	$a2, .LBB13_2
 # %bb.1:                                # %.preheader.preheader
-	bstrpick.d	$a1, $s0, 31, 0
-	mul.d	$a2, $fp, $a1
+	mulw.d.wu	$a2, $fp, $s0
 	ori	$a1, $zero, 32
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
@@ -299,8 +307,8 @@ Plain_PrintBetweenPages:                # @Plain_PrintBetweenPages
 	pcalau12i	$a2, %pc_hi20(vsize)
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$fp, $a2, %pc_lo12(vsize)
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s3, %pc_hi20(hsize)
 	pcalau12i	$s1, %pc_hi20(page)
 	pcalau12i	$s4, %pc_hi20(out_fp)
@@ -368,30 +376,39 @@ Plain_PrintBetweenPages:                # @Plain_PrintBetweenPages
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 .LBB14_10:
-	pcalau12i	$a0, %pc_hi20(PlainCharWidth)
-	ld.w	$a0, $a0, %pc_lo12(PlainCharWidth)
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	addi.w	$a1, $a1, -1
-	div.w	$fp, $a1, $a0
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	vinsgr2vr.w	$vr0, $a0, 1
+	vrepli.b	$vr1, -1
+	vadd.w	$vr0, $vr0, $vr1
 	pcalau12i	$a0, %pc_hi20(PlainCharHeight)
 	ld.w	$a0, $a0, %pc_lo12(PlainCharHeight)
+	pcalau12i	$a1, %pc_hi20(PlainCharWidth)
+	ld.w	$a1, $a1, %pc_lo12(PlainCharWidth)
+	vpickve2gr.w	$a2, $vr0, 1
+	div.w	$a0, $a2, $a0
+	vpickve2gr.w	$a2, $vr0, 0
+	div.w	$a1, $a2, $a1
+	vinsgr2vr.w	$vr1, $a1, 0
 	ld.w	$a1, $s3, %pc_lo12(hsize)
-	addi.w	$s0, $fp, 1
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	addi.w	$a2, $a2, -1
-	div.w	$s5, $a2, $a0
-	addi.w	$s4, $s5, 1
+	vinsgr2vr.w	$vr1, $a0, 1
+	vaddi.wu	$vr0, $vr1, 1
+	vpickve2gr.w	$fp, $vr0, 0
+	vpickve2gr.w	$s0, $vr0, 1
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	bne	$s0, $a1, .LBB14_14
+	bne	$fp, $a1, .LBB14_14
 # %bb.11:
 	ld.w	$a0, $s2, %pc_lo12(vsize)
-	bne	$s4, $a0, .LBB14_14
+	bne	$s0, $a0, .LBB14_14
 # %bb.12:
-	or	$a0, $s5, $fp
+	vpickve2gr.w	$a0, $vr1, 0
+	vpickve2gr.w	$a1, $vr1, 1
+	or	$a0, $a1, $a0
 	bltz	$a0, .LBB14_15
 .LBB14_13:                              # %.preheader.us.preheader
 	ld.d	$a0, $s1, %pc_lo12(page)
-	mul.d	$a2, $s0, $s4
+	mulw.d.wu	$a2, $fp, $s0
 	ori	$a1, $zero, 32
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
@@ -409,15 +426,19 @@ Plain_PrintBetweenPages:                # @Plain_PrintBetweenPages
 	jr	$t8
 .LBB14_14:
 	ld.d	$a0, $s1, %pc_lo12(page)
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	st.w	$s0, $s3, %pc_lo12(hsize)
-	st.w	$s4, $s2, %pc_lo12(vsize)
-	mul.w	$a0, $s4, $s0
+	st.w	$fp, $s3, %pc_lo12(hsize)
+	st.w	$s0, $s2, %pc_lo12(vsize)
+	mul.w	$a0, $s0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	st.d	$a0, $s1, %pc_lo12(page)
-	or	$a0, $s5, $fp
+	vpickve2gr.w	$a0, $vr1, 0
+	vpickve2gr.w	$a1, $vr1, 1
+	or	$a0, $a1, $a0
 	bgez	$a0, .LBB14_13
 .LBB14_15:                              # %._crit_edge41
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload

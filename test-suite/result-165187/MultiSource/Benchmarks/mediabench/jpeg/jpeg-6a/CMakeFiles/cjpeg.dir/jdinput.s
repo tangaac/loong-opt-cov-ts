@@ -428,29 +428,39 @@ start_input_pass:                       # @start_input_pass
                                         #     Child Loop BB3_11 Depth 2
 	slli.d	$a0, $s0, 3
 	ldx.d	$a0, $s1, $a0
-	ld.w	$a1, $a0, 8
-	ld.w	$a2, $a0, 12
-	st.w	$a1, $a0, 52
-	ld.w	$a3, $a0, 36
-	st.w	$a2, $a0, 56
-	ld.w	$a4, $a0, 28
-	mul.w	$s5, $a2, $a1
-	mul.d	$a3, $a3, $a1
-	st.w	$a3, $a0, 64
-	mod.wu	$a3, $a4, $a1
-	sltui	$a4, $a3, 1
-	masknez	$a3, $a3, $a4
-	maskeqz	$a1, $a1, $a4
-	ld.w	$a4, $a0, 32
+	ld.d	$a1, $a0, 8
+	ld.w	$a2, $a0, 36
+	vinsgr2vr.d	$vr0, $a1, 0
+	vpickve2gr.w	$a1, $vr0, 0
+	vstelm.w	$vr0, $a0, 52, 0
+	vpickve2gr.w	$a3, $vr0, 1
+	vstelm.w	$vr0, $a0, 56, 1
+	mul.w	$s5, $a3, $a1
+	ld.d	$a4, $a0, 28
 	st.w	$s5, $a0, 60
-	or	$a1, $a1, $a3
+	mul.d	$a2, $a2, $a1
+	st.w	$a2, $a0, 64
+	vinsgr2vr.d	$vr0, $a4, 0
+	vpickve2gr.w	$a2, $vr0, 1
+	mod.wu	$a2, $a2, $a3
+	vpickve2gr.w	$a4, $vr0, 0
+	mod.wu	$a4, $a4, $a1
+	vinsgr2vr.w	$vr0, $a4, 0
+	vinsgr2vr.w	$vr0, $a2, 1
+	vseqi.w	$vr0, $vr0, 0
+	vshuf4i.w	$vr1, $vr0, 16
+	vpickve2gr.d	$a5, $vr0, 0
+	andi	$a5, $a5, 1
+	masknez	$a4, $a4, $a5
+	maskeqz	$a1, $a1, $a5
+	or	$a1, $a1, $a4
 	st.w	$a1, $a0, 68
-	mod.wu	$a1, $a4, $a2
-	sltui	$a3, $a1, 1
+	vpickve2gr.d	$a1, $vr1, 1
+	andi	$a1, $a1, 1
 	ld.w	$a4, $fp, 464
-	masknez	$a1, $a1, $a3
-	maskeqz	$a2, $a2, $a3
-	or	$a1, $a2, $a1
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a3, $a1
+	or	$a1, $a1, $a2
 	add.w	$a2, $a4, $s5
 	st.w	$a1, $a0, 72
 	blt	$a2, $s3, .LBB3_9

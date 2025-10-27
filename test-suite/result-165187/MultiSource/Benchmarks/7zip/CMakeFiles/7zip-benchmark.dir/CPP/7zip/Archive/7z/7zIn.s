@@ -1273,71 +1273,64 @@ _ZN8NArchive3N7z8CInByte210ReadStringER11CStringBaseIwE: # @_ZN8NArchive3N7z8CIn
 	move	$fp, $a1
 	sub.d	$a1, $a2, $s4
 	bstrins.d	$a1, $zero, 0, 0
-	add.d	$s1, $s5, $s4
-	move	$s2, $zero
-	beqz	$a1, .LBB13_6
-# %bb.1:                                # %.lr.ph.preheader
-	addi.d	$a2, $a1, -1
-	bstrins.d	$a2, $zero, 0, 0
-	addi.d	$a2, $a2, 2
-	b	.LBB13_3
+	add.d	$s2, $s5, $s4
+	move	$s1, $zero
+	bnez	$a1, .LBB13_2
+	b	.LBB13_4
 	.p2align	4, , 16
-.LBB13_2:                               #   in Loop: Header=BB13_3 Depth=1
-	addi.d	$s2, $s2, 2
-	bgeu	$s2, $a1, .LBB13_5
-.LBB13_3:                               # %.lr.ph
+.LBB13_1:                               #   in Loop: Header=BB13_2 Depth=1
+	addi.d	$s1, $s1, 2
+	bgeu	$s1, $a1, .LBB13_4
+.LBB13_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a3, $s1, $s2
-	bnez	$a3, .LBB13_2
-# %bb.4:                                #   in Loop: Header=BB13_3 Depth=1
-	add.d	$a3, $s1, $s2
-	ld.bu	$a3, $a3, 1
-	bnez	$a3, .LBB13_2
-	b	.LBB13_6
-.LBB13_5:
-	move	$s2, $a2
-.LBB13_6:                               # %._crit_edge
-	beq	$s2, $a1, .LBB13_34
-# %bb.7:
-	srli.d	$a1, $s2, 32
-	bnez	$a1, .LBB13_34
-# %bb.8:
-	srli.d	$s3, $s2, 1
+	ldx.bu	$a2, $s2, $s1
+	bnez	$a2, .LBB13_1
+# %bb.3:                                #   in Loop: Header=BB13_2 Depth=1
+	add.d	$a2, $s2, $s1
+	ld.bu	$a2, $a2, 1
+	bnez	$a2, .LBB13_1
+.LBB13_4:                               # %._crit_edge
+	beq	$s1, $a1, .LBB13_32
+# %bb.5:
+	srli.d	$a1, $s1, 32
+	bnez	$a1, .LBB13_32
+# %bb.6:
+	srli.d	$s3, $s1, 1
 	addi.w	$s6, $s3, 0
-	bltz	$s6, .LBB13_34
-# %bb.9:
+	bltz	$s6, .LBB13_32
+# %bb.7:
 	ld.w	$s8, $fp, 12
-	blt	$s6, $s8, .LBB13_23
-# %bb.10:
+	blt	$s6, $s8, .LBB13_21
+# %bb.8:
 	addi.w	$s7, $s3, 1
-	beq	$s7, $s8, .LBB13_23
-# %bb.11:
+	beq	$s7, $s8, .LBB13_21
+# %bb.9:
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	slli.d	$a0, $s7, 2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blez	$s8, .LBB13_22
-# %bb.12:                               # %.preheader.i.i
+	blez	$s8, .LBB13_20
+# %bb.10:                               # %.preheader.i.i
 	ld.w	$a1, $fp, 8
 	ld.d	$a0, $fp, 0
-	blez	$a1, .LBB13_20
-# %bb.13:                               # %.lr.ph.i.i
+	blez	$a1, .LBB13_18
+# %bb.11:                               # %.lr.ph.i.i
 	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB13_18
-# %bb.14:                               # %.lr.ph.i.i
+	bltu	$a1, $a3, .LBB13_16
+# %bb.12:                               # %.lr.ph.i.i
 	sub.d	$a3, $s0, $a0
 	ori	$a4, $zero, 32
-	bltu	$a3, $a4, .LBB13_18
-# %bb.15:                               # %vector.ph
+	bltu	$a3, $a4, .LBB13_16
+# %bb.13:                               # %vector.ph
 	bstrpick.d	$a2, $a1, 30, 3
 	slli.d	$a2, $a2, 3
 	addi.d	$a3, $s0, 16
 	addi.d	$a4, $a0, 16
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB13_16:                              # %vector.body
+.LBB13_14:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, -16
 	vld	$vr1, $a4, 0
@@ -1346,68 +1339,68 @@ _ZN8NArchive3N7z8CInByte210ReadStringER11CStringBaseIwE: # @_ZN8NArchive3N7z8CIn
 	addi.d	$a5, $a5, -8
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB13_16
-# %bb.17:                               # %middle.block
-	beq	$a2, $a1, .LBB13_21
-.LBB13_18:                              # %scalar.ph.preheader
+	bnez	$a5, .LBB13_14
+# %bb.15:                               # %middle.block
+	beq	$a2, $a1, .LBB13_19
+.LBB13_16:                              # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $s0, 2
 	alsl.d	$a2, $a2, $a0, 2
 	.p2align	4, , 16
-.LBB13_19:                              # %scalar.ph
+.LBB13_17:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
 	st.w	$a4, $a3, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB13_19
-	b	.LBB13_21
-.LBB13_20:                              # %._crit_edge.i.i
-	beqz	$a0, .LBB13_22
-.LBB13_21:                              # %._crit_edge.thread.i.i
+	bnez	$a1, .LBB13_17
+	b	.LBB13_19
+.LBB13_18:                              # %._crit_edge.i.i
+	beqz	$a0, .LBB13_20
+.LBB13_19:                              # %._crit_edge.thread.i.i
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB13_22:
+.LBB13_20:
 	ld.w	$a0, $fp, 8
 	st.d	$s0, $fp, 0
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s0, $a0
 	st.w	$s7, $fp, 12
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-.LBB13_23:                              # %_ZN11CStringBaseIwE9GetBufferEi.exit
+.LBB13_21:                              # %_ZN11CStringBaseIwE9GetBufferEi.exit
 	ld.d	$a1, $fp, 0
-	beqz	$s6, .LBB13_30
-# %bb.24:                               # %.lr.ph35.preheader
+	beqz	$s6, .LBB13_28
+# %bb.22:                               # %.lr.ph35.preheader
 	ori	$a2, $zero, 16
-	bltu	$s2, $a2, .LBB13_27
-# %bb.25:                               # %vector.memcheck46
+	bltu	$s1, $a2, .LBB13_25
+# %bb.23:                               # %vector.memcheck46
 	add.d	$a2, $s5, $s4
-	add.d	$a2, $a2, $s2
-	bgeu	$a1, $a2, .LBB13_31
-# %bb.26:                               # %vector.memcheck46
-	alsl.d	$a2, $s2, $a1, 1
-	bgeu	$s1, $a2, .LBB13_31
-.LBB13_27:
+	add.d	$a2, $a2, $s1
+	bgeu	$a1, $a2, .LBB13_29
+# %bb.24:                               # %vector.memcheck46
+	alsl.d	$a2, $s1, $a1, 1
+	bgeu	$s2, $a2, .LBB13_29
+.LBB13_25:
 	move	$a2, $zero
-.LBB13_28:                              # %.lr.ph35.preheader64
+.LBB13_26:                              # %.lr.ph35.preheader64
 	alsl.d	$a3, $a2, $a1, 2
 	sub.d	$a2, $s3, $a2
 	.p2align	4, , 16
-.LBB13_29:                              # %.lr.ph35
+.LBB13_27:                              # %.lr.ph35
                                         # =>This Inner Loop Header: Depth=1
-	ld.hu	$a4, $s1, 0
+	ld.hu	$a4, $s2, 0
 	st.w	$a4, $a3, 0
-	addi.d	$s1, $s1, 2
+	addi.d	$s2, $s2, 2
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
-	bnez	$a2, .LBB13_29
-.LBB13_30:                              # %._crit_edge36
+	bnez	$a2, .LBB13_27
+.LBB13_28:                              # %._crit_edge36
 	ld.d	$a2, $a0, 16
 	slli.d	$a3, $s3, 2
 	stx.w	$zero, $a1, $a3
 	st.w	$s3, $fp, 8
-	add.d	$a1, $s2, $a2
+	add.d	$a1, $s1, $a2
 	addi.d	$a1, $a1, 2
 	st.d	$a1, $a0, 16
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
@@ -1423,17 +1416,17 @@ _ZN8NArchive3N7z8CInByte210ReadStringER11CStringBaseIwE: # @_ZN8NArchive3N7z8CIn
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB13_31:                              # %vector.ph50
+.LBB13_29:                              # %vector.ph50
 	bstrpick.d	$a3, $s3, 30, 2
 	slli.d	$a2, $a3, 2
-	alsl.d	$s1, $a3, $s1, 3
+	alsl.d	$s2, $a3, $s2, 3
 	add.d	$a3, $s4, $s5
 	addi.d	$a3, $a3, 3
 	vrepli.b	$vr0, 0
 	move	$a4, $a2
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB13_32:                              # %vector.body53
+.LBB13_30:                              # %vector.body53
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a6, $a3, -3
 	ld.b	$a7, $a3, -1
@@ -1461,11 +1454,11 @@ _ZN8NArchive3N7z8CInByte210ReadStringER11CStringBaseIwE: # @_ZN8NArchive3N7z8CIn
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB13_32
-# %bb.33:                               # %middle.block59
-	beq	$s3, $a2, .LBB13_30
-	b	.LBB13_28
-.LBB13_34:
+	bnez	$a4, .LBB13_30
+# %bb.31:                               # %middle.block59
+	beq	$s3, $a2, .LBB13_28
+	b	.LBB13_26
+.LBB13_32:
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7zL14ThrowExceptionEv)
 	jirl	$ra, $ra, 0
 .Lfunc_end13:
@@ -7060,15 +7053,12 @@ _ZN8NArchive3N7z10CInArchive10ReadHeaderERNS0_18CArchiveDatabaseExEP22ICryptoGet
 # %bb.116:                              # %.lr.ph350
                                         #   in Loop: Header=BB34_62 Depth=1
 	ld.d	$a1, $a0, 8
-	sub.d	$a2, $a1, $s2
-	sltu	$a1, $a1, $a2
-	masknez	$a1, $a2, $a1
 	move	$a2, $s3
 	move	$a3, $s2
 	.p2align	4, , 16
 .LBB34_117:                             #   Parent Loop BB34_62 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	beqz	$a1, .LBB34_168
+	bgeu	$a3, $a1, .LBB34_168
 # %bb.118:                              #   in Loop: Header=BB34_117 Depth=2
 	ld.d	$a5, $a0, 0
 	addi.d	$a4, $a3, 1
@@ -7077,7 +7067,6 @@ _ZN8NArchive3N7z10CInArchive10ReadHeaderERNS0_18CArchiveDatabaseExEP22ICryptoGet
 	bnez	$a3, .LBB34_168
 # %bb.119:                              #   in Loop: Header=BB34_117 Depth=2
 	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, -1
 	move	$a3, $a4
 	bnez	$a2, .LBB34_117
 	b	.LBB34_104
@@ -7313,7 +7302,7 @@ _ZN8NArchive3N7z10CInArchive10ReadHeaderERNS0_18CArchiveDatabaseExEP22ICryptoGet
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB34_154:                             # %scalar.ph490
+.LBB34_154:                             # %scalar.ph489
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a4, $a2, $a3
 	addi.w	$a3, $a3, 1
@@ -7440,13 +7429,13 @@ _ZN8NArchive3N7z10CInArchive10ReadHeaderERNS0_18CArchiveDatabaseExEP22ICryptoGet
 	ld.d	$ra, $sp, 472                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 480
 	ret
-.LBB34_168:                             # %.invoke431
+.LBB34_168:                             # %.invoke430
 .Ltmp203:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7zL14ThrowExceptionEv)
 	jirl	$ra, $ra, 0
 .Ltmp204:                               # EH_LABEL
-# %bb.169:                              # %.cont432
-.LBB34_170:                             # %.invoke430
+# %bb.169:                              # %.cont431
+.LBB34_170:                             # %.invoke429
 .Ltmp270:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7zL14ThrowExceptionEv)
 	jirl	$ra, $ra, 0

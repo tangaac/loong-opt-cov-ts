@@ -5,30 +5,30 @@
 	.type	sf,@function
 sf:                                     # @sf
 # %bb.0:
-	move	$a2, $a0
 	#APP
 	#NO_APP
-	addi.d	$a0, $a1, 1
-	addi.d	$a4, $a2, -1
+	addi.d	$a3, $a0, -1
 	ori	$a2, $zero, 57
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	move	$a3, $a4
-	ld.bu	$a4, $a4, 0
-	bne	$a4, $a2, .LBB0_4
+	move	$a0, $a3
+	ld.bu	$a3, $a3, 0
+	bne	$a3, $a2, .LBB0_4
 # %bb.2:                                #   in Loop: Header=BB0_1 Depth=1
-	addi.d	$a4, $a3, -1
-	bne	$a3, $a1, .LBB0_1
+	addi.d	$a3, $a0, -1
+	bne	$a0, $a1, .LBB0_1
 # %bb.3:
 	ori	$a2, $zero, 48
 	st.b	$a2, $a1, 0
 	ori	$a2, $zero, 49
+	addi.d	$a0, $a0, 1
 	st.b	$a2, $a1, 0
 	ret
 .LBB0_4:                                # %.loopexit.loopexit
-	addi.d	$a2, $a4, 1
-	addi.d	$a0, $a3, 1
-	st.b	$a2, $a3, 0
+	addi.d	$a2, $a3, 1
+	move	$a1, $a0
+	addi.d	$a0, $a0, 1
+	st.b	$a2, $a1, 0
 	ret
 .Lfunc_end0:
 	.size	sf, .Lfunc_end0-sf

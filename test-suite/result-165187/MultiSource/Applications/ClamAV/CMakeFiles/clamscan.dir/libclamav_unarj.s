@@ -1011,7 +1011,11 @@ cli_unarj_extract_file:                 # @cli_unarj_extract_file
 	ori	$a5, $zero, 509
 	addi.d	$a1, $a0, -1
 	bstrpick.d	$a1, $a1, 15, 0
-	ori	$a2, $zero, 510
+	ori	$a3, $zero, 510
+	slt	$a2, $a3, $s2
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $s2, $a2
+	or	$a2, $a2, $a3
 	sub.d	$a2, $a2, $s2
 	sltu	$a3, $a1, $a2
 	masknez	$a2, $a2, $a3
@@ -1053,7 +1057,7 @@ cli_unarj_extract_file:                 # @cli_unarj_extract_file
                                         #     Parent Loop BB2_26 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ori	$a1, $zero, 510
-	beq	$s2, $a1, .LBB2_52
+	bge	$s2, $a1, .LBB2_52
 # %bb.45:                               #   in Loop: Header=BB2_44 Depth=3
 	ext.w.h	$a1, $a0
 	addi.d	$a0, $a0, -1

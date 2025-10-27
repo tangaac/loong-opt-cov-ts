@@ -69,57 +69,70 @@ goverlapf:                              # @goverlapf
 	masknez	$a6, $a4, $a6
 	or	$a1, $a1, $a6
 	masknez	$a1, $a1, $a3
-	ori	$t0, $zero, 1
-	maskeqz	$a3, $t0, $a3
-	or	$t1, $a3, $a1
-	sub.w	$a0, $s8, $a0
-	div.w	$a0, $a0, $a2
-	slt	$a1, $a4, $a0
-	slt	$a2, $t0, $a0
-	maskeqz	$a0, $a0, $a2
-	masknez	$a2, $t0, $a2
-	or	$a0, $a0, $a2
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a4, $a1
-	or	$a0, $a1, $a0
+	ori	$t2, $zero, 1
+	maskeqz	$a3, $t2, $a3
+	or	$t3, $a3, $a1
 	pcalau12i	$a1, %got_pc_hi20(binOffsetY)
 	ld.d	$a1, $a1, %got_pc_lo12(binOffsetY)
 	ld.w	$a1, $a1, 0
-	sub.w	$a2, $ra, $a1
-	pcalau12i	$a3, %got_pc_hi20(binWidthY)
-	ld.d	$a3, $a3, %got_pc_lo12(binWidthY)
-	ld.w	$a3, $a3, 0
-	div.w	$a2, $a2, $a3
-	slti	$a4, $a2, 1
-	pcalau12i	$a6, %got_pc_hi20(numBinsY)
-	ld.d	$a6, $a6, %got_pc_lo12(numBinsY)
+	sub.w	$a3, $ra, $a1
+	pcalau12i	$a6, %got_pc_hi20(binWidthY)
+	ld.d	$a6, $a6, %got_pc_lo12(binWidthY)
 	ld.w	$a6, $a6, 0
-	slt	$a7, $a2, $a6
-	maskeqz	$a2, $a2, $a7
-	masknez	$a7, $a6, $a7
-	or	$a2, $a2, $a7
-	masknez	$a2, $a2, $a4
-	maskeqz	$a4, $t0, $a4
-	or	$a4, $a4, $a2
-	sub.w	$a1, $t8, $a1
-	div.w	$a1, $a1, $a3
-	slt	$a2, $a6, $a1
-	slt	$a3, $t0, $a1
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $t0, $a3
-	or	$a1, $a1, $a3
+	div.w	$a3, $a3, $a6
+	slti	$a7, $a3, 1
+	pcalau12i	$t0, %got_pc_hi20(numBinsY)
+	ld.d	$t0, $t0, %got_pc_lo12(numBinsY)
+	ld.w	$t0, $t0, 0
+	slt	$t1, $a3, $t0
+	maskeqz	$a3, $a3, $t1
+	masknez	$t1, $t0, $t1
+	or	$a3, $a3, $t1
+	masknez	$a3, $a3, $a7
+	maskeqz	$a7, $t2, $a7
+	or	$a7, $a7, $a3
+	vinsgr2vr.w	$vr0, $s8, 0
+	vinsgr2vr.w	$vr0, $t8, 1
+	vinsgr2vr.w	$vr1, $a0, 0
+	vinsgr2vr.w	$vr1, $a1, 1
+	vsub.w	$vr0, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr0, 1
+	div.w	$a1, $a0, $a6
+	vpickve2gr.w	$a0, $vr0, 0
+	div.w	$a0, $a0, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	vinsgr2vr.w	$vr0, $a1, 1
+	slt	$a2, $t2, $a0
+	maskeqz	$a0, $a0, $a2
+	masknez	$a2, $t2, $a2
+	or	$a0, $a0, $a2
+	vinsgr2vr.w	$vr1, $a4, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vslt.w	$vr0, $vr1, $vr0
+	vshuf4i.w	$vr1, $vr0, 16
+	vpickve2gr.d	$a2, $vr0, 0
+	andi	$a2, $a2, 1
+	masknez	$a0, $a0, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a0, $a2, $a0
+	slt	$a2, $t2, $a1
+	maskeqz	$a1, $a1, $a2
+	masknez	$a2, $t2, $a2
+	or	$a1, $a1, $a2
+	vpickve2gr.d	$a2, $vr1, 1
+	andi	$a2, $a2, 1
 	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $a6, $a2
+	maskeqz	$a2, $t0, $a2
 	or	$a1, $a2, $a1
-	xor	$a2, $t1, $a0
+	xor	$a2, $t3, $a0
 	sltui	$a2, $a2, 1
-	xor	$a3, $a4, $a1
+	xor	$a3, $a7, $a1
 	sltui	$a3, $a3, 1
 	and	$a2, $a2, $a3
-	st.d	$t1, $sp, 8                     # 8-byte Folded Spill
-	maskeqz	$a3, $t1, $a2
-	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
-	maskeqz	$a2, $a4, $a2
+	st.d	$t3, $sp, 8                     # 8-byte Folded Spill
+	maskeqz	$a3, $t3, $a2
+	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
+	maskeqz	$a2, $a7, $a2
 	pcalau12i	$a4, %got_pc_hi20(binX)
 	ld.d	$a4, $a4, %got_pc_lo12(binX)
 	st.w	$a3, $a4, 0

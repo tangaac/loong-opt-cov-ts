@@ -1661,15 +1661,8 @@ _ZN5ArrayIjLi0EED2Ev:                   # @_ZN5ArrayIjLi0EED2Ev
 .Lfunc_end22:
 	.size	_ZN5ArrayIjLi0EED2Ev, .Lfunc_end22-_ZN5ArrayIjLi0EED2Ev
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN3APMC2Ei
-.LCPI23_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
 	.text
-	.globl	_ZN3APMC2Ei
+	.globl	_ZN3APMC2Ei                     # -- Begin function _ZN3APMC2Ei
 	.p2align	5
 	.type	_ZN3APMC2Ei,@function
 _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
@@ -1726,81 +1719,50 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB23_5
-# %bb.6:                                # %vector.body15.preheader
-	pcalau12i	$a2, %pc_hi20(.LCPI23_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI23_0)
-	lu12i.w	$a2, -349526
-	ori	$a2, $a2, 2731
-	vreplgr2vr.w	$vr1, $a2
-	vrepli.w	$vr2, 24
-	vldi	$vr3, -3576
-	lu12i.w	$a2, 21845
-	ori	$a2, $a2, 1366
-	vreplgr2vr.w	$vr4, $a2
-	addi.d	$a2, $zero, -2048
-	vreplgr2vr.w	$vr5, $a2
-	vrepli.w	$vr6, 127
-	pcalau12i	$a2, %pc_hi20(_ZZ6squashiE1t)
-	addi.d	$a2, $a2, %pc_lo12(_ZZ6squashiE1t)
-	vrepli.w	$vr7, 128
-	lu12i.w	$a3, -256
-	vreplgr2vr.w	$vr8, $a3
-	vrepli.w	$vr9, 6
+# %bb.6:                                # %_Z6squashi.exit.lr.ph
+	lu12i.w	$a2, 1
+	lu12i.w	$a3, -349526
+	ori	$a3, $a3, 2731
+	lu32i.d	$a3, 0
+	pcalau12i	$a4, %pc_hi20(_ZZ6squashiE1t)
+	addi.d	$a4, $a4, %pc_lo12(_ZZ6squashiE1t)
+	move	$a5, $zero
+	move	$a6, $zero
+	ori	$a7, $zero, 128
+	lu12i.w	$t0, 2
 	.p2align	4, , 16
-.LBB23_7:                               # %vector.body15
+.LBB23_7:                               # %_Z6squashi.exit
                                         # =>This Inner Loop Header: Depth=1
-	vmuh.wu	$vr10, $vr0, $vr1
-	vsrli.w	$vr10, $vr10, 4
-	vori.b	$vr11, $vr0, 0
-	vmsub.w	$vr11, $vr10, $vr2
-	vslli.w	$vr10, $vr11, 13
-	vbitseti.w	$vr10, $vr10, 12
-	vmuh.wu	$vr10, $vr10, $vr4
-	vadd.w	$vr11, $vr10, $vr5
-	vand.v	$vr10, $vr10, $vr6
-	vsrai.w	$vr11, $vr11, 7
-	vshuf4i.w	$vr12, $vr11, 50
-	vslli.d	$vr12, $vr12, 32
-	vsrai.d	$vr12, $vr12, 32
-	vshuf4i.w	$vr11, $vr11, 16
-	vslli.d	$vr11, $vr11, 32
-	vsrai.d	$vr11, $vr11, 32
-	vpickve2gr.d	$a3, $vr11, 0
-	vpickve2gr.d	$a4, $vr11, 1
-	vpickve2gr.d	$a5, $vr12, 0
-	vpickve2gr.d	$a6, $vr12, 1
-	alsl.d	$a3, $a3, $a2, 2
-	alsl.d	$a4, $a4, $a2, 2
-	alsl.d	$a5, $a5, $a2, 2
-	alsl.d	$a6, $a6, $a2, 2
-	ld.w	$a7, $a3, 64
-	ld.w	$t0, $a4, 64
-	ld.w	$t1, $a5, 64
-	ld.w	$t2, $a6, 64
-	vinsgr2vr.w	$vr11, $a7, 0
-	vinsgr2vr.w	$vr11, $t0, 1
-	vinsgr2vr.w	$vr11, $t1, 2
-	vinsgr2vr.w	$vr11, $t2, 3
-	vsub.w	$vr12, $vr7, $vr10
-	vmul.w	$vr11, $vr11, $vr12
-	ld.w	$a3, $a3, 68
-	ld.w	$a4, $a4, 68
-	ld.w	$a5, $a5, 68
-	ld.w	$a6, $a6, 68
-	vinsgr2vr.w	$vr12, $a3, 0
-	vinsgr2vr.w	$vr12, $a4, 1
-	vinsgr2vr.w	$vr12, $a5, 2
-	vinsgr2vr.w	$vr12, $a6, 3
-	vmadd.w	$vr11, $vr12, $vr10
-	vslli.w	$vr10, $vr11, 13
-	vadd.w	$vr10, $vr10, $vr3
-	vand.v	$vr10, $vr10, $vr8
-	vor.v	$vr10, $vr10, $vr9
-	vst	$vr10, $a0, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a1, $a1, -4
-	addi.d	$a0, $a0, 16
-	bnez	$a1, .LBB23_7
+	bstrpick.d	$t1, $a5, 31, 0
+	mul.d	$t1, $t1, $a3
+	srli.d	$t1, $t1, 36
+	alsl.d	$t1, $t1, $t1, 1
+	slli.d	$t1, $t1, 16
+	sub.d	$t1, $a2, $t1
+	bstrpick.d	$t1, $t1, 31, 0
+	mul.d	$t1, $t1, $a3
+	srli.d	$t2, $t1, 37
+	addi.d	$t2, $t2, -2048
+	srai.d	$t2, $t2, 7
+	alsl.d	$t2, $t2, $a4, 2
+	ld.w	$t3, $t2, 64
+	ld.w	$t2, $t2, 68
+	bstrpick.d	$t1, $t1, 43, 37
+	sub.d	$t4, $a7, $t1
+	mul.d	$t3, $t3, $t4
+	mul.d	$t1, $t2, $t1
+	add.d	$t1, $t3, $t1
+	slli.d	$t1, $t1, 13
+	addu16i.d	$t1, $t1, 8
+	srli.d	$t1, $t1, 20
+	ori	$t2, $zero, 6
+	bstrins.d	$t2, $t1, 31, 20
+	st.w	$t2, $a0, 0
+	addi.d	$a6, $a6, 1
+	add.w	$a2, $a2, $t0
+	addi.w	$a5, $a5, 1
+	addi.d	$a0, $a0, 4
+	bltu	$a6, $a1, .LBB23_7
 	b	.LBB23_9
 .LBB23_8:                               # %_ZN8StateMapC2Ei.exit
 	vrepli.b	$vr0, 0
@@ -24025,62 +23987,26 @@ _ZN7EncoderC2E4ModeP8_IO_FILE:          # @_ZN7EncoderC2E4ModeP8_IO_FILE
 	bstrins.d	$a0, $s1, 63, 8
 	st.w	$a0, $fp, 24
 .LBB75_3:                               # %vector.body.preheader
-	lu12i.w	$a0, 16
-	lu32i.d	$a0, 196610
-	vreplgr2vr.d	$vr0, $a0
-	lu12i.w	$a0, -1
-	lu12i.w	$a1, 4
-	vrepli.b	$vr1, 0
-	pcalau12i	$a2, %pc_hi20(_ZL2dt)
-	addi.d	$a2, $a2, %pc_lo12(_ZL2dt)
-	lu12i.w	$a3, 1
-	ori	$a4, $a3, 16
+	pcalau12i	$a0, %pc_hi20(_ZL2dt+4)
+	addi.d	$a0, $a0, %pc_lo12(_ZL2dt+4)
+	move	$a1, $zero
+	lu12i.w	$a2, 4
+	ori	$a3, $zero, 1024
 	.p2align	4, , 16
 .LBB75_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslli.h	$vr2, $vr0, 1
-	vaddi.hu	$vr3, $vr2, 3
-	vaddi.hu	$vr2, $vr2, 11
-	vpickve2gr.h	$a5, $vr3, 1
+	slli.d	$a4, $a1, 1
+	ori	$a5, $a4, 3
 	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr3, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr4, $a6, 0
-	vinsgr2vr.h	$vr4, $a5, 1
-	vpickve2gr.h	$a5, $vr3, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr4, $a5, 2
-	vpickve2gr.h	$a5, $vr3, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr4, $a5, 3
-	vpickve2gr.h	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr3, $a6, 0
-	vinsgr2vr.h	$vr3, $a5, 1
-	vpickve2gr.h	$a5, $vr2, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 2
-	vpickve2gr.h	$a5, $vr2, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 3
-	vilvl.h	$vr2, $vr1, $vr4
-	vilvl.h	$vr3, $vr1, $vr3
-	add.d	$a5, $a2, $a0
-	vstx	$vr2, $a5, $a3
-	vstx	$vr3, $a5, $a4
-	addi.d	$a0, $a0, 32
-	vaddi.hu	$vr0, $vr0, 8
-	bnez	$a0, .LBB75_4
+	addi.d	$a4, $a4, 5
+	bstrpick.d	$a4, $a4, 15, 0
+	div.du	$a5, $a2, $a5
+	div.du	$a4, $a2, $a4
+	st.w	$a5, $a0, -4
+	st.w	$a4, $a0, 0
+	addi.d	$a1, $a1, 2
+	addi.d	$a0, $a0, 8
+	bne	$a1, $a3, .LBB75_4
 # %bb.5:                                # %middle.block
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -29251,19 +29177,19 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception21
 # %bb.0:
-	addi.d	$sp, $sp, -336
-	.cfi_def_cfa_offset 336
-	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 248                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -320
+	.cfi_def_cfa_offset 320
+	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -29291,7 +29217,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ld.bu	$a1, $a0, 0
 	ori	$a2, $zero, 45
 	pcalau12i	$a4, %pc_hi20(level)
-	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
 	bne	$a1, $a2, .LBB104_4
 # %bb.2:
 	ld.bu	$a1, $a0, 1
@@ -29300,10 +29226,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ld.bu	$a0, $a0, 2
 	beqz	$a0, .LBB104_31
 .LBB104_4:
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $zero
 .LBB104_5:                              # %.thread
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(programChecker)
 	addi.d	$s0, $a0, %pc_lo12(programChecker)
 	ld.w	$s1, $s0, 0
@@ -29332,7 +29258,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	beqz	$a0, .LBB104_330
 # %bb.11:                               # %_ZN5ArrayIlLi0EEC2Ei.exit
 	ld.d	$s5, $s2, 8
@@ -29346,7 +29272,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	maskeqz	$a1, $s5, $a1
 	or	$a1, $a1, $a0
 .Ltmp344:                               # EH_LABEL
-	addi.d	$a0, $sp, 224
+	addi.d	$a0, $sp, 208
 	pcaddu18i	$ra, %call36(_ZN6StringC2EPKc)
 	jirl	$ra, $ra, 0
 .Ltmp345:                               # EH_LABEL
@@ -29415,7 +29341,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_20:
 	move	$fp, $zero
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$s1, $zero, 1
 	b	.LBB104_73
 .LBB104_21:                             # %.critedge.i
@@ -29424,9 +29350,9 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	or	$a0, $fp, $a0
 	bnez	$a0, .LBB104_20
 .LBB104_22:                             # %_ZN5ArrayIcLi0EE8pop_backEv.exit.i
-	ld.w	$a0, $sp, 224
-	ld.w	$a1, $sp, 228
-	ld.d	$s5, $sp, 240
+	ld.w	$a0, $sp, 208
+	ld.w	$a1, $sp, 212
+	ld.d	$s5, $sp, 224
 	slt	$a2, $zero, $a0
 	sub.w	$s4, $a0, $a2
 	bne	$s4, $a1, .LBB104_36
@@ -29437,11 +29363,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
-	ld.d	$s6, $sp, 232
+	ld.d	$s6, $sp, 216
 	ld.w	$fp, $s0, 0
 	ld.w	$s1, $s0, 4
-	st.w	$a0, $sp, 228
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 212
+	st.w	$a0, $sp, 208
 	add.w	$a1, $fp, $a0
 	st.w	$a1, $s0, 0
 	bge	$s1, $a1, .LBB104_25
@@ -29452,10 +29378,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 232
+	st.d	$a0, $sp, 216
 	beqz	$a0, .LBB104_323
 # %bb.26:
-	st.d	$a0, $sp, 240
+	st.d	$a0, $sp, 224
 	beqz	$s6, .LBB104_35
 # %bb.27:
 	beqz	$s5, .LBB104_30
@@ -29472,7 +29398,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $sp, 240
+	ld.d	$s5, $sp, 224
 	b	.LBB104_36
 .LBB104_31:
 	addi.d	$a0, $a1, -58
@@ -29484,7 +29410,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	beq	$a1, $a2, .LBB104_227
 # %bb.33:
 .Ltmp339:                               # EH_LABEL
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.39)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.39)
 	pcaddu18i	$ra, %call36(_Z4quitPKc)
@@ -29495,12 +29421,12 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$s5, $a0
 .LBB104_36:                             # %_ZN5ArrayIcLi0EE9push_backERKc.exit.i
 	addi.d	$a0, $s4, 1
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 208
 	ori	$a0, $zero, 46
 	stx.b	$a0, $s5, $s4
-	ld.w	$s4, $sp, 224
-	ld.w	$a0, $sp, 228
-	ld.d	$s5, $sp, 240
+	ld.w	$s4, $sp, 208
+	ld.w	$a0, $sp, 212
+	ld.d	$s5, $sp, 224
 	bne	$s4, $a0, .LBB104_46
 # %bb.37:
 	slli.w	$a0, $s4, 1
@@ -29509,11 +29435,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
-	ld.d	$s6, $sp, 232
+	ld.d	$s6, $sp, 216
 	ld.w	$fp, $s0, 0
 	ld.w	$s1, $s0, 4
-	st.w	$a0, $sp, 228
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 212
+	st.w	$a0, $sp, 208
 	add.w	$a1, $fp, $a0
 	st.w	$a1, $s0, 0
 	bge	$s1, $a1, .LBB104_39
@@ -29524,10 +29450,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 232
+	st.d	$a0, $sp, 216
 	beqz	$a0, .LBB104_323
 # %bb.40:
-	st.d	$a0, $sp, 240
+	st.d	$a0, $sp, 224
 	beqz	$s6, .LBB104_45
 # %bb.41:
 	beqz	$s5, .LBB104_44
@@ -29544,19 +29470,19 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $sp, 240
+	ld.d	$s5, $sp, 224
 	b	.LBB104_46
 .LBB104_45:
 	move	$s5, $a0
 .LBB104_46:
 	addi.d	$a0, $s4, 1
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 208
 	stx.b	$zero, $s5, $s4
-	ld.w	$fp, $sp, 224
+	ld.w	$fp, $sp, 208
 	blez	$fp, .LBB104_48
 # %bb.47:
 	addi.w	$fp, $fp, -1
-	st.w	$fp, $sp, 224
+	st.w	$fp, $sp, 208
 .LBB104_48:                             # %_ZN5ArrayIcLi0EE8pop_backEv.exit.i286
 	ld.bu	$a1, $s3, 0
 	beqz	$a1, .LBB104_62
@@ -29570,7 +29496,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 224
 .LBB104_51:                             # %.noexc293
                                         #   in Loop: Header=BB104_53 Depth=1
 	ld.bu	$a1, $fp, -1
@@ -29578,16 +29504,16 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_52:                             # %_ZN5ArrayIcLi0EE9push_backERKc.exit.i288
                                         #   in Loop: Header=BB104_53 Depth=1
 	addi.d	$a0, $s3, 1
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 208
 	stx.b	$a1, $s4, $s3
 	ld.bu	$a1, $fp, 0
 	addi.d	$fp, $fp, 1
 	beqz	$a1, .LBB104_61
 .LBB104_53:                             # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$s3, $sp, 224
-	ld.w	$a0, $sp, 228
-	ld.d	$s4, $sp, 240
+	ld.w	$s3, $sp, 208
+	ld.w	$a0, $sp, 212
+	ld.d	$s4, $sp, 224
 	bne	$s3, $a0, .LBB104_52
 # %bb.54:                               #   in Loop: Header=BB104_53 Depth=1
 	slli.w	$a0, $s3, 1
@@ -29595,11 +29521,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a2, $s1, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$a0, $a0, $a2
-	ld.d	$s5, $sp, 232
+	ld.d	$s5, $sp, 216
 	ld.w	$s6, $s0, 0
 	ld.w	$s7, $s0, 4
-	st.w	$a0, $sp, 228
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 212
+	st.w	$a0, $sp, 208
 	add.w	$a1, $s6, $a0
 	st.w	$a1, $s0, 0
 	bge	$s7, $a1, .LBB104_56
@@ -29611,10 +29537,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 232
+	st.d	$a0, $sp, 216
 	beqz	$a0, .LBB104_323
 # %bb.57:                               #   in Loop: Header=BB104_53 Depth=1
-	st.d	$a0, $sp, 240
+	st.d	$a0, $sp, 224
 	beqz	$s5, .LBB104_51
 # %bb.58:                               #   in Loop: Header=BB104_53 Depth=1
 	beqz	$s4, .LBB104_50
@@ -29629,10 +29555,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	st.w	$s6, $s0, 4
 	b	.LBB104_50
 .LBB104_61:                             # %._crit_edge.loopexit.i290
-	ld.w	$fp, $sp, 224
+	ld.w	$fp, $sp, 208
 .LBB104_62:                             # %._crit_edge.i
-	ld.w	$a0, $sp, 228
-	ld.d	$s3, $sp, 240
+	ld.w	$a0, $sp, 212
+	ld.d	$s3, $sp, 224
 	bne	$fp, $a0, .LBB104_72
 # %bb.63:
 	slli.w	$a0, $fp, 1
@@ -29641,11 +29567,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$s5, $a0, $a1
-	ld.d	$s4, $sp, 232
+	ld.d	$s4, $sp, 216
 	ld.w	$s1, $s0, 0
 	ld.w	$s6, $s0, 4
-	st.w	$s5, $sp, 228
-	st.w	$s5, $sp, 224
+	st.w	$s5, $sp, 212
+	st.w	$s5, $sp, 208
 	add.w	$a0, $s1, $s5
 	st.w	$a0, $s0, 0
 	bge	$s6, $a0, .LBB104_65
@@ -29657,10 +29583,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 232
+	st.d	$a0, $sp, 216
 	beqz	$a0, .LBB104_323
 # %bb.66:
-	st.d	$a0, $sp, 240
+	st.d	$a0, $sp, 224
 	beqz	$s4, .LBB104_71
 # %bb.67:
 	beqz	$s3, .LBB104_70
@@ -29680,44 +29606,44 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 240
+	ld.d	$s3, $sp, 224
 	b	.LBB104_72
 .LBB104_71:
 	move	$s3, $a0
 .LBB104_72:                             # %_ZN6StringpLEPKc.exit295
-	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	move	$s1, $zero
 	addi.d	$a0, $fp, 1
-	st.w	$a0, $sp, 224
+	st.w	$a0, $sp, 208
 	stx.b	$zero, $s3, $fp
 	ori	$fp, $zero, 1
 .LBB104_73:
 .Ltmp350:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.36)
-	addi.d	$a0, $sp, 200
+	addi.d	$a0, $sp, 184
 	pcaddu18i	$ra, %call36(_ZN6StringC2EPKc)
 	jirl	$ra, $ra, 0
 .Ltmp351:                               # EH_LABEL
 # %bb.74:
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	beqz	$fp, .LBB104_102
 # %bb.75:
 .Ltmp353:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.36)
-	addi.d	$a0, $sp, 136
+	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(_ZN6StringC2EPKc)
 	jirl	$ra, $ra, 0
 .Ltmp354:                               # EH_LABEL
 # %bb.76:                               # %.preheader570
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.43)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.43)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ori	$fp, $zero, 2
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	blt	$a0, $fp, .LBB104_332
 # %bb.77:                               # %.lr.ph592
 	move	$s5, $zero
@@ -29731,12 +29657,12 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	.p2align	4, , 16
 .LBB104_78:                             # %_ZN5ArrayIcLi0EED2Ev.exit297
                                         #   in Loop: Header=BB104_79 Depth=1
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	add.w	$s5, $s4, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.d	$s1, $s1, 1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	beq	$s1, $a0, .LBB104_110
 .LBB104_79:                             # =>This Loop Header: Depth=1
                                         #     Child Loop BB104_83 Depth 2
@@ -29745,12 +29671,12 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	slli.d	$a0, $s1, 3
 	ldx.d	$a1, $s2, $a0
 .Ltmp356:                               # EH_LABEL
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN6StringC2EPKc)
 	jirl	$ra, $ra, 0
 .Ltmp357:                               # EH_LABEL
 # %bb.80:                               #   in Loop: Header=BB104_79 Depth=1
-	ld.w	$a1, $sp, 176
+	ld.w	$a1, $sp, 160
 	addi.w	$a0, $a1, -1
 	blez	$a1, .LBB104_90
 # %bb.81:                               # %.lr.ph.preheader
@@ -29764,7 +29690,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_83:                             # %.lr.ph
                                         #   Parent Loop BB104_79 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a3, $sp, 192
+	ld.d	$a3, $sp, 176
 	ldx.bu	$a4, $a3, $a2
 	bne	$a4, $s7, .LBB104_82
 # %bb.84:                               #   in Loop: Header=BB104_83 Depth=2
@@ -29782,7 +29708,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_87:                             # %.lr.ph587
                                         #   Parent Loop BB104_79 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a2, $sp, 192
+	ld.d	$a2, $sp, 176
 	ldx.bu	$a3, $a2, $a1
 	bne	$a3, $s3, .LBB104_90
 # %bb.88:                               #   in Loop: Header=BB104_87 Depth=2
@@ -29796,7 +29722,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	.p2align	4, , 16
 .LBB104_90:                             # %.critedge
                                         #   in Loop: Header=BB104_79 Depth=1
-	ld.d	$a2, $sp, 192
+	ld.d	$a2, $sp, 176
 	bstrpick.d	$a1, $a0, 31, 0
 	move	$a4, $a0
 	.p2align	4, , 16
@@ -29826,8 +29752,8 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_96:                             # %.critedge2.thread
                                         #   in Loop: Header=BB104_79 Depth=1
 .Ltmp359:                               # EH_LABEL
-	addi.d	$a0, $sp, 136
-	addi.d	$a1, $sp, 200
+	addi.d	$a0, $sp, 120
+	addi.d	$a1, $sp, 184
 	pcaddu18i	$ra, %call36(_Z7putsizeR6StringS0_PKci)
 	jirl	$ra, $ra, 0
 .Ltmp360:                               # EH_LABEL
@@ -29841,13 +29767,13 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	or	$a0, $s8, $a0
 	beqz	$a0, .LBB104_100
 # %bb.99:                               #   in Loop: Header=BB104_79 Depth=1
-	ld.d	$a1, $sp, 192
+	ld.d	$a1, $sp, 176
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.42)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 .LBB104_100:                            #   in Loop: Header=BB104_79 Depth=1
-	ld.w	$a0, $sp, 176
+	ld.w	$a0, $sp, 160
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -29857,15 +29783,15 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	st.w	$a0, $s0, 4
 	b	.LBB104_78
 .LBB104_102:
-	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
 	ori	$s5, $zero, 1
 	move	$s7, $s8
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB104_140
 .LBB104_103:
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 224
 	pcalau12i	$a1, %pc_hi20(.L.str.47)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.47)
 	pcaddu18i	$ra, %call36(fopen)
@@ -29896,9 +29822,9 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a2, $zero, 5
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a0, $a1, %pc_lo12(level)
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 3
 	sub.d	$fp, $zero, $a0
 	.p2align	4, , 16
@@ -29911,16 +29837,16 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.108:                              #   in Loop: Header=BB104_107 Depth=1
 	beqz	$a0, .LBB104_114
 # %bb.109:                              #   in Loop: Header=BB104_107 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	addi.d	$fp, $fp, -8
 	b	.LBB104_107
 .LBB104_110:                            # %._crit_edge
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	beqz	$s5, .LBB104_315
 # %bb.111:
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 224
 	pcalau12i	$a1, %pc_hi20(.L.str.44)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.44)
 	pcaddu18i	$ra, %call36(fopen)
@@ -29928,12 +29854,12 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	beqz	$a0, .LBB104_314
 # %bb.112:
 	move	$a4, $a0
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a2, $a0, %pc_lo12(level)
-	ld.d	$a3, $sp, 152
+	ld.d	$a3, $sp, 136
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.45)
-	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	move	$a0, $a4
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -29946,34 +29872,34 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	bne	$s5, $a0, .LBB104_120
 # %bb.113:
 	move	$s7, $s8
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB104_131
 .LBB104_114:
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a2, $a0, %pc_lo12(level)
 	pcalau12i	$a0, %pc_hi20(.L.str.51)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.51)
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 204
+	ld.w	$a1, $sp, 188
 	move	$s3, $a0
 	addi.w	$s8, $a0, 4
 	bge	$a1, $s8, .LBB104_141
 # %bb.115:
-	ld.d	$s4, $sp, 208
-	ld.d	$s1, $sp, 216
-	ld.w	$a4, $sp, 200
-	st.w	$s8, $sp, 204
-	st.w	$s8, $sp, 200
+	ld.d	$s4, $sp, 192
+	ld.d	$s1, $sp, 200
+	ld.w	$a4, $sp, 184
+	st.w	$s8, $sp, 188
+	st.w	$s8, $sp, 184
 	blez	$s8, .LBB104_142
 # %bb.116:
-	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 80                    # 8-byte Folded Spill
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s0, 4
 	add.w	$a0, $a0, $s8
@@ -29986,11 +29912,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 208
+	st.d	$a0, $sp, 192
 	beqz	$a0, .LBB104_341
 # %bb.119:
-	st.d	$a0, $sp, 216
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 200
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	bnez	$s4, .LBB104_143
 	b	.LBB104_147
 .LBB104_120:
@@ -30034,8 +29960,8 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	beqz	$s6, .LBB104_339
 # %bb.128:                              # %_ZN5ArrayIlLi0EE6createEi.exit.i
 	st.d	$zero, $s6, 0
@@ -30047,7 +29973,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_131:                            # %_ZN5ArrayIlLi0EE6resizeEi.exit
-	ld.d	$fp, $sp, 216
+	ld.d	$fp, $sp, 200
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(rewind)
 	jirl	$ra, $ra, 0
@@ -30092,7 +30018,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 136
+	ld.w	$a0, $sp, 120
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -30101,27 +30027,27 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.138:
 	st.w	$a0, $s0, 4
 .LBB104_139:                            # %_ZN5ArrayIcLi0EED2Ev.exit310
-	ld.d	$a0, $sp, 144
+	ld.d	$a0, $sp, 128
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a0, .LBB104_103
 .LBB104_140:
 	move	$s8, $s7
 	move	$fp, $s5
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(level)
 	ori	$a1, $zero, 12
 	bgeu	$a1, $a0, .LBB104_181
 	b	.LBB104_182
 .LBB104_141:
-	st.w	$s8, $sp, 200
+	st.w	$s8, $sp, 184
 	b	.LBB104_147
 .LBB104_142:
 	move	$a0, $zero
-	addi.d	$a2, $sp, 208
+	addi.d	$a2, $sp, 192
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a2, 0
 	beqz	$s4, .LBB104_147
@@ -30147,17 +30073,17 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_147:                            # %_ZN5ArrayIcLi0EE6resizeEi.exit
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(rewind)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 216
+	ld.d	$a0, $sp, 200
 	ori	$a1, $zero, 1
 	move	$a2, $s3
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	bge	$s5, $a0, .LBB104_154
 # %bb.148:
 	ld.w	$s1, $s0, 0
@@ -30187,13 +30113,13 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.153:                              # %.noexc327
 .LBB104_154:
 	move	$s8, $s7
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	move	$s7, $a0
 	b	.LBB104_168
 .LBB104_155:
 	move	$a0, $zero
 .LBB104_156:                            # %_ZN5ArrayIPcLi0EE6createEi.exit.i323
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	slt	$a2, $a3, $s5
 	masknez	$a1, $s5, $a2
 	maskeqz	$a2, $a3, $a2
@@ -30215,7 +30141,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	jirl	$ra, $ra, 0
 	ld.w	$s1, $s0, 0
 	ld.w	$s3, $s0, 4
-	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	blez	$s7, .LBB104_164
 # %bb.159:
 	sub.w	$a0, $zero, $fp
@@ -30243,7 +30169,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $zero
 	move	$s8, $s4
 .LBB104_165:                            # %_ZN5ArrayIlLi0EE6createEi.exit.i332
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$a1, $s6
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
@@ -30258,7 +30184,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_168:                            # %_ZN5ArrayIlLi0EE6resizeEi.exit337
-	ld.d	$fp, $sp, 216
+	ld.d	$fp, $sp, 200
 	ori	$a0, $zero, 13
 	ld.bu	$a1, $fp, 0
 	beqz	$a1, .LBB104_171
@@ -30292,7 +30218,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	jirl	$ra, $ra, 0
 	slli.d	$a1, $s1, 3
 	addi.d	$a3, $fp, 1
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	stx.d	$a0, $a2, $a1
 	move	$a2, $a3
 	.p2align	4, , 16
@@ -30323,7 +30249,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	b	.LBB104_173
 .LBB104_180:
 	move	$fp, $s7
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(level)
 	ori	$a1, $zero, 12
 	bltu	$a1, $a0, .LBB104_182
@@ -30335,14 +30261,13 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	addi.d	$a0, $a0, %pc_lo12(buf)
 	move	$s7, $s8
 	move	$s5, $fp
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN5ArrayIhLi0EE6resizeEi)
 	jirl	$ra, $ra, 0
 .Ltmp389:                               # EH_LABEL
 .LBB104_182:                            # %_ZN3Buf7setsizeEi.exit
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	vrepli.b	$vr4, 0
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	blez	$s4, .LBB104_185
 # %bb.183:                              # %.lr.ph601.preheader
 	ori	$a0, $zero, 4
@@ -30357,11 +30282,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_186:                            # %vector.ph
 	bstrpick.d	$a0, $s4, 30, 2
 	slli.d	$a0, $a0, 2
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	vrepli.b	$vr0, 0
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 16
 	move	$a2, $a0
-	vori.b	$vr0, $vr4, 0
-	vori.b	$vr1, $vr4, 0
+	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB104_187:                            # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -30378,7 +30303,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	vpickve2gr.d	$s5, $vr0, 0
 	beq	$a0, $s4, .LBB104_191
 .LBB104_189:                            # %.lr.ph601.preheader863
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
 	sub.d	$a0, $s4, $a0
 	.p2align	4, , 16
@@ -30391,123 +30316,86 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	bnez	$a0, .LBB104_190
 .LBB104_191:                            # %._crit_edge602
 	ori	$a0, $zero, 2048
-	st.w	$a0, $sp, 136
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.w	$a0, $sp, 140
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 144
+	st.w	$a0, $sp, 120
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	st.w	$a0, $sp, 124
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 128
 	ori	$a0, $zero, 0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(level)
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 152
-	st.w	$zero, $sp, 160
+	st.d	$a0, $sp, 136
+	st.w	$zero, $sp, 144
 	slti	$a0, $a1, 1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	xori	$a1, $a1, 1
 	or	$a0, $a1, $a0
-	st.d	$zero, $sp, 168
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
+	st.d	$zero, $sp, 152
 	bnez	$a0, .LBB104_193
 # %bb.192:                              # %.preheader.preheader.i
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 128
 	andi	$fp, $a0, 255
-	st.w	$fp, $sp, 160
+	st.w	$fp, $sp, 144
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 128
 	move	$s6, $a0
 	bstrins.d	$s6, $fp, 63, 8
-	st.w	$s6, $sp, 160
+	st.w	$s6, $sp, 144
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 128
 	move	$s7, $a0
 	bstrins.d	$s7, $s6, 63, 8
-	st.w	$s7, $sp, 160
+	st.w	$s7, $sp, 144
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
 	bstrins.d	$a0, $s7, 63, 8
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	st.w	$a0, $sp, 160
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a0, $sp, 144
 .LBB104_193:                            # %vector.body856.preheader
-	lu12i.w	$a0, 16
-	lu32i.d	$a0, 196610
-	vreplgr2vr.d	$vr0, $a0
-	lu12i.w	$a0, -1
-	lu12i.w	$a1, 4
-	pcalau12i	$a2, %pc_hi20(_ZL2dt)
-	addi.d	$a2, $a2, %pc_lo12(_ZL2dt)
-	lu12i.w	$a3, 1
-	ori	$a4, $a3, 16
+	pcalau12i	$a0, %pc_hi20(_ZL2dt+4)
+	addi.d	$a0, $a0, %pc_lo12(_ZL2dt+4)
+	move	$a1, $zero
+	lu12i.w	$a2, 4
+	ori	$a3, $zero, 1024
 	.p2align	4, , 16
 .LBB104_194:                            # %vector.body856
                                         # =>This Inner Loop Header: Depth=1
-	vslli.h	$vr1, $vr0, 1
-	vaddi.hu	$vr2, $vr1, 3
-	vaddi.hu	$vr1, $vr1, 11
-	vpickve2gr.h	$a5, $vr2, 1
+	slli.d	$a4, $a1, 1
+	ori	$a5, $a4, 3
 	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr3, $a6, 0
-	vinsgr2vr.h	$vr3, $a5, 1
-	vpickve2gr.h	$a5, $vr2, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 2
-	vpickve2gr.h	$a5, $vr2, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr3, $a5, 3
-	vpickve2gr.h	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vpickve2gr.h	$a6, $vr1, 0
-	bstrpick.d	$a6, $a6, 15, 0
-	div.du	$a6, $a1, $a6
-	vinsgr2vr.h	$vr2, $a6, 0
-	vinsgr2vr.h	$vr2, $a5, 1
-	vpickve2gr.h	$a5, $vr1, 2
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr2, $a5, 2
-	vpickve2gr.h	$a5, $vr1, 3
-	bstrpick.d	$a5, $a5, 15, 0
-	div.du	$a5, $a1, $a5
-	vinsgr2vr.h	$vr2, $a5, 3
-	vilvl.h	$vr1, $vr4, $vr3
-	vilvl.h	$vr2, $vr4, $vr2
-	add.d	$a5, $a2, $a0
-	vstx	$vr1, $a5, $a3
-	vstx	$vr2, $a5, $a4
-	addi.d	$a0, $a0, 32
-	vaddi.hu	$vr0, $vr0, 8
-	bnez	$a0, .LBB104_194
+	addi.d	$a4, $a4, 5
+	bstrpick.d	$a4, $a4, 15, 0
+	div.du	$a5, $a2, $a5
+	div.du	$a4, $a2, $a4
+	st.w	$a5, $a0, -4
+	st.w	$a4, $a0, 0
+	addi.d	$a1, $a1, 2
+	addi.d	$a0, $a0, 8
+	bne	$a1, $a3, .LBB104_194
 # %bb.195:                              # %_ZN7EncoderC2E4ModeP8_IO_FILE.exit
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	beqz	$a0, .LBB104_203
 # %bb.196:                              # %.preheader
 	blez	$s4, .LBB104_200
 # %bb.197:                              # %.lr.ph616.preheader
 	move	$fp, $s8
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB104_198:                            # %.lr.ph616
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $s1, 0
 .Ltmp408:                               # EH_LABEL
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 120
 	pcaddu18i	$ra, %call36(_Z8compressPKclR7Encoder)
 	jirl	$ra, $ra, 0
 .Ltmp409:                               # EH_LABEL
@@ -30517,23 +30405,23 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	addi.d	$fp, $fp, 8
 	bnez	$s4, .LBB104_198
 .LBB104_200:                            # %._crit_edge617
-	ld.w	$a0, $sp, 140
-	ld.d	$a1, $sp, 144
+	ld.w	$a0, $sp, 124
+	ld.d	$a1, $sp, 128
 	bnez	$a0, .LBB104_223
 # %bb.201:                              # %._crit_edge617
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(level)
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	blez	$a0, .LBB104_224
 # %bb.202:
-	ld.bu	$a0, $sp, 155
+	ld.bu	$a0, $sp, 139
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 128
 	b	.LBB104_224
 .LBB104_203:
 	ori	$fp, $zero, 2
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	slt	$a0, $fp, $s1
 	ori	$a1, $zero, 8
 	masknez	$a1, $a1, $a0
@@ -30542,19 +30430,19 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	or	$a0, $a0, $a1
 	ldx.d	$a1, $s2, $a0
 .Ltmp390:                               # EH_LABEL
-	addi.d	$a0, $sp, 176
+	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN6StringC2EPKc)
 	jirl	$ra, $ra, 0
 .Ltmp391:                               # EH_LABEL
 # %bb.204:
 	bne	$s1, $fp, .LBB104_231
 # %bb.205:
-	ld.w	$fp, $sp, 176
+	ld.w	$fp, $sp, 160
 	ori	$a0, $zero, 2
 	addi.w	$a6, $fp, -2
 	blt	$fp, $a0, .LBB104_213
 # %bb.206:                              # %.lr.ph608
-	ld.d	$a0, $sp, 192
+	ld.d	$a0, $sp, 176
 	ori	$a1, $zero, 92
 	ori	$a2, $zero, 47
 	ori	$a3, $zero, 1
@@ -30582,16 +30470,16 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	addi.w	$a0, $zero, -1
 	bne	$a6, $a0, .LBB104_231
 .LBB104_214:                            # %._crit_edge609.thread
-	ld.w	$a1, $sp, 180
+	ld.w	$a1, $sp, 164
 	ori	$a0, $zero, 2
 	bge	$a1, $a0, .LBB104_229
 # %bb.215:
-	ld.d	$s1, $sp, 184
-	ld.d	$s2, $sp, 192
+	ld.d	$s1, $sp, 168
+	ld.d	$s2, $sp, 176
 	ld.w	$s5, $s0, 0
 	ld.w	$s3, $s0, 4
 	lu32i.d	$a0, 2
-	st.d	$a0, $sp, 176
+	st.d	$a0, $sp, 160
 	addi.w	$a0, $s5, 2
 	st.w	$a0, $s0, 0
 	bge	$s3, $a0, .LBB104_217
@@ -30603,10 +30491,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 184
+	st.d	$a0, $sp, 168
 	beqz	$a0, .LBB104_343
 # %bb.218:                              # %_ZN5ArrayIcLi0EE6createEi.exit.i431
-	st.d	$a0, $sp, 192
+	st.d	$a0, $sp, 176
 	beqz	$s1, .LBB104_230
 # %bb.219:
 	beqz	$s2, .LBB104_222
@@ -30629,7 +30517,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	jirl	$ra, $ra, 0
 	b	.LBB104_230
 .LBB104_223:
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 .LBB104_224:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(ftell)
@@ -30647,11 +30535,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_226:
 	addi.d	$a1, $a1, -48
 	andi	$a1, $a1, 255
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a1, $a2, %pc_lo12(level)
 .LBB104_227:
 	ori	$a1, $zero, 2
-	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	beq	$s0, $a1, .LBB104_326
 # %bb.228:
 	addi.d	$s2, $s2, 8
@@ -30659,37 +30547,37 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	addi.w	$s0, $s0, -1
 	b	.LBB104_5
 .LBB104_229:
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 160
 .LBB104_230:                            # %_ZN6StringaSEPKc.exit
-	ld.d	$a0, $sp, 192
+	ld.d	$a0, $sp, 176
 	ori	$a1, $zero, 46
 	st.h	$a1, $a0, 0
 .LBB104_231:                            # %.thread555
-	ld.d	$s1, $sp, 192
+	ld.d	$s1, $sp, 176
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 180
+	ld.w	$a1, $sp, 164
 	addi.w	$s5, $a0, 1
 	bge	$a1, $s5, .LBB104_234
 # %bb.232:
 	addi.w	$a0, $a0, 0
-	ld.d	$s2, $sp, 184
-	ld.w	$fp, $sp, 176
-	st.w	$s5, $sp, 180
+	ld.d	$s2, $sp, 168
+	ld.w	$fp, $sp, 160
+	st.w	$s5, $sp, 164
 	lu12i.w	$a1, 524287
 	ori	$a1, $a1, 4095
-	st.w	$s5, $sp, 176
+	st.w	$s5, $sp, 160
 	bltu	$a0, $a1, .LBB104_235
 # %bb.233:
 	move	$a0, $zero
-	addi.d	$a1, $sp, 184
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	addi.d	$a1, $sp, 168
+	vrepli.b	$vr0, 0
 	vst	$vr0, $a1, 0
 	bnez	$s2, .LBB104_239
 	b	.LBB104_242
 .LBB104_234:
-	st.w	$s5, $sp, 176
+	st.w	$s5, $sp, 160
 	move	$a0, $s1
 	b	.LBB104_242
 .LBB104_235:
@@ -30705,10 +30593,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 184
+	st.d	$a0, $sp, 168
 	beqz	$a0, .LBB104_335
 # %bb.238:
-	st.d	$a0, $sp, 192
+	st.d	$a0, $sp, 176
 	beqz	$s2, .LBB104_242
 .LBB104_239:
 	slt	$a1, $s5, $fp
@@ -30729,16 +30617,16 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 192
+	ld.d	$a0, $sp, 176
 .LBB104_242:
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 192
+	ld.d	$s2, $sp, 176
 	ld.bu	$a0, $s2, 0
 	beqz	$a0, .LBB104_267
 # %bb.243:
-	ld.w	$s1, $sp, 176
+	ld.w	$s1, $sp, 160
 	ori	$a0, $zero, 3
 	bne	$s1, $a0, .LBB104_245
 # %bb.244:
@@ -30751,7 +30639,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_246:                            # %.thread556
 	addi.w	$s1, $s1, -1
 .LBB104_247:                            # %_ZN5ArrayIcLi0EE8pop_backEv.exit.i345
-	ld.w	$a0, $sp, 180
+	ld.w	$a0, $sp, 164
 	bne	$s1, $a0, .LBB104_256
 # %bb.248:
 	slli.w	$a0, $s1, 1
@@ -30760,11 +30648,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
-	ld.d	$s5, $sp, 184
+	ld.d	$s5, $sp, 168
 	ld.w	$fp, $s0, 0
 	ld.w	$s3, $s0, 4
-	st.w	$a0, $sp, 180
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 164
+	st.w	$a0, $sp, 160
 	add.w	$a1, $fp, $a0
 	st.w	$a1, $s0, 0
 	bge	$s3, $a1, .LBB104_250
@@ -30775,10 +30663,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 184
+	st.d	$a0, $sp, 168
 	beqz	$a0, .LBB104_335
 # %bb.251:
-	st.d	$a0, $sp, 192
+	st.d	$a0, $sp, 176
 	beqz	$s5, .LBB104_255
 # %bb.252:
 	move	$a1, $s2
@@ -30793,18 +30681,18 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 192
+	ld.d	$s2, $sp, 176
 	b	.LBB104_256
 .LBB104_255:
 	move	$s2, $a0
 .LBB104_256:                            # %_ZN5ArrayIcLi0EE9push_backERKc.exit.i348
 	addi.d	$a0, $s1, 1
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 160
 	ori	$a0, $zero, 47
 	stx.b	$a0, $s2, $s1
-	ld.w	$s1, $sp, 176
-	ld.w	$a0, $sp, 180
-	ld.d	$s2, $sp, 192
+	ld.w	$s1, $sp, 160
+	ld.w	$a0, $sp, 164
+	ld.d	$s2, $sp, 176
 	bne	$s1, $a0, .LBB104_266
 # %bb.257:
 	slli.w	$a0, $s1, 1
@@ -30813,11 +30701,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
-	ld.d	$s5, $sp, 184
+	ld.d	$s5, $sp, 168
 	ld.w	$fp, $s0, 0
 	ld.w	$s3, $s0, 4
-	st.w	$a0, $sp, 180
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 164
+	st.w	$a0, $sp, 160
 	add.w	$a1, $fp, $a0
 	st.w	$a1, $s0, 0
 	bge	$s3, $a1, .LBB104_259
@@ -30828,10 +30716,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 184
+	st.d	$a0, $sp, 168
 	beqz	$a0, .LBB104_335
 # %bb.260:
-	st.d	$a0, $sp, 192
+	st.d	$a0, $sp, 176
 	beqz	$s5, .LBB104_265
 # %bb.261:
 	beqz	$s2, .LBB104_264
@@ -30848,13 +30736,13 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 192
+	ld.d	$s2, $sp, 176
 	b	.LBB104_266
 .LBB104_265:
 	move	$s2, $a0
 .LBB104_266:                            # %_ZN6StringpLEPKc.exit356
 	addi.d	$a0, $s1, 1
-	st.w	$a0, $sp, 176
+	st.w	$a0, $sp, 160
 	stx.b	$zero, $s2, $s1
 .LBB104_267:
 	blez	$s4, .LBB104_300
@@ -30865,30 +30753,30 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	.p2align	4, , 16
 .LBB104_269:                            # %_ZN5ArrayIcLi0EED2Ev.exit373
                                         #   in Loop: Header=BB104_270 Depth=1
-	ld.d	$a0, $sp, 120
+	ld.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.d	$fp, $fp, 1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	beq	$fp, $a0, .LBB104_300
 .LBB104_270:                            # =>This Loop Header: Depth=1
                                         #     Child Loop BB104_278 Depth 2
 	move	$s7, $s8
-	ld.d	$a1, $sp, 192
+	ld.d	$a1, $sp, 176
 .Ltmp399:                               # EH_LABEL
-	addi.d	$a0, $sp, 112
+	addi.d	$a0, $sp, 96
 	pcaddu18i	$ra, %call36(_ZN6StringC2EPKc)
 	jirl	$ra, $ra, 0
 .Ltmp400:                               # EH_LABEL
 # %bb.271:                              #   in Loop: Header=BB104_270 Depth=1
 	slli.d	$a1, $fp, 3
-	ld.w	$s8, $sp, 112
+	ld.w	$s8, $sp, 96
 	ldx.d	$a0, $s7, $a1
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	blez	$s8, .LBB104_273
 # %bb.272:                              #   in Loop: Header=BB104_270 Depth=1
 	addi.w	$s8, $s8, -1
-	st.w	$s8, $sp, 112
+	st.w	$s8, $sp, 96
 .LBB104_273:                            # %_ZN5ArrayIcLi0EE8pop_backEv.exit.i359
                                         #   in Loop: Header=BB104_270 Depth=1
 	ld.bu	$a1, $a0, 0
@@ -30903,16 +30791,16 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 128
+	ld.d	$a0, $sp, 112
 .LBB104_276:                            # %.noexc369
                                         #   in Loop: Header=BB104_278 Depth=2
-	st.w	$s1, $sp, 112
+	st.w	$s1, $sp, 96
 	ld.bu	$a1, $s8, -1
 	move	$s2, $a0
 .LBB104_277:                            # %_ZN5ArrayIcLi0EE9push_backERKc.exit.i363
                                         #   in Loop: Header=BB104_278 Depth=2
 	addi.d	$a0, $s1, 1
-	st.w	$a0, $sp, 112
+	st.w	$a0, $sp, 96
 	stx.b	$a1, $s2, $s1
 	ld.bu	$a1, $s8, 0
 	addi.d	$s8, $s8, 1
@@ -30920,9 +30808,9 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .LBB104_278:                            # %.lr.ph.i361
                                         #   Parent Loop BB104_270 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$s1, $sp, 112
-	ld.w	$a0, $sp, 116
-	ld.d	$s2, $sp, 128
+	ld.w	$s1, $sp, 96
+	ld.w	$a0, $sp, 100
+	ld.d	$s2, $sp, 112
 	bne	$s1, $a0, .LBB104_277
 # %bb.279:                              #   in Loop: Header=BB104_278 Depth=2
 	slli.w	$a0, $s1, 1
@@ -30930,11 +30818,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a2, $s6, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$a0, $a0, $a2
-	ld.d	$s5, $sp, 120
+	ld.d	$s5, $sp, 104
 	ld.w	$s3, $s0, 0
 	ld.w	$s4, $s0, 4
-	st.w	$a0, $sp, 116
-	st.w	$a0, $sp, 112
+	st.w	$a0, $sp, 100
+	st.w	$a0, $sp, 96
 	add.w	$a1, $s3, $a0
 	st.w	$a1, $s0, 0
 	bge	$s4, $a1, .LBB104_281
@@ -30946,10 +30834,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 120
+	st.d	$a0, $sp, 104
 	beqz	$a0, .LBB104_321
 # %bb.282:                              #   in Loop: Header=BB104_278 Depth=2
-	st.d	$a0, $sp, 128
+	st.d	$a0, $sp, 112
 	beqz	$s5, .LBB104_276
 # %bb.283:                              #   in Loop: Header=BB104_278 Depth=2
 	beqz	$s2, .LBB104_275
@@ -30966,11 +30854,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	.p2align	4, , 16
 .LBB104_286:                            # %._crit_edge.loopexit.i365
                                         #   in Loop: Header=BB104_270 Depth=1
-	ld.w	$s8, $sp, 112
+	ld.w	$s8, $sp, 96
 .LBB104_287:                            # %._crit_edge.i367
                                         #   in Loop: Header=BB104_270 Depth=1
-	ld.w	$a0, $sp, 116
-	ld.d	$s1, $sp, 128
+	ld.w	$a0, $sp, 100
+	ld.d	$s1, $sp, 112
 	bne	$s8, $a0, .LBB104_297
 # %bb.288:                              #   in Loop: Header=BB104_270 Depth=1
 	slli.w	$a0, $s8, 1
@@ -30978,11 +30866,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	masknez	$a2, $s6, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$s5, $a0, $a2
-	ld.d	$s2, $sp, 120
+	ld.d	$s2, $sp, 104
 	ld.w	$s3, $s0, 0
 	ld.w	$s4, $s0, 4
-	st.w	$s5, $sp, 116
-	st.w	$s5, $sp, 112
+	st.w	$s5, $sp, 100
+	st.w	$s5, $sp, 96
 	add.w	$a0, $s3, $s5
 	st.w	$a0, $s0, 0
 	bge	$s4, $a0, .LBB104_290
@@ -30995,10 +30883,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 120
+	st.d	$a0, $sp, 104
 	beqz	$a0, .LBB104_321
 # %bb.291:                              #   in Loop: Header=BB104_270 Depth=1
-	st.d	$a0, $sp, 128
+	st.d	$a0, $sp, 112
 	beqz	$s2, .LBB104_296
 # %bb.292:                              #   in Loop: Header=BB104_270 Depth=1
 	beqz	$s1, .LBB104_295
@@ -31019,26 +30907,26 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 128
+	ld.d	$s1, $sp, 112
 	b	.LBB104_297
 .LBB104_296:                            #   in Loop: Header=BB104_270 Depth=1
 	move	$s1, $a0
 	.p2align	4, , 16
 .LBB104_297:                            #   in Loop: Header=BB104_270 Depth=1
 	addi.d	$a0, $s8, 1
-	st.w	$a0, $sp, 112
+	st.w	$a0, $sp, 96
 	stx.b	$zero, $s1, $s8
-	ld.d	$a0, $sp, 128
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	ldx.d	$a1, $a1, $a2
 .Ltmp402:                               # EH_LABEL
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 120
 	pcaddu18i	$ra, %call36(_Z10decompressPKclR7Encoder)
 	jirl	$ra, $ra, 0
 .Ltmp403:                               # EH_LABEL
 # %bb.298:                              #   in Loop: Header=BB104_270 Depth=1
-	ld.w	$a0, $sp, 112
+	ld.w	$a0, $sp, 96
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31049,7 +30937,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	st.w	$a0, $s0, 4
 	b	.LBB104_269
 .LBB104_300:                            # %._crit_edge614
-	ld.w	$a0, $sp, 176
+	ld.w	$a0, $sp, 160
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31058,15 +30946,15 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.301:
 	st.w	$a0, $s0, 4
 .LBB104_302:                            # %_ZN5ArrayIcLi0EED2Ev.exit358
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 .LBB104_303:
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 200
+	ld.w	$a0, $sp, 184
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31075,10 +30963,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.304:
 	st.w	$a0, $s0, 4
 .LBB104_305:                            # %_ZN5ArrayIcLi0EED2Ev.exit379
-	ld.d	$a0, $sp, 208
+	ld.d	$a0, $sp, 192
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 224
+	ld.w	$a0, $sp, 208
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31087,7 +30975,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.306:
 	st.w	$a0, $s0, 4
 .LBB104_307:                            # %_ZN5ArrayIcLi0EED2Ev.exit381
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 0
@@ -31099,7 +30987,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.308:
 	st.w	$a0, $s0, 4
 .LBB104_309:                            # %_ZN5ArrayIlLi0EED2Ev.exit
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 0
@@ -31113,7 +31001,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB104_313
 .LBB104_312:
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
@@ -31127,35 +31015,35 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	jirl	$ra, $ra, 0
 .LBB104_313:
 	move	$a0, $zero
-	ld.d	$s8, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 336
+	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 320
 	ret
 .LBB104_314:
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 224
 	pcaddu18i	$ra, %call36(perror)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
 .LBB104_315:                            # %.invoke831
 	ori	$s5, $zero, 1
 .Ltmp417:                               # EH_LABEL
 	ori	$s6, $zero, 1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Z4quitPKc)
 	jirl	$ra, $ra, 0
 .Ltmp418:                               # EH_LABEL
 # %bb.316:                              # %.cont832
 .LBB104_317:
-	ld.d	$a0, $sp, 240
+	ld.d	$a0, $sp, 224
 	pcaddu18i	$ra, %call36(perror)
 	jirl	$ra, $ra, 0
 .Ltmp414:                               # EH_LABEL
@@ -31165,8 +31053,8 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .Ltmp415:                               # EH_LABEL
 # %bb.318:                              # %.unreachable558
 .LBB104_319:
-	ld.d	$a2, $sp, 216
-	ld.d	$a1, $sp, 240
+	ld.d	$a2, $sp, 200
+	ld.d	$a1, $sp, 224
 	sub.d	$a2, $a0, $a2
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.52)
@@ -31195,7 +31083,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .Ltmp348:                               # EH_LABEL
 # %bb.324:                              # %.cont
 .LBB104_325:
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 .LBB104_326:                            # %.thread535
 	pcalau12i	$a0, %pc_hi20(.L.str.40)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.40)
@@ -31225,10 +31113,10 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .Ltmp421:                               # EH_LABEL
 # %bb.331:                              # %.noexc279
 .LBB104_332:
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB104_315
 .LBB104_333:
-	ld.d	$a1, $sp, 240
+	ld.d	$a1, $sp, 224
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	pcalau12i	$a2, %pc_hi20(.L.str.50)
@@ -31263,7 +31151,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .Ltmp362:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
 	move	$s8, $s7
 	move	$s6, $s5
 	pcaddu18i	$ra, %call36(_Z4quitPKc)
@@ -31274,7 +31162,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .Ltmp380:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
-	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_Z4quitPKc)
 	jirl	$ra, $ra, 0
 .Ltmp381:                               # EH_LABEL
@@ -31295,8 +31183,8 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 .Ltmp387:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
-	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
+	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	move	$fp, $s5
 	move	$s8, $s4
 	b	.LBB104_389
@@ -31305,8 +31193,8 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$s1, $a1
 	move	$s2, $a0
 	move	$s8, $s7
-	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB104_389
 .LBB104_348:
 .Ltmp398:                               # EH_LABEL
@@ -31385,7 +31273,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$s2, $a0
 	move	$s8, $s7
 	move	$fp, $s5
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB104_386
 .LBB104_369:
 .Ltmp358:                               # EH_LABEL
@@ -31394,7 +31282,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	b	.LBB104_373
 .LBB104_370:
 .Ltmp361:                               # EH_LABEL
-	ld.w	$a2, $sp, 176
+	ld.w	$a2, $sp, 160
 	ld.w	$a3, $s0, 0
 	ld.w	$a4, $s0, 4
 	move	$s1, $a1
@@ -31405,20 +31293,20 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.371:
 	st.w	$a0, $s0, 4
 .LBB104_372:                            # %_ZN5ArrayIcLi0EED2Ev.exit
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_373:
 	ori	$fp, $zero, 1
 	ori	$s5, $zero, 1
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB104_386
 .LBB104_374:                            # %.loopexit.split-lp
 .Ltmp407:                               # EH_LABEL
 .LBB104_375:
 	move	$s1, $a1
 	move	$s2, $a0
-	ld.w	$a0, $sp, 112
+	ld.w	$a0, $sp, 96
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31427,11 +31315,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.376:
 	st.w	$a0, $s0, 4
 .LBB104_377:                            # %_ZN5ArrayIcLi0EED2Ev.exit375
-	ld.d	$a0, $sp, 120
+	ld.d	$a0, $sp, 104
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_378:
-	ld.w	$a0, $sp, 176
+	ld.w	$a0, $sp, 160
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31440,12 +31328,12 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.379:
 	st.w	$a0, $s0, 4
 .LBB104_380:                            # %_ZN5ArrayIcLi0EED2Ev.exit377
-	ld.d	$a0, $sp, 184
+	ld.d	$a0, $sp, 168
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$s8, $s7
 .LBB104_381:
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	move	$s5, $fp
 	b	.LBB104_389
 .LBB104_382:
@@ -31462,7 +31350,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$s2, $a0
 	move	$s8, $s7
 	move	$fp, $s5
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB104_389
 .LBB104_385:
 .Ltmp419:                               # EH_LABEL
@@ -31471,7 +31359,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	move	$fp, $s5
 	move	$s5, $s6
 .LBB104_386:
-	ld.w	$a0, $sp, 136
+	ld.w	$a0, $sp, 120
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31480,11 +31368,11 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.387:
 	st.w	$a0, $s0, 4
 .LBB104_388:                            # %_ZN5ArrayIcLi0EED2Ev.exit312
-	ld.d	$a0, $sp, 144
+	ld.d	$a0, $sp, 128
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_389:
-	ld.w	$a0, $sp, 200
+	ld.w	$a0, $sp, 184
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31493,13 +31381,13 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.390:
 	st.w	$a0, $s0, 4
 .LBB104_391:                            # %_ZN5ArrayIcLi0EED2Ev.exit385
-	ld.d	$a0, $sp, 208
+	ld.d	$a0, $sp, 192
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	slli.d	$s3, $s5, 3
 	slli.d	$fp, $fp, 3
 .LBB104_392:
-	ld.w	$a0, $sp, 224
+	ld.w	$a0, $sp, 208
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s0, 4
 	sub.w	$a0, $a1, $a0
@@ -31508,7 +31396,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.393:
 	st.w	$a0, $s0, 4
 .LBB104_394:                            # %_ZN5ArrayIcLi0EED2Ev.exit387
-	ld.d	$a0, $sp, 232
+	ld.d	$a0, $sp, 216
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_395:
@@ -31520,7 +31408,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 # %bb.396:
 	st.w	$a0, $s0, 4
 .LBB104_397:                            # %_ZN5ArrayIlLi0EED2Ev.exit389
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_398:
@@ -31536,7 +31424,7 @@ _Z7paqmainiPPc:                         # @_Z7paqmainiPPc
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB104_401:
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	addi.w	$a0, $s1, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB104_405

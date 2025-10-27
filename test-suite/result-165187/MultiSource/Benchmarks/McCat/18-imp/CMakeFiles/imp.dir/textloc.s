@@ -224,13 +224,13 @@ HorzVariance:                           # @HorzVariance
 # %bb.13:                               # %.preheader.us.us.us.preheader
 	move	$a3, $zero
 	move	$a4, $a2
-	bstrins.d	$a4, $zero, 2, 0
+	bstrins.d	$a4, $zero, 1, 0
 	addi.d	$a5, $a4, 10
 	vreplvei.w	$vr2, $vr0, 0
 	vreplvei.w	$vr3, $vr1, 0
-	addi.d	$a6, $a0, 56
+	addi.d	$a6, $a0, 40
 	slli.d	$a7, $s2, 2
-	ori	$t0, $zero, 8
+	ori	$t0, $zero, 4
 	lu12i.w	$t1, 276464
 	movgr2fr.w	$fa4, $t1
 	movgr2fr.w	$fa5, $zero
@@ -257,18 +257,13 @@ HorzVariance:                           # @HorzVariance
 .LBB1_17:                               # %vector.body
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr7, $t2, -16
-	vld	$vr8, $t2, 0
+	vld	$vr7, $t2, 0
 	vfdiv.s	$vr7, $vr7, $vr2
-	vfdiv.s	$vr8, $vr8, $vr2
 	vfcmp.cult.s	$vr7, $vr3, $vr7
-	vfcmp.cult.s	$vr8, $vr3, $vr8
 	vand.v	$vr7, $vr7, $vr6
-	vand.v	$vr8, $vr8, $vr6
-	vst	$vr7, $t2, -16
-	vst	$vr8, $t2, 0
-	addi.d	$t1, $t1, -8
-	addi.d	$t2, $t2, 32
+	vst	$vr7, $t2, 0
+	addi.d	$t1, $t1, -4
+	addi.d	$t2, $t2, 16
 	bnez	$t1, .LBB1_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB1_15 Depth=1
@@ -294,12 +289,11 @@ HorzVariance:                           # @HorzVariance
 .LBB1_21:                               # %.preheader.us.us.us.us.preheader
 	move	$a3, $zero
 	move	$a4, $a2
-	bstrins.d	$a4, $zero, 2, 0
+	bstrins.d	$a4, $zero, 0, 0
 	addi.d	$a5, $a4, 10
-	vreplvei.w	$vr1, $vr0, 0
-	addi.d	$a6, $a0, 56
+	addi.d	$a6, $a0, 44
 	slli.d	$a7, $s2, 2
-	ori	$t0, $zero, 8
+	ori	$t0, $zero, 2
 	b	.LBB1_23
 	.p2align	4, , 16
 .LBB1_22:                               # %._crit_edge58.split.us.split.us.split.us.us.us.us.us
@@ -314,38 +308,38 @@ HorzVariance:                           # @HorzVariance
                                         #     Child Loop BB1_28 Depth 2
 	ori	$t2, $zero, 10
 	bltu	$a2, $t0, .LBB1_27
-# %bb.24:                               # %vector.body130.preheader
+# %bb.24:                               # %vector.body127.preheader
                                         #   in Loop: Header=BB1_23 Depth=1
 	move	$t1, $a4
 	move	$t2, $a6
 	.p2align	4, , 16
-.LBB1_25:                               # %vector.body130
+.LBB1_25:                               # %vector.body127
                                         #   Parent Loop BB1_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr2, $t2, -16
-	vld	$vr3, $t2, 0
-	vfdiv.s	$vr2, $vr2, $vr1
-	vfdiv.s	$vr3, $vr3, $vr1
-	vst	$vr2, $t2, -16
-	vst	$vr3, $t2, 0
-	addi.d	$t1, $t1, -8
-	addi.d	$t2, $t2, 32
+	fld.s	$fa1, $t2, -4
+	fld.s	$fa2, $t2, 0
+	fdiv.s	$fa1, $fa1, $fa0
+	fdiv.s	$fa2, $fa2, $fa0
+	fst.s	$fa1, $t2, -4
+	fst.s	$fa2, $t2, 0
+	addi.d	$t1, $t1, -2
+	addi.d	$t2, $t2, 8
 	bnez	$t1, .LBB1_25
-# %bb.26:                               # %middle.block136
+# %bb.26:                               # %middle.block131
                                         #   in Loop: Header=BB1_23 Depth=1
 	move	$t2, $a5
 	beq	$a2, $a4, .LBB1_22
-.LBB1_27:                               # %scalar.ph123.preheader
+.LBB1_27:                               # %scalar.ph122.preheader
                                         #   in Loop: Header=BB1_23 Depth=1
 	alsl.d	$t1, $t2, $a0, 2
 	sub.d	$t2, $a1, $t2
 	.p2align	4, , 16
-.LBB1_28:                               # %scalar.ph123
+.LBB1_28:                               # %scalar.ph122
                                         #   Parent Loop BB1_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.s	$fa2, $t1, 0
-	fdiv.s	$fa2, $fa2, $fa0
-	fst.s	$fa2, $t1, 0
+	fld.s	$fa1, $t1, 0
+	fdiv.s	$fa1, $fa1, $fa0
+	fst.s	$fa1, $t1, 0
 	addi.d	$t2, $t2, -1
 	addi.d	$t1, $t1, 4
 	bnez	$t2, .LBB1_28

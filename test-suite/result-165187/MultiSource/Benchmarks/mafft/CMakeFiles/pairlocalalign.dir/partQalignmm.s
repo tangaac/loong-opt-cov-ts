@@ -1899,7 +1899,7 @@ partQ__align:                           # @partQ__align
 	ld.d	$t0, $t0, %pc_lo12(partQ__align.gapz_n2)
 	addi.d	$t3, $s3, 2
 	bstrpick.d	$t1, $t3, 31, 0
-	ori	$t2, $zero, 40
+	ori	$t2, $zero, 20
 	fcvt.d.s	$fa0, $ft10
 	bgeu	$t1, $t2, .LBB4_83
 # %bb.34:
@@ -1996,7 +1996,7 @@ partQ__align:                           # @partQ__align
 	ld.d	$t0, $t0, %pc_lo12(partQ__align.gapz_n1)
 	addi.d	$t3, $s7, 2
 	bstrpick.d	$t1, $t3, 31, 0
-	ori	$t2, $zero, 40
+	ori	$t2, $zero, 20
 	fcvt.d.s	$fa0, $ft10
 	bgeu	$t1, $t2, .LBB4_116
 # %bb.39:

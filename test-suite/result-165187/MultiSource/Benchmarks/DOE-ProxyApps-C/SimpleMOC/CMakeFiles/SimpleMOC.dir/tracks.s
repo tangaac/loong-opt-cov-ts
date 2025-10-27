@@ -626,16 +626,9 @@ free_tracks:                            # @free_tracks
 .Lfunc_end5:
 	.size	free_tracks, .Lfunc_end5-free_tracks
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function generate_polar_angles
-.LCPI6_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
-.LCPI6_1:
+	.p2align	3, 0x0                          # -- Begin function generate_polar_angles
+.LCPI6_0:
 	.dword	0x400921fb54442d18              # double 3.1415926535897931
 	.text
 	.globl	generate_polar_angles
@@ -654,74 +647,48 @@ generate_polar_angles:                  # @generate_polar_angles
 # %bb.1:                                # %.lr.ph
 	bstrpick.d	$a1, $fp, 31, 0
 	movgr2fr.d	$fa0, $a1
-	ori	$a1, $zero, 4
 	ffint.d.l	$fa0, $fa0
-	bgeu	$fp, $a1, .LBB6_3
+	ori	$a3, $zero, 1
+	pcalau12i	$a2, %pc_hi20(.LCPI6_0)
+	bne	$fp, $a3, .LBB6_3
 # %bb.2:
 	move	$a1, $zero
 	b	.LBB6_6
 .LBB6_3:                                # %vector.ph
-	bstrpick.d	$a1, $fp, 30, 2
-	slli.d	$a1, $a1, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI6_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI6_0)
-	vreplvei.d	$vr2, $vr0, 0
-	vldi	$vr3, -928
-	lu12i.w	$a2, 345154
-	ori	$a2, $a2, 3352
-	lu32i.d	$a2, -450053
-	lu52i.d	$a2, $a2, 1024
-	vreplgr2vr.d	$vr4, $a2
-	move	$a2, $a0
-	move	$a3, $a1
+	bstrpick.d	$a1, $fp, 30, 1
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI6_0)
+	slli.d	$a1, $a1, 1
+	addi.d	$a4, $a0, 4
+	vldi	$vr2, -928
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a4, $vr1, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa5, $a4
-	ffint.d.l	$fa5, $fa5
-	vpickve2gr.w	$a4, $vr1, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vextrins.d	$vr6, $vr5, 16
-	vpickve2gr.w	$a4, $vr1, 3
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa5, $a4
-	ffint.d.l	$fa5, $fa5
-	vpickve2gr.w	$a4, $vr1, 2
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa7, $a4
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr5, 16
-	vfadd.d	$vr5, $vr7, $vr3
-	vfadd.d	$vr6, $vr6, $vr3
-	vfmul.d	$vr6, $vr6, $vr4
-	vfmul.d	$vr5, $vr5, $vr4
-	vfdiv.d	$vr5, $vr5, $vr2
-	vfdiv.d	$vr6, $vr6, $vr2
-	vreplvei.d	$vr7, $vr6, 1
-	fcvt.s.d	$fa7, $fa7
-	vreplvei.d	$vr6, $vr6, 0
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr6, $vr7, 16
-	vreplvei.d	$vr7, $vr5, 0
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr6, $vr7, 32
-	vreplvei.d	$vr5, $vr5, 1
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr6, $vr5, 48
-	vst	$vr6, $a2, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 16
-	bnez	$a3, .LBB6_4
+	bstrpick.d	$a6, $a3, 31, 0
+	addi.d	$a7, $a3, -1
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.d	$fa3, $a7
+	ffint.d.l	$fa3, $fa3
+	movgr2fr.d	$fa4, $a6
+	ffint.d.l	$fa4, $fa4
+	fadd.d	$fa3, $fa3, $fa2
+	fadd.d	$fa4, $fa4, $fa2
+	fmul.d	$fa3, $fa3, $fa1
+	fmul.d	$fa4, $fa4, $fa1
+	fdiv.d	$fa3, $fa3, $fa0
+	fdiv.d	$fa4, $fa4, $fa0
+	fcvt.s.d	$fa3, $fa3
+	fcvt.s.d	$fa4, $fa4
+	fst.s	$fa3, $a4, -4
+	fst.s	$fa4, $a4, 0
+	addi.d	$a4, $a4, 8
+	addi.d	$a5, $a5, -2
+	addi.w	$a3, $a3, 2
+	bnez	$a5, .LBB6_4
 # %bb.5:                                # %middle.block
 	beq	$a1, $fp, .LBB6_8
 .LBB6_6:                                # %scalar.ph.preheader
-	pcalau12i	$a2, %pc_hi20(.LCPI6_1)
-	fld.d	$fa1, $a2, %pc_lo12(.LCPI6_1)
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI6_0)
 	alsl.d	$a2, $a1, $a0, 2
 	sub.d	$a3, $fp, $a1
 	vldi	$vr2, -928

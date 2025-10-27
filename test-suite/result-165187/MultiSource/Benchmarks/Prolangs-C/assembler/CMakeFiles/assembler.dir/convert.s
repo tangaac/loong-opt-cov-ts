@@ -436,7 +436,30 @@ GET_NUM:                                # @GET_NUM
 .Lfunc_end6:
 	.size	GET_NUM, .Lfunc_end6-GET_NUM
                                         # -- End function
-	.globl	GET_EXPRESSION                  # -- Begin function GET_EXPRESSION
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function GET_EXPRESSION
+.LCPI7_0:
+	.word	16                              # 0x10
+	.word	20                              # 0x14
+	.word	24                              # 0x18
+	.word	28                              # 0x1c
+.LCPI7_1:
+	.word	16                              # 0x10
+	.word	12                              # 0xc
+	.word	8                               # 0x8
+	.word	4                               # 0x4
+.LCPI7_2:
+	.word	12                              # 0xc
+	.word	16                              # 0x10
+	.word	20                              # 0x14
+	.word	24                              # 0x18
+.LCPI7_3:
+	.word	20                              # 0x14
+	.word	16                              # 0x10
+	.word	12                              # 0xc
+	.word	8                               # 0x8
+	.text
+	.globl	GET_EXPRESSION
 	.p2align	5
 	.type	GET_EXPRESSION,@function
 GET_EXPRESSION:                         # @GET_EXPRESSION
@@ -450,18 +473,18 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
 	move	$fp, $a4
-	move	$s0, $a0
+	move	$s1, $a0
 	ld.w	$a0, $a4, 0
-	ld.d	$s2, $s0, 0
+	ld.d	$s2, $s1, 0
 	ori	$a4, $zero, 2
 	move	$s3, $a3
-	move	$s1, $a2
+	move	$s0, $a2
 	bne	$a0, $a4, .LBB7_11
 .LBB7_1:                                # %.thread
 	move	$s4, $a1
 	addi.d	$a0, $sp, 31
 	move	$a1, $s2
-	move	$a2, $s0
+	move	$a2, $s1
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(GET_LABEL)
 	jirl	$ra, $ra, 0
@@ -488,89 +511,89 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	ori	$a3, $zero, 2
 	bne	$a2, $a3, .LBB7_30
 # %bb.6:                                # %.lr.ph.i
-	move	$s0, $a0
+	move	$s1, $a0
 	st.b	$zero, $sp, 46
-	srli.d	$a0, $s1, 31
-	bstrpick.d	$a2, $a0, 31, 28
-	add.d	$a2, $s1, $a2
-	addi.w	$a3, $a2, 0
-	srli.d	$a3, $a3, 4
-	bstrpick.d	$a2, $a2, 31, 4
-	slli.d	$a2, $a2, 4
-	sub.w	$a2, $s1, $a2
-	sltui	$a4, $a2, 10
-	ori	$a5, $a2, 48
-	addi.d	$a2, $a2, 55
-	masknez	$a2, $a2, $a4
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	st.b	$a2, $sp, 45
-	bstrpick.d	$a2, $a0, 31, 24
-	add.w	$a2, $s1, $a2
-	srai.d	$a2, $a2, 8
-	slli.d	$a4, $a2, 4
-	sub.w	$a3, $a3, $a4
-	sltui	$a4, $a3, 10
-	ori	$a5, $a3, 48
-	addi.d	$a3, $a3, 55
-	masknez	$a3, $a3, $a4
-	maskeqz	$a4, $a5, $a4
-	or	$a3, $a4, $a3
-	st.b	$a3, $sp, 44
-	bstrpick.d	$a3, $a0, 31, 20
-	add.w	$a3, $s1, $a3
-	srai.d	$a3, $a3, 12
-	slli.d	$a4, $a3, 4
-	sub.d	$a2, $a2, $a4
-	sltui	$a4, $a2, 10
-	ori	$a5, $a2, 48
-	addi.d	$a2, $a2, 55
-	masknez	$a2, $a2, $a4
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	st.b	$a2, $sp, 43
-	bstrpick.d	$a2, $a0, 31, 16
-	add.w	$a2, $s1, $a2
-	srai.d	$a2, $a2, 16
-	slli.d	$a4, $a2, 4
-	sub.d	$a3, $a3, $a4
-	sltui	$a4, $a3, 10
-	ori	$a5, $a3, 48
-	addi.d	$a3, $a3, 55
-	masknez	$a3, $a3, $a4
-	maskeqz	$a4, $a5, $a4
-	or	$a3, $a4, $a3
-	st.b	$a3, $sp, 42
-	bstrpick.d	$a3, $a0, 31, 12
-	add.w	$a3, $s1, $a3
-	srai.d	$a3, $a3, 20
-	slli.d	$a4, $a3, 4
-	sub.d	$a2, $a2, $a4
-	sltui	$a4, $a2, 10
-	ori	$a5, $a2, 48
-	addi.d	$a2, $a2, 55
-	masknez	$a2, $a2, $a4
-	maskeqz	$a4, $a5, $a4
-	or	$a2, $a4, $a2
-	st.b	$a2, $sp, 41
-	bstrpick.d	$a0, $a0, 31, 8
-	add.w	$a0, $s1, $a0
-	addi.w	$s1, $zero, -16
-	srli.d	$a0, $a0, 20
-	move	$a2, $s1
-	lu32i.d	$a2, 4095
-	and	$a0, $a0, $a2
-	sub.w	$a0, $a3, $a0
+	vreplgr2vr.w	$vr0, $s0
+	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI7_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI7_1)
+	vld	$vr2, $a0, %pc_lo12(.LCPI7_1)
+	vsrai.w	$vr3, $vr0, 31
+	vsrl.w	$vr1, $vr3, $vr1
+	vadd.w	$vr1, $vr0, $vr1
+	vsra.w	$vr1, $vr1, $vr2
+	vpickve2gr.w	$a0, $vr1, 3
+	slli.d	$a0, $a0, 4
+	sub.w	$a0, $s0, $a0
 	sltui	$a2, $a0, 10
-	ori	$a4, $a0, 48
+	pcalau12i	$a3, %pc_hi20(.LCPI7_2)
+	vld	$vr2, $a3, %pc_lo12(.LCPI7_2)
+	ori	$a3, $a0, 48
 	addi.d	$a0, $a0, 55
 	masknez	$a0, $a0, $a2
-	maskeqz	$a2, $a4, $a2
+	maskeqz	$a2, $a3, $a2
+	vsrl.w	$vr2, $vr3, $vr2
+	pcalau12i	$a3, %pc_hi20(.LCPI7_3)
+	vld	$vr3, $a3, %pc_lo12(.LCPI7_3)
 	or	$a0, $a2, $a0
-	addi.d	$a2, $a3, 15
-	ori	$s2, $zero, 31
+	st.b	$a0, $sp, 45
+	vadd.w	$vr0, $vr0, $vr2
+	vsra.w	$vr0, $vr0, $vr3
+	vslli.w	$vr2, $vr0, 4
+	vsub.w	$vr1, $vr1, $vr2
+	vpickve2gr.b	$a0, $vr1, 12
+	ori	$a2, $a0, 48
+	addi.d	$a0, $a0, 55
+	vslti.wu	$vr2, $vr1, 10
+	vpickve2gr.w	$a3, $vr2, 3
+	andi	$a3, $a3, 1
+	masknez	$a0, $a0, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a0, $a2, $a0
+	st.b	$a0, $sp, 44
+	vpickve2gr.b	$a0, $vr1, 8
+	ori	$a2, $a0, 48
+	addi.d	$a0, $a0, 55
+	vpickve2gr.w	$a3, $vr2, 2
+	andi	$a3, $a3, 1
+	masknez	$a0, $a0, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a0, $a2, $a0
+	st.b	$a0, $sp, 43
+	vpickve2gr.b	$a0, $vr1, 4
+	ori	$a2, $a0, 48
+	addi.d	$a0, $a0, 55
+	vpickve2gr.w	$a3, $vr2, 1
+	andi	$a3, $a3, 1
+	masknez	$a0, $a0, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a0, $a2, $a0
+	st.b	$a0, $sp, 42
+	vpickve2gr.b	$a0, $vr1, 0
+	ori	$a2, $a0, 48
+	addi.d	$a0, $a0, 55
+	vpickve2gr.w	$a3, $vr2, 0
+	andi	$a3, $a3, 1
+	masknez	$a0, $a0, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a0, $a2, $a0
+	st.b	$a0, $sp, 41
+	bstrpick.d	$a0, $s0, 62, 39
+	add.w	$a0, $s0, $a0
+	srai.d	$a0, $a0, 24
+	vpickve2gr.w	$a2, $vr0, 0
+	slli.d	$a0, $a0, 4
+	sub.w	$a0, $a2, $a0
+	sltui	$a3, $a0, 10
+	ori	$a4, $a0, 48
+	addi.d	$a0, $a0, 55
+	masknez	$a0, $a0, $a3
+	maskeqz	$a3, $a4, $a3
+	or	$a0, $a3, $a0
+	addi.w	$a2, $a2, 15
+	ori	$s0, $zero, 31
 	st.b	$a0, $sp, 40
-	bltu	$a2, $s2, .LBB7_8
+	bltu	$a2, $s0, .LBB7_8
 # %bb.7:
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
@@ -598,7 +621,8 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	bstrpick.d	$a0, $a0, 31, 22
 	add.w	$a0, $a1, $a0
 	srli.d	$a0, $a0, 6
-	lu52i.d	$a1, $s1, 63
+	addi.w	$a1, $zero, -16
+	lu52i.d	$a1, $a1, 63
 	and	$a0, $a0, $a1
 	sub.w	$a0, $a3, $a0
 	sltui	$a1, $a0, 10
@@ -609,7 +633,7 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	or	$a0, $a1, $a0
 	addi.d	$a1, $a3, 15
 	st.b	$a0, $sp, 13
-	bltu	$a1, $s2, .LBB7_10
+	bltu	$a1, $s0, .LBB7_10
 # %bb.9:
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
@@ -618,14 +642,14 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 .LBB7_10:                               # %NUM_TO_STR.exit88
 	addi.d	$a0, $sp, 40
 	addi.d	$a1, $sp, 13
-	addi.d	$s1, $sp, 40
+	addi.d	$s0, $sp, 40
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 43
-	stx.h	$a1, $a0, $s1
+	stx.h	$a1, $a0, $s0
 	lu12i.w	$a0, 131586
 	ori	$a0, $a0, 32
 	bstrins.d	$a0, $a0, 61, 32
@@ -650,7 +674,7 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 3
 	st.w	$a0, $fp, 0
-	ld.w	$a0, $s0, 20
+	ld.w	$a0, $s1, 20
 	b	.LBB7_29
 .LBB7_11:
 	ld.bu	$a0, $s2, 0
@@ -661,7 +685,7 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	ori	$a0, $zero, 1
 	ori	$a2, $zero, 10
 	st.w	$a0, $fp, 0
-	move	$a0, $s0
+	move	$a0, $s1
 	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
@@ -683,7 +707,7 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	bne	$a0, $a2, .LBB7_1
 	b	.LBB7_12
 .LBB7_16:
-	ld.d	$fp, $s0, 0
+	ld.d	$fp, $s1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -740,17 +764,17 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 0
 	addi.d	$a0, $s2, 2
-	st.d	$a0, $s0, 0
+	st.d	$a0, $s1, 0
 	ori	$a2, $zero, 16
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(GET_NUM)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s0, 0
+	ld.d	$a2, $s1, 0
 	ld.bu	$a1, $a2, 0
 	bne	$a1, $s4, .LBB7_32
 # %bb.22:
 	addi.d	$a1, $a2, 1
-	st.d	$a1, $s0, 0
+	st.d	$a1, $s1, 0
 	b	.LBB7_29
 .LBB7_23:
 	bne	$a3, $a4, .LBB7_4
@@ -801,18 +825,18 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	ld.w	$a0, $a0, 20
 	b	.LBB7_29
 .LBB7_32:                               # %.lr.ph.preheader
-	move	$s1, $a0
+	move	$s0, $a0
 	.p2align	4, , 16
 .LBB7_33:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ext.w.b	$a0, $a1
 	pcaddu18i	$ra, %call36(eoln)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $s1, 0
 	bnez	$a0, .LBB7_35
 # %bb.34:                               #   in Loop: Header=BB7_33 Depth=1
 	addi.d	$a0, $a1, 1
-	st.d	$a0, $s0, 0
+	st.d	$a0, $s1, 0
 	ld.bu	$a1, $a1, 1
 	ori	$a0, $zero, 39
 	bne	$a1, $a0, .LBB7_33
@@ -839,12 +863,12 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	addi.d	$a1, $sp, 40
 	pcaddu18i	$ra, %call36(ADD_TO_END_OF_BUFFER)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
+	move	$a0, $s0
 	b	.LBB7_29
 .LBB7_38:
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $s1, 0
 	addi.d	$a1, $a0, 1
-	st.d	$a1, $s0, 0
+	st.d	$a1, $s1, 0
 	ld.b	$s3, $a0, 1
 	st.b	$zero, $a0, 1
 	move	$a0, $s2
@@ -869,9 +893,9 @@ GET_EXPRESSION:                         # @GET_EXPRESSION
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $s1, 0
 	st.b	$s3, $a0, 0
-	move	$a0, $s1
+	move	$a0, $s0
 	b	.LBB7_29
 .Lfunc_end7:
 	.size	GET_EXPRESSION, .Lfunc_end7-GET_EXPRESSION

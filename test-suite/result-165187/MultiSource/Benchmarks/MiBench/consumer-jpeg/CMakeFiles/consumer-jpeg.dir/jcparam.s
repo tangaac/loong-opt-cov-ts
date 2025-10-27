@@ -14,9 +14,9 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s2, $a0
 	ld.w	$a0, $a0, 28
-	move	$s0, $a4
-	move	$s1, $a3
-	move	$fp, $a2
+	move	$s1, $a4
+	move	$fp, $a3
+	move	$s0, $a2
 	alsl.d	$a1, $a1, $s2, 3
 	ori	$a2, $zero, 100
 	addi.d	$s3, $a1, 88
@@ -39,115 +39,114 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
 .LBB0_4:
-	vreplgr2vr.d	$vr0, $s1
 	move	$a1, $zero
-	vrepli.b	$vr1, 0
-	vrepli.d	$vr2, 50
-	lu12i.w	$a2, 461373
-	ori	$a2, $a2, 1803
-	lu32i.d	$a2, 461373
-	lu52i.d	$a2, $a2, -1475
-	vreplgr2vr.d	$vr3, $a2
-	lu12i.w	$a2, 7
-	ori	$a2, $a2, 4095
-	vreplgr2vr.d	$vr4, $a2
-	beqz	$s0, .LBB0_7
+	addi.d	$a2, $s0, 4
+	lu12i.w	$a3, 461373
+	ori	$a3, $a3, 1803
+	lu32i.d	$a3, 461373
+	lu52i.d	$a3, $a3, -1475
+	ori	$a4, $zero, 1
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 4095
+	beqz	$s1, .LBB0_7
 # %bb.5:                                # %vector.body.preheader
-	lu12i.w	$a2, 6
-	ori	$a2, $a2, 973
-	vreplgr2vr.d	$vr5, $a2
-	vrepli.h	$vr6, 255
-	ori	$a2, $zero, 128
+	lu12i.w	$a6, 6
+	ori	$a6, $a6, 973
+	ori	$a7, $zero, 255
+	ori	$t0, $zero, 128
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr7, $fp, 0
-	vilvl.w	$vr8, $vr1, $vr7
-	vilvh.w	$vr7, $vr1, $vr7
-	vmul.d	$vr9, $vr0, $vr7
-	vmul.d	$vr10, $vr0, $vr8
-	vori.b	$vr11, $vr2, 0
-	vmadd.d	$vr11, $vr0, $vr8
-	vori.b	$vr8, $vr2, 0
-	vmadd.d	$vr8, $vr0, $vr7
-	vmuh.d	$vr7, $vr8, $vr3
-	vadd.d	$vr7, $vr7, $vr8
-	vsrli.d	$vr8, $vr7, 63
-	vsrai.d	$vr7, $vr7, 6
-	vadd.d	$vr7, $vr7, $vr8
-	vmuh.d	$vr8, $vr11, $vr3
-	vadd.d	$vr8, $vr8, $vr11
-	vsrli.d	$vr11, $vr8, 63
-	vsrai.d	$vr8, $vr8, 6
-	vadd.d	$vr8, $vr8, $vr11
-	vmaxi.d	$vr8, $vr8, 1
-	vmaxi.d	$vr7, $vr7, 1
-	vmin.d	$vr7, $vr7, $vr4
-	vmin.d	$vr8, $vr8, $vr4
-	vslt.d	$vr10, $vr5, $vr10
-	vpickve2gr.d	$a3, $vr10, 0
-	vinsgr2vr.h	$vr11, $a3, 0
-	vpickve2gr.d	$a3, $vr10, 1
-	vinsgr2vr.h	$vr11, $a3, 1
-	vslt.d	$vr9, $vr5, $vr9
-	vpickve2gr.d	$a3, $vr9, 0
-	vinsgr2vr.h	$vr11, $a3, 2
-	vpickve2gr.d	$a3, $vr9, 1
-	vinsgr2vr.h	$vr11, $a3, 3
-	vpickve2gr.d	$a3, $vr8, 0
-	vinsgr2vr.h	$vr9, $a3, 0
-	vpickve2gr.d	$a3, $vr8, 1
-	vinsgr2vr.h	$vr9, $a3, 1
-	vpickve2gr.d	$a3, $vr7, 0
-	vinsgr2vr.h	$vr9, $a3, 2
-	vpickve2gr.d	$a3, $vr7, 1
-	vinsgr2vr.h	$vr9, $a3, 3
-	vbitsel.v	$vr7, $vr9, $vr6, $vr11
-	add.d	$a3, $a0, $a1
-	vstelm.d	$vr7, $a3, 0, 0
-	addi.d	$a1, $a1, 8
-	addi.d	$fp, $fp, 16
-	bne	$a1, $a2, .LBB0_6
+	ld.wu	$t1, $a2, -4
+	ld.wu	$t2, $a2, 0
+	mul.d	$t1, $t1, $fp
+	mul.d	$t2, $t2, $fp
+	addi.d	$t3, $t1, 50
+	addi.d	$t4, $t2, 50
+	mulh.d	$t5, $t3, $a3
+	add.d	$t3, $t5, $t3
+	srli.d	$t5, $t3, 63
+	srai.d	$t3, $t3, 6
+	add.d	$t3, $t3, $t5
+	mulh.d	$t5, $t4, $a3
+	add.d	$t4, $t5, $t4
+	srli.d	$t5, $t4, 63
+	srai.d	$t4, $t4, 6
+	add.d	$t4, $t4, $t5
+	slt	$t5, $a4, $t3
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a4, $t5
+	or	$t3, $t3, $t5
+	slt	$t5, $a4, $t4
+	maskeqz	$t4, $t4, $t5
+	masknez	$t5, $a4, $t5
+	or	$t4, $t4, $t5
+	slt	$t5, $t3, $a5
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a5, $t5
+	or	$t3, $t3, $t5
+	slt	$t5, $t4, $a5
+	maskeqz	$t4, $t4, $t5
+	masknez	$t5, $a5, $t5
+	or	$t4, $t4, $t5
+	slt	$t1, $a6, $t1
+	slt	$t2, $a6, $t2
+	masknez	$t3, $t3, $t1
+	maskeqz	$t1, $a7, $t1
+	or	$t1, $t1, $t3
+	masknez	$t3, $t4, $t2
+	maskeqz	$t2, $a7, $t2
+	or	$t2, $t2, $t3
+	add.d	$t3, $a0, $a1
+	stx.h	$t1, $a0, $a1
+	st.h	$t2, $t3, 2
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, 8
+	bne	$a1, $t0, .LBB0_6
 	b	.LBB0_9
-.LBB0_7:                                # %vector.body40.preheader
-	ori	$a2, $zero, 128
+.LBB0_7:                                # %vector.body38.preheader
+	ori	$a6, $zero, 128
 	.p2align	4, , 16
-.LBB0_8:                                # %vector.body40
+.LBB0_8:                                # %vector.body38
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr5, $fp, 0
-	vilvh.w	$vr6, $vr1, $vr5
-	vilvl.w	$vr5, $vr1, $vr5
-	vori.b	$vr7, $vr2, 0
-	vmadd.d	$vr7, $vr0, $vr5
-	vori.b	$vr5, $vr2, 0
-	vmadd.d	$vr5, $vr0, $vr6
-	vmuh.d	$vr6, $vr5, $vr3
-	vadd.d	$vr5, $vr6, $vr5
-	vsrli.d	$vr6, $vr5, 63
-	vsrai.d	$vr5, $vr5, 6
-	vadd.d	$vr5, $vr5, $vr6
-	vmuh.d	$vr6, $vr7, $vr3
-	vadd.d	$vr6, $vr6, $vr7
-	vsrli.d	$vr7, $vr6, 63
-	vsrai.d	$vr6, $vr6, 6
-	vadd.d	$vr6, $vr6, $vr7
-	vmaxi.d	$vr6, $vr6, 1
-	vmaxi.d	$vr5, $vr5, 1
-	vmin.d	$vr5, $vr5, $vr4
-	vmin.d	$vr6, $vr6, $vr4
-	vpickve2gr.d	$a3, $vr6, 0
-	vinsgr2vr.h	$vr7, $a3, 0
-	vpickve2gr.d	$a3, $vr6, 1
-	vinsgr2vr.h	$vr7, $a3, 1
-	vpickve2gr.d	$a3, $vr5, 0
-	vinsgr2vr.h	$vr7, $a3, 2
-	vpickve2gr.d	$a3, $vr5, 1
-	vinsgr2vr.h	$vr7, $a3, 3
-	add.d	$a3, $a0, $a1
-	vstelm.d	$vr7, $a3, 0, 0
-	addi.d	$a1, $a1, 8
-	addi.d	$fp, $fp, 16
-	bne	$a1, $a2, .LBB0_8
+	ld.wu	$a7, $a2, -4
+	ld.wu	$t0, $a2, 0
+	mul.d	$a7, $a7, $fp
+	mul.d	$t0, $t0, $fp
+	addi.d	$a7, $a7, 50
+	addi.d	$t0, $t0, 50
+	mulh.d	$t1, $a7, $a3
+	add.d	$a7, $t1, $a7
+	srli.d	$t1, $a7, 63
+	srai.d	$a7, $a7, 6
+	add.d	$a7, $a7, $t1
+	mulh.d	$t1, $t0, $a3
+	add.d	$t0, $t1, $t0
+	srli.d	$t1, $t0, 63
+	srai.d	$t0, $t0, 6
+	add.d	$t0, $t0, $t1
+	slt	$t1, $a4, $a7
+	maskeqz	$a7, $a7, $t1
+	masknez	$t1, $a4, $t1
+	or	$a7, $a7, $t1
+	slt	$t1, $a4, $t0
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a4, $t1
+	or	$t0, $t0, $t1
+	slt	$t1, $a7, $a5
+	maskeqz	$a7, $a7, $t1
+	masknez	$t1, $a5, $t1
+	or	$a7, $a7, $t1
+	slt	$t1, $t0, $a5
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a5, $t1
+	or	$t0, $t0, $t1
+	add.d	$t1, $a0, $a1
+	stx.h	$a7, $a0, $a1
+	st.h	$t0, $t1, 2
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, 8
+	bne	$a1, $a6, .LBB0_8
 .LBB0_9:                                # %.split28.us
 	st.w	$zero, $a0, 128
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
@@ -166,299 +165,286 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	.type	jpeg_set_linear_quality,@function
 jpeg_set_linear_quality:                # @jpeg_set_linear_quality
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	move	$s0, $a0
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	move	$s1, $a0
 	ld.w	$a0, $a0, 28
 	ori	$a3, $zero, 100
-	move	$fp, $a2
-	move	$s1, $a1
+	move	$s0, $a2
+	move	$fp, $a1
 	beq	$a0, $a3, .LBB1_2
 # %bb.1:
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $s1, 0
 	st.w	$a0, $a1, 44
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $s1, 0
 	ld.d	$a2, $a0, 0
 	ori	$a0, $zero, 18
 	st.w	$a0, $a1, 40
-	move	$a0, $s0
+	move	$a0, $s1
 	jirl	$ra, $a2, 0
 .LBB1_2:
-	ld.d	$a0, $s0, 88
+	ld.d	$a0, $s1, 88
 	bnez	$a0, .LBB1_4
 # %bb.3:
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(jpeg_alloc_quant_table)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s0, 88
+	st.d	$a0, $s1, 88
 .LBB1_4:
-	vreplgr2vr.d	$vr0, $s1
-	vrepli.b	$vr9, 0
-	vrepli.d	$vr10, 50
 	lu12i.w	$s3, 461373
 	lu12i.w	$s2, 7
 	lu12i.w	$s4, 6
-	vrepli.h	$vr11, 255
-	pcalau12i	$a1, %pc_hi20(jpeg_set_linear_quality.std_luminance_quant_tbl)
-	addi.d	$a1, $a1, %pc_lo12(jpeg_set_linear_quality.std_luminance_quant_tbl)
+	pcalau12i	$a1, %pc_hi20(jpeg_set_linear_quality.std_luminance_quant_tbl+4)
+	addi.d	$a1, $a1, %pc_lo12(jpeg_set_linear_quality.std_luminance_quant_tbl+4)
 	move	$a2, $zero
 	ori	$a3, $s3, 1803
 	lu32i.d	$a3, 461373
 	lu52i.d	$a3, $a3, -1475
-	vreplgr2vr.d	$vr1, $a3
-	ori	$a3, $s2, 4095
-	vreplgr2vr.d	$vr2, $a3
-	beqz	$fp, .LBB1_7
+	ori	$a4, $zero, 1
+	ori	$a5, $s2, 4095
+	beqz	$s0, .LBB1_7
 # %bb.5:                                # %vector.body.preheader
-	ori	$a3, $s4, 973
-	vreplgr2vr.d	$vr3, $a3
-	ori	$a3, $zero, 128
+	ori	$a6, $s4, 973
+	ori	$a7, $zero, 255
+	ori	$t0, $zero, 128
 	.p2align	4, , 16
 .LBB1_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a1, 0
-	vilvl.w	$vr5, $vr9, $vr4
-	vilvh.w	$vr4, $vr9, $vr4
-	vmul.d	$vr6, $vr0, $vr4
-	vmul.d	$vr7, $vr0, $vr5
-	vori.b	$vr8, $vr10, 0
-	vmadd.d	$vr8, $vr0, $vr5
-	vori.b	$vr5, $vr10, 0
-	vmadd.d	$vr5, $vr0, $vr4
-	vmuh.d	$vr4, $vr5, $vr1
-	vadd.d	$vr4, $vr4, $vr5
-	vsrli.d	$vr5, $vr4, 63
-	vsrai.d	$vr4, $vr4, 6
-	vadd.d	$vr4, $vr4, $vr5
-	vmuh.d	$vr5, $vr8, $vr1
-	vadd.d	$vr5, $vr5, $vr8
-	vsrli.d	$vr8, $vr5, 63
-	vsrai.d	$vr5, $vr5, 6
-	vadd.d	$vr5, $vr5, $vr8
-	vmaxi.d	$vr5, $vr5, 1
-	vmaxi.d	$vr4, $vr4, 1
-	vmin.d	$vr4, $vr4, $vr2
-	vmin.d	$vr5, $vr5, $vr2
-	vslt.d	$vr7, $vr3, $vr7
-	vpickve2gr.d	$a4, $vr7, 0
-	vinsgr2vr.h	$vr8, $a4, 0
-	vpickve2gr.d	$a4, $vr7, 1
-	vinsgr2vr.h	$vr8, $a4, 1
-	vslt.d	$vr6, $vr3, $vr6
-	vpickve2gr.d	$a4, $vr6, 0
-	vinsgr2vr.h	$vr8, $a4, 2
-	vpickve2gr.d	$a4, $vr6, 1
-	vinsgr2vr.h	$vr8, $a4, 3
-	vpickve2gr.d	$a4, $vr5, 0
-	vinsgr2vr.h	$vr6, $a4, 0
-	vpickve2gr.d	$a4, $vr5, 1
-	vinsgr2vr.h	$vr6, $a4, 1
-	vpickve2gr.d	$a4, $vr4, 0
-	vinsgr2vr.h	$vr6, $a4, 2
-	vpickve2gr.d	$a4, $vr4, 1
-	vinsgr2vr.h	$vr6, $a4, 3
-	vbitsel.v	$vr4, $vr6, $vr11, $vr8
-	add.d	$a4, $a0, $a2
-	vstelm.d	$vr4, $a4, 0, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a1, $a1, 16
-	bne	$a2, $a3, .LBB1_6
+	ld.wu	$t1, $a1, -4
+	ld.wu	$t2, $a1, 0
+	mul.d	$t1, $t1, $fp
+	mul.d	$t2, $t2, $fp
+	addi.d	$t3, $t1, 50
+	addi.d	$t4, $t2, 50
+	mulh.d	$t5, $t3, $a3
+	add.d	$t3, $t5, $t3
+	srli.d	$t5, $t3, 63
+	srai.d	$t3, $t3, 6
+	add.d	$t3, $t3, $t5
+	mulh.d	$t5, $t4, $a3
+	add.d	$t4, $t5, $t4
+	srli.d	$t5, $t4, 63
+	srai.d	$t4, $t4, 6
+	add.d	$t4, $t4, $t5
+	slt	$t5, $a4, $t3
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a4, $t5
+	or	$t3, $t3, $t5
+	slt	$t5, $a4, $t4
+	maskeqz	$t4, $t4, $t5
+	masknez	$t5, $a4, $t5
+	or	$t4, $t4, $t5
+	slt	$t5, $t3, $a5
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a5, $t5
+	or	$t3, $t3, $t5
+	slt	$t5, $t4, $a5
+	maskeqz	$t4, $t4, $t5
+	masknez	$t5, $a5, $t5
+	or	$t4, $t4, $t5
+	slt	$t1, $a6, $t1
+	slt	$t2, $a6, $t2
+	masknez	$t3, $t3, $t1
+	maskeqz	$t1, $a7, $t1
+	or	$t1, $t1, $t3
+	masknez	$t3, $t4, $t2
+	maskeqz	$t2, $a7, $t2
+	or	$t2, $t2, $t3
+	add.d	$t3, $a0, $a2
+	stx.h	$t1, $a0, $a2
+	st.h	$t2, $t3, 2
+	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 8
+	bne	$a2, $t0, .LBB1_6
 	b	.LBB1_9
-.LBB1_7:                                # %vector.body35.preheader
-	ori	$a3, $zero, 128
+.LBB1_7:                                # %vector.body33.preheader
+	ori	$a6, $zero, 128
 	.p2align	4, , 16
-.LBB1_8:                                # %vector.body35
+.LBB1_8:                                # %vector.body33
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr3, $a1, 0
-	vilvh.w	$vr4, $vr9, $vr3
-	vilvl.w	$vr3, $vr9, $vr3
-	vori.b	$vr5, $vr10, 0
-	vmadd.d	$vr5, $vr0, $vr3
-	vori.b	$vr3, $vr10, 0
-	vmadd.d	$vr3, $vr0, $vr4
-	vmuh.d	$vr4, $vr3, $vr1
-	vadd.d	$vr3, $vr4, $vr3
-	vsrli.d	$vr4, $vr3, 63
-	vsrai.d	$vr3, $vr3, 6
-	vadd.d	$vr3, $vr3, $vr4
-	vmuh.d	$vr4, $vr5, $vr1
-	vadd.d	$vr4, $vr4, $vr5
-	vsrli.d	$vr5, $vr4, 63
-	vsrai.d	$vr4, $vr4, 6
-	vadd.d	$vr4, $vr4, $vr5
-	vmaxi.d	$vr4, $vr4, 1
-	vmaxi.d	$vr3, $vr3, 1
-	vmin.d	$vr3, $vr3, $vr2
-	vmin.d	$vr4, $vr4, $vr2
-	vpickve2gr.d	$a4, $vr4, 0
-	vinsgr2vr.h	$vr5, $a4, 0
-	vpickve2gr.d	$a4, $vr4, 1
-	vinsgr2vr.h	$vr5, $a4, 1
-	vpickve2gr.d	$a4, $vr3, 0
-	vinsgr2vr.h	$vr5, $a4, 2
-	vpickve2gr.d	$a4, $vr3, 1
-	vinsgr2vr.h	$vr5, $a4, 3
-	add.d	$a4, $a0, $a2
-	vstelm.d	$vr5, $a4, 0, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a1, $a1, 16
-	bne	$a2, $a3, .LBB1_8
+	ld.wu	$a7, $a1, -4
+	ld.wu	$t0, $a1, 0
+	mul.d	$a7, $a7, $fp
+	mul.d	$t0, $t0, $fp
+	addi.d	$a7, $a7, 50
+	addi.d	$t0, $t0, 50
+	mulh.d	$t1, $a7, $a3
+	add.d	$a7, $t1, $a7
+	srli.d	$t1, $a7, 63
+	srai.d	$a7, $a7, 6
+	add.d	$a7, $a7, $t1
+	mulh.d	$t1, $t0, $a3
+	add.d	$t0, $t1, $t0
+	srli.d	$t1, $t0, 63
+	srai.d	$t0, $t0, 6
+	add.d	$t0, $t0, $t1
+	slt	$t1, $a4, $a7
+	maskeqz	$a7, $a7, $t1
+	masknez	$t1, $a4, $t1
+	or	$a7, $a7, $t1
+	slt	$t1, $a4, $t0
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a4, $t1
+	or	$t0, $t0, $t1
+	slt	$t1, $a7, $a5
+	maskeqz	$a7, $a7, $t1
+	masknez	$t1, $a5, $t1
+	or	$a7, $a7, $t1
+	slt	$t1, $t0, $a5
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a5, $t1
+	or	$t0, $t0, $t1
+	add.d	$t1, $a0, $a2
+	stx.h	$a7, $a0, $a2
+	st.h	$t0, $t1, 2
+	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 8
+	bne	$a2, $a6, .LBB1_8
 .LBB1_9:                                # %jpeg_add_quant_table.exit
-	ld.w	$a1, $s0, 28
+	ld.w	$a1, $s1, 28
 	ori	$a2, $zero, 100
 	st.w	$zero, $a0, 128
 	beq	$a1, $a2, .LBB1_11
 # %bb.10:
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $s1, 0
 	st.w	$a1, $a0, 44
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $s1, 0
 	ld.d	$a1, $a1, 0
 	ori	$a2, $zero, 18
 	st.w	$a2, $a0, 40
-	move	$a0, $s0
-	vst	$vr9, $sp, 48                   # 16-byte Folded Spill
-	vst	$vr10, $sp, 32                  # 16-byte Folded Spill
-	vst	$vr11, $sp, 16                  # 16-byte Folded Spill
+	move	$a0, $s1
 	jirl	$ra, $a1, 0
-	vld	$vr11, $sp, 16                  # 16-byte Folded Reload
-	vld	$vr10, $sp, 32                  # 16-byte Folded Reload
-	vld	$vr9, $sp, 48                   # 16-byte Folded Reload
 .LBB1_11:
-	ld.d	$a0, $s0, 96
+	ld.d	$a0, $s1, 96
 	bnez	$a0, .LBB1_13
 # %bb.12:
-	move	$a0, $s0
-	vst	$vr9, $sp, 48                   # 16-byte Folded Spill
-	vst	$vr10, $sp, 32                  # 16-byte Folded Spill
-	vst	$vr11, $sp, 16                  # 16-byte Folded Spill
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(jpeg_alloc_quant_table)
 	jirl	$ra, $ra, 0
-	vld	$vr11, $sp, 16                  # 16-byte Folded Reload
-	vld	$vr10, $sp, 32                  # 16-byte Folded Reload
-	vld	$vr9, $sp, 48                   # 16-byte Folded Reload
-	st.d	$a0, $s0, 96
+	st.d	$a0, $s1, 96
 .LBB1_13:
-	vreplgr2vr.d	$vr0, $s1
-	pcalau12i	$a1, %pc_hi20(jpeg_set_linear_quality.std_chrominance_quant_tbl)
-	addi.d	$a1, $a1, %pc_lo12(jpeg_set_linear_quality.std_chrominance_quant_tbl)
+	pcalau12i	$a1, %pc_hi20(jpeg_set_linear_quality.std_chrominance_quant_tbl+4)
+	addi.d	$a1, $a1, %pc_lo12(jpeg_set_linear_quality.std_chrominance_quant_tbl+4)
 	move	$a2, $zero
 	ori	$a3, $s3, 1803
 	lu32i.d	$a3, 461373
 	lu52i.d	$a3, $a3, -1475
-	vreplgr2vr.d	$vr1, $a3
-	ori	$a3, $s2, 4095
-	vreplgr2vr.d	$vr2, $a3
-	beqz	$fp, .LBB1_16
-# %bb.14:                               # %vector.body43.preheader
-	ori	$a3, $s4, 973
-	vreplgr2vr.d	$vr3, $a3
-	ori	$a3, $zero, 128
+	ori	$a4, $zero, 1
+	ori	$a5, $s2, 4095
+	beqz	$s0, .LBB1_16
+# %bb.14:                               # %vector.body38.preheader
+	ori	$a6, $s4, 973
+	ori	$a7, $zero, 255
+	ori	$t0, $zero, 128
 	.p2align	4, , 16
-.LBB1_15:                               # %vector.body43
+.LBB1_15:                               # %vector.body38
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a1, 0
-	vilvl.w	$vr5, $vr9, $vr4
-	vilvh.w	$vr4, $vr9, $vr4
-	vmul.d	$vr6, $vr0, $vr4
-	vmul.d	$vr7, $vr0, $vr5
-	vori.b	$vr8, $vr10, 0
-	vmadd.d	$vr8, $vr0, $vr5
-	vori.b	$vr5, $vr10, 0
-	vmadd.d	$vr5, $vr0, $vr4
-	vmuh.d	$vr4, $vr5, $vr1
-	vadd.d	$vr4, $vr4, $vr5
-	vsrli.d	$vr5, $vr4, 63
-	vsrai.d	$vr4, $vr4, 6
-	vadd.d	$vr4, $vr4, $vr5
-	vmuh.d	$vr5, $vr8, $vr1
-	vadd.d	$vr5, $vr5, $vr8
-	vsrli.d	$vr8, $vr5, 63
-	vsrai.d	$vr5, $vr5, 6
-	vadd.d	$vr5, $vr5, $vr8
-	vmaxi.d	$vr5, $vr5, 1
-	vmaxi.d	$vr4, $vr4, 1
-	vmin.d	$vr4, $vr4, $vr2
-	vmin.d	$vr5, $vr5, $vr2
-	vslt.d	$vr7, $vr3, $vr7
-	vpickve2gr.d	$a4, $vr7, 0
-	vinsgr2vr.h	$vr8, $a4, 0
-	vpickve2gr.d	$a4, $vr7, 1
-	vinsgr2vr.h	$vr8, $a4, 1
-	vslt.d	$vr6, $vr3, $vr6
-	vpickve2gr.d	$a4, $vr6, 0
-	vinsgr2vr.h	$vr8, $a4, 2
-	vpickve2gr.d	$a4, $vr6, 1
-	vinsgr2vr.h	$vr8, $a4, 3
-	vpickve2gr.d	$a4, $vr5, 0
-	vinsgr2vr.h	$vr6, $a4, 0
-	vpickve2gr.d	$a4, $vr5, 1
-	vinsgr2vr.h	$vr6, $a4, 1
-	vpickve2gr.d	$a4, $vr4, 0
-	vinsgr2vr.h	$vr6, $a4, 2
-	vpickve2gr.d	$a4, $vr4, 1
-	vinsgr2vr.h	$vr6, $a4, 3
-	vbitsel.v	$vr4, $vr6, $vr11, $vr8
-	add.d	$a4, $a0, $a2
-	vstelm.d	$vr4, $a4, 0, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a1, $a1, 16
-	bne	$a2, $a3, .LBB1_15
+	ld.wu	$t1, $a1, -4
+	ld.wu	$t2, $a1, 0
+	mul.d	$t1, $t1, $fp
+	mul.d	$t2, $t2, $fp
+	addi.d	$t3, $t1, 50
+	addi.d	$t4, $t2, 50
+	mulh.d	$t5, $t3, $a3
+	add.d	$t3, $t5, $t3
+	srli.d	$t5, $t3, 63
+	srai.d	$t3, $t3, 6
+	add.d	$t3, $t3, $t5
+	mulh.d	$t5, $t4, $a3
+	add.d	$t4, $t5, $t4
+	srli.d	$t5, $t4, 63
+	srai.d	$t4, $t4, 6
+	add.d	$t4, $t4, $t5
+	slt	$t5, $a4, $t3
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a4, $t5
+	or	$t3, $t3, $t5
+	slt	$t5, $a4, $t4
+	maskeqz	$t4, $t4, $t5
+	masknez	$t5, $a4, $t5
+	or	$t4, $t4, $t5
+	slt	$t5, $t3, $a5
+	maskeqz	$t3, $t3, $t5
+	masknez	$t5, $a5, $t5
+	or	$t3, $t3, $t5
+	slt	$t5, $t4, $a5
+	maskeqz	$t4, $t4, $t5
+	masknez	$t5, $a5, $t5
+	or	$t4, $t4, $t5
+	slt	$t1, $a6, $t1
+	slt	$t2, $a6, $t2
+	masknez	$t3, $t3, $t1
+	maskeqz	$t1, $a7, $t1
+	or	$t1, $t1, $t3
+	masknez	$t3, $t4, $t2
+	maskeqz	$t2, $a7, $t2
+	or	$t2, $t2, $t3
+	add.d	$t3, $a0, $a2
+	stx.h	$t1, $a0, $a2
+	st.h	$t2, $t3, 2
+	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 8
+	bne	$a2, $t0, .LBB1_15
 	b	.LBB1_18
-.LBB1_16:                               # %vector.body51.preheader
-	ori	$a3, $zero, 128
+.LBB1_16:                               # %vector.body43.preheader
+	ori	$a6, $zero, 128
 	.p2align	4, , 16
-.LBB1_17:                               # %vector.body51
+.LBB1_17:                               # %vector.body43
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr3, $a1, 0
-	vilvh.w	$vr4, $vr9, $vr3
-	vilvl.w	$vr3, $vr9, $vr3
-	vori.b	$vr5, $vr10, 0
-	vmadd.d	$vr5, $vr0, $vr3
-	vori.b	$vr3, $vr10, 0
-	vmadd.d	$vr3, $vr0, $vr4
-	vmuh.d	$vr4, $vr3, $vr1
-	vadd.d	$vr3, $vr4, $vr3
-	vsrli.d	$vr4, $vr3, 63
-	vsrai.d	$vr3, $vr3, 6
-	vadd.d	$vr3, $vr3, $vr4
-	vmuh.d	$vr4, $vr5, $vr1
-	vadd.d	$vr4, $vr4, $vr5
-	vsrli.d	$vr5, $vr4, 63
-	vsrai.d	$vr4, $vr4, 6
-	vadd.d	$vr4, $vr4, $vr5
-	vmaxi.d	$vr4, $vr4, 1
-	vmaxi.d	$vr3, $vr3, 1
-	vmin.d	$vr3, $vr3, $vr2
-	vmin.d	$vr4, $vr4, $vr2
-	vpickve2gr.d	$a4, $vr4, 0
-	vinsgr2vr.h	$vr5, $a4, 0
-	vpickve2gr.d	$a4, $vr4, 1
-	vinsgr2vr.h	$vr5, $a4, 1
-	vpickve2gr.d	$a4, $vr3, 0
-	vinsgr2vr.h	$vr5, $a4, 2
-	vpickve2gr.d	$a4, $vr3, 1
-	vinsgr2vr.h	$vr5, $a4, 3
-	add.d	$a4, $a0, $a2
-	vstelm.d	$vr5, $a4, 0, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a1, $a1, 16
-	bne	$a2, $a3, .LBB1_17
+	ld.wu	$a7, $a1, -4
+	ld.wu	$t0, $a1, 0
+	mul.d	$a7, $a7, $fp
+	mul.d	$t0, $t0, $fp
+	addi.d	$a7, $a7, 50
+	addi.d	$t0, $t0, 50
+	mulh.d	$t1, $a7, $a3
+	add.d	$a7, $t1, $a7
+	srli.d	$t1, $a7, 63
+	srai.d	$a7, $a7, 6
+	add.d	$a7, $a7, $t1
+	mulh.d	$t1, $t0, $a3
+	add.d	$t0, $t1, $t0
+	srli.d	$t1, $t0, 63
+	srai.d	$t0, $t0, 6
+	add.d	$t0, $t0, $t1
+	slt	$t1, $a4, $a7
+	maskeqz	$a7, $a7, $t1
+	masknez	$t1, $a4, $t1
+	or	$a7, $a7, $t1
+	slt	$t1, $a4, $t0
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a4, $t1
+	or	$t0, $t0, $t1
+	slt	$t1, $a7, $a5
+	maskeqz	$a7, $a7, $t1
+	masknez	$t1, $a5, $t1
+	or	$a7, $a7, $t1
+	slt	$t1, $t0, $a5
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a5, $t1
+	or	$t0, $t0, $t1
+	add.d	$t1, $a0, $a2
+	stx.h	$a7, $a0, $a2
+	st.h	$t0, $t1, 2
+	addi.d	$a2, $a2, 4
+	addi.d	$a1, $a1, 8
+	bne	$a2, $a6, .LBB1_17
 .LBB1_18:                               # %jpeg_add_quant_table.exit20
 	st.w	$zero, $a0, 128
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end1:
 	.size	jpeg_set_linear_quality, .Lfunc_end1-jpeg_set_linear_quality

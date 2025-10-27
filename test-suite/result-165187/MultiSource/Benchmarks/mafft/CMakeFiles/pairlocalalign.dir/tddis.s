@@ -1560,19 +1560,20 @@ strnbcat:                               # @strnbcat
 	.type	conjuctionforgaln,@function
 conjuctionforgaln:                      # @conjuctionforgaln
 # %bb.0:
-	addi.d	$sp, $sp, -400
-	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 312                   # 8-byte Folded Spill
-	ld.d	$s1, $sp, 400
+	addi.d	$sp, $sp, -384
+	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
+	ld.d	$s1, $sp, 384
 	st.b	$zero, $s1, 0
 	bge	$a0, $a1, .LBB9_8
 # %bb.1:                                # %.lr.ph.preheader
@@ -1582,7 +1583,7 @@ conjuctionforgaln:                      # @conjuctionforgaln
 	alsl.d	$s6, $a0, $a2, 3
 	alsl.d	$s7, $a0, $a5, 3
 	addi.w	$s3, $a0, 1
-	movgr2fr.d	$fa3, $zero
+	movgr2fr.d	$fs0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
 	ori	$s8, $zero, 99
@@ -1596,8 +1597,7 @@ conjuctionforgaln:                      # @conjuctionforgaln
 	fld.d	$fa0, $s7, 0
 	st.d	$a0, $s2, 0
 	fst.d	$fa0, $s0, 0
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
-	fadd.d	$fa3, $fa3, $fa0
+	fadd.d	$fs0, $fs0, $fa0
 	addi.d	$s6, $s6, 8
 	addi.d	$s7, $s7, 8
 	addi.w	$s3, $s3, 1
@@ -1607,8 +1607,7 @@ conjuctionforgaln:                      # @conjuctionforgaln
 	beqz	$s5, .LBB9_5
 .LBB9_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 32
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(sprintf)
@@ -1618,7 +1617,7 @@ conjuctionforgaln:                      # @conjuctionforgaln
 	jirl	$ra, $ra, 0
 	bltu	$s8, $a0, .LBB9_2
 # %bb.4:                                #   in Loop: Header=BB9_3 Depth=1
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 32
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
@@ -1626,8 +1625,8 @@ conjuctionforgaln:                      # @conjuctionforgaln
 .LBB9_5:                                # %.preheader
 	beqz	$fp, .LBB9_8
 # %bb.6:                                # %.lr.ph33.preheader
-	ori	$a0, $zero, 4
-	bgeu	$fp, $a0, .LBB9_9
+	ori	$a0, $zero, 1
+	bne	$fp, $a0, .LBB9_9
 # %bb.7:
 	move	$a0, $zero
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
@@ -1638,52 +1637,52 @@ conjuctionforgaln:                      # @conjuctionforgaln
 	b	.LBB9_14
 .LBB9_9:                                # %vector.ph
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	bstrpick.d	$a0, $a4, 31, 2
-	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr3, 0
+	bstrpick.d	$a0, $a4, 31, 1
+	slli.d	$a0, $a0, 1
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$a1, $a3, 16
+	addi.d	$a1, $a3, 8
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB9_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a1, -16
-	vld	$vr2, $a1, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vfdiv.d	$vr2, $vr2, $vr0
-	vst	$vr1, $a1, -16
-	vst	$vr2, $a1, 0
-	addi.d	$a2, $a2, -4
-	addi.d	$a1, $a1, 32
+	fld.d	$fa0, $a1, -8
+	fld.d	$fa1, $a1, 0
+	fdiv.d	$fa0, $fa0, $fs0
+	fdiv.d	$fa1, $fa1, $fs0
+	fst.d	$fa0, $a1, -8
+	fst.d	$fa1, $a1, 0
+	addi.d	$a2, $a2, -2
+	addi.d	$a1, $a1, 16
 	bnez	$a2, .LBB9_10
 # %bb.11:                               # %middle.block
 	beq	$a0, $a4, .LBB9_14
-.LBB9_12:                               # %.lr.ph33.preheader47
+.LBB9_12:                               # %.lr.ph33.preheader46
 	alsl.d	$a1, $a0, $a3, 3
 	sub.d	$a0, $a4, $a0
 	.p2align	4, , 16
 .LBB9_13:                               # %.lr.ph33
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
-	fdiv.d	$fa0, $fa0, $fa3
+	fdiv.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB9_13
 .LBB9_14:                               # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 400
+	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 384
 	ret
 .Lfunc_end9:
 	.size	conjuctionforgaln, .Lfunc_end9-conjuctionforgaln
@@ -1755,18 +1754,19 @@ makegrouprnait:                         # @makegrouprnait
 	.type	fastconjuction_noweight,@function
 fastconjuction_noweight:                # @fastconjuction_noweight
 # %bb.0:
-	addi.d	$sp, $sp, -400
-	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 312                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -384
+	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
 	st.b	$zero, $a4, 0
 	ld.w	$s6, $a0, 0
@@ -1776,7 +1776,7 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 	move	$s2, $a2
 	move	$s3, $a1
 	addi.d	$s7, $a0, 4
-	movgr2fr.d	$fa3, $zero
+	movgr2fr.d	$fs0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
 	move	$fp, $zero
@@ -1792,9 +1792,8 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 	st.d	$a0, $s2, 0
 	lu52i.d	$a0, $zero, 1023
 	st.d	$a0, $s1, 0
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
 	vldi	$vr0, -912
-	fadd.d	$fa3, $fa3, $fa0
+	fadd.d	$fs0, $fs0, $fa0
 	addi.d	$s8, $s8, 1
 	ld.w	$s6, $s7, 0
 	addi.w	$fp, $fp, 1
@@ -1804,9 +1803,8 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 	beq	$s6, $s5, .LBB12_5
 .LBB12_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
 	addi.w	$a2, $s6, 1
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 32
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
@@ -1814,14 +1812,14 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 	ori	$a0, $zero, 99
 	blt	$a0, $s0, .LBB12_2
 # %bb.4:                                #   in Loop: Header=BB12_3 Depth=1
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 32
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
 	b	.LBB12_2
 .LBB12_5:                               # %.preheader
 	bstrpick.d	$a1, $s8, 31, 0
-	ori	$a0, $zero, 4
+	ori	$a0, $zero, 2
 	bgeu	$a1, $a0, .LBB12_8
 # %bb.6:
 	move	$a0, $zero
@@ -1831,23 +1829,22 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 	move	$fp, $zero
 	b	.LBB12_13
 .LBB12_8:                               # %vector.ph
-	bstrpick.d	$a0, $s8, 31, 2
-	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr3, 0
+	bstrpick.d	$a0, $s8, 31, 1
+	slli.d	$a0, $a0, 1
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	addi.d	$a2, $a4, 16
+	addi.d	$a2, $a4, 8
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB12_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, -16
-	vld	$vr2, $a2, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vfdiv.d	$vr2, $vr2, $vr0
-	vst	$vr1, $a2, -16
-	vst	$vr2, $a2, 0
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
+	fld.d	$fa0, $a2, -8
+	fld.d	$fa1, $a2, 0
+	fdiv.d	$fa0, $fa0, $fs0
+	fdiv.d	$fa1, $fa1, $fs0
+	fst.d	$fa0, $a2, -8
+	fst.d	$fa1, $a2, 0
+	addi.d	$a3, $a3, -2
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB12_9
 # %bb.10:                               # %middle.block
 	beq	$a1, $a0, .LBB12_13
@@ -1859,25 +1856,26 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 .LBB12_12:                              # %.lr.ph36
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
-	fdiv.d	$fa0, $fa0, $fa3
+	fdiv.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB12_12
 .LBB12_13:                              # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 400
+	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 384
 	ret
 .Lfunc_end12:
 	.size	fastconjuction_noweight, .Lfunc_end12-fastconjuction_noweight
@@ -1887,18 +1885,19 @@ fastconjuction_noweight:                # @fastconjuction_noweight
 	.type	fastconjuction_noname,@function
 fastconjuction_noname:                  # @fastconjuction_noname
 # %bb.0:
-	addi.d	$sp, $sp, -400
-	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 312                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -384
+	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
 	st.d	$a5, $sp, 16                    # 8-byte Folded Spill
 	st.b	$zero, $a5, 0
 	ld.w	$s8, $a0, 0
@@ -1909,7 +1908,7 @@ fastconjuction_noname:                  # @fastconjuction_noname
 	move	$s3, $a2
 	move	$s4, $a1
 	addi.d	$s7, $a0, 4
-	movgr2fr.d	$fa3, $zero
+	movgr2fr.d	$fs0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s5, $a0, %pc_lo12(.L.str.1)
 	move	$fp, $zero
@@ -1926,8 +1925,7 @@ fastconjuction_noname:                  # @fastconjuction_noname
 	fldx.d	$fa0, $a2, $a0
 	st.d	$a1, $s3, 0
 	fst.d	$fa0, $s2, 0
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
-	fadd.d	$fa3, $fa3, $fa0
+	fadd.d	$fs0, $fs0, $fa0
 	addi.d	$s0, $s0, 1
 	ld.w	$s8, $s7, 0
 	addi.w	$fp, $fp, 1
@@ -1937,9 +1935,8 @@ fastconjuction_noname:                  # @fastconjuction_noname
 	beq	$s8, $s6, .LBB13_5
 .LBB13_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
 	addi.w	$a2, $s8, 1
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 32
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
@@ -1947,14 +1944,14 @@ fastconjuction_noname:                  # @fastconjuction_noname
 	ori	$a0, $zero, 99
 	blt	$a0, $s1, .LBB13_2
 # %bb.4:                                #   in Loop: Header=BB13_3 Depth=1
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 32
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
 	b	.LBB13_2
 .LBB13_5:                               # %.preheader
 	bstrpick.d	$a1, $s0, 31, 0
-	ori	$a0, $zero, 4
+	ori	$a0, $zero, 2
 	bgeu	$a1, $a0, .LBB13_8
 # %bb.6:
 	move	$a0, $zero
@@ -1964,23 +1961,22 @@ fastconjuction_noname:                  # @fastconjuction_noname
 	move	$fp, $zero
 	b	.LBB13_13
 .LBB13_8:                               # %vector.ph
-	bstrpick.d	$a0, $s0, 31, 2
-	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr3, 0
+	bstrpick.d	$a0, $s0, 31, 1
+	slli.d	$a0, $a0, 1
 	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$a2, $a4, 16
+	addi.d	$a2, $a4, 8
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB13_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, -16
-	vld	$vr2, $a2, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vfdiv.d	$vr2, $vr2, $vr0
-	vst	$vr1, $a2, -16
-	vst	$vr2, $a2, 0
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
+	fld.d	$fa0, $a2, -8
+	fld.d	$fa1, $a2, 0
+	fdiv.d	$fa0, $fa0, $fs0
+	fdiv.d	$fa1, $fa1, $fs0
+	fst.d	$fa0, $a2, -8
+	fst.d	$fa1, $a2, 0
+	addi.d	$a3, $a3, -2
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB13_9
 # %bb.10:                               # %middle.block
 	beq	$a1, $a0, .LBB13_13
@@ -1992,25 +1988,26 @@ fastconjuction_noname:                  # @fastconjuction_noname
 .LBB13_12:                              # %.lr.ph38
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
-	fdiv.d	$fa0, $fa0, $fa3
+	fdiv.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB13_12
 .LBB13_13:                              # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 400
+	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 384
 	ret
 .Lfunc_end13:
 	.size	fastconjuction_noname, .Lfunc_end13-fastconjuction_noname
@@ -2020,18 +2017,19 @@ fastconjuction_noname:                  # @fastconjuction_noname
 	.type	fastconjuction,@function
 fastconjuction:                         # @fastconjuction
 # %bb.0:
-	addi.d	$sp, $sp, -400
-	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 312                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -384
+	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
 	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
 	st.b	$zero, $a7, 0
 	ld.w	$s8, $a0, 0
@@ -2042,7 +2040,7 @@ fastconjuction:                         # @fastconjuction
 	move	$s3, $a2
 	move	$s4, $a1
 	addi.d	$s7, $a0, 4
-	movgr2fr.d	$fa3, $zero
+	movgr2fr.d	$fs0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s5, $a0, %pc_lo12(.L.str.1)
 	move	$fp, $zero
@@ -2059,8 +2057,7 @@ fastconjuction:                         # @fastconjuction
 	fldx.d	$fa0, $a2, $a0
 	st.d	$a1, $s3, 0
 	fst.d	$fa0, $s2, 0
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
-	fadd.d	$fa3, $fa3, $fa0
+	fadd.d	$fs0, $fs0, $fa0
 	addi.d	$s0, $s0, 1
 	ld.w	$s8, $s7, 0
 	addi.w	$fp, $fp, 1
@@ -2070,9 +2067,8 @@ fastconjuction:                         # @fastconjuction
 	beq	$s8, $s6, .LBB14_5
 .LBB14_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
 	addi.w	$a2, $s8, 1
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 32
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
@@ -2080,14 +2076,14 @@ fastconjuction:                         # @fastconjuction
 	ori	$a0, $zero, 99
 	blt	$a0, $s1, .LBB14_2
 # %bb.4:                                #   in Loop: Header=BB14_3 Depth=1
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 32
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
 	b	.LBB14_2
 .LBB14_5:                               # %.preheader
 	bstrpick.d	$a1, $s0, 31, 0
-	ori	$a0, $zero, 4
+	ori	$a0, $zero, 2
 	bgeu	$a1, $a0, .LBB14_8
 # %bb.6:
 	move	$a0, $zero
@@ -2097,23 +2093,22 @@ fastconjuction:                         # @fastconjuction
 	move	$fp, $zero
 	b	.LBB14_13
 .LBB14_8:                               # %vector.ph
-	bstrpick.d	$a0, $s0, 31, 2
-	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr3, 0
+	bstrpick.d	$a0, $s0, 31, 1
+	slli.d	$a0, $a0, 1
 	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$a2, $a4, 16
+	addi.d	$a2, $a4, 8
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB14_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, -16
-	vld	$vr2, $a2, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vfdiv.d	$vr2, $vr2, $vr0
-	vst	$vr1, $a2, -16
-	vst	$vr2, $a2, 0
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
+	fld.d	$fa0, $a2, -8
+	fld.d	$fa1, $a2, 0
+	fdiv.d	$fa0, $fa0, $fs0
+	fdiv.d	$fa1, $fa1, $fs0
+	fst.d	$fa0, $a2, -8
+	fst.d	$fa1, $a2, 0
+	addi.d	$a3, $a3, -2
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB14_9
 # %bb.10:                               # %middle.block
 	beq	$a1, $a0, .LBB14_13
@@ -2125,25 +2120,26 @@ fastconjuction:                         # @fastconjuction
 .LBB14_12:                              # %.lr.ph38
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
-	fdiv.d	$fa0, $fa0, $fa3
+	fdiv.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB14_12
 .LBB14_13:                              # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 400
+	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 384
 	ret
 .Lfunc_end14:
 	.size	fastconjuction, .Lfunc_end14-fastconjuction
@@ -2153,18 +2149,19 @@ fastconjuction:                         # @fastconjuction
 	.type	conjuctionfortbfast,@function
 conjuctionfortbfast:                    # @conjuctionfortbfast
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -368
+	st.d	$ra, $sp, 360                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 280                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 272                  # 8-byte Folded Spill
 	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
 	move	$s3, $a1
 	st.b	$zero, $a6, 0
@@ -2180,7 +2177,7 @@ conjuctionfortbfast:                    # @conjuctionfortbfast
 	addi.w	$s4, $s3, 1
 	alsl.d	$s8, $s3, $a2, 3
 	alsl.d	$fp, $s3, $a5, 3
-	movgr2fr.d	$fa3, $zero
+	movgr2fr.d	$fs0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s5, $a0, %pc_lo12(.L.str.1)
 	move	$s0, $zero
@@ -2194,8 +2191,7 @@ conjuctionfortbfast:                    # @conjuctionfortbfast
 	ld.w	$a1, $s6, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $a2
-	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
-	fadd.d	$fa3, $fa3, $fa0
+	fadd.d	$fs0, $fs0, $fa0
 	addi.w	$s0, $s0, 1
 .LBB15_3:                               # %._crit_edge40
                                         #   in Loop: Header=BB15_4 Depth=1
@@ -2209,8 +2205,7 @@ conjuctionfortbfast:                    # @conjuctionfortbfast
 	ldx.bu	$a0, $a0, $s3
 	beqz	$a0, .LBB15_3
 # %bb.5:                                #   in Loop: Header=BB15_4 Depth=1
-	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 16
 	move	$a1, $s5
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(sprintf)
@@ -2221,7 +2216,7 @@ conjuctionfortbfast:                    # @conjuctionfortbfast
 	ori	$a1, $zero, 99
 	bltu	$a1, $a0, .LBB15_2
 # %bb.6:                                #   in Loop: Header=BB15_4 Depth=1
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 16
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
@@ -2229,33 +2224,32 @@ conjuctionfortbfast:                    # @conjuctionfortbfast
 .LBB15_7:                               # %.preheader
 	blez	$s0, .LBB15_15
 # %bb.8:                                # %.lr.ph37.preheader
-	ori	$a0, $zero, 4
-	bgeu	$s0, $a0, .LBB15_10
+	ori	$a0, $zero, 1
+	bne	$s0, $a0, .LBB15_10
 # %bb.9:
 	move	$a0, $zero
 	b	.LBB15_13
 .LBB15_10:                              # %vector.ph
-	bstrpick.d	$a0, $s0, 30, 2
-	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr3, 0
+	bstrpick.d	$a0, $s0, 30, 1
+	slli.d	$a0, $a0, 1
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$a1, $a1, 16
+	addi.d	$a1, $a1, 8
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB15_11:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a1, -16
-	vld	$vr2, $a1, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vfdiv.d	$vr2, $vr2, $vr0
-	vst	$vr1, $a1, -16
-	vst	$vr2, $a1, 0
-	addi.d	$a2, $a2, -4
-	addi.d	$a1, $a1, 32
+	fld.d	$fa0, $a1, -8
+	fld.d	$fa1, $a1, 0
+	fdiv.d	$fa0, $fa0, $fs0
+	fdiv.d	$fa1, $fa1, $fs0
+	fst.d	$fa0, $a1, -8
+	fst.d	$fa1, $a1, 0
+	addi.d	$a2, $a2, -2
+	addi.d	$a1, $a1, 16
 	bnez	$a2, .LBB15_11
 # %bb.12:                               # %middle.block
 	beq	$a0, $s0, .LBB15_15
-.LBB15_13:                              # %.lr.ph37.preheader47
+.LBB15_13:                              # %.lr.ph37.preheader46
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
 	sub.d	$a0, $s0, $a0
@@ -2263,25 +2257,26 @@ conjuctionfortbfast:                    # @conjuctionfortbfast
 .LBB15_14:                              # %.lr.ph37
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
-	fdiv.d	$fa0, $fa0, $fa3
+	fdiv.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB15_14
 .LBB15_15:                              # %._crit_edge
 	move	$a0, $s0
-	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	fld.d	$fs0, $sp, 272                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 360                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 368
 	ret
 .Lfunc_end15:
 	.size	conjuctionfortbfast, .Lfunc_end15-conjuctionfortbfast

@@ -233,20 +233,7 @@ Ppmd7_Init:                             # @Ppmd7_Init
 .Lfunc_end3:
 	.size	Ppmd7_Init, .Lfunc_end3-Ppmd7_Init
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function RestartModel
-.LCPI4_0:
-	.word	15581                           # 0x3cdd
-	.word	7999                            # 0x1f3f
-	.word	22975                           # 0x59bf
-	.word	18675                           # 0x48f3
-.LCPI4_1:
-	.word	25761                           # 0x64a1
-	.word	23228                           # 0x5abc
-	.word	26162                           # 0x6632
-	.word	24657                           # 0x6051
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function RestartModel
 	.type	RestartModel,@function
 RestartModel:                           # @RestartModel
 # %bb.0:                                # %vector.ph
@@ -323,42 +310,108 @@ RestartModel:                           # @RestartModel
 	bne	$a3, $a2, .LBB4_1
 # %bb.2:                                # %.preheader69
 	addi.d	$a0, $fp, 2047
-	addi.d	$a0, $a0, 865
+	addi.d	$a0, $a0, 879
 	ori	$a1, $zero, 2
-	lu12i.w	$a2, -4
-	pcalau12i	$a3, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI4_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI4_1)
-	vld	$vr1, $a3, %pc_lo12(.LCPI4_1)
-	vldi	$vr2, -2752
-	lu12i.w	$t1, 3
-	ori	$a3, $t1, 3984
-	ori	$a4, $t1, 4000
-	ori	$a5, $t1, 4016
-	ori	$a6, $t1, 4032
-	ori	$a7, $t1, 4048
-	ori	$t0, $t1, 4064
-	ori	$t1, $t1, 4080
-	lu12i.w	$t2, 4
+	ori	$a2, $zero, 128
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 3293
+	lu12i.w	$a4, 4
+	lu12i.w	$a5, 1
+	ori	$a5, $a5, 3903
+	lu12i.w	$t1, 5
+	ori	$a6, $t1, 2495
+	ori	$a7, $a4, 2291
+	lu12i.w	$t3, 6
+	ori	$t0, $t3, 1185
+	ori	$t1, $t1, 2748
+	ori	$t2, $t3, 1586
+	ori	$t3, $t3, 81
 	.p2align	4, , 16
 .LBB4_3:                                # %.preheader68
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$t3, $a0, $a2
-	vreplgr2vr.w	$vr3, $a1
-	vdiv.wu	$vr4, $vr0, $vr3
-	vdiv.wu	$vr3, $vr1, $vr3
-	vpickev.h	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr2, $vr3
-	vstx	$vr3, $t3, $a3
-	vstx	$vr3, $t3, $a4
-	vstx	$vr3, $t3, $a5
-	vstx	$vr3, $t3, $a6
-	vstx	$vr3, $t3, $a7
-	vstx	$vr3, $t3, $t0
-	vstx	$vr3, $t3, $t1
-	vstx	$vr3, $t3, $t2
-	addi.d	$a2, $a2, 128
-	addi.d	$a1, $a1, 1
+	div.wu	$t4, $a3, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -126
+	st.h	$t4, $a0, -110
+	st.h	$t4, $a0, -94
+	st.h	$t4, $a0, -78
+	st.h	$t4, $a0, -62
+	st.h	$t4, $a0, -46
+	st.h	$t4, $a0, -30
+	st.h	$t4, $a0, -14
+	div.wu	$t4, $a5, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -124
+	st.h	$t4, $a0, -108
+	st.h	$t4, $a0, -92
+	st.h	$t4, $a0, -76
+	st.h	$t4, $a0, -60
+	st.h	$t4, $a0, -44
+	st.h	$t4, $a0, -28
+	st.h	$t4, $a0, -12
+	div.wu	$t4, $a6, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -122
+	st.h	$t4, $a0, -106
+	st.h	$t4, $a0, -90
+	st.h	$t4, $a0, -74
+	st.h	$t4, $a0, -58
+	st.h	$t4, $a0, -42
+	st.h	$t4, $a0, -26
+	st.h	$t4, $a0, -10
+	div.wu	$t4, $a7, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -120
+	st.h	$t4, $a0, -104
+	st.h	$t4, $a0, -88
+	st.h	$t4, $a0, -72
+	st.h	$t4, $a0, -56
+	st.h	$t4, $a0, -40
+	st.h	$t4, $a0, -24
+	st.h	$t4, $a0, -8
+	div.wu	$t4, $t0, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -118
+	st.h	$t4, $a0, -102
+	st.h	$t4, $a0, -86
+	st.h	$t4, $a0, -70
+	st.h	$t4, $a0, -54
+	st.h	$t4, $a0, -38
+	st.h	$t4, $a0, -22
+	st.h	$t4, $a0, -6
+	div.wu	$t4, $t1, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -116
+	st.h	$t4, $a0, -100
+	st.h	$t4, $a0, -84
+	st.h	$t4, $a0, -68
+	st.h	$t4, $a0, -52
+	st.h	$t4, $a0, -36
+	st.h	$t4, $a0, -20
+	st.h	$t4, $a0, -4
+	div.wu	$t4, $t2, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -114
+	st.h	$t4, $a0, -98
+	st.h	$t4, $a0, -82
+	st.h	$t4, $a0, -66
+	st.h	$t4, $a0, -50
+	st.h	$t4, $a0, -34
+	st.h	$t4, $a0, -18
+	st.h	$t4, $a0, -2
+	div.wu	$t4, $t3, $a1
+	sub.d	$t4, $a4, $t4
+	st.h	$t4, $a0, -112
+	st.h	$t4, $a0, -96
+	st.h	$t4, $a0, -80
+	st.h	$t4, $a0, -64
+	st.h	$t4, $a0, -48
+	st.h	$t4, $a0, -32
+	st.h	$t4, $a0, -16
+	st.h	$t4, $a0, 0
+	addi.w	$a1, $a1, 1
+	addi.d	$a2, $a2, -1
+	addi.d	$a0, $a0, 128
 	bnez	$a2, .LBB4_3
 # %bb.4:                                # %.preheader67
 	move	$a0, $zero

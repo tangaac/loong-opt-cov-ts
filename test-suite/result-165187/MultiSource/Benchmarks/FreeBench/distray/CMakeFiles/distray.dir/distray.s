@@ -872,7 +872,7 @@ TraceLine:                              # @TraceLine
 	fmadd.d	$fa0, $fa4, $fa4, $fa0
 	fsqrt.d	$fa0, $fa0
 	fdiv.d	$fs0, $fa1, $fa0
-	vrepli.b	$vr3, 0
+	vrepli.b	$vr2, 0
 	pcalau12i	$s4, %pc_hi20(rnd)
 	lu12i.w	$a0, 269412
 	ori	$s5, $a0, 3693
@@ -885,7 +885,7 @@ TraceLine:                              # @TraceLine
 	.p2align	4, , 16
 .LBB1_28:                               # %DistribVector.exit80
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr3, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr2, $sp, 128                  # 16-byte Folded Spill
 	fld.d	$fa0, $s2, 40
 	ld.d	$a0, $s4, %pc_lo12(rnd)
 	fmul.d	$fa1, $fa0, $fs6
@@ -938,13 +938,13 @@ TraceLine:                              # @TraceLine
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(TraceLine)
 	jirl	$ra, $ra, 0
-	vld	$vr3, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 128                  # 16-byte Folded Reload
 	fld.d	$fa0, $sp, 216
 	vld	$vr1, $sp, 224
 	ld.w	$a0, $s1, %pc_lo12(DISTRIB)
 	fadd.d	$fs7, $fa0, $fs7
 	addi.w	$s3, $s3, 1
-	vfadd.d	$vr3, $vr1, $vr3
+	vfadd.d	$vr2, $vr1, $vr2
 	blt	$s3, $a0, .LBB1_28
 	b	.LBB1_31
 .LBB1_29:
@@ -955,31 +955,30 @@ TraceLine:                              # @TraceLine
 	pcaddu18i	$ra, %call36(TraceLine)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $sp, 240
-	fld.d	$fa1, $sp, 248
-	fld.d	$fa2, $sp, 256
+	vld	$vr2, $sp, 248
 	b	.LBB1_32
 .LBB1_30:
 	movgr2fr.d	$fs7, $zero
-	vld	$vr3, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 128                  # 16-byte Folded Reload
 .LBB1_31:                               # %._crit_edge
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
-	frecip.d	$fa2, $fa0
-	fmul.d	$fa0, $fa2, $fs7
-	vreplvei.d	$vr1, $vr3, 0
-	fmul.d	$fa1, $fa2, $fa1
-	vreplvei.d	$vr3, $vr3, 1
-	fmul.d	$fa2, $fa2, $fa3
+	frecip.d	$fa1, $fa0
+	fmul.d	$fa0, $fa1, $fs7
+	vreplvei.d	$vr1, $vr1, 0
+	vfmul.d	$vr2, $vr1, $vr2
 .LBB1_32:
 	fld.d	$fa3, $s2, 32
-	fld.d	$fa4, $fp, 0
-	fld.d	$fa5, $fp, 8
-	fmadd.d	$fa0, $fa0, $fa3, $fa4
-	fld.d	$fa4, $fp, 16
+	fld.d	$fa1, $fp, 0
+	fmadd.d	$fa0, $fa0, $fa3, $fa1
+	fld.d	$fa1, $fp, 8
 	fst.d	$fa0, $fp, 0
-	fmadd.d	$fa1, $fa1, $fa3, $fa5
+	vreplvei.d	$vr4, $vr2, 0
+	fld.d	$fa5, $fp, 16
+	fmadd.d	$fa1, $fa4, $fa3, $fa1
 	fst.d	$fa1, $fp, 8
-	fmadd.d	$fa2, $fa2, $fa3, $fa4
+	vreplvei.d	$vr2, $vr2, 1
+	fmadd.d	$fa2, $fa2, $fa3, $fa5
 .LBB1_33:                               # %.sink.split
 	fst.d	$fa2, $fp, 16
 	vldi	$vr3, -912

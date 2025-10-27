@@ -30,99 +30,75 @@ Crystal_pow:                            # @Crystal_pow
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a1
 	move	$s0, $a0
-	ori	$a0, $zero, 4
-	bgeu	$s0, $a0, .LBB0_3
+	ori	$a3, $zero, 1
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	bne	$a0, $a3, .LBB0_3
 # %bb.2:
 	move	$a0, $zero
 	b	.LBB0_6
 .LBB0_3:                                # %vector.ph
-	bstrpick.d	$a0, $s0, 30, 2
-	slli.d	$a0, $a0, 2
-	addi.d	$a1, $sp, 128
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
-	vreplgr2vr.d	$vr0, $a2
-	addi.d	$a2, $sp, 32
-	vldi	$vr1, -912
-	lu12i.w	$a3, -419431
-	ori	$a3, $a3, 2458
-	lu32i.d	$a3, -419431
-	lu52i.d	$a3, $a3, 1020
-	vreplgr2vr.d	$vr2, $a3
-	lu12i.w	$a3, -209716
-	ori	$a3, $a3, 3277
-	lu32i.d	$a3, -209716
-	lu52i.d	$a3, $a3, 1022
-	vreplgr2vr.d	$vr3, $a3
-	vldi	$vr4, -984
-	move	$a3, $a0
+	bstrpick.d	$a0, $s0, 30, 1
+	slli.d	$a0, $a0, 1
+	addi.d	$a4, $sp, 16
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_0)
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI0_1)
+	addi.d	$a5, $sp, 120
+	vldi	$vr2, -912
+	vldi	$vr3, -984
+	move	$a6, $a0
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr5, $vr0, 2
-	vst	$vr1, $a2, -16
-	vst	$vr1, $a2, 0
-	vpickve2gr.w	$a4, $vr0, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a4, $vr0, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa7, $a4
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a4, $vr5, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a4, $vr5, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa5, $a4
+	bstrpick.d	$a7, $a3, 31, 0
+	addi.d	$t0, $a3, -1
+	bstrpick.d	$t0, $t0, 31, 0
+	vst	$vr2, $a4, 0
+	movgr2fr.d	$fa4, $t0
+	ffint.d.l	$fa4, $fa4
+	movgr2fr.d	$fa5, $a7
 	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr6, 16
-	vfmul.d	$vr6, $vr7, $vr2
-	vfmul.d	$vr5, $vr5, $vr2
-	vfmul.d	$vr6, $vr6, $vr3
-	vfmul.d	$vr5, $vr5, $vr3
-	vfdiv.d	$vr6, $vr6, $vr4
-	vfdiv.d	$vr5, $vr5, $vr4
-	vst	$vr6, $a1, -16
-	vst	$vr5, $a1, 0
-	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a1, $a1, 32
-	addi.d	$a2, $a2, 32
-	bnez	$a3, .LBB0_4
+	fmul.d	$fa4, $fa4, $fa0
+	fmul.d	$fa5, $fa5, $fa0
+	fmul.d	$fa4, $fa4, $fa1
+	fmul.d	$fa5, $fa5, $fa1
+	fdiv.d	$fa4, $fa4, $fa3
+	fdiv.d	$fa5, $fa5, $fa3
+	fst.d	$fa4, $a5, -8
+	fst.d	$fa5, $a5, 0
+	addi.d	$a5, $a5, 16
+	addi.d	$a6, $a6, -2
+	addi.d	$a4, $a4, 16
+	addi.w	$a3, $a3, 2
+	bnez	$a6, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a0, $s0, .LBB0_8
 .LBB0_6:                                # %.lr.ph.preheader26
-	addi.d	$a1, $sp, 112
-	alsl.d	$a1, $a0, $a1, 3
-	addi.d	$a2, $sp, 16
-	alsl.d	$a2, $a0, $a2, 3
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	fld.d	$fa1, $a3, %pc_lo12(.LCPI0_1)
-	sub.d	$a3, $s0, $a0
-	lu52i.d	$a4, $zero, 1023
+	addi.d	$a3, $sp, 112
+	alsl.d	$a3, $a0, $a3, 3
+	addi.d	$a4, $sp, 16
+	alsl.d	$a4, $a0, $a4, 3
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_0)
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI0_1)
+	sub.d	$a1, $s0, $a0
+	lu52i.d	$a2, $zero, 1023
 	vldi	$vr2, -984
 	.p2align	4, , 16
 .LBB0_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a4, $a2, 0
+	st.d	$a2, $a4, 0
 	bstrpick.d	$a5, $a0, 31, 0
 	movgr2fr.d	$fa3, $a5
 	ffint.d.l	$fa3, $fa3
 	fmul.d	$fa3, $fa3, $fa0
 	fmul.d	$fa3, $fa3, $fa1
 	fdiv.d	$fa3, $fa3, $fa2
-	fst.d	$fa3, $a1, 0
-	addi.d	$a1, $a1, 8
-	addi.d	$a2, $a2, 8
-	addi.d	$a3, $a3, -1
+	fst.d	$fa3, $a3, 0
+	addi.d	$a3, $a3, 8
+	addi.d	$a4, $a4, 8
+	addi.d	$a1, $a1, -1
 	addi.w	$a0, $a0, 1
-	bnez	$a3, .LBB0_7
+	bnez	$a1, .LBB0_7
 .LBB0_8:                                # %.lr.ph21.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_2)

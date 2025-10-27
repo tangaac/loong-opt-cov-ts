@@ -106,13 +106,10 @@ polybench_alloc_data:                   # @polybench_alloc_data
 .Lfunc_end6:
 	.size	polybench_alloc_data, .Lfunc_end6-polybench_alloc_data
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function main
-.LCPI7_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
 	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0
+	.p2align	3, 0x0                          # -- Begin function main
+.LCPI7_0:
+	.dword	0x4054000000000000              # double 80
 .LCPI7_1:
 	.dword	0x4059000000000000              # double 100
 .LCPI7_2:
@@ -170,45 +167,46 @@ main:                                   # @main
 # %bb.5:                                # %polybench_alloc_data.exit13
 	bnez	$a0, .LBB7_31
 # %bb.6:                                # %polybench_alloc_data.exit15
+	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI7_0)
 	move	$a0, $zero
-	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_0)
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 262144
-	lu52i.d	$a1, $a1, 1029
-	vreplgr2vr.d	$vr1, $a1
-	ori	$a1, $zero, 640
-	ori	$a2, $zero, 100
-	move	$a3, $fp
+	move	$a1, $zero
+	move	$a2, $zero
+	ori	$a3, $zero, 640
+	ori	$a4, $zero, 100
+	move	$a5, $fp
 	.p2align	4, , 16
 .LBB7_7:                                # %.preheader.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_8 Depth 2
-	move	$a4, $zero
-	vreplgr2vr.d	$vr2, $a0
-	vori.b	$vr3, $vr0, 0
+	move	$a6, $zero
+	move	$a7, $zero
 	.p2align	4, , 16
 .LBB7_8:                                # %vector.body
                                         #   Parent Loop BB7_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vaddi.du	$vr4, $vr3, 2
-	vmul.d	$vr5, $vr3, $vr2
-	vmul.d	$vr4, $vr4, $vr2
-	vffint.d.lu	$vr5, $vr5
-	vffint.d.lu	$vr4, $vr4
-	vfdiv.d	$vr5, $vr5, $vr1
-	vfdiv.d	$vr4, $vr4, $vr1
-	add.d	$a5, $a3, $a4
-	vstx	$vr5, $a3, $a4
-	vst	$vr4, $a5, 16
-	addi.d	$a4, $a4, 32
-	vaddi.du	$vr3, $vr3, 4
-	bne	$a4, $a1, .LBB7_8
+	add.d	$t0, $a1, $a7
+	bstrpick.d	$t0, $t0, 31, 0
+	bstrpick.d	$t1, $a7, 31, 0
+	movgr2fr.d	$fa1, $t1
+	ffint.d.l	$fa1, $fa1
+	movgr2fr.d	$fa2, $t0
+	ffint.d.l	$fa2, $fa2
+	fdiv.d	$fa1, $fa1, $fa0
+	fdiv.d	$fa2, $fa2, $fa0
+	add.d	$t0, $a5, $a6
+	fstx.d	$fa1, $a5, $a6
+	fst.d	$fa2, $t0, 8
+	addi.d	$a6, $a6, 16
+	add.w	$a7, $a7, $a0
+	bne	$a6, $a3, .LBB7_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB7_7 Depth=1
-	addi.d	$a0, $a0, 1
-	addi.d	$a3, $a3, 640
-	bne	$a0, $a2, .LBB7_7
+	addi.d	$a2, $a2, 1
+	addi.w	$a1, $a1, 1
+	addi.d	$a0, $a0, 2
+	addi.d	$a5, $a5, 640
+	bne	$a2, $a4, .LBB7_7
 # %bb.10:                               # %init_array.exit.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI7_1)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI7_1)

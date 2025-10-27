@@ -6085,7 +6085,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	.cfi_offset 62, -144
 	.cfi_offset 63, -152
 	move	$s1, $a1
-	beqz	$a1, .LBB33_59
+	beqz	$a1, .LBB33_63
 # %bb.1:
 	fmov.s	$fs0, $fa0
 	move	$s0, $a5
@@ -6131,47 +6131,44 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	lu52i.d	$a1, $a0, 1016
 	st.d	$a1, $a6, 0
 	st.w	$a0, $a6, 8
-	bstrpick.d	$s7, $a3, 31, 0
-	lu12i.w	$a0, -2049
-	ori	$a3, $a0, 4095
-	movgr2fr.w	$fa1, $a3
-	lu12i.w	$a0, 522239
-	ori	$a2, $a0, 4095
-	movgr2fr.w	$fa0, $a2
+	bstrpick.d	$s8, $a3, 31, 0
 	addi.d	$a0, $s2, 8
+	lu12i.w	$a1, 522239
+	ori	$a3, $a1, 4095
+	vreplgr2vr.w	$vr0, $a3
+	lu12i.w	$a1, -2049
+	ori	$a4, $a1, 4095
+	vreplgr2vr.w	$vr2, $a4
+	movgr2fr.w	$fa1, $a4
+	movgr2fr.w	$fa6, $a3
 	move	$a1, $s1
-	fmov.s	$fa6, $fa0
-	fmov.s	$fa2, $fa0
-	fmov.s	$fa3, $fa1
-	fmov.s	$fa4, $fa1
 	.p2align	4, , 16
 .LBB33_9:                               # =>This Inner Loop Header: Depth=1
-	fld.s	$fa5, $a0, -8
-	fcmp.clt.s	$fcc0, $fa5, $fa2
-	fld.s	$fa7, $a0, -4
-	fsel	$fa2, $fa2, $fa5, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fa5
-	fsel	$fa4, $fa4, $fa5, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa6
+	ld.d	$a2, $a0, -8
+	vinsgr2vr.d	$vr3, $a2, 0
+	vfcmp.clt.s	$vr4, $vr3, $vr0
 	fld.s	$fa5, $a0, 0
-	fsel	$fa6, $fa6, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fa7
-	fsel	$fa3, $fa3, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa5, $fa0
-	fsel	$fa0, $fa0, $fa5, $fcc0
+	vfcmp.clt.s	$vr7, $vr2, $vr3
+	vbitsel.v	$vr0, $vr0, $vr3, $vr4
+	vbitsel.v	$vr2, $vr2, $vr3, $vr7
+	fcmp.clt.s	$fcc0, $fa5, $fa6
+	fsel	$fa6, $fa6, $fa5, $fcc0
 	fcmp.clt.s	$fcc0, $fa1, $fa5
 	fsel	$fa1, $fa1, $fa5, $fcc0
 	addi.w	$a1, $a1, -1
-	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $s8
 	bnez	$a1, .LBB33_9
 # %bb.10:
-	fsub.s	$fa5, $fa4, $fa2
-	fsub.s	$fa4, $fa3, $fa6
-	fsub.s	$fa3, $fa1, $fa0
-	vldi	$vr7, -1184
-	fmadd.s	$fa2, $fa5, $fa7, $fa2
-	fmadd.s	$fa1, $fa4, $fa7, $fa6
-	fmadd.s	$fa0, $fa3, $fa7, $fa0
+	vfsub.s	$vr7, $vr2, $vr0
+	vreplvei.w	$vr4, $vr7, 1
+	vreplvei.w	$vr5, $vr7, 0
+	fsub.s	$fa3, $fa1, $fa6
+	vreplvei.w	$vr1, $vr0, 0
+	vldi	$vr8, -1184
+	fmadd.s	$fa1, $fa5, $ft0, $fa1
+	vreplvei.w	$vr0, $vr0, 1
+	fmadd.s	$fa2, $fa4, $ft0, $fa0
+	fmadd.s	$fa0, $fa3, $ft0, $fa6
 	ori	$a1, $zero, 3
 	lu12i.w	$a0, 219235
 	bltu	$s1, $a1, .LBB33_47
@@ -6187,17 +6184,18 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	fcmp.clt.s	$fcc0, $fa3, $fs1
 	bcnez	$fcc0, .LBB33_47
 # %bb.14:
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	move	$s8, $zero
+	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	move	$s6, $zero
 	fst.s	$fa5, $a6, 0
 	fst.s	$fa4, $a6, 4
 	fst.s	$fa3, $a6, 8
 	frecip.s	$fs2, $fa5
 	frecip.s	$fs3, $fa4
 	frecip.s	$fs4, $fa3
-	fmul.s	$fs5, $fa2, $fs2
-	fmul.s	$fs6, $fa1, $fs3
+	fmul.s	$fs5, $fa1, $fs2
+	fmul.s	$fs6, $fa2, $fs3
 	fmul.s	$fs7, $fa0, $fs4
 	addi.d	$a4, $s0, 8
 	ori	$a6, $zero, 1
@@ -6210,7 +6208,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
                                         #   in Loop: Header=BB33_18 Depth=1
 	st.b	$a6, $s3, 56
 	st.d	$s4, $s3, 48
-	st.w	$s5, $s3, 40
+	st.w	$s7, $s3, 40
 	move	$a4, $s1
 	move	$s1, $fp
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
@@ -6218,13 +6216,13 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
                                         #   in Loop: Header=BB33_18 Depth=1
 	ld.d	$a0, $s3, 48
 	slli.d	$a1, $a1, 2
-	stx.w	$s6, $a0, $a1
+	stx.w	$s5, $a0, $a1
 	ld.w	$a0, $s3, 36
-	add.d	$s2, $s2, $s7
+	add.d	$s2, $s2, $s8
 	addi.d	$a0, $a0, 1
-	addi.w	$s8, $s8, 1
+	addi.w	$s6, $s6, 1
 	st.w	$a0, $s3, 36
-	beq	$s8, $s1, .LBB33_44
+	beq	$s6, $s1, .LBB33_44
 .LBB33_18:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB33_21 Depth 2
                                         #     Child Loop BB33_36 Depth 2
@@ -6237,7 +6235,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	fmul.s	$fa1, $fs3, $fa1
 	fmul.s	$fa2, $fs4, $fa2
 	bstrpick.d	$a1, $a0, 31, 0
-	move	$s6, $zero
+	move	$s5, $zero
 	beqz	$a0, .LBB33_26
 # %bb.19:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB33_18 Depth=1
@@ -6246,7 +6244,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	b	.LBB33_21
 	.p2align	4, , 16
 .LBB33_20:                              #   in Loop: Header=BB33_21 Depth=2
-	addi.w	$s6, $s6, 1
+	addi.w	$s5, $s5, 1
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 16
 	beqz	$a3, .LBB33_28
@@ -6292,7 +6290,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	.p2align	4, , 16
 .LBB33_26:                              # %.loopexit
                                         #   in Loop: Header=BB33_18 Depth=1
-	beq	$s6, $a0, .LBB33_29
+	beq	$s5, $a0, .LBB33_29
 # %bb.27:                               #   in Loop: Header=BB33_18 Depth=1
 	ld.w	$a1, $s3, 36
 	ld.w	$a0, $s3, 40
@@ -6300,7 +6298,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	b	.LBB33_30
 	.p2align	4, , 16
 .LBB33_28:                              #   in Loop: Header=BB33_18 Depth=1
-	move	$s6, $a0
+	move	$s5, $a0
 .LBB33_29:                              # %.loopexit.thread
                                         #   in Loop: Header=BB33_18 Depth=1
 	alsl.d	$a2, $a1, $s0, 4
@@ -6318,14 +6316,14 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	slli.w	$a2, $a1, 1
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a6, $a0
-	or	$s5, $a0, $a2
-	bge	$a1, $s5, .LBB33_17
+	or	$s7, $a0, $a2
+	bge	$a1, $s7, .LBB33_17
 # %bb.31:                               #   in Loop: Header=BB33_18 Depth=1
 	move	$fp, $s1
 	move	$s1, $a4
-	beqz	$s5, .LBB33_40
+	beqz	$s7, .LBB33_40
 # %bb.32:                               #   in Loop: Header=BB33_18 Depth=1
-	slli.d	$a0, $s5, 2
+	slli.d	$a0, $s7, 2
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
@@ -6403,51 +6401,52 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	beqz	$a0, .LBB33_49
 # %bb.45:                               # %.lr.ph387.preheader
 	bstrpick.d	$a1, $a0, 31, 0
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	movgr2fr.w	$fa3, $a2
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	movgr2fr.w	$fa0, $a3
 	addi.d	$a2, $s0, 8
-	fmov.s	$fa1, $fa0
-	fmov.s	$fa2, $fa0
-	fmov.s	$fa4, $fa3
-	fmov.s	$fa5, $fa3
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	vreplgr2vr.w	$vr0, $a4
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	vreplgr2vr.w	$vr3, $a3
+	movgr2fr.w	$fa2, $a3
+	movgr2fr.w	$fa1, $a4
 	.p2align	4, , 16
 .LBB33_46:                              # %.lr.ph387
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa6, $a2, -8
-	fcmp.clt.s	$fcc0, $fa6, $fa2
-	fld.s	$fa7, $a2, -4
-	fsel	$fa2, $fa2, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa5, $fa6
-	fsel	$fa5, $fa5, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa1
+	ld.d	$a3, $a2, -8
+	vinsgr2vr.d	$vr4, $a3, 0
+	vfcmp.clt.s	$vr5, $vr4, $vr0
 	fld.s	$fa6, $a2, 0
-	fsel	$fa1, $fa1, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fa7
-	fsel	$fa4, $fa4, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa6, $fa0
-	fsel	$fa0, $fa0, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fa6
-	fsel	$fa3, $fa3, $fa6, $fcc0
+	vfcmp.clt.s	$vr7, $vr3, $vr4
+	vbitsel.v	$vr0, $vr0, $vr4, $vr5
+	vbitsel.v	$vr3, $vr3, $vr4, $vr7
+	fcmp.clt.s	$fcc0, $fa6, $fa1
+	fsel	$fa1, $fa1, $fa6, $fcc0
+	fcmp.clt.s	$fcc0, $fa2, $fa6
+	fsel	$fa2, $fa2, $fa6, $fcc0
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 16
 	bnez	$a1, .LBB33_46
 	b	.LBB33_50
 .LBB33_47:
-	movgr2fr.w	$ft0, $a2
+	ori	$a0, $a0, 1981
+	vreplgr2vr.w	$vr6, $a0
+	vfcmp.clt.s	$vr6, $vr6, $vr7
+	vshuf4i.w	$vr7, $vr6, 16
+	vpickve2gr.d	$a1, $vr6, 0
+	andi	$a1, $a1, 1
+	movgr2fr.w	$ft0, $a3
 	fcmp.clt.s	$fcc0, $fa5, $ft0
 	fsel	$fa6, $ft0, $fa5, $fcc0
-	ori	$a0, $a0, 1981
-	movgr2fr.w	$fa7, $a0
-	fcmp.clt.s	$fcc0, $fa7, $fa5
+	movgr2cf	$fcc0, $a1
 	fsel	$fa6, $ft0, $fa6, $fcc0
+	vpickve2gr.d	$a1, $vr7, 1
+	andi	$a1, $a1, 1
 	fcmp.clt.s	$fcc0, $fa4, $fa6
-	fsel	$ft1, $fa6, $fa4, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa4
-	fsel	$fa6, $fa6, $ft1, $fcc0
+	fsel	$fa7, $fa6, $fa4, $fcc0
+	movgr2cf	$fcc0, $a1
+	fsel	$fa6, $fa6, $fa7, $fcc0
 	fcmp.clt.s	$fcc0, $fa3, $fa6
 	fsel	$ft1, $fa6, $fa3, $fcc0
+	movgr2fr.w	$fa7, $a0
 	fcmp.clt.s	$fcc0, $fa7, $fa3
 	fsel	$fa6, $fa6, $ft1, $fcc0
 	fcmp.ceq.s	$fcc0, $fa6, $ft0
@@ -6460,56 +6459,65 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	fmov.s	$fa5, $fa6
 	b	.LBB33_58
 .LBB33_49:
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	vreplgr2vr.w	$vr0, $a4
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	movgr2fr.w	$fa3, $a1
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	movgr2fr.w	$fa0, $a3
-	fmov.s	$fa1, $fa0
-	fmov.s	$fa2, $fa0
-	fmov.s	$fa4, $fa3
-	fmov.s	$fa5, $fa3
+	vreplgr2vr.w	$vr3, $a1
+	movgr2fr.w	$fa2, $a1
+	movgr2fr.w	$fa1, $a4
 .LBB33_50:                              # %._crit_edge
-	fsub.s	$fa5, $fa5, $fa2
-	fsub.s	$fa4, $fa4, $fa1
+	vfsub.s	$vr5, $vr3, $vr0
+	vreplvei.w	$vr4, $vr5, 0
+	vreplvei.w	$vr3, $vr5, 1
 	ori	$a1, $zero, 3
-	fsub.s	$fa3, $fa3, $fa0
+	fsub.s	$fa2, $fa2, $fa1
 	bltu	$a0, $a1, .LBB33_54
 # %bb.51:                               # %._crit_edge
-	fcmp.clt.s	$fcc0, $fa5, $fs1
-	bcnez	$fcc0, .LBB33_54
-# %bb.52:                               # %._crit_edge
 	fcmp.clt.s	$fcc0, $fa4, $fs1
 	bcnez	$fcc0, .LBB33_54
-# %bb.53:                               # %._crit_edge
+# %bb.52:                               # %._crit_edge
 	fcmp.clt.s	$fcc0, $fa3, $fs1
-	bceqz	$fcc0, .LBB33_59
+	bcnez	$fcc0, .LBB33_54
+# %bb.53:                               # %._crit_edge
+	fcmp.clt.s	$fcc0, $fa2, $fs1
+	bceqz	$fcc0, .LBB33_63
 .LBB33_54:
-	movgr2fr.w	$fa7, $a3
-	fcmp.clt.s	$fcc0, $fa5, $fa7
-	fsel	$fa6, $fa7, $fa5, $fcc0
-	fcmp.cle.s	$fcc0, $fs1, $fa5
-	fsel	$fa6, $fa7, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fa6
-	fsel	$ft0, $fa6, $fa4, $fcc0
-	fcmp.cle.s	$fcc0, $fs1, $fa4
-	fsel	$fa6, $fa6, $ft0, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fa6
-	fsel	$ft0, $fa6, $fa3, $fcc0
-	fcmp.cle.s	$fcc0, $fs1, $fa3
-	fsel	$fa6, $fa6, $ft0, $fcc0
-	vldi	$vr8, -1184
-	fmadd.s	$fa2, $fa5, $ft0, $fa2
-	fmadd.s	$fa1, $fa4, $ft0, $fa1
-	fcmp.ceq.s	$fcc0, $fa6, $fa7
-	fmadd.s	$fa0, $fa3, $ft0, $fa0
-	bceqz	$fcc0, .LBB33_60
+	vreplvei.w	$vr6, $vr0, 0
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	vreplgr2vr.w	$vr7, $a0
+	vfcmp.cle.s	$vr5, $vr7, $vr5
+	vshuf4i.w	$vr7, $vr5, 16
+	vpickve2gr.d	$a0, $vr5, 0
+	andi	$a0, $a0, 1
+	movgr2fr.w	$ft0, $a4
+	fcmp.clt.s	$fcc0, $fa4, $ft0
+	fsel	$fa5, $ft0, $fa4, $fcc0
+	movgr2cf	$fcc0, $a0
+	fsel	$fa5, $ft0, $fa5, $fcc0
+	vpickve2gr.d	$a0, $vr7, 1
+	andi	$a0, $a0, 1
+	fcmp.clt.s	$fcc0, $fa3, $fa5
+	fsel	$fa7, $fa5, $fa3, $fcc0
+	movgr2cf	$fcc0, $a0
+	fsel	$fa5, $fa5, $fa7, $fcc0
+	fcmp.clt.s	$fcc0, $fa2, $fa5
+	fsel	$fa7, $fa5, $fa2, $fcc0
+	fcmp.cle.s	$fcc0, $fs1, $fa2
+	fsel	$fa7, $fa5, $fa7, $fcc0
+	vldi	$vr9, -1184
+	fmadd.s	$fa5, $fa4, $ft1, $fa6
+	vreplvei.w	$vr0, $vr0, 1
+	fmadd.s	$fa0, $fa3, $ft1, $fa0
+	fcmp.ceq.s	$fcc0, $fa7, $ft0
+	fmadd.s	$fa6, $fa2, $ft1, $fa1
+	bceqz	$fcc0, .LBB33_59
 # %bb.55:
 	lu12i.w	$a0, 246333
 	ori	$a0, $a0, 1802
-	movgr2fr.w	$fa5, $a0
-	fmov.s	$fa7, $fa5
-	fmov.s	$fa6, $fa5
-	b	.LBB33_58
+	movgr2fr.w	$fa1, $a0
+	fmov.s	$ft0, $fa1
+	fmov.s	$fa7, $fa1
+	b	.LBB33_61
 .LBB33_56:
 	lu12i.w	$a0, 251084
 	ori	$a0, $a0, 3277
@@ -6521,42 +6529,64 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	fcmp.cule.s	$fcc1, $fa7, $fa3
 	fsel	$fa7, $fa4, $fa6, $fcc0
 	bceqz	$fcc1, .LBB33_58
-.LBB33_57:
+# %bb.57:
 	fmov.s	$fa6, $fa3
-.LBB33_58:                              # %.critedge
-	fsub.s	$fa3, $fa2, $fa5
-	fadd.s	$fa2, $fa2, $fa5
-	fsub.s	$fa4, $fa1, $fa7
-	fadd.s	$fa1, $fa1, $fa7
+.LBB33_58:
+	fsub.s	$fa3, $fa1, $fa5
+	fadd.s	$fa1, $fa1, $fa5
+	fsub.s	$fa4, $fa2, $fa7
+	fadd.s	$fa2, $fa2, $fa7
 	fsub.s	$fa5, $fa0, $fa6
 	fadd.s	$fa0, $fa0, $fa6
+	b	.LBB33_62
+.LBB33_59:
+	lu12i.w	$a0, 251084
+	ori	$a0, $a0, 3277
+	movgr2fr.w	$fa1, $a0
+	fmul.s	$fa7, $fa7, $fa1
+	fcmp.clt.s	$fcc0, $fa4, $fs1
+	fsel	$fa1, $fa4, $fa7, $fcc0
+	fcmp.clt.s	$fcc0, $fa3, $fs1
+	fcmp.cule.s	$fcc1, $fs1, $fa2
+	fsel	$ft0, $fa3, $fa7, $fcc0
+	bceqz	$fcc1, .LBB33_61
+# %bb.60:
+	fmov.s	$fa7, $fa2
+.LBB33_61:                              # %.critedge
+	fsub.s	$fa3, $fa5, $fa1
+	fadd.s	$fa1, $fa5, $fa1
+	fsub.s	$fa4, $fa0, $ft0
+	fadd.s	$fa2, $fa0, $ft0
+	fsub.s	$fa5, $fa6, $fa7
+	fadd.s	$fa0, $fa6, $fa7
+.LBB33_62:                              # %.sink.split
 	fst.s	$fa3, $s0, 0
 	fst.s	$fa4, $s0, 4
 	fst.s	$fa5, $s0, 8
-	fst.s	$fa2, $s0, 16
+	fst.s	$fa1, $s0, 16
 	fst.s	$fa4, $s0, 20
 	fst.s	$fa5, $s0, 24
-	fst.s	$fa2, $s0, 32
-	fst.s	$fa1, $s0, 36
+	fst.s	$fa1, $s0, 32
+	fst.s	$fa2, $s0, 36
 	fst.s	$fa5, $s0, 40
 	fst.s	$fa3, $s0, 48
-	fst.s	$fa1, $s0, 52
+	fst.s	$fa2, $s0, 52
 	fst.s	$fa5, $s0, 56
 	fst.s	$fa3, $s0, 64
 	fst.s	$fa4, $s0, 68
 	fst.s	$fa0, $s0, 72
-	fst.s	$fa2, $s0, 80
+	fst.s	$fa1, $s0, 80
 	fst.s	$fa4, $s0, 84
 	fst.s	$fa0, $s0, 88
-	fst.s	$fa2, $s0, 96
-	fst.s	$fa1, $s0, 100
+	fst.s	$fa1, $s0, 96
+	fst.s	$fa2, $s0, 100
 	fst.s	$fa0, $s0, 104
 	fst.s	$fa3, $s0, 112
-	fst.s	$fa1, $s0, 116
+	fst.s	$fa2, $s0, 116
 	fst.s	$fa0, $s0, 120
 	ori	$a0, $zero, 8
 	st.w	$a0, $fp, 0
-.LBB33_59:
+.LBB33_63:
 	sltu	$a0, $zero, $s1
 	fld.d	$fs7, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 48                   # 8-byte Folded Reload
@@ -6579,18 +6609,6 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 192
 	ret
-.LBB33_60:
-	lu12i.w	$a0, 251084
-	ori	$a0, $a0, 3277
-	movgr2fr.w	$fa7, $a0
-	fmul.s	$fa6, $fa6, $fa7
-	fcmp.clt.s	$fcc0, $fa5, $fs1
-	fsel	$fa5, $fa5, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fs1
-	fcmp.cule.s	$fcc1, $fs1, $fa3
-	fsel	$fa7, $fa4, $fa6, $fcc0
-	bcnez	$fcc1, .LBB33_57
-	b	.LBB33_58
 .Lfunc_end33:
 	.size	_ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_, .Lfunc_end33-_ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_
 	.cfi_endproc

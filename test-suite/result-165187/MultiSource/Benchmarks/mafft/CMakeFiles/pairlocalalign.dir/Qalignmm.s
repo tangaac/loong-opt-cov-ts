@@ -1350,7 +1350,7 @@ Q__align:                               # @Q__align
 	ld.d	$t0, $t0, %pc_lo12(Q__align.gapz_n2)
 	addi.d	$t3, $s6, 2
 	bstrpick.d	$t1, $t3, 31, 0
-	ori	$t2, $zero, 40
+	ori	$t2, $zero, 20
 	bgeu	$t1, $t2, .LBB3_44
 # %bb.26:
 	move	$t2, $zero
@@ -1446,7 +1446,7 @@ Q__align:                               # @Q__align
 	ld.d	$t0, $t0, %pc_lo12(Q__align.gapz_n1)
 	addi.d	$t3, $s4, 2
 	bstrpick.d	$t1, $t3, 31, 0
-	ori	$t2, $zero, 40
+	ori	$t2, $zero, 20
 	bgeu	$t1, $t2, .LBB3_77
 # %bb.31:
 	move	$t2, $zero
@@ -5791,7 +5791,7 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	ld.d	$t1, $sp, 328                   # 8-byte Folded Reload
 	addi.d	$t3, $t1, 2
 	bstrpick.d	$t1, $t3, 31, 0
-	ori	$t2, $zero, 40
+	ori	$t2, $zero, 20
 	bgeu	$t1, $t2, .LBB6_44
 # %bb.26:
 	move	$t2, $zero
@@ -5888,7 +5888,7 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	ld.d	$t0, $t0, %pc_lo12(Q__align_gapmap.gapz_n1)
 	addi.d	$t3, $s4, 2
 	bstrpick.d	$t1, $t3, 31, 0
-	ori	$t2, $zero, 40
+	ori	$t2, $zero, 20
 	bgeu	$t1, $t2, .LBB6_77
 # %bb.31:
 	move	$t2, $zero

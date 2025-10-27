@@ -224,20 +224,7 @@ Ppmd8_Init:                             # @Ppmd8_Init
 .Lfunc_end3:
 	.size	Ppmd8_Init, .Lfunc_end3-Ppmd8_Init
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function RestartModel
-.LCPI4_0:
-	.word	15581                           # 0x3cdd
-	.word	7999                            # 0x1f3f
-	.word	22975                           # 0x59bf
-	.word	18675                           # 0x48f3
-.LCPI4_1:
-	.word	25761                           # 0x64a1
-	.word	23228                           # 0x5abc
-	.word	26162                           # 0x6632
-	.word	24657                           # 0x6051
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function RestartModel
 	.type	RestartModel,@function
 RestartModel:                           # @RestartModel
 # %bb.0:                                # %vector.ph
@@ -316,41 +303,115 @@ RestartModel:                           # @RestartModel
 	move	$a1, $zero
 	move	$a2, $zero
 	addi.d	$a0, $fp, 856
-	lu12i.w	$a3, 1
-	ori	$a3, $a3, 96
-	pcalau12i	$a4, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI4_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI4_1)
-	vld	$vr1, $a4, %pc_lo12(.LCPI4_1)
+	lu12i.w	$a6, 1
+	ori	$a3, $a6, 96
 	add.d	$a3, $fp, $a3
-	vldi	$vr2, -2752
-	ori	$a4, $zero, 25
+	lu12i.w	$a4, 3
+	ori	$a4, $a4, 3293
+	lu12i.w	$a5, 4
+	ori	$a6, $a6, 3903
+	lu12i.w	$t2, 5
+	ori	$a7, $t2, 2495
+	ori	$t0, $a5, 2291
+	lu12i.w	$t4, 6
+	ori	$t1, $t4, 1185
+	ori	$t2, $t2, 2748
+	ori	$t3, $t4, 1586
+	ori	$t4, $t4, 81
+	ori	$t5, $zero, 25
 	.p2align	4, , 16
 .LBB4_3:                                # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a2, 31, 0
-	ldx.bu	$a5, $a0, $a5
+	bstrpick.d	$t6, $a2, 31, 0
+	ldx.bu	$t6, $a0, $t6
 	addi.w	$a2, $a2, 1
-	beq	$a1, $a5, .LBB4_3
+	beq	$a1, $t6, .LBB4_3
 # %bb.4:                                # %.preheader81
                                         #   in Loop: Header=BB4_3 Depth=1
-	slli.d	$a5, $a1, 7
-	add.d	$a6, $a3, $a5
-	vreplgr2vr.w	$vr3, $a2
-	vdiv.wu	$vr4, $vr0, $vr3
-	vdiv.wu	$vr3, $vr1, $vr3
-	vpickev.h	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr2, $vr3
-	vstx	$vr3, $a3, $a5
-	vst	$vr3, $a6, 16
-	vst	$vr3, $a6, 32
-	vst	$vr3, $a6, 48
-	vst	$vr3, $a6, 64
-	vst	$vr3, $a6, 80
-	vst	$vr3, $a6, 96
-	vst	$vr3, $a6, 112
+	slli.d	$t7, $a1, 7
+	add.d	$t6, $a3, $t7
+	div.wu	$t8, $a4, $a2
+	sub.d	$t8, $a5, $t8
+	stx.h	$t8, $a3, $t7
+	st.h	$t8, $t6, 16
+	st.h	$t8, $t6, 32
+	st.h	$t8, $t6, 48
+	st.h	$t8, $t6, 64
+	st.h	$t8, $t6, 80
+	st.h	$t8, $t6, 96
+	st.h	$t8, $t6, 112
+	div.wu	$t7, $a6, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 2
+	st.h	$t7, $t6, 18
+	st.h	$t7, $t6, 34
+	st.h	$t7, $t6, 50
+	st.h	$t7, $t6, 66
+	st.h	$t7, $t6, 82
+	st.h	$t7, $t6, 98
+	st.h	$t7, $t6, 114
+	div.wu	$t7, $a7, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 4
+	st.h	$t7, $t6, 20
+	st.h	$t7, $t6, 36
+	st.h	$t7, $t6, 52
+	st.h	$t7, $t6, 68
+	st.h	$t7, $t6, 84
+	st.h	$t7, $t6, 100
+	st.h	$t7, $t6, 116
+	div.wu	$t7, $t0, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 6
+	st.h	$t7, $t6, 22
+	st.h	$t7, $t6, 38
+	st.h	$t7, $t6, 54
+	st.h	$t7, $t6, 70
+	st.h	$t7, $t6, 86
+	st.h	$t7, $t6, 102
+	st.h	$t7, $t6, 118
+	div.wu	$t7, $t1, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 8
+	st.h	$t7, $t6, 24
+	st.h	$t7, $t6, 40
+	st.h	$t7, $t6, 56
+	st.h	$t7, $t6, 72
+	st.h	$t7, $t6, 88
+	st.h	$t7, $t6, 104
+	st.h	$t7, $t6, 120
+	div.wu	$t7, $t2, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 10
+	st.h	$t7, $t6, 26
+	st.h	$t7, $t6, 42
+	st.h	$t7, $t6, 58
+	st.h	$t7, $t6, 74
+	st.h	$t7, $t6, 90
+	st.h	$t7, $t6, 106
+	st.h	$t7, $t6, 122
+	div.wu	$t7, $t3, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 12
+	st.h	$t7, $t6, 28
+	st.h	$t7, $t6, 44
+	st.h	$t7, $t6, 60
+	st.h	$t7, $t6, 76
+	st.h	$t7, $t6, 92
+	st.h	$t7, $t6, 108
+	st.h	$t7, $t6, 124
+	div.wu	$t7, $t4, $a2
+	sub.d	$t7, $a5, $t7
+	st.h	$t7, $t6, 14
+	st.h	$t7, $t6, 30
+	st.h	$t7, $t6, 46
+	st.h	$t7, $t6, 62
+	st.h	$t7, $t6, 78
+	st.h	$t7, $t6, 94
+	st.h	$t7, $t6, 110
+	st.h	$t7, $t6, 126
 	addi.d	$a1, $a1, 1
 	addi.w	$a2, $a2, -1
-	bne	$a1, $a4, .LBB4_3
+	bne	$a1, $t5, .LBB4_3
 # %bb.5:                                # %.preheader80
 	move	$a1, $zero
 	move	$a2, $zero

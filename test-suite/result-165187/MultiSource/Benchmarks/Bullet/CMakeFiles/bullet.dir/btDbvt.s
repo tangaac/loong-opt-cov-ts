@@ -599,8 +599,8 @@ _ZL8bottomupP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeE: # @_ZL8bottomupP6btD
 	lu12i.w	$a0, 522239
 	ori	$a0, $a0, 4095
 	movgr2fr.w	$fs0, $a0
-	vrepli.b	$vr13, 0
-	vst	$vr13, $sp, 16                  # 16-byte Folded Spill
+	vrepli.b	$vr9, 0
+	vst	$vr9, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_2:                                #   in Loop: Header=BB8_4 Depth=1
@@ -608,15 +608,15 @@ _ZL8bottomupP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeE: # @_ZL8bottomupP6btD
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	vld	$vr13, $sp, 16                  # 16-byte Folded Reload
+	vld	$vr9, $sp, 16                   # 16-byte Folded Reload
 	st.d	$zero, $a0, 0
-	vst	$vr13, $a0, 8
-	vst	$vr13, $a0, 24
-	vst	$vr13, $a0, 40
+	vst	$vr9, $a0, 8
+	vst	$vr9, $a0, 24
+	vst	$vr9, $a0, 40
 .LBB8_3:                                # %_ZL10createnodeP6btDbvtP10btDbvtNodeRK12btDbvtAabbMmS5_Pv.exit
                                         #   in Loop: Header=BB8_4 Depth=1
 	st.d	$zero, $a0, 48
-	vst	$vr13, $a0, 32
+	vst	$vr9, $a0, 32
 	fld.s	$fa0, $s5, 0
 	fld.s	$fa1, $s6, 0
 	fcmp.clt.s	$fcc0, $fa0, $fa1
@@ -694,11 +694,11 @@ _ZL8bottomupP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeE: # @_ZL8bottomupP6btD
 	slli.d	$t2, $t1, 3
 	ldx.d	$t2, $a2, $t2
 	fld.s	$fa1, $t2, 0
+	ld.d	$t3, $t2, 4
+	ld.d	$t4, $t2, 20
 	fld.s	$fa2, $t2, 16
-	fld.s	$fa3, $t2, 4
-	fld.s	$fa4, $t2, 20
-	fld.s	$fa5, $t2, 8
-	fld.s	$fa6, $t2, 24
+	vinsgr2vr.d	$vr3, $t3, 0
+	vinsgr2vr.d	$vr4, $t4, 0
 	move	$t2, $a0
 	move	$t3, $a3
 	move	$t4, $a4
@@ -707,33 +707,30 @@ _ZL8bottomupP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeE: # @_ZL8bottomupP6btD
                                         #     Parent Loop BB8_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t5, $t3, 0
-	fld.s	$fa7, $t5, 0
-	fld.s	$ft0, $t5, 16
-	fcmp.clt.s	$fcc0, $fa1, $fa7
-	fsel	$fa7, $fa7, $fa1, $fcc0
-	fld.s	$ft1, $t5, 4
-	fcmp.clt.s	$fcc0, $ft0, $fa2
-	fsel	$ft0, $ft0, $fa2, $fcc0
-	fld.s	$ft2, $t5, 20
-	fcmp.clt.s	$fcc0, $fa3, $ft1
-	fsel	$ft1, $ft1, $fa3, $fcc0
-	fld.s	$ft3, $t5, 8
-	fcmp.clt.s	$fcc0, $ft2, $fa4
-	fld.s	$ft4, $t5, 24
-	fsel	$ft2, $ft2, $fa4, $fcc0
-	fcmp.clt.s	$fcc0, $fa5, $ft3
-	fsel	$ft3, $ft3, $fa5, $fcc0
-	fcmp.clt.s	$fcc0, $ft4, $fa6
-	fsel	$ft4, $ft4, $fa6, $fcc0
-	fsub.s	$fa7, $ft0, $fa7
-	fsub.s	$ft0, $ft2, $ft1
-	fsub.s	$ft1, $ft4, $ft3
-	fmul.s	$ft2, $fa7, $ft0
-	fmadd.s	$fa7, $ft2, $ft1, $fa7
-	fadd.s	$fa7, $ft0, $fa7
-	fadd.s	$fa7, $ft1, $fa7
-	fcmp.clt.s	$fcc0, $fa7, $fa0
-	fsel	$fa0, $fa0, $fa7, $fcc0
+	fld.s	$fa5, $t5, 0
+	fld.s	$fa6, $t5, 16
+	fcmp.clt.s	$fcc0, $fa1, $fa5
+	fsel	$fa5, $fa5, $fa1, $fcc0
+	fcmp.clt.s	$fcc0, $fa6, $fa2
+	ld.d	$t6, $t5, 4
+	fsel	$fa6, $fa6, $fa2, $fcc0
+	fsub.s	$fa5, $fa6, $fa5
+	ld.d	$t5, $t5, 20
+	vinsgr2vr.d	$vr6, $t6, 0
+	vfcmp.clt.s	$vr7, $vr3, $vr6
+	vbitsel.v	$vr6, $vr6, $vr3, $vr7
+	vinsgr2vr.d	$vr7, $t5, 0
+	vfcmp.clt.s	$vr8, $vr7, $vr4
+	vbitsel.v	$vr7, $vr7, $vr4, $vr8
+	vfsub.s	$vr6, $vr7, $vr6
+	vreplvei.w	$vr7, $vr6, 0
+	fmul.s	$ft0, $fa5, $fa7
+	vreplvei.w	$vr6, $vr6, 1
+	fmadd.s	$fa5, $ft0, $fa6, $fa5
+	fadd.s	$fa5, $fa7, $fa5
+	fadd.s	$fa5, $fa6, $fa5
+	fcmp.clt.s	$fcc0, $fa5, $fa0
+	fsel	$fa0, $fa0, $fa5, $fcc0
 	movcf2gr	$t5, $fcc0
 	masknez	$t0, $t0, $t5
 	maskeqz	$t6, $t1, $t5

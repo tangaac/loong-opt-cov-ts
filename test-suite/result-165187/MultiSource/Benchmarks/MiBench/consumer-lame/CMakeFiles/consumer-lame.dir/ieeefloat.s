@@ -418,28 +418,25 @@ ConvertToIeeeExtended:                  # @ConvertToIeeeExtended
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
+	move	$fp, $a0
 	movgr2fr.d	$fa1, $zero
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
-	move	$fp, $a0
+	vrepli.b	$vr2, 0
 	bceqz	$fcc0, .LBB5_2
 # %bb.1:
 	move	$s0, $zero
-	move	$s1, $zero
-	move	$a0, $zero
 	b	.LBB5_8
 .LBB5_2:
+	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fneg.d	$fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a0, $fcc0
 	slli.d	$s0, $a0, 15
-	addi.d	$a0, $sp, 12
+	addi.d	$a0, $sp, 36
 	pcaddu18i	$ra, %call36(frexp)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 12
+	ld.w	$a1, $sp, 36
 	lu12i.w	$a0, 4
 	blt	$a0, $a1, .LBB5_7
 # %bb.3:
@@ -465,14 +462,7 @@ ConvertToIeeeExtended:                  # @ConvertToIeeeExtended
                                         # kill: def $f0_64 killed $f0_64 def $vr0
 	vreplvei.d	$vr1, $vr0, 0
 	vfrintrm.d	$vr1, $vr1
-	lu52i.d	$a0, $zero, -994
-	movgr2fr.d	$fs0, $a0
-	fadd.d	$fa2, $fa1, $fs0
-	ftintrz.l.d	$fa2, $fa2
-	movfr2gr.d	$a0, $fa2
-	lu12i.w	$s2, -524288
-	lu32i.d	$s2, 0
-	add.d	$s1, $a0, $s2
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	fsub.d	$fa0, $fa0, $fa1
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(ldexp)
@@ -480,38 +470,34 @@ ConvertToIeeeExtended:                  # @ConvertToIeeeExtended
                                         # kill: def $f0_64 killed $f0_64 def $vr0
 	vreplvei.d	$vr0, $vr0, 0
 	vfrintrm.d	$vr0, $vr0
-	fadd.d	$fa0, $fa0, $fs0
-	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	add.d	$a0, $a0, $s2
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vextrins.d	$vr1, $vr0, 16
+	lu52i.d	$a0, $zero, -994
+	vreplgr2vr.d	$vr0, $a0
+	vfadd.d	$vr0, $vr1, $vr0
+	vftintrz.l.d	$vr0, $vr0
+	lu12i.w	$a0, -524288
+	lu32i.d	$a0, 0
+	vreplgr2vr.d	$vr1, $a0
+	vadd.d	$vr2, $vr0, $vr1
 	b	.LBB5_8
 .LBB5_7:
-	move	$s1, $zero
-	move	$a0, $zero
-	lu12i.w	$a1, 7
-	ori	$a1, $a1, 4095
-	or	$s0, $s0, $a1
+	lu12i.w	$a0, 7
+	ori	$a0, $a0, 4095
+	or	$s0, $s0, $a0
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 .LBB5_8:
-	srli.d	$a1, $s0, 8
-	st.b	$a1, $fp, 0
+	srli.d	$a0, $s0, 8
+	st.b	$a0, $fp, 0
 	st.b	$s0, $fp, 1
-	srli.d	$a1, $s1, 24
-	st.b	$a1, $fp, 2
-	srli.d	$a1, $s1, 16
-	st.b	$a1, $fp, 3
-	srli.d	$a1, $s1, 8
-	st.b	$a1, $fp, 4
-	st.b	$s1, $fp, 5
-	srli.d	$a1, $a0, 24
-	st.b	$a1, $fp, 6
-	srli.d	$a1, $a0, 16
-	st.b	$a1, $fp, 7
-	srli.d	$a1, $a0, 8
-	st.b	$a1, $fp, 8
-	st.b	$a0, $fp, 9
-	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	vstelm.b	$vr2, $fp, 2, 3
+	vstelm.b	$vr2, $fp, 3, 2
+	vstelm.b	$vr2, $fp, 4, 1
+	vstelm.b	$vr2, $fp, 5, 0
+	vstelm.b	$vr2, $fp, 6, 11
+	vstelm.b	$vr2, $fp, 7, 10
+	vstelm.b	$vr2, $fp, 8, 9
+	vstelm.b	$vr2, $fp, 9, 8
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload

@@ -1223,25 +1223,26 @@ find_dd_grad_f:                         # @find_dd_grad_f
 	fld.d	$fa2, $a1, %pc_lo12(P)
 	pcalau12i	$a1, %pc_hi20(Q)
 	fld.d	$fa3, $a1, %pc_lo12(Q)
-                                        # kill: def $f1_64 killed $f1_64 def $vr1
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vextrins.d	$vr2, $vr3, 16
-	vldi	$vr3, -912
-	vfadd.d	$vr2, $vr2, $vr3
-	vfrecip.d	$vr2, $vr2
-	vextrins.d	$vr0, $vr1, 16
-	vfsub.d	$vr0, $vr2, $vr0
-	vfmul.d	$vr1, $vr0, $vr0
-	vreplvei.d	$vr1, $vr1, 1
-	vreplvei.d	$vr3, $vr0, 0
-	fmadd.d	$fa1, $fa3, $fa3, $fa1
-	fsqrt.d	$fa1, $fa1
-	vbitrevi.d	$vr3, $vr2, 63
-	vfmul.d	$vr2, $vr2, $vr3
-	vfmul.d	$vr0, $vr2, $vr0
-	vreplvei.d	$vr1, $vr1, 0
-	vfdiv.d	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 0
+	vldi	$vr4, -912
+	fadd.d	$fa2, $fa2, $fa4
+	frecip.d	$fa2, $fa2
+	fadd.d	$fa3, $fa3, $fa4
+	frecip.d	$fa3, $fa3
+	fsub.d	$fa0, $fa2, $fa0
+	fsub.d	$fa1, $fa3, $fa1
+	fmul.d	$fa4, $fa1, $fa1
+	fmadd.d	$fa4, $fa0, $fa0, $fa4
+	fsqrt.d	$fa4, $fa4
+	fneg.d	$fa5, $fa2
+	fmul.d	$fa2, $fa2, $fa5
+	fmul.d	$fa0, $fa2, $fa0
+	fdiv.d	$fa0, $fa0, $fa4
+	fst.d	$fa0, $a0, 0
+	fneg.d	$fa0, $fa3
+	fmul.d	$fa0, $fa3, $fa0
+	fmul.d	$fa0, $fa0, $fa1
+	fdiv.d	$fa0, $fa0, $fa4
+	fst.d	$fa0, $a0, 8
 	ret
 .Lfunc_end9:
 	.size	find_dd_grad_f, .Lfunc_end9-find_dd_grad_f

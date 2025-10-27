@@ -159,7 +159,7 @@ backdp:                                 # @backdp
 	slli.d	$a0, $s0, 3
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ldx.d	$a1, $a1, $a0
-	ori	$a2, $zero, 5
+	ori	$a2, $zero, 9
 	bstrpick.d	$a0, $s3, 31, 0
 	bgeu	$s2, $a2, .LBB0_30
 # %bb.11:
@@ -381,24 +381,30 @@ backdp:                                 # @backdp
 	move	$a2, $zero
 	b	.LBB0_36
 .LBB0_33:                               # %vector.ph
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a2, $a0, 30, 3
+	slli.d	$a2, $a2, 3
 	vreplvei.w	$vr0, $vr4, 0
-	move	$a3, $s7
-	move	$a4, $a1
+	addi.d	$a3, $a1, 16
+	addi.d	$a4, $s7, 16
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB0_34:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a3, 0
+	vld	$vr1, $a4, -16
 	vld	$vr2, $a4, 0
 	vfadd.s	$vr1, $vr1, $vr0
-	vst	$vr1, $a3, 0
-	vfadd.s	$vr1, $vr2, $vr0
-	vst	$vr1, $a4, 0
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 16
-	addi.d	$a3, $a3, 16
+	vst	$vr1, $a4, -16
+	vld	$vr1, $a3, -16
+	vld	$vr3, $a3, 0
+	vfadd.s	$vr2, $vr2, $vr0
+	vst	$vr2, $a4, 0
+	vfadd.s	$vr1, $vr1, $vr0
+	vfadd.s	$vr2, $vr3, $vr0
+	vst	$vr1, $a3, -16
+	vst	$vr2, $a3, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB0_34
 # %bb.35:                               # %middle.block
 	beq	$a2, $a0, .LBB0_38

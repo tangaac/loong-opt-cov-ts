@@ -118,15 +118,7 @@ RandomIntra:                            # @RandomIntra
 .Lfunc_end1:
 	.size	RandomIntra, .Lfunc_end1-RandomIntra
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function RandomIntraNewPicture
-.LCPI2_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	RandomIntraNewPicture
+	.globl	RandomIntraNewPicture           # -- Begin function RandomIntraNewPicture
 	.p2align	5
 	.type	RandomIntraNewPicture,@function
 RandomIntraNewPicture:                  # @RandomIntraNewPicture
@@ -135,8 +127,8 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 	ld.w	$a2, $a0, %pc_lo12(NumberIntraPerPicture)
 	pcalau12i	$a0, %pc_hi20(WalkAround)
 	ld.w	$a1, $a0, %pc_lo12(WalkAround)
-	add.w	$a6, $a1, $a2
-	st.w	$a6, $a0, %pc_lo12(WalkAround)
+	add.w	$a4, $a1, $a2
+	st.w	$a4, $a0, %pc_lo12(WalkAround)
 	blez	$a2, .LBB2_8
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(RefreshPattern)
@@ -144,60 +136,40 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 	pcalau12i	$a1, %pc_hi20(NumberOfMBs)
 	ld.w	$a1, $a1, %pc_lo12(NumberOfMBs)
 	pcalau12i	$a3, %pc_hi20(IntraMBs)
-	ld.d	$a4, $a3, %pc_lo12(IntraMBs)
-	ori	$a3, $zero, 4
-	bgeu	$a2, $a3, .LBB2_3
+	ld.d	$a5, $a3, %pc_lo12(IntraMBs)
+	ori	$a3, $zero, 1
+	bne	$a2, $a3, .LBB2_3
 # %bb.2:
-	move	$a5, $zero
-	move	$a3, $a6
+	move	$a6, $zero
+	move	$a3, $a4
 	b	.LBB2_6
 .LBB2_3:                                # %vector.ph
-	bstrpick.d	$a3, $a2, 30, 2
-	slli.d	$a5, $a3, 2
-	pcalau12i	$a7, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a7, %pc_lo12(.LCPI2_0)
-	alsl.w	$a3, $a3, $a6, 2
-	vreplgr2vr.w	$vr0, $a1
-	vreplgr2vr.w	$vr2, $a6
-	vadd.w	$vr1, $vr2, $vr1
-	move	$a6, $a4
-	move	$a7, $a5
+	bstrpick.d	$a3, $a2, 30, 1
+	slli.d	$a6, $a3, 1
+	alsl.w	$a3, $a3, $a4, 1
+	addi.d	$a7, $a5, 4
+	move	$t0, $a6
 	.p2align	4, , 16
 .LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vmod.w	$vr2, $vr1, $vr0
-	vshuf4i.w	$vr3, $vr2, 50
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$t0, $vr2, 0
-	vpickve2gr.d	$t1, $vr2, 1
-	vpickve2gr.d	$t2, $vr3, 0
-	vpickve2gr.d	$t3, $vr3, 1
-	slli.d	$t0, $t0, 2
-	slli.d	$t1, $t1, 2
+	addi.w	$t1, $a4, 1
+	mod.w	$t2, $a4, $a1
+	mod.w	$t1, $t1, $a1
 	slli.d	$t2, $t2, 2
-	slli.d	$t3, $t3, 2
-	ldx.w	$t0, $a0, $t0
-	ldx.w	$t1, $a0, $t1
+	slli.d	$t1, $t1, 2
 	ldx.w	$t2, $a0, $t2
-	ldx.w	$t3, $a0, $t3
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $t1, 1
-	vinsgr2vr.w	$vr2, $t2, 2
-	vinsgr2vr.w	$vr2, $t3, 3
-	vst	$vr2, $a6, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a7, $a7, -4
-	addi.d	$a6, $a6, 16
-	bnez	$a7, .LBB2_4
+	ldx.w	$t1, $a0, $t1
+	st.w	$t2, $a7, -4
+	st.w	$t1, $a7, 0
+	addi.d	$a7, $a7, 8
+	addi.d	$t0, $t0, -2
+	addi.w	$a4, $a4, 2
+	bnez	$t0, .LBB2_4
 # %bb.5:                                # %middle.block
-	beq	$a5, $a2, .LBB2_8
+	beq	$a6, $a2, .LBB2_8
 .LBB2_6:                                # %scalar.ph.preheader
-	alsl.d	$a4, $a5, $a4, 2
-	sub.d	$a2, $a2, $a5
+	alsl.d	$a4, $a6, $a5, 2
+	sub.d	$a2, $a2, $a6
 	.p2align	4, , 16
 .LBB2_7:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1

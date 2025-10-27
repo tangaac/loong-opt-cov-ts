@@ -443,15 +443,16 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	.type	start_pass_1_quant,@function
 start_pass_1_quant:                     # @start_pass_1_quant
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s0, $a0, 608
 	ld.d	$a1, $s0, 32
@@ -510,15 +511,16 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	ori	$a2, $zero, 47
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	jr	$a1
 .LBB1_10:
 	pcalau12i	$a0, %pc_hi20(color_quantize)
@@ -540,13 +542,10 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	addi.d	$s0, $a0, 60
 	addi.d	$s1, $a0, 80
 	ori	$s2, $zero, 1024
-	pcalau12i	$a0, %pc_hi20(base_dither_matrix+8)
-	addi.d	$s3, $a0, %pc_lo12(base_dither_matrix+8)
+	pcalau12i	$a0, %pc_hi20(base_dither_matrix+7)
+	addi.d	$s3, $a0, %pc_lo12(base_dither_matrix+7)
 	move	$s4, $zero
-	vrepli.b	$vr3, 0
-	vrepli.w	$vr4, 255
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
+	ori	$s5, $zero, 255
 	b	.LBB1_17
 	.p2align	4, , 16
 .LBB1_15:                               #   in Loop: Header=BB1_17 Depth=1
@@ -563,7 +562,7 @@ start_pass_1_quant:                     # @start_pass_1_quant
                                         #     Child Loop BB1_18 Depth 2
                                         #     Child Loop BB1_21 Depth 2
 	slli.d	$a0, $s4, 2
-	ldx.w	$s5, $s0, $a0
+	ldx.w	$s6, $s0, $a0
 	move	$a0, $s0
 	move	$a3, $s4
 	move	$a2, $s1
@@ -573,7 +572,7 @@ start_pass_1_quant:                     # @start_pass_1_quant
                                         #   Parent Loop BB1_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a4, $a0, 0
-	beq	$s5, $a4, .LBB1_15
+	beq	$s6, $a4, .LBB1_15
 # %bb.19:                               #   in Loop: Header=BB1_18 Depth=2
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, -1
@@ -587,88 +586,129 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	ori	$a2, $zero, 1024
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
 	move	$a1, $zero
-	slli.d	$a2, $s5, 9
+	slli.d	$a2, $s6, 9
 	addi.d	$a2, $a2, -512
-	vreplgr2vr.d	$vr0, $a2
-	move	$a2, $s3
+	move	$a3, $s3
 	.p2align	4, , 16
 .LBB1_21:                               # %.preheader.i.i
                                         #   Parent Loop BB1_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a3, $a2, -8
-	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
-	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
-	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
-	vpickev.w	$vr1, $vr2, $vr1
-	vstx	$vr1, $a0, $a1
-	ld.w	$a3, $a2, -4
+	ld.bu	$a4, $a3, -7
+	slli.d	$a4, $a4, 1
+	sub.d	$a4, $s5, $a4
+	slli.d	$a5, $a4, 8
+	sub.d	$a4, $a5, $a4
+	div.d	$a4, $a4, $a2
+	stx.w	$a4, $a0, $a1
+	ld.bu	$a5, $a3, -6
 	add.d	$a4, $a0, $a1
-	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
-	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
-	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
-	vpickev.w	$vr1, $vr2, $vr1
-	vst	$vr1, $a4, 16
-	ld.w	$a3, $a2, 0
-	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
-	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
-	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
-	vpickev.w	$vr1, $vr2, $vr1
-	vst	$vr1, $a4, 32
-	ld.w	$a3, $a2, 4
-	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
-	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
-	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
-	vpickev.w	$vr1, $vr2, $vr1
-	vst	$vr1, $a4, 48
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 4
+	ld.bu	$a5, $a3, -5
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 8
+	ld.bu	$a5, $a3, -4
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 12
+	ld.bu	$a5, $a3, -3
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 16
+	ld.bu	$a5, $a3, -2
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 20
+	ld.bu	$a5, $a3, -1
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 24
+	ld.bu	$a5, $a3, 0
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 28
+	ld.bu	$a5, $a3, 1
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 32
+	ld.bu	$a5, $a3, 2
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 36
+	ld.bu	$a5, $a3, 3
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 40
+	ld.bu	$a5, $a3, 4
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 44
+	ld.bu	$a5, $a3, 5
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 48
+	ld.bu	$a5, $a3, 6
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 52
+	ld.bu	$a5, $a3, 7
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 56
+	ld.bu	$a5, $a3, 8
+	slli.d	$a5, $a5, 1
+	sub.d	$a5, $s5, $a5
+	slli.d	$a6, $a5, 8
+	sub.d	$a5, $a6, $a5
+	div.d	$a5, $a5, $a2
+	st.w	$a5, $a4, 60
 	addi.d	$a1, $a1, 64
-	addi.d	$a2, $a2, 16
+	addi.d	$a3, $a3, 16
 	bne	$a1, $s2, .LBB1_21
 # %bb.22:                               # %make_odither_array.exit.loopexit.i
                                         #   in Loop: Header=BB1_17 Depth=1
@@ -717,15 +757,16 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	addi.d	$s1, $s1, 8
 	blt	$s2, $a0, .LBB1_28
 .LBB1_29:                               # %create_odither_tables.exit
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end1:
 	.size	start_pass_1_quant, .Lfunc_end1-start_pass_1_quant

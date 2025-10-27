@@ -109,12 +109,9 @@ polybench_alloc_data:                   # @polybench_alloc_data
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0                          # -- Begin function main
 .LCPI7_0:
-	.dword	0x40a0680000000000              # double 2100
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
+	.dword	0x409db00000000000              # double 1900
 .LCPI7_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
+	.dword	0x40a0680000000000              # double 2100
 	.text
 	.globl	main
 	.p2align	5
@@ -191,125 +188,101 @@ main:                                   # @main
 # %bb.9:                                # %polybench_alloc_data.exit25
 	bnez	$a0, .LBB7_25
 # %bb.10:                               # %polybench_alloc_data.exit27
-	ori	$a0, $zero, 0
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	vreplgr2vr.d	$vr0, $a1
+	ori	$a1, $zero, 1
+	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI7_0)
 	lu12i.w	$s5, -4
-	ori	$a1, $s5, 1184
-	lu32i.d	$a0, -151552
-	lu52i.d	$a0, $a0, 1033
-	vreplgr2vr.d	$vr1, $a0
-	ori	$a0, $s6, 2928
+	ori	$a2, $s5, 1184
+	ori	$a0, $s6, 2920
 	.p2align	4, , 16
 .LBB7_11:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr2, $vr0, 2
-	vpickve2gr.w	$a2, $vr0, 1
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa3, $a2
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa4, $a2
-	ffint.d.l	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a2, $vr2, 1
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa3, $a2
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a2, $vr2, 0
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa2, $a2
+	bstrpick.d	$a3, $a1, 31, 0
+	addi.d	$a4, $a1, -1
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.d	$fa1, $a4
+	ffint.d.l	$fa1, $fa1
+	movgr2fr.d	$fa2, $a3
 	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vfdiv.d	$vr3, $vr4, $vr1
-	vfdiv.d	$vr2, $vr2, $vr1
-	add.d	$a2, $s2, $a1
-	vstx	$vr3, $a2, $s4
-	vstx	$vr2, $a2, $a0
-	addi.d	$a1, $a1, 32
-	vaddi.wu	$vr0, $vr0, 4
-	bnez	$a1, .LBB7_11
+	fdiv.d	$fa1, $fa1, $fa0
+	fdiv.d	$fa2, $fa2, $fa0
+	add.d	$a3, $s2, $a2
+	fstx.d	$fa1, $a3, $s4
+	fstx.d	$fa2, $a3, $a0
+	addi.d	$a2, $a2, 16
+	addi.w	$a1, $a1, 2
+	bnez	$a2, .LBB7_11
 # %bb.12:                               # %.preheader.i.preheader
 	move	$a1, $zero
-	lu52i.d	$a2, $zero, 1107
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa0, $a3
-	lu12i.w	$a3, 275200
-	pcalau12i	$a4, %pc_hi20(.LCPI7_0)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI7_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI7_1)
-	vld	$vr2, $a4, %pc_lo12(.LCPI7_1)
-	ori	$a4, $s5, 1184
-	ori	$a5, $zero, 2100
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 26624
-	lu52i.d	$a6, $a6, 1034
-	vreplgr2vr.d	$vr3, $a6
-	move	$a6, $fp
+	move	$a2, $zero
+	move	$a3, $zero
+	lu52i.d	$a4, $zero, 1107
+	lu12i.w	$a5, 256
+	lu52i.d	$a5, $a5, 1107
+	movgr2fr.d	$fa0, $a5
+	lu12i.w	$a5, 275200
+	pcalau12i	$a6, %pc_hi20(.LCPI7_1)
+	fld.d	$fa1, $a6, %pc_lo12(.LCPI7_1)
+	ori	$a6, $s5, 1184
+	lu12i.w	$a7, -25965
+	ori	$a7, $a7, 1069
+	lu32i.d	$a7, 0
+	ori	$t0, $zero, 2100
+	move	$t1, $fp
 	.p2align	4, , 16
 .LBB7_13:                               # %.preheader.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_14 Depth 2
-	srli.d	$a7, $a1, 32
-	or	$a7, $a7, $a2
-	movgr2fr.d	$fa4, $a7
-	fsub.d	$fa4, $fa4, $fa0
-	move	$a7, $a1
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa5, $a7
-	fadd.d	$fa4, $fa5, $fa4
-	fdiv.d	$fa4, $fa4, $fa1
-	slli.d	$a7, $a1, 3
-	fstx.d	$fa4, $s3, $a7
-	vreplgr2vr.d	$vr4, $a1
-	move	$a7, $a4
-	vori.b	$vr5, $vr2, 0
+	srli.d	$t2, $a3, 32
+	or	$t2, $t2, $a4
+	movgr2fr.d	$fa2, $t2
+	fsub.d	$fa2, $fa2, $fa0
+	move	$t2, $a3
+	bstrins.d	$t2, $a5, 63, 32
+	movgr2fr.d	$fa3, $t2
+	fadd.d	$fa2, $fa3, $fa2
+	fdiv.d	$fa2, $fa2, $fa1
+	slli.d	$t2, $a3, 3
+	fstx.d	$fa2, $s3, $t2
+	move	$t2, $a1
+	move	$t3, $a2
+	move	$t4, $a6
 	.p2align	4, , 16
 .LBB7_14:                               # %vector.body46
                                         #   Parent Loop BB7_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vaddi.du	$vr6, $vr5, 1
-	vaddi.du	$vr7, $vr5, 3
-	vmul.d	$vr6, $vr6, $vr4
-	vmul.d	$vr7, $vr7, $vr4
-	vpickve2gr.w	$t0, $vr6, 0
-	mod.wu	$t0, $t0, $a5
-	bstrpick.d	$t0, $t0, 31, 0
-	vpickve2gr.w	$t1, $vr6, 2
-	mod.wu	$t1, $t1, $a5
-	bstrpick.d	$t1, $t1, 31, 0
-	vpickve2gr.w	$t2, $vr7, 0
-	mod.wu	$t2, $t2, $a5
-	bstrpick.d	$t2, $t2, 31, 0
-	vpickve2gr.w	$t3, $vr7, 2
-	mod.wu	$t3, $t3, $a5
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$fa6, $t1
-	ffint.d.l	$fa6, $fa6
-	movgr2fr.d	$fa7, $t0
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	movgr2fr.d	$fa6, $t3
-	ffint.d.l	$fa6, $fa6
-	movgr2fr.d	$ft0, $t2
-	ffint.d.l	$ft0, $ft0
-	vextrins.d	$vr8, $vr6, 16
-	vfdiv.d	$vr6, $vr7, $vr3
-	vfdiv.d	$vr7, $vr8, $vr3
-	add.d	$t0, $a6, $a7
-	vstx	$vr6, $t0, $s4
-	vstx	$vr7, $t0, $a0
-	addi.d	$a7, $a7, 32
-	vaddi.du	$vr5, $vr5, 4
-	bnez	$a7, .LBB7_14
-# %bb.15:                               # %middle.block52
+	bstrpick.d	$t5, $t3, 31, 0
+	mul.d	$t5, $t5, $a7
+	srli.d	$t5, $t5, 43
+	mul.d	$t5, $t5, $t0
+	sub.d	$t5, $t3, $t5
+	bstrpick.d	$t5, $t5, 31, 0
+	bstrpick.d	$t6, $t2, 31, 0
+	mul.d	$t6, $t6, $a7
+	srli.d	$t6, $t6, 43
+	mul.d	$t6, $t6, $t0
+	sub.d	$t6, $t2, $t6
+	bstrpick.d	$t6, $t6, 31, 0
+	movgr2fr.d	$fa2, $t6
+	ffint.d.l	$fa2, $fa2
+	movgr2fr.d	$fa3, $t5
+	ffint.d.l	$fa3, $fa3
+	fdiv.d	$fa2, $fa2, $fa1
+	fdiv.d	$fa3, $fa3, $fa1
+	add.d	$t5, $t1, $t4
+	fstx.d	$fa2, $t5, $s4
+	fstx.d	$fa3, $t5, $a0
+	addi.d	$t4, $t4, 16
+	add.w	$t3, $t3, $a2
+	add.w	$t2, $t2, $a2
+	bnez	$t4, .LBB7_14
+# %bb.15:                               # %middle.block49
                                         #   in Loop: Header=BB7_13 Depth=1
-	addi.d	$a1, $a1, 1
-	add.d	$a6, $a6, $s4
-	bne	$a1, $a5, .LBB7_13
+	addi.d	$a3, $a3, 1
+	add.d	$t1, $t1, $s4
+	addi.w	$a2, $a2, 2
+	addi.w	$a1, $a1, 1
+	bne	$a3, $t0, .LBB7_13
 # %bb.16:                               # %init_array.exit
 	move	$a0, $s0
 	move	$a1, $zero

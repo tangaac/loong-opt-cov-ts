@@ -696,15 +696,7 @@ PatchMatrix:                            # @PatchMatrix
 .Lfunc_end2:
 	.size	PatchMatrix, .Lfunc_end2-PatchMatrix
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function allocate_QMatrix
-.LCPI3_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	allocate_QMatrix
+	.globl	allocate_QMatrix                # -- Begin function allocate_QMatrix
 	.p2align	5
 	.type	allocate_QMatrix,@function
 allocate_QMatrix:                       # @allocate_QMatrix
@@ -748,74 +740,30 @@ allocate_QMatrix:                       # @allocate_QMatrix
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB3_4:
-	blez	$s0, .LBB3_12
+	blez	$s0, .LBB3_7
 # %bb.5:                                # %.lr.ph
+	move	$a0, $zero
 	ld.d	$a1, $s1, %pc_lo12(qp_per_matrix)
 	ld.d	$a2, $fp, %pc_lo12(qp_rem_matrix)
-	move	$a0, $zero
-	ori	$a4, $zero, 8
 	lu12i.w	$a3, -349526
-	bltu	$s0, $a4, .LBB3_10
-# %bb.6:                                # %.lr.ph
-	sub.d	$a4, $a2, $a1
-	ori	$a5, $zero, 32
-	bltu	$a4, $a5, .LBB3_10
-# %bb.7:                                # %vector.ph
-	bstrpick.d	$a0, $s0, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a4, $a2, 16
-	pcalau12i	$a5, %pc_hi20(.LCPI3_0)
-	vld	$vr2, $a5, %pc_lo12(.LCPI3_0)
-	addi.d	$a5, $a1, 16
-	ori	$a6, $a3, 2731
-	vreplgr2vr.w	$vr0, $a6
-	vrepli.w	$vr1, 6
-	move	$a6, $a0
-	.p2align	4, , 16
-.LBB3_8:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr3, $vr2, 4
-	vmuh.wu	$vr4, $vr2, $vr0
-	vsrli.w	$vr4, $vr4, 2
-	vmuh.wu	$vr5, $vr3, $vr0
-	vsrli.w	$vr5, $vr5, 2
-	vst	$vr4, $a5, -16
-	vst	$vr5, $a5, 0
-	vaddi.wu	$vr6, $vr2, 8
-	vmsub.w	$vr2, $vr4, $vr1
-	vmsub.w	$vr3, $vr5, $vr1
-	vst	$vr2, $a4, -16
-	vst	$vr3, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	vori.b	$vr2, $vr6, 0
-	bnez	$a6, .LBB3_8
-# %bb.9:                                # %middle.block
-	beq	$a0, $s0, .LBB3_12
-.LBB3_10:                               # %scalar.ph.preheader
-	alsl.d	$a2, $a0, $a2, 2
-	alsl.d	$a1, $a0, $a1, 2
-	sub.d	$a4, $s0, $a0
 	ori	$a3, $a3, 2731
 	lu32i.d	$a3, 0
 	.p2align	4, , 16
-.LBB3_11:                               # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a5, $a0, 31, 0
-	mul.d	$a5, $a5, $a3
-	srli.d	$a5, $a5, 34
-	st.w	$a5, $a1, 0
-	slli.d	$a6, $a5, 2
-	alsl.d	$a5, $a5, $a6, 1
-	sub.d	$a5, $a0, $a5
-	st.w	$a5, $a2, 0
+.LBB3_6:                                # =>This Inner Loop Header: Depth=1
+	bstrpick.d	$a4, $a0, 31, 0
+	mul.d	$a4, $a4, $a3
+	srli.d	$a4, $a4, 34
+	st.w	$a4, $a1, 0
+	slli.d	$a5, $a4, 2
+	alsl.d	$a4, $a4, $a5, 1
+	sub.d	$a4, $a0, $a4
+	st.w	$a4, $a2, 0
 	addi.w	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, -1
+	addi.d	$s0, $s0, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a4, .LBB3_11
-.LBB3_12:                               # %._crit_edge
+	bnez	$s0, .LBB3_6
+.LBB3_7:                                # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(LevelScale4x4Luma)
 	addi.d	$a0, $a0, %pc_lo12(LevelScale4x4Luma)
 	ori	$a1, $zero, 2

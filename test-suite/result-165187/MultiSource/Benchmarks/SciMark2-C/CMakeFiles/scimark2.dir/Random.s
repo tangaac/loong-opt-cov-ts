@@ -28,38 +28,45 @@ new_Random_seed:                        # @new_Random_seed
 	sub.d	$a2, $a3, $a2
 	andi	$a3, $a2, 1
 	add.d	$a2, $a2, $a3
-	addi.w	$a4, $a2, -1
-	bstrpick.d	$a2, $a4, 62, 47
-	add.w	$a5, $a4, $a2
-	srai.d	$a3, $a5, 16
-	lu12i.w	$a2, -16
-	lu32i.d	$a2, 0
-	and	$a5, $a5, $a2
-	sub.d	$a7, $a4, $a5
-	lu12i.w	$a4, 2
-	ori	$a4, $a4, 877
-	lu12i.w	$a5, -8
+	addi.w	$a2, $a2, -1
+	bstrpick.d	$a3, $a2, 62, 47
+	add.w	$a4, $a2, $a3
+	srai.d	$a3, $a4, 16
+	lu12i.w	$a5, -16
 	lu32i.d	$a5, 0
-	ori	$a6, $zero, 68
+	and	$a4, $a4, $a5
+	sub.d	$a5, $a2, $a4
+	lu12i.w	$a2, 2
+	ori	$a2, $a2, 877
+	ori	$a4, $zero, 17
+	lu32i.d	$a4, 16
+	vreplgr2vr.d	$vr0, $a4
+	lu12i.w	$a4, -8
+	lu32i.d	$a4, -65536
+	vreplgr2vr.d	$vr1, $a4
+	ori	$a4, $zero, 68
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	mul.w	$a7, $a7, $a4
-	bstrpick.d	$t0, $a7, 62, 47
-	add.w	$t0, $a7, $t0
-	srai.d	$t1, $t0, 16
-	mul.d	$a3, $a3, $a4
-	add.w	$a3, $t1, $a3
-	bstrpick.d	$t1, $a3, 62, 48
-	add.d	$t1, $a3, $t1
-	and	$t1, $t1, $a5
-	sub.d	$a3, $a3, $t1
-	and	$t0, $t0, $a2
-	sub.d	$a7, $a7, $t0
-	slli.d	$t0, $a3, 16
-	add.d	$t0, $t0, $a7
-	stx.w	$t0, $a0, $a1
+	mul.w	$a5, $a5, $a2
+	bstrpick.d	$a6, $a5, 62, 47
+	add.w	$a6, $a5, $a6
+	srli.d	$a6, $a6, 16
+	mul.d	$a3, $a3, $a2
+	add.d	$a3, $a6, $a3
+	vinsgr2vr.w	$vr2, $a3, 0
+	vinsgr2vr.w	$vr2, $a5, 1
+	vsrai.w	$vr3, $vr2, 31
+	vsrl.w	$vr3, $vr3, $vr0
+	vadd.w	$vr3, $vr2, $vr3
+	vand.v	$vr3, $vr3, $vr1
+	vsub.w	$vr2, $vr2, $vr3
+	vpickve2gr.w	$a3, $vr2, 0
+	slli.d	$a6, $a3, 16
+	vpickve2gr.w	$a5, $vr2, 1
+	add.d	$a6, $a6, $a5
+	stx.w	$a6, $a0, $a1
 	addi.d	$a1, $a1, 4
-	bne	$a1, $a6, .LBB0_1
+	bne	$a1, $a4, .LBB0_1
 # %bb.2:                                # %initialize.exit
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
@@ -104,38 +111,45 @@ new_Random:                             # @new_Random
 	sub.d	$a2, $a3, $a2
 	andi	$a3, $a2, 1
 	add.d	$a2, $a2, $a3
-	addi.w	$a4, $a2, -1
-	bstrpick.d	$a2, $a4, 62, 47
-	add.w	$a5, $a4, $a2
-	srai.d	$a3, $a5, 16
-	lu12i.w	$a2, -16
-	lu32i.d	$a2, 0
-	and	$a5, $a5, $a2
-	sub.d	$a7, $a4, $a5
-	lu12i.w	$a4, 2
-	ori	$a4, $a4, 877
-	lu12i.w	$a5, -8
+	addi.w	$a2, $a2, -1
+	bstrpick.d	$a3, $a2, 62, 47
+	add.w	$a4, $a2, $a3
+	srai.d	$a3, $a4, 16
+	lu12i.w	$a5, -16
 	lu32i.d	$a5, 0
-	ori	$a6, $zero, 68
+	and	$a4, $a4, $a5
+	sub.d	$a5, $a2, $a4
+	lu12i.w	$a2, 2
+	ori	$a2, $a2, 877
+	ori	$a4, $zero, 17
+	lu32i.d	$a4, 16
+	vreplgr2vr.d	$vr0, $a4
+	lu12i.w	$a4, -8
+	lu32i.d	$a4, -65536
+	vreplgr2vr.d	$vr1, $a4
+	ori	$a4, $zero, 68
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	mul.w	$a7, $a7, $a4
-	bstrpick.d	$t0, $a7, 62, 47
-	add.w	$t0, $a7, $t0
-	srai.d	$t1, $t0, 16
-	mul.d	$a3, $a3, $a4
-	add.w	$a3, $t1, $a3
-	bstrpick.d	$t1, $a3, 62, 48
-	add.d	$t1, $a3, $t1
-	and	$t1, $t1, $a5
-	sub.d	$a3, $a3, $t1
-	and	$t0, $t0, $a2
-	sub.d	$a7, $a7, $t0
-	slli.d	$t0, $a3, 16
-	add.d	$t0, $t0, $a7
-	stx.w	$t0, $a0, $a1
+	mul.w	$a5, $a5, $a2
+	bstrpick.d	$a6, $a5, 62, 47
+	add.w	$a6, $a5, $a6
+	srli.d	$a6, $a6, 16
+	mul.d	$a3, $a3, $a2
+	add.d	$a3, $a6, $a3
+	vinsgr2vr.w	$vr2, $a3, 0
+	vinsgr2vr.w	$vr2, $a5, 1
+	vsrai.w	$vr3, $vr2, 31
+	vsrl.w	$vr3, $vr3, $vr0
+	vadd.w	$vr3, $vr2, $vr3
+	vand.v	$vr3, $vr3, $vr1
+	vsub.w	$vr2, $vr2, $vr3
+	vpickve2gr.w	$a3, $vr2, 0
+	slli.d	$a6, $a3, 16
+	vpickve2gr.w	$a5, $vr2, 1
+	add.d	$a6, $a6, $a5
+	stx.w	$a6, $a0, $a1
 	addi.d	$a1, $a1, 4
-	bne	$a1, $a6, .LBB1_1
+	bne	$a1, $a4, .LBB1_1
 # %bb.2:                                # %initialize.exit
 	ori	$a1, $zero, 4
 	lu32i.d	$a1, 16

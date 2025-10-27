@@ -547,60 +547,72 @@ uloop:                                  # @uloop
 	pcalau12i	$a0, %got_pc_hi20(gridGiven)
 	ld.d	$a0, $a0, %got_pc_lo12(gridGiven)
 	ld.w	$a0, $a0, 0
-	ld.w	$a1, $sp, 348
-	ld.w	$a2, $sp, 344
-	vinsgr2vr.w	$vr0, $a1, 0
-	vinsgr2vr.w	$vr0, $a2, 1
+	ld.w	$s2, $sp, 348
+	ld.w	$s3, $sp, 344
 	beqz	$a0, .LBB0_32
 # %bb.31:                               #   in Loop: Header=BB0_13 Depth=1
 	alsl.d	$a0, $s4, $s5, 3
 	ld.d	$a0, $a0, 152
 	ld.d	$a0, $a0, 88
-	pcalau12i	$a1, %got_pc_hi20(gOffsetX)
-	ld.d	$a1, $a1, %got_pc_lo12(gOffsetX)
-	ld.w	$a1, $a1, 0
-	pcalau12i	$a2, %got_pc_hi20(gridX)
-	ld.d	$a2, $a2, %got_pc_lo12(gridX)
-	pcalau12i	$a3, %got_pc_hi20(gOffsetY)
-	ld.d	$a3, $a3, %got_pc_lo12(gOffsetY)
-	ld.w	$a3, $a3, 0
-	pcalau12i	$a4, %got_pc_hi20(gridY)
-	ld.d	$a4, $a4, %got_pc_lo12(gridY)
-	ld.d	$a0, $a0, 8
-	vinsgr2vr.d	$vr1, $a0, 0
-	vadd.w	$vr0, $vr1, $vr0
-	vinsgr2vr.w	$vr2, $a1, 0
-	ld.w	$a0, $a2, 0
-	ld.w	$a1, $a4, 0
-	vinsgr2vr.w	$vr2, $a3, 1
-	vsub.w	$vr3, $vr0, $vr2
-	vinsgr2vr.w	$vr4, $a0, 0
-	vinsgr2vr.w	$vr4, $a1, 1
-	vpickve2gr.w	$a2, $vr3, 1
-	mod.w	$a1, $a2, $a1
-	vpickve2gr.w	$a2, $vr3, 0
-	mod.w	$a0, $a2, $a0
-	vinsgr2vr.w	$vr5, $a0, 0
-	vinsgr2vr.w	$vr5, $a1, 1
-	vsub.w	$vr3, $vr3, $vr5
-	vadd.w	$vr2, $vr3, $vr2
-	vadd.w	$vr3, $vr2, $vr4
-	vabsd.w	$vr4, $vr3, $vr0
-	vabsd.w	$vr0, $vr2, $vr0
-	vslt.wu	$vr0, $vr4, $vr0
-	vbitsel.v	$vr0, $vr2, $vr3, $vr0
-	pcalau12i	$a0, %pc_hi20(newxx)
-	addi.d	$a0, $a0, %pc_lo12(newxx)
-	vstelm.w	$vr0, $a0, 0, 0
-	pcalau12i	$a0, %pc_hi20(newyy)
-	addi.d	$a0, $a0, %pc_lo12(newyy)
-	vstelm.w	$vr0, $a0, 0, 1
-	vsub.w	$vr0, $vr0, $vr1
-	vstelm.w	$vr0, $sp, 348, 0
-	vstelm.w	$vr0, $sp, 344, 1
+	ld.w	$a1, $a0, 8
+	ld.w	$a0, $a0, 12
+	add.d	$a2, $a1, $s2
+	add.d	$a3, $a0, $s3
+	pcalau12i	$a4, %got_pc_hi20(gOffsetX)
+	ld.d	$a4, $a4, %got_pc_lo12(gOffsetX)
+	ld.w	$a4, $a4, 0
+	sub.w	$a5, $a2, $a4
+	pcalau12i	$a6, %got_pc_hi20(gridX)
+	ld.d	$a6, $a6, %got_pc_lo12(gridX)
+	ld.w	$a6, $a6, 0
+	mod.w	$a7, $a5, $a6
+	sub.d	$a5, $a5, $a7
+	add.d	$a4, $a5, $a4
+	add.d	$a5, $a4, $a6
+	sub.w	$a6, $a5, $a2
+	srai.d	$a7, $a6, 31
+	xor	$a6, $a6, $a7
+	sub.w	$a6, $a6, $a7
+	sub.w	$a2, $a4, $a2
+	srai.d	$a7, $a2, 31
+	xor	$a2, $a2, $a7
+	sub.w	$a2, $a2, $a7
+	sltu	$a2, $a6, $a2
+	masknez	$a4, $a4, $a2
+	maskeqz	$a2, $a5, $a2
+	or	$a2, $a2, $a4
+	pcalau12i	$a4, %pc_hi20(newxx)
+	st.w	$a2, $a4, %pc_lo12(newxx)
+	pcalau12i	$a4, %got_pc_hi20(gOffsetY)
+	ld.d	$a4, $a4, %got_pc_lo12(gOffsetY)
+	ld.w	$a4, $a4, 0
+	sub.w	$a5, $a3, $a4
+	pcalau12i	$a6, %got_pc_hi20(gridY)
+	ld.d	$a6, $a6, %got_pc_lo12(gridY)
+	ld.w	$a6, $a6, 0
+	mod.w	$a7, $a5, $a6
+	sub.d	$a5, $a5, $a7
+	add.d	$a4, $a5, $a4
+	add.d	$a5, $a4, $a6
+	sub.w	$a6, $a5, $a3
+	srai.d	$a7, $a6, 31
+	xor	$a6, $a6, $a7
+	sub.w	$a6, $a6, $a7
+	sub.w	$a3, $a4, $a3
+	srai.d	$a7, $a3, 31
+	xor	$a3, $a3, $a7
+	sub.w	$a3, $a3, $a7
+	sltu	$a3, $a6, $a3
+	masknez	$a4, $a4, $a3
+	maskeqz	$a3, $a5, $a3
+	or	$a3, $a3, $a4
+	pcalau12i	$a4, %pc_hi20(newyy)
+	st.w	$a3, $a4, %pc_lo12(newyy)
+	sub.w	$s2, $a2, $a1
+	st.w	$s2, $sp, 348
+	sub.w	$s3, $a3, $a0
+	st.w	$s3, $sp, 344
 .LBB0_32:                               #   in Loop: Header=BB0_13 Depth=1
-	vpickve2gr.w	$s2, $vr0, 0
-	vpickve2gr.w	$s3, $vr0, 1
 	move	$a0, $s8
 	move	$a1, $s2
 	move	$a2, $s3
@@ -1802,51 +1814,51 @@ forceGrid:                              # @forceGrid
 	pcalau12i	$a2, %got_pc_hi20(gOffsetX)
 	ld.d	$a2, $a2, %got_pc_lo12(gOffsetX)
 	ld.w	$a2, $a2, 0
-	pcalau12i	$a3, %got_pc_hi20(gridX)
-	ld.d	$a3, $a3, %got_pc_lo12(gridX)
-	pcalau12i	$a4, %got_pc_hi20(gOffsetY)
-	ld.d	$a4, $a4, %got_pc_lo12(gOffsetY)
+	sub.w	$a3, $a0, $a2
+	pcalau12i	$a4, %got_pc_hi20(gridX)
+	ld.d	$a4, $a4, %got_pc_lo12(gridX)
 	ld.w	$a4, $a4, 0
-	pcalau12i	$a5, %got_pc_hi20(gridY)
-	ld.d	$a5, $a5, %got_pc_lo12(gridY)
-	vinsgr2vr.w	$vr0, $a4, 0
-	vinsgr2vr.w	$vr0, $a2, 1
-	vinsgr2vr.w	$vr1, $a1, 0
-	ld.w	$a1, $a5, 0
-	ld.w	$a2, $a3, 0
-	vinsgr2vr.w	$vr1, $a0, 1
-	vsub.w	$vr2, $vr1, $vr0
-	vinsgr2vr.w	$vr3, $a1, 0
-	vinsgr2vr.w	$vr3, $a2, 1
-	vpickve2gr.w	$a0, $vr2, 1
-	mod.w	$a0, $a0, $a2
-	vpickve2gr.w	$a2, $vr2, 0
-	mod.w	$a1, $a2, $a1
-	vinsgr2vr.w	$vr4, $a1, 0
-	vinsgr2vr.w	$vr4, $a0, 1
-	vsub.w	$vr2, $vr2, $vr4
-	vadd.w	$vr0, $vr2, $vr0
-	vadd.w	$vr2, $vr0, $vr3
-	vabsd.w	$vr3, $vr2, $vr1
-	vabsd.w	$vr1, $vr0, $vr1
-	vslt.wu	$vr1, $vr3, $vr1
-	vshuf4i.w	$vr3, $vr1, 16
-	vpickve2gr.d	$a0, $vr3, 1
-	andi	$a0, $a0, 1
-	vpickve2gr.w	$a1, $vr2, 1
-	vpickve2gr.w	$a2, $vr0, 1
+	mod.w	$a5, $a3, $a4
+	sub.d	$a3, $a3, $a5
+	add.d	$a2, $a3, $a2
+	add.d	$a3, $a2, $a4
+	sub.w	$a4, $a3, $a0
+	srai.d	$a5, $a4, 31
+	xor	$a4, $a4, $a5
+	sub.w	$a4, $a4, $a5
+	sub.w	$a0, $a2, $a0
+	srai.d	$a5, $a0, 31
+	xor	$a0, $a0, $a5
+	sub.w	$a0, $a0, $a5
+	sltu	$a0, $a4, $a0
 	masknez	$a2, $a2, $a0
-	maskeqz	$a0, $a1, $a0
+	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a2
-	pcalau12i	$a1, %pc_hi20(newxx)
-	st.w	$a0, $a1, %pc_lo12(newxx)
-	vpickve2gr.d	$a0, $vr1, 0
-	andi	$a0, $a0, 1
-	vpickve2gr.w	$a1, $vr2, 0
-	vpickve2gr.w	$a2, $vr0, 0
-	masknez	$a2, $a2, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a2
+	pcalau12i	$a2, %pc_hi20(newxx)
+	st.w	$a0, $a2, %pc_lo12(newxx)
+	pcalau12i	$a0, %got_pc_hi20(gOffsetY)
+	ld.d	$a0, $a0, %got_pc_lo12(gOffsetY)
+	ld.w	$a0, $a0, 0
+	sub.w	$a2, $a1, $a0
+	pcalau12i	$a3, %got_pc_hi20(gridY)
+	ld.d	$a3, $a3, %got_pc_lo12(gridY)
+	ld.w	$a3, $a3, 0
+	mod.w	$a4, $a2, $a3
+	sub.d	$a2, $a2, $a4
+	add.d	$a0, $a2, $a0
+	add.d	$a2, $a0, $a3
+	sub.w	$a3, $a2, $a1
+	srai.d	$a4, $a3, 31
+	xor	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a4
+	sub.w	$a1, $a0, $a1
+	srai.d	$a4, $a1, 31
+	xor	$a1, $a1, $a4
+	sub.w	$a1, $a1, $a4
+	sltu	$a1, $a3, $a1
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a0, $a1, $a0
 	pcalau12i	$a1, %pc_hi20(newyy)
 	st.w	$a0, $a1, %pc_lo12(newyy)
 	ret

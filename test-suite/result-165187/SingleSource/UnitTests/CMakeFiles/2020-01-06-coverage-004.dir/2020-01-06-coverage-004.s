@@ -32,7 +32,7 @@ j:                                      # @j
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(d)
 	ld.hu	$a1, $a0, %pc_lo12(d)
-	beqz	$a1, .LBB1_8
+	beqz	$a1, .LBB1_10
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a2, %pc_hi20(f)
 	ld.d	$a2, $a2, %pc_lo12(f)
@@ -43,73 +43,83 @@ j:                                      # @j
 	pcalau12i	$a3, %pc_hi20(x)
 	addi.d	$a3, $a3, %pc_lo12(x)
 	lu12i.w	$a5, 253973
-	bltu	$a7, $a1, .LBB1_9
+	bltu	$a7, $a1, .LBB1_11
 # %bb.2:                                # %vector.memcheck
 	addi.d	$a7, $a2, 8
 	bgeu	$a3, $a7, .LBB1_4
 # %bb.3:                                # %vector.memcheck
 	addi.d	$a7, $a3, 8
-	bltu	$a2, $a7, .LBB1_9
+	bltu	$a2, $a7, .LBB1_11
 .LBB1_4:                                # %vector.ph
 	ori	$a6, $a6, 4095
 	xor	$a6, $a1, $a6
 	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 16, 2
-	ld.wu	$t1, $a2, 0
-	slli.w	$t0, $a7, 2
-	alsl.d	$a1, $a7, $a1, 2
-	vinsgr2vr.d	$vr0, $a4, 1
-	sltu	$a7, $zero, $t1
-	sltui	$t1, $t1, 1
-	vinsgr2vr.d	$vr1, $t1, 1
-	vslli.d	$vr1, $vr1, 63
-	vsrai.d	$vr1, $vr1, 63
-	vrepli.d	$vr2, 1
-	vbitsel.v	$vr0, $vr0, $vr2, $vr1
-	vpickve2gr.d	$t1, $vr0, 1
-	ori	$t2, $a5, 4095
-	lu32i.d	$t2, 474
-	div.d	$t1, $t2, $t1
-	sltu	$t1, $zero, $t1
-	and	$a7, $t1, $a7
-	st.d	$a7, $a3, 0
-	move	$t1, $t0
+	ld.wu	$t0, $a2, 0
+	bstrpick.d	$t1, $a6, 16, 2
+	slli.w	$a7, $t1, 2
+	alsl.d	$a1, $t1, $a1, 2
+	vinsgr2vr.d	$vr0, $t0, 0
+	vseqi.d	$vr0, $vr0, 0
+	vrepli.b	$vr1, -1
+	vxor.v	$vr1, $vr0, $vr1
+	vreplvei.d	$vr0, $vr1, 0
+	vpickve2gr.d	$t0, $vr1, 0
+	andi	$t0, $t0, 1
+	ori	$t1, $a5, 4095
+	lu32i.d	$t1, 474
+	div.d	$t1, $t1, $a4
+	vinsgr2vr.d	$vr1, $t1, 0
+	move	$t2, $a7
+	b	.LBB1_6
 	.p2align	4, , 16
-.LBB1_5:                                # %vector.body
+.LBB1_5:                                # %pred.sdiv.continue9
+                                        #   in Loop: Header=BB1_6 Depth=1
+	addi.w	$t2, $t2, -4
+	beqz	$t2, .LBB1_8
+.LBB1_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$t1, $t1, -4
-	bnez	$t1, .LBB1_5
-# %bb.6:                                # %middle.block
-	bne	$a6, $t0, .LBB1_9
-.LBB1_7:                                # %._crit_edge
+	vori.b	$vr2, $vr1, 0
+	beqz	$t0, .LBB1_5
+# %bb.7:                                # %pred.sdiv.if8
+                                        #   in Loop: Header=BB1_6 Depth=1
+	vinsgr2vr.d	$vr2, $t1, 1
+	b	.LBB1_5
+.LBB1_8:                                # %middle.block
+	vseqi.d	$vr1, $vr2, 0
+	vandn.v	$vr0, $vr1, $vr0
+	vpickve2gr.d	$t0, $vr0, 1
+	andi	$t0, $t0, 1
+	st.d	$t0, $a3, 0
+	bne	$a6, $a7, .LBB1_11
+.LBB1_9:                                # %._crit_edge
 	pcalau12i	$a1, %pc_hi20(b)
-	st.w	$a7, $a1, %pc_lo12(b)
+	st.w	$t0, $a1, %pc_lo12(b)
 	st.h	$zero, $a0, %pc_lo12(d)
-.LBB1_8:
+.LBB1_10:
 	ret
-.LBB1_9:                                # %scalar.ph.preheader
+.LBB1_11:                               # %scalar.ph.preheader
 	ori	$a5, $a5, 4095
 	lu32i.d	$a5, 474
 	div.d	$a4, $a5, $a4
 	sltu	$a4, $zero, $a4
-	b	.LBB1_12
+	b	.LBB1_14
 	.p2align	4, , 16
-.LBB1_10:                               #   in Loop: Header=BB1_12 Depth=1
-	move	$a7, $a4
-.LBB1_11:                               # %h.exit
-                                        #   in Loop: Header=BB1_12 Depth=1
+.LBB1_12:                               #   in Loop: Header=BB1_14 Depth=1
+	move	$t0, $a4
+.LBB1_13:                               # %h.exit
+                                        #   in Loop: Header=BB1_14 Depth=1
 	bstrpick.d	$a1, $a1, 15, 0
 	addi.d	$a1, $a1, 1
 	slli.d	$a5, $a1, 47
-	st.d	$a7, $a3, 0
-	bltz	$a5, .LBB1_7
-.LBB1_12:                               # %scalar.ph
+	st.d	$t0, $a3, 0
+	bltz	$a5, .LBB1_9
+.LBB1_14:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
-	bnez	$a5, .LBB1_10
-# %bb.13:                               #   in Loop: Header=BB1_12 Depth=1
-	move	$a7, $zero
-	b	.LBB1_11
+	bnez	$a5, .LBB1_12
+# %bb.15:                               #   in Loop: Header=BB1_14 Depth=1
+	move	$t0, $zero
+	b	.LBB1_13
 .Lfunc_end1:
 	.size	j, .Lfunc_end1-j
                                         # -- End function

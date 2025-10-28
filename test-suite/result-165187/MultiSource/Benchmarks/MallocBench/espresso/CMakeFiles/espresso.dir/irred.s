@@ -797,25 +797,24 @@ tautology:                              # @tautology
 	.type	taut_special_cases,@function
 taut_special_cases:                     # @taut_special_cases
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(cube)
 	ld.d	$s3, $a0, %got_pc_lo12(cube)
 	ld.d	$a0, $s3, 80
 	ld.d	$s0, $a0, 0
 	ld.d	$s1, $a0, 8
-	addi.d	$s8, $fp, 16
 	ori	$s2, $zero, 16
 	.p2align	4, , 16
 .LBB6_1:                                # =>This Inner Loop Header: Depth=1
@@ -839,89 +838,53 @@ taut_special_cases:                     # @taut_special_cases
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	b	.LBB6_41
+	b	.LBB6_35
 .LBB6_7:                                # %.preheader120
+	addi.w	$s8, $zero, -4
 	pcalau12i	$a0, %got_pc_hi20(cdata)
 	ld.d	$s6, $a0, %got_pc_lo12(cdata)
 	ori	$s7, $zero, 1
+	pcalau12i	$a0, %got_pc_hi20(debug)
+	ld.d	$a0, $a0, %got_pc_lo12(debug)
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB6_8:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB6_9 Depth 2
                                         #     Child Loop BB6_11 Depth 2
-                                        #     Child Loop BB6_15 Depth 2
-                                        #     Child Loop BB6_17 Depth 2
-                                        #       Child Loop BB6_18 Depth 3
+                                        #       Child Loop BB6_12 Depth 3
+                                        #     Child Loop BB6_22 Depth 2
+                                        #       Child Loop BB6_24 Depth 3
                                         #     Child Loop BB6_28 Depth 2
-                                        #       Child Loop BB6_30 Depth 3
-                                        #     Child Loop BB6_34 Depth 2
 	ld.d	$a0, $fp, 0
 	ld.wu	$a1, $a0, 0
-	andi	$a5, $a1, 1023
-	ori	$a1, $zero, 3
-	bltu	$a5, $a1, .LBB6_13
-# %bb.9:                                #   in Loop: Header=BB6_8 Depth=1
-	sub.d	$a1, $a0, $s0
-	ori	$a2, $zero, 16
-	bltu	$a1, $a2, .LBB6_13
-# %bb.10:                               # %vector.ph
-                                        #   in Loop: Header=BB6_8 Depth=1
-	addi.d	$a2, $a5, 1
-	andi	$a3, $a2, 2044
-	sub.d	$a1, $a5, $a3
-	addi.d	$a4, $s0, -12
-	alsl.d	$a4, $a5, $a4, 2
-	alsl.d	$a5, $a5, $a0, 2
-	addi.d	$a5, $a5, -12
-	move	$a6, $a3
+	andi	$a1, $a1, 1023
+	slli.d	$a1, $a1, 2
 	.p2align	4, , 16
-.LBB6_11:                               # %vector.body
-                                        #   Parent Loop BB6_8 Depth=1
+.LBB6_9:                                #   Parent Loop BB6_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a6, $a6, -4
-	addi.d	$a4, $a4, -16
-	addi.d	$a5, $a5, -16
-	bnez	$a6, .LBB6_11
-# %bb.12:                               # %middle.block
+	ldx.w	$a2, $a0, $a1
+	stx.w	$a2, $s0, $a1
+	addi.d	$a1, $a1, -4
+	bne	$a1, $s8, .LBB6_9
+# %bb.10:                               # %.preheader119
                                         #   in Loop: Header=BB6_8 Depth=1
-	bne	$a2, $a3, .LBB6_14
-	b	.LBB6_16
-	.p2align	4, , 16
-.LBB6_13:                               #   in Loop: Header=BB6_8 Depth=1
-	move	$a1, $a5
-.LBB6_14:                               # %scalar.ph.preheader
-                                        #   in Loop: Header=BB6_8 Depth=1
-	addi.d	$a2, $a1, 1
-	alsl.d	$a3, $a1, $s0, 2
-	alsl.d	$a0, $a1, $a0, 2
-	.p2align	4, , 16
-.LBB6_15:                               # %scalar.ph
-                                        #   Parent Loop BB6_8 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.w	$a1, $a0, 0
-	st.w	$a1, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, -4
-	addi.d	$a0, $a0, -4
-	bnez	$a2, .LBB6_15
-.LBB6_16:                               # %.preheader119
-                                        #   in Loop: Header=BB6_8 Depth=1
-	ld.d	$a2, $s8, 0
+	addi.d	$a0, $fp, 16
+	ld.d	$a2, $a0, 0
 	addi.d	$a0, $fp, 24
-	beqz	$a2, .LBB6_20
+	beqz	$a2, .LBB6_14
 	.p2align	4, , 16
-.LBB6_17:                               # %.lr.ph
+.LBB6_11:                               # %.lr.ph
                                         #   Parent Loop BB6_8 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB6_18 Depth 3
+                                        #       Child Loop BB6_12 Depth 3
 	ld.wu	$a1, $s0, 0
 	andi	$a3, $a1, 1023
 	addi.d	$a1, $a3, 1
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a3, $a3, $s0, 2
 	.p2align	4, , 16
-.LBB6_18:                               #   Parent Loop BB6_8 Depth=1
-                                        #     Parent Loop BB6_17 Depth=2
+.LBB6_12:                               #   Parent Loop BB6_8 Depth=1
+                                        #     Parent Loop BB6_11 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a4, $a3, 0
 	ld.w	$a5, $a2, 0
@@ -930,58 +893,58 @@ taut_special_cases:                     # @taut_special_cases
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, -4
 	addi.d	$a3, $a3, -4
-	bltu	$s7, $a1, .LBB6_18
-# %bb.19:                               # %.loopexit118
-                                        #   in Loop: Header=BB6_17 Depth=2
+	bltu	$s7, $a1, .LBB6_12
+# %bb.13:                               # %.loopexit118
+                                        #   in Loop: Header=BB6_11 Depth=2
 	ld.d	$a2, $a0, 0
 	addi.d	$a0, $a0, 8
-	bnez	$a2, .LBB6_17
-.LBB6_20:                               # %._crit_edge
+	bnez	$a2, .LBB6_11
+.LBB6_14:                               # %._crit_edge
                                         #   in Loop: Header=BB6_8 Depth=1
 	ld.d	$a1, $s3, 88
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(setp_equal)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB6_38
-# %bb.21:                               #   in Loop: Header=BB6_8 Depth=1
+	beqz	$a0, .LBB6_32
+# %bb.15:                               #   in Loop: Header=BB6_8 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(massive_count)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 36
 	ld.w	$a1, $s6, 32
-	beq	$a0, $a1, .LBB6_38
-# %bb.22:                               #   in Loop: Header=BB6_8 Depth=1
+	beq	$a0, $a1, .LBB6_32
+# %bb.16:                               #   in Loop: Header=BB6_8 Depth=1
 	beq	$a1, $s7, .LBB6_3
-# %bb.23:                               #   in Loop: Header=BB6_8 Depth=1
-	beqz	$a0, .LBB6_42
-# %bb.24:                               #   in Loop: Header=BB6_8 Depth=1
+# %bb.17:                               #   in Loop: Header=BB6_8 Depth=1
+	beqz	$a0, .LBB6_36
+# %bb.18:                               #   in Loop: Header=BB6_8 Depth=1
 	ld.d	$a1, $s3, 96
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(set_copy)
 	jirl	$ra, $ra, 0
 	ld.w	$a3, $s3, 4
-	blez	$a3, .LBB6_31
-# %bb.25:                               # %.lr.ph124
+	blez	$a3, .LBB6_25
+# %bb.19:                               # %.lr.ph124
                                         #   in Loop: Header=BB6_8 Depth=1
 	ld.d	$a0, $s6, 24
 	ld.d	$a1, $s3, 72
 	move	$a2, $zero
-	b	.LBB6_28
+	b	.LBB6_22
 	.p2align	4, , 16
-.LBB6_26:                               # %.loopexit.loopexit
-                                        #   in Loop: Header=BB6_28 Depth=2
+.LBB6_20:                               # %.loopexit.loopexit
+                                        #   in Loop: Header=BB6_22 Depth=2
 	ld.w	$a3, $s3, 4
-.LBB6_27:                               # %.loopexit
-                                        #   in Loop: Header=BB6_28 Depth=2
+.LBB6_21:                               # %.loopexit
+                                        #   in Loop: Header=BB6_22 Depth=2
 	addi.d	$a2, $a2, 1
-	bge	$a2, $a3, .LBB6_31
-.LBB6_28:                               #   Parent Loop BB6_8 Depth=1
+	bge	$a2, $a3, .LBB6_25
+.LBB6_22:                               #   Parent Loop BB6_8 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB6_30 Depth 3
+                                        #       Child Loop BB6_24 Depth 3
 	slli.d	$a4, $a2, 2
 	ldx.w	$a4, $a0, $a4
-	beqz	$a4, .LBB6_27
-# %bb.29:                               #   in Loop: Header=BB6_28 Depth=2
+	beqz	$a4, .LBB6_21
+# %bb.23:                               #   in Loop: Header=BB6_22 Depth=2
 	ld.wu	$a3, $s0, 0
 	slli.d	$a4, $a2, 3
 	ldx.d	$a4, $a1, $a4
@@ -990,8 +953,8 @@ taut_special_cases:                     # @taut_special_cases
 	alsl.d	$a4, $a5, $a4, 2
 	alsl.d	$a5, $a5, $s0, 2
 	.p2align	4, , 16
-.LBB6_30:                               #   Parent Loop BB6_8 Depth=1
-                                        #     Parent Loop BB6_28 Depth=2
+.LBB6_24:                               #   Parent Loop BB6_8 Depth=1
+                                        #     Parent Loop BB6_22 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a6, $a5, 0
 	ld.w	$a7, $a4, 0
@@ -1000,25 +963,25 @@ taut_special_cases:                     # @taut_special_cases
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, -4
 	addi.d	$a5, $a5, -4
-	bltu	$s7, $a3, .LBB6_30
-	b	.LBB6_26
+	bltu	$s7, $a3, .LBB6_24
+	b	.LBB6_20
 	.p2align	4, , 16
-.LBB6_31:                               # %.preheader
+.LBB6_25:                               # %.preheader
                                         #   in Loop: Header=BB6_8 Depth=1
-	ld.d	$s2, $s8, 0
-	move	$s4, $s8
-	beqz	$s2, .LBB6_36
-# %bb.32:                               # %.lr.ph127.preheader
+	addi.d	$s4, $fp, 16
+	ld.d	$s2, $s4, 0
+	beqz	$s2, .LBB6_30
+# %bb.26:                               # %.lr.ph127.preheader
                                         #   in Loop: Header=BB6_8 Depth=1
 	ori	$s5, $zero, 24
-	move	$s4, $s8
-	b	.LBB6_34
+	addi.d	$s4, $fp, 16
+	b	.LBB6_28
 	.p2align	4, , 16
-.LBB6_33:                               #   in Loop: Header=BB6_34 Depth=2
+.LBB6_27:                               #   in Loop: Header=BB6_28 Depth=2
 	ldx.d	$s2, $fp, $s5
 	addi.d	$s5, $s5, 8
-	beqz	$s2, .LBB6_36
-.LBB6_34:                               # %.lr.ph127
+	beqz	$s2, .LBB6_30
+.LBB6_28:                               # %.lr.ph127
                                         #   Parent Loop BB6_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $fp, 0
@@ -1030,24 +993,23 @@ taut_special_cases:                     # @taut_special_cases
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(setp_implies)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB6_33
-# %bb.35:                               #   in Loop: Header=BB6_34 Depth=2
+	beqz	$a0, .LBB6_27
+# %bb.29:                               #   in Loop: Header=BB6_28 Depth=2
 	addi.d	$a0, $s4, 8
 	st.d	$s2, $s4, 0
 	move	$s4, $a0
-	b	.LBB6_33
+	b	.LBB6_27
 	.p2align	4, , 16
-.LBB6_36:                               # %._crit_edge128
+.LBB6_30:                               # %._crit_edge128
                                         #   in Loop: Header=BB6_8 Depth=1
-	addi.d	$a0, $s4, 8
 	st.d	$zero, $s4, 0
-	st.d	$a0, $fp, 8
-	pcalau12i	$a1, %got_pc_hi20(debug)
-	ld.d	$a1, $a1, %got_pc_lo12(debug)
-	ld.bu	$a1, $a1, 1
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.bu	$a1, $a0, 1
+	addi.d	$a0, $s4, 8
 	andi	$a1, $a1, 2
+	st.d	$a0, $fp, 8
 	beqz	$a1, .LBB6_8
-# %bb.37:                               #   in Loop: Header=BB6_8 Depth=1
+# %bb.31:                               #   in Loop: Header=BB6_8 Depth=1
 	ld.w	$a1, $s6, 36
 	sub.d	$a0, $a0, $fp
 	srai.d	$a0, $a0, 3
@@ -1057,32 +1019,32 @@ taut_special_cases:                     # @taut_special_cases
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	b	.LBB6_8
-.LBB6_38:
+.LBB6_32:
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB6_40
-# %bb.39:
+	beqz	$a0, .LBB6_34
+# %bb.33:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB6_40:
+.LBB6_34:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-.LBB6_41:
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+.LBB6_35:
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
-.LBB6_42:
+.LBB6_36:
 	ld.w	$a0, $s6, 40
 	ld.d	$a1, $s6, 8
 	ld.d	$a2, $fp, 8
@@ -1095,51 +1057,50 @@ taut_special_cases:                     # @taut_special_cases
 	add.d	$a0, $a0, $a2
 	srai.d	$a2, $a0, 1
 	ori	$a0, $zero, 2
-	bge	$a1, $a2, .LBB6_41
-# %bb.43:
-	pcalau12i	$a0, %got_pc_hi20(debug)
-	ld.d	$a0, $a0, %got_pc_lo12(debug)
+	bge	$a1, $a2, .LBB6_35
+# %bb.37:
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 0
 	andi	$a3, $a0, 512
-	addi.d	$a1, $sp, 16
-	addi.d	$a2, $sp, 8
+	addi.d	$a1, $sp, 32
+	addi.d	$a2, $sp, 24
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cubelist_partition)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	ori	$a0, $zero, 2
-	beqz	$a1, .LBB6_41
-# %bb.44:
+	beqz	$a1, .LBB6_35
+# %bb.38:
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB6_46
-# %bb.45:
+	beqz	$a0, .LBB6_40
+# %bb.39:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB6_46:
+.LBB6_40:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(tautology)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8
-	beqz	$a0, .LBB6_50
-# %bb.47:
+	ld.d	$a1, $sp, 24
+	beqz	$a0, .LBB6_44
+# %bb.41:
 	ld.d	$a0, $a1, 0
-	beqz	$a0, .LBB6_49
-# %bb.48:                               # %.thread
+	beqz	$a0, .LBB6_43
+# %bb.42:                               # %.thread
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8
+	ld.d	$a1, $sp, 24
 	st.d	$zero, $a1, 0
-.LBB6_49:
+.LBB6_43:
 	move	$a0, $a1
 	b	.LBB6_6
-.LBB6_50:
+.LBB6_44:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(tautology)
 	jirl	$ra, $ra, 0
-	b	.LBB6_41
+	b	.LBB6_35
 .Lfunc_end6:
 	.size	taut_special_cases, .Lfunc_end6-taut_special_cases
                                         # -- End function

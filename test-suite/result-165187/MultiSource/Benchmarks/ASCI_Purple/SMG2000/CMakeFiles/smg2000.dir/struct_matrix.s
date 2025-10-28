@@ -241,58 +241,80 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	addi.w	$s0, $a0, 0
 	st.d	$s1, $sp, 72
+	move	$a5, $zero
+	move	$a4, $zero
+	move	$a2, $zero
+	move	$a3, $zero
 	move	$a0, $zero
 	move	$a1, $zero
-	vrepli.b	$vr0, 0
 	blez	$s0, .LBB4_12
 # %bb.8:                                # %.lr.ph177.preheader
-	move	$a2, $s0
-	move	$a3, $s5
+	addi.d	$a6, $s5, 8
+	move	$a7, $s0
 	b	.LBB4_10
 	.p2align	4, , 16
 .LBB4_9:                                # %.loopexit
                                         #   in Loop: Header=BB4_10 Depth=1
-	addi.d	$a3, $a3, 12
-	addi.d	$a2, $a2, -1
+	addi.d	$a6, $a6, 12
+	addi.d	$a7, $a7, -1
 	addi.d	$s1, $s1, 4
-	beqz	$a2, .LBB4_12
+	beqz	$a7, .LBB4_12
 .LBB4_10:                               # %.lr.ph177
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $s1, 0
-	bltz	$a4, .LBB4_9
+	ld.w	$t0, $s1, 0
+	bltz	$t0, .LBB4_9
 # %bb.11:                               # %.preheader171
                                         #   in Loop: Header=BB4_10 Depth=1
-	ld.d	$a4, $a3, 0
-	ld.w	$a5, $a3, 0
-	ld.w	$a6, $a3, 4
-	vinsgr2vr.d	$vr1, $a4, 0
-	sub.d	$a4, $zero, $a5
-	sub.d	$a5, $zero, $a6
-	vinsgr2vr.w	$vr2, $a4, 0
-	ld.w	$a4, $a3, 8
-	vilvl.w	$vr1, $vr1, $vr2
-	vinsgr2vr.w	$vr1, $a5, 2
-	vmax.w	$vr0, $vr0, $vr1
-	sub.w	$a5, $zero, $a4
-	slt	$a6, $a5, $a0
-	masknez	$a5, $a5, $a6
-	maskeqz	$a0, $a0, $a6
-	or	$a0, $a0, $a5
-	slt	$a5, $a4, $a1
-	masknez	$a4, $a4, $a5
-	maskeqz	$a1, $a1, $a5
-	or	$a1, $a1, $a4
+	ld.w	$t0, $a6, -8
+	sub.w	$t1, $zero, $t0
+	slt	$t2, $t1, $a5
+	masknez	$t1, $t1, $t2
+	maskeqz	$a5, $a5, $t2
+	or	$a5, $a5, $t1
+	slt	$t1, $t0, $a4
+	ld.w	$t2, $a6, -4
+	masknez	$t0, $t0, $t1
+	maskeqz	$a4, $a4, $t1
+	or	$a4, $a4, $t0
+	sub.w	$t0, $zero, $t2
+	slt	$t1, $t0, $a2
+	masknez	$t0, $t0, $t1
+	maskeqz	$a2, $a2, $t1
+	or	$a2, $a2, $t0
+	slt	$t0, $t2, $a3
+	ld.w	$t1, $a6, 0
+	masknez	$t2, $t2, $t0
+	maskeqz	$a3, $a3, $t0
+	or	$a3, $a3, $t2
+	sub.w	$t0, $zero, $t1
+	slt	$t2, $t0, $a0
+	masknez	$t0, $t0, $t2
+	maskeqz	$a0, $a0, $t2
+	or	$a0, $a0, $t0
+	slt	$t0, $t1, $a1
+	masknez	$t1, $t1, $t0
+	maskeqz	$a1, $a1, $t0
+	or	$a1, $a1, $t1
 	b	.LBB4_9
 .LBB4_12:                               # %.preheader170
-	vld	$vr1, $fp, 88
-	vadd.w	$vr0, $vr1, $vr0
-	ld.w	$a2, $fp, 104
-	vst	$vr0, $fp, 88
-	ld.w	$a3, $fp, 108
+	ld.w	$a6, $fp, 88
+	ld.w	$a7, $fp, 92
+	add.d	$a5, $a6, $a5
+	st.w	$a5, $fp, 88
+	ld.w	$a5, $fp, 96
+	add.d	$a4, $a7, $a4
+	ld.w	$a6, $fp, 100
+	st.w	$a4, $fp, 92
+	add.d	$a2, $a5, $a2
+	st.w	$a2, $fp, 96
+	add.d	$a2, $a6, $a3
+	ld.w	$a3, $fp, 104
+	st.w	$a2, $fp, 100
+	ld.w	$a2, $fp, 108
 	ld.d	$s1, $fp, 40
-	add.d	$a0, $a2, $a0
+	add.d	$a0, $a3, $a0
 	st.w	$a0, $fp, 104
-	add.d	$a0, $a3, $a1
+	add.d	$a0, $a2, $a1
 	st.w	$a0, $fp, 108
 	beqz	$s1, .LBB4_14
 # %bb.13:
@@ -390,20 +412,20 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	add.d	$s3, $a0, $a1
 	ld.w	$s1, $s3, 12
 	ldx.w	$fp, $a0, $a1
-	ld.w	$s2, $s3, 16
-	ld.w	$s0, $s3, 4
+	ld.w	$s0, $s3, 16
+	ld.w	$s2, $s3, 4
 	ld.w	$a0, $s3, 20
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	ld.w	$s4, $s3, 8
+	ld.w	$s5, $s3, 8
 	ori	$a1, $zero, 4
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	move	$a0, $s5
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	slli.d	$a1, $s7, 3
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	stx.d	$a0, $a2, $a1
-	blez	$s5, .LBB4_20
+	blez	$s4, .LBB4_20
 # %bb.23:                               # %.lr.ph185
                                         #   in Loop: Header=BB4_22 Depth=1
 	sub.w	$a1, $s1, $fp
@@ -412,7 +434,7 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	masknez	$a2, $s8, $a2
 	or	$a1, $a1, $a2
 	addi.d	$a1, $a1, 1
-	sub.w	$a2, $s2, $s0
+	sub.w	$a2, $s0, $s2
 	slt	$a3, $s8, $a2
 	maskeqz	$a2, $a2, $a3
 	masknez	$a3, $s8, $a3
@@ -420,7 +442,7 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	addi.d	$a2, $a2, 1
 	mulw.d.w	$a2, $a2, $a1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	sub.w	$a1, $a1, $s4
+	sub.w	$a1, $a1, $s5
 	slt	$a3, $s8, $a1
 	maskeqz	$a4, $a1, $a3
 	masknez	$a3, $s8, $a3

@@ -26,74 +26,25 @@ f1:                                     # @f1
 	st.d	$a1, $sp, 24
 	addi.d	$a1, $sp, 24
 	st.d	$a1, $sp, 8
-	blez	$a0, .LBB1_5
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
-	ld.d	$a2, $sp, 8
-	ori	$a3, $zero, 20
-	pcalau12i	$a1, %pc_hi20(x)
-	addi.d	$a1, $a1, %pc_lo12(x)
-	bgeu	$a0, $a3, .LBB1_6
-.LBB1_2:
-	move	$a3, $a0
-	move	$a4, $a2
-.LBB1_3:                                # %.lr.ph.preheader12
-	addi.d	$a0, $a3, 1
-	addi.d	$a2, $a4, 8
+	ld.d	$a1, $sp, 8
+	addi.d	$a0, $a0, 1
+	addi.d	$a1, $a1, 8
+	pcalau12i	$a2, %pc_hi20(x)
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
-.LBB1_4:                                # %.lr.ph
+.LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a2, $sp, 8
-	ld.d	$a4, $a2, -8
-	st.d	$a4, $a1, 0
+	st.d	$a1, $sp, 8
+	ld.d	$a4, $a1, -8
+	st.d	$a4, $a2, %pc_lo12(x)
 	addi.w	$a0, $a0, -1
-	addi.d	$a2, $a2, 8
-	bltu	$a3, $a0, .LBB1_4
-.LBB1_5:                                # %._crit_edge
+	addi.d	$a1, $a1, 8
+	bltu	$a3, $a0, .LBB1_2
+.LBB1_3:                                # %._crit_edge
 	addi.d	$sp, $sp, 80
 	ret
-.LBB1_6:                                # %vector.memcheck
-	addi.d	$a4, $sp, 16
-	addi.d	$a3, $a1, 8
-	addi.d	$a5, $sp, 8
-	sltu	$a6, $a5, $a3
-	sltu	$a7, $a1, $a4
-	and	$a6, $a6, $a7
-	bnez	$a6, .LBB1_2
-# %bb.7:                                # %vector.memcheck
-	addi.d	$a6, $a0, -1
-	bstrpick.d	$a6, $a6, 31, 0
-	alsl.d	$a6, $a6, $a2, 3
-	addi.d	$a6, $a6, 8
-	sltu	$a5, $a5, $a6
-	sltu	$a4, $a2, $a4
-	and	$a4, $a5, $a4
-	bnez	$a4, .LBB1_2
-# %bb.8:                                # %vector.memcheck
-	sltu	$a4, $a1, $a6
-	sltu	$a3, $a2, $a3
-	and	$a3, $a4, $a3
-	bnez	$a3, .LBB1_2
-# %bb.9:                                # %vector.ph
-	bstrpick.d	$a4, $a0, 30, 2
-	slli.d	$a5, $a4, 2
-	sub.d	$a3, $a0, $a5
-	slli.d	$a4, $a4, 5
-	add.d	$a4, $a2, $a4
-	move	$a6, $a5
-	.p2align	4, , 16
-.LBB1_10:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a7, $a2
-	addi.d	$a6, $a6, -4
-	addi.d	$a2, $a2, 32
-	bnez	$a6, .LBB1_10
-# %bb.11:                               # %middle.block
-	ld.d	$a6, $a7, 24
-	st.d	$a2, $sp, 8
-	st.d	$a6, $a1, 0
-	bne	$a5, $a0, .LBB1_3
-	b	.LBB1_5
 .Lfunc_end1:
 	.size	f1, .Lfunc_end1-f1
                                         # -- End function

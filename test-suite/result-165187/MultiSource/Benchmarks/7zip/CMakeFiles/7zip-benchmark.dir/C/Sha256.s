@@ -83,132 +83,65 @@ Sha256_Update:                          # @Sha256_Update
 .Lfunc_end1:
 	.size	Sha256_Update, .Lfunc_end1-Sha256_Update
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Sha256_WriteByteBlock
-.LCPI2_0:
-	.byte	1                               # 0x1
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	4                               # 0x4
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	9                               # 0x9
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	12                              # 0xc
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_1:
-	.byte	0                               # 0x0
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	5                               # 0x5
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	8                               # 0x8
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	13                              # 0xd
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_2:
-	.byte	2                               # 0x2
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	6                               # 0x6
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	10                              # 0xa
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	14                              # 0xe
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function Sha256_WriteByteBlock
 	.type	Sha256_WriteByteBlock,@function
 Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 # %bb.0:
 	addi.d	$sp, $sp, -192
 	st.d	$fp, $sp, 184                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 176                   # 8-byte Folded Spill
-	vld	$vr2, $a0, 40
-	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a1, %pc_lo12(.LCPI2_0)
-	vrepli.b	$vr0, 0
-	vshuf.b	$vr3, $vr0, $vr2, $vr1
-	pcalau12i	$a1, %pc_hi20(.LCPI2_1)
-	vld	$vr4, $a1, %pc_lo12(.LCPI2_1)
-	ori	$a1, $zero, 16
-	lu32i.d	$a1, 24
-	vreplgr2vr.d	$vr5, $a1
-	vsll.w	$vr3, $vr3, $vr5
-	vshuf.b	$vr6, $vr0, $vr2, $vr4
-	pcalau12i	$a1, %pc_hi20(.LCPI2_2)
-	vld	$vr7, $a1, %pc_lo12(.LCPI2_2)
-	ori	$a1, $zero, 24
-	lu32i.d	$a1, 16
-	vreplgr2vr.d	$vr8, $a1
-	vsll.w	$vr6, $vr6, $vr8
-	vor.v	$vr3, $vr6, $vr3
-	vshuf.b	$vr6, $vr0, $vr2, $vr7
-	vslli.w	$vr6, $vr6, 8
-	vor.v	$vr3, $vr3, $vr6
-	vld	$vr6, $a0, 56
-	vsrli.w	$vr2, $vr2, 24
-	vor.v	$vr2, $vr3, $vr2
-	vst	$vr2, $sp, 16
-	vshuf.b	$vr2, $vr0, $vr6, $vr1
-	vsll.w	$vr2, $vr2, $vr5
-	vshuf.b	$vr3, $vr0, $vr6, $vr4
-	vsll.w	$vr3, $vr3, $vr8
-	vor.v	$vr2, $vr3, $vr2
-	vshuf.b	$vr3, $vr0, $vr6, $vr7
-	vslli.w	$vr3, $vr3, 8
-	vor.v	$vr2, $vr2, $vr3
-	vld	$vr3, $a0, 72
-	vsrli.w	$vr6, $vr6, 24
-	vor.v	$vr2, $vr2, $vr6
-	vst	$vr2, $sp, 32
-	vshuf.b	$vr2, $vr0, $vr3, $vr1
-	vsll.w	$vr2, $vr2, $vr5
-	vshuf.b	$vr6, $vr0, $vr3, $vr4
-	vsll.w	$vr6, $vr6, $vr8
-	vor.v	$vr2, $vr6, $vr2
-	vshuf.b	$vr6, $vr0, $vr3, $vr7
-	vslli.w	$vr6, $vr6, 8
-	vor.v	$vr2, $vr2, $vr6
-	vld	$vr6, $a0, 88
-	vsrli.w	$vr3, $vr3, 24
-	vor.v	$vr2, $vr2, $vr3
-	vst	$vr2, $sp, 48
-	vshuf.b	$vr1, $vr0, $vr6, $vr1
-	vsll.w	$vr1, $vr1, $vr5
-	vshuf.b	$vr2, $vr0, $vr6, $vr4
-	vsll.w	$vr2, $vr2, $vr8
-	vor.v	$vr1, $vr2, $vr1
-	vshuf.b	$vr0, $vr0, $vr6, $vr7
-	vslli.w	$vr0, $vr0, 8
-	vor.v	$vr0, $vr1, $vr0
-	vsrli.w	$vr1, $vr6, 24
-	vld	$vr2, $a0, 16
-	vld	$vr3, $a0, 0
-	vor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $sp, 64
-	vst	$vr2, $sp, 96
-	vst	$vr3, $sp, 80
+	ld.w	$a1, $a0, 40
+	ld.w	$a2, $a0, 44
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 16
+	ld.w	$a1, $a0, 48
+	revb.2w	$a2, $a2
+	st.w	$a2, $sp, 20
+	ld.w	$a2, $a0, 52
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 24
+	ld.w	$a1, $a0, 56
+	revb.2w	$a2, $a2
+	st.w	$a2, $sp, 28
+	ld.w	$a2, $a0, 60
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 32
+	ld.w	$a1, $a0, 64
+	revb.2w	$a2, $a2
+	st.w	$a2, $sp, 36
+	ld.w	$a2, $a0, 68
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 40
+	ld.w	$a1, $a0, 72
+	revb.2w	$a2, $a2
+	st.w	$a2, $sp, 44
+	ld.w	$a2, $a0, 76
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 48
+	ld.w	$a1, $a0, 80
+	revb.2w	$a2, $a2
+	st.w	$a2, $sp, 52
+	ld.w	$a2, $a0, 84
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 56
+	ld.w	$a1, $a0, 88
+	revb.2w	$a2, $a2
+	st.w	$a2, $sp, 60
+	ld.w	$a2, $a0, 92
+	revb.2w	$a1, $a1
+	st.w	$a1, $sp, 64
+	ld.w	$a1, $a0, 96
+	revb.2w	$a2, $a2
+	vld	$vr0, $a0, 16
+	st.w	$a2, $sp, 68
+	revb.2w	$a1, $a1
+	ld.w	$a2, $a0, 100
+	vst	$vr0, $sp, 96
+	vld	$vr0, $a0, 0
+	st.w	$a1, $sp, 72
+	revb.2w	$a1, $a2
+	st.w	$a1, $sp, 76
+	vst	$vr0, $sp, 80
 	pcalau12i	$a1, %pc_hi20(K)
 	addi.d	$a1, $a1, %pc_lo12(K)
 	move	$a7, $zero
@@ -227,28 +160,28 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
                                         #     Child Loop BB2_5 Depth 2
 	move	$t4, $zero
 	move	$a6, $a7
-	addi.d	$a7, $sp, 16
-	move	$t0, $a1
-	addi.d	$t1, $sp, 112
-	ori	$t2, $zero, 16
+	ori	$a7, $zero, 16
+	addi.d	$t0, $sp, 16
+	move	$t1, $a1
+	addi.d	$t2, $sp, 112
 	b	.LBB2_5
 	.p2align	4, , 16
 .LBB2_3:                                #   in Loop: Header=BB2_5 Depth=2
-	ld.w	$t5, $a7, 0
+	ld.w	$t5, $t0, 0
 .LBB2_4:                                #   in Loop: Header=BB2_5 Depth=2
-	st.w	$t5, $t1, 0
-	addi.d	$t6, $t2, -12
+	st.w	$t5, $t2, 0
+	addi.d	$t6, $a7, -12
 	andi	$t6, $t6, 7
 	slli.d	$t6, $t6, 2
 	ldx.w	$t6, $t6, $a2
 	rotri.w	$t7, $t6, 6
 	rotri.w	$t8, $t6, 11
 	xor	$t7, $t7, $t8
-	addi.d	$t8, $t2, -10
+	addi.d	$t8, $a7, -10
 	andi	$t8, $t8, 7
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $t8, $a2
-	addi.d	$fp, $t2, -11
+	addi.d	$fp, $a7, -11
 	andi	$fp, $fp, 7
 	slli.d	$fp, $fp, 2
 	ldx.w	$fp, $fp, $a2
@@ -257,7 +190,7 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	andn	$t8, $t8, $t6
 	and	$t6, $fp, $t6
 	or	$t6, $t6, $t8
-	ld.w	$t8, $t0, 0
+	ld.w	$t8, $t1, 0
 	andn	$t4, $a3, $t4
 	slli.d	$t4, $t4, 2
 	ldx.w	$fp, $t4, $a2
@@ -266,13 +199,13 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	add.d	$t5, $t6, $t5
 	add.d	$t5, $t5, $fp
 	stx.w	$t5, $t4, $a2
-	addi.d	$t6, $t2, -13
+	addi.d	$t6, $a7, -13
 	andi	$t6, $t6, 7
 	slli.d	$t6, $t6, 2
 	ldx.w	$t7, $t6, $a2
 	add.d	$t5, $t7, $t5
 	stx.w	$t5, $t6, $a2
-	addi.d	$t5, $t2, -16
+	addi.d	$t5, $a7, -16
 	andi	$t5, $t5, 7
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $t5, $a2
@@ -281,11 +214,11 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	xor	$t6, $t6, $t7
 	rotri.w	$t7, $t5, 22
 	xor	$t6, $t6, $t7
-	addi.d	$t7, $t2, -15
+	addi.d	$t7, $a7, -15
 	andi	$t7, $t7, 7
 	slli.d	$t7, $t7, 2
 	ldx.w	$t7, $t7, $a2
-	addi.d	$t8, $t2, -14
+	addi.d	$t8, $a7, -14
 	andi	$t8, $t8, 7
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $t8, $a2
@@ -297,12 +230,12 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	add.d	$t6, $s0, $t6
 	add.d	$t5, $t6, $t5
 	stx.w	$t5, $t4, $a2
-	addi.d	$t2, $t2, -1
-	addi.d	$t1, $t1, 4
-	addi.d	$a7, $a7, 4
+	addi.d	$a7, $a7, -1
+	addi.d	$t2, $t2, 4
 	addi.d	$t0, $t0, 4
+	addi.d	$t1, $t1, 4
 	move	$t4, $t3
-	beqz	$t2, .LBB2_1
+	beqz	$a7, .LBB2_1
 .LBB2_5:                                #   Parent Loop BB2_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$t3, $t4, 1
@@ -327,7 +260,7 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	add.d	$t5, $t5, $t7
 	rotri.w	$t6, $t8, 7
 	rotri.w	$t7, $t8, 18
-	ld.w	$fp, $t1, 0
+	ld.w	$fp, $t2, 0
 	xor	$t6, $t6, $t7
 	srli.d	$t7, $t8, 3
 	xor	$t6, $t6, $t7

@@ -143,19 +143,19 @@ GenerateParameterSets:                  # @GenerateParameterSets
 	.type	GenerateSequenceParameterSet,@function
 GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 # %bb.0:                                # %switch.edge
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(input)
-	ld.d	$s1, $a0, %got_pc_lo12(input)
-	ld.d	$a0, $s1, 0
+	ld.d	$s2, $a0, %got_pc_lo12(input)
+	ld.d	$a0, $s2, 0
 	ld.w	$a1, $a0, 0
 	move	$a4, $zero
 	addi.w	$a3, $a1, -100
@@ -163,12 +163,11 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	ld.w	$a5, $a0, 4
 	ori	$a2, $a2, 1025
 	lu32i.d	$a2, 4096
-	vrepli.b	$vr0, 0
+	st.w	$a1, $fp, 4
 	st.w	$a5, $fp, 24
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vinsgr2vr.w	$vr0, $a1, 0
+	st.d	$zero, $fp, 8
 	ori	$a6, $zero, 99
-	vst	$vr0, $fp, 4
+	st.w	$zero, $fp, 16
 	bltu	$a6, $a1, .LBB1_3
 # %bb.1:                                # %switch.edge
 	ori	$a6, $zero, 9
@@ -178,19 +177,19 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	st.w	$a4, $fp, 24
 	ori	$a4, $zero, 1
 .LBB1_3:
-	lu12i.w	$s2, 1
-	ori	$a5, $s2, 1160
+	lu12i.w	$s1, 1
+	ori	$a5, $s1, 1160
 	ldx.w	$a5, $a0, $a5
 	st.w	$a4, $fp, 20
 	addi.d	$a4, $a5, -8
-	ori	$a5, $s2, 1164
+	ori	$a5, $s1, 1164
 	ldx.w	$a5, $a0, $a5
 	st.w	$a4, $fp, 72
 	srl.d	$a2, $a2, $a3
 	sltui	$a3, $a3, 45
 	addi.d	$a4, $a5, -8
 	st.w	$a4, $fp, 76
-	ori	$a4, $s2, 1188
+	ori	$a4, $s1, 1188
 	ldx.w	$a4, $a0, $a4
 	st.w	$zero, $fp, 28
 	addi.d	$a1, $a1, -144
@@ -202,7 +201,7 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	ld.w	$a1, $a1, %pc_lo12(log2_max_frame_num_minus4)
 	pcalau12i	$a4, %pc_hi20(log2_max_pic_order_cnt_lsb_minus4)
 	ld.w	$a4, $a4, %pc_lo12(log2_max_pic_order_cnt_lsb_minus4)
-	ori	$a6, $s2, 992
+	ori	$a6, $s1, 992
 	ldx.w	$a6, $a0, $a6
 	st.w	$a1, $fp, 80
 	ld.d	$a1, $s0, 0
@@ -235,9 +234,9 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	and	$s5, $a3, $a2
 	st.w	$a5, $fp, 1132
 	st.w	$zero, $fp, 1136
-	ori	$a2, $s2, 608
+	ori	$a2, $s1, 608
 	ldx.w	$a2, $a0, $a2
-	ori	$a3, $s2, 612
+	ori	$a3, $s1, 612
 	ldx.w	$a6, $a0, $a3
 	ld.w	$a5, $a0, 56
 	ori	$s4, $a4, 3296
@@ -294,53 +293,53 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	st.d	$a0, $a1, 0
 	beqz	$s5, .LBB1_14
 # %bb.11:
-	ld.d	$a0, $s1, 0
-	ori	$a1, $s2, 1112
+	ld.d	$a0, $s2, 0
+	ori	$a1, $s1, 1112
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 36
-	ori	$a1, $s2, 1116
+	ori	$a1, $s1, 1116
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 40
-	ori	$a1, $s2, 1120
+	ori	$a1, $s1, 1120
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 44
-	ori	$a1, $s2, 1124
+	ori	$a1, $s1, 1124
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 48
-	ori	$a1, $s2, 1128
+	ori	$a1, $s1, 1128
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 52
-	ori	$a1, $s2, 1132
+	ori	$a1, $s1, 1132
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 56
-	ori	$a1, $s2, 1136
+	ori	$a1, $s1, 1136
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 60
 	ldptr.w	$a1, $a0, 5100
 	beqz	$a1, .LBB1_15
 # %bb.12:
-	ori	$a1, $s2, 1140
+	ori	$a1, $s1, 1140
 	ldx.wu	$a1, $a0, $a1
 	andi	$a1, $a1, 1
 	st.w	$a1, $fp, 64
 	ldptr.w	$a1, $a0, 5100
 	beqz	$a1, .LBB1_16
 .LBB1_13:
-	ori	$a1, $s2, 1144
+	ori	$a1, $s1, 1144
 	ldx.wu	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	st.w	$a0, $fp, 68
 	b	.LBB1_17
 .LBB1_14:                               # %.loopexit.loopexit85
 	st.w	$zero, $fp, 68
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 52
 	vst	$vr0, $fp, 36
 	b	.LBB1_17
@@ -404,27 +403,27 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	ori	$a1, $zero, 500
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(error)
 	jr	$t8
 .LBB1_23:
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end1:
 	.size	GenerateSequenceParameterSet, .Lfunc_end1-GenerateSequenceParameterSet

@@ -9,31 +9,24 @@ f1:                                     # @f1
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 16
-	lu12i.w	$a4, 349525
-	ori	$a4, $a4, 1366
-	vreplgr2vr.w	$vr0, $a4
+	lu12i.w	$a3, 349525
+	ori	$a3, $a3, 1366
+	vreplgr2vr.w	$vr0, $a3
 	vrepli.w	$vr1, 3
-	pcalau12i	$a4, %pc_hi20(c)
-	addi.d	$a4, $a4, %pc_lo12(c)
+	pcalau12i	$a3, %pc_hi20(c)
+	addi.d	$a3, $a3, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a0
-	vldx	$vr2, $a5, $a2
-	vldx	$vr3, $a5, $a3
-	vmuh.w	$vr4, $vr2, $vr0
-	vsrli.w	$vr5, $vr4, 31
-	vadd.w	$vr4, $vr4, $vr5
-	vmsub.w	$vr2, $vr4, $vr1
-	vmuh.w	$vr4, $vr3, $vr0
-	vsrli.w	$vr5, $vr4, 31
-	vadd.w	$vr4, $vr4, $vr5
-	vmsub.w	$vr3, $vr4, $vr1
-	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	addi.d	$a0, $a0, 32
-	vstx	$vr3, $a5, $a3
+	add.d	$a4, $a1, $a0
+	vldx	$vr2, $a4, $a2
+	vmuh.w	$vr3, $vr2, $vr0
+	vsrli.w	$vr4, $vr3, 31
+	vadd.w	$vr3, $vr3, $vr4
+	vmsub.w	$vr2, $vr3, $vr1
+	add.d	$a4, $a3, $a0
+	addi.d	$a0, $a0, 16
+	vstx	$vr2, $a4, $a2
 	bnez	$a0, .LBB0_1
 # %bb.2:                                # %middle.block
 	ret
@@ -49,29 +42,23 @@ f2:                                     # @f2
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 16
-	lu12i.w	$a4, -349526
-	ori	$a4, $a4, 2731
-	vreplgr2vr.w	$vr0, $a4
+	lu12i.w	$a3, -349526
+	ori	$a3, $a3, 2731
+	vreplgr2vr.w	$vr0, $a3
 	vrepli.w	$vr1, 3
-	pcalau12i	$a4, %pc_hi20(d)
-	addi.d	$a4, $a4, %pc_lo12(d)
+	pcalau12i	$a3, %pc_hi20(d)
+	addi.d	$a3, $a3, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a0
-	vldx	$vr2, $a5, $a2
-	vldx	$vr3, $a5, $a3
-	vmuh.wu	$vr4, $vr2, $vr0
-	vsrli.w	$vr4, $vr4, 1
-	vmsub.w	$vr2, $vr4, $vr1
-	vmuh.wu	$vr4, $vr3, $vr0
-	vsrli.w	$vr4, $vr4, 1
-	vmsub.w	$vr3, $vr4, $vr1
-	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	addi.d	$a0, $a0, 32
-	vstx	$vr3, $a5, $a3
+	add.d	$a4, $a1, $a0
+	vldx	$vr2, $a4, $a2
+	vmuh.wu	$vr3, $vr2, $vr0
+	vsrli.w	$vr3, $vr3, 1
+	vmsub.w	$vr2, $vr3, $vr1
+	add.d	$a4, $a3, $a0
+	addi.d	$a0, $a0, 16
+	vstx	$vr2, $a4, $a2
 	bnez	$a0, .LBB1_1
 # %bb.2:                                # %middle.block
 	ret
@@ -87,33 +74,25 @@ f3:                                     # @f3
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 16
-	lu12i.w	$a4, 233016
-	ori	$a4, $a4, 3641
-	vreplgr2vr.w	$vr0, $a4
+	lu12i.w	$a3, 233016
+	ori	$a3, $a3, 3641
+	vreplgr2vr.w	$vr0, $a3
 	vrepli.w	$vr1, 18
-	pcalau12i	$a4, %pc_hi20(c)
-	addi.d	$a4, $a4, %pc_lo12(c)
+	pcalau12i	$a3, %pc_hi20(c)
+	addi.d	$a3, $a3, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB2_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a0
-	vldx	$vr2, $a5, $a2
-	vldx	$vr3, $a5, $a3
-	vmuh.w	$vr4, $vr2, $vr0
-	vsrai.w	$vr4, $vr4, 2
-	vsrli.w	$vr5, $vr4, 31
-	vadd.w	$vr4, $vr4, $vr5
-	vmsub.w	$vr2, $vr4, $vr1
-	vmuh.w	$vr4, $vr3, $vr0
-	vsrai.w	$vr4, $vr4, 2
-	vsrli.w	$vr5, $vr4, 31
-	vadd.w	$vr4, $vr4, $vr5
-	vmsub.w	$vr3, $vr4, $vr1
-	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	addi.d	$a0, $a0, 32
-	vstx	$vr3, $a5, $a3
+	add.d	$a4, $a1, $a0
+	vldx	$vr2, $a4, $a2
+	vmuh.w	$vr3, $vr2, $vr0
+	vsrai.w	$vr3, $vr3, 2
+	vsrli.w	$vr4, $vr3, 31
+	vadd.w	$vr3, $vr3, $vr4
+	vmsub.w	$vr2, $vr3, $vr1
+	add.d	$a4, $a3, $a0
+	addi.d	$a0, $a0, 16
+	vstx	$vr2, $a4, $a2
 	bnez	$a0, .LBB2_1
 # %bb.2:                                # %middle.block
 	ret
@@ -129,29 +108,23 @@ f4:                                     # @f4
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 16
-	lu12i.w	$a4, 233016
-	ori	$a4, $a4, 3641
-	vreplgr2vr.w	$vr0, $a4
+	lu12i.w	$a3, 233016
+	ori	$a3, $a3, 3641
+	vreplgr2vr.w	$vr0, $a3
 	vrepli.w	$vr1, 18
-	pcalau12i	$a4, %pc_hi20(d)
-	addi.d	$a4, $a4, %pc_lo12(d)
+	pcalau12i	$a3, %pc_hi20(d)
+	addi.d	$a3, $a3, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB3_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a0
-	vldx	$vr2, $a5, $a2
-	vldx	$vr3, $a5, $a3
-	vmuh.wu	$vr4, $vr2, $vr0
-	vsrli.w	$vr4, $vr4, 2
-	vmsub.w	$vr2, $vr4, $vr1
-	vmuh.wu	$vr4, $vr3, $vr0
-	vsrli.w	$vr4, $vr4, 2
-	vmsub.w	$vr3, $vr4, $vr1
-	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	addi.d	$a0, $a0, 32
-	vstx	$vr3, $a5, $a3
+	add.d	$a4, $a1, $a0
+	vldx	$vr2, $a4, $a2
+	vmuh.wu	$vr3, $vr2, $vr0
+	vsrli.w	$vr3, $vr3, 2
+	vmsub.w	$vr2, $vr3, $vr1
+	add.d	$a4, $a3, $a0
+	addi.d	$a0, $a0, 16
+	vstx	$vr2, $a4, $a2
 	bnez	$a0, .LBB3_1
 # %bb.2:                                # %middle.block
 	ret
@@ -167,33 +140,25 @@ f5:                                     # @f5
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 16
-	lu12i.w	$a4, 441505
-	ori	$a4, $a4, 2803
-	vreplgr2vr.w	$vr0, $a4
+	lu12i.w	$a3, 441505
+	ori	$a3, $a3, 2803
+	vreplgr2vr.w	$vr0, $a3
 	vrepli.w	$vr1, 19
-	pcalau12i	$a4, %pc_hi20(c)
-	addi.d	$a4, $a4, %pc_lo12(c)
+	pcalau12i	$a3, %pc_hi20(c)
+	addi.d	$a3, $a3, %pc_lo12(c)
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a0
-	vldx	$vr2, $a5, $a2
-	vldx	$vr3, $a5, $a3
-	vmuh.w	$vr4, $vr2, $vr0
-	vsrai.w	$vr4, $vr4, 3
-	vsrli.w	$vr5, $vr4, 31
-	vadd.w	$vr4, $vr4, $vr5
-	vmsub.w	$vr2, $vr4, $vr1
-	vmuh.w	$vr4, $vr3, $vr0
-	vsrai.w	$vr4, $vr4, 3
-	vsrli.w	$vr5, $vr4, 31
-	vadd.w	$vr4, $vr4, $vr5
-	vmsub.w	$vr3, $vr4, $vr1
-	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	addi.d	$a0, $a0, 32
-	vstx	$vr3, $a5, $a3
+	add.d	$a4, $a1, $a0
+	vldx	$vr2, $a4, $a2
+	vmuh.w	$vr3, $vr2, $vr0
+	vsrai.w	$vr3, $vr3, 3
+	vsrli.w	$vr4, $vr3, 31
+	vadd.w	$vr3, $vr3, $vr4
+	vmsub.w	$vr2, $vr3, $vr1
+	add.d	$a4, $a3, $a0
+	addi.d	$a0, $a0, 16
+	vstx	$vr2, $a4, $a2
 	bnez	$a0, .LBB4_1
 # %bb.2:                                # %middle.block
 	ret
@@ -209,35 +174,26 @@ f6:                                     # @f6
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
 	lu12i.w	$a2, 4
-	ori	$a3, $a2, 16
-	lu12i.w	$a4, -331130
-	ori	$a4, $a4, 3019
-	vreplgr2vr.w	$vr0, $a4
+	lu12i.w	$a3, -331130
+	ori	$a3, $a3, 3019
+	vreplgr2vr.w	$vr0, $a3
 	vrepli.w	$vr1, 19
-	pcalau12i	$a4, %pc_hi20(d)
-	addi.d	$a4, $a4, %pc_lo12(d)
+	pcalau12i	$a3, %pc_hi20(d)
+	addi.d	$a3, $a3, %pc_lo12(d)
 	.p2align	4, , 16
 .LBB5_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a1, $a0
-	vldx	$vr2, $a5, $a2
-	vldx	$vr3, $a5, $a3
-	vmuh.wu	$vr4, $vr2, $vr0
-	vsub.w	$vr5, $vr2, $vr4
-	vsrli.w	$vr5, $vr5, 1
-	vadd.w	$vr4, $vr5, $vr4
-	vsrli.w	$vr4, $vr4, 4
-	vmsub.w	$vr2, $vr4, $vr1
-	vmuh.wu	$vr4, $vr3, $vr0
-	vsub.w	$vr5, $vr3, $vr4
-	vsrli.w	$vr5, $vr5, 1
-	vadd.w	$vr4, $vr5, $vr4
-	vsrli.w	$vr4, $vr4, 4
-	vmsub.w	$vr3, $vr4, $vr1
-	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	addi.d	$a0, $a0, 32
-	vstx	$vr3, $a5, $a3
+	add.d	$a4, $a1, $a0
+	vldx	$vr2, $a4, $a2
+	vmuh.wu	$vr3, $vr2, $vr0
+	vsub.w	$vr4, $vr2, $vr3
+	vsrli.w	$vr4, $vr4, 1
+	vadd.w	$vr3, $vr4, $vr3
+	vsrli.w	$vr3, $vr3, 4
+	vmsub.w	$vr2, $vr3, $vr1
+	add.d	$a4, $a3, $a0
+	addi.d	$a0, $a0, 16
+	vstx	$vr2, $a4, $a2
 	bnez	$a0, .LBB5_1
 # %bb.2:                                # %middle.block
 	ret

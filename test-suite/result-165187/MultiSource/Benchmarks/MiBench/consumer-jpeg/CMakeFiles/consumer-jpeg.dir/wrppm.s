@@ -174,35 +174,72 @@ copy_pixel_rows:                        # @copy_pixel_rows
 # %bb.0:
 	ld.w	$a2, $a1, 72
 	ld.d	$a0, $a1, 48
-	beqz	$a2, .LBB3_15
+	beqz	$a2, .LBB3_11
 # %bb.1:                                # %iter.check
 	ld.d	$a3, $a1, 32
 	ld.d	$a4, $a3, 0
-	ori	$a3, $zero, 8
-	bltu	$a2, $a3, .LBB3_5
+	ori	$a3, $zero, 16
+	bltu	$a2, $a3, .LBB3_8
 # %bb.2:                                # %iter.check
 	sub.d	$a3, $a0, $a4
 	ori	$a5, $zero, 32
-	bltu	$a3, $a5, .LBB3_5
+	bltu	$a3, $a5, .LBB3_8
 # %bb.3:                                # %vector.main.loop.iter.check
 	bstrpick.d	$a3, $a2, 31, 0
-	bgeu	$a2, $a5, .LBB3_6
+	bgeu	$a2, $a5, .LBB3_12
 # %bb.4:
 	move	$a7, $zero
+.LBB3_5:                                # %vec.epilog.ph
+	bstrpick.d	$a6, $a3, 31, 4
+	slli.d	$t0, $a6, 4
+	sub.d	$a2, $a2, $t0
+	alsl.d	$a5, $a6, $a4, 4
+	alsl.d	$a6, $a6, $a0, 4
+	sub.d	$t1, $a7, $t0
+	add.d	$a0, $a0, $a7
+	add.d	$a4, $a4, $a7
+	.p2align	4, , 16
+.LBB3_6:                                # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, 0
+	vst	$vr0, $a0, 0
+	addi.d	$t1, $t1, 16
+	addi.d	$a0, $a0, 16
+	addi.d	$a4, $a4, 16
+	bnez	$t1, .LBB3_6
+# %bb.7:                                # %vec.epilog.middle.block
+	bne	$t0, $a3, .LBB3_9
 	b	.LBB3_10
-.LBB3_5:
+.LBB3_8:
 	move	$a5, $a4
 	move	$a6, $a0
-	b	.LBB3_13
-.LBB3_6:                                # %vector.ph
-	andi	$a5, $a3, 24
+	.p2align	4, , 16
+.LBB3_9:                                # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.b	$a0, $a5, 0
+	addi.d	$a5, $a5, 1
+	addi.d	$a3, $a6, 1
+	addi.w	$a2, $a2, -1
+	st.b	$a0, $a6, 0
+	move	$a6, $a3
+	bnez	$a2, .LBB3_9
+.LBB3_10:                               # %._crit_edge.loopexit
+	ld.d	$a0, $a1, 48
+.LBB3_11:                               # %._crit_edge
+	ld.d	$a2, $a1, 64
+	ld.d	$a3, $a1, 24
+	ori	$a1, $zero, 1
+	pcaddu18i	$t8, %call36(fwrite)
+	jr	$t8
+.LBB3_12:                               # %vector.ph
+	andi	$a5, $a3, 16
 	bstrpick.d	$a6, $a3, 31, 5
 	slli.d	$a7, $a6, 5
 	addi.d	$a6, $a0, 16
 	addi.d	$t0, $a4, 16
 	move	$t1, $a7
 	.p2align	4, , 16
-.LBB3_7:                                # %vector.body
+.LBB3_13:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $t0, -16
 	vld	$vr1, $t0, 0
@@ -211,54 +248,16 @@ copy_pixel_rows:                        # @copy_pixel_rows
 	addi.d	$t1, $t1, -32
 	addi.d	$a6, $a6, 32
 	addi.d	$t0, $t0, 32
-	bnez	$t1, .LBB3_7
-# %bb.8:                                # %middle.block
-	beq	$a7, $a3, .LBB3_14
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$a5, .LBB3_16
-.LBB3_10:                               # %vec.epilog.ph
-	bstrpick.d	$a6, $a3, 31, 3
-	slli.d	$t0, $a6, 3
-	sub.d	$a2, $a2, $t0
-	alsl.d	$a5, $a6, $a4, 3
-	alsl.d	$a6, $a6, $a0, 3
-	sub.d	$t1, $a7, $t0
-	add.d	$a0, $a0, $a7
-	add.d	$a4, $a4, $a7
-	.p2align	4, , 16
-.LBB3_11:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a4, 0
-	st.d	$a7, $a0, 0
-	addi.d	$t1, $t1, 8
-	addi.d	$a0, $a0, 8
-	addi.d	$a4, $a4, 8
-	bnez	$t1, .LBB3_11
-# %bb.12:                               # %vec.epilog.middle.block
-	beq	$t0, $a3, .LBB3_14
-	.p2align	4, , 16
-.LBB3_13:                               # %.lr.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.b	$a0, $a5, 0
-	addi.d	$a5, $a5, 1
-	addi.d	$a3, $a6, 1
-	addi.w	$a2, $a2, -1
-	st.b	$a0, $a6, 0
-	move	$a6, $a3
-	bnez	$a2, .LBB3_13
-.LBB3_14:                               # %._crit_edge.loopexit
-	ld.d	$a0, $a1, 48
-.LBB3_15:                               # %._crit_edge
-	ld.d	$a2, $a1, 64
-	ld.d	$a3, $a1, 24
-	ori	$a1, $zero, 1
-	pcaddu18i	$t8, %call36(fwrite)
-	jr	$t8
-.LBB3_16:
+	bnez	$t1, .LBB3_13
+# %bb.14:                               # %middle.block
+	beq	$a7, $a3, .LBB3_10
+# %bb.15:                               # %vec.epilog.iter.check
+	bnez	$a5, .LBB3_5
+# %bb.16:
 	sub.d	$a2, $a2, $a7
 	add.d	$a5, $a4, $a7
 	add.d	$a6, $a0, $a7
-	b	.LBB3_13
+	b	.LBB3_9
 .Lfunc_end3:
 	.size	copy_pixel_rows, .Lfunc_end3-copy_pixel_rows
                                         # -- End function

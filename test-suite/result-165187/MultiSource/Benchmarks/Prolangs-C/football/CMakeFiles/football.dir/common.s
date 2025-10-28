@@ -35,198 +35,288 @@ matches_any_team:                       # @matches_any_team
 	.type	common,@function
 common:                                 # @common
 # %bb.0:                                # %.preheader95
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
 	move	$fp, $a0
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	ori	$a2, $zero, 112
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	vrepli.w	$vr1, 1
-	vreplgr2vr.w	$vr2, $fp
-	vrepli.b	$vr0, 0
-	addi.d	$a2, $fp, 1
+	addi.d	$a1, $fp, 1
 	pcalau12i	$a0, %pc_hi20(common_teams)
-	addi.d	$a1, $a0, %pc_lo12(common_teams)
+	addi.d	$a0, $a0, %pc_lo12(common_teams)
 	blez	$fp, .LBB1_4
 # %bb.1:                                # %.preheader94.preheader
-	bstrpick.d	$a7, $a2, 31, 0
-	vld	$vr4, $sp, 16
-	vld	$vr3, $sp, 32
-	ld.w	$a4, $sp, 48
-	ld.w	$a3, $sp, 52
-	ld.w	$a0, $sp, 56
-	ld.w	$a6, $sp, 60
-	ld.w	$t0, $sp, 80
-	vld	$vr6, $sp, 84
-	vld	$vr7, $sp, 92
-	vld	$vr8, $sp, 108
-	ld.w	$a5, $sp, 124
-	vori.b	$vr5, $vr0, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	vori.b	$vr9, $vr0, 0
-	vinsgr2vr.w	$vr9, $t0, 1
-	vpackev.d	$vr6, $vr6, $vr9
-	addi.d	$a6, $a1, 4
-	addi.d	$a7, $a7, -1
-	ori	$t0, $zero, 116
-	pcalau12i	$t1, %got_pc_hi20(team_plays)
-	ld.d	$t1, $t1, %got_pc_lo12(team_plays)
+	bstrpick.d	$a4, $a1, 31, 0
+	vld	$vr3, $sp, 24
+	vld	$vr4, $sp, 40
+	vld	$vr1, $sp, 56
+	ld.w	$a3, $sp, 88
+	ld.w	$a2, $sp, 92
+	vld	$vr0, $sp, 96
+	vld	$vr2, $sp, 112
+	ld.w	$t1, $sp, 128
+	ld.w	$t0, $sp, 132
+	addi.d	$t2, $a0, 4
+	addi.d	$t3, $a4, -1
+	ori	$t4, $zero, 116
+	pcalau12i	$a4, %got_pc_hi20(team_plays)
+	ld.d	$t5, $a4, %got_pc_lo12(team_plays)
+	move	$a4, $zero
+	move	$a5, $zero
+	move	$a6, $zero
+	move	$a7, $zero
 	.p2align	4, , 16
 .LBB1_2:                                # %.preheader94
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t2, $a6, 0
-	mul.d	$t2, $t2, $t0
-	add.d	$t2, $t1, $t2
-	vld	$vr9, $t2, 4
-	vld	$vr10, $t2, 20
-	vadd.w	$vr4, $vr4, $vr9
-	vld	$vr9, $t2, 48
-	vld	$vr11, $t2, 64
-	vadd.w	$vr3, $vr3, $vr10
-	ld.w	$t3, $t2, 36
-	vadd.w	$vr5, $vr5, $vr9
-	vadd.w	$vr6, $vr6, $vr11
-	vld	$vr9, $t2, 80
-	add.w	$a4, $a4, $t3
-	ld.w	$t3, $t2, 40
-	ld.w	$t4, $t2, 44
-	vadd.w	$vr7, $vr7, $vr9
-	vld	$vr9, $t2, 96
-	ld.w	$t2, $t2, 112
-	add.w	$a3, $a3, $t3
-	add.w	$a0, $a0, $t4
-	vadd.w	$vr8, $vr8, $vr9
-	add.d	$a5, $a5, $t2
-	addi.d	$a7, $a7, -1
-	addi.d	$a6, $a6, 4
-	bnez	$a7, .LBB1_2
+	ld.w	$t6, $t2, 0
+	mul.d	$t6, $t6, $t4
+	add.d	$t6, $t5, $t6
+	vld	$vr5, $t6, 4
+	ld.w	$t7, $t6, 52
+	vadd.w	$vr3, $vr3, $vr5
+	vld	$vr5, $t6, 20
+	add.w	$a7, $a7, $t7
+	ld.w	$t7, $t6, 56
+	ld.w	$t8, $t6, 60
+	vadd.w	$vr4, $vr4, $vr5
+	vld	$vr5, $t6, 36
+	add.w	$a6, $a6, $t7
+	add.w	$a5, $a5, $t8
+	ld.w	$t7, $t6, 64
+	ld.w	$t8, $t6, 68
+	vadd.w	$vr1, $vr1, $vr5
+	vld	$vr5, $t6, 76
+	add.w	$a4, $a4, $t7
+	add.w	$a3, $a3, $t8
+	ld.w	$t7, $t6, 72
+	vadd.w	$vr0, $vr0, $vr5
+	vld	$vr5, $t6, 92
+	ld.w	$t8, $t6, 108
+	ld.w	$t6, $t6, 112
+	add.w	$a2, $a2, $t7
+	vadd.w	$vr2, $vr2, $vr5
+	add.d	$t1, $t1, $t8
+	add.d	$t0, $t0, $t6
+	addi.d	$t3, $t3, -1
+	addi.d	$t2, $t2, 4
+	bnez	$t3, .LBB1_2
 # %bb.3:                                # %.preheader93.loopexit
-	vst	$vr4, $sp, 16
-	vst	$vr3, $sp, 32
-	st.w	$a4, $sp, 48
-	st.w	$a3, $sp, 52
-	st.w	$a0, $sp, 56
-	vst	$vr5, $sp, 60
-	vstelm.w	$vr6, $sp, 80, 1
-	vstelm.w	$vr6, $sp, 84, 2
-	vstelm.w	$vr6, $sp, 88, 3
-	vst	$vr7, $sp, 92
-	vst	$vr8, $sp, 108
-	st.w	$a5, $sp, 124
+	vst	$vr3, $sp, 24
+	vst	$vr4, $sp, 40
+	vst	$vr1, $sp, 56
+	st.w	$a7, $sp, 72
+	st.w	$a6, $sp, 76
+	st.w	$a5, $sp, 80
+	st.w	$a3, $sp, 88
+	st.w	$a2, $sp, 92
+	vst	$vr0, $sp, 96
+	vst	$vr2, $sp, 112
+	st.w	$t1, $sp, 128
+	st.w	$t0, $sp, 132
+	ld.w	$t0, $sp, 24
+	ld.w	$t1, $sp, 28
+	ld.w	$t2, $sp, 32
+	ld.w	$t3, $sp, 36
+	ld.w	$t4, $sp, 40
+	ld.w	$t5, $sp, 44
+	ld.w	$s2, $sp, 48
+	ld.w	$s3, $sp, 52
+	ld.w	$s4, $sp, 56
+	ld.w	$s5, $sp, 60
+	ld.w	$s6, $sp, 64
+	slt	$t0, $t0, $fp
+	xori	$s1, $t0, 1
+	slt	$t0, $t1, $fp
+	xori	$s0, $t0, 1
+	slt	$t0, $t2, $fp
+	xori	$t8, $t0, 1
+	slt	$t0, $t3, $fp
+	xori	$t7, $t0, 1
+	slt	$t0, $t4, $fp
+	xori	$t6, $t0, 1
+	slt	$t0, $t5, $fp
+	xori	$t5, $t0, 1
+	slt	$t0, $s2, $fp
+	xori	$t4, $t0, 1
+	slt	$t0, $s3, $fp
+	xori	$t3, $t0, 1
+	slt	$t0, $s4, $fp
+	xori	$t2, $t0, 1
+	slt	$t0, $s5, $fp
+	xori	$t1, $t0, 1
+	slt	$t0, $s6, $fp
+	xori	$t0, $t0, 1
+	vpickve2gr.w	$s2, $vr1, 3
+	slt	$s2, $s2, $fp
+	xori	$s4, $s2, 1
+	slt	$a7, $a7, $fp
+	xori	$s3, $a7, 1
+	slt	$a6, $a6, $fp
+	xori	$s2, $a6, 1
+	slt	$a5, $a5, $fp
+	xori	$a7, $a5, 1
 	slt	$a4, $a4, $fp
-	xori	$a5, $a4, 1
+	xori	$a6, $a4, 1
 	slt	$a3, $a3, $fp
-	xori	$a4, $a3, 1
-	slt	$a0, $a0, $fp
-	xori	$a3, $a0, 1
-	vpickve2gr.w	$a0, $vr7, 0
-	slt	$a0, $a0, $fp
-	xori	$a0, $a0, 1
-	vsle.w	$vr4, $vr2, $vr4
-	vrepli.w	$vr8, 1
-	vand.v	$vr4, $vr4, $vr8
-	vsle.w	$vr3, $vr2, $vr3
-	vand.v	$vr7, $vr3, $vr8
-	vsle.w	$vr3, $vr2, $vr5
-	vand.v	$vr5, $vr3, $vr8
-	vsle.w	$vr3, $vr2, $vr6
-	vand.v	$vr3, $vr3, $vr8
+	xori	$a5, $a3, 1
+	slt	$a2, $a2, $fp
+	xori	$a4, $a2, 1
+	vpickve2gr.w	$a2, $vr0, 0
+	slt	$a2, $a2, $fp
+	xori	$a3, $a2, 1
+	vpickve2gr.w	$a2, $vr0, 1
+	slt	$a2, $a2, $fp
+	xori	$a2, $a2, 1
 	b	.LBB1_5
 .LBB1_4:
-	ori	$a0, $zero, 1
+	ori	$a2, $zero, 1
 	ori	$a3, $zero, 1
 	ori	$a4, $zero, 1
 	ori	$a5, $zero, 1
-	vori.b	$vr4, $vr1, 0
-	vori.b	$vr7, $vr1, 0
-	vori.b	$vr5, $vr1, 0
-	vori.b	$vr3, $vr1, 0
+	ori	$a6, $zero, 1
+	ori	$a7, $zero, 1
+	ori	$s2, $zero, 1
+	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
+	ori	$t0, $zero, 1
+	ori	$t1, $zero, 1
+	ori	$t2, $zero, 1
+	ori	$t3, $zero, 1
+	ori	$t4, $zero, 1
+	ori	$t5, $zero, 1
+	ori	$t6, $zero, 1
+	ori	$t7, $zero, 1
+	ori	$t8, $zero, 1
+	ori	$s0, $zero, 1
+	ori	$s1, $zero, 1
 .LBB1_5:                                # %.preheader93
-	vst	$vr4, $sp, 16
-	vst	$vr7, $sp, 32
-	st.w	$a5, $sp, 48
-	st.w	$a4, $sp, 52
-	st.w	$a3, $sp, 56
-	vst	$vr5, $sp, 60
-	vld	$vr4, $sp, 96
-	vst	$vr3, $sp, 76
-	st.w	$a0, $sp, 92
-	vld	$vr3, $sp, 112
-	vsle.w	$vr4, $vr2, $vr4
-	vand.v	$vr4, $vr4, $vr1
-	vst	$vr4, $sp, 96
-	vsle.w	$vr2, $vr2, $vr3
-	vand.v	$vr1, $vr2, $vr1
-	vst	$vr1, $sp, 112
-	pcalau12i	$a0, %pc_hi20(common_games)
-	addi.d	$a0, $a0, %pc_lo12(common_games)
-	vst	$vr0, $a0, 92
-	st.w	$zero, $a0, 108
-	vst	$vr0, $a0, 184
-	st.w	$zero, $a0, 200
-	st.w	$zero, $a0, 292
-	vst	$vr0, $a0, 276
-	st.w	$zero, $a0, 384
-	vst	$vr0, $a0, 368
-	st.w	$zero, $a0, 476
-	vst	$vr0, $a0, 460
-	st.w	$zero, $a0, 568
-	vst	$vr0, $a0, 552
-	st.w	$zero, $a0, 660
-	vst	$vr0, $a0, 644
-	st.w	$zero, $a0, 752
-	vst	$vr0, $a0, 736
-	st.w	$zero, $a0, 844
-	vst	$vr0, $a0, 828
-	st.w	$zero, $a0, 936
-	vst	$vr0, $a0, 920
-	st.w	$zero, $a0, 1028
-	vst	$vr0, $a0, 1012
-	st.w	$zero, $a0, 1120
-	vst	$vr0, $a0, 1104
-	st.w	$zero, $a0, 1212
-	vst	$vr0, $a0, 1196
-	st.w	$zero, $a0, 1304
-	vst	$vr0, $a0, 1288
-	st.w	$zero, $a0, 1396
-	vst	$vr0, $a0, 1380
-	st.w	$zero, $a0, 1488
-	vst	$vr0, $a0, 1472
-	st.w	$zero, $a0, 1580
-	vst	$vr0, $a0, 1564
-	st.w	$zero, $a0, 1672
-	vst	$vr0, $a0, 1656
-	st.w	$zero, $a0, 1764
-	vst	$vr0, $a0, 1748
-	st.w	$zero, $a0, 1856
-	vst	$vr0, $a0, 1840
-	st.w	$zero, $a0, 1948
-	vst	$vr0, $a0, 1932
-	st.w	$zero, $a0, 2040
-	vst	$vr0, $a0, 2024
+	st.w	$s1, $sp, 24
+	st.w	$s0, $sp, 28
+	st.w	$t8, $sp, 32
+	st.w	$t7, $sp, 36
+	st.w	$t6, $sp, 40
+	st.w	$t5, $sp, 44
+	st.w	$t4, $sp, 48
+	st.w	$t3, $sp, 52
+	st.w	$t2, $sp, 56
+	st.w	$t1, $sp, 60
+	st.w	$t0, $sp, 64
+	st.w	$s4, $sp, 68
+	st.w	$s3, $sp, 72
+	st.w	$s2, $sp, 76
+	st.w	$a7, $sp, 80
+	st.w	$a6, $sp, 84
+	st.w	$a5, $sp, 88
+	st.w	$a4, $sp, 92
+	ld.w	$a4, $sp, 104
+	st.w	$a3, $sp, 96
+	st.w	$a2, $sp, 100
+	ld.w	$a2, $sp, 108
+	slt	$a3, $a4, $fp
+	xori	$a3, $a3, 1
+	st.w	$a3, $sp, 104
+	slt	$a2, $a2, $fp
+	ld.w	$a3, $sp, 112
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 108
+	ld.w	$a2, $sp, 116
+	slt	$a3, $a3, $fp
+	xori	$a3, $a3, 1
+	st.w	$a3, $sp, 112
+	slt	$a2, $a2, $fp
+	ld.w	$a3, $sp, 120
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 116
+	ld.w	$a2, $sp, 124
+	slt	$a3, $a3, $fp
+	xori	$a3, $a3, 1
+	st.w	$a3, $sp, 120
+	slt	$a2, $a2, $fp
+	ld.w	$a3, $sp, 128
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 124
+	ld.w	$a2, $sp, 132
+	slt	$a3, $a3, $fp
+	xori	$a3, $a3, 1
+	st.w	$a3, $sp, 128
+	slt	$a2, $a2, $fp
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 132
+	pcalau12i	$a2, %pc_hi20(common_games)
+	addi.d	$a2, $a2, %pc_lo12(common_games)
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a2, 92
+	st.w	$zero, $a2, 108
+	vst	$vr0, $a2, 184
+	st.w	$zero, $a2, 200
+	st.w	$zero, $a2, 292
+	vst	$vr0, $a2, 276
+	st.w	$zero, $a2, 384
+	vst	$vr0, $a2, 368
+	st.w	$zero, $a2, 476
+	vst	$vr0, $a2, 460
+	st.w	$zero, $a2, 568
+	vst	$vr0, $a2, 552
+	st.w	$zero, $a2, 660
+	vst	$vr0, $a2, 644
+	st.w	$zero, $a2, 752
+	vst	$vr0, $a2, 736
+	st.w	$zero, $a2, 844
+	vst	$vr0, $a2, 828
+	st.w	$zero, $a2, 936
+	vst	$vr0, $a2, 920
+	st.w	$zero, $a2, 1028
+	vst	$vr0, $a2, 1012
+	st.w	$zero, $a2, 1120
+	vst	$vr0, $a2, 1104
+	st.w	$zero, $a2, 1212
+	vst	$vr0, $a2, 1196
+	st.w	$zero, $a2, 1304
+	vst	$vr0, $a2, 1288
+	st.w	$zero, $a2, 1396
+	vst	$vr0, $a2, 1380
+	st.w	$zero, $a2, 1488
+	vst	$vr0, $a2, 1472
+	st.w	$zero, $a2, 1580
+	vst	$vr0, $a2, 1564
+	st.w	$zero, $a2, 1672
+	vst	$vr0, $a2, 1656
+	st.w	$zero, $a2, 1764
+	vst	$vr0, $a2, 1748
+	st.w	$zero, $a2, 1856
+	vst	$vr0, $a2, 1840
+	st.w	$zero, $a2, 1948
+	vst	$vr0, $a2, 1932
+	st.w	$zero, $a2, 2040
+	vst	$vr0, $a2, 2024
 	ori	$a3, $zero, 2116
-	vstx	$vr0, $a0, $a3
-	stptr.w	$zero, $a0, 2132
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2132
 	ori	$a3, $zero, 2208
-	vstx	$vr0, $a0, $a3
-	stptr.w	$zero, $a0, 2224
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2224
 	ori	$a3, $zero, 2300
-	vstx	$vr0, $a0, $a3
-	stptr.w	$zero, $a0, 2316
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2316
 	ori	$a3, $zero, 2392
-	vstx	$vr0, $a0, $a3
-	stptr.w	$zero, $a0, 2408
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2408
 	ori	$a3, $zero, 2484
-	vstx	$vr0, $a0, $a3
-	stptr.w	$zero, $a0, 2500
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2500
 	ori	$a3, $zero, 2576
-	vstx	$vr0, $a0, $a3
-	stptr.w	$zero, $a0, 2592
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2592
 	pcalau12i	$a3, %got_pc_hi20(num_games)
 	ld.d	$a3, $a3, %got_pc_lo12(num_games)
 	ld.w	$a3, $a3, 0
@@ -234,9 +324,9 @@ common:                                 # @common
 # %bb.6:                                # %.preheader90.lr.ph
 	blez	$fp, .LBB1_37
 # %bb.7:                                # %.preheader90.preheader
-	bstrpick.d	$a4, $a2, 31, 0
-	addi.d	$a2, $a3, 1
-	bstrpick.d	$a2, $a2, 31, 0
+	bstrpick.d	$a4, $a1, 31, 0
+	addi.d	$a1, $a3, 1
+	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a3, $a4, -1
 	ori	$a4, $zero, 1
 	ori	$a5, $zero, 180
@@ -245,15 +335,15 @@ common:                                 # @common
 	pcalau12i	$a7, %got_pc_hi20(scores)
 	ld.d	$a7, $a7, %got_pc_lo12(scores)
 	ori	$t0, $zero, 15
-	addi.d	$t1, $sp, 12
-	addi.d	$a1, $a1, 4
+	addi.d	$t1, $sp, 20
+	addi.d	$a0, $a0, 4
 	ori	$t2, $zero, 92
 	b	.LBB1_9
 	.p2align	4, , 16
 .LBB1_8:                                # %.split105
                                         #   in Loop: Header=BB1_9 Depth=1
 	addi.d	$a4, $a4, 1
-	beq	$a4, $a2, .LBB1_37
+	beq	$a4, $a1, .LBB1_37
 .LBB1_9:                                # %.preheader90
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_12 Depth 2
@@ -266,7 +356,7 @@ common:                                 # @common
 	b	.LBB1_12
 .LBB1_10:                               #   in Loop: Header=BB1_12 Depth=2
 	mul.d	$t6, $t6, $t2
-	add.d	$t6, $a0, $t6
+	add.d	$t6, $a2, $t6
 	ld.w	$t7, $t6, 12
 	addi.d	$t7, $t7, 1
 	st.w	$t7, $t6, 12
@@ -293,7 +383,7 @@ common:                                 # @common
 	beqz	$fp, .LBB1_22
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB1_12 Depth=2
-	move	$fp, $a1
+	move	$fp, $a0
 	move	$s0, $a3
 	.p2align	4, , 16
 .LBB1_15:                               # %.lr.ph.i
@@ -318,13 +408,13 @@ common:                                 # @common
 	bgeu	$fp, $s1, .LBB1_31
 # %bb.20:                               #   in Loop: Header=BB1_12 Depth=2
 	mul.d	$fp, $t8, $t2
-	ldx.w	$s0, $a0, $fp
+	ldx.w	$s0, $a2, $fp
 	addi.d	$s0, $s0, 1
-	stx.w	$s0, $a0, $fp
+	stx.w	$s0, $a2, $fp
 	b	.LBB1_22
 .LBB1_21:                               #   in Loop: Header=BB1_12 Depth=2
 	mul.d	$fp, $t8, $t2
-	add.d	$fp, $a0, $fp
+	add.d	$fp, $a2, $fp
 	ld.w	$s0, $fp, 12
 	addi.d	$s0, $s0, 1
 	st.w	$s0, $fp, 12
@@ -338,7 +428,7 @@ common:                                 # @common
 	beqz	$t8, .LBB1_11
 # %bb.24:                               # %.lr.ph.i.1.preheader
                                         #   in Loop: Header=BB1_12 Depth=2
-	move	$t8, $a1
+	move	$t8, $a0
 	move	$fp, $a3
 	.p2align	4, , 16
 .LBB1_25:                               # %.lr.ph.i.1
@@ -363,13 +453,13 @@ common:                                 # @common
 	mul.d	$t6, $t6, $t2
 	bgeu	$t7, $t8, .LBB1_33
 # %bb.30:                               #   in Loop: Header=BB1_12 Depth=2
-	ldx.w	$t7, $a0, $t6
+	ldx.w	$t7, $a2, $t6
 	addi.d	$t7, $t7, 1
-	stx.w	$t7, $a0, $t6
+	stx.w	$t7, $a2, $t6
 	b	.LBB1_11
 .LBB1_31:                               #   in Loop: Header=BB1_12 Depth=2
 	mul.d	$s0, $t8, $t2
-	add.d	$s0, $a0, $s0
+	add.d	$s0, $a2, $s0
 	bgeu	$s1, $fp, .LBB1_35
 # %bb.32:                               #   in Loop: Header=BB1_12 Depth=2
 	ld.w	$fp, $s0, 4
@@ -377,7 +467,7 @@ common:                                 # @common
 	st.w	$fp, $s0, 4
 	b	.LBB1_22
 .LBB1_33:                               #   in Loop: Header=BB1_12 Depth=2
-	add.d	$t6, $a0, $t6
+	add.d	$t6, $a2, $t6
 	bgeu	$t8, $t7, .LBB1_36
 # %bb.34:                               #   in Loop: Header=BB1_12 Depth=2
 	ld.w	$t7, $t6, 4
@@ -395,9 +485,9 @@ common:                                 # @common
 	st.w	$t7, $t6, 8
 	b	.LBB1_11
 .LBB1_37:                               # %.preheader.preheader
-	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1520
-	ori	$a2, $zero, 2668
+	lu12i.w	$a0, -1
+	ori	$a0, $a0, 1520
+	ori	$a1, $zero, 2668
 	ori	$a3, $zero, 2672
 	ori	$a4, $zero, 2676
 	ori	$a5, $zero, 2680
@@ -407,12 +497,12 @@ common:                                 # @common
 	b	.LBB1_39
 	.p2align	4, , 16
 .LBB1_38:                               #   in Loop: Header=BB1_39 Depth=1
-	addi.d	$a1, $a1, 92
-	beqz	$a1, .LBB1_41
+	addi.d	$a0, $a0, 92
+	beqz	$a0, .LBB1_41
 .LBB1_39:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$t0, $a0, $a1
-	ldx.w	$t1, $t0, $a2
+	add.d	$t0, $a2, $a0
+	ldx.w	$t1, $t0, $a1
 	ldx.w	$t2, $t0, $a3
 	ldx.w	$t3, $t0, $a4
 	ldx.w	$t4, $t0, $a5
@@ -424,11 +514,16 @@ common:                                 # @common
 	stptr.w	$a7, $t0, 2668
 	b	.LBB1_38
 .LBB1_41:
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .Lfunc_end1:
 	.size	common, .Lfunc_end1-common

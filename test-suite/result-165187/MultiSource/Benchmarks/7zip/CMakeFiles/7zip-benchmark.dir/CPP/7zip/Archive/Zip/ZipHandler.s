@@ -5731,7 +5731,7 @@ _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	ori	$a1, $a1, 4095
 	add.w	$a1, $a2, $a1
 	lu12i.w	$a3, -524288
-	ori	$a3, $a3, 3
+	ori	$a3, $a3, 1
 	bgeu	$a1, $a3, .LBB26_12
 # %bb.6:
 	move	$a1, $zero
@@ -5763,7 +5763,7 @@ _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 # %bb.9:                                # %middle.block
 	add.d	$a1, $a4, $a1
 	beq	$a3, $a2, .LBB26_16
-.LBB26_10:                              # %.preheader212.split.preheader265
+.LBB26_10:                              # %.preheader212.split.preheader264
 	alsl.d	$a4, $a3, $s2, 2
 	sub.d	$a2, $a2, $a3
 	.p2align	4, , 16
@@ -5779,38 +5779,28 @@ _ZN8NArchive4NZip8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	bnez	$a2, .LBB26_11
 	b	.LBB26_16
 .LBB26_12:                              # %vector.ph246
+	move	$a1, $zero
+	move	$a4, $zero
 	move	$a3, $a2
-	bstrins.d	$a3, $zero, 1, 0
-	vrepli.b	$vr0, 0
-	addi.d	$a1, $a0, 16
-	move	$a4, $a3
-	vori.b	$vr1, $vr0, 0
+	bstrins.d	$a3, $zero, 0, 0
+	addi.d	$a5, $a0, 8
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB26_13:                              # %vector.body249
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -16
-	ld.d	$a6, $a1, -8
-	ld.d	$a7, $a1, 0
-	ld.d	$t0, $a1, 8
-	ld.d	$a5, $a5, 24
-	ld.d	$a6, $a6, 24
+	ld.d	$a7, $a5, -8
+	ld.d	$t0, $a5, 0
 	ld.d	$a7, $a7, 24
 	ld.d	$t0, $t0, 24
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	vadd.d	$vr0, $vr2, $vr0
-	vadd.d	$vr1, $vr3, $vr1
-	addi.w	$a4, $a4, -4
-	addi.d	$a1, $a1, 32
-	bnez	$a4, .LBB26_13
-# %bb.14:                               # %middle.block255
-	vadd.d	$vr0, $vr1, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	addi.w	$a4, $a3, 0
-	vpickve2gr.d	$a1, $vr0, 0
-	beq	$a2, $a4, .LBB26_16
+	add.d	$a1, $a7, $a1
+	add.d	$a4, $t0, $a4
+	addi.w	$a6, $a6, -2
+	addi.d	$a5, $a5, 16
+	bnez	$a6, .LBB26_13
+# %bb.14:                               # %middle.block254
+	addi.w	$a5, $a3, 0
+	add.d	$a1, $a4, $a1
+	beq	$a2, $a5, .LBB26_16
 	.p2align	4, , 16
 .LBB26_15:                              # %.preheader212.split.us
                                         # =>This Inner Loop Header: Depth=1

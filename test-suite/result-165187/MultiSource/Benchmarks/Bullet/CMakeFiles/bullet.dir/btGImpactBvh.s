@@ -111,47 +111,49 @@ _ZN9btBvhTree30_sort_and_calc_splitting_indexER18GIM_BVH_DATA_ARRAYiii: # @_ZN9b
 	slli.d	$t0, $a2, 5
 	bge	$a2, $a3, .LBB1_3
 # %bb.1:                                # %.lr.ph
-	ld.d	$a6, $a1, 16
-	alsl.d	$a7, $a2, $t0, 2
-	add.d	$a6, $a7, $a6
-	addi.d	$a6, $a6, 20
-	sub.d	$a7, $a3, $a2
-	vrepli.b	$vr0, 0
-	movgr2fr.w	$fa1, $zero
-	vldi	$vr2, -1184
-	vldi	$vr3, -3265
+	ld.d	$a7, $a1, 16
+	sub.d	$a6, $a3, $a2
+	alsl.d	$t1, $a2, $t0, 2
+	add.d	$a7, $t1, $a7
+	addi.d	$a7, $a7, 16
+	movgr2fr.w	$fa0, $zero
+	vldi	$vr3, -1184
+	fmov.s	$fa2, $fa0
+	fmov.s	$fa1, $fa0
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
-	fld.s	$fa4, $a6, -4
-	fld.s	$fa5, $a6, -20
-	ld.d	$t1, $a6, 0
-	ld.d	$t2, $a6, -16
+	fld.s	$fa4, $a7, 0
+	fld.s	$fa5, $a7, -16
+	fld.s	$fa6, $a7, 4
+	fld.s	$fa7, $a7, -12
+	fld.s	$ft0, $a7, 8
+	fld.s	$ft1, $a7, -8
 	fadd.s	$fa4, $fa4, $fa5
-	fmul.s	$fa4, $fa4, $fa2
-	vinsgr2vr.d	$vr5, $t1, 0
-	vinsgr2vr.d	$vr6, $t2, 0
-	vfadd.s	$vr5, $vr5, $vr6
-	vfmul.s	$vr5, $vr5, $vr3
-	fadd.s	$fa1, $fa1, $fa4
-	vfadd.s	$vr0, $vr0, $vr5
-	addi.d	$a7, $a7, -1
-	addi.d	$a6, $a6, 36
-	bnez	$a7, .LBB1_2
+	fadd.s	$fa5, $fa6, $fa7
+	fadd.s	$fa6, $ft0, $ft1
+	fmul.s	$fa4, $fa4, $fa3
+	fmul.s	$fa5, $fa5, $fa3
+	fmul.s	$fa6, $fa6, $fa3
+	fadd.s	$fa0, $fa0, $fa4
+	fadd.s	$fa2, $fa2, $fa5
+	fadd.s	$fa1, $fa1, $fa6
+	addi.d	$a6, $a6, -1
+	addi.d	$a7, $a7, 36
+	bnez	$a6, .LBB1_2
 	b	.LBB1_4
 .LBB1_3:
-	vrepli.b	$vr0, 0
-	movgr2fr.w	$fa1, $zero
+	movgr2fr.w	$fa0, $zero
+	fmov.s	$fa1, $fa0
+	fmov.s	$fa2, $fa0
 .LBB1_4:                                # %._crit_edge
-	movgr2fr.w	$fa2, $a0
-	ffint.s.w	$fa2, $fa2
-	frecip.s	$fa2, $fa2
-	fmul.s	$fa1, $fa2, $fa1
-	fst.s	$fa1, $sp, 32
-	vreplvei.w	$vr1, $vr0, 0
-	fmul.s	$fa1, $fa2, $fa1
-	fst.s	$fa1, $sp, 36
-	vreplvei.w	$vr0, $vr0, 1
-	fmul.s	$fa0, $fa2, $fa0
+	movgr2fr.w	$fa3, $a0
+	ffint.s.w	$fa3, $fa3
+	frecip.s	$fa3, $fa3
+	fmul.s	$fa0, $fa3, $fa0
+	fst.s	$fa0, $sp, 32
+	fmul.s	$fa0, $fa3, $fa2
+	fst.s	$fa0, $sp, 36
+	fmul.s	$fa0, $fa3, $fa1
 	fst.s	$fa0, $sp, 40
 	bge	$a2, $a3, .LBB1_9
 # %bb.5:                                # %.lr.ph101

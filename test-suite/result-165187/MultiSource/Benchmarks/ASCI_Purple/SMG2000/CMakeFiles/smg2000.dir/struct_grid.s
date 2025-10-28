@@ -307,18 +307,20 @@ hypre_StructGridSetHood:                # @hypre_StructGridSetHood
 	.type	hypre_StructGridAssemble,@function
 hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a3, $a0, 24
 	ld.d	$s0, $a0, 8
-	bnez	$a3, .LBB8_37
+	bnez	$a3, .LBB8_26
 # %bb.1:
 	ld.w	$a0, $fp, 0
 	ld.w	$s2, $fp, 4
@@ -338,15 +340,15 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	move	$a3, $zero
 	addi.d	$a4, $a2, 12
 	addi.d	$a5, $a0, 12
-	addi.d	$a6, $a2, 96
-	ori	$a7, $zero, 8
+	addi.d	$a6, $a2, 24
+	ori	$a7, $zero, 1
 	move	$t0, $a2
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_3:                                # %._crit_edge
                                         #   in Loop: Header=BB8_4 Depth=1
-	stx.w	$t5, $a0, $t1
-	stx.w	$t4, $a5, $t1
+	stx.w	$t2, $a0, $t1
+	stx.w	$t3, $a5, $t1
 	addi.d	$a3, $a3, 1
 	addi.d	$a6, $a6, 4
 	addi.d	$t0, $t0, 4
@@ -355,348 +357,149 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
                                         #     Child Loop BB8_8 Depth 2
                                         #     Child Loop BB8_11 Depth 2
 	slli.d	$t1, $a3, 2
-	ldx.w	$t5, $a2, $t1
-	ld.w	$t2, $a1, 8
-	ldx.w	$t4, $a4, $t1
-	blez	$t2, .LBB8_3
+	ldx.w	$t2, $a2, $t1
+	ld.w	$t4, $a1, 8
+	ldx.w	$t3, $a4, $t1
+	blez	$t4, .LBB8_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB8_4 Depth=1
-	bgeu	$t2, $a7, .LBB8_7
+	bne	$t4, $a7, .LBB8_7
 # %bb.6:                                #   in Loop: Header=BB8_4 Depth=1
-	move	$t3, $zero
+	move	$t5, $zero
 	b	.LBB8_10
 	.p2align	4, , 16
 .LBB8_7:                                # %vector.ph
                                         #   in Loop: Header=BB8_4 Depth=1
-	bstrpick.d	$t3, $t2, 30, 3
-	slli.d	$t3, $t3, 3
-	vreplgr2vr.w	$vr1, $t4
-	vreplgr2vr.w	$vr0, $t5
-	move	$t4, $a6
-	move	$t5, $t3
-	vori.b	$vr3, $vr1, 0
-	vori.b	$vr2, $vr0, 0
+	bstrpick.d	$t5, $t4, 30, 1
+	slli.d	$t5, $t5, 1
+	move	$t7, $t5
+	move	$t8, $a6
+	move	$s3, $t3
+	move	$t6, $t2
 	.p2align	4, , 16
 .LBB8_8:                                # %vector.body
                                         #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t6, $t4, -96
-	ld.w	$t7, $t4, -72
-	ld.w	$t8, $t4, -48
-	ld.w	$s3, $t4, -24
-	vinsgr2vr.w	$vr4, $t6, 0
-	vinsgr2vr.w	$vr4, $t7, 1
-	vinsgr2vr.w	$vr4, $t8, 2
-	vinsgr2vr.w	$vr4, $s3, 3
-	ld.w	$t6, $t4, 0
-	ld.w	$t7, $t4, 24
-	ld.w	$t8, $t4, 48
-	ld.w	$s3, $t4, 72
-	vinsgr2vr.w	$vr5, $t6, 0
-	vinsgr2vr.w	$vr5, $t7, 1
-	vinsgr2vr.w	$vr5, $t8, 2
-	vinsgr2vr.w	$vr5, $s3, 3
-	vmin.w	$vr0, $vr0, $vr4
-	vmin.w	$vr2, $vr2, $vr5
-	ld.w	$t6, $t4, -84
-	ld.w	$t7, $t4, -60
-	ld.w	$t8, $t4, -36
-	ld.w	$s3, $t4, -12
-	vinsgr2vr.w	$vr4, $t6, 0
-	vinsgr2vr.w	$vr4, $t7, 1
-	vinsgr2vr.w	$vr4, $t8, 2
-	vinsgr2vr.w	$vr4, $s3, 3
-	ld.w	$t6, $t4, 12
-	ld.w	$t7, $t4, 36
-	ld.w	$t8, $t4, 60
-	ld.w	$s3, $t4, 84
-	vinsgr2vr.w	$vr5, $t6, 0
-	vinsgr2vr.w	$vr5, $t7, 1
-	vinsgr2vr.w	$vr5, $t8, 2
-	vinsgr2vr.w	$vr5, $s3, 3
-	vmax.w	$vr1, $vr1, $vr4
-	vmax.w	$vr3, $vr3, $vr5
-	addi.d	$t5, $t5, -8
-	addi.d	$t4, $t4, 192
-	bnez	$t5, .LBB8_8
+	ld.w	$s4, $t8, -24
+	ld.w	$s5, $t8, 0
+	slt	$s6, $t2, $s4
+	masknez	$s4, $s4, $s6
+	maskeqz	$t2, $t2, $s6
+	or	$t2, $t2, $s4
+	slt	$s4, $t6, $s5
+	masknez	$s5, $s5, $s4
+	ld.w	$s6, $t8, -12
+	maskeqz	$t6, $t6, $s4
+	or	$t6, $t6, $s5
+	ld.w	$s4, $t8, 12
+	slt	$s5, $s6, $t3
+	masknez	$s6, $s6, $s5
+	maskeqz	$t3, $t3, $s5
+	or	$t3, $t3, $s6
+	slt	$s5, $s4, $s3
+	masknez	$s4, $s4, $s5
+	maskeqz	$s3, $s3, $s5
+	or	$s3, $s3, $s4
+	addi.d	$t7, $t7, -2
+	addi.d	$t8, $t8, 48
+	bnez	$t7, .LBB8_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	vmax.w	$vr1, $vr1, $vr3
-	vbsrl.v	$vr3, $vr1, 8
-	vmax.w	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 4
-	vmax.w	$vr1, $vr3, $vr1
-	vpickve2gr.w	$t4, $vr1, 0
-	vmin.w	$vr0, $vr0, $vr2
-	vbsrl.v	$vr1, $vr0, 8
-	vmin.w	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vmin.w	$vr0, $vr1, $vr0
-	vpickve2gr.w	$t5, $vr0, 0
-	beq	$t3, $t2, .LBB8_3
-.LBB8_10:                               # %.lr.ph.preheader230
+	slt	$t7, $s3, $t3
+	masknez	$t8, $s3, $t7
+	maskeqz	$t3, $t3, $t7
+	or	$t3, $t3, $t8
+	slt	$t7, $t2, $t6
+	masknez	$t6, $t6, $t7
+	maskeqz	$t2, $t2, $t7
+	or	$t2, $t2, $t6
+	beq	$t5, $t4, .LBB8_3
+.LBB8_10:                               # %.lr.ph.preheader184
                                         #   in Loop: Header=BB8_4 Depth=1
-	slli.d	$t6, $t3, 4
-	alsl.d	$t6, $t3, $t6, 3
-	sub.d	$t2, $t2, $t3
+	slli.d	$t6, $t5, 4
+	alsl.d	$t6, $t5, $t6, 3
+	sub.d	$t4, $t4, $t5
 	.p2align	4, , 16
 .LBB8_11:                               # %.lr.ph
                                         #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$t3, $t0, $t6
+	ldx.w	$t5, $t0, $t6
 	add.d	$t7, $t0, $t6
-	slt	$t8, $t5, $t3
+	slt	$t8, $t2, $t5
 	ld.w	$t7, $t7, 12
-	masknez	$t3, $t3, $t8
-	maskeqz	$t5, $t5, $t8
-	or	$t5, $t5, $t3
-	slt	$t3, $t7, $t4
-	masknez	$t7, $t7, $t3
-	maskeqz	$t3, $t4, $t3
-	or	$t4, $t3, $t7
-	addi.d	$t2, $t2, -1
+	masknez	$t5, $t5, $t8
+	maskeqz	$t2, $t2, $t8
+	or	$t2, $t2, $t5
+	slt	$t5, $t7, $t3
+	masknez	$t7, $t7, $t5
+	maskeqz	$t3, $t3, $t5
+	or	$t3, $t3, $t7
+	addi.d	$t4, $t4, -1
 	addi.d	$t6, $t6, 24
-	bnez	$t2, .LBB8_11
+	bnez	$t4, .LBB8_11
 	b	.LBB8_3
 .LBB8_12:                               # %.preheader
 	ori	$a1, $zero, 2
-	blt	$a1, $s2, .LBB8_16
+	blt	$a1, $s2, .LBB8_15
 .LBB8_13:                               # %.lr.ph127
-	addi.d	$a1, $s2, 1
-	bstrpick.d	$a2, $a1, 31, 0
-	ori	$a1, $zero, 4
-	sub.d	$a1, $a1, $a2
-	ori	$a3, $zero, 10
-	bgeu	$a1, $a3, .LBB8_20
-.LBB8_14:                               # %scalar.ph185.preheader
 	alsl.d	$a1, $s2, $a0, 2
 	addi.d	$a2, $s2, 1
 	ori	$a3, $zero, 3
 	.p2align	4, , 16
-.LBB8_15:                               # %scalar.ph185
-                                        # =>This Inner Loop Header: Depth=1
+.LBB8_14:                               # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a1, 0
 	st.w	$zero, $a1, 12
 	bstrpick.d	$a4, $a2, 31, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 1
-	bne	$a4, $a3, .LBB8_15
-.LBB8_16:                               # %._crit_edge128
+	bne	$a4, $a3, .LBB8_14
+.LBB8_15:                               # %._crit_edge128
 	ld.d	$a2, $sp, 24
 	ld.w	$a1, $a2, 8
 	st.d	$a0, $fp, 40
-	blez	$a1, .LBB8_19
-# %bb.17:                               # %.lr.ph132
-	ld.d	$a0, $a2, 0
-	ori	$a2, $zero, 8
-	bgeu	$a1, $a2, .LBB8_25
-# %bb.18:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB8_28
-.LBB8_19:
-	move	$a3, $zero
-	b	.LBB8_30
-.LBB8_20:                               # %vector.scevcheck
-	ori	$a3, $zero, 3
-	sub.d	$a2, $a3, $a2
-	addi.w	$a3, $a2, 0
-	addi.d	$a4, $zero, -2
-	sub.w	$a4, $a4, $s2
-	bltu	$a4, $a3, .LBB8_14
-# %bb.21:                               # %vector.scevcheck
-	srli.d	$a2, $a2, 32
-	bnez	$a2, .LBB8_14
-# %bb.22:                               # %vector.ph187
-	move	$a2, $a1
-	bstrins.d	$a2, $zero, 0, 0
-	add.d	$a3, $a2, $s2
-	alsl.d	$a4, $s2, $a0, 2
-	move	$a5, $a2
+	blez	$a1, .LBB8_18
+# %bb.16:                               # %.lr.ph132
+	ld.d	$a2, $a2, 0
+	move	$a0, $zero
+	addi.d	$a2, $a2, 12
+	addi.w	$a3, $zero, -1
 	.p2align	4, , 16
-.LBB8_23:                               # %vector.body190
-                                        # =>This Inner Loop Header: Depth=1
-	st.d	$zero, $a4, 0
-	st.d	$zero, $a4, 12
-	addi.d	$a5, $a5, -2
-	addi.d	$a4, $a4, 8
-	bnez	$a5, .LBB8_23
-# %bb.24:                               # %middle.block193
-	move	$s2, $a3
-	bne	$a1, $a2, .LBB8_14
-	b	.LBB8_16
-.LBB8_25:                               # %vector.ph198
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a3, $a0, 96
-	move	$a4, $a2
-	vori.b	$vr1, $vr0, 0
-	.p2align	4, , 16
-.LBB8_26:                               # %vector.body201
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -84
-	ld.w	$a6, $a3, -60
-	ld.w	$a7, $a3, -36
-	ld.w	$t0, $a3, -12
-	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr2, $a7, 2
-	vinsgr2vr.w	$vr2, $t0, 3
-	ld.w	$a5, $a3, 12
-	ld.w	$a6, $a3, 36
-	ld.w	$a7, $a3, 60
-	ld.w	$t0, $a3, 84
-	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
-	ld.w	$a5, $a3, -96
-	ld.w	$a6, $a3, -72
-	ld.w	$a7, $a3, -48
-	ld.w	$t0, $a3, -24
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 0
-	ld.w	$a6, $a3, 24
-	ld.w	$a7, $a3, 48
-	ld.w	$t0, $a3, 72
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	vsub.w	$vr2, $vr2, $vr4
-	vsub.w	$vr3, $vr3, $vr5
-	vmaxi.w	$vr2, $vr2, -1
-	vmaxi.w	$vr3, $vr3, -1
-	vaddi.wu	$vr2, $vr2, 1
-	vaddi.wu	$vr3, $vr3, 1
-	ld.w	$a5, $a3, -80
-	ld.w	$a6, $a3, -56
-	ld.w	$a7, $a3, -32
-	ld.w	$t0, $a3, -8
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 16
-	ld.w	$a6, $a3, 40
-	ld.w	$a7, $a3, 64
-	ld.w	$t0, $a3, 88
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -92
-	ld.w	$a6, $a3, -68
-	ld.w	$a7, $a3, -44
-	ld.w	$t0, $a3, -20
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 4
-	ld.w	$a6, $a3, 28
-	ld.w	$a7, $a3, 52
-	ld.w	$t0, $a3, 76
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vmaxi.w	$vr4, $vr4, -1
-	vmaxi.w	$vr5, $vr5, -1
-	vaddi.wu	$vr4, $vr4, 1
-	vaddi.wu	$vr5, $vr5, 1
-	vmul.w	$vr2, $vr4, $vr2
-	vmul.w	$vr3, $vr5, $vr3
-	ld.w	$a5, $a3, -76
-	ld.w	$a6, $a3, -52
-	ld.w	$a7, $a3, -28
-	ld.w	$t0, $a3, -4
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 20
-	ld.w	$a6, $a3, 44
-	ld.w	$a7, $a3, 68
-	ld.w	$t0, $a3, 92
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -88
-	ld.w	$a6, $a3, -64
-	ld.w	$a7, $a3, -40
-	ld.w	$t0, $a3, -16
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 8
-	ld.w	$a6, $a3, 32
-	ld.w	$a7, $a3, 56
-	ld.w	$t0, $a3, 80
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vmaxi.w	$vr4, $vr4, -1
-	vmaxi.w	$vr5, $vr5, -1
-	vaddi.wu	$vr4, $vr4, 1
-	vaddi.wu	$vr5, $vr5, 1
-	vmadd.w	$vr0, $vr2, $vr4
-	vmadd.w	$vr1, $vr3, $vr5
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 192
-	bnez	$a4, .LBB8_26
-# %bb.27:                               # %middle.block206
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a1, .LBB8_30
-.LBB8_28:                               # %scalar.ph196.preheader
-	slli.d	$a4, $a2, 4
-	alsl.d	$a4, $a2, $a4, 3
-	add.d	$a0, $a4, $a0
-	addi.d	$a0, $a0, 16
-	sub.d	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	.p2align	4, , 16
-.LBB8_29:                               # %scalar.ph196
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a0, -4
-	ld.w	$a5, $a0, -16
+.LBB8_17:                               # =>This Inner Loop Header: Depth=1
+	ld.w	$a4, $a2, 0
+	ld.w	$a5, $a2, -12
 	sub.w	$a4, $a4, $a5
-	slt	$a5, $a2, $a4
+	slt	$a5, $a3, $a4
+	ld.w	$a6, $a2, 4
+	ld.w	$a7, $a2, -8
 	maskeqz	$a4, $a4, $a5
-	ld.d	$a6, $a0, 0
-	masknez	$a5, $a2, $a5
-	ld.d	$a7, $a0, -12
+	masknez	$a5, $a3, $a5
 	or	$a4, $a4, $a5
-	vinsgr2vr.d	$vr0, $a6, 0
+	sub.w	$a5, $a6, $a7
+	slt	$a6, $a3, $a5
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a3, $a6
+	or	$a5, $a5, $a6
+	ld.w	$a6, $a2, 8
+	ld.w	$a7, $a2, -4
 	addi.d	$a4, $a4, 1
-	vinsgr2vr.d	$vr1, $a7, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a5, $vr0, 0
+	addi.d	$a5, $a5, 1
 	mul.d	$a4, $a5, $a4
-	vpickve2gr.w	$a5, $vr0, 1
+	sub.w	$a5, $a6, $a7
+	slt	$a6, $a3, $a5
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a3, $a6
+	or	$a5, $a5, $a6
+	addi.d	$a5, $a5, 1
 	mul.d	$a4, $a4, $a5
-	add.d	$a3, $a4, $a3
+	add.d	$a0, $a4, $a0
 	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 24
-	bnez	$a1, .LBB8_29
-.LBB8_30:                               # %._crit_edge133
-	st.w	$a3, $fp, 52
+	addi.d	$a2, $a2, 24
+	bnez	$a1, .LBB8_17
+	b	.LBB8_19
+.LBB8_18:
+	move	$a0, $zero
+.LBB8_19:                               # %._crit_edge133
+	st.w	$a0, $fp, 52
 	addi.d	$a1, $sp, 24
 	addi.d	$a2, $sp, 16
 	addi.d	$a3, $sp, 12
@@ -711,21 +514,21 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 8
 	move	$s2, $a0
-	blez	$a1, .LBB8_33
-# %bb.31:                               # %.lr.ph137.preheader
+	blez	$a1, .LBB8_22
+# %bb.20:                               # %.lr.ph137.preheader
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $s2
 	.p2align	4, , 16
-.LBB8_32:                               # %.lr.ph137
+.LBB8_21:                               # %.lr.ph137
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a0, $a2, 0
 	ld.w	$a3, $s3, 8
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	blt	$a1, $a3, .LBB8_32
-.LBB8_33:                               # %._crit_edge138
+	blt	$a1, $a3, .LBB8_21
+.LBB8_22:                               # %._crit_edge138
 	ld.d	$a1, $sp, 16
 	ld.w	$s4, $sp, 12
 	ld.w	$a5, $sp, 8
@@ -743,13 +546,13 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
-	blez	$a1, .LBB8_36
-# %bb.34:                               # %.lr.ph141.preheader
+	blez	$a1, .LBB8_25
+# %bb.23:                               # %.lr.ph141.preheader
 	move	$a1, $zero
 	alsl.d	$a2, $s4, $s2, 2
 	move	$a3, $a0
 	.p2align	4, , 16
-.LBB8_35:                               # %.lr.ph141
+.LBB8_24:                               # %.lr.ph141
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
 	st.w	$a4, $a3, 0
@@ -757,210 +560,71 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	addi.d	$a1, $a1, 1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
-	blt	$a1, $a4, .LBB8_35
-.LBB8_36:                               # %._crit_edge142
+	blt	$a1, $a4, .LBB8_24
+.LBB8_25:                               # %._crit_edge142
 	ld.d	$a3, $fp, 24
 	st.d	$a0, $fp, 16
-.LBB8_37:
+.LBB8_26:
 	ld.w	$a1, $fp, 32
 	ori	$a2, $zero, 1
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(hypre_BoxNeighborsAssemble)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 8
-	blez	$a0, .LBB8_40
-# %bb.38:                               # %.lr.ph146
-	ld.d	$a1, $s0, 0
-	ori	$a2, $zero, 8
-	bgeu	$a0, $a2, .LBB8_41
-# %bb.39:
-	move	$a2, $zero
-	move	$a3, $zero
-	b	.LBB8_44
-.LBB8_40:
-	move	$a3, $zero
-	b	.LBB8_46
-.LBB8_41:                               # %vector.ph212
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$a2, $a2, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a3, $a1, 96
-	move	$a4, $a2
-	vori.b	$vr1, $vr0, 0
+	blez	$a0, .LBB8_29
+# %bb.27:                               # %.lr.ph146
+	ld.d	$a2, $s0, 0
+	move	$a1, $zero
+	addi.d	$a2, $a2, 12
+	addi.w	$a3, $zero, -1
 	.p2align	4, , 16
-.LBB8_42:                               # %vector.body215
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -84
-	ld.w	$a6, $a3, -60
-	ld.w	$a7, $a3, -36
-	ld.w	$t0, $a3, -12
-	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr2, $a7, 2
-	vinsgr2vr.w	$vr2, $t0, 3
-	ld.w	$a5, $a3, 12
-	ld.w	$a6, $a3, 36
-	ld.w	$a7, $a3, 60
-	ld.w	$t0, $a3, 84
-	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
-	ld.w	$a5, $a3, -96
-	ld.w	$a6, $a3, -72
-	ld.w	$a7, $a3, -48
-	ld.w	$t0, $a3, -24
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 0
-	ld.w	$a6, $a3, 24
-	ld.w	$a7, $a3, 48
-	ld.w	$t0, $a3, 72
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	vsub.w	$vr2, $vr2, $vr4
-	vsub.w	$vr3, $vr3, $vr5
-	vmaxi.w	$vr2, $vr2, -1
-	vmaxi.w	$vr3, $vr3, -1
-	vaddi.wu	$vr2, $vr2, 1
-	vaddi.wu	$vr3, $vr3, 1
-	ld.w	$a5, $a3, -80
-	ld.w	$a6, $a3, -56
-	ld.w	$a7, $a3, -32
-	ld.w	$t0, $a3, -8
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 16
-	ld.w	$a6, $a3, 40
-	ld.w	$a7, $a3, 64
-	ld.w	$t0, $a3, 88
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -92
-	ld.w	$a6, $a3, -68
-	ld.w	$a7, $a3, -44
-	ld.w	$t0, $a3, -20
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 4
-	ld.w	$a6, $a3, 28
-	ld.w	$a7, $a3, 52
-	ld.w	$t0, $a3, 76
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vmaxi.w	$vr4, $vr4, -1
-	vmaxi.w	$vr5, $vr5, -1
-	vaddi.wu	$vr4, $vr4, 1
-	vaddi.wu	$vr5, $vr5, 1
-	vmul.w	$vr2, $vr4, $vr2
-	vmul.w	$vr3, $vr5, $vr3
-	ld.w	$a5, $a3, -76
-	ld.w	$a6, $a3, -52
-	ld.w	$a7, $a3, -28
-	ld.w	$t0, $a3, -4
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 20
-	ld.w	$a6, $a3, 44
-	ld.w	$a7, $a3, 68
-	ld.w	$t0, $a3, 92
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -88
-	ld.w	$a6, $a3, -64
-	ld.w	$a7, $a3, -40
-	ld.w	$t0, $a3, -16
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 8
-	ld.w	$a6, $a3, 32
-	ld.w	$a7, $a3, 56
-	ld.w	$t0, $a3, 80
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vmaxi.w	$vr4, $vr4, -1
-	vmaxi.w	$vr5, $vr5, -1
-	vaddi.wu	$vr4, $vr4, 1
-	vaddi.wu	$vr5, $vr5, 1
-	vmadd.w	$vr0, $vr2, $vr4
-	vmadd.w	$vr1, $vr3, $vr5
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 192
-	bnez	$a4, .LBB8_42
-# %bb.43:                               # %middle.block220
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a0, .LBB8_46
-.LBB8_44:                               # %scalar.ph210.preheader
-	slli.d	$a4, $a2, 4
-	alsl.d	$a4, $a2, $a4, 3
-	add.d	$a1, $a4, $a1
-	addi.d	$a1, $a1, 16
-	sub.d	$a0, $a0, $a2
-	addi.w	$a2, $zero, -1
-	.p2align	4, , 16
-.LBB8_45:                               # %scalar.ph210
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a1, -4
-	ld.w	$a5, $a1, -16
+.LBB8_28:                               # =>This Inner Loop Header: Depth=1
+	ld.w	$a4, $a2, 0
+	ld.w	$a5, $a2, -12
 	sub.w	$a4, $a4, $a5
-	slt	$a5, $a2, $a4
+	slt	$a5, $a3, $a4
+	ld.w	$a6, $a2, 4
+	ld.w	$a7, $a2, -8
 	maskeqz	$a4, $a4, $a5
-	ld.d	$a6, $a1, 0
-	masknez	$a5, $a2, $a5
-	ld.d	$a7, $a1, -12
+	masknez	$a5, $a3, $a5
 	or	$a4, $a4, $a5
-	vinsgr2vr.d	$vr0, $a6, 0
+	sub.w	$a5, $a6, $a7
+	slt	$a6, $a3, $a5
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a3, $a6
+	or	$a5, $a5, $a6
+	ld.w	$a6, $a2, 8
+	ld.w	$a7, $a2, -4
 	addi.d	$a4, $a4, 1
-	vinsgr2vr.d	$vr1, $a7, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a5, $vr0, 0
+	addi.d	$a5, $a5, 1
 	mul.d	$a4, $a5, $a4
-	vpickve2gr.w	$a5, $vr0, 1
+	sub.w	$a5, $a6, $a7
+	slt	$a6, $a3, $a5
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a3, $a6
+	or	$a5, $a5, $a6
+	addi.d	$a5, $a5, 1
 	mul.d	$a4, $a4, $a5
-	add.d	$a3, $a4, $a3
+	add.d	$a1, $a4, $a1
 	addi.d	$a0, $a0, -1
-	addi.d	$a1, $a1, 24
-	bnez	$a0, .LBB8_45
-.LBB8_46:                               # %._crit_edge147
-	st.w	$a3, $fp, 48
+	addi.d	$a2, $a2, 24
+	bnez	$a0, .LBB8_28
+	b	.LBB8_30
+.LBB8_29:
+	move	$a1, $zero
+.LBB8_30:                               # %._crit_edge147
+	st.w	$a1, $fp, 48
 	move	$a0, $zero
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end8:
 	.size	hypre_StructGridAssemble, .Lfunc_end8-hypre_StructGridAssemble

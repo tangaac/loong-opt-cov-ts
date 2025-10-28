@@ -20,11 +20,11 @@ uaspect:                                # @uaspect
 	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 120                  # 8-byte Folded Spill
 	fmov.d	$fs0, $fa0
-	move	$s6, $a0
+	move	$s1, $a0
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $s6, 3
+	slli.d	$a1, $s1, 3
 	ldx.d	$fp, $a0, $a1
 	ld.wu	$a0, $fp, 56
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
@@ -41,8 +41,8 @@ uaspect:                                # @uaspect
 .LBB0_2:
 	fdiv.d	$fa0, $fa0, $fs0
 .LBB0_3:
-	ld.w	$s8, $fp, 12
-	ld.w	$a2, $fp, 16
+	ld.w	$s6, $fp, 12
+	ld.w	$s8, $fp, 16
 	ld.d	$a0, $a1, 88
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ld.w	$s2, $a1, 72
@@ -98,17 +98,17 @@ uaspect:                                # @uaspect
 	ld.d	$a7, $a0, 0
 	ori	$a5, $zero, 1
 	ori	$s7, $zero, 1
-	move	$a0, $s6
-	move	$a1, $s8
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	move	$a0, $s1
+	move	$a1, $s6
+	move	$a2, $s8
 	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
 	move	$a4, $zero
 	move	$a6, $zero
 	jirl	$ra, $a7, 0
 	sub.d	$a0, $s0, $a0
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(blockarray)
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$s8, $a0, %got_pc_lo12(blockarray)
 	ld.d	$a0, $s8, 0
 	pcalau12i	$a1, %got_pc_hi20(binX)
@@ -117,8 +117,9 @@ uaspect:                                # @uaspect
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
 	pcalau12i	$a1, %got_pc_hi20(binY)
-	ld.d	$s1, $a1, %got_pc_lo12(binY)
-	ld.w	$a1, $s1, 0
+	st.d	$s6, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$s6, $a1, %got_pc_lo12(binY)
+	ld.w	$a1, $s6, 0
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
 	pcalau12i	$a1, %got_pc_hi20(occa1ptr)
@@ -128,7 +129,8 @@ uaspect:                                # @uaspect
 	pcalau12i	$a0, %got_pc_hi20(overlapx)
 	ld.d	$a0, $a0, %got_pc_lo12(overlapx)
 	ld.d	$a5, $a0, 0
-	move	$a0, $s6
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	move	$a0, $s1
 	move	$a1, $s2
 	move	$a2, $s3
 	move	$a3, $s5
@@ -138,17 +140,16 @@ uaspect:                                # @uaspect
 	ld.w	$a1, $s0, 0
 	ld.d	$a2, $s8, 0
 	slli.d	$a1, $a1, 3
-	ld.w	$a3, $s1, 0
+	ld.w	$a3, $s6, 0
 	ldx.d	$a1, $a2, $a1
 	slli.d	$a2, $a3, 3
 	ldx.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	add.d	$s8, $a0, $a2
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	add.d	$s6, $a0, $a2
 	pcalau12i	$a0, %got_pc_hi20(occa2ptr)
-	ld.d	$a0, $a0, %got_pc_lo12(occa2ptr)
-	move	$s1, $a0
-	st.d	$a1, $a0, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $a0, %got_pc_lo12(occa2ptr)
+	st.d	$a1, $s1, 0
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	sub.d	$t5, $a0, $s5
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $s4
@@ -285,10 +286,9 @@ uaspect:                                # @uaspect
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, 0
 	add.d	$s0, $s0, $a0
-	move	$s7, $s8
-	add.w	$a0, $s0, $s8
+	add.w	$a0, $s0, $s6
 	add.w	$a1, $a2, $a1
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
 	bge	$a1, $a0, .LBB0_12
 # %bb.11:
 	sub.d	$a0, $a1, $a0
@@ -341,12 +341,13 @@ uaspect:                                # @uaspect
 	beq	$a2, $a1, .LBB0_16
 # %bb.13:                               # %.preheader741.preheader
 	addi.d	$a0, $a2, 4
+	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_14:                               # %.preheader741
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a0, 0
 	addi.d	$a0, $a0, 4
-	bne	$a3, $s6, .LBB0_14
+	bne	$a3, $a6, .LBB0_14
 # %bb.15:
 	ld.w	$a3, $a2, 0
 	addi.d	$a4, $a3, -1
@@ -358,7 +359,7 @@ uaspect:                                # @uaspect
 	addi.w	$a0, $a0, 1
 	st.w	$a0, $a1, 0
 	slli.d	$a0, $a0, 2
-	stx.w	$s6, $a1, $a0
+	stx.w	$a6, $a1, $a0
 	move	$a0, $a5
 	.p2align	4, , 16
 .LBB0_16:                               # %.lr.ph752
@@ -469,7 +470,6 @@ uaspect:                                # @uaspect
 	bnez	$a0, .LBB0_19
 .LBB0_20:                               # %.preheader739
 	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
 	ld.w	$a0, $fp, 128
 	blez	$a0, .LBB0_23
 # %bb.21:                               # %.lr.ph758.preheader
@@ -516,19 +516,20 @@ uaspect:                                # @uaspect
 	addi.d	$a0, $a0, 16
 	bnez	$a1, .LBB0_22
 .LBB0_23:                               # %._crit_edge759
-	beqz	$s8, .LBB0_67
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	beqz	$s7, .LBB0_67
 # %bb.24:
+	ld.w	$a0, $a5, 68
+	ld.w	$a1, $a5, 64
 	vld	$vr0, $a5, 56
-	vpickve2gr.w	$a0, $vr0, 2
-	vpickve2gr.w	$a1, $vr0, 3
-	sub.w	$a4, $a1, $a0
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
-	addi.d	$a0, $s8, -2
-	ori	$a3, $zero, 5
-	sub.d	$s0, $a2, $a1
+	ld.w	$a2, $a5, 60
+	ld.w	$a3, $a5, 56
+	sub.w	$a4, $a0, $a1
+	addi.d	$a0, $s7, -2
+	ori	$a1, $zero, 5
+	sub.d	$s0, $a2, $a3
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
-	bltu	$a3, $a0, .LBB0_33
+	bltu	$a1, $a0, .LBB0_33
 # %bb.25:
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI0_0)
@@ -537,6 +538,7 @@ uaspect:                                # @uaspect
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB0_26:
+	move	$a1, $s7
 	move	$s7, $zero
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	move	$s2, $zero
@@ -544,7 +546,6 @@ uaspect:                                # @uaspect
 	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	move	$a1, $s8
 	b	.LBB0_34
 .LBB0_27:
 	move	$a0, $zero
@@ -565,26 +566,26 @@ uaspect:                                # @uaspect
 	move	$s2, $zero
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
+	move	$a1, $s7
 	ori	$s7, $zero, 1
-	move	$a1, $s8
 	b	.LBB0_34
 .LBB0_30:
+	move	$a1, $s7
 	move	$s7, $zero
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	move	$s2, $zero
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
-	move	$a1, $s8
 	b	.LBB0_34
 .LBB0_31:
+	move	$a1, $s7
 	move	$s7, $zero
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
 	ori	$s2, $zero, 1
-	move	$a1, $s8
 	b	.LBB0_34
 .LBB0_32:
 	move	$s7, $zero
@@ -735,18 +736,18 @@ uaspect:                                # @uaspect
 	b	.LBB0_44
 .LBB0_49:                               # %._crit_edge766
 	ld.w	$a0, $fp, 68
-	move	$s6, $s1
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	move	$s7, $s1
+	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_59
 # %bb.50:
 	addi.d	$a0, $fp, 152
 	ld.d	$a0, $a0, 0
 	ld.d	$s1, $a0, 88
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s8, 8
 	addi.d	$s3, $s1, 8
 	st.d	$a0, $s1, 8
 	addi.d	$s2, $s1, 12
-	move	$a0, $s6
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(move)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
@@ -817,7 +818,7 @@ uaspect:                                # @uaspect
 	ld.d	$a0, $s3, -4
 	addi.d	$s2, $s1, -4
 	st.d	$a0, $s1, -4
-	move	$a0, $s6
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(move)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
@@ -1416,13 +1417,13 @@ uaspect:                                # @uaspect
 	addi.w	$s0, $s0, 1
 	bge	$s0, $a0, .LBB0_59
 .LBB0_146:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$s7, $s7, 0
+	ld.d	$s8, $s8, 0
 	ld.d	$s1, $s1, 0
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s8, 8
 	addi.d	$s3, $s1, 8
 	st.d	$a0, $s1, 8
 	addi.d	$s2, $s1, 12
-	move	$a0, $s6
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(move)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
@@ -1445,12 +1446,10 @@ uaspect:                                # @uaspect
 	st.w	$a0, $s2, 0
 	b	.LBB0_145
 .LBB0_150:                              # %call.sqrt
-	move	$s1, $a3
-	move	$s5, $a2
+	move	$s5, $a3
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	move	$a2, $s5
-	move	$a3, $s1
+	move	$a3, $s5
 	fmov.d	$fs1, $fa0
 	b	.LBB0_4
 .Lfunc_end0:

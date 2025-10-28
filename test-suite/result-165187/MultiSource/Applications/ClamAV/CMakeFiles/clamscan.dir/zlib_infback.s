@@ -455,7 +455,7 @@ inflateBack:                            # @inflateBack
                                         #   in Loop: Header=BB1_6 Depth=1
 	ori	$a0, $zero, 18
 	bltu	$a0, $a1, .LBB1_49
-# %bb.46:                               # %.lr.ph872.preheader1545
+# %bb.46:                               # %.lr.ph872.preheader1544
                                         #   in Loop: Header=BB1_6 Depth=1
 	alsl.d	$a0, $a1, $a2, 1
 	addi.d	$a1, $a1, 1
@@ -839,7 +839,7 @@ inflateBack:                            # @inflateBack
 .LBB1_101:                              #   in Loop: Header=BB1_65 Depth=2
 	move	$a5, $a4
 	move	$a3, $a6
-.LBB1_102:                              # %.preheader.preheader1543
+.LBB1_102:                              # %.preheader.preheader1542
                                         #   in Loop: Header=BB1_65 Depth=2
 	move	$a4, $a3
 	.p2align	4, , 16
@@ -1328,7 +1328,7 @@ inflateBack:                            # @inflateBack
 	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a0, $s0, 8
 	b	.LBB1_6
-.LBB1_175:                              # %.loopexit1539
+.LBB1_175:                              # %.loopexit1538
                                         #   in Loop: Header=BB1_176 Depth=2
 	ld.w	$a1, $s0, 92
 	sub.w	$s8, $s1, $a0
@@ -1475,7 +1475,7 @@ inflateBack:                            # @inflateBack
 	addi.w	$s3, $zero, -5
 	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB1_192
-.LBB1_195:                              # %.loopexit684.loopexit1547
+.LBB1_195:                              # %.loopexit684.loopexit1546
 	addi.w	$s3, $zero, -3
 	b	.LBB1_192
 .LBB1_196:

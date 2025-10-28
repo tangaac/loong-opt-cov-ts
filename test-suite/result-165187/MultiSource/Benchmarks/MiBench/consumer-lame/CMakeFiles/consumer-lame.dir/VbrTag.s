@@ -199,24 +199,16 @@ GetVbrTag:                              # @GetVbrTag
 	addi.d	$a2, $a2, 4
 .LBB3_10:
 	andi	$a3, $a1, 4
-	beqz	$a3, .LBB3_16
-# %bb.11:                               # %iter.check
+	beqz	$a3, .LBB3_17
+# %bb.11:                               # %vector.memcheck
 	addi.d	$a3, $a0, 24
 	sub.d	$a4, $a3, $a2
-	ori	$a5, $zero, 31
-	bltu	$a5, $a4, .LBB3_14
-# %bb.12:                               # %vec.epilog.scalar.ph.preheader
+	ori	$a5, $zero, 32
+	bgeu	$a4, $a5, .LBB3_13
+# %bb.12:
 	move	$a4, $zero
-	ori	$a5, $zero, 100
-	.p2align	4, , 16
-.LBB3_13:                               # %vec.epilog.scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.b	$a6, $a2, $a4
-	stx.b	$a6, $a3, $a4
-	addi.d	$a4, $a4, 1
-	bne	$a4, $a5, .LBB3_13
-	b	.LBB3_15
-.LBB3_14:                               # %vector.body
+	b	.LBB3_14
+.LBB3_13:                               # %vector.body
 	vld	$vr0, $a2, 0
 	vld	$vr1, $a2, 16
 	vst	$vr0, $a0, 24
@@ -229,20 +221,28 @@ GetVbrTag:                              # @GetVbrTag
 	vld	$vr1, $a2, 80
 	vst	$vr0, $a0, 88
 	vst	$vr1, $a0, 104
-	ld.w	$a3, $a2, 96
-	st.w	$a3, $a0, 120
-.LBB3_15:                               # %vec.epilog.middle.block
+	ori	$a4, $zero, 96
+.LBB3_14:                               # %scalar.ph.preheader
+	ori	$a5, $zero, 100
+	.p2align	4, , 16
+.LBB3_15:                               # %scalar.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.b	$a6, $a2, $a4
+	stx.b	$a6, $a3, $a4
+	addi.d	$a4, $a4, 1
+	bne	$a4, $a5, .LBB3_15
+# %bb.16:
 	addi.d	$a2, $a2, 100
-.LBB3_16:
+.LBB3_17:
 	addi.w	$a3, $zero, -1
 	lu32i.d	$a3, 0
 	st.w	$a3, $a0, 20
 	andi	$a1, $a1, 8
-	bnez	$a1, .LBB3_18
-# %bb.17:
+	bnez	$a1, .LBB3_19
+# %bb.18:
 	ori	$a0, $zero, 1
 	ret
-.LBB3_18:
+.LBB3_19:
 	ld.w	$a1, $a2, 0
 	revb.2w	$a1, $a1
 	st.w	$a1, $a0, 20

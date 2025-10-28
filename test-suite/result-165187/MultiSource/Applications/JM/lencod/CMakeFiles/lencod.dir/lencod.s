@@ -1774,60 +1774,65 @@ init_img:                               # @init_img
 	bne	$a1, $a2, .LBB4_14
 .LBB4_15:                               # %._crit_edge
 	ld.d	$fp, $s1, %pc_lo12(input)
-	ld.w	$a2, $fp, 56
 	ori	$a0, $s3, 3296
 	ldx.w	$a0, $s7, $a0
 	ld.w	$a3, $fp, 60
-	ori	$a1, $s3, 3300
-	ldx.w	$a4, $s7, $a1
-	add.w	$a1, $a0, $a2
+	ld.w	$a1, $fp, 56
+	ori	$a2, $s3, 3300
+	ldx.w	$a4, $s7, $a2
+	ld.d	$a2, $fp, 56
+	add.w	$a1, $a0, $a1
 	add.w	$a0, $a4, $a3
-	bstrpick.d	$a4, $a1, 62, 61
-	add.w	$a4, $a1, $a4
-	srli.d	$a4, $a4, 2
-	st.w	$a4, $s7, 60
-	bstrpick.d	$a4, $a0, 62, 61
-	add.w	$a4, $a0, $a4
-	srli.d	$a4, $a4, 2
-	st.w	$a4, $s7, 76
-	addi.d	$a4, $a1, 40
-	st.w	$a4, $s7, 56
-	ldptr.w	$a4, $s7, 15536
-	addi.d	$a5, $a0, 40
-	st.w	$a5, $s7, 72
+	bstrpick.d	$a3, $a1, 62, 61
+	add.w	$a3, $a1, $a3
+	srli.d	$a3, $a3, 2
+	st.w	$a3, $s7, 60
+	bstrpick.d	$a3, $a0, 62, 61
+	add.w	$a3, $a0, $a3
+	srli.d	$a3, $a3, 2
+	st.w	$a3, $s7, 76
+	addi.d	$a3, $a1, 40
+	st.w	$a3, $s7, 56
+	ldptr.w	$a3, $s7, 15536
+	addi.d	$a4, $a0, 40
+	st.w	$a4, $s7, 72
 	st.w	$a1, $s7, 52
 	st.w	$a0, $s7, 68
-	beqz	$a4, .LBB4_17
+	beqz	$a3, .LBB4_17
 # %bb.16:
-	slli.d	$a5, $a4, 2
-	pcalau12i	$a4, %pc_hi20(init_img.mb_width_cr)
-	addi.d	$a4, $a4, %pc_lo12(init_img.mb_width_cr)
-	ldx.w	$a4, $a4, $a5
-	ori	$a6, $zero, 16
-	div.w	$a7, $a6, $a4
-	div.w	$a4, $a1, $a7
-	pcalau12i	$t0, %pc_hi20(init_img.mb_height_cr)
-	addi.d	$t0, $t0, %pc_lo12(init_img.mb_height_cr)
-	ldx.w	$a5, $t0, $a5
-	div.w	$a6, $a6, $a5
-	div.w	$a5, $a0, $a6
-	div.w	$a2, $a2, $a7
-	div.w	$a3, $a3, $a6
+	vinsgr2vr.d	$vr0, $a2, 0
+	slli.d	$a2, $a3, 2
+	pcalau12i	$a3, %pc_hi20(init_img.mb_width_cr)
+	addi.d	$a3, $a3, %pc_lo12(init_img.mb_width_cr)
+	ldx.w	$a3, $a3, $a2
+	pcalau12i	$a4, %pc_hi20(init_img.mb_height_cr)
+	addi.d	$a4, $a4, %pc_lo12(init_img.mb_height_cr)
+	ldx.w	$a2, $a4, $a2
+	ori	$a4, $zero, 16
+	div.w	$a2, $a4, $a2
+	div.w	$a3, $a4, $a3
+	vinsgr2vr.w	$vr1, $a3, 0
+	vinsgr2vr.w	$vr1, $a2, 1
+	vreplvei.d	$vr1, $vr1, 0
+	vinsgr2vr.w	$vr0, $a1, 2
+	vinsgr2vr.w	$vr0, $a0, 3
+	vdiv.w	$vr0, $vr0, $vr1
 	b	.LBB4_18
 .LBB4_17:
-	move	$a4, $zero
-	move	$a5, $zero
-	move	$a2, $zero
-	move	$a3, $zero
+	vrepli.b	$vr0, 0
 .LBB4_18:
-	st.w	$a4, $s7, 64
-	st.w	$a5, $s7, 80
-	stptr.w	$a2, $fp, 5268
-	stptr.w	$a3, $fp, 5264
-	st.w	$a5, $s7, 84
-	mul.d	$a2, $a0, $a1
-	st.w	$a2, $s7, 88
-	mul.d	$a2, $a4, $a5
+	vpickve2gr.w	$a2, $vr0, 2
+	vstelm.w	$vr0, $s7, 64, 2
+	vpickve2gr.w	$a3, $vr0, 3
+	vstelm.w	$vr0, $s7, 80, 3
+	vpickve2gr.w	$a4, $vr0, 0
+	stptr.w	$a4, $fp, 5268
+	vpickve2gr.w	$a4, $vr0, 1
+	stptr.w	$a4, $fp, 5264
+	vstelm.w	$vr0, $s7, 84, 3
+	mul.d	$a4, $a0, $a1
+	st.w	$a4, $s7, 88
+	mul.d	$a2, $a2, $a3
 	st.w	$a2, $s7, 92
 	bstrpick.d	$a2, $a1, 62, 59
 	add.w	$a1, $a1, $a2

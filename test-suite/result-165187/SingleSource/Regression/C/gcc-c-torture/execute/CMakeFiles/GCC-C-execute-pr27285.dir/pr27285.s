@@ -44,26 +44,37 @@ foo:                                    # @foo
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.w	$zero, $sp, 31
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.w	$zero, $sp, 15
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	pcalau12i	$a0, %pc_hi20(.L__const.main.x)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.main.x)
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 19
-	lu12i.w	$a1, -521013
-	ori	$a1, $a1, 2986
-	bne	$a0, $a1, .LBB1_2
+	ld.bu	$a0, $sp, 3
+	ori	$a1, $zero, 170
+	bne	$a0, $a1, .LBB1_5
 # %bb.1:
+	ld.bu	$a0, $sp, 4
+	ori	$a1, $zero, 187
+	bne	$a0, $a1, .LBB1_5
+# %bb.2:
+	ld.bu	$a0, $sp, 5
+	ori	$a1, $zero, 204
+	bne	$a0, $a1, .LBB1_5
+# %bb.3:
+	ld.bu	$a0, $sp, 6
+	ori	$a1, $zero, 128
+	bne	$a0, $a1, .LBB1_5
+# %bb.4:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
-.LBB1_2:
+.LBB1_5:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:

@@ -1842,18 +1842,18 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
 	beqz	$a0, .LBB7_173
 # %bb.168:                              # %.lr.ph416.preheader
                                         #   in Loop: Header=BB7_60 Depth=3
-	ori	$a1, $zero, 4
-	bgeu	$a0, $a1, .LBB7_170
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB7_170
 # %bb.169:                              #   in Loop: Header=BB7_60 Depth=3
 	move	$a1, $zero
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB7_174
 .LBB7_170:                              # %vector.ph
                                         #   in Loop: Header=BB7_60 Depth=3
-	bstrpick.d	$a1, $a0, 15, 2
-	slli.d	$a1, $a1, 2
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
-	addi.d	$a2, $t0, 16
+	bstrpick.d	$a1, $a0, 15, 1
+	slli.d	$a1, $a1, 1
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$a2, $a6, 8
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB7_171:                              # %vector.body
@@ -1861,16 +1861,12 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
                                         #     Parent Loop BB7_14 Depth=2
                                         #       Parent Loop BB7_60 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.d	$a4, $a2, -16
-	ld.d	$a5, $a2, -8
-	ld.d	$a6, $a2, 0
-	ld.d	$a7, $a2, 8
+	ld.d	$a4, $a2, -8
+	ld.d	$a5, $a2, 0
 	st.w	$zero, $a4, 0
 	st.w	$zero, $a5, 0
-	st.w	$zero, $a6, 0
-	st.w	$zero, $a7, 0
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
+	addi.d	$a3, $a3, -2
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB7_171
 # %bb.172:                              # %middle.block
                                         #   in Loop: Header=BB7_60 Depth=3
@@ -1878,9 +1874,9 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
 .LBB7_173:                              #   in Loop: Header=BB7_60 Depth=3
 	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB7_144
-.LBB7_174:                              # %.lr.ph416.preheader698
+.LBB7_174:                              # %.lr.ph416.preheader697
                                         #   in Loop: Header=BB7_60 Depth=3
-	alsl.d	$a2, $a1, $t0, 3
+	alsl.d	$a2, $a1, $a6, 3
 	sub.d	$a0, $a0, $a1
 	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -1910,7 +1906,7 @@ cli_ac_scanbuff:                        # @cli_ac_scanbuff
 .LBB7_179:                              #   in Loop: Header=BB7_14 Depth=2
 	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB7_13
-.LBB7_180:                              # %.critedge.sink.split.i.loopexit799
+.LBB7_180:                              # %.critedge.sink.split.i.loopexit798
                                         #   in Loop: Header=BB7_14 Depth=2
 	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 15, 8

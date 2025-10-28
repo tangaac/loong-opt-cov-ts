@@ -113,7 +113,7 @@ sum:                                    # @sum
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %iter.check
+# %bb.0:                                # %vector.ph
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)

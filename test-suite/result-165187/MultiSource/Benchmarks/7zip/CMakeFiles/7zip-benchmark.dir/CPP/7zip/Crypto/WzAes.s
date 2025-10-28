@@ -267,22 +267,16 @@ _ZN7NCrypto6NWzAes10CBaseCoder4InitEv:  # @_ZN7NCrypto6NWzAes10CBaseCoder4InitEv
 	.p2align	4, , 16
 .LBB2_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s2, $a2
-	ldx.w	$a5, $a2, $s2
-	ld.w	$a4, $a4, 4
-	vreplgr2vr.w	$vr3, $a5
-	vreplgr2vr.w	$vr4, $a4
-	vslli.w	$vr5, $vr0, 3
-	vandn.v	$vr5, $vr5, $vr2
-	vsrl.w	$vr3, $vr3, $vr5
-	vsrl.w	$vr4, $vr4, $vr5
+	ldx.w	$a4, $a2, $s2
+	vreplgr2vr.w	$vr3, $a4
+	vslli.w	$vr4, $vr0, 3
+	vandn.v	$vr4, $vr4, $vr2
+	vsrl.w	$vr3, $vr3, $vr4
 	vshuf.b	$vr3, $vr0, $vr3, $vr1
-	vshuf.b	$vr4, $vr0, $vr4, $vr1
 	add.d	$a4, $a3, $a2
 	vstelm.w	$vr3, $a4, 0, 0
-	vstelm.w	$vr4, $a4, 4, 0
-	addi.d	$a2, $a2, 8
-	vaddi.wu	$vr0, $vr0, 8
+	addi.d	$a2, $a2, 4
+	vaddi.wu	$vr0, $vr0, 4
 	bne	$a0, $a2, .LBB2_3
 # %bb.4:                                # %scalar.ph
 	addi.d	$a2, $sp, 272

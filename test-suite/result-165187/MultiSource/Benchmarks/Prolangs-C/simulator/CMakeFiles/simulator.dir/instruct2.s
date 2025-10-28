@@ -621,7 +621,40 @@ RMO_P:                                  # @RMO_P
 .Lfunc_end6:
 	.size	RMO_P, .Lfunc_end6-RMO_P
                                         # -- End function
-	.globl	SHIFTL_P                        # -- Begin function SHIFTL_P
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function SHIFTL_P
+.LCPI7_0:
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	4                               # 0x4
+.LCPI7_1:
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
+	.word	8                               # 0x8
+.LCPI7_2:
+	.word	9                               # 0x9
+	.word	10                              # 0xa
+	.word	11                              # 0xb
+	.word	12                              # 0xc
+.LCPI7_3:
+	.word	13                              # 0xd
+	.word	14                              # 0xe
+	.word	15                              # 0xf
+	.word	16                              # 0x10
+.LCPI7_4:
+	.word	17                              # 0x11
+	.word	18                              # 0x12
+	.word	19                              # 0x13
+	.word	20                              # 0x14
+.LCPI7_5:
+	.word	21                              # 0x15
+	.word	22                              # 0x16
+	.word	23                              # 0x17
+	.word	24                              # 0x18
+	.text
+	.globl	SHIFTL_P
 	.p2align	5
 	.type	SHIFTL_P,@function
 SHIFTL_P:                               # @SHIFTL_P
@@ -649,250 +682,180 @@ SHIFTL_P:                               # @SHIFTL_P
 	addi.d	$s1, $sp, 104
 	pcaddu18i	$ra, %call36(BYTES_TO_BITS)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 200
-	addi.w	$a3, $a1, 1
+	ld.w	$a0, $sp, 200
+	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI7_0)
+	vreplgr2vr.w	$vr0, $a0
+	vadd.w	$vr3, $vr0, $vr1
 	lu12i.w	$a0, 174762
-	ori	$a2, $a0, 2731
-	mul.d	$a0, $a3, $a2
-	srli.d	$a4, $a0, 63
-	srai.d	$a0, $a0, 34
-	add.d	$a4, $a0, $a4
-	ori	$a0, $zero, 24
-	mul.d	$a4, $a4, $a0
-	sub.w	$a3, $a3, $a4
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a3, $s1
-	addi.w	$a4, $a1, 2
-	mul.d	$a5, $a4, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 34
-	add.d	$a5, $a5, $a6
-	mul.d	$a5, $a5, $a0
-	sub.w	$a4, $a4, $a5
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $a4, $s1
-	addi.w	$a5, $a1, 3
-	mul.d	$a6, $a5, $a2
-	srli.d	$a7, $a6, 63
-	srai.d	$a6, $a6, 34
-	add.d	$a6, $a6, $a7
-	mul.d	$a6, $a6, $a0
-	sub.w	$a5, $a5, $a6
-	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a5, $s1
-	addi.w	$a6, $a1, 4
-	mul.d	$a7, $a6, $a2
-	srli.d	$t0, $a7, 63
-	srai.d	$a7, $a7, 34
-	add.d	$a7, $a7, $t0
-	mul.d	$a7, $a7, $a0
-	sub.w	$a6, $a6, $a7
-	slli.d	$a6, $a6, 2
-	ldx.w	$a6, $a6, $s1
-	st.w	$a3, $sp, 8
-	st.w	$a4, $sp, 12
-	st.w	$a5, $sp, 16
-	st.w	$a6, $sp, 20
-	addi.w	$a3, $a1, 5
-	mul.d	$a4, $a3, $a2
-	srli.d	$a5, $a4, 63
-	srai.d	$a4, $a4, 34
-	add.d	$a4, $a4, $a5
-	mul.d	$a4, $a4, $a0
-	sub.w	$a3, $a3, $a4
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a3, $s1
-	addi.w	$a4, $a1, 6
-	mul.d	$a5, $a4, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 34
-	add.d	$a5, $a5, $a6
-	mul.d	$a5, $a5, $a0
-	sub.w	$a4, $a4, $a5
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $a4, $s1
-	addi.w	$a5, $a1, 7
-	mul.d	$a6, $a5, $a2
-	srli.d	$a7, $a6, 63
-	srai.d	$a6, $a6, 34
-	add.d	$a6, $a6, $a7
-	mul.d	$a6, $a6, $a0
-	sub.w	$a5, $a5, $a6
-	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a5, $s1
-	addi.w	$a6, $a1, 8
-	mul.d	$a7, $a6, $a2
-	srli.d	$t0, $a7, 63
-	srai.d	$a7, $a7, 34
-	add.d	$a7, $a7, $t0
-	mul.d	$a7, $a7, $a0
-	sub.w	$a6, $a6, $a7
-	slli.d	$a6, $a6, 2
-	ldx.w	$a6, $a6, $s1
-	st.w	$a3, $sp, 24
-	st.w	$a4, $sp, 28
-	st.w	$a5, $sp, 32
-	st.w	$a6, $sp, 36
-	addi.w	$a3, $a1, 9
-	mul.d	$a4, $a3, $a2
-	srli.d	$a5, $a4, 63
-	srai.d	$a4, $a4, 34
-	add.d	$a4, $a4, $a5
-	mul.d	$a4, $a4, $a0
-	sub.w	$a3, $a3, $a4
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a3, $s1
-	addi.w	$a4, $a1, 10
-	mul.d	$a5, $a4, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 34
-	add.d	$a5, $a5, $a6
-	mul.d	$a5, $a5, $a0
-	sub.w	$a4, $a4, $a5
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $a4, $s1
-	addi.w	$a5, $a1, 11
-	mul.d	$a6, $a5, $a2
-	srli.d	$a7, $a6, 63
-	srai.d	$a6, $a6, 34
-	add.d	$a6, $a6, $a7
-	mul.d	$a6, $a6, $a0
-	sub.w	$a5, $a5, $a6
-	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a5, $s1
-	addi.w	$a6, $a1, 12
-	mul.d	$a7, $a6, $a2
-	srli.d	$t0, $a7, 63
-	srai.d	$a7, $a7, 34
-	add.d	$a7, $a7, $t0
-	mul.d	$a7, $a7, $a0
-	sub.w	$a6, $a6, $a7
-	slli.d	$a6, $a6, 2
-	ldx.w	$a6, $a6, $s1
-	st.w	$a3, $sp, 40
-	st.w	$a4, $sp, 44
-	st.w	$a5, $sp, 48
-	st.w	$a6, $sp, 52
-	addi.w	$a3, $a1, 13
-	mul.d	$a4, $a3, $a2
-	srli.d	$a5, $a4, 63
-	srai.d	$a4, $a4, 34
-	add.d	$a4, $a4, $a5
-	mul.d	$a4, $a4, $a0
-	sub.w	$a3, $a3, $a4
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a3, $s1
-	addi.w	$a4, $a1, 14
-	mul.d	$a5, $a4, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 34
-	add.d	$a5, $a5, $a6
-	mul.d	$a5, $a5, $a0
-	sub.w	$a4, $a4, $a5
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $a4, $s1
-	addi.w	$a5, $a1, 15
-	mul.d	$a6, $a5, $a2
-	srli.d	$a7, $a6, 63
-	srai.d	$a6, $a6, 34
-	add.d	$a6, $a6, $a7
-	mul.d	$a6, $a6, $a0
-	sub.w	$a5, $a5, $a6
-	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a5, $s1
-	addi.w	$a6, $a1, 16
-	mul.d	$a7, $a6, $a2
-	srli.d	$t0, $a7, 63
-	srai.d	$a7, $a7, 34
-	add.d	$a7, $a7, $t0
-	mul.d	$a7, $a7, $a0
-	sub.w	$a6, $a6, $a7
-	slli.d	$a6, $a6, 2
-	ldx.w	$a6, $a6, $s1
-	st.w	$a3, $sp, 56
-	st.w	$a4, $sp, 60
-	st.w	$a5, $sp, 64
-	st.w	$a6, $sp, 68
-	addi.w	$a3, $a1, 17
-	mul.d	$a4, $a3, $a2
-	srli.d	$a5, $a4, 63
-	srai.d	$a4, $a4, 34
-	add.d	$a4, $a4, $a5
-	mul.d	$a4, $a4, $a0
-	sub.w	$a3, $a3, $a4
-	addi.w	$a4, $a1, 18
-	mul.d	$a5, $a4, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 34
-	add.d	$a5, $a5, $a6
-	mul.d	$a5, $a5, $a0
-	sub.w	$a4, $a4, $a5
-	addi.w	$a5, $a1, 19
-	mul.d	$a6, $a5, $a2
-	srli.d	$a7, $a6, 63
-	srai.d	$a6, $a6, 34
-	add.d	$a6, $a6, $a7
-	mul.d	$a6, $a6, $a0
-	sub.w	$a5, $a5, $a6
-	addi.w	$a6, $a1, 20
-	mul.d	$a7, $a6, $a2
-	srli.d	$t0, $a7, 63
-	srai.d	$a7, $a7, 34
-	add.d	$a7, $a7, $t0
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a3, $s1
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $a4, $s1
-	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a5, $s1
-	mul.d	$a7, $a7, $a0
-	sub.w	$a6, $a6, $a7
-	slli.d	$a6, $a6, 2
-	ldx.w	$a6, $a6, $s1
-	st.w	$a3, $sp, 72
-	st.w	$a4, $sp, 76
-	st.w	$a5, $sp, 80
-	st.w	$a6, $sp, 84
-	addi.w	$a3, $a1, 21
-	mul.d	$a4, $a3, $a2
-	srli.d	$a5, $a4, 63
-	srai.d	$a4, $a4, 34
-	add.d	$a4, $a4, $a5
-	mul.d	$a4, $a4, $a0
-	sub.w	$a3, $a3, $a4
-	addi.w	$a4, $a1, 22
-	mul.d	$a5, $a4, $a2
-	srli.d	$a6, $a5, 63
-	srai.d	$a5, $a5, 34
-	add.d	$a5, $a5, $a6
-	mul.d	$a5, $a5, $a0
-	sub.w	$a4, $a4, $a5
-	addi.w	$a5, $a1, 23
-	mul.d	$a6, $a5, $a2
-	srli.d	$a7, $a6, 63
-	srai.d	$a6, $a6, 34
-	add.d	$a6, $a6, $a7
-	mul.d	$a6, $a6, $a0
-	sub.w	$a5, $a5, $a6
-	addi.w	$a1, $a1, 24
-	mul.d	$a2, $a1, $a2
-	srli.d	$a6, $a2, 63
-	srai.d	$a2, $a2, 34
-	add.d	$a2, $a2, $a6
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a3, $s1
-	slli.d	$a4, $a4, 2
-	ldx.w	$a4, $a4, $s1
-	slli.d	$a5, $a5, 2
-	ldx.w	$a5, $a5, $s1
-	mul.d	$a0, $a2, $a0
-	sub.w	$a0, $a1, $a0
+	ori	$a0, $a0, 2731
+	vreplgr2vr.w	$vr1, $a0
+	vmuh.w	$vr2, $vr3, $vr1
+	vsrai.w	$vr2, $vr2, 2
+	vsrli.w	$vr4, $vr2, 31
+	vadd.w	$vr4, $vr2, $vr4
+	vrepli.w	$vr2, 24
+	vmsub.w	$vr3, $vr4, $vr2
+	vpickve2gr.b	$a0, $vr3, 0
+	ext.w.b	$a0, $a0
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $a0, $s1
-	st.w	$a3, $sp, 88
-	st.w	$a4, $sp, 92
-	st.w	$a5, $sp, 96
-	st.w	$a0, $sp, 100
+	st.w	$a0, $sp, 8
+	vpickve2gr.b	$a0, $vr3, 4
+	ext.w.b	$a0, $a0
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s1
+	vpickve2gr.b	$a1, $vr3, 8
+	ext.w.b	$a1, $a1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a1, $s1
+	vpickve2gr.b	$a2, $vr3, 12
+	pcalau12i	$a3, %pc_hi20(.LCPI7_1)
+	vld	$vr3, $a3, %pc_lo12(.LCPI7_1)
+	ext.w.b	$a2, $a2
+	slli.d	$a2, $a2, 2
+	ldx.w	$a2, $a2, $s1
+	vadd.w	$vr3, $vr0, $vr3
+	vmuh.w	$vr4, $vr3, $vr1
+	vsrai.w	$vr4, $vr4, 2
+	vsrli.w	$vr5, $vr4, 31
+	vadd.w	$vr4, $vr4, $vr5
+	vmsub.w	$vr3, $vr4, $vr2
+	vpickve2gr.b	$a3, $vr3, 0
+	ext.w.b	$a3, $a3
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a3, $s1
+	st.w	$a0, $sp, 12
+	st.w	$a1, $sp, 16
+	st.w	$a2, $sp, 20
+	st.w	$a3, $sp, 24
+	vpickve2gr.b	$a0, $vr3, 4
+	ext.w.b	$a0, $a0
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s1
+	vpickve2gr.b	$a1, $vr3, 8
+	ext.w.b	$a1, $a1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a1, $s1
+	vpickve2gr.b	$a2, $vr3, 12
+	pcalau12i	$a3, %pc_hi20(.LCPI7_2)
+	vld	$vr3, $a3, %pc_lo12(.LCPI7_2)
+	ext.w.b	$a2, $a2
+	slli.d	$a2, $a2, 2
+	ldx.w	$a2, $a2, $s1
+	vadd.w	$vr3, $vr0, $vr3
+	vmuh.w	$vr4, $vr3, $vr1
+	vsrai.w	$vr4, $vr4, 2
+	vsrli.w	$vr5, $vr4, 31
+	vadd.w	$vr4, $vr4, $vr5
+	vmsub.w	$vr3, $vr4, $vr2
+	vpickve2gr.b	$a3, $vr3, 0
+	ext.w.b	$a3, $a3
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a3, $s1
+	st.w	$a0, $sp, 28
+	st.w	$a1, $sp, 32
+	st.w	$a2, $sp, 36
+	st.w	$a3, $sp, 40
+	vpickve2gr.b	$a0, $vr3, 4
+	ext.w.b	$a0, $a0
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s1
+	vpickve2gr.b	$a1, $vr3, 8
+	ext.w.b	$a1, $a1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a1, $s1
+	vpickve2gr.b	$a2, $vr3, 12
+	pcalau12i	$a3, %pc_hi20(.LCPI7_3)
+	vld	$vr3, $a3, %pc_lo12(.LCPI7_3)
+	ext.w.b	$a2, $a2
+	slli.d	$a2, $a2, 2
+	ldx.w	$a2, $a2, $s1
+	vadd.w	$vr3, $vr0, $vr3
+	vmuh.w	$vr4, $vr3, $vr1
+	vsrai.w	$vr4, $vr4, 2
+	vsrli.w	$vr5, $vr4, 31
+	vadd.w	$vr4, $vr4, $vr5
+	vmsub.w	$vr3, $vr4, $vr2
+	vpickve2gr.b	$a3, $vr3, 0
+	ext.w.b	$a3, $a3
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a3, $s1
+	st.w	$a0, $sp, 44
+	st.w	$a1, $sp, 48
+	st.w	$a2, $sp, 52
+	st.w	$a3, $sp, 56
+	vpickve2gr.b	$a0, $vr3, 4
+	ext.w.b	$a0, $a0
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s1
+	vpickve2gr.b	$a1, $vr3, 8
+	ext.w.b	$a1, $a1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a1, $s1
+	vpickve2gr.b	$a2, $vr3, 12
+	pcalau12i	$a3, %pc_hi20(.LCPI7_4)
+	vld	$vr3, $a3, %pc_lo12(.LCPI7_4)
+	ext.w.b	$a2, $a2
+	slli.d	$a2, $a2, 2
+	ldx.w	$a2, $a2, $s1
+	vadd.w	$vr3, $vr0, $vr3
+	vmuh.w	$vr4, $vr3, $vr1
+	vsrai.w	$vr4, $vr4, 2
+	vsrli.w	$vr5, $vr4, 31
+	vadd.w	$vr4, $vr4, $vr5
+	vmsub.w	$vr3, $vr4, $vr2
+	vpickve2gr.b	$a3, $vr3, 0
+	ext.w.b	$a3, $a3
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a3, $s1
+	st.w	$a0, $sp, 60
+	st.w	$a1, $sp, 64
+	st.w	$a2, $sp, 68
+	st.w	$a3, $sp, 72
+	vpickve2gr.b	$a0, $vr3, 4
+	ext.w.b	$a0, $a0
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s1
+	vpickve2gr.b	$a1, $vr3, 8
+	ext.w.b	$a1, $a1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a1, $s1
+	vpickve2gr.b	$a2, $vr3, 12
+	ext.w.b	$a2, $a2
+	slli.d	$a2, $a2, 2
+	ldx.w	$a2, $a2, $s1
+	pcalau12i	$a3, %pc_hi20(.LCPI7_5)
+	vld	$vr3, $a3, %pc_lo12(.LCPI7_5)
+	st.w	$a0, $sp, 76
+	st.w	$a1, $sp, 80
+	st.w	$a2, $sp, 84
+	vadd.w	$vr0, $vr0, $vr3
+	vmuh.w	$vr1, $vr0, $vr1
+	vsrai.w	$vr1, $vr1, 2
+	vsrli.w	$vr3, $vr1, 31
+	vadd.w	$vr1, $vr1, $vr3
+	vmsub.w	$vr0, $vr1, $vr2
+	vpickve2gr.b	$a0, $vr0, 0
+	ext.w.b	$a0, $a0
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s1
+	vpickve2gr.b	$a1, $vr0, 4
+	ext.w.b	$a1, $a1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a1, $s1
+	vpickve2gr.b	$a2, $vr0, 8
+	ext.w.b	$a2, $a2
+	slli.d	$a2, $a2, 2
+	ldx.w	$a2, $a2, $s1
+	vpickve2gr.b	$a3, $vr0, 12
+	ext.w.b	$a3, $a3
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a3, $s1
+	st.w	$a0, $sp, 88
+	st.w	$a1, $sp, 92
+	st.w	$a2, $sp, 96
+	st.w	$a3, $sp, 100
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 24
 	pcaddu18i	$ra, %call36(BITS_TO_BYTE)

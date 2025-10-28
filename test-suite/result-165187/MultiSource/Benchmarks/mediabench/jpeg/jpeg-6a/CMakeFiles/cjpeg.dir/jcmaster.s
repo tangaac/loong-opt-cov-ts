@@ -813,8 +813,8 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a4, .LBB1_33
 # %bb.5:                                # %.lr.ph.i
 	ld.d	$a1, $fp, 80
-	ori	$a5, $zero, 4
-	bgeu	$a4, $a5, .LBB1_28
+	ori	$a5, $zero, 1
+	bne	$a4, $a5, .LBB1_28
 # %bb.6:
 	move	$a5, $zero
 	b	.LBB1_31
@@ -831,8 +831,8 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a4, .LBB1_27
 # %bb.9:                                # %.lr.ph.i68
 	ld.d	$a1, $fp, 80
-	ori	$a5, $zero, 4
-	bgeu	$a4, $a5, .LBB1_22
+	ori	$a5, $zero, 1
+	bne	$a4, $a5, .LBB1_22
 # %bb.10:
 	move	$a5, $zero
 	b	.LBB1_25
@@ -899,37 +899,28 @@ prepare_for_pass:                       # @prepare_for_pass
 	move	$a2, $zero
 	b	.LBB1_58
 .LBB1_22:                               # %vector.ph
-	bstrpick.d	$a5, $a4, 30, 2
-	slli.d	$a5, $a5, 2
-	addi.d	$a6, $fp, 336
-	add.d	$a7, $a3, $a2
-	addi.d	$a7, $a7, 12
-	vreplgr2vr.d	$vr0, $a1
-	vrepli.d	$vr1, 96
-	move	$t0, $a5
+	bstrpick.d	$a5, $a4, 30, 1
+	slli.d	$a5, $a5, 1
+	add.d	$a6, $a3, $a2
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $fp, 328
+	ori	$t0, $zero, 96
+	move	$t1, $a5
 	.p2align	4, , 16
 .LBB1_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t1, $a7, -8
-	ld.d	$t2, $a7, 0
-	vinsgr2vr.d	$vr2, $t1, 0
-	vinsgr2vr.d	$vr3, $t2, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vori.b	$vr4, $vr0, 0
-	vmadd.d	$vr4, $vr2, $vr1
-	vori.b	$vr2, $vr0, 0
-	vmadd.d	$vr2, $vr3, $vr1
-	vst	$vr4, $a6, -16
-	vst	$vr2, $a6, 0
-	addi.d	$t0, $t0, -4
-	addi.d	$a6, $a6, 32
+	ld.w	$t2, $a6, -4
+	ld.w	$t3, $a6, 0
+	mul.d	$t2, $t2, $t0
+	add.d	$t2, $a1, $t2
+	mul.d	$t3, $t3, $t0
+	add.d	$t3, $a1, $t3
+	st.d	$t2, $a7, -8
+	st.d	$t3, $a7, 0
+	addi.d	$a6, $a6, 8
+	addi.d	$t1, $t1, -2
 	addi.d	$a7, $a7, 16
-	bnez	$t0, .LBB1_23
+	bnez	$t1, .LBB1_23
 # %bb.24:                               # %middle.block
 	beq	$a5, $a4, .LBB1_27
 .LBB1_25:                               # %scalar.ph.preheader
@@ -958,41 +949,32 @@ prepare_for_pass:                       # @prepare_for_pass
 	st.d	$a1, $fp, 408
 	ld.w	$a0, $a0, 32
 	b	.LBB1_40
-.LBB1_28:                               # %vector.ph152
-	bstrpick.d	$a5, $a4, 30, 2
-	slli.d	$a5, $a5, 2
-	addi.d	$a6, $fp, 336
-	add.d	$a7, $a3, $a2
-	addi.d	$a7, $a7, 12
-	vreplgr2vr.d	$vr0, $a1
-	vrepli.d	$vr1, 96
-	move	$t0, $a5
+.LBB1_28:                               # %vector.ph149
+	bstrpick.d	$a5, $a4, 30, 1
+	slli.d	$a5, $a5, 1
+	add.d	$a6, $a3, $a2
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $fp, 328
+	ori	$t0, $zero, 96
+	move	$t1, $a5
 	.p2align	4, , 16
-.LBB1_29:                               # %vector.body155
+.LBB1_29:                               # %vector.body152
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t1, $a7, -8
-	ld.d	$t2, $a7, 0
-	vinsgr2vr.d	$vr2, $t1, 0
-	vinsgr2vr.d	$vr3, $t2, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vori.b	$vr4, $vr0, 0
-	vmadd.d	$vr4, $vr2, $vr1
-	vori.b	$vr2, $vr0, 0
-	vmadd.d	$vr2, $vr3, $vr1
-	vst	$vr4, $a6, -16
-	vst	$vr2, $a6, 0
-	addi.d	$t0, $t0, -4
-	addi.d	$a6, $a6, 32
+	ld.w	$t2, $a6, -4
+	ld.w	$t3, $a6, 0
+	mul.d	$t2, $t2, $t0
+	add.d	$t2, $a1, $t2
+	mul.d	$t3, $t3, $t0
+	add.d	$t3, $a1, $t3
+	st.d	$t2, $a7, -8
+	st.d	$t3, $a7, 0
+	addi.d	$a6, $a6, 8
+	addi.d	$t1, $t1, -2
 	addi.d	$a7, $a7, 16
-	bnez	$t0, .LBB1_29
-# %bb.30:                               # %middle.block160
+	bnez	$t1, .LBB1_29
+# %bb.30:                               # %middle.block155
 	beq	$a5, $a4, .LBB1_33
-.LBB1_31:                               # %scalar.ph150.preheader
+.LBB1_31:                               # %scalar.ph147.preheader
 	sub.d	$a4, $a4, $a5
 	alsl.d	$a6, $a5, $fp, 3
 	addi.d	$a6, $a6, 320
@@ -1000,7 +982,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	add.d	$a2, $a3, $a2
 	addi.d	$a2, $a2, 4
 	.p2align	4, , 16
-.LBB1_32:                               # %scalar.ph150
+.LBB1_32:                               # %scalar.ph147
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
 	alsl.d	$a3, $a3, $a3, 1
@@ -1018,7 +1000,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	st.d	$a1, $fp, 408
 	ld.w	$a0, $a0, 32
 	b	.LBB1_61
-.LBB1_34:                               # %vector.ph114
+.LBB1_34:                               # %vector.ph113
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
@@ -1029,7 +1011,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	vrepli.d	$vr3, 192
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB1_35:                               # %vector.body117
+.LBB1_35:                               # %vector.body116
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr4, $vr1, 0
 	vmadd.d	$vr4, $vr0, $vr2
@@ -1040,9 +1022,9 @@ prepare_for_pass:                       # @prepare_for_pass
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_35
-# %bb.36:                               # %middle.block120
+# %bb.36:                               # %middle.block119
 	beq	$a2, $a0, .LBB1_39
-.LBB1_37:                               # %scalar.ph112.preheader
+.LBB1_37:                               # %scalar.ph111.preheader
 	sub.d	$a0, $a0, $a2
 	alsl.d	$a3, $a2, $fp, 3
 	addi.d	$a3, $a3, 320
@@ -1050,7 +1032,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	slli.d	$a2, $a2, 5
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB1_38:                               # %scalar.ph112
+.LBB1_38:                               # %scalar.ph111
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $a3, 0
 	addi.d	$a0, $a0, -1
@@ -1111,8 +1093,8 @@ prepare_for_pass:                       # @prepare_for_pass
 	blez	$a4, .LBB1_70
 # %bb.48:                               # %.lr.ph.i84
 	ld.d	$a1, $fp, 80
-	ori	$a5, $zero, 4
-	bgeu	$a4, $a5, .LBB1_65
+	ori	$a5, $zero, 1
+	bne	$a4, $a5, .LBB1_65
 # %bb.49:
 	move	$a5, $zero
 	b	.LBB1_68
@@ -1143,7 +1125,7 @@ prepare_for_pass:                       # @prepare_for_pass
 # %bb.54:
 	move	$a2, $zero
 	b	.LBB1_74
-.LBB1_55:                               # %vector.ph165
+.LBB1_55:                               # %vector.ph160
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
@@ -1154,7 +1136,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	vrepli.d	$vr3, 192
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB1_56:                               # %vector.body168
+.LBB1_56:                               # %vector.body163
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr4, $vr1, 0
 	vmadd.d	$vr4, $vr0, $vr2
@@ -1165,9 +1147,9 @@ prepare_for_pass:                       # @prepare_for_pass
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_56
-# %bb.57:                               # %middle.block174
+# %bb.57:                               # %middle.block169
 	beq	$a2, $a0, .LBB1_60
-.LBB1_58:                               # %scalar.ph163.preheader
+.LBB1_58:                               # %scalar.ph158.preheader
 	sub.d	$a0, $a0, $a2
 	alsl.d	$a3, $a2, $fp, 3
 	addi.d	$a3, $a3, 320
@@ -1175,7 +1157,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	slli.d	$a2, $a2, 5
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB1_59:                               # %scalar.ph163
+.LBB1_59:                               # %scalar.ph158
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $a3, 0
 	addi.d	$a0, $a0, -1
@@ -1238,41 +1220,32 @@ prepare_for_pass:                       # @prepare_for_pass
 # %bb.64:
 	st.w	$s1, $s0, 24
 	b	.LBB1_82
-.LBB1_65:                               # %vector.ph125
-	bstrpick.d	$a5, $a4, 30, 2
-	slli.d	$a5, $a5, 2
-	addi.d	$a6, $fp, 336
-	add.d	$a7, $a3, $a2
-	addi.d	$a7, $a7, 12
-	vreplgr2vr.d	$vr0, $a1
-	vrepli.d	$vr1, 96
-	move	$t0, $a5
+.LBB1_65:                               # %vector.ph124
+	bstrpick.d	$a5, $a4, 30, 1
+	slli.d	$a5, $a5, 1
+	add.d	$a6, $a3, $a2
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $fp, 328
+	ori	$t0, $zero, 96
+	move	$t1, $a5
 	.p2align	4, , 16
-.LBB1_66:                               # %vector.body128
+.LBB1_66:                               # %vector.body127
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t1, $a7, -8
-	ld.d	$t2, $a7, 0
-	vinsgr2vr.d	$vr2, $t1, 0
-	vinsgr2vr.d	$vr3, $t2, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vori.b	$vr4, $vr0, 0
-	vmadd.d	$vr4, $vr2, $vr1
-	vori.b	$vr2, $vr0, 0
-	vmadd.d	$vr2, $vr3, $vr1
-	vst	$vr4, $a6, -16
-	vst	$vr2, $a6, 0
-	addi.d	$t0, $t0, -4
-	addi.d	$a6, $a6, 32
+	ld.w	$t2, $a6, -4
+	ld.w	$t3, $a6, 0
+	mul.d	$t2, $t2, $t0
+	add.d	$t2, $a1, $t2
+	mul.d	$t3, $t3, $t0
+	add.d	$t3, $a1, $t3
+	st.d	$t2, $a7, -8
+	st.d	$t3, $a7, 0
+	addi.d	$a6, $a6, 8
+	addi.d	$t1, $t1, -2
 	addi.d	$a7, $a7, 16
-	bnez	$t0, .LBB1_66
-# %bb.67:                               # %middle.block133
+	bnez	$t1, .LBB1_66
+# %bb.67:                               # %middle.block130
 	beq	$a5, $a4, .LBB1_70
-.LBB1_68:                               # %scalar.ph123.preheader
+.LBB1_68:                               # %scalar.ph122.preheader
 	sub.d	$a4, $a4, $a5
 	alsl.d	$a6, $a5, $fp, 3
 	addi.d	$a6, $a6, 320
@@ -1280,7 +1253,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	add.d	$a2, $a3, $a2
 	addi.d	$a2, $a2, 4
 	.p2align	4, , 16
-.LBB1_69:                               # %scalar.ph123
+.LBB1_69:                               # %scalar.ph122
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
 	alsl.d	$a3, $a3, $a3, 1
@@ -1298,7 +1271,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	st.d	$a1, $fp, 408
 	ld.w	$a0, $a0, 32
 	b	.LBB1_77
-.LBB1_71:                               # %vector.ph138
+.LBB1_71:                               # %vector.ph135
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
@@ -1309,7 +1282,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	vrepli.d	$vr3, 192
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB1_72:                               # %vector.body141
+.LBB1_72:                               # %vector.body138
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr4, $vr1, 0
 	vmadd.d	$vr4, $vr0, $vr2
@@ -1320,9 +1293,9 @@ prepare_for_pass:                       # @prepare_for_pass
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB1_72
-# %bb.73:                               # %middle.block147
+# %bb.73:                               # %middle.block144
 	beq	$a2, $a0, .LBB1_76
-.LBB1_74:                               # %scalar.ph136.preheader
+.LBB1_74:                               # %scalar.ph133.preheader
 	sub.d	$a0, $a0, $a2
 	alsl.d	$a3, $a2, $fp, 3
 	addi.d	$a3, $a3, 320
@@ -1330,7 +1303,7 @@ prepare_for_pass:                       # @prepare_for_pass
 	slli.d	$a2, $a2, 5
 	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB1_75:                               # %scalar.ph136
+.LBB1_75:                               # %scalar.ph133
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $a3, 0
 	addi.d	$a0, $a0, -1

@@ -21,136 +21,42 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	st.w	$s1, $a0, 16
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 20
+	move	$a2, $zero
 	blez	$fp, .LBB0_3
 # %bb.1:                                # %.preheader.preheader
-	ori	$a1, $zero, 8
-	bgeu	$fp, $a1, .LBB0_4
-# %bb.2:
-	move	$a1, $zero
-	move	$a3, $zero
-	b	.LBB0_7
-.LBB0_3:
-	move	$a3, $zero
-	b	.LBB0_9
-.LBB0_4:                                # %vector.ph
-	bstrpick.d	$a1, $fp, 30, 3
-	slli.d	$a1, $a1, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a2, $s0, 48
-	move	$a3, $a1
-	vori.b	$vr1, $vr0, 0
+	addi.d	$a1, $s0, 8
 	.p2align	4, , 16
-.LBB0_5:                                # %vector.body
+.LBB0_2:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, -48
-	ld.w	$a5, $a2, -36
-	ld.w	$a6, $a2, -24
-	ld.w	$a7, $a2, -12
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 0
-	ld.w	$a5, $a2, 12
-	ld.w	$a6, $a2, 24
-	ld.w	$a7, $a2, 36
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -44
-	ld.w	$a5, $a2, -32
-	ld.w	$a6, $a2, -20
-	ld.w	$a7, $a2, -8
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 4
-	ld.w	$a5, $a2, 16
-	ld.w	$a6, $a2, 28
-	ld.w	$a7, $a2, 40
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -40
-	ld.w	$a5, $a2, -28
-	ld.w	$a6, $a2, -16
-	ld.w	$a7, $a2, -4
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 8
-	ld.w	$a5, $a2, 20
-	ld.w	$a6, $a2, 32
-	ld.w	$a7, $a2, 44
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 96
-	bnez	$a3, .LBB0_5
-# %bb.6:                                # %middle.block
-	vmax.wu	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vmax.wu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.wu	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a1, $fp, .LBB0_9
-.LBB0_7:                                # %.preheader.preheader31
-	slli.d	$a2, $a1, 3
-	alsl.d	$a2, $a1, $a2, 2
-	add.d	$a2, $a2, $s0
-	addi.d	$a2, $a2, 8
-	sub.d	$a1, $fp, $a1
-	.p2align	4, , 16
-.LBB0_8:                                # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, -8
-	srai.d	$a5, $a4, 31
-	xor	$a4, $a4, $a5
-	sub.w	$a4, $a4, $a5
-	sltu	$a5, $a3, $a4
-	ld.w	$a6, $a2, -4
-	maskeqz	$a4, $a4, $a5
-	masknez	$a3, $a3, $a5
-	or	$a3, $a4, $a3
-	srai.d	$a4, $a6, 31
-	xor	$a5, $a6, $a4
-	sub.w	$a4, $a5, $a4
-	sltu	$a5, $a3, $a4
-	ld.w	$a6, $a2, 0
-	masknez	$a3, $a3, $a5
-	maskeqz	$a4, $a4, $a5
-	or	$a3, $a4, $a3
-	srai.d	$a4, $a6, 31
-	xor	$a5, $a6, $a4
-	sub.w	$a4, $a5, $a4
-	sltu	$a5, $a3, $a4
-	masknez	$a3, $a3, $a5
-	maskeqz	$a4, $a4, $a5
-	or	$a3, $a4, $a3
-	addi.d	$a1, $a1, -1
-	addi.d	$a2, $a2, 12
-	bnez	$a1, .LBB0_8
-.LBB0_9:                                # %._crit_edge
-	st.w	$a3, $a0, 12
+	ld.w	$a3, $a1, -8
+	srai.d	$a4, $a3, 31
+	xor	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a4
+	sltu	$a4, $a2, $a3
+	ld.w	$a5, $a1, -4
+	maskeqz	$a3, $a3, $a4
+	masknez	$a2, $a2, $a4
+	or	$a2, $a3, $a2
+	srai.d	$a3, $a5, 31
+	xor	$a4, $a5, $a3
+	sub.w	$a3, $a4, $a3
+	sltu	$a4, $a2, $a3
+	ld.w	$a5, $a1, 0
+	masknez	$a2, $a2, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a2, $a3, $a2
+	srai.d	$a3, $a5, 31
+	xor	$a4, $a5, $a3
+	sub.w	$a3, $a4, $a3
+	sltu	$a4, $a2, $a3
+	masknez	$a2, $a2, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a2, $a3, $a2
+	addi.d	$fp, $fp, -1
+	addi.d	$a1, $a1, 12
+	bnez	$fp, .LBB0_2
+.LBB0_3:                                # %._crit_edge
+	st.w	$a2, $a0, 12
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -403,136 +309,42 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	st.w	$s3, $a0, 16
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 20
+	move	$a2, $zero
 	blez	$s5, .LBB4_19
 # %bb.17:                               # %.preheader.preheader.i
-	ori	$a1, $zero, 8
-	bgeu	$s5, $a1, .LBB4_20
-# %bb.18:
-	move	$a1, $zero
-	move	$a3, $zero
-	b	.LBB4_23
-.LBB4_19:
-	move	$a3, $zero
-	b	.LBB4_25
-.LBB4_20:                               # %vector.ph
-	bstrpick.d	$a1, $s5, 30, 3
-	slli.d	$a1, $a1, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a2, $s2, 48
-	move	$a3, $a1
-	vori.b	$vr1, $vr0, 0
+	addi.d	$a1, $s2, 8
 	.p2align	4, , 16
-.LBB4_21:                               # %vector.body
+.LBB4_18:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, -48
-	ld.w	$a5, $a2, -36
-	ld.w	$a6, $a2, -24
-	ld.w	$a7, $a2, -12
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 0
-	ld.w	$a5, $a2, 12
-	ld.w	$a6, $a2, 24
-	ld.w	$a7, $a2, 36
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -44
-	ld.w	$a5, $a2, -32
-	ld.w	$a6, $a2, -20
-	ld.w	$a7, $a2, -8
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 4
-	ld.w	$a5, $a2, 16
-	ld.w	$a6, $a2, 28
-	ld.w	$a7, $a2, 40
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -40
-	ld.w	$a5, $a2, -28
-	ld.w	$a6, $a2, -16
-	ld.w	$a7, $a2, -4
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 8
-	ld.w	$a5, $a2, 20
-	ld.w	$a6, $a2, 32
-	ld.w	$a7, $a2, 44
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 96
-	bnez	$a3, .LBB4_21
-# %bb.22:                               # %middle.block
-	vmax.wu	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vmax.wu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.wu	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a3, $vr0, 0
-	beq	$a1, $s5, .LBB4_25
-.LBB4_23:                               # %.preheader.i.preheader
-	sub.d	$a2, $s5, $a1
-	slli.d	$a4, $a1, 3
-	alsl.d	$a1, $a1, $a4, 2
-	add.d	$a1, $a1, $s2
-	addi.d	$a1, $a1, 8
-	.p2align	4, , 16
-.LBB4_24:                               # %.preheader.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a1, -8
-	srai.d	$a5, $a4, 31
-	xor	$a4, $a4, $a5
-	sub.w	$a4, $a4, $a5
-	sltu	$a5, $a3, $a4
-	ld.w	$a6, $a1, -4
-	maskeqz	$a4, $a4, $a5
-	masknez	$a3, $a3, $a5
-	or	$a3, $a4, $a3
-	srai.d	$a4, $a6, 31
-	xor	$a5, $a6, $a4
-	sub.w	$a4, $a5, $a4
-	sltu	$a5, $a3, $a4
-	ld.w	$a6, $a1, 0
-	masknez	$a3, $a3, $a5
-	maskeqz	$a4, $a4, $a5
-	or	$a3, $a4, $a3
-	srai.d	$a4, $a6, 31
-	xor	$a5, $a6, $a4
-	sub.w	$a4, $a5, $a4
-	sltu	$a5, $a3, $a4
-	masknez	$a3, $a3, $a5
-	maskeqz	$a4, $a4, $a5
-	or	$a3, $a4, $a3
-	addi.d	$a2, $a2, -1
+	ld.w	$a3, $a1, -8
+	srai.d	$a4, $a3, 31
+	xor	$a3, $a3, $a4
+	sub.w	$a3, $a3, $a4
+	sltu	$a4, $a2, $a3
+	ld.w	$a5, $a1, -4
+	maskeqz	$a3, $a3, $a4
+	masknez	$a2, $a2, $a4
+	or	$a2, $a3, $a2
+	srai.d	$a3, $a5, 31
+	xor	$a4, $a5, $a3
+	sub.w	$a3, $a4, $a3
+	sltu	$a4, $a2, $a3
+	ld.w	$a5, $a1, 0
+	masknez	$a2, $a2, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a2, $a3, $a2
+	srai.d	$a3, $a5, 31
+	xor	$a4, $a5, $a3
+	sub.w	$a3, $a4, $a3
+	sltu	$a4, $a2, $a3
+	masknez	$a2, $a2, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a2, $a3, $a2
+	addi.d	$s5, $s5, -1
 	addi.d	$a1, $a1, 12
-	bnez	$a2, .LBB4_24
-.LBB4_25:                               # %hypre_StructStencilCreate.exit
-	st.w	$a3, $a0, 12
+	bnez	$s5, .LBB4_18
+.LBB4_19:                               # %hypre_StructStencilCreate.exit
+	st.w	$a2, $a0, 12
 	st.d	$a0, $s0, 0
 	st.d	$s1, $fp, 0
 	move	$a0, $zero

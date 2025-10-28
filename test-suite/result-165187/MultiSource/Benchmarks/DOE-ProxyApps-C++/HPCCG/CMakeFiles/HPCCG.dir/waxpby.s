@@ -105,7 +105,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 .LBB0_17:                               # %.preheader38
 	blez	$a0, .LBB0_22
 # %bb.18:                               # %.lr.ph.preheader
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 6
 	bgeu	$a0, $a4, .LBB0_28
 # %bb.19:
 	move	$a4, $zero

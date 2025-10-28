@@ -328,13 +328,12 @@ start_pass_prep:                        # @start_pass_prep
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB1_2:
-	ld.w	$a0, $fp, 308
-	ld.w	$a1, $fp, 44
-	slli.d	$a0, $a0, 1
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a1, 0
-	vinsgr2vr.w	$vr0, $a0, 3
-	vst	$vr0, $s0, 96
+	ld.w	$a0, $fp, 44
+	st.d	$zero, $s0, 100
+	ld.w	$a1, $fp, 308
+	st.w	$a0, $s0, 96
+	slli.d	$a0, $a1, 1
+	st.w	$a0, $s0, 108
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

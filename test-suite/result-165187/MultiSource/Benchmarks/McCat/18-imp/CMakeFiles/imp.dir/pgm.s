@@ -405,9 +405,9 @@ PGM_LoadImage:                          # @PGM_LoadImage
 	ld.d	$a1, $fp, 112
 	ld.d	$a2, $fp, 120
 	movgr2fr.w	$fa0, $a3
-	ori	$a3, $zero, 6
+	ori	$a3, $zero, 1
 	ffint.d.w	$fa0, $fa0
-	bgeu	$a0, $a3, .LBB6_16
+	bne	$a0, $a3, .LBB6_16
 # %bb.11:
 	move	$a3, $zero
 	.p2align	4, , 16
@@ -450,40 +450,31 @@ PGM_LoadImage:                          # @PGM_LoadImage
 # %bb.17:                               # %vector.scevcheck
 	bltu	$a5, $a4, .LBB6_12
 # %bb.18:                               # %vector.ph
-	andi	$a3, $a0, 508
-	vreplvei.d	$vr1, $vr0, 0
-	addi.d	$a4, $a2, 16
-	addi.d	$a5, $a1, 8
-	move	$a6, $a3
+	move	$a4, $zero
+	andi	$a3, $a0, 510
 	.p2align	4, , 16
 .LBB6_19:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a5, -8
-	ld.d	$t0, $a5, 0
-	vinsgr2vr.d	$vr2, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 0
-	vpickve2gr.w	$a7, $vr2, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr2, 0
-	movgr2fr.w	$fa2, $a7
+	andi	$a5, $a4, 254
+	srli.d	$a6, $a4, 1
+	ori	$a7, $zero, 1
+	bstrins.d	$a7, $a6, 7, 1
+	slli.d	$a6, $a5, 2
+	ldx.w	$a6, $a1, $a6
+	slli.d	$t0, $a7, 2
+	ldx.w	$t0, $a1, $t0
+	movgr2fr.w	$fa1, $a6
+	ffint.d.w	$fa1, $fa1
+	movgr2fr.w	$fa2, $t0
 	ffint.d.w	$fa2, $fa2
-	vextrins.d	$vr2, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
-	vfdiv.d	$vr2, $vr2, $vr1
-	vfdiv.d	$vr3, $vr3, $vr1
-	vst	$vr2, $a4, -16
-	vst	$vr3, $a4, 0
-	addi.d	$a4, $a4, 32
-	addi.w	$a6, $a6, -4
-	addi.d	$a5, $a5, 16
-	bnez	$a6, .LBB6_19
+	fdiv.d	$fa1, $fa1, $fa0
+	fdiv.d	$fa2, $fa2, $fa0
+	slli.d	$a5, $a5, 3
+	slli.d	$a6, $a7, 3
+	fstx.d	$fa1, $a2, $a5
+	addi.w	$a4, $a4, 2
+	fstx.d	$fa2, $a2, $a6
+	bne	$a3, $a4, .LBB6_19
 # %bb.20:                               # %middle.block
 	bne	$a0, $a3, .LBB6_12
 	b	.LBB6_13

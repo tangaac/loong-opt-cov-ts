@@ -11,11 +11,6 @@
 	.dword	0x3ff3333333333333              # double 1.2
 .LCPI0_4:
 	.dword	0x3f847ae147ae147b              # double 0.01
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_5:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
 	.text
 	.globl	Crystal_div
 	.p2align	5
@@ -28,19 +23,19 @@ Crystal_div:                            # @Crystal_div
 	st.d	$fp, $sp, 312                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 304                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 296                   # 8-byte Folded Spill
-	ori	$t1, $zero, 4
-	bstrpick.d	$t0, $a0, 30, 2
-	bgeu	$a0, $t1, .LBB0_3
+	ori	$t1, $zero, 1
+	bstrpick.d	$t0, $a0, 30, 1
+	bne	$a0, $t1, .LBB0_3
 # %bb.2:
 	move	$t1, $zero
 	b	.LBB0_6
 .LBB0_3:                                # %vector.ph
-	addi.d	$t2, $sp, 120
-	slli.d	$t1, $t0, 2
-	addi.d	$t3, $sp, 24
-	ori	$t4, $zero, 0
-	lu32i.d	$t4, 1
-	vreplgr2vr.d	$vr1, $t4
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 1
+	vreplgr2vr.d	$vr1, $t1
+	slli.d	$t1, $t0, 1
+	addi.d	$t2, $sp, 8
+	addi.d	$t3, $sp, 104
 	vldi	$vr2, -912
 	lu12i.w	$t4, -419431
 	ori	$t4, $t4, 2458
@@ -57,43 +52,28 @@ Crystal_div:                            # @Crystal_div
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr6, $vr1, 2
-	vst	$vr2, $t2, -16
-	vst	$vr2, $t2, 0
+	vst	$vr2, $t3, 0
 	vpickve2gr.w	$t5, $vr1, 1
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$fa7, $t5
-	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t5, $vr1, 0
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$ft0, $t5
-	ffint.d.l	$ft0, $ft0
-	vextrins.d	$vr8, $vr7, 16
-	vpickve2gr.w	$t5, $vr6, 1
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$fa7, $t5
-	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t5, $vr6, 0
 	bstrpick.d	$t5, $t5, 31, 0
 	movgr2fr.d	$fa6, $t5
 	ffint.d.l	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
-	vfmul.d	$vr7, $vr8, $vr3
-	vfmul.d	$vr6, $vr6, $vr3
-	vfdiv.d	$vr7, $vr7, $vr4
+	vpickve2gr.w	$t5, $vr1, 0
+	bstrpick.d	$t5, $t5, 31, 0
+	movgr2fr.d	$fa7, $t5
+	ffint.d.l	$fa7, $fa7
+	vextrins.d	$vr7, $vr6, 16
+	vfmul.d	$vr6, $vr7, $vr3
 	vfdiv.d	$vr6, $vr6, $vr4
-	vfadd.d	$vr7, $vr7, $vr5
 	vfadd.d	$vr6, $vr6, $vr5
-	vst	$vr7, $t3, -16
-	vst	$vr6, $t3, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$t4, $t4, -4
-	addi.d	$t3, $t3, 32
-	addi.d	$t2, $t2, 32
+	vst	$vr6, $t2, 0
+	vaddi.wu	$vr1, $vr1, 2
+	addi.d	$t4, $t4, -2
+	addi.d	$t2, $t2, 16
+	addi.d	$t3, $t3, 16
 	bnez	$t4, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$t1, $a0, .LBB0_8
-.LBB0_6:                                # %.lr.ph.preheader167
+.LBB0_6:                                # %.lr.ph.preheader162
 	addi.d	$t2, $sp, 8
 	alsl.d	$t2, $t1, $t2, 3
 	addi.d	$t3, $sp, 104
@@ -122,43 +102,38 @@ Crystal_div:                            # @Crystal_div
 	addi.w	$t1, $t1, 1
 	bnez	$t4, .LBB0_7
 .LBB0_8:                                # %.lr.ph89.preheader
-	ori	$t1, $zero, 4
-	bgeu	$a0, $t1, .LBB0_10
+	ori	$t1, $zero, 1
+	bne	$a0, $t1, .LBB0_10
 # %bb.9:
 	move	$t1, $zero
 	b	.LBB0_13
 .LBB0_10:                               # %vector.ph128
-	addi.d	$t2, $sp, 216
-	slli.d	$t1, $t0, 2
-	addi.d	$t3, $sp, 120
-	addi.d	$t4, $a1, 16
-	lu12i.w	$t5, -390306
-	ori	$t5, $t5, 3469
-	lu32i.d	$t5, 50935
-	lu52i.d	$t5, $t5, 1003
-	vreplgr2vr.d	$vr1, $t5
+	slli.d	$t1, $t0, 1
+	addi.d	$t2, $sp, 200
+	addi.d	$t3, $sp, 104
+	lu12i.w	$t4, -390306
+	ori	$t4, $t4, 3469
+	lu32i.d	$t4, 50935
+	lu52i.d	$t4, $t4, 1003
+	vreplgr2vr.d	$vr1, $t4
+	move	$t4, $a1
 	move	$t5, $t1
 	.p2align	4, , 16
 .LBB0_11:                               # %vector.body131
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $t4, -16
-	vld	$vr3, $t4, 0
-	vld	$vr4, $t3, -16
-	vld	$vr5, $t3, 0
-	vfmadd.d	$vr2, $vr2, $vr4, $vr1
-	vfmadd.d	$vr3, $vr3, $vr5, $vr1
+	vld	$vr2, $t4, 0
+	vld	$vr3, $t3, 0
+	vfmadd.d	$vr2, $vr2, $vr3, $vr1
 	vfrecip.d	$vr2, $vr2
-	vfrecip.d	$vr3, $vr3
-	vst	$vr2, $t2, -16
-	vst	$vr3, $t2, 0
-	addi.d	$t5, $t5, -4
-	addi.d	$t2, $t2, 32
-	addi.d	$t3, $t3, 32
-	addi.d	$t4, $t4, 32
+	vst	$vr2, $t2, 0
+	addi.d	$t5, $t5, -2
+	addi.d	$t2, $t2, 16
+	addi.d	$t3, $t3, 16
+	addi.d	$t4, $t4, 16
 	bnez	$t5, .LBB0_11
-# %bb.12:                               # %middle.block137
+# %bb.12:                               # %middle.block135
 	beq	$t1, $a0, .LBB0_15
-.LBB0_13:                               # %.lr.ph89.preheader166
+.LBB0_13:                               # %.lr.ph89.preheader161
 	addi.d	$t2, $sp, 200
 	alsl.d	$t2, $t1, $t2, 3
 	addi.d	$t3, $sp, 104
@@ -186,7 +161,8 @@ Crystal_div:                            # @Crystal_div
 	move	$t1, $zero
 	ld.d	$a1, $sp, 320
 	fmul.d	$fa1, $fa0, $fa1
-	slli.d	$t2, $t0, 2
+	bstrpick.d	$t2, $a0, 30, 2
+	slli.d	$t2, $t2, 2
 	addi.d	$t3, $a6, 16
 	addi.d	$t4, $sp, 8
 	vldi	$vr2, -962
@@ -231,13 +207,13 @@ Crystal_div:                            # @Crystal_div
 	move	$s1, $zero
 	b	.LBB0_22
 	.p2align	4, , 16
-.LBB0_19:                               # %vector.ph142
+.LBB0_19:                               # %vector.ph140
                                         #   in Loop: Header=BB0_17 Depth=1
 	vreplvei.d	$vr6, $vr5, 0
 	move	$s0, $t3
 	move	$s1, $t2
 	.p2align	4, , 16
-.LBB0_20:                               # %vector.body145
+.LBB0_20:                               # %vector.body143
                                         #   Parent Loop BB0_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr6, $s0, -16
@@ -245,16 +221,16 @@ Crystal_div:                            # @Crystal_div
 	addi.d	$s1, $s1, -4
 	addi.d	$s0, $s0, 32
 	bnez	$s1, .LBB0_20
-# %bb.21:                               # %middle.block148
+# %bb.21:                               # %middle.block146
                                         #   in Loop: Header=BB0_17 Depth=1
 	move	$s1, $t2
 	beq	$t2, $a0, .LBB0_16
-.LBB0_22:                               # %scalar.ph140.preheader
+.LBB0_22:                               # %scalar.ph138.preheader
                                         #   in Loop: Header=BB0_17 Depth=1
 	alsl.d	$s0, $s1, $t8, 3
 	sub.d	$s1, $a0, $s1
 	.p2align	4, , 16
-.LBB0_23:                               # %scalar.ph140
+.LBB0_23:                               # %scalar.ph138
                                         #   Parent Loop BB0_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fst.d	$fa5, $s0, 0
@@ -263,51 +239,32 @@ Crystal_div:                            # @Crystal_div
 	bnez	$s1, .LBB0_23
 	b	.LBB0_16
 .LBB0_24:                               # %.lr.ph95.preheader
-	ori	$t1, $zero, 4
-	bgeu	$a0, $t1, .LBB0_26
+	ori	$t1, $zero, 1
+	bne	$a0, $t1, .LBB0_26
 # %bb.25:
 	move	$t0, $zero
 	b	.LBB0_29
-.LBB0_26:                               # %vector.ph153
-	slli.d	$t0, $t0, 2
-	pcalau12i	$t1, %pc_hi20(.LCPI0_5)
-	vld	$vr1, $t1, %pc_lo12(.LCPI0_5)
-	addi.d	$t1, $sp, 216
-	vrepli.d	$vr2, 96
-	vrepli.d	$vr3, 192
-	move	$t2, $t0
+.LBB0_26:                               # %vector.ph151
+	move	$t1, $zero
+	slli.d	$t0, $t0, 1
+	addi.d	$t2, $sp, 208
 	move	$t3, $a6
 	.p2align	4, , 16
-.LBB0_27:                               # %vector.body156
+.LBB0_27:                               # %vector.body154
                                         # =>This Inner Loop Header: Depth=1
-	vmul.d	$vr4, $vr1, $vr2
-	vpickve2gr.d	$t4, $vr4, 0
-	vpickve2gr.d	$t5, $vr4, 1
-	vori.b	$vr4, $vr3, 0
-	vmadd.d	$vr4, $vr1, $vr2
-	vpickve2gr.d	$t6, $vr4, 0
-	vpickve2gr.d	$t7, $vr4, 1
-	add.d	$t5, $t3, $t5
-	add.d	$t6, $t3, $t6
-	add.d	$t7, $t3, $t7
-	fldx.d	$fa4, $t3, $t4
-	fld.d	$fa5, $t5, 8
-	fld.d	$fa6, $t6, 16
-	fld.d	$fa7, $t7, 24
-	vextrins.d	$vr4, $vr5, 16
-	vextrins.d	$vr6, $vr7, 16
-	vfrecip.d	$vr4, $vr4
-	vfrecip.d	$vr5, $vr6
-	vst	$vr4, $t1, -16
-	vst	$vr5, $t1, 0
-	vaddi.du	$vr1, $vr1, 4
-	addi.d	$t3, $t3, 32
-	addi.d	$t2, $t2, -4
-	addi.d	$t1, $t1, 32
-	bnez	$t2, .LBB0_27
-# %bb.28:                               # %middle.block162
+	fld.d	$fa1, $t3, 0
+	fld.d	$fa2, $t3, 104
+	frecip.d	$fa1, $fa1
+	frecip.d	$fa2, $fa2
+	fst.d	$fa1, $t2, -8
+	fst.d	$fa2, $t2, 0
+	addi.d	$t1, $t1, 2
+	addi.d	$t3, $t3, 208
+	addi.d	$t2, $t2, 16
+	bne	$t0, $t1, .LBB0_27
+# %bb.28:                               # %middle.block157
 	beq	$t0, $a0, .LBB0_31
-.LBB0_29:                               # %.lr.ph95.preheader165
+.LBB0_29:                               # %.lr.ph95.preheader160
 	addi.d	$t1, $sp, 200
 	alsl.d	$t1, $t0, $t1, 3
 	ori	$t2, $zero, 104

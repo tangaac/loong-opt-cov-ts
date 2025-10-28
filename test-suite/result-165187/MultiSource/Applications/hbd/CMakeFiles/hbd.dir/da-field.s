@@ -357,19 +357,19 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception1
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -612,8 +612,6 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	lu32i.d	$a1, 4
 	st.d	$a1, $a0, 0
 	st.w	$s0, $a0, 8
-	ori	$a1, $zero, 6
-	st.w	$a1, $a0, 12
 	b	.LBB1_27
 .LBB1_19:
 	move	$s1, $fp
@@ -664,15 +662,13 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	jirl	$ra, $ra, 0
 .Ltmp43:                                # EH_LABEL
 # %bb.26:
-	ori	$a1, $zero, 6
-	st.w	$a1, $sp, 28
-	st.w	$fp, $sp, 24
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 4
-	st.d	$a1, $sp, 16
-	vld	$vr0, $sp, 16
-	vst	$vr0, $a0, 0
+	st.d	$a1, $a0, 0
+	st.w	$fp, $a0, 8
 .LBB1_27:
+	ori	$a1, $zero, 6
+	st.w	$a1, $a0, 12
 	st.d	$a0, $s2, 0
 .LBB1_28:
 	st.d	$s1, $s2, 24
@@ -684,18 +680,18 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	st.d	$a2, $a0, 0
 	st.d	$s2, $a1, 0
 	move	$a0, $zero
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB1_29:
 	addi.d	$a0, $s8, -16
@@ -743,14 +739,12 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	jirl	$ra, $ra, 0
 .Ltmp32:                                # EH_LABEL
 # %bb.35:
-	ori	$a1, $zero, 6
-	st.w	$a1, $sp, 44
-	st.w	$s0, $sp, 40
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 4
-	st.d	$a1, $sp, 32
-	vld	$vr0, $sp, 32
-	vst	$vr0, $a0, 0
+	st.d	$a1, $a0, 0
+	st.w	$s0, $a0, 8
+	ori	$a1, $zero, 6
+	st.w	$a1, $a0, 12
 	st.d	$a0, $s2, 0
 	move	$s1, $fp
 	b	.LBB1_28

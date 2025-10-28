@@ -1092,8 +1092,8 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	lu12i.w	$a0, -16
 	lu32i.d	$a0, 0
 	st.w	$a0, $sp, 52
-	lu12i.w	$s8, -5
-	ori	$s7, $s8, 480
+	lu12i.w	$s7, -5
+	ori	$s8, $s7, 480
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s5, $a0, %pc_lo12(_ZL3rng)
 	.p2align	4, , 16
@@ -1107,10 +1107,10 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 .Ltmp65:                                # EH_LABEL
 # %bb.4:                                # %.noexc8
                                         #   in Loop: Header=BB2_3 Depth=1
-	add.d	$a1, $fp, $s7
-	addi.d	$s7, $s7, 2
+	add.d	$a1, $fp, $s8
+	addi.d	$s8, $s8, 2
 	stx.h	$a0, $a1, $s4
-	bnez	$s7, .LBB2_3
+	bnez	$s8, .LBB2_3
 # %bb.5:                                # %vector.ph
 	addi.d	$a0, $fp, 2
 	lu12i.w	$s5, -3
@@ -1128,28 +1128,23 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB2_6
 # %bb.7:                                # %vector.body79.preheader
-	addi.d	$a0, $s2, 8
-	ori	$a1, $s8, 480
-	lu12i.w	$a2, 4
-	ori	$a2, $a2, 3632
+	ori	$a0, $s7, 480
+	move	$a1, $s2
 	.p2align	4, , 16
 .LBB2_8:                                # %vector.body79
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $fp, $a1
-	vldx	$vr0, $a3, $s4
-	vldx	$vr1, $a3, $a2
+	add.d	$a2, $fp, $a0
+	vldx	$vr0, $a2, $s4
 	vpickev.b	$vr0, $vr0, $vr0
-	vpickev.b	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
-	vst	$vr0, $a0, -8
-	addi.d	$a1, $a1, 32
+	vstelm.d	$vr0, $a1, 0, 0
 	addi.d	$a0, $a0, 16
-	bnez	$a1, .LBB2_8
-# %bb.9:                                # %vector.body85.preheader
+	addi.d	$a1, $a1, 8
+	bnez	$a0, .LBB2_8
+# %bb.9:                                # %vector.body84.preheader
 	move	$s7, $zero
 	ori	$a0, $s6, 1792
 	.p2align	4, , 16
-.LBB2_10:                               # %vector.body85
+.LBB2_10:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $s7
 	vldx	$vr0, $s2, $s7
@@ -1161,13 +1156,13 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	vpickve2gr.hu	$a2, $vr0, 0
 	addi.d	$s7, $s7, 16
 	bnez	$a2, .LBB2_12
-# %bb.11:                               # %vector.body85
+# %bb.11:                               # %vector.body84
                                         #   in Loop: Header=BB2_10 Depth=1
 	bne	$a1, $a0, .LBB2_10
 .LBB2_12:                               # %middle.split
 	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB2_28
-# %bb.13:                               # %middle.block90
+# %bb.13:                               # %middle.block89
 	ld.w	$s6, $s1, 28
 	ld.d	$s2, $s1, 16
 .Ltmp67:                                # EH_LABEL
@@ -1181,9 +1176,8 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	beqz	$s2, .LBB2_24
 # %bb.16:                               # %.lr.ph.preheader
 	add.d	$a0, $fp, $s4
-	addi.d	$a1, $fp, 16
-	addi.d	$a2, $sp, 40
-	ori	$a3, $s5, 2288
+	addi.d	$a1, $sp, 40
+	ori	$a2, $s5, 2288
 	b	.LBB2_18
 	.p2align	4, , 16
 .LBB2_17:                               # %_ZL20truncOrZextVecInLoopIthEvPKT_PT0_i.exit25
@@ -1197,46 +1191,44 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 40
-	bgeu	$a4, $a0, .LBB2_22
+	ld.d	$a3, $sp, 40
+	bgeu	$a3, $a0, .LBB2_22
 # %bb.19:                               # %.lr.ph
                                         #   in Loop: Header=BB2_18 Depth=1
-	add.d	$a5, $a4, $s3
-	bgeu	$fp, $a5, .LBB2_22
+	add.d	$a4, $a3, $s3
+	bgeu	$fp, $a4, .LBB2_22
 # %bb.20:                               # %.lr.ph.i21.preheader
                                         #   in Loop: Header=BB2_18 Depth=1
-	move	$a5, $fp
-	move	$a6, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB2_21:                               # %.lr.ph.i21
                                         #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$a7, $a5, 0
-	add.d	$t0, $a4, $a6
-	stx.b	$a7, $t0, $s3
-	addi.d	$a6, $a6, 1
-	addi.d	$a5, $a5, 2
-	bnez	$a6, .LBB2_21
+	ld.b	$a6, $a4, 0
+	add.d	$a7, $a3, $a5
+	stx.b	$a6, $a7, $s3
+	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 2
+	bnez	$a5, .LBB2_21
 	b	.LBB2_17
 	.p2align	4, , 16
-.LBB2_22:                               # %vector.body93.preheader
+.LBB2_22:                               # %vector.body92.preheader
                                         #   in Loop: Header=BB2_18 Depth=1
-	move	$a5, $a1
-	move	$a6, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
-.LBB2_23:                               # %vector.body93
+.LBB2_23:                               # %vector.body92
                                         #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
+	vld	$vr0, $a4, 0
 	vpickev.b	$vr0, $vr0, $vr0
-	vpickev.b	$vr1, $vr1, $vr1
-	add.d	$a7, $a4, $a6
-	vpackev.d	$vr0, $vr1, $vr0
-	vstx	$vr0, $a7, $s3
-	addi.d	$a6, $a6, 16
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB2_23
+	add.d	$a6, $a3, $a5
+	vpickve2gr.d	$a7, $vr0, 0
+	stptr.d	$a7, $a6, 10000
+	addi.d	$a5, $a5, 8
+	addi.d	$a4, $a4, 16
+	bnez	$a5, .LBB2_23
 	b	.LBB2_17
 .LBB2_24:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp69:                                # EH_LABEL
@@ -3572,27 +3564,24 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5StateE: # 
 	bnez	$a1, .LBB8_6
 # %bb.7:                                # %vector.body79.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	vld	$vr2, $a0, %pc_lo12(.LCPI8_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI8_0)
 	move	$a0, $zero
-	addi.d	$a1, $s2, 4
+	move	$a1, $s2
 	.p2align	4, , 16
 .LBB8_8:                                # %vector.body79
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
 	vldx	$vr0, $fp, $a0
-	vld	$vr1, $a2, 16
-	vshuf.b	$vr0, $vr0, $vr0, $vr2
-	vshuf.b	$vr1, $vr0, $vr1, $vr2
-	vstelm.w	$vr0, $a1, -4, 0
-	vstelm.w	$vr1, $a1, 0, 0
-	addi.d	$a0, $a0, 32
-	addi.d	$a1, $a1, 8
+	vshuf.b	$vr0, $vr0, $vr0, $vr1
+	vstelm.w	$vr0, $a1, 0, 0
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, 4
 	bne	$a0, $s4, .LBB8_8
-# %bb.9:                                # %vector.body85.preheader
+# %bb.9:                                # %vector.body84.preheader
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	move	$s7, $zero
 	ori	$a0, $s6, 1792
 	.p2align	4, , 16
-.LBB8_10:                               # %vector.body85
+.LBB8_10:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $s7
 	vldx	$vr0, $s2, $s7
@@ -3604,14 +3593,13 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5StateE: # 
 	vpickve2gr.hu	$a2, $vr0, 0
 	addi.d	$s7, $s7, 16
 	bnez	$a2, .LBB8_12
-# %bb.11:                               # %vector.body85
+# %bb.11:                               # %vector.body84
                                         #   in Loop: Header=BB8_10 Depth=1
 	bne	$a1, $a0, .LBB8_10
 .LBB8_12:                               # %middle.split
-	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB8_28
-# %bb.13:                               # %middle.block90
+# %bb.13:                               # %middle.block89
 	ld.w	$s6, $s1, 28
 	ld.d	$s2, $s1, 16
 .Ltmp196:                               # EH_LABEL
@@ -3620,15 +3608,14 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5StateE: # 
 	jirl	$ra, $ra, 0
 .Ltmp197:                               # EH_LABEL
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	bnez	$s6, .LBB8_24
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s2, .LBB8_24
 # %bb.16:                               # %.lr.ph.preheader
 	add.d	$a0, $fp, $s4
-	addi.d	$a1, $fp, 16
-	addi.d	$a2, $sp, 48
-	ori	$a3, $s5, 2288
+	addi.d	$a1, $sp, 48
+	ori	$a2, $s5, 2288
 	b	.LBB8_18
 	.p2align	4, , 16
 .LBB8_17:                               # %_ZL20truncOrZextVecInLoopIjhEvPKT_PT0_i.exit25
@@ -3642,48 +3629,44 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5StateE: # 
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 48
-	bgeu	$a4, $a0, .LBB8_22
+	ld.d	$a3, $sp, 48
+	bgeu	$a3, $a0, .LBB8_22
 # %bb.19:                               # %.lr.ph
                                         #   in Loop: Header=BB8_18 Depth=1
-	add.d	$a5, $a4, $s3
-	bgeu	$fp, $a5, .LBB8_22
+	add.d	$a4, $a3, $s3
+	bgeu	$fp, $a4, .LBB8_22
 # %bb.20:                               # %.lr.ph.i21.preheader
                                         #   in Loop: Header=BB8_18 Depth=1
-	move	$a5, $fp
-	move	$a6, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB8_21:                               # %.lr.ph.i21
                                         #   Parent Loop BB8_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$a7, $a5, 0
-	add.d	$t0, $a4, $a6
-	stx.b	$a7, $t0, $s3
-	addi.d	$a6, $a6, 1
-	addi.d	$a5, $a5, 4
-	bnez	$a6, .LBB8_21
+	ld.b	$a6, $a4, 0
+	add.d	$a7, $a3, $a5
+	stx.b	$a6, $a7, $s3
+	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 4
+	bnez	$a5, .LBB8_21
 	b	.LBB8_17
 	.p2align	4, , 16
-.LBB8_22:                               # %vector.body93.preheader
+.LBB8_22:                               # %vector.body92.preheader
                                         #   in Loop: Header=BB8_18 Depth=1
-	move	$a5, $a1
-	move	$a6, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
-.LBB8_23:                               # %vector.body93
+.LBB8_23:                               # %vector.body92
                                         #   Parent Loop BB8_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
-	vshuf.b	$vr0, $vr0, $vr0, $vr2
-	vshuf.b	$vr1, $vr0, $vr1, $vr2
-	add.d	$a7, $a4, $a6
-	vpickve2gr.w	$t0, $vr0, 0
-	stptr.w	$t0, $a7, 10000
-	vpickve2gr.w	$t0, $vr1, 0
-	stptr.w	$t0, $a7, 10004
-	addi.d	$a6, $a6, 8
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB8_23
+	vld	$vr0, $a4, 0
+	vshuf.b	$vr0, $vr0, $vr0, $vr1
+	add.d	$a6, $a3, $a5
+	vpickve2gr.w	$a7, $vr0, 0
+	stptr.w	$a7, $a6, 10000
+	addi.d	$a5, $a5, 4
+	addi.d	$a4, $a4, 16
+	bnez	$a5, .LBB8_23
 	b	.LBB8_17
 .LBB8_24:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp198:                               # EH_LABEL
@@ -4576,18 +4559,17 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception11
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4597,7 +4579,6 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s0, $a0
 	lu12i.w	$a0, 9
 	ori	$s2, $a0, 3136
@@ -4606,58 +4587,58 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 .Ltmp244:                               # EH_LABEL
-	lu12i.w	$s5, 2
-	ori	$s1, $s5, 1808
+	lu12i.w	$a0, 2
+	ori	$s1, $a0, 1808
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp245:                               # EH_LABEL
 # %bb.1:
 	move	$s3, $a0
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 8
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
-	move	$s6, $zero
+	move	$s5, $zero
 	.p2align	4, , 16
 .LBB11_2:                               # =>This Inner Loop Header: Depth=1
 .Ltmp247:                               # EH_LABEL
-	addi.d	$a0, $sp, 24
-	addi.d	$a2, $sp, 24
+	addi.d	$a0, $sp, 16
+	addi.d	$a2, $sp, 16
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEjRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp248:                               # EH_LABEL
 # %bb.3:                                # %.noexc7
                                         #   in Loop: Header=BB11_2 Depth=1
-	stx.w	$a0, $fp, $s6
-	addi.d	$s6, $s6, 4
-	bne	$s6, $s2, .LBB11_2
+	stx.w	$a0, $fp, $s5
+	addi.d	$s5, $s5, 4
+	bne	$s5, $s2, .LBB11_2
 # %bb.4:
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 3840
-	st.h	$a0, $sp, 24
-	lu12i.w	$s6, -3
-	ori	$s7, $s6, 2288
+	st.h	$a0, $sp, 16
+	lu12i.w	$s5, -3
+	ori	$s6, $s5, 2288
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
 	.p2align	4, , 16
 .LBB11_5:                               # =>This Inner Loop Header: Depth=1
 .Ltmp250:                               # EH_LABEL
-	addi.d	$a0, $sp, 24
-	addi.d	$a2, $sp, 24
+	addi.d	$a0, $sp, 16
+	addi.d	$a2, $sp, 16
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp251:                               # EH_LABEL
 # %bb.6:                                # %.noexc11
                                         #   in Loop: Header=BB11_5 Depth=1
-	add.d	$a1, $s3, $s7
-	addi.d	$s7, $s7, 1
+	add.d	$a1, $s3, $s6
+	addi.d	$s6, $s6, 1
 	stx.b	$a0, $a1, $s1
-	bnez	$s7, .LBB11_5
+	bnez	$s6, .LBB11_5
 # %bb.7:
 	ld.w	$s4, $s0, 28
 	ld.d	$s3, $s0, 16
@@ -4671,13 +4652,11 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 # %bb.9:                                # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s3, .LBB11_18
 # %bb.10:                               # %.lr.ph.preheader
+	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI11_0)
 	add.d	$a0, $fp, $s2
-	addi.d	$a1, $fp, 16
-	pcalau12i	$a2, %pc_hi20(.LCPI11_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI11_0)
-	addi.d	$a2, $sp, 16
-	ori	$a3, $s6, 2288
-	ori	$a4, $s5, 1812
+	addi.d	$a1, $sp, 8
+	ori	$a2, $s5, 2288
 	b	.LBB11_12
 	.p2align	4, , 16
 .LBB11_11:                              # %_ZL27truncOrZextVecWithAddInLoopIjhEvPKT_PT0_i.exit
@@ -4691,56 +4670,49 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a5, $sp, 16
-	bgeu	$a5, $a0, .LBB11_16
+	ld.d	$a3, $sp, 8
+	bgeu	$a3, $a0, .LBB11_16
 # %bb.13:                               # %.lr.ph
                                         #   in Loop: Header=BB11_12 Depth=1
-	add.d	$a6, $a5, $s1
-	bgeu	$fp, $a6, .LBB11_16
+	add.d	$a4, $a3, $s1
+	bgeu	$fp, $a4, .LBB11_16
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB11_12 Depth=1
-	move	$a6, $fp
-	move	$a7, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB11_15:                              # %.lr.ph.i
                                         #   Parent Loop BB11_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$t0, $a6, 0
-	add.d	$t1, $a5, $a7
-	ldx.b	$t2, $t1, $s1
-	add.d	$t0, $t2, $t0
-	stx.b	$t0, $t1, $s1
-	addi.d	$a7, $a7, 1
-	addi.d	$a6, $a6, 4
-	bnez	$a7, .LBB11_15
+	ld.b	$a6, $a4, 0
+	add.d	$a7, $a3, $a5
+	ldx.b	$t0, $a7, $s1
+	add.d	$a6, $t0, $a6
+	stx.b	$a6, $a7, $s1
+	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 4
+	bnez	$a5, .LBB11_15
 	b	.LBB11_11
 	.p2align	4, , 16
 .LBB11_16:                              # %vector.body.preheader
                                         #   in Loop: Header=BB11_12 Depth=1
-	move	$a6, $a1
-	move	$a7, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB11_17:                              # %vector.body
                                         #   Parent Loop BB11_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$t0, $a5, $a7
-	ldx.w	$t1, $t0, $s1
-	ldx.w	$t2, $t0, $a4
-	vld	$vr1, $a6, -16
-	vld	$vr2, $a6, 0
-	vinsgr2vr.w	$vr3, $t1, 0
-	vinsgr2vr.w	$vr4, $t2, 0
+	add.d	$a6, $a3, $a5
+	ldx.w	$a7, $a6, $s1
+	vld	$vr1, $a4, 0
+	vinsgr2vr.w	$vr2, $a7, 0
 	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vadd.b	$vr1, $vr3, $vr1
-	vadd.b	$vr2, $vr4, $vr2
-	vpickve2gr.w	$t1, $vr1, 0
-	stptr.w	$t1, $t0, 10000
-	vpickve2gr.w	$t1, $vr2, 0
-	stptr.w	$t1, $t0, 10004
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB11_17
+	vadd.b	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a7, $vr1, 0
+	stptr.w	$a7, $a6, 10000
+	addi.d	$a5, $a5, 4
+	addi.d	$a4, $a4, 16
+	bnez	$a5, .LBB11_17
 	b	.LBB11_11
 .LBB11_18:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp255:                               # EH_LABEL
@@ -4749,7 +4721,7 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 .Ltmp256:                               # EH_LABEL
 # %bb.19:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit22
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 8
 	beqz	$a0, .LBB11_21
 # %bb.20:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i24
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4758,17 +4730,16 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB11_22:
 .Ltmp246:                               # EH_LABEL
@@ -4781,7 +4752,7 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 .LBB11_23:
 .Ltmp257:                               # EH_LABEL
-	ld.d	$s3, $sp, 16
+	ld.d	$s3, $sp, 8
 	move	$s0, $a0
 	bnez	$s3, .LBB11_27
 	b	.LBB11_28
@@ -7295,7 +7266,6 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -7305,7 +7275,6 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s0, $a0
 	lu12i.w	$a0, 19
 	ori	$s2, $a0, 2176
@@ -7314,8 +7283,8 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 .Ltmp373:                               # EH_LABEL
-	lu12i.w	$s5, 2
-	ori	$s1, $s5, 1808
+	lu12i.w	$a0, 2
+	ori	$s1, $a0, 1808
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -7328,7 +7297,7 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 	vst	$vr0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
-	move	$s6, $zero
+	move	$s5, $zero
 	.p2align	4, , 16
 .LBB17_2:                               # =>This Inner Loop Header: Depth=1
 .Ltmp376:                               # EH_LABEL
@@ -7340,15 +7309,15 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 .Ltmp377:                               # EH_LABEL
 # %bb.3:                                # %.noexc7
                                         #   in Loop: Header=BB17_2 Depth=1
-	stx.d	$a0, $fp, $s6
-	addi.d	$s6, $s6, 8
-	bne	$s6, $s2, .LBB17_2
+	stx.d	$a0, $fp, $s5
+	addi.d	$s5, $s5, 8
+	bne	$s5, $s2, .LBB17_2
 # %bb.4:
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 3840
 	st.h	$a0, $sp, 16
-	lu12i.w	$s6, -3
-	ori	$s7, $s6, 2288
+	lu12i.w	$s5, -3
+	ori	$s6, $s5, 2288
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
 	.p2align	4, , 16
@@ -7362,10 +7331,10 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 .Ltmp380:                               # EH_LABEL
 # %bb.6:                                # %.noexc11
                                         #   in Loop: Header=BB17_5 Depth=1
-	add.d	$a1, $s3, $s7
-	addi.d	$s7, $s7, 1
+	add.d	$a1, $s3, $s6
+	addi.d	$s6, $s6, 1
 	stx.b	$a0, $a1, $s1
-	bnez	$s7, .LBB17_5
+	bnez	$s6, .LBB17_5
 # %bb.7:
 	ld.w	$s4, $s0, 28
 	ld.d	$s3, $s0, 16
@@ -7379,13 +7348,11 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 # %bb.9:                                # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s3, .LBB17_18
 # %bb.10:                               # %.lr.ph.preheader
+	pcalau12i	$a0, %pc_hi20(.LCPI17_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI17_1)
 	add.d	$a0, $fp, $s2
-	addi.d	$a1, $fp, 16
-	pcalau12i	$a2, %pc_hi20(.LCPI17_1)
-	vld	$vr0, $a2, %pc_lo12(.LCPI17_1)
-	addi.d	$a2, $sp, 8
-	ori	$a3, $s6, 2288
-	ori	$a4, $s5, 1810
+	addi.d	$a1, $sp, 8
+	ori	$a2, $s5, 2288
 	b	.LBB17_12
 	.p2align	4, , 16
 .LBB17_11:                              # %_ZL27truncOrZextVecWithAddInLoopImhEvPKT_PT0_i.exit
@@ -7399,56 +7366,49 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a5, $sp, 8
-	bgeu	$a5, $a0, .LBB17_16
+	ld.d	$a3, $sp, 8
+	bgeu	$a3, $a0, .LBB17_16
 # %bb.13:                               # %.lr.ph
                                         #   in Loop: Header=BB17_12 Depth=1
-	add.d	$a6, $a5, $s1
-	bgeu	$fp, $a6, .LBB17_16
+	add.d	$a4, $a3, $s1
+	bgeu	$fp, $a4, .LBB17_16
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB17_12 Depth=1
-	move	$a6, $fp
-	move	$a7, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB17_15:                              # %.lr.ph.i
                                         #   Parent Loop BB17_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$t0, $a6, 0
-	add.d	$t1, $a5, $a7
-	ldx.b	$t2, $t1, $s1
-	add.d	$t0, $t2, $t0
-	stx.b	$t0, $t1, $s1
-	addi.d	$a7, $a7, 1
-	addi.d	$a6, $a6, 8
-	bnez	$a7, .LBB17_15
+	ld.b	$a6, $a4, 0
+	add.d	$a7, $a3, $a5
+	ldx.b	$t0, $a7, $s1
+	add.d	$a6, $t0, $a6
+	stx.b	$a6, $a7, $s1
+	addi.d	$a5, $a5, 1
+	addi.d	$a4, $a4, 8
+	bnez	$a5, .LBB17_15
 	b	.LBB17_11
 	.p2align	4, , 16
 .LBB17_16:                              # %vector.body.preheader
                                         #   in Loop: Header=BB17_12 Depth=1
-	move	$a6, $a1
-	move	$a7, $a3
+	move	$a4, $fp
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB17_17:                              # %vector.body
                                         #   Parent Loop BB17_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr1, $a6, -16
-	vld	$vr2, $a6, 0
-	add.d	$t0, $a5, $a7
-	ldx.h	$t1, $t0, $s1
-	ldx.h	$t2, $t0, $a4
-	add.d	$t3, $t0, $s1
-	add.d	$t0, $t0, $a4
-	vinsgr2vr.h	$vr3, $t1, 0
-	vinsgr2vr.h	$vr4, $t2, 0
+	add.d	$a6, $a3, $a5
+	ldx.h	$a7, $a6, $s1
+	vld	$vr1, $a4, 0
+	add.d	$a6, $a6, $s1
+	vinsgr2vr.h	$vr2, $a7, 0
 	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vshuf.b	$vr2, $vr0, $vr2, $vr0
-	vadd.b	$vr1, $vr3, $vr1
-	vadd.b	$vr2, $vr4, $vr2
-	vstelm.h	$vr1, $t3, 0, 0
-	vstelm.h	$vr2, $t0, 0, 0
-	addi.d	$a7, $a7, 4
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB17_17
+	vadd.b	$vr1, $vr2, $vr1
+	vstelm.h	$vr1, $a6, 0, 0
+	addi.d	$a5, $a5, 2
+	addi.d	$a4, $a4, 16
+	bnez	$a5, .LBB17_17
 	b	.LBB17_11
 .LBB17_18:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp384:                               # EH_LABEL
@@ -7466,7 +7426,6 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
@@ -8616,19 +8575,15 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5StateE: #
 	bnez	$a1, .LBB20_6
 # %bb.7:                                # %vector.body84.preheader
 	move	$a0, $zero
-	addi.d	$a1, $s3, 8
+	move	$a1, $s3
 	.p2align	4, , 16
 .LBB20_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
 	vldx	$vr0, $fp, $a0
-	vld	$vr1, $a2, 16
 	vpickev.h	$vr0, $vr0, $vr0
-	vpickev.h	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
-	vst	$vr0, $a1, -8
-	addi.d	$a0, $a0, 32
-	addi.d	$a1, $a1, 16
+	vstelm.d	$vr0, $a1, 0, 0
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, 8
 	bne	$a0, $s4, .LBB20_8
 # %bb.9:                                # %_ZL20truncOrZextVecInLoopIjtEvPKT_PT0_i.exit.preheader.preheader
 	ori	$a0, $s5, 480
@@ -8647,21 +8602,20 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5StateE: #
 	addi.d	$s7, $s7, 4
 	bnez	$a0, .LBB20_10
 # %bb.12:
-	ld.w	$s4, $s2, 28
-	ld.d	$s3, $s2, 16
+	ld.w	$s3, $s2, 28
+	ld.d	$s1, $s2, 16
 .Ltmp469:                               # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp470:                               # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s4, .LBB20_19
+	bnez	$s3, .LBB20_19
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s3, .LBB20_19
-# %bb.15:                               # %.lr.ph.preheader
-	addi.d	$a0, $fp, 16
-	addi.d	$a1, $sp, 16
-	ori	$a2, $s5, 480
+	beqz	$s1, .LBB20_19
+# %bb.15:
+	addi.d	$a0, $sp, 16
+	ori	$a1, $s5, 480
 	.p2align	4, , 16
 .LBB20_16:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -8669,27 +8623,25 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5StateE: #
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a3, $sp, 16
-	move	$a4, $a0
-	move	$a5, $a2
+	ld.d	$a2, $sp, 16
+	move	$a3, $fp
+	move	$a4, $a1
 	.p2align	4, , 16
-.LBB20_17:                              # %vector.body90
+.LBB20_17:                              # %vector.body89
                                         #   Parent Loop BB20_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
+	vld	$vr0, $a3, 0
 	vpickev.h	$vr0, $vr0, $vr0
-	vpickev.h	$vr1, $vr1, $vr1
-	add.d	$a6, $a3, $a5
-	vpackev.d	$vr0, $vr1, $vr0
-	vstx	$vr0, $a6, $s1
-	addi.d	$a5, $a5, 16
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB20_17
+	add.d	$a5, $a2, $a4
+	vpickve2gr.d	$a6, $vr0, 0
+	stptr.d	$a6, $a5, 20000
+	addi.d	$a4, $a4, 8
+	addi.d	$a3, $a3, 16
+	bnez	$a4, .LBB20_17
 # %bb.18:                               # %_ZL20truncOrZextVecInLoopIjtEvPKT_PT0_i.exit28
                                         #   in Loop: Header=BB20_16 Depth=1
-	addi.d	$s3, $s3, -1
-	bnez	$s3, .LBB20_16
+	addi.d	$s1, $s1, -1
+	bnez	$s1, .LBB20_16
 .LBB20_19:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp471:                               # EH_LABEL
 	move	$a0, $s2
@@ -9600,13 +9552,13 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5St
 	move	$fp, $a0
 .Ltmp502:                               # EH_LABEL
 	lu12i.w	$a0, 4
-	ori	$s1, $a0, 3616
-	move	$a0, $s1
+	ori	$s2, $a0, 3616
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp503:                               # EH_LABEL
 # %bb.1:
-	move	$s2, $a0
+	move	$s1, $a0
 	st.d	$a0, $sp, 16
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
@@ -9647,26 +9599,25 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5St
 .Ltmp509:                               # EH_LABEL
 # %bb.6:                                # %.noexc11
                                         #   in Loop: Header=BB23_5 Depth=1
-	add.d	$a1, $s2, $s5
+	add.d	$a1, $s1, $s5
 	addi.d	$s5, $s5, 2
-	stx.h	$a0, $a1, $s1
+	stx.h	$a0, $a1, $s2
 	bnez	$s5, .LBB23_5
 # %bb.7:
-	ld.w	$s3, $s0, 28
-	ld.d	$s2, $s0, 16
+	ld.w	$s2, $s0, 28
+	ld.d	$s1, $s0, 16
 .Ltmp511:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp512:                               # EH_LABEL
 # %bb.8:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s3, .LBB23_14
+	bnez	$s2, .LBB23_14
 # %bb.9:                                # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s2, .LBB23_14
-# %bb.10:                               # %.lr.ph.preheader
-	addi.d	$a0, $fp, 16
-	addi.d	$a1, $sp, 16
-	ori	$a2, $s4, 480
+	beqz	$s1, .LBB23_14
+# %bb.10:
+	addi.d	$a0, $sp, 16
+	ori	$a1, $s4, 480
 	.p2align	4, , 16
 .LBB23_11:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -9674,33 +9625,28 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5St
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a3, $sp, 16
-	move	$a4, $a0
-	move	$a5, $a2
+	ld.d	$a2, $sp, 16
+	move	$a3, $fp
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB23_12:                              # %vector.body
                                         #   Parent Loop BB23_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $a3, $a5
-	ldptr.d	$a7, $a6, 20000
-	ldptr.d	$t0, $a6, 20008
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
-	vinsgr2vr.d	$vr2, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 0
+	add.d	$a5, $a2, $a4
+	ldptr.d	$a6, $a5, 20000
+	vld	$vr0, $a3, 0
+	vinsgr2vr.d	$vr1, $a6, 0
 	vpickev.h	$vr0, $vr0, $vr0
-	vpickev.h	$vr1, $vr1, $vr1
-	vadd.h	$vr0, $vr2, $vr0
-	vadd.h	$vr1, $vr3, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
-	vstx	$vr0, $a6, $s1
-	addi.d	$a5, $a5, 16
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB23_12
+	vadd.h	$vr0, $vr1, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
+	stptr.d	$a6, $a5, 20000
+	addi.d	$a4, $a4, 8
+	addi.d	$a3, $a3, 16
+	bnez	$a4, .LBB23_12
 # %bb.13:                               # %_ZL27truncOrZextVecWithAddInLoopIjtEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB23_11 Depth=1
-	addi.d	$s2, $s2, -1
-	bnez	$s2, .LBB23_11
+	addi.d	$s1, $s1, -1
+	bnez	$s1, .LBB23_11
 .LBB23_14:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp513:                               # EH_LABEL
 	move	$a0, $s0
@@ -9738,9 +9684,9 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5St
 	jirl	$ra, $ra, 0
 .LBB23_19:
 .Ltmp515:                               # EH_LABEL
-	ld.d	$s2, $sp, 16
+	ld.d	$s1, $sp, 16
 	move	$s0, $a0
-	bnez	$s2, .LBB23_23
+	bnez	$s1, .LBB23_23
 	b	.LBB23_24
 .LBB23_20:                              # %.loopexit
 .Ltmp510:                               # EH_LABEL
@@ -9750,7 +9696,7 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5St
 .LBB23_22:                              # %_ZNKSt14default_deleteIA_tEclItEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i17
 	move	$s0, $a0
 .LBB23_23:                              # %_ZNKSt14default_deleteIA_tEclItEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i17
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB23_24:                              # %_ZNSt10unique_ptrIA_jSt14default_deleteIS0_EED2Ev.exit
@@ -12048,17 +11994,16 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception29
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -12067,7 +12012,6 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$s0, $a0
 	lu12i.w	$a0, 19
 	ori	$s3, $a0, 2176
@@ -12076,8 +12020,8 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 .Ltmp631:                               # EH_LABEL
-	lu12i.w	$s5, 4
-	ori	$s1, $s5, 3616
+	lu12i.w	$a0, 4
+	ori	$s1, $a0, 3616
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -12090,7 +12034,7 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	vst	$vr0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
-	move	$s6, $zero
+	move	$s5, $zero
 	.p2align	4, , 16
 .LBB29_2:                               # =>This Inner Loop Header: Depth=1
 .Ltmp634:                               # EH_LABEL
@@ -12102,15 +12046,15 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 .Ltmp635:                               # EH_LABEL
 # %bb.3:                                # %.noexc7
                                         #   in Loop: Header=BB29_2 Depth=1
-	stx.d	$a0, $fp, $s6
-	addi.d	$s6, $s6, 8
-	bne	$s6, $s3, .LBB29_2
+	stx.d	$a0, $fp, $s5
+	addi.d	$s5, $s5, 8
+	bne	$s5, $s3, .LBB29_2
 # %bb.4:
 	lu12i.w	$a0, -16
 	lu32i.d	$a0, 0
 	st.w	$a0, $sp, 16
 	lu12i.w	$s4, -5
-	ori	$s6, $s4, 480
+	ori	$s5, $s4, 480
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s3, $a0, %pc_lo12(_ZL3rng)
 	.p2align	4, , 16
@@ -12124,10 +12068,10 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 .Ltmp638:                               # EH_LABEL
 # %bb.6:                                # %.noexc11
                                         #   in Loop: Header=BB29_5 Depth=1
-	add.d	$a1, $s2, $s6
-	addi.d	$s6, $s6, 2
+	add.d	$a1, $s2, $s5
+	addi.d	$s5, $s5, 2
 	stx.h	$a0, $a1, $s1
-	bnez	$s6, .LBB29_5
+	bnez	$s5, .LBB29_5
 # %bb.7:
 	ld.w	$s3, $s0, 28
 	ld.d	$s2, $s0, 16
@@ -12140,13 +12084,11 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	bnez	$s3, .LBB29_14
 # %bb.9:                                # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s2, .LBB29_14
-# %bb.10:                               # %.lr.ph.preheader
-	addi.d	$a0, $fp, 16
-	pcalau12i	$a1, %pc_hi20(.LCPI29_1)
-	vld	$vr0, $a1, %pc_lo12(.LCPI29_1)
-	addi.d	$a1, $sp, 8
-	ori	$a2, $s4, 480
-	ori	$a3, $s5, 3620
+# %bb.10:
+	pcalau12i	$a0, %pc_hi20(.LCPI29_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI29_1)
+	addi.d	$a0, $sp, 8
+	ori	$a1, $s4, 480
 	.p2align	4, , 16
 .LBB29_11:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -12154,33 +12096,25 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 8
-	move	$a5, $a0
-	move	$a6, $a2
+	ld.d	$a2, $sp, 8
+	move	$a3, $fp
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB29_12:                              # %vector.body
                                         #   Parent Loop BB29_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a7, $a4, $a6
-	ldx.w	$t0, $a7, $s1
-	ldx.w	$t1, $a7, $a3
-	vld	$vr1, $a5, -16
-	vld	$vr2, $a5, 0
-	vinsgr2vr.w	$vr3, $t0, 0
-	vinsgr2vr.w	$vr4, $t1, 0
-	vori.b	$vr5, $vr0, 0
-	vshuf.h	$vr5, $vr0, $vr1
-	vori.b	$vr1, $vr0, 0
-	vshuf.h	$vr1, $vr0, $vr2
-	vadd.h	$vr2, $vr3, $vr5
-	vadd.h	$vr1, $vr4, $vr1
-	vpickve2gr.w	$t0, $vr2, 0
-	stptr.w	$t0, $a7, 20000
-	vpickve2gr.w	$t0, $vr1, 0
-	stptr.w	$t0, $a7, 20004
-	addi.d	$a6, $a6, 8
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB29_12
+	add.d	$a5, $a2, $a4
+	ldx.w	$a6, $a5, $s1
+	vld	$vr1, $a3, 0
+	vinsgr2vr.w	$vr2, $a6, 0
+	vori.b	$vr3, $vr0, 0
+	vshuf.h	$vr3, $vr0, $vr1
+	vadd.h	$vr1, $vr2, $vr3
+	vpickve2gr.w	$a6, $vr1, 0
+	stptr.w	$a6, $a5, 20000
+	addi.d	$a4, $a4, 4
+	addi.d	$a3, $a3, 16
+	bnez	$a4, .LBB29_12
 # %bb.13:                               # %_ZL27truncOrZextVecWithAddInLoopImtEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB29_11 Depth=1
 	addi.d	$s2, $s2, -1
@@ -12201,16 +12135,15 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5St
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB29_18:
 .Ltmp633:                               # EH_LABEL
@@ -14531,11 +14464,10 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint32_t_RN9benchmark5St
 	bnez	$s2, .LBB35_14
 # %bb.9:                                # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s1, .LBB35_14
-# %bb.10:                               # %.lr.ph.preheader
-	addi.d	$a0, $fp, 16
-	addi.d	$a1, $sp, 8
-	lu12i.w	$a2, 2
-	ori	$a2, $a2, 1808
+# %bb.10:
+	addi.d	$a0, $sp, 8
+	lu12i.w	$a1, 2
+	ori	$a1, $a1, 1808
 	.p2align	4, , 16
 .LBB35_11:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -14543,30 +14475,23 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint32_t_RN9benchmark5St
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a3, $sp, 8
-	addi.d	$a3, $a3, 8
-	move	$a4, $a0
-	move	$a5, $a2
+	ld.d	$a2, $sp, 8
+	move	$a3, $fp
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB35_12:                              # %vector.body
                                         #   Parent Loop BB35_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
+	ld.d	$a5, $a2, 0
+	vld	$vr0, $a3, 0
+	vinsgr2vr.d	$vr1, $a5, 0
 	vshuf4i.w	$vr0, $vr0, 8
-	vshuf4i.w	$vr1, $vr1, 8
-	vadd.w	$vr0, $vr2, $vr0
-	vadd.w	$vr1, $vr3, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
-	vst	$vr0, $a3, -8
-	addi.d	$a5, $a5, -4
+	vadd.w	$vr0, $vr1, $vr0
+	vstelm.d	$vr0, $a2, 0, 0
+	addi.d	$a4, $a4, -2
+	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB35_12
+	bnez	$a4, .LBB35_12
 # %bb.13:                               # %_ZL27truncOrZextVecWithAddInLoopImjEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB35_11 Depth=1
 	addi.d	$s1, $s1, -1
@@ -15695,24 +15620,20 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint16_t_RN9benchmark5StateE: # 
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB38_6
 # %bb.7:                                # %vector.body83.preheader
-	addi.d	$a0, $s4, 16
-	ori	$a1, $s6, 2288
-	vrepli.b	$vr2, 0
+	ori	$a0, $s6, 2288
+	vrepli.b	$vr1, 0
+	move	$a1, $s4
 	.p2align	4, , 16
 .LBB38_8:                               # %vector.body83
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a1
-	ldptr.d	$a3, $a2, 10000
-	ldptr.d	$a2, $a2, 10008
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a2, 0
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.b	$vr1, $vr2, $vr1
-	vst	$vr0, $a0, -16
-	vst	$vr1, $a0, 0
+	add.d	$a2, $fp, $a0
+	ldptr.d	$a2, $a2, 10000
+	vinsgr2vr.d	$vr0, $a2, 0
+	vilvl.b	$vr0, $vr1, $vr0
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, 8
 	addi.d	$a1, $a1, 16
-	addi.d	$a0, $a0, 32
-	bnez	$a1, .LBB38_8
+	bnez	$a0, .LBB38_8
 # %bb.9:                                # %_ZL20truncOrZextVecInLoopIhtEvPKT_PT0_i.exit.preheader.preheader
 	move	$s5, $zero
 	ori	$s7, $s6, 2288
@@ -15728,7 +15649,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint16_t_RN9benchmark5StateE: # 
 	addi.d	$s5, $s5, 2
 	bnez	$s7, .LBB38_10
 # %bb.12:
-	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	ld.w	$s5, $s2, 28
 	ld.d	$s4, $s2, 16
 .Ltmp856:                               # EH_LABEL
@@ -15737,7 +15658,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint16_t_RN9benchmark5StateE: # 
 	jirl	$ra, $ra, 0
 .Ltmp857:                               # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	bnez	$s5, .LBB38_23
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s4, .LBB38_23
@@ -15779,25 +15700,20 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint16_t_RN9benchmark5StateE: # 
 	bnez	$a4, .LBB38_20
 	b	.LBB38_16
 	.p2align	4, , 16
-.LBB38_21:                              # %vector.body90.preheader
+.LBB38_21:                              # %vector.body89.preheader
                                         #   in Loop: Header=BB38_17 Depth=1
-	addi.d	$a3, $a3, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB38_22:                              # %vector.body90
+.LBB38_22:                              # %vector.body89
                                         #   Parent Loop BB38_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $fp, $a4
-	ldptr.d	$a6, $a5, 10000
-	ldptr.d	$a5, $a5, 10008
-	vinsgr2vr.d	$vr0, $a6, 0
-	vinsgr2vr.d	$vr1, $a5, 0
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.b	$vr1, $vr2, $vr1
-	vst	$vr0, $a3, -16
-	vst	$vr1, $a3, 0
-	addi.d	$a4, $a4, 16
-	addi.d	$a3, $a3, 32
+	ldptr.d	$a5, $a5, 10000
+	vinsgr2vr.d	$vr0, $a5, 0
+	vilvl.b	$vr0, $vr1, $vr0
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, 8
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB38_22
 	b	.LBB38_16
 .LBB38_23:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
@@ -16723,27 +16639,20 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint16_t_RN9benchmark5Sta
 	.p2align	4, , 16
 .LBB41_16:                              # %vector.body.preheader
                                         #   in Loop: Header=BB41_12 Depth=1
-	addi.d	$a3, $a3, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB41_17:                              # %vector.body
                                         #   Parent Loop BB41_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $fp, $a4
-	ldptr.d	$a6, $a5, 10000
-	ldptr.d	$a5, $a5, 10008
-	vinsgr2vr.d	$vr1, $a6, 0
+	ldptr.d	$a5, $a5, 10000
+	vld	$vr1, $a3, 0
 	vinsgr2vr.d	$vr2, $a5, 0
-	vld	$vr3, $a3, -16
-	vld	$vr4, $a3, 0
-	vilvl.b	$vr1, $vr0, $vr1
 	vilvl.b	$vr2, $vr0, $vr2
-	vadd.h	$vr1, $vr3, $vr1
-	vadd.h	$vr2, $vr4, $vr2
-	vst	$vr1, $a3, -16
-	vst	$vr2, $a3, 0
-	addi.d	$a4, $a4, 16
-	addi.d	$a3, $a3, 32
+	vadd.h	$vr1, $vr1, $vr2
+	vst	$vr1, $a3, 0
+	addi.d	$a4, $a4, 8
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB41_17
 	b	.LBB41_11
 .LBB41_18:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
@@ -17924,44 +17833,38 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5StateE: # 
 	addi.d	$a0, $a0, 8
 	bnez	$a1, .LBB44_6
 # %bb.7:                                # %vector.body83.preheader
-	addi.d	$a0, $s4, 16
-	ori	$a1, $s6, 2288
-	ori	$s5, $s7, 1812
-	vrepli.b	$vr2, 0
+	ori	$a0, $s6, 2288
+	vrepli.b	$vr1, 0
+	move	$a1, $s4
 	.p2align	4, , 16
 .LBB44_8:                               # %vector.body83
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a1
-	ldx.w	$a3, $a2, $s1
-	ldx.w	$a2, $a2, $s5
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr1, $a2, 0
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
-	vst	$vr0, $a0, -16
-	vst	$vr1, $a0, 0
-	addi.d	$a1, $a1, 8
-	addi.d	$a0, $a0, 32
-	bnez	$a1, .LBB44_8
+	add.d	$a2, $fp, $a0
+	ldx.w	$a2, $a2, $s1
+	vinsgr2vr.w	$vr0, $a2, 0
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, 4
+	addi.d	$a1, $a1, 16
+	bnez	$a0, .LBB44_8
 # %bb.9:                                # %_ZL20truncOrZextVecInLoopIhjEvPKT_PT0_i.exit.preheader.preheader
-	move	$s7, $zero
-	ori	$s8, $s6, 2288
+	move	$s5, $zero
+	ori	$s7, $s6, 2288
 	.p2align	4, , 16
 .LBB44_10:                              # %_ZL20truncOrZextVecInLoopIhjEvPKT_PT0_i.exit.preheader
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a0, $s4, $s7
-	ldx.w	$a1, $s0, $s7
+	ldx.w	$a0, $s4, $s5
+	ldx.w	$a1, $s0, $s5
 	bne	$a0, $a1, .LBB44_27
 # %bb.11:                               # %_ZL20truncOrZextVecInLoopIhjEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB44_10 Depth=1
-	addi.d	$s8, $s8, 1
-	addi.d	$s7, $s7, 4
-	bnez	$s8, .LBB44_10
+	addi.d	$s7, $s7, 1
+	addi.d	$s5, $s5, 4
+	bnez	$s7, .LBB44_10
 # %bb.12:
-	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
-	ld.w	$s7, $s2, 28
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	ld.w	$s5, $s2, 28
 	ld.d	$s4, $s2, 16
 .Ltmp985:                               # EH_LABEL
 	move	$a0, $s2
@@ -17969,8 +17872,8 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5StateE: # 
 	jirl	$ra, $ra, 0
 .Ltmp986:                               # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
-	bnez	$s7, .LBB44_23
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	bnez	$s5, .LBB44_23
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s4, .LBB44_23
 # %bb.15:                               # %.lr.ph.preheader
@@ -18011,27 +17914,21 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5StateE: # 
 	bnez	$a4, .LBB44_20
 	b	.LBB44_16
 	.p2align	4, , 16
-.LBB44_21:                              # %vector.body90.preheader
+.LBB44_21:                              # %vector.body89.preheader
                                         #   in Loop: Header=BB44_17 Depth=1
-	addi.d	$a3, $a3, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB44_22:                              # %vector.body90
+.LBB44_22:                              # %vector.body89
                                         #   Parent Loop BB44_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a5, $fp, $a4
-	ldx.w	$a6, $a5, $s1
-	ldx.w	$a5, $a5, $s5
-	vinsgr2vr.w	$vr0, $a6, 0
-	vinsgr2vr.w	$vr1, $a5, 0
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
-	vst	$vr0, $a3, -16
-	vst	$vr1, $a3, 0
-	addi.d	$a4, $a4, 8
-	addi.d	$a3, $a3, 32
+	ldx.w	$a5, $a5, $s1
+	vinsgr2vr.w	$vr0, $a5, 0
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, 4
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB44_22
 	b	.LBB44_16
 .LBB44_23:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
@@ -18077,7 +17974,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5StateE: # 
 	jirl	$ra, $ra, 0
 .Ltmp971:                               # EH_LABEL
 # %bb.28:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
-	add.d	$a0, $fp, $s8
+	add.d	$a0, $fp, $s7
 	ldx.bu	$a1, $a0, $s1
 .Ltmp972:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
@@ -18096,7 +17993,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5StateE: # 
 	jirl	$ra, $ra, 0
 .Ltmp975:                               # EH_LABEL
 # %bb.30:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit17
-	ldx.wu	$a1, $s4, $s7
+	ldx.wu	$a1, $s4, $s5
 .Ltmp976:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
@@ -18113,7 +18010,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5StateE: # 
 	jirl	$ra, $ra, 0
 .Ltmp979:                               # EH_LABEL
 # %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit20
-	ldx.wu	$a1, $s0, $s7
+	ldx.wu	$a1, $s0, $s5
 .Ltmp980:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
@@ -18876,18 +18773,17 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception47
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -18897,10 +18793,9 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s0, $a0
-	lu12i.w	$s5, 2
-	ori	$s1, $s5, 1808
+	lu12i.w	$a0, 2
+	ori	$s1, $a0, 1808
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -18914,50 +18809,50 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 .Ltmp1019:                              # EH_LABEL
 # %bb.1:
 	move	$s3, $a0
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 8
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 3840
-	st.h	$a0, $sp, 24
-	lu12i.w	$s6, -3
-	ori	$s7, $s6, 2288
+	st.h	$a0, $sp, 16
+	lu12i.w	$s5, -3
+	ori	$s6, $s5, 2288
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
 	.p2align	4, , 16
 .LBB47_2:                               # =>This Inner Loop Header: Depth=1
 .Ltmp1021:                              # EH_LABEL
-	addi.d	$a0, $sp, 24
-	addi.d	$a2, $sp, 24
+	addi.d	$a0, $sp, 16
+	addi.d	$a2, $sp, 16
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp1022:                              # EH_LABEL
 # %bb.3:                                # %.noexc7
                                         #   in Loop: Header=BB47_2 Depth=1
-	add.d	$a1, $fp, $s7
-	addi.d	$s7, $s7, 1
+	add.d	$a1, $fp, $s6
+	addi.d	$s6, $s6, 1
 	stx.b	$a0, $a1, $s1
-	bnez	$s7, .LBB47_2
+	bnez	$s6, .LBB47_2
 # %bb.4:
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s4, $a0, %pc_lo12(_ZL3rng)
-	move	$s7, $zero
+	move	$s6, $zero
 	.p2align	4, , 16
 .LBB47_5:                               # =>This Inner Loop Header: Depth=1
 .Ltmp1024:                              # EH_LABEL
-	addi.d	$a0, $sp, 24
-	addi.d	$a2, $sp, 24
+	addi.d	$a0, $sp, 16
+	addi.d	$a2, $sp, 16
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEjRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp1025:                              # EH_LABEL
 # %bb.6:                                # %.noexc11
                                         #   in Loop: Header=BB47_5 Depth=1
-	stx.w	$a0, $s3, $s7
-	addi.d	$s7, $s7, 4
-	bne	$s7, $s2, .LBB47_5
+	stx.w	$a0, $s3, $s6
+	addi.d	$s6, $s6, 4
+	bne	$s6, $s2, .LBB47_5
 # %bb.7:
 	ld.w	$s4, $s0, 28
 	ld.d	$s3, $s0, 16
@@ -18972,9 +18867,8 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	beqz	$s3, .LBB47_18
 # %bb.10:                               # %.lr.ph.preheader
 	add.d	$a0, $fp, $s1
-	addi.d	$a1, $sp, 16
-	ori	$a2, $s6, 2288
-	ori	$a3, $s5, 1812
+	addi.d	$a1, $sp, 8
+	ori	$a2, $s5, 2288
 	vrepli.b	$vr0, 0
 	b	.LBB47_12
 	.p2align	4, , 16
@@ -18989,55 +18883,47 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 16
-	bgeu	$a4, $a0, .LBB47_16
+	ld.d	$a3, $sp, 8
+	bgeu	$a3, $a0, .LBB47_16
 # %bb.13:                               # %.lr.ph
                                         #   in Loop: Header=BB47_12 Depth=1
-	add.d	$a5, $a4, $s2
-	bgeu	$fp, $a5, .LBB47_16
+	add.d	$a4, $a3, $s2
+	bgeu	$fp, $a4, .LBB47_16
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB47_12 Depth=1
-	move	$a5, $a2
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB47_15:                              # %.lr.ph.i
                                         #   Parent Loop BB47_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $fp, $a5
-	ldx.bu	$a6, $a6, $s1
-	ld.w	$a7, $a4, 0
-	add.d	$a6, $a7, $a6
-	st.w	$a6, $a4, 0
-	addi.d	$a5, $a5, 1
-	addi.d	$a4, $a4, 4
-	bnez	$a5, .LBB47_15
+	add.d	$a5, $fp, $a4
+	ldx.bu	$a5, $a5, $s1
+	ld.w	$a6, $a3, 0
+	add.d	$a5, $a6, $a5
+	st.w	$a5, $a3, 0
+	addi.d	$a4, $a4, 1
+	addi.d	$a3, $a3, 4
+	bnez	$a4, .LBB47_15
 	b	.LBB47_11
 	.p2align	4, , 16
 .LBB47_16:                              # %vector.body.preheader
                                         #   in Loop: Header=BB47_12 Depth=1
-	addi.d	$a4, $a4, 16
-	move	$a5, $a2
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB47_17:                              # %vector.body
                                         #   Parent Loop BB47_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $fp, $a5
-	ldx.w	$a7, $a6, $s1
-	ldx.w	$a6, $a6, $a3
-	vinsgr2vr.w	$vr1, $a7, 0
-	vinsgr2vr.w	$vr2, $a6, 0
-	vilvl.b	$vr1, $vr0, $vr1
-	vilvl.h	$vr1, $vr0, $vr1
-	vld	$vr3, $a4, -16
-	vld	$vr4, $a4, 0
+	add.d	$a5, $fp, $a4
+	ldx.w	$a5, $a5, $s1
+	vld	$vr1, $a3, 0
+	vinsgr2vr.w	$vr2, $a5, 0
 	vilvl.b	$vr2, $vr0, $vr2
 	vilvl.h	$vr2, $vr0, $vr2
-	vadd.w	$vr1, $vr3, $vr1
-	vadd.w	$vr2, $vr4, $vr2
-	vst	$vr1, $a4, -16
-	vst	$vr2, $a4, 0
-	addi.d	$a5, $a5, 8
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB47_17
+	vadd.w	$vr1, $vr1, $vr2
+	vst	$vr1, $a3, 0
+	addi.d	$a4, $a4, 4
+	addi.d	$a3, $a3, 16
+	bnez	$a4, .LBB47_17
 	b	.LBB47_11
 .LBB47_18:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp1029:                              # EH_LABEL
@@ -19046,7 +18932,7 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 .Ltmp1030:                              # EH_LABEL
 # %bb.19:                               # %_ZNSt10unique_ptrIA_jSt14default_deleteIS0_EED2Ev.exit22
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 8
 	beqz	$a0, .LBB47_21
 # %bb.20:                               # %_ZNKSt14default_deleteIA_jEclIjEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i24
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -19055,17 +18941,16 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB47_22:
 .Ltmp1020:                              # EH_LABEL
@@ -19078,7 +18963,7 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint32_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 .LBB47_23:
 .Ltmp1031:                              # EH_LABEL
-	ld.d	$s3, $sp, 16
+	ld.d	$s3, $sp, 8
 	move	$s0, $a0
 	bnez	$s3, .LBB47_27
 	b	.LBB47_28
@@ -19225,27 +19110,26 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	stx.b	$a0, $a1, $s4
 	bnez	$s6, .LBB48_3
 # %bb.5:                                # %vector.ph
-	lu12i.w	$a0, -3
-	ori	$a0, $a0, 2288
-	vrepli.b	$vr16, 0
-	move	$a1, $s0
+	addi.d	$a0, $s0, 8
+	lu12i.w	$a1, -3
+	ori	$a1, $a1, 2288
+	ori	$a2, $s7, 1809
 	.p2align	4, , 16
 .LBB48_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
-	ldx.h	$a2, $a2, $s4
-	vinsgr2vr.h	$vr0, $a2, 0
-	vilvl.b	$vr0, $vr16, $vr0
-	vilvl.h	$vr0, $vr16, $vr0
-	vilvl.w	$vr0, $vr16, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 2
-	addi.d	$a1, $a1, 16
-	bnez	$a0, .LBB48_6
+	add.d	$a3, $fp, $a1
+	ldx.bu	$a4, $a3, $s4
+	ldx.bu	$a3, $a3, $a2
+	st.d	$a4, $a0, -8
+	st.d	$a3, $a0, 0
+	addi.d	$a1, $a1, 2
+	addi.d	$a0, $a0, 16
+	bnez	$a1, .LBB48_6
 # %bb.7:                                # %vector.body83.preheader
 	addi.d	$a0, $s3, 128
 	lu12i.w	$a1, -3
 	ori	$a1, $a1, 2304
+	vrepli.b	$vr16, 0
 	.p2align	4, , 16
 .LBB48_8:                               # %vector.body83
                                         # =>This Inner Loop Header: Depth=1
@@ -19749,22 +19633,20 @@ _Z61benchForTruncOrZextVecInLoopWithVW16From_uint8_t_To_uint64_t_RN9benchmark5St
 	stx.b	$a0, $a1, $s1
 	bnez	$s2, .LBB49_3
 # %bb.5:                                # %vector.ph
-	ori	$a0, $s6, 2288
-	vrepli.b	$vr4, 0
-	move	$a1, $s0
+	addi.d	$a0, $s0, 8
+	ori	$a1, $s6, 2288
+	ori	$a2, $s7, 1809
 	.p2align	4, , 16
 .LBB49_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
-	ldx.h	$a2, $a2, $s1
-	vinsgr2vr.h	$vr0, $a2, 0
-	vilvl.b	$vr0, $vr4, $vr0
-	vilvl.h	$vr0, $vr4, $vr0
-	vilvl.w	$vr0, $vr4, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 2
-	addi.d	$a1, $a1, 16
-	bnez	$a0, .LBB49_6
+	add.d	$a3, $fp, $a1
+	ldx.bu	$a4, $a3, $s1
+	ldx.bu	$a3, $a3, $a2
+	st.d	$a4, $a0, -8
+	st.d	$a3, $a0, 0
+	addi.d	$a1, $a1, 2
+	addi.d	$a0, $a0, 16
+	bnez	$a1, .LBB49_6
 # %bb.7:                                # %vector.body83.preheader
 	addi.d	$a0, $s4, 256
 	ori	$a1, $s6, 2304
@@ -19772,6 +19654,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW16From_uint8_t_To_uint64_t_RN9benchmark5St
 	ori	$s6, $s7, 1824
 	move	$a4, $s7
 	ori	$s7, $s7, 1840
+	vrepli.b	$vr4, 0
 	.p2align	4, , 16
 .LBB49_8:                               # %vector.body83
                                         # =>This Inner Loop Header: Depth=1
@@ -20349,26 +20232,25 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint8_t_To_uint64_t_RN9benchmark5StateE: # 
 	stx.b	$a0, $a1, $s1
 	bnez	$s8, .LBB50_3
 # %bb.5:                                # %vector.ph
-	ori	$a0, $s6, 2288
-	vrepli.b	$vr2, 0
-	move	$a1, $s0
+	addi.d	$a0, $s0, 8
+	ori	$a1, $s6, 2288
+	ori	$a2, $s7, 1809
 	.p2align	4, , 16
 .LBB50_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
-	ldx.h	$a2, $a2, $s1
-	vinsgr2vr.h	$vr0, $a2, 0
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.w	$vr0, $vr2, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 2
-	addi.d	$a1, $a1, 16
-	bnez	$a0, .LBB50_6
+	add.d	$a3, $fp, $a1
+	ldx.bu	$a4, $a3, $s1
+	ldx.bu	$a3, $a3, $a2
+	st.d	$a4, $a0, -8
+	st.d	$a3, $a0, 0
+	addi.d	$a1, $a1, 2
+	addi.d	$a0, $a0, 16
+	bnez	$a1, .LBB50_6
 # %bb.7:                                # %vector.body83.preheader
 	addi.d	$a0, $s4, 16
 	ori	$a1, $s6, 2288
 	ori	$s5, $s7, 1810
+	vrepli.b	$vr2, 0
 	.p2align	4, , 16
 .LBB50_8:                               # %vector.body83
                                         # =>This Inner Loop Header: Depth=1
@@ -22864,24 +22746,20 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint32_t_RN9benchmark5StateE: #
 	addi.d	$a0, $a0, 8
 	bnez	$a1, .LBB56_6
 # %bb.7:                                # %vector.body84.preheader
-	addi.d	$a0, $s2, 16
-	ori	$a1, $s5, 480
-	vrepli.b	$vr2, 0
+	ori	$a0, $s5, 480
+	vrepli.b	$vr1, 0
+	move	$a1, $s2
 	.p2align	4, , 16
 .LBB56_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a1
-	ldptr.d	$a3, $a2, 20000
-	ldptr.d	$a2, $a2, 20008
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a2, 0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.h	$vr1, $vr2, $vr1
-	vst	$vr0, $a0, -16
-	vst	$vr1, $a0, 0
+	add.d	$a2, $fp, $a0
+	ldptr.d	$a2, $a2, 20000
+	vinsgr2vr.d	$vr0, $a2, 0
+	vilvl.h	$vr0, $vr1, $vr0
+	vst	$vr0, $a1, 0
+	addi.d	$a0, $a0, 8
 	addi.d	$a1, $a1, 16
-	addi.d	$a0, $a0, 32
-	bnez	$a1, .LBB56_8
+	bnez	$a0, .LBB56_8
 # %bb.9:                                # %_ZL20truncOrZextVecInLoopItjEvPKT_PT0_i.exit.preheader.preheader
 	move	$s4, $zero
 	ori	$s6, $s5, 480
@@ -22897,7 +22775,7 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint32_t_RN9benchmark5StateE: #
 	addi.d	$s4, $s4, 4
 	bnez	$s6, .LBB56_10
 # %bb.12:
-	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	ld.w	$s3, $s1, 28
 	ld.d	$s2, $s1, 16
 .Ltmp1243:                              # EH_LABEL
@@ -22906,7 +22784,7 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint32_t_RN9benchmark5StateE: #
 	jirl	$ra, $ra, 0
 .Ltmp1244:                              # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	bnez	$s3, .LBB56_19
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s2, .LBB56_19
@@ -22921,23 +22799,18 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint32_t_RN9benchmark5StateE: #
 	#NO_APP
 	#MEMBARRIER
 	ld.d	$a2, $sp, 32
-	addi.d	$a2, $a2, 16
 	move	$a3, $a1
 	.p2align	4, , 16
-.LBB56_17:                              # %vector.body90
+.LBB56_17:                              # %vector.body89
                                         #   Parent Loop BB56_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a4, $fp, $a3
-	ldptr.d	$a5, $a4, 20000
-	ldptr.d	$a4, $a4, 20008
-	vinsgr2vr.d	$vr0, $a5, 0
-	vinsgr2vr.d	$vr1, $a4, 0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.h	$vr1, $vr2, $vr1
-	vst	$vr0, $a2, -16
-	vst	$vr1, $a2, 0
-	addi.d	$a3, $a3, 16
-	addi.d	$a2, $a2, 32
+	ldptr.d	$a4, $a4, 20000
+	vinsgr2vr.d	$vr0, $a4, 0
+	vilvl.h	$vr0, $vr1, $vr0
+	vst	$vr0, $a2, 0
+	addi.d	$a3, $a3, 8
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB56_17
 # %bb.18:                               # %_ZL20truncOrZextVecInLoopItjEvPKT_PT0_i.exit28
                                         #   in Loop: Header=BB56_16 Depth=1
@@ -23977,27 +23850,20 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint16_t_To_uint32_t_RN9benchmark5St
 	#NO_APP
 	#MEMBARRIER
 	ld.d	$a2, $sp, 8
-	addi.d	$a2, $a2, 16
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB59_12:                              # %vector.body
                                         #   Parent Loop BB59_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a4, $fp, $a3
-	ldptr.d	$a5, $a4, 20000
-	ldptr.d	$a4, $a4, 20008
-	vinsgr2vr.d	$vr1, $a5, 0
+	ldptr.d	$a4, $a4, 20000
+	vld	$vr1, $a2, 0
 	vinsgr2vr.d	$vr2, $a4, 0
-	vld	$vr3, $a2, -16
-	vld	$vr4, $a2, 0
-	vilvl.h	$vr1, $vr0, $vr1
 	vilvl.h	$vr2, $vr0, $vr2
-	vadd.w	$vr1, $vr3, $vr1
-	vadd.w	$vr2, $vr4, $vr2
-	vst	$vr1, $a2, -16
-	vst	$vr2, $a2, 0
-	addi.d	$a3, $a3, 16
-	addi.d	$a2, $a2, 32
+	vadd.w	$vr1, $vr1, $vr2
+	vst	$vr1, $a2, 0
+	addi.d	$a3, $a3, 8
+	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB59_12
 # %bb.13:                               # %_ZL27truncOrZextVecWithAddInLoopItjEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB59_11 Depth=1
@@ -24188,21 +24054,21 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint16_t_To_uint64_t_RN9benchmark5St
 	stx.h	$a0, $a1, $s3
 	bnez	$s0, .LBB60_3
 # %bb.5:                                # %vector.ph
-	ori	$a0, $s7, 480
-	vrepli.b	$vr16, 0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 8
+	ori	$a1, $s7, 480
+	ori	$a2, $s6, 3618
 	.p2align	4, , 16
 .LBB60_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
-	ldx.w	$a2, $a2, $s3
-	vinsgr2vr.w	$vr0, $a2, 0
-	vilvl.h	$vr0, $vr16, $vr0
-	vilvl.w	$vr0, $vr16, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 4
-	addi.d	$a1, $a1, 16
-	bnez	$a0, .LBB60_6
+	add.d	$a3, $fp, $a1
+	ldx.hu	$a4, $a3, $s3
+	ldx.hu	$a3, $a3, $a2
+	st.d	$a4, $a0, -8
+	st.d	$a3, $a0, 0
+	addi.d	$a1, $a1, 4
+	addi.d	$a0, $a0, 16
+	bnez	$a1, .LBB60_6
 # %bb.7:                                # %vector.body84.preheader
 	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
 	addi.d	$a0, $s2, 128
@@ -24210,6 +24076,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint16_t_To_uint64_t_RN9benchmark5St
 	ori	$s4, $s6, 3584
 	ori	$a4, $s6, 3600
 	ori	$a2, $s6, 3632
+	vrepli.b	$vr16, 0
 	.p2align	4, , 16
 .LBB60_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
@@ -24329,9 +24196,9 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint16_t_To_uint64_t_RN9benchmark5St
 	jirl	$ra, $ra, 0
 .Ltmp1315:                              # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	vld	$vr16, $sp, 32                  # 16-byte Folded Reload
 	lu12i.w	$a0, 4
 	ori	$t2, $a0, 3600
+	vld	$vr16, $sp, 32                  # 16-byte Folded Reload
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	bnez	$a0, .LBB60_19
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
@@ -24718,21 +24585,21 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint16_t_To_uint64_t_RN9benchmark5S
 	stx.h	$a0, $a1, $s3
 	bnez	$s0, .LBB61_3
 # %bb.5:                                # %vector.ph
-	ori	$a0, $s8, 480
-	vrepli.b	$vr3, 0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$a0, $a0, 8
+	ori	$a1, $s8, 480
+	ori	$a2, $s6, 3618
 	.p2align	4, , 16
 .LBB61_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
-	ldx.w	$a2, $a2, $s3
-	vinsgr2vr.w	$vr0, $a2, 0
-	vilvl.h	$vr0, $vr3, $vr0
-	vilvl.w	$vr0, $vr3, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 4
-	addi.d	$a1, $a1, 16
-	bnez	$a0, .LBB61_6
+	add.d	$a3, $fp, $a1
+	ldx.hu	$a4, $a3, $s3
+	ldx.hu	$a3, $a3, $a2
+	st.d	$a4, $a0, -8
+	st.d	$a3, $a0, 0
+	addi.d	$a1, $a1, 4
+	addi.d	$a0, $a0, 16
+	bnez	$a1, .LBB61_6
 # %bb.7:                                # %vector.body84.preheader
 	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
 	addi.d	$a0, $s2, 256
@@ -24744,6 +24611,7 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint16_t_To_uint64_t_RN9benchmark5S
 	ori	$a4, $s6, 3648
 	ori	$a5, $s6, 3696
 	ori	$a6, $s6, 3680
+	vrepli.b	$vr3, 0
 	.p2align	4, , 16
 .LBB61_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
@@ -25336,25 +25204,25 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint64_t_RN9benchmark5StateE: #
 	stx.h	$a0, $a1, $s1
 	bnez	$s7, .LBB62_3
 # %bb.5:                                # %vector.ph
-	ori	$a0, $s5, 480
-	vrepli.b	$vr2, 0
-	move	$a1, $s0
+	addi.d	$a0, $s0, 8
+	ori	$a1, $s5, 480
+	ori	$a2, $s6, 3618
 	.p2align	4, , 16
 .LBB62_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a2, $fp, $a0
-	ldx.w	$a2, $a2, $s1
-	vinsgr2vr.w	$vr0, $a2, 0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.w	$vr0, $vr2, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 4
-	addi.d	$a1, $a1, 16
-	bnez	$a0, .LBB62_6
+	add.d	$a3, $fp, $a1
+	ldx.hu	$a4, $a3, $s1
+	ldx.hu	$a3, $a3, $a2
+	st.d	$a4, $a0, -8
+	st.d	$a3, $a0, 0
+	addi.d	$a1, $a1, 4
+	addi.d	$a0, $a0, 16
+	bnez	$a1, .LBB62_6
 # %bb.7:                                # %vector.body84.preheader
 	addi.d	$a0, $s3, 16
 	ori	$a1, $s5, 480
 	ori	$s4, $s6, 3620
+	vrepli.b	$vr2, 0
 	.p2align	4, , 16
 .LBB62_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
@@ -26776,19 +26644,19 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception66
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -26800,7 +26668,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	lu12i.w	$s1, 9
 	ori	$s4, $s1, 3136
 	move	$a0, $s4
@@ -26816,55 +26684,57 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 .Ltmp1420:                              # EH_LABEL
 # %bb.1:                                # %.split
 	move	$s2, $a0
-	st.d	$a0, $sp, 56
+	st.d	$a0, $sp, 40
 .Ltmp1422:                              # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 .Ltmp1423:                              # EH_LABEL
 # %bb.2:
+	move	$s0, $a0
 	ori	$s1, $s1, 3072
 	add.d	$s6, $fp, $s1
 	ori	$s7, $s5, 2048
-	add.d	$s8, $s2, $s7
+	add.d	$a0, $s2, $s7
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 64
+	st.d	$a0, $sp, 48
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s5, $a0, %pc_lo12(_ZL3rng)
-	move	$s0, $zero
+	move	$s8, $zero
 	.p2align	4, , 16
 .LBB66_3:                               # =>This Inner Loop Header: Depth=1
 .Ltmp1425:                              # EH_LABEL
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 64
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 48
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEjRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp1426:                              # EH_LABEL
 # %bb.4:                                # %.noexc8
                                         #   in Loop: Header=BB66_3 Depth=1
-	stx.w	$a0, $fp, $s0
-	addi.d	$s0, $s0, 4
-	bne	$s0, $s4, .LBB66_3
+	stx.w	$a0, $fp, $s8
+	addi.d	$s8, $s8, 4
+	bne	$s8, $s4, .LBB66_3
 # %bb.5:                                # %vector.ph
 	move	$a0, $zero
-	vrepli.b	$vr16, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$a1, $fp, 4
 	.p2align	4, , 16
 .LBB66_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ldx.d	$a2, $fp, $a0
-	vinsgr2vr.d	$vr0, $a2, 0
-	vilvl.w	$vr0, $vr16, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 8
-	addi.d	$a1, $a1, 16
-	bne	$a0, $s4, .LBB66_6
+	ld.wu	$a2, $a1, -4
+	ld.wu	$a3, $a1, 0
+	add.d	$a4, $s0, $a0
+	stx.d	$a2, $s0, $a0
+	st.d	$a3, $a4, 8
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, 8
+	bne	$a0, $s3, .LBB66_6
 # %bb.7:                                # %vector.body84.preheader
 	move	$a0, $zero
 	addi.d	$a1, $s2, 128
+	vrepli.b	$vr16, 0
 	.p2align	4, , 16
 .LBB66_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
@@ -26918,41 +26788,41 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	ld.wu	$a1, $s6, 4
 	ld.wu	$a2, $s6, 8
 	ld.wu	$a3, $s6, 12
-	st.d	$a0, $s8, 0
-	st.d	$a1, $s8, 8
-	st.d	$a2, $s8, 16
-	st.d	$a3, $s8, 24
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	st.d	$a0, $a4, 0
+	st.d	$a1, $a4, 8
+	st.d	$a2, $a4, 16
+	st.d	$a3, $a4, 24
 	ld.wu	$a0, $s6, 16
 	ld.wu	$a1, $s6, 20
 	ld.wu	$a2, $s6, 24
 	ld.wu	$a3, $s6, 28
-	st.d	$a0, $s8, 32
-	st.d	$a1, $s8, 40
-	st.d	$a2, $s8, 48
-	st.d	$a3, $s8, 56
+	st.d	$a0, $a4, 32
+	st.d	$a1, $a4, 40
+	st.d	$a2, $a4, 48
+	st.d	$a3, $a4, 56
 	ld.wu	$a0, $s6, 32
 	ld.wu	$a1, $s6, 36
 	ld.wu	$a2, $s6, 40
 	ld.wu	$a3, $s6, 44
-	st.d	$a0, $s8, 64
-	st.d	$a1, $s8, 72
-	st.d	$a2, $s8, 80
-	st.d	$a3, $s8, 88
+	st.d	$a0, $a4, 64
+	st.d	$a1, $a4, 72
+	st.d	$a2, $a4, 80
+	st.d	$a3, $a4, 88
 	ld.wu	$a0, $s6, 48
 	ld.wu	$a1, $s6, 52
 	ld.wu	$a2, $s6, 56
 	ld.wu	$a3, $s6, 60
-	st.d	$a0, $s8, 96
-	st.d	$a1, $s8, 104
-	st.d	$a2, $s8, 112
-	st.d	$a3, $s8, 120
+	st.d	$a0, $a4, 96
+	st.d	$a1, $a4, 104
+	st.d	$a2, $a4, 112
+	st.d	$a3, $a4, 120
 	move	$s1, $fp
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB66_10:                              # %_ZL27truncOrZextVecInLoopWithVW8IjmEvPKT_PT0_i.exit.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a0, $s2, $s4
-	ldx.d	$a1, $s5, $s4
+	ldx.d	$a1, $s0, $s4
 	bne	$a0, $a1, .LBB66_23
 # %bb.11:                               # %_ZL27truncOrZextVecInLoopWithVW8IjmEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB66_10 Depth=1
@@ -26961,22 +26831,22 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	bne	$s4, $s3, .LBB66_10
 # %bb.12:
 	vst	$vr16, $sp, 16                  # 16-byte Folded Spill
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
-	ld.w	$s0, $s1, 28
-	ld.d	$s2, $s1, 16
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
+	ld.w	$s1, $s3, 28
+	ld.d	$s2, $s3, 16
 .Ltmp1443:                              # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp1444:                              # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	vld	$vr16, $sp, 16                  # 16-byte Folded Reload
-	bnez	$s0, .LBB66_19
+	bnez	$s1, .LBB66_19
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s2, .LBB66_19
 # %bb.15:                               # %.lr.ph.preheader
 	addi.d	$a0, $fp, 64
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 40
 	lu12i.w	$a2, 2
 	ori	$a2, $a2, 1792
 	.p2align	4, , 16
@@ -26986,7 +26856,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 56
+	ld.d	$a4, $sp, 40
 	add.d	$a3, $a4, $s7
 	addi.d	$a4, $a4, 128
 	move	$a5, $a0
@@ -27077,15 +26947,15 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	bnez	$s2, .LBB66_16
 .LBB66_19:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp1445:                              # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp1446:                              # EH_LABEL
 # %bb.20:                               # %_ZNSt10unique_ptrIA_mSt14default_deleteIS0_EED2Ev.exit36
-	move	$a0, $s5
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB66_22
 # %bb.21:                               # %_ZNKSt14default_deleteIA_mEclImEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i38
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -27094,18 +26964,18 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .LBB66_23:
 .Ltmp1428:                              # EH_LABEL
@@ -27153,8 +27023,7 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 	jirl	$ra, $ra, 0
 .Ltmp1437:                              # EH_LABEL
 # %bb.28:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ldx.d	$a1, $a0, $s4
+	ldx.d	$a1, $s0, $s4
 .Ltmp1438:                              # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
@@ -27194,10 +27063,10 @@ _Z61benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint64_t_RN9benchmark5St
 .Ltmp1427:                              # EH_LABEL
 .LBB66_36:
 	move	$s1, $a0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 56
+	ld.d	$s2, $sp, 40
 	beqz	$s2, .LBB66_38
 .LBB66_37:                              # %_ZNKSt14default_deleteIA_mEclImEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i31
 	move	$a0, $s2
@@ -27267,19 +27136,19 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception67
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -27291,7 +27160,7 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	lu12i.w	$s1, 9
 	ori	$s4, $s1, 3136
 	move	$a0, $s4
@@ -27307,55 +27176,57 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 .Ltmp1449:                              # EH_LABEL
 # %bb.1:                                # %.split
 	move	$s2, $a0
-	st.d	$a0, $sp, 56
+	st.d	$a0, $sp, 40
 .Ltmp1451:                              # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 .Ltmp1452:                              # EH_LABEL
 # %bb.2:
+	move	$s0, $a0
 	ori	$s1, $s1, 3072
 	add.d	$s6, $fp, $s1
 	ori	$s7, $s5, 2048
-	add.d	$s8, $s2, $s7
+	add.d	$a0, $s2, $s7
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
-	st.d	$a0, $sp, 64
+	st.d	$a0, $sp, 48
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
 	addi.d	$s5, $a0, %pc_lo12(_ZL3rng)
-	move	$s0, $zero
+	move	$s8, $zero
 	.p2align	4, , 16
 .LBB67_3:                               # =>This Inner Loop Header: Depth=1
 .Ltmp1454:                              # EH_LABEL
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 64
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 48
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEjRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp1455:                              # EH_LABEL
 # %bb.4:                                # %.noexc8
                                         #   in Loop: Header=BB67_3 Depth=1
-	stx.w	$a0, $fp, $s0
-	addi.d	$s0, $s0, 4
-	bne	$s0, $s4, .LBB67_3
+	stx.w	$a0, $fp, $s8
+	addi.d	$s8, $s8, 4
+	bne	$s8, $s4, .LBB67_3
 # %bb.5:                                # %vector.ph
 	move	$a0, $zero
-	vrepli.b	$vr3, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	addi.d	$a1, $fp, 4
 	.p2align	4, , 16
 .LBB67_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ldx.d	$a2, $fp, $a0
-	vinsgr2vr.d	$vr0, $a2, 0
-	vilvl.w	$vr0, $vr3, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 8
-	addi.d	$a1, $a1, 16
-	bne	$a0, $s4, .LBB67_6
+	ld.wu	$a2, $a1, -4
+	ld.wu	$a3, $a1, 0
+	add.d	$a4, $s0, $a0
+	stx.d	$a2, $s0, $a0
+	st.d	$a3, $a4, 8
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, 8
+	bne	$a0, $s3, .LBB67_6
 # %bb.7:                                # %vector.body84.preheader
 	move	$a0, $zero
 	addi.d	$a1, $s2, 256
+	vrepli.b	$vr3, 0
 	.p2align	4, , 16
 .LBB67_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1
@@ -27449,41 +27320,41 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	ld.wu	$a1, $s6, 4
 	ld.wu	$a2, $s6, 8
 	ld.wu	$a3, $s6, 12
-	st.d	$a0, $s8, 0
-	st.d	$a1, $s8, 8
-	st.d	$a2, $s8, 16
-	st.d	$a3, $s8, 24
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	st.d	$a0, $a4, 0
+	st.d	$a1, $a4, 8
+	st.d	$a2, $a4, 16
+	st.d	$a3, $a4, 24
 	ld.wu	$a0, $s6, 16
 	ld.wu	$a1, $s6, 20
 	ld.wu	$a2, $s6, 24
 	ld.wu	$a3, $s6, 28
-	st.d	$a0, $s8, 32
-	st.d	$a1, $s8, 40
-	st.d	$a2, $s8, 48
-	st.d	$a3, $s8, 56
+	st.d	$a0, $a4, 32
+	st.d	$a1, $a4, 40
+	st.d	$a2, $a4, 48
+	st.d	$a3, $a4, 56
 	ld.wu	$a0, $s6, 32
 	ld.wu	$a1, $s6, 36
 	ld.wu	$a2, $s6, 40
 	ld.wu	$a3, $s6, 44
-	st.d	$a0, $s8, 64
-	st.d	$a1, $s8, 72
-	st.d	$a2, $s8, 80
-	st.d	$a3, $s8, 88
+	st.d	$a0, $a4, 64
+	st.d	$a1, $a4, 72
+	st.d	$a2, $a4, 80
+	st.d	$a3, $a4, 88
 	ld.wu	$a0, $s6, 48
 	ld.wu	$a1, $s6, 52
 	ld.wu	$a2, $s6, 56
 	ld.wu	$a3, $s6, 60
-	st.d	$a0, $s8, 96
-	st.d	$a1, $s8, 104
-	st.d	$a2, $s8, 112
-	st.d	$a3, $s8, 120
+	st.d	$a0, $a4, 96
+	st.d	$a1, $a4, 104
+	st.d	$a2, $a4, 112
+	st.d	$a3, $a4, 120
 	move	$s1, $fp
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB67_10:                              # %_ZL28truncOrZextVecInLoopWithVW16IjmEvPKT_PT0_i.exit.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a0, $s2, $s4
-	ldx.d	$a1, $s5, $s4
+	ldx.d	$a1, $s0, $s4
 	bne	$a0, $a1, .LBB67_23
 # %bb.11:                               # %_ZL28truncOrZextVecInLoopWithVW16IjmEvPKT_PT0_i.exit
                                         #   in Loop: Header=BB67_10 Depth=1
@@ -27492,22 +27363,22 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	bne	$s4, $s3, .LBB67_10
 # %bb.12:
 	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
-	ld.w	$s0, $s1, 28
-	ld.d	$s2, $s1, 16
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
+	ld.w	$s1, $s3, 28
+	ld.d	$s2, $s3, 16
 .Ltmp1472:                              # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp1473:                              # EH_LABEL
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
-	bnez	$s0, .LBB67_19
+	bnez	$s1, .LBB67_19
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s2, .LBB67_19
 # %bb.15:                               # %.lr.ph.preheader
 	addi.d	$a0, $fp, 128
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 40
 	lu12i.w	$a2, 2
 	ori	$a2, $a2, 1792
 	.p2align	4, , 16
@@ -27517,7 +27388,7 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 56
+	ld.d	$a4, $sp, 40
 	add.d	$a3, $a4, $s7
 	addi.d	$a4, $a4, 256
 	move	$a5, $a0
@@ -27648,15 +27519,15 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	bnez	$s2, .LBB67_16
 .LBB67_19:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp1474:                              # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp1475:                              # EH_LABEL
 # %bb.20:                               # %_ZNSt10unique_ptrIA_mSt14default_deleteIS0_EED2Ev.exit36
-	move	$a0, $s5
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB67_22
 # %bb.21:                               # %_ZNKSt14default_deleteIA_mEclImEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i38
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -27665,18 +27536,18 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .LBB67_23:
 .Ltmp1457:                              # EH_LABEL
@@ -27724,8 +27595,7 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 	jirl	$ra, $ra, 0
 .Ltmp1466:                              # EH_LABEL
 # %bb.28:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ldx.d	$a1, $a0, $s4
+	ldx.d	$a1, $s0, $s4
 .Ltmp1467:                              # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
@@ -27765,10 +27635,10 @@ _Z62benchForTruncOrZextVecInLoopWithVW16From_uint32_t_To_uint64_t_RN9benchmark5S
 .Ltmp1456:                              # EH_LABEL
 .LBB67_36:
 	move	$s1, $a0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 56
+	ld.d	$s2, $sp, 40
 	beqz	$s2, .LBB67_38
 .LBB67_37:                              # %_ZNKSt14default_deleteIA_mEclImEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i31
 	move	$a0, $s2
@@ -27904,21 +27774,22 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint64_t_RN9benchmark5StateE: #
 	bne	$s6, $s4, .LBB68_3
 # %bb.5:                                # %vector.ph
 	move	$a0, $zero
-	vrepli.b	$vr2, 0
-	move	$a1, $s0
+	addi.d	$a1, $fp, 4
 	.p2align	4, , 16
 .LBB68_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ldx.d	$a2, $fp, $a0
-	vinsgr2vr.d	$vr0, $a2, 0
-	vilvl.w	$vr0, $vr2, $vr0
-	vst	$vr0, $a1, 0
-	addi.d	$a0, $a0, 8
-	addi.d	$a1, $a1, 16
-	bne	$a0, $s4, .LBB68_6
+	ld.wu	$a2, $a1, -4
+	ld.wu	$a3, $a1, 0
+	add.d	$a4, $s0, $a0
+	stx.d	$a2, $s0, $a0
+	st.d	$a3, $a4, 8
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, 8
+	bne	$a0, $s3, .LBB68_6
 # %bb.7:                                # %vector.body84.preheader
 	move	$a0, $zero
 	addi.d	$a1, $s2, 16
+	vrepli.b	$vr2, 0
 	.p2align	4, , 16
 .LBB68_8:                               # %vector.body84
                                         # =>This Inner Loop Header: Depth=1

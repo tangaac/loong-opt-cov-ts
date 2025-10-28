@@ -2809,7 +2809,8 @@ _ZN8NArchive4NZip6UpdateERK13CObjectVectorINS0_7CItemExEERKS1_INS0_11CUpdateItem
 # %bb.110:                              #   in Loop: Header=BB17_103 Depth=1
 	ld.bu	$a0, $s1, 2
 	b	.LBB17_119
-.LBB17_111:                             #   in Loop: Header=BB17_103 Depth=1
+.LBB17_111:                             # %.outer605.split.split.us.loopexit.i
+                                        #   in Loop: Header=BB17_103 Depth=1
 	move	$s8, $a1
 .LBB17_112:                             # %.outer605.split.split.us.i
                                         #   in Loop: Header=BB17_103 Depth=1
@@ -4257,7 +4258,7 @@ _ZN8NArchive4NZip6UpdateERK13CObjectVectorINS0_7CItemExEERKS1_INS0_11CUpdateItem
 	pcaddu18i	$ra, %call36(pthread_cond_destroy)
 	jirl	$ra, $ra, 0
 	b	.LBB17_285
-.LBB17_317:                             # %.thread578.i.loopexit1121
+.LBB17_317:                             # %.thread578.i.loopexit1114
 	move	$s6, $s7
 	b	.LBB17_302
 .LBB17_318:

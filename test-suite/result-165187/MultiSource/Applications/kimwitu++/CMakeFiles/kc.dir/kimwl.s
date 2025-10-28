@@ -3671,85 +3671,62 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	ld.d	$a7, $s2, %pc_lo12(yytext_ptr)
 	ld.w	$a3, $s1, 52
 	sub.d	$a0, $a5, $a7
-	beqz	$a3, .LBB9_7
+	addi.d	$a6, $a0, -1
+	beqz	$a3, .LBB9_10
 # %bb.2:
 	addi.w	$a3, $a0, 0
 	ori	$a4, $zero, 2
-	addi.w	$s4, $a0, -1
-	blt	$a3, $a4, .LBB9_19
+	addi.w	$s4, $a6, 0
+	blt	$a3, $a4, .LBB9_15
 # %bb.3:                                # %iter.check
 	move	$t4, $zero
-	ori	$t1, $zero, 9
+	ori	$t1, $zero, 17
 	alsl.d	$a6, $a2, $a1, 3
-	bltu	$a3, $t1, .LBB9_8
+	bltu	$a3, $t1, .LBB9_11
 # %bb.4:                                # %iter.check
 	sub.d	$t1, $t0, $a7
 	ori	$t2, $zero, 32
-	bltu	$t1, $t2, .LBB9_8
+	bltu	$t1, $t2, .LBB9_11
 # %bb.5:                                # %vector.main.loop.iter.check
 	ori	$t2, $zero, 33
 	bstrpick.d	$t1, $s4, 31, 0
-	bgeu	$a3, $t2, .LBB9_9
+	bgeu	$a3, $t2, .LBB9_37
 # %bb.6:
 	move	$t5, $zero
-	b	.LBB9_13
-.LBB9_7:
-	addi.d	$a0, $a0, -1
-	sltui	$a0, $a0, 1
-	ori	$a1, $zero, 2
-	sub.d	$a0, $a1, $a0
-	b	.LBB9_45
-.LBB9_8:
-	move	$t3, $a7
-	move	$t2, $t0
-	b	.LBB9_16
-.LBB9_9:                                # %vector.ph
-	andi	$t2, $t1, 24
-	bstrpick.d	$t3, $t1, 31, 5
-	slli.d	$t5, $t3, 5
-	addi.d	$t3, $t0, 16
-	addi.d	$t4, $a7, 16
-	move	$t6, $t5
-	.p2align	4, , 16
-.LBB9_10:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $t4, -16
-	vld	$vr1, $t4, 0
-	vst	$vr0, $t3, -16
-	vst	$vr1, $t3, 0
-	addi.d	$t6, $t6, -32
-	addi.d	$t3, $t3, 32
-	addi.d	$t4, $t4, 32
-	bnez	$t6, .LBB9_10
-# %bb.11:                               # %middle.block
-	beq	$t5, $t1, .LBB9_18
-# %bb.12:                               # %vec.epilog.iter.check
-	beqz	$t2, .LBB9_47
-.LBB9_13:                               # %vec.epilog.ph
-	bstrpick.d	$t2, $t1, 31, 3
-	slli.d	$t4, $t2, 3
-	alsl.d	$t3, $t2, $a7, 3
-	alsl.d	$t2, $t2, $t0, 3
+.LBB9_7:                                # %vec.epilog.ph
+	bstrpick.d	$t2, $t1, 31, 4
+	slli.d	$t4, $t2, 4
+	alsl.d	$t3, $t2, $a7, 4
+	alsl.d	$t2, $t2, $t0, 4
 	sub.d	$t6, $t5, $t4
 	add.d	$t0, $t0, $t5
 	add.d	$t5, $a7, $t5
 	.p2align	4, , 16
-.LBB9_14:                               # %vec.epilog.vector.body
+.LBB9_8:                                # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t7, $t5, 0
-	st.d	$t7, $t0, 0
-	addi.d	$t6, $t6, 8
-	addi.d	$t0, $t0, 8
-	addi.d	$t5, $t5, 8
-	bnez	$t6, .LBB9_14
-# %bb.15:                               # %vec.epilog.middle.block
-	beq	$t4, $t1, .LBB9_18
-.LBB9_16:                               # %.lr.ph.preheader
+	vld	$vr0, $t5, 0
+	vst	$vr0, $t0, 0
+	addi.d	$t6, $t6, 16
+	addi.d	$t0, $t0, 16
+	addi.d	$t5, $t5, 16
+	bnez	$t6, .LBB9_8
+# %bb.9:                                # %vec.epilog.middle.block
+	bne	$t4, $t1, .LBB9_12
+	b	.LBB9_14
+.LBB9_10:
+	sltui	$a0, $a6, 1
+	ori	$a1, $zero, 2
+	sub.d	$a0, $a1, $a0
+	b	.LBB9_46
+.LBB9_11:
+	move	$t3, $a7
+	move	$t2, $t0
+.LBB9_12:                               # %.lr.ph.preheader
 	add.d	$a7, $t4, $a7
 	sub.d	$a5, $a7, $a5
 	addi.w	$a5, $a5, 1
 	.p2align	4, , 16
-.LBB9_17:                               # %.lr.ph
+.LBB9_13:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a7, $t3, 0
 	addi.d	$t3, $t3, 1
@@ -3759,27 +3736,27 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	slli.d	$t1, $a5, 31
 	st.b	$a7, $t2, 0
 	move	$t2, $t0
-	bgez	$t1, .LBB9_17
-.LBB9_18:                               # %._crit_edge.loopexit
+	bgez	$t1, .LBB9_13
+.LBB9_14:                               # %._crit_edge.loopexit
 	ld.d	$s1, $a6, 0
-.LBB9_19:                               # %._crit_edge
+.LBB9_15:                               # %._crit_edge
 	ld.w	$a5, $s1, 56
-	bne	$a5, $a4, .LBB9_24
-# %bb.20:                               # %.thread44
+	bne	$a5, $a4, .LBB9_20
+# %bb.16:                               # %.thread44
 	st.w	$zero, $s3, %pc_lo12(_ZL10yy_n_chars)
-.LBB9_21:                               # %.sink.split
+.LBB9_17:                               # %.sink.split
 	st.w	$zero, $s1, 28
-.LBB9_22:
-	beqz	$s4, .LBB9_34
-# %bb.23:
+.LBB9_18:
+	beqz	$s4, .LBB9_30
+# %bb.19:
 	move	$fp, $zero
 	ori	$a0, $zero, 2
 	st.w	$a0, $s1, 56
-	b	.LBB9_44
-.LBB9_24:
+	b	.LBB9_45
+.LBB9_20:
 	ld.w	$a1, $s1, 24
 	beq	$a1, $a3, .LBB9_50
-# %bb.25:
+# %bb.21:
 	sub.w	$a0, $a1, $a0
 	srli.d	$a1, $a0, 13
 	sltui	$a1, $a1, 1
@@ -3788,21 +3765,21 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	lu12i.w	$a3, 2
 	masknez	$a1, $a3, $a1
 	or	$s0, $a0, $a1
-	beqz	$a2, .LBB9_35
-# %bb.26:                               # %.lr.ph49
+	beqz	$a2, .LBB9_31
+# %bb.22:                               # %.lr.ph49
 	move	$fp, $zero
 	pcalau12i	$s1, %pc_hi20(yyin)
 	addi.w	$s7, $zero, -1
 	ori	$s8, $zero, 10
 	.p2align	4, , 16
-.LBB9_27:                               # =>This Inner Loop Header: Depth=1
+.LBB9_23:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, %pc_lo12(yyin)
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s7, .LBB9_31
-# %bb.28:                               #   in Loop: Header=BB9_27 Depth=1
-	beq	$a0, $s8, .LBB9_31
-# %bb.29:                               #   in Loop: Header=BB9_27 Depth=1
+	beq	$a0, $s7, .LBB9_27
+# %bb.24:                               #   in Loop: Header=BB9_23 Depth=1
+	beq	$a0, $s8, .LBB9_27
+# %bb.25:                               #   in Loop: Header=BB9_23 Depth=1
 	ld.d	$a1, $s6, %pc_lo12(_ZL19yy_buffer_stack_top)
 	ld.d	$a2, $s5, %pc_lo12(_ZL15yy_buffer_stack)
 	slli.d	$a1, $a1, 3
@@ -3811,15 +3788,15 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	add.d	$a1, $a1, $s4
 	stx.b	$a0, $a1, $fp
 	addi.d	$fp, $fp, 1
-	bne	$s0, $fp, .LBB9_27
-# %bb.30:
+	bne	$s0, $fp, .LBB9_23
+# %bb.26:
 	move	$fp, $s0
-.LBB9_31:                               # %.critedge
-	beq	$a0, $s7, .LBB9_41
-# %bb.32:                               # %.critedge
+.LBB9_27:                               # %.critedge
+	beq	$a0, $s7, .LBB9_42
+# %bb.28:                               # %.critedge
 	ori	$a1, $zero, 10
-	bne	$a0, $a1, .LBB9_42
-# %bb.33:                               # %.thread
+	bne	$a0, $a1, .LBB9_43
+# %bb.29:                               # %.thread
 	ld.d	$a0, $s6, %pc_lo12(_ZL19yy_buffer_stack_top)
 	ld.d	$a2, $s5, %pc_lo12(_ZL15yy_buffer_stack)
 	slli.d	$a0, $a0, 3
@@ -3829,8 +3806,8 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	addi.d	$a2, $fp, 1
 	stx.b	$a1, $a0, $fp
 	move	$fp, $a2
-	b	.LBB9_42
-.LBB9_34:
+	b	.LBB9_43
+.LBB9_30:
 	pcalau12i	$a0, %pc_hi20(yyin)
 	ld.d	$a0, $a0, %pc_lo12(yyin)
 	pcaddu18i	$ra, %call36(_Z9yyrestartP8_IO_FILE)
@@ -3841,8 +3818,8 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	slli.d	$a0, $a2, 3
 	ldx.d	$s1, $a1, $a0
 	ori	$a0, $zero, 1
-	b	.LBB9_44
-.LBB9_35:
+	b	.LBB9_45
+.LBB9_31:
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, 8
@@ -3858,21 +3835,21 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	move	$fp, $a0
 	addi.w	$a0, $a0, 0
 	st.w	$fp, $s3, %pc_lo12(_ZL10yy_n_chars)
-	bnez	$a0, .LBB9_40
-# %bb.36:                               # %.lr.ph58.preheader
+	bnez	$a0, .LBB9_36
+# %bb.32:                               # %.lr.ph58.preheader
 	ori	$s8, $zero, 4
 	.p2align	4, , 16
-.LBB9_37:                               # %.lr.ph58
+.LBB9_33:                               # %.lr.ph58
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$fp, $s7, %pc_lo12(yyin)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB9_46
-# %bb.38:                               #   in Loop: Header=BB9_37 Depth=1
+	beqz	$a0, .LBB9_47
+# %bb.34:                               #   in Loop: Header=BB9_33 Depth=1
 	ld.w	$a0, $s1, 0
 	bne	$a0, $s8, .LBB9_49
-# %bb.39:                               #   in Loop: Header=BB9_37 Depth=1
+# %bb.35:                               #   in Loop: Header=BB9_33 Depth=1
 	st.w	$zero, $s1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(clearerr)
@@ -3891,21 +3868,48 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	move	$fp, $a0
 	addi.w	$a0, $a0, 0
 	st.w	$fp, $s3, %pc_lo12(_ZL10yy_n_chars)
-	beqz	$a0, .LBB9_37
-.LBB9_40:                               # %.loopexit.thread
+	beqz	$a0, .LBB9_33
+.LBB9_36:                               # %.loopexit.thread
 	ld.d	$a2, $s6, %pc_lo12(_ZL19yy_buffer_stack_top)
 	ld.d	$a1, $s5, %pc_lo12(_ZL15yy_buffer_stack)
 	slli.d	$a0, $a2, 3
 	ldx.d	$s1, $a1, $a0
 	move	$a0, $zero
 	st.w	$fp, $s1, 28
-	b	.LBB9_44
-.LBB9_41:
+	b	.LBB9_45
+.LBB9_37:                               # %vector.ph
+	andi	$t2, $t1, 16
+	bstrpick.d	$t3, $t1, 31, 5
+	slli.d	$t5, $t3, 5
+	addi.d	$t3, $t0, 16
+	addi.d	$t4, $a7, 16
+	move	$t6, $t5
+	.p2align	4, , 16
+.LBB9_38:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $t4, -16
+	vld	$vr1, $t4, 0
+	vst	$vr0, $t3, -16
+	vst	$vr1, $t3, 0
+	addi.d	$t6, $t6, -32
+	addi.d	$t3, $t3, 32
+	addi.d	$t4, $t4, 32
+	bnez	$t6, .LBB9_38
+# %bb.39:                               # %middle.block
+	beq	$t5, $t1, .LBB9_14
+# %bb.40:                               # %vec.epilog.iter.check
+	bnez	$t2, .LBB9_7
+# %bb.41:
+	add.d	$t3, $a7, $t5
+	add.d	$t2, $t0, $t5
+	move	$t4, $t5
+	b	.LBB9_12
+.LBB9_42:
 	ld.d	$a0, $s1, %pc_lo12(yyin)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB9_49
-.LBB9_42:                               # %.loopexit
+.LBB9_43:                               # %.loopexit
 	ld.d	$a2, $s6, %pc_lo12(_ZL19yy_buffer_stack_top)
 	ld.d	$a1, $s5, %pc_lo12(_ZL15yy_buffer_stack)
 	slli.d	$a0, $a2, 3
@@ -3913,10 +3917,10 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	addi.w	$a0, $fp, 0
 	st.w	$fp, $s3, %pc_lo12(_ZL10yy_n_chars)
 	st.w	$fp, $s1, 28
-	beqz	$a0, .LBB9_22
-# %bb.43:
+	beqz	$a0, .LBB9_18
+# %bb.44:
 	move	$a0, $zero
-.LBB9_44:
+.LBB9_45:
 	ld.d	$a3, $s1, 8
 	add.w	$a4, $fp, $s4
 	st.w	$a4, $s3, %pc_lo12(_ZL10yy_n_chars)
@@ -3929,7 +3933,7 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	ldx.d	$a1, $a1, $a2
 	ld.d	$a1, $a1, 8
 	st.d	$a1, $s2, %pc_lo12(yytext_ptr)
-.LBB9_45:
+.LBB9_46:
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -3943,17 +3947,12 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
 	ret
-.LBB9_46:                               # %.loopexit.thread71
+.LBB9_47:                               # %.loopexit.thread71
 	ld.d	$a2, $s6, %pc_lo12(_ZL19yy_buffer_stack_top)
 	ld.d	$a1, $s5, %pc_lo12(_ZL15yy_buffer_stack)
 	slli.d	$a0, $a2, 3
 	ldx.d	$s1, $a1, $a0
-	b	.LBB9_21
-.LBB9_47:
-	add.d	$t3, $a7, $t5
-	add.d	$t2, $t0, $t5
-	move	$t4, $t5
-	b	.LBB9_16
+	b	.LBB9_17
 .LBB9_48:
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)

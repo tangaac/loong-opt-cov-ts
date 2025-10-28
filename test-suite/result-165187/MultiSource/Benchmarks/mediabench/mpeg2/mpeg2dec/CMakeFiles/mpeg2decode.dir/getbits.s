@@ -43,72 +43,48 @@ Flush_Buffer:                           # @Flush_Buffer
 	ori	$a2, $zero, 2080
 	ldx.w	$a2, $a1, $a2
 	ori	$a3, $zero, 2096
-	ldx.w	$a6, $a1, $a3
-	sll.w	$a5, $a2, $a0
-	stptr.w	$a5, $a1, 2080
-	sub.w	$a3, $a6, $a0
+	ldx.w	$a5, $a1, $a3
+	sll.w	$a4, $a2, $a0
+	stptr.w	$a4, $a1, 2080
+	sub.w	$a3, $a5, $a0
 	ori	$a2, $zero, 24
 	stptr.w	$a3, $a1, 2096
-	blt	$a2, $a3, .LBB1_11
+	blt	$a2, $a3, .LBB1_7
 # %bb.1:
 	pcalau12i	$a2, %got_pc_hi20(System_Stream_Flag)
 	ld.d	$s0, $a2, %got_pc_lo12(System_Stream_Flag)
-	ld.w	$a4, $s0, 0
+	ld.w	$a6, $s0, 0
 	ldptr.d	$a2, $a1, 2056
-	beqz	$a4, .LBB1_3
+	beqz	$a6, .LBB1_3
 # %bb.2:
-	ldptr.d	$a4, $a1, 2088
-	addi.d	$a4, $a4, -4
-	bgeu	$a2, $a4, .LBB1_23
+	ldptr.d	$a6, $a1, 2088
+	addi.d	$a6, $a6, -4
+	bgeu	$a2, $a6, .LBB1_19
 .LBB1_3:                                # %._crit_edge
-	addi.d	$a7, $a1, 2047
-	addi.d	$a4, $a7, 1
-	bgeu	$a2, $a4, .LBB1_12
-# %bb.4:                                # %.preheader.preheader
-	ori	$a4, $zero, 17
-	slt	$t0, $a4, $a3
-	masknez	$t1, $a4, $t0
-	maskeqz	$t0, $a3, $t0
-	or	$t0, $t0, $t1
-	add.d	$a0, $a0, $t0
-	sub.d	$a0, $a0, $a6
-	addi.d	$a6, $a0, 7
-	addi.w	$a0, $a6, 0
-	ori	$t0, $zero, 72
-	bltu	$a0, $t0, .LBB1_7
-# %bb.5:                                # %vector.memcheck
-	addi.d	$t0, $a7, 9
-	bstrpick.d	$a6, $a6, 31, 3
-	add.d	$a6, $a2, $a6
+	addi.d	$a6, $a1, 2047
 	addi.d	$a6, $a6, 1
-	bgeu	$t0, $a6, .LBB1_29
-# %bb.6:                                # %vector.memcheck
-	addi.d	$a6, $a7, 37
-	bgeu	$a2, $a6, .LBB1_29
-.LBB1_7:
-	move	$a6, $a2
-	move	$a0, $a3
-.LBB1_8:                                # %.preheader.preheader77
-	addi.d	$a2, $a6, 1
-	ori	$a3, $zero, 24
-	sub.d	$a6, $a3, $a0
-	move	$a3, $a0
+	bgeu	$a2, $a6, .LBB1_8
+# %bb.4:                                # %.preheader.preheader
+	addi.d	$a2, $a2, 1
+	sub.d	$a0, $a0, $a5
+	addi.d	$a0, $a0, 24
+	ori	$a5, $zero, 17
 	.p2align	4, , 16
-.LBB1_9:                                # %.preheader
+.LBB1_5:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	stptr.d	$a2, $a1, 2056
-	ld.bu	$a0, $a2, -1
+	ld.bu	$a6, $a2, -1
 	move	$a7, $a3
-	sll.w	$a0, $a0, $a6
-	or	$a5, $a0, $a5
-	stptr.w	$a5, $a1, 2080
-	addi.w	$a3, $a3, 8
+	sll.w	$a3, $a6, $a0
+	or	$a4, $a3, $a4
+	stptr.w	$a4, $a1, 2080
+	addi.w	$a3, $a7, 8
 	addi.d	$a2, $a2, 1
-	addi.d	$a6, $a6, -8
-	blt	$a7, $a4, .LBB1_9
-.LBB1_10:                               # %.loopexit
+	addi.d	$a0, $a0, -8
+	blt	$a7, $a5, .LBB1_5
+.LBB1_6:                                # %.loopexit
 	stptr.w	$a3, $a1, 2096
-.LBB1_11:
+.LBB1_7:
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -122,7 +98,7 @@ Flush_Buffer:                           # @Flush_Buffer
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
 	ret
-.LBB1_12:
+.LBB1_8:
 	ori	$s1, $zero, 24
 	ori	$s2, $zero, 2080
 	ori	$s3, $zero, 17
@@ -130,10 +106,10 @@ Flush_Buffer:                           # @Flush_Buffer
 	ori	$s5, $zero, 1
 	ori	$s6, $zero, 183
 	ori	$s7, $zero, 2044
-	b	.LBB1_14
+	b	.LBB1_10
 	.p2align	4, , 16
-.LBB1_13:                               # %Fill_Buffer.exit
-                                        #   in Loop: Header=BB1_14 Depth=1
+.LBB1_9:                                # %Fill_Buffer.exit
+                                        #   in Loop: Header=BB1_10 Depth=1
 	ld.d	$a1, $fp, 0
 	ldptr.d	$a0, $a1, 2056
 	addi.d	$a2, $a0, 1
@@ -145,16 +121,16 @@ Flush_Buffer:                           # @Flush_Buffer
 	or	$a0, $a0, $a3
 	stptr.w	$a0, $a1, 2080
 	addi.w	$a3, $s8, 8
-	bge	$s8, $s3, .LBB1_10
-.LBB1_14:                               # %.preheader24
+	bge	$s8, $s3, .LBB1_6
+.LBB1_10:                               # %.preheader24
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB1_20 Depth 2
-                                        #     Child Loop BB1_22 Depth 2
+                                        #     Child Loop BB1_16 Depth 2
+                                        #     Child Loop BB1_18 Depth 2
 	addi.d	$a0, $a1, 2047
 	addi.d	$a0, $a0, 5
 	move	$s8, $a3
-	bltu	$a2, $a0, .LBB1_13
-# %bb.15:                               #   in Loop: Header=BB1_14 Depth=1
+	bltu	$a2, $a0, .LBB1_9
+# %bb.11:                               #   in Loop: Header=BB1_10 Depth=1
 	ld.w	$a0, $a1, 0
 	addi.d	$a1, $a1, 4
 	ori	$a2, $zero, 2048
@@ -164,41 +140,41 @@ Flush_Buffer:                           # @Flush_Buffer
 	ld.w	$a2, $s0, 0
 	addi.d	$a3, $a1, 4
 	stptr.d	$a3, $a1, 2056
-	beqz	$a2, .LBB1_17
-# %bb.16:                               #   in Loop: Header=BB1_14 Depth=1
+	beqz	$a2, .LBB1_13
+# %bb.12:                               #   in Loop: Header=BB1_10 Depth=1
 	ldptr.d	$a2, $a1, 2088
 	addi.d	$a2, $a2, -2048
 	stptr.d	$a2, $a1, 2088
-.LBB1_17:                               #   in Loop: Header=BB1_14 Depth=1
+.LBB1_13:                               #   in Loop: Header=BB1_10 Depth=1
 	addi.w	$a0, $a0, 0
-	blt	$s4, $a0, .LBB1_13
-# %bb.18:                               #   in Loop: Header=BB1_14 Depth=1
+	blt	$s4, $a0, .LBB1_9
+# %bb.14:                               #   in Loop: Header=BB1_10 Depth=1
 	srai.d	$a1, $a0, 63
 	andn	$a0, $a0, $a1
 	andi	$a1, $a0, 3
-	beqz	$a1, .LBB1_22
-# %bb.19:                               # %.lr.ph.preheader.i
-                                        #   in Loop: Header=BB1_14 Depth=1
+	beqz	$a1, .LBB1_18
+# %bb.15:                               # %.lr.ph.preheader.i
+                                        #   in Loop: Header=BB1_10 Depth=1
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$a1, $a1, 4
 	.p2align	4, , 16
-.LBB1_20:                               # %.lr.ph.i23
-                                        #   Parent Loop BB1_14 Depth=1
+.LBB1_16:                               # %.lr.ph.i23
+                                        #   Parent Loop BB1_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $fp, 0
 	stx.b	$zero, $a2, $a1
 	addi.w	$a0, $a0, 1
 	andi	$a2, $a0, 3
 	addi.d	$a1, $a1, 1
-	bnez	$a2, .LBB1_20
-# %bb.21:                               # %.preheader.i
-                                        #   in Loop: Header=BB1_14 Depth=1
+	bnez	$a2, .LBB1_16
+# %bb.17:                               # %.preheader.i
+                                        #   in Loop: Header=BB1_10 Depth=1
 	addi.d	$a1, $a1, -5
 	ori	$a2, $zero, 2046
-	bltu	$a2, $a1, .LBB1_13
+	bltu	$a2, $a1, .LBB1_9
 	.p2align	4, , 16
-.LBB1_22:                               # %.lr.ph14.i
-                                        #   Parent Loop BB1_14 Depth=1
+.LBB1_18:                               # %.lr.ph14.i
+                                        #   Parent Loop BB1_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $fp, 0
 	move	$a2, $a0
@@ -214,16 +190,16 @@ Flush_Buffer:                           # @Flush_Buffer
 	addi.d	$a0, $a2, 4
 	add.d	$a1, $a1, $a2
 	st.b	$s6, $a1, 7
-	bltu	$a2, $s7, .LBB1_22
-	b	.LBB1_13
-.LBB1_23:                               # %.preheader26.preheader
+	bltu	$a2, $s7, .LBB1_18
+	b	.LBB1_9
+.LBB1_19:                               # %.preheader26.preheader
 	ori	$s0, $zero, 24
 	ori	$s1, $zero, 2080
 	ori	$s2, $zero, 17
-	b	.LBB1_25
+	b	.LBB1_21
 	.p2align	4, , 16
-.LBB1_24:                               # %Get_Byte.exit
-                                        #   in Loop: Header=BB1_25 Depth=1
+.LBB1_20:                               # %Get_Byte.exit
+                                        #   in Loop: Header=BB1_21 Depth=1
 	addi.d	$a0, $a2, 1
 	stptr.d	$a0, $a1, 2056
 	ld.bu	$a2, $a2, 0
@@ -234,25 +210,25 @@ Flush_Buffer:                           # @Flush_Buffer
 	stptr.w	$a2, $a1, 2080
 	addi.w	$a3, $s3, 8
 	move	$a2, $a0
-	bge	$s3, $s2, .LBB1_10
-.LBB1_25:                               # %.preheader26
+	bge	$s3, $s2, .LBB1_6
+.LBB1_21:                               # %.preheader26
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB1_28 Depth 2
+                                        #     Child Loop BB1_24 Depth 2
 	ldptr.d	$a0, $a1, 2088
 	move	$s3, $a3
-	bltu	$a2, $a0, .LBB1_27
-# %bb.26:                               #   in Loop: Header=BB1_25 Depth=1
+	bltu	$a2, $a0, .LBB1_23
+# %bb.22:                               #   in Loop: Header=BB1_21 Depth=1
 	pcaddu18i	$ra, %call36(Next_Packet)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
 	ldptr.d	$a2, $a1, 2056
-.LBB1_27:                               #   in Loop: Header=BB1_25 Depth=1
+.LBB1_23:                               #   in Loop: Header=BB1_21 Depth=1
 	addi.d	$a0, $a1, 2047
 	addi.d	$a0, $a0, 5
-	bltu	$a2, $a0, .LBB1_24
+	bltu	$a2, $a0, .LBB1_20
 	.p2align	4, , 16
-.LBB1_28:                               # %.lr.ph.i
-                                        #   Parent Loop BB1_25 Depth=1
+.LBB1_24:                               # %.lr.ph.i
+                                        #   Parent Loop BB1_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a0, $a1, 0
 	addi.d	$a1, $a1, 4
@@ -268,63 +244,8 @@ Flush_Buffer:                           # @Flush_Buffer
 	addi.d	$a3, $a1, 2047
 	addi.d	$a3, $a3, 5
 	stptr.d	$a0, $a1, 2088
-	bgeu	$a2, $a3, .LBB1_28
-	b	.LBB1_24
-.LBB1_29:                               # %vector.ph
-	bstrpick.d	$a0, $a0, 31, 3
-	addi.d	$a7, $a0, 1
-	bstrpick.d	$a0, $a7, 29, 2
-	slli.d	$t0, $a0, 2
-	alsl.d	$a6, $a0, $a2, 2
-	slli.d	$a0, $a0, 5
-	vrepli.b	$vr1, 0
-	add.w	$a0, $a3, $a0
-	vori.b	$vr0, $vr1, 0
-	vinsgr2vr.w	$vr0, $a5, 0
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a3, 1
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 8
-	vreplgr2vr.d	$vr3, $a3
-	vadd.w	$vr2, $vr2, $vr3
-	vrepli.w	$vr3, 24
-	vrepli.w	$vr4, 8
-	vrepli.w	$vr5, 32
-	move	$a3, $t0
-	vori.b	$vr6, $vr1, 0
-	.p2align	4, , 16
-.LBB1_30:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.h	$t1, $a2, 0
-	ld.h	$t2, $a2, 2
-	addi.d	$a5, $a2, 4
-	vinsgr2vr.h	$vr7, $t1, 0
-	vinsgr2vr.h	$vr8, $t2, 0
-	vilvl.b	$vr7, $vr1, $vr7
-	vilvl.h	$vr7, $vr1, $vr7
-	vilvl.b	$vr8, $vr1, $vr8
-	vilvl.h	$vr8, $vr1, $vr8
-	vsub.w	$vr9, $vr3, $vr2
-	vsub.w	$vr10, $vr4, $vr2
-	vsll.w	$vr7, $vr7, $vr9
-	vsll.w	$vr8, $vr8, $vr10
-	vor.v	$vr0, $vr7, $vr0
-	vor.v	$vr6, $vr8, $vr6
-	addi.d	$a3, $a3, -4
-	vadd.w	$vr2, $vr2, $vr5
-	move	$a2, $a5
-	bnez	$a3, .LBB1_30
-# %bb.31:                               # %middle.block
-	stptr.d	$a5, $a1, 2056
-	vor.v	$vr0, $vr6, $vr0
-	vbsrl.v	$vr1, $vr0, 4
-	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a5, $vr0, 0
-	stptr.w	$a5, $a1, 2080
-	bne	$t0, $a7, .LBB1_8
-# %bb.32:
-	move	$a3, $a0
-	b	.LBB1_10
+	bgeu	$a2, $a3, .LBB1_24
+	b	.LBB1_20
 .Lfunc_end1:
 	.size	Flush_Buffer, .Lfunc_end1-Flush_Buffer
                                         # -- End function

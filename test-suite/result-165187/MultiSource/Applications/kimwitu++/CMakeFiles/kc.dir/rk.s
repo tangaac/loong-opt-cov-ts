@@ -387,23 +387,19 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE: # @
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 32
-	vld	$vr1, $fp, 48
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB7_2
-# %bb.1:
+	ld.d	$a1, $fp, 32
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB7_4
+# %bb.1:
+	ld.d	$a1, $fp, 40
+	bne	$s0, $a1, .LBB7_4
+# %bb.2:
+	ld.d	$a1, $fp, 48
+	bne	$s1, $a1, .LBB7_4
+# %bb.3:
+	ld.d	$a1, $fp, 56
+	beq	$a3, $a1, .LBB7_5
+.LBB7_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -416,7 +412,7 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE: # @
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB7_2:
+.LBB7_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -4730,23 +4726,19 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE: # @_Z
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 40
-	vld	$vr1, $fp, 56
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB81_2
-# %bb.1:
+	ld.d	$a1, $fp, 40
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB81_4
+# %bb.1:
+	ld.d	$a1, $fp, 48
+	bne	$s0, $a1, .LBB81_4
+# %bb.2:
+	ld.d	$a1, $fp, 56
+	bne	$s1, $a1, .LBB81_4
+# %bb.3:
+	ld.d	$a1, $fp, 64
+	beq	$a3, $a1, .LBB81_5
+.LBB81_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -4759,7 +4751,7 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE: # @_Z
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB81_2:
+.LBB81_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -4803,80 +4795,76 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc
 	ld.d	$a0, $a0, 40
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s4, $a1
+	move	$s2, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s3, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 56
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 64
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 72
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s3, $a0
+	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 80
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s5, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 88
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s6, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 40
-	vld	$vr1, $fp, 56
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 40
 	move	$a6, $a0
-	bnez	$a1, .LBB82_4
+	bne	$s3, $a1, .LBB82_7
 # %bb.1:
-	ld.d	$a0, $fp, 72
-	bne	$s5, $a0, .LBB82_4
+	ld.d	$a1, $fp, 48
+	bne	$s0, $a1, .LBB82_7
 # %bb.2:
-	ld.d	$a0, $fp, 80
-	bne	$s6, $a0, .LBB82_4
+	ld.d	$a1, $fp, 56
+	bne	$s1, $a1, .LBB82_7
 # %bb.3:
-	ld.d	$a0, $fp, 88
-	beq	$a6, $a0, .LBB82_5
-.LBB82_4:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
-	move	$a3, $s3
+	ld.d	$a1, $fp, 64
+	bne	$s4, $a1, .LBB82_7
+# %bb.4:
+	ld.d	$a1, $fp, 72
+	bne	$s5, $a1, .LBB82_7
+# %bb.5:
+	ld.d	$a1, $fp, 80
+	bne	$s6, $a1, .LBB82_7
+# %bb.6:
+	ld.d	$a1, $fp, 88
+	beq	$a6, $a1, .LBB82_8
+.LBB82_7:
+	move	$a0, $s3
+	move	$a1, $s0
+	move	$a2, $s1
+	move	$a3, $s4
 	move	$a4, $s5
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
@@ -4888,7 +4876,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB82_5:
+.LBB82_8:
 	move	$a0, $fp
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
@@ -5155,60 +5143,56 @@ _ZN2kc38impl_Ctext_elem_CTextForeachexpression7rewriteERNS_11rview_classE: # @_Z
 	ld.d	$a0, $a0, 24
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s4, $a1
+	move	$s3, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 32
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 56
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s3, $a0
+	move	$s2, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 24
-	vld	$vr1, $fp, 40
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 24
 	move	$a4, $a0
-	bnez	$a1, .LBB91_2
+	bne	$s4, $a1, .LBB91_5
 # %bb.1:
-	ld.d	$a0, $fp, 56
-	beq	$a4, $a0, .LBB91_3
-.LBB91_2:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
-	move	$a3, $s3
+	ld.d	$a1, $fp, 32
+	bne	$s0, $a1, .LBB91_5
+# %bb.2:
+	ld.d	$a1, $fp, 40
+	bne	$s1, $a1, .LBB91_5
+# %bb.3:
+	ld.d	$a1, $fp, 48
+	bne	$s2, $a1, .LBB91_5
+# %bb.4:
+	ld.d	$a1, $fp, 56
+	beq	$a4, $a1, .LBB91_6
+.LBB91_5:
+	move	$a0, $s4
+	move	$a1, $s0
+	move	$a2, $s1
+	move	$a3, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc22CTextForeachexpressionEPNS_17impl_patternchainEPNS_19impl_idCexpressionsEPNS_20impl_withexpressionsEPNS_10impl_CtextEPNS_18impl_foreach_afterE)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -5218,7 +5202,7 @@ _ZN2kc38impl_Ctext_elem_CTextForeachexpression7rewriteERNS_11rview_classE: # @_Z
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB91_3:
+.LBB91_6:
 	move	$a0, $fp
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -5532,23 +5516,19 @@ _ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE: # @_ZN2kc31i
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 24
-	vld	$vr1, $fp, 40
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB98_2
-# %bb.1:
+	ld.d	$a1, $fp, 24
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB98_4
+# %bb.1:
+	ld.d	$a1, $fp, 32
+	bne	$s0, $a1, .LBB98_4
+# %bb.2:
+	ld.d	$a1, $fp, 40
+	bne	$s1, $a1, .LBB98_4
+# %bb.3:
+	ld.d	$a1, $fp, 48
+	beq	$a3, $a1, .LBB98_5
+.LBB98_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -5561,7 +5541,7 @@ _ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE: # @_ZN2kc31i
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB98_2:
+.LBB98_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -7244,23 +7224,19 @@ _ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE: # @
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB133_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB133_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB133_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB133_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB133_5
+.LBB133_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -7273,7 +7249,7 @@ _ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE: # @
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB133_2:
+.LBB133_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -10268,23 +10244,19 @@ _ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_class
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB204_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB204_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB204_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB204_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB204_5
+.LBB204_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -10297,7 +10269,7 @@ _ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_class
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB204_2:
+.LBB204_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -12306,69 +12278,65 @@ _ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s5, $a1
+	move	$s2, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s5, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 24
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 32
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s3, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 8
 	move	$a5, $a0
-	bnez	$a1, .LBB246_3
+	bne	$s5, $a1, .LBB246_6
 # %bb.1:
-	ld.d	$a0, $fp, 40
-	bne	$s4, $a0, .LBB246_3
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB246_6
 # %bb.2:
-	ld.d	$a0, $fp, 48
-	beq	$a5, $a0, .LBB246_4
-.LBB246_3:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB246_6
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	bne	$s3, $a1, .LBB246_6
+# %bb.4:
+	ld.d	$a1, $fp, 40
+	bne	$s4, $a1, .LBB246_6
+# %bb.5:
+	ld.d	$a1, $fp, 48
+	beq	$a5, $a1, .LBB246_7
+.LBB246_6:
+	move	$a0, $s5
+	move	$a1, $s0
+	move	$a2, $s1
 	move	$a3, $s3
 	move	$a4, $s4
 	pcaddu18i	$ra, %call36(_ZN2kc8Problem6EPNS_20impl_casestring__StrES1_S1_S1_S1_S1_)
@@ -12380,7 +12348,7 @@ _ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB246_4:
+.LBB246_7:
 	move	$a0, $fp
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -12422,60 +12390,56 @@ _ZN2kc21impl_problem_Problem57rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s4, $a1
+	move	$s3, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 24
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 32
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s3, $a0
+	move	$s2, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 8
 	move	$a4, $a0
-	bnez	$a1, .LBB247_2
+	bne	$s4, $a1, .LBB247_5
 # %bb.1:
-	ld.d	$a0, $fp, 40
-	beq	$a4, $a0, .LBB247_3
-.LBB247_2:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
-	move	$a3, $s3
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB247_5
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB247_5
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	bne	$s2, $a1, .LBB247_5
+# %bb.4:
+	ld.d	$a1, $fp, 40
+	beq	$a4, $a1, .LBB247_6
+.LBB247_5:
+	move	$a0, $s4
+	move	$a1, $s0
+	move	$a2, $s1
+	move	$a3, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc8Problem5EPNS_20impl_casestring__StrES1_S1_S1_S1_)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -12485,7 +12449,7 @@ _ZN2kc21impl_problem_Problem57rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB247_3:
+.LBB247_6:
 	move	$a0, $fp
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -12547,23 +12511,19 @@ _ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB248_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB248_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB248_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB248_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB248_5
+.LBB248_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -12576,7 +12536,7 @@ _ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB248_2:
+.LBB248_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -12616,60 +12576,56 @@ _ZN2kc25impl_problem_Problem3int17rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s4, $a1
+	move	$s3, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 24
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 32
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s3, $a0
+	move	$s2, $a0
 	move	$a0, $a1
-	move	$a1, $s4
+	move	$a1, $s3
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 8
 	move	$a4, $a0
-	bnez	$a1, .LBB249_2
+	bne	$s4, $a1, .LBB249_5
 # %bb.1:
-	ld.d	$a0, $fp, 40
-	beq	$a4, $a0, .LBB249_3
-.LBB249_2:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
-	move	$a3, $s3
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB249_5
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB249_5
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	bne	$s2, $a1, .LBB249_5
+# %bb.4:
+	ld.d	$a1, $fp, 40
+	beq	$a4, $a1, .LBB249_6
+.LBB249_5:
+	move	$a0, $s4
+	move	$a1, $s0
+	move	$a2, $s1
+	move	$a3, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc12Problem3int1EPNS_20impl_casestring__StrES1_S1_PNS_17impl_integer__IntES1_)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -12679,7 +12635,7 @@ _ZN2kc25impl_problem_Problem3int17rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB249_3:
+.LBB249_6:
 	move	$a0, $fp
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -12871,23 +12827,19 @@ _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB252_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB252_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB252_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB252_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB252_5
+.LBB252_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -12900,7 +12852,7 @@ _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB252_2:
+.LBB252_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -12942,69 +12894,65 @@ _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30im
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s5, $a1
+	move	$s2, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s5, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 24
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 32
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s3, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 8
 	move	$a5, $a0
-	bnez	$a1, .LBB253_3
+	bne	$s5, $a1, .LBB253_6
 # %bb.1:
-	ld.d	$a0, $fp, 40
-	bne	$s4, $a0, .LBB253_3
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB253_6
 # %bb.2:
-	ld.d	$a0, $fp, 48
-	beq	$a5, $a0, .LBB253_4
-.LBB253_3:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB253_6
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	bne	$s3, $a1, .LBB253_6
+# %bb.4:
+	ld.d	$a1, $fp, 40
+	bne	$s4, $a1, .LBB253_6
+# %bb.5:
+	ld.d	$a1, $fp, 48
+	beq	$a5, $a1, .LBB253_7
+.LBB253_6:
+	move	$a0, $s5
+	move	$a1, $s0
+	move	$a2, $s1
 	move	$a3, $s3
 	move	$a4, $s4
 	pcaddu18i	$ra, %call36(_ZN2kc17Problem1INT1ID1IDEPNS_20impl_casestring__StrEPNS_8impl_INTES1_PNS_7impl_IDES1_S5_)
@@ -13016,7 +12964,7 @@ _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30im
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB253_4:
+.LBB253_7:
 	move	$a0, $fp
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -13060,69 +13008,65 @@ _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29imp
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s5, $a1
+	move	$s2, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s0, $a0
+	move	$s5, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 24
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 32
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s3, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s4, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s2, 0
-	vinsgr2vr.d	$vr2, $s3, 1
-	vinsgr2vr.d	$vr3, $s0, 0
-	vinsgr2vr.d	$vr3, $s1, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
+	ld.d	$a1, $fp, 8
 	move	$a5, $a0
-	bnez	$a1, .LBB254_3
+	bne	$s5, $a1, .LBB254_6
 # %bb.1:
-	ld.d	$a0, $fp, 40
-	bne	$s4, $a0, .LBB254_3
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB254_6
 # %bb.2:
-	ld.d	$a0, $fp, 48
-	beq	$a5, $a0, .LBB254_4
-.LBB254_3:
-	move	$a0, $s0
-	move	$a1, $s1
-	move	$a2, $s2
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB254_6
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	bne	$s3, $a1, .LBB254_6
+# %bb.4:
+	ld.d	$a1, $fp, 40
+	bne	$s4, $a1, .LBB254_6
+# %bb.5:
+	ld.d	$a1, $fp, 48
+	beq	$a5, $a1, .LBB254_7
+.LBB254_6:
+	move	$a0, $s5
+	move	$a1, $s0
+	move	$a2, $s1
 	move	$a3, $s3
 	move	$a4, $s4
 	pcaddu18i	$ra, %call36(_ZN2kc16Problem1ID1ID1IDEPNS_20impl_casestring__StrEPNS_7impl_IDES1_S3_S1_S3_)
@@ -13134,7 +13078,7 @@ _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29imp
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB254_4:
+.LBB254_7:
 	move	$a0, $fp
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -13197,23 +13141,19 @@ _ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE: # @_ZN2kc27impl_
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB255_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB255_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB255_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB255_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB255_5
+.LBB255_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -13226,7 +13166,7 @@ _ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE: # @_ZN2kc27impl_
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB255_2:
+.LBB255_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -13417,23 +13357,19 @@ _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB258_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB258_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB258_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB258_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB258_5
+.LBB258_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -13446,7 +13382,7 @@ _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB258_2:
+.LBB258_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -13507,23 +13443,19 @@ _ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc26impl_p
 	move	$a0, $a1
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	vld	$vr0, $fp, 8
-	vld	$vr1, $fp, 24
-	vinsgr2vr.d	$vr2, $s1, 0
-	vinsgr2vr.d	$vr2, $a0, 1
-	vinsgr2vr.d	$vr3, $s3, 0
-	vinsgr2vr.d	$vr3, $s0, 1
-	vseq.d	$vr0, $vr3, $vr0
-	vrepli.b	$vr3, -1
-	vxor.v	$vr0, $vr0, $vr3
-	vseq.d	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr3
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a1, $vr0, 0
-	beqz	$a1, .LBB259_2
-# %bb.1:
+	ld.d	$a1, $fp, 8
 	move	$a3, $a0
+	bne	$s3, $a1, .LBB259_4
+# %bb.1:
+	ld.d	$a1, $fp, 16
+	bne	$s0, $a1, .LBB259_4
+# %bb.2:
+	ld.d	$a1, $fp, 24
+	bne	$s1, $a1, .LBB259_4
+# %bb.3:
+	ld.d	$a1, $fp, 32
+	beq	$a3, $a1, .LBB259_5
+.LBB259_4:
 	move	$a0, $s3
 	move	$a1, $s0
 	move	$a2, $s1
@@ -13536,7 +13468,7 @@ _ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc26impl_p
 	move	$a1, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $s0
-.LBB259_2:
+.LBB259_5:
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload

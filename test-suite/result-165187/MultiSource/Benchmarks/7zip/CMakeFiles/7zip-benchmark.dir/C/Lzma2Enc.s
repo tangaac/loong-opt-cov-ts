@@ -467,107 +467,38 @@ Lzma2Enc_SetProps:                      # @Lzma2Enc_SetProps
 .Lfunc_end4:
 	.size	Lzma2Enc_SetProps, .Lfunc_end4-Lzma2Enc_SetProps
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Lzma2Enc_WriteProperties
-.LCPI5_0:
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-.LCPI5_1:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	Lzma2Enc_WriteProperties
+	.globl	Lzma2Enc_WriteProperties        # -- Begin function Lzma2Enc_WriteProperties
 	.p2align	5
 	.type	Lzma2Enc_WriteProperties,@function
 Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
-# %bb.0:                                # %vector.ph
+# %bb.0:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(LzmaEncProps_GetDictSize)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI5_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI5_1)
-	vld	$vr2, $a1, %pc_lo12(.LCPI5_1)
-	vreplgr2vr.w	$vr3, $a0
-	addi.w	$a0, $zero, -8
-	vrepli.w	$vr4, 1
-	ori	$a1, $zero, 24
+	move	$a1, $zero
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
-.LBB5_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a0
-	vand.v	$vr1, $vr2, $vr4
-	vand.v	$vr5, $vr0, $vr4
-	vbitseti.w	$vr5, $vr5, 1
-	vbitseti.w	$vr1, $vr1, 1
-	vsrli.w	$vr6, $vr2, 1
-	vsrli.w	$vr7, $vr0, 1
-	vaddi.wu	$vr7, $vr7, 11
-	vaddi.wu	$vr6, $vr6, 11
-	vsll.w	$vr1, $vr1, $vr6
-	vsll.w	$vr6, $vr5, $vr7
-	vsle.wu	$vr5, $vr3, $vr1
-	vsle.wu	$vr1, $vr3, $vr6
-	vpickev.h	$vr6, $vr1, $vr5
-	vmskltz.h	$vr6, $vr6
-	vpickve2gr.hu	$a3, $vr6, 0
-	addi.w	$a0, $a0, 8
-	bnez	$a3, .LBB5_3
-# %bb.2:                                # %vector.body
-                                        #   in Loop: Header=BB5_1 Depth=1
-	vaddi.wu	$vr2, $vr2, 8
-	vaddi.wu	$vr0, $vr0, 8
-	bne	$a2, $a1, .LBB5_1
-.LBB5_3:                                # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB5_5
-# %bb.4:                                # %vector.early.exit
-	vpickve2gr.w	$a1, $vr5, 0
-	vinsgr2vr.b	$vr0, $a1, 0
-	vpickve2gr.w	$a1, $vr5, 1
-	vinsgr2vr.b	$vr0, $a1, 1
-	vpickve2gr.w	$a1, $vr5, 2
-	vinsgr2vr.b	$vr0, $a1, 2
-	vpickve2gr.w	$a1, $vr5, 3
-	vinsgr2vr.b	$vr0, $a1, 3
-	vpickve2gr.w	$a1, $vr1, 0
-	vinsgr2vr.b	$vr0, $a1, 4
-	vpickve2gr.w	$a1, $vr1, 1
-	vinsgr2vr.b	$vr0, $a1, 5
-	vpickve2gr.w	$a1, $vr1, 2
-	vinsgr2vr.b	$vr0, $a1, 6
-	vpickve2gr.w	$a1, $vr1, 3
-	vinsgr2vr.b	$vr0, $a1, 7
-	lu12i.w	$a1, 20576
-	ori	$a1, $a1, 1800
-	lu32i.d	$a1, 131844
-	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr1, $a1
-	vand.v	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.bu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 2
-	vmax.bu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 1
-	vmax.bu	$vr0, $vr1, $vr0
-	vpickve2gr.b	$a1, $vr0, 0
-	ori	$a2, $zero, 8
-	sub.d	$a1, $a2, $a1
-	andi	$a1, $a1, 255
-	add.d	$a0, $a1, $a0
-	andi	$a0, $a0, 255
+.LBB5_1:                                # =>This Inner Loop Header: Depth=1
+	move	$a3, $a1
+	bstrins.d	$a3, $a2, 63, 1
+	bstrpick.d	$a4, $a1, 31, 1
+	addi.d	$a4, $a4, 11
+	sll.w	$a3, $a3, $a4
+	bgeu	$a3, $a0, .LBB5_4
+# %bb.2:                                #   in Loop: Header=BB5_1 Depth=1
+	addi.w	$a1, $a1, 1
+	ori	$a3, $zero, 40
+	bne	$a1, $a3, .LBB5_1
+# %bb.3:
+	andi	$a0, $a3, 255
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
-.LBB5_5:
-	ori	$a0, $zero, 40
-	andi	$a0, $a0, 255
+.LBB5_4:
+	move	$a3, $a1
+	andi	$a0, $a3, 255
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret

@@ -25,7 +25,7 @@ upx_inflate2b:                          # @upx_inflate2b
 	ori	$t1, $zero, 3
 	lu12i.w	$t2, -1
 	ori	$t2, $t2, 768
-	ori	$t4, $zero, 8
+	ori	$t4, $zero, 16
 	ori	$t5, $zero, 32
 	bstrpick.d	$t8, $t7, 31, 0
 	slli.d	$s0, $fp, 33
@@ -300,17 +300,36 @@ upx_inflate2b:                          # @upx_inflate2b
 	sub.d	$s2, $s3, $s2
 	bltu	$s2, $t5, .LBB0_51
 # %bb.59:                               # %vector.main.loop.iter.check
-	bgeu	$s0, $t5, .LBB0_61
+	bgeu	$s0, $t5, .LBB0_64
 # %bb.60:
 	move	$s2, $zero
-	b	.LBB0_65
-.LBB0_61:                               # %vector.ph
+.LBB0_61:                               # %vec.epilog.ph
+	move	$s3, $s2
+	bstrpick.d	$s2, $s1, 31, 4
+	slli.d	$s2, $s2, 4
+	add.d	$s4, $t6, $s3
+	add.w	$s4, $s4, $t7
+	.p2align	4, , 16
+.LBB0_62:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	bstrpick.d	$s5, $s4, 31, 0
+	vldx	$vr0, $a2, $s5
+	add.d	$s5, $t8, $s3
+	bstrpick.d	$s5, $s5, 31, 0
+	vstx	$vr0, $a2, $s5
+	addi.d	$s3, $s3, 16
+	addi.w	$s4, $s4, 16
+	bne	$s2, $s3, .LBB0_62
+# %bb.63:                               # %vec.epilog.middle.block
+	bne	$s2, $s1, .LBB0_52
+	b	.LBB0_54
+.LBB0_64:                               # %vector.ph
 	move	$s4, $zero
-	andi	$s3, $s1, 24
+	andi	$s3, $s1, 16
 	bstrpick.d	$s2, $s1, 31, 5
 	slli.d	$s2, $s2, 5
 	add.w	$s5, $t6, $t7
-.LBB0_62:                               # %vector.body
+.LBB0_65:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$s6, $s5, 31, 0
 	add.d	$s7, $a2, $s6
@@ -323,31 +342,12 @@ upx_inflate2b:                          # @upx_inflate2b
 	vst	$vr1, $s7, 16
 	addi.d	$s4, $s4, 32
 	addi.w	$s5, $s5, 32
-	bne	$s2, $s4, .LBB0_62
-# %bb.63:                               # %middle.block
+	bne	$s2, $s4, .LBB0_65
+# %bb.66:                               # %middle.block
 	beq	$s2, $s1, .LBB0_54
-# %bb.64:                               # %vec.epilog.iter.check
+# %bb.67:                               # %vec.epilog.iter.check
 	beqz	$s3, .LBB0_52
-.LBB0_65:                               # %vec.epilog.ph
-	move	$s3, $s2
-	bstrpick.d	$s2, $s1, 31, 3
-	slli.d	$s2, $s2, 3
-	add.d	$s4, $t6, $s3
-	add.w	$s4, $s4, $t7
-	.p2align	4, , 16
-.LBB0_66:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s5, $s4, 31, 0
-	ldx.d	$s5, $a2, $s5
-	add.d	$s6, $t8, $s3
-	bstrpick.d	$s6, $s6, 31, 0
-	stx.d	$s5, $a2, $s6
-	addi.d	$s3, $s3, 8
-	addi.w	$s4, $s4, 8
-	bne	$s2, $s3, .LBB0_66
-# %bb.67:                               # %vec.epilog.middle.block
-	bne	$s2, $s1, .LBB0_52
-	b	.LBB0_54
+	b	.LBB0_61
 .LBB0_68:                               # %doubleebx.exit.thread
 	addi.w	$a0, $zero, -1
 .LBB0_69:                               # %doubleebx.exit.thread
@@ -963,7 +963,7 @@ upx_inflate2d:                          # @upx_inflate2d
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	ori	$t2, $zero, 1
-	ori	$t4, $zero, 8
+	ori	$t4, $zero, 16
 	ori	$t5, $zero, 32
 	bstrpick.d	$t8, $t6, 31, 0
 	slli.d	$s0, $fp, 33
@@ -1262,17 +1262,35 @@ upx_inflate2d:                          # @upx_inflate2d
 	sub.d	$s2, $s3, $s2
 	bltu	$s2, $t5, .LBB2_58
 # %bb.66:                               # %vector.main.loop.iter.check
-	bgeu	$s0, $t5, .LBB2_68
+	bgeu	$s0, $t5, .LBB2_71
 # %bb.67:
 	move	$s2, $zero
-	b	.LBB2_72
-.LBB2_68:                               # %vector.ph
+.LBB2_68:                               # %vec.epilog.ph
+	move	$s3, $s2
+	bstrpick.d	$s2, $s1, 31, 4
+	slli.d	$s2, $s2, 4
+	add.d	$s4, $t7, $s3
+	add.w	$s4, $s4, $t6
+.LBB2_69:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	bstrpick.d	$s5, $s4, 31, 0
+	vldx	$vr0, $a2, $s5
+	add.d	$s5, $t8, $s3
+	bstrpick.d	$s5, $s5, 31, 0
+	vstx	$vr0, $a2, $s5
+	addi.d	$s3, $s3, 16
+	addi.w	$s4, $s4, 16
+	bne	$s2, $s3, .LBB2_69
+# %bb.70:                               # %vec.epilog.middle.block
+	bne	$s2, $s1, .LBB2_59
+	b	.LBB2_61
+.LBB2_71:                               # %vector.ph
 	move	$s4, $zero
-	andi	$s3, $s1, 24
+	andi	$s3, $s1, 16
 	bstrpick.d	$s2, $s1, 31, 5
 	slli.d	$s2, $s2, 5
 	add.w	$s5, $t7, $t6
-.LBB2_69:                               # %vector.body
+.LBB2_72:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$s6, $s5, 31, 0
 	add.d	$s7, $a2, $s6
@@ -1285,30 +1303,12 @@ upx_inflate2d:                          # @upx_inflate2d
 	vst	$vr1, $s7, 16
 	addi.d	$s4, $s4, 32
 	addi.w	$s5, $s5, 32
-	bne	$s2, $s4, .LBB2_69
-# %bb.70:                               # %middle.block
+	bne	$s2, $s4, .LBB2_72
+# %bb.73:                               # %middle.block
 	beq	$s2, $s1, .LBB2_61
-# %bb.71:                               # %vec.epilog.iter.check
+# %bb.74:                               # %vec.epilog.iter.check
 	beqz	$s3, .LBB2_59
-.LBB2_72:                               # %vec.epilog.ph
-	move	$s3, $s2
-	bstrpick.d	$s2, $s1, 31, 3
-	slli.d	$s2, $s2, 3
-	add.d	$s4, $t7, $s3
-	add.w	$s4, $s4, $t6
-.LBB2_73:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s5, $s4, 31, 0
-	ldx.d	$s5, $a2, $s5
-	add.d	$s6, $t8, $s3
-	bstrpick.d	$s6, $s6, 31, 0
-	stx.d	$s5, $a2, $s6
-	addi.d	$s3, $s3, 8
-	addi.w	$s4, $s4, 8
-	bne	$s2, $s3, .LBB2_73
-# %bb.74:                               # %vec.epilog.middle.block
-	bne	$s2, $s1, .LBB2_59
-	b	.LBB2_61
+	b	.LBB2_68
 .LBB2_75:                               # %doubleebx.exit.thread
 	addi.w	$a0, $zero, -1
 .LBB2_76:                               # %doubleebx.exit.thread
@@ -1363,7 +1363,7 @@ upx_inflate2e:                          # @upx_inflate2e
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	ori	$t2, $zero, 1
-	ori	$t3, $zero, 8
+	ori	$t3, $zero, 16
 	ori	$t5, $zero, 32
 	bstrpick.d	$t8, $t6, 31, 0
 	slli.d	$s0, $fp, 33
@@ -1518,7 +1518,7 @@ upx_inflate2e:                          # @upx_inflate2e
 	addi.w	$t4, $t4, 4
 .LBB3_32:                               # %doubleebx.exit197
 	addi.w	$s0, $s0, 0
-	bltz	$s0, .LBB3_73
+	bltz	$s0, .LBB3_76
 # %bb.33:                               # %.preheader312.preheader
 	ori	$s0, $zero, 1
 	b	.LBB3_36
@@ -1528,7 +1528,7 @@ upx_inflate2e:                          # @upx_inflate2e
 .LBB3_35:                               # %doubleebx.exit215
                                         #   in Loop: Header=BB3_36 Depth=1
 	addi.w	$s1, $s1, 0
-	bltz	$s1, .LBB3_75
+	bltz	$s1, .LBB3_78
 .LBB3_36:                               # %.preheader312
                                         # =>This Inner Loop Header: Depth=1
 	slli.d	$s1, $fp, 33
@@ -1679,42 +1679,60 @@ upx_inflate2e:                          # @upx_inflate2e
 	sub.d	$s2, $s3, $s2
 	bltu	$s2, $t5, .LBB3_63
 # %bb.71:                               # %vector.main.loop.iter.check
-	bgeu	$s0, $t5, .LBB3_80
+	bgeu	$s0, $t5, .LBB3_83
 # %bb.72:
 	move	$s2, $zero
-	b	.LBB3_84
-.LBB3_73:
+.LBB3_73:                               # %vec.epilog.ph
+	move	$s3, $s2
+	bstrpick.d	$s2, $s1, 31, 4
+	slli.d	$s2, $s2, 4
+	add.d	$s4, $t7, $s3
+	add.w	$s4, $s4, $t6
+.LBB3_74:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	bstrpick.d	$s5, $s4, 31, 0
+	vldx	$vr0, $a2, $s5
+	add.d	$s5, $t8, $s3
+	bstrpick.d	$s5, $s5, 31, 0
+	vstx	$vr0, $a2, $s5
+	addi.d	$s3, $s3, 16
+	addi.w	$s4, $s4, 16
+	bne	$s2, $s3, .LBB3_74
+# %bb.75:                               # %vec.epilog.middle.block
+	bne	$s2, $s1, .LBB3_64
+	b	.LBB3_66
+.LBB3_76:
 	slli.d	$s0, $fp, 33
-	beqz	$s0, .LBB3_76
-# %bb.74:
+	beqz	$s0, .LBB3_79
+# %bb.77:
 	slli.d	$s1, $fp, 1
-	b	.LBB3_79
-.LBB3_75:
+	b	.LBB3_82
+.LBB3_78:
 	addi.d	$s0, $s0, 2
 	b	.LBB3_55
-.LBB3_76:
+.LBB3_79:
 	bltu	$a1, $t0, .LBB3_87
-# %bb.77:
+# %bb.80:
 	bstrpick.d	$fp, $t4, 31, 0
 	addi.d	$s0, $fp, 4
 	bltu	$a7, $s0, .LBB3_87
-# %bb.78:
+# %bb.81:
 	ldx.w	$fp, $a0, $fp
 	slli.d	$s0, $fp, 1
 	addi.d	$s1, $s0, 1
 	addi.w	$t4, $t4, 4
-.LBB3_79:                               # %doubleebx.exit203
+.LBB3_82:                               # %doubleebx.exit203
 	bstrpick.d	$fp, $fp, 31, 31
 	ori	$s0, $fp, 2
 	move	$fp, $s1
 	b	.LBB3_55
-.LBB3_80:                               # %vector.ph
+.LBB3_83:                               # %vector.ph
 	move	$s4, $zero
-	andi	$s3, $s1, 24
+	andi	$s3, $s1, 16
 	bstrpick.d	$s2, $s1, 31, 5
 	slli.d	$s2, $s2, 5
 	add.w	$s5, $t7, $t6
-.LBB3_81:                               # %vector.body
+.LBB3_84:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$s6, $s5, 31, 0
 	add.d	$s7, $a2, $s6
@@ -1727,30 +1745,12 @@ upx_inflate2e:                          # @upx_inflate2e
 	vst	$vr1, $s7, 16
 	addi.d	$s4, $s4, 32
 	addi.w	$s5, $s5, 32
-	bne	$s2, $s4, .LBB3_81
-# %bb.82:                               # %middle.block
+	bne	$s2, $s4, .LBB3_84
+# %bb.85:                               # %middle.block
 	beq	$s2, $s1, .LBB3_66
-# %bb.83:                               # %vec.epilog.iter.check
+# %bb.86:                               # %vec.epilog.iter.check
 	beqz	$s3, .LBB3_64
-.LBB3_84:                               # %vec.epilog.ph
-	move	$s3, $s2
-	bstrpick.d	$s2, $s1, 31, 3
-	slli.d	$s2, $s2, 3
-	add.d	$s4, $t7, $s3
-	add.w	$s4, $s4, $t6
-.LBB3_85:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s5, $s4, 31, 0
-	ldx.d	$s5, $a2, $s5
-	add.d	$s6, $t8, $s3
-	bstrpick.d	$s6, $s6, 31, 0
-	stx.d	$s5, $a2, $s6
-	addi.d	$s3, $s3, 8
-	addi.w	$s4, $s4, 8
-	bne	$s2, $s3, .LBB3_85
-# %bb.86:                               # %vec.epilog.middle.block
-	bne	$s2, $s1, .LBB3_64
-	b	.LBB3_66
+	b	.LBB3_73
 .LBB3_87:                               # %doubleebx.exit.thread
 	addi.w	$a0, $zero, -1
 .LBB3_88:                               # %doubleebx.exit.thread

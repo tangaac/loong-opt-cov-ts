@@ -8,88 +8,77 @@ internet_checksum:                      # @internet_checksum
 	ori	$a2, $zero, 2
 	blt	$a1, $a2, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.w	$a2, $a1, -2
-	ori	$a3, $zero, 6
-	bgeu	$a2, $a3, .LBB0_4
+	addi.w	$a3, $a1, -2
+	bgeu	$a3, $a2, .LBB0_4
 # %bb.2:
-	move	$a3, $zero
-	move	$a2, $a0
+	move	$a2, $zero
+	move	$a3, $a0
 	b	.LBB0_7
 .LBB0_3:
-	move	$a3, $zero
-	move	$a2, $a0
+	move	$a2, $zero
+	move	$a3, $a0
 	b	.LBB0_9
 .LBB0_4:                                # %vector.ph
-	bstrpick.d	$a2, $a2, 31, 1
-	addi.d	$a4, $a2, 1
-	bstrpick.d	$a2, $a4, 31, 2
-	slli.d	$a5, $a2, 2
-	slli.d	$a3, $a2, 3
-	sub.w	$a1, $a1, $a3
-	alsl.d	$a2, $a2, $a0, 3
-	addi.d	$a0, $a0, 4
-	vrepli.b	$vr0, 0
-	vrepli.b	$vr1, -1
-	move	$a3, $a5
-	vori.b	$vr2, $vr0, 0
-	vori.b	$vr3, $vr0, 0
+	move	$a2, $zero
+	move	$a6, $zero
+	bstrpick.d	$a3, $a3, 31, 1
+	addi.d	$a4, $a3, 1
+	bstrpick.d	$a3, $a4, 31, 1
+	slli.d	$a5, $a3, 1
+	slli.d	$a7, $a3, 2
+	sub.w	$a1, $a1, $a7
+	alsl.d	$a3, $a3, $a0, 2
+	addi.d	$a0, $a0, 2
+	move	$a7, $a5
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a0, -4
-	ld.w	$a7, $a0, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	vilvl.h	$vr4, $vr0, $vr4
-	vilvl.w	$vr4, $vr0, $vr4
-	vilvl.h	$vr5, $vr0, $vr5
-	vilvl.w	$vr5, $vr0, $vr5
-	vxor.v	$vr4, $vr4, $vr1
-	vxor.v	$vr5, $vr5, $vr1
-	vadd.d	$vr2, $vr2, $vr4
-	vadd.d	$vr3, $vr3, $vr5
-	addi.d	$a3, $a3, -4
-	addi.d	$a0, $a0, 8
-	bnez	$a3, .LBB0_5
+	ld.hu	$t0, $a0, -2
+	ld.hu	$t1, $a0, 0
+	nor	$t0, $t0, $zero
+	nor	$t1, $t1, $zero
+	add.d	$a2, $a2, $t0
+	add.d	$a6, $a6, $t1
+	addi.d	$a7, $a7, -2
+	addi.d	$a0, $a0, 4
+	bnez	$a7, .LBB0_5
 # %bb.6:                                # %middle.block
-	vadd.d	$vr0, $vr3, $vr2
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
+	add.d	$a2, $a6, $a2
 	beq	$a5, $a4, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader40
 	ori	$a0, $zero, 3
-	move	$a4, $a2
+	move	$a4, $a3
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$a5, $a4, 0
 	move	$a6, $a1
-	addi.d	$a2, $a4, 2
+	addi.d	$a3, $a4, 2
 	nor	$a1, $a5, $zero
-	add.d	$a3, $a3, $a1
+	add.d	$a2, $a2, $a1
 	addi.w	$a1, $a6, -2
-	move	$a4, $a2
+	move	$a4, $a3
 	bltu	$a0, $a6, .LBB0_8
 .LBB0_9:                                # %._crit_edge
 	ori	$a0, $zero, 1
 	bne	$a1, $a0, .LBB0_12
 # %bb.10:
-	ld.bu	$a0, $a2, 0
-	add.d	$a3, $a3, $a0
+	ld.bu	$a0, $a3, 0
+	add.d	$a2, $a2, $a0
 	b	.LBB0_12
 	.p2align	4, , 16
 .LBB0_11:                               # %.lr.ph23
                                         #   in Loop: Header=BB0_12 Depth=1
-	srli.d	$a0, $a3, 16
-	bstrpick.d	$a1, $a3, 15, 0
-	add.d	$a3, $a1, $a0
+	srli.d	$a0, $a2, 16
+	bstrpick.d	$a1, $a2, 15, 0
+	add.d	$a2, $a1, $a0
 .LBB0_12:                               # %.lr.ph23
                                         # =>This Inner Loop Header: Depth=1
-	srli.d	$a0, $a3, 16
+	srli.d	$a0, $a2, 16
 	bnez	$a0, .LBB0_11
 # %bb.13:                               # %._crit_edge24
-	srli.d	$a0, $a3, 8
-	slli.d	$a1, $a3, 8
+	srli.d	$a0, $a2, 8
+	slli.d	$a1, $a2, 8
 	bstrpick.d	$a1, $a1, 15, 8
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0

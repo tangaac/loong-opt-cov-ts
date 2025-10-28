@@ -526,23 +526,112 @@ main:                                   # @main
 	st.h	$a0, $s4, %pc_lo12(c)
 	pcaddu18i	$ra, %call36(assemble)
 	jirl	$ra, $ra, 0
-	ld.hu	$a0, $s5, %pc_lo12(inter)
-	ld.h	$a1, $s4, %pc_lo12(c)
-	vld	$vr0, $s1, 0
-	srli.d	$a2, $a0, 8
-	vreplgr2vr.b	$vr1, $a1
-	vxor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $s1, 0
-	vld	$vr0, $s1, 16
-	st.h	$a2, $s6, %pc_lo12(cfc)
-	andi	$a0, $a0, 255
-	st.h	$a0, $s7, %pc_lo12(cfd)
-	vxor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $s1, 16
-	ori	$a3, $zero, 32
-	st.h	$a3, $s8, %pc_lo12(compte)
-	xor	$a0, $a0, $a1
-	xor	$a0, $a0, $a2
+	ld.h	$a0, $s4, %pc_lo12(c)
+	ld.b	$a2, $s1, 0
+	ld.hu	$a1, $s5, %pc_lo12(inter)
+	ld.b	$a3, $s1, 1
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 0
+	ld.b	$a2, $s1, 2
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 1
+	ld.b	$a3, $s1, 3
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 2
+	ld.b	$a2, $s1, 4
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 3
+	ld.b	$a3, $s1, 5
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 4
+	ld.b	$a2, $s1, 6
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 5
+	ld.b	$a3, $s1, 7
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 6
+	ld.b	$a2, $s1, 8
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 7
+	ld.b	$a3, $s1, 9
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 8
+	ld.b	$a2, $s1, 10
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 9
+	ld.b	$a3, $s1, 11
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 10
+	ld.b	$a2, $s1, 12
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 11
+	ld.b	$a3, $s1, 13
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 12
+	ld.b	$a2, $s1, 14
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 13
+	ld.b	$a3, $s1, 15
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 14
+	ld.b	$a2, $s1, 16
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 15
+	ld.b	$a3, $s1, 17
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 16
+	ld.b	$a2, $s1, 18
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 17
+	ld.b	$a3, $s1, 19
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 18
+	ld.b	$a2, $s1, 20
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 19
+	ld.b	$a3, $s1, 21
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 20
+	ld.b	$a2, $s1, 22
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 21
+	ld.b	$a3, $s1, 23
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 22
+	ld.b	$a2, $s1, 24
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 23
+	ld.b	$a3, $s1, 25
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 24
+	ld.b	$a2, $s1, 26
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 25
+	ld.b	$a3, $s1, 27
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 26
+	ld.b	$a2, $s1, 28
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 27
+	ld.b	$a3, $s1, 29
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 28
+	ld.b	$a2, $s1, 30
+	xor	$a3, $a3, $a0
+	st.b	$a3, $s1, 29
+	srli.d	$a3, $a1, 8
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 30
+	ld.b	$a2, $s1, 31
+	st.h	$a3, $s6, %pc_lo12(cfc)
+	andi	$a1, $a1, 255
+	st.h	$a1, $s7, %pc_lo12(cfd)
+	xor	$a2, $a2, $a0
+	st.b	$a2, $s1, 31
+	ori	$a2, $zero, 32
+	st.h	$a2, $s8, %pc_lo12(compte)
+	xor	$a0, $a1, $a0
+	xor	$a0, $a0, $a3
 	ext.w.h	$a1, $a0
 	st.h	$a0, $s4, %pc_lo12(c)
 	srai.d	$a1, $a1, 4
@@ -581,7 +670,7 @@ main:                                   # @main
 	.type	cle,@object                     # @cle
 	.bss
 	.globl	cle
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 cle:
 	.space	32
 	.size	cle, 32

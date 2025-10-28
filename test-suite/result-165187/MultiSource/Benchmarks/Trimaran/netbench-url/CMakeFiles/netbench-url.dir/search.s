@@ -1,13 +1,6 @@
 	.file	"search.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function calculate_bm_table
-.LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
 	.text
-	.globl	calculate_bm_table
+	.globl	calculate_bm_table              # -- Begin function calculate_bm_table
 	.p2align	5
 	.type	calculate_bm_table,@function
 calculate_bm_table:                     # @calculate_bm_table
@@ -90,50 +83,39 @@ calculate_bm_table:                     # @calculate_bm_table
 	vst	$vr0, $a0, 1008
 	blez	$fp, .LBB0_9
 # %bb.2:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 4
-	bgeu	$fp, $a1, .LBB0_4
+	ori	$a1, $zero, 1
+	bne	$fp, $a1, .LBB0_4
 # %bb.3:
 	move	$a1, $zero
 	b	.LBB0_7
 .LBB0_4:                                # %vector.ph23
-	bstrpick.d	$a1, $fp, 30, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI0_0)
-	slli.d	$a1, $a1, 2
-	vrepli.b	$vr2, -1
-	vrepli.b	$vr3, 0
-	move	$a2, $s0
-	move	$a3, $a1
+	move	$a2, $zero
+	bstrpick.d	$a1, $fp, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $s0, 1
+	addi.d	$a4, $fp, -1
+	addi.w	$a5, $zero, -2
+	lu32i.d	$a5, 0
+	move	$a6, $a1
 	.p2align	4, , 16
-.LBB0_5:                                # %vector.body26
+.LBB0_5:                                # %vector.body24
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	vxor.v	$vr4, $vr1, $vr2
-	vadd.w	$vr4, $vr0, $vr4
-	vinsgr2vr.w	$vr5, $a4, 0
-	vilvl.b	$vr5, $vr3, $vr5
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvh.w	$vr6, $vr3, $vr5
-	vilvl.w	$vr5, $vr3, $vr5
-	vpickve2gr.d	$a4, $vr5, 0
-	vpickve2gr.d	$a5, $vr5, 1
-	vpickve2gr.d	$a6, $vr6, 0
-	vpickve2gr.d	$a7, $vr6, 1
-	alsl.d	$a4, $a4, $a0, 2
-	alsl.d	$a5, $a5, $a0, 2
-	alsl.d	$a6, $a6, $a0, 2
-	alsl.d	$a7, $a7, $a0, 2
-	vstelm.w	$vr4, $a4, 0, 0
-	vstelm.w	$vr4, $a5, 0, 1
-	vstelm.w	$vr4, $a6, 0, 2
-	vstelm.w	$vr4, $a7, 0, 3
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB0_5
-# %bb.6:                                # %middle.block29
+	ld.bu	$a7, $a3, -1
+	ld.bu	$t0, $a3, 0
+	xor	$t1, $a2, $a5
+	add.d	$t1, $fp, $t1
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	stx.w	$a4, $a0, $a7
+	stx.w	$t1, $a0, $t0
+	addi.d	$a3, $a3, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a2, $a2, 2
+	addi.d	$a4, $a4, -2
+	bnez	$a6, .LBB0_5
+# %bb.6:                                # %middle.block27
 	beq	$a1, $fp, .LBB0_9
-.LBB0_7:                                # %.lr.ph.preheader30
+.LBB0_7:                                # %.lr.ph.preheader28
 	nor	$a2, $a1, $zero
 	add.d	$a2, $a2, $fp
 	add.d	$a3, $s0, $a1
@@ -466,15 +448,7 @@ find_destination:                       # @find_destination
 .Lfunc_end2:
 	.size	find_destination, .Lfunc_end2-find_destination
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function NewPatternNode
-.LCPI3_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	NewPatternNode
+	.globl	NewPatternNode                  # -- Begin function NewPatternNode
 	.p2align	5
 	.type	NewPatternNode,@function
 NewPatternNode:                         # @NewPatternNode
@@ -584,48 +558,37 @@ NewPatternNode:                         # @NewPatternNode
 	vst	$vr0, $a0, 1008
 	blez	$s0, .LBB3_11
 # %bb.4:                                # %.lr.ph.preheader.i
-	ori	$a1, $zero, 4
-	bgeu	$s0, $a1, .LBB3_6
+	ori	$a1, $zero, 1
+	bne	$s0, $a1, .LBB3_6
 # %bb.5:
 	move	$a1, $zero
 	b	.LBB3_9
 .LBB3_6:                                # %vector.ph20
-	bstrpick.d	$a1, $s0, 30, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI3_0)
-	slli.d	$a1, $a1, 2
-	vrepli.b	$vr2, -1
-	vrepli.b	$vr3, 0
-	move	$a2, $s1
-	move	$a3, $a1
+	move	$a2, $zero
+	bstrpick.d	$a1, $s0, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $s1, 1
+	addi.d	$a4, $s0, -1
+	addi.w	$a5, $zero, -2
+	lu32i.d	$a5, 0
+	move	$a6, $a1
 	.p2align	4, , 16
-.LBB3_7:                                # %vector.body23
+.LBB3_7:                                # %vector.body21
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	vxor.v	$vr4, $vr1, $vr2
-	vadd.w	$vr4, $vr0, $vr4
-	vinsgr2vr.w	$vr5, $a4, 0
-	vilvl.b	$vr5, $vr3, $vr5
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvh.w	$vr6, $vr3, $vr5
-	vilvl.w	$vr5, $vr3, $vr5
-	vpickve2gr.d	$a4, $vr5, 0
-	vpickve2gr.d	$a5, $vr5, 1
-	vpickve2gr.d	$a6, $vr6, 0
-	vpickve2gr.d	$a7, $vr6, 1
-	alsl.d	$a4, $a4, $a0, 2
-	alsl.d	$a5, $a5, $a0, 2
-	alsl.d	$a6, $a6, $a0, 2
-	alsl.d	$a7, $a7, $a0, 2
-	vstelm.w	$vr4, $a4, 0, 0
-	vstelm.w	$vr4, $a5, 0, 1
-	vstelm.w	$vr4, $a6, 0, 2
-	vstelm.w	$vr4, $a7, 0, 3
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB3_7
-# %bb.8:                                # %middle.block26
+	ld.bu	$a7, $a3, -1
+	ld.bu	$t0, $a3, 0
+	xor	$t1, $a2, $a5
+	add.d	$t1, $s0, $t1
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	stx.w	$a4, $a0, $a7
+	stx.w	$t1, $a0, $t0
+	addi.d	$a3, $a3, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a2, $a2, 2
+	addi.d	$a4, $a4, -2
+	bnez	$a6, .LBB3_7
+# %bb.8:                                # %middle.block24
 	beq	$a1, $s0, .LBB3_11
 .LBB3_9:                                # %.lr.ph.i.preheader
 	sub.d	$a2, $s0, $a1
@@ -687,15 +650,7 @@ NewPatternNode:                         # @NewPatternNode
 .Lfunc_end3:
 	.size	NewPatternNode, .Lfunc_end3-NewPatternNode
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function NewStrTreeNode
-.LCPI4_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	NewStrTreeNode
+	.globl	NewStrTreeNode                  # -- Begin function NewStrTreeNode
 	.p2align	5
 	.type	NewStrTreeNode,@function
 NewStrTreeNode:                         # @NewStrTreeNode
@@ -800,48 +755,37 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	vst	$vr0, $a0, 1008
 	blez	$s0, .LBB4_11
 # %bb.4:                                # %.lr.ph.preheader.i
-	ori	$a1, $zero, 4
-	bgeu	$s0, $a1, .LBB4_6
+	ori	$a1, $zero, 1
+	bne	$s0, $a1, .LBB4_6
 # %bb.5:
 	move	$a1, $zero
 	b	.LBB4_9
 .LBB4_6:                                # %vector.ph16
-	bstrpick.d	$a1, $s0, 30, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI4_0)
-	slli.d	$a1, $a1, 2
-	vrepli.b	$vr2, -1
-	vrepli.b	$vr3, 0
-	move	$a2, $s1
-	move	$a3, $a1
+	move	$a2, $zero
+	bstrpick.d	$a1, $s0, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $s1, 1
+	addi.d	$a4, $s0, -1
+	addi.w	$a5, $zero, -2
+	lu32i.d	$a5, 0
+	move	$a6, $a1
 	.p2align	4, , 16
-.LBB4_7:                                # %vector.body19
+.LBB4_7:                                # %vector.body17
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	vxor.v	$vr4, $vr1, $vr2
-	vadd.w	$vr4, $vr0, $vr4
-	vinsgr2vr.w	$vr5, $a4, 0
-	vilvl.b	$vr5, $vr3, $vr5
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvh.w	$vr6, $vr3, $vr5
-	vilvl.w	$vr5, $vr3, $vr5
-	vpickve2gr.d	$a4, $vr5, 0
-	vpickve2gr.d	$a5, $vr5, 1
-	vpickve2gr.d	$a6, $vr6, 0
-	vpickve2gr.d	$a7, $vr6, 1
-	alsl.d	$a4, $a4, $a0, 2
-	alsl.d	$a5, $a5, $a0, 2
-	alsl.d	$a6, $a6, $a0, 2
-	alsl.d	$a7, $a7, $a0, 2
-	vstelm.w	$vr4, $a4, 0, 0
-	vstelm.w	$vr4, $a5, 0, 1
-	vstelm.w	$vr4, $a6, 0, 2
-	vstelm.w	$vr4, $a7, 0, 3
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB4_7
-# %bb.8:                                # %middle.block22
+	ld.bu	$a7, $a3, -1
+	ld.bu	$t0, $a3, 0
+	xor	$t1, $a2, $a5
+	add.d	$t1, $s0, $t1
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	stx.w	$a4, $a0, $a7
+	stx.w	$t1, $a0, $t0
+	addi.d	$a3, $a3, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a2, $a2, 2
+	addi.d	$a4, $a4, -2
+	bnez	$a6, .LBB4_7
+# %bb.8:                                # %middle.block20
 	beq	$a1, $s0, .LBB4_11
 .LBB4_9:                                # %.lr.ph.i.preheader
 	sub.d	$a2, $s0, $a1
@@ -901,15 +845,7 @@ NewStrTreeNode:                         # @NewStrTreeNode
 .Lfunc_end4:
 	.size	NewStrTreeNode, .Lfunc_end4-NewStrTreeNode
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function find_lcs
-.LCPI5_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.text
-	.globl	find_lcs
+	.globl	find_lcs                        # -- Begin function find_lcs
 	.p2align	5
 	.type	find_lcs,@function
 find_lcs:                               # @find_lcs
@@ -1008,48 +944,37 @@ find_lcs:                               # @find_lcs
 	vst	$vr0, $a0, 1008
 	blez	$s3, .LBB5_12
 # %bb.5:                                # %.lr.ph.preheader.i
-	ori	$a1, $zero, 4
-	bgeu	$s3, $a1, .LBB5_7
+	ori	$a1, $zero, 1
+	bne	$s3, $a1, .LBB5_7
 # %bb.6:
 	move	$a1, $zero
 	b	.LBB5_10
 .LBB5_7:                                # %vector.ph145
-	bstrpick.d	$a1, $s3, 30, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI5_0)
-	slli.d	$a1, $a1, 2
-	vrepli.b	$vr2, -1
-	vrepli.b	$vr3, 0
-	move	$a2, $s4
-	move	$a3, $a1
+	move	$a2, $zero
+	bstrpick.d	$a1, $s3, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $s4, 1
+	addi.d	$a4, $s3, -1
+	addi.w	$a5, $zero, -2
+	lu32i.d	$a5, 0
+	move	$a6, $a1
 	.p2align	4, , 16
-.LBB5_8:                                # %vector.body148
+.LBB5_8:                                # %vector.body146
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	vxor.v	$vr4, $vr1, $vr2
-	vadd.w	$vr4, $vr0, $vr4
-	vinsgr2vr.w	$vr5, $a4, 0
-	vilvl.b	$vr5, $vr3, $vr5
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvh.w	$vr6, $vr3, $vr5
-	vilvl.w	$vr5, $vr3, $vr5
-	vpickve2gr.d	$a4, $vr5, 0
-	vpickve2gr.d	$a5, $vr5, 1
-	vpickve2gr.d	$a6, $vr6, 0
-	vpickve2gr.d	$a7, $vr6, 1
-	alsl.d	$a4, $a4, $a0, 2
-	alsl.d	$a5, $a5, $a0, 2
-	alsl.d	$a6, $a6, $a0, 2
-	alsl.d	$a7, $a7, $a0, 2
-	vstelm.w	$vr4, $a4, 0, 0
-	vstelm.w	$vr4, $a5, 0, 1
-	vstelm.w	$vr4, $a6, 0, 2
-	vstelm.w	$vr4, $a7, 0, 3
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB5_8
-# %bb.9:                                # %middle.block151
+	ld.bu	$a7, $a3, -1
+	ld.bu	$t0, $a3, 0
+	xor	$t1, $a2, $a5
+	add.d	$t1, $s3, $t1
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	stx.w	$a4, $a0, $a7
+	stx.w	$t1, $a0, $t0
+	addi.d	$a3, $a3, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a2, $a2, 2
+	addi.d	$a4, $a4, -2
+	bnez	$a6, .LBB5_8
+# %bb.9:                                # %middle.block149
 	beq	$a1, $s3, .LBB5_12
 .LBB5_10:                               # %.lr.ph.i.preheader
 	sub.d	$a2, $s3, $a1

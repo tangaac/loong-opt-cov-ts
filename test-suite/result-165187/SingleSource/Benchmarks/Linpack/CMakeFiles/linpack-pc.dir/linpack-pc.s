@@ -4843,7 +4843,7 @@ dmxpy:                                  # @dmxpy
 	bstrpick.d	$a6, $t1, 31, 0
 	alsl.d	$a6, $a6, $s5, 2
 	mul.w	$t3, $t1, $a3
-	ori	$t4, $zero, 16
+	ori	$t4, $zero, 20
 	bstrpick.d	$t1, $s6, 31, 0
 	bgeu	$s6, $t4, .LBB6_43
 # %bb.16:
@@ -4944,7 +4944,7 @@ dmxpy:                                  # @dmxpy
 	alsl.d	$s1, $s1, $a5, 2
 	alsl.d	$s2, $ra, $a5, 2
 	alsl.d	$s3, $a0, $a5, 2
-	ori	$s7, $zero, 20
+	ori	$s7, $zero, 24
 	alsl.d	$s4, $a1, $a5, 2
 	bgeu	$s6, $s7, .LBB6_61
 # %bb.22:

@@ -3819,10 +3819,10 @@ _Z13UpdateArchiveP7CCodecsRKN9NWildcard7CCensorER14CUpdateOptionsR16CUpdateError
 	ld.w	$s2, $sp, 656
 	vst	$vr0, $a0, 16
 	vst	$vr1, $a0, 0
-	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s4, $a0, 1
 	slli.d	$a0, $s4, 31
+	vld	$vr0, $sp, 272                  # 16-byte Folded Reload
 	vst	$vr0, $s3, 32
 	bgez	$a0, .LBB12_100
 # %bb.76:
@@ -4531,8 +4531,8 @@ _Z13UpdateArchiveP7CCodecsRKN9NWildcard7CCensorER14CUpdateOptionsR16CUpdateError
 # %bb.177:                              # %.lr.ph.i.i
                                         #   in Loop: Header=BB12_151 Depth=1
 	ld.d	$a1, $sp, 712
-	ori	$a2, $zero, 8
-	bgeu	$a0, $a2, .LBB12_180
+	ori	$a2, $zero, 1
+	bne	$a0, $a2, .LBB12_180
 # %bb.178:                              #   in Loop: Header=BB12_151 Depth=1
 	move	$a2, $zero
 	move	$a3, $zero
@@ -4542,48 +4542,26 @@ _Z13UpdateArchiveP7CCodecsRKN9NWildcard7CCensorER14CUpdateOptionsR16CUpdateError
 	b	.LBB12_186
 .LBB12_180:                             # %vector.ph
                                         #   in Loop: Header=BB12_151 Depth=1
-	bstrpick.d	$a2, $a0, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a1, 64
-	move	$a4, $a2
-	vld	$vr4, $sp, 272                  # 16-byte Folded Reload
-	vori.b	$vr0, $vr4, 0
-	vori.b	$vr1, $vr4, 0
+	move	$a3, $zero
+	move	$a4, $zero
+	bstrpick.d	$a2, $a0, 30, 1
+	slli.d	$a2, $a2, 1
+	addi.d	$a5, $a1, 16
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB12_181:                             # %vector.body
                                         #   Parent Loop BB12_151 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$a5, $a3, -64
-	ld.b	$a6, $a3, -48
-	ld.b	$a7, $a3, -32
-	ld.b	$t0, $a3, -16
-	vinsgr2vr.b	$vr2, $a5, 0
-	vinsgr2vr.b	$vr2, $a6, 1
-	vinsgr2vr.b	$vr2, $a7, 2
-	vinsgr2vr.b	$vr2, $t0, 3
-	ld.b	$a5, $a3, 0
-	ld.b	$a6, $a3, 16
-	ld.b	$a7, $a3, 32
-	ld.b	$t0, $a3, 48
-	vinsgr2vr.b	$vr3, $a5, 0
-	vinsgr2vr.b	$vr3, $a6, 1
-	vinsgr2vr.b	$vr3, $a7, 2
-	vinsgr2vr.b	$vr3, $t0, 3
-	vilvl.b	$vr2, $vr4, $vr2
-	vilvl.h	$vr2, $vr4, $vr2
-	vilvl.b	$vr3, $vr4, $vr3
-	vilvl.h	$vr3, $vr4, $vr3
-	vadd.w	$vr0, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr3
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 128
-	bnez	$a4, .LBB12_181
+	ld.bu	$a7, $a5, -16
+	ld.bu	$t0, $a5, 0
+	add.d	$a3, $a3, $a7
+	add.d	$a4, $a4, $t0
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB12_181
 # %bb.182:                              # %middle.block
                                         #   in Loop: Header=BB12_151 Depth=1
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
+	add.w	$a3, $a4, $a3
 	beq	$a2, $a0, .LBB12_185
 .LBB12_183:                             # %scalar.ph.preheader
                                         #   in Loop: Header=BB12_151 Depth=1

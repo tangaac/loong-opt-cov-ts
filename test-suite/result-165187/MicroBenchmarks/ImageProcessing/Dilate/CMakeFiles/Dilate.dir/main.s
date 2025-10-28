@@ -3,16 +3,8 @@
 	.globl	_ZSt21ios_base_library_initv
 
                                         # End of file scope inline assembly
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function main
-.LCPI0_0:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI0_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
 	.text
-	.globl	main
+	.globl	main                            # -- Begin function main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
@@ -84,34 +76,16 @@ main:                                   # @main
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
+	add.d	$a0, $fp, $s1
+	lu12i.w	$a1, 2
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslli.d	$vr2, $vr0, 12
-	vslli.d	$vr3, $vr1, 12
-	vpickve2gr.d	$a0, $vr3, 0
-	vpickve2gr.d	$a1, $vr3, 1
-	vpickve2gr.d	$a2, $vr2, 0
-	vpickve2gr.d	$a3, $vr2, 1
-	add.d	$a4, $fp, $a0
-	add.d	$a5, $fp, $a1
-	add.d	$a6, $fp, $a2
-	add.d	$a7, $fp, $a3
-	stx.w	$zero, $fp, $a0
-	stx.w	$zero, $fp, $a1
-	stx.w	$zero, $fp, $a2
-	stx.w	$zero, $fp, $a3
-	stptr.w	$zero, $a4, 4092
-	stptr.w	$zero, $a5, 4092
-	stptr.w	$zero, $a6, 4092
-	stptr.w	$zero, $a7, 4092
-	vaddi.du	$vr1, $vr1, 4
-	addi.d	$s3, $s3, -4
-	vaddi.du	$vr0, $vr0, 4
+	stptr.w	$zero, $a0, -4096
+	st.d	$zero, $a0, -4
+	stptr.w	$zero, $a0, 4092
+	addi.d	$s3, $s3, -2
+	add.d	$a0, $a0, $a1
 	bnez	$s3, .LBB0_4
 # %bb.5:                                # %middle.block
 	pcalau12i	$a0, %pc_hi20(.L.str)

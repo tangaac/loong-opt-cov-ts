@@ -217,25 +217,24 @@ MTMX:                                   # @MTMX
 	stptr.w	$a5, $a0, 3644
 	ori	$a2, $zero, 3608
 	ldx.w	$a2, $a0, $a2
-	ori	$a5, $zero, 3632
+	ori	$a5, $zero, 3620
 	ldx.w	$a5, $a0, $a5
-	ori	$a6, $zero, 3620
+	ori	$a6, $zero, 3632
 	ldx.w	$a6, $a0, $a6
+	stptr.w	$a2, $a0, 3652
+	stptr.w	$a5, $a0, 3656
 	mul.d	$a1, $a4, $a1
-	mul.d	$a7, $a5, $a2
-	add.d	$a1, $a1, $a7
+	mul.d	$a2, $a6, $a2
+	add.d	$a1, $a1, $a2
 	sub.d	$a1, $zero, $a1
 	stptr.w	$a1, $a0, 3664
 	mul.d	$a1, $a4, $a3
-	mul.d	$a3, $a5, $a6
-	add.d	$a1, $a1, $a3
+	mul.d	$a2, $a6, $a5
+	add.d	$a1, $a1, $a2
 	sub.d	$a1, $zero, $a1
 	stptr.w	$a1, $a0, 3668
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a2, 1
-	vinsgr2vr.w	$vr0, $a6, 2
-	ori	$a1, $zero, 3648
-	vstx	$vr0, $a0, $a1
+	stptr.w	$zero, $a0, 3660
+	stptr.w	$zero, $a0, 3648
 	ori	$a1, $zero, 1
 	stptr.w	$a1, $a0, 3672
 	ret

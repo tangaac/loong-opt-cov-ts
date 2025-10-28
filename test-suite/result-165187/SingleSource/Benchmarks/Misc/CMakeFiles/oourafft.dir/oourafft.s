@@ -1403,12 +1403,19 @@ cftfsub:                                # @cftfsub
 	.p2align	4, , 16
 .LBB7_10:                               # %.lr.ph121
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $fp, 0
-	vldx	$vr1, $fp, $a1
-	vfadd.d	$vr2, $vr0, $vr1
-	vst	$vr2, $fp, 0
-	vfsub.d	$vr0, $vr0, $vr1
-	vstx	$vr0, $fp, $a1
+	fld.d	$fa0, $fp, 0
+	add.d	$a2, $fp, $a1
+	fldx.d	$fa1, $fp, $a1
+	fld.d	$fa2, $fp, 8
+	fld.d	$fa3, $a2, 8
+	fsub.d	$fa4, $fa0, $fa1
+	fsub.d	$fa5, $fa2, $fa3
+	fadd.d	$fa0, $fa0, $fa1
+	fst.d	$fa0, $fp, 0
+	fadd.d	$fa0, $fa2, $fa3
+	fst.d	$fa0, $fp, 8
+	fstx.d	$fa4, $fp, $a1
+	fst.d	$fa5, $a2, 8
 	addi.d	$a0, $a0, 2
 	addi.d	$fp, $fp, 16
 	bltu	$a0, $s2, .LBB7_10

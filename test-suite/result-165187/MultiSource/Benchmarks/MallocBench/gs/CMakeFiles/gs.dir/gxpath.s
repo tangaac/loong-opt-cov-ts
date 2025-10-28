@@ -246,12 +246,13 @@ gx_path_add_relative_point:             # @gx_path_add_relative_point
 	ld.bu	$a3, $a0, 136
 	beqz	$a3, .LBB6_2
 # %bb.1:
-	vld	$vr0, $a0, 120
+	ld.d	$a4, $a0, 120
+	ld.d	$a5, $a0, 128
 	st.b	$zero, $a0, 137
-	vinsgr2vr.d	$vr1, $a1, 0
-	vinsgr2vr.d	$vr1, $a2, 1
-	vadd.d	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 120
+	add.d	$a1, $a4, $a1
+	st.d	$a1, $a0, 120
+	add.d	$a1, $a5, $a2
+	st.d	$a1, $a0, 128
 	move	$a0, $zero
 	ret
 .LBB6_2:

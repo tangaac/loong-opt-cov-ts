@@ -57,7 +57,7 @@
 	.p2align	5
 	.type	fill,@function
 fill:                                   # @fill
-# %bb.0:                                # %iter.check
+# %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(plane)
@@ -134,7 +134,7 @@ fill:                                   # @fill
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %iter.check
+# %bb.0:                                # %vector.ph
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill

@@ -2493,71 +2493,77 @@ _ZN15btTransformUtil32calculateDiffAxisAngleQuaternionERK12btQuaternionS2_R9btVe
 	.cfi_offset 56, -32
 	.cfi_offset 57, -40
 	.cfi_offset 58, -48
-	fld.s	$fa2, $a0, 0
-	fld.s	$fa0, $a0, 4
-	fld.s	$fa1, $a0, 8
-	fld.s	$fa3, $a0, 12
+	fld.s	$fa0, $a0, 0
 	fld.s	$fa4, $a1, 0
+	fld.s	$fa1, $a0, 4
 	fld.s	$fa5, $a1, 4
+	fld.s	$fa2, $a0, 8
 	fld.s	$fa6, $a1, 8
+	fld.s	$fa3, $a0, 12
 	fld.s	$fa7, $a1, 12
-	fsub.s	$ft0, $fa2, $fa4
-	fsub.s	$ft1, $fa0, $fa5
-	fsub.s	$ft2, $fa1, $fa6
+	fsub.s	$ft0, $fa0, $fa4
+	fsub.s	$ft1, $fa1, $fa5
+	fsub.s	$ft2, $fa2, $fa6
 	fsub.s	$ft3, $fa3, $fa7
-	fadd.s	$fa4, $fa2, $fa4
-	fadd.s	$fa5, $fa0, $fa5
-	fadd.s	$fa6, $fa1, $fa6
-	fadd.s	$fa7, $fa3, $fa7
+	fadd.s	$ft4, $fa0, $fa4
+	fadd.s	$ft5, $fa1, $fa5
+	fadd.s	$ft6, $fa2, $fa6
+	fadd.s	$ft7, $fa3, $fa7
 	fmul.s	$ft1, $ft1, $ft1
 	fmadd.s	$ft0, $ft0, $ft0, $ft1
 	fmadd.s	$ft0, $ft2, $ft2, $ft0
 	fmadd.s	$ft0, $ft3, $ft3, $ft0
-	fmul.s	$fa5, $fa5, $fa5
-	fmadd.s	$fa4, $fa4, $fa4, $fa5
-	fmadd.s	$fa4, $fa6, $fa6, $fa4
-	fmadd.s	$fa4, $fa7, $fa7, $fa4
-	fcmp.cule.s	$fcc0, $fa4, $ft0
+	fmul.s	$ft1, $ft5, $ft5
+	fmadd.s	$ft1, $ft4, $ft4, $ft1
+	fmadd.s	$ft1, $ft6, $ft6, $ft1
+	fmadd.s	$ft1, $ft7, $ft7, $ft1
+	fcmp.cule.s	$fcc0, $ft1, $ft0
 	move	$s0, $a3
 	move	$fp, $a2
 	bcnez	$fcc0, .LBB16_2
 # %bb.1:
-	vld	$vr4, $a1, 0
+	ld.d	$a0, $a1, 0
+	ld.d	$a1, $a1, 8
 	b	.LBB16_3
 .LBB16_2:
-	vld	$vr4, $a1, 0
-	vbitrevi.w	$vr4, $vr4, 31
-	vshuf4i.w	$vr5, $vr4, 8
-	vshuf4i.w	$vr4, $vr4, 13
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vrepli.b	$vr6, 0
-	vilvl.w	$vr5, $vr6, $vr5
-	vor.v	$vr4, $vr4, $vr5
+	movfr2gr.s	$a0, $fa4
+	movfr2gr.s	$a1, $fa5
+	movfr2gr.s	$a2, $fa6
+	movfr2gr.s	$a3, $fa7
+	lu12i.w	$a4, -524288
+	lu32i.d	$a4, 0
+	xor	$a0, $a0, $a4
+	xor	$a1, $a1, $a4
+	bstrins.d	$a0, $a1, 63, 32
+	xor	$a1, $a2, $a4
+	xor	$a2, $a3, $a4
+	bstrins.d	$a1, $a2, 63, 32
 .LBB16_3:                               # %_ZNK12btQuaternion7nearestERKS_.exit
-	vreplvei.w	$vr5, $vr4, 0
-	vreplvei.w	$vr6, $vr4, 1
-	vreplvei.w	$vr7, $vr4, 2
-	vreplvei.w	$vr4, $vr4, 3
-	fneg.s	$ft0, $fa2
-	fneg.s	$ft1, $fa0
-	fneg.s	$ft2, $fa1
-	fmul.s	$ft3, $fa3, $fa5
-	fmadd.s	$ft3, $fa4, $ft0, $ft3
-	fmadd.s	$ft3, $fa6, $ft2, $ft3
-	fmadd.s	$ft3, $fa7, $fa0, $ft3
+	movgr2fr.w	$fa4, $a0
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fa5, $a0
+	movgr2fr.w	$fa6, $a1
+	srli.d	$a0, $a1, 32
+	movgr2fr.w	$fa7, $a0
+	fneg.s	$ft0, $fa0
+	fneg.s	$ft1, $fa1
+	fneg.s	$ft2, $fa2
+	fmul.s	$ft3, $fa3, $fa4
+	fmadd.s	$ft3, $fa7, $ft0, $ft3
+	fmadd.s	$ft3, $fa5, $ft2, $ft3
+	fmadd.s	$ft3, $fa6, $fa1, $ft3
+	fmul.s	$ft4, $fa3, $fa5
+	fmadd.s	$ft4, $fa7, $ft1, $ft4
+	fmadd.s	$ft0, $fa6, $ft0, $ft4
+	fmadd.s	$ft0, $fa4, $fa2, $ft0
 	fmul.s	$ft4, $fa3, $fa6
-	fmadd.s	$ft4, $fa4, $ft1, $ft4
-	fmadd.s	$ft0, $fa7, $ft0, $ft4
-	fmadd.s	$ft0, $fa5, $fa1, $ft0
-	fmul.s	$ft4, $fa3, $fa7
-	fmadd.s	$ft2, $fa4, $ft2, $ft4
-	fmadd.s	$ft1, $fa5, $ft1, $ft2
-	fmadd.s	$ft1, $fa6, $fa2, $ft1
-	fmul.s	$fa2, $fa2, $fa5
-	fmadd.s	$fa2, $fa4, $fa3, $fa2
-	fmadd.s	$fa0, $fa6, $fa0, $fa2
-	fmadd.s	$fa0, $fa7, $fa1, $fa0
+	fmadd.s	$ft2, $fa7, $ft2, $ft4
+	fmadd.s	$ft1, $fa4, $ft1, $ft2
+	fmadd.s	$ft1, $fa5, $fa0, $ft1
+	fmul.s	$fa0, $fa0, $fa4
+	fmadd.s	$fa0, $fa7, $fa3, $fa0
+	fmadd.s	$fa0, $fa5, $fa1, $fa0
+	fmadd.s	$fa0, $fa6, $fa2, $fa0
 	fmul.s	$fa1, $ft0, $ft0
 	fmadd.s	$fa1, $ft3, $ft3, $fa1
 	fmadd.s	$fa1, $ft1, $ft1, $fa1

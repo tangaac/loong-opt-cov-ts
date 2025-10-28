@@ -82,178 +82,26 @@ Initmatrix:                             # @Initmatrix
 	.p2align	5
 	.type	Innerproduct,@function
 Innerproduct:                           # @Innerproduct
-# %bb.0:                                # %vector.memcheck
+# %bb.0:
+	move	$a5, $zero
 	st.w	$zero, $a0, 0
-	ori	$a5, $zero, 164
-	mul.d	$a3, $a3, $a5
+	ori	$a6, $zero, 164
+	mul.d	$a3, $a3, $a6
 	add.d	$a1, $a1, $a3
 	alsl.d	$a2, $a4, $a2, 2
-	addi.d	$a6, $a0, 4
-	addi.d	$a3, $a1, 4
-	addi.d	$a4, $a1, 164
-	sltu	$a4, $a0, $a4
-	sltu	$a3, $a3, $a6
-	and	$a3, $a4, $a3
-	addi.d	$a4, $a2, 164
-	bnez	$a3, .LBB3_3
-# %bb.1:                                # %vector.memcheck
-	lu12i.w	$a3, 1
-	ori	$a7, $a3, 2468
-	add.d	$a7, $a2, $a7
-	sltu	$a7, $a0, $a7
-	sltu	$a6, $a4, $a6
-	and	$a6, $a7, $a6
-	bnez	$a6, .LBB3_3
-# %bb.2:                                # %vector.body
-	vld	$vr2, $a1, 4
-	vld	$vr3, $a1, 20
-	ld.w	$a4, $a2, 164
-	ld.w	$a5, $a2, 328
-	ld.w	$a6, $a2, 492
-	ld.w	$a7, $a2, 656
-	vinsgr2vr.w	$vr4, $a4, 0
-	vinsgr2vr.w	$vr4, $a5, 1
-	vinsgr2vr.w	$vr4, $a6, 2
-	vinsgr2vr.w	$vr4, $a7, 3
-	ld.w	$a4, $a2, 820
-	ld.w	$a5, $a2, 984
-	ld.w	$a6, $a2, 1148
-	ld.w	$a7, $a2, 1312
-	vinsgr2vr.w	$vr5, $a4, 0
-	vinsgr2vr.w	$vr5, $a5, 1
-	vinsgr2vr.w	$vr5, $a6, 2
-	vinsgr2vr.w	$vr5, $a7, 3
-	vld	$vr0, $a1, 36
-	vld	$vr1, $a1, 52
-	ld.w	$a4, $a2, 1476
-	ld.w	$a5, $a2, 1640
-	ld.w	$a6, $a2, 1804
-	ld.w	$a7, $a2, 1968
-	vinsgr2vr.w	$vr6, $a4, 0
-	vinsgr2vr.w	$vr6, $a5, 1
-	vinsgr2vr.w	$vr6, $a6, 2
-	vinsgr2vr.w	$vr6, $a7, 3
-	ori	$a4, $zero, 2132
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $zero, 2296
-	ldx.w	$a5, $a2, $a5
-	ori	$a6, $zero, 2460
-	ldx.w	$a6, $a2, $a6
-	ori	$a7, $zero, 2624
-	ldx.w	$a7, $a2, $a7
-	vinsgr2vr.w	$vr7, $a4, 0
-	vinsgr2vr.w	$vr7, $a5, 1
-	vinsgr2vr.w	$vr7, $a6, 2
-	vinsgr2vr.w	$vr7, $a7, 3
-	vmul.w	$vr0, $vr6, $vr0
-	vmul.w	$vr1, $vr7, $vr1
-	vmadd.w	$vr0, $vr4, $vr2
-	vmadd.w	$vr1, $vr5, $vr3
-	vld	$vr2, $a1, 68
-	vld	$vr3, $a1, 84
-	ori	$a4, $zero, 2788
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $zero, 2952
-	ldx.w	$a5, $a2, $a5
-	ori	$a6, $zero, 3116
-	ldx.w	$a6, $a2, $a6
-	ori	$a7, $zero, 3280
-	ldx.w	$a7, $a2, $a7
-	vinsgr2vr.w	$vr4, $a4, 0
-	vinsgr2vr.w	$vr4, $a5, 1
-	vinsgr2vr.w	$vr4, $a6, 2
-	vinsgr2vr.w	$vr4, $a7, 3
-	ori	$a4, $zero, 3444
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $zero, 3608
-	ldx.w	$a5, $a2, $a5
-	ori	$a6, $zero, 3772
-	ldx.w	$a6, $a2, $a6
-	ori	$a7, $zero, 3936
-	ldx.w	$a7, $a2, $a7
-	vinsgr2vr.w	$vr5, $a4, 0
-	vinsgr2vr.w	$vr5, $a5, 1
-	vinsgr2vr.w	$vr5, $a6, 2
-	vinsgr2vr.w	$vr5, $a7, 3
-	vmadd.w	$vr0, $vr4, $vr2
-	vmadd.w	$vr1, $vr5, $vr3
-	vld	$vr2, $a1, 100
-	vld	$vr3, $a1, 116
-	ori	$a4, $a3, 4
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $a3, 168
-	ldx.w	$a5, $a2, $a5
-	ori	$a6, $a3, 332
-	ldx.w	$a6, $a2, $a6
-	ori	$a7, $a3, 496
-	ldx.w	$a7, $a2, $a7
-	vinsgr2vr.w	$vr4, $a4, 0
-	vinsgr2vr.w	$vr4, $a5, 1
-	vinsgr2vr.w	$vr4, $a6, 2
-	vinsgr2vr.w	$vr4, $a7, 3
-	ori	$a4, $a3, 660
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $a3, 824
-	ldx.w	$a5, $a2, $a5
-	ori	$a6, $a3, 988
-	ldx.w	$a6, $a2, $a6
-	ori	$a7, $a3, 1152
-	ldx.w	$a7, $a2, $a7
-	vinsgr2vr.w	$vr5, $a4, 0
-	vinsgr2vr.w	$vr5, $a5, 1
-	vinsgr2vr.w	$vr5, $a6, 2
-	vinsgr2vr.w	$vr5, $a7, 3
-	vmadd.w	$vr0, $vr4, $vr2
-	vmadd.w	$vr1, $vr5, $vr3
-	vld	$vr2, $a1, 132
-	vld	$vr3, $a1, 148
-	ori	$a1, $a3, 1316
-	ldx.w	$a1, $a2, $a1
-	ori	$a4, $a3, 1480
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $a3, 1644
-	ldx.w	$a5, $a2, $a5
-	ori	$a6, $a3, 1808
-	ldx.w	$a6, $a2, $a6
-	vinsgr2vr.w	$vr4, $a1, 0
-	vinsgr2vr.w	$vr4, $a4, 1
-	vinsgr2vr.w	$vr4, $a5, 2
-	vinsgr2vr.w	$vr4, $a6, 3
-	ori	$a1, $a3, 1972
-	ldx.w	$a1, $a2, $a1
-	ori	$a4, $a3, 2136
-	ldx.w	$a4, $a2, $a4
-	ori	$a5, $a3, 2300
-	ldx.w	$a5, $a2, $a5
-	ori	$a3, $a3, 2464
-	ldx.w	$a2, $a2, $a3
-	vinsgr2vr.w	$vr5, $a1, 0
-	vinsgr2vr.w	$vr5, $a4, 1
-	vinsgr2vr.w	$vr5, $a5, 2
-	vinsgr2vr.w	$vr5, $a2, 3
-	vmadd.w	$vr0, $vr4, $vr2
-	vmadd.w	$vr1, $vr5, $vr3
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a1, $vr0, 0
-	st.w	$a1, $a0, 0
-	ret
-.LBB3_3:                                # %scalar.ph.preheader
-	move	$a2, $zero
+	addi.d	$a2, $a2, 164
 	ori	$a3, $zero, 4
 	.p2align	4, , 16
-.LBB3_4:                                # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.w	$a6, $a1, $a3
-	ld.w	$a7, $a4, 0
-	mul.d	$a6, $a7, $a6
-	add.d	$a2, $a6, $a2
-	st.w	$a2, $a0, 0
+.LBB3_1:                                # =>This Inner Loop Header: Depth=1
+	ldx.w	$a4, $a1, $a3
+	ld.w	$a7, $a2, 0
+	mul.d	$a4, $a7, $a4
+	add.d	$a5, $a4, $a5
+	st.w	$a5, $a0, 0
 	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 164
-	bne	$a3, $a5, .LBB3_4
-# %bb.5:                                # %.loopexit
+	addi.d	$a2, $a2, 164
+	bne	$a3, $a6, .LBB3_1
+# %bb.2:
 	ret
 .Lfunc_end3:
 	.size	Innerproduct, .Lfunc_end3-Innerproduct

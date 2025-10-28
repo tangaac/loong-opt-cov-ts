@@ -1382,22 +1382,22 @@ _ZN15btGjkEpaSolver211PenetrationEPK13btConvexShapeRK11btTransformS2_S5_RK9btVec
 _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 136                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	.cfi_def_cfa_offset 224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 120                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 112                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1567,12 +1567,12 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	ori	$a2, $zero, 4
 	bne	$a1, $a2, .LBB5_42
 # %bb.18:
-	ldptr.d	$s7, $fp, 14432
-	ld.d	$a1, $s7, 80
+	ldptr.d	$s5, $fp, 14432
+	ld.d	$a1, $s5, 80
 	beqz	$a1, .LBB5_21
 # %bb.19:                               # %.lr.ph.preheader.i
-	fld.s	$fa1, $s7, 16
-	fld.s	$fa0, $s7, 20
+	fld.s	$fa1, $s5, 16
+	fld.s	$fa0, $s5, 20
 	fmul.s	$fa1, $fa1, $fa1
 	.p2align	4, , 16
 .LBB5_20:                               # %.lr.ph.i
@@ -1587,58 +1587,60 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	and	$a2, $a2, $a3
 	maskeqz	$a3, $a1, $a2
 	ld.d	$a1, $a1, 80
-	masknez	$a4, $s7, $a2
+	masknez	$a4, $s5, $a2
 	movgr2cf	$fcc0, $a2
 	fsel	$fa1, $fa1, $fa2, $fcc0
 	fsel	$fa0, $fa0, $fa3, $fcc0
-	or	$s7, $a3, $a4
+	or	$s5, $a3, $a4
 	bnez	$a1, .LBB5_20
 .LBB5_21:                               # %_ZN12gjkepa2_impl3EPA8findbestEv.exit
 	move	$s1, $zero
-	vld	$vr0, $s7, 0
+	vld	$vr0, $s5, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	fld.s	$fs0, $s7, 16
-	fld.s	$fs1, $s7, 20
-	vld	$vr0, $s7, 24
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	ld.d	$a1, $s7, 40
+	fld.s	$fs0, $s5, 16
+	fld.s	$fs1, $s5, 20
+	ld.d	$a1, $s5, 24
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a1, $s5, 32
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$a1, $s5, 40
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	st.b	$zero, $s2, 88
 	st.d	$s3, $s2, 48
 	st.b	$zero, $s3, 88
 	st.d	$s2, $s3, 48
 	st.b	$zero, $s2, 89
 	st.d	$s4, $s2, 56
-	ori	$s8, $zero, 1
-	st.b	$s8, $s4, 88
+	ori	$s6, $zero, 1
+	st.b	$s6, $s4, 88
 	st.d	$s2, $s4, 48
 	st.b	$zero, $s2, 90
 	st.d	$a0, $s2, 64
-	ori	$s5, $zero, 2
-	st.b	$s5, $a0, 88
+	ori	$s7, $zero, 2
+	st.b	$s7, $a0, 88
 	st.d	$s2, $a0, 48
-	st.b	$s5, $s3, 89
+	st.b	$s7, $s3, 89
 	st.d	$a0, $s3, 56
-	st.b	$s8, $a0, 90
+	st.b	$s6, $a0, 90
 	st.d	$s3, $a0, 64
-	st.b	$s8, $s3, 90
+	st.b	$s6, $s3, 90
 	st.d	$s4, $s3, 64
 	ori	$a1, $zero, 258
 	st.h	$a1, $s4, 89
 	st.d	$s3, $s4, 56
 	st.d	$a0, $s4, 64
-	st.b	$s5, $a0, 89
+	st.b	$s7, $a0, 89
 	st.d	$s4, $a0, 56
 	st.w	$zero, $fp, 0
 	addi.d	$s3, $fp, 84
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, 232731
 	ori	$a0, $a0, 1815
 	movgr2fr.w	$fs2, $a0
 	lu12i.w	$a0, 3
 	ori	$a0, $a0, 2152
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB5_23
 	.p2align	4, , 16
 .LBB5_22:                               #   in Loop: Header=BB5_23 Depth=1
@@ -1651,18 +1653,18 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	ori	$a1, $zero, 63
 	bltu	$a1, $a0, .LBB5_47
 # %bb.24:                               #   in Loop: Header=BB5_23 Depth=1
-	st.w	$zero, $sp, 120
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 104
+	st.w	$zero, $sp, 104
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 88
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $fp, 14424
 	slli.d	$a0, $a0, 5
 	add.d	$s2, $s3, $a0
 	addi.w	$s1, $s1, 1
-	fld.s	$fa0, $s7, 4
-	fld.s	$fa1, $s7, 0
-	fld.s	$fa2, $s7, 8
-	st.b	$s1, $s7, 91
+	fld.s	$fa0, $s5, 4
+	fld.s	$fa1, $s5, 0
+	fld.s	$fa2, $s5, 8
+	st.b	$s1, $s5, 91
 	fmul.s	$fa3, $fa0, $fa0
 	fmadd.s	$fa3, $fa1, $fa1, $fa3
 	fmadd.s	$fa3, $fa2, $fa2, $fa3
@@ -1683,14 +1685,14 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s2, 16
 	st.d	$a1, $s2, 24
-	fld.s	$fa0, $s7, 0
-	fld.s	$fa1, $s7, 4
+	fld.s	$fa0, $s5, 0
+	fld.s	$fa1, $s5, 4
 	movgr2fr.w	$fa2, $a0
 	srli.d	$a0, $a0, 32
 	movgr2fr.w	$fa3, $a0
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s7, 8
-	fld.s	$fa4, $s7, 16
+	fld.s	$fa3, $s5, 8
+	fld.s	$fa4, $s5, 16
 	fmadd.s	$fa0, $fa0, $fa2, $fa1
 	movgr2fr.w	$fa1, $a1
 	fmadd.s	$fa0, $fa3, $fa1, $fa0
@@ -1700,79 +1702,79 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 # %bb.25:                               # %.preheader
                                         #   in Loop: Header=BB5_23 Depth=1
 	move	$s4, $zero
-	ori	$s6, $zero, 48
+	ori	$s8, $zero, 48
 	.p2align	4, , 16
 .LBB5_26:                               #   Parent Loop BB5_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$a3, $s7, $s6
-	add.d	$a0, $s7, $s4
+	ldx.d	$a3, $s5, $s8
+	add.d	$a0, $s5, $s4
 	ld.bu	$a4, $a0, 88
-	addi.d	$a5, $sp, 104
+	addi.d	$a5, $sp, 88
 	move	$a0, $fp
 	move	$a1, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZN12gjkepa2_impl3EPA6expandEjPNS_3GJK3sSVEPNS0_5sFaceEjRNS0_8sHorizonE)
 	jirl	$ra, $ra, 0
-	bltu	$s8, $s4, .LBB5_28
+	bltu	$s6, $s4, .LBB5_28
 # %bb.27:                               #   in Loop: Header=BB5_26 Depth=2
 	addi.d	$s4, $s4, 1
-	addi.d	$s6, $s6, 8
+	addi.d	$s8, $s8, 8
 	bnez	$a0, .LBB5_26
 .LBB5_28:                               #   in Loop: Header=BB5_23 Depth=1
-	ld.w	$a1, $sp, 120
-	sltu	$a1, $s5, $a1
+	ld.w	$a1, $sp, 104
+	sltu	$a1, $s7, $a1
 	and	$a0, $a0, $a1
 	beqz	$a0, .LBB5_49
 # %bb.29:                               #   in Loop: Header=BB5_23 Depth=1
-	ld.d	$a0, $sp, 104
-	ld.d	$a1, $sp, 112
-	st.b	$s5, $a0, 89
+	ld.d	$a0, $sp, 88
+	ld.d	$a1, $sp, 96
+	st.b	$s7, $a0, 89
 	st.d	$a1, $a0, 56
-	st.b	$s8, $a1, 90
+	st.b	$s6, $a1, 90
 	st.d	$a0, $a1, 64
-	ld.d	$a1, $s7, 80
-	ld.d	$a0, $s7, 72
+	ld.d	$a1, $s5, 80
+	ld.d	$a0, $s5, 72
 	beqz	$a1, .LBB5_31
 # %bb.30:                               #   in Loop: Header=BB5_23 Depth=1
 	st.d	$a0, $a1, 72
 .LBB5_31:                               #   in Loop: Header=BB5_23 Depth=1
 	beqz	$a0, .LBB5_33
 # %bb.32:                               #   in Loop: Header=BB5_23 Depth=1
-	ld.d	$a1, $s7, 80
+	ld.d	$a1, $s5, 80
 	st.d	$a1, $a0, 80
 .LBB5_33:                               #   in Loop: Header=BB5_23 Depth=1
 	ldptr.d	$a0, $fp, 14432
-	bne	$s7, $a0, .LBB5_35
+	bne	$s5, $a0, .LBB5_35
 # %bb.34:                               #   in Loop: Header=BB5_23 Depth=1
-	ld.d	$a0, $s7, 80
+	ld.d	$a0, $s5, 80
 	stptr.d	$a0, $fp, 14432
 .LBB5_35:                               # %_ZN12gjkepa2_impl3EPA6removeERNS0_5sListEPNS0_5sFaceE.exit157
                                         #   in Loop: Header=BB5_23 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ldx.w	$a1, $fp, $a0
-	st.d	$zero, $s7, 72
+	st.d	$zero, $s5, 72
 	ldptr.d	$a0, $fp, 14448
 	addi.d	$a1, $a1, -1
 	stptr.w	$a1, $fp, 14440
-	st.d	$a0, $s7, 80
+	st.d	$a0, $s5, 80
 	beqz	$a0, .LBB5_37
 # %bb.36:                               #   in Loop: Header=BB5_23 Depth=1
-	st.d	$s7, $a0, 72
+	st.d	$s5, $a0, 72
 .LBB5_37:                               # %_ZN12gjkepa2_impl3EPA6appendERNS0_5sListEPNS0_5sFaceE.exit159
                                         #   in Loop: Header=BB5_23 Depth=1
-	stptr.d	$s7, $fp, 14448
-	ldptr.d	$s7, $fp, 14432
+	stptr.d	$s5, $fp, 14448
+	ldptr.d	$s5, $fp, 14432
 	lu12i.w	$a0, 3
 	ori	$a0, $a0, 2168
 	ldx.w	$a1, $fp, $a0
-	ld.d	$a0, $s7, 80
+	ld.d	$a0, $s5, 80
 	addi.d	$a1, $a1, 1
 	stptr.w	$a1, $fp, 14456
 	beqz	$a0, .LBB5_40
 # %bb.38:                               # %.lr.ph.preheader.i163
                                         #   in Loop: Header=BB5_23 Depth=1
-	fld.s	$fa1, $s7, 16
-	fld.s	$fa0, $s7, 20
+	fld.s	$fa1, $s5, 16
+	fld.s	$fa0, $s5, 20
 	fmul.s	$fa1, $fa1, $fa1
 	.p2align	4, , 16
 .LBB5_39:                               # %.lr.ph.i164
@@ -1788,25 +1790,27 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	and	$a1, $a1, $a2
 	maskeqz	$a2, $a0, $a1
 	ld.d	$a0, $a0, 80
-	masknez	$a3, $s7, $a1
+	masknez	$a3, $s5, $a1
 	movgr2cf	$fcc0, $a1
 	fsel	$fa1, $fa1, $fa2, $fcc0
 	fsel	$fa0, $fa0, $fa3, $fcc0
-	or	$s7, $a2, $a3
+	or	$s5, $a2, $a3
 	bnez	$a0, .LBB5_39
 .LBB5_40:                               # %_ZN12gjkepa2_impl3EPA8findbestEv.exit177
                                         #   in Loop: Header=BB5_23 Depth=1
-	fld.s	$fa0, $s7, 20
+	fld.s	$fa0, $s5, 20
 	fcmp.cult.s	$fcc0, $fa0, $fs1
 	bcnez	$fcc0, .LBB5_22
 # %bb.41:                               #   in Loop: Header=BB5_23 Depth=1
-	vld	$vr1, $s7, 0
+	vld	$vr1, $s5, 0
 	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
-	fld.s	$fs0, $s7, 16
-	vld	$vr1, $s7, 24
-	vst	$vr1, $sp, 48                   # 16-byte Folded Spill
-	ld.d	$a0, $s7, 40
+	fld.s	$fs0, $s5, 16
+	ld.d	$a0, $s5, 24
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a0, $s5, 32
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$a0, $s5, 40
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	fmov.s	$fs1, $fa0
 	b	.LBB5_22
 .LBB5_42:                               # %.thread350
@@ -1851,21 +1855,21 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	st.w	$a0, $fp, 40
 	ori	$a0, $zero, 8
 .LBB5_46:
-	fld.d	$fs2, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 136                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs2, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .LBB5_47:
 	ori	$a0, $zero, 6
@@ -1878,26 +1882,26 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 .LBB5_50:                               # %.loopexit
 	st.w	$a0, $fp, 0
 .LBB5_51:                               # %.loopexit
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
-	vreplvei.w	$vr0, $vr2, 0
+	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
+	vreplvei.w	$vr0, $vr3, 0
 	fmul.s	$fa0, $fa0, $fs0
-	vreplvei.w	$vr1, $vr2, 1
+	vreplvei.w	$vr1, $vr3, 1
 	fmul.s	$fa1, $fa1, $fs0
-	vst	$vr2, $fp, 64
+	vreplvei.w	$vr2, $vr3, 2
+	vst	$vr3, $fp, 64
 	fst.s	$fs0, $fp, 80
-	vld	$vr11, $sp, 48                  # 16-byte Folded Reload
-	vpickve2gr.d	$a0, $vr11, 1
-	fld.s	$fa3, $a0, 16
-	fld.s	$fa4, $a0, 20
-	vreplvei.w	$vr2, $vr2, 2
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	fld.s	$fa3, $a1, 16
+	fld.s	$fa4, $a1, 20
 	fmul.s	$fa2, $fa2, $fs0
+	ori	$a0, $zero, 3
 	fsub.s	$fa3, $fa3, $fa0
 	fsub.s	$fa4, $fa4, $fa1
-	fld.s	$fa5, $a0, 24
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	fld.s	$fa6, $a3, 16
-	fld.s	$fa7, $a3, 20
-	fld.s	$ft0, $a3, 24
+	fld.s	$fa5, $a1, 24
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	fld.s	$fa6, $a2, 16
+	fld.s	$fa7, $a2, 20
+	fld.s	$ft0, $a2, 24
 	fsub.s	$fa5, $fa5, $fa2
 	fsub.s	$fa6, $fa6, $fa0
 	fsub.s	$fa7, $fa7, $fa1
@@ -1916,15 +1920,17 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	fmadd.s	$fa3, $fa3, $fa3, $fa4
 	fsqrt.s	$fa3, $fa3
 	fst.s	$fa3, $fp, 40
-	fld.s	$fa4, $a3, 16
-	fld.s	$fa5, $a3, 20
+	fld.s	$fa4, $a2, 16
+	fld.s	$fa5, $a2, 20
+	st.w	$a0, $fp, 56
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	st.d	$a0, $fp, 8
 	fsub.s	$fa4, $fa4, $fa0
 	fsub.s	$fa5, $fa5, $fa1
-	fld.s	$fa6, $a3, 24
-	vpickve2gr.d	$a1, $vr11, 0
-	fld.s	$fa7, $a1, 16
-	fld.s	$ft0, $a1, 20
-	fld.s	$ft1, $a1, 24
+	fld.s	$fa6, $a2, 24
+	fld.s	$fa7, $a0, 16
+	fld.s	$ft0, $a0, 20
+	fld.s	$ft1, $a0, 24
 	fsub.s	$fa6, $fa6, $fa2
 	fsub.s	$fa7, $fa7, $fa0
 	fsub.s	$ft0, $ft0, $fa1
@@ -1935,8 +1941,6 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	fneg.s	$ft1, $ft1
 	fmul.s	$ft1, $fa4, $ft1
 	fmadd.s	$fa6, $fa6, $fa7, $ft1
-	ori	$a2, $zero, 3
-	st.w	$a2, $fp, 56
 	fneg.s	$fa7, $fa7
 	fmul.s	$fa5, $fa5, $fa7
 	fmadd.s	$fa4, $fa4, $ft0, $fa5
@@ -1945,16 +1949,16 @@ _ZN12gjkepa2_impl3EPA8EvaluateERNS_3GJKERK9btVector3: # @_ZN12gjkepa2_impl3EPA8E
 	fmadd.s	$fa4, $fa4, $fa4, $fa5
 	fsqrt.s	$fa4, $fa4
 	fst.s	$fa4, $fp, 44
-	fld.s	$fa5, $a1, 16
-	fld.s	$fa6, $a1, 20
-	st.d	$a3, $fp, 24
-	vst	$vr11, $fp, 8
+	fld.s	$fa5, $a0, 16
+	fld.s	$fa6, $a0, 20
+	st.d	$a1, $fp, 16
+	st.d	$a2, $fp, 24
 	fsub.s	$fa5, $fa5, $fa0
 	fsub.s	$fa6, $fa6, $fa1
-	fld.s	$fa7, $a1, 24
-	fld.s	$ft0, $a0, 16
-	fld.s	$ft1, $a0, 20
-	fld.s	$ft2, $a0, 24
+	fld.s	$fa7, $a0, 24
+	fld.s	$ft0, $a1, 16
+	fld.s	$ft1, $a1, 20
+	fld.s	$ft2, $a1, 24
 	fsub.s	$fa7, $fa7, $fa2
 	fsub.s	$fa0, $ft0, $fa0
 	fsub.s	$fa1, $ft1, $fa1

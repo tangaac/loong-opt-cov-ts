@@ -231,13 +231,7 @@ sort_nuclide_grids:                     # @sort_nuclide_grids
 .Lfunc_end2:
 	.size	sort_nuclide_grids, .Lfunc_end2-sort_nuclide_grids
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function generate_energy_grid
-.LCPI3_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.text
-	.globl	generate_energy_grid
+	.globl	generate_energy_grid            # -- Begin function generate_energy_grid
 	.p2align	5
 	.type	generate_energy_grid,@function
 generate_energy_grid:                   # @generate_energy_grid
@@ -341,58 +335,45 @@ generate_energy_grid:                   # @generate_energy_grid
 # %bb.9:                                # %.preheader
 	blez	$s1, .LBB3_17
 # %bb.10:                               # %.lr.ph41.preheader
-	ori	$a1, $zero, 4
-	bgeu	$s1, $a1, .LBB3_12
+	ori	$a2, $zero, 1
+	slli.d	$a1, $s0, 2
+	bne	$s1, $a2, .LBB3_12
 # %bb.11:
-	move	$a1, $zero
+	move	$a2, $zero
 	b	.LBB3_15
 .LBB3_12:                               # %vector.ph47
-	bstrpick.d	$a1, $s1, 62, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI3_0)
-	slli.d	$a1, $a1, 2
-	vreplgr2vr.d	$vr1, $s0
-	addi.d	$a2, $fp, 40
-	move	$a3, $a1
+	bstrpick.d	$a2, $s1, 62, 1
+	slli.d	$a2, $a2, 1
+	slli.d	$a3, $s0, 3
+	addi.d	$a4, $fp, 24
+	move	$a5, $a2
+	move	$a6, $a0
 	.p2align	4, , 16
 .LBB3_13:                               # %vector.body50
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.du	$vr2, $vr0, 2
-	vmul.d	$vr3, $vr0, $vr1
-	vpickve2gr.d	$a4, $vr3, 0
-	vpickve2gr.d	$a5, $vr3, 1
-	vmul.d	$vr2, $vr2, $vr1
-	vpickve2gr.d	$a6, $vr2, 0
-	vpickve2gr.d	$a7, $vr2, 1
-	alsl.d	$a4, $a4, $a0, 2
-	alsl.d	$a5, $a5, $a0, 2
-	alsl.d	$a6, $a6, $a0, 2
-	alsl.d	$a7, $a7, $a0, 2
-	st.d	$a4, $a2, -32
-	st.d	$a5, $a2, -16
-	st.d	$a6, $a2, 0
-	st.d	$a7, $a2, 16
-	vaddi.du	$vr0, $vr0, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 64
-	bnez	$a3, .LBB3_13
+	add.d	$a7, $a6, $a1
+	st.d	$a6, $a4, -16
+	st.d	$a7, $a4, 0
+	add.d	$a6, $a6, $a3
+	addi.d	$a5, $a5, -2
+	addi.d	$a4, $a4, 32
+	bnez	$a5, .LBB3_13
 # %bb.14:                               # %middle.block53
-	beq	$s1, $a1, .LBB3_17
+	beq	$s1, $a2, .LBB3_17
 .LBB3_15:                               # %.lr.ph41.preheader56
-	sub.d	$a2, $s1, $a1
-	alsl.d	$a3, $a1, $fp, 4
-	addi.d	$a3, $a3, 8
-	mul.d	$a1, $a1, $s0
-	alsl.d	$a0, $a1, $a0, 2
-	slli.d	$a1, $s0, 2
+	sub.d	$a3, $s1, $a2
+	alsl.d	$a4, $a2, $fp, 4
+	addi.d	$a4, $a4, 8
+	mul.d	$a2, $a2, $s0
+	alsl.d	$a0, $a2, $a0, 2
 	.p2align	4, , 16
 .LBB3_16:                               # %.lr.ph41
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a0, $a3, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 16
+	st.d	$a0, $a4, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
 	add.d	$a0, $a0, $a1
-	bnez	$a2, .LBB3_16
+	bnez	$a3, .LBB3_16
 .LBB3_17:                               # %._crit_edge42
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload

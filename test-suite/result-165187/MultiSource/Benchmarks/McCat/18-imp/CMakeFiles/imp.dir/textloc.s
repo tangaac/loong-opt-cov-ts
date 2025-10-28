@@ -17,78 +17,25 @@ ConvertToFloat:                         # @ConvertToFloat
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 64
-	blez	$s0, .LBB0_7
+	blez	$s0, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $fp, 48
-	ori	$a2, $zero, 8
-	bltu	$s0, $a2, .LBB0_4
-# %bb.2:                                # %vector.memcheck
-	add.d	$a2, $a1, $s0
-	bgeu	$a0, $a2, .LBB0_8
-# %bb.3:                                # %vector.memcheck
-	alsl.d	$a2, $s0, $a0, 2
-	bgeu	$a1, $a2, .LBB0_8
-.LBB0_4:
-	move	$a2, $zero
-.LBB0_5:                                # %scalar.ph.preheader
-	sub.d	$a3, $s0, $a2
-	alsl.d	$a0, $a2, $a0, 2
-	add.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB0_6:                                # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
+.LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a1, 0
 	movgr2fr.w	$fa0, $a2
 	ffint.s.w	$fa0, $fa0
 	fst.s	$fa0, $a0, 0
-	addi.d	$a3, $a3, -1
+	addi.d	$s0, $s0, -1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 1
-	bnez	$a3, .LBB0_6
-.LBB0_7:                                # %._crit_edge
+	bnez	$s0, .LBB0_2
+.LBB0_3:                                # %._crit_edge
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB0_8:                                # %vector.ph
-	bstrpick.d	$a2, $s0, 30, 2
-	slli.d	$a2, $a2, 2
-	move	$a3, $a1
-	move	$a4, $a0
-	move	$a5, $a2
-	.p2align	4, , 16
-.LBB0_9:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a3, 0
-	vinsgr2vr.w	$vr0, $a6, 0
-	vpickve2gr.b	$a6, $vr0, 1
-	andi	$a6, $a6, 255
-	movgr2fr.w	$fa1, $a6
-	ffint.s.w	$fa1, $fa1
-	vpickve2gr.b	$a6, $vr0, 0
-	andi	$a6, $a6, 255
-	movgr2fr.w	$fa2, $a6
-	ffint.s.w	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	vpickve2gr.b	$a6, $vr0, 2
-	andi	$a6, $a6, 255
-	movgr2fr.w	$fa1, $a6
-	ffint.s.w	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	vpickve2gr.b	$a6, $vr0, 3
-	andi	$a6, $a6, 255
-	movgr2fr.w	$fa0, $a6
-	ffint.s.w	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	vst	$vr2, $a4, 0
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 16
-	addi.d	$a3, $a3, 4
-	bnez	$a5, .LBB0_9
-# %bb.10:                               # %middle.block
-	beq	$a2, $s0, .LBB0_7
-	b	.LBB0_5
 .Lfunc_end0:
 	.size	ConvertToFloat, .Lfunc_end0-ConvertToFloat
                                         # -- End function
@@ -224,13 +171,13 @@ HorzVariance:                           # @HorzVariance
 # %bb.13:                               # %.preheader.us.us.us.preheader
 	move	$a3, $zero
 	move	$a4, $a2
-	bstrins.d	$a4, $zero, 2, 0
+	bstrins.d	$a4, $zero, 1, 0
 	addi.d	$a5, $a4, 10
 	vreplvei.w	$vr2, $vr0, 0
 	vreplvei.w	$vr3, $vr1, 0
-	addi.d	$a6, $a0, 56
+	addi.d	$a6, $a0, 40
 	slli.d	$a7, $s2, 2
-	ori	$t0, $zero, 8
+	ori	$t0, $zero, 4
 	lu12i.w	$t1, 276464
 	movgr2fr.w	$fa4, $t1
 	movgr2fr.w	$fa5, $zero
@@ -257,18 +204,13 @@ HorzVariance:                           # @HorzVariance
 .LBB1_17:                               # %vector.body
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr7, $t2, -16
-	vld	$vr8, $t2, 0
+	vld	$vr7, $t2, 0
 	vfdiv.s	$vr7, $vr7, $vr2
-	vfdiv.s	$vr8, $vr8, $vr2
 	vfcmp.cult.s	$vr7, $vr3, $vr7
-	vfcmp.cult.s	$vr8, $vr3, $vr8
 	vand.v	$vr7, $vr7, $vr6
-	vand.v	$vr8, $vr8, $vr6
-	vst	$vr7, $t2, -16
-	vst	$vr8, $t2, 0
-	addi.d	$t1, $t1, -8
-	addi.d	$t2, $t2, 32
+	vst	$vr7, $t2, 0
+	addi.d	$t1, $t1, -4
+	addi.d	$t2, $t2, 16
 	bnez	$t1, .LBB1_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB1_15 Depth=1
@@ -294,12 +236,12 @@ HorzVariance:                           # @HorzVariance
 .LBB1_21:                               # %.preheader.us.us.us.us.preheader
 	move	$a3, $zero
 	move	$a4, $a2
-	bstrins.d	$a4, $zero, 2, 0
+	bstrins.d	$a4, $zero, 1, 0
 	addi.d	$a5, $a4, 10
 	vreplvei.w	$vr1, $vr0, 0
-	addi.d	$a6, $a0, 56
+	addi.d	$a6, $a0, 40
 	slli.d	$a7, $s2, 2
-	ori	$t0, $zero, 8
+	ori	$t0, $zero, 4
 	b	.LBB1_23
 	.p2align	4, , 16
 .LBB1_22:                               # %._crit_edge58.split.us.split.us.split.us.us.us.us.us
@@ -314,33 +256,30 @@ HorzVariance:                           # @HorzVariance
                                         #     Child Loop BB1_28 Depth 2
 	ori	$t2, $zero, 10
 	bltu	$a2, $t0, .LBB1_27
-# %bb.24:                               # %vector.body130.preheader
+# %bb.24:                               # %vector.body129.preheader
                                         #   in Loop: Header=BB1_23 Depth=1
 	move	$t1, $a4
 	move	$t2, $a6
 	.p2align	4, , 16
-.LBB1_25:                               # %vector.body130
+.LBB1_25:                               # %vector.body129
                                         #   Parent Loop BB1_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr2, $t2, -16
-	vld	$vr3, $t2, 0
+	vld	$vr2, $t2, 0
 	vfdiv.s	$vr2, $vr2, $vr1
-	vfdiv.s	$vr3, $vr3, $vr1
-	vst	$vr2, $t2, -16
-	vst	$vr3, $t2, 0
-	addi.d	$t1, $t1, -8
-	addi.d	$t2, $t2, 32
+	vst	$vr2, $t2, 0
+	addi.d	$t1, $t1, -4
+	addi.d	$t2, $t2, 16
 	bnez	$t1, .LBB1_25
-# %bb.26:                               # %middle.block136
+# %bb.26:                               # %middle.block134
                                         #   in Loop: Header=BB1_23 Depth=1
 	move	$t2, $a5
 	beq	$a2, $a4, .LBB1_22
-.LBB1_27:                               # %scalar.ph123.preheader
+.LBB1_27:                               # %scalar.ph122.preheader
                                         #   in Loop: Header=BB1_23 Depth=1
 	alsl.d	$t1, $t2, $a0, 2
 	sub.d	$t2, $a1, $t2
 	.p2align	4, , 16
-.LBB1_28:                               # %scalar.ph123
+.LBB1_28:                               # %scalar.ph122
                                         #   Parent Loop BB1_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.s	$fa2, $t1, 0

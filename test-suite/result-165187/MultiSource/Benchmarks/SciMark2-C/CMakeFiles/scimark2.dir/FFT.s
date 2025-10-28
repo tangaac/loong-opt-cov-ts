@@ -293,12 +293,19 @@ FFT_transform_internal:                 # @FFT_transform_internal
 .LBB3_20:                               # %.lr.ph.us
                                         #   Parent Loop BB3_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vldx	$vr1, $a5, $a2
-	vld	$vr3, $a5, 0
-	vfsub.d	$vr4, $vr3, $vr1
-	vstx	$vr4, $a5, $a2
-	vfadd.d	$vr1, $vr1, $vr3
-	vst	$vr1, $a5, 0
+	add.d	$a6, $a5, $a2
+	fldx.d	$fa1, $a5, $a2
+	fld.d	$fa3, $a5, 0
+	fld.d	$fa4, $a6, 8
+	fld.d	$fa5, $a5, 8
+	fsub.d	$fa6, $fa3, $fa1
+	fstx.d	$fa6, $a5, $a2
+	fsub.d	$fa6, $fa5, $fa4
+	fst.d	$fa6, $a6, 8
+	fadd.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $a5, 0
+	fadd.d	$fa1, $fa4, $fa5
+	fst.d	$fa1, $a5, 8
 	add.d	$a3, $a3, $a0
 	add.d	$a5, $a5, $a1
 	blt	$a3, $s0, .LBB3_20

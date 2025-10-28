@@ -294,38 +294,36 @@ _ZN21btConeTwistConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: #
 _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_: # @_ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -416
-	.cfi_def_cfa_offset 416
-	st.d	$ra, $sp, 408                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 360                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 352                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 344                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 336                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 328                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 320                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 312                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 304                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 296                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -320
+	.cfi_def_cfa_offset 320
+	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 264                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 248                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 240                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 232                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 224                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 216                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 208                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
-	.cfi_offset 56, -64
-	.cfi_offset 57, -72
-	.cfi_offset 58, -80
-	.cfi_offset 59, -88
-	.cfi_offset 60, -96
-	.cfi_offset 61, -104
-	.cfi_offset 62, -112
-	.cfi_offset 63, -120
+	.cfi_offset 56, -56
+	.cfi_offset 57, -64
+	.cfi_offset 58, -72
+	.cfi_offset 59, -80
+	.cfi_offset 60, -88
+	.cfi_offset 61, -96
+	.cfi_offset 62, -104
+	.cfi_offset 63, -112
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 600
 	move	$s0, $a4
@@ -360,7 +358,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fld.s	$ft9, $fp, 368
 	fmadd.s	$fa0, $fa4, $ft6, $fa0
 	fmadd.s	$fa0, $ft0, $ft8, $fa0
-	fst.s	$fa0, $sp, 160                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 116                  # 4-byte Folded Spill
 	fld.s	$ft10, $fp, 352
 	fmul.s	$fa0, $ft7, $ft9
 	fld.s	$ft11, $fp, 384
@@ -368,7 +366,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fld.s	$ft13, $fp, 356
 	fmadd.s	$fa0, $ft10, $ft6, $fa0
 	fmadd.s	$fa0, $ft11, $ft8, $fa0
-	fst.s	$fa0, $sp, 128                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 108                  # 4-byte Folded Spill
 	fmul.s	$fa0, $ft7, $ft12
 	fmadd.s	$fa0, $ft13, $ft6, $fa0
 	fld.s	$ft14, $fp, 388
@@ -376,37 +374,37 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fld.s	$fs0, $s3, 16
 	fld.s	$fs1, $s3, 24
 	fmadd.s	$fa0, $ft14, $ft8, $fa0
-	fst.s	$fa0, $sp, 192                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 124                  # 4-byte Folded Spill
 	fmul.s	$fa2, $fa7, $ft15
 	fmadd.s	$fa2, $fa4, $fs0, $fa2
 	fmadd.s	$fa0, $ft0, $fs1, $fa2
-	fst.s	$fa0, $sp, 112                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 104                  # 4-byte Folded Spill
 	fmul.s	$fa2, $ft9, $ft15
 	fmadd.s	$fa2, $ft10, $fs0, $fa2
 	fmadd.s	$fa0, $ft11, $fs1, $fa2
-	fst.s	$fa0, $sp, 108                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 100                  # 4-byte Folded Spill
 	fmul.s	$fa2, $ft12, $ft15
 	fmadd.s	$fa2, $ft13, $fs0, $fa2
 	fld.s	$fs2, $s3, 36
 	fld.s	$fs3, $s3, 32
 	fld.s	$fs4, $s3, 40
 	fmadd.s	$fa0, $ft14, $fs1, $fa2
-	fst.s	$fa0, $sp, 176                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 120                  # 4-byte Folded Spill
 	fmul.s	$fa7, $fa7, $fs2
 	fmadd.s	$fa4, $fa4, $fs3, $fa7
 	fmadd.s	$fa0, $ft0, $fs4, $fa4
-	fst.s	$fa0, $sp, 104                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 96                   # 4-byte Folded Spill
 	fmul.s	$fa4, $ft9, $fs2
 	fmadd.s	$fa4, $ft10, $fs3, $fa4
 	fmadd.s	$fa0, $ft11, $fs4, $fa4
-	fst.s	$fa0, $sp, 100                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 92                   # 4-byte Folded Spill
 	fmul.s	$fa4, $ft12, $fs2
 	fmadd.s	$fa4, $ft13, $fs3, $fa4
 	fld.s	$ft11, $fp, 400
 	fld.s	$ft12, $fp, 396
 	fld.s	$ft13, $fp, 404
 	fmadd.s	$fa0, $ft14, $fs4, $fa4
-	fst.s	$fa0, $sp, 144                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 112                  # 4-byte Folded Spill
 	fmul.s	$ft7, $ft7, $ft11
 	fmadd.s	$ft6, $ft6, $ft12, $ft7
 	fmadd.s	$ft9, $ft8, $ft13, $ft6
@@ -544,17 +542,17 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fneg.s	$fa1, $fa1
 	fneg.s	$fa2, $ft3
 	fneg.s	$fa3, $ft0
-	fld.s	$ft15, $sp, 112                 # 4-byte Folded Reload
+	fld.s	$ft15, $sp, 104                 # 4-byte Folded Reload
 	fmul.s	$fa4, $ft15, $fa2
-	fld.s	$ft13, $sp, 160                 # 4-byte Folded Reload
+	fld.s	$ft13, $sp, 116                 # 4-byte Folded Reload
 	fmadd.s	$fa4, $ft13, $fa1, $fa4
-	fld.s	$fs2, $sp, 104                  # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 96                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $fs2, $fa3, $fa4
-	fld.s	$fs0, $sp, 108                  # 4-byte Folded Reload
+	fld.s	$fs0, $sp, 100                  # 4-byte Folded Reload
 	fmul.s	$fa5, $fs0, $fa2
-	fld.s	$ft14, $sp, 128                 # 4-byte Folded Reload
+	fld.s	$ft14, $sp, 108                 # 4-byte Folded Reload
 	fmadd.s	$fa5, $ft14, $fa1, $fa5
-	fld.s	$fs3, $sp, 100                  # 4-byte Folded Reload
+	fld.s	$fs3, $sp, 92                   # 4-byte Folded Reload
 	fmadd.s	$fa5, $fs3, $fa3, $fa5
 	fmul.s	$fa6, $ft14, $fs7
 	fmadd.s	$fa6, $ft13, $ft11, $fa6
@@ -580,11 +578,11 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmadd.s	$ft9, $ft9, $fa4, $fs2
 	fmul.s	$fa5, $fa5, $fs5
 	fmadd.s	$fa4, $ft1, $fa4, $fa5
-	fld.s	$ft1, $sp, 176                  # 4-byte Folded Reload
+	fld.s	$ft1, $sp, 120                  # 4-byte Folded Reload
 	fmul.s	$fa2, $ft1, $fa2
-	fld.s	$fa5, $sp, 192                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 124                  # 4-byte Folded Reload
 	fmadd.s	$fa1, $fa5, $fa1, $fa2
-	fld.s	$fs2, $sp, 144                  # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 112                  # 4-byte Folded Reload
 	fmadd.s	$fa1, $fs2, $fa3, $fa1
 	fmadd.s	$fa2, $fa5, $ft5, $fa6
 	fmadd.s	$fa3, $fa5, $ft4, $ft0
@@ -613,28 +611,28 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	movfr2gr.s	$a0, $fa0
 	movfr2gr.s	$a1, $fa4
 	movfr2gr.s	$a2, $fa1
-	fst.s	$fa2, $sp, 208
-	fst.s	$fa6, $sp, 212
-	fst.s	$ft1, $sp, 216
-	fst.s	$fa3, $sp, 224
-	fst.s	$fa7, $sp, 228
-	fst.s	$ft3, $sp, 232
-	fst.s	$fa5, $sp, 240
-	fst.s	$ft0, $sp, 244
-	fst.s	$ft13, $sp, 248
+	fst.s	$fa2, $sp, 128
+	fst.s	$fa6, $sp, 132
+	fst.s	$ft1, $sp, 136
+	fst.s	$fa3, $sp, 144
+	fst.s	$fa7, $sp, 148
+	fst.s	$ft3, $sp, 152
+	fst.s	$fa5, $sp, 160
+	fst.s	$ft0, $sp, 164
+	fst.s	$ft13, $sp, 168
 	bstrins.d	$a0, $a1, 63, 32
 	bstrpick.d	$a1, $a2, 31, 0
-	st.w	$zero, $sp, 220
-	st.w	$zero, $sp, 236
-	st.w	$zero, $sp, 252
-	st.d	$a0, $sp, 256
-	st.d	$a1, $sp, 264
-	addi.d	$a0, $sp, 208
-	addi.d	$a1, $sp, 280
+	st.w	$zero, $sp, 140
+	st.w	$zero, $sp, 156
+	st.w	$zero, $sp, 172
+	st.d	$a0, $sp, 176
+	st.d	$a1, $sp, 184
+	addi.d	$a0, $sp, 128
+	addi.d	$a1, $sp, 192
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 280
-	ld.d	$a1, $sp, 288
+	ld.d	$a0, $sp, 192
+	ld.d	$a1, $sp, 200
 	movgr2fr.w	$fa1, $a0
 	srli.d	$a0, $a0, 32
 	movgr2fr.w	$fa2, $a0
@@ -666,168 +664,154 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	st.b	$a0, $fp, 574
 	b	.LBB5_59
 .LBB5_4:
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 128
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 208
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 136
+	movgr2fr.w	$fs0, $a0
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fs1, $a0
+	movgr2fr.w	$fs2, $a1
+	srli.d	$a0, $a1, 32
+	movgr2fr.w	$fs3, $a0
 	addi.d	$a0, $fp, 348
-	addi.d	$s4, $fp, 412
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 128
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 208
-	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
-	addi.d	$a1, $sp, 208
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 136
+	movgr2fr.w	$fa0, $a0
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fa5, $a0
+	movgr2fr.w	$fa1, $a1
+	srli.d	$a0, $a1, 32
+	movgr2fr.w	$fa2, $a0
+	fmul.s	$fa3, $fs0, $fa2
+	fmadd.s	$fa3, $fs3, $fa0, $fa3
+	fmadd.s	$fa3, $fs1, $fa1, $fa3
+	fneg.s	$fa6, $fs2
+	fst.s	$fa3, $sp, 76                   # 4-byte Folded Spill
+	fmadd.s	$fs5, $fa6, $fa5, $fa3
+	fmul.s	$fa3, $fs1, $fa2
+	fmadd.s	$fa3, $fs3, $fa5, $fa3
+	fmadd.s	$fa3, $fs2, $fa0, $fa3
+	fneg.s	$fa4, $fs0
+	fmadd.s	$fs4, $fa4, $fa1, $fa3
+	fmul.s	$fa3, $fs2, $fa2
+	fmadd.s	$fa3, $fs3, $fa1, $fa3
+	fmadd.s	$fa3, $fs0, $fa5, $fa3
+	fneg.s	$fa4, $fs1
+	fmadd.s	$fs6, $fa4, $fa0, $fa3
+	fneg.s	$fa0, $fa0
+	fmul.s	$fa0, $fs0, $fa0
+	fmadd.s	$fa0, $fs3, $fa2, $fa0
+	fst.s	$fa5, $sp, 80                   # 4-byte Folded Spill
+	fmadd.s	$fa0, $fa4, $fa5, $fa0
+	fst.s	$fa6, $sp, 72                   # 4-byte Folded Spill
+	fmadd.s	$fs7, $fa6, $fa1, $fa0
+	addi.d	$a1, $sp, 128
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 208
-	vst	$vr1, $sp, 128                  # 16-byte Folded Spill
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vpackev.d	$vr0, $vr1, $vr0
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
-	vsrli.d	$vr0, $vr0, 32
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
-	vshuf4i.w	$vr0, $vr0, 8
-	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
-	addi.d	$a1, $sp, 208
-	move	$a0, $s4
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 136
+	movgr2fr.w	$fs0, $a0
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fs1, $a0
+	movgr2fr.w	$fs2, $a1
+	srli.d	$a0, $a1, 32
+	movgr2fr.w	$fs3, $a0
+	addi.d	$a0, $fp, 412
+	addi.d	$a1, $sp, 128
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 208
-	vld	$vr12, $sp, 144                 # 16-byte Folded Reload
-	vpackod.d	$vr1, $vr0, $vr12
-	vsrli.d	$vr2, $vr1, 32
-	vshuf4i.w	$vr2, $vr2, 8
-	vld	$vr3, $sp, 112                  # 16-byte Folded Reload
-	vreplvei.w	$vr3, $vr3, 0
-	vreplvei.w	$vr4, $vr2, 0
-	fmul.s	$fa5, $fa3, $fa4
-	vld	$vr14, $sp, 192                 # 16-byte Folded Reload
-	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
-	vpackod.d	$vr6, $vr6, $vr14
-	vsrli.d	$vr7, $vr6, 32
-	vshuf4i.w	$vr7, $vr7, 8
-	vpackev.d	$vr0, $vr0, $vr12
-	vsrli.d	$vr8, $vr0, 32
-	vshuf4i.w	$vr8, $vr8, 8
-	vreplvei.w	$vr9, $vr8, 0
-	vreplvei.w	$vr10, $vr7, 0
-	fmadd.s	$fa5, $ft2, $ft1, $fa5
-	vshuf4i.w	$vr6, $vr6, 8
-	vshuf4i.w	$vr0, $vr0, 8
-	vreplvei.w	$vr11, $vr6, 0
-	vreplvei.w	$vr12, $vr12, 0
-	fmadd.s	$fa5, $ft3, $ft4, $fa5
-	vld	$vr13, $sp, 160                 # 16-byte Folded Reload
-	vshuf4i.w	$vr13, $vr13, 8
-	vreplvei.w	$vr14, $vr14, 0
-	fneg.s	$ft7, $ft6
-	vshuf4i.w	$vr1, $vr1, 8
-	vreplvei.w	$vr16, $vr1, 0
-	fmadd.s	$fs5, $ft7, $ft8, $fa5
-	fmul.s	$fa5, $ft3, $fa4
-	fmadd.s	$fa5, $ft2, $ft8, $fa5
-	fmadd.s	$fa5, $ft6, $ft1, $fa5
-	fneg.s	$fa3, $fa3
-	fmadd.s	$ft7, $fa3, $ft4, $fa5
-	fneg.s	$fa5, $ft4
-	fmul.s	$fa5, $ft6, $fa5
-	fmadd.s	$fa4, $ft2, $fa4, $fa5
-	fmadd.s	$fa3, $fa3, $ft1, $fa4
-	vbitrevi.w	$vr4, $vr6, 31
-	vreplvei.w	$vr5, $vr4, 0
-	fmadd.s	$ft6, $fa5, $ft8, $fa3
-	vfmul.s	$vr3, $vr13, $vr2
-	vfmadd.s	$vr3, $vr7, $vr0, $vr3
-	vld	$vr5, $sp, 176                  # 16-byte Folded Reload
-	vfmadd.s	$vr3, $vr5, $vr1, $vr3
-	vfmadd.s	$vr3, $vr4, $vr8, $vr3
-	vreplvei.w	$vr5, $vr5, 1
-	vreplvei.w	$vr2, $vr2, 1
-	fmul.s	$ft1, $fa5, $fa2
-	vreplvei.w	$vr8, $vr8, 1
-	vreplvei.w	$vr7, $vr7, 1
-	fmadd.s	$ft1, $fa7, $ft0, $ft1
-	vreplvei.w	$vr6, $vr6, 1
-	vreplvei.w	$vr0, $vr0, 1
-	fmadd.s	$ft1, $fa6, $fa0, $ft1
-	vreplvei.w	$vr10, $vr13, 1
-	fneg.s	$ft3, $ft2
-	vreplvei.w	$vr1, $vr1, 1
-	fmadd.s	$ft5, $ft3, $fa1, $ft1
-	fmul.s	$fa6, $fa6, $fa2
-	fmadd.s	$fa6, $fa7, $fa1, $fa6
-	fmadd.s	$fa6, $ft2, $ft0, $fa6
-	fneg.s	$fa5, $fa5
-	fmadd.s	$ft8, $fa5, $fa0, $fa6
-	fneg.s	$ft4, $fa0
-	fmul.s	$ft2, $ft2, $ft4
-	fmadd.s	$fa2, $fa7, $fa2, $ft2
-	fmadd.s	$fa2, $fa5, $ft0, $fa2
-	vreplvei.w	$vr4, $vr4, 1
-	fmadd.s	$fa4, $fa4, $fa1, $fa2
-	vreplvei.w	$vr8, $vr3, 1
-	fneg.s	$fa7, $ft0
-	fnmadd.s	$fa1, $ft3, $fa1, $ft1
-	fnmadd.s	$fa2, $fa5, $fa0, $fa6
-	fmul.s	$fa0, $ft6, $fa7
-	vreplvei.w	$vr5, $vr3, 0
-	fmadd.s	$fa0, $fa4, $fa5, $fa0
-	fmadd.s	$fa0, $fa1, $ft7, $fa0
-	fmadd.s	$ft9, $ft8, $fs5, $fa0
-	fst.s	$fa1, $sp, 112                  # 4-byte Folded Spill
-	fmul.s	$fa1, $ft6, $fa1
-	fmadd.s	$fa1, $fa4, $fs5, $fa1
-	fmadd.s	$fa3, $fa2, $fa5, $fa1
-	fmadd.s	$ft10, $ft0, $ft7, $fa3
-	fst.s	$fa2, $sp, 108                  # 4-byte Folded Spill
-	fmul.s	$fa1, $ft6, $fa2
-	fmadd.s	$fa1, $fa4, $ft7, $fa1
-	fst.s	$fa7, $sp, 104                  # 4-byte Folded Spill
-	fmadd.s	$fa2, $fa7, $fs5, $fa1
-	fmadd.s	$fs7, $ft5, $fa5, $fa2
-	fmul.s	$fa1, $fa5, $ft0
-	fst.s	$ft6, $sp, 96                   # 4-byte Folded Spill
-	fst.s	$fa4, $sp, 128                  # 4-byte Folded Spill
-	fmadd.s	$fa1, $fa4, $ft6, $fa1
-	fmadd.s	$fa1, $ft5, $fs5, $fa1
-	fmadd.s	$fs2, $ft8, $ft7, $fa1
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 136
+	movgr2fr.w	$fa0, $a0
+	srli.d	$a0, $a0, 32
+	movgr2fr.w	$fa1, $a0
+	movgr2fr.w	$fa2, $a1
+	srli.d	$a0, $a1, 32
+	movgr2fr.w	$fa3, $a0
+	fmul.s	$fa4, $fs0, $fa3
+	fmadd.s	$fa4, $fs3, $fa0, $fa4
+	fmadd.s	$fa4, $fs1, $fa2, $fa4
+	fneg.s	$fa5, $fs2
+	fmadd.s	$ft3, $fa5, $fa1, $fa4
+	fmul.s	$fa6, $fs1, $fa3
+	fmadd.s	$fa6, $fs3, $fa1, $fa6
+	fmadd.s	$fa6, $fs2, $fa0, $fa6
+	fneg.s	$fa7, $fs0
+	fmadd.s	$ft4, $fa7, $fa2, $fa6
+	fmul.s	$ft0, $fs2, $fa3
+	fmadd.s	$ft0, $fs3, $fa2, $ft0
+	fmadd.s	$ft0, $fs0, $fa1, $ft0
+	fneg.s	$ft1, $fs1
+	fmadd.s	$ft5, $ft1, $fa0, $ft0
+	fneg.s	$ft2, $fa0
+	fmul.s	$ft2, $fs0, $ft2
+	fmadd.s	$fa3, $fs3, $fa3, $ft2
+	fmadd.s	$fa3, $ft1, $fa1, $fa3
+	fmadd.s	$ft2, $fa5, $fa2, $fa3
+	fnmadd.s	$fa4, $fa5, $fa1, $fa4
+	fnmadd.s	$fa1, $fa7, $fa2, $fa6
+	fnmadd.s	$fa2, $ft1, $fa0, $ft0
+	fmul.s	$fa0, $fs7, $fa4
+	fmadd.s	$fa0, $ft2, $fs5, $fa0
+	fmadd.s	$fa0, $fa1, $fs6, $fa0
+	fmadd.s	$ft7, $ft5, $fs4, $fa0
+	fst.s	$fa1, $sp, 104                  # 4-byte Folded Spill
+	fmul.s	$fa1, $fs7, $fa1
+	fmadd.s	$fa1, $ft2, $fs4, $fa1
+	fmadd.s	$fa3, $fa2, $fs5, $fa1
+	fmadd.s	$ft8, $ft3, $fs6, $fa3
+	fst.s	$fa2, $sp, 100                  # 4-byte Folded Spill
+	fmul.s	$fa1, $fs7, $fa2
+	fmadd.s	$fa1, $ft2, $fs6, $fa1
+	fst.s	$fa4, $sp, 96                   # 4-byte Folded Spill
+	fmadd.s	$fa2, $fa4, $fs4, $fa1
+	fmadd.s	$fs3, $ft4, $fs5, $fa2
+	fmul.s	$fa1, $fs5, $ft3
+	fst.s	$fs7, $sp, 84                   # 4-byte Folded Spill
+	fst.s	$ft2, $sp, 108                  # 4-byte Folded Spill
+	fmadd.s	$fa1, $ft2, $fs7, $fa1
+	fmadd.s	$fa1, $ft4, $fs4, $fa1
+	fmadd.s	$fs2, $ft5, $fs6, $fa1
 	movgr2fr.w	$fa1, $zero
-	fmul.s	$fa4, $ft10, $fa1
+	fmul.s	$fa4, $ft8, $fa1
 	fadd.s	$fa4, $fs2, $fa4
-	vst	$vr5, $sp, 80                   # 16-byte Folded Spill
-	fst.s	$ft5, $sp, 176                  # 4-byte Folded Spill
-	fnmadd.s	$fa5, $ft5, $fa5, $fa2
+	fst.s	$ft4, $sp, 116                  # 4-byte Folded Spill
+	fnmadd.s	$fa5, $ft4, $fs5, $fa2
 	fneg.s	$fa2, $fa1
-	fmadd.s	$fa4, $fs7, $fa2, $fa4
-	fmadd.s	$fa6, $fs2, $fa1, $fs7
-	fst.s	$ft8, $sp, 160                  # 4-byte Folded Spill
-	fnmadd.s	$fa0, $ft8, $fs5, $fa0
-	fmadd.s	$fa6, $ft9, $fa2, $fa6
-	fmul.s	$fa7, $ft9, $fa1
+	fmadd.s	$fa4, $fs3, $fa2, $fa4
+	fmadd.s	$fa6, $fs2, $fa1, $fs3
+	fst.s	$fs4, $sp, 92                   # 4-byte Folded Spill
+	fst.s	$ft5, $sp, 112                  # 4-byte Folded Spill
+	fnmadd.s	$fa0, $ft5, $fs4, $fa0
+	fmadd.s	$fa6, $ft7, $fa2, $fa6
+	fmul.s	$fa7, $ft7, $fa1
 	fmadd.s	$fa7, $fs2, $fa1, $fa7
-	fst.s	$ft7, $sp, 100                  # 4-byte Folded Spill
-	vst	$vr8, $sp, 144                  # 16-byte Folded Spill
-	fnmadd.s	$fa3, $ft0, $ft7, $fa3
-	fsub.s	$fa7, $fa7, $ft10
-	fmul.s	$ft0, $ft10, $fa2
-	fsub.s	$ft0, $ft0, $ft9
-	fmadd.s	$ft0, $fs7, $fa2, $ft0
+	fst.s	$fs6, $sp, 88                   # 4-byte Folded Spill
+	fst.s	$ft3, $sp, 120                  # 4-byte Folded Spill
+	fnmadd.s	$fa3, $ft3, $fs6, $fa3
+	fsub.s	$fa7, $fa7, $ft8
+	fmul.s	$ft0, $ft8, $fa2
+	fsub.s	$ft0, $ft0, $ft7
+	fmadd.s	$ft0, $fs3, $fa2, $ft0
 	fmul.s	$ft1, $fs2, $fa4
 	fmadd.s	$ft1, $ft0, $fa0, $ft1
 	fmadd.s	$ft1, $fa6, $fa5, $ft1
-	fmadd.s	$ft1, $fa7, $ft10, $ft1
+	fmadd.s	$ft1, $fa7, $ft8, $ft1
 	fmul.s	$ft2, $fs2, $fa6
 	fmadd.s	$ft2, $ft0, $fa3, $ft2
 	fmadd.s	$fa0, $fa7, $fa0, $ft2
-	fmadd.s	$ft2, $fa4, $fs7, $fa0
+	fmadd.s	$ft2, $fa4, $fs3, $fa0
 	fmul.s	$fa0, $fs2, $fa7
 	fmadd.s	$fa0, $ft0, $fa5, $fa0
 	fmadd.s	$fa0, $fa4, $fa3, $fa0
-	fmadd.s	$fa4, $fa6, $ft9, $fa0
+	fmadd.s	$fa4, $fa6, $ft7, $fa0
 	fmul.s	$fa0, $ft2, $ft2
 	fmadd.s	$fa0, $ft1, $ft1, $fa0
 	fmadd.s	$fa0, $fa4, $fa4, $fa0
@@ -859,13 +843,13 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fadd.s	$fa1, $fa0, $fa0
 	fsqrt.s	$fa0, $fa1
 	fcmp.cor.s	$fcc0, $fa0, $fa0
-	fadd.s	$fs3, $fa3, $fa2
+	fadd.s	$fs4, $fa3, $fa2
 	bceqz	$fcc0, .LBB5_60
 .LBB5_7:                                # %.split
 	frecip.s	$fa1, $fa0
 	fmul.s	$fa2, $fs0, $fa1
 	fmul.s	$fa3, $fs1, $fa1
-	fmul.s	$fa1, $fs3, $fa1
+	fmul.s	$fa1, $fs4, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa4, $fa0, $fa4
 .LBB5_8:                                # %_Z15shortestArcQuatRK9btVector3S1_.exit
@@ -874,29 +858,29 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmadd.s	$fa0, $fa1, $fa1, $fa0
 	fmadd.s	$fa0, $fa4, $fa4, $fa0
 	frsqrt.s	$fa5, $fa0
-	fmul.s	$ft7, $fa2, $fa5
+	fmul.s	$ft9, $fa2, $fa5
 	fld.s	$fs1, $fp, 492
 	fld.s	$fa0, $fp, 504
-	fmul.s	$ft8, $fa3, $fa5
+	fmul.s	$ft10, $fa3, $fa5
 	fld.s	$ft15, $fp, 496
 	fmul.s	$ft11, $fa1, $fa5
 	fcmp.cult.s	$fcc0, $fs1, $fa0
 	fmul.s	$ft12, $fa4, $fa5
-	fst.s	$fs5, $sp, 192                  # 4-byte Folded Spill
+	fst.s	$fs5, $sp, 124                  # 4-byte Folded Spill
 	bcnez	$fcc0, .LBB5_13
 # %bb.9:                                # %_Z15shortestArcQuatRK9btVector3S1_.exit
 	fcmp.cult.s	$fcc1, $ft15, $fa0
 	bcnez	$fcc1, .LBB5_13
 # %bb.10:
-	fst.s	$fs1, $sp, 72                   # 4-byte Folded Spill
-	fst.s	$fs2, $sp, 76                   # 4-byte Folded Spill
+	fst.s	$fs1, $sp, 64                   # 4-byte Folded Spill
+	fst.s	$fs2, $sp, 68                   # 4-byte Folded Spill
 	fmov.s	$fs2, $ft15
-	fmov.s	$fs1, $fs7
-	fmov.s	$fs7, $ft11
-	fmov.s	$fs6, $ft8
-	fmov.s	$fs4, $ft7
-	fmov.s	$fs3, $ft10
-	fmov.s	$fs0, $ft9
+	fmov.s	$fs1, $fs3
+	fmov.s	$fs3, $ft11
+	fmov.s	$fs7, $ft10
+	fmov.s	$fs6, $ft9
+	fmov.s	$fs4, $ft8
+	fmov.s	$fs0, $ft7
 	fmov.s	$fs5, $ft12
 	fmov.s	$fa0, $ft12
 	pcaddu18i	$ra, %call36(acosf)
@@ -907,18 +891,18 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fcmp.cule.s	$fcc0, $fa4, $fa3
 	bcnez	$fcc0, .LBB5_23
 # %bb.11:
-	fmov.s	$ft8, $fs6
-	fmul.s	$fa0, $fs6, $fs6
-	fmov.s	$ft7, $fs4
-	fmadd.s	$fa0, $fs4, $fs4, $fa0
-	fmov.s	$ft11, $fs7
-	fmadd.s	$fa0, $fs7, $fs7, $fa0
+	fmov.s	$ft10, $fs7
+	fmul.s	$fa0, $fs7, $fs7
+	fmov.s	$ft9, $fs6
+	fmadd.s	$fa0, $fs6, $fs6, $fa0
+	fmov.s	$ft11, $fs3
+	fmadd.s	$fa0, $fs3, $fs3, $fa0
 	frsqrt.s	$fa2, $fa0
-	fmul.s	$fa0, $fs4, $fa2
-	fmul.s	$fa1, $fs6, $fa2
+	fmul.s	$fa0, $fs6, $fa2
+	fmul.s	$fa1, $fs7, $fa2
 	fabs.s	$fa5, $fa1
 	fcmp.cule.s	$fcc0, $fa5, $fa3
-	fmul.s	$fa2, $fs7, $fa2
+	fmul.s	$fa2, $fs3, $fa2
 	fmov.s	$ft2, $fs2
 	bcnez	$fcc0, .LBB5_28
 # %bb.12:
@@ -927,7 +911,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fdiv.s	$fa5, $fa5, $fa6
 	fmul.s	$fa6, $ft2, $ft2
 	frecip.s	$fa6, $fa6
-	fld.s	$fa7, $sp, 72                   # 4-byte Folded Reload
+	fld.s	$fa7, $sp, 64                   # 4-byte Folded Reload
 	fmul.s	$fa7, $fa7, $fa7
 	fdiv.s	$fa7, $fa5, $fa7
 	fadd.s	$fa6, $fa6, $fa7
@@ -961,7 +945,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fld.s	$ft5, $fp, 352
 	fld.s	$ft6, $fp, 384
 	fmadd.s	$fa1, $fa2, $fa4, $fa1
-	fst.s	$fa1, $sp, 76                   # 4-byte Folded Spill
+	fst.s	$fa1, $sp, 68                   # 4-byte Folded Spill
 	fmul.s	$fa1, $fa3, $ft1
 	fmadd.s	$fa1, $fa5, $ft5, $fa1
 	fmadd.s	$fs4, $fa6, $ft6, $fa1
@@ -976,7 +960,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmadd.s	$ft6, $fa2, $ft6, $fa1
 	fmul.s	$fa1, $fa3, $fa4
 	fmadd.s	$fa1, $fa5, $ft1, $fa1
-	fmadd.s	$fs6, $fa6, $ft5, $fa1
+	fmadd.s	$fs7, $fa6, $ft5, $fa1
 	fmul.s	$fa1, $ft0, $fa4
 	fmadd.s	$fa1, $fa7, $ft1, $fa1
 	fmadd.s	$ft2, $ft2, $ft5, $fa1
@@ -993,7 +977,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fld.s	$fa7, $s2, 20
 	fld.s	$ft0, $s2, 16
 	fmadd.s	$fa2, $fa5, $fa3, $fa2
-	fmadd.s	$fs3, $fa6, $fa4, $fa2
+	fmadd.s	$fs6, $fa6, $fa4, $fa2
 	fmul.s	$fa2, $fa1, $fa7
 	fmadd.s	$fa2, $ft0, $fa3, $fa2
 	fld.s	$fa5, $s2, 24
@@ -1003,17 +987,17 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmadd.s	$fs0, $fa5, $fa4, $fa2
 	fmov.s	$fa5, $fs5
 	fmul.s	$fa1, $fa1, $fa6
-	fmov.s	$fa6, $fs6
+	fmov.s	$fa6, $fs7
 	fmadd.s	$fa1, $fa7, $fa3, $fa1
-	fmadd.s	$fs6, $ft0, $fa4, $fa1
+	fmadd.s	$fs7, $ft0, $fa4, $fa1
 	fmov.s	$fa4, $fs4
 	fmul.s	$fa1, $fs5, $fs0
-	fmadd.s	$fa1, $fs3, $fs4, $fa1
-	fmadd.s	$fs5, $fs6, $ft6, $fa1
+	fmadd.s	$fa1, $fs6, $fs4, $fa1
+	fmadd.s	$fs5, $fs7, $ft6, $fa1
 	fmul.s	$fa1, $ft2, $fs0
-	fmadd.s	$fa1, $fs3, $fa6, $fa1
+	fmadd.s	$fa1, $fs6, $fa6, $fa1
 	fcmp.cule.s	$fcc1, $fa0, $fs1
-	fmadd.s	$fs4, $fs6, $ft1, $fa1
+	fmadd.s	$fs4, $fs7, $ft1, $fa1
 	bcnez	$fcc1, .LBB5_18
 # %bb.14:
 	fcmp.cule.s	$fcc2, $fa0, $ft15
@@ -1023,7 +1007,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	lu12i.w	$a0, 212992
 	movgr2fr.w	$fa0, $a0
 	fcmp.cule.s	$fcc0, $fa0, $fa1
-	fld.s	$fs5, $sp, 192                  # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 124                  # 4-byte Folded Reload
 	bcnez	$fcc0, .LBB5_17
 # %bb.16:
 	fabs.s	$fa1, $fs4
@@ -1033,17 +1017,17 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 574
 	fneg.s	$fa0, $ft14
-	fmul.s	$fa0, $fs6, $fa0
-	fld.s	$fa1, $sp, 76                   # 4-byte Folded Reload
+	fmul.s	$fa0, $fs7, $fa0
+	fld.s	$fa1, $sp, 68                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fs0, $fa1, $fa0
 	movfr2gr.s	$a0, $fa0
 	fneg.s	$fa0, $fa1
-	fmul.s	$fa0, $fs3, $fa0
-	fmadd.s	$fa0, $fs6, $ft13, $fa0
+	fmul.s	$fa0, $fs6, $fa0
+	fmadd.s	$fa0, $fs7, $ft13, $fa0
 	movfr2gr.s	$a1, $fa0
 	fneg.s	$fa0, $ft13
 	fmul.s	$fa0, $fs0, $fa0
-	fmadd.s	$fa0, $fs3, $ft14, $fa0
+	fmadd.s	$fa0, $fs6, $ft14, $fa0
 	movfr2gr.s	$a2, $fa0
 	lu12i.w	$a3, -524288
 	lu32i.d	$a3, 0
@@ -1061,9 +1045,9 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	b	.LBB5_48
 .LBB5_18:
 	fmul.s	$fa1, $ft14, $fs0
-	fmadd.s	$fa1, $fs3, $ft13, $fa1
-	fld.s	$fa3, $sp, 76                   # 4-byte Folded Reload
-	fmadd.s	$fa1, $fs6, $fa3, $fa1
+	fmadd.s	$fa1, $fs6, $ft13, $fa1
+	fld.s	$fa3, $sp, 68                   # 4-byte Folded Reload
+	fmadd.s	$fa1, $fs7, $fa3, $fa1
 	bcnez	$fcc1, .LBB5_24
 # %bb.19:
 	fabs.s	$fa7, $fs5
@@ -1077,23 +1061,23 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	st.b	$a0, $fp, 574
 	bcnez	$fcc0, .LBB5_47
 # %bb.21:
-	fst.s	$ft1, $sp, 20                   # 4-byte Folded Spill
-	fst.s	$ft2, $sp, 24                   # 4-byte Folded Spill
-	fst.s	$fa6, $sp, 28                   # 4-byte Folded Spill
-	fst.s	$ft6, $sp, 32                   # 4-byte Folded Spill
-	fst.s	$fa5, $sp, 36                   # 4-byte Folded Spill
-	fst.s	$fa4, $sp, 40                   # 4-byte Folded Spill
+	fst.s	$ft1, $sp, 12                   # 4-byte Folded Spill
+	fst.s	$ft2, $sp, 16                   # 4-byte Folded Spill
+	fst.s	$fa6, $sp, 20                   # 4-byte Folded Spill
+	fst.s	$ft6, $sp, 24                   # 4-byte Folded Spill
+	fst.s	$fa5, $sp, 28                   # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 32                   # 4-byte Folded Spill
 	fmov.s	$fs1, $fs2
-	fst.s	$ft14, $sp, 44                  # 4-byte Folded Spill
-	fst.s	$ft13, $sp, 48                  # 4-byte Folded Spill
-	fst.s	$ft12, $sp, 52                  # 4-byte Folded Spill
-	fst.s	$ft11, $sp, 56                  # 4-byte Folded Spill
+	fst.s	$ft14, $sp, 36                  # 4-byte Folded Spill
+	fst.s	$ft13, $sp, 40                  # 4-byte Folded Spill
+	fst.s	$ft12, $sp, 44                  # 4-byte Folded Spill
+	fst.s	$ft11, $sp, 48                  # 4-byte Folded Spill
+	fst.s	$ft10, $sp, 52                  # 4-byte Folded Spill
+	fst.s	$ft9, $sp, 56                   # 4-byte Folded Spill
 	fst.s	$ft8, $sp, 60                   # 4-byte Folded Spill
 	fst.s	$ft7, $sp, 64                   # 4-byte Folded Spill
-	fst.s	$ft10, $sp, 68                  # 4-byte Folded Spill
-	fst.s	$ft9, $sp, 72                   # 4-byte Folded Spill
 	fmov.s	$fa0, $fs4
-	fst.s	$fa1, $sp, 16                   # 4-byte Folded Spill
+	fst.s	$fa1, $sp, 8                    # 4-byte Folded Spill
 	fmov.s	$fs2, $ft15
 	pcaddu18i	$ra, %call36(atan2f)
 	jirl	$ra, $ra, 0
@@ -1112,14 +1096,14 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmov.s	$fa1, $fs2
 	fmov.s	$fs4, $fa0
 	movgr2fr.w	$fs5, $zero
-	fld.s	$ft9, $sp, 72                   # 4-byte Folded Reload
-	fld.s	$ft10, $sp, 68                  # 4-byte Folded Reload
 	fld.s	$ft7, $sp, 64                   # 4-byte Folded Reload
 	fld.s	$ft8, $sp, 60                   # 4-byte Folded Reload
-	fld.s	$ft11, $sp, 56                  # 4-byte Folded Reload
-	fld.s	$ft12, $sp, 52                  # 4-byte Folded Reload
-	fld.s	$ft13, $sp, 48                  # 4-byte Folded Reload
-	fld.s	$ft14, $sp, 44                  # 4-byte Folded Reload
+	fld.s	$ft9, $sp, 56                   # 4-byte Folded Reload
+	fld.s	$ft10, $sp, 52                  # 4-byte Folded Reload
+	fld.s	$ft11, $sp, 48                  # 4-byte Folded Reload
+	fld.s	$ft12, $sp, 44                  # 4-byte Folded Reload
+	fld.s	$ft13, $sp, 40                  # 4-byte Folded Reload
+	fld.s	$ft14, $sp, 36                  # 4-byte Folded Reload
 	fmov.s	$fs2, $fs1
 	b	.LBB5_45
 .LBB5_23:
@@ -1127,12 +1111,12 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
                                         # implicit-def: $f0
                                         # implicit-def: $f1
                                         # implicit-def: $f2
-	fmov.s	$ft9, $fs0
-	fmov.s	$ft10, $fs3
-	fmov.s	$ft7, $fs4
-	fmov.s	$ft8, $fs6
-	fmov.s	$ft11, $fs7
-	fmov.s	$fs7, $fs1
+	fmov.s	$ft7, $fs0
+	fmov.s	$ft8, $fs4
+	fmov.s	$ft9, $fs6
+	fmov.s	$ft10, $fs7
+	fmov.s	$ft11, $fs3
+	fmov.s	$fs3, $fs1
 	fmov.s	$ft12, $fs5
 	fmov.s	$ft2, $fs2
 	b	.LBB5_30
@@ -1147,22 +1131,22 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	st.b	$a0, $fp, 574
 	bcnez	$fcc0, .LBB5_47
 # %bb.26:
-	fst.s	$ft1, $sp, 20                   # 4-byte Folded Spill
-	fst.s	$ft2, $sp, 24                   # 4-byte Folded Spill
-	fst.s	$fa6, $sp, 28                   # 4-byte Folded Spill
-	fst.s	$ft6, $sp, 32                   # 4-byte Folded Spill
-	fst.s	$fa5, $sp, 36                   # 4-byte Folded Spill
-	fst.s	$fa4, $sp, 40                   # 4-byte Folded Spill
-	fst.s	$ft14, $sp, 44                  # 4-byte Folded Spill
-	fst.s	$ft13, $sp, 48                  # 4-byte Folded Spill
-	fst.s	$ft12, $sp, 52                  # 4-byte Folded Spill
-	fst.s	$ft11, $sp, 56                  # 4-byte Folded Spill
+	fst.s	$ft1, $sp, 12                   # 4-byte Folded Spill
+	fst.s	$ft2, $sp, 16                   # 4-byte Folded Spill
+	fst.s	$fa6, $sp, 20                   # 4-byte Folded Spill
+	fst.s	$ft6, $sp, 24                   # 4-byte Folded Spill
+	fst.s	$fa5, $sp, 28                   # 4-byte Folded Spill
+	fst.s	$fa4, $sp, 32                   # 4-byte Folded Spill
+	fst.s	$ft14, $sp, 36                  # 4-byte Folded Spill
+	fst.s	$ft13, $sp, 40                  # 4-byte Folded Spill
+	fst.s	$ft12, $sp, 44                  # 4-byte Folded Spill
+	fst.s	$ft11, $sp, 48                  # 4-byte Folded Spill
+	fst.s	$ft10, $sp, 52                  # 4-byte Folded Spill
+	fst.s	$ft9, $sp, 56                   # 4-byte Folded Spill
 	fst.s	$ft8, $sp, 60                   # 4-byte Folded Spill
 	fst.s	$ft7, $sp, 64                   # 4-byte Folded Spill
-	fst.s	$ft10, $sp, 68                  # 4-byte Folded Spill
-	fst.s	$ft9, $sp, 72                   # 4-byte Folded Spill
 	fmov.s	$fa0, $fs5
-	fst.s	$fa1, $sp, 16                   # 4-byte Folded Spill
+	fst.s	$fa1, $sp, 8                    # 4-byte Folded Spill
 	pcaddu18i	$ra, %call36(atan2f)
 	jirl	$ra, $ra, 0
 	fcmp.cule.s	$fcc0, $fa0, $fs1
@@ -1180,18 +1164,18 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	movgr2fr.w	$fs4, $zero
 	b	.LBB5_44
 .LBB5_28:
-	fld.s	$fa5, $sp, 72                   # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 64                   # 4-byte Folded Reload
 .LBB5_29:                               # %_ZN21btConeTwistConstraint20computeConeLimitInfoERK12btQuaternionRfR9btVector3S3_.exit
-	fmov.s	$ft9, $fs0
-	fmov.s	$ft10, $fs3
-	fmov.s	$fs7, $fs1
+	fmov.s	$ft7, $fs0
+	fmov.s	$ft8, $fs4
+	fmov.s	$fs3, $fs1
 	fmov.s	$ft12, $fs5
 .LBB5_30:                               # %_ZN21btConeTwistConstraint20computeConeLimitInfoERK12btQuaternionRfR9btVector3S3_.exit
-	fld.s	$fs2, $sp, 76                   # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 68                   # 4-byte Folded Reload
 	fld.s	$fa7, $fp, 476
 	fmul.s	$fa6, $fa5, $fa7
 	fcmp.cule.s	$fcc0, $fa4, $fa6
-	fld.s	$fs5, $sp, 192                  # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 124                  # 4-byte Folded Reload
 	bcnez	$fcc0, .LBB5_38
 # %bb.31:
 	ori	$a0, $zero, 1
@@ -1206,14 +1190,14 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	ori	$a0, $a0, 4094
 	movgr2fr.w	$ft1, $a0
 	fcmp.cule.s	$fcc0, $ft1, $fa7
-	fld.s	$ft1, $sp, 72                   # 4-byte Folded Reload
+	fld.s	$ft1, $sp, 64                   # 4-byte Folded Reload
 	bcnez	$fcc0, .LBB5_35
 # %bb.33:
 	fmadd.s	$fa4, $ft0, $fa7, $fa5
 	fdiv.s	$fa4, $fa6, $fa4
 	b	.LBB5_35
 .LBB5_34:
-	fld.s	$ft1, $sp, 72                   # 4-byte Folded Reload
+	fld.s	$ft1, $sp, 64                   # 4-byte Folded Reload
 .LBB5_35:                               # %._crit_edge
 	fst.s	$fa4, $fp, 576
 	fabs.s	$fa4, $fa1
@@ -1243,37 +1227,37 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fneg.s	$fa3, $fa0
 	fneg.s	$fa4, $fa1
 	fneg.s	$fa5, $fa2
-	fld.s	$fa7, $sp, 176                  # 4-byte Folded Reload
-	fmul.s	$fa6, $fa7, $fa5
-	fld.s	$ft2, $sp, 128                  # 4-byte Folded Reload
+	fld.s	$ft0, $sp, 116                  # 4-byte Folded Reload
+	fmul.s	$fa6, $ft0, $fa5
+	fld.s	$ft2, $sp, 108                  # 4-byte Folded Reload
 	fmadd.s	$fa6, $ft2, $fa3, $fa6
-	fld.s	$ft0, $sp, 160                  # 4-byte Folded Reload
-	fmadd.s	$fa6, $ft0, $fa1, $fa6
-	fmul.s	$fa3, $ft0, $fa3
+	fld.s	$ft1, $sp, 112                  # 4-byte Folded Reload
+	fmadd.s	$fa6, $ft1, $fa1, $fa6
+	fmul.s	$fa3, $ft1, $fa3
 	fmadd.s	$fa3, $ft2, $fa4, $fa3
-	vld	$vr9, $sp, 144                  # 16-byte Folded Reload
-	fmadd.s	$fa3, $ft1, $fa2, $fa3
-	fmul.s	$fa4, $ft1, $fa4
+	fld.s	$fa7, $sp, 120                  # 4-byte Folded Reload
+	fmadd.s	$fa3, $fa7, $fa2, $fa3
+	fmul.s	$fa4, $fa7, $fa4
 	fmadd.s	$fa4, $ft2, $fa5, $fa4
-	fmadd.s	$fa4, $fa7, $fa0, $fa4
-	fmul.s	$fa1, $fa7, $fa1
-	fmadd.s	$fa0, $ft1, $fa0, $fa1
-	fmadd.s	$fa2, $ft0, $fa2, $fa0
+	fmadd.s	$fa4, $ft0, $fa0, $fa4
+	fmul.s	$fa1, $ft0, $fa1
+	fmadd.s	$fa0, $fa7, $fa0, $fa1
+	fmadd.s	$fa2, $ft1, $fa2, $fa0
 	fmul.s	$fa0, $ft2, $fa6
-	fld.s	$ft4, $sp, 104                  # 4-byte Folded Reload
+	fld.s	$ft4, $sp, 96                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fa2, $ft4, $fa0
-	fld.s	$ft3, $sp, 108                  # 4-byte Folded Reload
+	fld.s	$ft3, $sp, 100                  # 4-byte Folded Reload
 	fmadd.s	$fa0, $fa3, $ft3, $fa0
-	fmadd.s	$fa0, $fa4, $fa7, $fa0
+	fmadd.s	$fa0, $fa4, $ft0, $fa0
 	fmul.s	$fa1, $ft2, $fa3
-	fld.s	$fa5, $sp, 112                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 104                  # 4-byte Folded Reload
 	fmadd.s	$fa1, $fa2, $fa5, $fa1
 	fmadd.s	$fa1, $fa4, $ft4, $fa1
-	fmadd.s	$fa1, $fa6, $ft0, $fa1
+	fmadd.s	$fa1, $fa6, $ft1, $fa1
 	fmul.s	$fa4, $ft2, $fa4
 	fmadd.s	$fa2, $fa2, $ft3, $fa4
 	fmadd.s	$fa2, $fa6, $fa5, $fa2
-	fmadd.s	$fa2, $fa3, $ft1, $fa2
+	fmadd.s	$fa2, $fa3, $fa7, $fa2
 	movfr2gr.s	$a0, $fa0
 	movfr2gr.s	$a1, $fa1
 	bstrins.d	$a0, $a1, 63, 32
@@ -1370,40 +1354,40 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmov.s	$fa1, $fs5
 	fneg.s	$fs5, $fa0
 .LBB5_44:
-	fld.s	$ft9, $sp, 72                   # 4-byte Folded Reload
-	fld.s	$ft10, $sp, 68                  # 4-byte Folded Reload
 	fld.s	$ft7, $sp, 64                   # 4-byte Folded Reload
 	fld.s	$ft8, $sp, 60                   # 4-byte Folded Reload
-	fld.s	$ft11, $sp, 56                  # 4-byte Folded Reload
-	fld.s	$ft12, $sp, 52                  # 4-byte Folded Reload
-	fld.s	$ft13, $sp, 48                  # 4-byte Folded Reload
-	fld.s	$ft14, $sp, 44                  # 4-byte Folded Reload
+	fld.s	$ft9, $sp, 56                   # 4-byte Folded Reload
+	fld.s	$ft10, $sp, 52                  # 4-byte Folded Reload
+	fld.s	$ft11, $sp, 48                  # 4-byte Folded Reload
+	fld.s	$ft12, $sp, 44                  # 4-byte Folded Reload
+	fld.s	$ft13, $sp, 40                  # 4-byte Folded Reload
+	fld.s	$ft14, $sp, 36                  # 4-byte Folded Reload
 .LBB5_45:
-	fld.s	$fa3, $sp, 76                   # 4-byte Folded Reload
-	fld.s	$fa4, $sp, 40                   # 4-byte Folded Reload
-	fld.s	$fa5, $sp, 36                   # 4-byte Folded Reload
-	fld.s	$ft6, $sp, 32                   # 4-byte Folded Reload
-	fld.s	$fa6, $sp, 28                   # 4-byte Folded Reload
-	fld.s	$ft2, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$ft1, $sp, 20                   # 4-byte Folded Reload
+	fld.s	$fa3, $sp, 68                   # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 32                   # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 28                   # 4-byte Folded Reload
+	fld.s	$ft6, $sp, 24                   # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 20                   # 4-byte Folded Reload
+	fld.s	$ft2, $sp, 16                   # 4-byte Folded Reload
+	fld.s	$ft1, $sp, 12                   # 4-byte Folded Reload
 	b	.LBB5_47
 .LBB5_46:
-	fld.s	$ft9, $sp, 72                   # 4-byte Folded Reload
-	fld.s	$ft10, $sp, 68                  # 4-byte Folded Reload
 	fld.s	$ft7, $sp, 64                   # 4-byte Folded Reload
 	fld.s	$ft8, $sp, 60                   # 4-byte Folded Reload
-	fld.s	$ft11, $sp, 56                  # 4-byte Folded Reload
-	fld.s	$ft12, $sp, 52                  # 4-byte Folded Reload
-	fld.s	$ft13, $sp, 48                  # 4-byte Folded Reload
-	fld.s	$ft14, $sp, 44                  # 4-byte Folded Reload
-	fld.s	$fa3, $sp, 76                   # 4-byte Folded Reload
-	fld.s	$fa4, $sp, 40                   # 4-byte Folded Reload
-	fld.s	$fa5, $sp, 36                   # 4-byte Folded Reload
-	fld.s	$ft6, $sp, 32                   # 4-byte Folded Reload
-	fld.s	$fa6, $sp, 28                   # 4-byte Folded Reload
-	fld.s	$ft2, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$ft1, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$fa1, $sp, 16                   # 4-byte Folded Reload
+	fld.s	$ft9, $sp, 56                   # 4-byte Folded Reload
+	fld.s	$ft10, $sp, 52                  # 4-byte Folded Reload
+	fld.s	$ft11, $sp, 48                  # 4-byte Folded Reload
+	fld.s	$ft12, $sp, 44                  # 4-byte Folded Reload
+	fld.s	$ft13, $sp, 40                  # 4-byte Folded Reload
+	fld.s	$ft14, $sp, 36                  # 4-byte Folded Reload
+	fld.s	$fa3, $sp, 68                   # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 32                   # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 28                   # 4-byte Folded Reload
+	fld.s	$ft6, $sp, 24                   # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 20                   # 4-byte Folded Reload
+	fld.s	$ft2, $sp, 16                   # 4-byte Folded Reload
+	fld.s	$ft1, $sp, 12                   # 4-byte Folded Reload
+	fld.s	$fa1, $sp, 8                    # 4-byte Folded Reload
 .LBB5_47:
 	fmul.s	$fa0, $fa4, $fs5
 	fmadd.s	$fa0, $fa1, $ft13, $fa0
@@ -1422,17 +1406,17 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmul.s	$fa1, $fa4, $fa3
 	fmul.s	$fa2, $fa2, $fa3
 	fneg.s	$fa3, $fa1
-	fmul.s	$fa3, $fs6, $fa3
+	fmul.s	$fa3, $fs7, $fa3
 	fmadd.s	$fa4, $fs0, $fa2, $fa3
 	fneg.s	$fa5, $fa2
-	fmul.s	$fa5, $fs3, $fa5
-	fmadd.s	$fa6, $fs6, $fa0, $fa5
+	fmul.s	$fa5, $fs6, $fa5
+	fmadd.s	$fa6, $fs7, $fa0, $fa5
 	fneg.s	$fa7, $fa0
 	fmul.s	$fa7, $fs0, $fa7
-	fmadd.s	$ft0, $fs3, $fa1, $fa7
+	fmadd.s	$ft0, $fs6, $fa1, $fa7
 	fnmadd.s	$fa2, $fs0, $fa2, $fa3
-	fnmadd.s	$fa0, $fs6, $fa0, $fa5
-	fnmadd.s	$fa1, $fs3, $fa1, $fa7
+	fnmadd.s	$fa0, $fs7, $fa0, $fa5
+	fnmadd.s	$fa1, $fs6, $fa1, $fa7
 	movfr2gr.s	$a0, $fa1
 	bstrpick.d	$a0, $a0, 31, 0
 	st.d	$a0, $fp, 516
@@ -1448,33 +1432,33 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fst.s	$fa0, $fp, 512
 	fmul.s	$fa0, $fa3, $fa1
 	fst.s	$fa0, $fp, 516
-	fld.s	$fs5, $sp, 192                  # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 124                  # 4-byte Folded Reload
 	fld.s	$fs4, $fp, 500
 	movgr2fr.w	$fa0, $zero
 	fcmp.cult.s	$fcc0, $fs4, $fa0
 	bcnez	$fcc0, .LBB5_39
 .LBB5_48:
-	fneg.s	$fa0, $ft8
-	fneg.s	$fa1, $ft7
+	fneg.s	$fa0, $ft10
+	fneg.s	$fa1, $ft9
 	fmul.s	$fa2, $fs2, $fa0
 	fneg.s	$fa3, $ft11
 	fmul.s	$fa4, $fs2, $fa1
-	fmadd.s	$fa2, $ft12, $ft10, $fa2
-	fmadd.s	$fa4, $ft12, $ft9, $fa4
-	fmadd.s	$fa2, $fa3, $ft9, $fa2
+	fmadd.s	$fa2, $ft12, $ft8, $fa2
+	fmadd.s	$fa4, $ft12, $ft7, $fa4
+	fmadd.s	$fa2, $fa3, $ft7, $fa2
 	fmul.s	$fa3, $fs2, $fa3
-	fmadd.s	$fa0, $fa0, $fs7, $fa4
-	fmadd.s	$fa2, $ft7, $fs7, $fa2
-	fmadd.s	$fa3, $ft12, $fs7, $fa3
-	fmul.s	$fa4, $ft9, $ft7
-	fmadd.s	$fa0, $ft11, $ft10, $fa0
-	fmadd.s	$fa1, $fa1, $ft10, $fa3
+	fmadd.s	$fa0, $fa0, $fs3, $fa4
+	fmadd.s	$fa2, $ft9, $fs3, $fa2
+	fmadd.s	$fa3, $ft12, $fs3, $fa3
+	fmul.s	$fa4, $ft7, $ft9
+	fmadd.s	$fa0, $ft11, $ft8, $fa0
+	fmadd.s	$fa1, $fa1, $ft8, $fa3
 	fmadd.s	$fa3, $ft12, $fs2, $fa4
 	fmul.s	$fa4, $fa2, $fa2
-	fmadd.s	$fa1, $ft8, $ft9, $fa1
-	fmadd.s	$fa3, $ft8, $ft10, $fa3
+	fmadd.s	$fa1, $ft10, $ft7, $fa1
+	fmadd.s	$fa3, $ft10, $ft8, $fa3
 	fmadd.s	$fa4, $fa0, $fa0, $fa4
-	fmadd.s	$fa3, $ft11, $fs7, $fa3
+	fmadd.s	$fa3, $ft11, $fs3, $fa3
 	fmadd.s	$fa4, $fa1, $fa1, $fa4
 	fmadd.s	$fa4, $fa3, $fa3, $fa4
 	frsqrt.s	$fa4, $fa4
@@ -1542,37 +1526,37 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 .LBB5_56:                               # %._crit_edge712
 	fst.s	$fa3, $fp, 580
 	fst.s	$fa5, $fp, 556
-	fld.s	$fa4, $sp, 176                  # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 116                  # 4-byte Folded Reload
 	fmul.s	$fa3, $fa4, $fa1
-	fld.s	$ft3, $sp, 128                  # 4-byte Folded Reload
+	fld.s	$ft3, $sp, 108                  # 4-byte Folded Reload
 	fmadd.s	$fa3, $ft3, $fa2, $fa3
-	fld.s	$ft1, $sp, 160                  # 4-byte Folded Reload
-	fmadd.s	$fa5, $ft1, $fs3, $fa3
-	fmul.s	$fa3, $ft1, $fa2
+	fld.s	$ft2, $sp, 112                  # 4-byte Folded Reload
+	fmadd.s	$fa5, $ft2, $fs3, $fa3
+	fmul.s	$fa3, $ft2, $fa2
 	fmadd.s	$fa3, $ft3, $fa0, $fa3
-	vld	$vr10, $sp, 144                 # 16-byte Folded Reload
-	fmadd.s	$fa6, $ft2, $fs2, $fa3
-	fmul.s	$fa3, $ft2, $fa0
+	fld.s	$ft1, $sp, 120                  # 4-byte Folded Reload
+	fmadd.s	$fa6, $ft1, $fs2, $fa3
+	fmul.s	$fa3, $ft1, $fa0
 	fmadd.s	$fa3, $ft3, $fa1, $fa3
 	fmadd.s	$fa7, $fa4, $fs1, $fa3
 	fmul.s	$fa3, $fa4, $fs3
-	fmadd.s	$fa3, $ft2, $fs1, $fa3
-	fmadd.s	$ft0, $ft1, $fs2, $fa3
+	fmadd.s	$fa3, $ft1, $fs1, $fa3
+	fmadd.s	$ft0, $ft2, $fs2, $fa3
 	fmul.s	$fa3, $ft3, $fa5
-	fld.s	$ft6, $sp, 104                  # 4-byte Folded Reload
+	fld.s	$ft6, $sp, 96                   # 4-byte Folded Reload
 	fmadd.s	$fa3, $ft0, $ft6, $fa3
-	fld.s	$ft5, $sp, 108                  # 4-byte Folded Reload
+	fld.s	$ft5, $sp, 100                  # 4-byte Folded Reload
 	fmadd.s	$fa3, $fa6, $ft5, $fa3
 	fmadd.s	$fa3, $fa7, $fa4, $fa3
 	fmul.s	$fa4, $ft3, $fa6
-	fld.s	$ft4, $sp, 112                  # 4-byte Folded Reload
+	fld.s	$ft4, $sp, 104                  # 4-byte Folded Reload
 	fmadd.s	$fa4, $ft0, $ft4, $fa4
 	fmadd.s	$fa4, $fa7, $ft6, $fa4
-	fmadd.s	$fa4, $fa5, $ft1, $fa4
+	fmadd.s	$fa4, $fa5, $ft2, $fa4
 	fmul.s	$fa7, $ft3, $fa7
 	fmadd.s	$fa7, $ft0, $ft5, $fa7
 	fmadd.s	$fa5, $fa5, $ft4, $fa7
-	fmadd.s	$fa5, $fa6, $ft2, $fa5
+	fmadd.s	$fa5, $fa6, $ft1, $fa5
 	movfr2gr.s	$a0, $fa3
 	movfr2gr.s	$a1, $fa4
 	bstrins.d	$a0, $a1, 63, 32
@@ -1629,28 +1613,31 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	ld.bu	$a0, $fp, 574
 	beqz	$a0, .LBB5_59
 # %bb.58:
-	vld	$vr11, $sp, 80                  # 16-byte Folded Reload
-	fneg.s	$fa3, $ft3
-	fmul.s	$fa4, $fs5, $fa1
-	fld.s	$ft2, $sp, 96                   # 4-byte Folded Reload
+	fld.s	$fa3, $sp, 80                   # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 76                   # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 72                   # 4-byte Folded Reload
+	fnmadd.s	$fa3, $fa5, $fa3, $fa4
+	fld.s	$ft0, $sp, 92                   # 4-byte Folded Reload
+	fmul.s	$fa4, $ft0, $fa1
+	fld.s	$ft2, $sp, 84                   # 4-byte Folded Reload
 	fmadd.s	$fa4, $ft2, $fa2, $fa4
-	fld.s	$ft1, $sp, 100                  # 4-byte Folded Reload
+	fld.s	$ft1, $sp, 88                   # 4-byte Folded Reload
 	fneg.s	$fa5, $ft1
 	fmadd.s	$fa4, $ft1, $fs3, $fa4
 	fmul.s	$fa2, $ft1, $fa2
 	fmadd.s	$fa2, $ft2, $fa0, $fa2
-	fmadd.s	$fa2, $ft3, $fs2, $fa2
-	fmul.s	$fa0, $ft3, $fa0
+	fmadd.s	$fa2, $fs5, $fs2, $fa2
+	fmul.s	$fa0, $fs5, $fa0
 	fmadd.s	$fa0, $ft2, $fa1, $fa0
-	fneg.s	$fa1, $fs5
-	fmadd.s	$fa0, $fs5, $fs1, $fa0
-	fmul.s	$fa6, $fs5, $fs3
-	fmadd.s	$fa6, $ft3, $fs1, $fa6
+	fneg.s	$fa1, $ft0
+	fmadd.s	$fa0, $ft0, $fs1, $fa0
+	fmul.s	$fa6, $ft0, $fs3
+	fmadd.s	$fa6, $fs5, $fs1, $fa6
 	fmadd.s	$fa6, $ft1, $fs2, $fa6
 	fmul.s	$fa7, $ft2, $fa4
 	fmadd.s	$fa7, $fa6, $fa3, $fa7
 	fmadd.s	$fa7, $fa2, $fa5, $fa7
-	fmadd.s	$fa7, $fa0, $fs5, $fa7
+	fmadd.s	$fa7, $fa0, $ft0, $fa7
 	fmul.s	$ft0, $ft2, $fa2
 	fmadd.s	$ft0, $fa6, $fa1, $ft0
 	fmadd.s	$fa3, $fa0, $fa3, $ft0
@@ -1658,7 +1645,7 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmul.s	$fa0, $ft2, $fa0
 	fmadd.s	$fa0, $fa6, $fa5, $fa0
 	fmadd.s	$fa0, $fa4, $fa1, $fa0
-	fmadd.s	$fa0, $fa2, $ft3, $fa0
+	fmadd.s	$fa0, $fa2, $fs5, $fa0
 	movfr2gr.s	$a0, $fa7
 	movfr2gr.s	$a1, $fa3
 	bstrins.d	$a0, $a1, 63, 32
@@ -1667,31 +1654,30 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	st.d	$a0, $fp, 584
 	st.d	$a1, $fp, 592
 .LBB5_59:
-	fld.d	$fs7, $sp, 296                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 304                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 312                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 320                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 328                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 336                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 344                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 352                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 416
+	fld.d	$fs7, $sp, 208                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 216                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 224                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 232                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 240                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 248                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 264                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 320
 	ret
 .LBB5_60:                               # %call.sqrt
 	fmov.s	$fa0, $fa1
-	fmov.s	$fs4, $ft9
-	fmov.s	$fs6, $ft10
+	fmov.s	$fs6, $ft7
+	fmov.s	$fs7, $ft8
 	pcaddu18i	$ra, %call36(sqrtf)
 	jirl	$ra, $ra, 0
-	fmov.s	$ft10, $fs6
-	fmov.s	$ft9, $fs4
+	fmov.s	$ft8, $fs7
+	fmov.s	$ft7, $fs6
 	b	.LBB5_7
 .Lfunc_end5:
 	.size	_ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_, .Lfunc_end5-_ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_

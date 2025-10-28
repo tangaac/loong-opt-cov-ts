@@ -128,47 +128,35 @@ newTable:                               # @newTable
 .LBB1_11:                               # %.preheader
 	blez	$a0, .LBB1_14
 # %bb.12:                               # %.lr.ph23
-	ori	$a1, $zero, 4
-	bgeu	$a0, $a1, .LBB1_15
+	ori	$a2, $zero, 1
+	bne	$a0, $a2, .LBB1_15
 # %bb.13:
 	move	$a1, $zero
-	ori	$a2, $zero, 1
 	b	.LBB1_18
 .LBB1_14:
 	ori	$a0, $zero, 8
 	b	.LBB1_21
 .LBB1_15:                               # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a1, $a1, 2
-	vrepli.w	$vr0, 1
-	addi.d	$a2, $fp, 48
-	move	$a3, $a1
-	vori.b	$vr1, $vr0, 0
+	bstrpick.d	$a1, $a0, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $fp, 32
+	ori	$a2, $zero, 1
+	move	$a4, $a1
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB1_16:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a2, -24
-	ld.d	$a5, $a2, -16
-	ld.d	$a6, $a2, -8
-	ld.d	$a7, $a2, 0
-	ld.w	$a4, $a4, 32
-	ld.w	$a5, $a5, 32
+	ld.d	$a6, $a3, -8
+	ld.d	$a7, $a3, 0
 	ld.w	$a6, $a6, 32
 	ld.w	$a7, $a7, 32
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 0
-	vinsgr2vr.w	$vr3, $a7, 1
-	vmul.w	$vr0, $vr2, $vr0
-	vmul.w	$vr1, $vr3, $vr1
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
-	bnez	$a3, .LBB1_16
+	mul.d	$a2, $a6, $a2
+	mul.d	$a5, $a7, $a5
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 16
+	bnez	$a4, .LBB1_16
 # %bb.17:                               # %middle.block
-	vmul.w	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 1
-	vmul.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	mul.d	$a2, $a5, $a2
 	beq	$a1, $a0, .LBB1_20
 .LBB1_18:                               # %scalar.ph.preheader
 	alsl.d	$a3, $a1, $fp, 3

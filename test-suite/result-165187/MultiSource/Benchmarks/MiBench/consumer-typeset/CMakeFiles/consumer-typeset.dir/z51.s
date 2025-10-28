@@ -239,25 +239,29 @@ Plain_PrintBeforeFirstPage:             # @Plain_PrintBeforeFirstPage
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(PlainCharWidth)
-	ld.w	$a2, $a2, %pc_lo12(PlainCharWidth)
-	addi.w	$a0, $a0, -1
-	div.w	$s1, $a0, $a2
-	addi.w	$fp, $s1, 1
+	vinsgr2vr.w	$vr0, $a1, 0
+	vinsgr2vr.w	$vr0, $a0, 1
+	vrepli.b	$vr1, -1
+	vadd.w	$vr0, $vr0, $vr1
 	pcalau12i	$a0, %pc_hi20(PlainCharHeight)
 	ld.w	$a0, $a0, %pc_lo12(PlainCharHeight)
-	pcalau12i	$a2, %pc_hi20(hsize)
-	st.w	$fp, $a2, %pc_lo12(hsize)
-	addi.w	$a1, $a1, -1
-	div.w	$s2, $a1, $a0
-	addi.w	$s0, $s2, 1
+	pcalau12i	$a1, %pc_hi20(PlainCharWidth)
+	ld.w	$a1, $a1, %pc_lo12(PlainCharWidth)
+	vpickve2gr.w	$a2, $vr0, 0
+	div.w	$s1, $a2, $a0
+	vpickve2gr.w	$a0, $vr0, 1
+	div.w	$s2, $a0, $a1
+	addi.w	$fp, $s2, 1
+	pcalau12i	$a0, %pc_hi20(hsize)
+	st.w	$fp, $a0, %pc_lo12(hsize)
+	addi.w	$s0, $s1, 1
 	pcalau12i	$a0, %pc_hi20(vsize)
 	st.w	$s0, $a0, %pc_lo12(vsize)
 	mul.w	$a0, $s0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(page)
-	or	$a2, $s2, $s1
+	or	$a2, $s1, $s2
 	st.d	$a0, $a1, %pc_lo12(page)
 	bltz	$a2, .LBB13_2
 # %bb.1:                                # %.preheader.preheader

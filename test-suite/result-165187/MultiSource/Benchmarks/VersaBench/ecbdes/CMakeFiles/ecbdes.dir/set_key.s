@@ -113,19 +113,7 @@ des_is_weak_key:                        # @des_is_weak_key
 .Lfunc_end1:
 	.size	des_is_weak_key, .Lfunc_end1-des_is_weak_key
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function des_set_key
-.LCPI2_0:
-	.dword	2                               # 0x2
-	.dword	6                               # 0x6
-.LCPI2_1:
-	.dword	30                              # 0x1e
-	.dword	26                              # 0x1a
-.LCPI2_2:
-	.dword	4294967292                      # 0xfffffffc
-	.dword	4294967232                      # 0xffffffc0
-	.text
-	.globl	des_set_key
+	.globl	des_set_key                     # -- Begin function des_set_key
 	.p2align	5
 	.type	des_set_key,@function
 des_set_key:                            # @des_set_key
@@ -204,165 +192,160 @@ des_set_key:                            # @des_set_key
 	slli.d	$a2, $s1, 16
 	or	$a0, $a0, $a2
 	slli.d	$a2, $s2, 24
-	slli.d	$a3, $s4, 8
-	or	$a3, $a3, $s3
-	slli.d	$a4, $s5, 16
-	or	$a3, $a3, $a4
-	slli.d	$a4, $s6, 24
 	or	$a0, $a0, $a2
-	or	$a2, $a3, $a4
+	slli.d	$a2, $s4, 8
+	or	$a2, $a2, $s3
+	slli.d	$a3, $s5, 16
+	or	$a2, $a2, $a3
+	slli.d	$a3, $s6, 24
+	or	$a2, $a2, $a3
 	srli.d	$a3, $a2, 4
 	xor	$a3, $a3, $a0
 	lu12i.w	$a4, 61680
 	ori	$a4, $a4, 3855
 	and	$a3, $a3, $a4
-	slli.d	$a4, $a3, 4
-	vinsgr2vr.d	$vr0, $a4, 0
-	vinsgr2vr.d	$vr0, $a3, 1
-	vinsgr2vr.d	$vr1, $a2, 0
-	vinsgr2vr.d	$vr1, $a0, 1
-	vxor.v	$vr0, $vr0, $vr1
-	vslli.d	$vr1, $vr0, 18
-	vxor.v	$vr1, $vr1, $vr0
-	lu12i.w	$a0, -209728
-	lu32i.d	$a0, 0
-	vreplgr2vr.d	$vr2, $a0
-	vand.v	$vr1, $vr1, $vr2
-	vsrli.d	$vr2, $vr1, 18
-	vor.v	$vr1, $vr2, $vr1
-	vxor.v	$vr0, $vr1, $vr0
-	vpickve2gr.d	$a0, $vr0, 0
-	srli.d	$a2, $a0, 1
-	vpickve2gr.d	$a3, $vr0, 1
-	xor	$a2, $a2, $a3
+	xor	$a0, $a3, $a0
+	slli.d	$a3, $a3, 4
+	xor	$a2, $a3, $a2
+	slli.d	$a3, $a0, 18
+	xor	$a3, $a3, $a0
+	lu12i.w	$a4, -209728
+	lu32i.d	$a4, 0
+	and	$a3, $a3, $a4
+	srli.d	$a5, $a3, 18
+	or	$a3, $a5, $a3
+	xor	$a0, $a3, $a0
+	slli.d	$a3, $a2, 18
+	xor	$a3, $a3, $a2
+	and	$a3, $a3, $a4
+	srli.d	$a4, $a3, 18
+	or	$a3, $a4, $a3
+	xor	$a2, $a3, $a2
+	srli.d	$a3, $a2, 1
+	xor	$a3, $a3, $a0
 	lu12i.w	$a4, 349525
 	ori	$a4, $a4, 1365
-	and	$a2, $a2, $a4
-	xor	$a3, $a2, $a3
-	slli.d	$a2, $a2, 1
-	xor	$a0, $a2, $a0
-	srli.d	$a2, $a3, 8
-	xor	$a2, $a2, $a0
+	and	$a3, $a3, $a4
+	xor	$a0, $a3, $a0
+	slli.d	$a3, $a3, 1
+	xor	$a2, $a3, $a2
+	srli.d	$a3, $a0, 8
+	xor	$a3, $a3, $a2
 	lu12i.w	$a5, 4080
 	ori	$a5, $a5, 255
-	and	$a2, $a2, $a5
-	xor	$a5, $a2, $a0
-	slli.d	$a0, $a2, 8
-	xor	$a0, $a0, $a3
-	srli.d	$a2, $a5, 1
-	xor	$a2, $a2, $a0
-	and	$a2, $a2, $a4
-	xor	$a0, $a2, $a0
-	slli.d	$a2, $a2, 1
-	xor	$a2, $a2, $a5
+	and	$a3, $a3, $a5
+	xor	$a2, $a3, $a2
+	slli.d	$a3, $a3, 8
+	xor	$a0, $a3, $a0
+	srli.d	$a3, $a2, 1
+	xor	$a3, $a3, $a0
+	and	$a3, $a3, $a4
+	xor	$a0, $a3, $a0
+	slli.d	$a3, $a3, 1
+	xor	$a2, $a3, $a2
 	bstrpick.d	$a3, $a2, 15, 8
-	slli.d	$a7, $a3, 8
+	slli.d	$t0, $a3, 8
 	srli.d	$a3, $a2, 16
 	srli.d	$a4, $a0, 28
-	bstrins.d	$a7, $a4, 27, 24
-	bstrins.d	$a7, $a2, 23, 16
-	bstrins.d	$a7, $a3, 7, 0
+	bstrins.d	$t0, $a4, 27, 24
+	bstrins.d	$t0, $a2, 23, 16
+	bstrins.d	$t0, $a3, 7, 0
 	ori	$a2, $zero, 1
 	lu12i.w	$a3, 8
 	ori	$a3, $a3, 259
 	pcalau12i	$a4, %pc_hi20(des_skb)
 	addi.d	$a4, $a4, %pc_lo12(des_skb)
-	pcalau12i	$a5, %pc_hi20(.LCPI2_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI2_0)
-	pcalau12i	$a5, %pc_hi20(.LCPI2_1)
-	vld	$vr1, $a5, %pc_lo12(.LCPI2_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI2_2)
-	vld	$vr2, $a5, %pc_lo12(.LCPI2_2)
 	move	$a5, $zero
-	vldi	$vr3, -1780
-	ori	$a6, $zero, 16
+	lu12i.w	$a6, -16
+	lu32i.d	$a6, 0
+	ori	$a7, $zero, 16
 	.p2align	4, , 16
 .LBB2_13:                               # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a0, $a0, 27, 0
-	sll.d	$t0, $a2, $a5
-	and	$t0, $t0, $a3
-	sltui	$t0, $t0, 1
-	addi.d	$t1, $t0, 1
-	xori	$t2, $t0, 27
-	srl.d	$t3, $a0, $t1
-	sll.d	$a0, $a0, $t2
-	or	$a0, $t3, $a0
-	srl.d	$t0, $a7, $t1
-	srli.d	$t1, $t3, 3
-	andi	$t1, $t1, 24
-	add.d	$t1, $a4, $t1
-	srli.d	$t4, $t3, 4
-	andi	$t4, $t4, 480
-	add.d	$t1, $t1, $t4
-	srli.d	$t4, $t3, 10
-	andi	$t4, $t4, 120
-	add.d	$t4, $a4, $t4
-	srli.d	$t5, $t3, 11
-	andi	$t5, $t5, 384
-	add.d	$t4, $t4, $t5
-	andi	$t5, $t3, 63
-	slli.d	$t5, $t5, 3
-	ldx.d	$t5, $a4, $t5
-	ld.d	$t1, $t1, 512
-	ld.d	$t4, $t4, 1024
-	sll.d	$a7, $a7, $t2
-	or	$a7, $t0, $a7
-	or	$t1, $t1, $t5
-	or	$t1, $t1, $t4
-	srli.d	$t2, $t3, 17
-	andi	$t2, $t2, 8
+	sll.d	$t1, $a2, $a5
+	and	$t1, $t1, $a3
+	sltui	$t1, $t1, 1
+	addi.d	$t2, $t1, 1
+	xori	$t3, $t1, 27
+	srl.d	$t4, $a0, $t2
+	sll.d	$a0, $a0, $t3
+	or	$a0, $t4, $a0
+	srl.d	$t1, $t0, $t2
+	srli.d	$t2, $t4, 3
+	andi	$t2, $t2, 24
 	add.d	$t2, $a4, $t2
-	srli.d	$t3, $t3, 18
-	andi	$t3, $t3, 48
-	add.d	$t2, $t2, $t3
-	srli.d	$t3, $a0, 19
-	andi	$t3, $t3, 448
-	add.d	$t2, $t2, $t3
-	ld.d	$t2, $t2, 1536
-	srli.d	$t3, $t0, 4
-	andi	$t3, $t3, 24
+	srli.d	$t5, $t4, 4
+	andi	$t5, $t5, 480
+	add.d	$t2, $t2, $t5
+	srli.d	$t5, $t4, 10
+	andi	$t5, $t5, 120
+	add.d	$t5, $a4, $t5
+	srli.d	$t6, $t4, 11
+	andi	$t6, $t6, 384
+	add.d	$t5, $t5, $t6
+	andi	$t6, $t4, 63
+	slli.d	$t6, $t6, 3
+	ldx.d	$t6, $a4, $t6
+	ld.d	$t2, $t2, 512
+	ld.d	$t5, $t5, 1024
+	sll.d	$t0, $t0, $t3
+	or	$t0, $t1, $t0
+	or	$t2, $t2, $t6
+	or	$t2, $t2, $t5
+	srli.d	$t3, $t4, 17
+	andi	$t3, $t3, 8
 	add.d	$t3, $a4, $t3
-	srli.d	$t4, $t0, 5
-	andi	$t4, $t4, 480
+	srli.d	$t4, $t4, 18
+	andi	$t4, $t4, 48
 	add.d	$t3, $t3, $t4
-	srli.d	$t4, $t0, 18
-	andi	$t4, $t4, 120
+	srli.d	$t4, $a0, 19
+	andi	$t4, $t4, 448
+	add.d	$t3, $t3, $t4
+	ld.d	$t3, $t3, 1536
+	srli.d	$t4, $t1, 4
+	andi	$t4, $t4, 24
 	add.d	$t4, $a4, $t4
-	srli.d	$t5, $a7, 19
-	andi	$t5, $t5, 384
+	srli.d	$t5, $t1, 5
+	andi	$t5, $t5, 480
 	add.d	$t4, $t4, $t5
-	andi	$t5, $t0, 63
-	alsl.d	$t5, $t5, $a4, 3
-	ldptr.d	$t5, $t5, 2048
-	ldptr.d	$t3, $t3, 2560
-	srli.d	$t0, $t0, 12
-	andi	$t0, $t0, 504
-	add.d	$t0, $a4, $t0
-	ldptr.d	$t0, $t0, 3072
-	ldptr.d	$t4, $t4, 3584
+	srli.d	$t5, $t1, 18
+	andi	$t5, $t5, 120
+	add.d	$t5, $a4, $t5
+	srli.d	$t6, $t0, 19
+	andi	$t6, $t6, 384
+	add.d	$t5, $t5, $t6
+	andi	$t6, $t1, 63
+	alsl.d	$t6, $t6, $a4, 3
+	ldptr.d	$t6, $t6, 2048
+	ldptr.d	$t4, $t4, 2560
+	srli.d	$t1, $t1, 12
+	andi	$t1, $t1, 504
+	add.d	$t1, $a4, $t1
+	ldptr.d	$t1, $t1, 3072
+	ldptr.d	$t5, $t5, 3584
+	or	$t2, $t2, $t3
+	or	$t3, $t4, $t6
+	or	$t1, $t3, $t1
+	or	$t1, $t1, $t5
+	slli.d	$t3, $t1, 18
+	bstrins.d	$t3, $t2, 17, 2
+	srli.d	$t4, $t1, 14
+	bstrpick.d	$t3, $t3, 31, 2
+	bstrins.d	$t4, $t3, 63, 2
+	st.d	$t4, $a1, 0
+	srli.d	$t2, $t2, 16
+	and	$t1, $t1, $a6
 	or	$t1, $t1, $t2
-	or	$t2, $t3, $t5
-	or	$t0, $t2, $t0
-	or	$t0, $t0, $t4
-	slli.d	$t2, $t0, 16
-	bstrpick.d	$t3, $t1, 15, 0
-	srli.d	$t1, $t1, 16
-	vinsgr2vr.d	$vr4, $t2, 0
-	vinsgr2vr.d	$vr4, $t0, 1
-	vand.v	$vr4, $vr4, $vr3
-	vinsgr2vr.d	$vr5, $t3, 0
-	vinsgr2vr.d	$vr5, $t1, 1
-	vor.v	$vr5, $vr4, $vr5
-	vsll.d	$vr6, $vr5, $vr0
-	vshuf4i.d	$vr4, $vr5, 12
-	vsrl.d	$vr4, $vr4, $vr1
-	vand.v	$vr5, $vr6, $vr2
-	vor.v	$vr4, $vr5, $vr4
-	vst	$vr4, $a1, 0
+	slli.d	$t2, $t1, 6
+	srli.d	$t1, $t1, 26
+	bstrpick.d	$t2, $t2, 31, 6
+	slli.d	$t2, $t2, 6
+	or	$t1, $t2, $t1
+	st.d	$t1, $a1, 8
 	addi.d	$a1, $a1, 16
 	addi.d	$a5, $a5, 1
-	bstrpick.d	$a7, $a7, 27, 0
-	bne	$a5, $a6, .LBB2_13
+	bstrpick.d	$t0, $t0, 27, 0
+	bne	$a5, $a7, .LBB2_13
 # %bb.14:
 	move	$a0, $zero
 .LBB2_15:                               # %check_parity.exit.thread

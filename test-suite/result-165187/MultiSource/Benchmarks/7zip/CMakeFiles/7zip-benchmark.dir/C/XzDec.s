@@ -530,13 +530,12 @@ MixCoder_Init:                          # @MixCoder_Init
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a1, $a0, 16
-	ori	$a0, $zero, 2
-	blt	$a1, $a0, .LBB8_3
+	ori	$a2, $zero, 2
+	blt	$a1, $a2, .LBB8_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$a0, $a1, -1
-	ori	$a2, $zero, 5
 	bstrpick.d	$a0, $a0, 31, 0
-	bgeu	$a1, $a2, .LBB8_4
+	bne	$a1, $a2, .LBB8_4
 # %bb.2:
 	move	$a1, $zero
 	b	.LBB8_7
@@ -545,23 +544,21 @@ MixCoder_Init:                          # @MixCoder_Init
 	beq	$a1, $a0, .LBB8_9
 	b	.LBB8_11
 .LBB8_4:                                # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a1, $a1, 2
-	addi.d	$a2, $fp, 48
-	addi.d	$a3, $fp, 28
+	addi.d	$a2, $fp, 32
+	bstrpick.d	$a1, $a0, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $fp, 24
 	vrepli.b	$vr0, 0
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB8_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a2, 8
 	vst	$vr0, $a2, 24
-	vst	$vr0, $a2, -16
 	vst	$vr0, $a2, 0
-	vst	$vr0, $a3, -8
-	addi.d	$a4, $a4, -4
-	addi.d	$a2, $a2, 32
-	addi.d	$a3, $a3, 16
+	st.d	$zero, $a3, -4
+	addi.d	$a3, $a3, 8
+	addi.d	$a4, $a4, -2
+	addi.d	$a2, $a2, 16
 	bnez	$a4, .LBB8_5
 # %bb.6:                                # %middle.block
 	beq	$a1, $a0, .LBB8_9
@@ -1439,13 +1436,12 @@ XzDec_Init:                             # @XzDec_Init
 	bne	$s2, $s4, .LBB13_28
 # %bb.30:
 	ld.w	$a1, $fp, 16
-	ori	$a0, $zero, 2
-	blt	$a1, $a0, .LBB13_33
+	ori	$a2, $zero, 2
+	blt	$a1, $a2, .LBB13_33
 # %bb.31:                               # %.lr.ph.i69
 	addi.d	$a0, $a1, -1
-	ori	$a2, $zero, 5
 	bstrpick.d	$a0, $a0, 31, 0
-	bgeu	$a1, $a2, .LBB13_34
+	bne	$a1, $a2, .LBB13_34
 # %bb.32:
 	move	$a1, $zero
 	b	.LBB13_37
@@ -1454,23 +1450,21 @@ XzDec_Init:                             # @XzDec_Init
 	beq	$a1, $a0, .LBB13_39
 	b	.LBB13_41
 .LBB13_34:                              # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a1, $a1, 2
-	addi.d	$a2, $fp, 48
-	addi.d	$a3, $fp, 28
+	addi.d	$a2, $fp, 32
+	bstrpick.d	$a1, $a0, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a3, $fp, 24
 	vrepli.b	$vr0, 0
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB13_35:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a2, 8
 	vst	$vr0, $a2, 24
-	vst	$vr0, $a2, -16
 	vst	$vr0, $a2, 0
-	vst	$vr0, $a3, -8
-	addi.d	$a4, $a4, -4
-	addi.d	$a2, $a2, 32
-	addi.d	$a3, $a3, 16
+	st.d	$zero, $a3, -4
+	addi.d	$a3, $a3, 8
+	addi.d	$a4, $a4, -2
+	addi.d	$a2, $a2, 16
 	bnez	$a4, .LBB13_35
 # %bb.36:                               # %middle.block
 	beq	$a1, $a0, .LBB13_39
@@ -1605,20 +1599,20 @@ XzUnpacker_Free:                        # @XzUnpacker_Free
 	.type	XzUnpacker_Code,@function
 XzUnpacker_Code:                        # @XzUnpacker_Code
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	move	$fp, $a6
-	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 40                    # 8-byte Folded Spill
 	move	$s1, $a4
 	move	$s5, $a3
 	move	$s2, $a2
@@ -1630,11 +1624,9 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	st.d	$zero, $a2, 0
 	st.d	$zero, $a4, 0
 	st.w	$zero, $a6, 0
-	vrepli.d	$vr0, 1
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB16_3
 .LBB16_1:                               #   in Loop: Header=BB16_3 Depth=1
 	ori	$s7, $zero, 3
@@ -1662,36 +1654,36 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 # %bb.4:                                #   in Loop: Header=BB16_3 Depth=1
 	ld.d	$a1, $s2, 0
 	sub.d	$a2, $s6, $a1
-	st.d	$a2, $sp, 160
-	st.d	$s0, $sp, 152
+	st.d	$a2, $sp, 128
+	st.d	$s0, $sp, 120
 	bne	$s8, $a0, .LBB16_6
 # %bb.5:                                #   in Loop: Header=BB16_3 Depth=1
 	beq	$s6, $a1, .LBB16_61
 .LBB16_6:                               #   in Loop: Header=BB16_3 Depth=1
-	addi.d	$a2, $sp, 160
-	addi.d	$a4, $sp, 152
+	addi.d	$a2, $sp, 128
+	addi.d	$a4, $sp, 120
 	addi.d	$a0, $s4, 88
 	move	$a1, $s3
 	move	$a3, $s5
 	move	$a5, $zero
-	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
 	move	$a7, $fp
 	pcaddu18i	$ra, %call36(MixCoder_Code)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 160
+	ld.d	$a2, $sp, 128
 	move	$s7, $a0
 	addi.d	$a0, $s4, 512
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(XzCheck_Update)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 152
+	ld.d	$s0, $sp, 120
 	ld.d	$a0, $s1, 0
 	add.d	$a0, $a0, $s0
 	st.d	$a0, $s1, 0
 	ld.d	$a0, $s4, 24
 	add.d	$a1, $a0, $s0
 	st.d	$a1, $s4, 24
-	ld.d	$s6, $sp, 160
+	ld.d	$s6, $sp, 128
 	ld.d	$a0, $s2, 0
 	add.d	$a0, $a0, $s6
 	st.d	$a0, $s2, 0
@@ -1711,28 +1703,29 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a1, $s7, $a0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(Xz_WriteVarInt)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s4, 32
 	move	$s7, $a0
 	bstrpick.d	$a0, $a0, 31, 0
-	addi.d	$a2, $sp, 88
+	addi.d	$a2, $sp, 56
 	add.d	$a0, $a2, $a0
 	pcaddu18i	$ra, %call36(Xz_WriteVarInt)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $a0, $s7
 	bstrpick.d	$s7, $a0, 31, 0
-	addi.d	$a1, $sp, 88
+	addi.d	$a1, $sp, 56
 	addi.d	$a0, $s4, 632
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(Sha256_Update)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $s4, 40
-	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
-	vinsgr2vr.d	$vr1, $s7, 1
-	vadd.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 40
+	ld.d	$a0, $s4, 48
+	ld.d	$a1, $s4, 40
+	add.d	$a0, $a0, $s7
+	st.d	$a0, $s4, 48
+	addi.d	$a0, $a1, 1
+	st.d	$a0, $s4, 40
 	ori	$a0, $zero, 7
 	st.d	$a0, $s4, 0
 	st.w	$zero, $s4, 8
@@ -1784,7 +1777,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	add.d	$s3, $s3, $s6
 .LBB16_18:                              # %.backedge
                                         #   in Loop: Header=BB16_3 Depth=1
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_19:                              #   in Loop: Header=BB16_3 Depth=1
@@ -1815,7 +1808,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(XzDec_Init)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB16_2
 	b	.LBB16_64
 .LBB16_23:                              #   in Loop: Header=BB16_3 Depth=1
@@ -1869,7 +1862,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_31:                              #   in Loop: Header=BB16_3 Depth=1
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	ld.wu	$s6, $s4, 4
 	ori	$fp, $zero, 12
 	sub.d	$a0, $fp, $s6
@@ -1933,8 +1926,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ld.hu	$a0, $a0, 0
 	addi.d	$a1, $s4, 778
 	ld.hu	$a1, $a1, 0
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB16_2
 	b	.LBB16_66
 .LBB16_36:                              #   in Loop: Header=BB16_3 Depth=1
@@ -1949,9 +1942,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_39:                              #   in Loop: Header=BB16_3 Depth=1
-	vld	$vr0, $s4, 48
-	vpickve2gr.d	$a1, $vr0, 0
-	vpickve2gr.d	$a2, $vr0, 1
+	ld.d	$a2, $s4, 56
+	ld.d	$a1, $s4, 48
 	bgeu	$a2, $a1, .LBB16_53
 # %bb.40:                               #   in Loop: Header=BB16_3 Depth=1
 	sub.d	$a1, $a1, $a2
@@ -2006,8 +1998,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_44:                              #   in Loop: Header=BB16_3 Depth=1
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_45:                              #   in Loop: Header=BB16_3 Depth=1
@@ -2054,7 +2046,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	slli.d	$a0, $a1, 2
 	addi.d	$a0, $a0, 4
 	st.w	$a0, $s4, 20
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_48:                              #   in Loop: Header=BB16_3 Depth=1
@@ -2068,14 +2060,14 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 # %bb.49:                               #   in Loop: Header=BB16_3 Depth=1
 	ori	$a0, $zero, 5
 	st.d	$a0, $s4, 0
-	addi.d	$a1, $sp, 88
+	addi.d	$a1, $sp, 56
 	addi.d	$a0, $s4, 512
 	pcaddu18i	$ra, %call36(XzCheck_Final)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB16_18
 # %bb.50:                               #   in Loop: Header=BB16_3 Depth=1
 	bstrpick.d	$a2, $s7, 31, 0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 56
 	addi.d	$a1, $s4, 768
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
@@ -2106,6 +2098,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 # %bb.54:                               #   in Loop: Header=BB16_3 Depth=1
 	ld.wu	$a1, $s4, 80
 	ld.bu	$a2, $s5, 0
+	vld	$vr0, $s4, 48
 	andi	$a3, $a1, 255
 	xor	$a3, $a3, $a2
 	slli.d	$a3, $a3, 2
@@ -2146,7 +2139,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	add.d	$a0, $a0, $s7
 	st.d	$a0, $s1, 0
 	add.d	$s5, $s5, $s7
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_58:                              #   in Loop: Header=BB16_3 Depth=1
@@ -2154,11 +2147,11 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	st.d	$a0, $s4, 0
 	addi.d	$a0, $a1, 4
 	st.d	$a0, $s4, 48
-	addi.d	$a1, $sp, 88
+	addi.d	$a1, $sp, 56
 	addi.d	$a0, $s4, 632
 	pcaddu18i	$ra, %call36(Sha256_Final)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 56
 	ori	$a2, $zero, 32
 	addi.d	$a1, $s4, 736
 	pcaddu18i	$ra, %call36(bcmp)
@@ -2190,18 +2183,18 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ori	$s7, $zero, 4
 .LBB16_66:                              # %.thread326
 	move	$a0, $s7
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end16:
 	.size	XzUnpacker_Code, .Lfunc_end16-XzUnpacker_Code

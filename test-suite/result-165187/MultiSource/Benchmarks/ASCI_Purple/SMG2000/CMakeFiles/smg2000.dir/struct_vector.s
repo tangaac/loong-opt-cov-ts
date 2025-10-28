@@ -190,30 +190,37 @@ hypre_StructVectorInitializeShell:      # @hypre_StructVectorInitializeShell
 	ld.d	$a3, $s0, 0
 	move	$a2, $zero
 	move	$a1, $zero
-	addi.d	$a3, $a3, 16
+	addi.d	$a3, $a3, 12
 	addi.w	$a4, $zero, -1
 	move	$a5, $a0
 	.p2align	4, , 16
 .LBB3_8:                                # =>This Inner Loop Header: Depth=1
 	st.w	$a1, $a5, 0
-	ld.w	$a6, $a3, -4
-	ld.w	$a7, $a3, -16
+	ld.w	$a6, $a3, 0
+	ld.w	$a7, $a3, -12
 	sub.w	$a6, $a6, $a7
 	slt	$a7, $a4, $a6
+	ld.w	$t0, $a3, 4
+	ld.w	$t1, $a3, -8
 	maskeqz	$a6, $a6, $a7
-	ld.d	$t0, $a3, 0
 	masknez	$a7, $a4, $a7
-	ld.d	$t1, $a3, -12
 	or	$a6, $a6, $a7
-	vinsgr2vr.d	$vr0, $t0, 0
+	sub.w	$a7, $t0, $t1
+	slt	$t0, $a4, $a7
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a4, $t0
+	or	$a7, $a7, $t0
+	ld.w	$t0, $a3, 8
+	ld.w	$t1, $a3, -4
 	addi.d	$a6, $a6, 1
-	vinsgr2vr.d	$vr1, $t1, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a7, $vr0, 0
+	addi.d	$a7, $a7, 1
 	mul.d	$a6, $a7, $a6
-	vpickve2gr.w	$a7, $vr0, 1
+	sub.w	$a7, $t0, $t1
+	slt	$t0, $a4, $a7
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a4, $t0
+	or	$a7, $a7, $t0
+	addi.d	$a7, $a7, 1
 	mul.d	$a6, $a6, $a7
 	ld.w	$a7, $s0, 8
 	add.d	$a1, $a6, $a1

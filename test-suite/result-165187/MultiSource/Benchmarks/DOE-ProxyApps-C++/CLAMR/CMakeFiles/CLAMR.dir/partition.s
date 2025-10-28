@@ -3025,7 +3025,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	ld.d	$a2, $fp, 1464
 	ld.d	$a3, $fp, 1488
 	fsub.d	$fa3, $fa3, $fa2
-	ori	$a4, $zero, 12
+	ori	$a4, $zero, 14
 	frecip.d	$fa3, $fa3
 	bgeu	$s6, $a4, .LBB4_96
 # %bb.68:

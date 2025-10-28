@@ -720,174 +720,76 @@ consensus:                              # @consensus
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s2, 108
-	addi.w	$a1, $zero, -1
-	beq	$a0, $a1, .LBB5_22
+	ld.w	$a3, $s2, 108
+	addi.w	$a0, $zero, -1
+	beq	$a3, $a0, .LBB5_8
 # %bb.1:
-	slli.d	$a2, $a0, 2
-	ldx.w	$a1, $s0, $a2
-	ldx.w	$a4, $fp, $a2
-	alsl.d	$a3, $a0, $s0, 2
-	and	$a1, $a4, $a1
-	stx.w	$a1, $s1, $a2
-	ld.w	$a2, $s2, 104
-	alsl.d	$a4, $a0, $fp, 2
-	bstrpick.d	$a5, $a1, 31, 1
-	or	$a5, $a5, $a1
-	andn	$a2, $a2, $a5
-	addi.w	$a6, $a2, 0
-	alsl.d	$a5, $a0, $s1, 2
-	beqz	$a6, .LBB5_3
+	slli.d	$a1, $a3, 2
+	ldx.w	$a0, $s0, $a1
+	ldx.w	$a2, $fp, $a1
+	and	$a0, $a2, $a0
+	stx.w	$a0, $s1, $a1
+	ld.w	$a1, $s2, 104
+	bstrpick.d	$a2, $a0, 31, 1
+	or	$a2, $a2, $a0
+	andn	$a1, $a1, $a2
+	addi.w	$a2, $a1, 0
+	beqz	$a2, .LBB5_3
 # %bb.2:
-	ld.w	$a6, $a3, 0
-	ld.w	$a7, $a4, 0
-	slli.d	$t0, $a2, 1
-	or	$a2, $t0, $a2
-	or	$a6, $a7, $a6
-	and	$a2, $a6, $a2
-	or	$a1, $a2, $a1
-	st.w	$a1, $a5, 0
+	alsl.d	$a2, $a3, $s0, 2
+	alsl.d	$a4, $a3, $fp, 2
+	ld.w	$a2, $a2, 0
+	ld.w	$a4, $a4, 0
+	alsl.d	$a5, $a3, $s1, 2
+	slli.d	$a6, $a1, 1
+	or	$a1, $a6, $a1
+	or	$a2, $a4, $a2
+	and	$a1, $a2, $a1
+	or	$a0, $a1, $a0
+	st.w	$a0, $a5, 0
 .LBB5_3:
-	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB5_22
+	ori	$a0, $zero, 2
+	blt	$a3, $a0, .LBB5_8
 # %bb.4:                                # %.lr.ph.preheader
-	ori	$a2, $zero, 9
-	ori	$a1, $zero, 1
-	bgeu	$a0, $a2, .LBB5_9
-.LBB5_5:                                # %.lr.ph.preheader200
-	alsl.d	$a2, $a1, $s1, 2
-	alsl.d	$a3, $a1, $fp, 2
-	alsl.d	$a4, $a1, $s0, 2
-	sub.d	$a0, $a0, $a1
-	lu12i.w	$a1, 349525
-	ori	$a1, $a1, 1365
-	b	.LBB5_7
+	addi.d	$a0, $s1, 4
+	addi.d	$a1, $fp, 4
+	addi.d	$a2, $s0, 4
+	addi.d	$a3, $a3, -1
+	lu12i.w	$a4, 349525
+	ori	$a4, $a4, 1365
+	b	.LBB5_6
 	.p2align	4, , 16
-.LBB5_6:                                #   in Loop: Header=BB5_7 Depth=1
+.LBB5_5:                                #   in Loop: Header=BB5_6 Depth=1
+	addi.d	$a0, $a0, 4
+	addi.d	$a1, $a1, 4
+	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 4
-	addi.d	$a0, $a0, -1
-	addi.d	$a4, $a4, 4
-	beqz	$a0, .LBB5_22
-.LBB5_7:                                # %.lr.ph
+	beqz	$a3, .LBB5_8
+.LBB5_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a4, 0
-	ld.w	$a6, $a3, 0
+	ld.w	$a5, $a2, 0
+	ld.w	$a6, $a1, 0
 	and	$a5, $a6, $a5
 	srli.d	$a6, $a5, 1
 	or	$a6, $a6, $a5
-	and	$a6, $a6, $a1
-	st.w	$a5, $a2, 0
-	beq	$a6, $a1, .LBB5_6
-# %bb.8:                                #   in Loop: Header=BB5_7 Depth=1
-	ld.w	$a7, $a4, 0
-	ld.w	$t0, $a3, 0
-	xor	$a6, $a6, $a1
+	and	$a6, $a6, $a4
+	st.w	$a5, $a0, 0
+	beq	$a6, $a4, .LBB5_5
+# %bb.7:                                #   in Loop: Header=BB5_6 Depth=1
+	ld.w	$a7, $a2, 0
+	ld.w	$t0, $a1, 0
+	xor	$a6, $a6, $a4
 	alsl.d	$a6, $a6, $a6, 1
 	or	$a7, $t0, $a7
 	and	$a6, $a7, $a6
 	or	$a5, $a6, $a5
-	st.w	$a5, $a2, 0
-	b	.LBB5_6
-.LBB5_9:                                # %vector.memcheck
-	addi.d	$a6, $s1, 4
-	addi.d	$a2, $s0, 4
-	sltu	$a3, $a6, $a3
-	sltu	$a7, $a2, $a5
-	and	$a3, $a3, $a7
-	bnez	$a3, .LBB5_5
-# %bb.10:                               # %vector.memcheck
-	addi.d	$a3, $fp, 4
-	sltu	$a4, $a6, $a4
-	sltu	$a5, $a3, $a5
-	and	$a4, $a4, $a5
-	bnez	$a4, .LBB5_5
-# %bb.11:                               # %vector.ph
-	addi.d	$a4, $a0, -1
-	move	$a5, $a4
-	bstrins.d	$a5, $zero, 1, 0
-	ori	$a6, $zero, 1
-	move	$a1, $a4
-	bstrins.d	$a1, $a6, 1, 0
-	addi.d	$a6, $s1, 8
-	vrepli.b	$vr0, 85
-	vrepli.b	$vr1, -1
-	vrepli.w	$vr2, 3
-	move	$a7, $a5
-	b	.LBB5_13
-	.p2align	4, , 16
-.LBB5_12:                               # %pred.store.continue149
-                                        #   in Loop: Header=BB5_13 Depth=1
-	addi.d	$a6, $a6, 16
-	addi.d	$a2, $a2, 16
-	addi.d	$a7, $a7, -4
-	addi.d	$a3, $a3, 16
-	beqz	$a7, .LBB5_21
-.LBB5_13:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a2, 0
-	vld	$vr5, $a3, 0
-	vand.v	$vr6, $vr5, $vr4
-	vst	$vr6, $a6, -4
-	vsrli.w	$vr3, $vr6, 1
-	vor.v	$vr3, $vr3, $vr6
-	vand.v	$vr7, $vr3, $vr0
-	vseq.w	$vr3, $vr7, $vr0
-	vxor.v	$vr3, $vr3, $vr1
-	vxor.v	$vr7, $vr7, $vr0
-	vmul.w	$vr7, $vr7, $vr2
-	vor.v	$vr4, $vr5, $vr4
-	vand.v	$vr4, $vr4, $vr7
-	vpickve2gr.w	$t0, $vr3, 0
-	andi	$t0, $t0, 1
-	vor.v	$vr4, $vr4, $vr6
-	beqz	$t0, .LBB5_17
-# %bb.14:                               # %pred.store.if
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vstelm.w	$vr4, $a6, -4, 0
-	vpickve2gr.w	$t0, $vr3, 1
-	andi	$t0, $t0, 1
-	bnez	$t0, .LBB5_18
-.LBB5_15:                               # %pred.store.continue145
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vpickve2gr.w	$t0, $vr3, 2
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB5_19
-.LBB5_16:                               # %pred.store.if146
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vstelm.w	$vr4, $a6, 4, 2
-	vpickve2gr.w	$t0, $vr3, 3
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB5_12
-	b	.LBB5_20
-	.p2align	4, , 16
-.LBB5_17:                               # %pred.store.continue
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vpickve2gr.w	$t0, $vr3, 1
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB5_15
-.LBB5_18:                               # %pred.store.if144
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vstelm.w	$vr4, $a6, 0, 1
-	vpickve2gr.w	$t0, $vr3, 2
-	andi	$t0, $t0, 1
-	bnez	$t0, .LBB5_16
-.LBB5_19:                               # %pred.store.continue147
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vpickve2gr.w	$t0, $vr3, 3
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB5_12
-.LBB5_20:                               # %pred.store.if148
-                                        #   in Loop: Header=BB5_13 Depth=1
-	vstelm.w	$vr4, $a6, 8, 3
-	b	.LBB5_12
-.LBB5_21:                               # %middle.block
-	bne	$a4, $a5, .LBB5_5
-.LBB5_22:                               # %.loopexit85
+	st.w	$a5, $a0, 0
+	b	.LBB5_5
+.LBB5_8:                                # %.loopexit85
 	ld.w	$a0, $s2, 8
 	ld.w	$a1, $s2, 4
-	bge	$a0, $a1, .LBB5_43
-# %bb.23:                               # %.lr.ph97
+	bge	$a0, $a1, .LBB5_29
+# %bb.9:                                # %.lr.ph97
 	ld.d	$a1, $s2, 72
 	ld.d	$a2, $s2, 48
 	ld.d	$a3, $s2, 40
@@ -897,32 +799,32 @@ consensus:                              # @consensus
 	addi.d	$t1, $fp, 16
 	ori	$t2, $zero, 7
 	ori	$t3, $zero, 1
-	b	.LBB5_25
+	b	.LBB5_11
 	.p2align	4, , 16
-.LBB5_24:                               # %.loopexit
-                                        #   in Loop: Header=BB5_25 Depth=1
+.LBB5_10:                               # %.loopexit
+                                        #   in Loop: Header=BB5_11 Depth=1
 	ld.w	$a7, $s2, 4
 	addi.d	$a0, $a0, 1
-	bge	$a0, $a7, .LBB5_43
-.LBB5_25:                               # =>This Loop Header: Depth=1
+	bge	$a0, $a7, .LBB5_29
+.LBB5_11:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB5_13 Depth 2
+                                        #       Child Loop BB5_14 Depth 3
                                         #     Child Loop BB5_27 Depth 2
-                                        #       Child Loop BB5_28 Depth 3
-                                        #     Child Loop BB5_41 Depth 2
-                                        #     Child Loop BB5_36 Depth 2
+                                        #     Child Loop BB5_22 Depth 2
 	slli.d	$t5, $a0, 3
 	slli.d	$t6, $a0, 2
 	ldx.w	$t4, $a2, $t6
 	ldx.w	$t6, $a3, $t6
 	ldx.d	$t5, $a1, $t5
-	blt	$t4, $t6, .LBB5_32
-# %bb.26:                               # %.lr.ph90.preheader
-                                        #   in Loop: Header=BB5_25 Depth=1
+	blt	$t4, $t6, .LBB5_18
+# %bb.12:                               # %.lr.ph90.preheader
+                                        #   in Loop: Header=BB5_11 Depth=1
 	move	$t8, $zero
 	sub.d	$t7, $zero, $t4
-.LBB5_27:                               # %.lr.ph90.outer
-                                        #   Parent Loop BB5_25 Depth=1
+.LBB5_13:                               # %.lr.ph90.outer
+                                        #   Parent Loop BB5_11 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB5_28 Depth 3
+                                        #       Child Loop BB5_14 Depth 3
 	add.w	$s3, $t7, $t6
 	addi.d	$ra, $t6, 1
 	slli.d	$s4, $t6, 2
@@ -932,53 +834,53 @@ consensus:                              # @consensus
 	move	$s5, $s1
 	move	$t6, $ra
 	.p2align	4, , 16
-.LBB5_28:                               # %.lr.ph90
-                                        #   Parent Loop BB5_25 Depth=1
-                                        #     Parent Loop BB5_27 Depth=2
+.LBB5_14:                               # %.lr.ph90
+                                        #   Parent Loop BB5_11 Depth=1
+                                        #     Parent Loop BB5_13 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.w	$ra, $s8, $s4
 	ldx.w	$a7, $s7, $s4
 	ldx.w	$t0, $s6, $s4
 	and	$a7, $a7, $ra
 	and	$ra, $a7, $t0
-	bnez	$ra, .LBB5_30
-# %bb.29:                               #   in Loop: Header=BB5_28 Depth=3
+	bnez	$ra, .LBB5_16
+# %bb.15:                               #   in Loop: Header=BB5_14 Depth=3
 	addi.d	$t6, $t6, 1
 	addi.w	$s3, $s3, 1
 	addi.d	$s5, $s5, 4
 	addi.d	$s8, $s8, 4
 	addi.d	$s7, $s7, 4
 	addi.d	$s6, $s6, 4
-	bne	$s3, $t3, .LBB5_28
-	b	.LBB5_31
+	bne	$s3, $t3, .LBB5_14
+	b	.LBB5_17
 	.p2align	4, , 16
-.LBB5_30:                               # %.thread
-                                        #   in Loop: Header=BB5_27 Depth=2
+.LBB5_16:                               # %.thread
+                                        #   in Loop: Header=BB5_13 Depth=2
 	ldx.w	$a7, $s5, $s4
 	or	$a7, $a7, $ra
 	stx.w	$a7, $s5, $s4
 	ori	$t8, $zero, 1
-	bnez	$s3, .LBB5_27
-	b	.LBB5_24
+	bnez	$s3, .LBB5_13
+	b	.LBB5_10
 	.p2align	4, , 16
-.LBB5_31:                               # %._crit_edge
-                                        #   in Loop: Header=BB5_25 Depth=1
+.LBB5_17:                               # %._crit_edge
+                                        #   in Loop: Header=BB5_11 Depth=1
 	andi	$a7, $t8, 1
-	bnez	$a7, .LBB5_24
-.LBB5_32:                               # %._crit_edge.thread
-                                        #   in Loop: Header=BB5_25 Depth=1
+	bnez	$a7, .LBB5_10
+.LBB5_18:                               # %._crit_edge.thread
+                                        #   in Loop: Header=BB5_11 Depth=1
 	alsl.d	$a7, $a0, $a3, 2
 	ld.w	$s4, $a7, 0
-	blt	$t4, $s4, .LBB5_24
-# %bb.33:                               # %.lr.ph94.preheader
-                                        #   in Loop: Header=BB5_25 Depth=1
+	blt	$t4, $s4, .LBB5_10
+# %bb.19:                               # %.lr.ph94.preheader
+                                        #   in Loop: Header=BB5_11 Depth=1
 	sub.d	$t8, $t4, $s4
 	addi.w	$t6, $t8, 0
-	bgeu	$t6, $t2, .LBB5_37
-.LBB5_34:                               #   in Loop: Header=BB5_25 Depth=1
+	bgeu	$t6, $t2, .LBB5_23
+.LBB5_20:                               #   in Loop: Header=BB5_11 Depth=1
 	move	$t6, $s4
-.LBB5_35:                               # %.lr.ph94.preheader194
-                                        #   in Loop: Header=BB5_25 Depth=1
+.LBB5_21:                               # %.lr.ph94.preheader158
+                                        #   in Loop: Header=BB5_11 Depth=1
 	alsl.d	$t5, $t6, $t5, 2
 	alsl.d	$t7, $t6, $s0, 2
 	alsl.d	$t8, $t6, $fp, 2
@@ -986,8 +888,8 @@ consensus:                              # @consensus
 	sub.d	$a7, $t4, $t6
 	addi.d	$t4, $a7, 1
 	.p2align	4, , 16
-.LBB5_36:                               # %.lr.ph94
-                                        #   Parent Loop BB5_25 Depth=1
+.LBB5_22:                               # %.lr.ph94
+                                        #   Parent Loop BB5_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a7, $t7, 0
 	ld.w	$t0, $t8, 0
@@ -1002,10 +904,10 @@ consensus:                              # @consensus
 	addi.d	$t8, $t8, 4
 	addi.w	$t4, $t4, -1
 	addi.d	$s3, $s3, 4
-	bnez	$t4, .LBB5_36
-	b	.LBB5_24
-.LBB5_37:                               # %vector.memcheck150
-                                        #   in Loop: Header=BB5_25 Depth=1
+	bnez	$t4, .LBB5_22
+	b	.LBB5_10
+.LBB5_23:                               # %vector.memcheck
+                                        #   in Loop: Header=BB5_11 Depth=1
 	alsl.d	$t7, $s4, $s1, 2
 	bstrpick.d	$a7, $t8, 31, 0
 	add.d	$s5, $s4, $a7
@@ -1016,25 +918,25 @@ consensus:                              # @consensus
 	sltu	$a7, $t7, $a7
 	sltu	$t0, $s3, $t8
 	and	$a7, $a7, $t0
-	bnez	$a7, .LBB5_34
-# %bb.38:                               # %vector.memcheck150
-                                        #   in Loop: Header=BB5_25 Depth=1
+	bnez	$a7, .LBB5_20
+# %bb.24:                               # %vector.memcheck
+                                        #   in Loop: Header=BB5_11 Depth=1
 	alsl.d	$a7, $s4, $s0, 2
 	alsl.d	$t0, $s5, $a5, 2
 	sltu	$t0, $t7, $t0
 	sltu	$a7, $a7, $t8
 	and	$a7, $t0, $a7
-	bnez	$a7, .LBB5_34
-# %bb.39:                               # %vector.memcheck150
-                                        #   in Loop: Header=BB5_25 Depth=1
+	bnez	$a7, .LBB5_20
+# %bb.25:                               # %vector.memcheck
+                                        #   in Loop: Header=BB5_11 Depth=1
 	alsl.d	$a7, $s4, $fp, 2
 	alsl.d	$t0, $s5, $a6, 2
 	sltu	$t0, $t7, $t0
 	sltu	$a7, $a7, $t8
 	and	$a7, $t0, $a7
-	bnez	$a7, .LBB5_34
-# %bb.40:                               # %vector.ph176
-                                        #   in Loop: Header=BB5_25 Depth=1
+	bnez	$a7, .LBB5_20
+# %bb.26:                               # %vector.ph
+                                        #   in Loop: Header=BB5_11 Depth=1
 	bstrpick.d	$a7, $t6, 31, 0
 	addi.d	$t7, $a7, 1
 	bstrpick.d	$a7, $t7, 32, 3
@@ -1048,8 +950,8 @@ consensus:                              # @consensus
 	alsl.d	$s4, $s4, $t1, 2
 	move	$s7, $t8
 	.p2align	4, , 16
-.LBB5_41:                               # %vector.body179
-                                        #   Parent Loop BB5_25 Depth=1
+.LBB5_27:                               # %vector.body
+                                        #   Parent Loop BB5_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $s6, -16
 	vld	$vr1, $s6, 0
@@ -1072,12 +974,12 @@ consensus:                              # @consensus
 	addi.d	$s5, $s5, 32
 	addi.d	$s6, $s6, 32
 	addi.d	$s4, $s4, 32
-	bnez	$s7, .LBB5_41
-# %bb.42:                               # %middle.block191
-                                        #   in Loop: Header=BB5_25 Depth=1
-	beq	$t7, $t8, .LBB5_24
-	b	.LBB5_35
-.LBB5_43:                               # %._crit_edge98
+	bnez	$s7, .LBB5_27
+# %bb.28:                               # %middle.block
+                                        #   in Loop: Header=BB5_11 Depth=1
+	beq	$t7, $t8, .LBB5_10
+	b	.LBB5_21
+.LBB5_29:                               # %._crit_edge98
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload

@@ -543,7 +543,7 @@ stencil_calc:                           # @stencil_calc
 	fld.d	$fa5, $t3, 8
 	ori	$a4, $zero, 1
 	ld.d	$a6, $fp, -152                  # 8-byte Folded Reload
-	ori	$t0, $zero, 3
+	ori	$t0, $zero, 5
 	bgeu	$a6, $t0, .LBB0_39
 .LBB0_36:                               #   in Loop: Header=BB0_35 Depth=3
 	fmov.d	$ft4, $fa5

@@ -149,16 +149,18 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(_ZL12PrintResultsP8_IO_FILEyyy)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $fp, 0
-	vrepli.d	$vr1, 1
-	vinsgr2vr.d	$vr1, $s0, 1
-	vadd.d	$vr0, $vr0, $vr1
-	vld	$vr1, $fp, 16
-	vst	$vr0, $fp, 0
-	vinsgr2vr.d	$vr0, $s3, 0
-	vinsgr2vr.d	$vr0, $s1, 1
-	vadd.d	$vr0, $vr1, $vr0
-	vst	$vr0, $fp, 16
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, 24
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $fp, 0
+	ld.d	$a0, $fp, 8
+	add.d	$a1, $a1, $s1
+	ld.d	$a2, $fp, 16
+	st.d	$a1, $fp, 24
+	add.d	$a0, $a0, $s0
+	st.d	$a0, $fp, 8
+	add.d	$a0, $a2, $s3
+	st.d	$a0, $fp, 16
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
@@ -523,14 +525,12 @@ _Z12LzmaBenchConP8_IO_FILEjjj:          # @_Z12LzmaBenchConP8_IO_FILEjjj
 	ld.d	$a0, $sp, 24
 	beqz	$a0, .LBB3_20
 # %bb.19:
-	ld.d	$a1, $sp, 32
-	ld.d	$a2, $sp, 40
-	div.du	$a1, $a1, $a0
-	ld.d	$a3, $sp, 48
-	st.d	$a1, $sp, 32
-	div.du	$a1, $a2, $a0
-	st.d	$a1, $sp, 40
-	div.du	$a0, $a3, $a0
+	vld	$vr0, $sp, 32
+	ld.d	$a1, $sp, 48
+	vreplgr2vr.d	$vr1, $a0
+	vdiv.du	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 32
+	div.du	$a0, $a1, $a0
 	st.d	$a0, $sp, 48
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 24
@@ -538,14 +538,12 @@ _Z12LzmaBenchConP8_IO_FILEjjj:          # @_Z12LzmaBenchConP8_IO_FILEjjj
 	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB3_22
 # %bb.21:
-	ld.d	$a1, $sp, 64
-	ld.d	$a2, $sp, 72
-	div.du	$a1, $a1, $a0
-	ld.d	$a3, $sp, 80
-	st.d	$a1, $sp, 64
-	div.du	$a1, $a2, $a0
-	st.d	$a1, $sp, 72
-	div.du	$a0, $a3, $a0
+	vld	$vr0, $sp, 64
+	ld.d	$a1, $sp, 80
+	vreplgr2vr.d	$vr1, $a0
+	vdiv.du	$vr0, $vr0, $vr1
+	vst	$vr0, $sp, 64
+	div.du	$a0, $a1, $a0
 	st.d	$a0, $sp, 80
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 56

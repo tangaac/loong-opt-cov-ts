@@ -1,243 +1,160 @@
 	.file	"mode-dependent-address.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function f883b
-.LCPI0_0:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI0_1:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
-	.globl	f883b
+	.globl	f883b                           # -- Begin function f883b
 	.p2align	5
 	.type	f883b,@function
 f883b:                                  # @f883b
 # %bb.0:                                # %vector.ph
-	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
-	vld	$vr1, $a4, %pc_lo12(.LCPI0_1)
 	move	$a4, $zero
-	vrepli.w	$vr2, 32
-	ori	$a5, $zero, 96
+	addi.d	$a1, $a1, 2
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 8
+	ori	$a5, $zero, 1
+	ori	$a6, $zero, 96
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a1, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	vmini.h	$vr3, $vr3, 1
-	ld.d	$a6, $a2, 0
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vinsgr2vr.d	$vr4, $a6, 0
-	vld	$vr5, $a3, 0
-	vsra.w	$vr3, $vr3, $vr4
-	vadd.w	$vr3, $vr3, $vr2
-	vsrli.w	$vr3, $vr3, 7
-	vshuf.b	$vr4, $vr0, $vr5, $vr0
-	vshuf.b	$vr3, $vr0, $vr3, $vr1
-	vori.b	$vr3, $vr3, 251
-	vand.v	$vr3, $vr3, $vr4
-	add.d	$a6, $a0, $a4
-	vstelm.h	$vr3, $a6, 0, 0
+	ld.h	$a7, $a1, -2
+	ld.h	$t0, $a1, 0
+	slti	$t1, $a7, 1
+	masknez	$t2, $a5, $t1
+	maskeqz	$a7, $a7, $t1
+	or	$a7, $a7, $t2
+	slti	$t1, $t0, 1
+	maskeqz	$t0, $t0, $t1
+	ld.wu	$t2, $a2, -4
+	ld.wu	$t3, $a2, 0
+	masknez	$t1, $a5, $t1
+	or	$t0, $t0, $t1
+	sra.w	$a7, $a7, $t2
+	sra.w	$t0, $t0, $t3
+	addi.d	$a7, $a7, 32
+	addi.d	$t0, $t0, 32
+	srli.d	$a7, $a7, 7
+	srli.d	$t0, $t0, 7
+	ld.d	$t1, $a3, -8
+	ld.d	$t2, $a3, 0
+	ori	$a7, $a7, 251
+	ori	$t0, $t0, 251
+	and	$a7, $t1, $a7
+	and	$t0, $t2, $t0
+	add.d	$t1, $a0, $a4
+	stx.b	$a7, $a0, $a4
+	st.b	$t0, $t1, 1
 	addi.d	$a4, $a4, 2
-	addi.d	$a3, $a3, 16
-	addi.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 4
-	bne	$a4, $a5, .LBB0_1
+	addi.d	$a2, $a2, 8
+	addi.d	$a3, $a3, 16
+	bne	$a4, $a6, .LBB0_1
 # %bb.2:                                # %middle.block
 	ret
 .Lfunc_end0:
 	.size	f883b, .Lfunc_end0-f883b
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function main
-.LCPI1_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-.LCPI1_1:
-	.byte	0                               # 0x0
-	.byte	8                               # 0x8
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI1_2:
-	.byte	0                               # 0x0
-	.byte	4                               # 0x4
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.text
-	.globl	main
+	.globl	main                            # -- Begin function main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %vector.ph
-	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
-	pcalau12i	$a0, %pc_hi20(arg4+2)
-	addi.d	$a3, $a0, %pc_lo12(arg4+2)
-	pcalau12i	$a0, %pc_hi20(arg3)
-	addi.d	$a0, $a0, %pc_lo12(arg3)
-	addi.d	$a4, $a0, 16
-	pcalau12i	$a1, %pc_hi20(arg2)
-	addi.d	$a1, $a1, %pc_lo12(arg2)
-	addi.d	$a5, $a1, 8
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
-	vreplgr2vr.d	$vr1, $a2
-	vldi	$vr2, -3583
-	vrepli.h	$vr3, 256
-	ori	$a6, $zero, 4
-	pcalau12i	$a2, %pc_hi20(arg1)
-	addi.d	$a2, $a2, %pc_lo12(arg1)
-	ori	$a7, $zero, 196
+	pcalau12i	$a0, %pc_hi20(arg1)
+	addi.d	$a0, $a0, %pc_lo12(arg1)
+	addi.d	$a1, $a0, 2
+	pcalau12i	$a2, %pc_hi20(arg3)
+	addi.d	$a3, $a2, %pc_lo12(arg3)
+	addi.d	$a4, $a3, 8
+	pcalau12i	$a2, %pc_hi20(arg2)
+	addi.d	$a2, $a2, %pc_lo12(arg2)
+	addi.d	$a5, $a2, 4
+	pcalau12i	$a6, %pc_hi20(arg4)
+	addi.d	$a6, $a6, %pc_lo12(arg4)
+	move	$a7, $zero
+	move	$t0, $zero
+	ori	$t1, $zero, 96
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.du	$vr4, $vr0, 2
-	vaddi.wu	$vr5, $vr1, 2
-	vaddi.bu	$vr6, $vr3, 2
-	vaddi.hu	$vr7, $vr2, 2
-	vstelm.h	$vr3, $a3, -2, 0
-	vstelm.h	$vr6, $a3, 0, 0
-	add.d	$t0, $a2, $a6
-	vstelm.w	$vr2, $t0, -4, 0
-	vstelm.w	$vr7, $t0, 0, 0
-	vpackev.d	$vr5, $vr5, $vr1
-	vst	$vr5, $a5, -8
-	vst	$vr0, $a4, -16
-	vst	$vr4, $a4, 0
-	vaddi.du	$vr0, $vr0, 4
-	vaddi.wu	$vr1, $vr1, 4
-	vaddi.bu	$vr3, $vr3, 4
-	vaddi.hu	$vr2, $vr2, 4
-	addi.d	$a6, $a6, 8
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 16
-	bne	$a6, $a7, .LBB1_1
+	addi.d	$t2, $t0, 1
+	addi.d	$t3, $a7, 1
+	ori	$t4, $t0, 1
+	add.d	$t5, $a6, $t0
+	stx.b	$t0, $a6, $t0
+	st.b	$t4, $t5, 1
+	st.h	$t0, $a1, -2
+	st.h	$t4, $a1, 0
+	st.w	$a7, $a5, -4
+	st.w	$t3, $a5, 0
+	st.d	$t0, $a4, -8
+	st.d	$t2, $a4, 0
+	addi.d	$t0, $t0, 2
+	addi.d	$a7, $a7, 2
+	addi.d	$a1, $a1, 4
+	addi.d	$a4, $a4, 16
+	addi.d	$a5, $a5, 8
+	bne	$t0, $t1, .LBB1_1
 # %bb.2:                                # %middle.block
-	pcalau12i	$a3, %pc_hi20(.LCPI1_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a3, %pc_hi20(.LCPI1_2)
-	vld	$vr1, $a3, %pc_lo12(.LCPI1_2)
-	vrepli.w	$vr2, 32
-	pcalau12i	$a3, %pc_hi20(result)
-	addi.d	$a3, $a3, %pc_lo12(result)
-	move	$a4, $zero
-	ori	$a5, $zero, 96
-	.p2align	4, , 16
-.LBB1_3:                                # %vector.body26
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a2, 0
-	vinsgr2vr.w	$vr3, $a6, 0
-	vmini.h	$vr3, $vr3, 1
-	ld.d	$a6, $a1, 0
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vinsgr2vr.d	$vr4, $a6, 0
-	vld	$vr5, $a0, 0
-	vsra.w	$vr3, $vr3, $vr4
-	vadd.w	$vr3, $vr3, $vr2
-	vsrli.w	$vr3, $vr3, 7
-	vshuf.b	$vr4, $vr0, $vr5, $vr0
-	vshuf.b	$vr3, $vr0, $vr3, $vr1
-	vori.b	$vr3, $vr3, 251
-	vand.v	$vr3, $vr3, $vr4
-	add.d	$a6, $a3, $a4
-	vstelm.h	$vr3, $a6, 0, 0
-	addi.d	$a4, $a4, 2
-	addi.d	$a0, $a0, 16
-	addi.d	$a1, $a1, 8
+	addi.d	$a1, $a0, 2
 	addi.d	$a2, $a2, 4
-	bne	$a4, $a5, .LBB1_3
-# %bb.4:                                # %vector.body33.preheader
-	pcalau12i	$a0, %pc_hi20(.L__const.main.correct)
-	addi.d	$a0, $a0, %pc_lo12(.L__const.main.correct)
+	addi.d	$a3, $a3, 8
+	ori	$a4, $zero, 1
+	pcalau12i	$a0, %pc_hi20(result)
+	addi.d	$a0, $a0, %pc_lo12(result)
 	move	$a5, $zero
-	vrepli.b	$vr0, -1
-	ori	$a1, $zero, 92
+	ori	$a6, $zero, 96
 	.p2align	4, , 16
-.LBB1_5:                                # %vector.body33
+.LBB1_3:                                # %vector.body17
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a4, $a3, $a5
-	vinsgr2vr.w	$vr1, $a4, 0
-	vilvl.b	$vr1, $vr1, $vr1
-	vld	$vr2, $a0, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 24
-	vsrai.w	$vr1, $vr1, 24
-	vseq.w	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr0
-	vmskltz.w	$vr1, $vr1
-	vpickve2gr.hu	$a4, $vr1, 0
-	bnez	$a4, .LBB1_7
-# %bb.6:                                # %vector.body33
+	ld.h	$a7, $a1, -2
+	ld.h	$t0, $a1, 0
+	slti	$t1, $a7, 1
+	masknez	$t2, $a4, $t1
+	maskeqz	$a7, $a7, $t1
+	or	$a7, $a7, $t2
+	slti	$t1, $t0, 1
+	maskeqz	$t0, $t0, $t1
+	ld.wu	$t2, $a2, -4
+	ld.wu	$t3, $a2, 0
+	masknez	$t1, $a4, $t1
+	or	$t0, $t0, $t1
+	sra.w	$a7, $a7, $t2
+	sra.w	$t0, $t0, $t3
+	addi.d	$a7, $a7, 32
+	addi.d	$t0, $t0, 32
+	srli.d	$a7, $a7, 7
+	srli.d	$t0, $t0, 7
+	ld.d	$t1, $a3, -8
+	ld.d	$t2, $a3, 0
+	ori	$a7, $a7, 251
+	ori	$t0, $t0, 251
+	and	$a7, $t1, $a7
+	and	$t0, $t2, $t0
+	add.d	$t1, $a0, $a5
+	stx.b	$a7, $a0, $a5
+	st.b	$t0, $t1, 1
+	addi.d	$a5, $a5, 2
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, 8
+	addi.d	$a3, $a3, 16
+	bne	$a5, $a6, .LBB1_3
+# %bb.4:                                # %f883b.exit.preheader.preheader
+	pcalau12i	$a1, %pc_hi20(.L__const.main.correct)
+	addi.d	$a1, $a1, %pc_lo12(.L__const.main.correct)
+	move	$a2, $zero
+	ori	$a3, $zero, 96
+	.p2align	4, , 16
+.LBB1_5:                                # %f883b.exit.preheader
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.b	$a4, $a0, $a2
+	ld.w	$a5, $a1, 0
+	bne	$a5, $a4, .LBB1_8
+# %bb.6:                                # %f883b.exit
                                         #   in Loop: Header=BB1_5 Depth=1
-	move	$a2, $a5
-	addi.d	$a5, $a5, 4
-	addi.d	$a0, $a0, 16
-	bne	$a2, $a1, .LBB1_5
-.LBB1_7:                                # %middle.split
-	andi	$a0, $a4, 15
-	bnez	$a0, .LBB1_9
-# %bb.8:                                # %middle.block38
+	addi.d	$a2, $a2, 1
+	addi.d	$a1, $a1, 4
+	bne	$a2, $a3, .LBB1_5
+# %bb.7:
 	move	$a0, $zero
 	ret
-.LBB1_9:                                # %vector.early.exit
+.LBB1_8:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:

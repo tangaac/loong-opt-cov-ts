@@ -149,11 +149,11 @@ ia_lex:                                 # @ia_lex
                                         #       Child Loop BB0_17 Depth 3
                                         #       Child Loop BB0_19 Depth 3
                                         #         Child Loop BB0_20 Depth 4
-                                        #           Child Loop BB0_35 Depth 5
-                                        #           Child Loop BB0_39 Depth 5
-                                        #           Child Loop BB0_42 Depth 5
-                                        #           Child Loop BB0_48 Depth 5
-                                        #           Child Loop BB0_53 Depth 5
+                                        #           Child Loop BB0_63 Depth 5
+                                        #           Child Loop BB0_33 Depth 5
+                                        #           Child Loop BB0_38 Depth 5
+                                        #           Child Loop BB0_44 Depth 5
+                                        #           Child Loop BB0_49 Depth 5
                                         #         Child Loop BB0_71 Depth 4
                                         #         Child Loop BB0_78 Depth 4
                                         #       Child Loop BB0_91 Depth 3
@@ -167,11 +167,11 @@ ia_lex:                                 # @ia_lex
                                         #       Child Loop BB0_17 Depth 3
                                         #       Child Loop BB0_19 Depth 3
                                         #         Child Loop BB0_20 Depth 4
-                                        #           Child Loop BB0_35 Depth 5
-                                        #           Child Loop BB0_39 Depth 5
-                                        #           Child Loop BB0_42 Depth 5
-                                        #           Child Loop BB0_48 Depth 5
-                                        #           Child Loop BB0_53 Depth 5
+                                        #           Child Loop BB0_63 Depth 5
+                                        #           Child Loop BB0_33 Depth 5
+                                        #           Child Loop BB0_38 Depth 5
+                                        #           Child Loop BB0_44 Depth 5
+                                        #           Child Loop BB0_49 Depth 5
                                         #         Child Loop BB0_71 Depth 4
                                         #         Child Loop BB0_78 Depth 4
                                         #       Child Loop BB0_91 Depth 3
@@ -197,11 +197,11 @@ ia_lex:                                 # @ia_lex
                                         #     Parent Loop BB0_16 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_20 Depth 4
-                                        #           Child Loop BB0_35 Depth 5
-                                        #           Child Loop BB0_39 Depth 5
-                                        #           Child Loop BB0_42 Depth 5
-                                        #           Child Loop BB0_48 Depth 5
-                                        #           Child Loop BB0_53 Depth 5
+                                        #           Child Loop BB0_63 Depth 5
+                                        #           Child Loop BB0_33 Depth 5
+                                        #           Child Loop BB0_38 Depth 5
+                                        #           Child Loop BB0_44 Depth 5
+                                        #           Child Loop BB0_49 Depth 5
                                         #         Child Loop BB0_71 Depth 4
                                         #         Child Loop BB0_78 Depth 4
 	st.d	$a0, $fp, %pc_lo12(ia_text)
@@ -220,11 +220,11 @@ ia_lex:                                 # @ia_lex
                                         #     Parent Loop BB0_16 Depth=2
                                         #       Parent Loop BB0_19 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB0_35 Depth 5
-                                        #           Child Loop BB0_39 Depth 5
-                                        #           Child Loop BB0_42 Depth 5
-                                        #           Child Loop BB0_48 Depth 5
-                                        #           Child Loop BB0_53 Depth 5
+                                        #           Child Loop BB0_63 Depth 5
+                                        #           Child Loop BB0_33 Depth 5
+                                        #           Child Loop BB0_38 Depth 5
+                                        #           Child Loop BB0_44 Depth 5
+                                        #           Child Loop BB0_49 Depth 5
 	addi.d	$a1, $a2, -1
 	st.d	$a0, $s4, %pc_lo12(yy_c_buf_p)
 	bltu	$s1, $a1, .LBB0_117
@@ -272,104 +272,74 @@ ia_lex:                                 # @ia_lex
 	ld.d	$a0, $fp, %pc_lo12(ia_text)
 	ld.w	$a4, $s1, 44
 	sub.d	$s7, $s0, $a0
-	beqz	$a4, .LBB0_32
+	beqz	$a4, .LBB0_35
 # %bb.27:                               #   in Loop: Header=BB0_20 Depth=4
 	st.d	$a5, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$a3, $s7, 0
 	addi.w	$s6, $s7, -1
 	ori	$a4, $zero, 2
-	blt	$a3, $a4, .LBB0_44
+	blt	$a3, $a4, .LBB0_40
 # %bb.28:                               # %iter.check
                                         #   in Loop: Header=BB0_20 Depth=4
 	move	$a5, $zero
-	ori	$a2, $zero, 9
-	bltu	$a3, $a2, .LBB0_33
+	ori	$a2, $zero, 17
+	bltu	$a3, $a2, .LBB0_36
 # %bb.29:                               # %iter.check
                                         #   in Loop: Header=BB0_20 Depth=4
 	sub.d	$a2, $a1, $a0
 	ori	$a4, $zero, 32
-	bltu	$a2, $a4, .LBB0_33
+	bltu	$a2, $a4, .LBB0_36
 # %bb.30:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB0_20 Depth=4
 	bstrpick.d	$a2, $s6, 31, 0
 	ori	$a4, $zero, 33
-	bgeu	$a3, $a4, .LBB0_34
+	bgeu	$a3, $a4, .LBB0_62
 # %bb.31:                               #   in Loop: Header=BB0_20 Depth=4
 	move	$a6, $zero
-	b	.LBB0_38
+.LBB0_32:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB0_20 Depth=4
+	bstrpick.d	$a4, $a2, 31, 4
+	slli.d	$a5, $a4, 4
+	alsl.d	$a3, $a4, $a1, 4
+	alsl.d	$a4, $a4, $a0, 4
+	sub.d	$a7, $a6, $a5
+	add.d	$t0, $a0, $a6
+	add.d	$a1, $a1, $a6
 	.p2align	4, , 16
-.LBB0_32:                               #   in Loop: Header=BB0_20 Depth=4
+.LBB0_33:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB0_15 Depth=1
+                                        #     Parent Loop BB0_16 Depth=2
+                                        #       Parent Loop BB0_19 Depth=3
+                                        #         Parent Loop BB0_20 Depth=4
+                                        # =>        This Inner Loop Header: Depth=5
+	vld	$vr0, $t0, 0
+	vst	$vr0, $a1, 0
+	addi.d	$a7, $a7, 16
+	addi.d	$t0, $t0, 16
+	addi.d	$a1, $a1, 16
+	bnez	$a7, .LBB0_33
+# %bb.34:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB0_20 Depth=4
+	bne	$a5, $a2, .LBB0_37
+	b	.LBB0_39
+	.p2align	4, , 16
+.LBB0_35:                               #   in Loop: Header=BB0_20 Depth=4
 	ori	$a2, $zero, 21
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
 	ori	$s1, $zero, 20
 	ori	$a4, $zero, 1
 	beq	$s7, $a4, .LBB0_20
 	b	.LBB0_74
-.LBB0_33:                               #   in Loop: Header=BB0_20 Depth=4
+.LBB0_36:                               #   in Loop: Header=BB0_20 Depth=4
 	move	$a3, $a1
 	move	$a4, $a0
-	b	.LBB0_41
-.LBB0_34:                               # %vector.ph
-                                        #   in Loop: Header=BB0_20 Depth=4
-	andi	$a3, $a2, 24
-	bstrpick.d	$a4, $a2, 31, 5
-	slli.d	$a6, $a4, 5
-	addi.d	$a4, $a0, 16
-	addi.d	$a5, $a1, 16
-	move	$a7, $a6
-	.p2align	4, , 16
-.LBB0_35:                               # %vector.body
-                                        #   Parent Loop BB0_15 Depth=1
-                                        #     Parent Loop BB0_16 Depth=2
-                                        #       Parent Loop BB0_19 Depth=3
-                                        #         Parent Loop BB0_20 Depth=4
-                                        # =>        This Inner Loop Header: Depth=5
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
-	vst	$vr0, $a5, -16
-	vst	$vr1, $a5, 0
-	addi.d	$a7, $a7, -32
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	bnez	$a7, .LBB0_35
-# %bb.36:                               # %middle.block
-                                        #   in Loop: Header=BB0_20 Depth=4
-	beq	$a6, $a2, .LBB0_43
-# %bb.37:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB0_20 Depth=4
-	beqz	$a3, .LBB0_66
-.LBB0_38:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB0_20 Depth=4
-	bstrpick.d	$a4, $a2, 31, 3
-	slli.d	$a5, $a4, 3
-	alsl.d	$a3, $a4, $a1, 3
-	alsl.d	$a4, $a4, $a0, 3
-	sub.d	$a7, $a6, $a5
-	add.d	$t0, $a0, $a6
-	add.d	$a1, $a1, $a6
-	.p2align	4, , 16
-.LBB0_39:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB0_15 Depth=1
-                                        #     Parent Loop BB0_16 Depth=2
-                                        #       Parent Loop BB0_19 Depth=3
-                                        #         Parent Loop BB0_20 Depth=4
-                                        # =>        This Inner Loop Header: Depth=5
-	ld.d	$a6, $t0, 0
-	st.d	$a6, $a1, 0
-	addi.d	$a7, $a7, 8
-	addi.d	$t0, $t0, 8
-	addi.d	$a1, $a1, 8
-	bnez	$a7, .LBB0_39
-# %bb.40:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB0_20 Depth=4
-	beq	$a5, $a2, .LBB0_43
-.LBB0_41:                               # %.lr.ph.i53.preheader
+.LBB0_37:                               # %.lr.ph.i53.preheader
                                         #   in Loop: Header=BB0_20 Depth=4
 	add.d	$a0, $a5, $a0
 	sub.d	$a0, $a0, $s0
 	addi.w	$a0, $a0, 1
 	.p2align	4, , 16
-.LBB0_42:                               # %.lr.ph.i53
+.LBB0_38:                               # %.lr.ph.i53
                                         #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
                                         #       Parent Loop BB0_19 Depth=3
@@ -383,39 +353,39 @@ ia_lex:                                 # @ia_lex
 	slli.d	$a5, $a0, 31
 	st.b	$a1, $a3, 0
 	move	$a3, $a2
-	bgez	$a5, .LBB0_42
-.LBB0_43:                               # %._crit_edge.i.loopexit
+	bgez	$a5, .LBB0_38
+.LBB0_39:                               # %._crit_edge.i.loopexit
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.w	$a2, $s1, 48
-.LBB0_44:                               # %._crit_edge.i
+.LBB0_40:                               # %._crit_edge.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ori	$a0, $zero, 2
-	bne	$a2, $a0, .LBB0_46
-# %bb.45:                               # %.thread64.i
+	bne	$a2, $a0, .LBB0_42
+# %bb.41:                               # %.thread64.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	st.w	$zero, $a0, %pc_lo12(yy_n_chars)
 	st.w	$zero, $s1, 28
-	beqz	$s6, .LBB0_65
+	beqz	$s6, .LBB0_61
 	b	.LBB0_73
-.LBB0_46:                               # %.preheader66.i
+.LBB0_42:                               # %.preheader66.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a1, $s1, 24
 	sub.w	$a2, $a1, $s7
-	bgtz	$a2, .LBB0_51
-# %bb.47:                               # %.lr.ph76.i
+	bgtz	$a2, .LBB0_47
+# %bb.43:                               # %.lr.ph76.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$fp, $s1, 8
 	.p2align	4, , 16
-.LBB0_48:                               #   Parent Loop BB0_15 Depth=1
+.LBB0_44:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
                                         #       Parent Loop BB0_19 Depth=3
                                         #         Parent Loop BB0_20 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.w	$a0, $s1, 32
 	beqz	$a0, .LBB0_115
-# %bb.49:                               #   in Loop: Header=BB0_48 Depth=5
+# %bb.45:                               #   in Loop: Header=BB0_44 Depth=5
 	slli.d	$a0, $a1, 1
 	addi.w	$a2, $a0, 0
 	slti	$a2, $a2, 1
@@ -432,15 +402,15 @@ ia_lex:                                 # @ia_lex
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 8
 	beqz	$a0, .LBB0_116
-# %bb.50:                               #   in Loop: Header=BB0_48 Depth=5
+# %bb.46:                               #   in Loop: Header=BB0_44 Depth=5
 	ld.w	$a1, $s1, 24
 	sub.w	$a2, $s0, $fp
 	add.d	$s0, $a0, $a2
 	sub.w	$a2, $a1, $s7
 	st.d	$s0, $s4, %pc_lo12(yy_c_buf_p)
 	move	$fp, $a0
-	blez	$a2, .LBB0_48
-.LBB0_51:                               # %._crit_edge77.i
+	blez	$a2, .LBB0_44
+.LBB0_47:                               # %._crit_edge77.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	srli.d	$a0, $a2, 13
 	ld.w	$a1, $s1, 36
@@ -449,14 +419,14 @@ ia_lex:                                 # @ia_lex
 	masknez	$a3, $a3, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$s0, $a0, $a3
-	beqz	$a1, .LBB0_59
-# %bb.52:                               # %.preheader.i
+	beqz	$a1, .LBB0_55
+# %bb.48:                               # %.preheader.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	move	$fp, $zero
 	bstrpick.d	$s1, $s0, 31, 0
 	move	$s7, $s6
 	.p2align	4, , 16
-.LBB0_53:                               #   Parent Loop BB0_15 Depth=1
+.LBB0_49:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
                                         #       Parent Loop BB0_19 Depth=3
                                         #         Parent Loop BB0_20 Depth=4
@@ -465,11 +435,11 @@ ia_lex:                                 # @ia_lex
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
-	beq	$a0, $a1, .LBB0_57
-# %bb.54:                               #   in Loop: Header=BB0_53 Depth=5
+	beq	$a0, $a1, .LBB0_53
+# %bb.50:                               #   in Loop: Header=BB0_49 Depth=5
 	ori	$a2, $zero, 10
-	beq	$a0, $a2, .LBB0_57
-# %bb.55:                               #   in Loop: Header=BB0_53 Depth=5
+	beq	$a0, $a2, .LBB0_53
+# %bb.51:                               #   in Loop: Header=BB0_49 Depth=5
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(yy_current_buffer)
 	ld.d	$a2, $a2, 8
@@ -477,18 +447,18 @@ ia_lex:                                 # @ia_lex
 	addi.w	$fp, $fp, 1
 	addi.d	$s1, $s1, -1
 	addi.d	$s7, $s7, 1
-	bnez	$s1, .LBB0_53
-# %bb.56:                               #   in Loop: Header=BB0_20 Depth=4
+	bnez	$s1, .LBB0_49
+# %bb.52:                               #   in Loop: Header=BB0_20 Depth=4
 	move	$fp, $s0
-.LBB0_57:                               # %.critedge.i
+.LBB0_53:                               # %.critedge.i
                                         #   in Loop: Header=BB0_20 Depth=4
-	beq	$a0, $a1, .LBB0_62
-# %bb.58:                               # %.critedge.i
+	beq	$a0, $a1, .LBB0_58
+# %bb.54:                               # %.critedge.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ori	$a1, $zero, 10
-	bne	$a0, $a1, .LBB0_63
+	bne	$a0, $a1, .LBB0_59
 	b	.LBB0_85
-.LBB0_59:                               #   in Loop: Header=BB0_20 Depth=4
+.LBB0_55:                               #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $s1, 8
 	move	$s1, $s8
 	ld.d	$a3, $s8, %pc_lo12(ia_in)
@@ -502,25 +472,25 @@ ia_lex:                                 # @ia_lex
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	st.w	$fp, $a1, %pc_lo12(yy_n_chars)
 	bnez	$a0, .LBB0_84
-# %bb.60:                               #   in Loop: Header=BB0_20 Depth=4
+# %bb.56:                               #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $s1, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_120
-# %bb.61:                               # %thread-pre-split.thread.i
+# %bb.57:                               # %thread-pre-split.thread.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	st.w	$zero, $s1, 28
-	beqz	$s6, .LBB0_65
+	beqz	$s6, .LBB0_61
 	b	.LBB0_73
-.LBB0_62:                               #   in Loop: Header=BB0_20 Depth=4
+.LBB0_58:                               #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $s8, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_120
-.LBB0_63:                               # %thread-pre-split.i
+.LBB0_59:                               # %thread-pre-split.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
@@ -528,10 +498,10 @@ ia_lex:                                 # @ia_lex
 	st.w	$fp, $a0, %pc_lo12(yy_n_chars)
 	st.w	$fp, $s1, 28
 	bnez	$fp, .LBB0_83
-# %bb.64:                               #   in Loop: Header=BB0_20 Depth=4
+# %bb.60:                               #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	bnez	$s6, .LBB0_73
-.LBB0_65:                               # %yy_get_next_buffer.exit.thread79
+.LBB0_61:                               # %yy_get_next_buffer.exit.thread79
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $s8, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(ia_restart)
@@ -551,11 +521,40 @@ ia_lex:                                 # @ia_lex
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
 	ori	$s1, $zero, 20
 	b	.LBB0_20
-.LBB0_66:                               #   in Loop: Header=BB0_20 Depth=4
+.LBB0_62:                               # %vector.ph
+                                        #   in Loop: Header=BB0_20 Depth=4
+	andi	$a3, $a2, 16
+	bstrpick.d	$a4, $a2, 31, 5
+	slli.d	$a6, $a4, 5
+	addi.d	$a4, $a0, 16
+	addi.d	$a5, $a1, 16
+	move	$a7, $a6
+	.p2align	4, , 16
+.LBB0_63:                               # %vector.body
+                                        #   Parent Loop BB0_15 Depth=1
+                                        #     Parent Loop BB0_16 Depth=2
+                                        #       Parent Loop BB0_19 Depth=3
+                                        #         Parent Loop BB0_20 Depth=4
+                                        # =>        This Inner Loop Header: Depth=5
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a5, -16
+	vst	$vr1, $a5, 0
+	addi.d	$a7, $a7, -32
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a7, .LBB0_63
+# %bb.64:                               # %middle.block
+                                        #   in Loop: Header=BB0_20 Depth=4
+	beq	$a6, $a2, .LBB0_39
+# %bb.65:                               # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB0_20 Depth=4
+	bnez	$a3, .LBB0_32
+# %bb.66:                               #   in Loop: Header=BB0_20 Depth=4
 	add.d	$a3, $a1, $a6
 	add.d	$a4, $a0, $a6
 	move	$a5, $a6
-	b	.LBB0_41
+	b	.LBB0_37
 .LBB0_67:                               #   in Loop: Header=BB0_19 Depth=3
 	sub.w	$a3, $s2, $a5
 	ld.d	$a0, $fp, %pc_lo12(ia_text)

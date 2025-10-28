@@ -4125,37 +4125,32 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 .LBB26_34:                              # %.preheader218
 	blez	$a0, .LBB26_37
 # %bb.35:                               # %.lr.ph236
-	ld.d	$a2, $s0, 224
+	ld.d	$a1, $s0, 224
 	move	$a0, $zero
-	add.d	$a1, $s3, $fp
-	addi.d	$a1, $a1, 264
-	addi.d	$a2, $a2, 8
-	vrepli.b	$vr0, 0
+	addi.d	$a1, $a1, 8
 	.p2align	4, , 16
 .LBB26_36:                              # =>This Inner Loop Header: Depth=1
-	ld.h	$a3, $a2, -8
-	st.h	$a3, $a1, -16
-	ld.h	$a3, $a2, -6
-	st.h	$a3, $a1, -14
-	ld.h	$a3, $a2, -4
-	st.h	$a3, $a1, -12
-	ld.h	$a3, $a2, -2
-	st.h	$a3, $a1, -10
-	ld.h	$a3, $a2, 0
-	st.h	$a3, $a1, -8
-	ld.h	$a3, $a2, 2
-	ld.w	$a4, $a2, 8
-	st.h	$a3, $a1, -6
-	ld.w	$a3, $a2, 4
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $a4, 0
-	vst	$vr1, $a1, 0
-	ld.w	$a4, $s0, 240
-	st.w	$a3, $a1, -4
+	ld.h	$a2, $a1, -8
+	st.h	$a2, $s2, 0
+	ld.h	$a2, $a1, -6
+	st.h	$a2, $s2, 2
+	ld.h	$a2, $a1, -4
+	st.h	$a2, $s2, 4
+	ld.h	$a2, $a1, -2
+	st.h	$a2, $s2, 6
+	ld.h	$a2, $a1, 0
+	st.h	$a2, $s2, 8
+	ld.h	$a2, $a1, 2
+	st.h	$a2, $s2, 10
+	ld.d	$a2, $a1, 4
+	st.d	$a2, $s2, 12
+	st.d	$zero, $s2, 20
+	st.w	$zero, $s2, 28
+	ld.w	$a2, $s0, 240
 	addi.d	$a0, $a0, 1
+	addi.d	$s2, $s2, 32
 	addi.d	$a1, $a1, 32
-	addi.d	$a2, $a2, 32
-	blt	$a0, $a4, .LBB26_36
+	blt	$a0, $a2, .LBB26_36
 .LBB26_37:                              # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE20initializeFromBufferEPvii.exit217
 	st.b	$zero, $fp, 232
 	st.d	$zero, $fp, 224

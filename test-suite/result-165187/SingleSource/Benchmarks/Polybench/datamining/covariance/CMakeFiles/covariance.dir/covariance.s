@@ -191,18 +191,12 @@ main:                                   # @main
 .LBB7_8:                                # %vector.body
                                         #   Parent Loop BB7_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vaddi.du	$vr4, $vr3, 2
-	vmul.d	$vr5, $vr3, $vr2
-	vmul.d	$vr4, $vr4, $vr2
-	vffint.d.lu	$vr5, $vr5
+	vmul.d	$vr4, $vr3, $vr2
 	vffint.d.lu	$vr4, $vr4
-	vfdiv.d	$vr5, $vr5, $vr1
 	vfdiv.d	$vr4, $vr4, $vr1
-	add.d	$a5, $a3, $a4
-	vstx	$vr5, $a3, $a4
-	vst	$vr4, $a5, 16
-	addi.d	$a4, $a4, 32
-	vaddi.du	$vr3, $vr3, 4
+	vstx	$vr4, $a3, $a4
+	addi.d	$a4, $a4, 16
+	vaddi.du	$vr3, $vr3, 2
 	bne	$a4, $a1, .LBB7_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB7_7 Depth=1

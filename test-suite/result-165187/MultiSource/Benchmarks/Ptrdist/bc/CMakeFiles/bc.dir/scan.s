@@ -1369,7 +1369,7 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	blez	$s4, .LBB5_7
 # %bb.2:                                # %iter.check
 	bstrpick.d	$a5, $s2, 30, 0
-	ori	$a6, $zero, 8
+	ori	$a6, $zero, 16
 	addi.d	$a2, $a3, -1
 	bltu	$a5, $a6, .LBB5_4
 # %bb.3:                                # %vector.memcheck
@@ -1489,19 +1489,39 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	addi.d	$sp, $sp, 80
 	ret
 .LBB5_21:                               # %vector.main.loop.iter.check
-	bgeu	$a5, $a6, .LBB5_23
+	bgeu	$a5, $a6, .LBB5_26
 # %bb.22:
 	move	$t0, $zero
-	b	.LBB5_27
-.LBB5_23:                               # %vector.ph
-	andi	$a6, $s2, 24
+.LBB5_23:                               # %vec.epilog.ph
+	bstrpick.d	$t1, $s2, 30, 4
+	slli.d	$a7, $t1, 4
+	alsl.d	$a6, $t1, $a4, 4
+	alsl.d	$a2, $t1, $a2, 4
+	sub.d	$t1, $t0, $a7
+	add.d	$t2, $t0, $a3
+	addi.d	$t2, $t2, -1
+	add.d	$a4, $a4, $t0
+	.p2align	4, , 16
+.LBB5_24:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $t2, 0
+	vst	$vr0, $a4, 0
+	addi.d	$t1, $t1, 16
+	addi.d	$t2, $t2, 16
+	addi.d	$a4, $a4, 16
+	bnez	$t1, .LBB5_24
+# %bb.25:                               # %vec.epilog.middle.block
+	bne	$a5, $a7, .LBB5_5
+	b	.LBB5_7
+.LBB5_26:                               # %vector.ph
+	andi	$a6, $s2, 16
 	bstrpick.d	$a7, $s2, 30, 5
 	slli.d	$t0, $a7, 5
 	addi.d	$a7, $a3, 15
 	addi.d	$t1, $a4, 16
 	move	$t2, $t0
 	.p2align	4, , 16
-.LBB5_24:                               # %vector.body
+.LBB5_27:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a7, -16
 	vld	$vr1, $a7, 0
@@ -1510,33 +1530,12 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	addi.d	$t2, $t2, -32
 	addi.d	$a7, $a7, 32
 	addi.d	$t1, $t1, 32
-	bnez	$t2, .LBB5_24
-# %bb.25:                               # %middle.block
+	bnez	$t2, .LBB5_27
+# %bb.28:                               # %middle.block
 	beq	$a5, $t0, .LBB5_7
-# %bb.26:                               # %vec.epilog.iter.check
-	beqz	$a6, .LBB5_30
-.LBB5_27:                               # %vec.epilog.ph
-	bstrpick.d	$t1, $s2, 30, 3
-	slli.d	$a7, $t1, 3
-	alsl.d	$a6, $t1, $a4, 3
-	alsl.d	$a2, $t1, $a2, 3
-	sub.d	$t1, $t0, $a7
-	add.d	$t2, $t0, $a3
-	addi.d	$t2, $t2, -1
-	add.d	$a4, $a4, $t0
-	.p2align	4, , 16
-.LBB5_28:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $t2, 0
-	st.d	$t0, $a4, 0
-	addi.d	$t1, $t1, 8
-	addi.d	$t2, $t2, 8
-	addi.d	$a4, $a4, 8
-	bnez	$t1, .LBB5_28
-# %bb.29:                               # %vec.epilog.middle.block
-	bne	$a5, $a7, .LBB5_5
-	b	.LBB5_7
-.LBB5_30:
+# %bb.29:                               # %vec.epilog.iter.check
+	bnez	$a6, .LBB5_23
+# %bb.30:
 	add.d	$a6, $a4, $t0
 	add.d	$a2, $a2, $t0
 	move	$a7, $t0

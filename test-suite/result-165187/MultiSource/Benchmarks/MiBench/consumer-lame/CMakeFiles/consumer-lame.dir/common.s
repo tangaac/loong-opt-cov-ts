@@ -1,18 +1,6 @@
 	.file	"common.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function decode_header
-.LCPI0_0:
-	.word	9                               # 0x9
-	.word	8                               # 0x8
-	.word	6                               # 0x6
-	.word	4                               # 0x4
-.LCPI0_1:
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	3                               # 0x3
-	.word	3                               # 0x3
 	.text
-	.globl	decode_header
+	.globl	decode_header                   # -- Begin function decode_header
 	.p2align	5
 	.type	decode_header,@function
 decode_header:                          # @decode_header
@@ -42,35 +30,33 @@ decode_header:                          # @decode_header
 	addi.w	$a5, $a5, 6
 	maskeqz	$a5, $a5, $a4
 	masknez	$a4, $a6, $a4
-	pcalau12i	$a6, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a6, %pc_lo12(.LCPI0_0)
 	or	$a4, $a5, $a4
-	bstrpick.d	$a5, $a1, 15, 12
-	vreplgr2vr.w	$vr1, $a1
-	vsrl.w	$vr1, $vr1, $vr0
-	pcalau12i	$a6, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a6, %pc_lo12(.LCPI0_1)
-	nor	$a6, $a1, $zero
-	bstrpick.d	$a6, $a6, 16, 16
+	bstrpick.d	$a6, $a1, 15, 12
+	nor	$a5, $a1, $zero
+	bstrpick.d	$a5, $a5, 16, 16
 	st.w	$a4, $a0, 36
-	st.w	$a6, $a0, 28
-	st.w	$a5, $a0, 32
-	vand.v	$vr0, $vr1, $vr0
-	vst	$vr0, $a0, 40
-	bstrpick.d	$a6, $a1, 3, 3
-	st.w	$a6, $a0, 56
-	bstrpick.d	$a6, $a1, 2, 2
-	st.w	$a6, $a0, 60
+	st.w	$a5, $a0, 28
+	st.w	$a6, $a0, 32
+	bstrpick.d	$a5, $a1, 9, 9
+	st.w	$a5, $a0, 40
+	bstrpick.d	$a7, $a1, 8, 8
+	st.w	$a7, $a0, 44
+	bstrpick.d	$a7, $a1, 7, 6
+	st.w	$a7, $a0, 48
+	bstrpick.d	$t0, $a1, 5, 4
+	st.w	$t0, $a0, 52
+	bstrpick.d	$t0, $a1, 3, 3
+	st.w	$t0, $a0, 56
+	bstrpick.d	$t0, $a1, 2, 2
+	st.w	$t0, $a0, 60
 	andi	$a1, $a1, 3
 	st.w	$a1, $a0, 64
-	vpickve2gr.w	$a1, $vr1, 2
-	andi	$a1, $a1, 3
-	addi.d	$a1, $a1, -3
+	addi.d	$a1, $a7, -3
 	sltui	$a1, $a1, 1
-	ori	$a6, $zero, 2
-	sub.d	$a1, $a6, $a1
+	ori	$a7, $zero, 2
+	sub.d	$a1, $a7, $a1
 	st.w	$a1, $a0, 0
-	beqz	$a5, .LBB0_8
+	beqz	$a6, .LBB0_8
 # %bb.2:
 	ori	$fp, $zero, 1
 	bne	$a3, $fp, .LBB0_5
@@ -80,7 +66,7 @@ decode_header:                          # @decode_header
 	pcalau12i	$a3, %pc_hi20(tabsel_123)
 	addi.d	$a3, $a3, %pc_lo12(tabsel_123)
 	add.d	$a1, $a3, $a1
-	alsl.d	$a1, $a5, $a1, 2
+	alsl.d	$a1, $a6, $a1, 2
 	ld.w	$a1, $a1, 128
 	lu12i.w	$a3, 35
 	ori	$a3, $a3, 640
@@ -91,8 +77,7 @@ decode_header:                          # @decode_header
 	ldx.d	$a3, $a4, $a3
 	sll.d	$a2, $a3, $a2
 	div.d	$a1, $a1, $a2
-	vpickve2gr.w	$a2, $vr0, 0
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a5
 	addi.d	$a1, $a1, -4
 	st.w	$a1, $a0, 68
 .LBB0_4:

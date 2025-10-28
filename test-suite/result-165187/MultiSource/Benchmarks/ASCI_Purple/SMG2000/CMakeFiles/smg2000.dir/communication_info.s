@@ -299,23 +299,30 @@ hypre_CreateCommInfoFromStencil:        # @hypre_CreateCommInfoFromStencil
 	sub.w	$a0, $a0, $a1
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
+	ld.w	$a3, $s8, 16
+	ld.w	$a4, $s8, 4
 	maskeqz	$a0, $a0, $a2
-	ld.d	$a3, $s8, 16
-	ld.d	$a4, $s8, 4
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a4, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
+	masknez	$a2, $a1, $a2
+	or	$a0, $a0, $a2
+	sub.w	$a2, $a3, $a4
+	slt	$a3, $a1, $a2
+	ld.w	$a4, $s8, 20
+	ld.w	$a5, $s8, 8
+	maskeqz	$a2, $a2, $a3
+	masknez	$a3, $a1, $a3
+	or	$a2, $a2, $a3
+	sub.w	$a3, $a4, $a5
+	slt	$a4, $a1, $a3
+	maskeqz	$a3, $a3, $a4
+	masknez	$a1, $a1, $a4
+	or	$a1, $a3, $a1
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
+	addi.d	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	or	$a0, $a2, $a0
+	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	or	$a0, $a1, $a0
-	sltui	$a1, $a2, 1
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_15
 # %bb.17:                               #   in Loop: Header=BB0_16 Depth=6
@@ -1050,23 +1057,30 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	sub.w	$a0, $a0, $a1
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
+	ld.w	$a3, $s8, 16
+	ld.w	$a4, $s8, 4
 	maskeqz	$a0, $a0, $a2
-	ld.d	$a3, $s8, 16
-	ld.d	$a4, $s8, 4
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a4, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
+	masknez	$a2, $a1, $a2
+	or	$a0, $a0, $a2
+	sub.w	$a2, $a3, $a4
+	slt	$a3, $a1, $a2
+	ld.w	$a4, $s8, 20
+	ld.w	$a5, $s8, 8
+	maskeqz	$a2, $a2, $a3
+	masknez	$a3, $a1, $a3
+	or	$a2, $a2, $a3
+	sub.w	$a3, $a4, $a5
+	slt	$a4, $a1, $a3
+	maskeqz	$a3, $a3, $a4
+	masknez	$a1, $a1, $a4
+	or	$a1, $a3, $a1
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
+	addi.d	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	or	$a0, $a2, $a0
+	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	or	$a0, $a1, $a0
-	sltui	$a1, $a2, 1
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_7
 # %bb.11:                               #   in Loop: Header=BB1_9 Depth=2
@@ -1276,23 +1290,30 @@ hypre_CreateCommInfoFromNumGhost:       # @hypre_CreateCommInfoFromNumGhost
 	sub.w	$a0, $a0, $a1
 	addi.w	$a1, $zero, -1
 	slt	$a2, $a1, $a0
+	ld.w	$a3, $s8, 16
+	ld.w	$a4, $s8, 4
 	maskeqz	$a0, $a0, $a2
-	ld.d	$a3, $s8, 16
-	ld.d	$a4, $s8, 4
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a4, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
+	masknez	$a2, $a1, $a2
+	or	$a0, $a0, $a2
+	sub.w	$a2, $a3, $a4
+	slt	$a3, $a1, $a2
+	ld.w	$a4, $s8, 20
+	ld.w	$a5, $s8, 8
+	maskeqz	$a2, $a2, $a3
+	masknez	$a3, $a1, $a3
+	or	$a2, $a2, $a3
+	sub.w	$a3, $a4, $a5
+	slt	$a4, $a1, $a3
+	maskeqz	$a3, $a3, $a4
+	masknez	$a1, $a1, $a4
+	or	$a1, $a3, $a1
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
+	addi.d	$a2, $a2, 1
+	sltui	$a2, $a2, 1
+	or	$a0, $a2, $a0
+	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	or	$a0, $a1, $a0
-	sltui	$a1, $a2, 1
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_25
 # %bb.29:                               #   in Loop: Header=BB1_27 Depth=2
@@ -1568,23 +1589,30 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.w	$a1, $s7, 0
 	sub.w	$a0, $a0, $a1
 	slt	$a1, $s0, $a0
+	ld.w	$a2, $s7, 16
+	ld.w	$a3, $s7, 4
 	maskeqz	$a0, $a0, $a1
-	ld.d	$a2, $s7, 16
-	ld.d	$a3, $s7, 4
 	masknez	$a1, $s0, $a1
 	or	$a0, $a0, $a1
-	vinsgr2vr.d	$vr0, $a2, 0
-	vinsgr2vr.d	$vr1, $a3, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
+	sub.w	$a1, $a2, $a3
+	slt	$a2, $s0, $a1
+	ld.w	$a3, $s7, 20
+	ld.w	$a4, $s7, 8
+	maskeqz	$a1, $a1, $a2
+	masknez	$a2, $s0, $a2
+	or	$a1, $a1, $a2
+	sub.w	$a2, $a3, $a4
+	slt	$a3, $s0, $a2
+	maskeqz	$a2, $a2, $a3
+	masknez	$a3, $s0, $a3
+	or	$a2, $a2, $a3
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
+	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	or	$a0, $a1, $a0
-	sltui	$a1, $a2, 1
+	addi.d	$a1, $a2, 1
+	sltui	$a1, $a1, 1
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_6
 # %bb.8:                                #   in Loop: Header=BB2_7 Depth=2
@@ -1699,23 +1727,30 @@ hypre_CreateCommInfoFromGrids:          # @hypre_CreateCommInfoFromGrids
 	ld.w	$a1, $s7, 0
 	sub.w	$a0, $a0, $a1
 	slt	$a1, $s0, $a0
+	ld.w	$a2, $s7, 16
+	ld.w	$a3, $s7, 4
 	maskeqz	$a0, $a0, $a1
-	ld.d	$a2, $s7, 16
-	ld.d	$a3, $s7, 4
 	masknez	$a1, $s0, $a1
 	or	$a0, $a0, $a1
-	vinsgr2vr.d	$vr0, $a2, 0
-	vinsgr2vr.d	$vr1, $a3, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
+	sub.w	$a1, $a2, $a3
+	slt	$a2, $s0, $a1
+	ld.w	$a3, $s7, 20
+	ld.w	$a4, $s7, 8
+	maskeqz	$a1, $a1, $a2
+	masknez	$a2, $s0, $a2
+	or	$a1, $a1, $a2
+	sub.w	$a2, $a3, $a4
+	slt	$a3, $s0, $a2
+	maskeqz	$a2, $a2, $a3
+	masknez	$a3, $s0, $a3
+	or	$a2, $a2, $a3
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
+	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	or	$a0, $a1, $a0
-	sltui	$a1, $a2, 1
+	addi.d	$a1, $a2, 1
+	sltui	$a1, $a1, 1
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_15
 # %bb.17:                               #   in Loop: Header=BB2_16 Depth=2

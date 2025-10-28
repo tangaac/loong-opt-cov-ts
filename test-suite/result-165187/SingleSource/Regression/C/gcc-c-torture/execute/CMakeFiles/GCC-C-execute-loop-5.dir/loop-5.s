@@ -13,35 +13,31 @@ main:                                   # @main
 	ori	$a0, $zero, 4
 	bge	$a2, $a0, .LBB0_9
 # %bb.1:                                # %ap.exit.i
-	slt	$a4, $a0, $a2
-	masknez	$a0, $a0, $a4
-	maskeqz	$a4, $a2, $a4
-	or	$a0, $a4, $a0
-	sub.d	$a0, $a0, $a3
-	addi.w	$a4, $a0, 1
-	addi.d	$a5, $a3, 1
-	st.w	$a5, $a1, %pc_lo12(t)
-	slli.d	$a6, $a3, 2
+	addi.d	$a4, $a3, 1
+	addi.w	$a5, $a4, 0
+	st.w	$a4, $a1, %pc_lo12(t)
+	slli.d	$a7, $a3, 2
 	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$a0, $a0, %pc_lo12(a)
-	ori	$a7, $zero, 2
-	stx.w	$zero, $a0, $a6
-	beq	$a4, $a7, .LBB0_9
+	ori	$a6, $zero, 3
+	stx.w	$zero, $a0, $a7
+	blt	$a6, $a5, .LBB0_9
 # %bb.2:                                # %ap.exit.1.i
-	addi.d	$a6, $a3, 2
-	st.w	$a6, $a1, %pc_lo12(t)
-	slli.d	$a5, $a5, 2
-	ori	$a7, $zero, 3
-	stx.w	$a7, $a0, $a5
-	beq	$a4, $a7, .LBB0_9
+	addi.d	$a5, $a3, 2
+	addi.w	$a7, $a5, 0
+	st.w	$a5, $a1, %pc_lo12(t)
+	slli.d	$a4, $a4, 2
+	stx.w	$a6, $a0, $a4
+	blt	$a6, $a7, .LBB0_9
 # %bb.3:                                # %ap.exit.2.i
 	addi.d	$a3, $a3, 3
+	addi.w	$a4, $a3, 0
 	st.w	$a3, $a1, %pc_lo12(t)
-	slli.d	$a5, $a6, 2
+	slli.d	$a5, $a5, 2
 	ori	$a6, $zero, 2
-	ori	$a7, $zero, 4
+	ori	$a7, $zero, 3
 	stx.w	$a6, $a0, $a5
-	beq	$a4, $a7, .LBB0_9
+	blt	$a7, $a4, .LBB0_9
 # %bb.4:                                # %testit.exit
 	addi.d	$a2, $a2, 4
 	ld.w	$a4, $a0, 0

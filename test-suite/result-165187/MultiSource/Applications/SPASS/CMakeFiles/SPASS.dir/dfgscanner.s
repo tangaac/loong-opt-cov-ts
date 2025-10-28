@@ -136,11 +136,11 @@ dfg_lex:                                # @dfg_lex
                                         #       Child Loop BB0_19 Depth 3
                                         #       Child Loop BB0_21 Depth 3
                                         #         Child Loop BB0_22 Depth 4
-                                        #           Child Loop BB0_36 Depth 5
-                                        #           Child Loop BB0_40 Depth 5
-                                        #           Child Loop BB0_43 Depth 5
-                                        #           Child Loop BB0_49 Depth 5
-                                        #           Child Loop BB0_54 Depth 5
+                                        #           Child Loop BB0_66 Depth 5
+                                        #           Child Loop BB0_34 Depth 5
+                                        #           Child Loop BB0_39 Depth 5
+                                        #           Child Loop BB0_45 Depth 5
+                                        #           Child Loop BB0_50 Depth 5
                                         #         Child Loop BB0_74 Depth 4
                                         #         Child Loop BB0_81 Depth 4
                                         #       Child Loop BB0_94 Depth 3
@@ -164,11 +164,11 @@ dfg_lex:                                # @dfg_lex
                                         #       Child Loop BB0_19 Depth 3
                                         #       Child Loop BB0_21 Depth 3
                                         #         Child Loop BB0_22 Depth 4
-                                        #           Child Loop BB0_36 Depth 5
-                                        #           Child Loop BB0_40 Depth 5
-                                        #           Child Loop BB0_43 Depth 5
-                                        #           Child Loop BB0_49 Depth 5
-                                        #           Child Loop BB0_54 Depth 5
+                                        #           Child Loop BB0_66 Depth 5
+                                        #           Child Loop BB0_34 Depth 5
+                                        #           Child Loop BB0_39 Depth 5
+                                        #           Child Loop BB0_45 Depth 5
+                                        #           Child Loop BB0_50 Depth 5
                                         #         Child Loop BB0_74 Depth 4
                                         #         Child Loop BB0_81 Depth 4
                                         #       Child Loop BB0_94 Depth 3
@@ -193,11 +193,11 @@ dfg_lex:                                # @dfg_lex
                                         #     Parent Loop BB0_18 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_22 Depth 4
-                                        #           Child Loop BB0_36 Depth 5
-                                        #           Child Loop BB0_40 Depth 5
-                                        #           Child Loop BB0_43 Depth 5
-                                        #           Child Loop BB0_49 Depth 5
-                                        #           Child Loop BB0_54 Depth 5
+                                        #           Child Loop BB0_66 Depth 5
+                                        #           Child Loop BB0_34 Depth 5
+                                        #           Child Loop BB0_39 Depth 5
+                                        #           Child Loop BB0_45 Depth 5
+                                        #           Child Loop BB0_50 Depth 5
                                         #         Child Loop BB0_74 Depth 4
                                         #         Child Loop BB0_81 Depth 4
 	sub.d	$a0, $a0, $a1
@@ -217,11 +217,11 @@ dfg_lex:                                # @dfg_lex
                                         #     Parent Loop BB0_18 Depth=2
                                         #       Parent Loop BB0_21 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB0_36 Depth 5
-                                        #           Child Loop BB0_40 Depth 5
-                                        #           Child Loop BB0_43 Depth 5
-                                        #           Child Loop BB0_49 Depth 5
-                                        #           Child Loop BB0_54 Depth 5
+                                        #           Child Loop BB0_66 Depth 5
+                                        #           Child Loop BB0_34 Depth 5
+                                        #           Child Loop BB0_39 Depth 5
+                                        #           Child Loop BB0_45 Depth 5
+                                        #           Child Loop BB0_50 Depth 5
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $t2, $a1
 	add.d	$a1, $t2, $a1
@@ -267,107 +267,77 @@ dfg_lex:                                # @dfg_lex
 # %bb.27:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.w	$a1, $s0, 44
 	ld.d	$a0, $s1, %pc_lo12(dfg_text)
-	beqz	$a1, .LBB0_33
+	beqz	$a1, .LBB0_36
 # %bb.28:                               #   in Loop: Header=BB0_22 Depth=4
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	sub.w	$s1, $s3, $a0
 	ori	$a1, $zero, 2
 	addi.w	$a4, $s1, -1
 	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
-	blt	$s1, $a1, .LBB0_45
+	blt	$s1, $a1, .LBB0_41
 # %bb.29:                               # %iter.check
                                         #   in Loop: Header=BB0_22 Depth=4
-	ori	$a3, $zero, 9
+	ori	$a3, $zero, 17
 	move	$a6, $zero
-	bltu	$s1, $a3, .LBB0_34
+	bltu	$s1, $a3, .LBB0_37
 # %bb.30:                               # %iter.check
                                         #   in Loop: Header=BB0_22 Depth=4
 	sub.d	$a3, $a2, $a0
 	ori	$a4, $zero, 32
-	bltu	$a3, $a4, .LBB0_34
+	bltu	$a3, $a4, .LBB0_37
 # %bb.31:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB0_22 Depth=4
 	ori	$a4, $zero, 33
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	bstrpick.d	$a3, $a3, 31, 0
-	bgeu	$s1, $a4, .LBB0_35
+	bgeu	$s1, $a4, .LBB0_65
 # %bb.32:                               #   in Loop: Header=BB0_22 Depth=4
 	move	$a7, $zero
-	b	.LBB0_39
-.LBB0_33:                               #   in Loop: Header=BB0_22 Depth=4
+.LBB0_33:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB0_22 Depth=4
+	bstrpick.d	$a5, $a3, 31, 4
+	slli.d	$a6, $a5, 4
+	alsl.d	$a4, $a5, $a2, 4
+	alsl.d	$a5, $a5, $a0, 4
+	sub.d	$t0, $a7, $a6
+	add.d	$t1, $a0, $a7
+	add.d	$a2, $a2, $a7
+	.p2align	4, , 16
+.LBB0_34:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB0_15 Depth=1
+                                        #     Parent Loop BB0_18 Depth=2
+                                        #       Parent Loop BB0_21 Depth=3
+                                        #         Parent Loop BB0_22 Depth=4
+                                        # =>        This Inner Loop Header: Depth=5
+	vld	$vr0, $t1, 0
+	vst	$vr0, $a2, 0
+	addi.d	$t0, $t0, 16
+	addi.d	$t1, $t1, 16
+	addi.d	$a2, $a2, 16
+	bnez	$t0, .LBB0_34
+# %bb.35:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB0_22 Depth=4
+	bne	$a6, $a3, .LBB0_38
+	b	.LBB0_40
+.LBB0_36:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(yy_more_len)
 	add.d	$a3, $a0, $a1
 	sub.d	$a3, $s3, $a3
 	ori	$a5, $zero, 1
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	beq	$a3, $a5, .LBB0_68
+	beq	$a3, $a5, .LBB0_64
 	b	.LBB0_77
-.LBB0_34:                               #   in Loop: Header=BB0_22 Depth=4
+.LBB0_37:                               #   in Loop: Header=BB0_22 Depth=4
 	move	$a4, $a2
 	move	$a5, $a0
-	b	.LBB0_42
-.LBB0_35:                               # %vector.ph
-                                        #   in Loop: Header=BB0_22 Depth=4
-	andi	$a4, $a3, 24
-	bstrpick.d	$a5, $a3, 31, 5
-	slli.d	$a7, $a5, 5
-	addi.d	$a5, $a0, 16
-	addi.d	$a6, $a2, 16
-	move	$t0, $a7
-	.p2align	4, , 16
-.LBB0_36:                               # %vector.body
-                                        #   Parent Loop BB0_15 Depth=1
-                                        #     Parent Loop BB0_18 Depth=2
-                                        #       Parent Loop BB0_21 Depth=3
-                                        #         Parent Loop BB0_22 Depth=4
-                                        # =>        This Inner Loop Header: Depth=5
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
-	vst	$vr0, $a6, -16
-	vst	$vr1, $a6, 0
-	addi.d	$t0, $t0, -32
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	bnez	$t0, .LBB0_36
-# %bb.37:                               # %middle.block
-                                        #   in Loop: Header=BB0_22 Depth=4
-	beq	$a7, $a3, .LBB0_44
-# %bb.38:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB0_22 Depth=4
-	beqz	$a4, .LBB0_69
-.LBB0_39:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB0_22 Depth=4
-	bstrpick.d	$a5, $a3, 31, 3
-	slli.d	$a6, $a5, 3
-	alsl.d	$a4, $a5, $a2, 3
-	alsl.d	$a5, $a5, $a0, 3
-	sub.d	$t0, $a7, $a6
-	add.d	$t1, $a0, $a7
-	add.d	$a2, $a2, $a7
-	.p2align	4, , 16
-.LBB0_40:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB0_15 Depth=1
-                                        #     Parent Loop BB0_18 Depth=2
-                                        #       Parent Loop BB0_21 Depth=3
-                                        #         Parent Loop BB0_22 Depth=4
-                                        # =>        This Inner Loop Header: Depth=5
-	ld.d	$a7, $t1, 0
-	st.d	$a7, $a2, 0
-	addi.d	$t0, $t0, 8
-	addi.d	$t1, $t1, 8
-	addi.d	$a2, $a2, 8
-	bnez	$t0, .LBB0_40
-# %bb.41:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB0_22 Depth=4
-	beq	$a6, $a3, .LBB0_44
-.LBB0_42:                               # %.lr.ph.i56.preheader
+.LBB0_38:                               # %.lr.ph.i56.preheader
                                         #   in Loop: Header=BB0_22 Depth=4
 	add.d	$a0, $a6, $a0
 	sub.d	$a0, $a0, $s3
 	addi.w	$a0, $a0, 1
 	.p2align	4, , 16
-.LBB0_43:                               # %.lr.ph.i56
+.LBB0_39:                               # %.lr.ph.i56
                                         #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_18 Depth=2
                                         #       Parent Loop BB0_21 Depth=3
@@ -381,40 +351,40 @@ dfg_lex:                                # @dfg_lex
 	slli.d	$a6, $a0, 31
 	st.b	$a2, $a4, 0
 	move	$a4, $a3
-	bgez	$a6, .LBB0_43
-.LBB0_44:                               # %._crit_edge.i.loopexit
+	bgez	$a6, .LBB0_39
+.LBB0_40:                               # %._crit_edge.i.loopexit
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.w	$a3, $s0, 48
-.LBB0_45:                               # %._crit_edge.i
+.LBB0_41:                               # %._crit_edge.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	bne	$a3, $a1, .LBB0_47
-# %bb.46:                               # %.thread64.i
+	bne	$a3, $a1, .LBB0_43
+# %bb.42:                               # %.thread64.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	pcalau12i	$a0, %pc_hi20(yy_n_chars)
 	st.w	$zero, $a0, %pc_lo12(yy_n_chars)
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB0_63
-.LBB0_47:                               # %.preheader68.i
+	b	.LBB0_59
+.LBB0_43:                               # %.preheader68.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a1, $s0, 24
 	sub.w	$a2, $a1, $s1
-	bgtz	$a2, .LBB0_52
-# %bb.48:                               # %.lr.ph78.i
+	bgtz	$a2, .LBB0_48
+# %bb.44:                               # %.lr.ph78.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$fp, $s0, 8
 	.p2align	4, , 16
-.LBB0_49:                               #   Parent Loop BB0_15 Depth=1
+.LBB0_45:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_18 Depth=2
                                         #       Parent Loop BB0_21 Depth=3
                                         #         Parent Loop BB0_22 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.w	$a0, $s0, 32
 	beqz	$a0, .LBB0_173
-# %bb.50:                               #   in Loop: Header=BB0_49 Depth=5
+# %bb.46:                               #   in Loop: Header=BB0_45 Depth=5
 	slli.d	$a0, $a1, 1
 	addi.w	$a2, $a0, 0
 	slti	$a2, $a2, 1
@@ -431,15 +401,15 @@ dfg_lex:                                # @dfg_lex
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 8
 	beqz	$a0, .LBB0_174
-# %bb.51:                               #   in Loop: Header=BB0_49 Depth=5
+# %bb.47:                               #   in Loop: Header=BB0_45 Depth=5
 	ld.w	$a1, $s0, 24
 	sub.w	$a2, $s3, $fp
 	add.d	$s3, $a0, $a2
 	sub.w	$a2, $a1, $s1
 	st.d	$s3, $s4, %pc_lo12(yy_c_buf_p)
 	move	$fp, $a0
-	blez	$a2, .LBB0_49
-.LBB0_52:                               # %._crit_edge79.i
+	blez	$a2, .LBB0_45
+.LBB0_48:                               # %._crit_edge79.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	srli.d	$a0, $a2, 13
 	sltui	$a0, $a0, 1
@@ -448,8 +418,8 @@ dfg_lex:                                # @dfg_lex
 	masknez	$a3, $a3, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a2, $a0, $a3
-	beqz	$a1, .LBB0_60
-# %bb.53:                               # %.preheader.i
+	beqz	$a1, .LBB0_56
+# %bb.49:                               # %.preheader.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	move	$fp, $zero
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
@@ -457,7 +427,7 @@ dfg_lex:                                # @dfg_lex
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB0_54:                               #   Parent Loop BB0_15 Depth=1
+.LBB0_50:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_18 Depth=2
                                         #       Parent Loop BB0_21 Depth=3
                                         #         Parent Loop BB0_22 Depth=4
@@ -467,11 +437,11 @@ dfg_lex:                                # @dfg_lex
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
-	beq	$a0, $a1, .LBB0_58
-# %bb.55:                               #   in Loop: Header=BB0_54 Depth=5
+	beq	$a0, $a1, .LBB0_54
+# %bb.51:                               #   in Loop: Header=BB0_50 Depth=5
 	ori	$a2, $zero, 10
-	beq	$a0, $a2, .LBB0_58
-# %bb.56:                               #   in Loop: Header=BB0_54 Depth=5
+	beq	$a0, $a2, .LBB0_54
+# %bb.52:                               #   in Loop: Header=BB0_50 Depth=5
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(yy_current_buffer)
 	ld.d	$a2, $a2, 8
@@ -479,21 +449,21 @@ dfg_lex:                                # @dfg_lex
 	addi.w	$fp, $fp, 1
 	addi.d	$s0, $s0, -1
 	addi.d	$s1, $s1, 1
-	bnez	$s0, .LBB0_54
-# %bb.57:                               #   in Loop: Header=BB0_22 Depth=4
+	bnez	$s0, .LBB0_50
+# %bb.53:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-.LBB0_58:                               # %.critedge.i
+.LBB0_54:                               # %.critedge.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB0_64
-# %bb.59:                               # %.critedge.i
+	beq	$a0, $a1, .LBB0_60
+# %bb.55:                               # %.critedge.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	ori	$a1, $zero, 10
-	bne	$a0, $a1, .LBB0_65
+	bne	$a0, $a1, .LBB0_61
 	b	.LBB0_89
-.LBB0_60:                               #   in Loop: Header=BB0_22 Depth=4
+.LBB0_56:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a0, $s0, 8
 	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a3, $s0, %pc_lo12(dfg_in)
@@ -508,26 +478,26 @@ dfg_lex:                                # @dfg_lex
 	st.w	$fp, $a1, %pc_lo12(yy_n_chars)
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	bnez	$a0, .LBB0_87
-# %bb.61:                               #   in Loop: Header=BB0_22 Depth=4
+# %bb.57:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a0, $s0, %pc_lo12(dfg_in)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a0, .LBB0_179
-# %bb.62:                               # %thread-pre-split.thread.i
+# %bb.58:                               # %thread-pre-split.thread.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s0, $a0, %pc_lo12(yy_current_buffer)
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-.LBB0_63:                               # %.sink.split.i
+.LBB0_59:                               # %.sink.split.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	st.w	$zero, $s0, 28
 	ld.w	$a0, $s5, %pc_lo12(yy_more_len)
-	beq	$a2, $a0, .LBB0_67
+	beq	$a2, $a0, .LBB0_63
 	b	.LBB0_76
-.LBB0_64:                               #   in Loop: Header=BB0_22 Depth=4
+.LBB0_60:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(dfg_in)
 	pcaddu18i	$ra, %call36(ferror)
@@ -535,7 +505,7 @@ dfg_lex:                                # @dfg_lex
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
 	bnez	$a0, .LBB0_179
-.LBB0_65:                               # %thread-pre-split.i
+.LBB0_61:                               # %thread-pre-split.i
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s0, $a0, %pc_lo12(yy_current_buffer)
@@ -543,12 +513,12 @@ dfg_lex:                                # @dfg_lex
 	st.w	$fp, $a0, %pc_lo12(yy_n_chars)
 	st.w	$fp, $s0, 28
 	bnez	$fp, .LBB0_86
-# %bb.66:                               #   in Loop: Header=BB0_22 Depth=4
+# %bb.62:                               #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a0, $s5, %pc_lo12(yy_more_len)
 	bne	$a2, $a0, .LBB0_76
-.LBB0_67:                               # %yy_get_next_buffer.exit.thread77
+.LBB0_63:                               # %yy_get_next_buffer.exit.thread77
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(dfg_in)
@@ -570,7 +540,7 @@ dfg_lex:                                # @dfg_lex
 	ld.w	$a1, $s5, %pc_lo12(yy_more_len)
 	st.d	$a0, $s1, %pc_lo12(dfg_text)
 	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-.LBB0_68:                               # %yy_get_previous_state.exit63
+.LBB0_64:                               # %yy_get_previous_state.exit63
                                         #   in Loop: Header=BB0_22 Depth=4
 	ld.w	$a2, $s3, %pc_lo12(yy_start)
 	add.d	$a0, $a0, $a1
@@ -588,11 +558,40 @@ dfg_lex:                                # @dfg_lex
 	addi.d	$a1, $a1, -1
 	bgeu	$t1, $a1, .LBB0_22
 	b	.LBB0_176
-.LBB0_69:                               #   in Loop: Header=BB0_22 Depth=4
+.LBB0_65:                               # %vector.ph
+                                        #   in Loop: Header=BB0_22 Depth=4
+	andi	$a4, $a3, 16
+	bstrpick.d	$a5, $a3, 31, 5
+	slli.d	$a7, $a5, 5
+	addi.d	$a5, $a0, 16
+	addi.d	$a6, $a2, 16
+	move	$t0, $a7
+	.p2align	4, , 16
+.LBB0_66:                               # %vector.body
+                                        #   Parent Loop BB0_15 Depth=1
+                                        #     Parent Loop BB0_18 Depth=2
+                                        #       Parent Loop BB0_21 Depth=3
+                                        #         Parent Loop BB0_22 Depth=4
+                                        # =>        This Inner Loop Header: Depth=5
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a6, -16
+	vst	$vr1, $a6, 0
+	addi.d	$t0, $t0, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a6, $a6, 32
+	bnez	$t0, .LBB0_66
+# %bb.67:                               # %middle.block
+                                        #   in Loop: Header=BB0_22 Depth=4
+	beq	$a7, $a3, .LBB0_40
+# %bb.68:                               # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB0_22 Depth=4
+	bnez	$a4, .LBB0_33
+# %bb.69:                               #   in Loop: Header=BB0_22 Depth=4
 	add.d	$a4, $a2, $a7
 	add.d	$a5, $a0, $a7
 	move	$a6, $a7
-	b	.LBB0_42
+	b	.LBB0_38
 .LBB0_70:                               #   in Loop: Header=BB0_21 Depth=3
 	nor	$a0, $t2, $zero
 	ld.d	$a2, $s1, %pc_lo12(dfg_text)

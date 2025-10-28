@@ -10,7 +10,7 @@ sum:                                    # @sum
 # %bb.1:                                # %iter.check
 	ld.hu	$a3, $a0, 0
 	ext.w.h	$a2, $a2
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 8
 	bltu	$a2, $a4, .LBB0_4
 # %bb.2:                                # %vector.memcheck
 	addi.d	$a4, $a2, -1
@@ -41,13 +41,36 @@ sum:                                    # @sum
 .LBB0_8:                                # %vector.main.loop.iter.check
 	ori	$a5, $zero, 16
 	bstrpick.d	$a4, $a2, 31, 0
-	bgeu	$a2, $a5, .LBB0_10
+	bgeu	$a2, $a5, .LBB0_13
 # %bb.9:
 	move	$a6, $zero
-	b	.LBB0_14
-.LBB0_10:                               # %vector.ph
+.LBB0_10:                               # %vec.epilog.ph
+	bstrpick.d	$a5, $a4, 31, 3
+	slli.d	$a7, $a5, 3
+	alsl.d	$a5, $a5, $a1, 4
 	vrepli.b	$vr0, 0
-	andi	$a5, $a4, 12
+	vinsgr2vr.h	$vr0, $a3, 0
+	alsl.d	$a1, $a6, $a1, 1
+	sub.d	$a3, $a6, $a7
+	.p2align	4, , 16
+.LBB0_11:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a1, 0
+	vadd.h	$vr0, $vr0, $vr1
+	addi.d	$a3, $a3, 8
+	addi.d	$a1, $a1, 16
+	bnez	$a3, .LBB0_11
+# %bb.12:                               # %vec.epilog.middle.block
+	vhaddw.w.h	$vr0, $vr0, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	st.h	$a3, $a0, 0
+	bne	$a7, $a4, .LBB0_5
+	b	.LBB0_7
+.LBB0_13:                               # %vector.ph
+	vrepli.b	$vr0, 0
+	andi	$a5, $a4, 8
 	bstrpick.d	$a6, $a4, 31, 4
 	slli.d	$a6, $a6, 4
 	vori.b	$vr1, $vr0, 0
@@ -55,7 +78,7 @@ sum:                                    # @sum
 	addi.d	$a3, $a1, 16
 	move	$a7, $a6
 	.p2align	4, , 16
-.LBB0_11:                               # %vector.body
+.LBB0_14:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a3, -16
 	vld	$vr3, $a3, 0
@@ -63,8 +86,8 @@ sum:                                    # @sum
 	vadd.h	$vr0, $vr0, $vr3
 	addi.d	$a7, $a7, -16
 	addi.d	$a3, $a3, 32
-	bnez	$a7, .LBB0_11
-# %bb.12:                               # %middle.block
+	bnez	$a7, .LBB0_14
+# %bb.15:                               # %middle.block
 	vadd.h	$vr0, $vr0, $vr1
 	vhaddw.w.h	$vr0, $vr0, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
@@ -72,33 +95,9 @@ sum:                                    # @sum
 	vpickve2gr.d	$a3, $vr0, 0
 	st.h	$a3, $a0, 0
 	beq	$a6, $a4, .LBB0_7
-# %bb.13:                               # %vec.epilog.iter.check
-	beqz	$a5, .LBB0_17
-.LBB0_14:                               # %vec.epilog.ph
-	bstrpick.d	$a5, $a4, 31, 2
-	slli.d	$a7, $a5, 2
-	alsl.d	$a5, $a5, $a1, 3
-	vrepli.b	$vr0, 0
-	vinsgr2vr.h	$vr0, $a3, 0
-	alsl.d	$a1, $a6, $a1, 1
-	sub.d	$a3, $a6, $a7
-	.p2align	4, , 16
-.LBB0_15:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a1, 0
-	vinsgr2vr.d	$vr1, $a6, 0
-	vadd.h	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a1, $a1, 8
-	bnez	$a3, .LBB0_15
-# %bb.16:                               # %vec.epilog.middle.block
-	vhaddw.w.h	$vr0, $vr0, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
-	st.h	$a3, $a0, 0
-	bne	$a7, $a4, .LBB0_5
-	b	.LBB0_7
-.LBB0_17:
+# %bb.16:                               # %vec.epilog.iter.check
+	bnez	$a5, .LBB0_10
+# %bb.17:
 	alsl.d	$a5, $a6, $a1, 1
 	move	$a7, $a6
 	b	.LBB0_5

@@ -1034,19 +1034,19 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	st.d	$s6, $sp, 408                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 400                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 392                   # 8-byte Folded Spill
-	move	$fp, $a0
-	ld.d	$s2, $a0, 576
-	ld.w	$s5, $a0, 512
+	move	$s3, $a0
+	ld.d	$fp, $a0, 576
+	ld.w	$s6, $a0, 512
 	ld.w	$a0, $a0, 360
-	ld.wu	$s1, $fp, 520
+	ld.wu	$s1, $s3, 520
 	move	$s0, $a1
 	beqz	$a0, .LBB5_7
 # %bb.1:
-	ld.w	$a0, $s2, 52
+	ld.w	$a0, $fp, 52
 	bnez	$a0, .LBB5_7
 # %bb.2:
-	ld.w	$a0, $s2, 24
-	ld.d	$a1, $fp, 568
+	ld.w	$a0, $fp, 24
+	ld.d	$a1, $s3, 568
 	bstrpick.d	$a2, $a0, 62, 60
 	ld.w	$a3, $a1, 172
 	add.w	$a0, $a0, $a2
@@ -1054,52 +1054,51 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ld.d	$a2, $a1, 16
 	add.d	$a0, $a3, $a0
 	st.w	$a0, $a1, 172
-	st.w	$zero, $s2, 24
-	move	$a0, $fp
+	st.w	$zero, $fp, 24
+	move	$a0, $s3
 	jirl	$ra, $a2, 0
 	beqz	$a0, .LBB5_68
 # %bb.3:                                # %.preheader.i
-	ld.w	$a0, $fp, 416
+	ld.w	$a0, $s3, 416
 	blez	$a0, .LBB5_6
 # %bb.4:                                # %.lr.ph.i
 	move	$a0, $zero
-	addi.d	$a1, $s2, 36
+	addi.d	$a1, $fp, 36
 	.p2align	4, , 16
 .LBB5_5:                                # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a1, 0
-	ld.w	$a2, $fp, 416
+	ld.w	$a2, $s3, 416
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 4
 	blt	$a0, $a2, .LBB5_5
 .LBB5_6:                                # %process_restart.exit
-	st.d	$zero, $s2, 28
-	ld.w	$a0, $fp, 360
-	st.w	$a0, $s2, 52
+	st.d	$zero, $fp, 28
+	ld.w	$a0, $s3, 360
+	st.w	$a0, $fp, 52
 .LBB5_7:
 	ori	$a0, $zero, 1
 	sll.w	$s4, $a0, $s1
 	addi.d	$a0, $zero, -1
-	ld.d	$a1, $fp, 32
-	ld.w	$a2, $fp, 524
+	ld.d	$a1, $s3, 32
+	ld.w	$a2, $s3, 524
 	sll.w	$a0, $a0, $s1
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 376
+	st.d	$s3, $sp, 376
 	vld	$vr0, $a1, 0
 	st.w	$a2, $sp, 352
-	ld.d	$a1, $s2, 16
-	ld.w	$a2, $s2, 24
-	ld.w	$s8, $s2, 32
-	move	$a0, $s2
+	ld.d	$a1, $fp, 16
+	ld.w	$a2, $fp, 24
+	ld.w	$s8, $fp, 32
 	ld.d	$s2, $s0, 0
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	ld.w	$s7, $fp, 508
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$a0, $a0, 28
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	ld.w	$s7, $s3, 508
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$a0, $fp, 28
 	st.d	$a0, $sp, 384
 	vst	$vr0, $sp, 336
 	bnez	$s8, .LBB5_41
 # %bb.8:
-	blt	$s5, $s7, .LBB5_41
+	blt	$s6, $s7, .LBB5_41
 # %bb.9:                                # %.lr.ph
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 88
@@ -1116,7 +1115,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	.p2align	4, , 16
 .LBB5_10:                               #   in Loop: Header=BB5_11 Depth=1
 	addi.w	$s7, $s8, 1
-	bge	$s8, $s5, .LBB5_54
+	bge	$s8, $s6, .LBB5_54
 .LBB5_11:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_29 Depth 2
 	ori	$a0, $zero, 7
@@ -1180,12 +1179,12 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ori	$a5, $zero, 114
 	st.w	$a5, $a3, 40
 	addi.w	$a3, $zero, -1
-	move	$s1, $a1
+	move	$fp, $a1
 	move	$a1, $a3
-	move	$s3, $a2
+	move	$s1, $a2
 	jirl	$ra, $a4, 0
-	move	$a1, $s1
-	move	$a2, $s3
+	move	$a1, $fp
+	move	$a2, $s1
 .LBB5_23:                               #   in Loop: Header=BB5_11 Depth=1
 	bgtz	$a2, .LBB5_26
 # %bb.24:                               #   in Loop: Header=BB5_11 Depth=1
@@ -1207,27 +1206,25 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	maskeqz	$a0, $a4, $a0
 	or	$s3, $a0, $a3
 .LBB5_27:                               #   in Loop: Header=BB5_11 Depth=1
-	slt	$a0, $s5, $s7
-	move	$fp, $s5
-	masknez	$a3, $s5, $a0
+	slt	$a0, $s6, $s7
+	masknez	$a3, $s6, $a0
 	maskeqz	$a0, $s7, $a0
 	or	$a0, $a0, $a3
 	addi.w	$s8, $a0, 1
-	sub.d	$a0, $a0, $s7
-	addi.d	$s1, $a0, 1
+	addi.d	$s1, $s7, -1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	alsl.d	$s6, $s7, $a0, 2
+	alsl.d	$s5, $s7, $a0, 2
 	b	.LBB5_29
 	.p2align	4, , 16
 .LBB5_28:                               #   in Loop: Header=BB5_29 Depth=2
 	addi.w	$s7, $s7, 1
-	addi.d	$s1, $s1, -1
-	addi.d	$s6, $s6, 4
-	beqz	$s1, .LBB5_39
+	addi.d	$s1, $s1, 1
+	addi.d	$s5, $s5, 4
+	bge	$s1, $s6, .LBB5_39
 .LBB5_29:                               #   Parent Loop BB5_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$s5, $s6, 0
-	slli.d	$a0, $s5, 1
+	ld.w	$fp, $s5, 0
+	slli.d	$a0, $fp, 1
 	ldx.hu	$a0, $s2, $a0
 	beqz	$a0, .LBB5_32
 # %bb.30:                               #   in Loop: Header=BB5_29 Depth=2
@@ -1260,7 +1257,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB5_28
 .LBB5_36:                               #   in Loop: Header=BB5_29 Depth=2
-	alsl.d	$a0, $s5, $s2, 1
+	alsl.d	$a0, $fp, $s2, 1
 	ld.h	$a3, $a0, 0
 	and	$a4, $s4, $a3
 	bnez	$a4, .LBB5_28
@@ -1277,9 +1274,8 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	.p2align	4, , 16
 .LBB5_38:                               #   in Loop: Header=BB5_11 Depth=1
 	move	$s8, $s7
-.LBB5_39:                               # %.split.loop.exit319
+.LBB5_39:                               # %.split.loop.exit317
                                         #   in Loop: Header=BB5_11 Depth=1
-	move	$s5, $fp
 	beqz	$s3, .LBB5_10
 # %bb.40:                               #   in Loop: Header=BB5_11 Depth=1
 	slli.d	$a0, $s8, 2
@@ -1299,10 +1295,10 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	move	$a0, $zero
 	beqz	$s8, .LBB5_44
 .LBB5_42:                               # %.preheader
-	bge	$s5, $s7, .LBB5_45
+	bge	$s6, $s7, .LBB5_45
 .LBB5_43:                               # %._crit_edge
 	addi.d	$a0, $s8, -1
-.LBB5_44:                               # %.loopexit213.thread296
+.LBB5_44:                               # %.loopexit213.thread294
 	vld	$vr0, $sp, 336
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a3, $a4, 32
@@ -1322,7 +1318,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	pcalau12i	$a0, %got_pc_hi20(jpeg_natural_order)
 	ld.d	$a0, $a0, %got_pc_lo12(jpeg_natural_order)
 	alsl.d	$s0, $s7, $a0, 2
-	sub.d	$a0, $s5, $s7
+	sub.d	$a0, $s6, $s7
 	addi.d	$s1, $a0, 1
 	b	.LBB5_47
 	.p2align	4, , 16
@@ -1331,8 +1327,8 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	addi.d	$s0, $s0, 4
 	beqz	$s1, .LBB5_43
 .LBB5_47:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$s3, $s0, 0
-	slli.d	$a0, $s3, 1
+	ld.w	$fp, $s0, 0
+	slli.d	$a0, $fp, 1
 	ldx.hu	$a0, $s2, $a0
 	beqz	$a0, .LBB5_46
 # %bb.48:                               #   in Loop: Header=BB5_47 Depth=1
@@ -1358,11 +1354,11 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB5_46
 .LBB5_52:                               #   in Loop: Header=BB5_47 Depth=1
-	alsl.d	$a0, $s3, $s2, 1
+	alsl.d	$a0, $fp, $s2, 1
 	ld.h	$a3, $a0, 0
 	and	$a4, $s4, $a3
 	bnez	$a4, .LBB5_46
-# %bb.53:                               # %.sink.split324
+# %bb.53:                               # %.sink.split322
                                         #   in Loop: Header=BB5_47 Depth=1
 	slti	$a4, $a3, 0
 	masknez	$a5, $s4, $a4
@@ -1428,7 +1424,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	bnez	$a4, .LBB5_64
 # %bb.65:                               # %middle.block
 	beq	$a2, $a7, .LBB5_68
-.LBB5_66:                               # %.lr.ph250.preheader350
+.LBB5_66:                               # %.lr.ph250.preheader348
 	addi.d	$a2, $a1, 1
 	addi.d	$a3, $sp, 80
 	alsl.d	$a1, $a1, $a3, 2

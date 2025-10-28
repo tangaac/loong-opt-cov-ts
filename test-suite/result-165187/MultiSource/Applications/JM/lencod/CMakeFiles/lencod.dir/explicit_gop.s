@@ -5,13 +5,13 @@
 	.type	create_hierarchy,@function
 create_hierarchy:                       # @create_hierarchy
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$fp, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(input)
 	ld.d	$a0, $a0, %got_pc_lo12(input)
 	ld.d	$a1, $a0, 0
@@ -129,21 +129,19 @@ create_hierarchy:                       # @create_hierarchy
 # %bb.17:                               # %middle.block
 	beq	$a7, $a0, .LBB0_20
 .LBB0_18:                               # %scalar.ph.preheader
-	slli.d	$t1, $a7, 4
-	alsl.d	$t1, $a7, $t1, 3
-	add.d	$t0, $t1, $t0
-	addi.d	$t0, $t0, 16
 	sub.d	$t1, $a0, $a7
+	slli.d	$t2, $a7, 4
+	alsl.d	$t2, $a7, $t2, 3
+	add.d	$t0, $t2, $t0
+	addi.d	$t0, $t0, 8
 	.p2align	4, , 16
 .LBB0_19:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
+	st.w	$a7, $t0, -4
+	st.w	$a6, $t0, -8
+	st.w	$zero, $t0, 8
 	st.w	$zero, $t0, 0
-	st.w	$a5, $sp, 28
-	st.w	$zero, $sp, 24
-	st.w	$a7, $sp, 20
-	st.w	$a6, $sp, 16
-	vld	$vr0, $sp, 16
-	vst	$vr0, $t0, -16
+	st.w	$a5, $t0, 4
 	addi.d	$a7, $a7, 1
 	addi.d	$t1, $t1, -1
 	addi.d	$t0, $t0, 24
@@ -343,12 +341,12 @@ create_hierarchy:                       # @create_hierarchy
 	ld.d	$t1, $a7, 16
 	ld.d	$t2, $t0, 0
 	vld	$vr0, $t0, 8
-	st.d	$t1, $sp, 56
+	st.d	$t1, $sp, 24
 	vld	$vr1, $a7, 0
 	st.d	$t2, $a7, 0
 	vst	$vr0, $a7, 8
 	ld.d	$a7, $a2, %pc_lo12(gop_structure)
-	vst	$vr1, $sp, 40
+	vst	$vr1, $sp, 8
 	slli.d	$t0, $a6, 4
 	alsl.d	$t0, $a6, $t0, 3
 	add.d	$t2, $a7, $t0
@@ -357,13 +355,13 @@ create_hierarchy:                       # @create_hierarchy
 	blt	$a1, $a6, .LBB0_43
 	b	.LBB0_41
 .LBB0_45:                               # %.loopexit
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end0:
 	.size	create_hierarchy, .Lfunc_end0-create_hierarchy

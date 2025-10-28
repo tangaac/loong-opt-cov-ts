@@ -5,15 +5,20 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	ld.d	$a1, $a1, 8
-	vld	$vr0, $a0, 0
-	vinsgr2vr.d	$vr1, $a1, 0
-	ori	$a1, $zero, 1
-	lu32i.d	$a1, 2
-	vreplgr2vr.d	$vr2, $a1
-	vpackev.d	$vr1, $vr1, $vr2
-	vxor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 0
+	ld.w	$a2, $a0, 0
+	ld.w	$a3, $a0, 4
+	xori	$a2, $a2, 1
+	st.w	$a2, $a0, 0
+	xori	$a2, $a3, 2
+	ld.w	$a3, $a0, 8
+	ld.w	$a4, $a1, 8
+	ld.w	$a5, $a0, 12
+	ld.w	$a1, $a1, 12
+	st.w	$a2, $a0, 4
+	xor	$a2, $a4, $a3
+	st.w	$a2, $a0, 8
+	xor	$a1, $a1, $a5
+	st.w	$a1, $a0, 12
 	ret
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo

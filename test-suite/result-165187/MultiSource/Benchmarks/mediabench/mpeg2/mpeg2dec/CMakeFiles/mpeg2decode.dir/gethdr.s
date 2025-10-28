@@ -262,102 +262,102 @@ Get_Hdr:                                # @Get_Hdr
 .LBB0_20:                               # %vector.body13
                                         #   in Loop: Header=BB0_2 Depth=1
 	ld.w	$a0, $s5, 0
-	ld.w	$a2, $s5, 4
 	vinsgr2vr.w	$vr0, $a0, 0
-	vinsgr2vr.w	$vr1, $a2, 0
-	ld.w	$a0, $s5, 8
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	ld.w	$a0, $s5, 4
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2104
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 12
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 8
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2120
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.w	$a0, $s5, 16
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 12
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2136
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 20
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 16
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2152
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.w	$a0, $s5, 24
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 20
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2168
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 28
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 24
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2184
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.w	$a0, $s5, 32
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 28
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2200
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 36
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 32
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2216
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.w	$a0, $s5, 40
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 36
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2232
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 44
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 40
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2248
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.w	$a0, $s5, 48
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 44
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2264
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 52
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 48
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2280
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.w	$a0, $s5, 56
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 52
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2296
 	vstx	$vr0, $a1, $a2
 	vinsgr2vr.w	$vr0, $a0, 0
-	ld.w	$a0, $s5, 60
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
+	ld.w	$a0, $s5, 56
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a2, $zero, 2312
-	vstx	$vr1, $a1, $a2
-	vinsgr2vr.w	$vr1, $a0, 0
-	vilvl.b	$vr0, $vr2, $vr0
-	vilvl.h	$vr0, $vr2, $vr0
-	vilvl.b	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr2, $vr1
-	ori	$a0, $zero, 2328
-	vstx	$vr0, $a1, $a0
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	ld.w	$a0, $s5, 60
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
+	ori	$a2, $zero, 2328
+	vstx	$vr0, $a1, $a2
+	vinsgr2vr.w	$vr0, $a0, 0
+	vilvl.b	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
 	ori	$a0, $zero, 2344
-	vstx	$vr1, $a1, $a0
+	vstx	$vr0, $a1, $a0
 	.p2align	4, , 16
 .LBB0_21:                               # %.loopexit23.i
                                         #   in Loop: Header=BB0_2 Depth=1

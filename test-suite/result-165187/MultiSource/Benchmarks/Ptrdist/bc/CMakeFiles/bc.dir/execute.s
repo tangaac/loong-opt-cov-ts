@@ -113,10 +113,10 @@ execute:                                # @execute
 	.p2align	4, , 16
 .LBB2_5:                                # %.lr.ph159
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_94 Depth 2
-                                        #     Child Loop BB2_11 Depth 2
-                                        #     Child Loop BB2_40 Depth 2
-                                        #     Child Loop BB2_20 Depth 2
+                                        #     Child Loop BB2_9 Depth 2
+                                        #     Child Loop BB2_13 Depth 2
+                                        #     Child Loop BB2_44 Depth 2
+                                        #     Child Loop BB2_22 Depth 2
 	srai.d	$a6, $a3, 10
 	addi.w	$a2, $a3, 1
 	st.w	$a2, $s4, 4
@@ -166,20 +166,47 @@ execute:                                # @execute
 	st.d	$a0, $a1, 0
 	b	.LBB2_119
 	.p2align	4, , 16
-.LBB2_8:                                # %.preheader146
-                                        #   in Loop: Header=BB2_11 Depth=2
-	ori	$a0, $zero, 34
-	beq	$a3, $a0, .LBB2_95
-.LBB2_9:                                # %.sink.split
-                                        #   in Loop: Header=BB2_11 Depth=2
-	ext.w.b	$a0, $a3
+.LBB2_8:                                #   in Loop: Header=BB2_9 Depth=2
 	pcaddu18i	$ra, %call36(out_char)
 	jirl	$ra, $ra, 0
-.LBB2_10:                               #   in Loop: Header=BB2_11 Depth=2
 	ld.w	$a2, $s4, 4
 	ld.d	$a4, $s5, 0
 	ld.w	$a0, $s4, 0
-.LBB2_11:                               # %.preheader146
+.LBB2_9:                                # %.preheader147
+                                        #   Parent Loop BB2_5 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	srai.d	$a1, $a2, 10
+	addi.d	$a3, $a2, 1
+	st.w	$a3, $s4, 4
+	ori	$a3, $zero, 168
+	mul.d	$a0, $a0, $a3
+	bstrpick.d	$a3, $a2, 62, 53
+	add.d	$a3, $a2, $a3
+	add.d	$a0, $a4, $a0
+	alsl.d	$a0, $a1, $a0, 3
+	ld.d	$a0, $a0, 8
+	bstrpick.d	$a1, $a3, 31, 10
+	slli.d	$a1, $a1, 10
+	sub.w	$a1, $a2, $a1
+	ldx.b	$a0, $a0, $a1
+	ori	$a1, $zero, 34
+	bne	$a0, $a1, .LBB2_8
+	b	.LBB2_27
+	.p2align	4, , 16
+.LBB2_10:                               # %.preheader146
+                                        #   in Loop: Header=BB2_13 Depth=2
+	ori	$a0, $zero, 34
+	beq	$a3, $a0, .LBB2_27
+.LBB2_11:                               # %.sink.split
+                                        #   in Loop: Header=BB2_13 Depth=2
+	ext.w.b	$a0, $a3
+	pcaddu18i	$ra, %call36(out_char)
+	jirl	$ra, $ra, 0
+.LBB2_12:                               #   in Loop: Header=BB2_13 Depth=2
+	ld.w	$a2, $s4, 4
+	ld.d	$a4, $s5, 0
+	ld.w	$a0, $s4, 0
+.LBB2_13:                               # %.preheader146
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	srai.d	$a3, $a2, 10
@@ -198,8 +225,8 @@ execute:                                # @execute
 	sub.w	$a4, $a2, $a4
 	ldx.bu	$a3, $a3, $a4
 	ori	$a4, $zero, 92
-	bne	$a3, $a4, .LBB2_8
-# %bb.12:                               #   in Loop: Header=BB2_11 Depth=2
+	bne	$a3, $a4, .LBB2_10
+# %bb.14:                               #   in Loop: Header=BB2_13 Depth=2
 	srai.d	$a3, $a1, 10
 	addi.d	$a2, $a2, 2
 	st.w	$a2, $s4, 4
@@ -212,26 +239,26 @@ execute:                                # @execute
 	sub.w	$a1, $a1, $a2
 	ldx.bu	$a0, $a0, $a1
 	ori	$a1, $zero, 34
-	beq	$a0, $a1, .LBB2_95
-# %bb.13:                               #   in Loop: Header=BB2_11 Depth=2
+	beq	$a0, $a1, .LBB2_27
+# %bb.15:                               #   in Loop: Header=BB2_13 Depth=2
 	ext.w.b	$a0, $a0
 	addi.d	$a0, $a0, -92
 	rotri.w	$a0, $a0, 1
 	ori	$a1, $zero, 12
-	bltu	$a1, $a0, .LBB2_10
-# %bb.14:                               #   in Loop: Header=BB2_11 Depth=2
+	bltu	$a1, $a0, .LBB2_12
+# %bb.16:                               #   in Loop: Header=BB2_13 Depth=2
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 2601
 	srl.d	$a1, $a1, $a0
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB2_10
-# %bb.15:                               # %switch.lookup
-                                        #   in Loop: Header=BB2_11 Depth=2
+	beqz	$a1, .LBB2_12
+# %bb.17:                               # %switch.lookup
+                                        #   in Loop: Header=BB2_13 Depth=2
 	pcalau12i	$a1, %pc_hi20(.Lswitch.table.execute)
 	addi.d	$a1, $a1, %pc_lo12(.Lswitch.table.execute)
 	ldx.bu	$a3, $a1, $a0
-	b	.LBB2_9
-.LBB2_16:                               #   in Loop: Header=BB2_5 Depth=1
+	b	.LBB2_11
+.LBB2_18:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a0, $a0, 0
@@ -247,7 +274,7 @@ execute:                                # @execute
 	ld.w	$a2, $s4, 4
 	ld.d	$a4, $s5, 0
 	ld.w	$a0, $s4, 0
-.LBB2_17:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_19:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a3, $a2, 10
 	addi.d	$a5, $a2, 1
 	addi.w	$a6, $a5, 0
@@ -276,34 +303,34 @@ execute:                                # @execute
 	sub.w	$a2, $a5, $a2
 	ldx.bu	$a2, $a3, $a2
 	ori	$a3, $zero, 74
-	bne	$s0, $a3, .LBB2_25
-.LBB2_18:                               #   in Loop: Header=BB2_5 Depth=1
+	bne	$s0, $a3, .LBB2_29
+.LBB2_20:                               #   in Loop: Header=BB2_5 Depth=1
 	slli.d	$a2, $a2, 8
 	ld.d	$a1, $a1, 144
 	or	$a3, $a2, $a0
 	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB2_21
-# %bb.19:                               # %.lr.ph155.preheader
+	bltu	$a3, $a4, .LBB2_23
+# %bb.21:                               # %.lr.ph155.preheader
                                         #   in Loop: Header=BB2_5 Depth=1
 	add.d	$a2, $a2, $a0
 	srli.d	$a2, $a2, 6
 	addi.d	$a2, $a2, 1
 	.p2align	4, , 16
-.LBB2_20:                               # %.lr.ph155
+.LBB2_22:                               # %.lr.ph155
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $a1, 512
 	addi.w	$a2, $a2, -1
 	ori	$a3, $zero, 1
-	bltu	$a3, $a2, .LBB2_20
-.LBB2_21:                               # %._crit_edge156
+	bltu	$a3, $a2, .LBB2_22
+.LBB2_23:                               # %._crit_edge156
                                         #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a0, 63
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $a1, $a0
 	st.w	$a0, $s4, 4
 	b	.LBB2_119
-.LBB2_22:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_24:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a0, $a0, 0
@@ -316,17 +343,26 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(out_num)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 87
-	bne	$s0, $a0, .LBB2_24
-# %bb.23:                               #   in Loop: Header=BB2_5 Depth=1
+	bne	$s0, $a0, .LBB2_26
+# %bb.25:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(out_char)
 	jirl	$ra, $ra, 0
-.LBB2_24:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_26:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 3
 	pcaddu18i	$ra, %call36(store_var)
 	jirl	$ra, $ra, 0
-	b	.LBB2_95
-.LBB2_25:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_27:                               #   in Loop: Header=BB2_5 Depth=1
+	ld.bu	$a0, $s3, 0
+	beqz	$a0, .LBB2_119
+# %bb.28:                               #   in Loop: Header=BB2_5 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(stdout)
+	ld.d	$a0, $a0, %got_pc_lo12(stdout)
+	ld.d	$a0, $a0, 0
+	pcaddu18i	$ra, %call36(fflush)
+	jirl	$ra, $ra, 0
+	b	.LBB2_119
+.LBB2_29:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a3, $s0, -66
 	sltui	$a4, $a3, 1
 	pcalau12i	$a3, %got_pc_hi20(c_code)
@@ -335,23 +371,23 @@ execute:                                # @execute
 	andi	$a3, $a3, 255
 	sltu	$a3, $zero, $a3
 	and	$a4, $a4, $a3
-	bnez	$a4, .LBB2_18
-# %bb.26:                               #   in Loop: Header=BB2_5 Depth=1
+	bnez	$a4, .LBB2_20
+# %bb.30:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a4, $s0, -90
 	sltu	$a4, $zero, $a4
 	or	$a3, $a4, $a3
 	bnez	$a3, .LBB2_119
-	b	.LBB2_18
-.LBB2_27:                               #   in Loop: Header=BB2_5 Depth=1
+	b	.LBB2_20
+.LBB2_31:                               #   in Loop: Header=BB2_5 Depth=1
 	pcaddu18i	$ra, %call36(pop)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_28:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_32:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.29:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.33:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a0, $a0, 0
@@ -361,7 +397,7 @@ execute:                                # @execute
 	st.d	$a2, $a0, 0
 	st.d	$a3, $a1, 0
 	b	.LBB2_119
-.LBB2_30:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_34:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -373,8 +409,8 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
-	bgez	$a2, .LBB2_32
-# %bb.31:                               #   in Loop: Header=BB2_5 Depth=1
+	bgez	$a2, .LBB2_36
+# %bb.35:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a2, $a0, 10
 	addi.d	$a3, $a3, 3
 	st.w	$a3, $s4, 4
@@ -386,12 +422,12 @@ execute:                                # @execute
 	slli.d	$a2, $a2, 10
 	sub.w	$a0, $a0, $a2
 	ldx.bu	$a2, $a1, $a0
-.LBB2_32:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_36:                               #   in Loop: Header=BB2_5 Depth=1
 	ext.w.b	$a0, $a2
 	pcaddu18i	$ra, %call36(decr_array)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_33:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_37:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -404,17 +440,17 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
 	bltz	$a2, .LBB2_106
-# %bb.34:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.38:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a2, 255
 	pcaddu18i	$ra, %call36(load_var)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_35:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_39:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.36:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.40:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $s0, 0
@@ -426,7 +462,7 @@ execute:                                # @execute
 	addi.w	$a1, $zero, -1
 	slt	$a0, $a1, $a0
 	b	.LBB2_103
-.LBB2_37:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_41:                               #   in Loop: Header=BB2_5 Depth=1
 	move	$s7, $s3
 	srai.d	$a5, $a2, 10
 	addi.w	$a0, $a3, 2
@@ -440,14 +476,14 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a6
 	ldx.b	$a2, $a5, $a2
 	bltz	$a2, .LBB2_107
-# %bb.38:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.42:                               #   in Loop: Header=BB2_5 Depth=1
 	move	$s3, $s2
 	andi	$s0, $a2, 255
 	ori	$a0, $zero, 168
 	mul.d	$s2, $s0, $a0
 	ldx.bu	$a0, $a4, $s2
 	beqz	$a0, .LBB2_108
-.LBB2_39:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_43:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(pc)
 	ld.d	$s1, $a0, %got_pc_lo12(pc)
 	move	$a0, $s1
@@ -457,17 +493,17 @@ execute:                                # @execute
 	ld.d	$a0, $s5, 0
 	add.d	$a0, $a0, $s2
 	ld.d	$s2, $a0, 160
-	beqz	$s2, .LBB2_41
+	beqz	$s2, .LBB2_45
 	.p2align	4, , 16
-.LBB2_40:                               # %.lr.ph
+.LBB2_44:                               # %.lr.ph
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(auto_var)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $s2, 8
-	bnez	$s2, .LBB2_40
-.LBB2_41:                               # %._crit_edge
+	bnez	$s2, .LBB2_44
+.LBB2_45:                               # %._crit_edge
                                         #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(fpush)
@@ -483,7 +519,7 @@ execute:                                # @execute
 	st.w	$s0, $s1, 0
 	st.w	$zero, $s1, 4
 	b	.LBB2_109
-.LBB2_42:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_46:                               #   in Loop: Header=BB2_5 Depth=1
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %got_pc_hi20(fn_stack)
 	ld.d	$a1, $a1, %got_pc_lo12(fn_stack)
@@ -496,22 +532,22 @@ execute:                                # @execute
 	ld.w	$a1, $a0, 0
 	ori	$a0, $zero, 10
 	bne	$a1, $a0, .LBB2_105
-# %bb.43:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.47:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(pc)
 	ld.d	$a0, $a0, %got_pc_lo12(pc)
 	pcaddu18i	$ra, %call36(push_b10_const)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_44:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_48:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(_one_)
 	ld.d	$a0, $a0, %got_pc_lo12(_one_)
-	b	.LBB2_92
-.LBB2_45:                               #   in Loop: Header=BB2_5 Depth=1
+	b	.LBB2_96
+.LBB2_49:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.46:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.50:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $s0, 0
@@ -521,12 +557,12 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(bc_compare)
 	jirl	$ra, $ra, 0
 	b	.LBB2_102
-.LBB2_47:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_51:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.48:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.52:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a0, $s0, 0
@@ -534,13 +570,13 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(is_zero)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_117
-# %bb.49:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.53:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
 	pcaddu18i	$ra, %call36(rt_error)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_50:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_54:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -553,12 +589,12 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
 	bltz	$a2, .LBB2_110
-# %bb.51:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.55:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a2, 255
 	pcaddu18i	$ra, %call36(store_var)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_52:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_56:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -571,17 +607,17 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
 	bltz	$a2, .LBB2_111
-# %bb.53:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.57:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a2, 255
 	pcaddu18i	$ra, %call36(store_array)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_54:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_58:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.55:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.59:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $s0, 0
@@ -592,12 +628,12 @@ execute:                                # @execute
 	jirl	$ra, $ra, 0
 	sltu	$a0, $zero, $a0
 	b	.LBB2_103
-.LBB2_56:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_60:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.57:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.61:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $s0, 0
@@ -616,19 +652,19 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(is_zero)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_118
-# %bb.58:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.62:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(is_neg)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_118
-# %bb.59:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.63:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	pcaddu18i	$ra, %call36(rt_error)
 	jirl	$ra, $ra, 0
 	b	.LBB2_118
-.LBB2_60:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_64:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -641,17 +677,17 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
 	bltz	$a2, .LBB2_112
-# %bb.61:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.65:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a2, 255
 	pcaddu18i	$ra, %call36(incr_array)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_62:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_66:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.63:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.67:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a0, $s0, 0
@@ -660,15 +696,15 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(is_zero)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_101
-# %bb.64:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.68:                               #   in Loop: Header=BB2_5 Depth=1
 	move	$a0, $zero
 	b	.LBB2_103
-.LBB2_65:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_69:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.66:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.70:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $a0, 0
@@ -679,12 +715,12 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(bc_add)
 	jirl	$ra, $ra, 0
 	b	.LBB2_118
-.LBB2_67:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_71:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.68:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.72:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $s0, 0
@@ -695,7 +731,7 @@ execute:                                # @execute
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, -1
 	b	.LBB2_102
-.LBB2_69:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_73:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -708,12 +744,12 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
 	bltz	$a2, .LBB2_113
-# %bb.70:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.74:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a2, 255
 	pcaddu18i	$ra, %call36(load_array)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_71:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_75:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a0, $a2, 10
 	addi.d	$a3, $a3, 2
 	st.w	$a3, $s4, 4
@@ -728,14 +764,14 @@ execute:                                # @execute
 	addi.d	$a0, $a0, -73
 	ori	$a1, $zero, 10
 	bltu	$a1, $a0, .LBB2_119
-# %bb.72:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.76:                               #   in Loop: Header=BB2_5 Depth=1
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI2_1)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI2_1)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
-.LBB2_73:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_77:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(i_base)
 	ld.d	$a0, $a0, %got_pc_lo12(i_base)
 	ld.w	$a1, $a0, 0
@@ -744,12 +780,12 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(push_constant)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_74:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_78:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.75:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.79:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $a0, 0
@@ -760,43 +796,6 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(bc_sub)
 	jirl	$ra, $ra, 0
 	b	.LBB2_118
-.LBB2_76:                               #   in Loop: Header=BB2_5 Depth=1
-	ori	$a0, $zero, 2
-	pcaddu18i	$ra, %call36(check_stack)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB2_119
-# %bb.77:                               #   in Loop: Header=BB2_5 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(ex_stack)
-	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
-	ld.d	$a1, $a0, 0
-	ld.d	$a0, $a1, 8
-	ld.d	$a0, $a0, 0
-	ld.d	$a1, $a1, 0
-	pcalau12i	$a2, %got_pc_hi20(scale)
-	ld.d	$a2, $a2, %got_pc_lo12(scale)
-	ld.w	$a3, $a2, 0
-	addi.d	$a2, $sp, 16
-	pcaddu18i	$ra, %call36(bc_multiply)
-	jirl	$ra, $ra, 0
-	b	.LBB2_118
-.LBB2_78:                               #   in Loop: Header=BB2_5 Depth=1
-	srai.d	$a4, $a2, 10
-	addi.w	$a0, $a3, 2
-	st.w	$a0, $s4, 4
-	bstrpick.d	$a5, $a2, 62, 53
-	add.d	$a5, $a2, $a5
-	slli.d	$a4, $a4, 3
-	ldx.d	$a4, $a1, $a4
-	bstrpick.d	$a5, $a5, 31, 10
-	slli.d	$a5, $a5, 10
-	sub.w	$a2, $a2, $a5
-	ldx.b	$a2, $a4, $a2
-	bltz	$a2, .LBB2_114
-# %bb.79:                               #   in Loop: Header=BB2_5 Depth=1
-	andi	$a0, $a2, 255
-	pcaddu18i	$ra, %call36(incr_var)
-	jirl	$ra, $ra, 0
-	b	.LBB2_119
 .LBB2_80:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
@@ -813,22 +812,59 @@ execute:                                # @execute
 	ld.d	$a2, $a2, %got_pc_lo12(scale)
 	ld.w	$a3, $a2, 0
 	addi.d	$a2, $sp, 16
+	pcaddu18i	$ra, %call36(bc_multiply)
+	jirl	$ra, $ra, 0
+	b	.LBB2_118
+.LBB2_82:                               #   in Loop: Header=BB2_5 Depth=1
+	srai.d	$a4, $a2, 10
+	addi.w	$a0, $a3, 2
+	st.w	$a0, $s4, 4
+	bstrpick.d	$a5, $a2, 62, 53
+	add.d	$a5, $a2, $a5
+	slli.d	$a4, $a4, 3
+	ldx.d	$a4, $a1, $a4
+	bstrpick.d	$a5, $a5, 31, 10
+	slli.d	$a5, $a5, 10
+	sub.w	$a2, $a2, $a5
+	ldx.b	$a2, $a4, $a2
+	bltz	$a2, .LBB2_114
+# %bb.83:                               #   in Loop: Header=BB2_5 Depth=1
+	andi	$a0, $a2, 255
+	pcaddu18i	$ra, %call36(incr_var)
+	jirl	$ra, $ra, 0
+	b	.LBB2_119
+.LBB2_84:                               #   in Loop: Header=BB2_5 Depth=1
+	ori	$a0, $zero, 2
+	pcaddu18i	$ra, %call36(check_stack)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB2_119
+# %bb.85:                               #   in Loop: Header=BB2_5 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(ex_stack)
+	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
+	ld.d	$a1, $a0, 0
+	ld.d	$a0, $a1, 8
+	ld.d	$a0, $a0, 0
+	ld.d	$a1, $a1, 0
+	pcalau12i	$a2, %got_pc_hi20(scale)
+	ld.d	$a2, $a2, %got_pc_lo12(scale)
+	ld.w	$a3, $a2, 0
+	addi.d	$a2, $sp, 16
 	pcaddu18i	$ra, %call36(bc_divide)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_118
-# %bb.82:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.86:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(rt_error)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_83:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_87:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(_zero_)
 	ld.d	$a0, $a0, %got_pc_lo12(_zero_)
-	b	.LBB2_92
-.LBB2_84:                               #   in Loop: Header=BB2_5 Depth=1
+	b	.LBB2_96
+.LBB2_88:                               #   in Loop: Header=BB2_5 Depth=1
 	beqz	$a0, .LBB2_115
-# %bb.85:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.89:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a0, $a5, 160
 	pcaddu18i	$ra, %call36(pop_vars)
 	jirl	$ra, $ra, 0
@@ -849,12 +885,12 @@ execute:                                # @execute
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s4, 0
 	b	.LBB2_119
-.LBB2_86:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_90:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 2
 	pcaddu18i	$ra, %call36(check_stack)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_119
-# %bb.87:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.91:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$s0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a1, $s0, 0
@@ -865,7 +901,7 @@ execute:                                # @execute
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	b	.LBB2_102
-.LBB2_88:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_92:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a4, $a2, 10
 	addi.w	$a0, $a3, 2
 	st.w	$a0, $s4, 4
@@ -878,12 +914,12 @@ execute:                                # @execute
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a2, $a4, $a2
 	bltz	$a2, .LBB2_116
-# %bb.89:                               #   in Loop: Header=BB2_5 Depth=1
+# %bb.93:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a2, 255
 	pcaddu18i	$ra, %call36(decr_var)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_90:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_94:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(_zero_)
 	ld.d	$a0, $a0, %got_pc_lo12(_zero_)
 	ld.d	$a0, $a0, 0
@@ -894,65 +930,13 @@ execute:                                # @execute
 	pcaddu18i	$ra, %call36(bc_sub)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
-.LBB2_91:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_95:                               #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(ex_stack)
 	ld.d	$a0, $a0, %got_pc_lo12(ex_stack)
 	ld.d	$a0, $a0, 0
-.LBB2_92:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_96:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(push_copy)
-	jirl	$ra, $ra, 0
-	b	.LBB2_119
-.LBB2_93:                               # %.preheader147.preheader
-                                        #   in Loop: Header=BB2_5 Depth=1
-	srai.d	$a1, $a2, 10
-	addi.d	$a3, $a3, 2
-	st.w	$a3, $s4, 4
-	ori	$s0, $zero, 168
-	mul.d	$a0, $a0, $s0
-	add.d	$a0, $a4, $a0
-	bstrpick.d	$a3, $a2, 62, 53
-	add.d	$a3, $a2, $a3
-	alsl.d	$a0, $a1, $a0, 3
-	ld.d	$a0, $a0, 8
-	bstrpick.d	$a1, $a3, 31, 10
-	slli.d	$a1, $a1, 10
-	sub.w	$a1, $a2, $a1
-	ldx.bu	$a0, $a0, $a1
-	ori	$s1, $zero, 34
-	beq	$a0, $s1, .LBB2_95
-	.p2align	4, , 16
-.LBB2_94:                               # %.preheader147
-                                        #   Parent Loop BB2_5 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ext.w.b	$a0, $a0
-	pcaddu18i	$ra, %call36(out_char)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $s4, 4
-	ld.d	$a1, $s5, 0
-	ld.w	$a2, $s4, 0
-	srai.d	$a3, $a0, 10
-	addi.d	$a4, $a0, 1
-	st.w	$a4, $s4, 4
-	bstrpick.d	$a4, $a0, 62, 53
-	add.d	$a4, $a0, $a4
-	mul.d	$a2, $a2, $s0
-	add.d	$a1, $a1, $a2
-	alsl.d	$a1, $a3, $a1, 3
-	ld.d	$a1, $a1, 8
-	bstrpick.d	$a2, $a4, 31, 10
-	slli.d	$a2, $a2, 10
-	sub.w	$a0, $a0, $a2
-	ldx.bu	$a0, $a1, $a0
-	bne	$a0, $s1, .LBB2_94
-.LBB2_95:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.bu	$a0, $s3, 0
-	beqz	$a0, .LBB2_119
-# %bb.96:                               #   in Loop: Header=BB2_5 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(stdout)
-	ld.d	$a0, $a0, %got_pc_lo12(stdout)
-	ld.d	$a0, $a0, 0
-	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
 	b	.LBB2_119
 .LBB2_97:                               #   in Loop: Header=BB2_5 Depth=1
@@ -1059,7 +1043,7 @@ execute:                                # @execute
 	ori	$a0, $zero, 168
 	mul.d	$s2, $s0, $a0
 	ldx.bu	$a0, $a4, $s2
-	bnez	$a0, .LBB2_39
+	bnez	$a0, .LBB2_43
 .LBB2_108:                              #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(f_names)
 	ld.d	$a0, $a0, %got_pc_lo12(f_names)
@@ -1342,99 +1326,99 @@ execute:                                # @execute
 .LJTI2_0:
 	.word	.LBB2_7-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_54-.LJTI2_0
+	.word	.LBB2_58-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_47-.LJTI2_0
-	.word	.LBB2_62-.LJTI2_0
+	.word	.LBB2_51-.LJTI2_0
+	.word	.LBB2_66-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_76-.LJTI2_0
-	.word	.LBB2_65-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_74-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_80-.LJTI2_0
-	.word	.LBB2_83-.LJTI2_0
-	.word	.LBB2_44-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_86-.LJTI2_0
-	.word	.LBB2_45-.LJTI2_0
-	.word	.LBB2_67-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_60-.LJTI2_0
-	.word	.LBB2_16-.LJTI2_0
-	.word	.LBB2_37-.LJTI2_0
-	.word	.LBB2_91-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_17-.LJTI2_0
-	.word	.LBB2_42-.LJTI2_0
 	.word	.LBB2_69-.LJTI2_0
-	.word	.LBB2_30-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_11-.LJTI2_0
-	.word	.LBB2_22-.LJTI2_0
+	.word	.LBB2_78-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_84-.LJTI2_0
-	.word	.LBB2_52-.LJTI2_0
+	.word	.LBB2_87-.LJTI2_0
+	.word	.LBB2_48-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_90-.LJTI2_0
+	.word	.LBB2_49-.LJTI2_0
+	.word	.LBB2_71-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_64-.LJTI2_0
+	.word	.LBB2_18-.LJTI2_0
+	.word	.LBB2_41-.LJTI2_0
+	.word	.LBB2_95-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_19-.LJTI2_0
+	.word	.LBB2_46-.LJTI2_0
+	.word	.LBB2_73-.LJTI2_0
+	.word	.LBB2_34-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_13-.LJTI2_0
+	.word	.LBB2_24-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_88-.LJTI2_0
+	.word	.LBB2_56-.LJTI2_0
 	.word	.LBB2_7-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_22-.LJTI2_0
+	.word	.LBB2_24-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_16-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_56-.LJTI2_0
+	.word	.LBB2_18-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_60-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_71-.LJTI2_0
-	.word	.LBB2_88-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_75-.LJTI2_0
+	.word	.LBB2_92-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_140-.LJTI2_0
-	.word	.LBB2_78-.LJTI2_0
+	.word	.LBB2_82-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_33-.LJTI2_0
+	.word	.LBB2_37-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_90-.LJTI2_0
+	.word	.LBB2_94-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_27-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_50-.LJTI2_0
+	.word	.LBB2_31-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_54-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
-	.word	.LBB2_93-.LJTI2_0
-	.word	.LBB2_28-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_104-.LJTI2_0
+	.word	.LBB2_9-.LJTI2_0
+	.word	.LBB2_32-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_104-.LJTI2_0
 	.word	.LBB2_97-.LJTI2_0
 	.word	.LBB2_99-.LJTI2_0
-	.word	.LBB2_35-.LJTI2_0
+	.word	.LBB2_39-.LJTI2_0
 .LJTI2_1:
-	.word	.LBB2_73-.LJTI2_1
+	.word	.LBB2_77-.LJTI2_1
 	.word	.LBB2_119-.LJTI2_1
 	.word	.LBB2_119-.LJTI2_1
 	.word	.LBB2_124-.LJTI2_1

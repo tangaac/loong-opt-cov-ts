@@ -368,7 +368,7 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	move	$a4, $zero
 	move	$a5, $zero
 	alsl.d	$a6, $a1, $s4, 3
-	addi.d	$a7, $a7, 16
+	addi.d	$a7, $a7, 12
 	b	.LBB1_7
 	.p2align	4, , 16
 .LBB1_6:                                #   in Loop: Header=BB1_7 Depth=2
@@ -378,27 +378,34 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	bge	$a5, $t0, .LBB1_2
 .LBB1_7:                                #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t1, $a7, -4
-	ld.w	$t2, $a7, -16
+	ld.w	$t1, $a7, 0
+	ld.w	$t2, $a7, -12
 	sub.w	$t1, $t1, $t2
 	slt	$t2, $a2, $t1
+	ld.w	$t3, $a7, 4
+	ld.w	$t4, $a7, -8
 	maskeqz	$t1, $t1, $t2
-	ld.d	$t3, $a7, 0
-	ld.d	$t4, $a7, -12
 	masknez	$t2, $a2, $t2
 	or	$t1, $t1, $t2
-	vinsgr2vr.d	$vr0, $t3, 0
-	vinsgr2vr.d	$vr1, $t4, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$t2, $vr0, 0
-	vpickve2gr.w	$t3, $vr0, 1
+	sub.w	$t2, $t3, $t4
+	slt	$t3, $a2, $t2
+	ld.w	$t4, $a7, 8
+	ld.w	$t5, $a7, -4
+	maskeqz	$t2, $t2, $t3
+	masknez	$t3, $a2, $t3
+	or	$t2, $t2, $t3
+	sub.w	$t3, $t4, $t5
+	slt	$t4, $a2, $t3
+	maskeqz	$t3, $t3, $t4
+	masknez	$t4, $a2, $t4
+	or	$t3, $t3, $t4
 	addi.d	$t1, $t1, 1
 	sltui	$t1, $t1, 1
+	addi.d	$t2, $t2, 1
 	sltui	$t2, $t2, 1
 	or	$t1, $t2, $t1
-	sltui	$t2, $t3, 1
+	addi.d	$t2, $t3, 1
+	sltui	$t2, $t2, 1
 	or	$t1, $t1, $t2
 	bnez	$t1, .LBB1_6
 # %bb.8:                                #   in Loop: Header=BB1_7 Depth=2
@@ -450,28 +457,35 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
 .LBB1_13:                               # %._crit_edge171
                                         #   in Loop: Header=BB1_14 Depth=1
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	ld.w	$a0, $a4, 12
-	ld.w	$a2, $a4, 0
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.w	$a0, $a5, 12
+	ld.w	$a2, $a5, 0
 	sub.w	$a0, $a0, $a2
 	slt	$a2, $s5, $a0
+	ld.w	$a3, $a5, 16
+	ld.w	$a4, $a5, 4
 	maskeqz	$a0, $a0, $a2
 	masknez	$a2, $s5, $a2
-	ld.d	$a3, $a4, 16
-	ld.d	$a4, $a4, 4
 	or	$a0, $a0, $a2
+	sub.w	$a2, $a3, $a4
+	slt	$a3, $s5, $a2
+	maskeqz	$a2, $a2, $a3
+	masknez	$a3, $s5, $a3
+	ld.w	$a4, $a5, 20
+	ld.w	$a5, $a5, 8
+	or	$a2, $a2, $a3
 	addi.d	$a0, $a0, 1
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a4, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$a2, $a2, 1
+	sub.w	$a3, $a4, $a5
+	slt	$a4, $s5, $a3
+	maskeqz	$a3, $a3, $a4
+	masknez	$a4, $s5, $a4
+	or	$a3, $a3, $a4
+	addi.d	$a3, $a3, 1
+	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a4
 	mul.d	$a0, $a0, $a2
-	vpickve2gr.w	$a2, $vr0, 0
-	mul.d	$a0, $a0, $a2
-	vpickve2gr.w	$a2, $vr0, 1
-	mul.d	$a0, $a0, $a2
+	mul.d	$a0, $a0, $a3
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$a4, $a4, 1
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
@@ -530,23 +544,30 @@ hypre_CommPkgCreateInfo:                # @hypre_CommPkgCreateInfo
 	ldx.w	$a0, $a0, $s2
 	sub.w	$a0, $a1, $a0
 	slt	$a1, $s5, $a0
+	ld.w	$a3, $s4, 16
+	ld.w	$a4, $s4, 4
 	maskeqz	$a0, $a0, $a1
-	ld.d	$a3, $s4, 16
-	ld.d	$a4, $s4, 4
 	masknez	$a1, $s5, $a1
 	or	$a0, $a0, $a1
-	vinsgr2vr.d	$vr0, $a3, 0
-	vinsgr2vr.d	$vr1, $a4, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vmaxi.w	$vr0, $vr0, -1
-	vaddi.wu	$vr0, $vr0, 1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a3, $vr0, 1
+	sub.w	$a1, $a3, $a4
+	slt	$a3, $s5, $a1
+	ld.w	$a4, $s4, 20
+	ld.w	$a5, $s4, 8
+	maskeqz	$a1, $a1, $a3
+	masknez	$a3, $s5, $a3
+	or	$a1, $a1, $a3
+	sub.w	$a3, $a4, $a5
+	slt	$a4, $s5, $a3
+	maskeqz	$a3, $a3, $a4
+	masknez	$a4, $s5, $a4
+	or	$a3, $a3, $a4
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
+	addi.d	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	or	$a0, $a1, $a0
-	sltui	$a1, $a3, 1
+	addi.d	$a1, $a3, 1
+	sltui	$a1, $a1, 1
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_17
 # %bb.19:                               #   in Loop: Header=BB1_18 Depth=2

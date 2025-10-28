@@ -5,20 +5,23 @@
 	.type	lisp_atan2,@function
 lisp_atan2:                             # @lisp_atan2
 # %bb.0:
-	move	$a2, $a0
-	move	$a0, $zero
-	blez	$a2, .LBB0_3
+	move	$a2, $zero
+	blez	$a0, .LBB0_3
 # %bb.1:
 	bgtz	$a1, .LBB0_3
 # %bb.2:
-	vinsgr2vr.w	$vr0, $a1, 0
-	vinsgr2vr.w	$vr0, $a2, 1
-	vsigncov.w	$vr0, $vr0, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	sltu	$a0, $a1, $a0
-	xori	$a0, $a0, 1
+	addi.w	$a2, $a1, 0
+	srai.d	$a2, $a2, 31
+	xor	$a1, $a1, $a2
+	sub.w	$a1, $a1, $a2
+	addi.w	$a2, $a0, 0
+	srai.d	$a2, $a2, 31
+	xor	$a0, $a0, $a2
+	sub.w	$a0, $a0, $a2
+	sltu	$a0, $a0, $a1
+	xori	$a2, $a0, 1
 .LBB0_3:
+	move	$a0, $a2
 	ret
 .Lfunc_end0:
 	.size	lisp_atan2, .Lfunc_end0-lisp_atan2

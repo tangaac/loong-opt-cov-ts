@@ -64,19 +64,19 @@ main:                                   # @main
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -576
-	.cfi_def_cfa_offset 576
-	st.d	$ra, $sp, 568                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 560                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 552                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 544                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 536                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 528                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 520                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 512                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 504                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 496                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 488                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -528
+	.cfi_def_cfa_offset 528
+	st.d	$ra, $sp, 520                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 512                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 504                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 496                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 488                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 480                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 472                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 464                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 456                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 448                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 440                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -88,21 +88,19 @@ main:                                   # @main
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
+	addi.w	$s0, $zero, -1
+	lu32i.d	$s0, 0
+	st.w	$s0, $sp, 428
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	st.d	$a0, $sp, 456
+	st.d	$a0, $sp, 408
+	ori	$a0, $zero, 100
+	st.d	$a0, $sp, 416
 	pcalau12i	$a0, %got_pc_hi20(N)
 	ld.d	$a0, $a0, %got_pc_lo12(N)
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 100
-	st.d	$a1, $sp, 128
-	addi.w	$s0, $zero, -1
-	lu32i.d	$s0, 0
-	st.w	$s0, $sp, 140
-	st.w	$a0, $sp, 136
-	vld	$vr0, $sp, 128
-	vst	$vr0, $sp, 464
+	st.w	$a0, $sp, 424
 	ori	$a0, $zero, 5
 	pcaddu18i	$ra, %call36(srandom)
 	jirl	$ra, $ra, 0
@@ -151,8 +149,8 @@ main:                                   # @main
 	ld.d	$a1, $a1, %got_pc_lo12(_Z11return_nullP7roadletP7vehicle9direction)
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a1, $a0, 80
-	st.d	$fp, $sp, 448
-	addi.d	$a0, $sp, 448
+	st.d	$fp, $sp, 400
+	addi.d	$a0, $sp, 400
 	st.d	$a0, $fp, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
@@ -277,37 +275,36 @@ main:                                   # @main
 	ori	$a1, $zero, 10
 	bne	$s5, $a1, .LBB2_3
 # %bb.6:
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	st.w	$s3, $sp, 396
 	pcalau12i	$a1, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.5)
-	st.d	$a1, $sp, 424
-	st.w	$a0, $sp, 120
-	ori	$a0, $zero, 100
-	st.d	$a0, $sp, 112
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	st.w	$s3, $sp, 124
-	vld	$vr0, $sp, 112
-	vst	$vr0, $sp, 432
-	st.d	$s0, $sp, 416
-	addi.d	$a0, $sp, 416
-	vld	$vr0, $sp, 432
+	st.d	$a1, $sp, 376
+	ori	$a2, $zero, 100
+	st.d	$a2, $sp, 384
+	st.w	$a0, $sp, 392
+	st.d	$s0, $sp, 368
+	addi.d	$a0, $sp, 368
 	st.d	$a0, $s0, 8
-	st.d	$s0, $sp, 384
-	st.d	$a1, $sp, 392
-	vst	$vr0, $sp, 400
+	ld.d	$a0, $sp, 392
+	st.d	$s0, $sp, 336
+	st.d	$a1, $sp, 344
+	st.d	$a2, $sp, 352
+	st.d	$a0, $sp, 360
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
-	addi.d	$a1, $sp, 384
+	addi.d	$a1, $sp, 336
 	pcaddu18i	$ra, %call36(_ZlsRSo3car)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 10
-	st.b	$a1, $sp, 248
+	st.b	$a1, $sp, 200
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, -24
 	add.d	$a1, $a0, $a1
 	ld.d	$a1, $a1, 16
 	beqz	$a1, .LBB2_8
 # %bb.7:
-	addi.d	$a1, $sp, 248
+	addi.d	$a1, $sp, 200
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
@@ -319,18 +316,18 @@ main:                                   # @main
 .LBB2_9:                                # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c.exit
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.6)
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN16intersection_4x4C1EPKc)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 200
 	move	$a1, $s2
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(_ZN16intersection_4x410connectSinEP7roadletS1_)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZTV5light+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV5light+16)
-	st.d	$a0, $sp, 208
-	addi.d	$a0, $sp, 208
+	st.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 160
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 4
@@ -339,12 +336,12 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(_ZTV12broken_light+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV12broken_light+16)
-	st.d	$a0, $sp, 208
+	st.d	$a0, $sp, 160
 	lu12i.w	$s1, 24
 	ori	$fp, $s1, 1696
 	.p2align	4, , 16
 .LBB2_10:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 208
+	addi.d	$a0, $sp, 160
 	pcaddu18i	$ra, %call36(_ZN5light4tickEv)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
@@ -354,7 +351,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB2_12:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $sp, 248
+	ld.d	$a0, $sp, 200
 	pcaddu18i	$ra, %call36(_ZN5light4tickEv)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
@@ -398,25 +395,24 @@ main:                                   # @main
 	st.d	$fp, $a1, 16
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	st.d	$a1, $a2, 80
+	st.w	$s3, $sp, 156
 	pcalau12i	$a1, %pc_hi20(.L.str.9)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.9)
-	st.d	$a1, $sp, 184
+	st.d	$a1, $sp, 136
 	ori	$a2, $zero, 100
-	st.d	$a2, $sp, 96
-	st.w	$s3, $sp, 108
-	st.w	$a0, $sp, 104
-	vld	$vr0, $sp, 96
-	vst	$vr0, $sp, 192
-	st.d	$fp, $sp, 176
-	addi.d	$a0, $sp, 176
-	vld	$vr0, $sp, 192
+	st.d	$a2, $sp, 144
+	st.w	$a0, $sp, 152
+	st.d	$fp, $sp, 128
+	addi.d	$a0, $sp, 128
 	st.d	$a0, $fp, 8
-	st.d	$fp, $sp, 144
-	st.d	$a1, $sp, 152
-	vst	$vr0, $sp, 160
+	ld.d	$a0, $sp, 152
+	st.d	$fp, $sp, 96
+	st.d	$a1, $sp, 104
+	st.d	$a2, $sp, 112
+	st.d	$a0, $sp, 120
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
-	addi.d	$a1, $sp, 144
+	addi.d	$a1, $sp, 96
 	pcaddu18i	$ra, %call36(_ZlsRSo3car)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $a0, 0
@@ -424,10 +420,10 @@ main:                                   # @main
 	add.d	$a1, $a0, $a1
 	ld.d	$a1, $a1, 16
 	ori	$a2, $zero, 10
-	st.b	$a2, $sp, 487
+	st.b	$a2, $sp, 439
 	beqz	$a1, .LBB2_17
 # %bb.16:
-	addi.d	$a1, $sp, 487
+	addi.d	$a1, $sp, 439
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
@@ -437,7 +433,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .LBB2_18:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c.exit71
-	addi.d	$a0, $sp, 248
+	addi.d	$a0, $sp, 200
 	move	$a1, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZN16intersection_4x411connectEoutEP7roadletS1_)
@@ -445,25 +441,25 @@ main:                                   # @main
 	ori	$fp, $s1, 1696
 	.p2align	4, , 16
 .LBB2_19:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 448
+	addi.d	$a0, $sp, 400
 	pcaddu18i	$ra, %call36(_ZN7vehicle4tickEv)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
 	bnez	$fp, .LBB2_19
 # %bb.20:
 	move	$a0, $zero
-	ld.d	$s8, $sp, 488                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 512                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 520                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 528                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 536                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 544                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 568                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 576
+	ld.d	$s8, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 472                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 488                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 504                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 520                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 528
 	ret
 .LBB2_21:
 .Ltmp17:                                # EH_LABEL

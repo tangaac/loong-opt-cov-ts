@@ -35,25 +35,16 @@ bar:                                    # @bar
 	addi.d	$sp, $sp, -2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 2000                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
-	addi.d	$sp, $sp, -624
+	addi.d	$sp, $sp, -512
 	lu12i.w	$a0, 10
 	ori	$a1, $a0, 629
-	st.w	$a1, $sp, 68
+	st.w	$a1, $sp, 28
 	ori	$a0, $zero, 1
 	lu12i.w	$a2, -1
 	ori	$a2, $a2, 1604
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 56
+	addi.d	$a4, $sp, 16
 	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
@@ -70,149 +61,148 @@ bar:                                    # @bar
 	bnez	$a2, .LBB1_1
 # %bb.2:
 	ori	$a0, $zero, 1
-	st.w	$a0, $sp, 64
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s5, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s6, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s7, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s8, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$fp, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s0, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	addi.d	$a0, $sp, 56
-	pcaddu18i	$ra, %call36(foo)
-	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	addi.d	$a0, $sp, 56
+	st.w	$a0, $sp, 24
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(p)
-	addi.d	$s4, $a1, %pc_lo12(p)
-	vld	$vr0, $s4, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	vinsgr2vr.b	$vr1, $a1, 0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	vinsgr2vr.b	$vr1, $a1, 1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	vinsgr2vr.b	$vr1, $a1, 2
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	vinsgr2vr.b	$vr1, $a1, 3
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	vinsgr2vr.b	$vr1, $a1, 4
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	vinsgr2vr.b	$vr1, $a1, 5
-	vinsgr2vr.b	$vr1, $s5, 6
-	vinsgr2vr.b	$vr1, $s6, 7
-	vinsgr2vr.b	$vr1, $s7, 8
-	vinsgr2vr.b	$vr1, $s8, 9
-	vinsgr2vr.b	$vr1, $fp, 10
-	vinsgr2vr.b	$vr1, $s0, 11
-	vinsgr2vr.b	$vr1, $s1, 12
-	vinsgr2vr.b	$vr1, $s2, 13
-	vinsgr2vr.b	$vr1, $s3, 14
-	vinsgr2vr.b	$vr1, $a0, 15
-	vxor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 0
-	addi.d	$a0, $sp, 56
+	addi.d	$fp, $a1, %pc_lo12(p)
+	ld.b	$a1, $fp, 0
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 0
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 16
+	ld.b	$a1, $fp, 1
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 16
-	addi.d	$a0, $sp, 56
+	st.b	$a0, $fp, 1
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 17
+	ld.b	$a1, $fp, 2
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 17
-	addi.d	$a0, $sp, 56
+	st.b	$a0, $fp, 2
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 18
+	ld.b	$a1, $fp, 3
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 18
-	addi.d	$a0, $sp, 56
+	st.b	$a0, $fp, 3
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 19
+	ld.b	$a1, $fp, 4
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 19
-	addi.d	$a0, $sp, 56
+	st.b	$a0, $fp, 4
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 20
+	ld.b	$a1, $fp, 5
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 20
-	addi.d	$a0, $sp, 56
+	st.b	$a0, $fp, 5
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 21
+	ld.b	$a1, $fp, 6
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 21
-	addi.d	$a0, $sp, 56
+	st.b	$a0, $fp, 6
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.b	$a1, $s4, 22
+	ld.b	$a1, $fp, 7
 	xor	$a0, $a1, $a0
-	st.b	$a0, $s4, 22
-	addi.d	$sp, $sp, 624
-	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
+	st.b	$a0, $fp, 7
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 8
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 8
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 9
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 9
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 10
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 10
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 11
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 11
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 12
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 12
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 13
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 13
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 14
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 14
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 15
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 15
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 16
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 16
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 17
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 17
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 18
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 18
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 19
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 19
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 20
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 20
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 21
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 21
+	addi.d	$a0, $sp, 16
+	pcaddu18i	$ra, %call36(foo)
+	jirl	$ra, $ra, 0
+	ld.b	$a1, $fp, 22
+	xor	$a0, $a1, $a0
+	st.b	$a0, $fp, 22
+	addi.d	$sp, $sp, 512
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
@@ -338,7 +328,6 @@ foo:                                    # @foo
                                         # -- End function
 	.type	p,@object                       # @p
 	.data
-	.p2align	4, 0x0
 p:
 	.ascii	"\300I\0272b\036.\325L\031(I\221\344r\203\221=\223\203\263a8"
 	.size	p, 23

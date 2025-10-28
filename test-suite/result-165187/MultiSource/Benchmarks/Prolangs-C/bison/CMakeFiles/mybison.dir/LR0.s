@@ -1377,9 +1377,9 @@ augment_automaton:                      # @augment_automaton
 	blt	$a4, $a0, .LBB9_8
 .LBB9_10:                               # %.critedge
 	ld.h	$s4, $a1, 16
-	bne	$a2, $a3, .LBB9_21
+	bne	$a2, $a3, .LBB9_18
 # %bb.11:
-	blez	$s4, .LBB9_29
+	blez	$s4, .LBB9_26
 	.p2align	4, , 16
 .LBB9_12:                               # %.lr.ph107
                                         # =>This Inner Loop Header: Depth=1
@@ -1388,7 +1388,7 @@ augment_automaton:                      # @augment_automaton
 	ld.h	$a0, $fp, 8
 	blt	$a0, $s4, .LBB9_12
 # %bb.13:                               # %._crit_edge108
-	bne	$a0, $s4, .LBB9_30
+	bne	$a0, $s4, .LBB9_27
 .LBB9_14:
 	ld.h	$a0, $fp, 10
 	slli.d	$a0, $a0, 1
@@ -1397,48 +1397,37 @@ augment_automaton:                      # @augment_automaton
 	jirl	$ra, $ra, 0
 	ld.h	$a1, $fp, 10
 	ld.h	$a2, $s1, %pc_lo12(nstates)
-	ld.d	$a3, $fp, 0
+	ld.d	$a4, $fp, 0
 	addi.d	$a1, $a1, 1
 	st.h	$a1, $a0, 10
 	st.h	$a2, $a0, 12
-	ld.hu	$a1, $fp, 10
-	st.d	$a3, $a0, 0
-	ext.w.h	$a2, $a1
+	ld.h	$a3, $fp, 10
+	st.d	$a4, $a0, 0
 	st.h	$s4, $a0, 8
-	blez	$a2, .LBB9_20
+	blez	$a3, .LBB9_17
 # %bb.15:                               # %.lr.ph113.preheader
-	ori	$a2, $zero, 8
-	bltu	$a1, $a2, .LBB9_17
-# %bb.16:                               # %vector.memcheck139
-	sub.d	$a2, $fp, $a0
-	addi.d	$a2, $a2, -2
-	ori	$a3, $zero, 16
-	bgeu	$a2, $a3, .LBB9_43
-.LBB9_17:
-	move	$a2, $a1
-.LBB9_18:                               # %.lr.ph113.preheader154
-	addi.d	$a1, $a2, 1
-	alsl.d	$a3, $a2, $fp, 1
-	addi.d	$a3, $a3, 10
-	alsl.d	$a2, $a2, $a0, 1
-	addi.d	$a2, $a2, 12
+	addi.d	$a1, $a3, 1
+	alsl.d	$a2, $a3, $fp, 1
+	addi.d	$a2, $a2, 10
+	alsl.d	$a3, $a3, $a0, 1
+	addi.d	$a3, $a3, 12
 	ori	$a4, $zero, 1
 	.p2align	4, , 16
-.LBB9_19:                               # %.lr.ph113
+.LBB9_16:                               # %.lr.ph113
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a5, $a3, 0
-	st.h	$a5, $a2, 0
+	ld.h	$a5, $a2, 0
+	st.h	$a5, $a3, 0
 	addi.d	$a1, $a1, -1
-	addi.d	$a3, $a3, -2
 	addi.d	$a2, $a2, -2
-	bltu	$a4, $a1, .LBB9_19
-.LBB9_20:                               # %._crit_edge114
+	addi.d	$a3, $a3, -2
+	bltu	$a4, $a1, .LBB9_16
+.LBB9_17:                               # %._crit_edge114
 	st.d	$a0, $s3, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB9_6
-.LBB9_21:
+.LBB9_18:
 	slli.d	$a0, $a0, 1
 	addi.d	$a0, $a0, 16
 	pcaddu18i	$ra, %call36(mallocate)
@@ -1448,21 +1437,21 @@ augment_automaton:                      # @augment_automaton
 	st.d	$a1, $a0, 0
 	addi.d	$a1, $a2, 1
 	st.h	$a1, $a0, 10
-	blez	$s4, .LBB9_37
-# %bb.22:                               # %iter.check
+	blez	$s4, .LBB9_34
+# %bb.19:                               # %iter.check
 	ori	$a2, $zero, 8
 	move	$a1, $zero
-	bltu	$s4, $a2, .LBB9_35
-# %bb.23:                               # %iter.check
+	bltu	$s4, $a2, .LBB9_32
+# %bb.20:                               # %iter.check
 	sub.d	$a2, $a0, $fp
 	ori	$a3, $zero, 32
-	bltu	$a2, $a3, .LBB9_35
-# %bb.24:                               # %vector.main.loop.iter.check
+	bltu	$a2, $a3, .LBB9_32
+# %bb.21:                               # %vector.main.loop.iter.check
 	ori	$a1, $zero, 16
-	bgeu	$s4, $a1, .LBB9_31
-# %bb.25:
+	bgeu	$s4, $a1, .LBB9_28
+# %bb.22:
 	move	$a1, $zero
-.LBB9_26:                               # %vec.epilog.ph
+.LBB9_23:                               # %vec.epilog.ph
 	move	$a3, $a1
 	bstrpick.d	$a1, $s4, 14, 3
 	slli.d	$a1, $a1, 3
@@ -1472,22 +1461,22 @@ augment_automaton:                      # @augment_automaton
 	add.d	$a3, $a0, $a4
 	add.d	$a4, $fp, $a4
 	.p2align	4, , 16
-.LBB9_27:                               # %vec.epilog.vector.body
+.LBB9_24:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB9_27
-# %bb.28:                               # %vec.epilog.middle.block
-	bne	$a1, $s4, .LBB9_35
-	b	.LBB9_37
-.LBB9_29:
+	bnez	$a2, .LBB9_24
+# %bb.25:                               # %vec.epilog.middle.block
+	bne	$a1, $s4, .LBB9_32
+	b	.LBB9_34
+.LBB9_26:
 	move	$a0, $zero
                                         # implicit-def: $r26
 	beq	$a0, $s4, .LBB9_14
-.LBB9_30:
+.LBB9_27:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
@@ -1499,7 +1488,7 @@ augment_automaton:                      # @augment_automaton
 	st.h	$a1, $a0, 12
 	st.d	$a0, $s3, 0
 	b	.LBB9_6
-.LBB9_31:                               # %vector.ph
+.LBB9_28:                               # %vector.ph
 	andi	$a2, $s4, 8
 	bstrpick.d	$a1, $s4, 14, 4
 	slli.d	$a1, $a1, 4
@@ -1507,7 +1496,7 @@ augment_automaton:                      # @augment_automaton
 	addi.d	$a4, $fp, 28
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_32:                               # %vector.body
+.LBB9_29:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, -16
 	vld	$vr1, $a4, 0
@@ -1516,52 +1505,52 @@ augment_automaton:                      # @augment_automaton
 	addi.d	$a5, $a5, -16
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB9_32
-# %bb.33:                               # %middle.block
-	beq	$a1, $s4, .LBB9_37
-# %bb.34:                               # %vec.epilog.iter.check
-	bnez	$a2, .LBB9_26
-.LBB9_35:                               # %vec.epilog.scalar.ph.preheader
+	bnez	$a5, .LBB9_29
+# %bb.30:                               # %middle.block
+	beq	$a1, $s4, .LBB9_34
+# %bb.31:                               # %vec.epilog.iter.check
+	bnez	$a2, .LBB9_23
+.LBB9_32:                               # %vec.epilog.scalar.ph.preheader
 	slli.d	$a2, $a1, 1
 	addi.d	$a3, $a2, 12
 	add.d	$a2, $fp, $a3
 	add.d	$a3, $a0, $a3
 	sub.d	$a1, $s4, $a1
 	.p2align	4, , 16
-.LBB9_36:                               # %vec.epilog.scalar.ph
+.LBB9_33:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a4, $a2, 0
 	st.h	$a4, $a3, 0
 	addi.d	$a2, $a2, 2
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 2
-	bnez	$a1, .LBB9_36
-.LBB9_37:                               # %._crit_edge
+	bnez	$a1, .LBB9_33
+.LBB9_34:                               # %._crit_edge
 	ld.h	$a1, $s1, %pc_lo12(nstates)
 	alsl.d	$a2, $s4, $a0, 1
 	st.h	$a1, $a2, 12
 	ld.h	$a1, $fp, 10
-	bge	$s4, $a1, .LBB9_40
-# %bb.38:                               # %.lr.ph103
+	bge	$s4, $a1, .LBB9_37
+# %bb.35:                               # %.lr.ph103
 	alsl.d	$a1, $s4, $fp, 1
 	addi.d	$a1, $a1, 12
 	addi.d	$a2, $a2, 14
 	.p2align	4, , 16
-.LBB9_39:                               # =>This Inner Loop Header: Depth=1
+.LBB9_36:                               # =>This Inner Loop Header: Depth=1
 	ld.h	$a3, $a1, 0
 	st.h	$a3, $a2, 0
 	ld.h	$a3, $fp, 10
 	addi.d	$s4, $s4, 1
 	addi.d	$a1, $a1, 2
 	addi.d	$a2, $a2, 2
-	blt	$s4, $a3, .LBB9_39
-.LBB9_40:                               # %._crit_edge104
+	blt	$s4, $a3, .LBB9_36
+.LBB9_37:                               # %._crit_edge104
 	ld.d	$a1, $s2, %pc_lo12(last_shift)
 	st.d	$a0, $s3, %pc_lo12(first_shift)
-	bne	$a1, $fp, .LBB9_42
-# %bb.41:
+	bne	$a1, $fp, .LBB9_39
+# %bb.38:
 	st.d	$a0, $s2, %pc_lo12(last_shift)
-.LBB9_42:
+.LBB9_39:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -1588,27 +1577,6 @@ augment_automaton:                      # @augment_automaton
 	st.h	$a2, $a0, 12
 	st.d	$a0, $a1, 0
 	b	.LBB9_5
-.LBB9_43:                               # %vector.ph143
-	bstrpick.d	$a2, $a1, 14, 3
-	slli.d	$a3, $a2, 3
-	andi	$a2, $a1, 7
-	alsl.d	$a4, $a1, $a0, 1
-	addi.d	$a4, $a4, -2
-	alsl.d	$a5, $a1, $fp, 1
-	addi.d	$a5, $a5, -4
-	move	$a6, $a3
-	.p2align	4, , 16
-.LBB9_44:                               # %vector.body146
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a4, $a4, -16
-	addi.d	$a5, $a5, -16
-	bnez	$a6, .LBB9_44
-# %bb.45:                               # %middle.block151
-	beq	$a3, $a1, .LBB9_20
-	b	.LBB9_18
 .Lfunc_end9:
 	.size	augment_automaton, .Lfunc_end9-augment_automaton
                                         # -- End function
@@ -1629,97 +1597,84 @@ get_state:                              # @get_state
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$s3, %pc_hi20(kernel_base)
-	ld.d	$a1, $s3, %pc_lo12(kernel_base)
-	pcalau12i	$s4, %pc_hi20(kernel_end)
-	ld.d	$a2, $s4, %pc_lo12(kernel_end)
+	pcalau12i	$s5, %pc_hi20(kernel_base)
+	ld.d	$a1, $s5, %pc_lo12(kernel_base)
+	pcalau12i	$s6, %pc_hi20(kernel_end)
+	ld.d	$a2, $s6, %pc_lo12(kernel_end)
 	move	$fp, $a0
-	slli.d	$s2, $a0, 3
-	ldx.d	$s1, $a1, $s2
-	ldx.d	$s0, $a2, $s2
+	slli.d	$s4, $a0, 3
+	ldx.d	$s1, $a1, $s4
+	ldx.d	$s0, $a2, $s4
 	sub.d	$a0, $s0, $s1
 	bgeu	$s1, $s0, .LBB10_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a1, $s1, 2
 	sltu	$a2, $a1, $s0
-	masknez	$a1, $a1, $a2
+	masknez	$a3, $a1, $a2
 	maskeqz	$a2, $s0, $a2
-	or	$a1, $a2, $a1
-	nor	$a2, $s1, $zero
-	add.d	$a1, $a1, $a2
-	ori	$a2, $zero, 14
-	bgeu	$a1, $a2, .LBB10_4
+	or	$a2, $a2, $a3
+	nor	$a3, $s1, $zero
+	add.d	$a2, $a2, $a3
+	ori	$a3, $zero, 2
+	bgeu	$a2, $a3, .LBB10_4
 # %bb.2:
-	move	$a4, $zero
-	move	$a1, $s1
+	move	$a1, $zero
+	move	$a2, $s1
 	b	.LBB10_7
 .LBB10_3:
 	move	$a1, $zero
 	b	.LBB10_9
 .LBB10_4:                               # %vector.ph
-	srli.d	$a1, $a1, 1
-	addi.d	$a2, $a1, 1
-	move	$a3, $a2
-	bstrins.d	$a3, $zero, 2, 0
-	alsl.d	$a1, $a3, $s1, 1
-	vrepli.b	$vr0, 0
-	addi.d	$a4, $s1, 8
-	move	$a5, $a3
-	vori.b	$vr1, $vr0, 0
+	srli.d	$a2, $a2, 1
+	addi.d	$a3, $a2, 1
+	move	$a5, $zero
+	move	$a6, $zero
+	move	$a4, $a3
+	bstrins.d	$a4, $zero, 0, 0
+	alsl.d	$a2, $a4, $s1, 1
+	move	$a7, $a4
 	.p2align	4, , 16
 .LBB10_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a4, -8
-	ld.d	$a7, $a4, 0
-	vinsgr2vr.d	$vr2, $a6, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vadd.w	$vr0, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr3
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 16
-	bnez	$a5, .LBB10_5
+	ld.h	$t0, $a1, -2
+	ld.h	$t1, $a1, 0
+	add.d	$a5, $a5, $t0
+	add.d	$a6, $a6, $t1
+	addi.d	$a7, $a7, -2
+	addi.d	$a1, $a1, 4
+	bnez	$a7, .LBB10_5
 # %bb.6:                                # %middle.block
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a4, $vr0, 0
-	beq	$a2, $a3, .LBB10_8
+	add.w	$a1, $a6, $a5
+	beq	$a3, $a4, .LBB10_8
 	.p2align	4, , 16
 .LBB10_7:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a2, $a1, 0
-	addi.d	$a3, $a1, 2
-	add.d	$a4, $a4, $a2
-	move	$a1, $a3
-	bltu	$a3, $s0, .LBB10_7
+	ld.h	$a3, $a2, 0
+	addi.d	$a4, $a2, 2
+	add.w	$a1, $a1, $a3
+	move	$a2, $a4
+	bltu	$a4, $s0, .LBB10_7
 .LBB10_8:                               # %._crit_edge.loopexit
-	addi.w	$a1, $a4, 0
 	lu12i.w	$a2, -516494
 	ori	$a2, $a2, 707
-	mul.d	$a1, $a1, $a2
-	srli.d	$a1, $a1, 32
-	add.w	$a1, $a1, $a4
-	bstrpick.d	$a2, $a1, 31, 31
-	srli.d	$a1, $a1, 9
-	add.d	$a1, $a1, $a2
-	ori	$a2, $zero, 1009
-	mul.d	$a1, $a1, $a2
-	sub.w	$a1, $a4, $a1
+	mul.d	$a2, $a1, $a2
+	srli.d	$a2, $a2, 32
+	add.w	$a2, $a2, $a1
+	bstrpick.d	$a3, $a2, 31, 31
+	srli.d	$a2, $a2, 9
+	add.d	$a2, $a2, $a3
+	ori	$a3, $zero, 1009
+	mul.d	$a2, $a2, $a3
+	sub.w	$a1, $a1, $a2
 .LBB10_9:                               # %._crit_edge
-	pcalau12i	$s6, %pc_hi20(state_table)
-	ld.d	$a2, $s6, %pc_lo12(state_table)
-	slli.d	$s5, $a1, 3
-	ldx.d	$a2, $a2, $s5
+	pcalau12i	$s3, %pc_hi20(state_table)
+	ld.d	$a2, $s3, %pc_lo12(state_table)
+	slli.d	$s2, $a1, 3
+	ldx.d	$a2, $a2, $s2
 	srli.d	$s8, $a0, 1
 	beqz	$a2, .LBB10_18
 # %bb.10:                               # %.preheader
-	ld.d	$a0, $s3, %pc_lo12(kernel_base)
+	ld.d	$a0, $s5, %pc_lo12(kernel_base)
 	alsl.d	$a0, $fp, $a0, 3
 	addi.w	$a1, $s8, 0
 	b	.LBB10_13
@@ -1768,10 +1723,10 @@ get_state:                              # @get_state
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(toomany)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, %pc_lo12(kernel_base)
-	ld.d	$a1, $s4, %pc_lo12(kernel_end)
-	ldx.d	$s1, $a0, $s2
-	ldx.d	$s0, $a1, $s2
+	ld.d	$a0, $s5, %pc_lo12(kernel_base)
+	ld.d	$a1, $s6, %pc_lo12(kernel_end)
+	ldx.d	$s1, $a0, $s4
+	ldx.d	$s0, $a1, $s4
 	sub.d	$a0, $s0, $s1
 	srli.d	$s8, $a0, 1
 .LBB10_20:
@@ -1785,7 +1740,7 @@ get_state:                              # @get_state
 	st.h	$a1, $a0, 16
 	st.h	$s8, $a0, 20
 	bgeu	$s1, $s0, .LBB10_49
-# %bb.21:                               # %iter.check125
+# %bb.21:                               # %iter.check124
 	addi.d	$a2, $s1, 2
 	sltu	$a3, $a2, $s0
 	masknez	$a2, $a2, $a3
@@ -1814,10 +1769,10 @@ get_state:                              # @get_state
 	pcaddu18i	$ra, %call36(toomany)
 	jirl	$ra, $ra, 0
 .LBB10_26:
-	ld.d	$a0, $s3, %pc_lo12(kernel_base)
-	ld.d	$a1, $s4, %pc_lo12(kernel_end)
-	ldx.d	$s3, $a0, $s2
-	ldx.d	$s2, $a1, $s2
+	ld.d	$a0, $s5, %pc_lo12(kernel_base)
+	ld.d	$a1, $s6, %pc_lo12(kernel_end)
+	ldx.d	$s3, $a0, $s4
+	ldx.d	$s2, $a1, $s4
 	sub.d	$a0, $s2, $s3
 	srli.d	$s4, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 1
@@ -1844,7 +1799,7 @@ get_state:                              # @get_state
 # %bb.28:
 	move	$a4, $s3
 	b	.LBB10_55
-.LBB10_29:                              # %vector.memcheck119
+.LBB10_29:                              # %vector.memcheck118
 	sub.d	$a3, $a0, $s1
 	addi.d	$a3, $a3, 22
 	ori	$a5, $zero, 32
@@ -1860,14 +1815,14 @@ get_state:                              # @get_state
 # %bb.32:
 	move	$a4, $s3
 	b	.LBB10_55
-.LBB10_33:                              # %vector.main.loop.iter.check127
+.LBB10_33:                              # %vector.main.loop.iter.check126
 	srli.d	$a3, $a4, 1
 	ori	$a5, $zero, 30
 	addi.d	$a3, $a3, 1
 	bgeu	$a4, $a5, .LBB10_43
 # %bb.34:
 	move	$a5, $zero
-.LBB10_35:                              # %vec.epilog.ph144
+.LBB10_35:                              # %vec.epilog.ph143
 	move	$a6, $a3
 	bstrins.d	$a6, $zero, 2, 0
 	alsl.d	$a4, $a6, $s1, 1
@@ -1877,7 +1832,7 @@ get_state:                              # @get_state
 	alsl.d	$t0, $a5, $s1, 1
 	sub.d	$a5, $a5, $a6
 	.p2align	4, , 16
-.LBB10_36:                              # %vec.epilog.vector.body147
+.LBB10_36:                              # %vec.epilog.vector.body146
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $t0, 0
 	vst	$vr0, $a7, 0
@@ -1885,7 +1840,7 @@ get_state:                              # @get_state
 	addi.d	$a5, $a5, 8
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB10_36
-# %bb.37:                               # %vec.epilog.middle.block155
+# %bb.37:                               # %vec.epilog.middle.block154
 	bne	$a3, $a6, .LBB10_48
 	b	.LBB10_49
 .LBB10_38:                              # %vector.main.loop.iter.check
@@ -1916,7 +1871,7 @@ get_state:                              # @get_state
 # %bb.42:                               # %vec.epilog.middle.block
 	bne	$a3, $a6, .LBB10_55
 	b	.LBB10_56
-.LBB10_43:                              # %vector.ph128
+.LBB10_43:                              # %vector.ph127
 	andi	$a4, $a3, 8
 	move	$a5, $a3
 	bstrins.d	$a5, $zero, 3, 0
@@ -1924,7 +1879,7 @@ get_state:                              # @get_state
 	addi.d	$a7, $s1, 16
 	move	$t0, $a5
 	.p2align	4, , 16
-.LBB10_44:                              # %vector.body131
+.LBB10_44:                              # %vector.body130
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a7, -16
 	vld	$vr1, $a7, 0
@@ -1934,9 +1889,9 @@ get_state:                              # @get_state
 	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB10_44
-# %bb.45:                               # %middle.block138
+# %bb.45:                               # %middle.block137
 	beq	$a3, $a5, .LBB10_49
-# %bb.46:                               # %vec.epilog.iter.check142
+# %bb.46:                               # %vec.epilog.iter.check141
 	bnez	$a4, .LBB10_35
 # %bb.47:
 	alsl.d	$a4, $a5, $s1, 1
@@ -1955,11 +1910,11 @@ get_state:                              # @get_state
 	pcalau12i	$a2, %pc_hi20(last_state)
 	ld.d	$a3, $a2, %pc_lo12(last_state)
 	st.d	$a0, $a3, 0
-	ld.d	$a3, $s6, %pc_lo12(state_table)
+	ld.d	$a3, $s3, %pc_lo12(state_table)
 	st.d	$a0, $a2, %pc_lo12(last_state)
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $s7, %pc_lo12(nstates)
-	stx.d	$a0, $a3, $s5
+	stx.d	$a0, $a3, $s2
 	b	.LBB10_57
 .LBB10_50:                              # %vector.ph94
 	andi	$a4, $a3, 8
@@ -1979,7 +1934,7 @@ get_state:                              # @get_state
 	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB10_51
-# %bb.52:                               # %middle.block104
+# %bb.52:                               # %middle.block103
 	beq	$a3, $a5, .LBB10_56
 # %bb.53:                               # %vec.epilog.iter.check
 	bnez	$a4, .LBB10_40

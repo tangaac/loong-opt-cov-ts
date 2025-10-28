@@ -1272,79 +1272,56 @@ gz_avail:                               # @gz_avail
 	beqz	$a0, .LBB12_5
 # %bb.3:
 	move	$a0, $zero
-	b	.LBB12_27
+	b	.LBB12_23
 .LBB12_4:
 	addi.w	$a0, $zero, -1
-	b	.LBB12_27
+	b	.LBB12_23
 .LBB12_5:
 	ld.w	$a0, $fp, 128
-	beqz	$a0, .LBB12_10
+	beqz	$a0, .LBB12_13
 # %bb.6:                                # %iter.check
 	ld.d	$a4, $fp, 48
 	ld.d	$a3, $fp, 120
-	ori	$a1, $zero, 8
-	bltu	$a0, $a1, .LBB12_11
+	ori	$a1, $zero, 16
+	bltu	$a0, $a1, .LBB12_14
 # %bb.7:                                # %iter.check
 	sub.d	$a1, $a4, $a3
 	ori	$a2, $zero, 32
-	bltu	$a1, $a2, .LBB12_11
+	bltu	$a1, $a2, .LBB12_14
 # %bb.8:                                # %vector.main.loop.iter.check
 	bstrpick.d	$a1, $a0, 31, 0
-	bgeu	$a0, $a2, .LBB12_12
+	bgeu	$a0, $a2, .LBB12_25
 # %bb.9:
 	move	$a6, $zero
-	b	.LBB12_16
-.LBB12_10:
-	move	$a0, $zero
-	b	.LBB12_21
-.LBB12_11:
-	move	$a2, $a4
-	move	$a5, $a3
-	b	.LBB12_19
-.LBB12_12:                              # %vector.ph
-	andi	$a2, $a1, 24
-	bstrpick.d	$a5, $a1, 31, 5
-	slli.d	$a6, $a5, 5
-	addi.d	$a5, $a3, 16
-	addi.d	$a7, $a4, 16
-	move	$t0, $a6
-	.p2align	4, , 16
-.LBB12_13:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
-	vst	$vr0, $a7, -16
-	vst	$vr1, $a7, 0
-	addi.d	$t0, $t0, -32
-	addi.d	$a5, $a5, 32
-	addi.d	$a7, $a7, 32
-	bnez	$t0, .LBB12_13
-# %bb.14:                               # %middle.block
-	beq	$a6, $a1, .LBB12_20
-# %bb.15:                               # %vec.epilog.iter.check
-	beqz	$a2, .LBB12_29
-.LBB12_16:                              # %vec.epilog.ph
-	bstrpick.d	$a5, $a1, 31, 3
-	slli.d	$a7, $a5, 3
-	alsl.d	$a2, $a5, $a4, 3
-	alsl.d	$a5, $a5, $a3, 3
+.LBB12_10:                              # %vec.epilog.ph
+	bstrpick.d	$a5, $a1, 31, 4
+	slli.d	$a7, $a5, 4
+	alsl.d	$a2, $a5, $a4, 4
+	alsl.d	$a5, $a5, $a3, 4
 	sub.d	$a0, $a0, $a7
 	sub.d	$t0, $a6, $a7
 	add.d	$a3, $a3, $a6
 	add.d	$a4, $a4, $a6
 	.p2align	4, , 16
-.LBB12_17:                              # %vec.epilog.vector.body
+.LBB12_11:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, 0
-	st.d	$a6, $a4, 0
-	addi.d	$t0, $t0, 8
-	addi.d	$a3, $a3, 8
-	addi.d	$a4, $a4, 8
-	bnez	$t0, .LBB12_17
-# %bb.18:                               # %vec.epilog.middle.block
-	beq	$a7, $a1, .LBB12_20
+	vld	$vr0, $a3, 0
+	vst	$vr0, $a4, 0
+	addi.d	$t0, $t0, 16
+	addi.d	$a3, $a3, 16
+	addi.d	$a4, $a4, 16
+	bnez	$t0, .LBB12_11
+# %bb.12:                               # %vec.epilog.middle.block
+	bne	$a7, $a1, .LBB12_15
+	b	.LBB12_16
+.LBB12_13:
+	move	$a0, $zero
+	b	.LBB12_17
+.LBB12_14:
+	move	$a2, $a4
+	move	$a5, $a3
 	.p2align	4, , 16
-.LBB12_19:                              # %vec.epilog.scalar.ph
+.LBB12_15:                              # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.b	$a1, $a5, 0
 	addi.d	$a5, $a5, 1
@@ -1352,10 +1329,10 @@ gz_avail:                               # @gz_avail
 	addi.w	$a0, $a0, -1
 	st.b	$a1, $a2, 0
 	move	$a2, $a3
-	bnez	$a0, .LBB12_19
-.LBB12_20:                              # %.loopexit32.loopexit
+	bnez	$a0, .LBB12_15
+.LBB12_16:                              # %.loopexit32.loopexit
 	ld.w	$a0, $fp, 128
-.LBB12_21:                              # %.loopexit32
+.LBB12_17:                              # %.loopexit32
 	ld.d	$a1, $fp, 48
 	ld.w	$a2, $fp, 40
 	move	$s0, $zero
@@ -1364,7 +1341,7 @@ gz_avail:                               # @gz_avail
 	sub.w	$s2, $a2, $a0
 	lu12i.w	$s3, 262144
 	.p2align	4, , 16
-.LBB12_22:                              # =>This Inner Loop Header: Depth=1
+.LBB12_18:                              # =>This Inner Loop Header: Depth=1
 	sub.w	$a0, $s2, $s0
 	srli.d	$a1, $a0, 30
 	sltui	$a1, $a1, 1
@@ -1377,24 +1354,24 @@ gz_avail:                               # @gz_avail
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blez	$a1, .LBB12_24
-# %bb.23:                               #   in Loop: Header=BB12_22 Depth=1
+	blez	$a1, .LBB12_20
+# %bb.19:                               #   in Loop: Header=BB12_18 Depth=1
 	add.w	$s0, $s0, $a0
-	bltu	$s0, $s2, .LBB12_22
-	b	.LBB12_26
-.LBB12_24:
-	bltz	$a1, .LBB12_28
-# %bb.25:
+	bltu	$s0, $s2, .LBB12_18
+	b	.LBB12_22
+.LBB12_20:
+	bltz	$a1, .LBB12_24
+# %bb.21:
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 80
-.LBB12_26:                              # %.loopexit
+.LBB12_22:                              # %.loopexit
 	ld.w	$a1, $fp, 128
 	ld.d	$a2, $fp, 48
 	move	$a0, $zero
 	add.d	$a1, $a1, $s0
 	st.w	$a1, $fp, 128
 	st.d	$a2, $fp, 120
-.LBB12_27:
+.LBB12_23:
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1403,7 +1380,7 @@ gz_avail:                               # @gz_avail
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB12_28:                              # %gz_load.exit
+.LBB12_24:                              # %gz_load.exit
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
@@ -1416,12 +1393,34 @@ gz_avail:                               # @gz_avail
 	pcaddu18i	$ra, %call36(gz_error)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB12_27
-.LBB12_29:
+	b	.LBB12_23
+.LBB12_25:                              # %vector.ph
+	andi	$a2, $a1, 16
+	bstrpick.d	$a5, $a1, 31, 5
+	slli.d	$a6, $a5, 5
+	addi.d	$a5, $a3, 16
+	addi.d	$a7, $a4, 16
+	move	$t0, $a6
+	.p2align	4, , 16
+.LBB12_26:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a7, -16
+	vst	$vr1, $a7, 0
+	addi.d	$t0, $t0, -32
+	addi.d	$a5, $a5, 32
+	addi.d	$a7, $a7, 32
+	bnez	$t0, .LBB12_26
+# %bb.27:                               # %middle.block
+	beq	$a6, $a1, .LBB12_16
+# %bb.28:                               # %vec.epilog.iter.check
+	bnez	$a2, .LBB12_10
+# %bb.29:
 	add.d	$a2, $a4, $a6
 	add.d	$a5, $a3, $a6
 	sub.d	$a0, $a0, $a6
-	b	.LBB12_19
+	b	.LBB12_15
 .Lfunc_end12:
 	.size	gz_avail, .Lfunc_end12-gz_avail
                                         # -- End function

@@ -47,18 +47,27 @@ main:                                   # @main
 	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
-	lu12i.w	$a1, 12320
-	ori	$a1, $a1, 256
-	lu32i.d	$a1, 394500
-	lu52i.d	$a1, $a1, 112
-	bne	$a0, $a1, .LBB1_2
+	ld.hu	$a0, $sp, 0
+	ori	$a1, $zero, 256
+	bne	$a0, $a1, .LBB1_5
 # %bb.1:
+	ld.hu	$a0, $sp, 2
+	ori	$a1, $zero, 770
+	bne	$a0, $a1, .LBB1_5
+# %bb.2:
+	ld.hu	$a0, $sp, 4
+	ori	$a1, $zero, 1284
+	bne	$a0, $a1, .LBB1_5
+# %bb.3:
+	ld.hu	$a0, $sp, 6
+	ori	$a1, $zero, 1798
+	bne	$a0, $a1, .LBB1_5
+# %bb.4:
 	move	$a0, $zero
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
-.LBB1_2:
+.LBB1_5:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:

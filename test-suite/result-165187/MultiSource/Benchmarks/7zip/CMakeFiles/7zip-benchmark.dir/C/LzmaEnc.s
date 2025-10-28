@@ -2626,7 +2626,7 @@ LzmaEnc_Init:                           # @LzmaEnc_Init
 	addi.d	$t2, $t2, -1
 	addi.d	$t1, $t1, 2
 	bnez	$t2, .LBB13_5
-.LBB13_6:                               # %iter.check102
+.LBB13_6:                               # %.preheader70
 	vst	$vr0, $a2, 478
 	vst	$vr0, $a2, 494
 	vst	$vr0, $a2, 510

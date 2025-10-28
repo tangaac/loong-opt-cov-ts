@@ -2425,7 +2425,7 @@ find_all_primes:                        # @find_all_primes
 	pcalau12i	$a1, %got_pc_hi20(cube)
 	ld.d	$s4, $a1, %got_pc_lo12(cube)
 	ld.w	$a1, $s4, 0
-	beqz	$a0, .LBB10_20
+	beqz	$a0, .LBB10_14
 # %bb.1:
 	move	$s0, $a2
 	pcaddu18i	$ra, %call36(sf_new)
@@ -2478,113 +2478,63 @@ find_all_primes:                        # @find_all_primes
 	ld.w	$a0, $a0, 12
 	ld.w	$a1, $s1, 0
 	mul.w	$a1, $a1, $a0
-	blez	$a1, .LBB10_19
+	blez	$a1, .LBB10_13
 # %bb.7:                                # %.lr.ph64.preheader
 	ld.d	$a0, $s1, 24
 	alsl.d	$a1, $a1, $a0, 2
-	addi.d	$a2, $s0, 4
-	addi.d	$a3, $s0, -12
-	ori	$a4, $zero, 4
-	ori	$a5, $zero, 1
-	lu12i.w	$a6, 8
+	ori	$a2, $zero, 1
+	lu12i.w	$a3, 8
 	.p2align	4, , 16
 .LBB10_8:                               # %.lr.ph64
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB10_12 Depth 2
-                                        #     Child Loop BB10_15 Depth 2
-                                        #     Child Loop BB10_17 Depth 2
-	ld.wu	$a7, $a0, 0
-	ld.wu	$t2, $s0, 0
-	srli.d	$a7, $a7, 10
-	andi	$t0, $t2, 1023
-	bstrins.d	$t2, $a7, 63, 10
-	sltu	$t1, $zero, $t0
-	sub.d	$a7, $t0, $t1
-	addi.d	$a7, $a7, 1
-	st.w	$t2, $a0, 0
-	bltu	$a7, $a4, .LBB10_14
-# %bb.9:                                # %vector.memcheck
-                                        #   in Loop: Header=BB10_8 Depth=1
-	alsl.d	$t2, $t1, $a0, 2
-	alsl.d	$t4, $t0, $a2, 2
-	alsl.d	$t3, $t0, $a0, 2
-	bgeu	$t2, $t4, .LBB10_11
-# %bb.10:                               # %vector.memcheck
-                                        #   in Loop: Header=BB10_8 Depth=1
-	addi.d	$t2, $t3, 4
-	alsl.d	$t1, $t1, $s0, 2
-	bltu	$t1, $t2, .LBB10_14
-.LBB10_11:                              # %vector.ph
-                                        #   in Loop: Header=BB10_8 Depth=1
-	move	$t1, $a7
-	bstrins.d	$t1, $zero, 1, 0
-	sub.d	$t2, $t0, $t1
-	addi.d	$t3, $t3, -12
-	alsl.d	$t0, $t0, $a3, 2
-	move	$t4, $t1
+                                        #     Child Loop BB10_9 Depth 2
+                                        #     Child Loop BB10_11 Depth 2
+	ld.wu	$a4, $a0, 0
+	ld.wu	$a5, $s0, 0
+	srli.d	$a4, $a4, 10
+	andi	$a6, $a5, 1023
+	bstrins.d	$a5, $a4, 63, 10
+	st.w	$a5, $a0, 0
+	addi.d	$a4, $a6, 1
+	slli.d	$a5, $a6, 2
 	.p2align	4, , 16
-.LBB10_12:                              # %vector.body
-                                        #   Parent Loop BB10_8 Depth=1
+.LBB10_9:                               #   Parent Loop BB10_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $t0, 0
-	vld	$vr1, $t3, 0
-	vandn.v	$vr0, $vr1, $vr0
-	vst	$vr0, $t3, 0
-	addi.d	$t4, $t4, -4
-	addi.d	$t3, $t3, -16
-	addi.d	$t0, $t0, -16
-	bnez	$t4, .LBB10_12
-# %bb.13:                               # %middle.block
-                                        #   in Loop: Header=BB10_8 Depth=1
-	move	$t0, $t2
-	beq	$a7, $t1, .LBB10_16
+	ldx.w	$a6, $s0, $a5
+	ldx.w	$a7, $a0, $a5
+	andn	$a6, $a6, $a7
+	stx.w	$a6, $a0, $a5
+	addi.d	$a4, $a4, -1
+	addi.d	$a5, $a5, -4
+	bltu	$a2, $a4, .LBB10_9
+# %bb.10:                               #   in Loop: Header=BB10_8 Depth=1
+	ld.wu	$a4, $a0, 0
+	andi	$a5, $a4, 1023
+	addi.d	$a4, $a5, 1
+	slli.d	$a5, $a5, 2
 	.p2align	4, , 16
-.LBB10_14:                              # %scalar.ph.preheader
-                                        #   in Loop: Header=BB10_8 Depth=1
-	addi.d	$a7, $t0, 1
-	alsl.d	$t1, $t0, $a0, 2
-	alsl.d	$t0, $t0, $s0, 2
-	.p2align	4, , 16
-.LBB10_15:                              # %scalar.ph
-                                        #   Parent Loop BB10_8 Depth=1
+.LBB10_11:                              #   Parent Loop BB10_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t2, $t0, 0
-	ld.w	$t3, $t1, 0
-	andn	$t2, $t2, $t3
-	st.w	$t2, $t1, 0
-	addi.d	$a7, $a7, -1
-	addi.d	$t1, $t1, -4
-	addi.d	$t0, $t0, -4
-	bltu	$a5, $a7, .LBB10_15
-.LBB10_16:                              # %.loopexit
-                                        #   in Loop: Header=BB10_8 Depth=1
-	ld.wu	$a7, $a0, 0
-	andi	$t0, $a7, 1023
-	addi.d	$a7, $t0, 1
-	slli.d	$t0, $t0, 2
-	.p2align	4, , 16
-.LBB10_17:                              #   Parent Loop BB10_8 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ldx.w	$t1, $a0, $t0
-	ldx.w	$t2, $fp, $t0
-	or	$t1, $t2, $t1
-	stx.w	$t1, $a0, $t0
-	addi.d	$a7, $a7, -1
-	addi.d	$t0, $t0, -4
-	bltu	$a5, $a7, .LBB10_17
-# %bb.18:                               #   in Loop: Header=BB10_8 Depth=1
-	ld.w	$a7, $a0, 0
-	or	$a7, $a7, $a6
-	st.w	$a7, $a0, 0
-	ld.w	$a7, $s1, 0
-	alsl.d	$a0, $a7, $a0, 2
+	ldx.w	$a6, $a0, $a5
+	ldx.w	$a7, $fp, $a5
+	or	$a6, $a7, $a6
+	stx.w	$a6, $a0, $a5
+	addi.d	$a4, $a4, -1
+	addi.d	$a5, $a5, -4
+	bltu	$a2, $a4, .LBB10_11
+# %bb.12:                               #   in Loop: Header=BB10_8 Depth=1
+	ld.w	$a4, $a0, 0
+	or	$a4, $a4, $a3
+	st.w	$a4, $a0, 0
+	ld.w	$a4, $s1, 0
+	alsl.d	$a0, $a4, $a0, 2
 	bltu	$a0, $a1, .LBB10_8
-.LBB10_19:                              # %._crit_edge65
+.LBB10_13:                              # %._crit_edge65
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(sf_free)
 	jirl	$ra, $ra, 0
-	b	.LBB10_21
-.LBB10_20:
+	b	.LBB10_15
+.LBB10_14:
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
@@ -2604,7 +2554,7 @@ find_all_primes:                        # @find_all_primes
 	lu12i.w	$a1, 8
 	or	$a0, $a0, $a1
 	stx.w	$a0, $s0, $s2
-.LBB10_21:
+.LBB10_15:
 	move	$a0, $s1
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

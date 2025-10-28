@@ -804,15 +804,15 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB6_107
 .LBB6_15:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_49 Depth 2
-                                        #     Child Loop BB6_77 Depth 2
-                                        #     Child Loop BB6_56 Depth 2
-                                        #     Child Loop BB6_63 Depth 2
+                                        #     Child Loop BB6_52 Depth 2
+                                        #     Child Loop BB6_80 Depth 2
+                                        #     Child Loop BB6_59 Depth 2
+                                        #     Child Loop BB6_66 Depth 2
                                         #     Child Loop BB6_34 Depth 2
-                                        #     Child Loop BB6_86 Depth 2
-                                        #     Child Loop BB6_91 Depth 2
+                                        #     Child Loop BB6_89 Depth 2
                                         #     Child Loop BB6_95 Depth 2
-                                        #     Child Loop BB6_97 Depth 2
+                                        #     Child Loop BB6_47 Depth 2
+                                        #     Child Loop BB6_93 Depth 2
 	addi.d	$a0, $fp, 80
 	ld.w	$a0, $a0, 0
 	beqz	$s2, .LBB6_20
@@ -849,7 +849,7 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 .LBB6_20:                               #   in Loop: Header=BB6_15 Depth=1
 	ori	$a1, $zero, 8
-	bgeu	$a0, $a1, .LBB6_49
+	bgeu	$a0, $a1, .LBB6_52
 # %bb.21:                               # %._ZN5NBitl8CDecoderI9CInBufferE9NormalizeEv.exit_crit_edge.i
                                         #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$a2, $fp, 140
@@ -860,10 +860,10 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	bstrpick.d	$s7, $a2, 31, 1
 	andi	$a2, $a2, 1
 	st.w	$s7, $fp, 140
-	bnez	$a2, .LBB6_67
+	bnez	$a2, .LBB6_70
 # %bb.23:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$s2, $fp, 628
-	bgeu	$a0, $s5, .LBB6_56
+	bgeu	$a0, $s5, .LBB6_59
 .LBB6_24:                               # %.loopexit146
                                         #   in Loop: Header=BB6_15 Depth=1
 	add.d	$a0, $a1, $s2
@@ -901,7 +901,7 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	addi.d	$a0, $fp, 80
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 8
-	bgeu	$a0, $a1, .LBB6_63
+	bgeu	$a0, $a1, .LBB6_66
 # %bb.30:                               # %._ZN5NBitl8CDecoderI9CInBufferE9NormalizeEv.exit_crit_edge.i99
                                         #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$a1, $fp, 140
@@ -965,15 +965,15 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	ld.w	$a2, $fp, 32
 	nor	$a0, $s0, $zero
 	add.w	$a0, $a2, $a0
-	bgeu	$s0, $a2, .LBB6_81
+	bgeu	$s0, $a2, .LBB6_84
 # %bb.40:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$a1, $fp, 36
 	sub.w	$a1, $a1, $a2
-	bgeu	$s6, $a1, .LBB6_84
+	bgeu	$s6, $a1, .LBB6_87
 .LBB6_41:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$a1, $fp, 44
 	sub.w	$a1, $a1, $a0
-	bgeu	$s6, $a1, .LBB6_84
+	bgeu	$s6, $a1, .LBB6_87
 # %bb.42:                               # %iter.check
                                         #   in Loop: Header=BB6_15 Depth=1
 	ld.d	$a4, $fp, 24
@@ -984,30 +984,55 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	add.d	$a2, $a2, $s6
 	addi.w	$a3, $s6, -1
 	st.w	$a2, $fp, 32
-	bltu	$a3, $s5, .LBB6_89
+	ori	$a2, $zero, 15
+	bltu	$a3, $a2, .LBB6_92
 # %bb.43:                               # %iter.check
                                         #   in Loop: Header=BB6_15 Depth=1
 	sub.d	$a2, $a6, $a5
-	bltu	$a2, $s3, .LBB6_88
+	bltu	$a2, $s3, .LBB6_91
 # %bb.44:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB6_15 Depth=1
 	bstrpick.d	$a2, $a3, 31, 0
 	addi.d	$a2, $a2, 1
 	ori	$a7, $zero, 31
-	bgeu	$a3, $a7, .LBB6_90
+	bgeu	$a3, $a7, .LBB6_94
 # %bb.45:                               #   in Loop: Header=BB6_15 Depth=1
 	move	$a7, $zero
-	b	.LBB6_94
+.LBB6_46:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB6_15 Depth=1
+	bstrpick.d	$t1, $a2, 32, 4
+	slli.d	$t0, $t1, 4
+	sub.d	$a3, $s6, $t0
+	alsl.d	$a1, $t1, $a1, 4
+	alsl.d	$a0, $t1, $a0, 4
+	sub.d	$t1, $a7, $t0
+	add.d	$a6, $a7, $a6
+	add.d	$a6, $a4, $a6
+	add.d	$a5, $a7, $a5
+	add.d	$a4, $a4, $a5
+.LBB6_47:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB6_15 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vld	$vr0, $a4, 0
+	vst	$vr0, $a6, 0
+	addi.d	$t1, $t1, 16
+	addi.d	$a6, $a6, 16
+	addi.d	$a4, $a4, 16
+	bnez	$t1, .LBB6_47
+# %bb.48:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB6_15 Depth=1
+	bne	$a2, $t0, .LBB6_93
+	b	.LBB6_13
 	.p2align	4, , 16
-.LBB6_46:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB6_49 Depth=2
+.LBB6_49:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB6_52 Depth=2
 	ld.d	$a0, $s1, 0
-.LBB6_47:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i
-                                        #   in Loop: Header=BB6_49 Depth=2
+.LBB6_50:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i
+                                        #   in Loop: Header=BB6_52 Depth=2
 	addi.d	$a1, $a0, 1
 	st.d	$a1, $s1, 0
 	ld.bu	$a0, $a0, 0
-.LBB6_48:                               #   in Loop: Header=BB6_49 Depth=2
+.LBB6_51:                               #   in Loop: Header=BB6_52 Depth=2
 	ld.w	$a1, $fp, 80
 	ld.w	$a2, $fp, 140
 	sub.d	$a3, $s3, $a1
@@ -1022,38 +1047,38 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	addi.w	$a0, $a1, -8
 	st.w	$a0, $fp, 80
 	bgeu	$s5, $a0, .LBB6_22
-.LBB6_49:                               # %.lr.ph.i.i
+.LBB6_52:                               # %.lr.ph.i.i
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 88
 	ld.d	$a1, $fp, 96
-	bltu	$a0, $a1, .LBB6_47
-# %bb.50:                               #   in Loop: Header=BB6_49 Depth=2
+	bltu	$a0, $a1, .LBB6_50
+# %bb.53:                               #   in Loop: Header=BB6_52 Depth=2
 .Ltmp33:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer9ReadBlockEv)
 	jirl	$ra, $ra, 0
 .Ltmp34:                                # EH_LABEL
-# %bb.51:                               # %.noexc84
-                                        #   in Loop: Header=BB6_49 Depth=2
-	bnez	$a0, .LBB6_46
-# %bb.52:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i
-                                        #   in Loop: Header=BB6_49 Depth=2
+# %bb.54:                               # %.noexc84
+                                        #   in Loop: Header=BB6_52 Depth=2
+	bnez	$a0, .LBB6_49
+# %bb.55:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i
+                                        #   in Loop: Header=BB6_52 Depth=2
 	ld.w	$a0, $fp, 136
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 136
 	ori	$a0, $zero, 255
-	b	.LBB6_48
+	b	.LBB6_51
 	.p2align	4, , 16
-.LBB6_53:                               # %._crit_edge.i.i.i93
-                                        #   in Loop: Header=BB6_56 Depth=2
+.LBB6_56:                               # %._crit_edge.i.i.i93
+                                        #   in Loop: Header=BB6_59 Depth=2
 	ld.d	$a0, $s1, 0
-.LBB6_54:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i95
-                                        #   in Loop: Header=BB6_56 Depth=2
+.LBB6_57:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i95
+                                        #   in Loop: Header=BB6_59 Depth=2
 	addi.d	$a1, $a0, 1
 	st.d	$a1, $s1, 0
 	ld.bu	$a0, $a0, 0
-.LBB6_55:                               #   in Loop: Header=BB6_56 Depth=2
+.LBB6_58:                               #   in Loop: Header=BB6_59 Depth=2
 	ld.w	$a1, $fp, 80
 	ld.w	$a2, $fp, 140
 	sub.d	$a3, $s3, $a1
@@ -1068,37 +1093,37 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	addi.w	$a1, $a1, -8
 	st.w	$a1, $fp, 80
 	bgeu	$s5, $a1, .LBB6_24
-.LBB6_56:                               # %.lr.ph.i.i89
+.LBB6_59:                               # %.lr.ph.i.i89
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 88
 	ld.d	$a1, $fp, 96
-	bltu	$a0, $a1, .LBB6_54
-# %bb.57:                               #   in Loop: Header=BB6_56 Depth=2
+	bltu	$a0, $a1, .LBB6_57
+# %bb.60:                               #   in Loop: Header=BB6_59 Depth=2
 .Ltmp45:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer9ReadBlockEv)
 	jirl	$ra, $ra, 0
 .Ltmp46:                                # EH_LABEL
-# %bb.58:                               # %.noexc96
-                                        #   in Loop: Header=BB6_56 Depth=2
-	bnez	$a0, .LBB6_53
-# %bb.59:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i91
-                                        #   in Loop: Header=BB6_56 Depth=2
+# %bb.61:                               # %.noexc96
+                                        #   in Loop: Header=BB6_59 Depth=2
+	bnez	$a0, .LBB6_56
+# %bb.62:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i91
+                                        #   in Loop: Header=BB6_59 Depth=2
 	ld.w	$a0, $fp, 136
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 136
 	ori	$a0, $zero, 255
-	b	.LBB6_55
-.LBB6_60:                               # %._crit_edge.i.i.i106
-                                        #   in Loop: Header=BB6_63 Depth=2
+	b	.LBB6_58
+.LBB6_63:                               # %._crit_edge.i.i.i106
+                                        #   in Loop: Header=BB6_66 Depth=2
 	ld.d	$a0, $s1, 0
-.LBB6_61:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i108
-                                        #   in Loop: Header=BB6_63 Depth=2
+.LBB6_64:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i108
+                                        #   in Loop: Header=BB6_66 Depth=2
 	addi.d	$a1, $a0, 1
 	st.d	$a1, $s1, 0
 	ld.bu	$a2, $a0, 0
-.LBB6_62:                               #   in Loop: Header=BB6_63 Depth=2
+.LBB6_65:                               #   in Loop: Header=BB6_66 Depth=2
 	ld.w	$a0, $fp, 80
 	ld.w	$a1, $fp, 140
 	sub.d	$a3, $s3, $a0
@@ -1113,53 +1138,53 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	addi.w	$a2, $a0, -8
 	st.w	$a2, $fp, 80
 	bgeu	$s5, $a2, .LBB6_31
-.LBB6_63:                               # %.lr.ph.i.i102
+.LBB6_66:                               # %.lr.ph.i.i102
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 88
 	ld.d	$a1, $fp, 96
-	bltu	$a0, $a1, .LBB6_61
-# %bb.64:                               #   in Loop: Header=BB6_63 Depth=2
+	bltu	$a0, $a1, .LBB6_64
+# %bb.67:                               #   in Loop: Header=BB6_66 Depth=2
 .Ltmp54:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer9ReadBlockEv)
 	jirl	$ra, $ra, 0
 .Ltmp55:                                # EH_LABEL
-# %bb.65:                               # %.noexc109
-                                        #   in Loop: Header=BB6_63 Depth=2
-	bnez	$a0, .LBB6_60
-# %bb.66:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i104
-                                        #   in Loop: Header=BB6_63 Depth=2
+# %bb.68:                               # %.noexc109
+                                        #   in Loop: Header=BB6_66 Depth=2
+	bnez	$a0, .LBB6_63
+# %bb.69:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i104
+                                        #   in Loop: Header=BB6_66 Depth=2
 	ld.w	$a0, $fp, 136
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 136
 	ori	$a2, $zero, 255
-	b	.LBB6_62
-.LBB6_67:                               #   in Loop: Header=BB6_15 Depth=1
+	b	.LBB6_65
+.LBB6_70:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.bu	$a2, $fp, 625
 	addi.d	$s6, $fp, 24
-	beqz	$a2, .LBB6_70
-# %bb.68:                               #   in Loop: Header=BB6_15 Depth=1
+	beqz	$a2, .LBB6_73
+# %bb.71:                               #   in Loop: Header=BB6_15 Depth=1
 .Ltmp39:                                # EH_LABEL
 	addi.d	$a0, $fp, 144
 	addi.d	$a1, $fp, 80
 	pcaddu18i	$ra, %call36(_ZN9NCompress8NImplode8NHuffman8CDecoder12DecodeSymbolEPN5NBitl8CDecoderI9CInBufferEE)
 	jirl	$ra, $ra, 0
 .Ltmp40:                                # EH_LABEL
-# %bb.69:                               #   in Loop: Header=BB6_15 Depth=1
+# %bb.72:                               #   in Loop: Header=BB6_15 Depth=1
 	move	$s7, $a0
 	ori	$a0, $zero, 256
-	bltu	$s7, $a0, .LBB6_72
+	bltu	$s7, $a0, .LBB6_75
 	b	.LBB6_99
-.LBB6_70:                               #   in Loop: Header=BB6_15 Depth=1
-	bgeu	$a0, $s5, .LBB6_77
-.LBB6_71:                               # %.loopexit151
+.LBB6_73:                               #   in Loop: Header=BB6_15 Depth=1
+	bgeu	$a0, $s5, .LBB6_80
+.LBB6_74:                               # %.loopexit151
                                         #   in Loop: Header=BB6_15 Depth=1
 	addi.d	$a0, $a1, 8
 	st.w	$a0, $fp, 80
 	bstrpick.d	$a0, $s7, 31, 8
 	st.w	$a0, $fp, 140
-.LBB6_72:                               #   in Loop: Header=BB6_15 Depth=1
+.LBB6_75:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.wu	$a0, $fp, 32
 	ld.d	$a1, $fp, 24
 	addi.d	$a2, $a0, 1
@@ -1169,22 +1194,22 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	ld.w	$a1, $fp, 36
 	ori	$s0, $zero, 1
 	bne	$a0, $a1, .LBB6_14
-# %bb.73:                               #   in Loop: Header=BB6_15 Depth=1
+# %bb.76:                               #   in Loop: Header=BB6_15 Depth=1
 .Ltmp42:                                # EH_LABEL
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
 .Ltmp43:                                # EH_LABEL
 	b	.LBB6_14
-.LBB6_74:                               # %._crit_edge.i.i.i122
-                                        #   in Loop: Header=BB6_77 Depth=2
+.LBB6_77:                               # %._crit_edge.i.i.i122
+                                        #   in Loop: Header=BB6_80 Depth=2
 	ld.d	$a0, $s1, 0
-.LBB6_75:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i124
-                                        #   in Loop: Header=BB6_77 Depth=2
+.LBB6_78:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i124
+                                        #   in Loop: Header=BB6_80 Depth=2
 	addi.d	$a1, $a0, 1
 	st.d	$a1, $s1, 0
 	ld.bu	$a0, $a0, 0
-.LBB6_76:                               #   in Loop: Header=BB6_77 Depth=2
+.LBB6_79:                               #   in Loop: Header=BB6_80 Depth=2
 	ld.w	$a1, $fp, 80
 	ld.w	$a2, $fp, 140
 	sub.d	$a3, $s3, $a1
@@ -1198,50 +1223,50 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	st.w	$a0, $fp, 84
 	addi.w	$a1, $a1, -8
 	st.w	$a1, $fp, 80
-	bgeu	$s5, $a1, .LBB6_71
-.LBB6_77:                               # %.lr.ph.i.i118
+	bgeu	$s5, $a1, .LBB6_74
+.LBB6_80:                               # %.lr.ph.i.i118
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 88
 	ld.d	$a1, $fp, 96
-	bltu	$a0, $a1, .LBB6_75
-# %bb.78:                               #   in Loop: Header=BB6_77 Depth=2
+	bltu	$a0, $a1, .LBB6_78
+# %bb.81:                               #   in Loop: Header=BB6_80 Depth=2
 .Ltmp36:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer9ReadBlockEv)
 	jirl	$ra, $ra, 0
 .Ltmp37:                                # EH_LABEL
-# %bb.79:                               # %.noexc125
-                                        #   in Loop: Header=BB6_77 Depth=2
-	bnez	$a0, .LBB6_74
-# %bb.80:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i120
-                                        #   in Loop: Header=BB6_77 Depth=2
+# %bb.82:                               # %.noexc125
+                                        #   in Loop: Header=BB6_80 Depth=2
+	bnez	$a0, .LBB6_77
+# %bb.83:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i120
+                                        #   in Loop: Header=BB6_80 Depth=2
 	ld.w	$a0, $fp, 136
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 136
 	ori	$a0, $zero, 255
-	b	.LBB6_76
-.LBB6_81:                               #   in Loop: Header=BB6_15 Depth=1
+	b	.LBB6_79
+.LBB6_84:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.bu	$a1, $fp, 72
 	beqz	$a1, .LBB6_13
-# %bb.82:                               #   in Loop: Header=BB6_15 Depth=1
+# %bb.85:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$a1, $fp, 44
 	bgeu	$s0, $a1, .LBB6_13
-# %bb.83:                               #   in Loop: Header=BB6_15 Depth=1
+# %bb.86:                               #   in Loop: Header=BB6_15 Depth=1
 	add.w	$a0, $a1, $a0
 	ld.w	$a1, $fp, 36
 	sub.w	$a1, $a1, $a2
 	bltu	$s6, $a1, .LBB6_41
-.LBB6_84:                               #   in Loop: Header=BB6_15 Depth=1
+.LBB6_87:                               #   in Loop: Header=BB6_15 Depth=1
 	move	$s0, $s6
-	b	.LBB6_86
+	b	.LBB6_89
 	.p2align	4, , 16
-.LBB6_85:                               # %.noexc113
-                                        #   in Loop: Header=BB6_86 Depth=2
+.LBB6_88:                               # %.noexc113
+                                        #   in Loop: Header=BB6_89 Depth=2
 	addi.w	$s0, $s0, -1
 	addi.w	$a0, $s2, 1
 	beqz	$s0, .LBB6_13
-.LBB6_86:                               #   Parent Loop BB6_15 Depth=1
+.LBB6_89:                               #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $fp, 44
 	xor	$a1, $a0, $a1
@@ -1256,30 +1281,40 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	stx.b	$a1, $a2, $a0
 	ld.w	$a0, $fp, 32
 	ld.w	$a1, $fp, 36
-	bne	$a0, $a1, .LBB6_85
-# %bb.87:                               #   in Loop: Header=BB6_86 Depth=2
+	bne	$a0, $a1, .LBB6_88
+# %bb.90:                               #   in Loop: Header=BB6_89 Depth=2
 .Ltmp60:                                # EH_LABEL
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
 .Ltmp61:                                # EH_LABEL
-	b	.LBB6_85
-.LBB6_88:                               #   in Loop: Header=BB6_15 Depth=1
+	b	.LBB6_88
+.LBB6_91:                               #   in Loop: Header=BB6_15 Depth=1
 	move	$a3, $s6
-	b	.LBB6_97
-.LBB6_89:                               #   in Loop: Header=BB6_15 Depth=1
+	b	.LBB6_93
+.LBB6_92:                               #   in Loop: Header=BB6_15 Depth=1
 	move	$a3, $s6
-	b	.LBB6_97
-.LBB6_90:                               # %vector.ph
+.LBB6_93:                               # %vec.epilog.scalar.ph
+                                        #   Parent Loop BB6_15 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.b	$a2, $a1, 0
+	addi.d	$a1, $a1, 1
+	addi.d	$a4, $a0, 1
+	addi.w	$a3, $a3, -1
+	st.b	$a2, $a0, 0
+	move	$a0, $a4
+	bnez	$a3, .LBB6_93
+	b	.LBB6_13
+.LBB6_94:                               # %vector.ph
                                         #   in Loop: Header=BB6_15 Depth=1
-	andi	$a3, $a2, 24
+	andi	$a3, $a2, 16
 	bstrpick.d	$a7, $a2, 32, 5
 	slli.d	$a7, $a7, 5
 	addi.d	$t1, $a4, 16
 	add.d	$t0, $t1, $a6
 	add.d	$t1, $t1, $a5
 	move	$t2, $a7
-.LBB6_91:                               # %vector.body
+.LBB6_95:                               # %vector.body
                                         #   Parent Loop BB6_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $t1, -16
@@ -1289,53 +1324,18 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	addi.d	$t2, $t2, -32
 	addi.d	$t0, $t0, 32
 	addi.d	$t1, $t1, 32
-	bnez	$t2, .LBB6_91
-# %bb.92:                               # %middle.block
+	bnez	$t2, .LBB6_95
+# %bb.96:                               # %middle.block
                                         #   in Loop: Header=BB6_15 Depth=1
 	beq	$a2, $a7, .LBB6_13
-# %bb.93:                               # %vec.epilog.iter.check
+# %bb.97:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB6_15 Depth=1
-	beqz	$a3, .LBB6_98
-.LBB6_94:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB6_15 Depth=1
-	bstrpick.d	$t1, $a2, 32, 3
-	slli.d	$t0, $t1, 3
-	sub.d	$a3, $s6, $t0
-	alsl.d	$a1, $t1, $a1, 3
-	alsl.d	$a0, $t1, $a0, 3
-	sub.d	$t1, $a7, $t0
-	add.d	$a6, $a7, $a6
-	add.d	$a6, $a4, $a6
-	add.d	$a5, $a7, $a5
-	add.d	$a4, $a4, $a5
-.LBB6_95:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB6_15 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.d	$a5, $a4, 0
-	st.d	$a5, $a6, 0
-	addi.d	$t1, $t1, 8
-	addi.d	$a6, $a6, 8
-	addi.d	$a4, $a4, 8
-	bnez	$t1, .LBB6_95
-# %bb.96:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB6_15 Depth=1
-	beq	$a2, $t0, .LBB6_13
-.LBB6_97:                               # %vec.epilog.scalar.ph
-                                        #   Parent Loop BB6_15 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.b	$a2, $a1, 0
-	addi.d	$a1, $a1, 1
-	addi.d	$a4, $a0, 1
-	addi.w	$a3, $a3, -1
-	st.b	$a2, $a0, 0
-	move	$a0, $a4
-	bnez	$a3, .LBB6_97
-	b	.LBB6_13
-.LBB6_98:                               #   in Loop: Header=BB6_15 Depth=1
+	bnez	$a3, .LBB6_46
+# %bb.98:                               #   in Loop: Header=BB6_15 Depth=1
 	sub.d	$a3, $s6, $a7
 	add.d	$a1, $a1, $a7
 	add.d	$a0, $a0, $a7
-	b	.LBB6_97
+	b	.LBB6_93
 .LBB6_99:                               # %_ZN9NCompress8NImplode8NDecoder6CCoder10ReadTablesEv.exit.thread130
 	ori	$s6, $zero, 1
 .LBB6_100:                              # %_ZN9NCompress8NImplode8NDecoder6CCoder10ReadTablesEv.exit.thread

@@ -82,21 +82,7 @@ SumArray:                               # @SumArray
 .Lfunc_end0:
 	.size	SumArray, .Lfunc_end0-SumArray
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function main
-.LCPI1_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-.LCPI1_1:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI1_2:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.text
-	.globl	main
+	.globl	main                            # -- Begin function main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
@@ -106,136 +92,58 @@ main:                                   # @main
 	lu12i.w	$a0, 9
 	ori	$a0, $a0, 1120
 	sub.d	$sp, $sp, $a0
-	lu12i.w	$a0, 9
-	ori	$a0, $a0, 1920
-	addi.d	$a1, $sp, 8
-	add.d	$a1, $a1, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
-	ori	$a0, $zero, 7
-	addi.d	$a2, $sp, 1624
-	vrepli.w	$vr1, -4
-	ori	$a3, $zero, 103
+	addi.d	$a0, $sp, 8
+	ori	$a1, $zero, 1
+	addi.d	$a2, $zero, -1
+	ori	$a3, $zero, 101
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vneg.w	$vr2, $vr0
-	vpickve2gr.w	$a4, $vr2, 0
-	vpickve2gr.w	$a5, $vr2, 1
-	vpickve2gr.w	$a6, $vr2, 2
-	vsub.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 2
-	vpickve2gr.w	$t0, $vr3, 3
-	st.w	$a4, $a2, -1616
-	st.w	$a5, $a2, -1212
-	st.w	$a6, $a2, -808
-	vstelm.w	$vr2, $a2, -404, 3
-	vstelm.w	$vr3, $a2, 0, 0
-	vstelm.w	$vr3, $a2, 404, 1
-	st.w	$a7, $a2, 808
-	st.w	$t0, $a2, 1212
-	vaddi.wu	$vr0, $vr0, 8
-	addi.d	$a0, $a0, 8
-	addi.d	$a2, $a2, 2047
-	addi.d	$a2, $a2, 1185
-	bne	$a0, $a3, .LBB1_1
-# %bb.2:                                # %scalar.ph
+	addi.d	$a4, $a2, 1
+	st.w	$a4, $a0, 0
+	st.w	$a2, $a0, 404
+	addi.d	$a0, $a0, 808
+	addi.d	$a1, $a1, 2
+	addi.d	$a2, $a2, -2
+	bne	$a1, $a3, .LBB1_1
+# %bb.2:                                # %.preheader.preheader
 	move	$a0, $zero
-	addi.w	$a2, $zero, -96
-	lu32i.d	$a2, 0
-	st.w	$a2, $a1, 0
-	addi.w	$a2, $zero, -97
-	lu32i.d	$a2, 0
-	st.w	$a2, $a1, 404
-	addi.w	$a2, $zero, -98
-	lu32i.d	$a2, 0
-	st.w	$a2, $a1, 808
-	addi.w	$a2, $zero, -99
-	lu32i.d	$a2, 0
-	st.w	$a2, $a1, 1212
-	ori	$a1, $zero, 3
+	move	$a1, $zero
 	addi.d	$a2, $sp, 8
-	pcalau12i	$a3, %pc_hi20(.LCPI1_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a3, %pc_hi20(.LCPI1_2)
-	vld	$vr1, $a3, %pc_lo12(.LCPI1_2)
-	vrepli.b	$vr2, -1
-	ori	$a3, $zero, 400
-	ori	$a4, $zero, 100
+	ori	$a3, $zero, 100
 	b	.LBB1_4
 	.p2align	4, , 16
-.LBB1_3:                                # %middle.block39
-                                        #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$a0, $a0, 1
+.LBB1_3:                                #   in Loop: Header=BB1_4 Depth=1
 	addi.d	$a1, $a1, 1
+	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 400
-	beq	$a0, $a4, .LBB1_14
+	beq	$a1, $a3, .LBB1_8
 .LBB1_4:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_6 Depth 2
-	move	$a5, $zero
-	vreplgr2vr.d	$vr3, $a0
-	move	$a6, $a1
-	vori.b	$vr4, $vr1, 0
-	vori.b	$vr5, $vr0, 0
+	move	$a4, $zero
+	move	$a5, $a2
+	move	$a6, $a0
 	b	.LBB1_6
 	.p2align	4, , 16
-.LBB1_5:                                # %pred.store.continue36
-                                        #   in Loop: Header=BB1_6 Depth=2
-	vaddi.du	$vr4, $vr4, 4
-	vaddi.du	$vr5, $vr5, 4
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 4
-	beq	$a5, $a3, .LBB1_3
-.LBB1_6:                                # %vector.body28
-                                        #   Parent Loop BB1_4 Depth=1
+.LBB1_5:                                #   in Loop: Header=BB1_6 Depth=2
+	addi.d	$a4, $a4, 1
+	addi.d	$a6, $a6, 1
+	addi.d	$a5, $a5, 4
+	beq	$a4, $a3, .LBB1_3
+.LBB1_6:                                #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vseq.d	$vr6, $vr4, $vr3
-	vxor.v	$vr6, $vr6, $vr2
-	vpickve2gr.w	$a7, $vr6, 0
-	andi	$a7, $a7, 1
-	beqz	$a7, .LBB1_8
-# %bb.7:                                # %pred.store.if
-                                        #   in Loop: Header=BB1_6 Depth=2
-	addi.d	$a7, $a6, -3
-	stx.w	$a7, $a2, $a5
-.LBB1_8:                                # %pred.store.continue
-                                        #   in Loop: Header=BB1_6 Depth=2
-	vpickve2gr.w	$a7, $vr6, 2
-	andi	$t0, $a7, 1
-	add.d	$a7, $a2, $a5
-	beqz	$t0, .LBB1_10
-# %bb.9:                                # %pred.store.if31
-                                        #   in Loop: Header=BB1_6 Depth=2
-	addi.d	$t0, $a6, -2
-	st.w	$t0, $a7, 4
-.LBB1_10:                               # %pred.store.continue32
-                                        #   in Loop: Header=BB1_6 Depth=2
-	vseq.d	$vr6, $vr5, $vr3
-	vxor.v	$vr6, $vr6, $vr2
-	vpickve2gr.w	$t0, $vr6, 0
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB1_12
-# %bb.11:                               # %pred.store.if33
-                                        #   in Loop: Header=BB1_6 Depth=2
-	addi.d	$t0, $a6, -1
-	st.w	$t0, $a7, 8
-.LBB1_12:                               # %pred.store.continue34
-                                        #   in Loop: Header=BB1_6 Depth=2
-	vpickve2gr.w	$t0, $vr6, 2
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB1_5
-# %bb.13:                               # %pred.store.if35
-                                        #   in Loop: Header=BB1_6 Depth=2
-	st.w	$a6, $a7, 12
+	beq	$a1, $a4, .LBB1_5
+# %bb.7:                                #   in Loop: Header=BB1_6 Depth=2
+	st.w	$a6, $a5, 0
 	b	.LBB1_5
-.LBB1_14:                               # %.preheader.us.i.preheader
+.LBB1_8:                                # %.preheader.us.i.preheader
 	move	$a3, $zero
 	ori	$a0, $zero, 100
 	addi.d	$a1, $sp, 216
 	vrepli.b	$vr0, 0
 	.p2align	4, , 16
-.LBB1_15:                               # %.preheader.us.i
+.LBB1_9:                                # %.preheader.us.i
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a1, 160
 	vld	$vr2, $a1, 128
@@ -300,8 +208,8 @@ main:                                   # @main
 	add.w	$a3, $a6, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 400
-	bnez	$a0, .LBB1_15
-# %bb.16:                               # %SumArray.exit
+	bnez	$a0, .LBB1_9
+# %bb.10:                               # %SumArray.exit
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 100

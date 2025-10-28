@@ -766,7 +766,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
 	addi.d	$fp, $sp, 272
-	move	$s6, $a3
+	move	$s7, $a3
 	move	$s2, $a2
 	st.d	$a1, $fp, -224                  # 8-byte Folded Spill
 	move	$s3, $a0
@@ -784,7 +784,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	addi.d	$a0, $fp, -100
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 1
-	ori	$s1, $zero, 4
+	ori	$s1, $zero, 1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
@@ -829,8 +829,8 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	move	$sp, $a0
 	sub.d	$s5, $sp, $a1
 	move	$sp, $s5
-	sub.d	$s7, $sp, $a1
-	move	$sp, $s7
+	sub.d	$s6, $sp, $a1
+	move	$sp, $s6
 	slli.d	$a1, $a2, 3
 	addi.d	$a1, $a1, 15
 	bstrpick.d	$a1, $a1, 35, 4
@@ -851,7 +851,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 28
 	ori	$a1, $zero, 4
-	move	$a0, $s7
+	move	$a0, $s6
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
@@ -866,45 +866,35 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	blez	$a0, .LBB7_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$s8, $s2, 28
-	bgeu	$a0, $s1, .LBB7_4
+	bne	$a0, $s1, .LBB7_4
 # %bb.2:
 	move	$a1, $zero
 	move	$a2, $zero
 	b	.LBB7_7
 .LBB7_3:
-	move	$s7, $zero
+	move	$s6, $zero
 	addi.d	$s8, $s2, 28
 	b	.LBB7_10
 .LBB7_4:                                # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a1, $a1, 2
-	vrepli.b	$vr0, 0
-	ld.d	$a2, $fp, -240                  # 8-byte Folded Reload
-	addi.d	$a2, $a2, 8
-	move	$a3, $a1
-	vori.b	$vr1, $vr0, 0
+	move	$a2, $zero
+	move	$a3, $zero
+	bstrpick.d	$a1, $a0, 30, 1
+	slli.d	$a1, $a1, 1
+	ld.d	$a4, $fp, -240                  # 8-byte Folded Reload
+	addi.d	$a4, $a4, 4
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB7_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a2, -8
-	ld.d	$a5, $a2, 0
-	vinsgr2vr.d	$vr2, $a4, 0
-	vinsgr2vr.d	$vr3, $a5, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vadd.d	$vr0, $vr0, $vr2
-	vadd.d	$vr1, $vr1, $vr3
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 16
-	bnez	$a3, .LBB7_5
+	ld.w	$a6, $a4, -4
+	ld.w	$a7, $a4, 0
+	add.d	$a2, $a2, $a6
+	add.d	$a3, $a3, $a7
+	addi.d	$a5, $a5, -2
+	addi.d	$a4, $a4, 8
+	bnez	$a5, .LBB7_5
 # %bb.6:                                # %middle.block
-	vadd.d	$vr0, $vr1, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a2, $vr0, 0
+	add.d	$a2, $a3, $a2
 	beq	$a1, $a0, .LBB7_9
 .LBB7_7:                                # %scalar.ph.preheader
 	ld.d	$a3, $fp, -240                  # 8-byte Folded Reload
@@ -920,15 +910,15 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	bnez	$a0, .LBB7_8
 .LBB7_9:                                # %._crit_edge
 	st.d	$a2, $s2, 80
-	slli.d	$s7, $a2, 5
+	slli.d	$s6, $a2, 5
 .LBB7_10:
-	move	$a0, $s7
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $s7, 0
 	st.d	$a0, $fp, -208                  # 8-byte Folded Spill
-	add.d	$a0, $a1, $s7
-	st.d	$a0, $s6, 0
+	add.d	$a0, $a1, $s6
+	st.d	$a0, $s7, 0
 	addi.d	$a1, $fp, -200
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fgetpos)
@@ -942,7 +932,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	beqz	$a1, .LBB7_35
 # %bb.12:                               # %.preheader110.us.preheader
 	move	$s1, $zero
-	move	$s7, $zero
+	move	$s6, $zero
 	b	.LBB7_15
 	.p2align	4, , 16
 .LBB7_13:                               # %._crit_edge119.split.us.us.loopexit
@@ -968,7 +958,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 .LBB7_17:                               # %._crit_edge115.split.us.us.us
                                         #   in Loop: Header=BB7_18 Depth=2
 	addi.w	$s3, $s3, 1
-	add.d	$s7, $s7, $s4
+	add.d	$s6, $s6, $s4
 	beq	$s3, $s2, .LBB7_13
 .LBB7_18:                               # %.lr.ph118.us
                                         #   Parent Loop BB7_15 Depth=1
@@ -1007,15 +997,15 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	bnez	$s5, .LBB7_19
 	b	.LBB7_17
 .LBB7_20:
-	move	$s7, $zero
+	move	$s6, $zero
 .LBB7_21:                               # %._crit_edge122
-	slli.d	$a0, $s7, 4
+	slli.d	$a0, $s6, 4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $s7, 0
 	st.d	$a0, $fp, -216                  # 8-byte Folded Spill
-	alsl.d	$a0, $s7, $a1, 4
-	st.d	$a0, $s6, 0
+	alsl.d	$a0, $s6, $a1, 4
+	st.d	$a0, $s7, 0
 	addi.d	$a1, $fp, -200
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fsetpos)
@@ -1110,16 +1100,16 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	ld.w	$s5, $fp, -160
-	slli.d	$s6, $s3, 5
+	slli.d	$s7, $s3, 5
 	ld.d	$s8, $fp, -208                  # 8-byte Folded Reload
-	add.d	$a0, $s8, $s6
+	add.d	$a0, $s8, $s7
 	st.d	$s5, $a0, 8
 	ld.d	$a1, $fp, -216                  # 8-byte Folded Reload
 	alsl.d	$a1, $s1, $a1, 4
 	st.d	$a1, $a0, 16
 	pcaddu18i	$ra, %call36(urand)
 	jirl	$ra, $ra, 0
-	fstx.s	$fa0, $s8, $s6
+	fstx.s	$fa0, $s8, $s7
 	blez	$s5, .LBB7_27
 # %bb.29:                               # %.lr.ph127
                                         #   in Loop: Header=BB7_28 Depth=2
@@ -1129,7 +1119,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
                                         #   in Loop: Header=BB7_28 Depth=2
 	ld.d	$a0, $fp, -232                  # 8-byte Folded Reload
 	alsl.d	$s8, $s1, $a0, 4
-	move	$s6, $s5
+	move	$s7, $s5
 	.p2align	4, , 16
 .LBB7_31:                               # %.lr.ph127.split.us
                                         #   Parent Loop BB7_25 Depth=1
@@ -1170,15 +1160,15 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	addi.d	$s6, $s6, -1
+	addi.d	$s7, $s7, -1
 	addi.d	$s8, $s8, 16
-	bnez	$s6, .LBB7_31
+	bnez	$s7, .LBB7_31
 	b	.LBB7_27
 	.p2align	4, , 16
 .LBB7_32:                               # %.lr.ph127.split.preheader
                                         #   in Loop: Header=BB7_28 Depth=2
 	ld.d	$a0, $fp, -232                  # 8-byte Folded Reload
-	alsl.d	$s6, $s1, $a0, 4
+	alsl.d	$s7, $s1, $a0, 4
 	move	$s8, $s5
 	.p2align	4, , 16
 .LBB7_33:                               # %.lr.ph127.split
@@ -1206,16 +1196,16 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	fld.d	$fa0, $fp, -168
 	ld.w	$a0, $fp, -176
 	fcvt.s.d	$fa0, $fa0
-	fst.s	$fa0, $s6, -8
-	st.d	$a0, $s6, 0
+	fst.s	$fa0, $s7, -8
+	st.d	$a0, $s7, 0
 	addi.d	$s8, $s8, -1
-	addi.d	$s6, $s6, 16
+	addi.d	$s7, $s7, 16
 	bnez	$s8, .LBB7_33
 	b	.LBB7_27
 .LBB7_34:                               # %._crit_edge139
 	ld.d	$s1, $fp, -264                  # 8-byte Folded Reload
 	ld.d	$a1, $s1, 80
-	div.d	$a0, $s7, $a1
+	div.d	$a0, $s6, $a1
 	st.d	$a0, $s1, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
@@ -1233,7 +1223,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	move	$a1, $s7
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
@@ -1257,7 +1247,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	ret
 .LBB7_35:                               # %.preheader110.preheader
 	move	$s1, $zero
-	move	$s7, $zero
+	move	$s6, $zero
 	b	.LBB7_38
 	.p2align	4, , 16
 .LBB7_36:                               # %._crit_edge119.split.loopexit
@@ -1283,7 +1273,7 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 .LBB7_40:                               # %._crit_edge115.split
                                         #   in Loop: Header=BB7_41 Depth=2
 	addi.w	$s3, $s3, 1
-	add.d	$s7, $s7, $s4
+	add.d	$s6, $s6, $s4
 	beq	$s3, $s2, .LBB7_36
 .LBB7_41:                               # %.lr.ph118
                                         #   Parent Loop BB7_38 Depth=1

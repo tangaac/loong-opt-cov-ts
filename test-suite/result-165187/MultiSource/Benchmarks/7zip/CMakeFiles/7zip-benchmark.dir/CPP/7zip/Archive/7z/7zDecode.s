@@ -77,16 +77,8 @@ _ZN8NArchive3N7z11CBindInfoExD2Ev:      # @_ZN8NArchive3N7z11CBindInfoExD2Ev
 .Lfunc_end1:
 	.size	_ZN8NArchive3N7z11CBindInfoExD2Ev, .Lfunc_end1-_ZN8NArchive3N7z11CBindInfoExD2Ev
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj
-.LCPI2_0:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI2_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
 	.text
-	.globl	_ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj
+	.globl	_ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj # -- Begin function _ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj
 	.p2align	5
 	.type	_ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj,@function
 _ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj: # @_ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj
@@ -1200,7 +1192,7 @@ _ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOut
 # %bb.156:                              # %.lr.ph574.preheader
                                         #   in Loop: Header=BB2_126 Depth=1
 	bstrpick.d	$a0, $s3, 30, 0
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 2
 	bgeu	$a0, $a1, .LBB2_159
 # %bb.157:                              #   in Loop: Header=BB2_126 Depth=1
 	move	$a1, $zero
@@ -1210,43 +1202,27 @@ _ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOut
 	b	.LBB2_165
 .LBB2_159:                              # %vector.ph
                                         #   in Loop: Header=BB2_126 Depth=1
-	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI2_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI2_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI2_1)
-	bstrpick.d	$a1, $s3, 30, 2
-	slli.d	$a1, $a1, 2
-	move	$a2, $s0
-	move	$a3, $a1
+	bstrpick.d	$a1, $s3, 30, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a2, $s0, 4
+	addi.d	$a3, $s5, 3
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB2_160:                              # %vector.body
                                         #   Parent Loop BB2_126 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr2, $a2, 0
-	vslli.d	$vr3, $vr0, 1
-	vslli.d	$vr4, $vr1, 1
-	vpickve2gr.d	$a4, $vr4, 0
-	vpickve2gr.d	$a5, $vr4, 1
-	vpickve2gr.d	$a6, $vr3, 0
-	vpickve2gr.d	$a7, $vr3, 1
-	add.d	$a4, $s5, $a4
-	add.d	$a5, $s5, $a5
-	add.d	$a6, $s5, $a6
-	add.d	$a7, $s5, $a7
-	vstelm.b	$vr2, $a4, 0, 0
-	vstelm.b	$vr2, $a5, 0, 4
-	vstelm.b	$vr2, $a6, 0, 8
-	vstelm.b	$vr2, $a7, 0, 12
-	vsrli.w	$vr2, $vr2, 8
-	vstelm.b	$vr2, $a4, 1, 0
-	vstelm.b	$vr2, $a5, 1, 4
-	vstelm.b	$vr2, $a6, 1, 8
-	vstelm.b	$vr2, $a7, 1, 12
-	vaddi.du	$vr1, $vr1, 4
-	vaddi.du	$vr0, $vr0, 4
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 16
-	bnez	$a3, .LBB2_160
+	ld.w	$a5, $a2, -4
+	ld.w	$a6, $a2, 0
+	st.b	$a5, $a3, -3
+	st.b	$a6, $a3, -1
+	srli.d	$a5, $a5, 8
+	srli.d	$a6, $a6, 8
+	st.b	$a5, $a3, -2
+	st.b	$a6, $a3, 0
+	addi.d	$a2, $a2, 8
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 4
+	bnez	$a4, .LBB2_160
 # %bb.161:                              # %middle.block
                                         #   in Loop: Header=BB2_126 Depth=1
 	beq	$a0, $a1, .LBB2_164

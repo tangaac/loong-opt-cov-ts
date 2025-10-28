@@ -1,13 +1,6 @@
 	.file	"loop-2d.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function f
-.LCPI0_0:
-	.word	0                               # 0x0
-	.word	4294967295                      # 0xffffffff
-	.word	4294967294                      # 0xfffffffe
-	.word	4294967293                      # 0xfffffffd
 	.text
-	.globl	f
+	.globl	f                               # -- Begin function f
 	.p2align	5
 	.type	f,@function
 f:                                      # @f
@@ -15,63 +8,51 @@ f:                                      # @f
 	beqz	$a0, .LBB0_8
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a1, %pc_hi20(a)
-	addi.d	$a1, $a1, %pc_lo12(a)
-	ori	$a2, $zero, 8
-	alsl.d	$a3, $a0, $a1, 2
-	bgeu	$a0, $a2, .LBB0_3
+	addi.d	$a2, $a1, %pc_lo12(a)
+	ori	$a1, $zero, 1
+	alsl.d	$a3, $a0, $a2, 2
+	bne	$a0, $a1, .LBB0_3
 # %bb.2:
-	move	$a2, $a0
+	move	$a1, $a0
 	b	.LBB0_6
 .LBB0_3:                                # %vector.ph
 	bstrpick.d	$a4, $a0, 31, 0
-	bstrpick.d	$a2, $a4, 31, 3
-	slli.d	$a5, $a2, 3
-	slli.d	$a2, $a2, 5
-	pcalau12i	$a6, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a6, %pc_lo12(.LCPI0_0)
-	sub.d	$a3, $a3, $a2
-	sub.w	$a2, $a0, $a5
-	vreplgr2vr.w	$vr1, $a0
-	vadd.w	$vr0, $vr1, $vr0
-	alsl.d	$a0, $a0, $a1, 2
-	addi.d	$a0, $a0, -16
-	vrepli.w	$vr1, 3
-	addi.d	$a6, $a1, -3
-	vreplgr2vr.w	$vr2, $a6
-	addi.d	$a6, $a1, -15
-	vreplgr2vr.w	$vr3, $a6
-	vrepli.w	$vr4, -8
-	move	$a6, $a5
+	bstrpick.d	$a1, $a4, 31, 1
+	slli.d	$a5, $a1, 1
+	slli.d	$a1, $a1, 3
+	sub.d	$a3, $a3, $a1
+	sub.w	$a1, $a0, $a5
+	alsl.d	$a6, $a0, $a0, 1
+	add.d	$a6, $a6, $a2
+	addi.d	$a6, $a6, -6
+	alsl.d	$a0, $a0, $a2, 2
+	addi.d	$a0, $a0, -4
+	move	$a7, $a5
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr5, $vr2, 0
-	vmadd.w	$vr5, $vr0, $vr1
-	vori.b	$vr6, $vr3, 0
-	vmadd.w	$vr6, $vr0, $vr1
-	vshuf4i.w	$vr5, $vr5, 27
-	vst	$vr5, $a0, 0
-	vshuf4i.w	$vr5, $vr6, 27
-	vst	$vr5, $a0, -16
-	vadd.w	$vr0, $vr0, $vr4
-	addi.d	$a6, $a6, -8
-	addi.d	$a0, $a0, -32
-	bnez	$a6, .LBB0_4
+	addi.d	$t0, $a6, 3
+	st.w	$t0, $a0, 0
+	st.w	$a6, $a0, -4
+	addi.d	$a7, $a7, -2
+	addi.d	$a6, $a6, -6
+	addi.d	$a0, $a0, -8
+	bnez	$a7, .LBB0_4
 # %bb.5:                                # %middle.block
 	beq	$a5, $a4, .LBB0_8
-.LBB0_6:                                # %.lr.ph.preheader12
+.LBB0_6:                                # %.lr.ph.preheader14
 	addi.d	$a0, $a3, -4
-	alsl.d	$a3, $a2, $a2, 1
-	add.d	$a1, $a3, $a1
-	addi.d	$a1, $a1, -3
+	alsl.d	$a3, $a1, $a1, 1
+	add.d	$a2, $a3, $a2
+	addi.d	$a2, $a2, -3
 	.p2align	4, , 16
 .LBB0_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$a2, $a2, -1
-	st.w	$a1, $a0, 0
+	addi.w	$a1, $a1, -1
+	st.w	$a2, $a0, 0
 	addi.d	$a0, $a0, -4
-	addi.d	$a1, $a1, -3
-	bnez	$a2, .LBB0_7
+	addi.d	$a2, $a2, -3
+	bnez	$a1, .LBB0_7
 .LBB0_8:                                # %._crit_edge
 	move	$a0, $zero
 	ret

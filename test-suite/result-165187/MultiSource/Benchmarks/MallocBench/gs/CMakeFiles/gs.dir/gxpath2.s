@@ -146,44 +146,41 @@ gx_path_is_rectangle:                   # @gx_path_is_rectangle
 	bne	$a2, $a3, .LBB4_13
 # %bb.4:
 	ld.d	$a2, $a0, 8
-	ld.d	$a4, $a2, 8
+	ld.d	$a7, $a2, 8
 	vld	$vr0, $a0, 24
-	vld	$vr1, $a4, 24
-	ld.d	$a3, $a2, 24
-	ld.d	$a0, $a4, 8
-	vpickve2gr.d	$a4, $vr0, 0
-	bne	$a4, $a3, .LBB4_8
+	vld	$vr1, $a7, 24
+	ld.d	$a3, $a0, 32
+	ld.d	$a0, $a0, 24
+	ld.d	$a5, $a7, 32
+	ld.d	$a4, $a7, 24
+	ld.d	$a6, $a2, 24
+	ld.d	$a7, $a7, 8
+	bne	$a0, $a6, .LBB4_8
 # %bb.5:
-	ld.d	$a5, $a2, 32
-	vpickve2gr.d	$a6, $vr1, 1
-	bne	$a5, $a6, .LBB4_8
+	ld.d	$t0, $a2, 32
+	bne	$t0, $a5, .LBB4_8
 # %bb.6:
-	ld.d	$a5, $a0, 24
-	vpickve2gr.d	$a6, $vr1, 0
-	bne	$a6, $a5, .LBB4_8
+	ld.d	$t0, $a7, 24
+	bne	$a4, $t0, .LBB4_8
 # %bb.7:
-	ld.d	$a5, $a0, 32
-	vpickve2gr.d	$a6, $vr0, 1
-	beq	$a5, $a6, .LBB4_12
+	ld.d	$t0, $a7, 32
+	beq	$t0, $a3, .LBB4_12
 .LBB4_8:
-	ld.d	$a5, $a0, 24
-	bne	$a4, $a5, .LBB4_13
+	ld.d	$t0, $a7, 24
+	bne	$a0, $t0, .LBB4_13
 # %bb.9:
-	ld.d	$a4, $a0, 32
-	vpickve2gr.d	$a5, $vr1, 1
+	ld.d	$a7, $a7, 32
 	move	$a0, $zero
-	bne	$a4, $a5, .LBB4_14
+	bne	$a7, $a5, .LBB4_14
 # %bb.10:
-	vpickve2gr.d	$a4, $vr1, 0
-	bne	$a4, $a3, .LBB4_14
+	bne	$a4, $a6, .LBB4_14
 # %bb.11:
 	ld.d	$a0, $a2, 32
-	vpickve2gr.d	$a2, $vr0, 1
-	bne	$a0, $a2, .LBB4_13
+	bne	$a0, $a3, .LBB4_13
 .LBB4_12:                               # %.critedge.sink.split
 	vmin.d	$vr2, $vr0, $vr1
-	vst	$vr2, $a1, 0
 	vmax.d	$vr0, $vr0, $vr1
+	vst	$vr2, $a1, 0
 	vst	$vr0, $a1, 16
 	ori	$a0, $zero, 1
 	ret
@@ -588,40 +585,56 @@ gx_path_merge:                          # @gx_path_merge
 	.type	gx_path_translate,@function
 gx_path_translate:                      # @gx_path_translate
 # %bb.0:
-	vld	$vr1, $a0, 16
-	vinsgr2vr.d	$vr0, $a1, 0
-	vinsgr2vr.d	$vr0, $a2, 1
-	vadd.d	$vr1, $vr1, $vr0
-	vld	$vr2, $a0, 32
-	vst	$vr1, $a0, 16
-	vld	$vr1, $a0, 120
-	ld.d	$a1, $a0, 88
-	vadd.d	$vr2, $vr2, $vr0
-	vst	$vr2, $a0, 32
-	vadd.d	$vr1, $vr1, $vr0
-	vst	$vr1, $a0, 120
-	beqz	$a1, .LBB10_5
+	ld.d	$a3, $a0, 16
+	ld.d	$a4, $a0, 24
+	add.d	$a3, $a3, $a1
+	st.d	$a3, $a0, 16
+	ld.d	$a3, $a0, 32
+	add.d	$a4, $a4, $a2
+	ld.d	$a5, $a0, 40
+	st.d	$a4, $a0, 24
+	add.d	$a3, $a3, $a1
+	st.d	$a3, $a0, 32
+	add.d	$a3, $a5, $a2
+	ld.d	$a4, $a0, 120
+	st.d	$a3, $a0, 40
+	ld.d	$a5, $a0, 128
+	ld.d	$a3, $a0, 88
+	add.d	$a4, $a4, $a1
+	st.d	$a4, $a0, 120
+	add.d	$a4, $a5, $a2
+	st.d	$a4, $a0, 128
+	beqz	$a3, .LBB10_5
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a0, $zero, 3
 	b	.LBB10_3
 	.p2align	4, , 16
 .LBB10_2:                               #   in Loop: Header=BB10_3 Depth=1
-	vld	$vr1, $a1, 24
-	vadd.d	$vr1, $vr1, $vr0
-	vst	$vr1, $a1, 24
-	ld.d	$a1, $a1, 8
-	beqz	$a1, .LBB10_5
+	ld.d	$a4, $a3, 24
+	ld.d	$a5, $a3, 32
+	add.d	$a4, $a4, $a1
+	st.d	$a4, $a3, 24
+	add.d	$a4, $a5, $a2
+	st.d	$a4, $a3, 32
+	ld.d	$a3, $a3, 8
+	beqz	$a3, .LBB10_5
 .LBB10_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a1, 16
-	bne	$a2, $a0, .LBB10_2
+	ld.w	$a4, $a3, 16
+	bne	$a4, $a0, .LBB10_2
 # %bb.4:                                #   in Loop: Header=BB10_3 Depth=1
-	vld	$vr1, $a1, 40
-	vld	$vr2, $a1, 56
-	vadd.d	$vr1, $vr1, $vr0
-	vst	$vr1, $a1, 40
-	vadd.d	$vr1, $vr2, $vr0
-	vst	$vr1, $a1, 56
+	ld.d	$a4, $a3, 40
+	ld.d	$a5, $a3, 48
+	add.d	$a4, $a4, $a1
+	st.d	$a4, $a3, 40
+	ld.d	$a4, $a3, 56
+	add.d	$a5, $a5, $a2
+	ld.d	$a6, $a3, 64
+	st.d	$a5, $a3, 48
+	add.d	$a4, $a4, $a1
+	st.d	$a4, $a3, 56
+	add.d	$a4, $a6, $a2
+	st.d	$a4, $a3, 64
 	b	.LBB10_2
 .LBB10_5:                               # %._crit_edge
 	move	$a0, $zero

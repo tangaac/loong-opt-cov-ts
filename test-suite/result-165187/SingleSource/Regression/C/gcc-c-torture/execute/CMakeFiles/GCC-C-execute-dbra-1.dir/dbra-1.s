@@ -67,18 +67,14 @@ f4:                                     # @f4
 	.type	f5,@function
 f5:                                     # @f5
 # %bb.0:
-	addi.w	$a1, $zero, -10
-	sltu	$a2, $a1, $a0
-	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $a0, $a2
-	or	$a1, $a2, $a1
-	nor	$a1, $a1, $zero
-	addi.w	$a2, $zero, -11
-	sltu	$a0, $a2, $a0
-	maskeqz	$a1, $a1, $a0
-	addi.w	$a2, $zero, -1
-	masknez	$a0, $a2, $a0
-	or	$a0, $a1, $a0
+	addi.w	$a1, $zero, -11
+	sltu	$a1, $a1, $a0
+	nor	$a0, $a0, $zero
+	addi.d	$a2, $zero, -1
+	masknez	$a2, $a2, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	addi.w	$a0, $a0, 0
 	ret
 .Lfunc_end4:
 	.size	f5, .Lfunc_end4-f5

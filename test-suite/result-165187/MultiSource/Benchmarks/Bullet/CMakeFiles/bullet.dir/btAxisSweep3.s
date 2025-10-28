@@ -33,22 +33,8 @@ _ZN12btAxisSweep3C2ERK9btVector3S2_tP22btOverlappingPairCacheb: # @_ZN12btAxisSw
 	.size	_ZN12btAxisSweep3C2ERK9btVector3S2_tP22btOverlappingPairCacheb, .Lfunc_end0-_ZN12btAxisSweep3C2ERK9btVector3S2_tP22btOverlappingPairCacheb
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb
-.LCPI1_0:
-	.dword	7                               # 0x7
-	.dword	8                               # 0x8
-.LCPI1_1:
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-.LCPI1_2:
-	.dword	3                               # 0x3
-	.dword	4                               # 0x4
-.LCPI1_3:
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
 	.section	.text._ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb,"axG",@progbits,_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb,comdat
-	.weak	_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb
+	.weak	_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb # -- Begin function _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb
 	.p2align	5
 	.type	_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb,@function
 _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb
@@ -206,48 +192,24 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	st.h	$a1, $fp, 72
 	beqz	$s0, .LBB1_19
 # %bb.11:                               # %.lr.ph.preheader
-	ori	$a2, $zero, 9
+	ori	$a2, $zero, 3
 	bltu	$s1, $a2, .LBB1_15
 # %bb.12:                               # %vector.ph74
 	addi.d	$a2, $s1, -1
+	move	$a4, $zero
 	move	$a3, $a2
-	bstrins.d	$a3, $zero, 2, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
-	vld	$vr2, $a1, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
-	vld	$vr3, $a1, %pc_lo12(.LCPI1_3)
-	ori	$a4, $zero, 1
-	move	$a1, $a2
-	bstrins.d	$a1, $a4, 2, 0
-	addi.d	$a4, $a0, 380
-	move	$a5, $a3
+	bstrins.d	$a3, $zero, 0, 0
+	ori	$a1, $a2, 1
+	addi.d	$a5, $a0, 220
 	.p2align	4, , 16
 .LBB1_13:                               # %vector.body77
                                         # =>This Inner Loop Header: Depth=1
-	vpickev.w	$vr4, $vr2, $vr3
-	vpickev.w	$vr5, $vr0, $vr1
-	vpickev.h	$vr4, $vr5, $vr4
-	vaddi.hu	$vr4, $vr4, 1
-	vpickve2gr.h	$a6, $vr4, 7
-	vstelm.h	$vr4, $a4, -240, 0
-	vstelm.h	$vr4, $a4, -160, 1
-	vstelm.h	$vr4, $a4, -80, 2
-	vstelm.h	$vr4, $a4, 0, 3
-	vstelm.h	$vr4, $a4, 80, 4
-	vstelm.h	$vr4, $a4, 160, 5
-	vstelm.h	$vr4, $a4, 240, 6
-	st.h	$a6, $a4, 320
-	vaddi.du	$vr3, $vr3, 8
-	vaddi.du	$vr2, $vr2, 8
-	vaddi.du	$vr1, $vr1, 8
-	vaddi.du	$vr0, $vr0, 8
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 640
-	bnez	$a5, .LBB1_13
+	addi.d	$a6, $a4, 3
+	addi.d	$a4, $a4, 2
+	st.h	$a4, $a5, -80
+	st.h	$a6, $a5, 0
+	addi.d	$a5, $a5, 160
+	bne	$a3, $a4, .LBB1_13
 # %bb.14:                               # %middle.block81
 	beq	$a2, $a3, .LBB1_19
 .LBB1_15:                               # %.lr.ph.preheader84
@@ -384,33 +346,25 @@ _ZN17bt32BitAxisSweep3C2ERK9btVector3S2_jP22btOverlappingPairCacheb: # @_ZN17bt3
 	.size	_ZN17bt32BitAxisSweep3C2ERK9btVector3S2_jP22btOverlappingPairCacheb, .Lfunc_end2-_ZN17bt32BitAxisSweep3C2ERK9btVector3S2_jP22btOverlappingPairCacheb
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb
-.LCPI3_0:
-	.dword	3                               # 0x3
-	.dword	4                               # 0x4
-.LCPI3_1:
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
 	.section	.text._ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb,"axG",@progbits,_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb,comdat
-	.weak	_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb
+	.weak	_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb # -- Begin function _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb
 	.p2align	5
 	.type	_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb,@function
 _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -436,32 +390,17 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	st.w	$zero, $fp, 156
 	st.d	$zero, $fp, 160
 	addi.w	$s4, $a5, 1
-	bnez	$a6, .LBB3_2
+	beqz	$a6, .LBB3_17
 # %bb.1:
-	ori	$a0, $zero, 128
-	ori	$a1, $zero, 16
-	move	$s5, $a7
-	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
-	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	pcaddu18i	$ra, %call36(_ZN28btHashedOverlappingPairCacheC1Ev)
-	jirl	$ra, $ra, 0
-	move	$a7, $s5
-	st.d	$s3, $fp, 136
-	ori	$a0, $zero, 1
-	st.b	$a0, $fp, 152
-.LBB3_2:
 	addi.d	$s6, $fp, 16
 	addi.d	$s5, $fp, 32
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	bnez	$a7, .LBB3_4
-# %bb.3:
+	bnez	$a7, .LBB3_3
+.LBB3_2:
 	ori	$a0, $zero, 40
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 24
 	vst	$vr0, $a0, 8
 	pcalau12i	$a1, %pc_hi20(_ZTV15btNullPairCache+16)
@@ -481,7 +420,7 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	jirl	$ra, $ra, 0
 	st.d	$s3, $fp, 160
 	st.b	$s7, $s3, 221
-.LBB3_4:                                # %_ZN20btAxisSweep3InternalIjE6HandlenaEm.exit
+.LBB3_3:                                # %_ZN20btAxisSweep3InternalIjE6HandlenaEm.exit
 	vld	$vr0, $s2, 0
 	vst	$vr0, $s6, 0
 	vld	$vr0, $s1, 0
@@ -515,13 +454,13 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	beqz	$s4, .LBB3_18
-# %bb.5:
+# %bb.4:
 	ori	$a4, $zero, 96
 	mul.d	$a1, $s1, $a4
 	addi.d	$a3, $a1, -96
 	move	$a2, $a0
-	bltu	$a3, $a4, .LBB3_9
-# %bb.6:                                # %vector.ph
+	bltu	$a3, $a4, .LBB3_8
+# %bb.5:                                # %vector.ph
 	lu12i.w	$a2, -349526
 	ori	$a2, $a2, 2731
 	lu32i.d	$a2, -349526
@@ -537,7 +476,7 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	addi.d	$a5, $a0, 112
 	move	$a6, $a4
 	.p2align	4, , 16
-.LBB3_7:                                # %vector.body
+.LBB3_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$zero, $a5, -112
 	st.d	$zero, $a5, -16
@@ -545,63 +484,48 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	st.d	$zero, $a5, 0
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 192
-	bnez	$a6, .LBB3_7
-# %bb.8:                                # %middle.block
-	beq	$a3, $a4, .LBB3_11
-.LBB3_9:                                # %scalar.ph.preheader
+	bnez	$a6, .LBB3_6
+# %bb.7:                                # %middle.block
+	beq	$a3, $a4, .LBB3_10
+.LBB3_8:                                # %scalar.ph.preheader
 	add.d	$a1, $a0, $a1
 	.p2align	4, , 16
-.LBB3_10:                               # %scalar.ph
+.LBB3_9:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$zero, $a2, 0
 	st.d	$zero, $a2, 16
 	addi.d	$a2, $a2, 96
-	bne	$a2, $a1, .LBB3_10
-.LBB3_11:                               # %.loopexit
+	bne	$a2, $a1, .LBB3_9
+.LBB3_10:                               # %.loopexit
 	st.d	$a0, $fp, 72
 	st.w	$s4, $fp, 68
 	st.w	$zero, $fp, 64
 	ori	$a1, $zero, 1
 	st.w	$a1, $fp, 80
 	beqz	$s0, .LBB3_19
-# %bb.12:                               # %.lr.ph.preheader
-	ori	$a2, $zero, 9
-	bltu	$s4, $a2, .LBB3_16
-# %bb.13:                               # %vector.ph73
-	addi.d	$a2, $s1, -1
-	move	$a3, $a2
-	bstrins.d	$a3, $zero, 2, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI3_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI3_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI3_1)
-	ori	$a4, $zero, 1
-	move	$a1, $a2
-	bstrins.d	$a1, $a4, 2, 0
-	addi.d	$a4, $a0, 444
-	move	$a5, $a3
+# %bb.11:                               # %.lr.ph.preheader
+	ori	$a2, $zero, 3
+	bltu	$s4, $a2, .LBB3_15
+# %bb.12:                               # %vector.ph73
+	addi.d	$a3, $s1, -1
+	move	$a4, $a3
+	bstrins.d	$a4, $zero, 0, 0
+	ori	$a1, $a3, 1
+	addi.d	$a5, $a0, 252
+	move	$a6, $a4
 	.p2align	4, , 16
-.LBB3_14:                               # %vector.body76
+.LBB3_13:                               # %vector.body76
                                         # =>This Inner Loop Header: Depth=1
-	vpickev.w	$vr2, $vr0, $vr1
-	vaddi.wu	$vr3, $vr2, 1
-	vaddi.wu	$vr2, $vr2, 5
-	vstelm.w	$vr3, $a4, -288, 0
-	vstelm.w	$vr3, $a4, -192, 1
-	vstelm.w	$vr3, $a4, -96, 2
-	vstelm.w	$vr3, $a4, 0, 3
-	vstelm.w	$vr2, $a4, 96, 0
-	vstelm.w	$vr2, $a4, 192, 1
-	vstelm.w	$vr2, $a4, 288, 2
-	vstelm.w	$vr2, $a4, 384, 3
-	vaddi.du	$vr1, $vr1, 8
-	vaddi.du	$vr0, $vr0, 8
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 768
-	bnez	$a5, .LBB3_14
-# %bb.15:                               # %middle.block80
-	beq	$a2, $a3, .LBB3_19
-.LBB3_16:                               # %.lr.ph.preheader83
+	addi.d	$a7, $a2, -1
+	st.w	$a7, $a5, -96
+	st.w	$a2, $a5, 0
+	addi.d	$a2, $a2, 2
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 192
+	bnez	$a6, .LBB3_13
+# %bb.14:                               # %middle.block80
+	beq	$a3, $a4, .LBB3_19
+.LBB3_15:                               # %.lr.ph.preheader83
 	alsl.d	$a2, $a1, $a1, 1
 	slli.d	$a2, $a2, 5
 	add.d	$a2, $a2, $a0
@@ -609,14 +533,31 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	sub.d	$a3, $s1, $a1
 	addi.d	$a1, $a1, 1
 	.p2align	4, , 16
-.LBB3_17:                               # %.lr.ph
+.LBB3_16:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a1, $a2, 0
 	addi.d	$a2, $a2, 96
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 1
-	bnez	$a3, .LBB3_17
+	bnez	$a3, .LBB3_16
 	b	.LBB3_19
+.LBB3_17:
+	ori	$a0, $zero, 128
+	ori	$a1, $zero, 16
+	move	$s5, $a7
+	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
+	jirl	$ra, $ra, 0
+	move	$s3, $a0
+	pcaddu18i	$ra, %call36(_ZN28btHashedOverlappingPairCacheC1Ev)
+	jirl	$ra, $ra, 0
+	move	$a7, $s5
+	st.d	$s3, $fp, 136
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 152
+	addi.d	$s6, $fp, 16
+	addi.d	$s5, $fp, 32
+	beqz	$a7, .LBB3_2
+	b	.LBB3_3
 .LBB3_18:                               # %.loopexit.thread
 	st.d	$a0, $fp, 72
 	st.w	$s4, $fp, 68
@@ -647,41 +588,41 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 72
-	st.w	$zero, $a1, 60
-	ori	$a2, $zero, 1
-	st.w	$a2, $a1, 72
-	ld.w	$a3, $fp, 12
-	ld.d	$a4, $fp, 88
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
-	vori.b	$vr0, $vr1, 0
-	vinsgr2vr.w	$vr0, $a3, 2
-	vst	$vr0, $a4, 0
-	st.w	$zero, $a1, 64
-	st.w	$a2, $a1, 76
-	ld.w	$a3, $fp, 12
-	ld.d	$a4, $fp, 96
-	vori.b	$vr0, $vr1, 0
-	vinsgr2vr.w	$vr0, $a3, 2
-	vst	$vr0, $a4, 0
-	st.w	$zero, $a1, 68
-	st.w	$a2, $a1, 80
-	ld.w	$a2, $fp, 12
 	st.d	$a0, $fp, 128
 	st.d	$a0, $fp, 104
 	st.d	$zero, $a1, 0
-	vinsgr2vr.w	$vr1, $a2, 2
-	vst	$vr1, $a0, 0
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$a2, $fp, 88
+	st.w	$zero, $a1, 60
+	ori	$a3, $zero, 1
+	st.w	$a3, $a1, 72
+	st.d	$zero, $a2, 0
+	ld.w	$a4, $fp, 12
+	st.w	$a4, $a2, 8
+	ld.d	$a4, $fp, 96
+	st.w	$zero, $a2, 12
+	st.w	$zero, $a1, 64
+	st.w	$a3, $a1, 76
+	st.d	$zero, $a4, 0
+	ld.w	$a2, $fp, 12
+	st.w	$a2, $a4, 8
+	st.w	$zero, $a4, 12
+	st.w	$zero, $a1, 68
+	st.w	$a3, $a1, 80
+	st.d	$zero, $a0, 0
+	ld.w	$a1, $fp, 12
+	st.w	$a1, $a0, 8
+	st.w	$zero, $a0, 12
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end3:
 	.size	_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb, .Lfunc_end3-_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb

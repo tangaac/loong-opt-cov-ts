@@ -43,96 +43,93 @@ outpin:                                 # @outpin
 	pcalau12i	$a2, %got_pc_hi20(cellarray)
 	ld.d	$s2, $a2, %got_pc_lo12(cellarray)
 	ld.d	$a2, $s2, 0
-	move	$a4, $a0
-	slt	$a3, $a1, $a0
-	masknez	$a5, $a1, $a3
-	maskeqz	$a3, $a0, $a3
-	or	$a3, $a3, $a5
-	alsl.d	$a6, $a0, $a2, 3
-	addi.d	$a5, $a6, 8
-	ori	$a7, $zero, 1
-	move	$t0, $a0
+	move	$a3, $a0
+	alsl.d	$a5, $a0, $a2, 3
+	addi.d	$a6, $a5, 8
+	addi.d	$a2, $a0, -1
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	move	$a2, $t0
-	beq	$a3, $t0, .LBB0_4
+	addi.d	$a2, $a2, 1
+	bge	$a2, $a1, .LBB0_4
 # %bb.3:                                #   in Loop: Header=BB0_2 Depth=1
-	ld.d	$t0, $a5, 0
-	ld.w	$t1, $t0, 80
-	addi.d	$t0, $a2, 1
-	addi.d	$a5, $a5, 8
-	bne	$t1, $a7, .LBB0_2
-.LBB0_4:
-	addi.d	$a7, $a6, 8
-	ori	$t0, $zero, 2
-	move	$t1, $a4
+	ld.d	$a7, $a6, 0
+	ld.w	$a7, $a7, 80
+	addi.d	$a6, $a6, 8
+	bne	$a7, $a4, .LBB0_2
+.LBB0_4:                                # %.preheader103
+	addi.d	$a7, $a5, 8
+	addi.d	$a4, $a0, -1
+	ori	$a6, $zero, 2
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	move	$a5, $t1
-	beq	$a3, $t1, .LBB0_7
+	addi.d	$a4, $a4, 1
+	bge	$a4, $a1, .LBB0_7
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$t1, $a7, 0
-	ld.w	$t2, $t1, 80
-	addi.d	$t1, $a5, 1
+	ld.d	$t0, $a7, 0
+	ld.w	$t0, $t0, 80
 	addi.d	$a7, $a7, 8
-	bne	$t2, $t0, .LBB0_5
-.LBB0_7:
-	addi.d	$t0, $a6, 8
-	ori	$t1, $zero, 3
-	move	$t2, $a4
+	bne	$t0, $a6, .LBB0_5
+.LBB0_7:                                # %.preheader
+	addi.d	$t0, $a5, 8
+	addi.d	$a6, $a0, -1
+	ori	$a7, $zero, 3
 	.p2align	4, , 16
 .LBB0_8:                                # =>This Inner Loop Header: Depth=1
-	move	$a7, $t2
-	beq	$a3, $t2, .LBB0_10
+	addi.d	$a6, $a6, 1
+	bge	$a6, $a1, .LBB0_10
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=1
-	ld.d	$t2, $t0, 0
-	ld.w	$t3, $t2, 80
-	addi.d	$t2, $a7, 1
+	ld.d	$t1, $t0, 0
+	ld.w	$t1, $t1, 80
 	addi.d	$t0, $t0, 8
-	bne	$t3, $t1, .LBB0_8
+	bne	$t1, $a7, .LBB0_8
 .LBB0_10:
-	addi.w	$t0, $a3, 1
-	addi.d	$t1, $a6, 8
-	ori	$t2, $zero, 4
+	slt	$a7, $a1, $a0
+	masknez	$t0, $a1, $a7
+	maskeqz	$a7, $a0, $a7
+	or	$a7, $a7, $t0
+	addi.w	$a7, $a7, 1
+	addi.d	$t0, $a5, 8
+	ori	$t1, $zero, 4
 	move	$s8, $a0
 	.p2align	4, , 16
 .LBB0_11:                               # =>This Inner Loop Header: Depth=1
-	move	$a6, $a4
-	beq	$a3, $a4, .LBB0_13
+	move	$a5, $a3
+	bge	$a3, $a1, .LBB0_13
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=1
-	ld.d	$a4, $t1, 0
-	ld.w	$t3, $a4, 80
-	addi.d	$a4, $a6, 1
+	ld.d	$a3, $t0, 0
+	ld.w	$t2, $a3, 80
+	addi.d	$a3, $a5, 1
 	addi.w	$s8, $s8, 1
-	addi.d	$t1, $t1, 8
-	bne	$t3, $t2, .LBB0_11
+	addi.d	$t0, $t0, 8
+	bne	$t2, $t1, .LBB0_11
 	b	.LBB0_14
 .LBB0_13:
-	move	$s8, $t0
-.LBB0_14:                               # %.split.loop.exit102
+	move	$s8, $a7
+.LBB0_14:                               # %.split.loop.exit96
 	pcalau12i	$a3, %got_pc_hi20(numnets)
 	ld.d	$a3, $a3, %got_pc_lo12(numnets)
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a3, $a3, 0
 	blez	$a3, .LBB0_32
 # %bb.15:                               # %.lr.ph80.preheader
-	slt	$a4, $a7, $a1
 	slt	$a5, $a5, $a1
-	slt	$a2, $a2, $a1
-	slt	$a1, $a6, $a1
-	addi.w	$a6, $a0, 1
+	slt	$a6, $a6, $a1
+	slt	$a4, $a4, $a1
+	slt	$a1, $a2, $a1
+	addi.w	$a2, $a0, 1
 	addi.w	$a0, $a0, 2
-	maskeqz	$s4, $a6, $a2
-	masknez	$a6, $a6, $a2
-	maskeqz	$a0, $a0, $a2
-	or	$a0, $a0, $a6
-	maskeqz	$a2, $a0, $a5
-	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
-	add.w	$a0, $a0, $a5
-	maskeqz	$a2, $a0, $a4
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	maskeqz	$s4, $a2, $a1
+	masknez	$a2, $a2, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a0, $a0, $a2
+	maskeqz	$a1, $a0, $a4
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	add.w	$a0, $a0, $a4
-	maskeqz	$s7, $a0, $a1
+	maskeqz	$a1, $a0, $a6
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	add.w	$a0, $a0, $a6
+	maskeqz	$s7, $a0, $a5
 	pcalau12i	$a0, %got_pc_hi20(netarray)
 	ld.d	$a0, $a0, %got_pc_lo12(netarray)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill

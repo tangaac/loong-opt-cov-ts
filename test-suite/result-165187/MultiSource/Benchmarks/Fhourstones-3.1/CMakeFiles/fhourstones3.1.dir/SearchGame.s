@@ -1154,33 +1154,33 @@ ab:                                     # @ab
 # %bb.60:                               # %.lr.ph167.preheader
                                         #   in Loop: Header=BB19_56 Depth=1
 	sub.d	$a5, $a7, $s4
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 2
 	bgeu	$a5, $a4, .LBB19_62
 # %bb.61:                               #   in Loop: Header=BB19_56 Depth=1
 	move	$a4, $a7
 	b	.LBB19_65
 .LBB19_62:                              # %vector.ph
                                         #   in Loop: Header=BB19_56 Depth=1
-	addi.w	$t0, $zero, -4
+	addi.w	$t0, $zero, -2
 	and	$a6, $a5, $t0
 	sub.d	$a4, $a7, $a6
 	add.d	$t1, $t3, $a7
 	and	$t0, $t1, $t0
-	addi.d	$t1, $sp, 140
+	addi.d	$t1, $sp, 152
 	alsl.d	$a7, $a7, $t1, 2
 	.p2align	4, , 16
 .LBB19_63:                              # %vector.body
                                         #   Parent Loop BB19_56 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a7, 0
-	vst	$vr0, $a7, 4
-	addi.d	$t0, $t0, -4
-	addi.d	$a7, $a7, -16
+	ld.d	$t1, $a7, -4
+	st.d	$t1, $a7, 0
+	addi.d	$t0, $t0, -2
+	addi.d	$a7, $a7, -8
 	bnez	$t0, .LBB19_63
 # %bb.64:                               # %middle.block
                                         #   in Loop: Header=BB19_56 Depth=1
 	beq	$a5, $a6, .LBB19_67
-.LBB19_65:                              # %.lr.ph167.preheader258
+.LBB19_65:                              # %.lr.ph167.preheader257
                                         #   in Loop: Header=BB19_56 Depth=1
 	alsl.d	$a5, $a4, $t5, 2
 	.p2align	4, , 16

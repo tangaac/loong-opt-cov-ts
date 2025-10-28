@@ -517,17 +517,17 @@ createFccLattice:                       # @createFccLattice
 	.type	setVcm,@function
 setVcm:                                 # @setVcm
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a0
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 72
-	ld.d	$a2, $a0, 24
 	vst	$vr0, $sp, 56
-	vst	$vr0, $sp, 32
-	vst	$vr0, $sp, 16
+	ld.d	$a2, $a0, 24
+	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 24
+	vst	$vr0, $sp, 8
 	ld.w	$a0, $a2, 12
 	move	$s0, $a1
 	blez	$a0, .LBB3_6
@@ -569,18 +569,18 @@ setVcm:                                 # @setVcm
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa4, $a7, -16
 	fadd.d	$fa3, $fa3, $fa4
-	fst.d	$fa3, $sp, 56
+	fst.d	$fa3, $sp, 40
 	fld.d	$fa4, $a7, -8
 	fadd.d	$fa2, $fa2, $fa4
-	fst.d	$fa2, $sp, 64
+	fst.d	$fa2, $sp, 48
 	fld.d	$fa4, $a7, 0
 	ld.w	$t0, $a6, 0
 	fadd.d	$fa1, $fa1, $fa4
-	fst.d	$fa1, $sp, 72
+	fst.d	$fa1, $sp, 56
 	alsl.d	$t0, $t0, $a5, 4
 	fld.d	$fa4, $t0, 8
 	fadd.d	$fa0, $fa0, $fa4
-	fst.d	$fa0, $sp, 80
+	fst.d	$fa0, $sp, 64
 	addi.w	$a4, $a4, -1
 	addi.d	$a6, $a6, 4
 	addi.d	$a7, $a7, 24
@@ -590,8 +590,8 @@ setVcm:                                 # @setVcm
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(profileStart)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 56
-	addi.d	$a1, $sp, 16
+	addi.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 4
 	pcaddu18i	$ra, %call36(addRealParallel)
 	jirl	$ra, $ra, 0
@@ -602,19 +602,22 @@ setVcm:                                 # @setVcm
 	ld.w	$a0, $a3, 12
 	blez	$a0, .LBB3_12
 # %bb.7:                                # %.lr.ph33
-	fld.d	$fa0, $sp, 40
-	fld.d	$fa1, $sp, 32
+	fld.d	$fa0, $sp, 32
+	fld.d	$fa1, $sp, 8
+	fld.d	$fa2, $sp, 16
+	fld.d	$fa3, $sp, 24
 	move	$a1, $zero
 	move	$a2, $zero
 	fdiv.d	$fa1, $fa1, $fa0
-	vld	$vr2, $sp, 16
-	vreplvei.d	$vr0, $vr0, 0
-	vld	$vr3, $s0, 0
-	fld.d	$fa4, $s0, 16
+	fdiv.d	$fa2, $fa2, $fa0
+	fdiv.d	$fa3, $fa3, $fa0
+	fld.d	$fa0, $s0, 0
+	fld.d	$fa4, $s0, 8
+	fld.d	$fa5, $s0, 16
 	ld.d	$a3, $a3, 120
-	vfdiv.d	$vr0, $vr2, $vr0
-	vfsub.d	$vr0, $vr3, $vr0
-	fsub.d	$fa1, $fa4, $fa1
+	fsub.d	$fa0, $fa0, $fa1
+	fsub.d	$fa1, $fa4, $fa2
+	fsub.d	$fa2, $fa5, $fa3
 	b	.LBB3_9
 	.p2align	4, , 16
 .LBB3_8:                                # %._crit_edge
@@ -645,24 +648,26 @@ setVcm:                                 # @setVcm
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t0, $a7, 0
 	alsl.d	$t0, $t0, $a5, 4
-	fld.d	$fa2, $t0, 8
-	vld	$vr3, $a6, -16
-	fld.d	$fa4, $a6, 0
-	vreplvei.d	$vr5, $vr2, 0
-	vfmadd.d	$vr3, $vr5, $vr0, $vr3
-	vst	$vr3, $a6, -16
-	fmadd.d	$fa2, $fa2, $fa1, $fa4
-	fst.d	$fa2, $a6, 0
+	fld.d	$fa3, $t0, 8
+	fld.d	$fa4, $a6, -16
+	fld.d	$fa5, $a6, -8
+	fmadd.d	$fa4, $fa3, $fa0, $fa4
+	fld.d	$fa6, $a6, 0
+	fst.d	$fa4, $a6, -16
+	fmadd.d	$fa4, $fa3, $fa1, $fa5
+	fst.d	$fa4, $a6, -8
+	fmadd.d	$fa3, $fa3, $fa2, $fa6
+	fst.d	$fa3, $a6, 0
 	addi.d	$a6, $a6, 24
 	addi.w	$a4, $a4, -1
 	addi.d	$a7, $a7, 4
 	bnez	$a4, .LBB3_11
 	b	.LBB3_8
 .LBB3_12:                               # %._crit_edge34
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end3:
 	.size	setVcm, .Lfunc_end3-setVcm

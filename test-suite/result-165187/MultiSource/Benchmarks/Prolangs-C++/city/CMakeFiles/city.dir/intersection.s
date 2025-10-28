@@ -417,15 +417,15 @@ _ZN16intersection_4x4C2EPKc:            # @_ZN16intersection_4x4C2EPKc
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1093,29 +1093,27 @@ _ZN16intersection_4x4C2EPKc:            # @_ZN16intersection_4x4C2EPKc
 	move	$a4, $s0
 	pcaddu18i	$ra, %call36(_Z7connectP7roadlet9directionS0_S1_PFS0_S0_P7vehicleS1_E)
 	jirl	$ra, $ra, 0
+	addi.w	$a0, $zero, -1
+	lu32i.d	$a0, 0
+	st.w	$a0, $sp, 76
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	st.d	$a0, $sp, 72
+	st.d	$a0, $sp, 56
 	ld.w	$a0, $s1, 0
-	ori	$a1, $zero, 100
-	st.d	$a1, $sp, 16
-	addi.w	$a1, $zero, -1
-	lu32i.d	$a1, 0
-	st.w	$a1, $sp, 28
-	st.w	$a0, $sp, 24
-	vld	$vr0, $sp, 16
-	ld.d	$a0, $fp, 24
-	vst	$vr0, $sp, 80
-	st.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 64
-	st.d	$a1, $a0, 8
+	ld.d	$a1, $fp, 24
+	ori	$a2, $zero, 100
+	st.d	$a2, $sp, 64
+	st.w	$a0, $sp, 72
+	st.d	$a1, $sp, 48
+	addi.d	$a0, $sp, 48
+	st.d	$a0, $a1, 8
 	vld	$vr0, $sp, 64
-	vld	$vr1, $sp, 80
+	vld	$vr1, $sp, 48
 	vst	$vr0, $sp, 32
-	vst	$vr1, $sp, 48
+	vst	$vr1, $sp, 16
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(_ZlsRSo3car)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $a0, 0
@@ -1123,10 +1121,10 @@ _ZN16intersection_4x4C2EPKc:            # @_ZN16intersection_4x4C2EPKc
 	add.d	$a1, $a0, $a1
 	ld.d	$a1, $a1, 16
 	ori	$a2, $zero, 10
-	st.b	$a2, $sp, 103
+	st.b	$a2, $sp, 87
 	beqz	$a1, .LBB8_19
 # %bb.18:
-	addi.d	$a1, $sp, 103
+	addi.d	$a1, $sp, 87
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
@@ -1136,14 +1134,14 @@ _ZN16intersection_4x4C2EPKc:            # @_ZN16intersection_4x4C2EPKc
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
 .LBB8_20:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_c.exit
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .LBB8_21:
 .Ltmp2:                                 # EH_LABEL

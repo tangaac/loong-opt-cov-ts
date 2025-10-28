@@ -44,240 +44,240 @@ _ZN7NCrypto5NSha112CContextBase14GetBlockDigestEPjS2_b: # @_ZN7NCrypto5NSha112CC
 	andn	$t1, $a6, $a5
 	and	$t2, $a7, $a5
 	or	$t1, $t2, $t1
-	vld	$vr0, $a1, 0
-	rotri.w	$t2, $a4, 27
-	add.d	$t0, $t2, $t0
+	ld.w	$t2, $a1, 0
+	rotri.w	$t3, $a4, 27
+	add.d	$t0, $t3, $t0
 	add.d	$t0, $t0, $t1
-	vpickve2gr.w	$t1, $vr0, 0
-	add.d	$t0, $t0, $t1
+	add.d	$t0, $t0, $t2
 	rotri.w	$a5, $a5, 2
 	andn	$t1, $a7, $a4
 	and	$t2, $a5, $a4
+	ld.w	$t3, $a1, 4
 	or	$t1, $t2, $t1
+	ld.w	$t2, $a1, 8
 	add.d	$a6, $a6, $t1
-	vpickve2gr.w	$t1, $vr0, 1
-	add.d	$a6, $a6, $t1
+	add.d	$a6, $a6, $t3
 	rotri.w	$t1, $a4, 2
-	vpickve2gr.w	$t2, $vr0, 2
 	add.d	$t2, $a7, $t2
+	ld.w	$t3, $a1, 12
+	vld	$vr0, $a1, 0
 	lu12i.w	$a7, 370727
 	ori	$a7, $a7, 2457
 	add.d	$t0, $t0, $a7
-	rotri.w	$t3, $t0, 27
-	add.d	$a6, $a6, $t3
+	rotri.w	$t4, $t0, 27
+	add.d	$a6, $a6, $t4
 	add.d	$a6, $a6, $a7
-	andn	$t3, $a5, $t0
-	and	$t4, $t1, $t0
-	or	$t3, $t4, $t3
-	rotri.w	$t4, $a6, 27
-	add.d	$t2, $t2, $t3
+	andn	$t4, $a5, $t0
+	and	$t5, $t1, $t0
+	or	$t4, $t5, $t4
+	rotri.w	$t5, $a6, 27
 	add.d	$t2, $t2, $t4
+	add.d	$t2, $t2, $t5
 	add.d	$t2, $t2, $a7
 	rotri.w	$t0, $t0, 2
-	andn	$t3, $t1, $a6
-	and	$t4, $t0, $a6
-	or	$t3, $t4, $t3
+	andn	$t4, $t1, $a6
+	and	$t5, $t0, $a6
+	or	$t4, $t5, $t4
 	vst	$vr0, $sp, 16
-	rotri.w	$t4, $t2, 27
-	vpickve2gr.w	$t5, $vr0, 3
-	add.d	$a5, $a5, $t5
+	rotri.w	$t5, $t2, 27
 	add.d	$a5, $a5, $t3
 	add.d	$a5, $a5, $t4
+	add.d	$a5, $a5, $t5
 	add.d	$a5, $a5, $a7
 	rotri.w	$a6, $a6, 2
 	andn	$t3, $t0, $t2
-	vld	$vr0, $a1, 16
-	and	$t4, $a6, $t2
-	or	$t3, $t4, $t3
-	rotri.w	$t4, $a5, 27
-	vpickve2gr.w	$t5, $vr0, 0
-	add.d	$t1, $t1, $t5
+	ld.w	$t4, $a1, 16
+	and	$t5, $a6, $t2
+	or	$t3, $t5, $t3
+	rotri.w	$t5, $a5, 27
+	add.d	$t1, $t1, $t4
 	rotri.w	$t2, $t2, 2
-	andn	$t5, $a6, $a5
+	andn	$t4, $a6, $a5
 	and	$t6, $t2, $a5
-	or	$t5, $t6, $t5
+	or	$t4, $t6, $t4
 	rotri.w	$a5, $a5, 2
 	add.d	$t1, $t1, $t3
-	add.d	$t1, $t1, $t4
+	add.d	$t1, $t1, $t5
 	add.d	$t1, $t1, $a7
 	andn	$t3, $t2, $t1
-	and	$t4, $a5, $t1
-	or	$t3, $t4, $t3
+	and	$t5, $a5, $t1
+	or	$t3, $t5, $t3
 	add.d	$a6, $a6, $t3
-	rotri.w	$t3, $t1, 27
-	add.d	$t0, $t3, $t0
-	add.d	$t0, $t0, $t5
-	vpickve2gr.w	$t3, $vr0, 1
-	add.d	$t0, $t0, $t3
+	ld.w	$t3, $a1, 28
+	vld	$vr0, $a1, 16
+	ld.w	$t5, $a1, 24
+	ld.w	$t6, $a1, 20
+	rotri.w	$t7, $t1, 27
+	add.d	$t0, $t7, $t0
+	add.d	$t0, $t0, $t4
+	add.d	$t0, $t0, $t6
 	add.d	$t0, $t0, $a7
-	rotri.w	$t3, $t0, 27
-	vpickve2gr.w	$t4, $vr0, 2
+	rotri.w	$t4, $t0, 27
+	add.d	$a6, $a6, $t5
 	add.d	$a6, $a6, $t4
-	add.d	$a6, $a6, $t3
 	add.d	$a6, $a6, $a7
 	rotri.w	$t1, $t1, 2
-	andn	$t3, $a5, $t0
-	and	$t4, $t1, $t0
-	or	$t3, $t4, $t3
+	andn	$t4, $a5, $t0
+	and	$t5, $t1, $t0
+	or	$t4, $t5, $t4
 	vst	$vr0, $sp, 32
-	rotri.w	$t4, $a6, 27
-	vpickve2gr.w	$t5, $vr0, 3
-	add.d	$t2, $t2, $t5
+	rotri.w	$t5, $a6, 27
 	add.d	$t2, $t2, $t3
 	add.d	$t2, $t2, $t4
+	add.d	$t2, $t2, $t5
 	add.d	$t2, $t2, $a7
 	rotri.w	$t0, $t0, 2
 	andn	$t3, $t1, $a6
-	vld	$vr0, $a1, 32
-	and	$t4, $t0, $a6
-	or	$t3, $t4, $t3
-	rotri.w	$t4, $t2, 27
-	vpickve2gr.w	$t5, $vr0, 0
-	add.d	$a5, $a5, $t5
-	rotri.w	$a6, $a6, 2
-	andn	$t5, $t0, $t2
-	and	$t6, $a6, $t2
-	or	$t5, $t6, $t5
-	vpickve2gr.w	$t6, $vr0, 1
-	add.d	$t1, $t1, $t6
-	rotri.w	$t6, $t2, 2
-	add.d	$a5, $a5, $t3
+	ld.w	$t4, $a1, 32
+	and	$t5, $t0, $a6
+	or	$t3, $t5, $t3
+	rotri.w	$t5, $t2, 27
 	add.d	$a5, $a5, $t4
-	add.d	$a5, $a5, $a7
-	rotri.w	$t2, $a5, 27
-	add.d	$t1, $t1, $t5
-	add.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $a7
-	andn	$t2, $a6, $a5
-	and	$t3, $t6, $a5
-	or	$t2, $t3, $t2
-	rotri.w	$t3, $t1, 27
-	add.d	$t0, $t3, $t0
-	add.d	$t0, $t0, $t2
-	vpickve2gr.w	$t2, $vr0, 2
-	add.d	$t0, $t0, $t2
-	add.d	$t0, $t0, $a7
-	rotri.w	$a5, $a5, 2
-	andn	$t2, $t6, $t1
-	and	$t3, $a5, $t1
-	or	$t2, $t3, $t2
-	vst	$vr0, $sp, 48
-	rotri.w	$t3, $t0, 27
-	add.d	$a6, $a6, $t2
-	vpickve2gr.w	$t2, $vr0, 3
-	add.d	$a6, $a6, $t2
-	add.d	$a6, $a6, $t3
-	add.d	$a6, $a6, $a7
-	rotri.w	$t1, $t1, 2
-	andn	$t2, $a5, $t0
-	and	$t3, $t1, $t0
-	vld	$vr0, $a1, 48
-	or	$t3, $t3, $t2
-	addi.d	$t2, $sp, 64
-	rotri.w	$t4, $a6, 27
-	vpickve2gr.w	$t5, $vr0, 0
-	add.d	$t5, $t6, $t5
-	rotri.w	$t0, $t0, 2
-	andn	$t6, $t1, $a6
-	and	$t7, $t0, $a6
-	or	$t6, $t7, $t6
-	vpickve2gr.w	$t7, $vr0, 1
-	add.d	$t8, $a5, $t7
 	rotri.w	$a6, $a6, 2
-	vpickve2gr.w	$a5, $vr0, 2
+	ld.w	$t4, $a1, 36
+	andn	$t6, $t0, $t2
+	and	$t7, $a6, $t2
+	or	$t6, $t7, $t6
+	add.d	$t1, $t1, $t4
+	rotri.w	$t4, $t2, 2
+	ld.w	$t2, $a1, 44
+	vld	$vr0, $a1, 32
+	ld.w	$t7, $a1, 40
+	add.d	$a5, $a5, $t3
+	add.d	$a5, $a5, $t5
+	add.d	$a5, $a5, $a7
+	rotri.w	$t3, $a5, 27
+	add.d	$t1, $t1, $t6
+	add.d	$t1, $t1, $t3
+	add.d	$t1, $t1, $a7
+	andn	$t3, $a6, $a5
+	and	$t5, $t4, $a5
+	or	$t3, $t5, $t3
+	rotri.w	$t5, $t1, 27
+	add.d	$t0, $t5, $t0
+	add.d	$t0, $t0, $t3
+	add.d	$t0, $t0, $t7
+	add.d	$t0, $t0, $a7
+	rotri.w	$t3, $a5, 2
+	andn	$a5, $t4, $t1
+	and	$t5, $t3, $t1
+	or	$a5, $t5, $a5
+	vst	$vr0, $sp, 48
+	rotri.w	$t5, $t0, 27
+	add.d	$a5, $a6, $a5
+	add.d	$a5, $a5, $t2
+	add.d	$a5, $a5, $t5
+	add.d	$a6, $a5, $a7
+	rotri.w	$t1, $t1, 2
+	andn	$a5, $t3, $t0
+	and	$t2, $t1, $t0
+	ld.w	$t5, $a1, 48
+	or	$t6, $t2, $a5
+	addi.d	$t2, $sp, 64
+	rotri.w	$t7, $a6, 27
+	add.d	$t4, $t4, $t5
+	rotri.w	$t0, $t0, 2
+	andn	$t5, $t1, $a6
+	ld.w	$t8, $a1, 52
+	and	$fp, $t0, $a6
+	ld.w	$a5, $a1, 56
+	or	$t5, $fp, $t5
+	add.d	$t3, $t3, $t8
+	rotri.w	$fp, $a6, 2
 	add.d	$t1, $t1, $a5
-	add.d	$t3, $t5, $t3
-	add.d	$t3, $t3, $t4
-	add.d	$t3, $t3, $a7
-	rotri.w	$t4, $t3, 27
-	add.d	$t5, $t8, $t6
-	add.d	$t4, $t5, $t4
+	ld.w	$a6, $a1, 60
+	vld	$vr0, $a1, 48
+	add.d	$t4, $t4, $t6
+	add.d	$t4, $t4, $t7
 	add.d	$t4, $t4, $a7
-	andn	$t5, $t0, $t3
-	and	$t6, $a6, $t3
-	or	$t5, $t6, $t5
 	rotri.w	$t6, $t4, 27
+	add.d	$t3, $t3, $t5
+	add.d	$t3, $t3, $t6
+	add.d	$t3, $t3, $a7
+	andn	$t5, $t0, $t4
+	and	$t6, $fp, $t4
+	or	$t5, $t6, $t5
+	rotri.w	$t6, $t3, 27
 	add.d	$t1, $t1, $t5
 	add.d	$t1, $t1, $t6
 	add.d	$t1, $t1, $a7
-	rotri.w	$t3, $t3, 2
-	andn	$t5, $a6, $t4
-	and	$t6, $t3, $t4
+	rotri.w	$t4, $t4, 2
+	andn	$t5, $fp, $t3
+	and	$t6, $t4, $t3
 	or	$t5, $t6, $t5
 	vst	$vr0, $sp, 64
 	rotri.w	$t6, $t1, 27
 	add.d	$t0, $t6, $t0
 	add.d	$t0, $t0, $t5
-	vpickve2gr.w	$t5, $vr0, 3
-	add.d	$t0, $t0, $t5
+	add.d	$t0, $t0, $a6
 	add.d	$t0, $t0, $a7
-	rotri.w	$t4, $t4, 2
-	andn	$t6, $t3, $t1
-	ld.w	$t8, $sp, 48
-	ld.w	$fp, $sp, 16
-	and	$s0, $t4, $t1
+	rotri.w	$t3, $t3, 2
+	andn	$t5, $t4, $t1
+	ld.w	$t6, $sp, 48
+	ld.w	$t7, $sp, 16
+	and	$s0, $t3, $t1
 	ld.w	$s1, $sp, 24
-	or	$t6, $s0, $t6
-	xor	$t8, $t8, $fp
-	xor	$t7, $t8, $t7
-	xor	$t7, $t7, $s1
-	rotri.w	$t7, $t7, 31
-	st.w	$t7, $sp, 80
-	rotri.w	$t8, $t0, 27
-	add.d	$a6, $a6, $t6
-	add.d	$a6, $a6, $t8
-	add.d	$a6, $a6, $t7
+	or	$t5, $s0, $t5
+	xor	$t6, $t6, $t7
+	xor	$t6, $t6, $t8
+	xor	$t6, $t6, $s1
+	rotri.w	$t6, $t6, 31
+	st.w	$t6, $sp, 80
+	rotri.w	$t7, $t0, 27
+	add.d	$t5, $fp, $t5
+	add.d	$t5, $t5, $t7
+	add.d	$t5, $t5, $t6
 	rotri.w	$t1, $t1, 2
-	andn	$t6, $t4, $t0
+	andn	$t7, $t3, $t0
 	and	$t8, $t1, $t0
 	ld.w	$fp, $sp, 52
 	ld.w	$s0, $sp, 20
-	or	$t6, $t8, $t6
+	or	$t7, $t8, $t7
 	ld.w	$t8, $sp, 28
-	add.d	$a6, $a6, $a7
+	add.d	$t5, $t5, $a7
 	xor	$fp, $fp, $s0
 	xor	$a5, $fp, $a5
 	xor	$a5, $a5, $t8
 	rotri.w	$a5, $a5, 31
 	st.w	$a5, $sp, 84
-	rotri.w	$fp, $a6, 27
-	add.d	$t3, $t3, $t6
-	add.d	$a5, $t3, $a5
+	rotri.w	$fp, $t5, 27
+	add.d	$t4, $t4, $t7
+	add.d	$a5, $t4, $a5
 	add.d	$a5, $a5, $fp
-	add.d	$t3, $a5, $a7
+	add.d	$t4, $a5, $a7
 	rotri.w	$a5, $t0, 2
 	ld.w	$t0, $sp, 56
-	ld.w	$t6, $sp, 32
-	andn	$fp, $t1, $a6
-	and	$s0, $a5, $a6
+	ld.w	$t7, $sp, 32
+	andn	$fp, $t1, $t5
+	and	$s0, $a5, $t5
 	or	$fp, $s0, $fp
-	xor	$t0, $t0, $t6
-	xor	$t0, $t0, $t5
-	xor	$t0, $t0, $s1
-	rotri.w	$t0, $t0, 31
-	st.w	$t0, $sp, 88
-	rotri.w	$t5, $t3, 27
-	add.d	$t4, $t4, $fp
-	add.d	$t0, $t4, $t0
-	add.d	$t0, $t0, $t5
-	add.d	$t0, $t0, $a7
-	rotri.w	$a6, $a6, 2
-	ld.w	$t4, $sp, 60
+	xor	$t0, $t0, $t7
+	xor	$a6, $t0, $a6
+	xor	$a6, $a6, $s1
+	rotri.w	$a6, $a6, 31
+	st.w	$a6, $sp, 88
+	rotri.w	$t0, $t4, 27
+	add.d	$t3, $t3, $fp
+	add.d	$a6, $t3, $a6
+	add.d	$a6, $a6, $t0
+	add.d	$t0, $a6, $a7
+	rotri.w	$a6, $t5, 2
+	ld.w	$t3, $sp, 60
 	ld.w	$t5, $sp, 36
-	andn	$t6, $a5, $t3
-	and	$fp, $a6, $t3
-	or	$t6, $fp, $t6
-	xor	$t4, $t4, $t5
-	xor	$t4, $t4, $t7
-	xor	$t4, $t4, $t8
-	rotri.w	$t4, $t4, 31
-	st.w	$t4, $sp, 92
+	andn	$t7, $a5, $t4
+	and	$fp, $a6, $t4
+	or	$t7, $fp, $t7
+	xor	$t3, $t3, $t5
+	xor	$t3, $t3, $t6
+	xor	$t3, $t3, $t8
+	rotri.w	$t3, $t3, 31
+	st.w	$t3, $sp, 92
 	rotri.w	$t5, $t0, 27
-	add.d	$t1, $t1, $t6
-	add.d	$t1, $t1, $t4
+	add.d	$t1, $t1, $t7
+	add.d	$t1, $t1, $t3
 	add.d	$t1, $t1, $t5
 	add.d	$t1, $t1, $a7
-	rotri.w	$a7, $t3, 2
+	rotri.w	$a7, $t4, 2
 	ori	$t3, $zero, 15
 	lu12i.w	$t4, 454046
 	ori	$t4, $t4, 2977

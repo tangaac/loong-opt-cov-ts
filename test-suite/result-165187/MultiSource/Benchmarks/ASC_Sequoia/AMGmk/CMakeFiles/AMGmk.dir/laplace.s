@@ -32,11 +32,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	ori	$a1, $zero, 8
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(hypre_CAlloc)
-	jirl	$ra, $ra, 0
-	move	$fp, $a0
-	ori	$a1, $zero, 8
+	ori	$fp, $zero, 8
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
@@ -45,16 +41,20 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
+	move	$s4, $a0
+	ori	$a1, $zero, 8
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(hypre_CAlloc)
+	jirl	$ra, $ra, 0
 	blez	$s2, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 12
-	bgeu	$s2, $a1, .LBB0_68
+	bgeu	$s2, $fp, .LBB0_68
 # %bb.2:
 	move	$a5, $zero
 .LBB0_3:                                # %.lr.ph.preheader367
-	alsl.d	$a1, $a5, $fp, 3
+	alsl.d	$a1, $a5, $s1, 3
 	alsl.d	$a2, $a5, $a0, 3
-	alsl.d	$a3, $a5, $s1, 3
+	alsl.d	$a3, $a5, $s4, 3
 	sub.d	$a5, $s2, $a5
 	lu52i.d	$a4, $zero, 1023
 	.p2align	4, , 16
@@ -69,6 +69,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	addi.d	$a3, $a3, 8
 	bnez	$a5, .LBB0_4
 .LBB0_5:                                # %._crit_edge
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	st.w	$zero, $s3, 0
 	blez	$s7, .LBB0_30
@@ -257,8 +258,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	bne	$s8, $t2, .LBB0_29
 	b	.LBB0_21
 .LBB0_30:                               # %._crit_edge220
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	slli.d	$fp, $s2, 2
 	ldx.w	$a0, $s3, $fp
 	alsl.d	$a1, $s2, $s3, 2
@@ -555,23 +555,23 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	addi.d	$sp, $sp, 160
 	ret
 .LBB0_68:                               # %vector.memcheck
-	sub.d	$a2, $a0, $s1
+	sub.d	$a2, $a0, $s4
 	ori	$a1, $zero, 32
 	move	$a5, $zero
 	bltu	$a2, $a1, .LBB0_3
 # %bb.69:                               # %vector.memcheck
-	sub.d	$a2, $fp, $s1
+	sub.d	$a2, $s1, $s4
 	bltu	$a2, $a1, .LBB0_3
 # %bb.70:                               # %vector.memcheck
-	sub.d	$a1, $fp, $a0
+	sub.d	$a1, $s1, $a0
 	ori	$a2, $zero, 32
 	bltu	$a1, $a2, .LBB0_3
 # %bb.71:                               # %vector.ph
 	bstrpick.d	$a1, $s2, 30, 2
 	slli.d	$a5, $a1, 2
-	addi.d	$a1, $fp, 16
+	addi.d	$a1, $s1, 16
 	addi.d	$a2, $a0, 16
-	addi.d	$a3, $s1, 16
+	addi.d	$a3, $s4, 16
 	vrepli.b	$vr0, 0
 	vldi	$vr1, -912
 	move	$a4, $a5

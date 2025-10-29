@@ -112,7 +112,7 @@ check:                                  # @check
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %iter.check
+# %bb.0:                                # %vector.ph
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
@@ -121,24 +121,26 @@ main:                                   # @main
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(src)
 	addi.d	$fp, $a0, %pc_lo12(src)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_1)
 	vst	$vr0, $fp, 0
-	vst	$vr1, $fp, 16
+	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI1_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI1_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI1_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI1_4)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_4)
+	vst	$vr0, $fp, 16
+	vst	$vr1, $fp, 32
+	vst	$vr2, $fp, 48
+	vst	$vr3, $fp, 64
+	pcalau12i	$a0, %pc_hi20(dst)
+	addi.d	$s0, $a0, %pc_lo12(dst)
 	ld.hu	$a0, $fp, 0
-	vst	$vr0, $fp, 32
-	vst	$vr1, $fp, 48
-	vst	$vr2, $fp, 64
-	pcalau12i	$a1, %pc_hi20(dst)
-	addi.d	$s0, $a1, %pc_lo12(dst)
-	st.h	$a0, $s0, 0
-	bne	$a0, $a0, .LBB1_77
+	lu12i.w	$a1, 6
+	ori	$a1, $a1, 609
+	st.h	$a1, $s0, 0
+	bne	$a0, $a1, .LBB1_77
 # %bb.1:                                # %check.exit10
 	ld.b	$a0, $fp, 2
 	ld.h	$a1, $fp, 0

@@ -5,33 +5,31 @@
 	.type	CountTree,@function
 CountTree:                              # @CountTree
 # %bb.0:
-	vld	$vr0, $a0, 8
-	vld	$vr1, $a0, 24
-	vseqi.d	$vr2, $vr0, 0
-	vrepli.b	$vr4, -1
-	vxor.v	$vr2, $vr2, $vr4
-	vseqi.d	$vr3, $vr1, 0
-	vxor.v	$vr3, $vr3, $vr4
-	vpickev.w	$vr2, $vr3, $vr2
-	vmskltz.w	$vr2, $vr2
-	vpickve2gr.hu	$a0, $vr2, 0
-	beqz	$a0, .LBB0_4
-# %bb.1:                                # %tailrecurse.preheader
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	move	$s3, $zero
-	vpickve2gr.d	$s2, $vr1, 1
-	vpickve2gr.d	$fp, $vr1, 0
-	vpickve2gr.d	$s0, $vr0, 1
-	vpickve2gr.d	$a0, $vr0, 0
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	move	$a1, $a0
+	ld.d	$a0, $a0, 8
+	ld.d	$s0, $a1, 16
+	ld.d	$fp, $a1, 24
+	ld.d	$s3, $a1, 32
+	bnez	$a0, .LBB0_4
+# %bb.1:
+	bnez	$s0, .LBB0_4
+# %bb.2:
+	bnez	$fp, .LBB0_4
+# %bb.3:
+	ori	$a1, $zero, 1
+	beqz	$s3, .LBB0_10
+.LBB0_4:                                # %tailrecurse.preheader
+	move	$s4, $zero
 	.p2align	4, , 16
-.LBB0_2:                                # %tailrecurse
+.LBB0_5:                                # %tailrecurse
                                         # =>This Inner Loop Header: Depth=1
 	pcaddu18i	$ra, %call36(CountTree)
 	jirl	$ra, $ra, 0
@@ -39,41 +37,40 @@ CountTree:                              # @CountTree
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(CountTree)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$s2, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(CountTree)
 	jirl	$ra, $ra, 0
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
 	move	$a1, $a0
-	add.d	$a0, $s1, $s3
-	add.d	$a2, $a0, $s0
-	vld	$vr0, $s2, 8
-	vld	$vr1, $s2, 24
-	ld.d	$fp, $s2, 24
-	ld.d	$s0, $s2, 16
-	ld.d	$a0, $s2, 8
-	ld.d	$s2, $s2, 32
-	vseqi.d	$vr0, $vr0, 0
-	vxor.v	$vr0, $vr0, $vr4
-	vseqi.d	$vr1, $vr1, 0
-	vxor.v	$vr1, $vr1, $vr4
-	vpickev.w	$vr0, $vr1, $vr0
-	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$a3, $vr0, 0
-	add.d	$s3, $a2, $a1
-	bnez	$a3, .LBB0_2
-# %bb.3:                                # %tailrecurse._crit_edge.loopexit
-	addi.w	$a0, $s3, 1
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
-	ret
-.LBB0_4:
-	ori	$a0, $zero, 1
+	ld.d	$a0, $s3, 8
+	ld.d	$s0, $s3, 16
+	ld.d	$fp, $s3, 24
+	ld.d	$s3, $s3, 32
+	add.d	$a2, $s1, $s4
+	add.d	$a2, $a2, $s2
+	add.d	$s4, $a2, $a1
+	bnez	$a0, .LBB0_5
+# %bb.6:                                # %tailrecurse
+                                        #   in Loop: Header=BB0_5 Depth=1
+	bnez	$s0, .LBB0_5
+# %bb.7:                                # %tailrecurse
+                                        #   in Loop: Header=BB0_5 Depth=1
+	bnez	$fp, .LBB0_5
+# %bb.8:                                # %tailrecurse
+                                        #   in Loop: Header=BB0_5 Depth=1
+	bnez	$s3, .LBB0_5
+# %bb.9:                                # %tailrecurse._crit_edge.loopexit
+	addi.w	$a1, $s4, 1
+.LBB0_10:                               # %tailrecurse._crit_edge
+	move	$a0, $a1
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end0:
 	.size	CountTree, .Lfunc_end0-CountTree

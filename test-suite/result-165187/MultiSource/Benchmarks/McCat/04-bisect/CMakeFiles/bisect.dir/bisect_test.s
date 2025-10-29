@@ -146,7 +146,7 @@ main:                                   # @main
 # %bb.1:                                # %.lr.ph16.preheader
 	move	$fp, $zero
 	ori	$s0, $zero, 1
-	ori	$s1, $zero, 6
+	ori	$s1, $zero, 4
 	ori	$s2, $zero, 32
 	vrepli.b	$vr4, 0
 	ori	$s3, $zero, 16

@@ -161,16 +161,17 @@ start_pass_main:                        # @start_pass_main
 	bnez	$a1, .LBB1_38
 # %bb.2:
 	addi.d	$sp, $sp, -96
-	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a1, $a0, 592
 	ld.w	$a1, $a1, 16
 	beqz	$a1, .LBB1_40
@@ -189,11 +190,11 @@ start_pass_main:                        # @start_pass_main
 	addi.d	$a7, $a2, 16
 	addi.d	$t0, $a4, 2
 	addi.d	$t1, $a4, -2
-	ori	$t2, $zero, 6
+	ori	$t2, $zero, 4
 	ori	$t3, $zero, 32
 	ori	$t4, $zero, 1
-	ori	$t5, $zero, 10
-	ori	$t6, $zero, 4
+	ori	$t5, $zero, 8
+	ori	$t6, $zero, 16
 	b	.LBB1_6
 	.p2align	4, , 16
 .LBB1_5:                                # %._crit_edge.i
@@ -280,25 +281,25 @@ start_pass_main:                        # @start_pass_main
 	ld.d	$fp, $t7, 0
 	bstrpick.d	$s1, $t8, 31, 0
 	slli.d	$s0, $s1, 3
-	bgeu	$t8, $t6, .LBB1_32
+	bgeu	$t8, $t2, .LBB1_32
 # %bb.17:                               #   in Loop: Header=BB1_6 Depth=1
 	move	$t8, $zero
 	b	.LBB1_35
 	.p2align	4, , 16
-.LBB1_18:                               # %vector.memcheck37
+.LBB1_18:                               # %vector.memcheck35
                                         #   in Loop: Header=BB1_6 Depth=1
 	sub.d	$s3, $t7, $fp
 	move	$s2, $zero
 	bltu	$s3, $t3, .LBB1_9
-# %bb.19:                               # %vector.memcheck37
+# %bb.19:                               # %vector.memcheck35
                                         #   in Loop: Header=BB1_6 Depth=1
 	sub.d	$s3, $fp, $s0
 	bltu	$s3, $t3, .LBB1_9
-# %bb.20:                               # %vector.memcheck37
+# %bb.20:                               # %vector.memcheck35
                                         #   in Loop: Header=BB1_6 Depth=1
 	sub.d	$s3, $t7, $s0
 	bltu	$s3, $t3, .LBB1_9
-# %bb.21:                               # %vector.ph45
+# %bb.21:                               # %vector.ph43
                                         #   in Loop: Header=BB1_6 Depth=1
 	bstrpick.d	$s2, $s1, 30, 2
 	slli.d	$s2, $s2, 2
@@ -307,7 +308,7 @@ start_pass_main:                        # @start_pass_main
 	addi.d	$s5, $s0, 16
 	move	$s6, $s2
 	.p2align	4, , 16
-.LBB1_22:                               # %vector.body48
+.LBB1_22:                               # %vector.body46
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $s5, -16
@@ -321,65 +322,58 @@ start_pass_main:                        # @start_pass_main
 	addi.d	$s4, $s4, 32
 	addi.d	$s5, $s5, 32
 	bnez	$s6, .LBB1_22
-# %bb.23:                               # %middle.block53
+# %bb.23:                               # %middle.block51
                                         #   in Loop: Header=BB1_6 Depth=1
 	bne	$s2, $s1, .LBB1_9
 	b	.LBB1_11
 	.p2align	4, , 16
 .LBB1_24:                               # %vector.memcheck
                                         #   in Loop: Header=BB1_6 Depth=1
-	slli.d	$s6, $s1, 3
-	slli.d	$s5, $s2, 3
-	sub.d	$s7, $s6, $s5
+	slli.d	$s5, $s1, 3
+	slli.d	$s6, $s2, 3
+	sub.d	$s7, $s5, $s6
 	move	$s4, $zero
-	bltu	$s7, $t3, .LBB1_14
+	bltu	$s7, $t6, .LBB1_14
 # %bb.25:                               # %vector.memcheck
                                         #   in Loop: Header=BB1_6 Depth=1
 	alsl.d	$s7, $s2, $fp, 3
 	alsl.d	$s8, $s1, $s0, 3
 	sub.d	$s7, $s7, $s8
-	bltu	$s7, $t3, .LBB1_14
+	bltu	$s7, $t6, .LBB1_14
 # %bb.26:                               # %vector.memcheck
                                         #   in Loop: Header=BB1_6 Depth=1
 	sub.d	$s7, $s0, $fp
-	bltu	$s7, $t3, .LBB1_14
+	bltu	$s7, $t6, .LBB1_14
 # %bb.27:                               # %vector.memcheck
                                         #   in Loop: Header=BB1_6 Depth=1
 	sub.d	$s7, $fp, $s0
-	bltu	$s7, $t3, .LBB1_14
+	bltu	$s7, $t6, .LBB1_14
 # %bb.28:                               # %vector.memcheck
                                         #   in Loop: Header=BB1_6 Depth=1
 	alsl.d	$s7, $s1, $fp, 3
 	alsl.d	$s8, $s2, $s0, 3
 	sub.d	$s7, $s7, $s8
-	bltu	$s7, $t3, .LBB1_14
+	bltu	$s7, $t6, .LBB1_14
 # %bb.29:                               # %vector.ph25
                                         #   in Loop: Header=BB1_6 Depth=1
-	bstrpick.d	$s4, $s3, 30, 2
-	slli.d	$s4, $s4, 2
-	addi.d	$s6, $s6, 16
-	move	$s7, $s4
+	bstrpick.d	$s4, $s3, 30, 1
+	slli.d	$s4, $s4, 1
+	move	$s7, $fp
+	move	$s8, $s0
+	move	$ra, $s4
 	.p2align	4, , 16
 .LBB1_30:                               # %vector.body28
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$s8, $s0, $s6
-	vld	$vr0, $s8, -16
-	vldx	$vr1, $s0, $s6
-	add.d	$s8, $fp, $s5
-	vstx	$vr0, $fp, $s5
-	vst	$vr1, $s8, 16
-	add.d	$s8, $s0, $s5
-	vldx	$vr0, $s0, $s5
-	vld	$vr1, $s8, 16
-	add.d	$s8, $fp, $s6
-	vst	$vr0, $s8, -16
-	vstx	$vr1, $fp, $s6
-	addi.d	$s7, $s7, -4
-	addi.d	$s6, $s6, 32
-	addi.d	$s5, $s5, 32
-	bnez	$s7, .LBB1_30
-# %bb.31:                               # %middle.block34
+	vldx	$vr0, $s8, $s5
+	vstx	$vr0, $s7, $s6
+	vldx	$vr0, $s8, $s6
+	vstx	$vr0, $s7, $s5
+	addi.d	$ra, $ra, -2
+	addi.d	$s8, $s8, 16
+	addi.d	$s7, $s7, 16
+	bnez	$ra, .LBB1_30
+# %bb.31:                               # %middle.block32
                                         #   in Loop: Header=BB1_6 Depth=1
 	bne	$s4, $s3, .LBB1_14
 	b	.LBB1_16
@@ -440,16 +434,17 @@ start_pass_main:                        # @start_pass_main
 	st.d	$a0, $a2, 8
 .LBB1_41:
 	st.d	$zero, $a2, 96
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end1:
@@ -658,7 +653,7 @@ process_data_context_main:              # @process_data_context_main
 	ld.d	$a5, $a6, 104
 	ld.d	$a6, $a6, 112
 	move	$a7, $zero
-	ori	$t0, $zero, 22
+	ori	$t0, $zero, 14
 	ori	$t1, $zero, 16
 	b	.LBB2_28
 	.p2align	4, , 16

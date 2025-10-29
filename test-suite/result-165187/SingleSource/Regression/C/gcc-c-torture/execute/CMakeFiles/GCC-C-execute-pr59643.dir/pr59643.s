@@ -46,50 +46,54 @@ main:                                   # @main
 	addi.d	$sp, $sp, -784
 	st.d	$ra, $sp, 776                   # 8-byte Folded Spill
 	move	$a0, $zero
-	move	$a1, $zero
-	move	$a2, $zero
-	addi.d	$a3, $sp, 520
-	addi.d	$a4, $sp, 264
-	addi.d	$a5, $sp, 8
-	ori	$a6, $zero, 256
+	ori	$a1, $zero, 0
+	lu32i.d	$a1, 1
+	vreplgr2vr.d	$vr0, $a1
+	addi.d	$a1, $sp, 520
+	vrepli.w	$vr1, 7
+	vrepli.w	$vr2, -4
+	addi.d	$a2, $sp, 264
+	addi.d	$a3, $sp, 8
+	ori	$a4, $zero, 256
+	vori.b	$vr3, $vr0, 0
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	andi	$a7, $a0, 4
-	srli.d	$t0, $a0, 2
-	ori	$t1, $zero, 2
-	bstrins.d	$t1, $t0, 2, 2
-	movgr2fr.w	$fa0, $a7
-	ffint.d.w	$fa0, $fa0
-	movgr2fr.d	$fa1, $t1
-	ffint.d.l	$fa1, $fa1
-	add.d	$a7, $a3, $a2
-	fstx.d	$fa0, $a2, $a3
-	fst.d	$fa1, $a7, 8
-	andi	$a7, $a1, 6
-	srli.d	$t0, $a1, 1
-	ori	$t1, $zero, 1
-	bstrins.d	$t1, $t0, 2, 1
-	addi.d	$t0, $a7, -4
-	addi.d	$t2, $a7, -3
-	movgr2fr.w	$fa0, $t0
-	ffint.d.w	$fa0, $fa0
-	movgr2fr.w	$fa1, $t2
-	ffint.d.w	$fa1, $fa1
-	add.d	$t0, $a4, $a2
-	fstx.d	$fa0, $a2, $a4
-	fst.d	$fa1, $t0, 8
-	movgr2fr.w	$fa0, $a7
-	ffint.d.w	$fa0, $fa0
-	movgr2fr.d	$fa1, $t1
-	ffint.d.l	$fa1, $fa1
-	add.d	$a7, $a5, $a2
-	fstx.d	$fa0, $a2, $a5
-	fst.d	$fa1, $a7, 8
-	addi.d	$a2, $a2, 16
-	addi.w	$a1, $a1, 2
-	addi.w	$a0, $a0, 4
-	bne	$a2, $a6, .LBB1_1
+	vslli.w	$vr4, $vr0, 1
+	vpickve2gr.w	$a5, $vr4, 1
+	andi	$a5, $a5, 6
+	movgr2fr.w	$fa5, $a5
+	ffint.d.w	$fa5, $fa5
+	vpickve2gr.w	$a5, $vr4, 0
+	andi	$a5, $a5, 6
+	movgr2fr.w	$fa4, $a5
+	ffint.d.w	$fa4, $fa4
+	vextrins.d	$vr4, $vr5, 16
+	vstx	$vr4, $a0, $a1
+	vand.v	$vr4, $vr3, $vr1
+	vadd.w	$vr4, $vr4, $vr2
+	vpickve2gr.w	$a5, $vr4, 1
+	movgr2fr.w	$fa5, $a5
+	ffint.d.w	$fa5, $fa5
+	vpickve2gr.w	$a5, $vr4, 0
+	movgr2fr.w	$fa4, $a5
+	ffint.d.w	$fa4, $fa4
+	vextrins.d	$vr4, $vr5, 16
+	vstx	$vr4, $a0, $a2
+	vpickve2gr.w	$a5, $vr3, 1
+	andi	$a5, $a5, 7
+	movgr2fr.w	$fa4, $a5
+	ffint.d.w	$fa4, $fa4
+	vpickve2gr.w	$a5, $vr3, 0
+	andi	$a5, $a5, 7
+	movgr2fr.w	$fa5, $a5
+	ffint.d.w	$fa5, $fa5
+	vextrins.d	$vr5, $vr4, 16
+	vstx	$vr5, $a0, $a3
+	vaddi.wu	$vr0, $vr0, 2
+	addi.d	$a0, $a0, 16
+	vaddi.wu	$vr3, $vr3, 2
+	bne	$a0, $a4, .LBB1_1
 # %bb.2:                                # %middle.block
 	addi.d	$a0, $sp, 520
 	addi.d	$a1, $sp, 264

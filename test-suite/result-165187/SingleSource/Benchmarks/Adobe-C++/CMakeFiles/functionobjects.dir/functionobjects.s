@@ -2962,12 +2962,12 @@ _ZSt16__introsort_loopIPdlN9__gnu_cxx5__ops15_Iter_comp_iterI17less_than_functor
 .LBB18_27:                              # %.lr.ph.i.i.i.i
                                         #   Parent Loop BB18_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a4, $a6, $fp, 4
+	vld	$vr1, $a4, 8
 	slli.d	$a4, $a6, 1
 	addi.d	$t0, $a4, 2
-	slli.d	$t1, $t0, 3
-	alsl.d	$t2, $a6, $fp, 4
-	fldx.d	$fa1, $fp, $t1
-	fld.d	$fa2, $t2, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a4, $a4, 1
 	movcf2gr	$t1, $fcc0
@@ -3296,12 +3296,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_comp_iterI17less_than_functorEEEvT_
 .LBB20_8:                               # %.lr.ph.i
                                         #   Parent Loop BB20_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a7, $t0, $a0, 4
+	vld	$vr1, $a7, 8
 	slli.d	$a7, $t0, 1
 	addi.d	$t1, $a7, 2
-	slli.d	$t2, $t1, 3
-	alsl.d	$t3, $t0, $a0, 4
-	fldx.d	$fa1, $a0, $t2
-	fld.d	$fa2, $t3, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a7, $a7, 1
 	movcf2gr	$t2, $fcc0
@@ -3367,12 +3367,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_comp_iterI17less_than_functorEEEvT_
                                         #   Parent Loop BB20_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a4, $a2
-	slli.d	$a2, $a2, 1
+	alsl.d	$a2, $a2, $a0, 4
+	vld	$vr1, $a2, 8
+	slli.d	$a2, $a4, 1
 	addi.d	$a5, $a2, 2
-	slli.d	$a6, $a5, 3
-	alsl.d	$a7, $a4, $a0, 4
-	fldx.d	$fa1, $a0, $a6
-	fld.d	$fa2, $a7, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a2, $a2, 1
 	movcf2gr	$a6, $fcc0
@@ -3603,12 +3603,12 @@ _ZSt16__introsort_loopIPdlN9__gnu_cxx5__ops15_Iter_comp_iterI24inline_less_than_
 .LBB21_27:                              # %.lr.ph.i.i.i.i
                                         #   Parent Loop BB21_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a4, $a6, $fp, 4
+	vld	$vr1, $a4, 8
 	slli.d	$a4, $a6, 1
 	addi.d	$t0, $a4, 2
-	slli.d	$t1, $t0, 3
-	alsl.d	$t2, $a6, $fp, 4
-	fldx.d	$fa1, $fp, $t1
-	fld.d	$fa2, $t2, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a4, $a4, 1
 	movcf2gr	$t1, $fcc0
@@ -3937,12 +3937,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_comp_iterI24inline_less_than_functo
 .LBB23_8:                               # %.lr.ph.i
                                         #   Parent Loop BB23_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a7, $t0, $a0, 4
+	vld	$vr1, $a7, 8
 	slli.d	$a7, $t0, 1
 	addi.d	$t1, $a7, 2
-	slli.d	$t2, $t1, 3
-	alsl.d	$t3, $t0, $a0, 4
-	fldx.d	$fa1, $a0, $t2
-	fld.d	$fa2, $t3, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a7, $a7, 1
 	movcf2gr	$t2, $fcc0
@@ -4008,12 +4008,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_comp_iterI24inline_less_than_functo
                                         #   Parent Loop BB23_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a4, $a2
-	slli.d	$a2, $a2, 1
+	alsl.d	$a2, $a2, $a0, 4
+	vld	$vr1, $a2, 8
+	slli.d	$a2, $a4, 1
 	addi.d	$a5, $a2, 2
-	slli.d	$a6, $a5, 3
-	alsl.d	$a7, $a4, $a0, 4
-	fldx.d	$fa1, $a0, $a6
-	fld.d	$fa2, $a7, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a2, $a2, 1
 	movcf2gr	$a6, $fcc0
@@ -4244,12 +4244,12 @@ _ZSt16__introsort_loopIPdlN9__gnu_cxx5__ops15_Iter_comp_iterISt4lessIdEEEEvT_S7_
 .LBB24_27:                              # %.lr.ph.i.i.i.i
                                         #   Parent Loop BB24_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a4, $a6, $fp, 4
+	vld	$vr1, $a4, 8
 	slli.d	$a4, $a6, 1
 	addi.d	$t0, $a4, 2
-	slli.d	$t1, $t0, 3
-	alsl.d	$t2, $a6, $fp, 4
-	fldx.d	$fa1, $fp, $t1
-	fld.d	$fa2, $t2, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a4, $a4, 1
 	movcf2gr	$t1, $fcc0
@@ -4578,12 +4578,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_comp_iterISt4lessIdEEEEvT_S7_RT0_: 
 .LBB26_8:                               # %.lr.ph.i
                                         #   Parent Loop BB26_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a7, $t0, $a0, 4
+	vld	$vr1, $a7, 8
 	slli.d	$a7, $t0, 1
 	addi.d	$t1, $a7, 2
-	slli.d	$t2, $t1, 3
-	alsl.d	$t3, $t0, $a0, 4
-	fldx.d	$fa1, $a0, $t2
-	fld.d	$fa2, $t3, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a7, $a7, 1
 	movcf2gr	$t2, $fcc0
@@ -4649,12 +4649,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_comp_iterISt4lessIdEEEEvT_S7_RT0_: 
                                         #   Parent Loop BB26_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a4, $a2
-	slli.d	$a2, $a2, 1
+	alsl.d	$a2, $a2, $a0, 4
+	vld	$vr1, $a2, 8
+	slli.d	$a2, $a4, 1
 	addi.d	$a5, $a2, 2
-	slli.d	$a6, $a5, 3
-	alsl.d	$a7, $a4, $a0, 4
-	fldx.d	$fa1, $a0, $a6
-	fld.d	$fa2, $a7, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a2, $a2, 1
 	movcf2gr	$a6, $fcc0
@@ -4879,12 +4879,12 @@ _ZSt16__introsort_loopIPdlN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_T0_T1_: # @_
 .LBB27_27:                              # %.lr.ph.i.i.i.i
                                         #   Parent Loop BB27_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a4, $a6, $fp, 4
+	vld	$vr1, $a4, 8
 	slli.d	$a4, $a6, 1
 	addi.d	$t0, $a4, 2
-	slli.d	$t1, $t0, 3
-	alsl.d	$t2, $a6, $fp, 4
-	fldx.d	$fa1, $fp, $t1
-	fld.d	$fa2, $t2, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a4, $a4, 1
 	movcf2gr	$t1, $fcc0
@@ -5211,12 +5211,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_RT0_: # @_ZSt11__m
 .LBB29_8:                               # %.lr.ph.i
                                         #   Parent Loop BB29_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	alsl.d	$a7, $t0, $a0, 4
+	vld	$vr1, $a7, 8
 	slli.d	$a7, $t0, 1
 	addi.d	$t1, $a7, 2
-	slli.d	$t2, $t1, 3
-	alsl.d	$t3, $t0, $a0, 4
-	fldx.d	$fa1, $a0, $t2
-	fld.d	$fa2, $t3, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a7, $a7, 1
 	movcf2gr	$t2, $fcc0
@@ -5282,12 +5282,12 @@ _ZSt11__make_heapIPdN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_RT0_: # @_ZSt11__m
                                         #   Parent Loop BB29_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a4, $a2
-	slli.d	$a2, $a2, 1
+	alsl.d	$a2, $a2, $a0, 4
+	vld	$vr1, $a2, 8
+	slli.d	$a2, $a4, 1
 	addi.d	$a5, $a2, 2
-	slli.d	$a6, $a5, 3
-	alsl.d	$a7, $a4, $a0, 4
-	fldx.d	$fa1, $a0, $a6
-	fld.d	$fa2, $a7, 8
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
 	addi.d	$a2, $a2, 1
 	movcf2gr	$a6, $fcc0

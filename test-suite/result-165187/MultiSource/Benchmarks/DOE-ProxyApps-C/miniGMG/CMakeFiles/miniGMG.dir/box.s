@@ -102,7 +102,7 @@ create_box:                             # @create_box
 	blez	$s3, .LBB0_12
 # %bb.6:                                # %.lr.ph127
 	ld.d	$a0, $s0, 0
-	ori	$a1, $zero, 6
+	ori	$a1, $zero, 4
 	bltu	$s3, $a1, .LBB0_9
 # %bb.7:                                # %vector.memcheck
 	addi.d	$a1, $sp, 16

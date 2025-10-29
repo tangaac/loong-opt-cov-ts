@@ -51,8 +51,7 @@ _ZNK22btGImpactCompoundShape21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	fdiv.s	$fs0, $fs0, $fa0
 	slli.d	$a0, $a0, 3
 	addi.d	$s3, $a0, -8
-	slli.d	$a0, $s1, 6
-	addi.d	$s4, $a0, -32
+	slli.d	$s4, $s1, 6
 	pcalau12i	$a0, %pc_hi20(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
 	addi.d	$s2, $a0, %pc_lo12(_ZGVZN11btTransform11getIdentityEvE17identityTransform)
 	pcalau12i	$a0, %pc_hi20(_ZZN11btTransform11getIdentityEvE17identityTransform)
@@ -61,24 +60,24 @@ _ZNK22btGImpactCompoundShape21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a0, $fp, 208
-	add.d	$a1, $a0, $s4
-	fld.s	$fa0, $a1, -32
+	add.d	$a0, $a0, $s4
+	fld.s	$fa0, $a0, -64
 	fld.s	$fa1, $sp, 40
 	fmul.s	$fa2, $fa0, $fa1
-	fld.s	$fa3, $a1, -28
+	fld.s	$fa3, $a0, -60
 	fld.s	$fa4, $sp, 44
-	fld.s	$fa5, $a1, -24
+	fld.s	$fa5, $a0, -56
 	fld.s	$fa6, $sp, 48
-	fld.s	$fa7, $a1, -16
-	fld.s	$ft0, $a1, -12
+	fld.s	$fa7, $a0, -48
+	fld.s	$ft0, $a0, -44
 	fmul.s	$ft1, $fa3, $fa4
 	fmul.s	$ft2, $fa5, $fa6
 	fmul.s	$ft3, $fa1, $fa7
 	fmul.s	$ft4, $fa4, $ft0
-	fld.s	$ft5, $a1, -8
-	fldx.s	$ft6, $a0, $s4
-	fld.s	$ft7, $a1, 4
-	fld.s	$ft8, $a1, 8
+	fld.s	$ft5, $a0, -40
+	fld.s	$ft6, $a0, -32
+	fld.s	$ft7, $a0, -28
+	fld.s	$ft8, $a0, -24
 	fmul.s	$ft9, $fa6, $ft5
 	fmul.s	$fa1, $fa1, $ft6
 	fmul.s	$fa4, $fa4, $ft7
@@ -90,21 +89,22 @@ _ZNK22btGImpactCompoundShape21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	fmadd.s	$fa2, $fa7, $ft3, $fa2
 	fmadd.s	$fa2, $ft5, $ft9, $fa2
 	fmul.s	$fa3, $ft7, $fa4
-	fmadd.s	$fa1, $ft6, $fa1, $fa3
-	fld.s	$fa3, $a1, 16
-	fld.s	$fa4, $a1, 20
-	fld.s	$fa5, $a1, 24
+	fld.s	$fa4, $a0, -16
+	ld.d	$a0, $a0, -12
 .LBB0_3:                                #   in Loop: Header=BB0_4 Depth=1
-	fmadd.s	$fa6, $ft8, $fa6, $fa1
-	fmul.s	$fa3, $fa3, $fa3
+	fmadd.s	$fa1, $ft6, $fa1, $fa3
+	fmadd.s	$fa3, $ft8, $fa6, $fa1
 	fmul.s	$fa4, $fa4, $fa4
-	fmul.s	$fa1, $fa5, $fa5
-	fadd.s	$fa5, $fa4, $fa1
-	fmul.s	$fa0, $fa0, $fa5
-	fadd.s	$fa1, $fa3, $fa1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vfmul.s	$vr1, $vr1, $vr1
+	vreplvei.w	$vr5, $vr1, 0
+	vreplvei.w	$vr1, $vr1, 1
+	fadd.s	$fa6, $fa5, $fa1
+	fmul.s	$fa0, $fa0, $fa6
+	fadd.s	$fa1, $fa4, $fa1
 	fmul.s	$fa1, $fa2, $fa1
-	fadd.s	$fa2, $fa3, $fa4
-	fmul.s	$fa2, $fa6, $fa2
+	fadd.s	$fa2, $fa4, $fa5
+	fmul.s	$fa2, $fa3, $fa2
 	fld.s	$fa3, $s0, 0
 	fld.s	$fa4, $s0, 4
 	fld.s	$fa5, $s0, 8
@@ -169,10 +169,8 @@ _ZNK22btGImpactCompoundShape21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	fmadd.s	$fa2, $fa7, $ft3, $fa2
 	fmadd.s	$fa2, $ft5, $ft9, $fa2
 	fmul.s	$fa3, $ft7, $fa4
-	fmadd.s	$fa1, $ft6, $fa1, $fa3
-	fld.s	$fa3, $s5, 48
-	fld.s	$fa4, $s5, 52
-	fld.s	$fa5, $s5, 56
+	fld.s	$fa4, $s5, 48
+	ld.d	$a0, $s5, 52
 	b	.LBB0_3
 .LBB0_7:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$a0, $s2
@@ -338,7 +336,7 @@ _ZNK22btGImpactMeshShapePart21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	addi.d	$a4, $a1, -1
 	mul.d	$a4, $a4, $a3
 	add.d	$a2, $a4, $a2
-	addi.d	$a2, $a2, 8
+	addi.d	$a2, $a2, 4
 	movgr2fr.w	$fa1, $zero
 	sub.d	$a3, $zero, $a3
 	fmov.s	$fa2, $fa1
@@ -346,28 +344,28 @@ _ZNK22btGImpactMeshShapePart21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	.p2align	4, , 16
 .LBB1_5:                                # %_ZNK22btGImpactMeshShapePart9getVertexEiR9btVector3.exit
                                         # =>This Inner Loop Header: Depth=1
+	ld.d	$a4, $a2, 0
 	fld.s	$fa4, $s0, 200
-	fld.s	$fa5, $a2, -8
-	fld.s	$fa6, $a2, -4
-	fld.s	$fa7, $s0, 204
-	fld.s	$ft0, $a2, 0
-	fld.s	$ft1, $s0, 208
-	fmul.s	$fa4, $fa4, $fa5
-	fmul.s	$fa5, $fa6, $fa7
+	fld.s	$fa5, $a2, -4
+	vinsgr2vr.d	$vr6, $a4, 0
+	ld.d	$a4, $s0, 204
 	addi.d	$a1, $a1, -1
-	fmul.s	$fa6, $ft0, $ft1
+	fmul.s	$fa4, $fa4, $fa5
 	fmul.s	$fa4, $fa4, $fa4
-	fmul.s	$fa5, $fa5, $fa5
-	fmul.s	$fa6, $fa6, $fa6
-	fadd.s	$fa7, $fa5, $fa6
+	vinsgr2vr.d	$vr5, $a4, 0
+	vfmul.s	$vr5, $vr6, $vr5
+	vfmul.s	$vr5, $vr5, $vr5
+	vreplvei.w	$vr6, $vr5, 0
+	vreplvei.w	$vr5, $vr5, 1
+	fadd.s	$fa7, $fa6, $fa5
 	fmul.s	$fa7, $fa0, $fa7
-	fadd.s	$fa6, $fa4, $fa6
-	fmul.s	$fa6, $fa0, $fa6
-	fadd.s	$fa4, $fa4, $fa5
+	fadd.s	$fa5, $fa4, $fa5
+	fmul.s	$fa5, $fa0, $fa5
+	fadd.s	$fa4, $fa4, $fa6
 	fmul.s	$fa4, $fa0, $fa4
 	fadd.s	$fa1, $fa1, $fa7
 	fst.s	$fa1, $fp, 0
-	fadd.s	$fa2, $fa6, $fa2
+	fadd.s	$fa2, $fa5, $fa2
 	fst.s	$fa2, $fp, 4
 	fadd.s	$fa3, $fa4, $fa3
 	fst.s	$fa3, $fp, 8

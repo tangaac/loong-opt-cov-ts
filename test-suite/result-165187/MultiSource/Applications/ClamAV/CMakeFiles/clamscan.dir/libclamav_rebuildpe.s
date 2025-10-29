@@ -54,8 +54,8 @@ cli_rebuildpe:                          # @cli_rebuildpe
 # %bb.3:                                # %.preheader
 	blez	$fp, .LBB0_6
 # %bb.4:                                # %.lr.ph.preheader
-	ori	$a0, $zero, 8
-	bgeu	$fp, $a0, .LBB0_7
+	ori	$a0, $zero, 1
+	bne	$fp, $a0, .LBB0_7
 # %bb.5:
 	move	$a0, $zero
 	move	$a2, $zero
@@ -64,54 +64,36 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	move	$a2, $zero
 	b	.LBB0_13
 .LBB0_7:                                # %vector.ph
-	bstrpick.d	$a0, $fp, 30, 3
-	slli.d	$a0, $a0, 3
-	addi.d	$a2, $a1, 156
-	vrepli.b	$vr0, 0
-	vrepli.w	$vr1, 511
-	vldi	$vr2, -3838
-	vrepli.w	$vr3, -512
-	move	$t0, $a0
-	vori.b	$vr4, $vr0, 0
+	move	$a2, $zero
+	move	$t0, $zero
+	bstrpick.d	$a0, $fp, 30, 1
+	slli.d	$a0, $a0, 1
+	addi.d	$t1, $a1, 48
+	move	$t2, $a0
 	.p2align	4, , 16
 .LBB0_8:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $a2, -144
-	ld.w	$t2, $a2, -108
-	ld.w	$t3, $a2, -72
-	ld.w	$t4, $a2, -36
-	vinsgr2vr.w	$vr5, $t1, 0
-	vinsgr2vr.w	$vr5, $t2, 1
-	vinsgr2vr.w	$vr5, $t3, 2
-	vinsgr2vr.w	$vr5, $t4, 3
-	ld.w	$t1, $a2, 0
-	ld.w	$t2, $a2, 36
-	ld.w	$t3, $a2, 72
-	ld.w	$t4, $a2, 108
-	vinsgr2vr.w	$vr6, $t1, 0
-	vinsgr2vr.w	$vr6, $t2, 1
-	vinsgr2vr.w	$vr6, $t3, 2
-	vinsgr2vr.w	$vr6, $t4, 3
-	vand.v	$vr7, $vr5, $vr1
-	vand.v	$vr8, $vr6, $vr1
-	vseqi.w	$vr7, $vr7, 0
-	vandn.v	$vr7, $vr7, $vr2
-	vseqi.w	$vr8, $vr8, 0
-	vandn.v	$vr8, $vr8, $vr2
-	vadd.w	$vr5, $vr7, $vr5
-	vadd.w	$vr6, $vr8, $vr6
-	vand.v	$vr5, $vr5, $vr3
-	vand.v	$vr6, $vr6, $vr3
-	vadd.w	$vr0, $vr5, $vr0
-	vadd.w	$vr4, $vr6, $vr4
-	addi.d	$t0, $t0, -8
-	addi.d	$a2, $a2, 288
-	bnez	$t0, .LBB0_8
+	ld.wu	$t3, $t1, -36
+	ld.wu	$t4, $t1, 0
+	andi	$t5, $t3, 511
+	sltu	$t5, $zero, $t5
+	andi	$t6, $t4, 511
+	sltu	$t6, $zero, $t6
+	slli.d	$t5, $t5, 9
+	slli.d	$t6, $t6, 9
+	add.d	$t3, $t5, $t3
+	add.d	$t4, $t6, $t4
+	bstrpick.d	$t3, $t3, 31, 9
+	slli.d	$t3, $t3, 9
+	bstrpick.d	$t4, $t4, 31, 9
+	slli.d	$t4, $t4, 9
+	add.d	$a2, $t3, $a2
+	add.d	$t0, $t4, $t0
+	addi.d	$t2, $t2, -2
+	addi.d	$t1, $t1, 72
+	bnez	$t2, .LBB0_8
 # %bb.9:                                # %middle.block
-	vadd.w	$vr0, $vr4, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a2, $vr0, 0
+	add.w	$a2, $t0, $a2
 	beq	$a0, $fp, .LBB0_12
 .LBB0_10:                               # %.lr.ph.preheader140
 	slli.d	$t0, $a0, 5
@@ -134,9 +116,8 @@ cli_rebuildpe:                          # @cli_rebuildpe
 	addi.d	$t0, $t0, 36
 	bnez	$a0, .LBB0_11
 .LBB0_12:                               # %._crit_edge
-	addi.w	$a0, $a2, 0
-	lu12i.w	$t0, 45056
-	bltu	$t0, $a0, .LBB0_17
+	lu12i.w	$a0, 45056
+	bltu	$a0, $a2, .LBB0_17
 .LBB0_13:                               # %._crit_edge.thread
 	move	$s1, $a4
 	move	$s0, $a3

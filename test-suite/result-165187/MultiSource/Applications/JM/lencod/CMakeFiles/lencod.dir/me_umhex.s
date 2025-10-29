@@ -2855,16 +2855,16 @@ UMHEXIntegerPelBlockMotionSearch:       # @UMHEXIntegerPelBlockMotionSearch
 	blez	$a1, .LBB4_234
 # %bb.219:                              # %.preheader.us.preheader
 	move	$a2, $zero
-	bstrpick.d	$a3, $a1, 30, 2
-	slli.d	$a3, $a3, 2
+	bstrpick.d	$a3, $a1, 30, 1
+	slli.d	$a3, $a3, 1
 	slli.d	$a4, $s5, 3
-	addi.d	$a5, $a4, 16
+	addi.d	$a5, $a4, 8
 	pcalau12i	$a6, %pc_hi20(fastme_l0_cost)
 	pcalau12i	$a7, %pc_hi20(fastme_ref_cost)
 	slli.d	$t0, $s2, 3
 	ld.d	$t1, $sp, 224                   # 8-byte Folded Reload
 	slli.d	$t1, $t1, 3
-	ori	$t2, $zero, 4
+	ori	$t2, $zero, 1
 	b	.LBB4_221
 	.p2align	4, , 16
 .LBB4_220:                              # %._crit_edge1107.us
@@ -2914,7 +2914,7 @@ UMHEXIntegerPelBlockMotionSearch:       # @UMHEXIntegerPelBlockMotionSearch
 	beqz	$s2, .LBB4_227
 # %bb.225:                              # %.lr.ph1106.split.us.split.us1115.preheader
                                         #   in Loop: Header=BB4_221 Depth=1
-	bgeu	$a1, $t2, .LBB4_229
+	bne	$a1, $t2, .LBB4_229
 # %bb.226:                              #   in Loop: Header=BB4_221 Depth=1
 	move	$t5, $zero
 	b	.LBB4_232
@@ -2955,22 +2955,18 @@ UMHEXIntegerPelBlockMotionSearch:       # @UMHEXIntegerPelBlockMotionSearch
 .LBB4_230:                              # %vector.body
                                         #   Parent Loop BB4_221 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t7, $t4, -16
-	ld.d	$t8, $t4, -8
-	ld.d	$fp, $t4, 0
-	ld.d	$s0, $t4, 8
+	ld.d	$t7, $t4, -8
+	ld.d	$t8, $t4, 0
 	stx.w	$s8, $t7, $t3
 	stx.w	$s8, $t8, $t3
-	stx.w	$s8, $fp, $t3
-	stx.w	$s8, $s0, $t3
-	addi.d	$t5, $t5, -4
-	addi.d	$t4, $t4, 32
+	addi.d	$t5, $t5, -2
+	addi.d	$t4, $t4, 16
 	bnez	$t5, .LBB4_230
 # %bb.231:                              # %middle.block
                                         #   in Loop: Header=BB4_221 Depth=1
 	move	$t5, $a3
 	beq	$a3, $a1, .LBB4_220
-.LBB4_232:                              # %.lr.ph1106.split.us.split.us1115.preheader1267
+.LBB4_232:                              # %.lr.ph1106.split.us.split.us1115.preheader1266
                                         #   in Loop: Header=BB4_221 Depth=1
 	add.d	$t4, $t6, $a4
 	alsl.d	$t4, $t5, $t4, 3

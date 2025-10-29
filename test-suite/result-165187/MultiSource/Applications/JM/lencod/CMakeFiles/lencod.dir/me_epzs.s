@@ -1475,100 +1475,89 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$a1, $a1, %got_pc_lo12(img)
 	ld.d	$a2, $a1, 0
 	ld.w	$a1, $a2, 20
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	ldptr.w	$a1, $a2, 15268
 	pcalau12i	$a3, %pc_hi20(mv_scale)
 	addi.d	$a3, $a3, %pc_lo12(mv_scale)
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	lu12i.w	$a7, 4
-	bltz	$a1, .LBB8_28
+	bltz	$a1, .LBB8_23
 # %bb.1:                                # %.preheader941.lr.ph
 	slli.d	$a1, $a1, 2
 	pcalau12i	$a3, %got_pc_hi20(enc_picture)
 	ld.d	$a3, $a3, %got_pc_lo12(enc_picture)
 	ld.d	$a3, $a3, 0
-	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
 	addi.w	$a1, $a1, 1
 	srai.d	$a3, $a1, 63
 	andn	$a1, $a1, $a3
 	addi.d	$a1, $a1, 1
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$a3, $fp, 128
+	ld.d	$t3, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$a6, $t3, 128
 	pcalau12i	$a1, %got_pc_hi20(listXsize)
-	ld.d	$a1, $a1, %got_pc_lo12(listXsize)
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$t1, $a1, %got_pc_lo12(listXsize)
 	move	$t2, $zero
 	ori	$t4, $zero, 1
 	ori	$t5, $zero, 256
 	ori	$t6, $zero, 127
 	ori	$t7, $zero, 2047
-	vrepli.w	$vr0, -128
-	vrepli.w	$vr1, 127
-	vrepli.w	$vr2, 32
-	vldi	$vr3, -2553
 	lu12i.w	$s0, 1
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_2:                                # %._crit_edge955.split.us
                                         #   in Loop: Header=BB8_3 Depth=1
 	addi.d	$t2, $t2, 1
-	add.d	$fp, $fp, $s0
-	add.d	$a3, $a3, $s0
+	add.d	$t3, $t3, $s0
+	add.d	$a6, $a6, $s0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	beq	$t2, $a1, .LBB8_28
+	beq	$t2, $a1, .LBB8_23
 .LBB8_3:                                # %.preheader941
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_24 Depth 2
-                                        #       Child Loop BB8_26 Depth 3
-                                        #     Child Loop BB8_7 Depth 2
-                                        #       Child Loop BB8_18 Depth 3
+                                        #     Child Loop BB8_19 Depth 2
                                         #       Child Loop BB8_21 Depth 3
+                                        #     Child Loop BB8_7 Depth 2
+                                        #       Child Loop BB8_11 Depth 3
                                         #       Child Loop BB8_13 Depth 3
                                         #       Child Loop BB8_16 Depth 3
 	slli.d	$a1, $t2, 2
-	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
-	ldx.wu	$s2, $a4, $a1
-	addi.w	$s3, $s2, 0
+	ldx.wu	$t0, $t1, $a1
+	addi.w	$s3, $t0, 0
 	blez	$s3, .LBB8_2
 # %bb.4:                                # %.preheader940.lr.ph
                                         #   in Loop: Header=BB8_3 Depth=1
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	alsl.d	$a4, $t2, $a1, 3
+	alsl.d	$a3, $t2, $a1, 3
 	ori	$a1, $zero, 2
-	bgeu	$t2, $a1, .LBB8_22
+	bgeu	$t2, $a1, .LBB8_17
 # %bb.5:                                # %.preheader940.lr.ph.split.us.split.us
                                         #   in Loop: Header=BB8_3 Depth=1
-	move	$s4, $zero
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	ld.w	$s5, $a1, 4
-	ld.d	$s6, $a4, 0
-	bstrpick.d	$a1, $s2, 30, 1
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$s4, $a1, 4
+	ld.d	$s5, $a3, 0
+	move	$s6, $zero
+	bstrpick.d	$a1, $t0, 30, 1
 	slli.d	$s7, $a1, 1
-	vinsgr2vr.w	$vr4, $s5, 0
-	vinsgr2vr.w	$vr4, $s5, 1
-	addi.d	$s8, $s6, 8
-	move	$ra, $fp
-	move	$a6, $a3
+	move	$s8, $a6
+	move	$fp, $t3
 	b	.LBB8_7
 	.p2align	4, , 16
 .LBB8_6:                                # %._crit_edge.split.us.us.us
                                         #   in Loop: Header=BB8_7 Depth=2
-	addi.d	$s4, $s4, 1
-	addi.d	$a6, $a6, 4
-	addi.d	$ra, $ra, 4
-	beq	$s4, $s2, .LBB8_2
+	addi.d	$s6, $s6, 1
+	addi.d	$fp, $fp, 4
+	addi.d	$s8, $s8, 4
+	beq	$s6, $t0, .LBB8_2
 .LBB8_7:                                # %.preheader940.us.us
                                         #   Parent Loop BB8_3 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_18 Depth 3
-                                        #       Child Loop BB8_21 Depth 3
+                                        #       Child Loop BB8_11 Depth 3
                                         #       Child Loop BB8_13 Depth 3
                                         #       Child Loop BB8_16 Depth 3
-	slli.d	$a1, $s4, 3
-	ldx.d	$a1, $s6, $a1
+	slli.d	$a1, $s6, 3
+	ldx.d	$a1, $s5, $a1
 	ld.w	$a1, $a1, 4
-	bne	$s5, $a1, .LBB8_10
+	bne	$s4, $a1, .LBB8_10
 # %bb.8:                                # %.lr.ph.split.us.split.us.us.us.preheader
                                         #   in Loop: Header=BB8_7 Depth=2
 	bne	$s3, $t4, .LBB8_12
@@ -1578,11 +1567,11 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	.p2align	4, , 16
 .LBB8_10:                               # %.lr.ph.split.us.split.us967.us
                                         #   in Loop: Header=BB8_7 Depth=2
-	sub.w	$a1, $s5, $a1
-	addi.w	$t0, $zero, -128
-	slt	$a4, $t0, $a1
+	sub.w	$a1, $s4, $a1
+	addi.w	$a3, $zero, -128
+	slt	$a4, $a3, $a1
 	maskeqz	$a1, $a1, $a4
-	masknez	$a4, $t0, $a4
+	masknez	$a4, $a3, $a4
 	or	$a1, $a1, $a4
 	slti	$a4, $a1, 127
 	maskeqz	$a1, $a1, $a4
@@ -1599,202 +1588,155 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	or	$a1, $a1, $a7
 	div.d	$a1, $a1, $a4
 	ext.w.h	$t8, $a1
-	bne	$s3, $t4, .LBB8_17
-# %bb.11:                               #   in Loop: Header=BB8_7 Depth=2
-	move	$a4, $zero
-	b	.LBB8_20
+	move	$s1, $t0
+	move	$s2, $s5
+	move	$ra, $fp
+	.p2align	4, , 16
+.LBB8_11:                               #   Parent Loop BB8_3 Depth=1
+                                        #     Parent Loop BB8_7 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	ld.d	$a1, $s2, 0
+	ld.w	$a1, $a1, 4
+	sub.w	$a1, $s4, $a1
+	slt	$a4, $a3, $a1
+	maskeqz	$a1, $a1, $a4
+	masknez	$a4, $a3, $a4
+	or	$a1, $a1, $a4
+	slti	$a4, $a1, 127
+	maskeqz	$a1, $a1, $a4
+	masknez	$a4, $t6, $a4
+	or	$a1, $a1, $a4
+	mul.d	$a1, $a1, $t8
+	addi.w	$a1, $a1, 32
+	srai.d	$a1, $a1, 6
+	addi.w	$a4, $zero, -2048
+	slt	$a5, $a4, $a1
+	maskeqz	$a1, $a1, $a5
+	masknez	$a4, $a4, $a5
+	or	$a1, $a1, $a4
+	slti	$a4, $a1, 2047
+	maskeqz	$a1, $a1, $a4
+	masknez	$a4, $t7, $a4
+	or	$a1, $a1, $a4
+	st.w	$a1, $ra, 0
+	addi.d	$ra, $ra, 128
+	addi.d	$s1, $s1, -1
+	addi.d	$s2, $s2, 8
+	bnez	$s1, .LBB8_11
+	b	.LBB8_6
 	.p2align	4, , 16
 .LBB8_12:                               # %vector.body.preheader
                                         #   in Loop: Header=BB8_7 Depth=2
-	move	$a4, $zero
-	move	$t0, $s7
+	move	$a3, $s7
+	move	$t8, $s8
 	.p2align	4, , 16
 .LBB8_13:                               # %vector.body
                                         #   Parent Loop BB8_3 Depth=1
                                         #     Parent Loop BB8_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	stx.w	$t5, $ra, $a4
-	stx.w	$t5, $a6, $a4
-	addi.d	$t0, $t0, -2
-	addi.d	$a4, $a4, 256
-	bnez	$t0, .LBB8_13
+	st.w	$t5, $t8, -128
+	st.w	$t5, $t8, 0
+	addi.d	$a3, $a3, -2
+	addi.d	$t8, $t8, 256
+	bnez	$a3, .LBB8_13
 # %bb.14:                               # %middle.block
                                         #   in Loop: Header=BB8_7 Depth=2
 	move	$a1, $s7
-	beq	$s7, $s2, .LBB8_6
-.LBB8_15:                               # %.lr.ph.split.us.split.us.us.us.preheader1303
+	beq	$s7, $t0, .LBB8_6
+.LBB8_15:                               # %.lr.ph.split.us.split.us.us.us.preheader1290
                                         #   in Loop: Header=BB8_7 Depth=2
-	slli.d	$a4, $a1, 7
-	sub.d	$t0, $s2, $a1
+	slli.d	$a3, $a1, 7
+	sub.d	$t8, $t0, $a1
 	.p2align	4, , 16
 .LBB8_16:                               # %.lr.ph.split.us.split.us.us.us
                                         #   Parent Loop BB8_3 Depth=1
                                         #     Parent Loop BB8_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	stx.w	$t5, $ra, $a4
-	addi.d	$t0, $t0, -1
-	addi.d	$a4, $a4, 128
-	bnez	$t0, .LBB8_16
+	stx.w	$t5, $fp, $a3
+	addi.d	$t8, $t8, -1
+	addi.d	$a3, $a3, 128
+	bnez	$t8, .LBB8_16
 	b	.LBB8_6
 	.p2align	4, , 16
-.LBB8_17:                               # %vector.ph1282
-                                        #   in Loop: Header=BB8_7 Depth=2
-	vinsgr2vr.w	$vr5, $t8, 0
-	vinsgr2vr.w	$vr5, $t8, 1
-	move	$a4, $s7
-	move	$t3, $s8
-	move	$s1, $a6
-	.p2align	4, , 16
-.LBB8_18:                               # %vector.body1287
-                                        #   Parent Loop BB8_3 Depth=1
-                                        #     Parent Loop BB8_7 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	ld.d	$a1, $t3, -8
-	ld.d	$a5, $t3, 0
-	ld.w	$a1, $a1, 4
-	ld.w	$a5, $a5, 4
-	vinsgr2vr.w	$vr6, $a1, 0
-	vinsgr2vr.w	$vr6, $a5, 1
-	vsub.w	$vr6, $vr4, $vr6
-	vmax.w	$vr6, $vr6, $vr0
-	vmin.w	$vr6, $vr6, $vr1
-	vori.b	$vr7, $vr2, 0
-	vmadd.w	$vr7, $vr6, $vr5
-	vsrai.w	$vr6, $vr7, 6
-	addi.d	$a1, $zero, -2048
-	vreplgr2vr.w	$vr7, $a1
-	vmax.w	$vr6, $vr6, $vr7
-	vmin.w	$vr6, $vr6, $vr3
-	vstelm.w	$vr6, $s1, -128, 0
-	vstelm.w	$vr6, $s1, 0, 1
-	addi.d	$s1, $s1, 256
-	addi.d	$a4, $a4, -2
-	addi.d	$t3, $t3, 16
-	bnez	$a4, .LBB8_18
-# %bb.19:                               # %middle.block1290
-                                        #   in Loop: Header=BB8_7 Depth=2
-	move	$a4, $s7
-	beq	$s7, $s2, .LBB8_6
-.LBB8_20:                               # %scalar.ph1280.preheader
-                                        #   in Loop: Header=BB8_7 Depth=2
-	slli.d	$a1, $a4, 7
-	add.d	$s1, $ra, $a1
-	alsl.d	$t3, $a4, $s6, 3
-	sub.d	$a4, $s2, $a4
-	.p2align	4, , 16
-.LBB8_21:                               # %scalar.ph1280
-                                        #   Parent Loop BB8_3 Depth=1
-                                        #     Parent Loop BB8_7 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	ld.d	$a1, $t3, 0
-	ld.w	$a1, $a1, 4
-	sub.w	$a1, $s5, $a1
-	slt	$a5, $t0, $a1
-	maskeqz	$a1, $a1, $a5
-	masknez	$a5, $t0, $a5
-	or	$a1, $a1, $a5
-	slti	$a5, $a1, 127
-	maskeqz	$a1, $a1, $a5
-	masknez	$a5, $t6, $a5
-	or	$a1, $a1, $a5
-	mul.d	$a1, $a1, $t8
-	addi.w	$a1, $a1, 32
-	srai.d	$a1, $a1, 6
-	addi.w	$a5, $zero, -2048
-	slt	$t1, $a5, $a1
-	maskeqz	$a1, $a1, $t1
-	masknez	$a5, $a5, $t1
-	or	$a1, $a1, $a5
-	slti	$a5, $a1, 2047
-	maskeqz	$a1, $a1, $a5
-	masknez	$a5, $t7, $a5
-	or	$a1, $a1, $a5
-	st.w	$a1, $s1, 0
-	addi.d	$s1, $s1, 128
-	addi.d	$a4, $a4, -1
-	addi.d	$t3, $t3, 8
-	bnez	$a4, .LBB8_21
-	b	.LBB8_6
-	.p2align	4, , 16
-.LBB8_22:                               # %.preheader940.us.preheader
+.LBB8_17:                               # %.preheader940.us.preheader
                                         #   in Loop: Header=BB8_3 Depth=1
 	bstrpick.d	$a1, $t2, 30, 1
 	slli.d	$a1, $a1, 1
 	addi.d	$a1, $a1, -2
 	sltui	$a1, $a1, 1
-	ld.d	$a6, $a4, 0
-	ori	$a4, $zero, 12
-	masknez	$a4, $a4, $a1
-	ori	$a5, $zero, 8
-	maskeqz	$a1, $a5, $a1
-	or	$a1, $a1, $a4
-	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
-	ldx.w	$t0, $a4, $a1
-	move	$t8, $zero
-	move	$s1, $fp
-	b	.LBB8_24
+	ld.d	$t8, $a3, 0
+	ori	$a3, $zero, 12
+	masknez	$a3, $a3, $a1
+	ori	$a4, $zero, 8
+	maskeqz	$a1, $a4, $a1
+	or	$a1, $a1, $a3
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ldx.w	$s4, $a3, $a1
+	move	$s5, $zero
+	move	$s1, $t3
+	b	.LBB8_19
 	.p2align	4, , 16
-.LBB8_23:                               # %._crit_edge.split.us963
-                                        #   in Loop: Header=BB8_24 Depth=2
-	addi.d	$t8, $t8, 1
+.LBB8_18:                               # %._crit_edge.split.us963
+                                        #   in Loop: Header=BB8_19 Depth=2
+	addi.d	$s5, $s5, 1
 	addi.d	$s1, $s1, 4
-	beq	$t8, $s2, .LBB8_2
-.LBB8_24:                               # %.preheader940.us
+	beq	$s5, $t0, .LBB8_2
+.LBB8_19:                               # %.preheader940.us
                                         #   Parent Loop BB8_3 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_26 Depth 3
-	slli.d	$a1, $t8, 3
-	ldx.d	$a1, $a6, $a1
-	ld.w	$s4, $a1, 4
-	sub.w	$a1, $t0, $s4
-	addi.w	$s5, $zero, -128
-	slt	$a4, $s5, $a1
-	maskeqz	$a1, $a1, $a4
-	masknez	$a4, $s5, $a4
-	or	$a1, $a1, $a4
-	slti	$a4, $a1, 127
-	maskeqz	$a1, $a1, $a4
-	masknez	$a4, $t6, $a4
-	or	$s6, $a1, $a4
-	bstrpick.d	$a1, $s6, 7, 7
-	add.d	$a1, $s6, $a1
+                                        #       Child Loop BB8_21 Depth 3
+	slli.d	$a1, $s5, 3
+	ldx.d	$a1, $t8, $a1
+	ld.w	$s7, $a1, 4
+	sub.w	$a1, $s4, $s7
+	addi.w	$s8, $zero, -128
+	slt	$a3, $s8, $a1
+	maskeqz	$a1, $a1, $a3
+	masknez	$a3, $s8, $a3
+	or	$a1, $a1, $a3
+	slti	$a3, $a1, 127
+	maskeqz	$a1, $a1, $a3
+	masknez	$a3, $t6, $a3
+	or	$ra, $a1, $a3
+	bstrpick.d	$a1, $ra, 7, 7
+	add.d	$a1, $ra, $a1
 	ext.w.b	$a1, $a1
 	srai.d	$a1, $a1, 1
-	srai.d	$a4, $a1, 63
-	xor	$a1, $a1, $a4
-	sub.d	$a1, $a1, $a4
+	srai.d	$a3, $a1, 63
+	xor	$a1, $a1, $a3
+	sub.d	$a1, $a1, $a3
 	or	$a1, $a1, $a7
-	ext.w.h	$s7, $a1
-	move	$s8, $s2
-	move	$ra, $a6
-	move	$s3, $s1
-	b	.LBB8_26
+	ext.w.h	$a3, $a1
+	move	$s2, $t0
+	move	$s3, $t8
+	move	$s6, $s1
+	b	.LBB8_21
 	.p2align	4, , 16
-.LBB8_25:                               #   in Loop: Header=BB8_26 Depth=3
-	st.w	$a1, $s3, 0
-	addi.d	$s3, $s3, 128
-	addi.d	$s8, $s8, -1
-	addi.d	$ra, $ra, 8
-	beqz	$s8, .LBB8_23
-.LBB8_26:                               #   Parent Loop BB8_3 Depth=1
-                                        #     Parent Loop BB8_24 Depth=2
+.LBB8_20:                               #   in Loop: Header=BB8_21 Depth=3
+	st.w	$a1, $s6, 0
+	addi.d	$s6, $s6, 128
+	addi.d	$s2, $s2, -1
+	addi.d	$s3, $s3, 8
+	beqz	$s2, .LBB8_18
+.LBB8_21:                               #   Parent Loop BB8_3 Depth=1
+                                        #     Parent Loop BB8_19 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ori	$a1, $zero, 256
-	beq	$t0, $s4, .LBB8_25
-# %bb.27:                               #   in Loop: Header=BB8_26 Depth=3
-	ld.d	$a1, $ra, 0
+	beq	$s4, $s7, .LBB8_20
+# %bb.22:                               #   in Loop: Header=BB8_21 Depth=3
+	ld.d	$a1, $s3, 0
 	ld.w	$a1, $a1, 4
-	ext.w.h	$a4, $s6
-	sub.w	$a1, $t0, $a1
-	slt	$a5, $s5, $a1
+	ext.w.h	$a4, $ra
+	sub.w	$a1, $s4, $a1
+	slt	$a5, $s8, $a1
 	maskeqz	$a1, $a1, $a5
-	masknez	$a5, $s5, $a5
+	masknez	$a5, $s8, $a5
 	or	$a1, $a1, $a5
 	slti	$a5, $a1, 127
 	maskeqz	$a1, $a1, $a5
 	masknez	$a5, $t6, $a5
 	or	$a1, $a1, $a5
-	div.d	$a4, $s7, $a4
+	div.d	$a4, $a3, $a4
 	ext.w.h	$a4, $a4
 	mul.d	$a1, $a1, $a4
 	addi.w	$a1, $a1, 32
@@ -1808,15 +1750,15 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$a1, $a1, $a4
 	masknez	$a4, $t7, $a4
 	or	$a1, $a1, $a4
-	b	.LBB8_25
-.LBB8_28:                               # %._crit_edge
+	b	.LBB8_20
+.LBB8_23:                               # %._crit_edge
 	pcalau12i	$a1, %got_pc_hi20(input)
 	ld.d	$a1, $a1, %got_pc_lo12(input)
 	ld.d	$a1, $a1, 0
 	ldptr.w	$a1, $a1, 4100
-	beqz	$a1, .LBB8_182
-# %bb.29:
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	beqz	$a1, .LBB8_177
+# %bb.24:
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, -1
 	sltui	$a4, $a1, 1
 	slli.d	$a1, $a4, 3
@@ -1830,10 +1772,10 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ldx.w	$a1, $a4, $a1
 	ori	$t0, $zero, 2
 	move	$a6, $a3
-	blt	$a1, $t0, .LBB8_31
-# %bb.30:
+	blt	$a1, $t0, .LBB8_26
+# %bb.25:
 	ld.d	$a6, $a5, 8
-.LBB8_31:                               # %.preheader939
+.LBB8_26:                               # %.preheader939
 	vrepli.w	$vr0, 256
 	vst	$vr0, $sp, 96
 	vst	$vr0, $sp, 888
@@ -1863,8 +1805,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	vst	$vr0, $sp, 756
 	vst	$vr0, $sp, 1548
 	st.d	$t1, $sp, 40                    # 8-byte Folded Spill
-	bltz	$t1, .LBB8_48
-# %bb.32:                               # %.preheader937.lr.ph
+	bltz	$t1, .LBB8_43
+# %bb.27:                               # %.preheader937.lr.ph
 	slli.w	$a1, $t1, 2
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a5, %got_pc_hi20(enc_picture)
@@ -1874,32 +1816,32 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	addi.d	$t2, $a5, 8
 	addi.d	$t3, $a5, 4
 	addi.d	$t4, $a5, 12
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$t0, $a1, 128
 	ori	$t5, $zero, 127
 	ori	$t6, $zero, 2
 	ori	$t7, $zero, 2047
 	addi.d	$fp, $sp, 888
 	addi.w	$ra, $zero, -128
-	b	.LBB8_34
+	b	.LBB8_29
 	.p2align	4, , 16
-.LBB8_33:                               # %._crit_edge972
-                                        #   in Loop: Header=BB8_34 Depth=1
+.LBB8_28:                               # %._crit_edge972
+                                        #   in Loop: Header=BB8_29 Depth=1
 	addi.d	$t8, $s0, 2
 	lu12i.w	$a1, 2
 	add.d	$t0, $t0, $a1
 	addi.d	$fp, $fp, 264
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	bgeu	$s0, $a1, .LBB8_47
-.LBB8_34:                               # %.preheader937
+	bgeu	$s0, $a1, .LBB8_42
+.LBB8_29:                               # %.preheader937
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_38 Depth 2
+                                        #     Child Loop BB8_33 Depth 2
 	move	$s0, $t8
 	slli.d	$a5, $t8, 2
 	ldx.w	$s1, $a4, $a5
-	blez	$s1, .LBB8_33
-# %bb.35:                               # %.lr.ph
-                                        #   in Loop: Header=BB8_34 Depth=1
+	blez	$s1, .LBB8_28
+# %bb.30:                               # %.lr.ph
+                                        #   in Loop: Header=BB8_29 Depth=1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	or	$a5, $s0, $a1
 	slli.d	$t1, $a5, 3
@@ -1913,27 +1855,27 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ldx.w	$s5, $a4, $a5
 	move	$s6, $fp
 	move	$s7, $t0
-	b	.LBB8_38
+	b	.LBB8_33
 	.p2align	4, , 16
-.LBB8_36:                               #   in Loop: Header=BB8_38 Depth=2
+.LBB8_31:                               #   in Loop: Header=BB8_33 Depth=2
 	st.w	$t1, $s6, 0
-.LBB8_37:                               #   in Loop: Header=BB8_38 Depth=2
+.LBB8_32:                               #   in Loop: Header=BB8_33 Depth=2
 	st.w	$a5, $s6, 132
 	addi.d	$s1, $s1, -1
 	addi.d	$s4, $s4, 8
 	addi.d	$s7, $s7, 4
 	addi.d	$s6, $s6, 4
-	beqz	$s1, .LBB8_33
-.LBB8_38:                               #   Parent Loop BB8_34 Depth=1
+	beqz	$s1, .LBB8_28
+.LBB8_33:                               #   Parent Loop BB8_29 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a5, $t3
-	beqz	$s0, .LBB8_41
-# %bb.39:                               #   in Loop: Header=BB8_38 Depth=2
+	beqz	$s0, .LBB8_36
+# %bb.34:                               #   in Loop: Header=BB8_33 Depth=2
 	move	$a5, $t2
-	beq	$s0, $t6, .LBB8_41
-# %bb.40:                               #   in Loop: Header=BB8_38 Depth=2
+	beq	$s0, $t6, .LBB8_36
+# %bb.35:                               #   in Loop: Header=BB8_33 Depth=2
 	move	$a5, $t4
-.LBB8_41:                               #   in Loop: Header=BB8_38 Depth=2
+.LBB8_36:                               #   in Loop: Header=BB8_33 Depth=2
 	ld.d	$t1, $s4, 0
 	ld.w	$t1, $t1, 4
 	ld.w	$a5, $a5, 0
@@ -1949,8 +1891,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	masknez	$s8, $t5, $s8
 	or	$s8, $a5, $s8
 	ori	$a5, $zero, 256
-	beq	$s3, $t1, .LBB8_43
-# %bb.42:                               #   in Loop: Header=BB8_38 Depth=2
+	beq	$s3, $t1, .LBB8_38
+# %bb.37:                               #   in Loop: Header=BB8_33 Depth=2
 	sub.w	$a5, $s3, $t1
 	slt	$t1, $ra, $a5
 	maskeqz	$a5, $a5, $t1
@@ -1983,7 +1925,7 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$a1, $a1, $a5
 	masknez	$a5, $t7, $a5
 	or	$a5, $a1, $a5
-.LBB8_43:                               #   in Loop: Header=BB8_38 Depth=2
+.LBB8_38:                               #   in Loop: Header=BB8_33 Depth=2
 	ld.w	$a1, $s7, -128
 	mul.d	$a1, $a1, $a5
 	addi.w	$a1, $a1, 128
@@ -1991,14 +1933,14 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.w	$t1, $s6, -792
 	addi.d	$a5, $a5, -256
 	st.w	$a5, $s6, -660
-	blt	$s5, $t6, .LBB8_36
-# %bb.44:                               #   in Loop: Header=BB8_38 Depth=2
+	blt	$s5, $t6, .LBB8_31
+# %bb.39:                               #   in Loop: Header=BB8_33 Depth=2
 	ld.d	$a1, $s2, 8
 	ld.w	$t1, $a1, 4
 	ld.w	$t8, $t8, 4
 	ori	$a5, $zero, 256
-	beq	$t1, $t8, .LBB8_46
-# %bb.45:                               #   in Loop: Header=BB8_38 Depth=2
+	beq	$t1, $t8, .LBB8_41
+# %bb.40:                               #   in Loop: Header=BB8_33 Depth=2
 	sub.w	$a1, $t1, $t8
 	slt	$a5, $ra, $a1
 	maskeqz	$a1, $a1, $a5
@@ -2031,18 +1973,18 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$a1, $a1, $a5
 	masknez	$a5, $t7, $a5
 	or	$a5, $a1, $a5
-.LBB8_46:                               #   in Loop: Header=BB8_38 Depth=2
+.LBB8_41:                               #   in Loop: Header=BB8_33 Depth=2
 	ld.w	$a1, $s7, 0
 	mul.d	$a1, $a1, $a5
 	addi.w	$a1, $a1, 128
 	srli.d	$a1, $a1, 8
 	st.w	$a1, $s6, 0
 	addi.d	$a5, $a5, -256
-	b	.LBB8_37
-.LBB8_47:                               # %._crit_edge975
+	b	.LBB8_32
+.LBB8_42:                               # %._crit_edge975
 	ld.d	$t1, $sp, 40                    # 8-byte Folded Reload
-	beqz	$t1, .LBB8_51
-.LBB8_48:                               # %._crit_edge975.thread
+	beqz	$t1, .LBB8_46
+.LBB8_43:                               # %._crit_edge975.thread
 	ori	$a1, $zero, 16
 	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
 	masknez	$a1, $a1, $t2
@@ -2061,62 +2003,62 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.w	$a5, $a4, 0
 	ldx.d	$a1, $t0, $a1
 	ori	$t0, $zero, 2
-	blt	$a5, $t0, .LBB8_50
-# %bb.49:
+	blt	$a5, $t0, .LBB8_45
+# %bb.44:
 	ld.d	$a5, $a7, 8
 	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$a1, $a1, 8
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	move	$a7, $zero
-	b	.LBB8_57
-.LBB8_50:
+	b	.LBB8_52
+.LBB8_45:
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	move	$a7, $zero
 	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
-	b	.LBB8_57
-.LBB8_51:
+	b	.LBB8_52
+.LBB8_46:
 	ld.w	$a1, $a2, 24
 	ori	$a7, $zero, 1
-	beqz	$a1, .LBB8_56
-# %bb.52:
+	beqz	$a1, .LBB8_51
+# %bb.47:
 	ld.w	$a5, $a3, 0
-	beq	$a1, $a5, .LBB8_56
-# %bb.53:
+	beq	$a1, $a5, .LBB8_51
+# %bb.48:
 	ldptr.w	$a5, $a3, 6428
-	beqz	$a5, .LBB8_56
-# %bb.54:
+	beqz	$a5, .LBB8_51
+# %bb.49:
 	ori	$a7, $zero, 1
-	bne	$a1, $a7, .LBB8_183
-# %bb.55:
+	bne	$a1, $a7, .LBB8_178
+# %bb.50:
 	ldptr.d	$a1, $a3, 6536
 	ldptr.d	$a6, $a3, 6544
-	b	.LBB8_184
-.LBB8_56:
+	b	.LBB8_179
+.LBB8_51:
 	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
-.LBB8_57:
+.LBB8_52:
 	pcalau12i	$a1, %pc_hi20(active_sps)
 	ld.d	$a1, $a1, %pc_lo12(active_sps)
 	ld.w	$a1, $a1, 1148
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	beqz	$a1, .LBB8_111
-.LBB8_58:                               # %.loopexit936
+	beqz	$a1, .LBB8_106
+.LBB8_53:                               # %.loopexit936
 	ld.w	$a1, $a2, 24
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
 	or	$a1, $a1, $a5
-	beqz	$a1, .LBB8_96
-# %bb.59:                               # %.preheader927
+	beqz	$a1, .LBB8_91
+# %bb.54:                               # %.preheader927
 	ldptr.w	$a1, $a3, 6396
 	ori	$a5, $zero, 8
-	blt	$a1, $a5, .LBB8_96
-# %bb.60:                               # %.preheader926.lr.ph
+	blt	$a1, $a5, .LBB8_91
+# %bb.55:                               # %.preheader926.lr.ph
 	ldptr.w	$a5, $a3, 6392
 	ori	$t0, $zero, 4
-	blt	$a5, $t0, .LBB8_96
-# %bb.61:                               # %.preheader926.us.preheader
+	blt	$a5, $t0, .LBB8_91
+# %bb.56:                               # %.preheader926.us.preheader
 	bstrpick.d	$t0, $a1, 62, 60
 	add.w	$a1, $a1, $t0
 	srai.d	$a1, $a1, 3
@@ -2133,36 +2075,36 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ori	$s6, $a1, 4095
 	lu12i.w	$a1, 3
 	ori	$t5, $a1, 2168
-	b	.LBB8_63
+	b	.LBB8_58
 	.p2align	4, , 16
-.LBB8_62:                               # %._crit_edge996.us
-                                        #   in Loop: Header=BB8_63 Depth=1
+.LBB8_57:                               # %._crit_edge996.us
+                                        #   in Loop: Header=BB8_58 Depth=1
 	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
 	addi.d	$t2, $t2, 1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	beq	$t2, $a1, .LBB8_96
-.LBB8_63:                               # %.preheader926.us
+	beq	$t2, $a1, .LBB8_91
+.LBB8_58:                               # %.preheader926.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_77 Depth 2
-                                        #       Child Loop BB8_80 Depth 3
-                                        #       Child Loop BB8_90 Depth 3
-                                        #     Child Loop BB8_66 Depth 2
-                                        #       Child Loop BB8_69 Depth 3
+                                        #     Child Loop BB8_72 Depth 2
+                                        #       Child Loop BB8_75 Depth 3
+                                        #       Child Loop BB8_85 Depth 3
+                                        #     Child Loop BB8_61 Depth 2
+                                        #       Child Loop BB8_64 Depth 3
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	slli.d	$t6, $t2, 3
 	st.d	$t2, $sp, 48                    # 8-byte Folded Spill
-	beqz	$a7, .LBB8_74
-# %bb.64:                               # %.lr.ph995.split.us.us
-                                        #   in Loop: Header=BB8_63 Depth=1
+	beqz	$a7, .LBB8_69
+# %bb.59:                               # %.lr.ph995.split.us.us
+                                        #   in Loop: Header=BB8_58 Depth=1
 	ldptr.d	$a5, $a3, 6504
 	ld.d	$a5, $a5, 0
 	ldx.d	$a5, $a5, $t6
 	move	$t3, $zero
 	addi.d	$t7, $a1, 24
-	b	.LBB8_66
+	b	.LBB8_61
 	.p2align	4, , 16
-.LBB8_65:                               #   in Loop: Header=BB8_66 Depth=2
+.LBB8_60:                               #   in Loop: Header=BB8_61 Depth=2
 	ld.d	$a1, $a0, 16
 	ld.d	$t0, $a1, 0
 	ldx.d	$t0, $t0, $t6
@@ -2175,10 +2117,10 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$zero, $t2, 0
 	addi.d	$t3, $t3, 1
 	st.h	$a1, $t2, 2
-	beq	$t3, $s0, .LBB8_62
-.LBB8_66:                               #   Parent Loop BB8_63 Depth=1
+	beq	$t3, $s0, .LBB8_57
+.LBB8_61:                               #   Parent Loop BB8_58 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_69 Depth 3
+                                        #       Child Loop BB8_64 Depth 3
 	slli.d	$t8, $t3, 3
 	ldx.d	$a1, $a5, $t8
 	ld.w	$t2, $a4, 0
@@ -2192,36 +2134,36 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t6
 	ldx.d	$s2, $t0, $t8
-	beq	$s2, $ra, .LBB8_65
-# %bb.67:                               # %.preheader920.us.us
-                                        #   in Loop: Header=BB8_66 Depth=2
+	beq	$s2, $ra, .LBB8_60
+# %bb.62:                               # %.preheader920.us.us
+                                        #   in Loop: Header=BB8_61 Depth=2
 	ldptr.w	$t0, $a2, 14456
 	slt	$t1, $t0, $t2
 	masknez	$t2, $t2, $t1
 	maskeqz	$t0, $t0, $t1
 	or	$t0, $t0, $t2
 	ori	$t2, $zero, 256
-	blez	$t0, .LBB8_71
-# %bb.68:                               # %.lr.ph993.us.us.preheader
-                                        #   in Loop: Header=BB8_66 Depth=2
+	blez	$t0, .LBB8_66
+# %bb.63:                               # %.lr.ph993.us.us.preheader
+                                        #   in Loop: Header=BB8_61 Depth=2
 	move	$s3, $zero
 	slli.d	$t4, $t0, 2
 	move	$t0, $t7
 	.p2align	4, , 16
-.LBB8_69:                               # %.lr.ph993.us.us
-                                        #   Parent Loop BB8_63 Depth=1
-                                        #     Parent Loop BB8_66 Depth=2
+.LBB8_64:                               # %.lr.ph993.us.us
+                                        #   Parent Loop BB8_58 Depth=1
+                                        #     Parent Loop BB8_61 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t1, $t0, 0
-	beq	$t1, $s2, .LBB8_72
-# %bb.70:                               #   in Loop: Header=BB8_69 Depth=3
+	beq	$t1, $s2, .LBB8_67
+# %bb.65:                               #   in Loop: Header=BB8_64 Depth=3
 	addi.d	$s3, $s3, 4
 	addi.d	$t0, $t0, 8
-	bne	$t4, $s3, .LBB8_69
-.LBB8_71:                               #   in Loop: Header=BB8_66 Depth=2
+	bne	$t4, $s3, .LBB8_64
+.LBB8_66:                               #   in Loop: Header=BB8_61 Depth=2
 	move	$a1, $zero
-	b	.LBB8_73
-.LBB8_72:                               #   in Loop: Header=BB8_66 Depth=2
+	b	.LBB8_68
+.LBB8_67:                               #   in Loop: Header=BB8_61 Depth=2
 	addi.d	$t0, $sp, 96
 	masknez	$t0, $t0, $a1
 	addi.d	$t1, $sp, 888
@@ -2234,8 +2176,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$a1, $t1, $a1
 	or	$a1, $a1, $t0
 	ldx.w	$a1, $a1, $s3
-.LBB8_73:                               # %.loopexit921.us.us
-                                        #   in Loop: Header=BB8_66 Depth=2
+.LBB8_68:                               # %.loopexit921.us.us
+                                        #   in Loop: Header=BB8_61 Depth=2
 	ldptr.d	$t0, $s1, 6512
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t6
@@ -2300,11 +2242,11 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	or	$a1, $a1, $t0
 	addi.d	$t3, $t3, 1
 	st.h	$a1, $t2, 2
-	bne	$t3, $s0, .LBB8_66
-	b	.LBB8_62
+	bne	$t3, $s0, .LBB8_61
+	b	.LBB8_57
 	.p2align	4, , 16
-.LBB8_74:                               # %.lr.ph995.split.us1000
-                                        #   in Loop: Header=BB8_63 Depth=1
+.LBB8_69:                               # %.lr.ph995.split.us1000
+                                        #   in Loop: Header=BB8_58 Depth=1
 	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	ldptr.d	$a5, $a5, 6504
 	ld.w	$t7, $a4, 16
@@ -2323,9 +2265,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, 552
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	b	.LBB8_77
+	b	.LBB8_72
 	.p2align	4, , 16
-.LBB8_75:                               #   in Loop: Header=BB8_77 Depth=2
+.LBB8_70:                               #   in Loop: Header=BB8_72 Depth=2
 	ld.h	$t0, $a1, 2
 	addi.d	$t0, $t0, 1
 	srli.d	$t0, $t0, 1
@@ -2334,13 +2276,13 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	addi.d	$a1, $a1, 1
 	srli.d	$a1, $a1, 1
 	st.h	$a1, $a5, 2
-.LBB8_76:                               #   in Loop: Header=BB8_77 Depth=2
+.LBB8_71:                               #   in Loop: Header=BB8_72 Depth=2
 	addi.d	$s4, $s4, 1
-	beq	$s4, $s0, .LBB8_62
-.LBB8_77:                               #   Parent Loop BB8_63 Depth=1
+	beq	$s4, $s0, .LBB8_57
+.LBB8_72:                               #   Parent Loop BB8_58 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_80 Depth 3
-                                        #       Child Loop BB8_90 Depth 3
+                                        #       Child Loop BB8_75 Depth 3
+                                        #       Child Loop BB8_85 Depth 3
 	slli.d	$a5, $s4, 3
 	ldx.d	$a1, $s1, $a5
 	ld.w	$t0, $a4, 0
@@ -2355,9 +2297,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t6
 	ldx.d	$s7, $t0, $a5
-	beq	$s7, $ra, .LBB8_83
-# %bb.78:                               # %.preheader924.us
-                                        #   in Loop: Header=BB8_77 Depth=2
+	beq	$s7, $ra, .LBB8_78
+# %bb.73:                               # %.preheader924.us
+                                        #   in Loop: Header=BB8_72 Depth=2
 	ldx.w	$t0, $a2, $t5
 	slli.w	$t0, $t0, 1
 	slt	$t1, $t0, $t7
@@ -2365,28 +2307,28 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	masknez	$t1, $t7, $t1
 	or	$t0, $t0, $t1
 	ori	$t2, $zero, 256
-	blez	$t0, .LBB8_82
-# %bb.79:                               # %.lr.ph989.us.preheader
-                                        #   in Loop: Header=BB8_77 Depth=2
+	blez	$t0, .LBB8_77
+# %bb.74:                               # %.lr.ph989.us.preheader
+                                        #   in Loop: Header=BB8_72 Depth=2
 	move	$t3, $zero
 	slli.d	$t4, $t0, 2
 	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB8_80:                               # %.lr.ph989.us
-                                        #   Parent Loop BB8_63 Depth=1
-                                        #     Parent Loop BB8_77 Depth=2
+.LBB8_75:                               # %.lr.ph989.us
+                                        #   Parent Loop BB8_58 Depth=1
+                                        #     Parent Loop BB8_72 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t1, $t0, 0
-	beq	$t1, $s7, .LBB8_84
-# %bb.81:                               #   in Loop: Header=BB8_80 Depth=3
+	beq	$t1, $s7, .LBB8_79
+# %bb.76:                               #   in Loop: Header=BB8_75 Depth=3
 	addi.d	$t3, $t3, 4
 	addi.d	$t0, $t0, 8
-	bne	$t4, $t3, .LBB8_80
-.LBB8_82:                               #   in Loop: Header=BB8_77 Depth=2
+	bne	$t4, $t3, .LBB8_75
+.LBB8_77:                               #   in Loop: Header=BB8_72 Depth=2
 	move	$s7, $zero
-	b	.LBB8_85
+	b	.LBB8_80
 	.p2align	4, , 16
-.LBB8_83:                               #   in Loop: Header=BB8_77 Depth=2
+.LBB8_78:                               #   in Loop: Header=BB8_72 Depth=2
 	ld.d	$t0, $a0, 32
 	ld.d	$a1, $t0, 0
 	ldx.d	$a1, $a1, $t6
@@ -2399,9 +2341,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$zero, $t2, 0
 	st.h	$t0, $t2, 2
 	ldx.bu	$t0, $s2, $s4
-	bnez	$t0, .LBB8_87
-	b	.LBB8_86
-.LBB8_84:                               #   in Loop: Header=BB8_77 Depth=2
+	bnez	$t0, .LBB8_82
+	b	.LBB8_81
+.LBB8_79:                               #   in Loop: Header=BB8_72 Depth=2
 	addi.d	$t0, $sp, 624
 	masknez	$t0, $t0, $s5
 	addi.d	$t1, $sp, 1416
@@ -2414,8 +2356,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t1, $t1, $s5
 	or	$t0, $t1, $t0
 	ldx.w	$s7, $t0, $t3
-.LBB8_85:                               # %.loopexit925.us
-                                        #   in Loop: Header=BB8_77 Depth=2
+.LBB8_80:                               # %.loopexit925.us
+                                        #   in Loop: Header=BB8_72 Depth=2
 	ldptr.d	$a1, $a1, 6512
 	ld.d	$a1, $a1, 0
 	ldx.d	$a1, $a1, $t6
@@ -2480,8 +2422,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	or	$t0, $t0, $t1
 	st.h	$t0, $t2, 2
 	ldx.bu	$t0, $s2, $s4
-	bnez	$t0, .LBB8_87
-.LBB8_86:                               #   in Loop: Header=BB8_77 Depth=2
+	bnez	$t0, .LBB8_82
+.LBB8_81:                               #   in Loop: Header=BB8_72 Depth=2
 	ld.h	$t0, $a1, 2
 	addi.d	$t0, $t0, 1
 	srli.d	$t0, $t0, 1
@@ -2490,7 +2432,7 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	addi.d	$a1, $a1, 1
 	srli.d	$a1, $a1, 1
 	st.h	$a1, $t2, 2
-.LBB8_87:                               #   in Loop: Header=BB8_77 Depth=2
+.LBB8_82:                               #   in Loop: Header=BB8_72 Depth=2
 	ldx.d	$a1, $s3, $a5
 	ld.w	$t0, $a4, 0
 	slti	$a1, $a1, 0
@@ -2505,9 +2447,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t6
 	ldx.d	$s7, $t0, $a5
-	beq	$s7, $ra, .LBB8_93
-# %bb.88:                               # %.preheader922.us
-                                        #   in Loop: Header=BB8_77 Depth=2
+	beq	$s7, $ra, .LBB8_88
+# %bb.83:                               # %.preheader922.us
+                                        #   in Loop: Header=BB8_72 Depth=2
 	ldx.w	$t0, $a2, $t5
 	slli.w	$t0, $t0, 1
 	slt	$t1, $t0, $t8
@@ -2515,28 +2457,28 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	masknez	$t1, $t8, $t1
 	or	$t0, $t0, $t1
 	ori	$t2, $zero, 256
-	blez	$t0, .LBB8_92
-# %bb.89:                               # %.lr.ph991.us.preheader
-                                        #   in Loop: Header=BB8_77 Depth=2
+	blez	$t0, .LBB8_87
+# %bb.84:                               # %.lr.ph991.us.preheader
+                                        #   in Loop: Header=BB8_72 Depth=2
 	move	$t3, $zero
 	slli.d	$t4, $t0, 2
 	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB8_90:                               # %.lr.ph991.us
-                                        #   Parent Loop BB8_63 Depth=1
-                                        #     Parent Loop BB8_77 Depth=2
+.LBB8_85:                               # %.lr.ph991.us
+                                        #   Parent Loop BB8_58 Depth=1
+                                        #     Parent Loop BB8_72 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t1, $t0, 0
-	beq	$t1, $s7, .LBB8_94
-# %bb.91:                               #   in Loop: Header=BB8_90 Depth=3
+	beq	$t1, $s7, .LBB8_89
+# %bb.86:                               #   in Loop: Header=BB8_85 Depth=3
 	addi.d	$t3, $t3, 4
 	addi.d	$t0, $t0, 8
-	bne	$t4, $t3, .LBB8_90
-.LBB8_92:                               #   in Loop: Header=BB8_77 Depth=2
+	bne	$t4, $t3, .LBB8_85
+.LBB8_87:                               #   in Loop: Header=BB8_72 Depth=2
 	move	$s7, $zero
-	b	.LBB8_95
+	b	.LBB8_90
 	.p2align	4, , 16
-.LBB8_93:                               #   in Loop: Header=BB8_77 Depth=2
+.LBB8_88:                               #   in Loop: Header=BB8_72 Depth=2
 	ld.d	$t0, $a0, 24
 	ld.d	$a1, $t0, 0
 	ldx.d	$a1, $a1, $t6
@@ -2549,9 +2491,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$zero, $a5, 0
 	st.h	$t0, $a5, 2
 	ldx.bu	$t0, $s2, $s4
-	bnez	$t0, .LBB8_76
-	b	.LBB8_75
-.LBB8_94:                               #   in Loop: Header=BB8_77 Depth=2
+	bnez	$t0, .LBB8_71
+	b	.LBB8_70
+.LBB8_89:                               #   in Loop: Header=BB8_72 Depth=2
 	addi.d	$t0, $sp, 360
 	masknez	$t0, $t0, $s5
 	addi.d	$t1, $sp, 1152
@@ -2564,8 +2506,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t1, $t1, $s5
 	or	$t0, $t1, $t0
 	ldx.w	$s7, $t0, $t3
-.LBB8_95:                               # %.loopexit923.us
-                                        #   in Loop: Header=BB8_77 Depth=2
+.LBB8_90:                               # %.loopexit923.us
+                                        #   in Loop: Header=BB8_72 Depth=2
 	ldptr.d	$a1, $a1, 6512
 	ld.d	$a1, $a1, 0
 	ldx.d	$a1, $a1, $t6
@@ -2630,21 +2572,21 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	or	$t0, $t0, $t1
 	st.h	$t0, $a5, 2
 	ldx.bu	$t0, $s2, $s4
-	bnez	$t0, .LBB8_76
-	b	.LBB8_75
-.LBB8_96:                               # %.loopexit928
+	bnez	$t0, .LBB8_71
+	b	.LBB8_70
+.LBB8_91:                               # %.loopexit928
 	ldptr.w	$a1, $a3, 6396
 	srai.d	$t4, $a1, 2
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.d	$t4, $sp, 88                    # 8-byte Folded Spill
-	beqz	$a1, .LBB8_146
-# %bb.97:                               # %.critedge.preheader
-	blez	$t4, .LBB8_182
-# %bb.98:                               # %.preheader919.lr.ph
+	beqz	$a1, .LBB8_141
+# %bb.92:                               # %.critedge.preheader
+	blez	$t4, .LBB8_177
+# %bb.93:                               # %.preheader919.lr.ph
 	ldptr.w	$a1, $a3, 6392
 	srai.d	$a5, $a1, 2
-	blez	$a5, .LBB8_182
-# %bb.99:                               # %.preheader919.lr.ph.split.us
+	blez	$a5, .LBB8_177
+# %bb.94:                               # %.preheader919.lr.ph.split.us
 	ldptr.d	$a1, $a3, 6504
 	ld.d	$a7, $a1, 0
 	addi.d	$t1, $sp, 1020
@@ -2657,25 +2599,25 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	lu12i.w	$t7, -8
 	lu12i.w	$a1, 7
 	ori	$t8, $a1, 4095
-	b	.LBB8_101
+	b	.LBB8_96
 	.p2align	4, , 16
-.LBB8_100:                              # %._crit_edge1005.us
-                                        #   in Loop: Header=BB8_101 Depth=1
+.LBB8_95:                               # %._crit_edge1005.us
+                                        #   in Loop: Header=BB8_96 Depth=1
 	addi.d	$t3, $t3, 1
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	beq	$t3, $a1, .LBB8_182
-.LBB8_101:                              # %.preheader919.us
+	beq	$t3, $a1, .LBB8_177
+.LBB8_96:                               # %.preheader919.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_103 Depth 2
-                                        #       Child Loop BB8_106 Depth 3
+                                        #     Child Loop BB8_98 Depth 2
+                                        #       Child Loop BB8_101 Depth 3
 	slli.d	$fp, $t3, 3
 	ld.d	$a1, $t2, 0
 	ldx.d	$s0, $a7, $fp
 	move	$s1, $zero
 	addi.d	$s2, $a1, 24
-	b	.LBB8_103
+	b	.LBB8_98
 	.p2align	4, , 16
-.LBB8_102:                              #   in Loop: Header=BB8_103 Depth=2
+.LBB8_97:                               #   in Loop: Header=BB8_98 Depth=2
 	ld.d	$a1, $a0, 16
 	ld.d	$t0, $a1, 0
 	ldx.d	$t0, $t0, $fp
@@ -2688,10 +2630,10 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$zero, $s3, 0
 	addi.d	$s1, $s1, 1
 	st.h	$a1, $s3, 2
-	beq	$s1, $a5, .LBB8_100
-.LBB8_103:                              #   Parent Loop BB8_101 Depth=1
+	beq	$s1, $a5, .LBB8_95
+.LBB8_98:                               #   Parent Loop BB8_96 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_106 Depth 3
+                                        #       Child Loop BB8_101 Depth 3
 	slli.d	$s3, $s1, 3
 	ldx.d	$a1, $s0, $s3
 	ld.w	$s4, $a4, 0
@@ -2705,36 +2647,36 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$s6, $s6, 0
 	ldx.d	$s6, $s6, $fp
 	ldx.d	$s6, $s6, $s3
-	beq	$s6, $t5, .LBB8_102
-# %bb.104:                              # %.preheader917.us
-                                        #   in Loop: Header=BB8_103 Depth=2
+	beq	$s6, $t5, .LBB8_97
+# %bb.99:                               # %.preheader917.us
+                                        #   in Loop: Header=BB8_98 Depth=2
 	ldptr.w	$t0, $a2, 14456
 	slt	$s7, $t0, $s4
 	masknez	$s4, $s4, $s7
 	maskeqz	$t0, $t0, $s7
 	or	$s8, $t0, $s4
 	ori	$s4, $zero, 256
-	blez	$s8, .LBB8_108
-# %bb.105:                              # %.lr.ph1002.us.preheader
-                                        #   in Loop: Header=BB8_103 Depth=2
+	blez	$s8, .LBB8_103
+# %bb.100:                              # %.lr.ph1002.us.preheader
+                                        #   in Loop: Header=BB8_98 Depth=2
 	move	$s7, $zero
 	slli.d	$s8, $s8, 2
 	move	$ra, $s2
 	.p2align	4, , 16
-.LBB8_106:                              # %.lr.ph1002.us
-                                        #   Parent Loop BB8_101 Depth=1
-                                        #     Parent Loop BB8_103 Depth=2
+.LBB8_101:                              # %.lr.ph1002.us
+                                        #   Parent Loop BB8_96 Depth=1
+                                        #     Parent Loop BB8_98 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t0, $ra, 0
-	beq	$t0, $s6, .LBB8_109
-# %bb.107:                              #   in Loop: Header=BB8_106 Depth=3
+	beq	$t0, $s6, .LBB8_104
+# %bb.102:                              #   in Loop: Header=BB8_101 Depth=3
 	addi.d	$s7, $s7, 4
 	addi.d	$ra, $ra, 8
-	bne	$s8, $s7, .LBB8_106
-.LBB8_108:                              #   in Loop: Header=BB8_103 Depth=2
+	bne	$s8, $s7, .LBB8_101
+.LBB8_103:                              #   in Loop: Header=BB8_98 Depth=2
 	move	$a1, $zero
-	b	.LBB8_110
-.LBB8_109:                              #   in Loop: Header=BB8_103 Depth=2
+	b	.LBB8_105
+.LBB8_104:                              #   in Loop: Header=BB8_98 Depth=2
 	masknez	$t0, $t6, $a1
 	addi.d	$s4, $sp, 888
 	maskeqz	$s4, $s4, $a1
@@ -2745,8 +2687,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$a1, $t1, $a1
 	or	$a1, $a1, $t0
 	ldx.w	$a1, $a1, $s7
-.LBB8_110:                              # %.loopexit918.us
-                                        #   in Loop: Header=BB8_103 Depth=2
+.LBB8_105:                              # %.loopexit918.us
+                                        #   in Loop: Header=BB8_98 Depth=2
 	ldptr.d	$t0, $s5, 6512
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $fp
@@ -2811,18 +2753,18 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	or	$a1, $a1, $t0
 	addi.d	$s1, $s1, 1
 	st.h	$a1, $s3, 2
-	bne	$s1, $a5, .LBB8_103
-	b	.LBB8_100
-.LBB8_111:                              # %.preheader935
+	bne	$s1, $a5, .LBB8_98
+	b	.LBB8_95
+.LBB8_106:                              # %.preheader935
 	ldptr.w	$a1, $a3, 6396
 	srai.d	$a1, $a1, 2
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	blez	$a1, .LBB8_58
-# %bb.112:                              # %.lr.ph987
+	blez	$a1, .LBB8_53
+# %bb.107:                              # %.lr.ph987
 	ldptr.w	$a1, $a3, 6392
 	srai.d	$t4, $a1, 2
-	blez	$t4, .LBB8_58
-# %bb.113:                              # %.lr.ph984.us.preheader
+	blez	$t4, .LBB8_53
+# %bb.108:                              # %.lr.ph984.us.preheader
 	lu12i.w	$a1, 262143
 	ori	$a1, $a1, 4092
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
@@ -2835,19 +2777,19 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	lu12i.w	$s3, -8
 	lu12i.w	$a1, 7
 	ori	$s4, $a1, 4095
-	b	.LBB8_115
+	b	.LBB8_110
 	.p2align	4, , 16
-.LBB8_114:                              # %._crit_edge985.us
-                                        #   in Loop: Header=BB8_115 Depth=1
+.LBB8_109:                              # %._crit_edge985.us
+                                        #   in Loop: Header=BB8_110 Depth=1
 	addi.d	$fp, $fp, 1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	beq	$fp, $a1, .LBB8_58
-.LBB8_115:                              # %.lr.ph984.us
+	beq	$fp, $a1, .LBB8_53
+.LBB8_110:                              # %.lr.ph984.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_117 Depth 2
-                                        #       Child Loop BB8_135 Depth 3
-                                        #       Child Loop BB8_123 Depth 3
-                                        #       Child Loop BB8_129 Depth 3
+                                        #     Child Loop BB8_112 Depth 2
+                                        #       Child Loop BB8_130 Depth 3
+                                        #       Child Loop BB8_118 Depth 3
+                                        #       Child Loop BB8_124 Depth 3
 	move	$s5, $zero
 	bstrpick.d	$s6, $fp, 31, 1
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
@@ -2858,9 +2800,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	add.w	$s8, $a1, $s6
 	addi.d	$s2, $s7, 24
 	slli.d	$t5, $fp, 3
-	b	.LBB8_117
+	b	.LBB8_112
 	.p2align	4, , 16
-.LBB8_116:                              #   in Loop: Header=BB8_117 Depth=2
+.LBB8_111:                              #   in Loop: Header=BB8_112 Depth=2
 	ld.d	$a1, $a0, 16
 	ld.d	$a5, $a1, 0
 	ldx.d	$a5, $a5, $t5
@@ -2873,20 +2815,20 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$zero, $t7, 0
 	addi.d	$s5, $s5, 1
 	st.h	$a1, $t7, 2
-	beq	$s5, $t4, .LBB8_114
-.LBB8_117:                              #   Parent Loop BB8_115 Depth=1
+	beq	$s5, $t4, .LBB8_109
+.LBB8_112:                              #   Parent Loop BB8_110 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_135 Depth 3
-                                        #       Child Loop BB8_123 Depth 3
-                                        #       Child Loop BB8_129 Depth 3
+                                        #       Child Loop BB8_130 Depth 3
+                                        #       Child Loop BB8_118 Depth 3
+                                        #       Child Loop BB8_124 Depth 3
 	slli.d	$t7, $s5, 3
-	bnez	$a7, .LBB8_126
-# %bb.118:                              #   in Loop: Header=BB8_117 Depth=2
+	bnez	$a7, .LBB8_121
+# %bb.113:                              #   in Loop: Header=BB8_112 Depth=2
 	ldptr.d	$a1, $a3, 6528
 	ldx.d	$a1, $a1, $t5
 	ldx.bu	$a1, $a1, $s5
-	beqz	$a1, .LBB8_126
-# %bb.119:                              #   in Loop: Header=BB8_117 Depth=2
+	beqz	$a1, .LBB8_121
+# %bb.114:                              #   in Loop: Header=BB8_112 Depth=2
 	ld.w	$a1, $s7, 4
 	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a5, $a5, 4
@@ -2903,13 +2845,13 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	xor	$a1, $a1, $t2
 	sub.w	$t2, $a1, $t2
 	alsl.d	$a1, $s8, $t0, 3
-	bgeu	$t2, $a5, .LBB8_132
-# %bb.120:                              #   in Loop: Header=BB8_117 Depth=2
+	bgeu	$t2, $a5, .LBB8_127
+# %bb.115:                              #   in Loop: Header=BB8_112 Depth=2
 	ld.d	$a1, $a1, 0
 	ldx.d	$a5, $a1, $t7
-	beq	$a5, $s1, .LBB8_116
-# %bb.121:                              # %.preheader931.us
-                                        #   in Loop: Header=BB8_117 Depth=2
+	beq	$a5, $s1, .LBB8_111
+# %bb.116:                              # %.preheader931.us
+                                        #   in Loop: Header=BB8_112 Depth=2
 	ld.w	$a1, $a4, 0
 	ldptr.w	$t0, $a2, 14456
 	slti	$t2, $a5, 0
@@ -2920,28 +2862,28 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t0, $t0, $t3
 	or	$t0, $t0, $a1
 	ori	$a1, $zero, 256
-	blez	$t0, .LBB8_125
-# %bb.122:                              # %.lr.ph979.us.preheader
-                                        #   in Loop: Header=BB8_117 Depth=2
+	blez	$t0, .LBB8_120
+# %bb.117:                              # %.lr.ph979.us.preheader
+                                        #   in Loop: Header=BB8_112 Depth=2
 	move	$t8, $zero
 	slli.d	$t3, $t0, 2
 	move	$t6, $s2
 	.p2align	4, , 16
-.LBB8_123:                              # %.lr.ph979.us
-                                        #   Parent Loop BB8_115 Depth=1
-                                        #     Parent Loop BB8_117 Depth=2
+.LBB8_118:                              # %.lr.ph979.us
+                                        #   Parent Loop BB8_110 Depth=1
+                                        #     Parent Loop BB8_112 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t0, $t6, 0
-	beq	$t0, $a5, .LBB8_140
-# %bb.124:                              #   in Loop: Header=BB8_123 Depth=3
+	beq	$t0, $a5, .LBB8_135
+# %bb.119:                              #   in Loop: Header=BB8_118 Depth=3
 	addi.d	$t8, $t8, 4
 	addi.d	$t6, $t6, 8
-	bne	$t3, $t8, .LBB8_123
-.LBB8_125:                              #   in Loop: Header=BB8_117 Depth=2
+	bne	$t3, $t8, .LBB8_118
+.LBB8_120:                              #   in Loop: Header=BB8_112 Depth=2
 	move	$a5, $zero
-	b	.LBB8_141
+	b	.LBB8_136
 	.p2align	4, , 16
-.LBB8_126:                              #   in Loop: Header=BB8_117 Depth=2
+.LBB8_121:                              #   in Loop: Header=BB8_112 Depth=2
 	ldptr.d	$a1, $a3, 6504
 	ld.d	$a1, $a1, 0
 	ldx.d	$a1, $a1, $t5
@@ -2957,41 +2899,41 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t5
 	ldx.d	$t8, $t0, $t7
-	beq	$t8, $s1, .LBB8_116
-# %bb.127:                              # %.preheader929.us
-                                        #   in Loop: Header=BB8_117 Depth=2
+	beq	$t8, $s1, .LBB8_111
+# %bb.122:                              # %.preheader929.us
+                                        #   in Loop: Header=BB8_112 Depth=2
 	ldptr.w	$t0, $a2, 14456
 	slt	$t3, $t0, $a5
 	masknez	$a5, $a5, $t3
 	maskeqz	$t0, $t0, $t3
 	or	$t0, $t0, $a5
 	ori	$a5, $zero, 256
-	blez	$t0, .LBB8_131
-# %bb.128:                              # %.lr.ph981.us.preheader
-                                        #   in Loop: Header=BB8_117 Depth=2
+	blez	$t0, .LBB8_126
+# %bb.123:                              # %.lr.ph981.us.preheader
+                                        #   in Loop: Header=BB8_112 Depth=2
 	move	$t3, $zero
 	slli.d	$t6, $t0, 2
 	move	$ra, $s2
 	.p2align	4, , 16
-.LBB8_129:                              # %.lr.ph981.us
-                                        #   Parent Loop BB8_115 Depth=1
-                                        #     Parent Loop BB8_117 Depth=2
+.LBB8_124:                              # %.lr.ph981.us
+                                        #   Parent Loop BB8_110 Depth=1
+                                        #     Parent Loop BB8_112 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t0, $ra, 0
-	beq	$t0, $t8, .LBB8_138
-# %bb.130:                              #   in Loop: Header=BB8_129 Depth=3
+	beq	$t0, $t8, .LBB8_133
+# %bb.125:                              #   in Loop: Header=BB8_124 Depth=3
 	addi.d	$t3, $t3, 4
 	addi.d	$ra, $ra, 8
-	bne	$t6, $t3, .LBB8_129
-.LBB8_131:                              #   in Loop: Header=BB8_117 Depth=2
+	bne	$t6, $t3, .LBB8_124
+.LBB8_126:                              #   in Loop: Header=BB8_112 Depth=2
 	move	$a1, $zero
-	b	.LBB8_139
-.LBB8_132:                              #   in Loop: Header=BB8_117 Depth=2
+	b	.LBB8_134
+.LBB8_127:                              #   in Loop: Header=BB8_112 Depth=2
 	ld.d	$a1, $a1, 32
 	ldx.d	$a5, $a1, $t7
-	beq	$a5, $s1, .LBB8_116
-# %bb.133:                              # %.preheader933.us
-                                        #   in Loop: Header=BB8_117 Depth=2
+	beq	$a5, $s1, .LBB8_111
+# %bb.128:                              # %.preheader933.us
+                                        #   in Loop: Header=BB8_112 Depth=2
 	ld.w	$a1, $a4, 0
 	ldptr.w	$t0, $a2, 14456
 	slti	$t2, $a5, 0
@@ -3002,27 +2944,27 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t0, $t0, $t3
 	or	$t0, $t0, $a1
 	ori	$a1, $zero, 256
-	blez	$t0, .LBB8_137
-# %bb.134:                              # %.lr.ph977.us.preheader
-                                        #   in Loop: Header=BB8_117 Depth=2
+	blez	$t0, .LBB8_132
+# %bb.129:                              # %.lr.ph977.us.preheader
+                                        #   in Loop: Header=BB8_112 Depth=2
 	move	$t8, $zero
 	slli.d	$t3, $t0, 2
 	move	$t6, $s2
 	.p2align	4, , 16
-.LBB8_135:                              # %.lr.ph977.us
-                                        #   Parent Loop BB8_115 Depth=1
-                                        #     Parent Loop BB8_117 Depth=2
+.LBB8_130:                              # %.lr.ph977.us
+                                        #   Parent Loop BB8_110 Depth=1
+                                        #     Parent Loop BB8_112 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t0, $t6, 0
-	beq	$t0, $a5, .LBB8_142
-# %bb.136:                              #   in Loop: Header=BB8_135 Depth=3
+	beq	$t0, $a5, .LBB8_137
+# %bb.131:                              #   in Loop: Header=BB8_130 Depth=3
 	addi.d	$t8, $t8, 4
 	addi.d	$t6, $t6, 8
-	bne	$t3, $t8, .LBB8_135
-.LBB8_137:                              #   in Loop: Header=BB8_117 Depth=2
+	bne	$t3, $t8, .LBB8_130
+.LBB8_132:                              #   in Loop: Header=BB8_112 Depth=2
 	move	$a5, $zero
-	b	.LBB8_143
-.LBB8_138:                              #   in Loop: Header=BB8_117 Depth=2
+	b	.LBB8_138
+.LBB8_133:                              #   in Loop: Header=BB8_112 Depth=2
 	addi.d	$a5, $sp, 96
 	masknez	$a5, $a5, $a1
 	addi.d	$t0, $sp, 888
@@ -3035,8 +2977,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$a1, $t1, $a1
 	or	$a1, $a1, $t0
 	ldx.w	$a1, $a1, $t3
-.LBB8_139:                              # %.loopexit930.us
-                                        #   in Loop: Header=BB8_117 Depth=2
+.LBB8_134:                              # %.loopexit930.us
+                                        #   in Loop: Header=BB8_112 Depth=2
 	ldptr.d	$t0, $t2, 6512
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t5
@@ -3089,8 +3031,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$a5, $t7, 0
 	ld.h	$a5, $t2, 2
 	mul.d	$a1, $a1, $a5
-	b	.LBB8_145
-.LBB8_140:                              #   in Loop: Header=BB8_117 Depth=2
+	b	.LBB8_140
+.LBB8_135:                              #   in Loop: Header=BB8_112 Depth=2
 	addi.d	$a1, $sp, 96
 	masknez	$a1, $a1, $t2
 	addi.d	$a5, $sp, 888
@@ -3103,14 +3045,14 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t0, $t0, $t2
 	or	$a5, $t0, $a5
 	ldx.w	$a5, $a5, $t8
-.LBB8_141:                              # %.loopexit932.us
-                                        #   in Loop: Header=BB8_117 Depth=2
+.LBB8_136:                              # %.loopexit932.us
+                                        #   in Loop: Header=BB8_112 Depth=2
 	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
 	masknez	$t0, $t0, $t2
 	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
 	maskeqz	$t2, $t1, $t2
-	b	.LBB8_144
-.LBB8_142:                              #   in Loop: Header=BB8_117 Depth=2
+	b	.LBB8_139
+.LBB8_137:                              #   in Loop: Header=BB8_112 Depth=2
 	addi.d	$a1, $sp, 96
 	masknez	$a1, $a1, $t2
 	addi.d	$a5, $sp, 888
@@ -3123,12 +3065,12 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t0, $t0, $t2
 	or	$a5, $t0, $a5
 	ldx.w	$a5, $a5, $t8
-.LBB8_143:                              # %.loopexit934.us
-                                        #   in Loop: Header=BB8_117 Depth=2
+.LBB8_138:                              # %.loopexit934.us
+                                        #   in Loop: Header=BB8_112 Depth=2
 	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
 	masknez	$t0, $t0, $t2
 	maskeqz	$t2, $a6, $t2
-.LBB8_144:                              #   in Loop: Header=BB8_117 Depth=2
+.LBB8_139:                              #   in Loop: Header=BB8_112 Depth=2
 	or	$t0, $t2, $t0
 	ldptr.d	$t0, $t0, 6512
 	ld.d	$t0, $t0, 0
@@ -3183,7 +3125,7 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$a1, $t7, 0
 	ld.h	$a1, $t2, 2
 	mul.d	$a1, $a5, $a1
-.LBB8_145:                              #   in Loop: Header=BB8_117 Depth=2
+.LBB8_140:                              #   in Loop: Header=BB8_112 Depth=2
 	addi.w	$a1, $a1, 128
 	srai.d	$a1, $a1, 8
 	slt	$a5, $s3, $a1
@@ -3196,39 +3138,39 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	or	$a1, $a1, $a5
 	addi.d	$s5, $s5, 1
 	st.h	$a1, $t7, 2
-	bne	$s5, $t4, .LBB8_117
-	b	.LBB8_114
-.LBB8_146:
+	bne	$s5, $t4, .LBB8_112
+	b	.LBB8_109
+.LBB8_141:
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	beqz	$a1, .LBB8_162
-.LBB8_147:                              # %.critedge913.preheader
+	beqz	$a1, .LBB8_157
+.LBB8_142:                              # %.critedge913.preheader
 	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
-	blez	$t4, .LBB8_182
-.LBB8_148:                              # %.preheader.lr.ph
+	blez	$t4, .LBB8_177
+.LBB8_143:                              # %.preheader.lr.ph
 	ldptr.w	$a1, $a3, 6392
 	srai.d	$a4, $a1, 2
-	blez	$a4, .LBB8_182
-# %bb.149:                              # %.preheader.us.preheader
+	blez	$a4, .LBB8_177
+# %bb.144:                              # %.preheader.us.preheader
 	ldptr.d	$a1, $a3, 6528
 	move	$a2, $zero
 	slli.d	$a3, $a4, 3
-	b	.LBB8_151
+	b	.LBB8_146
 	.p2align	4, , 16
-.LBB8_150:                              # %._crit_edge1017.us
-                                        #   in Loop: Header=BB8_151 Depth=1
+.LBB8_145:                              # %._crit_edge1017.us
+                                        #   in Loop: Header=BB8_146 Depth=1
 	addi.d	$a2, $a2, 1
-	beq	$a2, $t4, .LBB8_182
-.LBB8_151:                              # %.preheader.us
+	beq	$a2, $t4, .LBB8_177
+.LBB8_146:                              # %.preheader.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_156 Depth 2
+                                        #     Child Loop BB8_151 Depth 2
 	slli.d	$a4, $a2, 3
 	ldx.d	$a5, $a1, $a4
 	move	$a6, $zero
-	b	.LBB8_156
+	b	.LBB8_151
 	.p2align	4, , 16
-.LBB8_152:                              #   in Loop: Header=BB8_156 Depth=2
-	beqz	$t1, .LBB8_159
-.LBB8_153:                              #   in Loop: Header=BB8_156 Depth=2
+.LBB8_147:                              #   in Loop: Header=BB8_151 Depth=2
+	beqz	$t1, .LBB8_154
+.LBB8_148:                              #   in Loop: Header=BB8_151 Depth=2
 	ld.d	$t0, $a0, 16
 	ld.d	$t1, $t0, 0
 	ldx.d	$t1, $t1, $a4
@@ -3241,29 +3183,29 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	st.h	$t2, $t1, 2
 	ld.h	$t1, $t0, 2
 	slli.d	$t1, $t1, 1
-.LBB8_154:                              # %.thread899.thread.us
-                                        #   in Loop: Header=BB8_156 Depth=2
+.LBB8_149:                              # %.thread899.thread.us
+                                        #   in Loop: Header=BB8_151 Depth=2
 	st.h	$t1, $t0, 2
-.LBB8_155:                              # %.thread899.thread.us
-                                        #   in Loop: Header=BB8_156 Depth=2
+.LBB8_150:                              # %.thread899.thread.us
+                                        #   in Loop: Header=BB8_151 Depth=2
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, 1
-	beq	$a3, $a6, .LBB8_150
-.LBB8_156:                              #   Parent Loop BB8_151 Depth=1
+	beq	$a3, $a6, .LBB8_145
+.LBB8_151:                              #   Parent Loop BB8_146 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$t1, $a5, 0
-	beqz	$a7, .LBB8_152
-# %bb.157:                              #   in Loop: Header=BB8_156 Depth=2
-	beqz	$t3, .LBB8_161
-# %bb.158:                              # %.thread899.thread900.us
-                                        #   in Loop: Header=BB8_156 Depth=2
-	bnez	$t1, .LBB8_155
-	b	.LBB8_160
-.LBB8_159:                              # %.thread899.us
-                                        #   in Loop: Header=BB8_156 Depth=2
-	beqz	$t3, .LBB8_155
-.LBB8_160:                              # %.thread899.thread900.us.thread
-                                        #   in Loop: Header=BB8_156 Depth=2
+	beqz	$a7, .LBB8_147
+# %bb.152:                              #   in Loop: Header=BB8_151 Depth=2
+	beqz	$t3, .LBB8_156
+# %bb.153:                              # %.thread899.thread900.us
+                                        #   in Loop: Header=BB8_151 Depth=2
+	bnez	$t1, .LBB8_150
+	b	.LBB8_155
+.LBB8_154:                              # %.thread899.us
+                                        #   in Loop: Header=BB8_151 Depth=2
+	beqz	$t3, .LBB8_150
+.LBB8_155:                              # %.thread899.thread900.us.thread
+                                        #   in Loop: Header=BB8_151 Depth=2
 	ld.d	$t0, $a0, 16
 	ld.d	$t1, $t0, 0
 	ldx.d	$t1, $t1, $a4
@@ -3278,18 +3220,18 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.h	$t1, $t0, 2
 	addi.d	$t1, $t1, 1
 	srli.d	$t1, $t1, 1
-	b	.LBB8_154
-.LBB8_161:                              #   in Loop: Header=BB8_156 Depth=2
-	bnez	$t1, .LBB8_153
-	b	.LBB8_155
-.LBB8_162:                              # %.preheader916
+	b	.LBB8_149
+.LBB8_156:                              #   in Loop: Header=BB8_151 Depth=2
+	bnez	$t1, .LBB8_148
+	b	.LBB8_150
+.LBB8_157:                              # %.preheader916
 	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
-	blez	$t4, .LBB8_182
-# %bb.163:                              # %.lr.ph1014
+	blez	$t4, .LBB8_177
+# %bb.158:                              # %.lr.ph1014
 	ldptr.w	$a1, $a3, 6392
 	srai.d	$a5, $a1, 2
-	blez	$a5, .LBB8_148
-# %bb.164:                              # %.lr.ph1014.split.us
+	blez	$a5, .LBB8_143
+# %bb.159:                              # %.lr.ph1014.split.us
 	ldptr.d	$a1, $a3, 6528
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	lu12i.w	$a1, 262143
@@ -3304,18 +3246,18 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	lu12i.w	$s0, -8
 	lu12i.w	$a1, 7
 	ori	$s1, $a1, 4095
-	b	.LBB8_166
+	b	.LBB8_161
 	.p2align	4, , 16
-.LBB8_165:                              # %._crit_edge1012.us
-                                        #   in Loop: Header=BB8_166 Depth=1
+.LBB8_160:                              # %._crit_edge1012.us
+                                        #   in Loop: Header=BB8_161 Depth=1
 	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$t1, $t1, 1
 	ld.d	$t4, $sp, 88                    # 8-byte Folded Reload
-	beq	$t1, $t4, .LBB8_147
-.LBB8_166:                              # %.lr.ph1011.us
+	beq	$t1, $t4, .LBB8_142
+.LBB8_161:                              # %.lr.ph1011.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_170 Depth 2
-                                        #       Child Loop BB8_174 Depth 3
+                                        #     Child Loop BB8_165 Depth 2
+                                        #       Child Loop BB8_169 Depth 3
 	move	$s2, $zero
 	bstrpick.d	$s3, $t1, 31, 1
 	srli.d	$a1, $t1, 1
@@ -3329,9 +3271,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ldx.d	$s6, $t0, $s5
 	add.w	$a1, $a1, $s3
 	slli.d	$s8, $a1, 3
-	b	.LBB8_170
+	b	.LBB8_165
 	.p2align	4, , 16
-.LBB8_167:                              #   in Loop: Header=BB8_170 Depth=2
+.LBB8_162:                              #   in Loop: Header=BB8_165 Depth=2
 	ld.d	$a1, $a0, 16
 	ld.d	$t0, $a1, 0
 	ldx.d	$t0, $t0, $s5
@@ -3342,18 +3284,18 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ldx.d	$a1, $a1, $ra
 	move	$t1, $zero
 	st.h	$zero, $a1, 0
-.LBB8_168:                              # %.sink.split
-                                        #   in Loop: Header=BB8_170 Depth=2
+.LBB8_163:                              # %.sink.split
+                                        #   in Loop: Header=BB8_165 Depth=2
 	st.h	$t1, $a1, 2
-.LBB8_169:                              #   in Loop: Header=BB8_170 Depth=2
+.LBB8_164:                              #   in Loop: Header=BB8_165 Depth=2
 	addi.d	$s2, $s2, 1
-	beq	$s2, $a5, .LBB8_165
-.LBB8_170:                              #   Parent Loop BB8_166 Depth=1
+	beq	$s2, $a5, .LBB8_160
+.LBB8_165:                              #   Parent Loop BB8_161 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_174 Depth 3
+                                        #       Child Loop BB8_169 Depth 3
 	ldx.bu	$a1, $s6, $s2
-	beqz	$a1, .LBB8_169
-# %bb.171:                              #   in Loop: Header=BB8_170 Depth=2
+	beqz	$a1, .LBB8_164
+# %bb.166:                              #   in Loop: Header=BB8_165 Depth=2
 	ldptr.d	$a1, $a3, 6504
 	ld.d	$a1, $a1, 0
 	ldx.d	$a1, $a1, $s8
@@ -3370,36 +3312,36 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $s8
 	ldx.d	$t5, $t0, $ra
-	beq	$t5, $t8, .LBB8_167
-# %bb.172:                              # %.preheader914.us
-                                        #   in Loop: Header=BB8_170 Depth=2
+	beq	$t5, $t8, .LBB8_162
+# %bb.167:                              # %.preheader914.us
+                                        #   in Loop: Header=BB8_165 Depth=2
 	ldptr.w	$t0, $a2, 14456
 	slt	$t3, $t0, $t2
 	masknez	$t2, $t2, $t3
 	maskeqz	$t0, $t0, $t3
 	or	$t4, $t0, $t2
 	ori	$t3, $zero, 256
-	blez	$t4, .LBB8_176
-# %bb.173:                              # %.lr.ph1008.us.preheader
-                                        #   in Loop: Header=BB8_170 Depth=2
+	blez	$t4, .LBB8_171
+# %bb.168:                              # %.lr.ph1008.us.preheader
+                                        #   in Loop: Header=BB8_165 Depth=2
 	move	$t2, $zero
 	slli.d	$t4, $t4, 2
 	addi.d	$fp, $s4, 24
 	.p2align	4, , 16
-.LBB8_174:                              # %.lr.ph1008.us
-                                        #   Parent Loop BB8_166 Depth=1
-                                        #     Parent Loop BB8_170 Depth=2
+.LBB8_169:                              # %.lr.ph1008.us
+                                        #   Parent Loop BB8_161 Depth=1
+                                        #     Parent Loop BB8_165 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$t0, $fp, 0
-	beq	$t0, $t5, .LBB8_177
-# %bb.175:                              #   in Loop: Header=BB8_174 Depth=3
+	beq	$t0, $t5, .LBB8_172
+# %bb.170:                              #   in Loop: Header=BB8_169 Depth=3
 	addi.d	$t2, $t2, 4
 	addi.d	$fp, $fp, 8
-	bne	$t4, $t2, .LBB8_174
-.LBB8_176:                              #   in Loop: Header=BB8_170 Depth=2
+	bne	$t4, $t2, .LBB8_169
+.LBB8_171:                              #   in Loop: Header=BB8_165 Depth=2
 	move	$t1, $zero
-	b	.LBB8_178
-.LBB8_177:                              #   in Loop: Header=BB8_170 Depth=2
+	b	.LBB8_173
+.LBB8_172:                              #   in Loop: Header=BB8_165 Depth=2
 	addi.d	$t0, $sp, 96
 	masknez	$t0, $t0, $t1
 	addi.d	$t3, $sp, 888
@@ -3412,8 +3354,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t1, $t4, $t1
 	or	$t0, $t1, $t0
 	ldx.w	$t1, $t0, $t2
-.LBB8_178:                              # %.loopexit915.us
-                                        #   in Loop: Header=BB8_170 Depth=2
+.LBB8_173:                              # %.loopexit915.us
+                                        #   in Loop: Header=BB8_165 Depth=2
 	ldptr.d	$t2, $a1, 6544
 	ld.w	$t0, $s4, 4
 	ld.w	$t4, $t2, 4
@@ -3432,14 +3374,14 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	xor	$t0, $t0, $t6
 	sub.w	$t0, $t0, $t6
 	slli.d	$t4, $s3, 3
-	bgeu	$t0, $s7, .LBB8_180
-# %bb.179:                              #   in Loop: Header=BB8_170 Depth=2
+	bgeu	$t0, $s7, .LBB8_175
+# %bb.174:                              #   in Loop: Header=BB8_165 Depth=2
 	ldptr.d	$t0, $fp, 6512
-	b	.LBB8_181
-.LBB8_180:                              #   in Loop: Header=BB8_170 Depth=2
+	b	.LBB8_176
+.LBB8_175:                              #   in Loop: Header=BB8_165 Depth=2
 	ldptr.d	$t0, $t2, 6512
-.LBB8_181:                              # %.sink.split
-                                        #   in Loop: Header=BB8_170 Depth=2
+.LBB8_176:                              # %.sink.split
+                                        #   in Loop: Header=BB8_165 Depth=2
 	ld.d	$t0, $t0, 0
 	ldx.d	$t0, $t0, $t4
 	ldx.d	$t0, $t0, $ra
@@ -3497,8 +3439,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	maskeqz	$t0, $t0, $t1
 	masknez	$t1, $s1, $t1
 	or	$t1, $t0, $t1
-	b	.LBB8_168
-.LBB8_182:                              # %.loopexit
+	b	.LBB8_163
+.LBB8_177:                              # %.loopexit
 	ld.d	$s8, $sp, 1688                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1696                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1704                  # 8-byte Folded Reload
@@ -3512,15 +3454,15 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.d	$ra, $sp, 1768                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 1776
 	ret
-.LBB8_183:
+.LBB8_178:
 	ldptr.d	$a1, $a3, 6544
 	ldptr.d	$a6, $a3, 6536
-.LBB8_184:
+.LBB8_179:
 	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	move	$a3, $a1
-	b	.LBB8_57
+	b	.LBB8_52
 .Lfunc_end8:
 	.size	EPZSSliceInit, .Lfunc_end8-EPZSSliceInit
                                         # -- End function

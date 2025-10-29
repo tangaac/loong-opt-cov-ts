@@ -100,7 +100,7 @@ Bitfield_nodeVisited:                   # @Bitfield_nodeVisited
 	.type	Bitfield_copy,@function
 Bitfield_copy:                          # @Bitfield_copy
 # %bb.0:
-	beqz	$a0, .LBB3_11
+	beqz	$a0, .LBB3_8
 # %bb.1:
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
@@ -112,7 +112,7 @@ Bitfield_copy:                          # @Bitfield_copy
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_12
+	beqz	$a0, .LBB3_9
 # %bb.2:
 	addi.w	$a1, $s0, 7
 	bstrpick.d	$a2, $a1, 62, 60
@@ -126,13 +126,13 @@ Bitfield_copy:                          # @Bitfield_copy
 	move	$a1, $a0
 	move	$a0, $s1
 	st.d	$a1, $s1, 8
-	beqz	$a1, .LBB3_13
+	beqz	$a1, .LBB3_10
 # %bb.3:                                # %Bitfield_new.exit
 	st.w	$s0, $a0, 0
 	blez	$s0, .LBB3_20
 # %bb.4:                                # %iter.check
 	ld.d	$a2, $fp, 8
-	ori	$a4, $zero, 121
+	ori	$a4, $zero, 25
 	move	$a3, $zero
 	bltu	$s0, $a4, .LBB3_18
 # %bb.5:                                # %iter.check
@@ -144,48 +144,30 @@ Bitfield_copy:                          # @Bitfield_copy
 	srli.d	$a3, $a3, 3
 	ori	$a5, $zero, 249
 	addi.d	$a4, $a3, 1
-	bgeu	$s0, $a5, .LBB3_14
+	bgeu	$s0, $a5, .LBB3_11
 # %bb.7:
 	move	$a3, $zero
-.LBB3_8:                                # %vec.epilog.ph
-	move	$a7, $a3
-	bstrpick.d	$a3, $a4, 61, 4
-	slli.d	$a3, $a3, 4
-	sub.d	$a5, $a7, $a3
-	add.d	$a6, $a1, $a7
-	add.d	$a7, $a2, $a7
-	.p2align	4, , 16
-.LBB3_9:                                # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a7, 0
-	vst	$vr0, $a6, 0
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	bnez	$a5, .LBB3_9
-# %bb.10:                               # %vec.epilog.middle.block
-	bne	$a4, $a3, .LBB3_18
-	b	.LBB3_20
-.LBB3_11:
+	b	.LBB3_15
+.LBB3_8:
 	move	$a0, $zero
 	ret
-.LBB3_12:
+.LBB3_9:
 	move	$a0, $zero
 	b	.LBB3_20
-.LBB3_13:
+.LBB3_10:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	b	.LBB3_20
-.LBB3_14:                               # %vector.ph
-	andi	$a5, $a4, 16
+.LBB3_11:                               # %vector.ph
+	andi	$a5, $a4, 28
 	bstrpick.d	$a3, $a4, 61, 5
 	slli.d	$a3, $a3, 5
 	addi.d	$a6, $a1, 16
 	addi.d	$a7, $a2, 16
 	move	$t0, $a3
 	.p2align	4, , 16
-.LBB3_15:                               # %vector.body
+.LBB3_12:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a7, -16
 	vld	$vr1, $a7, 0
@@ -194,11 +176,29 @@ Bitfield_copy:                          # @Bitfield_copy
 	addi.d	$t0, $t0, -32
 	addi.d	$a6, $a6, 32
 	addi.d	$a7, $a7, 32
-	bnez	$t0, .LBB3_15
-# %bb.16:                               # %middle.block
+	bnez	$t0, .LBB3_12
+# %bb.13:                               # %middle.block
 	beq	$a4, $a3, .LBB3_20
-# %bb.17:                               # %vec.epilog.iter.check
-	bnez	$a5, .LBB3_8
+# %bb.14:                               # %vec.epilog.iter.check
+	beqz	$a5, .LBB3_18
+.LBB3_15:                               # %vec.epilog.ph
+	move	$a7, $a3
+	bstrpick.d	$a3, $a4, 61, 2
+	slli.d	$a3, $a3, 2
+	sub.d	$a5, $a7, $a3
+	add.d	$a6, $a1, $a7
+	add.d	$a7, $a2, $a7
+	.p2align	4, , 16
+.LBB3_16:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$t0, $a7, 0
+	st.w	$t0, $a6, 0
+	addi.d	$a5, $a5, 4
+	addi.d	$a6, $a6, 4
+	addi.d	$a7, $a7, 4
+	bnez	$a5, .LBB3_16
+# %bb.17:                               # %vec.epilog.middle.block
+	beq	$a4, $a3, .LBB3_20
 .LBB3_18:                               # %vec.epilog.scalar.ph.preheader
 	add.d	$a1, $a1, $a3
 	add.d	$a2, $a2, $a3

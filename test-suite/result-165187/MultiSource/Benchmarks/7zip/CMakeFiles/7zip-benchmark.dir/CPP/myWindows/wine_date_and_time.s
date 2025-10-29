@@ -593,93 +593,93 @@ GetSystemTime:                          # @GetSystemTime
 	.type	SystemTimeToFileTime,@function
 SystemTimeToFileTime:                   # @SystemTimeToFileTime
 # %bb.0:
-	ld.hu	$a2, $a0, 14
-	ori	$a3, $zero, 999
-                                        # implicit-def: $r12
-	bltu	$a3, $a2, .LBB8_10
+	ld.d	$a2, $a0, 8
+	vinsgr2vr.d	$vr0, $a2, 0
+	lu12i.w	$a2, 944
+	ori	$a2, $a2, 23
+	lu32i.d	$a2, 458811
+	lu52i.d	$a2, $a2, 62
+	vreplgr2vr.d	$vr1, $a2
+	vslt.hu	$vr0, $vr1, $vr0
+	vilvl.h	$vr0, $vr0, $vr0
+	vslli.w	$vr0, $vr0, 16
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a2, $vr0, 0
+                                        # implicit-def: $r9
+	bnez	$a2, .LBB8_7
 # %bb.1:
-	ld.hu	$a3, $a0, 12
-	ori	$a5, $zero, 59
-                                        # implicit-def: $r12
-	bltu	$a5, $a3, .LBB8_10
+	ld.hu	$a3, $a0, 2
+	addi.d	$a2, $a3, -13
+	addi.w	$a4, $zero, -12
+                                        # implicit-def: $r9
+	bltu	$a2, $a4, .LBB8_7
 # %bb.2:
-	ld.hu	$a4, $a0, 10
-                                        # implicit-def: $r12
-	bltu	$a5, $a4, .LBB8_10
+	ld.h	$a2, $a0, 6
+	blez	$a2, .LBB8_6
 # %bb.3:
-	ld.hu	$a5, $a0, 8
-	ori	$a6, $zero, 23
-                                        # implicit-def: $r12
-	bltu	$a6, $a5, .LBB8_10
+	ld.h	$a4, $a0, 0
+	ori	$a6, $zero, 2
+	ori	$a5, $zero, 1
+	beq	$a3, $a6, .LBB8_10
 # %bb.4:
-	ld.hu	$a7, $a0, 2
-	addi.d	$a6, $a7, -13
-	addi.w	$t1, $zero, -12
-                                        # implicit-def: $r12
-	bltu	$a6, $t1, .LBB8_10
+	andi	$a6, $a4, 3
+	beqz	$a6, .LBB8_8
 # %bb.5:
-	ld.h	$a6, $a0, 6
-	blez	$a6, .LBB8_9
-# %bb.6:
-	ld.h	$a0, $a0, 0
-	ori	$t1, $zero, 2
-	ori	$t0, $zero, 1
-	beq	$a7, $t1, .LBB8_13
-# %bb.7:
-	andi	$t1, $a0, 3
-	beqz	$t1, .LBB8_11
-# %bb.8:
-	move	$t0, $zero
-	b	.LBB8_13
-.LBB8_9:
-                                        # implicit-def: $r12
-.LBB8_10:                               # %_ZL19RtlTimeFieldsToTimeP12_TIME_FIELDSP13LARGE_INTEGER.exit
+	move	$a5, $zero
+	b	.LBB8_10
+.LBB8_6:
+                                        # implicit-def: $r9
+.LBB8_7:                                # %_ZL19RtlTimeFieldsToTimeP12_TIME_FIELDSP13LARGE_INTEGER.exit
 	ori	$a0, $zero, 1
-	st.d	$t0, $a1, 0
+	st.d	$a5, $a1, 0
 	ret
-.LBB8_11:
-	lu12i.w	$t1, 5
-	ori	$t1, $t1, 3113
-	mul.d	$t1, $a0, $t1
-	addi.d	$t2, $t1, 1308
-	slli.d	$t3, $t2, 14
-	bstrpick.d	$t2, $t2, 15, 2
-	or	$t2, $t2, $t3
-	bstrpick.d	$t2, $t2, 15, 0
-	ori	$t3, $zero, 654
-	bltu	$t3, $t2, .LBB8_13
+.LBB8_8:
+	lu12i.w	$a6, 5
+	ori	$a6, $a6, 3113
+	mul.d	$a6, $a4, $a6
+	addi.d	$a7, $a6, 1308
+	slli.d	$t0, $a7, 14
+	bstrpick.d	$a7, $a7, 15, 2
+	or	$a7, $a7, $t0
+	bstrpick.d	$a7, $a7, 15, 0
+	ori	$t0, $zero, 654
+	bltu	$t0, $a7, .LBB8_10
+# %bb.9:
+	addi.d	$a5, $a6, 1296
+	slli.d	$a6, $a5, 12
+	bstrpick.d	$a5, $a5, 15, 4
+	or	$a5, $a5, $a6
+	bstrpick.d	$a5, $a5, 15, 0
+	sltui	$a5, $a5, 163
+.LBB8_10:                               # %_ZL10IsLeapYeari.exit.i
+	slli.d	$a6, $a5, 4
+	slli.d	$a5, $a5, 5
+	or	$a5, $a5, $a6
+	pcalau12i	$a6, %pc_hi20(_ZL12MonthLengths)
+	addi.d	$a6, $a6, %pc_lo12(_ZL12MonthLengths)
+	add.d	$a5, $a6, $a5
+	alsl.d	$a5, $a3, $a5, 2
+	ld.w	$a6, $a5, -4
+                                        # implicit-def: $r9
+	blt	$a6, $a2, .LBB8_7
+# %bb.11:                               # %_ZL10IsLeapYeari.exit.i
+	ori	$a6, $zero, 1601
+                                        # implicit-def: $r9
+	blt	$a4, $a6, .LBB8_7
 # %bb.12:
-	addi.d	$t0, $t1, 1296
-	slli.d	$t1, $t0, 12
-	bstrpick.d	$t0, $t0, 15, 4
-	or	$t0, $t0, $t1
-	bstrpick.d	$t0, $t0, 15, 0
-	sltui	$t0, $t0, 163
-.LBB8_13:                               # %_ZL10IsLeapYeari.exit.i
-	slli.d	$t1, $t0, 4
-	slli.d	$t0, $t0, 5
-	or	$t0, $t0, $t1
-	pcalau12i	$t1, %pc_hi20(_ZL12MonthLengths)
-	addi.d	$t1, $t1, %pc_lo12(_ZL12MonthLengths)
-	add.d	$t0, $t1, $t0
-	alsl.d	$t0, $a7, $t0, 2
-	ld.w	$t1, $t0, -4
-                                        # implicit-def: $r12
-	blt	$t1, $a6, .LBB8_10
-# %bb.14:                               # %_ZL10IsLeapYeari.exit.i
-	ori	$t1, $zero, 1601
-                                        # implicit-def: $r12
-	blt	$a0, $t1, .LBB8_10
-# %bb.15:
-	sltui	$t0, $a7, 3
-	sub.d	$a0, $a0, $t0
+	ld.hu	$a5, $a0, 8
+	ld.hu	$a6, $a0, 10
+	ld.hu	$a7, $a0, 12
+	ld.hu	$a0, $a0, 14
+	sltui	$t0, $a3, 3
+	sub.d	$a4, $a4, $t0
 	ori	$t1, $zero, 1
 	masknez	$t1, $t1, $t0
 	ori	$t2, $zero, 13
 	maskeqz	$t0, $t2, $t0
 	or	$t0, $t0, $t1
-	add.d	$a7, $t0, $a7
-	bstrpick.d	$t0, $a0, 15, 2
+	add.d	$a3, $t0, $a3
+	bstrpick.d	$t0, $a4, 15, 2
 	lu12i.w	$t1, 1
 	ori	$t1, $t1, 1147
 	mul.d	$t0, $t0, $t1
@@ -689,37 +689,37 @@ SystemTimeToFileTime:                   # @SystemTimeToFileTime
 	bstrpick.d	$t0, $t0, 14, 2
 	lu12i.w	$t1, 8
 	ori	$t1, $t1, 3757
-	mul.d	$a0, $a0, $t1
-	bstrpick.d	$a0, $a0, 31, 0
+	mul.d	$a4, $a4, $t1
+	bstrpick.d	$a4, $a4, 31, 0
 	lu12i.w	$t1, 335544
 	ori	$t1, $t1, 1311
-	mul.d	$a0, $a0, $t1
-	srli.d	$a0, $a0, 37
+	mul.d	$a4, $a4, $t1
+	srli.d	$a4, $a4, 37
 	ori	$t1, $zero, 1959
-	mul.d	$a7, $a7, $t1
-	bstrpick.d	$a7, $a7, 21, 6
-	add.d	$a0, $a0, $a7
-	sub.d	$a0, $a0, $t0
-	add.d	$a0, $a0, $a6
-	lu12i.w	$a6, -143
-	ori	$a6, $a6, 911
-	add.d	$a0, $a0, $a6
-	slli.d	$a6, $a0, 4
-	alsl.d	$a0, $a0, $a6, 3
-	add.d	$a0, $a0, $a5
-	ori	$a5, $zero, 60
-	mul.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a4
-	mul.d	$a0, $a0, $a5
-	add.d	$a0, $a0, $a3
+	mul.d	$a3, $a3, $t1
+	bstrpick.d	$a3, $a3, 21, 6
+	add.d	$a3, $a4, $a3
+	sub.d	$a3, $a3, $t0
+	add.d	$a2, $a3, $a2
+	lu12i.w	$a3, -143
+	ori	$a3, $a3, 911
+	add.d	$a2, $a2, $a3
+	slli.d	$a3, $a2, 4
+	alsl.d	$a2, $a2, $a3, 3
+	add.d	$a2, $a2, $a5
+	ori	$a3, $zero, 60
+	mul.d	$a2, $a2, $a3
+	add.d	$a2, $a2, $a6
+	mul.d	$a2, $a2, $a3
+	add.d	$a2, $a2, $a7
 	ori	$a3, $zero, 1000
-	mul.d	$a0, $a0, $a3
-	add.d	$a0, $a0, $a2
+	mul.d	$a2, $a2, $a3
+	add.d	$a0, $a2, $a0
 	lu12i.w	$a2, 2
 	ori	$a2, $a2, 1808
-	mul.d	$t0, $a0, $a2
+	mul.d	$a5, $a0, $a2
 	ori	$a0, $zero, 1
-	st.d	$t0, $a1, 0
+	st.d	$a5, $a1, 0
 	ret
 .Lfunc_end8:
 	.size	SystemTimeToFileTime, .Lfunc_end8-SystemTimeToFileTime

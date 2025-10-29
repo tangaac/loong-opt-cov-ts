@@ -5679,7 +5679,7 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	ld.d	$a3, $fp, 1384
 	ld.d	$a4, $fp, 1392
 	bstrpick.d	$a2, $s1, 30, 0
-	ori	$a5, $zero, 24
+	ori	$a5, $zero, 16
 	bgeu	$a2, $a5, .LBB16_31
 # %bb.17:
 	move	$a5, $zero
@@ -9226,7 +9226,7 @@ _ZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlus: # @_ZN4Mesh10rezone_allE
 	ld.d	$a2, $s1, 0
 	ld.d	$a3, $s0, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nrht_old)
 	ld.d	$a4, $s2, %pc_lo12(_ZZN4Mesh10rezone_allEiiSt6vectorIiSaIiEEiR10MallocPlusE8nbot_old)
-	ori	$a5, $zero, 24
+	ori	$a5, $zero, 16
 	bgeu	$a1, $a5, .LBB19_209
 # %bb.154:
 	move	$a5, $zero
@@ -11410,7 +11410,7 @@ _ZN4Mesh14calc_neighborsEi:             # @_ZN4Mesh14calc_neighborsEi
 	ld.d	$a3, $fp, 1384
 	ld.d	$a4, $fp, 1392
 	bstrpick.d	$a2, $a6, 30, 0
-	ori	$a5, $zero, 24
+	ori	$a5, $zero, 16
 	bgeu	$a2, $a5, .LBB27_101
 # %bb.9:
 	move	$a5, $zero
@@ -24294,17 +24294,17 @@ _ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEElNS0_
                                         #   Parent Loop BB61_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	slli.d	$a4, $a6, 1
-	addi.d	$t0, $a4, 2
+	addi.d	$t0, $a4, 1
 	slli.d	$t1, $t0, 3
-	addi.d	$a4, $a4, 1
-	slli.d	$t2, $a4, 3
-	fldx.d	$fa1, $fp, $t1
-	fldx.d	$fa2, $fp, $t2
+	vldx	$vr1, $fp, $t1
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	addi.d	$a4, $a4, 2
 	movcf2gr	$t1, $fcc0
-	masknez	$t0, $t0, $t1
-	maskeqz	$a4, $a4, $t1
-	or	$a4, $a4, $t0
+	masknez	$a4, $a4, $t1
+	maskeqz	$t0, $t0, $t1
+	or	$a4, $t0, $a4
 	slli.d	$t0, $a4, 3
 	fldx.d	$fa1, $fp, $t0
 	slli.d	$a6, $a6, 3
@@ -24656,17 +24656,17 @@ _ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__o
                                         # =>  This Inner Loop Header: Depth=2
 	move	$t0, $a7
 	slli.d	$a7, $a7, 1
-	addi.d	$t1, $a7, 2
+	addi.d	$t1, $a7, 1
 	slli.d	$t2, $t1, 3
-	addi.d	$a7, $a7, 1
-	slli.d	$t3, $a7, 3
-	fldx.d	$fa1, $s1, $t2
-	fldx.d	$fa2, $s1, $t3
+	vldx	$vr1, $s1, $t2
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	addi.d	$a7, $a7, 2
 	movcf2gr	$t2, $fcc0
-	masknez	$t1, $t1, $t2
-	maskeqz	$a7, $a7, $t2
-	or	$a7, $a7, $t1
+	masknez	$a7, $a7, $t2
+	maskeqz	$t1, $t1, $t2
+	or	$a7, $t1, $a7
 	slli.d	$t1, $a7, 3
 	fldx.d	$fa1, $s1, $t1
 	slli.d	$t0, $t0, 3
@@ -24826,17 +24826,17 @@ _ZSt11__make_heapIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__ops
                                         #   Parent Loop BB64_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	slli.d	$a7, $t0, 1
-	addi.d	$t1, $a7, 2
+	addi.d	$t1, $a7, 1
 	slli.d	$t2, $t1, 3
-	addi.d	$a7, $a7, 1
-	slli.d	$t3, $a7, 3
-	fldx.d	$fa1, $a0, $t2
-	fldx.d	$fa2, $a0, $t3
+	vldx	$vr1, $a0, $t2
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	addi.d	$a7, $a7, 2
 	movcf2gr	$t2, $fcc0
-	masknez	$t1, $t1, $t2
-	maskeqz	$a7, $a7, $t2
-	or	$a7, $a7, $t1
+	masknez	$a7, $a7, $t2
+	maskeqz	$t1, $t1, $t2
+	or	$a7, $t1, $a7
 	slli.d	$t1, $a7, 3
 	fldx.d	$fa1, $a0, $t1
 	slli.d	$t0, $t0, 3
@@ -24897,17 +24897,17 @@ _ZSt11__make_heapIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__ops
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a4, $a2
 	slli.d	$a2, $a2, 1
-	addi.d	$a5, $a2, 2
+	addi.d	$a5, $a2, 1
 	slli.d	$a6, $a5, 3
-	addi.d	$a2, $a2, 1
-	slli.d	$a7, $a2, 3
-	fldx.d	$fa1, $a0, $a6
-	fldx.d	$fa2, $a0, $a7
+	vldx	$vr1, $a0, $a6
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	addi.d	$a2, $a2, 2
 	movcf2gr	$a6, $fcc0
-	masknez	$a5, $a5, $a6
-	maskeqz	$a2, $a2, $a6
-	or	$a2, $a2, $a5
+	masknez	$a2, $a2, $a6
+	maskeqz	$a5, $a5, $a6
+	or	$a2, $a5, $a2
 	slli.d	$a5, $a2, 3
 	fldx.d	$fa1, $a0, $a5
 	slli.d	$a4, $a4, 3

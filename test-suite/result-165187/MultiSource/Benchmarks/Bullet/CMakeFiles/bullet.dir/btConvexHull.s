@@ -1116,142 +1116,44 @@ _Z9PlaneTestRK7btPlaneRK9btVector3:     # @_Z9PlaneTestRK7btPlaneRK9btVector3
 _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 # %bb.0:
 	ld.w	$a2, $a0, 4
-	blez	$a2, .LBB11_3
+	blez	$a2, .LBB11_4
 # %bb.1:                                # %.lr.ph
+	move	$a3, $zero
 	ld.d	$a0, $a0, 16
 	fld.s	$fa0, $a1, 0
-	fld.s	$fa1, $a1, 4
-	fld.s	$fa2, $a1, 8
-	pcalau12i	$a3, %pc_hi20(planetestepsilon)
-	fld.s	$fa3, $a3, %pc_lo12(planetestepsilon)
+	pcalau12i	$a4, %pc_hi20(planetestepsilon)
+	fld.s	$fa1, $a4, %pc_lo12(planetestepsilon)
+	fld.s	$fa2, $a1, 4
+	fld.s	$fa3, $a1, 8
 	fld.s	$fa4, $a1, 16
-	ori	$a1, $zero, 8
-	fneg.s	$fa5, $fa3
-	bgeu	$a2, $a1, .LBB11_4
-# %bb.2:
-	move	$a1, $zero
-	move	$a3, $zero
-	b	.LBB11_7
-.LBB11_3:
-	move	$a3, $zero
-	addi.w	$a0, $a3, 0
-	ret
-.LBB11_4:                               # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 3
-	slli.d	$a1, $a1, 3
-	vreplvei.w	$vr6, $vr0, 0
-	vreplvei.w	$vr7, $vr1, 0
-	vreplvei.w	$vr8, $vr2, 0
-	vreplvei.w	$vr9, $vr4, 0
-	vreplvei.w	$vr10, $vr3, 0
-	vreplvei.w	$vr11, $vr5, 0
-	addi.d	$a3, $a0, 64
-	vrepli.b	$vr12, 0
-	vrepli.w	$vr13, 1
-	vrepli.w	$vr14, 2
-	move	$a4, $a1
-	vori.b	$vr15, $vr12, 0
-	.p2align	4, , 16
-.LBB11_5:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	fld.s	$ft8, $a3, -64
-	fld.s	$ft9, $a3, -48
-	fld.s	$ft10, $a3, -32
-	fld.s	$ft11, $a3, -16
-	vextrins.w	$vr16, $vr17, 16
-	vextrins.w	$vr16, $vr18, 32
-	fld.s	$ft9, $a3, 0
-	fld.s	$ft10, $a3, 16
-	fld.s	$ft12, $a3, 32
-	vextrins.w	$vr16, $vr19, 48
-	fld.s	$ft11, $a3, 48
-	vextrins.w	$vr17, $vr18, 16
-	vextrins.w	$vr17, $vr20, 32
-	fld.s	$ft10, $a3, -60
-	fld.s	$ft12, $a3, -44
-	fld.s	$ft13, $a3, -28
-	vextrins.w	$vr17, $vr19, 48
-	fld.s	$ft11, $a3, -12
-	vextrins.w	$vr18, $vr20, 16
-	vextrins.w	$vr18, $vr21, 32
-	fld.s	$ft12, $a3, 4
-	fld.s	$ft13, $a3, 20
-	fld.s	$ft14, $a3, 36
-	fld.s	$ft15, $a3, 52
-	vextrins.w	$vr18, $vr19, 48
-	vextrins.w	$vr20, $vr21, 16
-	vextrins.w	$vr20, $vr22, 32
-	vextrins.w	$vr20, $vr23, 48
-	vfmul.s	$vr18, $vr18, $vr7
-	vfmul.s	$vr19, $vr20, $vr7
-	vfmadd.s	$vr16, $vr16, $vr6, $vr18
-	fld.s	$ft10, $a3, -56
-	fld.s	$ft12, $a3, -40
-	fld.s	$ft13, $a3, -24
-	vfmadd.s	$vr17, $vr17, $vr6, $vr19
-	fld.s	$ft11, $a3, -8
-	vextrins.w	$vr18, $vr20, 16
-	vextrins.w	$vr18, $vr21, 32
-	fld.s	$ft12, $a3, 8
-	fld.s	$ft13, $a3, 24
-	fld.s	$ft14, $a3, 40
-	fld.s	$ft15, $a3, 56
-	vextrins.w	$vr18, $vr19, 48
-	vextrins.w	$vr20, $vr21, 16
-	vextrins.w	$vr20, $vr22, 32
-	vextrins.w	$vr20, $vr23, 48
-	vfmadd.s	$vr16, $vr18, $vr8, $vr16
-	vfmadd.s	$vr17, $vr20, $vr8, $vr17
-	vfadd.s	$vr16, $vr16, $vr9
-	vfadd.s	$vr17, $vr17, $vr9
-	vfcmp.clt.s	$vr18, $vr10, $vr16
-	vfcmp.clt.s	$vr19, $vr10, $vr17
-	vfcmp.clt.s	$vr16, $vr16, $vr11
-	vand.v	$vr16, $vr16, $vr13
-	vfcmp.clt.s	$vr17, $vr17, $vr11
-	vand.v	$vr17, $vr17, $vr13
-	vbitsel.v	$vr16, $vr16, $vr14, $vr18
-	vbitsel.v	$vr17, $vr17, $vr14, $vr19
-	vor.v	$vr12, $vr16, $vr12
-	vor.v	$vr15, $vr17, $vr15
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 128
-	bnez	$a4, .LBB11_5
-# %bb.6:                                # %middle.block
-	vor.v	$vr6, $vr15, $vr12
-	vbsrl.v	$vr7, $vr6, 8
-	vor.v	$vr6, $vr7, $vr6
-	vbsrl.v	$vr7, $vr6, 4
-	vor.v	$vr6, $vr7, $vr6
-	vpickve2gr.w	$a3, $vr6, 0
-	beq	$a1, $a2, .LBB11_9
-.LBB11_7:                               # %scalar.ph.preheader
-	alsl.d	$a0, $a1, $a0, 4
+	fneg.s	$fa5, $fa1
 	addi.d	$a0, $a0, 8
-	sub.d	$a1, $a2, $a1
-	ori	$a2, $zero, 2
+	ori	$a1, $zero, 2
 	.p2align	4, , 16
-.LBB11_8:                               # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
+.LBB11_2:                               # =>This Inner Loop Header: Depth=1
 	fld.s	$fa6, $a0, -4
 	fld.s	$fa7, $a0, -8
 	fld.s	$ft0, $a0, 0
-	fmul.s	$fa6, $fa6, $fa1
+	fmul.s	$fa6, $fa6, $fa2
 	fmadd.s	$fa6, $fa7, $fa0, $fa6
-	fmadd.s	$fa6, $ft0, $fa2, $fa6
+	fmadd.s	$fa6, $ft0, $fa3, $fa6
 	fadd.s	$fa6, $fa6, $fa4
-	fcmp.clt.s	$fcc0, $fa3, $fa6
+	fcmp.clt.s	$fcc0, $fa1, $fa6
 	fcmp.clt.s	$fcc1, $fa6, $fa5
 	movcf2gr	$a4, $fcc1
 	movcf2gr	$a5, $fcc0
 	masknez	$a4, $a4, $a5
-	maskeqz	$a5, $a2, $a5
+	maskeqz	$a5, $a1, $a5
 	or	$a4, $a5, $a4
 	or	$a3, $a4, $a3
-	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 16
-	bnez	$a1, .LBB11_8
-.LBB11_9:                               # %._crit_edge
+	bnez	$a2, .LBB11_2
+# %bb.3:                                # %._crit_edge
+	addi.w	$a0, $a3, 0
+	ret
+.LBB11_4:
+	move	$a3, $zero
 	addi.w	$a0, $a3, 0
 	ret
 .Lfunc_end11:

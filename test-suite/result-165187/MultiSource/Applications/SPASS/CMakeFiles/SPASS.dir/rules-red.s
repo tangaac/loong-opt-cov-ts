@@ -3622,12 +3622,12 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	addi.w	$a5, $a5, -1
 	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 160                   # 8-byte Folded Spill
-	blt	$a5, $a6, .LBB9_61
+	blt	$a5, $a6, .LBB9_60
 # %bb.1:                                # %.lr.ph
 	ld.d	$s0, $a0, 112
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ld.d	$s1, $a0, 104
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	sltui	$a0, $a2, 2
 	ori	$a2, $zero, 32
 	masknez	$a2, $a2, $a0
@@ -3638,7 +3638,7 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPEMASK)
 	ld.w	$a0, $a0, 0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	add.d	$a0, $a7, $a4
 	ori	$s5, $zero, 3
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
@@ -3650,7 +3650,7 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	addi.d	$a0, $a2, 1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
-	bge	$a2, $a3, .LBB9_61
+	bge	$a2, $a3, .LBB9_60
 .LBB9_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_6 Depth 2
                                         #     Child Loop BB9_12 Depth 2
@@ -3682,10 +3682,10 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	bne	$a3, $s6, .LBB9_6
 # %bb.7:                                # %clause_LiteralGetIndex.exit.i
                                         #   in Loop: Header=BB9_3 Depth=1
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.w	$a2, $s8, 64
-	ld.w	$a3, $s8, 68
-	ld.w	$a1, $s8, 72
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.w	$a2, $s4, 64
+	ld.w	$a3, $s4, 68
+	ld.w	$a1, $s4, 72
 	add.w	$a2, $a3, $a2
 	add.d	$a3, $a2, $a1
 	addi.w	$a3, $a3, -1
@@ -3760,30 +3760,30 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	ld.d	$a0, $s6, 24
 	ld.d	$a0, $a0, 16
 	ld.d	$a4, $a0, 8
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 .LBB9_20:                               # %red_LeftTermOfEquationIsStrictlyMaximalTerm.exit
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a0, $s4, 112
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	ld.d	$a0, $s4, 104
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	ldx.d	$a1, $s4, $a0
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $a0, 112
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	ld.d	$a1, $a0, 104
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ldx.d	$a1, $a0, $a1
 	pcalau12i	$a0, %got_pc_hi20(cont_LEFTCONTEXT)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_LEFTCONTEXT)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
-	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	move	$a2, $a4
 	pcaddu18i	$ra, %call36(st_GetInstance)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB9_61
+	beqz	$a0, .LBB9_60
 # %bb.21:                               # %.lr.ph126.i
 	ori	$s3, $zero, 0
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, -1
+	ori	$s8, $zero, 0
+	lu32i.d	$s8, -1
 	lu32i.d	$s3, 1
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$s2, $a1, %got_pc_lo12(memory_ARRAY)
@@ -3791,9 +3791,9 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	ld.d	$s7, $a1, %got_pc_lo12(memory_FREEDBYTES)
 	move	$s6, $zero
 	vrepli.b	$vr0, 0
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	st.d	$a5, $sp, 120                   # 8-byte Folded Spill
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	b	.LBB9_23
 	.p2align	4, , 16
 .LBB9_22:                               # %.loopexit119.i
@@ -3810,14 +3810,14 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	ld.d	$a0, $s2, 128
 	st.d	$a4, $a0, 0
 	move	$a0, $a3
-	beqz	$a3, .LBB9_62
+	beqz	$a3, .LBB9_61
 .LBB9_23:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB9_31 Depth 2
-                                        #       Child Loop BB9_32 Depth 3
-                                        #       Child Loop BB9_37 Depth 3
-                                        #       Child Loop BB9_44 Depth 3
+                                        #     Child Loop BB9_30 Depth 2
+                                        #       Child Loop BB9_31 Depth 3
+                                        #       Child Loop BB9_36 Depth 3
+                                        #       Child Loop BB9_43 Depth 3
+                                        #       Child Loop BB9_51 Depth 3
                                         #       Child Loop BB9_53 Depth 3
-                                        #       Child Loop BB9_55 Depth 3
 	ld.d	$s0, $a0, 8
 	ld.w	$a1, $s0, 0
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
@@ -3827,14 +3827,14 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 # %bb.25:                               # %symbol_IsPredicate.exit.i
                                         #   in Loop: Header=BB9_23 Depth=1
 	sub.w	$a2, $zero, $a1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	and	$a1, $a1, $a2
 	ori	$a2, $zero, 2
 	beq	$a1, $a2, .LBB9_22
 .LBB9_26:                               # %symbol_IsPredicate.exit.thread.i
                                         #   in Loop: Header=BB9_23 Depth=1
 	move	$a0, $s0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(sharing_GetDataList)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB9_22
@@ -3842,9 +3842,8 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
                                         #   in Loop: Header=BB9_23 Depth=1
 	move	$s1, $a0
 	st.d	$s0, $sp, 160                   # 8-byte Folded Spill
-	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
-	b	.LBB9_31
-.LBB9_28:                               #   in Loop: Header=BB9_31 Depth=2
+	b	.LBB9_30
+.LBB9_28:                               #   in Loop: Header=BB9_30 Depth=2
 	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$fp, $s0, 0
 	ori	$a0, $zero, 16
@@ -3854,14 +3853,10 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	st.d	$fp, $a0, 0
 	st.d	$a0, $s0, 0
 	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-.LBB9_29:                               # %list_PointerMember.exit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
-	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB9_30:                               # %list_PointerMember.exit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
+.LBB9_29:                               # %list_PointerMember.exit.i
+                                        #   in Loop: Header=BB9_30 Depth=2
 	ld.d	$a0, $s2, 128
 	ld.w	$a1, $a0, 32
 	ld.d	$a2, $s7, 0
@@ -3874,65 +3869,65 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	st.d	$s1, $a0, 0
 	move	$s1, $a3
 	beqz	$a3, .LBB9_22
-.LBB9_31:                               # %.lr.ph.i40
+.LBB9_30:                               # %.lr.ph.i40
                                         #   Parent Loop BB9_23 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB9_32 Depth 3
-                                        #       Child Loop BB9_37 Depth 3
-                                        #       Child Loop BB9_44 Depth 3
+                                        #       Child Loop BB9_31 Depth 3
+                                        #       Child Loop BB9_36 Depth 3
+                                        #       Child Loop BB9_43 Depth 3
+                                        #       Child Loop BB9_51 Depth 3
                                         #       Child Loop BB9_53 Depth 3
-                                        #       Child Loop BB9_55 Depth 3
 	ld.d	$a0, $s1, 8
 	ld.d	$s0, $a0, 16
 	ld.d	$a1, $s0, 56
 	addi.d	$a2, $zero, -1
-	move	$s5, $a5
+	move	$s5, $s8
 	.p2align	4, , 16
-.LBB9_32:                               #   Parent Loop BB9_23 Depth=1
-                                        #     Parent Loop BB9_31 Depth=2
+.LBB9_31:                               #   Parent Loop BB9_23 Depth=1
+                                        #     Parent Loop BB9_30 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a3, $a1, 0
 	add.d	$s5, $s5, $s3
 	addi.w	$a2, $a2, 1
 	addi.d	$a1, $a1, 8
-	bne	$a3, $a0, .LBB9_32
-# %bb.33:                               # %clause_LiteralGetIndex.exit.i45
-                                        #   in Loop: Header=BB9_31 Depth=2
-	ld.w	$a0, $s8, 0
+	bne	$a3, $a0, .LBB9_31
+# %bb.32:                               # %clause_LiteralGetIndex.exit.i45
+                                        #   in Loop: Header=BB9_30 Depth=2
+	ld.w	$a0, $s4, 0
 	ld.w	$a1, $s0, 0
 	st.d	$zero, $sp, 176
-	beq	$a0, $a1, .LBB9_30
-# %bb.34:                               #   in Loop: Header=BB9_31 Depth=2
+	beq	$a0, $a1, .LBB9_29
+# %bb.33:                               #   in Loop: Header=BB9_30 Depth=2
 	ld.w	$a0, $s0, 64
-	blt	$a2, $a0, .LBB9_30
-# %bb.35:                               #   in Loop: Header=BB9_31 Depth=2
-	beqz	$s6, .LBB9_39
-# %bb.36:                               # %.lr.ph.i.i.preheader
-                                        #   in Loop: Header=BB9_31 Depth=2
+	blt	$a2, $a0, .LBB9_29
+# %bb.34:                               #   in Loop: Header=BB9_30 Depth=2
+	beqz	$s6, .LBB9_38
+# %bb.35:                               # %.lr.ph.i.i.preheader
+                                        #   in Loop: Header=BB9_30 Depth=2
 	move	$a0, $s6
 	.p2align	4, , 16
-.LBB9_37:                               # %.lr.ph.i.i
+.LBB9_36:                               # %.lr.ph.i.i
                                         #   Parent Loop BB9_23 Depth=1
-                                        #     Parent Loop BB9_31 Depth=2
+                                        #     Parent Loop BB9_30 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a1, $a0, 8
-	beq	$s0, $a1, .LBB9_30
-# %bb.38:                               #   in Loop: Header=BB9_37 Depth=3
+	beq	$s0, $a1, .LBB9_29
+# %bb.37:                               #   in Loop: Header=BB9_36 Depth=3
 	ld.d	$a0, $a0, 0
-	bnez	$a0, .LBB9_37
-.LBB9_39:                               # %.loopexit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
+	bnez	$a0, .LBB9_36
+.LBB9_38:                               # %.loopexit.i
+                                        #   in Loop: Header=BB9_30 Depth=2
 	addi.d	$a7, $sp, 176
-	move	$a0, $s4
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	move	$a1, $s0
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
-	move	$a4, $s8
+	move	$a4, $s4
 	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	move	$a6, $fp
 	pcaddu18i	$ra, %call36(red_CRwTautologyCheck)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB9_29
-# %bb.40:                               #   in Loop: Header=BB9_31 Depth=2
+# %bb.39:                               #   in Loop: Header=BB9_30 Depth=2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -3945,40 +3940,40 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	move	$s6, $a0
 	ld.wu	$a0, $a0, 48
 	andi	$a1, $a0, 1
-	beqz	$a1, .LBB9_42
-# %bb.41:                               #   in Loop: Header=BB9_31 Depth=2
+	beqz	$a1, .LBB9_41
+# %bb.40:                               #   in Loop: Header=BB9_30 Depth=2
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $s6, 48
-.LBB9_42:                               # %clause_RemoveFlag.exit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
+.LBB9_41:                               # %clause_RemoveFlag.exit.i
+                                        #   in Loop: Header=BB9_30 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s8, $a0, %got_pc_lo12(cont_BINDINGS)
 	ld.w	$a1, $s8, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_STACKPOINTER)
-	ld.d	$fp, $a0, %got_pc_lo12(cont_STACKPOINTER)
-	ld.w	$a0, $fp, 0
+	ld.d	$a3, $a0, %got_pc_lo12(cont_STACKPOINTER)
+	ld.w	$a0, $a3, 0
 	addi.d	$a2, $a0, 1
-	st.w	$a2, $fp, 0
+	st.d	$a3, $sp, 120                   # 8-byte Folded Spill
+	st.w	$a2, $a3, 0
 	slli.d	$a2, $a0, 2
 	pcalau12i	$a0, %got_pc_hi20(cont_STACK)
 	ld.d	$a3, $a0, %got_pc_lo12(cont_STACK)
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a0, $s4, 0
-	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $fp, 0
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	stx.w	$a1, $a3, $a2
 	st.w	$zero, $s8, 0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(unify_MatchBindings)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 56
+	ld.d	$a0, $s4, 56
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a1
 	ld.d	$a0, $a0, 24
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 0
-	ld.d	$s4, $s4, 0
+	ld.d	$s4, $fp, 0
 	ld.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
@@ -3990,15 +3985,15 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	ld.w	$a1, $s8, 0
 	move	$s4, $a0
 	ori	$a5, $zero, 1
-	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
-	blez	$a1, .LBB9_45
-# %bb.43:                               # %.lr.ph.i108.i.preheader
-                                        #   in Loop: Header=BB9_31 Depth=2
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	blez	$a1, .LBB9_44
+# %bb.42:                               # %.lr.ph.i108.i.preheader
+                                        #   in Loop: Header=BB9_30 Depth=2
 	addi.d	$a0, $a1, 1
 	.p2align	4, , 16
-.LBB9_44:                               # %.lr.ph.i108.i
+.LBB9_43:                               # %.lr.ph.i108.i
                                         #   Parent Loop BB9_23 Depth=1
-                                        #     Parent Loop BB9_31 Depth=2
+                                        #     Parent Loop BB9_30 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$a1, $a1, %got_pc_lo12(cont_LASTBINDING)
@@ -4015,20 +4010,21 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	addi.d	$a1, $a0, -2
 	addi.w	$a0, $a0, -1
 	st.w	$a1, $s8, 0
-	bltu	$a5, $a0, .LBB9_44
-.LBB9_45:                               # %._crit_edge.i.i
-                                        #   in Loop: Header=BB9_31 Depth=2
-	ld.w	$a0, $fp, 0
-	beqz	$a0, .LBB9_47
-# %bb.46:                               #   in Loop: Header=BB9_31 Depth=2
+	bltu	$a5, $a0, .LBB9_43
+.LBB9_44:                               # %._crit_edge.i.i
+                                        #   in Loop: Header=BB9_30 Depth=2
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.w	$a0, $a2, 0
+	beqz	$a0, .LBB9_46
+# %bb.45:                               #   in Loop: Header=BB9_30 Depth=2
 	addi.w	$a0, $a0, -1
 	slli.d	$a1, $a0, 2
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	ldx.w	$a1, $a2, $a1
-	st.w	$a0, $fp, 0
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ldx.w	$a1, $a3, $a1
+	st.w	$a0, $a2, 0
 	st.w	$a1, $s8, 0
-.LBB9_47:                               # %cont_BackTrack.exit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
+.LBB9_46:                               # %cont_BackTrack.exit.i
+                                        #   in Loop: Header=BB9_30 Depth=2
 	ld.d	$a0, $s6, 56
 	srai.d	$a1, $s5, 29
 	ldx.d	$a0, $a0, $a1
@@ -4037,13 +4033,13 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	pcalau12i	$a2, %got_pc_hi20(fol_NOT)
 	ld.d	$a2, $a2, %got_pc_lo12(fol_NOT)
 	ld.w	$a2, $a2, 0
-	bne	$a1, $a2, .LBB9_49
-# %bb.48:                               #   in Loop: Header=BB9_31 Depth=2
+	bne	$a1, $a2, .LBB9_48
+# %bb.47:                               #   in Loop: Header=BB9_30 Depth=2
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 8
-.LBB9_49:                               # %clause_GetLiteralAtom.exit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+.LBB9_48:                               # %clause_GetLiteralAtom.exit.i
+                                        #   in Loop: Header=BB9_30 Depth=2
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(term_ReplaceSubtermBy)
@@ -4054,67 +4050,65 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 36
 	ld.d	$s4, $sp, 176
-	beqz	$a0, .LBB9_57
-# %bb.50:                               #   in Loop: Header=BB9_31 Depth=2
-	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
-	vori.b	$vr1, $vr0, 0
-	beqz	$s4, .LBB9_52
-# %bb.51:                               #   in Loop: Header=BB9_31 Depth=2
-	vld	$vr1, $s4, 32
+	beqz	$a0, .LBB9_55
+# %bb.49:                               #   in Loop: Header=BB9_30 Depth=2
+	beqz	$s4, .LBB9_59
+# %bb.50:                               #   in Loop: Header=BB9_30 Depth=2
+	ld.d	$fp, $s4, 32
+	ld.d	$a0, $s4, 40
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $s4, 32
-.LBB9_52:                               #   in Loop: Header=BB9_31 Depth=2
-	ld.d	$a0, $s6, 32
-	beqz	$a0, .LBB9_54
+	ld.d	$a1, $s6, 32
+	beqz	$a1, .LBB9_52
 	.p2align	4, , 16
-.LBB9_53:                               # %.lr.ph.i.i.i
+.LBB9_51:                               # %.lr.ph.i.i.i
                                         #   Parent Loop BB9_23 Depth=1
-                                        #     Parent Loop BB9_31 Depth=2
+                                        #     Parent Loop BB9_30 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a1, $s2, 128
-	ld.w	$a2, $a1, 32
-	ld.d	$a3, $s7, 0
-	ld.d	$a4, $a0, 0
-	add.d	$a2, $a3, $a2
-	st.d	$a2, $s7, 0
-	ld.d	$a1, $a1, 0
-	st.d	$a1, $a0, 0
-	ld.d	$a1, $s2, 128
-	st.d	$a0, $a1, 0
-	move	$a0, $a4
-	bnez	$a4, .LBB9_53
-.LBB9_54:                               # %list_Delete.exit.i.i
-                                        #   in Loop: Header=BB9_31 Depth=2
-	ld.d	$a0, $s6, 40
-	beqz	$a0, .LBB9_56
+	ld.d	$a2, $s2, 128
+	ld.w	$a3, $a2, 32
+	ld.d	$a4, $s7, 0
+	ld.d	$a5, $a1, 0
+	add.d	$a3, $a4, $a3
+	st.d	$a3, $s7, 0
+	ld.d	$a2, $a2, 0
+	st.d	$a2, $a1, 0
+	ld.d	$a2, $s2, 128
+	st.d	$a1, $a2, 0
+	move	$a1, $a5
+	bnez	$a5, .LBB9_51
+.LBB9_52:                               # %list_Delete.exit.i.i
+                                        #   in Loop: Header=BB9_30 Depth=2
+	ld.d	$a1, $s6, 40
+	beqz	$a1, .LBB9_54
 	.p2align	4, , 16
-.LBB9_55:                               # %.lr.ph.i19.i.i
+.LBB9_53:                               # %.lr.ph.i19.i.i
                                         #   Parent Loop BB9_23 Depth=1
-                                        #     Parent Loop BB9_31 Depth=2
+                                        #     Parent Loop BB9_30 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a1, $s2, 128
-	ld.w	$a2, $a1, 32
-	ld.d	$a3, $s7, 0
-	ld.d	$a4, $a0, 0
-	add.d	$a2, $a3, $a2
-	st.d	$a2, $s7, 0
-	ld.d	$a1, $a1, 0
-	st.d	$a1, $a0, 0
-	ld.d	$a1, $s2, 128
-	st.d	$a0, $a1, 0
-	move	$a0, $a4
-	bnez	$a4, .LBB9_55
-.LBB9_56:                               # %red_DocumentContextualRewriting.exit.i
-                                        #   in Loop: Header=BB9_31 Depth=2
-	ld.w	$fp, $s6, 0
+	ld.d	$a2, $s2, 128
+	ld.w	$a3, $a2, 32
+	ld.d	$a4, $s7, 0
+	ld.d	$a5, $a1, 0
+	add.d	$a3, $a4, $a3
+	st.d	$a3, $s7, 0
+	ld.d	$a2, $a2, 0
+	st.d	$a2, $a1, 0
+	ld.d	$a2, $s2, 128
+	st.d	$a1, $a2, 0
+	move	$a1, $a5
+	bnez	$a5, .LBB9_53
+.LBB9_54:                               # %red_DocumentContextualRewriting.exit.i
+                                        #   in Loop: Header=BB9_30 Depth=2
+	ld.w	$s8, $s6, 0
 	srai.d	$s5, $s5, 32
-	vst	$vr1, $s6, 32
+	st.d	$fp, $s6, 32
+	st.d	$a0, $s6, 40
 	ori	$a0, $zero, 16
-	vst	$vr1, $sp, 80                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$fp, $a0, 8
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vstelm.d	$vr0, $a0, 0, 0
+	st.d	$s8, $a0, 8
+	st.d	$fp, $a0, 0
 	ld.d	$fp, $s6, 40
 	st.d	$a0, $s6, 32
 	ori	$a0, $zero, 16
@@ -4123,7 +4117,8 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	st.d	$s5, $a0, 8
 	st.d	$fp, $a0, 0
 	st.d	$a0, $s6, 40
-	ld.w	$fp, $s8, 0
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.w	$fp, $a0, 0
 	ld.d	$s5, $s6, 32
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -4147,13 +4142,14 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	st.w	$a1, $s6, 0
 	ori	$a0, $zero, 22
 	st.w	$a0, $s6, 76
-.LBB9_57:                               #   in Loop: Header=BB9_31 Depth=2
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+.LBB9_55:                               #   in Loop: Header=BB9_30 Depth=2
 	move	$a0, $s6
-	move	$a1, $s8
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(clause_UpdateSplitDataFromPartner)
 	jirl	$ra, $ra, 0
-	beqz	$s4, .LBB9_59
-# %bb.58:                               #   in Loop: Header=BB9_31 Depth=2
+	beqz	$s4, .LBB9_57
+# %bb.56:                               #   in Loop: Header=BB9_30 Depth=2
 	move	$a0, $s6
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(clause_UpdateSplitDataFromPartner)
@@ -4161,11 +4157,11 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(clause_Delete)
 	jirl	$ra, $ra, 0
-.LBB9_59:                               #   in Loop: Header=BB9_31 Depth=2
+.LBB9_57:                               #   in Loop: Header=BB9_30 Depth=2
 	move	$a0, $s6
 	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $fp
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(clause_OrientEqualities)
 	jirl	$ra, $ra, 0
@@ -4186,8 +4182,9 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	pcaddu18i	$ra, %call36(clause_UpdateMaxVar)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 56
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	beqz	$a0, .LBB9_28
-# %bb.60:                               #   in Loop: Header=BB9_31 Depth=2
+# %bb.58:                               #   in Loop: Header=BB9_30 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $a0, 0
@@ -4200,7 +4197,7 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(clause_Print)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s8, 0
+	ld.w	$a1, $s4, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.43)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.43)
 	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
@@ -4210,9 +4207,15 @@ red_BackContextualRewriting:            # @red_BackContextualRewriting
 	pcaddu18i	$ra, %call36(clause_Print)
 	jirl	$ra, $ra, 0
 	b	.LBB9_28
-.LBB9_61:
+.LBB9_59:                               #   in Loop: Header=BB9_30 Depth=2
+	move	$fp, $zero
+	move	$a0, $zero
+	ld.d	$a1, $s6, 32
+	bnez	$a1, .LBB9_51
+	b	.LBB9_52
+.LBB9_60:
 	move	$s6, $zero
-.LBB9_62:                               # %._crit_edge
+.LBB9_61:                               # %._crit_edge
 	move	$a0, $s6
 	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload

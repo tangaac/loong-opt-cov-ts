@@ -582,16 +582,16 @@ TW_oldinput:                            # @TW_oldinput
 .LBB1_40:                               #   in Loop: Header=BB1_3 Depth=1
 	st.w	$a0, $sp, 72
 .LBB1_41:                               #   in Loop: Header=BB1_3 Depth=1
+	ld.w	$a1, $s4, 68
+	ld.w	$a2, $s4, 64
+	ld.w	$a3, $s4, 60
+	ld.w	$a4, $s4, 56
+	addi.d	$a5, $s5, 152
+	ld.d	$s8, $a5, 0
 	move	$s6, $s4
 	vld	$vr0, $s4, 56
-	vpickve2gr.w	$a1, $vr0, 2
-	vpickve2gr.w	$a2, $vr0, 3
-	sub.d	$s4, $a2, $a1
-	addi.d	$a1, $s5, 152
-	ld.d	$s8, $a1, 0
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
-	sub.d	$s0, $a2, $a1
+	sub.d	$s4, $a1, $a2
+	sub.d	$s0, $a3, $a4
 	addi.d	$s3, $s8, 56
 	addi.d	$s2, $s8, 60
 	addi.d	$s1, $s8, 64

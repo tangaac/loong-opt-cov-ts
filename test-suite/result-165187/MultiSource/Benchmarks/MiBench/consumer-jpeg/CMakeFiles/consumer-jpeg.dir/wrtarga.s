@@ -368,7 +368,7 @@ put_gray_rows:                          # @put_gray_rows
 # %bb.1:                                # %iter.check
 	ld.d	$a3, $a1, 32
 	ld.d	$a4, $a3, 0
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB4_5
 # %bb.2:                                # %iter.check
 	sub.d	$a3, $a0, $a4
@@ -385,7 +385,7 @@ put_gray_rows:                          # @put_gray_rows
 	move	$a6, $a4
 	b	.LBB4_13
 .LBB4_6:                                # %vector.ph
-	andi	$a5, $a3, 24
+	andi	$a5, $a3, 28
 	bstrpick.d	$a6, $a3, 31, 5
 	slli.d	$a7, $a6, 5
 	addi.d	$a6, $a4, 16
@@ -407,22 +407,22 @@ put_gray_rows:                          # @put_gray_rows
 # %bb.9:                                # %vec.epilog.iter.check
 	beqz	$a5, .LBB4_16
 .LBB4_10:                               # %vec.epilog.ph
-	bstrpick.d	$a6, $a3, 31, 3
-	slli.d	$t0, $a6, 3
+	bstrpick.d	$a6, $a3, 31, 2
+	slli.d	$t0, $a6, 2
 	sub.d	$a2, $a2, $t0
-	alsl.d	$a5, $a6, $a0, 3
-	alsl.d	$a6, $a6, $a4, 3
+	alsl.d	$a5, $a6, $a0, 2
+	alsl.d	$a6, $a6, $a4, 2
 	sub.d	$t1, $a7, $t0
 	add.d	$a4, $a4, $a7
 	add.d	$a0, $a0, $a7
 	.p2align	4, , 16
 .LBB4_11:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a4, 0
-	st.d	$a7, $a0, 0
-	addi.d	$t1, $t1, 8
-	addi.d	$a4, $a4, 8
-	addi.d	$a0, $a0, 8
+	ld.w	$a7, $a4, 0
+	st.w	$a7, $a0, 0
+	addi.d	$t1, $t1, 4
+	addi.d	$a4, $a4, 4
+	addi.d	$a0, $a0, 4
 	bnez	$t1, .LBB4_11
 # %bb.12:                               # %vec.epilog.middle.block
 	beq	$t0, $a3, .LBB4_14

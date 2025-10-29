@@ -957,7 +957,7 @@ _ZNSt6vectorIPN9__gnu_cxx15_Hashtable_nodeISt4pairIKPKciEEESaIS8_EE14_M_fill_ins
 # %bb.35:                               # %.lr.ph.i.i.i.i98.preheader
 	sub.d	$a1, $s4, $fp
 	addi.d	$a1, $a1, -8
-	ori	$a2, $zero, 56
+	ori	$a2, $zero, 40
 	bgeu	$a1, $a2, .LBB3_37
 # %bb.36:
 	move	$a1, $fp

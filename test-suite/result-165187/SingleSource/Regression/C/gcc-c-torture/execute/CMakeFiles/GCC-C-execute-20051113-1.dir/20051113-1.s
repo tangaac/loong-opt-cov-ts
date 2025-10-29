@@ -8,8 +8,8 @@ Sum:                                    # @Sum
 	ld.w	$a2, $a0, 0
 	blez	$a2, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB0_4
+	ori	$a1, $zero, 1
+	bne	$a2, $a1, .LBB0_4
 # %bb.2:
 	move	$a3, $zero
 	move	$a1, $zero
@@ -19,32 +19,24 @@ Sum:                                    # @Sum
 	move	$a0, $a1
 	ret
 .LBB0_4:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a3, $a1, 2
-	vrepli.b	$vr0, 0
-	addi.d	$a1, $a0, 70
-	move	$a4, $a3
-	vori.b	$vr1, $vr0, 0
+	move	$a1, $zero
+	move	$a4, $zero
+	bstrpick.d	$a3, $a2, 30, 1
+	slli.d	$a3, $a3, 1
+	addi.d	$a5, $a0, 40
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -60
-	ld.d	$a6, $a1, -30
-	ld.d	$a7, $a1, 0
-	ld.d	$t0, $a1, 30
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	vadd.d	$vr0, $vr2, $vr0
-	vadd.d	$vr1, $vr3, $vr1
-	addi.d	$a4, $a4, -4
-	addi.d	$a1, $a1, 120
-	bnez	$a4, .LBB0_5
+	ld.d	$a7, $a5, -30
+	ld.d	$t0, $a5, 0
+	add.d	$a1, $a7, $a1
+	add.d	$a4, $t0, $a4
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 60
+	bnez	$a6, .LBB0_5
 # %bb.6:                                # %middle.block
-	vadd.d	$vr0, $vr1, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a1, $vr0, 0
+	add.d	$a1, $a4, $a1
 	beq	$a3, $a2, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader10
 	ori	$a4, $zero, 30
@@ -74,8 +66,8 @@ Sum2:                                   # @Sum2
 	ld.w	$a2, $a0, 0
 	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a1, $zero, 4
-	bgeu	$a2, $a1, .LBB1_4
+	ori	$a1, $zero, 1
+	bne	$a2, $a1, .LBB1_4
 # %bb.2:
 	move	$a3, $zero
 	move	$a1, $zero
@@ -85,32 +77,24 @@ Sum2:                                   # @Sum2
 	move	$a0, $a1
 	ret
 .LBB1_4:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 2
-	slli.d	$a3, $a1, 2
-	vrepli.b	$vr0, 0
-	addi.d	$a1, $a0, 78
-	move	$a4, $a3
-	vori.b	$vr1, $vr0, 0
+	move	$a1, $zero
+	move	$a4, $zero
+	bstrpick.d	$a3, $a2, 30, 1
+	slli.d	$a3, $a3, 1
+	addi.d	$a5, $a0, 48
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -60
-	ld.d	$a6, $a1, -30
-	ld.d	$a7, $a1, 0
-	ld.d	$t0, $a1, 30
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	vadd.d	$vr0, $vr2, $vr0
-	vadd.d	$vr1, $vr3, $vr1
-	addi.d	$a4, $a4, -4
-	addi.d	$a1, $a1, 120
-	bnez	$a4, .LBB1_5
+	ld.d	$a7, $a5, -30
+	ld.d	$t0, $a5, 0
+	add.d	$a1, $a7, $a1
+	add.d	$a4, $t0, $a4
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 60
+	bnez	$a6, .LBB1_5
 # %bb.6:                                # %middle.block
-	vadd.d	$vr0, $vr1, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a1, $vr0, 0
+	add.d	$a1, $a4, $a1
 	beq	$a3, $a2, .LBB1_9
 .LBB1_7:                                # %.lr.ph.preheader10
 	ori	$a4, $zero, 30

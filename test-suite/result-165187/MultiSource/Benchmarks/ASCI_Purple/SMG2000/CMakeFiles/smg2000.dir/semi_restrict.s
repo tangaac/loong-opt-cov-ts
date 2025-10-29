@@ -569,7 +569,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	sub.d	$a2, $t6, $a1
 	mul.d	$a2, $a2, $a3
 	st.d	$a2, $sp, 232                   # 8-byte Folded Spill
-	ori	$a2, $zero, 7
+	ori	$a2, $zero, 5
 	sltu	$a2, $a2, $a0
 	addi.d	$a3, $a7, -1
 	sltui	$a3, $a3, 1

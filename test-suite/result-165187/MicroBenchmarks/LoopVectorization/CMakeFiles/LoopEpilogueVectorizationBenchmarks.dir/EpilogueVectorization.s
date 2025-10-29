@@ -1972,7 +1972,7 @@ _ZL11loopAutoVecIhEmPT_S1_S1_i:         # @_ZL11loopAutoVecIhEmPT_S1_S1_i
 # %bb.0:
 	blez	$a3, .LBB6_5
 # %bb.1:                                # %iter.check
-	ori	$a4, $zero, 16
+	ori	$a4, $zero, 4
 	bgeu	$a3, $a4, .LBB6_6
 # %bb.2:
 	move	$a4, $zero
@@ -2006,34 +2006,12 @@ _ZL11loopAutoVecIhEmPT_S1_S1_i:         # @_ZL11loopAutoVecIhEmPT_S1_S1_i
 	bltu	$a6, $a5, .LBB6_3
 # %bb.8:                                # %vector.main.loop.iter.check
 	ori	$a4, $zero, 32
-	bgeu	$a3, $a4, .LBB6_13
+	bgeu	$a3, $a4, .LBB6_10
 # %bb.9:
 	move	$a4, $zero
-.LBB6_10:                               # %vec.epilog.ph
-	move	$t0, $a4
-	bstrpick.d	$a4, $a3, 30, 4
-	slli.d	$a4, $a4, 4
-	sub.d	$a5, $t0, $a4
-	add.d	$a6, $a0, $t0
-	add.d	$a7, $a2, $t0
-	add.d	$t0, $a1, $t0
-	.p2align	4, , 16
-.LBB6_11:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $t0, 0
-	vld	$vr1, $a7, 0
-	vadd.b	$vr0, $vr1, $vr0
-	vst	$vr0, $a6, 0
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	addi.d	$t0, $t0, 16
-	bnez	$a5, .LBB6_11
-# %bb.12:                               # %vec.epilog.middle.block
-	bne	$a4, $a3, .LBB6_3
-	b	.LBB6_5
-.LBB6_13:                               # %vector.ph
-	andi	$a5, $a3, 16
+	b	.LBB6_14
+.LBB6_10:                               # %vector.ph
+	andi	$a5, $a3, 28
 	bstrpick.d	$a4, $a3, 30, 5
 	slli.d	$a4, $a4, 5
 	addi.d	$a6, $a0, 16
@@ -2041,7 +2019,7 @@ _ZL11loopAutoVecIhEmPT_S1_S1_i:         # @_ZL11loopAutoVecIhEmPT_S1_S1_i
 	addi.d	$t0, $a1, 16
 	move	$t1, $a4
 	.p2align	4, , 16
-.LBB6_14:                               # %vector.body
+.LBB6_11:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $t0, -16
 	vld	$vr1, $t0, 0
@@ -2055,12 +2033,36 @@ _ZL11loopAutoVecIhEmPT_S1_S1_i:         # @_ZL11loopAutoVecIhEmPT_S1_S1_i
 	addi.d	$a6, $a6, 32
 	addi.d	$a7, $a7, 32
 	addi.d	$t0, $t0, 32
-	bnez	$t1, .LBB6_14
-# %bb.15:                               # %middle.block
+	bnez	$t1, .LBB6_11
+# %bb.12:                               # %middle.block
 	beq	$a4, $a3, .LBB6_5
-# %bb.16:                               # %vec.epilog.iter.check
+# %bb.13:                               # %vec.epilog.iter.check
 	beqz	$a5, .LBB6_3
-	b	.LBB6_10
+.LBB6_14:                               # %vec.epilog.ph
+	move	$t0, $a4
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	sub.d	$a5, $t0, $a4
+	add.d	$a6, $a0, $t0
+	add.d	$a7, $a2, $t0
+	add.d	$t0, $a1, $t0
+	.p2align	4, , 16
+.LBB6_15:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$t1, $t0, 0
+	ld.w	$t2, $a7, 0
+	vinsgr2vr.w	$vr0, $t1, 0
+	vinsgr2vr.w	$vr1, $t2, 0
+	vadd.b	$vr0, $vr1, $vr0
+	vstelm.w	$vr0, $a6, 0, 0
+	addi.d	$a5, $a5, 4
+	addi.d	$a6, $a6, 4
+	addi.d	$a7, $a7, 4
+	addi.d	$t0, $t0, 4
+	bnez	$a5, .LBB6_15
+# %bb.16:                               # %vec.epilog.middle.block
+	bne	$a4, $a3, .LBB6_3
+	b	.LBB6_5
 .Lfunc_end6:
 	.size	_ZL11loopAutoVecIhEmPT_S1_S1_i, .Lfunc_end6-_ZL11loopAutoVecIhEmPT_S1_S1_i
                                         # -- End function
@@ -2387,7 +2389,7 @@ _ZL11loopAutoVecItEmPT_S1_S1_i:         # @_ZL11loopAutoVecItEmPT_S1_S1_i
 # %bb.0:
 	blez	$a3, .LBB11_5
 # %bb.1:                                # %iter.check
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	bgeu	$a3, $a4, .LBB11_6
 # %bb.2:
 	move	$a4, $zero
@@ -2421,34 +2423,12 @@ _ZL11loopAutoVecItEmPT_S1_S1_i:         # @_ZL11loopAutoVecItEmPT_S1_S1_i
 	bltu	$a6, $a5, .LBB11_3
 # %bb.8:                                # %vector.main.loop.iter.check
 	ori	$a4, $zero, 16
-	bgeu	$a3, $a4, .LBB11_13
+	bgeu	$a3, $a4, .LBB11_10
 # %bb.9:
 	move	$a4, $zero
-.LBB11_10:                              # %vec.epilog.ph
-	move	$t0, $a4
-	bstrpick.d	$a4, $a3, 30, 3
-	slli.d	$a4, $a4, 3
-	sub.d	$a5, $t0, $a4
-	alsl.d	$a6, $t0, $a0, 1
-	alsl.d	$a7, $t0, $a2, 1
-	alsl.d	$t0, $t0, $a1, 1
-	.p2align	4, , 16
-.LBB11_11:                              # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $t0, 0
-	vld	$vr1, $a7, 0
-	vadd.h	$vr0, $vr1, $vr0
-	vst	$vr0, $a6, 0
-	addi.d	$a5, $a5, 8
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	addi.d	$t0, $t0, 16
-	bnez	$a5, .LBB11_11
-# %bb.12:                               # %vec.epilog.middle.block
-	bne	$a4, $a3, .LBB11_3
-	b	.LBB11_5
-.LBB11_13:                              # %vector.ph
-	andi	$a5, $a3, 8
+	b	.LBB11_14
+.LBB11_10:                              # %vector.ph
+	andi	$a5, $a3, 12
 	bstrpick.d	$a4, $a3, 30, 4
 	slli.d	$a4, $a4, 4
 	addi.d	$a6, $a0, 16
@@ -2456,7 +2436,7 @@ _ZL11loopAutoVecItEmPT_S1_S1_i:         # @_ZL11loopAutoVecItEmPT_S1_S1_i
 	addi.d	$t0, $a1, 16
 	move	$t1, $a4
 	.p2align	4, , 16
-.LBB11_14:                              # %vector.body
+.LBB11_11:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $t0, -16
 	vld	$vr1, $t0, 0
@@ -2470,12 +2450,36 @@ _ZL11loopAutoVecItEmPT_S1_S1_i:         # @_ZL11loopAutoVecItEmPT_S1_S1_i
 	addi.d	$a6, $a6, 32
 	addi.d	$a7, $a7, 32
 	addi.d	$t0, $t0, 32
-	bnez	$t1, .LBB11_14
-# %bb.15:                               # %middle.block
+	bnez	$t1, .LBB11_11
+# %bb.12:                               # %middle.block
 	beq	$a4, $a3, .LBB11_5
-# %bb.16:                               # %vec.epilog.iter.check
+# %bb.13:                               # %vec.epilog.iter.check
 	beqz	$a5, .LBB11_3
-	b	.LBB11_10
+.LBB11_14:                              # %vec.epilog.ph
+	move	$t0, $a4
+	bstrpick.d	$a4, $a3, 30, 2
+	slli.d	$a4, $a4, 2
+	sub.d	$a5, $t0, $a4
+	alsl.d	$a6, $t0, $a0, 1
+	alsl.d	$a7, $t0, $a2, 1
+	alsl.d	$t0, $t0, $a1, 1
+	.p2align	4, , 16
+.LBB11_15:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$t1, $t0, 0
+	ld.d	$t2, $a7, 0
+	vinsgr2vr.d	$vr0, $t1, 0
+	vinsgr2vr.d	$vr1, $t2, 0
+	vadd.h	$vr0, $vr1, $vr0
+	vstelm.d	$vr0, $a6, 0, 0
+	addi.d	$a5, $a5, 4
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $a7, 8
+	addi.d	$t0, $t0, 8
+	bnez	$a5, .LBB11_15
+# %bb.16:                               # %vec.epilog.middle.block
+	bne	$a4, $a3, .LBB11_3
+	b	.LBB11_5
 .Lfunc_end11:
 	.size	_ZL11loopAutoVecItEmPT_S1_S1_i, .Lfunc_end11-_ZL11loopAutoVecItEmPT_S1_S1_i
                                         # -- End function

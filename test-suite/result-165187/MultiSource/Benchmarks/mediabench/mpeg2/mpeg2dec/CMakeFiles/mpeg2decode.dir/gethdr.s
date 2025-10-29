@@ -259,7 +259,7 @@ Get_Hdr:                                # @Get_Hdr
 	addi.d	$a0, $a0, 4
 	bne	$a1, $s6, .LBB0_19
 	b	.LBB0_21
-.LBB0_20:                               # %vector.body13
+.LBB0_20:                               # %vector.body11
                                         #   in Loop: Header=BB0_2 Depth=1
 	ld.w	$a0, $s5, 0
 	ld.w	$a2, $s5, 4
@@ -425,129 +425,129 @@ Get_Hdr:                                # @Get_Hdr
                                         #   in Loop: Header=BB0_2 Depth=1
 	ori	$a0, $zero, 2104
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2120
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2360
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2120
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2376
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2616
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2632
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2872
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2632
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2888
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2136
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2152
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2392
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2152
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2408
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2648
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2664
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2904
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2664
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2920
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2168
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2184
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2424
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2184
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2440
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2680
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2696
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2936
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2696
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2952
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2200
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2216
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2456
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2216
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2472
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2712
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2728
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2968
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2728
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2984
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2232
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2248
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2488
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2248
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2504
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2744
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2760
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3000
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2760
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 3016
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2264
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2280
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2520
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2280
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2536
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2776
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2792
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3032
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2792
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 3048
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2296
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2312
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2552
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2312
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2568
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2808
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2824
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3064
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2824
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 3080
 	vstx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2328
 	vldx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2344
-	vldx	$vr1, $a1, $a0
 	ori	$a0, $zero, 2584
+	vldx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2344
 	vldx	$vr2, $a1, $a0
 	ori	$a0, $zero, 2600
 	vldx	$vr3, $a1, $a0
 	ori	$a0, $zero, 2840
 	vstx	$vr0, $a1, $a0
-	ori	$a0, $zero, 2856
-	vstx	$vr1, $a1, $a0
 	ori	$a0, $zero, 3096
+	vstx	$vr1, $a1, $a0
+	ori	$a0, $zero, 2856
 	vstx	$vr2, $a1, $a0
 	ori	$a0, $zero, 3112
 	vstx	$vr3, $a1, $a0

@@ -151,61 +151,7 @@ _ZN7NCrypto5NSha15CHmac5FinalEPhm:      # @_ZN7NCrypto5NSha15CHmac5FinalEPhm
 	.size	_ZN7NCrypto5NSha15CHmac5FinalEPhm, .Lfunc_end1-_ZN7NCrypto5NSha15CHmac5FinalEPhm
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
-.LCPI2_0:
-	.byte	1                               # 0x1
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	4                               # 0x4
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	9                               # 0x9
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	12                              # 0xc
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_1:
-	.byte	0                               # 0x0
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	5                               # 0x5
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	8                               # 0x8
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	13                              # 0xd
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_2:
-	.byte	2                               # 0x2
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	6                               # 0x6
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	10                              # 0xa
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	14                              # 0xe
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-	.text
-	.globl	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
+	.globl	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm # -- Begin function _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	.p2align	5
 	.type	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm,@function
 _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
@@ -242,36 +188,20 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha18CContext6UpdateEPKhm)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 20
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha18CContext5FinalEPh)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a0, %pc_lo12(.LCPI2_0)
-	vrepli.b	$vr2, 0
-	vshuf.b	$vr1, $vr2, $vr0, $vr1
-	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	vld	$vr3, $a0, %pc_lo12(.LCPI2_1)
-	ori	$a0, $zero, 16
-	lu32i.d	$a0, 24
-	vreplgr2vr.d	$vr4, $a0
-	vsll.w	$vr1, $vr1, $vr4
-	vshuf.b	$vr3, $vr2, $vr0, $vr3
-	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
-	vld	$vr4, $a0, %pc_lo12(.LCPI2_2)
-	ori	$a0, $zero, 24
-	lu32i.d	$a0, 16
-	vreplgr2vr.d	$vr5, $a0
-	vsll.w	$vr3, $vr3, $vr5
-	vor.v	$vr1, $vr3, $vr1
-	vshuf.b	$vr2, $vr2, $vr0, $vr4
-	vslli.w	$vr2, $vr2, 8
-	ld.w	$a0, $sp, 32
-	vor.v	$vr1, $vr1, $vr2
-	vsrli.w	$vr0, $vr0, 24
-	vor.v	$vr0, $vr1, $vr0
-	revb.2w	$a0, $a0
-	b	.LBB2_6
+	ld.w	$a0, $sp, 20
+	revb.2w	$a2, $a0
+	ld.w	$a0, $sp, 24
+	ld.w	$a1, $sp, 28
+	ld.w	$a5, $sp, 32
+	ld.w	$a6, $sp, 36
+	revb.2w	$a4, $a0
+	revb.2w	$a3, $a1
+	revb.2w	$a1, $a5
+	revb.2w	$a0, $a6
+	b	.LBB2_7
 .LBB2_2:                                # %.preheader
 	move	$a0, $zero
 	beqz	$a2, .LBB2_6
@@ -294,30 +224,45 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	move	$a5, $a7
 	bne	$a2, $a7, .LBB2_4
 # %bb.5:                                # %.loopexit.loopexit
-	vld	$vr0, $sp, 144
+	ld.w	$a2, $sp, 144
+	ld.w	$a4, $sp, 148
+	ld.w	$a3, $sp, 152
+	ld.w	$a1, $sp, 156
 	ld.w	$a0, $sp, 160
-.LBB2_6:                                # %.loopexit
+	b	.LBB2_7
+.LBB2_6:
+	move	$a1, $zero
+	move	$a3, $zero
+	move	$a4, $zero
+	move	$a2, $zero
+.LBB2_7:                                # %.loopexit
+	lu12i.w	$a5, 222051
+	ori	$a5, $a5, 1590
+	xor	$a2, $a2, $a5
+	st.w	$a2, $sp, 144
+	xor	$a2, $a4, $a5
+	st.w	$a2, $sp, 148
+	xor	$a2, $a3, $a5
+	st.w	$a2, $sp, 152
+	vld	$vr0, $sp, 164
+	xor	$a1, $a1, $a5
+	st.w	$a1, $sp, 156
 	vrepli.b	$vr1, 54
 	vxor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $sp, 144
-	lu12i.w	$a1, 222051
-	vld	$vr0, $sp, 164
-	ori	$a1, $a1, 1590
-	xor	$a0, $a0, $a1
-	st.w	$a0, $sp, 160
-	vxor.v	$vr0, $vr0, $vr1
-	ld.w	$a0, $sp, 196
 	vst	$vr0, $sp, 164
-	ld.w	$a2, $sp, 200
 	vld	$vr0, $sp, 180
-	xor	$a0, $a0, $a1
-	st.w	$a0, $sp, 196
-	xor	$a0, $a2, $a1
-	ld.w	$a2, $sp, 204
-	st.w	$a0, $sp, 200
+	xor	$a0, $a0, $a5
+	st.w	$a0, $sp, 160
+	ld.w	$a0, $sp, 196
 	vxor.v	$vr0, $vr0, $vr1
 	vst	$vr0, $sp, 180
-	xor	$a0, $a2, $a1
+	ld.w	$a1, $sp, 200
+	xor	$a0, $a0, $a5
+	ld.w	$a2, $sp, 204
+	st.w	$a0, $sp, 196
+	xor	$a0, $a1, $a5
+	st.w	$a0, $sp, 200
+	xor	$a0, $a2, $a5
 	st.w	$a0, $sp, 204
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha112CContextBase4InitEv)

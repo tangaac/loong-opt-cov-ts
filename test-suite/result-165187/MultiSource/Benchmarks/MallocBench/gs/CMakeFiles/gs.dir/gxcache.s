@@ -162,22 +162,18 @@ gx_unalloc_cached_char:                 # @gx_unalloc_cached_char
 	.type	gx_lookup_fm_pair,@function
 gx_lookup_fm_pair:                      # @gx_lookup_fm_pair
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 8                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
 	ld.d	$fp, $a0, 328
-	fld.s	$fs0, $a0, 336
+	fld.s	$fa1, $a0, 336
 	ld.d	$s0, $fp, 24
-	fld.s	$fs1, $a0, 352
-	fld.s	$fs2, $a0, 368
-	fld.s	$fs3, $a0, 384
+	fld.s	$fa4, $a0, 352
+	fld.s	$fa3, $a0, 368
+	fld.s	$fa2, $a0, 384
 	ld.w	$a1, $s0, 48
 	ld.d	$s1, $s0, 1112
 	beqz	$a1, .LBB3_10
@@ -207,19 +203,19 @@ gx_lookup_fm_pair:                      # @gx_lookup_fm_pair
 	bne	$a3, $fp, .LBB3_2
 .LBB3_6:                                #   in Loop: Header=BB3_3 Depth=1
 	fld.s	$fa0, $a0, 8
-	fcmp.cune.s	$fcc0, $fa0, $fs0
+	fcmp.cune.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB3_2
 # %bb.7:                                #   in Loop: Header=BB3_3 Depth=1
 	fld.s	$fa0, $a0, 12
-	fcmp.cune.s	$fcc0, $fa0, $fs1
+	fcmp.cune.s	$fcc0, $fa0, $fa4
 	bcnez	$fcc0, .LBB3_2
 # %bb.8:                                #   in Loop: Header=BB3_3 Depth=1
 	fld.s	$fa0, $a0, 16
-	fcmp.cune.s	$fcc0, $fa0, $fs2
+	fcmp.cune.s	$fcc0, $fa0, $fa3
 	bcnez	$fcc0, .LBB3_2
 # %bb.9:                                #   in Loop: Header=BB3_3 Depth=1
 	fld.s	$fa0, $a0, 20
-	fcmp.ceq.s	$fcc0, $fa0, $fs3
+	fcmp.ceq.s	$fcc0, $fa0, $fa2
 	bceqz	$fcc0, .LBB3_2
 	b	.LBB3_14
 .LBB3_10:                               # %._crit_edge
@@ -233,8 +229,16 @@ gx_lookup_fm_pair:                      # @gx_lookup_fm_pair
 	addi.d	$a0, $s0, 72
 	ori	$a2, $zero, 1024
 	move	$a1, $zero
+	vst	$vr1, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr2, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
+	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
 	move	$a2, $zero
 	ori	$a0, $zero, 1
 	b	.LBB3_13
@@ -252,22 +256,18 @@ gx_lookup_fm_pair:                      # @gx_lookup_fm_pair
 	masknez	$a2, $a2, $a3
 	st.w	$a2, $s0, 1120
 	stx.d	$fp, $s1, $a1
-	fst.s	$fs0, $a0, 8
-	fst.s	$fs1, $a0, 12
-	fst.s	$fs2, $a0, 16
-	fst.s	$fs3, $a0, 20
+	vextrins.w	$vr1, $vr4, 16
+	vextrins.w	$vr1, $vr3, 32
+	vextrins.w	$vr1, $vr2, 48
+	vst	$vr1, $a0, 8
 	st.w	$zero, $a0, 24
 .LBB3_14:                               # %.loopexit
-	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end3:
 	.size	gx_lookup_fm_pair, .Lfunc_end3-gx_lookup_fm_pair

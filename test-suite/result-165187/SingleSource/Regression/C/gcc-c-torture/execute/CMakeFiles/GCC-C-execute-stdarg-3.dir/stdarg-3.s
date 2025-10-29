@@ -29,7 +29,7 @@ f1:                                     # @f1
 	blez	$a0, .LBB1_5
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a2, $sp, 8
-	ori	$a3, $zero, 20
+	ori	$a3, $zero, 14
 	pcalau12i	$a1, %pc_hi20(x)
 	addi.d	$a1, $a1, %pc_lo12(x)
 	bgeu	$a0, $a3, .LBB1_6
@@ -115,7 +115,7 @@ f2:                                     # @f2
 	blez	$a0, .LBB2_5
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a2, $sp, 8
-	ori	$a3, $zero, 20
+	ori	$a3, $zero, 14
 	pcalau12i	$a1, %pc_hi20(d)
 	addi.d	$a1, $a1, %pc_lo12(d)
 	bgeu	$a0, $a3, .LBB2_6

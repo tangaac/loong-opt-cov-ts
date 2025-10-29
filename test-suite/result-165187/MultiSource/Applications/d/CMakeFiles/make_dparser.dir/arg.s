@@ -491,18 +491,18 @@ usage:                                  # @usage
 	.type	process_args,@function
 process_args:                           # @process_args
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s6, $a0, 24
 	ld.d	$a0, $s6, 0
@@ -596,13 +596,11 @@ process_args:                           # @process_args
 	st.d	$a0, $fp, 16
 	ld.d	$s0, $s1, 8
 	addi.d	$s8, $s1, 8
-	st.d	$s8, $sp, 32
+	st.d	$s8, $sp, 16
 	beqz	$s0, .LBB2_38
 # %bb.14:                               # %.lr.ph100
 	addi.d	$s1, $s6, 56
 	ori	$s2, $zero, 45
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB2_17
 	.p2align	4, , 16
 .LBB2_15:                               #   in Loop: Header=BB2_17 Depth=1
@@ -615,17 +613,17 @@ process_args:                           # @process_args
 	ld.w	$a1, $fp, 8
 	st.d	$a0, $fp, 0
 	ld.d	$a2, $s8, 0
-	addi.d	$a3, $a1, 1
+	addi.w	$a3, $a1, 1
 	st.w	$a3, $fp, 8
 	slli.d	$a1, $a1, 3
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vinsgr2vr.d	$vr0, $a2, 0
-	vstx	$vr0, $a0, $a1
+	stx.d	$a2, $a0, $a1
+	slli.d	$a1, $a3, 3
+	stx.d	$zero, $a0, $a1
 .LBB2_16:                               # %.loopexit
                                         #   in Loop: Header=BB2_17 Depth=1
 	ld.d	$s0, $s8, 8
 	addi.d	$s8, $s8, 8
-	st.d	$s8, $sp, 32
+	st.d	$s8, $sp, 16
 	beqz	$s0, .LBB2_38
 .LBB2_17:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_27 Depth 2
@@ -686,11 +684,11 @@ process_args:                           # @process_args
 	b	.LBB2_16
 	.p2align	4, , 16
 .LBB2_26:                               #   in Loop: Header=BB2_27 Depth=2
-	addi.d	$a2, $sp, 32
+	addi.d	$a2, $sp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(process_arg)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 32
+	ld.d	$s8, $sp, 16
 	ld.d	$a0, $s8, 0
 	addi.d	$a1, $a0, 1
 	st.d	$a1, $s8, 0
@@ -758,27 +756,27 @@ process_args:                           # @process_args
 	addi.d	$a0, $a0, -1
 .LBB2_37:                               #   in Loop: Header=BB2_17 Depth=1
 	st.d	$a0, $s8, 0
-	addi.d	$a2, $sp, 32
+	addi.d	$a2, $sp, 16
 	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(process_arg)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 32
+	ld.d	$s8, $sp, 16
 	ori	$s2, $zero, 45
 	b	.LBB2_16
 .LBB2_38:                               # %._crit_edge101
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB2_39:                               # %.preheader79._crit_edge
 	move	$a0, $fp

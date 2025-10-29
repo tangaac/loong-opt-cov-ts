@@ -370,16 +370,16 @@ kineticEnergy:                          # @kineticEnergy
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a1, $a0, 24
-	fld.d	$fa0, $a0, 48
+	fld.d	$fa1, $a0, 48
 	ld.w	$a0, $a1, 12
-	fst.d	$fa0, $sp, 16
-	st.d	$zero, $sp, 24
+	movgr2fr.d	$fa0, $zero
+	vpackev.d	$vr1, $vr0, $vr1
+	vst	$vr1, $sp, 16
 	blez	$a0, .LBB3_6
 # %bb.1:                                # %.lr.ph38
 	ld.d	$a1, $a1, 120
 	move	$a2, $zero
 	move	$a3, $zero
-	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -928
 	b	.LBB3_3
 	.p2align	4, , 16

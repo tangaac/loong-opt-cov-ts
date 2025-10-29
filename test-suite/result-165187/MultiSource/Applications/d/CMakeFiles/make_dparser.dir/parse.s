@@ -6042,9 +6042,9 @@ add_Reduction:                          # @add_Reduction
 	beqz	$a4, .LBB40_5
 # %bb.2:                                # %.lr.ph.i
 	ld.d	$a5, $a1, 16
-	ori	$t0, $zero, 4
+	ori	$t0, $zero, 1
 	bstrpick.d	$a7, $a4, 31, 0
-	bgeu	$a4, $t0, .LBB40_6
+	bne	$a4, $t0, .LBB40_6
 # %bb.3:
 	move	$t0, $zero
 	move	$a4, $zero
@@ -6056,37 +6056,35 @@ add_Reduction:                          # @add_Reduction
 	move	$a4, $zero
 	b	.LBB40_11
 .LBB40_6:                               # %vector.ph
-	bstrpick.d	$a4, $a7, 31, 2
-	slli.d	$t0, $a4, 2
-	vrepli.b	$vr0, 0
-	addi.d	$a4, $a5, 16
-	move	$t1, $t0
-	vori.b	$vr1, $vr0, 0
+	move	$a4, $zero
+	move	$t1, $zero
+	bstrpick.d	$t0, $a7, 31, 1
+	slli.d	$t0, $t0, 1
+	addi.d	$t2, $a5, 8
+	move	$t3, $t0
 	.p2align	4, , 16
 .LBB40_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t2, $a4, -16
-	ld.d	$t3, $a4, -8
-	ld.d	$t4, $a4, 0
-	ld.d	$t5, $a4, 8
-	ld.w	$t2, $t2, 56
-	ld.w	$t3, $t3, 56
+	ld.d	$t4, $t2, -8
+	ld.d	$t5, $t2, 0
 	ld.w	$t4, $t4, 56
 	ld.w	$t5, $t5, 56
-	vinsgr2vr.w	$vr2, $t2, 0
-	vinsgr2vr.w	$vr2, $t3, 1
-	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr3, $t5, 1
-	vmax.wu	$vr0, $vr0, $vr2
-	vmax.wu	$vr1, $vr1, $vr3
-	addi.d	$t1, $t1, -4
-	addi.d	$a4, $a4, 32
-	bnez	$t1, .LBB40_7
+	sltu	$t6, $t4, $a4
+	masknez	$t4, $t4, $t6
+	maskeqz	$a4, $a4, $t6
+	or	$a4, $a4, $t4
+	sltu	$t4, $t5, $t1
+	masknez	$t5, $t5, $t4
+	maskeqz	$t1, $t1, $t4
+	or	$t1, $t1, $t5
+	addi.d	$t3, $t3, -2
+	addi.d	$t2, $t2, 16
+	bnez	$t3, .LBB40_7
 # %bb.8:                                # %middle.block
-	vmax.wu	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.wu	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a4, $vr0, 0
+	sltu	$t2, $t1, $a4
+	masknez	$t1, $t1, $t2
+	maskeqz	$a4, $a4, $t2
+	or	$a4, $a4, $t1
 	beq	$t0, $a7, .LBB40_11
 .LBB40_9:                               # %scalar.ph.preheader
 	sub.d	$a7, $a7, $t0
@@ -6109,8 +6107,7 @@ add_Reduction:                          # @add_Reduction
 # %bb.12:                               # %.lr.ph
 	ld.d	$a5, $a2, 24
 	ori	$a6, $a6, 4095
-	ori	$a7, $zero, 4
-	vrepli.b	$vr0, 0
+	ori	$a7, $zero, 1
 	b	.LBB40_14
 	.p2align	4, , 16
 .LBB40_13:                              #   in Loop: Header=BB40_14 Depth=1
@@ -6135,7 +6132,7 @@ add_Reduction:                          # @add_Reduction
                                         #   in Loop: Header=BB40_14 Depth=1
 	ld.d	$t1, $t1, 16
 	bstrpick.d	$t2, $t3, 31, 0
-	bgeu	$t3, $a7, .LBB40_20
+	bne	$t3, $a7, .LBB40_20
 # %bb.18:                               #   in Loop: Header=BB40_14 Depth=1
 	move	$t3, $zero
 	move	$t4, $zero
@@ -6144,48 +6141,46 @@ add_Reduction:                          # @add_Reduction
 .LBB40_19:                              #   in Loop: Header=BB40_14 Depth=1
 	move	$t4, $zero
 	b	.LBB40_25
-.LBB40_20:                              # %vector.ph94
+.LBB40_20:                              # %vector.ph93
                                         #   in Loop: Header=BB40_14 Depth=1
-	bstrpick.d	$t3, $t2, 31, 2
-	slli.d	$t3, $t3, 2
-	addi.d	$t4, $t1, 16
-	move	$t5, $t3
-	vori.b	$vr1, $vr0, 0
-	vori.b	$vr2, $vr0, 0
+	move	$t4, $zero
+	move	$t5, $zero
+	bstrpick.d	$t3, $t2, 31, 1
+	slli.d	$t3, $t3, 1
+	addi.d	$t6, $t1, 8
+	move	$t7, $t3
 	.p2align	4, , 16
-.LBB40_21:                              # %vector.body97
+.LBB40_21:                              # %vector.body96
                                         #   Parent Loop BB40_14 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t6, $t4, -16
-	ld.d	$t7, $t4, -8
-	ld.d	$t8, $t4, 0
-	ld.d	$s1, $t4, 8
-	ld.w	$t6, $t6, 56
-	ld.w	$t7, $t7, 56
+	ld.d	$t8, $t6, -8
+	ld.d	$s1, $t6, 0
 	ld.w	$t8, $t8, 56
 	ld.w	$s1, $s1, 56
-	vinsgr2vr.w	$vr3, $t6, 0
-	vinsgr2vr.w	$vr3, $t7, 1
-	vinsgr2vr.w	$vr4, $t8, 0
-	vinsgr2vr.w	$vr4, $s1, 1
-	vmax.wu	$vr1, $vr1, $vr3
-	vmax.wu	$vr2, $vr2, $vr4
-	addi.d	$t5, $t5, -4
-	addi.d	$t4, $t4, 32
-	bnez	$t5, .LBB40_21
-# %bb.22:                               # %middle.block104
+	sltu	$s2, $t8, $t4
+	masknez	$t8, $t8, $s2
+	maskeqz	$t4, $t4, $s2
+	or	$t4, $t4, $t8
+	sltu	$t8, $s1, $t5
+	masknez	$s1, $s1, $t8
+	maskeqz	$t5, $t5, $t8
+	or	$t5, $t5, $s1
+	addi.d	$t7, $t7, -2
+	addi.d	$t6, $t6, 16
+	bnez	$t7, .LBB40_21
+# %bb.22:                               # %middle.block101
                                         #   in Loop: Header=BB40_14 Depth=1
-	vmax.wu	$vr1, $vr1, $vr2
-	vbsrl.v	$vr2, $vr1, 4
-	vmax.wu	$vr1, $vr2, $vr1
-	vpickve2gr.w	$t4, $vr1, 0
+	sltu	$t6, $t5, $t4
+	masknez	$t5, $t5, $t6
+	maskeqz	$t4, $t4, $t6
+	or	$t4, $t4, $t5
 	beq	$t3, $t2, .LBB40_25
-.LBB40_23:                              # %scalar.ph92.preheader
+.LBB40_23:                              # %scalar.ph91.preheader
                                         #   in Loop: Header=BB40_14 Depth=1
 	sub.d	$t2, $t2, $t3
 	alsl.d	$t1, $t3, $t1, 3
 	.p2align	4, , 16
-.LBB40_24:                              # %scalar.ph92
+.LBB40_24:                              # %scalar.ph91
                                         #   Parent Loop BB40_14 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t3, $t1, 0

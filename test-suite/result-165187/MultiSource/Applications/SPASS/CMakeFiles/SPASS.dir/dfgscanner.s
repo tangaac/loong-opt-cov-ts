@@ -277,7 +277,7 @@ dfg_lex:                                # @dfg_lex
 	blt	$s1, $a1, .LBB0_45
 # %bb.29:                               # %iter.check
                                         #   in Loop: Header=BB0_22 Depth=4
-	ori	$a3, $zero, 9
+	ori	$a3, $zero, 5
 	move	$a6, $zero
 	bltu	$s1, $a3, .LBB0_34
 # %bb.30:                               # %iter.check
@@ -309,7 +309,7 @@ dfg_lex:                                # @dfg_lex
 	b	.LBB0_42
 .LBB0_35:                               # %vector.ph
                                         #   in Loop: Header=BB0_22 Depth=4
-	andi	$a4, $a3, 24
+	andi	$a4, $a3, 28
 	bstrpick.d	$a5, $a3, 31, 5
 	slli.d	$a7, $a5, 5
 	addi.d	$a5, $a0, 16
@@ -338,10 +338,10 @@ dfg_lex:                                # @dfg_lex
 	beqz	$a4, .LBB0_69
 .LBB0_39:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB0_22 Depth=4
-	bstrpick.d	$a5, $a3, 31, 3
-	slli.d	$a6, $a5, 3
-	alsl.d	$a4, $a5, $a2, 3
-	alsl.d	$a5, $a5, $a0, 3
+	bstrpick.d	$a5, $a3, 31, 2
+	slli.d	$a6, $a5, 2
+	alsl.d	$a4, $a5, $a2, 2
+	alsl.d	$a5, $a5, $a0, 2
 	sub.d	$t0, $a7, $a6
 	add.d	$t1, $a0, $a7
 	add.d	$a2, $a2, $a7
@@ -352,11 +352,11 @@ dfg_lex:                                # @dfg_lex
                                         #       Parent Loop BB0_21 Depth=3
                                         #         Parent Loop BB0_22 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a7, $t1, 0
-	st.d	$a7, $a2, 0
-	addi.d	$t0, $t0, 8
-	addi.d	$t1, $t1, 8
-	addi.d	$a2, $a2, 8
+	ld.w	$a7, $t1, 0
+	st.w	$a7, $a2, 0
+	addi.d	$t0, $t0, 4
+	addi.d	$t1, $t1, 4
+	addi.d	$a2, $a2, 4
 	bnez	$t0, .LBB0_40
 # %bb.41:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_22 Depth=4

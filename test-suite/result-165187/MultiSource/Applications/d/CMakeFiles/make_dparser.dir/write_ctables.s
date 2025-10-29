@@ -1103,51 +1103,41 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 # %bb.90:                               # %.lr.ph427.i
 	ld.d	$a1, $fp, 96
 	ld.w	$a0, $fp, 532
-	ori	$a2, $zero, 4
-	bgeu	$s2, $a2, .LBB8_93
+	ori	$a2, $zero, 1
+	bne	$s2, $a2, .LBB8_93
 # %bb.91:
 	move	$a2, $zero
 	move	$a3, $zero
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB8_96
 .LBB8_92:
 	ori	$a0, $zero, 32
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB8_99
 .LBB8_93:                               # %vector.ph
-	bstrpick.d	$a2, $s2, 31, 2
-	slli.d	$a2, $a2, 2
-	vinsgr2vr.w	$vr0, $a0, 0
-	vinsgr2vr.w	$vr0, $a0, 1
-	vrepli.b	$vr1, 0
-	addi.d	$a3, $a1, 16
-	move	$a4, $a2
-	vori.b	$vr2, $vr1, 0
+	move	$a3, $zero
+	move	$a4, $zero
+	bstrpick.d	$a2, $s2, 31, 1
+	slli.d	$a2, $a2, 1
+	addi.d	$a5, $a1, 8
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB8_94:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, -16
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	ld.d	$t0, $a3, 8
-	ld.w	$a5, $a5, 296
-	ld.w	$a6, $a6, 296
+	ld.d	$a7, $a5, -8
+	ld.d	$t0, $a5, 0
 	ld.w	$a7, $a7, 296
 	ld.w	$t0, $t0, 296
-	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 0
-	vinsgr2vr.w	$vr4, $t0, 1
-	vmadd.w	$vr1, $vr3, $vr0
-	vmadd.w	$vr2, $vr4, $vr0
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB8_94
+	mul.d	$a7, $a7, $a0
+	mul.d	$t0, $t0, $a0
+	add.d	$a3, $a7, $a3
+	add.d	$a4, $t0, $a4
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 16
+	bnez	$a6, .LBB8_94
 # %bb.95:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr1
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	add.w	$a3, $a4, $a3
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
 	beq	$a2, $s2, .LBB8_98
 .LBB8_96:                               # %scalar.ph.preheader
 	sub.d	$a4, $s2, $a2
@@ -1158,17 +1148,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$a2, $a1, 0
 	ld.w	$a2, $a2, 296
 	mul.d	$a2, $a2, $a0
-	add.d	$a3, $a2, $a3
+	add.w	$a3, $a2, $a3
 	addi.d	$a4, $a4, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a4, .LBB8_97
 .LBB8_98:                               # %._crit_edge428.loopexit.i
-	addi.w	$a0, $a3, 0
-	ori	$a1, $zero, 1
-	sltu	$a2, $a1, $a0
-	masknez	$a1, $a1, $a2
-	maskeqz	$a0, $a0, $a2
-	or	$a0, $a0, $a1
+	ori	$a0, $zero, 1
+	sltu	$a1, $a0, $a3
+	masknez	$a0, $a0, $a1
+	maskeqz	$a1, $a3, $a1
+	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 5
 .LBB8_99:                               # %._crit_edge428.i
 	pcaddu18i	$ra, %call36(malloc)
@@ -1261,7 +1250,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcalau12i	$a0, %pc_hi20(.L.str.82)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.82)
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	beqz	$s2, .LBB8_251
+	beqz	$s2, .LBB8_250
 # %bb.100:                              # %.lr.ph472.i
 	pcalau12i	$a0, %pc_hi20(.L.str.100)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.100)
@@ -1282,17 +1271,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
                                         #   in Loop: Header=BB8_102 Depth=1
 	ld.wu	$a0, $fp, 88
 	addi.d	$a2, $a2, 1
-	bgeu	$a2, $a0, .LBB8_191
+	bgeu	$a2, $a0, .LBB8_190
 .LBB8_102:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_131 Depth 2
                                         #     Child Loop BB8_107 Depth 2
                                         #       Child Loop BB8_109 Depth 3
                                         #     Child Loop BB8_113 Depth 2
-                                        #     Child Loop BB8_139 Depth 2
-                                        #       Child Loop BB8_152 Depth 3
-                                        #       Child Loop BB8_170 Depth 3
-                                        #     Child Loop BB8_183 Depth 2
-                                        #     Child Loop BB8_189 Depth 2
+                                        #     Child Loop BB8_141 Depth 2
+                                        #       Child Loop BB8_154 Depth 3
+                                        #       Child Loop BB8_172 Depth 3
+                                        #     Child Loop BB8_185 Depth 2
+                                        #     Child Loop BB8_135 Depth 2
 	ld.d	$a0, $fp, 96
 	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
 	slli.d	$a1, $a2, 3
@@ -1364,7 +1353,6 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	.p2align	4, , 16
 .LBB8_110:                              # %._crit_edge441.i
                                         #   in Loop: Header=BB8_102 Depth=1
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB8_115
@@ -1412,7 +1400,6 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 .LBB8_115:                              # %._crit_edge441.thread.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	ld.w	$a0, $s3, 296
@@ -1422,6 +1409,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.w	$a1, $s3, 336
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ori	$a2, $zero, 255
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
 	bgeu	$a1, $a2, .LBB8_120
 # %bb.117:                              #   in Loop: Header=BB8_102 Depth=1
 	ori	$a1, $zero, 1
@@ -1435,6 +1423,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	bstrpick.d	$a1, $a0, 31, 7
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ori	$a2, $zero, 252
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
 	bltu	$a2, $a1, .LBB8_121
 # %bb.119:                              # %..thread_crit_edge.i.i
                                         #   in Loop: Header=BB8_102 Depth=1
@@ -1506,7 +1495,6 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s3, 136
-	move	$s6, $s1
 	beqz	$a0, .LBB8_132
 # %bb.130:                              # %.lr.ph432.i
                                         #   in Loop: Header=BB8_102 Depth=1
@@ -1547,7 +1535,6 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	move	$s1, $s6
 	ld.w	$a0, $s3, 336
 	bnez	$a0, .LBB8_105
 	b	.LBB8_115
@@ -1562,22 +1549,32 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 .LBB8_134:                              # %.lr.ph464.split.preheader.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	move	$a0, $zero
-	move	$s6, $zero
-	bnez	$a0, .LBB8_189
+	move	$s1, $zero
+	beqz	$a0, .LBB8_137
 	.p2align	4, , 16
-.LBB8_135:                              # %.preheader420.i
+.LBB8_135:                              # %.loopexit.i87
+                                        #   Parent Loop BB8_102 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.wu	$a0, $s3, 296
+	addi.d	$s1, $s1, 1
+	bgeu	$s1, $a0, .LBB8_101
+# %bb.136:                              # %.lr.ph464.splitthread-pre-split.i
+                                        #   in Loop: Header=BB8_135 Depth=2
+	ld.d	$a0, $s3, 400
+	bnez	$a0, .LBB8_135
+.LBB8_137:                              # %.preheader420.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	ld.w	$a0, $fp, 532
-	slli.d	$s4, $s6, 3
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	blez	$a0, .LBB8_175
-# %bb.136:                              # %.lr.ph457.i
+	slli.d	$s4, $s1, 3
+	st.d	$s1, $sp, 152                   # 8-byte Folded Spill
+	blez	$a0, .LBB8_177
+# %bb.138:                              # %.lr.ph457.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	move	$s7, $zero
 	addi.w	$s5, $s5, 0
-	b	.LBB8_139
-.LBB8_137:                              # %._crit_edge452.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+	b	.LBB8_141
+.LBB8_139:                              # %._crit_edge452.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	ori	$a1, $zero, 4
@@ -1585,24 +1582,24 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB8_138:                              #   in Loop: Header=BB8_139 Depth=2
+.LBB8_140:                              #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $fp, 532
 	addi.w	$s7, $s7, 1
 	addi.d	$s5, $s5, 1
-	bge	$s7, $a0, .LBB8_174
-.LBB8_139:                              #   Parent Loop BB8_102 Depth=1
+	bge	$s7, $a0, .LBB8_176
+.LBB8_141:                              #   Parent Loop BB8_102 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_152 Depth 3
-                                        #       Child Loop BB8_170 Depth 3
+                                        #       Child Loop BB8_154 Depth 3
+                                        #       Child Loop BB8_172 Depth 3
 	ld.w	$a0, $s3, 0
 	slli.d	$a1, $s5, 5
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	add.d	$s8, $a2, $a1
 	stx.w	$a0, $a2, $a1
-	st.w	$s6, $s8, 4
+	st.w	$s1, $s8, 4
 	st.w	$s7, $s8, 8
 	ld.d	$a0, $s3, 304
 	ld.w	$a1, $fp, 536
@@ -1620,74 +1617,74 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(set_add_fn)
 	jirl	$ra, $ra, 0
-	beq	$s8, $a0, .LBB8_141
-# %bb.140:                              #   in Loop: Header=BB8_139 Depth=2
+	beq	$s8, $a0, .LBB8_143
+# %bb.142:                              #   in Loop: Header=BB8_141 Depth=2
 	ld.bu	$a0, $s3, 376
 	andi	$a0, $a0, 24
 	ori	$a1, $zero, 8
-	beq	$a0, $a1, .LBB8_138
-	b	.LBB8_160
+	beq	$a0, $a1, .LBB8_140
+	b	.LBB8_162
 	.p2align	4, , 16
-.LBB8_141:                              #   in Loop: Header=BB8_139 Depth=2
+.LBB8_143:                              #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $s3, 296
 	ori	$a1, $zero, 254
-	bltu	$a1, $a0, .LBB8_144
-# %bb.142:                              #   in Loop: Header=BB8_139 Depth=2
+	bltu	$a1, $a0, .LBB8_146
+# %bb.144:                              #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $s3, 336
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ori	$a1, $zero, 255
-	bgeu	$a0, $a1, .LBB8_146
-# %bb.143:                              #   in Loop: Header=BB8_139 Depth=2
+	bgeu	$a0, $a1, .LBB8_148
+# %bb.145:                              #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.100)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.100)
-	b	.LBB8_149
-.LBB8_144:                              #   in Loop: Header=BB8_139 Depth=2
+	b	.LBB8_151
+.LBB8_146:                              #   in Loop: Header=BB8_141 Depth=2
 	bstrpick.d	$a0, $a0, 31, 7
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ori	$a1, $zero, 252
-	bltu	$a1, $a0, .LBB8_148
-# %bb.145:                              # %..thread_crit_edge.i.i.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+	bltu	$a1, $a0, .LBB8_150
+# %bb.147:                              # %..thread_crit_edge.i.i.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $s3, 336
-.LBB8_146:                              # %.thread.i.i.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+.LBB8_148:                              # %.thread.i.i.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	bstrpick.d	$a0, $a0, 31, 7
 	ori	$a1, $zero, 253
-	bgeu	$a0, $a1, .LBB8_148
-# %bb.147:                              #   in Loop: Header=BB8_139 Depth=2
+	bgeu	$a0, $a1, .LBB8_150
+# %bb.149:                              #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.101)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.101)
-	b	.LBB8_149
-.LBB8_148:                              # %scanner_size.exit.i.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+	b	.LBB8_151
+.LBB8_150:                              # %scanner_size.exit.i.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.102)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.102)
-.LBB8_149:                              # %scanner_type.exit.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+.LBB8_151:                              # %scanner_type.exit.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.83)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.83)
 	move	$a0, $s0
-	move	$a4, $s6
+	move	$a4, $s1
 	move	$a5, $s7
 	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 536
-	blez	$a0, .LBB8_159
-# %bb.150:                              # %.lr.ph448.i.preheader
-                                        #   in Loop: Header=BB8_139 Depth=2
+	blez	$a0, .LBB8_161
+# %bb.152:                              # %.lr.ph448.i.preheader
+                                        #   in Loop: Header=BB8_141 Depth=2
 	move	$s1, $zero
 	move	$s6, $zero
-	b	.LBB8_152
+	b	.LBB8_154
 	.p2align	4, , 16
-.LBB8_151:                              #   in Loop: Header=BB8_152 Depth=3
+.LBB8_153:                              #   in Loop: Header=BB8_154 Depth=3
 	ld.w	$a0, $fp, 536
 	addi.w	$s6, $s6, 1
 	addi.d	$s1, $s1, 1
-	bge	$s6, $a0, .LBB8_159
-.LBB8_152:                              # %.lr.ph448.i
+	bge	$s6, $a0, .LBB8_161
+.LBB8_154:                              # %.lr.ph448.i
                                         #   Parent Loop BB8_102 Depth=1
-                                        #     Parent Loop BB8_139 Depth=2
+                                        #     Parent Loop BB8_141 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a1, $s3, 304
 	ldx.d	$a1, $a1, $s4
@@ -1695,43 +1692,43 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	add.d	$a0, $s1, $a0
 	alsl.d	$a0, $a0, $a1, 3
 	ld.d	$a0, $a0, 8
-	beqz	$a0, .LBB8_154
-# %bb.153:                              #   in Loop: Header=BB8_152 Depth=3
+	beqz	$a0, .LBB8_156
+# %bb.155:                              #   in Loop: Header=BB8_154 Depth=3
 	ld.w	$a0, $a0, 0
 	addi.w	$a2, $a0, 1
-	b	.LBB8_155
+	b	.LBB8_157
 	.p2align	4, , 16
-.LBB8_154:                              #   in Loop: Header=BB8_152 Depth=3
+.LBB8_156:                              #   in Loop: Header=BB8_154 Depth=3
 	move	$a2, $zero
-.LBB8_155:                              #   in Loop: Header=BB8_152 Depth=3
+.LBB8_157:                              #   in Loop: Header=BB8_154 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.30)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 536
-	bne	$s6, $a0, .LBB8_157
-# %bb.156:                              #   in Loop: Header=BB8_152 Depth=3
+	bne	$s6, $a0, .LBB8_159
+# %bb.158:                              #   in Loop: Header=BB8_154 Depth=3
 	andi	$a0, $s6, 15
-	bne	$a0, $s2, .LBB8_151
-	b	.LBB8_158
+	bne	$a0, $s2, .LBB8_153
+	b	.LBB8_160
 	.p2align	4, , 16
-.LBB8_157:                              #   in Loop: Header=BB8_152 Depth=3
+.LBB8_159:                              #   in Loop: Header=BB8_154 Depth=3
 	ori	$a0, $zero, 44
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	andi	$a0, $s6, 15
-	bne	$a0, $s2, .LBB8_151
-.LBB8_158:                              #   in Loop: Header=BB8_152 Depth=3
+	bne	$a0, $s2, .LBB8_153
+.LBB8_160:                              #   in Loop: Header=BB8_154 Depth=3
 	ori	$a0, $zero, 10
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	b	.LBB8_151
+	b	.LBB8_153
 	.p2align	4, , 16
-.LBB8_159:                              # %._crit_edge449.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+.LBB8_161:                              # %._crit_edge449.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	ori	$a1, $zero, 4
@@ -1739,79 +1736,79 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
 	ld.bu	$a0, $s3, 376
 	andi	$a0, $a0, 24
 	ori	$a1, $zero, 8
-	beq	$a0, $a1, .LBB8_138
-.LBB8_160:                              #   in Loop: Header=BB8_139 Depth=2
+	beq	$a0, $a1, .LBB8_140
+.LBB8_162:                              #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(trans_scanner_block_fns)
 	addi.d	$a2, $a0, %pc_lo12(trans_scanner_block_fns)
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(set_add_fn)
 	jirl	$ra, $ra, 0
-	bne	$s8, $a0, .LBB8_138
-# %bb.161:                              #   in Loop: Header=BB8_139 Depth=2
+	bne	$s8, $a0, .LBB8_140
+# %bb.163:                              #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $s3, 296
 	ori	$a1, $zero, 254
-	bltu	$a1, $a0, .LBB8_164
-# %bb.162:                              #   in Loop: Header=BB8_139 Depth=2
+	bltu	$a1, $a0, .LBB8_166
+# %bb.164:                              #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $s3, 336
 	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ori	$a1, $zero, 255
-	bltu	$a0, $a1, .LBB8_167
-# %bb.163:                              # %.thread.i.i390.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+	bltu	$a0, $a1, .LBB8_169
+# %bb.165:                              # %.thread.i.i390.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	bstrpick.d	$a0, $a0, 31, 7
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ori	$a1, $zero, 253
-	bgeu	$a0, $a1, .LBB8_166
-	b	.LBB8_167
-.LBB8_164:                              #   in Loop: Header=BB8_139 Depth=2
+	bgeu	$a0, $a1, .LBB8_168
+	b	.LBB8_169
+.LBB8_166:                              #   in Loop: Header=BB8_141 Depth=2
 	bstrpick.d	$a0, $a0, 31, 7
 	ld.d	$a6, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ori	$a1, $zero, 252
-	bltu	$a1, $a0, .LBB8_166
-# %bb.165:                              # %..thread_crit_edge.i.i387.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+	bltu	$a1, $a0, .LBB8_168
+# %bb.167:                              # %..thread_crit_edge.i.i387.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	ld.w	$a0, $s3, 336
 	bstrpick.d	$a0, $a0, 31, 7
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ori	$a1, $zero, 253
-	bltu	$a0, $a1, .LBB8_167
-.LBB8_166:                              # %scanner_size.exit.i385.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+	bltu	$a0, $a1, .LBB8_169
+.LBB8_168:                              # %scanner_size.exit.i385.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-.LBB8_167:                              # %scanner_type.exit391.i
-                                        #   in Loop: Header=BB8_139 Depth=2
+.LBB8_169:                              # %scanner_type.exit391.i
+                                        #   in Loop: Header=BB8_141 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.85)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.85)
 	move	$a0, $s0
-	move	$a4, $s6
+	move	$a4, $s1
 	move	$a5, $s7
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 536
-	blez	$a0, .LBB8_137
-# %bb.168:                              # %.lr.ph451.i.preheader
-                                        #   in Loop: Header=BB8_139 Depth=2
+	blez	$a0, .LBB8_139
+# %bb.170:                              # %.lr.ph451.i.preheader
+                                        #   in Loop: Header=BB8_141 Depth=2
 	move	$s1, $zero
 	move	$s6, $zero
-	b	.LBB8_170
+	b	.LBB8_172
 	.p2align	4, , 16
-.LBB8_169:                              #   in Loop: Header=BB8_170 Depth=3
+.LBB8_171:                              #   in Loop: Header=BB8_172 Depth=3
 	ld.w	$a0, $fp, 536
 	addi.w	$s6, $s6, 1
 	addi.d	$s1, $s1, 1
-	bge	$s6, $a0, .LBB8_137
-.LBB8_170:                              # %.lr.ph451.i
+	bge	$s6, $a0, .LBB8_139
+.LBB8_172:                              # %.lr.ph451.i
                                         #   Parent Loop BB8_102 Depth=1
-                                        #     Parent Loop BB8_139 Depth=2
+                                        #     Parent Loop BB8_141 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a1, $s3, 304
 	ldx.d	$a1, $a1, $s4
@@ -1826,37 +1823,37 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 536
-	bne	$s6, $a0, .LBB8_172
-# %bb.171:                              #   in Loop: Header=BB8_170 Depth=3
+	bne	$s6, $a0, .LBB8_174
+# %bb.173:                              #   in Loop: Header=BB8_172 Depth=3
 	andi	$a0, $s6, 15
-	bne	$a0, $s2, .LBB8_169
-	b	.LBB8_173
+	bne	$a0, $s2, .LBB8_171
+	b	.LBB8_175
 	.p2align	4, , 16
-.LBB8_172:                              #   in Loop: Header=BB8_170 Depth=3
+.LBB8_174:                              #   in Loop: Header=BB8_172 Depth=3
 	ori	$a0, $zero, 44
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	andi	$a0, $s6, 15
-	bne	$a0, $s2, .LBB8_169
-.LBB8_173:                              #   in Loop: Header=BB8_170 Depth=3
+	bne	$a0, $s2, .LBB8_171
+.LBB8_175:                              #   in Loop: Header=BB8_172 Depth=3
 	ori	$a0, $zero, 10
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	b	.LBB8_169
+	b	.LBB8_171
 	.p2align	4, , 16
-.LBB8_174:                              # %._crit_edge458.loopexit.i
+.LBB8_176:                              # %._crit_edge458.loopexit.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-.LBB8_175:                              # %._crit_edge458.i
+.LBB8_177:                              # %._crit_edge458.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	ld.d	$a0, $s3, 304
 	ldx.d	$a0, $a0, $s4
 	ldptr.w	$a1, $a0, 2056
-	beqz	$a1, .LBB8_189
-# %bb.176:                              # %.lr.ph461.preheader.i
+	beqz	$a1, .LBB8_135
+# %bb.178:                              # %.lr.ph461.preheader.i
                                         #   in Loop: Header=BB8_102 Depth=1
 	ldptr.d	$a0, $a0, 2064
 	ld.d	$s7, $a0, 0
@@ -1865,8 +1862,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 480
 	add.d	$a0, $sp, $a0
-	move	$a3, $s6
-	move	$s6, $a2
+	move	$a3, $s1
 	move	$a4, $s8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
@@ -1877,8 +1873,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$a1, $a1, %pc_lo12(.L.str.88)
 	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_178
-# %bb.177:                              #   in Loop: Header=BB8_102 Depth=1
+	bne	$a0, $a1, .LBB8_180
+# %bb.179:                              #   in Loop: Header=BB8_102 Depth=1
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 480
 	add.d	$a0, $sp, $a0
@@ -1893,8 +1889,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(set_add_fn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB8_179
-.LBB8_178:                              #   in Loop: Header=BB8_102 Depth=1
+	bne	$a0, $s7, .LBB8_181
+.LBB8_180:                              #   in Loop: Header=BB8_102 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.87)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.87)
 	lu12i.w	$a0, 1
@@ -1910,7 +1906,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.w	$a2, $a1, 4
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s1, $a0
+	masknez	$a1, $s6, $a0
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	maskeqz	$a0, $a3, $a0
 	or	$a4, $a0, $a1
@@ -1920,21 +1916,21 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s8
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB8_179:                              #   in Loop: Header=BB8_102 Depth=1
+.LBB8_181:                              #   in Loop: Header=BB8_102 Depth=1
 	ld.d	$a0, $s3, 304
 	ldx.d	$a0, $a0, $s4
 	ldptr.w	$a1, $a0, 2056
 	ori	$a2, $zero, 2
-	bltu	$a1, $a2, .LBB8_186
-# %bb.180:                              # %.lr.ph461.i.preheader
+	bltu	$a1, $a2, .LBB8_188
+# %bb.182:                              # %.lr.ph461.i.preheader
                                         #   in Loop: Header=BB8_102 Depth=1
 	ori	$s8, $zero, 1
 	ori	$s1, $zero, 8
-	move	$a2, $s6
-	b	.LBB8_183
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	b	.LBB8_185
 	.p2align	4, , 16
-.LBB8_181:                              # %._crit_edge541.i
-                                        #   in Loop: Header=BB8_183 Depth=2
+.LBB8_183:                              # %._crit_edge541.i
+                                        #   in Loop: Header=BB8_185 Depth=2
 	ld.d	$a1, $s7, 8
 	ld.w	$a2, $a1, 4
 	addi.d	$a0, $a0, -1
@@ -1952,7 +1948,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB8_182:                              #   in Loop: Header=BB8_183 Depth=2
+.LBB8_184:                              #   in Loop: Header=BB8_185 Depth=2
 	ld.d	$a0, $s3, 304
 	ldx.d	$a0, $a0, $s4
 	ori	$a1, $zero, 2056
@@ -1960,8 +1956,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$s8, $s8, 1
 	addi.d	$s1, $s1, 8
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	bgeu	$s8, $a1, .LBB8_187
-.LBB8_183:                              # %.lr.ph461.i
+	bgeu	$s8, $a1, .LBB8_189
+.LBB8_185:                              # %.lr.ph461.i
                                         #   Parent Loop BB8_102 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldptr.d	$a0, $a0, 2064
@@ -1980,8 +1976,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ldx.d	$a0, $a0, $s4
 	ldptr.w	$a0, $a0, 2056
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_181
-# %bb.184:                              #   in Loop: Header=BB8_183 Depth=2
+	bne	$a0, $a1, .LBB8_183
+# %bb.186:                              #   in Loop: Header=BB8_185 Depth=2
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 480
 	add.d	$a0, $sp, $a0
@@ -1996,40 +1992,28 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(set_add_fn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB8_182
-# %bb.185:                              # %.._crit_edge541.i_crit_edge
-                                        #   in Loop: Header=BB8_183 Depth=2
+	bne	$a0, $s7, .LBB8_184
+# %bb.187:                              # %.._crit_edge541.i_crit_edge
+                                        #   in Loop: Header=BB8_185 Depth=2
 	ld.d	$a0, $s3, 304
 	ldx.d	$a0, $a0, $s4
 	ori	$a1, $zero, 2056
 	ldx.w	$a0, $a0, $a1
 	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
-	b	.LBB8_181
+	b	.LBB8_183
 	.p2align	4, , 16
-.LBB8_186:                              #   in Loop: Header=BB8_102 Depth=1
-	move	$a2, $s6
-	b	.LBB8_188
-	.p2align	4, , 16
-.LBB8_187:                              #   in Loop: Header=BB8_102 Depth=1
-	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-.LBB8_188:                              # %.loopexit.i87
-                                        #   in Loop: Header=BB8_102 Depth=1
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-.LBB8_189:                              # %.loopexit.i87
-                                        #   Parent Loop BB8_102 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.wu	$a0, $s3, 296
-	addi.d	$s6, $s6, 1
-	bgeu	$s6, $a0, .LBB8_101
-# %bb.190:                              # %.lr.ph464.splitthread-pre-split.i
-                                        #   in Loop: Header=BB8_189 Depth=2
-	ld.d	$a0, $s3, 400
-	bnez	$a0, .LBB8_189
+.LBB8_188:                              #   in Loop: Header=BB8_102 Depth=1
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	b	.LBB8_135
-.LBB8_191:                              # %.preheader418.i
-	beqz	$a0, .LBB8_251
-# %bb.192:                              # %.lr.ph488.i
+	.p2align	4, , 16
+.LBB8_189:                              #   in Loop: Header=BB8_102 Depth=1
+	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
+	b	.LBB8_135
+.LBB8_190:                              # %.preheader418.i
+	beqz	$a0, .LBB8_250
+# %bb.191:                              # %.lr.ph488.i
 	ori	$s1, $zero, 254
 	pcalau12i	$a0, %pc_hi20(.L.str.104)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.104)
@@ -2068,9 +2052,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$a0, $a0, %pc_lo12(.L.str.106)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	move	$s3, $zero
-	b	.LBB8_195
-.LBB8_193:                              # %._crit_edge486.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	b	.LBB8_194
+.LBB8_192:                              # %._crit_edge486.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -2080,56 +2064,56 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$s1, $zero, 254
 	ld.d	$s3, $sp, 136                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB8_194:                              #   in Loop: Header=BB8_195 Depth=1
+.LBB8_193:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.wu	$a0, $fp, 88
 	addi.d	$s3, $s3, 1
-	bgeu	$s3, $a0, .LBB8_251
-.LBB8_195:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_214 Depth 2
-                                        #       Child Loop BB8_221 Depth 3
-                                        #     Child Loop BB8_243 Depth 2
-                                        #       Child Loop BB8_246 Depth 3
+	bgeu	$s3, $a0, .LBB8_250
+.LBB8_194:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_213 Depth 2
+                                        #       Child Loop BB8_220 Depth 3
+                                        #     Child Loop BB8_242 Depth 2
+                                        #       Child Loop BB8_245 Depth 3
 	ld.d	$a0, $fp, 96
 	slli.d	$a1, $s3, 3
 	ldx.d	$s2, $a0, $a1
 	ld.w	$a5, $s2, 296
-	beqz	$a5, .LBB8_194
-# %bb.196:                              #   in Loop: Header=BB8_195 Depth=1
+	beqz	$a5, .LBB8_193
+# %bb.195:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.d	$a0, $s2, 400
-	bnez	$a0, .LBB8_194
-# %bb.197:                              #   in Loop: Header=BB8_195 Depth=1
-	bltu	$s1, $a5, .LBB8_200
-# %bb.198:                              #   in Loop: Header=BB8_195 Depth=1
+	bnez	$a0, .LBB8_193
+# %bb.196:                              #   in Loop: Header=BB8_194 Depth=1
+	bltu	$s1, $a5, .LBB8_199
+# %bb.197:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a0, $s2, 336
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ori	$a1, $zero, 255
-	bltu	$a0, $a1, .LBB8_204
-# %bb.199:                              # %.thread.i.i397.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a0, $a1, .LBB8_203
+# %bb.198:                              # %.thread.i.i397.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a0, $a0, 31, 7
 	ori	$a1, $zero, 253
-	bltu	$a0, $a1, .LBB8_202
-	b	.LBB8_203
-.LBB8_200:                              #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a0, $a1, .LBB8_201
+	b	.LBB8_202
+.LBB8_199:                              #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a0, $a5, 31, 7
 	ori	$a1, $zero, 252
-	bltu	$a1, $a0, .LBB8_203
-# %bb.201:                              # %..thread_crit_edge.i.i394.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a1, $a0, .LBB8_202
+# %bb.200:                              # %..thread_crit_edge.i.i394.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a0, $s2, 336
 	bstrpick.d	$a0, $a0, 31, 7
 	ori	$a1, $zero, 253
-	bgeu	$a0, $a1, .LBB8_203
-.LBB8_202:                              #   in Loop: Header=BB8_195 Depth=1
+	bgeu	$a0, $a1, .LBB8_202
+.LBB8_201:                              #   in Loop: Header=BB8_194 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.105)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.105)
-	b	.LBB8_204
-.LBB8_203:                              # %scanner_size.exit.i392.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	b	.LBB8_203
+.LBB8_202:                              # %scanner_size.exit.i392.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.106)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.106)
-.LBB8_204:                              # %scanner_u_type.exit.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_203:                              # %scanner_u_type.exit.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	move	$a0, $s0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	move	$a3, $s3
@@ -2138,67 +2122,67 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 296
 	st.d	$s3, $sp, 136                   # 8-byte Folded Spill
-	bltu	$s1, $a0, .LBB8_206
-# %bb.205:                              #   in Loop: Header=BB8_195 Depth=1
+	bltu	$s1, $a0, .LBB8_205
+# %bb.204:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a2, $s2, 336
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 264
 	add.d	$a1, $sp, $a1
 	ori	$a3, $zero, 255
-	bgeu	$a2, $a3, .LBB8_208
-	b	.LBB8_210
-.LBB8_206:                              #   in Loop: Header=BB8_195 Depth=1
+	bgeu	$a2, $a3, .LBB8_207
+	b	.LBB8_209
+.LBB8_205:                              #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a1, $a0, 31, 7
 	ori	$a2, $zero, 252
-	bltu	$a2, $a1, .LBB8_209
-# %bb.207:                              # %..thread_crit_edge.i399.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a2, $a1, .LBB8_208
+# %bb.206:                              # %..thread_crit_edge.i399.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a2, $s2, 336
-.LBB8_208:                              # %.thread.i402.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_207:                              # %.thread.i402.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a2, $a2, 31, 7
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 304
 	add.d	$a1, $sp, $a1
 	ori	$a3, $zero, 253
-	bltu	$a2, $a3, .LBB8_210
-.LBB8_209:                              #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a2, $a3, .LBB8_209
+.LBB8_208:                              #   in Loop: Header=BB8_194 Depth=1
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 384
 	add.d	$a1, $sp, $a1
-.LBB8_210:                              # %scanner_size.exit403.i
-                                        #   in Loop: Header=BB8_195 Depth=1
-	beqz	$a0, .LBB8_226
-# %bb.211:                              # %.lr.ph478.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_209:                              # %scanner_size.exit403.i
+                                        #   in Loop: Header=BB8_194 Depth=1
+	beqz	$a0, .LBB8_225
+# %bb.210:                              # %.lr.ph478.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	move	$s6, $zero
 	addi.d	$s4, $a1, -40
-	b	.LBB8_214
+	b	.LBB8_213
 	.p2align	4, , 16
-.LBB8_212:                              #   in Loop: Header=BB8_214 Depth=2
+.LBB8_211:                              #   in Loop: Header=BB8_213 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.96)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.96)
 	ori	$a1, $zero, 3
-.LBB8_213:                              #   in Loop: Header=BB8_214 Depth=2
+.LBB8_212:                              #   in Loop: Header=BB8_213 Depth=2
 	ori	$a2, $zero, 1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s2, 296
 	addi.d	$s6, $s6, 1
-	bgeu	$s6, $a0, .LBB8_226
-.LBB8_214:                              #   Parent Loop BB8_195 Depth=1
+	bgeu	$s6, $a0, .LBB8_225
+.LBB8_213:                              #   Parent Loop BB8_194 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_221 Depth 3
+                                        #       Child Loop BB8_220 Depth 3
 	ld.d	$a0, $s2, 304
 	slli.d	$s3, $s6, 3
 	ldx.d	$a0, $a0, $s3
 	ldptr.w	$a1, $a0, 2056
-	beqz	$a1, .LBB8_217
-# %bb.215:                              #   in Loop: Header=BB8_214 Depth=2
+	beqz	$a1, .LBB8_216
+# %bb.214:                              #   in Loop: Header=BB8_213 Depth=2
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB8_218
-# %bb.216:                              #   in Loop: Header=BB8_214 Depth=2
+	bne	$a1, $a2, .LBB8_217
+# %bb.215:                              #   in Loop: Header=BB8_213 Depth=2
 	ldptr.d	$a0, $a0, 2064
 	ld.d	$a1, $a0, 0
 	pcalau12i	$a0, %pc_hi20(shift_fns)
@@ -2215,10 +2199,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 532
-	bgtz	$a0, .LBB8_219
-	b	.LBB8_224
+	bgtz	$a0, .LBB8_218
+	b	.LBB8_223
 	.p2align	4, , 16
-.LBB8_217:                              #   in Loop: Header=BB8_214 Depth=2
+.LBB8_216:                              #   in Loop: Header=BB8_213 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.92)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.92)
 	ori	$a1, $zero, 9
@@ -2227,10 +2211,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 532
-	bgtz	$a0, .LBB8_219
-	b	.LBB8_224
+	bgtz	$a0, .LBB8_218
+	b	.LBB8_223
 	.p2align	4, , 16
-.LBB8_218:                              #   in Loop: Header=BB8_214 Depth=2
+.LBB8_217:                              #   in Loop: Header=BB8_213 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.91)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.91)
 	move	$a0, $s0
@@ -2240,19 +2224,19 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 532
-	blez	$a0, .LBB8_224
-.LBB8_219:                              # %.lr.ph475.preheader.i
-                                        #   in Loop: Header=BB8_214 Depth=2
+	blez	$a0, .LBB8_223
+.LBB8_218:                              # %.lr.ph475.preheader.i
+                                        #   in Loop: Header=BB8_213 Depth=2
 	move	$s1, $zero
-	b	.LBB8_221
+	b	.LBB8_220
 	.p2align	4, , 16
-.LBB8_220:                              #   in Loop: Header=BB8_221 Depth=3
+.LBB8_219:                              #   in Loop: Header=BB8_220 Depth=3
 	ld.w	$a0, $fp, 532
 	addi.w	$s1, $s1, 1
-	bge	$s1, $a0, .LBB8_224
-.LBB8_221:                              # %.lr.ph475.i
-                                        #   Parent Loop BB8_195 Depth=1
-                                        #     Parent Loop BB8_214 Depth=2
+	bge	$s1, $a0, .LBB8_223
+.LBB8_220:                              # %.lr.ph475.i
+                                        #   Parent Loop BB8_194 Depth=1
+                                        #     Parent Loop BB8_213 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a0, $s2, 0
 	lu12i.w	$a1, 1
@@ -2302,8 +2286,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 532
 	addi.w	$a0, $a0, -1
-	beq	$s1, $a0, .LBB8_220
-# %bb.222:                              #   in Loop: Header=BB8_221 Depth=3
+	beq	$s1, $a0, .LBB8_219
+# %bb.221:                              #   in Loop: Header=BB8_220 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	ori	$a1, $zero, 2
@@ -2312,8 +2296,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	andi	$a0, $s1, 1
-	beqz	$a0, .LBB8_220
-# %bb.223:                              #   in Loop: Header=BB8_221 Depth=3
+	beqz	$a0, .LBB8_219
+# %bb.222:                              #   in Loop: Header=BB8_220 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.94)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.94)
 	ori	$a1, $zero, 3
@@ -2321,22 +2305,22 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB8_220
+	b	.LBB8_219
 	.p2align	4, , 16
-.LBB8_224:                              # %._crit_edge476.i
-                                        #   in Loop: Header=BB8_214 Depth=2
+.LBB8_223:                              # %._crit_edge476.i
+                                        #   in Loop: Header=BB8_213 Depth=2
 	ld.w	$a0, $s2, 296
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	beq	$s6, $a0, .LBB8_212
-# %bb.225:                              #   in Loop: Header=BB8_214 Depth=2
+	beq	$s6, $a0, .LBB8_211
+# %bb.224:                              #   in Loop: Header=BB8_213 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.95)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.95)
 	ori	$a1, $zero, 4
-	b	.LBB8_213
+	b	.LBB8_212
 	.p2align	4, , 16
-.LBB8_226:                              # %._crit_edge479.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_225:                              # %._crit_edge479.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -2348,38 +2332,38 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$s1, $zero, 254
 	ori	$a1, $zero, 8
 	ld.d	$s3, $sp, 136                   # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB8_194
-# %bb.227:                              #   in Loop: Header=BB8_195 Depth=1
+	beq	$a0, $a1, .LBB8_193
+# %bb.226:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a5, $s2, 296
-	bltu	$s1, $a5, .LBB8_230
-# %bb.228:                              #   in Loop: Header=BB8_195 Depth=1
+	bltu	$s1, $a5, .LBB8_229
+# %bb.227:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a0, $s2, 336
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ori	$a1, $zero, 255
-	bltu	$a0, $a1, .LBB8_233
-# %bb.229:                              # %.thread.i.i409.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a0, $a1, .LBB8_232
+# %bb.228:                              # %.thread.i.i409.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a0, $a0, 31, 7
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ori	$a1, $zero, 253
-	bgeu	$a0, $a1, .LBB8_232
-	b	.LBB8_233
-.LBB8_230:                              #   in Loop: Header=BB8_195 Depth=1
+	bgeu	$a0, $a1, .LBB8_231
+	b	.LBB8_232
+.LBB8_229:                              #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a0, $a5, 31, 7
 	ori	$a1, $zero, 252
-	bltu	$a1, $a0, .LBB8_232
-# %bb.231:                              # %..thread_crit_edge.i.i406.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a1, $a0, .LBB8_231
+# %bb.230:                              # %..thread_crit_edge.i.i406.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a0, $s2, 336
 	bstrpick.d	$a0, $a0, 31, 7
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ori	$a1, $zero, 253
-	bltu	$a0, $a1, .LBB8_233
-.LBB8_232:                              # %scanner_size.exit.i404.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a0, $a1, .LBB8_232
+.LBB8_231:                              # %scanner_size.exit.i404.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-.LBB8_233:                              # %scanner_u_type.exit410.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_232:                              # %scanner_u_type.exit410.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	move	$a0, $s0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	move	$a3, $s3
@@ -2387,57 +2371,57 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 296
-	bltu	$s1, $a0, .LBB8_235
-# %bb.234:                              #   in Loop: Header=BB8_195 Depth=1
+	bltu	$s1, $a0, .LBB8_234
+# %bb.233:                              #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a2, $s2, 336
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1072
 	add.d	$a1, $sp, $a1
 	ori	$a3, $zero, 255
-	bgeu	$a2, $a3, .LBB8_237
-	b	.LBB8_239
-.LBB8_235:                              #   in Loop: Header=BB8_195 Depth=1
+	bgeu	$a2, $a3, .LBB8_236
+	b	.LBB8_238
+.LBB8_234:                              #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a1, $a0, 31, 7
 	ori	$a2, $zero, 252
-	bltu	$a2, $a1, .LBB8_238
-# %bb.236:                              # %..thread_crit_edge.i412.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a2, $a1, .LBB8_237
+# %bb.235:                              # %..thread_crit_edge.i412.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	ld.w	$a2, $s2, 336
-.LBB8_237:                              # %.thread.i415.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_236:                              # %.thread.i415.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	bstrpick.d	$a2, $a2, 31, 7
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
 	ori	$a3, $zero, 253
-	bltu	$a2, $a3, .LBB8_239
-.LBB8_238:                              #   in Loop: Header=BB8_195 Depth=1
+	bltu	$a2, $a3, .LBB8_238
+.LBB8_237:                              #   in Loop: Header=BB8_194 Depth=1
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1192
 	add.d	$a1, $sp, $a1
-.LBB8_239:                              # %scanner_size.exit416.i
-                                        #   in Loop: Header=BB8_195 Depth=1
-	beqz	$a0, .LBB8_193
-# %bb.240:                              # %.lr.ph485.i
-                                        #   in Loop: Header=BB8_195 Depth=1
+.LBB8_238:                              # %scanner_size.exit416.i
+                                        #   in Loop: Header=BB8_194 Depth=1
+	beqz	$a0, .LBB8_192
+# %bb.239:                              # %.lr.ph485.i
+                                        #   in Loop: Header=BB8_194 Depth=1
 	move	$s3, $zero
 	addi.d	$s4, $a1, -40
-	b	.LBB8_243
+	b	.LBB8_242
 	.p2align	4, , 16
-.LBB8_241:                              #   in Loop: Header=BB8_243 Depth=2
+.LBB8_240:                              #   in Loop: Header=BB8_242 Depth=2
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-.LBB8_242:                              #   in Loop: Header=BB8_243 Depth=2
+.LBB8_241:                              #   in Loop: Header=BB8_242 Depth=2
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s2, 296
 	addi.d	$s3, $s3, 1
-	bgeu	$s3, $a0, .LBB8_193
-.LBB8_243:                              #   Parent Loop BB8_195 Depth=1
+	bgeu	$s3, $a0, .LBB8_192
+.LBB8_242:                              #   Parent Loop BB8_194 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_246 Depth 3
+                                        #       Child Loop BB8_245 Depth 3
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
@@ -2445,19 +2429,19 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 532
-	blez	$a0, .LBB8_249
-# %bb.244:                              # %.lr.ph482.i
-                                        #   in Loop: Header=BB8_243 Depth=2
+	blez	$a0, .LBB8_248
+# %bb.243:                              # %.lr.ph482.i
+                                        #   in Loop: Header=BB8_242 Depth=2
 	move	$s1, $zero
 	slli.d	$s6, $s3, 3
-	b	.LBB8_246
+	b	.LBB8_245
 	.p2align	4, , 16
-.LBB8_245:                              #   in Loop: Header=BB8_246 Depth=3
+.LBB8_244:                              #   in Loop: Header=BB8_245 Depth=3
 	ld.w	$a0, $fp, 532
 	addi.w	$s1, $s1, 1
-	bge	$s1, $a0, .LBB8_249
-.LBB8_246:                              #   Parent Loop BB8_195 Depth=1
-                                        #     Parent Loop BB8_243 Depth=2
+	bge	$s1, $a0, .LBB8_248
+.LBB8_245:                              #   Parent Loop BB8_194 Depth=1
+                                        #     Parent Loop BB8_242 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a0, $s2, 0
 	lu12i.w	$a1, 1
@@ -2505,8 +2489,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 532
 	addi.w	$a0, $a0, -1
-	beq	$s1, $a0, .LBB8_245
-# %bb.247:                              #   in Loop: Header=BB8_246 Depth=3
+	beq	$s1, $a0, .LBB8_244
+# %bb.246:                              #   in Loop: Header=BB8_245 Depth=3
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -2514,42 +2498,42 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	andi	$a0, $s1, 1
-	beqz	$a0, .LBB8_245
-# %bb.248:                              #   in Loop: Header=BB8_246 Depth=3
+	beqz	$a0, .LBB8_244
+# %bb.247:                              #   in Loop: Header=BB8_245 Depth=3
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB8_245
+	b	.LBB8_244
 	.p2align	4, , 16
-.LBB8_249:                              # %._crit_edge483.i
-                                        #   in Loop: Header=BB8_243 Depth=2
+.LBB8_248:                              # %._crit_edge483.i
+                                        #   in Loop: Header=BB8_242 Depth=2
 	ld.w	$a0, $s2, 296
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	beq	$s3, $a0, .LBB8_241
-# %bb.250:                              #   in Loop: Header=BB8_243 Depth=2
+	beq	$s3, $a0, .LBB8_240
+# %bb.249:                              #   in Loop: Header=BB8_242 Depth=2
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB8_242
-.LBB8_251:                              # %.preheader.i85
+	b	.LBB8_241
+.LBB8_250:                              # %.preheader.i85
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB8_254
-# %bb.252:                              # %.preheader.i85
+	beqz	$a0, .LBB8_253
+# %bb.251:                              # %.preheader.i85
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB8_254
-# %bb.253:
+	beq	$a0, $a1, .LBB8_253
+# %bb.252:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB8_254:
+.LBB8_253:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 272
 	add.d	$a0, $sp, $a0
@@ -2563,16 +2547,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	add.d	$a1, $sp, $a1
 	st.d	$zero, $a1, 0
 	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
-	beqz	$a0, .LBB8_257
-# %bb.255:
+	beqz	$a0, .LBB8_256
+# %bb.254:
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 280
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB8_257
-# %bb.256:
+	beq	$a0, $a1, .LBB8_256
+# %bb.255:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB8_257:
+.LBB8_256:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 312
 	add.d	$a0, $sp, $a0
@@ -2585,16 +2569,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$a1, $a1, 272
 	add.d	$a1, $sp, $a1
 	st.d	$zero, $a1, 0
-	beqz	$a0, .LBB8_260
-# %bb.258:
+	beqz	$a0, .LBB8_259
+# %bb.257:
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 320
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB8_260
-# %bb.259:
+	beq	$a0, $a1, .LBB8_259
+# %bb.258:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB8_260:
+.LBB8_259:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 352
 	add.d	$a0, $sp, $a0
@@ -2608,22 +2592,22 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	add.d	$a1, $sp, $a1
 	st.d	$zero, $a1, 0
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
-	beqz	$a0, .LBB8_263
-# %bb.261:
+	beqz	$a0, .LBB8_262
+# %bb.260:
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 360
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB8_263
-# %bb.262:
+	beq	$a0, $a1, .LBB8_262
+# %bb.261:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB8_263:                              # %write_scanner_data_as_C.exit
+.LBB8_262:                              # %write_scanner_data_as_C.exit
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 88
-	beqz	$a0, .LBB8_280
-# %bb.264:                              # %.lr.ph37.i
+	beqz	$a0, .LBB8_279
+# %bb.263:                              # %.lr.ph37.i
 	pcalau12i	$a0, %pc_hi20(.L.str.111)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.111)
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
@@ -2647,31 +2631,31 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$a0, $a0, %pc_lo12(.L.str.109)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	move	$s8, $zero
-	b	.LBB8_266
+	b	.LBB8_265
 	.p2align	4, , 16
-.LBB8_265:                              #   in Loop: Header=BB8_266 Depth=1
+.LBB8_264:                              #   in Loop: Header=BB8_265 Depth=1
 	ld.wu	$a0, $fp, 88
 	addi.d	$s8, $s8, 1
-	bgeu	$s8, $a0, .LBB8_279
-.LBB8_266:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_271 Depth 2
+	bgeu	$s8, $a0, .LBB8_278
+.LBB8_265:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_270 Depth 2
 	ld.d	$a0, $fp, 96
 	slli.d	$a1, $s8, 3
 	ldx.d	$s5, $a0, $a1
 	ld.wu	$a0, $s5, 136
-	beqz	$a0, .LBB8_277
-# %bb.267:                              # %.lr.ph.i89
-                                        #   in Loop: Header=BB8_266 Depth=1
+	beqz	$a0, .LBB8_276
+# %bb.266:                              # %.lr.ph.i89
+                                        #   in Loop: Header=BB8_265 Depth=1
 	move	$s4, $zero
 	move	$s7, $zero
-	b	.LBB8_271
-.LBB8_268:                              #   in Loop: Header=BB8_271 Depth=2
+	b	.LBB8_270
+.LBB8_267:                              #   in Loop: Header=BB8_270 Depth=2
 	move	$a0, $s0
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB8_269:                              #   in Loop: Header=BB8_271 Depth=2
+.LBB8_268:                              #   in Loop: Header=BB8_270 Depth=2
 	ld.d	$a0, $s1, 8
 	ld.w	$a1, $a0, 4
 	ld.w	$a2, $fp, 8
@@ -2683,25 +2667,25 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s5, 136
 	ori	$s2, $zero, 2
-.LBB8_270:                              #   in Loop: Header=BB8_271 Depth=2
+.LBB8_269:                              #   in Loop: Header=BB8_270 Depth=2
 	addi.d	$s7, $s7, 1
 	addi.d	$s4, $s4, 8
-	bgeu	$s7, $a0, .LBB8_277
-.LBB8_271:                              #   Parent Loop BB8_266 Depth=1
+	bgeu	$s7, $a0, .LBB8_276
+.LBB8_270:                              #   Parent Loop BB8_265 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $s5, 144
 	ldx.d	$s1, $a1, $s4
 	ld.w	$a1, $s1, 0
-	bne	$a1, $s3, .LBB8_270
-# %bb.272:                              #   in Loop: Header=BB8_271 Depth=2
+	bne	$a1, $s3, .LBB8_269
+# %bb.271:                              #   in Loop: Header=BB8_270 Depth=2
 	ld.d	$a1, $s1, 8
 	ld.w	$a1, $a1, 0
-	bne	$a1, $s2, .LBB8_270
-# %bb.273:                              #   in Loop: Header=BB8_271 Depth=2
+	bne	$a1, $s2, .LBB8_269
+# %bb.272:                              #   in Loop: Header=BB8_270 Depth=2
 	ld.bu	$a0, $s5, 376
 	andi	$a1, $a0, 2
-	bnez	$a1, .LBB8_275
-# %bb.274:                              #   in Loop: Header=BB8_271 Depth=2
+	bnez	$a1, .LBB8_274
+# %bb.273:                              #   in Loop: Header=BB8_270 Depth=2
 	addi.d	$a0, $a0, 2
 	st.b	$a0, $s5, 376
 	move	$a0, $s0
@@ -2710,7 +2694,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB8_275:                              #   in Loop: Header=BB8_271 Depth=2
+.LBB8_274:                              #   in Loop: Header=BB8_270 Depth=2
 	ori	$a1, $zero, 13
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
@@ -2728,8 +2712,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	srai.d	$a1, $a0, 32
 	ldx.bu	$a0, $s2, $a1
 	ori	$a2, $zero, 41
-	bne	$a0, $a2, .LBB8_268
-# %bb.276:                              #   in Loop: Header=BB8_271 Depth=2
+	bne	$a0, $a2, .LBB8_267
+# %bb.275:                              #   in Loop: Header=BB8_270 Depth=2
 	ori	$a2, $zero, 1
 	move	$a0, $s2
 	move	$a3, $s0
@@ -2741,29 +2725,29 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB8_269
+	b	.LBB8_268
 	.p2align	4, , 16
-.LBB8_277:                              # %._crit_edge.i92
-                                        #   in Loop: Header=BB8_266 Depth=1
+.LBB8_276:                              # %._crit_edge.i92
+                                        #   in Loop: Header=BB8_265 Depth=1
 	ld.bu	$a0, $s5, 376
 	andi	$a0, $a0, 2
-	beqz	$a0, .LBB8_265
-# %bb.278:                              #   in Loop: Header=BB8_266 Depth=1
+	beqz	$a0, .LBB8_264
+# %bb.277:                              #   in Loop: Header=BB8_265 Depth=1
 	ori	$a1, $zero, 15
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB8_265
-.LBB8_279:                              # %write_scanner_code_as_C.exit.loopexit
+	b	.LBB8_264
+.LBB8_278:                              # %write_scanner_code_as_C.exit.loopexit
 	sltui	$s1, $a0, 1
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
-	b	.LBB8_281
-.LBB8_280:
+	b	.LBB8_280
+.LBB8_279:
 	ori	$s1, $zero, 1
-.LBB8_281:                              # %write_scanner_code_as_C.exit
+.LBB8_280:                              # %write_scanner_code_as_C.exit
 	ld.w	$a0, $fp, 8
 	ld.w	$a1, $fp, 48
 	add.d	$a0, $a0, $a1
@@ -2782,8 +2766,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
 	st.d	$zero, $a0, 0
-	bnez	$s1, .LBB8_333
-# %bb.282:                              # %.lr.ph190.i
+	bnez	$s1, .LBB8_332
+# %bb.281:                              # %.lr.ph190.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 752
 	add.d	$s7, $sp, $a0
@@ -2816,10 +2800,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	move	$s6, $zero
 	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	b	.LBB8_285
+	b	.LBB8_284
 	.p2align	4, , 16
-.LBB8_283:                              # %._crit_edge187.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+.LBB8_282:                              # %._crit_edge187.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
@@ -2829,54 +2813,54 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$a5, $zero, 1
 	ori	$a6, $zero, 3
 	ld.d	$s6, $sp, 160                   # 8-byte Folded Reload
-.LBB8_284:                              #   in Loop: Header=BB8_285 Depth=1
+.LBB8_283:                              #   in Loop: Header=BB8_284 Depth=1
 	ld.wu	$a0, $fp, 88
 	addi.d	$s6, $s6, 1
-	bgeu	$s6, $a0, .LBB8_325
-.LBB8_285:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_288 Depth 2
-                                        #     Child Loop BB8_293 Depth 2
-                                        #     Child Loop BB8_295 Depth 2
-                                        #       Child Loop BB8_296 Depth 3
-                                        #         Child Loop BB8_301 Depth 4
-                                        #       Child Loop BB8_309 Depth 3
-                                        #     Child Loop BB8_314 Depth 2
-                                        #     Child Loop BB8_319 Depth 2
-                                        #     Child Loop BB8_324 Depth 2
+	bgeu	$s6, $a0, .LBB8_324
+.LBB8_284:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_287 Depth 2
+                                        #     Child Loop BB8_292 Depth 2
+                                        #     Child Loop BB8_294 Depth 2
+                                        #       Child Loop BB8_295 Depth 3
+                                        #         Child Loop BB8_300 Depth 4
+                                        #       Child Loop BB8_308 Depth 3
+                                        #     Child Loop BB8_313 Depth 2
+                                        #     Child Loop BB8_318 Depth 2
+                                        #     Child Loop BB8_323 Depth 2
 	ld.d	$a0, $fp, 96
 	slli.d	$a1, $s6, 3
 	ldx.d	$s8, $a0, $a1
 	ld.wu	$a2, $s8, 96
 	st.d	$s6, $sp, 160                   # 8-byte Folded Spill
-	beqz	$a2, .LBB8_316
-# %bb.286:                              # %.lr.ph.i96
-                                        #   in Loop: Header=BB8_285 Depth=1
+	beqz	$a2, .LBB8_315
+# %bb.285:                              # %.lr.ph.i96
+                                        #   in Loop: Header=BB8_284 Depth=1
 	ld.d	$a0, $s8, 104
 	move	$a1, $zero
 	slli.d	$a2, $a2, 3
-	b	.LBB8_288
+	b	.LBB8_287
 	.p2align	4, , 16
-.LBB8_287:                              #   in Loop: Header=BB8_288 Depth=2
+.LBB8_286:                              #   in Loop: Header=BB8_287 Depth=2
 	addi.d	$a1, $a1, 8
-	beq	$a2, $a1, .LBB8_291
-.LBB8_288:                              #   Parent Loop BB8_285 Depth=1
+	beq	$a2, $a1, .LBB8_290
+.LBB8_287:                              #   Parent Loop BB8_284 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.d	$a3, $a0, $a1
 	ld.d	$a3, $a3, 0
 	ld.w	$a4, $a3, 0
-	bne	$a4, $a5, .LBB8_287
-# %bb.289:                              #   in Loop: Header=BB8_288 Depth=2
+	bne	$a4, $a5, .LBB8_286
+# %bb.288:                              #   in Loop: Header=BB8_287 Depth=2
 	ld.d	$a3, $a3, 16
 	ld.w	$a3, $a3, 0
-	bne	$a3, $a6, .LBB8_287
-# %bb.290:                              #   in Loop: Header=BB8_288 Depth=2
+	bne	$a3, $a6, .LBB8_286
+# %bb.289:                              #   in Loop: Header=BB8_287 Depth=2
 	ld.b	$a3, $s8, 376
 	ori	$a3, $a3, 4
 	st.b	$a3, $s8, 376
-	b	.LBB8_287
+	b	.LBB8_286
 	.p2align	4, , 16
-.LBB8_291:                              # %._crit_edge.i100
-                                        #   in Loop: Header=BB8_285 Depth=1
+.LBB8_290:                              # %._crit_edge.i100
+                                        #   in Loop: Header=BB8_284 Depth=1
 	ori	$s2, $zero, 1
 	ld.d	$s1, $a0, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -2900,15 +2884,15 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	or	$a2, $a2, $a3
 	stx.b	$a2, $s3, $a1
 	ori	$a1, $zero, 2
-	bltu	$a0, $a1, .LBB8_294
-# %bb.292:                              # %.lr.ph165.i.preheader
-                                        #   in Loop: Header=BB8_285 Depth=1
+	bltu	$a0, $a1, .LBB8_293
+# %bb.291:                              # %.lr.ph165.i.preheader
+                                        #   in Loop: Header=BB8_284 Depth=1
 	ori	$s1, $zero, 1
 	ori	$s2, $zero, 8
 	ori	$s6, $zero, 1
 	.p2align	4, , 16
-.LBB8_293:                              # %.lr.ph165.i
-                                        #   Parent Loop BB8_285 Depth=1
+.LBB8_292:                              # %.lr.ph165.i
+                                        #   Parent Loop BB8_284 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s8, 104
 	ldx.d	$a0, $a0, $s2
@@ -2931,27 +2915,27 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	or	$s4, $a2, $a1
 	addi.d	$s1, $s1, 1
 	addi.d	$s2, $s2, 8
-	bltu	$s1, $a0, .LBB8_293
-.LBB8_294:                              # %.preheader158.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+	bltu	$s1, $a0, .LBB8_292
+.LBB8_293:                              # %.preheader158.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	addi.w	$a0, $a0, 0
-	beqz	$a0, .LBB8_312
-.LBB8_295:                              # %.lr.ph171.preheader.i
-                                        #   Parent Loop BB8_285 Depth=1
+	beqz	$a0, .LBB8_311
+.LBB8_294:                              # %.lr.ph171.preheader.i
+                                        #   Parent Loop BB8_284 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB8_296 Depth 3
-                                        #         Child Loop BB8_301 Depth 4
-                                        #       Child Loop BB8_309 Depth 3
+                                        #       Child Loop BB8_295 Depth 3
+                                        #         Child Loop BB8_300 Depth 4
+                                        #       Child Loop BB8_308 Depth 3
 	ld.d	$a0, $s8, 104
 	move	$s3, $zero
 	ori	$s6, $zero, 1
 	addi.w	$s2, $zero, -8
 	.p2align	4, , 16
-.LBB8_296:                              # %.lr.ph171.i
-                                        #   Parent Loop BB8_285 Depth=1
-                                        #     Parent Loop BB8_295 Depth=2
+.LBB8_295:                              # %.lr.ph171.i
+                                        #   Parent Loop BB8_284 Depth=1
+                                        #     Parent Loop BB8_294 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB8_301 Depth 4
+                                        #         Child Loop BB8_300 Depth 4
 	slli.d	$s5, $s3, 3
 	ldx.d	$a0, $a0, $s5
 	ld.d	$a1, $a0, 0
@@ -2963,17 +2947,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	add.d	$a1, $sp, $a1
 	ld.w	$a1, $a1, 0
 	sub.w	$s1, $a0, $s4
-	bgeu	$s1, $a1, .LBB8_301
-.LBB8_297:                              # %._crit_edge169.i
-                                        #   in Loop: Header=BB8_296 Depth=3
+	bgeu	$s1, $a1, .LBB8_300
+.LBB8_296:                              # %._crit_edge169.i
+                                        #   in Loop: Header=BB8_295 Depth=3
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
 	ld.d	$a1, $a0, 0
 	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $a1, $a0
-	bnez	$a0, .LBB8_308
-# %bb.298:                              #   in Loop: Header=BB8_296 Depth=3
+	bnez	$a0, .LBB8_307
+# %bb.297:                              #   in Loop: Header=BB8_295 Depth=3
 	ld.d	$a0, $s8, 104
 	ldx.d	$a2, $a0, $s5
 	ld.d	$a2, $a2, 8
@@ -2986,10 +2970,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$s3, $s3, 1
 	addi.d	$s6, $s6, 1
 	addi.d	$s2, $s2, 8
-	bltu	$s3, $a1, .LBB8_296
-	b	.LBB8_311
+	bltu	$s3, $a1, .LBB8_295
+	b	.LBB8_310
 	.p2align	4, , 16
-.LBB8_299:                              #   in Loop: Header=BB8_301 Depth=4
+.LBB8_298:                              #   in Loop: Header=BB8_300 Depth=4
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -3002,24 +2986,24 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	st.w	$a1, $a2, 0
 	slli.d	$a0, $a0, 3
 	stx.d	$zero, $s7, $a0
-.LBB8_300:                              #   in Loop: Header=BB8_301 Depth=4
-	bltu	$s1, $a1, .LBB8_297
-.LBB8_301:                              # %.lr.ph168.i
-                                        #   Parent Loop BB8_285 Depth=1
-                                        #     Parent Loop BB8_295 Depth=2
-                                        #       Parent Loop BB8_296 Depth=3
+.LBB8_299:                              #   in Loop: Header=BB8_300 Depth=4
+	bltu	$s1, $a1, .LBB8_296
+.LBB8_300:                              # %.lr.ph168.i
+                                        #   Parent Loop BB8_284 Depth=1
+                                        #     Parent Loop BB8_294 Depth=2
+                                        #       Parent Loop BB8_295 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beqz	$a0, .LBB8_299
-# %bb.302:                              #   in Loop: Header=BB8_301 Depth=4
-	beq	$a0, $s7, .LBB8_305
-# %bb.303:                              #   in Loop: Header=BB8_301 Depth=4
+	beqz	$a0, .LBB8_298
+# %bb.301:                              #   in Loop: Header=BB8_300 Depth=4
+	beq	$a0, $s7, .LBB8_304
+# %bb.302:                              #   in Loop: Header=BB8_300 Depth=4
 	andi	$a2, $a1, 7
-	beqz	$a2, .LBB8_307
-# %bb.304:                              #   in Loop: Header=BB8_301 Depth=4
+	beqz	$a2, .LBB8_306
+# %bb.303:                              #   in Loop: Header=BB8_300 Depth=4
 	bstrpick.d	$a2, $a1, 31, 0
 	addi.w	$a1, $a1, 1
 	lu12i.w	$a3, 1
@@ -3028,12 +3012,12 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	st.w	$a1, $a3, 0
 	slli.d	$a2, $a2, 3
 	stx.d	$zero, $a0, $a2
-	b	.LBB8_300
+	b	.LBB8_299
 	.p2align	4, , 16
-.LBB8_305:                              #   in Loop: Header=BB8_301 Depth=4
+.LBB8_304:                              #   in Loop: Header=BB8_300 Depth=4
 	ori	$a2, $zero, 2
-	bltu	$a2, $a1, .LBB8_307
-# %bb.306:                              #   in Loop: Header=BB8_301 Depth=4
+	bltu	$a2, $a1, .LBB8_306
+# %bb.305:                              #   in Loop: Header=BB8_300 Depth=4
 	slli.d	$a2, $a1, 3
 	addi.w	$a1, $a1, 1
 	lu12i.w	$a3, 1
@@ -3041,9 +3025,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	add.d	$a3, $sp, $a3
 	st.w	$a1, $a3, 0
 	stx.d	$zero, $a0, $a2
-	b	.LBB8_300
+	b	.LBB8_299
 	.p2align	4, , 16
-.LBB8_307:                              #   in Loop: Header=BB8_301 Depth=4
+.LBB8_306:                              #   in Loop: Header=BB8_300 Depth=4
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 736
 	add.d	$a0, $sp, $a0
@@ -3054,17 +3038,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$a0, $a0, 736
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
-	b	.LBB8_300
+	b	.LBB8_299
 	.p2align	4, , 16
-.LBB8_308:                              # %.preheader.i101
-                                        #   in Loop: Header=BB8_295 Depth=2
+.LBB8_307:                              # %.preheader.i101
+                                        #   in Loop: Header=BB8_294 Depth=2
 	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
 	ori	$s1, $zero, 1
-	beqz	$s3, .LBB8_310
+	beqz	$s3, .LBB8_309
 	.p2align	4, , 16
-.LBB8_309:                              # %.lr.ph173.i
-                                        #   Parent Loop BB8_285 Depth=1
-                                        #     Parent Loop BB8_295 Depth=2
+.LBB8_308:                              # %.lr.ph173.i
+                                        #   Parent Loop BB8_284 Depth=1
+                                        #     Parent Loop BB8_294 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s8, 104
 	ldx.d	$a0, $a0, $s2
@@ -3081,18 +3065,18 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	stx.d	$zero, $a1, $a0
 	addi.d	$s6, $s6, -1
 	addi.d	$s2, $s2, -8
-	blt	$s1, $s6, .LBB8_309
-.LBB8_310:                              # %.loopexit.i102
-                                        #   in Loop: Header=BB8_295 Depth=2
+	blt	$s1, $s6, .LBB8_308
+.LBB8_309:                              # %.loopexit.i102
+                                        #   in Loop: Header=BB8_294 Depth=2
 	ld.w	$a0, $s8, 96
 	addi.d	$s4, $s4, -1
-	bnez	$a0, .LBB8_295
-	b	.LBB8_312
+	bnez	$a0, .LBB8_294
+	b	.LBB8_311
 	.p2align	4, , 16
-.LBB8_311:                              #   in Loop: Header=BB8_285 Depth=1
+.LBB8_310:                              #   in Loop: Header=BB8_284 Depth=1
 	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
-.LBB8_312:                              # %.split.us.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+.LBB8_311:                              # %.split.us.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	st.w	$s4, $s8, 392
 	pcalau12i	$a0, %pc_hi20(.L.str.112)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.112)
@@ -3105,15 +3089,15 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ori	$a1, $zero, 8
-	bltu	$a0, $a1, .LBB8_315
-# %bb.313:                              # %.lr.ph178.i.preheader
-                                        #   in Loop: Header=BB8_285 Depth=1
+	bltu	$a0, $a1, .LBB8_314
+# %bb.312:                              # %.lr.ph178.i.preheader
+                                        #   in Loop: Header=BB8_284 Depth=1
 	ld.d	$s1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB8_314:                              # %.lr.ph178.i
-                                        #   Parent Loop BB8_285 Depth=1
+.LBB8_313:                              # %.lr.ph178.i
+                                        #   Parent Loop BB8_284 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a2, $s1, 0
 	sltui	$a0, $s2, 1
@@ -3128,9 +3112,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$s3, $s3, -1
 	addi.d	$s2, $s2, -1
 	addi.d	$s1, $s1, 1
-	bnez	$s3, .LBB8_314
-.LBB8_315:                              # %._crit_edge179.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+	bnez	$s3, .LBB8_313
+.LBB8_314:                              # %._crit_edge179.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
 	ori	$a1, $zero, 3
@@ -3141,15 +3125,15 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$a5, $zero, 1
 	ori	$a6, $zero, 3
 	ld.w	$a0, $s8, 176
-	bnez	$a0, .LBB8_317
-	b	.LBB8_321
+	bnez	$a0, .LBB8_316
+	b	.LBB8_320
 	.p2align	4, , 16
-.LBB8_316:                              #   in Loop: Header=BB8_285 Depth=1
+.LBB8_315:                              #   in Loop: Header=BB8_284 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	st.w	$a0, $s8, 392
 	ld.w	$a0, $s8, 176
-	beqz	$a0, .LBB8_321
-.LBB8_317:                              #   in Loop: Header=BB8_285 Depth=1
+	beqz	$a0, .LBB8_320
+.LBB8_316:                              #   in Loop: Header=BB8_284 Depth=1
 	move	$a0, $s0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s6
@@ -3159,13 +3143,13 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s8, 176
 	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
-	beqz	$a0, .LBB8_320
-# %bb.318:                              # %.lr.ph182.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+	beqz	$a0, .LBB8_319
+# %bb.317:                              # %.lr.ph182.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	move	$s1, $zero
 	move	$s2, $zero
 	.p2align	4, , 16
-.LBB8_319:                              #   Parent Loop BB8_285 Depth=1
+.LBB8_318:                              #   Parent Loop BB8_284 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $s8, 184
 	ldx.d	$a1, $a1, $s1
@@ -3192,9 +3176,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.wu	$a0, $s8, 176
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bltu	$s2, $a0, .LBB8_319
-.LBB8_320:                              # %._crit_edge183.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+	bltu	$s2, $a0, .LBB8_318
+.LBB8_319:                              # %._crit_edge183.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
@@ -3203,10 +3187,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ori	$a5, $zero, 1
 	ori	$a6, $zero, 3
-.LBB8_321:                              #   in Loop: Header=BB8_285 Depth=1
+.LBB8_320:                              #   in Loop: Header=BB8_284 Depth=1
 	ld.w	$a0, $s8, 216
-	beqz	$a0, .LBB8_284
-# %bb.322:                              #   in Loop: Header=BB8_285 Depth=1
+	beqz	$a0, .LBB8_283
+# %bb.321:                              #   in Loop: Header=BB8_284 Depth=1
 	move	$a0, $s0
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	move	$a2, $s6
@@ -3217,13 +3201,13 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.w	$a0, $s8, 216
 	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	beqz	$a0, .LBB8_283
-# %bb.323:                              # %.lr.ph186.i
-                                        #   in Loop: Header=BB8_285 Depth=1
+	beqz	$a0, .LBB8_282
+# %bb.322:                              # %.lr.ph186.i
+                                        #   in Loop: Header=BB8_284 Depth=1
 	move	$s1, $zero
 	move	$s2, $zero
 	.p2align	4, , 16
-.LBB8_324:                              #   Parent Loop BB8_285 Depth=1
+.LBB8_323:                              #   Parent Loop BB8_284 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $s8, 224
 	ldx.d	$a1, $a1, $s1
@@ -3252,16 +3236,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.wu	$a0, $s8, 216
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bltu	$s2, $a0, .LBB8_324
-	b	.LBB8_283
-.LBB8_325:                              # %._crit_edge191.i
+	bltu	$s2, $a0, .LBB8_323
+	b	.LBB8_282
+.LBB8_324:                              # %._crit_edge191.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 736
 	add.d	$a0, $sp, $a0
 	ld.w	$a3, $a0, 0
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
-	beqz	$a3, .LBB8_333
-# %bb.326:
+	beqz	$a3, .LBB8_332
+# %bb.325:
 	pcalau12i	$a0, %pc_hi20(.L.str.118)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.118)
 	move	$a0, $s0
@@ -3272,24 +3256,24 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ori	$a0, $a0, 736
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB8_334
-# %bb.327:                              # %.lr.ph194.i.preheader
+	beqz	$a0, .LBB8_333
+# %bb.326:                              # %.lr.ph194.i.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.30)
 	move	$s1, $zero
 	move	$s3, $zero
 	ori	$s4, $zero, 15
-	b	.LBB8_329
+	b	.LBB8_328
 	.p2align	4, , 16
-.LBB8_328:                              #   in Loop: Header=BB8_329 Depth=1
+.LBB8_327:                              #   in Loop: Header=BB8_328 Depth=1
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 736
 	add.d	$a0, $sp, $a0
 	ld.wu	$a0, $a0, 0
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
-	bgeu	$s3, $a0, .LBB8_334
-.LBB8_329:                              # %.lr.ph194.i
+	bgeu	$s3, $a0, .LBB8_333
+.LBB8_328:                              # %.lr.ph194.i
                                         # =>This Inner Loop Header: Depth=1
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
@@ -3306,22 +3290,22 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.w	$a0, $a0, 0
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	beq	$s3, $a0, .LBB8_331
-# %bb.330:                              #   in Loop: Header=BB8_329 Depth=1
+	beq	$s3, $a0, .LBB8_330
+# %bb.329:                              #   in Loop: Header=BB8_328 Depth=1
 	ori	$a0, $zero, 44
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-.LBB8_331:                              #   in Loop: Header=BB8_329 Depth=1
+.LBB8_330:                              #   in Loop: Header=BB8_328 Depth=1
 	andi	$a0, $s3, 15
-	bne	$a0, $s4, .LBB8_328
-# %bb.332:                              #   in Loop: Header=BB8_329 Depth=1
+	bne	$a0, $s4, .LBB8_327
+# %bb.331:                              #   in Loop: Header=BB8_328 Depth=1
 	ori	$a0, $zero, 10
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	b	.LBB8_328
-.LBB8_333:                              # %._crit_edge191.thread.i
+	b	.LBB8_327
+.LBB8_332:                              # %._crit_edge191.thread.i
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.119)
 	move	$a0, $s0
@@ -3329,9 +3313,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 88
-	bnez	$a0, .LBB8_335
-	b	.LBB8_343
-.LBB8_334:                              # %._crit_edge195.i
+	bnez	$a0, .LBB8_334
+	b	.LBB8_342
+.LBB8_333:                              # %._crit_edge195.i
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	ori	$a1, $zero, 4
@@ -3340,8 +3324,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 88
-	beqz	$a0, .LBB8_343
-.LBB8_335:                              # %.lr.ph36.i
+	beqz	$a0, .LBB8_342
+.LBB8_334:                              # %.lr.ph36.i
 	pcalau12i	$a0, %pc_hi20(er_hint_hash_fns)
 	addi.d	$s1, $a0, %pc_lo12(er_hint_hash_fns)
 	pcalau12i	$a0, %pc_hi20(.L.str.120)
@@ -3354,10 +3338,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$s5, $a0, %pc_lo12(.L.str.121)
 	move	$s6, $zero
 	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	b	.LBB8_338
+	b	.LBB8_337
 	.p2align	4, , 16
-.LBB8_336:                              # %._crit_edge.i113
-                                        #   in Loop: Header=BB8_338 Depth=1
+.LBB8_335:                              # %._crit_edge.i113
+                                        #   in Loop: Header=BB8_337 Depth=1
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -3366,25 +3350,25 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-.LBB8_337:                              #   in Loop: Header=BB8_338 Depth=1
+.LBB8_336:                              #   in Loop: Header=BB8_337 Depth=1
 	ld.wu	$a0, $fp, 88
 	addi.d	$s6, $s6, 1
-	bgeu	$s6, $a0, .LBB8_343
-.LBB8_338:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_342 Depth 2
+	bgeu	$s6, $a0, .LBB8_342
+.LBB8_337:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_341 Depth 2
 	ld.d	$a0, $fp, 96
 	slli.d	$a1, $s6, 3
 	ldx.d	$s7, $a0, $a1
 	ld.w	$a0, $s7, 256
-	beqz	$a0, .LBB8_337
-# %bb.339:                              #   in Loop: Header=BB8_338 Depth=1
+	beqz	$a0, .LBB8_336
+# %bb.338:                              #   in Loop: Header=BB8_337 Depth=1
 	addi.d	$a0, $sp, 184
 	move	$a1, $s7
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(set_add_fn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB8_337
-# %bb.340:                              #   in Loop: Header=BB8_338 Depth=1
+	bne	$a0, $s7, .LBB8_336
+# %bb.339:                              #   in Loop: Header=BB8_337 Depth=1
 	ld.w	$a0, $s7, 256
 	ori	$a1, $zero, 1
 	sltu	$a0, $a1, $a0
@@ -3401,13 +3385,13 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s7, 256
 	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	beqz	$a0, .LBB8_336
-# %bb.341:                              # %.lr.ph.i110
-                                        #   in Loop: Header=BB8_338 Depth=1
+	beqz	$a0, .LBB8_335
+# %bb.340:                              # %.lr.ph.i110
+                                        #   in Loop: Header=BB8_337 Depth=1
 	move	$s1, $zero
 	move	$s3, $zero
 	.p2align	4, , 16
-.LBB8_342:                              #   Parent Loop BB8_338 Depth=1
+.LBB8_341:                              #   Parent Loop BB8_337 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s7, 264
 	ldx.d	$a0, $a0, $s1
@@ -3448,9 +3432,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.wu	$a0, $s7, 256
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
-	bltu	$s3, $a0, .LBB8_342
-	b	.LBB8_336
-.LBB8_343:                              # %write_error_data_as_C.exit
+	bltu	$s3, $a0, .LBB8_341
+	b	.LBB8_335
+.LBB8_342:                              # %write_error_data_as_C.exit
 	pcalau12i	$a0, %pc_hi20(.L.str.122)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.122)
 	move	$a0, $s0
@@ -3458,8 +3442,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 88
-	beqz	$a0, .LBB8_397
-# %bb.344:
+	beqz	$a0, .LBB8_396
+# %bb.343:
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.53)
 	ori	$a1, $zero, 2
@@ -3468,8 +3452,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 88
-	beqz	$a0, .LBB8_396
-# %bb.345:                              # %.lr.ph.i115
+	beqz	$a0, .LBB8_395
+# %bb.344:                              # %.lr.ph.i115
 	pcalau12i	$a0, %pc_hi20(.L.str.123)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.123)
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
@@ -3517,16 +3501,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$s7, $zero
 	move	$s2, $zero
 	move	$s8, $zero
-	b	.LBB8_348
+	b	.LBB8_347
 	.p2align	4, , 16
-.LBB8_346:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_345:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB8_347:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_346:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a0, $fp, 88
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
@@ -3545,8 +3529,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$s8, $s8, 1
 	addi.w	$s2, $s2, 1
 	addi.d	$s7, $s7, 8
-	bgeu	$s8, $a0, .LBB8_396
-.LBB8_348:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$s8, $a0, .LBB8_395
+.LBB8_347:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 96
 	ldx.d	$s4, $a0, $s7
 	ori	$a1, $zero, 2
@@ -3556,8 +3540,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 96
-	beqz	$a0, .LBB8_350
-# %bb.349:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_349
+# %bb.348:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.124)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.124)
 	move	$a0, $s0
@@ -3565,24 +3549,24 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB8_351
+	b	.LBB8_350
 	.p2align	4, , 16
-.LBB8_350:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_349:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 6
 	ori	$a2, $zero, 1
 	move	$a0, $s3
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB8_351:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_350:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a2, $s4, 392
 	move	$a0, $s0
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 176
-	beqz	$a2, .LBB8_360
-# %bb.352:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a2, .LBB8_359
+# %bb.351:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.125)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.125)
 	move	$a0, $s0
@@ -3591,8 +3575,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 216
-	beqz	$a2, .LBB8_361
-.LBB8_353:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a2, .LBB8_360
+.LBB8_352:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.127)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.127)
 	move	$a0, $s0
@@ -3601,8 +3585,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 256
-	beqz	$a0, .LBB8_362
-.LBB8_354:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_361
+.LBB8_353:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(er_hint_hash_fns)
 	addi.d	$a2, $a0, %pc_lo12(er_hint_hash_fns)
 	addi.d	$a0, $sp, 184
@@ -3618,14 +3602,14 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 136
-	beqz	$a0, .LBB8_363
-.LBB8_355:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_362
+.LBB8_354:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.d	$a0, $s4, 400
 	move	$a2, $s2
-	beqz	$a0, .LBB8_357
-# %bb.356:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_356
+# %bb.355:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a2, $a0, 0
-.LBB8_357:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_356:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.129)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.129)
 	move	$a0, $s0
@@ -3634,18 +3618,18 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 128
 	ld.bu	$a0, $s4, 376
-	beqz	$a2, .LBB8_370
-.LBB8_358:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a2, .LBB8_369
+.LBB8_357:                              #   in Loop: Header=BB8_347 Depth=1
 	andi	$a0, $a0, 4
-	bnez	$a0, .LBB8_367
-# %bb.359:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a0, .LBB8_366
+# %bb.358:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	ori	$a1, $zero, 6
 	ori	$a2, $zero, 1
-	b	.LBB8_372
+	b	.LBB8_371
 	.p2align	4, , 16
-.LBB8_360:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_359:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 12
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -3653,8 +3637,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s4, 216
-	bnez	$a2, .LBB8_353
-.LBB8_361:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a2, .LBB8_352
+.LBB8_360:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 12
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -3662,8 +3646,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 256
-	bnez	$a0, .LBB8_354
-.LBB8_362:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a0, .LBB8_353
+.LBB8_361:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 12
 	ori	$a2, $zero, 1
 	move	$a0, $s5
@@ -3671,63 +3655,63 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 136
-	bnez	$a0, .LBB8_355
-.LBB8_363:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a0, .LBB8_354
+.LBB8_362:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.bu	$a0, $s4, 376
 	andi	$a1, $a0, 2
-	bnez	$a1, .LBB8_366
-# %bb.364:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a1, .LBB8_365
+# %bb.363:                              #   in Loop: Header=BB8_347 Depth=1
 	andi	$a0, $a0, 4
-	beqz	$a0, .LBB8_368
-# %bb.365:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_367
+# %bb.364:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.d	$a0, $fp, 128
-	beqz	$a0, .LBB8_368
-.LBB8_366:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_367
+.LBB8_365:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 15
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB8_369
+	b	.LBB8_368
 	.p2align	4, , 16
-.LBB8_367:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_366:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 296
-	bnez	$a0, .LBB8_373
-	b	.LBB8_379
-.LBB8_368:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a0, .LBB8_372
+	b	.LBB8_378
+.LBB8_367:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 6
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-.LBB8_369:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_368:                              #   in Loop: Header=BB8_347 Depth=1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 128
 	ld.bu	$a0, $s4, 376
-	bnez	$a2, .LBB8_358
-.LBB8_370:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a2, .LBB8_357
+.LBB8_369:                              #   in Loop: Header=BB8_347 Depth=1
 	andi	$a0, $a0, 2
-	bnez	$a0, .LBB8_378
-# %bb.371:                              #   in Loop: Header=BB8_348 Depth=1
+	bnez	$a0, .LBB8_377
+# %bb.370:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 6
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-.LBB8_372:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_371:                              #   in Loop: Header=BB8_347 Depth=1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 296
-	beqz	$a0, .LBB8_379
-.LBB8_373:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_378
+.LBB8_372:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.d	$a0, $s4, 400
 	move	$a2, $s2
-	beqz	$a0, .LBB8_375
-# %bb.374:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_374
+# %bb.373:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a2, $a0, 0
-.LBB8_375:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_374:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.132)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.132)
 	move	$a0, $s0
@@ -3736,19 +3720,19 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 296
 	ori	$a1, $zero, 254
-	bltu	$a1, $a0, .LBB8_380
-.LBB8_376:                              #   in Loop: Header=BB8_348 Depth=1
+	bltu	$a1, $a0, .LBB8_379
+.LBB8_375:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a0, $s4, 336
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	ori	$a1, $zero, 255
-	bltu	$a0, $a1, .LBB8_384
-# %bb.377:                              # %.thread.i.i.i124
-                                        #   in Loop: Header=BB8_348 Depth=1
+	bltu	$a0, $a1, .LBB8_383
+# %bb.376:                              # %.thread.i.i.i124
+                                        #   in Loop: Header=BB8_347 Depth=1
 	bstrpick.d	$a0, $a0, 31, 7
 	ori	$a1, $zero, 253
-	bltu	$a0, $a1, .LBB8_382
-	b	.LBB8_383
-.LBB8_378:                              #   in Loop: Header=BB8_348 Depth=1
+	bltu	$a0, $a1, .LBB8_381
+	b	.LBB8_382
+.LBB8_377:                              #   in Loop: Header=BB8_347 Depth=1
 	move	$a0, $s0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $s2
@@ -3756,9 +3740,9 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 296
-	bnez	$a0, .LBB8_373
+	bnez	$a0, .LBB8_372
 	.p2align	4, , 16
-.LBB8_379:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_378:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 6
 	ori	$a2, $zero, 1
 	move	$a0, $s3
@@ -3767,28 +3751,28 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 296
 	ori	$a1, $zero, 254
-	bgeu	$a1, $a0, .LBB8_376
-.LBB8_380:                              #   in Loop: Header=BB8_348 Depth=1
+	bgeu	$a1, $a0, .LBB8_375
+.LBB8_379:                              #   in Loop: Header=BB8_347 Depth=1
 	bstrpick.d	$a0, $a0, 31, 7
 	ori	$a1, $zero, 252
-	bltu	$a1, $a0, .LBB8_383
-# %bb.381:                              # %..thread_crit_edge.i.i.i122
-                                        #   in Loop: Header=BB8_348 Depth=1
+	bltu	$a1, $a0, .LBB8_382
+# %bb.380:                              # %..thread_crit_edge.i.i.i122
+                                        #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a0, $s4, 336
 	bstrpick.d	$a0, $a0, 31, 7
 	ori	$a1, $zero, 253
-	bgeu	$a0, $a1, .LBB8_383
-.LBB8_382:                              #   in Loop: Header=BB8_348 Depth=1
+	bgeu	$a0, $a1, .LBB8_382
+.LBB8_381:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.101)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.101)
-	b	.LBB8_384
+	b	.LBB8_383
 	.p2align	4, , 16
-.LBB8_383:                              # %scanner_size.exit.i.i117
-                                        #   in Loop: Header=BB8_348 Depth=1
+.LBB8_382:                              # %scanner_size.exit.i.i117
+                                        #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.102)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.102)
-.LBB8_384:                              # %scanner_type.exit.i118
-                                        #   in Loop: Header=BB8_348 Depth=1
+.LBB8_383:                              # %scanner_type.exit.i118
+                                        #   in Loop: Header=BB8_347 Depth=1
 	move	$a0, $s0
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
@@ -3815,17 +3799,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.bu	$a0, $s4, 376
 	andi	$a0, $a0, 24
 	ori	$a1, $zero, 8
-	beq	$a0, $a1, .LBB8_389
-# %bb.385:                              #   in Loop: Header=BB8_348 Depth=1
+	beq	$a0, $a1, .LBB8_388
+# %bb.384:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a0, $s4, 296
-	beqz	$a0, .LBB8_389
-# %bb.386:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_388
+# %bb.385:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.d	$a0, $s4, 400
 	move	$a2, $s2
-	beqz	$a0, .LBB8_388
-# %bb.387:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_387
+# %bb.386:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a2, $a0, 0
-.LBB8_388:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_387:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.136)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.136)
 	move	$a0, $s0
@@ -3835,10 +3819,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.bu	$a0, $s4, 376
 	andi	$a0, $a0, 24
 	ori	$a1, $zero, 8
-	bne	$a0, $a1, .LBB8_390
-	b	.LBB8_394
+	bne	$a0, $a1, .LBB8_389
+	b	.LBB8_393
 	.p2align	4, , 16
-.LBB8_389:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_388:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 6
 	ori	$a2, $zero, 1
 	move	$a0, $s3
@@ -3848,17 +3832,17 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.bu	$a0, $s4, 376
 	andi	$a0, $a0, 24
 	ori	$a1, $zero, 8
-	beq	$a0, $a1, .LBB8_394
-.LBB8_390:                              #   in Loop: Header=BB8_348 Depth=1
+	beq	$a0, $a1, .LBB8_393
+.LBB8_389:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a0, $s4, 296
-	beqz	$a0, .LBB8_394
-# %bb.391:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_393
+# %bb.390:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.d	$a0, $s4, 400
 	move	$a2, $s2
-	beqz	$a0, .LBB8_393
-# %bb.392:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_392
+# %bb.391:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a2, $a0, 0
-.LBB8_393:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_392:                              #   in Loop: Header=BB8_347 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.137)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.137)
 	move	$a0, $s0
@@ -3866,10 +3850,10 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 408
-	bnez	$a0, .LBB8_395
-	b	.LBB8_346
+	bnez	$a0, .LBB8_394
+	b	.LBB8_345
 	.p2align	4, , 16
-.LBB8_394:                              #   in Loop: Header=BB8_348 Depth=1
+.LBB8_393:                              #   in Loop: Header=BB8_347 Depth=1
 	ori	$a1, $zero, 18
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -3877,16 +3861,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 408
-	beqz	$a0, .LBB8_346
-.LBB8_395:                              #   in Loop: Header=BB8_348 Depth=1
+	beqz	$a0, .LBB8_345
+.LBB8_394:                              #   in Loop: Header=BB8_347 Depth=1
 	ld.w	$a2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.30)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB8_347
-.LBB8_396:                              # %._crit_edge.i121
+	b	.LBB8_346
+.LBB8_395:                              # %._crit_edge.i121
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	ori	$a1, $zero, 4
@@ -3895,8 +3879,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
-	b	.LBB8_398
-.LBB8_397:
+	b	.LBB8_397
+.LBB8_396:
 	pcalau12i	$a0, %pc_hi20(.L.str.141)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.141)
 	ori	$a1, $zero, 28
@@ -3904,7 +3888,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB8_398:                              # %write_state_data_as_C.exit
+.LBB8_397:                              # %write_state_data_as_C.exit
 	pcalau12i	$a0, %pc_hi20(.L.str.145)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.145)
 	move	$a0, $s0
@@ -3912,8 +3896,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 8
-	beqz	$a0, .LBB8_401
-# %bb.399:                              # %.lr.ph.i126
+	beqz	$a0, .LBB8_400
+# %bb.398:                              # %.lr.ph.i126
 	pcalau12i	$a0, %pc_hi20(d_internal)
 	addi.d	$s1, $a0, %pc_lo12(d_internal)
 	pcalau12i	$a0, %pc_hi20(.L.str.146)
@@ -3921,7 +3905,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$s3, $zero
 	move	$s4, $zero
 	.p2align	4, , 16
-.LBB8_400:                              # =>This Inner Loop Header: Depth=1
+.LBB8_399:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 16
 	ldx.d	$a0, $a0, $s3
 	ld.bu	$a1, $a0, 60
@@ -3938,11 +3922,11 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.wu	$a0, $fp, 8
 	addi.d	$s4, $s4, 1
 	addi.d	$s3, $s3, 8
-	bltu	$s4, $a0, .LBB8_400
-.LBB8_401:                              # %.preheader.i130
+	bltu	$s4, $a0, .LBB8_399
+.LBB8_400:                              # %.preheader.i130
 	ld.w	$a0, $fp, 48
-	beqz	$a0, .LBB8_404
-# %bb.402:                              # %.lr.ph27.i
+	beqz	$a0, .LBB8_403
+# %bb.401:                              # %.lr.ph27.i
 	pcalau12i	$a0, %pc_hi20(d_symbol)
 	addi.d	$s1, $a0, %pc_lo12(d_symbol)
 	pcalau12i	$a0, %pc_hi20(.L.str.146)
@@ -3950,7 +3934,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$s6, $zero
 	move	$s7, $zero
 	.p2align	4, , 16
-.LBB8_403:                              # =>This Inner Loop Header: Depth=1
+.LBB8_402:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 56
 	ldx.d	$a0, $a0, $s6
 	ld.d	$a0, $a0, 24
@@ -3983,8 +3967,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.wu	$a0, $fp, 48
 	addi.d	$s7, $s7, 1
 	addi.d	$s6, $s6, 8
-	bltu	$s7, $a0, .LBB8_403
-.LBB8_404:                              # %write_symbol_data_as_C.exit
+	bltu	$s7, $a0, .LBB8_402
+.LBB8_403:                              # %write_symbol_data_as_C.exit
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	ori	$a1, $zero, 4
@@ -3993,8 +3977,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 200
-	beqz	$a0, .LBB8_409
-# %bb.405:
+	beqz	$a0, .LBB8_408
+# %bb.404:
 	pcalau12i	$a0, %pc_hi20(.L.str.153)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.153)
 	move	$a0, $s0
@@ -4004,14 +3988,14 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.w	$a0, $fp, 200
 	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
-	beqz	$a0, .LBB8_408
-# %bb.406:                              # %.lr.ph.i133
+	beqz	$a0, .LBB8_407
+# %bb.405:                              # %.lr.ph.i133
 	pcalau12i	$a1, %pc_hi20(.L.str.154)
 	addi.d	$s2, $a1, %pc_lo12(.L.str.154)
 	move	$s1, $zero
 	move	$s3, $zero
 	.p2align	4, , 16
-.LBB8_407:                              # =>This Inner Loop Header: Depth=1
+.LBB8_406:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 208
 	ldx.d	$a1, $a1, $s1
 	ld.d	$a2, $a1, 0
@@ -4031,8 +4015,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.wu	$a0, $fp, 200
 	addi.d	$s3, $s3, 1
 	addi.d	$s1, $s1, 8
-	bltu	$s3, $a0, .LBB8_407
-.LBB8_408:                              # %._crit_edge.i136
+	bltu	$s3, $a0, .LBB8_406
+.LBB8_407:                              # %._crit_edge.i136
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	ori	$a1, $zero, 4
@@ -4040,21 +4024,21 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB8_409:                              # %write_passes_as_C.exit
+.LBB8_408:                              # %write_passes_as_C.exit
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
 	ori	$a2, $zero, 10
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lookup_production)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_411
-# %bb.410:
+	beqz	$a0, .LBB8_410
+# %bb.409:
 	ld.d	$a0, $a0, 200
 	ld.w	$s2, $a0, 0
-	b	.LBB8_412
-.LBB8_411:
+	b	.LBB8_411
+.LBB8_410:
 	move	$s2, $zero
-.LBB8_412:
+.LBB8_411:
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.6)
 	move	$a0, $s0
@@ -4099,15 +4083,15 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 240
-	beqz	$a2, .LBB8_414
-# %bb.413:
+	beqz	$a2, .LBB8_413
+# %bb.412:
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB8_415
-.LBB8_414:
+	b	.LBB8_414
+.LBB8_413:
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	ori	$a1, $zero, 6
@@ -4115,7 +4099,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB8_415:
+.LBB8_414:
 	ld.w	$a2, $fp, 200
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.7)
@@ -4123,16 +4107,16 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 200
-	beqz	$a0, .LBB8_417
-# %bb.416:
+	beqz	$a0, .LBB8_416
+# %bb.415:
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
 	move	$a0, $s0
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB8_418
-.LBB8_417:
+	b	.LBB8_417
+.LBB8_416:
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	ori	$a1, $zero, 6
@@ -4140,7 +4124,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB8_418:
+.LBB8_417:
 	ld.w	$a0, $fp, 272
 	sltui	$a0, $a0, 1
 	xori	$a0, $a0, 49
@@ -4191,94 +4175,45 @@ write_header_as_C:                      # @write_header_as_C
 	addi.d	$sp, $sp, -2048
 	addi.d	$sp, $sp, -112
 	move	$fp, $a0
-	ld.w	$a3, $a0, 48
+	ld.wu	$a0, $a0, 48
 	move	$s1, $a2
 	move	$s0, $a1
-	beqz	$a3, .LBB9_3
+	beqz	$a0, .LBB9_4
 # %bb.1:                                # %.lr.ph
-	ld.d	$a0, $fp, 56
-	ori	$a2, $zero, 4
-	bstrpick.d	$a1, $a3, 31, 0
-	bgeu	$a3, $a2, .LBB9_4
-# %bb.2:
-	move	$a2, $zero
+	ld.d	$a1, $fp, 56
 	move	$s4, $zero
-	b	.LBB9_7
-.LBB9_3:
-	move	$s4, $zero
-	b	.LBB9_9
-.LBB9_4:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 31, 2
-	slli.d	$a2, $a2, 2
-	vrepli.b	$vr0, 0
-	addi.d	$a3, $a0, 16
-	move	$a4, $a2
-	vori.b	$vr1, $vr0, 0
-	.p2align	4, , 16
-.LBB9_5:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, -16
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	ld.d	$t0, $a3, 8
-	ld.w	$a5, $a5, 0
-	ld.w	$a6, $a6, 0
-	ld.w	$a7, $a7, 0
-	ld.w	$t0, $t0, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $t0, 1
-	vseqi.w	$vr2, $vr2, 3
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vseqi.w	$vr3, $vr3, 3
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vor.v	$vr0, $vr0, $vr2
-	vor.v	$vr1, $vr1, $vr3
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB9_5
-# %bb.6:                                # %middle.block
-	vor.v	$vr0, $vr1, $vr0
-	vslli.d	$vr0, $vr0, 63
-	vmskltz.d	$vr0, $vr0
-	vpickve2gr.hu	$a3, $vr0, 0
-	sltu	$s4, $zero, $a3
-	beq	$a2, $a1, .LBB9_9
-.LBB9_7:                                # %scalar.ph.preheader
-	alsl.d	$a0, $a2, $a0, 3
-	sub.d	$a1, $a1, $a2
 	ori	$a2, $zero, 1
 	.p2align	4, , 16
-.LBB9_8:                                # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a0, 0
+.LBB9_2:                                # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a1, 0
 	ld.w	$a3, $a3, 0
 	addi.d	$a3, $a3, -3
 	sltui	$a3, $a3, 1
 	masknez	$a4, $s4, $a3
 	maskeqz	$a3, $a2, $a3
 	or	$s4, $a3, $a4
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 8
-	bnez	$a1, .LBB9_8
-.LBB9_9:                                # %._crit_edge
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 8
+	bnez	$a0, .LBB9_2
+# %bb.3:                                # %._crit_edge
 	ld.w	$a0, $fp, 260
 	ori	$s3, $zero, 1
-	bnez	$a0, .LBB9_13
-# %bb.10:                               # %.preheader90
+	bnez	$a0, .LBB9_8
+	b	.LBB9_5
+.LBB9_4:
+	move	$s4, $zero
+	ld.w	$a0, $fp, 260
+	ori	$s3, $zero, 1
+	bnez	$a0, .LBB9_8
+.LBB9_5:                                # %.preheader90
 	ld.w	$a0, $fp, 8
-	beqz	$a0, .LBB9_39
-# %bb.11:                               # %.lr.ph96.preheader
+	beqz	$a0, .LBB9_34
+# %bb.6:                                # %.lr.ph96.preheader
 	move	$s3, $zero
 	move	$s2, $zero
 	ori	$s5, $zero, 1
 	.p2align	4, , 16
-.LBB9_12:                               # %.lr.ph96
+.LBB9_7:                                # %.lr.ph96
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	move	$a1, $s2
@@ -4290,11 +4225,11 @@ write_header_as_C:                      # @write_header_as_C
 	maskeqz	$a0, $s3, $a0
 	addi.w	$s2, $s2, 1
 	or	$s3, $a0, $a2
-	bltu	$s2, $a1, .LBB9_12
-.LBB9_13:                               # %.loopexit91
+	bltu	$s2, $a1, .LBB9_7
+.LBB9_8:                                # %.loopexit91
 	ld.w	$a0, $fp, 544
-	blez	$a0, .LBB9_40
-.LBB9_14:
+	blez	$a0, .LBB9_35
+.LBB9_9:
 	addi.d	$a0, $sp, 8
 	addi.d	$s2, $sp, 8
 	move	$a1, $s0
@@ -4313,14 +4248,14 @@ write_header_as_C:                      # @write_header_as_C
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$s0, $a0, 0
-	bnez	$s0, .LBB9_16
-# %bb.15:
+	bnez	$s0, .LBB9_11
+# %bb.10:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(d_fail)
 	jirl	$ra, $ra, 0
-.LBB9_16:
+.LBB9_11:
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.18)
 	move	$a0, $s0
@@ -4333,11 +4268,11 @@ write_header_as_C:                      # @write_header_as_C
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	beqz	$s4, .LBB9_26
-# %bb.17:
+	beqz	$s4, .LBB9_21
+# %bb.12:
 	ld.w	$a0, $fp, 548
-	beqz	$a0, .LBB9_34
-# %bb.18:
+	beqz	$a0, .LBB9_29
+# %bb.13:
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.21)
 	move	$a0, $s0
@@ -4345,8 +4280,8 @@ write_header_as_C:                      # @write_header_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 48
-	beqz	$a0, .LBB9_25
-# %bb.19:                               # %.lr.ph101
+	beqz	$a0, .LBB9_20
+# %bb.14:                               # %.lr.ph101
 	ori	$s2, $zero, 3
 	pcalau12i	$a1, %pc_hi20(.L.str.24)
 	addi.d	$s5, $a1, %pc_lo12(.L.str.24)
@@ -4357,9 +4292,9 @@ write_header_as_C:                      # @write_header_as_C
 	move	$s7, $zero
 	move	$s8, $zero
 	move	$s4, $zero
-	b	.LBB9_22
+	b	.LBB9_17
 	.p2align	4, , 16
-.LBB9_20:                               #   in Loop: Header=BB9_22 Depth=1
+.LBB9_15:                               #   in Loop: Header=BB9_17 Depth=1
 	ld.w	$a3, $a1, 4
 	ld.w	$a4, $fp, 8
 	ld.d	$a2, $a1, 24
@@ -4376,23 +4311,23 @@ write_header_as_C:                      # @write_header_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 48
-.LBB9_21:                               #   in Loop: Header=BB9_22 Depth=1
+.LBB9_16:                               #   in Loop: Header=BB9_17 Depth=1
 	addi.d	$s8, $s8, 1
 	bstrpick.d	$a1, $a0, 31, 0
 	addi.d	$s7, $s7, 8
-	bgeu	$s8, $a1, .LBB9_25
-.LBB9_22:                               # =>This Inner Loop Header: Depth=1
+	bgeu	$s8, $a1, .LBB9_20
+.LBB9_17:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 56
 	ldx.d	$a1, $a1, $s7
 	ld.w	$a2, $a1, 0
-	bne	$a2, $s2, .LBB9_21
-# %bb.23:                               #   in Loop: Header=BB9_22 Depth=1
+	bne	$a2, $s2, .LBB9_16
+# %bb.18:                               #   in Loop: Header=BB9_17 Depth=1
 	ld.w	$a2, $a1, 32
 	add.d	$a2, $s4, $a2
 	addi.w	$s4, $a2, 7
 	ori	$a2, $zero, 71
-	blt	$s4, $a2, .LBB9_20
-# %bb.24:                               #   in Loop: Header=BB9_22 Depth=1
+	blt	$s4, $a2, .LBB9_15
+# %bb.19:                               #   in Loop: Header=BB9_17 Depth=1
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
@@ -4400,8 +4335,8 @@ write_header_as_C:                      # @write_header_as_C
 	ldx.d	$a1, $a0, $s7
 	ld.w	$a0, $fp, 48
 	move	$s4, $zero
-	b	.LBB9_20
-.LBB9_25:                               # %._crit_edge102
+	b	.LBB9_15
+.LBB9_20:                               # %._crit_edge102
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
 	ori	$a1, $zero, 4
@@ -4409,32 +4344,32 @@ write_header_as_C:                      # @write_header_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB9_26:                               # %.loopexit89
-	beqz	$s3, .LBB9_33
-# %bb.27:                               # %.preheader
+.LBB9_21:                               # %.loopexit89
+	beqz	$s3, .LBB9_28
+# %bb.22:                               # %.preheader
 	ld.wu	$a0, $fp, 8
-	beqz	$a0, .LBB9_33
-# %bb.28:                               # %.lr.ph106
+	beqz	$a0, .LBB9_28
+# %bb.23:                               # %.lr.ph106
 	pcalau12i	$a1, %pc_hi20(.L.str.26)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.26)
 	move	$s2, $zero
 	move	$s3, $zero
-	b	.LBB9_30
+	b	.LBB9_25
 	.p2align	4, , 16
-.LBB9_29:                               #   in Loop: Header=BB9_30 Depth=1
+.LBB9_24:                               #   in Loop: Header=BB9_25 Depth=1
 	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 8
-	bgeu	$s3, $a0, .LBB9_33
-.LBB9_30:                               # =>This Inner Loop Header: Depth=1
+	bgeu	$s3, $a0, .LBB9_28
+.LBB9_25:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 16
 	ldx.d	$a1, $a1, $s2
 	ld.bu	$a2, $a1, 60
 	andi	$a2, $a2, 28
-	bnez	$a2, .LBB9_29
-# %bb.31:                               #   in Loop: Header=BB9_30 Depth=1
+	bnez	$a2, .LBB9_24
+# %bb.26:                               #   in Loop: Header=BB9_25 Depth=1
 	ld.d	$a2, $a1, 208
-	beqz	$a2, .LBB9_29
-# %bb.32:                               #   in Loop: Header=BB9_30 Depth=1
+	beqz	$a2, .LBB9_24
+# %bb.27:                               #   in Loop: Header=BB9_25 Depth=1
 	ld.d	$a0, $a1, 200
 	ld.d	$a2, $a1, 0
 	ld.w	$a3, $a0, 0
@@ -4443,8 +4378,8 @@ write_header_as_C:                      # @write_header_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $fp, 8
-	b	.LBB9_29
-.LBB9_33:                               # %.loopexit
+	b	.LBB9_24
+.LBB9_28:                               # %.loopexit
 	pcalau12i	$a0, %pc_hi20(.L.str.27)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.27)
 	ori	$a1, $zero, 7
@@ -4453,28 +4388,28 @@ write_header_as_C:                      # @write_header_as_C
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB9_43
-.LBB9_34:                               # %.preheader88
+	b	.LBB9_38
+.LBB9_29:                               # %.preheader88
 	ld.wu	$a0, $fp, 48
-	beqz	$a0, .LBB9_26
-# %bb.35:                               # %.lr.ph104
+	beqz	$a0, .LBB9_21
+# %bb.30:                               # %.lr.ph104
 	ori	$s2, $zero, 3
 	pcalau12i	$a1, %pc_hi20(.L.str.20)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.20)
 	move	$s4, $zero
 	move	$s5, $zero
-	b	.LBB9_37
+	b	.LBB9_32
 	.p2align	4, , 16
-.LBB9_36:                               #   in Loop: Header=BB9_37 Depth=1
+.LBB9_31:                               #   in Loop: Header=BB9_32 Depth=1
 	addi.d	$s5, $s5, 1
 	addi.d	$s4, $s4, 8
-	bgeu	$s5, $a0, .LBB9_26
-.LBB9_37:                               # =>This Inner Loop Header: Depth=1
+	bgeu	$s5, $a0, .LBB9_21
+.LBB9_32:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 56
 	ldx.d	$a1, $a1, $s4
 	ld.w	$a2, $a1, 0
-	bne	$a2, $s2, .LBB9_36
-# %bb.38:                               #   in Loop: Header=BB9_37 Depth=1
+	bne	$a2, $s2, .LBB9_31
+# %bb.33:                               #   in Loop: Header=BB9_32 Depth=1
 	ld.w	$a0, $a1, 4
 	ld.w	$a3, $fp, 8
 	ld.d	$a2, $a1, 24
@@ -4484,19 +4419,19 @@ write_header_as_C:                      # @write_header_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $fp, 48
-	b	.LBB9_36
-.LBB9_39:
+	b	.LBB9_31
+.LBB9_34:
 	move	$s3, $zero
 	ld.w	$a0, $fp, 544
-	bgtz	$a0, .LBB9_14
-.LBB9_40:
-	bgez	$a0, .LBB9_42
-# %bb.41:
+	bgtz	$a0, .LBB9_9
+.LBB9_35:
+	bgez	$a0, .LBB9_37
+# %bb.36:
 	or	$a0, $s4, $s3
-	bnez	$a0, .LBB9_14
-.LBB9_42:
+	bnez	$a0, .LBB9_9
+.LBB9_37:
 	move	$fp, $zero
-.LBB9_43:
+.LBB9_38:
 	move	$a0, $fp
 	addi.d	$sp, $sp, 2032
 	addi.d	$sp, $sp, 128

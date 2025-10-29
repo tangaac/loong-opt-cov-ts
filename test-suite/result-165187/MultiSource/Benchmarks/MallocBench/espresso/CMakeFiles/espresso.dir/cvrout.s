@@ -1323,32 +1323,24 @@ fmt_cube:                               # @fmt_cube
 .LBB6_10:                               # %._crit_edge53
 	ld.w	$a5, $a4, 124
 	addi.w	$a6, $zero, -1
-	beq	$a5, $a6, .LBB6_15
+	beq	$a5, $a6, .LBB6_14
 # %bb.11:
 	ld.d	$a6, $a4, 24
 	slli.d	$a5, $a5, 2
-	ldx.w	$a7, $a6, $a5
+	ldx.w	$a6, $a6, $a5
 	ori	$a5, $zero, 32
 	stx.b	$a5, $a2, $a3
 	ld.w	$a5, $a4, 124
 	ld.d	$a4, $a4, 16
 	slli.d	$a5, $a5, 2
 	ldx.w	$a4, $a4, $a5
-	addi.w	$a5, $a3, 1
-	bge	$a7, $a4, .LBB6_13
-# %bb.12:
-	move	$a3, $a5
-	stx.b	$zero, $a2, $a3
-	move	$a0, $a2
-	ret
-.LBB6_13:                               # %.lr.ph60.preheader
-	add.d	$a5, $a2, $a5
-	addi.w	$a6, $a7, 1
-	add.d	$a3, $a3, $a7
-	sub.d	$a3, $a3, $a4
-	addi.w	$a3, $a3, 2
+	addi.w	$a3, $a3, 1
+	blt	$a6, $a4, .LBB6_14
+# %bb.12:                               # %.lr.ph60.preheader
+	add.d	$a5, $a2, $a3
+	addi.w	$a6, $a6, 1
 	.p2align	4, , 16
-.LBB6_14:                               # %.lr.ph60
+.LBB6_13:                               # %.lr.ph60
                                         # =>This Inner Loop Header: Depth=1
 	srai.d	$a7, $a4, 5
 	alsl.d	$a7, $a7, $a0, 2
@@ -1359,8 +1351,9 @@ fmt_cube:                               # @fmt_cube
 	st.b	$a7, $a5, 0
 	addi.w	$a4, $a4, 1
 	addi.d	$a5, $a5, 1
-	bne	$a6, $a4, .LBB6_14
-.LBB6_15:                               # %.loopexit
+	addi.w	$a3, $a3, 1
+	bne	$a6, $a4, .LBB6_13
+.LBB6_14:                               # %.loopexit
 	stx.b	$zero, $a2, $a3
 	move	$a0, $a2
 	ret

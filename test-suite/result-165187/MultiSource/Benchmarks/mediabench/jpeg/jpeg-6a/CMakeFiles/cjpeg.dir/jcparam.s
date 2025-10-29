@@ -1247,39 +1247,36 @@ jpeg_set_colorspace:                    # @jpeg_set_colorspace
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
 .LCPI7_2:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI7_3:
 	.word	1                               # 0x1
 	.word	5                               # 0x5
 	.word	0                               # 0x0
 	.word	2                               # 0x2
-.LCPI7_4:
+.LCPI7_3:
 	.word	6                               # 0x6
 	.word	63                              # 0x3f
 	.word	0                               # 0x0
 	.word	2                               # 0x2
+.LCPI7_4:
+	.word	1                               # 0x1
+	.word	63                              # 0x3f
+	.word	2                               # 0x2
+	.word	1                               # 0x1
 .LCPI7_5:
+	.word	0                               # 0x0
 	.word	1                               # 0x1
-	.word	63                              # 0x3f
 	.word	2                               # 0x2
-	.word	1                               # 0x1
+	.word	3                               # 0x3
 .LCPI7_6:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-.LCPI7_7:
 	.word	1                               # 0x1
 	.word	63                              # 0x3f
 	.word	1                               # 0x1
 	.word	0                               # 0x0
-.LCPI7_8:
+.LCPI7_7:
 	.word	3                               # 0x3
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
-.LCPI7_9:
+.LCPI7_8:
 	.word	1                               # 0x1
 	.word	63                              # 0x3f
 	.word	0                               # 0x0
@@ -1348,31 +1345,31 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	st.w	$s2, $fp, 232
 	bne	$s0, $a2, .LBB7_10
 # %bb.8:
-	pcalau12i	$a1, %pc_hi20(.LCPI7_8)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_8)
+	pcalau12i	$a1, %pc_hi20(.LCPI7_7)
+	vld	$vr0, $a1, %pc_lo12(.LCPI7_7)
 	ld.w	$a3, $fp, 72
 	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
 	vld	$vr1, $a1, %pc_lo12(.LCPI7_0)
 	vst	$vr0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI7_3)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI7_2)
+	vld	$vr0, $a1, %pc_lo12(.LCPI7_2)
 	vst	$vr1, $a0, 20
 	ori	$a1, $zero, 1
 	st.d	$a1, $a0, 36
 	vst	$vr0, $a0, 56
 	st.w	$a1, $a0, 72
-	bne	$a3, $a2, .LBB7_21
+	bne	$a3, $a2, .LBB7_18
 # %bb.9:                                # %fill_dc_scans.exit132
-	pcalau12i	$a2, %pc_hi20(.LCPI7_9)
-	vld	$vr0, $a2, %pc_lo12(.LCPI7_9)
+	pcalau12i	$a2, %pc_hi20(.LCPI7_8)
+	vld	$vr0, $a2, %pc_lo12(.LCPI7_8)
 	move	$s0, $zero
 	ori	$a7, $zero, 2
 	st.w	$a7, $a0, 76
 	vst	$vr0, $a0, 92
 	ori	$a2, $zero, 1
 	vst	$vr0, $a0, 128
-	pcalau12i	$a3, %pc_hi20(.LCPI7_4)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_4)
+	pcalau12i	$a3, %pc_hi20(.LCPI7_3)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_3)
 	lu32i.d	$a2, 1
 	st.d	$a2, $a0, 108
 	st.d	$a1, $a0, 144
@@ -1412,62 +1409,59 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a2, $zero, 216
 	ori	$a3, $zero, 212
 	ori	$s8, $zero, 208
-	b	.LBB7_22
+	b	.LBB7_19
 .LBB7_10:                               # %.split
 	ori	$a1, $zero, 5
-	bge	$s0, $a1, .LBB7_24
+	bge	$s0, $a1, .LBB7_21
 # %bb.11:
 	st.w	$s0, $a0, 0
-	blez	$s0, .LBB7_72
+	blez	$s0, .LBB7_70
 # %bb.12:                               # %.lr.ph.i
-	pcalau12i	$a1, %pc_hi20(.LCPI7_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI7_1)
-	addi.d	$a1, $s0, -1
-	vreplgr2vr.d	$vr0, $a1
-	vsle.du	$vr1, $vr1, $vr0
-	vpickve2gr.w	$a1, $vr1, 0
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_14
-# %bb.13:                               # %pred.store.if
-	st.w	$zero, $a0, 4
-.LBB7_14:                               # %pred.store.continue
-	vpickve2gr.w	$a1, $vr1, 2
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_16
-# %bb.15:                               # %pred.store.if187
-	ori	$a1, $zero, 1
-	st.w	$a1, $a0, 8
-.LBB7_16:                               # %pred.store.continue188
-	pcalau12i	$a1, %pc_hi20(.LCPI7_2)
-	vld	$vr1, $a1, %pc_lo12(.LCPI7_2)
-	vsle.du	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a1, $vr0, 0
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_18
-# %bb.17:                               # %pred.store.if189
-	ori	$a1, $zero, 2
-	st.w	$a1, $a0, 12
-.LBB7_18:                               # %pred.store.continue190
-	vpickve2gr.w	$a1, $vr0, 2
-	andi	$a1, $a1, 1
-	beqz	$a1, .LBB7_20
-# %bb.19:                               # %pred.store.if191
-	ori	$a1, $zero, 3
-	st.w	$a1, $a0, 16
-.LBB7_20:                               # %pred.store.continue192
-	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_0)
-	vst	$vr0, $a0, 20
-	addi.d	$a3, $a0, 36
-	b	.LBB7_29
-.LBB7_21:                               # %.split44
+	addi.d	$a1, $s0, 1
+	bstrpick.d	$a1, $a1, 31, 1
+	slli.d	$a1, $a1, 1
+	addi.d	$a2, $s0, -1
+	pcalau12i	$a3, %pc_hi20(.LCPI7_1)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_1)
+	vreplgr2vr.d	$vr1, $a2
+	addi.d	$a2, $a0, 8
+	ori	$a3, $zero, 1
+	b	.LBB7_14
+	.p2align	4, , 16
+.LBB7_13:                               # %pred.store.continue188
+                                        #   in Loop: Header=BB7_14 Depth=1
+	vaddi.du	$vr0, $vr0, 2
+	addi.d	$a2, $a2, 8
+	addi.d	$a1, $a1, -2
+	addi.d	$a3, $a3, 2
+	beqz	$a1, .LBB7_26
+.LBB7_14:                               # %vector.body185
+                                        # =>This Inner Loop Header: Depth=1
+	vsle.du	$vr2, $vr0, $vr1
+	vpickve2gr.d	$a4, $vr2, 0
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB7_16
+# %bb.15:                               # %pred.store.if
+                                        #   in Loop: Header=BB7_14 Depth=1
+	addi.d	$a4, $a3, -1
+	st.w	$a4, $a2, -4
+.LBB7_16:                               # %pred.store.continue
+                                        #   in Loop: Header=BB7_14 Depth=1
+	vpickve2gr.d	$a4, $vr2, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB7_13
+# %bb.17:                               # %pred.store.if187
+                                        #   in Loop: Header=BB7_14 Depth=1
+	st.w	$a3, $a2, 0
+	b	.LBB7_13
+.LBB7_18:                               # %.split44
 	move	$a7, $zero
 	st.w	$a1, $a0, 76
 	vst	$vr0, $a0, 92
 	ori	$a2, $zero, 1
 	vst	$vr0, $a0, 128
-	pcalau12i	$a3, %pc_hi20(.LCPI7_4)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_4)
+	pcalau12i	$a3, %pc_hi20(.LCPI7_3)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_3)
 	lu32i.d	$a2, 2
 	st.d	$a2, $a0, 108
 	st.d	$a1, $a0, 144
@@ -1476,8 +1470,8 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	lu32i.d	$a3, 1
 	vst	$vr0, $a0, 200
 	vst	$vr0, $a0, 236
-	pcalau12i	$a4, %pc_hi20(.LCPI7_5)
-	vld	$vr0, $a4, %pc_lo12(.LCPI7_5)
+	pcalau12i	$a4, %pc_hi20(.LCPI7_4)
+	vld	$vr0, $a4, %pc_lo12(.LCPI7_4)
 	st.d	$a3, $a0, 180
 	st.d	$a2, $a0, 216
 	st.d	$a1, $a0, 252
@@ -1520,7 +1514,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a2, $zero, 360
 	ori	$a3, $zero, 356
 	ori	$s8, $zero, 352
-.LBB7_22:                               # %fill_scans.exit83.sink.split.sink.split
+.LBB7_19:                               # %fill_scans.exit83.sink.split.sink.split
 	ori	$a4, $zero, 2
 	stx.w	$a4, $a0, $s8
 	ori	$s8, $zero, 1
@@ -1548,7 +1542,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$t3, $sp, 8                     # 8-byte Folded Reload
-.LBB7_23:                               # %fill_scans.exit83.sink.split
+.LBB7_20:                               # %fill_scans.exit83.sink.split
 	stx.w	$a1, $a0, $t2
 	stx.w	$s8, $a0, $t1
 	stx.w	$zero, $a0, $t0
@@ -1559,8 +1553,8 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	stx.w	$a1, $a0, $a7
 	stx.w	$a2, $a0, $a4
 	stx.w	$zero, $a0, $a3
-	b	.LBB7_71
-.LBB7_24:                               # %.lr.ph.i.i.preheader
+	b	.LBB7_69
+.LBB7_21:                               # %.lr.ph.i.i.preheader
 	move	$a2, $zero
 	bstrpick.d	$a3, $s0, 30, 1
 	slli.d	$a1, $a3, 1
@@ -1573,7 +1567,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a4, $zero, 1
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB7_25:                               # %vector.body
+.LBB7_22:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a2, 1
 	st.w	$a4, $a0, -36
@@ -1585,39 +1579,45 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$a5, $a5, -2
 	addi.d	$a0, $a0, 72
 	addi.d	$a2, $a2, 2
-	bnez	$a5, .LBB7_25
-# %bb.26:                               # %middle.block
-	beq	$a1, $s0, .LBB7_29
-# %bb.27:                               # %.lr.ph.i.i.preheader351
+	bnez	$a5, .LBB7_22
+# %bb.23:                               # %middle.block
+	beq	$a1, $s0, .LBB7_27
+# %bb.24:                               # %.lr.ph.i.i.preheader347
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
-.LBB7_28:                               # %.lr.ph.i.i
+.LBB7_25:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a0, $a3, 0
 	st.w	$a1, $a3, 4
 	vst	$vr0, $a3, 20
 	addi.w	$a1, $a1, 1
 	addi.d	$a3, $a3, 36
-	bne	$s0, $a1, .LBB7_28
-.LBB7_29:                               # %.lr.ph.i49.preheader
+	bne	$s0, $a1, .LBB7_25
+	b	.LBB7_27
+.LBB7_26:                               # %fill_dc_scans.exit.thread168
+	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI7_0)
+	vst	$vr0, $a0, 20
+	addi.d	$a3, $a0, 36
+.LBB7_27:                               # %.lr.ph.i49.preheader
 	addi.w	$a2, $s0, -1
 	bstrpick.d	$a0, $a2, 31, 0
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a1, $a0, 32, 1
-	pcalau12i	$a6, %pc_hi20(.LCPI7_3)
-	beqz	$a2, .LBB7_33
-# %bb.30:                               # %vector.ph196
+	pcalau12i	$a6, %pc_hi20(.LCPI7_2)
+	beqz	$a2, .LBB7_31
+# %bb.28:                               # %vector.ph192
 	move	$a7, $zero
 	slli.d	$a5, $a1, 1
 	slli.d	$a4, $a1, 6
 	alsl.d	$a4, $a1, $a4, 3
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_3)
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_2)
 	add.d	$a4, $a3, $a4
 	addi.d	$a3, $a3, 36
 	ori	$t0, $zero, 1
 	move	$t1, $a5
 	.p2align	4, , 16
-.LBB7_31:                               # %vector.body199
+.LBB7_29:                               # %vector.body195
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 1
 	st.w	$t0, $a3, -36
@@ -1629,40 +1629,40 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t1, $t1, -2
 	addi.d	$a3, $a3, 72
 	addi.d	$a7, $a7, 2
-	bnez	$t1, .LBB7_31
-# %bb.32:                               # %middle.block206
-	bne	$a0, $a5, .LBB7_34
-	b	.LBB7_36
-.LBB7_33:
+	bnez	$t1, .LBB7_29
+# %bb.30:                               # %middle.block202
+	bne	$a0, $a5, .LBB7_32
+	b	.LBB7_34
+.LBB7_31:
 	move	$a5, $zero
 	move	$a4, $a3
-.LBB7_34:                               # %.lr.ph.i49.preheader341
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_3)
+.LBB7_32:                               # %.lr.ph.i49.preheader337
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_2)
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
-.LBB7_35:                               # %.lr.ph.i49
+.LBB7_33:                               # %.lr.ph.i49
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a4, 0
 	st.w	$a5, $a4, 4
 	vst	$vr0, $a4, 20
 	addi.w	$a5, $a5, 1
 	addi.d	$a4, $a4, 36
-	bne	$s0, $a5, .LBB7_35
-.LBB7_36:                               # %.lr.ph.i53.preheader
-	pcalau12i	$a6, %pc_hi20(.LCPI7_4)
-	beqz	$a2, .LBB7_40
-# %bb.37:                               # %vector.ph211
+	bne	$s0, $a5, .LBB7_33
+.LBB7_34:                               # %.lr.ph.i53.preheader
+	pcalau12i	$a6, %pc_hi20(.LCPI7_3)
+	beqz	$a2, .LBB7_38
+# %bb.35:                               # %vector.ph207
 	move	$a7, $zero
 	slli.d	$a3, $a1, 1
 	slli.d	$a5, $a1, 6
 	alsl.d	$a5, $a1, $a5, 3
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_3)
 	add.d	$a5, $a4, $a5
 	addi.d	$a4, $a4, 36
 	ori	$t0, $zero, 1
 	move	$t1, $a3
 	.p2align	4, , 16
-.LBB7_38:                               # %vector.body214
+.LBB7_36:                               # %vector.body210
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 1
 	st.w	$t0, $a4, -36
@@ -1674,40 +1674,40 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t1, $t1, -2
 	addi.d	$a4, $a4, 72
 	addi.d	$a7, $a7, 2
-	bnez	$t1, .LBB7_38
-# %bb.39:                               # %middle.block221
-	bne	$a0, $a3, .LBB7_41
-	b	.LBB7_43
-.LBB7_40:
+	bnez	$t1, .LBB7_36
+# %bb.37:                               # %middle.block217
+	bne	$a0, $a3, .LBB7_39
+	b	.LBB7_41
+.LBB7_38:
 	move	$a3, $zero
 	move	$a5, $a4
-.LBB7_41:                               # %.lr.ph.i53.preheader339
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
+.LBB7_39:                               # %.lr.ph.i53.preheader335
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_3)
 	ori	$a4, $zero, 1
 	.p2align	4, , 16
-.LBB7_42:                               # %.lr.ph.i53
+.LBB7_40:                               # %.lr.ph.i53
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a4, $a5, 0
 	st.w	$a3, $a5, 4
 	vst	$vr0, $a5, 20
 	addi.w	$a3, $a3, 1
 	addi.d	$a5, $a5, 36
-	bne	$s0, $a3, .LBB7_42
-.LBB7_43:                               # %.lr.ph.i60.preheader
-	pcalau12i	$a6, %pc_hi20(.LCPI7_5)
-	beqz	$a2, .LBB7_47
-# %bb.44:                               # %vector.ph227
+	bne	$s0, $a3, .LBB7_40
+.LBB7_41:                               # %.lr.ph.i60.preheader
+	pcalau12i	$a6, %pc_hi20(.LCPI7_4)
+	beqz	$a2, .LBB7_45
+# %bb.42:                               # %vector.ph223
 	move	$a7, $zero
 	slli.d	$a4, $a1, 1
 	slli.d	$a3, $a1, 6
 	alsl.d	$a3, $a1, $a3, 3
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_5)
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
 	add.d	$a3, $a5, $a3
 	addi.d	$a5, $a5, 36
 	ori	$t0, $zero, 1
 	move	$t1, $a4
 	.p2align	4, , 16
-.LBB7_45:                               # %vector.body230
+.LBB7_43:                               # %vector.body226
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$t2, $a7, 1
 	st.w	$t0, $a5, -36
@@ -1719,37 +1719,37 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t1, $t1, -2
 	addi.d	$a5, $a5, 72
 	addi.d	$a7, $a7, 2
-	bnez	$t1, .LBB7_45
-# %bb.46:                               # %middle.block237
-	bne	$a0, $a4, .LBB7_48
-	b	.LBB7_50
-.LBB7_47:
+	bnez	$t1, .LBB7_43
+# %bb.44:                               # %middle.block233
+	bne	$a0, $a4, .LBB7_46
+	b	.LBB7_48
+.LBB7_45:
 	move	$a4, $zero
 	move	$a3, $a5
-.LBB7_48:                               # %.lr.ph.i60.preheader336
-	vld	$vr0, $a6, %pc_lo12(.LCPI7_5)
+.LBB7_46:                               # %.lr.ph.i60.preheader332
+	vld	$vr0, $a6, %pc_lo12(.LCPI7_4)
 	ori	$a5, $zero, 1
 	.p2align	4, , 16
-.LBB7_49:                               # %.lr.ph.i60
+.LBB7_47:                               # %.lr.ph.i60
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a5, $a3, 0
 	st.w	$a4, $a3, 4
 	vst	$vr0, $a3, 20
 	addi.w	$a4, $a4, 1
 	addi.d	$a3, $a3, 36
-	bne	$s0, $a4, .LBB7_49
-.LBB7_50:                               # %fill_scans.exit64.loopexit
+	bne	$s0, $a4, .LBB7_47
+.LBB7_48:                               # %fill_scans.exit64.loopexit
 	addi.d	$a4, $a3, -36
 	ori	$a5, $zero, 5
-	bge	$s0, $a5, .LBB7_53
-# %bb.51:                               # %.lr.ph.i71
+	bge	$s0, $a5, .LBB7_51
+# %bb.49:                               # %.lr.ph.i71
 	ori	$a5, $zero, 8
 	st.w	$s0, $a3, 0
-	bgeu	$s0, $a5, .LBB7_62
-# %bb.52:
+	bgeu	$s0, $a5, .LBB7_60
+# %bb.50:
 	move	$a3, $zero
-	b	.LBB7_65
-.LBB7_53:                               # %.lr.ph.i.i65.preheader
+	b	.LBB7_63
+.LBB7_51:                               # %.lr.ph.i.i65.preheader
 	move	$a6, $zero
 	bstrpick.d	$a4, $s0, 30, 1
 	slli.d	$a5, $a4, 1
@@ -1762,7 +1762,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a7, $zero, 1
 	move	$t0, $a5
 	.p2align	4, , 16
-.LBB7_54:                               # %vector.body245
+.LBB7_52:                               # %vector.body241
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$t1, $a6, 1
 	st.w	$a7, $a3, -36
@@ -1774,35 +1774,35 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$t0, $t0, -2
 	addi.d	$a3, $a3, 72
 	addi.d	$a6, $a6, 2
-	bnez	$t0, .LBB7_54
-# %bb.55:                               # %middle.block252
-	beq	$a5, $s0, .LBB7_58
-# %bb.56:                               # %.lr.ph.i.i65.preheader350
+	bnez	$t0, .LBB7_52
+# %bb.53:                               # %middle.block248
+	beq	$a5, $s0, .LBB7_56
+# %bb.54:                               # %.lr.ph.i.i65.preheader346
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
-.LBB7_57:                               # %.lr.ph.i.i65
+.LBB7_55:                               # %.lr.ph.i.i65
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a4, 0
 	st.w	$a5, $a4, 4
 	vst	$vr0, $a4, 20
 	addi.w	$a5, $a5, 1
 	addi.d	$a4, $a4, 36
-	bne	$s0, $a5, .LBB7_57
-.LBB7_58:                               # %.lr.ph.i79.preheader
-	pcalau12i	$a3, %pc_hi20(.LCPI7_7)
-	beqz	$a2, .LBB7_68
-.LBB7_59:                               # %vector.ph269
+	bne	$s0, $a5, .LBB7_55
+.LBB7_56:                               # %.lr.ph.i79.preheader
+	pcalau12i	$a3, %pc_hi20(.LCPI7_6)
+	beqz	$a2, .LBB7_66
+.LBB7_57:                               # %vector.ph265
 	move	$a5, $zero
 	slli.d	$a2, $a1, 1
 	slli.d	$a6, $a1, 6
 	alsl.d	$a1, $a1, $a6, 3
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_7)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_6)
 	add.d	$a1, $a4, $a1
 	addi.d	$a4, $a4, 36
 	ori	$a6, $zero, 1
 	move	$a7, $a2
 	.p2align	4, , 16
-.LBB7_60:                               # %vector.body272
+.LBB7_58:                               # %vector.body268
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$t0, $a5, 1
 	st.w	$a6, $a4, -36
@@ -1814,19 +1814,19 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	addi.d	$a7, $a7, -2
 	addi.d	$a4, $a4, 72
 	addi.d	$a5, $a5, 2
-	bnez	$a7, .LBB7_60
-# %bb.61:                               # %middle.block279
-	bne	$a0, $a2, .LBB7_69
-	b	.LBB7_71
-.LBB7_62:                               # %vector.ph256
-	pcalau12i	$a3, %pc_hi20(.LCPI7_6)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_6)
+	bnez	$a7, .LBB7_58
+# %bb.59:                               # %middle.block275
+	bne	$a0, $a2, .LBB7_67
+	b	.LBB7_69
+.LBB7_60:                               # %vector.ph252
+	pcalau12i	$a3, %pc_hi20(.LCPI7_5)
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_5)
 	bstrpick.d	$a3, $s1, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a5, $a4, 56
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB7_63:                               # %vector.body259
+.LBB7_61:                               # %vector.body255
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr1, $vr0, 4
 	vst	$vr0, $a5, -16
@@ -1834,44 +1834,44 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	vaddi.wu	$vr0, $vr0, 8
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB7_63
-# %bb.64:                               # %middle.block264
-	beq	$a3, $s1, .LBB7_67
-.LBB7_65:                               # %scalar.ph254.preheader
+	bnez	$a6, .LBB7_61
+# %bb.62:                               # %middle.block260
+	beq	$a3, $s1, .LBB7_65
+.LBB7_63:                               # %scalar.ph250.preheader
 	sub.d	$a5, $s1, $a3
 	alsl.d	$a6, $a3, $a4, 2
 	addi.d	$a6, $a6, 40
 	.p2align	4, , 16
-.LBB7_66:                               # %scalar.ph254
+.LBB7_64:                               # %scalar.ph250
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a3, $a6, 0
 	addi.d	$a5, $a5, -1
 	addi.d	$a3, $a3, 1
 	addi.d	$a6, $a6, 4
-	bnez	$a5, .LBB7_66
-.LBB7_67:                               # %._crit_edge.i70
+	bnez	$a5, .LBB7_64
+.LBB7_65:                               # %._crit_edge.i70
 	pcalau12i	$a3, %pc_hi20(.LCPI7_1)
 	vld	$vr0, $a3, %pc_lo12(.LCPI7_1)
 	vst	$vr0, $a4, 56
 	addi.d	$a4, $a4, 72
-	pcalau12i	$a3, %pc_hi20(.LCPI7_7)
-	bnez	$a2, .LBB7_59
-.LBB7_68:
+	pcalau12i	$a3, %pc_hi20(.LCPI7_6)
+	bnez	$a2, .LBB7_57
+.LBB7_66:
 	move	$a2, $zero
 	move	$a1, $a4
-.LBB7_69:                               # %.lr.ph.i79.preheader334
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_7)
+.LBB7_67:                               # %.lr.ph.i79.preheader330
+	vld	$vr0, $a3, %pc_lo12(.LCPI7_6)
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
-.LBB7_70:                               # %.lr.ph.i79
+.LBB7_68:                               # %.lr.ph.i79
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a0, $a1, 0
 	st.w	$a2, $a1, 4
 	vst	$vr0, $a1, 20
 	addi.w	$a2, $a2, 1
 	addi.d	$a1, $a1, 36
-	bne	$s0, $a2, .LBB7_70
-.LBB7_71:                               # %fill_scans.exit83
+	bne	$s0, $a2, .LBB7_68
+.LBB7_69:                               # %fill_scans.exit83
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
@@ -1885,7 +1885,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB7_72:
+.LBB7_70:
 	move	$a1, $zero
 	move	$s8, $zero
 	ori	$a3, $zero, 68
@@ -1897,7 +1897,7 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$t0, $zero, 28
 	ori	$t1, $zero, 20
 	ori	$t2, $zero, 24
-	b	.LBB7_23
+	b	.LBB7_20
 .Lfunc_end7:
 	.size	jpeg_simple_progression, .Lfunc_end7-jpeg_simple_progression
                                         # -- End function

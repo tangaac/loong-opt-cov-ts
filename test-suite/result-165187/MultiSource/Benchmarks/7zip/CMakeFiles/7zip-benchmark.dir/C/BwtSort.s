@@ -416,7 +416,7 @@ SortGroup:                              # @SortGroup
 	or	$a0, $a4, $a0
 	st.w	$a0, $a1, 4
 .LBB0_44:                               # %SetGroupSize.exit292
-	ori	$a0, $zero, 12
+	ori	$a0, $zero, 8
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	bltu	$s8, $a0, .LBB0_49
 # %bb.45:                               # %vector.memcheck

@@ -330,17 +330,18 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 	.cfi_startproc
 # %bb.0:
 	move	$a5, $a0
-	fld.s	$fa0, $a1, 0
-	fld.s	$fa2, $a0, 0
-	fld.s	$fa1, $a1, 4
-	fld.s	$fa3, $a0, 4
-	fld.s	$fa6, $a1, 8
-	fld.s	$fa4, $a0, 8
-	fld.s	$fa5, $a0, 12
-	fmul.s	$fa1, $fa1, $fa3
-	fmadd.s	$fa0, $fa0, $fa2, $fa1
-	fmadd.s	$fa0, $fa6, $fa4, $fa0
-	fsub.s	$fa0, $fa0, $fa5
+	vld	$vr2, $a0, 0
+	fld.s	$fa0, $a1, 4
+	fld.s	$fa1, $a1, 0
+	fld.s	$fa3, $a1, 8
+	vreplvei.w	$vr4, $vr2, 1
+	fmul.s	$fa0, $fa0, $fa4
+	vreplvei.w	$vr4, $vr2, 0
+	fmadd.s	$fa0, $fa1, $fa4, $fa0
+	vreplvei.w	$vr1, $vr2, 2
+	fmadd.s	$fa0, $fa3, $fa1, $fa0
+	vreplvei.w	$vr1, $vr2, 3
+	fsub.s	$fa0, $fa0, $fa1
 	lu12i.w	$a0, 212992
 	movgr2fr.w	$fa1, $a0
 	fcmp.clt.s	$fcc0, $fa1, $fa0
@@ -351,19 +352,20 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 .LBB3_2:
 	vld	$vr2, $a1, 0
 	vst	$vr2, $a4, 0
-	fld.s	$fa2, $a5, 0
-	fld.s	$fa3, $a5, 4
-	fld.s	$fa4, $a5, 8
-	fld.s	$fa5, $a5, 12
+	vld	$vr2, $a5, 0
 	ori	$a0, $zero, 1
 .LBB3_3:
-	fld.s	$fa6, $a2, 4
-	fld.s	$fa7, $a2, 0
-	fld.s	$ft0, $a2, 8
-	fmul.s	$fa3, $fa6, $fa3
-	fmadd.s	$fa2, $fa7, $fa2, $fa3
-	fmadd.s	$fa2, $ft0, $fa4, $fa2
-	fsub.s	$fa2, $fa2, $fa5
+	fld.s	$fa3, $a2, 4
+	fld.s	$fa4, $a2, 0
+	vreplvei.w	$vr5, $vr2, 1
+	fmul.s	$fa6, $fa3, $fa5
+	fld.s	$fa5, $a2, 8
+	vreplvei.w	$vr7, $vr2, 0
+	fmadd.s	$fa6, $fa4, $fa7, $fa6
+	vreplvei.w	$vr7, $vr2, 2
+	fmadd.s	$fa6, $fa5, $fa7, $fa6
+	vreplvei.w	$vr2, $vr2, 3
+	fsub.s	$fa2, $fa6, $fa2
 	fcmp.clt.s	$fcc1, $fa1, $fa2
 	fcmp.cule.s	$fcc2, $fa0, $fa1
 	movcf2gr	$a6, $fcc2
@@ -371,29 +373,29 @@ _Z22bt_plane_clip_triangleRK9btVector4RK9btVector3S4_S4_PS2_: # @_Z22bt_plane_cl
 	xor	$a6, $a6, $a7
 	bnez	$a6, .LBB3_5
 # %bb.4:
-	fneg.s	$fa3, $fa0
-	fsub.s	$fa4, $fa2, $fa0
-	fdiv.s	$fa3, $fa3, $fa4
+	fneg.s	$fa6, $fa0
+	fsub.s	$fa7, $fa2, $fa0
+	fdiv.s	$fa6, $fa6, $fa7
 	alsl.d	$a6, $a0, $a4, 4
 	slli.d	$a7, $a0, 4
-	vldi	$vr4, -1168
-	fld.s	$fa5, $a1, 0
+	vldi	$vr7, -1168
+	fld.s	$ft0, $a1, 0
 	fld.s	$ft1, $a1, 4
 	fld.s	$ft2, $a1, 8
-	fsub.s	$fa4, $fa4, $fa3
-	fmul.s	$fa5, $fa4, $fa5
-	fmul.s	$ft1, $fa4, $ft1
-	fmul.s	$fa4, $fa4, $ft2
-	fmul.s	$fa7, $fa7, $fa3
-	fmul.s	$fa6, $fa6, $fa3
-	fmul.s	$fa3, $ft0, $fa3
-	fadd.s	$fa5, $fa7, $fa5
-	fadd.s	$fa6, $fa6, $ft1
-	fadd.s	$fa3, $fa3, $fa4
-	movfr2gr.s	$t0, $fa5
-	movfr2gr.s	$t1, $fa6
-	bstrins.d	$t0, $t1, 63, 32
+	fsub.s	$fa7, $fa7, $fa6
+	fmul.s	$ft0, $fa7, $ft0
+	fmul.s	$ft1, $fa7, $ft1
+	fmul.s	$fa7, $fa7, $ft2
+	fmul.s	$fa4, $fa4, $fa6
+	fmul.s	$fa3, $fa3, $fa6
+	fmul.s	$fa5, $fa5, $fa6
+	fadd.s	$fa4, $fa4, $ft0
+	fadd.s	$fa3, $fa3, $ft1
+	fadd.s	$fa5, $fa5, $fa7
+	movfr2gr.s	$t0, $fa4
 	movfr2gr.s	$t1, $fa3
+	bstrins.d	$t0, $t1, 63, 32
+	movfr2gr.s	$t1, $fa5
 	bstrpick.d	$t1, $t1, 31, 0
 	stx.d	$t0, $a4, $a7
 	st.d	$t1, $a6, 8

@@ -841,15 +841,17 @@ des_encrypt2:                           # @des_encrypt2
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, -64
 	bltu	$t5, $a2, .LBB1_4
-.LBB1_5:                                # %.loopexit.loopexit180
-	vinsgr2vr.d	$vr0, $a4, 0
-	vinsgr2vr.d	$vr0, $a3, 1
-	vsrli.d	$vr1, $vr0, 3
-	vslli.d	$vr0, $vr0, 29
-	vadd.d	$vr0, $vr1, $vr0
-	vldi	$vr1, -1777
-	vand.v	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 0
+.LBB1_5:                                # %.loopexit
+	srli.d	$a1, $a4, 3
+	slli.d	$a2, $a4, 29
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a1, $a0, 0
+	srli.d	$a1, $a3, 3
+	slli.d	$a2, $a3, 29
+	add.d	$a1, $a1, $a2
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a1, $a0, 8
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload

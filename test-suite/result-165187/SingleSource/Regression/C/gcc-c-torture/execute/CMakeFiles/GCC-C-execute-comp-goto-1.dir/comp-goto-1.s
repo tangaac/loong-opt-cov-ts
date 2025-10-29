@@ -26,65 +26,43 @@ simulator_kernel:                       # @simulator_kernel
 	blez	$a0, .LBB1_10
 # %bb.2:                                # %.lr.ph.preheader
 	ld.d	$a6, $a1, 1032
-	ori	$a7, $zero, 4
+	ori	$a7, $zero, 1
 	pcalau12i	$a1, %pc_hi20(simulator_kernel.op_map)
 	addi.d	$a1, $a1, %pc_lo12(simulator_kernel.op_map)
-	bgeu	$a0, $a7, .LBB1_4
+	bne	$a0, $a7, .LBB1_4
 # %bb.3:
 	move	$a7, $zero
 	b	.LBB1_7
 .LBB1_4:                                # %vector.ph
-	bstrpick.d	$a7, $a0, 30, 2
-	slli.d	$a7, $a7, 2
-	addi.d	$t0, $a6, 16
-	vinsgr2vr.w	$vr0, $a5, 0
-	vinsgr2vr.w	$vr0, $a5, 1
-	vldi	$vr1, -2301
-	vrepli.b	$vr2, 0
-	lu12i.w	$t1, -64
-	vreplgr2vr.d	$vr3, $t1
+	bstrpick.d	$a7, $a0, 30, 1
+	slli.d	$a7, $a7, 1
+	addi.d	$t0, $a6, 8
 	move	$t1, $a7
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $t0, -16
-	vld	$vr5, $t0, 0
-	vslli.d	$vr6, $vr4, 46
-	vslli.d	$vr7, $vr5, 46
-	vsrai.d	$vr6, $vr6, 43
-	vpickve2gr.d	$t2, $vr6, 0
-	vpickve2gr.d	$t3, $vr6, 1
-	vsrai.d	$vr6, $vr7, 43
-	vpickve2gr.d	$t4, $vr6, 0
-	vpickve2gr.d	$t5, $vr6, 1
-	ldx.d	$t2, $a1, $t2
-	ldx.d	$t3, $a1, $t3
-	ldx.d	$t4, $a1, $t4
-	ldx.d	$t5, $a1, $t5
-	vinsgr2vr.d	$vr6, $t2, 0
-	vinsgr2vr.d	$vr6, $t3, 1
-	vinsgr2vr.d	$vr7, $t4, 0
-	vinsgr2vr.d	$vr7, $t5, 1
-	vshuf4i.w	$vr6, $vr6, 8
-	vshuf4i.w	$vr7, $vr7, 8
-	vsub.w	$vr6, $vr6, $vr0
-	vsub.w	$vr7, $vr7, $vr0
-	vand.v	$vr6, $vr6, $vr1
-	vand.v	$vr7, $vr7, $vr1
-	vilvl.w	$vr6, $vr2, $vr6
-	vilvl.w	$vr7, $vr2, $vr7
-	vand.v	$vr4, $vr4, $vr3
-	vand.v	$vr5, $vr5, $vr3
-	vor.v	$vr4, $vr4, $vr6
-	vor.v	$vr5, $vr5, $vr7
-	vst	$vr4, $t0, -16
-	vst	$vr5, $t0, 0
-	addi.d	$t1, $t1, -4
-	addi.d	$t0, $t0, 32
+	ld.d	$t2, $t0, -8
+	ld.d	$t3, $t0, 0
+	slli.d	$t4, $t2, 46
+	slli.d	$t5, $t3, 46
+	srai.d	$t4, $t4, 43
+	srai.d	$t5, $t5, 43
+	ldx.w	$t4, $a1, $t4
+	ldx.w	$t5, $a1, $t5
+	sub.d	$t4, $t4, $a5
+	sub.d	$t5, $t5, $a5
+	bstrpick.d	$t4, $t4, 17, 0
+	bstrpick.d	$t5, $t5, 17, 0
+	bstrins.d	$t2, $t4, 17, 0
+	bstrins.d	$t3, $t5, 17, 0
+	st.d	$t2, $t0, -8
+	st.d	$t3, $t0, 0
+	addi.d	$t1, $t1, -2
+	addi.d	$t0, $t0, 16
 	bnez	$t1, .LBB1_5
 # %bb.6:                                # %middle.block
 	beq	$a7, $a0, .LBB1_10
-.LBB1_7:                                # %.lr.ph.preheader70
+.LBB1_7:                                # %.lr.ph.preheader69
 	alsl.d	$a6, $a7, $a6, 3
 	sub.d	$a0, $a0, $a7
 	.p2align	4, , 16

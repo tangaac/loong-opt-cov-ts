@@ -1282,7 +1282,7 @@ gz_avail:                               # @gz_avail
 # %bb.6:                                # %iter.check
 	ld.d	$a4, $fp, 48
 	ld.d	$a3, $fp, 120
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bltu	$a0, $a1, .LBB12_11
 # %bb.7:                                # %iter.check
 	sub.d	$a1, $a4, $a3
@@ -1302,7 +1302,7 @@ gz_avail:                               # @gz_avail
 	move	$a5, $a3
 	b	.LBB12_19
 .LBB12_12:                              # %vector.ph
-	andi	$a2, $a1, 24
+	andi	$a2, $a1, 28
 	bstrpick.d	$a5, $a1, 31, 5
 	slli.d	$a6, $a5, 5
 	addi.d	$a5, $a3, 16
@@ -1324,10 +1324,10 @@ gz_avail:                               # @gz_avail
 # %bb.15:                               # %vec.epilog.iter.check
 	beqz	$a2, .LBB12_29
 .LBB12_16:                              # %vec.epilog.ph
-	bstrpick.d	$a5, $a1, 31, 3
-	slli.d	$a7, $a5, 3
-	alsl.d	$a2, $a5, $a4, 3
-	alsl.d	$a5, $a5, $a3, 3
+	bstrpick.d	$a5, $a1, 31, 2
+	slli.d	$a7, $a5, 2
+	alsl.d	$a2, $a5, $a4, 2
+	alsl.d	$a5, $a5, $a3, 2
 	sub.d	$a0, $a0, $a7
 	sub.d	$t0, $a6, $a7
 	add.d	$a3, $a3, $a6
@@ -1335,11 +1335,11 @@ gz_avail:                               # @gz_avail
 	.p2align	4, , 16
 .LBB12_17:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a3, 0
-	st.d	$a6, $a4, 0
-	addi.d	$t0, $t0, 8
-	addi.d	$a3, $a3, 8
-	addi.d	$a4, $a4, 8
+	ld.w	$a6, $a3, 0
+	st.w	$a6, $a4, 0
+	addi.d	$t0, $t0, 4
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 4
 	bnez	$t0, .LBB12_17
 # %bb.18:                               # %vec.epilog.middle.block
 	beq	$a7, $a1, .LBB12_20

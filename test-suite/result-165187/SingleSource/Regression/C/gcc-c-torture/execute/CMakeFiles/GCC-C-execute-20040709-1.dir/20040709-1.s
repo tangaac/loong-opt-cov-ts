@@ -711,92 +711,94 @@ fn3E:                                   # @fn3E
 	.type	testE,@function
 testE:                                  # @testE
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
 	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
 	lu12i.w	$a1, 269412
 	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sE)
-	addi.d	$a3, $a3, %pc_lo12(sE)
-	vst	$vr0, $a3, 0
-	ld.d	$a4, $a3, 8
-	lu12i.w	$a5, -83436
-	ori	$a5, $a5, 2109
-	mul.d	$a5, $s0, $a5
+	mul.d	$a2, $a2, $a1
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a2, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a2, %pc_hi20(sE)
+	addi.d	$a2, $a2, %pc_lo12(sE)
+	st.b	$a5, $a2, 0
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 1
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 2
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 3
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 4
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 5
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 6
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 7
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 8
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 9
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 10
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 11
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 12
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 13
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 14
+	mul.d	$a4, $a4, $a1
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 15
+	ld.d	$a5, $a2, 8
+	lu12i.w	$a6, -83436
+	ori	$a6, $a6, 2109
+	mul.d	$a4, $a4, $a6
 	lu12i.w	$a6, 55977
 	ori	$a6, $a6, 1781
-	add.d	$a5, $a5, $a6
-	addi.w	$a6, $a5, 0
-	bstrpick.d	$a5, $a5, 26, 16
+	add.d	$a4, $a4, $a6
+	addi.w	$a6, $a4, 0
+	bstrpick.d	$a4, $a4, 26, 16
 	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(myrnd.s)
 	bstrpick.d	$a0, $a1, 26, 16
-	add.d	$a0, $a0, $a5
-	bstrins.d	$a4, $a0, 63, 35
-	st.d	$a4, $a3, 8
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	add.d	$a0, $a0, $a4
+	bstrins.d	$a5, $a0, 63, 35
+	st.d	$a5, $a2, 8
 	ret
 .Lfunc_end30:
 	.size	testE, .Lfunc_end30-testE
@@ -878,91 +880,94 @@ fn3F:                                   # @fn3F
 	.type	testF,@function
 testF:                                  # @testF
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
 	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
 	lu12i.w	$a1, 269412
 	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sF)
-	vst	$vr0, $a3, %pc_lo12(sF)
-	ld.d	$a4, $a3, %pc_lo12(sF)
-	lu12i.w	$a5, -83436
-	ori	$a5, $a5, 2109
-	mul.d	$a5, $s0, $a5
+	mul.d	$a2, $a2, $a1
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a2, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a2, %pc_hi20(sF)
+	addi.d	$a2, $a2, %pc_lo12(sF)
+	st.b	$a5, $a2, 0
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 1
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 2
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 3
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 4
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 5
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 6
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 7
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 8
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 9
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 10
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 11
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 12
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 13
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 14
+	mul.d	$a4, $a4, $a1
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 15
+	ld.d	$a5, $a2, 0
+	lu12i.w	$a6, -83436
+	ori	$a6, $a6, 2109
+	mul.d	$a4, $a4, $a6
 	lu12i.w	$a6, 55977
 	ori	$a6, $a6, 1781
-	add.d	$a5, $a5, $a6
-	addi.w	$a6, $a5, 0
-	bstrpick.d	$a5, $a5, 26, 16
+	add.d	$a4, $a4, $a6
+	addi.w	$a6, $a4, 0
+	bstrpick.d	$a4, $a4, 26, 16
 	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(myrnd.s)
 	bstrpick.d	$a0, $a1, 26, 16
-	add.d	$a0, $a0, $a5
-	bstrins.d	$a4, $a0, 63, 35
-	st.d	$a4, $a3, %pc_lo12(sF)
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	add.d	$a0, $a0, $a4
+	bstrins.d	$a5, $a0, 63, 35
+	st.d	$a5, $a2, 0
 	ret
 .Lfunc_end36:
 	.size	testF, .Lfunc_end36-testF
@@ -1043,83 +1048,90 @@ fn3G:                                   # @fn3G
 	.type	testG,@function
 testG:                                  # @testG
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sG)
-	vst	$vr0, $a3, %pc_lo12(sG)
-	ld.wu	$a4, $a3, %pc_lo12(sG)
-	mul.d	$a5, $s0, $a1
-	add.d	$a6, $a5, $a2
-	mul.d	$a5, $a6, $a1
-	add.w	$a5, $a5, $a2
-	st.w	$a5, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a6, $a6, 22, 16
-	move	$a7, $a4
-	bstrins.d	$a7, $a6, 63, 25
+	pcalau12i	$a1, %pc_hi20(myrnd.s)
+	ld.w	$a0, $a1, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a0, $a0, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a0, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a0, %pc_hi20(sG)
+	addi.d	$a0, $a0, %pc_lo12(sG)
+	st.b	$a5, $a0, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 13
+	mul.d	$a4, $a4, $a2
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 14
+	mul.d	$a4, $a4, $a2
+	add.d	$a5, $a4, $a3
+	srli.d	$a4, $a5, 16
+	st.b	$a4, $a0, 15
+	ld.wu	$a4, $a0, 0
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
+	lu12i.w	$a6, 2032
+	and	$a6, $a5, $a6
+	mul.d	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
+	slli.d	$a6, $a6, 9
+	bstrins.d	$a6, $a4, 24, 0
+	st.w	$a6, $a0, 0
 	ori	$a6, $zero, 1
-	st.w	$a7, $a3, %pc_lo12(sG)
+	st.w	$a5, $a1, %pc_lo12(myrnd.s)
 	beqz	$a6, .LBB42_3
 # %bb.1:
 	bstrpick.d	$a4, $a4, 24, 0
@@ -1130,23 +1142,20 @@ testG:                                  # @testG
 	ori	$a6, $a6, 2015
 	add.d	$a5, $a5, $a6
 	bstrpick.d	$a6, $a5, 31, 16
-	mul.d	$a1, $a5, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a1, 31, 16
-	slli.d	$a1, $a6, 25
-	or	$a1, $a1, $a4
-	slli.d	$a2, $a0, 25
-	add.d	$a1, $a1, $a2
-	bstrpick.d	$a2, $a1, 31, 25
-	add.d	$a0, $a0, $a6
-	andi	$a0, $a0, 127
-	st.w	$a1, $a3, %pc_lo12(sG)
-	bne	$a0, $a2, .LBB42_3
+	mul.d	$a2, $a5, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a1, %pc_lo12(myrnd.s)
+	bstrpick.d	$a1, $a2, 31, 16
+	slli.d	$a2, $a6, 25
+	or	$a2, $a2, $a4
+	slli.d	$a3, $a1, 25
+	add.d	$a2, $a2, $a3
+	bstrpick.d	$a3, $a2, 31, 25
+	add.d	$a1, $a1, $a6
+	andi	$a1, $a1, 127
+	st.w	$a2, $a0, 0
+	bne	$a1, $a3, .LBB42_3
 # %bb.2:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB42_3:
 	pcaddu18i	$ra, %call36(abort)
@@ -1231,83 +1240,90 @@ fn3H:                                   # @fn3H
 	.type	testH,@function
 testH:                                  # @testH
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sH)
-	vst	$vr0, $a3, %pc_lo12(sH)
-	ld.wu	$a4, $a3, %pc_lo12(sH)
-	mul.d	$a5, $s0, $a1
-	add.d	$a6, $a5, $a2
-	mul.d	$a5, $a6, $a1
-	add.w	$a5, $a5, $a2
-	st.w	$a5, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a6, $a6, 24, 16
-	move	$a7, $a4
-	bstrins.d	$a7, $a6, 63, 23
+	pcalau12i	$a1, %pc_hi20(myrnd.s)
+	ld.w	$a0, $a1, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a0, $a0, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a0, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a0, %pc_hi20(sH)
+	addi.d	$a0, $a0, %pc_lo12(sH)
+	st.b	$a5, $a0, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 13
+	mul.d	$a4, $a4, $a2
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 14
+	mul.d	$a4, $a4, $a2
+	add.d	$a5, $a4, $a3
+	srli.d	$a4, $a5, 16
+	st.b	$a4, $a0, 15
+	ld.wu	$a4, $a0, 0
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
+	lu12i.w	$a6, 8176
+	and	$a6, $a5, $a6
+	mul.d	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
+	slli.d	$a6, $a6, 7
+	bstrins.d	$a6, $a4, 22, 0
+	st.w	$a6, $a0, 0
 	ori	$a6, $zero, 1
-	st.w	$a7, $a3, %pc_lo12(sH)
+	st.w	$a5, $a1, %pc_lo12(myrnd.s)
 	beqz	$a6, .LBB48_3
 # %bb.1:
 	bstrpick.d	$a4, $a4, 22, 0
@@ -1318,23 +1334,20 @@ testH:                                  # @testH
 	ori	$a6, $a6, 2015
 	add.d	$a5, $a5, $a6
 	bstrpick.d	$a6, $a5, 31, 16
-	mul.d	$a1, $a5, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a1, 31, 16
-	slli.d	$a1, $a6, 23
-	or	$a1, $a1, $a4
-	slli.d	$a2, $a0, 23
-	add.d	$a1, $a1, $a2
-	bstrpick.d	$a2, $a1, 31, 23
-	add.d	$a0, $a0, $a6
-	andi	$a0, $a0, 511
-	st.w	$a1, $a3, %pc_lo12(sH)
-	bne	$a0, $a2, .LBB48_3
+	mul.d	$a2, $a5, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a1, %pc_lo12(myrnd.s)
+	bstrpick.d	$a1, $a2, 31, 16
+	slli.d	$a2, $a6, 23
+	or	$a2, $a2, $a4
+	slli.d	$a3, $a1, 23
+	add.d	$a2, $a2, $a3
+	bstrpick.d	$a3, $a2, 31, 23
+	add.d	$a1, $a1, $a6
+	andi	$a1, $a1, 511
+	st.w	$a2, $a0, 0
+	bne	$a1, $a3, .LBB48_3
 # %bb.2:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB48_3:
 	pcaddu18i	$ra, %call36(abort)
@@ -1419,125 +1432,128 @@ fn3I:                                   # @fn3I
 	.type	testI,@function
 testI:                                  # @testI
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sI)
-	vst	$vr0, $a3, %pc_lo12(sI)
-	ld.hu	$a4, $a3, %pc_lo12(sI)
-	mul.d	$a5, $s0, $a1
-	add.d	$a5, $a5, $a2
+	pcalau12i	$a1, %pc_hi20(myrnd.s)
+	ld.w	$a0, $a1, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a0, $a0, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a0, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a0, %pc_hi20(sI)
+	addi.d	$a0, $a0, %pc_lo12(sI)
+	st.b	$a5, $a0, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 13
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 14
+	mul.d	$a4, $a4, $a2
+	add.w	$a5, $a4, $a3
+	srli.d	$a6, $a5, 16
+	ld.hu	$a4, $a0, 0
+	st.b	$a6, $a0, 15
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	bstrpick.d	$a6, $a5, 31, 16
 	move	$a7, $a4
 	bstrins.d	$a7, $a6, 63, 7
-	st.h	$a7, $a3, %pc_lo12(sI)
-	ld.w	$a7, $a3, %pc_lo12(sI)
-	mul.d	$a5, $a5, $a1
-	add.w	$a5, $a5, $a2
+	st.h	$a7, $a0, 0
+	ld.w	$a7, $a0, 0
+	mul.d	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
 	bstrpick.d	$t0, $a5, 31, 16
 	srli.d	$a7, $a7, 7
 	add.d	$a7, $a7, $t0
 	add.d	$a6, $t0, $a6
 	xor	$a6, $a6, $a7
 	andi	$a6, $a6, 511
-	st.w	$a5, $a0, %pc_lo12(myrnd.s)
+	st.w	$a5, $a1, %pc_lo12(myrnd.s)
 	bnez	$a6, .LBB54_4
 # %bb.1:
 	andi	$a4, $a4, 127
-	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	lu12i.w	$a6, 8176
 	and	$a6, $a5, $a6
-	mul.d	$a5, $a5, $a1
-	add.w	$a5, $a5, $a2
-	st.w	$a5, $a0, %pc_lo12(myrnd.s)
+	mul.d	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
+	st.w	$a5, $a1, %pc_lo12(myrnd.s)
 	srli.d	$a6, $a6, 9
 	or	$a6, $a6, $a4
 	ori	$a7, $zero, 1
-	st.h	$a6, $a3, %pc_lo12(sI)
+	st.h	$a6, $a0, 0
 	beqz	$a7, .LBB54_4
 # %bb.2:
-	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	bstrpick.d	$a6, $a5, 31, 16
-	mul.d	$a1, $a5, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a1, 31, 16
-	slli.d	$a1, $a6, 7
-	or	$a1, $a1, $a4
-	slli.d	$a2, $a0, 7
-	add.d	$a1, $a1, $a2
-	bstrpick.d	$a2, $a1, 15, 7
-	add.d	$a0, $a0, $a6
-	andi	$a0, $a0, 511
-	st.h	$a1, $a3, %pc_lo12(sI)
-	bne	$a0, $a2, .LBB54_4
+	mul.d	$a2, $a5, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a1, %pc_lo12(myrnd.s)
+	bstrpick.d	$a1, $a2, 31, 16
+	slli.d	$a2, $a6, 7
+	or	$a2, $a2, $a4
+	slli.d	$a3, $a1, 7
+	add.d	$a2, $a2, $a3
+	bstrpick.d	$a3, $a2, 15, 7
+	add.d	$a1, $a1, $a6
+	andi	$a1, $a1, 511
+	st.h	$a2, $a0, 0
+	bne	$a1, $a3, .LBB54_4
 # %bb.3:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB54_4:
 	pcaddu18i	$ra, %call36(abort)
@@ -2388,86 +2404,91 @@ fn3O:                                   # @fn3O
 	.type	testO,@function
 testO:                                  # @testO
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
 	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
 	lu12i.w	$a1, 269412
 	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.w	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.d	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sO)
-	addi.d	$a3, $a3, %pc_lo12(sO)
-	vst	$vr0, $a3, 0
-	ld.d	$a4, $a3, 8
+	mul.d	$a2, $a2, $a1
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a2, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a2, %pc_hi20(sO)
+	addi.d	$a2, $a2, %pc_lo12(sO)
+	st.b	$a5, $a2, 0
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 1
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 2
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 3
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 4
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 5
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	mul.d	$a4, $a4, $a1
+	add.d	$a6, $a4, $a3
+	mul.d	$a4, $a6, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 8
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 9
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 10
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 11
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 12
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 13
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a7, $a4, 16
+	st.b	$a7, $a2, 14
+	mul.d	$a4, $a4, $a1
+	add.d	$a7, $a4, $a3
+	srli.d	$a4, $a7, 16
+	st.b	$a4, $a2, 15
+	ld.d	$a4, $a2, 8
+	st.b	$a5, $a2, 6
+	srli.d	$a5, $a6, 16
+	st.b	$a5, $a2, 7
 	ori	$t0, $a4, 4095
-	mul.d	$a5, $s0, $a1
-	add.d	$a5, $a5, $a2
+	mul.d	$a5, $a7, $a1
+	add.d	$a5, $a5, $a3
 	bstrpick.d	$a7, $a5, 26, 16
 	mul.d	$a5, $a5, $a1
-	add.w	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	move	$a6, $a4
 	bstrins.d	$a6, $a7, 11, 0
 	xor	$t0, $a6, $t0
 	srli.d	$t1, $t0, 35
-	st.d	$a6, $a3, 8
+	st.d	$a6, $a2, 8
 	bnez	$t1, .LBB90_9
 # %bb.1:
 	srli.d	$t0, $t0, 12
@@ -2484,16 +2505,16 @@ testO:                                  # @testO
 # %bb.4:
 	bstrins.d	$a4, $zero, 11, 0
 	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	addi.w	$t0, $a5, 0
 	bstrpick.d	$a7, $a5, 26, 16
 	mul.d	$a5, $t0, $a1
-	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	or	$t0, $a4, $a7
 	xor	$a6, $t0, $a6
 	srli.d	$t1, $a6, 35
-	st.d	$t0, $a3, 8
+	st.d	$t0, $a2, 8
 	bnez	$t1, .LBB90_9
 # %bb.5:
 	srli.d	$a6, $a6, 12
@@ -2523,19 +2544,16 @@ testO:                                  # @testO
 # %bb.8:
 	addi.w	$a5, $a5, 0
 	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	addi.w	$a6, $a5, 0
 	bstrpick.d	$a5, $a5, 26, 16
 	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(myrnd.s)
 	bstrpick.d	$a0, $a1, 26, 16
 	add.d	$a0, $a0, $a5
 	or	$a0, $a4, $a0
-	st.d	$a0, $a3, 8
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	st.d	$a0, $a2, 8
 	ret
 .LBB90_9:
 	pcaddu18i	$ra, %call36(abort)
@@ -2618,85 +2636,91 @@ fn3P:                                   # @fn3P
 	.type	testP,@function
 testP:                                  # @testP
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
 	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
 	lu12i.w	$a1, 269412
 	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
+	mul.d	$a2, $a2, $a1
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a2, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a2, %pc_hi20(sP)
+	addi.d	$a2, $a2, %pc_lo12(sP)
+	st.b	$a5, $a2, 0
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 1
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 2
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 3
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 4
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 5
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 6
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 7
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 8
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 9
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 10
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 11
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 12
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 13
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 14
 	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.w	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.d	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sP)
-	vst	$vr0, $a3, %pc_lo12(sP)
-	ld.d	$a4, $a3, %pc_lo12(sP)
+	ld.d	$a4, $a2, 0
+	add.d	$a5, $a5, $a3
+	srli.d	$a6, $a5, 16
+	st.b	$a6, $a2, 15
 	ori	$t0, $a4, 4095
-	mul.d	$a5, $s0, $a1
-	add.d	$a5, $a5, $a2
+	mul.d	$a5, $a5, $a1
+	add.d	$a5, $a5, $a3
 	bstrpick.d	$a7, $a5, 26, 16
 	mul.d	$a5, $a5, $a1
-	add.w	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	move	$a6, $a4
 	bstrins.d	$a6, $a7, 11, 0
 	xor	$t0, $a6, $t0
 	srli.d	$t1, $t0, 35
-	st.d	$a6, $a3, %pc_lo12(sP)
+	st.d	$a6, $a2, 0
 	bnez	$t1, .LBB96_9
 # %bb.1:
 	srli.d	$t0, $t0, 12
@@ -2713,16 +2737,16 @@ testP:                                  # @testP
 # %bb.4:
 	bstrins.d	$a4, $zero, 11, 0
 	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	addi.w	$t0, $a5, 0
 	bstrpick.d	$a7, $a5, 26, 16
 	mul.d	$a5, $t0, $a1
-	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	or	$t0, $a4, $a7
 	xor	$a6, $t0, $a6
 	srli.d	$t1, $a6, 35
-	st.d	$t0, $a3, %pc_lo12(sP)
+	st.d	$t0, $a2, 0
 	bnez	$t1, .LBB96_9
 # %bb.5:
 	srli.d	$a6, $a6, 12
@@ -2752,19 +2776,16 @@ testP:                                  # @testP
 # %bb.8:
 	addi.w	$a5, $a5, 0
 	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	addi.w	$a6, $a5, 0
 	bstrpick.d	$a5, $a5, 26, 16
 	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(myrnd.s)
 	bstrpick.d	$a0, $a1, 26, 16
 	add.d	$a0, $a0, $a5
 	or	$a0, $a4, $a0
-	st.d	$a0, $a3, %pc_lo12(sP)
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	st.d	$a0, $a2, 0
 	ret
 .LBB96_9:
 	pcaddu18i	$ra, %call36(abort)
@@ -2848,92 +2869,98 @@ fn3Q:                                   # @fn3Q
 	.type	testQ,@function
 testQ:                                  # @testQ
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
 	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
 	lu12i.w	$a1, 269412
 	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
+	mul.d	$a2, $a2, $a1
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a2, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a2, %pc_hi20(sQ)
+	addi.d	$a2, $a2, %pc_lo12(sQ)
+	st.b	$a5, $a2, 0
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 1
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 2
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 3
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 4
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 5
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 6
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 7
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 8
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 9
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 10
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 11
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 12
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 13
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 14
 	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sQ)
-	vst	$vr0, $a3, %pc_lo12(sQ)
-	ld.w	$a4, $a3, %pc_lo12(sQ)
+	ld.w	$a4, $a2, 0
+	add.w	$a5, $a5, $a3
+	srli.d	$a6, $a5, 16
+	st.b	$a6, $a2, 15
 	ori	$a7, $a4, 4095
-	mul.d	$a5, $s0, $a1
-	add.d	$a6, $a5, $a2
+	mul.d	$a5, $a5, $a1
+	add.d	$a6, $a5, $a3
 	srli.d	$t0, $a6, 16
 	mul.d	$a5, $a6, $a1
-	add.w	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	bstrins.d	$a4, $zero, 11, 0
 	srli.d	$t1, $a4, 11
 	bstrins.d	$t0, $t1, 63, 11
 	xor	$a7, $t0, $a7
 	bstrpick.d	$t1, $a7, 31, 25
-	st.w	$t0, $a3, %pc_lo12(sQ)
+	st.w	$t0, $a2, 0
 	bnez	$t1, .LBB102_4
 # %bb.1:
 	bstrpick.d	$a7, $a7, 31, 12
 	bnez	$a7, .LBB102_4
 # %bb.2:
-	ld.w	$a7, $a3, %pc_lo12(sQ)
+	ld.w	$a7, $a2, 0
 	bstrpick.d	$a6, $a6, 26, 16
 	bstrpick.d	$t0, $a5, 26, 16
 	add.d	$a7, $t0, $a7
@@ -2950,15 +2977,12 @@ testQ:                                  # @testQ
 	addi.w	$a6, $a5, 0
 	bstrpick.d	$a5, $a5, 26, 16
 	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(myrnd.s)
 	bstrpick.d	$a0, $a1, 26, 16
 	add.d	$a0, $a0, $a5
 	or	$a0, $a0, $a4
-	st.w	$a0, $a3, %pc_lo12(sQ)
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	st.w	$a0, $a2, 0
 	ret
 .LBB102_4:
 	pcaddu18i	$ra, %call36(abort)
@@ -3042,92 +3066,98 @@ fn3R:                                   # @fn3R
 	.type	testR,@function
 testR:                                  # @testR
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
 	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
 	lu12i.w	$a1, 269412
 	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
+	mul.d	$a2, $a2, $a1
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a2, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a2, %pc_hi20(sR)
+	addi.d	$a2, $a2, %pc_lo12(sR)
+	st.b	$a5, $a2, 0
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 1
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 2
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 3
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 4
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 5
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 6
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 7
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 8
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 9
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 10
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 11
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 12
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 13
+	mul.d	$a4, $a4, $a1
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a2, 14
 	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sR)
-	vst	$vr0, $a3, %pc_lo12(sR)
-	ld.w	$a4, $a3, %pc_lo12(sR)
+	ld.w	$a4, $a2, 0
+	add.w	$a5, $a5, $a3
+	srli.d	$a6, $a5, 16
+	st.b	$a6, $a2, 15
 	ori	$a7, $a4, 4095
-	mul.d	$a5, $s0, $a1
-	add.d	$a6, $a5, $a2
+	mul.d	$a5, $a5, $a1
+	add.d	$a6, $a5, $a3
 	srli.d	$t0, $a6, 16
 	mul.d	$a5, $a6, $a1
-	add.w	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	bstrins.d	$a4, $zero, 11, 0
 	srli.d	$t1, $a4, 11
 	bstrins.d	$t0, $t1, 63, 11
 	xor	$a7, $t0, $a7
 	bstrpick.d	$t1, $a7, 31, 23
-	st.w	$t0, $a3, %pc_lo12(sR)
+	st.w	$t0, $a2, 0
 	bnez	$t1, .LBB108_4
 # %bb.1:
 	bstrpick.d	$a7, $a7, 31, 12
 	bnez	$a7, .LBB108_4
 # %bb.2:
-	ld.w	$a7, $a3, %pc_lo12(sR)
+	ld.w	$a7, $a2, 0
 	bstrpick.d	$a6, $a6, 26, 16
 	bstrpick.d	$t0, $a5, 26, 16
 	add.d	$a7, $t0, $a7
@@ -3144,15 +3174,12 @@ testR:                                  # @testR
 	addi.w	$a6, $a5, 0
 	bstrpick.d	$a5, $a5, 26, 16
 	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, %pc_lo12(myrnd.s)
 	bstrpick.d	$a0, $a1, 26, 16
 	add.d	$a0, $a0, $a5
 	or	$a0, $a0, $a4
-	st.w	$a0, $a3, %pc_lo12(sR)
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	st.w	$a0, $a2, 0
 	ret
 .LBB108_4:
 	pcaddu18i	$ra, %call36(abort)
@@ -3228,87 +3255,92 @@ fn3S:                                   # @fn3S
 	.type	testS,@function
 testS:                                  # @testS
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sS)
-	vst	$vr0, $a3, %pc_lo12(sS)
-	ld.h	$a4, $a3, %pc_lo12(sS)
-	mul.d	$a5, $s0, $a1
-	add.d	$a5, $a5, $a2
-	bstrpick.d	$a6, $a5, 31, 16
-	mul.d	$a5, $a5, $a1
-	srli.d	$a7, $a4, 1
-	move	$t0, $a6
-	bstrins.d	$t0, $a7, 63, 1
-	st.h	$t0, $a3, %pc_lo12(sS)
-	ld.w	$a7, $a3, %pc_lo12(sS)
-	add.w	$a5, $a5, $a2
+	ld.w	$a1, $a0, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a1, $a1, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a1, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a1, %pc_hi20(sS)
+	addi.d	$a1, $a1, %pc_lo12(sS)
+	st.b	$a5, $a1, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 13
+	mul.d	$a4, $a4, $a2
+	add.d	$a6, $a4, $a3
+	mul.d	$a4, $a6, $a2
+	add.w	$a7, $a4, $a3
+	ld.h	$a4, $a1, 0
+	mul.d	$a5, $a7, $a2
+	add.d	$a5, $a5, $a3
 	bstrpick.d	$t0, $a5, 31, 16
-	add.d	$a6, $t0, $a6
-	add.d	$a7, $t0, $a7
-	xor	$a6, $a6, $a7
+	mul.d	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
+	bstrpick.d	$t1, $a5, 31, 16
+	srli.d	$t2, $a4, 1
+	add.d	$t3, $t1, $t0
+	bstrins.d	$t0, $t2, 63, 1
+	srli.d	$a6, $a6, 16
+	st.h	$t0, $a1, 0
+	ld.w	$t0, $a1, 0
+	st.b	$a6, $a1, 14
+	srli.d	$a6, $a7, 16
+	st.b	$a6, $a1, 15
+	add.d	$a6, $t1, $t0
+	xor	$a6, $t3, $a6
 	andi	$a6, $a6, 1
 	st.w	$a5, $a0, %pc_lo12(myrnd.s)
 	bnez	$a6, .LBB114_3
@@ -3321,20 +3353,17 @@ testS:                                  # @testS
 	ori	$a6, $a6, 2015
 	add.d	$a5, $a5, $a6
 	srli.d	$a6, $a5, 16
-	mul.d	$a1, $a5, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	srli.d	$a0, $a1, 16
+	mul.d	$a2, $a5, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a0, %pc_lo12(myrnd.s)
+	srli.d	$a0, $a2, 16
 	add.d	$a0, $a0, $a6
 	andi	$a0, $a0, 1
 	or	$a0, $a0, $a4
-	ori	$a1, $zero, 1
-	st.h	$a0, $a3, %pc_lo12(sS)
-	beqz	$a1, .LBB114_3
+	ori	$a2, $zero, 1
+	st.h	$a0, $a1, 0
+	beqz	$a2, .LBB114_3
 # %bb.2:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB114_3:
 	pcaddu18i	$ra, %call36(abort)
@@ -3535,101 +3564,107 @@ fn3U:                                   # @fn3U
 	.type	testU,@function
 testU:                                  # @testU
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sU)
-	vst	$vr0, $a3, %pc_lo12(sU)
-	ld.h	$a4, $a3, %pc_lo12(sU)
-	mul.d	$a5, $s0, $a1
-	add.d	$a5, $a5, $a2
+	pcalau12i	$a1, %pc_hi20(myrnd.s)
+	ld.w	$a0, $a1, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a0, $a0, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a0, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a0, %pc_hi20(sU)
+	addi.d	$a0, $a0, %pc_lo12(sU)
+	st.b	$a5, $a0, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 13
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 14
+	mul.d	$a4, $a4, $a2
+	add.w	$a5, $a4, $a3
+	srli.d	$a4, $a5, 16
+	st.b	$a4, $a0, 15
+	ld.h	$a4, $a0, 0
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	srli.d	$a6, $a5, 16
 	bstrpick.d	$a7, $a5, 16, 16
 	move	$t0, $a4
 	bstrins.d	$t0, $a7, 6, 6
-	st.h	$t0, $a3, %pc_lo12(sU)
-	ld.w	$a7, $a3, %pc_lo12(sU)
-	mul.d	$a5, $a5, $a1
-	add.w	$a5, $a5, $a2
+	st.h	$t0, $a0, 0
+	ld.w	$a7, $a0, 0
+	mul.d	$a5, $a5, $a2
+	add.w	$a5, $a5, $a3
 	bstrpick.d	$t0, $a5, 31, 16
 	srli.d	$a7, $a7, 6
 	add.d	$a7, $a7, $t0
 	add.d	$a6, $t0, $a6
 	xor	$a6, $a6, $a7
 	andi	$a6, $a6, 1
-	st.w	$a5, $a0, %pc_lo12(myrnd.s)
+	st.w	$a5, $a1, %pc_lo12(myrnd.s)
 	bnez	$a6, .LBB126_5
 # %bb.1:
 	bstrins.d	$a4, $zero, 6, 6
-	mul.d	$a5, $a5, $a1
-	add.d	$a6, $a5, $a2
+	mul.d	$a5, $a5, $a2
+	add.d	$a6, $a5, $a3
 	lu12i.w	$a5, -16
 	lu32i.d	$a5, 0
 	and	$t0, $a6, $a5
-	mul.d	$a5, $a6, $a1
-	add.w	$a5, $a5, $a2
-	st.w	$a5, $a0, %pc_lo12(myrnd.s)
+	mul.d	$a5, $a6, $a2
+	add.w	$a5, $a5, $a3
+	st.w	$a5, $a1, %pc_lo12(myrnd.s)
 	srli.d	$a7, $a6, 10
 	andi	$a7, $a7, 64
 	or	$t1, $a7, $a4
@@ -3637,7 +3672,7 @@ testU:                                  # @testU
 	slli.d	$t2, $a7, 6
 	bstrpick.d	$t0, $t0, 16, 16
 	bstrpick.d	$t2, $t2, 6, 6
-	st.h	$t1, $a3, %pc_lo12(sU)
+	st.h	$t1, $a0, 0
 	bne	$t0, $t2, .LBB126_5
 # %bb.2:
 	bstrpick.d	$a6, $a6, 31, 16
@@ -3648,28 +3683,25 @@ testU:                                  # @testU
 	andi	$a6, $a6, 1
 	bne	$a6, $a7, .LBB126_5
 # %bb.3:
-	mul.d	$a5, $a5, $a1
-	add.d	$a5, $a5, $a2
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a3
 	bstrpick.d	$a6, $a5, 31, 16
-	mul.d	$a1, $a5, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a1, 31, 16
-	slli.d	$a1, $a6, 6
-	or	$a1, $a1, $a4
-	slli.d	$a2, $a0, 6
-	add.d	$a1, $a1, $a2
-	andi	$a2, $a1, 64
+	mul.d	$a2, $a5, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a1, %pc_lo12(myrnd.s)
+	bstrpick.d	$a1, $a2, 31, 16
+	slli.d	$a2, $a6, 6
 	or	$a2, $a2, $a4
-	bstrpick.d	$a1, $a1, 6, 6
-	add.d	$a0, $a0, $a6
-	andi	$a0, $a0, 1
-	st.h	$a2, $a3, %pc_lo12(sU)
-	bne	$a0, $a1, .LBB126_5
+	slli.d	$a3, $a1, 6
+	add.d	$a2, $a2, $a3
+	andi	$a3, $a2, 64
+	or	$a3, $a3, $a4
+	bstrpick.d	$a2, $a2, 6, 6
+	add.d	$a1, $a1, $a6
+	andi	$a1, $a1, 1
+	st.h	$a3, $a0, 0
+	bne	$a1, $a2, .LBB126_5
 # %bb.4:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB126_5:
 	pcaddu18i	$ra, %call36(abort)
@@ -3932,136 +3964,103 @@ fn3W:                                   # @fn3W
 	.type	testW,@function
 testW:                                  # @testW
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a1, $a0, %pc_lo12(myrnd.s)
+	pcalau12i	$a1, %pc_hi20(myrnd.s)
+	ld.w	$a0, $a1, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 407828
+	ori	$a2, $a2, 941
+	mul.d	$a2, $a0, $a2
+	pcalau12i	$a0, %pc_hi20(sW)
+	addi.d	$a0, $a0, %pc_lo12(sW)
+	lu12i.w	$a3, 517897
+	ori	$a3, $a3, 2473
+	add.d	$a3, $a2, $a3
+	srli.d	$a2, $a3, 16
+	st.b	$a2, $a0, 16
 	lu12i.w	$a2, 269412
 	ori	$a2, $a2, 3693
-	mul.d	$a1, $a1, $a2
+	mul.d	$a4, $a3, $a2
 	lu12i.w	$a3, 3
 	ori	$a3, $a3, 57
-	add.d	$a4, $a1, $a3
+	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	pcalau12i	$a1, %pc_hi20(sW)
-	addi.d	$a1, $a1, %pc_lo12(sW)
-	st.b	$a5, $a1, 0
+	st.b	$a5, $a0, 17
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 1
+	st.b	$a5, $a0, 18
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 2
+	st.b	$a5, $a0, 19
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 3
+	st.b	$a5, $a0, 20
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 4
+	st.b	$a5, $a0, 21
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 5
+	st.b	$a5, $a0, 22
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 6
+	st.b	$a5, $a0, 23
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a1, 7
-	lu12i.w	$a5, 65440
-	ori	$a5, $a5, 3853
-	mul.d	$a4, $a4, $a5
-	lu12i.w	$a5, -330326
-	ori	$a5, $a5, 3441
-	add.d	$a4, $a4, $a5
-	mul.d	$a5, $a4, $a2
-	add.d	$a5, $a5, $a3
-	mul.d	$a6, $a5, $a2
-	add.d	$a6, $a6, $a3
-	mul.d	$a7, $a6, $a2
-	add.d	$a7, $a7, $a3
-	mul.d	$t0, $a7, $a2
-	add.d	$t0, $t0, $a3
-	mul.d	$t1, $t0, $a2
-	add.d	$t1, $t1, $a3
-	mul.d	$t2, $t1, $a2
-	add.d	$t2, $t2, $a3
-	mul.d	$t3, $t2, $a2
-	add.d	$t3, $t3, $a3
-	mul.d	$t4, $t3, $a2
-	add.d	$t4, $t4, $a3
-	mul.d	$t5, $t4, $a2
-	add.d	$t5, $t5, $a3
-	mul.d	$t6, $t5, $a2
-	add.d	$t6, $t6, $a3
-	mul.d	$t7, $t6, $a2
-	add.d	$t7, $t7, $a3
-	mul.d	$t8, $t7, $a2
-	add.d	$t8, $t8, $a3
-	mul.d	$fp, $t8, $a2
-	add.d	$fp, $fp, $a3
-	mul.d	$s0, $fp, $a2
-	add.d	$s0, $s0, $a3
-	mul.d	$s1, $s0, $a2
-	add.w	$s1, $s1, $a3
-	vinsgr2vr.w	$vr0, $t0, 0
-	vinsgr2vr.w	$vr0, $t1, 1
-	vinsgr2vr.w	$vr0, $t2, 2
-	vinsgr2vr.w	$vr0, $t3, 3
-	vinsgr2vr.w	$vr1, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	vinsgr2vr.w	$vr1, $a6, 2
-	vinsgr2vr.w	$vr1, $a7, 3
-	vinsgr2vr.w	$vr2, $t8, 0
-	vinsgr2vr.w	$vr2, $fp, 1
-	vinsgr2vr.w	$vr2, $s0, 2
-	vinsgr2vr.w	$vr2, $s1, 3
-	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr3, $t5, 1
-	vinsgr2vr.w	$vr3, $t6, 2
-	vinsgr2vr.w	$vr3, $t7, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	vst	$vr0, $a1, 16
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 86016
-	lu52i.d	$a4, $a4, 1024
-	st.d	$a4, $a1, 8
-	st.d	$zero, $a1, 0
-	ld.wu	$a4, $a1, 16
-	lu12i.w	$a5, -83436
-	ori	$a5, $a5, 2109
-	mul.d	$a5, $s1, $a5
+	st.b	$a5, $a0, 24
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 25
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 26
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 27
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 28
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 29
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 30
+	mul.d	$a4, $a4, $a2
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 31
+	st.d	$zero, $a0, 0
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 86016
+	lu52i.d	$a5, $a5, 1024
+	st.d	$a5, $a0, 8
+	ld.wu	$a5, $a0, 16
+	lu12i.w	$a6, -83436
+	ori	$a6, $a6, 2109
+	mul.d	$a4, $a4, $a6
 	lu12i.w	$a6, 55977
 	ori	$a6, $a6, 1781
-	add.d	$a5, $a5, $a6
-	addi.w	$a6, $a5, 0
-	bstrpick.d	$a5, $a5, 26, 16
-	mul.d	$a2, $a6, $a2
+	add.d	$a4, $a4, $a6
+	bstrpick.d	$a6, $a4, 26, 16
+	mul.d	$a2, $a4, $a2
 	add.d	$a2, $a2, $a3
-	st.w	$a2, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a2, 26, 16
-	add.d	$a0, $a0, $a5
-	srli.d	$a2, $a4, 12
-	bstrins.d	$a0, $a2, 31, 12
-	st.w	$a0, $a1, 16
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	st.w	$a2, $a1, %pc_lo12(myrnd.s)
+	bstrpick.d	$a1, $a2, 26, 16
+	add.d	$a1, $a1, $a6
+	srli.d	$a2, $a5, 12
+	bstrins.d	$a1, $a2, 31, 12
+	st.w	$a1, $a0, 16
 	ret
 .Lfunc_end138:
 	.size	testW, .Lfunc_end138-testW
@@ -4146,98 +4145,100 @@ fn3X:                                   # @fn3X
 	.type	testX,@function
 testX:                                  # @testX
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sX)
-	addi.d	$a3, $a3, %pc_lo12(sX)
-	vst	$vr0, $a3, 0
-	st.d	$zero, $a3, 16
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 86016
-	lu52i.d	$a4, $a4, 1024
-	st.d	$a4, $a3, 24
-	ld.wu	$a4, $a3, 0
-	lu12i.w	$a5, 103525
-	ori	$a5, $a5, 381
-	mul.d	$a5, $s0, $a5
+	ld.w	$a1, $a0, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a1, $a1, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a1, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a1, %pc_hi20(sX)
+	addi.d	$a1, $a1, %pc_lo12(sX)
+	st.b	$a5, $a1, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 13
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 14
+	mul.d	$a4, $a4, $a2
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 15
+	st.d	$zero, $a1, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 86016
+	lu52i.d	$a5, $a5, 1024
+	st.d	$a5, $a1, 24
+	ld.wu	$a5, $a1, 0
+	lu12i.w	$a6, 103525
+	ori	$a6, $a6, 381
+	mul.d	$a4, $a4, $a6
 	lu12i.w	$a6, -196350
 	ori	$a6, $a6, 1893
-	add.d	$a5, $a5, $a6
-	addi.w	$a6, $a5, 0
-	bstrpick.d	$a5, $a5, 26, 16
-	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a1, 26, 16
-	add.d	$a0, $a0, $a5
-	srli.d	$a1, $a4, 12
-	bstrins.d	$a0, $a1, 31, 12
-	st.w	$a0, $a3, 0
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	add.d	$a4, $a4, $a6
+	addi.w	$a6, $a4, 0
+	bstrpick.d	$a4, $a4, 26, 16
+	mul.d	$a2, $a6, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a0, %pc_lo12(myrnd.s)
+	bstrpick.d	$a0, $a2, 26, 16
+	add.d	$a0, $a0, $a4
+	srli.d	$a2, $a5, 12
+	bstrins.d	$a0, $a2, 31, 12
+	st.w	$a0, $a1, 0
 	ret
 .Lfunc_end144:
 	.size	testX, .Lfunc_end144-testX
@@ -4322,98 +4323,100 @@ fn3Y:                                   # @fn3Y
 	.type	testY,@function
 testY:                                  # @testY
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(myrnd.s)
-	ld.w	$a2, $a0, %pc_lo12(myrnd.s)
-	lu12i.w	$a1, 269412
-	ori	$a1, $a1, 3693
-	mul.d	$a3, $a2, $a1
-	lu12i.w	$a2, 3
-	ori	$a2, $a2, 57
-	add.d	$a3, $a3, $a2
-	mul.d	$a4, $a3, $a1
-	add.d	$a4, $a4, $a2
-	mul.d	$a5, $a4, $a1
-	add.d	$a5, $a5, $a2
-	mul.d	$a6, $a5, $a1
-	add.d	$a6, $a6, $a2
-	mul.d	$a7, $a6, $a1
-	add.d	$a7, $a7, $a2
-	mul.d	$t0, $a7, $a1
-	add.d	$t0, $t0, $a2
-	mul.d	$t1, $t0, $a1
-	add.d	$t1, $t1, $a2
-	mul.d	$t2, $t1, $a1
-	add.d	$t2, $t2, $a2
-	mul.d	$t3, $t2, $a1
-	add.d	$t3, $t3, $a2
-	mul.d	$t4, $t3, $a1
-	add.d	$t4, $t4, $a2
-	mul.d	$t5, $t4, $a1
-	add.d	$t5, $t5, $a2
-	mul.d	$t6, $t5, $a1
-	add.d	$t6, $t6, $a2
-	mul.d	$t7, $t6, $a1
-	add.d	$t7, $t7, $a2
-	mul.d	$t8, $t7, $a1
-	add.d	$t8, $t8, $a2
-	mul.d	$fp, $t8, $a1
-	add.d	$fp, $fp, $a2
-	mul.d	$s0, $fp, $a1
-	add.w	$s0, $s0, $a2
-	vinsgr2vr.w	$vr0, $a7, 0
-	vinsgr2vr.w	$vr0, $t0, 1
-	vinsgr2vr.w	$vr0, $t1, 2
-	vinsgr2vr.w	$vr0, $t2, 3
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 1
-	vinsgr2vr.w	$vr3, $t5, 2
-	vinsgr2vr.w	$vr3, $t6, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	pcalau12i	$a3, %pc_hi20(sY)
-	addi.d	$a3, $a3, %pc_lo12(sY)
-	vst	$vr0, $a3, 0
-	st.d	$zero, $a3, 16
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 86016
-	lu52i.d	$a4, $a4, 1024
-	st.d	$a4, $a3, 24
-	ld.wu	$a4, $a3, 0
-	lu12i.w	$a5, 103525
-	ori	$a5, $a5, 381
-	mul.d	$a5, $s0, $a5
+	ld.w	$a1, $a0, %pc_lo12(myrnd.s)
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a1, $a1, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a1, $a3
+	srli.d	$a5, $a4, 16
+	pcalau12i	$a1, %pc_hi20(sY)
+	addi.d	$a1, $a1, %pc_lo12(sY)
+	st.b	$a5, $a1, 0
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 1
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 2
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 3
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 4
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 5
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 6
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 7
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 8
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 9
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 10
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 11
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 12
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 13
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 14
+	mul.d	$a4, $a4, $a2
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a1, 15
+	st.d	$zero, $a1, 16
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 86016
+	lu52i.d	$a5, $a5, 1024
+	st.d	$a5, $a1, 24
+	ld.wu	$a5, $a1, 0
+	lu12i.w	$a6, 103525
+	ori	$a6, $a6, 381
+	mul.d	$a4, $a4, $a6
 	lu12i.w	$a6, -196350
 	ori	$a6, $a6, 1893
-	add.d	$a5, $a5, $a6
-	addi.w	$a6, $a5, 0
-	bstrpick.d	$a5, $a5, 26, 16
-	mul.d	$a1, $a6, $a1
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $a0, %pc_lo12(myrnd.s)
-	bstrpick.d	$a0, $a1, 26, 16
-	add.d	$a0, $a0, $a5
-	srli.d	$a1, $a4, 12
-	bstrins.d	$a0, $a1, 31, 12
-	st.w	$a0, $a3, 0
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	add.d	$a4, $a4, $a6
+	addi.w	$a6, $a4, 0
+	bstrpick.d	$a4, $a4, 26, 16
+	mul.d	$a2, $a6, $a2
+	add.d	$a2, $a2, $a3
+	st.w	$a2, $a0, %pc_lo12(myrnd.s)
+	bstrpick.d	$a0, $a2, 26, 16
+	add.d	$a0, $a0, $a4
+	srli.d	$a2, $a5, 12
+	bstrins.d	$a0, $a2, 31, 12
+	st.w	$a0, $a1, 0
 	ret
 .Lfunc_end150:
 	.size	testY, .Lfunc_end150-testY
@@ -4499,119 +4502,91 @@ fn3Z:                                   # @fn3Z
 	.type	testZ,@function
 testZ:                                  # @testZ
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(myrnd.s)
 	ld.w	$a0, $a1, %pc_lo12(myrnd.s)
-	lu12i.w	$a2, 269412
-	ori	$a2, $a2, 3693
-	mul.d	$a0, $a0, $a2
-	lu12i.w	$a3, 3
-	ori	$a3, $a3, 57
-	add.d	$a4, $a0, $a3
-	srli.d	$a5, $a4, 16
+	lu12i.w	$a2, 407828
+	ori	$a2, $a2, 941
+	mul.d	$a2, $a0, $a2
 	pcalau12i	$a0, %pc_hi20(sZ)
 	addi.d	$a0, $a0, %pc_lo12(sZ)
-	st.b	$a5, $a0, 0
+	lu12i.w	$a3, 517897
+	ori	$a3, $a3, 2473
+	add.d	$a3, $a2, $a3
+	srli.d	$a2, $a3, 16
+	st.b	$a2, $a0, 16
+	lu12i.w	$a2, 269412
+	ori	$a2, $a2, 3693
+	mul.d	$a4, $a3, $a2
+	lu12i.w	$a3, 3
+	ori	$a3, $a3, 57
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 17
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 1
+	st.b	$a5, $a0, 18
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 2
+	st.b	$a5, $a0, 19
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 3
+	st.b	$a5, $a0, 20
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 4
+	st.b	$a5, $a0, 21
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 5
+	st.b	$a5, $a0, 22
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 6
+	st.b	$a5, $a0, 23
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
 	srli.d	$a5, $a4, 16
-	st.b	$a5, $a0, 7
-	lu12i.w	$a5, 65440
-	ori	$a5, $a5, 3853
-	mul.d	$a4, $a4, $a5
-	lu12i.w	$a5, -330326
-	ori	$a5, $a5, 3441
-	add.d	$a4, $a4, $a5
-	mul.d	$a5, $a4, $a2
-	add.d	$a5, $a5, $a3
-	mul.d	$a6, $a5, $a2
-	add.d	$a6, $a6, $a3
-	mul.d	$a7, $a6, $a2
-	add.d	$a7, $a7, $a3
-	mul.d	$t0, $a7, $a2
-	add.d	$t0, $t0, $a3
-	mul.d	$t1, $t0, $a2
-	add.d	$t1, $t1, $a3
-	mul.d	$t2, $t1, $a2
-	add.d	$t2, $t2, $a3
-	mul.d	$t3, $t2, $a2
-	add.d	$t3, $t3, $a3
-	mul.d	$t4, $t3, $a2
-	add.d	$t4, $t4, $a3
-	mul.d	$t5, $t4, $a2
-	add.d	$t5, $t5, $a3
-	mul.d	$t6, $t5, $a2
-	add.d	$t6, $t6, $a3
-	mul.d	$t7, $t6, $a2
-	add.d	$t7, $t7, $a3
-	mul.d	$t8, $t7, $a2
-	add.d	$t8, $t8, $a3
-	mul.d	$fp, $t8, $a2
-	add.d	$fp, $fp, $a3
-	mul.d	$s0, $fp, $a2
-	add.d	$s0, $s0, $a3
-	mul.d	$s1, $s0, $a2
-	add.w	$s1, $s1, $a3
-	vinsgr2vr.w	$vr0, $t0, 0
-	vinsgr2vr.w	$vr0, $t1, 1
-	vinsgr2vr.w	$vr0, $t2, 2
-	vinsgr2vr.w	$vr0, $t3, 3
-	vinsgr2vr.w	$vr1, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	vinsgr2vr.w	$vr1, $a6, 2
-	vinsgr2vr.w	$vr1, $a7, 3
-	vinsgr2vr.w	$vr2, $t8, 0
-	vinsgr2vr.w	$vr2, $fp, 1
-	vinsgr2vr.w	$vr2, $s0, 2
-	vinsgr2vr.w	$vr2, $s1, 3
-	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr3, $t5, 1
-	vinsgr2vr.w	$vr3, $t6, 2
-	vinsgr2vr.w	$vr3, $t7, 3
-	vsrli.w	$vr3, $vr3, 16
-	vsrli.w	$vr2, $vr2, 16
-	vsrli.w	$vr1, $vr1, 16
-	vsrli.w	$vr0, $vr0, 16
-	vpickev.h	$vr0, $vr0, $vr1
-	vpickev.h	$vr1, $vr2, $vr3
-	vpickev.b	$vr0, $vr1, $vr0
-	vst	$vr0, $a0, 16
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 86016
-	lu52i.d	$a4, $a4, 1024
-	st.d	$a4, $a0, 8
+	st.b	$a5, $a0, 24
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 25
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 26
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 27
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 28
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 29
+	mul.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 30
+	mul.d	$a4, $a4, $a2
+	add.w	$a4, $a4, $a3
+	srli.d	$a5, $a4, 16
+	st.b	$a5, $a0, 31
 	st.d	$zero, $a0, 0
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 86016
+	lu52i.d	$a5, $a5, 1024
+	st.d	$a5, $a0, 8
 	ld.wu	$a5, $a0, 16
-	lu12i.w	$a4, -522277
-	ori	$a4, $a4, 3253
-	mul.d	$a4, $s1, $a4
+	lu12i.w	$a6, -522277
+	ori	$a6, $a6, 3253
+	mul.d	$a4, $a4, $a6
 	lu12i.w	$a6, -364478
 	ori	$a6, $a6, 2015
 	add.d	$a4, $a4, $a6
@@ -4624,9 +4599,8 @@ testZ:                                  # @testZ
 	mul.d	$a4, $a6, $a4
 	lu12i.w	$a6, -180799
 	ori	$a6, $a6, 1662
-	add.d	$a4, $a4, $a6
-	addi.w	$a6, $a4, 0
-	bstrpick.d	$a4, $a4, 26, 16
+	add.d	$a6, $a4, $a6
+	bstrpick.d	$a4, $a6, 26, 16
 	mul.d	$a2, $a6, $a2
 	add.d	$a2, $a2, $a3
 	st.w	$a2, $a1, %pc_lo12(myrnd.s)
@@ -4648,10 +4622,6 @@ testZ:                                  # @testZ
 	addi.w	$a0, $a0, 0
 	bne	$a1, $a0, .LBB156_4
 # %bb.3:
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
 	ret
 .LBB156_4:
 	pcaddu18i	$ra, %call36(abort)
@@ -4762,35 +4732,35 @@ sD:
 
 	.type	sE,@object                      # @sE
 	.globl	sE
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sE:
 	.space	16
 	.size	sE, 16
 
 	.type	sF,@object                      # @sF
 	.globl	sF
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sF:
 	.space	16
 	.size	sF, 16
 
 	.type	sG,@object                      # @sG
 	.globl	sG
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sG:
 	.space	16
 	.size	sG, 16
 
 	.type	sH,@object                      # @sH
 	.globl	sH
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sH:
 	.space	16
 	.size	sH, 16
 
 	.type	sI,@object                      # @sI
 	.globl	sI
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sI:
 	.space	16
 	.size	sI, 16
@@ -4832,35 +4802,35 @@ sN:
 
 	.type	sO,@object                      # @sO
 	.globl	sO
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sO:
 	.space	16
 	.size	sO, 16
 
 	.type	sP,@object                      # @sP
 	.globl	sP
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sP:
 	.space	16
 	.size	sP, 16
 
 	.type	sQ,@object                      # @sQ
 	.globl	sQ
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sQ:
 	.space	16
 	.size	sQ, 16
 
 	.type	sR,@object                      # @sR
 	.globl	sR
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sR:
 	.space	16
 	.size	sR, 16
 
 	.type	sS,@object                      # @sS
 	.globl	sS
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sS:
 	.space	16
 	.size	sS, 16
@@ -4874,7 +4844,7 @@ sT:
 
 	.type	sU,@object                      # @sU
 	.globl	sU
-	.p2align	4, 0x0
+	.p2align	3, 0x0
 sU:
 	.space	16
 	.size	sU, 16

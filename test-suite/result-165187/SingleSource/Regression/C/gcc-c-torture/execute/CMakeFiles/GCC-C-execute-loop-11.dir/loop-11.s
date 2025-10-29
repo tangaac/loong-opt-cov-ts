@@ -2,14 +2,9 @@
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function main
 .LCPI0_0:
-	.word	198                             # 0xc6
-	.word	197                             # 0xc5
-	.word	196                             # 0xc4
-	.word	195                             # 0xc3
-.LCPI0_1:
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
-.LCPI0_2:
+.LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
 	.text
@@ -18,50 +13,35 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %vector.ph
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
-	vrepli.w	$vr1, -4
+	ori	$a1, $zero, 197
 	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$a0, $a0, %pc_lo12(a)
-	move	$a1, $zero
-	vrepli.w	$vr2, -8
-	addi.w	$a2, $zero, -768
+	move	$a2, $zero
+	addi.w	$a3, $zero, -792
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vadd.w	$vr3, $vr0, $vr1
-	add.d	$a3, $a0, $a1
-	vshuf4i.w	$vr4, $vr0, 27
-	vst	$vr4, $a3, 780
-	vshuf4i.w	$vr3, $vr3, 27
-	vst	$vr3, $a3, 764
-	addi.d	$a1, $a1, -32
-	vadd.w	$vr0, $vr0, $vr2
-	bne	$a1, $a2, .LBB0_1
+	addi.d	$a4, $a1, 1
+	add.d	$a5, $a0, $a2
+	st.w	$a4, $a5, 792
+	st.w	$a1, $a5, 788
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, -2
+	bne	$a2, $a3, .LBB0_1
 # %bb.2:                                # %scalar.ph
-	move	$a1, $zero
-	ori	$a2, $zero, 6
-	st.w	$a2, $a0, 24
-	ori	$a2, $zero, 4
-	lu32i.d	$a2, 5
-	st.d	$a2, $a0, 16
-	ori	$a2, $zero, 2
-	lu32i.d	$a2, 3
-	st.d	$a2, $a0, 8
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
-	st.d	$a2, $a0, 0
-	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a2, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
-	vld	$vr1, $a2, %pc_lo12(.LCPI0_2)
+	move	$a3, $zero
+	st.w	$zero, $a0, 0
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI0_1)
 	vrepli.b	$vr2, 0
 	vrepli.b	$vr3, -1
-	ori	$a2, $zero, 768
+	ori	$a1, $zero, 768
 	.p2align	4, , 16
 .LBB0_3:                                # %vector.body8
                                         # =>This Inner Loop Header: Depth=1
-	vldx	$vr4, $a0, $a1
+	vldx	$vr4, $a0, $a3
 	vilvh.w	$vr5, $vr2, $vr4
 	vilvl.w	$vr4, $vr2, $vr4
 	vseq.d	$vr4, $vr1, $vr4
@@ -74,11 +54,11 @@ main:                                   # @main
 	bnez	$a4, .LBB0_5
 # %bb.4:                                # %vector.body8
                                         #   in Loop: Header=BB0_3 Depth=1
-	move	$a3, $a1
+	move	$a2, $a3
 	vaddi.du	$vr1, $vr1, 4
 	vaddi.du	$vr0, $vr0, 4
-	addi.d	$a1, $a1, 16
-	bne	$a3, $a2, .LBB0_3
+	addi.d	$a3, $a3, 16
+	bne	$a2, $a1, .LBB0_3
 .LBB0_5:                                # %middle.split
 	andi	$a1, $a4, 15
 	bnez	$a1, .LBB0_10

@@ -269,7 +269,7 @@ CMtThread_Construct:                    # @CMtThread_Construct
 	.p2align	5
 	.type	MtCoder_Construct,@function
 MtCoder_Construct:                      # @MtCoder_Construct
-# %bb.0:                                # %vector.ph
+# %bb.0:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
@@ -279,32 +279,21 @@ MtCoder_Construct:                      # @MtCoder_Construct
 	lu12i.w	$a1, -5
 	ori	$a1, $a1, 3840
 	.p2align	4, , 16
-.LBB9_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	addi.d	$a2, $a0, 1
-	add.d	$a3, $fp, $a1
-	stptr.w	$a0, $a3, 17376
-	stptr.w	$a2, $a3, 17896
-	stptr.d	$fp, $a3, 17336
-	stptr.d	$fp, $a3, 17856
-	stptr.d	$zero, $a3, 17344
-	stptr.d	$zero, $a3, 17864
-	stptr.d	$zero, $a3, 17360
-	stptr.d	$zero, $a3, 17880
-	stptr.w	$zero, $a3, 17648
-	stptr.w	$zero, $a3, 18168
-	stptr.w	$zero, $a3, 17752
-	stptr.w	$zero, $a3, 18272
-	stptr.w	$zero, $a3, 17392
-	stptr.w	$zero, $a3, 17912
-	stptr.w	$zero, $a3, 17400
-	stptr.w	$zero, $a3, 17920
-	stptr.w	$zero, $a3, 17504
-	stptr.w	$zero, $a3, 18024
-	addi.d	$a1, $a1, 1040
-	addi.d	$a0, $a0, 2
+.LBB9_1:                                # =>This Inner Loop Header: Depth=1
+	add.d	$a2, $fp, $a1
+	stptr.w	$a0, $a2, 17376
+	stptr.d	$fp, $a2, 17336
+	stptr.d	$zero, $a2, 17344
+	stptr.d	$zero, $a2, 17360
+	stptr.w	$zero, $a2, 17648
+	stptr.w	$zero, $a2, 17752
+	stptr.w	$zero, $a2, 17392
+	stptr.w	$zero, $a2, 17400
+	stptr.w	$zero, $a2, 17504
+	addi.d	$a1, $a1, 520
+	addi.d	$a0, $a0, 1
 	bnez	$a1, .LBB9_1
-# %bb.2:                                # %middle.block
+# %bb.2:
 	addi.d	$a0, $fp, 64
 	pcaddu18i	$ra, %call36(CriticalSection_Init)
 	jirl	$ra, $ra, 0

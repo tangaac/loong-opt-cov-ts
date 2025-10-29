@@ -509,7 +509,7 @@ hypre_ClearTiming:                      # @hypre_ClearTiming
 	ld.d	$a1, $a3, 0
 	ld.d	$a2, $a3, 8
 	ld.d	$a3, $a3, 16
-	ori	$a4, $zero, 12
+	ori	$a4, $zero, 8
 	bgeu	$a0, $a4, .LBB5_7
 # %bb.3:
 	move	$a4, $zero

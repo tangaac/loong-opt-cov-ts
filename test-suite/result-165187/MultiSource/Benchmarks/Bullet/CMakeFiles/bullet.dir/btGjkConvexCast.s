@@ -130,38 +130,39 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	fld.s	$fa1, $sp, 20                   # 4-byte Folded Reload
 	fld.s	$fa2, $sp, 16                   # 4-byte Folded Reload
 	fsub.s	$fa1, $fa1, $fa2
-	fsub.s	$fa4, $fs4, $fs5
-	fsub.s	$fa2, $fs6, $fs7
-	fsub.s	$fa3, $fs0, $fs1
+	fsub.s	$fa2, $fs4, $fs5
+	fsub.s	$fa3, $fs6, $fs7
+	fsub.s	$fa4, $fs0, $fs1
 	fsub.s	$fa5, $fs2, $fs3
-	fsub.s	$fs1, $fa0, $fa2
-	fsub.s	$fs2, $fa1, $fa3
-	fld.s	$fa3, $sp, 312
-	fld.s	$fa2, $sp, 280
-	fld.s	$fa1, $sp, 284
-	fld.s	$fa0, $sp, 288
+	fsub.s	$fs1, $fa0, $fa3
+	fsub.s	$fs3, $fa1, $fa4
+	fsub.s	$fs2, $fa2, $fa5
+	fld.s	$fa2, $sp, 312
+	vld	$vr0, $sp, 280
 	lu12i.w	$a0, 239665
 	ori	$a0, $a0, 623
 	movgr2fr.w	$fs4, $a0
-	fcmp.cule.s	$fcc0, $fa3, $fs4
-	fsub.s	$fs3, $fa4, $fa5
+	fcmp.cule.s	$fcc0, $fa2, $fs4
+	vreplvei.w	$vr1, $vr0, 2
 	bcnez	$fcc0, .LBB1_11
 # %bb.2:                                # %.lr.ph
 	addi.d	$s4, $sp, 296
 	movgr2fr.w	$fs5, $zero
 	ori	$s5, $zero, 33
-	fmov.s	$fa4, $fs5
+	fmov.s	$fa3, $fs5
 	.p2align	4, , 16
 .LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	addi.w	$s5, $s5, -1
 	beqz	$s5, .LBB1_14
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
-	fmul.s	$fa1, $fs2, $fa1
-	fmadd.s	$fa1, $fs1, $fa2, $fa1
-	fmadd.s	$fa0, $fs3, $fa0, $fa1
-	fdiv.s	$fa0, $fa3, $fa0
-	fsub.s	$fs0, $fa4, $fa0
-	fcmp.cle.s	$fcc0, $fs0, $fa4
+	vreplvei.w	$vr4, $vr0, 1
+	fmul.s	$fa4, $fs3, $fa4
+	vreplvei.w	$vr0, $vr0, 0
+	fmadd.s	$fa0, $fs1, $fa0, $fa4
+	fmadd.s	$fa0, $fs2, $fa1, $fa0
+	fdiv.s	$fa0, $fa2, $fa0
+	fsub.s	$fs0, $fa3, $fa0
+	fcmp.cle.s	$fcc0, $fs0, $fa3
 	move	$a0, $zero
 	bcnez	$fcc0, .LBB1_17
 # %bb.5:                                #   in Loop: Header=BB1_3 Depth=1
@@ -219,31 +220,34 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	ld.bu	$a0, $sp, 316
 	beqz	$a0, .LBB1_14
 # %bb.8:                                #   in Loop: Header=BB1_3 Depth=1
-	fld.s	$fa3, $sp, 312
-	fcmp.cule.s	$fcc0, $fs5, $fa3
+	fld.s	$fa2, $sp, 312
+	fcmp.cule.s	$fcc0, $fs5, $fa2
 	bceqz	$fcc0, .LBB1_15
 # %bb.9:                                #   in Loop: Header=BB1_3 Depth=1
-	vld	$vr4, $s4, 0
-	fld.s	$fa2, $sp, 280
-	fld.s	$fa1, $sp, 284
-	fld.s	$fa0, $sp, 288
-	fcmp.clt.s	$fcc0, $fs4, $fa3
-	vst	$vr4, $sp, 320
-	fmov.s	$fa4, $fs0
+	vld	$vr0, $s4, 0
+	ld.d	$a0, $sp, 280
+	fld.s	$fa1, $sp, 288
+	vst	$vr0, $sp, 320
+	fcmp.clt.s	$fcc0, $fs4, $fa2
+	vinsgr2vr.d	$vr0, $a0, 0
+	fmov.s	$fa3, $fs0
 	bcnez	$fcc0, .LBB1_3
 # %bb.10:                               # %._crit_edge.loopexit
-	fld.s	$fa3, $sp, 292
+	fld.s	$fa2, $sp, 292
+	vextrins.w	$vr0, $vr1, 32
+	vextrins.w	$vr0, $vr2, 48
 	b	.LBB1_12
 .LBB1_11:
-	fld.s	$fa3, $sp, 292
 	movgr2fr.w	$fs0, $zero
 .LBB1_12:                               # %._crit_edge
-	fld.s	$fa4, $fp, 184
-	fmul.s	$fa5, $fs2, $fa1
-	fmadd.s	$fa5, $fa2, $fs1, $fa5
-	fmadd.s	$fa5, $fa0, $fs3, $fa5
-	fneg.s	$fa4, $fa4
-	fcmp.cle.s	$fcc0, $fa4, $fa5
+	vreplvei.w	$vr2, $vr0, 1
+	fmul.s	$fa2, $fs3, $fa2
+	fld.s	$fa3, $fp, 184
+	vreplvei.w	$vr4, $vr0, 0
+	fmadd.s	$fa2, $fa4, $fs1, $fa2
+	fmadd.s	$fa1, $fa1, $fs2, $fa2
+	fneg.s	$fa2, $fa3
+	fcmp.cle.s	$fcc0, $fa2, $fa1
 	bcnez	$fcc0, .LBB1_14
 # %bb.13:
 	fst.s	$fs0, $fp, 168
@@ -253,18 +257,12 @@ _ZN15btGjkConvexCast16calcTimeOfImpactERK11btTransformS2_S2_S2_RN12btConvexCast1
 	move	$a0, $zero
 	b	.LBB1_17
 .LBB1_15:
-	fld.s	$fa2, $sp, 280
-	fld.s	$fa1, $sp, 284
-	fld.s	$fa0, $sp, 288
-	fld.s	$fa3, $sp, 292
+	vld	$vr0, $sp, 280
 	fst.s	$fs0, $fp, 168
 .LBB1_16:                               # %.thread.sink.split
-	fst.s	$fa2, $fp, 136
-	vld	$vr2, $s4, 0
-	fst.s	$fa1, $fp, 140
-	fst.s	$fa0, $fp, 144
-	fst.s	$fa3, $fp, 148
-	vst	$vr2, $fp, 152
+	vld	$vr1, $s4, 0
+	vst	$vr0, $fp, 136
+	vst	$vr1, $fp, 152
 	ori	$a0, $zero, 1
 .LBB1_17:                               # %.thread
 	fld.d	$fs7, $sp, 336                  # 8-byte Folded Reload

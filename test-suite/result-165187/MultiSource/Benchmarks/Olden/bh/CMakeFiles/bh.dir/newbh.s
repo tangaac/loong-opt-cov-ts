@@ -1123,52 +1123,55 @@ vp:                                     # @vp
 	lu12i.w	$a2, -419431
 	ori	$a2, $a2, 2458
 	lu32i.d	$a2, -419431
+	lu52i.d	$a3, $a2, 1015
+	vreplgr2vr.d	$vr1, $a3
 	pcalau12i	$a3, %pc_hi20(.LCPI10_1)
-	fld.d	$fa1, $a3, %pc_lo12(.LCPI10_1)
+	fld.d	$fa2, $a3, %pc_lo12(.LCPI10_1)
 	pcalau12i	$a3, %pc_hi20(.LCPI10_2)
-	fld.d	$fa2, $a3, %pc_lo12(.LCPI10_2)
-	lu52i.d	$a2, $a2, 1015
-	vreplgr2vr.d	$vr3, $a2
+	fld.d	$fa3, $a3, %pc_lo12(.LCPI10_2)
 	vldi	$vr4, -988
+	lu52i.d	$a2, $a2, 1016
+	vreplgr2vr.d	$vr5, $a2
 	.p2align	4, , 16
 .LBB10_2:                               # %.preheader128
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr5, $a0, 96
-	fld.d	$fa6, $a0, 112
+	vld	$vr6, $a0, 96
+	fld.d	$fa7, $a0, 112
 	blez	$a1, .LBB10_4
 # %bb.3:                                # %.preheader127
                                         #   in Loop: Header=BB10_2 Depth=1
-	fld.d	$fa7, $a0, 88
-	fsub.d	$fa7, $fa6, $fa7
-	fld.d	$ft0, $a0, 64
-	vld	$vr9, $a0, 72
-	fmul.d	$fa7, $fa7, $fa0
-	vld	$vr10, $a0, 48
-	fadd.d	$fa7, $ft0, $fa7
-	vfsub.d	$vr8, $vr5, $vr9
-	vfmul.d	$vr8, $vr8, $vr3
-	vfadd.d	$vr8, $vr10, $vr8
-	vst	$vr8, $a0, 48
-	fst.d	$fa7, $a0, 64
+	fld.d	$ft0, $a0, 88
+	fsub.d	$ft0, $fa7, $ft0
+	fld.d	$ft1, $a0, 64
+	vld	$vr10, $a0, 72
+	fmul.d	$ft0, $ft0, $fa0
+	vld	$vr11, $a0, 48
+	fadd.d	$ft0, $ft1, $ft0
+	vfsub.d	$vr9, $vr6, $vr10
+	vfmul.d	$vr9, $vr9, $vr1
+	vfadd.d	$vr9, $vr11, $vr9
+	vst	$vr9, $a0, 48
+	fst.d	$ft0, $a0, 64
 .LBB10_4:                               # %.loopexit
                                         #   in Loop: Header=BB10_2 Depth=1
-	fld.d	$fa7, $a0, 16
-	fcmp.cor.d	$fcc0, $fa7, $fa7
+	vld	$vr8, $a0, 16
+	vreplvei.d	$vr10, $vr8, 0
+	fcmp.cor.d	$fcc0, $ft2, $ft2
 	bceqz	$fcc0, .LBB10_27
 # %bb.5:                                #   in Loop: Header=BB10_2 Depth=1
-	fld.d	$ft0, $a0, 24
-	fcmp.cor.d	$fcc0, $ft0, $ft0
+	vreplvei.d	$vr11, $vr8, 1
+	fcmp.cor.d	$fcc0, $ft3, $ft3
 	bceqz	$fcc0, .LBB10_28
 # %bb.6:                                #   in Loop: Header=BB10_2 Depth=1
 	fld.d	$ft1, $a0, 32
 	fcmp.cor.d	$fcc0, $ft1, $ft1
 	bceqz	$fcc0, .LBB10_29
 # %bb.7:                                #   in Loop: Header=BB10_2 Depth=1
-	fabs.d	$ft2, $fa7
+	fabs.d	$ft2, $ft2
 	fcmp.clt.d	$fcc0, $ft2, $fa4
 	bceqz	$fcc0, .LBB10_43
 # %bb.8:                                #   in Loop: Header=BB10_2 Depth=1
-	fabs.d	$ft2, $ft0
+	fabs.d	$ft2, $ft3
 	fcmp.clt.d	$fcc0, $ft2, $fa4
 	bceqz	$fcc0, .LBB10_42
 # %bb.9:                                #   in Loop: Header=BB10_2 Depth=1
@@ -1177,29 +1180,29 @@ vp:                                     # @vp
 	bcnez	$fcc0, .LBB10_41
 # %bb.10:                               # %.preheader123
                                         #   in Loop: Header=BB10_2 Depth=1
-	vreplvei.d	$vr10, $vr5, 0
-	vst	$vr5, $a0, 72
+	vreplvei.d	$vr10, $vr6, 0
+	vst	$vr6, $a0, 72
 	fcmp.cun.d	$fcc0, $ft2, $ft2
-	fst.d	$fa6, $a0, 88
+	fst.d	$fa7, $a0, 88
 	bcnez	$fcc0, .LBB10_30
 # %bb.11:                               #   in Loop: Header=BB10_2 Depth=1
-	vreplvei.d	$vr11, $vr5, 1
+	vreplvei.d	$vr11, $vr6, 1
 	fcmp.cor.d	$fcc0, $ft3, $ft3
 	bceqz	$fcc0, .LBB10_31
 # %bb.12:                               #   in Loop: Header=BB10_2 Depth=1
-	fcmp.cor.d	$fcc0, $fa6, $fa6
+	fcmp.cor.d	$fcc0, $fa7, $fa7
 	bceqz	$fcc0, .LBB10_32
 # %bb.13:                               #   in Loop: Header=BB10_2 Depth=1
 	fabs.d	$ft2, $ft2
-	fcmp.clt.d	$fcc0, $ft2, $fa1
+	fcmp.clt.d	$fcc0, $ft2, $fa2
 	bceqz	$fcc0, .LBB10_40
 # %bb.14:                               #   in Loop: Header=BB10_2 Depth=1
 	fabs.d	$ft2, $ft3
-	fcmp.clt.d	$fcc0, $ft2, $fa1
+	fcmp.clt.d	$fcc0, $ft2, $fa2
 	bceqz	$fcc0, .LBB10_39
 # %bb.15:                               #   in Loop: Header=BB10_2 Depth=1
-	fabs.d	$ft2, $fa6
-	fcmp.cule.d	$fcc0, $fa1, $ft2
+	fabs.d	$ft2, $fa7
+	fcmp.cule.d	$fcc0, $fa2, $ft2
 	bcnez	$fcc0, .LBB10_38
 # %bb.16:                               # %.preheader122.preheader
                                         #   in Loop: Header=BB10_2 Depth=1
@@ -1217,46 +1220,43 @@ vp:                                     # @vp
 	bceqz	$fcc0, .LBB10_35
 # %bb.19:                               #   in Loop: Header=BB10_2 Depth=1
 	fabs.d	$ft4, $ft4
-	fcmp.clt.d	$fcc0, $ft4, $fa1
+	fcmp.clt.d	$fcc0, $ft4, $fa2
 	bceqz	$fcc0, .LBB10_37
 # %bb.20:                               #   in Loop: Header=BB10_2 Depth=1
 	fabs.d	$ft4, $ft5
-	fcmp.clt.d	$fcc0, $ft4, $fa1
+	fcmp.clt.d	$fcc0, $ft4, $fa2
 	bceqz	$fcc0, .LBB10_36
 # %bb.21:                               #   in Loop: Header=BB10_2 Depth=1
 	fabs.d	$ft4, $ft3
-	fcmp.clt.d	$fcc0, $ft4, $fa1
+	fcmp.clt.d	$fcc0, $ft4, $fa2
 	bceqz	$fcc0, .LBB10_47
 # %bb.22:                               #   in Loop: Header=BB10_2 Depth=1
-	vfmul.d	$vr12, $vr5, $vr3
-	fmul.d	$ft5, $fa6, $fa0
+	vfmul.d	$vr12, $vr6, $vr1
+	fmul.d	$ft5, $fa7, $fa0
 	vfadd.d	$vr10, $vr10, $vr12
 	fadd.d	$ft3, $ft3, $ft5
-	vreplvei.d	$vr5, $vr10, 0
-	fmul.d	$fa5, $fa5, $fa2
-	vreplvei.d	$vr6, $vr10, 1
-	fmul.d	$fa6, $fa6, $fa2
-	fmul.d	$ft6, $ft3, $fa2
-	fadd.d	$fa7, $fa7, $fa5
-	fadd.d	$fa6, $ft0, $fa6
-	fadd.d	$fa5, $ft1, $ft6
-	fst.d	$fa7, $a0, 16
-	fst.d	$fa6, $a0, 24
-	fst.d	$fa5, $a0, 32
+	fmul.d	$fa6, $ft3, $fa3
+	fadd.d	$fa6, $ft1, $fa6
+	vfmul.d	$vr7, $vr10, $vr5
+	vfadd.d	$vr7, $vr8, $vr7
+	vst	$vr7, $a0, 16
+	fst.d	$fa6, $a0, 32
 	vfadd.d	$vr8, $vr10, $vr12
 	vst	$vr8, $a0, 48
 	fadd.d	$ft0, $ft3, $ft5
-	fabs.d	$fa7, $fa7
-	fcmp.clt.d	$fcc0, $fa7, $fa1
+	vreplvei.d	$vr9, $vr7, 0
+	fabs.d	$ft1, $ft1
+	fcmp.clt.d	$fcc0, $ft1, $fa2
 	fst.d	$ft0, $a0, 64
 	bceqz	$fcc0, .LBB10_46
 # %bb.23:                               #   in Loop: Header=BB10_2 Depth=1
-	fabs.d	$fa6, $fa6
-	fcmp.clt.d	$fcc0, $fa6, $fa1
+	vreplvei.d	$vr7, $vr7, 1
+	fabs.d	$fa7, $fa7
+	fcmp.clt.d	$fcc0, $fa7, $fa2
 	bceqz	$fcc0, .LBB10_45
 # %bb.24:                               #   in Loop: Header=BB10_2 Depth=1
-	fabs.d	$fa5, $fa5
-	fcmp.clt.d	$fcc0, $fa5, $fa1
+	fabs.d	$fa6, $fa6
+	fcmp.clt.d	$fcc0, $fa6, $fa2
 	bceqz	$fcc0, .LBB10_44
 # %bb.25:                               #   in Loop: Header=BB10_2 Depth=1
 	ld.d	$a0, $a0, 136

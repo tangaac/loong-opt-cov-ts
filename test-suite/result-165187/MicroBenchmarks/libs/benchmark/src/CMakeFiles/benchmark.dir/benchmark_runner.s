@@ -3244,13 +3244,15 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 	jirl	$ra, $ra, 0
 .Ltmp177:                               # EH_LABEL
 # %bb.43:                               # %_ZN9benchmark13BenchmarkNameaSERKS0_.exit.i
-	ld.w	$a0, $s2, 264
-	ld.w	$a2, $s2, 268
-	ld.w	$a3, $sp, 680
+	ld.d	$a0, $s2, 264
 	addi.d	$a1, $sp, 648
-	st.d	$a0, $sp, 272
-	st.d	$a2, $sp, 280
-	st.w	$a3, $sp, 368
+	vinsgr2vr.d	$vr0, $a0, 0
+	vshuf4i.w	$vr0, $vr0, 16
+	ld.w	$a0, $sp, 680
+	vslli.d	$vr0, $vr0, 32
+	vsrai.d	$vr0, $vr0, 32
+	vst	$vr0, $sp, 272
+	st.w	$a0, $sp, 368
 	addi.d	$a0, $sp, 376
 .Ltmp178:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_)

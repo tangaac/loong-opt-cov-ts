@@ -1021,7 +1021,7 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	beqz	$a1, .LBB7_9
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a0, $a2, 0
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bstrpick.d	$a2, $a1, 31, 0
 	bgeu	$a1, $a3, .LBB7_3
 # %bb.2:
@@ -1029,35 +1029,31 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ori	$a3, $zero, 33
 	b	.LBB7_7
 .LBB7_3:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 31, 3
-	pcalau12i	$a3, %pc_hi20(.LCPI7_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI7_0)
-	slli.d	$a1, $a1, 3
-	addi.d	$a3, $a0, 16
-	vrepli.w	$vr1, 33
+	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI7_0)
+	bstrpick.d	$a1, $a2, 31, 2
+	slli.d	$a1, $a1, 2
+	vrepli.w	$vr2, 33
+	move	$a3, $a0
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB7_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vbsrl.v	$vr2, $vr1, 12
+	vori.b	$vr0, $vr1, 0
+	vbsrl.v	$vr1, $vr2, 12
+	vbsll.v	$vr2, $vr0, 4
+	vor.v	$vr1, $vr2, $vr1
+	vadd.w	$vr1, $vr1, $vr0
+	vst	$vr1, $a3, 0
 	vaddi.wu	$vr1, $vr0, 4
-	vbsll.v	$vr3, $vr0, 4
-	vor.v	$vr2, $vr3, $vr2
-	vbsrl.v	$vr3, $vr0, 12
-	vbsll.v	$vr4, $vr1, 4
-	vor.v	$vr3, $vr4, $vr3
-	vadd.w	$vr2, $vr2, $vr0
-	vadd.w	$vr3, $vr3, $vr1
-	vst	$vr2, $a3, -16
-	vst	$vr3, $a3, 0
-	vaddi.wu	$vr0, $vr0, 8
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 16
+	vori.b	$vr2, $vr0, 0
 	bnez	$a4, .LBB7_4
 # %bb.5:                                # %middle.block
 	beq	$a1, $a2, .LBB7_9
 # %bb.6:
-	vpickve2gr.w	$a3, $vr1, 3
+	vpickve2gr.w	$a3, $vr0, 3
 .LBB7_7:                                # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a1
 	alsl.d	$a0, $a1, $a0, 2

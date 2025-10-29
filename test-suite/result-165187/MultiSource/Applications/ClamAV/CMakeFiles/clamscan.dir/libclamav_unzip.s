@@ -967,11 +967,12 @@ zip_file_open:                          # @zip_file_open
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB5_31
 # %bb.29:
-	ld.wu	$a1, $s0, 0
-	ld.wu	$a2, $s0, 4
+	ld.d	$a0, $s0, 0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vrepli.b	$vr1, 0
+	vilvl.w	$vr0, $vr1, $vr0
 	move	$a0, $s1
-	st.d	$a1, $s1, 40
-	st.d	$a2, $s1, 48
+	vst	$vr0, $s1, 40
 	addi.d	$a1, $s0, 22
 	st.d	$a1, $s1, 16
 	move	$a1, $s0

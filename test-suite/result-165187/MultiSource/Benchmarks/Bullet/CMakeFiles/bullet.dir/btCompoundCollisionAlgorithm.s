@@ -1692,7 +1692,6 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 312                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 304                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1702,119 +1701,118 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 56, -72
-	.cfi_offset 57, -80
 	move	$fp, $a0
 	ld.d	$a0, $a0, 8
 	move	$s0, $a2
 	move	$s1, $a1
 	ld.d	$a1, $a0, 200
-	vld	$vr13, $a0, 8
-	fld.s	$fa2, $a0, 8
-	vld	$vr20, $a0, 24
-	fld.s	$fa1, $a0, 24
-	vld	$vr24, $a0, 40
-	fld.s	$fa0, $a0, 40
-	vld	$vr25, $a0, 56
-	vld	$vr3, $a0, 72
-	vld	$vr5, $a0, 88
-	vld	$vr6, $a0, 104
-	fld.s	$fa4, $a0, 56
-	vst	$vr3, $sp, 240
-	vst	$vr5, $sp, 256
-	vst	$vr6, $sp, 272
+	vld	$vr10, $a0, 8
+	vld	$vr18, $a0, 24
+	vld	$vr23, $a0, 40
+	vld	$vr0, $a0, 72
+	vld	$vr1, $a0, 88
+	vld	$vr2, $a0, 104
+	vld	$vr24, $a0, 56
+	vst	$vr0, $sp, 248
+	vst	$vr1, $sp, 264
+	vst	$vr2, $sp, 280
 	ld.d	$a1, $a1, 40
-	vld	$vr3, $a0, 120
+	vld	$vr0, $a0, 120
 	ori	$a0, $zero, 88
 	mul.d	$a2, $a2, $a0
 	add.d	$a0, $a1, $a2
-	fld.s	$fa7, $a0, 16
-	fldx.s	$ft0, $a1, $a2
-	vst	$vr3, $sp, 288
-	vreplvei.w	$vr9, $vr13, 1
-	fmul.s	$fa3, $ft1, $fa7
-	fmadd.s	$fa3, $ft0, $fa2, $fa3
-	fld.s	$ft2, $a0, 32
-	fld.s	$ft3, $a0, 20
-	fld.s	$ft4, $a0, 4
-	vst	$vr13, $sp, 80                  # 16-byte Folded Spill
-	vreplvei.w	$vr13, $vr13, 2
-	fmadd.s	$fa6, $ft2, $ft5, $fa3
-	fmul.s	$fa3, $ft1, $ft3
-	fmadd.s	$fa3, $ft4, $fa2, $fa3
-	fld.s	$ft6, $a0, 36
-	fld.s	$ft7, $a0, 24
-	fld.s	$ft8, $a0, 8
-	fld.s	$ft9, $a0, 40
-	fmadd.s	$fa3, $ft6, $ft5, $fa3
-	fmul.s	$fa5, $ft1, $ft7
-	fmadd.s	$fa5, $ft8, $fa2, $fa5
-	fmadd.s	$fa5, $ft9, $ft5, $fa5
-	vreplvei.w	$vr18, $vr20, 1
-	fmul.s	$ft11, $ft10, $fa7
-	fmadd.s	$ft11, $ft0, $fa1, $ft11
-	vst	$vr20, $sp, 64                  # 16-byte Folded Spill
-	vreplvei.w	$vr20, $vr20, 2
-	fmadd.s	$ft11, $ft2, $ft12, $ft11
-	fmul.s	$ft13, $ft10, $ft3
-	fmadd.s	$ft13, $ft4, $fa1, $ft13
-	fmadd.s	$ft13, $ft6, $ft12, $ft13
-	fmul.s	$ft14, $ft10, $ft7
-	fmadd.s	$ft14, $ft8, $fa1, $ft14
-	fmadd.s	$ft14, $ft9, $ft12, $ft14
-	vreplvei.w	$vr23, $vr24, 1
-	fmul.s	$fa7, $ft15, $fa7
-	fmadd.s	$fa7, $ft0, $fa0, $fa7
-	vst	$vr24, $sp, 48                  # 16-byte Folded Spill
-	vreplvei.w	$vr8, $vr24, 2
-	fmadd.s	$fa7, $ft2, $ft0, $fa7
-	fmul.s	$ft2, $ft15, $ft3
-	fmadd.s	$ft2, $ft4, $fa0, $ft2
-	fmadd.s	$ft2, $ft6, $ft0, $ft2
-	fmul.s	$ft3, $ft15, $ft7
-	fmadd.s	$ft3, $ft8, $fa0, $ft3
-	fld.s	$ft4, $a0, 52
-	fld.s	$ft6, $a0, 48
-	fld.s	$ft7, $a0, 56
-	fmadd.s	$ft3, $ft9, $ft0, $ft3
-	fmul.s	$ft1, $ft1, $ft4
-	fmadd.s	$fa2, $fa2, $ft6, $ft1
-	fmadd.s	$fa2, $ft5, $ft7, $fa2
-	fadd.s	$fa2, $fa4, $fa2
-	fmul.s	$fa4, $ft10, $ft4
-	fmadd.s	$fa1, $fa1, $ft6, $fa4
-	fmadd.s	$fa1, $ft12, $ft7, $fa1
-	vreplvei.w	$vr4, $vr25, 1
-	fadd.s	$fa1, $fa4, $fa1
-	fmul.s	$fa4, $ft15, $ft4
-	fmadd.s	$fa0, $fa0, $ft6, $fa4
-	fmadd.s	$fa0, $ft0, $ft7, $fa0
-	vst	$vr25, $sp, 32                  # 16-byte Folded Spill
-	vreplvei.w	$vr4, $vr25, 2
-	fadd.s	$fa0, $fa4, $fa0
-	movfr2gr.s	$a0, $fa2
-	movfr2gr.s	$a1, $fa1
+	fld.s	$fa4, $a0, 16
+	vst	$vr0, $sp, 296
+	fldx.s	$fa5, $a1, $a2
+	vreplvei.w	$vr3, $vr10, 1
+	fmul.s	$fa0, $fa3, $fa4
+	vreplvei.w	$vr6, $vr10, 0
+	fmadd.s	$fa0, $fa5, $fa6, $fa0
+	fld.s	$fa7, $a0, 32
+	fld.s	$ft0, $a0, 20
+	fld.s	$ft1, $a0, 4
+	vst	$vr10, $sp, 80                  # 16-byte Folded Spill
+	vreplvei.w	$vr10, $vr10, 2
+	fmadd.s	$fa2, $fa7, $ft2, $fa0
+	fmul.s	$fa0, $fa3, $ft0
+	fmadd.s	$fa0, $ft1, $fa6, $fa0
+	fld.s	$ft3, $a0, 36
+	fld.s	$ft4, $a0, 24
+	fld.s	$ft5, $a0, 8
+	fld.s	$ft6, $a0, 40
+	fmadd.s	$fa0, $ft3, $ft2, $fa0
+	fmul.s	$fa1, $fa3, $ft4
+	fmadd.s	$fa1, $ft5, $fa6, $fa1
+	fmadd.s	$fa1, $ft6, $ft2, $fa1
+	vreplvei.w	$vr15, $vr18, 1
+	fmul.s	$ft8, $ft7, $fa4
+	vreplvei.w	$vr17, $vr18, 0
+	fmadd.s	$ft8, $fa5, $ft9, $ft8
+	vst	$vr18, $sp, 64                  # 16-byte Folded Spill
+	vreplvei.w	$vr18, $vr18, 2
+	fmadd.s	$ft8, $fa7, $ft10, $ft8
+	fmul.s	$ft11, $ft7, $ft0
+	fmadd.s	$ft11, $ft1, $ft9, $ft11
+	fmadd.s	$ft11, $ft3, $ft10, $ft11
+	fmul.s	$ft12, $ft7, $ft4
+	fmadd.s	$ft12, $ft5, $ft9, $ft12
+	fmadd.s	$ft12, $ft6, $ft10, $ft12
+	vreplvei.w	$vr21, $vr23, 1
+	fmul.s	$fa4, $ft13, $fa4
+	vreplvei.w	$vr22, $vr23, 0
+	fmadd.s	$fa4, $fa5, $ft14, $fa4
+	vst	$vr23, $sp, 48                  # 16-byte Folded Spill
+	vreplvei.w	$vr5, $vr23, 2
+	fmadd.s	$fa4, $fa7, $fa5, $fa4
+	fmul.s	$fa7, $ft13, $ft0
+	fmadd.s	$fa7, $ft1, $ft14, $fa7
+	fmadd.s	$fa7, $ft3, $fa5, $fa7
+	fmul.s	$ft0, $ft13, $ft4
+	fmadd.s	$ft0, $ft5, $ft14, $ft0
+	fld.s	$ft1, $a0, 52
+	fld.s	$ft3, $a0, 48
+	fld.s	$ft4, $a0, 56
+	fmadd.s	$ft0, $ft6, $fa5, $ft0
+	fmul.s	$fa3, $fa3, $ft1
+	fmadd.s	$fa3, $fa6, $ft3, $fa3
+	fmadd.s	$fa3, $ft2, $ft4, $fa3
+	vreplvei.w	$vr6, $vr24, 0
+	fadd.s	$fa3, $fa6, $fa3
+	fmul.s	$fa6, $ft7, $ft1
+	fmadd.s	$fa6, $ft9, $ft3, $fa6
+	fmadd.s	$fa6, $ft10, $ft4, $fa6
+	vreplvei.w	$vr10, $vr24, 1
+	fadd.s	$fa6, $ft2, $fa6
+	fmul.s	$ft1, $ft13, $ft1
+	fmadd.s	$ft1, $ft14, $ft3, $ft1
+	fmadd.s	$fa5, $fa5, $ft4, $ft1
+	vst	$vr24, $sp, 32                  # 16-byte Folded Spill
+	vreplvei.w	$vr9, $vr24, 2
+	fadd.s	$fa5, $ft1, $fa5
+	movfr2gr.s	$a0, $fa3
+	movfr2gr.s	$a1, $fa6
 	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fa0
+	movfr2gr.s	$a1, $fa5
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa6, $sp, 176
-	fst.s	$ft11, $sp, 192
-	fst.s	$ft13, $sp, 196
-	fst.s	$ft14, $sp, 200
-	st.w	$zero, $sp, 204
-	fst.s	$fa7, $sp, 208
-	fst.s	$ft2, $sp, 212
-	fst.s	$ft3, $sp, 216
+	fst.s	$fa2, $sp, 184
+	fst.s	$ft8, $sp, 200
+	fst.s	$ft11, $sp, 204
+	fst.s	$ft12, $sp, 208
+	st.w	$zero, $sp, 212
+	fst.s	$fa4, $sp, 216
+	fst.s	$fa7, $sp, 220
+	fst.s	$ft0, $sp, 224
 	ld.d	$a2, $s1, 0
-	st.w	$zero, $sp, 220
-	st.d	$a0, $sp, 224
-	st.d	$a1, $sp, 232
+	st.w	$zero, $sp, 228
+	st.d	$a0, $sp, 232
+	st.d	$a1, $sp, 240
 	ld.d	$a4, $a2, 16
-	fst.s	$fa3, $sp, 180
-	fst.s	$fa5, $sp, 184
-	st.w	$zero, $sp, 188
-	addi.d	$a1, $sp, 176
-	addi.d	$a2, $sp, 160
-	addi.d	$a3, $sp, 144
+	fst.s	$fa0, $sp, 188
+	fst.s	$fa1, $sp, 192
+	st.w	$zero, $sp, 196
+	addi.d	$a1, $sp, 184
+	addi.d	$a2, $sp, 168
+	addi.d	$a3, $sp, 152
 	move	$a0, $s1
 	jirl	$ra, $a4, 0
 	ld.d	$a1, $fp, 16
@@ -1822,62 +1820,62 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	ld.d	$a2, $a0, 0
 	ld.d	$a4, $a2, 16
 	addi.d	$a1, $a1, 8
-	addi.d	$a2, $sp, 128
-	addi.d	$a3, $sp, 112
+	addi.d	$a2, $sp, 136
+	addi.d	$a3, $sp, 120
 	jirl	$ra, $a4, 0
-	fld.s	$fa0, $sp, 160
-	fld.s	$fa1, $sp, 112
+	fld.s	$fa0, $sp, 168
+	fld.s	$fa1, $sp, 120
 	ori	$a0, $zero, 1
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	ori	$a1, $zero, 1
 	bcnez	$fcc0, .LBB9_3
 # %bb.1:
-	fld.s	$fa0, $sp, 144
-	fld.s	$fa1, $sp, 128
+	fld.s	$fa0, $sp, 152
+	fld.s	$fa1, $sp, 136
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	ori	$a1, $zero, 1
 	bcnez	$fcc0, .LBB9_3
 # %bb.2:
 	move	$a1, $zero
 .LBB9_3:
-	fld.s	$fa0, $sp, 168
-	fld.s	$fa1, $sp, 120
+	fld.s	$fa0, $sp, 176
+	fld.s	$fa1, $sp, 128
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB9_6
 # %bb.4:
-	fld.s	$fa0, $sp, 152
-	fld.s	$fa1, $sp, 136
+	fld.s	$fa0, $sp, 160
+	fld.s	$fa1, $sp, 144
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB9_6
 # %bb.5:
 	move	$a0, $a1
 .LBB9_6:
-	fld.s	$fa0, $sp, 164
-	fld.s	$fa1, $sp, 116
+	fld.s	$fa0, $sp, 172
+	fld.s	$fa1, $sp, 124
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB9_14
 # %bb.7:
-	fld.s	$fa0, $sp, 148
-	fld.s	$fa1, $sp, 132
+	fld.s	$fa0, $sp, 156
+	fld.s	$fa1, $sp, 140
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	movcf2gr	$a1, $fcc0
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB9_14
 # %bb.8:
 	ld.d	$a0, $fp, 8
-	vld	$vr0, $sp, 176
-	addi.d	$a1, $sp, 192
+	vld	$vr0, $sp, 184
+	addi.d	$a1, $sp, 200
 	vst	$vr0, $a0, 8
 	vld	$vr0, $a1, 0
-	addi.d	$a2, $sp, 208
+	addi.d	$a2, $sp, 216
 	vst	$vr0, $a0, 24
 	vld	$vr0, $a2, 0
-	addi.d	$a3, $sp, 224
+	addi.d	$a3, $sp, 232
 	vst	$vr0, $a0, 40
 	vld	$vr0, $a3, 0
 	vst	$vr0, $a0, 56
 	ld.d	$a0, $fp, 8
-	vld	$vr0, $sp, 176
+	vld	$vr0, $sp, 184
 	vld	$vr1, $a1, 0
 	vld	$vr2, $a2, 0
 	vld	$vr3, $a3, 0
@@ -1914,9 +1912,9 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	maskeqz	$a1, $a4, $a1
 	or	$a1, $a1, $a3
 	ldx.d	$a3, $a2, $a1
-	addi.d	$s4, $sp, 256
-	addi.d	$s3, $sp, 272
-	addi.d	$s1, $sp, 288
+	addi.d	$s4, $sp, 264
+	addi.d	$s3, $sp, 280
+	addi.d	$s1, $sp, 296
 	addi.w	$a1, $zero, -1
 	move	$a2, $s0
 	jirl	$ra, $a3, 0
@@ -1945,8 +1943,8 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ld.d	$a0, $a0, 24
 	vst	$vr0, $sp, 96
-	addi.d	$a1, $sp, 160
-	addi.d	$a2, $sp, 144
+	addi.d	$a1, $sp, 168
+	addi.d	$a2, $sp, 152
 	addi.d	$a3, $sp, 96
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw8drawAabbERK9btVector3S2_S2_)
 	jirl	$ra, $ra, 0
@@ -1954,8 +1952,8 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	ld.d	$a0, $a0, 24
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 96
-	addi.d	$a1, $sp, 128
-	addi.d	$a2, $sp, 112
+	addi.d	$a1, $sp, 136
+	addi.d	$a2, $sp, 120
 	addi.d	$a3, $sp, 96
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw8drawAabbERK9btVector3S2_S2_)
 	jirl	$ra, $ra, 0
@@ -1971,7 +1969,7 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 56
 	ld.d	$a0, $fp, 8
-	vld	$vr0, $sp, 240
+	vld	$vr0, $sp, 248
 	vld	$vr1, $s4, 0
 	vld	$vr2, $s3, 0
 	vld	$vr3, $s1, 0
@@ -1980,7 +1978,6 @@ _ZN22btCompoundLeafCallback17ProcessChildShapeEP16btCollisionShapei: # @_ZN22btC
 	vst	$vr2, $a0, 104
 	vst	$vr3, $a0, 120
 .LBB9_14:                               # %_Z20TestAabbAgainstAabb2RK9btVector3S1_S1_S1_.exit.thread
-	fld.d	$fs1, $sp, 304                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 312                  # 8-byte Folded Reload
 	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
@@ -2013,22 +2010,18 @@ _ZN6btDbvt8ICollideD2Ev:                # @_ZN6btDbvt8ICollideD2Ev
 _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_RK16btDispatcherInfoP16btManifoldResult: # @_ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_RK16btDispatcherInfoP16btManifoldResult
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -336
-	.cfi_def_cfa_offset 336
-	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 248                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 240                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 232                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 224                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -368
+	.cfi_def_cfa_offset 368
+	st.d	$ra, $sp, 360                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 288                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2039,10 +2032,6 @@ _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 56, -88
-	.cfi_offset 57, -96
-	.cfi_offset 58, -104
-	.cfi_offset 59, -112
 	move	$fp, $a0
 	ld.w	$a0, $a0, 20
 	blez	$a0, .LBB11_3
@@ -2062,97 +2051,105 @@ _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_
 	mul.d	$s6, $a0, $a1
 	ld.d	$s7, $s2, 200
 	vld	$vr0, $s2, 8
-	fld.s	$fs0, $s2, 8
 	vld	$vr1, $s2, 24
-	fld.s	$fs1, $s2, 24
 	vld	$vr2, $s2, 40
-	fld.s	$fs2, $s2, 40
 	vld	$vr3, $s2, 56
-	fld.s	$fs3, $s2, 56
+	vreplvei.w	$vr4, $vr0, 0
+	vst	$vr4, $sp, 192                  # 16-byte Folded Spill
 	vreplvei.w	$vr4, $vr0, 1
-	vst	$vr4, $sp, 128                  # 16-byte Folded Spill
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
+	vst	$vr4, $sp, 176                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 256                  # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr0, 2
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
+	vreplvei.w	$vr0, $vr1, 0
+	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr1, 1
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
-	vst	$vr1, $sp, 176                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr1, $sp, 240                  # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr1, 2
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vreplvei.w	$vr0, $vr2, 0
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr2, 1
-	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-	vst	$vr2, $sp, 160                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr2, $sp, 224                  # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr2, 2
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vreplvei.w	$vr0, $vr3, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr3, 1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr3, $sp, 144                  # 16-byte Folded Spill
+	vst	$vr3, $sp, 208                  # 16-byte Folded Spill
 	vreplvei.w	$vr0, $vr3, 2
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vldi	$vr1, -1168
 	.p2align	4, , 16
 .LBB11_2:                               # =>This Inner Loop Header: Depth=1
-	vst	$vr1, $sp, 208                  # 16-byte Folded Spill
+	vst	$vr1, $sp, 272                  # 16-byte Folded Spill
 	ld.d	$a0, $s7, 40
 	add.d	$a2, $a0, $s4
 	fld.s	$fa0, $a2, 16
 	ld.d	$a1, $a2, 64
 	fldx.s	$fa1, $a0, $s4
-	vld	$vr15, $sp, 128                 # 16-byte Folded Reload
-	fmul.s	$fa2, $ft7, $fa0
+	vld	$vr16, $sp, 176                 # 16-byte Folded Reload
+	fmul.s	$fa2, $ft8, $fa0
 	fld.s	$fa3, $a2, 32
 	fld.s	$fa4, $a2, 20
 	fld.s	$fa5, $a2, 4
-	fmadd.s	$fa2, $fa1, $fs0, $fa2
-	vld	$vr16, $sp, 112                 # 16-byte Folded Reload
-	fmadd.s	$fa2, $fa3, $ft8, $fa2
-	fmul.s	$fa6, $ft7, $fa4
-	fmadd.s	$fa6, $fa5, $fs0, $fa6
+	vld	$vr15, $sp, 192                 # 16-byte Folded Reload
+	fmadd.s	$fa2, $fa1, $ft7, $fa2
+	vld	$vr17, $sp, 160                 # 16-byte Folded Reload
+	fmadd.s	$fa2, $fa3, $ft9, $fa2
+	fmul.s	$fa6, $ft8, $fa4
+	fmadd.s	$fa6, $fa5, $ft7, $fa6
 	fld.s	$fa7, $a2, 36
 	fld.s	$ft0, $a2, 24
 	fld.s	$ft1, $a2, 8
 	fld.s	$ft2, $a2, 40
-	fmadd.s	$fa6, $fa7, $ft8, $fa6
-	fmul.s	$ft3, $ft7, $ft0
-	fmadd.s	$ft3, $ft1, $fs0, $ft3
-	fmadd.s	$ft3, $ft2, $ft8, $ft3
-	vld	$vr17, $sp, 96                  # 16-byte Folded Reload
-	fmul.s	$ft4, $ft9, $fa0
-	fmadd.s	$ft4, $fa1, $fs1, $ft4
-	vld	$vr18, $sp, 80                  # 16-byte Folded Reload
-	fmadd.s	$ft4, $fa3, $ft10, $ft4
-	fmul.s	$ft5, $ft9, $fa4
-	fmadd.s	$ft5, $fa5, $fs1, $ft5
-	fmadd.s	$ft5, $fa7, $ft10, $ft5
-	fmul.s	$ft6, $ft9, $ft0
-	fmadd.s	$ft6, $ft1, $fs1, $ft6
-	fmadd.s	$ft6, $ft2, $ft10, $ft6
-	vld	$vr19, $sp, 64                  # 16-byte Folded Reload
-	fmul.s	$fa0, $ft11, $fa0
-	fmadd.s	$fa0, $fa1, $fs2, $fa0
-	vld	$vr20, $sp, 48                  # 16-byte Folded Reload
-	fmadd.s	$fa0, $fa3, $ft12, $fa0
-	fmul.s	$fa1, $ft11, $fa4
-	fmadd.s	$fa1, $fa5, $fs2, $fa1
-	fmadd.s	$fa1, $fa7, $ft12, $fa1
-	fmul.s	$fa3, $ft11, $ft0
-	fmadd.s	$fa3, $ft1, $fs2, $fa3
+	fmadd.s	$fa6, $fa7, $ft9, $fa6
+	fmul.s	$ft3, $ft8, $ft0
+	fmadd.s	$ft3, $ft1, $ft7, $ft3
+	fmadd.s	$ft3, $ft2, $ft9, $ft3
+	vld	$vr19, $sp, 128                 # 16-byte Folded Reload
+	fmul.s	$ft4, $ft11, $fa0
+	vld	$vr18, $sp, 144                 # 16-byte Folded Reload
+	fmadd.s	$ft4, $fa1, $ft10, $ft4
+	vld	$vr20, $sp, 112                 # 16-byte Folded Reload
+	fmadd.s	$ft4, $fa3, $ft12, $ft4
+	fmul.s	$ft5, $ft11, $fa4
+	fmadd.s	$ft5, $fa5, $ft10, $ft5
+	fmadd.s	$ft5, $fa7, $ft12, $ft5
+	fmul.s	$ft6, $ft11, $ft0
+	fmadd.s	$ft6, $ft1, $ft10, $ft6
+	fmadd.s	$ft6, $ft2, $ft12, $ft6
+	vld	$vr22, $sp, 80                  # 16-byte Folded Reload
+	fmul.s	$fa0, $ft14, $fa0
+	vld	$vr21, $sp, 96                  # 16-byte Folded Reload
+	fmadd.s	$fa0, $fa1, $ft13, $fa0
+	vld	$vr23, $sp, 64                  # 16-byte Folded Reload
+	fmadd.s	$fa0, $fa3, $ft15, $fa0
+	fmul.s	$fa1, $ft14, $fa4
+	fmadd.s	$fa1, $fa5, $ft13, $fa1
+	fmadd.s	$fa1, $fa7, $ft15, $fa1
+	fmul.s	$fa3, $ft14, $ft0
+	fmadd.s	$fa3, $ft1, $ft13, $fa3
 	fld.s	$fa4, $a2, 52
 	fld.s	$fa5, $a2, 48
 	fld.s	$fa7, $a2, 56
-	fmadd.s	$fa3, $ft2, $ft12, $fa3
-	fmul.s	$ft0, $ft7, $fa4
-	fmadd.s	$ft0, $fs0, $fa5, $ft0
-	fmadd.s	$ft0, $ft8, $fa7, $ft0
-	fadd.s	$ft0, $fs3, $ft0
-	fmul.s	$ft1, $ft9, $fa4
-	fmadd.s	$ft1, $fs1, $fa5, $ft1
-	fmadd.s	$ft1, $ft10, $fa7, $ft1
+	fmadd.s	$fa3, $ft2, $ft15, $fa3
+	fmul.s	$ft0, $ft8, $fa4
+	fmadd.s	$ft0, $ft7, $fa5, $ft0
+	fmadd.s	$ft0, $ft9, $fa7, $ft0
+	vld	$vr9, $sp, 48                   # 16-byte Folded Reload
+	fadd.s	$ft0, $ft1, $ft0
+	fmul.s	$ft1, $ft11, $fa4
+	fmadd.s	$ft1, $ft10, $fa5, $ft1
+	fmadd.s	$ft1, $ft12, $fa7, $ft1
 	vld	$vr10, $sp, 32                  # 16-byte Folded Reload
 	fadd.s	$ft1, $ft2, $ft1
-	fmul.s	$fa4, $ft11, $fa4
-	fmadd.s	$fa4, $fs2, $fa5, $fa4
-	fmadd.s	$fa4, $ft12, $fa7, $fa4
+	fmul.s	$fa4, $ft14, $fa4
+	fmadd.s	$fa4, $ft13, $fa5, $fa4
+	fmadd.s	$fa4, $ft15, $fa7, $fa4
 	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
 	fadd.s	$fa4, $fa5, $fa4
 	movfr2gr.s	$a0, $ft0
@@ -2184,17 +2181,17 @@ _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_
 	move	$a3, $s1
 	move	$a4, $s0
 	jirl	$ra, $a5, 0
-	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 272                  # 16-byte Folded Reload
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	fsel	$fa1, $fa1, $fa0, $fcc0
 	st.d	$s7, $s2, 200
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 256                  # 16-byte Folded Reload
 	vst	$vr0, $s2, 8
-	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 240                  # 16-byte Folded Reload
 	vst	$vr0, $s2, 24
-	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
 	vst	$vr0, $s2, 40
-	vld	$vr0, $sp, 144                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
 	vst	$vr0, $s2, 56
 	addi.d	$s4, $s4, 88
 	addi.d	$s5, $s5, 8
@@ -2204,21 +2201,17 @@ _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_
 	vldi	$vr1, -1168
 .LBB11_4:                               # %._crit_edge
 	fmov.s	$fa0, $fa1
-	fld.d	$fs3, $sp, 224                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 232                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 240                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 248                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 336
+	ld.d	$s7, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 360                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 368
 	ret
 .Lfunc_end11:
 	.size	_ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_RK16btDispatcherInfoP16btManifoldResult, .Lfunc_end11-_ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_RK16btDispatcherInfoP16btManifoldResult

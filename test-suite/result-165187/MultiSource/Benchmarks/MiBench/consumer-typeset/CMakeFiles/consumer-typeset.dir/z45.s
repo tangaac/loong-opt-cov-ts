@@ -98,9 +98,9 @@ ReadLines:                              # @ReadLines
 	beq	$a0, $fp, .LBB0_37
 .LBB0_7:                                # %.lr.ph101
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_33 Depth 2
-                                        #     Child Loop BB0_20 Depth 2
-                                        #     Child Loop BB0_24 Depth 2
+                                        #     Child Loop BB0_21 Depth 2
+                                        #     Child Loop BB0_25 Depth 2
+                                        #     Child Loop BB0_28 Depth 2
 	addi.w	$a0, $s7, 0
 	addi.w	$a1, $s5, 0
 	bge	$a0, $a1, .LBB0_10
@@ -123,7 +123,7 @@ ReadLines:                              # @ReadLines
 # %bb.11:                               #   in Loop: Header=BB0_7 Depth=1
 	ori	$a0, $zero, 10
 	bne	$s8, $a0, .LBB0_6
-	b	.LBB0_27
+	b	.LBB0_31
 	.p2align	4, , 16
 .LBB0_12:                               #   in Loop: Header=BB0_7 Depth=1
 	lu12i.w	$s6, 1
@@ -137,7 +137,7 @@ ReadLines:                              # @ReadLines
 	move	$a0, $s7
 	ori	$a4, $zero, 32
 	bne	$a2, $s3, .LBB0_15
-	b	.LBB0_26
+	b	.LBB0_30
 .LBB0_14:                               #   in Loop: Header=BB0_7 Depth=1
 	ld.d	$a4, $s0, 0
 	ori	$a0, $zero, 45
@@ -150,52 +150,79 @@ ReadLines:                              # @ReadLines
 	ld.d	$a2, $s2, -8
 	move	$a0, $s7
 	ori	$a4, $zero, 32
-	beq	$a2, $s3, .LBB0_26
+	beq	$a2, $s3, .LBB0_30
 .LBB0_15:                               # %iter.check
                                         #   in Loop: Header=BB0_7 Depth=1
 	sub.d	$a0, $s3, $a2
 	move	$a1, $zero
-	ori	$a3, $zero, 16
-	bltu	$a0, $a3, .LBB0_22
+	ori	$a3, $zero, 4
+	bltu	$a0, $a3, .LBB0_19
 # %bb.16:                               # %iter.check
                                         #   in Loop: Header=BB0_7 Depth=1
 	sub.d	$a3, $s7, $a2
-	bltu	$a3, $a4, .LBB0_22
+	bltu	$a3, $a4, .LBB0_19
 # %bb.17:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB0_7 Depth=1
-	bgeu	$a0, $a4, .LBB0_32
+	bgeu	$a0, $a4, .LBB0_20
 # %bb.18:                               #   in Loop: Header=BB0_7 Depth=1
 	move	$a1, $zero
-.LBB0_19:                               # %vec.epilog.ph
+	b	.LBB0_24
+.LBB0_19:                               #   in Loop: Header=BB0_7 Depth=1
+	move	$a3, $a2
+	b	.LBB0_27
+.LBB0_20:                               # %vector.ph
+                                        #   in Loop: Header=BB0_7 Depth=1
+	andi	$a3, $a0, 28
+	move	$a1, $a0
+	bstrins.d	$a1, $zero, 4, 0
+	addi.d	$a4, $s7, 16
+	addi.d	$a5, $a2, 16
+	move	$a6, $a1
+	.p2align	4, , 16
+.LBB0_21:                               # %vector.body
+                                        #   Parent Loop BB0_7 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vld	$vr0, $a5, -16
+	vld	$vr1, $a5, 0
+	vst	$vr0, $a4, -16
+	vst	$vr1, $a4, 0
+	addi.d	$a6, $a6, -32
+	addi.d	$a4, $a4, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB0_21
+# %bb.22:                               # %middle.block
+                                        #   in Loop: Header=BB0_7 Depth=1
+	beq	$a0, $a1, .LBB0_29
+# %bb.23:                               # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB0_7 Depth=1
+	beqz	$a3, .LBB0_36
+.LBB0_24:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB0_7 Depth=1
 	move	$a6, $a1
 	move	$a1, $a0
-	bstrins.d	$a1, $zero, 3, 0
+	bstrins.d	$a1, $zero, 1, 0
 	add.d	$a3, $a2, $a1
 	sub.d	$a4, $a6, $a1
 	add.d	$a5, $s7, $a6
 	add.d	$a2, $a2, $a6
 	.p2align	4, , 16
-.LBB0_20:                               # %vec.epilog.vector.body
+.LBB0_25:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a2, 0
-	vst	$vr0, $a5, 0
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB0_20
-# %bb.21:                               # %vec.epilog.middle.block
+	ld.w	$a6, $a2, 0
+	st.w	$a6, $a5, 0
+	addi.d	$a4, $a4, 4
+	addi.d	$a5, $a5, 4
+	addi.d	$a2, $a2, 4
+	bnez	$a4, .LBB0_25
+# %bb.26:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_7 Depth=1
-	bne	$a0, $a1, .LBB0_23
-	b	.LBB0_25
-.LBB0_22:                               #   in Loop: Header=BB0_7 Depth=1
-	move	$a3, $a2
-.LBB0_23:                               # %.lr.ph.preheader
+	beq	$a0, $a1, .LBB0_29
+.LBB0_27:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_7 Depth=1
 	add.d	$a1, $s7, $a1
 	.p2align	4, , 16
-.LBB0_24:                               # %.lr.ph
+.LBB0_28:                               # %.lr.ph
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.b	$a2, $a3, 0
@@ -203,11 +230,11 @@ ReadLines:                              # @ReadLines
 	st.b	$a2, $a1, 0
 	addi.d	$a1, $a1, 1
 	move	$a3, $a4
-	bne	$a4, $s3, .LBB0_24
-.LBB0_25:                               # %._crit_edge.loopexit
+	bne	$a4, $s3, .LBB0_28
+.LBB0_29:                               # %._crit_edge.loopexit
                                         #   in Loop: Header=BB0_7 Depth=1
 	add.d	$a0, $s7, $a0
-.LBB0_26:                               # %._crit_edge
+.LBB0_30:                               # %._crit_edge
                                         #   in Loop: Header=BB0_7 Depth=1
 	add.d	$s6, $s7, $s6
 	st.b	$zero, $a0, 0
@@ -215,10 +242,10 @@ ReadLines:                              # @ReadLines
 	move	$s3, $a0
 	ori	$a0, $zero, 10
 	bne	$s8, $a0, .LBB0_6
-.LBB0_27:                               #   in Loop: Header=BB0_7 Depth=1
+.LBB0_31:                               #   in Loop: Header=BB0_7 Depth=1
 	st.b	$zero, $s3, 0
-	bne	$s2, $s5, .LBB0_31
-# %bb.28:                               #   in Loop: Header=BB0_7 Depth=1
+	bne	$s2, $s5, .LBB0_35
+# %bb.32:                               #   in Loop: Header=BB0_7 Depth=1
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	slli.w	$s8, $s2, 1
 	slli.d	$a1, $s8, 3
@@ -226,8 +253,8 @@ ReadLines:                              # @ReadLines
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
-	bnez	$a0, .LBB0_30
-# %bb.29:                               #   in Loop: Header=BB0_7 Depth=1
+	bnez	$a0, .LBB0_34
+# %bb.33:                               #   in Loop: Header=BB0_7 Depth=1
 	ld.d	$a4, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
@@ -237,11 +264,11 @@ ReadLines:                              # @ReadLines
 	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB0_30:                               #   in Loop: Header=BB0_7 Depth=1
+.LBB0_34:                               #   in Loop: Header=BB0_7 Depth=1
 	alsl.d	$s2, $s2, $s4, 3
 	alsl.d	$s5, $s8, $s4, 3
 	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
-.LBB0_31:                               #   in Loop: Header=BB0_7 Depth=1
+.LBB0_35:                               #   in Loop: Header=BB0_7 Depth=1
 	addi.d	$s3, $s3, 1
 	addi.d	$a0, $s2, 8
 	st.d	$s3, $s2, 0
@@ -252,35 +279,9 @@ ReadLines:                              # @ReadLines
 	move	$s8, $a0
 	bne	$a0, $fp, .LBB0_7
 	b	.LBB0_37
-.LBB0_32:                               # %vector.ph
-                                        #   in Loop: Header=BB0_7 Depth=1
-	andi	$a3, $a0, 16
-	move	$a1, $a0
-	bstrins.d	$a1, $zero, 4, 0
-	addi.d	$a4, $s7, 16
-	addi.d	$a5, $a2, 16
-	move	$a6, $a1
-	.p2align	4, , 16
-.LBB0_33:                               # %vector.body
-                                        #   Parent Loop BB0_7 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
-	vst	$vr0, $a4, -16
-	vst	$vr1, $a4, 0
-	addi.d	$a6, $a6, -32
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB0_33
-# %bb.34:                               # %middle.block
-                                        #   in Loop: Header=BB0_7 Depth=1
-	beq	$a0, $a1, .LBB0_25
-# %bb.35:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB0_7 Depth=1
-	bnez	$a3, .LBB0_19
-# %bb.36:                               #   in Loop: Header=BB0_7 Depth=1
+.LBB0_36:                               #   in Loop: Header=BB0_7 Depth=1
 	add.d	$a3, $a2, $a1
-	b	.LBB0_23
+	b	.LBB0_27
 .LBB0_37:                               # %._crit_edge102
 	sub.d	$a0, $s2, $s4
 	srli.d	$a0, $a0, 3

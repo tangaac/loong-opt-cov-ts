@@ -1257,7 +1257,7 @@ _ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vec
 .LBB8_16:                               # %_ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vectorIS5_SaIS5_EEEENS0_5__ops15_Iter_less_iterEEvT_SD_T0_.exit
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$s6, $s0, 256
-	beq	$s3, $s6, .LBB8_47
+	beq	$s3, $s6, .LBB8_41
 # %bb.17:                               # %.lr.ph.i10.preheader
 	addi.d	$s2, $s0, 264
 	b	.LBB8_19
@@ -1268,7 +1268,7 @@ _ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vec
 	st.w	$s4, $s5, 0
 	addi.d	$s6, $s6, 16
 	addi.d	$s2, $s2, 16
-	beq	$s6, $s3, .LBB8_47
+	beq	$s6, $s3, .LBB8_41
 .LBB8_19:                               # %.lr.ph.i10
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_22 Depth 2
@@ -1300,136 +1300,92 @@ _ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vec
 	ld.d	$s1, $s5, -24
 	b	.LBB8_21
 .LBB8_25:
-	beq	$fp, $s0, .LBB8_47
+	beq	$fp, $s0, .LBB8_41
 # %bb.26:                               # %.preheader.i21
 	addi.d	$a0, $s0, 16
-	beq	$a0, $fp, .LBB8_47
+	beq	$a0, $fp, .LBB8_41
 # %bb.27:                               # %.lr.ph.i24
 	move	$s3, $zero
-	addi.d	$s4, $s0, 8
-	ori	$s5, $zero, 1
-	move	$s2, $s0
-	b	.LBB8_30
+	addi.w	$s4, $zero, -16
+	move	$s5, $s0
+	b	.LBB8_29
 	.p2align	4, , 16
 .LBB8_28:                               # %_ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vectorIS5_SaIS5_EEEENS0_5__ops14_Val_less_iterEEvT_T0_.exit.i34
-                                        #   in Loop: Header=BB8_30 Depth=1
-	st.d	$s1, $s7, 0
-	st.w	$s8, $s7, 8
+                                        #   in Loop: Header=BB8_29 Depth=1
+	st.d	$s1, $fp, 0
+	st.w	$s6, $fp, 8
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-.LBB8_29:                               #   in Loop: Header=BB8_30 Depth=1
-	addi.d	$a0, $s6, 16
-	addi.d	$s5, $s5, 1
-	addi.d	$s4, $s4, 16
-	move	$s2, $s6
-	beq	$a0, $fp, .LBB8_47
-.LBB8_30:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_35 Depth 2
-                                        #     Child Loop BB8_42 Depth 2
-                                        #     Child Loop BB8_45 Depth 2
-	ld.w	$s8, $s2, 24
+	addi.d	$a0, $s5, 16
+	addi.d	$s3, $s3, 16
+	beq	$a0, $fp, .LBB8_41
+.LBB8_29:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_34 Depth 2
+                                        #     Child Loop BB8_39 Depth 2
+	ld.w	$s6, $s5, 24
 	ld.w	$a1, $s0, 8
-	move	$s6, $a0
-	addi.d	$s3, $s3, 1
-	bne	$s8, $a1, .LBB8_38
-# %bb.31:                               # %_ZNK9__gnu_cxx5__ops15_Iter_less_iterclINS_17__normal_iteratorIPSt4pairIPKciESt6vectorIS7_SaIS7_EEEESC_EEbT_T0_.exit.i46
-                                        #   in Loop: Header=BB8_30 Depth=1
-	ld.d	$s1, $s6, 0
+	move	$s5, $a0
+	bne	$s6, $a1, .LBB8_37
+# %bb.30:                               # %_ZNK9__gnu_cxx5__ops15_Iter_less_iterclINS_17__normal_iteratorIPSt4pairIPKciESt6vectorIS7_SaIS7_EEEESC_EEbT_T0_.exit.i46
+                                        #   in Loop: Header=BB8_29 Depth=1
+	ld.d	$s1, $s5, 0
 	ld.d	$a1, $s0, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	bgtz	$a0, .LBB8_39
-.LBB8_32:                               # %._crit_edge.i29
-                                        #   in Loop: Header=BB8_30 Depth=1
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	move	$s7, $s6
-	b	.LBB8_35
+	bgtz	$a0, .LBB8_38
+.LBB8_31:                               # %._crit_edge.i29
+                                        #   in Loop: Header=BB8_29 Depth=1
+	move	$fp, $s5
+	b	.LBB8_34
 	.p2align	4, , 16
-.LBB8_33:                               # %_ZNK9__gnu_cxx5__ops14_Val_less_iterclISt4pairIPKciENS_17__normal_iteratorIPS6_St6vectorIS6_SaIS6_EEEEEEbRT_T0_.exit.i.i39
-                                        #   in Loop: Header=BB8_35 Depth=2
-	ld.d	$s2, $fp, 0
+.LBB8_32:                               # %_ZNK9__gnu_cxx5__ops14_Val_less_iterclISt4pairIPKciENS_17__normal_iteratorIPS6_St6vectorIS6_SaIS6_EEEEEEbRT_T0_.exit.i.i39
+                                        #   in Loop: Header=BB8_34 Depth=2
+	ld.d	$s2, $s7, 0
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	blez	$a0, .LBB8_28
-.LBB8_34:                               #   in Loop: Header=BB8_35 Depth=2
-	st.d	$s2, $s7, 0
-	st.w	$s3, $s7, 8
-	move	$s7, $fp
-.LBB8_35:                               #   Parent Loop BB8_30 Depth=1
+.LBB8_33:                               #   in Loop: Header=BB8_34 Depth=2
+	st.d	$s2, $fp, 0
+	st.w	$s8, $fp, 8
+	move	$fp, $s7
+.LBB8_34:                               #   Parent Loop BB8_29 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$s3, $s7, -8
-	addi.d	$fp, $s7, -16
-	beq	$s8, $s3, .LBB8_33
-# %bb.36:                               #   in Loop: Header=BB8_35 Depth=2
-	bge	$s3, $s8, .LBB8_28
-# %bb.37:                               # %._crit_edge.i.i37
-                                        #   in Loop: Header=BB8_35 Depth=2
-	ld.d	$s2, $fp, 0
-	b	.LBB8_34
+	ld.w	$s8, $fp, -8
+	addi.d	$s7, $fp, -16
+	beq	$s6, $s8, .LBB8_32
+# %bb.35:                               #   in Loop: Header=BB8_34 Depth=2
+	bge	$s8, $s6, .LBB8_28
+# %bb.36:                               # %._crit_edge.i.i37
+                                        #   in Loop: Header=BB8_34 Depth=2
+	ld.d	$s2, $s7, 0
+	b	.LBB8_33
 	.p2align	4, , 16
-.LBB8_38:                               #   in Loop: Header=BB8_30 Depth=1
-	ld.d	$s1, $s6, 0
-	bge	$a1, $s8, .LBB8_32
-.LBB8_39:                               #   in Loop: Header=BB8_30 Depth=1
-	addi.d	$a1, $s2, 32
-	ori	$a0, $zero, 2
-	bgeu	$s3, $a0, .LBB8_41
-# %bb.40:                               #   in Loop: Header=BB8_30 Depth=1
-	move	$a0, $s6
-	b	.LBB8_44
+.LBB8_37:                               #   in Loop: Header=BB8_29 Depth=1
+	ld.d	$s1, $s5, 0
+	bge	$a1, $s6, .LBB8_31
+.LBB8_38:                               #   in Loop: Header=BB8_29 Depth=1
+	move	$a0, $s3
 	.p2align	4, , 16
-.LBB8_41:                               # %vector.ph
-                                        #   in Loop: Header=BB8_30 Depth=1
-	move	$a3, $s5
-	bstrins.d	$a3, $zero, 0, 0
-	move	$a2, $s3
-	bstrins.d	$a2, $zero, 0, 0
-	slli.d	$a0, $a2, 4
-	sub.d	$a1, $a1, $a0
-	sub.d	$a0, $s6, $a0
-	move	$a4, $s4
-	.p2align	4, , 16
-.LBB8_42:                               # %vector.body
-                                        #   Parent Loop BB8_30 Depth=1
+.LBB8_39:                               # %.lr.ph.i.i41
+                                        #   Parent Loop BB8_29 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a5, $a4, -8
-	ld.d	$a6, $a4, -24
-	ld.w	$a7, $a4, 0
-	ld.w	$t0, $a4, -16
-	st.d	$a5, $a4, 8
-	st.d	$a6, $a4, -8
-	st.w	$a7, $a4, 16
-	st.w	$t0, $a4, 0
-	addi.d	$a3, $a3, -2
-	addi.d	$a4, $a4, -32
-	bnez	$a3, .LBB8_42
-# %bb.43:                               # %middle.block
-                                        #   in Loop: Header=BB8_30 Depth=1
-	beq	$s3, $a2, .LBB8_46
-.LBB8_44:                               # %.lr.ph.i.i41.preheader
-                                        #   in Loop: Header=BB8_30 Depth=1
-	addi.d	$a1, $a1, -8
-	.p2align	4, , 16
-.LBB8_45:                               # %.lr.ph.i.i41
-                                        #   Parent Loop BB8_30 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.d	$a2, $a0, -16
-	ld.w	$a3, $a0, -8
-	addi.d	$a4, $a0, -16
-	st.d	$a2, $a1, -8
-	st.w	$a3, $a1, 0
-	addi.d	$a1, $a1, -16
-	move	$a0, $a4
-	bne	$a4, $s0, .LBB8_45
-.LBB8_46:                               # %_ZSt23__copy_move_backward_a2ILb1EPSt4pairIPKciES4_ET1_T0_S6_S5_.exit.i45
-                                        #   in Loop: Header=BB8_30 Depth=1
+	ldx.d	$a1, $s0, $a0
+	add.d	$a2, $s0, $a0
+	ld.w	$a3, $a2, 8
+	st.d	$a1, $a2, 16
+	addi.d	$a0, $a0, -16
+	st.w	$a3, $a2, 24
+	bne	$a0, $s4, .LBB8_39
+# %bb.40:                               # %_ZSt23__copy_move_backward_a2ILb1EPSt4pairIPKciES4_ET1_T0_S6_S5_.exit.i45
+                                        #   in Loop: Header=BB8_29 Depth=1
 	st.d	$s1, $s0, 0
-	st.w	$s8, $s0, 8
-	b	.LBB8_29
-.LBB8_47:                               # %_ZSt26__unguarded_insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vectorIS5_SaIS5_EEEENS0_5__ops15_Iter_less_iterEEvT_SD_T0_.exit
+	st.w	$s6, $s0, 8
+	addi.d	$a0, $s5, 16
+	addi.d	$s3, $s3, 16
+	bne	$a0, $fp, .LBB8_29
+.LBB8_41:                               # %_ZSt26__unguarded_insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIPKciESt6vectorIS5_SaIS5_EEEENS0_5__ops15_Iter_less_iterEEvT_SD_T0_.exit
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload

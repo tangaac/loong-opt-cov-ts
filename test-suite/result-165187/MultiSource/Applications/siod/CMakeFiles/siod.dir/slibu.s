@@ -7931,7 +7931,7 @@ siod_shuffle_args:                      # @siod_shuffle_args
 	addi.d	$a0, $a0, -1
 	bstrpick.d	$a0, $a0, 31, 0
 	sub.d	$a2, $a0, $s6
-	ori	$a3, $zero, 6
+	ori	$a3, $zero, 4
 	ori	$a1, $zero, 1
 	bltu	$a2, $a3, .LBB111_11
 # %bb.7:                                # %vector.memcheck

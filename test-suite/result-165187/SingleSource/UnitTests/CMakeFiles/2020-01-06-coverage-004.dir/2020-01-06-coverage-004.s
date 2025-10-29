@@ -38,12 +38,12 @@ j:                                      # @j
 	ld.d	$a2, $a2, %pc_lo12(f)
 	pcalau12i	$a3, %pc_hi20(a)
 	ld.w	$a4, $a3, %pc_lo12(a)
-	lu12i.w	$a6, 15
-	ori	$a7, $a6, 4092
+	lu12i.w	$a3, 15
+	ori	$a6, $a3, 4095
 	pcalau12i	$a3, %pc_hi20(x)
 	addi.d	$a3, $a3, %pc_lo12(x)
 	lu12i.w	$a5, 253973
-	bltu	$a7, $a1, .LBB1_9
+	beq	$a1, $a6, .LBB1_9
 # %bb.2:                                # %vector.memcheck
 	addi.d	$a7, $a2, 8
 	bgeu	$a3, $a7, .LBB1_4
@@ -51,13 +51,12 @@ j:                                      # @j
 	addi.d	$a7, $a3, 8
 	bltu	$a2, $a7, .LBB1_9
 .LBB1_4:                                # %vector.ph
-	ori	$a6, $a6, 4095
 	xor	$a6, $a1, $a6
 	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 16, 2
+	bstrpick.d	$a7, $a6, 16, 1
 	ld.wu	$t1, $a2, 0
-	slli.w	$t0, $a7, 2
-	alsl.d	$a1, $a7, $a1, 2
+	slli.w	$t0, $a7, 1
+	alsl.d	$a1, $a7, $a1, 1
 	vinsgr2vr.d	$vr0, $a4, 1
 	sltu	$a7, $zero, $t1
 	sltui	$t1, $t1, 1
@@ -77,7 +76,7 @@ j:                                      # @j
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$t1, $t1, -4
+	addi.w	$t1, $t1, -2
 	bnez	$t1, .LBB1_5
 # %bb.6:                                # %middle.block
 	bne	$a6, $t0, .LBB1_9

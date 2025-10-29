@@ -5,18 +5,18 @@
 	.type	jinit_c_prep_controller,@function
 jinit_c_prep_controller:                # @jinit_c_prep_controller
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	move	$fp, $a0
 	beqz	$a1, .LBB0_2
 # %bb.1:
@@ -56,46 +56,44 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	ld.w	$a1, $fp, 68
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	blez	$a1, .LBB0_24
 # %bb.4:                                # %.lr.ph48.i
-	move	$a4, $s0
+	move	$a5, $s0
 	alsl.w	$a0, $s0, $s0, 2
 	ld.d	$s7, $fp, 80
 	alsl.w	$s4, $s0, $s0, 1
 	slli.d	$a1, $s4, 3
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$s5, $s3, 16
 	blez	$s0, .LBB0_22
 # %bb.5:                                # %.lr.ph.us.preheader.i
 	move	$s8, $zero
-	slli.w	$a1, $a4, 2
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	slli.d	$a1, $a4, 5
+	slli.w	$a1, $a5, 2
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	slli.d	$a1, $a5, 5
 	bstrpick.d	$a1, $a1, 34, 5
 	slli.d	$a1, $a1, 5
-	slli.d	$a2, $a4, 4
+	slli.d	$a2, $a5, 4
 	bstrpick.d	$a2, $a2, 34, 4
 	slli.d	$a2, $a2, 4
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 3
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $a0
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	add.d	$s1, $a1, $s2
-	bstrpick.d	$a0, $a4, 30, 2
-	slli.d	$a0, $a0, 2
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	slli.d	$a0, $a4, 3
-	bstrpick.d	$a0, $a0, 33, 5
-	slli.d	$s0, $a0, 5
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	addi.d	$a0, $a2, 16
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	add.d	$s6, $a1, $s2
+	bstrpick.d	$a0, $a5, 30, 1
+	slli.d	$a0, $a0, 1
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	slli.d	$a0, $a5, 3
+	bstrpick.d	$a0, $a0, 33, 4
+	slli.d	$s0, $a0, 4
+	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB0_7
 	.p2align	4, , 16
 .LBB0_6:                                # %._crit_edge.us.i
@@ -103,13 +101,13 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	slli.d	$a0, $s8, 3
 	stx.d	$s3, $s5, $a0
 	ld.w	$a0, $fp, 68
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.d	$s2, $s2, $a1
 	addi.d	$s8, $s8, 1
 	addi.d	$s7, $s7, 96
-	add.d	$s1, $s1, $a1
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	add.d	$s6, $s6, $a1
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 	bge	$s8, $a0, .LBB0_24
 .LBB0_7:                                # %.lr.ph.us.i
                                         # =>This Loop Header: Depth=1
@@ -119,7 +117,6 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	ld.wu	$a1, $s7, 28
 	ld.w	$a2, $fp, 304
 	ld.w	$a3, $s7, 8
-	move	$s5, $a4
 	ld.d	$a4, $a0, 16
 	mul.d	$a0, $a1, $a2
 	slli.d	$a0, $a0, 3
@@ -128,101 +125,92 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	move	$a3, $s4
+	move	$s5, $a5
 	jirl	$ra, $a4, 0
 	move	$s4, $a0
 	alsl.d	$a0, $s5, $s2, 3
 	move	$s3, $a0
 	move	$a1, $s4
-	move	$a2, $s6
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	move	$a4, $s5
-	ori	$a0, $zero, 8
-	bgeu	$s5, $a0, .LBB0_11
+	move	$a5, $s5
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a0, $s4, $a0
+	ori	$a1, $zero, 6
+	bgeu	$s5, $a1, .LBB0_11
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1
-	move	$a0, $zero
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	move	$a1, $zero
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 .LBB0_9:                                # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_7 Depth=1
-	sub.d	$a1, $a4, $a0
-	slli.d	$a0, $a0, 3
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
-	add.d	$a2, $s4, $a2
+	sub.d	$a2, $a5, $a1
+	slli.d	$a1, $a1, 3
 	.p2align	4, , 16
 .LBB0_10:                               # %scalar.ph
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$a3, $a2, $a0
-	stx.d	$a3, $s2, $a0
-	ldx.d	$a3, $s4, $a0
-	stx.d	$a3, $s1, $a0
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 8
-	bnez	$a1, .LBB0_10
+	ldx.d	$a3, $a0, $a1
+	stx.d	$a3, $s2, $a1
+	ldx.d	$a3, $s4, $a1
+	stx.d	$a3, $s6, $a1
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 8
+	bnez	$a2, .LBB0_10
 	b	.LBB0_6
 	.p2align	4, , 16
 .LBB0_11:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
-	move	$a0, $zero
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	ori	$a6, $zero, 32
-	beqz	$a1, .LBB0_9
+	move	$a1, $zero
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ori	$a7, $zero, 16
+	beqz	$a2, .LBB0_9
 # %bb.12:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	mul.d	$a1, $a1, $s8
-	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a3, $a1, $a5
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
-	add.d	$a2, $a2, $s4
-	sub.d	$a3, $a3, $a2
-	bltu	$a3, $a6, .LBB0_9
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	mul.d	$a2, $a2, $s8
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
+	add.d	$a4, $a2, $a6
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a3, $a3, $s4
+	sub.d	$a4, $a4, $a3
+	bltu	$a4, $a7, .LBB0_9
 # %bb.13:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	mul.d	$a3, $a3, $s8
-	sub.d	$a3, $a3, $a5
-	add.d	$a3, $a3, $s4
-	bltu	$a3, $a6, .LBB0_9
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	mul.d	$a4, $a4, $s8
+	sub.d	$a4, $a4, $a6
+	add.d	$a4, $a4, $s4
+	bltu	$a4, $a7, .LBB0_9
 # %bb.14:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a1, $a3, $a1
-	sub.d	$a2, $a1, $a2
-	bltu	$a2, $a6, .LBB0_9
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a2, $a4, $a2
+	sub.d	$a3, $a2, $a3
+	bltu	$a3, $a7, .LBB0_9
 # %bb.15:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_7 Depth=1
-	sub.d	$a1, $a1, $s4
-	bltu	$a1, $a6, .LBB0_9
+	sub.d	$a2, $a2, $s4
+	bltu	$a2, $a7, .LBB0_9
 # %bb.16:                               # %vector.body.preheader
                                         #   in Loop: Header=BB0_7 Depth=1
-	move	$a0, $zero
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a1, $s4, $a1
+	move	$a1, $zero
 	.p2align	4, , 16
 .LBB0_17:                               # %vector.body
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a2, $a1, $a0
-	vld	$vr0, $a2, -16
-	vldx	$vr1, $a1, $a0
-	add.d	$a2, $s2, $a0
-	vstx	$vr0, $s2, $a0
-	vst	$vr1, $a2, 16
-	vldx	$vr0, $s4, $a0
-	add.d	$a2, $s4, $a0
-	vld	$vr1, $a2, 16
-	add.d	$a2, $s1, $a0
-	vstx	$vr0, $s1, $a0
-	addi.d	$a0, $a0, 32
-	vst	$vr1, $a2, 16
-	bne	$s0, $a0, .LBB0_17
+	vldx	$vr0, $a0, $a1
+	vstx	$vr0, $s2, $a1
+	vldx	$vr0, $s4, $a1
+	vstx	$vr0, $s6, $a1
+	addi.d	$a1, $a1, 16
+	bne	$s0, $a1, .LBB0_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB0_7 Depth=1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	move	$a0, $a1
-	beq	$a1, $a4, .LBB0_6
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	move	$a1, $a2
+	beq	$a2, $a5, .LBB0_6
 	b	.LBB0_9
 .LBB0_19:
 	pcalau12i	$a0, %pc_hi20(pre_process_data)
@@ -259,11 +247,11 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	b	.LBB0_24
 .LBB0_22:                               # %.lr.ph48.split.i.preheader
 	move	$s0, $zero
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	alsl.d	$s2, $a4, $a1, 3
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	alsl.d	$s2, $a5, $a1, 3
 	slli.d	$s1, $a0, 3
 	addi.d	$s3, $s7, 28
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_23:                               # %.lr.ph48.split.i
                                         # =>This Inner Loop Header: Depth=1
@@ -293,18 +281,18 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	addi.d	$s3, $s3, 96
 	blt	$s0, $a0, .LBB0_23
 .LBB0_24:                               # %create_context_buffer.exit
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end0:
 	.size	jinit_c_prep_controller, .Lfunc_end0-jinit_c_prep_controller
@@ -328,13 +316,12 @@ start_pass_prep:                        # @start_pass_prep
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB1_2:
-	ld.w	$a0, $fp, 308
-	ld.w	$a1, $fp, 44
-	slli.d	$a0, $a0, 1
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a1, 0
-	vinsgr2vr.w	$vr0, $a0, 3
-	vst	$vr0, $s0, 96
+	ld.w	$a0, $fp, 44
+	st.d	$zero, $s0, 100
+	ld.w	$a1, $fp, 308
+	st.w	$a0, $s0, 96
+	slli.d	$a0, $a1, 1
+	st.w	$a0, $s0, 108
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

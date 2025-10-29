@@ -431,7 +431,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 # %bb.1:
 	ld.w	$a2, $fp, 172
 	ld.w	$a0, $fp, 176
-	bne	$a2, $a0, .LBB6_29
+	bne	$a2, $a0, .LBB6_26
 # %bb.2:
 	sltui	$a0, $a2, 1
 	slli.w	$a3, $a2, 1
@@ -439,9 +439,9 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	ori	$a4, $zero, 1
 	maskeqz	$a0, $a4, $a0
 	or	$s1, $a0, $a3
-	bge	$a2, $s1, .LBB6_29
+	bge	$a2, $s1, .LBB6_26
 # %bb.3:
-	beqz	$s1, .LBB6_23
+	beqz	$s1, .LBB6_20
 # %bb.4:
 	slli.d	$a0, $s1, 2
 	move	$s0, $a1
@@ -452,7 +452,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	ld.w	$a2, $fp, 172
 	move	$s0, $a0
 	ld.d	$a0, $fp, 184
-	blez	$a2, .LBB6_24
+	blez	$a2, .LBB6_21
 .LBB6_5:                                # %.lr.ph.i.i.i
 	ori	$a4, $zero, 8
 	move	$a3, $zero
@@ -479,7 +479,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB6_8
 # %bb.9:                                # %middle.block46
-	beq	$a3, $a2, .LBB6_25
+	beq	$a3, $a2, .LBB6_22
 .LBB6_10:                               # %scalar.ph.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a4, $a3, $a0, 2
@@ -493,7 +493,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	addi.d	$a4, $a4, 4
 	addi.d	$a3, $a3, 4
 	bnez	$a2, .LBB6_11
-	b	.LBB6_25
+	b	.LBB6_22
 .LBB6_12:
 	ld.w	$a2, $fp, 204
 	ld.w	$a0, $fp, 208
@@ -508,7 +508,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	bge	$a2, $s1, .LBB6_42
 # %bb.14:
 	move	$s2, $a1
-	beqz	$s1, .LBB6_30
+	beqz	$s1, .LBB6_27
 # %bb.15:
 	slli.d	$a0, $s1, 1
 	ori	$a1, $zero, 16
@@ -517,9 +517,9 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	ld.w	$a2, $fp, 204
 	move	$s0, $a0
 	ld.d	$a0, $fp, 216
-	blez	$a2, .LBB6_31
+	blez	$a2, .LBB6_28
 .LBB6_16:                               # %iter.check
-	ori	$a4, $zero, 8
+	ori	$a4, $zero, 4
 	move	$a3, $zero
 	move	$a1, $s2
 	bltu	$a2, $a4, .LBB6_37
@@ -529,50 +529,32 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	bltu	$a4, $a5, .LBB6_37
 # %bb.18:                               # %vector.main.loop.iter.check
 	ori	$a3, $zero, 16
-	bgeu	$a2, $a3, .LBB6_33
+	bgeu	$a2, $a3, .LBB6_30
 # %bb.19:
 	move	$a3, $zero
-.LBB6_20:                               # %vec.epilog.ph
-	move	$a6, $a3
-	bstrpick.d	$a3, $a2, 30, 3
-	slli.d	$a3, $a3, 3
-	sub.d	$a4, $a6, $a3
-	alsl.d	$a5, $a6, $a0, 1
-	alsl.d	$a6, $a6, $s0, 1
-	.p2align	4, , 16
-.LBB6_21:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a6, 0
-	addi.d	$a4, $a4, 8
-	addi.d	$a5, $a5, 16
-	addi.d	$a6, $a6, 16
-	bnez	$a4, .LBB6_21
-# %bb.22:                               # %vec.epilog.middle.block
-	bne	$a3, $a2, .LBB6_37
-	b	.LBB6_39
-.LBB6_23:
+	b	.LBB6_34
+.LBB6_20:
 	move	$s0, $zero
 	ld.d	$a0, $fp, 184
 	bgtz	$a2, .LBB6_5
-.LBB6_24:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
-	beqz	$a0, .LBB6_28
-.LBB6_25:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.thread.i.i
+.LBB6_21:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
+	beqz	$a0, .LBB6_25
+.LBB6_22:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.thread.i.i
 	ld.bu	$a2, $fp, 192
-	beqz	$a2, .LBB6_27
-# %bb.26:
+	beqz	$a2, .LBB6_24
+# %bb.23:
 	move	$s2, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 	move	$a1, $s2
-.LBB6_27:
+.LBB6_24:
 	ld.w	$a2, $fp, 172
-.LBB6_28:                               # %_ZN20btAlignedObjectArrayIjE10deallocateEv.exit.i.i
+.LBB6_25:                               # %_ZN20btAlignedObjectArrayIjE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 192
 	st.d	$s0, $fp, 184
 	st.w	$s1, $fp, 176
-.LBB6_29:                               # %_ZN20btAlignedObjectArrayIjE9push_backERKj.exit
+.LBB6_26:                               # %_ZN20btAlignedObjectArrayIjE9push_backERKj.exit
 	ld.d	$a0, $fp, 184
 	slli.d	$a2, $a2, 2
 	stx.w	$a1, $a0, $a2
@@ -580,27 +562,27 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $fp, 172
 	b	.LBB6_43
-.LBB6_30:
+.LBB6_27:
 	move	$s0, $zero
 	ld.d	$a0, $fp, 216
 	bgtz	$a2, .LBB6_16
-.LBB6_31:                               # %_ZNK20btAlignedObjectArrayItE4copyEiiPt.exit.i.i
+.LBB6_28:                               # %_ZNK20btAlignedObjectArrayItE4copyEiiPt.exit.i.i
 	move	$a1, $s2
 	beqz	$a0, .LBB6_41
-# %bb.32:                               # %_ZNK20btAlignedObjectArrayItE4copyEiiPt.exit.i.i
+# %bb.29:                               # %_ZNK20btAlignedObjectArrayItE4copyEiiPt.exit.i.i
 	ld.b	$a3, $fp, 224
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB6_40
 	b	.LBB6_41
-.LBB6_33:                               # %vector.ph
-	andi	$a4, $a2, 8
+.LBB6_30:                               # %vector.ph
+	andi	$a4, $a2, 12
 	bstrpick.d	$a3, $a2, 30, 4
 	slli.d	$a3, $a3, 4
 	addi.d	$a5, $a0, 16
 	addi.d	$a6, $s0, 16
 	move	$a7, $a3
 	.p2align	4, , 16
-.LBB6_34:                               # %vector.body
+.LBB6_31:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, -16
 	vld	$vr1, $a5, 0
@@ -609,11 +591,29 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	addi.d	$a7, $a7, -16
 	addi.d	$a5, $a5, 32
 	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB6_34
-# %bb.35:                               # %middle.block
+	bnez	$a7, .LBB6_31
+# %bb.32:                               # %middle.block
 	beq	$a3, $a2, .LBB6_39
-# %bb.36:                               # %vec.epilog.iter.check
-	bnez	$a4, .LBB6_20
+# %bb.33:                               # %vec.epilog.iter.check
+	beqz	$a4, .LBB6_37
+.LBB6_34:                               # %vec.epilog.ph
+	move	$a6, $a3
+	bstrpick.d	$a3, $a2, 30, 2
+	slli.d	$a3, $a3, 2
+	sub.d	$a4, $a6, $a3
+	alsl.d	$a5, $a6, $a0, 1
+	alsl.d	$a6, $a6, $s0, 1
+	.p2align	4, , 16
+.LBB6_35:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a7, $a5, 0
+	st.d	$a7, $a6, 0
+	addi.d	$a4, $a4, 4
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, 8
+	bnez	$a4, .LBB6_35
+# %bb.36:                               # %vec.epilog.middle.block
+	beq	$a3, $a2, .LBB6_39
 .LBB6_37:                               # %vec.epilog.scalar.ph.preheader
 	sub.d	$a4, $a2, $a3
 	alsl.d	$a5, $a3, $a0, 1

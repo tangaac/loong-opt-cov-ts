@@ -1675,15 +1675,15 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	ld.bu	$a3, $a0, 783
 	beqz	$a3, .LBB7_25
 # %bb.1:
-	addi.d	$sp, $sp, -112
-	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 48                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	fst.d	$fs0, $sp, 168                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 160                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 152                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 144                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 136                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 120                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 112                  # 8-byte Folded Spill
 	ld.d	$a4, $a0, 24
 	fld.s	$ft3, $a4, 8
 	fld.s	$ft10, $a4, 12
@@ -2000,86 +2000,86 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fld.s	$ft0, $a3, 44
 	fld.s	$fa4, $a3, 48
 .LBB7_9:                                # %.loopexit
-	fld.s	$ft13, $a0, 624
-	fld.s	$ft14, $a0, 608
+	fld.s	$ft12, $a0, 624
+	fld.s	$ft13, $a0, 608
 	fld.s	$ft11, $a0, 640
-	fmul.s	$ft10, $ft13, $ft10
-	fmadd.s	$ft12, $ft3, $ft14, $ft10
-	fmul.s	$ft3, $ft13, $ft9
-	fmadd.s	$ft9, $ft2, $ft14, $ft3
-	fmul.s	$ft2, $ft13, $ft8
+	fmul.s	$ft10, $ft12, $ft10
+	fmadd.s	$ft10, $ft3, $ft13, $ft10
+	fmul.s	$ft3, $ft12, $ft9
+	fmadd.s	$ft9, $ft2, $ft13, $ft3
+	fmul.s	$ft2, $ft12, $ft8
 	fld.s	$ft3, $a0, 688
-	fld.s	$ft13, $a0, 672
-	fmadd.s	$ft8, $ft4, $ft14, $ft2
-	fld.s	$ft10, $a0, 704
+	fld.s	$ft12, $a0, 672
+	fmadd.s	$ft8, $ft4, $ft13, $ft2
+	fld.s	$ft4, $a0, 704
 	fmul.s	$ft2, $ft3, $ft7
-	fmadd.s	$ft7, $ft5, $ft13, $ft2
+	fmadd.s	$ft5, $ft5, $ft12, $ft2
 	fmul.s	$ft2, $ft3, $ft6
+	fmadd.s	$ft1, $ft1, $ft12, $ft2
 	ld.d	$a5, $a1, 72
-	fmadd.s	$ft1, $ft1, $ft13, $ft2
-	fmul.s	$ft0, $ft3, $ft0
+	fmul.s	$ft3, $ft3, $ft0
+	vrepli.b	$vr8, 0
 	movgr2fr.w	$ft2, $zero
-	fmadd.s	$fa7, $fa7, $ft13, $ft0
+	fmadd.s	$ft6, $fa7, $ft12, $ft3
 	fmov.s	$ft3, $ft2
-	fmov.s	$ft4, $ft2
-	fmov.s	$ft5, $ft2
+	vori.b	$vr7, $vr8, 0
 	beqz	$a5, .LBB7_11
 # %bb.10:
-	fld.s	$ft0, $a5, 344
-	fld.s	$ft3, $a1, 16
-	fld.s	$ft4, $a5, 348
-	fld.s	$ft6, $a1, 20
-	fld.s	$ft13, $a5, 352
-	fld.s	$ft14, $a1, 24
-	fadd.s	$ft5, $ft0, $ft3
-	fadd.s	$ft4, $ft4, $ft6
-	fadd.s	$ft3, $ft13, $ft14
+	ld.d	$a6, $a5, 344
+	ld.d	$a7, $a1, 16
+	fld.s	$ft3, $a5, 352
+	fld.s	$ft7, $a1, 24
+	vinsgr2vr.d	$vr7, $a6, 0
+	vinsgr2vr.d	$vr20, $a7, 0
+	vfadd.s	$vr7, $vr7, $vr20
+	fadd.s	$ft3, $ft3, $ft7
 .LBB7_11:                               # %_ZNK12btSolverBody18getAngularVelocityER9btVector3.exit
-	fmadd.s	$fa1, $fa1, $ft11, $ft12
+	fmadd.s	$fa1, $fa1, $ft11, $ft10
 	fmadd.s	$fa2, $fa2, $ft11, $ft9
 	ld.d	$a5, $a2, 72
 	fmadd.s	$fa3, $fa3, $ft11, $ft8
-	fmadd.s	$ft9, $fa6, $ft10, $ft7
-	fmadd.s	$ft8, $fa5, $ft10, $ft1
-	fmadd.s	$ft10, $fa4, $ft10, $fa7
-	fmov.s	$fa5, $ft2
-	fmov.s	$ft6, $ft2
+	fmadd.s	$ft9, $fa6, $ft4, $ft5
+	fmadd.s	$ft8, $fa5, $ft4, $ft1
+	fmadd.s	$ft10, $fa4, $ft4, $ft6
 	beqz	$a5, .LBB7_13
 # %bb.12:
-	fld.s	$fa4, $a5, 344
-	fld.s	$fa5, $a2, 16
-	fld.s	$fa6, $a5, 348
-	fld.s	$fa7, $a2, 20
-	fld.s	$ft0, $a5, 352
-	fld.s	$ft1, $a2, 24
-	fadd.s	$ft6, $fa4, $fa5
-	fadd.s	$fa5, $fa6, $fa7
-	fadd.s	$ft2, $ft0, $ft1
+	ld.d	$a6, $a5, 344
+	ld.d	$a7, $a2, 16
+	fld.s	$fa4, $a5, 352
+	fld.s	$fa5, $a2, 24
+	vinsgr2vr.d	$vr6, $a6, 0
+	vinsgr2vr.d	$vr8, $a7, 0
+	vfadd.s	$vr8, $vr6, $vr8
+	fadd.s	$ft2, $fa4, $fa5
 .LBB7_13:                               # %_ZNK12btSolverBody18getAngularVelocityER9btVector3.exit331
+	vreplvei.w	$vr12, $vr7, 1
 	fmul.s	$fa4, $fa2, $ft4
+	vreplvei.w	$vr13, $vr7, 0
 	fmadd.s	$fa4, $fa1, $ft5, $fa4
 	fmadd.s	$fa6, $fa3, $ft3, $fa4
 	fmul.s	$fs4, $fa1, $fa6
-	fmul.s	$ft7, $fa2, $fa6
-	fmul.s	$fs5, $fa3, $fa6
-	fmul.s	$fa7, $ft8, $fa5
-	fmadd.s	$fa7, $ft9, $ft6, $fa7
+	fmul.s	$fs5, $fa2, $fa6
+	fmul.s	$fs6, $fa3, $fa6
+	vreplvei.w	$vr6, $vr8, 1
+	fmul.s	$fa7, $ft8, $fa6
+	vreplvei.w	$vr8, $vr8, 0
+	fmadd.s	$fa7, $ft9, $ft0, $fa7
 	fmadd.s	$ft1, $ft10, $ft2, $fa7
-	fmul.s	$fs6, $ft9, $ft1
-	fmul.s	$fs7, $ft8, $ft1
-	fmul.s	$fa4, $ft10, $ft1
-	fst.s	$ft5, $sp, 32                   # 4-byte Folded Spill
+	fmul.s	$fs7, $ft9, $ft1
+	fmul.s	$fa4, $ft8, $ft1
+	fmul.s	$fa5, $ft10, $ft1
+	vst	$vr13, $sp, 64                  # 16-byte Folded Spill
 	fsub.s	$ft11, $ft5, $fs4
-	fst.s	$ft4, $sp, 36                   # 4-byte Folded Spill
-	fsub.s	$ft12, $ft4, $ft7
-	fst.s	$ft3, $sp, 40                   # 4-byte Folded Spill
-	fsub.s	$ft15, $ft3, $fs5
-	fst.s	$ft6, $sp, 24                   # 4-byte Folded Spill
-	fsub.s	$ft13, $ft6, $fs6
-	fst.s	$fa5, $sp, 28                   # 4-byte Folded Spill
-	fsub.s	$ft14, $fa5, $fs7
-	fst.s	$fa4, $sp, 44                   # 4-byte Folded Spill
-	fsub.s	$fs0, $ft2, $fa4
+	vst	$vr12, $sp, 80                  # 16-byte Folded Spill
+	fsub.s	$ft12, $ft4, $fs5
+	fsub.s	$ft15, $ft3, $fs6
+	vst	$vr8, $sp, 32                   # 16-byte Folded Spill
+	fsub.s	$ft13, $ft0, $fs7
+	fst.s	$fa4, $sp, 108                  # 4-byte Folded Spill
+	vst	$vr6, $sp, 48                   # 16-byte Folded Spill
+	fsub.s	$ft14, $fa6, $fa4
+	fst.s	$fa5, $sp, 104                  # 4-byte Folded Spill
+	fsub.s	$fs0, $ft2, $fa5
 	fsub.s	$ft13, $ft11, $ft13
 	fsub.s	$ft14, $ft12, $ft14
 	fsub.s	$ft12, $ft15, $fs0
@@ -2099,14 +2099,15 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmul.s	$fs2, $ft14, $fs0
 	fmul.s	$fs0, $ft12, $fs0
 	fld.s	$fs3, $a4, 280
-	fst.s	$ft7, $sp, 12                   # 4-byte Folded Spill
-	fmov.s	$ft7, $fs4
+	fst.s	$ft3, $sp, 20                   # 4-byte Folded Spill
+	fmov.s	$ft3, $fs4
 	fmul.s	$fs4, $fs2, $ft15
-	fst.s	$fs5, $sp, 20                   # 4-byte Folded Spill
+	fst.s	$fs5, $sp, 28                   # 4-byte Folded Spill
 	fld.s	$fs5, $a4, 312
-	fst.s	$fs6, $sp, 16                   # 4-byte Folded Spill
+	fst.s	$fs6, $sp, 24                   # 4-byte Folded Spill
 	fld.s	$fs6, $a4, 300
-	fmov.s	$ft11, $fs7
+	fmov.s	$ft11, $ft2
+	fmov.s	$ft2, $fs7
 	fld.s	$fs7, $a4, 284
 	fmadd.s	$fs4, $fs3, $fs1, $fs4
 	fmadd.s	$fs4, $fs5, $fs0, $fs4
@@ -2114,7 +2115,7 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmadd.s	$fa4, $fs7, $fs1, $fa4
 	fld.s	$fa5, $a4, 316
 	fld.s	$fa6, $a4, 304
-	fst.s	$fa7, $sp, 8                    # 4-byte Folded Spill
+	fst.s	$fa7, $sp, 16                   # 4-byte Folded Spill
 	fld.s	$fa7, $a4, 288
 	fld.s	$ft0, $a4, 320
 	fmadd.s	$fa4, $fa5, $fs0, $fa4
@@ -2122,43 +2123,44 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmadd.s	$ft1, $fa7, $fs1, $ft1
 	fmadd.s	$ft1, $ft0, $fs0, $ft1
 	fmul.s	$fa4, $fs2, $fa4
-	fld.s	$ft3, $a3, 296
+	fld.s	$ft4, $a3, 296
 	fmadd.s	$fa4, $fs1, $fs4, $fa4
 	fmadd.s	$fa4, $fs0, $ft1, $fa4
 	fld.s	$ft1, $a3, 280
-	fmul.s	$ft3, $fs2, $ft3
+	fmul.s	$ft4, $fs2, $ft4
 	fld.s	$fs4, $a3, 312
-	fld.s	$ft4, $a3, 300
-	fld.s	$ft5, $a3, 284
-	fmadd.s	$ft1, $ft1, $fs1, $ft3
+	fld.s	$ft5, $a3, 300
+	fld.s	$ft6, $a3, 284
+	fmadd.s	$ft1, $ft1, $fs1, $ft4
 	fmadd.s	$ft1, $fs4, $fs0, $ft1
-	fmul.s	$ft3, $fs2, $ft4
-	fmadd.s	$ft3, $ft5, $fs1, $ft3
-	fld.s	$ft4, $a3, 316
-	fld.s	$ft5, $a3, 304
-	fld.s	$fs4, $a3, 288
-	fld.s	$ft6, $a3, 320
-	fmadd.s	$ft3, $ft4, $fs0, $ft3
 	fmul.s	$ft4, $fs2, $ft5
-	fmadd.s	$ft4, $fs4, $fs1, $ft4
-	fmov.s	$fs4, $ft7
-	fld.s	$ft7, $sp, 12                   # 4-byte Folded Reload
-	fmadd.s	$ft4, $ft6, $fs0, $ft4
-	fmul.s	$ft3, $fs2, $ft3
-	fmadd.s	$ft1, $fs1, $ft1, $ft3
-	fmadd.s	$ft1, $fs0, $ft4, $ft1
+	fmadd.s	$ft4, $ft6, $fs1, $ft4
+	fld.s	$ft5, $a3, 316
+	fld.s	$ft6, $a3, 304
+	fld.s	$fs4, $a3, 288
+	fld.s	$ft7, $a3, 320
+	fmadd.s	$ft4, $ft5, $fs0, $ft4
+	fmul.s	$ft5, $fs2, $ft6
+	fmadd.s	$ft5, $fs4, $fs1, $ft5
+	fmov.s	$fs4, $ft3
+	fld.s	$ft3, $sp, 20                   # 4-byte Folded Reload
+	fmadd.s	$ft5, $ft7, $fs0, $ft5
+	fmul.s	$ft4, $fs2, $ft4
+	fmadd.s	$ft1, $fs1, $ft1, $ft4
+	fmadd.s	$ft1, $fs0, $ft5, $ft1
 	fadd.s	$fa4, $fa4, $ft1
 	fmul.s	$ft1, $ft14, $fs7
-	fmov.s	$fs7, $ft11
+	fmov.s	$fs7, $ft2
+	fmov.s	$ft2, $ft11
 	fmadd.s	$ft1, $fs3, $ft13, $ft1
 	fmadd.s	$fa7, $fa7, $ft12, $ft1
 	fmul.s	$ft1, $ft14, $fs6
-	fld.s	$fs6, $sp, 16                   # 4-byte Folded Reload
+	fld.s	$fs6, $sp, 24                   # 4-byte Folded Reload
 	fmadd.s	$ft1, $ft15, $ft13, $ft1
 	fmadd.s	$fa6, $fa6, $ft12, $ft1
 	fmul.s	$fa5, $ft14, $fa5
 	fmadd.s	$fa5, $fs5, $ft13, $fa5
-	fld.s	$fs5, $sp, 20                   # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 28                   # 4-byte Folded Reload
 	fmadd.s	$fa5, $ft0, $ft12, $fa5
 	frecip.s	$ft15, $fa4
 	movgr2fr.w	$fs0, $zero
@@ -2167,18 +2169,18 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmul.s	$ft0, $ft15, $ft0
 	fld.s	$ft1, $a1, 4
 	fadd.s	$fa4, $ft0, $fa4
-	fld.s	$ft3, $a1, 8
+	fld.s	$ft4, $a1, 8
 	fst.s	$fa4, $a1, 0
 	fadd.s	$fa4, $ft0, $ft1
 	fst.s	$fa4, $a1, 4
-	fadd.s	$fa4, $ft0, $ft3
+	fadd.s	$fa4, $ft0, $ft4
 	fld.s	$ft0, $a1, 32
 	fld.s	$ft1, $a1, 36
-	fld.s	$ft3, $a1, 40
+	fld.s	$ft4, $a1, 40
 	fst.s	$fa4, $a1, 8
 	fmul.s	$fa4, $ft0, $ft15
 	fmul.s	$ft0, $ft1, $ft15
-	fmul.s	$ft1, $ft3, $ft15
+	fmul.s	$ft1, $ft4, $ft15
 	fmul.s	$fa4, $fa7, $fa4
 	fld.s	$fa7, $a1, 16
 	fmul.s	$fa6, $fa6, $ft0
@@ -2213,18 +2215,18 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmul.s	$fa7, $ft15, $fs0
 	fld.s	$ft1, $a2, 4
 	fadd.s	$ft0, $fa7, $ft0
-	fld.s	$ft3, $a2, 8
+	fld.s	$ft4, $a2, 8
 	fst.s	$ft0, $a2, 0
 	fadd.s	$ft0, $fa7, $ft1
 	fst.s	$ft0, $a2, 4
-	fadd.s	$fa7, $fa7, $ft3
+	fadd.s	$fa7, $fa7, $ft4
 	fld.s	$ft0, $a2, 32
 	fld.s	$ft1, $a2, 36
-	fld.s	$ft3, $a2, 40
+	fld.s	$ft4, $a2, 40
 	fst.s	$fa7, $a2, 8
 	fmul.s	$fa7, $ft15, $ft0
 	fmul.s	$ft0, $ft15, $ft1
-	fmul.s	$ft1, $ft15, $ft3
+	fmul.s	$ft1, $ft15, $ft4
 	fmul.s	$fa4, $fa4, $fa7
 	fld.s	$fa7, $a2, 16
 	fmul.s	$fa5, $fa5, $ft0
@@ -2236,7 +2238,7 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fadd.s	$fa4, $fa5, $ft0
 	fst.s	$fa4, $a2, 20
 	fadd.s	$fa4, $fa6, $fa7
-	fld.s	$fa7, $sp, 8                    # 4-byte Folded Reload
+	fld.s	$fa7, $sp, 16                   # 4-byte Folded Reload
 	fst.s	$fa4, $a2, 24
 .LBB7_15:
 	fneg.s	$fa4, $ft8
@@ -2274,31 +2276,31 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fld.s	$fa7, $a4, 280
 	fmul.s	$ft0, $fa6, $ft11
 	fld.s	$ft1, $a4, 312
-	fld.s	$ft3, $a4, 300
-	fld.s	$ft4, $a4, 284
+	fld.s	$ft4, $a4, 300
+	fld.s	$ft5, $a4, 284
 	fmadd.s	$ft0, $fa7, $fa5, $ft0
 	fmadd.s	$ft0, $ft1, $fa4, $ft0
-	fmul.s	$ft5, $fa6, $ft3
-	fmadd.s	$ft5, $ft4, $fa5, $ft5
-	fld.s	$ft6, $a4, 316
+	fmul.s	$ft6, $fa6, $ft4
+	fmadd.s	$ft6, $ft5, $fa5, $ft6
+	fld.s	$ft7, $a4, 316
 	fld.s	$ft12, $a4, 304
 	fld.s	$ft13, $a4, 288
 	fld.s	$ft14, $a4, 320
-	fmadd.s	$ft5, $ft6, $fa4, $ft5
+	fmadd.s	$ft6, $ft7, $fa4, $ft6
 	fmul.s	$ft15, $fa6, $ft12
 	fmadd.s	$ft15, $ft13, $fa5, $ft15
 	fmadd.s	$ft15, $ft14, $fa4, $ft15
-	fmul.s	$ft5, $fa6, $ft5
+	fmul.s	$ft6, $fa6, $ft6
 	fld.s	$fs0, $a3, 296
-	fmadd.s	$ft0, $fa5, $ft0, $ft5
+	fmadd.s	$ft0, $fa5, $ft0, $ft6
 	fmadd.s	$ft0, $fa4, $ft15, $ft0
-	fld.s	$ft5, $a3, 280
+	fld.s	$ft6, $a3, 280
 	fmul.s	$ft15, $fa6, $fs0
 	fld.s	$fs0, $a3, 312
 	fld.s	$fs1, $a3, 300
 	fld.s	$fs2, $a3, 284
-	fmadd.s	$ft5, $ft5, $fa5, $ft15
-	fmadd.s	$ft5, $fs0, $fa4, $ft5
+	fmadd.s	$ft6, $ft6, $fa5, $ft15
+	fmadd.s	$ft6, $fs0, $fa4, $ft6
 	fmul.s	$ft15, $fa6, $fs1
 	fmadd.s	$ft15, $fs2, $fa5, $ft15
 	fld.s	$fs0, $a3, 316
@@ -2310,16 +2312,16 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmadd.s	$fs0, $fs2, $fa5, $fs0
 	fmadd.s	$fs0, $fs3, $fa4, $fs0
 	fmul.s	$fa6, $fa6, $ft15
-	fmadd.s	$fa5, $fa5, $ft5, $fa6
+	fmadd.s	$fa5, $fa5, $ft6, $fa6
 	fmadd.s	$fa4, $fa4, $fs0, $fa5
 	fadd.s	$fa4, $ft0, $fa4
-	fmul.s	$fa5, $ft10, $ft4
+	fmul.s	$fa5, $ft10, $ft5
 	fmadd.s	$fa5, $fa7, $ft8, $fa5
 	fmadd.s	$fa5, $ft13, $ft9, $fa5
-	fmul.s	$fa6, $ft10, $ft3
+	fmul.s	$fa6, $ft10, $ft4
 	fmadd.s	$fa6, $ft11, $ft8, $fa6
 	fmadd.s	$fa6, $ft12, $ft9, $fa6
-	fmul.s	$fa7, $ft10, $ft6
+	fmul.s	$fa7, $ft10, $ft7
 	fmadd.s	$fa7, $ft1, $ft8, $fa7
 	fmadd.s	$fa7, $ft14, $ft9, $fa7
 	frecip.s	$ft11, $fa4
@@ -2328,18 +2330,18 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmul.s	$ft0, $ft11, $ft12
 	fld.s	$ft1, $a1, 4
 	fadd.s	$fa4, $ft0, $fa4
-	fld.s	$ft3, $a1, 8
+	fld.s	$ft4, $a1, 8
 	fst.s	$fa4, $a1, 0
 	fadd.s	$fa4, $ft0, $ft1
 	fst.s	$fa4, $a1, 4
-	fadd.s	$fa4, $ft0, $ft3
+	fadd.s	$fa4, $ft0, $ft4
 	fld.s	$ft0, $a1, 32
 	fld.s	$ft1, $a1, 36
-	fld.s	$ft3, $a1, 40
+	fld.s	$ft4, $a1, 40
 	fst.s	$fa4, $a1, 8
 	fmul.s	$fa4, $ft11, $ft0
 	fmul.s	$ft0, $ft11, $ft1
-	fmul.s	$ft1, $ft11, $ft3
+	fmul.s	$ft1, $ft11, $ft4
 	fmul.s	$fa4, $fa5, $fa4
 	fld.s	$fa5, $a1, 16
 	fmul.s	$fa6, $fa6, $ft0
@@ -2375,18 +2377,18 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmul.s	$ft0, $ft11, $ft0
 	fld.s	$ft1, $a2, 4
 	fadd.s	$fa7, $ft0, $fa7
-	fld.s	$ft3, $a2, 8
+	fld.s	$ft4, $a2, 8
 	fst.s	$fa7, $a2, 0
 	fadd.s	$fa7, $ft0, $ft1
 	fst.s	$fa7, $a2, 4
-	fadd.s	$fa7, $ft0, $ft3
+	fadd.s	$fa7, $ft0, $ft4
 	fld.s	$ft0, $a2, 32
 	fld.s	$ft1, $a2, 36
-	fld.s	$ft3, $a2, 40
+	fld.s	$ft4, $a2, 40
 	fst.s	$fa7, $a2, 8
 	fmul.s	$fa7, $ft0, $ft11
 	fmul.s	$ft0, $ft1, $ft11
-	fmul.s	$ft1, $ft3, $ft11
+	fmul.s	$ft1, $ft4, $ft11
 	fmul.s	$fa4, $fa4, $fa7
 	fld.s	$fa7, $a2, 16
 	fmul.s	$fa5, $fa5, $ft0
@@ -2402,14 +2404,13 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	ld.bu	$a5, $a0, 782
 	beqz	$a5, .LBB7_17
 .LBB7_19:
-	fld.s	$fa4, $sp, 32                   # 4-byte Folded Reload
-	fld.s	$fa5, $sp, 24                   # 4-byte Folded Reload
+	vld	$vr4, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
 	fsub.s	$fa4, $fa5, $fa4
-	fld.s	$fa5, $sp, 36                   # 4-byte Folded Reload
-	fld.s	$fa6, $sp, 28                   # 4-byte Folded Reload
+	vld	$vr5, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 48                   # 16-byte Folded Reload
 	fsub.s	$fa5, $fa6, $fa5
-	fld.s	$fa6, $sp, 40                   # 4-byte Folded Reload
-	fsub.s	$fa6, $ft2, $fa6
+	fsub.s	$fa6, $ft2, $ft3
 	fmul.s	$fa5, $fa2, $fa5
 	fmadd.s	$fa4, $fa4, $fa1, $fa5
 	fld.s	$fa5, $a0, 764
@@ -2528,10 +2529,11 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	ld.bu	$a5, $a0, 781
 	beqz	$a5, .LBB7_24
 .LBB7_20:
-	fsub.s	$fa0, $fs4, $fs6
-	fsub.s	$fa4, $ft7, $fs7
-	fld.s	$fa5, $sp, 44                   # 4-byte Folded Reload
-	fsub.s	$fa5, $fs5, $fa5
+	fsub.s	$fa0, $fs4, $fs7
+	fld.s	$fa4, $sp, 108                  # 4-byte Folded Reload
+	fsub.s	$fa4, $fs5, $fa4
+	fld.s	$fa5, $sp, 104                  # 4-byte Folded Reload
+	fsub.s	$fa5, $fs6, $fa5
 	fmul.s	$fa4, $fa2, $fa4
 	fmadd.s	$fa0, $fa0, $fa1, $fa4
 	fmadd.s	$fa0, $fa5, $fa3, $fa0
@@ -2648,15 +2650,15 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fsub.s	$fa0, $fa4, $fa0
 	fst.s	$fa0, $a2, 24
 .LBB7_24:
-	fld.d	$fs7, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 104                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	fld.d	$fs7, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 128                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 136                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 144                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 152                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 168                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 .LBB7_25:
 	ret
 .Lfunc_end7:

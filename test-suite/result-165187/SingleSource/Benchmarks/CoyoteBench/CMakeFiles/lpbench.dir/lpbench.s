@@ -320,7 +320,7 @@ daxpy:                                  # @daxpy
 # %bb.3:
 	bne	$a6, $a7, .LBB3_10
 # %bb.4:                                # %.lr.ph.preheader
-	ori	$a6, $zero, 10
+	ori	$a6, $zero, 8
 	bstrpick.d	$a3, $a0, 31, 0
 	bltu	$a0, $a6, .LBB3_7
 # %bb.5:                                # %vector.memcheck
@@ -363,7 +363,7 @@ daxpy:                                  # @daxpy
 	srli.d	$t1, $a3, 31
 	and	$a7, $t1, $a7
 	addi.w	$t2, $t0, 0
-	ori	$t0, $zero, 16
+	ori	$t0, $zero, 14
 	addi.w	$t3, $a7, 0
 	bgeu	$a0, $t0, .LBB3_16
 .LBB3_11:

@@ -226,8 +226,8 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	beqz	$a1, .LBB6_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $a0, 16
-	ori	$a0, $zero, 4
-	bgeu	$a1, $a0, .LBB6_4
+	ori	$a0, $zero, 1
+	bne	$a1, $a0, .LBB6_4
 # %bb.2:
 	move	$a3, $zero
 	move	$a0, $zero
@@ -236,32 +236,24 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	move	$a0, $zero
 	ret
 .LBB6_4:                                # %vector.ph
+	move	$a0, $zero
+	move	$a4, $zero
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 1, 0
-	vrepli.b	$vr0, 0
-	addi.d	$a0, $a2, 88
-	move	$a4, $a3
-	vori.b	$vr1, $vr0, 0
+	bstrins.d	$a3, $zero, 0, 0
+	addi.d	$a5, $a2, 48
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB6_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a0, -80
-	ld.d	$a6, $a0, -40
-	ld.d	$a7, $a0, 0
-	ld.d	$t0, $a0, 40
-	vinsgr2vr.d	$vr2, $a5, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	vinsgr2vr.d	$vr3, $a7, 0
-	vinsgr2vr.d	$vr3, $t0, 1
-	vadd.d	$vr0, $vr2, $vr0
-	vadd.d	$vr1, $vr3, $vr1
-	addi.d	$a4, $a4, -4
-	addi.d	$a0, $a0, 160
-	bnez	$a4, .LBB6_5
+	ld.d	$a7, $a5, -40
+	ld.d	$t0, $a5, 0
+	add.d	$a0, $a7, $a0
+	add.d	$a4, $t0, $a4
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 80
+	bnez	$a6, .LBB6_5
 # %bb.6:                                # %middle.block
-	vadd.d	$vr0, $vr1, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a0, $vr0, 0
+	add.d	$a0, $a4, $a0
 	beq	$a1, $a3, .LBB6_9
 .LBB6_7:                                # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a3

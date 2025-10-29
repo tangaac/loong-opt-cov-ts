@@ -400,15 +400,20 @@ encrypt:                                # @encrypt
 	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	vld	$vr0, $a0, 0
-	vld	$vr1, $a2, 8
-	vxor.v	$vr0, $vr1, $vr0
-	addi.d	$a4, $a2, 24
+	ld.w	$a3, $a0, 0
+	ld.w	$a4, $a2, 8
+	ld.w	$a5, $a0, 4
+	ld.w	$a6, $a2, 12
+	ld.w	$a7, $a0, 8
+	ld.w	$t0, $a2, 16
+	ld.w	$a0, $a0, 12
+	ld.w	$t3, $a2, 20
+	xor	$t1, $a4, $a3
+	xor	$t2, $a6, $a5
+	xor	$t4, $t0, $a7
+	xor	$t3, $t3, $a0
 	ld.w	$a5, $a2, 4
-	vpickve2gr.w	$t1, $vr0, 0
-	vpickve2gr.w	$t2, $vr0, 1
-	vpickve2gr.w	$t4, $vr0, 2
-	vpickve2gr.w	$t3, $vr0, 3
+	addi.d	$a4, $a2, 24
 	ori	$a6, $zero, 10
 	lu12i.w	$a0, -4096
 	pcalau12i	$a3, %pc_hi20(ft_tab)
@@ -421,158 +426,148 @@ encrypt:                                # @encrypt
 	ori	$a4, $zero, 14
 	bne	$a5, $a4, .LBB1_8
 # %bb.5:
-	ld.w	$a5, $a2, 24
-	move	$a6, $a0
-	lu32i.d	$a6, 0
-	and	$a7, $t1, $a6
+	ld.w	$a7, $a2, 24
+	move	$t7, $a0
+	lu32i.d	$t7, 0
+	and	$t0, $t1, $t7
 	andi	$a4, $t1, 255
 	slli.d	$a4, $a4, 2
-	ldx.w	$t1, $a3, $a4
-	and	$a4, $t3, $a6
-	srli.d	$t0, $a4, 22
-	addi.d	$t5, $a3, 2047
-	addi.d	$a4, $t5, 1025
-	ldx.w	$t0, $a4, $t0
-	xor	$t6, $t1, $a5
-	ld.w	$a5, $a2, 28
-	andi	$t1, $t2, 255
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a3, $t1
-	and	$t7, $t2, $a6
-	srli.d	$a7, $a7, 22
-	ldx.w	$t2, $a4, $a7
-	xor	$a7, $t1, $a5
-	ld.w	$a5, $a2, 32
-	andi	$t1, $t4, 255
-	slli.d	$t1, $t1, 2
-	ldx.w	$t8, $a3, $t1
-	and	$t1, $t4, $a6
-	srli.d	$t4, $t7, 22
-	ldx.w	$t7, $a4, $t4
-	xor	$t8, $t8, $a5
-	ld.w	$t4, $a2, 36
-	andi	$a5, $t3, 255
-	slli.d	$t3, $a5, 2
-	vsrli.w	$vr1, $vr0, 8
-	vpickve2gr.b	$a5, $vr1, 4
-	andi	$fp, $a5, 255
-	addi.d	$a5, $a3, 1024
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a5, $fp
-	vpickve2gr.b	$s0, $vr1, 8
-	andi	$s0, $s0, 255
+	ldx.w	$t5, $a3, $a4
+	and	$t8, $t2, $t7
+	addi.d	$a4, $a3, 1024
+	srli.d	$a5, $t2, 6
+	andi	$a5, $a5, 1020
+	ldx.w	$t6, $a4, $a5
+	and	$fp, $t4, $t7
+	srli.d	$a5, $t4, 14
+	andi	$a6, $a5, 1020
+	addi.d	$s0, $a3, 2047
+	addi.d	$a5, $s0, 1
+	ldx.w	$s1, $a5, $a6
+	and	$a6, $t3, $t7
+	srli.d	$s2, $a6, 22
+	addi.d	$a6, $s0, 1025
+	ldx.w	$s0, $a6, $s2
+	xor	$a7, $t5, $a7
+	xor	$a7, $a7, $t6
+	xor	$a7, $a7, $s1
+	xor	$a7, $a7, $s0
+	and	$t5, $a7, $t7
+	ld.w	$t6, $a2, 28
+	andi	$s0, $t2, 255
 	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a5, $s0
-	vpickve2gr.b	$s1, $vr1, 12
-	andi	$s1, $s1, 255
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a5, $s1
-	ldx.w	$s2, $a3, $t3
-	xor	$t3, $t6, $fp
-	xor	$t6, $a7, $s0
-	xor	$t8, $t8, $s1
-	vpickve2gr.b	$a7, $vr1, 0
-	andi	$a7, $a7, 255
-	slli.d	$a7, $a7, 2
-	ldx.w	$fp, $a5, $a7
-	vsrli.w	$vr0, $vr0, 16
-	vpickve2gr.b	$a7, $vr0, 8
-	andi	$s0, $a7, 255
-	addi.d	$a7, $t5, 1
-	slli.d	$t5, $s0, 2
-	ldx.w	$t5, $a7, $t5
-	vpickve2gr.b	$s0, $vr0, 12
-	andi	$s0, $s0, 255
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a7, $s0
-	vpickve2gr.b	$s1, $vr0, 0
-	andi	$s1, $s1, 255
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a7, $s1
-	xor	$t3, $t3, $t5
-	xor	$t0, $t3, $t0
-	and	$s3, $t0, $a6
-	xor	$t3, $t6, $s0
-	xor	$t3, $t3, $t2
-	and	$t6, $t3, $a6
-	xor	$t2, $t8, $s1
-	xor	$t7, $t2, $t7
-	and	$t5, $t7, $a6
-	vpickve2gr.b	$t2, $vr0, 4
-	andi	$t2, $t2, 255
-	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $a7, $t2
-	srli.d	$t1, $t1, 22
-	ldx.w	$t1, $a4, $t1
-	xor	$t4, $s2, $t4
-	xor	$t4, $t4, $fp
-	xor	$t2, $t4, $t2
-	xor	$t8, $t2, $t1
-	and	$a6, $t8, $a6
-	ld.w	$t1, $a2, 40
-	andi	$t2, $t0, 255
-	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $a3, $t2
-	srli.d	$t4, $t3, 6
-	andi	$t4, $t4, 1020
-	ldx.w	$t4, $a5, $t4
-	srli.d	$fp, $t7, 14
-	andi	$fp, $fp, 1020
-	ldx.w	$fp, $a7, $fp
-	srli.d	$a6, $a6, 22
-	ldx.w	$a6, $a4, $a6
-	xor	$t1, $t2, $t1
-	xor	$t1, $t1, $t4
-	xor	$t1, $t1, $fp
-	xor	$t1, $t1, $a6
-	ld.w	$a6, $a2, 44
-	andi	$t2, $t3, 255
-	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $a3, $t2
-	srli.d	$t4, $t7, 6
-	andi	$t4, $t4, 1020
-	ldx.w	$t4, $a5, $t4
-	srli.d	$fp, $t8, 14
-	andi	$fp, $fp, 1020
-	ldx.w	$fp, $a7, $fp
-	srli.d	$s0, $s3, 22
-	ldx.w	$s0, $a4, $s0
-	xor	$a6, $t2, $a6
-	xor	$a6, $a6, $t4
-	xor	$a6, $a6, $fp
-	xor	$t2, $a6, $s0
-	ld.w	$a6, $a2, 48
-	andi	$t4, $t7, 255
+	ldx.w	$s0, $a3, $s0
+	srli.d	$s1, $t4, 6
+	andi	$s1, $s1, 1020
+	ldx.w	$s1, $a4, $s1
+	srli.d	$s2, $t3, 14
+	andi	$s2, $s2, 1020
+	ldx.w	$s2, $a5, $s2
+	srli.d	$t0, $t0, 22
+	ldx.w	$t0, $a6, $t0
+	xor	$t6, $s0, $t6
+	xor	$t6, $t6, $s1
+	xor	$t6, $t6, $s2
+	xor	$t0, $t6, $t0
+	and	$t6, $t0, $t7
+	ld.w	$s0, $a2, 32
+	andi	$t4, $t4, 255
 	slli.d	$t4, $t4, 2
 	ldx.w	$t4, $a3, $t4
-	srli.d	$t7, $t8, 6
-	andi	$t7, $t7, 1020
-	ldx.w	$t7, $a5, $t7
-	srli.d	$fp, $t0, 14
+	srli.d	$s1, $t3, 6
+	andi	$s1, $s1, 1020
+	ldx.w	$s1, $a4, $s1
+	srli.d	$s2, $t1, 14
+	andi	$s2, $s2, 1020
+	ldx.w	$s2, $a5, $s2
+	srli.d	$t8, $t8, 22
+	ldx.w	$t8, $a6, $t8
+	xor	$t4, $t4, $s0
+	xor	$t4, $t4, $s1
+	xor	$t4, $t4, $s2
+	xor	$t4, $t4, $t8
+	and	$t8, $t4, $t7
+	ld.w	$s0, $a2, 36
+	andi	$t3, $t3, 255
+	slli.d	$t3, $t3, 2
+	ldx.w	$t3, $a3, $t3
+	srli.d	$t1, $t1, 6
+	andi	$t1, $t1, 1020
+	ldx.w	$t1, $a4, $t1
+	srli.d	$t2, $t2, 14
+	andi	$t2, $t2, 1020
+	ldx.w	$t2, $a5, $t2
+	srli.d	$fp, $fp, 22
+	ldx.w	$fp, $a6, $fp
+	xor	$t3, $t3, $s0
+	xor	$t1, $t3, $t1
+	xor	$t1, $t1, $t2
+	xor	$t3, $t1, $fp
+	and	$t1, $t3, $t7
+	ld.w	$t2, $a2, 40
+	andi	$t7, $a7, 255
+	slli.d	$t7, $t7, 2
+	ldx.w	$t7, $a3, $t7
+	srli.d	$fp, $t0, 6
 	andi	$fp, $fp, 1020
-	ldx.w	$fp, $a7, $fp
+	ldx.w	$fp, $a4, $fp
+	srli.d	$s0, $t4, 14
+	andi	$s0, $s0, 1020
+	ldx.w	$s0, $a5, $s0
+	srli.d	$t1, $t1, 22
+	ldx.w	$t1, $a6, $t1
+	xor	$t2, $t7, $t2
+	xor	$t2, $t2, $fp
+	xor	$t2, $t2, $s0
+	xor	$t1, $t2, $t1
+	ld.w	$t2, $a2, 44
+	andi	$t7, $t0, 255
+	slli.d	$t7, $t7, 2
+	ldx.w	$t7, $a3, $t7
+	srli.d	$fp, $t4, 6
+	andi	$fp, $fp, 1020
+	ldx.w	$fp, $a4, $fp
+	srli.d	$s0, $t3, 14
+	andi	$s0, $s0, 1020
+	ldx.w	$s0, $a5, $s0
+	srli.d	$t5, $t5, 22
+	ldx.w	$t5, $a6, $t5
+	xor	$t2, $t7, $t2
+	xor	$t2, $t2, $fp
+	xor	$t2, $t2, $s0
+	xor	$t2, $t2, $t5
+	ld.w	$t5, $a2, 48
+	andi	$t4, $t4, 255
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a3, $t4
+	srli.d	$t7, $t3, 6
+	andi	$t7, $t7, 1020
+	ldx.w	$t7, $a4, $t7
+	srli.d	$fp, $a7, 14
+	andi	$fp, $fp, 1020
+	ldx.w	$fp, $a5, $fp
 	srli.d	$t6, $t6, 22
-	ldx.w	$t6, $a4, $t6
-	xor	$a6, $t4, $a6
-	xor	$a6, $a6, $t7
-	xor	$a6, $a6, $fp
-	xor	$t4, $a6, $t6
-	ld.w	$a6, $a2, 52
-	andi	$t6, $t8, 255
-	slli.d	$t6, $t6, 2
-	ldx.w	$t6, $a3, $t6
-	srli.d	$t0, $t0, 6
-	andi	$t0, $t0, 1020
-	ldx.w	$a5, $a5, $t0
-	srli.d	$t0, $t3, 14
-	andi	$t0, $t0, 1020
-	ldx.w	$a7, $a7, $t0
-	srli.d	$t0, $t5, 22
-	ldx.w	$a4, $a4, $t0
-	xor	$a6, $t6, $a6
-	xor	$a5, $a6, $a5
-	xor	$a5, $a5, $a7
-	xor	$t3, $a5, $a4
+	ldx.w	$t6, $a6, $t6
+	xor	$t4, $t4, $t5
+	xor	$t4, $t4, $t7
+	xor	$t4, $t4, $fp
+	xor	$t4, $t4, $t6
+	ld.w	$t5, $a2, 52
+	andi	$t3, $t3, 255
+	slli.d	$t3, $t3, 2
+	ldx.w	$t3, $a3, $t3
+	srli.d	$a7, $a7, 6
+	andi	$a7, $a7, 1020
+	ldx.w	$a4, $a4, $a7
+	srli.d	$a7, $t0, 14
+	andi	$a7, $a7, 1020
+	ldx.w	$a5, $a5, $a7
+	srli.d	$a7, $t8, 22
+	ldx.w	$a6, $a6, $a7
+	xor	$a7, $t3, $t5
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a5
+	xor	$t3, $a4, $a6
 	addi.d	$a4, $a2, 56
 .LBB1_6:
 	ld.w	$a7, $a4, 0
@@ -1118,9 +1113,9 @@ encrypt:                                # @encrypt
 	xor	$fp, $fp, $s1
 	xor	$fp, $fp, $s2
 	xor	$fp, $fp, $s3
-	xor	$fp, $fp, $t8
-	and	$t8, $fp, $a0
-	ld.w	$s1, $a4, 92
+	xor	$s1, $fp, $t8
+	and	$t8, $s1, $a0
+	ld.w	$fp, $a4, 92
 	andi	$s0, $s0, 255
 	slli.d	$s0, $s0, 2
 	ldx.w	$s0, $a3, $s0
@@ -1132,8 +1127,8 @@ encrypt:                                # @encrypt
 	ldx.w	$t4, $a7, $t4
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
-	xor	$s0, $s0, $s1
-	xor	$t2, $s0, $t2
+	xor	$fp, $s0, $fp
+	xor	$t2, $fp, $t2
 	xor	$t2, $t2, $t4
 	xor	$s0, $t2, $t5
 	and	$t2, $s0, $a0
@@ -1141,24 +1136,24 @@ encrypt:                                # @encrypt
 	andi	$t5, $t1, 255
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $a3, $t5
-	srli.d	$s1, $t3, 6
-	andi	$s1, $s1, 1020
-	ldx.w	$s1, $a6, $s1
-	srli.d	$s2, $fp, 14
+	srli.d	$fp, $t3, 6
+	andi	$fp, $fp, 1020
+	ldx.w	$fp, $a6, $fp
+	srli.d	$s2, $s1, 14
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a7, $s2
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
 	xor	$t4, $t5, $t4
-	xor	$t4, $t4, $s1
+	xor	$t4, $t4, $fp
 	xor	$t4, $t4, $s2
 	xor	$t2, $t4, $t2
 	and	$t5, $t2, $a0
 	ld.w	$t4, $a4, 100
-	andi	$s1, $t3, 255
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a3, $s1
-	srli.d	$s2, $fp, 6
+	andi	$fp, $t3, 255
+	slli.d	$fp, $fp, 2
+	ldx.w	$fp, $a3, $fp
+	srli.d	$s2, $s1, 6
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a6, $s2
 	srli.d	$s3, $s0, 14
@@ -1166,15 +1161,15 @@ encrypt:                                # @encrypt
 	ldx.w	$s3, $a7, $s3
 	srli.d	$t6, $t6, 22
 	ldx.w	$t6, $t0, $t6
-	xor	$t4, $s1, $t4
+	xor	$t4, $fp, $t4
 	xor	$t4, $t4, $s2
 	xor	$t4, $t4, $s3
 	xor	$t4, $t4, $t6
-	and	$t6, $t4, $a0
-	ld.w	$s1, $a4, 104
-	andi	$fp, $fp, 255
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a3, $fp
+	and	$fp, $t4, $a0
+	ld.w	$t6, $a4, 104
+	andi	$s1, $s1, 255
+	slli.d	$s1, $s1, 2
+	ldx.w	$s1, $a3, $s1
 	srli.d	$s2, $s0, 6
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a6, $s2
@@ -1183,12 +1178,12 @@ encrypt:                                # @encrypt
 	ldx.w	$s3, $a7, $s3
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
-	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
-	xor	$fp, $fp, $t7
-	and	$t7, $fp, $a0
-	ld.w	$s1, $a4, 108
+	xor	$t6, $s1, $t6
+	xor	$t6, $t6, $s2
+	xor	$t6, $t6, $s3
+	xor	$s1, $t6, $t7
+	and	$t7, $s1, $a0
+	ld.w	$t6, $a4, 108
 	andi	$s0, $s0, 255
 	slli.d	$s0, $s0, 2
 	ldx.w	$s0, $a3, $s0
@@ -1200,66 +1195,66 @@ encrypt:                                # @encrypt
 	ldx.w	$t3, $a7, $t3
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
-	xor	$s0, $s0, $s1
-	xor	$t1, $s0, $t1
+	xor	$t6, $s0, $t6
+	xor	$t1, $t6, $t1
 	xor	$t1, $t1, $t3
-	xor	$s0, $t1, $t8
-	and	$t1, $s0, $a0
-	ld.w	$t3, $a4, 112
+	xor	$t3, $t1, $t8
+	and	$t1, $t3, $a0
+	ld.w	$t6, $a4, 112
 	andi	$t8, $t2, 255
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $a3, $t8
-	srli.d	$s1, $t4, 6
-	andi	$s1, $s1, 1020
-	ldx.w	$s1, $a6, $s1
-	srli.d	$s2, $fp, 14
+	srli.d	$s0, $t4, 6
+	andi	$s0, $s0, 1020
+	ldx.w	$s0, $a6, $s0
+	srli.d	$s2, $s1, 14
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a7, $s2
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
-	xor	$t3, $t8, $t3
-	xor	$t3, $t3, $s1
-	xor	$t3, $t3, $s2
-	xor	$t1, $t3, $t1
+	xor	$t6, $t8, $t6
+	xor	$t6, $t6, $s0
+	xor	$t6, $t6, $s2
+	xor	$t1, $t6, $t1
 	and	$t8, $t1, $a0
-	ld.w	$t3, $a4, 116
-	andi	$s1, $t4, 255
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a3, $s1
-	srli.d	$s2, $fp, 6
+	ld.w	$t6, $a4, 116
+	andi	$s0, $t4, 255
+	slli.d	$s0, $s0, 2
+	ldx.w	$s0, $a3, $s0
+	srli.d	$s2, $s1, 6
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a6, $s2
-	srli.d	$s3, $s0, 14
+	srli.d	$s3, $t3, 14
 	andi	$s3, $s3, 1020
 	ldx.w	$s3, $a7, $s3
 	srli.d	$t5, $t5, 22
 	ldx.w	$t5, $t0, $t5
-	xor	$t3, $s1, $t3
-	xor	$t3, $t3, $s2
-	xor	$t3, $t3, $s3
-	xor	$t3, $t3, $t5
-	and	$t5, $t3, $a0
-	ld.w	$s1, $a4, 120
-	andi	$fp, $fp, 255
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a3, $fp
-	srli.d	$s2, $s0, 6
+	xor	$t6, $s0, $t6
+	xor	$t6, $t6, $s2
+	xor	$t6, $t6, $s3
+	xor	$t6, $t6, $t5
+	and	$s0, $t6, $a0
+	ld.w	$t5, $a4, 120
+	andi	$s1, $s1, 255
+	slli.d	$s1, $s1, 2
+	ldx.w	$s1, $a3, $s1
+	srli.d	$s2, $t3, 6
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a6, $s2
 	srli.d	$s3, $t2, 14
 	andi	$s3, $s3, 1020
 	ldx.w	$s3, $a7, $s3
-	srli.d	$t6, $t6, 22
-	ldx.w	$t6, $t0, $t6
-	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
-	xor	$fp, $fp, $t6
-	and	$t6, $fp, $a0
-	ld.w	$s1, $a4, 124
-	andi	$s0, $s0, 255
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a3, $s0
+	srli.d	$fp, $fp, 22
+	ldx.w	$fp, $t0, $fp
+	xor	$t5, $s1, $t5
+	xor	$t5, $t5, $s2
+	xor	$t5, $t5, $s3
+	xor	$s1, $t5, $fp
+	and	$fp, $s1, $a0
+	ld.w	$t5, $a4, 124
+	andi	$t3, $t3, 255
+	slli.d	$t3, $t3, 2
+	ldx.w	$t3, $a3, $t3
 	srli.d	$t2, $t2, 6
 	andi	$t2, $t2, 1020
 	ldx.w	$t2, $a6, $t2
@@ -1268,151 +1263,153 @@ encrypt:                                # @encrypt
 	ldx.w	$t4, $a7, $t4
 	srli.d	$t7, $t7, 22
 	ldx.w	$t7, $t0, $t7
-	xor	$s0, $s0, $s1
-	xor	$t2, $s0, $t2
+	xor	$t3, $t3, $t5
+	xor	$t2, $t3, $t2
 	xor	$t2, $t2, $t4
-	xor	$s0, $t2, $t7
-	and	$t2, $s0, $a0
-	ld.w	$t4, $a4, 128
-	andi	$t7, $t1, 255
-	slli.d	$t7, $t7, 2
-	ldx.w	$t7, $a3, $t7
-	srli.d	$s1, $t3, 6
-	andi	$s1, $s1, 1020
-	ldx.w	$s1, $a6, $s1
-	srli.d	$s2, $fp, 14
-	andi	$s2, $s2, 1020
-	ldx.w	$s2, $a7, $s2
+	xor	$s2, $t2, $t7
+	and	$t2, $s2, $a0
+	ld.w	$t3, $a4, 128
+	andi	$t4, $t1, 255
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a3, $t4
+	srli.d	$t5, $t6, 6
+	andi	$t5, $t5, 1020
+	ldx.w	$t5, $a6, $t5
+	srli.d	$t7, $s1, 14
+	andi	$t7, $t7, 1020
+	ldx.w	$t7, $a7, $t7
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
-	xor	$t4, $t7, $t4
-	xor	$t4, $t4, $s1
-	xor	$t4, $t4, $s2
-	xor	$t2, $t4, $t2
-	and	$t7, $t2, $a0
+	xor	$t3, $t4, $t3
+	xor	$t3, $t3, $t5
+	xor	$t3, $t3, $t7
+	xor	$t3, $t3, $t2
+	and	$t2, $t3, $a0
 	ld.w	$t4, $a4, 132
-	andi	$s1, $t3, 255
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a3, $s1
-	srli.d	$s2, $fp, 6
-	andi	$s2, $s2, 1020
-	ldx.w	$s2, $a6, $s2
-	srli.d	$s3, $s0, 14
+	andi	$t5, $t6, 255
+	slli.d	$t5, $t5, 2
+	ldx.w	$t5, $a3, $t5
+	srli.d	$t7, $s1, 6
+	andi	$t7, $t7, 1020
+	ldx.w	$t7, $a6, $t7
+	srli.d	$s3, $s2, 14
 	andi	$s3, $s3, 1020
 	ldx.w	$s3, $a7, $s3
 	srli.d	$t8, $t8, 22
 	ldx.w	$t8, $t0, $t8
-	xor	$t4, $s1, $t4
-	xor	$t4, $t4, $s2
+	xor	$t4, $t5, $t4
+	xor	$t4, $t4, $t7
 	xor	$t4, $t4, $s3
-	xor	$t4, $t4, $t8
-	and	$t8, $t4, $a0
-	ld.w	$s1, $a4, 136
-	andi	$fp, $fp, 255
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a3, $fp
-	srli.d	$s2, $s0, 6
-	andi	$s2, $s2, 1020
-	ldx.w	$s2, $a6, $s2
+	xor	$t5, $t4, $t8
+	and	$t4, $t5, $a0
+	ld.w	$t7, $a4, 136
+	andi	$t8, $s1, 255
+	slli.d	$t8, $t8, 2
+	ldx.w	$t8, $a3, $t8
+	srli.d	$s1, $s2, 6
+	andi	$s1, $s1, 1020
+	ldx.w	$s1, $a6, $s1
 	srli.d	$s3, $t1, 14
 	andi	$s3, $s3, 1020
 	ldx.w	$s3, $a7, $s3
-	srli.d	$t5, $t5, 22
-	ldx.w	$t5, $t0, $t5
-	xor	$fp, $fp, $s1
-	xor	$fp, $fp, $s2
-	xor	$fp, $fp, $s3
-	xor	$fp, $fp, $t5
-	and	$t5, $fp, $a0
-	ld.w	$s1, $a4, 140
-	andi	$s0, $s0, 255
-	slli.d	$s0, $s0, 2
-	ldx.w	$a3, $a3, $s0
+	srli.d	$s0, $s0, 22
+	ldx.w	$s0, $t0, $s0
+	xor	$t7, $t8, $t7
+	xor	$t7, $t7, $s1
+	xor	$t7, $t7, $s3
+	xor	$t8, $t7, $s0
+	and	$t7, $t8, $a0
+	ld.w	$s0, $a4, 140
+	andi	$s1, $s2, 255
+	slli.d	$s1, $s1, 2
+	ldx.w	$a3, $a3, $s1
 	srli.d	$t1, $t1, 6
 	andi	$t1, $t1, 1020
 	ldx.w	$a6, $a6, $t1
-	srli.d	$t1, $t3, 14
+	srli.d	$t1, $t6, 14
 	andi	$t1, $t1, 1020
 	ldx.w	$a7, $a7, $t1
-	srli.d	$t1, $t6, 22
+	srli.d	$t1, $fp, 22
 	ldx.w	$t0, $t0, $t1
-	xor	$a3, $a3, $s1
+	xor	$a3, $a3, $s0
 	xor	$a3, $a3, $a6
 	xor	$a3, $a3, $a7
 	xor	$a3, $a3, $t0
+	ld.w	$a6, $a4, 144
 	and	$a0, $a3, $a0
-	andi	$a6, $t2, 255
-	slli.d	$a6, $a6, 2
-	pcalau12i	$a7, %pc_hi20(fl_tab)
-	addi.d	$a7, $a7, %pc_lo12(fl_tab)
-	ldx.w	$a6, $a7, $a6
-	srli.d	$t0, $t4, 6
-	andi	$t0, $t0, 1020
-	addi.d	$t1, $a7, 1024
-	ldx.w	$t0, $t1, $t0
-	srli.d	$t3, $fp, 14
-	andi	$t3, $t3, 1020
-	add.d	$a2, $a7, $a2
-	ldx.w	$t3, $a2, $t3
+	andi	$a7, $t3, 255
+	slli.d	$a7, $a7, 2
+	pcalau12i	$t0, %pc_hi20(fl_tab)
+	addi.d	$t0, $t0, %pc_lo12(fl_tab)
+	ldx.w	$a7, $t0, $a7
+	srli.d	$t1, $t5, 6
+	andi	$t1, $t1, 1020
+	addi.d	$t6, $t0, 1024
+	ldx.w	$t1, $t6, $t1
+	srli.d	$fp, $t8, 14
+	andi	$fp, $fp, 1020
+	add.d	$a2, $t0, $a2
+	ldx.w	$fp, $a2, $fp
 	srli.d	$a0, $a0, 22
-	add.d	$a5, $a7, $a5
+	add.d	$a5, $t0, $a5
 	ldx.w	$a0, $a5, $a0
-	andi	$t6, $t4, 255
-	slli.d	$t6, $t6, 2
-	ldx.w	$t6, $a7, $t6
-	srli.d	$s0, $fp, 6
-	andi	$s0, $s0, 1020
-	ldx.w	$s0, $t1, $s0
-	srli.d	$s1, $a3, 14
-	andi	$s1, $s1, 1020
-	ldx.w	$s1, $a2, $s1
-	srli.d	$t7, $t7, 22
-	ldx.w	$t7, $a5, $t7
-	andi	$fp, $fp, 255
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a7, $fp
-	srli.d	$s2, $a3, 6
-	andi	$s2, $s2, 1020
-	ldx.w	$s2, $t1, $s2
-	srli.d	$s3, $t2, 14
-	andi	$s3, $s3, 1020
-	ldx.w	$s3, $a2, $s3
-	srli.d	$t8, $t8, 22
-	ldx.w	$t8, $a5, $t8
+	xor	$a6, $a7, $a6
+	xor	$a6, $a6, $t1
+	xor	$a6, $a6, $fp
+	xor	$t1, $a6, $a0
+	ld.w	$a0, $a4, 148
+	andi	$a6, $t5, 255
+	slli.d	$a6, $a6, 2
+	ldx.w	$a6, $t0, $a6
+	srli.d	$a7, $t8, 6
+	andi	$a7, $a7, 1020
+	ldx.w	$a7, $t6, $a7
+	srli.d	$fp, $a3, 14
+	andi	$fp, $fp, 1020
+	ldx.w	$fp, $a2, $fp
+	srli.d	$t2, $t2, 22
+	ldx.w	$t2, $a5, $t2
+	xor	$a0, $a6, $a0
+	xor	$a0, $a0, $a7
+	xor	$a0, $a0, $fp
+	xor	$t2, $a0, $t2
+	ld.w	$a0, $a4, 152
+	andi	$a6, $t8, 255
+	slli.d	$a6, $a6, 2
+	ldx.w	$a6, $t0, $a6
+	srli.d	$a7, $a3, 6
+	andi	$a7, $a7, 1020
+	ldx.w	$a7, $t6, $a7
+	srli.d	$t8, $t3, 14
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a2, $t8
+	srli.d	$t4, $t4, 22
+	ldx.w	$t4, $a5, $t4
+	xor	$a0, $a6, $a0
+	xor	$a0, $a0, $a7
+	xor	$a0, $a0, $t8
+	xor	$t4, $a0, $t4
+	ld.w	$a0, $a4, 156
 	andi	$a3, $a3, 255
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a7, $a3
-	srli.d	$a7, $t2, 6
-	andi	$a7, $a7, 1020
-	ldx.w	$a7, $t1, $a7
-	srli.d	$t1, $t4, 14
-	andi	$t1, $t1, 1020
-	ldx.w	$a2, $a2, $t1
-	srli.d	$t1, $t5, 22
-	ldx.w	$a5, $a5, $t1
-	vld	$vr0, $a4, 144
-	vinsgr2vr.w	$vr1, $a6, 0
-	vinsgr2vr.w	$vr1, $t6, 1
-	vinsgr2vr.w	$vr1, $fp, 2
-	vinsgr2vr.w	$vr1, $a3, 3
-	vxor.v	$vr0, $vr1, $vr0
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $s0, 1
-	vinsgr2vr.w	$vr1, $s2, 2
-	vinsgr2vr.w	$vr1, $a7, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $t3, 0
-	vinsgr2vr.w	$vr1, $s1, 1
-	vinsgr2vr.w	$vr1, $s3, 2
-	vinsgr2vr.w	$vr1, $a2, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $a0, 0
-	vinsgr2vr.w	$vr1, $t7, 1
-	vinsgr2vr.w	$vr1, $t8, 2
-	vinsgr2vr.w	$vr1, $a5, 3
-	vxor.v	$vr0, $vr0, $vr1
+	ldx.w	$a3, $t0, $a3
+	srli.d	$a4, $t3, 6
+	andi	$a4, $a4, 1020
+	ldx.w	$a4, $t6, $a4
+	srli.d	$a6, $t5, 14
+	andi	$a6, $a6, 1020
+	ldx.w	$a2, $a2, $a6
+	srli.d	$a6, $t7, 22
+	ldx.w	$a5, $a5, $a6
+	xor	$a0, $a3, $a0
+	xor	$a0, $a0, $a4
+	xor	$a0, $a0, $a2
+	xor	$t3, $a0, $a5
 .LBB1_8:
-	vst	$vr0, $a1, 0
+	st.w	$t1, $a1, 0
+	st.w	$t2, $a1, 4
+	st.w	$t4, $a1, 8
+	st.w	$t3, $a1, 12
 	ori	$a0, $zero, 1
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
@@ -1442,15 +1439,20 @@ decrypt:                                # @decrypt
 	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	vld	$vr0, $a0, 0
-	vld	$vr1, $a2, 264
-	vxor.v	$vr0, $vr1, $vr0
-	addi.d	$a4, $a2, 280
+	ld.w	$a3, $a0, 0
+	ld.w	$a4, $a2, 264
+	ld.w	$a5, $a0, 4
+	ld.w	$a6, $a2, 268
+	ld.w	$a7, $a0, 8
+	ld.w	$t0, $a2, 272
+	ld.w	$a0, $a0, 12
+	ld.w	$t4, $a2, 276
+	xor	$t2, $a4, $a3
+	xor	$t1, $a6, $a5
+	xor	$t3, $t0, $a7
+	xor	$t4, $t4, $a0
 	ld.w	$a5, $a2, 4
-	vpickve2gr.w	$t2, $vr0, 0
-	vpickve2gr.w	$t1, $vr0, 1
-	vpickve2gr.w	$t3, $vr0, 2
-	vpickve2gr.w	$t4, $vr0, 3
+	addi.d	$a4, $a2, 280
 	ori	$a6, $zero, 10
 	lu12i.w	$a0, -4096
 	pcalau12i	$a3, %pc_hi20(it_tab)
@@ -1463,158 +1465,148 @@ decrypt:                                # @decrypt
 	ori	$a4, $zero, 14
 	bne	$a5, $a4, .LBB2_8
 # %bb.5:
-	ld.w	$a5, $a2, 280
-	move	$a6, $a0
-	lu32i.d	$a6, 0
-	and	$t0, $t2, $a6
+	ld.w	$a7, $a2, 280
+	move	$t6, $a0
+	lu32i.d	$t6, 0
+	and	$t8, $t2, $t6
 	andi	$a4, $t2, 255
 	slli.d	$a4, $a4, 2
-	ldx.w	$a7, $a3, $a4
-	and	$a4, $t1, $a6
-	srli.d	$t2, $a4, 22
-	addi.d	$t5, $a3, 2047
-	addi.d	$a4, $t5, 1025
-	ldx.w	$t2, $a4, $t2
-	xor	$a7, $a7, $a5
-	ld.w	$a5, $a2, 284
-	andi	$t1, $t1, 255
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a3, $t1
-	and	$t6, $t3, $a6
-	srli.d	$t6, $t6, 22
-	ldx.w	$t6, $a4, $t6
-	xor	$t7, $t1, $a5
-	ld.w	$a5, $a2, 288
-	andi	$t1, $t3, 255
-	slli.d	$t1, $t1, 2
-	ldx.w	$t1, $a3, $t1
-	and	$t3, $t4, $a6
-	srli.d	$t3, $t3, 22
-	ldx.w	$t8, $a4, $t3
-	xor	$t3, $t1, $a5
-	ld.w	$t1, $a2, 292
-	andi	$a5, $t4, 255
-	slli.d	$t4, $a5, 2
-	vsrli.w	$vr1, $vr0, 8
-	vpickve2gr.b	$a5, $vr1, 12
-	andi	$fp, $a5, 255
-	addi.d	$a5, $a3, 1024
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a5, $fp
-	vpickve2gr.b	$s0, $vr1, 0
-	andi	$s0, $s0, 255
+	ldx.w	$t0, $a3, $a4
+	and	$t7, $t4, $t6
+	addi.d	$a4, $a3, 1024
+	srli.d	$a5, $t4, 6
+	andi	$a5, $a5, 1020
+	ldx.w	$t5, $a4, $a5
+	and	$fp, $t3, $t6
+	srli.d	$a5, $t3, 14
+	andi	$a6, $a5, 1020
+	addi.d	$s0, $a3, 2047
+	addi.d	$a5, $s0, 1
+	ldx.w	$s1, $a5, $a6
+	and	$a6, $t1, $t6
+	srli.d	$s2, $a6, 22
+	addi.d	$a6, $s0, 1025
+	ldx.w	$s0, $a6, $s2
+	xor	$a7, $t0, $a7
+	xor	$a7, $a7, $t5
+	xor	$a7, $a7, $s1
+	xor	$t0, $a7, $s0
+	and	$a7, $t0, $t6
+	ld.w	$t5, $a2, 284
+	andi	$s0, $t1, 255
 	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a5, $s0
-	vpickve2gr.b	$s1, $vr1, 4
-	andi	$s1, $s1, 255
+	ldx.w	$s0, $a3, $s0
+	srli.d	$s1, $t2, 6
+	andi	$s1, $s1, 1020
+	ldx.w	$s1, $a4, $s1
+	srli.d	$s2, $t4, 14
+	andi	$s2, $s2, 1020
+	ldx.w	$s2, $a5, $s2
+	srli.d	$fp, $fp, 22
+	ldx.w	$fp, $a6, $fp
+	xor	$t5, $s0, $t5
+	xor	$t5, $t5, $s1
+	xor	$t5, $t5, $s2
+	xor	$t5, $t5, $fp
+	and	$fp, $t5, $t6
+	ld.w	$s0, $a2, 288
+	andi	$s1, $t3, 255
 	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a5, $s1
-	ldx.w	$s2, $a3, $t4
-	xor	$t4, $a7, $fp
-	xor	$t7, $t7, $s0
-	xor	$fp, $t3, $s1
-	vpickve2gr.b	$a7, $vr1, 8
-	andi	$a7, $a7, 255
-	slli.d	$a7, $a7, 2
-	ldx.w	$s0, $a5, $a7
-	vsrli.w	$vr0, $vr0, 16
-	vpickve2gr.b	$a7, $vr0, 8
-	andi	$t3, $a7, 255
-	addi.d	$a7, $t5, 1
-	slli.d	$t3, $t3, 2
-	ldx.w	$t3, $a7, $t3
-	vpickve2gr.b	$t5, $vr0, 12
-	andi	$t5, $t5, 255
-	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $a7, $t5
-	vpickve2gr.b	$s1, $vr0, 0
-	andi	$s1, $s1, 255
-	slli.d	$s1, $s1, 2
-	ldx.w	$s1, $a7, $s1
-	xor	$t3, $t4, $t3
-	xor	$t3, $t3, $t2
-	and	$t4, $t3, $a6
-	xor	$t2, $t7, $t5
-	xor	$t5, $t2, $t6
-	and	$t2, $t5, $a6
-	xor	$t6, $fp, $s1
-	xor	$t6, $t6, $t8
-	and	$t7, $t6, $a6
-	vpickve2gr.b	$t8, $vr0, 4
-	andi	$t8, $t8, 255
-	slli.d	$t8, $t8, 2
-	ldx.w	$t8, $a7, $t8
-	srli.d	$t0, $t0, 22
-	ldx.w	$t0, $a4, $t0
-	xor	$t1, $s2, $t1
-	xor	$t1, $t1, $s0
-	xor	$t1, $t1, $t8
-	xor	$t0, $t1, $t0
-	and	$a6, $t0, $a6
-	ld.w	$t1, $a2, 296
-	andi	$t8, $t3, 255
-	slli.d	$t8, $t8, 2
-	ldx.w	$t8, $a3, $t8
-	srli.d	$fp, $t0, 6
-	andi	$fp, $fp, 1020
-	ldx.w	$fp, $a5, $fp
-	srli.d	$s0, $t6, 14
-	andi	$s0, $s0, 1020
-	ldx.w	$s0, $a7, $s0
-	srli.d	$t2, $t2, 22
-	ldx.w	$t2, $a4, $t2
-	xor	$t1, $t8, $t1
-	xor	$t1, $t1, $fp
-	xor	$t1, $t1, $s0
-	xor	$t2, $t1, $t2
-	ld.w	$t1, $a2, 300
-	andi	$t8, $t5, 255
-	slli.d	$t8, $t8, 2
-	ldx.w	$t8, $a3, $t8
-	srli.d	$fp, $t3, 6
-	andi	$fp, $fp, 1020
-	ldx.w	$fp, $a5, $fp
-	srli.d	$s0, $t0, 14
-	andi	$s0, $s0, 1020
-	ldx.w	$s0, $a7, $s0
+	ldx.w	$s1, $a3, $s1
+	srli.d	$s2, $t1, 6
+	andi	$s2, $s2, 1020
+	ldx.w	$s2, $a4, $s2
+	srli.d	$t2, $t2, 14
+	andi	$t2, $t2, 1020
+	ldx.w	$t2, $a5, $t2
 	srli.d	$t7, $t7, 22
-	ldx.w	$t7, $a4, $t7
-	xor	$t1, $t8, $t1
+	ldx.w	$t7, $a6, $t7
+	xor	$s0, $s1, $s0
+	xor	$s0, $s0, $s2
+	xor	$t2, $s0, $t2
+	xor	$t7, $t2, $t7
+	and	$s0, $t7, $t6
+	ld.w	$t2, $a2, 292
+	andi	$t4, $t4, 255
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a3, $t4
+	srli.d	$t3, $t3, 6
+	andi	$t3, $t3, 1020
+	ldx.w	$t3, $a4, $t3
+	srli.d	$t1, $t1, 14
+	andi	$t1, $t1, 1020
+	ldx.w	$t1, $a5, $t1
+	srli.d	$t8, $t8, 22
+	ldx.w	$t8, $a6, $t8
+	xor	$t2, $t4, $t2
+	xor	$t2, $t2, $t3
+	xor	$t1, $t2, $t1
+	xor	$t4, $t1, $t8
+	and	$t3, $t4, $t6
+	ld.w	$t1, $a2, 296
+	andi	$t2, $t0, 255
+	slli.d	$t2, $t2, 2
+	ldx.w	$t2, $a3, $t2
+	srli.d	$t6, $t4, 6
+	andi	$t6, $t6, 1020
+	ldx.w	$t6, $a4, $t6
+	srli.d	$t8, $t7, 14
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a5, $t8
+	srli.d	$fp, $fp, 22
+	ldx.w	$fp, $a6, $fp
+	xor	$t1, $t2, $t1
+	xor	$t1, $t1, $t6
+	xor	$t1, $t1, $t8
+	xor	$t2, $t1, $fp
+	ld.w	$t1, $a2, 300
+	andi	$t6, $t5, 255
+	slli.d	$t6, $t6, 2
+	ldx.w	$t6, $a3, $t6
+	srli.d	$t8, $t0, 6
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a4, $t8
+	srli.d	$fp, $t4, 14
+	andi	$fp, $fp, 1020
+	ldx.w	$fp, $a5, $fp
+	srli.d	$s0, $s0, 22
+	ldx.w	$s0, $a6, $s0
+	xor	$t1, $t6, $t1
+	xor	$t1, $t1, $t8
 	xor	$t1, $t1, $fp
 	xor	$t1, $t1, $s0
-	xor	$t1, $t1, $t7
-	ld.w	$t7, $a2, 304
-	andi	$t8, $t6, 255
+	ld.w	$t6, $a2, 304
+	andi	$t8, $t7, 255
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $a3, $t8
 	srli.d	$fp, $t5, 6
 	andi	$fp, $fp, 1020
-	ldx.w	$fp, $a5, $fp
-	srli.d	$t3, $t3, 14
-	andi	$t3, $t3, 1020
-	ldx.w	$t3, $a7, $t3
-	srli.d	$a6, $a6, 22
-	ldx.w	$a6, $a4, $a6
-	xor	$t7, $t8, $t7
-	xor	$t7, $t7, $fp
-	xor	$t3, $t7, $t3
-	xor	$t3, $t3, $a6
-	ld.w	$a6, $a2, 308
-	andi	$t0, $t0, 255
-	slli.d	$t0, $t0, 2
-	ldx.w	$t0, $a3, $t0
-	srli.d	$t6, $t6, 6
+	ldx.w	$fp, $a4, $fp
+	srli.d	$t0, $t0, 14
+	andi	$t0, $t0, 1020
+	ldx.w	$t0, $a5, $t0
+	srli.d	$t3, $t3, 22
+	ldx.w	$t3, $a6, $t3
+	xor	$t6, $t8, $t6
+	xor	$t6, $t6, $fp
+	xor	$t0, $t6, $t0
+	xor	$t3, $t0, $t3
+	ld.w	$t0, $a2, 308
+	andi	$t4, $t4, 255
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a3, $t4
+	srli.d	$t6, $t7, 6
 	andi	$t6, $t6, 1020
-	ldx.w	$a5, $a5, $t6
+	ldx.w	$a4, $a4, $t6
 	srli.d	$t5, $t5, 14
 	andi	$t5, $t5, 1020
-	ldx.w	$a7, $a7, $t5
-	srli.d	$t4, $t4, 22
-	ldx.w	$a4, $a4, $t4
-	xor	$a6, $t0, $a6
-	xor	$a5, $a6, $a5
-	xor	$a5, $a5, $a7
-	xor	$t4, $a5, $a4
+	ldx.w	$a5, $a5, $t5
+	srli.d	$a7, $a7, 22
+	ldx.w	$a6, $a6, $a7
+	xor	$a7, $t4, $t0
+	xor	$a4, $a7, $a4
+	xor	$a4, $a4, $a5
+	xor	$t4, $a4, $a6
 	addi.d	$a4, $a2, 312
 .LBB2_6:
 	ld.w	$a7, $a4, 0
@@ -2177,13 +2169,13 @@ decrypt:                                # @decrypt
 	xor	$t5, $s0, $t5
 	xor	$t5, $t5, $t7
 	xor	$t5, $t5, $t6
-	xor	$s0, $t5, $t2
-	and	$t7, $s0, $a0
+	xor	$t7, $t5, $t2
+	and	$s0, $t7, $a0
 	ld.w	$t2, $a4, 96
 	andi	$t5, $t3, 255
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $a3, $t5
-	srli.d	$t6, $s0, 6
+	srli.d	$t6, $t7, 6
 	andi	$t6, $t6, 1020
 	ldx.w	$t6, $a6, $t6
 	srli.d	$s2, $t8, 14
@@ -2203,7 +2195,7 @@ decrypt:                                # @decrypt
 	srli.d	$s2, $t3, 6
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a6, $s2
-	srli.d	$s3, $s0, 14
+	srli.d	$s3, $t7, 14
 	andi	$s3, $s3, 1020
 	ldx.w	$s3, $a7, $s3
 	srli.d	$s1, $s1, 22
@@ -2223,17 +2215,17 @@ decrypt:                                # @decrypt
 	srli.d	$t3, $t3, 14
 	andi	$t3, $t3, 1020
 	ldx.w	$t3, $a7, $t3
-	srli.d	$t7, $t7, 22
-	ldx.w	$t7, $t0, $t7
+	srli.d	$s0, $s0, 22
+	ldx.w	$s0, $t0, $s0
 	xor	$s1, $s2, $s1
 	xor	$s1, $s1, $s3
 	xor	$t3, $s1, $t3
-	xor	$t7, $t3, $t7
-	and	$s1, $t7, $a0
-	ld.w	$t3, $a4, 108
-	andi	$s0, $s0, 255
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a3, $s0
+	xor	$t3, $t3, $s0
+	and	$s0, $t3, $a0
+	ld.w	$s1, $a4, 108
+	andi	$t7, $t7, 255
+	slli.d	$t7, $t7, 2
+	ldx.w	$t7, $a3, $t7
 	srli.d	$t8, $t8, 6
 	andi	$t8, $t8, 1020
 	ldx.w	$t8, $a6, $t8
@@ -2242,47 +2234,47 @@ decrypt:                                # @decrypt
 	ldx.w	$t4, $a7, $t4
 	srli.d	$t1, $t1, 22
 	ldx.w	$t1, $t0, $t1
-	xor	$t3, $s0, $t3
-	xor	$t3, $t3, $t8
-	xor	$t3, $t3, $t4
-	xor	$s0, $t3, $t1
-	and	$t8, $s0, $a0
+	xor	$t7, $t7, $s1
+	xor	$t7, $t7, $t8
+	xor	$t4, $t7, $t4
+	xor	$t4, $t4, $t1
+	and	$s1, $t4, $a0
 	ld.w	$t1, $a4, 112
-	andi	$t3, $t5, 255
-	slli.d	$t3, $t3, 2
-	ldx.w	$t3, $a3, $t3
-	srli.d	$t4, $s0, 6
-	andi	$t4, $t4, 1020
-	ldx.w	$t4, $a6, $t4
-	srli.d	$s2, $t7, 14
+	andi	$t7, $t5, 255
+	slli.d	$t7, $t7, 2
+	ldx.w	$t7, $a3, $t7
+	srli.d	$t8, $t4, 6
+	andi	$t8, $t8, 1020
+	ldx.w	$t8, $a6, $t8
+	srli.d	$s2, $t3, 14
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a7, $s2
 	srli.d	$fp, $fp, 22
 	ldx.w	$fp, $t0, $fp
-	xor	$t1, $t3, $t1
-	xor	$t1, $t1, $t4
+	xor	$t1, $t7, $t1
+	xor	$t1, $t1, $t8
 	xor	$t1, $t1, $s2
-	xor	$t3, $t1, $fp
-	and	$t1, $t3, $a0
-	ld.w	$t4, $a4, 116
+	xor	$t7, $t1, $fp
+	and	$t1, $t7, $a0
+	ld.w	$t8, $a4, 116
 	andi	$fp, $t6, 255
 	slli.d	$fp, $fp, 2
 	ldx.w	$fp, $a3, $fp
 	srli.d	$s2, $t5, 6
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a6, $s2
-	srli.d	$s3, $s0, 14
+	srli.d	$s3, $t4, 14
 	andi	$s3, $s3, 1020
 	ldx.w	$s3, $a7, $s3
-	srli.d	$s1, $s1, 22
-	ldx.w	$s1, $t0, $s1
-	xor	$t4, $fp, $t4
-	xor	$t4, $t4, $s2
-	xor	$t4, $t4, $s3
-	xor	$t4, $t4, $s1
-	and	$fp, $t4, $a0
-	ld.w	$s1, $a4, 120
-	andi	$s2, $t7, 255
+	srli.d	$s0, $s0, 22
+	ldx.w	$s0, $t0, $s0
+	xor	$t8, $fp, $t8
+	xor	$t8, $t8, $s2
+	xor	$t8, $t8, $s3
+	xor	$t8, $t8, $s0
+	and	$s0, $t8, $a0
+	ld.w	$fp, $a4, 120
+	andi	$s2, $t3, 255
 	slli.d	$s2, $s2, 2
 	ldx.w	$s2, $a3, $s2
 	srli.d	$s3, $t6, 6
@@ -2291,170 +2283,172 @@ decrypt:                                # @decrypt
 	srli.d	$t5, $t5, 14
 	andi	$t5, $t5, 1020
 	ldx.w	$t5, $a7, $t5
-	srli.d	$t8, $t8, 22
-	ldx.w	$t8, $t0, $t8
-	xor	$s1, $s2, $s1
-	xor	$s1, $s1, $s3
-	xor	$t5, $s1, $t5
-	xor	$t8, $t5, $t8
-	and	$s1, $t8, $a0
-	ld.w	$t5, $a4, 124
-	andi	$s0, $s0, 255
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $a3, $s0
-	srli.d	$t7, $t7, 6
-	andi	$t7, $t7, 1020
-	ldx.w	$t7, $a6, $t7
+	srli.d	$s1, $s1, 22
+	ldx.w	$s1, $t0, $s1
+	xor	$fp, $s2, $fp
+	xor	$fp, $fp, $s3
+	xor	$t5, $fp, $t5
+	xor	$fp, $t5, $s1
+	and	$t5, $fp, $a0
+	ld.w	$s1, $a4, 124
+	andi	$t4, $t4, 255
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a3, $t4
+	srli.d	$t3, $t3, 6
+	andi	$t3, $t3, 1020
+	ldx.w	$t3, $a6, $t3
 	srli.d	$t6, $t6, 14
 	andi	$t6, $t6, 1020
 	ldx.w	$t6, $a7, $t6
 	srli.d	$t2, $t2, 22
 	ldx.w	$t2, $t0, $t2
-	xor	$t5, $s0, $t5
-	xor	$t5, $t5, $t7
-	xor	$t5, $t5, $t6
-	xor	$t7, $t5, $t2
-	and	$s0, $t7, $a0
-	ld.w	$t2, $a4, 128
-	andi	$t5, $t3, 255
-	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $a3, $t5
-	srli.d	$t6, $t7, 6
-	andi	$t6, $t6, 1020
-	ldx.w	$t6, $a6, $t6
-	srli.d	$s2, $t8, 14
+	xor	$t4, $t4, $s1
+	xor	$t3, $t4, $t3
+	xor	$t3, $t3, $t6
+	xor	$t2, $t3, $t2
+	and	$t6, $t2, $a0
+	ld.w	$t3, $a4, 128
+	andi	$t4, $t7, 255
+	slli.d	$t4, $t4, 2
+	ldx.w	$t4, $a3, $t4
+	srli.d	$s1, $t2, 6
+	andi	$s1, $s1, 1020
+	ldx.w	$s1, $a6, $s1
+	srli.d	$s2, $fp, 14
 	andi	$s2, $s2, 1020
 	ldx.w	$s2, $a7, $s2
-	srli.d	$fp, $fp, 22
-	ldx.w	$fp, $t0, $fp
-	xor	$t2, $t5, $t2
-	xor	$t2, $t2, $t6
-	xor	$t2, $t2, $s2
-	xor	$t5, $t2, $fp
-	and	$t2, $t5, $a0
-	ld.w	$t6, $a4, 132
-	andi	$fp, $t4, 255
-	slli.d	$fp, $fp, 2
-	ldx.w	$fp, $a3, $fp
-	srli.d	$s2, $t3, 6
-	andi	$s2, $s2, 1020
-	ldx.w	$s2, $a6, $s2
-	srli.d	$s3, $t7, 14
-	andi	$s3, $s3, 1020
-	ldx.w	$s3, $a7, $s3
-	srli.d	$s1, $s1, 22
-	ldx.w	$s1, $t0, $s1
-	xor	$t6, $fp, $t6
-	xor	$t6, $t6, $s2
-	xor	$t6, $t6, $s3
-	xor	$t6, $t6, $s1
-	and	$fp, $t6, $a0
-	ld.w	$s1, $a4, 136
-	andi	$s2, $t8, 255
-	slli.d	$s2, $s2, 2
-	ldx.w	$s2, $a3, $s2
-	srli.d	$s3, $t4, 6
-	andi	$s3, $s3, 1020
-	ldx.w	$s3, $a6, $s3
-	srli.d	$t3, $t3, 14
-	andi	$t3, $t3, 1020
-	ldx.w	$t3, $a7, $t3
 	srli.d	$s0, $s0, 22
 	ldx.w	$s0, $t0, $s0
+	xor	$t3, $t4, $t3
+	xor	$t3, $t3, $s1
+	xor	$t3, $t3, $s2
+	xor	$t3, $t3, $s0
+	and	$t4, $t3, $a0
+	ld.w	$s0, $a4, 132
+	andi	$s1, $t8, 255
+	slli.d	$s1, $s1, 2
+	ldx.w	$s1, $a3, $s1
+	srli.d	$s2, $t7, 6
+	andi	$s2, $s2, 1020
+	ldx.w	$s2, $a6, $s2
+	srli.d	$s3, $t2, 14
+	andi	$s3, $s3, 1020
+	ldx.w	$s3, $a7, $s3
+	srli.d	$t5, $t5, 22
+	ldx.w	$t5, $t0, $t5
+	xor	$s0, $s1, $s0
+	xor	$s0, $s0, $s2
+	xor	$s0, $s0, $s3
+	xor	$t5, $s0, $t5
+	and	$s0, $t5, $a0
+	ld.w	$s1, $a4, 136
+	andi	$s2, $fp, 255
+	slli.d	$s2, $s2, 2
+	ldx.w	$s2, $a3, $s2
+	srli.d	$s3, $t8, 6
+	andi	$s3, $s3, 1020
+	ldx.w	$s3, $a6, $s3
+	srli.d	$t7, $t7, 14
+	andi	$t7, $t7, 1020
+	ldx.w	$t7, $a7, $t7
+	srli.d	$t6, $t6, 22
+	ldx.w	$t6, $t0, $t6
 	xor	$s1, $s2, $s1
 	xor	$s1, $s1, $s3
-	xor	$t3, $s1, $t3
-	xor	$t3, $t3, $s0
-	and	$s0, $t3, $a0
+	xor	$t7, $s1, $t7
+	xor	$t6, $t7, $t6
+	and	$t7, $t6, $a0
 	ld.w	$s1, $a4, 140
-	andi	$t7, $t7, 255
-	slli.d	$t7, $t7, 2
-	ldx.w	$a3, $a3, $t7
-	srli.d	$t7, $t8, 6
-	andi	$t7, $t7, 1020
-	ldx.w	$a6, $a6, $t7
-	srli.d	$t4, $t4, 14
-	andi	$t4, $t4, 1020
-	ldx.w	$a7, $a7, $t4
+	andi	$t2, $t2, 255
+	slli.d	$t2, $t2, 2
+	ldx.w	$a3, $a3, $t2
+	srli.d	$t2, $fp, 6
+	andi	$t2, $t2, 1020
+	ldx.w	$a6, $a6, $t2
+	srli.d	$t2, $t8, 14
+	andi	$t2, $t2, 1020
+	ldx.w	$a7, $a7, $t2
 	srli.d	$t1, $t1, 22
 	ldx.w	$t0, $t0, $t1
 	xor	$a3, $a3, $s1
 	xor	$a3, $a3, $a6
 	xor	$a3, $a3, $a7
 	xor	$a3, $a3, $t0
-	and	$a6, $a3, $a0
-	andi	$a0, $t5, 255
-	slli.d	$a0, $a0, 2
-	pcalau12i	$a7, %pc_hi20(il_tab)
-	addi.d	$a7, $a7, %pc_lo12(il_tab)
-	ldx.w	$t0, $a7, $a0
-	srli.d	$a0, $a3, 6
-	andi	$a0, $a0, 1020
-	addi.d	$t1, $a7, 1024
-	ldx.w	$t4, $t1, $a0
-	srli.d	$a0, $t3, 14
-	andi	$a0, $a0, 1020
-	add.d	$a2, $a7, $a2
-	ldx.w	$t7, $a2, $a0
-	srli.d	$a0, $fp, 22
-	add.d	$a5, $a7, $a5
-	ldx.w	$a0, $a5, $a0
-	andi	$t8, $t6, 255
-	slli.d	$t8, $t8, 2
-	ldx.w	$t8, $a7, $t8
-	srli.d	$fp, $t5, 6
+	ld.w	$a6, $a4, 144
+	and	$a0, $a3, $a0
+	andi	$a7, $t3, 255
+	slli.d	$a7, $a7, 2
+	pcalau12i	$t0, %pc_hi20(il_tab)
+	addi.d	$t0, $t0, %pc_lo12(il_tab)
+	ldx.w	$a7, $t0, $a7
+	srli.d	$t1, $a3, 6
+	andi	$t1, $t1, 1020
+	addi.d	$t8, $t0, 1024
+	ldx.w	$t1, $t8, $t1
+	srli.d	$t2, $t6, 14
+	andi	$t2, $t2, 1020
+	add.d	$a2, $t0, $a2
+	ldx.w	$t2, $a2, $t2
+	srli.d	$fp, $s0, 22
+	add.d	$a5, $t0, $a5
+	ldx.w	$fp, $a5, $fp
+	xor	$a6, $a7, $a6
+	xor	$a6, $a6, $t1
+	xor	$a6, $a6, $t2
+	xor	$t2, $a6, $fp
+	ld.w	$a6, $a4, 148
+	andi	$a7, $t5, 255
+	slli.d	$a7, $a7, 2
+	ldx.w	$a7, $t0, $a7
+	srli.d	$t1, $t3, 6
+	andi	$t1, $t1, 1020
+	ldx.w	$t1, $t8, $t1
+	srli.d	$fp, $a3, 14
 	andi	$fp, $fp, 1020
-	ldx.w	$fp, $t1, $fp
-	srli.d	$s1, $a3, 14
-	andi	$s1, $s1, 1020
-	ldx.w	$s1, $a2, $s1
-	srli.d	$s0, $s0, 22
-	ldx.w	$s0, $a5, $s0
-	andi	$s2, $t3, 255
-	slli.d	$s2, $s2, 2
-	ldx.w	$s2, $a7, $s2
-	srli.d	$s3, $t6, 6
-	andi	$s3, $s3, 1020
-	ldx.w	$s3, $t1, $s3
-	srli.d	$t5, $t5, 14
-	andi	$t5, $t5, 1020
-	ldx.w	$t5, $a2, $t5
-	srli.d	$a6, $a6, 22
-	ldx.w	$a6, $a5, $a6
+	ldx.w	$fp, $a2, $fp
+	srli.d	$t7, $t7, 22
+	ldx.w	$t7, $a5, $t7
+	xor	$a6, $a7, $a6
+	xor	$a6, $a6, $t1
+	xor	$a6, $a6, $fp
+	xor	$t1, $a6, $t7
+	ld.w	$a6, $a4, 152
+	andi	$a7, $t6, 255
+	slli.d	$a7, $a7, 2
+	ldx.w	$a7, $t0, $a7
+	srli.d	$t7, $t5, 6
+	andi	$t7, $t7, 1020
+	ldx.w	$t7, $t8, $t7
+	srli.d	$t3, $t3, 14
+	andi	$t3, $t3, 1020
+	ldx.w	$t3, $a2, $t3
+	srli.d	$a0, $a0, 22
+	ldx.w	$a0, $a5, $a0
+	xor	$a6, $a7, $a6
+	xor	$a6, $a6, $t7
+	xor	$a6, $a6, $t3
+	xor	$t3, $a6, $a0
+	ld.w	$a0, $a4, 156
 	andi	$a3, $a3, 255
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a7, $a3
-	srli.d	$a7, $t3, 6
-	andi	$a7, $a7, 1020
-	ldx.w	$a7, $t1, $a7
-	srli.d	$t1, $t6, 14
-	andi	$t1, $t1, 1020
-	ldx.w	$a2, $a2, $t1
-	srli.d	$t1, $t2, 22
-	ldx.w	$a5, $a5, $t1
-	vld	$vr0, $a4, 144
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr1, $t8, 1
-	vinsgr2vr.w	$vr1, $s2, 2
-	vinsgr2vr.w	$vr1, $a3, 3
-	vxor.v	$vr0, $vr1, $vr0
-	vinsgr2vr.w	$vr1, $t4, 0
-	vinsgr2vr.w	$vr1, $fp, 1
-	vinsgr2vr.w	$vr1, $s3, 2
-	vinsgr2vr.w	$vr1, $a7, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $t7, 0
-	vinsgr2vr.w	$vr1, $s1, 1
-	vinsgr2vr.w	$vr1, $t5, 2
-	vinsgr2vr.w	$vr1, $a2, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $a0, 0
-	vinsgr2vr.w	$vr1, $s0, 1
-	vinsgr2vr.w	$vr1, $a6, 2
-	vinsgr2vr.w	$vr1, $a5, 3
-	vxor.v	$vr0, $vr0, $vr1
+	ldx.w	$a3, $t0, $a3
+	srli.d	$a4, $t6, 6
+	andi	$a4, $a4, 1020
+	ldx.w	$a4, $t8, $a4
+	srli.d	$a6, $t5, 14
+	andi	$a6, $a6, 1020
+	ldx.w	$a2, $a2, $a6
+	srli.d	$a6, $t4, 22
+	ldx.w	$a5, $a5, $a6
+	xor	$a0, $a3, $a0
+	xor	$a0, $a0, $a4
+	xor	$a0, $a0, $a2
+	xor	$t4, $a0, $a5
 .LBB2_8:
-	vst	$vr0, $a1, 0
+	st.w	$t2, $a1, 0
+	st.w	$t1, $a1, 4
+	st.w	$t3, $a1, 8
+	st.w	$t4, $a1, 12
 	ori	$a0, $zero, 1
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload

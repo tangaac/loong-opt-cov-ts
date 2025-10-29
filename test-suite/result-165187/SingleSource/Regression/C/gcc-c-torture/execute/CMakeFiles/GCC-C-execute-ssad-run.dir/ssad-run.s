@@ -5,34 +5,130 @@
 	.type	bar,@function
 bar:                                    # @bar
 # %bb.0:
-	move	$a4, $zero
-	ori	$a5, $zero, 16
-	vrepli.b	$vr0, 0
+	move	$a5, $zero
+	addi.d	$a1, $a1, 7
+	ori	$a4, $zero, 16
 	.p2align	4, , 16
 .LBB0_1:                                # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a0, 0
-	vld	$vr2, $a1, 0
-	vabsd.b	$vr1, $vr1, $vr2
-	vilvh.b	$vr2, $vr0, $vr1
-	vilvl.h	$vr3, $vr0, $vr2
-	vilvl.b	$vr1, $vr0, $vr1
-	vilvl.h	$vr4, $vr0, $vr1
-	vilvh.h	$vr2, $vr0, $vr2
-	vilvh.h	$vr1, $vr0, $vr1
-	vadd.w	$vr1, $vr1, $vr2
-	vadd.w	$vr2, $vr4, $vr3
-	vadd.w	$vr1, $vr2, $vr1
-	vhaddw.d.w	$vr1, $vr1, $vr1
-	vhaddw.q.d	$vr1, $vr1, $vr1
-	vpickve2gr.d	$a6, $vr1, 0
-	add.d	$a4, $a6, $a4
+	ld.b	$a6, $a0, 0
+	ld.b	$a7, $a1, -7
+	sub.d	$a6, $a6, $a7
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 1
+	ld.b	$t1, $a1, -6
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a6, $a5
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 2
+	ld.b	$t1, $a1, -5
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 3
+	ld.b	$t1, $a1, -4
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 4
+	ld.b	$t1, $a1, -3
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 5
+	ld.b	$t1, $a1, -2
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 6
+	ld.b	$t1, $a1, -1
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 7
+	ld.b	$t1, $a1, 0
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 8
+	ld.b	$t1, $a1, 1
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 9
+	ld.b	$t1, $a1, 2
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 10
+	ld.b	$t1, $a1, 3
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 11
+	ld.b	$t1, $a1, 4
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 12
+	ld.b	$t1, $a1, 5
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 13
+	ld.b	$t1, $a1, 6
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 14
+	ld.b	$t1, $a1, 7
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	ld.b	$t0, $a0, 15
+	ld.b	$t1, $a1, 8
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
+	sub.d	$a6, $t0, $t1
+	srai.d	$a7, $a6, 63
+	xor	$a6, $a6, $a7
+	sub.d	$a6, $a6, $a7
+	add.d	$a5, $a5, $a6
 	addi.d	$a0, $a0, 16
-	addi.w	$a5, $a5, -1
+	addi.w	$a4, $a4, -1
 	add.d	$a1, $a1, $a2
-	bnez	$a5, .LBB0_1
+	bnez	$a4, .LBB0_1
 # %bb.2:                                # %foo.exit
-	st.w	$a4, $a3, 0
+	st.w	$a5, $a3, 0
 	ret
 .Lfunc_end0:
 	.size	bar, .Lfunc_end0-bar

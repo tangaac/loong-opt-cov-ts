@@ -1126,7 +1126,7 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 	ld.d	$s7, $s6, 104
 	ld.w	$a3, $s6, 72
 	move	$s0, $a2
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$s8, $a1, 2
 	ldx.w	$s4, $s7, $s8
 	slt	$a1, $a2, $a3
@@ -1139,12 +1139,12 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 	ld.d	$s5, $s6, 264
 	ld.d	$s3, $a0, 248
 	ld.d	$a1, $a0, 360
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 368
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$s1, $s6, 376
 	sub.d	$a0, $s2, $s4
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
 	slli.d	$a0, $a0, 3
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
@@ -1152,16 +1152,15 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 	jirl	$ra, $ra, 0
 	beq	$s2, $s4, .LBB6_2
 # %bb.1:                                # %.lr.ph.i.preheader
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $zero
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 .LBB6_2:                                # %_ZSt9__fill_a1IPddEvT_S1_RKT0_.exit
-	ld.d	$t2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	bge	$a2, $s0, .LBB6_7
 # %bb.3:                                # %.lr.ph
 	ld.d	$a1, $s6, 112
@@ -1218,34 +1217,36 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 .LBB6_7:                                # %.preheader
 	bge	$s4, $s2, .LBB6_11
 # %bb.8:                                # %.lr.ph69
-	ori	$a2, $zero, 6
-	slli.d	$a1, $s4, 3
-	ld.d	$t0, $sp, 16                    # 8-byte Folded Reload
-	bgeu	$t0, $a2, .LBB6_12
+	ori	$a1, $zero, 6
+	move	$a3, $s4
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	bgeu	$a2, $a1, .LBB6_12
 .LBB6_9:                                # %scalar.ph.preheader
-	slli.d	$a4, $s4, 3
-	alsl.d	$a2, $s4, $t2, 3
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	alsl.d	$a3, $s4, $a3, 3
-	sub.d	$a1, $a4, $a1
-	add.d	$a1, $a0, $a1
-	sub.d	$a4, $s2, $s4
+	slli.d	$a4, $a3, 3
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	alsl.d	$a1, $a3, $a1, 3
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	alsl.d	$a2, $a3, $a2, 3
+	slli.d	$a5, $s4, 3
+	sub.d	$a4, $a4, $a5
+	add.d	$a4, $a0, $a4
+	sub.d	$a3, $s2, $a3
 	.p2align	4, , 16
 .LBB6_10:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $fp, 16
 	fld.d	$fa1, $fp, 24
-	fld.d	$fa2, $a1, 0
-	fld.d	$fa3, $a2, 0
+	fld.d	$fa2, $a4, 0
+	fld.d	$fa3, $a1, 0
 	fadd.d	$fa1, $fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa2
 	fmadd.d	$fa0, $fa0, $fa3, $fa1
-	fst.d	$fa0, $a3, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a3, $a3, 8
-	addi.d	$a4, $a4, -1
+	fst.d	$fa0, $a2, 0
 	addi.d	$a1, $a1, 8
-	bnez	$a4, .LBB6_10
+	addi.d	$a2, $a2, 8
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 8
+	bnez	$a3, .LBB6_10
 .LBB6_11:                               # %._crit_edge
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
@@ -1262,57 +1263,52 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .LBB6_12:                               # %vector.memcheck
-	addi.d	$a2, $fp, 16
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
-	alsl.d	$a3, $s4, $a4, 3
-	alsl.d	$a4, $s2, $a4, 3
-	addi.d	$a5, $fp, 32
-	sltu	$a5, $a3, $a5
-	sltu	$a6, $a2, $a4
-	and	$a5, $a5, $a6
-	bnez	$a5, .LBB6_9
+	addi.d	$a1, $fp, 16
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	alsl.d	$a2, $s4, $a3, 3
+	alsl.d	$a5, $s2, $a3, 3
+	addi.d	$a3, $fp, 32
+	sltu	$a3, $a2, $a3
+	sltu	$a4, $a1, $a5
+	and	$a4, $a3, $a4
+	move	$a3, $s4
+	bnez	$a4, .LBB6_9
 # %bb.13:                               # %vector.memcheck
-	alsl.d	$a5, $s4, $t2, 3
-	alsl.d	$a6, $s2, $t2, 3
-	sltu	$a3, $a3, $a6
-	sltu	$a4, $a5, $a4
-	and	$a3, $a3, $a4
-	bnez	$a3, .LBB6_9
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	alsl.d	$a4, $s4, $a3, 3
+	alsl.d	$a3, $s2, $a3, 3
+	sltu	$a3, $a2, $a3
+	sltu	$a5, $a4, $a5
+	and	$a5, $a3, $a5
+	move	$a3, $s4
+	bnez	$a5, .LBB6_9
 # %bb.14:                               # %vector.ph
 	fld.d	$fa0, $fp, 24
-	move	$a3, $t0
-	bstrins.d	$a3, $zero, 1, 0
-	add.d	$s4, $a3, $s4
+	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
+	bstrins.d	$a5, $zero, 0, 0
+	add.d	$a3, $a5, $s4
 	fadd.d	$fa0, $fa0, $fa0
 	vreplvei.d	$vr0, $vr0, 0
-	addi.d	$a6, $a1, 16
-	add.d	$a4, $t2, $a6
-	addi.d	$a5, $a0, 16
-	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a6, $a7, $a6
-	move	$a7, $a3
+	move	$a6, $a5
+	move	$a7, $a0
 	.p2align	4, , 16
 .LBB6_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, 0
+	vld	$vr1, $a1, 0
+	vld	$vr2, $a7, 0
+	vld	$vr3, $a4, 0
 	vreplvei.d	$vr1, $vr1, 0
-	vld	$vr2, $a5, -16
-	vld	$vr3, $a5, 0
-	vld	$vr4, $a4, -16
-	vld	$vr5, $a4, 0
 	vfmul.d	$vr2, $vr0, $vr2
-	vfmul.d	$vr3, $vr0, $vr3
-	vfmadd.d	$vr2, $vr1, $vr4, $vr2
-	vfmadd.d	$vr1, $vr1, $vr5, $vr3
-	vst	$vr2, $a6, -16
-	vst	$vr1, $a6, 0
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	addi.d	$a7, $a7, -4
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB6_15
+	vfmadd.d	$vr1, $vr1, $vr3, $vr2
+	vst	$vr1, $a2, 0
+	addi.d	$a7, $a7, 16
+	addi.d	$a6, $a6, -2
+	addi.d	$a2, $a2, 16
+	addi.d	$a4, $a4, 16
+	bnez	$a6, .LBB6_15
 # %bb.16:                               # %middle.block
-	bne	$t0, $a3, .LBB6_9
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	bne	$a1, $a5, .LBB6_9
 	b	.LBB6_11
 .Lfunc_end6:
 	.size	_ZN3QCS10setVelDiffEii, .Lfunc_end6-_ZN3QCS10setVelDiffEii

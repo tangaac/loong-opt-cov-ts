@@ -272,8 +272,6 @@ output_voronoi_diagram:                 # @output_voronoi_diagram
 	st.d	$s8, $sp, 264                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 256                  # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 248                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 240                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 232                  # 8-byte Folded Spill
 	move	$s0, $a2
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(voronoi)
@@ -301,119 +299,122 @@ output_voronoi_diagram:                 # @output_voronoi_diagram
 	ld.d	$a1, $a1, 0
 	vld	$vr1, $a2, 8
 	ld.d	$a2, $a2, 0
-	st.d	$a3, $sp, 80
-	vst	$vr0, $sp, 192
+	st.d	$a3, $sp, 96
+	vst	$vr0, $sp, 208
 	vld	$vr0, $a0, 0
-	st.d	$a1, $sp, 184
-	st.d	$a2, $sp, 160
-	vst	$vr1, $sp, 168
-	vst	$vr0, $sp, 64
-	vld	$vr0, $sp, 184
-	ld.d	$a0, $sp, 200
-	ld.d	$a1, $sp, 176
-	vld	$vr1, $sp, 160
-	vst	$vr0, $sp, 128
-	st.d	$a0, $sp, 144
-	st.d	$a1, $sp, 112
-	vst	$vr1, $sp, 96
-	addi.d	$a0, $sp, 208
-	addi.d	$a1, $sp, 128
-	addi.d	$a2, $sp, 96
+	st.d	$a1, $sp, 200
+	st.d	$a2, $sp, 176
+	vst	$vr1, $sp, 184
+	vst	$vr0, $sp, 80
+	vld	$vr0, $sp, 200
+	ld.d	$a0, $sp, 216
+	ld.d	$a1, $sp, 192
+	vld	$vr1, $sp, 176
+	vst	$vr0, $sp, 144
+	st.d	$a0, $sp, 160
+	st.d	$a1, $sp, 128
+	vst	$vr1, $sp, 112
+	addi.d	$a0, $sp, 224
+	addi.d	$a1, $sp, 144
+	addi.d	$a2, $sp, 112
 	pcaddu18i	$ra, %call36(V2_sub)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 160
-	addi.d	$a2, $sp, 184
-	addi.d	$a3, $sp, 64
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 176
+	addi.d	$a2, $sp, 200
+	addi.d	$a3, $sp, 80
 	pcaddu18i	$ra, %call36(circle_center)
 	jirl	$ra, $ra, 0
-	fld.d	$fs1, $sp, 128
-	fld.d	$fs2, $sp, 136
-	fld.d	$fs3, $sp, 144
-	ld.d	$a0, $sp, 176
-	vld	$vr0, $sp, 160
-	ld.d	$a1, $sp, 200
-	vld	$vr1, $sp, 184
-	st.d	$a0, $sp, 112
-	vst	$vr0, $sp, 96
-	st.d	$a1, $sp, 80
-	vst	$vr1, $sp, 64
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
-	addi.d	$a2, $sp, 64
+	fld.d	$fs1, $sp, 160
+	vld	$vr0, $sp, 144
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	ld.d	$a0, $sp, 192
+	vld	$vr0, $sp, 176
+	ld.d	$a1, $sp, 216
+	vld	$vr1, $sp, 200
+	st.d	$a0, $sp, 128
+	vst	$vr0, $sp, 112
+	st.d	$a1, $sp, 96
+	vst	$vr1, $sp, 80
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 80
 	pcaddu18i	$ra, %call36(V2_sum)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 128
-	fld.d	$fa1, $sp, 144
-	vst	$vr0, $sp, 96
-	fst.d	$fa1, $sp, 112
-	addi.d	$a0, $sp, 128
+	vld	$vr0, $sp, 144
+	fld.d	$fa1, $sp, 160
+	vst	$vr0, $sp, 112
+	fst.d	$fa1, $sp, 128
+	addi.d	$a0, $sp, 144
 	vldi	$vr0, -928
-	addi.d	$a1, $sp, 96
+	addi.d	$a1, $sp, 112
 	pcaddu18i	$ra, %call36(V2_times)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $sp, 144
-	vld	$vr1, $sp, 128
-	fst.d	$fs1, $sp, 96
-	fst.d	$fs2, $sp, 104
-	fst.d	$fs3, $sp, 112
-	vst	$vr1, $sp, 64
-	fst.d	$fa0, $sp, 80
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
-	addi.d	$a2, $sp, 64
+	vld	$vr0, $sp, 144
+	fld.d	$fa1, $sp, 160
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr2, $sp, 112
+	fst.d	$fs1, $sp, 128
+	vst	$vr0, $sp, 80
+	fst.d	$fa1, $sp, 96
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 80
 	pcaddu18i	$ra, %call36(V2_sub)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 128
-	fld.d	$fa1, $sp, 144
-	vst	$vr0, $sp, 128
-	fst.d	$fa1, $sp, 144
-	addi.d	$a0, $sp, 128
+	vld	$vr0, $sp, 144
+	fld.d	$fa1, $sp, 160
+	vst	$vr0, $sp, 144
+	fst.d	$fa1, $sp, 160
+	addi.d	$a0, $sp, 144
 	pcaddu18i	$ra, %call36(V2_magn)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 224
-	vld	$vr1, $sp, 208
+	ld.d	$a0, $sp, 240
+	vld	$vr1, $sp, 224
 	vldi	$vr2, -912
 	fadd.d	$fs0, $fa0, $fa2
-	st.d	$a0, $sp, 144
-	vst	$vr1, $sp, 128
-	addi.d	$a0, $sp, 128
+	st.d	$a0, $sp, 160
+	vst	$vr1, $sp, 144
+	addi.d	$a0, $sp, 144
 	pcaddu18i	$ra, %call36(V2_magn)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 224
-	vld	$vr1, $sp, 208
+	ld.d	$a0, $sp, 240
+	vld	$vr1, $sp, 224
 	fdiv.d	$fs0, $fs0, $fa0
-	st.d	$a0, $sp, 112
-	vst	$vr1, $sp, 96
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
+	st.d	$a0, $sp, 128
+	vst	$vr1, $sp, 112
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
 	pcaddu18i	$ra, %call36(V2_cross)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 128
-	fld.d	$fa1, $sp, 144
-	vst	$vr0, $sp, 96
-	fst.d	$fa1, $sp, 112
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
+	vld	$vr0, $sp, 144
+	fld.d	$fa1, $sp, 160
+	vst	$vr0, $sp, 112
+	fst.d	$fa1, $sp, 128
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(V2_times)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $sp, 144
-	vld	$vr1, $sp, 128
-	fst.d	$fs1, $sp, 96
-	fst.d	$fs2, $sp, 104
-	fst.d	$fs3, $sp, 112
-	vst	$vr1, $sp, 64
-	fst.d	$fa0, $sp, 80
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
-	addi.d	$a2, $sp, 64
+	vld	$vr0, $sp, 144
+	fld.d	$fa1, $sp, 160
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
+	vst	$vr2, $sp, 112
+	fst.d	$fs1, $sp, 128
+	vst	$vr0, $sp, 80
+	fst.d	$fa1, $sp, 96
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 80
 	pcaddu18i	$ra, %call36(V2_sum)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $sp, 128
-	fld.d	$fa1, $sp, 136
-	fcvt.s.d	$fa2, $fs1
-	fcvt.s.d	$fa3, $fs2
+	fld.d	$fa0, $sp, 144
+	fld.d	$fa1, $sp, 152
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vreplvei.d	$vr2, $vr3, 0
+	fcvt.s.d	$fa2, $fa2
+	vreplvei.d	$vr3, $vr3, 1
+	fcvt.s.d	$fa3, $fa3
 	fcvt.s.d	$fa0, $fa0
 	fcvt.s.d	$fa1, $fa1
 	fabs.s	$fa4, $fa2
@@ -551,48 +552,48 @@ output_voronoi_diagram:                 # @output_voronoi_diagram
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $s2, 0
 	ld.d	$a3, $s1, 0
-	st.d	$a1, $sp, 112
+	st.d	$a1, $sp, 128
 	vld	$vr0, $a0, 0
-	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 112
 	ld.d	$a0, $a2, 16
-	st.d	$a0, $sp, 80
+	st.d	$a0, $sp, 96
 	vld	$vr0, $a2, 0
-	vst	$vr0, $sp, 64
+	vst	$vr0, $sp, 80
 	ld.d	$a0, $a3, 16
 	vld	$vr0, $a3, 0
-	st.d	$a0, $sp, 56
-	vst	$vr0, $sp, 40
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
-	addi.d	$a2, $sp, 64
-	addi.d	$a3, $sp, 40
+	st.d	$a0, $sp, 72
+	vst	$vr0, $sp, 56
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 80
+	addi.d	$a3, $sp, 56
 	pcaddu18i	$ra, %call36(circle_center)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
 	ld.d	$a1, $a0, 16
 	ld.d	$a2, $s7, 0
 	ld.d	$a3, $s8, 0
-	st.d	$a1, $sp, 112
+	st.d	$a1, $sp, 128
 	vld	$vr0, $a0, 0
-	vst	$vr0, $sp, 96
+	vst	$vr0, $sp, 112
 	ld.d	$a0, $a2, 16
-	st.d	$a0, $sp, 80
+	st.d	$a0, $sp, 96
 	vld	$vr0, $a2, 0
-	fld.d	$fs0, $sp, 128
-	vst	$vr0, $sp, 64
+	fld.d	$fs0, $sp, 144
+	vst	$vr0, $sp, 80
 	ld.d	$a0, $a3, 16
 	vld	$vr0, $a3, 0
-	fld.d	$fs1, $sp, 136
-	st.d	$a0, $sp, 56
-	vst	$vr0, $sp, 40
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $sp, 96
-	addi.d	$a2, $sp, 64
-	addi.d	$a3, $sp, 40
+	fld.d	$fs1, $sp, 152
+	st.d	$a0, $sp, 72
+	vst	$vr0, $sp, 56
+	addi.d	$a0, $sp, 144
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 80
+	addi.d	$a3, $sp, 56
 	pcaddu18i	$ra, %call36(circle_center)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $sp, 128
-	fld.d	$fa1, $sp, 136
+	fld.d	$fa0, $sp, 144
+	fld.d	$fa1, $sp, 152
 	fcvt.s.d	$fa2, $fs0
 	fcvt.s.d	$fa3, $fs1
 	fcvt.s.d	$fa0, $fa0
@@ -626,8 +627,6 @@ output_voronoi_diagram:                 # @output_voronoi_diagram
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(zero_seen)
 	jirl	$ra, $ra, 0
-	fld.d	$fs3, $sp, 232                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 240                  # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 248                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 256                  # 8-byte Folded Reload
 	ld.d	$s8, $sp, 264                   # 8-byte Folded Reload

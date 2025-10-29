@@ -4743,7 +4743,7 @@ dmxpy:                                  # @dmxpy
 	bgeu	$s6, $a0, .LBB6_38
 # %bb.3:
 	move	$a0, $zero
-.LBB6_4:                                # %.lr.ph.preheader756
+.LBB6_4:                                # %.lr.ph.preheader753
 	alsl.d	$a1, $a0, $s1, 2
 	alsl.d	$a4, $a0, $a5, 2
 	sub.d	$a0, $s6, $a0
@@ -4776,7 +4776,7 @@ dmxpy:                                  # @dmxpy
 	alsl.d	$a0, $a1, $s5, 2
 	mul.w	$a4, $a1, $a3
 	alsl.d	$a1, $a6, $s5, 2
-	ori	$a7, $zero, 16
+	ori	$a7, $zero, 12
 	mul.w	$a6, $a6, $a3
 	bgeu	$s6, $a7, .LBB6_54
 # %bb.9:
@@ -4848,7 +4848,7 @@ dmxpy:                                  # @dmxpy
 	bgeu	$s6, $t4, .LBB6_43
 # %bb.16:
 	move	$t4, $zero
-.LBB6_17:                               # %scalar.ph437.preheader
+.LBB6_17:                               # %scalar.ph434.preheader
 	slli.d	$t5, $t4, 2
 	alsl.d	$t3, $t3, $t5, 2
 	add.d	$t3, $a5, $t3
@@ -4861,7 +4861,7 @@ dmxpy:                                  # @dmxpy
 	alsl.d	$t5, $t4, $s1, 2
 	sub.d	$t1, $t1, $t4
 	.p2align	4, , 16
-.LBB6_18:                               # %scalar.ph437
+.LBB6_18:                               # %scalar.ph434
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $t5, 0
 	fld.s	$fa1, $a0, 0
@@ -4944,17 +4944,17 @@ dmxpy:                                  # @dmxpy
 	alsl.d	$s1, $s1, $a5, 2
 	alsl.d	$s2, $ra, $a5, 2
 	alsl.d	$s3, $a0, $a5, 2
-	ori	$s7, $zero, 20
+	ori	$s7, $zero, 16
 	alsl.d	$s4, $a1, $a5, 2
 	bgeu	$s6, $s7, .LBB6_61
 # %bb.22:
 	move	$s8, $zero
 	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
-.LBB6_23:                               # %scalar.ph542.preheader
+.LBB6_23:                               # %scalar.ph539.preheader
 	slli.d	$a1, $s8, 2
 	sub.d	$a0, $s6, $s8
 	.p2align	4, , 16
-.LBB6_24:                               # %scalar.ph542
+.LBB6_24:                               # %scalar.ph539
                                         # =>This Inner Loop Header: Depth=1
 	fldx.s	$fa0, $a4, $a1
 	fld.s	$fa1, $a7, 0
@@ -5411,7 +5411,7 @@ dmxpy:                                  # @dmxpy
 	move	$t8, $s6
 	b	.LBB6_35
 	.p2align	4, , 16
-.LBB6_32:                               # %vector.ph698
+.LBB6_32:                               # %vector.ph695
                                         #   in Loop: Header=BB6_30 Depth=1
 	vldrepl.w	$vr0, $a2, 0
 	vldrepl.w	$vr1, $a4, 0
@@ -5440,7 +5440,7 @@ dmxpy:                                  # @dmxpy
 	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB6_33:                               # %vector.body701
+.LBB6_33:                               # %vector.body698
                                         #   Parent Loop BB6_30 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr16, $a1, 0
@@ -5511,7 +5511,7 @@ dmxpy:                                  # @dmxpy
 	addi.d	$a1, $a1, 16
 	addi.d	$a0, $a0, 16
 	bnez	$a2, .LBB6_33
-# %bb.34:                               # %middle.block753
+# %bb.34:                               # %middle.block750
                                         #   in Loop: Header=BB6_30 Depth=1
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $a2
@@ -5524,7 +5524,7 @@ dmxpy:                                  # @dmxpy
 	move	$t7, $t4
 	move	$t8, $s0
 	beq	$a2, $a1, .LBB6_29
-.LBB6_35:                               # %scalar.ph696.preheader
+.LBB6_35:                               # %scalar.ph693.preheader
                                         #   in Loop: Header=BB6_30 Depth=1
 	slli.d	$fp, $a0, 2
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -5548,7 +5548,7 @@ dmxpy:                                  # @dmxpy
 	ld.d	$t0, $sp, 200                   # 8-byte Folded Reload
 	st.d	$t8, $sp, 216                   # 8-byte Folded Spill
 	.p2align	4, , 16
-.LBB6_36:                               # %scalar.ph696
+.LBB6_36:                               # %scalar.ph693
                                         #   Parent Loop BB6_30 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fldx.s	$fa0, $s1, $fp
@@ -5710,7 +5710,7 @@ dmxpy:                                  # @dmxpy
 # %bb.42:                               # %middle.block
 	bne	$a0, $s6, .LBB6_4
 	b	.LBB6_6
-.LBB6_43:                               # %vector.memcheck396
+.LBB6_43:                               # %vector.memcheck393
 	alsl.d	$fp, $t1, $s1, 2
 	addi.d	$t4, $a6, 4
 	sltu	$t4, $s1, $t4
@@ -5718,25 +5718,25 @@ dmxpy:                                  # @dmxpy
 	and	$t5, $t4, $t5
 	move	$t4, $zero
 	bnez	$t5, .LBB6_17
-# %bb.44:                               # %vector.memcheck396
+# %bb.44:                               # %vector.memcheck393
 	addi.d	$t5, $a4, 4
 	sltu	$t5, $s1, $t5
 	sltu	$t6, $a4, $fp
 	and	$t5, $t5, $t6
 	bnez	$t5, .LBB6_17
-# %bb.45:                               # %vector.memcheck396
+# %bb.45:                               # %vector.memcheck393
 	addi.d	$t5, $a1, 4
 	sltu	$t5, $s1, $t5
 	sltu	$t6, $a1, $fp
 	and	$t5, $t5, $t6
 	bnez	$t5, .LBB6_17
-# %bb.46:                               # %vector.memcheck396
+# %bb.46:                               # %vector.memcheck393
 	addi.d	$t5, $a0, 4
 	sltu	$t5, $s1, $t5
 	sltu	$t6, $a0, $fp
 	and	$t5, $t5, $t6
 	bnez	$t5, .LBB6_17
-# %bb.47:                               # %vector.memcheck396
+# %bb.47:                               # %vector.memcheck393
 	alsl.d	$t5, $t3, $a5, 2
 	add.d	$t6, $t3, $t1
 	alsl.d	$t6, $t6, $a5, 2
@@ -5744,7 +5744,7 @@ dmxpy:                                  # @dmxpy
 	sltu	$t7, $t5, $fp
 	and	$t6, $t6, $t7
 	bnez	$t6, .LBB6_17
-# %bb.48:                               # %vector.memcheck396
+# %bb.48:                               # %vector.memcheck393
 	alsl.d	$t6, $t2, $a5, 2
 	add.d	$t7, $t2, $t1
 	alsl.d	$t7, $t7, $a5, 2
@@ -5752,7 +5752,7 @@ dmxpy:                                  # @dmxpy
 	sltu	$t8, $t6, $fp
 	and	$t7, $t7, $t8
 	bnez	$t7, .LBB6_17
-# %bb.49:                               # %vector.memcheck396
+# %bb.49:                               # %vector.memcheck393
 	alsl.d	$t7, $t0, $a5, 2
 	add.d	$t8, $t0, $t1
 	alsl.d	$t8, $t8, $a5, 2
@@ -5760,7 +5760,7 @@ dmxpy:                                  # @dmxpy
 	sltu	$s0, $t7, $fp
 	and	$t8, $t8, $s0
 	bnez	$t8, .LBB6_17
-# %bb.50:                               # %vector.memcheck396
+# %bb.50:                               # %vector.memcheck393
 	alsl.d	$t8, $a7, $a5, 2
 	add.d	$s0, $a7, $t1
 	alsl.d	$s0, $s0, $a5, 2
@@ -5768,7 +5768,7 @@ dmxpy:                                  # @dmxpy
 	sltu	$fp, $t8, $fp
 	and	$fp, $s0, $fp
 	bnez	$fp, .LBB6_17
-# %bb.51:                               # %vector.ph439
+# %bb.51:                               # %vector.ph436
 	vldrepl.w	$vr0, $a0, 0
 	vldrepl.w	$vr1, $a1, 0
 	vldrepl.w	$vr2, $a4, 0
@@ -5778,7 +5778,7 @@ dmxpy:                                  # @dmxpy
 	move	$fp, $s1
 	move	$s0, $t4
 	.p2align	4, , 16
-.LBB6_52:                               # %vector.body442
+.LBB6_52:                               # %vector.body439
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr4, $t8, 0
 	vld	$vr5, $fp, 0
@@ -5801,76 +5801,66 @@ dmxpy:                                  # @dmxpy
 	addi.d	$t8, $t8, 16
 	addi.d	$fp, $fp, 16
 	bnez	$s0, .LBB6_52
-# %bb.53:                               # %middle.block458
+# %bb.53:                               # %middle.block455
 	bne	$t4, $t1, .LBB6_17
 	b	.LBB6_19
 .LBB6_54:                               # %vector.memcheck354
-	alsl.d	$t0, $s6, $s1, 2
+	alsl.d	$t2, $s6, $s1, 2
 	addi.d	$a7, $a1, 4
 	sltu	$a7, $s1, $a7
-	sltu	$t1, $a1, $t0
-	and	$t1, $a7, $t1
+	sltu	$t0, $a1, $t2
+	and	$t0, $a7, $t0
 	move	$a7, $zero
-	bnez	$t1, .LBB6_10
+	bnez	$t0, .LBB6_10
 # %bb.55:                               # %vector.memcheck354
-	addi.d	$t1, $a0, 4
-	sltu	$t1, $s1, $t1
-	sltu	$t2, $a0, $t0
-	and	$t1, $t1, $t2
-	bnez	$t1, .LBB6_10
+	addi.d	$t0, $a0, 4
+	sltu	$t0, $s1, $t0
+	sltu	$t1, $a0, $t2
+	and	$t0, $t0, $t1
+	bnez	$t0, .LBB6_10
 # %bb.56:                               # %vector.memcheck354
-	alsl.d	$t1, $a6, $a5, 2
-	add.d	$t2, $a6, $s6
-	alsl.d	$t2, $t2, $a5, 2
-	sltu	$t2, $s1, $t2
-	sltu	$t3, $t1, $t0
-	and	$t2, $t2, $t3
-	bnez	$t2, .LBB6_10
+	alsl.d	$t0, $a6, $a5, 2
+	add.d	$t1, $a6, $s6
+	alsl.d	$t1, $t1, $a5, 2
+	sltu	$t1, $s1, $t1
+	sltu	$t3, $t0, $t2
+	and	$t1, $t1, $t3
+	bnez	$t1, .LBB6_10
 # %bb.57:                               # %vector.memcheck354
-	alsl.d	$t2, $a4, $a5, 2
+	alsl.d	$t1, $a4, $a5, 2
 	add.d	$t3, $a4, $s6
 	alsl.d	$t3, $t3, $a5, 2
 	sltu	$t3, $s1, $t3
-	sltu	$t0, $t2, $t0
-	and	$t0, $t3, $t0
-	bnez	$t0, .LBB6_10
+	sltu	$t2, $t1, $t2
+	and	$t2, $t3, $t2
+	bnez	$t2, .LBB6_10
 # %bb.58:                               # %vector.ph377
-	bstrpick.d	$a7, $s6, 30, 3
-	slli.d	$a7, $a7, 3
 	vldrepl.w	$vr0, $a0, 0
 	vldrepl.w	$vr1, $a1, 0
-	addi.d	$t0, $s1, 16
-	addi.d	$t1, $t1, 16
-	addi.d	$t2, $t2, 16
+	bstrpick.d	$a7, $s6, 30, 2
+	slli.d	$a7, $a7, 2
+	move	$t2, $s1
 	move	$t3, $a7
 	.p2align	4, , 16
 .LBB6_59:                               # %vector.body380
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $t2, -16
-	vld	$vr3, $t0, -16
+	vld	$vr2, $t1, 0
+	vld	$vr3, $t2, 0
 	vld	$vr4, $t0, 0
-	vld	$vr5, $t2, 0
 	vfmul.s	$vr2, $vr0, $vr2
 	vfadd.s	$vr2, $vr3, $vr2
-	vld	$vr3, $t1, -16
-	vld	$vr6, $t1, 0
-	vfmul.s	$vr5, $vr0, $vr5
-	vfadd.s	$vr4, $vr4, $vr5
-	vfmul.s	$vr3, $vr1, $vr3
-	vfmul.s	$vr5, $vr1, $vr6
+	vfmul.s	$vr3, $vr1, $vr4
 	vfadd.s	$vr2, $vr2, $vr3
-	vfadd.s	$vr3, $vr4, $vr5
-	vst	$vr2, $t0, -16
-	vst	$vr3, $t0, 0
-	addi.d	$t3, $t3, -8
-	addi.d	$t0, $t0, 32
-	addi.d	$t1, $t1, 32
-	addi.d	$t2, $t2, 32
+	vst	$vr2, $t2, 0
+	addi.d	$t3, $t3, -4
+	addi.d	$t0, $t0, 16
+	addi.d	$t1, $t1, 16
+	addi.d	$t2, $t2, 16
 	bnez	$t3, .LBB6_59
-# %bb.60:                               # %middle.block393
+# %bb.60:                               # %middle.block390
 	bne	$a7, $s6, .LBB6_10
 	b	.LBB6_12
-.LBB6_61:                               # %vector.memcheck461
+.LBB6_61:                               # %vector.memcheck458
 	st.d	$a4, $sp, 256                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 248                   # 8-byte Folded Spill
 	move	$a4, $s6
@@ -5882,49 +5872,49 @@ dmxpy:                                  # @dmxpy
 	and	$a4, $a4, $s5
 	move	$s8, $zero
 	bnez	$a4, .LBB6_83
-# %bb.62:                               # %vector.memcheck461
+# %bb.62:                               # %vector.memcheck458
 	addi.d	$a4, $t5, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $t5, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.63:                               # %vector.memcheck461
+# %bb.63:                               # %vector.memcheck458
 	addi.d	$a4, $t4, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $t4, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.64:                               # %vector.memcheck461
+# %bb.64:                               # %vector.memcheck458
 	addi.d	$a4, $t3, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $t3, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.65:                               # %vector.memcheck461
+# %bb.65:                               # %vector.memcheck458
 	addi.d	$a4, $t2, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $t2, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.66:                               # %vector.memcheck461
+# %bb.66:                               # %vector.memcheck458
 	addi.d	$a4, $t1, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $t1, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.67:                               # %vector.memcheck461
+# %bb.67:                               # %vector.memcheck458
 	addi.d	$a4, $t0, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $t0, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.68:                               # %vector.memcheck461
+# %bb.68:                               # %vector.memcheck458
 	addi.d	$a4, $a7, 4
 	sltu	$a4, $s6, $a4
 	sltu	$s5, $a7, $s7
 	and	$a4, $a4, $s5
 	bnez	$a4, .LBB6_83
-# %bb.69:                               # %vector.memcheck461
+# %bb.69:                               # %vector.memcheck458
 	st.d	$s8, $sp, 264                   # 8-byte Folded Spill
 	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $s8
@@ -5934,21 +5924,21 @@ dmxpy:                                  # @dmxpy
 	and	$a1, $a1, $a4
 	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	bnez	$a1, .LBB6_81
-# %bb.70:                               # %vector.memcheck461
+# %bb.70:                               # %vector.memcheck458
 	add.d	$a0, $a0, $s8
 	alsl.d	$a0, $a0, $a5, 2
 	sltu	$a0, $s6, $a0
 	sltu	$a1, $s3, $s7
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB6_81
-# %bb.71:                               # %vector.memcheck461
+# %bb.71:                               # %vector.memcheck458
 	add.d	$a0, $ra, $s8
 	alsl.d	$a0, $a0, $a5, 2
 	sltu	$a0, $s6, $a0
 	sltu	$a1, $s2, $s7
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB6_81
-# %bb.72:                               # %vector.memcheck461
+# %bb.72:                               # %vector.memcheck458
 	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s8
 	alsl.d	$a0, $a0, $a5, 2
@@ -5957,7 +5947,7 @@ dmxpy:                                  # @dmxpy
 	and	$a0, $a0, $a1
 	move	$a4, $s6
 	bnez	$a0, .LBB6_82
-# %bb.73:                               # %vector.memcheck461
+# %bb.73:                               # %vector.memcheck458
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s8
 	alsl.d	$a0, $a0, $a5, 2
@@ -5966,7 +5956,7 @@ dmxpy:                                  # @dmxpy
 	and	$a0, $a0, $a1
 	move	$s6, $s8
 	bnez	$a0, .LBB6_80
-# %bb.74:                               # %vector.memcheck461
+# %bb.74:                               # %vector.memcheck458
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s6
 	alsl.d	$a0, $a0, $a5, 2
@@ -5975,7 +5965,7 @@ dmxpy:                                  # @dmxpy
 	and	$a0, $a0, $a1
 	ld.d	$s8, $sp, 264                   # 8-byte Folded Reload
 	bnez	$a0, .LBB6_23
-# %bb.75:                               # %vector.memcheck461
+# %bb.75:                               # %vector.memcheck458
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s6
 	alsl.d	$a0, $a0, $a5, 2
@@ -5983,7 +5973,7 @@ dmxpy:                                  # @dmxpy
 	sltu	$a1, $t8, $s7
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB6_23
-# %bb.76:                               # %vector.memcheck461
+# %bb.76:                               # %vector.memcheck458
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s6
 	alsl.d	$a0, $a0, $a5, 2
@@ -5991,7 +5981,7 @@ dmxpy:                                  # @dmxpy
 	sltu	$a1, $t7, $s7
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB6_23
-# %bb.77:                               # %vector.ph544
+# %bb.77:                               # %vector.ph541
 	move	$a0, $zero
 	bstrpick.d	$a1, $s6, 30, 2
 	slli.d	$s8, $a1, 2
@@ -6007,7 +5997,7 @@ dmxpy:                                  # @dmxpy
 	bstrpick.d	$a1, $a1, 32, 4
 	slli.d	$a1, $a1, 4
 	.p2align	4, , 16
-.LBB6_78:                               # %vector.body547
+.LBB6_78:                               # %vector.body544
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr8, $t7, $a0
 	vldx	$vr9, $a4, $a0
@@ -6037,7 +6027,7 @@ dmxpy:                                  # @dmxpy
 	vstx	$vr8, $a4, $a0
 	addi.d	$a0, $a0, 16
 	bne	$a1, $a0, .LBB6_78
-# %bb.79:                               # %middle.block575
+# %bb.79:                               # %middle.block572
 	bne	$s8, $s6, .LBB6_23
 	b	.LBB6_25
 .LBB6_80:

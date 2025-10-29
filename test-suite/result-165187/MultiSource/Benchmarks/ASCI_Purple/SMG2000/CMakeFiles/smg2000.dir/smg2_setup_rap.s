@@ -657,7 +657,7 @@ hypre_SMG2BuildRAPSym:                  # @hypre_SMG2BuildRAPSym
 	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
 	ld.d	$t0, $sp, 648                   # 8-byte Folded Reload
 	addi.d	$a0, $t0, 8
-	ori	$a5, $zero, 25
+	ori	$a5, $zero, 17
 	sltu	$a6, $a5, $t5
 	addi.d	$a7, $s0, -1
 	sltui	$a7, $a7, 1
@@ -2642,7 +2642,7 @@ hypre_SMG2BuildRAPNoSym:                # @hypre_SMG2BuildRAPNoSym
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$a3, $a2, $a1, 3
 	addi.d	$t7, $a3, 8
-	ori	$a1, $zero, 19
+	ori	$a1, $zero, 15
 	sltu	$a3, $a1, $t2
 	addi.d	$a4, $s6, -1
 	sltui	$a4, $a4, 1
@@ -3450,7 +3450,7 @@ hypre_SMG2BuildRAPNoSym:                # @hypre_SMG2BuildRAPNoSym
 	alsl.d	$a4, $a0, $a1, 3
 	addi.d	$a1, $a4, -8
 	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	ori	$a1, $zero, 23
+	ori	$a1, $zero, 17
 	sltu	$a4, $a1, $t2
 	addi.d	$a6, $s6, -1
 	sltui	$a6, $a6, 1
@@ -5019,7 +5019,7 @@ hypre_SMG2RAPPeriodicNoSym:             # @hypre_SMG2RAPPeriodicNoSym
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ori	$s5, $zero, 20
+	ori	$s5, $zero, 16
 	vrepli.b	$vr4, 0
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
@@ -5396,7 +5396,7 @@ hypre_SMG2RAPPeriodicNoSym:             # @hypre_SMG2RAPPeriodicNoSym
 	sltu	$s4, $s0, $a1
 	sltu	$s3, $t5, $s3
 	and	$s3, $s4, $s3
-	ori	$s5, $zero, 20
+	ori	$s5, $zero, 16
 	bnez	$s3, .LBB4_59
 # %bb.29:                               # %vector.memcheck
                                         #   in Loop: Header=BB4_12 Depth=3
@@ -5652,7 +5652,7 @@ hypre_SMG2RAPPeriodicNoSym:             # @hypre_SMG2RAPPeriodicNoSym
 	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB4_63
 .LBB4_58:                               #   in Loop: Header=BB4_12 Depth=3
-	ori	$s5, $zero, 20
+	ori	$s5, $zero, 16
 .LBB4_59:                               #   in Loop: Header=BB4_12 Depth=3
 	move	$t6, $s6
 	move	$s6, $s7

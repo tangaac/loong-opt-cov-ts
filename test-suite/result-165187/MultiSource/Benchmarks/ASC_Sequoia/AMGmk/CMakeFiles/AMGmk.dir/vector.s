@@ -718,7 +718,7 @@ hypre_SeqVectorAxpy:                    # @hypre_SeqVectorAxpy
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
-	ori	$a3, $zero, 6
+	ori	$a3, $zero, 4
 	bltu	$a2, $a3, .LBB12_4
 # %bb.2:                                # %vector.memcheck
 	alsl.d	$a3, $a2, $a0, 3

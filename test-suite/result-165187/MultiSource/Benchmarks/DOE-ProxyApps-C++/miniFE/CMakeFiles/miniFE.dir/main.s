@@ -3461,24 +3461,24 @@ _ZN6miniFE6driverIdiiEEiRK3BoxRS1_RNS_10ParametersER8YAML_Doc: # @_ZN6miniFE6dri
 .Ltmp284:                               # EH_LABEL
 # %bb.16:
 	fmov.d	$fs0, $fa0
-	ld.w	$a2, $sp, 636
-	vld	$vr0, $sp, 656
-	ld.w	$a5, $sp, 672
-	ld.w	$a3, $sp, 644
+	ld.w	$a4, $sp, 636
+	ld.w	$a2, $sp, 644
 	ld.w	$a0, $sp, 652
+	ld.w	$a1, $sp, 668
+	vld	$vr0, $sp, 656
+	ld.w	$a7, $sp, 664
+	ld.w	$a5, $sp, 660
+	ld.w	$a6, $sp, 672
+	ld.w	$t0, $sp, 656
 	vst	$vr0, $sp, 192
-	st.w	$a5, $sp, 208
-	ld.w	$a1, $sp, 676
-	vpickve2gr.w	$t0, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	sub.d	$t1, $a6, $t0
-	vpickve2gr.w	$a7, $vr0, 2
-	vpickve2gr.w	$a4, $vr0, 3
-	sub.d	$t2, $a4, $a7
-	sub.d	$t3, $a1, $a5
+	ld.w	$a3, $sp, 676
+	st.w	$a6, $sp, 208
+	sub.d	$t1, $a5, $t0
+	sub.d	$t2, $a1, $a7
+	sub.d	$t3, $a3, $a6
 	mul.d	$t1, $t2, $t1
 	mul.w	$t1, $t1, $t3
-	st.w	$a1, $sp, 212
+	st.w	$a3, $sp, 212
 	blez	$t1, .LBB7_28
 # %bb.17:
 	blez	$t0, .LBB7_19
@@ -3491,20 +3491,20 @@ _ZN6miniFE6driverIdiiEEiRK3BoxRS1_RNS_10ParametersER8YAML_Doc: # @_ZN6miniFE6dri
 	addi.d	$a7, $a7, -1
 	st.w	$a7, $sp, 200
 .LBB7_21:
-	blez	$a5, .LBB7_23
+	blez	$a6, .LBB7_23
 # %bb.22:
-	addi.d	$a5, $a5, -1
-	st.w	$a5, $sp, 208
+	addi.d	$a6, $a6, -1
+	st.w	$a6, $sp, 208
 .LBB7_23:
-	bge	$a6, $a2, .LBB7_69
+	bge	$a5, $a4, .LBB7_69
 # %bb.24:
-	addi.d	$a2, $a6, 1
-	st.w	$a2, $sp, 196
-	blt	$a4, $a3, .LBB7_70
+	addi.d	$a4, $a5, 1
+	st.w	$a4, $sp, 196
+	blt	$a1, $a2, .LBB7_70
 .LBB7_25:
-	bge	$a1, $a0, .LBB7_27
+	bge	$a3, $a0, .LBB7_27
 .LBB7_26:
-	addi.d	$a0, $a1, 1
+	addi.d	$a0, $a3, 1
 	st.w	$a0, $sp, 212
 .LBB7_27:
 .Ltmp285:                               # EH_LABEL
@@ -3856,11 +3856,11 @@ _ZN6miniFE6driverIdiiEEiRK3BoxRS1_RNS_10ParametersER8YAML_Doc: # @_ZN6miniFE6dri
 	ld.bu	$a0, $s3, 67
 	b	.LBB7_73
 .LBB7_69:
-	bge	$a4, $a3, .LBB7_25
+	bge	$a1, $a2, .LBB7_25
 .LBB7_70:
-	addi.d	$a2, $a4, 1
-	st.w	$a2, $sp, 204
-	blt	$a1, $a0, .LBB7_26
+	addi.d	$a1, $a1, 1
+	st.w	$a1, $sp, 204
+	blt	$a3, $a0, .LBB7_26
 	b	.LBB7_27
 .LBB7_71:
 .Ltmp347:                               # EH_LABEL
@@ -9004,7 +9004,7 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	addi.w	$fp, $fp, 3
 	move	$s1, $a0
 	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB11_18
+	blt	$a0, $a1, .LBB11_18
 # %bb.20:                               # %._crit_edge.us.us.us
                                         #   in Loop: Header=BB11_17 Depth=2
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
@@ -9012,7 +9012,7 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	move	$s5, $a1
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB11_17
+	blt	$a1, $a0, .LBB11_17
 # %bb.21:                               # %._crit_edge198.split.us.us.us
                                         #   in Loop: Header=BB11_16 Depth=1
 	addi.w	$a5, $a5, 1
@@ -9020,7 +9020,7 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	add.d	$s2, $s2, $a0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	bne	$a5, $a0, .LBB11_16
+	blt	$a5, $a0, .LBB11_16
 	b	.LBB11_23
 .LBB11_22:
 	move	$s0, $zero
@@ -11637,7 +11637,7 @@ _ZN6miniFE31rearrange_matrix_local_externalINS_9CSRMatrixIdiiEEEEvRT_: # @_ZN6mi
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $a3, 80
 	ld.d	$a3, $a3, 104
-	ori	$a4, $zero, 6
+	ori	$a4, $zero, 4
 	ori	$a5, $zero, 8
 	ori	$a6, $zero, 16
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
@@ -11828,7 +11828,7 @@ _ZN6miniFE31rearrange_matrix_local_externalINS_9CSRMatrixIdiiEEEEvRT_: # @_ZN6mi
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a2, $a1, 80
 	ld.d	$a6, $a1, 104
-	ori	$a7, $zero, 10
+	ori	$a7, $zero, 8
 	slli.d	$a5, $s6, 2
 	slli.d	$a4, $s6, 3
 	move	$a1, $s6
@@ -11993,10 +11993,9 @@ _ZN6miniFE31rearrange_matrix_local_externalINS_9CSRMatrixIdiiEEEEvRT_: # @_ZN6mi
 	ret
 .LBB14_81:                              # %vector.memcheck456
 	alsl.d	$a1, $s6, $a2, 2
-	sub.d	$a7, $a1, $s2
-	ori	$t0, $zero, 8
+	sub.d	$t0, $a1, $s2
 	move	$a1, $s6
-	bltu	$a7, $t0, .LBB14_57
+	bltu	$t0, $a7, .LBB14_57
 # %bb.82:                               # %vector.memcheck456
 	alsl.d	$a1, $s6, $a6, 3
 	sub.d	$a7, $a1, $s3
@@ -15612,7 +15611,7 @@ _ZN6miniFE15verify_solutionINS_6VectorIdiiEEEEiRKNS_23simple_mesh_descriptionINT
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $a0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	beq	$a5, $a0, .LBB17_56
+	bge	$a5, $a0, .LBB17_56
 .LBB17_5:                               # %.preheader269.us.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB17_7 Depth 2

@@ -15,343 +15,340 @@ upx_inflate2b:                          # @upx_inflate2b
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	move	$fp, $zero
+	move	$t8, $zero
 	move	$t3, $zero
-	move	$t7, $zero
+	move	$t6, $zero
 	bstrpick.d	$a7, $a1, 31, 0
-	addi.w	$t6, $zero, -1
+	addi.w	$t5, $zero, -1
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	lu12i.w	$t2, -1
 	ori	$t2, $t2, 768
-	ori	$t4, $zero, 8
-	ori	$t5, $zero, 32
-	bstrpick.d	$t8, $t7, 31, 0
-	slli.d	$s0, $fp, 33
-	beqz	$s0, .LBB0_2
+	ori	$t4, $zero, 32
+	bstrpick.d	$t7, $t6, 31, 0
+	slli.d	$fp, $t8, 33
+	beqz	$fp, .LBB0_2
 	.p2align	4, , 16
 .LBB0_1:
-	slli.d	$s0, $fp, 1
-	addi.w	$fp, $fp, 0
-	bltz	$fp, .LBB0_5
+	slli.d	$fp, $t8, 1
+	addi.w	$t8, $t8, 0
+	bltz	$t8, .LBB0_5
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_2:
 	bltu	$a1, $t0, .LBB0_68
 # %bb.3:
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB0_68
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB0_68
 # %bb.4:
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s0, $fp, 1
-	addi.d	$s0, $s0, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$fp, $t8, 1
+	addi.d	$fp, $fp, 1
 	addi.w	$t3, $t3, 4
-	addi.w	$fp, $fp, 0
-	bgez	$fp, .LBB0_8
+	addi.w	$t8, $t8, 0
+	bgez	$t8, .LBB0_8
 .LBB0_5:
 	bgeu	$t3, $a1, .LBB0_68
 # %bb.6:
-	ld.wu	$fp, $a3, 0
-	bgeu	$t8, $fp, .LBB0_68
+	ld.wu	$t8, $a3, 0
+	bgeu	$t7, $t8, .LBB0_68
 # %bb.7:
-	bstrpick.d	$fp, $t3, 31, 0
-	ldx.b	$fp, $a0, $fp
+	bstrpick.d	$t8, $t3, 31, 0
+	ldx.b	$t8, $a0, $t8
 	addi.w	$t3, $t3, 1
-	stx.b	$fp, $a2, $t8
-	addi.d	$t8, $t8, 1
+	stx.b	$t8, $a2, $t7
 	addi.d	$t7, $t7, 1
-	move	$fp, $s0
-	slli.d	$s0, $fp, 33
-	bnez	$s0, .LBB0_1
+	addi.d	$t6, $t6, 1
+	move	$t8, $fp
+	slli.d	$fp, $t8, 33
+	bnez	$fp, .LBB0_1
 	b	.LBB0_2
 .LBB0_8:                                # %.preheader255
-	ori	$fp, $zero, 1
+	ori	$t8, $zero, 1
 	b	.LBB0_11
 	.p2align	4, , 16
 .LBB0_9:                                #   in Loop: Header=BB0_11 Depth=1
-	slli.d	$s1, $s0, 1
-	slli.d	$s0, $s0, 2
+	slli.d	$s0, $fp, 1
+	slli.d	$fp, $fp, 2
 .LBB0_10:                               # %doubleebx.exit160
                                         #   in Loop: Header=BB0_11 Depth=1
-	addi.w	$s1, $s1, 0
-	bltz	$s1, .LBB0_19
+	addi.w	$s0, $s0, 0
+	bltz	$s0, .LBB0_19
 .LBB0_11:                               # =>This Inner Loop Header: Depth=1
-	slli.d	$s1, $s0, 33
-	beqz	$s1, .LBB0_16
+	slli.d	$s0, $fp, 33
+	beqz	$s0, .LBB0_16
 # %bb.12:                               # %doubleebx.exit154
                                         #   in Loop: Header=BB0_11 Depth=1
-	bstrpick.d	$s1, $s0, 31, 31
-	slli.d	$fp, $fp, 1
-	slli.d	$s2, $s0, 34
-	or	$fp, $fp, $s1
-	bnez	$s2, .LBB0_9
+	bstrpick.d	$s0, $fp, 31, 31
+	slli.d	$t8, $t8, 1
+	slli.d	$s1, $fp, 34
+	or	$t8, $t8, $s0
+	bnez	$s1, .LBB0_9
 # %bb.13:                               #   in Loop: Header=BB0_11 Depth=1
 	bltu	$a1, $t0, .LBB0_68
 # %bb.14:                               #   in Loop: Header=BB0_11 Depth=1
-	bstrpick.d	$s0, $t3, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB0_68
+	bstrpick.d	$fp, $t3, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB0_68
 # %bb.15:                               #   in Loop: Header=BB0_11 Depth=1
-	ldx.w	$s1, $a0, $s0
-	slli.d	$s0, $s1, 1
-	addi.d	$s0, $s0, 1
+	ldx.w	$s0, $a0, $fp
+	slli.d	$fp, $s0, 1
+	addi.d	$fp, $fp, 1
 	addi.w	$t3, $t3, 4
 	b	.LBB0_10
 	.p2align	4, , 16
 .LBB0_16:                               #   in Loop: Header=BB0_11 Depth=1
 	bltu	$a1, $t0, .LBB0_68
 # %bb.17:                               #   in Loop: Header=BB0_11 Depth=1
-	bstrpick.d	$s0, $t3, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB0_68
+	bstrpick.d	$fp, $t3, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB0_68
 # %bb.18:                               # %doubleebx.exit154.thread
                                         #   in Loop: Header=BB0_11 Depth=1
-	ldx.w	$s0, $a0, $s0
-	slli.d	$s1, $s0, 1
-	addi.d	$s1, $s1, 1
+	ldx.w	$fp, $a0, $fp
+	slli.d	$s0, $fp, 1
+	addi.d	$s0, $s0, 1
 	addi.w	$t3, $t3, 4
-	bstrpick.d	$s0, $s0, 31, 31
-	slli.d	$fp, $fp, 1
-	or	$fp, $fp, $s0
-	slli.d	$s0, $s1, 1
+	bstrpick.d	$fp, $fp, 31, 31
+	slli.d	$t8, $t8, 1
+	or	$t8, $t8, $fp
+	slli.d	$fp, $s0, 1
 	b	.LBB0_10
 .LBB0_19:
-	addi.w	$s1, $fp, 0
-	blt	$s1, $t1, .LBB0_23
+	addi.w	$s0, $t8, 0
+	blt	$s0, $t1, .LBB0_23
 # %bb.20:
 	bgeu	$t3, $a1, .LBB0_68
 # %bb.21:
-	bstrpick.d	$t6, $t3, 31, 0
-	ldx.bu	$t6, $a0, $t6
-	slli.d	$fp, $fp, 8
-	or	$t6, $fp, $t6
-	addi.w	$t6, $t6, -768
-	addi.w	$fp, $zero, -1
-	beq	$t6, $fp, .LBB0_70
+	bstrpick.d	$t5, $t3, 31, 0
+	ldx.bu	$t5, $a0, $t5
+	slli.d	$t8, $t8, 8
+	or	$t5, $t8, $t5
+	addi.w	$t5, $t5, -768
+	addi.w	$t8, $zero, -1
+	beq	$t5, $t8, .LBB0_70
 # %bb.22:
 	addi.w	$t3, $t3, 1
-	nor	$t6, $t6, $zero
+	nor	$t5, $t5, $zero
 .LBB0_23:
-	slli.d	$fp, $s0, 33
-	beqz	$fp, .LBB0_26
+	slli.d	$t8, $fp, 33
+	beqz	$t8, .LBB0_26
 # %bb.24:                               # %doubleebx.exit166
-	slli.d	$fp, $s0, 34
-	beqz	$fp, .LBB0_29
+	slli.d	$t8, $fp, 34
+	beqz	$t8, .LBB0_29
 # %bb.25:
-	slli.d	$s1, $s0, 1
-	slli.d	$fp, $s0, 2
-	bstrpick.d	$s1, $s1, 31, 31
-	srli.d	$s0, $s0, 31
-	bstrins.d	$s1, $s0, 1, 1
-	bnez	$s1, .LBB0_44
+	slli.d	$s0, $fp, 1
+	slli.d	$t8, $fp, 2
+	bstrpick.d	$s0, $s0, 31, 31
+	srli.d	$fp, $fp, 31
+	bstrins.d	$s0, $fp, 1, 1
+	bnez	$s0, .LBB0_44
 	b	.LBB0_32
 .LBB0_26:
 	bltu	$a1, $t0, .LBB0_68
 # %bb.27:
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB0_68
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB0_68
 # %bb.28:                               # %doubleebx.exit166.thread
-	ldx.w	$s0, $a0, $fp
-	slli.d	$fp, $s0, 1
-	addi.d	$s1, $fp, 1
+	ldx.w	$fp, $a0, $t8
+	slli.d	$t8, $fp, 1
+	addi.d	$s0, $t8, 1
 	addi.w	$t3, $t3, 4
-	slli.d	$fp, $s1, 1
-	bstrpick.d	$s1, $s1, 31, 31
-	srli.d	$s0, $s0, 31
-	bstrins.d	$s1, $s0, 1, 1
-	bnez	$s1, .LBB0_44
+	slli.d	$t8, $s0, 1
+	bstrpick.d	$s0, $s0, 31, 31
+	srli.d	$fp, $fp, 31
+	bstrins.d	$s0, $fp, 1, 1
+	bnez	$s0, .LBB0_44
 	b	.LBB0_32
 .LBB0_29:
 	bltu	$a1, $t0, .LBB0_68
 # %bb.30:
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB0_68
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB0_68
 # %bb.31:
-	ldx.w	$s1, $a0, $fp
-	slli.d	$fp, $s1, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$s0, $a0, $t8
+	slli.d	$t8, $s0, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t3, $t3, 4
-	bstrpick.d	$s1, $s1, 31, 31
-	srli.d	$s0, $s0, 31
-	bstrins.d	$s1, $s0, 1, 1
-	bnez	$s1, .LBB0_44
+	bstrpick.d	$s0, $s0, 31, 31
+	srli.d	$fp, $fp, 31
+	bstrins.d	$s0, $fp, 1, 1
+	bnez	$s0, .LBB0_44
 .LBB0_32:                               # %.preheader254.preheader
-	ori	$s0, $zero, 1
+	ori	$fp, $zero, 1
 	b	.LBB0_35
 	.p2align	4, , 16
 .LBB0_33:                               #   in Loop: Header=BB0_35 Depth=1
-	slli.d	$s1, $fp, 1
-	slli.d	$fp, $fp, 2
+	slli.d	$s0, $t8, 1
+	slli.d	$t8, $t8, 2
 .LBB0_34:                               # %doubleebx.exit184
                                         #   in Loop: Header=BB0_35 Depth=1
-	addi.w	$s1, $s1, 0
-	bltz	$s1, .LBB0_43
+	addi.w	$s0, $s0, 0
+	bltz	$s0, .LBB0_43
 .LBB0_35:                               # %.preheader254
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$s1, $fp, 33
-	beqz	$s1, .LBB0_40
+	slli.d	$s0, $t8, 33
+	beqz	$s0, .LBB0_40
 # %bb.36:                               # %doubleebx.exit178
                                         #   in Loop: Header=BB0_35 Depth=1
-	bstrpick.d	$s1, $fp, 31, 31
-	slli.d	$s0, $s0, 1
-	slli.d	$s2, $fp, 34
-	or	$s0, $s0, $s1
-	bnez	$s2, .LBB0_33
+	bstrpick.d	$s0, $t8, 31, 31
+	slli.d	$fp, $fp, 1
+	slli.d	$s1, $t8, 34
+	or	$fp, $fp, $s0
+	bnez	$s1, .LBB0_33
 # %bb.37:                               #   in Loop: Header=BB0_35 Depth=1
 	bltu	$a1, $t0, .LBB0_68
 # %bb.38:                               #   in Loop: Header=BB0_35 Depth=1
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB0_68
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB0_68
 # %bb.39:                               #   in Loop: Header=BB0_35 Depth=1
-	ldx.w	$s1, $a0, $fp
-	slli.d	$fp, $s1, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$s0, $a0, $t8
+	slli.d	$t8, $s0, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t3, $t3, 4
 	b	.LBB0_34
 	.p2align	4, , 16
 .LBB0_40:                               #   in Loop: Header=BB0_35 Depth=1
 	bltu	$a1, $t0, .LBB0_68
 # %bb.41:                               #   in Loop: Header=BB0_35 Depth=1
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB0_68
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB0_68
 # %bb.42:                               # %doubleebx.exit178.thread
                                         #   in Loop: Header=BB0_35 Depth=1
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s1, $fp, 1
-	addi.d	$s1, $s1, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$s0, $t8, 1
+	addi.d	$s0, $s0, 1
 	addi.w	$t3, $t3, 4
-	bstrpick.d	$fp, $fp, 31, 31
-	slli.d	$s0, $s0, 1
-	or	$s0, $s0, $fp
-	slli.d	$fp, $s1, 1
+	bstrpick.d	$t8, $t8, 31, 31
+	slli.d	$fp, $fp, 1
+	or	$fp, $fp, $t8
+	slli.d	$t8, $s0, 1
 	b	.LBB0_34
 .LBB0_43:
-	addi.d	$s1, $s0, 2
+	addi.d	$s0, $fp, 2
 .LBB0_44:
-	ld.w	$s4, $a3, 0
-	beqz	$s4, .LBB0_68
+	ld.w	$s3, $a3, 0
+	beqz	$s3, .LBB0_68
 # %bb.45:
-	addi.w	$s2, $t6, 0
-	sltu	$s0, $s2, $t2
-	add.w	$s0, $s1, $s0
-	bgeu	$s0, $s4, .LBB0_68
+	addi.w	$s1, $t5, 0
+	sltu	$fp, $s1, $t2
+	add.w	$fp, $s0, $fp
+	bgeu	$fp, $s3, .LBB0_68
 # %bb.46:
-	bstrpick.d	$s3, $t8, 31, 0
-	add.d	$s5, $s3, $s2
-	bltz	$s5, .LBB0_68
+	bstrpick.d	$s2, $t7, 31, 0
+	add.d	$s4, $s2, $s1
+	bltz	$s4, .LBB0_68
 # %bb.47:
-	addi.w	$s0, $s0, 1
-	bstrpick.d	$s4, $s4, 31, 0
-	bstrpick.d	$s1, $s0, 31, 0
-	add.d	$s5, $s5, $s1
-	bltu	$s4, $s5, .LBB0_68
+	addi.w	$fp, $fp, 1
+	bstrpick.d	$s3, $s3, 31, 0
+	bstrpick.d	$s0, $fp, 31, 0
+	add.d	$s4, $s4, $s0
+	bltu	$s3, $s4, .LBB0_68
 # %bb.48:
-	add.d	$s5, $s3, $s1
-	bltu	$s4, $s5, .LBB0_68
+	add.d	$s4, $s2, $s0
+	bltu	$s3, $s4, .LBB0_68
 # %bb.49:
-	bgez	$s2, .LBB0_68
+	bgez	$s1, .LBB0_68
 # %bb.50:                               # %iter.check
-	bgeu	$s0, $t4, .LBB0_55
+	bgeu	$fp, $t0, .LBB0_55
 .LBB0_51:
-	move	$s2, $zero
+	move	$s1, $zero
 .LBB0_52:                               # %vec.epilog.scalar.ph.preheader
-	add.d	$s3, $t6, $s2
-	add.w	$t7, $s3, $t7
+	add.d	$s2, $t5, $s1
+	add.w	$t6, $s2, $t6
 	.p2align	4, , 16
 .LBB0_53:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s3, $t7, 31, 0
-	ldx.b	$s3, $a2, $s3
-	add.d	$s4, $t8, $s2
-	bstrpick.d	$s4, $s4, 31, 0
-	stx.b	$s3, $a2, $s4
-	addi.d	$s2, $s2, 1
-	addi.w	$t7, $t7, 1
-	bne	$s1, $s2, .LBB0_53
+	bstrpick.d	$s2, $t6, 31, 0
+	ldx.b	$s2, $a2, $s2
+	add.d	$s3, $t7, $s1
+	bstrpick.d	$s3, $s3, 31, 0
+	stx.b	$s2, $a2, $s3
+	addi.d	$s1, $s1, 1
+	addi.w	$t6, $t6, 1
+	bne	$s0, $s1, .LBB0_53
 .LBB0_54:                               # %._crit_edge
-	add.w	$t7, $s0, $t8
-	bstrpick.d	$t8, $t7, 31, 0
-	slli.d	$s0, $fp, 33
-	bnez	$s0, .LBB0_1
+	add.w	$t6, $fp, $t7
+	bstrpick.d	$t7, $t6, 31, 0
+	slli.d	$fp, $t8, 33
+	bnez	$fp, .LBB0_1
 	b	.LBB0_2
 .LBB0_55:                               # %vector.scevcheck
-	addi.d	$s4, $s1, -1
-	addi.w	$s5, $s4, 0
-	nor	$s2, $t8, $zero
-	addi.w	$s6, $s2, 0
-	move	$s2, $zero
-	bltu	$s6, $s5, .LBB0_52
+	addi.d	$s3, $s0, -1
+	addi.w	$s4, $s3, 0
+	nor	$s1, $t7, $zero
+	addi.w	$s5, $s1, 0
+	move	$s1, $zero
+	bltu	$s5, $s4, .LBB0_52
 # %bb.56:                               # %vector.scevcheck
-	add.d	$s6, $t6, $t8
-	addi.w	$s7, $s6, 0
-	nor	$s7, $s7, $zero
-	bltu	$s7, $s5, .LBB0_52
+	add.d	$s5, $t5, $t7
+	addi.w	$s6, $s5, 0
+	nor	$s6, $s6, $zero
+	bltu	$s6, $s4, .LBB0_52
 # %bb.57:                               # %vector.scevcheck
-	srli.d	$s4, $s4, 32
-	bnez	$s4, .LBB0_52
+	srli.d	$s3, $s3, 32
+	bnez	$s3, .LBB0_52
 # %bb.58:                               # %vector.memcheck
-	bstrpick.d	$s2, $s6, 31, 0
-	sub.d	$s2, $s3, $s2
-	bltu	$s2, $t5, .LBB0_51
+	bstrpick.d	$s1, $s5, 31, 0
+	sub.d	$s1, $s2, $s1
+	bltu	$s1, $t4, .LBB0_51
 # %bb.59:                               # %vector.main.loop.iter.check
-	bgeu	$s0, $t5, .LBB0_61
+	bgeu	$fp, $t4, .LBB0_61
 # %bb.60:
-	move	$s2, $zero
+	move	$s1, $zero
 	b	.LBB0_65
 .LBB0_61:                               # %vector.ph
-	move	$s4, $zero
-	andi	$s3, $s1, 24
-	bstrpick.d	$s2, $s1, 31, 5
-	slli.d	$s2, $s2, 5
-	add.w	$s5, $t6, $t7
+	move	$s3, $zero
+	andi	$s2, $s0, 28
+	bstrpick.d	$s1, $s0, 31, 5
+	slli.d	$s1, $s1, 5
+	add.w	$s4, $t5, $t6
 .LBB0_62:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s6, $s5, 31, 0
-	add.d	$s7, $a2, $s6
-	vldx	$vr0, $a2, $s6
-	vld	$vr1, $s7, 16
-	add.d	$s6, $t8, $s4
-	bstrpick.d	$s6, $s6, 31, 0
-	add.d	$s7, $a2, $s6
-	vstx	$vr0, $a2, $s6
-	vst	$vr1, $s7, 16
-	addi.d	$s4, $s4, 32
-	addi.w	$s5, $s5, 32
-	bne	$s2, $s4, .LBB0_62
+	bstrpick.d	$s5, $s4, 31, 0
+	add.d	$s6, $a2, $s5
+	vldx	$vr0, $a2, $s5
+	vld	$vr1, $s6, 16
+	add.d	$s5, $t7, $s3
+	bstrpick.d	$s5, $s5, 31, 0
+	add.d	$s6, $a2, $s5
+	vstx	$vr0, $a2, $s5
+	vst	$vr1, $s6, 16
+	addi.d	$s3, $s3, 32
+	addi.w	$s4, $s4, 32
+	bne	$s1, $s3, .LBB0_62
 # %bb.63:                               # %middle.block
-	beq	$s2, $s1, .LBB0_54
+	beq	$s1, $s0, .LBB0_54
 # %bb.64:                               # %vec.epilog.iter.check
-	beqz	$s3, .LBB0_52
+	beqz	$s2, .LBB0_52
 .LBB0_65:                               # %vec.epilog.ph
-	move	$s3, $s2
-	bstrpick.d	$s2, $s1, 31, 3
-	slli.d	$s2, $s2, 3
-	add.d	$s4, $t6, $s3
-	add.w	$s4, $s4, $t7
+	move	$s2, $s1
+	bstrpick.d	$s1, $s0, 31, 2
+	slli.d	$s1, $s1, 2
+	add.d	$s3, $t5, $s2
+	add.w	$s3, $s3, $t6
 	.p2align	4, , 16
 .LBB0_66:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s5, $s4, 31, 0
-	ldx.d	$s5, $a2, $s5
-	add.d	$s6, $t8, $s3
-	bstrpick.d	$s6, $s6, 31, 0
-	stx.d	$s5, $a2, $s6
-	addi.d	$s3, $s3, 8
-	addi.w	$s4, $s4, 8
-	bne	$s2, $s3, .LBB0_66
+	bstrpick.d	$s4, $s3, 31, 0
+	ldx.w	$s4, $a2, $s4
+	add.d	$s5, $t7, $s2
+	bstrpick.d	$s5, $s5, 31, 0
+	stx.w	$s4, $a2, $s5
+	addi.d	$s2, $s2, 4
+	addi.w	$s3, $s3, 4
+	bne	$s1, $s2, .LBB0_66
 # %bb.67:                               # %vec.epilog.middle.block
-	bne	$s2, $s1, .LBB0_52
+	bne	$s1, $s0, .LBB0_52
 	b	.LBB0_54
 .LBB0_68:                               # %doubleebx.exit.thread
 	addi.w	$a0, $zero, -1
 .LBB0_69:                               # %doubleebx.exit.thread
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
@@ -364,7 +361,7 @@ upx_inflate2b:                          # @upx_inflate2b
 	addi.d	$sp, $sp, 96
 	ret
 .LBB0_70:
-	addi.w	$a7, $t8, 0
+	addi.w	$a7, $t7, 0
 	st.d	$a7, $sp, 0
 	pcalau12i	$a7, %pc_hi20(.L__const.upx_inflate2b.magic)
 	addi.d	$a7, $a7, %pc_lo12(.L__const.upx_inflate2b.magic)
@@ -954,365 +951,362 @@ upx_inflate2d:                          # @upx_inflate2d
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	move	$fp, $zero
+	move	$t8, $zero
 	move	$t3, $zero
-	move	$t6, $zero
+	move	$t5, $zero
 	bstrpick.d	$a7, $a1, 31, 0
 	addi.w	$t7, $zero, -1
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	ori	$t2, $zero, 1
-	ori	$t4, $zero, 8
-	ori	$t5, $zero, 32
-	bstrpick.d	$t8, $t6, 31, 0
-	slli.d	$s0, $fp, 33
-	beqz	$s0, .LBB2_2
+	ori	$t4, $zero, 32
+	bstrpick.d	$t6, $t5, 31, 0
+	slli.d	$fp, $t8, 33
+	beqz	$fp, .LBB2_2
 	.p2align	4, , 16
 .LBB2_1:
-	slli.d	$s1, $fp, 1
-	addi.w	$fp, $fp, 0
-	bltz	$fp, .LBB2_5
+	slli.d	$s0, $t8, 1
+	addi.w	$t8, $t8, 0
+	bltz	$t8, .LBB2_5
 	b	.LBB2_8
 	.p2align	4, , 16
 .LBB2_2:
 	bltu	$a1, $t0, .LBB2_75
 # %bb.3:
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB2_75
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB2_75
 # %bb.4:
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s0, $fp, 1
-	addi.d	$s1, $s0, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$fp, $t8, 1
+	addi.d	$s0, $fp, 1
 	addi.w	$t3, $t3, 4
-	addi.w	$fp, $fp, 0
-	bgez	$fp, .LBB2_8
+	addi.w	$t8, $t8, 0
+	bgez	$t8, .LBB2_8
 .LBB2_5:
 	bgeu	$t3, $a1, .LBB2_75
 # %bb.6:
-	ld.wu	$fp, $a3, 0
-	bgeu	$t8, $fp, .LBB2_75
+	ld.wu	$t8, $a3, 0
+	bgeu	$t6, $t8, .LBB2_75
 # %bb.7:
-	bstrpick.d	$fp, $t3, 31, 0
-	ldx.b	$fp, $a0, $fp
+	bstrpick.d	$t8, $t3, 31, 0
+	ldx.b	$t8, $a0, $t8
 	addi.w	$t3, $t3, 1
-	stx.b	$fp, $a2, $t8
-	addi.d	$t8, $t8, 1
+	stx.b	$t8, $a2, $t6
 	addi.d	$t6, $t6, 1
-	move	$fp, $s1
-	slli.d	$s0, $fp, 33
-	bnez	$s0, .LBB2_1
+	addi.d	$t5, $t5, 1
+	move	$t8, $s0
+	slli.d	$fp, $t8, 33
+	bnez	$fp, .LBB2_1
 	b	.LBB2_2
 .LBB2_8:                                # %.preheader279
-	ori	$fp, $zero, 1
+	ori	$t8, $zero, 1
 	b	.LBB2_11
 	.p2align	4, , 16
 .LBB2_9:                                #   in Loop: Header=BB2_11 Depth=1
-	slli.d	$s1, $s0, 1
+	slli.d	$s0, $fp, 1
 .LBB2_10:                               # %doubleebx.exit174
                                         #   in Loop: Header=BB2_11 Depth=1
-	bstrpick.d	$s0, $s0, 31, 31
-	slli.d	$fp, $fp, 1
-	or	$fp, $fp, $s0
-	addi.d	$fp, $fp, -2
+	bstrpick.d	$fp, $fp, 31, 31
+	slli.d	$t8, $t8, 1
+	or	$t8, $t8, $fp
+	addi.d	$t8, $t8, -2
 .LBB2_11:                               # =>This Inner Loop Header: Depth=1
-	slli.d	$s0, $s1, 33
-	beqz	$s0, .LBB2_14
+	slli.d	$fp, $s0, 33
+	beqz	$fp, .LBB2_14
 # %bb.12:                               # %doubleebx.exit162
                                         #   in Loop: Header=BB2_11 Depth=1
-	bstrpick.d	$s0, $s1, 31, 31
-	slli.d	$fp, $fp, 1
-	slli.d	$s2, $s1, 34
-	or	$fp, $fp, $s0
-	beqz	$s2, .LBB2_17
+	bstrpick.d	$fp, $s0, 31, 31
+	slli.d	$t8, $t8, 1
+	slli.d	$s1, $s0, 34
+	or	$t8, $t8, $fp
+	beqz	$s1, .LBB2_17
 # %bb.13:                               #   in Loop: Header=BB2_11 Depth=1
-	slli.d	$s2, $s1, 1
-	slli.d	$s0, $s1, 2
-	addi.w	$s1, $s2, 0
-	bgez	$s1, .LBB2_20
+	slli.d	$s1, $s0, 1
+	slli.d	$fp, $s0, 2
+	addi.w	$s0, $s1, 0
+	bgez	$s0, .LBB2_20
 	b	.LBB2_24
 	.p2align	4, , 16
 .LBB2_14:                               #   in Loop: Header=BB2_11 Depth=1
 	bltu	$a1, $t0, .LBB2_75
 # %bb.15:                               #   in Loop: Header=BB2_11 Depth=1
-	bstrpick.d	$s0, $t3, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB2_75
+	bstrpick.d	$fp, $t3, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB2_75
 # %bb.16:                               # %doubleebx.exit162.thread
                                         #   in Loop: Header=BB2_11 Depth=1
-	ldx.w	$s0, $a0, $s0
-	slli.d	$s1, $s0, 1
-	addi.d	$s2, $s1, 1
+	ldx.w	$fp, $a0, $fp
+	slli.d	$s0, $fp, 1
+	addi.d	$s1, $s0, 1
 	addi.w	$t3, $t3, 4
-	bstrpick.d	$s0, $s0, 31, 31
-	slli.d	$fp, $fp, 1
-	or	$fp, $fp, $s0
-	slli.d	$s0, $s2, 1
-	addi.w	$s1, $s2, 0
-	bgez	$s1, .LBB2_20
+	bstrpick.d	$fp, $fp, 31, 31
+	slli.d	$t8, $t8, 1
+	or	$t8, $t8, $fp
+	slli.d	$fp, $s1, 1
+	addi.w	$s0, $s1, 0
+	bgez	$s0, .LBB2_20
 	b	.LBB2_24
 	.p2align	4, , 16
 .LBB2_17:                               #   in Loop: Header=BB2_11 Depth=1
 	bltu	$a1, $t0, .LBB2_75
 # %bb.18:                               #   in Loop: Header=BB2_11 Depth=1
-	bstrpick.d	$s0, $t3, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB2_75
+	bstrpick.d	$fp, $t3, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB2_75
 # %bb.19:                               #   in Loop: Header=BB2_11 Depth=1
-	ldx.w	$s2, $a0, $s0
-	slli.d	$s0, $s2, 1
-	addi.d	$s0, $s0, 1
+	ldx.w	$s1, $a0, $fp
+	slli.d	$fp, $s1, 1
+	addi.d	$fp, $fp, 1
 	addi.w	$t3, $t3, 4
-	addi.w	$s1, $s2, 0
-	bltz	$s1, .LBB2_24
+	addi.w	$s0, $s1, 0
+	bltz	$s0, .LBB2_24
 .LBB2_20:                               #   in Loop: Header=BB2_11 Depth=1
-	slli.d	$s1, $s0, 33
-	bnez	$s1, .LBB2_9
+	slli.d	$s0, $fp, 33
+	bnez	$s0, .LBB2_9
 # %bb.21:                               #   in Loop: Header=BB2_11 Depth=1
 	bltu	$a1, $t0, .LBB2_75
 # %bb.22:                               #   in Loop: Header=BB2_11 Depth=1
-	bstrpick.d	$s0, $t3, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB2_75
+	bstrpick.d	$fp, $t3, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB2_75
 # %bb.23:                               #   in Loop: Header=BB2_11 Depth=1
-	ldx.w	$s0, $a0, $s0
-	slli.d	$s1, $s0, 1
-	addi.d	$s1, $s1, 1
+	ldx.w	$fp, $a0, $fp
+	slli.d	$s0, $fp, 1
+	addi.d	$s0, $s0, 1
 	addi.w	$t3, $t3, 4
 	b	.LBB2_10
 .LBB2_24:
-	addi.w	$s1, $fp, 0
-	blt	$s1, $t1, .LBB2_31
+	addi.w	$s0, $t8, 0
+	blt	$s0, $t1, .LBB2_31
 # %bb.25:
 	bgeu	$t3, $a1, .LBB2_75
 # %bb.26:
 	bstrpick.d	$t7, $t3, 31, 0
 	ldx.bu	$t7, $a0, $t7
-	slli.d	$fp, $fp, 8
-	or	$t7, $fp, $t7
+	slli.d	$t8, $t8, 8
+	or	$t7, $t8, $t7
 	addi.w	$t7, $t7, -768
-	addi.w	$fp, $zero, -1
-	beq	$t7, $fp, .LBB2_77
+	addi.w	$t8, $zero, -1
+	beq	$t7, $t8, .LBB2_77
 # %bb.27:
 	addi.w	$t3, $t3, 1
-	nor	$fp, $t7, $zero
-	andn	$s1, $t2, $t7
-	srai.d	$t7, $fp, 1
-	slli.d	$fp, $s0, 33
-	bnez	$fp, .LBB2_37
+	nor	$t8, $t7, $zero
+	andn	$s0, $t2, $t7
+	srai.d	$t7, $t8, 1
+	slli.d	$t8, $fp, 33
+	bnez	$t8, .LBB2_37
 .LBB2_28:
 	bltu	$a1, $t0, .LBB2_75
 # %bb.29:
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB2_75
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB2_75
 # %bb.30:
-	ldx.w	$s0, $a0, $fp
-	slli.d	$fp, $s0, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$fp, $a0, $t8
+	slli.d	$t8, $fp, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t3, $t3, 4
 	b	.LBB2_38
 .LBB2_31:
-	slli.d	$fp, $s0, 33
-	beqz	$fp, .LBB2_33
+	slli.d	$t8, $fp, 33
+	beqz	$t8, .LBB2_33
 # %bb.32:
-	slli.d	$fp, $s0, 1
+	slli.d	$t8, $fp, 1
 	b	.LBB2_36
 .LBB2_33:
 	bltu	$a1, $t0, .LBB2_75
 # %bb.34:
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB2_75
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB2_75
 # %bb.35:
-	ldx.w	$s0, $a0, $fp
-	slli.d	$fp, $s0, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$fp, $a0, $t8
+	slli.d	$t8, $fp, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t3, $t3, 4
 .LBB2_36:                               # %doubleebx.exit180
-	bstrpick.d	$s1, $s0, 31, 31
-	move	$s0, $fp
-	slli.d	$fp, $s0, 33
-	beqz	$fp, .LBB2_28
+	bstrpick.d	$s0, $fp, 31, 31
+	move	$fp, $t8
+	slli.d	$t8, $fp, 33
+	beqz	$t8, .LBB2_28
 .LBB2_37:
-	slli.d	$fp, $s0, 1
+	slli.d	$t8, $fp, 1
 .LBB2_38:                               # %doubleebx.exit186
-	bstrpick.d	$s0, $s0, 31, 31
-	slli.d	$s1, $s1, 1
-	or	$s0, $s1, $s0
-	addi.w	$s1, $s0, 0
-	bnez	$s1, .LBB2_51
+	bstrpick.d	$fp, $fp, 31, 31
+	slli.d	$s0, $s0, 1
+	or	$fp, $s0, $fp
+	addi.w	$s0, $fp, 0
+	bnez	$s0, .LBB2_51
 # %bb.39:                               # %.preheader278.preheader
-	ori	$s0, $zero, 1
+	ori	$fp, $zero, 1
 	b	.LBB2_42
 .LBB2_40:                               #   in Loop: Header=BB2_42 Depth=1
-	slli.d	$s1, $fp, 1
-	slli.d	$fp, $fp, 2
+	slli.d	$s0, $t8, 1
+	slli.d	$t8, $t8, 2
 .LBB2_41:                               # %doubleebx.exit198
                                         #   in Loop: Header=BB2_42 Depth=1
-	addi.w	$s1, $s1, 0
-	bltz	$s1, .LBB2_50
+	addi.w	$s0, $s0, 0
+	bltz	$s0, .LBB2_50
 .LBB2_42:                               # %.preheader278
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$s1, $fp, 33
-	beqz	$s1, .LBB2_47
+	slli.d	$s0, $t8, 33
+	beqz	$s0, .LBB2_47
 # %bb.43:                               # %doubleebx.exit192
                                         #   in Loop: Header=BB2_42 Depth=1
-	bstrpick.d	$s1, $fp, 31, 31
-	slli.d	$s0, $s0, 1
-	slli.d	$s2, $fp, 34
-	or	$s0, $s0, $s1
-	bnez	$s2, .LBB2_40
+	bstrpick.d	$s0, $t8, 31, 31
+	slli.d	$fp, $fp, 1
+	slli.d	$s1, $t8, 34
+	or	$fp, $fp, $s0
+	bnez	$s1, .LBB2_40
 # %bb.44:                               #   in Loop: Header=BB2_42 Depth=1
 	bltu	$a1, $t0, .LBB2_75
 # %bb.45:                               #   in Loop: Header=BB2_42 Depth=1
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB2_75
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB2_75
 # %bb.46:                               #   in Loop: Header=BB2_42 Depth=1
-	ldx.w	$s1, $a0, $fp
-	slli.d	$fp, $s1, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$s0, $a0, $t8
+	slli.d	$t8, $s0, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t3, $t3, 4
 	b	.LBB2_41
 .LBB2_47:                               #   in Loop: Header=BB2_42 Depth=1
 	bltu	$a1, $t0, .LBB2_75
 # %bb.48:                               #   in Loop: Header=BB2_42 Depth=1
-	bstrpick.d	$fp, $t3, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB2_75
+	bstrpick.d	$t8, $t3, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB2_75
 # %bb.49:                               # %doubleebx.exit192.thread
                                         #   in Loop: Header=BB2_42 Depth=1
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s1, $fp, 1
-	addi.d	$s1, $s1, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$s0, $t8, 1
+	addi.d	$s0, $s0, 1
 	addi.w	$t3, $t3, 4
-	bstrpick.d	$fp, $fp, 31, 31
-	slli.d	$s0, $s0, 1
-	or	$s0, $s0, $fp
-	slli.d	$fp, $s1, 1
+	bstrpick.d	$t8, $t8, 31, 31
+	slli.d	$fp, $fp, 1
+	or	$fp, $fp, $t8
+	slli.d	$t8, $s0, 1
 	b	.LBB2_41
 .LBB2_50:
-	addi.d	$s0, $s0, 2
+	addi.d	$fp, $fp, 2
 .LBB2_51:
-	ld.w	$s1, $a3, 0
-	beqz	$s1, .LBB2_75
+	ld.w	$s0, $a3, 0
+	beqz	$s0, .LBB2_75
 # %bb.52:
-	addi.w	$s2, $t7, 0
-	sltui	$s3, $s2, -1280
-	add.w	$s0, $s0, $s3
-	bgeu	$s0, $s1, .LBB2_75
+	addi.w	$s1, $t7, 0
+	sltui	$s2, $s1, -1280
+	add.w	$fp, $fp, $s2
+	bgeu	$fp, $s0, .LBB2_75
 # %bb.53:
-	bstrpick.d	$s3, $t8, 31, 0
-	add.d	$s5, $s3, $s2
-	bltz	$s5, .LBB2_75
+	bstrpick.d	$s2, $t6, 31, 0
+	add.d	$s4, $s2, $s1
+	bltz	$s4, .LBB2_75
 # %bb.54:
-	addi.w	$s0, $s0, 1
-	bstrpick.d	$s4, $s1, 31, 0
-	bstrpick.d	$s1, $s0, 31, 0
-	add.d	$s5, $s5, $s1
-	bltu	$s4, $s5, .LBB2_75
+	addi.w	$fp, $fp, 1
+	bstrpick.d	$s3, $s0, 31, 0
+	bstrpick.d	$s0, $fp, 31, 0
+	add.d	$s4, $s4, $s0
+	bltu	$s3, $s4, .LBB2_75
 # %bb.55:
-	add.d	$s5, $s3, $s1
-	bltu	$s4, $s5, .LBB2_75
+	add.d	$s4, $s2, $s0
+	bltu	$s3, $s4, .LBB2_75
 # %bb.56:
-	bgez	$s2, .LBB2_75
+	bgez	$s1, .LBB2_75
 # %bb.57:                               # %iter.check
-	bgeu	$s0, $t4, .LBB2_62
+	bgeu	$fp, $t0, .LBB2_62
 .LBB2_58:
-	move	$s2, $zero
+	move	$s1, $zero
 .LBB2_59:                               # %vec.epilog.scalar.ph.preheader
-	add.d	$s3, $t7, $s2
-	add.w	$t6, $s3, $t6
+	add.d	$s2, $t7, $s1
+	add.w	$t5, $s2, $t5
 	.p2align	4, , 16
 .LBB2_60:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s3, $t6, 31, 0
-	ldx.b	$s3, $a2, $s3
-	add.d	$s4, $t8, $s2
-	bstrpick.d	$s4, $s4, 31, 0
-	stx.b	$s3, $a2, $s4
-	addi.d	$s2, $s2, 1
-	addi.w	$t6, $t6, 1
-	bne	$s1, $s2, .LBB2_60
+	bstrpick.d	$s2, $t5, 31, 0
+	ldx.b	$s2, $a2, $s2
+	add.d	$s3, $t6, $s1
+	bstrpick.d	$s3, $s3, 31, 0
+	stx.b	$s2, $a2, $s3
+	addi.d	$s1, $s1, 1
+	addi.w	$t5, $t5, 1
+	bne	$s0, $s1, .LBB2_60
 .LBB2_61:                               # %._crit_edge
-	add.w	$t6, $s0, $t8
-	bstrpick.d	$t8, $t6, 31, 0
-	slli.d	$s0, $fp, 33
-	bnez	$s0, .LBB2_1
+	add.w	$t5, $fp, $t6
+	bstrpick.d	$t6, $t5, 31, 0
+	slli.d	$fp, $t8, 33
+	bnez	$fp, .LBB2_1
 	b	.LBB2_2
 .LBB2_62:                               # %vector.scevcheck
-	addi.d	$s4, $s1, -1
-	addi.w	$s5, $s4, 0
-	nor	$s2, $t8, $zero
-	addi.w	$s6, $s2, 0
-	move	$s2, $zero
-	bltu	$s6, $s5, .LBB2_59
+	addi.d	$s3, $s0, -1
+	addi.w	$s4, $s3, 0
+	nor	$s1, $t6, $zero
+	addi.w	$s5, $s1, 0
+	move	$s1, $zero
+	bltu	$s5, $s4, .LBB2_59
 # %bb.63:                               # %vector.scevcheck
-	add.d	$s6, $t7, $t8
-	addi.w	$s7, $s6, 0
-	nor	$s7, $s7, $zero
-	bltu	$s7, $s5, .LBB2_59
+	add.d	$s5, $t7, $t6
+	addi.w	$s6, $s5, 0
+	nor	$s6, $s6, $zero
+	bltu	$s6, $s4, .LBB2_59
 # %bb.64:                               # %vector.scevcheck
-	srli.d	$s4, $s4, 32
-	bnez	$s4, .LBB2_59
+	srli.d	$s3, $s3, 32
+	bnez	$s3, .LBB2_59
 # %bb.65:                               # %vector.memcheck
-	bstrpick.d	$s2, $s6, 31, 0
-	sub.d	$s2, $s3, $s2
-	bltu	$s2, $t5, .LBB2_58
+	bstrpick.d	$s1, $s5, 31, 0
+	sub.d	$s1, $s2, $s1
+	bltu	$s1, $t4, .LBB2_58
 # %bb.66:                               # %vector.main.loop.iter.check
-	bgeu	$s0, $t5, .LBB2_68
+	bgeu	$fp, $t4, .LBB2_68
 # %bb.67:
-	move	$s2, $zero
+	move	$s1, $zero
 	b	.LBB2_72
 .LBB2_68:                               # %vector.ph
-	move	$s4, $zero
-	andi	$s3, $s1, 24
-	bstrpick.d	$s2, $s1, 31, 5
-	slli.d	$s2, $s2, 5
-	add.w	$s5, $t7, $t6
+	move	$s3, $zero
+	andi	$s2, $s0, 28
+	bstrpick.d	$s1, $s0, 31, 5
+	slli.d	$s1, $s1, 5
+	add.w	$s4, $t7, $t5
 .LBB2_69:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s6, $s5, 31, 0
-	add.d	$s7, $a2, $s6
-	vldx	$vr0, $a2, $s6
-	vld	$vr1, $s7, 16
-	add.d	$s6, $t8, $s4
-	bstrpick.d	$s6, $s6, 31, 0
-	add.d	$s7, $a2, $s6
-	vstx	$vr0, $a2, $s6
-	vst	$vr1, $s7, 16
-	addi.d	$s4, $s4, 32
-	addi.w	$s5, $s5, 32
-	bne	$s2, $s4, .LBB2_69
+	bstrpick.d	$s5, $s4, 31, 0
+	add.d	$s6, $a2, $s5
+	vldx	$vr0, $a2, $s5
+	vld	$vr1, $s6, 16
+	add.d	$s5, $t6, $s3
+	bstrpick.d	$s5, $s5, 31, 0
+	add.d	$s6, $a2, $s5
+	vstx	$vr0, $a2, $s5
+	vst	$vr1, $s6, 16
+	addi.d	$s3, $s3, 32
+	addi.w	$s4, $s4, 32
+	bne	$s1, $s3, .LBB2_69
 # %bb.70:                               # %middle.block
-	beq	$s2, $s1, .LBB2_61
+	beq	$s1, $s0, .LBB2_61
 # %bb.71:                               # %vec.epilog.iter.check
-	beqz	$s3, .LBB2_59
+	beqz	$s2, .LBB2_59
 .LBB2_72:                               # %vec.epilog.ph
-	move	$s3, $s2
-	bstrpick.d	$s2, $s1, 31, 3
-	slli.d	$s2, $s2, 3
-	add.d	$s4, $t7, $s3
-	add.w	$s4, $s4, $t6
+	move	$s2, $s1
+	bstrpick.d	$s1, $s0, 31, 2
+	slli.d	$s1, $s1, 2
+	add.d	$s3, $t7, $s2
+	add.w	$s3, $s3, $t5
 .LBB2_73:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s5, $s4, 31, 0
-	ldx.d	$s5, $a2, $s5
-	add.d	$s6, $t8, $s3
-	bstrpick.d	$s6, $s6, 31, 0
-	stx.d	$s5, $a2, $s6
-	addi.d	$s3, $s3, 8
-	addi.w	$s4, $s4, 8
-	bne	$s2, $s3, .LBB2_73
+	bstrpick.d	$s4, $s3, 31, 0
+	ldx.w	$s4, $a2, $s4
+	add.d	$s5, $t6, $s2
+	bstrpick.d	$s5, $s5, 31, 0
+	stx.w	$s4, $a2, $s5
+	addi.d	$s2, $s2, 4
+	addi.w	$s3, $s3, 4
+	bne	$s1, $s2, .LBB2_73
 # %bb.74:                               # %vec.epilog.middle.block
-	bne	$s2, $s1, .LBB2_59
+	bne	$s1, $s0, .LBB2_59
 	b	.LBB2_61
 .LBB2_75:                               # %doubleebx.exit.thread
 	addi.w	$a0, $zero, -1
 .LBB2_76:                               # %doubleebx.exit.thread
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
@@ -1325,7 +1319,7 @@ upx_inflate2d:                          # @upx_inflate2d
 	addi.d	$sp, $sp, 96
 	ret
 .LBB2_77:
-	addi.w	$a7, $t8, 0
+	addi.w	$a7, $t6, 0
 	st.d	$a7, $sp, 0
 	pcalau12i	$a7, %pc_hi20(.L__const.upx_inflate2d.magic)
 	addi.d	$a7, $a7, %pc_lo12(.L__const.upx_inflate2d.magic)
@@ -1354,407 +1348,404 @@ upx_inflate2e:                          # @upx_inflate2e
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	move	$fp, $zero
+	move	$t8, $zero
 	move	$t4, $zero
-	move	$t6, $zero
+	move	$t5, $zero
 	bstrpick.d	$a7, $a1, 31, 0
 	addi.w	$t7, $zero, -1
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	ori	$t2, $zero, 1
-	ori	$t3, $zero, 8
-	ori	$t5, $zero, 32
-	bstrpick.d	$t8, $t6, 31, 0
-	slli.d	$s0, $fp, 33
-	beqz	$s0, .LBB3_2
+	ori	$t3, $zero, 32
+	bstrpick.d	$t6, $t5, 31, 0
+	slli.d	$fp, $t8, 33
+	beqz	$fp, .LBB3_2
 	.p2align	4, , 16
 .LBB3_1:
-	slli.d	$s1, $fp, 1
-	addi.w	$fp, $fp, 0
-	bltz	$fp, .LBB3_5
+	slli.d	$s0, $t8, 1
+	addi.w	$t8, $t8, 0
+	bltz	$t8, .LBB3_5
 	b	.LBB3_8
 	.p2align	4, , 16
 .LBB3_2:
 	bltu	$a1, $t0, .LBB3_87
 # %bb.3:
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB3_87
 # %bb.4:
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s0, $fp, 1
-	addi.d	$s1, $s0, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$fp, $t8, 1
+	addi.d	$s0, $fp, 1
 	addi.w	$t4, $t4, 4
-	addi.w	$fp, $fp, 0
-	bgez	$fp, .LBB3_8
+	addi.w	$t8, $t8, 0
+	bgez	$t8, .LBB3_8
 .LBB3_5:
 	bgeu	$t4, $a1, .LBB3_87
 # %bb.6:
-	ld.wu	$fp, $a3, 0
-	bgeu	$t8, $fp, .LBB3_87
+	ld.wu	$t8, $a3, 0
+	bgeu	$t6, $t8, .LBB3_87
 # %bb.7:
-	bstrpick.d	$fp, $t4, 31, 0
-	ldx.b	$fp, $a0, $fp
+	bstrpick.d	$t8, $t4, 31, 0
+	ldx.b	$t8, $a0, $t8
 	addi.w	$t4, $t4, 1
-	stx.b	$fp, $a2, $t8
-	addi.d	$t8, $t8, 1
+	stx.b	$t8, $a2, $t6
 	addi.d	$t6, $t6, 1
-	move	$fp, $s1
-	slli.d	$s0, $fp, 33
-	bnez	$s0, .LBB3_1
+	addi.d	$t5, $t5, 1
+	move	$t8, $s0
+	slli.d	$fp, $t8, 33
+	bnez	$fp, .LBB3_1
 	b	.LBB3_2
 .LBB3_8:                                # %.preheader313
-	ori	$fp, $zero, 1
+	ori	$t8, $zero, 1
 	b	.LBB3_11
 	.p2align	4, , 16
 .LBB3_9:                                #   in Loop: Header=BB3_11 Depth=1
-	slli.d	$s1, $s0, 1
+	slli.d	$s0, $fp, 1
 .LBB3_10:                               # %doubleebx.exit179
                                         #   in Loop: Header=BB3_11 Depth=1
-	bstrpick.d	$s0, $s0, 31, 31
-	slli.d	$fp, $fp, 1
-	or	$fp, $fp, $s0
-	addi.d	$fp, $fp, -2
+	bstrpick.d	$fp, $fp, 31, 31
+	slli.d	$t8, $t8, 1
+	or	$t8, $t8, $fp
+	addi.d	$t8, $t8, -2
 .LBB3_11:                               # =>This Inner Loop Header: Depth=1
-	slli.d	$s0, $s1, 33
-	beqz	$s0, .LBB3_14
+	slli.d	$fp, $s0, 33
+	beqz	$fp, .LBB3_14
 # %bb.12:                               # %doubleebx.exit167
                                         #   in Loop: Header=BB3_11 Depth=1
-	bstrpick.d	$s0, $s1, 31, 31
-	slli.d	$fp, $fp, 1
-	slli.d	$s2, $s1, 34
-	or	$fp, $fp, $s0
-	beqz	$s2, .LBB3_17
+	bstrpick.d	$fp, $s0, 31, 31
+	slli.d	$t8, $t8, 1
+	slli.d	$s1, $s0, 34
+	or	$t8, $t8, $fp
+	beqz	$s1, .LBB3_17
 # %bb.13:                               #   in Loop: Header=BB3_11 Depth=1
-	slli.d	$s2, $s1, 1
-	slli.d	$s0, $s1, 2
-	addi.w	$s1, $s2, 0
-	bgez	$s1, .LBB3_20
+	slli.d	$s1, $s0, 1
+	slli.d	$fp, $s0, 2
+	addi.w	$s0, $s1, 0
+	bgez	$s0, .LBB3_20
 	b	.LBB3_24
 	.p2align	4, , 16
 .LBB3_14:                               #   in Loop: Header=BB3_11 Depth=1
 	bltu	$a1, $t0, .LBB3_87
 # %bb.15:                               #   in Loop: Header=BB3_11 Depth=1
-	bstrpick.d	$s0, $t4, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB3_87
+	bstrpick.d	$fp, $t4, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB3_87
 # %bb.16:                               # %doubleebx.exit167.thread
                                         #   in Loop: Header=BB3_11 Depth=1
-	ldx.w	$s0, $a0, $s0
-	slli.d	$s1, $s0, 1
-	addi.d	$s2, $s1, 1
+	ldx.w	$fp, $a0, $fp
+	slli.d	$s0, $fp, 1
+	addi.d	$s1, $s0, 1
 	addi.w	$t4, $t4, 4
-	bstrpick.d	$s0, $s0, 31, 31
-	slli.d	$fp, $fp, 1
-	or	$fp, $fp, $s0
-	slli.d	$s0, $s2, 1
-	addi.w	$s1, $s2, 0
-	bgez	$s1, .LBB3_20
+	bstrpick.d	$fp, $fp, 31, 31
+	slli.d	$t8, $t8, 1
+	or	$t8, $t8, $fp
+	slli.d	$fp, $s1, 1
+	addi.w	$s0, $s1, 0
+	bgez	$s0, .LBB3_20
 	b	.LBB3_24
 	.p2align	4, , 16
 .LBB3_17:                               #   in Loop: Header=BB3_11 Depth=1
 	bltu	$a1, $t0, .LBB3_87
 # %bb.18:                               #   in Loop: Header=BB3_11 Depth=1
-	bstrpick.d	$s0, $t4, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB3_87
+	bstrpick.d	$fp, $t4, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB3_87
 # %bb.19:                               #   in Loop: Header=BB3_11 Depth=1
-	ldx.w	$s2, $a0, $s0
-	slli.d	$s0, $s2, 1
-	addi.d	$s0, $s0, 1
+	ldx.w	$s1, $a0, $fp
+	slli.d	$fp, $s1, 1
+	addi.d	$fp, $fp, 1
 	addi.w	$t4, $t4, 4
-	addi.w	$s1, $s2, 0
-	bltz	$s1, .LBB3_24
+	addi.w	$s0, $s1, 0
+	bltz	$s0, .LBB3_24
 .LBB3_20:                               #   in Loop: Header=BB3_11 Depth=1
-	slli.d	$s1, $s0, 33
-	bnez	$s1, .LBB3_9
+	slli.d	$s0, $fp, 33
+	bnez	$s0, .LBB3_9
 # %bb.21:                               #   in Loop: Header=BB3_11 Depth=1
 	bltu	$a1, $t0, .LBB3_87
 # %bb.22:                               #   in Loop: Header=BB3_11 Depth=1
-	bstrpick.d	$s0, $t4, 31, 0
-	addi.d	$s1, $s0, 4
-	bltu	$a7, $s1, .LBB3_87
+	bstrpick.d	$fp, $t4, 31, 0
+	addi.d	$s0, $fp, 4
+	bltu	$a7, $s0, .LBB3_87
 # %bb.23:                               #   in Loop: Header=BB3_11 Depth=1
-	ldx.w	$s0, $a0, $s0
-	slli.d	$s1, $s0, 1
-	addi.d	$s1, $s1, 1
+	ldx.w	$fp, $a0, $fp
+	slli.d	$s0, $fp, 1
+	addi.d	$s0, $s0, 1
 	addi.w	$t4, $t4, 4
 	b	.LBB3_10
 .LBB3_24:
-	addi.w	$s1, $fp, 0
-	blt	$s1, $t1, .LBB3_44
+	addi.w	$s0, $t8, 0
+	blt	$s0, $t1, .LBB3_44
 # %bb.25:
 	bgeu	$t4, $a1, .LBB3_87
 # %bb.26:
 	bstrpick.d	$t7, $t4, 31, 0
 	ldx.bu	$t7, $a0, $t7
-	slli.d	$fp, $fp, 8
-	or	$t7, $fp, $t7
+	slli.d	$t8, $t8, 8
+	or	$t7, $t8, $t7
 	addi.w	$t7, $t7, -768
-	addi.w	$fp, $zero, -1
-	beq	$t7, $fp, .LBB3_89
+	addi.w	$t8, $zero, -1
+	beq	$t7, $t8, .LBB3_89
 # %bb.27:
 	addi.w	$t4, $t4, 1
-	nor	$s1, $t7, $zero
-	andn	$fp, $t2, $t7
-	srai.d	$t7, $s1, 1
-	addi.w	$s2, $fp, 0
-	slli.d	$fp, $s0, 1
-	bstrpick.d	$s1, $s0, 30, 0
-	bnez	$s2, .LBB3_50
+	nor	$s0, $t7, $zero
+	andn	$t8, $t2, $t7
+	srai.d	$t7, $s0, 1
+	addi.w	$s1, $t8, 0
+	slli.d	$t8, $fp, 1
+	bstrpick.d	$s0, $fp, 30, 0
+	bnez	$s1, .LBB3_50
 .LBB3_28:
-	bnez	$s1, .LBB3_32
+	bnez	$s0, .LBB3_32
 # %bb.29:
 	bltu	$a1, $t0, .LBB3_87
 # %bb.30:
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB3_87
 # %bb.31:
-	ldx.w	$s0, $a0, $fp
-	slli.d	$fp, $s0, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$fp, $a0, $t8
+	slli.d	$t8, $fp, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t4, $t4, 4
 .LBB3_32:                               # %doubleebx.exit197
-	addi.w	$s0, $s0, 0
-	bltz	$s0, .LBB3_73
+	addi.w	$fp, $fp, 0
+	bltz	$fp, .LBB3_73
 # %bb.33:                               # %.preheader312.preheader
-	ori	$s0, $zero, 1
+	ori	$fp, $zero, 1
 	b	.LBB3_36
 .LBB3_34:                               #   in Loop: Header=BB3_36 Depth=1
-	slli.d	$s1, $fp, 1
-	slli.d	$fp, $fp, 2
+	slli.d	$s0, $t8, 1
+	slli.d	$t8, $t8, 2
 .LBB3_35:                               # %doubleebx.exit215
                                         #   in Loop: Header=BB3_36 Depth=1
-	addi.w	$s1, $s1, 0
-	bltz	$s1, .LBB3_75
+	addi.w	$s0, $s0, 0
+	bltz	$s0, .LBB3_75
 .LBB3_36:                               # %.preheader312
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$s1, $fp, 33
-	beqz	$s1, .LBB3_41
+	slli.d	$s0, $t8, 33
+	beqz	$s0, .LBB3_41
 # %bb.37:                               # %doubleebx.exit209
                                         #   in Loop: Header=BB3_36 Depth=1
-	bstrpick.d	$s1, $fp, 31, 31
-	slli.d	$s0, $s0, 1
-	slli.d	$s2, $fp, 34
-	or	$s0, $s0, $s1
-	bnez	$s2, .LBB3_34
+	bstrpick.d	$s0, $t8, 31, 31
+	slli.d	$fp, $fp, 1
+	slli.d	$s1, $t8, 34
+	or	$fp, $fp, $s0
+	bnez	$s1, .LBB3_34
 # %bb.38:                               #   in Loop: Header=BB3_36 Depth=1
 	bltu	$a1, $t0, .LBB3_87
 # %bb.39:                               #   in Loop: Header=BB3_36 Depth=1
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB3_87
 # %bb.40:                               #   in Loop: Header=BB3_36 Depth=1
-	ldx.w	$s1, $a0, $fp
-	slli.d	$fp, $s1, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$s0, $a0, $t8
+	slli.d	$t8, $s0, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t4, $t4, 4
 	b	.LBB3_35
 .LBB3_41:                               #   in Loop: Header=BB3_36 Depth=1
 	bltu	$a1, $t0, .LBB3_87
 # %bb.42:                               #   in Loop: Header=BB3_36 Depth=1
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s1, $fp, 4
-	bltu	$a7, $s1, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$s0, $t8, 4
+	bltu	$a7, $s0, .LBB3_87
 # %bb.43:                               # %doubleebx.exit209.thread
                                         #   in Loop: Header=BB3_36 Depth=1
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s1, $fp, 1
-	addi.d	$s1, $s1, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$s0, $t8, 1
+	addi.d	$s0, $s0, 1
 	addi.w	$t4, $t4, 4
-	bstrpick.d	$fp, $fp, 31, 31
-	slli.d	$s0, $s0, 1
-	or	$s0, $s0, $fp
-	slli.d	$fp, $s1, 1
+	bstrpick.d	$t8, $t8, 31, 31
+	slli.d	$fp, $fp, 1
+	or	$fp, $fp, $t8
+	slli.d	$t8, $s0, 1
 	b	.LBB3_35
 .LBB3_44:
-	slli.d	$fp, $s0, 33
-	beqz	$fp, .LBB3_46
+	slli.d	$t8, $fp, 33
+	beqz	$t8, .LBB3_46
 # %bb.45:
-	slli.d	$s1, $s0, 1
+	slli.d	$s0, $fp, 1
 	b	.LBB3_49
 .LBB3_46:
 	bltu	$a1, $t0, .LBB3_87
 # %bb.47:
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB3_87
 # %bb.48:
-	ldx.w	$s0, $a0, $fp
-	slli.d	$fp, $s0, 1
-	addi.d	$s1, $fp, 1
+	ldx.w	$fp, $a0, $t8
+	slli.d	$t8, $fp, 1
+	addi.d	$s0, $t8, 1
 	addi.w	$t4, $t4, 4
 .LBB3_49:                               # %doubleebx.exit185
-	bstrpick.d	$fp, $s0, 31, 31
-	move	$s0, $s1
-	addi.w	$s2, $fp, 0
-	slli.d	$fp, $s0, 1
-	bstrpick.d	$s1, $s0, 30, 0
-	beqz	$s2, .LBB3_28
+	bstrpick.d	$t8, $fp, 31, 31
+	move	$fp, $s0
+	addi.w	$s1, $t8, 0
+	slli.d	$t8, $fp, 1
+	bstrpick.d	$s0, $fp, 30, 0
+	beqz	$s1, .LBB3_28
 .LBB3_50:
-	bnez	$s1, .LBB3_54
+	bnez	$s0, .LBB3_54
 # %bb.51:
 	bltu	$a1, $t0, .LBB3_87
 # %bb.52:
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB3_87
 # %bb.53:
-	ldx.w	$s0, $a0, $fp
-	slli.d	$fp, $s0, 1
-	addi.d	$fp, $fp, 1
+	ldx.w	$fp, $a0, $t8
+	slli.d	$t8, $fp, 1
+	addi.d	$t8, $t8, 1
 	addi.w	$t4, $t4, 4
 .LBB3_54:                               # %doubleebx.exit191
-	bstrpick.d	$s0, $s0, 31, 31
+	bstrpick.d	$fp, $fp, 31, 31
 .LBB3_55:
-	ld.w	$s1, $a3, 0
-	beqz	$s1, .LBB3_87
+	ld.w	$s0, $a3, 0
+	beqz	$s0, .LBB3_87
 # %bb.56:
-	addi.w	$s2, $t7, 0
-	sltui	$s3, $s2, -1280
-	add.d	$s0, $s0, $s3
-	addi.w	$s3, $s0, 1
-	bgeu	$s3, $s1, .LBB3_87
+	addi.w	$s1, $t7, 0
+	sltui	$s2, $s1, -1280
+	add.d	$fp, $fp, $s2
+	addi.w	$s2, $fp, 1
+	bgeu	$s2, $s0, .LBB3_87
 # %bb.57:
-	bstrpick.d	$s3, $t8, 31, 0
-	add.d	$s5, $s3, $s2
-	bltz	$s5, .LBB3_87
+	bstrpick.d	$s2, $t6, 31, 0
+	add.d	$s4, $s2, $s1
+	bltz	$s4, .LBB3_87
 # %bb.58:
-	addi.w	$s0, $s0, 2
-	bstrpick.d	$s4, $s1, 31, 0
-	bstrpick.d	$s1, $s0, 31, 0
-	add.d	$s5, $s5, $s1
-	addi.d	$s5, $s5, -1
-	bgeu	$s5, $s4, .LBB3_87
+	addi.w	$fp, $fp, 2
+	bstrpick.d	$s3, $s0, 31, 0
+	bstrpick.d	$s0, $fp, 31, 0
+	add.d	$s4, $s4, $s0
+	addi.d	$s4, $s4, -1
+	bgeu	$s4, $s3, .LBB3_87
 # %bb.59:
-	add.d	$s5, $s3, $s1
-	bltu	$s4, $s5, .LBB3_87
+	add.d	$s4, $s2, $s0
+	bltu	$s3, $s4, .LBB3_87
 # %bb.60:
-	bgez	$s2, .LBB3_87
+	bgez	$s1, .LBB3_87
 # %bb.61:                               # %.preheader
-	beqz	$s0, .LBB3_66
+	beqz	$fp, .LBB3_66
 # %bb.62:                               # %iter.check
-	bgeu	$s0, $t3, .LBB3_67
+	bgeu	$fp, $t0, .LBB3_67
 .LBB3_63:
-	move	$s2, $zero
+	move	$s1, $zero
 .LBB3_64:                               # %vec.epilog.scalar.ph.preheader
-	add.d	$s3, $t7, $s2
-	add.w	$t6, $s3, $t6
+	add.d	$s2, $t7, $s1
+	add.w	$t5, $s2, $t5
 	.p2align	4, , 16
 .LBB3_65:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s3, $t6, 31, 0
-	ldx.b	$s3, $a2, $s3
-	add.d	$s4, $t8, $s2
-	bstrpick.d	$s4, $s4, 31, 0
-	stx.b	$s3, $a2, $s4
-	addi.d	$s2, $s2, 1
-	addi.w	$t6, $t6, 1
-	bne	$s1, $s2, .LBB3_65
+	bstrpick.d	$s2, $t5, 31, 0
+	ldx.b	$s2, $a2, $s2
+	add.d	$s3, $t6, $s1
+	bstrpick.d	$s3, $s3, 31, 0
+	stx.b	$s2, $a2, $s3
+	addi.d	$s1, $s1, 1
+	addi.w	$t5, $t5, 1
+	bne	$s0, $s1, .LBB3_65
 .LBB3_66:                               # %._crit_edge
-	add.w	$t6, $s0, $t8
-	bstrpick.d	$t8, $t6, 31, 0
-	slli.d	$s0, $fp, 33
-	bnez	$s0, .LBB3_1
+	add.w	$t5, $fp, $t6
+	bstrpick.d	$t6, $t5, 31, 0
+	slli.d	$fp, $t8, 33
+	bnez	$fp, .LBB3_1
 	b	.LBB3_2
 .LBB3_67:                               # %vector.scevcheck
-	addi.d	$s4, $s1, -1
-	addi.w	$s5, $s4, 0
-	nor	$s2, $t8, $zero
-	addi.w	$s6, $s2, 0
-	move	$s2, $zero
-	bltu	$s6, $s5, .LBB3_64
+	addi.d	$s3, $s0, -1
+	addi.w	$s4, $s3, 0
+	nor	$s1, $t6, $zero
+	addi.w	$s5, $s1, 0
+	move	$s1, $zero
+	bltu	$s5, $s4, .LBB3_64
 # %bb.68:                               # %vector.scevcheck
-	add.d	$s6, $t7, $t8
-	addi.w	$s7, $s6, 0
-	nor	$s7, $s7, $zero
-	bltu	$s7, $s5, .LBB3_64
+	add.d	$s5, $t7, $t6
+	addi.w	$s6, $s5, 0
+	nor	$s6, $s6, $zero
+	bltu	$s6, $s4, .LBB3_64
 # %bb.69:                               # %vector.scevcheck
-	srli.d	$s4, $s4, 32
-	bnez	$s4, .LBB3_64
+	srli.d	$s3, $s3, 32
+	bnez	$s3, .LBB3_64
 # %bb.70:                               # %vector.memcheck
-	bstrpick.d	$s2, $s6, 31, 0
-	sub.d	$s2, $s3, $s2
-	bltu	$s2, $t5, .LBB3_63
+	bstrpick.d	$s1, $s5, 31, 0
+	sub.d	$s1, $s2, $s1
+	bltu	$s1, $t3, .LBB3_63
 # %bb.71:                               # %vector.main.loop.iter.check
-	bgeu	$s0, $t5, .LBB3_80
+	bgeu	$fp, $t3, .LBB3_80
 # %bb.72:
-	move	$s2, $zero
+	move	$s1, $zero
 	b	.LBB3_84
 .LBB3_73:
-	slli.d	$s0, $fp, 33
-	beqz	$s0, .LBB3_76
+	slli.d	$fp, $t8, 33
+	beqz	$fp, .LBB3_76
 # %bb.74:
-	slli.d	$s1, $fp, 1
+	slli.d	$s0, $t8, 1
 	b	.LBB3_79
 .LBB3_75:
-	addi.d	$s0, $s0, 2
+	addi.d	$fp, $fp, 2
 	b	.LBB3_55
 .LBB3_76:
 	bltu	$a1, $t0, .LBB3_87
 # %bb.77:
-	bstrpick.d	$fp, $t4, 31, 0
-	addi.d	$s0, $fp, 4
-	bltu	$a7, $s0, .LBB3_87
+	bstrpick.d	$t8, $t4, 31, 0
+	addi.d	$fp, $t8, 4
+	bltu	$a7, $fp, .LBB3_87
 # %bb.78:
-	ldx.w	$fp, $a0, $fp
-	slli.d	$s0, $fp, 1
-	addi.d	$s1, $s0, 1
+	ldx.w	$t8, $a0, $t8
+	slli.d	$fp, $t8, 1
+	addi.d	$s0, $fp, 1
 	addi.w	$t4, $t4, 4
 .LBB3_79:                               # %doubleebx.exit203
-	bstrpick.d	$fp, $fp, 31, 31
-	ori	$s0, $fp, 2
-	move	$fp, $s1
+	bstrpick.d	$t8, $t8, 31, 31
+	ori	$fp, $t8, 2
+	move	$t8, $s0
 	b	.LBB3_55
 .LBB3_80:                               # %vector.ph
-	move	$s4, $zero
-	andi	$s3, $s1, 24
-	bstrpick.d	$s2, $s1, 31, 5
-	slli.d	$s2, $s2, 5
-	add.w	$s5, $t7, $t6
+	move	$s3, $zero
+	andi	$s2, $s0, 28
+	bstrpick.d	$s1, $s0, 31, 5
+	slli.d	$s1, $s1, 5
+	add.w	$s4, $t7, $t5
 .LBB3_81:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s6, $s5, 31, 0
-	add.d	$s7, $a2, $s6
-	vldx	$vr0, $a2, $s6
-	vld	$vr1, $s7, 16
-	add.d	$s6, $t8, $s4
-	bstrpick.d	$s6, $s6, 31, 0
-	add.d	$s7, $a2, $s6
-	vstx	$vr0, $a2, $s6
-	vst	$vr1, $s7, 16
-	addi.d	$s4, $s4, 32
-	addi.w	$s5, $s5, 32
-	bne	$s2, $s4, .LBB3_81
+	bstrpick.d	$s5, $s4, 31, 0
+	add.d	$s6, $a2, $s5
+	vldx	$vr0, $a2, $s5
+	vld	$vr1, $s6, 16
+	add.d	$s5, $t6, $s3
+	bstrpick.d	$s5, $s5, 31, 0
+	add.d	$s6, $a2, $s5
+	vstx	$vr0, $a2, $s5
+	vst	$vr1, $s6, 16
+	addi.d	$s3, $s3, 32
+	addi.w	$s4, $s4, 32
+	bne	$s1, $s3, .LBB3_81
 # %bb.82:                               # %middle.block
-	beq	$s2, $s1, .LBB3_66
+	beq	$s1, $s0, .LBB3_66
 # %bb.83:                               # %vec.epilog.iter.check
-	beqz	$s3, .LBB3_64
+	beqz	$s2, .LBB3_64
 .LBB3_84:                               # %vec.epilog.ph
-	move	$s3, $s2
-	bstrpick.d	$s2, $s1, 31, 3
-	slli.d	$s2, $s2, 3
-	add.d	$s4, $t7, $s3
-	add.w	$s4, $s4, $t6
+	move	$s2, $s1
+	bstrpick.d	$s1, $s0, 31, 2
+	slli.d	$s1, $s1, 2
+	add.d	$s3, $t7, $s2
+	add.w	$s3, $s3, $t5
 .LBB3_85:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$s5, $s4, 31, 0
-	ldx.d	$s5, $a2, $s5
-	add.d	$s6, $t8, $s3
-	bstrpick.d	$s6, $s6, 31, 0
-	stx.d	$s5, $a2, $s6
-	addi.d	$s3, $s3, 8
-	addi.w	$s4, $s4, 8
-	bne	$s2, $s3, .LBB3_85
+	bstrpick.d	$s4, $s3, 31, 0
+	ldx.w	$s4, $a2, $s4
+	add.d	$s5, $t6, $s2
+	bstrpick.d	$s5, $s5, 31, 0
+	stx.w	$s4, $a2, $s5
+	addi.d	$s2, $s2, 4
+	addi.w	$s3, $s3, 4
+	bne	$s1, $s2, .LBB3_85
 # %bb.86:                               # %vec.epilog.middle.block
-	bne	$s2, $s1, .LBB3_64
+	bne	$s1, $s0, .LBB3_64
 	b	.LBB3_66
 .LBB3_87:                               # %doubleebx.exit.thread
 	addi.w	$a0, $zero, -1
 .LBB3_88:                               # %doubleebx.exit.thread
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
@@ -1767,7 +1758,7 @@ upx_inflate2e:                          # @upx_inflate2e
 	addi.d	$sp, $sp, 96
 	ret
 .LBB3_89:
-	addi.w	$a7, $t8, 0
+	addi.w	$a7, $t6, 0
 	st.d	$a7, $sp, 0
 	pcalau12i	$a7, %pc_hi20(.L__const.upx_inflate2e.magic)
 	addi.d	$a7, $a7, %pc_lo12(.L__const.upx_inflate2e.magic)

@@ -2141,30 +2141,31 @@ _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPv
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(LzmaDec_DecodeToBuf)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 32
-	ld.w	$a1, $s1, 72
-	add.d	$a3, $a1, $a2
-	ld.d	$a1, $sp, 24
-	vld	$vr0, $s1, 232
+	ld.d	$a1, $sp, 32
+	ld.w	$a2, $s1, 72
+	add.d	$a3, $a2, $a1
+	ld.d	$a4, $s1, 232
+	ld.d	$a2, $sp, 24
+	ld.d	$a5, $s1, 240
 	st.w	$a3, $s1, 72
-	vinsgr2vr.d	$vr1, $a2, 0
-	vinsgr2vr.d	$vr1, $a1, 1
-	vadd.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s1, 232
+	add.d	$a3, $a4, $a1
+	st.d	$a3, $s1, 232
+	add.d	$a3, $a5, $a2
+	st.d	$a3, $s1, 240
 	beqz	$fp, .LBB30_10
 # %bb.9:                                #   in Loop: Header=BB30_3 Depth=1
 	ld.w	$a3, $fp, 0
-	add.d	$a3, $a3, $a1
+	add.d	$a3, $a3, $a2
 	st.w	$a3, $fp, 0
 .LBB30_10:                              #   in Loop: Header=BB30_3 Depth=1
 	bnez	$a0, .LBB30_13
 # %bb.11:                               #   in Loop: Header=BB30_3 Depth=1
-	or	$a2, $a2, $a1
+	or	$a1, $a1, $a2
 	move	$a0, $zero
-	beqz	$a2, .LBB30_20
+	beqz	$a1, .LBB30_20
 # %bb.12:                               #   in Loop: Header=BB30_3 Depth=1
-	sub.w	$s2, $s2, $a1
-	add.d	$s0, $s0, $a1
+	sub.w	$s2, $s2, $a2
+	add.d	$s0, $s0, $a2
 	bnez	$s2, .LBB30_3
 	b	.LBB30_20
 .LBB30_13:

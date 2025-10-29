@@ -374,52 +374,49 @@ _ZN22btRotationalLimitMotor18solveAngularLimitsEfR9btVector3fP11btRigidBodyR12bt
 	addi.d	$a6, $a0, 12
 .LBB5_6:
 	ld.d	$a7, $a3, 72
+	vrepli.b	$vr5, 0
 	movgr2fr.w	$fa0, $zero
 	fmov.s	$fa4, $fa0
-	fmov.s	$fa5, $fa0
-	fmov.s	$fa6, $fa0
+	vori.b	$vr6, $vr5, 0
 	beqz	$a7, .LBB5_8
 # %bb.7:
-	fld.s	$fa4, $a7, 344
-	fld.s	$fa5, $a3, 16
-	fld.s	$fa7, $a7, 348
-	fld.s	$ft0, $a3, 20
-	fld.s	$ft1, $a7, 352
-	fld.s	$ft2, $a3, 24
-	fadd.s	$fa6, $fa4, $fa5
-	fadd.s	$fa5, $fa7, $ft0
-	fadd.s	$fa4, $ft1, $ft2
+	ld.d	$t0, $a7, 344
+	ld.d	$t1, $a3, 16
+	fld.s	$fa4, $a7, 352
+	fld.s	$fa7, $a3, 24
+	vinsgr2vr.d	$vr6, $t0, 0
+	vinsgr2vr.d	$vr8, $t1, 0
+	vfadd.s	$vr6, $vr6, $vr8
+	fadd.s	$fa4, $fa4, $fa7
 .LBB5_8:                                # %_ZNK12btSolverBody18getAngularVelocityER9btVector3.exit
 	ld.d	$a7, $a5, 72
 	fmov.s	$fa7, $fa0
-	fmov.s	$ft0, $fa0
-	fmov.s	$ft1, $fa0
 	beqz	$a7, .LBB5_10
 # %bb.9:
-	fld.s	$fa7, $a7, 344
-	fld.s	$ft0, $a5, 16
-	fld.s	$ft2, $a7, 348
-	fld.s	$ft3, $a5, 20
-	fld.s	$ft4, $a7, 352
-	fld.s	$ft5, $a5, 24
-	fadd.s	$ft1, $fa7, $ft0
-	fadd.s	$ft0, $ft2, $ft3
-	fadd.s	$fa7, $ft4, $ft5
+	ld.d	$t0, $a7, 344
+	ld.d	$t1, $a5, 16
+	fld.s	$fa7, $a7, 352
+	fld.s	$ft0, $a5, 24
+	vinsgr2vr.d	$vr5, $t0, 0
+	vinsgr2vr.d	$vr9, $t1, 0
+	vfadd.s	$vr5, $vr5, $vr9
+	fadd.s	$fa7, $fa7, $ft0
 .LBB5_10:                               # %_ZNK12btSolverBody18getAngularVelocityER9btVector3.exit63
-	fsub.s	$fa6, $fa6, $ft1
-	fld.s	$ft1, $a1, 4
-	fsub.s	$fa5, $fa5, $ft0
+	fld.s	$ft0, $a1, 4
+	vfsub.s	$vr5, $vr6, $vr5
+	fld.s	$fa6, $a1, 0
+	vreplvei.w	$vr9, $vr5, 1
+	fmul.s	$ft0, $ft1, $ft0
+	vreplvei.w	$vr5, $vr5, 0
+	fmadd.s	$fa5, $fa6, $fa5, $ft0
+	fld.s	$fa6, $a1, 8
+	fld.s	$ft0, $a0, 20
 	fsub.s	$fa4, $fa4, $fa7
-	fld.s	$fa7, $a1, 0
-	fmul.s	$fa5, $fa5, $ft1
-	fld.s	$ft0, $a1, 8
-	fld.s	$ft1, $a0, 20
-	fmadd.s	$fa5, $fa7, $fa6, $fa5
-	fld.s	$fa6, $a0, 24
-	fmadd.s	$fa4, $ft0, $fa4, $fa5
-	fneg.s	$fa5, $ft1
+	fld.s	$fa7, $a0, 24
+	fmadd.s	$fa4, $fa6, $fa4, $fa5
+	fneg.s	$fa5, $ft0
 	fmadd.s	$fa3, $fa5, $fa4, $fa3
-	fmul.s	$fa3, $fa6, $fa3
+	fmul.s	$fa3, $fa7, $fa3
 	fabs.s	$fa4, $fa3
 	lu12i.w	$a7, 212992
 	movgr2fr.w	$fa5, $a7
@@ -610,147 +607,154 @@ _ZN25btTranslationalLimitMotor14testLimitValueEif: # @_ZN25btTranslationalLimitM
 _ZN25btTranslationalLimitMotor15solveLinearAxisEffR11btRigidBodyR12btSolverBodyRK9btVector3S1_S3_S6_iS6_S6_: # @_ZN25btTranslationalLimitMotor15solveLinearAxisEffR11btRigidBodyR12btSolverBodyRK9btVector3S1_S3_S6_iS6_S6_
 # %bb.0:
 	ld.d	$t0, $sp, 8
+	ld.d	$t1, $a1, 60
 	fld.s	$fa2, $t0, 0
+	ld.d	$t0, $t0, 4
 	fld.s	$fa3, $a1, 56
-	fsub.s	$fa4, $fa2, $fa3
-	fld.s	$fa3, $t0, 4
-	fld.s	$fa5, $a1, 60
-	fld.s	$fa7, $t0, 8
-	fld.s	$fa6, $a1, 64
-	fld.s	$ft4, $a4, 56
-	fld.s	$ft5, $a4, 60
+	vinsgr2vr.d	$vr4, $t1, 0
+	fld.s	$fa6, $a4, 56
+	vinsgr2vr.d	$vr7, $t0, 0
+	vreplvei.w	$vr8, $vr7, 1
+	vextrins.w	$vr8, $vr2, 16
+	vreplvei.w	$vr2, $vr4, 1
+	ld.d	$t0, $a4, 60
+	vextrins.w	$vr2, $vr3, 16
+	vfsub.s	$vr5, $vr8, $vr2
+	vfsub.s	$vr2, $vr7, $vr4
+	vinsgr2vr.d	$vr3, $t0, 0
+	vreplvei.w	$vr4, $vr3, 1
+	vextrins.w	$vr4, $vr6, 16
+	vfsub.s	$vr4, $vr8, $vr4
+	vfsub.s	$vr12, $vr7, $vr3
 	ld.d	$t0, $a2, 72
-	fld.s	$ft6, $a4, 64
-	fsub.s	$fa5, $fa3, $fa5
+	vrepli.b	$vr10, 0
 	movgr2fr.w	$ft0, $zero
-	fsub.s	$fa6, $fa7, $fa6
+	vreplvei.w	$vr6, $vr2, 0
+	vreplvei.w	$vr7, $vr5, 1
 	fmov.s	$ft1, $ft0
-	fmov.s	$ft2, $ft0
-	fmov.s	$ft3, $ft0
+	vori.b	$vr11, $vr10, 0
 	beqz	$t0, .LBB7_2
 # %bb.1:
-	fld.s	$ft1, $t0, 328
-	fld.s	$ft2, $a2, 0
-	fld.s	$ft3, $t0, 332
-	fld.s	$ft7, $a2, 4
-	fadd.s	$ft1, $ft1, $ft2
-	fadd.s	$ft2, $ft3, $ft7
-	fld.s	$ft3, $t0, 336
-	fld.s	$ft7, $a2, 8
-	fld.s	$ft8, $t0, 344
-	fld.s	$ft9, $a2, 16
-	fld.s	$ft10, $t0, 348
-	fld.s	$ft11, $a2, 20
-	fld.s	$ft12, $t0, 352
-	fld.s	$ft13, $a2, 24
-	fadd.s	$ft7, $ft3, $ft7
-	fadd.s	$ft3, $ft8, $ft9
-	fadd.s	$ft8, $ft10, $ft11
-	fadd.s	$ft9, $ft12, $ft13
-	fneg.s	$ft10, $fa5
-	fmul.s	$ft10, $ft9, $ft10
-	fmadd.s	$ft10, $ft8, $fa6, $ft10
-	fneg.s	$ft11, $fa6
-	fmul.s	$ft11, $ft3, $ft11
-	fmadd.s	$ft9, $ft9, $fa4, $ft11
-	fneg.s	$ft11, $fa4
-	fmul.s	$ft8, $ft8, $ft11
-	fmadd.s	$ft8, $ft3, $fa5, $ft8
-	fadd.s	$ft3, $ft1, $ft10
-	fadd.s	$ft2, $ft2, $ft9
-	fadd.s	$ft1, $ft7, $ft8
+	ld.d	$t1, $t0, 328
+	fld.s	$fa3, $t0, 336
+	fld.s	$ft1, $a2, 8
+	vinsgr2vr.d	$vr11, $t1, 0
+	ld.d	$t1, $a2, 0
+	fadd.s	$fa3, $fa3, $ft1
+	fld.s	$ft1, $t0, 344
+	fld.s	$ft5, $a2, 16
+	vinsgr2vr.d	$vr14, $t1, 0
+	ld.d	$t0, $t0, 348
+	ld.d	$t1, $a2, 20
+	vbitrevi.w	$vr2, $vr2, 31
+	vfadd.s	$vr11, $vr11, $vr14
+	vinsgr2vr.d	$vr14, $t0, 0
+	vinsgr2vr.d	$vr15, $t1, 0
+	vfadd.s	$vr16, $vr14, $vr15
+	vreplvei.w	$vr14, $vr14, 1
+	vextrins.w	$vr14, $vr9, 16
+	vreplvei.w	$vr15, $vr15, 1
+	vextrins.w	$vr15, $vr13, 16
+	vfadd.s	$vr14, $vr14, $vr15
+	fadd.s	$ft1, $ft1, $ft5
+	vfmul.s	$vr2, $vr14, $vr2
+	vfmadd.s	$vr2, $vr16, $vr5, $vr2
+	fneg.s	$ft5, $fa7
+	vreplvei.w	$vr14, $vr16, 0
+	fmul.s	$ft5, $ft6, $ft5
+	fmadd.s	$ft1, $ft1, $fa6, $ft5
+	vfadd.s	$vr11, $vr11, $vr2
+	fadd.s	$ft1, $fa3, $ft1
 .LBB7_2:                                # %_ZNK12btSolverBody31getVelocityInLocalPointObsoleteERK9btVector3RS0_.exit
 	ld.d	$t1, $a5, 72
 	ld.d	$t0, $sp, 0
-	fsub.s	$fa2, $fa2, $ft4
-	fsub.s	$fa3, $fa3, $ft5
-	fsub.s	$fa7, $fa7, $ft6
-	fmov.s	$ft4, $ft0
-	fmov.s	$ft5, $ft0
+	vreplvei.w	$vr2, $vr12, 0
+	vreplvei.w	$vr3, $vr4, 1
 	beqz	$t1, .LBB7_4
 # %bb.3:
-	fld.s	$ft0, $t1, 328
-	fld.s	$ft4, $a5, 0
-	fld.s	$ft5, $t1, 332
-	fld.s	$ft6, $a5, 4
-	fadd.s	$ft0, $ft0, $ft4
-	fadd.s	$ft4, $ft5, $ft6
-	fld.s	$ft5, $t1, 336
-	fld.s	$ft6, $a5, 8
-	fld.s	$ft7, $t1, 344
-	fld.s	$ft8, $a5, 16
-	fld.s	$ft9, $t1, 348
-	fld.s	$ft10, $a5, 20
-	fld.s	$ft11, $t1, 352
-	fld.s	$ft12, $a5, 24
-	fadd.s	$ft6, $ft5, $ft6
-	fadd.s	$ft5, $ft7, $ft8
-	fadd.s	$ft7, $ft9, $ft10
-	fadd.s	$ft8, $ft11, $ft12
-	fneg.s	$ft9, $fa3
-	fmul.s	$ft9, $ft8, $ft9
-	fmadd.s	$ft9, $ft7, $fa7, $ft9
-	fneg.s	$ft10, $fa7
-	fmul.s	$ft10, $ft5, $ft10
-	fmadd.s	$ft8, $ft8, $fa2, $ft10
-	fneg.s	$ft10, $fa2
-	fmul.s	$ft7, $ft7, $ft10
-	fmadd.s	$ft7, $ft5, $fa3, $ft7
-	fadd.s	$ft5, $ft0, $ft9
-	fadd.s	$ft4, $ft4, $ft8
-	fadd.s	$ft0, $ft6, $ft7
+	ld.d	$t2, $t1, 328
+	fld.s	$ft0, $t1, 336
+	fld.s	$ft2, $a5, 8
+	vinsgr2vr.d	$vr13, $t2, 0
+	ld.d	$t2, $a5, 0
+	fadd.s	$ft0, $ft0, $ft2
+	fld.s	$ft2, $t1, 344
+	fld.s	$ft6, $a5, 16
+	vinsgr2vr.d	$vr15, $t2, 0
+	ld.d	$t1, $t1, 348
+	ld.d	$t2, $a5, 20
+	vbitrevi.w	$vr12, $vr12, 31
+	vfadd.s	$vr13, $vr13, $vr15
+	vinsgr2vr.d	$vr15, $t1, 0
+	vinsgr2vr.d	$vr16, $t2, 0
+	vfadd.s	$vr17, $vr15, $vr16
+	vreplvei.w	$vr15, $vr15, 1
+	vextrins.w	$vr15, $vr10, 16
+	vreplvei.w	$vr16, $vr16, 1
+	vextrins.w	$vr16, $vr14, 16
+	vfadd.s	$vr15, $vr15, $vr16
+	fadd.s	$ft2, $ft2, $ft6
+	vfmul.s	$vr12, $vr15, $vr12
+	vfmadd.s	$vr12, $vr17, $vr4, $vr12
+	fneg.s	$ft6, $fa3
+	vreplvei.w	$vr15, $vr17, 0
+	fmul.s	$ft6, $ft7, $ft6
+	fmadd.s	$ft6, $ft2, $fa2, $ft6
+	vfadd.s	$vr10, $vr13, $vr12
+	fadd.s	$ft0, $ft0, $ft6
 .LBB7_4:                                # %_ZNK12btSolverBody31getVelocityInLocalPointObsoleteERK9btVector3RS0_.exit109
-	fld.s	$ft6, $t0, 0
-	fld.s	$ft7, $t0, 4
-	fld.s	$ft8, $a3, 0
-	fld.s	$ft9, $a6, 0
-	fld.s	$ft10, $a3, 4
-	fld.s	$ft11, $a6, 4
-	fld.s	$ft12, $a3, 8
-	fld.s	$ft13, $a6, 8
+	fld.s	$ft4, $t0, 0
+	fld.s	$ft5, $t0, 4
+	fld.s	$ft6, $a3, 0
+	fld.s	$ft7, $a6, 0
+	fld.s	$ft8, $a3, 4
+	fld.s	$ft9, $a6, 4
+	fld.s	$ft10, $a3, 8
+	fld.s	$ft11, $a6, 8
+	fsub.s	$ft6, $ft6, $ft7
+	fld.s	$ft7, $t0, 8
 	fsub.s	$ft8, $ft8, $ft9
-	fld.s	$ft9, $t0, 8
-	fsub.s	$ft10, $ft10, $ft11
-	fsub.s	$ft11, $ft12, $ft13
-	fmul.s	$ft10, $ft7, $ft10
-	fmadd.s	$ft8, $ft8, $ft6, $ft10
-	fnmadd.s	$ft10, $ft11, $ft9, $ft8
+	fsub.s	$ft9, $ft10, $ft11
+	fmul.s	$ft8, $ft5, $ft8
+	fmadd.s	$ft6, $ft6, $ft4, $ft8
+	fnmadd.s	$ft8, $ft9, $ft7, $ft6
 	alsl.d	$a3, $a7, $a0, 2
 	slli.d	$a6, $a7, 2
-	fldx.s	$ft12, $a0, $a6
-	fld.s	$ft13, $a3, 16
+	fldx.s	$ft10, $a0, $a6
+	fld.s	$ft11, $a3, 16
 	lu12i.w	$a3, -141856
 	ori	$a3, $a3, 2923
-	movgr2fr.w	$ft8, $a3
+	movgr2fr.w	$ft6, $a3
 	lu12i.w	$a3, 382432
 	ori	$a3, $a3, 2923
-	fcmp.cule.s	$fcc0, $ft13, $ft12
-	movgr2fr.w	$ft11, $a3
+	fcmp.cule.s	$fcc0, $ft11, $ft10
+	movgr2fr.w	$ft9, $a3
 	bcnez	$fcc0, .LBB7_9
 # %bb.5:
-	fcmp.cule.s	$fcc0, $ft10, $ft13
+	fcmp.cule.s	$fcc0, $ft8, $ft11
 	bcnez	$fcc0, .LBB7_7
 # %bb.6:
-	fsub.s	$ft10, $ft10, $ft13
-	movgr2fr.w	$ft8, $zero
+	fsub.s	$ft8, $ft8, $ft11
+	movgr2fr.w	$ft6, $zero
 	b	.LBB7_9
 .LBB7_7:
-	fcmp.cule.s	$fcc0, $ft12, $ft10
+	fcmp.cule.s	$fcc0, $ft10, $ft8
 	bcnez	$fcc0, .LBB7_10
 # %bb.8:
-	fsub.s	$ft10, $ft10, $ft12
-	movgr2fr.w	$ft11, $zero
+	fsub.s	$ft8, $ft8, $ft10
+	movgr2fr.w	$ft9, $zero
 .LBB7_9:
-	fsub.s	$ft3, $ft3, $ft5
-	fsub.s	$ft2, $ft2, $ft4
+	vfsub.s	$vr10, $vr11, $vr10
+	vreplvei.w	$vr11, $vr10, 0
+	vreplvei.w	$vr10, $vr10, 1
 	fsub.s	$ft0, $ft1, $ft0
-	fmul.s	$ft1, $ft2, $ft7
-	fmadd.s	$ft1, $ft6, $ft3, $ft1
+	fmul.s	$ft1, $ft2, $ft5
+	fmadd.s	$ft1, $ft4, $ft3, $ft1
 	fld.s	$ft2, $a0, 56
-	fmadd.s	$ft0, $ft9, $ft0, $ft1
+	fmadd.s	$ft0, $ft7, $ft0, $ft1
 	fld.s	$ft1, $a0, 52
 	fld.s	$ft3, $a0, 48
-	fmul.s	$ft2, $ft10, $ft2
+	fmul.s	$ft2, $ft8, $ft2
 	fdiv.s	$fa0, $ft2, $fa0
 	fneg.s	$ft1, $ft1
 	alsl.d	$a0, $a7, $a0, 2
@@ -759,92 +763,94 @@ _ZN25btTranslationalLimitMotor15solveLinearAxisEffR11btRigidBodyR12btSolverBodyR
 	fmul.s	$fa0, $ft3, $fa0
 	fmul.s	$fa0, $fa1, $fa0
 	fadd.s	$fa0, $ft2, $fa0
-	fcmp.clt.s	$fcc0, $fa0, $ft8
+	fcmp.clt.s	$fcc0, $fa0, $ft6
 	movgr2fr.w	$fa1, $zero
 	fsel	$ft0, $fa0, $fa1, $fcc0
-	fcmp.clt.s	$fcc0, $ft11, $fa0
+	fcmp.clt.s	$fcc0, $ft9, $fa0
 	fsel	$fa0, $ft0, $fa1, $fcc0
 	fst.s	$fa0, $a0, 32
 	fld.s	$ft0, $t0, 4
 	fsub.s	$fa0, $fa0, $ft2
-	fld.s	$ft1, $t0, 8
-	fld.s	$ft2, $t0, 0
+	fld.s	$ft1, $t0, 0
+	fld.s	$ft2, $t0, 8
 	fneg.s	$fa1, $ft0
-	fmul.s	$ft3, $fa6, $fa1
-	fmadd.s	$ft3, $fa5, $ft1, $ft3
-	fneg.s	$ft4, $ft1
-	fmul.s	$ft5, $fa4, $ft4
-	fmadd.s	$ft5, $fa6, $ft2, $ft5
-	fneg.s	$fa6, $ft2
-	fmul.s	$fa5, $fa5, $fa6
-	fmadd.s	$fa5, $fa4, $ft0, $fa5
-	fmul.s	$fa1, $fa7, $fa1
-	fld.s	$ft6, $a1, 360
-	fmadd.s	$fa1, $fa3, $ft1, $fa1
-	fmul.s	$fa4, $fa2, $ft4
-	fmadd.s	$fa4, $fa7, $ft2, $fa4
-	fmul.s	$fa7, $ft2, $ft6
-	fld.s	$ft2, $a1, 284
-	fmul.s	$ft4, $ft0, $ft6
-	fmul.s	$ft1, $ft1, $ft6
+	vreplvei.w	$vr5, $vr5, 0
+	fmul.s	$ft3, $fa5, $fa1
+	fmadd.s	$ft3, $fa6, $ft2, $ft3
+	fneg.s	$ft4, $ft2
+	fmul.s	$ft5, $fa7, $ft4
+	fmadd.s	$ft5, $fa5, $ft1, $ft5
+	fneg.s	$fa5, $ft1
+	fmul.s	$fa6, $fa6, $fa5
+	fmadd.s	$fa6, $fa7, $ft0, $fa6
+	vreplvei.w	$vr4, $vr4, 0
+	fmul.s	$fa1, $fa4, $fa1
+	fmadd.s	$fa1, $fa2, $ft2, $fa1
+	fmul.s	$fa7, $fa3, $ft4
+	fld.s	$ft4, $a1, 360
+	fmadd.s	$fa4, $fa4, $ft1, $fa7
+	fld.s	$fa7, $a1, 284
 	fld.s	$ft6, $a1, 280
-	fmul.s	$ft2, $ft5, $ft2
-	fld.s	$ft7, $a1, 288
-	fld.s	$ft8, $a1, 300
-	fld.s	$ft9, $a1, 296
-	fmadd.s	$ft2, $ft6, $ft3, $ft2
-	fmadd.s	$ft2, $ft7, $fa5, $ft2
-	fmul.s	$ft6, $ft5, $ft8
-	fmadd.s	$ft6, $ft9, $ft3, $ft6
-	fld.s	$ft7, $a1, 304
-	fld.s	$ft8, $a1, 316
-	fld.s	$ft9, $a1, 312
-	fld.s	$ft10, $a1, 320
-	fmadd.s	$ft6, $ft7, $fa5, $ft6
-	fmul.s	$ft5, $ft5, $ft8
-	fmadd.s	$ft3, $ft9, $ft3, $ft5
-	fmadd.s	$fa5, $ft10, $fa5, $ft3
-	fmul.s	$fa7, $fa7, $fa0
+	fmul.s	$ft1, $ft1, $ft4
+	fmul.s	$ft2, $ft2, $ft4
+	fmul.s	$fa7, $ft5, $fa7
+	fmadd.s	$fa7, $ft6, $ft3, $fa7
+	fld.s	$ft6, $a1, 288
+	fld.s	$ft7, $a1, 300
+	fld.s	$ft8, $a1, 296
+	fld.s	$ft9, $a1, 304
+	fmadd.s	$fa7, $ft6, $fa6, $fa7
+	fmul.s	$ft6, $ft5, $ft7
+	fmadd.s	$ft6, $ft8, $ft3, $ft6
+	fmadd.s	$ft6, $ft9, $fa6, $ft6
+	fld.s	$ft7, $a1, 316
+	fld.s	$ft8, $a1, 312
+	fld.s	$ft9, $a1, 320
+	fmul.s	$ft4, $ft0, $ft4
+	fmul.s	$ft5, $ft5, $ft7
+	fmadd.s	$ft3, $ft8, $ft3, $ft5
+	fmadd.s	$fa6, $ft9, $fa6, $ft3
+	fmul.s	$ft1, $ft1, $fa0
 	fld.s	$ft3, $a2, 0
 	fmul.s	$ft4, $ft4, $fa0
-	fmul.s	$ft1, $ft1, $fa0
+	fmul.s	$ft2, $ft2, $fa0
 	fld.s	$ft5, $a2, 4
-	fadd.s	$fa7, $fa7, $ft3
+	fadd.s	$ft1, $ft1, $ft3
 	fld.s	$ft3, $a2, 8
-	fst.s	$fa7, $a2, 0
-	fadd.s	$fa7, $ft4, $ft5
-	fst.s	$fa7, $a2, 4
-	fadd.s	$fa7, $ft1, $ft3
-	fld.s	$ft1, $a2, 32
+	fst.s	$ft1, $a2, 0
+	fadd.s	$ft1, $ft4, $ft5
+	fst.s	$ft1, $a2, 4
+	fadd.s	$ft1, $ft2, $ft3
+	fld.s	$ft2, $a2, 32
 	fld.s	$ft3, $a2, 36
 	fld.s	$ft4, $a2, 40
-	fst.s	$fa7, $a2, 8
-	fmul.s	$fa7, $fa0, $ft1
-	fmul.s	$ft1, $fa0, $ft3
+	fst.s	$ft1, $a2, 8
+	fmul.s	$ft1, $fa0, $ft2
+	fmul.s	$ft2, $fa0, $ft3
 	fmul.s	$ft3, $fa0, $ft4
-	fmul.s	$fa7, $ft2, $fa7
-	fld.s	$ft2, $a2, 16
-	fmul.s	$ft1, $ft6, $ft1
-	fmul.s	$fa5, $fa5, $ft3
+	fmul.s	$fa7, $fa7, $ft1
+	fld.s	$ft1, $a2, 16
+	fmul.s	$ft2, $ft6, $ft2
+	fmul.s	$fa6, $fa6, $ft3
 	fld.s	$ft3, $a2, 20
-	fadd.s	$fa7, $fa7, $ft2
-	fld.s	$ft2, $a2, 24
+	fadd.s	$fa7, $fa7, $ft1
+	fld.s	$ft1, $a2, 24
 	fst.s	$fa7, $a2, 16
-	fadd.s	$fa7, $ft1, $ft3
+	fadd.s	$fa7, $ft2, $ft3
 	fst.s	$fa7, $a2, 20
-	fadd.s	$fa5, $fa5, $ft2
-	fst.s	$fa5, $a2, 24
-	fld.s	$fa5, $a4, 360
+	fadd.s	$fa6, $fa6, $ft1
+	fst.s	$fa6, $a2, 24
+	fld.s	$fa6, $a4, 360
 	fld.s	$fa7, $t0, 0
-	fmul.s	$fa3, $fa3, $fa6
-	fmadd.s	$fa2, $fa2, $ft0, $fa3
+	fmul.s	$fa2, $fa2, $fa5
+	fmadd.s	$fa2, $fa3, $ft0, $fa2
 	fld.s	$fa3, $t0, 4
-	fmul.s	$fa6, $fa5, $fa7
+	fmul.s	$fa5, $fa6, $fa7
 	fld.s	$fa7, $t0, 8
 	fld.s	$ft0, $a4, 284
-	fmul.s	$fa3, $fa5, $fa3
+	fmul.s	$fa3, $fa6, $fa3
 	fld.s	$ft1, $a4, 280
-	fmul.s	$fa5, $fa5, $fa7
+	fmul.s	$fa6, $fa6, $fa7
 	fmul.s	$fa7, $fa4, $ft0
 	fld.s	$ft0, $a4, 288
 	fmadd.s	$fa7, $ft1, $fa1, $fa7
@@ -862,7 +868,7 @@ _ZN25btTranslationalLimitMotor15solveLinearAxisEffR11btRigidBodyR12btSolverBodyR
 	fld.s	$ft2, $a5, 0
 	fmadd.s	$fa1, $ft1, $fa1, $fa4
 	fmadd.s	$fa1, $ft3, $fa2, $fa1
-	fmul.s	$fa2, $fa0, $fa6
+	fmul.s	$fa2, $fa0, $fa5
 	fsub.s	$fa2, $ft2, $fa2
 	fld.s	$fa4, $a5, 4
 	fst.s	$fa2, $a5, 0
@@ -870,7 +876,7 @@ _ZN25btTranslationalLimitMotor15solveLinearAxisEffR11btRigidBodyR12btSolverBodyR
 	fld.s	$fa3, $a5, 8
 	fsub.s	$fa2, $fa4, $fa2
 	fst.s	$fa2, $a5, 4
-	fmul.s	$fa2, $fa0, $fa5
+	fmul.s	$fa2, $fa0, $fa6
 	fsub.s	$fa2, $fa3, $fa2
 	fld.s	$fa3, $a5, 32
 	fld.s	$fa4, $a5, 36
@@ -2674,18 +2680,18 @@ _ZN23btGeneric6DofConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstr
 _ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstraintInfo2ERK11btTransformS5_RK9btVector3S8_S8_S8_: # @_ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstraintInfo2ERK11btTransformS5_RK9btVector3S8_S8_S8_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2697,8 +2703,8 @@ _ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstrain
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	move	$s0, $a0
-	ld.w	$a0, $a0, 856
-	ld.bu	$t0, $s0, 788
+	ld.w	$t0, $a0, 856
+	ld.bu	$a0, $a0, 788
 	move	$fp, $a7
 	move	$s1, $a6
 	move	$s2, $a5
@@ -2706,53 +2712,53 @@ _ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstrain
 	move	$s4, $a3
 	move	$s5, $a2
 	move	$s6, $a1
-	st.w	$zero, $sp, 108
-	bnez	$a0, .LBB22_4
+	st.w	$zero, $sp, 116
+	bnez	$t0, .LBB22_4
 # %bb.1:
 	move	$s7, $zero
-	bnez	$t0, .LBB22_4
+	bnez	$a0, .LBB22_4
 # %bb.2:                                # %_ZN25btTranslationalLimitMotor14needApplyForceEi.exit
-	ld.w	$a0, $s0, 860
+	ld.w	$a1, $s0, 860
 	ld.bu	$a2, $s0, 789
-	beqz	$a0, .LBB22_5
+	beqz	$a1, .LBB22_5
 .LBB22_3:
-	move	$a1, $a2
+	move	$a0, $a2
 	b	.LBB22_6
 .LBB22_4:
+	st.w	$zero, $sp, 96
 	fld.s	$fa0, $s0, 840
 	fld.s	$fa1, $s0, 824
+	st.w	$t0, $sp, 112
 	fld.s	$fa2, $s0, 780
-	fst.s	$fa0, $sp, 100
-	fst.s	$fa1, $sp, 96
-	fst.s	$fa2, $sp, 76
+	fst.s	$fa0, $sp, 108
+	fst.s	$fa1, $sp, 104
 	fld.s	$fa0, $s0, 784
-	fld.s	$fa1, $s0, 744
-	fld.s	$fa2, $s0, 776
-	fld.s	$fa3, $s0, 728
-	fst.s	$fa0, $sp, 84
-	fst.s	$fa1, $sp, 60
-	fst.s	$fa2, $sp, 80
-	fst.s	$fa3, $sp, 56
-	fld.s	$fa0, $s0, 808
-	st.w	$zero, $sp, 88
-	st.w	$a0, $sp, 104
-	st.b	$t0, $sp, 92
-	fst.s	$fa0, $sp, 68
-	fld.s	$fa0, $s0, 792
-	st.w	$zero, $sp, 72
+	fst.s	$fa2, $sp, 84
+	fld.s	$fa1, $s0, 776
+	st.b	$a0, $sp, 100
+	fst.s	$fa0, $sp, 92
+	fld.s	$fa0, $s0, 744
+	fst.s	$fa1, $sp, 88
+	vld	$vr1, $s0, 728
+	fld.s	$fa2, $s0, 792
+	fld.s	$fa3, $s0, 808
+	st.w	$zero, $sp, 80
+	vextrins.w	$vr1, $vr0, 16
+	vextrins.w	$vr1, $vr2, 32
+	vextrins.w	$vr1, $vr3, 48
 	ld.w	$a0, $s0, 1056
 	ld.wu	$a1, $s0, 1040
-	fst.s	$fa0, $sp, 64
+	vst	$vr1, $sp, 64
 	ld.wu	$a2, $s0, 1072
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 40
-	st.d	$a2, $sp, 48
+	st.d	$a0, $sp, 48
+	st.d	$a2, $sp, 56
 	st.d	$zero, $sp, 24
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 48
 	st.d	$a0, $sp, 16
 	st.d	$zero, $sp, 8
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 64
 	st.d	$s6, $sp, 0
 	move	$a0, $s0
 	move	$a2, $s5
@@ -2764,47 +2770,47 @@ _ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstrain
 	pcaddu18i	$ra, %call36(_ZN23btGeneric6DofConstraint21get_limit_motor_info2EP22btRotationalLimitMotorRK11btTransformS4_RK9btVector3S7_S7_S7_PN17btTypedConstraint17btConstraintInfo2EiRS5_i)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	ld.w	$a0, $s0, 860
+	ld.w	$a1, $s0, 860
 	ld.bu	$a2, $s0, 789
-	bnez	$a0, .LBB22_3
+	bnez	$a1, .LBB22_3
 .LBB22_5:
-	ori	$a1, $zero, 1
+	ori	$a0, $zero, 1
 	beqz	$a2, .LBB22_7
 .LBB22_6:                               # %_ZN25btTranslationalLimitMotor14needApplyForceEi.exit._crit_edge
+	st.w	$zero, $sp, 96
 	fld.s	$fa0, $s0, 844
 	fld.s	$fa1, $s0, 828
+	st.w	$a1, $sp, 112
 	fld.s	$fa2, $s0, 780
-	fst.s	$fa0, $sp, 100
-	fst.s	$fa1, $sp, 96
-	fst.s	$fa2, $sp, 76
+	fst.s	$fa0, $sp, 108
+	fst.s	$fa1, $sp, 104
 	fld.s	$fa0, $s0, 784
-	fld.s	$fa1, $s0, 748
-	fld.s	$fa2, $s0, 776
-	fld.s	$fa3, $s0, 732
-	fst.s	$fa0, $sp, 84
-	fst.s	$fa1, $sp, 60
-	fst.s	$fa2, $sp, 80
-	fst.s	$fa3, $sp, 56
-	fld.s	$fa0, $s0, 812
-	st.w	$zero, $sp, 88
-	st.w	$a0, $sp, 104
-	st.b	$a1, $sp, 92
-	fst.s	$fa0, $sp, 68
-	fld.s	$fa0, $s0, 796
-	st.w	$zero, $sp, 72
+	fst.s	$fa2, $sp, 84
+	fld.s	$fa1, $s0, 776
+	st.b	$a0, $sp, 100
+	fst.s	$fa0, $sp, 92
+	fld.s	$fa0, $s0, 748
+	fst.s	$fa1, $sp, 88
+	vld	$vr1, $s0, 732
+	fld.s	$fa2, $s0, 796
+	fld.s	$fa3, $s0, 812
+	st.w	$zero, $sp, 80
+	vextrins.w	$vr1, $vr0, 16
+	vextrins.w	$vr1, $vr2, 32
+	vextrins.w	$vr1, $vr3, 48
 	ld.w	$a0, $s0, 1060
 	ld.wu	$a1, $s0, 1044
-	fst.s	$fa0, $sp, 64
+	vst	$vr1, $sp, 64
 	ld.wu	$a2, $s0, 1076
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 40
-	st.d	$a2, $sp, 48
+	st.d	$a0, $sp, 48
+	st.d	$a2, $sp, 56
 	st.d	$zero, $sp, 24
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 48
 	st.d	$a0, $sp, 16
 	st.d	$s7, $sp, 8
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 64
 	st.d	$s6, $sp, 0
 	move	$a0, $s0
 	move	$a2, $s5
@@ -2817,50 +2823,50 @@ _ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstrain
 	jirl	$ra, $ra, 0
 	add.d	$s7, $a0, $s7
 .LBB22_7:                               # %_ZN25btTranslationalLimitMotor14needApplyForceEi.exit.1
-	ld.w	$a0, $s0, 864
+	ld.w	$a1, $s0, 864
 	ld.bu	$a2, $s0, 790
-	beqz	$a0, .LBB22_9
+	beqz	$a1, .LBB22_9
 # %bb.8:
-	move	$a1, $a2
+	move	$a0, $a2
 	b	.LBB22_10
 .LBB22_9:
-	ori	$a1, $zero, 1
+	ori	$a0, $zero, 1
 	beqz	$a2, .LBB22_11
 .LBB22_10:                              # %_ZN25btTranslationalLimitMotor14needApplyForceEi.exit.1._crit_edge
+	st.w	$zero, $sp, 96
 	fld.s	$fa0, $s0, 848
 	fld.s	$fa1, $s0, 832
+	st.w	$a1, $sp, 112
 	fld.s	$fa2, $s0, 780
-	fst.s	$fa0, $sp, 100
-	fst.s	$fa1, $sp, 96
-	fst.s	$fa2, $sp, 76
+	fst.s	$fa0, $sp, 108
+	fst.s	$fa1, $sp, 104
 	fld.s	$fa0, $s0, 784
-	fld.s	$fa1, $s0, 752
-	fld.s	$fa2, $s0, 776
-	fld.s	$fa3, $s0, 736
-	fst.s	$fa0, $sp, 84
-	fst.s	$fa1, $sp, 60
-	fst.s	$fa2, $sp, 80
-	fst.s	$fa3, $sp, 56
-	fld.s	$fa0, $s0, 816
-	st.w	$zero, $sp, 88
-	st.w	$a0, $sp, 104
-	st.b	$a1, $sp, 92
-	fst.s	$fa0, $sp, 68
-	fld.s	$fa0, $s0, 800
-	st.w	$zero, $sp, 72
+	fst.s	$fa2, $sp, 84
+	fld.s	$fa1, $s0, 776
+	st.b	$a0, $sp, 100
+	fst.s	$fa0, $sp, 92
+	fld.s	$fa0, $s0, 752
+	fst.s	$fa1, $sp, 88
+	vld	$vr1, $s0, 736
+	fld.s	$fa2, $s0, 800
+	fld.s	$fa3, $s0, 816
+	st.w	$zero, $sp, 80
+	vextrins.w	$vr1, $vr0, 16
+	vextrins.w	$vr1, $vr2, 32
+	vextrins.w	$vr1, $vr3, 48
 	ld.w	$a0, $s0, 1064
 	ld.wu	$a1, $s0, 1048
-	fst.s	$fa0, $sp, 64
+	vst	$vr1, $sp, 64
 	ld.wu	$a2, $s0, 1080
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 40
-	st.d	$a2, $sp, 48
+	st.d	$a0, $sp, 48
+	st.d	$a2, $sp, 56
 	st.d	$zero, $sp, 24
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 48
 	st.d	$a0, $sp, 16
 	st.d	$s7, $sp, 8
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 64
 	st.d	$s6, $sp, 0
 	move	$a0, $s0
 	move	$a2, $s5
@@ -2874,17 +2880,17 @@ _ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstrain
 	add.d	$s7, $a0, $s7
 .LBB22_11:                              # %_ZN25btTranslationalLimitMotor14needApplyForceEi.exit.2
 	move	$a0, $s7
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .Lfunc_end22:
 	.size	_ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstraintInfo2ERK11btTransformS5_RK9btVector3S8_S8_S8_, .Lfunc_end22-_ZN23btGeneric6DofConstraint15setLinearLimitsEPN17btTypedConstraint17btConstraintInfo2ERK11btTransformS5_RK9btVector3S8_S8_S8_

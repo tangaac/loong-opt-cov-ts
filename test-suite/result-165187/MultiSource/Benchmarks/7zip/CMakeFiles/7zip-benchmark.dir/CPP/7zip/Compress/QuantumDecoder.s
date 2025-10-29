@@ -249,7 +249,7 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
 	st.w	$a3, $a0, 1208
 	beqz	$a2, .LBB0_7
 # %bb.1:                                # %.lr.ph.i
-	ori	$a6, $zero, 16
+	ori	$a6, $zero, 8
 	bstrpick.d	$a4, $a5, 31, 0
 	bltu	$a2, $a6, .LBB0_4
 # %bb.2:                                # %vector.memcheck
@@ -293,19 +293,19 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
 	st.w	$a3, $a0, 1412
 	beqz	$a2, .LBB0_15
 # %bb.9:                                # %.lr.ph.i.1
-	ori	$a5, $zero, 16
+	ori	$a5, $zero, 8
 	bstrpick.d	$a3, $a4, 31, 0
 	bltu	$a2, $a5, .LBB0_12
 # %bb.10:                               # %vector.memcheck76
-	addi.d	$a6, $a0, 1416
-	add.d	$a5, $a0, $a3
-	addi.d	$a5, $a5, 1546
-	addi.d	$a7, $a0, 1546
-	bgeu	$a6, $a5, .LBB0_28
+	addi.d	$a5, $a0, 1416
+	add.d	$a6, $a0, $a3
+	addi.d	$a6, $a6, 1546
+	bgeu	$a5, $a6, .LBB0_28
 # %bb.11:                               # %vector.memcheck76
-	alsl.d	$a5, $a3, $a0, 1
-	addi.d	$a5, $a5, 1416
-	bgeu	$a7, $a5, .LBB0_28
+	addi.d	$a5, $a0, 1546
+	alsl.d	$a6, $a3, $a0, 1
+	addi.d	$a6, $a6, 1416
+	bgeu	$a5, $a6, .LBB0_28
 .LBB0_12:
 	move	$a5, $zero
 .LBB0_13:                               # %scalar.ph82.preheader
@@ -334,31 +334,30 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
 	maskeqz	$a3, $a2, $a3
 	or	$a4, $a3, $a4
 	st.w	$a4, $a0, 1612
-	ori	$a3, $zero, 4
-	st.w	$a3, $a0, 1616
+	ori	$a5, $zero, 4
+	st.w	$a5, $a0, 1616
 	beqz	$a2, .LBB0_23
-# %bb.17:                               # %.lr.ph.i.2
-	ori	$a5, $zero, 16
+# %bb.17:                               # %iter.check
 	bstrpick.d	$a3, $a4, 31, 0
 	bltu	$a2, $a5, .LBB0_20
-# %bb.18:                               # %vector.memcheck99
+# %bb.18:                               # %vector.memcheck101
 	addi.d	$a5, $a0, 1620
-	add.d	$a2, $a0, $a3
-	addi.d	$a2, $a2, 1750
-	addi.d	$a6, $a0, 1750
-	bgeu	$a5, $a2, .LBB0_31
-# %bb.19:                               # %vector.memcheck99
-	alsl.d	$a2, $a3, $a0, 1
-	addi.d	$a2, $a2, 1620
-	bgeu	$a6, $a2, .LBB0_31
+	add.d	$a6, $a0, $a3
+	addi.d	$a6, $a6, 1750
+	bgeu	$a5, $a6, .LBB0_31
+# %bb.19:                               # %vector.memcheck101
+	addi.d	$a5, $a0, 1750
+	alsl.d	$a6, $a3, $a0, 1
+	addi.d	$a6, $a6, 1620
+	bgeu	$a5, $a6, .LBB0_31
 .LBB0_20:
 	move	$a2, $zero
-.LBB0_21:                               # %scalar.ph105.preheader
+.LBB0_21:                               # %vec.epilog.scalar.ph.preheader
 	slli.d	$a1, $a2, 1
 	addi.d	$a1, $a1, 1620
 	sub.d	$a4, $a4, $a2
 	.p2align	4, , 16
-.LBB0_22:                               # %scalar.ph105
+.LBB0_22:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	stx.h	$a4, $a0, $a1
 	add.d	$a5, $a0, $a2
@@ -436,61 +435,110 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
 	b	.LBB0_5
 .LBB0_28:                               # %vector.ph84
 	andi	$a5, $a3, 56
-	pcalau12i	$t0, %pc_hi20(.LCPI0_13)
-	vld	$vr1, $t0, %pc_lo12(.LCPI0_13)
-	pcalau12i	$t0, %pc_hi20(.LCPI0_14)
-	vld	$vr2, $t0, %pc_lo12(.LCPI0_14)
-	vreplgr2vr.w	$vr3, $a4
-	move	$t0, $a1
-	lu32i.d	$t0, 394500
-	lu52i.d	$t0, $t0, 112
-	vreplgr2vr.d	$vr4, $t0
+	vreplgr2vr.w	$vr1, $a4
+	pcalau12i	$a6, %pc_hi20(.LCPI0_14)
+	vld	$vr2, $a6, %pc_lo12(.LCPI0_14)
+	addi.d	$a6, $a0, 1550
+	addi.d	$a7, $a0, 1424
+	vreplgr2vr.w	$vr3, $a1
 	move	$t0, $a5
 	.p2align	4, , 16
 .LBB0_29:                               # %vector.body89
                                         # =>This Inner Loop Header: Depth=1
-	vsub.w	$vr5, $vr3, $vr2
-	vsub.w	$vr6, $vr3, $vr1
-	vpickev.h	$vr5, $vr6, $vr5
-	vst	$vr5, $a6, 0
-	vstelm.d	$vr4, $a7, 0, 0
+	vaddi.bu	$vr4, $vr3, 4
+	vsub.w	$vr5, $vr1, $vr2
+	vsubi.wu	$vr6, $vr5, 4
+	vpickev.h	$vr5, $vr5, $vr5
+	vpickev.h	$vr6, $vr6, $vr6
+	vpackev.d	$vr5, $vr6, $vr5
+	vst	$vr5, $a7, -8
+	vstelm.w	$vr3, $a6, -4, 0
+	vstelm.w	$vr4, $a6, 0, 0
 	vaddi.wu	$vr2, $vr2, 8
-	vaddi.wu	$vr1, $vr1, 8
-	vaddi.bu	$vr4, $vr4, 8
+	vaddi.bu	$vr3, $vr3, 8
 	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 16
+	addi.d	$a6, $a6, 8
+	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB0_29
-# %bb.30:                               # %middle.block96
+# %bb.30:                               # %middle.block98
 	beq	$a5, $a3, .LBB0_16
 	b	.LBB0_13
-.LBB0_31:                               # %vector.ph107
-	andi	$a2, $a3, 56
+.LBB0_31:                               # %vector.main.loop.iter.check
+	ori	$a5, $zero, 16
+	vreplgr2vr.w	$vr1, $a4
+	bgeu	$a2, $a5, .LBB0_33
+# %bb.32:
+	move	$a2, $zero
+	b	.LBB0_37
+.LBB0_33:                               # %vector.ph111
+	andi	$a5, $a3, 12
+	andi	$a2, $a3, 48
+	addi.d	$a6, $a0, 1758
 	pcalau12i	$a7, %pc_hi20(.LCPI0_13)
-	vld	$vr1, $a7, %pc_lo12(.LCPI0_13)
+	vld	$vr2, $a7, %pc_lo12(.LCPI0_13)
 	pcalau12i	$a7, %pc_hi20(.LCPI0_14)
-	vld	$vr2, $a7, %pc_lo12(.LCPI0_14)
-	vreplgr2vr.w	$vr3, $a4
-	lu32i.d	$a1, 394500
-	lu52i.d	$a1, $a1, 112
-	vreplgr2vr.d	$vr4, $a1
-	move	$a1, $a2
+	vld	$vr3, $a7, %pc_lo12(.LCPI0_14)
+	addi.d	$a7, $a0, 1636
+	move	$t0, $a1
+	lu32i.d	$t0, 394500
+	lu52i.d	$t0, $t0, 112
+	vreplgr2vr.d	$vr4, $t0
+	move	$t0, $a2
 	.p2align	4, , 16
-.LBB0_32:                               # %vector.body112
+.LBB0_34:                               # %vector.body116
                                         # =>This Inner Loop Header: Depth=1
-	vsub.w	$vr5, $vr3, $vr2
-	vsub.w	$vr6, $vr3, $vr1
-	vpickev.h	$vr5, $vr6, $vr5
-	vst	$vr5, $a5, 0
+	vaddi.bu	$vr5, $vr4, 8
+	vsub.w	$vr6, $vr1, $vr3
+	vsub.w	$vr7, $vr1, $vr2
+	vpickev.h	$vr6, $vr7, $vr6
+	vsubi.hu	$vr7, $vr6, 8
+	vst	$vr6, $a7, -16
+	vst	$vr7, $a7, 0
+	vpackev.d	$vr5, $vr5, $vr4
+	vst	$vr5, $a6, -8
+	vaddi.wu	$vr3, $vr3, 16
+	vaddi.wu	$vr2, $vr2, 16
+	vaddi.bu	$vr4, $vr4, 16
+	addi.d	$t0, $t0, -16
+	addi.d	$a6, $a6, 16
+	addi.d	$a7, $a7, 32
+	bnez	$t0, .LBB0_34
+# %bb.35:                               # %middle.block125
+	beq	$a2, $a3, .LBB0_24
+# %bb.36:                               # %vec.epilog.iter.check
+	beqz	$a5, .LBB0_21
+.LBB0_37:                               # %vec.epilog.ph
+	pcalau12i	$a5, %pc_hi20(.LCPI0_14)
+	vld	$vr2, $a5, %pc_lo12(.LCPI0_14)
+	move	$a6, $a2
+	andi	$a2, $a3, 60
+	vreplgr2vr.w	$vr3, $a6
+	vor.v	$vr2, $vr3, $vr2
+	vinsgr2vr.b	$vr3, $a6, 0
+	vinsgr2vr.b	$vr3, $a6, 1
+	vinsgr2vr.b	$vr3, $a6, 2
+	vinsgr2vr.b	$vr3, $a6, 3
+	vreplgr2vr.w	$vr4, $a1
+	vor.v	$vr3, $vr3, $vr4
+	sub.d	$a1, $a6, $a2
+	add.d	$a5, $a6, $a0
+	addi.d	$a5, $a5, 1750
+	alsl.d	$a6, $a6, $a0, 1
+	addi.d	$a6, $a6, 1620
+	.p2align	4, , 16
+.LBB0_38:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vsub.w	$vr4, $vr1, $vr2
+	vpickev.h	$vr4, $vr4, $vr4
 	vstelm.d	$vr4, $a6, 0, 0
-	vaddi.wu	$vr2, $vr2, 8
-	vaddi.wu	$vr1, $vr1, 8
-	vaddi.bu	$vr4, $vr4, 8
-	addi.d	$a1, $a1, -8
+	vstelm.w	$vr3, $a5, 0, 0
+	vaddi.wu	$vr2, $vr2, 4
+	vaddi.bu	$vr3, $vr3, 4
+	addi.d	$a1, $a1, 4
+	addi.d	$a5, $a5, 4
 	addi.d	$a6, $a6, 8
-	addi.d	$a5, $a5, 16
-	bnez	$a1, .LBB0_32
-# %bb.33:                               # %middle.block119
+	bnez	$a1, .LBB0_38
+# %bb.39:                               # %vec.epilog.middle.block
 	beq	$a2, $a3, .LBB0_24
 	b	.LBB0_21
 .Lfunc_end0:
@@ -701,10 +749,10 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	b	.LBB1_23
 	.p2align	4, , 16
 .LBB1_28:                               #   in Loop: Header=BB1_24 Depth=1
-	addi.w	$s7, $a0, -4
+	addi.w	$s4, $a0, -4
 	addi.w	$s3, $a0, -1
 	ori	$a1, $zero, 2
-	bne	$s7, $a1, .LBB1_40
+	bne	$s4, $a1, .LBB1_40
 # %bb.29:                               #   in Loop: Header=BB1_24 Depth=1
 	move	$s1, $a0
 	addi.d	$a0, $fp, 1816
@@ -715,11 +763,11 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	bltu	$a0, $a1, .LBB1_38
 # %bb.30:                               #   in Loop: Header=BB1_24 Depth=1
 	addi.w	$a0, $a0, -2
-	bstrpick.d	$s8, $a0, 31, 2
+	bstrpick.d	$s7, $a0, 31, 2
 	move	$a1, $a0
 	ori	$a2, $zero, 1
 	bstrins.d	$a1, $a2, 63, 2
-	sll.w	$a1, $a1, $s8
+	sll.w	$a1, $a1, $s7
 	add.d	$a1, $s1, $a1
 	addi.w	$s3, $a1, -3
 	ori	$a1, $zero, 23
@@ -742,9 +790,9 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	bstrpick.d	$a2, $a0, 7, 7
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $fp, 104
-	addi.w	$s8, $s8, -1
+	addi.w	$s7, $s7, -1
 	or	$s1, $a2, $a1
-	beqz	$s8, .LBB1_39
+	beqz	$s7, .LBB1_39
 .LBB1_35:                               #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	bstrpick.d	$a1, $a0, 31, 16
@@ -766,7 +814,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	add.w	$s3, $s1, $s3
 	.p2align	4, , 16
 .LBB1_40:                               #   in Loop: Header=BB1_24 Depth=1
-	bstrpick.d	$a0, $s7, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	ori	$a1, $zero, 204
 	mul.d	$a0, $a0, $a1
 	addi.d	$a1, $fp, 1204
@@ -780,9 +828,9 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 # %bb.41:                               #   in Loop: Header=BB1_24 Depth=1
 	ld.w	$a0, $fp, 104
 	bstrpick.d	$a1, $s7, 31, 1
-	addi.d	$s4, $a1, -1
+	addi.d	$s8, $a1, -1
 	move	$s1, $zero
-	move	$s8, $s4
+	move	$s4, $s8
 	b	.LBB1_45
 	.p2align	4, , 16
 .LBB1_42:                               #   in Loop: Header=BB1_45 Depth=2
@@ -798,9 +846,9 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	bstrpick.d	$a2, $a0, 7, 7
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $fp, 104
-	addi.w	$s8, $s8, -1
+	addi.w	$s4, $s4, -1
 	or	$s1, $a2, $a1
-	beqz	$s8, .LBB1_48
+	beqz	$s4, .LBB1_48
 .LBB1_45:                               #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	bstrpick.d	$a1, $a0, 31, 16
@@ -819,7 +867,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
                                         #   in Loop: Header=BB1_24 Depth=1
 	ori	$a0, $zero, 1
 	bstrins.d	$s7, $a0, 63, 1
-	sll.w	$a0, $s7, $s4
+	sll.w	$a0, $s7, $s8
 	add.w	$s7, $s1, $a0
 .LBB1_49:                               #   in Loop: Header=BB1_24 Depth=1
 	ld.w	$a2, $fp, 40
@@ -839,13 +887,13 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ld.w	$a3, $fp, 44
 	masknez	$a4, $s0, $a1
 	maskeqz	$a1, $s3, $a1
-	or	$s8, $a1, $a4
+	or	$s4, $a1, $a4
 	sub.w	$a1, $a3, $a2
-	bgeu	$s8, $a1, .LBB1_59
+	bgeu	$s4, $a1, .LBB1_59
 # %bb.54:                               #   in Loop: Header=BB1_24 Depth=1
 	ld.w	$a1, $fp, 52
 	sub.w	$a1, $a1, $a0
-	bgeu	$s8, $a1, .LBB1_59
+	bgeu	$s4, $a1, .LBB1_59
 # %bb.55:                               # %iter.check
                                         #   in Loop: Header=BB1_24 Depth=1
 	ld.d	$a4, $fp, 32
@@ -853,10 +901,10 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	bstrpick.d	$a5, $a0, 31, 0
 	add.d	$a1, $a4, $a5
 	add.d	$a0, $a4, $a6
-	add.d	$a2, $a2, $s8
-	addi.w	$a3, $s8, -1
+	add.d	$a2, $a2, $s4
+	addi.w	$a3, $s4, -1
 	st.w	$a2, $fp, 40
-	ori	$a2, $zero, 7
+	ori	$a2, $zero, 3
 	bltu	$a3, $a2, .LBB1_64
 # %bb.56:                               # %iter.check
                                         #   in Loop: Header=BB1_24 Depth=1
@@ -874,12 +922,12 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	b	.LBB1_69
 	.p2align	4, , 16
 .LBB1_59:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$s1, $s8
+	move	$s1, $s4
 	b	.LBB1_61
 	.p2align	4, , 16
 .LBB1_60:                               #   in Loop: Header=BB1_61 Depth=2
 	addi.w	$s1, $s1, -1
-	addi.w	$a0, $s4, 1
+	addi.w	$a0, $s8, 1
 	beqz	$s1, .LBB1_73
 .LBB1_61:                               #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -887,9 +935,9 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	xor	$a1, $a0, $a1
 	sltui	$a1, $a1, 1
 	ld.d	$a2, $fp, 32
-	masknez	$s4, $a0, $a1
+	masknez	$s8, $a0, $a1
 	ld.wu	$a0, $fp, 40
-	bstrpick.d	$a1, $s4, 31, 0
+	bstrpick.d	$a1, $s8, 31, 0
 	ldx.b	$a1, $a2, $a1
 	addi.d	$a3, $a0, 1
 	st.w	$a3, $fp, 40
@@ -903,14 +951,14 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	jirl	$ra, $ra, 0
 	b	.LBB1_60
 .LBB1_63:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$a3, $s8
+	move	$a3, $s4
 	b	.LBB1_72
 .LBB1_64:                               #   in Loop: Header=BB1_24 Depth=1
-	move	$a3, $s8
+	move	$a3, $s4
 	b	.LBB1_72
 .LBB1_65:                               # %vector.ph
                                         #   in Loop: Header=BB1_24 Depth=1
-	andi	$a3, $a2, 24
+	andi	$a3, $a2, 28
 	bstrpick.d	$a7, $a2, 32, 5
 	slli.d	$a7, $a7, 5
 	addi.d	$t1, $a4, 16
@@ -937,11 +985,11 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	beqz	$a3, .LBB1_75
 .LBB1_69:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB1_24 Depth=1
-	bstrpick.d	$t1, $a2, 32, 3
-	slli.d	$t0, $t1, 3
-	sub.d	$a3, $s8, $t0
-	alsl.d	$a1, $t1, $a1, 3
-	alsl.d	$a0, $t1, $a0, 3
+	bstrpick.d	$t1, $a2, 32, 2
+	slli.d	$t0, $t1, 2
+	sub.d	$a3, $s4, $t0
+	alsl.d	$a1, $t1, $a1, 2
+	alsl.d	$a0, $t1, $a0, 2
 	sub.d	$t1, $a7, $t0
 	add.d	$a6, $a7, $a6
 	add.d	$a6, $a4, $a6
@@ -951,11 +999,11 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 .LBB1_70:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB1_24 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a5, $a4, 0
-	st.d	$a5, $a6, 0
-	addi.d	$t1, $t1, 8
-	addi.d	$a6, $a6, 8
-	addi.d	$a4, $a4, 8
+	ld.w	$a5, $a4, 0
+	st.w	$a5, $a6, 0
+	addi.d	$t1, $t1, 4
+	addi.d	$a6, $a6, 4
+	addi.d	$a4, $a4, 4
 	bnez	$t1, .LBB1_70
 # %bb.71:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB1_24 Depth=1
@@ -976,13 +1024,13 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
                                         #   in Loop: Header=BB1_24 Depth=1
 	bltu	$s0, $s3, .LBB1_78
 # %bb.74:                               #   in Loop: Header=BB1_24 Depth=1
-	sub.w	$s0, $s0, $s8
+	sub.w	$s0, $s0, $s4
 	addi.d	$s3, $fp, 184
 	ori	$s4, $zero, 3
 	bnez	$s0, .LBB1_24
 	b	.LBB1_79
 .LBB1_75:                               #   in Loop: Header=BB1_24 Depth=1
-	sub.d	$a3, $s8, $a7
+	sub.d	$a3, $s4, $a7
 	add.d	$a1, $a1, $a7
 	add.d	$a0, $a0, $a7
 	b	.LBB1_72
@@ -993,7 +1041,7 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	ori	$a0, $zero, 1
 	b	.LBB1_80
 .LBB1_78:                               # %_ZN12CLzOutWindow9CopyBlockEjj.exit.thread94
-	sub.d	$a0, $s3, $s8
+	sub.d	$a0, $s3, $s4
 	st.w	$a0, $fp, 168
 	st.w	$s7, $fp, 172
 .LBB1_79:                               # %.loopexit98
@@ -1074,30 +1122,32 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $fp, 138
 	ldx.bu	$a0, $a1, $s2
-	ori	$a2, $zero, 7
-	bgeu	$s1, $a2, .LBB2_4
-# %bb.3:
-	move	$a2, $s2
-	b	.LBB2_7
-.LBB2_4:                                # %vector.ph
+	beqz	$s1, .LBB2_6
+# %bb.3:                                # %vector.ph
 	addi.d	$a3, $s2, 1
-	bstrpick.d	$a2, $a3, 32, 3
-	slli.d	$a4, $a2, 3
+	bstrpick.d	$a2, $a3, 32, 1
+	slli.d	$a4, $a2, 1
 	sub.d	$a2, $s2, $a4
 	alsl.d	$a5, $s2, $fp, 1
-	addi.d	$a5, $a5, -6
+	addi.d	$a5, $a5, 8
 	move	$a6, $a4
 	.p2align	4, , 16
-.LBB2_5:                                # %vector.body
+.LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vaddi.hu	$vr0, $vr0, 8
-	vst	$vr0, $a5, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a5, $a5, -16
-	bnez	$a6, .LBB2_5
-# %bb.6:                                # %middle.block
-	beq	$a3, $a4, .LBB2_9
+	ld.h	$a7, $a5, 0
+	ld.h	$t0, $a5, -2
+	addi.d	$a7, $a7, 8
+	addi.d	$t0, $t0, 8
+	st.h	$a7, $a5, 0
+	st.h	$t0, $a5, -2
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, -4
+	bnez	$a6, .LBB2_4
+# %bb.5:                                # %middle.block
+	bne	$a3, $a4, .LBB2_7
+	b	.LBB2_9
+.LBB2_6:
+	move	$a2, $s2
 .LBB2_7:                                # %scalar.ph.preheader
 	addi.d	$a3, $a2, 1
 	alsl.d	$a2, $a2, $fp, 1
@@ -1111,10 +1161,10 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, -2
 	bnez	$a3, .LBB2_8
-.LBB2_9:                                # %.loopexit122
+.LBB2_9:                                # %.loopexit101
 	ld.hu	$a3, $s0, 0
 	ori	$a2, $zero, 3801
-	bltu	$a3, $a2, .LBB2_41
+	bltu	$a3, $a2, .LBB2_34
 # %bb.10:
 	ld.w	$a2, $fp, 4
 	addi.w	$a2, $a2, -1
@@ -1142,7 +1192,7 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	st.h	$a2, $a3, 0
 	addi.d	$a3, $a3, -2
 	bnez	$a1, .LBB2_12
-	b	.LBB2_41
+	b	.LBB2_34
 .LBB2_13:
 	ld.wu	$a2, $fp, 0
 	ori	$a4, $zero, 50
@@ -1156,9 +1206,9 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	move	$a4, $zero
 	b	.LBB2_21
 .LBB2_16:
-	addi.w	$a4, $zero, -1
+	addi.w	$a3, $zero, -1
 	b	.LBB2_24
-.LBB2_17:                               # %vector.ph93
+.LBB2_17:                               # %vector.ph92
 	addi.d	$a5, $fp, 10
 	bstrpick.d	$a4, $a2, 31, 3
 	pcalau12i	$a6, %pc_hi20(.LCPI2_0)
@@ -1168,7 +1218,7 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	vrepli.b	$vr2, 0
 	move	$a3, $a4
 	.p2align	4, , 16
-.LBB2_18:                               # %vector.body96
+.LBB2_18:                               # %vector.body95
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr3, $vr1, 0
 	vld	$vr1, $a5, 0
@@ -1191,11 +1241,11 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	addi.d	$a3, $a3, -8
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB2_18
-# %bb.19:                               # %middle.block100
+# %bb.19:                               # %middle.block98
 	beq	$a4, $a2, .LBB2_23
 # %bb.20:
 	vpickve2gr.h	$a3, $vr1, 7
-.LBB2_21:                               # %.lr.ph.preheader123
+.LBB2_21:                               # %.lr.ph.preheader102
 	alsl.d	$a5, $a4, $fp, 1
 	addi.d	$a5, $a5, 10
 	sub.d	$a4, $a2, $a4
@@ -1212,11 +1262,11 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	addi.d	$a5, $a5, 2
 	bnez	$a4, .LBB2_22
 .LBB2_23:                               # %.preheader50
-	addi.w	$a4, $a2, -1
-	beqz	$a4, .LBB2_31
+	addi.w	$a3, $a2, -1
+	beqz	$a3, .LBB2_31
 .LBB2_24:                               # %.lr.ph57.preheader
 	move	$a7, $zero
-	bstrpick.d	$a3, $a4, 31, 0
+	bstrpick.d	$a4, $a3, 31, 0
 	addi.d	$a5, $fp, 10
 	addi.d	$a6, $fp, 139
 	b	.LBB2_26
@@ -1225,8 +1275,8 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
                                         #   in Loop: Header=BB2_26 Depth=1
 	addi.d	$a5, $a5, 2
 	addi.d	$a6, $a6, 1
-	addi.d	$a4, $a4, -1
-	beq	$a7, $a3, .LBB2_32
+	addi.d	$a3, $a3, -1
+	beq	$a7, $a4, .LBB2_32
 .LBB2_26:                               # %.lr.ph57
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_29 Depth 2
@@ -1236,7 +1286,7 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 # %bb.27:                               # %.lr.ph55
                                         #   in Loop: Header=BB2_26 Depth=1
 	alsl.d	$t1, $t0, $s0, 1
-	move	$t2, $a4
+	move	$t2, $a3
 	move	$t3, $a6
 	move	$t4, $a5
 	b	.LBB2_29
@@ -1260,59 +1310,13 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	st.b	$t7, $t3, 0
 	b	.LBB2_28
 .LBB2_31:
-	move	$a3, $zero
-.LBB2_32:                               # %.preheader
-	ori	$a1, $zero, 15
-	bltu	$a3, $a1, .LBB2_39
-# %bb.33:                               # %.preheader
-	addi.w	$a1, $zero, -1
-	lu32i.d	$a1, 0
-	beq	$a3, $a1, .LBB2_39
-# %bb.34:                               # %vector.memcheck
-	slli.d	$a4, $a3, 1
-	addi.d	$a1, $a4, 2
-	bstrpick.d	$a1, $a1, 32, 1
-	alsl.d	$a2, $a1, $fp, 1
-	addi.d	$a2, $a2, 10
-	bgeu	$s0, $a2, .LBB2_36
-# %bb.35:                               # %vector.memcheck
-	alsl.d	$a2, $a3, $fp, 1
-	addi.d	$a2, $a2, 10
-	slli.d	$a1, $a1, 1
-	sub.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $fp
-	addi.d	$a1, $a1, 8
-	bltu	$a1, $a2, .LBB2_39
-.LBB2_36:                               # %vector.ph107
-	addi.d	$a1, $a3, 1
-	bstrpick.d	$a2, $a1, 32, 3
-	slli.d	$a2, $a2, 3
-	sub.d	$a3, $a3, $a2
-	add.d	$a4, $a4, $fp
-	addi.d	$a4, $a4, -6
-	move	$a5, $a1
-	move	$a6, $a2
-	.p2align	4, , 16
-.LBB2_37:                               # %vector.body110
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	bstrpick.d	$a7, $a5, 31, 0
-	alsl.d	$a7, $a7, $s0, 1
-	vld	$vr1, $a7, -14
-	vadd.h	$vr0, $vr1, $vr0
-	vst	$vr0, $a4, 0
-	addi.d	$a6, $a6, -8
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, -16
-	bnez	$a6, .LBB2_37
-# %bb.38:                               # %middle.block119
-	beq	$a1, $a2, .LBB2_41
-.LBB2_39:                               # %scalar.ph105.preheader
-	addi.d	$a1, $a3, 1
-	alsl.d	$a2, $a3, $fp, 1
+	move	$a4, $zero
+.LBB2_32:                               # %.preheader.preheader
+	addi.d	$a1, $a4, 1
+	alsl.d	$a2, $a4, $fp, 1
 	addi.d	$a2, $a2, 8
 	.p2align	4, , 16
-.LBB2_40:                               # %scalar.ph105
+.LBB2_33:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a3, $a2, 0
 	bstrpick.d	$a4, $a1, 31, 0
@@ -1322,8 +1326,8 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	st.h	$a3, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, -2
-	bnez	$a1, .LBB2_40
-.LBB2_41:                               # %.loopexit
+	bnez	$a1, .LBB2_33
+.LBB2_34:                               # %.loopexit
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

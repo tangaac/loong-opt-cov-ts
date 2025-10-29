@@ -94,14 +94,15 @@ _ZN29btGeneric6DofSpringConstraint19setEquilibriumPointEv: # @_ZN29btGeneric6Dof
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(_ZN23btGeneric6DofConstraint19calculateTransformsEv)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $fp, 1232
-	ld.d	$a0, $fp, 1236
+	fld.s	$fa0, $fp, 1240
 	fld.s	$fa1, $fp, 1168
-	ld.d	$a1, $fp, 1172
-	fst.s	$fa0, $fp, 1272
-	st.d	$a0, $fp, 1276
-	fst.s	$fa1, $fp, 1284
-	st.d	$a1, $fp, 1288
+	vld	$vr2, $fp, 1232
+	vextrins.w	$vr0, $vr0, 32
+	ld.d	$a0, $fp, 1172
+	vextrins.w	$vr0, $vr1, 48
+	vshuf4i.d	$vr2, $vr0, 12
+	vst	$vr2, $fp, 1272
+	st.d	$a0, $fp, 1288
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16

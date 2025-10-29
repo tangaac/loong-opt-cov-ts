@@ -1340,6 +1340,11 @@ save_scores:                            # @save_scores
 	.word	22                              # 0x16
 	.word	23                              # 0x17
 	.word	24                              # 0x18
+.LCPI6_6:
+	.word	25                              # 0x19
+	.word	26                              # 0x1a
+	.word	27                              # 0x1b
+	.word	28                              # 0x1c
 	.text
 	.globl	main
 	.p2align	5
@@ -1361,127 +1366,98 @@ main:                                   # @main
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(standings)
 	addi.d	$a0, $a0, %pc_lo12(standings)
-	pcalau12i	$a1, %pc_hi20(.LCPI6_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI6_1)
 	vst	$vr0, $a0, 4
-	vst	$vr1, $a0, 20
 	pcalau12i	$a1, %pc_hi20(abs_standings)
 	addi.d	$a1, $a1, %pc_lo12(abs_standings)
 	vst	$vr0, $a1, 4
-	vst	$vr1, $a1, 20
 	pcalau12i	$a2, %pc_hi20(conf_standings)
 	addi.d	$a2, $a2, %pc_lo12(conf_standings)
 	vst	$vr0, $a2, 4
-	vst	$vr1, $a2, 20
 	pcalau12i	$a3, %pc_hi20(defence_ranks_nfl)
 	addi.d	$a3, $a3, %pc_lo12(defence_ranks_nfl)
 	vst	$vr0, $a3, 4
-	vst	$vr1, $a3, 20
 	pcalau12i	$a4, %pc_hi20(defence_ranks)
 	addi.d	$a4, $a4, %pc_lo12(defence_ranks)
 	vst	$vr0, $a4, 4
-	vst	$vr1, $a4, 20
 	pcalau12i	$a5, %pc_hi20(offence_ranks_nfl)
 	addi.d	$a5, $a5, %pc_lo12(offence_ranks_nfl)
 	vst	$vr0, $a5, 4
-	vst	$vr1, $a5, 20
 	pcalau12i	$a6, %pc_hi20(offence_ranks)
 	addi.d	$a6, $a6, %pc_lo12(offence_ranks)
 	vst	$vr0, $a6, 4
-	vst	$vr1, $a6, 20
 	pcalau12i	$a7, %pc_hi20(net_ranks_nfl)
 	addi.d	$a7, $a7, %pc_lo12(net_ranks_nfl)
 	vst	$vr0, $a7, 4
-	vst	$vr1, $a7, 20
 	pcalau12i	$t0, %pc_hi20(net_ranks)
 	addi.d	$t0, $t0, %pc_lo12(net_ranks)
-	pcalau12i	$t1, %pc_hi20(.LCPI6_2)
-	vld	$vr2, $t1, %pc_lo12(.LCPI6_2)
-	pcalau12i	$t1, %pc_hi20(.LCPI6_3)
-	vld	$vr3, $t1, %pc_lo12(.LCPI6_3)
+	pcalau12i	$t1, %pc_hi20(.LCPI6_1)
+	vld	$vr1, $t1, %pc_lo12(.LCPI6_1)
 	vst	$vr0, $t0, 4
+	vst	$vr1, $a0, 20
+	vst	$vr1, $a1, 20
+	vst	$vr1, $a2, 20
+	vst	$vr1, $a3, 20
+	vst	$vr1, $a4, 20
+	vst	$vr1, $a5, 20
+	pcalau12i	$t1, %pc_hi20(.LCPI6_2)
+	vld	$vr0, $t1, %pc_lo12(.LCPI6_2)
+	vst	$vr1, $a6, 20
+	vst	$vr1, $a7, 20
 	vst	$vr1, $t0, 20
-	vst	$vr2, $a0, 36
-	vst	$vr3, $a0, 52
-	vst	$vr2, $a1, 36
-	vst	$vr3, $a1, 52
-	vst	$vr2, $a2, 36
-	vst	$vr3, $a2, 52
-	vst	$vr2, $a3, 36
-	vst	$vr3, $a3, 52
-	vst	$vr2, $a4, 36
-	vst	$vr3, $a4, 52
-	vst	$vr2, $a5, 36
-	vst	$vr3, $a5, 52
-	vst	$vr2, $a6, 36
-	vst	$vr3, $a6, 52
-	vst	$vr2, $a7, 36
-	vst	$vr2, $t0, 36
+	vst	$vr0, $a0, 36
+	vst	$vr0, $a1, 36
+	vst	$vr0, $a2, 36
+	vst	$vr0, $a3, 36
+	vst	$vr0, $a4, 36
+	vst	$vr0, $a5, 36
+	pcalau12i	$t1, %pc_hi20(.LCPI6_3)
+	vld	$vr1, $t1, %pc_lo12(.LCPI6_3)
+	vst	$vr0, $a6, 36
+	vst	$vr0, $a7, 36
+	vst	$vr0, $t0, 36
+	vst	$vr1, $a0, 52
+	vst	$vr1, $a1, 52
+	vst	$vr1, $a2, 52
+	vst	$vr1, $a3, 52
+	vst	$vr1, $a4, 52
+	vst	$vr1, $a5, 52
 	pcalau12i	$t1, %pc_hi20(.LCPI6_4)
 	vld	$vr0, $t1, %pc_lo12(.LCPI6_4)
+	vst	$vr1, $a6, 52
+	vst	$vr1, $a7, 52
+	vst	$vr1, $t0, 52
+	vst	$vr0, $a0, 68
+	vst	$vr0, $a1, 68
+	vst	$vr0, $a2, 68
+	vst	$vr0, $a3, 68
+	vst	$vr0, $a4, 68
+	vst	$vr0, $a5, 68
 	pcalau12i	$t1, %pc_hi20(.LCPI6_5)
 	vld	$vr1, $t1, %pc_lo12(.LCPI6_5)
-	vst	$vr3, $a7, 52
-	vst	$vr3, $t0, 52
-	vst	$vr0, $a0, 68
-	vst	$vr1, $a0, 84
-	vst	$vr0, $a1, 68
-	vst	$vr1, $a1, 84
-	vst	$vr0, $a2, 68
-	vst	$vr1, $a2, 84
-	vst	$vr0, $a3, 68
-	vst	$vr1, $a3, 84
-	vst	$vr0, $a4, 68
-	vst	$vr1, $a4, 84
-	vst	$vr0, $a5, 68
-	vst	$vr1, $a5, 84
 	vst	$vr0, $a6, 68
-	vst	$vr1, $a6, 84
 	vst	$vr0, $a7, 68
-	vst	$vr1, $a7, 84
 	vst	$vr0, $t0, 68
+	vst	$vr1, $a0, 84
+	vst	$vr1, $a1, 84
+	vst	$vr1, $a2, 84
+	vst	$vr1, $a3, 84
+	vst	$vr1, $a4, 84
+	vst	$vr1, $a5, 84
+	pcalau12i	$t1, %pc_hi20(.LCPI6_6)
+	vld	$vr0, $t1, %pc_lo12(.LCPI6_6)
+	vst	$vr1, $a6, 84
+	vst	$vr1, $a7, 84
 	vst	$vr1, $t0, 84
-	ori	$t1, $zero, 25
-	st.w	$t1, $a0, 100
-	st.w	$t1, $a1, 100
-	st.w	$t1, $a2, 100
-	st.w	$t1, $a3, 100
-	st.w	$t1, $a4, 100
-	st.w	$t1, $a5, 100
-	st.w	$t1, $a6, 100
-	st.w	$t1, $a7, 100
-	st.w	$t1, $t0, 100
-	ori	$t1, $zero, 26
-	st.w	$t1, $a0, 104
-	st.w	$t1, $a1, 104
-	st.w	$t1, $a2, 104
-	st.w	$t1, $a3, 104
-	st.w	$t1, $a4, 104
-	st.w	$t1, $a5, 104
-	st.w	$t1, $a6, 104
-	st.w	$t1, $a7, 104
-	st.w	$t1, $t0, 104
-	ori	$t1, $zero, 27
-	st.w	$t1, $a0, 108
-	st.w	$t1, $a1, 108
-	st.w	$t1, $a2, 108
-	st.w	$t1, $a3, 108
-	st.w	$t1, $a4, 108
-	st.w	$t1, $a5, 108
-	st.w	$t1, $a6, 108
-	st.w	$t1, $a7, 108
-	st.w	$t1, $t0, 108
-	ori	$t1, $zero, 28
-	st.w	$t1, $a0, 112
-	st.w	$t1, $a1, 112
-	st.w	$t1, $a2, 112
-	st.w	$t1, $a3, 112
-	st.w	$t1, $a4, 112
-	st.w	$t1, $a5, 112
-	st.w	$t1, $a6, 112
-	st.w	$t1, $a7, 112
+	vst	$vr0, $a0, 100
+	vst	$vr0, $a1, 100
+	vst	$vr0, $a2, 100
+	vst	$vr0, $a3, 100
+	vst	$vr0, $a4, 100
+	vst	$vr0, $a5, 100
+	vst	$vr0, $a6, 100
+	vst	$vr0, $a7, 100
 	ori	$a0, $zero, 2
-	st.w	$t1, $t0, 112
+	vst	$vr0, $t0, 100
 	blt	$fp, $a0, .LBB6_46
 # %bb.1:                                # %sub_0
 	ld.d	$s1, $s0, 8

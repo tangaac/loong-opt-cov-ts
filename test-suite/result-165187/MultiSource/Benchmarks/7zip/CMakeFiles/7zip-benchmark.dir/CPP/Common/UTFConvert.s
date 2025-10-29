@@ -411,9 +411,9 @@ _Z20ConvertUnicodeToUTF8RK11CStringBaseIwERS_IcE: # @_Z20ConvertUnicodeToUTF8RK1
 	blez	$s6, .LBB1_35
 # %bb.19:                               # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blez	$a1, .LBB1_27
+	blez	$a1, .LBB1_24
 # %bb.20:                               # %iter.check
-	ori	$a3, $zero, 16
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a1, $a3, .LBB1_32
 # %bb.21:                               # %iter.check
@@ -421,40 +421,22 @@ _Z20ConvertUnicodeToUTF8RK11CStringBaseIwERS_IcE: # @_Z20ConvertUnicodeToUTF8RK1
 	ori	$a3, $zero, 32
 	bltu	$a4, $a3, .LBB1_32
 # %bb.22:                               # %vector.main.loop.iter.check
-	bgeu	$a1, $a3, .LBB1_28
+	bgeu	$a1, $a3, .LBB1_25
 # %bb.23:
 	move	$a2, $zero
-.LBB1_24:                               # %vec.epilog.ph
-	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	sub.d	$a3, $a5, $a2
-	add.d	$a4, $s1, $a5
-	add.d	$a5, $a0, $a5
-	.p2align	4, , 16
-.LBB1_25:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB1_25
-# %bb.26:                               # %vec.epilog.middle.block
-	bne	$a2, $a1, .LBB1_32
-	b	.LBB1_34
-.LBB1_27:                               # %._crit_edge.i.i
+	b	.LBB1_29
+.LBB1_24:                               # %._crit_edge.i.i
 	bnez	$a0, .LBB1_34
 	b	.LBB1_35
-.LBB1_28:                               # %vector.ph
-	andi	$a3, $a1, 16
+.LBB1_25:                               # %vector.ph
+	andi	$a3, $a1, 28
 	bstrpick.d	$a2, $a1, 30, 5
 	slli.d	$a2, $a2, 5
 	addi.d	$a4, $s1, 16
 	addi.d	$a5, $a0, 16
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB1_29:                               # %vector.body
+.LBB1_26:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, -16
 	vld	$vr1, $a5, 0
@@ -463,11 +445,29 @@ _Z20ConvertUnicodeToUTF8RK11CStringBaseIwERS_IcE: # @_Z20ConvertUnicodeToUTF8RK1
 	addi.d	$a6, $a6, -32
 	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB1_29
-# %bb.30:                               # %middle.block
+	bnez	$a6, .LBB1_26
+# %bb.27:                               # %middle.block
 	beq	$a2, $a1, .LBB1_34
-# %bb.31:                               # %vec.epilog.iter.check
-	bnez	$a3, .LBB1_24
+# %bb.28:                               # %vec.epilog.iter.check
+	beqz	$a3, .LBB1_32
+.LBB1_29:                               # %vec.epilog.ph
+	move	$a5, $a2
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	sub.d	$a3, $a5, $a2
+	add.d	$a4, $s1, $a5
+	add.d	$a5, $a0, $a5
+	.p2align	4, , 16
+.LBB1_30:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a6, $a5, 0
+	st.w	$a6, $a4, 0
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 4
+	addi.d	$a5, $a5, 4
+	bnez	$a3, .LBB1_30
+# %bb.31:                               # %vec.epilog.middle.block
+	beq	$a2, $a1, .LBB1_34
 .LBB1_32:                               # %vec.epilog.scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	add.d	$a3, $s1, $a2

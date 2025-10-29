@@ -353,7 +353,7 @@ rmatmult3:                              # @rmatmult3
 	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 464                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 456                   # 8-byte Folded Reload
-	ori	$s3, $zero, 10
+	ori	$s3, $zero, 6
 	move	$t2, $s5
 	bgeu	$s2, $s3, .LBB0_10
 .LBB0_7:                                # %scalar.ph.preheader

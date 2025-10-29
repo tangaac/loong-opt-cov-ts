@@ -2450,7 +2450,7 @@ CompressTrie:                           # @CompressTrie
 # %bb.6:                                # %iter.check
 	ld.d	$t0, $a0, 280
 	add.d	$a3, $t0, $a4
-	ori	$t1, $zero, 8
+	ori	$t1, $zero, 4
 	alsl.d	$a2, $a6, $a7, 1
 	bltu	$a1, $t1, .LBB4_8
 # %bb.7:                                # %vector.memcheck
@@ -2492,7 +2492,7 @@ CompressTrie:                           # @CompressTrie
 	b	.LBB4_19
 .LBB4_15:                               # %vector.ph
 	slli.d	$t3, $a6, 1
-	andi	$t1, $a1, 24
+	andi	$t1, $a1, 28
 	bstrpick.d	$t2, $a1, 30, 5
 	slli.d	$t2, $t2, 5
 	add.d	$t3, $t3, $a7
@@ -2516,10 +2516,10 @@ CompressTrie:                           # @CompressTrie
 # %bb.18:                               # %vec.epilog.iter.check
 	beqz	$t1, .LBB4_22
 .LBB4_19:                               # %vec.epilog.ph
-	bstrpick.d	$t3, $a1, 30, 3
-	slli.d	$t1, $t3, 3
-	alsl.d	$a3, $t3, $a3, 3
-	alsl.d	$a2, $t3, $a2, 3
+	bstrpick.d	$t3, $a1, 30, 2
+	slli.d	$t1, $t3, 2
+	alsl.d	$a3, $t3, $a3, 2
+	alsl.d	$a2, $t3, $a2, 2
 	sub.d	$t3, $t2, $t1
 	alsl.d	$a6, $a6, $t2, 1
 	add.d	$a6, $a7, $a6
@@ -2528,11 +2528,11 @@ CompressTrie:                           # @CompressTrie
 	.p2align	4, , 16
 .LBB4_20:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $a7, 0
-	st.d	$t0, $a6, 0
-	addi.d	$t3, $t3, 8
-	addi.d	$a6, $a6, 8
-	addi.d	$a7, $a7, 8
+	ld.w	$t0, $a7, 0
+	st.w	$t0, $a6, 0
+	addi.d	$t3, $t3, 4
+	addi.d	$a6, $a6, 4
+	addi.d	$a7, $a7, 4
 	bnez	$t3, .LBB4_20
 # %bb.21:                               # %vec.epilog.middle.block
 	beq	$t1, $a1, .LBB4_11

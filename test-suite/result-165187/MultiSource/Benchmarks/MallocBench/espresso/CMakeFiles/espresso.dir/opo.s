@@ -1189,7 +1189,7 @@ output_phase_setup:                     # @output_phase_setup
 	andn	$a3, $a3, $a4
 	addi.w	$a1, $a1, 1
 	st.w	$a3, $a2, 4
-	bne	$s6, $a1, .LBB6_11
+	blt	$a1, $s6, .LBB6_11
 .LBB6_12:                               # %._crit_edge230
 	ld.w	$a0, $s1, 12
 	ld.w	$a2, $fp, 12
@@ -1231,7 +1231,7 @@ output_phase_setup:                     # @output_phase_setup
 	ld.w	$t1, $a3, 12
 	addi.d	$t1, $t1, -1
 	st.w	$t1, $a3, 12
-.LBB6_15:                               # %._crit_edge238.thread298
+.LBB6_15:                               # %._crit_edge238.thread297
                                         #   in Loop: Header=BB6_16 Depth=1
 	ld.w	$t1, $s1, 0
 	alsl.d	$a4, $t1, $a4, 2
@@ -1487,7 +1487,7 @@ output_phase_setup:                     # @output_phase_setup
 	bne	$a1, $t3, .LBB6_40
 	b	.LBB6_43
 	.p2align	4, , 16
-.LBB6_42:                               # %.thread301
+.LBB6_42:                               # %.thread300
                                         #   in Loop: Header=BB6_39 Depth=2
 	add.w	$t5, $s7, $t3
 	srai.d	$t4, $t5, 5
@@ -1510,7 +1510,7 @@ output_phase_setup:                     # @output_phase_setup
 	ld.w	$t1, $a2, 12
 	addi.d	$t1, $t1, -1
 	st.w	$t1, $a2, 12
-.LBB6_45:                               # %._crit_edge247.thread305
+.LBB6_45:                               # %._crit_edge247.thread304
                                         #   in Loop: Header=BB6_33 Depth=1
 	blt	$s5, $s6, .LBB6_32
 # %bb.46:                               # %.lr.ph252.preheader

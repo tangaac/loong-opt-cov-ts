@@ -323,15 +323,17 @@ _ZN12CProfileNode4CallEv:               # @_ZN12CProfileNode4CallEv
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 0
-	pcalau12i	$a0, %pc_hi20(_ZL13gProfileClock)
-	vld	$vr1, $a0, %pc_lo12(_ZL13gProfileClock)
-	vsub.d	$vr0, $vr0, $vr1
-	vpickve2gr.d	$a0, $vr0, 0
-	lu12i.w	$a1, 244
-	ori	$a1, $a1, 576
-	mul.d	$a0, $a0, $a1
-	vpickve2gr.d	$a1, $vr0, 1
+	ld.d	$a0, $sp, 0
+	pcalau12i	$a1, %pc_hi20(_ZL13gProfileClock)
+	addi.d	$a1, $a1, %pc_lo12(_ZL13gProfileClock)
+	ld.d	$a2, $a1, 0
+	sub.d	$a0, $a0, $a2
+	ld.d	$a2, $sp, 8
+	ld.d	$a1, $a1, 8
+	lu12i.w	$a3, 244
+	ori	$a3, $a3, 576
+	mul.d	$a0, $a0, $a3
+	sub.d	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $fp, 16
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -515,13 +517,13 @@ _ZN16CProfileIterator12Enter_ParentEv:  # @_ZN16CProfileIterator12Enter_ParentEv
 _ZN15CProfileManager13Start_ProfileEPKc: # @_ZN15CProfileManager13Start_ProfileEPKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -571,28 +573,30 @@ _ZN15CProfileManager13Start_ProfileEPKc: # @_ZN15CProfileManager13Start_ProfileE
 	st.w	$a0, $s1, 24
 	bnez	$a1, .LBB13_8
 # %bb.7:
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 8
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 16
-	pcalau12i	$a0, %pc_hi20(_ZL13gProfileClock)
-	vld	$vr1, $a0, %pc_lo12(_ZL13gProfileClock)
-	vsub.d	$vr0, $vr0, $vr1
-	vpickve2gr.d	$a0, $vr0, 0
-	lu12i.w	$a1, 244
-	ori	$a1, $a1, 576
-	mul.d	$a0, $a0, $a1
-	vpickve2gr.d	$a1, $vr0, 1
+	ld.d	$a0, $sp, 8
+	pcalau12i	$a1, %pc_hi20(_ZL13gProfileClock)
+	addi.d	$a1, $a1, %pc_lo12(_ZL13gProfileClock)
+	ld.d	$a2, $a1, 0
+	sub.d	$a0, $a0, $a2
+	ld.d	$a2, $sp, 16
+	ld.d	$a1, $a1, 8
+	lu12i.w	$a3, 244
+	ori	$a3, $a3, 576
+	mul.d	$a0, $a0, $a3
+	sub.d	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $s1, 16
 .LBB13_8:                               # %_ZN12CProfileNode4CallEv.exit
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end13:
 	.size	_ZN15CProfileManager13Start_ProfileEPKc, .Lfunc_end13-_ZN15CProfileManager13Start_ProfileEPKc
@@ -702,13 +706,14 @@ _ZN15CProfileManager5ResetEv:           # @_ZN15CProfileManager5ResetEv
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 0
-	vld	$vr1, $fp, 0
-	vsub.d	$vr0, $vr0, $vr1
-	vpickve2gr.d	$a0, $vr0, 0
+	ld.d	$a0, $sp, 0
+	ld.d	$a1, $fp, 0
+	ld.d	$a2, $sp, 8
+	ld.d	$a3, $fp, 8
+	sub.d	$a0, $a0, $a1
 	ori	$a1, $s1, 576
 	mul.d	$a0, $a0, $a1
-	vpickve2gr.d	$a1, $vr0, 1
+	sub.d	$a1, $a2, $a3
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $s0, 16
 .LBB15_2:                               # %_ZN12CProfileNode4CallEv.exit
@@ -718,13 +723,14 @@ _ZN15CProfileManager5ResetEv:           # @_ZN15CProfileManager5ResetEv
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 0
-	vld	$vr1, $fp, 0
-	vsub.d	$vr0, $vr0, $vr1
-	vpickve2gr.d	$a0, $vr0, 0
+	ld.d	$a0, $sp, 0
+	ld.d	$a1, $fp, 0
+	ld.d	$a2, $sp, 8
+	ld.d	$a3, $fp, 8
+	sub.d	$a0, $a0, $a1
 	ori	$a1, $s1, 576
 	mul.d	$a0, $a0, $a1
-	vpickve2gr.d	$a1, $vr0, 1
+	sub.d	$a1, $a2, $a3
 	add.d	$a0, $a1, $a0
 	pcalau12i	$a1, %pc_hi20(_ZN15CProfileManager9ResetTimeE)
 	st.d	$a0, $a1, %pc_lo12(_ZN15CProfileManager9ResetTimeE)
@@ -1176,7 +1182,7 @@ _GLOBAL__sub_I_btQuickprof.cpp:         # @_GLOBAL__sub_I_btQuickprof.cpp
                                         # -- End function
 	.type	_ZL13gProfileClock,@object      # @_ZL13gProfileClock
 	.local	_ZL13gProfileClock
-	.comm	_ZL13gProfileClock,16,16
+	.comm	_ZL13gProfileClock,16,8
 	.hidden	__dso_handle
 	.type	_ZN15CProfileManager4RootE,@object # @_ZN15CProfileManager4RootE
 	.bss

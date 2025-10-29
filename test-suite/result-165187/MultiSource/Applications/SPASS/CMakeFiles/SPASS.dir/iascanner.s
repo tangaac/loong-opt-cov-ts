@@ -282,7 +282,7 @@ ia_lex:                                 # @ia_lex
 # %bb.28:                               # %iter.check
                                         #   in Loop: Header=BB0_20 Depth=4
 	move	$a5, $zero
-	ori	$a2, $zero, 9
+	ori	$a2, $zero, 5
 	bltu	$a3, $a2, .LBB0_33
 # %bb.29:                               # %iter.check
                                         #   in Loop: Header=BB0_20 Depth=4
@@ -311,7 +311,7 @@ ia_lex:                                 # @ia_lex
 	b	.LBB0_41
 .LBB0_34:                               # %vector.ph
                                         #   in Loop: Header=BB0_20 Depth=4
-	andi	$a3, $a2, 24
+	andi	$a3, $a2, 28
 	bstrpick.d	$a4, $a2, 31, 5
 	slli.d	$a6, $a4, 5
 	addi.d	$a4, $a0, 16
@@ -340,10 +340,10 @@ ia_lex:                                 # @ia_lex
 	beqz	$a3, .LBB0_66
 .LBB0_38:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB0_20 Depth=4
-	bstrpick.d	$a4, $a2, 31, 3
-	slli.d	$a5, $a4, 3
-	alsl.d	$a3, $a4, $a1, 3
-	alsl.d	$a4, $a4, $a0, 3
+	bstrpick.d	$a4, $a2, 31, 2
+	slli.d	$a5, $a4, 2
+	alsl.d	$a3, $a4, $a1, 2
+	alsl.d	$a4, $a4, $a0, 2
 	sub.d	$a7, $a6, $a5
 	add.d	$t0, $a0, $a6
 	add.d	$a1, $a1, $a6
@@ -354,11 +354,11 @@ ia_lex:                                 # @ia_lex
                                         #       Parent Loop BB0_19 Depth=3
                                         #         Parent Loop BB0_20 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a6, $t0, 0
-	st.d	$a6, $a1, 0
-	addi.d	$a7, $a7, 8
-	addi.d	$t0, $t0, 8
-	addi.d	$a1, $a1, 8
+	ld.w	$a6, $t0, 0
+	st.w	$a6, $a1, 0
+	addi.d	$a7, $a7, 4
+	addi.d	$t0, $t0, 4
+	addi.d	$a1, $a1, 4
 	bnez	$a7, .LBB0_39
 # %bb.40:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_20 Depth=4

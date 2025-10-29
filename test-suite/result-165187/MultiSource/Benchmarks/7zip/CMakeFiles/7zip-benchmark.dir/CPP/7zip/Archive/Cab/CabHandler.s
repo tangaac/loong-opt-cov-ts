@@ -122,12 +122,12 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	ld.w	$a0, $s1, 28
 	blez	$a0, .LBB4_81
 # %bb.4:                                # %.lr.ph
-	ld.d	$a1, $s1, 32
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB4_82
+	ld.d	$a2, $s1, 32
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB4_82
 # %bb.5:
-	move	$a2, $zero
 	move	$a3, $zero
+	move	$a1, $zero
 	b	.LBB4_85
 .LBB4_6:
 	ld.w	$a1, $s1, 28
@@ -239,8 +239,8 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$s7, $a0, %pc_lo12(.L.str.4)
 	pcalau12i	$a0, %pc_hi20(_ZN8NArchive4NCabL8kMethodsE)
-	addi.d	$s6, $a0, %pc_lo12(_ZN8NArchive4NCabL8kMethodsE)
-	move	$fp, $zero
+	addi.d	$fp, $a0, %pc_lo12(_ZN8NArchive4NCabL8kMethodsE)
+	move	$s6, $zero
 	move	$s8, $zero
 	ori	$s3, $zero, 4
 	b	.LBB4_23
@@ -248,26 +248,26 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 .LBB4_22:                               # %_ZN11CStringBaseIcED2Ev.exit68
                                         #   in Loop: Header=BB4_23 Depth=1
 	ld.w	$a0, $sp, 36
-	addi.d	$fp, $fp, 1
+	addi.d	$s6, $s6, 1
 	add.w	$s8, $s8, $s1
-	bge	$fp, $a0, .LBB4_79
+	bge	$s6, $a0, .LBB4_79
 .LBB4_23:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_30 Depth 2
-                                        #     Child Loop BB4_72 Depth 2
-                                        #     Child Loop BB4_57 Depth 2
+                                        #     Child Loop BB4_69 Depth 2
+                                        #     Child Loop BB4_73 Depth 2
                                         #     Child Loop BB4_76 Depth 2
-                                        #     Child Loop BB4_60 Depth 2
-                                        #     Child Loop BB4_47 Depth 2
-                                        #     Child Loop BB4_64 Depth 2
-                                        #     Child Loop BB4_68 Depth 2
+                                        #     Child Loop BB4_54 Depth 2
+                                        #     Child Loop BB4_58 Depth 2
+                                        #     Child Loop BB4_61 Depth 2
+                                        #     Child Loop BB4_65 Depth 2
 	ld.d	$a0, $sp, 40
-	ldx.bu	$a0, $a0, $fp
+	ldx.bu	$a0, $a0, $s6
 	move	$s4, $s7
 	ori	$a1, $zero, 3
 	bltu	$a1, $a0, .LBB4_25
 # %bb.24:                               #   in Loop: Header=BB4_23 Depth=1
 	slli.d	$a0, $a0, 3
-	ldx.d	$s4, $s6, $a0
+	ldx.d	$s4, $fp, $a0
 .LBB4_25:                               #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strlen)
@@ -331,7 +331,7 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	or	$a0, $a0, $a1
 	add.d	$a0, $s3, $a0
 	addi.w	$s4, $a0, 1
-	bne	$s4, $s3, .LBB4_49
+	bne	$s4, $s3, .LBB4_46
 .LBB4_34:                               #   in Loop: Header=BB4_23 Depth=1
 	move	$s4, $s3
 .LBB4_35:                               # %_ZN11CStringBaseIcEpLEc.exit
@@ -378,7 +378,7 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	bne	$s3, $s4, .LBB4_39
 .LBB4_38:                               #   in Loop: Header=BB4_23 Depth=1
 	move	$s3, $s4
-	b	.LBB4_67
+	b	.LBB4_64
 	.p2align	4, , 16
 .LBB4_39:                               #   in Loop: Header=BB4_23 Depth=1
 .Ltmp16:                                # EH_LABEL
@@ -389,109 +389,67 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 # %bb.40:                               # %.noexc67
                                         #   in Loop: Header=BB4_23 Depth=1
 	move	$s5, $a0
-	blez	$s4, .LBB4_66
+	blez	$s4, .LBB4_63
 # %bb.41:                               # %.preheader.i.i.i57
                                         #   in Loop: Header=BB4_23 Depth=1
-	blez	$s8, .LBB4_65
+	blez	$s8, .LBB4_62
 # %bb.42:                               # %iter.check
                                         #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $zero
-	ori	$a1, $zero, 16
-	bltu	$s8, $a1, .LBB4_63
+	ori	$a1, $zero, 4
+	bltu	$s8, $a1, .LBB4_60
 # %bb.43:                               # %iter.check
                                         #   in Loop: Header=BB4_23 Depth=1
 	sub.d	$a1, $s5, $s0
 	ori	$a2, $zero, 32
-	bltu	$a1, $a2, .LBB4_63
+	bltu	$a1, $a2, .LBB4_60
 # %bb.44:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB4_23 Depth=1
 	ori	$a0, $zero, 32
-	bgeu	$s8, $a0, .LBB4_59
+	bgeu	$s8, $a0, .LBB4_53
 # %bb.45:                               #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $zero
-.LBB4_46:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB4_23 Depth=1
-	move	$a3, $a0
-	bstrpick.d	$a0, $s8, 30, 4
-	slli.d	$a0, $a0, 4
-	sub.d	$a1, $a3, $a0
-	add.d	$a2, $s5, $a3
-	add.d	$a3, $s0, $a3
-	.p2align	4, , 16
-.LBB4_47:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB4_23 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a3, 0
-	vst	$vr0, $a2, 0
-	addi.d	$a1, $a1, 16
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	bnez	$a1, .LBB4_47
-# %bb.48:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB4_23 Depth=1
-	bne	$a0, $s8, .LBB4_63
-	b	.LBB4_65
-.LBB4_49:                               #   in Loop: Header=BB4_23 Depth=1
+	b	.LBB4_57
+.LBB4_46:                               #   in Loop: Header=BB4_23 Depth=1
 .Ltmp14:                                # EH_LABEL
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp15:                                # EH_LABEL
-# %bb.50:                               # %.noexc51
+# %bb.47:                               # %.noexc51
                                         #   in Loop: Header=BB4_23 Depth=1
 	move	$s5, $a0
 	blez	$s3, .LBB4_78
-# %bb.51:                               # %.preheader.i.i.i
+# %bb.48:                               # %.preheader.i.i.i
                                         #   in Loop: Header=BB4_23 Depth=1
 	blez	$s8, .LBB4_77
-# %bb.52:                               # %iter.check181
+# %bb.49:                               # %iter.check179
                                         #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $zero
-	ori	$a1, $zero, 16
+	ori	$a1, $zero, 4
 	bltu	$s8, $a1, .LBB4_75
-# %bb.53:                               # %iter.check181
+# %bb.50:                               # %iter.check179
                                         #   in Loop: Header=BB4_23 Depth=1
 	sub.d	$a1, $s5, $s0
 	ori	$a2, $zero, 32
 	bltu	$a1, $a2, .LBB4_75
-# %bb.54:                               # %vector.main.loop.iter.check183
+# %bb.51:                               # %vector.main.loop.iter.check181
                                         #   in Loop: Header=BB4_23 Depth=1
 	ori	$a0, $zero, 32
-	bgeu	$s8, $a0, .LBB4_71
-# %bb.55:                               #   in Loop: Header=BB4_23 Depth=1
+	bgeu	$s8, $a0, .LBB4_68
+# %bb.52:                               #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $zero
-.LBB4_56:                               # %vec.epilog.ph198
+	b	.LBB4_72
+.LBB4_53:                               # %vector.ph157
                                         #   in Loop: Header=BB4_23 Depth=1
-	move	$a3, $a0
-	bstrpick.d	$a0, $s8, 30, 4
-	slli.d	$a0, $a0, 4
-	sub.d	$a1, $a3, $a0
-	add.d	$a2, $s5, $a3
-	add.d	$a3, $s0, $a3
-	.p2align	4, , 16
-.LBB4_57:                               # %vec.epilog.vector.body201
-                                        #   Parent Loop BB4_23 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a3, 0
-	vst	$vr0, $a2, 0
-	addi.d	$a1, $a1, 16
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	bnez	$a1, .LBB4_57
-# %bb.58:                               # %vec.epilog.middle.block205
-                                        #   in Loop: Header=BB4_23 Depth=1
-	bne	$a0, $s8, .LBB4_75
-	b	.LBB4_77
-.LBB4_59:                               # %vector.ph158
-                                        #   in Loop: Header=BB4_23 Depth=1
-	andi	$a1, $s8, 16
+	andi	$a1, $s8, 28
 	bstrpick.d	$a0, $s8, 30, 5
 	slli.d	$a0, $a0, 5
 	addi.d	$a2, $s5, 16
 	addi.d	$a3, $s0, 16
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB4_60:                               # %vector.body161
+.LBB4_54:                               # %vector.body160
                                         #   Parent Loop BB4_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a3, -16
@@ -501,20 +459,41 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	addi.d	$a4, $a4, -32
 	addi.d	$a2, $a2, 32
 	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB4_60
-# %bb.61:                               # %middle.block166
+	bnez	$a4, .LBB4_54
+# %bb.55:                               # %middle.block164
                                         #   in Loop: Header=BB4_23 Depth=1
-	beq	$a0, $s8, .LBB4_65
-# %bb.62:                               # %vec.epilog.iter.check
+	beq	$a0, $s8, .LBB4_62
+# %bb.56:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB4_23 Depth=1
-	bnez	$a1, .LBB4_46
-.LBB4_63:                               # %vec.epilog.scalar.ph.preheader
+	beqz	$a1, .LBB4_60
+.LBB4_57:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB4_23 Depth=1
+	move	$a3, $a0
+	bstrpick.d	$a0, $s8, 30, 2
+	slli.d	$a0, $a0, 2
+	sub.d	$a1, $a3, $a0
+	add.d	$a2, $s5, $a3
+	add.d	$a3, $s0, $a3
+	.p2align	4, , 16
+.LBB4_58:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB4_23 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.w	$a4, $a3, 0
+	st.w	$a4, $a2, 0
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 4
+	bnez	$a1, .LBB4_58
+# %bb.59:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB4_23 Depth=1
+	beq	$a0, $s8, .LBB4_62
+.LBB4_60:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB4_23 Depth=1
 	sub.d	$a1, $s8, $a0
 	add.d	$a2, $s5, $a0
 	add.d	$a0, $s0, $a0
 	.p2align	4, , 16
-.LBB4_64:                               # %vec.epilog.scalar.ph
+.LBB4_61:                               # %vec.epilog.scalar.ph
                                         #   Parent Loop BB4_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.b	$a3, $a0, 0
@@ -522,43 +501,43 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 1
 	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB4_64
-.LBB4_65:                               # %._crit_edge.thread.i.i.i60
+	bnez	$a1, .LBB4_61
+.LBB4_62:                               # %._crit_edge.thread.i.i.i60
                                         #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB4_66:                               #   in Loop: Header=BB4_23 Depth=1
+.LBB4_63:                               #   in Loop: Header=BB4_23 Depth=1
 	stx.b	$zero, $s5, $s8
 	move	$s0, $s5
-.LBB4_67:                               # %_ZN11CStringBaseIcE10GrowLengthEi.exit.i
+.LBB4_64:                               # %_ZN11CStringBaseIcE10GrowLengthEi.exit.i
                                         #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $zero
 	add.d	$a1, $s0, $s8
 	.p2align	4, , 16
-.LBB4_68:                               #   Parent Loop BB4_23 Depth=1
+.LBB4_65:                               #   Parent Loop BB4_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$a2, $s2, $a0
 	stx.b	$a2, $a1, $a0
 	addi.d	$a0, $a0, 1
-	bnez	$a2, .LBB4_68
-# %bb.69:                               #   in Loop: Header=BB4_23 Depth=1
+	bnez	$a2, .LBB4_65
+# %bb.66:                               #   in Loop: Header=BB4_23 Depth=1
 	beqz	$s2, .LBB4_22
-# %bb.70:                               #   in Loop: Header=BB4_23 Depth=1
+# %bb.67:                               #   in Loop: Header=BB4_23 Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	b	.LBB4_22
-.LBB4_71:                               # %vector.ph184
+.LBB4_68:                               # %vector.ph182
                                         #   in Loop: Header=BB4_23 Depth=1
-	andi	$a1, $s8, 16
+	andi	$a1, $s8, 28
 	bstrpick.d	$a0, $s8, 30, 5
 	slli.d	$a0, $a0, 5
 	addi.d	$a2, $s5, 16
 	addi.d	$a3, $s0, 16
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB4_72:                               # %vector.body187
+.LBB4_69:                               # %vector.body185
                                         #   Parent Loop BB4_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a3, -16
@@ -568,20 +547,41 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	addi.d	$a4, $a4, -32
 	addi.d	$a2, $a2, 32
 	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB4_72
-# %bb.73:                               # %middle.block192
+	bnez	$a4, .LBB4_69
+# %bb.70:                               # %middle.block190
                                         #   in Loop: Header=BB4_23 Depth=1
 	beq	$a0, $s8, .LBB4_77
-# %bb.74:                               # %vec.epilog.iter.check196
+# %bb.71:                               # %vec.epilog.iter.check194
                                         #   in Loop: Header=BB4_23 Depth=1
-	bnez	$a1, .LBB4_56
-.LBB4_75:                               # %vec.epilog.scalar.ph195.preheader
+	beqz	$a1, .LBB4_75
+.LBB4_72:                               # %vec.epilog.ph196
+                                        #   in Loop: Header=BB4_23 Depth=1
+	move	$a3, $a0
+	bstrpick.d	$a0, $s8, 30, 2
+	slli.d	$a0, $a0, 2
+	sub.d	$a1, $a3, $a0
+	add.d	$a2, $s5, $a3
+	add.d	$a3, $s0, $a3
+	.p2align	4, , 16
+.LBB4_73:                               # %vec.epilog.vector.body199
+                                        #   Parent Loop BB4_23 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.w	$a4, $a3, 0
+	st.w	$a4, $a2, 0
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 4
+	bnez	$a1, .LBB4_73
+# %bb.74:                               # %vec.epilog.middle.block203
+                                        #   in Loop: Header=BB4_23 Depth=1
+	beq	$a0, $s8, .LBB4_77
+.LBB4_75:                               # %vec.epilog.scalar.ph193.preheader
                                         #   in Loop: Header=BB4_23 Depth=1
 	sub.d	$a1, $s8, $a0
 	add.d	$a2, $s5, $a0
 	add.d	$a0, $s0, $a0
 	.p2align	4, , 16
-.LBB4_76:                               # %vec.epilog.scalar.ph195
+.LBB4_76:                               # %vec.epilog.scalar.ph193
                                         #   Parent Loop BB4_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.b	$a3, $a0, 0
@@ -616,55 +616,44 @@ _ZN8NArchive4NCab8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB4_88
 .LBB4_81:
-	move	$a3, $zero
+	move	$a1, $zero
 	b	.LBB4_87
 .LBB4_82:                               # %vector.ph
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a2, $a2, 2
-	vrepli.b	$vr0, 0
-	addi.d	$a3, $a1, 16
-	move	$a4, $a2
-	vori.b	$vr1, $vr0, 0
+	move	$a1, $zero
+	move	$a4, $zero
+	bstrpick.d	$a3, $a0, 30, 1
+	slli.d	$a3, $a3, 1
+	addi.d	$a5, $a2, 8
+	move	$a6, $a3
 	.p2align	4, , 16
 .LBB4_83:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, -16
-	ld.d	$a6, $a3, -8
-	ld.d	$a7, $a3, 0
-	ld.d	$t0, $a3, 8
-	ld.w	$a5, $a5, 108
-	ld.w	$a6, $a6, 108
+	ld.d	$a7, $a5, -8
+	ld.d	$t0, $a5, 0
 	ld.w	$a7, $a7, 108
 	ld.w	$t0, $t0, 108
-	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $t0, 1
-	vadd.w	$vr0, $vr2, $vr0
-	vadd.w	$vr1, $vr3, $vr1
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB4_83
+	add.d	$a1, $a7, $a1
+	add.d	$a4, $t0, $a4
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 16
+	bnez	$a6, .LBB4_83
 # %bb.84:                               # %middle.block
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a2, $a0, .LBB4_87
+	add.w	$a1, $a4, $a1
+	beq	$a3, $a0, .LBB4_87
 .LBB4_85:                               # %scalar.ph.preheader
-	alsl.d	$a1, $a2, $a1, 3
-	sub.d	$a0, $a0, $a2
+	alsl.d	$a2, $a3, $a2, 3
+	sub.d	$a0, $a0, $a3
 	.p2align	4, , 16
 .LBB4_86:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $a1, 0
-	ld.w	$a2, $a2, 108
-	add.d	$a3, $a2, $a3
+	ld.d	$a3, $a2, 0
+	ld.w	$a3, $a3, 108
+	add.w	$a1, $a3, $a1
 	addi.d	$a0, $a0, -1
-	addi.d	$a1, $a1, 8
+	addi.d	$a2, $a2, 8
 	bnez	$a0, .LBB4_86
 .LBB4_87:                               # %._crit_edge
 .Ltmp2:                                 # EH_LABEL
-	addi.w	$a1, $a3, 0
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariantaSEj)
 	jirl	$ra, $ra, 0
@@ -1167,7 +1156,7 @@ _ZN8NArchive4NCab8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NCa
 	beqz	$s5, .LBB5_58
 # %bb.42:                               # %iter.check
 	bstrpick.d	$a0, $s1, 30, 0
-	ori	$a1, $zero, 16
+	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB5_59
 # %bb.43:
 	move	$a1, $zero
@@ -1244,35 +1233,18 @@ _ZN8NArchive4NCab8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NCa
 	b	.LBB5_71
 .LBB5_59:                               # %vector.main.loop.iter.check
 	ori	$a1, $zero, 32
-	bgeu	$a0, $a1, .LBB5_64
+	bgeu	$a0, $a1, .LBB5_61
 # %bb.60:
 	move	$a1, $zero
-.LBB5_61:                               # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $s1, 30, 4
-	slli.d	$a1, $a1, 4
-	sub.d	$a2, $a4, $a1
-	add.d	$a3, $s3, $a4
-	add.d	$a4, $s0, $a4
-.LBB5_62:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB5_62
-# %bb.63:                               # %vec.epilog.middle.block
-	bne	$a0, $a1, .LBB5_68
-	b	.LBB5_70
-.LBB5_64:                               # %vector.ph
-	andi	$a2, $s1, 16
+	b	.LBB5_65
+.LBB5_61:                               # %vector.ph
+	andi	$a2, $s1, 28
 	bstrpick.d	$a1, $s1, 30, 5
 	slli.d	$a1, $a1, 5
 	addi.d	$a3, $s3, 16
 	addi.d	$a4, $s0, 16
 	move	$a5, $a1
-.LBB5_65:                               # %vector.body
+.LBB5_62:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, -16
 	vld	$vr1, $a4, 0
@@ -1281,11 +1253,28 @@ _ZN8NArchive4NCab8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NCa
 	addi.d	$a5, $a5, -32
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB5_65
-# %bb.66:                               # %middle.block
+	bnez	$a5, .LBB5_62
+# %bb.63:                               # %middle.block
 	beq	$a0, $a1, .LBB5_70
-# %bb.67:                               # %vec.epilog.iter.check
-	bnez	$a2, .LBB5_61
+# %bb.64:                               # %vec.epilog.iter.check
+	beqz	$a2, .LBB5_68
+.LBB5_65:                               # %vec.epilog.ph
+	move	$a4, $a1
+	bstrpick.d	$a1, $s1, 30, 2
+	slli.d	$a1, $a1, 2
+	sub.d	$a2, $a4, $a1
+	add.d	$a3, $s3, $a4
+	add.d	$a4, $s0, $a4
+.LBB5_66:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a5, $a4, 0
+	st.w	$a5, $a3, 0
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 4
+	bnez	$a2, .LBB5_66
+# %bb.67:                               # %vec.epilog.middle.block
+	beq	$a0, $a1, .LBB5_70
 .LBB5_68:                               # %vec.epilog.scalar.ph.preheader
 	sub.d	$a0, $a0, $a1
 	add.d	$a2, $s3, $a1
@@ -1699,9 +1688,9 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	blez	$s5, .LBB6_19
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blez	$s4, .LBB6_11
+	blez	$s4, .LBB6_8
 # %bb.4:                                # %iter.check
-	ori	$a2, $zero, 16
+	ori	$a2, $zero, 4
 	move	$a1, $zero
 	bltu	$s4, $a2, .LBB6_16
 # %bb.5:                                # %iter.check
@@ -1709,40 +1698,22 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	ori	$a2, $zero, 32
 	bltu	$a3, $a2, .LBB6_16
 # %bb.6:                                # %vector.main.loop.iter.check
-	bgeu	$s4, $a2, .LBB6_12
+	bgeu	$s4, $a2, .LBB6_9
 # %bb.7:
 	move	$a1, $zero
-.LBB6_8:                                # %vec.epilog.ph
-	move	$a4, $a1
-	bstrpick.d	$a1, $s4, 30, 4
-	slli.d	$a1, $a1, 4
-	sub.d	$a2, $a4, $a1
-	add.d	$a3, $s3, $a4
-	add.d	$a4, $a0, $a4
-	.p2align	4, , 16
-.LBB6_9:                                # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB6_9
-# %bb.10:                               # %vec.epilog.middle.block
-	bne	$a1, $s4, .LBB6_16
-	b	.LBB6_18
-.LBB6_11:                               # %._crit_edge.i.i
+	b	.LBB6_13
+.LBB6_8:                                # %._crit_edge.i.i
 	bnez	$a0, .LBB6_18
 	b	.LBB6_19
-.LBB6_12:                               # %vector.ph
-	andi	$a2, $s4, 16
+.LBB6_9:                                # %vector.ph
+	andi	$a2, $s4, 28
 	bstrpick.d	$a1, $s4, 30, 5
 	slli.d	$a1, $a1, 5
 	addi.d	$a3, $s3, 16
 	addi.d	$a4, $a0, 16
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB6_13:                               # %vector.body
+.LBB6_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, -16
 	vld	$vr1, $a4, 0
@@ -1751,11 +1722,29 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	addi.d	$a5, $a5, -32
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB6_13
-# %bb.14:                               # %middle.block
+	bnez	$a5, .LBB6_10
+# %bb.11:                               # %middle.block
 	beq	$a1, $s4, .LBB6_18
-# %bb.15:                               # %vec.epilog.iter.check
-	bnez	$a2, .LBB6_8
+# %bb.12:                               # %vec.epilog.iter.check
+	beqz	$a2, .LBB6_16
+.LBB6_13:                               # %vec.epilog.ph
+	move	$a4, $a1
+	bstrpick.d	$a1, $s4, 30, 2
+	slli.d	$a1, $a1, 2
+	sub.d	$a2, $a4, $a1
+	add.d	$a3, $s3, $a4
+	add.d	$a4, $a0, $a4
+	.p2align	4, , 16
+.LBB6_14:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a5, $a4, 0
+	st.w	$a5, $a3, 0
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 4
+	bnez	$a2, .LBB6_14
+# %bb.15:                               # %vec.epilog.middle.block
+	beq	$a1, $s4, .LBB6_18
 .LBB6_16:                               # %vec.epilog.scalar.ph.preheader
 	sub.d	$a2, $s4, $a1
 	add.d	$a3, $s3, $a1

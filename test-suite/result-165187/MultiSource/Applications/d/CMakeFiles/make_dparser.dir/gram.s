@@ -5177,35 +5177,28 @@ build_grammar:                          # @build_grammar
 	beqz	$a0, .LBB33_48
 # %bb.41:                               # %.lr.ph124.i
 	ld.d	$a1, $s7, 56
-	ori	$a3, $zero, 4
+	ori	$a3, $zero, 1
 	bstrpick.d	$a2, $a0, 31, 0
-	bgeu	$a0, $a3, .LBB33_43
+	bne	$a0, $a3, .LBB33_43
 # %bb.42:
 	move	$a0, $zero
 	b	.LBB33_46
 .LBB33_43:                              # %vector.ph
-	move	$a3, $zero
-	bstrpick.d	$a0, $a2, 31, 2
-	slli.d	$a0, $a0, 2
-	addi.d	$a4, $a1, 16
+	bstrpick.d	$a0, $a2, 31, 1
+	slli.d	$a0, $a0, 1
+	addi.d	$a4, $a1, 8
 	move	$a5, $a0
 	.p2align	4, , 16
 .LBB33_44:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a6, $a3, 1
-	addi.d	$a7, $a3, 2
-	addi.d	$t0, $a3, 3
-	ld.d	$t1, $a4, -16
-	ld.d	$t2, $a4, -8
-	ld.d	$t3, $a4, 0
-	ld.d	$t4, $a4, 8
-	st.w	$a3, $t1, 4
-	st.w	$a6, $t2, 4
-	st.w	$a7, $t3, 4
-	st.w	$t0, $t4, 4
-	addi.d	$a5, $a5, -4
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 32
+	ld.d	$a6, $a4, -8
+	ld.d	$a7, $a4, 0
+	addi.d	$t0, $a3, -1
+	st.w	$t0, $a6, 4
+	st.w	$a3, $a7, 4
+	addi.d	$a4, $a4, 16
+	addi.d	$a5, $a5, -2
+	addi.d	$a3, $a3, 2
 	bnez	$a5, .LBB33_44
 # %bb.45:                               # %middle.block
 	beq	$a0, $a2, .LBB33_48

@@ -121,39 +121,35 @@ HYPRE_StructVectorSetBoxValues:         # @HYPRE_StructVectorSetBoxValues
 	move	$s0, $a3
 	blez	$a0, .LBB4_8
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bgeu	$a0, $a3, .LBB4_3
 # %bb.2:
 	move	$a3, $zero
 	b	.LBB4_6
 .LBB4_3:                                # %vector.ph
-	bstrpick.d	$a3, $a0, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 16
-	addi.d	$a5, $sp, 24
-	addi.d	$a6, $sp, 36
-	addi.d	$a7, $a2, 16
+	bstrpick.d	$a3, $a0, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $sp, 8
+	addi.d	$a5, $sp, 20
+	move	$a6, $a1
+	move	$a7, $a2
 	move	$t0, $a3
 	.p2align	4, , 16
 .LBB4_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
-	vld	$vr2, $a7, -16
-	vld	$vr3, $a7, 0
-	vst	$vr0, $a6, -16
-	vst	$vr1, $a6, 0
-	vst	$vr2, $a5, -16
-	vst	$vr3, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	addi.d	$a7, $a7, 32
+	vld	$vr0, $a6, 0
+	vld	$vr1, $a7, 0
+	vst	$vr0, $a5, 0
+	vst	$vr1, $a4, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a4, $a4, 16
+	addi.d	$a7, $a7, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a6, $a6, 16
 	bnez	$t0, .LBB4_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a0, .LBB4_8
-.LBB4_6:                                # %.lr.ph.preheader18
+.LBB4_6:                                # %.lr.ph.preheader16
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a1, $a3, $a1, 2
 	addi.d	$a4, $sp, 20
@@ -282,39 +278,35 @@ HYPRE_StructVectorAddToBoxValues:       # @HYPRE_StructVectorAddToBoxValues
 	move	$s0, $a3
 	blez	$a0, .LBB6_8
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bgeu	$a0, $a3, .LBB6_3
 # %bb.2:
 	move	$a3, $zero
 	b	.LBB6_6
 .LBB6_3:                                # %vector.ph
-	bstrpick.d	$a3, $a0, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 16
-	addi.d	$a5, $sp, 24
-	addi.d	$a6, $sp, 36
-	addi.d	$a7, $a2, 16
+	bstrpick.d	$a3, $a0, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $sp, 8
+	addi.d	$a5, $sp, 20
+	move	$a6, $a1
+	move	$a7, $a2
 	move	$t0, $a3
 	.p2align	4, , 16
 .LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
-	vld	$vr2, $a7, -16
-	vld	$vr3, $a7, 0
-	vst	$vr0, $a6, -16
-	vst	$vr1, $a6, 0
-	vst	$vr2, $a5, -16
-	vst	$vr3, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	addi.d	$a7, $a7, 32
+	vld	$vr0, $a6, 0
+	vld	$vr1, $a7, 0
+	vst	$vr0, $a5, 0
+	vst	$vr1, $a4, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a4, $a4, 16
+	addi.d	$a7, $a7, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a6, $a6, 16
 	bnez	$t0, .LBB6_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a0, .LBB6_8
-.LBB6_6:                                # %.lr.ph.preheader18
+.LBB6_6:                                # %.lr.ph.preheader16
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a1, $a3, $a1, 2
 	addi.d	$a4, $sp, 20
@@ -442,39 +434,35 @@ HYPRE_StructVectorGetBoxValues:         # @HYPRE_StructVectorGetBoxValues
 	move	$s0, $a3
 	blez	$a0, .LBB8_8
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a3, $zero, 8
+	ori	$a3, $zero, 4
 	bgeu	$a0, $a3, .LBB8_3
 # %bb.2:
 	move	$a3, $zero
 	b	.LBB8_6
 .LBB8_3:                                # %vector.ph
-	bstrpick.d	$a3, $a0, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a1, 16
-	addi.d	$a5, $sp, 24
-	addi.d	$a6, $sp, 36
-	addi.d	$a7, $a2, 16
+	bstrpick.d	$a3, $a0, 30, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$a4, $sp, 8
+	addi.d	$a5, $sp, 20
+	move	$a6, $a1
+	move	$a7, $a2
 	move	$t0, $a3
 	.p2align	4, , 16
 .LBB8_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a4, -16
-	vld	$vr1, $a4, 0
-	vld	$vr2, $a7, -16
-	vld	$vr3, $a7, 0
-	vst	$vr0, $a6, -16
-	vst	$vr1, $a6, 0
-	vst	$vr2, $a5, -16
-	vst	$vr3, $a5, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	addi.d	$a7, $a7, 32
+	vld	$vr0, $a6, 0
+	vld	$vr1, $a7, 0
+	vst	$vr0, $a5, 0
+	vst	$vr1, $a4, 0
+	addi.d	$t0, $t0, -4
+	addi.d	$a4, $a4, 16
+	addi.d	$a7, $a7, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a6, $a6, 16
 	bnez	$t0, .LBB8_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a0, .LBB8_8
-.LBB8_6:                                # %.lr.ph.preheader18
+.LBB8_6:                                # %.lr.ph.preheader16
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a1, $a3, $a1, 2
 	addi.d	$a4, $sp, 20

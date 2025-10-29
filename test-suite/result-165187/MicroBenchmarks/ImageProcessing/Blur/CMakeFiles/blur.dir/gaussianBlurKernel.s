@@ -205,21 +205,19 @@ gaussianBlurKernel:                     # @gaussianBlurKernel
 	fadd.s	$fa1, $fa1, $fa2
 	fld.s	$fa2, $t6, 12
 	movgr2fr.w	$fa3, $t7
+	ld.d	$t7, $t5, 0
 	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 0
 	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$t8, $t6, 16
+	vinsgr2vr.d	$vr3, $t7, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 16
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 4
-	fmul.s	$fa2, $fa2, $fa3
-	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 20
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
+	vffint.s.w	$vr2, $vr3
+	vinsgr2vr.d	$vr3, $t8, 0
+	vfmul.s	$vr2, $vr3, $vr2
+	vreplvei.w	$vr3, $vr2, 0
+	fadd.s	$fa1, $fa1, $fa3
 	ld.w	$t7, $t5, 8
-	fmul.s	$fa2, $fa2, $fa3
+	vreplvei.w	$vr2, $vr2, 1
 	fadd.s	$fa1, $fa1, $fa2
 	fld.s	$fa2, $t6, 24
 	movgr2fr.w	$fa3, $t7

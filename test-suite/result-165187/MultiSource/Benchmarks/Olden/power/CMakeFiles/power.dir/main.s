@@ -145,14 +145,14 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $fp, 0
-	fld.d	$fa1, $fp, 16
-	fld.d	$fa2, $fp, 24
+	vld	$vr1, $fp, 16
 	vst	$vr0, $fp, 32
-	fst.d	$fa1, $fp, 48
-	fst.d	$fa2, $fp, 56
-	fadd.d	$fa0, $fs7, $fa1
+	vst	$vr1, $fp, 48
+	vreplvei.d	$vr0, $vr1, 0
+	fadd.d	$fa0, $fs7, $fa0
 	fst.d	$fa0, $fp, 16
-	fadd.d	$fa0, $fs2, $fa2
+	vreplvei.d	$vr0, $vr1, 1
+	fadd.d	$fa0, $fs2, $fa0
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	fst.d	$fa0, $fp, 24
 	move	$a0, $fp

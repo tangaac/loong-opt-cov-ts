@@ -1709,26 +1709,21 @@ _ZN35btSequentialImpulseConstraintSolver19getOrInitSolverBodyER17btCollisionObje
 _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifoldRK19btContactSolverInfo: # @_ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifoldRK19btContactSolverInfo
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -288
-	.cfi_def_cfa_offset 288
-	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 192                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 184                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 176                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 168                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 160                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 152                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 144                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -384
+	.cfi_def_cfa_offset 384
+	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 280                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1742,11 +1737,6 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	.cfi_offset 31, -88
 	.cfi_offset 56, -96
 	.cfi_offset 57, -104
-	.cfi_offset 58, -112
-	.cfi_offset 59, -120
-	.cfi_offset 60, -128
-	.cfi_offset 61, -136
-	.cfi_offset 62, -144
 	move	$s7, $a1
 	ld.d	$s0, $a1, 712
 	ld.w	$a1, $a1, 728
@@ -1765,14 +1755,14 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	pcaddu18i	$ra, %call36(_ZN35btSequentialImpulseConstraintSolver19getOrInitSolverBodyER17btCollisionObject)
 	jirl	$ra, $ra, 0
 	move	$a4, $fp
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	or	$a0, $a4, $a0
 	bnez	$a0, .LBB20_3
 	b	.LBB20_82
 .LBB20_2:
 	addi.w	$a0, $zero, -1
 	move	$a4, $a0
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	or	$a0, $a4, $a0
 	beqz	$a0, .LBB20_82
 .LBB20_3:
@@ -1783,22 +1773,24 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	addi.d	$a6, $s7, 8
 	ori	$a7, $zero, 176
 	sltui	$a0, $s0, 1
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	movgr2fr.w	$fs0, $zero
 	sltui	$a0, $s1, 1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 224                  # 16-byte Folded Spill
 	lu12i.w	$a0, 328016
 	ori	$a0, $a0, 761
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a0, 258896
 	ori	$a0, $a0, 1267
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$a0, $zero, 112
 	mul.d	$a0, $a4, $a0
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB20_7
 .LBB20_5:                               #   in Loop: Header=BB20_7 Depth=1
 	ld.w	$a1, $s8, 100
@@ -1820,42 +1812,52 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fcmp.cult.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB20_6
 # %bb.8:                                #   in Loop: Header=BB20_7 Depth=1
+	ld.d	$a0, $s6, 52
+	ld.d	$a1, $s0, 60
 	fld.s	$fa0, $s6, 48
 	fld.s	$fa1, $s0, 56
-	fld.s	$fa2, $s6, 52
-	fld.s	$fa3, $s0, 60
-	fld.s	$fa4, $s6, 56
-	fld.s	$fa5, $s0, 64
-	fsub.s	$fs5, $fa0, $fa1
-	fsub.s	$fs4, $fa2, $fa3
-	fsub.s	$fs6, $fa4, $fa5
-	movfr2gr.s	$a0, $fs5
-	movfr2gr.s	$a1, $fs4
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vreplvei.w	$vr4, $vr2, 1
+	vextrins.w	$vr4, $vr0, 16
+	vreplvei.w	$vr0, $vr3, 1
+	vextrins.w	$vr0, $vr1, 16
+	vfsub.s	$vr5, $vr4, $vr0
+	vfsub.s	$vr6, $vr2, $vr3
+	vpickve2gr.w	$a0, $vr5, 1
+	vpickve2gr.w	$a1, $vr6, 0
+	bstrins.d	$a0, $a1, 63, 32
+	vpickve2gr.w	$a1, $vr5, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 264
+	st.d	$a1, $sp, 272
+	ld.d	$a0, $s6, 36
+	ld.d	$a1, $s1, 60
 	fld.s	$fa0, $s6, 32
 	fld.s	$fa1, $s1, 56
-	fld.s	$fa2, $s6, 36
-	fld.s	$fa3, $s1, 60
-	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fs6
-	fsub.s	$fs2, $fa0, $fa1
-	fsub.s	$fs1, $fa2, $fa3
-	fld.s	$fa0, $s6, 40
-	fld.s	$fa1, $s1, 64
-	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 128
-	st.d	$a1, $sp, 136
-	fsub.s	$fs3, $fa0, $fa1
-	movfr2gr.s	$a0, $fs2
-	movfr2gr.s	$a1, $fs1
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vreplvei.w	$vr4, $vr2, 1
+	vextrins.w	$vr4, $vr0, 16
+	vreplvei.w	$vr0, $vr3, 1
+	vextrins.w	$vr0, $vr1, 16
+	vfsub.s	$vr0, $vr4, $vr0
+	vfsub.s	$vr1, $vr2, $vr3
+	vpickve2gr.w	$a0, $vr0, 1
+	vst	$vr1, $sp, 192                  # 16-byte Folded Spill
+	vpickve2gr.w	$a1, $vr1, 0
 	bstrins.d	$a0, $a1, 63, 32
 	ld.w	$a3, $s3, 44
 	ld.w	$a1, $s3, 48
-	st.d	$a0, $sp, 112
-	movfr2gr.s	$a0, $fs3
+	st.d	$a0, $sp, 248
+	vst	$vr0, $sp, 208                  # 16-byte Folded Spill
+	vpickve2gr.w	$a0, $vr0, 0
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 120
+	st.d	$a0, $sp, 256
 	move	$a0, $a3
-	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 240                   # 8-byte Folded Spill
+	vst	$vr5, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr6, $sp, 112                  # 16-byte Folded Spill
 	bne	$a3, $a1, .LBB20_19
 # %bb.9:                                #   in Loop: Header=BB20_7 Depth=1
 	sltui	$a0, $a3, 1
@@ -1917,10 +1919,18 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	st.b	$a1, $s3, 64
 	st.d	$s8, $s3, 56
 	st.w	$fp, $s3, 48
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	vld	$vr5, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 .LBB20_19:                              # %_ZN20btAlignedObjectArrayI18btSolverConstraintE6expandERKS0_.exit
                                         #   in Loop: Header=BB20_7 Depth=1
+	vreplvei.w	$vr0, $vr5, 1
+	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
+	vreplvei.w	$vr0, $vr5, 0
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
+	vreplvei.w	$vr0, $vr6, 0
+	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
 	ld.d	$a1, $s3, 56
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, 44
@@ -1931,37 +1941,40 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
+	vld	$vr19, $sp, 160                 # 16-byte Folded Reload
+	vld	$vr18, $sp, 176                 # 16-byte Folded Reload
+	vld	$vr17, $sp, 144                 # 16-byte Folded Reload
 	ld.d	$a0, $s3, 56
 	ld.w	$a1, $s0, 256
 	add.d	$s8, $a0, $fp
 	addi.d	$a0, $a1, -2
 	sltu	$a1, $zero, $a0
 	ld.w	$a0, $s1, 256
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	st.w	$a4, $s8, 104
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	st.w	$a3, $s8, 108
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	or	$s5, $a1, $a2
 	st.d	$s6, $s8, 112
-	fmov.s	$fa4, $fs0
-	fmov.s	$fa3, $fs0
 	fmov.s	$fa5, $fs0
+	fmov.s	$fa4, $fs0
+	fmov.s	$fa6, $fs0
 	bnez	$s5, .LBB20_21
 # %bb.20:                               #   in Loop: Header=BB20_7 Depth=1
 	fld.s	$fa0, $s6, 68
 	fld.s	$fa1, $s6, 72
 	fneg.s	$fa2, $fa0
-	fmul.s	$fa2, $fs6, $fa2
+	fmul.s	$fa2, $ft11, $fa2
 	fld.s	$fa3, $s6, 64
-	fmadd.s	$fa2, $fs4, $fa1, $fa2
+	fmadd.s	$fa2, $ft9, $fa1, $fa2
 	fneg.s	$fa1, $fa1
-	fmul.s	$fa1, $fs5, $fa1
-	fmadd.s	$fa1, $fs6, $fa3, $fa1
+	fmul.s	$fa1, $ft10, $fa1
+	fmadd.s	$fa1, $ft11, $fa3, $fa1
 	fneg.s	$fa3, $fa3
-	fmul.s	$fa3, $fs4, $fa3
+	fmul.s	$fa3, $ft9, $fa3
 	fld.s	$fa4, $s0, 284
-	fmadd.s	$fa0, $fs5, $fa0, $fa3
+	fmadd.s	$fa0, $ft10, $fa0, $fa3
 	fld.s	$fa3, $s0, 280
 	fld.s	$fa5, $s0, 288
 	fmul.s	$fa4, $fa1, $fa4
@@ -1974,209 +1987,215 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fld.s	$fa7, $s0, 316
 	fld.s	$ft0, $s0, 312
 	fmadd.s	$fa4, $fa4, $fa2, $fa5
-	fmadd.s	$fa4, $fa6, $fa0, $fa4
+	fmadd.s	$fa5, $fa6, $fa0, $fa4
 	fmul.s	$fa1, $fa1, $fa7
 	fmadd.s	$fa1, $ft0, $fa2, $fa1
 	fld.s	$fa2, $s0, 320
-	fld.s	$fa5, $s0, 364
+	fld.s	$fa4, $s0, 364
 	fld.s	$fa6, $s0, 368
 	fld.s	$fa7, $s0, 372
 	fmadd.s	$fa0, $fa2, $fa0, $fa1
-	fmul.s	$fa3, $fa3, $fa5
-	fmul.s	$fa5, $fa4, $fa6
-	fmul.s	$fa4, $fa0, $fa7
+	fmul.s	$fa4, $fa3, $fa4
+	fmul.s	$fa6, $fa5, $fa6
+	fmul.s	$fa5, $fa0, $fa7
 .LBB20_21:                              #   in Loop: Header=BB20_7 Depth=1
+	vld	$vr15, $sp, 208                 # 16-byte Folded Reload
+	vreplvei.w	$vr1, $vr15, 1
+	vreplvei.w	$vr2, $vr15, 0
+	vld	$vr16, $sp, 192                 # 16-byte Folded Reload
+	vreplvei.w	$vr0, $vr16, 0
 	addi.d	$a0, $a0, -2
 	sltu	$a0, $zero, $a0
-	fst.s	$fa3, $s8, 48
-	fst.s	$fa5, $s8, 52
-	fst.s	$fa4, $s8, 56
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	fst.s	$fa4, $s8, 48
+	fst.s	$fa6, $s8, 52
+	fst.s	$fa5, $s8, 56
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	or	$fp, $a0, $a1
 	st.w	$zero, $s8, 60
-	fmov.s	$ft0, $fs0
-	fmov.s	$fa6, $fs0
+	fmov.s	$ft1, $fs0
 	fmov.s	$fa7, $fs0
+	fmov.s	$ft0, $fs0
 	bnez	$fp, .LBB20_23
 # %bb.22:                               #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$fa0, $s6, 68
-	fld.s	$fa1, $s6, 72
-	fneg.s	$fa2, $fa0
-	fld.s	$fa6, $s6, 64
-	fmul.s	$fa2, $fs3, $fa2
-	fneg.s	$fa7, $fa1
-	fmul.s	$fa7, $fs2, $fa7
-	fneg.s	$ft0, $fa6
-	fmul.s	$ft0, $fs1, $ft0
-	fnmadd.s	$fa1, $fs1, $fa1, $fa2
-	fnmadd.s	$fa2, $fs3, $fa6, $fa7
-	fld.s	$fa6, $s1, 284
-	fnmadd.s	$fa0, $fs2, $fa0, $ft0
-	fld.s	$fa7, $s1, 280
-	fld.s	$ft0, $s1, 288
-	fmul.s	$fa6, $fa6, $fa2
-	fld.s	$ft1, $s1, 300
-	fmadd.s	$fa6, $fa7, $fa1, $fa6
-	fmadd.s	$fa6, $ft0, $fa0, $fa6
-	fld.s	$fa7, $s1, 296
-	fmul.s	$ft0, $ft1, $fa2
-	fld.s	$ft1, $s1, 304
-	fld.s	$ft2, $s1, 316
-	fld.s	$ft3, $s1, 312
-	fmadd.s	$fa7, $fa7, $fa1, $ft0
-	fmadd.s	$fa7, $ft1, $fa0, $fa7
-	fmul.s	$fa2, $ft2, $fa2
-	fmadd.s	$fa1, $ft3, $fa1, $fa2
-	fld.s	$fa2, $s1, 320
-	fld.s	$ft0, $s1, 364
-	fld.s	$ft1, $s1, 368
-	fld.s	$ft2, $s1, 372
-	fmadd.s	$fa0, $fa2, $fa0, $fa1
-	fmul.s	$fa6, $fa6, $ft0
-	fmul.s	$fa7, $fa7, $ft1
-	fmul.s	$ft0, $fa0, $ft2
+	fld.s	$fa3, $s6, 68
+	fld.s	$fa7, $s6, 72
+	fneg.s	$ft0, $fa3
+	fld.s	$ft1, $s6, 64
+	fmul.s	$ft0, $fa2, $ft0
+	fneg.s	$ft2, $fa7
+	fmul.s	$ft2, $fa1, $ft2
+	fneg.s	$ft3, $ft1
+	fmul.s	$ft3, $fa0, $ft3
+	fnmadd.s	$fa7, $fa0, $fa7, $ft0
+	fnmadd.s	$ft0, $fa2, $ft1, $ft2
+	fld.s	$ft1, $s1, 284
+	fnmadd.s	$fa3, $fa1, $fa3, $ft3
+	fld.s	$ft2, $s1, 280
+	fld.s	$ft3, $s1, 288
+	fmul.s	$ft1, $ft1, $ft0
+	fld.s	$ft4, $s1, 300
+	fmadd.s	$ft1, $ft2, $fa7, $ft1
+	fmadd.s	$ft1, $ft3, $fa3, $ft1
+	fld.s	$ft2, $s1, 296
+	fmul.s	$ft3, $ft4, $ft0
+	fld.s	$ft4, $s1, 304
+	fld.s	$ft5, $s1, 316
+	fld.s	$ft6, $s1, 312
+	fmadd.s	$ft2, $ft2, $fa7, $ft3
+	fmadd.s	$ft2, $ft4, $fa3, $ft2
+	fmul.s	$ft0, $ft5, $ft0
+	fmadd.s	$fa7, $ft6, $fa7, $ft0
+	fld.s	$ft0, $s1, 320
+	fld.s	$ft3, $s1, 364
+	fld.s	$ft4, $s1, 368
+	fld.s	$ft5, $s1, 372
+	fmadd.s	$fa3, $ft0, $fa3, $fa7
+	fmul.s	$fa7, $ft1, $ft3
+	fmul.s	$ft0, $ft2, $ft4
+	fmul.s	$ft1, $fa3, $ft5
 .LBB20_23:                              #   in Loop: Header=BB20_7 Depth=1
-	fst.s	$fa6, $s8, 64
-	fst.s	$fa7, $s8, 68
-	fst.s	$ft0, $s8, 72
+	fst.s	$fa7, $s8, 64
+	fst.s	$ft0, $s8, 68
+	fst.s	$ft1, $s8, 72
 	st.w	$zero, $s8, 76
-	fneg.s	$fa2, $fs4
-	fneg.s	$fa1, $fs6
-	fneg.s	$fa0, $fs5
-	fmov.s	$ft1, $fs0
+	fneg.s	$fa3, $ft10
+	fmov.s	$ft2, $fs0
 	bnez	$s5, .LBB20_25
 # %bb.24:                               #   in Loop: Header=BB20_7 Depth=1
-	fmul.s	$ft1, $fa4, $fa2
-	fmadd.s	$ft1, $fa5, $fs6, $ft1
-	fmul.s	$ft2, $fa3, $fa1
-	fmadd.s	$fa4, $fa4, $fs5, $ft2
-	fmul.s	$fa5, $fa5, $fa0
-	fmadd.s	$fa3, $fa3, $fs4, $fa5
-	fld.s	$fa5, $s6, 68
-	fld.s	$ft2, $s6, 64
-	fld.s	$ft3, $s6, 72
-	fld.s	$ft4, $s0, 360
-	fmul.s	$fa4, $fa4, $fa5
-	fmadd.s	$fa4, $ft2, $ft1, $fa4
-	fmadd.s	$fa3, $ft3, $fa3, $fa4
-	fadd.s	$ft1, $ft4, $fa3
+	fneg.s	$ft2, $ft9
+	fmul.s	$ft2, $fa5, $ft2
+	fmadd.s	$ft2, $fa6, $ft11, $ft2
+	fneg.s	$ft3, $ft11
+	fmul.s	$ft3, $fa4, $ft3
+	fmadd.s	$fa5, $fa5, $ft10, $ft3
+	fmul.s	$fa6, $fa6, $fa3
+	fmadd.s	$fa4, $fa4, $ft9, $fa6
+	fld.s	$fa6, $s6, 68
+	fld.s	$ft3, $s6, 64
+	fld.s	$ft4, $s6, 72
+	fld.s	$ft5, $s0, 360
+	fmul.s	$fa5, $fa5, $fa6
+	fmadd.s	$fa5, $ft3, $ft2, $fa5
+	fmadd.s	$fa4, $ft4, $fa4, $fa5
+	fadd.s	$ft2, $ft5, $fa4
 .LBB20_25:                              #   in Loop: Header=BB20_7 Depth=1
-	fmov.s	$fa3, $fs0
+	fmov.s	$fa4, $fs0
 	bnez	$fp, .LBB20_27
 # %bb.26:                               #   in Loop: Header=BB20_7 Depth=1
-	fneg.s	$fa3, $fa6
 	fneg.s	$fa4, $fa7
 	fneg.s	$fa5, $ft0
-	fmul.s	$ft0, $fs1, $ft0
-	fmadd.s	$fa4, $fa4, $fs3, $ft0
-	fmul.s	$fa6, $fs3, $fa6
-	fmadd.s	$fa5, $fa5, $fs2, $fa6
-	fmul.s	$fa6, $fs2, $fa7
-	fmadd.s	$fa3, $fa3, $fs1, $fa6
-	fld.s	$fa6, $s6, 68
-	fld.s	$fa7, $s6, 64
-	fld.s	$ft0, $s6, 72
-	fld.s	$ft2, $s1, 360
-	fmul.s	$fa5, $fa5, $fa6
-	fmadd.s	$fa4, $fa7, $fa4, $fa5
-	fmadd.s	$fa3, $ft0, $fa3, $fa4
-	fadd.s	$fa3, $ft2, $fa3
+	fneg.s	$fa6, $ft1
+	fmul.s	$ft1, $fa0, $ft1
+	fmadd.s	$fa5, $fa5, $fa2, $ft1
+	fmul.s	$fa7, $fa2, $fa7
+	fmadd.s	$fa6, $fa6, $fa1, $fa7
+	fmul.s	$fa7, $fa1, $ft0
+	fmadd.s	$fa4, $fa4, $fa0, $fa7
+	fld.s	$fa7, $s6, 68
+	fld.s	$ft0, $s6, 64
+	fld.s	$ft1, $s6, 72
+	fld.s	$ft3, $s1, 360
+	fmul.s	$fa6, $fa6, $fa7
+	fmadd.s	$fa5, $ft0, $fa5, $fa6
+	fmadd.s	$fa4, $ft1, $fa4, $fa5
+	fadd.s	$fa4, $ft3, $fa4
 .LBB20_27:                              #   in Loop: Header=BB20_7 Depth=1
 	addi.d	$a0, $s6, 64
-	fadd.s	$fa3, $ft1, $fa3
-	frecip.s	$fa3, $fa3
-	fst.s	$fa3, $s8, 92
-	vld	$vr3, $a0, 0
-	vst	$vr3, $s8, 16
-	fld.s	$fa3, $s6, 68
-	fld.s	$fa4, $s6, 72
-	fneg.s	$fa5, $fa3
-	fmul.s	$fa5, $fs6, $fa5
-	fld.s	$fa6, $s6, 64
-	fmadd.s	$fa5, $fs4, $fa4, $fa5
-	fneg.s	$fa4, $fa4
-	fmul.s	$fa4, $fs5, $fa4
-	fmadd.s	$fa4, $fs6, $fa6, $fa4
-	fneg.s	$fa6, $fa6
-	fmul.s	$fa6, $fs4, $fa6
-	fmadd.s	$fa3, $fs5, $fa3, $fa6
-	movfr2gr.s	$a0, $fa5
-	movfr2gr.s	$a1, $fa4
+	fadd.s	$fa4, $ft2, $fa4
+	frecip.s	$fa4, $fa4
+	fst.s	$fa4, $s8, 92
+	vld	$vr4, $a0, 0
+	vst	$vr4, $s8, 16
+	fld.s	$fa4, $s6, 68
+	fld.s	$fa5, $s6, 72
+	fneg.s	$fa6, $fa4
+	fmul.s	$fa6, $ft11, $fa6
+	fld.s	$fa7, $s6, 64
+	fmadd.s	$fa6, $ft9, $fa5, $fa6
+	fneg.s	$fa5, $fa5
+	fmul.s	$fa5, $ft10, $fa5
+	fmadd.s	$fa5, $ft11, $fa7, $fa5
+	fneg.s	$fa7, $fa7
+	fmul.s	$fa7, $ft9, $fa7
+	fmadd.s	$fa4, $ft10, $fa4, $fa7
+	movfr2gr.s	$a0, $fa6
+	movfr2gr.s	$a1, $fa5
 	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fa3
+	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a0, $s8, 0
 	st.d	$a1, $s8, 8
-	fld.s	$fa3, $s6, 64
-	fld.s	$fa4, $s6, 68
-	fld.s	$fa5, $s6, 72
-	fneg.s	$fa6, $fa3
+	fld.s	$fa4, $s6, 64
+	fld.s	$fa5, $s6, 68
+	fld.s	$fa6, $s6, 72
 	fneg.s	$fa7, $fa4
 	fneg.s	$ft0, $fa5
-	fmul.s	$fa4, $fs3, $fa4
-	fmadd.s	$fa4, $fs1, $ft0, $fa4
-	fmul.s	$fa5, $fs2, $fa5
-	fmadd.s	$fa5, $fs3, $fa6, $fa5
-	fmul.s	$fa3, $fs1, $fa3
-	fmadd.s	$fa3, $fs2, $fa7, $fa3
-	movfr2gr.s	$a0, $fa4
-	movfr2gr.s	$a1, $fa5
+	fneg.s	$ft1, $fa6
+	fmul.s	$fa5, $fa2, $fa5
+	fmadd.s	$fa5, $fa0, $ft1, $fa5
+	fmul.s	$fa6, $fa1, $fa6
+	fmadd.s	$fa2, $fa2, $fa7, $fa6
+	fmul.s	$fa4, $fa0, $fa4
+	fmadd.s	$fa4, $fa1, $ft0, $fa4
+	movfr2gr.s	$a0, $fa5
+	movfr2gr.s	$a1, $fa2
 	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fa3
+	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a0, $s8, 32
 	st.d	$a1, $s8, 40
-	fmov.s	$fa3, $fs0
-	fmov.s	$fa5, $fs0
 	fmov.s	$fa4, $fs0
+	vld	$vr2, $sp, 224                  # 16-byte Folded Reload
 	bnez	$s5, .LBB20_29
 # %bb.28:                               #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$fa3, $s0, 352
-	fld.s	$fa4, $s0, 348
-	fld.s	$fa5, $s0, 344
-	fmul.s	$fa2, $fa3, $fa2
-	fmadd.s	$fa2, $fa4, $fs6, $fa2
-	fmul.s	$fa1, $fa5, $fa1
-	fmadd.s	$fa1, $fa3, $fs5, $fa1
-	fmul.s	$fa0, $fa4, $fa0
-	fld.s	$fa3, $s0, 328
-	fld.s	$fa4, $s0, 332
-	fld.s	$fa6, $s0, 336
-	fmadd.s	$fa0, $fa5, $fs4, $fa0
-	fadd.s	$fa5, $fa2, $fa3
-	fadd.s	$fa4, $fa4, $fa1
-	fadd.s	$fa3, $fa0, $fa6
+	ld.d	$a0, $s0, 348
+	fld.s	$fa2, $s0, 344
+	vld	$vr4, $sp, 112                  # 16-byte Folded Reload
+	vbitrevi.w	$vr4, $vr4, 31
+	vinsgr2vr.d	$vr5, $a0, 0
+	vreplvei.w	$vr6, $vr5, 1
+	vextrins.w	$vr6, $vr2, 16
+	vfmul.s	$vr4, $vr6, $vr4
+	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
+	vfmadd.s	$vr4, $vr5, $vr6, $vr4
+	vreplvei.w	$vr5, $vr5, 0
+	ld.d	$a0, $s0, 328
+	fmul.s	$fa3, $fa5, $fa3
+	fld.s	$fa5, $s0, 336
+	fmadd.s	$fa3, $fa2, $ft9, $fa3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vfadd.s	$vr2, $vr4, $vr2
+	fadd.s	$fa4, $fa3, $fa5
 .LBB20_29:                              #   in Loop: Header=BB20_7 Depth=1
-	fmov.s	$fa2, $fs0
-	fmov.s	$fa0, $fs0
-	fmov.s	$fa1, $fs0
+	fmov.s	$fa3, $fs0
+	vld	$vr5, $sp, 224                  # 16-byte Folded Reload
 	bnez	$fp, .LBB20_31
 # %bb.30:                               #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$fa0, $s1, 352
-	fld.s	$fa1, $s1, 348
-	fneg.s	$fa2, $fs1
-	fld.s	$fa6, $s1, 344
-	fmul.s	$fa2, $fa0, $fa2
-	fmadd.s	$fa2, $fa1, $fs3, $fa2
-	fneg.s	$fa7, $fs3
-	fmul.s	$fa7, $fa6, $fa7
-	fmadd.s	$fa7, $fa0, $fs2, $fa7
-	fneg.s	$fa0, $fs2
-	fmul.s	$fa0, $fa1, $fa0
-	fld.s	$fa1, $s1, 328
-	fld.s	$ft0, $s1, 332
-	fld.s	$ft1, $s1, 336
-	fmadd.s	$fa6, $fa6, $fs1, $fa0
-	fadd.s	$fa0, $fa2, $fa1
-	fadd.s	$fa1, $ft0, $fa7
-	fadd.s	$fa2, $fa6, $ft1
+	ld.d	$a0, $s1, 348
+	vbitrevi.w	$vr3, $vr16, 31
+	fld.s	$fa5, $s1, 344
+	fneg.s	$fa1, $fa1
+	vinsgr2vr.d	$vr6, $a0, 0
+	vreplvei.w	$vr7, $vr6, 1
+	vextrins.w	$vr7, $vr5, 16
+	vfmul.s	$vr3, $vr7, $vr3
+	vfmadd.s	$vr3, $vr6, $vr15, $vr3
+	vreplvei.w	$vr6, $vr6, 0
+	ld.d	$a0, $s1, 328
+	fmul.s	$fa1, $fa6, $fa1
+	fld.s	$fa6, $s1, 336
+	fmadd.s	$fa0, $fa5, $fa0, $fa1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vfadd.s	$vr5, $vr3, $vr1
+	fadd.s	$fa3, $fa0, $fa6
 .LBB20_31:                              #   in Loop: Header=BB20_7 Depth=1
-	fsub.s	$fa0, $fa5, $fa0
+	vfsub.s	$vr1, $vr2, $vr5
+	vreplvei.w	$vr0, $vr1, 0
 	fld.s	$fa5, $s6, 68
-	fsub.s	$fa1, $fa4, $fa1
-	fsub.s	$fa2, $fa3, $fa2
+	vreplvei.w	$vr2, $vr1, 1
+	fsub.s	$fa1, $fa4, $fa3
 	fld.s	$fa3, $s6, 64
-	fmul.s	$fa4, $fa1, $fa5
+	fmul.s	$fa4, $fa2, $fa5
 	fld.s	$fa7, $s6, 72
 	fld.s	$fa5, $s6, 80
 	fld.s	$ft0, $s6, 84
@@ -2184,7 +2203,7 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	ld.w	$a1, $s2, 64
 	fld.s	$fa6, $s2, 52
 	fmadd.s	$fa3, $fa3, $fa0, $fa4
-	fmadd.s	$fa3, $fa7, $fa2, $fa3
+	fmadd.s	$fa3, $fa7, $fa1, $fa3
 	fst.s	$ft0, $s8, 88
 	fmov.s	$fa4, $fs0
 	blt	$a1, $a0, .LBB20_34
@@ -2224,7 +2243,7 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fld.s	$ft3, $s0, 384
 	fld.s	$ft5, $s0, 388
 	fmul.s	$ft1, $ft1, $ft4
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a1, $a0, $a2
 	fmul.s	$ft2, $ft2, $ft3
 	fmul.s	$ft0, $ft0, $ft5
@@ -2317,25 +2336,25 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fadd.s	$fa7, $ft0, $fa7
 	fst.s	$fa7, $a0, 24
 .LBB20_40:                              #   in Loop: Header=BB20_7 Depth=1
+	movgr2fr.w	$fa7, $zero
 	st.w	$zero, $s8, 80
-	fmov.s	$fa7, $fs0
-	fmov.s	$ft0, $fs0
-	fmov.s	$ft1, $fs0
+	fmov.s	$ft0, $fa7
+	fmov.s	$ft1, $fa7
+	fmov.s	$ft2, $fa7
 	bnez	$s5, .LBB20_42
 # %bb.41:                               #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$fa7, $s0, 328
-	fld.s	$ft0, $s0, 332
-	fld.s	$ft1, $s0, 336
+	fld.s	$ft0, $s0, 328
+	fld.s	$ft1, $s0, 332
+	fld.s	$ft2, $s0, 336
 .LBB20_42:                              #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$ft2, $s8, 16
+	fld.s	$ft3, $s8, 16
 	fld.s	$ft5, $s8, 20
-	fld.s	$ft3, $s8, 24
-	fmov.s	$ft4, $fs0
-	fmov.s	$ft6, $fs0
-	fmov.s	$ft7, $fs0
+	fld.s	$ft4, $s8, 24
+	fmov.s	$ft6, $fa7
+	fmov.s	$ft7, $fa7
 	bnez	$s5, .LBB20_44
 # %bb.43:                               #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$ft4, $s0, 344
+	fld.s	$fa7, $s0, 344
 	fld.s	$ft6, $s0, 348
 	fld.s	$ft7, $s0, 352
 .LBB20_44:                              #   in Loop: Header=BB20_7 Depth=1
@@ -2344,12 +2363,12 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fld.s	$ft9, $s8, 8
 	beqz	$fp, .LBB20_46
 # %bb.45:                               #   in Loop: Header=BB20_7 Depth=1
-	fmul.s	$ft11, $ft5, $fs0
-	fmadd.s	$ft11, $ft2, $fs0, $ft11
-	fmadd.s	$ft12, $ft3, $fs0, $ft11
-	fmov.s	$ft11, $fs0
-	fmov.s	$ft13, $fs0
-	fmov.s	$ft14, $fs0
+	movgr2fr.w	$ft11, $zero
+	fmul.s	$ft12, $ft5, $ft11
+	fmadd.s	$ft12, $ft3, $ft11, $ft12
+	fmadd.s	$ft12, $ft4, $ft11, $ft12
+	fmov.s	$ft13, $ft11
+	fmov.s	$ft14, $ft11
 	b	.LBB20_47
 	.p2align	4, , 16
 .LBB20_46:                              #   in Loop: Header=BB20_7 Depth=1
@@ -2360,15 +2379,15 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fld.s	$ft13, $s1, 348
 	fld.s	$ft14, $s1, 352
 	fmul.s	$ft15, $ft5, $ft15
-	fmadd.s	$ft12, $ft2, $ft12, $ft15
-	fmadd.s	$ft12, $ft3, $fs1, $ft12
+	fmadd.s	$ft12, $ft3, $ft12, $ft15
+	fmadd.s	$ft12, $ft4, $fs1, $ft12
 .LBB20_47:                              #   in Loop: Header=BB20_7 Depth=1
 	fadd.s	$fa5, $fa5, $fa6
-	fmul.s	$fa6, $ft0, $ft5
-	fmadd.s	$fa6, $ft2, $fa7, $fa6
-	fmadd.s	$fa6, $ft3, $ft1, $fa6
-	fmul.s	$fa7, $ft6, $ft10
-	fmadd.s	$fa7, $ft8, $ft4, $fa7
+	fmul.s	$fa6, $ft1, $ft5
+	fmadd.s	$fa6, $ft3, $ft0, $fa6
+	fmadd.s	$fa6, $ft4, $ft2, $fa6
+	fmul.s	$ft0, $ft6, $ft10
+	fmadd.s	$fa7, $ft8, $fa7, $ft0
 	fmadd.s	$fa7, $ft9, $ft7, $fa7
 	fld.s	$ft0, $s8, 36
 	fld.s	$ft1, $s8, 32
@@ -2396,19 +2415,20 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	or	$a0, $a0, $a1
 	fadd.s	$fa5, $fa7, $fa4
 	movgr2cf	$fcc0, $a0
-	fsel	$fa4, $fa4, $fa5, $fcc0
-	fsel	$fa5, $fa7, $fs0, $fcc0
+	fsel	$fa5, $fa4, $fa5, $fcc0
+	movgr2fr.w	$fa4, $zero
+	fsel	$fa6, $fa7, $fa4, $fcc0
 	st.d	$zero, $s8, 124
 	ld.w	$a0, $s3, 108
-	fst.s	$fa4, $s8, 120
-	fst.s	$fa5, $s8, 136
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	fst.s	$fa5, $s8, 120
+	fst.s	$fa6, $s8, 136
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a1, $s8, 132
 	st.w	$a0, $s8, 100
 	ld.bu	$a0, $s2, 60
 	andi	$a0, $a0, 32
 	addi.d	$a1, $s6, 140
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
 	beqz	$a0, .LBB20_51
 # %bb.48:                               #   in Loop: Header=BB20_7 Depth=1
 	ld.bu	$a0, $s6, 124
@@ -2416,13 +2436,13 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 # %bb.49:                               #   in Loop: Header=BB20_7 Depth=1
 	move	$fp, $s7
 	st.d	$s1, $sp, 8
-	addi.d	$a6, $sp, 128
-	addi.d	$a7, $sp, 112
+	addi.d	$a6, $sp, 264
+	addi.d	$a7, $sp, 248
 	vldi	$vr0, -1168
 	st.d	$s0, $sp, 0
 	move	$a0, $s3
 	move	$a2, $a4
-	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
 	move	$a4, $s7
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_ZN35btSequentialImpulseConstraintSolver21addFrictionConstraintERK9btVector3iiiR15btManifoldPointS2_S2_P17btCollisionObjectS6_f)
@@ -2433,13 +2453,13 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 # %bb.50:                               #   in Loop: Header=BB20_7 Depth=1
 	addi.d	$a1, $s6, 156
 	st.d	$s1, $sp, 8
-	addi.d	$a6, $sp, 128
-	addi.d	$a7, $sp, 112
+	addi.d	$a6, $sp, 264
+	addi.d	$a7, $sp, 248
 	vldi	$vr0, -1168
 	st.d	$s0, $sp, 0
 	move	$a0, $s3
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	move	$a4, $s7
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_ZN35btSequentialImpulseConstraintSolver21addFrictionConstraintERK9btVector3iiiR15btManifoldPointS2_S2_P17btCollisionObjectS6_f)
@@ -2447,17 +2467,17 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	b	.LBB20_69
 	.p2align	4, , 16
 .LBB20_51:                              #   in Loop: Header=BB20_7 Depth=1
-	fld.s	$fa4, $s6, 64
-	fld.s	$fa5, $s6, 68
-	fld.s	$fa6, $s6, 72
-	fmul.s	$fa7, $fa3, $fa4
+	fld.s	$fa5, $s6, 64
+	fld.s	$fa6, $s6, 68
+	fld.s	$fa7, $s6, 72
 	fmul.s	$ft0, $fa3, $fa5
 	fmul.s	$ft1, $fa3, $fa6
-	fsub.s	$fa3, $fa0, $fa7
-	fsub.s	$fa1, $fa1, $ft0
-	fsub.s	$fa0, $fa2, $ft1
+	fmul.s	$ft2, $fa3, $fa7
+	fsub.s	$fa3, $fa0, $ft0
+	fsub.s	$fa2, $fa2, $ft1
+	fsub.s	$fa0, $fa1, $ft2
 	movfr2gr.s	$a0, $fa3
-	movfr2gr.s	$a2, $fa1
+	movfr2gr.s	$a2, $fa2
 	bstrins.d	$a0, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
 	bstrpick.d	$a2, $a2, 31, 0
@@ -2468,32 +2488,32 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	andi	$a0, $a0, 16
 	bnez	$a2, .LBB20_55
 # %bb.52:                               #   in Loop: Header=BB20_7 Depth=1
-	fmul.s	$fa2, $fa1, $fa1
-	fmadd.s	$fa2, $fa3, $fa3, $fa2
-	fmadd.s	$fa2, $fa0, $fa0, $fa2
+	fmul.s	$fa1, $fa2, $fa2
+	fmadd.s	$fa1, $fa3, $fa3, $fa1
+	fmadd.s	$fa1, $fa0, $fa0, $fa1
 	lu12i.w	$a2, 212992
-	movgr2fr.w	$fa7, $a2
-	fcmp.cule.s	$fcc0, $fa2, $fa7
+	movgr2fr.w	$ft0, $a2
+	fcmp.cule.s	$fcc0, $fa1, $ft0
 	bcnez	$fcc0, .LBB20_55
 # %bb.53:                               #   in Loop: Header=BB20_7 Depth=1
-	frsqrt.s	$fa7, $fa2
-	fmul.s	$fa2, $fa3, $fa7
-	fst.s	$fa2, $s6, 140
-	fmul.s	$fa1, $fa1, $fa7
-	fst.s	$fa1, $s6, 144
-	fmul.s	$fa0, $fa0, $fa7
+	frsqrt.s	$fa4, $fa1
+	fmul.s	$fa1, $fa3, $fa4
+	fst.s	$fa1, $s6, 140
+	fmul.s	$fa2, $fa2, $fa4
+	fst.s	$fa2, $s6, 144
+	fmul.s	$fa0, $fa0, $fa4
 	fst.s	$fa0, $s6, 148
 	beqz	$a0, .LBB20_64
 # %bb.54:                               #   in Loop: Header=BB20_7 Depth=1
-	fneg.s	$fa3, $fa5
+	fneg.s	$fa3, $fa6
 	fmul.s	$fa3, $fa0, $fa3
-	fmadd.s	$fa3, $fa1, $fa6, $fa3
-	fneg.s	$fa6, $fa6
-	fmul.s	$fa6, $fa2, $fa6
-	fmadd.s	$fa0, $fa0, $fa4, $fa6
-	fneg.s	$fa4, $fa4
-	fmul.s	$fa1, $fa1, $fa4
-	fmadd.s	$fa4, $fa2, $fa5, $fa1
+	fmadd.s	$fa3, $fa2, $fa7, $fa3
+	fneg.s	$fa4, $fa7
+	fmul.s	$fa4, $fa1, $fa4
+	fmadd.s	$fa0, $fa0, $fa5, $fa4
+	fneg.s	$fa4, $fa5
+	fmul.s	$fa2, $fa2, $fa4
+	fmadd.s	$fa4, $fa1, $fa6, $fa2
 	movfr2gr.s	$a0, $fa4
 	bstrpick.d	$a0, $a0, 31, 0
 	st.d	$a0, $s6, 164
@@ -2511,41 +2531,40 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	bnez	$a0, .LBB20_60
 	b	.LBB20_61
 .LBB20_55:                              #   in Loop: Header=BB20_7 Depth=1
-	fabs.s	$fa0, $fa6
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	fabs.s	$fa0, $fa7
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	movgr2fr.w	$fa1, $a2
 	fcmp.cule.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB20_57
 # %bb.56:                               #   in Loop: Header=BB20_7 Depth=1
-	fmul.s	$fa0, $fa6, $fa6
-	fmadd.s	$fa0, $fa5, $fa5, $fa0
+	fmul.s	$fa0, $fa7, $fa7
+	fmadd.s	$fa0, $fa6, $fa6, $fa0
 	frsqrt.s	$fa1, $fa0
-	fneg.s	$fa2, $fa6
+	fneg.s	$fa2, $fa7
 	fmul.s	$fa3, $fa1, $fa2
-	fmul.s	$fa5, $fa5, $fa1
+	fmul.s	$fa4, $fa6, $fa1
 	fmul.s	$fa1, $fa0, $fa1
-	fneg.s	$fa0, $fa4
-	fmul.s	$fa2, $fa5, $fa0
-	fmul.s	$fa0, $fa4, $fa3
-	movgr2fr.w	$fa7, $zero
+	fneg.s	$fa0, $fa5
+	fmul.s	$fa2, $fa4, $fa0
+	fmul.s	$fa0, $fa5, $fa3
+	movgr2fr.w	$fa6, $zero
 	b	.LBB20_58
 .LBB20_57:                              #   in Loop: Header=BB20_7 Depth=1
-	fmul.s	$fa0, $fa5, $fa5
-	fmadd.s	$fa0, $fa4, $fa4, $fa0
+	fmul.s	$fa0, $fa6, $fa6
+	fmadd.s	$fa0, $fa5, $fa5, $fa0
 	frsqrt.s	$ft0, $fa0
-	fneg.s	$fa1, $fa5
-	fmul.s	$fa7, $ft0, $fa1
-	fmul.s	$fa3, $fa4, $ft0
 	fneg.s	$fa1, $fa6
+	fmul.s	$fa6, $ft0, $fa1
+	fmul.s	$fa3, $fa5, $ft0
+	fneg.s	$fa1, $fa7
 	fmul.s	$fa1, $fa3, $fa1
-	fmul.s	$fa2, $fa6, $fa7
+	fmul.s	$fa2, $fa7, $fa6
 	fmul.s	$fa0, $fa0, $ft0
-	movgr2fr.w	$fa5, $zero
 .LBB20_58:                              # %_Z13btPlaneSpace1RK9btVector3RS_S2_.exit
                                         #   in Loop: Header=BB20_7 Depth=1
-	fst.s	$fa7, $s6, 140
+	fst.s	$fa6, $s6, 140
 	fst.s	$fa3, $s6, 144
-	fst.s	$fa5, $s6, 148
+	fst.s	$fa4, $s6, 148
 	st.w	$zero, $s6, 152
 	fst.s	$fa1, $s6, 156
 	fst.s	$fa2, $s6, 160
@@ -2645,18 +2664,18 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
                                         #   in Loop: Header=BB20_7 Depth=1
 	addi.d	$a1, $s6, 156
 	st.d	$s1, $sp, 8
-	addi.d	$a6, $sp, 128
-	addi.d	$a7, $sp, 112
+	addi.d	$a6, $sp, 264
+	addi.d	$a7, $sp, 248
 	vldi	$vr0, -1168
 	st.d	$s0, $sp, 0
 	move	$a0, $s3
 	move	$a2, $a4
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_ZN35btSequentialImpulseConstraintSolver21addFrictionConstraintERK9btVector3iiiR15btManifoldPointS2_S2_P17btCollisionObjectS6_f)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $s6, 140
 .LBB20_64:                              #   in Loop: Header=BB20_7 Depth=1
 	move	$fp, $s7
@@ -2757,13 +2776,13 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 .LBB20_68:                              # %_Z24applyAnisotropicFrictionP17btCollisionObjectR9btVector3.exit629
                                         #   in Loop: Header=BB20_7 Depth=1
 	st.d	$s1, $sp, 8
-	addi.d	$a6, $sp, 128
-	addi.d	$a7, $sp, 112
+	addi.d	$a6, $sp, 264
+	addi.d	$a7, $sp, 248
 	vldi	$vr0, -1168
 	st.d	$s0, $sp, 0
 	move	$a0, $s3
 	move	$a2, $a4
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_ZN35btSequentialImpulseConstraintSolver21addFrictionConstraintERK9btVector3iiiR15btManifoldPointS2_S2_P17btCollisionObjectS6_f)
 	jirl	$ra, $ra, 0
@@ -2781,7 +2800,7 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	bnez	$a4, .LBB20_71
 # %bb.70:                               #   in Loop: Header=BB20_7 Depth=1
 	st.w	$zero, $a2, 84
-	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
 	ori	$a7, $zero, 176
 	move	$s7, $fp
 	bnez	$a1, .LBB20_5
@@ -2789,7 +2808,7 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	.p2align	4, , 16
 .LBB20_71:                              #   in Loop: Header=BB20_7 Depth=1
 	andi	$a3, $a3, 4
-	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
 	ori	$a7, $zero, 176
 	move	$s7, $fp
 	bnez	$a3, .LBB20_73
@@ -2805,7 +2824,7 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fst.s	$fa0, $a2, 84
 	beqz	$s5, .LBB20_76
 # %bb.74:                               #   in Loop: Header=BB20_7 Depth=1
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
 	beqz	$t0, .LBB20_77
 .LBB20_75:                              #   in Loop: Header=BB20_7 Depth=1
 	beqz	$a1, .LBB20_6
@@ -2862,7 +2881,7 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fst.s	$fa1, $a5, 20
 	fadd.s	$fa0, $fa0, $fa4
 	fst.s	$fa0, $a5, 24
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
 	bnez	$t0, .LBB20_75
 .LBB20_77:                              #   in Loop: Header=BB20_7 Depth=1
 	ld.w	$a3, $s8, 108
@@ -3025,25 +3044,20 @@ _ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifold
 	fst.s	$fa0, $a3, 24
 	b	.LBB20_6
 .LBB20_82:
-	fld.d	$fs6, $sp, 144                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 152                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 160                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 168                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 176                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 184                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 192                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 288
+	fld.d	$fs1, $sp, 280                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 384
 	ret
 .Lfunc_end20:
 	.size	_ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifoldRK19btContactSolverInfo, .Lfunc_end20-_ZN35btSequentialImpulseConstraintSolver14convertContactEP20btPersistentManifoldRK19btContactSolverInfo

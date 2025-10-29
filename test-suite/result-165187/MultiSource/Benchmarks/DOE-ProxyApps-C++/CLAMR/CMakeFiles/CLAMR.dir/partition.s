@@ -3115,7 +3115,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 # %bb.84:                               # %.lr.ph522
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 12
+	ori	$a1, $zero, 8
 	bgeu	$s0, $a1, .LBB4_236
 # %bb.85:
 	move	$a1, $zero

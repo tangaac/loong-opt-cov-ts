@@ -503,74 +503,70 @@ BuildWord:                              # @BuildWord
 	vinsgr2vr.w	$vr1, $a1, 0
 	vinsgr2vr.d	$vr4, $a2, 0
 	vinsgr2vr.w	$vr5, $a3, 0
-	ld.bu	$a1, $sp, 48
+	ld.bu	$a0, $sp, 48
 	vrepli.b	$vr6, 0
 	vilvl.b	$vr0, $vr6, $vr0
 	vilvl.h	$vr3, $vr6, $vr0
 	vilvl.b	$vr0, $vr6, $vr1
 	vilvl.h	$vr2, $vr6, $vr0
 	vilvl.b	$vr0, $vr6, $vr4
+	vilvl.h	$vr1, $vr6, $vr0
+	vilvl.b	$vr0, $vr6, $vr5
 	vilvl.h	$vr0, $vr6, $vr0
-	vilvl.b	$vr1, $vr6, $vr5
-	vilvl.h	$vr1, $vr6, $vr1
 	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
 	b	.LBB6_8
 .LBB6_7:
-	move	$a1, $zero
+	move	$a0, $zero
 	move	$s2, $zero
 	vori.b	$vr3, $vr6, 0
 	vori.b	$vr2, $vr6, 0
-	vori.b	$vr0, $vr6, 0
 	vori.b	$vr1, $vr6, 0
+	vori.b	$vr0, $vr6, 0
 .LBB6_8:                                # %.preheader
-	pcalau12i	$a0, %pc_hi20(auGlobalFrequency)
-	addi.d	$a0, $a0, %pc_lo12(auGlobalFrequency)
-	vld	$vr4, $a0, 0
-	vld	$vr5, $a0, 16
+	pcalau12i	$a1, %pc_hi20(auGlobalFrequency)
+	addi.d	$a2, $a1, %pc_lo12(auGlobalFrequency)
+	vld	$vr4, $a2, 0
+	vld	$vr5, $a2, 16
 	vadd.w	$vr3, $vr4, $vr3
-	vst	$vr3, $a0, 0
-	vld	$vr3, $a0, 32
+	vst	$vr3, $a2, 0
+	vld	$vr3, $a2, 32
 	vadd.w	$vr2, $vr5, $vr2
-	vld	$vr4, $a0, 48
-	vst	$vr2, $a0, 16
-	vadd.w	$vr0, $vr3, $vr0
-	vst	$vr0, $a0, 32
-	vadd.w	$vr0, $vr4, $vr1
-	vst	$vr0, $a0, 48
-	ld.bu	$a2, $sp, 49
-	ld.bu	$a3, $sp, 50
-	ld.bu	$a4, $sp, 51
-	vld	$vr0, $a0, 64
-	vinsgr2vr.w	$vr1, $a1, 0
-	vinsgr2vr.w	$vr1, $a2, 1
-	vinsgr2vr.w	$vr1, $a3, 2
-	ld.w	$a1, $sp, 52
-	vinsgr2vr.w	$vr1, $a4, 3
-	vadd.w	$vr0, $vr0, $vr1
-	vst	$vr0, $a0, 64
-	vinsgr2vr.w	$vr0, $a1, 0
-	ld.bu	$a1, $sp, 56
-	ld.w	$a2, $a0, 96
+	vst	$vr2, $a2, 16
+	vld	$vr2, $a2, 48
+	vadd.w	$vr1, $vr3, $vr1
+	vst	$vr1, $a2, 32
+	ld.w	$a1, $a2, 64
+	vadd.w	$vr0, $vr2, $vr0
+	ld.w	$a3, $sp, 49
+	vst	$vr0, $a2, 48
+	add.d	$a0, $a1, $a0
+	st.w	$a0, $a2, 64
+	vinsgr2vr.w	$vr0, $a3, 0
+	vld	$vr1, $a2, 68
+	vilvl.b	$vr0, $vr6, $vr0
+	ld.w	$a0, $sp, 53
+	vilvl.h	$vr0, $vr6, $vr0
+	vadd.w	$vr0, $vr1, $vr0
+	vst	$vr0, $a2, 68
+	vinsgr2vr.w	$vr0, $a0, 0
 	vilvl.b	$vr0, $vr6, $vr0
 	vilvl.h	$vr0, $vr6, $vr0
-	vld	$vr1, $a0, 80
-	add.d	$a1, $a2, $a1
-	st.w	$a1, $a0, 96
+	vld	$vr1, $a2, 84
 	ld.bu	$a3, $sp, 57
-	ld.w	$a4, $a0, 100
-	pcalau12i	$a1, %pc_hi20(cpwCand)
-	ld.wu	$a2, $a1, %pc_lo12(cpwCand)
+	ld.w	$a4, $a2, 100
+	pcalau12i	$a0, %pc_hi20(cpwCand)
+	ld.wu	$a1, $a0, %pc_lo12(cpwCand)
 	vadd.w	$vr0, $vr1, $vr0
 	add.d	$a3, $a4, $a3
-	st.w	$a3, $a0, 100
-	srli.d	$a3, $a2, 3
+	st.w	$a3, $a2, 100
+	srli.d	$a3, $a1, 3
 	ori	$a4, $zero, 624
-	vst	$vr0, $a0, 80
+	vst	$vr0, $a2, 84
 	bltu	$a4, $a3, .LBB6_14
 # %bb.9:
-	addi.w	$s3, $a2, 0
-	addi.w	$s0, $a2, 1
-	st.w	$s0, $a1, %pc_lo12(cpwCand)
+	addi.w	$s3, $a1, 0
+	addi.w	$s0, $a1, 1
+	st.w	$s0, $a0, %pc_lo12(cpwCand)
 	pcalau12i	$a0, %pc_hi20(apwCand)
 	addi.d	$s4, $a0, %pc_lo12(apwCand)
 	slli.d	$a0, $s3, 3

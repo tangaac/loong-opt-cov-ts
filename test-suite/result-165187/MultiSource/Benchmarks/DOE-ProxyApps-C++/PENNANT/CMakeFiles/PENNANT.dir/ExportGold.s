@@ -6013,7 +6013,7 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	bstrpick.d	$a2, $a2, 30, 1
 	slli.d	$a2, $a2, 1
 	addi.d	$a3, $s4, 4
-	addi.d	$a4, $s7, 8
+	move	$a4, $s7
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB6_62:                               # %vector.body
@@ -6024,8 +6024,8 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	slli.d	$a7, $a7, 3
 	fldx.d	$fa0, $s1, $a6
 	fldx.d	$fa1, $s1, $a7
-	fst.d	$fa0, $a4, -8
-	fst.d	$fa1, $a4, 0
+	vextrins.d	$vr0, $vr1, 16
+	vst	$vr0, $a4, 0
 	addi.d	$a3, $a3, 8
 	addi.d	$a5, $a5, -2
 	addi.d	$a4, $a4, 16
@@ -6266,7 +6266,7 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	bstrpick.d	$a3, $a3, 30, 1
 	slli.d	$a3, $a3, 1
 	addi.d	$a4, $a2, 4
-	addi.d	$a5, $s3, 8
+	move	$a5, $s3
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB6_104:                              # %vector.body455
@@ -6277,8 +6277,8 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	slli.d	$t0, $t0, 3
 	fldx.d	$fa0, $s1, $a7
 	fldx.d	$fa1, $s1, $t0
-	fst.d	$fa0, $a5, -8
-	fst.d	$fa1, $a5, 0
+	vextrins.d	$vr0, $vr1, 16
+	vst	$vr0, $a5, 0
 	addi.d	$a4, $a4, 8
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 16
@@ -6518,7 +6518,7 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	bstrpick.d	$a3, $a3, 30, 1
 	slli.d	$a3, $a3, 1
 	addi.d	$a4, $a2, 4
-	addi.d	$a5, $s5, 8
+	move	$a5, $s5
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB6_146:                              # %vector.body466
@@ -6529,8 +6529,8 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	slli.d	$t0, $t0, 3
 	fldx.d	$fa0, $s1, $a7
 	fldx.d	$fa1, $s1, $t0
-	fst.d	$fa0, $a5, -8
-	fst.d	$fa1, $a5, 0
+	vextrins.d	$vr0, $vr1, 16
+	vst	$vr0, $a5, 0
 	addi.d	$a4, $a4, 8
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 16

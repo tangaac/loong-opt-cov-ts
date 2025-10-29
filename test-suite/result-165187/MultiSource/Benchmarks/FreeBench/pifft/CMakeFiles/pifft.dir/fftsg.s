@@ -70,20 +70,20 @@ cdft:                                   # @cdft
 	.type	makewt,@function
 makewt:                                 # @makewt
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 40                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 8                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a0
 	st.w	$a0, $a1, 0
@@ -111,19 +111,17 @@ makewt:                                 # @makewt
 	fadd.d	$fa0, $fs2, $fs2
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vldi	$vr1, -928
+	fdiv.d	$fa0, $fa1, $fa0
+	fst.d	$fa0, $fp, 16
 	vldi	$vr0, -1000
 	fmul.d	$fa0, $fs2, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-                                        # kill: def $f0_64 killed $f0_64 def $vr0
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
-	vextrins.d	$vr1, $vr0, 16
-	vldi	$vr0, -928
-	vfdiv.d	$vr0, $vr0, $vr1
+	vldi	$vr1, -928
+	fdiv.d	$fa0, $fa1, $fa0
 	ori	$a0, $zero, 10
-	vst	$vr0, $fp, 16
+	fst.d	$fa0, $fp, 24
 	bltu	$s0, $a0, .LBB1_6
 # %bb.3:                                # %.lr.ph
 	vldi	$vr0, -1016
@@ -192,9 +190,10 @@ makewt:                                 # @makewt
 	alsl.d	$t1, $a7, $fp, 3
 	fld.d	$fa1, $t1, 32
 	fld.d	$fa2, $t1, 48
-	vextrins.d	$vr1, $vr2, 16
-	vfdiv.d	$vr1, $vr0, $vr1
-	vst	$vr1, $t0, 16
+	fdiv.d	$fa1, $fa0, $fa1
+	fst.d	$fa1, $t0, 16
+	fdiv.d	$fa1, $fa0, $fa2
+	fst.d	$fa1, $t0, 24
 	bltu	$a6, $a3, .LBB1_7
 # %bb.10:                               # %.lr.ph94.preheader
                                         #   in Loop: Header=BB1_8 Depth=1
@@ -216,20 +215,20 @@ makewt:                                 # @makewt
 	bltu	$t2, $t0, .LBB1_11
 	b	.LBB1_7
 .LBB1_12:                               # %.loopexit91
-	fld.d	$fs4, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 72                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	fld.d	$fs4, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end1:
 	.size	makewt, .Lfunc_end1-makewt
@@ -349,37 +348,29 @@ cftfsub:                                # @cftfsub
 	ori	$a0, $zero, 8
 	bne	$s0, $a0, .LBB2_15
 # %bb.10:
-	fld.d	$fa0, $fp, 0
-	fld.d	$fa1, $fp, 32
-	fld.d	$fa2, $fp, 8
-	fld.d	$fa3, $fp, 40
-	fadd.d	$fa4, $fa0, $fa1
-	fadd.d	$fa5, $fa2, $fa3
-	fld.d	$fa6, $fp, 16
-	fld.d	$fa7, $fp, 48
-	fld.d	$ft0, $fp, 24
-	fld.d	$ft1, $fp, 56
-	fsub.d	$fa0, $fa0, $fa1
-	fsub.d	$fa1, $fa2, $fa3
-	fadd.d	$fa2, $fa6, $fa7
-	fadd.d	$fa3, $ft0, $ft1
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $fa4, $fa2
-	fst.d	$ft0, $fp, 0
-	fadd.d	$ft0, $fa5, $fa3
-	fst.d	$ft0, $fp, 8
-	fsub.d	$fa2, $fa4, $fa2
-	fst.d	$fa2, $fp, 32
-	fsub.d	$fa2, $fa5, $fa3
-	fst.d	$fa2, $fp, 40
-	fsub.d	$fa2, $fa0, $fa7
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 32
+	vfadd.d	$vr2, $vr0, $vr1
+	vld	$vr3, $fp, 16
+	vld	$vr4, $fp, 48
+	vfsub.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr5, $vr3, $vr4
+	vfsub.d	$vr3, $vr3, $vr4
+	vreplvei.d	$vr4, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr6, $vr2, $vr5
+	vst	$vr6, $fp, 0
+	vfsub.d	$vr2, $vr2, $vr5
+	vst	$vr2, $fp, 32
+	fsub.d	$fa2, $fa1, $fa3
 	fst.d	$fa2, $fp, 16
-	fadd.d	$fa2, $fa1, $fa6
+	fadd.d	$fa2, $fa0, $fa4
 	fst.d	$fa2, $fp, 24
-	fadd.d	$fa0, $fa0, $fa7
-	fst.d	$fa0, $fp, 48
-	fsub.d	$fa0, $fa1, $fa6
+	fadd.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $fp, 48
+	fsub.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $fp, 56
 	b	.LBB2_15
 .LBB2_11:
@@ -560,37 +551,29 @@ cftbsub:                                # @cftbsub
 	ori	$a0, $zero, 8
 	bne	$s0, $a0, .LBB3_15
 # %bb.10:
-	fld.d	$fa0, $fp, 0
-	fld.d	$fa1, $fp, 32
-	fld.d	$fa2, $fp, 8
-	fld.d	$fa3, $fp, 40
-	fadd.d	$fa4, $fa0, $fa1
-	fadd.d	$fa5, $fa2, $fa3
-	fld.d	$fa6, $fp, 16
-	fld.d	$fa7, $fp, 48
-	fld.d	$ft0, $fp, 24
-	fld.d	$ft1, $fp, 56
-	fsub.d	$fa0, $fa0, $fa1
-	fsub.d	$fa1, $fa2, $fa3
-	fadd.d	$fa2, $fa6, $fa7
-	fadd.d	$fa3, $ft0, $ft1
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $fa4, $fa2
-	fst.d	$ft0, $fp, 0
-	fadd.d	$ft0, $fa5, $fa3
-	fst.d	$ft0, $fp, 8
-	fsub.d	$fa2, $fa4, $fa2
-	fst.d	$fa2, $fp, 32
-	fsub.d	$fa2, $fa5, $fa3
-	fst.d	$fa2, $fp, 40
-	fadd.d	$fa2, $fa0, $fa7
+	vld	$vr0, $fp, 0
+	vld	$vr1, $fp, 32
+	vfadd.d	$vr2, $vr0, $vr1
+	vld	$vr3, $fp, 16
+	vld	$vr4, $fp, 48
+	vfsub.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr5, $vr3, $vr4
+	vfsub.d	$vr3, $vr3, $vr4
+	vreplvei.d	$vr4, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr6, $vr2, $vr5
+	vst	$vr6, $fp, 0
+	vfsub.d	$vr2, $vr2, $vr5
+	vst	$vr2, $fp, 32
+	fadd.d	$fa2, $fa1, $fa3
 	fst.d	$fa2, $fp, 16
-	fsub.d	$fa2, $fa1, $fa6
+	fsub.d	$fa2, $fa0, $fa4
 	fst.d	$fa2, $fp, 24
-	fsub.d	$fa0, $fa0, $fa7
-	fst.d	$fa0, $fp, 48
-	fadd.d	$fa0, $fa1, $fa6
+	fsub.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $fp, 48
+	fadd.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $fp, 56
 	b	.LBB3_15
 .LBB3_11:
@@ -824,15 +807,15 @@ rdft:                                   # @rdft
 	bltu	$a7, $a0, .LBB4_12
 	b	.LBB4_20
 .LBB4_13:
-	fld.d	$fa1, $fp, 0
-	fld.d	$fa0, $fp, 8
-	fsub.d	$fa0, $fa1, $fa0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
+	fsub.d	$fa1, $fa0, $fa1
 	vldi	$vr2, -928
-	fmul.d	$fa0, $fa0, $fa2
-	fst.d	$fa0, $fp, 8
-	fsub.d	$fa1, $fa1, $fa0
+	fmul.d	$fa1, $fa1, $fa2
+	fst.d	$fa1, $fp, 8
+	fsub.d	$fa0, $fa0, $fa1
 	ori	$a0, $zero, 5
-	fst.d	$fa1, $fp, 0
+	fst.d	$fa0, $fp, 0
 	blt	$s0, $a0, .LBB4_22
 # %bb.14:
 	addi.w	$a3, $s3, 0
@@ -946,16 +929,12 @@ rdft:                                   # @rdft
 	ori	$a0, $zero, 4
 	bne	$s0, $a0, .LBB4_21
 # %bb.23:
-	fld.d	$fa2, $fp, 16
-	fld.d	$fa3, $fp, 24
-	fsub.d	$fa4, $fa1, $fa2
-	fsub.d	$fa5, $fa0, $fa3
-	fadd.d	$fa1, $fa1, $fa2
-	fst.d	$fa1, $fp, 0
-	fadd.d	$fa0, $fa0, $fa3
-	fst.d	$fa0, $fp, 8
-	fst.d	$fa4, $fp, 16
-	fst.d	$fa5, $fp, 24
+	vld	$vr2, $fp, 16
+	vextrins.d	$vr0, $vr1, 16
+	vfadd.d	$vr1, $vr0, $vr2
+	vst	$vr1, $fp, 0
+	vfsub.d	$vr0, $vr0, $vr2
+	vst	$vr0, $fp, 16
 	b	.LBB4_21
 .Lfunc_end4:
 	.size	rdft, .Lfunc_end4-rdft
@@ -1295,16 +1274,12 @@ ddct:                                   # @ddct
 	fst.d	$fa0, $s0, 0
 	bne	$fp, $a0, .LBB8_31
 # %bb.13:                               # %.thread
-	fld.d	$fa2, $s0, 16
-	fld.d	$fa3, $s0, 24
-	fsub.d	$fa4, $fa0, $fa2
-	fsub.d	$fa5, $fa1, $fa3
-	fadd.d	$fa0, $fa0, $fa2
-	fst.d	$fa0, $s0, 0
-	fadd.d	$fa0, $fa1, $fa3
-	fst.d	$fa0, $s0, 8
-	fst.d	$fa4, $s0, 16
-	fst.d	$fa5, $s0, 24
+	vld	$vr2, $s0, 16
+	vextrins.d	$vr0, $vr1, 16
+	vfadd.d	$vr1, $vr0, $vr2
+	vst	$vr1, $s0, 0
+	vfsub.d	$vr0, $vr0, $vr2
+	vst	$vr0, $s0, 16
 	alsl.d	$s8, $s4, $s2, 3
 	ori	$s7, $zero, 2
 	b	.LBB8_16
@@ -1422,17 +1397,13 @@ ddct:                                   # @ddct
 	ori	$a0, $zero, 4
 	bne	$fp, $a0, .LBB8_30
 # %bb.24:
-	fld.d	$fa0, $s0, 16
-	fld.d	$fa2, $s0, 8
-	fld.d	$fa3, $s0, 24
-	fsub.d	$fa4, $fa1, $fa0
-	fsub.d	$fa5, $fa2, $fa3
-	fadd.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $s0, 0
-	fadd.d	$fa0, $fa2, $fa3
-	fst.d	$fa0, $s0, 8
-	fst.d	$fa4, $s0, 16
-	fst.d	$fa5, $s0, 24
+	fld.d	$fa0, $s0, 8
+	vld	$vr2, $s0, 16
+	vextrins.d	$vr1, $vr0, 16
+	vfadd.d	$vr0, $vr1, $vr2
+	vst	$vr0, $s0, 0
+	vfsub.d	$vr0, $vr1, $vr2
+	vst	$vr0, $s0, 16
 .LBB8_25:                               # %rftfsub.exit.thread
 	fld.d	$fa1, $s0, 0
 	fld.d	$fa2, $s0, 8
@@ -1734,16 +1705,12 @@ ddst:                                   # @ddst
 	fst.d	$fa0, $s0, 0
 	bne	$fp, $a0, .LBB10_31
 # %bb.13:                               # %.thread
-	fld.d	$fa2, $s0, 16
-	fld.d	$fa3, $s0, 24
-	fsub.d	$fa4, $fa0, $fa2
-	fsub.d	$fa5, $fa1, $fa3
-	fadd.d	$fa0, $fa0, $fa2
-	fst.d	$fa0, $s0, 0
-	fadd.d	$fa0, $fa1, $fa3
-	fst.d	$fa0, $s0, 8
-	fst.d	$fa4, $s0, 16
-	fst.d	$fa5, $s0, 24
+	vld	$vr2, $s0, 16
+	vextrins.d	$vr0, $vr1, 16
+	vfadd.d	$vr1, $vr0, $vr2
+	vst	$vr1, $s0, 0
+	vfsub.d	$vr0, $vr0, $vr2
+	vst	$vr0, $s0, 16
 	alsl.d	$s8, $s4, $s2, 3
 	ori	$s7, $zero, 2
 	b	.LBB10_16
@@ -1861,17 +1828,13 @@ ddst:                                   # @ddst
 	ori	$a0, $zero, 4
 	bne	$fp, $a0, .LBB10_30
 # %bb.24:
-	fld.d	$fa0, $s0, 16
-	fld.d	$fa2, $s0, 8
-	fld.d	$fa3, $s0, 24
-	fsub.d	$fa4, $fa1, $fa0
-	fsub.d	$fa5, $fa2, $fa3
-	fadd.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $s0, 0
-	fadd.d	$fa0, $fa2, $fa3
-	fst.d	$fa0, $s0, 8
-	fst.d	$fa4, $s0, 16
-	fst.d	$fa5, $s0, 24
+	fld.d	$fa0, $s0, 8
+	vld	$vr2, $s0, 16
+	vextrins.d	$vr1, $vr0, 16
+	vfadd.d	$vr0, $vr1, $vr2
+	vst	$vr0, $s0, 0
+	vfsub.d	$vr0, $vr1, $vr2
+	vst	$vr0, $s0, 16
 .LBB10_25:                              # %rftfsub.exit.thread
 	fld.d	$fa1, $s0, 0
 	fld.d	$fa2, $s0, 8
@@ -2171,7 +2134,7 @@ dfct:                                   # @dfct
 # %bb.10:                               # %.lr.ph.preheader
 	addi.d	$a5, $s2, -1
 	ori	$a3, $zero, 1
-	ori	$a6, $zero, 26
+	ori	$a6, $zero, 24
 	slli.d	$a4, $ra, 3
 	bgeu	$a5, $a6, .LBB12_63
 .LBB12_11:                              # %.lr.ph.preheader441
@@ -2607,7 +2570,7 @@ dfct:                                   # @dfct
 	bstrpick.d	$a5, $s2, 31, 0
 	slli.d	$a0, $a5, 3
 	slli.d	$a1, $a5, 4
-	ori	$a2, $zero, 12
+	ori	$a2, $zero, 8
 	bgeu	$s8, $a2, .LBB12_49
 # %bb.46:                               #   in Loop: Header=BB12_28 Depth=1
 	move	$a2, $zero
@@ -3015,7 +2978,7 @@ dfst:                                   # @dfst
 	addi.w	$s3, $t4, 0
 	addi.d	$a5, $s3, -1
 	ori	$a2, $zero, 1
-	ori	$a6, $zero, 26
+	ori	$a6, $zero, 24
 	slli.d	$a4, $ra, 3
 	slli.d	$a3, $a1, 3
 	bgeu	$a5, $a6, .LBB13_63
@@ -3459,7 +3422,7 @@ dfst:                                   # @dfst
 	ori	$a3, $zero, 1
 	slli.d	$a1, $s5, 3
 	slli.d	$a2, $s5, 4
-	ori	$a5, $zero, 12
+	ori	$a5, $zero, 8
 	bgeu	$a4, $a5, .LBB13_49
 .LBB13_47:                              # %.lr.ph247.preheader403
                                         #   in Loop: Header=BB13_30 Depth=1
@@ -3735,46 +3698,37 @@ dfst:                                   # @dfst
 cftf1st:                                # @cftf1st
 # %bb.0:
 	srai.d	$a0, $a0, 3
-	fld.d	$fa0, $a1, 0
-	slli.d	$a3, $a0, 5
-	add.d	$a4, $a1, $a3
-	fldx.d	$fa1, $a1, $a3
-	fld.d	$fa2, $a1, 8
-	fld.d	$fa3, $a4, 8
-	slli.d	$a5, $a0, 2
-	alsl.d	$a5, $a0, $a5, 1
-	fadd.d	$fa4, $fa0, $fa1
-	fadd.d	$fa5, $fa2, $fa3
-	alsl.d	$a6, $a0, $a1, 4
-	slli.d	$a7, $a0, 4
-	fldx.d	$fa6, $a1, $a7
-	alsl.d	$t0, $a5, $a1, 3
-	slli.d	$a5, $a5, 3
-	fldx.d	$fa7, $a1, $a5
-	fld.d	$ft0, $a6, 8
-	fld.d	$ft1, $t0, 8
-	fsub.d	$fa0, $fa0, $fa1
-	fsub.d	$fa1, $fa2, $fa3
-	fadd.d	$fa2, $fa6, $fa7
-	fadd.d	$fa3, $ft0, $ft1
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $fa4, $fa2
-	fst.d	$ft0, $a1, 0
-	fadd.d	$ft0, $fa5, $fa3
-	fst.d	$ft0, $a1, 8
-	fsub.d	$fa2, $fa4, $fa2
-	fstx.d	$fa2, $a1, $a7
-	fsub.d	$fa2, $fa5, $fa3
-	fst.d	$fa2, $a6, 8
-	fsub.d	$fa2, $fa0, $fa7
-	fstx.d	$fa2, $a1, $a3
-	fadd.d	$fa2, $fa1, $fa6
-	fst.d	$fa2, $a4, 8
-	fadd.d	$fa0, $fa0, $fa7
-	fstx.d	$fa0, $a1, $a5
-	fsub.d	$fa0, $fa1, $fa6
-	fst.d	$fa0, $t0, 8
+	slli.d	$a3, $a0, 2
+	alsl.d	$a3, $a0, $a3, 1
+	slli.d	$a4, $a0, 5
+	add.d	$a5, $a1, $a4
+	vld	$vr0, $a1, 0
+	vldx	$vr1, $a1, $a4
+	slli.d	$a6, $a0, 4
+	alsl.d	$a7, $a3, $a1, 3
+	slli.d	$a3, $a3, 3
+	vfadd.d	$vr2, $vr0, $vr1
+	vldx	$vr3, $a1, $a6
+	vldx	$vr4, $a1, $a3
+	vfsub.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr5, $vr3, $vr4
+	vfsub.d	$vr3, $vr3, $vr4
+	vreplvei.d	$vr4, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr6, $vr2, $vr5
+	vst	$vr6, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr5
+	vstx	$vr2, $a1, $a6
+	fsub.d	$fa2, $fa1, $fa3
+	fstx.d	$fa2, $a1, $a4
+	fadd.d	$fa2, $fa0, $fa4
+	fst.d	$fa2, $a5, 8
+	fadd.d	$fa1, $fa1, $fa3
+	fstx.d	$fa1, $a1, $a3
+	fsub.d	$fa0, $fa0, $fa4
+	fst.d	$fa0, $a7, 8
 	fld.d	$fa0, $a2, 8
 	fld.d	$fa2, $a2, 16
 	fld.d	$fa1, $a2, 24
@@ -3782,245 +3736,200 @@ cftf1st:                                # @cftf1st
 	addi.d	$a3, $a0, -2
 	bge	$a4, $a0, .LBB14_4
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$sp, $sp, -48
-	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 8                    # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 0                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
 	move	$a4, $zero
-	slli.d	$t2, $a0, 1
-	slli.d	$t3, $t2, 4
-	addi.d	$a5, $t3, 40
+	slli.d	$t1, $a0, 1
 	addi.d	$a2, $a2, 32
-	alsl.d	$t0, $t2, $t3, 3
-	addi.d	$a6, $t0, 40
-	slli.d	$t1, $t2, 3
-	addi.d	$a7, $t1, 40
-	addi.d	$t0, $t0, -32
-	addi.d	$t1, $t1, -16
-	slli.d	$t2, $t2, 5
-	addi.d	$t2, $t2, -32
-	addi.d	$t3, $t3, -16
+	slli.d	$a5, $t1, 4
+	slli.d	$t2, $t1, 3
+	addi.d	$a6, $t2, -32
+	addi.d	$a7, $a5, -32
+	slli.d	$t0, $t1, 5
+	alsl.d	$t1, $t1, $a5, 3
+	addi.d	$t2, $t2, 32
 	movgr2fr.d	$fa3, $zero
-	ori	$t4, $zero, 2
+	ori	$t3, $zero, 2
 	vldi	$vr7, -912
-	fmov.d	$ft1, $fa3
-	vldi	$vr8, -912
+	move	$t4, $t1
+	fmov.d	$ft0, $fa3
+	vldi	$vr9, -912
 	.p2align	4, , 16
 .LBB14_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	fldx.d	$fa4, $a2, $a4
 	add.d	$t5, $a2, $a4
 	fld.d	$fa5, $t5, 8
-	fadd.d	$fa6, $ft0, $fa4
-	fmul.d	$ft0, $fa2, $fa6
+	fadd.d	$fa6, $ft1, $fa4
+	fmul.d	$ft1, $fa2, $fa6
 	fld.d	$fa6, $t5, 16
-	fadd.d	$ft1, $ft1, $fa5
+	fadd.d	$ft0, $ft0, $fa5
 	fld.d	$ft3, $t5, 24
-	fmul.d	$ft2, $fa2, $ft1
+	fmul.d	$ft2, $fa2, $ft0
 	fadd.d	$fa7, $fa7, $fa6
 	fmul.d	$fa7, $fa1, $fa7
 	fsub.d	$fa3, $fa3, $ft3
+	fmul.d	$ft0, $fa1, $fa3
 	add.d	$t7, $a1, $a4
-	fld.d	$ft4, $t7, 16
-	add.d	$t5, $a1, $a5
-	fld.d	$ft5, $t5, -24
-	fld.d	$ft6, $t7, 24
-	fld.d	$ft7, $t5, -16
-	fmul.d	$ft1, $fa1, $fa3
+	add.d	$t6, $a1, $a5
+	vld	$vr12, $t7, 16
+	vld	$vr13, $t6, 16
 	fneg.d	$fa3, $ft3
-	fadd.d	$ft8, $ft4, $ft5
-	fadd.d	$ft9, $ft6, $ft7
-	fld.d	$ft10, $t7, 32
-	fld.d	$ft11, $t5, -8
-	fld.d	$ft12, $t7, 40
-	fldx.d	$ft13, $a1, $a5
-	fsub.d	$ft4, $ft4, $ft5
-	fsub.d	$ft5, $ft6, $ft7
-	fadd.d	$ft6, $ft10, $ft11
-	fadd.d	$ft7, $ft12, $ft13
-	add.d	$t8, $a1, $a7
-	fld.d	$ft14, $t8, -24
-	add.d	$t6, $a1, $a6
-	fld.d	$ft15, $t6, -24
-	fld.d	$fs0, $t8, -16
-	fld.d	$fs1, $t6, -16
-	fsub.d	$ft10, $ft10, $ft11
-	fsub.d	$ft11, $ft12, $ft13
-	fadd.d	$ft12, $ft14, $ft15
-	fadd.d	$ft13, $fs0, $fs1
-	fld.d	$fs2, $t8, -8
-	fld.d	$fs3, $t6, -8
-	fldx.d	$fs4, $a1, $a7
-	fldx.d	$fs5, $a1, $a6
-	fsub.d	$ft14, $ft14, $ft15
-	fsub.d	$ft15, $fs0, $fs1
-	fadd.d	$fs0, $fs2, $fs3
-	fadd.d	$fs1, $fs4, $fs5
-	fsub.d	$fs2, $fs2, $fs3
-	fsub.d	$fs3, $fs4, $fs5
-	fadd.d	$fs4, $ft8, $ft12
-	fst.d	$fs4, $t7, 16
-	fadd.d	$fs4, $ft9, $ft13
-	fst.d	$fs4, $t7, 24
-	fadd.d	$fs4, $ft6, $fs0
-	fst.d	$fs4, $t7, 32
-	fadd.d	$fs4, $ft7, $fs1
-	fst.d	$fs4, $t7, 40
-	fsub.d	$ft8, $ft8, $ft12
-	fst.d	$ft8, $t8, -24
-	fsub.d	$ft8, $ft9, $ft13
-	fst.d	$ft8, $t8, -16
-	fsub.d	$ft6, $ft6, $fs0
-	fst.d	$ft6, $t8, -8
-	fsub.d	$ft6, $ft7, $fs1
-	fstx.d	$ft6, $a1, $a7
-	fsub.d	$ft6, $ft4, $ft15
-	fadd.d	$ft7, $ft5, $ft14
-	fneg.d	$ft8, $ft7
-	fmul.d	$ft8, $ft2, $ft8
-	fmadd.d	$ft8, $ft0, $ft6, $ft8
-	fst.d	$ft8, $t5, -24
+	add.d	$t8, $a1, $t2
+	add.d	$t5, $a1, $t4
+	vfadd.d	$vr14, $vr12, $vr13
+	vld	$vr15, $t8, -16
+	vld	$vr16, $t5, 16
+	vfsub.d	$vr12, $vr12, $vr13
+	vreplvei.d	$vr13, $vr12, 0
+	vreplvei.d	$vr12, $vr12, 1
+	vfadd.d	$vr17, $vr15, $vr16
+	vfsub.d	$vr15, $vr15, $vr16
+	vld	$vr16, $t7, 32
+	vld	$vr18, $t6, 32
+	vreplvei.d	$vr19, $vr15, 0
+	vreplvei.d	$vr15, $vr15, 1
+	vfadd.d	$vr20, $vr14, $vr17
+	vfadd.d	$vr21, $vr16, $vr18
+	vldx	$vr22, $a1, $t2
+	vld	$vr23, $t5, 32
+	vfsub.d	$vr16, $vr16, $vr18
+	vreplvei.d	$vr18, $vr16, 0
+	vreplvei.d	$vr16, $vr16, 1
+	vfadd.d	$vr24, $vr22, $vr23
+	vfsub.d	$vr22, $vr22, $vr23
+	vreplvei.d	$vr23, $vr22, 0
+	vreplvei.d	$vr22, $vr22, 1
+	vst	$vr20, $t7, 16
+	vfadd.d	$vr20, $vr21, $vr24
+	vst	$vr20, $t7, 32
+	vfsub.d	$vr14, $vr14, $vr17
+	vst	$vr14, $t8, -16
+	vfsub.d	$vr14, $vr21, $vr24
+	vstx	$vr14, $a1, $t2
+	fsub.d	$ft6, $ft5, $ft7
+	fadd.d	$ft9, $ft4, $ft11
+	fneg.d	$ft12, $ft9
+	fmul.d	$ft12, $ft2, $ft12
+	fmadd.d	$ft12, $ft1, $ft6, $ft12
+	fst.d	$ft12, $t6, 16
 	fmul.d	$ft6, $ft2, $ft6
-	fmadd.d	$ft6, $ft0, $ft7, $ft6
-	fst.d	$ft6, $t5, -16
-	fsub.d	$ft6, $ft10, $fs3
-	fadd.d	$ft7, $ft11, $fs2
-	fneg.d	$ft8, $ft7
-	fmul.d	$ft8, $fa5, $ft8
-	fmadd.d	$ft8, $fa4, $ft6, $ft8
-	fst.d	$ft8, $t5, -8
+	fmadd.d	$ft6, $ft1, $ft9, $ft6
+	fst.d	$ft6, $t6, 24
+	fsub.d	$ft6, $ft10, $ft14
+	fadd.d	$ft9, $ft8, $ft15
+	fneg.d	$ft12, $ft9
+	fmul.d	$ft12, $fa5, $ft12
+	fmadd.d	$ft12, $fa4, $ft6, $ft12
+	fst.d	$ft12, $t6, 32
 	fmul.d	$ft6, $fa5, $ft6
-	fmadd.d	$ft6, $fa4, $ft7, $ft6
-	fstx.d	$ft6, $a1, $a5
-	fadd.d	$ft4, $ft4, $ft15
-	fsub.d	$ft5, $ft5, $ft14
-	fmul.d	$ft6, $ft1, $ft5
-	fmadd.d	$ft6, $fa7, $ft4, $ft6
-	fst.d	$ft6, $t6, -24
-	fneg.d	$ft4, $ft4
-	fmul.d	$ft4, $ft1, $ft4
-	fmadd.d	$ft4, $fa7, $ft5, $ft4
-	fst.d	$ft4, $t6, -16
-	fadd.d	$ft4, $ft10, $fs3
-	fsub.d	$ft5, $ft11, $fs2
+	fmadd.d	$ft6, $fa4, $ft9, $ft6
+	fst.d	$ft6, $t6, 40
+	fadd.d	$ft5, $ft5, $ft7
+	fsub.d	$ft4, $ft4, $ft11
+	fmul.d	$ft6, $ft0, $ft4
+	fmadd.d	$ft6, $fa7, $ft5, $ft6
+	fst.d	$ft6, $t5, 16
+	fneg.d	$ft5, $ft5
+	fmul.d	$ft5, $ft0, $ft5
+	fmadd.d	$ft4, $fa7, $ft4, $ft5
+	fst.d	$ft4, $t5, 24
+	fadd.d	$ft4, $ft10, $ft14
+	fsub.d	$ft5, $ft8, $ft15
 	fmul.d	$ft6, $ft5, $fa3
 	fmadd.d	$ft6, $fa6, $ft4, $ft6
-	fst.d	$ft6, $t6, -8
+	fst.d	$ft6, $t5, 32
 	fmul.d	$ft3, $ft3, $ft4
 	fmadd.d	$ft3, $fa6, $ft5, $ft3
-	fstx.d	$ft3, $a1, $a6
-	add.d	$t7, $a1, $t1
-	fldx.d	$ft3, $a1, $t1
+	fst.d	$ft3, $t5, 40
+	add.d	$t6, $a1, $t1
+	vldx	$vr11, $a1, $a6
+	vld	$vr12, $t6, -32
+	add.d	$t7, $a1, $a6
+	add.d	$t8, $a1, $a7
 	add.d	$t5, $a1, $t0
-	fld.d	$ft4, $t5, 16
-	fld.d	$ft5, $t7, 8
-	fld.d	$ft6, $t5, 24
-	fadd.d	$ft7, $ft3, $ft4
-	fadd.d	$ft8, $ft5, $ft6
-	fld.d	$ft9, $t7, -16
-	fldx.d	$ft10, $a1, $t0
-	fld.d	$ft11, $t7, -8
-	fld.d	$ft12, $t5, 8
-	fsub.d	$ft3, $ft3, $ft4
-	fsub.d	$ft4, $ft5, $ft6
-	fadd.d	$ft5, $ft9, $ft10
-	fadd.d	$ft6, $ft11, $ft12
-	add.d	$t8, $a1, $t3
-	fldx.d	$ft13, $a1, $t3
-	add.d	$t6, $a1, $t2
-	fld.d	$ft14, $t6, 16
-	fld.d	$ft15, $t8, 8
-	fld.d	$fs0, $t6, 24
-	fsub.d	$ft9, $ft9, $ft10
-	fsub.d	$ft10, $ft11, $ft12
-	fadd.d	$ft11, $ft13, $ft14
-	fadd.d	$ft12, $ft15, $fs0
-	fld.d	$fs1, $t8, -16
-	fldx.d	$fs2, $a1, $t2
-	fld.d	$fs3, $t8, -8
-	fld.d	$fs4, $t6, 8
-	fsub.d	$ft13, $ft13, $ft14
-	fsub.d	$ft14, $ft15, $fs0
-	fadd.d	$ft15, $fs1, $fs2
-	fadd.d	$fs0, $fs3, $fs4
-	fsub.d	$fs1, $fs1, $fs2
-	fsub.d	$fs2, $fs3, $fs4
-	fadd.d	$fs3, $ft7, $ft11
-	fstx.d	$fs3, $a1, $t1
-	fadd.d	$fs3, $ft8, $ft12
-	fst.d	$fs3, $t7, 8
-	fadd.d	$fs3, $ft5, $ft15
-	fst.d	$fs3, $t7, -16
-	fadd.d	$fs3, $ft6, $fs0
-	fst.d	$fs3, $t7, -8
-	fsub.d	$ft7, $ft7, $ft11
-	fstx.d	$ft7, $a1, $t3
-	fsub.d	$ft7, $ft8, $ft12
-	fst.d	$ft7, $t8, 8
-	fsub.d	$ft5, $ft5, $ft15
-	fst.d	$ft5, $t8, -16
-	fsub.d	$ft5, $ft6, $fs0
-	fst.d	$ft5, $t8, -8
-	fsub.d	$ft5, $ft3, $ft14
-	fadd.d	$ft6, $ft4, $ft13
-	fneg.d	$ft7, $ft6
-	fmul.d	$ft7, $ft0, $ft7
-	fmadd.d	$ft7, $ft2, $ft5, $ft7
-	fst.d	$ft7, $t5, 16
-	fmul.d	$ft0, $ft0, $ft5
-	fmadd.d	$ft0, $ft2, $ft6, $ft0
-	fst.d	$ft0, $t5, 24
-	fsub.d	$ft0, $ft9, $fs2
-	fadd.d	$ft2, $ft10, $fs1
+	vfadd.d	$vr13, $vr11, $vr12
+	vldx	$vr14, $a1, $a7
+	vld	$vr15, $t5, -32
+	vfsub.d	$vr12, $vr11, $vr12
+	vreplvei.d	$vr11, $vr12, 0
+	vreplvei.d	$vr12, $vr12, 1
+	vfadd.d	$vr16, $vr14, $vr15
+	vld	$vr17, $t7, 16
+	vld	$vr18, $t6, -16
+	vfsub.d	$vr14, $vr14, $vr15
+	vreplvei.d	$vr15, $vr14, 0
+	vreplvei.d	$vr14, $vr14, 1
+	vfadd.d	$vr19, $vr17, $vr18
+	vld	$vr20, $t8, 16
+	vld	$vr21, $t5, -16
+	vfsub.d	$vr17, $vr17, $vr18
+	vreplvei.d	$vr18, $vr17, 0
+	vreplvei.d	$vr17, $vr17, 1
+	vfadd.d	$vr22, $vr20, $vr21
+	vfsub.d	$vr20, $vr20, $vr21
+	vreplvei.d	$vr21, $vr20, 0
+	vreplvei.d	$vr20, $vr20, 1
+	vfadd.d	$vr23, $vr19, $vr22
+	vst	$vr23, $t7, 16
+	vfadd.d	$vr23, $vr13, $vr16
+	vstx	$vr23, $a1, $a6
+	vfsub.d	$vr19, $vr19, $vr22
+	vst	$vr19, $t8, 16
+	vfsub.d	$vr13, $vr13, $vr16
+	vstx	$vr13, $a1, $a7
+	fsub.d	$ft5, $ft10, $ft12
+	fadd.d	$ft8, $ft9, $ft13
+	fneg.d	$ft11, $ft8
+	fmul.d	$ft11, $ft1, $ft11
+	fmadd.d	$ft11, $ft2, $ft5, $ft11
+	fst.d	$ft11, $t6, -16
+	fmul.d	$ft1, $ft1, $ft5
+	fmadd.d	$ft1, $ft2, $ft8, $ft1
+	fst.d	$ft1, $t6, -8
+	fsub.d	$ft1, $ft3, $ft6
+	fadd.d	$ft2, $ft4, $ft7
 	fneg.d	$ft5, $ft2
 	fmul.d	$ft5, $fa4, $ft5
-	fmadd.d	$ft5, $fa5, $ft0, $ft5
-	fstx.d	$ft5, $a1, $t0
-	fmul.d	$ft0, $fa4, $ft0
-	fmadd.d	$ft0, $fa5, $ft2, $ft0
-	fst.d	$ft0, $t5, 8
-	fadd.d	$ft0, $ft3, $ft14
-	fsub.d	$ft2, $ft4, $ft13
-	fmul.d	$ft3, $fa7, $ft2
-	fmadd.d	$ft3, $ft1, $ft0, $ft3
-	fst.d	$ft3, $t6, 16
-	fneg.d	$ft0, $ft0
-	fmul.d	$fa7, $fa7, $ft0
-	fmadd.d	$fa7, $ft1, $ft2, $fa7
-	fst.d	$fa7, $t6, 24
-	fadd.d	$fa7, $ft9, $fs2
-	fsub.d	$ft0, $ft10, $fs1
+	fmadd.d	$ft5, $fa5, $ft1, $ft5
+	fst.d	$ft5, $t6, -32
+	fmul.d	$ft1, $fa4, $ft1
+	fmadd.d	$ft1, $fa5, $ft2, $ft1
+	fst.d	$ft1, $t6, -24
+	fadd.d	$ft1, $ft10, $ft12
+	fsub.d	$ft2, $ft9, $ft13
+	fmul.d	$ft5, $fa7, $ft2
+	fmadd.d	$ft5, $ft0, $ft1, $ft5
+	fst.d	$ft5, $t5, -16
+	fneg.d	$ft1, $ft1
+	fmul.d	$fa7, $fa7, $ft1
+	fmadd.d	$fa7, $ft0, $ft2, $fa7
+	fst.d	$fa7, $t5, -8
+	fadd.d	$fa7, $ft3, $ft6
+	fsub.d	$ft0, $ft4, $ft7
 	fmul.d	$ft1, $fa6, $ft0
 	fmadd.d	$ft1, $fa3, $fa7, $ft1
-	fstx.d	$ft1, $a1, $t2
+	fst.d	$ft1, $t5, -32
 	fneg.d	$fa7, $fa7
 	fmul.d	$fa7, $fa6, $fa7
 	fmadd.d	$fa7, $fa3, $ft0, $fa7
-	fst.d	$fa7, $t6, 8
-	addi.d	$t4, $t4, 4
+	fst.d	$fa7, $t5, -24
+	addi.d	$t3, $t3, 4
 	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, -32
+	addi.d	$a7, $a7, -32
 	addi.d	$t0, $t0, -32
+	addi.d	$t4, $t4, 32
 	addi.d	$t1, $t1, -32
-	addi.d	$t2, $t2, -32
-	addi.d	$t3, $t3, -32
+	addi.d	$t2, $t2, 32
 	fmov.d	$fa7, $fa6
-	fmov.d	$ft1, $fa5
-	fmov.d	$ft0, $fa4
-	bltu	$t4, $a3, .LBB14_2
+	fmov.d	$ft0, $fa5
+	fmov.d	$ft1, $fa4
+	bltu	$t3, $a3, .LBB14_2
 # %bb.3:
-	fld.d	$fs5, $sp, 0                    # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	b	.LBB14_5
 .LBB14_4:                               # %.._crit_edge_crit_edge
 	movgr2fr.d	$fa5, $zero
@@ -4088,90 +3997,74 @@ cftf1st:                                # @cftf1st
 	fmul.d	$fa3, $fa1, $fa3
 	fmadd.d	$fa3, $fa2, $fa6, $fa3
 	fst.d	$fa3, $a0, -8
-	fldx.d	$fa3, $a1, $a5
-	fldx.d	$fa6, $a1, $a6
-	fld.d	$fa7, $a3, 8
-	fld.d	$ft0, $a2, 8
+	vldx	$vr3, $a1, $a5
+	vldx	$vr6, $a1, $a6
 	slli.d	$a7, $a7, 3
 	slli.d	$t0, $t1, 3
-	fadd.d	$ft1, $fa3, $fa6
-	fadd.d	$ft2, $fa7, $ft0
-	fldx.d	$ft3, $a1, $a7
-	fldx.d	$ft4, $a1, $t0
-	fld.d	$ft5, $a4, 8
-	fld.d	$ft6, $a0, 8
-	fsub.d	$fa3, $fa3, $fa6
-	fsub.d	$fa6, $fa7, $ft0
-	fadd.d	$fa7, $ft3, $ft4
-	fadd.d	$ft0, $ft5, $ft6
-	fsub.d	$ft3, $ft3, $ft4
-	fsub.d	$ft4, $ft5, $ft6
-	fadd.d	$ft5, $ft1, $fa7
-	fstx.d	$ft5, $a1, $a5
-	fadd.d	$ft5, $ft2, $ft0
-	fst.d	$ft5, $a3, 8
-	fsub.d	$fa7, $ft1, $fa7
-	fstx.d	$fa7, $a1, $a7
-	fsub.d	$fa7, $ft2, $ft0
-	fst.d	$fa7, $a4, 8
-	fsub.d	$fa7, $fa3, $ft4
-	fadd.d	$ft0, $fa6, $ft3
-	fsub.d	$ft1, $fa7, $ft0
-	fmul.d	$ft1, $fa0, $ft1
-	fstx.d	$ft1, $a1, $a6
-	fadd.d	$fa7, $ft0, $fa7
+	vfadd.d	$vr7, $vr3, $vr6
+	vldx	$vr8, $a1, $a7
+	vldx	$vr9, $a1, $t0
+	vfsub.d	$vr3, $vr3, $vr6
+	vreplvei.d	$vr6, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr10, $vr8, $vr9
+	vfsub.d	$vr8, $vr8, $vr9
+	vreplvei.d	$vr9, $vr8, 0
+	vreplvei.d	$vr8, $vr8, 1
+	vfadd.d	$vr11, $vr7, $vr10
+	vstx	$vr11, $a1, $a5
+	vfsub.d	$vr7, $vr7, $vr10
+	vstx	$vr7, $a1, $a7
+	fsub.d	$fa7, $fa6, $ft0
+	fadd.d	$ft2, $fa3, $ft1
+	fsub.d	$ft3, $fa7, $ft2
+	fmul.d	$ft3, $fa0, $ft3
+	fstx.d	$ft3, $a1, $a6
+	fadd.d	$fa7, $ft2, $fa7
 	fmul.d	$fa7, $fa0, $fa7
 	fst.d	$fa7, $a2, 8
-	fadd.d	$fa3, $fa3, $ft4
-	fsub.d	$fa6, $fa6, $ft3
+	fadd.d	$fa6, $fa6, $ft0
+	fsub.d	$fa3, $fa3, $ft1
 	fneg.d	$fa0, $fa0
-	fadd.d	$fa7, $fa6, $fa3
+	fadd.d	$fa7, $fa3, $fa6
 	fmul.d	$fa7, $fa7, $fa0
 	fstx.d	$fa7, $a1, $t0
-	fsub.d	$fa3, $fa6, $fa3
+	fsub.d	$fa3, $fa3, $fa6
 	fmul.d	$fa0, $fa3, $fa0
 	fst.d	$fa0, $a0, 8
-	fld.d	$fa0, $a3, 16
-	fld.d	$fa3, $a2, 16
-	fld.d	$fa6, $a3, 24
-	fld.d	$fa7, $a2, 24
-	fadd.d	$ft0, $fa0, $fa3
-	fadd.d	$ft1, $fa6, $fa7
-	fld.d	$ft2, $a4, 16
-	fld.d	$ft3, $a0, 16
-	fld.d	$ft4, $a4, 24
-	fld.d	$ft5, $a0, 24
-	fsub.d	$fa0, $fa0, $fa3
-	fsub.d	$fa3, $fa6, $fa7
-	fadd.d	$fa6, $ft2, $ft3
-	fadd.d	$fa7, $ft4, $ft5
-	fsub.d	$ft2, $ft2, $ft3
-	fsub.d	$ft3, $ft4, $ft5
-	fadd.d	$ft4, $ft0, $fa6
-	fst.d	$ft4, $a3, 16
-	fadd.d	$ft4, $ft1, $fa7
-	fst.d	$ft4, $a3, 24
-	fsub.d	$fa6, $ft0, $fa6
-	fst.d	$fa6, $a4, 16
-	fsub.d	$fa6, $ft1, $fa7
-	fst.d	$fa6, $a4, 24
-	fsub.d	$fa6, $fa0, $ft3
-	fadd.d	$fa7, $fa3, $ft2
-	fneg.d	$ft0, $fa7
-	fmul.d	$ft0, $fa4, $ft0
-	fmadd.d	$ft0, $fa5, $fa6, $ft0
-	fst.d	$ft0, $a2, 16
+	vld	$vr0, $a3, 16
+	vld	$vr3, $a2, 16
+	vfadd.d	$vr6, $vr0, $vr3
+	vld	$vr7, $a4, 16
+	vld	$vr8, $a0, 16
+	vfsub.d	$vr0, $vr0, $vr3
+	vreplvei.d	$vr3, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr9, $vr7, $vr8
+	vfsub.d	$vr7, $vr7, $vr8
+	vreplvei.d	$vr8, $vr7, 0
+	vreplvei.d	$vr7, $vr7, 1
+	vfadd.d	$vr10, $vr6, $vr9
+	vst	$vr10, $a3, 16
+	vfsub.d	$vr6, $vr6, $vr9
+	vst	$vr6, $a4, 16
+	fsub.d	$fa6, $fa3, $fa7
+	fadd.d	$ft1, $fa0, $ft0
+	fneg.d	$ft2, $ft1
+	fmul.d	$ft2, $fa4, $ft2
+	fmadd.d	$ft2, $fa5, $fa6, $ft2
+	fst.d	$ft2, $a2, 16
 	fmul.d	$fa4, $fa4, $fa6
-	fmadd.d	$fa4, $fa5, $fa7, $fa4
+	fmadd.d	$fa4, $fa5, $ft1, $fa4
 	fst.d	$fa4, $a2, 24
-	fadd.d	$fa0, $fa0, $ft3
-	fsub.d	$fa3, $fa3, $ft2
-	fmul.d	$fa4, $fa2, $fa3
-	fmadd.d	$fa4, $fa1, $fa0, $fa4
+	fadd.d	$fa3, $fa3, $fa7
+	fsub.d	$fa0, $fa0, $ft0
+	fmul.d	$fa4, $fa2, $fa0
+	fmadd.d	$fa4, $fa1, $fa3, $fa4
 	fst.d	$fa4, $a0, 16
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fa2, $fa0
-	fmadd.d	$fa0, $fa1, $fa3, $fa0
+	fneg.d	$fa3, $fa3
+	fmul.d	$fa2, $fa2, $fa3
+	fmadd.d	$fa0, $fa1, $fa0, $fa2
 	fst.d	$fa0, $a0, 24
 	ret
 .Lfunc_end14:
@@ -6476,37 +6369,29 @@ bitrv208:                               # @bitrv208
 	.type	cftf040,@function
 cftf040:                                # @cftf040
 # %bb.0:
-	fld.d	$fa0, $a0, 0
-	fld.d	$fa1, $a0, 32
-	fld.d	$fa2, $a0, 8
-	fld.d	$fa3, $a0, 40
-	fadd.d	$fa4, $fa0, $fa1
-	fadd.d	$fa5, $fa2, $fa3
-	fld.d	$fa6, $a0, 16
-	fld.d	$fa7, $a0, 48
-	fld.d	$ft0, $a0, 24
-	fld.d	$ft1, $a0, 56
-	fsub.d	$fa0, $fa0, $fa1
-	fsub.d	$fa1, $fa2, $fa3
-	fadd.d	$fa2, $fa6, $fa7
-	fadd.d	$fa3, $ft0, $ft1
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $fa4, $fa2
-	fst.d	$ft0, $a0, 0
-	fadd.d	$ft0, $fa5, $fa3
-	fst.d	$ft0, $a0, 8
-	fsub.d	$fa2, $fa4, $fa2
-	fst.d	$fa2, $a0, 32
-	fsub.d	$fa2, $fa5, $fa3
-	fst.d	$fa2, $a0, 40
-	fsub.d	$fa2, $fa0, $fa7
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 32
+	vfadd.d	$vr2, $vr0, $vr1
+	vld	$vr3, $a0, 16
+	vld	$vr4, $a0, 48
+	vfsub.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr5, $vr3, $vr4
+	vfsub.d	$vr3, $vr3, $vr4
+	vreplvei.d	$vr4, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr6, $vr2, $vr5
+	vst	$vr6, $a0, 0
+	vfsub.d	$vr2, $vr2, $vr5
+	vst	$vr2, $a0, 32
+	fsub.d	$fa2, $fa1, $fa3
 	fst.d	$fa2, $a0, 16
-	fadd.d	$fa2, $fa1, $fa6
+	fadd.d	$fa2, $fa0, $fa4
 	fst.d	$fa2, $a0, 24
-	fadd.d	$fa0, $fa0, $fa7
-	fst.d	$fa0, $a0, 48
-	fsub.d	$fa0, $fa1, $fa6
+	fadd.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $a0, 48
+	fsub.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a0, 56
 	ret
 .Lfunc_end24:
@@ -7328,37 +7213,29 @@ bitrv208neg:                            # @bitrv208neg
 	.type	cftb040,@function
 cftb040:                                # @cftb040
 # %bb.0:
-	fld.d	$fa0, $a0, 0
-	fld.d	$fa1, $a0, 32
-	fld.d	$fa2, $a0, 8
-	fld.d	$fa3, $a0, 40
-	fadd.d	$fa4, $fa0, $fa1
-	fadd.d	$fa5, $fa2, $fa3
-	fld.d	$fa6, $a0, 16
-	fld.d	$fa7, $a0, 48
-	fld.d	$ft0, $a0, 24
-	fld.d	$ft1, $a0, 56
-	fsub.d	$fa0, $fa0, $fa1
-	fsub.d	$fa1, $fa2, $fa3
-	fadd.d	$fa2, $fa6, $fa7
-	fadd.d	$fa3, $ft0, $ft1
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $fa4, $fa2
-	fst.d	$ft0, $a0, 0
-	fadd.d	$ft0, $fa5, $fa3
-	fst.d	$ft0, $a0, 8
-	fsub.d	$fa2, $fa4, $fa2
-	fst.d	$fa2, $a0, 32
-	fsub.d	$fa2, $fa5, $fa3
-	fst.d	$fa2, $a0, 40
-	fadd.d	$fa2, $fa0, $fa7
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 32
+	vfadd.d	$vr2, $vr0, $vr1
+	vld	$vr3, $a0, 16
+	vld	$vr4, $a0, 48
+	vfsub.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr5, $vr3, $vr4
+	vfsub.d	$vr3, $vr3, $vr4
+	vreplvei.d	$vr4, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr6, $vr2, $vr5
+	vst	$vr6, $a0, 0
+	vfsub.d	$vr2, $vr2, $vr5
+	vst	$vr2, $a0, 32
+	fadd.d	$fa2, $fa1, $fa3
 	fst.d	$fa2, $a0, 16
-	fsub.d	$fa2, $fa1, $fa6
+	fsub.d	$fa2, $fa0, $fa4
 	fst.d	$fa2, $a0, 24
-	fsub.d	$fa0, $fa0, $fa7
-	fst.d	$fa0, $a0, 48
-	fadd.d	$fa0, $fa1, $fa6
+	fsub.d	$fa1, $fa1, $fa3
+	fst.d	$fa1, $a0, 48
+	fadd.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a0, 56
 	ret
 .Lfunc_end30:
@@ -7370,227 +7247,185 @@ cftb040:                                # @cftb040
 cftmdl1:                                # @cftmdl1
 # %bb.0:
 	srai.d	$a0, $a0, 3
-	fld.d	$fa0, $a1, 0
-	slli.d	$a3, $a0, 5
-	add.d	$a4, $a1, $a3
-	fldx.d	$fa1, $a1, $a3
-	fld.d	$fa2, $a1, 8
-	fld.d	$fa3, $a4, 8
-	slli.d	$a5, $a0, 2
-	alsl.d	$a5, $a0, $a5, 1
-	fadd.d	$fa4, $fa0, $fa1
-	fadd.d	$fa5, $fa2, $fa3
-	alsl.d	$a6, $a0, $a1, 4
-	slli.d	$a7, $a0, 4
-	fldx.d	$fa6, $a1, $a7
-	alsl.d	$t0, $a5, $a1, 3
-	slli.d	$a5, $a5, 3
-	fldx.d	$fa7, $a1, $a5
-	fld.d	$ft0, $a6, 8
-	fld.d	$ft1, $t0, 8
-	fsub.d	$fa0, $fa0, $fa1
-	fsub.d	$fa1, $fa2, $fa3
-	fadd.d	$fa2, $fa6, $fa7
-	fadd.d	$fa3, $ft0, $ft1
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $fa4, $fa2
-	fst.d	$ft0, $a1, 0
-	fadd.d	$ft0, $fa5, $fa3
-	fst.d	$ft0, $a1, 8
-	fsub.d	$fa2, $fa4, $fa2
-	fstx.d	$fa2, $a1, $a7
-	fsub.d	$fa2, $fa5, $fa3
-	fst.d	$fa2, $a6, 8
-	fsub.d	$fa2, $fa0, $fa7
-	fstx.d	$fa2, $a1, $a3
-	fadd.d	$fa2, $fa1, $fa6
-	fst.d	$fa2, $a4, 8
-	fadd.d	$fa0, $fa0, $fa7
-	fstx.d	$fa0, $a1, $a5
-	fsub.d	$fa0, $fa1, $fa6
-	fst.d	$fa0, $t0, 8
+	slli.d	$a3, $a0, 2
+	alsl.d	$a3, $a0, $a3, 1
+	slli.d	$a4, $a0, 5
+	add.d	$a5, $a1, $a4
+	vld	$vr0, $a1, 0
+	vldx	$vr1, $a1, $a4
+	slli.d	$a6, $a0, 4
+	alsl.d	$a7, $a3, $a1, 3
+	slli.d	$a3, $a3, 3
+	vfadd.d	$vr2, $vr0, $vr1
+	vldx	$vr3, $a1, $a6
+	vldx	$vr4, $a1, $a3
+	vfsub.d	$vr0, $vr0, $vr1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	vfadd.d	$vr5, $vr3, $vr4
+	vfsub.d	$vr3, $vr3, $vr4
+	vreplvei.d	$vr4, $vr3, 0
+	vreplvei.d	$vr3, $vr3, 1
+	vfadd.d	$vr6, $vr2, $vr5
+	vst	$vr6, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr5
+	vstx	$vr2, $a1, $a6
+	fsub.d	$fa2, $fa1, $fa3
+	fstx.d	$fa2, $a1, $a4
+	fadd.d	$fa2, $fa0, $fa4
+	fst.d	$fa2, $a5, 8
+	fadd.d	$fa1, $fa1, $fa3
+	fstx.d	$fa1, $a1, $a3
+	fsub.d	$fa0, $fa0, $fa4
+	fst.d	$fa0, $a7, 8
 	fld.d	$fa0, $a2, 8
 	ori	$a3, $zero, 2
 	bge	$a3, $a0, .LBB31_3
 # %bb.1:                                # %.lr.ph.preheader
-	slli.d	$t3, $a0, 1
-	slli.d	$t1, $t3, 4
-	addi.d	$a4, $t1, 24
+	slli.d	$t0, $a0, 1
+	slli.d	$a4, $t0, 4
 	addi.d	$a2, $a2, 56
-	ori	$a5, $zero, 24
-	mul.d	$t2, $t3, $a5
-	addi.d	$a6, $t2, 24
-	slli.d	$t0, $t3, 3
-	addi.d	$a7, $t0, -16
-	addi.d	$t0, $t0, 24
-	addi.d	$t1, $t1, -16
-	addi.d	$t2, $t2, -8
-	slli.d	$t3, $t3, 5
-	addi.d	$t3, $t3, -16
+	slli.d	$t1, $t0, 3
+	addi.d	$a5, $t1, -16
+	addi.d	$a6, $a4, -16
+	slli.d	$a7, $t0, 5
+	alsl.d	$t0, $t0, $a4, 3
+	addi.d	$t1, $t1, 16
+	ori	$t2, $zero, 16
+	move	$t3, $t0
 	.p2align	4, , 16
 .LBB31_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, -24
 	fld.d	$fa2, $a2, -16
 	fld.d	$fa5, $a2, 0
-	add.d	$t4, $a1, $a5
-	fld.d	$fa6, $t4, -8
-	add.d	$t5, $a1, $a4
-	fld.d	$fa7, $t5, -8
-	fldx.d	$ft0, $a1, $a5
-	fldx.d	$ft1, $a1, $a4
+	add.d	$t4, $a1, $a4
+	vldx	$vr6, $a1, $t2
+	vld	$vr7, $t4, 16
 	fld.d	$fa3, $a2, -8
 	fneg.d	$fa4, $fa5
-	fadd.d	$ft2, $fa6, $fa7
-	fadd.d	$ft3, $ft0, $ft1
-	add.d	$t6, $a1, $t0
-	fld.d	$ft4, $t6, -8
-	add.d	$t7, $a1, $a6
-	fld.d	$ft5, $t7, -8
-	fldx.d	$ft6, $a1, $t0
-	fldx.d	$ft7, $a1, $a6
-	fsub.d	$fa6, $fa6, $fa7
-	fsub.d	$fa7, $ft0, $ft1
-	fadd.d	$ft0, $ft4, $ft5
-	fadd.d	$ft1, $ft6, $ft7
-	fsub.d	$ft4, $ft4, $ft5
-	fsub.d	$ft5, $ft6, $ft7
-	fadd.d	$ft6, $ft2, $ft0
-	fst.d	$ft6, $t4, -8
-	fadd.d	$ft6, $ft3, $ft1
-	fstx.d	$ft6, $a1, $a5
-	fsub.d	$ft0, $ft2, $ft0
-	fst.d	$ft0, $t6, -8
-	fsub.d	$ft0, $ft3, $ft1
-	fstx.d	$ft0, $a1, $t0
-	fsub.d	$ft0, $fa6, $ft5
-	fadd.d	$ft1, $fa7, $ft4
-	fneg.d	$ft2, $ft1
-	fmul.d	$ft2, $fa2, $ft2
-	fmadd.d	$ft2, $fa1, $ft0, $ft2
-	fst.d	$ft2, $t5, -8
+	add.d	$t5, $a1, $t0
+	vfadd.d	$vr8, $vr6, $vr7
+	vldx	$vr9, $a1, $t1
+	vld	$vr10, $t5, 16
+	vfsub.d	$vr6, $vr6, $vr7
+	vreplvei.d	$vr7, $vr6, 0
+	vreplvei.d	$vr6, $vr6, 1
+	vfadd.d	$vr11, $vr9, $vr10
+	vfsub.d	$vr9, $vr9, $vr10
+	vreplvei.d	$vr10, $vr9, 0
+	vreplvei.d	$vr9, $vr9, 1
+	vfadd.d	$vr12, $vr8, $vr11
+	vstx	$vr12, $a1, $t2
+	vfsub.d	$vr8, $vr8, $vr11
+	vstx	$vr8, $a1, $t1
+	fsub.d	$ft0, $fa7, $ft1
+	fadd.d	$ft3, $fa6, $ft2
+	fneg.d	$ft4, $ft3
+	fmul.d	$ft4, $fa2, $ft4
+	fmadd.d	$ft4, $fa1, $ft0, $ft4
+	fst.d	$ft4, $t4, 16
 	fmul.d	$ft0, $fa2, $ft0
-	fmadd.d	$ft0, $fa1, $ft1, $ft0
-	fstx.d	$ft0, $a1, $a4
-	fadd.d	$fa6, $fa6, $ft5
-	fsub.d	$fa7, $fa7, $ft4
-	fmul.d	$ft0, $fa7, $fa4
-	fmadd.d	$ft0, $fa3, $fa6, $ft0
-	fst.d	$ft0, $t7, -8
-	fmul.d	$fa5, $fa5, $fa6
-	fmadd.d	$fa5, $fa3, $fa7, $fa5
-	fstx.d	$fa5, $a1, $a6
-	add.d	$t4, $a1, $a7
-	fldx.d	$fa5, $a1, $a7
-	add.d	$t5, $a1, $t2
-	fld.d	$fa6, $t5, -8
-	fld.d	$fa7, $t4, 8
-	fldx.d	$ft0, $a1, $t2
-	fadd.d	$ft1, $fa5, $fa6
-	fadd.d	$ft2, $fa7, $ft0
-	add.d	$t6, $a1, $t1
-	fldx.d	$ft3, $a1, $t1
-	add.d	$t7, $a1, $t3
-	fldx.d	$ft4, $a1, $t3
-	fld.d	$ft5, $t6, 8
-	fld.d	$ft6, $t7, 8
-	fsub.d	$fa5, $fa5, $fa6
-	fsub.d	$fa6, $fa7, $ft0
-	fadd.d	$fa7, $ft3, $ft4
-	fadd.d	$ft0, $ft5, $ft6
-	fsub.d	$ft3, $ft3, $ft4
-	fsub.d	$ft4, $ft5, $ft6
-	fadd.d	$ft5, $ft1, $fa7
-	fstx.d	$ft5, $a1, $a7
-	fadd.d	$ft5, $ft2, $ft0
-	fst.d	$ft5, $t4, 8
-	fsub.d	$fa7, $ft1, $fa7
-	fstx.d	$fa7, $a1, $t1
-	fsub.d	$fa7, $ft2, $ft0
-	fst.d	$fa7, $t6, 8
-	fsub.d	$fa7, $fa5, $ft4
-	fadd.d	$ft0, $fa6, $ft3
-	fneg.d	$ft1, $ft0
-	fmul.d	$ft1, $fa1, $ft1
-	fmadd.d	$ft1, $fa2, $fa7, $ft1
-	fst.d	$ft1, $t5, -8
+	fmadd.d	$ft0, $fa1, $ft3, $ft0
+	fst.d	$ft0, $t4, 24
+	fadd.d	$fa7, $fa7, $ft1
+	fsub.d	$fa6, $fa6, $ft2
+	fmul.d	$ft0, $fa6, $fa4
+	fmadd.d	$ft0, $fa3, $fa7, $ft0
+	fst.d	$ft0, $t5, 16
+	fmul.d	$fa5, $fa5, $fa7
+	fmadd.d	$fa5, $fa3, $fa6, $fa5
+	fst.d	$fa5, $t5, 24
+	add.d	$t4, $a1, $t3
+	vldx	$vr5, $a1, $a5
+	vld	$vr6, $t4, -16
+	add.d	$t5, $a1, $a7
+	vfadd.d	$vr7, $vr5, $vr6
+	vldx	$vr8, $a1, $a6
+	vld	$vr9, $t5, -16
+	vfsub.d	$vr5, $vr5, $vr6
+	vreplvei.d	$vr6, $vr5, 0
+	vreplvei.d	$vr5, $vr5, 1
+	vfadd.d	$vr10, $vr8, $vr9
+	vfsub.d	$vr8, $vr8, $vr9
+	vreplvei.d	$vr9, $vr8, 0
+	vreplvei.d	$vr8, $vr8, 1
+	vfadd.d	$vr11, $vr7, $vr10
+	vstx	$vr11, $a1, $a5
+	vfsub.d	$vr7, $vr7, $vr10
+	vstx	$vr7, $a1, $a6
+	fsub.d	$fa7, $fa6, $ft0
+	fadd.d	$ft2, $fa5, $ft1
+	fneg.d	$ft3, $ft2
+	fmul.d	$ft3, $fa1, $ft3
+	fmadd.d	$ft3, $fa2, $fa7, $ft3
+	fst.d	$ft3, $t4, -16
 	fmul.d	$fa1, $fa1, $fa7
-	fmadd.d	$fa1, $fa2, $ft0, $fa1
-	fstx.d	$fa1, $a1, $t2
-	fadd.d	$fa1, $fa5, $ft4
-	fsub.d	$fa2, $fa6, $ft3
+	fmadd.d	$fa1, $fa2, $ft2, $fa1
+	fst.d	$fa1, $t4, -8
+	fadd.d	$fa1, $fa6, $ft0
+	fsub.d	$fa2, $fa5, $ft1
 	fmul.d	$fa5, $fa3, $fa2
 	fmadd.d	$fa5, $fa4, $fa1, $fa5
-	fstx.d	$fa5, $a1, $t3
+	fst.d	$fa5, $t5, -16
 	fneg.d	$fa1, $fa1
 	fmul.d	$fa1, $fa3, $fa1
 	fmadd.d	$fa1, $fa4, $fa2, $fa1
-	fst.d	$fa1, $t7, 8
+	fst.d	$fa1, $t5, -8
 	addi.d	$a3, $a3, 2
-	addi.d	$a5, $a5, 16
+	addi.d	$t2, $t2, 16
 	addi.d	$a4, $a4, 16
 	addi.d	$a2, $a2, 32
-	addi.d	$a6, $a6, 16
+	addi.d	$a5, $a5, -16
+	addi.d	$a6, $a6, -16
 	addi.d	$a7, $a7, -16
-	addi.d	$t0, $t0, 16
-	addi.d	$t1, $t1, -16
-	addi.d	$t2, $t2, -16
 	addi.d	$t3, $t3, -16
+	addi.d	$t1, $t1, 16
+	addi.d	$t0, $t0, 16
 	bltu	$a3, $a0, .LBB31_2
 .LBB31_3:                               # %._crit_edge
-	alsl.d	$a2, $a0, $a0, 2
-	slli.d	$a3, $a0, 3
-	alsl.d	$a4, $a0, $a1, 3
-	fldx.d	$fa1, $a1, $a3
-	alsl.d	$a5, $a2, $a1, 3
+	alsl.d	$a2, $a0, $a0, 1
+	alsl.d	$a3, $a0, $a0, 2
+	slli.d	$a4, $a0, 3
+	sub.w	$a0, $a4, $a0
+	alsl.d	$a5, $a3, $a1, 3
+	slli.d	$a3, $a3, 3
+	vldx	$vr1, $a1, $a4
+	vldx	$vr2, $a1, $a3
 	slli.d	$a2, $a2, 3
-	fldx.d	$fa2, $a1, $a2
-	fld.d	$fa3, $a4, 8
-	fld.d	$fa4, $a5, 8
-	alsl.d	$a6, $a0, $a0, 1
-	sub.w	$a0, $a3, $a0
-	fadd.d	$fa5, $fa1, $fa2
-	fadd.d	$fa6, $fa3, $fa4
-	alsl.d	$a7, $a6, $a1, 3
-	slli.d	$a6, $a6, 3
-	fldx.d	$fa7, $a1, $a6
-	alsl.d	$t0, $a0, $a1, 3
+	alsl.d	$a6, $a0, $a1, 3
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft0, $a1, $a0
-	fld.d	$ft1, $a7, 8
-	fld.d	$ft2, $t0, 8
-	fsub.d	$fa1, $fa1, $fa2
-	fsub.d	$fa2, $fa3, $fa4
-	fadd.d	$fa3, $fa7, $ft0
-	fadd.d	$fa4, $ft1, $ft2
-	fsub.d	$fa7, $fa7, $ft0
-	fsub.d	$ft0, $ft1, $ft2
-	fadd.d	$ft1, $fa5, $fa3
-	fstx.d	$ft1, $a1, $a3
-	fadd.d	$ft1, $fa6, $fa4
-	fst.d	$ft1, $a4, 8
-	fsub.d	$fa3, $fa5, $fa3
-	fstx.d	$fa3, $a1, $a6
-	fsub.d	$fa3, $fa6, $fa4
-	fst.d	$fa3, $a7, 8
-	fsub.d	$fa3, $fa1, $ft0
-	fadd.d	$fa4, $fa2, $fa7
-	fsub.d	$fa5, $fa3, $fa4
-	fmul.d	$fa5, $fa0, $fa5
-	fstx.d	$fa5, $a1, $a2
-	fadd.d	$fa3, $fa4, $fa3
+	vfadd.d	$vr3, $vr1, $vr2
+	vldx	$vr4, $a1, $a2
+	vldx	$vr5, $a1, $a0
+	vfsub.d	$vr1, $vr1, $vr2
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
+	vfadd.d	$vr6, $vr4, $vr5
+	vfsub.d	$vr4, $vr4, $vr5
+	vreplvei.d	$vr5, $vr4, 0
+	vreplvei.d	$vr4, $vr4, 1
+	vfadd.d	$vr7, $vr3, $vr6
+	vstx	$vr7, $a1, $a4
+	vfsub.d	$vr3, $vr3, $vr6
+	vstx	$vr3, $a1, $a2
+	fsub.d	$fa3, $fa2, $fa4
+	fadd.d	$fa6, $fa1, $fa5
+	fsub.d	$fa7, $fa3, $fa6
+	fmul.d	$fa7, $fa0, $fa7
+	fstx.d	$fa7, $a1, $a3
+	fadd.d	$fa3, $fa6, $fa3
 	fmul.d	$fa3, $fa0, $fa3
 	fst.d	$fa3, $a5, 8
-	fadd.d	$fa1, $fa1, $ft0
-	fsub.d	$fa2, $fa2, $fa7
+	fadd.d	$fa2, $fa2, $fa4
+	fsub.d	$fa1, $fa1, $fa5
 	fneg.d	$fa0, $fa0
-	fadd.d	$fa3, $fa2, $fa1
+	fadd.d	$fa3, $fa1, $fa2
 	fmul.d	$fa3, $fa3, $fa0
 	fstx.d	$fa3, $a1, $a0
-	fsub.d	$fa1, $fa2, $fa1
+	fsub.d	$fa1, $fa1, $fa2
 	fmul.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $t0, 8
+	fst.d	$fa0, $a6, 8
 	ret
 .Lfunc_end31:
 	.size	cftmdl1, .Lfunc_end31-cftmdl1

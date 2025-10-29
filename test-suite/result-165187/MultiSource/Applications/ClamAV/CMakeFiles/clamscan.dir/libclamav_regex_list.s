@@ -822,8 +822,8 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_10:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_15 Depth 2
                                         #     Child Loop BB3_19 Depth 2
-                                        #     Child Loop BB3_195 Depth 2
-                                        #     Child Loop BB3_191 Depth 2
+                                        #     Child Loop BB3_192 Depth 2
+                                        #     Child Loop BB3_196 Depth 2
                                         #     Child Loop BB3_76 Depth 2
                                         #     Child Loop BB3_32 Depth 2
                                         #     Child Loop BB3_82 Depth 2
@@ -1228,7 +1228,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	beqz	$s5, .LBB3_77
 # %bb.71:                               # %iter.check
                                         #   in Loop: Header=BB3_10 Depth=1
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	bltu	$s5, $a1, .LBB3_74
 # %bb.72:                               # %vector.memcheck
                                         #   in Loop: Header=BB3_10 Depth=1
@@ -1921,7 +1921,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	b	.LBB3_81
 .LBB3_186:                              #   in Loop: Header=BB3_10 Depth=1
 	ld.bu	$a0, $s7, 0
-	beqz	$a0, .LBB3_193
+	beqz	$a0, .LBB3_190
 # %bb.187:                              #   in Loop: Header=BB3_10 Depth=1
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 96
@@ -1932,49 +1932,23 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_188:                              # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB3_10 Depth=1
 	ori	$a1, $zero, 16
-	bgeu	$s5, $a1, .LBB3_194
+	bgeu	$s5, $a1, .LBB3_191
 # %bb.189:                              #   in Loop: Header=BB3_10 Depth=1
 	move	$a1, $zero
-.LBB3_190:                              # %vec.epilog.ph
-                                        #   in Loop: Header=BB3_10 Depth=1
-	move	$a4, $a1
-	move	$a1, $s5
-	bstrins.d	$a1, $zero, 2, 0
-	sub.d	$a2, $a4, $a1
-	alsl.d	$a3, $a4, $a0, 1
-	add.d	$a4, $s6, $a4
-	addi.d	$a4, $a4, 1
-	.p2align	4, , 16
-.LBB3_191:                              # %vec.epilog.vector.body
-                                        #   Parent Loop BB3_10 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.d	$a5, $a4, 0
-	vinsgr2vr.d	$vr0, $a5, 0
-	vilvl.b	$vr0, $vr0, $vr0
-	vslli.h	$vr0, $vr0, 8
-	vsrai.h	$vr0, $vr0, 8
-	vst	$vr0, $a3, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 8
-	bnez	$a2, .LBB3_191
-# %bb.192:                              # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB3_10 Depth=1
-	bne	$s5, $a1, .LBB3_75
-	b	.LBB3_77
-.LBB3_193:                              #   in Loop: Header=BB3_10 Depth=1
+	b	.LBB3_195
+.LBB3_190:                              #   in Loop: Header=BB3_10 Depth=1
 	move	$s0, $zero
 	b	.LBB3_199
-.LBB3_194:                              # %vector.ph
+.LBB3_191:                              # %vector.ph
                                         #   in Loop: Header=BB3_10 Depth=1
-	andi	$a2, $s5, 8
+	andi	$a2, $s5, 12
 	move	$a1, $s5
 	bstrins.d	$a1, $zero, 3, 0
 	addi.d	$a3, $a0, 16
 	addi.d	$a4, $s6, 9
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB3_195:                              # %vector.body
+.LBB3_192:                              # %vector.body
                                         #   Parent Loop BB3_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a6, $a4, -8
@@ -1992,13 +1966,39 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.d	$a5, $a5, -16
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 16
-	bnez	$a5, .LBB3_195
-# %bb.196:                              # %middle.block
+	bnez	$a5, .LBB3_192
+# %bb.193:                              # %middle.block
                                         #   in Loop: Header=BB3_10 Depth=1
 	beq	$s5, $a1, .LBB3_77
-# %bb.197:                              # %vec.epilog.iter.check
+# %bb.194:                              # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_10 Depth=1
-	bnez	$a2, .LBB3_190
+	beqz	$a2, .LBB3_75
+.LBB3_195:                              # %vec.epilog.ph
+                                        #   in Loop: Header=BB3_10 Depth=1
+	move	$a4, $a1
+	move	$a1, $s5
+	bstrins.d	$a1, $zero, 1, 0
+	sub.d	$a2, $a4, $a1
+	alsl.d	$a3, $a4, $a0, 1
+	add.d	$a4, $s6, $a4
+	addi.d	$a4, $a4, 1
+	.p2align	4, , 16
+.LBB3_196:                              # %vec.epilog.vector.body
+                                        #   Parent Loop BB3_10 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.w	$a5, $a4, 0
+	vinsgr2vr.w	$vr0, $a5, 0
+	vilvl.b	$vr0, $vr0, $vr0
+	vslli.h	$vr0, $vr0, 8
+	vsrai.h	$vr0, $vr0, 8
+	vstelm.d	$vr0, $a3, 0, 0
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 8
+	addi.d	$a4, $a4, 4
+	bnez	$a2, .LBB3_196
+# %bb.197:                              # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB3_10 Depth=1
+	beq	$s5, $a1, .LBB3_77
 	b	.LBB3_75
 .LBB3_198:                              # %.thread.i.loopexit
                                         #   in Loop: Header=BB3_10 Depth=1

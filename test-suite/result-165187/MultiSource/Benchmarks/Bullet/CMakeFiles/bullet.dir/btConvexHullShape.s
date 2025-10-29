@@ -79,16 +79,18 @@ _ZN17btConvexHullShapeC2EPKfii:         # @_ZN17btConvexHullShapeC2EPKfii
 	st.d	$s3, $fp, 120
 	st.w	$s0, $fp, 112
 	st.w	$s0, $fp, 108
-	addi.d	$a1, $s2, 4
+	addi.d	$a1, $s2, 8
+	vrepli.b	$vr0, 0
 	.p2align	4, , 16
 .LBB0_9:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $fp, 120
-	ld.d	$a3, $a1, -4
-	fld.s	$fa0, $a1, 4
-	add.d	$a4, $a2, $a0
-	stx.d	$a3, $a2, $a0
-	fst.s	$fa0, $a4, 8
-	st.w	$zero, $a4, 12
+	ld.d	$a2, $a1, -8
+	fld.s	$fa1, $a1, 0
+	ld.d	$a3, $fp, 120
+	vinsgr2vr.d	$vr2, $a2, 0
+	vori.b	$vr3, $vr0, 0
+	vextrins.w	$vr3, $vr1, 32
+	vshuf4i.d	$vr2, $vr3, 12
+	vstx	$vr2, $a3, $a0
 	addi.d	$a0, $a0, 16
 	addi.d	$s0, $s0, -1
 	add.d	$a1, $a1, $s1
@@ -362,14 +364,13 @@ _ZNK17btConvexHullShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @
 	ori	$a1, $a1, 1815
 	movgr2fr.w	$fa4, $a1
 	fcmp.clt.s	$fcc0, $fa3, $fa4
-	move	$a1, $a0
 	bceqz	$fcc0, .LBB5_3
 # %bb.1:
 	movgr2fr.w	$fa0, $zero
 	vldi	$vr1, -1168
 	fmov.s	$fa2, $fa0
-	ld.w	$a2, $a1, 108
-	bgtz	$a2, .LBB5_4
+	ld.w	$a1, $a0, 108
+	bgtz	$a1, .LBB5_4
 .LBB5_2:
 	move	$a1, $zero
 	move	$a0, $zero
@@ -379,48 +380,60 @@ _ZNK17btConvexHullShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @
 	fmul.s	$fa1, $fa1, $fa3
 	fmul.s	$fa0, $fa0, $fa3
 	fmul.s	$fa2, $fa2, $fa3
-	ld.w	$a2, $a1, 108
-	blez	$a2, .LBB5_2
+	ld.w	$a1, $a0, 108
+	blez	$a1, .LBB5_2
 .LBB5_4:                                # %.lr.ph
+	ld.d	$a2, $a0, 28
+	ld.d	$a3, $a0, 120
+	move	$a4, $a0
 	move	$a0, $zero
-	ld.d	$a3, $a1, 120
-	fld.s	$fa3, $a1, 24
-	fld.s	$fa4, $a1, 28
-	fld.s	$fa5, $a1, 32
-	addi.d	$a1, $a3, 8
-	movgr2fr.w	$fa6, $zero
+	fld.s	$fa3, $a4, 24
+	vinsgr2vr.d	$vr4, $a2, 0
+	addi.d	$a2, $a3, 4
+	vrepli.b	$vr6, 0
 	lu12i.w	$a3, -141856
 	ori	$a3, $a3, 2923
-	movgr2fr.w	$ft0, $a3
-	fmov.s	$fa7, $fa6
-	b	.LBB5_6
+	movgr2fr.w	$fa5, $a3
 	.p2align	4, , 16
-.LBB5_5:                                #   in Loop: Header=BB5_6 Depth=1
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 16
-	beqz	$a2, .LBB5_8
-.LBB5_6:                                # =>This Inner Loop Header: Depth=1
-	fld.s	$ft1, $a1, -8
-	fld.s	$ft2, $a1, -4
-	fld.s	$ft4, $a1, 0
-	fmul.s	$ft3, $ft1, $fa3
-	fmul.s	$ft1, $ft2, $fa4
-	fmul.s	$ft2, $ft4, $fa5
-	fmul.s	$ft4, $fa0, $ft1
-	fmadd.s	$ft4, $fa1, $ft3, $ft4
-	fmadd.s	$ft4, $fa2, $ft2, $ft4
-	fcmp.cule.s	$fcc0, $ft4, $ft0
-	bcnez	$fcc0, .LBB5_5
-# %bb.7:                                #   in Loop: Header=BB5_6 Depth=1
-	movfr2gr.s	$a0, $ft3
-	fmov.s	$fa7, $ft1
-	fmov.s	$fa6, $ft2
-	fmov.s	$ft0, $ft4
-	b	.LBB5_5
-.LBB5_8:                                # %._crit_edge.loopexit
-	movfr2gr.s	$a1, $fa7
+.LBB5_5:                                # =>This Inner Loop Header: Depth=1
+	fld.s	$fa7, $a2, -4
+	ld.d	$a3, $a2, 0
+	fmul.s	$fa7, $fa7, $fa3
+	vinsgr2vr.d	$vr8, $a3, 0
+	vfmul.s	$vr8, $vr8, $vr4
+	vreplvei.w	$vr9, $vr8, 0
+	fmul.s	$ft2, $fa0, $ft1
+	fmadd.s	$ft2, $fa1, $fa7, $ft2
+	vreplvei.w	$vr11, $vr8, 1
+	fmadd.s	$ft2, $fa2, $ft3, $ft2
+	fcmp.clt.s	$fcc0, $fa5, $ft2
+	movfr2gr.s	$a3, $fa7
+	fsel	$fa5, $fa5, $ft2, $fcc0
+	vreplvei.w	$vr7, $vr6, 1
+	fsel	$fa7, $fa7, $ft3, $fcc0
+	vreplvei.w	$vr10, $vr6, 0
+	vreplvei.w	$vr11, $vr6, 2
+	vreplvei.w	$vr6, $vr6, 3
+	fsel	$ft1, $ft2, $ft1, $fcc0
+	vreplvei.w	$vr10, $vr8, 2
+	fsel	$ft2, $ft3, $ft2, $fcc0
+	vreplvei.w	$vr8, $vr8, 3
+	fsel	$ft0, $fa6, $ft0, $fcc0
+	movcf2gr	$a4, $fcc0
+	masknez	$a0, $a0, $a4
+	maskeqz	$a3, $a3, $a4
+	vextrins.w	$vr9, $vr7, 16
+	vextrins.w	$vr9, $vr10, 32
+	or	$a0, $a3, $a0
+	vori.b	$vr6, $vr9, 0
+	vextrins.w	$vr6, $vr8, 48
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 16
+	bnez	$a1, .LBB5_5
+# %bb.6:                                # %._crit_edge.loopexit
+	vpickve2gr.w	$a1, $vr6, 0
 	bstrins.d	$a0, $a1, 63, 32
-	movfr2gr.s	$a1, $fa6
+	vpickve2gr.w	$a1, $vr6, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ret
 .Lfunc_end5:

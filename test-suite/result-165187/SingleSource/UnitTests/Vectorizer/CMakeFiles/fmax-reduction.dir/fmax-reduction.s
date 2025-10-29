@@ -5872,53 +5872,54 @@ _ZSt16__introsort_loopIPflN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_T0_T1_: # @_
 	b	.LBB4_25
 	.p2align	4, , 16
 .LBB4_23:                               #   in Loop: Header=BB4_25 Depth=1
-	move	$a4, $zero
+	move	$a5, $zero
 .LBB4_24:                               # %_ZSt10__pop_heapIPfN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_S4_RT0_.exit.i.i
                                         #   in Loop: Header=BB4_25 Depth=1
-	slli.d	$a4, $a4, 2
+	slli.d	$a4, $a5, 2
 	fstx.s	$fa0, $fp, $a4
 	bge	$a2, $a3, .LBB4_35
 .LBB4_25:                               # %.lr.ph.i.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_27 Depth 2
                                         #     Child Loop BB4_33 Depth 2
-	move	$a4, $s0
+	move	$a5, $s0
 	fld.s	$fa0, $s0, -4
 	fld.s	$fa1, $fp, 0
 	addi.d	$s0, $s0, -4
 	sub.d	$a3, $s0, $fp
-	srai.d	$a5, $a3, 2
-	fst.s	$fa1, $a4, -4
-	blt	$a5, $a0, .LBB4_29
+	srai.d	$a4, $a3, 2
+	fst.s	$fa1, $a5, -4
+	blt	$a4, $a0, .LBB4_29
 # %bb.26:                               # %.lr.ph.i.i.i.i.preheader
                                         #   in Loop: Header=BB4_25 Depth=1
 	move	$a6, $zero
-	addi.d	$a4, $a5, -1
-	srli.d	$a7, $a4, 63
-	add.d	$a4, $a4, $a7
-	srai.d	$a7, $a4, 1
+	addi.d	$a5, $a4, -1
+	srli.d	$a7, $a5, 63
+	add.d	$a5, $a5, $a7
+	srai.d	$a7, $a5, 1
 	.p2align	4, , 16
 .LBB4_27:                               # %.lr.ph.i.i.i.i
                                         #   Parent Loop BB4_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.d	$a4, $a6, 1
-	addi.d	$t0, $a4, 2
-	slli.d	$t1, $t0, 2
-	alsl.d	$t2, $a6, $fp, 3
-	fldx.s	$fa1, $fp, $t1
-	fld.s	$fa2, $t2, 4
+	alsl.d	$a5, $a6, $fp, 3
+	ld.d	$a5, $a5, 4
+	slli.d	$t0, $a6, 1
+	addi.d	$t1, $t0, 2
+	vinsgr2vr.d	$vr1, $a5, 0
+	vreplvei.w	$vr2, $vr1, 0
+	vreplvei.w	$vr1, $vr1, 1
 	fcmp.clt.s	$fcc0, $fa1, $fa2
-	addi.d	$a4, $a4, 1
-	movcf2gr	$t1, $fcc0
-	masknez	$t0, $t0, $t1
-	maskeqz	$a4, $a4, $t1
-	or	$a4, $a4, $t0
-	slli.d	$t0, $a4, 2
+	addi.d	$a5, $t0, 1
+	movcf2gr	$t0, $fcc0
+	masknez	$t1, $t1, $t0
+	maskeqz	$a5, $a5, $t0
+	or	$a5, $a5, $t1
+	slli.d	$t0, $a5, 2
 	fldx.s	$fa1, $fp, $t0
 	slli.d	$a6, $a6, 2
 	fstx.s	$fa1, $fp, $a6
-	move	$a6, $a4
-	blt	$a4, $a7, .LBB4_27
+	move	$a6, $a5
+	blt	$a5, $a7, .LBB4_27
 # %bb.28:                               # %._crit_edge.i.i.i.i
                                         #   in Loop: Header=BB4_25 Depth=1
 	andi	$a6, $a3, 4
@@ -5926,41 +5927,41 @@ _ZSt16__introsort_loopIPflN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_T0_T1_: # @_
 	b	.LBB4_32
 	.p2align	4, , 16
 .LBB4_29:                               #   in Loop: Header=BB4_25 Depth=1
-	move	$a4, $zero
+	move	$a5, $zero
 	andi	$a6, $a3, 4
 	bnez	$a6, .LBB4_32
 .LBB4_30:                               #   in Loop: Header=BB4_25 Depth=1
-	addi.d	$a5, $a5, -2
-	srai.d	$a5, $a5, 1
-	bne	$a4, $a5, .LBB4_32
+	addi.d	$a4, $a4, -2
+	srai.d	$a4, $a4, 1
+	bne	$a5, $a4, .LBB4_32
 # %bb.31:                               # %.thread.i.i.i
                                         #   in Loop: Header=BB4_25 Depth=1
-	slli.d	$a5, $a4, 1
-	addi.d	$a5, $a5, 1
-	slli.d	$a6, $a5, 2
+	slli.d	$a4, $a5, 1
+	addi.d	$a4, $a4, 1
+	slli.d	$a6, $a4, 2
 	fldx.s	$fa1, $fp, $a6
-	slli.d	$a4, $a4, 2
-	fstx.s	$fa1, $fp, $a4
-	move	$a4, $a5
+	slli.d	$a5, $a5, 2
+	fstx.s	$fa1, $fp, $a5
+	move	$a5, $a4
 	b	.LBB4_33
 	.p2align	4, , 16
 .LBB4_32:                               #   in Loop: Header=BB4_25 Depth=1
-	beqz	$a4, .LBB4_23
+	beqz	$a5, .LBB4_23
 	.p2align	4, , 16
 .LBB4_33:                               # %.lr.ph.i.i.i.i.i
                                         #   Parent Loop BB4_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a5, $a4, -1
-	srli.d	$a6, $a5, 1
+	addi.d	$a4, $a5, -1
+	srli.d	$a6, $a4, 1
 	slli.d	$a7, $a6, 2
 	fldx.s	$fa1, $fp, $a7
 	fcmp.cule.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB4_24
 # %bb.34:                               #   in Loop: Header=BB4_33 Depth=2
-	slli.d	$a4, $a4, 2
-	fstx.s	$fa1, $fp, $a4
-	move	$a4, $a6
-	bltu	$a1, $a5, .LBB4_33
+	slli.d	$a5, $a5, 2
+	fstx.s	$fa1, $fp, $a5
+	move	$a5, $a6
+	bltu	$a1, $a4, .LBB4_33
 	b	.LBB4_23
 .LBB4_35:                               # %_ZSt14__partial_sortIPfN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_S4_T0_.exit
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -6233,18 +6234,19 @@ _ZSt11__make_heapIPfN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_RT0_: # @_ZSt11__m
 .LBB6_8:                                # %.lr.ph.i
                                         #   Parent Loop BB6_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.d	$a7, $t0, 1
-	addi.d	$t1, $a7, 2
-	slli.d	$t2, $t1, 2
-	alsl.d	$t3, $t0, $a0, 3
-	fldx.s	$fa1, $a0, $t2
-	fld.s	$fa2, $t3, 4
+	alsl.d	$a7, $t0, $a0, 3
+	ld.d	$a7, $a7, 4
+	slli.d	$t1, $t0, 1
+	addi.d	$t2, $t1, 2
+	vinsgr2vr.d	$vr1, $a7, 0
+	vreplvei.w	$vr2, $vr1, 0
+	vreplvei.w	$vr1, $vr1, 1
 	fcmp.clt.s	$fcc0, $fa1, $fa2
-	addi.d	$a7, $a7, 1
-	movcf2gr	$t2, $fcc0
-	masknez	$t1, $t1, $t2
-	maskeqz	$a7, $a7, $t2
-	or	$a7, $a7, $t1
+	addi.d	$a7, $t1, 1
+	movcf2gr	$t1, $fcc0
+	masknez	$t2, $t2, $t1
+	maskeqz	$a7, $a7, $t1
+	or	$a7, $a7, $t2
 	slli.d	$t1, $a7, 2
 	fldx.s	$fa1, $a0, $t1
 	slli.d	$t0, $t0, 2
@@ -6304,18 +6306,19 @@ _ZSt11__make_heapIPfN9__gnu_cxx5__ops15_Iter_less_iterEEvT_S4_RT0_: # @_ZSt11__m
                                         #   Parent Loop BB6_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a4, $a2
-	slli.d	$a2, $a2, 1
-	addi.d	$a5, $a2, 2
-	slli.d	$a6, $a5, 2
-	alsl.d	$a7, $a4, $a0, 3
-	fldx.s	$fa1, $a0, $a6
-	fld.s	$fa2, $a7, 4
+	alsl.d	$a2, $a2, $a0, 3
+	ld.d	$a2, $a2, 4
+	slli.d	$a5, $a4, 1
+	addi.d	$a6, $a5, 2
+	vinsgr2vr.d	$vr1, $a2, 0
+	vreplvei.w	$vr2, $vr1, 0
+	vreplvei.w	$vr1, $vr1, 1
 	fcmp.clt.s	$fcc0, $fa1, $fa2
-	addi.d	$a2, $a2, 1
-	movcf2gr	$a6, $fcc0
-	masknez	$a5, $a5, $a6
-	maskeqz	$a2, $a2, $a6
-	or	$a2, $a2, $a5
+	addi.d	$a2, $a5, 1
+	movcf2gr	$a5, $fcc0
+	masknez	$a6, $a6, $a5
+	maskeqz	$a2, $a2, $a5
+	or	$a2, $a2, $a6
 	slli.d	$a5, $a2, 2
 	fldx.s	$fa1, $a0, $a5
 	slli.d	$a4, $a4, 2

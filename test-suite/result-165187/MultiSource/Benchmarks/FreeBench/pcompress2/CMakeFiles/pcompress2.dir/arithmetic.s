@@ -214,30 +214,34 @@ do_ari:                                 # @do_ari
 	sltu	$a3, $zero, $a2
 	sub.d	$a2, $a1, $a3
 	addi.d	$a2, $a2, 1
-	ori	$a4, $zero, 4
+	ori	$a4, $zero, 2
 	bltu	$a2, $a4, .LBB0_19
 # %bb.16:                               # %vector.ph52
                                         #   in Loop: Header=BB0_7 Depth=1
 	sub.d	$a4, $zero, $a3
-	and	$a3, $a2, $fp
+	addi.w	$a5, $zero, -2
+	and	$a3, $a2, $a5
 	sub.d	$a1, $a1, $a3
-	bstrpick.d	$a5, $a0, 31, 0
-	alsl.d	$a0, $a5, $s8, 2
-	addi.d	$a0, $a0, -16
-	add.d	$a4, $a4, $a5
-	addi.d	$a4, $a4, 1
-	and	$a4, $a4, $fp
+	bstrpick.d	$a6, $a0, 31, 0
+	add.d	$a0, $a4, $a6
+	addi.d	$a0, $a0, 1
+	and	$a0, $a0, $a5
+	alsl.d	$a4, $a6, $s8, 2
+	addi.d	$a4, $a4, -4
 	.p2align	4, , 16
 .LBB0_17:                               # %vector.body53
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a0, 0
-	vaddi.wu	$vr0, $vr0, 1
-	vst	$vr0, $a0, 0
-	addi.d	$a4, $a4, -4
-	addi.d	$a0, $a0, -16
-	bnez	$a4, .LBB0_17
-# %bb.18:                               # %middle.block57
+	ld.w	$a5, $a4, 0
+	ld.w	$a6, $a4, -4
+	addi.d	$a5, $a5, 1
+	addi.d	$a6, $a6, 1
+	st.w	$a5, $a4, 0
+	st.w	$a6, $a4, -4
+	addi.d	$a0, $a0, -2
+	addi.d	$a4, $a4, -8
+	bnez	$a0, .LBB0_17
+# %bb.18:                               # %middle.block56
                                         #   in Loop: Header=BB0_7 Depth=1
 	beq	$a2, $a3, .LBB0_6
 .LBB0_19:                               # %.lr.ph.i.preheader

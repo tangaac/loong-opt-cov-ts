@@ -1132,7 +1132,7 @@ count_sr_conflicts:                     # @count_sr_conflicts
 	or	$a4, $a2, $a4
 	nor	$a2, $a0, $zero
 	add.d	$a2, $a4, $a2
-	ori	$a5, $zero, 60
+	ori	$a5, $zero, 44
 	bltu	$a2, $a5, .LBB6_28
 # %bb.26:                               # %vector.memcheck98
 	sub.d	$a4, $a0, $a4

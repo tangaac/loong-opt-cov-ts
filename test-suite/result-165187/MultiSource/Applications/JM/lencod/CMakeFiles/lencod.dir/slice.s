@@ -1267,31 +1267,29 @@ encode_one_slice:                       # @encode_one_slice
 	st.d	$a0, $a2, 0
 	sltui	$a0, $a4, 2
 	masknez	$a4, $a1, $a0
-	vld	$vr0, $s3, 8
+	ld.w	$a5, $s3, 8
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a4
 	st.d	$a0, $a2, 8
-	vslti.wu	$vr0, $vr0, 2
-	vpickve2gr.w	$a0, $vr0, 0
-	andi	$a0, $a0, 1
+	sltui	$a0, $a5, 2
 	masknez	$a4, $a1, $a0
+	ld.w	$a5, $s3, 12
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a4
 	st.d	$a0, $a2, 16
-	vpickve2gr.w	$a0, $vr0, 1
-	andi	$a0, $a0, 1
+	sltui	$a0, $a5, 2
 	masknez	$a4, $a1, $a0
+	ld.w	$a5, $s3, 16
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a4
 	st.d	$a0, $a2, 24
-	vpickve2gr.w	$a0, $vr0, 2
-	andi	$a0, $a0, 1
+	sltui	$a0, $a5, 2
 	masknez	$a4, $a1, $a0
+	ld.w	$a5, $s3, 20
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a4
 	st.d	$a0, $a2, 32
-	vpickve2gr.w	$a0, $vr0, 3
-	andi	$a0, $a0, 1
+	sltui	$a0, $a5, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a3, $a0
 	or	$a4, $a0, $a1

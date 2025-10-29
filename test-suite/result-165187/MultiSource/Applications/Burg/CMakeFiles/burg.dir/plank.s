@@ -142,7 +142,7 @@ makePlanks:                             # @makePlanks
 	blt	$a1, $s0, .LBB2_8
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a2, $a2, 24
-	ori	$a4, $zero, 7
+	ori	$a4, $zero, 5
 	ori	$a3, $zero, 1
 	bltu	$a1, $a4, .LBB2_6
 # %bb.2:                                # %vector.memcheck

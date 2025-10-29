@@ -1310,15 +1310,16 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	move	$s2, $zero
 .LBB2_56:                               # %._crit_edge377.i
 	ld.w	$a1, $s7, 68
-	add.w	$s0, $a1, $a0
-	addi.w	$a0, $s0, -1
+	add.d	$a0, $a0, $a1
+	addi.w	$s0, $a0, -1
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
-	bge	$a0, $s2, .LBB2_62
+	bge	$s0, $s2, .LBB2_62
 # %bb.57:
 	move	$s6, $zero
 	st.d	$s8, $sp, 96                    # 8-byte Folded Spill
-	ld.w	$a1, $s7, 72
-	add.w	$s0, $a1, $a0
+	ld.w	$a0, $s7, 72
+	add.w	$s0, $a0, $s0
 	blt	$s0, $s2, .LBB2_67
 .LBB2_58:                               # %.lr.ph394.i
 	move	$s4, $zero
@@ -1355,11 +1356,10 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	ld.d	$a0, $a0, 8
 	b	.LBB2_59
 .LBB2_62:                               # %.lr.ph386.i
-	move	$s4, $zero
+	move	$s7, $zero
 	bstrpick.d	$a0, $s2, 31, 0
-	bstrpick.d	$a1, $s0, 31, 0
-	sub.d	$s2, $a1, $a0
-	slli.d	$s3, $a0, 3
+	addi.d	$s3, $a0, -1
+	slli.d	$s4, $a0, 3
 	b	.LBB2_64
 	.p2align	4, , 16
 .LBB2_63:                               # %clause_GetLiteralAtom.exit243.i
@@ -1371,14 +1371,16 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s1, $a0, 8
-	st.d	$s4, $a0, 0
-	addi.d	$s2, $s2, -1
-	addi.d	$s3, $s3, 8
-	move	$s4, $a0
-	beqz	$s2, .LBB2_66
+	st.d	$s7, $a0, 0
+	addi.d	$s3, $s3, 1
+	addi.w	$s2, $s2, 1
+	addi.d	$s4, $s4, 8
+	move	$s7, $a0
+	bgeu	$s3, $s0, .LBB2_66
 .LBB2_64:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s7, 56
-	ldx.d	$a0, $a0, $s3
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $a0, 56
+	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
 	ld.w	$a1, $a0, 0
 	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
@@ -1390,14 +1392,14 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	b	.LBB2_63
 .LBB2_66:                               # %._crit_edge387.loopexit.i
 	move	$s6, $a0
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
 	ld.w	$a0, $s7, 64
 	ld.w	$a1, $s7, 68
 	add.d	$a0, $a0, $a1
-	addi.d	$a0, $a0, -1
-	move	$s2, $s0
+	addi.d	$s0, $a0, -1
 	st.d	$s8, $sp, 96                    # 8-byte Folded Spill
-	ld.w	$a1, $s7, 72
-	add.w	$s0, $a1, $a0
+	ld.w	$a0, $s7, 72
+	add.w	$s0, $a0, $s0
 	bge	$s0, $s2, .LBB2_58
 .LBB2_67:
 	move	$s8, $zero
@@ -1419,7 +1421,6 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	lu32i.d	$s2, 1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB2_74

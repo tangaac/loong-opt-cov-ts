@@ -60,7 +60,7 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	b	.LBB0_12
 .LBB0_6:
 	move	$s2, $zero
-	b	.LBB0_23
+	b	.LBB0_18
 .LBB0_7:                                # %_ZN9gim_arrayI15GIM_RSORT_TOKENEC2Ej.exit
 	bstrpick.d	$a0, $s5, 31, 0
 	slli.d	$a0, $a0, 3
@@ -79,9 +79,9 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.10:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENE6resizeEjb.exit
-	ld.w	$a1, $s0, 8
-	bnez	$a1, .LBB0_15
-	b	.LBB0_22
+	ld.w	$a3, $s0, 8
+	bnez	$a3, .LBB0_15
+	b	.LBB0_17
 .LBB0_11:
 	st.w	$zero, $fp, 8
 	ori	$a0, $zero, 192
@@ -121,128 +121,53 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	ret
 .LBB0_13:
 	move	$s5, $zero
-	b	.LBB0_23
+	b	.LBB0_18
 .LBB0_14:
 	move	$a0, $s2
-	move	$a1, $s3
+	move	$a3, $s3
 .LBB0_15:                               # %.lr.ph
-	ld.d	$a5, $s0, 0
-	bstrpick.d	$a6, $a1, 31, 0
-	addi.w	$a1, $a1, 0
-	ori	$a7, $zero, 4
-	lu12i.w	$a3, 280480
-	lu12i.w	$a4, 281194
-	lu12i.w	$a2, 282709
-	bgeu	$a1, $a7, .LBB0_17
-# %bb.16:
+	ld.d	$a4, $s0, 0
 	move	$a1, $zero
-	b	.LBB0_20
-.LBB0_17:                               # %vector.ph
-	move	$a7, $zero
-	bstrpick.d	$a1, $a6, 31, 2
-	slli.d	$a1, $a1, 2
-	addi.d	$t0, $a0, 16
-	addi.d	$t1, $a5, 96
-	vreplgr2vr.w	$vr0, $a3
-	vldi	$vr1, -1424
-	vreplgr2vr.w	$vr2, $a4
-	vreplgr2vr.w	$vr3, $a2
-	vldi	$vr4, -1528
-	move	$t2, $a1
-	.p2align	4, , 16
-.LBB0_18:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	addi.d	$t3, $a7, 1
-	addi.d	$t4, $a7, 2
-	fld.s	$fa5, $t1, -96
-	fld.s	$fa6, $t1, -48
-	fld.s	$fa7, $t1, 0
-	fld.s	$ft0, $t1, 48
-	addi.d	$t5, $a7, 3
-	vextrins.w	$vr5, $vr6, 16
-	vextrins.w	$vr5, $vr7, 32
-	vextrins.w	$vr5, $vr8, 48
-	vfmadd.s	$vr5, $vr5, $vr0, $vr1
-	fld.s	$fa6, $t1, -92
-	fld.s	$fa7, $t1, -44
-	fld.s	$ft0, $t1, 4
-	fld.s	$ft1, $t1, 52
-	vftintrz.w.s	$vr5, $vr5
-	vextrins.w	$vr6, $vr7, 16
-	vextrins.w	$vr6, $vr8, 32
-	vextrins.w	$vr6, $vr9, 48
-	vfmul.s	$vr6, $vr6, $vr2
-	fld.s	$fa7, $t1, -88
-	fld.s	$ft0, $t1, -40
-	fld.s	$ft1, $t1, 8
-	fld.s	$ft2, $t1, 56
-	vftintrz.w.s	$vr6, $vr6
-	vextrins.w	$vr7, $vr8, 16
-	vextrins.w	$vr7, $vr9, 32
-	vextrins.w	$vr7, $vr10, 48
-	vfmadd.s	$vr7, $vr7, $vr3, $vr4
-	vftintrz.w.s	$vr7, $vr7
-	vslli.w	$vr6, $vr6, 4
-	vadd.w	$vr5, $vr6, $vr5
-	vslli.w	$vr6, $vr7, 8
-	vadd.w	$vr5, $vr5, $vr6
-	vstelm.w	$vr5, $t0, -16, 0
-	vstelm.w	$vr5, $t0, -8, 1
-	vstelm.w	$vr5, $t0, 0, 2
-	vstelm.w	$vr5, $t0, 8, 3
-	st.w	$a7, $t0, -12
-	st.w	$t3, $t0, -4
-	st.w	$t4, $t0, 4
-	st.w	$t5, $t0, 12
-	addi.d	$a7, $a7, 4
-	addi.d	$t2, $t2, -4
-	addi.d	$t0, $t0, 32
-	addi.d	$t1, $t1, 192
-	bnez	$t2, .LBB0_18
-# %bb.19:                               # %middle.block
-	beq	$a1, $a6, .LBB0_22
-.LBB0_20:                               # %scalar.ph.preheader
-	sub.d	$a6, $a6, $a1
-	slli.d	$a7, $a1, 5
-	alsl.d	$a7, $a1, $a7, 4
-	add.d	$a5, $a7, $a5
-	addi.d	$a5, $a5, 8
-	alsl.d	$a7, $a1, $a0, 3
-	addi.d	$a7, $a7, 4
+	move	$a2, $zero
+	bstrpick.d	$a5, $a3, 31, 0
+	addi.d	$a3, $a4, 8
+	slli.d	$a4, $a5, 3
 	vldi	$vr0, -1168
-	movgr2fr.w	$fa1, $a3
-	movgr2fr.w	$fa2, $a4
+	lu12i.w	$a5, 280480
+	movgr2fr.w	$fa1, $a5
+	lu12i.w	$a5, 281194
+	movgr2fr.w	$fa2, $a5
 	vldi	$vr3, -1272
-	movgr2fr.w	$fa4, $a2
+	lu12i.w	$a5, 282709
+	movgr2fr.w	$fa4, $a5
 	.p2align	4, , 16
-.LBB0_21:                               # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	fld.s	$fa5, $a5, -8
+.LBB0_16:                               # =>This Inner Loop Header: Depth=1
+	fld.s	$fa5, $a3, -8
 	fmadd.s	$fa5, $fa5, $fa1, $fa0
-	fld.s	$fa6, $a5, -4
+	fld.s	$fa6, $a3, -4
 	ftintrz.w.s	$fa5, $fa5
-	movfr2gr.s	$a2, $fa5
-	fld.s	$fa5, $a5, 0
+	movfr2gr.s	$a5, $fa5
+	fld.s	$fa5, $a3, 0
 	fmul.s	$fa6, $fa6, $fa2
 	ftintrz.w.s	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	movfr2gr.s	$a6, $fa6
 	fmadd.s	$fa5, $fa5, $fa4, $fa3
 	ftintrz.w.s	$fa5, $fa5
-	movfr2gr.s	$a4, $fa5
-	alsl.d	$a2, $a3, $a2, 4
-	slli.d	$a3, $a4, 8
-	add.d	$a2, $a2, $a3
-	st.w	$a2, $a7, -4
-	st.w	$a1, $a7, 0
-	addi.d	$a1, $a1, 1
-	addi.d	$a6, $a6, -1
-	addi.d	$a5, $a5, 48
-	addi.d	$a7, $a7, 8
-	bnez	$a6, .LBB0_21
-.LBB0_22:
+	movfr2gr.s	$a7, $fa5
+	alsl.d	$a5, $a6, $a5, 4
+	slli.d	$a6, $a7, 8
+	add.d	$a5, $a5, $a6
+	add.d	$a6, $a0, $a1
+	stx.w	$a5, $a0, $a1
+	st.w	$a2, $a6, 4
+	addi.d	$a2, $a2, 1
+	addi.d	$a1, $a1, 8
+	addi.d	$a3, $a3, 48
+	bne	$a4, $a1, .LBB0_16
+.LBB0_17:
 	move	$s5, $s3
 	move	$s2, $a0
-.LBB0_23:                               # %._crit_edge
+.LBB0_18:                               # %._crit_edge
 .Ltmp3:                                 # EH_LABEL
 	addi.w	$s3, $s5, 0
 	move	$a0, $s2
@@ -251,25 +176,25 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	pcaddu18i	$ra, %call36(_Z13gim_heap_sortI15GIM_RSORT_TOKEN26GIM_RSORT_TOKEN_COMPARATOREvPT_jT0_)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
-# %bb.24:
+# %bb.19:
 	ld.w	$s4, $s2, 0
 	ld.wu	$s6, $s2, 4
 	ld.w	$a0, $fp, 12
 	ld.w	$a1, $fp, 8
 	ld.d	$s7, $s0, 0
-	bgeu	$a1, $a0, .LBB0_26
-# %bb.25:                               # %._ZN9gim_arrayI11GIM_CONTACTE12growingCheckEv.exit_crit_edge.i67
+	bgeu	$a1, $a0, .LBB0_21
+# %bb.20:                               # %._ZN9gim_arrayI11GIM_CONTACTE12growingCheckEv.exit_crit_edge.i67
 	ld.d	$a0, $fp, 0
-	b	.LBB0_31
-.LBB0_26:
+	b	.LBB0_26
+.LBB0_21:
 	ori	$a2, $zero, 4
 	alsl.w	$s8, $a1, $a2, 1
 	st.w	$a0, $fp, 8
-	beqz	$s8, .LBB0_58
-# %bb.27:
+	beqz	$s8, .LBB0_53
+# %bb.22:
 	bstrpick.d	$a2, $s8, 31, 0
-	beqz	$a0, .LBB0_29
-# %bb.28:
+	beqz	$a0, .LBB0_24
+# %bb.23:
 	bstrpick.d	$a1, $a0, 31, 0
 	ld.d	$a0, $fp, 0
 	ori	$a3, $zero, 48
@@ -279,19 +204,19 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	pcaddu18i	$ra, %call36(_Z11gim_reallocPvmm)
 	jirl	$ra, $ra, 0
 .Ltmp7:                                 # EH_LABEL
-	b	.LBB0_30
-.LBB0_29:
+	b	.LBB0_25
+.LBB0_24:
 	slli.d	$a0, $a2, 5
 	alsl.d	$a0, $a2, $a0, 4
 .Ltmp8:                                 # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z9gim_allocm)
 	jirl	$ra, $ra, 0
 .Ltmp9:                                 # EH_LABEL
-.LBB0_30:                               # %.noexc70
+.LBB0_25:                               # %.noexc70
 	ld.w	$a1, $fp, 8
 	st.d	$a0, $fp, 0
 	st.w	$s8, $fp, 12
-.LBB0_31:
+.LBB0_26:
 	slli.d	$a2, $s6, 5
 	alsl.d	$a2, $s6, $a2, 4
 	add.d	$a2, $s7, $a2
@@ -309,8 +234,8 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	addi.d	$a1, $a0, 1
 	ori	$a2, $zero, 2
 	st.w	$a1, $fp, 8
-	bltu	$s3, $a2, .LBB0_55
-# %bb.32:                               # %.lr.ph120.preheader
+	bltu	$s3, $a2, .LBB0_50
+# %bb.27:                               # %.lr.ph120.preheader
 	ld.d	$a1, $fp, 0
 	move	$s6, $zero
 	slli.d	$a2, $a0, 5
@@ -328,9 +253,9 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	ori	$a1, $a1, 2527
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ori	$a5, $zero, 48
-	b	.LBB0_35
+	b	.LBB0_30
 	.p2align	4, , 16
-.LBB0_33:                               #   in Loop: Header=BB0_35 Depth=1
+.LBB0_28:                               #   in Loop: Header=BB0_30 Depth=1
 	vld	$vr0, $s8, 32
 	vst	$vr0, $a0, 32
 	vld	$vr0, $s8, 16
@@ -338,12 +263,12 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	vld	$vr0, $s8, 0
 	move	$s6, $zero
 	vst	$vr0, $a0, 0
-.LBB0_34:                               #   in Loop: Header=BB0_35 Depth=1
+.LBB0_29:                               #   in Loop: Header=BB0_30 Depth=1
 	addi.d	$s5, $s5, 1
-	beq	$s5, $s3, .LBB0_55
-.LBB0_35:                               # %.lr.ph120
+	beq	$s5, $s3, .LBB0_50
+.LBB0_30:                               # %.lr.ph120
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_44 Depth 2
+                                        #     Child Loop BB0_39 Depth 2
 	move	$a1, $s4
 	alsl.d	$a2, $s5, $s2, 3
 	slli.d	$a3, $s5, 3
@@ -353,63 +278,64 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	slli.d	$a4, $a2, 5
 	alsl.d	$a2, $a2, $a4, 4
 	add.d	$s8, $a3, $a2
-	bne	$a1, $s4, .LBB0_41
-# %bb.36:                               #   in Loop: Header=BB0_35 Depth=1
+	bne	$a1, $s4, .LBB0_36
+# %bb.31:                               #   in Loop: Header=BB0_30 Depth=1
 	fld.s	$fa0, $a0, 32
 	fld.s	$fa1, $s8, 32
 	fadd.s	$fa2, $fa0, $fs0
 	fcmp.cule.s	$fcc0, $fa2, $fa1
-	bceqz	$fcc0, .LBB0_33
-# %bb.37:                               #   in Loop: Header=BB0_35 Depth=1
-	beqz	$s1, .LBB0_34
-# %bb.38:                               #   in Loop: Header=BB0_35 Depth=1
+	bceqz	$fcc0, .LBB0_28
+# %bb.32:                               #   in Loop: Header=BB0_30 Depth=1
+	beqz	$s1, .LBB0_29
+# %bb.33:                               #   in Loop: Header=BB0_30 Depth=1
 	fsub.s	$fa0, $fa0, $fa1
 	fabs.s	$fa0, $fa0
 	fcmp.cule.s	$fcc0, $fs1, $fa0
-	bcnez	$fcc0, .LBB0_34
-# %bb.39:                               #   in Loop: Header=BB0_35 Depth=1
+	bcnez	$fcc0, .LBB0_29
+# %bb.34:                               #   in Loop: Header=BB0_30 Depth=1
 	ori	$a1, $zero, 7
-	bltu	$a1, $s6, .LBB0_34
-# %bb.40:                               #   in Loop: Header=BB0_35 Depth=1
+	bltu	$a1, $s6, .LBB0_29
+# %bb.35:                               #   in Loop: Header=BB0_30 Depth=1
 	vld	$vr0, $s8, 16
 	slli.d	$a1, $s6, 4
 	addi.d	$a2, $sp, 24
 	vstx	$vr0, $a1, $a2
 	addi.d	$s6, $s6, 1
-	b	.LBB0_34
+	b	.LBB0_29
 	.p2align	4, , 16
-.LBB0_41:                               #   in Loop: Header=BB0_35 Depth=1
-	beqz	$s1, .LBB0_47
-# %bb.42:                               #   in Loop: Header=BB0_35 Depth=1
-	beqz	$s6, .LBB0_47
-# %bb.43:                               # %.lr.ph.preheader.i
-                                        #   in Loop: Header=BB0_35 Depth=1
-	fld.s	$fa1, $a0, 16
-	fld.s	$fa2, $a0, 20
-	fld.s	$fa0, $a0, 24
-	addi.d	$a1, $sp, 32
+.LBB0_36:                               #   in Loop: Header=BB0_30 Depth=1
+	beqz	$s1, .LBB0_42
+# %bb.37:                               #   in Loop: Header=BB0_30 Depth=1
+	beqz	$s6, .LBB0_42
+# %bb.38:                               # %.lr.ph.preheader.i
+                                        #   in Loop: Header=BB0_30 Depth=1
+	ld.d	$a1, $a0, 20
+	fld.s	$fa0, $a0, 16
+	vinsgr2vr.d	$vr2, $a1, 0
+	addi.d	$a1, $sp, 28
 	.p2align	4, , 16
-.LBB0_44:                               # %.lr.ph.i
-                                        #   Parent Loop BB0_35 Depth=1
+.LBB0_39:                               # %.lr.ph.i
+                                        #   Parent Loop BB0_30 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.s	$fa3, $a1, -8
-	fld.s	$fa4, $a1, -4
-	fld.s	$fa5, $a1, 0
-	fadd.s	$fa1, $fa1, $fa3
-	fadd.s	$fa2, $fa2, $fa4
-	fadd.s	$fa0, $fa0, $fa5
+	fld.s	$fa1, $a1, -4
+	ld.d	$a2, $a1, 0
+	fadd.s	$fa0, $fa0, $fa1
+	vinsgr2vr.d	$vr1, $a2, 0
+	vfadd.s	$vr2, $vr2, $vr1
 	addi.d	$s6, $s6, -1
 	addi.d	$a1, $a1, 16
-	bnez	$s6, .LBB0_44
-# %bb.45:                               # %._crit_edge.i
-                                        #   in Loop: Header=BB0_35 Depth=1
-	fmul.s	$fa3, $fa2, $fa2
-	fmadd.s	$fa3, $fa1, $fa1, $fa3
+	bnez	$s6, .LBB0_39
+# %bb.40:                               # %._crit_edge.i
+                                        #   in Loop: Header=BB0_30 Depth=1
+	vreplvei.w	$vr1, $vr2, 0
+	fmul.s	$fa3, $fa1, $fa1
 	fmadd.s	$fa3, $fa0, $fa0, $fa3
+	vreplvei.w	$vr2, $vr2, 1
+	fmadd.s	$fa3, $fa2, $fa2, $fa3
 	move	$s6, $zero
 	fcmp.clt.s	$fcc0, $fa3, $fs1
-	bcnez	$fcc0, .LBB0_47
-# %bb.46:                               #   in Loop: Header=BB0_35 Depth=1
+	bcnez	$fcc0, .LBB0_42
+# %bb.41:                               #   in Loop: Header=BB0_30 Depth=1
 	vldi	$vr4, -1056
 	fmul.s	$fa4, $fa3, $fa4
 	movfr2gr.s	$a1, $fa3
@@ -421,36 +347,36 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	vldi	$vr5, -1160
 	fmadd.s	$fa4, $fa4, $fa3, $fa5
 	fmul.s	$fa3, $fa4, $fa3
-	fmul.s	$fa1, $fa1, $fa3
-	fmul.s	$fa2, $fa2, $fa3
-	movfr2gr.s	$a1, $fa1
-	movfr2gr.s	$a2, $fa2
-	bstrins.d	$a1, $a2, 63, 32
 	fmul.s	$fa0, $fa0, $fa3
+	fmul.s	$fa1, $fa1, $fa3
+	movfr2gr.s	$a1, $fa0
+	movfr2gr.s	$a2, $fa1
+	bstrins.d	$a1, $a2, 63, 32
+	fmul.s	$fa0, $fa2, $fa3
 	st.d	$a1, $a0, 16
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
 	st.d	$a1, $a0, 24
-.LBB0_47:                               # %_ZN11GIM_CONTACT19interpolate_normalsEP9btVector3j.exit
-                                        #   in Loop: Header=BB0_35 Depth=1
+.LBB0_42:                               # %_ZN11GIM_CONTACT19interpolate_normalsEP9btVector3j.exit
+                                        #   in Loop: Header=BB0_30 Depth=1
 	ld.w	$a0, $fp, 12
 	ld.w	$a1, $fp, 8
-	bgeu	$a1, $a0, .LBB0_49
-# %bb.48:                               # %._ZN9gim_arrayI11GIM_CONTACTE12growingCheckEv.exit_crit_edge.i76
-                                        #   in Loop: Header=BB0_35 Depth=1
+	bgeu	$a1, $a0, .LBB0_44
+# %bb.43:                               # %._ZN9gim_arrayI11GIM_CONTACTE12growingCheckEv.exit_crit_edge.i76
+                                        #   in Loop: Header=BB0_30 Depth=1
 	ld.d	$a0, $fp, 0
-	b	.LBB0_54
+	b	.LBB0_49
 	.p2align	4, , 16
-.LBB0_49:                               #   in Loop: Header=BB0_35 Depth=1
+.LBB0_44:                               #   in Loop: Header=BB0_30 Depth=1
 	move	$s7, $s0
 	move	$s0, $s1
 	ori	$a2, $zero, 4
 	alsl.w	$s1, $a1, $a2, 1
 	st.w	$a0, $fp, 8
-	beqz	$s1, .LBB0_56
-# %bb.50:                               #   in Loop: Header=BB0_35 Depth=1
-	beqz	$a0, .LBB0_52
-# %bb.51:                               #   in Loop: Header=BB0_35 Depth=1
+	beqz	$s1, .LBB0_51
+# %bb.45:                               #   in Loop: Header=BB0_30 Depth=1
+	beqz	$a0, .LBB0_47
+# %bb.46:                               #   in Loop: Header=BB0_30 Depth=1
 	bstrpick.d	$a1, $a0, 31, 0
 	ld.d	$a0, $fp, 0
 	mul.d	$a1, $a1, $a5
@@ -460,8 +386,8 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	pcaddu18i	$ra, %call36(_Z11gim_reallocPvmm)
 	jirl	$ra, $ra, 0
 .Ltmp14:                                # EH_LABEL
-	b	.LBB0_53
-.LBB0_52:                               #   in Loop: Header=BB0_35 Depth=1
+	b	.LBB0_48
+.LBB0_47:                               #   in Loop: Header=BB0_30 Depth=1
 	bstrpick.d	$a0, $s1, 31, 0
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 4
@@ -469,15 +395,15 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	pcaddu18i	$ra, %call36(_Z9gim_allocm)
 	jirl	$ra, $ra, 0
 .Ltmp16:                                # EH_LABEL
-.LBB0_53:                               # %.noexc79
-                                        #   in Loop: Header=BB0_35 Depth=1
+.LBB0_48:                               # %.noexc79
+                                        #   in Loop: Header=BB0_30 Depth=1
 	ld.w	$a1, $fp, 8
 	st.d	$a0, $fp, 0
 	st.w	$s1, $fp, 12
 	move	$s1, $s0
 	move	$s0, $s7
 	ori	$a5, $zero, 48
-.LBB0_54:                               #   in Loop: Header=BB0_35 Depth=1
+.LBB0_49:                               #   in Loop: Header=BB0_30 Depth=1
 	vld	$vr0, $s8, 0
 	bstrpick.d	$a1, $a1, 31, 0
 	mul.d	$a1, $a1, $a5
@@ -493,8 +419,8 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	st.w	$a2, $fp, 8
 	mul.d	$a0, $a0, $a5
 	add.d	$a0, $a1, $a0
-	b	.LBB0_34
-.LBB0_55:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENED2Ev.exit
+	b	.LBB0_29
+.LBB0_50:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENED2Ev.exit
 	move	$a0, $s2
 	fld.d	$fs1, $sp, 152                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 160                  # 8-byte Folded Reload
@@ -512,52 +438,52 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	addi.d	$sp, $sp, 256
 	pcaddu18i	$t8, %call36(_Z8gim_freePv)
 	jr	$t8
-.LBB0_56:
+.LBB0_51:
 	ld.d	$a0, $fp, 0
 	st.w	$zero, $fp, 12
 .Ltmp18:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z8gim_freePv)
 	jirl	$ra, $ra, 0
 .Ltmp19:                                # EH_LABEL
-# %bb.57:                               # %.noexc78
-.LBB0_58:
+# %bb.52:                               # %.noexc78
+.LBB0_53:
 	ld.d	$a0, $fp, 0
 	st.w	$zero, $fp, 12
 .Ltmp10:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Z8gim_freePv)
 	jirl	$ra, $ra, 0
 .Ltmp11:                                # EH_LABEL
-# %bb.59:                               # %.noexc69
-.LBB0_60:                               # %.thread
+# %bb.54:                               # %.noexc69
+.LBB0_55:                               # %.thread
 .Ltmp2:                                 # EH_LABEL
-	b	.LBB0_63
-.LBB0_61:
+	b	.LBB0_58
+.LBB0_56:
 .Ltmp12:                                # EH_LABEL
-	b	.LBB0_66
-.LBB0_62:
+	b	.LBB0_61
+.LBB0_57:
 .Ltmp5:                                 # EH_LABEL
-.LBB0_63:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENE5clearEv.exit.i.i83
+.LBB0_58:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENE5clearEv.exit.i.i83
 	move	$fp, $a0
-	bnez	$s2, .LBB0_67
-	b	.LBB0_68
-.LBB0_64:                               # %.loopexit.split-lp
+	bnez	$s2, .LBB0_62
+	b	.LBB0_63
+.LBB0_59:                               # %.loopexit.split-lp
 .Ltmp20:                                # EH_LABEL
-	b	.LBB0_66
-.LBB0_65:                               # %.loopexit
+	b	.LBB0_61
+.LBB0_60:                               # %.loopexit
 .Ltmp17:                                # EH_LABEL
-.LBB0_66:
+.LBB0_61:
 	move	$fp, $a0
-.LBB0_67:
+.LBB0_62:
 .Ltmp21:                                # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Z8gim_freePv)
 	jirl	$ra, $ra, 0
 .Ltmp22:                                # EH_LABEL
-.LBB0_68:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENED2Ev.exit85
+.LBB0_63:                               # %_ZN9gim_arrayI15GIM_RSORT_TOKENED2Ev.exit85
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB0_69:
+.LBB0_64:
 .Ltmp23:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0

@@ -1408,7 +1408,7 @@ hypre_SMGRelaxSetNumSpaces:             # @hypre_SMGRelaxSetNumSpaces
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $fp, 48
 	ld.d	$a3, $fp, 56
-	ori	$a1, $zero, 12
+	ori	$a1, $zero, 8
 	bgeu	$s0, $a1, .LBB16_6
 # %bb.2:
 	move	$a1, $zero

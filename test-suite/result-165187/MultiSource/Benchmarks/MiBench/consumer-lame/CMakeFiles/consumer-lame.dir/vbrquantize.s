@@ -1175,52 +1175,52 @@ compute_scalefacs_long:                 # @compute_scalefacs_long
 	div.w	$a1, $a1, $s2
 	movgr2fr.w	$fa5, $a1
 	ffint.d.w	$fa5, $fa5
-	fadd.d	$fa4, $fa4, $fa5
-	fcmp.clt.d	$fcc0, $fa0, $fa4
+	fadd.d	$fa6, $fa4, $fa5
+	fcmp.clt.d	$fcc0, $fa0, $fa6
 	bcnez	$fcc0, .LBB3_11
 # %bb.4:
 	ld.w	$a1, $a0, 60
-	fld.d	$fa5, $sp, 136
+	fld.d	$fa4, $sp, 136
 	div.w	$a1, $a1, $s2
-	movgr2fr.w	$fa6, $a1
-	ffint.d.w	$fa6, $fa6
-	fadd.d	$fa6, $fa5, $fa6
-	fcmp.clt.d	$fcc0, $fa0, $fa6
+	movgr2fr.w	$fa5, $a1
+	ffint.d.w	$fa5, $fa5
+	fadd.d	$ft1, $fa4, $fa5
+	fcmp.clt.d	$fcc0, $fa0, $ft1
 	bcnez	$fcc0, .LBB3_11
 # %bb.5:
 	ld.w	$a1, $a0, 64
 	fld.d	$fa5, $sp, 144
 	div.w	$a1, $a1, $s2
-	movgr2fr.w	$fa7, $a1
-	ffint.d.w	$fa7, $fa7
-	fadd.d	$fa7, $fa5, $fa7
-	fcmp.clt.d	$fcc0, $fa0, $fa7
+	movgr2fr.w	$fa4, $a1
+	ffint.d.w	$fa4, $fa4
+	fadd.d	$fa4, $fa5, $fa4
+	fcmp.clt.d	$fcc0, $fa0, $fa4
 	bcnez	$fcc0, .LBB3_11
 # %bb.6:
 	ld.w	$a1, $a0, 68
-	fld.d	$fa7, $sp, 152
+	fld.d	$ft0, $sp, 152
 	div.w	$a1, $a1, $s2
-	movgr2fr.w	$ft0, $a1
-	ffint.d.w	$ft0, $ft0
-	fadd.d	$ft0, $fa7, $ft0
-	fcmp.clt.d	$fcc0, $fa0, $ft0
+	movgr2fr.w	$fa4, $a1
+	ffint.d.w	$fa4, $fa4
+	fadd.d	$fa4, $ft0, $fa4
+	fcmp.clt.d	$fcc0, $fa0, $fa4
 	bcnez	$fcc0, .LBB3_11
 # %bb.7:
 	ld.w	$a1, $a0, 72
-	fld.d	$ft0, $sp, 160
+	fld.d	$fa4, $sp, 160
 	div.w	$a1, $a1, $s2
-	movgr2fr.w	$ft1, $a1
-	ffint.d.w	$ft1, $ft1
-	fadd.d	$ft1, $ft0, $ft1
-	fcmp.clt.d	$fcc0, $fa0, $ft1
+	movgr2fr.w	$fa7, $a1
+	ffint.d.w	$fa7, $fa7
+	fadd.d	$fa7, $fa4, $fa7
+	fcmp.clt.d	$fcc0, $fa0, $fa7
 	bcnez	$fcc0, .LBB3_11
 # %bb.8:
 	ld.w	$a1, $a0, 76
-	fld.d	$ft1, $sp, 168
+	fld.d	$fa7, $sp, 168
 	div.w	$a1, $a1, $s2
 	movgr2fr.w	$ft2, $a1
 	ffint.d.w	$ft2, $ft2
-	fadd.d	$ft2, $ft1, $ft2
+	fadd.d	$ft2, $fa7, $ft2
 	fcmp.clt.d	$fcc0, $fa0, $ft2
 	bcnez	$fcc0, .LBB3_11
 # %bb.9:
@@ -1237,34 +1237,38 @@ compute_scalefacs_long:                 # @compute_scalefacs_long
 	st.w	$a1, $s0, 64
 	fst.d	$fa1, $sp, 104
 	fst.d	$fa2, $sp, 112
-	ld.w	$a1, $a0, 64
+	ld.d	$a1, $a0, 64
 	fst.d	$fa3, $sp, 120
-	fst.d	$fa4, $sp, 128
-	fst.d	$fa6, $sp, 136
+	fst.d	$fa6, $sp, 128
+	fst.d	$ft1, $sp, 136
+	vinsgr2vr.d	$vr1, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 0
 	div.w	$a1, $a1, $s2
-	movgr2fr.w	$fa1, $a1
-	ld.w	$a1, $a0, 68
+	vpickve2gr.w	$a2, $vr1, 1
+	div.w	$a2, $a2, $s2
+	movgr2fr.w	$fa1, $a2
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fa1, $fa5, $fa1
-	fst.d	$fa1, $sp, 144
+	movgr2fr.w	$fa2, $a1
+	ffint.d.w	$fa2, $fa2
+	vextrins.d	$vr2, $vr1, 16
+	ld.d	$a1, $a0, 72
+	vextrins.d	$vr5, $vr8, 16
+	vfadd.d	$vr1, $vr5, $vr2
+	vst	$vr1, $sp, 144
+	vinsgr2vr.d	$vr1, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 0
 	div.w	$a1, $a1, $s2
-	movgr2fr.w	$fa1, $a1
-	ld.w	$a1, $a0, 72
+	vpickve2gr.w	$a2, $vr1, 1
+	div.w	$a2, $a2, $s2
+	movgr2fr.w	$fa1, $a2
 	ffint.d.w	$fa1, $fa1
-	fadd.d	$fa1, $fa7, $fa1
-	fst.d	$fa1, $sp, 152
-	div.w	$a1, $a1, $s2
-	movgr2fr.w	$fa1, $a1
-	ld.w	$a1, $a0, 76
-	ffint.d.w	$fa1, $fa1
-	fadd.d	$fa1, $ft0, $fa1
-	fst.d	$fa1, $sp, 160
-	div.w	$a1, $a1, $s2
-	movgr2fr.w	$fa1, $a1
+	movgr2fr.w	$fa2, $a1
+	ffint.d.w	$fa2, $fa2
+	vextrins.d	$vr2, $vr1, 16
 	ld.w	$a0, $a0, 80
-	ffint.d.w	$fa1, $fa1
-	fadd.d	$fa1, $ft1, $fa1
-	fst.d	$fa1, $sp, 168
+	vextrins.d	$vr4, $vr7, 16
+	vfadd.d	$vr1, $vr4, $vr2
+	vst	$vr1, $sp, 160
 	div.w	$a0, $a0, $s2
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
@@ -1676,168 +1680,168 @@ VBR_iteration_loop_new:                 # @VBR_iteration_loop_new
 # %bb.20:                               # %.preheader.preheader
                                         #   in Loop: Header=BB4_10 Depth=2
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 912
+	ori	$a1, $a1, 896
 	add.d	$a1, $sp, $a1
 	vld	$vr1, $a1, 0
+	vreplvei.d	$vr0, $vr4, 0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 912
+	add.d	$a1, $sp, $a1
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 896
 	add.d	$a1, $sp, $a1
-	vld	$vr2, $a1, 0
-	vreplvei.d	$vr0, $vr4, 0
-	vfsub.d	$vr1, $vr1, $vr0
+	vst	$vr1, $a1, 0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 928
+	add.d	$a1, $sp, $a1
+	vld	$vr1, $a1, 0
 	vfsub.d	$vr2, $vr2, $vr0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 928
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 896
-	add.d	$a1, $sp, $a1
-	vst	$vr2, $a1, 0
-	lu12i.w	$a1, 1
 	ori	$a1, $a1, 912
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 944
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
-	vfsub.d	$vr2, $vr3, $vr0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 928
 	add.d	$a1, $sp, $a1
-	vst	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 976
-	add.d	$a1, $sp, $a1
-	vld	$vr2, $a1, 0
+	vst	$vr1, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 960
 	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	vfsub.d	$vr1, $vr1, $vr0
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 944
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
-	vfsub.d	$vr1, $vr2, $vr0
-	vfsub.d	$vr2, $vr3, $vr0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 992
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 960
-	add.d	$a1, $sp, $a1
 	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1008
+	ori	$a1, $a1, 960
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
-	vfsub.d	$vr2, $vr3, $vr0
+	vst	$vr1, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 992
 	add.d	$a1, $sp, $a1
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 976
+	add.d	$a1, $sp, $a1
 	vst	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1040
-	add.d	$a1, $sp, $a1
-	vld	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1024
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1008
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
-	vfsub.d	$vr1, $vr2, $vr0
-	vfsub.d	$vr2, $vr3, $vr0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1056
+	ori	$a1, $a1, 992
 	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
+	vst	$vr1, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1024
+	add.d	$a1, $sp, $a1
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1008
 	add.d	$a1, $sp, $a1
 	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1040
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1072
+	ori	$a1, $a1, 1024
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
-	vfsub.d	$vr2, $vr3, $vr0
+	vst	$vr1, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1056
 	add.d	$a1, $sp, $a1
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1040
+	add.d	$a1, $sp, $a1
 	vst	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1104
-	add.d	$a1, $sp, $a1
-	vld	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1088
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1072
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
-	vfsub.d	$vr1, $vr2, $vr0
-	vfsub.d	$vr2, $vr3, $vr0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1120
+	ori	$a1, $a1, 1056
 	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
+	vst	$vr1, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1088
+	add.d	$a1, $sp, $a1
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1072
 	add.d	$a1, $sp, $a1
 	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1104
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1136
+	ori	$a1, $a1, 1088
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
-	vfsub.d	$vr2, $vr3, $vr0
+	vst	$vr1, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1120
 	add.d	$a1, $sp, $a1
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1104
+	add.d	$a1, $sp, $a1
 	vst	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1168
-	add.d	$a1, $sp, $a1
-	vld	$vr2, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1152
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	vfsub.d	$vr1, $vr1, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1136
 	add.d	$a1, $sp, $a1
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1120
+	add.d	$a1, $sp, $a1
 	vst	$vr1, $a1, 0
-	vfsub.d	$vr1, $vr2, $vr0
-	vfsub.d	$vr0, $vr3, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1152
 	add.d	$a1, $sp, $a1
-	vst	$vr0, $a1, 0
+	vld	$vr1, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1168
 	add.d	$a1, $sp, $a1
+	vld	$vr3, $a1, 0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1136
+	add.d	$a1, $sp, $a1
+	vst	$vr2, $a1, 0
+	vfsub.d	$vr1, $vr1, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1152
+	add.d	$a1, $sp, $a1
 	vst	$vr1, $a1, 0
+	vfsub.d	$vr0, $vr3, $vr0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 1168
+	add.d	$a1, $sp, $a1
+	vst	$vr0, $a1, 0
 	st.w	$zero, $s1, 68
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
@@ -1871,93 +1875,93 @@ VBR_iteration_loop_new:                 # @VBR_iteration_loop_new
 	ori	$a1, $a1, 720
 	add.d	$a1, $sp, $a1
 	vld	$vr0, $a1, 0
+	vreplvei.d	$vr1, $vr4, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 736
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
-	vreplvei.d	$vr2, $vr4, 0
-	vfsub.d	$vr0, $vr0, $vr2
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr0, $vr0, $vr1
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 720
 	add.d	$a1, $sp, $a1
 	vst	$vr0, $a1, 0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 768
-	add.d	$a1, $sp, $a1
-	vld	$vr0, $a1, 0
-	lu12i.w	$a1, 1
 	ori	$a1, $a1, 752
 	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	vfsub.d	$vr1, $vr1, $vr2
+	vld	$vr0, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr1
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 736
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
-	vfsub.d	$vr0, $vr0, $vr2
-	vfsub.d	$vr1, $vr3, $vr2
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 784
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 752
-	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 768
 	add.d	$a1, $sp, $a1
-	vst	$vr0, $a1, 0
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr0, $vr0, $vr1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 800
+	ori	$a1, $a1, 752
 	add.d	$a1, $sp, $a1
-	vld	$vr0, $a1, 0
-	vfsub.d	$vr1, $vr3, $vr2
+	vst	$vr0, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 784
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vld	$vr0, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 832
+	ori	$a1, $a1, 768
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 816
-	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
-	vfsub.d	$vr0, $vr0, $vr2
+	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 800
 	add.d	$a1, $sp, $a1
-	vst	$vr0, $a1, 0
-	vfsub.d	$vr0, $vr1, $vr2
-	vfsub.d	$vr1, $vr3, $vr2
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr0, $vr0, $vr1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 864
+	ori	$a1, $a1, 784
 	add.d	$a1, $sp, $a1
-	vld	$vr3, $a1, 0
+	vst	$vr0, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 816
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vld	$vr0, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 848
+	ori	$a1, $a1, 800
 	add.d	$a1, $sp, $a1
-	vld	$vr1, $a1, 0
+	vst	$vr2, $a1, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 832
 	add.d	$a1, $sp, $a1
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr0, $vr0, $vr1
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 816
+	add.d	$a1, $sp, $a1
 	vst	$vr0, $a1, 0
-	vfsub.d	$vr0, $vr3, $vr2
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 848
+	add.d	$a1, $sp, $a1
+	vld	$vr0, $a1, 0
+	vfsub.d	$vr2, $vr2, $vr1
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 832
+	add.d	$a1, $sp, $a1
+	vst	$vr2, $a1, 0
+	lu12i.w	$a1, 1
+	ori	$a1, $a1, 864
+	add.d	$a1, $sp, $a1
+	vld	$vr2, $a1, 0
+	vfsub.d	$vr0, $vr0, $vr1
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 880
 	add.d	$a1, $sp, $a1
 	fld.d	$fa3, $a1, 0
-	vfsub.d	$vr1, $vr1, $vr2
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 848
 	add.d	$a1, $sp, $a1
-	vst	$vr1, $a1, 0
+	vst	$vr0, $a1, 0
+	vfsub.d	$vr0, $vr2, $vr1
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 864
 	add.d	$a1, $sp, $a1

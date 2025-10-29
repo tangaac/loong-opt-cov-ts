@@ -1602,7 +1602,7 @@ checkline:                              # @checkline
                                         #   in Loop: Header=BB1_6 Depth=1
 	nor	$a1, $a2, $zero
 	add.d	$a1, $a1, $a0
-	ori	$a3, $zero, 7
+	ori	$a3, $zero, 5
 	bgeu	$a1, $a3, .LBB1_265
 # %bb.260:                              #   in Loop: Header=BB1_6 Depth=1
 	move	$a1, $zero

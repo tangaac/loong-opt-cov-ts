@@ -268,7 +268,7 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_64
+	beqz	$a0, .LBB3_61
 .LBB3_13:
 	ld.w	$a0, $fp, 8
 	bne	$a0, $s6, .LBB3_53
@@ -368,13 +368,13 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	bge	$s7, $a0, .LBB3_48
 .LBB3_27:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_41 Depth 2
                                         #     Child Loop BB3_38 Depth 2
+                                        #     Child Loop BB3_42 Depth 2
                                         #     Child Loop BB3_44 Depth 2
 	ld.d	$a0, $sp, 40
 	slli.d	$a1, $s7, 2
 	ldx.w	$s2, $a0, $a1
-	blt	$s8, $s2, .LBB3_65
+	blt	$s8, $s2, .LBB3_62
 # %bb.28:                               #   in Loop: Header=BB3_27 Depth=1
 	nor	$a0, $s7, $zero
 	add.w	$a0, $s5, $a0
@@ -419,7 +419,7 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 # %bb.33:                               # %iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
 	move	$a0, $zero
-	ori	$a1, $zero, 16
+	ori	$a1, $zero, 4
 	bltu	$s7, $a1, .LBB3_44
 # %bb.34:                               # %iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
@@ -429,43 +429,21 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 # %bb.35:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
 	ori	$a0, $zero, 32
-	bgeu	$s7, $a0, .LBB3_40
+	bgeu	$s7, $a0, .LBB3_37
 # %bb.36:                               #   in Loop: Header=BB3_27 Depth=1
 	move	$a0, $zero
-.LBB3_37:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB3_27 Depth=1
-	move	$a1, $s7
-	bstrins.d	$a1, $zero, 3, 0
-	bstrpick.d	$a4, $s7, 62, 4
-	sub.d	$a1, $a0, $a1
-	add.d	$a2, $s4, $a0
-	add.d	$a3, $s3, $a0
-	slli.d	$a0, $a4, 4
-	.p2align	4, , 16
-.LBB3_38:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB3_27 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a3, 0
-	vst	$vr0, $a2, 0
-	addi.d	$a1, $a1, 16
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	bnez	$a1, .LBB3_38
-# %bb.39:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB3_27 Depth=1
-	bne	$s7, $a0, .LBB3_44
-	b	.LBB3_45
-.LBB3_40:                               # %vector.ph
+	b	.LBB3_41
+.LBB3_37:                               # %vector.ph
                                         #   in Loop: Header=BB3_27 Depth=1
 	move	$a2, $s7
 	bstrins.d	$a2, $zero, 4, 0
-	andi	$a1, $s7, 16
+	andi	$a1, $s7, 28
 	bstrpick.d	$a0, $s7, 62, 5
 	slli.d	$a0, $a0, 5
 	addi.d	$a3, $s4, 16
 	addi.d	$a4, $s3, 16
 	.p2align	4, , 16
-.LBB3_41:                               # %vector.body
+.LBB3_38:                               # %vector.body
                                         #   Parent Loop BB3_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a4, -16
@@ -475,13 +453,35 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	addi.d	$a2, $a2, -32
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	bnez	$a2, .LBB3_41
-# %bb.42:                               # %middle.block
+	bnez	$a2, .LBB3_38
+# %bb.39:                               # %middle.block
                                         #   in Loop: Header=BB3_27 Depth=1
 	beq	$s7, $a0, .LBB3_45
-# %bb.43:                               # %vec.epilog.iter.check
+# %bb.40:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_27 Depth=1
-	bnez	$a1, .LBB3_37
+	beqz	$a1, .LBB3_44
+.LBB3_41:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB3_27 Depth=1
+	move	$a1, $s7
+	bstrins.d	$a1, $zero, 1, 0
+	bstrpick.d	$a4, $s7, 62, 2
+	sub.d	$a1, $a0, $a1
+	add.d	$a2, $s4, $a0
+	add.d	$a3, $s3, $a0
+	slli.d	$a0, $a4, 2
+	.p2align	4, , 16
+.LBB3_42:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB3_27 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.w	$a4, $a3, 0
+	st.w	$a4, $a2, 0
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, 4
+	bnez	$a1, .LBB3_42
+# %bb.43:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB3_27 Depth=1
+	beq	$s7, $a0, .LBB3_45
 	.p2align	4, , 16
 .LBB3_44:                               # %.lr.ph.i.i.i
                                         #   Parent Loop BB3_27 Depth=1
@@ -521,7 +521,7 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 .LBB3_51:                               # %_ZN11CStringBaseIwED2Ev.exit
 	ld.w	$a0, $fp, 8
 .LBB3_52:
-	beq	$a0, $s6, .LBB3_64
+	beq	$a0, $s6, .LBB3_61
 .LBB3_53:                               # %.thread91
 	ld.d	$a0, $fp, 16
 	st.w	$zero, $fp, 24
@@ -545,9 +545,9 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	blez	$s4, .LBB3_74
 # %bb.56:                               # %.preheader.i.i
 	ld.d	$a0, $fp, 16
-	blez	$a1, .LBB3_66
+	blez	$a1, .LBB3_63
 # %bb.57:                               # %iter.check110
-	ori	$a3, $zero, 16
+	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a1, $a3, .LBB3_71
 # %bb.58:                               # %iter.check110
@@ -555,32 +555,14 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	ori	$a3, $zero, 32
 	bltu	$a4, $a3, .LBB3_71
 # %bb.59:                               # %vector.main.loop.iter.check112
-	bgeu	$a1, $a3, .LBB3_67
+	bgeu	$a1, $a3, .LBB3_64
 # %bb.60:
 	move	$a2, $zero
-.LBB3_61:                               # %vec.epilog.ph127
-	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 30, 4
-	slli.d	$a2, $a2, 4
-	sub.d	$a3, $a5, $a2
-	add.d	$a4, $s2, $a5
-	add.d	$a5, $a0, $a5
-	.p2align	4, , 16
-.LBB3_62:                               # %vec.epilog.vector.body130
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 16
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB3_62
-# %bb.63:                               # %vec.epilog.middle.block134
-	bne	$a2, $a1, .LBB3_71
-	b	.LBB3_73
-.LBB3_64:
+	b	.LBB3_68
+.LBB3_61:
 	move	$a0, $zero
 	b	.LBB3_77
-.LBB3_65:
+.LBB3_62:
 	move	$s4, $s3
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -588,18 +570,18 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	ld.d	$a0, $sp, 40
 	bnez	$a0, .LBB3_50
 	b	.LBB3_51
-.LBB3_66:                               # %._crit_edge.i.i
+.LBB3_63:                               # %._crit_edge.i.i
 	bnez	$a0, .LBB3_73
 	b	.LBB3_74
-.LBB3_67:                               # %vector.ph113
-	andi	$a3, $a1, 16
+.LBB3_64:                               # %vector.ph113
+	andi	$a3, $a1, 28
 	bstrpick.d	$a2, $a1, 30, 5
 	slli.d	$a2, $a2, 5
 	addi.d	$a4, $s2, 16
 	addi.d	$a5, $a0, 16
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB3_68:                               # %vector.body116
+.LBB3_65:                               # %vector.body116
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, -16
 	vld	$vr1, $a5, 0
@@ -608,11 +590,29 @@ _ZN8NWindows5NFile3NIO9CFileBase6CreateEPKcjjjjb: # @_ZN8NWindows5NFile3NIO9CFil
 	addi.d	$a6, $a6, -32
 	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB3_68
-# %bb.69:                               # %middle.block121
+	bnez	$a6, .LBB3_65
+# %bb.66:                               # %middle.block121
 	beq	$a2, $a1, .LBB3_73
-# %bb.70:                               # %vec.epilog.iter.check125
-	bnez	$a3, .LBB3_61
+# %bb.67:                               # %vec.epilog.iter.check125
+	beqz	$a3, .LBB3_71
+.LBB3_68:                               # %vec.epilog.ph127
+	move	$a5, $a2
+	bstrpick.d	$a2, $a1, 30, 2
+	slli.d	$a2, $a2, 2
+	sub.d	$a3, $a5, $a2
+	add.d	$a4, $s2, $a5
+	add.d	$a5, $a0, $a5
+	.p2align	4, , 16
+.LBB3_69:                               # %vec.epilog.vector.body130
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a6, $a5, 0
+	st.w	$a6, $a4, 0
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 4
+	addi.d	$a5, $a5, 4
+	bnez	$a3, .LBB3_69
+# %bb.70:                               # %vec.epilog.middle.block134
+	beq	$a2, $a1, .LBB3_73
 .LBB3_71:                               # %vec.epilog.scalar.ph124.preheader
 	sub.d	$a1, $a1, $a2
 	add.d	$a3, $s2, $a2

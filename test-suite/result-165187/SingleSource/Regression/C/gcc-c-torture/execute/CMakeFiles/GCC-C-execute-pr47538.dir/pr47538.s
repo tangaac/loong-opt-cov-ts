@@ -5,20 +5,20 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	ld.d	$a2, $a1, 24
-	fld.d	$fa0, $a1, 0
-	fld.d	$fa1, $a1, 8
-	fst.d	$fa0, $a0, 0
-	fst.d	$fa1, $a0, 8
-	beqz	$a2, .LBB0_3
+	ld.d	$a3, $a1, 24
+	vld	$vr0, $a1, 0
+	vst	$vr0, $a0, 0
+	beqz	$a3, .LBB0_3
 # %bb.1:
-	addi.d	$a3, $a2, 1
-	fsub.d	$fa0, $fa1, $fa0
+	addi.d	$a2, $a3, 1
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr0, 1
+	fsub.d	$fa0, $fa0, $fa1
 	ld.d	$a1, $a1, 16
 	vldi	$vr1, -944
 	ori	$a4, $zero, 2
 	fmul.d	$fa0, $fa0, $fa1
-	bne	$a3, $a4, .LBB0_4
+	bne	$a2, $a4, .LBB0_4
 # %bb.2:
 	fld.d	$fa1, $a1, 0
 	ld.d	$a0, $a0, 16
@@ -64,18 +64,18 @@ foo:                                    # @foo
 	fneg.d	$fa2, $fa2
 	addi.d	$a6, $a6, 8
 	move	$a7, $t0
-	bne	$a2, $t0, .LBB0_5
+	bne	$a3, $t0, .LBB0_5
 # %bb.6:                                # %._crit_edge
-	alsl.d	$a1, $a2, $a1, 3
+	alsl.d	$a1, $a3, $a1, 3
 	fld.d	$fa4, $a1, -8
-	slli.d	$a1, $a2, 3
+	slli.d	$a1, $a3, 3
 	fmul.d	$fa0, $fa0, $fa4
-	srli.d	$a2, $a3, 32
-	or	$a2, $a2, $a4
-	movgr2fr.d	$fa4, $a2
-	fsub.d	$fa3, $fa4, $fa3
-	bstrins.d	$a3, $a5, 63, 32
+	srli.d	$a3, $a2, 32
+	or	$a3, $a3, $a4
 	movgr2fr.d	$fa4, $a3
+	fsub.d	$fa3, $fa4, $fa3
+	bstrins.d	$a2, $a5, 63, 32
+	movgr2fr.d	$fa4, $a2
 	fadd.d	$fa3, $fa4, $fa3
 	vldi	$vr4, -784
 	fadd.d	$fa3, $fa3, $fa4

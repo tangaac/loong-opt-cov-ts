@@ -713,6 +713,11 @@ check:                                  # @check
 .LCPI5_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
+.LCPI5_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	init
 	.p2align	5
@@ -1886,63 +1891,58 @@ init:                                   # @init
 	bnez	$a2, .LBB5_147
 	b	.LBB5_573
 .LBB5_148:                              # %vector.body5445.preheader
-	pcalau12i	$a0, %pc_hi20(X+4)
-	addi.d	$a0, $a0, %pc_lo12(X+4)
-	pcalau12i	$a1, %pc_hi20(V+4)
-	addi.d	$a1, $a1, %pc_lo12(V+4)
-	pcalau12i	$a2, %pc_hi20(U+4)
-	addi.d	$a2, $a2, %pc_lo12(U+4)
-	pcalau12i	$a3, %pc_hi20(Z+4)
-	addi.d	$a3, $a3, %pc_lo12(Z+4)
-	pcalau12i	$a4, %pc_hi20(Y+4)
-	addi.d	$a4, $a4, %pc_lo12(Y+4)
-	ori	$a5, $zero, 6
-	lu12i.w	$a6, 7
-	ori	$a6, $a6, 3328
+	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI5_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI5_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI5_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI5_2)
+	pcalau12i	$a0, %pc_hi20(V)
+	addi.d	$a0, $a0, %pc_lo12(V)
+	pcalau12i	$a1, %pc_hi20(U)
+	addi.d	$a1, $a1, %pc_lo12(U)
+	pcalau12i	$a2, %pc_hi20(Z)
+	addi.d	$a2, $a2, %pc_lo12(Z)
+	pcalau12i	$a3, %pc_hi20(Y)
+	addi.d	$a3, $a3, %pc_lo12(Y)
+	pcalau12i	$a4, %pc_hi20(X)
+	addi.d	$a4, $a4, %pc_lo12(X)
+	lu12i.w	$a5, 7
+	ori	$a5, $a5, 3328
+	vori.b	$vr3, $vr2, 0
+	vori.b	$vr4, $vr2, 0
+	vori.b	$vr5, $vr2, 0
 	.p2align	4, , 16
 .LBB5_149:                              # %vector.body5445
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a7, $a5, 31, 0
-	addi.d	$t0, $a5, -5
-	bstrpick.d	$t0, $t0, 31, 0
-	addi.d	$t1, $a5, -4
-	bstrpick.d	$t1, $t1, 31, 0
-	movgr2fr.d	$fa0, $t0
-	ffint.s.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $t1
-	ffint.s.l	$fa1, $fa1
-	fst.s	$fa0, $a0, -4
-	fst.s	$fa1, $a0, 0
-	addi.d	$t0, $a5, -3
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa0, $t0
-	ffint.s.l	$fa0, $fa0
-	fst.s	$fa1, $a4, -4
-	fst.s	$fa0, $a4, 0
-	addi.d	$t0, $a5, -2
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa1, $t0
-	ffint.s.l	$fa1, $fa1
-	fst.s	$fa0, $a3, -4
-	fst.s	$fa1, $a3, 0
-	addi.d	$t0, $a5, -1
-	bstrpick.d	$t0, $t0, 31, 0
-	movgr2fr.d	$fa0, $t0
-	ffint.s.l	$fa0, $fa0
-	fst.s	$fa1, $a2, -4
-	fst.s	$fa0, $a2, 0
-	movgr2fr.d	$fa1, $a7
-	ffint.s.l	$fa1, $fa1
-	fst.s	$fa0, $a1, -4
-	fst.s	$fa1, $a1, 0
-	addi.w	$a5, $a5, 2
-	addi.d	$a0, $a0, 8
-	addi.d	$a6, $a6, -2
-	addi.d	$a1, $a1, 8
-	addi.d	$a2, $a2, 8
-	addi.d	$a3, $a3, 8
-	addi.d	$a4, $a4, 8
-	bnez	$a6, .LBB5_149
+	vpickev.w	$vr6, $vr0, $vr1
+	vaddi.wu	$vr6, $vr6, 1
+	vffint.s.wu	$vr6, $vr6
+	vst	$vr6, $a4, 0
+	vaddi.wu	$vr6, $vr2, 2
+	vffint.s.wu	$vr6, $vr6
+	vst	$vr6, $a3, 0
+	vaddi.wu	$vr6, $vr3, 3
+	vffint.s.wu	$vr6, $vr6
+	vst	$vr6, $a2, 0
+	vaddi.wu	$vr4, $vr4, 4
+	vffint.s.wu	$vr6, $vr4
+	vst	$vr6, $a1, 0
+	vaddi.wu	$vr6, $vr5, 5
+	vffint.s.wu	$vr6, $vr6
+	vst	$vr6, $a0, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	vaddi.wu	$vr3, $vr3, 4
+	vaddi.wu	$vr5, $vr5, 4
+	addi.d	$a5, $a5, -4
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, 16
+	addi.d	$a2, $a2, 16
+	addi.d	$a3, $a3, 16
+	addi.d	$a4, $a4, 16
+	bnez	$a5, .LBB5_149
 	b	.LBB5_573
 .LBB5_150:                              # %vector.body5412.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)

@@ -40,19 +40,19 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 	addi.d	$a0, $sp, 296
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha15CHmac6SetKeyEPKhm)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB0_13
+	beqz	$fp, .LBB0_15
 # %bb.1:                                # %.lr.ph43
 	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
 	ori	$s1, $zero, 1
 	move	$s2, $s3
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	bgeu	$s1, $a0, .LBB0_11
+	bgeu	$s1, $a0, .LBB0_13
 # %bb.2:                                # %.lr.ph43.split.us.preheader
 	ori	$s6, $zero, 1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	addi.d	$s8, $sp, 64
-	ori	$s7, $zero, 16
+	ori	$s7, $zero, 4
 	ori	$s5, $zero, 1
 	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$s4, $sp, 68
@@ -66,11 +66,12 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 	move	$s3, $s2
 	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$s4, $sp, 68
-	beqz	$fp, .LBB0_13
+	beqz	$fp, .LBB0_15
 .LBB0_4:                                # %.lr.ph43.split.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_6 Depth 2
-                                        #       Child Loop BB0_10 Depth 3
+                                        #       Child Loop BB0_9 Depth 3
+                                        #       Child Loop BB0_12 Depth 3
 	addi.d	$a0, $sp, 88
 	addi.d	$a1, $sp, 296
 	ori	$a2, $zero, 208
@@ -105,7 +106,7 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	andi	$s3, $s4, 16
+	andi	$s3, $s4, 28
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_6
 	.p2align	4, , 16
@@ -116,7 +117,8 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 .LBB0_6:                                # %iter.check
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB0_10 Depth 3
+                                        #       Child Loop BB0_9 Depth 3
+                                        #       Child Loop BB0_12 Depth 3
 	addi.d	$a0, $sp, 88
 	addi.d	$a1, $sp, 296
 	ori	$a2, $zero, 208
@@ -135,23 +137,37 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 	bgeu	$fp, $s7, .LBB0_8
 # %bb.7:                                #   in Loop: Header=BB0_6 Depth=2
 	move	$a2, $zero
-	b	.LBB0_9
+	b	.LBB0_11
 	.p2align	4, , 16
-.LBB0_8:                                # %vec.epilog.vector.body
+.LBB0_8:                                # %vec.epilog.vector.body.preheader
                                         #   in Loop: Header=BB0_6 Depth=2
-	vld	$vr0, $sp, 64
-	vld	$vr1, $s0, 0
-	vxor.v	$vr0, $vr1, $vr0
-	vst	$vr0, $s0, 0
+	addi.d	$a0, $sp, 64
+	move	$a1, $s0
 	move	$a2, $s3
-	beq	$fp, $s3, .LBB0_5
-.LBB0_9:                                # %vec.epilog.scalar.ph.preheader
+	.p2align	4, , 16
+.LBB0_9:                                # %vec.epilog.vector.body
+                                        #   Parent Loop BB0_4 Depth=1
+                                        #     Parent Loop BB0_6 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	ld.w	$a3, $a0, 0
+	ld.w	$a4, $a1, 0
+	xor	$a3, $a4, $a3
+	st.w	$a3, $a1, 0
+	addi.d	$a2, $a2, -4
+	addi.d	$a1, $a1, 4
+	addi.d	$a0, $a0, 4
+	bnez	$a2, .LBB0_9
+# %bb.10:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB0_6 Depth=2
+	move	$a2, $s3
+	beq	$s4, $s3, .LBB0_5
+.LBB0_11:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB0_6 Depth=2
 	add.d	$a0, $s8, $a2
 	add.d	$a1, $s0, $a2
 	sub.d	$a2, $s4, $a2
 	.p2align	4, , 16
-.LBB0_10:                               # %vec.epilog.scalar.ph
+.LBB0_12:                               # %vec.epilog.scalar.ph
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -162,16 +178,16 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 1
-	bnez	$a2, .LBB0_10
+	bnez	$a2, .LBB0_12
 	b	.LBB0_5
-.LBB0_11:                               # %.lr.ph43.split.preheader
+.LBB0_13:                               # %.lr.ph43.split.preheader
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	ori	$s4, $zero, 20
 	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$s6, $sp, 68
 	.p2align	4, , 16
-.LBB0_12:                               # %.lr.ph43.split
+.LBB0_14:                               # %.lr.ph43.split
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $sp, 88
 	addi.d	$a1, $sp, 296
@@ -210,8 +226,8 @@ _ZN7NCrypto5NSha110Pbkdf2HmacEPKhmS2_mjPhm: # @_ZN7NCrypto5NSha110Pbkdf2HmacEPKh
 	sub.d	$fp, $fp, $s3
 	move	$s3, $s2
 	addi.w	$s1, $s1, 1
-	bnez	$fp, .LBB0_12
-.LBB0_13:                               # %._crit_edge44
+	bnez	$fp, .LBB0_14
+.LBB0_15:                               # %._crit_edge44
 	ld.d	$s8, $sp, 504                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 512                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 520                   # 8-byte Folded Reload

@@ -1949,9 +1949,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_39:                              #   in Loop: Header=BB16_3 Depth=1
-	vld	$vr0, $s4, 48
-	vpickve2gr.d	$a1, $vr0, 0
-	vpickve2gr.d	$a2, $vr0, 1
+	ld.d	$a2, $s4, 56
+	ld.d	$a1, $s4, 48
 	bgeu	$a2, $a1, .LBB16_53
 # %bb.40:                               #   in Loop: Header=BB16_3 Depth=1
 	sub.d	$a1, $a1, $a2
@@ -2106,6 +2105,7 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 # %bb.54:                               #   in Loop: Header=BB16_3 Depth=1
 	ld.wu	$a1, $s4, 80
 	ld.bu	$a2, $s5, 0
+	vld	$vr0, $s4, 48
 	andi	$a3, $a1, 255
 	xor	$a3, $a3, $a2
 	slli.d	$a3, $a3, 2

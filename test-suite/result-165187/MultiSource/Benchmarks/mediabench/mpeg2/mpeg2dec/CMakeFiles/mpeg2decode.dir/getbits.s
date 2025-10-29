@@ -74,7 +74,7 @@ Flush_Buffer:                           # @Flush_Buffer
 	sub.d	$a0, $a0, $a6
 	addi.d	$a6, $a0, 7
 	addi.w	$a0, $a6, 0
-	ori	$t0, $zero, 72
+	ori	$t0, $zero, 56
 	bltu	$a0, $t0, .LBB1_7
 # %bb.5:                                # %vector.memcheck
 	addi.d	$t0, $a7, 9

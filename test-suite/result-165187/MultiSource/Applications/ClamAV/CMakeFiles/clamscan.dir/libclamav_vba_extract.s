@@ -2808,7 +2808,7 @@ wm_decrypt_macro:                       # @wm_decrypt_macro
 # %bb.4:
 	beqz	$s2, .LBB6_8
 # %bb.5:                                # %iter.check
-	ori	$a0, $zero, 16
+	ori	$a0, $zero, 4
 	bgeu	$s2, $a0, .LBB6_10
 # %bb.6:
 	move	$a0, $zero
@@ -2833,32 +2833,18 @@ wm_decrypt_macro:                       # @wm_decrypt_macro
 	b	.LBB6_8
 .LBB6_10:                               # %vector.main.loop.iter.check
 	ori	$a0, $zero, 32
-	vreplgr2vr.b	$vr0, $s0
-	bgeu	$s2, $a0, .LBB6_15
+	bgeu	$s2, $a0, .LBB6_12
 # %bb.11:
 	move	$a0, $zero
-.LBB6_12:                               # %vec.epilog.ph
-	move	$a1, $a0
-	bstrpick.d	$a0, $s1, 31, 4
-	slli.d	$a0, $a0, 4
-	.p2align	4, , 16
-.LBB6_13:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vldx	$vr1, $fp, $a1
-	vxor.v	$vr1, $vr1, $vr0
-	vstx	$vr1, $fp, $a1
-	addi.d	$a1, $a1, 16
-	bne	$a0, $a1, .LBB6_13
-# %bb.14:                               # %vec.epilog.middle.block
-	bne	$a0, $s1, .LBB6_19
-	b	.LBB6_8
-.LBB6_15:                               # %vector.ph
+	b	.LBB6_16
+.LBB6_12:                               # %vector.ph
 	move	$a2, $zero
-	andi	$a1, $s1, 16
+	andi	$a1, $s1, 28
 	bstrpick.d	$a0, $s1, 31, 5
 	slli.d	$a0, $a0, 5
+	vreplgr2vr.b	$vr0, $s0
 	.p2align	4, , 16
-.LBB6_16:                               # %vector.body
+.LBB6_13:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $fp, $a2
 	vldx	$vr1, $fp, $a2
@@ -2868,11 +2854,31 @@ wm_decrypt_macro:                       # @wm_decrypt_macro
 	vstx	$vr1, $fp, $a2
 	addi.d	$a2, $a2, 32
 	vst	$vr2, $a3, 16
-	bne	$a0, $a2, .LBB6_16
-# %bb.17:                               # %middle.block
+	bne	$a0, $a2, .LBB6_13
+# %bb.14:                               # %middle.block
 	beq	$a0, $s1, .LBB6_8
-# %bb.18:                               # %vec.epilog.iter.check
-	bnez	$a1, .LBB6_12
+# %bb.15:                               # %vec.epilog.iter.check
+	beqz	$a1, .LBB6_19
+.LBB6_16:                               # %vec.epilog.ph
+	move	$a1, $a0
+	bstrpick.d	$a0, $s1, 31, 2
+	slli.d	$a0, $a0, 2
+	vinsgr2vr.b	$vr0, $s0, 0
+	vinsgr2vr.b	$vr0, $s0, 1
+	vinsgr2vr.b	$vr0, $s0, 2
+	vinsgr2vr.b	$vr0, $s0, 3
+	.p2align	4, , 16
+.LBB6_17:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.w	$a2, $fp, $a1
+	add.d	$a3, $fp, $a1
+	vinsgr2vr.w	$vr1, $a2, 0
+	vxor.v	$vr1, $vr1, $vr0
+	addi.d	$a1, $a1, 4
+	vstelm.w	$vr1, $a3, 0, 0
+	bne	$a0, $a1, .LBB6_17
+# %bb.18:                               # %vec.epilog.middle.block
+	beq	$a0, $s1, .LBB6_8
 	.p2align	4, , 16
 .LBB6_19:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

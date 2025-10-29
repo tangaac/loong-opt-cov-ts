@@ -13,7 +13,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 # %bb.1:                                # %.preheader
 	blez	$a0, .LBB0_22
 # %bb.2:                                # %.lr.ph44.preheader
-	ori	$a4, $zero, 6
+	ori	$a4, $zero, 4
 	bgeu	$a0, $a4, .LBB0_12
 # %bb.3:
 	move	$a4, $zero
@@ -42,7 +42,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 # %bb.7:                                # %.preheader36
 	blez	$a0, .LBB0_22
 # %bb.8:                                # %.lr.ph42.preheader
-	ori	$a4, $zero, 6
+	ori	$a4, $zero, 4
 	bgeu	$a0, $a4, .LBB0_23
 # %bb.9:
 	move	$a4, $zero

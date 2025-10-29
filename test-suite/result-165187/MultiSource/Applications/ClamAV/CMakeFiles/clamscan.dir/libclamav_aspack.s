@@ -458,7 +458,7 @@ unaspack212:                            # @unaspack212
 	bgeu	$s8, $a2, .LBB0_53
 .LBB0_49:                               #   in Loop: Header=BB0_12 Depth=2
 	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
-.LBB0_50:                               # %.preheader.i.i.preheader315
+.LBB0_50:                               # %.preheader.i.i.preheader303
                                         #   in Loop: Header=BB0_12 Depth=2
 	move	$a1, $s2
 	.p2align	4, , 16
@@ -645,22 +645,44 @@ unaspack212:                            # @unaspack212
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_81
+	beqz	$a0, .LBB0_83
 # %bb.78:
 	move	$fp, $a0
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	beqz	$s2, .LBB0_87
+	beqz	$s2, .LBB0_81
 # %bb.79:                               # %.lr.ph215.preheader
-	ori	$a0, $zero, 1
-	bne	$s2, $a0, .LBB0_82
-# %bb.80:
-	move	$a0, $zero
+	addi.d	$a0, $fp, 8
+	move	$a1, $s2
+.LBB0_80:                               # %.lr.ph215
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a2, $a0, -8
+	st.d	$a2, $a0, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, 36
+	bnez	$a1, .LBB0_80
+.LBB0_81:                               # %._crit_edge
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.w	$a4, $a0, 923
+	move	$a0, $s1
+	move	$a1, $fp
+	move	$a2, $s2
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	move	$a5, $zero
+	move	$a6, $zero
+	move	$a7, $s4
+	pcaddu18i	$ra, %call36(cli_rebuildpe)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB0_84
+# %bb.82:
+	pcalau12i	$a0, %pc_hi20(.L.str.5)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
+	pcaddu18i	$ra, %call36(cli_dbgmsg)
+	jirl	$ra, $ra, 0
 	b	.LBB0_85
-.LBB0_81:
+.LBB0_83:
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -670,55 +692,8 @@ unaspack212:                            # @unaspack212
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
-	b	.LBB0_91
-.LBB0_82:                               # %vector.ph305
-	bstrpick.d	$a0, $s2, 15, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a1, $fp, 36
-	move	$a2, $a0
-.LBB0_83:                               # %vector.body308
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -36
-	ld.d	$a4, $a1, 0
-	st.d	$a5, $a1, -28
-	st.d	$a4, $a1, 8
-	addi.d	$a2, $a2, -2
-	addi.d	$a1, $a1, 72
-	bnez	$a2, .LBB0_83
-# %bb.84:                               # %middle.block311
-	beq	$a0, $s2, .LBB0_87
-.LBB0_85:                               # %.lr.ph215.preheader314
-	slli.d	$a1, $a0, 5
-	alsl.d	$a1, $a0, $a1, 2
-	add.d	$a1, $a1, $fp
-	addi.d	$a1, $a1, 8
-	sub.d	$a0, $s2, $a0
-.LBB0_86:                               # %.lr.ph215
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $a1, -8
-	st.d	$a2, $a1, 0
-	addi.d	$a0, $a0, -1
-	addi.d	$a1, $a1, 36
-	bnez	$a0, .LBB0_86
-.LBB0_87:                               # %._crit_edge
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	ld.w	$a4, $a0, 923
-	move	$a0, $s1
-	move	$a1, $fp
-	move	$a2, $s2
-	move	$a5, $zero
-	move	$a6, $zero
-	move	$a7, $s4
-	pcaddu18i	$ra, %call36(cli_rebuildpe)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_89
-# %bb.88:
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	pcaddu18i	$ra, %call36(cli_dbgmsg)
-	jirl	$ra, $ra, 0
-	b	.LBB0_90
-.LBB0_89:
+	b	.LBB0_86
+.LBB0_84:
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -728,11 +703,11 @@ unaspack212:                            # @unaspack212
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
-.LBB0_90:
+.LBB0_85:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB0_91:
+.LBB0_86:
 	ori	$a0, $zero, 1
 	b	.LBB0_73
 .Lfunc_end0:

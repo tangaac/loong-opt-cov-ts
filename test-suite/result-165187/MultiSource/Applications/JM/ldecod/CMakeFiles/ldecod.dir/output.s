@@ -741,14 +741,18 @@ write_out_picture:                      # @write_out_picture
 	sll.w	$a1, $s6, $a1
 	ld.d	$a2, $a2, 0
 	bstrpick.d	$a3, $s5, 31, 0
-	andi	$a4, $s5, 8
+	andi	$a4, $s5, 12
 	bstrpick.d	$a5, $s5, 29, 4
 	slli.d	$a5, $a5, 4
 	vreplgr2vr.h	$vr0, $a1
-	bstrpick.d	$a6, $s5, 29, 3
-	slli.d	$a6, $a6, 3
+	bstrpick.d	$a6, $s5, 29, 2
+	slli.d	$a6, $a6, 2
+	vinsgr2vr.h	$vr1, $a1, 0
+	vinsgr2vr.h	$vr1, $a1, 1
+	vinsgr2vr.h	$vr1, $a1, 2
+	vinsgr2vr.h	$vr1, $a1, 3
 	sub.d	$a7, $zero, $a6
-	ori	$t0, $zero, 8
+	ori	$t0, $zero, 4
 	ori	$t1, $zero, 16
 	b	.LBB3_65
 	.p2align	4, , 16
@@ -758,8 +762,8 @@ write_out_picture:                      # @write_out_picture
 	beq	$a0, $s2, .LBB3_87
 .LBB3_65:                               # %iter.check
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_73 Depth 2
                                         #     Child Loop BB3_70 Depth 2
+                                        #     Child Loop BB3_74 Depth 2
                                         #     Child Loop BB3_77 Depth 2
 	slli.d	$t2, $a0, 3
 	ldx.d	$t2, $a2, $t2
@@ -770,49 +774,48 @@ write_out_picture:                      # @write_out_picture
 	.p2align	4, , 16
 .LBB3_67:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB3_65 Depth=1
-	bgeu	$s5, $t1, .LBB3_72
+	bgeu	$s5, $t1, .LBB3_69
 # %bb.68:                               #   in Loop: Header=BB3_65 Depth=1
 	move	$t4, $zero
-.LBB3_69:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB3_65 Depth=1
-	add.d	$t3, $a7, $t4
-	alsl.d	$t4, $t4, $t2, 1
+	b	.LBB3_73
 	.p2align	4, , 16
-.LBB3_70:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB3_65 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t4, 0
-	addi.d	$t3, $t3, 8
-	addi.d	$t4, $t4, 16
-	bnez	$t3, .LBB3_70
-# %bb.71:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB3_65 Depth=1
-	move	$t3, $a6
-	beq	$a6, $a3, .LBB3_64
-	b	.LBB3_76
-	.p2align	4, , 16
-.LBB3_72:                               # %vector.body.preheader
+.LBB3_69:                               # %vector.body.preheader
                                         #   in Loop: Header=BB3_65 Depth=1
 	addi.d	$t3, $t2, 16
 	move	$t4, $a5
 	.p2align	4, , 16
-.LBB3_73:                               # %vector.body
+.LBB3_70:                               # %vector.body
                                         #   Parent Loop BB3_65 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t3, -16
 	vst	$vr0, $t3, 0
 	addi.d	$t4, $t4, -16
 	addi.d	$t3, $t3, 32
-	bnez	$t4, .LBB3_73
-# %bb.74:                               # %middle.block
+	bnez	$t4, .LBB3_70
+# %bb.71:                               # %middle.block
                                         #   in Loop: Header=BB3_65 Depth=1
 	beq	$a5, $a3, .LBB3_64
-# %bb.75:                               # %vec.epilog.iter.check
+# %bb.72:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_65 Depth=1
 	move	$t4, $a5
 	move	$t3, $a5
-	bnez	$a4, .LBB3_69
+	beqz	$a4, .LBB3_76
+.LBB3_73:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB3_65 Depth=1
+	add.d	$t3, $a7, $t4
+	alsl.d	$t4, $t4, $t2, 1
 	.p2align	4, , 16
+.LBB3_74:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB3_65 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t4, 0, 0
+	addi.d	$t3, $t3, 4
+	addi.d	$t4, $t4, 8
+	bnez	$t3, .LBB3_74
+# %bb.75:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB3_65 Depth=1
+	move	$t3, $a6
+	beq	$a6, $a3, .LBB3_64
 .LBB3_76:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB3_65 Depth=1
 	alsl.d	$t2, $t3, $t2, 1
@@ -1281,14 +1284,18 @@ clear_picture:                          # @clear_picture
 	ori	$a6, $a0, 1796
 	ldx.w	$a5, $a5, $a6
 	ld.d	$a6, $a1, 56
-	andi	$a7, $a3, 8
+	andi	$a7, $a3, 12
 	bstrpick.d	$t0, $a3, 30, 4
 	slli.d	$t0, $t0, 4
 	vreplgr2vr.h	$vr0, $a5
-	bstrpick.d	$t1, $a3, 30, 3
-	slli.d	$t1, $t1, 3
+	bstrpick.d	$t1, $a3, 30, 2
+	slli.d	$t1, $t1, 2
+	vinsgr2vr.h	$vr1, $a5, 0
+	vinsgr2vr.h	$vr1, $a5, 1
+	vinsgr2vr.h	$vr1, $a5, 2
+	vinsgr2vr.h	$vr1, $a5, 3
 	sub.d	$t2, $zero, $t1
-	ori	$t3, $zero, 8
+	ori	$t3, $zero, 4
 	ori	$t4, $zero, 16
 	b	.LBB6_4
 	.p2align	4, , 16
@@ -1298,8 +1305,8 @@ clear_picture:                          # @clear_picture
 	beq	$a4, $a2, .LBB6_17
 .LBB6_4:                                # %iter.check
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_12 Depth 2
                                         #     Child Loop BB6_9 Depth 2
+                                        #     Child Loop BB6_13 Depth 2
                                         #     Child Loop BB6_16 Depth 2
 	slli.d	$t5, $a4, 3
 	ldx.d	$t5, $a6, $t5
@@ -1310,49 +1317,48 @@ clear_picture:                          # @clear_picture
 	.p2align	4, , 16
 .LBB6_6:                                # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB6_4 Depth=1
-	bgeu	$a3, $t4, .LBB6_11
+	bgeu	$a3, $t4, .LBB6_8
 # %bb.7:                                #   in Loop: Header=BB6_4 Depth=1
 	move	$t7, $zero
-.LBB6_8:                                # %vec.epilog.ph
-                                        #   in Loop: Header=BB6_4 Depth=1
-	add.d	$t6, $t2, $t7
-	alsl.d	$t7, $t7, $t5, 1
+	b	.LBB6_12
 	.p2align	4, , 16
-.LBB6_9:                                # %vec.epilog.vector.body
-                                        #   Parent Loop BB6_4 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t7, 0
-	addi.d	$t6, $t6, 8
-	addi.d	$t7, $t7, 16
-	bnez	$t6, .LBB6_9
-# %bb.10:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB6_4 Depth=1
-	move	$t6, $t1
-	beq	$t1, $a3, .LBB6_3
-	b	.LBB6_15
-	.p2align	4, , 16
-.LBB6_11:                               # %vector.body.preheader
+.LBB6_8:                                # %vector.body.preheader
                                         #   in Loop: Header=BB6_4 Depth=1
 	addi.d	$t6, $t5, 16
 	move	$t7, $t0
 	.p2align	4, , 16
-.LBB6_12:                               # %vector.body
+.LBB6_9:                                # %vector.body
                                         #   Parent Loop BB6_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t6, -16
 	vst	$vr0, $t6, 0
 	addi.d	$t7, $t7, -16
 	addi.d	$t6, $t6, 32
-	bnez	$t7, .LBB6_12
-# %bb.13:                               # %middle.block
+	bnez	$t7, .LBB6_9
+# %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
 	beq	$t0, $a3, .LBB6_3
-# %bb.14:                               # %vec.epilog.iter.check
+# %bb.11:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB6_4 Depth=1
 	move	$t7, $t0
 	move	$t6, $t0
-	bnez	$a7, .LBB6_8
+	beqz	$a7, .LBB6_15
+.LBB6_12:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB6_4 Depth=1
+	add.d	$t6, $t2, $t7
+	alsl.d	$t7, $t7, $t5, 1
 	.p2align	4, , 16
+.LBB6_13:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB6_4 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t7, 0, 0
+	addi.d	$t6, $t6, 4
+	addi.d	$t7, $t7, 8
+	bnez	$t6, .LBB6_13
+# %bb.14:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB6_4 Depth=1
+	move	$t6, $t1
+	beq	$t1, $a3, .LBB6_3
 .LBB6_15:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB6_4 Depth=1
 	alsl.d	$t5, $t6, $t5, 1
@@ -1381,14 +1387,18 @@ clear_picture:                          # @clear_picture
 	ori	$a7, $a0, 1800
 	ldx.w	$a5, $a5, $a7
 	ld.d	$a6, $a6, 0
-	andi	$a7, $a3, 8
+	andi	$a7, $a3, 12
 	bstrpick.d	$t0, $a3, 30, 4
 	slli.d	$t0, $t0, 4
 	vreplgr2vr.h	$vr0, $a5
-	bstrpick.d	$t1, $a3, 30, 3
-	slli.d	$t1, $t1, 3
+	bstrpick.d	$t1, $a3, 30, 2
+	slli.d	$t1, $t1, 2
+	vinsgr2vr.h	$vr1, $a5, 0
+	vinsgr2vr.h	$vr1, $a5, 1
+	vinsgr2vr.h	$vr1, $a5, 2
+	vinsgr2vr.h	$vr1, $a5, 3
 	sub.d	$t2, $zero, $t1
-	ori	$t3, $zero, 8
+	ori	$t3, $zero, 4
 	ori	$t4, $zero, 16
 	b	.LBB6_21
 	.p2align	4, , 16
@@ -1398,8 +1408,8 @@ clear_picture:                          # @clear_picture
 	beq	$a4, $a2, .LBB6_34
 .LBB6_21:                               # %iter.check80
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_29 Depth 2
                                         #     Child Loop BB6_26 Depth 2
+                                        #     Child Loop BB6_30 Depth 2
                                         #     Child Loop BB6_33 Depth 2
 	slli.d	$t5, $a4, 3
 	ldx.d	$t5, $a6, $t5
@@ -1410,49 +1420,48 @@ clear_picture:                          # @clear_picture
 	.p2align	4, , 16
 .LBB6_23:                               # %vector.main.loop.iter.check82
                                         #   in Loop: Header=BB6_21 Depth=1
-	bgeu	$a3, $t4, .LBB6_28
+	bgeu	$a3, $t4, .LBB6_25
 # %bb.24:                               #   in Loop: Header=BB6_21 Depth=1
 	move	$t7, $zero
-.LBB6_25:                               # %vec.epilog.ph97
-                                        #   in Loop: Header=BB6_21 Depth=1
-	add.d	$t6, $t2, $t7
-	alsl.d	$t7, $t7, $t5, 1
+	b	.LBB6_29
 	.p2align	4, , 16
-.LBB6_26:                               # %vec.epilog.vector.body102
-                                        #   Parent Loop BB6_21 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t7, 0
-	addi.d	$t6, $t6, 8
-	addi.d	$t7, $t7, 16
-	bnez	$t6, .LBB6_26
-# %bb.27:                               # %vec.epilog.middle.block105
-                                        #   in Loop: Header=BB6_21 Depth=1
-	move	$t6, $t1
-	beq	$t1, $a3, .LBB6_20
-	b	.LBB6_32
-	.p2align	4, , 16
-.LBB6_28:                               # %vector.body88.preheader
+.LBB6_25:                               # %vector.body88.preheader
                                         #   in Loop: Header=BB6_21 Depth=1
 	addi.d	$t6, $t5, 16
 	move	$t7, $t0
 	.p2align	4, , 16
-.LBB6_29:                               # %vector.body88
+.LBB6_26:                               # %vector.body88
                                         #   Parent Loop BB6_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t6, -16
 	vst	$vr0, $t6, 0
 	addi.d	$t7, $t7, -16
 	addi.d	$t6, $t6, 32
-	bnez	$t7, .LBB6_29
-# %bb.30:                               # %middle.block91
+	bnez	$t7, .LBB6_26
+# %bb.27:                               # %middle.block91
                                         #   in Loop: Header=BB6_21 Depth=1
 	beq	$t0, $a3, .LBB6_20
-# %bb.31:                               # %vec.epilog.iter.check95
+# %bb.28:                               # %vec.epilog.iter.check95
                                         #   in Loop: Header=BB6_21 Depth=1
 	move	$t7, $t0
 	move	$t6, $t0
-	bnez	$a7, .LBB6_25
+	beqz	$a7, .LBB6_32
+.LBB6_29:                               # %vec.epilog.ph97
+                                        #   in Loop: Header=BB6_21 Depth=1
+	add.d	$t6, $t2, $t7
+	alsl.d	$t7, $t7, $t5, 1
 	.p2align	4, , 16
+.LBB6_30:                               # %vec.epilog.vector.body102
+                                        #   Parent Loop BB6_21 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t7, 0, 0
+	addi.d	$t6, $t6, 4
+	addi.d	$t7, $t7, 8
+	bnez	$t6, .LBB6_30
+# %bb.31:                               # %vec.epilog.middle.block105
+                                        #   in Loop: Header=BB6_21 Depth=1
+	move	$t6, $t1
+	beq	$t1, $a3, .LBB6_20
 .LBB6_32:                               # %vec.epilog.scalar.ph94.preheader
                                         #   in Loop: Header=BB6_21 Depth=1
 	alsl.d	$t5, $t6, $t5, 1
@@ -1478,14 +1487,18 @@ clear_picture:                          # @clear_picture
 	ori	$a0, $a0, 1800
 	ldx.w	$a0, $a4, $a0
 	ld.d	$a4, $a5, 8
-	andi	$a5, $a3, 8
+	andi	$a5, $a3, 12
 	bstrpick.d	$a6, $a3, 30, 4
 	slli.d	$a6, $a6, 4
 	vreplgr2vr.h	$vr0, $a0
-	bstrpick.d	$a7, $a3, 30, 3
-	slli.d	$a7, $a7, 3
+	bstrpick.d	$a7, $a3, 30, 2
+	slli.d	$a7, $a7, 2
+	vinsgr2vr.h	$vr1, $a0, 0
+	vinsgr2vr.h	$vr1, $a0, 1
+	vinsgr2vr.h	$vr1, $a0, 2
+	vinsgr2vr.h	$vr1, $a0, 3
 	sub.d	$t0, $zero, $a7
-	ori	$t1, $zero, 8
+	ori	$t1, $zero, 4
 	ori	$t2, $zero, 16
 	b	.LBB6_37
 	.p2align	4, , 16
@@ -1495,8 +1508,8 @@ clear_picture:                          # @clear_picture
 	beq	$a1, $a2, .LBB6_50
 .LBB6_37:                               # %iter.check110
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_45 Depth 2
                                         #     Child Loop BB6_42 Depth 2
+                                        #     Child Loop BB6_46 Depth 2
                                         #     Child Loop BB6_49 Depth 2
 	slli.d	$t3, $a1, 3
 	ldx.d	$t3, $a4, $t3
@@ -1507,49 +1520,48 @@ clear_picture:                          # @clear_picture
 	.p2align	4, , 16
 .LBB6_39:                               # %vector.main.loop.iter.check112
                                         #   in Loop: Header=BB6_37 Depth=1
-	bgeu	$a3, $t2, .LBB6_44
+	bgeu	$a3, $t2, .LBB6_41
 # %bb.40:                               #   in Loop: Header=BB6_37 Depth=1
 	move	$t5, $zero
-.LBB6_41:                               # %vec.epilog.ph127
-                                        #   in Loop: Header=BB6_37 Depth=1
-	add.d	$t4, $t0, $t5
-	alsl.d	$t5, $t5, $t3, 1
+	b	.LBB6_45
 	.p2align	4, , 16
-.LBB6_42:                               # %vec.epilog.vector.body132
-                                        #   Parent Loop BB6_37 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t5, 0
-	addi.d	$t4, $t4, 8
-	addi.d	$t5, $t5, 16
-	bnez	$t4, .LBB6_42
-# %bb.43:                               # %vec.epilog.middle.block135
-                                        #   in Loop: Header=BB6_37 Depth=1
-	move	$t4, $a7
-	beq	$a7, $a3, .LBB6_36
-	b	.LBB6_48
-	.p2align	4, , 16
-.LBB6_44:                               # %vector.body118.preheader
+.LBB6_41:                               # %vector.body118.preheader
                                         #   in Loop: Header=BB6_37 Depth=1
 	addi.d	$t4, $t3, 16
 	move	$t5, $a6
 	.p2align	4, , 16
-.LBB6_45:                               # %vector.body118
+.LBB6_42:                               # %vector.body118
                                         #   Parent Loop BB6_37 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t4, -16
 	vst	$vr0, $t4, 0
 	addi.d	$t5, $t5, -16
 	addi.d	$t4, $t4, 32
-	bnez	$t5, .LBB6_45
-# %bb.46:                               # %middle.block121
+	bnez	$t5, .LBB6_42
+# %bb.43:                               # %middle.block121
                                         #   in Loop: Header=BB6_37 Depth=1
 	beq	$a6, $a3, .LBB6_36
-# %bb.47:                               # %vec.epilog.iter.check125
+# %bb.44:                               # %vec.epilog.iter.check125
                                         #   in Loop: Header=BB6_37 Depth=1
 	move	$t5, $a6
 	move	$t4, $a6
-	bnez	$a5, .LBB6_41
+	beqz	$a5, .LBB6_48
+.LBB6_45:                               # %vec.epilog.ph127
+                                        #   in Loop: Header=BB6_37 Depth=1
+	add.d	$t4, $t0, $t5
+	alsl.d	$t5, $t5, $t3, 1
 	.p2align	4, , 16
+.LBB6_46:                               # %vec.epilog.vector.body132
+                                        #   Parent Loop BB6_37 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t5, 0, 0
+	addi.d	$t4, $t4, 4
+	addi.d	$t5, $t5, 8
+	bnez	$t4, .LBB6_46
+# %bb.47:                               # %vec.epilog.middle.block135
+                                        #   in Loop: Header=BB6_37 Depth=1
+	move	$t4, $a7
+	beq	$a7, $a3, .LBB6_36
 .LBB6_48:                               # %vec.epilog.scalar.ph124.preheader
                                         #   in Loop: Header=BB6_37 Depth=1
 	alsl.d	$t3, $t4, $t3, 1
@@ -1619,14 +1631,18 @@ write_unpaired_field:                   # @write_unpaired_field
 	ori	$a5, $a5, 1796
 	ldx.w	$a4, $a4, $a5
 	ld.d	$a5, $a2, 56
-	andi	$a6, $a0, 8
+	andi	$a6, $a0, 12
 	bstrpick.d	$a7, $a0, 30, 4
 	slli.d	$a7, $a7, 4
 	vreplgr2vr.h	$vr0, $a4
-	bstrpick.d	$t0, $a0, 30, 3
-	slli.d	$t0, $t0, 3
+	bstrpick.d	$t0, $a0, 30, 2
+	slli.d	$t0, $t0, 2
+	vinsgr2vr.h	$vr1, $a4, 0
+	vinsgr2vr.h	$vr1, $a4, 1
+	vinsgr2vr.h	$vr1, $a4, 2
+	vinsgr2vr.h	$vr1, $a4, 3
 	sub.d	$t1, $zero, $t0
-	ori	$t2, $zero, 8
+	ori	$t2, $zero, 4
 	ori	$t3, $zero, 16
 	b	.LBB7_5
 	.p2align	4, , 16
@@ -1636,8 +1652,8 @@ write_unpaired_field:                   # @write_unpaired_field
 	beq	$a3, $a1, .LBB7_18
 .LBB7_5:                                # %iter.check
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_13 Depth 2
                                         #     Child Loop BB7_10 Depth 2
+                                        #     Child Loop BB7_14 Depth 2
                                         #     Child Loop BB7_17 Depth 2
 	slli.d	$t4, $a3, 3
 	ldx.d	$t4, $a5, $t4
@@ -1648,49 +1664,48 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_7:                                # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB7_5 Depth=1
-	bgeu	$a0, $t3, .LBB7_12
+	bgeu	$a0, $t3, .LBB7_9
 # %bb.8:                                #   in Loop: Header=BB7_5 Depth=1
 	move	$t7, $zero
-.LBB7_9:                                # %vec.epilog.ph
-                                        #   in Loop: Header=BB7_5 Depth=1
-	add.d	$t5, $t1, $t7
-	alsl.d	$t6, $t7, $t4, 1
+	b	.LBB7_13
 	.p2align	4, , 16
-.LBB7_10:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB7_5 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t6, 0
-	addi.d	$t5, $t5, 8
-	addi.d	$t6, $t6, 16
-	bnez	$t5, .LBB7_10
-# %bb.11:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB7_5 Depth=1
-	move	$t6, $t0
-	beq	$t0, $a0, .LBB7_4
-	b	.LBB7_16
-	.p2align	4, , 16
-.LBB7_12:                               # %vector.body.preheader
+.LBB7_9:                                # %vector.body.preheader
                                         #   in Loop: Header=BB7_5 Depth=1
 	addi.d	$t5, $t4, 16
 	move	$t6, $a7
 	.p2align	4, , 16
-.LBB7_13:                               # %vector.body
+.LBB7_10:                               # %vector.body
                                         #   Parent Loop BB7_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t5, -16
 	vst	$vr0, $t5, 0
 	addi.d	$t6, $t6, -16
 	addi.d	$t5, $t5, 32
-	bnez	$t6, .LBB7_13
-# %bb.14:                               # %middle.block
+	bnez	$t6, .LBB7_10
+# %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB7_5 Depth=1
 	beq	$a7, $a0, .LBB7_4
-# %bb.15:                               # %vec.epilog.iter.check
+# %bb.12:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB7_5 Depth=1
 	move	$t7, $a7
 	move	$t6, $a7
-	bnez	$a6, .LBB7_9
+	beqz	$a6, .LBB7_16
+.LBB7_13:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB7_5 Depth=1
+	add.d	$t5, $t1, $t7
+	alsl.d	$t6, $t7, $t4, 1
 	.p2align	4, , 16
+.LBB7_14:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB7_5 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t6, 0, 0
+	addi.d	$t5, $t5, 4
+	addi.d	$t6, $t6, 8
+	bnez	$t5, .LBB7_14
+# %bb.15:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB7_5 Depth=1
+	move	$t6, $t0
+	beq	$t0, $a0, .LBB7_4
 .LBB7_16:                               # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB7_5 Depth=1
 	sub.d	$t5, $a0, $t6
@@ -1720,14 +1735,18 @@ write_unpaired_field:                   # @write_unpaired_field
 	ori	$t0, $a2, 1800
 	ldx.w	$t1, $a5, $t0
 	ld.d	$t2, $a4, 0
-	andi	$a2, $a1, 8
+	andi	$a2, $a1, 12
 	bstrpick.d	$a5, $a1, 30, 4
 	slli.d	$t3, $a5, 4
 	vreplgr2vr.h	$vr0, $t1
-	bstrpick.d	$a6, $a1, 30, 3
-	slli.d	$t4, $a6, 3
+	bstrpick.d	$a6, $a1, 30, 2
+	slli.d	$t4, $a6, 2
+	vinsgr2vr.h	$vr1, $t1, 0
+	vinsgr2vr.h	$vr1, $t1, 1
+	vinsgr2vr.h	$vr1, $t1, 2
+	vinsgr2vr.h	$vr1, $t1, 3
 	sub.d	$t5, $zero, $t4
-	ori	$t6, $zero, 8
+	ori	$t6, $zero, 4
 	ori	$t7, $zero, 16
 	b	.LBB7_22
 	.p2align	4, , 16
@@ -1737,8 +1756,8 @@ write_unpaired_field:                   # @write_unpaired_field
 	beq	$a7, $a0, .LBB7_35
 .LBB7_22:                               # %iter.check95
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_30 Depth 2
                                         #     Child Loop BB7_27 Depth 2
+                                        #     Child Loop BB7_31 Depth 2
                                         #     Child Loop BB7_34 Depth 2
 	slli.d	$t8, $a7, 3
 	ldx.d	$t8, $t2, $t8
@@ -1749,49 +1768,48 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_24:                               # %vector.main.loop.iter.check97
                                         #   in Loop: Header=BB7_22 Depth=1
-	bgeu	$a1, $t7, .LBB7_29
+	bgeu	$a1, $t7, .LBB7_26
 # %bb.25:                               #   in Loop: Header=BB7_22 Depth=1
 	move	$s4, $zero
-.LBB7_26:                               # %vec.epilog.ph112
-                                        #   in Loop: Header=BB7_22 Depth=1
-	add.d	$s2, $t5, $s4
-	alsl.d	$s3, $s4, $t8, 1
+	b	.LBB7_30
 	.p2align	4, , 16
-.LBB7_27:                               # %vec.epilog.vector.body117
-                                        #   Parent Loop BB7_22 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $s3, 0
-	addi.d	$s2, $s2, 8
-	addi.d	$s3, $s3, 16
-	bnez	$s2, .LBB7_27
-# %bb.28:                               # %vec.epilog.middle.block120
-                                        #   in Loop: Header=BB7_22 Depth=1
-	move	$s3, $t4
-	beq	$t4, $a1, .LBB7_21
-	b	.LBB7_33
-	.p2align	4, , 16
-.LBB7_29:                               # %vector.body103.preheader
+.LBB7_26:                               # %vector.body103.preheader
                                         #   in Loop: Header=BB7_22 Depth=1
 	addi.d	$s2, $t8, 16
 	move	$s3, $t3
 	.p2align	4, , 16
-.LBB7_30:                               # %vector.body103
+.LBB7_27:                               # %vector.body103
                                         #   Parent Loop BB7_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $s2, -16
 	vst	$vr0, $s2, 0
 	addi.d	$s3, $s3, -16
 	addi.d	$s2, $s2, 32
-	bnez	$s3, .LBB7_30
-# %bb.31:                               # %middle.block106
+	bnez	$s3, .LBB7_27
+# %bb.28:                               # %middle.block106
                                         #   in Loop: Header=BB7_22 Depth=1
 	beq	$t3, $a1, .LBB7_21
-# %bb.32:                               # %vec.epilog.iter.check110
+# %bb.29:                               # %vec.epilog.iter.check110
                                         #   in Loop: Header=BB7_22 Depth=1
 	move	$s4, $t3
 	move	$s3, $t3
-	bnez	$a2, .LBB7_26
+	beqz	$a2, .LBB7_33
+.LBB7_30:                               # %vec.epilog.ph112
+                                        #   in Loop: Header=BB7_22 Depth=1
+	add.d	$s2, $t5, $s4
+	alsl.d	$s3, $s4, $t8, 1
 	.p2align	4, , 16
+.LBB7_31:                               # %vec.epilog.vector.body117
+                                        #   Parent Loop BB7_22 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $s3, 0, 0
+	addi.d	$s2, $s2, 4
+	addi.d	$s3, $s3, 8
+	bnez	$s2, .LBB7_31
+# %bb.32:                               # %vec.epilog.middle.block120
+                                        #   in Loop: Header=BB7_22 Depth=1
+	move	$s3, $t4
+	beq	$t4, $a1, .LBB7_21
 .LBB7_33:                               # %vec.epilog.scalar.ph109.preheader
                                         #   in Loop: Header=BB7_22 Depth=1
 	sub.d	$s2, $a1, $s3
@@ -1812,9 +1830,13 @@ write_unpaired_field:                   # @write_unpaired_field
 	ld.d	$a4, $a4, 8
 	slli.d	$a5, $a5, 4
 	vreplgr2vr.h	$vr0, $a3
-	slli.d	$a6, $a6, 3
+	slli.d	$a6, $a6, 2
+	vinsgr2vr.h	$vr1, $a3, 0
+	vinsgr2vr.h	$vr1, $a3, 1
+	vinsgr2vr.h	$vr1, $a3, 2
+	vinsgr2vr.h	$vr1, $a3, 3
 	sub.d	$t0, $zero, $a6
-	ori	$t1, $zero, 8
+	ori	$t1, $zero, 4
 	ori	$t2, $zero, 16
 	b	.LBB7_37
 	.p2align	4, , 16
@@ -1824,8 +1846,8 @@ write_unpaired_field:                   # @write_unpaired_field
 	beq	$a7, $a0, .LBB7_50
 .LBB7_37:                               # %iter.check125
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_45 Depth 2
                                         #     Child Loop BB7_42 Depth 2
+                                        #     Child Loop BB7_46 Depth 2
                                         #     Child Loop BB7_49 Depth 2
 	slli.d	$t3, $a7, 3
 	ldx.d	$t3, $a4, $t3
@@ -1836,49 +1858,48 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_39:                               # %vector.main.loop.iter.check127
                                         #   in Loop: Header=BB7_37 Depth=1
-	bgeu	$a1, $t2, .LBB7_44
+	bgeu	$a1, $t2, .LBB7_41
 # %bb.40:                               #   in Loop: Header=BB7_37 Depth=1
 	move	$t6, $zero
-.LBB7_41:                               # %vec.epilog.ph142
-                                        #   in Loop: Header=BB7_37 Depth=1
-	add.d	$t4, $t0, $t6
-	alsl.d	$t5, $t6, $t3, 1
+	b	.LBB7_45
 	.p2align	4, , 16
-.LBB7_42:                               # %vec.epilog.vector.body147
-                                        #   Parent Loop BB7_37 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t5, 0
-	addi.d	$t4, $t4, 8
-	addi.d	$t5, $t5, 16
-	bnez	$t4, .LBB7_42
-# %bb.43:                               # %vec.epilog.middle.block150
-                                        #   in Loop: Header=BB7_37 Depth=1
-	move	$t5, $a6
-	beq	$a6, $a1, .LBB7_36
-	b	.LBB7_48
-	.p2align	4, , 16
-.LBB7_44:                               # %vector.body133.preheader
+.LBB7_41:                               # %vector.body133.preheader
                                         #   in Loop: Header=BB7_37 Depth=1
 	addi.d	$t4, $t3, 16
 	move	$t5, $a5
 	.p2align	4, , 16
-.LBB7_45:                               # %vector.body133
+.LBB7_42:                               # %vector.body133
                                         #   Parent Loop BB7_37 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t4, -16
 	vst	$vr0, $t4, 0
 	addi.d	$t5, $t5, -16
 	addi.d	$t4, $t4, 32
-	bnez	$t5, .LBB7_45
-# %bb.46:                               # %middle.block136
+	bnez	$t5, .LBB7_42
+# %bb.43:                               # %middle.block136
                                         #   in Loop: Header=BB7_37 Depth=1
 	beq	$a5, $a1, .LBB7_36
-# %bb.47:                               # %vec.epilog.iter.check140
+# %bb.44:                               # %vec.epilog.iter.check140
                                         #   in Loop: Header=BB7_37 Depth=1
 	move	$t6, $a5
 	move	$t5, $a5
-	bnez	$a2, .LBB7_41
+	beqz	$a2, .LBB7_48
+.LBB7_45:                               # %vec.epilog.ph142
+                                        #   in Loop: Header=BB7_37 Depth=1
+	add.d	$t4, $t0, $t6
+	alsl.d	$t5, $t6, $t3, 1
 	.p2align	4, , 16
+.LBB7_46:                               # %vec.epilog.vector.body147
+                                        #   Parent Loop BB7_37 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t5, 0, 0
+	addi.d	$t4, $t4, 4
+	addi.d	$t5, $t5, 8
+	bnez	$t4, .LBB7_46
+# %bb.47:                               # %vec.epilog.middle.block150
+                                        #   in Loop: Header=BB7_37 Depth=1
+	move	$t5, $a6
+	beq	$a6, $a1, .LBB7_36
 .LBB7_48:                               # %vec.epilog.scalar.ph139.preheader
                                         #   in Loop: Header=BB7_37 Depth=1
 	sub.d	$t4, $a1, $t5
@@ -1935,14 +1956,18 @@ write_unpaired_field:                   # @write_unpaired_field
 	ori	$a5, $a5, 1796
 	ldx.w	$a4, $a4, $a5
 	ld.d	$a5, $a1, 56
-	andi	$a6, $a0, 8
+	andi	$a6, $a0, 12
 	bstrpick.d	$a7, $a0, 30, 4
 	slli.d	$a7, $a7, 4
 	vreplgr2vr.h	$vr0, $a4
-	bstrpick.d	$t0, $a0, 30, 3
-	slli.d	$t0, $t0, 3
+	bstrpick.d	$t0, $a0, 30, 2
+	slli.d	$t0, $t0, 2
+	vinsgr2vr.h	$vr1, $a4, 0
+	vinsgr2vr.h	$vr1, $a4, 1
+	vinsgr2vr.h	$vr1, $a4, 2
+	vinsgr2vr.h	$vr1, $a4, 3
 	sub.d	$t1, $zero, $t0
-	ori	$t2, $zero, 8
+	ori	$t2, $zero, 4
 	ori	$t3, $zero, 16
 	b	.LBB7_56
 	.p2align	4, , 16
@@ -1952,8 +1977,8 @@ write_unpaired_field:                   # @write_unpaired_field
 	beq	$a3, $a2, .LBB7_69
 .LBB7_56:                               # %iter.check155
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_64 Depth 2
                                         #     Child Loop BB7_61 Depth 2
+                                        #     Child Loop BB7_65 Depth 2
                                         #     Child Loop BB7_68 Depth 2
 	slli.d	$t4, $a3, 3
 	ldx.d	$t4, $a5, $t4
@@ -1964,49 +1989,48 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_58:                               # %vector.main.loop.iter.check157
                                         #   in Loop: Header=BB7_56 Depth=1
-	bgeu	$a0, $t3, .LBB7_63
+	bgeu	$a0, $t3, .LBB7_60
 # %bb.59:                               #   in Loop: Header=BB7_56 Depth=1
 	move	$t7, $zero
-.LBB7_60:                               # %vec.epilog.ph172
-                                        #   in Loop: Header=BB7_56 Depth=1
-	add.d	$t5, $t1, $t7
-	alsl.d	$t6, $t7, $t4, 1
+	b	.LBB7_64
 	.p2align	4, , 16
-.LBB7_61:                               # %vec.epilog.vector.body177
-                                        #   Parent Loop BB7_56 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t6, 0
-	addi.d	$t5, $t5, 8
-	addi.d	$t6, $t6, 16
-	bnez	$t5, .LBB7_61
-# %bb.62:                               # %vec.epilog.middle.block180
-                                        #   in Loop: Header=BB7_56 Depth=1
-	move	$t6, $t0
-	beq	$t0, $a0, .LBB7_55
-	b	.LBB7_67
-	.p2align	4, , 16
-.LBB7_63:                               # %vector.body163.preheader
+.LBB7_60:                               # %vector.body163.preheader
                                         #   in Loop: Header=BB7_56 Depth=1
 	addi.d	$t5, $t4, 16
 	move	$t6, $a7
 	.p2align	4, , 16
-.LBB7_64:                               # %vector.body163
+.LBB7_61:                               # %vector.body163
                                         #   Parent Loop BB7_56 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t5, -16
 	vst	$vr0, $t5, 0
 	addi.d	$t6, $t6, -16
 	addi.d	$t5, $t5, 32
-	bnez	$t6, .LBB7_64
-# %bb.65:                               # %middle.block166
+	bnez	$t6, .LBB7_61
+# %bb.62:                               # %middle.block166
                                         #   in Loop: Header=BB7_56 Depth=1
 	beq	$a7, $a0, .LBB7_55
-# %bb.66:                               # %vec.epilog.iter.check170
+# %bb.63:                               # %vec.epilog.iter.check170
                                         #   in Loop: Header=BB7_56 Depth=1
 	move	$t7, $a7
 	move	$t6, $a7
-	bnez	$a6, .LBB7_60
+	beqz	$a6, .LBB7_67
+.LBB7_64:                               # %vec.epilog.ph172
+                                        #   in Loop: Header=BB7_56 Depth=1
+	add.d	$t5, $t1, $t7
+	alsl.d	$t6, $t7, $t4, 1
 	.p2align	4, , 16
+.LBB7_65:                               # %vec.epilog.vector.body177
+                                        #   Parent Loop BB7_56 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t6, 0, 0
+	addi.d	$t5, $t5, 4
+	addi.d	$t6, $t6, 8
+	bnez	$t5, .LBB7_65
+# %bb.66:                               # %vec.epilog.middle.block180
+                                        #   in Loop: Header=BB7_56 Depth=1
+	move	$t6, $t0
+	beq	$t0, $a0, .LBB7_55
 .LBB7_67:                               # %vec.epilog.scalar.ph169.preheader
                                         #   in Loop: Header=BB7_56 Depth=1
 	sub.d	$t5, $a0, $t6
@@ -2036,14 +2060,18 @@ write_unpaired_field:                   # @write_unpaired_field
 	ori	$t1, $a6, 1800
 	ldx.w	$t2, $a3, $t1
 	ld.d	$t3, $a5, 0
-	andi	$a3, $a2, 8
+	andi	$a3, $a2, 12
 	bstrpick.d	$a6, $a2, 30, 4
 	slli.d	$t4, $a6, 4
 	vreplgr2vr.h	$vr0, $t2
-	bstrpick.d	$a7, $a2, 30, 3
-	slli.d	$t5, $a7, 3
+	bstrpick.d	$a7, $a2, 30, 2
+	slli.d	$t5, $a7, 2
+	vinsgr2vr.h	$vr1, $t2, 0
+	vinsgr2vr.h	$vr1, $t2, 1
+	vinsgr2vr.h	$vr1, $t2, 2
+	vinsgr2vr.h	$vr1, $t2, 3
 	sub.d	$t6, $zero, $t5
-	ori	$t7, $zero, 8
+	ori	$t7, $zero, 4
 	ori	$t8, $zero, 16
 	b	.LBB7_73
 	.p2align	4, , 16
@@ -2053,8 +2081,8 @@ write_unpaired_field:                   # @write_unpaired_field
 	beq	$t0, $a0, .LBB7_86
 .LBB7_73:                               # %iter.check185
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_81 Depth 2
                                         #     Child Loop BB7_78 Depth 2
+                                        #     Child Loop BB7_82 Depth 2
                                         #     Child Loop BB7_85 Depth 2
 	slli.d	$s2, $t0, 3
 	ldx.d	$s2, $t3, $s2
@@ -2065,49 +2093,48 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_75:                               # %vector.main.loop.iter.check187
                                         #   in Loop: Header=BB7_73 Depth=1
-	bgeu	$a2, $t8, .LBB7_80
+	bgeu	$a2, $t8, .LBB7_77
 # %bb.76:                               #   in Loop: Header=BB7_73 Depth=1
 	move	$s5, $zero
-.LBB7_77:                               # %vec.epilog.ph202
-                                        #   in Loop: Header=BB7_73 Depth=1
-	add.d	$s3, $t6, $s5
-	alsl.d	$s4, $s5, $s2, 1
+	b	.LBB7_81
 	.p2align	4, , 16
-.LBB7_78:                               # %vec.epilog.vector.body207
-                                        #   Parent Loop BB7_73 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $s4, 0
-	addi.d	$s3, $s3, 8
-	addi.d	$s4, $s4, 16
-	bnez	$s3, .LBB7_78
-# %bb.79:                               # %vec.epilog.middle.block210
-                                        #   in Loop: Header=BB7_73 Depth=1
-	move	$s4, $t5
-	beq	$t5, $a2, .LBB7_72
-	b	.LBB7_84
-	.p2align	4, , 16
-.LBB7_80:                               # %vector.body193.preheader
+.LBB7_77:                               # %vector.body193.preheader
                                         #   in Loop: Header=BB7_73 Depth=1
 	addi.d	$s3, $s2, 16
 	move	$s4, $t4
 	.p2align	4, , 16
-.LBB7_81:                               # %vector.body193
+.LBB7_78:                               # %vector.body193
                                         #   Parent Loop BB7_73 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $s3, -16
 	vst	$vr0, $s3, 0
 	addi.d	$s4, $s4, -16
 	addi.d	$s3, $s3, 32
-	bnez	$s4, .LBB7_81
-# %bb.82:                               # %middle.block196
+	bnez	$s4, .LBB7_78
+# %bb.79:                               # %middle.block196
                                         #   in Loop: Header=BB7_73 Depth=1
 	beq	$t4, $a2, .LBB7_72
-# %bb.83:                               # %vec.epilog.iter.check200
+# %bb.80:                               # %vec.epilog.iter.check200
                                         #   in Loop: Header=BB7_73 Depth=1
 	move	$s5, $t4
 	move	$s4, $t4
-	bnez	$a3, .LBB7_77
+	beqz	$a3, .LBB7_84
+.LBB7_81:                               # %vec.epilog.ph202
+                                        #   in Loop: Header=BB7_73 Depth=1
+	add.d	$s3, $t6, $s5
+	alsl.d	$s4, $s5, $s2, 1
 	.p2align	4, , 16
+.LBB7_82:                               # %vec.epilog.vector.body207
+                                        #   Parent Loop BB7_73 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $s4, 0, 0
+	addi.d	$s3, $s3, 4
+	addi.d	$s4, $s4, 8
+	bnez	$s3, .LBB7_82
+# %bb.83:                               # %vec.epilog.middle.block210
+                                        #   in Loop: Header=BB7_73 Depth=1
+	move	$s4, $t5
+	beq	$t5, $a2, .LBB7_72
 .LBB7_84:                               # %vec.epilog.scalar.ph199.preheader
                                         #   in Loop: Header=BB7_73 Depth=1
 	sub.d	$s3, $a2, $s4
@@ -2128,9 +2155,13 @@ write_unpaired_field:                   # @write_unpaired_field
 	ld.d	$a5, $a5, 8
 	slli.d	$a6, $a6, 4
 	vreplgr2vr.h	$vr0, $a4
-	slli.d	$a7, $a7, 3
+	slli.d	$a7, $a7, 2
+	vinsgr2vr.h	$vr1, $a4, 0
+	vinsgr2vr.h	$vr1, $a4, 1
+	vinsgr2vr.h	$vr1, $a4, 2
+	vinsgr2vr.h	$vr1, $a4, 3
 	sub.d	$t1, $zero, $a7
-	ori	$t2, $zero, 8
+	ori	$t2, $zero, 4
 	ori	$t3, $zero, 16
 	b	.LBB7_88
 	.p2align	4, , 16
@@ -2140,8 +2171,8 @@ write_unpaired_field:                   # @write_unpaired_field
 	beq	$t0, $a0, .LBB7_101
 .LBB7_88:                               # %iter.check215
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB7_96 Depth 2
                                         #     Child Loop BB7_93 Depth 2
+                                        #     Child Loop BB7_97 Depth 2
                                         #     Child Loop BB7_100 Depth 2
 	slli.d	$t4, $t0, 3
 	ldx.d	$t4, $a5, $t4
@@ -2152,49 +2183,48 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_90:                               # %vector.main.loop.iter.check217
                                         #   in Loop: Header=BB7_88 Depth=1
-	bgeu	$a2, $t3, .LBB7_95
+	bgeu	$a2, $t3, .LBB7_92
 # %bb.91:                               #   in Loop: Header=BB7_88 Depth=1
 	move	$t7, $zero
-.LBB7_92:                               # %vec.epilog.ph232
-                                        #   in Loop: Header=BB7_88 Depth=1
-	add.d	$t5, $t1, $t7
-	alsl.d	$t6, $t7, $t4, 1
+	b	.LBB7_96
 	.p2align	4, , 16
-.LBB7_93:                               # %vec.epilog.vector.body237
-                                        #   Parent Loop BB7_88 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	vst	$vr0, $t6, 0
-	addi.d	$t5, $t5, 8
-	addi.d	$t6, $t6, 16
-	bnez	$t5, .LBB7_93
-# %bb.94:                               # %vec.epilog.middle.block240
-                                        #   in Loop: Header=BB7_88 Depth=1
-	move	$t6, $a7
-	beq	$a7, $a2, .LBB7_87
-	b	.LBB7_99
-	.p2align	4, , 16
-.LBB7_95:                               # %vector.body223.preheader
+.LBB7_92:                               # %vector.body223.preheader
                                         #   in Loop: Header=BB7_88 Depth=1
 	addi.d	$t5, $t4, 16
 	move	$t6, $a6
 	.p2align	4, , 16
-.LBB7_96:                               # %vector.body223
+.LBB7_93:                               # %vector.body223
                                         #   Parent Loop BB7_88 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $t5, -16
 	vst	$vr0, $t5, 0
 	addi.d	$t6, $t6, -16
 	addi.d	$t5, $t5, 32
-	bnez	$t6, .LBB7_96
-# %bb.97:                               # %middle.block226
+	bnez	$t6, .LBB7_93
+# %bb.94:                               # %middle.block226
                                         #   in Loop: Header=BB7_88 Depth=1
 	beq	$a6, $a2, .LBB7_87
-# %bb.98:                               # %vec.epilog.iter.check230
+# %bb.95:                               # %vec.epilog.iter.check230
                                         #   in Loop: Header=BB7_88 Depth=1
 	move	$t7, $a6
 	move	$t6, $a6
-	bnez	$a3, .LBB7_92
+	beqz	$a3, .LBB7_99
+.LBB7_96:                               # %vec.epilog.ph232
+                                        #   in Loop: Header=BB7_88 Depth=1
+	add.d	$t5, $t1, $t7
+	alsl.d	$t6, $t7, $t4, 1
 	.p2align	4, , 16
+.LBB7_97:                               # %vec.epilog.vector.body237
+                                        #   Parent Loop BB7_88 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vstelm.d	$vr1, $t6, 0, 0
+	addi.d	$t5, $t5, 4
+	addi.d	$t6, $t6, 8
+	bnez	$t5, .LBB7_97
+# %bb.98:                               # %vec.epilog.middle.block240
+                                        #   in Loop: Header=BB7_88 Depth=1
+	move	$t6, $a7
+	beq	$a7, $a2, .LBB7_87
 .LBB7_99:                               # %vec.epilog.scalar.ph229.preheader
                                         #   in Loop: Header=BB7_88 Depth=1
 	sub.d	$t5, $a2, $t6

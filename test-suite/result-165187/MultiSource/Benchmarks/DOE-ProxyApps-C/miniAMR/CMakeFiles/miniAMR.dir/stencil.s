@@ -473,21 +473,21 @@ stencil_calc:                           # @stencil_calc
                                         #         Child Loop BB0_49 Depth 4
                                         #         Child Loop BB0_38 Depth 4
 	st.d	$a1, $fp, -208                  # 8-byte Folded Spill
-	mul.d	$a0, $t4, $a1
+	mul.d	$a1, $t4, $a1
 	ld.d	$a3, $fp, -264                  # 8-byte Folded Reload
-	alsl.d	$a1, $a2, $a3, 3
-	ld.d	$a4, $a1, -8
+	alsl.d	$a0, $a2, $a3, 3
+	ld.d	$a4, $a0, -8
 	st.d	$a2, $fp, -216                  # 8-byte Folded Spill
 	slli.d	$a2, $a2, 3
 	ldx.d	$a2, $a3, $a2
-	ld.d	$t1, $a1, 8
-	ld.d	$s2, $a4, 0
+	ld.d	$t1, $a0, 8
+	ld.d	$a0, $a4, 0
 	st.d	$a4, $fp, -136                  # 8-byte Folded Spill
 	ld.d	$t8, $a4, 8
 	ld.d	$ra, $a2, 0
 	st.d	$a2, $fp, -144                  # 8-byte Folded Spill
 	ld.d	$t2, $a2, 8
-	ld.d	$a3, $t1, 0
+	ld.d	$s2, $t1, 0
 	ld.d	$t3, $t1, 8
 	fld.d	$ft3, $t8, 0
 	fld.d	$ft0, $t8, 8
@@ -495,13 +495,13 @@ stencil_calc:                           # @stencil_calc
 	fld.d	$fa7, $t2, 8
 	fld.d	$ft1, $t3, 0
 	fld.d	$fa6, $t3, 8
-	ld.d	$a1, $fp, -256                  # 8-byte Folded Reload
-	add.d	$t4, $a1, $a0
-	ld.d	$a1, $fp, -288                  # 8-byte Folded Reload
-	add.d	$t5, $a1, $a0
+	ld.d	$a2, $fp, -256                  # 8-byte Folded Reload
+	add.d	$t4, $a2, $a1
+	ld.d	$a2, $fp, -288                  # 8-byte Folded Reload
+	add.d	$t5, $a2, $a1
 	st.d	$a7, $fp, -224                  # 8-byte Folded Spill
 	st.d	$t7, $fp, -232                  # 8-byte Folded Spill
-	ori	$a0, $zero, 1
+	ori	$a1, $zero, 1
 	b	.LBB0_35
 	.p2align	4, , 16
 .LBB0_34:                               # %._crit_edge
@@ -514,23 +514,23 @@ stencil_calc:                           # @stencil_calc
 	fmov.d	$ft2, $fa2
 	fmov.d	$ft0, $fa1
 	fmov.d	$ft3, $fa0
-	move	$a3, $a5
-	move	$ra, $a2
-	move	$s2, $a1
-	ld.d	$a1, $fp, -160                  # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB0_32
+	move	$s2, $a5
+	move	$ra, $a3
+	move	$a0, $a2
+	ld.d	$a2, $fp, -160                  # 8-byte Folded Reload
+	beq	$a1, $a2, .LBB0_32
 .LBB0_35:                               # %.preheader258
                                         #   Parent Loop BB0_27 Depth=1
                                         #     Parent Loop BB0_33 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_49 Depth 4
                                         #         Child Loop BB0_38 Depth 4
-	move	$a1, $t8
-	addi.d	$a0, $a0, 1
-	slli.d	$a4, $a0, 3
-	ld.d	$a2, $fp, -136                  # 8-byte Folded Reload
-	ldx.d	$t8, $a2, $a4
-	move	$a2, $t2
+	move	$a2, $t8
+	addi.d	$a1, $a1, 1
+	slli.d	$a4, $a1, 3
+	ld.d	$a3, $fp, -136                  # 8-byte Folded Reload
+	ldx.d	$t8, $a3, $a4
+	move	$a3, $t2
 	move	$a5, $t3
 	ld.d	$a6, $fp, -144                  # 8-byte Folded Reload
 	ldx.d	$t2, $a6, $a4
@@ -543,7 +543,7 @@ stencil_calc:                           # @stencil_calc
 	fld.d	$fa5, $t3, 8
 	ori	$a4, $zero, 1
 	ld.d	$a6, $fp, -152                  # 8-byte Folded Reload
-	ori	$t0, $zero, 3
+	ori	$t0, $zero, 5
 	bgeu	$a6, $t0, .LBB0_39
 .LBB0_36:                               #   in Loop: Header=BB0_35 Depth=3
 	fmov.d	$ft4, $fa5
@@ -555,15 +555,14 @@ stencil_calc:                           # @stencil_calc
 .LBB0_37:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_35 Depth=3
 	slli.d	$a6, $a4, 3
-	addi.d	$s0, $a1, 8
-	addi.d	$s1, $t8, 8
-	addi.d	$s3, $a2, 8
-	addi.d	$s5, $t2, 8
 	ld.d	$t0, $fp, -168                  # 8-byte Folded Reload
 	sub.d	$a4, $t0, $a4
-	addi.d	$s6, $t3, 8
-	addi.d	$s7, $a5, 8
-	addi.d	$a3, $a3, 8
+	addi.d	$s0, $t3, 8
+	addi.d	$s1, $a5, 8
+	addi.d	$s3, $t2, 8
+	addi.d	$s5, $a3, 8
+	addi.d	$s6, $t8, 8
+	addi.d	$s7, $a2, 8
 	move	$t6, $a7
 	.p2align	4, , 16
 .LBB0_38:                               # %scalar.ph
@@ -571,37 +570,40 @@ stencil_calc:                           # @stencil_calc
                                         #     Parent Loop BB0_33 Depth=2
                                         #       Parent Loop BB0_35 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	add.d	$t0, $s2, $a6
-	fld.d	$ft10, $t0, -8
-	fldx.d	$ft11, $s2, $a6
-	fadd.d	$ft10, $ft10, $ft11
-	fld.d	$ft11, $t0, 8
+	add.d	$t0, $a0, $a6
+	vld	$vr18, $t0, -8
+	vreplvei.d	$vr19, $vr18, 0
+	vreplvei.d	$vr18, $vr18, 1
+	fld.d	$ft12, $t0, 8
+	fadd.d	$ft10, $ft11, $ft10
 	add.d	$t0, $ra, $a6
-	fld.d	$ft12, $t0, -8
-	fldx.d	$ft13, $ra, $a6
-	fld.d	$ft14, $t0, 8
-	fadd.d	$ft10, $ft10, $ft11
+	vld	$vr19, $t0, -8
+	fadd.d	$ft10, $ft10, $ft12
 	fadd.d	$ft10, $ft10, $ft3
 	fmov.d	$ft3, $ft0
-	fadd.d	$ft0, $ft12, $ft13
-	fadd.d	$ft0, $ft0, $ft14
+	fld.d	$ft0, $t0, 8
+	vreplvei.d	$vr20, $vr19, 0
+	vreplvei.d	$vr19, $vr19, 1
+	fadd.d	$ft11, $ft12, $ft11
+	fadd.d	$ft0, $ft11, $ft0
 	fadd.d	$ft11, $ft0, $ft2
 	fmov.d	$ft2, $fa7
-	add.d	$t0, $a3, $a6
-	fld.d	$fa7, $t0, -16
-	fld.d	$ft12, $t0, -8
-	fldx.d	$ft13, $a3, $a6
+	add.d	$t0, $s2, $a6
+	vld	$vr7, $t0, -8
 	fadd.d	$ft10, $ft10, $ft3
-	fldx.d	$ft0, $s0, $a6
+	fldx.d	$ft0, $s7, $a6
+	fld.d	$ft12, $t0, 8
+	vreplvei.d	$vr21, $vr7, 0
+	vreplvei.d	$vr7, $vr7, 1
+	fadd.d	$fa7, $ft13, $fa7
 	fadd.d	$fa7, $fa7, $ft12
-	fadd.d	$fa7, $fa7, $ft13
 	fadd.d	$ft1, $fa7, $ft1
 	fmov.d	$ft12, $fa6
 	fadd.d	$ft10, $ft10, $ft0
 	fadd.d	$ft11, $ft11, $ft2
-	fldx.d	$fa7, $s3, $a6
+	fldx.d	$fa7, $s5, $a6
 	fadd.d	$ft1, $ft1, $fa6
-	fldx.d	$fa6, $s7, $a6
+	fldx.d	$fa6, $s1, $a6
 	fadd.d	$ft9, $ft10, $ft9
 	fmov.d	$ft10, $ft8
 	fadd.d	$ft8, $ft11, $fa7
@@ -611,10 +613,10 @@ stencil_calc:                           # @stencil_calc
 	fadd.d	$ft1, $ft1, $ft5
 	fmov.d	$ft5, $ft4
 	fadd.d	$ft13, $ft9, $ft10
-	fldx.d	$ft8, $s1, $a6
+	fldx.d	$ft8, $s6, $a6
 	fadd.d	$ft14, $ft7, $ft6
-	fldx.d	$ft6, $s5, $a6
-	fldx.d	$ft4, $s6, $a6
+	fldx.d	$ft6, $s3, $a6
+	fldx.d	$ft4, $s0, $a6
 	fadd.d	$ft15, $ft1, $ft5
                                         # kill: def $f13_64 killed $f13_64 def $vr13
 	fmov.d	$ft1, $ft12
@@ -629,33 +631,33 @@ stencil_calc:                           # @stencil_calc
 	fadd.d	$ft10, $ft10, $ft12
 	fdiv.d	$ft10, $ft10, $fs3
 	fstx.d	$ft10, $t6, $a6
+	addi.d	$a0, $a0, 8
+	addi.d	$ra, $ra, 8
+	addi.d	$s2, $s2, 8
+	addi.d	$t6, $t6, 8
+	addi.d	$a4, $a4, -1
 	addi.d	$s0, $s0, 8
 	addi.d	$s1, $s1, 8
 	addi.d	$s3, $s3, 8
-	addi.d	$t6, $t6, 8
 	addi.d	$s5, $s5, 8
-	addi.d	$ra, $ra, 8
-	addi.d	$s2, $s2, 8
-	addi.d	$a4, $a4, -1
 	addi.d	$s6, $s6, 8
 	addi.d	$s7, $s7, 8
-	addi.d	$a3, $a3, 8
 	bnez	$a4, .LBB0_38
 	b	.LBB0_34
 	.p2align	4, , 16
 .LBB0_39:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_35 Depth=3
-	addi.d	$a6, $a1, 16
-	add.d	$t6, $a1, $s4
+	addi.d	$a6, $a2, 16
+	add.d	$t6, $a2, $s4
 	sltu	$t6, $t4, $t6
 	sltu	$s0, $a6, $t5
 	and	$t6, $t6, $s0
 	bnez	$t6, .LBB0_36
 # %bb.40:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_35 Depth=3
-	add.d	$t6, $s2, $s4
+	add.d	$t6, $a0, $s4
 	sltu	$t6, $t4, $t6
-	sltu	$s0, $s2, $t5
+	sltu	$s0, $a0, $t5
 	and	$t6, $t6, $s0
 	bnez	$t6, .LBB0_36
 # %bb.41:                               # %vector.memcheck
@@ -668,8 +670,8 @@ stencil_calc:                           # @stencil_calc
 	bnez	$t6, .LBB0_36
 # %bb.42:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_35 Depth=3
-	addi.d	$s5, $a2, 16
-	add.d	$t6, $a2, $s4
+	addi.d	$s5, $a3, 16
+	add.d	$t6, $a3, $s4
 	sltu	$t6, $t4, $t6
 	sltu	$s0, $s5, $t5
 	and	$t6, $t6, $s0
@@ -699,9 +701,9 @@ stencil_calc:                           # @stencil_calc
 	bnez	$t6, .LBB0_36
 # %bb.46:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_35 Depth=3
-	add.d	$t6, $a3, $s4
+	add.d	$t6, $s2, $s4
 	sltu	$t6, $t4, $t6
-	sltu	$s6, $a3, $t5
+	sltu	$s6, $s2, $t5
 	and	$t6, $t6, $s6
 	bnez	$t6, .LBB0_36
 # %bb.47:                               # %vector.memcheck
@@ -734,8 +736,8 @@ stencil_calc:                           # @stencil_calc
                                         #     Parent Loop BB0_33 Depth=2
                                         #       Parent Loop BB0_35 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	add.d	$s7, $s2, $a4
-	vldx	$vr24, $s2, $a4
+	add.d	$s7, $a0, $a4
+	vldx	$vr24, $a0, $a4
 	vld	$vr25, $s7, 8
 	vld	$vr26, $s7, 16
 	vori.b	$vr7, $vr18, 0
@@ -768,8 +770,8 @@ stencil_calc:                           # @stencil_calc
 	vfadd.d	$vr14, $vr14, $vr15
 	vfadd.d	$vr14, $vr14, $vr10
 	vfadd.d	$vr14, $vr14, $vr16
-	add.d	$s7, $a3, $a4
-	vldx	$vr21, $a3, $a4
+	add.d	$s7, $s2, $a4
+	vldx	$vr21, $s2, $a4
 	vld	$vr22, $s7, 8
 	vpackod.d	$vr9, $vr11, $vr9
 	vfadd.d	$vr9, $vr14, $vr9

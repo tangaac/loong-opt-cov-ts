@@ -587,7 +587,7 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 # %bb.13:                               # %.lr.ph
 	ldptr.d	$a1, $s8, 5040
 	ldptr.d	$a2, $s8, 5048
-	ori	$a3, $zero, 12
+	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB2_26
 # %bb.14:
 	move	$a3, $zero

@@ -542,62 +542,47 @@ write_sei_message:                      # @write_sei_message
 	add.d	$s0, $a2, $a0
 	ld.w	$a0, $s0, 4
 	ori	$a4, $zero, 256
-	lu12i.w	$a2, -522232
 	blt	$a3, $a4, .LBB4_3
 # %bb.1:                                # %.lr.ph
-	move	$a5, $a0
-	addi.d	$a6, $a3, -256
-	bstrpick.d	$a6, $a6, 31, 0
-	ori	$a7, $a2, 129
-	lu32i.d	$a7, 0
-	mul.d	$a6, $a6, $a7
-	srli.d	$a6, $a6, 39
-	add.d	$a0, $a0, $a6
-	addi.w	$a0, $a0, 1
-	ori	$a6, $zero, 255
-	ori	$a7, $zero, 510
+	ori	$a2, $zero, 255
+	ori	$a5, $zero, 510
+	move	$a6, $a0
 	.p2align	4, , 16
 .LBB4_2:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $s0, 16
-	move	$t1, $a3
-	stx.b	$a6, $t0, $a5
-	addi.d	$a5, $a5, 1
+	ld.d	$a7, $s0, 16
+	move	$t0, $a3
+	stx.b	$a2, $a7, $a6
+	addi.d	$a6, $a6, 1
 	addi.w	$a3, $a3, -255
-	bltu	$a7, $t1, .LBB4_2
+	addi.w	$a0, $a0, 1
+	bltu	$a5, $t0, .LBB4_2
 .LBB4_3:                                # %._crit_edge
-	ld.d	$a5, $s0, 16
-	stx.b	$a3, $a5, $a0
-	addi.w	$a3, $a0, 1
+	ld.d	$a2, $s0, 16
+	stx.b	$a3, $a2, $a0
+	addi.w	$a2, $a0, 1
 	blt	$fp, $a4, .LBB4_7
 # %bb.4:                                # %.lr.ph33.preheader
-	addi.d	$a4, $fp, -256
-	bstrpick.d	$a4, $a4, 31, 0
-	ori	$a2, $a2, 129
-	lu32i.d	$a2, 0
-	mul.d	$a2, $a4, $a2
-	srli.d	$a2, $a2, 39
-	add.d	$a0, $a0, $a2
-	addi.d	$a0, $a0, 1
 	ori	$a4, $zero, 255
 	ori	$a5, $zero, 510
-	move	$a2, $fp
+	move	$a3, $fp
 	.p2align	4, , 16
 .LBB4_5:                                # %.lr.ph33
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $s0, 16
-	move	$a7, $a2
-	stx.b	$a4, $a6, $a3
-	addi.w	$a2, $a2, -255
-	addi.d	$a3, $a3, 1
+	move	$a7, $a3
+	stx.b	$a4, $a6, $a2
+	addi.w	$a3, $a3, -255
+	addi.d	$a2, $a2, 1
+	addi.d	$a0, $a0, 1
 	bltu	$a5, $a7, .LBB4_5
 # %bb.6:                                # %._crit_edge34.loopexit
-	addi.w	$a3, $a0, 1
+	addi.w	$a2, $a0, 1
 	b	.LBB4_8
 .LBB4_7:
-	move	$a2, $fp
+	move	$a3, $fp
 .LBB4_8:                                # %._crit_edge34
 	ld.d	$a4, $s0, 16
-	stx.b	$a2, $a4, $a3
+	stx.b	$a3, $a4, $a2
 	ld.d	$a2, $s0, 16
 	addi.w	$s1, $a0, 2
 	add.d	$a0, $a2, $s1

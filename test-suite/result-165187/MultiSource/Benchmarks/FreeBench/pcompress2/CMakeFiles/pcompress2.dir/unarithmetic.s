@@ -32,13 +32,13 @@ do_deari:                               # @do_deari
 	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	bstrpick.d	$t4, $a0, 31, 0
 	pcalau12i	$a1, %pc_hi20(in_size)
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	st.w	$a0, $a1, %pc_lo12(in_size)
 	pcalau12i	$a0, %pc_hi20(in_pos)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	st.w	$zero, $a0, %pc_lo12(in_pos)
 	pcalau12i	$a0, %pc_hi20(deari_pos)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	st.w	$zero, $a0, %pc_lo12(deari_pos)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
@@ -50,7 +50,7 @@ do_deari:                               # @do_deari
 	pcalau12i	$a0, %pc_hi20(char_to_index)
 	addi.d	$t7, $a0, %pc_lo12(char_to_index)
 	pcalau12i	$a0, %pc_hi20(index_to_char)
-	addi.d	$s5, $a0, %pc_lo12(index_to_char)
+	addi.d	$s6, $a0, %pc_lo12(index_to_char)
 	move	$a1, $zero
 	ori	$a2, $zero, 1024
 	.p2align	4, , 16
@@ -66,7 +66,7 @@ do_deari:                               # @do_deari
 	vaddi.wu	$vr5, $vr5, 5
 	vstx	$vr4, $t7, $a1
 	vst	$vr5, $a3, 16
-	add.d	$a0, $s5, $a0
+	add.d	$a0, $s6, $a0
 	vstelm.w	$vr2, $a0, 0, 0
 	vstelm.w	$vr3, $a0, 4, 0
 	vaddi.du	$vr1, $vr1, 8
@@ -81,7 +81,7 @@ do_deari:                               # @do_deari
 	addi.d	$a5, $a0, %pc_lo12(freq)
 	vrepli.w	$vr1, 1
 	pcalau12i	$a0, %pc_hi20(cum_freq)
-	addi.d	$s7, $a0, %pc_lo12(cum_freq)
+	addi.d	$s5, $a0, %pc_lo12(cum_freq)
 	move	$a0, $zero
 	vrepli.w	$vr2, 257
 	vrepli.w	$vr3, 253
@@ -92,10 +92,10 @@ do_deari:                               # @do_deari
 	add.d	$a2, $a5, $a0
 	vstx	$vr1, $a5, $a0
 	vst	$vr1, $a2, 16
-	add.d	$a2, $s7, $a0
+	add.d	$a2, $s5, $a0
 	vsub.w	$vr4, $vr2, $vr0
 	vsub.w	$vr5, $vr3, $vr0
-	vstx	$vr4, $s7, $a0
+	vstx	$vr4, $s5, $a0
 	vst	$vr5, $a2, 16
 	addi.d	$a0, $a0, 32
 	vaddi.wu	$vr0, $vr0, 8
@@ -105,7 +105,7 @@ do_deari:                               # @do_deari
 	ori	$a1, $zero, 1
 	lu32i.d	$a1, 1
 	st.d	$a1, $a5, 1024
-	st.d	$a0, $s7, 1024
+	st.d	$a0, $s5, 1024
 	st.w	$zero, $a5, 0
 	pcalau12i	$a7, %pc_hi20(bits_to_go)
 	pcalau12i	$t0, %pc_hi20(buffer)
@@ -115,7 +115,7 @@ do_deari:                               # @do_deari
 	st.w	$zero, $t1, %pc_lo12(garbage_bits)
 	pcalau12i	$a0, %got_pc_hi20(in)
 	ld.d	$a0, $a0, %got_pc_lo12(in)
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a1, $a0, 0
 	move	$t3, $zero
 	move	$t6, $zero
@@ -161,9 +161,9 @@ do_deari:                               # @do_deari
 	st.d	$t7, $sp, 16                    # 8-byte Folded Spill
 	move	$t4, $zero
 	lu12i.w	$a0, 15
-	ori	$s8, $a0, 4095
-	addi.d	$a0, $s7, 4
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ori	$s7, $a0, 4095
+	addi.d	$a0, $s5, 4
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ori	$t6, $zero, 0
 	lu32i.d	$t6, 1
 	lu12i.w	$t7, 8
@@ -172,12 +172,12 @@ do_deari:                               # @do_deari
 	ori	$s0, $a0, 4095
 	lu12i.w	$s1, -4
 	lu12i.w	$s2, 4
+	ori	$s3, $zero, 2
 	lu12i.w	$a0, 3
 	ori	$a0, $a0, 4095
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	ori	$s3, $zero, 2
+	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_12:                               # %start_decoding.exit
                                         # =>This Loop Header: Depth=1
@@ -187,11 +187,11 @@ do_deari:                               # @do_deari
                                         #     Child Loop BB0_31 Depth 2
                                         #     Child Loop BB0_37 Depth 2
                                         #     Child Loop BB0_40 Depth 2
-	move	$ra, $zero
+	move	$s8, $zero
 	move	$s4, $zero
 	move	$a1, $zero
-	sub.d	$a0, $s8, $t4
-	ld.w	$t8, $s7, 0
+	sub.d	$a0, $s7, $t4
+	ld.w	$t8, $s5, 0
 	addi.d	$a6, $a0, 1
 	sub.d	$a0, $t3, $t4
 	addi.d	$a0, $a0, 1
@@ -200,16 +200,16 @@ do_deari:                               # @do_deari
 	div.d	$a0, $a0, $a6
 	addi.w	$a2, $a0, 0
 	ori	$a4, $zero, 1
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_13:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$s6, $s4
+	move	$ra, $s4
 	move	$t5, $a4
 	ld.w	$a0, $a3, 0
 	add.d	$a1, $a1, $t6
 	addi.d	$s4, $s4, 1
-	addi.d	$ra, $ra, 1
+	addi.d	$s8, $s8, 1
 	addi.d	$a3, $a3, 4
 	addi.w	$a4, $a4, 1
 	blt	$a2, $a0, .LBB0_13
@@ -218,15 +218,15 @@ do_deari:                               # @do_deari
 	mul.d	$a2, $a6, $a2
 	div.d	$a2, $a2, $t8
 	add.d	$a2, $t4, $a2
-	addi.d	$s8, $a2, -1
+	addi.d	$s7, $a2, -1
 	ld.w	$a4, $a7, %pc_lo12(bits_to_go)
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.wu	$a2, $a2, %pc_lo12(in_pos)
 	ld.w	$a3, $t1, %pc_lo12(garbage_bits)
-	ld.w	$s7, $t0, %pc_lo12(buffer)
-	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$s6, $t0, %pc_lo12(buffer)
+	ld.d	$t2, $sp, 64                    # 8-byte Folded Reload
 	ld.wu	$t2, $t2, %pc_lo12(in_size)
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s5, $s5, 0
 	mul.d	$a0, $a6, $a0
 	div.d	$a0, $a0, $t8
@@ -238,32 +238,32 @@ do_deari:                               # @do_deari
                                         #   in Loop: Header=BB0_18 Depth=2
 	add.d	$t3, $a0, $t3
 	add.d	$t4, $a0, $t4
-	add.d	$s8, $a0, $s8
+	add.d	$s7, $a0, $s7
 .LBB0_16:                               #   in Loop: Header=BB0_18 Depth=2
 	beqz	$a4, .LBB0_22
 .LBB0_17:                               # %input_bit.exit.i14
                                         #   in Loop: Header=BB0_18 Depth=2
 	slli.d	$t4, $t4, 1
-	slli.d	$a0, $s8, 1
-	addi.d	$s8, $a0, 1
+	slli.d	$a0, $s7, 1
+	addi.d	$s7, $a0, 1
 	slli.d	$a0, $t3, 1
-	addi.w	$a6, $s7, 0
-	andi	$t3, $s7, 1
-	srai.d	$s7, $a6, 1
-	st.w	$s7, $t0, %pc_lo12(buffer)
+	addi.w	$a6, $s6, 0
+	andi	$t3, $s6, 1
+	srai.d	$s6, $a6, 1
+	st.w	$s6, $t0, %pc_lo12(buffer)
 	addi.w	$a4, $a4, -1
 	st.w	$a4, $a7, %pc_lo12(bits_to_go)
 	or	$t3, $a0, $t3
 .LBB0_18:                               #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$s8, $t7, .LBB0_16
+	blt	$s7, $t7, .LBB0_16
 # %bb.19:                               #   in Loop: Header=BB0_18 Depth=2
 	move	$a0, $fp
 	blt	$s0, $t4, .LBB0_15
 # %bb.20:                               #   in Loop: Header=BB0_18 Depth=2
 	blt	$t4, $s2, .LBB0_26
 # %bb.21:                               #   in Loop: Header=BB0_18 Depth=2
-	srli.d	$a6, $s8, 14
+	srli.d	$a6, $s7, 14
 	move	$a0, $s1
 	bgeu	$s3, $a6, .LBB0_15
 	b	.LBB0_26
@@ -274,7 +274,7 @@ do_deari:                               # @do_deari
 	addi.d	$a0, $a2, 1
 	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	st.w	$a0, $a4, %pc_lo12(in_pos)
-	ldx.bu	$s7, $s5, $a2
+	ldx.bu	$s6, $s5, $a2
 	ori	$a4, $zero, 8
 	move	$a2, $a0
 	b	.LBB0_17
@@ -293,18 +293,18 @@ do_deari:                               # @do_deari
 	beq	$s4, $a0, .LBB0_41
 # %bb.27:                               #   in Loop: Header=BB0_12 Depth=1
 	srai.d	$a2, $a1, 32
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-	ldx.bu	$a1, $s5, $a2
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
+	ldx.bu	$a1, $s6, $a2
 	pcalau12i	$a0, %got_pc_hi20(deari)
 	ld.d	$a0, $a0, %got_pc_lo12(deari)
-	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
 	ld.wu	$a3, $a6, %pc_lo12(deari_pos)
 	ld.d	$a0, $a0, 0
 	addi.d	$a4, $a3, 1
 	st.w	$a4, $a6, %pc_lo12(deari_pos)
 	stx.b	$a1, $a0, $a3
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.w	$a0, $s7, 0
+	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
+	ld.w	$a0, $t2, 0
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	bne	$a0, $a3, .LBB0_30
 # %bb.28:                               # %.preheader.i15.preheader
@@ -321,83 +321,85 @@ do_deari:                               # @do_deari
 	add.w	$a4, $a4, $a6
 	srai.d	$a4, $a4, 1
 	stx.w	$a4, $a5, $a3
-	stx.w	$a0, $s7, $a3
+	stx.w	$a0, $t2, $a3
 	addi.d	$a3, $a3, -4
 	addi.w	$a6, $zero, -4
 	add.d	$a0, $a4, $a0
 	bne	$a3, $a6, .LBB0_29
 .LBB0_30:                               # %.loopexit.i.preheader
                                         #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a0, $zero, -2
-	sub.d	$a3, $a0, $s6
-	addi.d	$t2, $t5, 1
+	addi.w	$a3, $zero, -2
+	sub.d	$a4, $a3, $ra
+	addi.d	$t8, $t5, 1
 	alsl.d	$a6, $t5, $a5, 2
 	.p2align	4, , 16
 .LBB0_31:                               # %.loopexit.i
                                         #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a4, $t5
+	move	$t2, $t5
 	ld.w	$a0, $a6, 0
-	ld.w	$t8, $a6, -4
+	ld.w	$s5, $a6, -4
 	addi.d	$a6, $a6, -4
-	addi.w	$a3, $a3, 1
-	addi.d	$t2, $t2, -1
+	addi.w	$a4, $a4, 1
+	addi.d	$t8, $t8, -1
 	addi.w	$t5, $t5, -1
-	beq	$a0, $t8, .LBB0_31
+	beq	$a0, $s5, .LBB0_31
 # %bb.32:                               #   in Loop: Header=BB0_12 Depth=1
-	bge	$t2, $s4, .LBB0_34
+	bge	$t8, $s4, .LBB0_34
 # %bb.33:                               #   in Loop: Header=BB0_12 Depth=1
-	ldx.bu	$t5, $s5, $t2
-	sub.d	$t8, $zero, $a3
-	stx.b	$a1, $s5, $t2
-	stx.b	$t5, $s5, $a2
+	ldx.bu	$t5, $s6, $t8
+	sub.d	$s4, $zero, $a4
+	stx.b	$a1, $s6, $t8
+	stx.b	$t5, $s6, $a2
 	slli.d	$a2, $t5, 2
 	ld.d	$t5, $sp, 16                    # 8-byte Folded Reload
-	stx.w	$ra, $t5, $a2
+	stx.w	$s8, $t5, $a2
 	slli.d	$a1, $a1, 2
-	stx.w	$t8, $t5, $a1
+	stx.w	$s4, $t5, $a1
 .LBB0_34:                               #   in Loop: Header=BB0_12 Depth=1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a6, 4
-	blez	$t2, .LBB0_12
+	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	blez	$t8, .LBB0_12
 # %bb.35:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB0_12 Depth=1
-	sub.w	$a0, $zero, $a3
+	sub.w	$a0, $zero, $a4
 	bstrpick.d	$a1, $a0, 31, 0
-	sltu	$a0, $zero, $a3
+	sltu	$a0, $zero, $a4
 	sub.d	$a2, $a1, $a0
 	addi.d	$a2, $a2, 1
-	ori	$a3, $zero, 4
-	bltu	$a2, $a3, .LBB0_39
+	bltu	$a2, $s3, .LBB0_39
 # %bb.36:                               # %vector.ph94
                                         #   in Loop: Header=BB0_12 Depth=1
-	sub.d	$a6, $zero, $a0
-	addi.w	$t2, $zero, -4
-	and	$a0, $a2, $t2
-	sub.d	$a1, $a1, $a0
-	bstrpick.d	$a4, $a4, 31, 0
-	alsl.d	$a3, $a4, $s7, 2
-	addi.d	$a3, $a3, -16
-	add.d	$a4, $a6, $a4
-	addi.d	$a4, $a4, 1
-	and	$a4, $a4, $t2
+	sub.d	$a0, $zero, $a0
+	and	$a4, $a2, $a3
+	sub.d	$a1, $a1, $a4
+	bstrpick.d	$a6, $t2, 31, 0
+	add.d	$a0, $a0, $a6
+	addi.d	$a0, $a0, 1
+	and	$a0, $a0, $a3
+	alsl.d	$a3, $a6, $s5, 2
+	addi.d	$a3, $a3, -4
 	.p2align	4, , 16
 .LBB0_37:                               # %vector.body95
                                         #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr0, $a3, 0
-	vaddi.wu	$vr0, $vr0, 1
-	vst	$vr0, $a3, 0
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, -16
-	bnez	$a4, .LBB0_37
-# %bb.38:                               # %middle.block99
+	ld.w	$a6, $a3, 0
+	ld.w	$t2, $a3, -4
+	addi.d	$a6, $a6, 1
+	addi.d	$t2, $t2, 1
+	st.w	$a6, $a3, 0
+	st.w	$t2, $a3, -4
+	addi.d	$a0, $a0, -2
+	addi.d	$a3, $a3, -8
+	bnez	$a0, .LBB0_37
+# %bb.38:                               # %middle.block98
                                         #   in Loop: Header=BB0_12 Depth=1
-	beq	$a2, $a0, .LBB0_12
+	beq	$a2, $a4, .LBB0_12
 .LBB0_39:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_12 Depth=1
 	addi.d	$a0, $a1, 1
-	alsl.d	$a1, $a1, $s7, 2
+	alsl.d	$a1, $a1, $s5, 2
 	addi.d	$a1, $a1, -4
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
@@ -412,7 +414,7 @@ do_deari:                               # @do_deari
 	bltu	$a3, $a0, .LBB0_40
 	b	.LBB0_12
 .LBB0_41:
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(deari_pos)
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload

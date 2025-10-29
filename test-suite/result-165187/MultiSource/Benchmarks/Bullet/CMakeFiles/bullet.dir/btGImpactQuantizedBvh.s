@@ -10,80 +10,79 @@ _ZN18btQuantizedBvhTree17calc_quantizationER18GIM_BVH_DATA_ARRAYf: # @_ZN18btQua
 	ori	$a3, $a3, 4095
 	lu12i.w	$a4, -2049
 	ori	$a4, $a4, 4095
-	blez	$a2, .LBB0_3
+	blez	$a2, .LBB0_4
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $a1, 16
-	movgr2fr.w	$fa1, $a4
-	movgr2fr.w	$fa5, $a3
+	vreplgr2vr.w	$vr4, $a3
+	vreplgr2vr.w	$vr3, $a4
 	addi.d	$a1, $a1, 16
-	fmov.s	$fa6, $fa5
-	fmov.s	$fa4, $fa5
-	fmov.s	$fa2, $fa1
-	fmov.s	$fa3, $fa1
+	movgr2fr.w	$fa1, $a4
+	movgr2fr.w	$fa2, $a3
 	.p2align	4, , 16
 .LBB0_2:                                # %.cont20
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa7, $a1, -16
-	fld.s	$ft0, $a1, -12
-	fcmp.clt.s	$fcc0, $fa7, $fa5
-	fsel	$fa5, $fa5, $fa7, $fcc0
-	fld.s	$fa7, $a1, -8
-	fcmp.clt.s	$fcc0, $ft0, $fa6
-	fsel	$fa6, $fa6, $ft0, $fcc0
-	fld.s	$ft0, $a1, 0
-	fcmp.clt.s	$fcc0, $fa7, $fa4
-	fsel	$fa4, $fa4, $fa7, $fcc0
-	fld.s	$fa7, $a1, 4
+	ld.d	$a3, $a1, -16
+	vinsgr2vr.d	$vr5, $a3, 0
+	ld.d	$a3, $a1, 0
+	vfcmp.clt.s	$vr6, $vr5, $vr4
+	vbitsel.v	$vr4, $vr4, $vr5, $vr6
+	fld.s	$fa5, $a1, -8
+	vinsgr2vr.d	$vr6, $a3, 0
+	vfcmp.clt.s	$vr7, $vr3, $vr6
+	fld.s	$ft0, $a1, 8
+	vbitsel.v	$vr3, $vr3, $vr6, $vr7
+	fcmp.clt.s	$fcc0, $fa5, $fa2
+	fsel	$fa2, $fa2, $fa5, $fcc0
 	fcmp.clt.s	$fcc0, $fa1, $ft0
-	fld.s	$ft1, $a1, 8
 	fsel	$fa1, $fa1, $ft0, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fa7
-	fsel	$fa3, $fa3, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa2, $ft1
-	fsel	$fa2, $fa2, $ft1, $fcc0
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 36
 	bnez	$a2, .LBB0_2
-	b	.LBB0_4
-.LBB0_3:
-	movgr2fr.w	$fa4, $a3
-	movgr2fr.w	$fa3, $a4
-	fmov.s	$fa2, $fa3
-	fmov.s	$fa1, $fa3
-	fmov.s	$fa6, $fa4
-	fmov.s	$fa5, $fa4
-.LBB0_4:                                # %._crit_edge
-	fsub.s	$fa5, $fa5, $fa0
+# %bb.3:                                # %._crit_edge.loopexit
+	vreplvei.w	$vr5, $vr4, 1
+	vreplvei.w	$vr6, $vr4, 0
+	vreplvei.w	$vr4, $vr3, 1
+	vreplvei.w	$vr3, $vr3, 0
+	b	.LBB0_5
+.LBB0_4:
+	movgr2fr.w	$fa2, $a3
+	movgr2fr.w	$fa4, $a4
+	fmov.s	$fa1, $fa4
+	fmov.s	$fa3, $fa4
+	fmov.s	$fa5, $fa2
+	fmov.s	$fa6, $fa2
+.LBB0_5:                                # %._crit_edge
 	fsub.s	$fa6, $fa6, $fa0
-	fsub.s	$fa4, $fa4, $fa0
-	movfr2gr.s	$a1, $fa5
-	movfr2gr.s	$a2, $fa6
+	fsub.s	$fa5, $fa5, $fa0
+	fsub.s	$fa2, $fa2, $fa0
+	movfr2gr.s	$a1, $fa6
+	movfr2gr.s	$a2, $fa5
 	bstrins.d	$a1, $a2, 63, 32
-	movfr2gr.s	$a2, $fa4
+	movfr2gr.s	$a2, $fa2
 	bstrpick.d	$a2, $a2, 31, 0
 	st.d	$a1, $a0, 40
 	st.d	$a2, $a0, 48
-	fadd.s	$fa1, $fa0, $fa1
 	fadd.s	$fa3, $fa0, $fa3
-	fadd.s	$fa0, $fa0, $fa2
-	movfr2gr.s	$a1, $fa1
-	movfr2gr.s	$a2, $fa3
+	fadd.s	$fa4, $fa0, $fa4
+	fadd.s	$fa0, $fa0, $fa1
+	movfr2gr.s	$a1, $fa3
+	movfr2gr.s	$a2, $fa4
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
 	bstrpick.d	$a2, $a2, 31, 0
 	st.d	$a1, $a0, 56
 	st.d	$a2, $a0, 64
-	fsub.s	$fa1, $fa1, $fa5
-	fsub.s	$fa2, $fa3, $fa6
-	fsub.s	$fa0, $fa0, $fa4
+	fsub.s	$fa1, $fa3, $fa6
+	fsub.s	$fa3, $fa4, $fa5
+	fsub.s	$fa0, $fa0, $fa2
 	lu12i.w	$a1, 292863
 	ori	$a1, $a1, 3840
-	movgr2fr.w	$fa3, $a1
-	fdiv.s	$fa1, $fa3, $fa1
-	fdiv.s	$fa2, $fa3, $fa2
-	fdiv.s	$fa0, $fa3, $fa0
+	movgr2fr.w	$fa2, $a1
+	fdiv.s	$fa1, $fa2, $fa1
+	fdiv.s	$fa3, $fa2, $fa3
+	fdiv.s	$fa0, $fa2, $fa0
 	movfr2gr.s	$a1, $fa1
-	movfr2gr.s	$a2, $fa2
+	movfr2gr.s	$a2, $fa3
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
 	bstrpick.d	$a2, $a2, 31, 0
@@ -448,7 +447,7 @@ _ZN18btQuantizedBvhTree15_build_sub_treeER18GIM_BVH_DATA_ARRAYii: # @_ZN18btQuan
 	ftintrz.l.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	st.h	$a2, $a0, 10
-	b	.LBB3_7
+	b	.LBB3_8
 .LBB3_2:
 	move	$a1, $s1
 	move	$s2, $a2
@@ -464,125 +463,124 @@ _ZN18btQuantizedBvhTree15_build_sub_treeER18GIM_BVH_DATA_ARRAYii: # @_ZN18btQuan
 	move	$a2, $s2
 	move	$s2, $a0
 	lu12i.w	$a0, 522239
-	ori	$a0, $a0, 4095
-	lu12i.w	$a1, -2049
-	ori	$a1, $a1, 4095
-	bge	$a2, $s0, .LBB3_5
+	ori	$a1, $a0, 4095
+	lu12i.w	$a0, -2049
+	ori	$a3, $a0, 4095
+	bge	$a2, $s0, .LBB3_6
 # %bb.3:                                # %.lr.ph
-	ld.d	$a3, $s1, 16
+	ld.d	$a0, $s1, 16
 	slli.d	$a4, $a2, 5
 	alsl.d	$a4, $a2, $a4, 2
-	add.d	$a3, $a4, $a3
-	movgr2fr.w	$fa0, $a1
-	movgr2fr.w	$fa5, $a0
-	addi.d	$a0, $a3, 16
-	fmov.s	$fa4, $fa5
-	fmov.s	$fa3, $fa5
-	fmov.s	$fa1, $fa0
-	fmov.s	$fa2, $fa0
+	add.d	$a0, $a4, $a0
+	addi.d	$a0, $a0, 16
+	vreplgr2vr.w	$vr2, $a1
+	vreplgr2vr.w	$vr3, $a3
+	movgr2fr.w	$fa0, $a3
+	movgr2fr.w	$fa1, $a1
 	.p2align	4, , 16
 .LBB3_4:                                # %.cont61
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa6, $a0, -16
-	fld.s	$fa7, $a0, -12
-	fcmp.clt.s	$fcc0, $fa6, $fa5
-	fsel	$fa5, $fa5, $fa6, $fcc0
-	fld.s	$fa6, $a0, -8
-	fcmp.clt.s	$fcc0, $fa7, $fa4
-	fsel	$fa4, $fa4, $fa7, $fcc0
-	fld.s	$fa7, $a0, 0
-	fcmp.clt.s	$fcc0, $fa6, $fa3
-	fsel	$fa3, $fa3, $fa6, $fcc0
-	fld.s	$fa6, $a0, 4
+	ld.d	$a1, $a0, -16
+	vinsgr2vr.d	$vr4, $a1, 0
+	ld.d	$a1, $a0, 0
+	vfcmp.clt.s	$vr5, $vr4, $vr2
+	vbitsel.v	$vr2, $vr2, $vr4, $vr5
+	fld.s	$fa4, $a0, -8
+	vinsgr2vr.d	$vr5, $a1, 0
+	vfcmp.clt.s	$vr6, $vr3, $vr5
+	fld.s	$fa7, $a0, 8
+	vbitsel.v	$vr3, $vr3, $vr5, $vr6
+	fcmp.clt.s	$fcc0, $fa4, $fa1
+	fsel	$fa1, $fa1, $fa4, $fcc0
 	fcmp.clt.s	$fcc0, $fa0, $fa7
-	fld.s	$ft0, $a0, 8
 	fsel	$fa0, $fa0, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa2, $fa6
-	fsel	$fa2, $fa2, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa1, $ft0
-	fsel	$fa1, $fa1, $ft0, $fcc0
 	addi.d	$s4, $s4, -1
 	addi.d	$a0, $a0, 36
 	bnez	$s4, .LBB3_4
-	b	.LBB3_6
-.LBB3_5:
-	movgr2fr.w	$fa3, $a0
-	movgr2fr.w	$fa2, $a1
-	fmov.s	$fa1, $fa2
+# %bb.5:                                # %._crit_edge.loopexit
+	vreplvei.w	$vr5, $vr2, 1
+	vreplvei.w	$vr6, $vr2, 0
+	vreplvei.w	$vr2, $vr3, 1
+	vreplvei.w	$vr3, $vr3, 0
+	b	.LBB3_7
+.LBB3_6:
+	movgr2fr.w	$fa1, $a1
+	movgr2fr.w	$fa2, $a3
 	fmov.s	$fa0, $fa2
-	fmov.s	$fa4, $fa3
-	fmov.s	$fa5, $fa3
-.LBB3_6:                                # %._crit_edge
+	fmov.s	$fa3, $fa2
+	fmov.s	$fa5, $fa1
+	fmov.s	$fa6, $fa1
+.LBB3_7:                                # %._crit_edge
 	ld.d	$a1, $fp, 24
-	fld.s	$fa6, $fp, 40
+	fld.s	$fa4, $fp, 40
 	alsl.d	$a0, $s3, $a1, 4
 	slli.d	$a3, $s3, 4
 	fld.s	$fa7, $fp, 44
-	fcmp.clt.s	$fcc0, $fa5, $fa6
-	fsel	$fa5, $fa5, $fa6, $fcc0
+	fcmp.clt.s	$fcc0, $fa6, $fa4
+	fsel	$fa6, $fa6, $fa4, $fcc0
 	fld.s	$ft0, $fp, 48
-	fcmp.clt.s	$fcc0, $fa4, $fa7
-	fsel	$fa4, $fa4, $fa7, $fcc0
+	fcmp.clt.s	$fcc0, $fa5, $fa7
+	fsel	$fa5, $fa5, $fa7, $fcc0
 	fld.s	$ft1, $fp, 56
-	fcmp.clt.s	$fcc0, $fa3, $ft0
-	fsel	$fa3, $fa3, $ft0, $fcc0
+	fcmp.clt.s	$fcc0, $fa1, $ft0
+	fsel	$fa1, $fa1, $ft0, $fcc0
 	fld.s	$ft2, $fp, 60
-	fcmp.clt.s	$fcc0, $ft1, $fa5
+	fcmp.clt.s	$fcc0, $ft1, $fa6
 	fld.s	$ft3, $fp, 64
-	fsel	$fa5, $fa5, $ft1, $fcc0
-	fcmp.clt.s	$fcc0, $ft2, $fa4
-	fsel	$fa4, $fa4, $ft2, $fcc0
-	fcmp.clt.s	$fcc0, $ft3, $fa3
-	fsel	$fa3, $fa3, $ft3, $fcc0
-	fsub.s	$fa5, $fa5, $fa6
-	fsub.s	$fa4, $fa4, $fa7
+	fsel	$fa6, $fa6, $ft1, $fcc0
+	fcmp.clt.s	$fcc0, $ft2, $fa5
+	fsel	$fa5, $fa5, $ft2, $fcc0
+	fcmp.clt.s	$fcc0, $ft3, $fa1
+	fsel	$fa1, $fa1, $ft3, $fcc0
+	fsub.s	$fa6, $fa6, $fa4
+	fsub.s	$fa5, $fa5, $fa7
 	fld.s	$ft4, $fp, 72
 	fld.s	$ft5, $fp, 76
 	fld.s	$ft6, $fp, 80
-	fsub.s	$fa3, $fa3, $ft0
-	fmul.s	$fa5, $fa5, $ft4
-	fmul.s	$fa4, $fa4, $ft5
-	fmul.s	$fa3, $fa3, $ft6
+	fsub.s	$fa1, $fa1, $ft0
+	fmul.s	$fa6, $fa6, $ft4
+	fmul.s	$fa5, $fa5, $ft5
+	fmul.s	$fa1, $fa1, $ft6
 	vldi	$vr15, -1184
+	fadd.s	$fa6, $fa6, $ft7
+	ftintrz.l.s	$fa6, $fa6
+	movfr2gr.d	$a4, $fa6
+	stx.h	$a4, $a1, $a3
 	fadd.s	$fa5, $fa5, $ft7
 	ftintrz.l.s	$fa5, $fa5
-	movfr2gr.d	$a4, $fa5
-	stx.h	$a4, $a1, $a3
-	fadd.s	$fa4, $fa4, $ft7
-	ftintrz.l.s	$fa4, $fa4
-	movfr2gr.d	$a1, $fa4
+	movfr2gr.d	$a1, $fa5
 	st.h	$a1, $a0, 2
-	fadd.s	$fa3, $fa3, $ft7
-	ftintrz.l.s	$fa3, $fa3
-	movfr2gr.d	$a1, $fa3
+	fadd.s	$fa1, $fa1, $ft7
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a1, $fa1
 	st.h	$a1, $a0, 4
-	fcmp.clt.s	$fcc0, $fa0, $fa6
-	fsel	$fa0, $fa0, $fa6, $fcc0
+	fcmp.clt.s	$fcc0, $fa3, $fa4
+	fsel	$fa1, $fa3, $fa4, $fcc0
 	fcmp.clt.s	$fcc0, $fa2, $fa7
 	fsel	$fa2, $fa2, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $fa1, $ft0
-	fsel	$fa1, $fa1, $ft0, $fcc0
-	fcmp.clt.s	$fcc0, $ft1, $fa0
-	fsel	$fa0, $fa0, $ft1, $fcc0
+	fcmp.clt.s	$fcc0, $fa0, $ft0
+	fsel	$fa0, $fa0, $ft0, $fcc0
+	fcmp.clt.s	$fcc0, $ft1, $fa1
+	fsel	$fa1, $fa1, $ft1, $fcc0
 	fcmp.clt.s	$fcc0, $ft2, $fa2
 	fsel	$fa2, $fa2, $ft2, $fcc0
-	fcmp.clt.s	$fcc0, $ft3, $fa1
-	fsel	$fa1, $fa1, $ft3, $fcc0
-	fsub.s	$fa0, $fa0, $fa6
+	fcmp.clt.s	$fcc0, $ft3, $fa0
+	fsel	$fa0, $fa0, $ft3, $fcc0
+	fsub.s	$fa1, $fa1, $fa4
 	fsub.s	$fa2, $fa2, $fa7
-	fsub.s	$fa1, $fa1, $ft0
-	fmul.s	$fa0, $ft4, $fa0
+	fsub.s	$fa0, $fa0, $ft0
+	fmul.s	$fa1, $ft4, $fa1
 	fmul.s	$fa2, $ft5, $fa2
-	fmul.s	$fa1, $ft6, $fa1
-	fadd.s	$fa0, $fa0, $ft7
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a1, $fa0
+	fmul.s	$fa0, $ft6, $fa0
+	fadd.s	$fa1, $fa1, $ft7
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a1, $fa1
 	st.h	$a1, $a0, 6
-	fadd.s	$fa0, $fa2, $ft7
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a1, $fa0
+	fadd.s	$fa1, $fa2, $ft7
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a1, $fa1
 	st.h	$a1, $a0, 8
-	fadd.s	$fa0, $fa1, $ft7
+	fadd.s	$fa0, $fa0, $ft7
 	ftintrz.l.s	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	st.h	$a1, $a0, 10
@@ -601,7 +599,7 @@ _ZN18btQuantizedBvhTree15_build_sub_treeER18GIM_BVH_DATA_ARRAYii: # @_ZN18btQuan
 	ld.w	$a1, $fp, 0
 	alsl.d	$a0, $s3, $a0, 4
 	sub.d	$a1, $s3, $a1
-.LBB3_7:                                # %common.ret
+.LBB3_8:                                # %common.ret
 	st.w	$a1, $a0, 12
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload

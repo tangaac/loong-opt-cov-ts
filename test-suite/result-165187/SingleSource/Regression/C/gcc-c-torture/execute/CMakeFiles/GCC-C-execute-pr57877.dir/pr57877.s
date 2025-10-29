@@ -26,7 +26,7 @@ main:                                   # @main
 	ld.w	$a3, $a3, %pc_lo12(a)
 	ori	$a4, $zero, 1
 	sub.w	$a6, $a4, $a5
-	ori	$a7, $zero, 20
+	ori	$a7, $zero, 16
 	pcalau12i	$a4, %pc_hi20(h)
 	addi.d	$a4, $a4, %pc_lo12(h)
 	bgeu	$a6, $a7, .LBB0_9

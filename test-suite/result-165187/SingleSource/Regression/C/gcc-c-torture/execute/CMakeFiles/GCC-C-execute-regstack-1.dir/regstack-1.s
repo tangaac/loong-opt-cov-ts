@@ -5,61 +5,61 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(C)
 	addi.d	$a0, $a0, %pc_lo12(C)
-	ld.d	$s1, $a0, 0
-	ld.d	$s2, $a0, 8
+	ld.d	$s1, $a0, 8
+	ld.d	$s2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(U)
 	addi.d	$a0, $a0, %pc_lo12(U)
-	ld.d	$s7, $a0, 0
-	ld.d	$s8, $a0, 8
-	move	$a0, $s1
-	move	$a1, $s2
-	move	$a2, $s7
-	move	$a3, $s8
+	ld.d	$s7, $a0, 8
+	ld.d	$s8, $a0, 0
+	move	$a0, $s2
+	move	$a1, $s1
+	move	$a2, $s8
+	move	$a3, $s7
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	move	$s4, $a1
 	pcalau12i	$a0, %pc_hi20(Y2)
 	addi.d	$a0, $a0, %pc_lo12(Y2)
-	ld.d	$a2, $a0, 0
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	ld.d	$a3, $a0, 8
 	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$a2, $a0, 0
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	move	$a0, $s1
-	move	$a1, $s2
-	move	$a2, $s7
-	move	$a3, $s8
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	move	$a0, $s2
+	move	$a1, $s1
+	move	$a2, $s8
+	move	$a3, $s7
 	pcaddu18i	$ra, %call36(__subtf3)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	move	$a2, $s7
-	move	$a3, $s8
+	move	$a2, $s8
+	move	$a3, $s7
 	pcaddu18i	$ra, %call36(__subtf3)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	move	$s6, $a1
-	move	$a0, $s7
-	move	$a1, $s8
+	move	$a0, $s8
+	move	$a1, $s7
 	move	$a2, $s3
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(__addtf3)
@@ -68,71 +68,73 @@ main:                                   # @main
 	move	$s4, $a1
 	pcalau12i	$a0, %pc_hi20(Y1)
 	addi.d	$a0, $a0, %pc_lo12(Y1)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$s1, $a0, 0
-	ld.d	$s2, $a0, 8
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$s1, $a0, 8
+	ld.d	$s2, $a0, 0
 	move	$a0, $fp
 	move	$a1, $s0
-	move	$a2, $s1
-	move	$a3, $s2
+	move	$a2, $s2
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	move	$a0, $s7
-	move	$a1, $s8
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	move	$a0, $s8
+	move	$a1, $s7
 	move	$a2, $s3
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	move	$a3, $a1
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__subtf3)
 	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(X)
 	addi.d	$a2, $a2, %pc_lo12(X)
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a1, $a2, 8
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, 0
 	move	$a0, $s5
 	move	$a1, $s6
-	move	$a2, $s1
-	move	$a3, $s2
+	move	$a2, $s2
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	move	$s0, $a1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	move	$s4, $a1
-	pcalau12i	$a0, %pc_hi20(S)
-	addi.d	$a0, $a0, %pc_lo12(S)
-	st.d	$a1, $a0, 8
-	st.d	$s3, $a0, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	move	$s4, $a0
+	move	$s3, $a1
+	pcalau12i	$a2, %pc_hi20(S)
+	addi.d	$a2, $a2, %pc_lo12(S)
+	st.d	$a1, $a2, 8
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $a2, 0
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	move	$a2, $s5
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(__subtf3)
 	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(T)
 	addi.d	$a2, $a2, %pc_lo12(T)
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a1, $a2, 8
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a0, $a2, 0
-	move	$a0, $s7
-	move	$a1, $s8
+	move	$a0, $s8
+	move	$a1, $s7
 	move	$a2, $s5
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(__subtf3)
@@ -141,24 +143,22 @@ main:                                   # @main
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(Y)
 	addi.d	$a2, $a2, %pc_lo12(Y)
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a1, $a2, 8
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a0, $a2, 0
-	move	$a0, $s7
-	move	$a1, $s8
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	move	$a0, $s8
+	move	$a1, $s7
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
 	move	$a3, $a1
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	move	$a0, $s3
-	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
-	move	$a1, $s4
+	move	$a0, $s4
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__subtf3)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -167,32 +167,33 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(Z)
 	st.d	$a1, $a0, 8
 	st.d	$s3, $a0, 0
-	move	$a0, $s7
-	move	$a1, $s8
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	move	$a2, $s0
-	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
-	move	$a3, $s8
+	move	$a0, $s8
+	move	$a1, $s7
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
+	move	$a2, $s7
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	move	$a3, $s5
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
-	move	$a2, $s1
-	move	$a3, $s2
+	move	$a2, $s2
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	move	$s5, $a1
-	move	$a0, $s0
-	move	$a1, $s8
-	move	$a2, $s1
-	move	$a3, $s2
+	move	$s0, $a1
+	move	$a0, $s7
+	move	$a1, $s5
+	move	$a2, $s2
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(__multf3)
 	jirl	$ra, $ra, 0
-	move	$s7, $a0
-	move	$s6, $a1
+	move	$s6, $a0
+	move	$s8, $a1
 	move	$a0, $fp
-	move	$a1, $s5
-	move	$a2, $s0
-	move	$a3, $s8
+	move	$a1, $s0
+	move	$a2, $s7
+	move	$a3, $s5
+	move	$s7, $s5
 	pcaddu18i	$ra, %call36(__subtf3)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -204,17 +205,27 @@ main:                                   # @main
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -131072
 	lu52i.d	$a3, $a0, -1025
-	ori	$fp, $zero, 0
-	move	$a0, $s7
-	move	$a1, $s6
+	ori	$s5, $zero, 0
+	move	$a0, $s6
+	move	$a1, $s8
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__addtf3)
 	jirl	$ra, $ra, 0
-	move	$s7, $a0
-	move	$s8, $a1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	st.d	$s7, $a0, 0
+	move	$fp, $a0
+	move	$s0, $a1
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	st.d	$fp, $a0, 0
 	st.d	$a1, $a0, 8
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 296960
+	lu52i.d	$a3, $a0, 1024
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	move	$a2, $zero
+	pcaddu18i	$ra, %call36(__netf2)
+	jirl	$ra, $ra, 0
+	sltu	$a0, $zero, $a0
+	slli.d	$s6, $a0, 1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 331776
 	lu52i.d	$a3, $a0, 1024
@@ -223,81 +234,80 @@ main:                                   # @main
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.1:
-	lu32i.d	$fp, 296960
-	lu52i.d	$a3, $fp, 1024
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	move	$a2, $zero
-	pcaddu18i	$ra, %call36(__netf2)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.2:
+	sltu	$a0, $zero, $a0
+	or	$s3, $a0, $s6
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 315392
 	lu52i.d	$a3, $a0, 1024
-	ori	$fp, $zero, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.3:
-	lu32i.d	$fp, 423168
-	lu52i.d	$a3, $fp, 1024
-	move	$a0, $s7
-	move	$a1, $s8
+	sltu	$a0, $zero, $a0
+	slli.d	$a0, $a0, 2
+	or	$s3, $s3, $a0
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 423168
+	lu52i.d	$a3, $a0, 1024
+	move	$a0, $fp
+	move	$a1, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.4:
+	sltu	$a0, $zero, $a0
+	slli.d	$a0, $a0, 3
+	or	$fp, $s3, $a0
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 426496
 	lu52i.d	$a3, $a0, 1024
-	ori	$fp, $zero, 0
 	move	$a0, $s1
 	move	$a1, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.5:
-	lu32i.d	$fp, 340992
-	lu52i.d	$a3, $fp, 1024
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	sltu	$a0, $zero, $a0
+	slli.d	$a0, $a0, 4
+	or	$fp, $fp, $a0
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 340992
+	lu52i.d	$a3, $a0, 1024
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.6:
+	sltu	$a0, $zero, $a0
+	slli.d	$a0, $a0, 5
+	or	$fp, $fp, $a0
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 328704
 	lu52i.d	$a3, $a0, 1024
-	ori	$fp, $zero, 0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.7:
-	lu32i.d	$fp, 155648
-	lu52i.d	$a3, $fp, 1024
-	move	$a0, $s0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	sltu	$a0, $zero, $a0
+	slli.d	$a0, $a0, 6
+	or	$fp, $fp, $a0
+	lu32i.d	$s5, 155648
+	lu52i.d	$a3, $s5, 1024
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	move	$a1, $s7
 	move	$a2, $zero
-	pcaddu18i	$ra, %call36(__eqtf2)
+	pcaddu18i	$ra, %call36(__netf2)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_9
-# %bb.8:
+	sltu	$a0, $zero, $a0
+	slli.d	$a0, $a0, 7
+	or	$a0, $fp, $a0
+	andi	$a0, $a0, 255
+	bnez	$a0, .LBB0_2
+# %bb.1:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB0_9:
+.LBB0_2:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:

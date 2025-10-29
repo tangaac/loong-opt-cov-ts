@@ -412,7 +412,7 @@ cli_scanrtf:                            # @cli_scanrtf
 	bnez	$a1, .LBB0_69
 # %bb.58:                               #   in Loop: Header=BB0_57 Depth=3
 	addi.d	$a0, $a0, 1
-	bne	$s5, $a0, .LBB0_57
+	bltu	$a0, $s5, .LBB0_57
 .LBB0_59:                               # %._crit_edge
                                         #   in Loop: Header=BB0_15 Depth=2
 	ld.d	$a3, $sp, 488
@@ -1031,10 +1031,10 @@ rtf_object_process:                     # @rtf_object_process
 	move	$s1, $a1
 	move	$a1, $a0
 	move	$a0, $zero
-	beqz	$a2, .LBB3_83
+	beqz	$a2, .LBB3_82
 # %bb.1:
 	ld.d	$fp, $a1, 96
-	beqz	$fp, .LBB3_83
+	beqz	$fp, .LBB3_82
 # %bb.2:
 	move	$s0, $a2
 	ld.w	$a0, $fp, 16
@@ -1054,7 +1054,7 @@ rtf_object_process:                     # @rtf_object_process
 # %bb.5:                                #   in Loop: Header=BB3_4 Depth=1
 	addi.d	$a1, $a1, 1
 	bne	$s0, $a1, .LBB3_4
-	b	.LBB3_82
+	b	.LBB3_81
 .LBB3_6:
 	move	$s2, $zero
 	move	$s5, $zero
@@ -1116,11 +1116,11 @@ rtf_object_process:                     # @rtf_object_process
 # %bb.14:                               # %.critedge5
                                         #   in Loop: Header=BB3_10 Depth=1
 	bne	$a6, $s0, .LBB3_16
-	b	.LBB3_77
+	b	.LBB3_76
 	.p2align	4, , 16
 .LBB3_15:                               #   in Loop: Header=BB3_10 Depth=1
 	move	$a6, $a7
-	beq	$a6, $s0, .LBB3_77
+	beq	$a6, $s0, .LBB3_76
 .LBB3_16:                               # %.thread
                                         #   in Loop: Header=BB3_10 Depth=1
 	ldx.bu	$a5, $s1, $a6
@@ -1133,7 +1133,7 @@ rtf_object_process:                     # @rtf_object_process
 	addi.d	$s2, $a6, 1
 	bltu	$s2, $s0, .LBB3_10
 .LBB3_17:                               # %.loopexit
-	beqz	$s5, .LBB3_82
+	beqz	$s5, .LBB3_81
 .LBB3_18:                               # %.lr.ph298
 	addi.d	$s1, $sp, 24
 	pcalau12i	$a0, %pc_hi20(.LJTI3_0)
@@ -1147,29 +1147,28 @@ rtf_object_process:                     # @rtf_object_process
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.12)
 	ori	$s4, $zero, 8
-	ori	$s2, $zero, 4
+	ori	$s2, $zero, 3
 	ori	$s0, $zero, 63
 	b	.LBB3_21
 	.p2align	4, , 16
 .LBB3_19:                               #   in Loop: Header=BB3_21 Depth=1
 	ori	$s4, $zero, 8
 .LBB3_20:                               #   in Loop: Header=BB3_21 Depth=1
-	beqz	$s5, .LBB3_82
+	beqz	$s5, .LBB3_81
 .LBB3_21:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_31 Depth 2
-                                        #     Child Loop BB3_35 Depth 2
-                                        #     Child Loop BB3_49 Depth 2
+                                        #     Child Loop BB3_38 Depth 2
+                                        #     Child Loop BB3_52 Depth 2
                                         #     Child Loop BB3_25 Depth 2
 	ld.w	$a0, $fp, 20
 	ori	$a1, $zero, 5
-	bltu	$a1, $a0, .LBB3_82
+	bltu	$a1, $a0, .LBB3_81
 # %bb.22:                               #   in Loop: Header=BB3_21 Depth=1
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $s6, $a0
 	add.d	$a0, $s6, $a0
 	jr	$a0
 .LBB3_23:                               #   in Loop: Header=BB3_21 Depth=1
-	ori	$s2, $zero, 8
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
@@ -1205,163 +1204,38 @@ rtf_object_process:                     # @rtf_object_process
 	bnez	$a0, .LBB3_30
 # %bb.29:                               #   in Loop: Header=BB3_21 Depth=1
 	st.d	$zero, $fp, 48
-.LBB3_30:                               #   in Loop: Header=BB3_21 Depth=1
-	move	$a1, $zero
-	sub.d	$a2, $s2, $a0
-	sltu	$a3, $s2, $a2
-	masknez	$s4, $a2, $a3
-	slli.d	$a2, $a0, 3
+.LBB3_30:                               # %.preheader394
+                                        #   in Loop: Header=BB3_21 Depth=1
+	move	$s4, $zero
+	slli.d	$a1, $a0, 3
 	.p2align	4, , 16
 .LBB3_31:                               #   Parent Loop BB3_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	beq	$s4, $a1, .LBB3_56
+	add.d	$a2, $a0, $s4
+	bltu	$s2, $a2, .LBB3_34
 # %bb.32:                               #   in Loop: Header=BB3_31 Depth=2
-	ldx.bu	$a3, $s1, $a1
-	ld.d	$a4, $fp, 48
-	sll.d	$a3, $a3, $a2
-	or	$a3, $a3, $a4
-	st.d	$a3, $fp, 48
-	addi.d	$a3, $a1, 1
-	add.d	$a1, $a0, $a1
-	addi.d	$a1, $a1, 1
-	st.d	$a1, $fp, 56
-	addi.d	$a2, $a2, 8
-	move	$a1, $a3
-	bne	$s5, $a3, .LBB3_31
+	ldx.bu	$a2, $s1, $s4
+	ld.d	$a3, $fp, 48
+	sll.d	$a2, $a2, $a1
+	or	$a2, $a2, $a3
+	st.d	$a2, $fp, 48
+	addi.d	$a2, $s4, 1
+	add.d	$a3, $a0, $s4
+	addi.d	$a3, $a3, 1
+	st.d	$a3, $fp, 56
+	addi.d	$a1, $a1, 8
+	move	$s4, $a2
+	bne	$s5, $a2, .LBB3_31
 # %bb.33:                               # %.critedge13split
                                         #   in Loop: Header=BB3_21 Depth=1
-	add.d	$a0, $a0, $a3
+	add.d	$a2, $a0, $a2
 	move	$s4, $s5
+.LBB3_34:                               # %.critedge13
+                                        #   in Loop: Header=BB3_21 Depth=1
 	sub.d	$s5, $s5, $s4
-	bne	$a0, $s2, .LBB3_19
-	b	.LBB3_57
-.LBB3_34:                               #   in Loop: Header=BB3_21 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.15)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
-	pcaddu18i	$ra, %call36(cli_dbgmsg)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 56
-	move	$a0, $zero
-	.p2align	4, , 16
-.LBB3_35:                               #   Parent Loop BB3_21 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.d	$a2, $fp, 48
-	bltu	$s0, $a1, .LBB3_39
-# %bb.36:                               #   in Loop: Header=BB3_35 Depth=2
-	bgeu	$a1, $a2, .LBB3_39
-# %bb.37:                               #   in Loop: Header=BB3_35 Depth=2
-	ldx.b	$a2, $s1, $a0
-	ld.d	$a3, $fp, 24
-	stx.b	$a2, $a3, $a1
-	ld.d	$a1, $fp, 56
-	addi.d	$a0, $a0, 1
-	addi.d	$a1, $a1, 1
-	st.d	$a1, $fp, 56
-	bne	$s5, $a0, .LBB3_35
-# %bb.38:                               # %..critedge11_crit_edge
-                                        #   in Loop: Header=BB3_21 Depth=1
-	ld.d	$a2, $fp, 48
-	move	$a0, $s5
-.LBB3_39:                               # %.critedge11
-                                        #   in Loop: Header=BB3_21 Depth=1
-	bltu	$s0, $a1, .LBB3_41
-# %bb.40:                               # %.critedge11
-                                        #   in Loop: Header=BB3_21 Depth=1
-	bltu	$a1, $a2, .LBB3_79
-.LBB3_41:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.d	$a2, $fp, 24
-	stx.b	$zero, $a2, $a1
-	ld.d	$a1, $fp, 48
-	ld.d	$a3, $fp, 56
-	sub.d	$a4, $s5, $a0
-	sub.d	$a2, $a1, $a3
-	bltu	$a4, $a2, .LBB3_80
-# %bb.42:                               #   in Loop: Header=BB3_21 Depth=1
-	add.d	$s1, $s1, $a0
-	sub.d	$s5, $a4, $a2
-	bltu	$a3, $a1, .LBB3_20
-# %bb.43:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.d	$a1, $fp, 24
-	add.d	$s1, $s1, $a2
-	st.d	$zero, $fp, 56
-	pcalau12i	$a0, %pc_hi20(.L.str.18)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
-	pcaddu18i	$ra, %call36(cli_dbgmsg)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 24
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-	st.d	$zero, $fp, 24
-	ori	$a0, $zero, 3
-	st.w	$a0, $fp, 20
-	b	.LBB3_20
-.LBB3_44:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.d	$a0, $fp, 56
-	sub.d	$a1, $s4, $a0
-	bgeu	$s5, $a1, .LBB3_62
-# %bb.45:                               #   in Loop: Header=BB3_21 Depth=1
-	move	$s5, $zero
-	beq	$a0, $s4, .LBB3_63
-	b	.LBB3_82
-.LBB3_46:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.d	$a0, $fp, 56
-	bnez	$a0, .LBB3_48
-# %bb.47:                               #   in Loop: Header=BB3_21 Depth=1
-	st.d	$zero, $fp, 48
-.LBB3_48:                               #   in Loop: Header=BB3_21 Depth=1
-	move	$a1, $zero
-	sub.d	$a2, $s2, $a0
-	sltu	$a3, $s2, $a2
-	masknez	$s4, $a2, $a3
-	slli.d	$a2, $a0, 3
-	.p2align	4, , 16
-.LBB3_49:                               #   Parent Loop BB3_21 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	beq	$s4, $a1, .LBB3_59
-# %bb.50:                               #   in Loop: Header=BB3_49 Depth=2
-	ldx.bu	$a3, $s1, $a1
-	ld.d	$a4, $fp, 48
-	sll.d	$a3, $a3, $a2
-	or	$a3, $a3, $a4
-	st.d	$a3, $fp, 48
-	addi.d	$a3, $a1, 1
-	add.d	$a1, $a0, $a1
-	addi.d	$a1, $a1, 1
-	st.d	$a1, $fp, 56
-	addi.d	$a2, $a2, 8
-	move	$a1, $a3
-	bne	$s5, $a3, .LBB3_49
-# %bb.51:                               # %.critedge9split
-                                        #   in Loop: Header=BB3_21 Depth=1
-	add.d	$a0, $a0, $a3
-	move	$s4, $s5
-	sub.d	$s5, $s5, $s4
-	beq	$a0, $s2, .LBB3_60
-	b	.LBB3_19
-.LBB3_52:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.d	$s4, $fp, 48
-	ld.d	$a0, $fp, 56
-	move	$a1, $s4
-	bnez	$a0, .LBB3_70
-# %bb.53:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.bu	$a0, $s1, 0
-	ori	$a1, $zero, 208
-	bne	$a0, $a1, .LBB3_68
-# %bb.54:                               #   in Loop: Header=BB3_21 Depth=1
-	ld.bu	$a0, $s1, 1
-	ori	$a1, $zero, 207
-	bne	$a0, $a1, .LBB3_68
-# %bb.55:                               #   in Loop: Header=BB3_21 Depth=1
-	ori	$a0, $zero, 2
-	st.d	$a0, $fp, 56
-	move	$a1, $s4
-	b	.LBB3_70
-.LBB3_56:                               # %..critedge13_crit_edge
-                                        #   in Loop: Header=BB3_21 Depth=1
-	add.d	$a0, $a0, $a1
-	sub.d	$s5, $s5, $s4
-	bne	$a0, $s2, .LBB3_19
-.LBB3_57:                               #   in Loop: Header=BB3_21 Depth=1
+	ori	$a0, $zero, 4
+	bne	$a2, $a0, .LBB3_19
+# %bb.35:                               #   in Loop: Header=BB3_21 Depth=1
 	ld.d	$a1, $fp, 48
 	st.d	$zero, $fp, 56
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
@@ -1373,8 +1247,8 @@ rtf_object_process:                     # @rtf_object_process
 	addi.d	$a2, $fp, 8
 	pcaddu18i	$ra, %call36(cli_gentempfd)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB3_83
-# %bb.58:                               #   in Loop: Header=BB3_21 Depth=1
+	bnez	$a0, .LBB3_82
+# %bb.36:                               #   in Loop: Header=BB3_21 Depth=1
 	add.d	$s1, $s1, $s4
 	ori	$a0, $zero, 5
 	st.w	$a0, $fp, 20
@@ -1382,25 +1256,140 @@ rtf_object_process:                     # @rtf_object_process
 	addi.d	$a0, $a0, %pc_lo12(.L.str.22)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 8
-	b	.LBB3_20
-.LBB3_59:                               # %..critedge9_crit_edge
+	b	.LBB3_19
+.LBB3_37:                               #   in Loop: Header=BB3_21 Depth=1
+	pcalau12i	$a0, %pc_hi20(.L.str.15)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
+	pcaddu18i	$ra, %call36(cli_dbgmsg)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, 56
+	move	$a0, $zero
+	.p2align	4, , 16
+.LBB3_38:                               #   Parent Loop BB3_21 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.d	$a2, $fp, 48
+	bltu	$s0, $a1, .LBB3_42
+# %bb.39:                               #   in Loop: Header=BB3_38 Depth=2
+	bgeu	$a1, $a2, .LBB3_42
+# %bb.40:                               #   in Loop: Header=BB3_38 Depth=2
+	ldx.b	$a2, $s1, $a0
+	ld.d	$a3, $fp, 24
+	stx.b	$a2, $a3, $a1
+	ld.d	$a1, $fp, 56
+	addi.d	$a0, $a0, 1
+	addi.d	$a1, $a1, 1
+	st.d	$a1, $fp, 56
+	bne	$s5, $a0, .LBB3_38
+# %bb.41:                               # %..critedge11_crit_edge
                                         #   in Loop: Header=BB3_21 Depth=1
-	add.d	$a0, $a0, $a1
+	ld.d	$a2, $fp, 48
+	move	$a0, $s5
+.LBB3_42:                               # %.critedge11
+                                        #   in Loop: Header=BB3_21 Depth=1
+	bltu	$s0, $a1, .LBB3_44
+# %bb.43:                               # %.critedge11
+                                        #   in Loop: Header=BB3_21 Depth=1
+	bltu	$a1, $a2, .LBB3_78
+.LBB3_44:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.d	$a2, $fp, 24
+	stx.b	$zero, $a2, $a1
+	ld.d	$a1, $fp, 48
+	ld.d	$a3, $fp, 56
+	sub.d	$a4, $s5, $a0
+	sub.d	$a2, $a1, $a3
+	bltu	$a4, $a2, .LBB3_79
+# %bb.45:                               #   in Loop: Header=BB3_21 Depth=1
+	add.d	$s1, $s1, $a0
+	sub.d	$s5, $a4, $a2
+	bltu	$a3, $a1, .LBB3_20
+# %bb.46:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.d	$a1, $fp, 24
+	add.d	$s1, $s1, $a2
+	st.d	$zero, $fp, 56
+	pcalau12i	$a0, %pc_hi20(.L.str.18)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
+	pcaddu18i	$ra, %call36(cli_dbgmsg)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, 24
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	st.d	$zero, $fp, 24
+	st.w	$s2, $fp, 20
+	b	.LBB3_20
+.LBB3_47:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.d	$a0, $fp, 56
+	sub.d	$a1, $s4, $a0
+	bgeu	$s5, $a1, .LBB3_62
+# %bb.48:                               #   in Loop: Header=BB3_21 Depth=1
+	move	$s5, $zero
+	beq	$a0, $s4, .LBB3_63
+	b	.LBB3_81
+.LBB3_49:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.d	$a0, $fp, 56
+	bnez	$a0, .LBB3_51
+# %bb.50:                               #   in Loop: Header=BB3_21 Depth=1
+	st.d	$zero, $fp, 48
+.LBB3_51:                               # %.preheader393
+                                        #   in Loop: Header=BB3_21 Depth=1
+	move	$s4, $zero
+	slli.d	$a1, $a0, 3
+	.p2align	4, , 16
+.LBB3_52:                               #   Parent Loop BB3_21 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	add.d	$a2, $a0, $s4
+	bltu	$s2, $a2, .LBB3_55
+# %bb.53:                               #   in Loop: Header=BB3_52 Depth=2
+	ldx.bu	$a2, $s1, $s4
+	ld.d	$a3, $fp, 48
+	sll.d	$a2, $a2, $a1
+	or	$a2, $a2, $a3
+	st.d	$a2, $fp, 48
+	addi.d	$a2, $s4, 1
+	add.d	$a3, $a0, $s4
+	addi.d	$a3, $a3, 1
+	st.d	$a3, $fp, 56
+	addi.d	$a1, $a1, 8
+	move	$s4, $a2
+	bne	$s5, $a2, .LBB3_52
+# %bb.54:                               # %.critedge9split
+                                        #   in Loop: Header=BB3_21 Depth=1
+	add.d	$a2, $a0, $a2
+	move	$s4, $s5
+.LBB3_55:                               # %.critedge9
+                                        #   in Loop: Header=BB3_21 Depth=1
 	sub.d	$s5, $s5, $s4
-	bne	$a0, $s2, .LBB3_19
-.LBB3_60:                               #   in Loop: Header=BB3_21 Depth=1
+	ori	$a0, $zero, 4
+	bne	$a2, $a0, .LBB3_19
+# %bb.56:                               #   in Loop: Header=BB3_21 Depth=1
 	ld.d	$a1, $fp, 48
 	st.d	$zero, $fp, 56
 	ori	$a0, $zero, 65
-	bltu	$a1, $a0, .LBB3_74
-# %bb.61:                               #   in Loop: Header=BB3_21 Depth=1
+	bltu	$a1, $a0, .LBB3_73
+# %bb.57:                               #   in Loop: Header=BB3_21 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 65
-	b	.LBB3_75
+	b	.LBB3_74
+.LBB3_58:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.d	$s4, $fp, 48
+	ld.d	$a0, $fp, 56
+	move	$a1, $s4
+	bnez	$a0, .LBB3_69
+# %bb.59:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.bu	$a0, $s1, 0
+	ori	$a1, $zero, 208
+	bne	$a0, $a1, .LBB3_67
+# %bb.60:                               #   in Loop: Header=BB3_21 Depth=1
+	ld.bu	$a0, $s1, 1
+	ori	$a1, $zero, 207
+	bne	$a0, $a1, .LBB3_67
+# %bb.61:                               #   in Loop: Header=BB3_21 Depth=1
+	ori	$a0, $zero, 2
+	st.d	$a0, $fp, 56
+	move	$a1, $s4
+	b	.LBB3_69
 .LBB3_62:                               # %.thread262
                                         #   in Loop: Header=BB3_21 Depth=1
 	sub.d	$s5, $s5, $a1
@@ -1411,24 +1400,23 @@ rtf_object_process:                     # @rtf_object_process
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	st.w	$s2, $fp, 20
+	ori	$a0, $zero, 4
+	st.w	$a0, $fp, 20
 	b	.LBB3_20
 .LBB3_64:                               #   in Loop: Header=BB3_21 Depth=1
 	move	$s4, $s5
 .LBB3_65:                               # %.critedge7
                                         #   in Loop: Header=BB3_21 Depth=1
 	sub.d	$s5, $s5, $s4
-	bne	$a3, $s2, .LBB3_67
+	ori	$a0, $zero, 8
+	bne	$a3, $a0, .LBB3_19
 # %bb.66:                               #   in Loop: Header=BB3_21 Depth=1
 	add.d	$s1, $s1, $s4
 	st.d	$zero, $fp, 56
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 20
+	b	.LBB3_19
 .LBB3_67:                               #   in Loop: Header=BB3_21 Depth=1
-	ori	$s4, $zero, 8
-	ori	$s2, $zero, 4
-	b	.LBB3_20
-.LBB3_68:                               #   in Loop: Header=BB3_21 Depth=1
 	ld.w	$a0, $fp, 8
 	ori	$a1, $zero, 1
 	st.d	$a1, $fp, 56
@@ -1437,11 +1425,12 @@ rtf_object_process:                     # @rtf_object_process
 	ori	$a2, $zero, 4
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB3_78
-# %bb.69:                               # %._crit_edge
+	ori	$a1, $zero, 4
+	bne	$a0, $a1, .LBB3_77
+# %bb.68:                               # %._crit_edge
                                         #   in Loop: Header=BB3_21 Depth=1
 	ld.d	$a1, $fp, 48
-.LBB3_70:                               #   in Loop: Header=BB3_21 Depth=1
+.LBB3_69:                               #   in Loop: Header=BB3_21 Depth=1
 	sltu	$a0, $s5, $s4
 	masknez	$a2, $s4, $a0
 	maskeqz	$a3, $s5, $a0
@@ -1453,31 +1442,31 @@ rtf_object_process:                     # @rtf_object_process
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
-	bne	$s4, $a0, .LBB3_78
-# %bb.71:                               #   in Loop: Header=BB3_21 Depth=1
+	bne	$s4, $a0, .LBB3_77
+# %bb.70:                               #   in Loop: Header=BB3_21 Depth=1
 	ld.d	$a0, $fp, 48
 	add.d	$s1, $s1, $s4
 	sub.d	$s5, $s5, $s4
 	bnez	$a0, .LBB3_19
-# %bb.72:                               #   in Loop: Header=BB3_21 Depth=1
+# %bb.71:                               #   in Loop: Header=BB3_21 Depth=1
 	ld.d	$a1, $fp, 40
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(decode_and_scan)
 	jirl	$ra, $ra, 0
 	ori	$s4, $zero, 8
-	bnez	$a0, .LBB3_83
-# %bb.73:                               #   in Loop: Header=BB3_21 Depth=1
+	bnez	$a0, .LBB3_82
+# %bb.72:                               #   in Loop: Header=BB3_21 Depth=1
 	st.d	$zero, $fp, 56
 	st.w	$zero, $fp, 20
 	b	.LBB3_20
-.LBB3_74:                               #   in Loop: Header=BB3_21 Depth=1
+.LBB3_73:                               #   in Loop: Header=BB3_21 Depth=1
 	addi.d	$a0, $a1, 1
-.LBB3_75:                               #   in Loop: Header=BB3_21 Depth=1
+.LBB3_74:                               #   in Loop: Header=BB3_21 Depth=1
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 24
-	beqz	$a0, .LBB3_84
-# %bb.76:                               #   in Loop: Header=BB3_21 Depth=1
+	beqz	$a0, .LBB3_83
+# %bb.75:                               #   in Loop: Header=BB3_21 Depth=1
 	ld.d	$a1, $fp, 48
 	add.d	$s1, $s1, $s4
 	ori	$a0, $zero, 2
@@ -1486,33 +1475,32 @@ rtf_object_process:                     # @rtf_object_process
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 8
-	b	.LBB3_20
-.LBB3_77:
+	b	.LBB3_19
+.LBB3_76:
 	andi	$a0, $a4, 255
 	st.w	$a0, $fp, 12
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 16
 	bnez	$s5, .LBB3_18
+	b	.LBB3_81
+.LBB3_77:
+	addi.w	$a0, $zero, -123
 	b	.LBB3_82
 .LBB3_78:
-	addi.w	$a0, $zero, -123
-	b	.LBB3_83
-.LBB3_79:
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
-	b	.LBB3_81
-.LBB3_80:
+	b	.LBB3_80
+.LBB3_79:
 	sub.d	$a0, $a1, $a4
 	st.d	$a0, $fp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-.LBB3_81:                               # %.critedge257
+.LBB3_80:                               # %.critedge257
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB3_82:                               # %.critedge257
+.LBB3_81:                               # %.critedge257
 	move	$a0, $zero
-.LBB3_83:                               # %.critedge257
+.LBB3_82:                               # %.critedge257
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 2176
 	add.d	$sp, $sp, $a1
@@ -1529,20 +1517,20 @@ rtf_object_process:                     # @rtf_object_process
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB3_84:
+.LBB3_83:
 	addi.w	$a0, $zero, -114
-	b	.LBB3_83
+	b	.LBB3_82
 .Lfunc_end3:
 	.size	rtf_object_process, .Lfunc_end3-rtf_object_process
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI3_0:
 	.word	.LBB3_23-.LJTI3_0
-	.word	.LBB3_46-.LJTI3_0
-	.word	.LBB3_34-.LJTI3_0
-	.word	.LBB3_44-.LJTI3_0
+	.word	.LBB3_49-.LJTI3_0
+	.word	.LBB3_37-.LJTI3_0
+	.word	.LBB3_47-.LJTI3_0
 	.word	.LBB3_28-.LJTI3_0
-	.word	.LBB3_52-.LJTI3_0
+	.word	.LBB3_58-.LJTI3_0
                                         # -- End function
 	.text
 	.p2align	5                               # -- Begin function rtf_object_end

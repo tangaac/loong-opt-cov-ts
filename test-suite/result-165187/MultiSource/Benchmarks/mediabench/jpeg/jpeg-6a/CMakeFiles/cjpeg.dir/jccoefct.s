@@ -231,9 +231,9 @@ compress_data:                          # @compress_data
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	addi.w	$a1, $a2, -1
 	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	addi.d	$t1, $s6, 32
+	addi.d	$t0, $s6, 32
 	ld.w	$s1, $s6, 20
-	addi.d	$a1, $s6, 56
+	addi.d	$a1, $s6, 40
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB2_4
 	.p2align	4, , 16
@@ -319,7 +319,7 @@ compress_data:                          # @compress_data
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
 	alsl.d	$s1, $a4, $a0, 3
-	alsl.d	$a0, $s3, $t1, 3
+	alsl.d	$a0, $s3, $t0, 3
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	sub.d	$a0, $zero, $s3
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
@@ -327,7 +327,7 @@ compress_data:                          # @compress_data
 	b	.LBB2_14
 	.p2align	4, , 16
 .LBB2_12:                               #   in Loop: Header=BB2_14 Depth=4
-	move	$t1, $s6
+	move	$t0, $s6
 	move	$s6, $s8
 .LBB2_13:                               # %.loopexit
                                         #   in Loop: Header=BB2_14 Depth=4
@@ -357,13 +357,13 @@ compress_data:                          # @compress_data
 	ld.d	$a7, $a0, 8
 	ld.d	$a2, $s1, 0
 	slli.d	$a0, $s7, 3
-	ldx.d	$a3, $t1, $a0
+	ldx.d	$a3, $t0, $a0
 	move	$a0, $fp
 	move	$a1, $s2
 	move	$a4, $s5
 	move	$a5, $s4
 	move	$a6, $s3
-	move	$s6, $t1
+	move	$s6, $t0
 	jirl	$ra, $a7, 0
 	ld.w	$a1, $s2, 52
 	bge	$s3, $a1, .LBB2_12
@@ -399,15 +399,15 @@ compress_data:                          # @compress_data
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB2_19
 # %bb.20:                               #   in Loop: Header=BB2_14 Depth=4
-	addi.d	$t1, $s6, 32
+	addi.d	$t0, $s6, 32
 	b	.LBB2_13
 	.p2align	4, , 16
 .LBB2_21:                               #   in Loop: Header=BB2_14 Depth=4
 	slli.d	$a0, $s7, 3
 	ld.w	$a1, $s2, 52
-	ldx.d	$a0, $t1, $a0
+	ldx.d	$a0, $t0, $a0
 	slli.d	$a1, $a1, 7
-	move	$s6, $t1
+	move	$s6, $t0
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 52
@@ -417,21 +417,21 @@ compress_data:                          # @compress_data
 	alsl.d	$a0, $s7, $s6, 3
 	ld.d	$a0, $a0, -8
 	ld.hu	$a0, $a0, 0
-	move	$t1, $s6
-	ori	$a2, $zero, 4
-	bgeu	$a1, $a2, .LBB2_25
+	move	$t0, $s6
+	ori	$a2, $zero, 1
+	bne	$a1, $a2, .LBB2_25
 # %bb.23:                               #   in Loop: Header=BB2_14 Depth=4
 	move	$a2, $zero
 	move	$s6, $s8
 	b	.LBB2_28
 .LBB2_24:                               #   in Loop: Header=BB2_14 Depth=4
 	move	$s6, $s8
-	addi.d	$t1, $s8, 32
+	addi.d	$t0, $s8, 32
 	b	.LBB2_13
 .LBB2_25:                               # %vector.ph
                                         #   in Loop: Header=BB2_14 Depth=4
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
+	bstrpick.d	$a2, $a1, 30, 1
+	slli.d	$a2, $a2, 1
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	alsl.d	$a3, $s7, $a3, 3
 	move	$a4, $a2
@@ -443,16 +443,12 @@ compress_data:                          # @compress_data
                                         #       Parent Loop BB2_10 Depth=3
                                         #         Parent Loop BB2_14 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a5, $a3, -24
-	ld.d	$a6, $a3, -16
-	ld.d	$a7, $a3, -8
-	ld.d	$t0, $a3, 0
+	ld.d	$a5, $a3, -8
+	ld.d	$a6, $a3, 0
 	st.h	$a0, $a5, 0
 	st.h	$a0, $a6, 0
-	st.h	$a0, $a7, 0
-	st.h	$a0, $t0, 0
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB2_26
 # %bb.27:                               # %middle.block
                                         #   in Loop: Header=BB2_14 Depth=4
@@ -461,7 +457,7 @@ compress_data:                          # @compress_data
                                         #   in Loop: Header=BB2_14 Depth=4
 	slli.d	$a3, $a2, 3
 	alsl.d	$a3, $s7, $a3, 3
-	add.d	$a3, $t1, $a3
+	add.d	$a3, $t0, $a3
 	sub.d	$a2, $a1, $a2
 	.p2align	4, , 16
 .LBB2_29:                               # %scalar.ph
@@ -482,13 +478,13 @@ compress_data:                          # @compress_data
 	ld.d	$a0, $fp, 488
 	ld.d	$a2, $a0, 8
 	move	$a0, $fp
-	move	$a1, $t1
+	move	$a1, $t0
 	jirl	$ra, $a2, 0
 	beqz	$a0, .LBB2_32
 # %bb.31:                               #   in Loop: Header=BB2_6 Depth=2
 	addi.w	$s1, $s1, 1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	addi.d	$t1, $s6, 32
+	addi.d	$t0, $s6, 32
 	bgeu	$a0, $s1, .LBB2_6
 	b	.LBB2_2
 .LBB2_32:

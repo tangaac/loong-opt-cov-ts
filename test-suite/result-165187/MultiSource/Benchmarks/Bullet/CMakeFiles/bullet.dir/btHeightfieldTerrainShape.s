@@ -626,48 +626,53 @@ _ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3: # @_ZNK25btHeightfieldT
 	.type	_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i,@function
 _ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i: # @_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i
 # %bb.0:                                # %_Z8btSetMaxIfEvRT_RKS0_.exit.i
-	fld.s	$fa0, $a2, 0
-	fld.s	$fa1, $a0, 28
-	fld.s	$fa2, $a2, 4
-	fld.s	$fa3, $a2, 8
-	fld.s	$fa4, $a0, 32
-	fcmp.clt.s	$fcc0, $fa0, $fa1
-	fsel	$fa0, $fa0, $fa1, $fcc0
+	fld.s	$fa0, $a2, 8
 	fld.s	$fa1, $a0, 36
-	fcmp.clt.s	$fcc0, $fa2, $fa4
-	fsel	$fa2, $fa2, $fa4, $fcc0
-	fld.s	$fa4, $a0, 44
-	fcmp.clt.s	$fcc0, $fa3, $fa1
-	fsel	$fa1, $fa3, $fa1, $fcc0
-	fld.s	$fa3, $a0, 48
-	fcmp.clt.s	$fcc0, $fa4, $fa0
-	fld.s	$fa5, $a0, 52
-	fsel	$fa0, $fa0, $fa4, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fa2
-	fsel	$fa2, $fa2, $fa3, $fcc0
-	fcmp.clt.s	$fcc0, $fa5, $fa1
-	fsel	$fa1, $fa1, $fa5, $fcc0
-	fcvt.d.s	$fa3, $fa0
-	movgr2fr.w	$fa4, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fa4
-	vldi	$vr0, -800
+	ld.d	$a2, $a2, 0
+	fcmp.clt.s	$fcc0, $fa0, $fa1
+	fld.s	$fa2, $a0, 52
+	fsel	$fa0, $fa0, $fa1, $fcc0
+	vinsgr2vr.d	$vr1, $a2, 0
+	ld.d	$a2, $a0, 28
+	fcmp.clt.s	$fcc0, $fa2, $fa0
+	fsel	$fa0, $fa0, $fa2, $fcc0
+	ld.d	$a0, $a0, 44
+	vinsgr2vr.d	$vr2, $a2, 0
+	vfcmp.clt.s	$vr3, $vr1, $vr2
+	vbitsel.v	$vr1, $vr1, $vr2, $vr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vfcmp.clt.s	$vr3, $vr2, $vr1
+	vbitsel.v	$vr1, $vr1, $vr2, $vr3
+	vreplvei.w	$vr2, $vr1, 0
+	fcvt.d.s	$fa2, $fa2
+	vrepli.b	$vr3, 0
+	vfcmp.clt.s	$vr3, $vr1, $vr3
+	vshuf4i.w	$vr4, $vr3, 16
+	vpickve2gr.d	$a0, $vr3, 0
+	andi	$a0, $a0, 1
+	vldi	$vr3, -800
 	vldi	$vr5, -928
-	fsel	$fa6, $fa5, $fa0, $fcc0
-	fadd.d	$fa3, $fa6, $fa3
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$a0, $fa3
-	st.w	$a0, $a1, 0
-	fcvt.d.s	$fa3, $fa2
-	fcmp.clt.s	$fcc0, $fa2, $fa4
-	fsel	$fa2, $fa5, $fa0, $fcc0
-	fadd.d	$fa2, $fa2, $fa3
+	movgr2cf	$fcc0, $a0
+	fsel	$fa6, $fa5, $fa3, $fcc0
+	fadd.d	$fa2, $fa6, $fa2
 	ftintrz.w.d	$fa2, $fa2
 	movfr2gr.s	$a0, $fa2
+	st.w	$a0, $a1, 0
+	vreplvei.w	$vr1, $vr1, 1
+	vpickve2gr.d	$a0, $vr4, 1
+	andi	$a0, $a0, 1
+	fcvt.d.s	$fa1, $fa1
+	movgr2cf	$fcc0, $a0
+	fsel	$fa2, $fa5, $fa3, $fcc0
+	fadd.d	$fa1, $fa2, $fa1
+	ftintrz.w.d	$fa1, $fa1
+	movfr2gr.s	$a0, $fa1
 	st.w	$a0, $a1, 4
-	fcvt.d.s	$fa2, $fa1
-	fcmp.clt.s	$fcc0, $fa1, $fa4
-	fsel	$fa0, $fa5, $fa0, $fcc0
-	fadd.d	$fa0, $fa0, $fa2
+	fcvt.d.s	$fa1, $fa0
+	movgr2fr.w	$fa2, $zero
+	fcmp.clt.s	$fcc0, $fa0, $fa2
+	fsel	$fa0, $fa5, $fa3, $fcc0
+	fadd.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
 	st.w	$a0, $a1, 8

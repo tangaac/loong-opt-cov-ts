@@ -1,109 +1,94 @@
 	.file	"PropIDUtils.cpp"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _Z18ConvertUInt32ToHexjPw
-.LCPI0_0:
-	.word	12                              # 0xc
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	0                               # 0x0
-.LCPI0_1:
-	.word	0                               # 0x0
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
-.LCPI0_2:
-	.word	4294967295                      # 0xffffffff
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-.LCPI0_3:
-	.word	2684354560                      # 0xa0000000
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
 	.text
-	.globl	_Z18ConvertUInt32ToHexjPw
+	.globl	_Z18ConvertUInt32ToHexjPw       # -- Begin function _Z18ConvertUInt32ToHexjPw
 	.p2align	5
 	.type	_Z18ConvertUInt32ToHexjPw,@function
 _Z18ConvertUInt32ToHexjPw:              # @_Z18ConvertUInt32ToHexjPw
 # %bb.0:
-	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
-	vreplgr2vr.w	$vr1, $a0
-	vsrl.w	$vr0, $vr1, $vr0
-	vrepli.w	$vr2, 15
-	vand.v	$vr0, $vr0, $vr2
-	vslti.wu	$vr2, $vr0, 10
-	vrepli.w	$vr3, 48
-	vor.v	$vr4, $vr0, $vr3
-	vrepli.w	$vr5, 55
-	vadd.w	$vr0, $vr0, $vr5
-	vbitsel.v	$vr0, $vr0, $vr4, $vr2
-	vst	$vr0, $a1, 16
-	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a2, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI0_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI0_3)
-	vld	$vr4, $a2, %pc_lo12(.LCPI0_3)
-	bstrpick.d	$a0, $a0, 31, 28
-	vsrl.w	$vr0, $vr1, $vr0
-	vand.v	$vr0, $vr0, $vr2
-	vslt.wu	$vr1, $vr0, $vr4
-	vinsgr2vr.w	$vr0, $a0, 0
-	vor.v	$vr2, $vr0, $vr3
-	vadd.w	$vr0, $vr0, $vr5
-	vbitsel.v	$vr0, $vr0, $vr2, $vr1
-	vst	$vr0, $a1, 0
+	addi.d	$sp, $sp, -16
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
+	andi	$a6, $a0, 15
+	srli.d	$a3, $a0, 4
+	sltui	$a7, $a6, 10
+	ori	$a2, $zero, 3
+	bstrpick.d	$t1, $a0, 7, 4
+	srli.d	$a4, $a0, 8
+	bstrpick.d	$t3, $a0, 11, 8
+	srli.d	$a5, $a0, 12
+	bstrpick.d	$t5, $a0, 15, 12
+	srli.d	$t0, $a0, 16
+	bstrpick.d	$t6, $a0, 19, 16
+	srli.d	$t2, $a0, 20
+	bstrpick.d	$t8, $a0, 23, 20
+	srli.d	$t4, $a0, 24
+	bstrpick.d	$fp, $a0, 27, 24
+	bstrpick.d	$t7, $a0, 31, 28
+	bstrpick.d	$s0, $a0, 31, 29
+	bstrins.d	$a0, $a2, 63, 4
+	addi.d	$a6, $a6, 55
+	masknez	$a6, $a6, $a7
+	maskeqz	$a0, $a0, $a7
+	or	$a0, $a0, $a6
+	st.w	$a0, $a1, 28
+	sltui	$a0, $t1, 10
+	bstrins.d	$a3, $a2, 63, 4
+	addi.d	$a6, $t1, 55
+	masknez	$a6, $a6, $a0
+	maskeqz	$a0, $a3, $a0
+	or	$a0, $a0, $a6
+	st.w	$a0, $a1, 24
+	sltui	$a0, $t3, 10
+	bstrins.d	$a4, $a2, 63, 4
+	addi.d	$a3, $t3, 55
+	masknez	$a3, $a3, $a0
+	maskeqz	$a0, $a4, $a0
+	or	$a0, $a0, $a3
+	st.w	$a0, $a1, 20
+	sltui	$a0, $t5, 10
+	bstrins.d	$a5, $a2, 63, 4
+	addi.d	$a3, $t5, 55
+	masknez	$a3, $a3, $a0
+	maskeqz	$a0, $a5, $a0
+	or	$a0, $a0, $a3
+	st.w	$a0, $a1, 16
+	sltui	$a0, $t6, 10
+	bstrins.d	$t0, $a2, 63, 4
+	addi.d	$a3, $t6, 55
+	masknez	$a3, $a3, $a0
+	maskeqz	$a0, $t0, $a0
+	or	$a0, $a0, $a3
+	st.w	$a0, $a1, 12
+	sltui	$a0, $t8, 10
+	bstrins.d	$t2, $a2, 63, 4
+	addi.d	$a3, $t8, 55
+	masknez	$a3, $a3, $a0
+	maskeqz	$a0, $t2, $a0
+	or	$a0, $a0, $a3
+	st.w	$a0, $a1, 8
+	sltui	$a0, $fp, 10
+	bstrins.d	$t4, $a2, 63, 4
+	addi.d	$a2, $fp, 55
+	masknez	$a2, $a2, $a0
+	maskeqz	$a0, $t4, $a0
+	or	$a0, $a0, $a2
+	st.w	$a0, $a1, 4
+	sltui	$a0, $s0, 5
+	ori	$a2, $t7, 48
+	addi.d	$a3, $t7, 55
+	masknez	$a3, $a3, $a0
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a3
+	st.w	$a0, $a1, 0
 	st.w	$zero, $a1, 32
+	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end0:
 	.size	_Z18ConvertUInt32ToHexjPw, .Lfunc_end0-_Z18ConvertUInt32ToHexjPw
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
-.LCPI1_0:
-	.word	256                             # 0x100
-	.word	128                             # 0x80
-	.word	64                              # 0x40
-	.word	32                              # 0x20
-.LCPI1_1:
-	.word	114                             # 0x72
-	.word	119                             # 0x77
-	.word	120                             # 0x78
-	.word	114                             # 0x72
-.LCPI1_2:
-	.word	16                              # 0x10
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	2                               # 0x2
-.LCPI1_3:
-	.word	119                             # 0x77
-	.word	120                             # 0x78
-	.word	114                             # 0x72
-	.word	119                             # 0x77
-.LCPI1_4:
-	.word	0                               # 0x0
-	.word	24                              # 0x18
-	.word	20                              # 0x14
-	.word	16                              # 0x10
-.LCPI1_5:
-	.word	4294967295                      # 0xffffffff
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-	.word	15                              # 0xf
-.LCPI1_6:
-	.word	2684354560                      # 0xa0000000
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-	.word	10                              # 0xa
-.LCPI1_7:
-	.word	12                              # 0xc
-	.word	8                               # 0x8
-	.word	4                               # 0x4
-	.word	0                               # 0x0
-	.text
-	.globl	_Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
+	.globl	_Z23ConvertPropertyToStringRK14tagPROPVARIANTjb # -- Begin function _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
 	.p2align	5
 	.type	_Z23ConvertPropertyToStringRK14tagPROPVARIANTjb,@function
 _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
@@ -200,48 +185,79 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcalau12i	$a2, %pc_hi20(_ZL11kPosixTypes)
 	addi.d	$a2, $a2, %pc_lo12(_ZL11kPosixTypes)
 	ldx.b	$a1, $a2, $a1
-	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI1_0)
-	vreplgr2vr.w	$vr4, $s3
-	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
-	vld	$vr2, $a2, %pc_lo12(.LCPI1_1)
-	vand.v	$vr0, $vr4, $vr0
-	vseqi.w	$vr1, $vr0, 0
-	vrepli.w	$vr3, 45
-	vbitsel.v	$vr0, $vr2, $vr3, $vr1
-	vst	$vr0, $sp, 68
-	pcalau12i	$a2, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a2, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
-	vld	$vr2, $a2, %pc_lo12(.LCPI1_3)
 	st.w	$a1, $sp, 64
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	vand.v	$vr0, $vr4, $vr0
-	vseqi.w	$vr0, $vr0, 0
-	vbitsel.v	$vr2, $vr2, $vr3, $vr0
-	vst	$vr2, $sp, 84
-	andi	$a1, $s3, 1
+	andi	$a1, $s3, 256
 	sltui	$a1, $a1, 1
-	ori	$a2, $zero, 120
-	masknez	$a2, $a2, $a1
-	ori	$a3, $zero, 45
-	maskeqz	$a3, $a3, $a1
-	or	$a2, $a3, $a2
-	slli.d	$a3, $s3, 52
-	st.w	$a2, $sp, 100
-	bltz	$a3, .LBB1_23
-# %bb.9:
-	andi	$a2, $s3, 1024
-	bnez	$a2, .LBB1_24
-.LBB1_10:
-	andi	$a2, $s3, 512
-	beqz	$a2, .LBB1_12
-.LBB1_11:
-	ori	$a2, $zero, 116
-	masknez	$a2, $a2, $a1
-	ori	$a3, $zero, 84
-	maskeqz	$a1, $a3, $a1
+	ori	$a3, $zero, 114
+	masknez	$a2, $a3, $a1
+	ori	$a4, $zero, 45
+	maskeqz	$a1, $a4, $a1
 	or	$a1, $a1, $a2
+	st.w	$a1, $sp, 68
+	andi	$a1, $s3, 128
+	sltui	$a1, $a1, 1
+	ori	$a5, $zero, 119
+	masknez	$a2, $a5, $a1
+	maskeqz	$a1, $a4, $a1
+	or	$a1, $a1, $a2
+	st.w	$a1, $sp, 72
+	andi	$a1, $s3, 64
+	sltui	$a1, $a1, 1
+	ori	$a6, $zero, 120
+	masknez	$a2, $a6, $a1
+	maskeqz	$a7, $a4, $a1
+	or	$a2, $a7, $a2
+	st.w	$a2, $sp, 76
+	andi	$a2, $s3, 32
+	sltui	$a2, $a2, 1
+	masknez	$a7, $a3, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a2, $a2, $a7
+	st.w	$a2, $sp, 80
+	andi	$a2, $s3, 16
+	sltui	$a2, $a2, 1
+	masknez	$a7, $a5, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a2, $a2, $a7
+	st.w	$a2, $sp, 84
+	andi	$a2, $s3, 8
+	sltui	$a2, $a2, 1
+	masknez	$a7, $a6, $a2
+	maskeqz	$t0, $a4, $a2
+	or	$a7, $t0, $a7
+	st.w	$a7, $sp, 88
+	andi	$a7, $s3, 4
+	sltui	$a7, $a7, 1
+	masknez	$a3, $a3, $a7
+	maskeqz	$a7, $a4, $a7
+	or	$a3, $a7, $a3
+	st.w	$a3, $sp, 92
+	andi	$a3, $s3, 2
+	sltui	$a3, $a3, 1
+	masknez	$a5, $a5, $a3
+	maskeqz	$a3, $a4, $a3
+	or	$a3, $a3, $a5
+	st.w	$a3, $sp, 96
+	andi	$a3, $s3, 1
+	sltui	$a3, $a3, 1
+	masknez	$a5, $a6, $a3
+	maskeqz	$a4, $a4, $a3
+	or	$a4, $a4, $a5
+	slli.d	$a5, $s3, 52
+	st.w	$a4, $sp, 100
+	bltz	$a5, .LBB1_23
+# %bb.9:
+	andi	$a1, $s3, 1024
+	bnez	$a1, .LBB1_24
+.LBB1_10:
+	andi	$a1, $s3, 512
+	beqz	$a1, .LBB1_12
+.LBB1_11:
+	ori	$a1, $zero, 116
+	masknez	$a1, $a1, $a3
+	ori	$a2, $zero, 84
+	maskeqz	$a2, $a2, $a3
+	or	$a1, $a2, $a1
 	st.w	$a1, $sp, 100
 .LBB1_12:
 	st.w	$zero, $sp, 104
@@ -274,35 +290,79 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	ori	$a3, $zero, 19
 	bne	$a2, $a3, .LBB1_21
 # %bb.18:
-	ld.wu	$a1, $a1, 8
-	pcalau12i	$a2, %pc_hi20(.LCPI1_7)
-	vld	$vr0, $a2, %pc_lo12(.LCPI1_7)
-	vreplgr2vr.w	$vr1, $a1
-	vsrl.w	$vr0, $vr1, $vr0
-	vrepli.w	$vr2, 15
-	vand.v	$vr0, $vr0, $vr2
-	vslti.wu	$vr2, $vr0, 10
-	vrepli.w	$vr3, 48
-	vor.v	$vr4, $vr0, $vr3
-	vrepli.w	$vr5, 55
-	vadd.w	$vr0, $vr0, $vr5
-	vbitsel.v	$vr0, $vr0, $vr4, $vr2
-	vst	$vr0, $sp, 80
-	pcalau12i	$a2, %pc_hi20(.LCPI1_4)
-	vld	$vr0, $a2, %pc_lo12(.LCPI1_4)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_5)
-	vld	$vr2, $a2, %pc_lo12(.LCPI1_5)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_6)
-	vld	$vr4, $a2, %pc_lo12(.LCPI1_6)
-	vsrl.w	$vr0, $vr1, $vr0
-	vand.v	$vr0, $vr0, $vr2
-	srli.d	$a1, $a1, 28
-	vslt.wu	$vr1, $vr0, $vr4
-	vinsgr2vr.w	$vr0, $a1, 0
-	vor.v	$vr2, $vr0, $vr3
-	vadd.w	$vr0, $vr0, $vr5
-	vbitsel.v	$vr0, $vr0, $vr2, $vr1
-	vst	$vr0, $sp, 64
+	ld.wu	$a7, $a1, 8
+	andi	$a5, $a7, 15
+	srli.d	$a2, $a7, 4
+	sltui	$a6, $a5, 10
+	ori	$a1, $zero, 3
+	bstrpick.d	$t1, $a7, 7, 4
+	srli.d	$a3, $a7, 8
+	bstrpick.d	$t3, $a7, 11, 8
+	srli.d	$a4, $a7, 12
+	bstrpick.d	$t5, $a7, 15, 12
+	srli.d	$t0, $a7, 16
+	bstrpick.d	$t6, $a7, 19, 16
+	srli.d	$t2, $a7, 20
+	bstrpick.d	$t8, $a7, 23, 20
+	srli.d	$t4, $a7, 24
+	bstrpick.d	$fp, $a7, 27, 24
+	srli.d	$t7, $a7, 28
+	srli.d	$s0, $a7, 29
+	bstrins.d	$a7, $a1, 63, 4
+	addi.d	$a5, $a5, 55
+	masknez	$a5, $a5, $a6
+	maskeqz	$a6, $a7, $a6
+	or	$a5, $a6, $a5
+	st.w	$a5, $sp, 92
+	sltui	$a5, $t1, 10
+	bstrins.d	$a2, $a1, 63, 4
+	addi.d	$a6, $t1, 55
+	masknez	$a6, $a6, $a5
+	maskeqz	$a2, $a2, $a5
+	or	$a2, $a2, $a6
+	st.w	$a2, $sp, 88
+	sltui	$a2, $t3, 10
+	bstrins.d	$a3, $a1, 63, 4
+	addi.d	$a5, $t3, 55
+	masknez	$a5, $a5, $a2
+	maskeqz	$a2, $a3, $a2
+	or	$a2, $a2, $a5
+	st.w	$a2, $sp, 84
+	sltui	$a2, $t5, 10
+	bstrins.d	$a4, $a1, 63, 4
+	addi.d	$a3, $t5, 55
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a2, $a2, $a3
+	st.w	$a2, $sp, 80
+	sltui	$a2, $t6, 10
+	bstrins.d	$t0, $a1, 63, 4
+	addi.d	$a3, $t6, 55
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $t0, $a2
+	or	$a2, $a2, $a3
+	st.w	$a2, $sp, 76
+	sltui	$a2, $t8, 10
+	bstrins.d	$t2, $a1, 63, 4
+	addi.d	$a3, $t8, 55
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $t2, $a2
+	or	$a2, $a2, $a3
+	st.w	$a2, $sp, 72
+	sltui	$a2, $fp, 10
+	bstrins.d	$t4, $a1, 63, 4
+	addi.d	$a1, $fp, 55
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $t4, $a2
+	or	$a1, $a2, $a1
+	st.w	$a1, $sp, 68
+	sltui	$a1, $s0, 5
+	addi.d	$a2, $t7, 48
+	addi.d	$a3, $t7, 55
+	masknez	$a3, $a3, $a1
+	maskeqz	$a1, $a2, $a1
+	or	$a1, $a1, $a3
+	st.w	$a1, $sp, 64
 	st.w	$zero, $sp, 96
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 0
@@ -352,27 +412,23 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	addi.d	$sp, $sp, 256
 	ret
 .LBB1_23:
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	ori	$a3, $zero, 115
-	masknez	$a3, $a3, $a2
-	ori	$a4, $zero, 83
-	maskeqz	$a2, $a4, $a2
-	or	$a2, $a2, $a3
-	st.w	$a2, $sp, 76
-	andi	$a2, $s3, 1024
-	beqz	$a2, .LBB1_10
+	ori	$a4, $zero, 115
+	masknez	$a4, $a4, $a1
+	ori	$a5, $zero, 83
+	maskeqz	$a1, $a5, $a1
+	or	$a1, $a1, $a4
+	st.w	$a1, $sp, 76
+	andi	$a1, $s3, 1024
+	beqz	$a1, .LBB1_10
 .LBB1_24:
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 1
-	ori	$a3, $zero, 115
-	masknez	$a3, $a3, $a2
+	ori	$a1, $zero, 115
+	masknez	$a1, $a1, $a2
 	ori	$a4, $zero, 83
 	maskeqz	$a2, $a4, $a2
-	or	$a2, $a2, $a3
-	st.w	$a2, $sp, 88
-	andi	$a2, $s3, 512
-	bnez	$a2, .LBB1_11
+	or	$a1, $a2, $a1
+	st.w	$a1, $sp, 88
+	andi	$a1, $s3, 512
+	bnez	$a1, .LBB1_11
 	b	.LBB1_12
 .LBB1_25:
 	addi.w	$a0, $s1, 0
@@ -412,25 +468,44 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	st.w	$s1, $a0, 8
 	beqz	$a1, .LBB1_22
 # %bb.30:
-	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_4)
-	vrepli.w	$vr1, 48
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
-	vsrl.w	$vr0, $vr2, $vr0
-	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
-	vld	$vr2, $a0, %pc_lo12(.LCPI1_5)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_6)
-	vld	$vr3, $a0, %pc_lo12(.LCPI1_6)
-	vst	$vr1, $sp, 80
-	srli.d	$a0, $s3, 28
-	vand.v	$vr0, $vr0, $vr2
-	vslt.wu	$vr2, $vr0, $vr3
-	vinsgr2vr.w	$vr0, $a0, 0
-	vor.v	$vr1, $vr0, $vr1
-	vrepli.w	$vr3, 55
-	vadd.w	$vr0, $vr0, $vr3
-	vbitsel.v	$vr0, $vr0, $vr1, $vr2
-	vst	$vr0, $sp, 64
+	vrepli.w	$vr0, 48
+	vst	$vr0, $sp, 80
+	bstrpick.d	$a0, $s3, 19, 16
+	srli.d	$a2, $s3, 20
+	sltui	$a3, $a0, 10
+	ori	$a4, $zero, 3
+	bstrins.d	$a1, $a4, 63, 4
+	addi.d	$a0, $a0, 55
+	masknez	$a0, $a0, $a3
+	maskeqz	$a1, $a1, $a3
+	or	$a0, $a1, $a0
+	st.w	$a0, $sp, 76
+	bstrpick.d	$a0, $s3, 23, 20
+	srli.d	$a1, $s3, 24
+	sltui	$a3, $a0, 10
+	bstrins.d	$a2, $a4, 63, 4
+	addi.d	$a0, $a0, 55
+	masknez	$a0, $a0, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a0, $a2, $a0
+	st.w	$a0, $sp, 72
+	bstrpick.d	$a0, $s3, 27, 24
+	srli.d	$a2, $s3, 28
+	sltui	$a3, $a0, 10
+	bstrins.d	$a1, $a4, 63, 4
+	addi.d	$a0, $a0, 55
+	masknez	$a0, $a0, $a3
+	maskeqz	$a1, $a1, $a3
+	or	$a0, $a1, $a0
+	st.w	$a0, $sp, 68
+	srli.d	$a0, $s3, 29
+	sltui	$a0, $a0, 5
+	addi.d	$a1, $a2, 48
+	addi.d	$a2, $a2, 55
+	masknez	$a2, $a2, $a0
+	maskeqz	$a0, $a1, $a0
+	or	$a0, $a0, $a2
+	st.w	$a0, $sp, 64
 	st.w	$zero, $sp, 96
 	addi.d	$a0, $sp, 64
 	addi.d	$s3, $sp, 64

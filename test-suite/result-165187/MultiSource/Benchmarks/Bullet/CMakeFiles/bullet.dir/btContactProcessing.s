@@ -480,26 +480,27 @@ _ZN14btContactArray14merge_contactsERKS_b: # @_ZN14btContactArray14merge_contact
 	blez	$s6, .LBB0_65
 # %bb.61:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB0_56 Depth=1
-	fld.s	$fa1, $a0, 16
-	fld.s	$fa2, $a0, 20
+	ld.d	$a1, $a0, 16
 	fld.s	$fa0, $a0, 24
+	vinsgr2vr.d	$vr1, $a1, 0
 	move	$a1, $a6
 	.p2align	4, , 16
 .LBB0_62:                               # %.lr.ph.i
                                         #   Parent Loop BB0_56 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.s	$fa3, $a1, -8
-	fld.s	$fa4, $a1, -4
-	fld.s	$fa5, $a1, 0
-	fadd.s	$fa1, $fa1, $fa3
-	fadd.s	$fa2, $fa2, $fa4
-	fadd.s	$fa0, $fa0, $fa5
+	ld.d	$a2, $a1, -8
+	fld.s	$fa2, $a1, 0
+	vinsgr2vr.d	$vr3, $a2, 0
+	vfadd.s	$vr1, $vr1, $vr3
+	fadd.s	$fa0, $fa0, $fa2
 	addi.d	$s6, $s6, -1
 	addi.d	$a1, $a1, 16
 	bnez	$s6, .LBB0_62
 # %bb.63:                               # %._crit_edge.i
                                         #   in Loop: Header=BB0_56 Depth=1
+	vreplvei.w	$vr2, $vr1, 1
 	fmul.s	$fa3, $fa2, $fa2
+	vreplvei.w	$vr1, $vr1, 0
 	fmadd.s	$fa3, $fa1, $fa1, $fa3
 	fmadd.s	$fa3, $fa0, $fa0, $fa3
 	move	$s6, $zero

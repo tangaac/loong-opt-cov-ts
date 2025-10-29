@@ -69,7 +69,7 @@ benchmark_heapsort:                     # @benchmark_heapsort
 	fldx.d	$fa0, $a1, $a5
 	addi.w	$a0, $a0, -1
 	fstx.d	$fa1, $a1, $a5
-	beq	$a0, $a4, .LBB1_14
+	beq	$a0, $a4, .LBB1_13
 .LBB1_6:                                #   in Loop: Header=BB1_3 Depth=1
 	slli.w	$a5, $a2, 1
 	move	$a7, $a2
@@ -84,34 +84,28 @@ benchmark_heapsort:                     # @benchmark_heapsort
 	bge	$a5, $a0, .LBB1_11
 # %bb.9:                                #   in Loop: Header=BB1_8 Depth=2
 	slli.d	$a7, $a5, 3
-	fldx.d	$fa1, $a1, $a7
-	ori	$t0, $a5, 1
-	slli.d	$a7, $t0, 3
-	fldx.d	$fa2, $a1, $a7
-	fcmp.cule.d	$fcc0, $fa2, $fa1
-	move	$a7, $a5
-	bcnez	$fcc0, .LBB1_12
+	vldx	$vr1, $a1, $a7
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
+	fcmp.cule.d	$fcc0, $fa1, $fa2
+	bcnez	$fcc0, .LBB1_11
 # %bb.10:                               #   in Loop: Header=BB1_8 Depth=2
-	move	$a5, $t0
-	move	$a7, $t0
-	b	.LBB1_12
-	.p2align	4, , 16
-.LBB1_11:                               #   in Loop: Header=BB1_8 Depth=2
-	move	$a7, $a5
-.LBB1_12:                               # %._crit_edge49
+	ori	$a5, $a5, 1
+.LBB1_11:                               # %._crit_edge49
                                         #   in Loop: Header=BB1_8 Depth=2
+	move	$a7, $a5
 	slli.d	$a5, $a5, 3
 	fldx.d	$fa1, $a1, $a5
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB1_1
-# %bb.13:                               #   in Loop: Header=BB1_8 Depth=2
+# %bb.12:                               #   in Loop: Header=BB1_8 Depth=2
 	slli.d	$a6, $a6, 3
 	slli.w	$a5, $a7, 1
 	fstx.d	$fa1, $a1, $a6
 	move	$a6, $a7
 	bge	$a0, $a5, .LBB1_8
 	b	.LBB1_2
-.LBB1_14:
+.LBB1_13:
 	fst.d	$fa0, $a1, 8
 	ret
 .Lfunc_end1:
@@ -216,7 +210,7 @@ main:                                   # @main
 	fldx.d	$fa0, $a0, $a4
 	addi.w	$fp, $fp, -1
 	fstx.d	$fa1, $a0, $a4
-	beq	$fp, $a3, .LBB2_21
+	beq	$fp, $a3, .LBB2_20
 .LBB2_13:                               #   in Loop: Header=BB2_10 Depth=1
 	slli.w	$a5, $a1, 1
 	addi.w	$a4, $fp, 0
@@ -232,34 +226,28 @@ main:                                   # @main
 	bge	$a5, $a4, .LBB2_18
 # %bb.16:                               #   in Loop: Header=BB2_15 Depth=2
 	slli.d	$a7, $a5, 3
-	fldx.d	$fa1, $a0, $a7
-	ori	$t0, $a5, 1
-	slli.d	$a7, $t0, 3
-	fldx.d	$fa2, $a0, $a7
-	fcmp.cule.d	$fcc0, $fa2, $fa1
-	move	$a7, $a5
-	bcnez	$fcc0, .LBB2_19
+	vldx	$vr1, $a0, $a7
+	vreplvei.d	$vr2, $vr1, 0
+	vreplvei.d	$vr1, $vr1, 1
+	fcmp.cule.d	$fcc0, $fa1, $fa2
+	bcnez	$fcc0, .LBB2_18
 # %bb.17:                               #   in Loop: Header=BB2_15 Depth=2
-	move	$a5, $t0
-	move	$a7, $t0
-	b	.LBB2_19
-	.p2align	4, , 16
-.LBB2_18:                               #   in Loop: Header=BB2_15 Depth=2
-	move	$a7, $a5
-.LBB2_19:                               # %._crit_edge49.i
+	ori	$a5, $a5, 1
+.LBB2_18:                               # %._crit_edge49.i
                                         #   in Loop: Header=BB2_15 Depth=2
+	move	$a7, $a5
 	slli.d	$a5, $a5, 3
 	fldx.d	$fa1, $a0, $a5
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB2_8
-# %bb.20:                               #   in Loop: Header=BB2_15 Depth=2
+# %bb.19:                               #   in Loop: Header=BB2_15 Depth=2
 	slli.d	$a6, $a6, 3
 	slli.w	$a5, $a7, 1
 	fstx.d	$fa1, $a0, $a6
 	move	$a6, $a7
 	bge	$a4, $a5, .LBB2_15
 	b	.LBB2_9
-.LBB2_21:                               # %benchmark_heapsort.exit
+.LBB2_20:                               # %benchmark_heapsort.exit
 	fst.d	$fa0, $a0, 8
 	slli.d	$a1, $s0, 3
 	ldx.d	$a1, $a0, $a1

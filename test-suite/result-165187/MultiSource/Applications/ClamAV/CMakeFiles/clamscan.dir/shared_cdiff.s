@@ -1930,18 +1930,18 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	.type	cdiff_cmd_move,@function
 cdiff_cmd_move:                         # @cdiff_cmd_move
 # %bb.0:
-	addi.d	$sp, $sp, -1152
-	st.d	$ra, $sp, 1144                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1136                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1128                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1120                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1112                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1104                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1096                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1088                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1080                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1072                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1064                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1168
+	st.d	$ra, $sp, 1160                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1152                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1144                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1136                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1128                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1120                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1112                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1104                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1096                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1088                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1080                  # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
 	beqz	$a1, .LBB9_2
 # %bb.1:
@@ -2091,18 +2091,18 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 .LBB9_24:
 	addi.w	$a0, $zero, -1
 .LBB9_25:
-	ld.d	$s8, $sp, 1064                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1072                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1080                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1088                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1096                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1104                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1112                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1120                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1128                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1136                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1144                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1152
+	ld.d	$s8, $sp, 1080                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1088                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1096                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1104                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1112                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1120                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1128                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1136                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1144                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1152                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1160                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1168
 	ret
 .LBB9_26:                               # %._crit_edge.i157.thread
 	pcalau12i	$a0, %pc_hi20(.L.str.57)
@@ -2275,27 +2275,27 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(cdiff_token)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	beqz	$a0, .LBB9_77
 # %bb.54:
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.53)
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	beqz	$a0, .LBB9_78
 # %bb.55:
 	pcalau12i	$a0, %pc_hi20(.L.str.43)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.43)
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	beqz	$a0, .LBB9_79
 # %bb.56:
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.45)
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB9_81
@@ -2306,8 +2306,9 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	masknez	$a1, $s7, $a0
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$s7, $zero, -1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	addi.w	$a0, $zero, -1
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 .LBB9_58:                               # %.outer
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_59 Depth 2
@@ -2315,7 +2316,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	sub.d	$s4, $fp, $s5
 .LBB9_59:                               #   Parent Loop BB9_58 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	ori	$a1, $zero, 1024
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
@@ -2325,18 +2326,19 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	addi.w	$s4, $s4, -1
 	beqz	$s4, .LBB9_62
 # %bb.61:                               #   in Loop: Header=BB9_59 Depth=2
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB9_59
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB9_59
 	b	.LBB9_85
 .LBB9_62:                               #   in Loop: Header=BB9_58 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
@@ -2347,17 +2349,17 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 .LBB9_64:                               # %.preheader
                                         #   Parent Loop BB9_58 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a0, $sp, 40
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$a0, $sp, 56
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s7, .LBB9_89
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	beq	$a0, $a1, .LBB9_89
 # %bb.65:                               #   in Loop: Header=BB9_64 Depth=2
 	addi.w	$a0, $s4, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB9_68
+	bgeu	$a0, $s7, .LBB9_68
 # %bb.66:                               #   in Loop: Header=BB9_64 Depth=2
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	ori	$a1, $zero, 1024
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
@@ -2369,16 +2371,16 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	bne	$s4, $s5, .LBB9_64
 	b	.LBB9_70
 .LBB9_68:                               #   in Loop: Header=BB9_58 Depth=1
-	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB9_70
 .LBB9_69:                               #   in Loop: Header=BB9_58 Depth=1
 	move	$s5, $s4
 .LBB9_70:                               # %.critedge
                                         #   in Loop: Header=BB9_58 Depth=1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
@@ -2388,7 +2390,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
@@ -2396,7 +2398,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	beqz	$s4, .LBB9_58
 # %bb.71:
 	move	$a0, $s2
@@ -2408,7 +2410,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
@@ -2476,7 +2478,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 .LBB9_78:
 	pcalau12i	$a0, %pc_hi20(.L.str.64)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.64)
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
@@ -2508,10 +2510,10 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 .LBB9_80:
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
@@ -2519,7 +2521,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 .LBB9_81:
 	pcalau12i	$a0, %pc_hi20(.L.str.66)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.66)
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
@@ -2535,10 +2537,10 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 .LBB9_82:
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
@@ -2551,10 +2553,10 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB9_86
 # %bb.84:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
@@ -2563,7 +2565,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
@@ -2573,7 +2575,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	pcalau12i	$a0, %pc_hi20(.L.str.69)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.69)
 	move	$a1, $s2
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
@@ -2591,7 +2593,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
@@ -2606,7 +2608,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$fp, $a1
 	beq	$a0, $a1, .LBB9_92
 # %bb.87:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(rename)
 	jirl	$ra, $ra, 0
@@ -2615,7 +2617,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
@@ -2633,13 +2635,13 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
@@ -2648,7 +2650,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.68)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.68)
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 .LBB9_90:
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(logg)
@@ -2657,7 +2659,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB9_25
 .LBB9_92:
 	pcalau12i	$a0, %pc_hi20(.L.str.70)
@@ -2668,12 +2670,12 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB9_94
 .LBB9_93:
 	pcalau12i	$a0, %pc_hi20(.L.str.71)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.71)
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $s0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(logg)
@@ -2703,16 +2705,16 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
@@ -2725,7 +2727,7 @@ cdiff_cmd_move:                         # @cdiff_cmd_move
 .LBB9_96:
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB9_25
 .Lfunc_end9:
 	.size	cdiff_cmd_move, .Lfunc_end9-cdiff_cmd_move

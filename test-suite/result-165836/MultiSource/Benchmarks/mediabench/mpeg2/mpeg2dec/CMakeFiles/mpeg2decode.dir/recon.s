@@ -827,10 +827,7 @@ form_component_prediction:              # @form_component_prediction
                                         #   in Loop: Header=BB2_4 Depth=1
 	vld	$vr0, $a7, 0
 	vld	$vr1, $t0, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	vst	$vr0, $a7, 0
 	beq	$a1, $a2, .LBB2_3
 # %bb.9:                                # %vec.epilog.iter.check570
@@ -847,10 +844,7 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t7, $a7, $t4
 	vinsgr2vr.w	$vr0, $t5, 0
 	vinsgr2vr.w	$vr1, $t6, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	addi.d	$t4, $t4, 4
 	vstelm.w	$vr0, $t7, 0, 0
 	bne	$t2, $t4, .LBB2_10
@@ -940,14 +934,8 @@ form_component_prediction:              # @form_component_prediction
 	vld	$vr0, $t0, 0
 	vldx	$vr1, $t0, $a2
 	vld	$vr2, $a7, 0
-	vor.v	$vr3, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr3, $vr0
-	vor.v	$vr1, $vr2, $vr0
-	vxor.v	$vr0, $vr2, $vr0
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr1, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
+	vavgr.bu	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
 	beq	$a6, $t1, .LBB2_17
 # %bb.23:                               # %vec.epilog.iter.check504
@@ -962,20 +950,14 @@ form_component_prediction:              # @form_component_prediction
 	ldx.w	$t7, $a7, $t6
 	ldx.w	$t8, $t0, $t6
 	ldx.w	$fp, $a0, $t6
+	add.d	$s0, $a7, $t6
 	vinsgr2vr.w	$vr0, $t7, 0
 	vinsgr2vr.w	$vr1, $t8, 0
-	add.d	$t7, $a7, $t6
 	vinsgr2vr.w	$vr2, $fp, 0
-	vor.v	$vr3, $vr1, $vr2
-	vxor.v	$vr1, $vr1, $vr2
-	vsrli.b	$vr1, $vr1, 1
-	vsub.b	$vr1, $vr3, $vr1
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr1, $vr1, $vr2
+	vavgr.bu	$vr0, $vr0, $vr1
 	addi.d	$t6, $t6, 4
-	vstelm.w	$vr0, $t7, 0, 0
+	vstelm.w	$vr0, $s0, 0, 0
 	bne	$t3, $t6, .LBB2_24
 # %bb.25:                               # %vec.epilog.middle.block515
                                         #   in Loop: Header=BB2_18 Depth=1
@@ -1056,14 +1038,8 @@ form_component_prediction:              # @form_component_prediction
 	vld	$vr0, $t0, 0
 	vld	$vr1, $t0, 1
 	vld	$vr2, $a7, 0
-	vor.v	$vr3, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr3, $vr0
-	vor.v	$vr1, $vr2, $vr0
-	vxor.v	$vr0, $vr2, $vr0
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr1, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
+	vavgr.bu	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
 	beq	$a6, $a2, .LBB2_30
 # %bb.36:                               # %vec.epilog.iter.check
@@ -1079,20 +1055,14 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t6, $t0, $t4
 	ldx.w	$t7, $t0, $t4
 	ld.w	$t6, $t6, 1
+	add.d	$t8, $a7, $t4
 	vinsgr2vr.w	$vr0, $t5, 0
-	add.d	$t5, $a7, $t4
 	vinsgr2vr.w	$vr1, $t7, 0
 	vinsgr2vr.w	$vr2, $t6, 0
-	vor.v	$vr3, $vr1, $vr2
-	vxor.v	$vr1, $vr1, $vr2
-	vsrli.b	$vr1, $vr1, 1
-	vsub.b	$vr1, $vr3, $vr1
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr1, $vr1, $vr2
+	vavgr.bu	$vr0, $vr0, $vr1
 	addi.d	$t4, $t4, 4
-	vstelm.w	$vr0, $t5, 0, 0
+	vstelm.w	$vr0, $t8, 0, 0
 	bne	$t2, $t4, .LBB2_37
 # %bb.38:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB2_31 Depth=1
@@ -1144,10 +1114,7 @@ form_component_prediction:              # @form_component_prediction
                                         #   in Loop: Header=BB2_41 Depth=1
 	vld	$vr0, $t0, 0
 	vld	$vr1, $t0, 1
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	vst	$vr0, $a7, 0
 	beq	$a6, $a2, .LBB2_40
 # %bb.46:                               # %vec.epilog.iter.check365
@@ -1164,10 +1131,7 @@ form_component_prediction:              # @form_component_prediction
 	ld.w	$t5, $t5, 1
 	vinsgr2vr.w	$vr0, $t6, 0
 	vinsgr2vr.w	$vr1, $t5, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	add.d	$t5, $a7, $t4
 	addi.d	$t4, $t4, 4
 	vstelm.w	$vr0, $t5, 0, 0
@@ -1383,10 +1347,7 @@ form_component_prediction:              # @form_component_prediction
 	vadd.h	$vr2, $vr2, $vr5
 	vaddi.hu	$vr2, $vr2, 2
 	vsrli.h	$vr2, $vr2, 2
-	vor.v	$vr3, $vr1, $vr2
-	vxor.v	$vr1, $vr1, $vr2
-	vsrli.h	$vr1, $vr1, 1
-	vsub.h	$vr1, $vr3, $vr1
+	vavgr.hu	$vr1, $vr1, $vr2
 	vpickev.b	$vr1, $vr1, $vr1
 	addi.d	$t3, $t3, 4
 	vstelm.w	$vr1, $t8, 0, 0
@@ -1466,10 +1427,7 @@ form_component_prediction:              # @form_component_prediction
                                         #   in Loop: Header=BB2_75 Depth=1
 	vld	$vr0, $t0, 0
 	vldx	$vr1, $t0, $a2
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	vst	$vr0, $a7, 0
 	beq	$t5, $t1, .LBB2_74
 # %bb.80:                               # %vec.epilog.iter.check535
@@ -1485,10 +1443,7 @@ form_component_prediction:              # @form_component_prediction
 	ldx.w	$t8, $a0, $t3
 	vinsgr2vr.w	$vr0, $t7, 0
 	vinsgr2vr.w	$vr1, $t8, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	add.d	$t7, $a7, $t3
 	addi.d	$t3, $t3, 4
 	vstelm.w	$vr0, $t7, 0, 0

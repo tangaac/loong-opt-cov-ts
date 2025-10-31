@@ -2526,9 +2526,9 @@ lame_encode_buffer:                     # @lame_encode_buffer
 	vadd.w	$vr1, $vr3, $vr1
 	vadd.w	$vr2, $vr4, $vr2
 	vsrli.w	$vr3, $vr2, 31
-	vavg.wu	$vr2, $vr2, $vr3
+	vavg.w	$vr2, $vr2, $vr3
 	vsrli.w	$vr3, $vr1, 31
-	vavg.wu	$vr1, $vr1, $vr3
+	vavg.w	$vr1, $vr1, $vr3
 	vpickev.h	$vr1, $vr1, $vr2
 	vst	$vr1, $a1, 0
 	vst	$vr0, $a2, 0

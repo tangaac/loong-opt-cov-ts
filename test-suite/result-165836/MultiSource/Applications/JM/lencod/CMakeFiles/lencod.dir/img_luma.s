@@ -2592,10 +2592,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr1, $s7, 0
 	vld	$vr2, $s6, 0
-	vor.v	$vr3, $vr1, $vr2
-	vxor.v	$vr1, $vr1, $vr2
-	vsrli.h	$vr1, $vr1, 1
-	vsub.h	$vr1, $vr3, $vr1
+	vavgr.hu	$vr1, $vr1, $vr2
 	vst	$vr1, $s8, 0
 	addi.d	$ra, $ra, -8
 	addi.d	$s8, $s8, 16
@@ -2850,10 +2847,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $t8, 0
 	vld	$vr1, $t7, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.h	$vr0, $vr0, 1
-	vsub.h	$vr0, $vr2, $vr0
+	vavgr.hu	$vr0, $vr0, $vr1
 	vst	$vr0, $fp, 0
 	addi.d	$s0, $s0, -8
 	addi.d	$fp, $fp, 16
@@ -2996,10 +2990,7 @@ getVerSubImageBiLinear:                 # @getVerSubImageBiLinear
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $s5, 0
 	vld	$vr1, $s6, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.h	$vr0, $vr0, 1
-	vsub.h	$vr0, $vr2, $vr0
+	vavgr.hu	$vr0, $vr0, $vr1
 	vst	$vr0, $s7, 0
 	addi.d	$s8, $s8, -8
 	addi.d	$s7, $s7, 16
@@ -3099,10 +3090,7 @@ getVerSubImageBiLinear:                 # @getVerSubImageBiLinear
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $t4, 0
 	vld	$vr1, $t5, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.h	$vr0, $vr0, 1
-	vsub.h	$vr0, $vr2, $vr0
+	vavgr.hu	$vr0, $vr0, $vr1
 	vst	$vr0, $t6, 0
 	addi.d	$t7, $t7, -8
 	addi.d	$t6, $t6, 16

@@ -2243,18 +2243,6 @@ RestoreModel:                           # @RestoreModel
 	vinsgr2vr.b	$vr6, $a5, 1
 	vinsgr2vr.b	$vr6, $a6, 2
 	vinsgr2vr.b	$vr6, $a7, 3
-	vinsgr2vr.b	$vr6, $a0, 4
-	vinsgr2vr.b	$vr6, $a0, 5
-	vinsgr2vr.b	$vr6, $a0, 6
-	vinsgr2vr.b	$vr6, $a0, 7
-	vinsgr2vr.b	$vr6, $a0, 8
-	vinsgr2vr.b	$vr6, $a0, 9
-	vinsgr2vr.b	$vr6, $a0, 10
-	vinsgr2vr.b	$vr6, $a0, 11
-	vinsgr2vr.b	$vr6, $a0, 12
-	vinsgr2vr.b	$vr6, $a0, 13
-	vinsgr2vr.b	$vr6, $a0, 14
-	vinsgr2vr.b	$vr6, $a0, 15
 	ld.b	$a4, $a2, 7
 	ld.b	$a5, $a2, 13
 	ld.b	$a6, $a2, 19
@@ -2269,12 +2257,10 @@ RestoreModel:                           # @RestoreModel
 	vilvl.h	$vr9, $vr10, $vr9
 	vsub.w	$vr2, $vr2, $vr8
 	vsub.w	$vr5, $vr5, $vr9
-	vsrli.b	$vr8, $vr6, 1
-	vsub.b	$vr6, $vr6, $vr8
+	vavgr.bu	$vr6, $vr6, $vr10
 	vilvl.b	$vr8, $vr10, $vr6
 	vilvl.h	$vr8, $vr10, $vr8
-	vsrli.b	$vr9, $vr7, 1
-	vsub.b	$vr7, $vr7, $vr9
+	vavgr.bu	$vr7, $vr7, $vr10
 	vilvl.b	$vr9, $vr10, $vr7
 	vilvl.h	$vr9, $vr10, $vr9
 	vstelm.b	$vr6, $a2, -17, 0

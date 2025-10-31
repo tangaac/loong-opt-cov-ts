@@ -1409,10 +1409,7 @@ Deinterlace:                            # @Deinterlace
                                         # =>  This Inner Loop Header: Depth=2
 	vldx	$vr0, $t7, $t5
 	vldx	$vr1, $t7, $t6
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	vst	$vr0, $t7, 0
 	addi.d	$t8, $t8, -16
 	addi.d	$t7, $t7, 16
@@ -1437,10 +1434,7 @@ Deinterlace:                            # @Deinterlace
 	ldx.w	$s0, $t8, $t6
 	vinsgr2vr.w	$vr0, $fp, 0
 	vinsgr2vr.w	$vr1, $s0, 0
-	vor.v	$vr2, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr1
-	vsrli.b	$vr0, $vr0, 1
-	vsub.b	$vr0, $vr2, $vr0
+	vavgr.bu	$vr0, $vr0, $vr1
 	vstelm.w	$vr0, $t8, 0, 0
 	addi.d	$t7, $t7, 4
 	addi.d	$t8, $t8, 4

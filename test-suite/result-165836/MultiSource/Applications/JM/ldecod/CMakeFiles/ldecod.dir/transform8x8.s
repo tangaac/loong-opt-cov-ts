@@ -1087,10 +1087,7 @@ intrapred8x8:                           # @intrapred8x8
 	srli.d	$a5, $a5, 1
 	sub.d	$a5, $a6, $a5
 	stx.h	$a5, $a1, $t0
-	vor.v	$vr0, $vr3, $vr1
-	vxor.v	$vr5, $vr3, $vr1
-	vsrli.h	$vr5, $vr5, 1
-	vsub.h	$vr0, $vr0, $vr5
+	vavgr.hu	$vr0, $vr3, $vr1
 	vstx	$vr0, $a3, $t0
 	vpickve2gr.w	$a3, $vr4, 1
 	addi.d	$a6, $a3, 2

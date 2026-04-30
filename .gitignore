@@ -1,0 +1,20 @@
+# 忽略临时文件和源码仓库
+temp_work/
+build/
+*.o
+*.a
+*.so
+*.dylib
+pr-analysis/
+*.log
+*.tmp
+.DS_Store
+.vscode/
+.idea/
+
+# 忽略源码仓库（避免意外提交）
+repos/llvm-project/
+repos/llvm-test-suite/
+
+# 忽略测试脚本
+test_*.py

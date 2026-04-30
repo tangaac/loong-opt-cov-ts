@@ -1,0 +1,23 @@
+{
+  "work_dir": "./temp_work",
+  "llvm_repo": "./repos/llvm-project",
+  "pr_analysis_dir": "./pr-analysis",
+  "test_suite_dir": "./repos/llvm-test-suite",
+  "build_type": "Release",
+  "parallel_jobs": 4,
+  "clang_build_dir": "./build",
+  "github_remote": "origin",
+  "github_base_branch": "master",
+  "github_remote_url": "git@github.com:your-username/your-analysis-repo.git",
+  "cmake_args": [
+    "-DCMAKE_CXX_COMPILER=clang++",
+    "-DCMAKE_C_COMPILER=clang",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DCMAKE_C_COMPILER_LAUNCHER=sccache",
+    "-DCMAKE_CXX_COMPILER_LAUNCHER=sccache",
+    "-DLLVM_USE_LINKER=mold",
+    "-DLLVM_TARGETS_TO_BUILD=LoongArch",
+    "-DBUILD_SHARED_LIBS=true",
+    "-DLLVM_ENABLE_PROJECTS=clang"
+  ]
+}
